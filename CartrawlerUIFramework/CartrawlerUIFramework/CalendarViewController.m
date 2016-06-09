@@ -27,6 +27,7 @@
     // Do any additional setup after loading the view.
     self.calendarView.delegate = self;
     self.calendarView.showMagnifier = YES;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -56,7 +57,6 @@
         [self.calendarView scrollToDate:self.calendarView.lastDate animated:NO];
     });
 }
-
 
 - (BOOL)calenderView:(GLCalendarView *)calendarView canAddRangeWithBeginDate:(NSDate *)beginDate
 {

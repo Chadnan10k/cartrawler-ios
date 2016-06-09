@@ -46,6 +46,11 @@
 		451B9AA81D081BAB001D07A7 /* LocationSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B9AA71D081BAB001D07A7 /* LocationSearchDataSource.m */; };
 		451B9AAC1D082D63001D07A7 /* CTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B9AAB1D082D63001D07A7 /* CTLabel.m */; };
 		451B9AB01D0859AC001D07A7 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B9AAF1D0859AC001D07A7 /* CalendarViewController.m */; };
+		453F38CD1D095557009630FB /* CTCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F38CC1D095557009630FB /* CTCalendarViewController.m */; };
+		453F38D31D095634009630FB /* CTCalendarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F38D21D095634009630FB /* CTCalendarTableViewCell.m */; };
+		453F38D61D096BE2009630FB /* CTDateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F38D51D096BE2009630FB /* CTDateCollectionViewCell.m */; };
+		453F38D91D09AF1D009630FB /* CalendarLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F38D81D09AF1D009630FB /* CalendarLogicController.m */; };
+		453F38DF1D09CD15009630FB /* CTMiddleDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F38DE1D09CD15009630FB /* CTMiddleDateCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +140,16 @@
 		451B9AAB1D082D63001D07A7 /* CTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLabel.m; sourceTree = "<group>"; };
 		451B9AAE1D0859AC001D07A7 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		451B9AAF1D0859AC001D07A7 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		453F38CB1D095557009630FB /* CTCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCalendarViewController.h; sourceTree = "<group>"; };
+		453F38CC1D095557009630FB /* CTCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCalendarViewController.m; sourceTree = "<group>"; };
+		453F38D11D095634009630FB /* CTCalendarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCalendarTableViewCell.h; sourceTree = "<group>"; };
+		453F38D21D095634009630FB /* CTCalendarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCalendarTableViewCell.m; sourceTree = "<group>"; };
+		453F38D41D096BE2009630FB /* CTDateCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDateCollectionViewCell.h; sourceTree = "<group>"; };
+		453F38D51D096BE2009630FB /* CTDateCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDateCollectionViewCell.m; sourceTree = "<group>"; };
+		453F38D71D09AF1D009630FB /* CalendarLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarLogicController.h; sourceTree = "<group>"; };
+		453F38D81D09AF1D009630FB /* CalendarLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarLogicController.m; sourceTree = "<group>"; };
+		453F38DD1D09CD15009630FB /* CTMiddleDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMiddleDateCell.h; sourceTree = "<group>"; };
+		453F38DE1D09CD15009630FB /* CTMiddleDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMiddleDateCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +377,16 @@
 			children = (
 				451B9AAE1D0859AC001D07A7 /* CalendarViewController.h */,
 				451B9AAF1D0859AC001D07A7 /* CalendarViewController.m */,
+				453F38CB1D095557009630FB /* CTCalendarViewController.h */,
+				453F38CC1D095557009630FB /* CTCalendarViewController.m */,
+				453F38D11D095634009630FB /* CTCalendarTableViewCell.h */,
+				453F38D21D095634009630FB /* CTCalendarTableViewCell.m */,
+				453F38D41D096BE2009630FB /* CTDateCollectionViewCell.h */,
+				453F38D51D096BE2009630FB /* CTDateCollectionViewCell.m */,
+				453F38D71D09AF1D009630FB /* CalendarLogicController.h */,
+				453F38D81D09AF1D009630FB /* CalendarLogicController.m */,
+				453F38DD1D09CD15009630FB /* CTMiddleDateCell.h */,
+				453F38DE1D09CD15009630FB /* CTMiddleDateCell.m */,
 			);
 			name = "Calendar VC";
 			sourceTree = "<group>";
@@ -505,6 +530,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				451B9A6D1D01934F001D07A7 /* GLCalendarDateRange.m in Sources */,
+				453F38CD1D095557009630FB /* CTCalendarViewController.m in Sources */,
+				453F38D31D095634009630FB /* CTCalendarTableViewCell.m in Sources */,
 				451B9A471D002E62001D07A7 /* CTVehicleSelectionView.m in Sources */,
 				451B9A4A1D002E83001D07A7 /* CTVehicleSelectionViewModel.m in Sources */,
 				451B9A981D01D912001D07A7 /* SearchDetailsViewController.m in Sources */,
@@ -519,14 +546,17 @@
 				451B9A701D01934F001D07A7 /* GLCalendarView.m in Sources */,
 				451B9A0D1D001E8E001D07A7 /* ViewController.m in Sources */,
 				451B9A831D0194FA001D07A7 /* GLCalendarDayCellBackgroundCover.m in Sources */,
+				453F38DF1D09CD15009630FB /* CTMiddleDateCell.m in Sources */,
 				451B9A6F1D01934F001D07A7 /* GLCalendarMonthCoverView.m in Sources */,
 				451B9A411D0023F1001D07A7 /* LocaleUtils.m in Sources */,
 				451B9A0A1D001E8E001D07A7 /* AppDelegate.m in Sources */,
 				451B9AB01D0859AC001D07A7 /* CalendarViewController.m in Sources */,
 				451B9AA81D081BAB001D07A7 /* LocationSearchDataSource.m in Sources */,
 				451B9A5E1D018D36001D07A7 /* JVFloatLabeledTextField.m in Sources */,
+				453F38D91D09AF1D009630FB /* CalendarLogicController.m in Sources */,
 				451B9A9D1D06D700001D07A7 /* CTCheckbox.m in Sources */,
 				451B9AA41D081621001D07A7 /* LocationSearchViewController.m in Sources */,
+				453F38D61D096BE2009630FB /* CTDateCollectionViewCell.m in Sources */,
 				451B9A071D001E8E001D07A7 /* main.m in Sources */,
 				451B9A811D0194FA001D07A7 /* GLCalendarDayCell.m in Sources */,
 			);
