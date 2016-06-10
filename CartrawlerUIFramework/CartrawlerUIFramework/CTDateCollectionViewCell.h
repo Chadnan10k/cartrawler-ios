@@ -10,7 +10,11 @@
 
 @interface CTDateCollectionViewCell : UICollectionViewCell
 
-- (void)setDateLabel:(NSString *)dateString;
+@property (nonatomic, retain) NSDate *date;
+@property (nonatomic, retain) NSIndexPath *indexPath;
+@property (nonatomic, retain) NSNumber *section;
+
+- (void)setDateLabel:(NSDate *)date indexPath:(NSIndexPath *)indexPath section:(NSNumber *)section;
 
 - (void)headSetSelected;
 - (void)midSetSelected;

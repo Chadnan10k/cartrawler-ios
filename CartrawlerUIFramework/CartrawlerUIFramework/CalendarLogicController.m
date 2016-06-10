@@ -13,10 +13,20 @@
 @property (nonatomic, strong) CTDateCollectionViewCell *headCell;
 @property (nonatomic, strong) NSMutableArray <CTMiddleDateCell *> *midCells;
 @property (nonatomic, strong) CTDateCollectionViewCell *tailCell;
-
+@property (nonatomic, strong) NSMutableArray <CTDateCollectionViewCell *> *visibleCells;
 @property (nonatomic, strong) NSIndexPath *headIndexPath;
 @property (nonatomic, strong) NSIndexPath *tailIndexPath;
 
+@property (nonatomic, strong) NSDate *headDate;
+@property (nonatomic, strong) NSDate *tailDate;
+
+@property (nonatomic, retain) NSMutableArray <NSIndexPath *> *midPaths;
+@property (nonatomic, retain) NSMutableArray <NSNumber *> *midSections;
+
+@property (nonatomic, strong) NSMutableArray <UICollectionView *> *collectionViews;
+@property (nonatomic, strong) UICollectionView *headCollectionView;
+@property (nonatomic, strong) UICollectionView *tailCollectionView;
+@property (nonatomic, strong) UICollectionView *currentCollectionView;
 @end
 
 @implementation CalendarLogicController {
@@ -28,32 +38,75 @@
 {
     self = [super init];
     _midCells = [[NSMutableArray alloc] init];
+    _midPaths = [[NSMutableArray alloc] init];
+    _midSections = [[NSMutableArray alloc] init];
+    _collectionViews = [[NSMutableArray alloc] init];
     return self;
 }
 
-- (void)pushMiddleCell:(CTMiddleDateCell *)cell
+- (void)pushCollectionView:(UICollectionView *)collectionView
 {
-    if (![self.midCells containsObject:cell]) {
-        [self.midCells addObject:cell];
-    } else {
-        NSLog(@"already exists");
+    if (![self.collectionViews containsObject:collectionView]) {
+        [self.collectionViews addObject:collectionView];
     }
-    [self validateCell:cell.cell indexPath: cell.indexPath section: cell.section.integerValue];
-
+    NSLog(@"%lu", (unsigned long)self.collectionViews.count);
+    
+    if ([self.collectionViews firstObject] != nil) {
+        _headCollectionView = [self.collectionViews firstObject];
+    }
+    if ([self.collectionViews lastObject] != nil) {
+        _headCollectionView = [self.collectionViews lastObject];
+    }
 }
 
-- (void)validateCell:(CTDateCollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath section:(NSInteger)section
+- (void)validateCell:(CTDateCollectionViewCell *)cell
+           indexPath:(NSIndexPath *)indexPath
+             section:(NSInteger)section
+      collectionView:(UICollectionView *)collectionView;
 {
+    
+    _currentCollectionView = collectionView;
+    
     if (self.headIndexPath == indexPath && headSection == section) {
+        _headCollectionView = collectionView;
         [self headSetSelected:cell indexPath:indexPath section:section];
     }
     
     if (self.tailIndexPath == indexPath && tailSection == section) {
+        _tailCollectionView = collectionView;
         [self tailSetSelected:cell indexPath:indexPath section:section];
     }
+
+    for (CTDateCollectionViewCell *c in collectionView.visibleCells) {
+
+        if (self.headIndexPath != nil & self.tailIndexPath != nil) {
+
+
+            
+            if (c.section.integerValue == tailSection && c.section.integerValue == headSection) {
+                
+                if (c.indexPath.row > self.headIndexPath.row && c.indexPath.row < self.tailIndexPath.row) {
+                    [c midSetSelected];
+                }
+                
+            } else {
+                
+                if (c.indexPath.row > self.headIndexPath.row && c.section.integerValue == headSection) {
+                    [c midSetSelected];
+                }
+                    
+                if (c.indexPath.row < self.tailIndexPath.row && c.section.integerValue == tailSection) {
+                    [c midSetSelected];
+                }
+                
+                if (c.section.integerValue < tailSection && c.section.integerValue > headSection) {
+                    [c midSetSelected];
+                }
+            }
+        }
+    }
     
-    [self setMidCells:cell indexPath:indexPath section:section];
-    
+
 }
 
 - (void)setMidCells:(CTDateCollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath section:(NSInteger)section
@@ -69,21 +122,16 @@
 
 - (void)cellSelected:(CTDateCollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath section:(NSInteger)section
 {
-    if (self.headCell == nil) {
+    if (self.headCell == nil && ![cell.date isEqual:[NSNull null]]) {
         [self headSetSelected:cell indexPath:indexPath section:section];
-    } else if (self.headCell != nil && self.tailCell == nil) {
+        self.refresh();
+    } else if (self.headCell != nil && self.tailCell == nil && ![cell.date isEqual:[NSNull null]]) {
         [self tailSetSelected:cell indexPath:indexPath section:section];
-        
-        for (CTMiddleDateCell * midCell in self.midCells) {
-            [self validateCell:midCell.cell indexPath: midCell.indexPath section: midCell.section.integerValue];
-        }
+        self.refresh();
+
         
     } else {
         [self deselect];
-        for (CTMiddleDateCell * midCell in self.midCells) {
-            [midCell.cell deselect];
-        }
-        //[self.midCells removeAllObjects];
     }
 }
 
@@ -92,7 +140,10 @@
     headSection = section;
     _headIndexPath = indexPath;
     _headCell = cell;
+    
+    _headDate = cell.date;
     [cell headSetSelected];
+    
 }
 
 - (void)midSetSelected:(CTDateCollectionViewCell *)cell
@@ -103,11 +154,12 @@
 - (void)tailSetSelected:(CTDateCollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath section:(NSInteger)section
 {
     if (self.headCell != nil) {
-        
+        //check to make sure we always select ahead of the head
         if (section > headSection) {
             tailSection = section;
             _tailIndexPath = indexPath;
             _tailCell = cell;
+            _tailDate = cell.date;
             [cell tailSetSelected];
         } else {
             if (indexPath.row > self.headIndexPath.row && section == headSection) {
@@ -122,6 +174,16 @@
 
 - (void)deselect
 {
+    
+    for (UICollectionView *cv in self.collectionViews) {
+        for (CTDateCollectionViewCell * cell in cv.visibleCells) {
+            [cell deselect];
+        }
+    }
+    
+    _midPaths = [[NSMutableArray alloc] init];
+    _midSections = [[NSMutableArray alloc] init];
+    
     [self.headCell deselect];
     [self.tailCell deselect];
     

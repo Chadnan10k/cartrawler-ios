@@ -8,7 +8,6 @@
 
 #import "CTCalendarTableViewCell.h"
 #import "CTDateCollectionViewCell.h"
-#import "CTMiddleDateCell.h"
 
 @interface CTCalendarTableViewCell() <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -16,9 +15,9 @@
 @property NSInteger startDay;
 @property NSInteger monthLength;
 
-@property NSMutableArray <NSString *> *dateStrings;
+@property NSMutableArray *dates;
 
-@property (strong, nonatomic) CalendarLogicController *logicController;
+@property (copy, nonatomic) CalendarLogicController *logicController;
 @property NSInteger section;
 @end
 
@@ -37,11 +36,21 @@
     // Configure the view for the selected state
 }
 
+- (UICollectionView *)currentCollectionView
+{
+    if (self.collectionView != nil) {
+        return self.collectionView;
+    } else {
+        return nil;
+    }
+}
+
 - (void)setData:(NSDate *)month section:(NSInteger)section logicController:(CalendarLogicController *)logicController
 {
     _section = section;
     _logicController = logicController;
-    _dateStrings = [[NSMutableArray alloc] init];
+    [logicController pushCollectionView:self.collectionView];
+    _dates = [[NSMutableArray alloc] init];
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -68,28 +77,27 @@
     NSInteger x = self.startDay-1;
     NSInteger y = labs(self.monthLength-42+x);
     
+
+    
     for (int i = 1; i < 43; i++) {
        if (i >= self.startDay) {
-            [self.dateStrings addObject:[NSString stringWithFormat:@"%ld", (i - self.startDay)+1]];
+           NSDateComponents * comps = [cal components:NSUIntegerMax
+                                             fromDate:adjustedDate];
+           [comps setDay:(i - self.startDay)+1];
+           NSDate *cellDate = [cal dateFromComponents:comps];
+           [self.dates addObject:cellDate];
         } else {
-            [self.dateStrings addObject:@""];
+            [self.dates addObject:[NSNull null]];
         }
     }
     
     for (int z = 0; z < y; z++) {
         int index = 41 - z;
-        [self.dateStrings replaceObjectAtIndex:index withObject:@""];
+        [self.dates replaceObjectAtIndex:index withObject:[NSNull null]];
     }
     
     [self.collectionView reloadData];
     
-    __weak typeof (self) weakSelf = self;
-    
-    self.logicController.refresh = ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.collectionView reloadData];
-        });
-    };
 }
 
 #pragma mark UICollectionView
@@ -107,18 +115,15 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CTDateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DateCell" forIndexPath:indexPath];
-    [cell setDateLabel:self.dateStrings[indexPath.row]];
+    [cell setDateLabel:self.dates[indexPath.row] indexPath:indexPath section:[NSNumber numberWithInteger:self.section]];
+    [self.logicController validateCell:(CTDateCollectionViewCell *)cell indexPath: indexPath section: self.section collectionView: collectionView];
+
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CTMiddleDateCell *midCell = [[CTMiddleDateCell alloc] initWithCell:(CTDateCollectionViewCell *)cell
-                                                               section:[NSNumber numberWithInteger:self.section]
-                                                             indexPath:indexPath];
-    
-    [self.logicController pushMiddleCell:midCell];
-    
+    [self.logicController validateCell:(CTDateCollectionViewCell *)cell indexPath: indexPath section: self.section collectionView: collectionView];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath

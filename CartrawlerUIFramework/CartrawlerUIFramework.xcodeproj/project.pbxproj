@@ -45,7 +45,6 @@
 		451B9AA41D081621001D07A7 /* LocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B9AA31D081621001D07A7 /* LocationSearchViewController.m */; };
 		451B9AA81D081BAB001D07A7 /* LocationSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B9AA71D081BAB001D07A7 /* LocationSearchDataSource.m */; };
 		451B9AAC1D082D63001D07A7 /* CTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B9AAB1D082D63001D07A7 /* CTLabel.m */; };
-		451B9AB01D0859AC001D07A7 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B9AAF1D0859AC001D07A7 /* CalendarViewController.m */; };
 		453F38CD1D095557009630FB /* CTCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F38CC1D095557009630FB /* CTCalendarViewController.m */; };
 		453F38D31D095634009630FB /* CTCalendarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F38D21D095634009630FB /* CTCalendarTableViewCell.m */; };
 		453F38D61D096BE2009630FB /* CTDateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F38D51D096BE2009630FB /* CTDateCollectionViewCell.m */; };
@@ -138,8 +137,6 @@
 		451B9AA71D081BAB001D07A7 /* LocationSearchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSearchDataSource.m; sourceTree = "<group>"; };
 		451B9AAA1D082D63001D07A7 /* CTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLabel.h; sourceTree = "<group>"; };
 		451B9AAB1D082D63001D07A7 /* CTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLabel.m; sourceTree = "<group>"; };
-		451B9AAE1D0859AC001D07A7 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
-		451B9AAF1D0859AC001D07A7 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		453F38CB1D095557009630FB /* CTCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCalendarViewController.h; sourceTree = "<group>"; };
 		453F38CC1D095557009630FB /* CTCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCalendarViewController.m; sourceTree = "<group>"; };
 		453F38D11D095634009630FB /* CTCalendarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCalendarTableViewCell.h; sourceTree = "<group>"; };
@@ -375,8 +372,6 @@
 		451B9AAD1D08588C001D07A7 /* Calendar VC */ = {
 			isa = PBXGroup;
 			children = (
-				451B9AAE1D0859AC001D07A7 /* CalendarViewController.h */,
-				451B9AAF1D0859AC001D07A7 /* CalendarViewController.m */,
 				453F38CB1D095557009630FB /* CTCalendarViewController.h */,
 				453F38CC1D095557009630FB /* CTCalendarViewController.m */,
 				453F38D11D095634009630FB /* CTCalendarTableViewCell.h */,
@@ -550,7 +545,6 @@
 				451B9A6F1D01934F001D07A7 /* GLCalendarMonthCoverView.m in Sources */,
 				451B9A411D0023F1001D07A7 /* LocaleUtils.m in Sources */,
 				451B9A0A1D001E8E001D07A7 /* AppDelegate.m in Sources */,
-				451B9AB01D0859AC001D07A7 /* CalendarViewController.m in Sources */,
 				451B9AA81D081BAB001D07A7 /* LocationSearchDataSource.m in Sources */,
 				451B9A5E1D018D36001D07A7 /* JVFloatLabeledTextField.m in Sources */,
 				453F38D91D09AF1D009630FB /* CalendarLogicController.m in Sources */,

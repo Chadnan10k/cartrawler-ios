@@ -17,9 +17,20 @@
 
 @implementation CTDateCollectionViewCell
 
-- (void)setDateLabel:(NSString *)dateString;
+- (void)setDateLabel:(NSDate *)date indexPath:(NSIndexPath *)indexPath section:(NSNumber *)section;
 {
-    self.label.text = dateString;
+    if (date != nil) {
+        _date = date;
+        _indexPath = indexPath;
+        _section = section;
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"d"];
+        
+        self.label.text = [df stringFromDate:self.date];
+    } else {
+        _indexPath = indexPath;
+        _section = section;
+    }
 }
 
 - (void)headSetSelected
@@ -28,7 +39,9 @@
 }
 - (void)midSetSelected
 {
-    self.backgroundColor = [UIColor yellowColor];
+    if (![self.date isEqual:[NSNull null]]) {
+        self.backgroundColor = [UIColor yellowColor];
+    }
 }
 - (void)tailSetSelected
 {

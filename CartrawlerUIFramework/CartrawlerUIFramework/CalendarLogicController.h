@@ -18,8 +18,10 @@ typedef void (^CTCalenderRefresh)(void);
 
 - (void)cellSelected:(CTDateCollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath section:(NSInteger)section;
 
-- (void)validateCell:(CTDateCollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath section:(NSInteger)section;
+- (void)validateCell:(CTDateCollectionViewCell *)cell
+           indexPath:(NSIndexPath *)indexPath
+             section:(NSInteger)section
+      collectionView:(UICollectionView *)collectionView;
 
-- (void)pushMiddleCell:(CTMiddleDateCell *)cell;
-
+- (void)pushCollectionView:(UICollectionView *)collectionView;
 @end

@@ -30,6 +30,12 @@
     
     _logicController = [[CalendarLogicController alloc] init];
     
+    __weak typeof (self) weakSelf = self;
+    
+    self.logicController.refresh = ^{
+        [weakSelf.tableView reloadData];
+    };
+    
     NSDate *date = [NSDate date];
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
 
@@ -57,6 +63,18 @@
 
     [cell setData:self.months[indexPath.section] section:indexPath.section logicController:self.logicController];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([(CTCalendarTableViewCell *)cell currentCollectionView] != nil) {
+        [self.logicController pushCollectionView:[(CTCalendarTableViewCell *)cell currentCollectionView]];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

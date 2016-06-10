@@ -13,4 +13,6 @@
 
 - (void)setData:(NSDate *)month section:(NSInteger)section logicController:(CalendarLogicController *)logicController;
 
+- (UICollectionView *)currentCollectionView;
+
 @end
