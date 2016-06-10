@@ -17,6 +17,49 @@
 
 @implementation CTDateCollectionViewCell
 
+//- (id)initWithFrame:(CGRect)frame
+//{
+//
+//    self = [super initWithFrame:frame];
+//    
+//    CGFloat radius = frame.size.height / 2;
+//    CGFloat imgSize = (radius*2)+1; // 1 pixel for stretching
+//    UIGraphicsBeginImageContext(CGSizeMake(imgSize, imgSize));
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    
+//    CGContextSetAlpha(context, 0.5f);
+//    CGContextSetLineWidth(context, 0);
+//    CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
+//    
+//    CGFloat minx = 0;
+//    CGFloat midx = imgSize/2;
+//    CGFloat maxx = imgSize;
+//    CGFloat miny = 0;
+//    CGFloat midy = imgSize/2;
+//    CGFloat maxy = imgSize;
+//    
+//    CGContextMoveToPoint(context, minx, midy);
+//    CGContextAddArcToPoint(context, minx, miny, midx, miny, radius);
+//    CGContextAddArcToPoint(context, maxx, miny, maxx, midy, radius);
+//    CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
+//    CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
+//    CGContextClosePath(context);
+//    CGContextDrawPath(context, kCGPathFillStroke);
+//    
+//    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    
+//    UIImage *stretchImage = [viewImage stretchableImageWithLeftCapWidth:radius topCapHeight:radius];
+//    
+//    UIImageView *stretch = [[UIImageView alloc] initWithImage:stretchImage];
+//    stretch.frame = self.bounds;
+//    stretch.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+//    [self addSubview:stretch];
+//    [self sendSubviewToBack:stretch];
+//    
+//    return self;
+//}
+
 - (void)setDateLabel:(NSDate *)date indexPath:(NSIndexPath *)indexPath section:(NSNumber *)section;
 {
     if (date != nil) {
@@ -31,25 +74,44 @@
         _indexPath = indexPath;
         _section = section;
     }
+    
+   // self.layer.cornerRadius = 10;
+  //  self.layer.masksToBounds = YES;
+}
+
+- (void)setLabelColor:(UIColor *)color
+{
+    self.label.textColor = color;
 }
 
 - (void)headSetSelected
 {
-    self.backgroundColor = [UIColor redColor];
+    self.backgroundColor = [UIColor colorWithRed:28.0/255 green:78.0/255 blue:149.0/255 alpha:1];
+    self.label.textColor = [UIColor whiteColor];
 }
 - (void)midSetSelected
 {
     if (![self.date isEqual:[NSNull null]]) {
-        self.backgroundColor = [UIColor yellowColor];
+        self.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:201.0/255.0 blue:51.0/255.0 alpha:1];
     }
 }
 - (void)tailSetSelected
 {
-    self.backgroundColor = [UIColor greenColor];
+    self.backgroundColor = [UIColor colorWithRed:28.0/255 green:78.0/255 blue:149.0/255 alpha:1];
+    self.label.textColor = [UIColor whiteColor];
 }
 - (void)deselect
 {
     self.backgroundColor = [UIColor clearColor];
+    
+    if (![self.date isEqual:[NSNull null]]) {
+        NSDate *now = [NSDate date];
+        NSDate *previousDay = [now dateByAddingTimeInterval:-1*24*60*60];
+        
+        if ([self.date compare:previousDay] == NSOrderedDescending) {
+            self.label.textColor = [UIColor darkGrayColor];
+        }
+    }
 }
 
 @end

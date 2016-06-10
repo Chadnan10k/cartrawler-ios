@@ -49,7 +49,6 @@
     if (![self.collectionViews containsObject:collectionView]) {
         [self.collectionViews addObject:collectionView];
     }
-    NSLog(@"%lu", (unsigned long)self.collectionViews.count);
     
     if ([self.collectionViews firstObject] != nil) {
         _headCollectionView = [self.collectionViews firstObject];
@@ -81,8 +80,6 @@
 
         if (self.headIndexPath != nil & self.tailIndexPath != nil) {
 
-
-            
             if (c.section.integerValue == tailSection && c.section.integerValue == headSection) {
                 
                 if (c.indexPath.row > self.headIndexPath.row && c.indexPath.row < self.tailIndexPath.row) {
@@ -105,8 +102,6 @@
             }
         }
     }
-    
-
 }
 
 - (void)setMidCells:(CTDateCollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath section:(NSInteger)section
@@ -123,8 +118,15 @@
 - (void)cellSelected:(CTDateCollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath section:(NSInteger)section
 {
     if (self.headCell == nil && ![cell.date isEqual:[NSNull null]]) {
-        [self headSetSelected:cell indexPath:indexPath section:section];
-        self.refresh();
+        
+        NSDate *now = [NSDate date];
+        NSDate *previousDay = [now dateByAddingTimeInterval:-1*24*60*60];
+        
+        if ([cell.date compare:previousDay] == NSOrderedDescending) {
+            [self headSetSelected:cell indexPath:indexPath section:section];
+            self.refresh();
+        }
+        
     } else if (self.headCell != nil && self.tailCell == nil && ![cell.date isEqual:[NSNull null]]) {
         [self tailSetSelected:cell indexPath:indexPath section:section];
         self.refresh();

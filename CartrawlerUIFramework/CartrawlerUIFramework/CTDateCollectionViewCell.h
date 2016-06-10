@@ -15,6 +15,7 @@
 @property (nonatomic, retain) NSNumber *section;
 
 - (void)setDateLabel:(NSDate *)date indexPath:(NSIndexPath *)indexPath section:(NSNumber *)section;
+- (void)setLabelColor:(UIColor *)color;
 
 - (void)headSetSelected;
 - (void)midSetSelected;

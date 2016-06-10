@@ -97,7 +97,6 @@
     }
     
     [self.collectionView reloadData];
-    
 }
 
 #pragma mark UICollectionView
@@ -115,6 +114,21 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CTDateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DateCell" forIndexPath:indexPath];
+    
+    if (![self.dates[indexPath.row] isEqual:[NSNull null]]) {
+        
+        NSDate *now = [NSDate date];
+        NSDate *previousDay = [now dateByAddingTimeInterval:-1*24*60*60];
+        
+        if ([((NSDate *)self.dates[indexPath.row]) compare:previousDay] == NSOrderedAscending) {
+            [cell setLabelColor:[UIColor lightGrayColor]];
+        } else {
+            [cell setLabelColor:[UIColor darkGrayColor]];
+        }
+    } else {
+        [cell setLabelColor:[UIColor darkGrayColor]];
+    }
+    
     [cell setDateLabel:self.dates[indexPath.row] indexPath:indexPath section:[NSNumber numberWithInteger:self.section]];
     [self.logicController validateCell:(CTDateCollectionViewCell *)cell indexPath: indexPath section: self.section collectionView: collectionView];
 

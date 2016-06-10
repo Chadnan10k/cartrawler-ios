@@ -18,4 +18,13 @@
 }
 */
 
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+
+    //set font from theme file here
+    
+    return self;
+}
+
 @end

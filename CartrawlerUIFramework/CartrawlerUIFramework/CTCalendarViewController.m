@@ -5,7 +5,8 @@
 //  Created by Lee Maguire on 09/06/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
-
+//  I admit I made a mistake starting with a table view instead of a pure collection view with sections 😇
+//
 #import "CTCalendarViewController.h"
 #import "CTLabel.h"
 #import "CTCalendarTableViewCell.h"
@@ -117,10 +118,11 @@
                         NSLocalizedString(@"Sat", @"")];
     
     for (int i = 0; i < 7; i++) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 20)];
+        CTLabel *label = [[CTLabel alloc] initWithFrame:CGRectMake(0, 0, width, 20)];
         label.textAlignment = NSTextAlignmentCenter;
         label.text = titles[i];
         label.center = CGPointMake(self.padding + i * width + width / 2, centerY);
+        label.textColor = [UIColor whiteColor];
         [self.weekDayTitle addSubview:label];
     }
 }
