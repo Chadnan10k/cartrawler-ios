@@ -40,13 +40,15 @@
                                                                       attribute:NSLayoutAttributeTop
                                                                      multiplier:1.0
                                                                        constant:0];
+    
     NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self
                                                                       attribute:NSLayoutAttributeBottom
                                                                       relatedBy:NSLayoutRelationEqual
                                                                          toItem:view
                                                                       attribute:NSLayoutAttributeBottom
                                                                      multiplier:1.0
-                                                                       constant:0];
+                                                                       constant:5];
+    
     NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self
                                                                         attribute:NSLayoutAttributeLeft
                                                                         relatedBy:NSLayoutRelationEqual
@@ -54,6 +56,7 @@
                                                                         attribute:NSLayoutAttributeLeft
                                                                        multiplier:1.0
                                                                          constant:0];
+    
     NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self
                                                                       attribute:NSLayoutAttributeRight
                                                                       relatedBy:NSLayoutRelationEqual
@@ -71,6 +74,7 @@
     //Add textfield
     
     self.textField = [[JVFloatLabeledTextField alloc] initWithFrame:CGRectZero];
+    self.textField.floatingLabelYPadding = -2;
     
     [self addSubview:self.textField];
     self.textField.translatesAutoresizingMaskIntoConstraints = false;
@@ -134,7 +138,9 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    self.viewTapped();
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.viewTapped();
+    });
     return NO;
 }
 

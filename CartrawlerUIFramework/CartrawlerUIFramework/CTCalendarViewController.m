@@ -1,141 +1,77 @@
 //
-//  CTCalendarViewController.m
+//  CTCalendarManagerViewController.m
 //  CartrawlerUIFramework
 //
-//  Created by Lee Maguire on 09/06/2016.
+//  Created by Lee Maguire on 13/06/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
-//  I admit I made a mistake starting with a table view instead of a pure collection view with sections 😇
-//
+
 #import "CTCalendarViewController.h"
 #import "CTLabel.h"
-#import "CTCalendarTableViewCell.h"
-#import "CalendarLogicController.h"
+#import "CTCalendarView.h"
+#import "NSDateUtils.h"
 
-@interface CTCalendarViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface CTCalendarViewController()
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIView *weekDayTitle;
-
-@property (strong, nonatomic) NSMutableArray<NSDate *> *months;
-@property (strong, nonatomic) CalendarLogicController *logicController;
+@property (weak, nonatomic) IBOutlet CTLabel *pickupDateLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *dropOffDateLabel;
+@property (weak, nonatomic) IBOutlet CTCalendarView *calendarView;
 
 @end
 
 @implementation CTCalendarViewController
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+
+}
+
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.calendarView setupWithFrame:self.view.frame];
     
-    _logicController = [[CalendarLogicController alloc] init];
-    
-    __weak typeof (self) weakSelf = self;
-    
-    self.logicController.refresh = ^{
-        [weakSelf.tableView reloadData];
+    self.calendarView.datesSelected = ^(NSDate *pickup, NSDate *dropoff){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (self.delegate != nil) {
+                [self.delegate didPickDates:pickup dropoffDate:dropoff];
+            }
+            
+            [self animateDateLabels:[NSDateUtils shortDescriptionFromDate:pickup]
+                        dropoffText:[NSDateUtils shortDescriptionFromDate:dropoff]];
+        });
     };
     
-    NSDate *date = [NSDate date];
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
-
-    NSInteger monthNumber = [components month];
-    self.months = [[NSMutableArray alloc] init];
-
-    for (NSInteger i = monthNumber; i < monthNumber + 12; i++) {
-        NSCalendar *cal = [NSCalendar currentCalendar];
-        NSDate *date = [cal dateByAddingUnit:NSCalendarUnitMonth value:i - monthNumber toDate:[NSDate date] options:0];
-        [self.months addObject:date];
-    }
-    
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    
-    [self setupWeekDayTitle];
-}
-
-#pragma mark UITableView
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  //  CTCalendarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CalendarCell"];
-    CTCalendarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CalendarCell" forIndexPath:indexPath];
-
-    [cell setData:self.months[indexPath.section] section:indexPath.section logicController:self.logicController];
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([(CTCalendarTableViewCell *)cell currentCollectionView] != nil) {
-        [self.logicController pushCollectionView:[(CTCalendarTableViewCell *)cell currentCollectionView]];
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+    self.calendarView.discard = ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self animateDateLabels:NSLocalizedString(@"Select date", @"")
+                        dropoffText:NSLocalizedString(@"Select date", @"")];
+        });
+    };
     
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (void)animateDateLabels:(NSString *)pickupText dropoffText:(NSString *)dropoffText
 {
-    return 12;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 1;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    CTLabel *customLabel = [[CTLabel alloc] initWithFrame:CGRectMake(10.0,5.0,200.0,20.0)];
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 20)];
+    self.pickupDateLabel.text = pickupText;
+    self.dropOffDateLabel.text = dropoffText;
     
-    [headerView setBackgroundColor:[UIColor lightGrayColor]];
-    [headerView addSubview:customLabel];
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"MMMM YYYY"];
-    NSString *dateStr = [df stringFromDate:self.months[section]];
-    [customLabel setText: dateStr];
-    
-    return headerView;
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:0.5 options:0 animations:^{
+        self.pickupDateLabel.transform = CGAffineTransformMakeScale(1.1, 1.1);
+        self.dropOffDateLabel.transform = CGAffineTransformMakeScale(1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.4 animations:^{
+            self.pickupDateLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
+            self.dropOffDateLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        }];
+    }];
 }
 
-- (void)setupWeekDayTitle
-{
-    [self.weekDayTitle.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    CGFloat width = (CGRectGetWidth(self.view.bounds) - self.padding * 2) / 7;
-    CGFloat centerY = self.weekDayTitle.bounds.size.height / 2;
-    
-    NSArray *titles = @[NSLocalizedString(@"Sun", @""),
-                        NSLocalizedString(@"Mon", @""),
-                        NSLocalizedString(@"Tue", @""),
-                        NSLocalizedString(@"Wed", @""),
-                        NSLocalizedString(@"Thu", @""),
-                        NSLocalizedString(@"Fri", @""),
-                        NSLocalizedString(@"Sat", @"")];
-    
-    for (int i = 0; i < 7; i++) {
-        CTLabel *label = [[CTLabel alloc] initWithFrame:CGRectMake(0, 0, width, 20)];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.text = titles[i];
-        label.center = CGPointMake(self.padding + i * width + width / 2, centerY);
-        label.textColor = [UIColor whiteColor];
-        [self.weekDayTitle addSubview:label];
-    }
+- (IBAction)closeTapped:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

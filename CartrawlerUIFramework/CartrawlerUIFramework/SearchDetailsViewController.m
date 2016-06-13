@@ -10,8 +10,11 @@
 #import "CTSelectView.h"
 #import "CTCheckbox.h"
 #import "LocationSearchViewController.h"
+#import "CTCalendarViewController.h"
+#import "NSDateUtils.h"
+#import "CTTimePickerView.h"
 
-@interface SearchDetailsViewController ()
+@interface SearchDetailsViewController () <CTCalendarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *pickupContainer;
 @property (weak, nonatomic) IBOutlet UIView *dropoffContainer;
@@ -29,7 +32,7 @@
 @property (strong, nonatomic) UIView *activeView;
 
 @property (strong, nonatomic) CTSelectView *pickupView;
-
+@property (strong, nonatomic) CTSelectView *calendarView;
 
 @end
 
@@ -69,10 +72,13 @@
         _activeView = dropoffTimeView;
     };
     
-    CTSelectView *calendarView = [[CTSelectView alloc] initWithView:self.calendarContainer placeholder:@"Drop-off time"];
-    calendarView.viewTapped = ^{
+    _calendarView = [[CTSelectView alloc] initWithView:self.calendarContainer placeholder:@"Select dates"];
+    self.calendarView.viewTapped = ^{
         NSLog(@"Tapped");
-        _activeView = calendarView;
+        _activeView = self.calendarView;
+        CTCalendarViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];
+        vc.delegate = weakSelf;
+        [weakSelf presentViewController:vc animated:YES completion:nil];
     };
     
     CTSelectView *ageView = [[CTSelectView alloc] initWithView:self.ageContainer placeholder:@"age"];
@@ -118,6 +124,17 @@
     
     [self.view layoutIfNeeded];
 
+}
+
+#pragma marl Calendar delegate
+
+- (void)didPickDates:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
+{
+    NSString *dateString = [NSString stringWithFormat:@"%@ - %@",
+                            [NSDateUtils shortDescriptionFromDate:pickupDate],
+                            [NSDateUtils shortDescriptionFromDate:dropoffDate]];
+    
+    [self.calendarView setTextFieldText:dateString];
 }
 
 //- (void)registerForKeyboardNotifications

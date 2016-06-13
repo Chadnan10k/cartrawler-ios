@@ -20,5 +20,6 @@
 - (void)headSetSelected;
 - (void)midSetSelected;
 - (void)tailSetSelected;
+- (void)sameDaySetSelected;
 - (void)deselect;
 @end

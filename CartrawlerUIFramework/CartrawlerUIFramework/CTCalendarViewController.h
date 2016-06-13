@@ -1,15 +1,22 @@
 //
-//  CTCalendarViewController.h
+//  CTCalendarManagerViewController.h
 //  CartrawlerUIFramework
 //
-//  Created by Lee Maguire on 09/06/2016.
+//  Created by Lee Maguire on 13/06/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
+@protocol CTCalendarDelegate <NSObject>
+
+@required
+- (void)didPickDates:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate;
+
+@end
+
 @interface CTCalendarViewController : UIViewController
 
-@property (nonatomic) CGFloat padding UI_APPEARANCE_SELECTOR;
+@property (nonatomic, weak) id<CTCalendarDelegate> delegate;
 
 @end

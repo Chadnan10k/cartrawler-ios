@@ -45,11 +45,15 @@
 		451B9AA41D081621001D07A7 /* LocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B9AA31D081621001D07A7 /* LocationSearchViewController.m */; };
 		451B9AA81D081BAB001D07A7 /* LocationSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B9AA71D081BAB001D07A7 /* LocationSearchDataSource.m */; };
 		451B9AAC1D082D63001D07A7 /* CTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B9AAB1D082D63001D07A7 /* CTLabel.m */; };
-		453F38CD1D095557009630FB /* CTCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F38CC1D095557009630FB /* CTCalendarViewController.m */; };
 		453F38D31D095634009630FB /* CTCalendarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F38D21D095634009630FB /* CTCalendarTableViewCell.m */; };
 		453F38D61D096BE2009630FB /* CTDateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F38D51D096BE2009630FB /* CTDateCollectionViewCell.m */; };
 		453F38D91D09AF1D009630FB /* CalendarLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F38D81D09AF1D009630FB /* CalendarLogicController.m */; };
 		453F38DF1D09CD15009630FB /* CTMiddleDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 453F38DE1D09CD15009630FB /* CTMiddleDateCell.m */; };
+		45A4BEDB1D0EC9810075A3BC /* CTCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A4BEDA1D0EC9810075A3BC /* CTCalendarViewController.m */; };
+		45A4BEDE1D0EED5F0075A3BC /* CTCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A4BEDD1D0EED5F0075A3BC /* CTCalendarView.m */; };
+		45A4BEE11D0EF5E50075A3BC /* NSDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A4BEE01D0EF5E50075A3BC /* NSDateUtils.m */; };
+		45A4BEE41D0F04A90075A3BC /* CTTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A4BEE31D0F04A90075A3BC /* CTTimePickerView.m */; };
+		45A4BEE71D0F09430075A3BC /* CartrawlerUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A4BEE61D0F09430075A3BC /* CartrawlerUI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,8 +141,6 @@
 		451B9AA71D081BAB001D07A7 /* LocationSearchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSearchDataSource.m; sourceTree = "<group>"; };
 		451B9AAA1D082D63001D07A7 /* CTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLabel.h; sourceTree = "<group>"; };
 		451B9AAB1D082D63001D07A7 /* CTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLabel.m; sourceTree = "<group>"; };
-		453F38CB1D095557009630FB /* CTCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCalendarViewController.h; sourceTree = "<group>"; };
-		453F38CC1D095557009630FB /* CTCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCalendarViewController.m; sourceTree = "<group>"; };
 		453F38D11D095634009630FB /* CTCalendarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCalendarTableViewCell.h; sourceTree = "<group>"; };
 		453F38D21D095634009630FB /* CTCalendarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCalendarTableViewCell.m; sourceTree = "<group>"; };
 		453F38D41D096BE2009630FB /* CTDateCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDateCollectionViewCell.h; sourceTree = "<group>"; };
@@ -147,6 +149,17 @@
 		453F38D81D09AF1D009630FB /* CalendarLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarLogicController.m; sourceTree = "<group>"; };
 		453F38DD1D09CD15009630FB /* CTMiddleDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMiddleDateCell.h; sourceTree = "<group>"; };
 		453F38DE1D09CD15009630FB /* CTMiddleDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMiddleDateCell.m; sourceTree = "<group>"; };
+		45A4BED91D0EC9810075A3BC /* CTCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCalendarViewController.h; sourceTree = "<group>"; };
+		45A4BEDA1D0EC9810075A3BC /* CTCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCalendarViewController.m; sourceTree = "<group>"; };
+		45A4BEDC1D0EED5F0075A3BC /* CTCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCalendarView.h; sourceTree = "<group>"; };
+		45A4BEDD1D0EED5F0075A3BC /* CTCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCalendarView.m; sourceTree = "<group>"; };
+		45A4BEDF1D0EF5E50075A3BC /* NSDateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateUtils.h; sourceTree = "<group>"; };
+		45A4BEE01D0EF5E50075A3BC /* NSDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateUtils.m; sourceTree = "<group>"; };
+		45A4BEE21D0F04A90075A3BC /* CTTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTimePickerView.h; sourceTree = "<group>"; };
+		45A4BEE31D0F04A90075A3BC /* CTTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTimePickerView.m; sourceTree = "<group>"; };
+		45A4BEE51D0F09430075A3BC /* CartrawlerUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartrawlerUI.h; sourceTree = "<group>"; };
+		45A4BEE61D0F09430075A3BC /* CartrawlerUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartrawlerUI.m; sourceTree = "<group>"; };
+		45A4BEEB1D0F0D0E0075A3BC /* StepOneProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepOneProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,9 +232,13 @@
 				451B9A431D00285F001D07A7 /* CTImageCache.m */,
 				451B9A4B1D0044E7001D07A7 /* CTPlaceholderView.h */,
 				451B9A4C1D0044E7001D07A7 /* CTPlaceholderView.m */,
+				45A4BEDF1D0EF5E50075A3BC /* NSDateUtils.h */,
+				45A4BEE01D0EF5E50075A3BC /* NSDateUtils.m */,
 				451B9A991D06D6B7001D07A7 /* UI */,
 				451B9A611D01930A001D07A7 /* Calender */,
 				451B9A601D018D3A001D07A7 /* Text Field */,
+				45A4BEE51D0F09430075A3BC /* CartrawlerUI.h */,
+				45A4BEE61D0F09430075A3BC /* CartrawlerUI.m */,
 			);
 			path = CartrawlerUIFramework;
 			sourceTree = "<group>";
@@ -297,6 +314,9 @@
 				451B9A961D01D912001D07A7 /* SearchDetailsViewController.h */,
 				451B9A971D01D912001D07A7 /* SearchDetailsViewController.m */,
 				451B9AA51D081B88001D07A7 /* Location search view */,
+				45A4BEE21D0F04A90075A3BC /* CTTimePickerView.h */,
+				45A4BEE31D0F04A90075A3BC /* CTTimePickerView.m */,
+				45A4BEEB1D0F0D0E0075A3BC /* StepOneProtocol.h */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -372,8 +392,10 @@
 		451B9AAD1D08588C001D07A7 /* Calendar VC */ = {
 			isa = PBXGroup;
 			children = (
-				453F38CB1D095557009630FB /* CTCalendarViewController.h */,
-				453F38CC1D095557009630FB /* CTCalendarViewController.m */,
+				45A4BED91D0EC9810075A3BC /* CTCalendarViewController.h */,
+				45A4BEDA1D0EC9810075A3BC /* CTCalendarViewController.m */,
+				45A4BEDC1D0EED5F0075A3BC /* CTCalendarView.h */,
+				45A4BEDD1D0EED5F0075A3BC /* CTCalendarView.m */,
 				453F38D11D095634009630FB /* CTCalendarTableViewCell.h */,
 				453F38D21D095634009630FB /* CTCalendarTableViewCell.m */,
 				453F38D41D096BE2009630FB /* CTDateCollectionViewCell.h */,
@@ -525,7 +547,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				451B9A6D1D01934F001D07A7 /* GLCalendarDateRange.m in Sources */,
-				453F38CD1D095557009630FB /* CTCalendarViewController.m in Sources */,
 				453F38D31D095634009630FB /* CTCalendarTableViewCell.m in Sources */,
 				451B9A471D002E62001D07A7 /* CTVehicleSelectionView.m in Sources */,
 				451B9A4A1D002E83001D07A7 /* CTVehicleSelectionViewModel.m in Sources */,
@@ -537,6 +558,7 @@
 				451B9A441D00285F001D07A7 /* CTImageCache.m in Sources */,
 				451B9A4D1D0044E7001D07A7 /* CTPlaceholderView.m in Sources */,
 				451B9A5F1D018D36001D07A7 /* NSString+TextDirectionality.m in Sources */,
+				45A4BEE41D0F04A90075A3BC /* CTTimePickerView.m in Sources */,
 				451B9AAC1D082D63001D07A7 /* CTLabel.m in Sources */,
 				451B9A701D01934F001D07A7 /* GLCalendarView.m in Sources */,
 				451B9A0D1D001E8E001D07A7 /* ViewController.m in Sources */,
@@ -544,8 +566,12 @@
 				453F38DF1D09CD15009630FB /* CTMiddleDateCell.m in Sources */,
 				451B9A6F1D01934F001D07A7 /* GLCalendarMonthCoverView.m in Sources */,
 				451B9A411D0023F1001D07A7 /* LocaleUtils.m in Sources */,
+				45A4BEDE1D0EED5F0075A3BC /* CTCalendarView.m in Sources */,
 				451B9A0A1D001E8E001D07A7 /* AppDelegate.m in Sources */,
+				45A4BEDB1D0EC9810075A3BC /* CTCalendarViewController.m in Sources */,
 				451B9AA81D081BAB001D07A7 /* LocationSearchDataSource.m in Sources */,
+				45A4BEE11D0EF5E50075A3BC /* NSDateUtils.m in Sources */,
+				45A4BEE71D0F09430075A3BC /* CartrawlerUI.m in Sources */,
 				451B9A5E1D018D36001D07A7 /* JVFloatLabeledTextField.m in Sources */,
 				453F38D91D09AF1D009630FB /* CalendarLogicController.m in Sources */,
 				451B9A9D1D06D700001D07A7 /* CTCheckbox.m in Sources */,

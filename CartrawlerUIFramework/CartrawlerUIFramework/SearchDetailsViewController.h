@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StepOneProtocol.h"
 
-@interface SearchDetailsViewController : UIViewController
+@interface SearchDetailsViewController : UIViewController <StepOneProtocol>//just create view controller headers we can inherit from instead
 
 @end

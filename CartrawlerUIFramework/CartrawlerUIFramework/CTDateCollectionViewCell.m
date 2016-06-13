@@ -89,17 +89,26 @@
     self.backgroundColor = [UIColor colorWithRed:28.0/255 green:78.0/255 blue:149.0/255 alpha:1];
     self.label.textColor = [UIColor whiteColor];
 }
+
 - (void)midSetSelected
 {
     if (![self.date isEqual:[NSNull null]]) {
         self.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:201.0/255.0 blue:51.0/255.0 alpha:1];
     }
 }
+
 - (void)tailSetSelected
 {
     self.backgroundColor = [UIColor colorWithRed:28.0/255 green:78.0/255 blue:149.0/255 alpha:1];
     self.label.textColor = [UIColor whiteColor];
 }
+
+- (void)sameDaySetSelected
+{
+    self.backgroundColor = [UIColor colorWithRed:28.0/255 green:78.0/255 blue:149.0/255 alpha:1];
+    self.label.textColor = [UIColor whiteColor];
+}
+
 - (void)deselect
 {
     self.backgroundColor = [UIColor clearColor];
@@ -114,4 +123,12 @@
     }
 }
 
+- (UIView *)createViewWithColor:(UIColor *)color
+{
+    CGRect frame = CGRectMake(0, 0, self.frame.size.width / 1.2, self.frame.size.height / 1.2);
+    UIView *view = [[UIView alloc] initWithFrame:frame];
+    view.backgroundColor = [UIColor redColor];
+    
+    return view;
+}
 @end

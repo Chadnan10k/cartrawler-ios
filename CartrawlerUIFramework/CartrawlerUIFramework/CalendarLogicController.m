@@ -44,12 +44,19 @@
     return self;
 }
 
+- (void)pushCellHeight:(NSNumber *)cellHeight forSection:(NSInteger)section
+{
+    if (self.cellHeights == nil) {
+        _cellHeights = [[NSMutableArray alloc] initWithCapacity:12];
+    }
+    [self.cellHeights setObject:cellHeight atIndexedSubscript:section];
+}
+
 - (void)pushCollectionView:(UICollectionView *)collectionView
 {
     if (![self.collectionViews containsObject:collectionView]) {
         [self.collectionViews addObject:collectionView];
     }
-    
     if ([self.collectionViews firstObject] != nil) {
         _headCollectionView = [self.collectionViews firstObject];
     }
@@ -130,7 +137,9 @@
     } else if (self.headCell != nil && self.tailCell == nil && ![cell.date isEqual:[NSNull null]]) {
         [self tailSetSelected:cell indexPath:indexPath section:section];
         self.refresh();
-
+        if (self.datesSelected != nil) {
+            self.datesSelected(self.headDate, self.tailDate);
+        }
         
     } else {
         [self deselect];
@@ -145,11 +154,6 @@
     
     _headDate = cell.date;
     [cell headSetSelected];
-    
-}
-
-- (void)midSetSelected:(CTDateCollectionViewCell *)cell
-{
     
 }
 
@@ -168,7 +172,14 @@
                 tailSection = section;
                 _tailIndexPath = indexPath;
                 _tailCell = cell;
+                _tailDate = cell.date;
                 [cell tailSetSelected];
+            } else if (indexPath.row >= self.headIndexPath.row && section == headSection) {//same day
+                tailSection = section;
+                _tailIndexPath = indexPath;
+                _tailCell = cell;
+                _tailDate = cell.date;
+                [cell sameDaySetSelected];
             }
         }
     }
@@ -176,7 +187,9 @@
 
 - (void)deselect
 {
-    
+    if (self.discard != nil) {
+        self.discard();
+    }
     for (UICollectionView *cv in self.collectionViews) {
         for (CTDateCollectionViewCell * cell in cv.visibleCells) {
             [cell deselect];

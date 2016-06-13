@@ -14,7 +14,13 @@
 
 typedef void (^CTCalenderRefresh)(void);
 
+typedef void (^CTDateSelectionCompletion)(NSDate *pickup, NSDate *dropoff);
+typedef void (^CTDiscardDates)(void);
+
+@property (nonatomic) CTDateSelectionCompletion datesSelected;
+@property (nonatomic) CTDiscardDates discard;
 @property (nonatomic) CTCalenderRefresh refresh;
+@property (nonatomic, strong) NSMutableArray <NSNumber *> *cellHeights;
 
 - (void)cellSelected:(CTDateCollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath section:(NSInteger)section;
 
@@ -24,4 +30,7 @@ typedef void (^CTCalenderRefresh)(void);
       collectionView:(UICollectionView *)collectionView;
 
 - (void)pushCollectionView:(UICollectionView *)collectionView;
+
+- (void)pushCellHeight:(NSNumber *)cellHeight forSection:(NSInteger)section;
+
 @end

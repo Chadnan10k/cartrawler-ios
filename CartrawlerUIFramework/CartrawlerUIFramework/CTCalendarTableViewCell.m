@@ -73,11 +73,10 @@
     
     _startDay = [comp weekday];
     _monthLength = days.length;
-    
     NSInteger x = self.startDay-1;
     NSInteger y = labs(self.monthLength-42+x);
     
-
+    int nullCount = 0;
     
     for (int i = 1; i < 43; i++) {
        if (i >= self.startDay) {
@@ -93,10 +92,18 @@
     
     for (int z = 0; z < y; z++) {
         int index = 41 - z;
+        nullCount++;
         [self.dates replaceObjectAtIndex:index withObject:[NSNull null]];
     }
     
     [self.collectionView reloadData];
+    
+    if (nullCount >= 7) {
+        [logicController pushCellHeight:@(self.frame.size.width * 0.725) forSection:section];
+    } else if (nullCount < 7) {
+        [logicController pushCellHeight:@(self.frame.size.width * 0.85) forSection:section];
+    }
+    
 }
 
 #pragma mark UICollectionView
@@ -149,6 +156,33 @@
 {
     CTDateCollectionViewCell *cell = (CTDateCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     [self.logicController cellSelected:cell indexPath:indexPath section: self.section];
+}
+
+# pragma mark - UICollectionView layout
+
+- (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(5, 5, 5, 5); // top, left, bottom, right
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 1.5;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 2;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(self.cellWidth, self.cellWidth);
+}
+
+- (CGFloat)cellWidth
+{
+    return (CGRectGetWidth(self.bounds) - 10 * 2) / 7;
 }
 
 @end
