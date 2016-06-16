@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CTVehicleSelectionView.h"
-
-@interface ViewController : UIViewController
-
-@property (weak, nonatomic) IBOutlet CTVehicleSelectionView *vehicleSelectionView;
+#import "StepTwoViewController.h"
+@interface VehicleSelectionViewController : StepTwoViewController
 
 @end
 

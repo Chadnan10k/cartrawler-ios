@@ -11,7 +11,7 @@
 #import "CTCheckbox.h"
 #import "LocationSearchViewController.h"
 #import "CTCalendarViewController.h"
-#import "NSDateUtils.h"
+#import "DateUtils.h"
 #import "CTTimePickerView.h"
 
 @interface SearchDetailsViewController () <CTCalendarDelegate>
@@ -32,7 +32,19 @@
 @property (strong, nonatomic) UIView *activeView;
 
 @property (strong, nonatomic) CTSelectView *pickupView;
+@property (strong, nonatomic) CTSelectView *dropoffView;
 @property (strong, nonatomic) CTSelectView *calendarView;
+@property (strong, nonatomic) CTSelectView *dropoffTimeView;
+@property (strong, nonatomic) CTSelectView *pickupTimeView;
+@property (strong, nonatomic) CTSelectView *ageView;
+
+@property (strong, nonatomic) CTTimePickerView *pickupTimePicker;
+@property (strong, nonatomic) CTTimePickerView *dropoffTimePicker;
+
+@property (nonatomic, strong) NSDate *pickupTime;
+@property (nonatomic, strong) NSDate *dropoffTime;
+
+@property (readwrite, nonatomic) BOOL isReturningSameLocation;
 
 @end
 
@@ -42,6 +54,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self setDriverAge:@30];
+
+    _pickupTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:[NSDate date]];
+    _dropoffTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
+
+    _isReturningSameLocation = YES;
     
     __weak typeof (self) weakSelf = self;
     
@@ -55,21 +74,49 @@
         locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
             NSLog(@"%@", location.name);
             [weakSelf.pickupView setTextFieldText:location.name];
+            [weakSelf setPickupLocation:location];
+            
+            if (weakSelf.isReturningSameLocation) {
+                [weakSelf setDropoffLocation:location];
+            }
         };
     };
     
+    self.dropoffView = [[CTSelectView alloc] initWithView:self.dropoffContainer placeholder:@"Drop-off location"];
+    self.dropoffView.viewTapped = ^{
+        _activeView = self.pickupView;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
+        [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
+        
+        locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
+            [weakSelf.dropoffView setTextFieldText:location.name];
+            [weakSelf setDropoffLocation:location];
+        };
+    };
+
     _activeView = self.pickupView;
     
-    CTSelectView *pickupTimeView = [[CTSelectView alloc] initWithView:self.pickupTimeContainer placeholder:@"Pick-up time"];
-    pickupTimeView.viewTapped = ^{
-        NSLog(@"Tapped");
-        _activeView = pickupTimeView;
+    _pickupTimeView = [[CTSelectView alloc] initWithView:self.pickupTimeContainer placeholder:@"Pick-up time"];
+    self.pickupTimeView.viewTapped = ^{
+        _activeView = self.pickupTimeView;
+        [weakSelf.pickupTimePicker present];
+        [weakSelf.dropoffTimePicker hide];
+        weakSelf.pickupTimePicker.timeSelection = ^(NSDate *date){
+            _pickupTime = date;
+            [weakSelf.pickupTimeView setTextFieldText:[DateUtils stringFromDate:date withFormat:@"hh:mm a"]];
+        };
     };
     
-    CTSelectView *dropoffTimeView = [[CTSelectView alloc] initWithView:self.dropoffTimeContainer placeholder:@"Drop-off time"];
-    dropoffTimeView.viewTapped = ^{
-        NSLog(@"Tapped");
-        _activeView = dropoffTimeView;
+    _dropoffTimeView = [[CTSelectView alloc] initWithView:self.dropoffTimeContainer placeholder:@"Drop-off time"];
+    self.dropoffTimeView.viewTapped = ^{
+        _activeView = weakSelf.dropoffTimeView;
+        [weakSelf.dropoffTimePicker present];
+        [weakSelf.pickupTimePicker hide];
+        weakSelf.dropoffTimePicker.timeSelection = ^(NSDate *date){
+            _dropoffTime = date;
+            [weakSelf.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:date withFormat:@"hh:mm a"]];
+        };
     };
     
     _calendarView = [[CTSelectView alloc] initWithView:self.calendarContainer placeholder:@"Select dates"];
@@ -81,15 +128,28 @@
         [weakSelf presentViewController:vc animated:YES completion:nil];
     };
     
-    CTSelectView *ageView = [[CTSelectView alloc] initWithView:self.ageContainer placeholder:@"age"];
-    ageView.viewTapped = ^{
-        NSLog(@"Tapped");
-        _activeView = ageView;
+    _ageView = [[CTSelectView alloc] initWithView:self.ageContainer placeholder:@"age"];
+    self.ageView.viewTapped = ^{
+        _activeView = self.ageView;
     };
     
     CTCheckbox *sameLoc = [[CTCheckbox alloc] initEnabled:YES containerView:self.sameLocationCheckBox ];
     sameLoc.viewTapped = ^(BOOL selection) {
-        NSLog(@"selection %d", selection);
+        if (selection) {
+            _isReturningSameLocation = NO;
+            self.dropoffLocTopConstraint.constant = 25;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.dropoffContainer.alpha = 0;
+                [self.view layoutIfNeeded];
+            }];
+        } else {
+            _isReturningSameLocation = YES;
+            self.dropoffLocTopConstraint.constant = 80;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.dropoffContainer.alpha = 1;
+                [self.view layoutIfNeeded];
+            }];
+        }
         _activeView = sameLoc;
     };
     
@@ -98,21 +158,17 @@
     ageCheckbox.viewTapped = ^(BOOL selection) {
         NSLog(@"selection %d", selection);
         if (selection) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.ageTopConstraint.constant = 0;
-                [UIView animateWithDuration:0.3 animations:^{
-                    self.ageContainer.alpha = 0;
-                    [self.view layoutIfNeeded];
-                }];
-            });
+            self.ageTopConstraint.constant = 0;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.ageContainer.alpha = 0;
+                [self.view layoutIfNeeded];
+            }];
         } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.ageTopConstraint.constant = 50;
-               [UIView animateWithDuration:0.3 animations:^{
-                   self.ageContainer.alpha = 1;
-                   [self.view layoutIfNeeded];
-               }];
-            });
+            self.ageTopConstraint.constant = 50;
+           [UIView animateWithDuration:0.3 animations:^{
+               self.ageContainer.alpha = 1;
+               [self.view layoutIfNeeded];
+           }];
         }
     };
     
@@ -126,75 +182,57 @@
 
 }
 
-#pragma marl Calendar delegate
+#pragma mark Calendar delegate
 
 - (void)didPickDates:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
 {
     NSString *dateString = [NSString stringWithFormat:@"%@ - %@",
-                            [NSDateUtils shortDescriptionFromDate:pickupDate],
-                            [NSDateUtils shortDescriptionFromDate:dropoffDate]];
+                            [DateUtils shortDescriptionFromDate:pickupDate],
+                            [DateUtils shortDescriptionFromDate:dropoffDate]];
     
     [self.calendarView setTextFieldText:dateString];
+    
+    [self setPickupDate:pickupDate];
+    [self setDropoffDate:dropoffDate];
 }
 
-//- (void)registerForKeyboardNotifications
-//{
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-//}
-//
-//- (void)deregisterForKeyboardNotifications
-//{
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-//}
-//
-//
-//- (void)keyboardWillHide:(NSNotification *)n
-//{
-//    NSDictionary* userInfo = [n userInfo];
-//    
-//    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-//    
-//    CGRect viewFrame = self.scrollView.frame;
-//    viewFrame.size.height += (keyboardSize.height + 45);
-//    
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationBeginsFromCurrentState:YES];
-//    [self.scrollView setFrame:viewFrame];
-//    [UIView commitAnimations];
-//}
-//
-//- (void)keyboardWillShow:(NSNotification *)n
-//{
-//
-//    NSDictionary* userInfo = [n userInfo];
-//    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-//    CGRect viewFrame = self.scrollView.frame;
-//
-//    viewFrame.size.height -= (keyboardSize.height + 45);
-//    
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationBeginsFromCurrentState:YES];
-//    [self.scrollView setFrame:viewFrame];
-//    [UIView commitAnimations];
-//}
+- (void)combineDates
+{
+    [self setPickupTime:[DateUtils mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.pickupDate]];
+    [self setDropoffTime:[DateUtils mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.dropoffDate]];
+}
 
 - (IBAction)searchTapped:(id)sender
 {
+    [self combineDates];
+    UIButton *button = (UIButton *)sender;
+    button.enabled = NO;
+    button.alpha = 0.8;
     
+    [self.cartrawlerAPI requestVehicleAvailabilityForLocation:self.pickupLocation.code
+                                           returnLocationCode:self.dropoffLocation.code
+                                          customerCountryCode:@"IE"
+                                                 passengerQty:@3
+                                                    driverAge:self.driverAge
+                                               pickUpDateTime:self.pickupDate
+                                               returnDateTime:self.dropoffDate
+                                                 currencyCode:@"EUR"
+                                                   completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
+                                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                                           button.enabled = YES;
+                                                           button.alpha = 1.0;
+                                                       });
+                                                       if (response) {
+                                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                                               [self setVehicleAvailability: response];
+                                                               [self pushToStepTwo];
+                                                           });
+                                                       } else {
+                                                           NSLog(@"%@", error.errorMessage);
+                                                       }
+                                                   }];
     
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

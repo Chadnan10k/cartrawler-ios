@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CTTimePickerView : UIView
+@interface CTTimePickerView : NSObject
 
-typedef void (__weak ^CTTimePickerCallback)(NSDate *time);
+typedef void (^CTTimePickerCallback)(NSDate *time);
 
-@property (nonatomic, weak) CTTimePickerCallback timeSelection;
+@property (nonatomic) CTTimePickerCallback timeSelection;
+
+- (id)initInView:(UIView *)superview mininumDate:(NSDate *)mininumDate;
+- (void)present;
+- (void)hide;
 
 @end

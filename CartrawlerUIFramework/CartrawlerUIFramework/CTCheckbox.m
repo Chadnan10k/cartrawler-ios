@@ -32,14 +32,17 @@
         [UIView animateWithDuration:0.2 animations:^{
             self.imageView.alpha = 0;
         }];
-        self.viewTapped(NO);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.viewTapped(NO);
+        });
     } else {
         self.checkEnabled = YES;
         [UIView animateWithDuration:0.2 animations:^{
             self.imageView.alpha = 1;
         }];
-        self.viewTapped(YES);
-
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.viewTapped(YES);
+        });
     }
 }
 

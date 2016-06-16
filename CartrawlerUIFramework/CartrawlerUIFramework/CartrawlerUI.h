@@ -9,17 +9,26 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "StepOneViewController.h"
+#import "StepTwoViewController.h"
+
 @interface CartrawlerUI : NSObject
 
 - (id)initWithRequestorID:(NSString *)requestorID
              languageCode:(NSString *)languageCode
                   isDebug:(BOOL)isDebug;
 
-- (void)presentCartrawlerView;
+//you can present any step at any time once you pass the data
+
+- (void)presentSearchViewInViewController:(UIViewController *)viewController;
+- (void)presentSearchResultsView;
 
 //experimental
-- (void)overrideStepOne:(UIViewController *)viewController;
+//This should all be done before presenting any views
+- (void)setCustomSearchView:(StepOneViewController *)viewController;
+- (void)setStepTwoViewController:(StepTwoViewController *)viewController;
 
+- (StepTwoViewController *)searchResultsController;
 
 
 @end

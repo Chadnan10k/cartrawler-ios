@@ -9,7 +9,7 @@
 #import "CTCalendarViewController.h"
 #import "CTLabel.h"
 #import "CTCalendarView.h"
-#import "NSDateUtils.h"
+#import "DateUtils.h"
 
 @interface CTCalendarViewController()
 
@@ -39,8 +39,8 @@
                 [self.delegate didPickDates:pickup dropoffDate:dropoff];
             }
             
-            [self animateDateLabels:[NSDateUtils shortDescriptionFromDate:pickup]
-                        dropoffText:[NSDateUtils shortDescriptionFromDate:dropoff]];
+            [self animateDateLabels:[DateUtils shortDescriptionFromDate:pickup]
+                        dropoffText:[DateUtils shortDescriptionFromDate:dropoff]];
         });
     };
     

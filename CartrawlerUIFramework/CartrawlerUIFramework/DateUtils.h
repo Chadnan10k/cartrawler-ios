@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDateUtils : NSObject
+@interface DateUtils : NSObject
 
 + (NSString *)stringFromDate:(NSDate *)date withFormat:(NSString *)format;
 + (NSString *)shortDescriptionFromDate:(NSDate *)date;
++ (NSDate *)mergeTimeWithDateWithTime:(NSDate *)dateWithTime dateWithDay:(NSDate *)dateWithDay;
 
 @end
