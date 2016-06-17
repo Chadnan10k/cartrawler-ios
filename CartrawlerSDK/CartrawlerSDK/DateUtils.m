@@ -50,7 +50,7 @@
     [components3 setMonth:components1.month];
     [components3 setDay:components1.day];
     
-    [components3 setHour:components2.hour+1];
+    [components3 setHour:components2.hour];
     [components3 setMinute:components2.minute];
     [components3 setSecond:components2.second];
     

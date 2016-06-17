@@ -23,6 +23,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4511E51D1D1450CE000ED6B0 /* CTSDKSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E51B1D1450CE000ED6B0 /* CTSDKSettings.h */; };
+		4511E51E1D1450CE000ED6B0 /* CTSDKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E51C1D1450CE000ED6B0 /* CTSDKSettings.m */; };
+		4511E5201D145779000ED6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4511E51F1D145779000ED6B0 /* Assets.xcassets */; };
 		4538D2551D14436600C723E5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4538D2541D14436600C723E5 /* Info.plist */; };
 		45AC545D1D1309F300805268 /* JVFloatLabeledTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E51D1302FF00ACF604 /* JVFloatLabeledTextField.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC545E1D1309FB00805268 /* NSStringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E71D1302FF00ACF604 /* NSStringUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -57,7 +60,6 @@
 		45D866D81D141BB100D19B74 /* LinkerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D866D61D141BB100D19B74 /* LinkerUtils.m */; };
 		45D866D91D142CAC00D19B74 /* VehicleTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E942C81D13028600ACF604 /* VehicleTableViewCell_iPhone.xib */; };
 		45D866DA1D142D6400D19B74 /* VehicleTableViewCell.h in Resources */ = {isa = PBXBuildFile; fileRef = 45E942C61D13028600ACF604 /* VehicleTableViewCell.h */; };
-		45D866DC1D1430EB00D19B74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45D866DB1D1430EB00D19B74 /* Assets.xcassets */; };
 		45D866E21D14395900D19B74 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 45D866E11D14395900D19B74 /* checkmark.png */; };
 		45E942491D12FF0F00ACF604 /* CartrawlerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */; };
 		45E9428E1D13004F00ACF604 /* StepOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E9428B1D13004F00ACF604 /* StepOneViewController.m */; };
@@ -130,12 +132,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4511E51B1D1450CE000ED6B0 /* CTSDKSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSDKSettings.h; sourceTree = "<group>"; };
+		4511E51C1D1450CE000ED6B0 /* CTSDKSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSDKSettings.m; sourceTree = "<group>"; };
+		4511E51F1D145779000ED6B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4538D2541D14436600C723E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CartrawlerResources/Info.plist; sourceTree = SOURCE_ROOT; };
 		45AC547B1D13E47F00805268 /* StepOne.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepOne.storyboard; sourceTree = "<group>"; };
 		45D866571D13F0CA00D19B74 /* CartrawlerResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D866D51D141BB100D19B74 /* LinkerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkerUtils.h; sourceTree = "<group>"; };
 		45D866D61D141BB100D19B74 /* LinkerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkerUtils.m; sourceTree = "<group>"; };
-		45D866DB1D1430EB00D19B74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45D866E11D14395900D19B74 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
 		45E942431D12FF0F00ACF604 /* libCartrawlerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCartrawlerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartrawlerSDK.h; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 		45D866DD1D14340900D19B74 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4511E51F1D145779000ED6B0 /* Assets.xcassets */,
 				45D866DE1D14341200D19B74 /* Images */,
 			);
 			name = Resources;
@@ -277,7 +282,6 @@
 			isa = PBXGroup;
 			children = (
 				45D866DD1D14340900D19B74 /* Resources */,
-				45D866DB1D1430EB00D19B74 /* Assets.xcassets */,
 				45AC547A1D13E47200805268 /* Storyboards */,
 				45E942D71D1302B800ACF604 /* UI Elements */,
 				45E942CA1D13029600ACF604 /* Utilities */,
@@ -415,6 +419,8 @@
 				45E942D21D1302A200ACF604 /* DateUtils.m */,
 				45D866D51D141BB100D19B74 /* LinkerUtils.h */,
 				45D866D61D141BB100D19B74 /* LinkerUtils.m */,
+				4511E51B1D1450CE000ED6B0 /* CTSDKSettings.h */,
+				4511E51C1D1450CE000ED6B0 /* CTSDKSettings.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -479,6 +485,7 @@
 				45AC54661D130A1600805268 /* StepOneViewController.h in Headers */,
 				45AC54671D130A1600805268 /* StepTwoViewController.h in Headers */,
 				45AC54681D130A1600805268 /* CTTimePickerView.h in Headers */,
+				4511E51D1D1450CE000ED6B0 /* CTSDKSettings.h in Headers */,
 				45AC546A1D130A1600805268 /* LocationSearchDataSource.h in Headers */,
 				45AC54641D130A1600805268 /* CTPlaceholderView.h in Headers */,
 				45AC54711D130A1600805268 /* CTSelectView.h in Headers */,
@@ -595,8 +602,8 @@
 				45D866D91D142CAC00D19B74 /* VehicleTableViewCell_iPhone.xib in Resources */,
 				45D866D41D140FCC00D19B74 /* SearchDetailsViewController.h in Resources */,
 				45D866D31D140F8500D19B74 /* StepOneViewController.h in Resources */,
-				45D866DC1D1430EB00D19B74 /* Assets.xcassets in Resources */,
 				45D866E21D14395900D19B74 /* checkmark.png in Resources */,
+				4511E5201D145779000ED6B0 /* Assets.xcassets in Resources */,
 				45D8665D1D13F0E900D19B74 /* StepOne.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,6 +679,7 @@
 				45E942A11D13014400ACF604 /* CTSelectView.m in Sources */,
 				45E942B21D1301C600ACF604 /* CTDateCollectionViewCell.m in Sources */,
 				45E942BF1D13020300ACF604 /* LocationSearchDataSource.m in Sources */,
+				4511E51E1D1450CE000ED6B0 /* CTSDKSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "LocationSearchDataSource.h"
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "CTLabel.h"
+#import "CTSDKSettings.h"
 
 @interface LocationSearchDataSource()
 @property (nonatomic, strong) NSMutableArray <CTMatchedLocation *> *airportLocations;
@@ -31,10 +32,9 @@
     self.airportLocations = [[NSMutableArray alloc] init];
     self.otherLocations = [[NSMutableArray alloc] init];
     
-    _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:@"621369"
-                                                     language:@"EN"
-                                                        debug:YES];
-    [self.cartrawlerAPI enableLogging:YES];
+    _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
+                                                     language:[CTSDKSettings instance].languageCode
+                                                        debug:[CTSDKSettings instance].isDebug];
     return self;
 }
 

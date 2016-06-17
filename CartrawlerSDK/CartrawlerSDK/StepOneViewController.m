@@ -8,22 +8,13 @@
 
 #import "StepOneViewController.h"
 #import "StepTwoViewController.h"
+#import "CTSDKSettings.h"
 
 @interface StepOneViewController ()
 
 @end
 
 @implementation StepOneViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)pushToStepTwo
 {
@@ -52,7 +43,6 @@
         return;
     }
     
-    self.stepTwoViewController.cartrawlerAPI = self.cartrawlerAPI;
     self.stepTwoViewController.pickupLocation = self.pickupLocation;
     self.stepTwoViewController.dropoffLocation = self.dropoffLocation;
     self.stepTwoViewController.pickupDate = self.pickupDate;
@@ -60,7 +50,38 @@
     self.stepTwoViewController.driverAge = self.driverAge;
     self.stepTwoViewController.vehicleAvailability = self.vehicleAvailability;
     
-    [self.navigationController pushViewController:self.stepTwoViewController animated:YES];
+    
+    CartrawlerAPI *cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
+                                                                   language:[CTSDKSettings instance].languageCode
+                                                                      debug:[CTSDKSettings instance].isDebug];
+    [cartrawlerAPI enableLogging:YES];
+    [cartrawlerAPI requestVehicleAvailabilityForLocation:self.pickupLocation.code
+                                           returnLocationCode:self.dropoffLocation.code
+                                          customerCountryCode:@"IE"
+                                                 passengerQty:@3
+                                                    driverAge:self.driverAge
+                                               pickUpDateTime:self.pickupDate
+                                               returnDateTime:self.dropoffDate
+                                                 currencyCode:@"EUR"
+                                                   completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
+                                                       if (response) {
+                                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                                               if (self.stepOneCompletion) {
+                                                                   self.stepOneCompletion(YES, nil);
+                                                               }
+                                                               [self setVehicleAvailability: response];
+                                                               self.stepTwoViewController.vehicleAvailability = self.vehicleAvailability;
+                                                               [self.navigationController pushViewController:self.stepTwoViewController animated:YES];
+                                                           });
+                                                       } else {
+                                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                                               if (self.stepOneCompletion) {
+                                                                   self.stepOneCompletion(YES, error.errorMessage);
+                                                               }
+                                                           });
+                                                           NSLog(@"CANNOT PUSH TO STEP TWO: %@", error.errorMessage);
+                                                       }
+                                                   }];
 }
 
 + (void)forceLinkerLoad_

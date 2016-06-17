@@ -63,6 +63,7 @@
     // Do any additional setup after loading the view.
     
     [self setDriverAge:@30];
+    [self setPassengerQty:@3];
 
     _pickupTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:[NSDate date]];
     _dropoffTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
@@ -147,6 +148,7 @@
     _ageView = [[CTSelectView alloc] initWithView:self.ageContainer placeholder:@"age"];
     self.ageView.viewTapped = ^{
         _activeView = self.ageView;
+        NSLog(@"ss");
     };
     
     CTCheckbox *sameLoc = [[CTCheckbox alloc] initEnabled:YES containerView:self.sameLocationCheckBox ];
@@ -214,8 +216,12 @@
 
 - (void)combineDates
 {
-    [self setPickupTime:[DateUtils mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.pickupDate]];
-    [self setDropoffTime:[DateUtils mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.dropoffDate]];
+    NSDate *puDate = [DateUtils mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.pickupDate];
+    NSDate *doDate = [DateUtils mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.dropoffDate];
+
+    [self setPickupDate:puDate];
+    [self setDropoffDate:doDate];
+
 }
 
 - (IBAction)searchTapped:(id)sender
@@ -225,28 +231,19 @@
     button.enabled = NO;
     button.alpha = 0.8;
     
-    [self.cartrawlerAPI requestVehicleAvailabilityForLocation:self.pickupLocation.code
-                                           returnLocationCode:self.dropoffLocation.code
-                                          customerCountryCode:@"IE"
-                                                 passengerQty:@3
-                                                    driverAge:self.driverAge
-                                               pickUpDateTime:self.pickupDate
-                                               returnDateTime:self.dropoffDate
-                                                 currencyCode:@"EUR"
-                                                   completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
-                                                       dispatch_async(dispatch_get_main_queue(), ^{
-                                                           button.enabled = YES;
-                                                           button.alpha = 1.0;
-                                                       });
-                                                       if (response) {
-                                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                                               [self setVehicleAvailability: response];
-                                                               [self pushToStepTwo];
-                                                           });
-                                                       } else {
-                                                           NSLog(@"%@", error.errorMessage);
-                                                       }
-                                                   }];
+    [self pushToStepTwo];
+
+    [self setStepOneCompletion:^(BOOL success, NSString *errorMessage){
+        if (success) {
+            button.enabled = YES;
+            button.alpha = 1.0;
+        } else {
+            button.enabled = YES;
+            button.alpha = 1.0;
+            if (errorMessage) { }
+        }
+    }];
+    
 }
 
 

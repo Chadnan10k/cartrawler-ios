@@ -13,7 +13,9 @@ class CustomStepOneViewController: StepOneViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view
+        
+        pushToStepTwo()
     }
 
     override func didReceiveMemoryWarning() {

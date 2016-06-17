@@ -19,16 +19,38 @@
              languageCode:(NSString *)languageCode
                   isDebug:(BOOL)isDebug;
 
-//you can present any step at any time once you pass the data
+- (void)presentStepOneInViewController:(UIViewController *)viewController;
 
-- (void)presentSearchViewInViewController:(UIViewController *)viewController;
-- (void)presentSearchResultsView;
+/*
+ *
+ *  You can present any step at any time once you pass the data and your currently presented view controller.
+ *
+ */
 
-//experimental
-//This should all be done before presenting any views
-- (void)setCustomSearchView:(StepOneViewController *)viewController;
-- (void)setStepTwoViewController:(StepTwoViewController *)viewController;
 
-- (StepTwoViewController *)searchResultsController;
+- (void)presentStepTwoWithData:(NSString *)pickupLocationCode
+            returnLocationCode:(NSString *)returnLocationCode
+           customerCountryCode:(NSString *)customerCountryCode
+                  passengerQty:(NSNumber *)passengerQty
+                     driverAge:(NSNumber *)driverAge
+                pickUpDateTime:(NSDate *)pickupDateTime
+                returnDateTime:(NSDate *)returnDateTime
+                  currencyCode:(NSString *)currencyCode
+              inViewController:(UIViewController *)viewController;
+
+
+
+/*
+ *  View Controller Overriding:
+ *  You can set a custom view for any step of the user journey by subclassing
+ *  the designated step view controller.
+ *
+ *  You must set all of the properties of the step view controller in order to
+ *  push to the next view.
+ */
+
+- (void)overrideStepOneViewController:(StepOneViewController *)viewController;
+- (void)overrideStepTwoViewController:(StepTwoViewController *)viewController;
+
 
 @end

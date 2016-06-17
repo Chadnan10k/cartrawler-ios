@@ -18,7 +18,7 @@ class ViewController: UIViewController {
 //        
 //        api.setCustomSearchView(customStepOne)
         
-        api.presentSearchViewInViewController(self)
+        api.presentStepOneInViewController(self)
     }
 
     override func didReceiveMemoryWarning() {

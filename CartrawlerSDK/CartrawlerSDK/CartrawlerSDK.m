@@ -9,15 +9,13 @@
 
 #import "CartrawlerSDK.h"
 #import "LinkerUtils.h"
+#import "CTSDKSettings.h"
 
 #define kSearchViewStoryboard @"StepOne"
 
 @interface CartrawlerSDK()
 
-@property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 @property (nonatomic, strong) StepOneViewController *stepOneViewController;
-//@property (nonatomic, strong) TestViewController *stepOneViewController;
-
 @property (nonatomic, strong) StepTwoViewController *stepTwoViewController;
 
 @end
@@ -31,16 +29,17 @@
     self = [super self];
     
     [LinkerUtils loadFiles];
-    
-    _cartrawlerAPI = [[CartrawlerAPI alloc]
-                      initWithClientKey:requestorID
-                      language:languageCode
-                      debug:isDebug];
+    [[CTSDKSettings instance] setClientId:requestorID languageCode:languageCode isDebug:isDebug];
     
     return self;
 }
 
-- (void)presentSearchViewInViewController:(UIViewController *)viewController;
+- (void)changeLanguageCode:(NSString *)languageCode
+{
+    [[CTSDKSettings instance] setLanguageCode:languageCode];
+}
+
+- (void)presentStepOneInViewController:(UIViewController *)viewController;
 {
     if (self.stepOneViewController == nil) {
         
@@ -52,29 +51,36 @@
         self.stepOneViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     }
     
-    [self.stepOneViewController setStepTwoViewController:[self searchResultsController]];
-    [self.stepOneViewController setCartrawlerAPI:self.cartrawlerAPI];
+    [self.stepOneViewController setStepTwoViewController:[self stepTwoViewController_]];
     UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:self.stepOneViewController];
     
     [viewController presentViewController:navController animated:YES completion:nil];
 }
 
-- (void)presentSearchResultsView
+- (void)presentStepTwoWithData:(NSString *)pickupLocationCode
+            returnLocationCode:(NSString *)returnLocationCode
+           customerCountryCode:(NSString *)customerCountryCode
+                  passengerQty:(NSNumber *)passengerQty
+                     driverAge:(NSNumber *)driverAge
+                pickUpDateTime:(NSDate *)pickupDateTime
+                returnDateTime:(NSDate *)returnDateTime
+                  currencyCode:(NSString *)currencyCode
+              inViewController:(UIViewController *)viewController
 {
     
 }
 
-- (void)setCustomSearchView:(StepOneViewController *)viewController;
+- (void)overrideStepOneViewController:(StepOneViewController *)viewController;
 {
     _stepOneViewController = viewController;
 }
 
-- (void)setSearchResultsViewController:(StepTwoViewController *)viewController
+- (void)overrideStepTwoViewController:(StepTwoViewController *)viewController;
 {
     _stepTwoViewController = viewController;
 }
 
-- (StepTwoViewController *)searchResultsController
+- (StepTwoViewController *)stepTwoViewController_
 {
     if (self.stepTwoViewController == nil) {
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
@@ -85,7 +91,5 @@
         return self.stepTwoViewController;
     }
 }
-
-
 
 @end
