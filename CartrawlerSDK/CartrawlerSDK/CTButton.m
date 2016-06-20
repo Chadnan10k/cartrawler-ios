@@ -7,16 +7,9 @@
 //
 
 #import "CTButton.h"
+#import "CTAppearance.h"
 
 @implementation CTButton
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 + (void)forceLinkerLoad_
 {
@@ -27,7 +20,12 @@
 {
     self = [super initWithCoder:aDecoder];
     
-    self.layer.cornerRadius = 5;
+    self.backgroundColor = [CTAppearance instance].buttonColor;
+    [self setTitleColor:[CTAppearance instance].buttonTextColor forState:UIControlStateNormal];
+    
+    self.titleLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:self.titleLabel.font.pointSize];
+    
+    self.layer.cornerRadius = [CTAppearance instance].buttonCornerRadius;
     self.layer.masksToBounds = YES;
     
     return self;

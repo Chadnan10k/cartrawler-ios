@@ -10,6 +10,7 @@
 #import "CartrawlerSDK.h"
 #import "LinkerUtils.h"
 #import "CTSDKSettings.h"
+#import "CTNavigationController.h"
 
 #define kSearchViewStoryboard @"StepOne"
 
@@ -34,9 +35,14 @@
     return self;
 }
 
-- (void)changeLanguageCode:(NSString *)languageCode
+- (void)changeLanguage:(NSString *)languageCode
 {
     [[CTSDKSettings instance] setLanguageCode:languageCode];
+}
+
+- (void)changeCurrency:(NSString *)currencyCode
+{
+    [[CTSDKSettings instance] setCurrencyCode:currencyCode];
 }
 
 - (void)presentStepOneInViewController:(UIViewController *)viewController;
@@ -52,8 +58,9 @@
     }
     
     [self.stepOneViewController setStepTwoViewController:[self stepTwoViewController_]];
-    UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:self.stepOneViewController];
-    
+    CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
+    navController.navigationBar.hidden = YES;
+
     [viewController presentViewController:navController animated:YES completion:nil];
 }
 

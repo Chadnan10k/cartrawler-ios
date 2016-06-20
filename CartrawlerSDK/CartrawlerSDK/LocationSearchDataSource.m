@@ -10,6 +10,7 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "CTLabel.h"
 #import "CTSDKSettings.h"
+#import "LocationSearchTableViewCell.h"
 
 @interface LocationSearchDataSource()
 @property (nonatomic, strong) NSMutableArray <CTMatchedLocation *> *airportLocations;
@@ -85,14 +86,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    LocationSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     if (indexPath.section == 0) {
         //cell.imageView.image = [UIImage imageNamed:@""];
-        cell.textLabel.text = self.airportLocations[indexPath.row].name;
+        [cell setLabelText:self.airportLocations[indexPath.row].name];
     } else {
         //cell.imageView.image = [UIImage imageNamed:@""];
-        cell.textLabel.text = self.otherLocations[indexPath.row].name;
+        [cell setLabelText:self.otherLocations[indexPath.row].name];
     }
     
     return cell;
@@ -110,9 +111,10 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     CTLabel *customLabel = [[CTLabel alloc] initWithFrame:CGRectMake(10.0,5.0,200.0,20.0)];
+    customLabel.textColor = [UIColor darkGrayColor];
+
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 20)];
-    
-    [headerView setBackgroundColor:[UIColor lightGrayColor]];
+    [headerView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     [headerView addSubview:customLabel];
     
     if (section == 0) {
@@ -131,15 +133,6 @@
         }
     }
 }
-
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//    if (section == 0) {
-//        return NSLocalizedString(@"Airport", @"");
-//    } else {
-//        return NSLocalizedString(@"All other locations", @"");
-//    }
-//}
 
 @end
 

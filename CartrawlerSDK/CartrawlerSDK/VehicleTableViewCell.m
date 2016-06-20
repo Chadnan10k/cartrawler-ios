@@ -9,6 +9,8 @@
 #import "VehicleTableViewCell.h"
 #import "LocaleUtils.h"
 #import "CTImageCache.h"
+#import "CartrawlerAPI/CTVendor.h"
+#import "CartrawlerAPI/CTVendorRating.h"
 
 @interface VehicleTableViewCell ()
 
@@ -21,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *fuelPolicyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *vendorImageView;
 
 @end
 
@@ -33,16 +36,22 @@
 
 - (void)initWithVehicle:(CTVehicle *)vehicle
 {
-    self.vehicleNameLabel.text = vehicle.vehicleMakeModelName;
-    self.vehicleTypeLabel.text = vehicle.vehicleCategory;
-    self.totalPriceLabel.text = [LocaleUtils priceForDeviceLocale: vehicle.totalPriceForThisVehicle];
-    self.passengerQtyLabel.text = [NSString stringWithFormat:@"x%@", vehicle.passengerQty.stringValue];
-    self.baggageQtyLabel.text = [NSString stringWithFormat:@"x%@", vehicle.baggageQty.stringValue];
-    self.doorCountLabel.text = [NSString stringWithFormat:@"x%@", vehicle.doorCount.stringValue];
-    self.fuelPolicyLabel.text = vehicle.fuelPolicy;
-    
+//    self.vehicleNameLabel.text = vehicle.vehicleMakeModelName;
+//    self.vehicleTypeLabel.text = vehicle.vehicleCategory;
+//    self.totalPriceLabel.text = [LocaleUtils priceForDeviceLocale: vehicle.totalPriceForThisVehicle];
+//    self.passengerQtyLabel.text = [NSString stringWithFormat:@"x%@", vehicle.passengerQty.stringValue];
+//    self.baggageQtyLabel.text = [NSString stringWithFormat:@"x%@", vehicle.baggageQty.stringValue];
+//    self.doorCountLabel.text = [NSString stringWithFormat:@"x%@", vehicle.doorCount.stringValue];
+//    self.fuelPolicyLabel.text = vehicle.fuelPolicy;
+    NSLog(@"%@", vehicle.vendor.venLogo);
+    NSLog(@"%@", vehicle.vendor.rating.overallScore);
+
     [[CTImageCache sharedInstance] cachedImage: vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;
+    }];
+    
+    [[CTImageCache sharedInstance] cachedImage: vehicle.vendor.venLogo completion:^(UIImage *image) {
+        self.vendorImageView.image = image;
     }];
 }
 

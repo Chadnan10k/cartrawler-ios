@@ -53,4 +53,9 @@
 - (void)overrideStepTwoViewController:(StepTwoViewController *)viewController;
 
 
+
+//Settings
+- (void)changeLanguage:(NSString *)langaugeCode;
+- (void)changeCurrency:(NSString *)currencyCode;
+
 @end

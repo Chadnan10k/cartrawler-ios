@@ -9,7 +9,7 @@
 #import "LocationSearchViewController.h"
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "LocationSearchDataSource.h"
-
+#import "CTAppearance.h"
 @interface LocationSearchViewController () <UISearchBarDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSArray <CTMatchedLocation *> *otherLocations;
 @property (nonatomic, strong) LocationSearchDataSource *dataSource;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 
 
 
@@ -37,6 +38,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.headerView.backgroundColor = [CTAppearance instance].locationSelectionBarColor;
     
     _dataSource = [[LocationSearchDataSource alloc] init];
     

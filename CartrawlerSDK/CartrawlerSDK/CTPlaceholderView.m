@@ -7,12 +7,35 @@
 //
 
 #import "CTPlaceholderView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation CTPlaceholderView
 
 + (void)forceLinkerLoad_
 {
     
+}
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    self.layer.borderWidth = 2.0;
+    self.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor darkGrayColor]);
+    self.layer.masksToBounds = NO;
+    
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    self.layer.cornerRadius = 4.0;
+    
+    self.layer.borderWidth = 2.0;
+    self.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor darkGrayColor]);
+
+    return self;
 }
 
 /*

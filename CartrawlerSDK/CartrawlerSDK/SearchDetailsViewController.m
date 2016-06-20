@@ -13,6 +13,7 @@
 #import "CTCalendarViewController.h"
 #import "DateUtils.h"
 #import "CTTimePickerView.h"
+#import "CTTextField.h"
 
 #define kSearchViewStoryboard @"StepOne"
 
@@ -23,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIView *pickupTimeContainer;
 @property (weak, nonatomic) IBOutlet UIView *dropoffTimeContainer;
 @property (weak, nonatomic) IBOutlet UIView *calendarContainer;
-@property (weak, nonatomic) IBOutlet UIView *ageContainer;
+@property (weak, nonatomic) IBOutlet CTTextField *ageContainer;
 @property (weak, nonatomic) IBOutlet UIView *sameLocationCheckBox;
 @property (weak, nonatomic) IBOutlet UIView *ageCheckBoxContainer;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -38,7 +39,6 @@
 @property (strong, nonatomic) CTSelectView *calendarView;
 @property (strong, nonatomic) CTSelectView *dropoffTimeView;
 @property (strong, nonatomic) CTSelectView *pickupTimeView;
-@property (strong, nonatomic) CTSelectView *ageView;
 
 @property (strong, nonatomic) CTTimePickerView *pickupTimePicker;
 @property (strong, nonatomic) CTTimePickerView *dropoffTimePicker;
@@ -60,7 +60,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self registerForKeyboardNotifications];
+    
+    [self setTitle:NSLocalizedString(@"Debug: Step One", @"")];
     
     [self setDriverAge:@30];
     [self setPassengerQty:@3];
@@ -74,6 +77,9 @@
     
     self.pickupView = [[CTSelectView alloc] initWithView:self.pickupContainer placeholder:@"Pick-up location"];
     self.pickupView.viewTapped = ^{
+        
+        [weakSelf.view endEditing:YES];
+        
         _activeView = self.pickupView;
 
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
@@ -95,6 +101,9 @@
     
     self.dropoffView = [[CTSelectView alloc] initWithView:self.dropoffContainer placeholder:@"Drop-off location"];
     self.dropoffView.viewTapped = ^{
+        
+        [weakSelf.view endEditing:YES];
+        
         _activeView = self.pickupView;
 
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
@@ -112,6 +121,9 @@
     
     _pickupTimeView = [[CTSelectView alloc] initWithView:self.pickupTimeContainer placeholder:@"Pick-up time"];
     self.pickupTimeView.viewTapped = ^{
+        
+        [weakSelf.view endEditing:YES];
+        
         _activeView = self.pickupTimeView;
         [weakSelf.pickupTimePicker present];
         [weakSelf.dropoffTimePicker hide];
@@ -123,6 +135,9 @@
     
     _dropoffTimeView = [[CTSelectView alloc] initWithView:self.dropoffTimeContainer placeholder:@"Drop-off time"];
     self.dropoffTimeView.viewTapped = ^{
+        
+        [weakSelf.view endEditing:YES];
+        
         _activeView = weakSelf.dropoffTimeView;
         [weakSelf.dropoffTimePicker present];
         [weakSelf.pickupTimePicker hide];
@@ -134,7 +149,6 @@
     
     _calendarView = [[CTSelectView alloc] initWithView:self.calendarContainer placeholder:@"Select dates"];
     self.calendarView.viewTapped = ^{
-        NSLog(@"Tapped");
         _activeView = self.calendarView;
 
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
@@ -145,17 +159,11 @@
         [weakSelf presentViewController:vc animated:YES completion:nil];
     };
     
-    _ageView = [[CTSelectView alloc] initWithView:self.ageContainer placeholder:@"age"];
-    self.ageView.viewTapped = ^{
-        _activeView = self.ageView;
-        NSLog(@"ss");
-    };
-    
     CTCheckbox *sameLoc = [[CTCheckbox alloc] initEnabled:YES containerView:self.sameLocationCheckBox ];
     sameLoc.viewTapped = ^(BOOL selection) {
         if (selection) {
             _isReturningSameLocation = NO;
-            self.dropoffLocTopConstraint.constant = 25;
+            self.dropoffLocTopConstraint.constant = 15;
             [UIView animateWithDuration:0.3 animations:^{
                 self.dropoffContainer.alpha = 0;
                 [self.view layoutIfNeeded];
@@ -174,8 +182,10 @@
     
     CTCheckbox *ageCheckbox = [[CTCheckbox alloc] initEnabled:YES containerView:self.ageCheckBoxContainer];
     ageCheckbox.viewTapped = ^(BOOL selection) {
-        NSLog(@"selection %d", selection);
         if (selection) {
+            
+            [weakSelf.view endEditing:YES];
+            
             self.ageTopConstraint.constant = 0;
             [UIView animateWithDuration:0.3 animations:^{
                 self.ageContainer.alpha = 0;
@@ -190,7 +200,7 @@
         }
     };
     
-    self.dropoffLocTopConstraint.constant = 30;
+    self.dropoffLocTopConstraint.constant = 15;
     self.dropoffContainer.alpha = 0;
     
     self.ageTopConstraint.constant = 0;
@@ -246,5 +256,47 @@
     
 }
 
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)deregisterForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+
+- (void)keyboardWillHide:(NSNotification *)n
+{
+    NSDictionary* userInfo = [n userInfo];
+
+    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+
+    CGRect viewFrame = self.scrollView.frame;
+    viewFrame.size.height += (keyboardSize.height + 45);
+
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [self.scrollView setFrame:viewFrame];
+    [UIView commitAnimations];
+}
+
+- (void)keyboardWillShow:(NSNotification *)n
+{
+
+    NSDictionary* userInfo = [n userInfo];
+    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGRect viewFrame = self.scrollView.frame;
+
+    viewFrame.size.height -= (keyboardSize.height + 45);
+
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [self.scrollView setFrame:viewFrame];
+    [UIView commitAnimations];
+}
 
 @end

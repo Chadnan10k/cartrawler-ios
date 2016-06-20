@@ -8,6 +8,7 @@
 
 #import "CTSelectView.h"
 #import "JVFloatLabeledTextField.h"
+#import "CTAppearance.h"
 
 @interface CTSelectView() <UITextFieldDelegate>
 
@@ -74,6 +75,7 @@
     //Add textfield
     
     self.textField = [[JVFloatLabeledTextField alloc] initWithFrame:CGRectZero];
+    self.textField.font = [UIFont fontWithName:[CTAppearance instance].fontName size:20];
     self.textField.floatingLabelYPadding = -2;
     
     [self addSubview:self.textField];
@@ -99,7 +101,7 @@
                                                                          toItem:self
                                                                       attribute:NSLayoutAttributeLeft
                                                                      multiplier:1.0
-                                                                       constant:5];
+                                                                       constant:10];
     NSLayoutConstraint *textFieldRightConstraint = [NSLayoutConstraint constraintWithItem:self.textField
                                                                        attribute:NSLayoutAttributeRight
                                                                        relatedBy:NSLayoutRelationEqual
@@ -149,5 +151,6 @@
 //    [textField endEditing:YES];
 //    return true;
 //}
+
 
 @end

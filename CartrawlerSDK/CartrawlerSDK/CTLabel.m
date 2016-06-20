@@ -7,6 +7,7 @@
 //
 
 #import "CTLabel.h"
+#import "CTAppearance.h"
 
 @implementation CTLabel
 
@@ -29,6 +30,15 @@
 
     //set font from theme file here
     
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    [self setFont:[UIFont fontWithName:[CTAppearance instance].fontName size:self.font.pointSize]];
+
     return self;
 }
 

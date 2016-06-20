@@ -10,12 +10,15 @@
 #import "CTLabel.h"
 #import "CTCalendarView.h"
 #import "DateUtils.h"
+#import "CTAppearance.h"
 
 @interface CTCalendarViewController()
 
 @property (weak, nonatomic) IBOutlet CTLabel *pickupDateLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *dropOffDateLabel;
 @property (weak, nonatomic) IBOutlet CTCalendarView *calendarView;
+@property (weak, nonatomic) IBOutlet UIView *headerBottomSection;
+@property (weak, nonatomic) IBOutlet UIView *headerTopSection;
 
 @end
 
@@ -35,6 +38,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.headerTopSection.backgroundColor = [CTAppearance instance].calendarHeaderTopSectionColor;
+    
+    self.headerBottomSection.backgroundColor = [CTAppearance instance].calendarHeaderBottomSectionColor;
+    
+    
     [self.calendarView setupWithFrame:self.view.frame];
     
     self.calendarView.datesSelected = ^(NSDate *pickup, NSDate *dropoff){

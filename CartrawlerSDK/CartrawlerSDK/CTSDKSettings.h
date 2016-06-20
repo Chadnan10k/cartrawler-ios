@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSString *clientId;
 @property (nonatomic, strong) NSString *languageCode;
+@property (nonatomic, strong) NSString *currencyCode;
 @property (nonatomic) BOOL isDebug;
 
 + (instancetype)instance;
@@ -21,5 +22,6 @@
             isDebug:(BOOL)isDebug;
 
 - (void)setLanguageCode:(NSString *)languageCode;
+- (void)setCurrencyCode:(NSString *)currencyCode;
 
 @end

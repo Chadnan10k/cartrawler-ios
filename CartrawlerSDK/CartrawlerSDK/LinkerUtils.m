@@ -31,6 +31,12 @@
 #import "CTMiddleDateCell.h"
 #import "CTVehicleSelectionView.h"
 #import "VehicleTableViewCell.h"
+#import "CTNavigationBar.h"
+#import "CTNavigationItem.h"
+#import "CTNavigationController.h"
+#import "CTView.h"
+#import "CTTextField.h"
+#import "LocationSearchTableViewCell.h"
 
 @implementation LinkerUtils
 
@@ -59,7 +65,12 @@
     [CTMiddleDateCell forceLinkerLoad_];
     [CTVehicleSelectionView forceLinkerLoad_];
     [VehicleTableViewCell forceLinkerLoad_];
-    
+    [CTNavigationBar forceLinkerLoad_];
+    [CTNavigationItem forceLinkerLoad_];
+    [CTNavigationController forceLinkerLoad_];
+    [CTView forceLinkerLoad_];
+    [CTTextField forceLinkerLoad_];
+    [LocationSearchTableViewCell forceLinkerLoad_];
 }
 
 @end

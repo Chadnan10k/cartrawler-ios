@@ -35,4 +35,9 @@
     _languageCode = languageCode;
 }
 
+- (void)setCurrencyCode:(NSString *)currencyCode
+{
+    _currencyCode = currencyCode;
+}
+
 @end

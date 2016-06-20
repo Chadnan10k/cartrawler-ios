@@ -17,7 +17,7 @@ class ViewController: UIViewController {
 //        let customStepOne = storyboard?.instantiateViewControllerWithIdentifier("CustomStepOneViewController") as! CustomStepOneViewController
 //        
 //        api.setCustomSearchView(customStepOne)
-        
+        UINavigationBar.appearance()
         api.presentStepOneInViewController(self)
     }
 

@@ -8,6 +8,7 @@
 
 #import "CTDateCollectionViewCell.h"
 #import "CTLabel.h"
+#import "CTAppearance.h"
 
 @interface CTDateCollectionViewCell()
 
@@ -91,20 +92,21 @@
 
 - (void)headSetSelected
 {
-    self.backgroundColor = [UIColor colorWithRed:28.0/255 green:78.0/255 blue:149.0/255 alpha:1];
+    self.backgroundColor = [CTAppearance instance].calendarStartCellColor;
     self.label.textColor = [UIColor whiteColor];
 }
 
 - (void)midSetSelected
 {
     if (![self.date isEqual:[NSNull null]]) {
-        self.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:201.0/255.0 blue:51.0/255.0 alpha:1];
+        self.backgroundColor = [CTAppearance instance].calendarMidCellColor;
+        self.label.textColor = [UIColor whiteColor];
     }
 }
 
 - (void)tailSetSelected
 {
-    self.backgroundColor = [UIColor colorWithRed:28.0/255 green:78.0/255 blue:149.0/255 alpha:1];
+    self.backgroundColor = [CTAppearance instance].calendarEndCellColor;
     self.label.textColor = [UIColor whiteColor];
 }
 

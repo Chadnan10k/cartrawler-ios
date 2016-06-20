@@ -98,7 +98,7 @@
     [superview addConstraint:yCenterConstraint];
     
     UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectZero];
-    toolBar.barStyle = UIBarStyleBlackOpaque;
+    toolBar.barStyle = UIBarStyleDefault;
     
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(hide)];
     
@@ -137,7 +137,7 @@
                                                                            toItem:nil
                                                                         attribute:NSLayoutAttributeHeight
                                                                        multiplier:1.0
-                                                                         constant:30];
+                                                                         constant:35];
     [self.superview addConstraints:@[toolbarBottomConstraint,
                                      toolbarLeftConstraint,
                                      toolbarRightConstraint,
@@ -154,13 +154,17 @@
 
 - (void)present
 {
-    self.view.alpha = 1;
-
+    [UIView animateWithDuration:0.1 animations:^{
+        self.view.alpha = 1;
+    }];
 }
 
 - (void)hide
 {
-    self.view.alpha = 0;
+    [UIView animateWithDuration:0.1 animations:^{
+        self.view.alpha = 0;
+    }];
+    
     if (self.timeSelection) {
         self.timeSelection(self.pickerView.date);
     }
