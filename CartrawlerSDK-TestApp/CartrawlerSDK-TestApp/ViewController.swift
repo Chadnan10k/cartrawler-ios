@@ -12,12 +12,11 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let api = CartrawlerSDK(requestorID: "68622", languageCode: "EN", isDebug: true)
+        let api = CartrawlerSDK(requestorID: "463558", languageCode: "EN", isDebug: true)
         
 //        let customStepOne = storyboard?.instantiateViewControllerWithIdentifier("CustomStepOneViewController") as! CustomStepOneViewController
 //        
 //        api.setCustomSearchView(customStepOne)
-        UINavigationBar.appearance()
         api.presentStepOneInViewController(self)
     }
 

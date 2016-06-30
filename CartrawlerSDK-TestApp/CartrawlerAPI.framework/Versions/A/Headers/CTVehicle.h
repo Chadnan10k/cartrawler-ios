@@ -26,6 +26,60 @@
 @class CTVendor;
 
 /**
+ *  Fuel Policy
+ */
+typedef NS_ENUM(NSUInteger, FuelPolicy) {
+    /**
+     *  Electric Vehicle
+     */
+    FuelPolicyElectricVehicle = 0,
+    /**
+     *  Full To Full
+     */
+    FuelPolicyFullToFull      = 1,
+    /**
+     *  Empty to Empty
+     */
+    FuelPolicyEmptyToEmpty    = 2,
+    /**
+     *  Full to Empty
+     */
+    FuelPolicyFullToEmpty     = 3,
+    /**
+     *  Half to Empty
+     */
+    FuelPolicyHalfToEmpty     = 4,
+    /**
+     *  Quarter to Empty
+     */
+    FuelPolicyQuarterToEmpty  = 5,
+    /**
+     *  Half to half
+     */
+    FuelPolicyHalfToHalf      = 6,
+    /**
+     *  Quarter to quarter
+     */
+    FuelPolicyQuarterToQuarter = 7,
+    /**
+     *  Unknown fuel policy
+     */
+    FuelPolicyUnknown         = 8,
+    /**
+     *  Full to empty refund
+     */
+    FuelPolicyFullEmptyRefund = 9,
+    /**
+     *  Full to full hybrid
+     */
+    FuelPolicyFullToFullHybrid = 10,
+    
+    FuelPolicyChaufFulFul     = 11,
+    
+    FuelPolicyChaufFuelInc    = 12
+};
+
+/**
  *  CTVehicle
  */
 @interface CTVehicle : NSObject
@@ -67,9 +121,13 @@
  */
 @property (nonatomic, strong, readonly) NSString *fuelType;
 /**
- *  The vehicles fuel policy
+ *  The vehicles fuel policy description
  */
-@property (nonatomic, strong, readonly) NSString *fuelPolicy;
+@property (nonatomic, strong, readonly) NSString *fuelPolicyDescription;
+/**
+ *  Fuel policy enum
+ */
+@property (nonatomic) FuelPolicy fuelPolicy;
 /**
  *  The vehicles drive type
  */
@@ -121,7 +179,7 @@
 /**
  *  Estimated total amount for vehicle
  */
-@property (nonatomic, strong, readonly) NSString *estimatedTotalAmount;
+@property (nonatomic, strong, readonly) NSNumber *estimatedTotalAmount;
 /**
  *  Currency code for vehicle cost
  */

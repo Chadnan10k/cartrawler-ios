@@ -32,7 +32,7 @@
 /**
  *  Use the Cartrawler iOS Framework to:
  *
- *  Book & search for rental vehicles
+ *  Book & search for rental vehicles/Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/ImageResizeURL.m
  *
  *  Book & search for ground transportation
  */

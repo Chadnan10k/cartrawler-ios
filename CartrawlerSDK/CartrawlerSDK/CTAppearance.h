@@ -19,6 +19,7 @@
 @property (nonatomic, readonly)         CGFloat  buttonCornerRadius;
 @property (nonatomic, readonly)         BOOL     buttonShadowEnabled;
 @property (nonatomic, strong, readonly) NSString *fontName;
+@property (nonatomic, strong, readonly) NSString *boldFontName;
 @property (nonatomic, strong, readonly) UIColor  *viewBackgroundColor;
 @property (nonatomic, readonly)         CGFloat  textFieldCornerRadius;
 @property (nonatomic, strong, readonly) UIColor  *textFieldTint;
@@ -55,6 +56,7 @@
  */
 
 - (void)setFontName:(NSString *)fontName;
+- (void)setBoldFontName:(NSString *)boldFontName;
 
 /**
  *  Background view

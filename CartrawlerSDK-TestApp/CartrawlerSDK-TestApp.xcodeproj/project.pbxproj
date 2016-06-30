@@ -148,6 +148,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 45E942801D12FFEB00ACF604 /* Build configuration list for PBXNativeTarget "CartrawlerSDK-TestApp" */;
 			buildPhases = (
+				457FF47C1D250454002B66E5 /* ShellScript */,
 				45E942541D12FFEB00ACF604 /* Sources */,
 				45E942551D12FFEB00ACF604 /* Frameworks */,
 				45E942561D12FFEB00ACF604 /* Resources */,
@@ -267,6 +268,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		457FF47C1D250454002B66E5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd ../\nxcodebuild -scheme Framework";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		45E942541D12FFEB00ACF604 /* Sources */ = {

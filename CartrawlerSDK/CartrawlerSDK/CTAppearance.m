@@ -28,6 +28,7 @@
         sharedInstance.buttonShadowEnabled = YES;
         
         sharedInstance.fontName = @"Avenir";
+        sharedInstance.boldFontName = @"Avenir-Medium";
         sharedInstance.viewBackgroundColor = [UIColor colorWithRed:1.0/255.0 green:177.0/255.0 blue:201.0/255.0 alpha:1.0];
         sharedInstance.textFieldCornerRadius = 5.0;
         sharedInstance.textFieldTint = [UIColor colorWithRed:1.0/255.0 green:177.0/255.0 blue:201.0/255.0 alpha:1.0];
@@ -84,6 +85,11 @@
 }
 
 //Font
+
+- (void)setBoldFontName:(NSString *)boldFontName;
+{
+    _boldFontName = boldFontName;
+}
 
 - (void)setFontName:(NSString *)fontName;
 {

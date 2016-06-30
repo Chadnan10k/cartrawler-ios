@@ -41,6 +41,12 @@
 		4511E5471D1837D4000ED6B0 /* LocationSearchTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5451D1837D4000ED6B0 /* LocationSearchTableViewCell.h */; };
 		4511E5481D1837D4000ED6B0 /* LocationSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5461D1837D4000ED6B0 /* LocationSearchTableViewCell.m */; };
 		4538D2551D14436600C723E5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4538D2541D14436600C723E5 /* Info.plist */; };
+		454AD77B1D2551F5005C6CFF /* CTFilterViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7791D2551F5005C6CFF /* CTFilterViewController.h */; };
+		454AD77C1D2551F5005C6CFF /* CTFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD77A1D2551F5005C6CFF /* CTFilterViewController.m */; };
+		454AD77F1D25587D005C6CFF /* CTFilterDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD77D1D25587D005C6CFF /* CTFilterDataSource.h */; };
+		454AD7801D25587D005C6CFF /* CTFilterDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD77E1D25587D005C6CFF /* CTFilterDataSource.m */; };
+		454AD78B1D255E1F005C6CFF /* CTFilterTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7891D255E1F005C6CFF /* CTFilterTableViewCell.h */; };
+		454AD78C1D255E1F005C6CFF /* CTFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD78A1D255E1F005C6CFF /* CTFilterTableViewCell.m */; };
 		45AC545D1D1309F300805268 /* JVFloatLabeledTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E51D1302FF00ACF604 /* JVFloatLabeledTextField.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC545E1D1309FB00805268 /* NSStringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E71D1302FF00ACF604 /* NSStringUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC545F1D130A0000805268 /* CTCheckbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E11D1302EF00ACF604 /* CTCheckbox.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -165,6 +171,12 @@
 		4511E5461D1837D4000ED6B0 /* LocationSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSearchTableViewCell.m; sourceTree = "<group>"; };
 		4511E5491D183C36000ED6B0 /* StepTwo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepTwo.storyboard; sourceTree = "<group>"; };
 		4538D2541D14436600C723E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CartrawlerResources/Info.plist; sourceTree = SOURCE_ROOT; };
+		454AD7791D2551F5005C6CFF /* CTFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterViewController.h; sourceTree = "<group>"; };
+		454AD77A1D2551F5005C6CFF /* CTFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterViewController.m; sourceTree = "<group>"; };
+		454AD77D1D25587D005C6CFF /* CTFilterDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterDataSource.h; sourceTree = "<group>"; };
+		454AD77E1D25587D005C6CFF /* CTFilterDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterDataSource.m; sourceTree = "<group>"; };
+		454AD7891D255E1F005C6CFF /* CTFilterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterTableViewCell.h; sourceTree = "<group>"; };
+		454AD78A1D255E1F005C6CFF /* CTFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterTableViewCell.m; sourceTree = "<group>"; };
 		45AC547B1D13E47F00805268 /* StepOne.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepOne.storyboard; sourceTree = "<group>"; };
 		45D866571D13F0CA00D19B74 /* CartrawlerResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D866D51D141BB100D19B74 /* LinkerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkerUtils.h; sourceTree = "<group>"; };
@@ -290,6 +302,19 @@
 				4511E53E1D17F999000ED6B0 /* CTNavigationController.m */,
 			);
 			name = UINavigationBar;
+			sourceTree = "<group>";
+		};
+		454AD7781D2551DB005C6CFF /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				454AD7791D2551F5005C6CFF /* CTFilterViewController.h */,
+				454AD77A1D2551F5005C6CFF /* CTFilterViewController.m */,
+				454AD77D1D25587D005C6CFF /* CTFilterDataSource.h */,
+				454AD77E1D25587D005C6CFF /* CTFilterDataSource.m */,
+				454AD7891D255E1F005C6CFF /* CTFilterTableViewCell.h */,
+				454AD78A1D255E1F005C6CFF /* CTFilterTableViewCell.m */,
+			);
+			name = Filter;
 			sourceTree = "<group>";
 		};
 		45AC547A1D13E47200805268 /* Storyboards */ = {
@@ -439,6 +464,7 @@
 		45E942B51D1301D000ACF604 /* Vehicle Selection (Step Two) */ = {
 			isa = PBXGroup;
 			children = (
+				454AD7781D2551DB005C6CFF /* Filter */,
 				45E942921D1300E200ACF604 /* Search Results */,
 				45E942C51D13023000ACF604 /* Table View */,
 				45E942B61D1301EE00ACF604 /* VehicleSelectionViewController.h */,
@@ -565,14 +591,17 @@
 				45AC54681D130A1600805268 /* CTTimePickerView.h in Headers */,
 				4511E51D1D1450CE000ED6B0 /* CTSDKSettings.h in Headers */,
 				4511E5241D17DFA4000ED6B0 /* CTAppearance.h in Headers */,
+				454AD77F1D25587D005C6CFF /* CTFilterDataSource.h in Headers */,
 				45AC546A1D130A1600805268 /* LocationSearchDataSource.h in Headers */,
 				45AC54641D130A1600805268 /* CTPlaceholderView.h in Headers */,
 				45AC54711D130A1600805268 /* CTSelectView.h in Headers */,
 				45AC54741D130A1600805268 /* VehicleSelectionViewController.h in Headers */,
 				45AC54731D130A1600805268 /* VehicleTableViewCell.h in Headers */,
+				454AD77B1D2551F5005C6CFF /* CTFilterViewController.h in Headers */,
 				45AC54721D130A1600805268 /* SearchDetailsViewController.h in Headers */,
 				45AC54601D130A0300805268 /* CTButton.h in Headers */,
 				4511E52E1D17F4B0000ED6B0 /* CTView.h in Headers */,
+				454AD78B1D255E1F005C6CFF /* CTFilterTableViewCell.h in Headers */,
 				45AC54751D130A1600805268 /* CTVehicleSelectionView.h in Headers */,
 				45AC546B1D130A1600805268 /* CTCalendarViewController.h in Headers */,
 				45AC545F1D130A0000805268 /* CTCheckbox.h in Headers */,
@@ -740,6 +769,7 @@
 				45E9429D1D13012400ACF604 /* SearchDetailsViewController.m in Sources */,
 				45D866D81D141BB100D19B74 /* LinkerUtils.m in Sources */,
 				45E942D41D1302A200ACF604 /* CTImageCache.m in Sources */,
+				454AD78C1D255E1F005C6CFF /* CTFilterTableViewCell.m in Sources */,
 				4511E5481D1837D4000ED6B0 /* LocationSearchTableViewCell.m in Sources */,
 				4511E5441D181B36000ED6B0 /* CTTextField.m in Sources */,
 				45E942BE1D13020300ACF604 /* LocationSearchViewController.m in Sources */,
@@ -761,10 +791,12 @@
 				4511E5401D17F999000ED6B0 /* CTNavigationController.m in Sources */,
 				45E942D31D1302A200ACF604 /* LocaleUtils.m in Sources */,
 				45E942EA1D1302FF00ACF604 /* NSStringUtils.m in Sources */,
+				454AD7801D25587D005C6CFF /* CTFilterDataSource.m in Sources */,
 				45E942B31D1301C600ACF604 /* CalendarLogicController.m in Sources */,
 				45E942971D1300ED00ACF604 /* CTVehicleSelectionView.m in Sources */,
 				45E942C91D13028600ACF604 /* VehicleTableViewCell.m in Sources */,
 				45E942A11D13014400ACF604 /* CTSelectView.m in Sources */,
+				454AD77C1D2551F5005C6CFF /* CTFilterViewController.m in Sources */,
 				4511E52F1D17F4B0000ED6B0 /* CTView.m in Sources */,
 				45E942B21D1301C600ACF604 /* CTDateCollectionViewCell.m in Sources */,
 				45E942BF1D13020300ACF604 /* LocationSearchDataSource.m in Sources */,
@@ -797,6 +829,7 @@
 		45AC54581D1307A000805268 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: lmaguire@cartrawler.com (C93JSRWYU5)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -808,6 +841,7 @@
 		45AC54591D1307A000805268 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: lmaguire@cartrawler.com (C93JSRWYU5)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -819,7 +853,7 @@
 		45D8665B1D13F0CA00D19B74 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "iPhone Developer: lmaguire@cartrawler.com (C93JSRWYU5)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CartrawlerResources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -839,7 +873,7 @@
 		45D8665C1D13F0CA00D19B74 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "iPhone Developer: lmaguire@cartrawler.com (C93JSRWYU5)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CartrawlerResources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -941,6 +975,7 @@
 		45E9424D1D12FF0F00ACF604 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: lmaguire@cartrawler.com (C93JSRWYU5)";
 				DEAD_CODE_STRIPPING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -961,6 +996,7 @@
 		45E9424E1D12FF0F00ACF604 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: lmaguire@cartrawler.com (C93JSRWYU5)";
 				DEAD_CODE_STRIPPING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

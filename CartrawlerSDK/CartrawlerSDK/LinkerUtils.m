@@ -37,6 +37,8 @@
 #import "CTView.h"
 #import "CTTextField.h"
 #import "LocationSearchTableViewCell.h"
+#import "CTFilterViewController.h"
+#import "CTFilterTableViewCell.h"
 
 @implementation LinkerUtils
 
@@ -71,6 +73,8 @@
     [CTView forceLinkerLoad_];
     [CTTextField forceLinkerLoad_];
     [LocationSearchTableViewCell forceLinkerLoad_];
+    [CTFilterViewController forceLinkerLoad_];
+    [CTFilterTableViewCell forceLinkerLoad_];
 }
 
 @end
