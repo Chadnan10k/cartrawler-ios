@@ -13,6 +13,7 @@
 #import "CTNavigationController.h"
 
 #define kSearchViewStoryboard @"StepOne"
+#define kSearchResultsViewStoryboard @"StepTwo"
 
 @interface CartrawlerSDK()
 
@@ -47,29 +48,21 @@
 
 - (void)presentStepOneInViewController:(UIViewController *)viewController;
 {
-//    if (self.stepOneViewController == nil) {
-//        
-//        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-//        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
-//        
-//        _stepOneViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
-//        self.stepOneViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-//    }
-//    
-//    [self.stepOneViewController setStepTwoViewController:[self stepTwoViewController_]];
-//    CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
-//    navController.navigationBar.hidden = YES;
-//
-//    [viewController presentViewController:navController animated:YES completion:nil];
+    if (self.stepOneViewController == nil) {
+        
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
+        
+        _stepOneViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
+        self.stepOneViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    }
     
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
-    
-    _stepOneViewController = [storyboard instantiateInitialViewController];
-    self.stepOneViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [viewController presentViewController:self.stepOneViewController animated:YES completion:nil];
+    [self.stepOneViewController setStepTwoViewController:[self stepTwoViewController_]];
+    CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
+    navController.navigationBar.hidden = YES;
+
+    [viewController presentViewController:navController animated:YES completion:nil];
     
 }
 
@@ -101,7 +94,7 @@
     if (self.stepTwoViewController == nil) {
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
         NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:b];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchResultsViewStoryboard bundle:b];
         return [storyboard instantiateViewControllerWithIdentifier:@"SearchResultsViewController"];
     } else {
         return self.stepTwoViewController;

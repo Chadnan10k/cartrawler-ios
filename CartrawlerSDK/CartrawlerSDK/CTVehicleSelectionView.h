@@ -14,6 +14,6 @@
 
 + (void)forceLinkerLoad_;
 
-- (void)initWithVehicleAvailability:(CTVehicleAvailability *)data;
+- (void)initWithVehicleAvailability:(NSArray <CTVehicle *> *)data;
 
 @end

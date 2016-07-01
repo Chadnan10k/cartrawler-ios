@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CartrawlerAPI/CTVehicleAvailability.h>
 
 @interface CTFilterViewController : UIViewController
 
 + (void)forceLinkerLoad_;
+typedef void (^CTFilteredCompletion)(NSArray<CTVehicle *> *filteredData);
+@property (nonatomic, strong) CTFilteredCompletion filterCompletion;
 
++ (CTFilterViewController *)initInViewController:(UIViewController *)viewController withData:(CTVehicleAvailability *)data;
+- (void)setFilterData:(CTVehicleAvailability *)data;
+- (void)present;
 @end

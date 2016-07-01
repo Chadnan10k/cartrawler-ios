@@ -23,7 +23,7 @@
     
 }
 
-- (void)initWithVehicleAvailability:(CTVehicleAvailability *)data;
+- (void)initWithVehicleAvailability:(NSArray <CTVehicle *> *)data;
 {
     //self = [super self];
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];

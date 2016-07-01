@@ -13,7 +13,6 @@
 
 @interface StepTwoViewController : UIViewController
 
-//cartrawlerAPI is set by the sdk, no touchy
 @property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 @property (nonatomic, strong) CTMatchedLocation *pickupLocation;
 @property (nonatomic, strong) CTMatchedLocation *dropoffLocation;

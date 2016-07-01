@@ -15,6 +15,8 @@ typedef void (^CTFilterCompletion)(NSArray *selectedData);
 
 @property (nonatomic, strong) CTFilterCompletion filterCompletion;
 
-- (id)initWithData:(NSArray *)data selectedData:(NSMutableArray *)selectedData;
+- (id)initWithData:(NSArray *)data selectedData:(NSArray *)selectedData;
+
+- (void)reset;
 
 @end

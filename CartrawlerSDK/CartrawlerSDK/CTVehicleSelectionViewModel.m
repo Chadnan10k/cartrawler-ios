@@ -18,12 +18,12 @@
 
 @implementation CTVehicleSelectionViewModel
 
-- (id)initWithData:(CTVehicleAvailability *)data cellSelected:(VehicleSelectionCompletion)cellSeleted
+- (id)initWithData:(NSArray <CTVehicle *> *)data cellSelected:(VehicleSelectionCompletion)cellSeleted
 {
     self = [super init];
 
-    self.vehicles = data.allVehicles;
-    self.selectedVehicle = cellSeleted;
+    _vehicles = data;
+    _selectedVehicle = cellSeleted;
     return self;
 }
 

@@ -47,6 +47,9 @@
 		454AD7801D25587D005C6CFF /* CTFilterDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD77E1D25587D005C6CFF /* CTFilterDataSource.m */; };
 		454AD78B1D255E1F005C6CFF /* CTFilterTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7891D255E1F005C6CFF /* CTFilterTableViewCell.h */; };
 		454AD78C1D255E1F005C6CFF /* CTFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD78A1D255E1F005C6CFF /* CTFilterTableViewCell.m */; };
+		454AD7911D26C6B7005C6CFF /* StepThreeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD78F1D26C6B7005C6CFF /* StepThreeViewController.h */; };
+		454AD7921D26C6B7005C6CFF /* StepThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7901D26C6B7005C6CFF /* StepThreeViewController.m */; };
+		454AD7931D26C985005C6CFF /* StepTwo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4511E5491D183C36000ED6B0 /* StepTwo.storyboard */; };
 		45AC545D1D1309F300805268 /* JVFloatLabeledTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E51D1302FF00ACF604 /* JVFloatLabeledTextField.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC545E1D1309FB00805268 /* NSStringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E71D1302FF00ACF604 /* NSStringUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC545F1D130A0000805268 /* CTCheckbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E11D1302EF00ACF604 /* CTCheckbox.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -177,6 +180,8 @@
 		454AD77E1D25587D005C6CFF /* CTFilterDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterDataSource.m; sourceTree = "<group>"; };
 		454AD7891D255E1F005C6CFF /* CTFilterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterTableViewCell.h; sourceTree = "<group>"; };
 		454AD78A1D255E1F005C6CFF /* CTFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterTableViewCell.m; sourceTree = "<group>"; };
+		454AD78F1D26C6B7005C6CFF /* StepThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepThreeViewController.h; sourceTree = "<group>"; };
+		454AD7901D26C6B7005C6CFF /* StepThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepThreeViewController.m; sourceTree = "<group>"; };
 		45AC547B1D13E47F00805268 /* StepOne.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepOne.storyboard; sourceTree = "<group>"; };
 		45D866571D13F0CA00D19B74 /* CartrawlerResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D866D51D141BB100D19B74 /* LinkerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkerUtils.h; sourceTree = "<group>"; };
@@ -396,6 +401,8 @@
 				45E9428B1D13004F00ACF604 /* StepOneViewController.m */,
 				45E9428C1D13004F00ACF604 /* StepTwoViewController.h */,
 				45E9428D1D13004F00ACF604 /* StepTwoViewController.m */,
+				454AD78F1D26C6B7005C6CFF /* StepThreeViewController.h */,
+				454AD7901D26C6B7005C6CFF /* StepThreeViewController.m */,
 			);
 			name = "Base View Controllers";
 			sourceTree = "<group>";
@@ -617,6 +624,7 @@
 				45AC54631D130A1600805268 /* CTImageCache.h in Headers */,
 				45AC545E1D1309FB00805268 /* NSStringUtils.h in Headers */,
 				45AC54651D130A1600805268 /* DateUtils.h in Headers */,
+				454AD7911D26C6B7005C6CFF /* StepThreeViewController.h in Headers */,
 				4511E53F1D17F999000ED6B0 /* CTNavigationController.h in Headers */,
 				45D866D71D141BB100D19B74 /* LinkerUtils.h in Headers */,
 				45AC546D1D130A1600805268 /* CTCalendarTableViewCell.h in Headers */,
@@ -709,6 +717,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				454AD7931D26C985005C6CFF /* StepTwo.storyboard in Resources */,
 				4538D2551D14436600C723E5 /* Info.plist in Resources */,
 				45D866DA1D142D6400D19B74 /* VehicleTableViewCell.h in Resources */,
 				45D866D91D142CAC00D19B74 /* VehicleTableViewCell_iPhone.xib in Resources */,
@@ -802,6 +811,7 @@
 				45E942BF1D13020300ACF604 /* LocationSearchDataSource.m in Sources */,
 				4511E5381D17F766000ED6B0 /* CTNavigationItem.m in Sources */,
 				4511E51E1D1450CE000ED6B0 /* CTSDKSettings.m in Sources */,
+				454AD7921D26C6B7005C6CFF /* StepThreeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

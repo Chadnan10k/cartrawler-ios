@@ -10,6 +10,7 @@
 #import "CTAppearance.h"
 #import "CTFilterTableViewCell.h"
 #import <CartrawlerAPI/CTVendor.h>
+#import <CartrawlerAPI/CTVehicle.h>
 
 @interface CTFilterDataSource()
 
@@ -20,12 +21,17 @@
 
 @implementation CTFilterDataSource
 
-- (id)initWithData:(NSArray *)data selectedData:(NSMutableArray *)selectedData
+- (id)initWithData:(NSArray *)data selectedData:(NSArray *)selectedData
 {
     self = [super init];
-    _selectedData = selectedData;
+    _selectedData = [[NSMutableArray alloc] initWithArray:selectedData];
     _data = data;
     return self;
+}
+
+- (void)reset
+{
+    [self.selectedData removeAllObjects];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -37,6 +43,10 @@
     }
     CTFilterTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [cell cellTapped];
+    
+    if (self.filterCompletion) {
+        self.filterCompletion(self.selectedData);
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -50,6 +60,8 @@
     
     if ([self.selectedData containsObject:self.data[indexPath.row]]) {
         [cell enableCheckmark:YES];
+    } else {
+        [cell enableCheckmark:NO];
     }
     
     if ([self.data[indexPath.row] isKindOfClass:[NSString class]]) {
@@ -58,6 +70,9 @@
     } else if ([self.data[indexPath.row] isKindOfClass:[CTVendor class]]) {
         CTVendor *ven = self.data[indexPath.row];
         [cell setText:ven.vendorName];
+    } else if ([self.data[indexPath.row] isKindOfClass:[CTVehicle class]]) {
+        CTVehicle *veh = self.data[indexPath.row];
+        [cell setText:veh.vehicleCategory];
     }
     
     return cell;
