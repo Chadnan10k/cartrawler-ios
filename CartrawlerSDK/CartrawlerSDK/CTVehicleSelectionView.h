@@ -14,6 +14,8 @@
 
 + (void)forceLinkerLoad_;
 
-- (void)initWithVehicleAvailability:(NSArray <CTVehicle *> *)data;
+typedef void (^VehicleSelectionCompletion)(CTVehicle *vehicle);
+
+- (void)initWithVehicleAvailability:(NSArray <CTVehicle *> *)data completion:(VehicleSelectionCompletion)completion;
 
 @end

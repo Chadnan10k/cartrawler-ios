@@ -39,6 +39,11 @@
 #import "LocationSearchTableViewCell.h"
 #import "CTFilterViewController.h"
 #import "CTFilterTableViewCell.h"
+#import "VehicleDetailsViewController.h"
+#import "VehicleDetailsView.h"
+#import "ExpandingInfoView.h"
+#import "IncludedCollectionViewCell.h"
+#import "CTDesignableView.h"
 
 @implementation LinkerUtils
 
@@ -75,6 +80,11 @@
     [LocationSearchTableViewCell forceLinkerLoad_];
     [CTFilterViewController forceLinkerLoad_];
     [CTFilterTableViewCell forceLinkerLoad_];
+    [VehicleDetailsViewController forceLinkerLoad_];
+    [VehicleDetailsView forceLinkerLoad_];
+    [ExpandingInfoView forceLinkerLoad_];
+    [IncludedCollectionViewCell forceLinkerLoad_];
+    [CTDesignableView forceLinkerLoad_];
 }
 
 @end

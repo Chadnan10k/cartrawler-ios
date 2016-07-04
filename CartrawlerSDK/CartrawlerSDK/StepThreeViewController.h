@@ -8,9 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTVehicle.h>
+#import <CartrawlerAPI/CartrawlerAPI.h>
 
 @interface StepThreeViewController : UIViewController
 
+@property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
+
 @property (nonatomic, strong) CTVehicle *selectedVehicle;
+@property (nonatomic, strong) CTMatchedLocation *pickupLocation;
+@property (nonatomic, strong) CTMatchedLocation *dropoffLocation;
+@property (nonatomic, strong) NSDate *pickupDate;
+@property (nonatomic, strong) NSDate *dropoffDate;
+@property (nonatomic, strong) NSNumber *driverAge;
+@property (nonatomic, strong) NSNumber *passengerQty;
+
++ (void)forceLinkerLoad_;
+
+- (void)pushToStepFour;
 
 @end

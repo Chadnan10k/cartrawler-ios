@@ -49,7 +49,8 @@
     self.stepTwoViewController.dropoffDate = self.dropoffDate;
     self.stepTwoViewController.driverAge = self.driverAge;
     self.stepTwoViewController.vehicleAvailability = self.vehicleAvailability;
-    
+    self.stepTwoViewController.stepThreeViewController = self.stepThreeViewController;
+
     
     CartrawlerAPI *cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
                                                                    language:[CTSDKSettings instance].languageCode

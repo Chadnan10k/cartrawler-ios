@@ -29,9 +29,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)pushToStepThree
+- (void)pushToStepThree:(CTVehicle *)vehicle
 {
-    
+    [self.stepThreeViewController setSelectedVehicle:vehicle];
+    [self.stepThreeViewController setPickupDate:self.pickupDate];
+    [self.stepThreeViewController setDropoffDate:self.dropoffDate];
+    [self.stepThreeViewController setPickupLocation:self.pickupLocation];
+    [self.stepThreeViewController setDropoffLocation:self.dropoffLocation];
+    [self.stepThreeViewController setDriverAge:self.driverAge];
+    [self.stepThreeViewController setPassengerQty:self.passengerQty];
+
+    [self.navigationController pushViewController:self.stepThreeViewController animated:YES];
 }
 
 /*

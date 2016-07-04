@@ -14,11 +14,13 @@
 
 #define kSearchViewStoryboard @"StepOne"
 #define kSearchResultsViewStoryboard @"StepTwo"
+#define kVehicleDetailsViewStoryboard @"StepThree"
 
 @interface CartrawlerSDK()
 
 @property (nonatomic, strong) StepOneViewController *stepOneViewController;
 @property (nonatomic, strong) StepTwoViewController *stepTwoViewController;
+@property (nonatomic, strong) StepThreeViewController *stepThreeViewController;
 
 @end
 
@@ -50,16 +52,25 @@
 {
     if (self.stepOneViewController == nil) {
         
+//        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+//        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
+//        
+//        _stepOneViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
+//        self.stepOneViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
         NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVehicleDetailsViewStoryboard bundle:bundle];
         
-        _stepOneViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
-        self.stepOneViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        _stepThreeViewController = [storyboard instantiateViewControllerWithIdentifier:@"VehicleDetailsViewController"];
+        self.stepThreeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     }
     
     [self.stepOneViewController setStepTwoViewController:[self stepTwoViewController_]];
-    CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
+    [self.stepOneViewController setStepThreeViewController:[self stepThreeViewController_]];
+
+    CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepThreeViewController];
     navController.navigationBar.hidden = YES;
 
     [viewController presentViewController:navController animated:YES completion:nil];
@@ -89,6 +100,11 @@
     _stepTwoViewController = viewController;
 }
 
+- (void)overrideStepThreeViewController:(StepThreeViewController *)viewController
+{
+    
+}
+
 - (StepTwoViewController *)stepTwoViewController_
 {
     if (self.stepTwoViewController == nil) {
@@ -98,6 +114,18 @@
         return [storyboard instantiateViewControllerWithIdentifier:@"SearchResultsViewController"];
     } else {
         return self.stepTwoViewController;
+    }
+}
+
+- (StepThreeViewController *)stepThreeViewController_
+{
+    if (self.stepThreeViewController == nil) {
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVehicleDetailsViewStoryboard bundle:b];
+        return [storyboard instantiateViewControllerWithIdentifier:@"VehicleDetailsViewController"];
+    } else {
+        return self.stepThreeViewController;
     }
 }
 

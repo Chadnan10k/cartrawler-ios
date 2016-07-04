@@ -51,6 +51,7 @@
 
 - (void)overrideStepOneViewController:(StepOneViewController *)viewController;
 - (void)overrideStepTwoViewController:(StepTwoViewController *)viewController;
+- (void)overrideStepThreeViewController:(StepThreeViewController *)viewController;
 
 
 

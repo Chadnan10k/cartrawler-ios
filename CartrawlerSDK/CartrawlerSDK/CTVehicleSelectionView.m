@@ -23,7 +23,8 @@
     
 }
 
-- (void)initWithVehicleAvailability:(NSArray <CTVehicle *> *)data;
+- (void)initWithVehicleAvailability:(NSArray <CTVehicle *> *)data
+                         completion:(VehicleSelectionCompletion)completion;
 {
     //self = [super self];
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
@@ -31,20 +32,15 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"VehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];
     
     _dataSource = [[CTVehicleSelectionViewModel alloc] initWithData:data cellSelected:^(CTVehicle *vehicle) {
-        [self vehicleSelected:vehicle];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(vehicle);
+        });
     }];
     
     self.tableView.delegate = self.dataSource;
     self.tableView.dataSource = self.dataSource;
     [self.tableView reloadData];
     //return self;
-}
-
-- (void)vehicleSelected:(CTVehicle *)vehicle
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"%@", vehicle.vehicleMakeModelName);
-    });
 }
 
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "StepTwoViewController.h"
+#import "StepThreeViewController.h"
 
 @interface StepOneViewController : UIViewController
 
@@ -26,6 +27,7 @@ typedef void (^StepOneCompletion)(BOOL success, NSString *errorMessage);
 @property (nonatomic, strong) NSNumber *passengerQty;
 @property (nonatomic, strong) CTVehicleAvailability *vehicleAvailability;
 @property (nonatomic, strong) StepTwoViewController *stepTwoViewController;
+@property (nonatomic, strong) StepThreeViewController *stepThreeViewController;
 
 - (void)pushToStepTwo;
 
