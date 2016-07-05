@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *vendorImageView;
 @property (weak, nonatomic) IBOutlet UIView *freeCancelationView;
+@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 
 @end
 
@@ -32,6 +33,11 @@
 + (void)forceLinkerLoad_
 {
     
+}
+
+- (void)awakeFromNib
+{
+    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
 - (void)initWithVehicle:(CTVehicle *)vehicle
@@ -67,6 +73,27 @@
     [priceString appendAttributedString:cents];
     
     self.totalPriceLabel.attributedText = priceString;
+    
+    NSArray *ratingStrings = [@"7.9/10" componentsSeparatedByString:@"/"];
+    NSMutableAttributedString *ratingString = [[NSMutableAttributedString alloc] init];
+    
+    NSAttributedString *rating = [[NSAttributedString alloc] initWithString:ratingStrings.firstObject
+                                                                  attributes:@{NSFontAttributeName:
+                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.ratingLabel.font.pointSize]}];
+    
+    NSAttributedString *slash = [[NSAttributedString alloc] initWithString:@"/"
+                                                              attributes:@{NSFontAttributeName:
+                                                                               [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.ratingLabel.font.pointSize]}];
+    
+    NSAttributedString *ten = [[NSAttributedString alloc] initWithString:ratingStrings.lastObject
+                                                                attributes:@{NSFontAttributeName:
+                                                                                 [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.ratingLabel.font.pointSize-3], NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
+    
+    [ratingString appendAttributedString:rating];
+    [ratingString appendAttributedString:slash];
+    [ratingString appendAttributedString:ten];
+    
+    self.ratingLabel.attributedText = ratingString;
 
     [[CTImageCache sharedInstance] cachedImage: vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;

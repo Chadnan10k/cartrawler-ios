@@ -9,8 +9,12 @@
 #import "VehicleDetailsView.h"
 #import "CTImageCache.h"
 #import "IncludedCollectionViewCell.h"
+#import "TermsViewController.h"
+#import "CTAppearance.h"
 
-@interface VehicleDetailsView() <UICollectionViewDataSource>
+#define kCellsPerRow 4
+
+@interface VehicleDetailsView() <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *vehicleNameLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *vehicleImageView;
@@ -21,7 +25,8 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *vendorImageView;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *vendorRatingLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UICollectionView *includedCollectionView;
-@property (strong, nonatomic) NSArray<NSString *> *collectionViewData;
+@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+
 @property (strong, nonatomic) CTVehicle *vehicle;
 @property (strong, nonatomic) CartrawlerAPI *api;
 @property (strong, nonatomic) NSDate *pickupDate;
@@ -29,6 +34,7 @@
 @property (strong, nonatomic) NSString *pickupCode;
 @property (strong, nonatomic) NSString *returnCode;
 @property (strong, nonatomic) NSString *homeCountry;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeight;
 
 @end
 
@@ -49,12 +55,39 @@
     }];
     
     self.includedCollectionView.dataSource = self;
-    
+    self.includedCollectionView.delegate = self;
+
     self.vehicleNameLabel.text = self.vehicle.vehicleMakeModelName;
     self.passengersLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.passengerQty.stringValue, NSLocalizedString(@"passengers", @"passengers")];
     self.doorsLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.doorCount.stringValue, NSLocalizedString(@"doors", @"doors")];
     self.bagsLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.baggageQty.stringValue, NSLocalizedString(@"bags", @"bags")];
     self.transmissionLabel.text = self.vehicle.transmissionType;
+    
+    self.view.translatesAutoresizingMaskIntoConstraints = false;
+    
+    
+    NSArray *priceStrings = [@"7.9/10" componentsSeparatedByString:@"/"];
+    NSMutableAttributedString *ratingString = [[NSMutableAttributedString alloc] init];
+    
+    NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject
+                                                                  attributes:@{NSFontAttributeName:
+                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.ratingLabel.font.pointSize]}];
+    
+    NSAttributedString *dot = [[NSAttributedString alloc] initWithString:@"/"
+                                                              attributes:@{NSFontAttributeName:
+                                                                               [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.ratingLabel.font.pointSize]}];
+    
+    NSAttributedString *cents = [[NSAttributedString alloc] initWithString:priceStrings.lastObject
+                                                                attributes:@{NSFontAttributeName:
+                                                                                 [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.ratingLabel.font.pointSize-3], NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
+    
+    [ratingString appendAttributedString:dollars];
+    [ratingString appendAttributedString:dot];
+    [ratingString appendAttributedString:cents];
+    
+    self.ratingLabel.attributedText = ratingString;
+    
+    
 }
 
 - (void)setData:(CTVehicle *)vehicle
@@ -83,15 +116,25 @@
                        homeCountry:self.homeCountry
                                car:self.vehicle
                         completion:^(CTTermsAndConditions *response, CTErrorResponse *error) {
-                            NSLog(@"%@", response);
+                            if (error) {
+                                
+                            } else {
+                                UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"TermsViewControllerNav"];
+                                TermsViewController *vc = (TermsViewController *)nav.topViewController;
+                                [vc setData:response];
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    [self presentViewController:nav animated:YES completion:nil];
+                                });
+                            }
                         }];
+
 }
 
 #pragma mark Included Collection View
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 5;
+    return self.vehicle.pricedCoverages.count;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -102,7 +145,28 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     IncludedCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    [cell setDetails:@"Cancellation"];
+    [cell setDetails:self.vehicle.pricedCoverages[indexPath.row].chargeDescription];
+    
+    self.collectionViewHeight.constant = self.includedCollectionView.contentSize.height;
+    if (self.heightChanged) {
+        self.heightChanged(self.includedCollectionView.contentSize.height);
+    }
+    
     return cell;
 }
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGSize cellSize = CGSizeMake(self.view.frame.size.width * 0.46, 50);
+    
+    return cellSize;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+
 @end

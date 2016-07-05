@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+IB_DESIGNABLE
 @interface CTLabel : UILabel
+
+@property (nonatomic) IBInspectable BOOL useBoldFont;
 
 + (void)forceLinkerLoad_;
 

@@ -11,6 +11,9 @@
 
 @interface VehicleDetailsView : UIViewController
 
+typedef void (^CTVehicleDetailsHeight)(CGFloat height);
+@property (nonatomic) CTVehicleDetailsHeight heightChanged;
+
 + (void)forceLinkerLoad_;
 
 - (void)setData:(CTVehicle *)vehicle

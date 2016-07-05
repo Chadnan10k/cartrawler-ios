@@ -44,6 +44,11 @@
 #import "ExpandingInfoView.h"
 #import "IncludedCollectionViewCell.h"
 #import "CTDesignableView.h"
+#import "UnderLinedButton.h"
+#import "IncludedCollectionViewLayout.h"
+#import "TermsViewController.h"
+#import "TermsDetailViewController.h"
+#import "TabButton.h"
 
 @implementation LinkerUtils
 
@@ -85,6 +90,11 @@
     [ExpandingInfoView forceLinkerLoad_];
     [IncludedCollectionViewCell forceLinkerLoad_];
     [CTDesignableView forceLinkerLoad_];
+    [UnderLinedButton forceLinkerLoad_];
+    [IncludedCollectionViewLayout forceLinkerLoad_];
+    [TermsViewController forceLinkerLoad_];
+    [TermsDetailViewController forceLinkerLoad_];
+    [TabButton forceLinkerLoad_];
 }
 
 @end

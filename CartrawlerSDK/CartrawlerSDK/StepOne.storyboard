@@ -500,6 +500,7 @@
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     </view>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstItem="sHa-oC-ATV" firstAttribute="leading" secondItem="P4q-lz-Gos" secondAttribute="leading" constant="4" id="8gS-aR-7GN"/>
                                                                         <constraint firstItem="sHa-oC-ATV" firstAttribute="top" secondItem="P4q-lz-Gos" secondAttribute="top" constant="5" id="sLG-HV-nPc"/>

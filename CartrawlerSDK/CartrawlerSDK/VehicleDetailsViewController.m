@@ -9,12 +9,21 @@
 #import "VehicleDetailsViewController.h"
 #import "VehicleDetailsView.h"
 #import "ExpandingInfoView.h"
+#import "CTAppearance.h"
+#import "CTLabel.h"
+#import "TabButton.h"
 
 @interface VehicleDetailsViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *vehicleDetailsContainer;
 @property (weak, nonatomic) IBOutlet UIView *vendorRatingContainer;
 @property (weak, nonatomic) IBOutlet ExpandingInfoView *pickupLocationView;
+@property (weak, nonatomic) IBOutlet ExpandingInfoView *fuelPolicyView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *vehicleDetailsHeightConstraint;
+@property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
+
+@property (weak, nonatomic) IBOutlet TabButton *carDetailsTab;
+@property (weak, nonatomic) IBOutlet TabButton *supplierTab;
 
 @end
 
@@ -30,8 +39,45 @@
     self.vehicleDetailsContainer.layer.cornerRadius = 5;
     self.vehicleDetailsContainer.layer.masksToBounds = YES;
     
-    [self.pickupLocationView setTitle:@"" andImage:nil];
+    self.vehicleDetailsContainer.layer.borderWidth = 1;
+    self.vehicleDetailsContainer.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.vendorRatingContainer.layer.borderWidth = 1;
+    self.vendorRatingContainer.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
+    [self.pickupLocationView setTitle:@"Vehicle is located in airport." andImage:nil];
+    [self.fuelPolicyView setTitle:self.selectedVehicle.fuelPolicyDescription andImage:nil];
+    
+    [self.view layoutIfNeeded];
+    
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    [f setMinimumFractionDigits:2];
+    [f setCurrencyCode:self.selectedVehicle.currencyCode];
+    [f setNumberStyle:NSNumberFormatterCurrencyStyle];
+    
+    NSArray *priceStrings = [[f stringFromNumber:self.selectedVehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
+    NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];
+    
+    NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject
+                                                                  attributes:@{NSFontAttributeName:
+                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.priceLabel.font.pointSize+2]}];
+    
+    NSAttributedString *dot = [[NSAttributedString alloc] initWithString:@"."
+                                                              attributes:@{NSFontAttributeName:
+                                                                               [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.priceLabel.font.pointSize]}];
+    
+    NSAttributedString *cents = [[NSAttributedString alloc] initWithString:priceStrings.lastObject
+                                                                attributes:@{NSFontAttributeName:
+                                                                                 [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.priceLabel.font.pointSize-4]}];
+    
+    [priceString appendAttributedString:dollars];
+    [priceString appendAttributedString:dot];
+    [priceString appendAttributedString:cents];
+    
+    self.priceLabel.attributedText = priceString;
+}
+
+- (IBAction)backTapped:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,23 +96,28 @@
          pickupCode:self.pickupLocation.code
          returnCode:self.dropoffLocation.code
         homeCountry:@"IE"];
+        
+        vc.heightChanged = ^(CGFloat height) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.vehicleDetailsHeightConstraint.constant = height + 265;
+            });
+        };
     }
 }
 
-- (IBAction)changeView:(id)sender {
-    UISegmentedControl *sc = (UISegmentedControl *)sender;
-    
-    switch (sc.selectedSegmentIndex) {
-        case 0:
-            self.vehicleDetailsContainer.alpha = 1;
-            break;
-        case 1:
-            self.vehicleDetailsContainer.alpha = 0;
-            break;
-        default:
-            break;
-    }
+- (IBAction)detailsTapped:(id)sender {
+    [self.carDetailsTab focus:YES];
+    [self.supplierTab focus:NO];
+    self.vehicleDetailsContainer.alpha = 1;
+    self.vendorRatingContainer.alpha = 0;
 }
 
+- (IBAction)supplierTapped:(id)sender {
+    [self.carDetailsTab focus:NO];
+    [self.supplierTab focus:YES];
+    self.vehicleDetailsContainer.alpha = 0;
+    self.vendorRatingContainer.alpha = 1;
+
+}
 
 @end

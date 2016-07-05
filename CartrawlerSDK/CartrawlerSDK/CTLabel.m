@@ -11,14 +11,6 @@
 
 @implementation CTLabel
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 + (void)forceLinkerLoad_
 {
     
@@ -37,9 +29,18 @@
 {
     self = [super initWithCoder:aDecoder];
     
-    [self setFont:[UIFont fontWithName:[CTAppearance instance].fontName size:self.font.pointSize]];
+    _useBoldFont = NO;
 
     return self;
+}
+
+- (void)awakeFromNib
+{
+    if (self.useBoldFont) {
+        [self setFont:[UIFont fontWithName:[CTAppearance instance].boldFontName size:self.font.pointSize]];
+    } else {
+        [self setFont:[UIFont fontWithName:[CTAppearance instance].fontName size:self.font.pointSize]];
+    }
 }
 
 @end

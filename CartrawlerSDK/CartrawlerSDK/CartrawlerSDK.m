@@ -52,25 +52,27 @@
 {
     if (self.stepOneViewController == nil) {
         
-//        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-//        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
-//        
-//        _stepOneViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
-//        self.stepOneViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
         NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVehicleDetailsViewStoryboard bundle:bundle];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
         
-        _stepThreeViewController = [storyboard instantiateViewControllerWithIdentifier:@"VehicleDetailsViewController"];
-        self.stepThreeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        _stepOneViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
+        self.stepOneViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        
+//        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+//        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVehicleDetailsViewStoryboard bundle:bundle];
+//        
+//        _stepThreeViewController = [storyboard instantiateViewControllerWithIdentifier:@"VehicleDetailsViewController"];
+//        self.stepThreeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     }
     
     [self.stepOneViewController setStepTwoViewController:[self stepTwoViewController_]];
     [self.stepOneViewController setStepThreeViewController:[self stepThreeViewController_]];
 
-    CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepThreeViewController];
+    //CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepThreeViewController];
+    CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
+
     navController.navigationBar.hidden = YES;
 
     [viewController presentViewController:navController animated:YES completion:nil];

@@ -55,6 +55,8 @@
     CartrawlerAPI *cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
                                                                    language:[CTSDKSettings instance].languageCode
                                                                       debug:[CTSDKSettings instance].isDebug];
+    self.stepTwoViewController.cartrawlerAPI = cartrawlerAPI;
+
     [cartrawlerAPI enableLogging:YES];
     [cartrawlerAPI requestVehicleAvailabilityForLocation:self.pickupLocation.code
                                            returnLocationCode:self.dropoffLocation.code

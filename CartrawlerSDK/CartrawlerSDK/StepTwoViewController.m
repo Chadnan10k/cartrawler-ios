@@ -38,6 +38,7 @@
     [self.stepThreeViewController setDropoffLocation:self.dropoffLocation];
     [self.stepThreeViewController setDriverAge:self.driverAge];
     [self.stepThreeViewController setPassengerQty:self.passengerQty];
+    [self.stepThreeViewController setCartrawlerAPI:self.cartrawlerAPI];
 
     [self.navigationController pushViewController:self.stepThreeViewController animated:YES];
 }
