@@ -23,6 +23,8 @@
 @property (nonatomic, strong) NSNumber *passengerQty;
 @property (nonatomic, strong) CTVehicleAvailability *vehicleAvailability;
 @property (nonatomic, strong) StepThreeViewController *stepThreeViewController;
+@property (nonatomic, strong) StepFourViewController *stepFourViewController;
+
 + (void)forceLinkerLoad_;
 
 - (void)pushToStepThree:(CTVehicle *)vehicle;

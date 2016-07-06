@@ -195,6 +195,9 @@
                                                 <state key="normal" title="Continue">
                                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="continueTapped:" destination="3HX-7a-ja0" eventType="touchUpInside" id="8U8-CK-vLw"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.37647058820000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -669,7 +672,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -755,7 +758,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="QCU-2J-exE" firstAttribute="leading" secondItem="rJy-HJ-1vA" secondAttribute="leading" id="9eX-dH-c5e"/>
                             <constraint firstItem="qGA-8Y-qZV" firstAttribute="leading" secondItem="rJy-HJ-1vA" secondAttribute="leading" constant="10" id="Kwx-T5-e4m"/>

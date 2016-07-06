@@ -42,7 +42,7 @@
 
 - (void)initWithVehicle:(CTVehicle *)vehicle
 {
-    self.vehicleNameLabel.text = vehicle.vehicleMakeModelName;
+    self.vehicleNameLabel.text = vehicle.makeModelName;
     self.passengerQtyLabel.text = [NSString stringWithFormat:@"%d %@", vehicle.passengerQty.intValue, NSLocalizedString(@"passengers", @"passengers")];
     self.transmissionLabel.text = vehicle.transmissionType;
     self.fuelPolicyLabel.text = [self fuelPolicyString:vehicle.fuelPolicy];
@@ -99,7 +99,7 @@
         self.vehicleImageView.image = image;
     }];
     
-    [[CTImageCache sharedInstance] cachedImage: vehicle.vendor.venLogo completion:^(UIImage *image) {
+    [[CTImageCache sharedInstance] cachedImage: vehicle.vendor.logoURL completion:^(UIImage *image) {
         self.vendorImageView.image = image;
     }];
 }

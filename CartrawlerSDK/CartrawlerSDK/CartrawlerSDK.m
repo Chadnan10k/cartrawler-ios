@@ -15,12 +15,14 @@
 #define kSearchViewStoryboard @"StepOne"
 #define kSearchResultsViewStoryboard @"StepTwo"
 #define kVehicleDetailsViewStoryboard @"StepThree"
+#define kExtrasViewStoryboard @"StepFour"
 
 @interface CartrawlerSDK()
 
 @property (nonatomic, strong) StepOneViewController *stepOneViewController;
 @property (nonatomic, strong) StepTwoViewController *stepTwoViewController;
 @property (nonatomic, strong) StepThreeViewController *stepThreeViewController;
+@property (nonatomic, strong) StepFourViewController *stepFourViewController;
 
 @end
 
@@ -52,26 +54,27 @@
 {
     if (self.stepOneViewController == nil) {
         
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
-        
-        _stepOneViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
-        self.stepOneViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+//        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
+//        
+//        _stepOneViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
+//        self.stepOneViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         
 //        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
 //        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVehicleDetailsViewStoryboard bundle:bundle];
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kExtrasViewStoryboard bundle:bundle];
 //        
-//        _stepThreeViewController = [storyboard instantiateViewControllerWithIdentifier:@"VehicleDetailsViewController"];
+//        _stepFourViewController = [storyboard instantiateViewControllerWithIdentifier:@"ExtrasViewController"];
 //        self.stepThreeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     }
     
     [self.stepOneViewController setStepTwoViewController:[self stepTwoViewController_]];
     [self.stepOneViewController setStepThreeViewController:[self stepThreeViewController_]];
+    [self.stepOneViewController setStepFourViewController:[self stepFourViewController_]];
 
-    //CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepThreeViewController];
-    CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
+    CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:[self stepFourViewController_]];
+    //CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
 
     navController.navigationBar.hidden = YES;
 
@@ -104,7 +107,12 @@
 
 - (void)overrideStepThreeViewController:(StepThreeViewController *)viewController
 {
-    
+    _stepThreeViewController = viewController;
+}
+
+- (void)overrideStepFourViewController:(StepFourViewController *)viewController
+{
+    _stepFourViewController = viewController;
 }
 
 - (StepTwoViewController *)stepTwoViewController_
@@ -128,6 +136,18 @@
         return [storyboard instantiateViewControllerWithIdentifier:@"VehicleDetailsViewController"];
     } else {
         return self.stepThreeViewController;
+    }
+}
+
+- (StepFourViewController *)stepFourViewController_
+{
+    if (self.stepFourViewController == nil) {
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kExtrasViewStoryboard bundle:b];
+        return [storyboard instantiateViewControllerWithIdentifier:@"ExtrasViewController"];
+    } else {
+        return self.stepFourViewController_;
     }
 }
 

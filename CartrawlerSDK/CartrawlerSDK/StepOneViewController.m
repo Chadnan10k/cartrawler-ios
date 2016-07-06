@@ -50,6 +50,7 @@
     self.stepTwoViewController.driverAge = self.driverAge;
     self.stepTwoViewController.vehicleAvailability = self.vehicleAvailability;
     self.stepTwoViewController.stepThreeViewController = self.stepThreeViewController;
+    self.stepTwoViewController.stepFourViewController = self.stepFourViewController;
 
     
     CartrawlerAPI *cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId

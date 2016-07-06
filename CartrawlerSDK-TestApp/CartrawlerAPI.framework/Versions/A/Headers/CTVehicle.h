@@ -107,7 +107,7 @@ typedef NS_ENUM(NSUInteger, FuelPolicy) {
 /**
  *  Int value representing the vehicle class size
  */
-@property (nonatomic, readonly) NSInteger vehicleClassSize;
+@property (nonatomic, readonly) NSInteger classSize;
 /**
  *  The total base price for this vehicle
  */
@@ -145,9 +145,14 @@ typedef NS_ENUM(NSUInteger, FuelPolicy) {
  */
 @property (nonatomic, strong, readonly) NSString *codeContext;
 /**
- *  the vehicle category
+ *  The vehicle category description
  */
-@property (nonatomic, strong, readonly) NSString *vehicleCategory;
+@property (nonatomic, strong, readonly) NSString *categoryDescription;
+/**
+ *  Vehicle category code
+ */
+@property (nonatomic, strong, readonly) NSString *categoryDescriptionCode;
+
 /**
  *  The number of doors the vehicle has
  */
@@ -155,11 +160,11 @@ typedef NS_ENUM(NSUInteger, FuelPolicy) {
 /**
  *  The make / model name of the vehicle
  */
-@property (nonatomic, strong, readonly) NSString *vehicleMakeModelName;
+@property (nonatomic, strong, readonly) NSString *makeModelName;
 /**
  *  The make / model code of the vehicle
  */
-@property (nonatomic, strong, readonly) NSString *vehicleMakeModelCode;
+@property (nonatomic, strong, readonly) NSString *makeModelCode;
 /**
  *  Picture url for the vehicle
  */

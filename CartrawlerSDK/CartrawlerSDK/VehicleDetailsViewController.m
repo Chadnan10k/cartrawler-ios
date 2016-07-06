@@ -117,7 +117,11 @@
     [self.supplierTab focus:YES];
     self.vehicleDetailsContainer.alpha = 0;
     self.vendorRatingContainer.alpha = 1;
-
 }
+
+- (IBAction)continueTapped:(id)sender {
+    [self pushToStepFour];
+}
+
 
 @end

@@ -69,10 +69,10 @@
         [cell setText:str];
     } else if ([self.data[indexPath.row] isKindOfClass:[CTVendor class]]) {
         CTVendor *ven = self.data[indexPath.row];
-        [cell setText:ven.vendorName];
+        [cell setText:ven.name];
     } else if ([self.data[indexPath.row] isKindOfClass:[CTVehicle class]]) {
         CTVehicle *veh = self.data[indexPath.row];
-        [cell setText:veh.vehicleCategory];
+        [cell setText:veh.categoryDescription];
     }
     
     return cell;

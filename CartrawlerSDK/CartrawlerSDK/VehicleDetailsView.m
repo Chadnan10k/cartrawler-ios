@@ -50,14 +50,14 @@
         self.vehicleImageView.image = image;
     }];
     
-    [[CTImageCache sharedInstance] cachedImage: self.vehicle.vendor.venLogo completion:^(UIImage *image) {
+    [[CTImageCache sharedInstance] cachedImage: self.vehicle.vendor.logoURL completion:^(UIImage *image) {
         self.vendorImageView.image = image;
     }];
     
     self.includedCollectionView.dataSource = self;
     self.includedCollectionView.delegate = self;
 
-    self.vehicleNameLabel.text = self.vehicle.vehicleMakeModelName;
+    self.vehicleNameLabel.text = self.vehicle.makeModelName;
     self.passengersLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.passengerQty.stringValue, NSLocalizedString(@"passengers", @"passengers")];
     self.doorsLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.doorCount.stringValue, NSLocalizedString(@"doors", @"doors")];
     self.bagsLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.baggageQty.stringValue, NSLocalizedString(@"bags", @"bags")];

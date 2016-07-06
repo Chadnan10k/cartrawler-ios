@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTVehicle.h>
 #import <CartrawlerAPI/CartrawlerAPI.h>
+#import "StepFourViewController.h"
 
 @interface StepThreeViewController : UIViewController
 
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) NSDate *dropoffDate;
 @property (nonatomic, strong) NSNumber *driverAge;
 @property (nonatomic, strong) NSNumber *passengerQty;
+@property (nonatomic, strong) StepFourViewController *stepFourViewController;
 
 + (void)forceLinkerLoad_;
 

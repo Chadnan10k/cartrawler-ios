@@ -49,6 +49,7 @@
 #import "TermsViewController.h"
 #import "TermsDetailViewController.h"
 #import "TabButton.h"
+#import "ExtrasViewController.h"
 
 @implementation LinkerUtils
 
@@ -95,6 +96,8 @@
     [TermsViewController forceLinkerLoad_];
     [TermsDetailViewController forceLinkerLoad_];
     [TabButton forceLinkerLoad_];
+    [ExtrasViewController forceLinkerLoad_];
+
 }
 
 @end

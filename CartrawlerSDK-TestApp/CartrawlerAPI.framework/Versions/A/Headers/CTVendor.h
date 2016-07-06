@@ -35,23 +35,23 @@
 /**
  *  The vendor code
  */
-@property (nonatomic, strong) NSString *vendorCode;
+@property (nonatomic, strong) NSString *code;
 /**
  *  The vendor name
  */
-@property (nonatomic, strong) NSString *vendorName;
+@property (nonatomic, strong) NSString *name;
 /**
  *  The vendor division
  */
-@property (nonatomic, strong) NSString *vendorDivision;
+@property (nonatomic, strong) NSString *division;
 /**
  *  Picture url for the vendor logo
  */
-@property (nonatomic, strong) NSURL *venLogo;
+@property (nonatomic, strong) NSURL *logoURL;
 /**
  *  The vendor ID
  */
-@property (nonatomic, strong) NSString *vendorID;
+@property (nonatomic, strong) NSString *ID;
 /**
  *  The vendor location code
  */
@@ -59,19 +59,19 @@
 /**
  *  The vendor location name
  */
-@property (nonatomic, strong) NSString *venLocationName;
+@property (nonatomic, strong) NSString *locationName;
 /**
  *  The vendor address
  */
-@property (nonatomic, strong) NSString *venAddress;
+@property (nonatomic, strong) NSString *address;
 /**
  *  The vendor country code
  */
-@property (nonatomic, strong) NSString *venCountryCode;
+@property (nonatomic, strong) NSString *countryCode;
 /**
  *  The vendor phone number
  */
-@property (nonatomic, strong) NSString *venPhone;
+@property (nonatomic, strong) NSString *phone;
 /**
  *  Vendor rating
  */

@@ -100,7 +100,7 @@
     for (CTVehicle *v in data.allVehicles) {
         BOOL found = NO;
         for (CTVehicle *s in self.sizeData) {
-            if ([v.vehicleCategory isEqualToString:s.vehicleCategory]) {
+            if ([v.categoryDescriptionCode isEqualToString: s.categoryDescriptionCode]) {
                 found = YES;
             }
         }
@@ -113,7 +113,7 @@
         
         BOOL found = NO;
         for (int x = 0; x < self.vendorsData.count; ++x) {
-            if ([data.availableVendors[i].vendorName isEqualToString:self.vendorsData[x].vendorName]) {
+            if ([data.availableVendors[i].name isEqualToString:self.vendorsData[x].name]) {
                 found = YES;
             } else {
                 found = NO;
@@ -140,7 +140,7 @@
         for (CTVehicle *selectedVeh in self.selectedSizeData) {
             BOOL found = NO;
             
-            if ([veh.vehicleCategory isEqualToString:selectedVeh.vehicleCategory]) {
+            if ([veh.categoryDescriptionCode isEqualToString:selectedVeh.categoryDescriptionCode]) {
                 found = YES;
             }
             
@@ -161,7 +161,7 @@
         vehsToAddStep2 = [[NSMutableArray alloc] init];
         for (CTVendor *ven in self.selectedVendorsData) {
             for (CTVehicle *veh in self.data.allVehicles) {
-                if ([ven.vendorName isEqualToString:veh.vendor.vendorName]) {
+                if ([ven.name isEqualToString:veh.vendor.name]) {
                     if (![vehsToAddStep2 containsObject:veh]) {
                         [vehsToAddStep2 addObject:veh];
                     }
@@ -174,7 +174,7 @@
         vehsToAddStep2 = [[NSMutableArray alloc] init];
         for (CTVendor *ven in self.selectedVendorsData) {
             for (CTVehicle *veh in vehsToAdd) {
-                if ([ven.vendorName isEqualToString:veh.vendor.vendorName]) {
+                if ([ven.name isEqualToString:veh.vendor.name]) {
                     if (![vehsToAddStep2 containsObject:veh]) {
                         [vehsToAddStep2 addObject:veh];
                     }
