@@ -11,7 +11,7 @@
 #import "HTMLParser.h"
 #import "CTAppearance.h"
 
-@interface ExtrasViewController ()
+@interface ExtrasViewController () <UITextViewDelegate>
 
 //@property (weak, nonatomic) IBOutlet UITextView *title;
 @property (weak, nonatomic) IBOutlet UITextView *summaryTextView;
@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *item2Label;
 @property (weak, nonatomic) IBOutlet UILabel *item3Label;
 
+@property (weak, nonatomic) IBOutlet UIView *insuranceView;
+
 @end
 
 @implementation ExtrasViewController
@@ -39,6 +41,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.insuranceView.layer.cornerRadius = 3;
+    self.insuranceView.layer.borderWidth = 1;
+    self.insuranceView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.insuranceView.layer.masksToBounds = YES;
     
     NSDateComponents *pickupComp = [[NSDateComponents alloc] init];
     [pickupComp setDay:4];
@@ -74,44 +81,7 @@
                                                  if (response) {
 
                                                      dispatch_async(dispatch_get_main_queue(), ^{
-                                                         
-                                                         self.summaryTextView.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
-                                                                                                                          pointSize:15
-                                                                                                                               text:response.summary];
-                                                         self.summaryHeightConstraint.constant = self.summaryTextView.contentSize.height;
-                                                         
-                                                         NSMutableAttributedString *listItems = [[NSMutableAttributedString alloc] init];
-                                                         
-                                                         for (NSString *str in response.listItems) {
-                                                             [listItems appendAttributedString:[HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
-                                                                                                                          pointSize:15
-                                                                                                                               text:str]];
-                                                             [listItems appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
-                                                         }
-
-                                                         self.itemsTextView.attributedText = listItems;
-                                                         self.itemsHeightConstraint.constant = self.itemsTextView.contentSize.height;
-                                                         
-                                                         NSDictionary *termsAttr = @{ NSForegroundColorAttributeName : [UIColor lightGrayColor],
-                                                                                      NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName
-                                                                                                                            size:10]};
-                                                         
-                                                         self.termsTextView.attributedText = [[NSAttributedString alloc]
-                                                                                              initWithString:response.paragraphSubfooter attributes:termsAttr];
-                                                         
-                                                         NSMutableAttributedString *termsStr = [[NSMutableAttributedString alloc] initWithString:
-                                                                                                response.functionalText];
-                                                         NSString *linkStr = @"${link1}{}";
-                                                         
-                                                         [[termsStr mutableString] replaceOccurrencesOfString:linkStr withString:@""
-                                                                                                    options:0
-                                                                                                      range:NSMakeRange(0, termsStr.string.length)];
-
-                                                         
-                                                         
-                                                         NSLog(@"%@", termsStr);
-                                                         [self.view layoutIfNeeded];
-                                                         
+                                                         [self setupView:response];
                                                      });
                                                      
                                                  } else {
@@ -127,9 +97,92 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLayoutSubviews {
+    [self.summaryTextView setContentOffset:CGPointZero animated:NO];
+    [self.itemsTextView setContentOffset:CGPointZero animated:NO];
+    [self.purchaseTextView setContentOffset:CGPointZero animated:NO];
 }
+
+- (void)setupView:(CTInsurance *)response
+{
+    self.summaryTextView.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
+                                                                     pointSize:15
+                                                                          text:response.summary
+                                                                 boldFontColor:@"#3399ff"];
+    self.summaryHeightConstraint.constant = self.summaryTextView.contentSize.height;
+    
+    NSMutableAttributedString *listItems = [[NSMutableAttributedString alloc] init];
+    
+    for (int i = 0; i < response.listItems.count; ++i) {
+        [listItems appendAttributedString:[HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
+                                                                     pointSize:15
+                                                                          text:response.listItems[i]
+                                                                 boldFontColor:@"#3399ff"]];
+        
+        if (i != response.listItems.count-1) {
+            [listItems appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n\n"]];
+        }
+    }
+    
+    self.itemsTextView.attributedText = listItems;
+
+    
+    NSDictionary *termsAttr = @{ NSForegroundColorAttributeName : [UIColor lightGrayColor],
+                                 NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName
+                                                                       size:12]};
+    
+    self.termsTextView.attributedText = [[NSAttributedString alloc]
+                                         initWithString:response.paragraphSubfooter attributes:termsAttr];
+    
+    NSDictionary *tcAttr = @{ NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:15] };
+    
+    NSMutableAttributedString *termsStr = [[NSMutableAttributedString alloc] initWithString:response.functionalText
+                                                                                 attributes: tcAttr];
+    
+    
+    NSDictionary *linkAttr = @{ NSLinkAttributeName : response.termsAndConditionsURL,
+                                NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:15]
+                                };
+    
+    NSAttributedString *termsLink = [[NSAttributedString alloc]
+                                     initWithString:@"Terms and Conditions"
+                                     attributes:linkAttr];
+    
+    NSRange range = [response.functionalText rangeOfString:@"${link1}"];
+    
+    
+    [termsStr replaceCharactersInRange:range withAttributedString:termsLink];
+    
+    
+    CGSize itemsTextViewSize = [self.itemsTextView sizeThatFits:CGSizeMake(self.itemsTextView.frame.size.width, FLT_MAX)];
+    self.itemsHeightConstraint.constant = itemsTextViewSize.height;
+    
+    self.purchaseTextView.attributedText = termsStr;
+    CGSize purchaseTextViewSize = [self.purchaseTextView sizeThatFits:CGSizeMake(self.purchaseTextView.frame.size.width, FLT_MAX)];
+    self.purchaseHeightConstraint.constant = purchaseTextViewSize.height;
+    
+    CGSize termsTextViewSize = [self.termsTextView sizeThatFits:CGSizeMake(self.termsTextView.frame.size.width, FLT_MAX)];
+    self.termsHeightConstraint.constant = termsTextViewSize.height;
+    
+    self.purchaseTextView.delegate = self;
+    
+    [self.view layoutIfNeeded];
+}
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
+{
+    
+    NSLog(@"Link tapped");
+    return YES;
+}
+
+- (IBAction)addInsurance:(id)sender {
+    
+}
+
+- (IBAction)continueNoInsurance:(id)sender {
+    
+}
+
 
 @end

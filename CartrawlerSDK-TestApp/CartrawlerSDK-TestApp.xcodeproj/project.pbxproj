@@ -281,7 +281,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ../\nxcodebuild -scheme Framework";
+			shellScript = "cd ../\n#xcodebuild -scheme Framework";
 		};
 /* End PBXShellScriptBuildPhase section */
 

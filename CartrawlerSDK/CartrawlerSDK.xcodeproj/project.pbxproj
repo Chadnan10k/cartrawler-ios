@@ -72,6 +72,12 @@
 		454AD7C81D2AB8E7005C6CFF /* CTDesignableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7C61D2AB8E7005C6CFF /* CTDesignableView.m */; };
 		45645D8B1D2D4A310075A3D2 /* HTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645D891D2D4A310075A3D2 /* HTMLParser.h */; };
 		45645D8C1D2D4A310075A3D2 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645D8A1D2D4A310075A3D2 /* HTMLParser.m */; };
+		45645DC91D2E65550075A3D2 /* ExpandExtrasButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645DC71D2E65550075A3D2 /* ExpandExtrasButton.h */; };
+		45645DCA1D2E65550075A3D2 /* ExpandExtrasButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DC81D2E65550075A3D2 /* ExpandExtrasButton.m */; };
+		45645DCD1D2E799B0075A3D2 /* OptionalExtrasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645DCB1D2E799B0075A3D2 /* OptionalExtrasViewController.h */; };
+		45645DCE1D2E799B0075A3D2 /* OptionalExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DCC1D2E799B0075A3D2 /* OptionalExtrasViewController.m */; };
+		45645DD41D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645DD21D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h */; };
+		45645DD51D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DD31D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.m */; };
 		456979281D2C03E7006A321E /* TabButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 456979261D2C03E7006A321E /* TabButton.h */; };
 		456979291D2C03E7006A321E /* TabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 456979271D2C03E7006A321E /* TabButton.m */; };
 		45AC545D1D1309F300805268 /* JVFloatLabeledTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E51D1302FF00ACF604 /* JVFloatLabeledTextField.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -236,6 +242,12 @@
 		454AD7C61D2AB8E7005C6CFF /* CTDesignableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDesignableView.m; sourceTree = "<group>"; };
 		45645D891D2D4A310075A3D2 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
 		45645D8A1D2D4A310075A3D2 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
+		45645DC71D2E65550075A3D2 /* ExpandExtrasButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpandExtrasButton.h; sourceTree = "<group>"; };
+		45645DC81D2E65550075A3D2 /* ExpandExtrasButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpandExtrasButton.m; sourceTree = "<group>"; };
+		45645DCB1D2E799B0075A3D2 /* OptionalExtrasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalExtrasViewController.h; sourceTree = "<group>"; };
+		45645DCC1D2E799B0075A3D2 /* OptionalExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalExtrasViewController.m; sourceTree = "<group>"; };
+		45645DD21D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalExtraTableViewCell.h; sourceTree = "<group>"; };
+		45645DD31D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalExtraTableViewCell.m; sourceTree = "<group>"; };
 		456979261D2C03E7006A321E /* TabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabButton.h; sourceTree = "<group>"; };
 		456979271D2C03E7006A321E /* TabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabButton.m; sourceTree = "<group>"; };
 		45AC547B1D13E47F00805268 /* StepOne.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepOne.storyboard; sourceTree = "<group>"; };
@@ -446,6 +458,17 @@
 			name = IncludedCollectionView;
 			sourceTree = "<group>";
 		};
+		45645DD11D2E9AB40075A3D2 /* Optional Extras */ = {
+			isa = PBXGroup;
+			children = (
+				45645DCB1D2E799B0075A3D2 /* OptionalExtrasViewController.h */,
+				45645DCC1D2E799B0075A3D2 /* OptionalExtrasViewController.m */,
+				45645DD21D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h */,
+				45645DD31D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.m */,
+			);
+			name = "Optional Extras";
+			sourceTree = "<group>";
+		};
 		45AC547A1D13E47200805268 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +485,9 @@
 			children = (
 				45CFC7DB1D2CF822006E6F83 /* ExtrasViewController.h */,
 				45CFC7DC1D2CF822006E6F83 /* ExtrasViewController.m */,
+				45645DC71D2E65550075A3D2 /* ExpandExtrasButton.h */,
+				45645DC81D2E65550075A3D2 /* ExpandExtrasButton.m */,
+				45645DD11D2E9AB40075A3D2 /* Optional Extras */,
 			);
 			name = "Extras (Step Four)";
 			sourceTree = "<group>";
@@ -750,6 +776,7 @@
 				4511E5241D17DFA4000ED6B0 /* CTAppearance.h in Headers */,
 				454AD77F1D25587D005C6CFF /* CTFilterDataSource.h in Headers */,
 				45AC546A1D130A1600805268 /* LocationSearchDataSource.h in Headers */,
+				45645DD41D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h in Headers */,
 				45AC54641D130A1600805268 /* CTPlaceholderView.h in Headers */,
 				45AC54711D130A1600805268 /* CTSelectView.h in Headers */,
 				45AC54741D130A1600805268 /* VehicleSelectionViewController.h in Headers */,
@@ -769,9 +796,11 @@
 				45AC54611D130A0800805268 /* CTLabel.h in Headers */,
 				4511E5471D1837D4000ED6B0 /* LocationSearchTableViewCell.h in Headers */,
 				45AC546E1D130A1600805268 /* CTDateCollectionViewCell.h in Headers */,
+				45645DCD1D2E799B0075A3D2 /* OptionalExtrasViewController.h in Headers */,
 				45AC54761D130A1600805268 /* CTVehicleSelectionViewModel.h in Headers */,
 				451B4BEE1D2BC99B006A57E7 /* TermsDetailViewController.h in Headers */,
 				454AD7C71D2AB8E7005C6CFF /* CTDesignableView.h in Headers */,
+				45645DC91D2E65550075A3D2 /* ExpandExtrasButton.h in Headers */,
 				45AC546F1D130A1600805268 /* CalendarLogicController.h in Headers */,
 				454AD7B81D2A69D2005C6CFF /* ExpandingInfoView.h in Headers */,
 				45361BEB1D2BA1BA00295124 /* UnderLinedButton.h in Headers */,
@@ -945,6 +974,7 @@
 				45E9429D1D13012400ACF604 /* SearchDetailsViewController.m in Sources */,
 				45D866D81D141BB100D19B74 /* LinkerUtils.m in Sources */,
 				45E942D41D1302A200ACF604 /* CTImageCache.m in Sources */,
+				45645DCA1D2E65550075A3D2 /* ExpandExtrasButton.m in Sources */,
 				454AD78C1D255E1F005C6CFF /* CTFilterTableViewCell.m in Sources */,
 				4511E5481D1837D4000ED6B0 /* LocationSearchTableViewCell.m in Sources */,
 				4511E5441D181B36000ED6B0 /* CTTextField.m in Sources */,
@@ -980,6 +1010,8 @@
 				45E942C91D13028600ACF604 /* VehicleTableViewCell.m in Sources */,
 				45E942A11D13014400ACF604 /* CTSelectView.m in Sources */,
 				454AD77C1D2551F5005C6CFF /* CTFilterViewController.m in Sources */,
+				45645DD51D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.m in Sources */,
+				45645DCE1D2E799B0075A3D2 /* OptionalExtrasViewController.m in Sources */,
 				4511E52F1D17F4B0000ED6B0 /* CTView.m in Sources */,
 				454AD7C81D2AB8E7005C6CFF /* CTDesignableView.m in Sources */,
 				453386E41D2BA4EA0021D392 /* IncludedCollectionViewLayout.m in Sources */,

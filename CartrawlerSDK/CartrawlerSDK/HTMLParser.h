@@ -10,6 +10,9 @@
 
 @interface HTMLParser : NSObject
 
-+ (NSAttributedString *)htmlStringWithFontFamily:(NSString *)font pointSize:(float)pointSize text:(NSString *)text;
++ (NSAttributedString *)htmlStringWithFontFamily:(NSString *)font
+                                       pointSize:(float)pointSize
+                                            text:(NSString *)text
+                                   boldFontColor:(NSString *)color;
 
 @end

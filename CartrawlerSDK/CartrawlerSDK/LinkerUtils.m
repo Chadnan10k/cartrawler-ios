@@ -50,6 +50,9 @@
 #import "TermsDetailViewController.h"
 #import "TabButton.h"
 #import "ExtrasViewController.h"
+#import "ExpandExtrasButton.h"
+#import "OptionalExtraTableViewCell.h"
+#import "OptionalExtrasViewController.h"
 
 @implementation LinkerUtils
 
@@ -97,6 +100,9 @@
     [TermsDetailViewController forceLinkerLoad_];
     [TabButton forceLinkerLoad_];
     [ExtrasViewController forceLinkerLoad_];
+    [ExpandExtrasButton forceLinkerLoad_];
+    [OptionalExtraTableViewCell forceLinkerLoad_];
+    [OptionalExtrasViewController forceLinkerLoad_];
 
 }
 

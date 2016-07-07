@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+IB_DESIGNABLE
 @interface CTButton : UIButton
+
+@property (nonatomic, strong) IBInspectable UIColor *overrideBackgroundColor;
+@property (nonatomic, strong) IBInspectable UIColor *overrideTextColor;
 
 + (void)forceLinkerLoad_;
 

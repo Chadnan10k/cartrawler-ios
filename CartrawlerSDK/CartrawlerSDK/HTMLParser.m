@@ -12,11 +12,15 @@
 @implementation HTMLParser
 
 
-+ (NSAttributedString *)htmlStringWithFontFamily:(NSString *)font pointSize:(float)pointSize text:(NSString *)text
++ (NSAttributedString *)htmlStringWithFontFamily:(NSString *)font
+                                       pointSize:(float)pointSize
+                                            text:(NSString *)text
+                                   boldFontColor:(NSString *)color
 {
-    NSString *string = [text stringByAppendingString:[NSString stringWithFormat:@"<style>body{font-family: '%@'; font-size:%fpx;}</style>",
+    NSString *string = [text stringByAppendingString:[NSString stringWithFormat:@"<style>body{font-family: '%@'; font-size:%fpx;} b{color: %@} </style>",
                                                       font,
-                                                      pointSize]];
+                                                      pointSize,
+                                                      color]];
     
     NSAttributedString *attributedText = [[NSAttributedString alloc] initWithData:[string dataUsingEncoding:NSUnicodeStringEncoding]
                                                                           options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,

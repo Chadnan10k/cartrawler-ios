@@ -20,6 +20,9 @@
 {
     self = [super initWithCoder:aDecoder];
     
+    _overrideBackgroundColor = [CTAppearance instance].buttonColor;
+    _overrideTextColor = [CTAppearance instance].buttonTextColor;
+    
     self.backgroundColor = [CTAppearance instance].buttonColor;
     [self setTitleColor:[CTAppearance instance].buttonTextColor forState:UIControlStateNormal];
     
@@ -29,6 +32,12 @@
     self.layer.masksToBounds = YES;
     
     return self;
+}
+
+- (void)awakeFromNib
+{
+    self.backgroundColor = self.overrideBackgroundColor;
+    [self setTitleColor:self.overrideTextColor forState:UIControlStateNormal];
 }
 
 @end
