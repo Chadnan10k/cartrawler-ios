@@ -8,6 +8,7 @@
 
 #import "OptionalExtrasViewController.h"
 #import "OptionalExtraTableViewCell.h"
+#import "CTAppearance.h"
 
 @interface OptionalExtrasViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
@@ -33,20 +34,48 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    //self.textView.backgroundColor = [UIColor redColor];
-    
-    self.textViewHeight.constant = self.textView.contentSize.height*2;
-    [self.view layoutIfNeeded];
     
     [self.tableView reloadData];
     self.tableViewHeight.constant = self.tableView.contentSize.height;
+    
+    NSString *extrasTitle = NSLocalizedString(@"Add a request for an additional driver, GPS, child seat or other extras. You will pay for these extras directly at the car rental supplier service desk on pick-up. Please note that availability of these extras is not always guaranteed", @"extras info");
+
+    self.textView.text = extrasTitle;
+    self.textView.font = [UIFont fontWithName:[CTAppearance instance].fontName size:15];
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 80;
+}
+
+- (void)setExtras:(NSArray<CTExtraEquipment *> *)extras
+{
+    _extras = extras;
+    [self.tableView reloadData];
+    
+    self.tableViewHeight.constant = self.tableView.contentSize.height;
+    
+    CGSize textViewSize = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
+    self.textViewHeight.constant = textViewSize.height;
+    self.textView.scrollEnabled = NO;
+        
+    if (self.viewLoaded) {
+        self.viewLoaded(self.tableViewHeight.constant + self.textViewHeight.constant + 50);
+    }
 
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    [self.tableView reloadData];
+    self.tableViewHeight.constant = self.tableView.contentSize.height;
+    
+    CGSize textViewSize = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
+    self.textViewHeight.constant = textViewSize.height;
+    self.textView.scrollEnabled = NO;
+    
     if (self.viewLoaded) {
-        self.viewLoaded(self.scrollView.contentSize.height-150);
+        self.viewLoaded(self.tableViewHeight.constant + self.textViewHeight.constant + 50);
     }
 }
 
@@ -63,14 +92,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  //  return self.extras.count;
-    return 3;
+    return self.extras.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     OptionalExtraTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-   // [cell setData:self.extras[indexPath.row]];
+    [cell setData:self.extras[indexPath.row]];
     return cell;
 }
 

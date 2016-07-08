@@ -52,14 +52,15 @@
 
     self.datesLabel.text = [NSString stringWithFormat:@"%@ - %@", pickupDate, dropoffDate];
     
-    // Do any additional setup after loading the view, typically from a nib.
-    [self.vehicleSelectionView initWithVehicleAvailability:self.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {
-        [self pushToStepThree:vehicle];
-    }];
-    
-    
     self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)self.vehicleAvailability.allVehicles.count,
                                NSLocalizedString(@"cars available", @"cars available")];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.vehicleSelectionView initWithVehicleAvailability:self.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {
+        [self pushToStepThree:vehicle];
+    }];    
 }
 
 - (IBAction)backTapped:(id)sender {

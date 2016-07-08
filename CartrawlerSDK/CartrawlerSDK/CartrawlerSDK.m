@@ -52,29 +52,15 @@
 
 - (void)presentStepOneInViewController:(UIViewController *)viewController;
 {
-    if (self.stepOneViewController == nil) {
-        
-//        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-//        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
-//        
-//        _stepOneViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
-//        self.stepOneViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        
-//        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-//        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kExtrasViewStoryboard bundle:bundle];
-//        
-//        _stepFourViewController = [storyboard instantiateViewControllerWithIdentifier:@"ExtrasViewController"];
-//        self.stepThreeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    }
+    
+    _stepOneViewController = [self stepOneViewController_];
     
     [self.stepOneViewController setStepTwoViewController:[self stepTwoViewController_]];
     [self.stepOneViewController setStepThreeViewController:[self stepThreeViewController_]];
     [self.stepOneViewController setStepFourViewController:[self stepFourViewController_]];
 
-    CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:[self stepFourViewController_]];
-    //CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
+    //CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:[self stepFourViewController_]];
+    CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
 
     navController.navigationBar.hidden = YES;
 
@@ -113,6 +99,18 @@
 - (void)overrideStepFourViewController:(StepFourViewController *)viewController
 {
     _stepFourViewController = viewController;
+}
+
+- (StepOneViewController *)stepOneViewController_
+{
+    if (self.stepTwoViewController == nil) {
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:b];
+        return [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
+    } else {
+        return self.stepTwoViewController;
+    }
 }
 
 - (StepTwoViewController *)stepTwoViewController_

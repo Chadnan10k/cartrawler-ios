@@ -19,8 +19,6 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 
-
-
 @end
 
 @implementation LocationSearchViewController
@@ -58,7 +56,7 @@
             if ([subSubview conformsToProtocol:@protocol(UITextInputTraits)])
             {
                 UITextField *textField = (UITextField *)subSubview;
-                //[textField setKeyboardAppearance: UIKeyboardAppearanceAlert];
+
                 textField.returnKeyType = UIReturnKeyDone;
                 break;
             }

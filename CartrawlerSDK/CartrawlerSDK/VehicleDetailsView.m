@@ -46,6 +46,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setupView];
+}
+
+- (void)setupView
+{
     [[CTImageCache sharedInstance] cachedImage: self.vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;
     }];
@@ -56,7 +61,7 @@
     
     self.includedCollectionView.dataSource = self;
     self.includedCollectionView.delegate = self;
-
+    
     self.vehicleNameLabel.text = self.vehicle.makeModelName;
     self.passengersLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.passengerQty.stringValue, NSLocalizedString(@"passengers", @"passengers")];
     self.doorsLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.doorCount.stringValue, NSLocalizedString(@"doors", @"doors")];
@@ -64,7 +69,6 @@
     self.transmissionLabel.text = self.vehicle.transmissionType;
     
     self.view.translatesAutoresizingMaskIntoConstraints = false;
-    
     
     NSArray *priceStrings = [@"7.9/10" componentsSeparatedByString:@"/"];
     NSMutableAttributedString *ratingString = [[NSMutableAttributedString alloc] init];
@@ -86,8 +90,6 @@
     [ratingString appendAttributedString:cents];
     
     self.ratingLabel.attributedText = ratingString;
-    
-    
 }
 
 - (void)setData:(CTVehicle *)vehicle

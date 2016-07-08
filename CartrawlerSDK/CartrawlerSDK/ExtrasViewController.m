@@ -10,6 +10,7 @@
 #import "CTLabel.h"
 #import "HTMLParser.h"
 #import "CTAppearance.h"
+#import "ExpandExtrasButton.h"
 
 @interface ExtrasViewController () <UITextViewDelegate>
 
@@ -22,12 +23,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *termsHeightConstraint;
 @property (weak, nonatomic) IBOutlet UITextView *purchaseTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *purchaseHeightConstraint;
-
-
 @property (weak, nonatomic) IBOutlet UILabel *item2Label;
 @property (weak, nonatomic) IBOutlet UILabel *item3Label;
-
 @property (weak, nonatomic) IBOutlet UIView *insuranceView;
+@property (weak, nonatomic) IBOutlet ExpandExtrasButton *expandExtrasButton;
 
 @end
 
@@ -42,10 +41,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     self.insuranceView.layer.cornerRadius = 3;
     self.insuranceView.layer.borderWidth = 1;
     self.insuranceView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.insuranceView.layer.masksToBounds = YES;
+    
+    NSLog(@"%@", self.selectedVehicle.makeModelName);
     
     NSDateComponents *pickupComp = [[NSDateComponents alloc] init];
     [pickupComp setDay:4];
@@ -73,13 +80,13 @@
     
     [self.cartrawlerAPI requestInsuranceQuoteForVehicle:@"IE"
                                                currency:@"EUR"
-                                              totalCost:@"200.00"
+                                              totalCost:self.selectedVehicle.totalPriceForThisVehicle.stringValue
                                          pickupDateTime:pickupDate
                                          returnDateTime:dropoffDate
                                  destinationCountryCode:@"ES"
                                              completion:^(CTInsurance *response, CTErrorResponse *error) {
                                                  if (response) {
-
+                                                     
                                                      dispatch_async(dispatch_get_main_queue(), ^{
                                                          [self setupView:response];
                                                      });
@@ -89,11 +96,7 @@
                                                  }
                                              }];
     
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+    [self.expandExtrasButton setExtras:self.selectedVehicle.extraEquipment];
     
 }
 
@@ -105,6 +108,7 @@
 
 - (void)setupView:(CTInsurance *)response
 {
+    
     self.summaryTextView.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
                                                                      pointSize:15
                                                                           text:response.summary

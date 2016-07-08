@@ -16,6 +16,8 @@ typedef void (^CTVehicleDetailsHeight)(CGFloat height);
 
 + (void)forceLinkerLoad_;
 
+- (void)setupView;
+
 - (void)setData:(CTVehicle *)vehicle
             api:(CartrawlerAPI *)api
      pickupDate:(NSDate *)pickupDate

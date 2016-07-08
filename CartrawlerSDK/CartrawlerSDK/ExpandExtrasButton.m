@@ -44,21 +44,24 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepFour" bundle:b];
     
     self.extrasViewController = [storyboard instantiateViewControllerWithIdentifier:@"ExtrasDetailViewController"];
-    [self.extrasViewController setExtras:@[]];
     __weak typeof (self) weakSelf = self;
     
     self.extrasViewController.viewLoaded = ^(double viewHeight) {
-        weakSelf.height.constant = viewHeight + 200;
+        weakSelf.height.constant = viewHeight;
     };
     
-    
     return self;
+}
+
+- (void)setExtras:(NSArray<CTExtraEquipment *> *)extras
+{
+    [self.extrasViewController setExtras:extras];
 }
 
 - (IBAction)expand:(id)sender
 {
     if (!expanded) {
-        self.height.constant = 300;
+        self.height.constant = 50;
         expanded = YES;
         
         [self addSubview:self.extrasViewController.view];
@@ -80,7 +83,7 @@
                                                                 toItem:self
                                                              attribute:NSLayoutAttributeBottom
                                                             multiplier:1.0
-                                                              constant:-5];
+                                                              constant:0];
         
         self.leftConstraint = [NSLayoutConstraint constraintWithItem:self.extrasViewController.view
                                                            attribute:NSLayoutAttributeLeft
@@ -102,8 +105,11 @@
                                self.leftConstraint,
                                self.rightConstraint]];
         
+        self.height.constant = 100;
+
+        
     } else {
-        self.height.constant = 60;
+        //self.height.constant = 60;
         
         [self.extrasViewController.view removeFromSuperview];
         

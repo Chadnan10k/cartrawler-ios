@@ -90,10 +90,16 @@
     
     if (indexPath.section == 0) {
         //cell.imageView.image = [UIImage imageNamed:@""];
-        [cell setLabelText:self.airportLocations[indexPath.row].name];
+        if(self.airportLocations[indexPath.row] != (id)[NSNull null]) {
+            NSLog(@"%@", self.airportLocations[indexPath.row]);
+            [cell setLabelText:self.airportLocations[indexPath.row].name];
+        }
     } else {
         //cell.imageView.image = [UIImage imageNamed:@""];
-        [cell setLabelText:self.otherLocations[indexPath.row].name];
+        if(self.otherLocations[indexPath.row] != (id)[NSNull null]) {
+            NSLog(@"%@", self.otherLocations[indexPath.row]);
+            [cell setLabelText:self.otherLocations[indexPath.row].name];
+        }
     }
     
     return cell;

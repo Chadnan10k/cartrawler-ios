@@ -27,16 +27,23 @@
     
 }
 
+- (void)awakeFromNib
+{
+    self.addButton.layer.cornerRadius = 5;
+    self.addButton.layer.masksToBounds = YES;
+    self.lessButton.layer.cornerRadius = 5;
+    self.lessButton.layer.masksToBounds = YES;
+    
+    self.lessButton.backgroundColor = [UIColor lightGrayColor];
+    self.addButton.backgroundColor = [UIColor darkGrayColor];
+
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     
     _itemAmount = 0;
-    
-    self.addButton.layer.cornerRadius = 10;
-    self.addButton.layer.masksToBounds = YES;
-    self.lessButton.layer.cornerRadius = 10;
-    self.lessButton.layer.masksToBounds = YES;
     
     return self;
 }
@@ -48,7 +55,7 @@
 }
 
 - (IBAction)add:(id)sender {
-    if (self.itemAmount <= 4) {
+    if (self.itemAmount < 4) {
         self.itemAmount++;
         [self updateAmountLabel];
     }
@@ -56,18 +63,18 @@
     if (self.itemAmount == 4) {
         self.addButton.backgroundColor = [UIColor lightGrayColor];
     } else {
-        self.addButton.backgroundColor = [UIColor darkGrayColor];
+        self.lessButton.backgroundColor = [UIColor darkGrayColor];
     }
 }
 
 - (IBAction)subtract:(id)sender {
-    if (self.itemAmount >= 0) {
+    if (self.itemAmount > 0) {
         self.itemAmount--;
         [self updateAmountLabel];
     }
     
     if (self.itemAmount == 0) {
-        self.addButton.backgroundColor = [UIColor lightGrayColor];
+        self.lessButton.backgroundColor = [UIColor lightGrayColor];
     } else {
         self.addButton.backgroundColor = [UIColor darkGrayColor];
     }

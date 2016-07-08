@@ -24,6 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet TabButton *carDetailsTab;
 @property (weak, nonatomic) IBOutlet TabButton *supplierTab;
+@property (weak, nonatomic) VehicleDetailsView *vehicleDetailView;
 
 @end
 
@@ -34,6 +35,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.vehicleDetailView) {
+        [self.vehicleDetailView setData:self.selectedVehicle
+                                    api:self.cartrawlerAPI
+                             pickupDate:self.pickupDate
+                             returnDate:self.dropoffDate
+                             pickupCode:self.pickupLocation.code
+                             returnCode:self.dropoffLocation.code
+                            homeCountry:@"IE"];
+        
+        [self.vehicleDetailView setupView];
+    }
+    
     self.vendorRatingContainer.layer.cornerRadius = 5;
     self.vendorRatingContainer.layer.masksToBounds = YES;
     self.vehicleDetailsContainer.layer.cornerRadius = 5;
@@ -74,6 +92,13 @@
     [priceString appendAttributedString:cents];
     
     self.priceLabel.attributedText = priceString;
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
 }
 
 - (IBAction)backTapped:(id)sender {
@@ -89,6 +114,8 @@
 {
     if ([[segue identifier] isEqualToString:@"VehicleEmbed"]) {
         VehicleDetailsView *vc = (VehicleDetailsView *)[segue destinationViewController];
+        _vehicleDetailView = vc;
+        
         [vc setData:self.selectedVehicle
                 api:self.cartrawlerAPI
          pickupDate:self.pickupDate

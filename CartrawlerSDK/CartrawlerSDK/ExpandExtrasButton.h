@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CartrawlerAPI/CTExtraEquipment.h>
 
 @interface ExpandExtrasButton : UIView
+
+@property (strong, nonatomic) NSArray<CTExtraEquipment *> *extras;
 
 + (void)forceLinkerLoad_;
 
