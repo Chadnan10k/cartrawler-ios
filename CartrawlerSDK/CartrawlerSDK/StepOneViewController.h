@@ -11,6 +11,7 @@
 #import "StepTwoViewController.h"
 #import "StepThreeViewController.h"
 #import "StepFourViewController.h"
+#import "StepFiveViewController.h"
 
 @interface StepOneViewController : UIViewController
 
@@ -30,6 +31,7 @@ typedef void (^StepOneCompletion)(BOOL success, NSString *errorMessage);
 @property (nonatomic, strong) StepTwoViewController *stepTwoViewController;
 @property (nonatomic, strong) StepThreeViewController *stepThreeViewController;
 @property (nonatomic, strong) StepFourViewController *stepFourViewController;
+@property (nonatomic, strong) StepFiveViewController *stepFiveViewController;
 
 - (void)pushToStepTwo;
 

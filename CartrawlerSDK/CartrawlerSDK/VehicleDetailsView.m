@@ -75,15 +75,15 @@
     
     NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject
                                                                   attributes:@{NSFontAttributeName:
-                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.ratingLabel.font.pointSize]}];
+                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:18]}];
     
     NSAttributedString *dot = [[NSAttributedString alloc] initWithString:@"/"
                                                               attributes:@{NSFontAttributeName:
-                                                                               [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.ratingLabel.font.pointSize]}];
+                                                                               [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
     
     NSAttributedString *cents = [[NSAttributedString alloc] initWithString:priceStrings.lastObject
                                                                 attributes:@{NSFontAttributeName:
-                                                                                 [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.ratingLabel.font.pointSize-3], NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
+                                                                                 [UIFont fontWithName:[CTAppearance instance].boldFontName size:14], NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
     
     [ratingString appendAttributedString:dollars];
     [ratingString appendAttributedString:dot];

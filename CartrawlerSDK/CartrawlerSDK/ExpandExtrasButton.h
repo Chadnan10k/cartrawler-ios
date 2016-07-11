@@ -15,4 +15,6 @@
 
 + (void)forceLinkerLoad_;
 
+- (void)refreshView;
+
 @end

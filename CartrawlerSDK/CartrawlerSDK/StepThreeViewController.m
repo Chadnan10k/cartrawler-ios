@@ -7,6 +7,7 @@
 //
 
 #import "StepThreeViewController.h"
+#import "CTSDKSettings.h"
 
 @interface StepThreeViewController ()
 
@@ -80,10 +81,26 @@
     [self.stepFourViewController setDriverAge:self.driverAge];
     [self.stepFourViewController setPassengerQty:self.passengerQty];
     [self.stepFourViewController setCartrawlerAPI:self.cartrawlerAPI];
-    
-    
-    [self.navigationController pushViewController:self.stepFourViewController animated:YES];
+    [self.stepFourViewController setStepFiveViewController:self.stepFiveViewController];
 
+    [self.cartrawlerAPI requestInsuranceQuoteForVehicle:[CTSDKSettings instance].homeCountryCode
+                                               currency:[CTSDKSettings instance].currencyCode
+                                              totalCost:self.selectedVehicle.totalPriceForThisVehicle.stringValue
+                                         pickupDateTime:self.pickupDate
+                                         returnDateTime:self.dropoffDate
+                                 destinationCountryCode:self.pickupLocation.codeContext
+                                             completion:^(CTInsurance *response, CTErrorResponse *error) {
+                                                 if (response) {
+                                                     
+                                                     dispatch_async(dispatch_get_main_queue(), ^{
+                                                         [self.stepFourViewController setInsurance:response];
+                                                         [self.navigationController pushViewController:self.stepFourViewController animated:YES];
+                                                     });
+                                                     
+                                                 } else {
+                                                     NSLog(@"ERROR: CANNOT PUSH TO STEP FOUR AS %@", error.errorMessage);
+                                                 }
+                                             }];
     
 }
 

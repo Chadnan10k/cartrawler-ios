@@ -24,6 +24,7 @@
 @property (nonatomic, strong) CTVehicleAvailability *vehicleAvailability;
 @property (nonatomic, strong) StepThreeViewController *stepThreeViewController;
 @property (nonatomic, strong) StepFourViewController *stepFourViewController;
+@property (nonatomic, strong) StepFiveViewController *stepFiveViewController;
 
 + (void)forceLinkerLoad_;
 

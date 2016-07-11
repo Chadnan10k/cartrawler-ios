@@ -30,7 +30,8 @@
     
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     __weak typeof (self) weakSelf = self;
@@ -56,8 +57,10 @@
                                NSLocalizedString(@"cars available", @"cars available")];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     [self.vehicleSelectionView initWithVehicleAvailability:self.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {
         [self pushToStepThree:vehicle];
     }];    

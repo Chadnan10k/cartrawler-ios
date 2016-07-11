@@ -13,6 +13,7 @@
 #import "StepTwoViewController.h"
 #import "StepThreeViewController.h"
 #import "StepFourViewController.h"
+#import "StepFiveViewController.h"
 #import <CartrawlerAPI/CartrawlerAPI.h>
 
 @interface CartrawlerSDK : NSObject
@@ -24,12 +25,8 @@
 - (void)presentStepOneInViewController:(UIViewController *)viewController;
 
 /*
- *
- *  You can present any step at any time once you pass the data and your currently presented view controller.
- *
+ * This call is useful for deep linking
  */
-
-
 - (void)presentStepTwoWithData:(NSString *)pickupLocationCode
             returnLocationCode:(NSString *)returnLocationCode
            customerCountryCode:(NSString *)customerCountryCode
@@ -55,6 +52,7 @@
 - (void)overrideStepTwoViewController:(StepTwoViewController *)viewController;
 - (void)overrideStepThreeViewController:(StepThreeViewController *)viewController;
 - (void)overrideStepFourViewController:(StepFourViewController *)viewController;
+- (void)overrideStepFiveViewController:(StepFiveViewController *)viewController;
 
 
 //Settings

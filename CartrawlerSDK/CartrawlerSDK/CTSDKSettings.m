@@ -28,6 +28,8 @@
     _clientId = clientId;
     _languageCode = languageCode;
     _isDebug = isDebug;
+    _currencyCode = @"EUR";
+    _homeCountryCode = @"IE";
 }
 
 - (void)setLanguageCode:(NSString *)languageCode
@@ -38,6 +40,11 @@
 - (void)setCurrencyCode:(NSString *)currencyCode
 {
     _currencyCode = currencyCode;
+}
+
+- (void)setHomeCountryCode:(NSString *)homeCountryCode
+{
+    _homeCountryCode = homeCountryCode;
 }
 
 @end

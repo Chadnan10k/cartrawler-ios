@@ -53,6 +53,8 @@
 #import "ExpandExtrasButton.h"
 #import "OptionalExtraTableViewCell.h"
 #import "OptionalExtrasViewController.h"
+#import "PaymentSummaryViewController.h"
+#import "PaymentSummaryTableViewCell.h"
 
 @implementation LinkerUtils
 
@@ -103,6 +105,8 @@
     [ExpandExtrasButton forceLinkerLoad_];
     [OptionalExtraTableViewCell forceLinkerLoad_];
     [OptionalExtrasViewController forceLinkerLoad_];
+    [PaymentSummaryViewController forceLinkerLoad_];
+    [PaymentSummaryTableViewCell forceLinkerLoad_];
 
 }
 

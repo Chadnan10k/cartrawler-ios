@@ -51,6 +51,7 @@
     self.stepTwoViewController.vehicleAvailability = self.vehicleAvailability;
     self.stepTwoViewController.stepThreeViewController = self.stepThreeViewController;
     self.stepTwoViewController.stepFourViewController = self.stepFourViewController;
+    self.stepTwoViewController.stepFiveViewController = self.stepFiveViewController;
 
     
     CartrawlerAPI *cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId

@@ -39,7 +39,7 @@
 /**
  *  Cost of equipment
  */
-@property (nonatomic, strong, readonly) NSString *chargeAmount;
+@property (nonatomic, strong, readonly) NSNumber *chargeAmount;
 /**
  *  Currency code of equipment
  */

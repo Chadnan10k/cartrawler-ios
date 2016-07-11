@@ -53,13 +53,22 @@
     return self;
 }
 
+- (void)refreshView
+{
+    [self.extrasViewController refreshView];
+}
+
 - (void)setExtras:(NSArray<CTExtraEquipment *> *)extras
 {
+    if (expanded) {
+        [self closeExtrasDrawer:YES];
+    }
     [self.extrasViewController setExtras:extras];
 }
 
-- (IBAction)expand:(id)sender
+- (void)closeExtrasDrawer:(BOOL)expand
 {
+    expanded = expand;
     if (!expanded) {
         self.height.constant = 50;
         expanded = YES;
@@ -106,10 +115,9 @@
                                self.rightConstraint]];
         
         self.height.constant = 100;
-
+        
         
     } else {
-        //self.height.constant = 60;
         
         [self.extrasViewController.view removeFromSuperview];
         
@@ -123,8 +131,13 @@
         [self setNeedsUpdateConstraints];
         [self layoutIfNeeded];
         expanded = NO;
-
+        
     }
+}
+
+- (IBAction)expand:(id)sender
+{
+    [self closeExtrasDrawer:expanded];
 }
 
 @end

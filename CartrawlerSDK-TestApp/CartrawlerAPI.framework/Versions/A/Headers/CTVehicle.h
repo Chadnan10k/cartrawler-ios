@@ -152,7 +152,6 @@ typedef NS_ENUM(NSUInteger, FuelPolicy) {
  *  Vehicle category code
  */
 @property (nonatomic, strong, readonly) NSString *categoryDescriptionCode;
-
 /**
  *  The number of doors the vehicle has
  */

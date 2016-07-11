@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CartrawlerAPI.h>
+#import "StepFiveViewController.h"
 
 @interface StepFourViewController : UIViewController
 
@@ -19,5 +20,9 @@
 @property (nonatomic, strong) NSDate *dropoffDate;
 @property (nonatomic, strong) NSNumber *driverAge;
 @property (nonatomic, strong) NSNumber *passengerQty;
+@property (nonatomic, strong) CTInsurance *insurance;
+@property (nonatomic, strong) StepFiveViewController *stepFiveViewController;
+
+- (void)pushToStepFive:(NSArray<CTExtraEquipment *> *)extras insuranceSelected:(BOOL)selected;
 
 @end

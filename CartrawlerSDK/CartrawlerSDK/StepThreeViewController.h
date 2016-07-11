@@ -10,6 +10,7 @@
 #import <CartrawlerAPI/CTVehicle.h>
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "StepFourViewController.h"
+#import "StepFiveViewController.h"
 
 @interface StepThreeViewController : UIViewController
 
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) NSNumber *driverAge;
 @property (nonatomic, strong) NSNumber *passengerQty;
 @property (nonatomic, strong) StepFourViewController *stepFourViewController;
+@property (nonatomic, strong) StepFiveViewController *stepFiveViewController;
 
 + (void)forceLinkerLoad_;
 

@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet TabButton *carDetailsTab;
 @property (weak, nonatomic) IBOutlet TabButton *supplierTab;
 @property (weak, nonatomic) VehicleDetailsView *vehicleDetailView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -40,6 +41,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.scrollView setContentOffset:
+     CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
+    
     if (self.vehicleDetailView) {
         [self.vehicleDetailView setData:self.selectedVehicle
                                     api:self.cartrawlerAPI
@@ -77,15 +82,15 @@
     
     NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject
                                                                   attributes:@{NSFontAttributeName:
-                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.priceLabel.font.pointSize+2]}];
+                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:20]}];
     
     NSAttributedString *dot = [[NSAttributedString alloc] initWithString:@"."
                                                               attributes:@{NSFontAttributeName:
-                                                                               [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.priceLabel.font.pointSize]}];
+                                                                               [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
     
     NSAttributedString *cents = [[NSAttributedString alloc] initWithString:priceStrings.lastObject
                                                                 attributes:@{NSFontAttributeName:
-                                                                                 [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.priceLabel.font.pointSize-4]}];
+                                                                                 [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
     
     [priceString appendAttributedString:dollars];
     [priceString appendAttributedString:dot];
@@ -93,12 +98,6 @@
     
     self.priceLabel.attributedText = priceString;
     
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-
 }
 
 - (IBAction)backTapped:(id)sender {

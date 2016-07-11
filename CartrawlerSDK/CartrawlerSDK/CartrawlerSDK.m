@@ -16,6 +16,7 @@
 #define kSearchResultsViewStoryboard @"StepTwo"
 #define kVehicleDetailsViewStoryboard @"StepThree"
 #define kExtrasViewStoryboard @"StepFour"
+#define kSummaryViewStoryboard @"StepFive"
 
 @interface CartrawlerSDK()
 
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) StepTwoViewController *stepTwoViewController;
 @property (nonatomic, strong) StepThreeViewController *stepThreeViewController;
 @property (nonatomic, strong) StepFourViewController *stepFourViewController;
+@property (nonatomic, strong) StepFiveViewController *stepFiveViewController;
 
 @end
 
@@ -36,7 +38,7 @@
     
     [LinkerUtils loadFiles];
     [[CTSDKSettings instance] setClientId:requestorID languageCode:languageCode isDebug:isDebug];
-    
+
     return self;
 }
 
@@ -58,8 +60,9 @@
     [self.stepOneViewController setStepTwoViewController:[self stepTwoViewController_]];
     [self.stepOneViewController setStepThreeViewController:[self stepThreeViewController_]];
     [self.stepOneViewController setStepFourViewController:[self stepFourViewController_]];
+    [self.stepOneViewController setStepFiveViewController:[self stepFiveViewController_]];
 
-    //CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:[self stepFourViewController_]];
+    //CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:[self stepFiveViewController_]];
     CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
 
     navController.navigationBar.hidden = YES;
@@ -101,15 +104,20 @@
     _stepFourViewController = viewController;
 }
 
+- (void)overrideStepFiveViewController:(StepFiveViewController *)viewController
+{
+    _stepFiveViewController = viewController;
+}
+
 - (StepOneViewController *)stepOneViewController_
 {
-    if (self.stepTwoViewController == nil) {
+    if (self.stepOneViewController == nil) {
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
         NSBundle *b = [NSBundle bundleWithPath:bundlePath];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:b];
         return [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
     } else {
-        return self.stepTwoViewController;
+        return self.stepOneViewController;
     }
 }
 
@@ -145,7 +153,20 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kExtrasViewStoryboard bundle:b];
         return [storyboard instantiateViewControllerWithIdentifier:@"ExtrasViewController"];
     } else {
-        return self.stepFourViewController_;
+        return self.stepFourViewController;
+    }
+}
+
+
+- (StepFiveViewController *)stepFiveViewController_
+{
+    if (self.stepFiveViewController == nil) {
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSummaryViewStoryboard bundle:b];
+        return [storyboard instantiateViewControllerWithIdentifier:@"PaymentSummaryViewController"];
+    } else {
+        return self.stepFiveViewController;
     }
 }
 

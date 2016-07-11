@@ -27,6 +27,10 @@
                          completion:(VehicleSelectionCompletion)completion;
 {
     //self = [super self];
+    
+    [self.tableView setContentOffset:
+     CGPointMake(0, -self.tableView.contentInset.top) animated:YES];
+    
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     [self.tableView registerNib:[UINib nibWithNibName:@"VehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];

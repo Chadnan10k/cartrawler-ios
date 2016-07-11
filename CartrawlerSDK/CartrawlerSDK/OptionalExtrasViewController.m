@@ -47,17 +47,32 @@
     self.tableView.estimatedRowHeight = 80;
 }
 
-- (void)setExtras:(NSArray<CTExtraEquipment *> *)extras
+- (void)refreshView
 {
-    _extras = extras;
     [self.tableView reloadData];
-    
     self.tableViewHeight.constant = self.tableView.contentSize.height;
     
     CGSize textViewSize = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
     self.textViewHeight.constant = textViewSize.height;
     self.textView.scrollEnabled = NO;
-        
+    
+    if (self.viewLoaded) {
+        self.viewLoaded(50);
+    }
+}
+
+- (void)setExtras:(NSArray<CTExtraEquipment *> *)extras
+{
+    _extras = extras;
+    [self.tableView reloadData];
+
+    self.tableViewHeight.constant = self.tableView.contentSize.height;
+    
+    CGSize textViewSize = [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)];
+    self.textViewHeight.constant = textViewSize.height;
+    self.textView.scrollEnabled = NO;
+    
+    
     if (self.viewLoaded) {
         self.viewLoaded(self.tableViewHeight.constant + self.textViewHeight.constant + 50);
     }

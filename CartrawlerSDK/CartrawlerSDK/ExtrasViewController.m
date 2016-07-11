@@ -23,10 +23,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *termsHeightConstraint;
 @property (weak, nonatomic) IBOutlet UITextView *purchaseTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *purchaseHeightConstraint;
-@property (weak, nonatomic) IBOutlet UILabel *item2Label;
-@property (weak, nonatomic) IBOutlet UILabel *item3Label;
 @property (weak, nonatomic) IBOutlet UIView *insuranceView;
 @property (weak, nonatomic) IBOutlet ExpandExtrasButton *expandExtrasButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -37,67 +36,23 @@
     
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
+    [self.scrollView setContentOffset:
+     CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
     
     self.insuranceView.layer.cornerRadius = 3;
     self.insuranceView.layer.borderWidth = 1;
     self.insuranceView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.insuranceView.layer.masksToBounds = YES;
     
-    NSLog(@"%@", self.selectedVehicle.makeModelName);
-    
-    NSDateComponents *pickupComp = [[NSDateComponents alloc] init];
-    [pickupComp setDay:4];
-    [pickupComp  setMonth:7];
-    [pickupComp  setYear:2016];
-    [pickupComp  setHour:13];
-    [pickupComp  setMinute:30];
-    [pickupComp  setSecond:00];
-    
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDate *pickupDate = [gregorian dateFromComponents:pickupComp];
-    
-    NSDateComponents * dropoffComp = [[NSDateComponents alloc] init];
-    [dropoffComp setDay:6];
-    [dropoffComp  setMonth:7];
-    [dropoffComp  setYear:2016];
-    [dropoffComp  setHour:13];
-    [dropoffComp  setMinute:30];
-    [dropoffComp  setSecond:00];
-    
-    NSDate *dropoffDate = [gregorian dateFromComponents: dropoffComp];
-    
-    [self setCartrawlerAPI:[[CartrawlerAPI alloc] initWithClientKey:@"463558" language:@"EN" debug:YES]];
-    
-    [self.cartrawlerAPI requestInsuranceQuoteForVehicle:@"IE"
-                                               currency:@"EUR"
-                                              totalCost:self.selectedVehicle.totalPriceForThisVehicle.stringValue
-                                         pickupDateTime:pickupDate
-                                         returnDateTime:dropoffDate
-                                 destinationCountryCode:@"ES"
-                                             completion:^(CTInsurance *response, CTErrorResponse *error) {
-                                                 if (response) {
-                                                     
-                                                     dispatch_async(dispatch_get_main_queue(), ^{
-                                                         [self setupView:response];
-                                                     });
-                                                     
-                                                 } else {
-                                                     NSLog(@"%@", error.errorMessage);
-                                                 }
-                                             }];
-    
     [self.expandExtrasButton setExtras:self.selectedVehicle.extraEquipment];
+    [self.expandExtrasButton refreshView];
     
+    [self setupView:self.insurance];
+
 }
 
 - (void)viewDidLayoutSubviews {
@@ -108,6 +63,7 @@
 
 - (void)setupView:(CTInsurance *)response
 {
+    [self.view layoutIfNeeded];
     
     self.summaryTextView.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
                                                                      pointSize:15
@@ -129,7 +85,9 @@
     }
     
     self.itemsTextView.attributedText = listItems;
-
+    
+    CGSize itemsTextViewSize = [self.itemsTextView sizeThatFits:CGSizeMake(self.itemsTextView.frame.size.width, FLT_MAX)];
+    self.itemsHeightConstraint.constant = itemsTextViewSize.height;
     
     NSDictionary *termsAttr = @{ NSForegroundColorAttributeName : [UIColor lightGrayColor],
                                  NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName
@@ -137,6 +95,10 @@
     
     self.termsTextView.attributedText = [[NSAttributedString alloc]
                                          initWithString:response.paragraphSubfooter attributes:termsAttr];
+    
+    
+    CGSize termsTextViewSize = [self.termsTextView sizeThatFits:CGSizeMake(self.termsTextView.frame.size.width, FLT_MAX)];
+    self.termsHeightConstraint.constant = termsTextViewSize.height;
     
     NSDictionary *tcAttr = @{ NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:15] };
     
@@ -157,16 +119,9 @@
     
     [termsStr replaceCharactersInRange:range withAttributedString:termsLink];
     
-    
-    CGSize itemsTextViewSize = [self.itemsTextView sizeThatFits:CGSizeMake(self.itemsTextView.frame.size.width, FLT_MAX)];
-    self.itemsHeightConstraint.constant = itemsTextViewSize.height;
-    
     self.purchaseTextView.attributedText = termsStr;
     CGSize purchaseTextViewSize = [self.purchaseTextView sizeThatFits:CGSizeMake(self.purchaseTextView.frame.size.width, FLT_MAX)];
     self.purchaseHeightConstraint.constant = purchaseTextViewSize.height;
-    
-    CGSize termsTextViewSize = [self.termsTextView sizeThatFits:CGSizeMake(self.termsTextView.frame.size.width, FLT_MAX)];
-    self.termsHeightConstraint.constant = termsTextViewSize.height;
     
     self.purchaseTextView.delegate = self;
     
@@ -175,17 +130,18 @@
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
-    
     NSLog(@"Link tapped");
     return YES;
 }
 
-- (IBAction)addInsurance:(id)sender {
-    
+- (IBAction)addInsurance:(id)sender
+{
+    [self pushToStepFive:self.selectedVehicle.extraEquipment insuranceSelected:YES];
 }
 
-- (IBAction)continueNoInsurance:(id)sender {
-    
+- (IBAction)continueNoInsurance:(id)sender
+{
+    [self pushToStepFive:self.selectedVehicle.extraEquipment insuranceSelected:NO];
 }
 
 

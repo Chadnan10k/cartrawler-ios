@@ -78,6 +78,14 @@
 		45645DCE1D2E799B0075A3D2 /* OptionalExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DCC1D2E799B0075A3D2 /* OptionalExtrasViewController.m */; };
 		45645DD41D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645DD21D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h */; };
 		45645DD51D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DD31D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.m */; };
+		45645DDC1D33D6370075A3D2 /* StepFiveViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645DDA1D33D6370075A3D2 /* StepFiveViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45645DDD1D33D6370075A3D2 /* StepFiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DDB1D33D6370075A3D2 /* StepFiveViewController.m */; };
+		45645DDF1D33D8370075A3D2 /* StepFiveViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 45645DDA1D33D6370075A3D2 /* StepFiveViewController.h */; };
+		45645DE11D33DB1A0075A3D2 /* StepFive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45645DE01D33DB1A0075A3D2 /* StepFive.storyboard */; };
+		45645DF51D33E70B0075A3D2 /* PaymentSummaryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645DF31D33E70B0075A3D2 /* PaymentSummaryViewController.h */; };
+		45645DF61D33E70B0075A3D2 /* PaymentSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DF41D33E70B0075A3D2 /* PaymentSummaryViewController.m */; };
+		45645DFA1D33E8240075A3D2 /* PaymentSummaryTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645DF81D33E8240075A3D2 /* PaymentSummaryTableViewCell.h */; };
+		45645DFB1D33E8240075A3D2 /* PaymentSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DF91D33E8240075A3D2 /* PaymentSummaryTableViewCell.m */; };
 		456979281D2C03E7006A321E /* TabButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 456979261D2C03E7006A321E /* TabButton.h */; };
 		456979291D2C03E7006A321E /* TabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 456979271D2C03E7006A321E /* TabButton.m */; };
 		45AC545D1D1309F300805268 /* JVFloatLabeledTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E51D1302FF00ACF604 /* JVFloatLabeledTextField.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -248,6 +256,13 @@
 		45645DCC1D2E799B0075A3D2 /* OptionalExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalExtrasViewController.m; sourceTree = "<group>"; };
 		45645DD21D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalExtraTableViewCell.h; sourceTree = "<group>"; };
 		45645DD31D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalExtraTableViewCell.m; sourceTree = "<group>"; };
+		45645DDA1D33D6370075A3D2 /* StepFiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepFiveViewController.h; sourceTree = "<group>"; };
+		45645DDB1D33D6370075A3D2 /* StepFiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepFiveViewController.m; sourceTree = "<group>"; };
+		45645DE01D33DB1A0075A3D2 /* StepFive.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepFive.storyboard; sourceTree = "<group>"; };
+		45645DF31D33E70B0075A3D2 /* PaymentSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentSummaryViewController.h; sourceTree = "<group>"; };
+		45645DF41D33E70B0075A3D2 /* PaymentSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSummaryViewController.m; sourceTree = "<group>"; };
+		45645DF81D33E8240075A3D2 /* PaymentSummaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentSummaryTableViewCell.h; sourceTree = "<group>"; };
+		45645DF91D33E8240075A3D2 /* PaymentSummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSummaryTableViewCell.m; sourceTree = "<group>"; };
 		456979261D2C03E7006A321E /* TabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabButton.h; sourceTree = "<group>"; };
 		456979271D2C03E7006A321E /* TabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabButton.m; sourceTree = "<group>"; };
 		45AC547B1D13E47F00805268 /* StepOne.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepOne.storyboard; sourceTree = "<group>"; };
@@ -469,6 +484,17 @@
 			name = "Optional Extras";
 			sourceTree = "<group>";
 		};
+		45645DE21D33E4AB0075A3D2 /* Summary (Step Five) */ = {
+			isa = PBXGroup;
+			children = (
+				45645DF31D33E70B0075A3D2 /* PaymentSummaryViewController.h */,
+				45645DF41D33E70B0075A3D2 /* PaymentSummaryViewController.m */,
+				45645DF81D33E8240075A3D2 /* PaymentSummaryTableViewCell.h */,
+				45645DF91D33E8240075A3D2 /* PaymentSummaryTableViewCell.m */,
+			);
+			name = "Summary (Step Five)";
+			sourceTree = "<group>";
+		};
 		45AC547A1D13E47200805268 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,6 +502,7 @@
 				4511E5491D183C36000ED6B0 /* StepTwo.storyboard */,
 				454AD7AD1D2A5E7B005C6CFF /* StepThree.storyboard */,
 				45CFC7D91D2CF4D9006E6F83 /* StepFour.storyboard */,
+				45645DE01D33DB1A0075A3D2 /* StepFive.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -566,6 +593,8 @@
 				454AD7901D26C6B7005C6CFF /* StepThreeViewController.m */,
 				45CFC7D21D2CF1BA006E6F83 /* StepFourViewController.h */,
 				45CFC7D31D2CF1BA006E6F83 /* StepFourViewController.m */,
+				45645DDA1D33D6370075A3D2 /* StepFiveViewController.h */,
+				45645DDB1D33D6370075A3D2 /* StepFiveViewController.m */,
 			);
 			name = "Base View Controllers";
 			sourceTree = "<group>";
@@ -592,6 +621,7 @@
 				45E942B51D1301D000ACF604 /* Vehicle Selection (Step Two) */,
 				454AD7AE1D2A61E1005C6CFF /* Vehicle Details (Step Three) */,
 				45CFC7DA1D2CF7EA006E6F83 /* Extras (Step Four) */,
+				45645DE21D33E4AB0075A3D2 /* Summary (Step Five) */,
 			);
 			name = "Preset Views";
 			sourceTree = "<group>";
@@ -765,6 +795,7 @@
 				45AC54661D130A1600805268 /* StepOneViewController.h in Headers */,
 				45CFC7DD1D2CF822006E6F83 /* ExtrasViewController.h in Headers */,
 				45AC54671D130A1600805268 /* StepTwoViewController.h in Headers */,
+				45645DDC1D33D6370075A3D2 /* StepFiveViewController.h in Headers */,
 				454AD7911D26C6B7005C6CFF /* StepThreeViewController.h in Headers */,
 				45E942F11D13060E00ACF604 /* CartrawlerSDK.h in Headers */,
 				45CFC7D41D2CF1BA006E6F83 /* StepFourViewController.h in Headers */,
@@ -793,8 +824,10 @@
 				45AC545F1D130A0000805268 /* CTCheckbox.h in Headers */,
 				454AD7BC1D2A6C5F005C6CFF /* VehicleDetailsView.h in Headers */,
 				45AC546C1D130A1600805268 /* CTCalendarView.h in Headers */,
+				45645DFA1D33E8240075A3D2 /* PaymentSummaryTableViewCell.h in Headers */,
 				45AC54611D130A0800805268 /* CTLabel.h in Headers */,
 				4511E5471D1837D4000ED6B0 /* LocationSearchTableViewCell.h in Headers */,
+				45645DF51D33E70B0075A3D2 /* PaymentSummaryViewController.h in Headers */,
 				45AC546E1D130A1600805268 /* CTDateCollectionViewCell.h in Headers */,
 				45645DCD1D2E799B0075A3D2 /* OptionalExtrasViewController.h in Headers */,
 				45AC54761D130A1600805268 /* CTVehicleSelectionViewModel.h in Headers */,
@@ -904,6 +937,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45645DDF1D33D8370075A3D2 /* StepFiveViewController.h in Resources */,
 				45CFC7E01D2CF968006E6F83 /* ExtrasViewController.h in Resources */,
 				45CFC7DF1D2CF95C006E6F83 /* StepFour.storyboard in Resources */,
 				45CFC7D61D2CF386006E6F83 /* StepTwoViewController.h in Resources */,
@@ -917,6 +951,7 @@
 				45D866D91D142CAC00D19B74 /* VehicleTableViewCell_iPhone.xib in Resources */,
 				45D866D41D140FCC00D19B74 /* SearchDetailsViewController.h in Resources */,
 				45D866D31D140F8500D19B74 /* StepOneViewController.h in Resources */,
+				45645DE11D33DB1A0075A3D2 /* StepFive.storyboard in Resources */,
 				45D866E21D14395900D19B74 /* checkmark.png in Resources */,
 				4511E5201D145779000ED6B0 /* Assets.xcassets in Resources */,
 				45D8665D1D13F0E900D19B74 /* StepOne.storyboard in Resources */,
@@ -968,6 +1003,7 @@
 			files = (
 				45E942B11D1301C600ACF604 /* CTCalendarTableViewCell.m in Sources */,
 				454AD7B91D2A69D2005C6CFF /* ExpandingInfoView.m in Sources */,
+				45645DF61D33E70B0075A3D2 /* PaymentSummaryViewController.m in Sources */,
 				45E9428F1D13004F00ACF604 /* StepTwoViewController.m in Sources */,
 				454AD7BD1D2A6C5F005C6CFF /* VehicleDetailsView.m in Sources */,
 				45E942E91D1302FF00ACF604 /* JVFloatLabeledTextField.m in Sources */,
@@ -988,6 +1024,7 @@
 				45CFC7D51D2CF1BA006E6F83 /* StepFourViewController.m in Sources */,
 				45E942491D12FF0F00ACF604 /* CartrawlerSDK.m in Sources */,
 				45E942DF1D1302DA00ACF604 /* CTButton.m in Sources */,
+				45645DDD1D33D6370075A3D2 /* StepFiveViewController.m in Sources */,
 				45E942981D1300ED00ACF604 /* CTVehicleSelectionViewModel.m in Sources */,
 				45E9428E1D13004F00ACF604 /* StepOneViewController.m in Sources */,
 				45E942AF1D1301C600ACF604 /* CTCalendarViewController.m in Sources */,
@@ -997,6 +1034,7 @@
 				45E942B41D1301C600ACF604 /* CTMiddleDateCell.m in Sources */,
 				45E942C31D13022100ACF604 /* CTTimePickerView.m in Sources */,
 				4511E5251D17DFA4000ED6B0 /* CTAppearance.m in Sources */,
+				45645DFB1D33E8240075A3D2 /* PaymentSummaryTableViewCell.m in Sources */,
 				4511E5401D17F999000ED6B0 /* CTNavigationController.m in Sources */,
 				45CFC7DE1D2CF822006E6F83 /* ExtrasViewController.m in Sources */,
 				45E942D31D1302A200ACF604 /* LocaleUtils.m in Sources */,

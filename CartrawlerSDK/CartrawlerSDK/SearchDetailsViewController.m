@@ -211,6 +211,14 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.scrollView setContentOffset:
+     CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
+}
+
 #pragma mark Calendar delegate
 
 - (void)didPickDates:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
