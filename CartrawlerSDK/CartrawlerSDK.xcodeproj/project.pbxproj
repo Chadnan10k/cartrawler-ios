@@ -44,6 +44,10 @@
 		451B4BEA1D2BC8C3006A57E7 /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B4BE81D2BC8C3006A57E7 /* TermsViewController.m */; };
 		451B4BEE1D2BC99B006A57E7 /* TermsDetailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451B4BEC1D2BC99B006A57E7 /* TermsDetailViewController.h */; };
 		451B4BEF1D2BC99B006A57E7 /* TermsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B4BED1D2BC99B006A57E7 /* TermsDetailViewController.m */; };
+		4525216F1D353C4200B47DE6 /* DriverDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4525216D1D353C4200B47DE6 /* DriverDetailsViewController.h */; };
+		452521701D353C4200B47DE6 /* DriverDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4525216E1D353C4200B47DE6 /* DriverDetailsViewController.m */; };
+		452521731D35442100B47DE6 /* BookingSummaryButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 452521711D35442100B47DE6 /* BookingSummaryButton.h */; };
+		452521741D35442100B47DE6 /* BookingSummaryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 452521721D35442100B47DE6 /* BookingSummaryButton.m */; };
 		453386E31D2BA4EA0021D392 /* IncludedCollectionViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 453386E11D2BA4EA0021D392 /* IncludedCollectionViewLayout.h */; };
 		453386E41D2BA4EA0021D392 /* IncludedCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 453386E21D2BA4EA0021D392 /* IncludedCollectionViewLayout.m */; };
 		45361BEB1D2BA1BA00295124 /* UnderLinedButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 45361BE91D2BA1BA00295124 /* UnderLinedButton.h */; };
@@ -88,6 +92,13 @@
 		45645DFB1D33E8240075A3D2 /* PaymentSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DF91D33E8240075A3D2 /* PaymentSummaryTableViewCell.m */; };
 		456979281D2C03E7006A321E /* TabButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 456979261D2C03E7006A321E /* TabButton.h */; };
 		456979291D2C03E7006A321E /* TabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 456979271D2C03E7006A321E /* TabButton.m */; };
+		45819FA51D3500E8001AE0F5 /* NSNumberUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45819FA31D3500E8001AE0F5 /* NSNumberUtils.h */; };
+		45819FA61D3500E8001AE0F5 /* NSNumberUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45819FA41D3500E8001AE0F5 /* NSNumberUtils.m */; };
+		45819FAA1D35036A001AE0F5 /* BookingSummaryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45819FA81D35036A001AE0F5 /* BookingSummaryViewController.h */; };
+		45819FAB1D35036A001AE0F5 /* BookingSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45819FA91D35036A001AE0F5 /* BookingSummaryViewController.m */; };
+		45819FB01D3520D5001AE0F5 /* StepSixViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45819FAE1D3520D5001AE0F5 /* StepSixViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45819FB11D3520D5001AE0F5 /* StepSixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45819FAF1D3520D5001AE0F5 /* StepSixViewController.m */; };
+		45819FB21D35215A001AE0F5 /* StepSixViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 45819FAE1D3520D5001AE0F5 /* StepSixViewController.h */; };
 		45AC545D1D1309F300805268 /* JVFloatLabeledTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E51D1302FF00ACF604 /* JVFloatLabeledTextField.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC545E1D1309FB00805268 /* NSStringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E71D1302FF00ACF604 /* NSStringUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC545F1D130A0000805268 /* CTCheckbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E11D1302EF00ACF604 /* CTCheckbox.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -224,6 +235,10 @@
 		451B4BE81D2BC8C3006A57E7 /* TermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsViewController.m; sourceTree = "<group>"; };
 		451B4BEC1D2BC99B006A57E7 /* TermsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsDetailViewController.h; sourceTree = "<group>"; };
 		451B4BED1D2BC99B006A57E7 /* TermsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsDetailViewController.m; sourceTree = "<group>"; };
+		4525216D1D353C4200B47DE6 /* DriverDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverDetailsViewController.h; sourceTree = "<group>"; };
+		4525216E1D353C4200B47DE6 /* DriverDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverDetailsViewController.m; sourceTree = "<group>"; };
+		452521711D35442100B47DE6 /* BookingSummaryButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingSummaryButton.h; sourceTree = "<group>"; };
+		452521721D35442100B47DE6 /* BookingSummaryButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingSummaryButton.m; sourceTree = "<group>"; };
 		453386E11D2BA4EA0021D392 /* IncludedCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncludedCollectionViewLayout.h; sourceTree = "<group>"; };
 		453386E21D2BA4EA0021D392 /* IncludedCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncludedCollectionViewLayout.m; sourceTree = "<group>"; };
 		45361BE91D2BA1BA00295124 /* UnderLinedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderLinedButton.h; sourceTree = "<group>"; };
@@ -265,6 +280,12 @@
 		45645DF91D33E8240075A3D2 /* PaymentSummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSummaryTableViewCell.m; sourceTree = "<group>"; };
 		456979261D2C03E7006A321E /* TabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabButton.h; sourceTree = "<group>"; };
 		456979271D2C03E7006A321E /* TabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabButton.m; sourceTree = "<group>"; };
+		45819FA31D3500E8001AE0F5 /* NSNumberUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberUtils.h; sourceTree = "<group>"; };
+		45819FA41D3500E8001AE0F5 /* NSNumberUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberUtils.m; sourceTree = "<group>"; };
+		45819FA81D35036A001AE0F5 /* BookingSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingSummaryViewController.h; sourceTree = "<group>"; };
+		45819FA91D35036A001AE0F5 /* BookingSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingSummaryViewController.m; sourceTree = "<group>"; };
+		45819FAE1D3520D5001AE0F5 /* StepSixViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepSixViewController.h; sourceTree = "<group>"; };
+		45819FAF1D3520D5001AE0F5 /* StepSixViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepSixViewController.m; sourceTree = "<group>"; };
 		45AC547B1D13E47F00805268 /* StepOne.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepOne.storyboard; sourceTree = "<group>"; };
 		45CFC7D21D2CF1BA006E6F83 /* StepFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepFourViewController.h; sourceTree = "<group>"; };
 		45CFC7D31D2CF1BA006E6F83 /* StepFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepFourViewController.m; sourceTree = "<group>"; };
@@ -410,6 +431,15 @@
 			name = "Terms and Conditions";
 			sourceTree = "<group>";
 		};
+		4525216C1D353C0700B47DE6 /* Driver Details (Step Six) */ = {
+			isa = PBXGroup;
+			children = (
+				4525216D1D353C4200B47DE6 /* DriverDetailsViewController.h */,
+				4525216E1D353C4200B47DE6 /* DriverDetailsViewController.m */,
+			);
+			name = "Driver Details (Step Six)";
+			sourceTree = "<group>";
+		};
 		454AD7781D2551DB005C6CFF /* Filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,12 +517,31 @@
 		45645DE21D33E4AB0075A3D2 /* Summary (Step Five) */ = {
 			isa = PBXGroup;
 			children = (
+				45819FA71D350353001AE0F5 /* Booking Summary */,
 				45645DF31D33E70B0075A3D2 /* PaymentSummaryViewController.h */,
 				45645DF41D33E70B0075A3D2 /* PaymentSummaryViewController.m */,
 				45645DF81D33E8240075A3D2 /* PaymentSummaryTableViewCell.h */,
 				45645DF91D33E8240075A3D2 /* PaymentSummaryTableViewCell.m */,
 			);
 			name = "Summary (Step Five)";
+			sourceTree = "<group>";
+		};
+		45819FA71D350353001AE0F5 /* Booking Summary */ = {
+			isa = PBXGroup;
+			children = (
+				45819FA81D35036A001AE0F5 /* BookingSummaryViewController.h */,
+				45819FA91D35036A001AE0F5 /* BookingSummaryViewController.m */,
+				452521711D35442100B47DE6 /* BookingSummaryButton.h */,
+				452521721D35442100B47DE6 /* BookingSummaryButton.m */,
+			);
+			name = "Booking Summary";
+			sourceTree = "<group>";
+		};
+		45819FAC1D351CDF001AE0F5 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Localization;
 			sourceTree = "<group>";
 		};
 		45AC547A1D13E47200805268 /* Storyboards */ = {
@@ -569,6 +618,7 @@
 		45E942451D12FF0F00ACF604 /* CartrawlerSDK */ = {
 			isa = PBXGroup;
 			children = (
+				45819FAC1D351CDF001AE0F5 /* Localization */,
 				4511E5261D17EE4D000ED6B0 /* Settings */,
 				45D866DD1D14340900D19B74 /* Resources */,
 				45AC547A1D13E47200805268 /* Storyboards */,
@@ -595,6 +645,8 @@
 				45CFC7D31D2CF1BA006E6F83 /* StepFourViewController.m */,
 				45645DDA1D33D6370075A3D2 /* StepFiveViewController.h */,
 				45645DDB1D33D6370075A3D2 /* StepFiveViewController.m */,
+				45819FAE1D3520D5001AE0F5 /* StepSixViewController.h */,
+				45819FAF1D3520D5001AE0F5 /* StepSixViewController.m */,
 			);
 			name = "Base View Controllers";
 			sourceTree = "<group>";
@@ -622,6 +674,7 @@
 				454AD7AE1D2A61E1005C6CFF /* Vehicle Details (Step Three) */,
 				45CFC7DA1D2CF7EA006E6F83 /* Extras (Step Four) */,
 				45645DE21D33E4AB0075A3D2 /* Summary (Step Five) */,
+				4525216C1D353C0700B47DE6 /* Driver Details (Step Six) */,
 			);
 			name = "Preset Views";
 			sourceTree = "<group>";
@@ -718,6 +771,8 @@
 				45E942D01D1302A200ACF604 /* CTPlaceholderView.m */,
 				45E942D11D1302A200ACF604 /* DateUtils.h */,
 				45E942D21D1302A200ACF604 /* DateUtils.m */,
+				45819FA31D3500E8001AE0F5 /* NSNumberUtils.h */,
+				45819FA41D3500E8001AE0F5 /* NSNumberUtils.m */,
 				45D866D51D141BB100D19B74 /* LinkerUtils.h */,
 				45D866D61D141BB100D19B74 /* LinkerUtils.m */,
 				45645D891D2D4A310075A3D2 /* HTMLParser.h */,
@@ -797,6 +852,7 @@
 				45AC54671D130A1600805268 /* StepTwoViewController.h in Headers */,
 				45645DDC1D33D6370075A3D2 /* StepFiveViewController.h in Headers */,
 				454AD7911D26C6B7005C6CFF /* StepThreeViewController.h in Headers */,
+				45819FB01D3520D5001AE0F5 /* StepSixViewController.h in Headers */,
 				45E942F11D13060E00ACF604 /* CartrawlerSDK.h in Headers */,
 				45CFC7D41D2CF1BA006E6F83 /* StepFourViewController.h in Headers */,
 				4511E5321D17F6C8000ED6B0 /* CTNavigationBar.h in Headers */,
@@ -805,6 +861,7 @@
 				453386E31D2BA4EA0021D392 /* IncludedCollectionViewLayout.h in Headers */,
 				4511E51D1D1450CE000ED6B0 /* CTSDKSettings.h in Headers */,
 				4511E5241D17DFA4000ED6B0 /* CTAppearance.h in Headers */,
+				45819FAA1D35036A001AE0F5 /* BookingSummaryViewController.h in Headers */,
 				454AD77F1D25587D005C6CFF /* CTFilterDataSource.h in Headers */,
 				45AC546A1D130A1600805268 /* LocationSearchDataSource.h in Headers */,
 				45645DD41D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h in Headers */,
@@ -816,13 +873,16 @@
 				45AC54721D130A1600805268 /* SearchDetailsViewController.h in Headers */,
 				45AC54601D130A0300805268 /* CTButton.h in Headers */,
 				45645D8B1D2D4A310075A3D2 /* HTMLParser.h in Headers */,
+				4525216F1D353C4200B47DE6 /* DriverDetailsViewController.h in Headers */,
 				4511E52E1D17F4B0000ED6B0 /* CTView.h in Headers */,
 				454AD78B1D255E1F005C6CFF /* CTFilterTableViewCell.h in Headers */,
 				451B4BE91D2BC8C3006A57E7 /* TermsViewController.h in Headers */,
+				452521731D35442100B47DE6 /* BookingSummaryButton.h in Headers */,
 				45AC54751D130A1600805268 /* CTVehicleSelectionView.h in Headers */,
 				45AC546B1D130A1600805268 /* CTCalendarViewController.h in Headers */,
 				45AC545F1D130A0000805268 /* CTCheckbox.h in Headers */,
 				454AD7BC1D2A6C5F005C6CFF /* VehicleDetailsView.h in Headers */,
+				45819FA51D3500E8001AE0F5 /* NSNumberUtils.h in Headers */,
 				45AC546C1D130A1600805268 /* CTCalendarView.h in Headers */,
 				45645DFA1D33E8240075A3D2 /* PaymentSummaryTableViewCell.h in Headers */,
 				45AC54611D130A0800805268 /* CTLabel.h in Headers */,
@@ -937,6 +997,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45819FB21D35215A001AE0F5 /* StepSixViewController.h in Resources */,
 				45645DDF1D33D8370075A3D2 /* StepFiveViewController.h in Resources */,
 				45CFC7E01D2CF968006E6F83 /* ExtrasViewController.h in Resources */,
 				45CFC7DF1D2CF95C006E6F83 /* StepFour.storyboard in Resources */,
@@ -1004,6 +1065,7 @@
 				45E942B11D1301C600ACF604 /* CTCalendarTableViewCell.m in Sources */,
 				454AD7B91D2A69D2005C6CFF /* ExpandingInfoView.m in Sources */,
 				45645DF61D33E70B0075A3D2 /* PaymentSummaryViewController.m in Sources */,
+				452521701D353C4200B47DE6 /* DriverDetailsViewController.m in Sources */,
 				45E9428F1D13004F00ACF604 /* StepTwoViewController.m in Sources */,
 				454AD7BD1D2A6C5F005C6CFF /* VehicleDetailsView.m in Sources */,
 				45E942E91D1302FF00ACF604 /* JVFloatLabeledTextField.m in Sources */,
@@ -1015,9 +1077,12 @@
 				4511E5481D1837D4000ED6B0 /* LocationSearchTableViewCell.m in Sources */,
 				4511E5441D181B36000ED6B0 /* CTTextField.m in Sources */,
 				45E942BE1D13020300ACF604 /* LocationSearchViewController.m in Sources */,
+				45819FAB1D35036A001AE0F5 /* BookingSummaryViewController.m in Sources */,
 				45E942D61D1302A200ACF604 /* DateUtils.m in Sources */,
 				451B4BEF1D2BC99B006A57E7 /* TermsDetailViewController.m in Sources */,
+				45819FB11D3520D5001AE0F5 /* StepSixViewController.m in Sources */,
 				4511E5331D17F6C8000ED6B0 /* CTNavigationBar.m in Sources */,
+				45819FA61D3500E8001AE0F5 /* NSNumberUtils.m in Sources */,
 				454AD7C41D2AAD14005C6CFF /* IncludedCollectionViewCell.m in Sources */,
 				45E942B01D1301C600ACF604 /* CTCalendarView.m in Sources */,
 				45E942E31D1302EF00ACF604 /* CTCheckbox.m in Sources */,
@@ -1033,6 +1098,7 @@
 				45E942B81D1301EE00ACF604 /* VehicleSelectionViewController.m in Sources */,
 				45E942B41D1301C600ACF604 /* CTMiddleDateCell.m in Sources */,
 				45E942C31D13022100ACF604 /* CTTimePickerView.m in Sources */,
+				452521741D35442100B47DE6 /* BookingSummaryButton.m in Sources */,
 				4511E5251D17DFA4000ED6B0 /* CTAppearance.m in Sources */,
 				45645DFB1D33E8240075A3D2 /* PaymentSummaryTableViewCell.m in Sources */,
 				4511E5401D17F999000ED6B0 /* CTNavigationController.m in Sources */,

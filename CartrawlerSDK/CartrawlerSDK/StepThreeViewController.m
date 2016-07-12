@@ -82,10 +82,11 @@
     [self.stepFourViewController setPassengerQty:self.passengerQty];
     [self.stepFourViewController setCartrawlerAPI:self.cartrawlerAPI];
     [self.stepFourViewController setStepFiveViewController:self.stepFiveViewController];
+    [self.stepFourViewController setStepSixViewController:self.stepSixViewController];
 
     [self.cartrawlerAPI requestInsuranceQuoteForVehicle:[CTSDKSettings instance].homeCountryCode
                                                currency:[CTSDKSettings instance].currencyCode
-                                              totalCost:self.selectedVehicle.totalPriceForThisVehicle.stringValue
+                                              totalCost:[NSString stringWithFormat:@"%.02f", self.selectedVehicle.totalPriceForThisVehicle.doubleValue]
                                          pickupDateTime:self.pickupDate
                                          returnDateTime:self.dropoffDate
                                  destinationCountryCode:self.pickupLocation.codeContext

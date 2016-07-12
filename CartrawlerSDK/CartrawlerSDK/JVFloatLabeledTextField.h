@@ -68,6 +68,8 @@ IB_DESIGNABLE
  */
 @property (nonatomic) IBInspectable CGFloat placeholderYPadding;
 
+@property (nonatomic) IBInspectable BOOL useBottomBorder;
+
 /**
  * Font to be applied to the floating label. 
  * Defaults to the first applicable of the following:
@@ -131,5 +133,10 @@ IB_DESIGNABLE
  *  @param floatingTitle The string to be shown above the text field once it has been populated with text by the user.
  */
 - (void)setPlaceholder:(NSString *)placeholder floatingTitle:(NSString *)floatingTitle;
+
+/**
+ *  Performs an animation if text does not fit requiments
+ */
+- (void)invalidText:(BOOL)isEmail;
 
 @end

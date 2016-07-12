@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <CartrawlerAPI/CTExtraEquipment.h>
 @interface PaymentSummaryTableViewCell : UITableViewCell
 
 + (void)forceLinkerLoad_;
 
-- (void)setDetails:(NSString *)detail price:(NSString *)price;
+- (void)setDetails:(CTExtraEquipment *)detail price:(NSNumber *)price;
 - (void)setDetailsItalic:(NSString *)detail;
 
 @end

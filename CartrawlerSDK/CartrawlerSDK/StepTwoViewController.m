@@ -87,6 +87,7 @@
     [self.stepThreeViewController setCartrawlerAPI:self.cartrawlerAPI];
     [self.stepThreeViewController setStepFourViewController:self.stepFourViewController];
     [self.stepThreeViewController setStepFiveViewController:self.stepFiveViewController];
+    [self.stepThreeViewController setStepSixViewController:self.stepSixViewController];
 
     [self.navigationController pushViewController:self.stepThreeViewController animated:YES];
 }

@@ -8,6 +8,8 @@
 
 #import "PaymentSummaryTableViewCell.h"
 #import "CTLabel.h"
+#import "CTSDKSettings.h"
+#import "NSNumberUtils.h"
 
 @interface PaymentSummaryTableViewCell()
 
@@ -34,15 +36,16 @@
     // Configure the view for the selected state
 }
 
-- (void)setDetails:(NSString *)detail price:(NSString *)price
+- (void)setDetails:(NSString *)detail price:(NSNumber *)price
 {
-    self.priceLabel.text = price;
+    self.priceLabel.text = [NSNumberUtils numberStringWithCurrencyCode:price];
     self.infoLabel.text = detail;
 }
 
 - (void)setDetailsItalic:(NSString *)detail
 {
-    NSAttributedString *rating = [[NSAttributedString alloc] initWithString:@"pay at desk"
+    
+    NSAttributedString *rating = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"pay at desk", @"pay at desk")
                                                                  attributes:@{NSFontAttributeName:
                                                                                   [UIFont fontWithName:@"AvenirNext-Italic" size:17],
                                                                               NSForegroundColorAttributeName:

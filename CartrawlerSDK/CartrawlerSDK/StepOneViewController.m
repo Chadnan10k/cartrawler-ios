@@ -52,6 +52,7 @@
     self.stepTwoViewController.stepThreeViewController = self.stepThreeViewController;
     self.stepTwoViewController.stepFourViewController = self.stepFourViewController;
     self.stepTwoViewController.stepFiveViewController = self.stepFiveViewController;
+    self.stepTwoViewController.stepSixViewController = self.stepSixViewController;
 
     
     CartrawlerAPI *cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId

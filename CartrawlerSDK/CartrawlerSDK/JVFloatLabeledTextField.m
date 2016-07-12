@@ -36,11 +36,25 @@ static CGFloat const kFloatingLabelHideAnimationDuration = 0.3f;
 {
     BOOL _isFloatingLabelFontDefault;
     NSStringUtils *stringUtils;
+    CALayer *border;
 }
 
 + (void)forceLinkerLoad_
 {
     
+}
+
+- (void)awakeFromNib
+{
+    if (self.useBottomBorder) {
+        border = [CALayer layer];
+        CGFloat borderWidth = 0.5;
+        border.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+        border.frame = CGRectMake(0, self.frame.size.height - borderWidth, self.frame.size.width, self.frame.size.height);
+        border.borderWidth = borderWidth;
+        [self.layer addSublayer:border];
+        self.layer.masksToBounds = YES;
+    }
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -60,6 +74,7 @@ static CGFloat const kFloatingLabelHideAnimationDuration = 0.3f;
     }
     return self;
 }
+
 
 - (void)commonInit
 {
@@ -352,6 +367,18 @@ static CGFloat const kFloatingLabelHideAnimationDuration = 0.3f;
     }
     else {
         [self showFloatingLabel:firstResponder];
+    }
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    border.borderColor = [UIColor darkGrayColor].CGColor;
+}
+
+- (void)invalidText:(BOOL)isEmail
+{
+    if (border) {
+        border.borderColor = [UIColor redColor].CGColor;
     }
 }
 

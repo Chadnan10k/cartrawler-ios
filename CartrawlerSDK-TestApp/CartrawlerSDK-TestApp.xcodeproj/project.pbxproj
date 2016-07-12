@@ -210,6 +210,8 @@
 				TargetAttributes = {
 					45E942571D12FFEB00ACF604 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						DevelopmentTeamName = eTrawler;
 					};
 					45E9426B1D12FFEB00ACF604 = {
 						CreatedOnToolsVersion = 7.3.1;

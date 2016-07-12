@@ -8,6 +8,7 @@
 
 #import "OptionalExtraTableViewCell.h"
 #import "CTLabel.h"
+#import "NSNumberUtils.h"
 
 @interface OptionalExtraTableViewCell()
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
@@ -54,14 +55,9 @@
 {
     _extra = extra;
 
-    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-    [f setMinimumFractionDigits:2];
-    [f setCurrencyCode: extra.currencyCode];
-    [f setNumberStyle:NSNumberFormatterCurrencyStyle];
-    
     self.itemTitleLabel.text = extra.equipDescription;
-    self.itemPriceLabel.text = [f stringFromNumber: extra.chargeAmount];
-    
+    self.itemPriceLabel.text = [NSNumberUtils numberStringWithCurrencyCode: extra.chargeAmount];
+
     [self updateAmountLabel];
 }
 

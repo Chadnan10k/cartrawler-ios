@@ -27,47 +27,47 @@
 - (void)pushToStepFive:(NSArray<CTExtraEquipment *> *)extras insuranceSelected:(BOOL)selected
 {
     if (self.pickupLocation == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FOUR AS self.pickupLocation IS NOT SET \n\n");
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.pickupLocation IS NOT SET \n\n");
         return;
     }
     
     if (self.dropoffLocation == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FOUR AS self.dropoffLocation IS NOT SET \n\n");
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.dropoffLocation IS NOT SET \n\n");
         return;
     }
     
     if (self.pickupDate == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FOUR AS self.pickupDate IS NOT SET \n\n");
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.pickupDate IS NOT SET \n\n");
         return;
     }
     
     if (self.dropoffDate == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FOUR AS self.dropoffDate IS NOT SET \n\n");
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.dropoffDate IS NOT SET \n\n");
         return;
     }
     
     if (self.driverAge == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FOUR AS self.driverAge IS NOT SET \n\n");
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.driverAge IS NOT SET \n\n");
         return;
     }
     
     if (self.cartrawlerAPI == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FOUR AS self.cartrawlerAPI IS NOT SET \n\n");
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.cartrawlerAPI IS NOT SET \n\n");
         return;
     }
     
     if (self.selectedVehicle == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FOUR AS self.vehicleAvailability IS NOT SET \n\n");
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.vehicleAvailability IS NOT SET \n\n");
         return;
     }
     
     if (self.insurance == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FOUR AS self.insurance IS NOT SET \n\n");
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.insurance IS NOT SET \n\n");
         return;
     }
     
     if (extras == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FOUR AS extras IS NOT SET \n\n");
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS extras IS NOT SET \n\n");
         return;
     }
     
@@ -82,7 +82,8 @@
     [self.stepFiveViewController setInsurance:self.insurance];
     [self.stepFiveViewController setIsBuyingInsurance:selected];
     [self.stepFiveViewController setExtras:extras];
-    
+    [self.stepFiveViewController setStepSixViewController:self.stepSixViewController];
+
     [self.navigationController pushViewController:self.stepFiveViewController animated:YES];
 
 }

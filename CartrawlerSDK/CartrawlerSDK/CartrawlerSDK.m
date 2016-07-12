@@ -25,6 +25,7 @@
 @property (nonatomic, strong) StepThreeViewController *stepThreeViewController;
 @property (nonatomic, strong) StepFourViewController *stepFourViewController;
 @property (nonatomic, strong) StepFiveViewController *stepFiveViewController;
+@property (nonatomic, strong) StepSixViewController *stepSixViewController;
 
 @end
 
@@ -61,8 +62,9 @@
     [self.stepOneViewController setStepThreeViewController:[self stepThreeViewController_]];
     [self.stepOneViewController setStepFourViewController:[self stepFourViewController_]];
     [self.stepOneViewController setStepFiveViewController:[self stepFiveViewController_]];
+    [self.stepOneViewController setStepSixViewController:[self stepSixViewController_]];
 
-    //CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:[self stepFiveViewController_]];
+    //CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:[self stepSixViewController_]];
     CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
 
     navController.navigationBar.hidden = YES;
@@ -107,6 +109,11 @@
 - (void)overrideStepFiveViewController:(StepFiveViewController *)viewController
 {
     _stepFiveViewController = viewController;
+}
+
+- (void)overrideStepSixViewController:(StepSixViewController *)viewController
+{
+    _stepSixViewController = viewController;
 }
 
 - (StepOneViewController *)stepOneViewController_
@@ -167,6 +174,18 @@
         return [storyboard instantiateViewControllerWithIdentifier:@"PaymentSummaryViewController"];
     } else {
         return self.stepFiveViewController;
+    }
+}
+
+- (StepSixViewController *)stepSixViewController_
+{
+    if (self.stepSixViewController == nil) {
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSummaryViewStoryboard bundle:b];
+        return [storyboard instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
+    } else {
+        return self.stepSixViewController;
     }
 }
 

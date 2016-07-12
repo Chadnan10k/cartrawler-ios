@@ -14,6 +14,7 @@
 #import "StepThreeViewController.h"
 #import "StepFourViewController.h"
 #import "StepFiveViewController.h"
+#import "StepSixViewController.h"
 #import <CartrawlerAPI/CartrawlerAPI.h>
 
 @interface CartrawlerSDK : NSObject
@@ -53,6 +54,7 @@
 - (void)overrideStepThreeViewController:(StepThreeViewController *)viewController;
 - (void)overrideStepFourViewController:(StepFourViewController *)viewController;
 - (void)overrideStepFiveViewController:(StepFiveViewController *)viewController;
+- (void)overrideStepSixViewController:(StepSixViewController *)viewController;
 
 
 //Settings

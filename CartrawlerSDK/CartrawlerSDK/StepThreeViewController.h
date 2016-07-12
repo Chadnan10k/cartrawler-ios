@@ -11,6 +11,7 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "StepFourViewController.h"
 #import "StepFiveViewController.h"
+#import "StepSixViewController.h"
 
 @interface StepThreeViewController : UIViewController
 
@@ -25,6 +26,7 @@
 @property (nonatomic, strong) NSNumber *passengerQty;
 @property (nonatomic, strong) StepFourViewController *stepFourViewController;
 @property (nonatomic, strong) StepFiveViewController *stepFiveViewController;
+@property (nonatomic, strong) StepSixViewController *stepSixViewController;
 
 + (void)forceLinkerLoad_;
 

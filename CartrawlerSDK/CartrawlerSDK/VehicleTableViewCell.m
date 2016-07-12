@@ -12,6 +12,7 @@
 #import "CartrawlerAPI/CTVendor.h"
 #import "CartrawlerAPI/CTVendorRating.h"
 #import "CTAppearance.h"
+#import "NSNumberUtils.h"
 
 @interface VehicleTableViewCell ()
 
@@ -46,14 +47,8 @@
     self.passengerQtyLabel.text = [NSString stringWithFormat:@"%d %@", vehicle.passengerQty.intValue, NSLocalizedString(@"passengers", @"passengers")];
     self.transmissionLabel.text = vehicle.transmissionType;
     self.fuelPolicyLabel.text = [self fuelPolicyString:vehicle.fuelPolicy];
-    
-    
-    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-    [f setMinimumFractionDigits:2];
-    [f setCurrencyCode:vehicle.currencyCode];
-    [f setNumberStyle:NSNumberFormatterCurrencyStyle];
 
-    NSArray *priceStrings = [[f stringFromNumber:vehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
+    NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode:vehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
     NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];
 
     NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject

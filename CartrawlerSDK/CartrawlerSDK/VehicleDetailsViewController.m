@@ -12,6 +12,7 @@
 #import "CTAppearance.h"
 #import "CTLabel.h"
 #import "TabButton.h"
+#import "NSNumberUtils.h"
 
 @interface VehicleDetailsViewController ()
 
@@ -72,12 +73,7 @@
     
     [self.view layoutIfNeeded];
     
-    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-    [f setMinimumFractionDigits:2];
-    [f setCurrencyCode:self.selectedVehicle.currencyCode];
-    [f setNumberStyle:NSNumberFormatterCurrencyStyle];
-    
-    NSArray *priceStrings = [[f stringFromNumber:self.selectedVehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
+    NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode:self.selectedVehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
     NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];
     
     NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject

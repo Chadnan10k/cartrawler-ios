@@ -55,6 +55,9 @@
 #import "OptionalExtrasViewController.h"
 #import "PaymentSummaryViewController.h"
 #import "PaymentSummaryTableViewCell.h"
+#import "BookingSummaryViewController.h"
+#import "DriverDetailsViewController.h"
+#import "BookingSummaryButton.h"
 
 @implementation LinkerUtils
 
@@ -107,6 +110,9 @@
     [OptionalExtrasViewController forceLinkerLoad_];
     [PaymentSummaryViewController forceLinkerLoad_];
     [PaymentSummaryTableViewCell forceLinkerLoad_];
+    [BookingSummaryViewController forceLinkerLoad_];
+    [DriverDetailsViewController forceLinkerLoad_];
+    [BookingSummaryButton forceLinkerLoad_];
 
 }
 

@@ -30,8 +30,8 @@
 {
     self = [super init];
     
-    self.airportLocations = [[NSMutableArray alloc] init];
-    self.otherLocations = [[NSMutableArray alloc] init];
+    _airportLocations = [[NSMutableArray alloc] init];
+    _otherLocations = [[NSMutableArray alloc] init];
     
     _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
                                                      language:[CTSDKSettings instance].languageCode
@@ -44,8 +44,8 @@
     [self.cartrawlerAPI locationSearchWithPartialString:partialText
                                         completion:^(CTLocationSearch *response, CTErrorResponse *error) {
                                             if (error == nil) {
-                                                [self.airportLocations removeAllObjects];
-                                                [self.otherLocations removeAllObjects];
+                                                _airportLocations = [[NSMutableArray alloc] init];
+                                                _otherLocations = [[NSMutableArray alloc] init];
                                                 
                                                 for (CTMatchedLocation *location in response.matchedLocations) {
                                                     if (location.isAtAirport) {
