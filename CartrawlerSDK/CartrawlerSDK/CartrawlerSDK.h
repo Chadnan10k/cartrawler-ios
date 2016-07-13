@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <CartrawlerAPI/CartrawlerAPI.h>
+#import "CTAppearance.h"
 
 #import "StepOneViewController.h"
 #import "StepTwoViewController.h"
@@ -15,13 +17,15 @@
 #import "StepFourViewController.h"
 #import "StepFiveViewController.h"
 #import "StepSixViewController.h"
-#import <CartrawlerAPI/CartrawlerAPI.h>
+#import "StepSevenViewController.h"
 
 @interface CartrawlerSDK : NSObject
 
 - (id)initWithRequestorID:(NSString *)requestorID
              languageCode:(NSString *)languageCode
                   isDebug:(BOOL)isDebug;
+
++ (CTAppearance *)appearance;
 
 - (void)presentStepOneInViewController:(UIViewController *)viewController;
 
@@ -55,6 +59,7 @@
 - (void)overrideStepFourViewController:(StepFourViewController *)viewController;
 - (void)overrideStepFiveViewController:(StepFiveViewController *)viewController;
 - (void)overrideStepSixViewController:(StepSixViewController *)viewController;
+- (void)overrideStepSevenViewController:(StepSevenViewController *)viewController;
 
 
 //Settings

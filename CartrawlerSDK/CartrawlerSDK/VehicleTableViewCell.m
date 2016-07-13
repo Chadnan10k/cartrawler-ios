@@ -69,6 +69,8 @@
     
     self.totalPriceLabel.attributedText = priceString;
     
+    NSLog(@"%@", vehicle.vendor.rating.totalScore);
+    
     NSArray *ratingStrings = [@"7.9/10" componentsSeparatedByString:@"/"];
     NSMutableAttributedString *ratingString = [[NSMutableAttributedString alloc] init];
     

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "StepSixViewController.h"
+#import "StepSevenViewController.h"
 
 @interface StepFiveViewController : UIViewController
 
@@ -24,6 +25,7 @@
 @property (nonatomic) BOOL isBuyingInsurance;
 @property (nonatomic, strong) NSArray<CTExtraEquipment *> *extras;
 @property (nonatomic, strong) StepSixViewController *stepSixViewController;
+@property (nonatomic, strong) StepSevenViewController *stepSevenViewController;
 
 - (void)pushToStepSix;
 

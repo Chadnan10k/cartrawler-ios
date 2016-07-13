@@ -83,6 +83,7 @@
     [self.stepFourViewController setCartrawlerAPI:self.cartrawlerAPI];
     [self.stepFourViewController setStepFiveViewController:self.stepFiveViewController];
     [self.stepFourViewController setStepSixViewController:self.stepSixViewController];
+    [self.stepFourViewController setStepSevenViewController:self.stepSevenViewController];
 
     [self.cartrawlerAPI requestInsuranceQuoteForVehicle:[CTSDKSettings instance].homeCountryCode
                                                currency:[CTSDKSettings instance].currencyCode

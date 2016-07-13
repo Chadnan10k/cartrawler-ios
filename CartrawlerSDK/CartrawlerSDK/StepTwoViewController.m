@@ -88,6 +88,7 @@
     [self.stepThreeViewController setStepFourViewController:self.stepFourViewController];
     [self.stepThreeViewController setStepFiveViewController:self.stepFiveViewController];
     [self.stepThreeViewController setStepSixViewController:self.stepSixViewController];
+    [self.stepThreeViewController setStepSevenViewController:self.stepSevenViewController];
 
     [self.navigationController pushViewController:self.stepThreeViewController animated:YES];
 }

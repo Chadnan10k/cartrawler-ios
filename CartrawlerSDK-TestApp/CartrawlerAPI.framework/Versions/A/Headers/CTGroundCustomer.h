@@ -61,10 +61,6 @@
  *  The customers surname
  */
 @property (nonatomic, strong, readonly) NSString *surname;
-/**
- *  The customers name prefix
- */
-@property (nonatomic, readonly) NamePrefix namePrefix;
 
 /**
  *  Creates a CTGroundCustomer object
@@ -96,7 +92,6 @@
                      email:(NSString *)email
                      phone:(NSString *)phone
                  firstName:(NSString *)firstName
-                   surname:(NSString *)surname
-                namePrefix:(NamePrefix)namePrefix;
+                   surname:(NSString *)surname;
 
 @end

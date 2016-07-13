@@ -144,5 +144,8 @@
     [self pushToStepFive:self.selectedVehicle.extraEquipment insuranceSelected:NO];
 }
 
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

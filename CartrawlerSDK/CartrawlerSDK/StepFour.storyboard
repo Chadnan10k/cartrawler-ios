@@ -27,6 +27,9 @@
                                             <constraint firstAttribute="height" constant="30" id="bQ0-2c-f1d"/>
                                         </constraints>
                                         <state key="normal" image="backArrow"/>
+                                        <connections>
+                                            <action selector="back:" destination="svs-v7-rRf" eventType="touchUpInside" id="ouP-PF-zeY"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add extras" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clN-oO-7uF">
                                         <rect key="frame" x="252" y="25" width="97" height="24"/>

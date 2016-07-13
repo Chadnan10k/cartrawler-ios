@@ -77,7 +77,8 @@
     [self.stepSixViewController setInsurance:self.insurance];
     [self.stepSixViewController setIsBuyingInsurance:self.isBuyingInsurance];
     [self.stepSixViewController setExtras:self.extras];
-    
+    [self.stepSixViewController setStepSevenViewController:self.stepSevenViewController];
+
     [self.navigationController pushViewController:self.stepSixViewController animated:YES];
 }
 

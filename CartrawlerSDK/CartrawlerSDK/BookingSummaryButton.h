@@ -14,6 +14,8 @@
 
 + (void)forceLinkerLoad_;
 
+- (void)closeIfOpen;
+
 - (void)setDataWithVehicle:(CTVehicle *)vehicle
                 pickupDate:(NSDate *)pickupDate
                dropoffDate:(NSDate *)dropoffDate

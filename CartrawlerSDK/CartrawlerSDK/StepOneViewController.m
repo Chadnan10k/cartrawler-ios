@@ -19,26 +19,40 @@
 - (void)pushToStepTwo
 {
     if (self.pickupLocation == nil) {
+        if (self.stepOneCompletion) {
+            self.stepOneCompletion(NO, @"");
+        }
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP TWO AS self.pickupLocation IS NOT SET \n\n");
         return;
     }
     
     if (self.dropoffLocation == nil) {
+        if (self.stepOneCompletion) {
+            self.stepOneCompletion(NO, @"");
+        }
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP TWO AS self.dropoffLocation IS NOT SET \n\n");
         return;
     }
     
     if (self.pickupDate == nil) {
+        if (self.stepOneCompletion) {
+            self.stepOneCompletion(NO, @"");
+        }
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP TWO AS self.pickupDate IS NOT SET \n\n");
         return;
     }
     
     if (self.dropoffDate == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP TWO AS self.dropoffDate IS NOT SET \n\n");
+        if (self.stepOneCompletion) {
+            self.stepOneCompletion(NO, @"");
+        }        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP TWO AS self.dropoffDate IS NOT SET \n\n");
         return;
     }
     
     if (self.driverAge == nil) {
+        if (self.stepOneCompletion) {
+            self.stepOneCompletion(NO, @"");
+        }
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP TWO AS self.driverAge IS NOT SET \n\n");
         return;
     }
@@ -53,6 +67,7 @@
     self.stepTwoViewController.stepFourViewController = self.stepFourViewController;
     self.stepTwoViewController.stepFiveViewController = self.stepFiveViewController;
     self.stepTwoViewController.stepSixViewController = self.stepSixViewController;
+    self.stepTwoViewController.stepSevenViewController = self.stepSevenViewController;
 
     
     CartrawlerAPI *cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
@@ -82,7 +97,7 @@
                                                        } else {
                                                            dispatch_async(dispatch_get_main_queue(), ^{
                                                                if (self.stepOneCompletion) {
-                                                                   self.stepOneCompletion(YES, error.errorMessage);
+                                                                   self.stepOneCompletion(NO, error.errorMessage);
                                                                }
                                                            });
                                                            NSLog(@"CANNOT PUSH TO STEP TWO: %@", error.errorMessage);

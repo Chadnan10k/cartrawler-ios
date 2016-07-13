@@ -17,6 +17,8 @@
 #define kVehicleDetailsViewStoryboard @"StepThree"
 #define kExtrasViewStoryboard @"StepFour"
 #define kSummaryViewStoryboard @"StepFive"
+#define kDetailsViewStoryboard @"StepSix"
+#define kPaymentViewStoryboard @"StepSeven"
 
 @interface CartrawlerSDK()
 
@@ -26,6 +28,7 @@
 @property (nonatomic, strong) StepFourViewController *stepFourViewController;
 @property (nonatomic, strong) StepFiveViewController *stepFiveViewController;
 @property (nonatomic, strong) StepSixViewController *stepSixViewController;
+@property (nonatomic, strong) StepSevenViewController *stepSevenViewController;
 
 @end
 
@@ -53,6 +56,11 @@
     [[CTSDKSettings instance] setCurrencyCode:currencyCode];
 }
 
++ (CTAppearance *)appearance
+{
+    return [CTAppearance instance];
+}
+
 - (void)presentStepOneInViewController:(UIViewController *)viewController;
 {
     
@@ -63,8 +71,9 @@
     [self.stepOneViewController setStepFourViewController:[self stepFourViewController_]];
     [self.stepOneViewController setStepFiveViewController:[self stepFiveViewController_]];
     [self.stepOneViewController setStepSixViewController:[self stepSixViewController_]];
+    [self.stepOneViewController setStepSevenViewController:[self stepSevenViewController_]];
 
-    //CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:[self stepSixViewController_]];
+    //CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:[self stepSevenViewController_]];
     CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
 
     navController.navigationBar.hidden = YES;
@@ -114,6 +123,11 @@
 - (void)overrideStepSixViewController:(StepSixViewController *)viewController
 {
     _stepSixViewController = viewController;
+}
+
+- (void)overrideStepSevenViewController:(StepSevenViewController *)viewController
+{
+    _stepSevenViewController = viewController;
 }
 
 - (StepOneViewController *)stepOneViewController_
@@ -182,10 +196,22 @@
     if (self.stepSixViewController == nil) {
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
         NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSummaryViewStoryboard bundle:b];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kDetailsViewStoryboard bundle:b];
         return [storyboard instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
     } else {
         return self.stepSixViewController;
+    }
+}
+
+- (StepSevenViewController *)stepSevenViewController_
+{
+    if (self.stepSevenViewController == nil) {
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:b];
+        return [storyboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
+    } else {
+        return self.stepSevenViewController;
     }
 }
 

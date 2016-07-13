@@ -13,24 +13,6 @@
 @interface CTCustomer : NSObject
 
 /**
- *  Name Prefix enum
- */
-typedef NS_ENUM(NSUInteger, NamePrefix) {
-    /**
-     *  Mr. Title
-     */
-    NamePrefixMr = 0,
-    /**
-     *  Mrs. Title
-     */
-    NamePrefixMrs = 1,
-    /**
-     *  Miss. Title
-     */
-    NamePrefixMiss = 2
-};
-
-/**
  *  the Customers age
  */
 @property (nonatomic, strong) NSNumber *age;
@@ -38,10 +20,6 @@ typedef NS_ENUM(NSUInteger, NamePrefix) {
  *  The customers home country
  */
 @property (nonatomic, strong) NSString *homeCountry;
-/**
- *  The customers name prefix in string form
- */
-@property (nonatomic, strong) NSString *namePrefix;
 /**
  *  the customers first name
  */
@@ -59,14 +37,9 @@ typedef NS_ENUM(NSUInteger, NamePrefix) {
  */
 @property (nonatomic, strong) NSString *address;
 /**
- *  The customers number prefix
- */
-@property (nonatomic, strong) NSString *numberPrefix;
-/**
  *  The customers phone number
  */
 @property (nonatomic, strong) NSString *phone;
-
 
 /**
  *  Creates a customer object
@@ -85,39 +58,10 @@ typedef NS_ENUM(NSUInteger, NamePrefix) {
  */
 - (id)initWithHomeCountry:(NSString *)homeCountry
                       age:(NSNumber *)age
-               namePrefix:(NamePrefix)namePrefix
                 firstName:(NSString *)firstName
                  lastName:(NSString *)lastName
                     email:(NSString *)email
                   address:(NSString *)address
-             numberPrefix:(NSString *)numberPrefix
                     phone:(NSString *)phone;
-
-/**
- *  Convenience method for using the NamePrefix enum
- *
- *  @param namePrefix The name prefix
- *
- *  @return Returns a NamePrefix
- */
-+ (NamePrefix)namePrefix:(NamePrefix)namePrefix;
-
-/**
- *  Convenience method for using the NamePrefix enum int value
- *
- *  @param namePrefix The name prefix int value
- *
- *  @return Returns a NamePrefix
- */
-+ (NamePrefix)namePrefixFromInt:(NSInteger)namePrefix;
-
-/**
- *  Convenience method for using the NamePrefix enum
- *
- *  @param namePrefix The name prefix
- *
- *  @return Returns a NamePrefix string value
- */
-+ (NSString *)namePrefixString:(NamePrefix)namePrefix;
 
 @end

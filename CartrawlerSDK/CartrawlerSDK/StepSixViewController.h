@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CartrawlerAPI.h>
+#import "StepSevenViewController.h"
 
 @interface StepSixViewController : UIViewController
 
@@ -26,5 +27,13 @@
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *flightNumber;
+@property (nonatomic, strong) NSString *addressLine1;
+@property (nonatomic, strong) NSString *addressLine2;
+@property (nonatomic, strong) NSString *city;
+@property (nonatomic, strong) NSString *postcode;
+@property (nonatomic, strong) NSString *country;
+@property (nonatomic, strong) StepSevenViewController *stepSevenViewController;
+
+- (void)pushToStepSeven;
 
 @end

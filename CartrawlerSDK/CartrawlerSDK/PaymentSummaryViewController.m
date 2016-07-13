@@ -49,6 +49,7 @@
 {
     [super viewWillAppear:animated];
     
+    total = 0;
     _items = [[NSMutableArray alloc] init];
 
     [self.items addObject:@{@"Normal" : @{@"Name" : @"Car hire", @"Price" : self.selectedVehicle.totalPriceForThisVehicle}}];
@@ -84,7 +85,6 @@
     [self pushToStepSix];
 }
 
-
 #pragma mark TABLE VIEW
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -114,6 +114,9 @@
     }
     
     return cell;
+}
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

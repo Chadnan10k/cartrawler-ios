@@ -9,6 +9,7 @@
 #import "DriverDetailsViewController.h"
 #import "JVFloatLabeledTextField.h"
 #import "BookingSummaryButton.h"
+#import "AddressDetailsViewController.h"
 
 @interface DriverDetailsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *nameTextField;
@@ -47,6 +48,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self.summaryContainer closeIfOpen];
     [self.summaryContainer setDataWithVehicle:self.selectedVehicle
                                    pickupDate:self.pickupDate
                                   dropoffDate:self.dropoffDate
@@ -64,13 +66,55 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)continue:(id)sender {
+    //do some validation
     
+    //send data with prepare for segue
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    AddressDetailsViewController *vc = segue.destinationViewController;
+
+    self.fullName = self.nameTextField.text;
+    self.email = self.emailTextField.text;
+    self.phone = self.phoneTextField.text;
+    self.flightNumber = self.flightNoTextField.text;
+    
+    vc.stepSevenViewController = self.stepSevenViewController;
+    vc.cartrawlerAPI = self.cartrawlerAPI;
+    vc.selectedVehicle = self.selectedVehicle;
+    vc.pickupLocation = self.pickupLocation;
+    vc.dropoffLocation = self.dropoffLocation;
+    vc.pickupDate = self.pickupDate;
+    vc.dropoffDate = self.dropoffDate;
+    vc.driverAge = self.driverAge;
+    vc.passengerQty = self.passengerQty;
+    vc.insurance = self.insurance;
+    vc.isBuyingInsurance = self.isBuyingInsurance;
+    vc.extras = self.extras;
+    vc.fullName = self.fullName;
+    vc.email = self.email;
+    vc.phone = self.phone;
+    vc.flightNumber = self.flightNumber;
+//    vc.addressLine1 = self.addressLine1;
+//    vc.addressLine2 = self.addressLine2;
+//    vc.city = self.city;
+//    vc.postcode = self.postcode;
+//    vc.country = self.country;
+
 }
 
 - (void)done
 {
     [self.view endEditing:YES];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self.summaryContainer closeIfOpen];
+    return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -120,6 +164,10 @@
     [UIView setAnimationBeginsFromCurrentState:YES];
     [self.scrollView setFrame:viewFrame];
     [UIView commitAnimations];
+}
+
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

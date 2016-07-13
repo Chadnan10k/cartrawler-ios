@@ -58,6 +58,9 @@
 #import "BookingSummaryViewController.h"
 #import "DriverDetailsViewController.h"
 #import "BookingSummaryButton.h"
+#import "AddressDetailsViewController.h"
+#import "PaymentViewController.h"
+#import "CompletionViewController.h"
 
 @implementation LinkerUtils
 
@@ -113,6 +116,9 @@
     [BookingSummaryViewController forceLinkerLoad_];
     [DriverDetailsViewController forceLinkerLoad_];
     [BookingSummaryButton forceLinkerLoad_];
+    [AddressDetailsViewController forceLinkerLoad_];
+    [PaymentViewController forceLinkerLoad_];
+    [CompletionViewController forceLinkerLoad_];
 
 }
 

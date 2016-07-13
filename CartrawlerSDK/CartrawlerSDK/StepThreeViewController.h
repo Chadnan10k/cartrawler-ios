@@ -12,6 +12,7 @@
 #import "StepFourViewController.h"
 #import "StepFiveViewController.h"
 #import "StepSixViewController.h"
+#import "StepSevenViewController.h"
 
 @interface StepThreeViewController : UIViewController
 
@@ -27,6 +28,7 @@
 @property (nonatomic, strong) StepFourViewController *stepFourViewController;
 @property (nonatomic, strong) StepFiveViewController *stepFiveViewController;
 @property (nonatomic, strong) StepSixViewController *stepSixViewController;
+@property (nonatomic, strong) StepSevenViewController *stepSevenViewController;
 
 + (void)forceLinkerLoad_;
 

@@ -250,8 +250,6 @@
     button.enabled = NO;
     button.alpha = 0.8;
     
-    [self pushToStepTwo];
-
     [self setStepOneCompletion:^(BOOL success, NSString *errorMessage){
         if (success) {
             button.enabled = YES;
@@ -263,6 +261,8 @@
         }
     }];
     
+    [self pushToStepTwo];
+
 }
 
 - (void)registerForKeyboardNotifications
@@ -306,6 +306,11 @@
     [UIView setAnimationBeginsFromCurrentState:YES];
     [self.scrollView setFrame:viewFrame];
     [UIView commitAnimations];
+}
+
+- (IBAction)cancel:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -249,12 +249,6 @@
  */
 - (void)setCustomerEmail:(NSString *)customerEmail;
 
-/**
- *  Convenience method to set customers name title
- *
- *  @param customerTitle Use NamePrefix enum
- */
-- (void)setCustomerTitlePrefix:(NamePrefix)customerTitle;
 
 - (id)initFromRetrievedBookingDictionary:(NSDictionary *)vehReservationDictionary;
 - (id)initFromVehReservationDictionary:(NSDictionary *)vehReservationDictionary;

@@ -1,0 +1,140 @@
+//
+//  AddressDetailsViewController.m
+//  CartrawlerSDK
+//
+//  Created by Lee Maguire on 13/07/2016.
+//  Copyright © 2016 Cartrawler. All rights reserved.
+//
+
+#import "AddressDetailsViewController.h"
+#import "JVFloatLabeledTextField.h"
+#import "BookingSummaryButton.h"
+
+@interface AddressDetailsViewController () <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *addressLine1TextField;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *addressLine2TextField;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *cityTextField;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *postCodeTextField;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *countryTextField;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet BookingSummaryButton *summaryContainer;
+
+@end
+
+@implementation AddressDetailsViewController
+
++ (void)forceLinkerLoad_
+{
+    
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.addressLine1TextField.delegate = self;
+    self.addressLine2TextField.delegate = self;
+    self.cityTextField.delegate = self;
+    self.postCodeTextField.delegate = self;
+    self.countryTextField.delegate = self;
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.summaryContainer closeIfOpen];
+    [self.summaryContainer setDataWithVehicle:self.selectedVehicle
+                                   pickupDate:self.pickupDate
+                                  dropoffDate:self.dropoffDate
+                            isBuyingInsurance:self.isBuyingInsurance];
+    
+    [self registerForKeyboardNotifications];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self deregisterForKeyboardNotifications];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)continueToPayment:(id)sender
+{
+    //do some validation
+    
+    self.addressLine1 = self.addressLine1TextField.text;
+    self.addressLine2 = self.addressLine2TextField.text;
+    self.city = self.cityTextField.text;
+    self.postcode = self.postCodeTextField.text;
+    self.country = self.countryTextField.text;
+    [self pushToStepSeven];
+}
+
+- (void)done
+{
+    [self.view endEditing:YES];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    //[self.summaryContainer closeIfOpen];
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    return YES;
+}
+
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)deregisterForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+
+- (void)keyboardWillHide:(NSNotification *)n
+{
+    NSDictionary* userInfo = [n userInfo];
+    
+    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    CGRect viewFrame = self.scrollView.frame;
+    viewFrame.size.height += (keyboardSize.height + 45);
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [self.scrollView setFrame:viewFrame];
+    [UIView commitAnimations];
+}
+
+- (void)keyboardWillShow:(NSNotification *)n
+{
+    
+    NSDictionary* userInfo = [n userInfo];
+    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGRect viewFrame = self.scrollView.frame;
+    
+    viewFrame.size.height -= (keyboardSize.height + 45);
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [self.scrollView setFrame:viewFrame];
+    [UIView commitAnimations];
+}
+
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+@end

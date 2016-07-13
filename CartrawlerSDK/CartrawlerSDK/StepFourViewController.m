@@ -83,6 +83,7 @@
     [self.stepFiveViewController setIsBuyingInsurance:selected];
     [self.stepFiveViewController setExtras:extras];
     [self.stepFiveViewController setStepSixViewController:self.stepSixViewController];
+    [self.stepFiveViewController setStepSevenViewController:self.stepSevenViewController];
 
     [self.navigationController pushViewController:self.stepFiveViewController animated:YES];
 

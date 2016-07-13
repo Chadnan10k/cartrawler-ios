@@ -35,6 +35,7 @@
                dropoffDate:(NSDate *)dropoffDate
          isBuyingInsurance:(BOOL)isBuyingInsurance
 {
+    
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     NSBundle *b = [NSBundle bundleWithPath:bundlePath];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepFive" bundle:b];
@@ -46,16 +47,30 @@
                               isBuyingInsurance:isBuyingInsurance];
 }
 
-- (IBAction)viewTapped:(id)sender
+- (void)closeIfOpen
 {
-    
     if (summaryVisible) {
         self.summaryHeight.constant = 50;
         
         [self removeConstraints:@[self.topConstraint,
-                                                          self.bottomConstraint,
-                                                          self.leftConstraint,
-                                                          self.rightConstraint]];
+                                  self.bottomConstraint,
+                                  self.leftConstraint,
+                                  self.rightConstraint]];
+        
+        [self.bookingSummaryView.view removeFromSuperview];
+        summaryVisible = NO;
+    }
+}
+
+- (void)closeView
+{
+    if (summaryVisible) {
+        self.summaryHeight.constant = 50;
+        
+        [self removeConstraints:@[self.topConstraint,
+                                  self.bottomConstraint,
+                                  self.leftConstraint,
+                                  self.rightConstraint]];
         
         [self.bookingSummaryView.view removeFromSuperview];
         summaryVisible = NO;
@@ -100,14 +115,17 @@
                                                            multiplier:1.0
                                                              constant:-5];
         [self addConstraints:@[self.topConstraint,
-                                                       self.bottomConstraint,
-                                                       self.leftConstraint,
-                                                       self.rightConstraint]];
+                               self.bottomConstraint,
+                               self.leftConstraint,
+                               self.rightConstraint]];
         
         summaryVisible = YES;
     }
-    
+}
 
+- (IBAction)viewTapped:(id)sender
+{
+    [self closeView];
 }
 
 @end

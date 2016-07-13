@@ -11,7 +11,7 @@
 @interface StepSixViewController ()
 
 @end
-
+//driver details base
 @implementation StepSixViewController
 
 - (void)pushToStepSeven
@@ -81,10 +81,57 @@
         return;
     }
     
-//    if (self.stepSixViewController == nil) {
-//        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SEVEN AS self.stepSixViewController IS NOT SET \n\n");
-//        return;
-//    }
+    if (self.addressLine1 == nil) {
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SEVEN AS self.addressLine1 IS NOT SET \n\n");
+        return;
+    }
+    
+    if (self.addressLine2 == nil) {
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SEVEN AS self.addressLine2 IS NOT SET \n\n");
+        return;
+    }
+    
+    if (self.city == nil) {
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SEVEN AS self.city IS NOT SET \n\n");
+        return;
+    }
+    
+    if (self.postcode == nil) {
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SEVEN AS self.postcode IS NOT SET \n\n");
+        return;
+    }
+    
+    if (self.country == nil) {
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SEVEN AS self.country IS NOT SET \n\n");
+        return;
+    }
+    
+    if (self.stepSevenViewController == nil) {
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SEVEN AS self.stepSevenViewController IS NOT SET \n\n");
+        return;
+    }
+    
+    [self.stepSevenViewController setSelectedVehicle:self.selectedVehicle];
+    [self.stepSevenViewController setPickupDate:self.pickupDate];
+    [self.stepSevenViewController setDropoffDate:self.dropoffDate];
+    [self.stepSevenViewController setPickupLocation:self.pickupLocation];
+    [self.stepSevenViewController setDropoffLocation:self.dropoffLocation];
+    [self.stepSevenViewController setDriverAge:self.driverAge];
+    [self.stepSevenViewController setPassengerQty:self.passengerQty];
+    [self.stepSevenViewController setCartrawlerAPI:self.cartrawlerAPI];
+    [self.stepSevenViewController setInsurance:self.insurance];
+    [self.stepSevenViewController setIsBuyingInsurance:self.isBuyingInsurance];
+    [self.stepSevenViewController setExtras:self.extras];
+    [self.stepSevenViewController setFullName:self.fullName];
+    [self.stepSevenViewController setEmail:self.email];
+    [self.stepSevenViewController setPhone:self.phone];
+    [self.stepSevenViewController setFlightNumber:self.flightNumber];
+    [self.stepSevenViewController setAddressLine1:self.addressLine1];
+    [self.stepSevenViewController setAddressLine2:self.addressLine2];
+    [self.stepSevenViewController setCity:self.city];
+    [self.stepSevenViewController setPostcode:self.postcode];
+    [self.stepSevenViewController setCountry:self.country];
+    [self.navigationController pushViewController:self.stepSevenViewController animated:YES];
 }
 
 @end
