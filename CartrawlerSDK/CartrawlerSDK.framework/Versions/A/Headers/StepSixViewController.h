@@ -23,7 +23,8 @@
 @property (nonatomic, strong) CTInsurance *insurance;
 @property (nonatomic) BOOL isBuyingInsurance;
 @property (nonatomic, strong) NSArray<CTExtraEquipment *> *extras;
-@property (nonatomic, strong) NSString *fullName;
+@property (nonatomic, strong) NSString *firstName;
+@property (nonatomic, strong) NSString *surname;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *flightNumber;

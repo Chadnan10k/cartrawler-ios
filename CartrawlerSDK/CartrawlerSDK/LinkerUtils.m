@@ -61,6 +61,9 @@
 #import "AddressDetailsViewController.h"
 #import "PaymentViewController.h"
 #import "CompletionViewController.h"
+#import "GroundTransportViewController.h"
+#import "GroundServicesViewController.h"
+#import "GTServiceTableViewCell.h"
 
 @implementation LinkerUtils
 
@@ -119,7 +122,9 @@
     [AddressDetailsViewController forceLinkerLoad_];
     [PaymentViewController forceLinkerLoad_];
     [CompletionViewController forceLinkerLoad_];
-
+    [GroundTransportViewController forceLinkerLoad_];
+    [GroundServicesViewController forceLinkerLoad_];
+    [GTServiceTableViewCell forceLinkerLoad_];
 }
 
 @end

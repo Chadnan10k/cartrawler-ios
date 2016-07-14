@@ -36,6 +36,7 @@
     _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
                                                      language:[CTSDKSettings instance].languageCode
                                                         debug:[CTSDKSettings instance].isDebug];
+    //[self.cartrawlerAPI enableLogging:YES];
     return self;
 }
 

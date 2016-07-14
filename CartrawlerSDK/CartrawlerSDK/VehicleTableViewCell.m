@@ -69,12 +69,11 @@
     
     self.totalPriceLabel.attributedText = priceString;
     
-    NSLog(@"%@", vehicle.vendor.rating.totalScore);
+    NSString *score = [NSString stringWithFormat:@"%.1f", vehicle.vendor.rating.overallScore.floatValue * 2];
     
-    NSArray *ratingStrings = [@"7.9/10" componentsSeparatedByString:@"/"];
     NSMutableAttributedString *ratingString = [[NSMutableAttributedString alloc] init];
     
-    NSAttributedString *rating = [[NSAttributedString alloc] initWithString:ratingStrings.firstObject
+    NSAttributedString *rating = [[NSAttributedString alloc] initWithString:score
                                                                   attributes:@{NSFontAttributeName:
                                                                                    [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
     
@@ -82,7 +81,7 @@
                                                               attributes:@{NSFontAttributeName:
                                                                                [UIFont fontWithName:[CTAppearance instance].boldFontName size:12]}];
     
-    NSAttributedString *ten = [[NSAttributedString alloc] initWithString:ratingStrings.lastObject
+    NSAttributedString *ten = [[NSAttributedString alloc] initWithString:@"10"
                                                                 attributes:@{NSFontAttributeName:
                                                                                  [UIFont fontWithName:[CTAppearance instance].boldFontName size:12], NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
     

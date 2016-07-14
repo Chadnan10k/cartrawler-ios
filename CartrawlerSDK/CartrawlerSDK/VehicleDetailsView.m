@@ -70,10 +70,11 @@
     
     self.view.translatesAutoresizingMaskIntoConstraints = false;
     
-    NSArray *priceStrings = [@"7.9/10" componentsSeparatedByString:@"/"];
+    NSString *score = [NSString stringWithFormat:@"%.1f", self.vehicle.vendor.rating.overallScore.floatValue * 2];
+    
     NSMutableAttributedString *ratingString = [[NSMutableAttributedString alloc] init];
     
-    NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject
+    NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:score
                                                                   attributes:@{NSFontAttributeName:
                                                                                    [UIFont fontWithName:[CTAppearance instance].boldFontName size:18]}];
     
@@ -81,7 +82,7 @@
                                                               attributes:@{NSFontAttributeName:
                                                                                [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
     
-    NSAttributedString *cents = [[NSAttributedString alloc] initWithString:priceStrings.lastObject
+    NSAttributedString *cents = [[NSAttributedString alloc] initWithString:@"10"
                                                                 attributes:@{NSFontAttributeName:
                                                                                  [UIFont fontWithName:[CTAppearance instance].boldFontName size:14], NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
     

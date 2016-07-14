@@ -266,6 +266,7 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
 - (void)groundTransportationAvail:(CTAirport *)airport
                    pickupLocation:(CTGroundLocation *)pickupLocation
                   dropoffLocation:(CTGroundLocation *)dropoffLocation
+          airportIsPickupLocation:(BOOL)airportIsPickupLocation
                          adultQty:(NSNumber *)adultQty
                          childQty:(NSNumber *)childQty
                         infantQty:(NSNumber *)infantQty

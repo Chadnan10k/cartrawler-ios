@@ -38,8 +38,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    NSAttributedString *rating = [[NSAttributedString alloc] initWithString:@"7.9"
+    NSString *score = [NSString stringWithFormat:@"%.1f", self.vehicle.vendor.rating.overallScore.floatValue * 2];
+
+    NSAttributedString *rating = [[NSAttributedString alloc] initWithString:score
                                                                   attributes:@{NSFontAttributeName:
                                                                                    [UIFont fontWithName:[CTAppearance instance].boldFontName size:16],
                                                                                NSForegroundColorAttributeName : [CTAppearance instance].textFieldTint}];

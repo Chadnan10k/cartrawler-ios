@@ -61,8 +61,13 @@
         return;
     }
     
-    if (self.fullName == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SEVEN AS self.fullName IS NOT SET \n\n");
+    if (self.firstName == nil) {
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SEVEN AS self.firstName IS NOT SET \n\n");
+        return;
+    }
+    
+    if (self.surname == nil) {
+        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SEVEN AS self.surname IS NOT SET \n\n");
         return;
     }
     
@@ -122,7 +127,8 @@
     [self.stepSevenViewController setInsurance:self.insurance];
     [self.stepSevenViewController setIsBuyingInsurance:self.isBuyingInsurance];
     [self.stepSevenViewController setExtras:self.extras];
-    [self.stepSevenViewController setFullName:self.fullName];
+    [self.stepSevenViewController setFirstName:self.firstName];
+    [self.stepSevenViewController setSurname:self.surname];
     [self.stepSevenViewController setEmail:self.email];
     [self.stepSevenViewController setPhone:self.phone];
     [self.stepSevenViewController setFlightNumber:self.flightNumber];

@@ -12,6 +12,8 @@
 #import "CTSDKSettings.h"
 #import "CTNavigationController.h"
 
+#import "GroundTransportViewController.h"
+
 #define kSearchViewStoryboard @"StepOne"
 #define kSearchResultsViewStoryboard @"StepTwo"
 #define kVehicleDetailsViewStoryboard @"StepThree"
@@ -19,6 +21,8 @@
 #define kSummaryViewStoryboard @"StepFive"
 #define kDetailsViewStoryboard @"StepSix"
 #define kPaymentViewStoryboard @"StepSeven"
+
+#define kGTViewStoryboard @"GroundTransport"
 
 @interface CartrawlerSDK()
 
@@ -29,6 +33,8 @@
 @property (nonatomic, strong) StepFiveViewController *stepFiveViewController;
 @property (nonatomic, strong) StepSixViewController *stepSixViewController;
 @property (nonatomic, strong) StepSevenViewController *stepSevenViewController;
+
+@property (nonatomic, strong) GroundTransportViewController *groundTransportViewController;
 
 @end
 
@@ -61,7 +67,7 @@
     return [CTAppearance instance];
 }
 
-- (void)presentStepOneInViewController:(UIViewController *)viewController;
+- (void)presentCarRentalInViewController:(UIViewController *)viewController;
 {
     
     _stepOneViewController = [self stepOneViewController_];
@@ -73,13 +79,20 @@
     [self.stepOneViewController setStepSixViewController:[self stepSixViewController_]];
     [self.stepOneViewController setStepSevenViewController:[self stepSevenViewController_]];
 
-    //CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:[self stepSevenViewController_]];
+    //CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:[self groundTransportViewController_]];
     CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
 
     navController.navigationBar.hidden = YES;
 
     [viewController presentViewController:navController animated:YES completion:nil];
     
+}
+
+- (void)presentGroundTransportInViewController:(UIViewController *)viewController
+{
+    CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:[self groundTransportViewController_]];
+    navController.navigationBar.hidden = YES;
+    [viewController presentViewController:navController animated:YES completion:nil];
 }
 
 - (void)presentStepTwoWithData:(NSString *)pickupLocationCode
@@ -212,6 +225,18 @@
         return [storyboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
     } else {
         return self.stepSevenViewController;
+    }
+}
+
+- (GroundTransportViewController *)groundTransportViewController_
+{
+    if (self.groundTransportViewController == nil) {
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kGTViewStoryboard bundle:b];
+        return [storyboard instantiateViewControllerWithIdentifier:@"GroundTransportViewController"];
+    } else {
+        return self.groundTransportViewController;
     }
 }
 

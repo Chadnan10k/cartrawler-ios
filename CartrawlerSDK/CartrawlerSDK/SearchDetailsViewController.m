@@ -63,8 +63,6 @@
     
     [self registerForKeyboardNotifications];
     
-    [self setTitle:NSLocalizedString(@"Debug: Step One", @"")];
-    
     [self setDriverAge:@30];
     [self setPassengerQty:@3];
 
@@ -240,7 +238,6 @@
 
     [self setPickupDate:puDate];
     [self setDropoffDate:doDate];
-
 }
 
 - (IBAction)searchTapped:(id)sender

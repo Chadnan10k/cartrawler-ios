@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CartrawlerSDK/CartrawlerSDK/VehicleDetailsView.m"
-            timestampString = "489668879.402467"
+            timestampString = "490179368.681654"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "-termsAndCondTapped:"
             landmarkType = "5">
          </BreakpointContent>
@@ -110,6 +110,22 @@
             startingLineNumber = "36"
             endingLineNumber = "36"
             landmarkName = "-pushToStepFour"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CartrawlerSDK-TestApp/CartrawlerSDK-TestApp/AppDelegate.swift"
+            timestampString = "490200781.782821"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "applicationWillEnterForeground(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -63,8 +63,13 @@
         return;
     }
     
-    if (self.fullName == nil) {
-        NSLog(@"\n\n ERROR: CANNOT MAKE BOOKING AS self.fullName IS NOT SET \n\n");
+    if (self.firstName == nil) {
+        NSLog(@"\n\n ERROR: CANNOT MAKE BOOKING AS self.firstName IS NOT SET \n\n");
+        return;
+    }
+    
+    if (self.surname == nil) {
+        NSLog(@"\n\n ERROR: CANNOT MAKE BOOKING AS self.surname IS NOT SET \n\n");
         return;
     }
     
@@ -128,8 +133,8 @@
     
     CTCustomer *customer = [[CTCustomer alloc] initWithHomeCountry:[CTSDKSettings instance].homeCountryCode
                                                                age:self.driverAge
-                                                         firstName:@"Lee"
-                                                          lastName:@"Maguire"
+                                                         firstName:self.firstName
+                                                          lastName:self.surname
                                                              email:self.email
                                                            address:address
                                                              phone:self.phone];

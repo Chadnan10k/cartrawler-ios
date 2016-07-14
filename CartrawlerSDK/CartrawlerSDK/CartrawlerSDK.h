@@ -27,7 +27,8 @@
 
 + (CTAppearance *)appearance;
 
-- (void)presentStepOneInViewController:(UIViewController *)viewController;
+- (void)presentCarRentalInViewController:(UIViewController *)viewController;
+- (void)presentGroundTransportInViewController:(UIViewController *)viewController;
 
 /*
  * This call is useful for deep linking

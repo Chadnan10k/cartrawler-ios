@@ -28,6 +28,9 @@ class ViewController: UIViewController {
         CartrawlerSDK.appearance().textFieldTint = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
 
         
+//        let customStepOne = storyboard?.instantiateViewControllerWithIdentifier("CustomStepOneViewController") as! CustomStepOneViewController
+//        api.overrideStepOneViewController(customStepOne)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,12 +39,9 @@ class ViewController: UIViewController {
     }
 
     @IBAction func openCartrawler(sender: AnyObject) {
-        let api = CartrawlerSDK(requestorID: "463558", languageCode: "EN", isDebug: true)
-        
-//        let customStepOne = storyboard?.instantiateViewControllerWithIdentifier("CustomStepOneViewController") as! CustomStepOneViewController
-//        api.overrideStepOneViewController(customStepOne)
-        
-        api.presentStepOneInViewController(self)
+        let cartrawlerAPI = CartrawlerSDK(requestorID: "592248", languageCode: "EN", isDebug: true)
+        //cartrawlerAPI.presentCarRentalInViewController(self)
+        cartrawlerAPI.presentGroundTransportInViewController(self)
     }
 
 }

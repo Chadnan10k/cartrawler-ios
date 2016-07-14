@@ -12,7 +12,8 @@
 #import "AddressDetailsViewController.h"
 
 @interface DriverDetailsViewController () <UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *nameTextField;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *firstNameTextField;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *lastNameTextField;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *flightNoTextField;
@@ -31,7 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.nameTextField.delegate = self;
+    self.firstNameTextField.delegate = self;
+    self.lastNameTextField.delegate = self;
     self.emailTextField.delegate = self;
     self.phoneTextField.delegate = self;
     self.flightNoTextField.delegate = self;
@@ -77,7 +79,8 @@
 {
     AddressDetailsViewController *vc = segue.destinationViewController;
 
-    self.fullName = self.nameTextField.text;
+    self.firstName = self.firstNameTextField.text;
+    self.surname = self.lastNameTextField.text;
     self.email = self.emailTextField.text;
     self.phone = self.phoneTextField.text;
     self.flightNumber = self.flightNoTextField.text;
@@ -94,7 +97,8 @@
     vc.insurance = self.insurance;
     vc.isBuyingInsurance = self.isBuyingInsurance;
     vc.extras = self.extras;
-    vc.fullName = self.fullName;
+    vc.firstName = self.firstName;
+    vc.surname = self.surname;
     vc.email = self.email;
     vc.phone = self.phone;
     vc.flightNumber = self.flightNumber;
