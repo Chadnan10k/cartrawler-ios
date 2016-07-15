@@ -12,6 +12,7 @@
 @interface GroundServicesViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) CTGroundAvailability *availability;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
@@ -32,6 +33,12 @@
     // Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 80;
+    
+    [self.tableView reloadData];
+    [self.tableView layoutIfNeeded];    
+    self.tableViewHeight.constant = self.tableView.contentSize.height;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,6 +71,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GTServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    [cell setService:self.availability.services[indexPath.row]];
     return cell;
 }
 

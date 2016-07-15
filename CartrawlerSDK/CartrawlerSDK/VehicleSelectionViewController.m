@@ -38,12 +38,14 @@
     
     _filterViewController = [CTFilterViewController initInViewController:self withData:self.vehicleAvailability];
     self.filterViewController.filterCompletion = ^(NSArray<CTVehicle *> *filteredData) {
-        [weakSelf.vehicleSelectionView initWithVehicleAvailability:filteredData completion:^(CTVehicle *vehicle) {
-            [weakSelf pushToStepThree:vehicle];
-        }];
-        
-        weakSelf.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)filteredData.count
-                                       , NSLocalizedString(@"cars available", @"cars available")];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.vehicleSelectionView initWithVehicleAvailability:filteredData completion:^(CTVehicle *vehicle) {
+                [weakSelf pushToStepThree:vehicle];
+            }];
+            
+            weakSelf.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)filteredData.count
+                                           , NSLocalizedString(@"cars available", @"cars available")];
+        });
     };
     
     self.locationsLabel.text = [NSString stringWithFormat:@"%@ - %@", self.pickupLocation.name, self.dropoffLocation.name];

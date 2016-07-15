@@ -13,6 +13,7 @@
 #import "CTLabel.h"
 #import "TabButton.h"
 #import "NSNumberUtils.h"
+#import "SupplierRatingsViewController.h"
 
 @interface VehicleDetailsViewController ()
 
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet TabButton *carDetailsTab;
 @property (weak, nonatomic) IBOutlet TabButton *supplierTab;
 @property (weak, nonatomic) VehicleDetailsView *vehicleDetailView;
+@property (weak, nonatomic) SupplierRatingsViewController *supplierRatingView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
@@ -56,6 +58,12 @@
                             homeCountry:@"IE"];
         
         [self.vehicleDetailView setupView];
+    }
+    
+    if (self.supplierRatingView) {
+        [self.supplierRatingView setVendor:self.selectedVehicle.vendor];
+        [self.supplierRatingView setupView];
+
     }
     
     self.vendorRatingContainer.layer.cornerRadius = 5;
@@ -108,10 +116,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"VehicleEmbed"]) {
-        VehicleDetailsView *vc = (VehicleDetailsView *)[segue destinationViewController];
-        _vehicleDetailView = vc;
-        
-        [vc setData:self.selectedVehicle
+        _vehicleDetailView = (VehicleDetailsView *)[segue destinationViewController];
+        [self.vehicleDetailView setData:self.selectedVehicle
                 api:self.cartrawlerAPI
          pickupDate:self.pickupDate
          returnDate:self.dropoffDate
@@ -119,11 +125,16 @@
          returnCode:self.dropoffLocation.code
         homeCountry:@"IE"];
         
-        vc.heightChanged = ^(CGFloat height) {
+        self.vehicleDetailView.heightChanged = ^(CGFloat height) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.vehicleDetailsHeightConstraint.constant = height + 265;
             });
         };
+    }
+    
+    if ([[segue identifier] isEqualToString:@"RatingEmbed"]) {
+        _supplierRatingView = (SupplierRatingsViewController *)[segue destinationViewController];
+        [self.supplierRatingView setVendor:self.selectedVehicle.vendor];
     }
 }
 

@@ -40,6 +40,15 @@
     self.layer.borderColor = self.borderColor.CGColor;
     self.layer.borderWidth = self.borderWidth;
     self.layer.cornerRadius = self.cornerRadius;
+    
+    if (self.enableShadow) {
+        self.layer.masksToBounds = NO;
+        self.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.layer.shadowOffset = CGSizeMake(0, 0);
+        self.layer.shadowOpacity = 0.2;
+        self.layer.shadowRadius = 3;
+    }
+    [super awakeFromNib];
 }
 
 @end

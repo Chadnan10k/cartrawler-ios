@@ -40,8 +40,8 @@ class ViewController: UIViewController {
 
     @IBAction func openCartrawler(sender: AnyObject) {
         let cartrawlerAPI = CartrawlerSDK(requestorID: "592248", languageCode: "EN", isDebug: true)
-        //cartrawlerAPI.presentCarRentalInViewController(self)
-        cartrawlerAPI.presentGroundTransportInViewController(self)
+        cartrawlerAPI.presentCarRentalInViewController(self)
+        //cartrawlerAPI!.presentGroundTransport(in: self)
     }
 
 }

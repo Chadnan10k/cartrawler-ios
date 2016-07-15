@@ -69,29 +69,17 @@
                                                     <action selector="backTapped:" destination="L45-dG-eg7" eventType="touchUpInside" id="Qqd-lr-r2n"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5I-SR-KbD">
-                                                <rect key="frame" x="557" y="10" width="35" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="35" id="k7Y-v2-iVP"/>
-                                                    <constraint firstAttribute="height" constant="35" id="oRb-ya-Zbh"/>
-                                                </constraints>
-                                                <state key="normal" title="*" image="settings">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.7074409196" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="xpG-V5-fPS" firstAttribute="leading" secondItem="vrA-86-Eph" secondAttribute="trailing" constant="17" id="3zf-Qg-qr3"/>
                                             <constraint firstItem="CdZ-Gx-aUS" firstAttribute="leading" secondItem="vrA-86-Eph" secondAttribute="trailing" constant="17" id="6Jt-2y-ePG"/>
+                                            <constraint firstAttribute="trailing" secondItem="xpG-V5-fPS" secondAttribute="trailing" constant="56" id="Iia-qr-5d9"/>
                                             <constraint firstAttribute="height" constant="62" id="Ivo-Rd-6IQ"/>
                                             <constraint firstItem="xpG-V5-fPS" firstAttribute="top" secondItem="bSS-OR-ReL" secondAttribute="top" id="PAq-gO-EUG"/>
-                                            <constraint firstItem="X5I-SR-KbD" firstAttribute="leading" secondItem="xpG-V5-fPS" secondAttribute="trailing" constant="13" id="WNH-M5-8YD"/>
                                             <constraint firstItem="vrA-86-Eph" firstAttribute="leading" secondItem="bSS-OR-ReL" secondAttribute="leading" constant="8" id="cXR-Uk-S1Z"/>
-                                            <constraint firstItem="X5I-SR-KbD" firstAttribute="leading" secondItem="CdZ-Gx-aUS" secondAttribute="trailing" constant="13" id="kpu-jj-3ro"/>
-                                            <constraint firstAttribute="trailing" secondItem="X5I-SR-KbD" secondAttribute="trailing" constant="8" id="pii-b8-SQT"/>
+                                            <constraint firstAttribute="trailing" secondItem="CdZ-Gx-aUS" secondAttribute="trailing" constant="56" id="d9M-MU-pRQ"/>
                                             <constraint firstItem="CdZ-Gx-aUS" firstAttribute="top" secondItem="xpG-V5-fPS" secondAttribute="bottom" constant="1" id="ral-gB-m6V"/>
-                                            <constraint firstItem="X5I-SR-KbD" firstAttribute="centerY" secondItem="vrA-86-Eph" secondAttribute="centerY" id="vY5-6i-qpj"/>
                                             <constraint firstItem="vrA-86-Eph" firstAttribute="centerY" secondItem="bSS-OR-ReL" secondAttribute="centerY" constant="-4" id="w8A-CN-yvv"/>
                                         </constraints>
                                     </view>
@@ -460,6 +448,5 @@
     <resources>
         <image name="backArrow" width="512" height="512"/>
         <image name="checkmark.png" width="64" height="64"/>
-        <image name="settings" width="512" height="512"/>
     </resources>
 </document>

@@ -7,16 +7,16 @@
 //
 
 #import "DriverDetailsViewController.h"
-#import "JVFloatLabeledTextField.h"
+#import "CTTextField.h"
 #import "BookingSummaryButton.h"
 #import "AddressDetailsViewController.h"
 
 @interface DriverDetailsViewController () <UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *firstNameTextField;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *lastNameTextField;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *emailTextField;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *phoneTextField;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *flightNoTextField;
+@property (weak, nonatomic) IBOutlet CTTextField *firstNameTextField;
+@property (weak, nonatomic) IBOutlet CTTextField *lastNameTextField;
+@property (weak, nonatomic) IBOutlet CTTextField *emailTextField;
+@property (weak, nonatomic) IBOutlet CTTextField *phoneTextField;
+@property (weak, nonatomic) IBOutlet CTTextField *flightNoTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet BookingSummaryButton *summaryContainer;
 
@@ -69,12 +69,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)continue:(id)sender {
-    //do some validation
-    
-    //send data with prepare for segue
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     AddressDetailsViewController *vc = segue.destinationViewController;
@@ -108,6 +102,40 @@
 //    vc.postcode = self.postcode;
 //    vc.country = self.country;
 
+}
+
+- (IBAction)confirmDetails:(id)sender
+{
+    BOOL validated = YES;
+    
+    if ([self.firstNameTextField.text isEqualToString: @""]) {
+        [self.firstNameTextField shakeAnimation];
+        validated = NO;
+    }
+    
+    if ([self.lastNameTextField.text isEqualToString: @""]) {
+        [self.lastNameTextField shakeAnimation];
+        validated = NO;
+    }
+    
+    if ([self.emailTextField.text isEqualToString: @""]) {
+        [self.emailTextField shakeAnimation];
+        validated = NO;
+    }
+    
+    if ([self.phoneTextField.text isEqualToString: @""]) {
+        [self.phoneTextField shakeAnimation];
+        validated = NO;
+    }
+    
+    if ([self.flightNoTextField.text isEqualToString: @""]) {
+        [self.flightNoTextField shakeAnimation];
+        validated = NO;
+    }
+    
+    if (validated) {
+        [self performSegueWithIdentifier:@"addressDetails" sender:nil];
+    }
 }
 
 - (void)done

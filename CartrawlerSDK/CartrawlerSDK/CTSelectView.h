@@ -18,4 +18,6 @@ typedef void (^CTSelectionCompletion)(void);
 
 - (void)setTextFieldText:(NSString *)text;
 
+- (void)shakeAnimation;
+
 @end

@@ -64,6 +64,8 @@
 #import "GroundTransportViewController.h"
 #import "GroundServicesViewController.h"
 #import "GTServiceTableViewCell.h"
+#import "GTBookNowButton.h"
+#import "SupplierRatingsViewController.h"
 
 @implementation LinkerUtils
 
@@ -125,6 +127,8 @@
     [GroundTransportViewController forceLinkerLoad_];
     [GroundServicesViewController forceLinkerLoad_];
     [GTServiceTableViewCell forceLinkerLoad_];
+    [GTBookNowButton forceLinkerLoad_];
+    [SupplierRatingsViewController forceLinkerLoad_];
 }
 
 @end

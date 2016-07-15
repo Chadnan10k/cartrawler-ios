@@ -16,26 +16,7 @@
 		45E942611D12FFEB00ACF604 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E9425F1D12FFEB00ACF604 /* Main.storyboard */; };
 		45E942631D12FFEB00ACF604 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45E942621D12FFEB00ACF604 /* Assets.xcassets */; };
 		45E942661D12FFEB00ACF604 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E942641D12FFEB00ACF604 /* LaunchScreen.storyboard */; };
-		45E942711D12FFEB00ACF604 /* CartrawlerSDK_TestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E942701D12FFEB00ACF604 /* CartrawlerSDK_TestAppTests.swift */; };
-		45E9427C1D12FFEB00ACF604 /* CartrawlerSDK_TestAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9427B1D12FFEB00ACF604 /* CartrawlerSDK_TestAppUITests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		45E9426D1D12FFEB00ACF604 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45E942501D12FFEB00ACF604 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 45E942571D12FFEB00ACF604;
-			remoteInfo = "CartrawlerSDK-TestApp";
-		};
-		45E942781D12FFEB00ACF604 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45E942501D12FFEB00ACF604 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 45E942571D12FFEB00ACF604;
-			remoteInfo = "CartrawlerSDK-TestApp";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4511E5141D14445E000ED6B0 /* CartrawlerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerSDK.framework; path = ../CartrawlerSDK/CartrawlerSDK.framework; sourceTree = "<group>"; };
@@ -50,12 +31,6 @@
 		45E942621D12FFEB00ACF604 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45E942651D12FFEB00ACF604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45E942671D12FFEB00ACF604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		45E9426C1D12FFEB00ACF604 /* CartrawlerSDK-TestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CartrawlerSDK-TestAppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		45E942701D12FFEB00ACF604 /* CartrawlerSDK_TestAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartrawlerSDK_TestAppTests.swift; sourceTree = "<group>"; };
-		45E942721D12FFEB00ACF604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		45E942771D12FFEB00ACF604 /* CartrawlerSDK-TestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CartrawlerSDK-TestAppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		45E9427B1D12FFEB00ACF604 /* CartrawlerSDK_TestAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartrawlerSDK_TestAppUITests.swift; sourceTree = "<group>"; };
-		45E9427D1D12FFEB00ACF604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,20 +40,6 @@
 			files = (
 				45CFC7EA1D2D1F15006E6F83 /* CartrawlerAPI.framework in Frameworks */,
 				4511E5151D14445E000ED6B0 /* CartrawlerSDK.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		45E942691D12FFEB00ACF604 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		45E942741D12FFEB00ACF604 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,8 +53,6 @@
 				45CFC7E91D2D1F15006E6F83 /* CartrawlerAPI.framework */,
 				4511E5141D14445E000ED6B0 /* CartrawlerSDK.framework */,
 				45E9425A1D12FFEB00ACF604 /* CartrawlerSDK-TestApp */,
-				45E9426F1D12FFEB00ACF604 /* CartrawlerSDK-TestAppTests */,
-				45E9427A1D12FFEB00ACF604 /* CartrawlerSDK-TestAppUITests */,
 				45E942591D12FFEB00ACF604 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,8 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				45E942581D12FFEB00ACF604 /* CartrawlerSDK-TestApp.app */,
-				45E9426C1D12FFEB00ACF604 /* CartrawlerSDK-TestAppTests.xctest */,
-				45E942771D12FFEB00ACF604 /* CartrawlerSDK-TestAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,24 +78,6 @@
 				45D866E31D143A3400D19B74 /* CustomStepOneViewController.swift */,
 			);
 			path = "CartrawlerSDK-TestApp";
-			sourceTree = "<group>";
-		};
-		45E9426F1D12FFEB00ACF604 /* CartrawlerSDK-TestAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				45E942701D12FFEB00ACF604 /* CartrawlerSDK_TestAppTests.swift */,
-				45E942721D12FFEB00ACF604 /* Info.plist */,
-			);
-			path = "CartrawlerSDK-TestAppTests";
-			sourceTree = "<group>";
-		};
-		45E9427A1D12FFEB00ACF604 /* CartrawlerSDK-TestAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				45E9427B1D12FFEB00ACF604 /* CartrawlerSDK_TestAppUITests.swift */,
-				45E9427D1D12FFEB00ACF604 /* Info.plist */,
-			);
-			path = "CartrawlerSDK-TestAppUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,42 +101,6 @@
 			productReference = 45E942581D12FFEB00ACF604 /* CartrawlerSDK-TestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		45E9426B1D12FFEB00ACF604 /* CartrawlerSDK-TestAppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 45E942831D12FFEB00ACF604 /* Build configuration list for PBXNativeTarget "CartrawlerSDK-TestAppTests" */;
-			buildPhases = (
-				45E942681D12FFEB00ACF604 /* Sources */,
-				45E942691D12FFEB00ACF604 /* Frameworks */,
-				45E9426A1D12FFEB00ACF604 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				45E9426E1D12FFEB00ACF604 /* PBXTargetDependency */,
-			);
-			name = "CartrawlerSDK-TestAppTests";
-			productName = "CartrawlerSDK-TestAppTests";
-			productReference = 45E9426C1D12FFEB00ACF604 /* CartrawlerSDK-TestAppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		45E942761D12FFEB00ACF604 /* CartrawlerSDK-TestAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 45E942861D12FFEB00ACF604 /* Build configuration list for PBXNativeTarget "CartrawlerSDK-TestAppUITests" */;
-			buildPhases = (
-				45E942731D12FFEB00ACF604 /* Sources */,
-				45E942741D12FFEB00ACF604 /* Frameworks */,
-				45E942751D12FFEB00ACF604 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				45E942791D12FFEB00ACF604 /* PBXTargetDependency */,
-			);
-			name = "CartrawlerSDK-TestAppUITests";
-			productName = "CartrawlerSDK-TestAppUITests";
-			productReference = 45E942771D12FFEB00ACF604 /* CartrawlerSDK-TestAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -212,14 +115,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 3L8QU4R2JJ;
 						DevelopmentTeamName = eTrawler;
-					};
-					45E9426B1D12FFEB00ACF604 = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 45E942571D12FFEB00ACF604;
-					};
-					45E942761D12FFEB00ACF604 = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 45E942571D12FFEB00ACF604;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -237,8 +133,6 @@
 			projectRoot = "";
 			targets = (
 				45E942571D12FFEB00ACF604 /* CartrawlerSDK-TestApp */,
-				45E9426B1D12FFEB00ACF604 /* CartrawlerSDK-TestAppTests */,
-				45E942761D12FFEB00ACF604 /* CartrawlerSDK-TestAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -252,20 +146,6 @@
 				45E942661D12FFEB00ACF604 /* LaunchScreen.storyboard in Resources */,
 				45E942631D12FFEB00ACF604 /* Assets.xcassets in Resources */,
 				45E942611D12FFEB00ACF604 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		45E9426A1D12FFEB00ACF604 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		45E942751D12FFEB00ACF604 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,36 +178,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		45E942681D12FFEB00ACF604 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				45E942711D12FFEB00ACF604 /* CartrawlerSDK_TestAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		45E942731D12FFEB00ACF604 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				45E9427C1D12FFEB00ACF604 /* CartrawlerSDK_TestAppUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		45E9426E1D12FFEB00ACF604 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 45E942571D12FFEB00ACF604 /* CartrawlerSDK-TestApp */;
-			targetProxy = 45E9426D1D12FFEB00ACF604 /* PBXContainerItemProxy */;
-		};
-		45E942791D12FFEB00ACF604 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 45E942571D12FFEB00ACF604 /* CartrawlerSDK-TestApp */;
-			targetProxy = 45E942781D12FFEB00ACF604 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		45E9425F1D12FFEB00ACF604 /* Main.storyboard */ = {
@@ -452,6 +303,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CartrawlerSDK-TestApp/CartrawlerSDK-TestApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -472,52 +324,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cartrawler.CartrawlerSDK-TestApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CartrawlerSDK-TestApp/CartrawlerSDK-TestApp-Bridging-Header.h";
-			};
-			name = Release;
-		};
-		45E942841D12FFEB00ACF604 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = "CartrawlerSDK-TestAppTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cartrawler.CartrawlerSDK-TestAppTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CartrawlerSDK-TestApp.app/CartrawlerSDK-TestApp";
-			};
-			name = Debug;
-		};
-		45E942851D12FFEB00ACF604 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = "CartrawlerSDK-TestAppTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cartrawler.CartrawlerSDK-TestAppTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CartrawlerSDK-TestApp.app/CartrawlerSDK-TestApp";
-			};
-			name = Release;
-		};
-		45E942871D12FFEB00ACF604 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "CartrawlerSDK-TestAppUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cartrawler.CartrawlerSDK-TestAppUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = "CartrawlerSDK-TestApp";
-			};
-			name = Debug;
-		};
-		45E942881D12FFEB00ACF604 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "CartrawlerSDK-TestAppUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cartrawler.CartrawlerSDK-TestAppUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = "CartrawlerSDK-TestApp";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -538,24 +345,6 @@
 			buildConfigurations = (
 				45E942811D12FFEB00ACF604 /* Debug */,
 				45E942821D12FFEB00ACF604 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		45E942831D12FFEB00ACF604 /* Build configuration list for PBXNativeTarget "CartrawlerSDK-TestAppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				45E942841D12FFEB00ACF604 /* Debug */,
-				45E942851D12FFEB00ACF604 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		45E942861D12FFEB00ACF604 /* Build configuration list for PBXNativeTarget "CartrawlerSDK-TestAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				45E942871D12FFEB00ACF604 /* Debug */,
-				45E942881D12FFEB00ACF604 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

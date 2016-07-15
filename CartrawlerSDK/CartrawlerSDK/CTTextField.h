@@ -13,4 +13,6 @@
 
 + (void)forceLinkerLoad_;
 
+- (void)shakeAnimation;
+
 @end

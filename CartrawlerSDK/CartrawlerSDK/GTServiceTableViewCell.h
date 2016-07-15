@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CartrawlerAPI/CTGroundService.h>
 
 @interface GTServiceTableViewCell : UITableViewCell
 
 + (void)forceLinkerLoad_;
+
+- (void)setService:(CTGroundService *)service;
 
 @end

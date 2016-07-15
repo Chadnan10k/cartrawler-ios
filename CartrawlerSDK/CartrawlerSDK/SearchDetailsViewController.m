@@ -47,6 +47,7 @@
 @property (nonatomic, strong) NSDate *dropoffTime;
 
 @property (readwrite, nonatomic) BOOL isReturningSameLocation;
+@property (readwrite, nonatomic) BOOL driverUnderage;
 
 @end
 
@@ -65,7 +66,16 @@
     
     [self setDriverAge:@30];
     [self setPassengerQty:@3];
-
+    
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *initialTimeComp = [gregorianCalendar components:NSHourCalendarUnit
+                                                             fromDate:[NSDate date]];
+    
+    [initialTimeComp setHour:10];
+    
+    _pickupTime = [gregorianCalendar dateFromComponents:initialTimeComp];
+    _dropoffTime = [gregorianCalendar dateFromComponents:initialTimeComp];
+    
     _pickupTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:[NSDate date]];
     _dropoffTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
 
@@ -118,7 +128,11 @@
 
     _activeView = self.pickupView;
     
+    
+    
     _pickupTimeView = [[CTSelectView alloc] initWithView:self.pickupTimeContainer placeholder:@"Pick-up time"];
+    [self.pickupTimeView setTextFieldText:[DateUtils stringFromDate:self.pickupTime withFormat:@"hh:mm a"]];
+
     self.pickupTimeView.viewTapped = ^{
         
         [weakSelf.view endEditing:YES];
@@ -133,6 +147,7 @@
     };
     
     _dropoffTimeView = [[CTSelectView alloc] initWithView:self.dropoffTimeContainer placeholder:@"Drop-off time"];
+    [self.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:self.dropoffTime withFormat:@"hh:mm a"]];
     self.dropoffTimeView.viewTapped = ^{
         
         [weakSelf.view endEditing:YES];
@@ -162,6 +177,7 @@
     sameLoc.viewTapped = ^(BOOL selection) {
         if (selection) {
             _isReturningSameLocation = NO;
+            [weakSelf setDropoffLocation:self.pickupLocation];
             self.dropoffLocTopConstraint.constant = 15;
             [UIView animateWithDuration:0.3 animations:^{
                 self.dropoffContainer.alpha = 0;
@@ -169,6 +185,7 @@
             }];
         } else {
             _isReturningSameLocation = YES;
+            [weakSelf setDropoffLocation:nil];
             self.dropoffLocTopConstraint.constant = 80;
             [UIView animateWithDuration:0.3 animations:^{
                 self.dropoffContainer.alpha = 1;
@@ -184,13 +201,15 @@
         if (selection) {
             
             [weakSelf.view endEditing:YES];
-            
+            weakSelf.driverUnderage = NO;
+            weakSelf.driverAge = @30;
             self.ageTopConstraint.constant = 0;
             [UIView animateWithDuration:0.3 animations:^{
                 self.ageContainer.alpha = 0;
                 [self.view layoutIfNeeded];
             }];
         } else {
+            weakSelf.driverUnderage = YES;
             self.ageTopConstraint.constant = 50;
            [UIView animateWithDuration:0.3 animations:^{
                self.ageContainer.alpha = 1;
@@ -240,26 +259,62 @@
     [self setDropoffDate:doDate];
 }
 
+- (BOOL)validate
+{
+    
+    BOOL validated = YES;
+    
+    if (self.pickupLocation == nil) {
+        [self.pickupView shakeAnimation];
+        validated = NO;
+    }
+    
+    if (self.dropoffLocation == nil) {
+        [self.dropoffView shakeAnimation];
+        validated = NO;
+    }
+    
+    if (self.pickupDate == nil || self.dropoffDate == nil) {
+        [self.calendarView shakeAnimation];
+        validated = NO;
+    }
+    
+    if (self.driverUnderage) {
+        NSNumberFormatter *d = [NSNumberFormatter new];
+        self.driverAge = [d numberFromString:self.ageContainer.text];
+    }
+    
+    if (self.driverAge == nil) {
+        [self.ageContainer shakeAnimation];
+        validated = NO;
+    }
+    
+    return validated;
+}
+
 - (IBAction)searchTapped:(id)sender
 {
-    [self combineDates];
-    UIButton *button = (UIButton *)sender;
-    button.enabled = NO;
-    button.alpha = 0.8;
     
-    [self setStepOneCompletion:^(BOOL success, NSString *errorMessage){
-        if (success) {
-            button.enabled = YES;
-            button.alpha = 1.0;
-        } else {
-            button.enabled = YES;
-            button.alpha = 1.0;
-            if (errorMessage) { }
-        }
-    }];
-    
-    [self pushToStepTwo];
-
+    if([self validate]) {
+        
+        [self combineDates];
+        UIButton *button = (UIButton *)sender;
+        button.enabled = NO;
+        button.alpha = 0.8;
+        
+        [self setStepOneCompletion:^(BOOL success, NSString *errorMessage){
+            if (success) {
+                button.enabled = YES;
+                button.alpha = 1.0;
+            } else {
+                button.enabled = YES;
+                button.alpha = 1.0;
+                if (errorMessage) { }
+            }
+        }];
+        
+        [self pushToStepTwo];
+    }
 }
 
 - (void)registerForKeyboardNotifications

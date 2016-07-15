@@ -45,17 +45,18 @@
     [self.cartrawlerAPI locationSearchWithPartialString:partialText
                                         completion:^(CTLocationSearch *response, CTErrorResponse *error) {
                                             if (error == nil) {
-                                                _airportLocations = [[NSMutableArray alloc] init];
-                                                _otherLocations = [[NSMutableArray alloc] init];
-                                                
-                                                for (CTMatchedLocation *location in response.matchedLocations) {
-                                                    if (location.isAtAirport) {
-                                                        [self.airportLocations addObject:location];
-                                                    } else {
-                                                        [self.otherLocations addObject:location];
-                                                    }
-                                                }
                                                 dispatch_async(dispatch_get_main_queue(), ^{
+                                                    _airportLocations = [[NSMutableArray alloc] init];
+                                                    _otherLocations = [[NSMutableArray alloc] init];
+                                                    completion(YES);
+
+                                                    for (CTMatchedLocation *location in response.matchedLocations) {
+                                                        if (location.isAtAirport) {
+                                                            [self.airportLocations addObject:location];
+                                                        } else {
+                                                            [self.otherLocations addObject:location];
+                                                        }
+                                                    }
                                                     completion(YES);
                                                 });
                                             } else {
