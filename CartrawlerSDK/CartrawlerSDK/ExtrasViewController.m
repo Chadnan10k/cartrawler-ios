@@ -111,13 +111,14 @@
                                 };
     
     NSAttributedString *termsLink = [[NSAttributedString alloc]
-                                     initWithString:@"Terms and Conditions"
+                                     initWithString:response.termsAndConditionsTitle
                                      attributes:linkAttr];
     
     NSRange range = [response.functionalText rangeOfString:@"${link1}"];
     
-    
-    [termsStr replaceCharactersInRange:range withAttributedString:termsLink];
+    if (range.location != NSNotFound) {
+        [termsStr replaceCharactersInRange:range withAttributedString:termsLink];
+    }
     
     self.purchaseTextView.attributedText = termsStr;
     CGSize purchaseTextViewSize = [self.purchaseTextView sizeThatFits:CGSizeMake(self.purchaseTextView.frame.size.width, FLT_MAX)];

@@ -18,6 +18,10 @@
  */
 @property (nonatomic, strong, readonly) NSURL *termsAndConditionsURL;
 /**
+ *  "Terms and condition"s localized string
+ */
+@property (nonatomic, strong, readonly) NSString *termsAndConditionsTitle;
+/**
  *  The cost of the plan
  */
 @property (nonatomic, strong, readonly) NSNumber *costAmount;
@@ -33,7 +37,6 @@
  *  The premium currency code
  */
 @property (nonatomic, strong, readonly) NSString *premiumCurrencyCode;
-
 
 @property (nonatomic, strong, readonly) NSString *title;
 

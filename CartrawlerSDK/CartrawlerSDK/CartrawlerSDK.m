@@ -78,8 +78,7 @@
     [self.stepOneViewController setStepFiveViewController:[self stepFiveViewController_]];
     [self.stepOneViewController setStepSixViewController:[self stepSixViewController_]];
     [self.stepOneViewController setStepSevenViewController:[self stepSevenViewController_]];
-
-    //CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:[self groundTransportViewController_]];
+    
     CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
 
     navController.navigationBar.hidden = YES;

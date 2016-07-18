@@ -27,33 +27,26 @@
                          completion:(VehicleSelectionCompletion)completion;
 {
     
-    //self = [super self];
     [self.tableView setContentOffset:
      CGPointMake(0, -self.tableView.contentInset.top) animated:YES];
     
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     [self.tableView registerNib:[UINib nibWithNibName:@"VehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];
-    _dataSource = nil;
+
     _dataSource = [[CTVehicleSelectionViewModel alloc] initWithData:data cellSelected:^(CTVehicle *vehicle) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+        //dispatch_async(dispatch_get_main_queue(), ^{
             completion(vehicle);
-        });
+
+       // });
     }];
     
     self.tableView.delegate = self.dataSource;
     self.tableView.dataSource = self.dataSource;
     
     [self.tableView reloadData];
-    //[self.tableView reloadData];
-    //return self;
+
 }
 
-- (void)forceReloadTableView
-{
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [self.tableView reloadData];
-//    });
-}
 
 @end

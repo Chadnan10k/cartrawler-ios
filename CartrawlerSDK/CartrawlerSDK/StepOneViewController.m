@@ -79,12 +79,12 @@
     [cartrawlerAPI enableLogging:YES];
     [cartrawlerAPI requestVehicleAvailabilityForLocation:self.pickupLocation.code
                                            returnLocationCode:self.dropoffLocation.code
-                                          customerCountryCode:@"IE"
+                                          customerCountryCode:[CTSDKSettings instance].homeCountryCode
                                                  passengerQty:@3
                                                     driverAge:self.driverAge
                                                pickUpDateTime:self.pickupDate
                                                returnDateTime:self.dropoffDate
-                                                 currencyCode:@"EUR"
+                                                 currencyCode:[CTSDKSettings instance].currencyCode
                                                    completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
                                                        if (response) {
                                                            dispatch_async(dispatch_get_main_queue(), ^{
@@ -94,6 +94,7 @@
                                                                [self setVehicleAvailability: response];
                                                                self.stepTwoViewController.vehicleAvailability = self.vehicleAvailability;
                                                                [self.navigationController pushViewController:self.stepTwoViewController animated:YES];
+                                                               [self.stepTwoViewController refresh];
                                                            });
                                                        } else {
                                                            dispatch_async(dispatch_get_main_queue(), ^{

@@ -15,4 +15,6 @@
 
 - (void)shakeAnimation;
 
+- (BOOL)isValidEmail;
+
 @end

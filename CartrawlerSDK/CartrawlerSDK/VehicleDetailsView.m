@@ -91,6 +91,8 @@
     [ratingString appendAttributedString:cents];
     
     self.ratingLabel.attributedText = ratingString;
+    
+    [self.includedCollectionView reloadData];
 }
 
 - (void)setData:(CTVehicle *)vehicle

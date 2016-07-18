@@ -66,6 +66,8 @@
 #import "GTServiceTableViewCell.h"
 #import "GTBookNowButton.h"
 #import "SupplierRatingsViewController.h"
+#import "SettingsViewController.h"
+#import "SettingsSelectionViewController.h"
 
 @implementation LinkerUtils
 
@@ -129,6 +131,8 @@
     [GTServiceTableViewCell forceLinkerLoad_];
     [GTBookNowButton forceLinkerLoad_];
     [SupplierRatingsViewController forceLinkerLoad_];
+    [SettingsSelectionViewController forceLinkerLoad_];
+    [SettingsViewController forceLinkerLoad_];
 }
 
 @end

@@ -7,16 +7,16 @@
 //
 
 #import "AddressDetailsViewController.h"
-#import "JVFloatLabeledTextField.h"
+#import "CTTextField.h"
 #import "BookingSummaryButton.h"
 
 @interface AddressDetailsViewController () <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *addressLine1TextField;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *addressLine2TextField;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *cityTextField;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *postCodeTextField;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *countryTextField;
+@property (weak, nonatomic) IBOutlet CTTextField *addressLine1TextField;
+@property (weak, nonatomic) IBOutlet CTTextField *addressLine2TextField;
+@property (weak, nonatomic) IBOutlet CTTextField *cityTextField;
+@property (weak, nonatomic) IBOutlet CTTextField *postCodeTextField;
+@property (weak, nonatomic) IBOutlet CTTextField *countryTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet BookingSummaryButton *summaryContainer;
 
@@ -65,12 +65,38 @@
 {
     //do some validation
     
-    self.addressLine1 = self.addressLine1TextField.text;
-    self.addressLine2 = self.addressLine2TextField.text;
-    self.city = self.cityTextField.text;
-    self.postcode = self.postCodeTextField.text;
-    self.country = self.countryTextField.text;
-    [self pushToStepSeven];
+    BOOL validated = YES;
+    
+    if ([self.addressLine1TextField.text isEqualToString: @""]) {
+        [self.addressLine1TextField shakeAnimation];
+        validated = NO;
+    }
+    
+    if ([self.cityTextField.text isEqualToString: @""]) {
+        [self.cityTextField shakeAnimation];
+        validated = NO;
+    }
+    
+    if ([self.postCodeTextField.text isEqualToString: @""]) {
+        [self.postCodeTextField shakeAnimation];
+        validated = NO;
+    }
+    
+    if ([self.countryTextField.text isEqualToString: @""]) {
+        [self.countryTextField shakeAnimation];
+        validated = NO;
+    }
+    
+    if (validated) {
+        
+        self.addressLine1 = self.addressLine1TextField.text;
+        self.addressLine2 = self.addressLine2TextField.text;
+        self.city = self.cityTextField.text;
+        self.postcode = self.postCodeTextField.text;
+        self.country = self.countryTextField.text;
+        [self pushToStepSeven];
+    }
+    
 }
 
 - (void)done

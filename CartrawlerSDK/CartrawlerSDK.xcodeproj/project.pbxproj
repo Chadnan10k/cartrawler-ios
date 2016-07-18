@@ -29,6 +29,15 @@
 		4509B47C1D37ED8100259255 /* GTServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4509B47A1D37ED8100259255 /* GTServiceTableViewCell.m */; };
 		450F9D351D3929E5002C6F6B /* SupplierRatingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D331D3929E5002C6F6B /* SupplierRatingsViewController.h */; };
 		450F9D361D3929E5002C6F6B /* SupplierRatingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D341D3929E5002C6F6B /* SupplierRatingsViewController.m */; };
+		450F9D391D3CE08E002C6F6B /* SettingsSelectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D371D3CE08E002C6F6B /* SettingsSelectionViewController.h */; };
+		450F9D3A1D3CE08E002C6F6B /* SettingsSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D381D3CE08E002C6F6B /* SettingsSelectionViewController.m */; };
+		450F9D3D1D3CE8D5002C6F6B /* CTCurrency.csv in Resources */ = {isa = PBXBuildFile; fileRef = 450F9D3B1D3CE8D5002C6F6B /* CTCurrency.csv */; };
+		450F9D3E1D3CE8D5002C6F6B /* CTISOCountries.csv in Resources */ = {isa = PBXBuildFile; fileRef = 450F9D3C1D3CE8D5002C6F6B /* CTISOCountries.csv */; };
+		450F9D411D3CE9D6002C6F6B /* CSVItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D3F1D3CE9D6002C6F6B /* CSVItem.h */; };
+		450F9D421D3CE9D6002C6F6B /* CSVItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D401D3CE9D6002C6F6B /* CSVItem.m */; };
+		450F9D491D3D00C8002C6F6B /* SettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D471D3D00C8002C6F6B /* SettingsViewController.h */; };
+		450F9D4A1D3D00C8002C6F6B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D481D3D00C8002C6F6B /* SettingsViewController.m */; };
+		450F9D4C1D3D14FF002C6F6B /* CTLanguages.csv in Resources */ = {isa = PBXBuildFile; fileRef = 450F9D4B1D3D14FF002C6F6B /* CTLanguages.csv */; };
 		4511E51D1D1450CE000ED6B0 /* CTSDKSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E51B1D1450CE000ED6B0 /* CTSDKSettings.h */; };
 		4511E51E1D1450CE000ED6B0 /* CTSDKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E51C1D1450CE000ED6B0 /* CTSDKSettings.m */; };
 		4511E5201D145779000ED6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4511E51F1D145779000ED6B0 /* Assets.xcassets */; };
@@ -243,6 +252,15 @@
 		4509B47A1D37ED8100259255 /* GTServiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTServiceTableViewCell.m; sourceTree = "<group>"; };
 		450F9D331D3929E5002C6F6B /* SupplierRatingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierRatingsViewController.h; sourceTree = "<group>"; };
 		450F9D341D3929E5002C6F6B /* SupplierRatingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierRatingsViewController.m; sourceTree = "<group>"; };
+		450F9D371D3CE08E002C6F6B /* SettingsSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSelectionViewController.h; sourceTree = "<group>"; };
+		450F9D381D3CE08E002C6F6B /* SettingsSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSelectionViewController.m; sourceTree = "<group>"; };
+		450F9D3B1D3CE8D5002C6F6B /* CTCurrency.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTCurrency.csv; sourceTree = "<group>"; };
+		450F9D3C1D3CE8D5002C6F6B /* CTISOCountries.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTISOCountries.csv; sourceTree = "<group>"; };
+		450F9D3F1D3CE9D6002C6F6B /* CSVItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVItem.h; sourceTree = "<group>"; };
+		450F9D401D3CE9D6002C6F6B /* CSVItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVItem.m; sourceTree = "<group>"; };
+		450F9D471D3D00C8002C6F6B /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		450F9D481D3D00C8002C6F6B /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		450F9D4B1D3D14FF002C6F6B /* CTLanguages.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTLanguages.csv; sourceTree = "<group>"; };
 		4511E51B1D1450CE000ED6B0 /* CTSDKSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSDKSettings.h; sourceTree = "<group>"; };
 		4511E51C1D1450CE000ED6B0 /* CTSDKSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSDKSettings.m; sourceTree = "<group>"; };
 		4511E51F1D145779000ED6B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -515,6 +533,8 @@
 				4525216E1D353C4200B47DE6 /* DriverDetailsViewController.m */,
 				45F4735A1D36451F00DF548B /* AddressDetailsViewController.h */,
 				45F4735B1D36451F00DF548B /* AddressDetailsViewController.m */,
+				450F9D3F1D3CE9D6002C6F6B /* CSVItem.h */,
+				450F9D401D3CE9D6002C6F6B /* CSVItem.m */,
 			);
 			name = "Driver Details (Step Six)";
 			sourceTree = "<group>";
@@ -771,8 +791,12 @@
 		45E9429A1D13011B00ACF604 /* Search (Step One) */ = {
 			isa = PBXGroup;
 			children = (
+				450F9D371D3CE08E002C6F6B /* SettingsSelectionViewController.h */,
+				450F9D381D3CE08E002C6F6B /* SettingsSelectionViewController.m */,
 				45E9429B1D13012400ACF604 /* SearchDetailsViewController.h */,
 				45E9429C1D13012400ACF604 /* SearchDetailsViewController.m */,
+				450F9D471D3D00C8002C6F6B /* SettingsViewController.h */,
+				450F9D481D3D00C8002C6F6B /* SettingsViewController.m */,
 			);
 			name = "Search (Step One)";
 			sourceTree = "<group>";
@@ -852,6 +876,9 @@
 		45E942CA1D13029600ACF604 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				450F9D3B1D3CE8D5002C6F6B /* CTCurrency.csv */,
+				450F9D3C1D3CE8D5002C6F6B /* CTISOCountries.csv */,
+				450F9D4B1D3D14FF002C6F6B /* CTLanguages.csv */,
 				4511E5341D17F6CC000ED6B0 /* UINavigationBar */,
 				45E942CB1D1302A200ACF604 /* LocaleUtils.h */,
 				45E942CC1D1302A200ACF604 /* LocaleUtils.m */,
@@ -970,6 +997,7 @@
 			files = (
 				4511E5371D17F766000ED6B0 /* CTNavigationItem.h in Headers */,
 				45AC54661D130A1600805268 /* StepOneViewController.h in Headers */,
+				450F9D491D3D00C8002C6F6B /* SettingsViewController.h in Headers */,
 				45CFC7DD1D2CF822006E6F83 /* ExtrasViewController.h in Headers */,
 				45AC54671D130A1600805268 /* StepTwoViewController.h in Headers */,
 				45645DDC1D33D6370075A3D2 /* StepFiveViewController.h in Headers */,
@@ -985,6 +1013,7 @@
 				4511E5321D17F6C8000ED6B0 /* CTNavigationBar.h in Headers */,
 				454AD7C31D2AAD14005C6CFF /* IncludedCollectionViewCell.h in Headers */,
 				45AC54681D130A1600805268 /* CTTimePickerView.h in Headers */,
+				450F9D411D3CE9D6002C6F6B /* CSVItem.h in Headers */,
 				453386E31D2BA4EA0021D392 /* IncludedCollectionViewLayout.h in Headers */,
 				4511E51D1D1450CE000ED6B0 /* CTSDKSettings.h in Headers */,
 				45819FAA1D35036A001AE0F5 /* BookingSummaryViewController.h in Headers */,
@@ -1030,6 +1059,7 @@
 				45361BEB1D2BA1BA00295124 /* UnderLinedButton.h in Headers */,
 				4509B47B1D37ED8100259255 /* GTServiceTableViewCell.h in Headers */,
 				45AC54701D130A1600805268 /* CTMiddleDateCell.h in Headers */,
+				450F9D391D3CE08E002C6F6B /* SettingsSelectionViewController.h in Headers */,
 				45AC545D1D1309F300805268 /* JVFloatLabeledTextField.h in Headers */,
 				456979281D2C03E7006A321E /* TabButton.h in Headers */,
 				454AD7B11D2A6236005C6CFF /* VehicleDetailsViewController.h in Headers */,
@@ -1132,6 +1162,7 @@
 			files = (
 				45F473611D36640F00DF548B /* StepSeven.storyboard in Resources */,
 				45F4735F1D36476900DF548B /* StepSix.storyboard in Resources */,
+				450F9D3D1D3CE8D5002C6F6B /* CTCurrency.csv in Resources */,
 				45819FB21D35215A001AE0F5 /* StepSixViewController.h in Resources */,
 				45645DDF1D33D8370075A3D2 /* StepFiveViewController.h in Resources */,
 				45CFC7E01D2CF968006E6F83 /* ExtrasViewController.h in Resources */,
@@ -1142,7 +1173,9 @@
 				454AD7BF1D2A7092005C6CFF /* VehicleDetailsViewController.h in Resources */,
 				454AD7BE1D2A7089005C6CFF /* StepThree.storyboard in Resources */,
 				454AD7931D26C985005C6CFF /* StepTwo.storyboard in Resources */,
+				450F9D4C1D3D14FF002C6F6B /* CTLanguages.csv in Resources */,
 				4538D2551D14436600C723E5 /* Info.plist in Resources */,
+				450F9D3E1D3CE8D5002C6F6B /* CTISOCountries.csv in Resources */,
 				45D866DA1D142D6400D19B74 /* VehicleTableViewCell.h in Resources */,
 				45D866D91D142CAC00D19B74 /* VehicleTableViewCell_iPhone.xib in Resources */,
 				45D866D41D140FCC00D19B74 /* SearchDetailsViewController.h in Resources */,
@@ -1238,14 +1271,17 @@
 				45E942B41D1301C600ACF604 /* CTMiddleDateCell.m in Sources */,
 				45E942C31D13022100ACF604 /* CTTimePickerView.m in Sources */,
 				452521741D35442100B47DE6 /* BookingSummaryButton.m in Sources */,
+				450F9D421D3CE9D6002C6F6B /* CSVItem.m in Sources */,
 				4511E5251D17DFA4000ED6B0 /* CTAppearance.m in Sources */,
 				451B513C1D38DD35004EBFDC /* GTBookNowButton.m in Sources */,
 				45645DFB1D33E8240075A3D2 /* PaymentSummaryTableViewCell.m in Sources */,
 				4511E5401D17F999000ED6B0 /* CTNavigationController.m in Sources */,
 				45CFC7DE1D2CF822006E6F83 /* ExtrasViewController.m in Sources */,
 				45E942D31D1302A200ACF604 /* LocaleUtils.m in Sources */,
+				450F9D3A1D3CE08E002C6F6B /* SettingsSelectionViewController.m in Sources */,
 				45F4736F1D369E2A00DF548B /* CompletionViewController.m in Sources */,
 				45F4736A1D3686AC00DF548B /* CreditCard-Validator.m in Sources */,
+				450F9D4A1D3D00C8002C6F6B /* SettingsViewController.m in Sources */,
 				45E942EA1D1302FF00ACF604 /* NSStringUtils.m in Sources */,
 				454AD7801D25587D005C6CFF /* CTFilterDataSource.m in Sources */,
 				456979291D2C03E7006A321E /* TabButton.m in Sources */,

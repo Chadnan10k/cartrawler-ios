@@ -118,7 +118,7 @@
         validated = NO;
     }
     
-    if ([self.emailTextField.text isEqualToString: @""]) {
+    if ([self.emailTextField.text isEqualToString: @""] || ![self.emailTextField isValidEmail]) {
         [self.emailTextField shakeAnimation];
         validated = NO;
     }

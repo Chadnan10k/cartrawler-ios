@@ -36,9 +36,14 @@
     
     __weak typeof (self) weakSelf = self;
     
+    [self.vehicleSelectionView initWithVehicleAvailability:self.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {
+        [self pushToStepThree:vehicle];
+    }];
+    
     _filterViewController = [CTFilterViewController initInViewController:self withData:self.vehicleAvailability];
     self.filterViewController.filterCompletion = ^(NSArray<CTVehicle *> *filteredData) {
         dispatch_async(dispatch_get_main_queue(), ^{
+
             [weakSelf.vehicleSelectionView initWithVehicleAvailability:filteredData completion:^(CTVehicle *vehicle) {
                 [weakSelf pushToStepThree:vehicle];
             }];
@@ -59,13 +64,11 @@
                                NSLocalizedString(@"cars available", @"cars available")];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)refresh
 {
-    [super viewWillAppear:animated];
-    
     [self.vehicleSelectionView initWithVehicleAvailability:self.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {
         [self pushToStepThree:vehicle];
-    }];    
+    }];
 }
 
 - (IBAction)backTapped:(id)sender {

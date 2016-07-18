@@ -36,4 +36,9 @@
 
 - (void)pushToStepThree:(CTVehicle *)vehicle;
 
+/**
+ *  Convenience method to be used for refreshing the vehicle tableview in the case of a new search.
+ */
+- (void)refresh;
+
 @end

@@ -199,6 +199,7 @@
 
 - (void)present
 {
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self.parentViewContoller presentViewController:self animated:YES completion:nil];
 }
 

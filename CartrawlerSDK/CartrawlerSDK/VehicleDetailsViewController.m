@@ -14,6 +14,7 @@
 #import "TabButton.h"
 #import "NSNumberUtils.h"
 #import "SupplierRatingsViewController.h"
+#import "CTSDKSettings.h"
 
 @interface VehicleDetailsViewController ()
 
@@ -55,7 +56,7 @@
                              returnDate:self.dropoffDate
                              pickupCode:self.pickupLocation.code
                              returnCode:self.dropoffLocation.code
-                            homeCountry:@"IE"];
+                            homeCountry:[CTSDKSettings instance].homeCountryCode];
         
         [self.vehicleDetailView setupView];
     }

@@ -116,30 +116,35 @@
     }
 }
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    CTLabel *customLabel = [[CTLabel alloc] initWithFrame:CGRectMake(10.0,5.0,200.0,20.0)];
-    customLabel.textColor = [UIColor darkGrayColor];
+    return 30;
+}
 
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 20)];
-    [headerView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
-    [headerView addSubview:customLabel];
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+        CTLabel *customLabel = [[CTLabel alloc] initWithFrame:CGRectMake(10.0,5.0,200.0,20.0)];
+        customLabel.textColor = [UIColor darkGrayColor];
     
-    if (section == 0) {
-        [customLabel setText:NSLocalizedString(@"Airport", @"")];
-        if (self.airportLocations.count > 0) {
-            return headerView;
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 20)];
+        [headerView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+        [headerView addSubview:customLabel];
+    
+        if (section == 0) {
+            [customLabel setText:NSLocalizedString(@"Airport", @"")];
+            if (self.airportLocations.count > 0) {
+                return headerView;
+            } else {
+                return nil;
+            }
         } else {
-            return nil;
+            [customLabel setText:NSLocalizedString(@"All other locations", @"")];
+            if (self.otherLocations.count > 0) {
+                return headerView;
+            } else {
+                return nil;
+            }
         }
-    } else {
-        [customLabel setText:NSLocalizedString(@"All other locations", @"")];
-        if (self.otherLocations.count > 0) {
-            return headerView;
-        } else {
-            return nil;
-        }
-    }
 }
 
 @end

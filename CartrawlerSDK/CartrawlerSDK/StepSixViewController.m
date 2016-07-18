@@ -7,8 +7,9 @@
 //
 
 #import "StepSixViewController.h"
+#import "CTImageCache.h"
 
-@interface StepSixViewController ()
+@interface StepSixViewController () <UIAlertViewDelegate>
 
 @end
 //driver details base
@@ -137,7 +138,21 @@
     [self.stepSevenViewController setCity:self.city];
     [self.stepSevenViewController setPostcode:self.postcode];
     [self.stepSevenViewController setCountry:self.country];
-    [self.navigationController pushViewController:self.stepSevenViewController animated:YES];
+    //[self.navigationController pushViewController:self.stepSevenViewController animated:YES];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"End of CTSDK demo"
+                                                        message:@"🚗"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil, nil];
+    
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [[CTImageCache sharedInstance] removeAllObjects];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
