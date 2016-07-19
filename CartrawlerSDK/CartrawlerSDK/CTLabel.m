@@ -36,6 +36,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     if (self.useBoldFont) {
         [self setFont:[UIFont fontWithName:[CTAppearance instance].boldFontName size:self.font.pointSize]];
     } else {

@@ -51,6 +51,16 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        if #available(iOS 8.0, *) {
+            
+            let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            
+            UIApplication.shared().registerUserNotificationSettings(settings)
+            UIApplication.shared().registerForRemoteNotifications()
+        } else {
+            // Fallback on earlier versions
+        }
+        
         UIApplication.shared().setStatusBarStyle(.lightContent, animated: false)
         
         CartrawlerSDK.appearance().buttonColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)

@@ -15,6 +15,7 @@
 #import "NSNumberUtils.h"
 #import "SupplierRatingsViewController.h"
 #import "CTSDKSettings.h"
+#import "CTButton.h"
 
 @interface VehicleDetailsViewController ()
 
@@ -30,6 +31,7 @@
 @property (weak, nonatomic) VehicleDetailsView *vehicleDetailView;
 @property (weak, nonatomic) SupplierRatingsViewController *supplierRatingView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet CTButton *continueButton;
 
 @end
 
@@ -45,6 +47,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.continueButton.enabled = YES;
     
     [self.scrollView setContentOffset:
      CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
@@ -155,6 +159,7 @@
 
 - (IBAction)continueTapped:(id)sender {
     [self pushToStepFour];
+    self.continueButton.enabled = NO;
 }
 
 

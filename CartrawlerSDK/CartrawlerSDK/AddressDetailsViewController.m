@@ -9,6 +9,7 @@
 #import "AddressDetailsViewController.h"
 #import "CTTextField.h"
 #import "BookingSummaryButton.h"
+#import "SettingsSelectionViewController.h"
 
 @interface AddressDetailsViewController () <UITextFieldDelegate>
 
@@ -106,12 +107,30 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    //[self.summaryContainer closeIfOpen];
+    if (textField == self.countryTextField) {
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+        UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:b];
+        SettingsSelectionViewController *vc = [settingsStoryboard instantiateViewControllerWithIdentifier:@"SettingsSelectionViewController"];
+        [vc setSettingsType:SettingsTypeCountry];
+        
+        [self presentViewController:vc animated:YES completion:nil];
+        
+        __weak typeof (self) weakSelf = self;
+        
+        vc.settingsCompletion = ^(CSVItem *item){
+            self.countryTextField.text = item.name;
+            weakSelf.country = item.name;
+        };
+        return NO;
+    }
+
     return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    
     [self.view endEditing:YES];
     return YES;
 }

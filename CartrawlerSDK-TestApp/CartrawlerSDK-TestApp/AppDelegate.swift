@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+
+        registerForPushNotifications(application: application)
+
         return true
     }
 
@@ -40,7 +43,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    @available(iOS 8.0, *)
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        if notificationSettings.types != .none {
+            application.registerForRemoteNotifications()
+        }
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("Got token data! \(deviceToken)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("PUSH REGISTER ERROR \(error.localizedDescription)")
+    }
+    
+    func registerForPushNotifications(application: UIApplication) {
+        if #available(iOS 8.0, *) {
+            let notificationSettings = UIUserNotificationSettings(
+                types: [.badge, .sound, .alert], categories: nil)
+            application.registerUserNotificationSettings(notificationSettings)
+            
+        } else {
+            // Fallback on earlier versions
+        }
+    }
 
 }
 

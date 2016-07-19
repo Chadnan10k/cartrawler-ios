@@ -32,6 +32,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     self.addButton.layer.cornerRadius = 5;
     self.addButton.layer.masksToBounds = YES;
     self.lessButton.layer.cornerRadius = 5;
@@ -39,7 +40,6 @@
     
     self.lessButton.backgroundColor = [UIColor lightGrayColor];
     self.addButton.backgroundColor = [UIColor darkGrayColor];
-
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder

@@ -135,7 +135,6 @@
 {
     [self.weekDayTitle.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     CGFloat width = (CGRectGetWidth(frame) - self.padding * 2) / 7;
-    CGFloat centerY = self.weekDayTitle.bounds.size.height / 2;
     
     NSArray *titles = @[NSLocalizedString(@"Sun", @""),
                         NSLocalizedString(@"Mon", @""),
@@ -145,13 +144,73 @@
                         NSLocalizedString(@"Fri", @""),
                         NSLocalizedString(@"Sat", @"")];
     
+    NSMutableArray<CTLabel *> *labelArray = [[NSMutableArray alloc] init];
+    
     for (int i = 0; i < 7; i++) {
-        CTLabel *label = [[CTLabel alloc] initWithFrame:CGRectMake(0, 0, width, 20)];
+        CTLabel *label = [[CTLabel alloc] initWithFrame:CGRectZero];
         label.textAlignment = NSTextAlignmentCenter;
         label.text = titles[i];
-        label.center = CGPointMake(self.padding + i * width + width / 2, centerY);
         label.textColor = [UIColor darkGrayColor];
+        label.translatesAutoresizingMaskIntoConstraints = NO;
         [self.weekDayTitle addSubview:label];
+        [labelArray addObject:label];
+    }
+    
+    if (labelArray.count == 7) {
+        NSString *layoutStringH = @"H:|-0-[sun(<=width)]-0-[mon(<=width)]-0-[tue(width)]-0-[wed(width)]-0-[thu(width)]-0-[fri(width)]-0-[sat(width)]-0-|";
+        NSString *layoutStringVSun = @"V:|-[sun]-|";
+        NSString *layoutStringVMon = @"V:|-[mon]-|";
+        NSString *layoutStringVTue = @"V:|-[tue]-|";
+        NSString *layoutStringVWed = @"V:|-[wed]-|";
+        NSString *layoutStringVThu = @"V:|-[thu]-|";
+        NSString *layoutStringVFri = @"V:|-[fri]-|";
+        NSString *layoutStringVSat = @"V:|-[sat]-|";
+
+        NSDictionary *viewDict = @{@"sun" : labelArray[0],
+                                   @"mon" : labelArray[1],
+                                   @"tue" : labelArray[2],
+                                   @"wed" : labelArray[3],
+                                   @"thu" : labelArray[4],
+                                   @"fri" : labelArray[5],
+                                   @"sat" : labelArray[6]};
+        
+        NSDictionary *metrics = @{@"width" : [NSNumber numberWithFloat:width]};
+        
+        NSArray *hConstraint = [NSLayoutConstraint constraintsWithVisualFormat:layoutStringH
+                                                                                  options:0
+                                                                                  metrics:metrics
+                                                                                    views:viewDict];
+        
+        [self.weekDayTitle addConstraints:hConstraint];
+        [self.weekDayTitle addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:layoutStringVSun
+                                                                                  options:0
+                                                                                  metrics:metrics
+                                                                                    views:viewDict]];
+        [self.weekDayTitle addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:layoutStringVMon
+                                                                                  options:0
+                                                                                  metrics:metrics
+                                                                                    views:viewDict]];
+        [self.weekDayTitle addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:layoutStringVTue
+                                                                                  options:0
+                                                                                  metrics:metrics
+                                                                                    views:viewDict]];
+        [self.weekDayTitle addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:layoutStringVWed
+                                                                                  options:0
+                                                                                  metrics:metrics
+                                                                                    views:viewDict]];
+        [self.weekDayTitle addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:layoutStringVThu
+                                                                                  options:0
+                                                                                  metrics:metrics
+                                                                                    views:viewDict]];
+        [self.weekDayTitle addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:layoutStringVFri
+                                                                                  options:0
+                                                                                  metrics:metrics
+                                                                                    views:viewDict]];
+        [self.weekDayTitle addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:layoutStringVSat
+                                                                                  options:0
+                                                                                  metrics:metrics
+                                                                                    views:viewDict]];
+
     }
 }
 

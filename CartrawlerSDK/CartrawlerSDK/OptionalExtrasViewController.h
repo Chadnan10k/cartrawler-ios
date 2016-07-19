@@ -15,7 +15,7 @@
 
 typedef void (^OptionalExtrasLoaded)(double viewHeight);
 
-@property (nonatomic, strong) OptionalExtrasLoaded viewLoaded;
+@property (nonatomic, strong) OptionalExtrasLoaded optionalExtrasLoaded;
 @property (strong, nonatomic) NSArray<CTExtraEquipment *> *extras;
 
 - (void)refreshView;

@@ -304,6 +304,7 @@
                     <size key="freeformSize" width="600" height="655"/>
                     <connections>
                         <outlet property="carDetailsTab" destination="27g-W0-5xj" id="x9X-0h-75c"/>
+                        <outlet property="continueButton" destination="ndQ-xF-Dhy" id="ksY-sN-f4Y"/>
                         <outlet property="fuelPolicyView" destination="U3D-4j-EDX" id="txU-dH-JNb"/>
                         <outlet property="pickupLocationView" destination="cba-4A-LKy" id="nfr-iE-cYy"/>
                         <outlet property="priceLabel" destination="9mA-V7-6cN" id="L2g-eH-j6u"/>

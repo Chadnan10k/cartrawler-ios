@@ -45,7 +45,9 @@
         
         [numberToolbar sizeToFit];
         self.inputAccessoryView = numberToolbar;
+        
     }
+    
     return self;
 }
 

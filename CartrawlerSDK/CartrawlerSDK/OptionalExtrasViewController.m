@@ -56,8 +56,8 @@
     self.textViewHeight.constant = textViewSize.height;
     self.textView.scrollEnabled = NO;
     
-    if (self.viewLoaded) {
-        self.viewLoaded(50);
+    if (self.optionalExtrasLoaded) {
+        self.optionalExtrasLoaded(50);
     }
 }
 
@@ -73,8 +73,8 @@
     self.textView.scrollEnabled = NO;
     
     
-    if (self.viewLoaded) {
-        self.viewLoaded(self.tableViewHeight.constant + self.textViewHeight.constant + 50);
+    if (self.optionalExtrasLoaded) {
+        self.optionalExtrasLoaded(self.tableViewHeight.constant + self.textViewHeight.constant + 50);
     }
 
 }
@@ -90,7 +90,7 @@
     self.textView.scrollEnabled = NO;
     
     if (self.viewLoaded) {
-        self.viewLoaded(self.tableViewHeight.constant + self.textViewHeight.constant + 50);
+        self.optionalExtrasLoaded(self.tableViewHeight.constant + self.textViewHeight.constant + 50);
     }
 }
 

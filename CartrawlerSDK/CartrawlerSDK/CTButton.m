@@ -36,6 +36,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     self.backgroundColor = self.overrideBackgroundColor;
     [self setTitleColor:self.overrideTextColor forState:UIControlStateNormal];
 }

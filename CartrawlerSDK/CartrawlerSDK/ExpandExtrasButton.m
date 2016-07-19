@@ -46,7 +46,7 @@
     self.extrasViewController = [storyboard instantiateViewControllerWithIdentifier:@"ExtrasDetailViewController"];
     __weak typeof (self) weakSelf = self;
     
-    self.extrasViewController.viewLoaded = ^(double viewHeight) {
+    self.extrasViewController.optionalExtrasLoaded = ^(double viewHeight) {
         weakSelf.height.constant = viewHeight;
     };
     

@@ -44,19 +44,6 @@ static CGFloat const kFloatingLabelHideAnimationDuration = 0.3f;
     
 }
 
-- (void)awakeFromNib
-{
-    if (self.useBottomBorder) {
-        border = [CALayer layer];
-        CGFloat borderWidth = 0.5;
-        border.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-        border.frame = CGRectMake(0, self.frame.size.height - borderWidth, self.frame.size.width, self.frame.size.height);
-        border.borderWidth = borderWidth;
-        [self.layer addSublayer:border];
-        self.layer.masksToBounds = YES;
-    }
-}
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -74,7 +61,6 @@ static CGFloat const kFloatingLabelHideAnimationDuration = 0.3f;
     }
     return self;
 }
-
 
 - (void)commonInit
 {
@@ -367,6 +353,19 @@ static CGFloat const kFloatingLabelHideAnimationDuration = 0.3f;
     }
     else {
         [self showFloatingLabel:firstResponder];
+    }
+    
+    if (self.useBottomBorder) {
+        
+        CALayer *topBorder = [CALayer layer];
+        topBorder.frame = CGRectMake(0.0f, 0, self.frame.size.width, 1.0f);
+        topBorder.backgroundColor = self.backgroundColor.CGColor;
+        [self.layer addSublayer:topBorder];
+        
+        CALayer *bottomBorder = [CALayer layer];
+        bottomBorder.frame = CGRectMake(0.0f, self.frame.size.height - 1, self.frame.size.width, 1.0f);
+        bottomBorder.backgroundColor = [UIColor lightGrayColor].CGColor;
+        [self.layer addSublayer:bottomBorder];
     }
 }
 

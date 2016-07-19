@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *currencyButton;
 @property (weak, nonatomic) IBOutlet UIButton *countryButton;
 @property (weak, nonatomic) IBOutlet UIButton *languageButton;
+@property (strong, nonatomic) UIStoryboard *settingsStoryboard;
 
 @end
 
@@ -26,25 +27,29 @@
     
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    _settingsStoryboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:b];
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)close:(id)sender {
+- (IBAction)close:(id)sender
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)currency:(id)sender {
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:b];
-    SettingsSelectionViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SettingsSelectionViewController"];
+- (IBAction)currency:(id)sender
+{
+    SettingsSelectionViewController *vc = [self.settingsStoryboard instantiateViewControllerWithIdentifier:@"SettingsSelectionViewController"];
     
     [vc setSettingsType:SettingsTypeCurrency];
     
@@ -56,11 +61,9 @@
     };
 }
 
-- (IBAction)language:(id)sender {
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:b];
-    SettingsSelectionViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SettingsSelectionViewController"];
+- (IBAction)language:(id)sender
+{
+    SettingsSelectionViewController *vc = [self.settingsStoryboard instantiateViewControllerWithIdentifier:@"SettingsSelectionViewController"];
     
     [vc setSettingsType:SettingsTypeLanguage];
     
@@ -72,12 +75,9 @@
     };
 }
 
-- (IBAction)country:(id)sender {
-    
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:b];
-    SettingsSelectionViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SettingsSelectionViewController"];
+- (IBAction)country:(id)sender
+{
+    SettingsSelectionViewController *vc = [self.settingsStoryboard instantiateViewControllerWithIdentifier:@"SettingsSelectionViewController"];
    
     [vc setSettingsType:SettingsTypeCountry];
     
