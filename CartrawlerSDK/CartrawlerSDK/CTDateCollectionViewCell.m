@@ -9,6 +9,7 @@
 #import "CTDateCollectionViewCell.h"
 #import "CTLabel.h"
 #import "CTAppearance.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface CTDateCollectionViewCell()
 
@@ -22,49 +23,6 @@
 {
     
 }
-
-//- (id)initWithFrame:(CGRect)frame
-//{
-//
-//    self = [super initWithFrame:frame];
-//    
-//    CGFloat radius = frame.size.height / 2;
-//    CGFloat imgSize = (radius*2)+1; // 1 pixel for stretching
-//    UIGraphicsBeginImageContext(CGSizeMake(imgSize, imgSize));
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    
-//    CGContextSetAlpha(context, 0.5f);
-//    CGContextSetLineWidth(context, 0);
-//    CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
-//    
-//    CGFloat minx = 0;
-//    CGFloat midx = imgSize/2;
-//    CGFloat maxx = imgSize;
-//    CGFloat miny = 0;
-//    CGFloat midy = imgSize/2;
-//    CGFloat maxy = imgSize;
-//    
-//    CGContextMoveToPoint(context, minx, midy);
-//    CGContextAddArcToPoint(context, minx, miny, midx, miny, radius);
-//    CGContextAddArcToPoint(context, maxx, miny, maxx, midy, radius);
-//    CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
-//    CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
-//    CGContextClosePath(context);
-//    CGContextDrawPath(context, kCGPathFillStroke);
-//    
-//    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    
-//    UIImage *stretchImage = [viewImage stretchableImageWithLeftCapWidth:radius topCapHeight:radius];
-//    
-//    UIImageView *stretch = [[UIImageView alloc] initWithImage:stretchImage];
-//    stretch.frame = self.bounds;
-//    stretch.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
-//    [self addSubview:stretch];
-//    [self sendSubviewToBack:stretch];
-//    
-//    return self;
-//}
 
 - (void)setDateLabel:(NSDate *)date indexPath:(NSIndexPath *)indexPath section:(NSNumber *)section;
 {
@@ -81,8 +39,6 @@
         _section = section;
     }
     
-   // self.layer.cornerRadius = 10;
-  //  self.layer.masksToBounds = YES;
 }
 
 - (void)setLabelColor:(UIColor *)color
