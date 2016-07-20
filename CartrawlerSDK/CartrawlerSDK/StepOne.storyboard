@@ -25,7 +25,7 @@
                                         <frame key="frameInset" minY="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G6v-Z6-vHp" id="TVa-Jq-lsn">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kMg-HH-Alf" customClass="CTLabel">
@@ -248,6 +248,9 @@
                                                     <segue destination="Ff3-Gb-K9j" kind="showDetail" id="BQa-BP-Vrj"/>
                                                 </connections>
                                             </button>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="G49-Ej-lDF">
+                                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -271,6 +274,7 @@
                                             <constraint firstItem="G6C-1A-p1I" firstAttribute="centerY" secondItem="dY4-jz-lOg" secondAttribute="centerY" id="SVc-BL-hKO"/>
                                             <constraint firstItem="uhq-oE-HlI" firstAttribute="leading" secondItem="61t-ct-JPK" secondAttribute="leading" constant="20" id="TFi-hP-qao"/>
                                             <constraint firstAttribute="trailing" secondItem="OXn-mb-0jv" secondAttribute="trailing" constant="20" id="UcM-VJ-Mby"/>
+                                            <constraint firstItem="G49-Ej-lDF" firstAttribute="top" secondItem="hPB-yG-Afv" secondAttribute="bottom" constant="23" id="UgZ-I5-apC"/>
                                             <constraint firstAttribute="trailing" secondItem="BXO-3s-baL" secondAttribute="trailing" constant="20" id="Usg-vF-o68"/>
                                             <constraint firstItem="hPB-yG-Afv" firstAttribute="top" secondItem="b3i-9q-LoW" secondAttribute="bottom" constant="51" id="VJL-wL-dca"/>
                                             <constraint firstItem="9xf-tF-qLx" firstAttribute="leading" secondItem="nHM-Ro-PGB" secondAttribute="trailing" constant="13" id="VaZ-dd-sRx"/>
@@ -281,9 +285,11 @@
                                             <constraint firstItem="lbs-n2-6eR" firstAttribute="top" secondItem="uhq-oE-HlI" secondAttribute="bottom" constant="8" id="blB-10-m5G"/>
                                             <constraint firstItem="PmG-YJ-k3p" firstAttribute="leading" secondItem="61t-ct-JPK" secondAttribute="leading" constant="20" id="cqO-hj-5tN"/>
                                             <constraint firstItem="uhq-oE-HlI" firstAttribute="top" secondItem="nHM-Ro-PGB" secondAttribute="bottom" constant="8" id="d8u-6A-noI"/>
+                                            <constraint firstItem="PmG-YJ-k3p" firstAttribute="top" secondItem="G49-Ej-lDF" secondAttribute="bottom" constant="22" id="dxv-3p-PX3"/>
                                             <constraint firstItem="nHM-Ro-PGB" firstAttribute="leading" secondItem="61t-ct-JPK" secondAttribute="leading" constant="20" id="ecF-tz-DA9"/>
                                             <constraint firstItem="n5L-L6-l2M" firstAttribute="top" secondItem="61t-ct-JPK" secondAttribute="top" constant="21" id="g9F-yd-sw3"/>
                                             <constraint firstItem="9xf-tF-qLx" firstAttribute="top" secondItem="uUT-Ub-urr" secondAttribute="bottom" constant="80" id="kEF-bn-ynO"/>
+                                            <constraint firstAttribute="trailing" secondItem="G49-Ej-lDF" secondAttribute="trailing" constant="43" id="kHw-AR-2DG"/>
                                             <constraint firstAttribute="trailing" secondItem="uhq-oE-HlI" secondAttribute="trailing" constant="20" id="ke4-OQ-cMd"/>
                                             <constraint firstItem="OXn-mb-0jv" firstAttribute="leading" secondItem="61t-ct-JPK" secondAttribute="leading" constant="20" id="lLu-g5-H2B"/>
                                             <constraint firstAttribute="trailing" secondItem="G6C-1A-p1I" secondAttribute="trailing" constant="25" id="mCU-7u-4Bi"/>
@@ -323,6 +329,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="658"/>
                     <connections>
+                        <outlet property="activityView" destination="G49-Ej-lDF" id="2rT-oZ-ewb"/>
                         <outlet property="ageCheckBoxContainer" destination="dY4-jz-lOg" id="ZGW-7n-JmQ"/>
                         <outlet property="ageContainer" destination="hPB-yG-Afv" id="8qM-eS-yvb"/>
                         <outlet property="ageTopConstraint" destination="VJL-wL-dca" id="ShC-iP-kq0"/>
@@ -671,7 +678,7 @@
                                                 <frame key="frameInset" minY="28" width="375" height="322"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JqB-8l-X2u" id="8uf-Sl-dce">
-                                                    <frame key="frameInset" width="375" height="321"/>
+                                                    <frame key="frameInset" width="375" height="322"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rUQ-Yj-b4C">

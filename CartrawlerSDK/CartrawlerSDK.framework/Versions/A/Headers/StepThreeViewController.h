@@ -16,8 +16,12 @@
 
 @interface StepThreeViewController : UIViewController
 
-@property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
+//Used for when the insurance details api call fails or succeeds
+typedef void (^StepTwoCompletion)(BOOL success, NSString *errorMessage);
 
+@property (nonatomic) StepTwoCompletion stepTwoCompletion;
+
+@property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 @property (nonatomic, strong) CTVehicle *selectedVehicle;
 @property (nonatomic, strong) CTMatchedLocation *pickupLocation;
 @property (nonatomic, strong) CTMatchedLocation *dropoffLocation;

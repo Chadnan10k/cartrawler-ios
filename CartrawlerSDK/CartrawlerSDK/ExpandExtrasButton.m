@@ -113,9 +113,7 @@
                                self.bottomConstraint,
                                self.leftConstraint,
                                self.rightConstraint]];
-        
-        self.height.constant = 100;
-        
+                
         
     } else {
         
@@ -133,6 +131,12 @@
         expanded = NO;
         
     }
+}
+
+- (void)openView
+{
+   // [self closeExtrasDrawer:NO];
+   // self.height.constant = [self.extrasViewController openHeight];
 }
 
 - (IBAction)expand:(id)sender

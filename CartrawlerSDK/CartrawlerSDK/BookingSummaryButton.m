@@ -35,12 +35,12 @@
                dropoffDate:(NSDate *)dropoffDate
          isBuyingInsurance:(BOOL)isBuyingInsurance
 {
-    
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepFive" bundle:b];
-    
-    _bookingSummaryView = [storyboard instantiateViewControllerWithIdentifier:@"BookingSummaryView"];
+    if (!self.bookingSummaryView) {
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepFive" bundle:b];
+        _bookingSummaryView = [storyboard instantiateViewControllerWithIdentifier:@"BookingSummaryView"];
+    }
     [self.bookingSummaryView setDataWithVehicle:vehicle
                                      pickupDate:pickupDate
                                     dropoffDate:dropoffDate

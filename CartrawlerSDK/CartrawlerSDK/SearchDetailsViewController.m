@@ -31,6 +31,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dropoffLocTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ageTopConstraint;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 @property (strong, nonatomic) UIView *activeView;
 
@@ -60,6 +61,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     
     [self registerForKeyboardNotifications];
@@ -296,20 +298,26 @@
 {
     
     if([self validate]) {
-        
+        [self.activityView startAnimating];
         [self combineDates];
         UIButton *button = (UIButton *)sender;
         button.enabled = NO;
         button.alpha = 0.8;
         
+        __weak typeof (self) weakSelf = self;
+        
         [self setStepOneCompletion:^(BOOL success, NSString *errorMessage){
             if (success) {
+                [weakSelf.activityView stopAnimating];
                 button.enabled = YES;
                 button.alpha = 1.0;
             } else {
+                [weakSelf.activityView stopAnimating];
                 button.enabled = YES;
                 button.alpha = 1.0;
-                if (errorMessage) { }
+                if (errorMessage) {
+                    [weakSelf presentAlertWithError:errorMessage];
+                }
             }
         }];
         
@@ -363,6 +371,16 @@
 - (IBAction)cancel:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)presentAlertWithError:(NSString *)error
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:error
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 @end

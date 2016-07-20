@@ -17,4 +17,6 @@
 
 - (void)refreshView;
 
+- (void)openView;
+
 @end

@@ -208,6 +208,7 @@
                 <outlet property="fuelPolicyLabel" destination="OcP-n9-n3b" id="C3z-PJ-Z0B"/>
                 <outlet property="passengerQtyLabel" destination="CmS-84-x9T" id="Dct-R4-fAr"/>
                 <outlet property="ratingLabel" destination="JWd-ex-J4h" id="KNK-Up-AI5"/>
+                <outlet property="ratingTitle" destination="3aV-Bt-Dtw" id="amj-OM-jl7"/>
                 <outlet property="totalPriceLabel" destination="9K3-lE-Cnc" id="v8o-pA-pfZ"/>
                 <outlet property="transmissionLabel" destination="5Xb-bk-V9O" id="gRf-Tp-08L"/>
                 <outlet property="transportationLabel" destination="qip-jK-lbB" id="4gk-zO-SCw"/>

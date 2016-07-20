@@ -79,7 +79,8 @@
 
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     
     [self.tableView reloadData];
@@ -89,13 +90,18 @@
     self.textViewHeight.constant = textViewSize.height;
     self.textView.scrollEnabled = NO;
     
-    if (self.viewLoaded) {
+    if (self.optionalExtrasLoaded) {
         self.optionalExtrasLoaded(self.tableViewHeight.constant + self.textViewHeight.constant + 50);
     }
 }
 
 - (void)viewDidLayoutSubviews {
     [self.textView setContentOffset:CGPointZero animated:NO];
+}
+
+-(CGFloat)openHeight
+{
+    return self.tableViewHeight.constant + self.textViewHeight.constant + 50;
 }
 
 #pragma mark Table View

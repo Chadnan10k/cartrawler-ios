@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *vendorImageView;
 @property (weak, nonatomic) IBOutlet UIView *freeCancelationView;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ratingTitle;
 
 @end
 
@@ -70,27 +71,35 @@
     
     self.totalPriceLabel.attributedText = priceString;
     
-    NSString *score = [NSString stringWithFormat:@"%.1f", vehicle.vendor.rating.overallScore.floatValue * 2];
-    
-    NSMutableAttributedString *ratingString = [[NSMutableAttributedString alloc] init];
-    
-    NSAttributedString *rating = [[NSAttributedString alloc] initWithString:score
+    if (vehicle.vendor.rating.overallScore != nil) {
+        
+        NSString *score = [NSString stringWithFormat:@"%.1f", vehicle.vendor.rating.overallScore.floatValue * 2];
+        
+        NSMutableAttributedString *ratingString = [[NSMutableAttributedString alloc] init];
+        
+        NSAttributedString *rating = [[NSAttributedString alloc] initWithString:score
+                                                                      attributes:@{NSFontAttributeName:
+                                                                                       [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
+        
+        NSAttributedString *slash = [[NSAttributedString alloc] initWithString:@"/"
                                                                   attributes:@{NSFontAttributeName:
-                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
-    
-    NSAttributedString *slash = [[NSAttributedString alloc] initWithString:@"/"
-                                                              attributes:@{NSFontAttributeName:
-                                                                               [UIFont fontWithName:[CTAppearance instance].boldFontName size:12]}];
-    
-    NSAttributedString *ten = [[NSAttributedString alloc] initWithString:@"10"
-                                                                attributes:@{NSFontAttributeName:
-                                                                                 [UIFont fontWithName:[CTAppearance instance].boldFontName size:12], NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
-    
-    [ratingString appendAttributedString:rating];
-    [ratingString appendAttributedString:slash];
-    [ratingString appendAttributedString:ten];
-    
-    self.ratingLabel.attributedText = ratingString;
+                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:12]}];
+        
+        NSAttributedString *ten = [[NSAttributedString alloc] initWithString:@"10"
+                                                                    attributes:@{NSFontAttributeName:
+                                                                                     [UIFont fontWithName:[CTAppearance instance].boldFontName size:12], NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
+        
+        [ratingString appendAttributedString:rating];
+        [ratingString appendAttributedString:slash];
+        [ratingString appendAttributedString:ten];
+        self.ratingTitle.text = NSLocalizedString(@"Rating", @"Rating");
+
+        self.ratingLabel.attributedText = ratingString;
+        
+    } else {
+        self.ratingTitle.text = @"";
+        self.ratingLabel.text = @"";
+    }
 
     [[CTImageCache sharedInstance] cachedImage: vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;

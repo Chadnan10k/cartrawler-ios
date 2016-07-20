@@ -52,7 +52,7 @@
         return;
     }
     
-    if (self.insurance == nil) {
+    if (self.insurance == nil && self.isBuyingInsurance) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SEVEN AS self.insurance IS NOT SET \n\n");
         return;
     }

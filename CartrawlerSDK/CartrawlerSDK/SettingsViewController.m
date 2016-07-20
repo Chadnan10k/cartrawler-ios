@@ -34,6 +34,9 @@
     NSBundle *b = [NSBundle bundleWithPath:bundlePath];
     _settingsStoryboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:b];
     // Do any additional setup after loading the view.
+    [self.currencyButton setTitle:[CTSDKSettings instance].currencyName forState:UIControlStateNormal];
+    [self.languageButton setTitle:[CTSDKSettings instance].languageName forState:UIControlStateNormal];
+    [self.countryButton setTitle:[CTSDKSettings instance].homeCountryName forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,10 +57,11 @@
     [vc setSettingsType:SettingsTypeCurrency];
     
     [self presentViewController:vc animated:YES completion:nil];
-    
+    __weak typeof (self) weakSelf = self;
     vc.settingsCompletion = ^(CSVItem *item){
         [[CTSDKSettings instance] setCurrencyCode:[item.code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-        [self.currencyButton setTitle:item.name forState:UIControlStateNormal];
+        [[CTSDKSettings instance] setCurrencyName:[item.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+        [weakSelf.currencyButton setTitle:item.name forState:UIControlStateNormal];
     };
 }
 
@@ -68,10 +72,11 @@
     [vc setSettingsType:SettingsTypeLanguage];
     
     [self presentViewController:vc animated:YES completion:nil];
-    
+    __weak typeof (self) weakSelf = self;
     vc.settingsCompletion = ^(CSVItem *item){
         [[CTSDKSettings instance] setLanguageCode:[item.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-        [self.languageButton setTitle:item.code forState:UIControlStateNormal];
+        [[CTSDKSettings instance] setLanguageName:[item.code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+        [weakSelf.languageButton setTitle:item.code forState:UIControlStateNormal];
     };
 }
 
@@ -82,10 +87,11 @@
     [vc setSettingsType:SettingsTypeCountry];
     
     [self presentViewController:vc animated:YES completion:nil];
-    
+    __weak typeof (self) weakSelf = self;
     vc.settingsCompletion = ^(CSVItem *item){
         [[CTSDKSettings instance] setHomeCountryCode:[item.code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-        [self.countryButton setTitle:item.name forState:UIControlStateNormal];
+        [[CTSDKSettings instance] setHomeCountryName:[item.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+        [weakSelf.countryButton setTitle:item.name forState:UIControlStateNormal];
 
     };
     

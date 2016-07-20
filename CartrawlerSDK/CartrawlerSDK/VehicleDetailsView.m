@@ -69,30 +69,38 @@
     self.transmissionLabel.text = self.vehicle.transmissionType;
     
     self.view.translatesAutoresizingMaskIntoConstraints = false;
-    
-    NSString *score = [NSString stringWithFormat:@"%.1f", self.vehicle.vendor.rating.overallScore.floatValue * 2];
-    
-    NSMutableAttributedString *ratingString = [[NSMutableAttributedString alloc] init];
-    
-    NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:score
+    if (self.vehicle.vendor.rating.overallScore != nil) {
+        
+        NSString *score = [NSString stringWithFormat:@"%.1f", self.vehicle.vendor.rating.overallScore.floatValue * 2];
+        
+        NSMutableAttributedString *ratingString = [[NSMutableAttributedString alloc] init];
+        
+        NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:score
+                                                                      attributes:@{NSFontAttributeName:
+                                                                                       [UIFont fontWithName:[CTAppearance instance].boldFontName size:18]}];
+        
+        NSAttributedString *dot = [[NSAttributedString alloc] initWithString:@"/"
                                                                   attributes:@{NSFontAttributeName:
-                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:18]}];
+                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
+        
+        NSAttributedString *cents = [[NSAttributedString alloc] initWithString:@"10"
+                                                                    attributes:@{NSFontAttributeName:
+                                                                                     [UIFont fontWithName:[CTAppearance instance].boldFontName size:14], NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
+        
+        [ratingString appendAttributedString:dollars];
+        [ratingString appendAttributedString:dot];
+        [ratingString appendAttributedString:cents];
+        
+        self.ratingLabel.attributedText = ratingString;
+        
+    }
     
-    NSAttributedString *dot = [[NSAttributedString alloc] initWithString:@"/"
-                                                              attributes:@{NSFontAttributeName:
-                                                                               [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
+    if (self.vehicle.pricedCoverages.count > 0) {
+        [self.includedCollectionView reloadData];
+    } else {
+        self.heightChanged(-50);
+    }
     
-    NSAttributedString *cents = [[NSAttributedString alloc] initWithString:@"10"
-                                                                attributes:@{NSFontAttributeName:
-                                                                                 [UIFont fontWithName:[CTAppearance instance].boldFontName size:14], NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
-    
-    [ratingString appendAttributedString:dollars];
-    [ratingString appendAttributedString:dot];
-    [ratingString appendAttributedString:cents];
-    
-    self.ratingLabel.attributedText = ratingString;
-    
-    [self.includedCollectionView reloadData];
 }
 
 - (void)setData:(CTVehicle *)vehicle

@@ -25,26 +25,101 @@
        languageCode:(NSString *)languageCode
             isDebug:(BOOL)isDebug
 {
+    
+    NSLocale *locale = [NSLocale currentLocale];
+    NSString *countryCode = [locale objectForKey: NSLocaleCountryCode];
+    
+    NSString *country = [locale displayNameForKey: NSLocaleCountryCode value: countryCode];
+    NSString *currency = [locale objectForKey:NSLocaleCurrencyCode];
+    
     _clientId = clientId;
-    _languageCode = languageCode;
     _isDebug = isDebug;
-    _currencyCode = @"EUR";
-    _homeCountryCode = @"IE";
+    
+    [self setLanguageCode:languageCode];
+    [self setCurrencyCode:currency];
+    [self setHomeCountryCode:countryCode];
+    
+    [self setHomeCountryName:country];
+    [self setCurrencyName:currency];
+    [self setLanguageName:languageCode];
 }
 
 - (void)setLanguageCode:(NSString *)languageCode
 {
     _languageCode = languageCode;
+    [self setItem:languageCode key:@"languageCode"];
 }
 
 - (void)setCurrencyCode:(NSString *)currencyCode
 {
     _currencyCode = currencyCode;
+    [self setItem:currencyCode key:@"currencyCode"];
 }
 
 - (void)setHomeCountryCode:(NSString *)homeCountryCode
 {
     _homeCountryCode = homeCountryCode;
+    [self setItem:homeCountryCode key:@"homeCountryCode"];
 }
 
+- (void)setLanguageName:(NSString *)languageName
+{
+    _languageName = languageName;
+    [self setItem:languageName key:@"languageName"];
+}
+
+- (void)setCurrencyName:(NSString *)currencyName
+{
+    _currencyName = currencyName;
+    [self setItem:currencyName key:@"currencyName"];
+}
+
+- (void)setHomeCountryName:(NSString *)homeCountryName
+{
+    _homeCountryName = homeCountryName;
+    [self setItem:homeCountryName key:@"homeCountryName"];
+}
+
+- (NSString *)languageCode_
+{
+    return [self itemForKey:@"languageCode"];
+}
+
+- (NSString *)currencyCode_
+{
+    return [self itemForKey:@"currencyCode"];
+}
+
+- (NSString *)homeCountryCode_
+{
+    return [self itemForKey:@"homeCountryCode"];
+}
+
+- (NSString *)languageName_
+{
+    return [self itemForKey:@"languageCode"];
+}
+
+- (NSString *)currencyName_
+{
+    return [self itemForKey:@"currencyName"];
+}
+
+- (NSString *)homeCountryName_
+{
+    return [self itemForKey:@"homeCountryName"];
+}
+
+- (void)setItem:(NSString *)item key:(NSString *)key
+{
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    [d setObject:item forKey:key];
+    [d synchronize];
+}
+
+- (NSString *)itemForKey:(NSString *)key
+{
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    return [d objectForKey:key];
+}
 @end

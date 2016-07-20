@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="gIN-h0-YcF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SaK-s5-1Ei">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="719"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="740"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghn-kF-Cyc" customClass="CTView">
@@ -44,7 +44,7 @@
                                     <constraint firstItem="clN-oO-7uF" firstAttribute="top" secondItem="ghn-kF-Cyc" secondAttribute="top" constant="25" id="06a-AA-xcO"/>
                                     <constraint firstAttribute="height" constant="60" id="1ic-gQ-6WH"/>
                                     <constraint firstItem="vWQ-WU-v3z" firstAttribute="leading" secondItem="ghn-kF-Cyc" secondAttribute="leading" constant="8" id="4oV-Dc-Ues"/>
-                                    <constraint firstAttribute="height" constant="60" id="Rmq-r9-XJX"/>
+                                    <constraint firstAttribute="height" constant="64" id="Rmq-r9-XJX"/>
                                     <constraint firstItem="clN-oO-7uF" firstAttribute="centerX" secondItem="ghn-kF-Cyc" secondAttribute="centerX" id="iEW-tW-DQp"/>
                                     <constraint firstItem="vWQ-WU-v3z" firstAttribute="top" secondItem="ghn-kF-Cyc" secondAttribute="top" constant="22" id="qtv-qT-3n3"/>
                                 </constraints>
@@ -91,6 +91,18 @@
                                             <outlet property="height" destination="Ilz-mf-gKC" id="r71-3z-aGG"/>
                                         </connections>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVo-BM-CmF" customClass="CTButton">
+                                        <color key="backgroundColor" red="0.10980392160000001" green="0.30588235289999999" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="2k7-1W-fvC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Continue"/>
+                                        <connections>
+                                            <action selector="continueNoInsurance:" destination="svs-v7-rRf" eventType="touchUpInside" id="IPH-86-BF2"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4OM-g5-xEo">
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insurance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNH-7W-dg9" customClass="CTLabel">
@@ -176,8 +188,8 @@
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="eGg-C6-BhW"/>
-                                                <exclude reference="yVT-1O-StV"/>
                                                 <exclude reference="Dvt-Ke-3Ay"/>
+                                                <exclude reference="yVT-1O-StV"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -205,17 +217,20 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Jzu-GV-SyL" secondAttribute="trailing" constant="8" id="3pg-tE-OR6"/>
+                                    <constraint firstItem="pVo-BM-CmF" firstAttribute="leading" secondItem="cqJ-fN-run" secondAttribute="leading" constant="8" id="6mt-Vd-KhV"/>
                                     <constraint firstItem="4OM-g5-xEo" firstAttribute="leading" secondItem="cqJ-fN-run" secondAttribute="leading" constant="8" id="JL5-35-dgD"/>
                                     <constraint firstAttribute="trailing" secondItem="Jmn-vg-0jx" secondAttribute="trailing" constant="17" id="KtP-8U-Byh"/>
                                     <constraint firstItem="Jmn-vg-0jx" firstAttribute="leading" secondItem="cqJ-fN-run" secondAttribute="leading" constant="17" id="Pcq-7w-Vlm"/>
+                                    <constraint firstItem="pVo-BM-CmF" firstAttribute="top" secondItem="Jzu-GV-SyL" secondAttribute="bottom" constant="8" id="QZ0-3i-fii"/>
                                     <constraint firstItem="Jzu-GV-SyL" firstAttribute="leading" secondItem="cqJ-fN-run" secondAttribute="leading" constant="8" id="Tvn-ru-ejU"/>
-                                    <constraint firstItem="4OM-g5-xEo" firstAttribute="top" secondItem="Jzu-GV-SyL" secondAttribute="bottom" constant="8" id="ZtU-7Y-scv"/>
+                                    <constraint firstItem="4OM-g5-xEo" firstAttribute="top" secondItem="Jzu-GV-SyL" secondAttribute="bottom" constant="71" id="ZtU-7Y-scv"/>
                                     <constraint firstItem="Jzu-GV-SyL" firstAttribute="top" secondItem="cqJ-fN-run" secondAttribute="top" constant="5" id="b5J-z7-RBA"/>
-                                    <constraint firstAttribute="bottom" secondItem="Jmn-vg-0jx" secondAttribute="bottom" constant="54" id="fM1-CZ-l5F"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jmn-vg-0jx" secondAttribute="bottom" constant="9" id="fM1-CZ-l5F"/>
                                     <constraint firstAttribute="bottom" secondItem="4OM-g5-xEo" secondAttribute="bottom" constant="69" id="iuE-GA-W3B"/>
                                     <constraint firstItem="Jmn-vg-0jx" firstAttribute="top" secondItem="4OM-g5-xEo" secondAttribute="bottom" constant="8" id="mCL-JJ-RfM"/>
                                     <constraint firstItem="Jzu-GV-SyL" firstAttribute="centerX" secondItem="cqJ-fN-run" secondAttribute="centerX" id="mq7-BU-cMi"/>
                                     <constraint firstAttribute="trailing" secondItem="4OM-g5-xEo" secondAttribute="trailing" constant="8" id="oev-Yl-khX"/>
+                                    <constraint firstAttribute="trailing" secondItem="pVo-BM-CmF" secondAttribute="trailing" constant="8" id="sLV-kJ-sT1"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -232,7 +247,7 @@
                             <constraint firstAttribute="trailing" secondItem="ghn-kF-Cyc" secondAttribute="trailing" id="fpJ-q1-PqY"/>
                             <constraint firstItem="cqJ-fN-run" firstAttribute="width" secondItem="SaK-s5-1Ei" secondAttribute="width" id="g4k-Sn-rhv"/>
                             <constraint firstItem="cqJ-fN-run" firstAttribute="leading" secondItem="SaK-s5-1Ei" secondAttribute="leading" id="ied-AN-acv"/>
-                            <constraint firstItem="cqJ-fN-run" firstAttribute="top" secondItem="ghn-kF-Cyc" secondAttribute="bottom" constant="1" id="ifc-T4-Y4I"/>
+                            <constraint firstItem="cqJ-fN-run" firstAttribute="top" secondItem="ghn-kF-Cyc" secondAttribute="bottom" id="ifc-T4-Y4I"/>
                             <constraint firstItem="gIN-h0-YcF" firstAttribute="top" secondItem="cqJ-fN-run" secondAttribute="bottom" id="jeg-9K-Ica"/>
                             <constraint firstItem="cqJ-fN-run" firstAttribute="top" secondItem="ghn-kF-Cyc" secondAttribute="bottom" id="lWe-Ja-Kve"/>
                             <constraint firstItem="cqJ-fN-run" firstAttribute="bottom" secondItem="gIN-h0-YcF" secondAttribute="top" id="xoA-dc-iEF"/>
@@ -245,12 +260,16 @@
                         </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="719"/>
+                    <size key="freeformSize" width="600" height="740"/>
                     <connections>
+                        <outlet property="addInuranceButton" destination="RTg-2z-px8" id="2Ig-MK-trG"/>
+                        <outlet property="continueButton" destination="pVo-BM-CmF" id="k7Y-7N-CQ3"/>
                         <outlet property="expandExtrasButton" destination="Jzu-GV-SyL" id="SV7-BG-sDU"/>
                         <outlet property="insuranceView" destination="4OM-g5-xEo" id="TKM-C5-Ja1"/>
+                        <outlet property="insuranceViewSpace" destination="ZtU-7Y-scv" id="VJJ-PE-Xjh"/>
                         <outlet property="itemsHeightConstraint" destination="MeO-WU-5GI" id="eiQ-8a-rVE"/>
                         <outlet property="itemsTextView" destination="VrB-kV-0R7" id="ntl-jv-7yb"/>
+                        <outlet property="noInsuranceButton" destination="Jmn-vg-0jx" id="Xe6-fq-fnn"/>
                         <outlet property="purchaseHeightConstraint" destination="HZn-2M-JNe" id="Yvk-ME-9kM"/>
                         <outlet property="purchaseTextView" destination="pGn-UB-cwU" id="ENU-q6-rNq"/>
                         <outlet property="scrollView" destination="cqJ-fN-run" id="Nm9-Mf-HPJ"/>
@@ -262,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQZ-Qc-ICR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="24" y="462"/>
+            <point key="canvasLocation" x="24" y="461.46926536731638"/>
         </scene>
         <!--Optional Extras View Controller-->
         <scene sceneID="luc-Fo-fIN">

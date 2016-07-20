@@ -14,16 +14,6 @@
 
 @implementation StepFourViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)pushToStepFive:(NSArray<CTExtraEquipment *> *)extras insuranceSelected:(BOOL)selected
 {
     if (self.pickupLocation == nil) {
@@ -61,7 +51,7 @@
         return;
     }
     
-    if (self.insurance == nil) {
+    if (self.insurance == nil && selected) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.insurance IS NOT SET \n\n");
         return;
     }

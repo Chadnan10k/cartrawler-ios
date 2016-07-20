@@ -11,6 +11,7 @@
 #import "HTMLParser.h"
 #import "CTAppearance.h"
 #import "ExpandExtrasButton.h"
+#import "CTButton.h"
 
 @interface ExtrasViewController () <UITextViewDelegate>
 
@@ -27,6 +28,11 @@
 @property (weak, nonatomic) IBOutlet ExpandExtrasButton *expandExtrasButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (weak, nonatomic) IBOutlet CTButton *continueButton;
+@property (weak, nonatomic) IBOutlet CTButton *addInuranceButton;
+@property (weak, nonatomic) IBOutlet CTButton *noInsuranceButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *insuranceViewSpace;
+
 @end
 
 @implementation ExtrasViewController
@@ -40,6 +46,8 @@
 {
     [super viewWillAppear:animated];
 
+    self.insuranceView.hidden = YES;
+    
     [self.scrollView setContentOffset:
      CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
     
@@ -52,7 +60,6 @@
     [self.expandExtrasButton refreshView];
     
     [self setupView:self.insurance];
-
 }
 
 - (void)viewDidLayoutSubviews {
@@ -64,69 +71,86 @@
 - (void)setupView:(CTInsurance *)response
 {
     [self.view layoutIfNeeded];
-    
-    self.summaryTextView.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
-                                                                     pointSize:15
-                                                                          text:response.summary
-                                                                 boldFontColor:@"#3399ff"];
-    self.summaryHeightConstraint.constant = self.summaryTextView.contentSize.height;
-    
-    NSMutableAttributedString *listItems = [[NSMutableAttributedString alloc] init];
-    
-    for (int i = 0; i < response.listItems.count; ++i) {
-        [listItems appendAttributedString:[HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
-                                                                     pointSize:15
-                                                                          text:response.listItems[i]
-                                                                 boldFontColor:@"#3399ff"]];
+    if (response) {
         
-        if (i != response.listItems.count-1) {
-            [listItems appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n\n"]];
+        self.insuranceView.hidden = NO;
+        self.noInsuranceButton.hidden = NO;
+        self.addInuranceButton.hidden = NO;
+        
+        self.continueButton.hidden = YES;
+        self.insuranceViewSpace.constant = 8;
+        
+        self.summaryTextView.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
+                                                                         pointSize:15
+                                                                              text:response.summary
+                                                                     boldFontColor:@"#3399ff"];
+        self.summaryHeightConstraint.constant = self.summaryTextView.contentSize.height;
+        
+        NSMutableAttributedString *listItems = [[NSMutableAttributedString alloc] init];
+        
+        for (int i = 0; i < response.listItems.count; ++i) {
+            [listItems appendAttributedString:[HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
+                                                                         pointSize:15
+                                                                              text:response.listItems[i]
+                                                                     boldFontColor:@"#3399ff"]];
+            
+            if (i != response.listItems.count-1) {
+                [listItems appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n\n"]];
+            }
         }
+        
+        self.itemsTextView.attributedText = listItems;
+        
+        CGSize itemsTextViewSize = [self.itemsTextView sizeThatFits:CGSizeMake(self.itemsTextView.frame.size.width, FLT_MAX)];
+        self.itemsHeightConstraint.constant = itemsTextViewSize.height;
+        
+        NSDictionary *termsAttr = @{ NSForegroundColorAttributeName : [UIColor lightGrayColor],
+                                     NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName
+                                                                           size:12]};
+        
+        self.termsTextView.attributedText = [[NSAttributedString alloc]
+                                             initWithString:response.paragraphSubfooter attributes:termsAttr];
+        
+        
+        CGSize termsTextViewSize = [self.termsTextView sizeThatFits:CGSizeMake(self.termsTextView.frame.size.width, FLT_MAX)];
+        self.termsHeightConstraint.constant = termsTextViewSize.height;
+        
+        NSDictionary *tcAttr = @{ NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:15] };
+        
+        NSMutableAttributedString *termsStr = [[NSMutableAttributedString alloc] initWithString:response.functionalText
+                                                                                     attributes: tcAttr];
+        
+        
+        NSDictionary *linkAttr = @{ NSLinkAttributeName : response.termsAndConditionsURL,
+                                    NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:15]
+                                    };
+        
+        NSAttributedString *termsLink = [[NSAttributedString alloc]
+                                         initWithString:response.termsAndConditionsTitle
+                                         attributes:linkAttr];
+        
+        NSRange range = [response.functionalText rangeOfString:@"${link1}"];
+        
+        if (range.location != NSNotFound) {
+            [termsStr replaceCharactersInRange:range withAttributedString:termsLink];
+        }
+        
+        self.purchaseTextView.attributedText = termsStr;
+        CGSize purchaseTextViewSize = [self.purchaseTextView sizeThatFits:CGSizeMake(self.purchaseTextView.frame.size.width, FLT_MAX)];
+        self.purchaseHeightConstraint.constant = purchaseTextViewSize.height;
+        
+        self.purchaseTextView.delegate = self;
+        
+        [self.view layoutIfNeeded];
+        
+    } else {
+        self.continueButton.hidden = NO;
+
+        self.insuranceView.hidden = YES;
+        self.noInsuranceButton.hidden = YES;
+        self.addInuranceButton.hidden = YES;
+        [self.expandExtrasButton openView];
     }
-    
-    self.itemsTextView.attributedText = listItems;
-    
-    CGSize itemsTextViewSize = [self.itemsTextView sizeThatFits:CGSizeMake(self.itemsTextView.frame.size.width, FLT_MAX)];
-    self.itemsHeightConstraint.constant = itemsTextViewSize.height;
-    
-    NSDictionary *termsAttr = @{ NSForegroundColorAttributeName : [UIColor lightGrayColor],
-                                 NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName
-                                                                       size:12]};
-    
-    self.termsTextView.attributedText = [[NSAttributedString alloc]
-                                         initWithString:response.paragraphSubfooter attributes:termsAttr];
-    
-    
-    CGSize termsTextViewSize = [self.termsTextView sizeThatFits:CGSizeMake(self.termsTextView.frame.size.width, FLT_MAX)];
-    self.termsHeightConstraint.constant = termsTextViewSize.height;
-    
-    NSDictionary *tcAttr = @{ NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:15] };
-    
-    NSMutableAttributedString *termsStr = [[NSMutableAttributedString alloc] initWithString:response.functionalText
-                                                                                 attributes: tcAttr];
-    
-    
-    NSDictionary *linkAttr = @{ NSLinkAttributeName : response.termsAndConditionsURL,
-                                NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:15]
-                                };
-    
-    NSAttributedString *termsLink = [[NSAttributedString alloc]
-                                     initWithString:response.termsAndConditionsTitle
-                                     attributes:linkAttr];
-    
-    NSRange range = [response.functionalText rangeOfString:@"${link1}"];
-    
-    if (range.location != NSNotFound) {
-        [termsStr replaceCharactersInRange:range withAttributedString:termsLink];
-    }
-    
-    self.purchaseTextView.attributedText = termsStr;
-    CGSize purchaseTextViewSize = [self.purchaseTextView sizeThatFits:CGSizeMake(self.purchaseTextView.frame.size.width, FLT_MAX)];
-    self.purchaseHeightConstraint.constant = purchaseTextViewSize.height;
-    
-    self.purchaseTextView.delegate = self;
-    
-    [self.view layoutIfNeeded];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange

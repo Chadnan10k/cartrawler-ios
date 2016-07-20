@@ -169,7 +169,8 @@
                                                             <frame key="frameInset" width="359" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwB-YD-u80">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwB-YD-u80">
+                                                                    <frame key="frameInset" minX="8" minY="12" width="42" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="OQB-pn-qBr"/>
                                                                     </constraints>
@@ -177,7 +178,8 @@
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.png" translatesAutoresizingMaskIntoConstraints="NO" id="v1E-eD-8Ht">
+                                                                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="checkmark.png" translatesAutoresizingMaskIntoConstraints="NO" id="v1E-eD-8Ht">
+                                                                    <frame key="frameInset" minX="324" minY="11" width="27" height="23"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="27" id="blP-v6-Flb"/>
                                                                         <constraint firstAttribute="height" constant="23" id="zEU-Xp-FPB"/>
@@ -211,7 +213,8 @@
                                                             <frame key="frameInset" width="359" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miC-lF-ugh">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miC-lF-ugh">
+                                                                    <frame key="frameInset" minX="8" minY="12" width="42" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="LGI-je-8DS"/>
                                                                     </constraints>
@@ -253,7 +256,8 @@
                                                             <frame key="frameInset" width="359" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUt-Fa-ixh">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUt-Fa-ixh">
+                                                                    <frame key="frameInset" minX="8" minY="12" width="42" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="CHm-Ag-EbU"/>
                                                                     </constraints>
@@ -261,7 +265,8 @@
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.png" translatesAutoresizingMaskIntoConstraints="NO" id="dNi-Y6-rDd">
+                                                                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="checkmark.png" translatesAutoresizingMaskIntoConstraints="NO" id="dNi-Y6-rDd">
+                                                                    <frame key="frameInset" minX="324" minY="11" width="27" height="23"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="27" id="M54-sa-2CC"/>
                                                                         <constraint firstAttribute="height" constant="23" id="lwp-q1-pi6"/>

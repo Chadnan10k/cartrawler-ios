@@ -53,7 +53,7 @@
         return;
     }
     
-    if (self.insurance == nil) {
+    if (self.insurance == nil && self.isBuyingInsurance) {
         NSLog(@"\n\n ERROR: CANNOT MAKE BOOKING AS self.insurance IS NOT SET \n\n");
         return;
     }

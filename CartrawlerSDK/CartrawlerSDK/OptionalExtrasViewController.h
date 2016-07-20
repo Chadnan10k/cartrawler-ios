@@ -20,4 +20,6 @@ typedef void (^OptionalExtrasLoaded)(double viewHeight);
 
 - (void)refreshView;
 
+-(CGFloat)openHeight;
+
 @end

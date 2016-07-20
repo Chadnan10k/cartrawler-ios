@@ -35,8 +35,8 @@
     
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     // Do any additional setup after loading the view.
     NSString *score = [NSString stringWithFormat:@"%.1f", self.vehicle.vendor.rating.overallScore.floatValue * 2];
 
@@ -73,6 +73,7 @@
         [self.insuranceButton setTitle:NSLocalizedString(@"Protected", @"Protected") forState:UIControlStateNormal];
         self.insuranceButton.enabled = NO;
     } else {
+        [self.insuranceButton setTitleColor:[UIColor colorWithRed:186.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1] forState:UIControlStateNormal];
         [self.insuranceButton setTitle:NSLocalizedString(@"Warning! Not protected", @"Warning! Not protected") forState:UIControlStateNormal];
     }
     

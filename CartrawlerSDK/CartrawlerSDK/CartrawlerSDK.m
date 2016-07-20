@@ -48,6 +48,7 @@
     
     [LinkerUtils loadFiles];
     [[CTSDKSettings instance] setClientId:requestorID languageCode:languageCode isDebug:isDebug];
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
 
     return self;
 }
@@ -238,5 +239,14 @@
         return self.groundTransportViewController;
     }
 }
+
+#pragma Crash handling
+
+void uncaughtExceptionHandler(NSException *exception)
+{
+    NSLog(@"\n\n\nCartrawlerSDK Crash:\n%@\n\n\n", exception);
+    NSLog(@"\n\n\nCartrawlerSDK Stack Trace:\n\n\n%@", [exception callStackSymbols]);
+}
+
 
 @end

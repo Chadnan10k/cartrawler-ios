@@ -36,18 +36,18 @@
     
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.bookingSummaryContainer closeIfOpen];
     
     [self.bookingSummaryContainer setDataWithVehicle:self.selectedVehicle
                                           pickupDate:self.pickupDate
                                          dropoffDate:self.dropoffDate
                                    isBuyingInsurance:self.isBuyingInsurance];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
     
     total = 0;
     _items = [[NSMutableArray alloc] init];
@@ -79,6 +79,8 @@
     
     [self.view layoutIfNeeded];
     self.tableViewHeight.constant = self.tableView.contentSize.height;
+    
+    
 }
 
 - (IBAction)pushView:(id)sender {

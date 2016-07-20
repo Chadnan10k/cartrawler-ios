@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         registerForPushNotifications(application: application)
-
         return true
     }
 
@@ -52,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("Got token data! \(deviceToken)")
+        print("Got token data! \((deviceToken as NSData).hexString)")
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
@@ -69,6 +68,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Fallback on earlier versions
         }
     }
-
 }
 
+extension NSData {
+    var hexString: String {
+        let bytes = UnsafeBufferPointer<UInt8>(start: UnsafePointer(self.bytes), count:self.length)
+        return bytes.map { String(format: "%02hhx", $0) }.reduce("", combine: { $0 + $1 })
+    }
+}

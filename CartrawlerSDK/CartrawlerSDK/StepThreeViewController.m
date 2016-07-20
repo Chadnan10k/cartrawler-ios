@@ -20,16 +20,6 @@
     
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)pushToStepFour
 {
 
@@ -95,15 +85,24 @@
                                                  if (response) {
                                                      
                                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                                         if (self.stepTwoCompletion) {
+                                                             self.stepTwoCompletion(YES, nil);
+                                                         }
                                                          [self.stepFourViewController setInsurance:response];
                                                          [self.navigationController pushViewController:self.stepFourViewController animated:YES];
                                                      });
                                                      
                                                  } else {
-                                                     NSLog(@"ERROR: CANNOT PUSH TO STEP FOUR AS %@", error.errorMessage);
+                                                     dispatch_async(dispatch_get_main_queue(), ^{
+                                                         if (self.stepTwoCompletion) {
+                                                             self.stepTwoCompletion(NO, error.errorMessage);
+                                                         }
+                                                         
+                                                         [self.stepFourViewController setInsurance:nil];
+                                                         [self.navigationController pushViewController:self.stepFourViewController animated:YES];
+                                                     });
                                                  }
                                              }];
-    
 }
 
 @end

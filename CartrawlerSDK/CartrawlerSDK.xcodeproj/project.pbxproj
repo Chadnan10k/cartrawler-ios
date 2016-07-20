@@ -793,10 +793,10 @@
 			children = (
 				450F9D371D3CE08E002C6F6B /* SettingsSelectionViewController.h */,
 				450F9D381D3CE08E002C6F6B /* SettingsSelectionViewController.m */,
-				45E9429B1D13012400ACF604 /* SearchDetailsViewController.h */,
-				45E9429C1D13012400ACF604 /* SearchDetailsViewController.m */,
 				450F9D471D3D00C8002C6F6B /* SettingsViewController.h */,
 				450F9D481D3D00C8002C6F6B /* SettingsViewController.m */,
+				45E9429B1D13012400ACF604 /* SearchDetailsViewController.h */,
+				45E9429C1D13012400ACF604 /* SearchDetailsViewController.m */,
 			);
 			name = "Search (Step One)";
 			sourceTree = "<group>";

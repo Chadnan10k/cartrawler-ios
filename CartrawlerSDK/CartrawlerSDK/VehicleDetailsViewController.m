@@ -32,6 +32,7 @@
 @property (weak, nonatomic) SupplierRatingsViewController *supplierRatingView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet CTButton *continueButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 @end
 
@@ -65,10 +66,14 @@
         [self.vehicleDetailView setupView];
     }
     
-    if (self.supplierRatingView) {
-        [self.supplierRatingView setVendor:self.selectedVehicle.vendor];
-        [self.supplierRatingView setupView];
-
+    if (self.selectedVehicle.vendor.rating) {
+        if (self.supplierRatingView) {
+            [self.supplierRatingView setVendor:self.selectedVehicle.vendor];
+            [self.supplierRatingView setupView];
+            
+        }
+    } else {
+        self.supplierTab.hidden = YES;
     }
     
     self.vendorRatingContainer.layer.cornerRadius = 5;
@@ -159,6 +164,13 @@
 
 - (IBAction)continueTapped:(id)sender {
     [self pushToStepFour];
+    [self.activityView startAnimating];
+    
+    __weak typeof (self) weakSelf = self;
+    self.stepTwoCompletion = ^(BOOL insuranceSuccess, NSString *errorMessage) {
+        [weakSelf.activityView stopAnimating];
+    };
+        
     self.continueButton.enabled = NO;
 }
 
