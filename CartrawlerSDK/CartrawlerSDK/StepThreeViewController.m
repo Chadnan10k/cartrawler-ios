@@ -97,7 +97,6 @@
                                                          if (self.stepTwoCompletion) {
                                                              self.stepTwoCompletion(NO, error.errorMessage);
                                                          }
-                                                         
                                                          [self.stepFourViewController setInsurance:nil];
                                                          [self.navigationController pushViewController:self.stepFourViewController animated:YES];
                                                      });

@@ -40,9 +40,10 @@
     return self;
 }
 
-- (void)updateData:(NSString *)partialText completion:(void (^)(BOOL didSucceed))completion
+- (void)updateData:(NSString *)partialText completion:(void (^)(BOOL didSnucceed))completion
 {
     [self.cartrawlerAPI locationSearchWithPartialString:partialText
+                                       needsCoordinates:NO
                                         completion:^(CTLocationSearch *response, CTErrorResponse *error) {
                                             if (error == nil) {
                                                 dispatch_async(dispatch_get_main_queue(), ^{

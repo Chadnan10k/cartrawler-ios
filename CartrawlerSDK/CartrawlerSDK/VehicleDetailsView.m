@@ -11,19 +11,21 @@
 #import "IncludedCollectionViewCell.h"
 #import "TermsViewController.h"
 #import "CTAppearance.h"
+#import "CTLabel.h"
 
 #define kCellsPerRow 4
 
 @interface VehicleDetailsView() <UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *vehicleNameLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet CTLabel *vehicleNameLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *vehicleImageView;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *passengersLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *doorsLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *bagsLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *transmissionLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet CTLabel *passengersLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet CTLabel *doorsLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet CTLabel *bagsLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet CTLabel *transmissionLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *vendorImageView;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *vendorRatingLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet CTLabel *vendorRatingLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet UILabel *vendorRatingTitle;
 @property (unsafe_unretained, nonatomic) IBOutlet UICollectionView *includedCollectionView;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 
@@ -65,7 +67,13 @@
     self.vehicleNameLabel.text = self.vehicle.makeModelName;
     self.passengersLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.passengerQty.stringValue, NSLocalizedString(@"passengers", @"passengers")];
     self.doorsLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.doorCount.stringValue, NSLocalizedString(@"doors", @"doors")];
-    self.bagsLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.baggageQty.stringValue, NSLocalizedString(@"bags", @"bags")];
+    
+    if (self.vehicle.baggageQty.integerValue > 1) {
+        self.bagsLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.baggageQty.stringValue, NSLocalizedString(@"bags", @"bags")];
+    } else {
+        self.bagsLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.baggageQty.stringValue, NSLocalizedString(@"bag", @"bags")];
+    }
+    
     self.transmissionLabel.text = self.vehicle.transmissionType;
     
     self.view.translatesAutoresizingMaskIntoConstraints = false;
@@ -91,8 +99,13 @@
         [ratingString appendAttributedString:dot];
         [ratingString appendAttributedString:cents];
         
+        self.ratingLabel.alpha = 1;
+        self.vendorRatingTitle.alpha = 1;
         self.ratingLabel.attributedText = ratingString;
         
+    } else {
+        self.ratingLabel.alpha = 0;
+        self.vendorRatingTitle.alpha = 0;
     }
     
     if (self.vehicle.pricedCoverages.count > 0) {

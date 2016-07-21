@@ -100,9 +100,8 @@
     //Add textfield
     
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    NSBundle* bundle = [NSBundle bundleWithURL:[[NSBundle mainBundle]URLForResource:@"CartrawlerResources" withExtension:@"bundle"]];
-    NSString *imageFile = [NSString stringWithFormat:@"%@/%@.png", [bundle resourcePath], @"checkmark"];
-    UIImage* image = [UIImage imageWithContentsOfFile:imageFile];
+    NSBundle* bundle = [NSBundle bundleWithURL:[[NSBundle mainBundle]URLForResource:@"CartrawlerResources" withExtension:@"bundle"]];    
+    UIImage* image =[UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil];
     
     [self.imageView setImage:image];
     [self addSubview:self.imageView];

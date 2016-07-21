@@ -161,7 +161,6 @@
 		45D866D81D141BB100D19B74 /* LinkerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D866D61D141BB100D19B74 /* LinkerUtils.m */; };
 		45D866D91D142CAC00D19B74 /* VehicleTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E942C81D13028600ACF604 /* VehicleTableViewCell_iPhone.xib */; };
 		45D866DA1D142D6400D19B74 /* VehicleTableViewCell.h in Resources */ = {isa = PBXBuildFile; fileRef = 45E942C61D13028600ACF604 /* VehicleTableViewCell.h */; };
-		45D866E21D14395900D19B74 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 45D866E11D14395900D19B74 /* checkmark.png */; };
 		45E942491D12FF0F00ACF604 /* CartrawlerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */; };
 		45E9428E1D13004F00ACF604 /* StepOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E9428B1D13004F00ACF604 /* StepOneViewController.m */; };
 		45E9428F1D13004F00ACF604 /* StepTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E9428D1D13004F00ACF604 /* StepTwoViewController.m */; };
@@ -348,7 +347,6 @@
 		45D866571D13F0CA00D19B74 /* CartrawlerResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D866D51D141BB100D19B74 /* LinkerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkerUtils.h; sourceTree = "<group>"; };
 		45D866D61D141BB100D19B74 /* LinkerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkerUtils.m; sourceTree = "<group>"; };
-		45D866E11D14395900D19B74 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
 		45E942431D12FF0F00ACF604 /* libCartrawlerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCartrawlerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartrawlerSDK.h; sourceTree = "<group>"; };
 		45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartrawlerSDK.m; sourceTree = "<group>"; };
@@ -685,17 +683,8 @@
 			isa = PBXGroup;
 			children = (
 				4511E51F1D145779000ED6B0 /* Assets.xcassets */,
-				45D866DE1D14341200D19B74 /* Images */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		45D866DE1D14341200D19B74 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				45D866E11D14395900D19B74 /* checkmark.png */,
-			);
-			name = Images;
 			sourceTree = "<group>";
 		};
 		45E9423A1D12FF0F00ACF604 = {
@@ -1181,7 +1170,6 @@
 				45D866D41D140FCC00D19B74 /* SearchDetailsViewController.h in Resources */,
 				45D866D31D140F8500D19B74 /* StepOneViewController.h in Resources */,
 				45645DE11D33DB1A0075A3D2 /* StepFive.storyboard in Resources */,
-				45D866E21D14395900D19B74 /* checkmark.png in Resources */,
 				4511E5201D145779000ED6B0 /* Assets.xcassets in Resources */,
 				45D8665D1D13F0E900D19B74 /* StepOne.storyboard in Resources */,
 			);

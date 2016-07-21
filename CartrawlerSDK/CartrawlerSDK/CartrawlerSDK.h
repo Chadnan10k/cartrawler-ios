@@ -31,21 +31,6 @@
 - (void)presentGroundTransportInViewController:(UIViewController *)viewController;
 
 /*
- * This call is useful for deep linking
- */
-- (void)presentStepTwoWithData:(NSString *)pickupLocationCode
-            returnLocationCode:(NSString *)returnLocationCode
-           customerCountryCode:(NSString *)customerCountryCode
-                  passengerQty:(NSNumber *)passengerQty
-                     driverAge:(NSNumber *)driverAge
-                pickUpDateTime:(NSDate *)pickupDateTime
-                returnDateTime:(NSDate *)returnDateTime
-                  currencyCode:(NSString *)currencyCode
-              inViewController:(UIViewController *)viewController;
-
-
-
-/*
  *  View Controller Overriding:
  *  You can set a custom view for any step of the user journey by subclassing
  *  the designated step view controller.
@@ -62,9 +47,5 @@
 - (void)overrideStepSixViewController:(StepSixViewController *)viewController;
 - (void)overrideStepSevenViewController:(StepSevenViewController *)viewController;
 
-
-//Settings
-- (void)changeLanguage:(NSString *)langaugeCode;
-- (void)changeCurrency:(NSString *)currencyCode;
 
 @end

@@ -71,7 +71,12 @@
 - (void)setupView:(CTInsurance *)response
 {
     [self.view layoutIfNeeded];
-    if (response) {
+    if (response.summary &&
+        response.listItems &&
+        response.paragraphSubfooter &&
+        response.functionalText &&
+        response.termsAndConditionsURL)
+    {
         
         self.insuranceView.hidden = NO;
         self.noInsuranceButton.hidden = NO;
@@ -145,7 +150,6 @@
         
     } else {
         self.continueButton.hidden = NO;
-
         self.insuranceView.hidden = YES;
         self.noInsuranceButton.hidden = YES;
         self.addInuranceButton.hidden = YES;

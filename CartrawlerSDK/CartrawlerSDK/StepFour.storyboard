@@ -71,7 +71,10 @@
                                                     <constraint firstAttribute="height" constant="30" id="Jvn-yJ-rYg"/>
                                                     <constraint firstAttribute="width" constant="30" id="lG4-AM-sNX"/>
                                                 </constraints>
-                                                <state key="normal" title="+"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleColor" red="0.19346955129999999" green="0.19346955129999999" blue="0.19346955129999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="expand:" destination="Jzu-GV-SyL" eventType="touchUpInside" id="25J-Xz-j9O"/>
                                                 </connections>
@@ -363,15 +366,15 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aircon" translatesAutoresizingMaskIntoConstraints="NO" id="neM-fv-VSY">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="generic_extra" translatesAutoresizingMaskIntoConstraints="NO" id="neM-fv-VSY">
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="40" id="iCX-U0-LlD"/>
-                                                                <constraint firstAttribute="width" constant="43" id="scv-lu-7xh"/>
+                                                                <constraint firstAttribute="height" constant="35" id="iCX-U0-LlD"/>
+                                                                <constraint firstAttribute="width" constant="35" id="scv-lu-7xh"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="NW7-2h-CJH" firstAttribute="leading" secondItem="neM-fv-VSY" secondAttribute="trailing" constant="15" id="F5K-Kz-PtY"/>
+                                                        <constraint firstItem="NW7-2h-CJH" firstAttribute="leading" secondItem="neM-fv-VSY" secondAttribute="trailing" constant="23" id="F5K-Kz-PtY"/>
                                                         <constraint firstItem="8cr-ub-y67" firstAttribute="centerY" secondItem="0x8-V1-yoR" secondAttribute="centerY" id="FOd-X1-cJW"/>
                                                         <constraint firstItem="8cr-ub-y67" firstAttribute="leading" secondItem="eCV-H5-Tgo" secondAttribute="trailing" constant="8" id="Isc-cs-5vU"/>
                                                         <constraint firstItem="neM-fv-VSY" firstAttribute="top" secondItem="AQu-II-YTR" secondAttribute="top" constant="12" id="Kco-Ch-Inc"/>
@@ -385,7 +388,7 @@
                                                         <constraint firstItem="0x8-V1-yoR" firstAttribute="leading" secondItem="8cr-ub-y67" secondAttribute="trailing" constant="8" id="goY-lk-XRl"/>
                                                         <constraint firstItem="lMl-XD-imz" firstAttribute="top" secondItem="AQu-II-YTR" secondAttribute="top" constant="18" id="hbe-5s-8LM"/>
                                                         <constraint firstItem="NW7-2h-CJH" firstAttribute="top" secondItem="eCV-H5-Tgo" secondAttribute="bottom" constant="13" id="oqf-d9-A7M"/>
-                                                        <constraint firstItem="eCV-H5-Tgo" firstAttribute="leading" secondItem="neM-fv-VSY" secondAttribute="trailing" constant="15" id="sfM-l4-bf5"/>
+                                                        <constraint firstItem="eCV-H5-Tgo" firstAttribute="leading" secondItem="neM-fv-VSY" secondAttribute="trailing" constant="23" id="sfM-l4-bf5"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -446,7 +449,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="aircon" width="190" height="190"/>
-        <image name="backArrow" width="512" height="512"/>
+        <image name="backArrow" width="32" height="32"/>
+        <image name="generic_extra" width="32" height="32"/>
     </resources>
 </document>

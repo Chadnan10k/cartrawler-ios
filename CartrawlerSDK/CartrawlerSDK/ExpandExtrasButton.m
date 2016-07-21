@@ -70,6 +70,9 @@
 {
     expanded = expand;
     if (!expanded) {
+        
+        [self.expandButton setTitle:@"-" forState:UIControlStateNormal];
+        
         self.height.constant = 50;
         expanded = YES;
         
@@ -117,6 +120,8 @@
         
     } else {
         
+        [self.expandButton setTitle:@"+" forState:UIControlStateNormal];
+
         [self.extrasViewController.view removeFromSuperview];
         
         [self removeConstraints:@[self.topConstraint,

@@ -57,7 +57,9 @@
 
     self.itemTitleLabel.text = extra.equipDescription;
     self.itemPriceLabel.text = [NSNumberUtils numberStringWithCurrencyCode: extra.chargeAmount];
-
+    
+    self.extraImageView.image = [self imageForExtra:extra.equipType];
+    
     [self updateAmountLabel];
 }
 
@@ -97,6 +99,83 @@
     }
     
     self.amountLabel.text = [NSString stringWithFormat:@"%ld", (long)_extra.qty];
+}
+
+- (UIImage *)imageForExtra:(NSString *)extraId
+{
+    
+    NSBundle* bundle = [NSBundle bundleWithURL:[[NSBundle mainBundle]URLForResource:@"CartrawlerResources" withExtension:@"bundle"]];
+    if ([extraId isEqualToString:@"3"]) {
+        //luggage rack
+        return [UIImage imageNamed:@"luggage_rack" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
+    if ([extraId isEqualToString:@"9"]) {
+        //booster seat
+        return [UIImage imageNamed:@"booster_seat" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
+    if ([extraId isEqualToString:@"8"]) {
+        //toddler seat
+        return [UIImage imageNamed:@"booster_seat" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
+    if ([extraId isEqualToString:@"7"]) {
+        //infant seat
+        return [UIImage imageNamed:@"booster_seat" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
+    if ([extraId isEqualToString:@"13"]) {
+        //gps
+        return [UIImage imageNamed:@"gps" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
+    if ([extraId isEqualToString:@"4"]) {
+        //ski rack
+        return [UIImage imageNamed:@"ski_rack" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
+    if ([extraId isEqualToString:@"10"]) {
+        //snow chains
+        return [UIImage imageNamed:@"snow_chains" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
+    if ([extraId isEqualToString:@"14"]) {
+        //snow tyres
+        return [UIImage imageNamed:@"snow_tyres" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
+    if ([extraId isEqualToString:@"30"]) {
+        //winter package
+        return [UIImage imageNamed:@"winter_package" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
+    if ([extraId isEqualToString:@"34"]) {
+        //navigational phone
+        return [UIImage imageNamed:@"navigational_phone" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
+    if ([extraId isEqualToString:@"52"]) {
+        //toll tag
+        return [UIImage imageNamed:@"toll_tag" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
+    if ([extraId isEqualToString:@"55"]) {
+        //wifi
+        return [UIImage imageNamed:@"wifi" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
+    if ([extraId isEqualToString:@"101.EQP"]) {
+        //additional driver
+        return [UIImage imageNamed:@"additional_driver" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
+    if ([extraId isEqualToString:@"102.EQP"]) {
+        //gps
+        return [UIImage imageNamed:@"gps" inBundle:bundle compatibleWithTraitCollection:nil];
+    }
+    
+    return [UIImage imageNamed:@"generic_extra" inBundle:bundle compatibleWithTraitCollection:nil];
 }
 
 @end

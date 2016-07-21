@@ -226,7 +226,10 @@
             self.refresh();
         }
         
-    } else if (self.headCell != nil && self.tailCell == nil && ![cell.date isEqual:[NSNull null]]) {
+    } else if (self.headCell != nil &&
+               self.tailCell == nil &&
+               ![cell.date isEqual:[NSNull null]] &&
+               [self.headCell.date compare:cell.date] != NSOrderedDescending) {
         [self tailSetSelected:cell indexPath:indexPath section:section];
         self.refresh();
         if (self.datesSelected != nil) {

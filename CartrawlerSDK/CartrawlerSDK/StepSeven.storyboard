@@ -297,6 +297,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="512" height="512"/>
+        <image name="backArrow" width="32" height="32"/>
     </resources>
 </document>

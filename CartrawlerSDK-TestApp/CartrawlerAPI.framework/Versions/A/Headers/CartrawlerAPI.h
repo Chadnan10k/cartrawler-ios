@@ -62,6 +62,8 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
  */
 - (void)enableLogging:(BOOL)enabled;
 
+- (void)cancelAllRequests;
+
 #pragma mark Location Search
 
 /**
@@ -70,8 +72,9 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
  *  @param partialString The partial string
  *  @param completion If successful you get a VehicleSearchResponse, If failure an ErrorResponse will be returned
  */
-- (void)locationSearchWithPartialString:(NSString *)partialString completion:(LocationSearchCompletion)completion;
-
+- (void)locationSearchWithPartialString:(NSString *)partialString
+                       needsCoordinates:(BOOL)needsCoordinates
+                             completion:(LocationSearchCompletion)completion;
 /**
  *  Search for supplier location by city / country
  *

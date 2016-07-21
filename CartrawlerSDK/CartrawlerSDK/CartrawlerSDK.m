@@ -53,16 +53,6 @@
     return self;
 }
 
-- (void)changeLanguage:(NSString *)languageCode
-{
-    [[CTSDKSettings instance] setLanguageCode:languageCode];
-}
-
-- (void)changeCurrency:(NSString *)currencyCode
-{
-    [[CTSDKSettings instance] setCurrencyCode:currencyCode];
-}
-
 + (CTAppearance *)appearance
 {
     return [CTAppearance instance];

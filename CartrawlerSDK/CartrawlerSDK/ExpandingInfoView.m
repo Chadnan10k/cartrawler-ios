@@ -58,6 +58,9 @@
 - (IBAction)sizeViewTapped:(id)sender
 {
     if (!expanded) {
+        
+        [self.button setTitle:@"-" forState:UIControlStateNormal];
+        
         self.heightConstraint.constant = 50 + self.textView.contentSize.height;
 
         [UIView animateWithDuration:0.3 animations:^{
@@ -109,13 +112,14 @@
             [UIView animateWithDuration:0.3 animations:^{
                 self.textView.alpha = 1;
             }];
-            
         }];
-        
         
         expanded = YES;
 
     } else {
+        
+        [self.button setTitle:@"+" forState:UIControlStateNormal];
+
         self.textView.alpha = 0;
         [self.textView removeFromSuperview];
         

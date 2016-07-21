@@ -36,13 +36,18 @@
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSS-OR-ReL" customClass="CTView">
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dublin Airport - Dublin Airport" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpG-V5-fPS">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dublin Airport - Dublin Airport" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpG-V5-fPS">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="29" id="khR-PG-vid"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="khR-PG-vid"/>
+                                                    </mask>
+                                                </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu, 10 Dec - Thu, 17 Dec" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdZ-Gx-aUS" customClass="CTLabel">
                                                 <constraints>
@@ -72,11 +77,17 @@
                                             <constraint firstAttribute="trailing" secondItem="xpG-V5-fPS" secondAttribute="trailing" constant="56" id="Iia-qr-5d9"/>
                                             <constraint firstAttribute="height" constant="62" id="Ivo-Rd-6IQ"/>
                                             <constraint firstItem="xpG-V5-fPS" firstAttribute="top" secondItem="bSS-OR-ReL" secondAttribute="top" id="PAq-gO-EUG"/>
+                                            <constraint firstAttribute="bottom" secondItem="CdZ-Gx-aUS" secondAttribute="bottom" constant="8" id="Sfv-NS-yFN"/>
                                             <constraint firstItem="vrA-86-Eph" firstAttribute="leading" secondItem="bSS-OR-ReL" secondAttribute="leading" constant="8" id="cXR-Uk-S1Z"/>
                                             <constraint firstAttribute="trailing" secondItem="CdZ-Gx-aUS" secondAttribute="trailing" constant="56" id="d9M-MU-pRQ"/>
                                             <constraint firstItem="CdZ-Gx-aUS" firstAttribute="top" secondItem="xpG-V5-fPS" secondAttribute="bottom" constant="1" id="ral-gB-m6V"/>
                                             <constraint firstItem="vrA-86-Eph" firstAttribute="centerY" secondItem="bSS-OR-ReL" secondAttribute="centerY" constant="-4" id="w8A-CN-yvv"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Ivo-Rd-6IQ"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="69 cars available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obb-FK-iCf" customClass="CTLabel">
                                         <constraints>
@@ -138,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ds-F9-f02" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1149" y="1109"/>
+            <point key="canvasLocation" x="1148" y="1108.6956521739132"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="idy-IN-qDj">
@@ -169,8 +180,7 @@
                                                             <frame key="frameInset" width="359" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwB-YD-u80">
-                                                                    <frame key="frameInset" minX="8" minY="12" width="42" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwB-YD-u80">
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="OQB-pn-qBr"/>
                                                                     </constraints>
@@ -178,8 +188,7 @@
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="checkmark.png" translatesAutoresizingMaskIntoConstraints="NO" id="v1E-eD-8Ht">
-                                                                    <frame key="frameInset" minX="324" minY="11" width="27" height="23"/>
+                                                                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.png" translatesAutoresizingMaskIntoConstraints="NO" id="v1E-eD-8Ht">
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="27" id="blP-v6-Flb"/>
                                                                         <constraint firstAttribute="height" constant="23" id="zEU-Xp-FPB"/>
@@ -213,8 +222,7 @@
                                                             <frame key="frameInset" width="359" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miC-lF-ugh">
-                                                                    <frame key="frameInset" minX="8" minY="12" width="42" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miC-lF-ugh">
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="LGI-je-8DS"/>
                                                                     </constraints>
@@ -256,8 +264,7 @@
                                                             <frame key="frameInset" width="359" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUt-Fa-ixh">
-                                                                    <frame key="frameInset" minX="8" minY="12" width="42" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUt-Fa-ixh">
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="CHm-Ag-EbU"/>
                                                                     </constraints>
@@ -265,8 +272,7 @@
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="checkmark.png" translatesAutoresizingMaskIntoConstraints="NO" id="dNi-Y6-rDd">
-                                                                    <frame key="frameInset" minX="324" minY="11" width="27" height="23"/>
+                                                                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.png" translatesAutoresizingMaskIntoConstraints="NO" id="dNi-Y6-rDd">
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="27" id="M54-sa-2CC"/>
                                                                         <constraint firstAttribute="height" constant="23" id="lwp-q1-pi6"/>
@@ -426,7 +432,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="512" height="512"/>
+        <image name="backArrow" width="32" height="32"/>
         <image name="checkmark.png" width="64" height="64"/>
     </resources>
 </document>

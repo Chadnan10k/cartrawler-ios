@@ -24,10 +24,9 @@
 @property (weak, nonatomic) IBOutlet ExpandingInfoView *pickupLocationView;
 @property (weak, nonatomic) IBOutlet ExpandingInfoView *fuelPolicyView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *vehicleDetailsHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *vendorRatingHeightConstraint;
 @property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
-
-@property (weak, nonatomic) IBOutlet TabButton *carDetailsTab;
-@property (weak, nonatomic) IBOutlet TabButton *supplierTab;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *tabSelection;
 @property (weak, nonatomic) VehicleDetailsView *vehicleDetailView;
 @property (weak, nonatomic) SupplierRatingsViewController *supplierRatingView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -48,6 +47,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self detailsTapped];
     
     self.continueButton.enabled = YES;
     
@@ -73,7 +74,7 @@
             
         }
     } else {
-        self.supplierTab.hidden = YES;
+        [self.tabSelection removeSegmentAtIndex:1 animated:NO];
     }
     
     self.vendorRatingContainer.layer.cornerRadius = 5;
@@ -148,16 +149,42 @@
     }
 }
 
-- (IBAction)detailsTapped:(id)sender {
-    [self.carDetailsTab focus:YES];
-    [self.supplierTab focus:NO];
+- (IBAction)tabChange:(id)sender {
+    
+    switch (self.tabSelection.selectedSegmentIndex) {
+        case 0:
+            [self detailsTapped];
+            break;
+        case 1:
+            [self supplierTapped];
+            break;
+        default:
+            break;
+    }
+    
+}
+
+- (void)detailsTapped
+{
+    
+    [self.vehicleDetailView setupView];
+    
+    self.vehicleDetailView.heightChanged = ^(CGFloat height) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.vehicleDetailsHeightConstraint.constant = height + 265;
+        });
+    };
+    
     self.vehicleDetailsContainer.alpha = 1;
     self.vendorRatingContainer.alpha = 0;
 }
 
-- (IBAction)supplierTapped:(id)sender {
-    [self.carDetailsTab focus:NO];
-    [self.supplierTab focus:YES];
+- (void)supplierTapped
+{
+    
+    self.vehicleDetailsHeightConstraint.constant = 170;
+
+    
     self.vehicleDetailsContainer.alpha = 0;
     self.vendorRatingContainer.alpha = 1;
 }
@@ -170,7 +197,7 @@
     self.stepTwoCompletion = ^(BOOL insuranceSuccess, NSString *errorMessage) {
         [weakSelf.activityView stopAnimating];
     };
-        
+    
     self.continueButton.enabled = NO;
 }
 
