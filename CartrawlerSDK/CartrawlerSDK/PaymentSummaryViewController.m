@@ -12,7 +12,7 @@
 #import "CTSDKSettings.h"
 #import "NSNumberUtils.h"
 #import "BookingSummaryButton.h"
-
+#import "CTLabel.h"
 @interface PaymentSummaryViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryHeight;
 
 @property (weak, nonatomic) IBOutlet BookingSummaryButton *bookingSummaryContainer;
-@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *totalLabel;
 
 @end
 
@@ -57,7 +57,6 @@
     if (self.isBuyingInsurance) {
         [self.items addObject:@{@"Normal" : @{@"Name" : @"Damage Refund Insurance", @"Price" : self.insurance.premiumAmount}}];
         total += self.insurance.premiumAmount.doubleValue;
-
     }
     
     for (CTExtraEquipment *extra in self.extras) {

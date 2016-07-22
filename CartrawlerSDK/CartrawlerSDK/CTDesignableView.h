@@ -16,5 +16,6 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat cornerRadius;
 @property (nonatomic) IBInspectable CGFloat borderWidth;
 @property (nonatomic) IBInspectable BOOL enableShadow;
+@property (nonatomic) IBInspectable BOOL enableGradient;
 
 @end

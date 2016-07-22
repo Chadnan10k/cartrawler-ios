@@ -13,19 +13,21 @@
 #import "CartrawlerAPI/CTVendorRating.h"
 #import "CTAppearance.h"
 #import "NSNumberUtils.h"
+#import "CTLabel.h"
 
 @interface VehicleTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *vehicleNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *passengerQtyLabel;
-@property (weak, nonatomic) IBOutlet UILabel *transmissionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *airconLabel;
-@property (weak, nonatomic) IBOutlet UILabel *fuelPolicyLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *vehicleNameLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *passengerQtyLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *transmissionLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *airconLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *fuelPolicyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *vendorImageView;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ratingTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *airconImageView;
 
 @end
 
@@ -48,6 +50,14 @@
     self.passengerQtyLabel.text = [NSString stringWithFormat:@"%d %@", vehicle.passengerQty.intValue, NSLocalizedString(@"passengers", @"passengers")];
     self.transmissionLabel.text = vehicle.transmissionType;
     self.fuelPolicyLabel.text = [self fuelPolicyString:vehicle.fuelPolicy];
+    
+    if (vehicle.isAirConditioned) {
+        self.airconLabel.alpha = 1;
+        self.airconImageView.alpha = 1;
+    } else {
+        self.airconLabel.alpha = 0;
+        self.airconImageView.alpha = 0;
+    }
 
     NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode:vehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
     NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];

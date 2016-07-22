@@ -155,6 +155,26 @@
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSLog(@"%@", [NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string]);
+    NSLog(@"%d", [self validatePhone:[NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string]]);
+    
+    if (textField == self.phoneTextField) {
+        return [self validatePhone:[NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string]];
+    } else {
+        return YES;
+    }
+}
+
+- (BOOL)validatePhone:(NSString *)phoneNumber
+{
+    NSString *phoneRegex = @"^[0-9]+$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    
+    return [phoneTest evaluateWithObject:phoneNumber];
+}
+
 - (void)registerForKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -175,12 +195,9 @@
     CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     CGRect viewFrame = self.scrollView.frame;
-    viewFrame.size.height += (keyboardSize.height + 45);
+    viewFrame.size.height += (keyboardSize.height);
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [self.scrollView setFrame:viewFrame];
-    [UIView commitAnimations];
+    [self.scrollView scrollRectToVisible:viewFrame animated:YES];
 }
 
 - (void)keyboardWillShow:(NSNotification *)n
@@ -190,12 +207,9 @@
     CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     CGRect viewFrame = self.scrollView.frame;
     
-    viewFrame.size.height -= (keyboardSize.height + 45);
+    viewFrame.size.height -= (keyboardSize.height);
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [self.scrollView setFrame:viewFrame];
-    [UIView commitAnimations];
+    [self.scrollView scrollRectToVisible:viewFrame animated:YES];
 }
 
 - (IBAction)back:(id)sender {

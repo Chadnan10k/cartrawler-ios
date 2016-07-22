@@ -43,7 +43,12 @@
 {
     [super viewDidAppear:animated];
     
-    self.locationsLabel.text = [NSString stringWithFormat:@"%@ - %@", self.pickupLocation.name, self.dropoffLocation.name];
+    if (self.pickupLocation == self.dropoffLocation) {
+        self.locationsLabel.text = [NSString stringWithFormat:@"%@", self.pickupLocation.name];
+    } else {
+        self.locationsLabel.text = [NSString stringWithFormat:@"%@\n- to -\n%@", self.pickupLocation.name, self.dropoffLocation.name];
+    }
+    
     
     NSString *pickupDate = [DateUtils shortDescriptionFromDate:self.pickupDate];
     NSString *dropoffDate = [DateUtils shortDescriptionFromDate:self.dropoffDate];

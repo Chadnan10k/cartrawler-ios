@@ -48,6 +48,17 @@
         self.layer.shadowOpacity = 0.2;
         self.layer.shadowRadius = 3;
     }
+    
+    if (self.enableGradient) {
+        [self setNeedsLayout];
+        [self layoutIfNeeded];
+        CAGradientLayer *gradientMask = [CAGradientLayer layer];
+        gradientMask.frame = self.bounds;
+        gradientMask.colors = @[(id)[UIColor groupTableViewBackgroundColor].CGColor,
+                                (id)[UIColor clearColor].CGColor];
+        self.layer.mask = gradientMask;
+    }
+    
     [super awakeFromNib];
 }
 

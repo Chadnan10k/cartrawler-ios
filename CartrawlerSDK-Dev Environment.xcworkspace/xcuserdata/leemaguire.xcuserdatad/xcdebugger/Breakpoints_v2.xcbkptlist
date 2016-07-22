@@ -19,13 +19,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CartrawlerSDK/CartrawlerSDK/VehicleDetailsView.m"
-            timestampString = "490807900.44003"
+            filePath = "CartrawlerSDK/CartrawlerSDK/CalendarLogicController.m"
+            timestampString = "490876783.97529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "-setupView"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "-cellSelected:indexPath:section:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CartrawlerSDK/CartrawlerSDK/CalendarLogicController.m"
-            timestampString = "490809882.676959"
+            filePath = "CartrawlerSDK/CartrawlerSDK/CTDesignableView.m"
+            timestampString = "490897637.16339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
-            landmarkName = "-cellSelected:indexPath:section:"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-initWithFrame:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

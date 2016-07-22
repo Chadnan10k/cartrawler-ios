@@ -87,94 +87,98 @@
         _tailCollectionView = collectionView;
         [self tailSetSelected:cell indexPath:indexPath section:section];
     }
+    
+    
+    //**
+    //head
+    if (![cell.date isEqual:[NSNull null]] && self.headDate != nil) {
 
-    for (CTDateCollectionViewCell *c in collectionView.visibleCells) {
-        
-        //set the head color
-        if (![c.date isEqual:[NSNull null]] && ![self.headDate isEqual:[NSNull null]]) {
-        
         NSDateComponents *dateComp = [[NSCalendar currentCalendar]
                                           components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
                                           fromDate:self.headDate];
-        
+
         NSDateComponents *headCellComp = [[NSCalendar currentCalendar]
                                       components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
-                                      fromDate:c.date];
-            
-            NSInteger dateDay = [dateComp day];
-            NSInteger dateMonth = [dateComp month];
-            NSInteger dateYear = [dateComp year];
-            
-            NSInteger cellDay = [headCellComp day];
-            NSInteger cellMonth = [headCellComp month];
-            NSInteger cellYear = [headCellComp year];
-            
-            if (dateDay == cellDay && dateMonth == cellMonth && cellYear == dateYear) {
-                [c headSetSelected];
-            }
+                                      fromDate:cell.date];
+
+        NSInteger dateDay = [dateComp day];
+        NSInteger dateMonth = [dateComp month];
+        NSInteger dateYear = [dateComp year];
+
+        NSInteger cellDay = [headCellComp day];
+        NSInteger cellMonth = [headCellComp month];
+        NSInteger cellYear = [headCellComp year];
+
+        if (dateDay == cellDay && dateMonth == cellMonth && cellYear == dateYear) {
+            [cell headSetSelected];
         }
-        //set the tail color
-        if (![c.date isEqual:[NSNull null]] && ![self.tailDate isEqual:[NSNull null]]) {
-            
-            NSDateComponents *dateComp = [[NSCalendar currentCalendar]
+    }
+    //tail
+    if (![cell.date isEqual:[NSNull null]] && self.tailDate != nil) {
+
+        NSDateComponents *dateComp = [[NSCalendar currentCalendar]
+                                      components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
+                                      fromDate:self.tailDate];
+
+        NSDateComponents *headCellComp = [[NSCalendar currentCalendar]
                                           components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
-                                          fromDate:self.tailDate];
-            
-            NSDateComponents *headCellComp = [[NSCalendar currentCalendar]
-                                              components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
-                                              fromDate:c.date];
-            
-            NSInteger dateDay = [dateComp day];
-            NSInteger dateMonth = [dateComp month];
-            NSInteger dateYear = [dateComp year];
-            
-            NSInteger cellDay = [headCellComp day];
-            NSInteger cellMonth = [headCellComp month];
-            NSInteger cellYear = [headCellComp year];
-            
-            if (dateDay == cellDay && dateMonth == cellMonth && cellYear == dateYear) {
-                [c tailSetSelected];
-            }
+                                          fromDate:cell.date];
+
+        NSInteger dateDay = [dateComp day];
+        NSInteger dateMonth = [dateComp month];
+        NSInteger dateYear = [dateComp year];
+
+        NSInteger cellDay = [headCellComp day];
+        NSInteger cellMonth = [headCellComp month];
+        NSInteger cellYear = [headCellComp year];
+
+        if (dateDay == cellDay && dateMonth == cellMonth && cellYear == dateYear) {
+            [cell tailSetSelected];
         }
-        
-        //set the same day color
-        if (![c.date isEqual:[NSNull null]] && ![self.headDate isEqual:[NSNull null]] && ![self.tailDate isEqual:[NSNull null]]) {
-            
-            NSDateComponents *headDateComp = [[NSCalendar currentCalendar]
+    }
+    //same day
+
+    if (![cell.date isEqual:[NSNull null]] && self.headDate != nil && self.tailDate != nil) {
+
+        NSDateComponents *headDateComp = [[NSCalendar currentCalendar]
+                                      components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
+                                      fromDate:self.headDate];
+
+        NSDateComponents *tailDateComp = [[NSCalendar currentCalendar]
+                                      components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
+                                      fromDate:self.tailDate];
+
+        NSDateComponents *headCellComp = [[NSCalendar currentCalendar]
                                           components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
-                                          fromDate:self.headDate];
-            
-            NSDateComponents *tailDateComp = [[NSCalendar currentCalendar]
-                                          components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
-                                          fromDate:self.tailDate];
-            
-            NSDateComponents *headCellComp = [[NSCalendar currentCalendar]
-                                              components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
-                                              fromDate:c.date];
-            
-            NSInteger headDay = [headDateComp day];
-            NSInteger headMonth = [headDateComp month];
-            NSInteger headYear = [headDateComp year];
-            
-            
-            NSInteger tailDay = [tailDateComp day];
-            NSInteger tailMonth = [tailDateComp month];
-            NSInteger tailYear = [tailDateComp year];
-            
-            
-            NSInteger cellDay = [headCellComp day];
-            NSInteger cellMonth = [headCellComp month];
-            NSInteger cellYear = [headCellComp year];
-            
-            if (headDay == tailDay && headMonth == tailMonth && headYear == tailYear) {
-                if (cellDay == tailDay && cellMonth == tailMonth && cellYear == tailYear) {
-                    if (headDay == cellDay && headMonth == cellMonth && headYear == cellYear) {
-                        [c sameDaySetSelected];
-                    }
+                                          fromDate:cell.date];
+
+        NSInteger headDay = [headDateComp day];
+        NSInteger headMonth = [headDateComp month];
+        NSInteger headYear = [headDateComp year];
+
+
+        NSInteger tailDay = [tailDateComp day];
+        NSInteger tailMonth = [tailDateComp month];
+        NSInteger tailYear = [tailDateComp year];
+
+
+        NSInteger cellDay = [headCellComp day];
+        NSInteger cellMonth = [headCellComp month];
+        NSInteger cellYear = [headCellComp year];
+
+        if (headDay == tailDay && headMonth == tailMonth && headYear == tailYear) {
+            if (cellDay == tailDay && cellMonth == tailMonth && cellYear == tailYear) {
+                if (headDay == cellDay && headMonth == cellMonth && headYear == cellYear) {
+                    [cell sameDaySetSelected];
                 }
             }
-
         }
+
+    }
+    
+    //**
+
+    for (CTDateCollectionViewCell *c in collectionView.visibleCells) {
         
         if (self.headIndexPath != nil & self.tailIndexPath != nil) {
 
@@ -229,7 +233,7 @@
     } else if (self.headCell != nil &&
                self.tailCell == nil &&
                ![cell.date isEqual:[NSNull null]] &&
-               [self.headCell.date compare:cell.date] != NSOrderedDescending) {
+               [self.headDate compare:cell.date] != NSOrderedDescending) {
         [self tailSetSelected:cell indexPath:indexPath section:section];
         self.refresh();
         if (self.datesSelected != nil) {

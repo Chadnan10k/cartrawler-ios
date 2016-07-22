@@ -96,10 +96,10 @@
         NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
         LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
+        locSearchVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
         [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
         
         locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
-            NSLog(@"%@", location.name);
             [weakSelf.pickupView setTextFieldText:location.name];
             [weakSelf setPickupLocation:location];
             
@@ -188,6 +188,7 @@
         } else {
             _isReturningSameLocation = YES;
             [weakSelf setDropoffLocation:nil];
+            [weakSelf.dropoffView setTextFieldText:@""];
             self.dropoffLocTopConstraint.constant = 80;
             [UIView animateWithDuration:0.3 animations:^{
                 self.dropoffContainer.alpha = 1;
