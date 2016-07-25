@@ -22,7 +22,6 @@
 @property (strong, nonatomic) NSLayoutConstraint *leftConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *rightConstraint;
 
-
 @end
 
 @implementation ExpandingInfoView {
@@ -43,9 +42,12 @@
     return self;
 }
 
-- (void)setTitle:(NSString *)title andImage:(UIImage *)image
+- (void)setTitle:(NSString *)title text:(NSString *)text image:(UIImage *)image
 {
-    self.textView.text = title;
+    self.titleLabel.text = title;
+    self.imageView.image = image;
+    self.textView.text = text;
+    
     self.textView.alpha = 0;
     self.textView.editable = NO;
     self.textView.font = [UIFont fontWithName:[CTAppearance instance].fontName size:18];
@@ -53,6 +55,9 @@
     self.heightConstraint.constant = 50;
     [self layoutIfNeeded];
     expanded = NO;
+    
+    self.textView.translatesAutoresizingMaskIntoConstraints = false;
+    self.translatesAutoresizingMaskIntoConstraints = false;
 }
 
 - (IBAction)sizeViewTapped:(id)sender
@@ -60,18 +65,9 @@
     if (!expanded) {
         
         [self.button setTitle:@"-" forState:UIControlStateNormal];
-        
-        self.heightConstraint.constant = 50 + self.textView.contentSize.height;
 
-        [UIView animateWithDuration:0.3 animations:^{
-            [self setNeedsUpdateConstraints];
-            [self layoutIfNeeded];
-        } completion:^(BOOL finished) {
             
             [self addSubview:self.textView];
-            
-            self.textView.translatesAutoresizingMaskIntoConstraints = false;
-            self.translatesAutoresizingMaskIntoConstraints = false;
             
             self.topConstraint = [NSLayoutConstraint constraintWithItem:self.textView
                                                              attribute:NSLayoutAttributeTop
@@ -87,7 +83,7 @@
                                                                    toItem:self
                                                                 attribute:NSLayoutAttributeBottom
                                                                multiplier:1.0
-                                                                 constant:-5];
+                                                                 constant:-10];
             
             self.leftConstraint = [NSLayoutConstraint constraintWithItem:self.textView
                                                               attribute:NSLayoutAttributeLeft
@@ -95,7 +91,7 @@
                                                                  toItem:self
                                                               attribute:NSLayoutAttributeLeft
                                                              multiplier:1.0
-                                                               constant:5];
+                                                               constant:10];
             
             self.rightConstraint = [NSLayoutConstraint constraintWithItem:self.textView
                                                                attribute:NSLayoutAttributeRight
@@ -103,16 +99,17 @@
                                                                   toItem:self
                                                                attribute:NSLayoutAttributeRight
                                                               multiplier:1.0
-                                                                constant:-5];
+                                                                constant:-10];
             [self addConstraints:@[self.topConstraint,
                                    self.bottomConstraint,
                                    self.leftConstraint,
                                    self.rightConstraint]];
-            
-            [UIView animateWithDuration:0.3 animations:^{
-                self.textView.alpha = 1;
-            }];
-        }];
+        
+        [self setNeedsUpdateConstraints];
+        [self layoutIfNeeded];
+        [self layoutSubviews];
+        self.heightConstraint.constant = 60 + self.textView.contentSize.height;
+        self.textView.alpha = 1;
         
         expanded = YES;
 

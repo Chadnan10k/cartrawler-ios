@@ -78,7 +78,7 @@
     _pickupTime = [gregorianCalendar dateFromComponents:initialTimeComp];
     _dropoffTime = [gregorianCalendar dateFromComponents:initialTimeComp];
     
-    _pickupTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:[NSDate date]];
+    _pickupTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
     _dropoffTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
 
     _isReturningSameLocation = YES;

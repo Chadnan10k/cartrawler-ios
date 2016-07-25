@@ -1,5 +1,8 @@
 #import <Foundation/Foundation.h>
+#import "InsuranceSelectorItem.h"
+#import "InsuranceLink.h"
 
+NS_ASSUME_NONNULL_BEGIN
 /**
  *  CTInsurance
  */
@@ -8,54 +11,59 @@
 /**
  *  ID of the insurance plan
  */
-@property (nonatomic, strong, readonly) NSString *planID;
+@property (nonatomic, strong, readonly, nonnull) NSString *planID;
 /**
  *  Name of the insurance plan
  */
-@property (nonatomic, strong, readonly) NSString *name;
+@property (nonatomic, strong, readonly, nonnull) NSString *name;
 /**
  *  The url for the policy document
  */
-@property (nonatomic, strong, readonly) NSURL *termsAndConditionsURL;
+@property (nonatomic, strong, readonly, nonnull) NSURL *termsAndConditionsURL;
 /**
  *  "Terms and condition"s localized string
  */
-@property (nonatomic, strong, readonly) NSString *termsAndConditionsTitle;
+@property (nonatomic, strong, readonly, nonnull) NSString *termsAndConditionsTitle;
 /**
  *  The cost of the plan
  */
-@property (nonatomic, strong, readonly) NSNumber *costAmount;
+@property (nonatomic, strong, readonly, nonnull) NSNumber *costAmount;
 /**
  *  The cost currency code
  */
-@property (nonatomic, strong, readonly) NSString *costCurrencyCode;
+@property (nonatomic, strong, readonly, nonnull) NSString *costCurrencyCode;
 /**
  *  The premium amount
  */
-@property (nonatomic, strong, readonly) NSNumber *premiumAmount;
+@property (nonatomic, strong, readonly, nonnull) NSNumber *premiumAmount;
 /**
  *  The premium currency code
  */
-@property (nonatomic, strong, readonly) NSString *premiumCurrencyCode;
+@property (nonatomic, strong, readonly, nonnull) NSString *premiumCurrencyCode;
 
-@property (nonatomic, strong, readonly) NSString *title;
+@property (nonatomic, strong, readonly, nonnull) NSString *title;
 
-@property (nonatomic, strong, readonly) NSURL *imageURL;
+@property (nonatomic, strong, readonly, nonnull) NSURL *imageURL;
 
-@property (nonatomic, strong, readonly) NSString *paragraphFooter;
+@property (nonatomic, strong, readonly, nullable) NSString *paragraphFooter;
 
-@property (nonatomic, strong, readonly) NSString *paragraphInfo;
+@property (nonatomic, strong, readonly, nullable) NSString *paragraphInfo;
 
-@property (nonatomic, strong, readonly) NSString *paragraphSubfooter;
+@property (nonatomic, strong, readonly, nullable) NSString *paragraphSubfooter;
 
-@property (nonatomic, strong, readonly) NSString *summary;
+@property (nonatomic, strong, readonly, nullable) NSString *summary;
 
-@property (nonatomic, strong, readonly) NSString *listTitle;
+@property (nonatomic, strong, readonly, nullable) NSString *listTitle;
 
-@property (nonatomic, strong, readonly) NSArray<NSString *> *listItems;
+@property (nonatomic, strong, readonly, nullable) NSArray<NSString *> *listItems;
 
-@property (nonatomic, strong, readonly) NSString *functionalText;
+@property (nonatomic, strong, readonly, nullable) NSString *functionalText;
+
+@property (nonatomic, strong, readonly, nullable) NSString *selectorTitle;
+@property (nonatomic, strong, readonly, nullable) NSArray <InsuranceSelectorItem *> *selectorItems;
+@property (nonatomic, strong, readonly, nullable) NSArray <InsuranceLink *> *links;
 
 - (id)initFromDict:(NSDictionary *)dict;
 
 @end
+NS_ASSUME_NONNULL_END

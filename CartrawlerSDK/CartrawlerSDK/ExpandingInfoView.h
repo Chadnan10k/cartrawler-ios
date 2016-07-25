@@ -12,6 +12,6 @@
 
 + (void)forceLinkerLoad_;
 
-- (void)setTitle:(NSString *)title andImage:(UIImage *)image;
+- (void)setTitle:(NSString *)title text:(NSString *)text image:(UIImage *)image;
 
 @end

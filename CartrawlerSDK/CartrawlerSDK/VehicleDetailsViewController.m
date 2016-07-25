@@ -87,8 +87,25 @@
     self.vendorRatingContainer.layer.borderWidth = 1;
     self.vendorRatingContainer.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
-    [self.pickupLocationView setTitle:@"Vehicle is located in airport." andImage:nil];
-    [self.fuelPolicyView setTitle:self.selectedVehicle.fuelPolicyDescription andImage:nil];
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    
+    if (self.selectedVehicle.vendor.atAirport) {
+        [self.pickupLocationView setTitle:@"At Airport"
+                                     text:NSLocalizedString(@"This supplier is located in the airport.", @"This supplier is located in the airport.")
+                                    image:[UIImage imageNamed:@"airport_gray" inBundle:b compatibleWithTraitCollection:nil]];
+    } else {
+        
+        NSString *address = [self.selectedVehicle.vendor.address stringByReplacingOccurrencesOfString:@"," withString:@",\n"];
+        
+        [self.pickupLocationView setTitle:@"Supplier address"
+                                     text:address
+                                    image:[UIImage imageNamed:@"address" inBundle:b compatibleWithTraitCollection:nil]];
+    }
+    
+    [self.fuelPolicyView setTitle:@"Fuel policy"
+                             text:self.selectedVehicle.fuelPolicyDescription
+                            image:[UIImage imageNamed:@"fuel" inBundle:b compatibleWithTraitCollection:nil]];
     
     [self.view layoutIfNeeded];
     

@@ -65,6 +65,8 @@
 		452521701D353C4200B47DE6 /* DriverDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4525216E1D353C4200B47DE6 /* DriverDetailsViewController.m */; };
 		452521731D35442100B47DE6 /* BookingSummaryButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 452521711D35442100B47DE6 /* BookingSummaryButton.h */; };
 		452521741D35442100B47DE6 /* BookingSummaryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 452521721D35442100B47DE6 /* BookingSummaryButton.m */; };
+		4530DA331D46660900CF3186 /* CTTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4530DA311D46660900CF3186 /* CTTextView.h */; };
+		4530DA341D46660900CF3186 /* CTTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4530DA321D46660900CF3186 /* CTTextView.m */; };
 		453386E31D2BA4EA0021D392 /* IncludedCollectionViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 453386E11D2BA4EA0021D392 /* IncludedCollectionViewLayout.h */; };
 		453386E41D2BA4EA0021D392 /* IncludedCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 453386E21D2BA4EA0021D392 /* IncludedCollectionViewLayout.m */; };
 		45361BEB1D2BA1BA00295124 /* UnderLinedButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 45361BE91D2BA1BA00295124 /* UnderLinedButton.h */; };
@@ -288,6 +290,8 @@
 		4525216E1D353C4200B47DE6 /* DriverDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverDetailsViewController.m; sourceTree = "<group>"; };
 		452521711D35442100B47DE6 /* BookingSummaryButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingSummaryButton.h; sourceTree = "<group>"; };
 		452521721D35442100B47DE6 /* BookingSummaryButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingSummaryButton.m; sourceTree = "<group>"; };
+		4530DA311D46660900CF3186 /* CTTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTextView.h; sourceTree = "<group>"; };
+		4530DA321D46660900CF3186 /* CTTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTextView.m; sourceTree = "<group>"; };
 		453386E11D2BA4EA0021D392 /* IncludedCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncludedCollectionViewLayout.h; sourceTree = "<group>"; };
 		453386E21D2BA4EA0021D392 /* IncludedCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncludedCollectionViewLayout.m; sourceTree = "<group>"; };
 		45361BE91D2BA1BA00295124 /* UnderLinedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderLinedButton.h; sourceTree = "<group>"; };
@@ -535,6 +539,15 @@
 				450F9D401D3CE9D6002C6F6B /* CSVItem.m */,
 			);
 			name = "Driver Details (Step Six)";
+			sourceTree = "<group>";
+		};
+		4530DA301D4665FA00CF3186 /* UITextView */ = {
+			isa = PBXGroup;
+			children = (
+				4530DA311D46660900CF3186 /* CTTextView.h */,
+				4530DA321D46660900CF3186 /* CTTextView.m */,
+			);
+			name = UITextView;
 			sourceTree = "<group>";
 		};
 		454AD7781D2551DB005C6CFF /* Filter */ = {
@@ -894,6 +907,7 @@
 		45E942D71D1302B800ACF604 /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
+				4530DA301D4665FA00CF3186 /* UITextView */,
 				4511E52B1D17F49F000ED6B0 /* UIView */,
 				4511E5211D17DF8E000ED6B0 /* Theme */,
 				45E942E41D1302F300ACF604 /* UITextField */,
@@ -1004,6 +1018,7 @@
 				45AC54681D130A1600805268 /* CTTimePickerView.h in Headers */,
 				450F9D411D3CE9D6002C6F6B /* CSVItem.h in Headers */,
 				453386E31D2BA4EA0021D392 /* IncludedCollectionViewLayout.h in Headers */,
+				4530DA331D46660900CF3186 /* CTTextView.h in Headers */,
 				4511E51D1D1450CE000ED6B0 /* CTSDKSettings.h in Headers */,
 				45819FAA1D35036A001AE0F5 /* BookingSummaryViewController.h in Headers */,
 				454AD77F1D25587D005C6CFF /* CTFilterDataSource.h in Headers */,
@@ -1262,6 +1277,7 @@
 				450F9D421D3CE9D6002C6F6B /* CSVItem.m in Sources */,
 				4511E5251D17DFA4000ED6B0 /* CTAppearance.m in Sources */,
 				451B513C1D38DD35004EBFDC /* GTBookNowButton.m in Sources */,
+				4530DA341D46660900CF3186 /* CTTextView.m in Sources */,
 				45645DFB1D33E8240075A3D2 /* PaymentSummaryTableViewCell.m in Sources */,
 				4511E5401D17F999000ED6B0 /* CTNavigationController.m in Sources */,
 				45CFC7DE1D2CF822006E6F83 /* ExtrasViewController.m in Sources */,

@@ -68,6 +68,7 @@
 #import "SupplierRatingsViewController.h"
 #import "SettingsViewController.h"
 #import "SettingsSelectionViewController.h"
+#import "CTTextView.h"
 
 @implementation LinkerUtils
 
@@ -133,6 +134,8 @@
     [SupplierRatingsViewController forceLinkerLoad_];
     [SettingsSelectionViewController forceLinkerLoad_];
     [SettingsViewController forceLinkerLoad_];
+    [CTTextView forceLinkerLoad_];
+
 }
 
 @end
