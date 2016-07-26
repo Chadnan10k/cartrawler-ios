@@ -41,6 +41,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    for (CTTextView *textView in textViews) {
+        [textView removeFromSuperview];
+    }
 
     self.insuranceView.hidden = YES;
     
@@ -85,11 +89,11 @@
         if (response.summary) {
             NSLog(@"CREATE SUMMARY VIEW");
             CTTextView *textView = [[CTTextView alloc] initWithFrame:CGRectZero];
+            textView.delegate = self;
             textView.attributedText = [self summaryText:response];
             textView.selectable = NO;
             textView.editable = NO;
             textView.scrollEnabled = NO;
-            textView.delegate = self;
             textView.translatesAutoresizingMaskIntoConstraints = false;
             [textViews addObject:textView];
             [self.insuranceView addSubview:textView];
@@ -98,24 +102,24 @@
         if (response.listItems) {
             NSLog(@"CREATE LIST ITEMS VIEW");
             CTTextView *textView = [[CTTextView alloc] initWithFrame:CGRectZero];
+            textView.delegate = self;
             textView.attributedText = [self listItems:response];
             textView.selectable = NO;
             textView.editable = NO;
             textView.scrollEnabled = NO;
-            textView.delegate = self;
             textView.translatesAutoresizingMaskIntoConstraints = false;
             [textViews addObject:textView];
             [self.insuranceView addSubview:textView];
         }
-        
+
         if (response.paragraphSubfooter) {
             NSLog(@"CREATE TERMS VIEW");
             CTTextView *textView = [[CTTextView alloc] initWithFrame:CGRectZero];
+            textView.delegate = self;
             textView.attributedText = [self termsAndConditionsText:response];
             textView.selectable = NO;
             textView.editable = NO;
             textView.scrollEnabled = NO;
-            textView.delegate = self;
             textView.translatesAutoresizingMaskIntoConstraints = false;
             [textViews addObject:textView];
             [self.insuranceView addSubview:textView];
@@ -124,9 +128,9 @@
         if (response.termsAndConditionsURL && response.functionalText && response.termsAndConditionsTitle) {
             NSLog(@"CREATE TERMS LINK VIEW");
             CTTextView *textView = [[CTTextView alloc] initWithFrame:CGRectZero];
+            textView.delegate = self;
             textView.attributedText = [self termsAndConditionsLink:response];
             textView.selectable = YES;
-            textView.delegate = self;
             textView.editable = NO;
             textView.scrollEnabled = NO;
             textView.dataDetectorTypes = UIDataDetectorTypeLink;
@@ -138,6 +142,8 @@
         if (response.selectorItems && response.selectorTitle) {
             NSLog(@"CREATE SELECTOR ITEMS AND TITLE VIEW");
         }
+        
+        
         [self.view layoutIfNeeded];
         [self.insuranceView layoutIfNeeded];
         [self createTextViews:textViews container:self.insuranceView];
@@ -154,12 +160,10 @@
 - (void)createTextViews:(NSMutableArray <CTTextView *>*)viewArray container:(UIView *)container
 {
     
-    CGFloat containerHeight = 180;
+    CGFloat containerHeight = 130;
     for (int i = 0; i < viewArray.count; ++i) {
+        CGFloat height = [self textViewHeightForAttributedText:viewArray[i].attributedText andWidth:self.insuranceView.frame.size.width];
 
-//        [viewArray[i] sizeToFit];
-//        [viewArray[i] layoutIfNeeded];
-        
         if (i == 0) {
             NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
                                                                              attribute:NSLayoutAttributeTop
@@ -175,7 +179,7 @@
                                                                                    toItem:nil
                                                                                 attribute:NSLayoutAttributeNotAnAttribute
                                                                                multiplier:1.0
-                                                                                 constant:[self sizeOfText:viewArray[i].text widthOfTextView:self.insuranceView.frame.size.width withFont:viewArray[i].font].height + 25];
+                                                                                 constant:height];
             
             NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
                                                                               attribute:NSLayoutAttributeLeft
@@ -200,6 +204,7 @@
             [self.insuranceView updateConstraints];
             
         } else {
+            
             NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
                                                                              attribute:NSLayoutAttributeTop
                                                                              relatedBy:NSLayoutRelationEqual
@@ -214,7 +219,7 @@
                                                                                    toItem:nil
                                                                                 attribute:NSLayoutAttributeNotAnAttribute
                                                                                multiplier:1.0
-                                                                                 constant:[self sizeOfText:viewArray[i].text widthOfTextView:self.insuranceView.frame.size.width withFont:viewArray[i].font].height + 25];
+                                                                                 constant:height];
             
             NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
                                                                               attribute:NSLayoutAttributeLeft
@@ -237,11 +242,21 @@
                                         heightConstraint]];
         }
 
-        containerHeight += [self sizeOfText:viewArray[i].text widthOfTextView:self.insuranceView.frame.size.width withFont:viewArray[i].font].height + 15;
+        containerHeight += height;
+        
     }
     
     //update container height
     self.insuranceViewHeight.constant = containerHeight;
+    
+}
+
+- (CGFloat)textViewHeightForAttributedText:(NSAttributedString *)text andWidth:(CGFloat)width
+{
+    UITextView *textView = [[UITextView alloc] init];
+    [textView setAttributedText:text];
+    CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
+    return size.height;
 }
 
 -(CGSize)sizeOfText:(NSString *)textToMesure widthOfTextView:(CGFloat)width withFont:(UIFont*)font
@@ -257,7 +272,7 @@
 {
     for (InsuranceLink *link in response.links) {
         
-        NSString *text = [NSString stringWithFormat:@"%@", attrText];
+        NSString *text = attrText.string;
         NSRange range = [text rangeOfString:[NSString stringWithFormat:@"${%@}", link.code]];
         
         if (range.location != NSNotFound) {
@@ -309,7 +324,7 @@
 {
     NSDictionary *termsAttr = @{ NSForegroundColorAttributeName : [UIColor lightGrayColor],
                                  NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName
-                                                                       size:12]};
+                                                                       size:15]};
     return [self scanForLinks:[[NSAttributedString alloc] initWithString:response.paragraphSubfooter
                                                               attributes:termsAttr]
                      response:response];
@@ -341,11 +356,6 @@
                                                 boldFontColor:@"#3399ff"];
     
     return [self scanForLinks:htmlText response:response];
-}
-
-- (void)createTextViews
-{
-    
 }
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
