@@ -69,6 +69,7 @@
 #import "SettingsViewController.h"
 #import "SettingsSelectionViewController.h"
 #import "CTTextView.h"
+#import "CTPickerView.h"
 
 @implementation LinkerUtils
 
@@ -135,6 +136,7 @@
     [SettingsSelectionViewController forceLinkerLoad_];
     [SettingsViewController forceLinkerLoad_];
     [CTTextView forceLinkerLoad_];
+    [CTPickerView forceLinkerLoad_];
 
 }
 

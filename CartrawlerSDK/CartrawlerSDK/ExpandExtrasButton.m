@@ -61,12 +61,12 @@
 - (void)setExtras:(NSArray<CTExtraEquipment *> *)extras
 {
     if (expanded) {
-        [self closeExtrasDrawer:YES];
+        [self drawerControlOpen:YES];
     }
     [self.extrasViewController setExtras:extras];
 }
 
-- (void)closeExtrasDrawer:(BOOL)expand
+- (void)drawerControlOpen:(BOOL)expand
 {
     expanded = expand;
     if (!expanded) {
@@ -140,13 +140,13 @@
 
 - (void)openView
 {
-   // [self closeExtrasDrawer:NO];
-   // self.height.constant = [self.extrasViewController openHeight];
+    [self drawerControlOpen:NO];
+    self.height.constant = [self.extrasViewController openHeight];
 }
 
 - (IBAction)expand:(id)sender
 {
-    [self closeExtrasDrawer:expanded];
+    [self drawerControlOpen:expanded];
 }
 
 @end

@@ -16,6 +16,22 @@
     
 }
 
+- (id)init
+{
+    self = [super init];
+    _overrideBackgroundColor = [CTAppearance instance].buttonColor;
+    _overrideTextColor = [CTAppearance instance].buttonTextColor;
+    
+    self.backgroundColor = [CTAppearance instance].buttonColor;
+    [self setTitleColor:[CTAppearance instance].buttonTextColor forState:UIControlStateNormal];
+    
+    self.titleLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:self.titleLabel.font.pointSize];
+    
+    self.layer.cornerRadius = [CTAppearance instance].buttonCornerRadius;
+    self.layer.masksToBounds = YES;
+    return self;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -39,6 +55,17 @@
     [super awakeFromNib];
     self.backgroundColor = self.overrideBackgroundColor;
     [self setTitleColor:self.overrideTextColor forState:UIControlStateNormal];
+}
+
+- (void)shake
+{
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:0.5 options:0 animations:^{
+        self.transform = CGAffineTransformMakeScale(1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.4 animations:^{
+            self.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        }];
+    }];
 }
 
 @end

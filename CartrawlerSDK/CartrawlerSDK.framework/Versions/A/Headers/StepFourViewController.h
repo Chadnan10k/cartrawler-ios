@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSNumber *driverAge;
 @property (nonatomic, strong) NSNumber *passengerQty;
 @property (nonatomic, strong) CTInsurance *insurance;
+@property (nonatomic, strong) InsuranceSelectorItem *insuranceItem;
 @property (nonatomic, strong) StepFiveViewController *stepFiveViewController;
 @property (nonatomic, strong) StepSixViewController *stepSixViewController;
 @property (nonatomic, strong) StepSevenViewController *stepSevenViewController;

@@ -13,8 +13,9 @@
 #import "ExpandExtrasButton.h"
 #import "CTButton.h"
 #import "CTTextView.h"
+#import "CTPickerView.h"
 
-@interface ExtrasViewController () <UITextViewDelegate>
+@interface ExtrasViewController () <UITextViewDelegate, CTPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *insuranceView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *insuranceViewHeight;
@@ -26,11 +27,14 @@
 @property (weak, nonatomic) IBOutlet CTButton *noInsuranceButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *insuranceViewSpace;
 
+@property (strong, nonatomic) CTButton *itemSelectButton;
+@property (strong, nonatomic) CTPickerView *pickerView;
 @end
 
 @implementation ExtrasViewController
 {
     NSMutableArray <CTTextView *>*textViews;
+    BOOL needsSelectedItem;
 }
 
 + (void)forceLinkerLoad_
@@ -41,6 +45,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (self.itemSelectButton) {
+        [self.itemSelectButton removeFromSuperview];
+    }
     
     for (CTTextView *textView in textViews) {
         [textView removeFromSuperview];
@@ -62,7 +70,8 @@
     [self setupView:self.insurance];
 }
 
-- (void)viewDidLayoutSubviews {
+- (void)viewDidLayoutSubviews
+{
     for (CTTextView *textView in textViews) {
         [textView setContentOffset:CGPointZero animated:NO];
     }
@@ -73,7 +82,6 @@
     [self.view layoutIfNeeded];
     if (response)
     {
-        
         self.insuranceView.hidden = NO;
         self.noInsuranceButton.hidden = NO;
         self.addInuranceButton.hidden = NO;
@@ -85,48 +93,48 @@
 
         textViews = [[NSMutableArray alloc] init];
         
-        //perform checks
+        BOOL noResponse = YES;
+        
         if (response.summary) {
-            NSLog(@"CREATE SUMMARY VIEW");
             CTTextView *textView = [[CTTextView alloc] initWithFrame:CGRectZero];
             textView.delegate = self;
             textView.attributedText = [self summaryText:response];
-            textView.selectable = NO;
+            textView.selectable = YES;
             textView.editable = NO;
             textView.scrollEnabled = NO;
             textView.translatesAutoresizingMaskIntoConstraints = false;
             [textViews addObject:textView];
             [self.insuranceView addSubview:textView];
+            noResponse = NO;
         }
         
         if (response.listItems) {
-            NSLog(@"CREATE LIST ITEMS VIEW");
             CTTextView *textView = [[CTTextView alloc] initWithFrame:CGRectZero];
             textView.delegate = self;
             textView.attributedText = [self listItems:response];
-            textView.selectable = NO;
+            textView.selectable = YES;
             textView.editable = NO;
             textView.scrollEnabled = NO;
             textView.translatesAutoresizingMaskIntoConstraints = false;
             [textViews addObject:textView];
             [self.insuranceView addSubview:textView];
+            noResponse = NO;
         }
 
         if (response.paragraphSubfooter) {
-            NSLog(@"CREATE TERMS VIEW");
             CTTextView *textView = [[CTTextView alloc] initWithFrame:CGRectZero];
             textView.delegate = self;
             textView.attributedText = [self termsAndConditionsText:response];
-            textView.selectable = NO;
+            textView.selectable = YES;
             textView.editable = NO;
             textView.scrollEnabled = NO;
             textView.translatesAutoresizingMaskIntoConstraints = false;
             [textViews addObject:textView];
             [self.insuranceView addSubview:textView];
+            noResponse = NO;
         }
         
         if (response.termsAndConditionsURL && response.functionalText && response.termsAndConditionsTitle) {
-            NSLog(@"CREATE TERMS LINK VIEW");
             CTTextView *textView = [[CTTextView alloc] initWithFrame:CGRectZero];
             textView.delegate = self;
             textView.attributedText = [self termsAndConditionsLink:response];
@@ -137,22 +145,37 @@
             textView.translatesAutoresizingMaskIntoConstraints = false;
             [textViews addObject:textView];
             [self.insuranceView addSubview:textView];
+            noResponse = NO;
         }
-        
-        if (response.selectorItems && response.selectorTitle) {
-            NSLog(@"CREATE SELECTOR ITEMS AND TITLE VIEW");
-        }
-        
         
         [self.view layoutIfNeeded];
         [self.insuranceView layoutIfNeeded];
         [self createTextViews:textViews container:self.insuranceView];
+        
+        if (response.selectorItems && response.selectorTitle) {
+            [self createItemSelector:response];
+            noResponse = NO;
+        }
+        
+        if (noResponse) {
+            self.continueButton.hidden = NO;
+            self.insuranceView.hidden = YES;
+            self.noInsuranceButton.hidden = YES;
+            self.addInuranceButton.hidden = YES;
+        }
         
     } else {
         self.continueButton.hidden = NO;
         self.insuranceView.hidden = YES;
         self.noInsuranceButton.hidden = YES;
         self.addInuranceButton.hidden = YES;
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (!self.insurance) {
         [self.expandExtrasButton openView];
     }
 }
@@ -248,7 +271,85 @@
     
     //update container height
     self.insuranceViewHeight.constant = containerHeight;
+}
+
+- (void)createItemSelector:(CTInsurance *)insurance
+{
+    if (self.itemSelectButton) {
+        [self.itemSelectButton removeFromSuperview];
+    }
     
+    _itemSelectButton = [[CTButton alloc] init];
+    
+    [self.itemSelectButton addTarget:self action:@selector(presentPicker:) forControlEvents:UIControlEventTouchUpInside];
+    
+
+    if (self.insuranceItem) {
+        [self.itemSelectButton setTitle:self.insuranceItem.name forState:UIControlStateNormal];
+    } else {
+        [self.itemSelectButton setTitle:insurance.selectorTitle forState:UIControlStateNormal];
+    }
+    
+    [self.insuranceView addSubview:self.itemSelectButton];
+    self.itemSelectButton.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    if (textViews.count == 0) {
+        //no insurance text, what do we do?
+        return;
+    }
+    
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.itemSelectButton
+                                                                     attribute:NSLayoutAttributeTop
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:textViews.lastObject
+                                                                     attribute:NSLayoutAttributeBottom
+                                                                    multiplier:1.0
+                                                                      constant:10];
+
+    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.itemSelectButton
+                                                                        attribute:NSLayoutAttributeHeight
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:nil
+                                                                        attribute:NSLayoutAttributeNotAnAttribute
+                                                                       multiplier:1.0
+                                                                         constant:60];
+
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.itemSelectButton
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:self.insuranceView
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                     multiplier:1.0
+                                                                       constant:8];
+    
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.itemSelectButton
+                                                                       attribute:NSLayoutAttributeRight
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.insuranceView
+                                                                       attribute:NSLayoutAttributeRight
+                                                                      multiplier:1.0
+                                                                        constant:-8];
+    [self.insuranceView addConstraints:@[topConstraint,
+                                leftConstraint,
+                                rightConstraint,
+                                heightConstraint]];
+    
+    self.insuranceViewHeight.constant = self.insuranceViewHeight.constant + 70;
+    
+    needsSelectedItem = YES;
+}
+
+- (void)presentPicker:(id)sender
+{
+    if (!self.pickerView) {
+        _pickerView = [[CTPickerView alloc] initWithFrame:CGRectZero];
+        self.pickerView.pickerDelegate = self;
+    }
+    if (!self.pickerView.isVisible) {
+        [self.pickerView presentInView:self.view data:self.insurance.selectorItems];
+    } else {
+        [self.pickerView removeFromView];
+    }
 }
 
 - (CGFloat)textViewHeightForAttributedText:(NSAttributedString *)text andWidth:(CGFloat)width
@@ -257,15 +358,6 @@
     [textView setAttributedText:text];
     CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
     return size.height;
-}
-
--(CGSize)sizeOfText:(NSString *)textToMesure widthOfTextView:(CGFloat)width withFont:(UIFont*)font
-{
-    CGRect ts = [textToMesure boundingRectWithSize:CGSizeMake(width, FLT_MAX)
-                                           options:NSStringDrawingUsesLineFragmentOrigin
-                                        attributes:@{NSFontAttributeName:font}
-                                           context:nil];
-    return ts.size;
 }
 
 - (NSAttributedString *)scanForLinks:(NSAttributedString *)attrText response:(CTInsurance *)response
@@ -366,6 +458,11 @@
 
 - (IBAction)addInsurance:(id)sender
 {
+    if (needsSelectedItem && !self.insuranceItem) {
+        [self.itemSelectButton shake];
+        return;
+    }
+    
     [self pushToStepFive:self.selectedVehicle.extraEquipment insuranceSelected:YES];
 }
 
@@ -376,6 +473,12 @@
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)pickerViewDidSelectItem:(InsuranceSelectorItem *)item
+{
+    [self setInsuranceItem:item];
+    [self.itemSelectButton setTitle:item.name forState:UIControlStateNormal];
 }
 
 @end

@@ -56,9 +56,17 @@
     self.textViewHeight.constant = textViewSize.height;
     self.textView.scrollEnabled = NO;
     
-    if (self.optionalExtrasLoaded) {
-        self.optionalExtrasLoaded(50);
-    }
+//    if (self.optionalExtrasLoaded) {
+//        self.optionalExtrasLoaded(50);
+//    }
+}
+
+- (CGFloat)textViewHeightForText:(NSString *)text andWidth:(CGFloat)width
+{
+    UITextView *textView = [[UITextView alloc] init];
+    [textView setText:text];
+    CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
+    return size.height;
 }
 
 - (void)setExtras:(NSArray<CTExtraEquipment *> *)extras
@@ -79,9 +87,9 @@
 
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     
     [self.tableView reloadData];
     self.tableViewHeight.constant = self.tableView.contentSize.height;

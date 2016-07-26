@@ -16,4 +16,6 @@ IB_DESIGNABLE
 
 + (void)forceLinkerLoad_;
 
+- (void)shake;
+
 @end
