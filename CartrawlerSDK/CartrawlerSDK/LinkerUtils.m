@@ -50,9 +50,7 @@
 #import "TermsDetailViewController.h"
 #import "TabButton.h"
 #import "ExtrasViewController.h"
-#import "ExpandExtrasButton.h"
 #import "OptionalExtraTableViewCell.h"
-#import "OptionalExtrasViewController.h"
 #import "PaymentSummaryViewController.h"
 #import "PaymentSummaryTableViewCell.h"
 #import "BookingSummaryViewController.h"
@@ -70,6 +68,7 @@
 #import "SettingsSelectionViewController.h"
 #import "CTTextView.h"
 #import "CTPickerView.h"
+#import "OptionalExtrasView.h"
 
 @implementation LinkerUtils
 
@@ -117,9 +116,7 @@
     [TermsDetailViewController forceLinkerLoad_];
     [TabButton forceLinkerLoad_];
     [ExtrasViewController forceLinkerLoad_];
-    [ExpandExtrasButton forceLinkerLoad_];
     [OptionalExtraTableViewCell forceLinkerLoad_];
-    [OptionalExtrasViewController forceLinkerLoad_];
     [PaymentSummaryViewController forceLinkerLoad_];
     [PaymentSummaryTableViewCell forceLinkerLoad_];
     [BookingSummaryViewController forceLinkerLoad_];
@@ -137,6 +134,7 @@
     [SettingsViewController forceLinkerLoad_];
     [CTTextView forceLinkerLoad_];
     [CTPickerView forceLinkerLoad_];
+    [OptionalExtrasView forceLinkerLoad_];
 
 }
 

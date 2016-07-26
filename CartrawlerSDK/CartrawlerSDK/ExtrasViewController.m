@@ -10,7 +10,7 @@
 #import "CTLabel.h"
 #import "HTMLParser.h"
 #import "CTAppearance.h"
-#import "ExpandExtrasButton.h"
+#import "OptionalExtrasView.h"
 #import "CTButton.h"
 #import "CTTextView.h"
 #import "CTPickerView.h"
@@ -19,7 +19,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *insuranceView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *insuranceViewHeight;
-@property (weak, nonatomic) IBOutlet ExpandExtrasButton *expandExtrasButton;
+@property (weak, nonatomic) IBOutlet OptionalExtrasView *optionalExtrasView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet CTButton *continueButton;
@@ -64,9 +64,8 @@
     self.insuranceView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.insuranceView.layer.masksToBounds = YES;
     
-    [self.expandExtrasButton setExtras:self.selectedVehicle.extraEquipment];
-    [self.expandExtrasButton refreshView];
-    
+    [self.optionalExtrasView setExtras:self.selectedVehicle.extraEquipment];
+    [self.optionalExtrasView setInitialFrame:self.view.frame];
     [self setupView:self.insurance];
 }
 
@@ -82,6 +81,9 @@
     [self.view layoutIfNeeded];
     if (response)
     {
+        //[self.optionalExtrasView open:NO];
+        [self.optionalExtrasView close];
+        
         self.insuranceView.hidden = NO;
         self.noInsuranceButton.hidden = NO;
         self.addInuranceButton.hidden = NO;
@@ -158,6 +160,8 @@
         }
         
         if (noResponse) {
+            [self.optionalExtrasView open:YES];
+            self.insuranceViewHeight.constant = 20;
             self.continueButton.hidden = NO;
             self.insuranceView.hidden = YES;
             self.noInsuranceButton.hidden = YES;
@@ -165,18 +169,12 @@
         }
         
     } else {
+        [self.optionalExtrasView open:YES];
+        self.insuranceViewHeight.constant = 20;
         self.continueButton.hidden = NO;
         self.insuranceView.hidden = YES;
         self.noInsuranceButton.hidden = YES;
         self.addInuranceButton.hidden = YES;
-    }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    if (!self.insurance) {
-        [self.expandExtrasButton openView];
     }
 }
 
