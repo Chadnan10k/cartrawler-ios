@@ -7,9 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "CTSearch.h"
+
+#import "StepOneViewController.h"
+#import "StepTwoViewController.h"
+#import "StepThreeViewController.h"
+#import "StepFourViewController.h"
+#import "StepFiveViewController.h"
+#import "StepSixViewController.h"
+#import "StepSevenViewController.h"
 
 @interface CTViewManager : NSObject
 
-- (id)init;
+@property (nonatomic, strong) CTSearch *search;
+
++ (instancetype)sharedManager;
 
 @end

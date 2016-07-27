@@ -95,7 +95,6 @@
 		454AD7C41D2AAD14005C6CFF /* IncludedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7C21D2AAD14005C6CFF /* IncludedCollectionViewCell.m */; };
 		454AD7C71D2AB8E7005C6CFF /* CTDesignableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7C51D2AB8E7005C6CFF /* CTDesignableView.h */; };
 		454AD7C81D2AB8E7005C6CFF /* CTDesignableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7C61D2AB8E7005C6CFF /* CTDesignableView.m */; };
-		4557FE411D3636400026F038 /* CTSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 4557FE3F1D3636400026F038 /* CTSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4557FE421D3636400026F038 /* CTSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4557FE401D3636400026F038 /* CTSearch.m */; };
 		45645D8B1D2D4A310075A3D2 /* HTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645D891D2D4A310075A3D2 /* HTMLParser.h */; };
 		45645D8C1D2D4A310075A3D2 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645D8A1D2D4A310075A3D2 /* HTMLParser.m */; };
@@ -196,6 +195,8 @@
 		45E942EC1D1303C500ACF604 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E942EB1D1303C500ACF604 /* UIKit.framework */; };
 		45E942EE1D13040800ACF604 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E942ED1D13040800ACF604 /* Foundation.framework */; };
 		45E942F11D13060E00ACF604 /* CartrawlerSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45EC250B1D48E04700A3C09D /* CTSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC25091D48E04700A3C09D /* CTSegmentedControl.h */; };
+		45EC250C1D48E04700A3C09D /* CTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC250A1D48E04700A3C09D /* CTSegmentedControl.m */; };
 		45EE26DF1D37A79900A1FB51 /* GroundTransportViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EE26DD1D37A79900A1FB51 /* GroundTransportViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45EE26E01D37A79900A1FB51 /* GroundTransportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EE26DE1D37A79900A1FB51 /* GroundTransportViewController.m */; };
 		45F473581D3644E000DF548B /* StepSevenViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F473561D3644E000DF548B /* StepSevenViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -415,6 +416,8 @@
 		45E942E81D1302FF00ACF604 /* NSStringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringUtils.m; sourceTree = "<group>"; };
 		45E942EB1D1303C500ACF604 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		45E942ED1D13040800ACF604 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		45EC25091D48E04700A3C09D /* CTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSegmentedControl.h; sourceTree = "<group>"; };
+		45EC250A1D48E04700A3C09D /* CTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSegmentedControl.m; sourceTree = "<group>"; };
 		45EE26DA1D37924000A1FB51 /* GroundTransport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GroundTransport.storyboard; sourceTree = "<group>"; };
 		45EE26DD1D37A79900A1FB51 /* GroundTransportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundTransportViewController.h; sourceTree = "<group>"; };
 		45EE26DE1D37A79900A1FB51 /* GroundTransportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundTransportViewController.m; sourceTree = "<group>"; };
@@ -756,6 +759,8 @@
 		45E942891D13003D00ACF604 /* Base View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				45C488C51D4793860044612C /* CTViewManager.h */,
+				45C488C61D4793860044612C /* CTViewManager.m */,
 				45E9428A1D13004F00ACF604 /* StepOneViewController.h */,
 				45E9428B1D13004F00ACF604 /* StepOneViewController.m */,
 				45E9428C1D13004F00ACF604 /* StepTwoViewController.h */,
@@ -770,8 +775,6 @@
 				45819FAF1D3520D5001AE0F5 /* StepSixViewController.m */,
 				45F473561D3644E000DF548B /* StepSevenViewController.h */,
 				45F473571D3644E000DF548B /* StepSevenViewController.m */,
-				45C488C51D4793860044612C /* CTViewManager.h */,
-				45C488C61D4793860044612C /* CTViewManager.m */,
 			);
 			name = "Base View Controllers";
 			sourceTree = "<group>";
@@ -923,6 +926,7 @@
 		45E942D71D1302B800ACF604 /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
+				45EC25081D48E02E00A3C09D /* UISegmentedControl */,
 				45137C811D476A9800089928 /* UIPickerView */,
 				4530DA301D4665FA00CF3186 /* UITextView */,
 				4511E52B1D17F49F000ED6B0 /* UIView */,
@@ -981,6 +985,15 @@
 			name = UITextField;
 			sourceTree = "<group>";
 		};
+		45EC25081D48E02E00A3C09D /* UISegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				45EC25091D48E04700A3C09D /* CTSegmentedControl.h */,
+				45EC250A1D48E04700A3C09D /* CTSegmentedControl.m */,
+			);
+			name = UISegmentedControl;
+			sourceTree = "<group>";
+		};
 		45EE26DC1D37A77900A1FB51 /* Ground Transport */ = {
 			isa = PBXGroup;
 			children = (
@@ -1025,7 +1038,6 @@
 				454AD7911D26C6B7005C6CFF /* StepThreeViewController.h in Headers */,
 				45819FB01D3520D5001AE0F5 /* StepSixViewController.h in Headers */,
 				450F9D351D3929E5002C6F6B /* SupplierRatingsViewController.h in Headers */,
-				4557FE411D3636400026F038 /* CTSearch.h in Headers */,
 				4511E5241D17DFA4000ED6B0 /* CTAppearance.h in Headers */,
 				45EE26DF1D37A79900A1FB51 /* GroundTransportViewController.h in Headers */,
 				45F473581D3644E000DF548B /* StepSevenViewController.h in Headers */,
@@ -1078,6 +1090,7 @@
 				454AD7B81D2A69D2005C6CFF /* ExpandingInfoView.h in Headers */,
 				45F4735C1D36451F00DF548B /* AddressDetailsViewController.h in Headers */,
 				45361BEB1D2BA1BA00295124 /* UnderLinedButton.h in Headers */,
+				45EC250B1D48E04700A3C09D /* CTSegmentedControl.h in Headers */,
 				4509B47B1D37ED8100259255 /* GTServiceTableViewCell.h in Headers */,
 				45AC54701D130A1600805268 /* CTMiddleDateCell.h in Headers */,
 				450F9D391D3CE08E002C6F6B /* SettingsSelectionViewController.h in Headers */,
@@ -1254,6 +1267,7 @@
 			files = (
 				45E942B11D1301C600ACF604 /* CTCalendarTableViewCell.m in Sources */,
 				454AD7B91D2A69D2005C6CFF /* ExpandingInfoView.m in Sources */,
+				45EC250C1D48E04700A3C09D /* CTSegmentedControl.m in Sources */,
 				45645DF61D33E70B0075A3D2 /* PaymentSummaryViewController.m in Sources */,
 				452521701D353C4200B47DE6 /* DriverDetailsViewController.m in Sources */,
 				45E9428F1D13004F00ACF604 /* StepTwoViewController.m in Sources */,

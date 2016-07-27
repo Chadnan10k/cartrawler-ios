@@ -32,6 +32,10 @@
     
     [self setAttributedTitle:title forState:UIControlStateNormal];
     
+    self.titleLabel.minimumScaleFactor = 0.5f;
+    self.titleLabel.numberOfLines = 1;
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
+    
     return self;
 }
 

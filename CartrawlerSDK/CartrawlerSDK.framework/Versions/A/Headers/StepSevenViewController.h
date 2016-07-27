@@ -13,7 +13,6 @@
 
 typedef void (^StepOneCompletion)(BOOL success, NSString *errorMessage);
 
-
 @property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 @property (nonatomic, strong) CTVehicle *selectedVehicle;
 @property (nonatomic, strong) CTMatchedLocation *pickupLocation;

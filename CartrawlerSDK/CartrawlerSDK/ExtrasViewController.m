@@ -46,6 +46,8 @@
 {
     [super viewWillAppear:animated];
     
+    needsSelectedItem = NO;
+    
     if (self.itemSelectButton) {
         [self.itemSelectButton removeFromSuperview];
     }
@@ -64,8 +66,14 @@
     self.insuranceView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.insuranceView.layer.masksToBounds = YES;
     
-    [self.optionalExtrasView setExtras:self.selectedVehicle.extraEquipment];
-    [self.optionalExtrasView setInitialFrame:self.view.frame];
+    if (self.selectedVehicle.extraEquipment.count > 0) {
+        [self.optionalExtrasView hideView:NO];
+        [self.optionalExtrasView setExtras:self.selectedVehicle.extraEquipment];
+        [self.optionalExtrasView setInitialFrame:self.view.frame];
+    } else {
+        [self.optionalExtrasView hideView:YES];
+    }
+    
     [self setupView:self.insurance];
 }
 
@@ -81,7 +89,7 @@
     [self.view layoutIfNeeded];
     if (response)
     {
-        //[self.optionalExtrasView open:NO];
+        [self.optionalExtrasView hideExpandbutton:NO];
         [self.optionalExtrasView close];
         
         self.insuranceView.hidden = NO;
@@ -163,6 +171,7 @@
             [self.optionalExtrasView open:YES];
             self.insuranceViewHeight.constant = 20;
             self.continueButton.hidden = NO;
+            self.insuranceViewSpace.constant = -20;
             self.insuranceView.hidden = YES;
             self.noInsuranceButton.hidden = YES;
             self.addInuranceButton.hidden = YES;
@@ -172,6 +181,7 @@
         [self.optionalExtrasView open:YES];
         self.insuranceViewHeight.constant = 20;
         self.continueButton.hidden = NO;
+        self.insuranceViewSpace.constant = -20;
         self.insuranceView.hidden = YES;
         self.noInsuranceButton.hidden = YES;
         self.addInuranceButton.hidden = YES;

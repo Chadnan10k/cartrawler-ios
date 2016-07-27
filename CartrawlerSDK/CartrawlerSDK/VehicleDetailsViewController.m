@@ -16,6 +16,7 @@
 #import "SupplierRatingsViewController.h"
 #import "CTSDKSettings.h"
 #import "CTButton.h"
+#import "CTSegmentedControl.h"
 
 @interface VehicleDetailsViewController ()
 
@@ -26,7 +27,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *vehicleDetailsHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *vendorRatingHeightConstraint;
 @property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *tabSelection;
+@property (weak, nonatomic) IBOutlet CTSegmentedControl *tabSelection;
 @property (weak, nonatomic) VehicleDetailsView *vehicleDetailView;
 @property (weak, nonatomic) SupplierRatingsViewController *supplierRatingView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -48,12 +49,20 @@
 {
     [super viewWillAppear:animated];
     
+    UIFont *font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
+                                                           forKey:NSFontAttributeName];
+    [self.tabSelection setTitleTextAttributes:attributes
+                                     forState:UIControlStateNormal];
+    
     [self detailsTapped];
     
     self.continueButton.enabled = YES;
     
     [self.scrollView setContentOffset:
      CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
+    
+    self.tabSelection.selectedSegmentIndex = 0;
     
     if (self.vehicleDetailView) {
         [self.vehicleDetailView setData:self.selectedVehicle
@@ -71,7 +80,6 @@
         if (self.supplierRatingView) {
             [self.supplierRatingView setVendor:self.selectedVehicle.vendor];
             [self.supplierRatingView setupView];
-            
         }
     } else {
         [self.tabSelection removeSegmentAtIndex:1 animated:NO];

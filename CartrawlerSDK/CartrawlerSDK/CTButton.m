@@ -29,6 +29,10 @@
     
     self.layer.cornerRadius = [CTAppearance instance].buttonCornerRadius;
     self.layer.masksToBounds = YES;
+    
+    self.titleLabel.minimumScaleFactor = 0.5f;
+    self.titleLabel.numberOfLines = 1;
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
     return self;
 }
 
@@ -47,6 +51,10 @@
     self.layer.cornerRadius = [CTAppearance instance].buttonCornerRadius;
     self.layer.masksToBounds = YES;
     
+    self.titleLabel.minimumScaleFactor = 0.5f;
+    self.titleLabel.numberOfLines = 1;
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
+    
     return self;
 }
 
@@ -55,6 +63,10 @@
     [super awakeFromNib];
     self.backgroundColor = self.overrideBackgroundColor;
     [self setTitleColor:self.overrideTextColor forState:UIControlStateNormal];
+    
+    self.titleLabel.minimumScaleFactor = 0.5f;
+    self.titleLabel.numberOfLines = 1;
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)shake

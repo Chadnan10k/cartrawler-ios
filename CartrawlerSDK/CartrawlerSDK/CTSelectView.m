@@ -120,6 +120,8 @@
     view.layer.cornerRadius = 5;
     view.layer.masksToBounds = YES;
     
+    self.textField.adjustsFontSizeToFitWidth = YES;
+    
     return self;
 }
 

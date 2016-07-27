@@ -8,13 +8,21 @@
 
 #import "CTViewManager.h"
 
+@interface CTViewManager()
+
+@end
+
 @implementation CTViewManager
 
-- (id)init
++ (instancetype)sharedManager
 {
-    self = [super init];
-    
-    return self;
+    static dispatch_once_t once;
+    static id sharedManager;
+    dispatch_once(&once, ^{
+        sharedManager = [[self alloc] init];
+    });
+    return sharedManager;
 }
+
 
 @end

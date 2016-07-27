@@ -30,7 +30,7 @@
                                             <action selector="back:" destination="svs-v7-rRf" eventType="touchUpInside" id="ouP-PF-zeY"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add extras" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clN-oO-7uF">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add extras" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clN-oO-7uF" customClass="CTLabel">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="KEL-Fm-tkn"/>
                                         </constraints>

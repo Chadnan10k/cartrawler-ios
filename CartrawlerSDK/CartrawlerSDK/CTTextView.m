@@ -7,12 +7,31 @@
 //
 
 #import "CTTextView.h"
+#import "CTAppearance.h"
 
 @implementation CTTextView
 
 + (void)forceLinkerLoad_
 {
     
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];    
+    
+    self.font = [UIFont fontWithName:[CTAppearance instance].fontName size:14];
+    
+    return self;
+}
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    
+    self.font = [UIFont fontWithName:[CTAppearance instance].fontName size:14];
+
+    return self;
 }
 
 @end

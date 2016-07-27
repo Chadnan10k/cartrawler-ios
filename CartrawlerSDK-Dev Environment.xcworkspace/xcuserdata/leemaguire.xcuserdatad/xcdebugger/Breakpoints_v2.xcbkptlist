@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CartrawlerSDK/CartrawlerSDK/ExtrasViewController.m"
-            timestampString = "491241728.975195"
+            timestampString = "491311676.662823"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "390"
-            endingLineNumber = "390"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
             landmarkName = "-scanForLinks:response:"
             landmarkType = "7">
          </BreakpointContent>
@@ -68,28 +68,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CartrawlerSDK/CartrawlerSDK/ExtrasViewController.m"
-            timestampString = "491241728.975195"
+            timestampString = "491311676.662823"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
             landmarkName = "-scanForLinks:response:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CartrawlerSDK/CartrawlerSDK/ExtrasViewController.m"
-            timestampString = "491241728.975195"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "459"
-            endingLineNumber = "459"
-            landmarkName = "-addInsurance:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,6 +122,38 @@
             startingLineNumber = "102"
             endingLineNumber = "102"
             landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CartrawlerSDK/CartrawlerSDK/ExpandingInfoView.m"
+            timestampString = "491311213.584093"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-sizeViewTapped:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CartrawlerSDK/CartrawlerSDK/CTDesignableView.m"
+            timestampString = "491326414.653888"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-awakeFromNib"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

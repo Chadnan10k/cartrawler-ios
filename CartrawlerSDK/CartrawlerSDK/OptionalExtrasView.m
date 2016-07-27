@@ -28,6 +28,35 @@
     
 }
 
+- (void)hideView:(BOOL)hide
+{
+    NSLayoutConstraint *heightConstraint;
+    for (NSLayoutConstraint *constraint in self.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeHeight) {
+            heightConstraint = constraint;
+            break;
+        }
+    }
+    
+    if (hide) {
+        heightConstraint.constant = 0;
+        self.alpha = 0;
+    } else {
+        heightConstraint.constant = 50;
+        self.alpha = 1;
+    }
+    
+}
+
+- (void)hideExpandbutton:(BOOL)hide
+{
+    if (hide) {
+        self.expandButton.alpha = 0;
+    } else {
+        self.expandButton.alpha = 1;
+    }
+}
+
 - (void)open:(BOOL)hideExpandButton
 {
     
@@ -70,8 +99,8 @@
     
     self.textView.text = extrasTitle;
     
-    CGFloat textViewHeight = [self textViewHeightForText:self.textView.text
-                                                andWidth:self.initialFrame.size.width - 20];
+    CGFloat textViewHeight = [self textViewHeightForAttributedText:self.textView.attributedText
+                                                          andWidth:self.initialFrame.size.width - 20];
     
     NSLayoutConstraint *textviewTopConstraint = [NSLayoutConstraint constraintWithItem:self.textView
                                                                      attribute:NSLayoutAttributeTop
@@ -173,10 +202,10 @@
     }
 }
 
-- (CGFloat)textViewHeightForText:(NSString *)text andWidth:(CGFloat)width
+- (CGFloat)textViewHeightForAttributedText:(NSAttributedString *)text andWidth:(CGFloat)width
 {
     UITextView *textView = [[UITextView alloc] init];
-    [textView setText:text];
+    [textView setAttributedText:text];
     CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
     return size.height;
 }

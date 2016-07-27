@@ -81,27 +81,46 @@
                                          pickupDateTime:self.pickupDate
                                          returnDateTime:self.dropoffDate
                                  destinationCountryCode:self.pickupLocation.codeContext
-                                             completion:^(CTInsurance *response, CTErrorResponse *error) {
-                                                 if (response) {
-                                                     
-                                                     dispatch_async(dispatch_get_main_queue(), ^{
-                                                         if (self.stepTwoCompletion) {
-                                                             self.stepTwoCompletion(YES, nil);
-                                                         }
-                                                         [self.stepFourViewController setInsurance:response];
-                                                         [self.navigationController pushViewController:self.stepFourViewController animated:YES];
-                                                     });
-                                                     
-                                                 } else {
-                                                     dispatch_async(dispatch_get_main_queue(), ^{
-                                                         if (self.stepTwoCompletion) {
-                                                             self.stepTwoCompletion(NO, error.errorMessage);
-                                                         }
-                                                         [self.stepFourViewController setInsurance:nil];
-                                                         [self.navigationController pushViewController:self.stepFourViewController animated:YES];
-                                                     });
-                                                 }
-                                             }];
+                                             completion:
+     ^(CTInsurance *response, CTErrorResponse *error) {
+     if (response) {
+         
+         dispatch_async(dispatch_get_main_queue(), ^{
+             if (self.stepTwoCompletion) {
+                 self.stepTwoCompletion(YES, nil);
+             }
+             [self.stepFourViewController setInsurance:response];
+             [self.navigationController pushViewController:self.stepFourViewController animated:YES];
+         });
+         
+     } else {
+         dispatch_async(dispatch_get_main_queue(), ^{
+             if (self.stepTwoCompletion) {
+                 self.stepTwoCompletion(NO, error.errorMessage);
+             }
+             
+             if (self.selectedVehicle.extraEquipment.count == 0) {
+                 [self.stepFiveViewController setSelectedVehicle:self.selectedVehicle];
+                 [self.stepFiveViewController setPickupDate:self.pickupDate];
+                 [self.stepFiveViewController setDropoffDate:self.dropoffDate];
+                 [self.stepFiveViewController setPickupLocation:self.pickupLocation];
+                 [self.stepFiveViewController setDropoffLocation:self.dropoffLocation];
+                 [self.stepFiveViewController setDriverAge:self.driverAge];
+                 [self.stepFiveViewController setPassengerQty:self.passengerQty];
+                 [self.stepFiveViewController setCartrawlerAPI:self.cartrawlerAPI];
+                 [self.stepFiveViewController setStepSixViewController:self.stepSixViewController];
+                 [self.stepFiveViewController setStepSevenViewController:self.stepSevenViewController];
+                 [self.stepFiveViewController setInsurance:nil];
+                 self.stepFiveViewController.isBuyingInsurance = NO;
+                 [self.navigationController pushViewController:self.stepFiveViewController animated:YES];
+             } else {
+                 [self.stepFourViewController setInsurance:nil];
+                 [self.navigationController pushViewController:self.stepFourViewController animated:YES];
+             }
+             
+         });
+     }
+ }];
 }
 
 @end

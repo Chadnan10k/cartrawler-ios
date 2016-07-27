@@ -44,10 +44,12 @@
 
 - (void)setTitle:(NSString *)title text:(NSString *)text image:(UIImage *)image
 {
+    [self.button setTitle:@"+" forState:UIControlStateNormal];
+
     self.titleLabel.text = title;
     self.imageView.image = image;
     self.textView.text = text;
-    
+    self.textView.scrollEnabled = NO;
     self.textView.alpha = 0;
     self.textView.editable = NO;
     self.textView.font = [UIFont fontWithName:[CTAppearance instance].fontName size:18];
@@ -67,39 +69,43 @@
         [self.button setTitle:@"-" forState:UIControlStateNormal];
 
             
-            [self addSubview:self.textView];
-            
-            self.topConstraint = [NSLayoutConstraint constraintWithItem:self.textView
-                                                             attribute:NSLayoutAttributeTop
-                                                             relatedBy:NSLayoutRelationEqual
-                                                                toItem:self
-                                                             attribute:NSLayoutAttributeTop
-                                                            multiplier:1.0
-                                                              constant:50];
-            
-            self.bottomConstraint = [NSLayoutConstraint constraintWithItem:self.textView
-                                                                attribute:NSLayoutAttributeBottom
-                                                                relatedBy:NSLayoutRelationEqual
-                                                                   toItem:self
-                                                                attribute:NSLayoutAttributeBottom
-                                                               multiplier:1.0
-                                                                 constant:-10];
-            
-            self.leftConstraint = [NSLayoutConstraint constraintWithItem:self.textView
-                                                              attribute:NSLayoutAttributeLeft
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:self
-                                                              attribute:NSLayoutAttributeLeft
-                                                             multiplier:1.0
-                                                               constant:10];
-            
-            self.rightConstraint = [NSLayoutConstraint constraintWithItem:self.textView
-                                                               attribute:NSLayoutAttributeRight
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:self
-                                                               attribute:NSLayoutAttributeRight
-                                                              multiplier:1.0
-                                                                constant:-10];
+        [self addSubview:self.textView];
+        self.textView.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        self.heightConstraint.constant = 60 + [self textViewHeightForAttributedText:self.textView.attributedText
+                                                                           andWidth:self.frame.size.width-20];
+
+        self.topConstraint = [NSLayoutConstraint constraintWithItem:self.textView
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0
+                                                          constant:50];
+        
+        self.bottomConstraint = [NSLayoutConstraint constraintWithItem:self.textView
+                                                            attribute:NSLayoutAttributeBottom
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:self
+                                                            attribute:NSLayoutAttributeBottom
+                                                           multiplier:1.0
+                                                             constant:-10];
+        
+        self.leftConstraint = [NSLayoutConstraint constraintWithItem:self.textView
+                                                          attribute:NSLayoutAttributeLeft
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self
+                                                          attribute:NSLayoutAttributeLeft
+                                                         multiplier:1.0
+                                                           constant:10];
+        
+        self.rightConstraint = [NSLayoutConstraint constraintWithItem:self.textView
+                                                           attribute:NSLayoutAttributeRight
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:self
+                                                           attribute:NSLayoutAttributeRight
+                                                          multiplier:1.0
+                                                            constant:-10];
             [self addConstraints:@[self.topConstraint,
                                    self.bottomConstraint,
                                    self.leftConstraint,
@@ -108,7 +114,6 @@
         [self setNeedsUpdateConstraints];
         [self layoutIfNeeded];
         [self layoutSubviews];
-        self.heightConstraint.constant = 60 + self.textView.contentSize.height;
         self.textView.alpha = 1;
         
         expanded = YES;
@@ -134,5 +139,16 @@
     }
 }
 
+- (void)viewDidLayoutSubviews {
+    [self.textView setContentOffset:CGPointZero animated:NO];
+}
+
+- (CGFloat)textViewHeightForAttributedText:(NSAttributedString *)text andWidth:(CGFloat)width
+{
+    UITextView *textView = [[UITextView alloc] init];
+    [textView setAttributedText:text];
+    CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
+    return size.height;
+}
 
 @end

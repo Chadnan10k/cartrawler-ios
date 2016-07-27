@@ -19,5 +19,8 @@
 
 - (void)open:(BOOL)hideExpandButton;
 - (void)close;
+- (void)hideExpandbutton:(BOOL)hide;
+
+- (void)hideView:(BOOL)hide;
 
 @end

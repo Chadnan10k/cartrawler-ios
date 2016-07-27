@@ -20,8 +20,11 @@
 {
     self = [super initWithFrame:frame];
 
-    //set font from theme file here
-    
+    if (self.useBoldFont) {
+        [self setFont:[UIFont fontWithName:[CTAppearance instance].boldFontName size:self.font.pointSize]];
+    } else {
+        [self setFont:[UIFont fontWithName:[CTAppearance instance].fontName size:self.font.pointSize]];
+    }
     return self;
 }
 
