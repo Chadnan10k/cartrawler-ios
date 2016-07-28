@@ -307,7 +307,8 @@
         
         __weak typeof (self) weakSelf = self;
         
-        [self setStepOneCompletion:^(BOOL success, NSString *errorMessage){
+        self.searchDetailsCompletion = ^(BOOL success, NSString *errorMessage)
+        {
             if (success) {
                 [weakSelf.activityView stopAnimating];
                 button.enabled = YES;
@@ -320,9 +321,9 @@
                     [weakSelf presentAlertWithError:errorMessage];
                 }
             }
-        }];
+        };
         
-        [self pushToStepTwo];
+        [self pushToDestination];
     }
 }
 

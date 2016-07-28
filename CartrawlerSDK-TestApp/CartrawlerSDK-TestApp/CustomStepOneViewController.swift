@@ -8,14 +8,14 @@
 
 import UIKit
 
-class CustomStepOneViewController: StepOneViewController {
+class CustomStepOneViewController: CTSearchDetailsViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view
         
-        pushToStepTwo()
+        pushToDestination()
     }
 
     override func didReceiveMemoryWarning() {

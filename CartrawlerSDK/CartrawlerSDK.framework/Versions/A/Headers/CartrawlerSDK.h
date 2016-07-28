@@ -11,7 +11,7 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "CTAppearance.h"
 
-#import "StepOneViewController.h"
+#import "CTSearchDetailsViewController.h"
 #import "StepTwoViewController.h"
 #import "StepThreeViewController.h"
 #import "StepFourViewController.h"
@@ -61,7 +61,7 @@
  *  You must set all of the properties of the step view controller in order to
  *  push to the next view.
  */
-- (void)overrideStepOneViewController:(StepOneViewController *)viewController;
+- (void)overrideStepOneViewController:(CTSearchDetailsViewController *)viewController;
 - (void)overrideStepTwoViewController:(StepTwoViewController *)viewController;
 - (void)overrideStepThreeViewController:(StepThreeViewController *)viewController;
 - (void)overrideStepFourViewController:(StepFourViewController *)viewController;

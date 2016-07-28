@@ -94,7 +94,6 @@
         [weakSelf.countryButton setTitle:item.name forState:UIControlStateNormal];
 
     };
-    
 }
 
 @end

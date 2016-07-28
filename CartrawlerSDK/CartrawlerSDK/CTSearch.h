@@ -21,8 +21,8 @@
 @property (nonatomic, strong) NSNumber *driverAge;
 @property (nonatomic, strong) NSNumber *passengerQty;
 @property (nonatomic, strong) CTInsurance *insurance;
+@property (nonatomic, strong) InsuranceSelectorItem *insuranceItem;
 @property (nonatomic) BOOL isBuyingInsurance;
-@property (nonatomic, strong) NSArray<CTExtraEquipment *> *extras;
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *surname;
 @property (nonatomic, strong) NSString *email;

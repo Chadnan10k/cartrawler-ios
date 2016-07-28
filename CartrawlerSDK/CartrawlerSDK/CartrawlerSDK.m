@@ -27,7 +27,7 @@
 
 @interface CartrawlerSDK()
 
-@property (nonatomic, strong) StepOneViewController *stepOneViewController;
+@property (nonatomic, strong) CTSearchDetailsViewController *stepOneViewController;
 @property (nonatomic, strong) StepTwoViewController *stepTwoViewController;
 @property (nonatomic, strong) StepThreeViewController *stepThreeViewController;
 @property (nonatomic, strong) StepFourViewController *stepFourViewController;
@@ -36,6 +36,9 @@
 @property (nonatomic, strong) StepSevenViewController *stepSevenViewController;
 
 @property (nonatomic, strong) GroundTransportViewController *groundTransportViewController;
+
+@property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
+
 
 @end
 
@@ -49,6 +52,15 @@
     
     [LinkerUtils loadFiles];
     [[CTSDKSettings instance] setClientId:requestorID languageCode:languageCode isDebug:isDebug];
+    
+    _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
+                                                     language:[CTSDKSettings instance].languageCode
+                                                        debug:[CTSDKSettings instance].isDebug];
+    
+    if (isDebug) {
+        [self.cartrawlerAPI enableLogging:YES];
+    }
+    
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
 
     return self;
@@ -93,7 +105,7 @@
     
 }
 
-- (void)overrideStepOneViewController:(StepOneViewController *)viewController;
+- (void)overrideStepOneViewController:(CTSearchDetailsViewController *)viewController;
 {
     _stepOneViewController = viewController;
 }
@@ -128,7 +140,7 @@
     _stepSevenViewController = viewController;
 }
 
-- (StepOneViewController *)stepOneViewController_
+- (CTSearchDetailsViewController *)stepOneViewController_
 {
     if (self.stepOneViewController == nil) {
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
@@ -138,7 +150,8 @@
         
         [self.stepOneViewController setDestinationViewController:[self stepTwoViewController_]];
         [self.stepOneViewController setFallBackViewController:nil];
-
+        [self.stepOneViewController setCartrawlerAPI:self.cartrawlerAPI];
+        
         return self.stepOneViewController;
     } else {
         return self.stepOneViewController;
@@ -151,7 +164,14 @@
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
         NSBundle *b = [NSBundle bundleWithPath:bundlePath];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchResultsViewStoryboard bundle:b];
-        return [storyboard instantiateViewControllerWithIdentifier:@"SearchResultsViewController"];
+        _stepTwoViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchResultsViewController"];
+
+        [self.stepTwoViewController setDestinationViewController:[self stepThreeViewController_]];
+        [self.stepTwoViewController setFallBackViewController:nil];
+        [self.stepTwoViewController setCartrawlerAPI:self.cartrawlerAPI];
+
+        return self.stepTwoViewController;
+
     } else {
         return self.stepTwoViewController;
     }
@@ -163,7 +183,13 @@
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
         NSBundle *b = [NSBundle bundleWithPath:bundlePath];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVehicleDetailsViewStoryboard bundle:b];
-        return [storyboard instantiateViewControllerWithIdentifier:@"VehicleDetailsViewController"];
+        _stepThreeViewController = [storyboard instantiateViewControllerWithIdentifier:@"VehicleDetailsViewController"];
+        
+        [self.stepThreeViewController setDestinationViewController:[self stepFourViewController_]];
+        [self.stepThreeViewController setFallBackViewController:[self stepFiveViewController_]];
+        [self.stepThreeViewController setCartrawlerAPI:self.cartrawlerAPI];
+        
+        return self.stepThreeViewController;
     } else {
         return self.stepThreeViewController;
     }
@@ -175,7 +201,16 @@
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
         NSBundle *b = [NSBundle bundleWithPath:bundlePath];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kExtrasViewStoryboard bundle:b];
-        return [storyboard instantiateViewControllerWithIdentifier:@"ExtrasViewController"];
+        
+        _stepFourViewController = [storyboard instantiateViewControllerWithIdentifier:@"ExtrasViewController"];
+        
+        [self.stepFourViewController setDestinationViewController:[self stepFiveViewController_]];
+        [self.stepFourViewController setFallBackViewController:nil];
+        [self.stepFourViewController setCartrawlerAPI:self.cartrawlerAPI];
+        
+        return self.stepFourViewController;
+
+        
     } else {
         return self.stepFourViewController;
     }
@@ -188,7 +223,14 @@
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
         NSBundle *b = [NSBundle bundleWithPath:bundlePath];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSummaryViewStoryboard bundle:b];
-        return [storyboard instantiateViewControllerWithIdentifier:@"PaymentSummaryViewController"];
+        _stepFiveViewController = [storyboard instantiateViewControllerWithIdentifier:@"PaymentSummaryViewController"];
+        
+        [self.stepFiveViewController setDestinationViewController:[self stepSixViewController_]];
+        [self.stepFiveViewController setFallBackViewController:nil];
+        [self.stepFiveViewController setCartrawlerAPI:self.cartrawlerAPI];
+        
+        return self.stepFiveViewController;
+
     } else {
         return self.stepFiveViewController;
     }

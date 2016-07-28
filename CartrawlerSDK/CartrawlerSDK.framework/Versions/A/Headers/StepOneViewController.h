@@ -15,8 +15,6 @@ typedef void (^StepOneCompletion)(BOOL success, NSString *errorMessage);
 
 @property (nonatomic) StepOneCompletion stepOneCompletion;
 
-- (void)pushToStepTwo;
-
 + (void)forceLinkerLoad_;
 
 @end

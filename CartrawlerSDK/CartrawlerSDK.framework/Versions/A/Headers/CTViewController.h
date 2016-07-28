@@ -19,4 +19,6 @@
 
 - (void)refresh;
 
+- (void)pushToDestination;
+
 @end

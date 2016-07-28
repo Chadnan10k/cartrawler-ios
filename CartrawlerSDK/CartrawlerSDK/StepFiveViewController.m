@@ -7,6 +7,7 @@
 //
 
 #import "StepFiveViewController.h"
+#import "CTViewManager.h"
 
 @interface StepFiveViewController ()
 
@@ -14,72 +15,13 @@
 
 @implementation StepFiveViewController
 
-- (void)pushToStepSix
+- (void)pushToDestination
 {
-    if (self.pickupLocation == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SIX AS self.pickupLocation IS NOT SET \n\n");
+    if (![CTViewManager canTransitionToStep:self.destinationViewController search:self.search]) {
         return;
     }
     
-    if (self.dropoffLocation == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SIX AS self.dropoffLocation IS NOT SET \n\n");
-        return;
-    }
-    
-    if (self.pickupDate == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SIX AS self.pickupDate IS NOT SET \n\n");
-        return;
-    }
-    
-    if (self.dropoffDate == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SIX AS self.dropoffDate IS NOT SET \n\n");
-        return;
-    }
-    
-    if (self.driverAge == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SIX AS self.driverAge IS NOT SET \n\n");
-        return;
-    }
-    
-    if (self.cartrawlerAPI == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SIX AS self.cartrawlerAPI IS NOT SET \n\n");
-        return;
-    }
-    
-    if (self.selectedVehicle == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SIX AS self.vehicleAvailability IS NOT SET \n\n");
-        return;
-    }
-    
-    if (self.insurance == nil && self.isBuyingInsurance) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SIX AS self.insurance IS NOT SET \n\n");
-        return;
-    }
-    
-    if (self.extras == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SIX AS self.extras IS NOT SET \n\n");
-        return;
-    }
-    
-    if (self.stepSixViewController == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP SIX AS self.stepSixViewController IS NOT SET \n\n");
-        return;
-    }
-    
-    [self.stepSixViewController setSelectedVehicle:self.selectedVehicle];
-    [self.stepSixViewController setPickupDate:self.pickupDate];
-    [self.stepSixViewController setDropoffDate:self.dropoffDate];
-    [self.stepSixViewController setPickupLocation:self.pickupLocation];
-    [self.stepSixViewController setDropoffLocation:self.dropoffLocation];
-    [self.stepSixViewController setDriverAge:self.driverAge];
-    [self.stepSixViewController setPassengerQty:self.passengerQty];
-    [self.stepSixViewController setCartrawlerAPI:self.cartrawlerAPI];
-    [self.stepSixViewController setInsurance:self.insurance];
-    [self.stepSixViewController setIsBuyingInsurance:self.isBuyingInsurance];
-    [self.stepSixViewController setExtras:self.extras];
-    [self.stepSixViewController setStepSevenViewController:self.stepSevenViewController];
-
-    [self.navigationController pushViewController:self.stepSixViewController animated:YES];
+    [self.navigationController pushViewController:self.destinationViewController animated:YES];
 }
 
 @end

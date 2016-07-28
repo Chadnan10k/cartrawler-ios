@@ -44,28 +44,28 @@
     
     [self.bookingSummaryContainer closeIfOpen];
     
-    [self.bookingSummaryContainer setDataWithVehicle:self.selectedVehicle
-                                          pickupDate:self.pickupDate
-                                         dropoffDate:self.dropoffDate
-                                   isBuyingInsurance:self.isBuyingInsurance];
+    [self.bookingSummaryContainer setDataWithVehicle:self.search.selectedVehicle
+                                          pickupDate:self.search.pickupDate
+                                         dropoffDate:self.search.dropoffDate
+                                   isBuyingInsurance:self.search.isBuyingInsurance];
     
     total = 0;
     _items = [[NSMutableArray alloc] init];
 
-    [self.items addObject:@{@"Normal" : @{@"Name" : @"Car hire", @"Price" : self.selectedVehicle.totalPriceForThisVehicle}}];
+    [self.items addObject:@{@"Normal" : @{@"Name" : @"Car hire", @"Price" : self.search.selectedVehicle.totalPriceForThisVehicle}}];
 
-    if (self.isBuyingInsurance) {
-        [self.items addObject:@{@"Normal" : @{@"Name" : @"Damage Refund Insurance", @"Price" : self.insurance.premiumAmount}}];
-        total += self.insurance.premiumAmount.doubleValue;
+    if (self.search.isBuyingInsurance) {
+        [self.items addObject:@{@"Normal" : @{@"Name" : @"Damage Refund Insurance", @"Price" : self.search.insurance.premiumAmount}}];
+        total += self.search.insurance.premiumAmount.doubleValue;
     }
     
-    for (CTExtraEquipment *extra in self.extras) {
+    for (CTExtraEquipment *extra in self.search.selectedVehicle.extraEquipment) {
         if (extra.qty > 0) {
             [self.items addObject:@{@"Extra" : @{@"Name" : extra.equipDescription, @"Price" : @"Pay at desk"}}];
         }
     }
     
-    total += self.selectedVehicle.totalPriceForThisVehicle.doubleValue;
+    total += self.search.selectedVehicle.totalPriceForThisVehicle.doubleValue;
     
     self.totalLabel.text = [NSNumberUtils numberStringWithCurrencyCode:[NSNumber numberWithDouble:total]];
     
@@ -83,7 +83,7 @@
 }
 
 - (IBAction)pushView:(id)sender {
-    [self pushToStepSix];
+    [self pushToDestination];
 }
 
 #pragma mark TABLE VIEW

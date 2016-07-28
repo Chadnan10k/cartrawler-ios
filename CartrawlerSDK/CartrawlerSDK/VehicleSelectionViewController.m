@@ -34,8 +34,9 @@
 {
     [super viewDidLoad];
     
-    [self.vehicleSelectionView initWithVehicleAvailability:self.search.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {
-       // [self pushToStepThree:vehicle];
+    [self.vehicleSelectionView initWithVehicleAvailability:self.search.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {\
+        self.search.selectedVehicle = vehicle;
+       [self pushToDestination];
     }];
 }
 
@@ -68,7 +69,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             [weakSelf.vehicleSelectionView initWithVehicleAvailability:filteredData completion:^(CTVehicle *vehicle) {
-                //[weakSelf pushToStepThree:vehicle];
+                weakSelf.search.selectedVehicle = vehicle;
+                [weakSelf pushToDestination];
             }];
             
             weakSelf.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)filteredData.count
@@ -76,8 +78,9 @@
         });
     };
     
-    [self.vehicleSelectionView initWithVehicleAvailability:self.search.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {
-       // [self pushToStepThree:vehicle];
+    [weakSelf.vehicleSelectionView initWithVehicleAvailability:self.search.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {
+        weakSelf.search.selectedVehicle = vehicle;
+       [weakSelf pushToDestination];
     }];
 }
 

@@ -44,10 +44,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.summaryContainer closeIfOpen];
-    [self.summaryContainer setDataWithVehicle:self.selectedVehicle
-                                   pickupDate:self.pickupDate
-                                  dropoffDate:self.dropoffDate
-                            isBuyingInsurance:self.isBuyingInsurance];
+    [self.summaryContainer setDataWithVehicle:self.search.selectedVehicle
+                                   pickupDate:self.search.pickupDate
+                                  dropoffDate:self.search.dropoffDate
+                            isBuyingInsurance:self.search.isBuyingInsurance];
     
     [self registerForKeyboardNotifications];
 }
@@ -90,12 +90,12 @@
     
     if (validated) {
         
-        self.addressLine1 = self.addressLine1TextField.text;
-        self.addressLine2 = self.addressLine2TextField.text;
-        self.city = self.cityTextField.text;
-        self.postcode = self.postCodeTextField.text;
-        self.country = self.countryTextField.text;
-        [self pushToStepSeven];
+        self.search.addressLine1 = self.addressLine1TextField.text;
+        self.search.addressLine2 = self.addressLine2TextField.text;
+        self.search.city = self.cityTextField.text;
+        self.search.postcode = self.postCodeTextField.text;
+        self.search.country = self.countryTextField.text;
+        [self pushToDestination];
     }
     
 }
@@ -120,7 +120,7 @@
         
         vc.settingsCompletion = ^(CSVItem *item){
             self.countryTextField.text = item.name;
-            weakSelf.country = item.name;
+            weakSelf.search.country = item.name;
         };
         return NO;
     }

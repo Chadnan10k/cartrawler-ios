@@ -6,11 +6,10 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-#import "StepOneViewController.h"
+#import "CTSearchDetailsViewController.h"
 
-@interface SearchDetailsViewController : StepOneViewController
+@interface SearchDetailsViewController : CTSearchDetailsViewController
 
 + (void)forceLinkerLoad_;
-
 
 @end

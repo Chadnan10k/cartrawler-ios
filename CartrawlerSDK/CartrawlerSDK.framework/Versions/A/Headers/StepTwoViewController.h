@@ -14,6 +14,4 @@
 
 + (void)forceLinkerLoad_;
 
-- (void)pushToStepThree;
-
 @end
