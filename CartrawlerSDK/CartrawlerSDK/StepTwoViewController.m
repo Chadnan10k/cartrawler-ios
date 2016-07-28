@@ -19,30 +19,30 @@
     
 }
 
-- (void)pushToStepThree:(CTVehicle *)vehicle
+- (void)pushToStepThree
 {
     
-    if (self.pickupLocation == nil) {
+    if (self.search.pickupLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP THREE AS self.pickupLocation IS NOT SET \n\n");
         return;
     }
     
-    if (self.dropoffLocation == nil) {
+    if (self.search.dropoffLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP THREE AS self.dropoffLocation IS NOT SET \n\n");
         return;
     }
     
-    if (self.pickupDate == nil) {
+    if (self.search.pickupDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP THREE AS self.pickupDate IS NOT SET \n\n");
         return;
     }
     
-    if (self.dropoffDate == nil) {
+    if (self.search.dropoffDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP THREE AS self.dropoffDate IS NOT SET \n\n");
         return;
     }
     
-    if (self.driverAge == nil) {
+    if (self.search.driverAge == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP THREE AS self.driverAge IS NOT SET \n\n");
         return;
     }
@@ -52,35 +52,12 @@
         return;
     }
     
-    if (self.vehicleAvailability == nil) {
+    if (self.search.vehicleAvailability == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP THREE AS self.vehicleAvailability IS NOT SET \n\n");
         return;
     }
     
-    if (self.stepThreeViewController == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP THREE AS self.stepThreeViewController IS NOT SET \n\n");
-        return;
-    }
-    
-    if (self.stepFourViewController == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP THREE AS self.stepFourViewController IS NOT SET \n\n");
-        return;
-    }
-    
-    [self.stepThreeViewController setSelectedVehicle:vehicle];
-    [self.stepThreeViewController setPickupDate:self.pickupDate];
-    [self.stepThreeViewController setDropoffDate:self.dropoffDate];
-    [self.stepThreeViewController setPickupLocation:self.pickupLocation];
-    [self.stepThreeViewController setDropoffLocation:self.dropoffLocation];
-    [self.stepThreeViewController setDriverAge:self.driverAge];
-    [self.stepThreeViewController setPassengerQty:self.passengerQty];
-    [self.stepThreeViewController setCartrawlerAPI:self.cartrawlerAPI];
-    [self.stepThreeViewController setStepFourViewController:self.stepFourViewController];
-    [self.stepThreeViewController setStepFiveViewController:self.stepFiveViewController];
-    [self.stepThreeViewController setStepSixViewController:self.stepSixViewController];
-    [self.stepThreeViewController setStepSevenViewController:self.stepSevenViewController];
-
-    [self.navigationController pushViewController:self.stepThreeViewController animated:YES];
+    [self.navigationController pushViewController:self.destinationViewController animated:YES];
 }
 
 - (void)refresh

@@ -12,7 +12,7 @@
 
 @interface CTSearch : NSObject
 
-@property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
+@property (nonatomic, strong) CTVehicleAvailability *vehicleAvailability;
 @property (nonatomic, strong) CTVehicle *selectedVehicle;
 @property (nonatomic, strong) CTMatchedLocation *pickupLocation;
 @property (nonatomic, strong) CTMatchedLocation *dropoffLocation;
@@ -33,5 +33,7 @@
 @property (nonatomic, strong) NSString *city;
 @property (nonatomic, strong) NSString *postcode;
 @property (nonatomic, strong) NSString *country;
+
++ (instancetype)instance;
 
 @end

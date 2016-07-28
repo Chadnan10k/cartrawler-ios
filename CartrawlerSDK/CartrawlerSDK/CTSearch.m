@@ -10,4 +10,15 @@
 
 @implementation CTSearch
 
++ (instancetype)instance
+{
+    static CTSearch *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[CTSearch alloc] init];
+    });
+    return sharedInstance;
+}
+
+
 @end

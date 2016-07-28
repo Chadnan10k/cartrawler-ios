@@ -9,19 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "CTSearch.h"
+#import "CTViewController.h"
 
-#import "StepOneViewController.h"
-#import "StepTwoViewController.h"
-#import "StepThreeViewController.h"
-#import "StepFourViewController.h"
-#import "StepFiveViewController.h"
-#import "StepSixViewController.h"
-#import "StepSevenViewController.h"
-
+///Checks whether or not we can push to a certain view
 @interface CTViewManager : NSObject
 
-@property (nonatomic, strong) CTSearch *search;
-
-+ (instancetype)sharedManager;
++ (BOOL)canTransitionToStep:(CTViewController *)step search:(CTSearch *)search;
 
 @end

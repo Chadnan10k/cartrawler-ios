@@ -66,8 +66,8 @@
     
     [self registerForKeyboardNotifications];
     
-    [self setDriverAge:@30];
-    [self setPassengerQty:@3];
+    [self.search setDriverAge:@30];
+    [self.search setPassengerQty:@3];
     
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *initialTimeComp = [gregorianCalendar components:NSHourCalendarUnit
@@ -101,10 +101,10 @@
         
         locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
             [weakSelf.pickupView setTextFieldText:location.name];
-            [weakSelf setPickupLocation:location];
+            [weakSelf.search setPickupLocation:location];
             
             if (weakSelf.isReturningSameLocation) {
-                [weakSelf setDropoffLocation:location];
+                [weakSelf.search setDropoffLocation:location];
             }
         };
     };
@@ -124,7 +124,7 @@
         
         locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
             [weakSelf.dropoffView setTextFieldText:location.name];
-            [weakSelf setDropoffLocation:location];
+            [weakSelf.search setDropoffLocation:location];
         };
     };
 
@@ -179,7 +179,7 @@
     sameLoc.viewTapped = ^(BOOL selection) {
         if (selection) {
             _isReturningSameLocation = NO;
-            [weakSelf setDropoffLocation:self.pickupLocation];
+            [weakSelf.search setDropoffLocation:self.search.pickupLocation];
             self.dropoffLocTopConstraint.constant = 15;
             [UIView animateWithDuration:0.3 animations:^{
                 self.dropoffContainer.alpha = 0;
@@ -187,7 +187,7 @@
             }];
         } else {
             _isReturningSameLocation = YES;
-            [weakSelf setDropoffLocation:nil];
+            [weakSelf.search setDropoffLocation:nil];
             [weakSelf.dropoffView setTextFieldText:@""];
             self.dropoffLocTopConstraint.constant = 80;
             [UIView animateWithDuration:0.3 animations:^{
@@ -205,7 +205,7 @@
             
             [weakSelf.view endEditing:YES];
             weakSelf.driverUnderage = NO;
-            weakSelf.driverAge = @30;
+            weakSelf.search.driverAge = @30;
             self.ageTopConstraint.constant = 0;
             [UIView animateWithDuration:0.3 animations:^{
                 self.ageContainer.alpha = 0;
@@ -249,17 +249,17 @@
     
     [self.calendarView setTextFieldText:dateString];
     
-    [self setPickupDate:pickupDate];
-    [self setDropoffDate:dropoffDate];
+    [self.search setPickupDate:pickupDate];
+    [self.search setDropoffDate:dropoffDate];
 }
 
 - (void)combineDates
 {
-    NSDate *puDate = [DateUtils mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.pickupDate];
-    NSDate *doDate = [DateUtils mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.dropoffDate];
+    NSDate *puDate = [DateUtils mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.search.pickupDate];
+    NSDate *doDate = [DateUtils mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.search.dropoffDate];
 
-    [self setPickupDate:puDate];
-    [self setDropoffDate:doDate];
+    [self.search setPickupDate:puDate];
+    [self.search setDropoffDate:doDate];
 }
 
 - (BOOL)validate
@@ -267,27 +267,27 @@
     
     BOOL validated = YES;
     
-    if (self.pickupLocation == nil) {
+    if (self.search.pickupLocation == nil) {
         [self.pickupView shakeAnimation];
         validated = NO;
     }
     
-    if (self.dropoffLocation == nil) {
+    if (self.search.dropoffLocation == nil) {
         [self.dropoffView shakeAnimation];
         validated = NO;
     }
     
-    if (self.pickupDate == nil || self.dropoffDate == nil) {
+    if (self.search.pickupDate == nil || self.search.dropoffDate == nil) {
         [self.calendarView shakeAnimation];
         validated = NO;
     }
     
     if (self.driverUnderage) {
         NSNumberFormatter *d = [NSNumberFormatter new];
-        self.driverAge = [d numberFromString:self.ageContainer.text];
+        self.search.driverAge = [d numberFromString:self.ageContainer.text];
     }
     
-    if (self.driverAge == nil) {
+    if (self.search.driverAge == nil) {
         [self.ageContainer shakeAnimation];
         validated = NO;
     }

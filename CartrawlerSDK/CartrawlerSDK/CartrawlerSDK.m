@@ -11,6 +11,7 @@
 #import "LinkerUtils.h"
 #import "CTSDKSettings.h"
 #import "CTNavigationController.h"
+#import "CTSearch.h"
 
 #import "GroundTransportViewController.h"
 
@@ -62,13 +63,7 @@
 {
     
     _stepOneViewController = [self stepOneViewController_];
-    
-    [self.stepOneViewController setStepTwoViewController:[self stepTwoViewController_]];
-    [self.stepOneViewController setStepThreeViewController:[self stepThreeViewController_]];
-    [self.stepOneViewController setStepFourViewController:[self stepFourViewController_]];
-    [self.stepOneViewController setStepFiveViewController:[self stepFiveViewController_]];
-    [self.stepOneViewController setStepSixViewController:[self stepSixViewController_]];
-    [self.stepOneViewController setStepSevenViewController:[self stepSevenViewController_]];
+    [self.stepOneViewController setSearch:[CTSearch instance]];
     
     CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.stepOneViewController];
 
@@ -139,7 +134,12 @@
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
         NSBundle *b = [NSBundle bundleWithPath:bundlePath];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:b];
-        return [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
+        _stepOneViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
+        
+        [self.stepOneViewController setDestinationViewController:[self stepTwoViewController_]];
+        [self.stepOneViewController setFallBackViewController:nil];
+
+        return self.stepOneViewController;
     } else {
         return self.stepOneViewController;
     }
