@@ -14,6 +14,7 @@
 #import "DateUtils.h"
 #import "CTTimePickerView.h"
 #import "CTTextField.h"
+#import "CTViewManager.h"
 
 #define kSearchViewStoryboard @"StepOne"
 
@@ -383,6 +384,23 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil, nil];
     [alert show];
+}
+
+- (void)pushToDestination
+{
+    [CTViewManager canTransitionToVehicleSelection:self.cartrawlerAPI completion:^(BOOL success, NSString *errorMessage) {
+        if (success && errorMessage == nil) {
+            if (self.searchDetailsCompletion) {
+                self.searchDetailsCompletion(YES, nil);
+            }
+            [self.navigationController pushViewController:self.destinationViewController animated:YES];
+            [self.destinationViewController refresh];
+        } else {
+            if (self.searchDetailsCompletion) {
+                self.searchDetailsCompletion(NO, errorMessage);
+            }
+        }
+    }];
 }
 
 @end

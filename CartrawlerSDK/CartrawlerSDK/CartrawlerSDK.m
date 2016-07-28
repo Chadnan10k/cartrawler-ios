@@ -28,7 +28,7 @@
 @interface CartrawlerSDK()
 
 @property (nonatomic, strong) CTSearchDetailsViewController *stepOneViewController;
-@property (nonatomic, strong) StepTwoViewController *stepTwoViewController;
+@property (nonatomic, strong) VehicleSelectionViewController *stepTwoViewController;
 @property (nonatomic, strong) StepThreeViewController *stepThreeViewController;
 @property (nonatomic, strong) StepFourViewController *stepFourViewController;
 @property (nonatomic, strong) StepFiveViewController *stepFiveViewController;
@@ -110,7 +110,7 @@
     _stepOneViewController = viewController;
 }
 
-- (void)overrideStepTwoViewController:(StepTwoViewController *)viewController;
+- (void)overrideStepTwoViewController:(VehicleSelectionViewController *)viewController;
 {
     _stepTwoViewController = viewController;
 }
@@ -158,7 +158,7 @@
     }
 }
 
-- (StepTwoViewController *)stepTwoViewController_
+- (VehicleSelectionViewController *)stepTwoViewController_
 {
     if (self.stepTwoViewController == nil) {
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];

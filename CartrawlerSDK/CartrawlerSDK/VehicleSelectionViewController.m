@@ -11,6 +11,7 @@
 #import "CTLabel.h"
 #import "DateUtils.h"
 #import "CTFilterViewController.h"
+#import "CTViewManager.h"
 
 @interface VehicleSelectionViewController ()
 
@@ -96,5 +97,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)pushToDestination
+{
+    if (![CTViewManager canTransitionToStep:self.destinationViewController search:self.search])
+    {
+        return;
+    }
+    
+    [self.navigationController pushViewController:self.destinationViewController animated:YES];
+}
+
 
 @end

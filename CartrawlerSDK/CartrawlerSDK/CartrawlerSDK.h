@@ -12,7 +12,7 @@
 #import "CTAppearance.h"
 
 #import "CTSearchDetailsViewController.h"
-#import "StepTwoViewController.h"
+#import "VehicleSelectionViewController.h"
 #import "StepThreeViewController.h"
 #import "StepFourViewController.h"
 #import "StepFiveViewController.h"
@@ -61,8 +61,8 @@
  *  You must set all of the properties of the step view controller in order to
  *  push to the next view.
  */
-- (void)overrideStepOneViewController:(CTSearchDetailsViewController *)viewController;
-- (void)overrideStepTwoViewController:(StepTwoViewController *)viewController;
+- (void)overrideSearchDetailsController:(CTSearchDetailsViewController *)viewController;
+- (void)overrideVehicleSelectionViewController:(VehicleSelectionViewController *)viewController;
 - (void)overrideStepThreeViewController:(StepThreeViewController *)viewController;
 - (void)overrideStepFourViewController:(StepFourViewController *)viewController;
 - (void)overrideStepFiveViewController:(StepFiveViewController *)viewController;

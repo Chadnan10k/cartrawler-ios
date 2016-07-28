@@ -8,7 +8,10 @@
 
 #import "CTViewManager.h"
 #import "CTSearchDetailsViewController.h"
-#import "StepTwoViewController.h"
+#import "CTSearch.h"
+#import "CTSDKSettings.h"
+
+#import "VehicleSelectionViewController.h"
 #import "StepThreeViewController.h"
 #import "StepFourViewController.h"
 #import "StepFiveViewController.h"
@@ -23,10 +26,6 @@
 
 + (BOOL)canTransitionToStep:(CTViewController *)step search:(CTSearch *)search
 {
-    if ([step isKindOfClass:[StepTwoViewController class]]) {
-        return [self validateSearchStep:search];
-    }
-    
     if ([step isKindOfClass:[StepThreeViewController class]]) {
         return [self validateSelectionStep:search];
     }
@@ -50,40 +49,60 @@
     return NO;
 }
 
-+ (BOOL)searchDetailsValidation:(CTSearch *)search;
-{
-    return YES;
-}
-
-+ (BOOL)validateSearchStep:(CTSearch *)search;
++ (void)canTransitionToVehicleSelection:(CartrawlerAPI *)cartrawlerAPI
+                             completion:(VehAvailCompletion)completion
 {
     
-    if (search.pickupLocation == nil) {
+    if ([CTSearch instance].pickupLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP TWO AS self.pickupLocation IS NOT SET \n\n");
-        return NO;
+        completion(NO, @"search.pickupLocation is not set");
+        return;
     }
     
-    if (search.dropoffLocation == nil) {
+    if ([CTSearch instance].dropoffLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP TWO AS self.dropoffLocation IS NOT SET \n\n");
-        return NO;
+        completion(NO, @"search.dropoffLocation is not set");
+        return;
     }
     
-    if (search.pickupDate == nil) {
+    if ([CTSearch instance].pickupDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP TWO AS self.pickupDate IS NOT SET \n\n");
-        return NO;
+        completion(NO, @"search.pickupDate is not set");
+        return;
     }
     
-    if (search.dropoffDate == nil) {
+    if ([CTSearch instance].dropoffDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP TWO AS self.dropoffDate IS NOT SET \n\n");
-        return NO;
+        completion(NO, @"search.dropoffDate is not set");
+        return;
     }
     
-    if (search.driverAge == nil) {
+    if ([CTSearch instance].driverAge == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP TWO AS self.driverAge IS NOT SET \n\n");
-        return NO;
+        completion(NO, @"search.driverAge is not set");
+        return;
     }
     
-    return YES;
+    [cartrawlerAPI requestVehicleAvailabilityForLocation:[CTSearch instance].pickupLocation.code
+                                           returnLocationCode:[CTSearch instance].dropoffLocation.code
+                                          customerCountryCode:[CTSDKSettings instance].homeCountryCode
+                                                 passengerQty:@3
+                                                    driverAge:[CTSearch instance].driverAge
+                                               pickUpDateTime:[CTSearch instance].pickupDate
+                                               returnDateTime:[CTSearch instance].dropoffDate
+                                                 currencyCode:[CTSDKSettings instance].currencyCode
+                                                   completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
+                                                       if (response) {
+                                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                                               [CTSearch instance].vehicleAvailability = response;
+                                                               completion(YES, nil);
+                                                           });
+                                                       } else {
+                                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                                               completion(NO, error.errorMessage);
+                                                           });
+                                                       }
+                                                   }];
 }
 
 + (BOOL)validateSelectionStep:(CTSearch *)search;
