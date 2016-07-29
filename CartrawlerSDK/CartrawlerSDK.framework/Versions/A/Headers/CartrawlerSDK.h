@@ -16,6 +16,13 @@
 
 @interface CartrawlerSDK : NSObject
 
+@property (nonatomic, strong, readonly) CTViewController *searchDetailsViewController;
+@property (nonatomic, strong, readonly) CTViewController *vehicleSelectionViewController;
+@property (nonatomic, strong, readonly) CTViewController *vehicleDetailsViewController;
+@property (nonatomic, strong, readonly) CTViewController *insuranceExtrasViewController;
+@property (nonatomic, strong, readonly) CTViewController *paymentSummaryViewController;
+@property (nonatomic, strong, readonly) CTViewController *driverDetialsViewController;
+
 /**
  *  Initialize the CartrawlerAPI
  *
@@ -44,7 +51,7 @@
 /**
  *  Presents the ground transport engine modally in the designated UIViewController
  *
- *  @param viewController v
+ *  @param viewController
  */
 - (void)presentGroundTransportInViewController:(UIViewController *)viewController;
 
@@ -57,22 +64,79 @@
  *  push to the next view.
  */
 
+/**
+ *  Override the initial Search Details View Controller
+ *
+ *  @param viewController A CTViewController subclass with its viewType set to ViewTypeSearchDetails
+ */
+- (void)overrideSearchDetailsViewController:(CTViewController *)viewController;
 
-- (void)overrideSearchDetailsController:(CTViewController *)viewController;
-
-
+/**
+ *  Override the vehicle selection view controller
+ *
+ *  @param viewController A CTViewController subclass with its viewType set to ViewTypeVehicleSelection
+ */
 - (void)overrideVehicleSelectionViewController:(CTViewController *)viewController;
 
-
+/**
+ *  Override the vehicle details view controller
+ *
+ *  @param viewController A CTViewController subclass with its viewType set to ViewTypeGeneric
+ */
 - (void)overrideVehicleDetailsViewController:(CTViewController *)viewController;
 
-
+/**
+ *  Override the insurance & extras view controller
+ *
+ *  @param viewController A CTViewController subclass with its viewType set to ViewTypeInsurance
+ */
 - (void)overrideInsuranceExtrasViewController:(CTViewController *)viewController;
 
-
+/**
+ *  Override the payment summary view controller
+ *
+ *  @param viewController A CTViewController subclass with its viewType set to ViewTypeGeneric
+ */
 - (void)overridePaymentSummaryViewController:(CTViewController *)viewController;
 
+/**
+ *  Override the driver details view controller
+ *
+ *  @param viewController A CTViewController subclass with its viewType set to ViewTypeDriverDetails
+ */
+- (void)overrideDriverDetialsViewController:(CTViewController *)viewController;
 
-- (void)overrideDriverDetialsController:(CTViewController *)viewController;
+/**
+ *  If you have created every view from scratch you can set them easily by passing them all into an array
+ *  The array MUST however contain these ViewTypes:
+ *
+ *  ViewTypeSearchDetails,
+ *  ViewTypeVehicleSelection,
+ *  ViewTypeInsurance,
+ *  ViewTypeDriverDetails,
+ *  ViewTypePaymentDetails,
+ *
+ *
+ * @param carRentalViews An array of CTViewController's
+ */
+- (void)setCarRentalViewsFromArray:(NSArray <CTViewController *> *)carRentalViews;
+
+/**
+ *  Removes the default vehicle details controller and if the default VehicleDetailsViewController is used its
+ *  fallback view controller will be used to push instead.
+ *
+ */
+- (void)removeVehicleDetailsViewController;
+
+/**
+ *  Removes the default payment summary view and if the default VehicleDetailsViewController is used its
+ *  fallback view controller will be used to push instead.
+ *
+ */
+- (void)removePaymentSummaryViewController;
+
+- (void)rerouteViewController:(CTViewController *)viewController
+                  destination:(CTViewController *)destination
+                     fallback:(CTViewController *)fallback;
 
 @end
