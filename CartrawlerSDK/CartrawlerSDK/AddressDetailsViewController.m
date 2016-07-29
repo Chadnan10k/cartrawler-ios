@@ -10,8 +10,9 @@
 #import "CTTextField.h"
 #import "BookingSummaryButton.h"
 #import "SettingsSelectionViewController.h"
+#import "CTImageCache.h"
 
-@interface AddressDetailsViewController () <UITextFieldDelegate>
+@interface AddressDetailsViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet CTTextField *addressLine1TextField;
 @property (weak, nonatomic) IBOutlet CTTextField *addressLine2TextField;
@@ -180,6 +181,25 @@
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)pushToDestination
+{
+    
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"End of CTSDK demo"
+                                                        message:@"🚗"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil, nil];
+    
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [[CTImageCache sharedInstance] removeAllObjects];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

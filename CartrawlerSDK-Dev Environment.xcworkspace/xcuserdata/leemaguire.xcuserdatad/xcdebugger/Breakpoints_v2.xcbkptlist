@@ -41,11 +41,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CartrawlerSDK/CartrawlerSDK/CTViewManager.m"
-            timestampString = "491482072.824331"
+            timestampString = "491482697.219245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "+canTransitionToInsuranceQuote:completion:"
             landmarkType = "7">
          </BreakpointContent>

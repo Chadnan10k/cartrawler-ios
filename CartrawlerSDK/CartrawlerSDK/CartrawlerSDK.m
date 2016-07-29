@@ -15,24 +15,24 @@
 
 #import "GroundTransportViewController.h"
 
-#define kSearchViewStoryboard @"StepOne"
-#define kSearchResultsViewStoryboard @"StepTwo"
-#define kVehicleDetailsViewStoryboard @"StepThree"
-#define kExtrasViewStoryboard @"StepFour"
-#define kSummaryViewStoryboard @"StepFive"
-#define kDetailsViewStoryboard @"StepSix"
-#define kPaymentViewStoryboard @"StepSeven"
+#define kSearchViewStoryboard           @"StepOne"
+#define kSearchResultsViewStoryboard    @"StepTwo"
+#define kVehicleDetailsViewStoryboard   @"StepThree"
+#define kExtrasViewStoryboard           @"StepFour"
+#define kSummaryViewStoryboard          @"StepFive"
+#define kDetailsViewStoryboard          @"StepSix"
+#define kPaymentViewStoryboard          @"StepSeven"
 
 #define kGTViewStoryboard @"GroundTransport"
 
 @interface CartrawlerSDK()
 
 @property (nonatomic, strong) CTViewController *stepOneViewController;
-@property (nonatomic, strong) VehicleSelectionViewController *stepTwoViewController;
+@property (nonatomic, strong) CTViewController *stepTwoViewController;
 @property (nonatomic, strong) CTViewController *stepThreeViewController;
 @property (nonatomic, strong) CTViewController *stepFourViewController;
-@property (nonatomic, strong) StepFiveViewController *stepFiveViewController;
-@property (nonatomic, strong) StepSixViewController *stepSixViewController;
+@property (nonatomic, strong) CTViewController *stepFiveViewController;
+@property (nonatomic, strong) CTViewController *stepSixViewController;
 @property (nonatomic, strong) StepSevenViewController *stepSevenViewController;
 
 @property (nonatomic, strong) GroundTransportViewController *groundTransportViewController;
@@ -105,32 +105,32 @@
     
 }
 
-- (void)overrideSearchDetailsController:(CTViewController *)viewController;
+- (void)overrideSearchDetailsController:(CTViewController *)viewController
 {
     _stepOneViewController = viewController;
 }
 
-- (void)overrideVehicleSelectionViewController:(VehicleSelectionViewController *)viewController;
+- (void)overrideVehicleSelectionViewController:(CTViewController *)viewController
 {
     _stepTwoViewController = viewController;
 }
 
-- (void)overrideInsuranceViewController:(CTViewController *)viewController
+- (void)overrideVehicleDetailsViewController:(CTViewController *)viewController
 {
     _stepThreeViewController = viewController;
 }
 
-- (void)overrideStepFourViewController:(CTViewController *)viewController
+- (void)overrideInsuranceExtrasViewController:(CTViewController *)viewController
 {
     _stepFourViewController = viewController;
 }
 
-- (void)overrideStepFiveViewController:(StepFiveViewController *)viewController
+- (void)overridePaymentSummaryViewController:(CTViewController *)viewController
 {
     _stepFiveViewController = viewController;
 }
 
-- (void)overrideStepSixViewController:(StepSixViewController *)viewController
+- (void)overrideDriverDetialsController:(CTViewController *)viewController
 {
     _stepSixViewController = viewController;
 }
@@ -159,7 +159,7 @@
     }
 }
 
-- (VehicleSelectionViewController *)stepTwoViewController_
+- (CTViewController *)stepTwoViewController_
 {
     if (self.stepTwoViewController == nil) {
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
@@ -220,7 +220,7 @@
 }
 
 
-- (StepFiveViewController *)stepFiveViewController_
+- (CTViewController *)stepFiveViewController_
 {
     if (self.stepFiveViewController == nil) {
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
@@ -240,7 +240,7 @@
     }
 }
 
-- (StepSixViewController *)stepSixViewController_
+- (CTViewController *)stepSixViewController_
 {
     if (self.stepSixViewController == nil) {
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];

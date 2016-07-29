@@ -12,8 +12,6 @@
 #import "CTAppearance.h"
 
 #import "VehicleSelectionViewController.h"
-#import "StepFiveViewController.h"
-#import "StepSixViewController.h"
 #import "StepSevenViewController.h"
 
 @interface CartrawlerSDK : NSObject
@@ -58,13 +56,23 @@
  *  You must set all of the properties of the step view controller in order to
  *  push to the next view.
  */
-- (void)overrideSearchDetailsController:(CTViewController *)viewController;
-- (void)overrideVehicleSelectionViewController:(VehicleSelectionViewController *)viewController;
-- (void)overrideInsuranceViewController:(CTViewController *)viewController;
-- (void)overrideStepFourViewController:(CTViewController *)viewController;
-- (void)overrideStepFiveViewController:(StepFiveViewController *)viewController;
-- (void)overrideStepSixViewController:(StepSixViewController *)viewController;
-- (void)overrideStepSevenViewController:(StepSevenViewController *)viewController;
 
+
+- (void)overrideSearchDetailsController:(CTViewController *)viewController;
+
+
+- (void)overrideVehicleSelectionViewController:(CTViewController *)viewController;
+
+
+- (void)overrideVehicleDetailsViewController:(CTViewController *)viewController;
+
+
+- (void)overrideInsuranceExtrasViewController:(CTViewController *)viewController;
+
+
+- (void)overridePaymentSummaryViewController:(CTViewController *)viewController;
+
+
+- (void)overrideDriverDetialsController:(CTViewController *)viewController;
 
 @end

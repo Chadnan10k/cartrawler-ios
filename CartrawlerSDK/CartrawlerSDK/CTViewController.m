@@ -30,16 +30,6 @@
     return [CTSearch instance];
 }
 
-//- (ViewType)viewType
-//{
-//    if (!_viewType) {
-//        [NSException raise:@"CTViewController: ViewType not set" format:@"All CTViewController's must have ViewType set"];
-//        return ViewTypeGeneric;
-//    } else {
-//        return _viewType;
-//    }
-//}
-
 - (void)refresh { }
 
 - (void)pushToDestination

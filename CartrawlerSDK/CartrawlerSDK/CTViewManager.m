@@ -12,9 +12,6 @@
 
 #import "VehicleSelectionViewController.h"
 #import "CTViewController.h"
-#import "StepFiveViewController.h"
-#import "StepSixViewController.h"
-#import "StepSevenViewController.h"
 
 @interface CTViewManager()
 
@@ -28,7 +25,8 @@
 {
     
     if (step.viewType == ViewTypeVehicleSelection) {
-        [self canTransitionToVehicleSelection:cartrawlerAPI completion:^(BOOL success, NSString *errorMessage) {
+        [self canTransitionToVehicleSelection:cartrawlerAPI
+                                   completion:^(BOOL success, NSString *errorMessage) {
             if (success) {
                 completion(YES, nil);
                 return;
@@ -37,10 +35,9 @@
                 return;
             }
         }];
-    } else
-    
-    if (step.viewType == ViewTypeInsurance) {
-        [self canTransitionToInsuranceQuote:cartrawlerAPI completion:^(BOOL success, NSString *errorMessage) {
+    } else if (step.viewType == ViewTypeInsurance) {
+        [self canTransitionToInsuranceQuote:cartrawlerAPI
+                                 completion:^(BOOL success, NSString *errorMessage) {
             if (success) {
                 completion(YES, nil);
                 return;
@@ -49,9 +46,7 @@
                 return;
             }
         }];
-    } else
-    
-    if (step.viewType == ViewTypeDriverDetails) {
+    } else if (step.viewType == ViewTypeDriverDetails) {
         if ([self validationForDriverDetails:[CTSearch instance]]) {
             completion(YES, nil);
             return;
@@ -59,9 +54,7 @@
             completion(NO, @"");
             return;
         }
-    } else
-    
-    if (step.viewType == ViewTypePaymentDetails) {
+    } else if (step.viewType == ViewTypePaymentDetails) {
         if ([self validationForPaymentDetails:[CTSearch instance]]) {
             completion(YES, nil);
             return;
@@ -69,9 +62,7 @@
             completion(NO, @"");
             return;
         }
-    } else
-    
-    if (step.viewType == ViewTypeGeneric) {
+    } else if (step.viewType == ViewTypeGeneric) {
         if ([self validateVehicleDetailsStep:[CTSearch instance]]) {
             completion(YES, nil);
             return;

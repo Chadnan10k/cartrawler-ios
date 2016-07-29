@@ -8,7 +8,7 @@
 
 #import <CartrawlerSDK/CartrawlerSDK.h>
 
-@interface AddressDetailsViewController : StepSixViewController
+@interface AddressDetailsViewController : CTViewController
 
 + (void)forceLinkerLoad_;
 
