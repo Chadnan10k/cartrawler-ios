@@ -7,13 +7,11 @@
 //
 
 #import "CTViewManager.h"
-#import "CTSearchDetailsViewController.h"
 #import "CTSearch.h"
 #import "CTSDKSettings.h"
 
 #import "VehicleSelectionViewController.h"
-#import "StepThreeViewController.h"
-#import "StepFourViewController.h"
+#import "CTViewController.h"
 #import "StepFiveViewController.h"
 #import "StepSixViewController.h"
 #import "StepSevenViewController.h"
@@ -24,29 +22,67 @@
 
 @implementation CTViewManager
 
-+ (BOOL)canTransitionToStep:(CTViewController *)step search:(CTSearch *)search
++ (void)canTransitionToStep:(CTViewController *)step
+              cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
+                 completion:(ValidationCompletion)completion;
 {
-    if ([step isKindOfClass:[StepThreeViewController class]]) {
-        return [self validateSelectionStep:search];
+    
+    if (step.viewType == ViewTypeVehicleSelection) {
+        [self canTransitionToVehicleSelection:cartrawlerAPI completion:^(BOOL success, NSString *errorMessage) {
+            if (success) {
+                completion(YES, nil);
+                return;
+            } else {
+                completion(NO, errorMessage);
+                return;
+            }
+        }];
+    } else
+    
+    if (step.viewType == ViewTypeInsurance) {
+        [self canTransitionToInsuranceQuote:cartrawlerAPI completion:^(BOOL success, NSString *errorMessage) {
+            if (success) {
+                completion(YES, nil);
+                return;
+            } else {
+                completion(NO, errorMessage);
+                return;
+            }
+        }];
+    } else
+    
+    if (step.viewType == ViewTypeDriverDetails) {
+        if ([self validationForDriverDetails:[CTSearch instance]]) {
+            completion(YES, nil);
+            return;
+        } else {
+            completion(NO, @"");
+            return;
+        }
+    } else
+    
+    if (step.viewType == ViewTypePaymentDetails) {
+        if ([self validationForPaymentDetails:[CTSearch instance]]) {
+            completion(YES, nil);
+            return;
+        } else {
+            completion(NO, @"");
+            return;
+        }
+    } else
+    
+    if (step.viewType == ViewTypeGeneric) {
+        if ([self validateVehicleDetailsStep:[CTSearch instance]]) {
+            completion(YES, nil);
+            return;
+        } else {
+            completion(NO, @"");
+            return;
+        }
+    } else {
+        completion(NO, @"CartrawlerSDK: Each CTViewController must have viewType set.");
     }
     
-    if ([step isKindOfClass:[StepFourViewController class]]) {
-        return [self validateVehicleDetailsStep:search];
-    }
-    
-    if ([step isKindOfClass:[StepFiveViewController class]]) {
-        return [self validateInsuranceExtrasStop:search];
-    }
-    
-    if ([step isKindOfClass:[StepSixViewController class]]) {
-        return [self validationForDriverDetails:search];
-    }
-    
-    if ([step isKindOfClass:[StepSevenViewController class]]) {
-        return [self validationForPaymentDetails:search];
-    }
-    
-    return NO;
 }
 
 + (void)canTransitionToVehicleSelection:(CartrawlerAPI *)cartrawlerAPI
@@ -182,44 +218,73 @@
     return YES;
 }
 
-+ (BOOL)validateInsuranceExtrasStop:(CTSearch *)search;
++ (void)canTransitionToInsuranceQuote:(CartrawlerAPI *)cartrawlerAPI
+                           completion:(VehAvailCompletion)completion
 {
-    if (search.pickupLocation == nil) {
+    if ([CTSearch instance].pickupLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.pickupLocation IS NOT SET \n\n");
-        return NO;
+        return;
     }
     
-    if (search.dropoffLocation == nil) {
+    if ([CTSearch instance].dropoffLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.dropoffLocation IS NOT SET \n\n");
-        return NO;
+        return;
     }
     
-    if (search.pickupDate == nil) {
+    if ([CTSearch instance].pickupDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.pickupDate IS NOT SET \n\n");
-        return NO;
+        return;
     }
     
-    if (search.dropoffDate == nil) {
+    if ([CTSearch instance].dropoffDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.dropoffDate IS NOT SET \n\n");
-        return NO;
+        return;
     }
     
-    if (search.driverAge == nil) {
+    if ([CTSearch instance].driverAge == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.driverAge IS NOT SET \n\n");
-        return NO;
+        return;
     }
     
-    if (search.selectedVehicle == nil) {
+    if ([CTSearch instance].selectedVehicle == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS self.vehicleAvailability IS NOT SET \n\n");
-        return NO;
+        return;
     }
     
-    if (search.selectedVehicle.extraEquipment == nil) {
+    if ([CTSearch instance].selectedVehicle.extraEquipment == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS extras IS NOT SET \n\n");
-        return NO;
+        return;
     }
-    
-    return YES;
+
+    [cartrawlerAPI requestInsuranceQuoteForVehicle:[CTSDKSettings instance].homeCountryCode
+                                               currency:[CTSDKSettings instance].currencyCode
+                                              totalCost:[NSString stringWithFormat:@"%.02f", [CTSearch instance].selectedVehicle.totalPriceForThisVehicle.doubleValue]
+                                         pickupDateTime:[CTSearch instance].pickupDate
+                                         returnDateTime:[CTSearch instance].dropoffDate
+                                 destinationCountryCode:[CTSearch instance].pickupLocation.codeContext
+                                             completion:
+     ^(CTInsurance *response, CTErrorResponse *error) {
+         if (response) {
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [[CTSearch instance] setInsurance:response];
+                 completion(YES, nil);
+             });
+             
+         } else {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 if ([CTSearch instance].selectedVehicle.extraEquipment.count == 0) {
+                     [CTSearch instance].insurance = nil;
+                     [CTSearch instance].isBuyingInsurance = NO;
+                     completion(NO, @"");
+                 } else {
+                     [CTSearch instance].insurance = nil;
+                     [CTSearch instance].isBuyingInsurance = NO;
+                     completion(YES, nil);
+                 }
+             });
+         }
+     }];
 }
 
 + (BOOL)validationForDriverDetails:(CTSearch *)search

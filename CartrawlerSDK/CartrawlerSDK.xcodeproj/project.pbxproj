@@ -80,8 +80,6 @@
 		454AD7801D25587D005C6CFF /* CTFilterDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD77E1D25587D005C6CFF /* CTFilterDataSource.m */; };
 		454AD78B1D255E1F005C6CFF /* CTFilterTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7891D255E1F005C6CFF /* CTFilterTableViewCell.h */; };
 		454AD78C1D255E1F005C6CFF /* CTFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD78A1D255E1F005C6CFF /* CTFilterTableViewCell.m */; };
-		454AD7911D26C6B7005C6CFF /* StepThreeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD78F1D26C6B7005C6CFF /* StepThreeViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		454AD7921D26C6B7005C6CFF /* StepThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7901D26C6B7005C6CFF /* StepThreeViewController.m */; };
 		454AD7931D26C985005C6CFF /* StepTwo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4511E5491D183C36000ED6B0 /* StepTwo.storyboard */; };
 		454AD7B11D2A6236005C6CFF /* VehicleDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7AF1D2A6236005C6CFF /* VehicleDetailsViewController.h */; };
 		454AD7B21D2A6236005C6CFF /* VehicleDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7B01D2A6236005C6CFF /* VehicleDetailsViewController.m */; };
@@ -126,7 +124,6 @@
 		45AC54631D130A1600805268 /* CTImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942CD1D1302A200ACF604 /* CTImageCache.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC54641D130A1600805268 /* CTPlaceholderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942CF1D1302A200ACF604 /* CTPlaceholderView.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC54651D130A1600805268 /* DateUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942D11D1302A200ACF604 /* DateUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC54661D130A1600805268 /* CTSearchDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E9428A1D13004F00ACF604 /* CTSearchDetailsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45AC54681D130A1600805268 /* CTTimePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942C11D13022100ACF604 /* CTTimePickerView.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC54691D130A1600805268 /* LocationSearchViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942BA1D13020300ACF604 /* LocationSearchViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC546A1D130A1600805268 /* LocationSearchDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942BC1D13020300ACF604 /* LocationSearchDataSource.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -147,24 +144,18 @@
 		45C488CB1D479B020044612C /* OptionalExtrasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C488C91D479B020044612C /* OptionalExtrasView.h */; };
 		45C488CC1D479B020044612C /* OptionalExtrasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C488CA1D479B020044612C /* OptionalExtrasView.m */; };
 		45C488D01D47AF4E0044612C /* OptionalExtraTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C488CD1D479B260044612C /* OptionalExtraTableViewCell.xib */; };
-		45CFC7D41D2CF1BA006E6F83 /* StepFourViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFC7D21D2CF1BA006E6F83 /* StepFourViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45CFC7D51D2CF1BA006E6F83 /* StepFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFC7D31D2CF1BA006E6F83 /* StepFourViewController.m */; };
-		45CFC7D71D2CF386006E6F83 /* StepThreeViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 454AD78F1D26C6B7005C6CFF /* StepThreeViewController.h */; };
-		45CFC7D81D2CF386006E6F83 /* StepFourViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 45CFC7D21D2CF1BA006E6F83 /* StepFourViewController.h */; };
 		45CFC7DD1D2CF822006E6F83 /* ExtrasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFC7DB1D2CF822006E6F83 /* ExtrasViewController.h */; };
 		45CFC7DE1D2CF822006E6F83 /* ExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFC7DC1D2CF822006E6F83 /* ExtrasViewController.m */; };
 		45CFC7DF1D2CF95C006E6F83 /* StepFour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45CFC7D91D2CF4D9006E6F83 /* StepFour.storyboard */; };
 		45CFC7E01D2CF968006E6F83 /* ExtrasViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 45CFC7DB1D2CF822006E6F83 /* ExtrasViewController.h */; };
 		45CFC7E61D2D1E57006E6F83 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CFC7E51D2D1E57006E6F83 /* CartrawlerAPI.framework */; };
 		45D8665D1D13F0E900D19B74 /* StepOne.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45AC547B1D13E47F00805268 /* StepOne.storyboard */; };
-		45D866D31D140F8500D19B74 /* CTSearchDetailsViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 45E9428A1D13004F00ACF604 /* CTSearchDetailsViewController.h */; };
 		45D866D41D140FCC00D19B74 /* SearchDetailsViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 45E9429B1D13012400ACF604 /* SearchDetailsViewController.h */; };
 		45D866D71D141BB100D19B74 /* LinkerUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D866D51D141BB100D19B74 /* LinkerUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45D866D81D141BB100D19B74 /* LinkerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D866D61D141BB100D19B74 /* LinkerUtils.m */; };
 		45D866D91D142CAC00D19B74 /* VehicleTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E942C81D13028600ACF604 /* VehicleTableViewCell_iPhone.xib */; };
 		45D866DA1D142D6400D19B74 /* VehicleTableViewCell.h in Resources */ = {isa = PBXBuildFile; fileRef = 45E942C61D13028600ACF604 /* VehicleTableViewCell.h */; };
 		45E942491D12FF0F00ACF604 /* CartrawlerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */; };
-		45E9428E1D13004F00ACF604 /* CTSearchDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E9428B1D13004F00ACF604 /* CTSearchDetailsViewController.m */; };
 		45E942971D1300ED00ACF604 /* CTVehicleSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942941D1300ED00ACF604 /* CTVehicleSelectionView.m */; };
 		45E942981D1300ED00ACF604 /* CTVehicleSelectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942961D1300ED00ACF604 /* CTVehicleSelectionViewModel.m */; };
 		45E9429D1D13012400ACF604 /* SearchDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E9429C1D13012400ACF604 /* SearchDetailsViewController.m */; };
@@ -308,8 +299,6 @@
 		454AD77E1D25587D005C6CFF /* CTFilterDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterDataSource.m; sourceTree = "<group>"; };
 		454AD7891D255E1F005C6CFF /* CTFilterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterTableViewCell.h; sourceTree = "<group>"; };
 		454AD78A1D255E1F005C6CFF /* CTFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterTableViewCell.m; sourceTree = "<group>"; };
-		454AD78F1D26C6B7005C6CFF /* StepThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepThreeViewController.h; sourceTree = "<group>"; };
-		454AD7901D26C6B7005C6CFF /* StepThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepThreeViewController.m; sourceTree = "<group>"; };
 		454AD7AD1D2A5E7B005C6CFF /* StepThree.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepThree.storyboard; sourceTree = "<group>"; };
 		454AD7AF1D2A6236005C6CFF /* VehicleDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleDetailsViewController.h; sourceTree = "<group>"; };
 		454AD7B01D2A6236005C6CFF /* VehicleDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleDetailsViewController.m; sourceTree = "<group>"; };
@@ -348,8 +337,6 @@
 		45C488C91D479B020044612C /* OptionalExtrasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalExtrasView.h; sourceTree = "<group>"; };
 		45C488CA1D479B020044612C /* OptionalExtrasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalExtrasView.m; sourceTree = "<group>"; };
 		45C488CD1D479B260044612C /* OptionalExtraTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionalExtraTableViewCell.xib; sourceTree = "<group>"; };
-		45CFC7D21D2CF1BA006E6F83 /* StepFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepFourViewController.h; sourceTree = "<group>"; };
-		45CFC7D31D2CF1BA006E6F83 /* StepFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepFourViewController.m; sourceTree = "<group>"; };
 		45CFC7D91D2CF4D9006E6F83 /* StepFour.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepFour.storyboard; sourceTree = "<group>"; };
 		45CFC7DB1D2CF822006E6F83 /* ExtrasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtrasViewController.h; sourceTree = "<group>"; };
 		45CFC7DC1D2CF822006E6F83 /* ExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtrasViewController.m; sourceTree = "<group>"; };
@@ -360,8 +347,6 @@
 		45E942431D12FF0F00ACF604 /* libCartrawlerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCartrawlerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartrawlerSDK.h; sourceTree = "<group>"; };
 		45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartrawlerSDK.m; sourceTree = "<group>"; };
-		45E9428A1D13004F00ACF604 /* CTSearchDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSearchDetailsViewController.h; sourceTree = "<group>"; };
-		45E9428B1D13004F00ACF604 /* CTSearchDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSearchDetailsViewController.m; sourceTree = "<group>"; };
 		45E942931D1300ED00ACF604 /* CTVehicleSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVehicleSelectionView.h; sourceTree = "<group>"; };
 		45E942941D1300ED00ACF604 /* CTVehicleSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleSelectionView.m; sourceTree = "<group>"; };
 		45E942951D1300ED00ACF604 /* CTVehicleSelectionViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVehicleSelectionViewModel.h; sourceTree = "<group>"; };
@@ -760,12 +745,6 @@
 			children = (
 				45C488C51D4793860044612C /* CTViewManager.h */,
 				45C488C61D4793860044612C /* CTViewManager.m */,
-				45E9428A1D13004F00ACF604 /* CTSearchDetailsViewController.h */,
-				45E9428B1D13004F00ACF604 /* CTSearchDetailsViewController.m */,
-				454AD78F1D26C6B7005C6CFF /* StepThreeViewController.h */,
-				454AD7901D26C6B7005C6CFF /* StepThreeViewController.m */,
-				45CFC7D21D2CF1BA006E6F83 /* StepFourViewController.h */,
-				45CFC7D31D2CF1BA006E6F83 /* StepFourViewController.m */,
 				45645DDA1D33D6370075A3D2 /* StepFiveViewController.h */,
 				45645DDB1D33D6370075A3D2 /* StepFiveViewController.m */,
 				45819FAE1D3520D5001AE0F5 /* StepSixViewController.h */,
@@ -1028,13 +1007,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4511E5371D17F766000ED6B0 /* CTNavigationItem.h in Headers */,
-				45AC54661D130A1600805268 /* CTSearchDetailsViewController.h in Headers */,
 				450F9D491D3D00C8002C6F6B /* SettingsViewController.h in Headers */,
 				45CFC7DD1D2CF822006E6F83 /* ExtrasViewController.h in Headers */,
 				45C488C71D4793860044612C /* CTViewManager.h in Headers */,
 				45645DDC1D33D6370075A3D2 /* StepFiveViewController.h in Headers */,
 				45EC250F1D49132B00A3C09D /* CTViewController.h in Headers */,
-				454AD7911D26C6B7005C6CFF /* StepThreeViewController.h in Headers */,
 				45AC54741D130A1600805268 /* VehicleSelectionViewController.h in Headers */,
 				45AC54751D130A1600805268 /* CTVehicleSelectionView.h in Headers */,
 				45819FB01D3520D5001AE0F5 /* StepSixViewController.h in Headers */,
@@ -1043,7 +1020,6 @@
 				45EE26DF1D37A79900A1FB51 /* GroundTransportViewController.h in Headers */,
 				45F473581D3644E000DF548B /* StepSevenViewController.h in Headers */,
 				45E942F11D13060E00ACF604 /* CartrawlerSDK.h in Headers */,
-				45CFC7D41D2CF1BA006E6F83 /* StepFourViewController.h in Headers */,
 				4511E5321D17F6C8000ED6B0 /* CTNavigationBar.h in Headers */,
 				454AD7C31D2AAD14005C6CFF /* IncludedCollectionViewCell.h in Headers */,
 				45AC54681D130A1600805268 /* CTTimePickerView.h in Headers */,
@@ -1201,8 +1177,6 @@
 				45645DDF1D33D8370075A3D2 /* StepFiveViewController.h in Resources */,
 				45CFC7E01D2CF968006E6F83 /* ExtrasViewController.h in Resources */,
 				45CFC7DF1D2CF95C006E6F83 /* StepFour.storyboard in Resources */,
-				45CFC7D71D2CF386006E6F83 /* StepThreeViewController.h in Resources */,
-				45CFC7D81D2CF386006E6F83 /* StepFourViewController.h in Resources */,
 				454AD7BF1D2A7092005C6CFF /* VehicleDetailsViewController.h in Resources */,
 				454AD7BE1D2A7089005C6CFF /* StepThree.storyboard in Resources */,
 				454AD7931D26C985005C6CFF /* StepTwo.storyboard in Resources */,
@@ -1213,7 +1187,6 @@
 				45D866DA1D142D6400D19B74 /* VehicleTableViewCell.h in Resources */,
 				45D866D91D142CAC00D19B74 /* VehicleTableViewCell_iPhone.xib in Resources */,
 				45D866D41D140FCC00D19B74 /* SearchDetailsViewController.h in Resources */,
-				45D866D31D140F8500D19B74 /* CTSearchDetailsViewController.h in Resources */,
 				45645DE11D33DB1A0075A3D2 /* StepFive.storyboard in Resources */,
 				4511E5201D145779000ED6B0 /* Assets.xcassets in Resources */,
 				45D8665D1D13F0E900D19B74 /* StepOne.storyboard in Resources */,
@@ -1289,13 +1262,11 @@
 				454AD7C41D2AAD14005C6CFF /* IncludedCollectionViewCell.m in Sources */,
 				45E942B01D1301C600ACF604 /* CTCalendarView.m in Sources */,
 				45E942E31D1302EF00ACF604 /* CTCheckbox.m in Sources */,
-				45CFC7D51D2CF1BA006E6F83 /* StepFourViewController.m in Sources */,
 				4509B4741D37E72700259255 /* GroundServicesViewController.m in Sources */,
 				45E942491D12FF0F00ACF604 /* CartrawlerSDK.m in Sources */,
 				45E942DF1D1302DA00ACF604 /* CTButton.m in Sources */,
 				45645DDD1D33D6370075A3D2 /* StepFiveViewController.m in Sources */,
 				45E942981D1300ED00ACF604 /* CTVehicleSelectionViewModel.m in Sources */,
-				45E9428E1D13004F00ACF604 /* CTSearchDetailsViewController.m in Sources */,
 				45E942AF1D1301C600ACF604 /* CTCalendarViewController.m in Sources */,
 				45E942DB1D1302CA00ACF604 /* CTLabel.m in Sources */,
 				45E942D51D1302A200ACF604 /* CTPlaceholderView.m in Sources */,
@@ -1342,7 +1313,6 @@
 				4511E5381D17F766000ED6B0 /* CTNavigationItem.m in Sources */,
 				4511E51E1D1450CE000ED6B0 /* CTSDKSettings.m in Sources */,
 				45EC25101D49132B00A3C09D /* CTViewController.m in Sources */,
-				454AD7921D26C6B7005C6CFF /* StepThreeViewController.m in Sources */,
 				45EE26E01D37A79900A1FB51 /* GroundTransportViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

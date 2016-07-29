@@ -42,7 +42,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -223,7 +222,7 @@
     [self.activityView startAnimating];
     
     __weak typeof (self) weakSelf = self;
-    self.stepThreeCompletion = ^(BOOL insuranceSuccess, NSString *errorMessage) {
+    self.dataValidationCompletion = ^(BOOL insuranceSuccess, NSString *errorMessage) {
         [weakSelf.activityView stopAnimating];
     };
     

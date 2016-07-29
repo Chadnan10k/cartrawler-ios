@@ -18,7 +18,6 @@
 #import "CTImageCache.h"
 #import "CTPlaceholderView.h"
 #import "DateUtils.h"
-#import "CTSearchDetailsViewController.h"
 #import "CTTimePickerView.h"
 #import "LocationSearchViewController.h"
 #import "LocationSearchDataSource.h"
@@ -75,7 +74,6 @@
 + (void)loadFiles
 {
     [JVFloatLabeledTextField forceLinkerLoad_];
-    [CTSearchDetailsViewController forceLinkerLoad_];
     [SearchDetailsViewController forceLinkerLoad_];
     [CTButton forceLinkerLoad_];
     [VehicleSelectionViewController forceLinkerLoad_];

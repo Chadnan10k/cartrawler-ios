@@ -6,9 +6,9 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-#import "CTSearchDetailsViewController.h"
+#import "CTViewController.h"
 
-@interface SearchDetailsViewController : CTSearchDetailsViewController
+@interface SearchDetailsViewController : CTViewController
 
 + (void)forceLinkerLoad_;
 

@@ -11,6 +11,21 @@
 
 @interface CTViewController : UIViewController
 
+typedef void (^Completion)(BOOL success, NSString *errorMessage);
+
+typedef enum ViewType : NSUInteger {
+    ViewTypeSearchDetails,
+    ViewTypeVehicleSelection,
+    ViewTypeInsurance,
+    ViewTypeDriverDetails,
+    ViewTypePaymentDetails,
+    ViewTypeGeneric
+} ViewType;
+
+@property (nonatomic) Completion dataValidationCompletion;
+
+@property (nonatomic) ViewType viewType;
+
 @property (nonatomic, strong) CTSearch *search;
 @property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 

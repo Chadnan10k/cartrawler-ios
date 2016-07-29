@@ -14,10 +14,11 @@
 ///Checks whether or not we can push to a certain view
 @interface CTViewManager : NSObject
 
+typedef void (^ValidationCompletion)(BOOL success, NSString *errorMessage);
 typedef void (^VehAvailCompletion)(BOOL success, NSString *errorMessage);
+typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
 
-+ (BOOL)canTransitionToStep:(CTViewController *)step search:(CTSearch *)search;
-
-+ (void)canTransitionToVehicleSelection:(CartrawlerAPI *)cartrawlerAPI
-                             completion:(VehAvailCompletion)completion;
++ (void)canTransitionToStep:(CTViewController *)step
+              cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
+                 completion:(ValidationCompletion)completion;
 @end

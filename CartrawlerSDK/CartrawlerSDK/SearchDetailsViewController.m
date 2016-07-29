@@ -308,7 +308,7 @@
         
         __weak typeof (self) weakSelf = self;
         
-        self.searchDetailsCompletion = ^(BOOL success, NSString *errorMessage)
+        self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage)
         {
             if (success) {
                 [weakSelf.activityView stopAnimating];
@@ -384,23 +384,6 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil, nil];
     [alert show];
-}
-
-- (void)pushToDestination
-{
-    [CTViewManager canTransitionToVehicleSelection:self.cartrawlerAPI completion:^(BOOL success, NSString *errorMessage) {
-        if (success && errorMessage == nil) {
-            if (self.searchDetailsCompletion) {
-                self.searchDetailsCompletion(YES, nil);
-            }
-            [self.navigationController pushViewController:self.destinationViewController animated:YES];
-            [self.destinationViewController refresh];
-        } else {
-            if (self.searchDetailsCompletion) {
-                self.searchDetailsCompletion(NO, errorMessage);
-            }
-        }
-    }];
 }
 
 @end

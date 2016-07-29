@@ -34,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
     [self.vehicleSelectionView initWithVehicleAvailability:self.search.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {\
         self.search.selectedVehicle = vehicle;
        [self pushToDestination];
@@ -97,16 +97,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (void)pushToDestination
-{
-    if (![CTViewManager canTransitionToStep:self.destinationViewController search:self.search])
-    {
-        return;
-    }
-    
-    [self.navigationController pushViewController:self.destinationViewController animated:YES];
-}
-
 
 @end

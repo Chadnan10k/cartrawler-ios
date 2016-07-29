@@ -11,10 +11,6 @@
 
 @interface CTSearchDetailsViewController : CTViewController
 
-typedef void (^SearchDetailsCompletion)(BOOL success, NSString *errorMessage);
-
-@property (nonatomic) SearchDetailsCompletion searchDetailsCompletion;
-
 + (void)forceLinkerLoad_;
 
 @end

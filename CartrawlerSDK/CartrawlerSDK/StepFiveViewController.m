@@ -15,13 +15,4 @@
 
 @implementation StepFiveViewController
 
-- (void)pushToDestination
-{
-    if (![CTViewManager canTransitionToStep:self.destinationViewController search:self.search]) {
-        return;
-    }
-    
-    [self.navigationController pushViewController:self.destinationViewController animated:YES];
-}
-
 @end

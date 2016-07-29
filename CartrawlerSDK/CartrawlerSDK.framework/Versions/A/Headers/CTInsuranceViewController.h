@@ -11,12 +11,7 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "CTViewController.h"
 
-@interface StepThreeViewController : CTViewController
-
-//Used for when the insurance details api call fails or succeeds
-typedef void (^StepThreeCompletion)(BOOL success, NSString *errorMessage);
-
-@property (nonatomic) StepThreeCompletion stepThreeCompletion;
+@interface CTInsuranceViewController : CTViewController
 
 + (void)forceLinkerLoad_;
 

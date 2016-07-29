@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomStepOneViewController: CTSearchDetailsViewController {
+class CustomStepOneViewController: CTViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
