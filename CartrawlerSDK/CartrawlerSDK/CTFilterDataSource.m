@@ -16,14 +16,16 @@
 
 @property (nonatomic, strong) NSArray *data;
 @property (nonatomic, strong) NSMutableArray *selectedData;
+@property (nonatomic) FilterDataType filterType;
 
 @end
 
 @implementation CTFilterDataSource
 
-- (id)initWithData:(NSArray *)data selectedData:(NSArray *)selectedData
+- (id)initWithData:(NSArray *)data selectedData:(NSArray *)selectedData filterType:(FilterDataType)filterType;
 {
     self = [super init];
+    _filterType = filterType;
     _selectedData = [[NSMutableArray alloc] initWithArray:selectedData];
     _data = data;
     return self;
@@ -67,12 +69,18 @@
     if ([self.data[indexPath.row] isKindOfClass:[NSString class]]) {
         NSString *str = self.data[indexPath.row];
         [cell setText:str];
-    } else if ([self.data[indexPath.row] isKindOfClass:[CTVendor class]]) {
+    } else if (self.filterType == FilterDataTypeVendor) {
         CTVendor *ven = self.data[indexPath.row];
         [cell setText:ven.name];
-    } else if ([self.data[indexPath.row] isKindOfClass:[CTVehicle class]]) {
+    } else if (self.filterType == FilterDataTypeVehicleSize) {
         CTVehicle *veh = self.data[indexPath.row];
         [cell setText:veh.categoryDescription];
+    } else if (self.filterType == FilterDataTypeFuelPolicy) {
+        CTVehicle *veh = self.data[indexPath.row];
+        [cell setText:veh.fuelPolicyDescription];
+    } else if (self.filterType == FilterDataTypeTransmission) {
+        CTVehicle *veh = self.data[indexPath.row];
+        [cell setText:veh.transmissionType];
     }
     
     return cell;

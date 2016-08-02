@@ -55,33 +55,29 @@ class ViewController: UIViewController {
             
             let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             
-            UIApplication.shared().registerUserNotificationSettings(settings)
-            UIApplication.shared().registerForRemoteNotifications()
+            UIApplication.shared.registerUserNotificationSettings(settings)
+            UIApplication.shared.registerForRemoteNotifications()
         } else {
             // Fallback on earlier versions
         }
         
-        UIApplication.shared().setStatusBarStyle(.lightContent, animated: false)
-//        
-//        CartrawlerSDK.appearance().buttonColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
-//        CartrawlerSDK.appearance().buttonTextColor = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
-//        CartrawlerSDK.appearance().viewBackgroundColor = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
-//        CartrawlerSDK.appearance().locationSelectionBarColor = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
-//        CartrawlerSDK.appearance().navigationBarTint = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
-//        CartrawlerSDK.appearance().calendarHeaderTopSectionColor = UIColor.init(red: 0.0/255, green: 55.0/255.0, blue: 145.0/255.0, alpha: 1)
-//        CartrawlerSDK.appearance().calendarHeaderBottomSectionColor = UIColor.init(red: 18.0/255, green: 147.0/255.0, blue: 233.0/255.0, alpha: 1)
-//        CartrawlerSDK.appearance().calendarStartCellColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
-//        CartrawlerSDK.appearance().calendarMidCellColor = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
-//        CartrawlerSDK.appearance().calendarEndCellColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
-//        CartrawlerSDK.appearance().textFieldTint = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
-//        
-        CartrawlerSDK.appearance().fontName = "Chalkduster"
-        CartrawlerSDK.appearance().boldFontName = "ChalkboardSE-Bold"
+        UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
+        
+        CartrawlerSDK.appearance().buttonColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
+        CartrawlerSDK.appearance().buttonTextColor = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
+        CartrawlerSDK.appearance().viewBackgroundColor = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
+        CartrawlerSDK.appearance().locationSelectionBarColor = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
+        CartrawlerSDK.appearance().navigationBarTint = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
+        CartrawlerSDK.appearance().calendarHeaderTopSectionColor = UIColor.init(red: 0.0/255, green: 55.0/255.0, blue: 145.0/255.0, alpha: 1)
+        CartrawlerSDK.appearance().calendarHeaderBottomSectionColor = UIColor.init(red: 18.0/255, green: 147.0/255.0, blue: 233.0/255.0, alpha: 1)
+        CartrawlerSDK.appearance().calendarStartCellColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
+        CartrawlerSDK.appearance().calendarMidCellColor = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
+        CartrawlerSDK.appearance().calendarEndCellColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
+        CartrawlerSDK.appearance().textFieldTint = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
+        
+//        CartrawlerSDK.appearance().fontName = "Chalkduster"
+//        CartrawlerSDK.appearance().boldFontName = "ChalkboardSE-Bold"
 
-        
-        
-//        let customStepOne = storyboard?.instantiateViewControllerWithIdentifier("CustomStepOneViewController") as! CustomStepOneViewController
-//        api.overrideStepOneViewController(customStepOne)
         
     }
     
@@ -93,9 +89,42 @@ class ViewController: UIViewController {
     @IBAction func openCartrawler(sender: AnyObject) {
         //643826 RYR
         //592248
-        let cartrawlerAPI = CartrawlerSDK(requestorID: "643826", languageCode: "EN", isDebug: true)
+        let cartrawlerSDK = CartrawlerSDK(requestorID: "643826", languageCode: "EN", isDebug: false)
         
-        cartrawlerAPI?.presentCarRental(in: self)
+        let searchDetailsView = CTViewController()
+        searchDetailsView.viewType = ViewTypeSearchDetails
+        
+        let vehicleSelectionView = CTViewController()
+        vehicleSelectionView.viewType = ViewTypeVehicleSelection
+        
+        let insuranceView = CTViewController()
+        insuranceView.viewType = ViewTypeInsurance
+        
+        let driverDetailsView = CTViewController()
+        driverDetailsView.viewType = ViewTypeDriverDetails
+        
+        let paymentView = CTViewController()
+        paymentView.viewType = ViewTypePaymentDetails
+        
+        /*
+        cartrawlerAPI?.setCarRentalViewsFrom([searchDetailsView,
+                                              vehicleSelectionView,
+                                              insuranceView,
+                                              driverDetailsView,
+                                              paymentView])
+        
+        cartrawlerAPI?.rerouteViewController(cartrawlerAPI?.insuranceExtrasViewController,
+                                             destination: cartrawlerAPI?.driverDetialsViewController,
+                                             fallback: cartrawlerAPI?.paymentSummaryViewController)
+ 
+
+        
+      let customStepOne = storyboard?.instantiateViewController(withIdentifier: "CustomStepOneViewController") as! CustomStepOneViewController
+      cartrawlerAPI?.overrideSearchDetailsViewController(customStepOne)
+        
+        customStepOne.destination = cartrawlerAPI?.vehicleSelectionViewController
+             */
+        cartrawlerSDK?.presentCarRental(in: self)
        // cartrawlerAPI!.presentGroundTransport(in: self)
     }
     

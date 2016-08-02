@@ -24,6 +24,12 @@
                  completion:(ValidationCompletion)completion;
 {
     
+    if (!step) {
+        NSLog(@"\n\n CartrawlerSDK ERROR: Destination View Controller is nil \n\n");
+        completion(NO, @"Destination View Controller is nil");
+        return;
+    }
+    
     if (step.viewType == ViewTypeVehicleSelection) {
         [self canTransitionToVehicleSelection:cartrawlerAPI
                                    completion:^(BOOL success, NSString *errorMessage) {

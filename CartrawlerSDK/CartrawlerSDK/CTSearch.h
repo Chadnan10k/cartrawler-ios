@@ -36,4 +36,6 @@
 
 + (instancetype)instance;
 
+- (void)reset;
+
 @end

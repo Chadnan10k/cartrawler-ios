@@ -121,20 +121,6 @@
  */
 - (void)setCarRentalViewsFromArray:(NSArray <CTViewController *> *)carRentalViews;
 
-/**
- *  Removes the default vehicle details controller and if the default VehicleDetailsViewController is used its
- *  fallback view controller will be used to push instead.
- *
- */
-- (void)removeVehicleDetailsViewController;
-
-/**
- *  Removes the default payment summary view and if the default VehicleDetailsViewController is used its
- *  fallback view controller will be used to push instead.
- *
- */
-- (void)removePaymentSummaryViewController;
-
 - (void)rerouteViewController:(CTViewController *)viewController
                   destination:(CTViewController *)destination
                      fallback:(CTViewController *)fallback;

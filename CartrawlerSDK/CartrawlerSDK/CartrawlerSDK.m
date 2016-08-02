@@ -33,6 +33,7 @@
 
 @property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
+@property (nonatomic, strong) NSArray <CTViewController *> *customViewControllers;
 
 @end
 
@@ -70,8 +71,17 @@
 
 - (void)presentCarRentalInViewController:(UIViewController *)viewController;
 {
-    [self.searchDetailsViewController setSearch:[CTSearch instance]];
-    CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:self.searchDetailsViewController];
+    [[CTSearch instance] reset];
+    CTNavigationController *navController;
+    
+    if (self.customViewControllers.count > 0) {
+        navController=[[CTNavigationController alloc]initWithRootViewController:
+                                               self.customViewControllers.firstObject];
+    } else {
+        navController=[[CTNavigationController alloc]initWithRootViewController:
+                                               self.searchDetailsViewController];
+    }
+    
     navController.navigationBar.hidden = YES;
     [viewController presentViewController:navController animated:YES completion:nil];
 }
@@ -99,31 +109,37 @@
 - (void)overrideSearchDetailsViewController:(CTViewController *)viewController
 {
     _searchDetailsViewController = viewController;
+    [self.searchDetailsViewController setCartrawlerAPI:self.cartrawlerAPI];
 }
 
 - (void)overrideVehicleSelectionViewController:(CTViewController *)viewController
 {
     _vehicleSelectionViewController = viewController;
+    [self.vehicleSelectionViewController setCartrawlerAPI:self.cartrawlerAPI];
 }
 
 - (void)overrideVehicleDetailsViewController:(CTViewController *)viewController
 {
     _vehicleDetailsViewController = viewController;
+    [self.vehicleDetailsViewController setCartrawlerAPI:self.cartrawlerAPI];
 }
 
 - (void)overrideInsuranceExtrasViewController:(CTViewController *)viewController
 {
     _insuranceExtrasViewController = viewController;
+    [self.insuranceExtrasViewController setCartrawlerAPI:self.cartrawlerAPI];
 }
 
 - (void)overridePaymentSummaryViewController:(CTViewController *)viewController
 {
     _paymentSummaryViewController = viewController;
+    [self.paymentSummaryViewController setCartrawlerAPI:self.cartrawlerAPI];
 }
 
 - (void)overrideDriverDetialsViewController:(CTViewController *)viewController
 {
     _driverDetialsViewController = viewController;
+    [self.driverDetialsViewController setCartrawlerAPI:self.cartrawlerAPI];
 }
 
 - (void)overrideStepSevenViewController:(StepSevenViewController *)viewController
@@ -133,7 +149,10 @@
 
 - (CTViewController *)searchDetailsViewController_
 {
-    if (self.searchDetailsViewController == nil) {
+    if (self.searchDetailsViewController) {
+        [self.searchDetailsViewController setSearch:[CTSearch instance]];
+        return self.searchDetailsViewController;
+    } else {
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
         NSBundle *b = [NSBundle bundleWithPath:bundlePath];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:b];
@@ -143,9 +162,8 @@
         [self.searchDetailsViewController setFallBackViewController:nil];
         [self.searchDetailsViewController setViewType:ViewTypeSearchDetails];
         [self.searchDetailsViewController setCartrawlerAPI:self.cartrawlerAPI];
-        
-        return self.searchDetailsViewController;
-    } else {
+        [self.searchDetailsViewController setSearch:[CTSearch instance]];
+
         return self.searchDetailsViewController;
     }
 }
@@ -259,17 +277,80 @@
 
 - (void)setCarRentalViewsFromArray:(NSArray <CTViewController *> *)carRentalViews
 {
+    NSMutableArray <CTViewController *>* viewArr = [[NSMutableArray alloc] init];
     
-}
-
-- (void)removeVehicleDetailsViewController
-{
-    _vehicleDetailsViewController = nil;
-}
-
-- (void)removePaymentSummaryViewController
-{
-    _paymentSummaryViewController = nil;
+    BOOL hasSearchDetails = NO;
+    BOOL hasVehicleSelection= NO;
+    BOOL hasInsurance = NO;
+    BOOL hasDrvierDetails = NO;
+    BOOL hasPaymentDetails = NO;
+    
+    for (CTViewController *vc in carRentalViews) {
+        
+        [vc setCartrawlerAPI:self.cartrawlerAPI];
+        
+        if (vc.viewType == ViewTypeSearchDetails) {
+            hasSearchDetails = YES;
+        }
+        
+        if (vc.viewType == ViewTypeVehicleSelection) {
+            hasVehicleSelection = YES;
+        }
+        
+        if (vc.viewType == ViewTypeInsurance) {
+            hasInsurance = YES;
+        }
+        
+        if (vc.viewType == ViewTypeDriverDetails) {
+            hasDrvierDetails = YES;
+        }
+        
+        if (vc.viewType == ViewTypePaymentDetails) {
+            hasPaymentDetails = YES;
+        }
+        
+        [viewArr addObject:vc];
+    }
+    
+    if (!hasSearchDetails)
+    {
+        [viewArr removeAllObjects];
+        NSLog(@"CartrawlerSDK: Cannot set custom views, could not find ViewTypeSearchDetails");
+    }
+    
+    if (!hasVehicleSelection)
+    {
+        [viewArr removeAllObjects];
+        NSLog(@"CartrawlerSDK: Cannot set custom views, could not find ViewTypeVehicleSelection");
+    }
+    
+    if (!hasInsurance)
+    {
+        [viewArr removeAllObjects];
+        NSLog(@"CartrawlerSDK: Cannot set custom views, could not find ViewTypeInsurance");
+    }
+    
+    if (!hasDrvierDetails)
+    {
+        [viewArr removeAllObjects];
+        NSLog(@"CartrawlerSDK: Cannot set custom views, could not find ViewTypeDriverDetails");
+    }
+    
+    if (!hasPaymentDetails)
+    {
+        [viewArr removeAllObjects];
+        NSLog(@"CartrawlerSDK: Cannot set custom views, could not find ViewTypePaymentDetails");
+    }
+    
+    if (hasSearchDetails &&
+        hasVehicleSelection &&
+        hasInsurance &&
+        hasDrvierDetails &&
+        hasPaymentDetails)
+    {
+        _customViewControllers = [[NSArray alloc] initWithArray:viewArr];
+    }
+    
 }
 
 - (void)rerouteViewController:(CTViewController *)viewController
