@@ -7,19 +7,10 @@
 //
 
 #import "PaymentViewController.h"
-#import "JVFloatLabeledTextField.h"
-#import "CTButton.h"
-#import "NSNumberUtils.h"
-#import "CompletionViewController.h"
 
-@interface PaymentViewController () <UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *cardNumberTextField;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *cardHolderTextField;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *cardMonthTextField;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *cardYearTextField;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *cardSecurityTextField;
-@property (weak, nonatomic) IBOutlet CTButton *payButton;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@interface PaymentViewController () <UIWebViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
@@ -30,115 +21,80 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     
-    double price = 0.0;
-    
-    if (self.isBuyingInsurance) {
-        price+= self.insurance.premiumAmount.doubleValue;
-    }
-    price+= self.selectedVehicle.totalPriceForThisVehicle.doubleValue;
-    
-    [self.payButton setTitle:[NSString stringWithFormat:NSLocalizedString(@"Pay %@", @"Pay button"),
-                              [NSNumberUtils numberStringWithCurrencyCode:[NSNumber numberWithDouble:price]]] forState:UIControlStateNormal];
-    
-    self.cardNumberTextField.delegate = self;
-    self.cardHolderTextField.delegate = self;
-    self.cardMonthTextField.delegate = self;
-    self.cardYearTextField.delegate = self;
-    self.cardSecurityTextField.delegate = self;
-    
-    [self registerForKeyboardNotifications];
+    NSString *urlString = @"http://otatest.cartrawler.com:20002/cartrawlerpay/paymentform?mobile=true&type=OTA_VehResRQ";
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:urlRequest];
+    self.webView.delegate = self;
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)viewDidLoad
 {
-    [self deregisterForKeyboardNotifications];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)confirm:(id)sender {
+    [super viewDidLoad];
     
-    CTPaymentCard *card = [[CTPaymentCard alloc] initWithCardType:CardTypeVisa
-                                                       cardNumber:self.cardNumberTextField.text
-                                                       cardExpiry:[NSString stringWithFormat:@"%@%@", self.cardMonthTextField.text, self.cardYearTextField.text]
-                                                   cardHolderName:self.cardHolderTextField.text
-                                                          cardCvc:self.cardSecurityTextField.text];
-    
-    [self makeBooking:card completion:^(BOOL success, NSString *errorMessage) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            CompletionViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"CompletionViewController"];
-            [vc presentInViewController:self];
-        });
-    }];
+
 }
 
-- (void)done
-{
-    [self.view endEditing:YES];
-}
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    //[self.summaryContainer closeIfOpen];
-    return YES;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [self.view endEditing:YES];
-    return YES;
-}
-
-- (void)registerForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)deregisterForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-}
-
-
-- (void)keyboardWillHide:(NSNotification *)n
-{
-    NSDictionary* userInfo = [n userInfo];
-    
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    CGRect viewFrame = self.scrollView.frame;
-    viewFrame.size.height += (keyboardSize.height + 45);
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [self.scrollView setFrame:viewFrame];
-    [UIView commitAnimations];
-}
-
-- (void)keyboardWillShow:(NSNotification *)n
-{
-    
-    NSDictionary* userInfo = [n userInfo];
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    CGRect viewFrame = self.scrollView.frame;
-    
-    viewFrame.size.height -= (keyboardSize.height + 45);
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [self.scrollView setFrame:viewFrame];
-    [UIView commitAnimations];
-}
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark Web View
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    
+    NSString *msgStr = [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding];
+
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    NSString *filePath = [b pathForResource:@"samplePayment" ofType:@"json"];
+    if (filePath) {
+        NSString *samplePayment = [NSString stringWithContentsOfFile:filePath];
+        if (samplePayment) {
+            
+            samplePayment = [samplePayment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            
+            msgStr = [msgStr stringByReplacingOccurrencesOfString:@"msg="
+                                                       withString:@"[YOUR MSG]"];
+
+        }
+    }
+    
+    NSData* data = [msgStr dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableURLRequest *msgReq = [[NSMutableURLRequest alloc] initWithURL:request.URL];
+    msgReq.HTTPMethod = @"POST";
+    msgReq.HTTPBody = data;
+    request = msgReq;
+    
+    return YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    /* for overriding css
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
+    [webView loadHTMLString:htmlString baseURL:baseURL];
+     */
+    
+    [webView stringByEvaluatingJavaScriptFromString:@"validateForm();"];
+
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    
 }
 
 @end

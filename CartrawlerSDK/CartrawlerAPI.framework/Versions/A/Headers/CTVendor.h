@@ -29,9 +29,109 @@
 @interface CTVendor : NSObject
 
 /**
+ *  Pickup type enum, use this for info like 'Free shuttle bus etc.'
+ */
+typedef NS_ENUM(NSUInteger, PickupType) {
+    /**
+     *  Terminal pickup
+     */
+    PickupTypeTerminal = 0,
+    /**
+     *  Shuttle bus pickup
+     */
+    PickupTypeShuttleBus = 1,
+    /**
+     *  In terminal counter, shuttle to car
+     */
+    PickupTypeTerminalAndShuttle = 2,
+    /**
+     *  Meet and greet
+     */
+    PickupTypeMeetAndGreet = 3,
+    /**
+     *  Chaufur service
+     */
+    PickupTypeCarDriver = 4,
+    /**
+     *  Unknown pickup type
+     */
+    PickupTypeUnknown = 5
+};
+
+/**
+ *  Counter type enum, this uses VWF
+ */
+typedef NS_ENUM(NSUInteger, CounterType) {
+    /**
+     *  Terminal
+     */
+    CounterTypeTerminal = 0,
+    /**
+     *  Shuttle on airport
+     */
+    CounterTypeShuttleOnAirport = 1,
+    /**
+     *  Shuttle off airport
+     */
+    CounterTypeShuttleOffAirport = 2,
+    /**
+     *  Railway station
+     */
+    CounterTypeRailwayStation = 3,
+    /**
+     *  Hotel
+     */
+    CounterTypeHotel = 4,
+    /**
+     *  Car dealer
+     */
+    CounterTypeCarDealer = 5,
+    /**
+     *  City center/downtown
+     */
+    CounterTypeCityCenterDowntown = 6,
+    /**
+     *  East of city center
+     */
+    CounterTypeCityCenterEast = 7,
+    /**
+     *  South of city center
+     */
+    CounterTypeCityCenterSouth = 8,
+    /**
+     *  West of city center
+     */
+    CounterTypeCityCenterWest = 9,
+    /**
+     *  North of city center
+     */
+    CounterTypeCityCenterNorth = 10,
+    /**
+     *  Port/ferry
+     */
+    CounterTypeFerryPort = 11,
+    /**
+     *  Near resort
+     */
+    CounterTypeNearResort = 12,
+    /**
+     *  Airport
+     */
+    CounterTypeAirport = 12
+};
+
+/**
  *  Bool value stating if vendor is at airport or not
  */
 @property (nonatomic) BOOL atAirport;
+/**
+ *  Vendor pickup type, In terminal, free shuttle bus etc..
+ */
+@property (nonatomic) PickupType pickupType;
+/**
+ *  Vendor counter type
+ */
+@property (nonatomic) CounterType counterType;
 /**
  *  The vendor code
  */

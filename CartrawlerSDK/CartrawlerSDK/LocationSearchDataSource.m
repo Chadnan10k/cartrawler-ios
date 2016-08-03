@@ -90,7 +90,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LocationSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
+
     if (indexPath.section == 0) {
         //cell.imageView.image = [UIImage imageNamed:@""];
         if(self.airportLocations[indexPath.row] != (id)[NSNull null]) {

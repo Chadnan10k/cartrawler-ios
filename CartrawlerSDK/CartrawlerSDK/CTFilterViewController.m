@@ -9,43 +9,23 @@
 #import "CTFilterViewController.h"
 #import "CTFilterDataSource.h"
 #import <CartrawlerAPI/CTFilter.h>
-#import "CTTableView.h"
+#import "CTFilterTableView.h"
+#import "CTLabel.h"
+#import "CTFilterFactory.h"
 
 @interface CTFilterViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (weak, nonatomic) IBOutlet CTTableView *carSizeTableView;
-@property (weak, nonatomic) IBOutlet CTTableView *pickupLocationTableView;
-@property (weak, nonatomic) IBOutlet CTTableView *vendorsTableView;
-@property (weak, nonatomic) IBOutlet CTTableView *fuelPolicyTableView;
-@property (weak, nonatomic) IBOutlet CTTableView *transmissionTableView;
-@property (weak, nonatomic) IBOutlet CTTableView *carSpecsTableView;
-
-@property (strong, nonatomic) CTFilterDataSource *carSizeDataSource;
-@property (strong, nonatomic) CTFilterDataSource *locationDataSource;
-@property (strong, nonatomic) CTFilterDataSource *vendorsDataSource;
-@property (strong, nonatomic) CTFilterDataSource *fuelPolicyDataSource;
-@property (strong, nonatomic) CTFilterDataSource *transmissionDataSource;
-
-@property (strong, nonatomic) NSMutableArray<CTVehicle *> *sizeData;
-@property (strong, nonatomic) NSMutableArray *locationData;
-@property (strong, nonatomic) NSMutableArray<CTVendor *> *vendorsData;
-@property (strong, nonatomic) NSMutableArray<CTVehicle *> *transmissionData;
-@property (strong, nonatomic) NSMutableArray<CTVehicle *> *carSpecsData;
-@property (strong, nonatomic) NSMutableArray<CTVehicle *> *fuelPolicyData;
-
-@property (strong, nonatomic) NSMutableArray<CTVehicle *> *filteredData;
-
-@property (strong, nonatomic) NSArray<CTVehicle *> *selectedSizeData;
-@property (strong, nonatomic) NSArray<CTVehicle *> *selectedFuelPolicyData;
-@property (strong, nonatomic) NSArray<CTVehicle *> *selectedTransmissionData;
-@property (strong, nonatomic) NSArray<CTVehicle *> *selectedCarSpecsData;
-@property (strong, nonatomic) NSArray *selectedLocationData;
-@property (strong, nonatomic) NSArray<CTVendor *> *selectedVendorsData;
-
-@property (strong, nonatomic) CTVehicleAvailability *data;
+@property (strong, nonatomic) CTFilterTableView *carSizeTableView;
+@property (strong, nonatomic) CTFilterTableView *pickupLocationTableView;
+@property (strong, nonatomic) CTFilterTableView *vendorsTableView;
+@property (strong, nonatomic) CTFilterTableView *fuelPolicyTableView;
+@property (strong, nonatomic) CTFilterTableView *transmissionTableView;
+@property (strong, nonatomic) CTFilterTableView *carSpecsTableView;
 
 @property (strong, nonatomic) UIViewController *parentViewContoller;
+
+@property (nonatomic, strong) CTFilterFactory *filterFactory;
 
 @end
 
@@ -58,167 +38,107 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    _filteredData = [[NSMutableArray alloc] init];
     
-    _carSizeDataSource = [[CTFilterDataSource alloc] initWithData:self.sizeData
-                                                     selectedData:self.selectedSizeData
-                                                       filterType:FilterDataTypeVehicleSize];
+    _carSizeTableView = [[CTFilterTableView alloc] initWithFrame:CGRectZero];
+    _pickupLocationTableView = [[CTFilterTableView alloc] initWithFrame:CGRectZero];
+    _vendorsTableView = [[CTFilterTableView alloc] initWithFrame:CGRectZero];
+    _fuelPolicyTableView = [[CTFilterTableView alloc] initWithFrame:CGRectZero];
+    _transmissionTableView = [[CTFilterTableView alloc] initWithFrame:CGRectZero];
+    _carSpecsTableView = [[CTFilterTableView alloc] initWithFrame:CGRectZero];
     
-    _locationDataSource = [[CTFilterDataSource alloc] initWithData:@[@"At Airport"]
-                                                      selectedData:self.selectedLocationData
-                                                        filterType:FilterDataTypeLocation];
+    [self.filterFactory setDataSources];
     
-    _vendorsDataSource = [[CTFilterDataSource alloc] initWithData:self.vendorsData
-                                                     selectedData:self.selectedVendorsData
-                                                       filterType:FilterDataTypeVendor];
+    self.carSizeTableView.dataSource    = self.filterFactory.carSizeDataSource;
+    self.carSizeTableView.delegate      = self.filterFactory.carSizeDataSource;
+    self.pickupLocationTableView.dataSource = self.filterFactory.locationDataSource;
+    self.pickupLocationTableView.delegate   = self.filterFactory.locationDataSource;
+    self.vendorsTableView.dataSource = self.filterFactory.vendorsDataSource;
+    self.vendorsTableView.delegate   = self.filterFactory.vendorsDataSource;
+    self.fuelPolicyTableView.dataSource = self.filterFactory.fuelPolicyDataSource;
+    self.fuelPolicyTableView.delegate   = self.filterFactory.fuelPolicyDataSource;
+    self.transmissionTableView.dataSource = self.filterFactory.transmissionDataSource;
+    self.transmissionTableView.delegate   = self.filterFactory.transmissionDataSource;
+    
+    self.carSizeTableView.tableViewTitle        = NSLocalizedString(@"Vehicle Size", @"Vehicle Size");
+    self.pickupLocationTableView.tableViewTitle = NSLocalizedString(@"Pickup", @"Pickup");
+    self.vendorsTableView.tableViewTitle        = NSLocalizedString(@"Vendors", @"Vendors");
+    self.fuelPolicyTableView.tableViewTitle     = NSLocalizedString(@"Fuel policy", @"Fuel policy");
+    self.transmissionTableView.tableViewTitle   = NSLocalizedString(@"Transmission", @"Transmission");
 
-    _fuelPolicyDataSource = [[CTFilterDataSource alloc] initWithData:self.fuelPolicyData
-                                                        selectedData:self.selectedFuelPolicyData
-                                                          filterType:FilterDataTypeFuelPolicy];
-
-    _transmissionDataSource = [[CTFilterDataSource alloc] initWithData:self.transmissionData
-                                                        selectedData:self.selectedTransmissionData
-                                                          filterType:FilterDataTypeTransmission];
-
-    self.carSizeTableView.dataSource = self.carSizeDataSource;
-    self.carSizeTableView.delegate = self.carSizeDataSource;
-    self.pickupLocationTableView.dataSource = self.locationDataSource;
-    self.pickupLocationTableView.delegate = self.locationDataSource;
-    self.vendorsTableView.dataSource = self.vendorsDataSource;
-    self.vendorsTableView.delegate = self.vendorsDataSource;
-    self.fuelPolicyTableView.dataSource = self.fuelPolicyDataSource;
-    self.fuelPolicyTableView.delegate = self.fuelPolicyDataSource;
-    self.transmissionTableView.dataSource = self.transmissionDataSource;
-    self.transmissionTableView.delegate = self.transmissionDataSource;
+    [self buildTableViews];
     
-    [self.carSizeTableView reloadData];
-    [self.pickupLocationTableView reloadData];
-    [self.vendorsTableView reloadData];
-    [self.fuelPolicyTableView reloadData];
-    [self.transmissionTableView reloadData];
-
-    self.carSizeDataSource.filterCompletion = ^(NSArray<CTVehicle *> *filteredData){
-        _selectedSizeData = filteredData;
-    };
-    
-    self.locationDataSource.filterCompletion = ^(NSArray *filteredData){
-        _selectedLocationData = filteredData;
-    };
-    
-    self.vendorsDataSource.filterCompletion = ^(NSArray<CTVendor *> *filteredData){
-        _selectedVendorsData = filteredData;
-    };
-    
-    self.fuelPolicyDataSource.filterCompletion = ^(NSArray<CTVehicle *> *filteredData){
-        _selectedFuelPolicyData = filteredData;
-    };
-    
-    self.transmissionDataSource.filterCompletion = ^(NSArray<CTVehicle *> *filteredData){
-        _selectedTransmissionData = filteredData;
-    };
-    
-    //
 }
 
 - (void)setFilterData:(CTVehicleAvailability *)data
 {
-    _data = data;
-    _selectedVendorsData = [[NSMutableArray alloc] init];
-    _selectedLocationData = [[NSMutableArray alloc] init];
-    _selectedSizeData = [[NSMutableArray alloc] init];
-    _selectedFuelPolicyData = [[NSMutableArray alloc] init];
-
-    _sizeData = [[NSMutableArray alloc] init];
-    _locationData = [[NSMutableArray alloc] init];
-    _vendorsData = [[NSMutableArray alloc] init];
-    _transmissionData = [[NSMutableArray alloc] init];
-    _carSpecsData = [[NSMutableArray alloc] init];
-    _fuelPolicyData = [[NSMutableArray alloc] init];
-
-    //vehicle size
-    for (CTVehicle *v in data.allVehicles) {
-        BOOL found = NO;
-        for (CTVehicle *s in self.sizeData) {
-            if ([v.categoryDescriptionCode isEqualToString: s.categoryDescriptionCode]) {
-                found = YES;
-            }
-        }
-        if (!found) {
-            [self.sizeData addObject:v];
-        }
-    }
-    //vendors
-    for (int i = 0; i < data.availableVendors.count; ++i) {
-        
-        BOOL found = NO;
-        for (int x = 0; x < self.vendorsData.count; ++x) {
-            if ([data.availableVendors[i].name isEqualToString:self.vendorsData[x].name]) {
-                found = YES;
-            } else {
-                found = NO;
-            }
-        }
-        if (!found) {
-            [self.vendorsData addObject:data.availableVendors[i]];
-        }
-    }
-    //vehicle size
-    for (CTVehicle *v in data.allVehicles) {
-        BOOL found = NO;
-        for (CTVehicle *s in self.transmissionData) {
-            if ([v.transmissionType isEqualToString: s.transmissionType]) {
-                found = YES;
-            }
-        }
-        if (!found) {
-            [self.transmissionData addObject:v];
-        }
-    }
-    
-    //fuel policy
-    for (CTVehicle *v in data.allVehicles) {
-        BOOL found = NO;
-        for (CTVehicle *s in self.fuelPolicyData) {
-            if (v.fuelPolicy == s.fuelPolicy) {
-                found = YES;
-            }
-        }
-        if (!found) {
-            [self.fuelPolicyData addObject:v];
-        }
-    }
-    
-    //transmission
-    for (CTVehicle *v in data.allVehicles) {
-        BOOL found = NO;
-        for (CTVehicle *s in self.transmissionData) {
-            if ([v.transmissionType isEqualToString: s.transmissionType]) {
-                found = YES;
-            }
-        }
-        if (!found) {
-            [self.transmissionData addObject:v];
-        }
-    }
+    _filterFactory = [[CTFilterFactory alloc] initWithFilterData:data];
 }
 
-- (void)buildTableViews
+ - (void)buildTableViews
 {
-
-    NSArray <CTTableView *>*viewArray;
+    
+    NSArray <CTFilterTableView *>*viewArray = @[self.carSizeTableView,
+                                         self.pickupLocationTableView,
+                                         self.vendorsTableView,
+                                         self.fuelPolicyTableView,
+                                         self.transmissionTableView];
     
     for (int i = 0; i < viewArray.count; ++i) {
-        CGFloat height = viewArray[i].contentSize.height;
+        viewArray[i].translatesAutoresizingMaskIntoConstraints = NO;
+        [self.scrollView addSubview:viewArray[i]];
+        
+        [viewArray[i] reloadData];
+
+        CGFloat height = viewArray[i].contentSize.height-1;
         
         if (i == 0) {
+            
+            CTLabel *titleLabel = [[CTLabel alloc] initWithFrame:CGRectZero];
+            titleLabel.useBoldFont = YES;
+            [self.scrollView addSubview:titleLabel];
+            titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+            titleLabel.text = viewArray[i].tableViewTitle;
+            
+            NSLayoutConstraint *labelTopConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
+                                                                             attribute:NSLayoutAttributeTop
+                                                                             relatedBy:NSLayoutRelationEqual
+                                                                                toItem:self.scrollView
+                                                                             attribute:NSLayoutAttributeTop
+                                                                            multiplier:1.0
+                                                                              constant:8];
+            
+            NSLayoutConstraint *labelHeightConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
+                                                                                attribute:NSLayoutAttributeHeight
+                                                                                relatedBy:NSLayoutRelationEqual
+                                                                                   toItem:nil
+                                                                                attribute:NSLayoutAttributeNotAnAttribute
+                                                                               multiplier:1.0
+                                                                                 constant:20];
+            
+            
+            NSLayoutConstraint *labelLeftConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
+                                                                              attribute:NSLayoutAttributeLeft
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:self.view
+                                                                              attribute:NSLayoutAttributeLeft
+                                                                             multiplier:1.0
+                                                                               constant:5];
+            
+            NSLayoutConstraint *labelRightConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
+                                                                               attribute:NSLayoutAttributeRight
+                                                                               relatedBy:NSLayoutRelationEqual
+                                                                                  toItem:self.view
+                                                                               attribute:NSLayoutAttributeRight
+                                                                              multiplier:1.0
+                                                                                constant:-5];
+            
             NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
                                                                              attribute:NSLayoutAttributeTop
                                                                              relatedBy:NSLayoutRelationEqual
-                                                                                toItem:self.view
-                                                                             attribute:NSLayoutAttributeTop
+                                                                                toItem:titleLabel
+                                                                             attribute:NSLayoutAttributeBottom
                                                                             multiplier:1.0
-                                                                              constant:40];
+                                                                              constant:8];
             
             NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
                                                                                 attribute:NSLayoutAttributeHeight
@@ -243,19 +163,62 @@
                                                                                attribute:NSLayoutAttributeRight
                                                                               multiplier:1.0
                                                                                 constant:-5];
-            [self.view addConstraints:@[topConstraint,
+            [self.view addConstraints:@[labelTopConstraint,
+                                        labelHeightConstraint,
+                                        labelLeftConstraint,
+                                        labelRightConstraint,
+                                        topConstraint,
                                         leftConstraint,
                                         rightConstraint,
                                         heightConstraint]];
             
             [self.view updateConstraints];
             
-        } else {
+        } else if (i < viewArray.count-1) {
+            
+            CTLabel *titleLabel = [[CTLabel alloc] initWithFrame:CGRectZero];
+            titleLabel.useBoldFont = YES;
+            [self.scrollView addSubview:titleLabel];
+            titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+            titleLabel.text = viewArray[i].tableViewTitle;
+            
+            NSLayoutConstraint *labelTopConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
+                                                                                  attribute:NSLayoutAttributeTop
+                                                                                  relatedBy:NSLayoutRelationEqual
+                                                                                     toItem:viewArray[i-1]
+                                                                                  attribute:NSLayoutAttributeBottom
+                                                                                 multiplier:1.0
+                                                                                   constant:8];
+            
+            NSLayoutConstraint *labelHeightConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
+                                                                                     attribute:NSLayoutAttributeHeight
+                                                                                     relatedBy:NSLayoutRelationEqual
+                                                                                        toItem:nil
+                                                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                                                    multiplier:1.0
+                                                                                      constant:20];
+            
+            
+            NSLayoutConstraint *labelLeftConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
+                                                                                   attribute:NSLayoutAttributeLeft
+                                                                                   relatedBy:NSLayoutRelationEqual
+                                                                                      toItem:self.view
+                                                                                   attribute:NSLayoutAttributeLeft
+                                                                                  multiplier:1.0
+                                                                                    constant:5];
+            
+            NSLayoutConstraint *labelRightConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
+                                                                                    attribute:NSLayoutAttributeRight
+                                                                                    relatedBy:NSLayoutRelationEqual
+                                                                                       toItem:self.view
+                                                                                    attribute:NSLayoutAttributeRight
+                                                                                   multiplier:1.0
+                                                                                     constant:-5];
             
             NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
                                                                              attribute:NSLayoutAttributeTop
                                                                              relatedBy:NSLayoutRelationEqual
-                                                                                toItem:viewArray[i-1]
+                                                                                toItem:titleLabel
                                                                              attribute:NSLayoutAttributeBottom
                                                                             multiplier:1.0
                                                                               constant:5];
@@ -283,120 +246,111 @@
                                                                                attribute:NSLayoutAttributeRight
                                                                               multiplier:1.0
                                                                                 constant:-5];
-            [self.view addConstraints:@[topConstraint,
+            [self.view addConstraints:@[labelTopConstraint,
+                                        labelHeightConstraint,
+                                        labelLeftConstraint,
+                                        labelRightConstraint,
+                                        topConstraint,
                                         leftConstraint,
                                         rightConstraint,
                                         heightConstraint]];
-        }
+            
+            [self.view updateConstraints];
+             
+    } else {
+        CTLabel *titleLabel = [[CTLabel alloc] initWithFrame:CGRectZero];
+        titleLabel.useBoldFont = YES;
+        [self.scrollView addSubview:titleLabel];
+        titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        titleLabel.text = viewArray[i].tableViewTitle;
         
-    }
-    
-    
-}
+        NSLayoutConstraint *labelTopConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
+                                                                              attribute:NSLayoutAttributeTop
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:viewArray[i-1]
+                                                                              attribute:NSLayoutAttributeBottom
+                                                                             multiplier:1.0
+                                                                               constant:8];
+        
+        NSLayoutConstraint *labelHeightConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
+                                                                                 attribute:NSLayoutAttributeHeight
+                                                                                 relatedBy:NSLayoutRelationEqual
+                                                                                    toItem:nil
+                                                                                 attribute:NSLayoutAttributeNotAnAttribute
+                                                                                multiplier:1.0
+                                                                                  constant:20];
+        
+        
+        NSLayoutConstraint *labelLeftConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
+                                                                               attribute:NSLayoutAttributeLeft
+                                                                               relatedBy:NSLayoutRelationEqual
+                                                                                  toItem:self.view
+                                                                               attribute:NSLayoutAttributeLeft
+                                                                              multiplier:1.0
+                                                                                constant:5];
+        
+        NSLayoutConstraint *labelRightConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
+                                                                                attribute:NSLayoutAttributeRight
+                                                                                relatedBy:NSLayoutRelationEqual
+                                                                                   toItem:self.view
+                                                                                attribute:NSLayoutAttributeRight
+                                                                               multiplier:1.0
+                                                                                 constant:-5];
+        
+        NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+                                                                         attribute:NSLayoutAttributeTop
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:titleLabel
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                        multiplier:1.0
+                                                                          constant:5];
+        
+        NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+                                                                            attribute:NSLayoutAttributeHeight
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:nil
+                                                                            attribute:NSLayoutAttributeNotAnAttribute
+                                                                           multiplier:1.0
+                                                                             constant:height];
+        
+        NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+                                                                          attribute:NSLayoutAttributeLeft
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:self.view
+                                                                          attribute:NSLayoutAttributeLeft
+                                                                         multiplier:1.0
+                                                                           constant:5];
+        
+        NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+                                                                           attribute:NSLayoutAttributeRight
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:self.view
+                                                                           attribute:NSLayoutAttributeRight
+                                                                          multiplier:1.0
+                                                                            constant:-5];
+        
+        NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+                                                                           attribute:NSLayoutAttributeBottom
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:self.scrollView
+                                                                           attribute:NSLayoutAttributeBottom
+                                                                          multiplier:1.0
+                                                                            constant:-8];
+        [self.view addConstraints:@[labelTopConstraint,
+                                    labelHeightConstraint,
+                                    labelLeftConstraint,
+                                    labelRightConstraint,
+                                    topConstraint,
+                                    heightConstraint,
+                                    leftConstraint,
+                                    rightConstraint,
+                                    bottomConstraint]];
+        
+        [self.view updateConstraints];
 
-- (void)filter
-{
-    NSMutableArray<CTVehicle *> *filteredData = [[NSMutableArray alloc] init];
-
-    filteredData =  [[NSMutableArray alloc] initWithArray:self.data.allVehicles];
-    
-    //pick away each car one by one
-    NSMutableArray *vehsToAdd = [[NSMutableArray alloc] init];
-    
-    //car size
-    for (CTVehicle *veh in filteredData) {
-        for (CTVehicle *selectedVeh in self.selectedSizeData) {
-            BOOL found = NO;
-            
-            if ([veh.categoryDescriptionCode isEqualToString:selectedVeh.categoryDescriptionCode]) {
-                found = YES;
-            }
-            
-            if (found) {
-                if (![vehsToAdd containsObject:veh]) {
-                    [vehsToAdd addObject:veh];
-                }
-            }
-        }
+    }
     }
     
-    NSMutableArray *vehsToAddStep2;
-
-    //car vendor
-    if (self.selectedSizeData.count == 0 && self.selectedVendorsData.count == 0) {
-        vehsToAddStep2 = [[NSMutableArray alloc] initWithArray:self.data.allVehicles];
-    } else if (self.selectedSizeData.count == 0 && self.selectedVendorsData.count != 0) {
-        vehsToAddStep2 = [[NSMutableArray alloc] init];
-        for (CTVendor *ven in self.selectedVendorsData) {
-            for (CTVehicle *veh in self.data.allVehicles) {
-                if ([ven.name isEqualToString:veh.vendor.name]) {
-                    if (![vehsToAddStep2 containsObject:veh]) {
-                        [vehsToAddStep2 addObject:veh];
-                    }
-                }
-            }
-        }
-    } else if (self.selectedSizeData.count != 0 && self.selectedVendorsData.count == 0) {
-        vehsToAddStep2 = [[NSMutableArray alloc] initWithArray:vehsToAdd];
-    } else {
-        vehsToAddStep2 = [[NSMutableArray alloc] init];
-        for (CTVendor *ven in self.selectedVendorsData) {
-            for (CTVehicle *veh in vehsToAdd) {
-                if ([ven.name isEqualToString:veh.vendor.name]) {
-                    if (![vehsToAddStep2 containsObject:veh]) {
-                        [vehsToAddStep2 addObject:veh];
-                    }
-                }
-            }
-        }
-    }
-    
-    //fuel policy
-    NSMutableArray *vehsToAddStep3 = [[NSMutableArray alloc] init];
-    if (self.selectedFuelPolicyData.count == 0) {
-        vehsToAddStep3 = vehsToAddStep2;
-    } else {
-        for (CTVehicle *veh in vehsToAddStep2) {
-            for (CTVehicle *selectedVeh in self.selectedFuelPolicyData) {
-                BOOL found = NO;
-                
-                if (veh.fuelPolicy == selectedVeh.fuelPolicy) {
-                    found = YES;
-                }
-                
-                if (found) {
-                    if (![vehsToAddStep3 containsObject:veh]) {
-                        [vehsToAddStep3 addObject:veh];
-                    }
-                }
-            }
-        }
-    }
-    
-    //transmission
-    NSMutableArray *vehsToAddStep4 = [[NSMutableArray alloc] init];
-    if (self.selectedTransmissionData.count == 0) {
-        vehsToAddStep4 = vehsToAddStep3;
-    } else {
-        for (CTVehicle *veh in vehsToAddStep3) {
-            for (CTVehicle *selectedVeh in self.selectedTransmissionData) {
-                BOOL found = NO;
-                
-                if ([veh.transmissionType isEqualToString: selectedVeh.transmissionType]) {
-                    found = YES;
-                }
-                
-                if (found) {
-                    if (![vehsToAddStep4 containsObject:veh]) {
-                        [vehsToAddStep4 addObject:veh];
-                    }
-                }
-            }
-        }
-    }
-    
-    _filteredData = [[NSMutableArray alloc] initWithArray:vehsToAddStep4];
-    _filteredData = [[NSMutableArray alloc] initWithArray:[CTFilter sortPrice:YES cars:self.filteredData]];
 }
 
 + (CTFilterViewController *)initInViewController:(UIViewController *)viewController withData:(CTVehicleAvailability *)data;
@@ -417,10 +371,12 @@
 }
 
 - (IBAction)resetTapped:(id)sender {
-    _filteredData = [[NSMutableArray alloc] init];
-    [self.carSizeDataSource reset];
-    [self.locationDataSource reset];
-    [self.vendorsDataSource reset];
+    
+    self.filterFactory.filteredData = [[NSMutableArray alloc] init];
+    
+    [self.filterFactory.carSizeDataSource reset];
+    [self.filterFactory.locationDataSource reset];
+    [self.filterFactory.vendorsDataSource reset];
  
     [self.carSizeTableView reloadData];
     [self.pickupLocationTableView reloadData];
@@ -429,10 +385,10 @@
 }
 
 - (IBAction)doneTapped:(id)sender {
-    
-    [self filter];
+    [self.filterFactory filter];
+    //[self filter];
     if (self.filterCompletion) {
-        self.filterCompletion(self.filteredData);
+        self.filterCompletion(self.filterFactory.filteredData);
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

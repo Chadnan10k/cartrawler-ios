@@ -182,19 +182,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEh-7y-dW1">
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Cj-eX-AtM">
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="3Cj-eX-AtM" secondAttribute="bottom" constant="108" id="MvP-Bm-Dv8"/>
-                                    <constraint firstItem="3Cj-eX-AtM" firstAttribute="leading" secondItem="BEh-7y-dW1" secondAttribute="leading" id="d0e-OU-kSe"/>
-                                    <constraint firstItem="3Cj-eX-AtM" firstAttribute="top" secondItem="BEh-7y-dW1" secondAttribute="top" id="ky0-kh-ekE"/>
-                                    <constraint firstItem="3Cj-eX-AtM" firstAttribute="centerY" secondItem="BEh-7y-dW1" secondAttribute="centerY" id="u9K-kW-Hf0"/>
-                                    <constraint firstAttribute="trailing" secondItem="3Cj-eX-AtM" secondAttribute="trailing" id="xeH-xx-I2s"/>
-                                </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dig-pC-OGW" customClass="CTView">
                                 <subviews>
@@ -263,21 +251,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="BEh-7y-dW1" secondAttribute="trailing" id="8zU-Rm-1gB"/>
-                            <constraint firstItem="BEh-7y-dW1" firstAttribute="leading" secondItem="ZHj-CF-nPg" secondAttribute="leading" id="Bjr-nw-TcK"/>
-                            <constraint firstItem="BEh-7y-dW1" firstAttribute="width" secondItem="ZHj-CF-nPg" secondAttribute="width" constant="-105" id="E8y-iw-51y"/>
+                            <constraint firstItem="uhq-2H-33b" firstAttribute="top" secondItem="BEh-7y-dW1" secondAttribute="bottom" id="TUK-3d-Smq"/>
                             <constraint firstAttribute="trailing" secondItem="dig-pC-OGW" secondAttribute="trailing" id="aVu-bz-3aN"/>
-                            <constraint firstItem="uhq-2H-33b" firstAttribute="top" secondItem="BEh-7y-dW1" secondAttribute="bottom" id="h6O-Vg-NpT"/>
-                            <constraint firstItem="BEh-7y-dW1" firstAttribute="top" secondItem="dig-pC-OGW" secondAttribute="bottom" id="jNw-6u-lxb"/>
-                            <constraint firstItem="3Cj-eX-AtM" firstAttribute="width" secondItem="ZHj-CF-nPg" secondAttribute="width" id="r2q-KA-zOG"/>
+                            <constraint firstItem="BEh-7y-dW1" firstAttribute="top" secondItem="dig-pC-OGW" secondAttribute="bottom" id="i0e-Ob-NVO"/>
+                            <constraint firstItem="BEh-7y-dW1" firstAttribute="leading" secondItem="ZHj-CF-nPg" secondAttribute="leading" id="oCb-7K-lTK"/>
+                            <constraint firstAttribute="trailing" secondItem="BEh-7y-dW1" secondAttribute="trailing" id="w0u-Eq-03k"/>
                             <constraint firstItem="dig-pC-OGW" firstAttribute="leading" secondItem="ZHj-CF-nPg" secondAttribute="leading" id="zaH-rv-pIA"/>
                             <constraint firstItem="dig-pC-OGW" firstAttribute="top" secondItem="ZHj-CF-nPg" secondAttribute="top" id="zey-rY-2uX"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="E8y-iw-51y"/>
-                            </mask>
-                        </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="700"/>

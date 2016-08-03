@@ -59,6 +59,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CTFilterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    [cell setup];
     
     if ([self.selectedData containsObject:self.data[indexPath.row]]) {
         [cell enableCheckmark:YES];
@@ -81,9 +82,39 @@
     } else if (self.filterType == FilterDataTypeTransmission) {
         CTVehicle *veh = self.data[indexPath.row];
         [cell setText:veh.transmissionType];
+    } else if (self.filterType == FilterDataTypeLocation) {
+        CTVehicle *veh = self.data[indexPath.row];
+        [cell setText:[self localizedPickupType:veh.vendor.pickupType]];
     }
     
     return cell;
+}
+
+- (NSString *)localizedPickupType:(PickupType)pickupType
+{
+    switch (pickupType) {
+        case PickupTypeTerminal:
+            return NSLocalizedString(@"In Terminal", @"");
+            break;
+        case PickupTypeShuttleBus:
+            return NSLocalizedString(@"Shuttle bus", @"");
+            break;
+        case PickupTypeTerminalAndShuttle:
+            return NSLocalizedString(@"Shuttle bus from terminal", @"");
+            break;
+        case PickupTypeMeetAndGreet:
+            return NSLocalizedString(@"Meet and greet", @"");
+            break;
+        case PickupTypeCarDriver:
+            return NSLocalizedString(@"Driver pickup", @"");
+            break;
+        case PickupTypeUnknown:
+            return NSLocalizedString(@"Unknown", @"");
+            break;
+        default:
+            return NSLocalizedString(@"Unknown", @"");
+            break;
+    }
 }
 
 @end

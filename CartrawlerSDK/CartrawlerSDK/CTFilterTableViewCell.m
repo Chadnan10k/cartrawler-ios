@@ -8,11 +8,11 @@
 
 #import "CTFilterTableViewCell.h"
 #import "CTAppearance.h"
-
+#import "CTLabel.h"
 @interface CTFilterTableViewCell()
 
-@property (weak, nonatomic) IBOutlet UIImageView *checkmarkImageView;
-@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (strong, nonatomic) UIImageView *checkmarkImageView;
+@property (strong, nonatomic) CTLabel *label;
 
 @property (nonatomic) BOOL cellEnabled;
 
@@ -25,6 +25,99 @@
     
 }
 
+- (void)setup
+{
+    _checkmarkImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    _label = [[CTLabel alloc] initWithFrame:CGRectZero];
+    [self addSubview:self.checkmarkImageView];
+    [self addSubview:self.label];
+    
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    self.checkmarkImageView.image = [UIImage imageNamed:@"checkmark" inBundle:b compatibleWithTraitCollection:nil];
+    
+    self.checkmarkImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.label.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    //check box
+    NSLayoutConstraint *imageCenterXConstraint = [NSLayoutConstraint constraintWithItem:self.checkmarkImageView
+                                                                          attribute:NSLayoutAttributeRight
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:self
+                                                                          attribute:NSLayoutAttributeRight
+                                                                         multiplier:1.0
+                                                                           constant:-20];
+    
+    NSLayoutConstraint *imageCenterYConstraint = [NSLayoutConstraint constraintWithItem:self.checkmarkImageView
+                                                                              attribute:NSLayoutAttributeCenterY
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:self
+                                                                              attribute:NSLayoutAttributeCenterY
+                                                                             multiplier:1.0
+                                                                               constant:0];
+    
+    NSLayoutConstraint *imageWidthConstraint = [NSLayoutConstraint constraintWithItem:self.checkmarkImageView
+                                                                             attribute:NSLayoutAttributeWidth
+                                                                             relatedBy:NSLayoutRelationEqual
+                                                                                toItem:nil
+                                                                             attribute:NSLayoutAttributeNotAnAttribute
+                                                                            multiplier:1.0
+                                                                              constant:20];
+    
+    
+    NSLayoutConstraint *imageHeightConstraint = [NSLayoutConstraint constraintWithItem:self.checkmarkImageView
+                                                                           attribute:NSLayoutAttributeHeight
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:nil
+                                                                           attribute:NSLayoutAttributeNotAnAttribute
+                                                                          multiplier:1.0
+                                                                            constant:20];
+    
+    //label
+    NSLayoutConstraint *labelTopConstraint = [NSLayoutConstraint constraintWithItem:self.label
+                                                                     attribute:NSLayoutAttributeTop
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self
+                                                                     attribute:NSLayoutAttributeTop
+                                                                    multiplier:1.0
+                                                                      constant:8];
+    
+    NSLayoutConstraint *labelBottomConstraint = [NSLayoutConstraint constraintWithItem:self.label
+                                                                        attribute:NSLayoutAttributeBottom
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:self
+                                                                        attribute:NSLayoutAttributeBottom
+                                                                       multiplier:1.0
+                                                                         constant:-8];
+    
+    NSLayoutConstraint *labelLeftConstraint = [NSLayoutConstraint constraintWithItem:self.label
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:self
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                     multiplier:1.0
+                                                                       constant:5];
+    
+    NSLayoutConstraint *labelRightConstraint = [NSLayoutConstraint constraintWithItem:self.label
+                                                                       attribute:NSLayoutAttributeRight
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.checkmarkImageView
+                                                                       attribute:NSLayoutAttributeRight
+                                                                      multiplier:1.0
+                                                                       constant:-5];
+    [self addConstraints:@[imageCenterXConstraint,
+                           imageCenterYConstraint,
+                           imageWidthConstraint,
+                           imageHeightConstraint,
+                           labelTopConstraint,
+                           labelBottomConstraint,
+                           labelLeftConstraint,
+                           labelRightConstraint
+                           ]];
+    
+    [self updateConstraints];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     
@@ -33,7 +126,6 @@
 
 - (void)setText:(NSString *)text
 {
-    self.label.font = [UIFont fontWithName:[CTAppearance instance].fontName size:self.textLabel.font.pointSize];
     self.label.text = text;
 }
 

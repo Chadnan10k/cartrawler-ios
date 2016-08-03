@@ -21,7 +21,7 @@
 #define kExtrasViewStoryboard           @"StepFour"
 #define kSummaryViewStoryboard          @"StepFive"
 #define kDetailsViewStoryboard          @"StepSix"
-#define kPaymentViewStoryboard          @"StepSeven"
+#define kPaymentViewStoryboard          @"Payment"
 
 #define kGTViewStoryboard @"GroundTransport"
 
@@ -79,7 +79,7 @@
                                                self.customViewControllers.firstObject];
     } else {
         navController=[[CTNavigationController alloc]initWithRootViewController:
-                                               self.searchDetailsViewController];
+                                               [self paymentViewController_]];
     }
     
     navController.navigationBar.hidden = YES;
@@ -263,7 +263,7 @@
     }
 }
 
-- (StepSevenViewController *)stepSevenViewController_
+- (StepSevenViewController *)paymentViewController_
 {
     if (self.stepSevenViewController == nil) {
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
