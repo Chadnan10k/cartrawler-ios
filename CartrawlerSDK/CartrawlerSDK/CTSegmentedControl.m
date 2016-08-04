@@ -10,7 +10,12 @@
 #import "CTAppearance.h"
 
 @implementation CTSegmentedControl
-//not working, setting from view controller :(
+
++ (void)forceLinkerLoad_
+{
+    
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];

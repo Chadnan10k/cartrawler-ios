@@ -51,10 +51,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.summaryContainer closeIfOpen];
-    [self.summaryContainer setDataWithVehicle:self.selectedVehicle
-                                   pickupDate:self.pickupDate
-                                  dropoffDate:self.dropoffDate
-                            isBuyingInsurance:self.isBuyingInsurance];
+    [self.summaryContainer setDataWithVehicle:self.search.selectedVehicle
+                                   pickupDate:self.search.pickupDate
+                                  dropoffDate:self.search.dropoffDate
+                            isBuyingInsurance:self.search.isBuyingInsurance];
     
     [self registerForKeyboardNotifications];
 }
@@ -71,31 +71,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    AddressDetailsViewController *vc = segue.destinationViewController;
 
-    self.firstName = self.firstNameTextField.text;
-    self.surname = self.lastNameTextField.text;
-    self.email = self.emailTextField.text;
-    self.phone = self.phoneTextField.text;
-    self.flightNumber = self.flightNoTextField.text;
+    self.search.firstName = self.firstNameTextField.text;
+    self.search.surname = self.lastNameTextField.text;
+    self.search.email = self.emailTextField.text;
+    self.search.phone = self.phoneTextField.text;
+    self.search.flightNumber = self.flightNoTextField.text;
     
-    vc.stepSevenViewController = self.stepSevenViewController;
-    vc.cartrawlerAPI = self.cartrawlerAPI;
-    vc.selectedVehicle = self.selectedVehicle;
-    vc.pickupLocation = self.pickupLocation;
-    vc.dropoffLocation = self.dropoffLocation;
-    vc.pickupDate = self.pickupDate;
-    vc.dropoffDate = self.dropoffDate;
-    vc.driverAge = self.driverAge;
-    vc.passengerQty = self.passengerQty;
-    vc.insurance = self.insurance;
-    vc.isBuyingInsurance = self.isBuyingInsurance;
-    vc.extras = self.extras;
-    vc.firstName = self.firstName;
-    vc.surname = self.surname;
-    vc.email = self.email;
-    vc.phone = self.phone;
-    vc.flightNumber = self.flightNumber;
 //    vc.addressLine1 = self.addressLine1;
 //    vc.addressLine2 = self.addressLine2;
 //    vc.city = self.city;

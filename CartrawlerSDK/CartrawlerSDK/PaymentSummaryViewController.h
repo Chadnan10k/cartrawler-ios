@@ -8,7 +8,7 @@
 
 #import <CartrawlerSDK/CartrawlerSDK.h>
 
-@interface PaymentSummaryViewController : StepFiveViewController
+@interface PaymentSummaryViewController : CTViewController
 
 + (void)forceLinkerLoad_;
 

@@ -6,9 +6,9 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import <StepFourViewController.h>
+#import <CTViewController.h>
 
-@interface ExtrasViewController : StepFourViewController
+@interface ExtrasViewController : CTViewController
 
 + (void)forceLinkerLoad_;
 

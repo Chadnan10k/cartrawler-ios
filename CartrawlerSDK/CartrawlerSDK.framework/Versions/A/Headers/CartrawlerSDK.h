@@ -11,15 +11,17 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "CTAppearance.h"
 
-#import "StepOneViewController.h"
-#import "StepTwoViewController.h"
-#import "StepThreeViewController.h"
-#import "StepFourViewController.h"
-#import "StepFiveViewController.h"
-#import "StepSixViewController.h"
+#import "VehicleSelectionViewController.h"
 #import "StepSevenViewController.h"
 
 @interface CartrawlerSDK : NSObject
+
+@property (nonatomic, strong, readonly) CTViewController *searchDetailsViewController;
+@property (nonatomic, strong, readonly) CTViewController *vehicleSelectionViewController;
+@property (nonatomic, strong, readonly) CTViewController *vehicleDetailsViewController;
+@property (nonatomic, strong, readonly) CTViewController *insuranceExtrasViewController;
+@property (nonatomic, strong, readonly) CTViewController *paymentSummaryViewController;
+@property (nonatomic, strong, readonly) CTViewController *driverDetialsViewController;
 
 /**
  *  Initialize the CartrawlerAPI
@@ -49,7 +51,7 @@
 /**
  *  Presents the ground transport engine modally in the designated UIViewController
  *
- *  @param viewController v
+ *  @param viewController
  */
 - (void)presentGroundTransportInViewController:(UIViewController *)viewController;
 
@@ -61,13 +63,66 @@
  *  You must set all of the properties of the step view controller in order to
  *  push to the next view.
  */
-- (void)overrideStepOneViewController:(StepOneViewController *)viewController;
-- (void)overrideStepTwoViewController:(StepTwoViewController *)viewController;
-- (void)overrideStepThreeViewController:(StepThreeViewController *)viewController;
-- (void)overrideStepFourViewController:(StepFourViewController *)viewController;
-- (void)overrideStepFiveViewController:(StepFiveViewController *)viewController;
-- (void)overrideStepSixViewController:(StepSixViewController *)viewController;
-- (void)overrideStepSevenViewController:(StepSevenViewController *)viewController;
 
+/**
+ *  Override the initial Search Details View Controller
+ *
+ *  @param viewController A CTViewController subclass with its viewType set to ViewTypeSearchDetails
+ */
+- (void)overrideSearchDetailsViewController:(CTViewController *)viewController;
+
+/**
+ *  Override the vehicle selection view controller
+ *
+ *  @param viewController A CTViewController subclass with its viewType set to ViewTypeVehicleSelection
+ */
+- (void)overrideVehicleSelectionViewController:(CTViewController *)viewController;
+
+/**
+ *  Override the vehicle details view controller
+ *
+ *  @param viewController A CTViewController subclass with its viewType set to ViewTypeGeneric
+ */
+- (void)overrideVehicleDetailsViewController:(CTViewController *)viewController;
+
+/**
+ *  Override the insurance & extras view controller
+ *
+ *  @param viewController A CTViewController subclass with its viewType set to ViewTypeInsurance
+ */
+- (void)overrideInsuranceExtrasViewController:(CTViewController *)viewController;
+
+/**
+ *  Override the payment summary view controller
+ *
+ *  @param viewController A CTViewController subclass with its viewType set to ViewTypeGeneric
+ */
+- (void)overridePaymentSummaryViewController:(CTViewController *)viewController;
+
+/**
+ *  Override the driver details view controller
+ *
+ *  @param viewController A CTViewController subclass with its viewType set to ViewTypeDriverDetails
+ */
+- (void)overrideDriverDetialsViewController:(CTViewController *)viewController;
+
+/**
+ *  If you have created every view from scratch you can set them easily by passing them all into an array
+ *  The array MUST however contain these ViewTypes:
+ *
+ *  ViewTypeSearchDetails,
+ *  ViewTypeVehicleSelection,
+ *  ViewTypeInsurance,
+ *  ViewTypeDriverDetails,
+ *  ViewTypePaymentDetails,
+ *
+ *
+ * @param carRentalViews An array of CTViewController's
+ */
+- (void)setCarRentalViewsFromArray:(NSArray <CTViewController *> *)carRentalViews;
+
+- (void)rerouteViewController:(CTViewController *)viewController
+                  destination:(CTViewController *)destination
+                     fallback:(CTViewController *)fallback;
 
 @end

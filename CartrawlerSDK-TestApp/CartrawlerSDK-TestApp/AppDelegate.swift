@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Got token data! \((deviceToken as NSData).hexString)")
     }
     
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("PUSH REGISTER ERROR \(error.localizedDescription)")
     }
     
@@ -73,6 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension NSData {
     var hexString: String {
         let bytes = UnsafeBufferPointer<UInt8>(start: UnsafePointer(self.bytes), count:self.length)
-        return bytes.map { String(format: "%02hhx", $0) }.reduce("", combine: { $0 + $1 })
+        return bytes.map { String(format: "%02hhx", $0) }.reduce("", { $0 + $1 })
     }
 }

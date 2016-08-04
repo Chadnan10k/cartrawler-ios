@@ -11,6 +11,7 @@
 #import "CTLabel.h"
 #import "DateUtils.h"
 #import "CTFilterViewController.h"
+#import "CTViewManager.h"
 
 @interface VehicleSelectionViewController ()
 
@@ -33,9 +34,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self.vehicleSelectionView initWithVehicleAvailability:self.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {
-        [self pushToStepThree:vehicle];
+        
+    [self.vehicleSelectionView initWithVehicleAvailability:self.search.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {\
+        self.search.selectedVehicle = vehicle;
+       [self pushToDestination];
     }];
 }
 
@@ -43,31 +45,33 @@
 {
     [super viewDidAppear:animated];
     
-    if (self.pickupLocation == self.dropoffLocation) {
-        self.locationsLabel.text = [NSString stringWithFormat:@"%@", self.pickupLocation.name];
+    if (self.search.pickupLocation == self.search.dropoffLocation) {
+        self.locationsLabel.text = [NSString stringWithFormat:@"%@", self.search.pickupLocation.name];
     } else {
-        self.locationsLabel.text = [NSString stringWithFormat:@"%@\n- to -\n%@", self.pickupLocation.name, self.dropoffLocation.name];
+        self.locationsLabel.text = [NSString stringWithFormat:@"%@\n- to -\n%@",
+                                    self.search.pickupLocation.name, self.search.dropoffLocation.name];
     }
     
     
-    NSString *pickupDate = [DateUtils shortDescriptionFromDate:self.pickupDate];
-    NSString *dropoffDate = [DateUtils shortDescriptionFromDate:self.dropoffDate];
+    NSString *pickupDate = [DateUtils shortDescriptionFromDate:self.search.pickupDate];
+    NSString *dropoffDate = [DateUtils shortDescriptionFromDate:self.search.dropoffDate];
     
     self.datesLabel.text = [NSString stringWithFormat:@"%@ - %@", pickupDate, dropoffDate];
 }
 
 - (void)refresh
 {
-    self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)self.vehicleAvailability.allVehicles.count,
+    self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)self.search.vehicleAvailability.allVehicles.count,
                                NSLocalizedString(@"cars available", @"cars available")];
     __weak typeof (self) weakSelf = self;
 
-    _filterViewController = [CTFilterViewController initInViewController:self withData:self.vehicleAvailability];
+    _filterViewController = [CTFilterViewController initInViewController:self withData:self.search.vehicleAvailability];
     self.filterViewController.filterCompletion = ^(NSArray<CTVehicle *> *filteredData) {
         dispatch_async(dispatch_get_main_queue(), ^{
             
             [weakSelf.vehicleSelectionView initWithVehicleAvailability:filteredData completion:^(CTVehicle *vehicle) {
-                [weakSelf pushToStepThree:vehicle];
+                weakSelf.search.selectedVehicle = vehicle;
+                [weakSelf pushToDestination];
             }];
             
             weakSelf.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)filteredData.count
@@ -75,8 +79,9 @@
         });
     };
     
-    [self.vehicleSelectionView initWithVehicleAvailability:self.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {
-        [self pushToStepThree:vehicle];
+    [weakSelf.vehicleSelectionView initWithVehicleAvailability:self.search.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {
+        weakSelf.search.selectedVehicle = vehicle;
+       [weakSelf pushToDestination];
     }];
 }
 

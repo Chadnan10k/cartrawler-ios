@@ -8,7 +8,7 @@
 
 #import <CartrawlerSDK/CartrawlerSDK.h>
 
-@interface VehicleDetailsViewController : StepThreeViewController
+@interface VehicleDetailsViewController : CTViewController
 
 + (void)forceLinkerLoad_;
 

@@ -55,13 +55,13 @@ class ViewController: UIViewController {
             
             let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             
-            UIApplication.shared().registerUserNotificationSettings(settings)
-            UIApplication.shared().registerForRemoteNotifications()
+            UIApplication.shared.registerUserNotificationSettings(settings)
+            UIApplication.shared.registerForRemoteNotifications()
         } else {
             // Fallback on earlier versions
         }
         
-        UIApplication.shared().setStatusBarStyle(.lightContent, animated: false)
+        UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
         
         CartrawlerSDK.appearance().buttonColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
         CartrawlerSDK.appearance().buttonTextColor = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
@@ -79,10 +79,6 @@ class ViewController: UIViewController {
 //        CartrawlerSDK.appearance().boldFontName = "ChalkboardSE-Bold"
 
         
-        
-//        let customStepOne = storyboard?.instantiateViewControllerWithIdentifier("CustomStepOneViewController") as! CustomStepOneViewController
-//        api.overrideStepOneViewController(customStepOne)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,8 +89,42 @@ class ViewController: UIViewController {
     @IBAction func openCartrawler(sender: AnyObject) {
         //643826 RYR
         //592248
-        let cartrawlerAPI = CartrawlerSDK(requestorID: "643826", languageCode: "EN", isDebug: true)
-        cartrawlerAPI?.presentCarRental(in: self)
+        let cartrawlerSDK = CartrawlerSDK(requestorID: "643826", languageCode: "EN", isDebug: false)
+        
+        let searchDetailsView = CTViewController()
+        searchDetailsView.viewType = ViewTypeSearchDetails
+        
+        let vehicleSelectionView = CTViewController()
+        vehicleSelectionView.viewType = ViewTypeVehicleSelection
+        
+        let insuranceView = CTViewController()
+        insuranceView.viewType = ViewTypeInsurance
+        
+        let driverDetailsView = CTViewController()
+        driverDetailsView.viewType = ViewTypeDriverDetails
+        
+        let paymentView = CTViewController()
+        paymentView.viewType = ViewTypePaymentDetails
+        
+        /*
+        cartrawlerAPI?.setCarRentalViewsFrom([searchDetailsView,
+                                              vehicleSelectionView,
+                                              insuranceView,
+                                              driverDetailsView,
+                                              paymentView])
+        
+        cartrawlerAPI?.rerouteViewController(cartrawlerAPI?.insuranceExtrasViewController,
+                                             destination: cartrawlerAPI?.driverDetialsViewController,
+                                             fallback: cartrawlerAPI?.paymentSummaryViewController)
+ 
+
+        
+      let customStepOne = storyboard?.instantiateViewController(withIdentifier: "CustomStepOneViewController") as! CustomStepOneViewController
+      cartrawlerAPI?.overrideSearchDetailsViewController(customStepOne)
+        
+        customStepOne.destination = cartrawlerAPI?.vehicleSelectionViewController
+             */
+        cartrawlerSDK?.presentCarRental(in: self)
        // cartrawlerAPI!.presentGroundTransport(in: self)
     }
     

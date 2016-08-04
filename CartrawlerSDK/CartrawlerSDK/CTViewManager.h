@@ -9,19 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "CTSearch.h"
+#import "CTViewController.h"
 
-#import "StepOneViewController.h"
-#import "StepTwoViewController.h"
-#import "StepThreeViewController.h"
-#import "StepFourViewController.h"
-#import "StepFiveViewController.h"
-#import "StepSixViewController.h"
-#import "StepSevenViewController.h"
-
+///Checks whether or not we can push to a certain view
 @interface CTViewManager : NSObject
 
-@property (nonatomic, strong) CTSearch *search;
+typedef void (^ValidationCompletion)(BOOL success, NSString *errorMessage);
+typedef void (^VehAvailCompletion)(BOOL success, NSString *errorMessage);
+typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
 
-+ (instancetype)sharedManager;
-
++ (void)canTransitionToStep:(CTViewController *)step
+              cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
+                 completion:(ValidationCompletion)completion;
 @end

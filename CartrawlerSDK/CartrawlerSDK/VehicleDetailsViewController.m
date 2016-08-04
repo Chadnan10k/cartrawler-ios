@@ -42,7 +42,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -65,20 +64,20 @@
     self.tabSelection.selectedSegmentIndex = 0;
     
     if (self.vehicleDetailView) {
-        [self.vehicleDetailView setData:self.selectedVehicle
+        [self.vehicleDetailView setData:self.search.selectedVehicle
                                     api:self.cartrawlerAPI
-                             pickupDate:self.pickupDate
-                             returnDate:self.dropoffDate
-                             pickupCode:self.pickupLocation.code
-                             returnCode:self.dropoffLocation.code
+                             pickupDate:self.search.pickupDate
+                             returnDate:self.search.dropoffDate
+                             pickupCode:self.search.pickupLocation.code
+                             returnCode:self.search.dropoffLocation.code
                             homeCountry:[CTSDKSettings instance].homeCountryCode];
         
         [self.vehicleDetailView setupView];
     }
     
-    if (self.selectedVehicle.vendor.rating) {
+    if (self.search.selectedVehicle.vendor.rating) {
         if (self.supplierRatingView) {
-            [self.supplierRatingView setVendor:self.selectedVehicle.vendor];
+            [self.supplierRatingView setVendor:self.search.selectedVehicle.vendor];
             [self.supplierRatingView setupView];
         }
     } else {
@@ -98,13 +97,13 @@
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     NSBundle *b = [NSBundle bundleWithPath:bundlePath];
     
-    if (self.selectedVehicle.vendor.atAirport) {
+    if (self.search.selectedVehicle.vendor.atAirport) {
         [self.pickupLocationView setTitle:@"At Airport"
                                      text:NSLocalizedString(@"This supplier is located in the airport.", @"This supplier is located in the airport.")
                                     image:[UIImage imageNamed:@"airport_gray" inBundle:b compatibleWithTraitCollection:nil]];
     } else {
         
-        NSString *address = [self.selectedVehicle.vendor.address stringByReplacingOccurrencesOfString:@"," withString:@",\n"];
+        NSString *address = [self.search.selectedVehicle.vendor.address stringByReplacingOccurrencesOfString:@"," withString:@",\n"];
         
         [self.pickupLocationView setTitle:@"Supplier address"
                                      text:address
@@ -112,12 +111,14 @@
     }
     
     [self.fuelPolicyView setTitle:@"Fuel policy"
-                             text:self.selectedVehicle.fuelPolicyDescription
+                             text:self.search.selectedVehicle.fuelPolicyDescription
                             image:[UIImage imageNamed:@"fuel" inBundle:b compatibleWithTraitCollection:nil]];
     
     [self.view layoutIfNeeded];
     
-    NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode:self.selectedVehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
+    if (self.search.selectedVehicle.totalPriceForThisVehicle) {
+    
+    NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode:self.search.selectedVehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
     NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];
     
     NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject
@@ -137,6 +138,8 @@
     [priceString appendAttributedString:cents];
     
     self.priceLabel.attributedText = priceString;
+        
+    }
     
 }
 
@@ -153,12 +156,12 @@
 {
     if ([[segue identifier] isEqualToString:@"VehicleEmbed"]) {
         _vehicleDetailView = (VehicleDetailsView *)[segue destinationViewController];
-        [self.vehicleDetailView setData:self.selectedVehicle
+        [self.vehicleDetailView setData:self.search.selectedVehicle
                 api:self.cartrawlerAPI
-         pickupDate:self.pickupDate
-         returnDate:self.dropoffDate
-         pickupCode:self.pickupLocation.code
-         returnCode:self.dropoffLocation.code
+         pickupDate:self.search.pickupDate
+         returnDate:self.search.dropoffDate
+         pickupCode:self.search.pickupLocation.code
+         returnCode:self.search.dropoffLocation.code
         homeCountry:@"IE"];
         
         self.vehicleDetailView.heightChanged = ^(CGFloat height) {
@@ -170,7 +173,7 @@
     
     if ([[segue identifier] isEqualToString:@"RatingEmbed"]) {
         _supplierRatingView = (SupplierRatingsViewController *)[segue destinationViewController];
-        [self.supplierRatingView setVendor:self.selectedVehicle.vendor];
+        [self.supplierRatingView setVendor:self.search.selectedVehicle.vendor];
     }
 }
 
@@ -215,11 +218,11 @@
 }
 
 - (IBAction)continueTapped:(id)sender {
-    [self pushToStepFour];
+    [self pushToDestination];
     [self.activityView startAnimating];
     
     __weak typeof (self) weakSelf = self;
-    self.stepTwoCompletion = ^(BOOL insuranceSuccess, NSString *errorMessage) {
+    self.dataValidationCompletion = ^(BOOL insuranceSuccess, NSString *errorMessage) {
         [weakSelf.activityView stopAnimating];
     };
     

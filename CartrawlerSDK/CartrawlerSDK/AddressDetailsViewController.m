@@ -10,8 +10,9 @@
 #import "CTTextField.h"
 #import "BookingSummaryButton.h"
 #import "SettingsSelectionViewController.h"
+#import "CTImageCache.h"
 
-@interface AddressDetailsViewController () <UITextFieldDelegate>
+@interface AddressDetailsViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet CTTextField *addressLine1TextField;
 @property (weak, nonatomic) IBOutlet CTTextField *addressLine2TextField;
@@ -44,10 +45,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.summaryContainer closeIfOpen];
-    [self.summaryContainer setDataWithVehicle:self.selectedVehicle
-                                   pickupDate:self.pickupDate
-                                  dropoffDate:self.dropoffDate
-                            isBuyingInsurance:self.isBuyingInsurance];
+    [self.summaryContainer setDataWithVehicle:self.search.selectedVehicle
+                                   pickupDate:self.search.pickupDate
+                                  dropoffDate:self.search.dropoffDate
+                            isBuyingInsurance:self.search.isBuyingInsurance];
     
     [self registerForKeyboardNotifications];
 }
@@ -90,12 +91,12 @@
     
     if (validated) {
         
-        self.addressLine1 = self.addressLine1TextField.text;
-        self.addressLine2 = self.addressLine2TextField.text;
-        self.city = self.cityTextField.text;
-        self.postcode = self.postCodeTextField.text;
-        self.country = self.countryTextField.text;
-        [self pushToStepSeven];
+        self.search.addressLine1 = self.addressLine1TextField.text;
+        self.search.addressLine2 = self.addressLine2TextField.text;
+        self.search.city = self.cityTextField.text;
+        self.search.postcode = self.postCodeTextField.text;
+        self.search.country = self.countryTextField.text;
+        [self pushToDestination];
     }
     
 }
@@ -120,7 +121,7 @@
         
         vc.settingsCompletion = ^(CSVItem *item){
             self.countryTextField.text = item.name;
-            weakSelf.country = item.name;
+            weakSelf.search.country = item.name;
         };
         return NO;
     }
@@ -180,6 +181,25 @@
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)pushToDestination
+{
+    
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"End of CTSDK demo"
+                                                        message:@"🚗"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil, nil];
+    
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [[CTImageCache sharedInstance] removeAllObjects];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

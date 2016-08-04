@@ -18,8 +18,6 @@
 #import "CTImageCache.h"
 #import "CTPlaceholderView.h"
 #import "DateUtils.h"
-#import "StepOneViewController.h"
-#import "StepTwoViewController.h"
 #import "CTTimePickerView.h"
 #import "LocationSearchViewController.h"
 #import "LocationSearchDataSource.h"
@@ -69,14 +67,13 @@
 #import "CTTextView.h"
 #import "CTPickerView.h"
 #import "OptionalExtrasView.h"
+#import "CTSegmentedControl.h"
 
 @implementation LinkerUtils
 
 + (void)loadFiles
 {
     [JVFloatLabeledTextField forceLinkerLoad_];
-    [StepOneViewController forceLinkerLoad_];
-    [StepTwoViewController forceLinkerLoad_];
     [SearchDetailsViewController forceLinkerLoad_];
     [CTButton forceLinkerLoad_];
     [VehicleSelectionViewController forceLinkerLoad_];
@@ -135,6 +132,7 @@
     [CTTextView forceLinkerLoad_];
     [CTPickerView forceLinkerLoad_];
     [OptionalExtrasView forceLinkerLoad_];
+    [CTSegmentedControl forceLinkerLoad_];
 
 }
 

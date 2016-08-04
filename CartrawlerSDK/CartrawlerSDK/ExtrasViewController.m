@@ -66,15 +66,15 @@
     self.insuranceView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.insuranceView.layer.masksToBounds = YES;
     
-    if (self.selectedVehicle.extraEquipment.count > 0) {
+    if (self.search.selectedVehicle.extraEquipment.count > 0) {
         [self.optionalExtrasView hideView:NO];
-        [self.optionalExtrasView setExtras:self.selectedVehicle.extraEquipment];
+        [self.optionalExtrasView setExtras:self.search.selectedVehicle.extraEquipment];
         [self.optionalExtrasView setInitialFrame:self.view.frame];
     } else {
         [self.optionalExtrasView hideView:YES];
     }
     
-    [self setupView:self.insurance];
+    [self setupView:self.search.insurance];
 }
 
 - (void)viewDidLayoutSubviews
@@ -292,10 +292,10 @@
     [self.itemSelectButton addTarget:self action:@selector(presentPicker:) forControlEvents:UIControlEventTouchUpInside];
     
 
-    if (self.insuranceItem) {
-        [self.itemSelectButton setTitle:self.insuranceItem.name forState:UIControlStateNormal];
+    if (self.search.insuranceItem) {
+        [self.itemSelectButton setTitle:self.search.insuranceItem.name forState:UIControlStateNormal];
     } else {
-        [self.itemSelectButton setTitle:insurance.selectorTitle forState:UIControlStateNormal];
+        [self.itemSelectButton setTitle:self.search.insurance.selectorTitle forState:UIControlStateNormal];
     }
     
     [self.insuranceView addSubview:self.itemSelectButton];
@@ -354,7 +354,7 @@
         self.pickerView.pickerDelegate = self;
     }
     if (!self.pickerView.isVisible) {
-        [self.pickerView presentInView:self.view data:self.insurance.selectorItems];
+        [self.pickerView presentInView:self.view data:self.search.insurance.selectorItems];
     } else {
         [self.pickerView removeFromView];
     }
@@ -466,17 +466,17 @@
 
 - (IBAction)addInsurance:(id)sender
 {
-    if (needsSelectedItem && !self.insuranceItem) {
+    if (needsSelectedItem && !self.search.insuranceItem) {
         [self.itemSelectButton shake];
         return;
     }
     
-    [self pushToStepFive:self.selectedVehicle.extraEquipment insuranceSelected:YES];
+    [self pushToDestination];
 }
 
 - (IBAction)continueNoInsurance:(id)sender
 {
-    [self pushToStepFive:self.selectedVehicle.extraEquipment insuranceSelected:NO];
+    [self pushToDestination];
 }
 
 - (IBAction)back:(id)sender {
@@ -485,7 +485,7 @@
 
 - (void)pickerViewDidSelectItem:(InsuranceSelectorItem *)item
 {
-    [self setInsuranceItem:item];
+    [self.search setInsuranceItem:item];
     [self.itemSelectButton setTitle:item.name forState:UIControlStateNormal];
 }
 

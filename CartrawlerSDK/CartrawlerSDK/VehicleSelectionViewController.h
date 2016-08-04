@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CTVehicleSelectionView.h"
-#import "StepTwoViewController.h"
-@interface VehicleSelectionViewController : StepTwoViewController
+#import "CTViewController.h"
+@interface VehicleSelectionViewController : CTViewController
 
 + (void)forceLinkerLoad_;
 

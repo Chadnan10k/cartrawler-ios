@@ -18,4 +18,6 @@
 
 - (void)cellTapped;
 
+- (void)setup;
+
 @end
