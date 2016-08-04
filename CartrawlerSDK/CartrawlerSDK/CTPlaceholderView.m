@@ -20,7 +20,7 @@
 {
     self = [super initWithFrame:frame];
     self.layer.borderWidth = 2.0;
-    self.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor darkGrayColor]);
+    self.layer.borderColor = [UIColor darkGrayColor].CGColor;
     self.layer.masksToBounds = NO;
     
     return self;
@@ -33,7 +33,7 @@
     self.layer.cornerRadius = 4.0;
     
     self.layer.borderWidth = 2.0;
-    self.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor darkGrayColor]);
+    self.layer.borderColor = [UIColor darkGrayColor].CGColor;
 
     return self;
 }

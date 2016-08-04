@@ -7,6 +7,7 @@
 //
 
 #import "PaymentViewController.h"
+#import "PaymentRequest.h"
 
 @interface PaymentViewController () <UIWebViewDelegate>
 
@@ -24,19 +25,24 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    NSString *urlString = @"http://otatest.cartrawler.com:20002/cartrawlerpay/paymentform?mobile=true&type=OTA_VehResRQ";
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:urlRequest];
     self.webView.delegate = self;
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    
+    NSString *htmlFile = [b pathForResource:@"CTPCI" ofType:@"html"];
+    NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    [self.webView loadHTMLString:htmlString baseURL: [b bundleURL]];
+    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-
+    [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                     target:self
+                                   selector:@selector(currentState)
+                                   userInfo:nil
+                                    repeats:YES];
 }
 
 - (IBAction)back:(id)sender {
@@ -52,31 +58,6 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    
-    NSString *msgStr = [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding];
-
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-    NSString *filePath = [b pathForResource:@"samplePayment" ofType:@"json"];
-    if (filePath) {
-        NSString *samplePayment = [NSString stringWithContentsOfFile:filePath];
-        if (samplePayment) {
-            
-            samplePayment = [samplePayment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            
-            msgStr = [msgStr stringByReplacingOccurrencesOfString:@"msg="
-                                                       withString:@"[YOUR MSG]"];
-
-        }
-    }
-    
-    NSData* data = [msgStr dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSMutableURLRequest *msgReq = [[NSMutableURLRequest alloc] initWithURL:request.URL];
-    msgReq.HTTPMethod = @"POST";
-    msgReq.HTTPBody = data;
-    request = msgReq;
-    
     return YES;
 }
 
@@ -87,14 +68,35 @@
     NSURL *baseURL = [NSURL fileURLWithPath:path];
     [webView loadHTMLString:htmlString baseURL:baseURL];
      */
-    
-    [webView stringByEvaluatingJavaScriptFromString:@"validateForm();"];
 
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     
+}
+
+- (void)currentState
+{
+    
+    
+    NSString *currentState = [self.webView stringByEvaluatingJavaScriptFromString:@"getCurrentState()"];
+    NSString *msg = [self.webView stringByEvaluatingJavaScriptFromString:@"securePaymentWin.postMessage(\"msg=blah\" , \"*\");"];
+    
+    NSString *s = [NSString stringWithFormat:@"generateMessage(%@)",[PaymentRequest payload]];
+    
+    NSString *test = [self.webView stringByEvaluatingJavaScriptFromString:s];
+    
+    
+
+    /*
+    if (![currentState isEqualToString:@"Loaded"]) {
+        //inject msg
+        NSString *msg = [self.webView stringByEvaluatingJavaScriptFromString:@"securePaymentWin.postMessage(\"msg=blah\" , \"*\");"];
+
+    }
+    
+    */
 }
 
 @end

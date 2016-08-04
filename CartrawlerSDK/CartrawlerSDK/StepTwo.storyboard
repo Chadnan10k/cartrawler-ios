@@ -24,10 +24,10 @@
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VehicleCell" rowHeight="100" id="Ie6-82-NGv" customClass="VehicleTableViewCell">
-                                                <frame key="frameInset" minY="28" width="375" height="100"/>
+                                                <frame key="frameInset" minY="28" width="600" height="100"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ie6-82-NGv" id="JiF-MS-dV0">
-                                                    <frame key="frameInset" width="375" height="100"/>
+                                                    <frame key="frameInset" width="600" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>

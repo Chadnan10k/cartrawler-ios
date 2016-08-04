@@ -1,0 +1,75 @@
+<html> 
+
+<!--
+    lmaguire@cartrawler.com
+
+    HowTo: So the payment for MUST be loaded into an iFrame, we then create a listen for the parent view, UIWebView & WebView can then listen for messages through delegates.
+
+    Timeline of events:
+
+    IFrame created -> OnLoad triggered -> msg payload sent from native app with postMessage -> from validation success / error callback -> payment success / fail callback -> 😎 Finish
+
+ -->
+
+<iframe id="ct-secure-payment"  src="http://otatest.cartrawler.com:20002/cartrawlerpay/paymentform?type=OTA_VehResRQ&mobile=true"> </iframe>
+
+<script> 
+
+    var currentState = "Loading";
+    var securePaymentWin = document.getElementById("ct-secure-payment").contentWindow;
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+    //enum obj-c / java
+    /*
+    currentState:
+
+    Loading
+    Loaded
+    Tag
+    SendingPayment
+    PaymentError
+    ValidationError
+
+    */
+
+    // Listen to message from child window
+    eventer(messageEvent,function(e) {
+        var paymentFormMsg = JSON.parse(e.data);
+        if (paymentFormMsg.action === "onLoad") {
+            currentState = "Loaded";
+        }
+       if (paymentFormMsg.action === "tag") {
+            currentState = "Tag";
+        }
+        if (paymentFormMsg.action === "sendMessage") {
+            currentState = "SendingPayment";
+        }
+        if (paymentFormMsg.action === "sendError") {
+            currentState = "PaymentError";
+        }
+        if (paymentFormMsg.action === "validation") {
+            currentState = "ValidationError";
+        }
+    },false);
+
+    function getCurrentState() {
+        return currentState;
+    }
+
+    function generateMessage(jsonPayload) {
+        return encodeURIComponent(JSON.stringify(jsonPayload));
+    }
+
+</script>
+
+<style>
+    #ct-secure-payment {
+        height: 100%;
+        width: 100%;
+        border: 0px;
+    }
+</style>
+
+</html>
