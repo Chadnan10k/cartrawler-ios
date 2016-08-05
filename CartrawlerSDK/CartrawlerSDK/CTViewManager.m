@@ -65,7 +65,7 @@
             completion(YES, nil);
             return;
         } else {
-            completion(NO, @"");
+            completion(NO, @"ViewTypePaymentDetails: Validation error");
             return;
         }
     } else if (step.viewType == ViewTypeGeneric) {

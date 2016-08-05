@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4588E3151D538903008F4267 /* CartrawlerResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4588E3141D538903008F4267 /* CartrawlerResources.bundle */; };
+		454D20EC1D5491FA0050CA9E /* CartrawlerResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 454D20EB1D5491FA0050CA9E /* CartrawlerResources.bundle */; };
 		45AC52E61D40C6F00007CF55 /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45AC52E51D40C6F00007CF55 /* CartrawlerSDK.framework */; };
 		45CFC7EA1D2D1F15006E6F83 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CFC7E91D2D1F15006E6F83 /* CartrawlerAPI.framework */; };
 		45D866E41D143A3400D19B74 /* CustomStepOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D866E31D143A3400D19B74 /* CustomStepOneViewController.swift */; };
@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4588E3141D538903008F4267 /* CartrawlerResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = CartrawlerResources.bundle; path = "../../Library/Developer/Xcode/DerivedData/CartrawlerSDK-Dev_Environment-hjcphrtpscvfyzevosveoeowlvgo/Build/Products/Debug-iphonesimulator/CartrawlerResources.bundle"; sourceTree = "<group>"; };
+		454D20EB1D5491FA0050CA9E /* CartrawlerResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = CartrawlerResources.bundle; path = "../../Library/Developer/Xcode/DerivedData/CartrawlerSDK-Dev_Environment-hjcphrtpscvfyzevosveoeowlvgo/Build/Products/Debug-iphonesimulator/CartrawlerResources.bundle"; sourceTree = "<group>"; };
 		458B45F31D3E4082002EB31A /* CartrawlerSDK-TestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "CartrawlerSDK-TestApp.entitlements"; sourceTree = "<group>"; };
 		45AC52E51D40C6F00007CF55 /* CartrawlerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerSDK.framework; path = ../CartrawlerSDK/CartrawlerSDK.framework; sourceTree = "<group>"; };
 		45AC547F1D13E54000805268 /* CartrawlerSDK-TestApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK-TestApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		45E9424F1D12FFEB00ACF604 = {
 			isa = PBXGroup;
 			children = (
-				4588E3141D538903008F4267 /* CartrawlerResources.bundle */,
+				454D20EB1D5491FA0050CA9E /* CartrawlerResources.bundle */,
 				45AC52E51D40C6F00007CF55 /* CartrawlerSDK.framework */,
 				45CFC7E91D2D1F15006E6F83 /* CartrawlerAPI.framework */,
 				45E9425A1D12FFEB00ACF604 /* CartrawlerSDK-TestApp */,
@@ -150,7 +150,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4588E3151D538903008F4267 /* CartrawlerResources.bundle in Resources */,
+				454D20EC1D5491FA0050CA9E /* CartrawlerResources.bundle in Resources */,
 				45E942661D12FFEB00ACF604 /* LaunchScreen.storyboard in Resources */,
 				45E942631D12FFEB00ACF604 /* Assets.xcassets in Resources */,
 				45E942611D12FFEB00ACF604 /* Main.storyboard in Resources */,

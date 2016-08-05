@@ -45,20 +45,34 @@
                                     <constraint firstItem="tPg-jI-Nk9" firstAttribute="top" secondItem="SBI-wA-GBx" secondAttribute="top" constant="24" id="XJc-xh-9iE"/>
                                 </constraints>
                             </view>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3RK-53-SSz">
+                            <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RK-53-SSz">
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIk-ow-XDv" customClass="CTButton">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="V26-t3-Wf1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Book Now"/>
+                                <connections>
+                                    <action selector="bookNow:" destination="ol5-el-QKA" eventType="touchUpInside" id="R6Z-sN-skn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dIk-ow-XDv" secondAttribute="trailing" constant="16" id="3bH-Vk-iJc"/>
                             <constraint firstAttribute="trailing" secondItem="SBI-wA-GBx" secondAttribute="trailing" id="BWs-FG-G17"/>
                             <constraint firstItem="SBI-wA-GBx" firstAttribute="leading" secondItem="7TW-N7-21d" secondAttribute="leading" id="Fxw-go-6Ut"/>
-                            <constraint firstItem="oLg-Fc-5Ot" firstAttribute="top" secondItem="3RK-53-SSz" secondAttribute="bottom" id="Sn9-ZI-NCv"/>
+                            <constraint firstItem="oLg-Fc-5Ot" firstAttribute="top" secondItem="dIk-ow-XDv" secondAttribute="bottom" constant="20" id="UvC-EQ-jRx"/>
+                            <constraint firstItem="dIk-ow-XDv" firstAttribute="top" secondItem="3RK-53-SSz" secondAttribute="bottom" constant="8" id="V5c-hU-m5r"/>
                             <constraint firstAttribute="trailing" secondItem="3RK-53-SSz" secondAttribute="trailing" id="Vjm-c7-eTC"/>
+                            <constraint firstItem="dIk-ow-XDv" firstAttribute="leading" secondItem="7TW-N7-21d" secondAttribute="leading" constant="16" id="mxl-gI-jo7"/>
                             <constraint firstItem="SBI-wA-GBx" firstAttribute="top" secondItem="7TW-N7-21d" secondAttribute="top" id="xCH-va-Ctf"/>
                             <constraint firstItem="3RK-53-SSz" firstAttribute="leading" secondItem="7TW-N7-21d" secondAttribute="leading" id="zIf-qG-827"/>
-                            <constraint firstItem="3RK-53-SSz" firstAttribute="top" secondItem="SBI-wA-GBx" secondAttribute="bottom" id="zfv-IL-IHE"/>
+                            <constraint firstItem="3RK-53-SSz" firstAttribute="top" secondItem="SBI-wA-GBx" secondAttribute="bottom" constant="-1" id="zfv-IL-IHE"/>
                         </constraints>
                     </view>
                     <connections>
@@ -67,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9jb-vS-cbs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1450.4000000000001" y="1031.3343328335832"/>
+            <point key="canvasLocation" x="1450.4000000000001" y="1030.4347826086957"/>
         </scene>
         <!--Completion View Controller-->
         <scene sceneID="jUx-eD-bf3">

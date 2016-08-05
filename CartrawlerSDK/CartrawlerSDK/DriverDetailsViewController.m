@@ -84,6 +84,11 @@
 //    vc.postcode = self.postcode;
 //    vc.country = self.country;
 
+    AddressDetailsViewController *destination = (AddressDetailsViewController *)segue.destinationViewController;
+    [destination setDestinationViewController:self.destinationViewController];
+    [destination setFallBackViewController:self.fallBackViewController];
+    [destination setCartrawlerAPI:self.cartrawlerAPI];
+
 }
 
 - (IBAction)confirmDetails:(id)sender

@@ -11,7 +11,7 @@
 
  -->
 
-<iframe id="ct-secure-payment"  src="http://otatest.cartrawler.com:20002/cartrawlerpay/paymentform?type=OTA_VehResRQ&mobile=true"> </iframe>
+<iframe id="ct-secure-payment"  src="http://external-dev.cartrawler.com:20002/cartrawlerpay/paymentform?type=OTA_VehResRQ&mobile=true&hideButton=true"> </iframe>
 
 <script> 
 
@@ -40,17 +40,20 @@
         if (paymentFormMsg.action === "onLoad") {
             currentState = "Loaded";
         }
-       if (paymentFormMsg.action === "tag") {
-            currentState = "Tag";
+        if (paymentFormMsg.action === "tag") {
+            //currentState = "Tag";
         }
         if (paymentFormMsg.action === "sendMessage") {
             currentState = "SendingPayment";
         }
         if (paymentFormMsg.action === "sendError") {
-            currentState = "PaymentError";
+            currentState = "CT PAYMENT ERROR: " + paymentFormMsg.msg;
         }
-        if (paymentFormMsg.action === "validation") {
+        if (paymentFormMsg.action === " validation") {
             currentState = "ValidationError";
+        }
+        if (paymentFormMsg.action === "onError") {
+        currentState = "JSON msg ERROR: " + paymentFormMsg.msg;;
         }
     },false);
 
@@ -60,6 +63,10 @@
 
     function generateMessage(jsonPayload) {
         return encodeURIComponent(JSON.stringify(jsonPayload));
+    }
+
+    function validateAndBook() {
+        securePaymentWin.postMessage({"action" : "submitForm"} , "*");
     }
 
 </script>

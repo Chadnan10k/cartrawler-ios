@@ -27,7 +27,7 @@
 
 @interface CartrawlerSDK()
 
-@property (nonatomic, strong) StepSevenViewController *stepSevenViewController;
+@property (nonatomic, strong) CTViewController *paymentViewController;
 
 @property (nonatomic, strong) GroundTransportViewController *groundTransportViewController;
 
@@ -79,7 +79,7 @@
                                                self.customViewControllers.firstObject];
     } else {
         navController=[[CTNavigationController alloc]initWithRootViewController:
-                                               [self paymentViewController_]];
+                                               [self searchDetailsViewController_]];
     }
     
     navController.navigationBar.hidden = YES;
@@ -140,11 +140,6 @@
 {
     _driverDetialsViewController = viewController;
     [self.driverDetialsViewController setCartrawlerAPI:self.cartrawlerAPI];
-}
-
-- (void)overrideStepSevenViewController:(StepSevenViewController *)viewController
-{
-    _stepSevenViewController = viewController;
 }
 
 - (CTViewController *)searchDetailsViewController_
@@ -256,22 +251,32 @@
         NSBundle *b = [NSBundle bundleWithPath:bundlePath];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kDetailsViewStoryboard bundle:b];
         _driverDetialsViewController = [storyboard instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
-        [self.driverDetialsViewController setViewType:ViewTypeGeneric];
+        
+        [self.driverDetialsViewController setViewType:ViewTypeDriverDetails];
+        [self.driverDetialsViewController setDestinationViewController:[self paymentViewController_]];
+        [self.driverDetialsViewController setFallBackViewController:nil];
+        [self.driverDetialsViewController setCartrawlerAPI:self.cartrawlerAPI];
+        
         return self.driverDetialsViewController;
     } else {
         return self.driverDetialsViewController;
     }
 }
 
-- (StepSevenViewController *)paymentViewController_
+- (CTViewController *)paymentViewController_
 {
-    if (self.stepSevenViewController == nil) {
+    if (self.paymentViewController == nil) {
         NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
         NSBundle *b = [NSBundle bundleWithPath:bundlePath];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:b];
-        return [storyboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
+        _paymentViewController = [storyboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
+        
+        [self.paymentViewController setViewType:ViewTypePaymentDetails];
+
+        return self.paymentViewController;
+
     } else {
-        return self.stepSevenViewController;
+        return self.paymentViewController;
     }
 }
 

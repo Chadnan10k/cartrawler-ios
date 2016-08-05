@@ -183,23 +183,4 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)pushToDestination
-{
-    
-    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"End of CTSDK demo"
-                                                        message:@"🚗"
-                                                       delegate:self
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil, nil];
-    
-    [alertView show];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    [[CTImageCache sharedInstance] removeAllObjects];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 @end

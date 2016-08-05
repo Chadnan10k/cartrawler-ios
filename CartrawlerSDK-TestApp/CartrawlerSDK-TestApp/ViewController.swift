@@ -89,7 +89,7 @@ class ViewController: UIViewController {
     @IBAction func openCartrawler(sender: AnyObject) {
         //643826 RYR
         //592248
-        let cartrawlerSDK = CartrawlerSDK(requestorID: "643826", languageCode: "EN", isDebug: false)
+        let cartrawlerSDK = CartrawlerSDK(requestorID: "643826", languageCode: "EN", isDebug: true)
         
         let searchDetailsView = CTViewController()
         searchDetailsView.viewType = ViewTypeSearchDetails
