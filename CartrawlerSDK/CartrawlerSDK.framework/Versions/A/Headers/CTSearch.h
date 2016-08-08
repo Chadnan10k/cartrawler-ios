@@ -34,6 +34,9 @@
 @property (nonatomic, strong) NSString *postcode;
 @property (nonatomic, strong) NSString *country;
 
+@property (nonatomic, strong, readonly) NSString *concatinatedAddress;
+
+
 + (instancetype)instance;
 
 - (void)reset;

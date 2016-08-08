@@ -66,7 +66,7 @@
                                      givenName:[CTSearch instance].firstName
                                        surName:[CTSearch instance].surname
                                   emailAddress:[CTSearch instance].email
-                                       address:[CTSearch instance].addressLine1
+                                       address:[CTSearch instance].concatinatedAddress
                                    phoneNumber:[CTSearch instance].phone
                                insuranceObject:[CTSearch instance].insurance
                              isBuyingInsurance:[CTSearch instance].isBuyingInsurance

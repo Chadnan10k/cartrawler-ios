@@ -45,4 +45,14 @@
     _country = nil;
 }
 
+- (NSString *)concatinatedAddress
+{
+    if (![self.addressLine2 isEqualToString:@""]) {
+        return [NSString stringWithFormat:@"%@, %@, %@, %@, %@", self.addressLine1, self.addressLine2, self.city, self.postcode, self.country];
+    } else {
+        return [NSString stringWithFormat:@"%@, %@, %@, %@", self.addressLine1, self.city, self.postcode, self.country];
+    }
+    
+}
+
 @end
