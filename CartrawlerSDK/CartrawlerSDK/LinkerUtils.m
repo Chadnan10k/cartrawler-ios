@@ -68,6 +68,7 @@
 #import "CTPickerView.h"
 #import "OptionalExtrasView.h"
 #import "CTSegmentedControl.h"
+#import "PaymentCompletionViewController.h"
 
 @implementation LinkerUtils
 
@@ -133,6 +134,7 @@
     [CTPickerView forceLinkerLoad_];
     [OptionalExtrasView forceLinkerLoad_];
     [CTSegmentedControl forceLinkerLoad_];
+    [PaymentCompletionViewController forceLinkerLoad_];
 
 }
 

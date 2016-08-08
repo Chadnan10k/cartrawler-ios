@@ -671,10 +671,10 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SqW-i4-hhV">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="p2z-Si-6SR"/>
+                                            <constraint firstAttribute="width" constant="48" id="p2z-Si-6SR"/>
                                             <constraint firstAttribute="height" constant="20" id="vlT-44-2cV"/>
                                         </constraints>
-                                        <state key="normal" image="close_button">
+                                        <state key="normal" title="Done">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -690,9 +690,9 @@
                                     <constraint firstAttribute="height" constant="128" id="BU3-VO-xSM"/>
                                     <constraint firstAttribute="bottom" secondItem="sMu-TT-hfV" secondAttribute="bottom" id="N8D-df-5D0"/>
                                     <constraint firstItem="sMu-TT-hfV" firstAttribute="leading" secondItem="lIJ-uF-TjO" secondAttribute="leading" id="pFo-Hd-a55"/>
-                                    <constraint firstItem="SqW-i4-hhV" firstAttribute="top" secondItem="lIJ-uF-TjO" secondAttribute="top" constant="25" id="ps8-L2-CqX"/>
+                                    <constraint firstItem="SqW-i4-hhV" firstAttribute="top" secondItem="lIJ-uF-TjO" secondAttribute="top" constant="26" id="ps8-L2-CqX"/>
                                     <constraint firstAttribute="trailing" secondItem="sMu-TT-hfV" secondAttribute="trailing" id="u5A-ZW-B5n"/>
-                                    <constraint firstItem="SqW-i4-hhV" firstAttribute="leading" secondItem="lIJ-uF-TjO" secondAttribute="leading" constant="15" id="yeS-9M-3VO"/>
+                                    <constraint firstItem="SqW-i4-hhV" firstAttribute="leading" secondItem="lIJ-uF-TjO" secondAttribute="leading" constant="8" id="yeS-9M-3VO"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUl-G5-QHc" userLabel="CTCalendarView" customClass="CTCalendarView">

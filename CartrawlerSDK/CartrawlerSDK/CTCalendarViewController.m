@@ -55,6 +55,8 @@
             
             [self animateDateLabels:[DateUtils shortDescriptionFromDate:pickup]
                         dropoffText:[DateUtils shortDescriptionFromDate:dropoff]];
+            
+            //[self dismissViewControllerAnimated:YES completion:nil];
         });
     };
     

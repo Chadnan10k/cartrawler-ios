@@ -34,7 +34,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
+    
+    self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)self.search.vehicleAvailability.allVehicles.count,
+                               NSLocalizedString(@"cars available", @"cars available")];
+    
     [self.vehicleSelectionView initWithVehicleAvailability:self.search.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {\
         self.search.selectedVehicle = vehicle;
        [self pushToDestination];

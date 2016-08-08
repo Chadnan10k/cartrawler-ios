@@ -144,9 +144,6 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    NSLog(@"%@", [NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string]);
-    NSLog(@"%d", [self validatePhone:[NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string]]);
-    
     if (textField == self.phoneTextField) {
         return [self validatePhone:[NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string]];
     } else {

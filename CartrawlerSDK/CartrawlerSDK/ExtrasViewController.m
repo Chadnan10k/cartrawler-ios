@@ -14,6 +14,7 @@
 #import "CTButton.h"
 #import "CTTextView.h"
 #import "CTPickerView.h"
+#import "CTImageCache.h"
 
 @interface ExtrasViewController () <UITextViewDelegate, CTPickerViewDelegate>
 
@@ -143,7 +144,7 @@
             [self.insuranceView addSubview:textView];
             noResponse = NO;
         }
-        
+
         if (response.termsAndConditionsURL && response.functionalText && response.termsAndConditionsTitle) {
             CTTextView *textView = [[CTTextView alloc] initWithFrame:CGRectZero];
             textView.delegate = self;
@@ -157,10 +158,9 @@
             [self.insuranceView addSubview:textView];
             noResponse = NO;
         }
-        
         [self.view layoutIfNeeded];
         [self.insuranceView layoutIfNeeded];
-        [self createTextViews:textViews container:self.insuranceView];
+        [self createTextViews:textViews container:self.insuranceView response:response];
         
         if (response.selectorItems && response.selectorTitle) {
             [self createItemSelector:response];
@@ -188,7 +188,7 @@
     }
 }
 
-- (void)createTextViews:(NSMutableArray <CTTextView *>*)viewArray container:(UIView *)container
+- (void)createTextViews:(NSMutableArray <CTTextView *>*)viewArray container:(UIView *)container response:(CTInsurance *)response
 {
     
     CGFloat containerHeight = 130;
@@ -196,13 +196,64 @@
         CGFloat height = [self textViewHeightForAttributedText:viewArray[i].attributedText andWidth:self.insuranceView.frame.size.width];
 
         if (i == 0) {
-            NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+            
+            UIImageView *insurerImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+            [self.insuranceView addSubview:insurerImageView];
+            insurerImageView.translatesAutoresizingMaskIntoConstraints = NO;
+            insurerImageView.contentMode = UIViewContentModeScaleAspectFit;
+            
+            if (response.imageURL) {
+                [[CTImageCache sharedInstance] cachedImage: response.imageURL completion:^(UIImage *image) {
+                    insurerImageView.image = image;
+                }];
+            }
+            
+            NSLayoutConstraint *imageTopConstraint = [NSLayoutConstraint constraintWithItem:insurerImageView
                                                                              attribute:NSLayoutAttributeTop
                                                                              relatedBy:NSLayoutRelationEqual
                                                                                 toItem:container
                                                                              attribute:NSLayoutAttributeTop
                                                                             multiplier:1.0
                                                                               constant:40];
+            
+            NSLayoutConstraint *imageHeightConstraint = [NSLayoutConstraint constraintWithItem:insurerImageView
+                                                                                attribute:NSLayoutAttributeHeight
+                                                                                relatedBy:NSLayoutRelationEqual
+                                                                                   toItem:nil
+                                                                                attribute:NSLayoutAttributeNotAnAttribute
+                                                                               multiplier:1.0
+                                                                                 constant:50];
+            
+            NSLayoutConstraint *imageLeftConstraint = [NSLayoutConstraint constraintWithItem:insurerImageView
+                                                                              attribute:NSLayoutAttributeLeft
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:container
+                                                                              attribute:NSLayoutAttributeLeft
+                                                                             multiplier:1.0
+                                                                               constant:5];
+            
+            NSLayoutConstraint *imageRightConstraint = [NSLayoutConstraint constraintWithItem:insurerImageView
+                                                                               attribute:NSLayoutAttributeRight
+                                                                               relatedBy:NSLayoutRelationEqual
+                                                                                  toItem:container
+                                                                               attribute:NSLayoutAttributeRight
+                                                                              multiplier:1.0
+                                                                                constant:-5];
+            [container addConstraints:@[imageTopConstraint,
+                                        imageHeightConstraint,
+                                        imageLeftConstraint,
+                                        imageRightConstraint]];
+            
+            [self.insuranceView updateConstraints];
+            
+            
+            NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+                                                                             attribute:NSLayoutAttributeTop
+                                                                             relatedBy:NSLayoutRelationEqual
+                                                                                toItem:insurerImageView
+                                                                             attribute:NSLayoutAttributeBottom
+                                                                            multiplier:1.0
+                                                                              constant:8];
             
             NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
                                                                                 attribute:NSLayoutAttributeHeight
@@ -278,7 +329,7 @@
     }
     
     //update container height
-    self.insuranceViewHeight.constant = containerHeight;
+    self.insuranceViewHeight.constant = containerHeight + 60;
 }
 
 - (void)createItemSelector:(CTInsurance *)insurance
@@ -396,6 +447,8 @@
                                                       withString:@""
                                                          options:NSCaseInsensitiveSearch
                                                            range:NSMakeRange(0, attrText.string.length)];
+            
+            [attrText addAttributes:@{NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:15]} range:NSMakeRange(0, attrText.string.length)];
 
             return attrText;
         } else {
@@ -407,9 +460,11 @@
 
 - (NSAttributedString *)termsAndConditionsLink:(CTInsurance *)response
 {
-    return [self scanForLinks:[[NSAttributedString alloc]
-                               initWithString:response.functionalText]
-                                response:response];
+    NSDictionary *termsAttr = @{NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName
+                                                                       size:15]};
+    return [self scanForLinks:[[NSAttributedString alloc] initWithString:response.functionalText
+                                                              attributes:termsAttr]
+                     response:response];
 }
 
 - (NSAttributedString *)functionalText:(CTInsurance *)response
@@ -470,12 +525,13 @@
         [self.itemSelectButton shake];
         return;
     }
-    
+    [self.search setIsBuyingInsurance:YES];
     [self pushToDestination];
 }
 
 - (IBAction)continueNoInsurance:(id)sender
 {
+    [self.search setIsBuyingInsurance:NO];
     [self pushToDestination];
 }
 

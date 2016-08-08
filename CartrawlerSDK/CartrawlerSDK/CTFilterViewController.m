@@ -67,6 +67,8 @@
 
     [self buildTableViews];
     
+    [self.view layoutIfNeeded];
+    
 }
 
 - (void)setFilterData:(CTVehicleAvailability *)data

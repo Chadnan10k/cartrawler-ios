@@ -28,6 +28,7 @@
 @interface CartrawlerSDK()
 
 @property (nonatomic, strong) CTViewController *paymentViewController;
+@property (nonatomic, strong) CTViewController *paymentCompletionViewController;
 
 @property (nonatomic, strong) GroundTransportViewController *groundTransportViewController;
 
@@ -272,12 +273,25 @@
         _paymentViewController = [storyboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
         
         [self.paymentViewController setViewType:ViewTypePaymentDetails];
+        [self.paymentViewController setDestinationViewController:[self paymentCompletionViewController_]];
 
         return self.paymentViewController;
 
     } else {
         return self.paymentViewController;
     }
+}
+
+- (CTViewController *)paymentCompletionViewController_
+{
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:b];
+    _paymentCompletionViewController = [storyboard instantiateViewControllerWithIdentifier:@"PaymentCompletionViewController"];
+    
+    [self.paymentCompletionViewController setViewType:ViewTypeGeneric];
+    
+    return self.paymentCompletionViewController;
 }
 
 - (void)setCarRentalViewsFromArray:(NSArray <CTViewController *> *)carRentalViews
