@@ -103,7 +103,18 @@
                                     image:[UIImage imageNamed:@"airport_gray" inBundle:b compatibleWithTraitCollection:nil]];
     } else {
         
-        NSString *address = [self.search.selectedVehicle.vendor.address stringByReplacingOccurrencesOfString:@"," withString:@",\n"];
+        NSArray *addressComponents = [self.search.selectedVehicle.vendor.address componentsSeparatedByString:@","];
+        
+        NSMutableString *address = [[NSMutableString alloc] init];
+
+        for (int i = 0; i < addressComponents.count; ++i) {
+            [address appendString:[addressComponents[i] stringByTrimmingCharactersInSet:
+             [NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+            
+            if (i != addressComponents.count-1) {
+                [address appendString:@"\n"];
+            }
+        }
         
         [self.pickupLocationView setTitle:@"Supplier address"
                                      text:address

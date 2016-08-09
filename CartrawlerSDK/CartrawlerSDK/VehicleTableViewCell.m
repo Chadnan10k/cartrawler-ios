@@ -14,6 +14,7 @@
 #import "CTAppearance.h"
 #import "NSNumberUtils.h"
 #import "CTLabel.h"
+#import "LocalisedStrings.h"
 
 @interface VehicleTableViewCell ()
 
@@ -46,6 +47,8 @@
 
 - (void)initWithVehicle:(CTVehicle *)vehicle
 {
+    NSLog(@"PICKUP: %@", [LocalisedStrings pickupType:vehicle]);
+    
     self.vehicleNameLabel.text = vehicle.makeModelName;
     self.passengerQtyLabel.text = [NSString stringWithFormat:@"%d %@", vehicle.passengerQty.intValue, NSLocalizedString(@"passengers", @"passengers")];
     self.transmissionLabel.text = vehicle.transmissionType;
