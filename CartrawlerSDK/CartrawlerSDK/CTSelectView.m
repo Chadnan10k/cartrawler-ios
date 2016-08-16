@@ -115,7 +115,7 @@
                            textFieldRightConstraint]];
     
     self.textField.delegate = self;
-    [self.textField setPlaceholder:placeholder];
+    (self.textField).placeholder = placeholder;
     
     view.layer.cornerRadius = 5;
     view.layer.masksToBounds = YES;

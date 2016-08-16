@@ -13,7 +13,7 @@
 + (NSString *)stringFromDateWithFormat:(NSDate *)date format:(NSString *)format
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat: format];
+    formatter.dateFormat = format;
     return [formatter stringFromDate:date];
 }
 

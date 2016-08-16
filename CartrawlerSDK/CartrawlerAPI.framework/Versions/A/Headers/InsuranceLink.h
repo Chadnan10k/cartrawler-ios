@@ -16,6 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly, nonnull) NSString *title;
 @property (nonatomic, strong, readonly, nonnull) NSString *code;
 
-- (id)initWithLink:(NSString *)link title:(NSString *)title code:(NSString *)code;
+- (instancetype)initWithLink:(NSString *)link title:(NSString *)title code:(NSString *)code  ;
 @end
 NS_ASSUME_NONNULL_END

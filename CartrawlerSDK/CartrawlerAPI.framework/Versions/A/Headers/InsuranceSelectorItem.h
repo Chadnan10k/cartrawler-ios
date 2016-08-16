@@ -15,6 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly, nonnull) NSString *name;
 @property (nonatomic, strong, readonly, nonnull) NSString *code;
 
-- (id)initWithName:(NSString *)name code:(NSString *)code;
+- (instancetype)initWithName:(NSString *)name code:(NSString *)code  ;
 @end
 NS_ASSUME_NONNULL_END

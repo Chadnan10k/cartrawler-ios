@@ -63,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly, nullable) NSArray <InsuranceSelectorItem *> *selectorItems;
 @property (nonatomic, strong, readonly, nullable) NSArray <InsuranceLink *> *links;
 
-- (id)initFromDict:(NSDictionary *)dict;
+- (instancetype)initFromDict:(NSDictionary *)dict  ;
 
 @end
 NS_ASSUME_NONNULL_END

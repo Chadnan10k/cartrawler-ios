@@ -39,23 +39,23 @@ typedef NS_ENUM(NSUInteger, PickupType) {
     /**
      *  Shuttle bus pickup
      */
-    PickupTypeShuttleBus = 1,
+    PickupTypeShuttleBus,
     /**
      *  In terminal counter, shuttle to car
      */
-    PickupTypeTerminalAndShuttle = 2,
+    PickupTypeTerminalAndShuttle,
     /**
      *  Meet and greet
      */
-    PickupTypeMeetAndGreet = 3,
+    PickupTypeMeetAndGreet,
     /**
      *  Chaufur service
      */
-    PickupTypeCarDriver = 4,
+    PickupTypeCarDriver,
     /**
      *  Unknown pickup type
      */
-    PickupTypeUnknown = 5
+    PickupTypeUnknown
 };
 
 /**
@@ -69,55 +69,55 @@ typedef NS_ENUM(NSUInteger, CounterType) {
     /**
      *  Shuttle on airport
      */
-    CounterTypeShuttleOnAirport = 1,
+    CounterTypeShuttleOnAirport,
     /**
      *  Shuttle off airport
      */
-    CounterTypeShuttleOffAirport = 2,
+    CounterTypeShuttleOffAirport,
     /**
      *  Railway station
      */
-    CounterTypeRailwayStation = 3,
+    CounterTypeRailwayStation,
     /**
      *  Hotel
      */
-    CounterTypeHotel = 4,
+    CounterTypeHotel,
     /**
      *  Car dealer
      */
-    CounterTypeCarDealer = 5,
+    CounterTypeCarDealer,
     /**
      *  City center/downtown
      */
-    CounterTypeCityCenterDowntown = 6,
+    CounterTypeCityCenterDowntown,
     /**
      *  East of city center
      */
-    CounterTypeCityCenterEast = 7,
+    CounterTypeCityCenterEast,
     /**
      *  South of city center
      */
-    CounterTypeCityCenterSouth = 8,
+    CounterTypeCityCenterSouth,
     /**
      *  West of city center
      */
-    CounterTypeCityCenterWest = 9,
+    CounterTypeCityCenterWest,
     /**
      *  North of city center
      */
-    CounterTypeCityCenterNorth = 10,
+    CounterTypeCityCenterNorth,
     /**
      *  Port/ferry
      */
-    CounterTypeFerryPort = 11,
+    CounterTypeFerryPort,
     /**
      *  Near resort
      */
-    CounterTypeNearResort = 12,
+    CounterTypeNearResort,
     /**
      *  Airport
      */
-    CounterTypeAirport = 12
+    CounterTypeAirport
 };
 
 /**
@@ -185,7 +185,7 @@ typedef NS_ENUM(NSUInteger, CounterType) {
  */
 @property (nonatomic, strong) NSArray<CTVehicle *> *availableCars;
 
-- (id)initFromVehVendorAvailsDictionary:(NSDictionary *)vehVendorAvails;
+- (instancetype)initFromVehVendorAvailsDictionary:(NSDictionary *)vehVendorAvails  ;
 
 @end
 

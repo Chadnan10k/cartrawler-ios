@@ -36,11 +36,13 @@
 
 @property (nonatomic, strong) NSArray <CTViewController *> *customViewControllers;
 
+@property (nonatomic, strong) NSBundle *bundle;
+
 @end
 
 @implementation CartrawlerSDK
 
-- (id)initWithRequestorID:(NSString *)requestorID
+- (instancetype)initWithRequestorID:(NSString *)requestorID
              languageCode:(NSString *)languageCode
                   isDebug:(BOOL)isDebug
 {
@@ -53,8 +55,11 @@
                                                      language:[CTSDKSettings instance].languageCode
                                                         debug:[CTSDKSettings instance].isDebug];
     
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    _bundle = [NSBundle bundleWithPath:bundlePath];
+    
     _searchDetailsViewController = [self searchDetailsViewController_];
-    [self.searchDetailsViewController setSearch:[CTSearch instance]];
+    (self.searchDetailsViewController).search = [CTSearch instance];
     
     if (isDebug) {
         [self.cartrawlerAPI enableLogging:YES];
@@ -110,55 +115,54 @@
 - (void)overrideSearchDetailsViewController:(CTViewController *)viewController
 {
     _searchDetailsViewController = viewController;
-    [self.searchDetailsViewController setCartrawlerAPI:self.cartrawlerAPI];
+    (self.searchDetailsViewController).cartrawlerAPI = self.cartrawlerAPI;
 }
 
 - (void)overrideVehicleSelectionViewController:(CTViewController *)viewController
 {
     _vehicleSelectionViewController = viewController;
-    [self.vehicleSelectionViewController setCartrawlerAPI:self.cartrawlerAPI];
+    (self.vehicleSelectionViewController).cartrawlerAPI = self.cartrawlerAPI;
 }
 
 - (void)overrideVehicleDetailsViewController:(CTViewController *)viewController
 {
     _vehicleDetailsViewController = viewController;
-    [self.vehicleDetailsViewController setCartrawlerAPI:self.cartrawlerAPI];
+    (self.vehicleDetailsViewController).cartrawlerAPI = self.cartrawlerAPI;
 }
 
 - (void)overrideInsuranceExtrasViewController:(CTViewController *)viewController
 {
     _insuranceExtrasViewController = viewController;
-    [self.insuranceExtrasViewController setCartrawlerAPI:self.cartrawlerAPI];
+    (self.insuranceExtrasViewController).cartrawlerAPI = self.cartrawlerAPI;
 }
 
 - (void)overridePaymentSummaryViewController:(CTViewController *)viewController
 {
     _paymentSummaryViewController = viewController;
-    [self.paymentSummaryViewController setCartrawlerAPI:self.cartrawlerAPI];
+    (self.paymentSummaryViewController).cartrawlerAPI = self.cartrawlerAPI;
 }
 
 - (void)overrideDriverDetialsViewController:(CTViewController *)viewController
 {
     _driverDetialsViewController = viewController;
-    [self.driverDetialsViewController setCartrawlerAPI:self.cartrawlerAPI];
+    (self.driverDetialsViewController).cartrawlerAPI = self.cartrawlerAPI;
 }
 
 - (CTViewController *)searchDetailsViewController_
 {
     if (self.searchDetailsViewController) {
-        [self.searchDetailsViewController setSearch:[CTSearch instance]];
+        (self.searchDetailsViewController).search = [CTSearch instance];
         return self.searchDetailsViewController;
     } else {
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:b];
+
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:self.bundle];
         _searchDetailsViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
         
-        [self.searchDetailsViewController setDestinationViewController:[self vehicleSelectionViewController_]];
+        (self.searchDetailsViewController).destinationViewController = [self vehicleSelectionViewController_];
         [self.searchDetailsViewController setFallBackViewController:nil];
-        [self.searchDetailsViewController setViewType:ViewTypeSearchDetails];
-        [self.searchDetailsViewController setCartrawlerAPI:self.cartrawlerAPI];
-        [self.searchDetailsViewController setSearch:[CTSearch instance]];
+        (self.searchDetailsViewController).viewType = ViewTypeSearchDetails;
+        (self.searchDetailsViewController).cartrawlerAPI = self.cartrawlerAPI;
+        (self.searchDetailsViewController).search = [CTSearch instance];
 
         return self.searchDetailsViewController;
     }
@@ -167,15 +171,13 @@
 - (CTViewController *)vehicleSelectionViewController_
 {
     if (self.vehicleSelectionViewController == nil) {
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchResultsViewStoryboard bundle:b];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchResultsViewStoryboard bundle:self.bundle];
         _vehicleSelectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchResultsViewController"];
 
-        [self.vehicleSelectionViewController setDestinationViewController:[self vehicleDetailsViewController_]];
-        [self.vehicleSelectionViewController setViewType:ViewTypeVehicleSelection];
+        (self.vehicleSelectionViewController).destinationViewController = [self vehicleDetailsViewController_];
+        (self.vehicleSelectionViewController).viewType = ViewTypeVehicleSelection;
         [self.vehicleSelectionViewController setFallBackViewController:nil];
-        [self.vehicleSelectionViewController setCartrawlerAPI:self.cartrawlerAPI];
+        (self.vehicleSelectionViewController).cartrawlerAPI = self.cartrawlerAPI;
 
         return self.vehicleSelectionViewController;
     } else {
@@ -186,15 +188,13 @@
 - (CTViewController *)vehicleDetailsViewController_
 {
     if (self.vehicleDetailsViewController == nil) {
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVehicleDetailsViewStoryboard bundle:b];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVehicleDetailsViewStoryboard bundle:self.bundle];
         _vehicleDetailsViewController = [storyboard instantiateViewControllerWithIdentifier:@"VehicleDetailsViewController"];
         
-        [self.vehicleDetailsViewController setDestinationViewController:[self insuranceExtrasViewController_]];
-        [self.vehicleDetailsViewController setViewType:ViewTypeGeneric];
-        [self.vehicleDetailsViewController setFallBackViewController:[self paymentSummaryViewController_]];
-        [self.vehicleDetailsViewController setCartrawlerAPI:self.cartrawlerAPI];
+        (self.vehicleDetailsViewController).destinationViewController = [self insuranceExtrasViewController_];
+        (self.vehicleDetailsViewController).viewType = ViewTypeGeneric;
+        (self.vehicleDetailsViewController).fallBackViewController = [self paymentSummaryViewController_];
+        (self.vehicleDetailsViewController).cartrawlerAPI = self.cartrawlerAPI;
         
         return self.vehicleDetailsViewController;
     } else {
@@ -205,16 +205,14 @@
 - (CTViewController *)insuranceExtrasViewController_
 {
     if (self.insuranceExtrasViewController == nil) {
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kExtrasViewStoryboard bundle:b];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kExtrasViewStoryboard bundle:self.bundle];
         
         _insuranceExtrasViewController = [storyboard instantiateViewControllerWithIdentifier:@"ExtrasViewController"];
         
-        [self.insuranceExtrasViewController setDestinationViewController:[self paymentSummaryViewController_]];
-        [self.insuranceExtrasViewController setViewType:ViewTypeInsurance];
-        [self.insuranceExtrasViewController setFallBackViewController:[self driverDetialsViewController_]];
-        [self.insuranceExtrasViewController setCartrawlerAPI:self.cartrawlerAPI];
+        (self.insuranceExtrasViewController).destinationViewController = [self paymentSummaryViewController_];
+        (self.insuranceExtrasViewController).viewType = ViewTypeInsurance;
+        (self.insuranceExtrasViewController).fallBackViewController = [self driverDetialsViewController_];
+        (self.insuranceExtrasViewController).cartrawlerAPI = self.cartrawlerAPI;
         
         return self.insuranceExtrasViewController;
 
@@ -228,15 +226,13 @@
 - (CTViewController *)paymentSummaryViewController_
 {
     if (self.paymentSummaryViewController == nil) {
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSummaryViewStoryboard bundle:b];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSummaryViewStoryboard bundle:self.bundle];
         _paymentSummaryViewController = [storyboard instantiateViewControllerWithIdentifier:@"PaymentSummaryViewController"];
         
-        [self.paymentSummaryViewController setDestinationViewController:[self driverDetialsViewController_]];
-        [self.paymentSummaryViewController setViewType:ViewTypeGeneric];
+        (self.paymentSummaryViewController).destinationViewController = [self driverDetialsViewController_];
+        (self.paymentSummaryViewController).viewType = ViewTypeGeneric;
         [self.paymentSummaryViewController setFallBackViewController:nil];
-        [self.paymentSummaryViewController setCartrawlerAPI:self.cartrawlerAPI];
+        (self.paymentSummaryViewController).cartrawlerAPI = self.cartrawlerAPI;
         
         return self.paymentSummaryViewController;
 
@@ -248,15 +244,13 @@
 - (CTViewController *)driverDetialsViewController_
 {
     if (self.driverDetialsViewController == nil) {
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kDetailsViewStoryboard bundle:b];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kDetailsViewStoryboard bundle:self.bundle];
         _driverDetialsViewController = [storyboard instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
         
-        [self.driverDetialsViewController setViewType:ViewTypeDriverDetails];
-        [self.driverDetialsViewController setDestinationViewController:[self paymentViewController_]];
+        (self.driverDetialsViewController).viewType = ViewTypeDriverDetails;
+        (self.driverDetialsViewController).destinationViewController = [self paymentViewController_];
         [self.driverDetialsViewController setFallBackViewController:nil];
-        [self.driverDetialsViewController setCartrawlerAPI:self.cartrawlerAPI];
+        (self.driverDetialsViewController).cartrawlerAPI = self.cartrawlerAPI;
         
         return self.driverDetialsViewController;
     } else {
@@ -267,13 +261,11 @@
 - (CTViewController *)paymentViewController_
 {
     if (self.paymentViewController == nil) {
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:b];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:self.bundle];
         _paymentViewController = [storyboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
         
-        [self.paymentViewController setViewType:ViewTypePaymentDetails];
-        [self.paymentViewController setDestinationViewController:[self paymentCompletionViewController_]];
+        (self.paymentViewController).viewType = ViewTypePaymentDetails;
+        (self.paymentViewController).destinationViewController = [self paymentCompletionViewController_];
 
         return self.paymentViewController;
 
@@ -284,12 +276,10 @@
 
 - (CTViewController *)paymentCompletionViewController_
 {
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:b];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:self.bundle];
     _paymentCompletionViewController = [storyboard instantiateViewControllerWithIdentifier:@"PaymentCompletionViewController"];
     
-    [self.paymentCompletionViewController setViewType:ViewTypeGeneric];
+    (self.paymentCompletionViewController).viewType = ViewTypeGeneric;
     
     return self.paymentCompletionViewController;
 }
@@ -306,7 +296,7 @@
     
     for (CTViewController *vc in carRentalViews) {
         
-        [vc setCartrawlerAPI:self.cartrawlerAPI];
+        vc.cartrawlerAPI = self.cartrawlerAPI;
         
         if (vc.viewType == ViewTypeSearchDetails) {
             hasSearchDetails = YES;
@@ -383,9 +373,7 @@
 - (GroundTransportViewController *)groundTransportViewController_
 {
     if (self.groundTransportViewController == nil) {
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kGTViewStoryboard bundle:b];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kGTViewStoryboard bundle:self.bundle];
         return [storyboard instantiateViewControllerWithIdentifier:@"GroundTransportViewController"];
     } else {
         return self.groundTransportViewController;
@@ -397,7 +385,7 @@
 void uncaughtExceptionHandler(NSException *exception)
 {
     NSLog(@"\n\n\nCartrawlerSDK Crash:\n%@\n\n\n", exception);
-    NSLog(@"\n\n\nCartrawlerSDK Stack Trace:\n\n\n%@", [exception callStackSymbols]);
+    NSLog(@"\n\n\nCartrawlerSDK Stack Trace:\n\n\n%@", exception.callStackSymbols);
 }
 
 

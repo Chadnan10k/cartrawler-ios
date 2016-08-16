@@ -55,7 +55,7 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
  *  @param debug Enable or disable test endpoints
  *  @param language The language identifer eg. EN
  */
-- (id)initWithClientKey:(NSString *)clientKey language:(NSString *)language debug:(BOOL)debug;
+- (instancetype)initWithClientKey:(NSString *)clientKey language:(NSString *)language debug:(BOOL)debug;
 
 /**
  *  Shows API requests and responses

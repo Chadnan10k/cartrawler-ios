@@ -12,7 +12,12 @@
 #import "CTAppearance.h"
 
 #import "VehicleSelectionViewController.h"
-#import "StepSevenViewController.h"
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+#error This version (1.0.0) of CartrawlerSDK for iOS supports iOS 7.0 upwards.
+#endif
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface CartrawlerSDK : NSObject
 
@@ -31,9 +36,9 @@
  *  @param isDebug      Flag to indicate if you want to point to test or production endpoints
  *
  */
-- (id)initWithRequestorID:(NSString *)requestorID
-             languageCode:(NSString *)languageCode
-                  isDebug:(BOOL)isDebug;
+- (instancetype)initWithRequestorID:(NSString *)requestorID
+                       languageCode:(NSString *)languageCode
+                            isDebug:(BOOL)isDebug;
 
 /**
  *  Use CTAppearance for overriding the preset views color scheme
@@ -126,3 +131,5 @@
                      fallback:(CTViewController *)fallback;
 
 @end
+
+NS_ASSUME_NONNULL_END

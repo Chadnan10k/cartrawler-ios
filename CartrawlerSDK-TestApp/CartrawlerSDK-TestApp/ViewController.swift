@@ -90,41 +90,7 @@ class ViewController: UIViewController {
         //643826 RYR
         //592248
         let cartrawlerSDK = CartrawlerSDK(requestorID: "643826", languageCode: "EN", isDebug: true)
-        
-        let searchDetailsView = CTViewController()
-        searchDetailsView.viewType = ViewTypeSearchDetails
-        
-        let vehicleSelectionView = CTViewController()
-        vehicleSelectionView.viewType = ViewTypeVehicleSelection
-        
-        let insuranceView = CTViewController()
-        insuranceView.viewType = ViewTypeInsurance
-        
-        let driverDetailsView = CTViewController()
-        driverDetailsView.viewType = ViewTypeDriverDetails
-        
-        let paymentView = CTViewController()
-        paymentView.viewType = ViewTypePaymentDetails
-        
-        /*
-        cartrawlerAPI?.setCarRentalViewsFrom([searchDetailsView,
-                                              vehicleSelectionView,
-                                              insuranceView,
-                                              driverDetailsView,
-                                              paymentView])
-        
-        cartrawlerAPI?.rerouteViewController(cartrawlerAPI?.insuranceExtrasViewController,
-                                             destination: cartrawlerAPI?.driverDetialsViewController,
-                                             fallback: cartrawlerAPI?.paymentSummaryViewController)
- 
-
-        
-      let customStepOne = storyboard?.instantiateViewController(withIdentifier: "CustomStepOneViewController") as! CustomStepOneViewController
-      cartrawlerAPI?.overrideSearchDetailsViewController(customStepOne)
-        
-        customStepOne.destination = cartrawlerAPI?.vehicleSelectionViewController
-             */
-        cartrawlerSDK?.presentCarRental(in: self)
+        cartrawlerSDK.presentCarRental(in: self)
        // cartrawlerAPI!.presentGroundTransport(in: self)
     }
     

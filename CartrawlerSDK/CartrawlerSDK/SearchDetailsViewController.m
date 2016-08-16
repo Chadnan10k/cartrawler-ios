@@ -67,14 +67,14 @@
     
     [self registerForKeyboardNotifications];
     
-    [self.search setDriverAge:@30];
-    [self.search setPassengerQty:@3];
+    (self.search).driverAge = @30;
+    (self.search).passengerQty = @3;
     
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *initialTimeComp = [gregorianCalendar components:NSHourCalendarUnit
                                                              fromDate:[NSDate date]];
     
-    [initialTimeComp setHour:10];
+    initialTimeComp.hour = 10;
     
     _pickupTime = [gregorianCalendar dateFromComponents:initialTimeComp];
     _dropoffTime = [gregorianCalendar dateFromComponents:initialTimeComp];
@@ -102,10 +102,10 @@
         
         locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
             [weakSelf.pickupView setTextFieldText:location.name];
-            [weakSelf.search setPickupLocation:location];
+            (weakSelf.search).pickupLocation = location;
             
             if (weakSelf.isReturningSameLocation) {
-                [weakSelf.search setDropoffLocation:location];
+                (weakSelf.search).dropoffLocation = location;
             }
         };
     };
@@ -125,7 +125,7 @@
         
         locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
             [weakSelf.dropoffView setTextFieldText:location.name];
-            [weakSelf.search setDropoffLocation:location];
+            (weakSelf.search).dropoffLocation = location;
         };
     };
 
@@ -180,7 +180,7 @@
     sameLoc.viewTapped = ^(BOOL selection) {
         if (selection) {
             _isReturningSameLocation = NO;
-            [weakSelf.search setDropoffLocation:self.search.pickupLocation];
+            (weakSelf.search).dropoffLocation = self.search.pickupLocation;
             self.dropoffLocTopConstraint.constant = 15;
             [UIView animateWithDuration:0.3 animations:^{
                 self.dropoffContainer.alpha = 0;
@@ -250,8 +250,8 @@
     
     [self.calendarView setTextFieldText:dateString];
     
-    [self.search setPickupDate:pickupDate];
-    [self.search setDropoffDate:dropoffDate];
+    (self.search).pickupDate = pickupDate;
+    (self.search).dropoffDate = dropoffDate;
 }
 
 - (void)combineDates
@@ -259,8 +259,8 @@
     NSDate *puDate = [DateUtils mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.search.pickupDate];
     NSDate *doDate = [DateUtils mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.search.dropoffDate];
 
-    [self.search setPickupDate:puDate];
-    [self.search setDropoffDate:doDate];
+    (self.search).pickupDate = puDate;
+    (self.search).dropoffDate = doDate;
 }
 
 - (BOOL)validate
@@ -343,31 +343,31 @@
 
 - (void)keyboardWillHide:(NSNotification *)n
 {
-    NSDictionary* userInfo = [n userInfo];
+    NSDictionary* userInfo = n.userInfo;
 
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
 
     CGRect viewFrame = self.scrollView.frame;
     viewFrame.size.height += (keyboardSize.height + 45);
 
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
-    [self.scrollView setFrame:viewFrame];
+    (self.scrollView).frame = viewFrame;
     [UIView commitAnimations];
 }
 
 - (void)keyboardWillShow:(NSNotification *)n
 {
 
-    NSDictionary* userInfo = [n userInfo];
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    NSDictionary* userInfo = n.userInfo;
+    CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     CGRect viewFrame = self.scrollView.frame;
 
     viewFrame.size.height -= (keyboardSize.height + 45);
 
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
-    [self.scrollView setFrame:viewFrame];
+    (self.scrollView).frame = viewFrame;
     [UIView commitAnimations];
 }
 

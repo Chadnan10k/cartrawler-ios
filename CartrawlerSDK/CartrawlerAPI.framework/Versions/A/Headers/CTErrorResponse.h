@@ -16,6 +16,6 @@
  */
 @property (nonatomic, strong, readonly) NSString *errorMessage;
 
-- (id)initWithDictionary:(NSDictionary *)dict;
+- (instancetype)initWithDictionary:(NSDictionary *)dict  ;
 
 @end

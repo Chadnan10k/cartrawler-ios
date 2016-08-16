@@ -154,10 +154,10 @@
 
 - (void)keyboardWillHide:(NSNotification *)n
 {
-    NSDictionary* userInfo = [n userInfo];
+    NSDictionary* userInfo = n.userInfo;
     
     // get the size of the keyboard
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     
     // resize the scrollview
@@ -167,7 +167,7 @@
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
-    [self.scrollView setFrame:viewFrame];
+    (self.scrollView).frame = viewFrame;
     [UIView commitAnimations];
     
     keyboardIsShown = NO;
@@ -180,10 +180,10 @@
         return;
     }
     
-    NSDictionary* userInfo = [n userInfo];
+    NSDictionary* userInfo = n.userInfo;
     
     // get the size of the keyboard
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     // resize the noteView
     CGRect viewFrame = self.scrollView.frame;
@@ -192,7 +192,7 @@
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
-    [self.scrollView setFrame:viewFrame];
+    (self.scrollView).frame = viewFrame;
     [UIView commitAnimations];
     keyboardIsShown = YES;
 }

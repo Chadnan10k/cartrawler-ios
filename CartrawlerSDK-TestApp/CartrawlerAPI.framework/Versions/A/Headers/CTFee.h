@@ -40,5 +40,5 @@
  */
 @property (nonatomic, strong, readonly) NSString *feePurposeDescription;
 
-- (id)initFromFeeDictionary:(NSDictionary *)feeDictionary;
+- (instancetype)initFromFeeDictionary:(NSDictionary *)feeDictionary  ;
 @end

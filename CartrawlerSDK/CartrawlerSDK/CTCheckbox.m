@@ -103,10 +103,10 @@
     NSBundle* bundle = [NSBundle bundleWithURL:[[NSBundle mainBundle]URLForResource:@"CartrawlerResources" withExtension:@"bundle"]];    
     UIImage* image =[UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil];
     
-    [self.imageView setImage:image];
+    (self.imageView).image = image;
     [self addSubview:self.imageView];
     self.imageView.translatesAutoresizingMaskIntoConstraints = false;
-    [self.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    (self.imageView).contentMode = UIViewContentModeScaleAspectFit;
     
     NSLayoutConstraint *textFieldTopConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
                                                                               attribute:NSLayoutAttributeTop

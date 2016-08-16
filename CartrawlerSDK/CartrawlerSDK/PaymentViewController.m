@@ -14,7 +14,7 @@
 #import "PaymentCompletionViewController.h"
 #import "Reachability.h"
 
-@interface PaymentViewController () <UIWebViewDelegate, UIAlertViewDelegate>
+@interface PaymentViewController () <UIWebViewDelegate, UIAlertViewDelegate, NSURLConnectionDataDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) NSTimer *timer;
@@ -43,6 +43,31 @@
     
     viewState = @"";
     
+    [self setupWebView];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [self deregisterForKeyboardNotifications];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    _reachability = [Reachability reachabilityWithHostName:@"www.google.com"];
+
+    [self.reachability startNotifier];
+        
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
+
+    [self startTimer];
+}
+
+- (void)setupWebView
+{
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     NSBundle *b = [NSBundle bundleWithPath:bundlePath];
     
@@ -88,45 +113,21 @@
     
     htmlString = [htmlString stringByReplacingOccurrencesOfString:@"[URLPLACEHOLDER]" withString:urlStr];
     
-    [self.webView loadHTMLString:htmlString baseURL: [b bundleURL]];
-    
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    
-    [self deregisterForKeyboardNotifications];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    _reachability = [Reachability reachabilityWithHostName:@"www.google.com"];
-
-    [self.reachability startNotifier];
-        
-    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
-
-
-    [self startTimer];
+    [self.webView loadHTMLString:htmlString baseURL: b.bundleURL];
 }
 
 - (void)reachabilityChanged:(NSNotification *)notification {
-    Reachability *reachability = [notification object];
+    Reachability *reachability = notification.object;
     NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
-    
+
     if(remoteHostStatus == NotReachable) {
         [self.timer invalidate];
         viewState = @"ConnectionError";
-    }
-    else if (remoteHostStatus == ReachableViaWiFi) {
+    } else if (remoteHostStatus == ReachableViaWiFi) {
         [self.timer invalidate];
         [self startTimer];
         viewState = @"";
-    }
-    else if (remoteHostStatus == ReachableViaWWAN) {
+    } else if (remoteHostStatus == ReachableViaWWAN) {
         [self.timer invalidate];
         [self startTimer];
         viewState = @"";
@@ -223,12 +224,12 @@
 
 - (IBAction)bookNow:(id)sender {
     
-    if ([viewState isEqualToString:@"PaymentError"] || [viewState isEqualToString:@"ConnectionError"]) {
-        [self.timer invalidate];
-        [self showError:@"Payment error" message:@"Please try again"];
-    } else {
+    //if ([viewState isEqualToString:@"PaymentError"] || [viewState isEqualToString:@"ConnectionError"]) {
+   //     [self.timer invalidate];
+   //     [self showError:@"Payment error" message:@"Please try again"];
+   // } else {
         [self.webView stringByEvaluatingJavaScriptFromString:@"validateAndBook()"];
-    }
+   // }
 }
 
 @end

@@ -20,7 +20,7 @@
     self = [super initWithRootViewController:rootViewController];
     
 
-    [self.navigationBar setBarTintColor:[CTAppearance instance].navigationBarTint];
+    (self.navigationBar).barTintColor = [CTAppearance instance].navigationBarTint;
     
 
     
@@ -30,14 +30,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSShadow *shadow = [NSShadow new];
-    [shadow setShadowColor: [UIColor clearColor]];
-    [shadow setShadowOffset: CGSizeMake(0.0f, 1.0f)];
+    shadow.shadowColor = [UIColor clearColor];
+    shadow.shadowOffset = CGSizeMake(0.0f, 1.0f);
     
-    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont
-                                                                           fontWithName:[CTAppearance instance].fontName size:20], NSFontAttributeName,
-                                [UIColor blackColor], NSForegroundColorAttributeName, nil];
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont
+                                                                           fontWithName:[CTAppearance instance].fontName size:20],
+                                NSForegroundColorAttributeName: [UIColor blackColor]};
     
-    [[UINavigationBar appearance] setTitleTextAttributes:attributes];
+    [UINavigationBar appearance].titleTextAttributes = attributes;
 }
 
 - (void)didReceiveMemoryWarning {

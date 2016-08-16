@@ -25,15 +25,15 @@ typedef NS_ENUM(NSUInteger, FuelType) {
     /**
      *  Diesel fuel
      */
-    FuelTypeDiesel = 1,
+    FuelTypeDiesel,
     /**
      *  Electric powered
      */
-    FuelTypeElectric = 2,
+    FuelTypeElectric,
     /**
      *  Any fuel type
      */
-    FuelTypeAny = 3
+    FuelTypeAny
 };
 
 /**
@@ -47,11 +47,11 @@ typedef NS_ENUM(NSUInteger, TransmissionType) {
     /**
      *  Automatic transmission
      */
-    TransmissionTypeAutomatic = 1,
+    TransmissionTypeAutomatic,
     /**
      *  Any type of transmission
      */
-    TransmissionTypeAny = 2
+    TransmissionTypeAny
 };
 
 /**

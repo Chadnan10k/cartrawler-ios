@@ -54,7 +54,7 @@ static BOOL isCodePointStrongLTR(UTF32Char c)
     NSData *utf32data = [string dataUsingEncoding:NSUTF32StringEncoding];
     // NSUTF32StringEncoding has the platform's byte-order, which should
     // be the same as UTF32Char's.
-    UTF32Char *utf32chars = (UTF32Char *)[utf32data bytes];
+    UTF32Char *utf32chars = (UTF32Char *)utf32data.bytes;
     
     for (NSUInteger i = 0; i < string.length; i++) {
         // UTF32 is a fixed-length encoding, so utf32chars[i] will

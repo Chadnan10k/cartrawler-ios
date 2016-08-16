@@ -15,8 +15,6 @@
 @interface CTViewManager : NSObject
 
 typedef void (^ValidationCompletion)(BOOL success, NSString *errorMessage);
-typedef void (^VehAvailCompletion)(BOOL success, NSString *errorMessage);
-typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
 
 + (void)canTransitionToStep:(CTViewController *)step
               cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI

@@ -42,12 +42,11 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)initWithVehicle:(CTVehicle *)vehicle
 {
-    NSLog(@"PICKUP: %@", [LocalisedStrings pickupType:vehicle]);
     
     self.vehicleNameLabel.text = vehicle.makeModelName;
     self.passengerQtyLabel.text = [NSString stringWithFormat:@"%d %@", vehicle.passengerQty.intValue, NSLocalizedString(@"passengers", @"passengers")];
@@ -172,12 +171,8 @@
         return NSLocalizedString(@"Full to full hybrid", @"Full to full hybrid");
     }
 
-    if (fuelPolicy == FuelPolicyChaufFulFul) {
+    if (fuelPolicy == FuelPolicyChaufFullFull) {
         return NSLocalizedString(@"Full to full chauf", @"Full to full chauf");
-    }
-
-    if (fuelPolicy == FuelPolicyChaufFulFul) {
-        return NSLocalizedString(@"Chauf full included", @"Chauf full included");
     }
 
     return @"Unknown";

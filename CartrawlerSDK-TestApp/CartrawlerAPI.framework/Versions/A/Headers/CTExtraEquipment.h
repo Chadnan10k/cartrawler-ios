@@ -60,6 +60,6 @@
  */
 - (void)setQty:(NSInteger)qty;
 
-- (id)initFromDictionary:(NSDictionary *)dict;
+- (instancetype)initFromDictionary:(NSDictionary *)dict  ;
 
 @end

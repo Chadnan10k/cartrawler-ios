@@ -44,7 +44,7 @@
     }
     
 
-    [self setBackgroundColor:color];
+    self.backgroundColor = color;
 
     self.layer.cornerRadius = 3.0f;
     self.layer.shadowColor = [UIColor colorWithRed:red * 0.75f

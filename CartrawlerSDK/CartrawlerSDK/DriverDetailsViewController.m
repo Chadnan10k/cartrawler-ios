@@ -47,7 +47,7 @@
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
                                                                    style:UIBarButtonItemStyleBordered target:self
                                                                   action:@selector(done)];
-    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
+    keyboardDoneButtonView.items = @[doneButton];
     self.phoneTextField.inputAccessoryView = keyboardDoneButtonView;
     
 }
@@ -89,9 +89,9 @@
 //    vc.country = self.country;
 
     AddressDetailsViewController *destination = (AddressDetailsViewController *)segue.destinationViewController;
-    [destination setDestinationViewController:self.destinationViewController];
-    [destination setFallBackViewController:self.fallBackViewController];
-    [destination setCartrawlerAPI:self.cartrawlerAPI];
+    destination.destinationViewController = self.destinationViewController;
+    destination.fallBackViewController = self.fallBackViewController;
+    destination.cartrawlerAPI = self.cartrawlerAPI;
 
 }
 
@@ -177,10 +177,10 @@
 
 - (void)keyboardWillHide:(NSNotification *)n
 {
-    NSDictionary* userInfo = [n userInfo];
+    NSDictionary* userInfo = n.userInfo;
     
     // get the size of the keyboard
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     
     // resize the scrollview
@@ -190,7 +190,7 @@
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
-    [self.scrollView setFrame:viewFrame];
+    (self.scrollView).frame = viewFrame;
     [UIView commitAnimations];
     
     keyboardIsShown = NO;
@@ -203,10 +203,10 @@
         return;
     }
     
-    NSDictionary* userInfo = [n userInfo];
+    NSDictionary* userInfo = n.userInfo;
     
     // get the size of the keyboard
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     // resize the noteView
     CGRect viewFrame = self.scrollView.frame;
@@ -215,7 +215,7 @@
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
-    [self.scrollView setFrame:viewFrame];
+    (self.scrollView).frame = viewFrame;
     [UIView commitAnimations];
     keyboardIsShown = YES;
 }

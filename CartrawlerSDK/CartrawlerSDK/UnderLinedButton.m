@@ -26,9 +26,8 @@
     NSMutableAttributedString *title =[[NSMutableAttributedString alloc]
                                        initWithString:self.titleLabel.text attributes: attrDict];
     
-    [title addAttribute:NSUnderlineStyleAttributeName value:[NSNumber
-                                                             numberWithInteger:NSUnderlineStyleSingle]
-                  range:NSMakeRange(0,[self.titleLabel.text length])];
+    [title addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle)
+                  range:NSMakeRange(0,(self.titleLabel.text).length)];
     
     [self setAttributedTitle:title forState:UIControlStateNormal];
     

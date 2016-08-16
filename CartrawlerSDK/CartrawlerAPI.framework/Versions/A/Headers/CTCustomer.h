@@ -56,7 +56,7 @@
  *
  *  @return Initialized Customer object
  */
-- (id)initWithHomeCountry:(NSString *)homeCountry
+- (instancetype)initWithHomeCountry:(NSString *)homeCountry
                       age:(NSNumber *)age
                 firstName:(NSString *)firstName
                  lastName:(NSString *)lastName

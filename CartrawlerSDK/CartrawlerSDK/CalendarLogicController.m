@@ -62,11 +62,11 @@
     if (![self.collectionViews containsObject:collectionView]) {
         [self.collectionViews addObject:collectionView];
     }
-    if ([self.collectionViews firstObject] != nil) {
-        _headCollectionView = [self.collectionViews firstObject];
+    if ((self.collectionViews).firstObject != nil) {
+        _headCollectionView = (self.collectionViews).firstObject;
     }
-    if ([self.collectionViews lastObject] != nil) {
-        _headCollectionView = [self.collectionViews lastObject];
+    if ((self.collectionViews).lastObject != nil) {
+        _headCollectionView = (self.collectionViews).lastObject;
     }
 }
 
@@ -101,13 +101,13 @@
                                       components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
                                       fromDate:cell.date];
 
-        NSInteger dateDay = [dateComp day];
-        NSInteger dateMonth = [dateComp month];
-        NSInteger dateYear = [dateComp year];
+        NSInteger dateDay = dateComp.day;
+        NSInteger dateMonth = dateComp.month;
+        NSInteger dateYear = dateComp.year;
 
-        NSInteger cellDay = [headCellComp day];
-        NSInteger cellMonth = [headCellComp month];
-        NSInteger cellYear = [headCellComp year];
+        NSInteger cellDay = headCellComp.day;
+        NSInteger cellMonth = headCellComp.month;
+        NSInteger cellYear = headCellComp.year;
 
         if (dateDay == cellDay && dateMonth == cellMonth && cellYear == dateYear) {
             [cell headSetSelected];
@@ -124,13 +124,13 @@
                                           components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
                                           fromDate:cell.date];
 
-        NSInteger dateDay = [dateComp day];
-        NSInteger dateMonth = [dateComp month];
-        NSInteger dateYear = [dateComp year];
+        NSInteger dateDay = dateComp.day;
+        NSInteger dateMonth = dateComp.month;
+        NSInteger dateYear = dateComp.year;
 
-        NSInteger cellDay = [headCellComp day];
-        NSInteger cellMonth = [headCellComp month];
-        NSInteger cellYear = [headCellComp year];
+        NSInteger cellDay = headCellComp.day;
+        NSInteger cellMonth = headCellComp.month;
+        NSInteger cellYear = headCellComp.year;
 
         if (dateDay == cellDay && dateMonth == cellMonth && cellYear == dateYear) {
             [cell tailSetSelected];
@@ -152,19 +152,19 @@
                                           components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
                                           fromDate:cell.date];
 
-        NSInteger headDay = [headDateComp day];
-        NSInteger headMonth = [headDateComp month];
-        NSInteger headYear = [headDateComp year];
+        NSInteger headDay = headDateComp.day;
+        NSInteger headMonth = headDateComp.month;
+        NSInteger headYear = headDateComp.year;
 
 
-        NSInteger tailDay = [tailDateComp day];
-        NSInteger tailMonth = [tailDateComp month];
-        NSInteger tailYear = [tailDateComp year];
+        NSInteger tailDay = tailDateComp.day;
+        NSInteger tailMonth = tailDateComp.month;
+        NSInteger tailYear = tailDateComp.year;
 
 
-        NSInteger cellDay = [headCellComp day];
-        NSInteger cellMonth = [headCellComp month];
-        NSInteger cellYear = [headCellComp year];
+        NSInteger cellDay = headCellComp.day;
+        NSInteger cellMonth = headCellComp.month;
+        NSInteger cellYear = headCellComp.year;
 
         if (headDay == tailDay && headMonth == tailMonth && headYear == tailYear) {
             if (cellDay == tailDay && cellMonth == tailMonth && cellYear == tailYear) {

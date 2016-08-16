@@ -65,6 +65,6 @@
  */
 @property (nonatomic, strong, readonly) NSString *companyName;
 
-- (id)initWithDictionary:(NSDictionary *)dict;
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
 
 @end

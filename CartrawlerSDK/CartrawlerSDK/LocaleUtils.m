@@ -18,8 +18,8 @@
 + (NSString *)priceForDeviceLocale:(NSNumber *)price
 {
     NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
-    [numFormatter setLocale: [NSLocale currentLocale]];
-    [numFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
+    numFormatter.locale = [NSLocale currentLocale];
+    numFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
     return [numFormatter stringFromNumber:price];
 }
 

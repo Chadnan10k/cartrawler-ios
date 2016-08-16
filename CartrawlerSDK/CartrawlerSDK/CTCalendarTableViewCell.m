@@ -64,7 +64,7 @@
     
     NSDateComponents * comps = [cal components:NSUIntegerMax
                                       fromDate:month];
-    [comps setDay:1];
+    comps.day = 1;
     //[comps setMonth:9];
     
     NSDate * adjustedDate = [cal dateFromComponents:comps];
@@ -76,7 +76,7 @@
                            inUnit:NSMonthCalendarUnit
                           forDate:adjustedDate];
     
-    _startDay = [comp weekday];
+    _startDay = comp.weekday;
     _monthLength = days.length;
     NSInteger x = self.startDay-1;
     NSInteger y = labs(self.monthLength-42+x);
@@ -87,7 +87,7 @@
        if (i >= self.startDay) {
            NSDateComponents * comps = [cal components:NSUIntegerMax
                                              fromDate:adjustedDate];
-           [comps setDay:(i - self.startDay)+1];
+           comps.day = (i - self.startDay)+1;
            NSDate *cellDate = [cal dateFromComponents:comps];
            [self.dates addObject:cellDate];
         } else {
@@ -98,7 +98,7 @@
     for (int z = 0; z < y; z++) {
         int index = 41 - z;
         nullCount++;
-        [self.dates replaceObjectAtIndex:index withObject:[NSNull null]];
+        (self.dates)[index] = [NSNull null];
     }
     
     [self.collectionView reloadData];
@@ -141,7 +141,7 @@
         [cell setLabelColor:[UIColor darkGrayColor]];
     }
     
-    [cell setDateLabel:self.dates[indexPath.row] indexPath:indexPath section:[NSNumber numberWithInteger:self.section]];
+    [cell setDateLabel:self.dates[indexPath.row] indexPath:indexPath section:@(self.section)];
     [self.logicController validateCell:(CTDateCollectionViewCell *)cell indexPath: indexPath section: self.section collectionView: collectionView];
 
     return cell;

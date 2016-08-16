@@ -42,5 +42,5 @@
  */
 @property (nonatomic, readonly) BOOL isIncludedInRate;
 
-- (id)initWithPricedCoveragesDictionary:(NSDictionary *)pricedCoveragesDictionary;
+- (instancetype)initWithPricedCoveragesDictionary:(NSDictionary *)pricedCoveragesDictionary;
 @end

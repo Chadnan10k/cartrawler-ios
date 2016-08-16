@@ -21,8 +21,7 @@
     [super awakeFromNib];
     
     UIFont *font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
-    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
-                                                           forKey:NSFontAttributeName];
+    NSDictionary *attributes = @{NSFontAttributeName: font};
     [self setTitleTextAttributes:attributes
                                     forState:UIControlStateNormal];
 }

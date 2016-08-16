@@ -159,7 +159,7 @@
         weakSelf.pickupTimePicker.timeSelection = ^(NSDate *date){
 
             [weakSelf.pickupTimeView setTextFieldText:[DateUtils stringFromDate:date withFormat:@"hh:mm a"]];
-            [weakSelf setPickupTime:date];
+            weakSelf.pickupTime = date;
 
         };
     };
@@ -175,7 +175,7 @@
         weakSelf.dropoffTimePicker.timeSelection = ^(NSDate *date){
 
             [weakSelf.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:date withFormat:@"hh:mm a"]];
-            [weakSelf setDropoffTime:date];
+            weakSelf.dropoffTime = date;
         };
     };
     
@@ -215,8 +215,8 @@
     
     [self.calendarView setTextFieldText:dateString];
     
-    [self setPickupDate:pickupDate];
-    [self setDropoffDate:dropoffDate];
+    self.pickupDate = pickupDate;
+    self.dropoffDate = dropoffDate;
 
 }
 
@@ -225,8 +225,8 @@
     NSDate *puDate = [DateUtils mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.pickupDate];
     NSDate *doDate = [DateUtils mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.dropoffDate];
     
-    [self setPickupDate:puDate];
-    [self setDropoffDate:doDate];
+    self.pickupDate = puDate;
+    self.dropoffDate = doDate;
 }
 
 - (void)registerForKeyboardNotifications
@@ -244,31 +244,31 @@
 
 - (void)keyboardWillHide:(NSNotification *)n
 {
-    NSDictionary* userInfo = [n userInfo];
+    NSDictionary* userInfo = n.userInfo;
     
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     CGRect viewFrame = self.scrollView.frame;
     viewFrame.size.height += (keyboardSize.height + 45);
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
-    [self.scrollView setFrame:viewFrame];
+    (self.scrollView).frame = viewFrame;
     [UIView commitAnimations];
 }
 
 - (void)keyboardWillShow:(NSNotification *)n
 {
     
-    NSDictionary* userInfo = [n userInfo];
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    NSDictionary* userInfo = n.userInfo;
+    CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     CGRect viewFrame = self.scrollView.frame;
     
     viewFrame.size.height -= (keyboardSize.height + 45);
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
-    [self.scrollView setFrame:viewFrame];
+    (self.scrollView).frame = viewFrame;
     [UIView commitAnimations];
 }
 

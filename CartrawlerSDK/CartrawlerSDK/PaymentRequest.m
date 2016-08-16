@@ -141,15 +141,15 @@
         }
     }
     
-    if ([validExtras count] > 0) {
+    if (validExtras.count > 0) {
         
         extrasString = [extrasString stringByAppendingString:@",\"SpecialEquipPrefs\":{\"SpecialEquipPref\":["];
-        for (int i = 0; i < [validExtras count]; i++) {
-            CTExtraEquipment *e = (CTExtraEquipment *)[validExtras objectAtIndex:i];
+        for (int i = 0; i < validExtras.count; i++) {
+            CTExtraEquipment *e = (CTExtraEquipment *)validExtras[i];
             if (e.qty != 0) {
-                extrasString = [extrasString stringByAppendingString:[NSString stringWithFormat:@"{\"@EquipType\":\"%li\",\"@Quantity\":\"%li\"}", (long)[e.equipType integerValue], (long)e.qty]];
-                if ([validExtras count] > 1) {
-                    if ((i + 1) != ([validExtras count])) {
+                extrasString = [extrasString stringByAppendingString:[NSString stringWithFormat:@"{\"@EquipType\":\"%@\",\"@Quantity\":\"%li\"}",e.equipType, (long)e.qty]];
+                if (validExtras.count > 1) {
+                    if ((i + 1) != (validExtras.count)) {
                         extrasString = [extrasString stringByAppendingString:@","];
                     }
                 }
@@ -162,7 +162,7 @@
     
     NSString *paymentExtension = [NSString stringWithFormat:@"\"RentalPaymentPref\":{\"PaymentCard\":{\"@CardType\":\"1\",\"@CardCode\":\"%@\",\"@CardNumber\":\"%@\",\"@ExpireDate\":\"%@\",\"@SeriesCode\":\"%@\",\"CardHolderName\":\"%@\"}},", @"[CARDCODE]", @"[CARDNUMBER]", @"[EXPIREDATE]", @"[SERIESCODE]", @"[CARDHOLDERNAME]"];
     
-    if (flightNumber != nil && [flightNumber length] > 2) {
+    if (flightNumber != nil && flightNumber.length > 2) {
         NSString *flightNumberPrefixString = [flightNumber substringToIndex:2];
         NSString *flightNumberString = [flightNumber substringFromIndex:2];
         

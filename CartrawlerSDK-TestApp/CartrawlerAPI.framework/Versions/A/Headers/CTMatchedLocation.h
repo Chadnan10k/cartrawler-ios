@@ -61,6 +61,6 @@
  */
 @property (nonatomic, strong, readonly) NSString *distanceUnit;
 
-- (id)initWithDictionary:(NSDictionary *)dictionary;
-- (id)initWithPartialStringDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary  ;
+- (instancetype)initWithPartialStringDictionary:(NSDictionary *)dictionary  ;
 @end

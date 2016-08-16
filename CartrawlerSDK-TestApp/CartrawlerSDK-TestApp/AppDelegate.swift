@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
         registerForPushNotifications(application: application)
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("Got token data! \((deviceToken as NSData).hexString)")
+        print("Got token data!")
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -70,9 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-extension NSData {
-    var hexString: String {
-        let bytes = UnsafeBufferPointer<UInt8>(start: UnsafePointer(self.bytes), count:self.length)
-        return bytes.map { String(format: "%02hhx", $0) }.reduce("", { $0 + $1 })
-    }
-}
+//extension NSData {
+//    var hexString: String {
+//        let bytes = UnsafeBufferPointer<UInt8>(start: UnsafePointer(self.bytes), count:self.length)
+//        return bytes.map { String(format: "%02hhx", $0) }.reduce("", { $0 + $1 })
+//    }
+//}

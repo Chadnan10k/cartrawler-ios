@@ -20,9 +20,9 @@
     
     if (sharedInstance == nil) {
         sharedInstance = [[CTImageCache alloc] init];
-        [sharedInstance setName: @"CTImageCache"];
-        [sharedInstance setCountLimit: 100];
-        [sharedInstance setTotalCostLimit: 10*1024*1024];
+        sharedInstance.name = @"CTImageCache";
+        sharedInstance.countLimit = 100;
+        sharedInstance.totalCostLimit = 10*1024*1024;
     }
     
     return sharedInstance;

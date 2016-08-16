@@ -35,13 +35,13 @@
     _clientId = clientId;
     _isDebug = isDebug;
     
-    [self setLanguageCode:languageCode];
-    [self setCurrencyCode:currency];
-    [self setHomeCountryCode:countryCode];
+    self.languageCode = languageCode;
+    self.currencyCode = currency;
+    self.homeCountryCode = countryCode;
     
-    [self setHomeCountryName:country];
-    [self setCurrencyName:currency];
-    [self setLanguageName:languageCode];
+    self.homeCountryName = country;
+    self.currencyName = currency;
+    self.languageName = languageCode;
 }
 
 - (void)setLanguageCode:(NSString *)languageCode

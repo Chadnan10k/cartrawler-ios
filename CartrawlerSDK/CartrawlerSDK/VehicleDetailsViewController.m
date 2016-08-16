@@ -49,8 +49,7 @@
     [super viewWillAppear:animated];
     
     UIFont *font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
-    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
-                                                           forKey:NSFontAttributeName];
+    NSDictionary *attributes = @{NSFontAttributeName: font};
     [self.tabSelection setTitleTextAttributes:attributes
                                      forState:UIControlStateNormal];
     
@@ -165,8 +164,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"VehicleEmbed"]) {
-        _vehicleDetailView = (VehicleDetailsView *)[segue destinationViewController];
+    if ([segue.identifier isEqualToString:@"VehicleEmbed"]) {
+        _vehicleDetailView = (VehicleDetailsView *)segue.destinationViewController;
         [self.vehicleDetailView setData:self.search.selectedVehicle
                 api:self.cartrawlerAPI
          pickupDate:self.search.pickupDate
@@ -182,8 +181,8 @@
         };
     }
     
-    if ([[segue identifier] isEqualToString:@"RatingEmbed"]) {
-        _supplierRatingView = (SupplierRatingsViewController *)[segue destinationViewController];
+    if ([segue.identifier isEqualToString:@"RatingEmbed"]) {
+        _supplierRatingView = (SupplierRatingsViewController *)segue.destinationViewController;
         [self.supplierRatingView setVendor:self.search.selectedVehicle.vendor];
     }
 }

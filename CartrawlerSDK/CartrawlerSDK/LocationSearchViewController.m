@@ -45,7 +45,7 @@
     self.tableView.delegate = self.dataSource;
     self.searchBar.delegate = self;
 
-    [self.searchBar setBackgroundImage:[UIImage new]];
+    (self.searchBar).backgroundImage = [UIImage new];
 
     [self.searchBar becomeFirstResponder];
     

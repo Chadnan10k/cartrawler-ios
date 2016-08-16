@@ -38,6 +38,6 @@
  */
 @property (nonatomic, strong, readonly) NSArray<CTTermsAndConditions *> *termsAndConditions;
 
-- (id)initFromAPIResponse:(NSDictionary *)dict;
+- (instancetype)initFromAPIResponse:(NSDictionary *)dict  ;
 @end
 	

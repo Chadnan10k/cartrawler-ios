@@ -18,6 +18,6 @@
  */
 @property (nonatomic, strong, readonly) NSArray<CTGroundService *> *services;
 
-- (id)initWithDictionary:(NSDictionary *)dict;
+- (instancetype)initWithDictionary:(NSDictionary *)dict  ;
 
 @end

@@ -200,8 +200,6 @@
 		45EC25101D49132B00A3C09D /* CTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC250E1D49132B00A3C09D /* CTViewController.m */; };
 		45EE26DF1D37A79900A1FB51 /* GroundTransportViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EE26DD1D37A79900A1FB51 /* GroundTransportViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45EE26E01D37A79900A1FB51 /* GroundTransportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EE26DE1D37A79900A1FB51 /* GroundTransportViewController.m */; };
-		45F473581D3644E000DF548B /* StepSevenViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F473561D3644E000DF548B /* StepSevenViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F473591D3644E000DF548B /* StepSevenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F473571D3644E000DF548B /* StepSevenViewController.m */; };
 		45F4735C1D36451F00DF548B /* AddressDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4735A1D36451F00DF548B /* AddressDetailsViewController.h */; };
 		45F4735D1D36451F00DF548B /* AddressDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4735B1D36451F00DF548B /* AddressDetailsViewController.m */; };
 		45F4735F1D36476900DF548B /* StepSix.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F4735E1D3646D100DF548B /* StepSix.storyboard */; };
@@ -426,8 +424,6 @@
 		45EE26DA1D37924000A1FB51 /* GroundTransport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GroundTransport.storyboard; sourceTree = "<group>"; };
 		45EE26DD1D37A79900A1FB51 /* GroundTransportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundTransportViewController.h; sourceTree = "<group>"; };
 		45EE26DE1D37A79900A1FB51 /* GroundTransportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundTransportViewController.m; sourceTree = "<group>"; };
-		45F473561D3644E000DF548B /* StepSevenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepSevenViewController.h; sourceTree = "<group>"; };
-		45F473571D3644E000DF548B /* StepSevenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepSevenViewController.m; sourceTree = "<group>"; };
 		45F4735A1D36451F00DF548B /* AddressDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressDetailsViewController.h; sourceTree = "<group>"; };
 		45F4735B1D36451F00DF548B /* AddressDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressDetailsViewController.m; sourceTree = "<group>"; };
 		45F4735E1D3646D100DF548B /* StepSix.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepSix.storyboard; sourceTree = "<group>"; };
@@ -778,8 +774,6 @@
 			children = (
 				45C488C51D4793860044612C /* CTViewManager.h */,
 				45C488C61D4793860044612C /* CTViewManager.m */,
-				45F473561D3644E000DF548B /* StepSevenViewController.h */,
-				45F473571D3644E000DF548B /* StepSevenViewController.m */,
 				45EC250D1D49132B00A3C09D /* CTViewController.h */,
 				45EC250E1D49132B00A3C09D /* CTViewController.m */,
 			);
@@ -1055,7 +1049,6 @@
 				450F9D351D3929E5002C6F6B /* SupplierRatingsViewController.h in Headers */,
 				4511E5241D17DFA4000ED6B0 /* CTAppearance.h in Headers */,
 				45EE26DF1D37A79900A1FB51 /* GroundTransportViewController.h in Headers */,
-				45F473581D3644E000DF548B /* StepSevenViewController.h in Headers */,
 				454D20EF1D549AD10050CA9E /* NSDateUtils.h in Headers */,
 				45E942F11D13060E00ACF604 /* CartrawlerSDK.h in Headers */,
 				4511E5321D17F6C8000ED6B0 /* CTNavigationBar.h in Headers */,
@@ -1297,7 +1290,6 @@
 				4557FE421D3636400026F038 /* CTSearch.m in Sources */,
 				45E942D61D1302A200ACF604 /* DateUtils.m in Sources */,
 				4509B47C1D37ED8100259255 /* GTServiceTableViewCell.m in Sources */,
-				45F473591D3644E000DF548B /* StepSevenViewController.m in Sources */,
 				451B4BEF1D2BC99B006A57E7 /* TermsDetailViewController.m in Sources */,
 				4511E5331D17F6C8000ED6B0 /* CTNavigationBar.m in Sources */,
 				45819FA61D3500E8001AE0F5 /* NSNumberUtils.m in Sources */,

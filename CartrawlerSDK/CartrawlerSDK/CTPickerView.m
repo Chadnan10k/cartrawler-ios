@@ -76,7 +76,7 @@
     
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(removeFromView)];
     
-    [self.toolBar setItems:[NSArray arrayWithObject:btn]];
+    (self.toolBar).items = @[btn];
     [view addSubview:self.toolBar];
     
     self.toolBar.translatesAutoresizingMaskIntoConstraints = false;

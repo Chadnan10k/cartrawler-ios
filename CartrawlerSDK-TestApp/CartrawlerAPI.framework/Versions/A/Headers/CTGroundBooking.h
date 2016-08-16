@@ -16,6 +16,6 @@
  */
 @property (nonatomic, strong, readonly) NSString *confirmationId;
 
-- (id)initWithDictionary:(NSDictionary *)dict;
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
 
 @end

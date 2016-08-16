@@ -24,7 +24,7 @@ typedef NS_ENUM(NSUInteger, FlightType) {
     /**
      *  Departure Flight
      */
-    FlightTypeDeparture = 1
+    FlightTypeDeparture
 };
 
 /**
@@ -49,7 +49,7 @@ typedef NS_ENUM(NSUInteger, FlightType) {
  *
  *  @return returns initialized CTAirport
  */
-- (id)initWithFlightType:(FlightType)flightType
+- (instancetype)initWithFlightType:(FlightType)flightType
                 IATACode:(NSString *)IATACode
           terminalNumber:(NSString *)terminalNumber;
 

@@ -126,7 +126,7 @@
         customLabel.textColor = [UIColor darkGrayColor];
     
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 20)];
-        [headerView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+        headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         [headerView addSubview:customLabel];
     
         if (section == 0) {

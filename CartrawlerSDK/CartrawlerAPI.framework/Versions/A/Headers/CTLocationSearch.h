@@ -18,6 +18,6 @@
  */
 @property (nonatomic, strong, readonly) NSArray<CTMatchedLocation *> *matchedLocations;
 
-- (id)initWithDictionary:(NSDictionary *)dictionary;
-- (id)initWithPartialTextDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary  ;
+- (instancetype)initWithPartialTextDictionary:(NSDictionary *)dictionary  ;
 @end

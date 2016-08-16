@@ -23,23 +23,23 @@ typedef NS_ENUM(NSUInteger, LocationType) {
     /**
      *  Company Location
      */
-    LocationTypeCompany = 1,
+    LocationTypeCompany,
     /**
      *  Hotel Location
      */
-    LocationTypeHotel = 2,
+    LocationTypeHotel,
     /**
      *  Home Residence Location
      */
-    LocationTypeHomeResidence = 3,
+    LocationTypeHomeResidence,
     /**
      *  Train Station Location
      */
-    LocationTypeTrainStation = 4,
+    LocationTypeTrainStation,
     /**
      *  Vicinity Area
      */
-    LocationTypeVicinity = 5,
+    LocationTypeVicinity
 };
 /**
  *  The latitude of the location
@@ -68,7 +68,7 @@ typedef NS_ENUM(NSUInteger, LocationType) {
  *
  *  @return Initialized CTGroundLocation
  */
-- (id)initWithLatitude:(NSNumber *)latitude
+- (instancetype)initWithLatitude:(NSNumber *)latitude
              longitude:(NSNumber *)longitude
           locationType:(LocationType)locationType
               dateTime:(NSDate *)dateTime;

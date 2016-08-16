@@ -250,7 +250,7 @@
 - (void)setCustomerEmail:(NSString *)customerEmail;
 
 
-- (id)initFromRetrievedBookingDictionary:(NSDictionary *)vehReservationDictionary;
-- (id)initFromVehReservationDictionary:(NSDictionary *)vehReservationDictionary;
+- (instancetype)initFromRetrievedBookingDictionary:(NSDictionary *)vehReservationDictionary  ;
+- (instancetype)initFromVehReservationDictionary:(NSDictionary *)vehReservationDictionary  ;
 
 @end

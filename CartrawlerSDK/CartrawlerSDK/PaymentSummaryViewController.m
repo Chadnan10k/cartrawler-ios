@@ -67,7 +67,7 @@
     
     total += self.search.selectedVehicle.totalPriceForThisVehicle.doubleValue;
     
-    self.totalLabel.text = [NSNumberUtils numberStringWithCurrencyCode:[NSNumber numberWithDouble:total]];
+    self.totalLabel.text = [NSNumberUtils numberStringWithCurrencyCode:@(total)];
     
     self.tableView.dataSource = self;
     
@@ -108,10 +108,10 @@
     PaymentSummaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     NSDictionary *data = self.items[indexPath.row];
     
-    if ([data objectForKey:@"Extra"]) {
-        [cell setDetailsItalic:[[data objectForKey:@"Extra"] objectForKey:@"Name"]];
+    if (data[@"Extra"]) {
+        [cell setDetailsItalic:data[@"Extra"][@"Name"]];
         } else {
-        [cell setDetails:[[data objectForKey:@"Normal"] objectForKey:@"Name"] price:[[data objectForKey:@"Normal"] objectForKey:@"Price"]];
+        [cell setDetails:data[@"Normal"][@"Name"] price:data[@"Normal"][@"Price"]];
     }
     
     return cell;

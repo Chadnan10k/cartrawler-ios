@@ -31,7 +31,7 @@
         _indexPath = indexPath;
         _section = section;
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"d"];
+        df.dateFormat = @"d";
         
         self.label.text = [df stringFromDate:self.date];
     } else {

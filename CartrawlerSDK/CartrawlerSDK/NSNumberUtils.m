@@ -14,9 +14,9 @@
 + (NSString *)numberStringWithCurrencyCode:(NSNumber *)number
 {
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-    [f setMinimumFractionDigits:2];
-    [f setCurrencyCode: [CTSDKSettings instance].currencyCode];
-    [f setNumberStyle:NSNumberFormatterCurrencyStyle];
+    f.minimumFractionDigits = 2;
+    f.currencyCode = [CTSDKSettings instance].currencyCode;
+    f.numberStyle = NSNumberFormatterCurrencyStyle;
     
     return [f stringFromNumber:number];
 }

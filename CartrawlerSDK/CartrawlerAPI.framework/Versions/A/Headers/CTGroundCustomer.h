@@ -81,7 +81,7 @@
  *
  *  @return returns initialised object
  */
-- (id)initWithAddressLine1:(NSString *)addressLine1
+- (instancetype)initWithAddressLine1:(NSString *)addressLine1
               addressLine2:(NSString *)addressLine2
                addressTown:(NSString *)addressTown
                addressCity:(NSString *)addressCity

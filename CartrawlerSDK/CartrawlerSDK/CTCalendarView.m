@@ -59,7 +59,7 @@
     NSDate *date = [NSDate date];
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
     
-    NSInteger monthNumber = [components month];
+    NSInteger monthNumber = components.month;
     self.months = [[NSMutableArray alloc] init];
     
     for (NSInteger i = monthNumber; i < monthNumber + 12; i++) {
@@ -121,12 +121,12 @@
     customLabel.textColor = [UIColor darkGrayColor];
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 20)];
     
-    [headerView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [headerView addSubview:customLabel];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"MMMM YYYY"];
+    df.dateFormat = @"MMMM YYYY";
     NSString *dateStr = [df stringFromDate:self.months[section]];
-    [customLabel setText: dateStr];
+    customLabel.text = dateStr;
     
     return headerView;
 }

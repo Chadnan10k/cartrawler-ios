@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, CardType) {
     /**
      *  For Visa cards
      */
-    CardTypeVisa,
+    CardTypeVisa = 0,
     /**
      *  For MasterCard's
      */
@@ -62,7 +62,7 @@ typedef NS_ENUM(NSUInteger, CardType) {
  *
  *  @return Initialized payment card object
  */
-- (id)initWithCardType:(CardType)cardType
+- (instancetype)initWithCardType:(CardType)cardType
             cardNumber:(NSString *)cardNumber
             cardExpiry:(NSString *)cardExpiry
         cardHolderName:(NSString *)cardHolderName

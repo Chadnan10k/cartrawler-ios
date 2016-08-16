@@ -26,7 +26,7 @@
     
     bottomBorder.backgroundColor = [UIColor colorWithWhite:1.0f
                                                      alpha:1.0f].CGColor;
-    [self.titleLabel setFont:[UIFont fontWithName:[CTAppearance instance].boldFontName size:self.titleLabel.font.pointSize]];
+    (self.titleLabel).font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.titleLabel.font.pointSize];
     
     [self.layer addSublayer:bottomBorder];
     

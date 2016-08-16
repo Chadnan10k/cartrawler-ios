@@ -41,5 +41,5 @@
  */
 @property (nonatomic, strong, readonly) NSString *chargePurpose;
 
-- (id) initFromVehicleChargesDictionary:(NSDictionary *)vehicleChargesDictionary;
+- (instancetype) initFromVehicleChargesDictionary:(NSDictionary *)vehicleChargesDictionary  ;
 @end

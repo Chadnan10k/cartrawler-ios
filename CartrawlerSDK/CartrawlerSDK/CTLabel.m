@@ -21,9 +21,9 @@
     self = [super initWithFrame:frame];
 
     if (self.useBoldFont) {
-        [self setFont:[UIFont fontWithName:[CTAppearance instance].boldFontName size:self.font.pointSize]];
+        self.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.font.pointSize];
     } else {
-        [self setFont:[UIFont fontWithName:[CTAppearance instance].fontName size:self.font.pointSize]];
+        self.font = [UIFont fontWithName:[CTAppearance instance].fontName size:self.font.pointSize];
     }
     return self;
 }
@@ -41,9 +41,9 @@
 {
     [super awakeFromNib];
     if (self.useBoldFont) {
-        [self setFont:[UIFont fontWithName:[CTAppearance instance].boldFontName size:self.font.pointSize]];
+        self.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.font.pointSize];
     } else {
-        [self setFont:[UIFont fontWithName:[CTAppearance instance].fontName size:self.font.pointSize]];
+        self.font = [UIFont fontWithName:[CTAppearance instance].fontName size:self.font.pointSize];
     }
 }
 

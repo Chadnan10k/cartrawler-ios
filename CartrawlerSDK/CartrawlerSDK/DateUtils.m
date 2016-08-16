@@ -18,7 +18,7 @@
 + (NSString *)stringFromDate:(NSDate *)date withFormat:(NSString *)format
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:format];
+    formatter.dateFormat = format;
     
     return [formatter stringFromDate:date];
 }
@@ -26,8 +26,8 @@
 + (NSString *)shortDescriptionFromDate:(NSDate *)date
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateStyle:NSDateFormatterMediumStyle];
-    [formatter setTimeStyle:NSDateFormatterNoStyle];
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
     return [formatter stringFromDate:date];
 }
 
@@ -46,13 +46,13 @@
     // Combine date and time into components3
     NSDateComponents *components3 = [[NSDateComponents alloc] init];
     
-    [components3 setYear:components1.year];
-    [components3 setMonth:components1.month];
-    [components3 setDay:components1.day];
+    components3.year = components1.year;
+    components3.month = components1.month;
+    components3.day = components1.day;
     
-    [components3 setHour:components2.hour];
-    [components3 setMinute:components2.minute];
-    [components3 setSecond:components2.second];
+    components3.hour = components2.hour;
+    components3.minute = components2.minute;
+    components3.second = components2.second;
     
     // Generate a new NSDate from components3.
     return [gregorianCalendar dateFromComponents:components3];

@@ -146,7 +146,7 @@
 - (CGFloat)textViewHeightForAttributedText:(NSAttributedString *)text andWidth:(CGFloat)width
 {
     UITextView *textView = [[UITextView alloc] init];
-    [textView setAttributedText:text];
+    textView.attributedText = text;
     CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
     return size.height;
 }

@@ -69,8 +69,8 @@
     
     if (self.search.selectedVehicle.extraEquipment.count > 0) {
         [self.optionalExtrasView hideView:NO];
-        [self.optionalExtrasView setExtras:self.search.selectedVehicle.extraEquipment];
-        [self.optionalExtrasView setInitialFrame:self.view.frame];
+        (self.optionalExtrasView).extras = self.search.selectedVehicle.extraEquipment;
+        (self.optionalExtrasView).initialFrame = self.view.frame;
     } else {
         [self.optionalExtrasView hideView:YES];
     }
@@ -414,7 +414,7 @@
 - (CGFloat)textViewHeightForAttributedText:(NSAttributedString *)text andWidth:(CGFloat)width
 {
     UITextView *textView = [[UITextView alloc] init];
-    [textView setAttributedText:text];
+    textView.attributedText = text;
     CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
     return size.height;
 }
@@ -439,11 +439,11 @@
                                                 attributes:linkAttr];
             
             [attrText replaceCharactersInRange:range withAttributedString:attrLink];
-            [[attrText mutableString] replaceOccurrencesOfString:@"{"
+            [attrText.mutableString replaceOccurrencesOfString:@"{"
                                                       withString:@""
                                                          options:NSCaseInsensitiveSearch
                                                            range:NSMakeRange(0, attrText.string.length)];
-            [[attrText mutableString] replaceOccurrencesOfString:@"}"
+            [attrText.mutableString replaceOccurrencesOfString:@"}"
                                                       withString:@""
                                                          options:NSCaseInsensitiveSearch
                                                            range:NSMakeRange(0, attrText.string.length)];
@@ -541,7 +541,7 @@
 
 - (void)pickerViewDidSelectItem:(InsuranceSelectorItem *)item
 {
-    [self.search setInsuranceItem:item];
+    (self.search).insuranceItem = item;
     [self.itemSelectButton setTitle:item.name forState:UIControlStateNormal];
 }
 

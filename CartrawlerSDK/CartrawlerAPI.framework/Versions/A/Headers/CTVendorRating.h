@@ -65,6 +65,6 @@
  */
 @property (nonatomic, strong, readonly) NSNumber *waitTime;
 
-- (id)initFromDictionary:(NSDictionary *)dict;
+- (instancetype)initFromDictionary:(NSDictionary *)dict  ;
 
 @end

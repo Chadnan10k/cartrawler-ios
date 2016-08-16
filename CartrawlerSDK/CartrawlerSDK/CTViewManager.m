@@ -14,7 +14,8 @@
 #import "CTViewController.h"
 
 @interface CTViewManager()
-
+typedef void (^VehAvailCompletion)(BOOL success, NSString *errorMessage);
+typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
 @end
 
 @implementation CTViewManager
@@ -264,7 +265,7 @@
          if (response) {
              
              dispatch_async(dispatch_get_main_queue(), ^{
-                 [[CTSearch instance] setInsurance:response];
+                 [CTSearch instance].insurance = response;
                  completion(YES, nil);
              });
              

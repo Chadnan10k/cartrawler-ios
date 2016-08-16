@@ -362,7 +362,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepTwo" bundle:bundle];
     CTFilterViewController *vc = (CTFilterViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CTFilterViewController"];
     [vc setFilterData:data];
-    [vc setParentViewContoller:viewController];
+    vc.parentViewContoller = viewController;
     return vc;
 }
 

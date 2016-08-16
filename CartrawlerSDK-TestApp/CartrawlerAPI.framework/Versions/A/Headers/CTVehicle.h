@@ -36,47 +36,47 @@ typedef NS_ENUM(NSUInteger, FuelPolicy) {
     /**
      *  Full To Full
      */
-    FuelPolicyFullToFull      = 1,
+    FuelPolicyFullToFull,
     /**
      *  Empty to Empty
      */
-    FuelPolicyEmptyToEmpty    = 2,
+    FuelPolicyEmptyToEmpty,
     /**
      *  Full to Empty
      */
-    FuelPolicyFullToEmpty     = 3,
+    FuelPolicyFullToEmpty,
     /**
      *  Half to Empty
      */
-    FuelPolicyHalfToEmpty     = 4,
+    FuelPolicyHalfToEmpty,
     /**
      *  Quarter to Empty
      */
-    FuelPolicyQuarterToEmpty  = 5,
+    FuelPolicyQuarterToEmpty,
     /**
      *  Half to half
      */
-    FuelPolicyHalfToHalf      = 6,
+    FuelPolicyHalfToHalf,
     /**
      *  Quarter to quarter
      */
-    FuelPolicyQuarterToQuarter = 7,
+    FuelPolicyQuarterToQuarter,
     /**
      *  Unknown fuel policy
      */
-    FuelPolicyUnknown         = 8,
+    FuelPolicyUnknown,
     /**
      *  Full to empty refund
      */
-    FuelPolicyFullEmptyRefund = 9,
+    FuelPolicyFullEmptyRefund,
     /**
      *  Full to full hybrid
      */
-    FuelPolicyFullToFullHybrid = 10,
+    FuelPolicyFullToFullHybrid,
     
-    FuelPolicyChaufFulFul     = 11,
+    FuelPolicyChaufFullFull,
     
-    FuelPolicyChaufFuelInc    = 12
+    FuelPolicyChaufFuelInc
 };
 
 /**
@@ -241,7 +241,7 @@ typedef NS_ENUM(NSUInteger, FuelPolicy) {
  */
 @property (nonatomic, strong, readonly) NSArray<CTPricedCoverage *> *pricedCoverages;
 
-- (id) initFromVehicleDictionary:(NSDictionary *)vehicleDictionary vendor:(CTVendor *)vendor;
+- (instancetype) initFromVehicleDictionary:(NSDictionary *)vehicleDictionary vendor:(CTVendor *)vendor  ;
 
 
 @end

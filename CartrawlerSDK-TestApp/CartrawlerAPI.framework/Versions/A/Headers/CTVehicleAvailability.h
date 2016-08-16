@@ -60,6 +60,6 @@
 @property (nonatomic, strong, readonly) NSArray<CTVehicle *> *allVehicles;
 
 
-- (id)initFromVehAvailRSCoreDictionary:(NSDictionary *)vehAvailRSCoreDictionary;
+- (instancetype)initFromVehAvailRSCoreDictionary:(NSDictionary *)vehAvailRSCoreDictionary  ;
 
 @end

@@ -102,7 +102,7 @@
     
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(hide)];
     
-    [toolBar setItems:[NSArray arrayWithObject:btn]];
+    toolBar.items = @[btn];
     [view addSubview:toolBar];
     
     toolBar.translatesAutoresizingMaskIntoConstraints = false;
@@ -158,7 +158,7 @@
                               components:NSCalendarUnitMinute
                               fromDate:date];
     
-    NSInteger dateMinute = [comp minute];
+    NSInteger dateMinute = comp.minute;
     
     return (dateMinute%15 == 0);
     
@@ -170,7 +170,7 @@
     NSDate *returnDate;
     NSInteger minuteInterval = 15;
     NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSMinuteCalendarUnit fromDate:inDate];
-    NSInteger minutes = [dateComponents minute];
+    NSInteger minutes = dateComponents.minute;
     NSInteger minutesRounded = ( (NSInteger)(minutes / minuteInterval) ) * minuteInterval;
     NSDate *roundedDate = [[NSDate alloc] initWithTimeInterval:60.0 * (minutesRounded - minutes) sinceDate:inDate];
     

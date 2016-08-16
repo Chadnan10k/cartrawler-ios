@@ -11,8 +11,6 @@
 
 @interface PaymentRequest : NSObject
 
-+ (NSString *)payload;
-
 + (NSString *) OTA_VehResRQ:(NSString *)pickupDateTime
              returnDateTime:(NSString *)returnDateTime
          pickupLocationCode:(NSString *)pickupLocationCode
