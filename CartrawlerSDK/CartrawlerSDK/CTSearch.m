@@ -7,6 +7,7 @@
 //
 
 #import "CTSearch.h"
+#import "CTSDKSettings.h"
 
 @implementation CTSearch
 
@@ -52,7 +53,31 @@
     } else {
         return [NSString stringWithFormat:@"%@, %@, %@, %@", self.addressLine1, self.city, self.postcode, self.country];
     }
+}
+
+- (void)refreshResults:(RefreshCompletion)completion
+{
     
+    CartrawlerAPI *cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
+                                                                   language:[CTSDKSettings instance].languageCode
+                                                                      debug:[CTSDKSettings instance].isDebug];
+    
+    [cartrawlerAPI requestVehicleAvailabilityForLocation:self.pickupLocation.code
+                                      returnLocationCode:self.dropoffLocation.code
+                                     customerCountryCode:[CTSDKSettings instance].homeCountryCode
+                                            passengerQty:self.passengerQty
+                                               driverAge:self.driverAge
+                                          pickUpDateTime:self.pickupDate
+                                          returnDateTime:self.dropoffDate
+                                            currencyCode:[CTSDKSettings instance].currencyCode
+                                              completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
+                                                  if (response) {
+                                                      _vehicleAvailability = response;
+                                                      completion(YES, @"");
+                                                  } else {
+                                                      completion(NO, error.errorMessage);
+                                                  }
+                                              }];
 }
 
 @end

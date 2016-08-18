@@ -23,28 +23,45 @@
     
 }
 
+- (void)showLoading
+{
+    __weak typeof (self) weakSelf = self;
+    [UIView animateWithDuration:0.3 animations:^{
+        weakSelf.tableView.alpha = 0;
+        weakSelf.tableView.scrollsToTop = YES;
+    }];
+}
+
+- (void)hideLoading
+{
+    __weak typeof (self) weakSelf = self;
+    [UIView animateWithDuration:0.3 animations:^{
+        weakSelf.tableView.alpha = 1;
+        weakSelf.tableView.scrollsToTop = YES;
+    }];
+}
+
 - (void)initWithVehicleAvailability:(NSArray <CTVehicle *> *)data
                          completion:(VehicleSelectionCompletion)completion;
 {
     
-    [self.tableView setContentOffset:
-     CGPointMake(0, -self.tableView.contentInset.top) animated:YES];
-    
+//    [self.tableView setContentOffset:
+//     CGPointMake(0, -self.tableView.contentInset.top) animated:YES];
+//    
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     [self.tableView registerNib:[UINib nibWithNibName:@"VehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];
 
     _dataSource = [[CTVehicleSelectionViewModel alloc] initWithData:data cellSelected:^(CTVehicle *vehicle) {
-        //dispatch_async(dispatch_get_main_queue(), ^{
-            completion(vehicle);
-
-       // });
+        completion(vehicle);
     }];
     
     self.tableView.delegate = self.dataSource;
     self.tableView.dataSource = self.dataSource;
     
     [self.tableView reloadData];
+    
+    self.tableView.scrollsToTop = YES;
 
 }
 

@@ -772,6 +772,7 @@
 		45E942891D13003D00ACF604 /* Base View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				45FBACB61D65BD4700C75FC9 /* View Manager */,
 				45C488C51D4793860044612C /* CTViewManager.h */,
 				45C488C61D4793860044612C /* CTViewManager.m */,
 				45EC250D1D49132B00A3C09D /* CTViewController.h */,
@@ -1028,6 +1029,13 @@
 				45F4736D1D369E2A00DF548B /* CompletionViewController.m */,
 			);
 			name = "Booking Completion";
+			sourceTree = "<group>";
+		};
+		45FBACB61D65BD4700C75FC9 /* View Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "View Manager";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

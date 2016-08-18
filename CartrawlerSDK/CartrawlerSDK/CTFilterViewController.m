@@ -355,7 +355,7 @@
     
 }
 
-+ (CTFilterViewController *)initInViewController:(UIViewController *)viewController withData:(CTVehicleAvailability *)data;
++ (CTFilterViewController *)initInViewController:(UIViewController *)viewController withData:(CTVehicleAvailability *)data
 {
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
@@ -368,25 +368,32 @@
 
 - (void)present
 {
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     [self.parentViewContoller presentViewController:self animated:YES completion:nil];
 }
 
-- (IBAction)resetTapped:(id)sender {
+- (IBAction)resetTapped:(id)sender
+{
     
     self.filterFactory.filteredData = [[NSMutableArray alloc] init];
     
     [self.filterFactory.carSizeDataSource reset];
     [self.filterFactory.locationDataSource reset];
     [self.filterFactory.vendorsDataSource reset];
- 
+    [self.filterFactory.fuelPolicyDataSource reset];
+    [self.filterFactory.transmissionDataSource reset];
+    [self.filterFactory.vendorsDataSource reset];
+
     [self.carSizeTableView reloadData];
     [self.pickupLocationTableView reloadData];
     [self.vendorsTableView reloadData];
-
+    [self.fuelPolicyTableView reloadData];
+    [self.transmissionTableView reloadData];
+    [self.carSpecsTableView reloadData];
 }
 
-- (IBAction)doneTapped:(id)sender {
+- (IBAction)doneTapped:(id)sender
+{
     [self.filterFactory filter];
     //[self filter];
     if (self.filterCompletion) {

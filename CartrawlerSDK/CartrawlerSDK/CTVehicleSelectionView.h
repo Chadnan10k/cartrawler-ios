@@ -17,5 +17,7 @@
 typedef void (^VehicleSelectionCompletion)(CTVehicle *vehicle);
 
 - (void)initWithVehicleAvailability:(NSArray <CTVehicle *> *)data completion:(VehicleSelectionCompletion)completion;
+- (void)showLoading;
+- (void)hideLoading;
 
 @end

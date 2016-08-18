@@ -36,9 +36,12 @@
 
 @property (nonatomic, strong, readonly) NSString *concatinatedAddress;
 
-
 + (instancetype)instance;
 
 - (void)reset;
+
+typedef void (^RefreshCompletion)(BOOL success, NSString *errorMessage);
+
+- (void)refreshResults:(RefreshCompletion)completion;
 
 @end

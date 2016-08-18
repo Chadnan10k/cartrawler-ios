@@ -24,7 +24,9 @@
 
 @end
 
-@implementation VehicleSelectionViewController
+@implementation VehicleSelectionViewController {
+    BOOL viewLoaded;
+}
 
 + (void)forceLinkerLoad_
 {
@@ -47,6 +49,23 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    __weak typeof (self) weakSelf = self;
+    if (viewLoaded) {
+        self.carCountLabel.text = [NSString stringWithFormat:@"%@", NSLocalizedString(@"Getting latest vehicles", @"Getting latest vehicles")];
+        [self.vehicleSelectionView showLoading];
+        [self.search refreshResults:^(BOOL success, NSString *errorMessage) {
+            if (success) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.vehicleSelectionView hideLoading];
+                    [weakSelf refresh];
+                });
+            } else {
+                //could not refresh
+            }
+        }];
+    } else {
+        viewLoaded = YES;
+    }
     
     if (self.search.pickupLocation == self.search.dropoffLocation) {
         self.locationsLabel.text = [NSString stringWithFormat:@"%@", self.search.pickupLocation.name];
