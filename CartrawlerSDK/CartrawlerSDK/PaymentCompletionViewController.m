@@ -107,6 +107,7 @@
 }
 */
 - (IBAction)done:(id)sender {
+    [[CTImageCache sharedInstance] removeAllObjects];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

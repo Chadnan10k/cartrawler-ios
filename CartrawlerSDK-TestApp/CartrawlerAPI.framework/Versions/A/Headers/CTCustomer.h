@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTCustomer
  */
@@ -15,31 +18,31 @@
 /**
  *  the Customers age
  */
-@property (nonatomic, strong) NSNumber *age;
+@property (nonatomic, nonnull) NSNumber *age;
 /**
  *  The customers home country
  */
-@property (nonatomic, strong) NSString *homeCountry;
+@property (nonatomic, nonnull) NSString *homeCountry;
 /**
  *  the customers first name
  */
-@property (nonatomic, strong) NSString *firstName;
+@property (nonatomic, nonnull) NSString *firstName;
 /**
  *  The customers last name
  */
-@property (nonatomic, strong) NSString *lastName;
+@property (nonatomic, nonnull) NSString *lastName;
 /**
  *  The customers email
  */
-@property (nonatomic, strong) NSString *email;
+@property (nonatomic, nonnull) NSString *email;
 /**
  *  The customers address
  */
-@property (nonatomic, strong) NSString *address;
+@property (nonatomic, nonnull) NSString *address;
 /**
  *  The customers phone number
  */
-@property (nonatomic, strong) NSString *phone;
+@property (nonatomic, nonnull) NSString *phone;
 
 /**
  *  Creates a customer object
@@ -65,3 +68,6 @@
                     phone:(NSString *)phone;
 
 @end
+
+NS_ASSUME_NONNULL_END
+

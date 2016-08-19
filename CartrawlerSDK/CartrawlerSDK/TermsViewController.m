@@ -68,7 +68,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     TermsDetailViewController *vc = segue.destinationViewController;
-    CTTermsAndConditions *tc = (CTTermsAndConditions *)sender;
+    CTTermAndCondition *tc = (CTTermAndCondition *)sender;
     [vc setData:tc];
 }
 

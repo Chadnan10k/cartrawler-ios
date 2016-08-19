@@ -797,7 +797,6 @@
 			children = (
 				45F4736B1D369E1100DF548B /* Booking Completion */,
 				45E942C01D13021300ACF604 /* DateTime Picker */,
-				45E942B91D1301F800ACF604 /* Location Search */,
 				45E942A21D13015900ACF604 /* Calender */,
 				45E9429E1D13013900ACF604 /* CTSelectView */,
 				45E9429A1D13011B00ACF604 /* Search (Step One) */,
@@ -814,6 +813,7 @@
 		45E9429A1D13011B00ACF604 /* Search (Step One) */ = {
 			isa = PBXGroup;
 			children = (
+				45E942B91D1301F800ACF604 /* Location Search */,
 				450F9D371D3CE08E002C6F6B /* SettingsSelectionViewController.h */,
 				450F9D381D3CE08E002C6F6B /* SettingsSelectionViewController.m */,
 				450F9D471D3D00C8002C6F6B /* SettingsViewController.h */,

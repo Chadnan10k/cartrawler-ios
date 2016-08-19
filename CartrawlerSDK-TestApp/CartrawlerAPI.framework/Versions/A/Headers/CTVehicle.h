@@ -3,7 +3,7 @@
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
-// You may obtain a strong of the License at
+// You may obtain a nonnull of the License at
 //
 // http://www.apache.org/licenses/LICENSE-2.0
 //
@@ -79,6 +79,8 @@ typedef NS_ENUM(NSUInteger, FuelPolicy) {
     FuelPolicyChaufFuelInc
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTVehicle
  */
@@ -103,7 +105,7 @@ typedef NS_ENUM(NSUInteger, FuelPolicy) {
 /**
  *  Passenger quantity vehicle can take
  */
-@property (nonatomic, strong, readonly) NSNumber *passengerQty;
+@property (nonatomic, nonnull, readonly) NSNumber *passengerQty;
 /**
  *  Int value representing the vehicle class size
  */
@@ -111,19 +113,19 @@ typedef NS_ENUM(NSUInteger, FuelPolicy) {
 /**
  *  The total base price for this vehicle
  */
-@property (nonatomic, strong, readonly) NSNumber *totalPriceForThisVehicle;
+@property (nonatomic, nonnull, readonly) NSNumber *totalPriceForThisVehicle;
 /**
  *  The transmission type of the vehicle
  */
-@property (nonatomic, strong, readonly) NSString *transmissionType;
+@property (nonatomic, nonnull, readonly) NSString *transmissionType;
 /**
  *  The fuel type of the vehicle
  */
-@property (nonatomic, strong, readonly) NSString *fuelType;
+@property (nonatomic, nonnull, readonly) NSString *fuelType;
 /**
  *  The vehicles fuel policy description
  */
-@property (nonatomic, strong, readonly) NSString *fuelPolicyDescription;
+@property (nonatomic, nonnull, readonly) NSString *fuelPolicyDescription;
 /**
  *  Fuel policy enum
  */
@@ -131,121 +133,121 @@ typedef NS_ENUM(NSUInteger, FuelPolicy) {
 /**
  *  The vehicles drive type
  */
-@property (nonatomic, strong, readonly) NSString *driveType;
+@property (nonatomic, nonnull, readonly) NSString *driveType;
 /**
  *  The quantity of the amount of baggage the vehicle can hold
  */
-@property (nonatomic, strong, readonly) NSNumber *baggageQty;
+@property (nonatomic, nonnull, readonly) NSNumber *baggageQty;
 /**
  *  The vehicles ID code
  */
-@property (nonatomic, strong, readonly) NSString *code;
+@property (nonatomic, nonnull, readonly) NSString *code;
 /**
  *  The vehicle code context
  */
-@property (nonatomic, strong, readonly) NSString *codeContext;
+@property (nonatomic, nonnull, readonly) NSString *codeContext;
 /**
  *  The vehicle category description
  */
-@property (nonatomic, strong, readonly) NSString *categoryDescription;
+@property (nonatomic, nonnull, readonly) NSString *categoryDescription;
 /**
  *  Vehicle category code
  */
-@property (nonatomic, strong, readonly) NSString *categoryDescriptionCode;
+@property (nonatomic, nonnull, readonly) NSString *categoryDescriptionCode;
 /**
  *  The number of doors the vehicle has
  */
-@property (nonatomic, strong, readonly) NSNumber *doorCount;
+@property (nonatomic, nonnull, readonly) NSNumber *doorCount;
 /**
  *  The make / model name of the vehicle
  */
-@property (nonatomic, strong, readonly) NSString *makeModelName;
+@property (nonatomic, nonnull, readonly) NSString *makeModelName;
 /**
  *  The make / model code of the vehicle
  */
-@property (nonatomic, strong, readonly) NSString *makeModelCode;
+@property (nonatomic, nonnull, readonly) NSString *makeModelCode;
 /**
  *  Picture url for the vehicle
  */
-@property (nonatomic, strong, readonly) NSURL *pictureURL;
+@property (nonatomic, nonnull, readonly) NSURL *pictureURL;
 /**
  *  Vehicle asset number
  */
-@property (nonatomic, strong, readonly) NSString *vehicleAssetNumber;
+@property (nonatomic, nonnull, readonly) NSString *vehicleAssetNumber;
 /**
  *  Rate qualifier
  */
-@property (nonatomic, strong, readonly) NSString *rateQualifier;
+@property (nonatomic, nonnull, readonly) NSString *rateQualifier;
 /**
  *  Rate total amount
  */
-@property (nonatomic, strong, readonly) NSString *rateTotalAmount;
+@property (nonatomic, nonnull, readonly) NSString *rateTotalAmount;
 /**
  *  Estimated total amount for vehicle
  */
-@property (nonatomic, strong, readonly) NSNumber *estimatedTotalAmount;
+@property (nonatomic, nonnull, readonly) NSNumber *estimatedTotalAmount;
 /**
  *  Currency code for vehicle cost
  */
-@property (nonatomic, strong, readonly) NSString *currencyCode;
+@property (nonatomic, nonnull, readonly) NSString *currencyCode;
 /**
  *  Vehicle reference type
  */
-@property (nonatomic, strong, readonly) NSString *refType;
+@property (nonatomic, nonnull, readonly) NSString *refType;
 /**
  *  Vehicle reference ID
  */
-@property (nonatomic, strong, readonly) NSString *refID;
+@property (nonatomic, nonnull, readonly) NSString *refID;
 /**
  *  Vehicle reference ID context
  */
-@property (nonatomic, strong, readonly) NSString *refIDContext;
+@property (nonatomic, nonnull, readonly) NSString *refIDContext;
 /**
  *  Vehicle reference time tamp
  */
-@property (nonatomic, strong, readonly) NSString *refTimeStamp;
+@property (nonatomic, nonnull, readonly) NSString *refTimeStamp;
 /**
  *  Vehicle reference URL
  */
-@property (nonatomic, strong, readonly) NSString *refURL;
+@property (nonatomic, nonnull, readonly) NSString *refURL;
 /**
  *  Rental duration
  */
-@property (nonatomic, strong, readonly) NSString *rentalDuration;
+@property (nonatomic, nonnull, readonly) NSString *rentalDuration;
 /**
  *  Currency exchanage rate
  */
-@property (nonatomic, strong, readonly) NSString *currencyExchangeRate;
+@property (nonatomic, nonnull, readonly) NSString *currencyExchangeRate;
 /**
  *  Currency exchange rate
  */
-@property (nonatomic, strong, readonly) NSString *currencyExchangeRate23;
+@property (nonatomic, nonnull, readonly) NSString *currencyExchangeRate23;
 /**
  *  Vehicle CTVendor
  */
-@property (nonatomic, strong, readonly) CTVendor *vendor;
+@property (nonatomic, nonnull, readonly) CTVendor *vendor;
 /**
  *  Array of available equipment for vehicle
  */
-@property (nonatomic, strong, readonly) NSArray<CTExtraEquipment *> *extraEquipment;
+@property (nonatomic, nonnull, readonly) NSArray<CTExtraEquipment *> *extraEquipment;
 /**
  *  Array of fees for vehicle
  */
-@property (nonatomic, strong, readonly) NSArray<CTFee *> *fees;
+@property (nonatomic, nonnull, readonly) NSArray<CTFee *> *fees;
 /**
  *  Array of charges for vehicle
  */
-@property (nonatomic, strong, readonly) NSArray<CTVehicleCharge *> *vehicleCharges;
+@property (nonatomic, nonnull, readonly) NSArray<CTVehicleCharge *> *vehicleCharges;
 /**
  *  Array of priced coverages for vehicle
  */
-@property (nonatomic, strong, readonly) NSArray<CTPricedCoverage *> *pricedCoverages;
+@property (nonatomic, weak, readonly) NSArray<CTPricedCoverage *> *pricedCoverages;
 
 - (instancetype) initFromVehicleDictionary:(NSDictionary *)vehicleDictionary vendor:(CTVendor *)vendor  ;
 
-
 @end
 
+NS_ASSUME_NONNULL_END
 
 
 

@@ -23,6 +23,8 @@
 #import "CTVehicle.h"
 #import "CTVendorRating.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTVendor
  */
@@ -61,63 +63,63 @@ typedef NS_ENUM(NSUInteger, PickupType) {
 /**
  *  Counter type enum, this uses VWF
  */
-typedef NS_ENUM(NSUInteger, CounterType) {
+typedef NS_ENUM(NSUInteger, VendorLocationType) {
     /**
      *  Terminal
      */
-    CounterTypeTerminal = 0,
+     VendorLocationTypeTerminal = 0,
     /**
      *  Shuttle on airport
      */
-    CounterTypeShuttleOnAirport,
+     VendorLocationTypeShuttleOnAirport,
     /**
      *  Shuttle off airport
      */
-    CounterTypeShuttleOffAirport,
+     VendorLocationTypeShuttleOffAirport,
     /**
      *  Railway station
      */
-    CounterTypeRailwayStation,
+     VendorLocationTypeRailwayStation,
     /**
      *  Hotel
      */
-    CounterTypeHotel,
+     VendorLocationTypeHotel,
     /**
      *  Car dealer
      */
-    CounterTypeCarDealer,
+     VendorLocationTypeCarDealer,
     /**
      *  City center/downtown
      */
-    CounterTypeCityCenterDowntown,
+     VendorLocationTypeCityCenterDowntown,
     /**
      *  East of city center
      */
-    CounterTypeCityCenterEast,
+     VendorLocationTypeCityCenterEast,
     /**
      *  South of city center
      */
-    CounterTypeCityCenterSouth,
+     VendorLocationTypeCityCenterSouth,
     /**
      *  West of city center
      */
-    CounterTypeCityCenterWest,
+     VendorLocationTypeCityCenterWest,
     /**
      *  North of city center
      */
-    CounterTypeCityCenterNorth,
+     VendorLocationTypeCityCenterNorth,
     /**
      *  Port/ferry
      */
-    CounterTypeFerryPort,
+     VendorLocationTypeFerryPort,
     /**
      *  Near resort
      */
-    CounterTypeNearResort,
+     VendorLocationTypeNearResort,
     /**
      *  Airport
      */
-    CounterTypeAirport
+     VendorLocationTypeAirport
 };
 
 /**
@@ -131,62 +133,64 @@ typedef NS_ENUM(NSUInteger, CounterType) {
 /**
  *  Vendor counter type
  */
-@property (nonatomic) CounterType counterType;
+@property (nonatomic) VendorLocationType locationType;
 /**
  *  The vendor code
  */
-@property (nonatomic, strong) NSString *code;
+@property (nonatomic, nonnull) NSString *code;
 /**
  *  The vendor name
  */
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, nonnull) NSString *name;
 /**
  *  The vendor division
  */
-@property (nonatomic, strong) NSString *division;
+@property (nonatomic, nonnull) NSString *division;
 /**
  *  Picture url for the vendor logo
  */
-@property (nonatomic, strong) NSURL *logoURL;
+@property (nonatomic, nonnull) NSURL *logoURL;
 /**
  *  The vendor ID
  */
-@property (nonatomic, strong) NSString *ID;
+@property (nonatomic, nonnull) NSString *ID;
 /**
  *  The vendor location code
  */
-@property (nonatomic, strong) NSString *locationCode;
+@property (nonatomic, nonnull) NSString *locationCode;
 /**
  *  The vendor location name
  */
-@property (nonatomic, strong) NSString *locationName;
+@property (nonatomic, nonnull) NSString *locationName;
 /**
  *  The vendor address
  */
-@property (nonatomic, strong) NSString *address;
+@property (nonatomic, nonnull) NSString *address;
 /**
  *  The vendor country code
  */
-@property (nonatomic, strong) NSString *countryCode;
+@property (nonatomic, nonnull) NSString *countryCode;
 /**
  *  The vendor phone number
  */
-@property (nonatomic, strong) NSString *phone;
+@property (nonatomic, nonnull) NSString *phone;
 /**
  *  Vendor rating
  */
-@property (nonatomic, strong) CTVendorRating *rating;
+@property (nonatomic, nonnull) CTVendorRating *rating;
 /**
  *  Drop off vendor
  */
-@property (nonatomic, strong) CTVendor *dropoffVendor;
+@property (nonatomic, nonnull) CTVendor *dropoffVendor;
 /**
  *  Available cars from the vendor
  */
-@property (nonatomic, strong) NSArray<CTVehicle *> *availableCars;
+@property (nonatomic, nonnull) NSArray<CTVehicle *> *availableCars;
 
 - (instancetype)initFromVehVendorAvailsDictionary:(NSDictionary *)vehVendorAvails  ;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 

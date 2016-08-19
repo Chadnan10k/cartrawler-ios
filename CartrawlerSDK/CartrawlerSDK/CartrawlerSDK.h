@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) CTViewController *insuranceExtrasViewController;
 @property (nonatomic, strong, readonly) CTViewController *paymentSummaryViewController;
 @property (nonatomic, strong, readonly) CTViewController *driverDetialsViewController;
+@property (nonatomic, strong, readonly) CTViewController *paymentViewController;
+@property (nonatomic, strong, readonly) CTViewController *paymentCompletionViewController;
 
 /**
  *  Initialize the CartrawlerAPI
@@ -60,13 +62,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)presentGroundTransportInViewController:(UIViewController *)viewController;
 
-/*
+/*  ----------------------------------------------------------------------------
  *  View Controller Overriding:
  *  You can set a custom view for any step of the user journey by subclassing
  *  the designated step view controller.
  *
  *  You must set all of the properties of the step view controller in order to
  *  push to the next view.
+ *  ----------------------------------------------------------------------------
  */
 
 /**
@@ -112,6 +115,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)overrideDriverDetialsViewController:(CTViewController *)viewController;
 
 /**
+ *  Override the success / failure view for payment
+ *
+ *  @param viewController A CTViewController subclass with its viewType set to ViewTypeGeneric
+ */
+- (void)overridePaymentCompletionViewController:(CTViewController *)viewController;
+
+/**
  *  If you have created every view from scratch you can set them easily by passing them all into an array
  *  The array MUST however contain these ViewTypes:
  *
@@ -119,7 +129,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  ViewTypeVehicleSelection,
  *  ViewTypeInsurance,
  *  ViewTypeDriverDetails,
- *  ViewTypePaymentDetails,
  *
  *
  * @param carRentalViews An array of CTViewController's

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTAirport
  */
@@ -30,15 +32,15 @@ typedef NS_ENUM(NSUInteger, FlightType) {
 /**
  *  The flight type in string value
  */
-@property (nonatomic, strong, readonly) NSString *flightType;
+@property (nonatomic, nonnull, readonly) NSString *flightType;
 /**
  *  The IATA code
  */
-@property (nonatomic, strong, readonly) NSString *IATACode;
+@property (nonatomic, nonnull, readonly) NSString *IATACode;
 /**
  *  The terminal number
  */
-@property (nonatomic, strong, readonly) NSString *terminalNumber;
+@property (nonatomic, nonnull, readonly) NSString *terminalNumber;
 
 /**
  *  Creates a CTAirport object
@@ -62,3 +64,5 @@ typedef NS_ENUM(NSUInteger, FlightType) {
  */
 + (FlightType)flightType:(FlightType)flightType;
 @end
+
+NS_ASSUME_NONNULL_END

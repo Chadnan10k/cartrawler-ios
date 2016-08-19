@@ -11,7 +11,7 @@
 @interface TermsDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *navTitleLabel;
-@property (strong, nonatomic) CTTermsAndConditions *data;
+@property (strong, nonatomic) CTTermAndCondition *data;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end
@@ -40,7 +40,7 @@
 //    [self.textView setContentOffset:CGPointZero animated:NO];
 //}
 
-- (void)setData:(CTTermsAndConditions *)data
+- (void)setData:(CTTermAndCondition *)data
 {
     _data = data;
 }

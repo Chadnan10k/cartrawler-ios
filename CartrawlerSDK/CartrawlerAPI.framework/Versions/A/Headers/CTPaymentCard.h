@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTPaymentCard
  */
@@ -33,23 +36,23 @@ typedef NS_ENUM(NSUInteger, CardType) {
 /**
  *  The card type in string form
  */
-@property (nonatomic, strong, readonly) NSString *type;
+@property (nonatomic, nonnull, readonly) NSString *type;
 /**
  *  The card number
  */
-@property (nonatomic, strong, readonly) NSString *number;
+@property (nonatomic, nonnull, readonly) NSString *number;
 /**
  *  The card expiry in string form
  */
-@property (nonatomic, strong, readonly) NSString *expiry;
+@property (nonatomic, nonnull, readonly) NSString *expiry;
 /**
  *  The card holder name
  */
-@property (nonatomic, strong, readonly) NSString *holderName;
+@property (nonatomic, nonnull, readonly) NSString *holderName;
 /**
  *  The cards security number
  */
-@property (nonatomic, strong, readonly) NSString *cvc;
+@property (nonatomic, nonnull, readonly) NSString *cvc;
 
 /**
  *  Creates a Payment Card Object
@@ -76,4 +79,7 @@ typedef NS_ENUM(NSUInteger, CardType) {
  *  @return returns CardType
  */
 + (CardType)cardType:(CardType)cardType;
+
 @end
+
+NS_ASSUME_NONNULL_END

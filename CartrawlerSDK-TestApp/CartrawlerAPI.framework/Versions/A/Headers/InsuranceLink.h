@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 ///Abstract: Used for US insurance quotes
 @interface InsuranceLink : NSObject
 
-@property (nonatomic, strong, readonly, nonnull) NSURL *link;
-@property (nonatomic, strong, readonly, nonnull) NSString *title;
-@property (nonatomic, strong, readonly, nonnull) NSString *code;
+@property (nonatomic, readonly, nonnull) NSURL *link;
+@property (nonatomic, readonly, nonnull) NSString *title;
+@property (nonatomic, readonly, nonnull) NSString *code;
 
 - (instancetype)initWithLink:(NSString *)link title:(NSString *)title code:(NSString *)code  ;
 @end

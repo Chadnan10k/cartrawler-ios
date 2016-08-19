@@ -48,6 +48,8 @@ import UIKit
 //
 class ViewController: UIViewController {
     
+    let cartrawlerSDK = CartrawlerSDK(requestorID: "643826", languageCode: "EN", isDebug: true)
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -89,7 +91,6 @@ class ViewController: UIViewController {
     @IBAction func openCartrawler(sender: AnyObject) {
         //643826 RYR
         //592248
-        let cartrawlerSDK = CartrawlerSDK(requestorID: "643826", languageCode: "EN", isDebug: true)
         cartrawlerSDK.presentCarRental(in: self)
        // cartrawlerAPI!.presentGroundTransport(in: self)
     }

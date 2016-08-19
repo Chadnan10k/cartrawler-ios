@@ -19,6 +19,9 @@
 //
 
 #import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTVehicleCharge
  */
@@ -35,11 +38,14 @@
 /**
  *  Description of charge
  */
-@property (nonatomic, strong, readonly) NSString *chargeDescription;
+@property (nonatomic, nonnull, readonly) NSString *chargeDescription;
 /**
  *  Purpose of the charge
  */
-@property (nonatomic, strong, readonly) NSString *chargePurpose;
+@property (nonatomic, nonnull, readonly) NSString *chargePurpose;
 
-- (instancetype) initFromVehicleChargesDictionary:(NSDictionary *)vehicleChargesDictionary  ;
+- (instancetype) initFromVehicleChargesDictionary:(NSDictionary *)vehicleChargesDictionary;
+
 @end
+
+NS_ASSUME_NONNULL_END

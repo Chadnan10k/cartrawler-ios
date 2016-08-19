@@ -51,7 +51,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("Got token data!")
+        var token = String(format: "%@", deviceToken as NSData)
+        token = token.replacingOccurrences(of: "<", with: "")
+        token = token.replacingOccurrences(of: ">", with: "")
+        token = token.replacingOccurrences(of: " ", with: "")
+        print("Got token data! \(token)")
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -70,9 +74,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-//extension NSData {
-//    var hexString: String {
-//        let bytes = UnsafeBufferPointer<UInt8>(start: UnsafePointer(self.bytes), count:self.length)
-//        return bytes.map { String(format: "%02hhx", $0) }.reduce("", { $0 + $1 })
-//    }
-//}

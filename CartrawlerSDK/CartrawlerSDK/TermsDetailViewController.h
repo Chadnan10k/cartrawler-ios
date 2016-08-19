@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTTermsAndConditions.h>
+#import <CartrawlerAPI/CTTermAndCondition.h>
 
 @interface TermsDetailViewController : UIViewController
 
 + (void)forceLinkerLoad_;
 
-- (void)setData:(CTTermsAndConditions *)data;
+- (void)setData:(CTTermAndCondition *)data;
 
 @end

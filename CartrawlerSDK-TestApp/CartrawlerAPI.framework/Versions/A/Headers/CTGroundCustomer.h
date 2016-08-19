@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "CTCustomer.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTGroundCustomer
  */
@@ -16,51 +19,51 @@
 /**
  *  Customers addesss line 1
  */
-@property (nonatomic, strong, readonly) NSString *addressLine1;
+@property (nonatomic, nonnull, readonly) NSString *addressLine1;
 /**
  *  Customers address line 2 if available
  */
-@property (nonatomic, strong, readonly) NSString *addressLine2;
+@property (nonatomic, nonnull, readonly) NSString *addressLine2;
 /**
  *  The town the customer lives in
  */
-@property (nonatomic, strong, readonly) NSString *addressTown;
+@property (nonatomic, nonnull, readonly) NSString *addressTown;
 /**
  *  The city the customer lives in
  */
-@property (nonatomic, strong, readonly) NSString *addressCity;
+@property (nonatomic, nonnull, readonly) NSString *addressCity;
 /**
  *  The customers post code if available
  */
-@property (nonatomic, strong, readonly) NSString *addressPostCode;
+@property (nonatomic, nonnull, readonly) NSString *addressPostCode;
 /**
  *  The customers State / Province if available
  */
-@property (nonatomic, strong, readonly) NSString *addressStateProvince;
+@property (nonatomic, nonnull, readonly) NSString *addressStateProvince;
 /**
  *  The customers country code
  */
-@property (nonatomic, strong, readonly) NSString *countryCode;
+@property (nonatomic, nonnull, readonly) NSString *countryCode;
 /**
  *  The customers country name
  */
-@property (nonatomic, strong, readonly) NSString *countryName;
+@property (nonatomic, nonnull, readonly) NSString *countryName;
 /**
  *  The customers email address
  */
-@property (nonatomic, strong, readonly) NSString *email;
+@property (nonatomic, nonnull, readonly) NSString *email;
 /**
  *  The customers phone numebr
  */
-@property (nonatomic, strong, readonly) NSString *phone;
+@property (nonatomic, nonnull, readonly) NSString *phone;
 /**
  *  The customers first name
  */
-@property (nonatomic, strong, readonly) NSString *firstName;
+@property (nonatomic, nonnull, readonly) NSString *firstName;
 /**
  *  The customers surname
  */
-@property (nonatomic, strong, readonly) NSString *surname;
+@property (nonatomic, nonnull, readonly) NSString *surname;
 
 /**
  *  Creates a CTGroundCustomer object
@@ -95,3 +98,5 @@
                    surname:(NSString *)surname;
 
 @end
+
+NS_ASSUME_NONNULL_END

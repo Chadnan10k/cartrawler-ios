@@ -28,14 +28,10 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
     self.tableView.alpha = 0;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.headerView.backgroundColor = [CTAppearance instance].locationSelectionBarColor;
     
@@ -44,7 +40,8 @@
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self.dataSource;
     self.searchBar.delegate = self;
-
+    self.searchBar.text = @"";
+    
     (self.searchBar).backgroundImage = [UIImage new];
 
     [self.searchBar becomeFirstResponder];

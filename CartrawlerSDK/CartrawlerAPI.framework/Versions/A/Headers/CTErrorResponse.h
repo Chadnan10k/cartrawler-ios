@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTErrorResponse
  */
@@ -14,8 +17,10 @@
 /**
  *  Description of the error returned
  */
-@property (nonatomic, strong, readonly) NSString *errorMessage;
+@property (nonatomic, nonnull, readonly) NSString *errorMessage;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dict  ;
+- (instancetype)initWithDictionary:(nullable NSDictionary *)dict;
 
 @end
+
+NS_ASSUME_NONNULL_END

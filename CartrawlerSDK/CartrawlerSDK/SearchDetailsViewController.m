@@ -48,6 +48,9 @@
 @property (nonatomic, strong) NSDate *pickupTime;
 @property (nonatomic, strong) NSDate *dropoffTime;
 
+@property (nonatomic, strong) LocationSearchViewController *locSearchVC;
+@property (nonatomic, strong) CTCalendarViewController *calendar;
+
 @property (readwrite, nonatomic) BOOL isReturningSameLocation;
 @property (readwrite, nonatomic) BOOL driverUnderage;
 
@@ -64,6 +67,16 @@
 {
     
     [super viewDidLoad];
+    
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
+    
+    _locSearchVC = (LocationSearchViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
+    self.locSearchVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    
+    _calendar = [storyboard instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];
+    self.calendar.delegate = self;
     
     [self registerForKeyboardNotifications];
     
@@ -90,17 +103,11 @@
     self.pickupView.viewTapped = ^{
         
         [weakSelf.view endEditing:YES];
-        
         _activeView = self.pickupView;
 
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
-        LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
-        locSearchVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
-        [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
+        [weakSelf presentViewController:weakSelf.locSearchVC animated:YES completion:nil];
         
-        locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
+        weakSelf.locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
             [weakSelf.pickupView setTextFieldText:location.name];
             (weakSelf.search).pickupLocation = location;
             
@@ -116,14 +123,9 @@
         [weakSelf.view endEditing:YES];
         
         _activeView = self.pickupView;
+        [weakSelf presentViewController:weakSelf.locSearchVC animated:YES completion:nil];
 
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
-        LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
-        [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
-        
-        locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
+        weakSelf.locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
             [weakSelf.dropoffView setTextFieldText:location.name];
             (weakSelf.search).dropoffLocation = location;
         };
@@ -167,13 +169,7 @@
     _calendarView = [[CTSelectView alloc] initWithView:self.calendarContainer placeholder:@"Select dates"];
     self.calendarView.viewTapped = ^{
         _activeView = self.calendarView;
-
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
-        CTCalendarViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];
-        vc.delegate = weakSelf;
-        [weakSelf presentViewController:vc animated:YES completion:nil];
+        [weakSelf presentViewController:weakSelf.calendar animated:YES completion:nil];
     };
     
     CTCheckbox *sameLoc = [[CTCheckbox alloc] initEnabled:YES containerView:self.sameLocationCheckBox ];

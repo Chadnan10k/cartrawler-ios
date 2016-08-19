@@ -19,6 +19,9 @@
 //
 
 #import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTFee
  */
@@ -26,19 +29,22 @@
 /**
  *  The fee amount
  */
-@property (nonatomic, strong, readonly) NSNumber *feeAmount;
+@property (nonatomic, nonnull, readonly) NSNumber *feeAmount;
 /**
  *  Currency code associated with price
  */
-@property (nonatomic, strong, readonly) NSString *feeCurrencyCode;
+@property (nonatomic, nonnull, readonly) NSString *feeCurrencyCode;
 /**
  *  Purpose of the fee
  */
-@property (nonatomic, strong, readonly) NSString *feePurpose;
+@property (nonatomic, nonnull, readonly) NSString *feePurpose;
 /**
  *  Description of the fee purpose
  */
-@property (nonatomic, strong, readonly) NSString *feePurposeDescription;
+@property (nonatomic, nonnull, readonly) NSString *feePurposeDescription;
 
-- (instancetype)initFromFeeDictionary:(NSDictionary *)feeDictionary  ;
+- (instancetype)initFromFeeDictionary:(NSDictionary *)feeDictionary;
+
 @end
+
+NS_ASSUME_NONNULL_END

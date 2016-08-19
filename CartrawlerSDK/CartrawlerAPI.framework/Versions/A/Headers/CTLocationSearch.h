@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "CTMatchedLocation.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTLocationSearch
  */
@@ -16,8 +19,10 @@
 /**
  *  Array of CTMatchedLocation's
  */
-@property (nonatomic, strong, readonly) NSArray<CTMatchedLocation *> *matchedLocations;
+@property (nonatomic, readonly, nonnull) NSArray<CTMatchedLocation *> *matchedLocations;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary  ;
 - (instancetype)initWithPartialTextDictionary:(NSDictionary *)dictionary  ;
 @end
+
+NS_ASSUME_NONNULL_END

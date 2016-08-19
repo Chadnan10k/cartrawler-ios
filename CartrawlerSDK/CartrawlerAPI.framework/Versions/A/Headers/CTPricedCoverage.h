@@ -20,6 +20,9 @@
 //
 
 #import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTPricedCoverage
  */
@@ -28,11 +31,11 @@
 /**
  *  Coverage type
  */
-@property (nonatomic, strong, readonly) NSString *coverageType;
+@property (nonatomic, nonnull, readonly) NSString *coverageType;
 /**
  *  Description of the charge
  */
-@property (nonatomic, strong, readonly) NSString *chargeDescription;
+@property (nonatomic, nonnull, readonly) NSString *chargeDescription;
 /**
  *  Bool value if coverage is tax inclusive
  */
@@ -43,4 +46,7 @@
 @property (nonatomic, readonly) BOOL isIncludedInRate;
 
 - (instancetype)initWithPricedCoveragesDictionary:(NSDictionary *)pricedCoveragesDictionary;
+
 @end
+
+NS_ASSUME_NONNULL_END

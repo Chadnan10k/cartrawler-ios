@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTMatchedLocation
  */
@@ -19,48 +22,50 @@
 /**
  *  If at an airport we are returned an airport code
  */
-@property (nonatomic, strong, readonly) NSString *airportCode;
+@property (nonatomic, nonnull, readonly) NSString *airportCode;
 /**
  *  Location code
  */
-@property (nonatomic, strong, readonly) NSString *code;
+@property (nonatomic, nonnull, readonly) NSString *code;
 /**
  *  Location name
  */
-@property (nonatomic, strong, readonly) NSString *name;
+@property (nonatomic, nonnull, readonly) NSString *name;
 /**
  *  Location code context
  */
-@property (nonatomic, strong, readonly) NSString *codeContext;
+@property (nonatomic, nonnull, readonly) NSString *codeContext;
 /**
  *  Location address line
  */
-@property (nonatomic, strong, readonly) NSString *addressLine;
+@property (nonatomic, nonnull, readonly) NSString *addressLine;
 /**
  *  Location address code
  */
-@property (nonatomic, strong, readonly) NSString *addressCode;
+@property (nonatomic, nonnull, readonly) NSString *addressCode;
 /**
  *  Location state code
  */
-@property (nonatomic, strong, readonly) NSString *addressStateCode;
+@property (nonatomic, nonnull, readonly) NSString *addressStateCode;
 /**
  *  Location latitude, if available
  */
-@property (nonatomic, strong, readonly) NSNumber *latitude;
+@property (nonatomic, nonnull, readonly) NSNumber *latitude;
 /**
  *  Location longitude, if available
  */
-@property (nonatomic, strong, readonly) NSNumber *longitude;
+@property (nonatomic, nonnull, readonly) NSNumber *longitude;
 /**
  *  Location distance, if available
  */
-@property (nonatomic, strong, readonly) NSNumber *distance;
+@property (nonatomic, nonnull, readonly) NSNumber *distance;
 /**
  *  Distance unit, km or miles, if available
  */
-@property (nonatomic, strong, readonly) NSString *distanceUnit;
+@property (nonatomic, nonnull, readonly) NSString *distanceUnit;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary  ;
 - (instancetype)initWithPartialStringDictionary:(NSDictionary *)dictionary  ;
 @end
+
+NS_ASSUME_NONNULL_END

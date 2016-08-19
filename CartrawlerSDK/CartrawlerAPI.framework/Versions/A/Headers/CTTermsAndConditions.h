@@ -20,24 +20,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTTermAndCondition.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTTermsAndConditions
  */
 @interface CTTermsAndConditions : NSObject
 
 /**
- *  Title text of a section
- */
-@property (nonatomic, strong, readonly) NSString *titleText;
-/**
- *  Body text of a section
- */
-@property (nonatomic, strong, readonly) NSString *bodyText;
-/**
  *  Array of sections in form of CTTermsAndConditions
  */
-@property (nonatomic, strong, readonly) NSArray<CTTermsAndConditions *> *termsAndConditions;
+@property (nonatomic, nonnull, readonly) NSArray<CTTermAndCondition *> *termsAndConditions;
 
-- (instancetype)initFromAPIResponse:(NSDictionary *)dict  ;
+- (instancetype)initFromAPIResponse:(NSDictionary *)dict;
+
 @end
 	
+NS_ASSUME_NONNULL_END

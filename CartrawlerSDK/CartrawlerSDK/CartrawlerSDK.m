@@ -27,8 +27,7 @@
 
 @interface CartrawlerSDK()
 
-@property (nonatomic, strong) CTViewController *paymentViewController;
-@property (nonatomic, strong) CTViewController *paymentCompletionViewController;
+@property (nonatomic, strong, readonly) CTViewController *searchDetailsViewControllerOverride;
 
 @property (nonatomic, strong) GroundTransportViewController *groundTransportViewController;
 
@@ -77,17 +76,13 @@
 
 - (void)presentCarRentalInViewController:(UIViewController *)viewController;
 {
+    
     [[CTSearch instance] reset];
     CTNavigationController *navController;
     
-    if (self.customViewControllers.count > 0) {
-        navController=[[CTNavigationController alloc]initWithRootViewController:
-                                               self.customViewControllers.firstObject];
-    } else {
-        navController=[[CTNavigationController alloc]initWithRootViewController:
-                                               [self searchDetailsViewController_]];
-    }
-    
+    navController = [[CTNavigationController alloc] initWithRootViewController:
+                                           [self searchDetailsViewController_]];
+
     navController.navigationBar.hidden = YES;
     [viewController presentViewController:navController animated:YES completion:nil];
 }
@@ -114,8 +109,8 @@
 
 - (void)overrideSearchDetailsViewController:(CTViewController *)viewController
 {
-    _searchDetailsViewController = viewController;
-    (self.searchDetailsViewController).cartrawlerAPI = self.cartrawlerAPI;
+    _searchDetailsViewControllerOverride = viewController;
+    (self.searchDetailsViewControllerOverride).cartrawlerAPI = self.cartrawlerAPI;
 }
 
 - (void)overrideVehicleSelectionViewController:(CTViewController *)viewController
@@ -148,21 +143,27 @@
     (self.driverDetialsViewController).cartrawlerAPI = self.cartrawlerAPI;
 }
 
+- (void)overridePaymentCompletionViewController:(CTViewController *)viewController
+{
+    _paymentCompletionViewController = viewController;
+    (self.paymentCompletionViewController).cartrawlerAPI = self.cartrawlerAPI;
+}
+
 - (CTViewController *)searchDetailsViewController_
 {
-    if (self.searchDetailsViewController) {
-        (self.searchDetailsViewController).search = [CTSearch instance];
-        return self.searchDetailsViewController;
+    if (self.searchDetailsViewControllerOverride) {
+        self.searchDetailsViewControllerOverride.search = [CTSearch instance];
+        return self.searchDetailsViewControllerOverride;
     } else {
 
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:self.bundle];
         _searchDetailsViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
         
-        (self.searchDetailsViewController).destinationViewController = [self vehicleSelectionViewController_];
+        self.searchDetailsViewController.destinationViewController = [self vehicleSelectionViewController_];
         [self.searchDetailsViewController setFallBackViewController:nil];
-        (self.searchDetailsViewController).viewType = ViewTypeSearchDetails;
-        (self.searchDetailsViewController).cartrawlerAPI = self.cartrawlerAPI;
-        (self.searchDetailsViewController).search = [CTSearch instance];
+        self.searchDetailsViewController.viewType = ViewTypeSearchDetails;
+        self.searchDetailsViewController.cartrawlerAPI = self.cartrawlerAPI;
+        self.searchDetailsViewController.search = [CTSearch instance];
 
         return self.searchDetailsViewController;
     }

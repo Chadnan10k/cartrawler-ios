@@ -20,6 +20,9 @@
 
 #import <Foundation/Foundation.h>
 #import "CTVendor.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTVehicleAvailability
  */
@@ -28,38 +31,40 @@
 /**
  *  The pickup date and time
  */
-@property (nonatomic, strong, readonly) NSString *puDate;
+@property (nonatomic, nonnull, readonly) NSString *puDate;
 /**
  *  The drop off date and time
  */
-@property (nonatomic, strong, readonly) NSString *doDate;
+@property (nonatomic, nonnull, readonly) NSString *doDate;
 /**
  *  The pickup location code
  */
-@property (nonatomic, strong, readonly) NSString *puLocationCode;
+@property (nonatomic, nonnull, readonly) NSString *puLocationCode;
 /**
  *  The Pickup location name
  */
-@property (nonatomic, strong, readonly) NSString *puLocationName;
+@property (nonatomic, nonnull, readonly) NSString *puLocationName;
 /**
  *  The drop off location code
  */
-@property (nonatomic, strong, readonly) NSString *doLocationCode;
+@property (nonatomic, nonnull, readonly) NSString *doLocationCode;
 /**
  *  The drop off location name
  */
-@property (nonatomic, strong, readonly) NSString *doLocationName;
+@property (nonatomic, nonnull, readonly) NSString *doLocationName;
 /**
  *  Available vendors for an availability search
  */
-@property (nonatomic, strong, readonly) NSArray<CTVendor *> *availableVendors;
+@property (nonatomic, nonnull, readonly) NSArray<CTVendor *> *availableVendors;
 
 /**
  *  Convenienve property to get all vehicles sorted by price
  */
-@property (nonatomic, strong, readonly) NSArray<CTVehicle *> *allVehicles;
+@property (nonatomic, nonnull, readonly) NSArray<CTVehicle *> *allVehicles;
 
 
-- (instancetype)initFromVehAvailRSCoreDictionary:(NSDictionary *)vehAvailRSCoreDictionary  ;
+- (instancetype)initFromVehAvailRSCoreDictionary:(NSDictionary *)vehAvailRSCoreDictionary;
 
 @end
+
+NS_ASSUME_NONNULL_END

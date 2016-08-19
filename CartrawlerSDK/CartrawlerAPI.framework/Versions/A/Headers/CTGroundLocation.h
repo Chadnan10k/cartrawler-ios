@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTGroundLocation
  */
@@ -44,19 +47,19 @@ typedef NS_ENUM(NSUInteger, LocationType) {
 /**
  *  The latitude of the location
  */
-@property (nonatomic, strong, readonly) NSNumber *latitude;
+@property (nonatomic, nonnull, readonly) NSNumber *latitude;
 /**
  *  The longitude of the location
  */
-@property (nonatomic, strong, readonly) NSNumber *longitude;
+@property (nonatomic, nonnull, readonly) NSNumber *longitude;
 /**
  *  String representation of the LocationType enum
  */
-@property (nonatomic, strong, readonly) NSString *locationType;
+@property (nonatomic, nonnull, readonly) NSString *locationType;
 /**
  *  the date / time for searching availability of a location
  */
-@property (nonatomic, strong, readonly) NSDate   *dateTime;
+@property (nonatomic, nonnull, readonly) NSDate   *dateTime;
 
 /**
  *  Use this for searching the ground transport services of a location
@@ -83,3 +86,5 @@ typedef NS_ENUM(NSUInteger, LocationType) {
 + (LocationType)locationType:(LocationType)locationType;
 
 @end
+
+NS_ASSUME_NONNULL_END

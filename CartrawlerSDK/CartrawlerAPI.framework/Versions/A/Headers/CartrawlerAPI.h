@@ -62,8 +62,6 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
  */
 - (void)enableLogging:(BOOL)enabled;
 
-- (void)cancelAllRequests;
-
 #pragma mark Location Search
 
 /**
@@ -152,37 +150,6 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
                          returnDateTime:(NSDate *)returnDateTime
                  destinationCountryCode:(NSString *)destinationCountryCode
                              completion:(InsuranceQuoteCompletion)completion;
-
-
-/**
- *  Requests to reserve a vehicle
- *
- *  @param pickupDateTime     The pickup date and time
- *  @param returnDateTime     The return date and time
- *  @param pickupLocationCode Pickup location code eg. 71
- *  @param returnLocationCode Return location code eg.71
- *  @param passengerQty       Passenger Qty
- *  @param flightNumber       The customer flight number, this is optional
- *  @param customer           Customer object
- *  @param car                Car Object
- *  @param extras             Car extras, this is optional. takes an array of ExtraEquipment objects
- *  @param card               PaymentCard object
- *  @param insuranceObject    InsuranceObject object, this is optional
- *  @param completion         Returns a Booking object if successful and an ErrorResponse on fail
- */
-- (void)reserveVehicle:(NSDate *)pickupDateTime
-        returnDateTime:(NSDate *)returnDateTime
-    pickupLocationCode:(NSString *)pickupLocationCode
-    returnLocationCode:(NSString *)returnLocationCode
-          passengerQty:(NSNumber *)passengerQty
-          flightNumber:(NSString *)flightNumber
-              customer:(CTCustomer *)customer
-                   car:(CTVehicle *)car
-                extras:(NSArray<CTExtraEquipment *> *)extras
-              currency:(NSString *)currency
-                  card:(CTPaymentCard *)card
-       insuranceObject:(CTInsurance *)insuranceObject
-            completion:(ReserveVehicleCompletion)completion;
 
 #pragma mark Vehicle Services
 /**

@@ -3,7 +3,7 @@
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
-// You may obtain a strong of the License at
+// You may obtain a nonnull of the License at
 //
 // http://www.apache.org/licenses/LICENSE-2.0
 //
@@ -22,6 +22,8 @@
 #import "CTFee.h"
 #import "CTCustomer.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTBooking
  */
@@ -38,209 +40,209 @@
 /**
  *  The pickup date & time
  */
-@property (nonatomic, strong, readonly) NSDate *puDateTime;
+@property (nonatomic, nonnull, readonly) NSDate *puDateTime;
 /**
  *  The drop off date & time
  */
-@property (nonatomic, strong, readonly) NSDate *doDateTime;
+@property (nonatomic, nonnull, readonly) NSDate *doDateTime;
 /**
  *  The url for the vendor logo
  */
-@property (nonatomic, strong, readonly) NSURL *vendorImageUrl;
+@property (nonatomic, nonnull, readonly) NSURL *vendorImageUrl;
 /**
  *  The vendor booking reference
  */
-@property (nonatomic, strong, readonly) NSString *vendorBookingRef;
+@property (nonatomic, nonnull, readonly) NSString *vendorBookingRef;
 /**
  *  The customers emil
  */
-@property (nonatomic, strong, readonly) NSString *customerEmail;
+@property (nonatomic, nonnull, readonly) NSString *customerEmail;
 /**
  *  The customers name title
  */
-@property (nonatomic, strong, readonly) NSString *customerTitle;
+@property (nonatomic, nonnull, readonly) NSString *customerTitle;
 /**
  *  The customers first name
  */
-@property (nonatomic, strong, readonly) NSString *customerGivenName;
+@property (nonatomic, nonnull, readonly) NSString *customerGivenName;
 /**
  *  The customers surname
  */
-@property (nonatomic, strong, readonly) NSString *customerSurname;
+@property (nonatomic, nonnull, readonly) NSString *customerSurname;
 /**
  *  The booking confirmation type
  */
-@property (nonatomic, strong, readonly) NSString *confType;
+@property (nonatomic, nonnull, readonly) NSString *confType;
 /**
  *  the booking confirmation ID
  */
-@property (nonatomic, strong, readonly) NSString *confID;
+@property (nonatomic, nonnull, readonly) NSString *confID;
 /**
  *  The name of the vendor
  */
-@property (nonatomic, strong, readonly) NSString *vendorName;
+@property (nonatomic, nonnull, readonly) NSString *vendorName;
 /**
  *  The vendors ID code
  */
-@property (nonatomic, strong, readonly) NSString *vendorCode;
+@property (nonatomic, nonnull, readonly) NSString *vendorCode;
 /**
  *  The pickup location code
  */
-@property (nonatomic, strong, readonly) NSString *puLocationCode;
+@property (nonatomic, nonnull, readonly) NSString *puLocationCode;
 /**
  *  The drop off location code
  */
-@property (nonatomic, strong, readonly) NSString *doLocationCode;
+@property (nonatomic, nonnull, readonly) NSString *doLocationCode;
 /**
  *  The pickup location name
  */
-@property (nonatomic, strong, readonly) NSString *puLocationName;
+@property (nonatomic, nonnull, readonly) NSString *puLocationName;
 /**
  *  The drop off location name
  */
-@property (nonatomic, strong, readonly) NSString *doLocationName;
+@property (nonatomic, nonnull, readonly) NSString *doLocationName;
 /**
  *  The vehicle transmisson type in string value
  */
-@property (nonatomic, strong, readonly) NSString *vehTransmissionType;
+@property (nonatomic, nonnull, readonly) NSString *vehTransmissionType;
 /**
  *  The vehicle fuel type in string value
  */
-@property (nonatomic, strong, readonly) NSString *vehFuelType;
+@property (nonatomic, nonnull, readonly) NSString *vehFuelType;
 /**
  *  The amount of passengers the vehicle can hold
  */
-@property (nonatomic, strong, readonly) NSString *vehPassengerQty;
+@property (nonatomic, nonnull, readonly) NSString *vehPassengerQty;
 /**
  *  The amount of baggage the vehicle can hold
  */
-@property (nonatomic, strong, readonly) NSString *vehBaggageQty;
+@property (nonatomic, nonnull, readonly) NSString *vehBaggageQty;
 /**
  *  The vehicles ID code
  */
-@property (nonatomic, strong, readonly) NSString *vehCode;
+@property (nonatomic, nonnull, readonly) NSString *vehCode;
 /**
  *  The category of the vehicle
  */
-@property (nonatomic, strong, readonly) NSString *vehCategory;
+@property (nonatomic, nonnull, readonly) NSString *vehCategory;
 /**
  *  the vehicles door count
  */
-@property (nonatomic, strong, readonly) NSString *vehDoorCount;
+@property (nonatomic, nonnull, readonly) NSString *vehDoorCount;
 /**
  *  The size of the vehicle
  */
-@property (nonatomic, strong, readonly) NSString *vehClassSize;
+@property (nonatomic, nonnull, readonly) NSString *vehClassSize;
 /**
  *  The make / model name of the vehicle
  */
-@property (nonatomic, strong, readonly) NSString *vehMakeModelName;
+@property (nonatomic, nonnull, readonly) NSString *vehMakeModelName;
 /**
  *  The make / model code of the vehicle
  */
-@property (nonatomic, strong, readonly) NSString *vehMakeModelCode;
+@property (nonatomic, nonnull, readonly) NSString *vehMakeModelCode;
 /**
  *  Image url for the vehicle
  */
-@property (nonatomic, strong, readonly) NSURL *vehPictureUrl;
+@property (nonatomic, nonnull, readonly) NSURL *vehPictureUrl;
 /**
  *  The vehicles asset number
  */
-@property (nonatomic, strong, readonly) NSString *vehAssetNumber;
+@property (nonatomic, nonnull, readonly) NSString *vehAssetNumber;
 /**
  *  The total charge for the booking
  */
-@property (nonatomic, strong, readonly) NSString *totalChargeAmount;
+@property (nonatomic, nonnull, readonly) NSString *totalChargeAmount;
 /**
  *  The estimated charge for the booking
  */
-@property (nonatomic, strong, readonly) NSString *estimatedTotalAmount;
+@property (nonatomic, nonnull, readonly) NSString *estimatedTotalAmount;
 /**
  *  The currency code of the booking
  */
-@property (nonatomic, strong, readonly) NSString *currencyCode;
+@property (nonatomic, nonnull, readonly) NSString *currencyCode;
 /**
  *  the TPA fee amount
  */
-@property (nonatomic, strong, readonly) NSString *tpaFeeAmount;
+@property (nonatomic, nonnull, readonly) NSString *tpaFeeAmount;
 /**
  *  TPA fee currency code
  */
-@property (nonatomic, strong, readonly) NSString *tpaFeeCurrencyCode;
+@property (nonatomic, nonnull, readonly) NSString *tpaFeeCurrencyCode;
 /**
  *  TPA fee purpose
  */
-@property (nonatomic, strong, readonly) NSString *tpaFeePurpose;
+@property (nonatomic, nonnull, readonly) NSString *tpaFeePurpose;
 /**
  *  TPA confirmation type
  */
-@property (nonatomic, strong, readonly) NSString *tpaConfType;
+@property (nonatomic, nonnull, readonly) NSString *tpaConfType;
 /**
  *  TPA confirmation ID
  */
-@property (nonatomic, strong, readonly) NSString *tpaConfID;
+@property (nonatomic, nonnull, readonly) NSString *tpaConfID;
 /**
  *  Payment rule type
  */
-@property (nonatomic, strong, readonly) NSString *paymentRuleType;
+@property (nonatomic, nonnull, readonly) NSString *paymentRuleType;
 /**
  *  Payment amount
  */
-@property (nonatomic, strong, readonly) NSString *paymentAmount;
+@property (nonatomic, nonnull, readonly) NSString *paymentAmount;
 /**
  *  Payment currency code
  */
-@property (nonatomic, strong, readonly) NSString *paymentCurrencyCode;
+@property (nonatomic, nonnull, readonly) NSString *paymentCurrencyCode;
 /**
  *  Rental payment transaction code
  */
-@property (nonatomic, strong, readonly) NSString *rentalPaymentTransactionCode;
+@property (nonatomic, nonnull, readonly) NSString *rentalPaymentTransactionCode;
 /**
  *  Rental payment card type
  */
-@property (nonatomic, strong, readonly) NSString *rentalPaymentCardType;
+@property (nonatomic, nonnull, readonly) NSString *rentalPaymentCardType;
 /**
  *  Location code
  */
-@property (nonatomic, strong, readonly) NSString *locationCode;
+@property (nonatomic, nonnull, readonly) NSString *locationCode;
 /**
  *  Location name
  */
-@property (nonatomic, strong, readonly) NSString *locationName;
+@property (nonatomic, nonnull, readonly) NSString *locationName;
 /**
  *  Location address
  */
-@property (nonatomic, strong, readonly) NSString *locationAddress;
+@property (nonatomic, nonnull, readonly) NSString *locationAddress;
 /**
  *  Location country name
  */
-@property (nonatomic, strong, readonly) NSString *locationCountryName;
+@property (nonatomic, nonnull, readonly) NSString *locationCountryName;
 /**
  *  Location latitude
  */
-@property (nonatomic, strong, readonly) NSString *locationLatitude;
+@property (nonatomic, nonnull, readonly) NSString *locationLatitude;
 /**
  *  Location longitude
  */
-@property (nonatomic, strong, readonly) NSString *locationLongitude;
+@property (nonatomic, nonnull, readonly) NSString *locationLongitude;
 /**
  *  CTFee array
  */
-@property (nonatomic, strong, readonly) NSArray<CTFee *> *fees;
+@property (nonatomic, nonnull, readonly) NSArray<CTFee *> *fees;
 /**
  *  Pickup location phone numbers
  */
-@property (nonatomic, strong, readonly) NSArray<NSString *> *locationPhoneNumbers;
+@property (nonatomic, nonnull, readonly) NSArray<NSString *> *locationPhoneNumbers;
 
 #pragma mark Vars below are only available when using Retrieve Booking
 /**
  *  Bookng status
  */
-@property (nonatomic, strong, readonly) NSString *status;
+@property (nonatomic, nonnull, readonly) NSString *status;
 /**
  *  Booking cancelation policy
  */
-@property (nonatomic, strong, readonly) NSString *cancelationPolicy;
+@property (nonatomic, nonnull, readonly) NSString *cancelationPolicy;
 
 /**
  *  Convenience method to set the customer email
@@ -254,3 +256,5 @@
 - (instancetype)initFromVehReservationDictionary:(NSDictionary *)vehReservationDictionary  ;
 
 @end
+
+NS_ASSUME_NONNULL_END

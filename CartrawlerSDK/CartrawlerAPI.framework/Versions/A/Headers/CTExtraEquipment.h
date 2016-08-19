@@ -19,6 +19,9 @@
 //
 //
 #import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  CTExtraEquipment
  */
@@ -39,19 +42,19 @@
 /**
  *  Cost of equipment
  */
-@property (nonatomic, strong, readonly) NSNumber *chargeAmount;
+@property (nonatomic, nonnull, readonly) NSNumber *chargeAmount;
 /**
  *  Currency code of equipment
  */
-@property (nonatomic, strong, readonly) NSString *currencyCode;
+@property (nonatomic, nonnull, readonly) NSString *currencyCode;
 /**
  *  The equipment type
  */
-@property (nonatomic, strong, readonly) NSString *equipType;
+@property (nonatomic, nonnull, readonly) NSString *equipType;
 /**
  *  description of the equipment
  */
-@property (nonatomic, strong, readonly) NSString *equipDescription;
+@property (nonatomic, nonnull, readonly) NSString *equipDescription;
 
 /**
  *  Setter method for the equipemt quantity
@@ -63,3 +66,5 @@
 - (instancetype)initFromDictionary:(NSDictionary *)dict  ;
 
 @end
+
+NS_ASSUME_NONNULL_END
