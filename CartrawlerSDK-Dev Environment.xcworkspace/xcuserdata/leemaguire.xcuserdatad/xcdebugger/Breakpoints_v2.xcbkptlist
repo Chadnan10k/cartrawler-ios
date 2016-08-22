@@ -26,7 +26,7 @@
             startingLineNumber = "227"
             endingLineNumber = "227"
             landmarkName = "-bookNow:"
-            landmarkType = "7">
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,7 +42,7 @@
             startingLineNumber = "125"
             endingLineNumber = "125"
             landmarkName = "-reachabilityChanged:"
-            landmarkType = "7">
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,7 +58,7 @@
             startingLineNumber = "129"
             endingLineNumber = "129"
             landmarkName = "-reachabilityChanged:"
-            landmarkType = "7">
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,7 +74,7 @@
             startingLineNumber = "133"
             endingLineNumber = "133"
             landmarkName = "-reachabilityChanged:"
-            landmarkType = "7">
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,54 +90,22 @@
             startingLineNumber = "193"
             endingLineNumber = "193"
             landmarkName = "-webView:didFailLoadWithError:"
-            landmarkType = "7">
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CartrawlerSDK/CartrawlerSDK/PaymentViewController.m"
-            timestampString = "493039643.411106"
+            filePath = "CartrawlerSDK/CartrawlerSDK/VehicleSelectionViewController.m"
+            timestampString = "493578264.348992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
-            landmarkName = "-bookNow:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CartrawlerSDK/CartrawlerSDK/PaymentViewController.m"
-            timestampString = "493039643.411106"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "-currentState"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CartrawlerSDK/CartrawlerSDK/SearchDetailsViewController.m"
-            timestampString = "493317276.8373"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
-            landmarkName = "-validate"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-refresh"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

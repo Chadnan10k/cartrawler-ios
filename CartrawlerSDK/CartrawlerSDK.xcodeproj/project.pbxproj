@@ -116,6 +116,7 @@
 		45819FA61D3500E8001AE0F5 /* NSNumberUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45819FA41D3500E8001AE0F5 /* NSNumberUtils.m */; };
 		45819FAA1D35036A001AE0F5 /* BookingSummaryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45819FA81D35036A001AE0F5 /* BookingSummaryViewController.h */; };
 		45819FAB1D35036A001AE0F5 /* BookingSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45819FA91D35036A001AE0F5 /* BookingSummaryViewController.m */; };
+		4581F1411D6B65A100766AFC /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4581F1401D6B65A100766AFC /* CartrawlerAPI.framework */; };
 		4588E3131D538803008F4267 /* CTPCI.html in Resources */ = {isa = PBXBuildFile; fileRef = 4588E3121D538803008F4267 /* CTPCI.html */; };
 		4588E3181D538FB1008F4267 /* PaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4588E3161D538FB1008F4267 /* PaymentRequest.h */; };
 		4588E3191D538FB1008F4267 /* PaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4588E3171D538FB1008F4267 /* PaymentRequest.m */; };
@@ -142,8 +143,6 @@
 		45AC54711D130A1600805268 /* CTSelectView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E9429F1D13014400ACF604 /* CTSelectView.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC54721D130A1600805268 /* SearchDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E9429B1D13012400ACF604 /* SearchDetailsViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC54731D130A1600805268 /* VehicleTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942C61D13028600ACF604 /* VehicleTableViewCell.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC54741D130A1600805268 /* VehicleSelectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942B61D1301EE00ACF604 /* VehicleSelectionViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45AC54751D130A1600805268 /* CTVehicleSelectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942931D1300ED00ACF604 /* CTVehicleSelectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45AC54761D130A1600805268 /* CTVehicleSelectionViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942951D1300ED00ACF604 /* CTVehicleSelectionViewModel.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45C1ECF51D5103150059EF89 /* CTFilterTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C1ECF31D5103150059EF89 /* CTFilterTableView.h */; };
 		45C1ECF61D5103150059EF89 /* CTFilterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C1ECF41D5103150059EF89 /* CTFilterTableView.m */; };
@@ -159,7 +158,6 @@
 		45CFC7DE1D2CF822006E6F83 /* ExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFC7DC1D2CF822006E6F83 /* ExtrasViewController.m */; };
 		45CFC7DF1D2CF95C006E6F83 /* StepFour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45CFC7D91D2CF4D9006E6F83 /* StepFour.storyboard */; };
 		45CFC7E01D2CF968006E6F83 /* ExtrasViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 45CFC7DB1D2CF822006E6F83 /* ExtrasViewController.h */; };
-		45CFC7E61D2D1E57006E6F83 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CFC7E51D2D1E57006E6F83 /* CartrawlerAPI.framework */; };
 		45D8665D1D13F0E900D19B74 /* StepOne.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45AC547B1D13E47F00805268 /* StepOne.storyboard */; };
 		45D866D41D140FCC00D19B74 /* SearchDetailsViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 45E9429B1D13012400ACF604 /* SearchDetailsViewController.h */; };
 		45D866D71D141BB100D19B74 /* LinkerUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D866D51D141BB100D19B74 /* LinkerUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -198,7 +196,6 @@
 		45EC250C1D48E04700A3C09D /* CTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC250A1D48E04700A3C09D /* CTSegmentedControl.m */; };
 		45EC250F1D49132B00A3C09D /* CTViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC250D1D49132B00A3C09D /* CTViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45EC25101D49132B00A3C09D /* CTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC250E1D49132B00A3C09D /* CTViewController.m */; };
-		45EE26DF1D37A79900A1FB51 /* GroundTransportViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EE26DD1D37A79900A1FB51 /* GroundTransportViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45EE26E01D37A79900A1FB51 /* GroundTransportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EE26DE1D37A79900A1FB51 /* GroundTransportViewController.m */; };
 		45F4735C1D36451F00DF548B /* AddressDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4735A1D36451F00DF548B /* AddressDetailsViewController.h */; };
 		45F4735D1D36451F00DF548B /* AddressDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4735B1D36451F00DF548B /* AddressDetailsViewController.m */; };
@@ -340,6 +337,7 @@
 		45819FA41D3500E8001AE0F5 /* NSNumberUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberUtils.m; sourceTree = "<group>"; };
 		45819FA81D35036A001AE0F5 /* BookingSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingSummaryViewController.h; sourceTree = "<group>"; };
 		45819FA91D35036A001AE0F5 /* BookingSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingSummaryViewController.m; sourceTree = "<group>"; };
+		4581F1401D6B65A100766AFC /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CartrawlerAPI.framework; sourceTree = "<group>"; };
 		4588E3121D538803008F4267 /* CTPCI.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CTPCI.html; sourceTree = "<group>"; };
 		4588E3161D538FB1008F4267 /* PaymentRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentRequest.h; sourceTree = "<group>"; };
 		4588E3171D538FB1008F4267 /* PaymentRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentRequest.m; sourceTree = "<group>"; };
@@ -359,7 +357,6 @@
 		45CFC7D91D2CF4D9006E6F83 /* StepFour.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepFour.storyboard; sourceTree = "<group>"; };
 		45CFC7DB1D2CF822006E6F83 /* ExtrasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtrasViewController.h; sourceTree = "<group>"; };
 		45CFC7DC1D2CF822006E6F83 /* ExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtrasViewController.m; sourceTree = "<group>"; };
-		45CFC7E51D2D1E57006E6F83 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CartrawlerAPI.framework; sourceTree = "<group>"; };
 		45D866571D13F0CA00D19B74 /* CartrawlerResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D866D51D141BB100D19B74 /* LinkerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkerUtils.h; sourceTree = "<group>"; };
 		45D866D61D141BB100D19B74 /* LinkerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkerUtils.m; sourceTree = "<group>"; };
@@ -446,7 +443,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45CFC7E61D2D1E57006E6F83 /* CartrawlerAPI.framework in Frameworks */,
+				4581F1411D6B65A100766AFC /* CartrawlerAPI.framework in Frameworks */,
 				45E942EE1D13040800ACF604 /* Foundation.framework in Frameworks */,
 				45E942EC1D1303C500ACF604 /* UIKit.framework in Frameworks */,
 			);
@@ -733,7 +730,7 @@
 		45E9423A1D12FF0F00ACF604 = {
 			isa = PBXGroup;
 			children = (
-				45CFC7E51D2D1E57006E6F83 /* CartrawlerAPI.framework */,
+				4581F1401D6B65A100766AFC /* CartrawlerAPI.framework */,
 				45E942ED1D13040800ACF604 /* Foundation.framework */,
 				45E942EB1D1303C500ACF604 /* UIKit.framework */,
 				45E942451D12FF0F00ACF604 /* CartrawlerSDK */,
@@ -1051,12 +1048,9 @@
 				45CFC7DD1D2CF822006E6F83 /* ExtrasViewController.h in Headers */,
 				45C488C71D4793860044612C /* CTViewManager.h in Headers */,
 				45EC250F1D49132B00A3C09D /* CTViewController.h in Headers */,
-				45AC54741D130A1600805268 /* VehicleSelectionViewController.h in Headers */,
 				453EE5201D53381300D92E59 /* CTSearch.h in Headers */,
-				45AC54751D130A1600805268 /* CTVehicleSelectionView.h in Headers */,
 				450F9D351D3929E5002C6F6B /* SupplierRatingsViewController.h in Headers */,
 				4511E5241D17DFA4000ED6B0 /* CTAppearance.h in Headers */,
-				45EE26DF1D37A79900A1FB51 /* GroundTransportViewController.h in Headers */,
 				454D20EF1D549AD10050CA9E /* NSDateUtils.h in Headers */,
 				45E942F11D13060E00ACF604 /* CartrawlerSDK.h in Headers */,
 				4511E5321D17F6C8000ED6B0 /* CTNavigationBar.h in Headers */,
@@ -1139,6 +1133,7 @@
 				45D866531D13F0CA00D19B74 /* Sources */,
 				45D866541D13F0CA00D19B74 /* Frameworks */,
 				45D866551D13F0CA00D19B74 /* Resources */,
+				45D0423E1D6AEDF4004822D2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1251,6 +1246,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\n# If we're already inside this script then die\nif [ -n \"$RW_MULTIPLATFORM_BUILD_IN_PROGRESS\" ]; then\nexit 0\nfi\nexport RW_MULTIPLATFORM_BUILD_IN_PROGRESS=1\n\nRW_FRAMEWORK_NAME=${PROJECT_NAME}\nRW_INPUT_STATIC_LIB=\"lib${PROJECT_NAME}.a\"\nRW_FRAMEWORK_LOCATION=\"${BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework\"\n\nfunction build_static_library {\n    # Will rebuild the static library as specified\n    #     build_static_library sdk\n    xcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" \\\n    -target \"${TARGET_NAME}\" \\\n    -configuration \"${CONFIGURATION}\" \\\n    -sdk \"${1}\" \\\n    ONLY_ACTIVE_ARCH=NO \\\n    BUILD_DIR=\"${BUILD_DIR}\" \\\n    OBJROOT=\"${OBJROOT}\" \\\n    BUILD_ROOT=\"${BUILD_ROOT}\" \\\n    SYMROOT=\"${SYMROOT}\" $ACTION\n}\n\nfunction make_fat_library {\n    # Will smash 2 static libs together\n    #     make_fat_library in1 in2 out\n    xcrun lipo -create \"${1}\" \"${2}\" -output \"${3}\"\n}\n\n# 1 - Extract the platform (iphoneos/iphonesimulator) from the SDK name\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]; then\nRW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\n# 2 - Extract the version from the SDK\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]; then\nRW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\n# 3 - Determine the other platform\nif [ \"$RW_SDK_PLATFORM\" == \"iphoneos\" ]; then\nRW_OTHER_PLATFORM=iphonesimulator\nelse\nRW_OTHER_PLATFORM=iphoneos\nfi\n\n# 4 - Find the build directory\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$RW_SDK_PLATFORM$ ]]; then\nRW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${RW_OTHER_PLATFORM}\"\nelse\necho \"Could not find other platform build directory.\"\nexit 1\nfi\n\n# Build the other platform.\nbuild_static_library \"${RW_OTHER_PLATFORM}${RW_SDK_VERSION}\"\n\n# If we're currently building for iphonesimulator, then need to rebuild\n#   to ensure that we get both i386 and x86_64\nif [ \"$RW_SDK_PLATFORM\" == \"iphonesimulator\" ]; then\nbuild_static_library \"${SDK_NAME}\"\nfi\n\n# Join the 2 static libs into 1 and push into the .framework\nmake_fat_library \"${BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n\"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n\"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n# Ensure that the framework is present in both platform's build directories\ncp -a \"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\" \\\n\"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n# Copy the framework to the user's desktop\nditto \"${RW_FRAMEWORK_LOCATION}\" \"${PROJECT_DIR}/${RW_FRAMEWORK_NAME}.framework\"";
+		};
+		45D0423E1D6AEDF4004822D2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${BUILT_PRODUCTS_DIR}\"\ncp -r \"${PRODUCT_NAME}.bundle\" ~/Cartrawler-UI-iOS/CartrawlerSDK";
 		};
 		45E942EF1D13048D00ACF604 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1541,7 +1549,6 @@
 				DEAD_CODE_STRIPPING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CartrawlerSDK",
 					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = (
@@ -1563,7 +1570,6 @@
 				DEAD_CODE_STRIPPING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/CartrawlerSDK",
 					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = (

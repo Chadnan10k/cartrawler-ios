@@ -25,7 +25,7 @@
 @property (strong, nonatomic) NSArray *selectedLocationData;
 @property (strong, nonatomic) NSArray<CTVendor *> *selectedVendorsData;
 
-@property (strong, nonatomic) CTVehicleAvailability *data;
+@property (copy, nonatomic) CTVehicleAvailability *data;
 
 @end
 

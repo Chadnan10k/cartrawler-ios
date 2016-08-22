@@ -10,8 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "CTAppearance.h"
-
-#import "VehicleSelectionViewController.h"
+#import "CTViewController.h"
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
 #error This version (1.0.0) of CartrawlerSDK for iOS supports iOS 7.0 upwards.
@@ -21,14 +20,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CartrawlerSDK : NSObject
 
-@property (nonatomic, strong, readonly) CTViewController *searchDetailsViewController;
-@property (nonatomic, strong, readonly) CTViewController *vehicleSelectionViewController;
-@property (nonatomic, strong, readonly) CTViewController *vehicleDetailsViewController;
-@property (nonatomic, strong, readonly) CTViewController *insuranceExtrasViewController;
-@property (nonatomic, strong, readonly) CTViewController *paymentSummaryViewController;
-@property (nonatomic, strong, readonly) CTViewController *driverDetialsViewController;
-@property (nonatomic, strong, readonly) CTViewController *paymentViewController;
-@property (nonatomic, strong, readonly) CTViewController *paymentCompletionViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *searchDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleSelectionViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceExtrasViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentSummaryViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *driverDetialsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentCompletionViewController;
 
 /**
  *  Initialize the CartrawlerAPI
@@ -54,13 +53,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param viewController The parent view controller
  */
 - (void)presentCarRentalInViewController:(UIViewController *)viewController;
-
-/**
- *  Presents the ground transport engine modally in the designated UIViewController
- *
- *  @param viewController
- */
-- (void)presentGroundTransportInViewController:(UIViewController *)viewController;
 
 /*  ----------------------------------------------------------------------------
  *  View Controller Overriding:
@@ -122,19 +114,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)overridePaymentCompletionViewController:(CTViewController *)viewController;
 
 /**
- *  If you have created every view from scratch you can set them easily by passing them all into an array
- *  The array MUST however contain these ViewTypes:
+ *  Reroute the destination of a CTViewController
  *
- *  ViewTypeSearchDetails,
- *  ViewTypeVehicleSelection,
- *  ViewTypeInsurance,
- *  ViewTypeDriverDetails,
- *
- *
- * @param carRentalViews An array of CTViewController's
+ *  @param viewController The CTViewController you would like to edit
+ *  @param destination    The destination for this CTViewController
+ *  @param fallback       The fallback for this CTViewController
  */
-- (void)setCarRentalViewsFromArray:(NSArray <CTViewController *> *)carRentalViews;
-
 - (void)rerouteViewController:(CTViewController *)viewController
                   destination:(CTViewController *)destination
                      fallback:(CTViewController *)fallback;

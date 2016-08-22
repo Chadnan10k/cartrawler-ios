@@ -7,23 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		454D20EC1D5491FA0050CA9E /* CartrawlerResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 454D20EB1D5491FA0050CA9E /* CartrawlerResources.bundle */; };
-		45AC52E61D40C6F00007CF55 /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45AC52E51D40C6F00007CF55 /* CartrawlerSDK.framework */; };
-		45CFC7EA1D2D1F15006E6F83 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CFC7E91D2D1F15006E6F83 /* CartrawlerAPI.framework */; };
+		452503541D6B680A00D58AD1 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452503531D6B680A00D58AD1 /* CartrawlerAPI.framework */; };
 		45D866E41D143A3400D19B74 /* CustomStepOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D866E31D143A3400D19B74 /* CustomStepOneViewController.swift */; };
 		45E9425C1D12FFEB00ACF604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9425B1D12FFEB00ACF604 /* AppDelegate.swift */; };
 		45E9425E1D12FFEB00ACF604 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9425D1D12FFEB00ACF604 /* ViewController.swift */; };
 		45E942611D12FFEB00ACF604 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E9425F1D12FFEB00ACF604 /* Main.storyboard */; };
 		45E942631D12FFEB00ACF604 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45E942621D12FFEB00ACF604 /* Assets.xcassets */; };
 		45E942661D12FFEB00ACF604 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E942641D12FFEB00ACF604 /* LaunchScreen.storyboard */; };
+		45FEF4531D6B57110039C86D /* CartrawlerResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 45FEF4501D6B57110039C86D /* CartrawlerResources.bundle */; };
+		45FEF4541D6B57110039C86D /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45FEF4511D6B57110039C86D /* CartrawlerSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		454D20EB1D5491FA0050CA9E /* CartrawlerResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = CartrawlerResources.bundle; path = "../../Library/Developer/Xcode/DerivedData/CartrawlerSDK-Dev_Environment-hjcphrtpscvfyzevosveoeowlvgo/Build/Products/Debug-iphonesimulator/CartrawlerResources.bundle"; sourceTree = "<group>"; };
+		452503531D6B680A00D58AD1 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CartrawlerAPI.framework; sourceTree = "<group>"; };
 		458B45F31D3E4082002EB31A /* CartrawlerSDK-TestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "CartrawlerSDK-TestApp.entitlements"; sourceTree = "<group>"; };
-		45AC52E51D40C6F00007CF55 /* CartrawlerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerSDK.framework; path = ../CartrawlerSDK/CartrawlerSDK.framework; sourceTree = "<group>"; };
 		45AC547F1D13E54000805268 /* CartrawlerSDK-TestApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK-TestApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		45CFC7E91D2D1F15006E6F83 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CartrawlerAPI.framework; sourceTree = "<group>"; };
 		45D866E31D143A3400D19B74 /* CustomStepOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStepOneViewController.swift; sourceTree = "<group>"; };
 		45E942581D12FFEB00ACF604 /* CartrawlerSDK-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CartrawlerSDK-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E9425B1D12FFEB00ACF604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +30,8 @@
 		45E942621D12FFEB00ACF604 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45E942651D12FFEB00ACF604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45E942671D12FFEB00ACF604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45FEF4501D6B57110039C86D /* CartrawlerResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CartrawlerResources.bundle; sourceTree = "<group>"; };
+		45FEF4511D6B57110039C86D /* CartrawlerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CartrawlerSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,8 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45AC52E61D40C6F00007CF55 /* CartrawlerSDK.framework in Frameworks */,
-				45CFC7EA1D2D1F15006E6F83 /* CartrawlerAPI.framework in Frameworks */,
+				452503541D6B680A00D58AD1 /* CartrawlerAPI.framework in Frameworks */,
+				45FEF4541D6B57110039C86D /* CartrawlerSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,9 +50,6 @@
 		45E9424F1D12FFEB00ACF604 = {
 			isa = PBXGroup;
 			children = (
-				454D20EB1D5491FA0050CA9E /* CartrawlerResources.bundle */,
-				45AC52E51D40C6F00007CF55 /* CartrawlerSDK.framework */,
-				45CFC7E91D2D1F15006E6F83 /* CartrawlerAPI.framework */,
 				45E9425A1D12FFEB00ACF604 /* CartrawlerSDK-TestApp */,
 				45E942591D12FFEB00ACF604 /* Products */,
 			);
@@ -69,6 +66,9 @@
 		45E9425A1D12FFEB00ACF604 /* CartrawlerSDK-TestApp */ = {
 			isa = PBXGroup;
 			children = (
+				452503531D6B680A00D58AD1 /* CartrawlerAPI.framework */,
+				45FEF4501D6B57110039C86D /* CartrawlerResources.bundle */,
+				45FEF4511D6B57110039C86D /* CartrawlerSDK.framework */,
 				458B45F31D3E4082002EB31A /* CartrawlerSDK-TestApp.entitlements */,
 				45E9425B1D12FFEB00ACF604 /* AppDelegate.swift */,
 				45E9425D1D12FFEB00ACF604 /* ViewController.swift */,
@@ -150,7 +150,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				454D20EC1D5491FA0050CA9E /* CartrawlerResources.bundle in Resources */,
+				45FEF4531D6B57110039C86D /* CartrawlerResources.bundle in Resources */,
 				45E942661D12FFEB00ACF604 /* LaunchScreen.storyboard in Resources */,
 				45E942631D12FFEB00ACF604 /* Assets.xcassets in Resources */,
 				45E942611D12FFEB00ACF604 /* Main.storyboard in Resources */,
@@ -303,11 +303,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/CartrawlerResources.bundle",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/CartrawlerSDK-TestApp";
 				INFOPLIST_FILE = "CartrawlerSDK-TestApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -331,11 +327,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/CartrawlerResources.bundle",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/CartrawlerSDK-TestApp";
 				INFOPLIST_FILE = "CartrawlerSDK-TestApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
