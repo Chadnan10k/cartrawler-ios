@@ -13,8 +13,8 @@
 
 @interface CTVehicleSelectionViewModel : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-typedef void (^VehicleSelectionCompletion)(CTVehicle *vehicle);
+typedef void (^VehicleSelectionCompletion)(CTAvailabilityItem *vehicle);
 
-- (id)initWithData:(NSArray <CTVehicle *> *)data cellSelected:(VehicleSelectionCompletion)cellSeleted;
+- (id)initWithData:(NSArray <CTAvailabilityItem *> *)data cellSelected:(VehicleSelectionCompletion)cellSeleted;
 
 @end

@@ -37,15 +37,16 @@
 {
     [super viewDidLoad];
     
-    self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)self.search.vehicleAvailability.allVehicles.count,
+    self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)self.search.vehicleAvailability.items.count,
                                NSLocalizedString(@"cars available", @"cars available")];
     __weak typeof (self) weakSelf = self;
 
     _filterViewController = [CTFilterViewController initInViewController:self withData:self.search.vehicleAvailability];
-    self.filterViewController.filterCompletion = ^(NSArray<CTVehicle *> *filteredData) {
+    
+    self.filterViewController.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData) {
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            [weakSelf.vehicleSelectionView initWithVehicleAvailability:filteredData completion:^(CTVehicle *vehicle) {
+            [weakSelf.vehicleSelectionView initWithVehicleAvailability:filteredData completion:^(CTAvailabilityItem *vehicle) {
                 weakSelf.search.selectedVehicle = vehicle;
                 [weakSelf pushToDestination];
             }];
@@ -55,7 +56,7 @@
         });
     };
     
-    [self.vehicleSelectionView initWithVehicleAvailability:self.search.vehicleAvailability.allVehicles completion:^(CTVehicle *vehicle) {
+    [self.vehicleSelectionView initWithVehicleAvailability:self.search.vehicleAvailability.items completion:^(CTAvailabilityItem *vehicle) {
         self.search.selectedVehicle = vehicle;
        [self pushToDestination];
     }];
@@ -98,7 +99,7 @@
 
 - (void)refresh
 {
-    self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)self.search.vehicleAvailability.allVehicles.count,
+    self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)self.search.vehicleAvailability.items.count,
                                NSLocalizedString(@"cars available", @"cars available")];
     
     [self.filterViewController setFilterData:self.search.vehicleAvailability];

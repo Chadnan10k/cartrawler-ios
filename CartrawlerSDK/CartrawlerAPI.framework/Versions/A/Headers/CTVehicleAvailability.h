@@ -20,6 +20,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CTVendor.h"
+#import "CTAvailabilityItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -52,16 +53,8 @@ NS_ASSUME_NONNULL_BEGIN
  *  The drop off location name
  */
 @property (nonatomic, nonnull, readonly) NSString *doLocationName;
-/**
- *  Available vendors for an availability search
- */
-@property (nonatomic, nonnull, readonly) NSArray<CTVendor *> *availableVendors;
 
-/**
- *  Convenienve property to get all vehicles sorted by price
- */
-@property (nonatomic, nonnull, readonly) NSArray<CTVehicle *> *allVehicles;
-
+@property (nonatomic, nonnull, readonly) NSArray<CTAvailabilityItem *> *items;
 
 - (instancetype)initFromVehAvailRSCoreDictionary:(NSDictionary *)vehAvailRSCoreDictionary;
 

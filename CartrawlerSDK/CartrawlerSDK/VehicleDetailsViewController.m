@@ -63,7 +63,7 @@
     self.tabSelection.selectedSegmentIndex = 0;
     
     if (self.vehicleDetailView) {
-        [self.vehicleDetailView setData:self.search.selectedVehicle
+        [self.vehicleDetailView setData:[CTSearch instance]
                                     api:self.cartrawlerAPI
                              pickupDate:self.search.pickupDate
                              returnDate:self.search.dropoffDate
@@ -96,13 +96,13 @@
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     NSBundle *b = [NSBundle bundleWithPath:bundlePath];
     
-    if (self.search.selectedVehicle.vendor.atAirport) {
+    if (self.search.selectedVehicle.vendor.pickupLocation.atAirport) {
         [self.pickupLocationView setTitle:@"At Airport"
                                      text:NSLocalizedString(@"This supplier is located in the airport.", @"This supplier is located in the airport.")
                                     image:[UIImage imageNamed:@"airport_gray" inBundle:b compatibleWithTraitCollection:nil]];
     } else {
         
-        NSArray *addressComponents = [self.search.selectedVehicle.vendor.address componentsSeparatedByString:@","];
+        NSArray *addressComponents = [self.search.selectedVehicle.vendor.pickupLocation.address componentsSeparatedByString:@","];
         
         NSMutableString *address = [[NSMutableString alloc] init];
 
@@ -121,14 +121,14 @@
     }
     
     [self.fuelPolicyView setTitle:@"Fuel policy"
-                             text:self.search.selectedVehicle.fuelPolicyDescription
+                             text:self.search.selectedVehicle.vehicle.fuelPolicyDescription
                             image:[UIImage imageNamed:@"fuel" inBundle:b compatibleWithTraitCollection:nil]];
     
     [self.view layoutIfNeeded];
     
-    if (self.search.selectedVehicle.totalPriceForThisVehicle) {
+    if (self.search.selectedVehicle.vehicle.totalPriceForThisVehicle) {
     
-    NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode:self.search.selectedVehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
+    NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
     NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];
     
     NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject
@@ -166,7 +166,8 @@
 {
     if ([segue.identifier isEqualToString:@"VehicleEmbed"]) {
         _vehicleDetailView = (VehicleDetailsView *)segue.destinationViewController;
-        [self.vehicleDetailView setData:self.search.selectedVehicle
+        [self.vehicleDetailView
+         setData:[CTSearch instance]
                 api:self.cartrawlerAPI
          pickupDate:self.search.pickupDate
          returnDate:self.search.dropoffDate

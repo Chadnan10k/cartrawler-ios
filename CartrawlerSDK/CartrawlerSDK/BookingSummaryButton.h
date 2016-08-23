@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CTDesignableView.h"
-#import <CartrawlerAPI/CTVehicle.h>
+#import <CartrawlerAPI/CTAvailabilityItem.h>
 
 @interface BookingSummaryButton : CTDesignableView
 
@@ -16,7 +16,7 @@
 
 - (void)closeIfOpen;
 
-- (void)setDataWithVehicle:(CTVehicle *)vehicle
+- (void)setDataWithVehicle:(CTAvailabilityItem *)vehicle
                 pickupDate:(NSDate *)pickupDate
                dropoffDate:(NSDate *)dropoffDate
          isBuyingInsurance:(BOOL)isBuyingInsurance;

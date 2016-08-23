@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CartrawlerSDK/CartrawlerSDK.h>
+#import <CartrawlerAPI/CTAvailabilityItem.h>
 
 @interface LocalisedStrings : NSObject
 
-+ (NSString *)pickupType:(CTVehicle *)vehicle;
++ (NSString *)pickupType:(CTAvailabilityItem *)item;
 
 @end

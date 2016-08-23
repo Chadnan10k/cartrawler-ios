@@ -9,8 +9,7 @@
 #import "CTFilterDataSource.h"
 #import "CTAppearance.h"
 #import "CTFilterTableViewCell.h"
-#import <CartrawlerAPI/CTVendor.h>
-#import <CartrawlerAPI/CTVehicle.h>
+#import <CartrawlerAPI/CTAvailabilityItem.h>
 
 @interface CTFilterDataSource()
 
@@ -71,20 +70,20 @@
         NSString *str = self.data[indexPath.row];
         [cell setText:str];
     } else if (self.filterType == FilterDataTypeVendor) {
-        CTVendor *ven = self.data[indexPath.row];
-        [cell setText:ven.name];
+        CTAvailabilityItem *item = self.data[indexPath.row];
+        [cell setText:item.vendor.name];
     } else if (self.filterType == FilterDataTypeVehicleSize) {
-        CTVehicle *veh = self.data[indexPath.row];
-        [cell setText:veh.categoryDescription];
+        CTAvailabilityItem *item = self.data[indexPath.row];
+        [cell setText:item.vehicle.sizeCode];
     } else if (self.filterType == FilterDataTypeFuelPolicy) {
-        CTVehicle *veh = self.data[indexPath.row];
-        [cell setText:veh.fuelPolicyDescription];
+        CTAvailabilityItem *item = self.data[indexPath.row];
+        [cell setText:item.vehicle.fuelPolicyDescription];
     } else if (self.filterType == FilterDataTypeTransmission) {
-        CTVehicle *veh = self.data[indexPath.row];
-        [cell setText:veh.transmissionType];
+        CTAvailabilityItem *item = self.data[indexPath.row];
+        [cell setText:item.vehicle.transmissionType];
     } else if (self.filterType == FilterDataTypeLocation) {
-        CTVehicle *veh = self.data[indexPath.row];
-        [cell setText:[self localizedPickupType:veh.vendor.pickupType]];
+        CTAvailabilityItem *item = self.data[indexPath.row];
+        [cell setText:[self localizedPickupType:item.vendor.pickupLocation.pickupType]];
     }
     
     return cell;

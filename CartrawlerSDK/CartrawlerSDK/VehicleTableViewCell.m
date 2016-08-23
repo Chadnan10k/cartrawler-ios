@@ -45,15 +45,15 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
-- (void)initWithVehicle:(CTVehicle *)vehicle
+- (void)initWithVehicle:(CTAvailabilityItem *)item
 {
     
-    self.vehicleNameLabel.text = vehicle.makeModelName;
-    self.passengerQtyLabel.text = [NSString stringWithFormat:@"%d %@", vehicle.passengerQty.intValue, NSLocalizedString(@"passengers", @"passengers")];
-    self.transmissionLabel.text = vehicle.transmissionType;
-    self.fuelPolicyLabel.text = [self fuelPolicyString:vehicle.fuelPolicy];
+    self.vehicleNameLabel.text = item.vehicle.makeModelName;
+    self.passengerQtyLabel.text = [NSString stringWithFormat:@"%d %@", item.vehicle.passengerQty.intValue, NSLocalizedString(@"passengers", @"passengers")];
+    self.transmissionLabel.text = item.vehicle.transmissionType;
+    self.fuelPolicyLabel.text = [self fuelPolicyString: item.vehicle.fuelPolicy];
     
-    if (vehicle.isAirConditioned) {
+    if (item.vehicle.isAirConditioned) {
         self.airconLabel.alpha = 1;
         self.airconImageView.alpha = 1;
     } else {
@@ -61,7 +61,7 @@
         self.airconImageView.alpha = 0;
     }
 
-    NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode:vehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
+    NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode: item.vehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
     NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];
 
     NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject
@@ -82,9 +82,9 @@
     
     self.totalPriceLabel.attributedText = priceString;
     
-    if (vehicle.vendor.rating.overallScore != nil) {
+    if (item.vendor.rating.overallScore != nil) {
         
-        NSString *score = [NSString stringWithFormat:@"%.1f", vehicle.vendor.rating.overallScore.floatValue * 2];
+        NSString *score = [NSString stringWithFormat:@"%.1f", item.vendor.rating.overallScore.floatValue * 2];
         
         NSMutableAttributedString *ratingString = [[NSMutableAttributedString alloc] init];
         
@@ -112,11 +112,11 @@
         self.ratingLabel.text = @"";
     }
 
-    [[CTImageCache sharedInstance] cachedImage: vehicle.pictureURL completion:^(UIImage *image) {
+    [[CTImageCache sharedInstance] cachedImage: item.vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;
     }];
     
-    [[CTImageCache sharedInstance] cachedImage: vehicle.vendor.logoURL completion:^(UIImage *image) {
+    [[CTImageCache sharedInstance] cachedImage: item.vendor.logoURL completion:^(UIImage *image) {
         self.vendorImageView.image = image;
     }];
 }

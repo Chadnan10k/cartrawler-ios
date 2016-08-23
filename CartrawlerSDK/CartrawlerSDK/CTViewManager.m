@@ -249,14 +249,14 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
         return;
     }
     
-    if ([CTSearch instance].selectedVehicle.extraEquipment == nil) {
+    if ([CTSearch instance].selectedVehicle.vehicle.extraEquipment == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS extras IS NOT SET \n\n");
         return;
     }
 
     [cartrawlerAPI requestInsuranceQuoteForVehicle:[CTSDKSettings instance].homeCountryCode
                                                currency:[CTSDKSettings instance].currencyCode
-                                              totalCost:[NSString stringWithFormat:@"%.02f", [CTSearch instance].selectedVehicle.totalPriceForThisVehicle.doubleValue]
+                                              totalCost:[NSString stringWithFormat:@"%.02f", [CTSearch instance].selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue]
                                          pickupDateTime:[CTSearch instance].pickupDate
                                          returnDateTime:[CTSearch instance].dropoffDate
                                  destinationCountryCode:[CTSearch instance].pickupLocation.codeContext
@@ -271,7 +271,7 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
              
          } else {
              dispatch_async(dispatch_get_main_queue(), ^{
-                 if ([CTSearch instance].selectedVehicle.extraEquipment.count == 0) {
+                 if ([CTSearch instance].selectedVehicle.vehicle.extraEquipment.count == 0) {
                      [CTSearch instance].insurance = nil;
                      [CTSearch instance].isBuyingInsurance = NO;
                      completion(NO, @"");
@@ -317,7 +317,7 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
         return NO;
     }
     
-    if (search.selectedVehicle.extraEquipment == nil) {
+    if (search.selectedVehicle.vehicle.extraEquipment == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH TO STEP FIVE AS extras IS NOT SET \n\n");
         return NO;
     }

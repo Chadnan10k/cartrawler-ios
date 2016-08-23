@@ -12,6 +12,7 @@
 #import "TermsViewController.h"
 #import "CTAppearance.h"
 #import "CTLabel.h"
+#import "CTSearch.h"
 
 #define kCellsPerRow 4
 
@@ -29,7 +30,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UICollectionView *includedCollectionView;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 
-@property (strong, nonatomic) CTVehicle *vehicle;
+@property (strong, nonatomic) CTSearch *search;
 @property (strong, nonatomic) CartrawlerAPI *api;
 @property (strong, nonatomic) NSDate *pickupDate;
 @property (strong, nonatomic) NSDate *returnDate;
@@ -53,33 +54,33 @@
 
 - (void)setupView
 {
-    [[CTImageCache sharedInstance] cachedImage: self.vehicle.pictureURL completion:^(UIImage *image) {
+    [[CTImageCache sharedInstance] cachedImage: self.search.selectedVehicle.vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;
     }];
     
-    [[CTImageCache sharedInstance] cachedImage: self.vehicle.vendor.logoURL completion:^(UIImage *image) {
+    [[CTImageCache sharedInstance] cachedImage: self.search.selectedVehicle.vendor.logoURL completion:^(UIImage *image) {
         self.vendorImageView.image = image;
     }];
     
     self.includedCollectionView.dataSource = self;
     self.includedCollectionView.delegate = self;
     
-    self.vehicleNameLabel.text = self.vehicle.makeModelName;
-    self.passengersLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.passengerQty.stringValue, NSLocalizedString(@"passengers", @"passengers")];
-    self.doorsLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.doorCount.stringValue, NSLocalizedString(@"doors", @"doors")];
+    self.vehicleNameLabel.text = self.search.selectedVehicle.vehicle.makeModelName;
+    self.passengersLabel.text = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.passengerQty.stringValue, NSLocalizedString(@"passengers", @"passengers")];
+    self.doorsLabel.text = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.doorCount.stringValue, NSLocalizedString(@"doors", @"doors")];
     
-    if (self.vehicle.baggageQty.integerValue > 1) {
-        self.bagsLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.baggageQty.stringValue, NSLocalizedString(@"bags", @"bags")];
+    if (self.search.selectedVehicle.vehicle.baggageQty.integerValue > 1) {
+        self.bagsLabel.text = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.baggageQty.stringValue, NSLocalizedString(@"bags", @"bags")];
     } else {
-        self.bagsLabel.text = [NSString stringWithFormat:@"%@ %@", self.vehicle.baggageQty.stringValue, NSLocalizedString(@"bag", @"bags")];
+        self.bagsLabel.text = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.baggageQty.stringValue, NSLocalizedString(@"bag", @"bags")];
     }
     
-    self.transmissionLabel.text = self.vehicle.transmissionType;
+    self.transmissionLabel.text = self.search.selectedVehicle.vehicle.transmissionType;
     
     self.view.translatesAutoresizingMaskIntoConstraints = false;
-    if (self.vehicle.vendor.rating.overallScore != nil) {
+    if (self.search.selectedVehicle.vendor.rating.overallScore != nil) {
         
-        NSString *score = [NSString stringWithFormat:@"%.1f", self.vehicle.vendor.rating.overallScore.floatValue * 2];
+        NSString *score = [NSString stringWithFormat:@"%.1f", self.search.selectedVehicle.vendor.rating.overallScore.floatValue * 2];
         
         NSMutableAttributedString *ratingString = [[NSMutableAttributedString alloc] init];
         
@@ -108,7 +109,7 @@
         self.vendorRatingTitle.alpha = 0;
     }
     
-    if (self.vehicle.pricedCoverages.count > 0) {
+    if (self.search.selectedVehicle.vehicle.pricedCoverages.count > 0) {
         [self.includedCollectionView reloadData];
     } else {
         self.heightChanged(-50);
@@ -116,7 +117,7 @@
     
 }
 
-- (void)setData:(CTVehicle *)vehicle
+- (void)setData:(CTSearch *)search
             api:(CartrawlerAPI *)api
      pickupDate:(NSDate *)pickupDate
      returnDate:(NSDate *)returnDate
@@ -129,7 +130,7 @@
     _pickupCode = pickupCode;
     _returnCode = returnCode;
     _homeCountry = homeCountry;
-    _vehicle = vehicle;
+    _search = search;
     _api = api;
 }
 
@@ -140,7 +141,7 @@
                 pickupLocationCode:self.pickupCode
                 returnLocationCode:self.returnCode
                        homeCountry:self.homeCountry
-                               car:self.vehicle
+                               car:self.search.selectedVehicle.vehicle
                         completion:^(CTTermsAndConditions *response, CTErrorResponse *error) {
                             if (error) {
                                 
@@ -160,7 +161,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.vehicle.pricedCoverages.count;
+    return self.search.selectedVehicle.vehicle.pricedCoverages.count;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -171,7 +172,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     IncludedCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    [cell setDetails:self.vehicle.pricedCoverages[indexPath.row].chargeDescription];
+    [cell setDetails:self.search.selectedVehicle.vehicle.pricedCoverages[indexPath.row].chargeDescription];
     
     self.collectionViewHeight.constant = self.includedCollectionView.contentSize.height;
     if (self.heightChanged) {

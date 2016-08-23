@@ -52,20 +52,20 @@
     total = 0;
     _items = [[NSMutableArray alloc] init];
 
-    [self.items addObject:@{@"Normal" : @{@"Name" : @"Car hire", @"Price" : self.search.selectedVehicle.totalPriceForThisVehicle}}];
+    [self.items addObject:@{@"Normal" : @{@"Name" : @"Car hire", @"Price" : self.search.selectedVehicle.vehicle.totalPriceForThisVehicle}}];
 
     if (self.search.isBuyingInsurance) {
         [self.items addObject:@{@"Normal" : @{@"Name" : @"Damage Refund Insurance", @"Price" : self.search.insurance.premiumAmount}}];
         total += self.search.insurance.premiumAmount.doubleValue;
     }
     
-    for (CTExtraEquipment *extra in self.search.selectedVehicle.extraEquipment) {
+    for (CTExtraEquipment *extra in self.search.selectedVehicle.vehicle.extraEquipment) {
         if (extra.qty > 0) {
             [self.items addObject:@{@"Extra" : @{@"Name" : extra.equipDescription, @"Price" : @"Pay at desk"}}];
         }
     }
     
-    total += self.search.selectedVehicle.totalPriceForThisVehicle.doubleValue;
+    total += self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue;
     
     self.totalLabel.text = [NSNumberUtils numberStringWithCurrencyCode:@(total)];
     

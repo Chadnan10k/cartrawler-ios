@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet CTLabel *dropOffDateLabel;
 @property (weak, nonatomic) IBOutlet CTButton *insuranceButton;
 
-@property (strong, nonatomic) CTVehicle *vehicle;
+@property (strong, nonatomic) CTAvailabilityItem *item;
 @property (strong, nonatomic) NSDate *pickupDate;
 @property (strong, nonatomic) NSDate *dropoffDate;
 @property (nonatomic) BOOL isBuyingInsurance;
@@ -38,7 +38,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     // Do any additional setup after loading the view.
-    NSString *score = [NSString stringWithFormat:@"%.1f", self.vehicle.vendor.rating.overallScore.floatValue * 2];
+    NSString *score = [NSString stringWithFormat:@"%.1f", self.item.vendor.rating.overallScore.floatValue * 2];
 
     NSAttributedString *rating = [[NSAttributedString alloc] initWithString:score
                                                                   attributes:@{NSFontAttributeName:
@@ -63,8 +63,8 @@
     
     self.vendorRatingLabel.attributedText = ratingStr;
 
-    self.carModelLabel.text = self.vehicle.makeModelName;
-    self.vendorNameLabel.text = self.vehicle.vendor.name;
+    self.carModelLabel.text = self.item.vehicle.makeModelName;
+    self.vendorNameLabel.text = self.item.vendor.name;
     self.pickupDateLabel.text = [DateUtils stringFromDate:self.pickupDate withFormat:@"hh:mm a dd MMMM YYYY"];
     self.dropOffDateLabel.text = [DateUtils stringFromDate:self.dropoffDate withFormat:@"hh:mm a dd MMMM YYYY"];
  
@@ -79,12 +79,12 @@
     
 }
 
-- (void)setDataWithVehicle:(CTVehicle *)vehicle
+- (void)setDataWithVehicle:(CTAvailabilityItem *)vehicle
                 pickupDate:(NSDate *)pickupDate
                dropoffDate:(NSDate *)dropoffDate
          isBuyingInsurance:(BOOL)isBuyingInsurance
 {
-    _vehicle = vehicle;
+    _item = vehicle;
     _pickupDate = pickupDate;
     _dropoffDate = dropoffDate;
     _isBuyingInsurance = isBuyingInsurance;

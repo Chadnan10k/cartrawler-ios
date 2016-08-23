@@ -30,7 +30,7 @@
     
 }
 
-- (void)setDataWithVehicle:(CTVehicle *)vehicle
+- (void)setDataWithVehicle:(CTAvailabilityItem *)vehicle
                 pickupDate:(NSDate *)pickupDate
                dropoffDate:(NSDate *)dropoffDate
          isBuyingInsurance:(BOOL)isBuyingInsurance

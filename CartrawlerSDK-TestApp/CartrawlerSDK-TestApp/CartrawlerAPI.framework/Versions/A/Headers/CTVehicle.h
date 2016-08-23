@@ -79,6 +79,94 @@ typedef NS_ENUM(NSUInteger, FuelPolicy) {
     FuelPolicyChaufFuelInc
 };
 
+typedef NS_ENUM(NSUInteger, VehicleSize) {
+
+    VehicleSizeMini = 0,
+
+    VehicleSizeSubcompact,
+
+    VehicleSizeEconomy,
+
+    VehicleSizeCompact,
+
+    VehicleSizeMidsize,
+
+    VehicleSizeIntermediate,
+
+    VehicleSizeStandard,
+
+    VehicleSizeFullsize,
+
+    VehicleSizeLuxury,
+
+    VehicleSizePremium,
+
+    VehicleSizeMinivan,
+    
+    VehicleSizeTwelvePassengerVan,
+    
+    VehicleSizeMovingVan,
+    
+    VehicleSizeFifteenPassengerVan,
+
+    VehicleSizeCargoVan,
+    
+    VehicleSizeTwelveFootTruck,
+    
+    VehicleSizeTwentyFootTruck,
+    
+    VehicleSizeTwentyFourFootTruck,
+    
+    VehicleSizeTwentySixFootTruck,
+    
+    VehicleSizeMoped,
+    
+    VehicleSizeStretch,
+    
+    VehicleSizeRegular,
+    
+    VehicleSizeUnique,
+    
+    VehicleSizeExotic,
+    
+    VehicleSizeSmallMediumTruck,
+    
+    VehicleSizeLargeTruck,
+    
+    VehicleSizeSmallSUV,
+    
+    VehicleSizeMediumSUV,
+    
+    VehicleSizeLargeSUV,
+    
+    VehicleSizeExoticSUV,
+    
+    VehicleSizeFourWheelDrive,
+    
+    VehicleSizeSpecial,
+    
+    VehicleSizeMiniElite,
+    
+    VehicleSizeEconomyElite,
+    
+    VehicleSizeCompactElite,
+    
+    VehicleSizeIntermediateElite,
+    
+    VehicleSizeStandardElite,
+    
+    VehicleSizeFullsizeElite,
+    
+    VehicleSizePremiumElite,
+    
+    VehicleSizeLuxuryElite,
+    
+    VehicleSizeOversize,
+    
+    VehicleSizeUnknown
+
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -149,11 +237,11 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  The vehicle category description
  */
-@property (nonatomic, nonnull, readonly) NSString *categoryDescription;
+@property (nonatomic, readonly) VehicleSize size;
 /**
  *  Vehicle category code
  */
-@property (nonatomic, nonnull, readonly) NSString *categoryDescriptionCode;
+@property (nonatomic, nonnull, readonly) NSString *sizeCode;
 /**
  *  The number of doors the vehicle has
  */
@@ -223,10 +311,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, nonnull, readonly) NSString *currencyExchangeRate23;
 /**
- *  Vehicle CTVendor
- */
-@property (nonatomic, weak, readonly) CTVendor *vendor;
-/**
  *  Array of available equipment for vehicle
  */
 @property (nonatomic, nonnull, readonly) NSArray<CTExtraEquipment *> *extraEquipment;
@@ -243,7 +327,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, nonnull, readonly) NSArray<CTPricedCoverage *> *pricedCoverages;
 
-- (instancetype) initFromVehicleDictionary:(NSDictionary *)vehicleDictionary vendor:(CTVendor *)vendor;
+- (instancetype)initFromDictionary:(NSDictionary *)dictionary;
 
 @end
 

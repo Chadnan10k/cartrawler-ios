@@ -67,9 +67,9 @@
     self.insuranceView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.insuranceView.layer.masksToBounds = YES;
     
-    if (self.search.selectedVehicle.extraEquipment.count > 0) {
+    if (self.search.selectedVehicle.vehicle.extraEquipment.count > 0) {
         [self.optionalExtrasView hideView:NO];
-        (self.optionalExtrasView).extras = self.search.selectedVehicle.extraEquipment;
+        (self.optionalExtrasView).extras = self.search.selectedVehicle.vehicle.extraEquipment;
         (self.optionalExtrasView).initialFrame = self.view.frame;
     } else {
         [self.optionalExtrasView hideView:YES];

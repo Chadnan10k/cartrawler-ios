@@ -41,7 +41,7 @@
    // }];
 }
 
-- (void)initWithVehicleAvailability:(NSArray <CTVehicle *> *)data
+- (void)initWithVehicleAvailability:(NSArray <CTAvailabilityItem *> *)data
                          completion:(VehicleSelectionCompletion)completion;
 {
     
@@ -52,7 +52,7 @@
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     [self.tableView registerNib:[UINib nibWithNibName:@"VehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];
 
-    _dataSource = [[CTVehicleSelectionViewModel alloc] initWithData:data cellSelected:^(CTVehicle *vehicle) {
+    _dataSource = [[CTVehicleSelectionViewModel alloc] initWithData:data cellSelected:^(CTAvailabilityItem *vehicle) {
         completion(vehicle);
     }];
     

@@ -84,10 +84,10 @@
                                      driverAge:[CTSearch instance].driverAge.stringValue
                                  numPassengers:[CTSearch instance].passengerQty.stringValue
                                   flightNumber:[CTSearch instance].flightNumber
-                                         refID:[CTSearch instance].selectedVehicle.refID
-                                  refTimeStamp:[CTSearch instance].selectedVehicle.refTimeStamp
-                                        refURL:[CTSearch instance].selectedVehicle.refURL
-                                   extrasArray:[CTSearch instance].selectedVehicle.extraEquipment
+                                         refID:[CTSearch instance].selectedVehicle.vehicle.refID
+                                  refTimeStamp:[CTSearch instance].selectedVehicle.vehicle.refTimeStamp
+                                        refURL:[CTSearch instance].selectedVehicle.vehicle.refURL
+                                   extrasArray:[CTSearch instance].selectedVehicle.vehicle.extraEquipment
                                      givenName:[CTSearch instance].firstName
                                        surName:[CTSearch instance].surname
                                   emailAddress:[CTSearch instance].email

@@ -48,7 +48,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [[CTImageCache sharedInstance] cachedImage: [CTSearch instance].selectedVehicle.pictureURL completion:^(UIImage *image) {
+    [[CTImageCache sharedInstance] cachedImage: [CTSearch instance].selectedVehicle.vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImage.image = image;
     }];
     
@@ -58,7 +58,7 @@
     
     self.supplierLabel.text = [CTSearch instance].selectedVehicle.vendor.name;
     
-    self.vehicleName.text = [CTSearch instance].selectedVehicle.makeModelName;
+    self.vehicleName.text = [CTSearch instance].selectedVehicle.vehicle.makeModelName;
     
     NSAttributedString *pickupLoc = [[NSAttributedString alloc] initWithString:[CTSearch instance].pickupLocation.name
                                                                     attributes:@{NSFontAttributeName:

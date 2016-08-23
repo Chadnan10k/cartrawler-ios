@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTVehicle.h>
+#import <CartrawlerAPI/CTAvailabilityItem.h>
 
 @interface BookingSummaryViewController : UIViewController
 
 + (void)forceLinkerLoad_;
 
-- (void)setDataWithVehicle:(CTVehicle *)vehicle
+- (void)setDataWithVehicle:(CTAvailabilityItem *)vehicle
                 pickupDate:(NSDate *)pickupDate
                dropoffDate:(NSDate *)dropoffDate
          isBuyingInsurance:(BOOL)isBuyingInsurance;

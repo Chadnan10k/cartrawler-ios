@@ -11,19 +11,19 @@
 
 @interface CTFilterFactory()
 
-@property (strong, nonatomic) NSMutableArray<CTVehicle *> *sizeData;
-@property (strong, nonatomic) NSMutableArray<CTVehicle *> *locationData;
-@property (strong, nonatomic) NSMutableArray<CTVendor *> *vendorsData;
-@property (strong, nonatomic) NSMutableArray<CTVehicle *> *transmissionData;
-@property (strong, nonatomic) NSMutableArray<CTVehicle *> *carSpecsData;
-@property (strong, nonatomic) NSMutableArray<CTVehicle *> *fuelPolicyData;
+@property (strong, nonatomic) NSMutableArray<CTAvailabilityItem *> *sizeData;
+@property (strong, nonatomic) NSMutableArray<CTAvailabilityItem *> *locationData;
+@property (strong, nonatomic) NSMutableArray<CTAvailabilityItem *> *vendorsData;
+@property (strong, nonatomic) NSMutableArray<CTAvailabilityItem *> *transmissionData;
+@property (strong, nonatomic) NSMutableArray<CTAvailabilityItem *> *carSpecsData;
+@property (strong, nonatomic) NSMutableArray<CTAvailabilityItem *> *fuelPolicyData;
 
-@property (strong, nonatomic) NSArray<CTVehicle *> *selectedSizeData;
-@property (strong, nonatomic) NSArray<CTVehicle *> *selectedFuelPolicyData;
-@property (strong, nonatomic) NSArray<CTVehicle *> *selectedTransmissionData;
-@property (strong, nonatomic) NSArray<CTVehicle *> *selectedCarSpecsData;
-@property (strong, nonatomic) NSArray *selectedLocationData;
-@property (strong, nonatomic) NSArray<CTVendor *> *selectedVendorsData;
+@property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedSizeData;
+@property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedFuelPolicyData;
+@property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedTransmissionData;
+@property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedCarSpecsData;
+@property (strong, nonatomic) NSArray<CTAvailabilityItem *>*selectedLocationData;
+@property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedVendorsData;
 
 @property (copy, nonatomic) CTVehicleAvailability *data;
 
@@ -53,23 +53,24 @@
                                                           selectedData:self.selectedTransmissionData
                                                             filterType:FilterDataTypeTransmission];
     
-    self.carSizeDataSource.filterCompletion = ^(NSArray<CTVehicle *> *filteredData){
+    //possible memory leak referencing self in block
+    self.carSizeDataSource.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData){
         _selectedSizeData = filteredData;
     };
     
-    self.locationDataSource.filterCompletion = ^(NSArray *filteredData){
+    self.locationDataSource.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData){
         _selectedLocationData = filteredData;
     };
     
-    self.vendorsDataSource.filterCompletion = ^(NSArray<CTVendor *> *filteredData){
+    self.vendorsDataSource.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData){
         _selectedVendorsData = filteredData;
     };
     
-    self.fuelPolicyDataSource.filterCompletion = ^(NSArray<CTVehicle *> *filteredData){
+    self.fuelPolicyDataSource.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData){
         _selectedFuelPolicyData = filteredData;
     };
     
-    self.transmissionDataSource.filterCompletion = ^(NSArray<CTVehicle *> *filteredData){
+    self.transmissionDataSource.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData){
         _selectedTransmissionData = filteredData;
     };
 }
@@ -93,40 +94,41 @@
     _fuelPolicyData = [[NSMutableArray alloc] init];
     
     //vehicle size
-    for (CTVehicle *v in data.allVehicles) {
+    for (CTAvailabilityItem *item in self.data.items) {
         BOOL found = NO;
-        for (CTVehicle *s in self.sizeData) {
-            if ([v.categoryDescriptionCode isEqualToString: s.categoryDescriptionCode]) {
+        for (CTAvailabilityItem *i in self.sizeData) {
+            if ([item.vehicle.sizeCode isEqualToString: i.vehicle.sizeCode]) {
                 found = YES;
             }
         }
         if (!found) {
-            [self.sizeData addObject:v];
+            [self.sizeData addObject:item];
         }
     }
+    
     //vendors
-    for (int i = 0; i < data.availableVendors.count; ++i) {
+    for (int i = 0; i < data.items.count; ++i) {
         
         BOOL found = NO;
         for (int x = 0; x < self.vendorsData.count; ++x) {
-            if ([data.availableVendors[i].name isEqualToString:self.vendorsData[x].name]) {
+            if ([data.items[i].vendor.name isEqualToString:self.vendorsData[x].vendor.name]) {
                 found = YES;
             } else {
                 found = NO;
             }
         }
         if (!found) {
-            [self.vendorsData addObject:data.availableVendors[i]];
+            [self.vendorsData addObject:data.items[i]];
         }
     }
     
-    //location
-    for (CTVehicle *v in data.allVehicles) {
+//    //location
+    for (CTAvailabilityItem *v in data.items) {
         BOOL found = NO;
-        for (CTVehicle *s in self.locationData) {
-            if (v.vendor.pickupType == PickupTypeUnknown) {
+        for (CTAvailabilityItem *s in self.locationData) {
+            if (v.vendor.pickupLocation.pickupType == PickupTypeUnknown) {
                 found = YES;
-            } else if (v.vendor.pickupType == s.vendor.pickupType) {
+            } else if (v.vendor.pickupLocation.pickupType == s.vendor.pickupLocation.pickupType) {
                 found = YES;
             }
         }
@@ -134,25 +136,12 @@
             [self.locationData addObject:v];
         }
     }
-    
-    //vehicle size
-    for (CTVehicle *v in data.allVehicles) {
-        BOOL found = NO;
-        for (CTVehicle *s in self.transmissionData) {
-            if ([v.transmissionType isEqualToString: s.transmissionType]) {
-                found = YES;
-            }
-        }
-        if (!found) {
-            [self.transmissionData addObject:v];
-        }
-    }
-    
+
     //fuel policy
-    for (CTVehicle *v in data.allVehicles) {
+    for (CTAvailabilityItem *v in data.items) {
         BOOL found = NO;
-        for (CTVehicle *s in self.fuelPolicyData) {
-            if (v.fuelPolicy == s.fuelPolicy) {
+        for (CTAvailabilityItem *s in self.fuelPolicyData) {
+            if (v.vehicle.fuelPolicy == s.vehicle.fuelPolicy) {
                 found = YES;
             }
         }
@@ -160,12 +149,12 @@
             [self.fuelPolicyData addObject:v];
         }
     }
-    
+
     //transmission
-    for (CTVehicle *v in data.allVehicles) {
+    for (CTAvailabilityItem *v in data.items) {
         BOOL found = NO;
-        for (CTVehicle *s in self.transmissionData) {
-            if ([v.transmissionType isEqualToString: s.transmissionType]) {
+        for (CTAvailabilityItem *s in self.transmissionData) {
+            if ([v.vehicle.transmissionType isEqualToString: s.vehicle.transmissionType]) {
                 found = YES;
             }
         }
@@ -178,19 +167,19 @@
 
 - (void)filter
 {
-    NSMutableArray<CTVehicle *> *filteredData = [[NSMutableArray alloc] init];
+    NSMutableArray<CTAvailabilityItem *> *filteredData = [[NSMutableArray alloc] init];
     
-    filteredData =  [[NSMutableArray alloc] initWithArray:self.data.allVehicles];
+    filteredData =  [[NSMutableArray alloc] initWithArray:self.data.items];
     
     //pick away each car one by one
     NSMutableArray *vehsToAdd = [[NSMutableArray alloc] init];
     
     //car size
-    for (CTVehicle *veh in filteredData) {
-        for (CTVehicle *selectedVeh in self.selectedSizeData) {
+    for (CTAvailabilityItem *veh in filteredData) {
+        for (CTAvailabilityItem *selectedVeh in self.selectedSizeData) {
             BOOL found = NO;
             
-            if ([veh.categoryDescriptionCode isEqualToString:selectedVeh.categoryDescriptionCode]) {
+            if ([veh.vehicle.sizeCode isEqualToString:selectedVeh.vehicle.sizeCode]) {
                 found = YES;
             }
             
@@ -206,12 +195,12 @@
     
     //car vendor
     if (self.selectedSizeData.count == 0 && self.selectedVendorsData.count == 0) {
-        vehsToAddStep2 = [[NSMutableArray alloc] initWithArray:self.data.allVehicles];
+        vehsToAddStep2 = [[NSMutableArray alloc] initWithArray:self.data.items];
     } else if (self.selectedSizeData.count == 0 && self.selectedVendorsData.count != 0) {
         vehsToAddStep2 = [[NSMutableArray alloc] init];
-        for (CTVendor *ven in self.selectedVendorsData) {
-            for (CTVehicle *veh in self.data.allVehicles) {
-                if ([ven.name isEqualToString:veh.vendor.name]) {
+        for (CTAvailabilityItem *ven in self.selectedVendorsData) {
+            for (CTAvailabilityItem *veh in self.data.items) {
+                if ([ven.vendor.name isEqualToString:veh.vendor.name]) {
                     if (![vehsToAddStep2 containsObject:veh]) {
                         [vehsToAddStep2 addObject:veh];
                     }
@@ -222,9 +211,9 @@
         vehsToAddStep2 = [[NSMutableArray alloc] initWithArray:vehsToAdd];
     } else {
         vehsToAddStep2 = [[NSMutableArray alloc] init];
-        for (CTVendor *ven in self.selectedVendorsData) {
-            for (CTVehicle *veh in vehsToAdd) {
-                if ([ven.name isEqualToString:veh.vendor.name]) {
+        for (CTAvailabilityItem *ven in self.selectedVendorsData) {
+            for (CTAvailabilityItem *veh in vehsToAdd) {
+                if ([ven.vendor.name isEqualToString:veh.vendor.name]) {
                     if (![vehsToAddStep2 containsObject:veh]) {
                         [vehsToAddStep2 addObject:veh];
                     }
@@ -238,11 +227,11 @@
     if (self.selectedFuelPolicyData.count == 0) {
         vehsToAddStep3 = vehsToAddStep2;
     } else {
-        for (CTVehicle *veh in vehsToAddStep2) {
-            for (CTVehicle *selectedVeh in self.selectedFuelPolicyData) {
+        for (CTAvailabilityItem *veh in vehsToAddStep2) {
+            for (CTAvailabilityItem *selectedVeh in self.selectedFuelPolicyData) {
                 BOOL found = NO;
                 
-                if (veh.fuelPolicy == selectedVeh.fuelPolicy) {
+                if (veh.vehicle.fuelPolicy == selectedVeh.vehicle.fuelPolicy) {
                     found = YES;
                 }
                 
@@ -260,11 +249,11 @@
     if (self.selectedTransmissionData.count == 0) {
         vehsToAddStep4 = vehsToAddStep3;
     } else {
-        for (CTVehicle *veh in vehsToAddStep3) {
-            for (CTVehicle *selectedVeh in self.selectedTransmissionData) {
+        for (CTAvailabilityItem *veh in vehsToAddStep3) {
+            for (CTAvailabilityItem *selectedVeh in self.selectedTransmissionData) {
                 BOOL found = NO;
                 
-                if ([veh.transmissionType isEqualToString: selectedVeh.transmissionType]) {
+                if ([veh.vehicle.transmissionType isEqualToString: selectedVeh.vehicle.transmissionType]) {
                     found = YES;
                 }
                 
@@ -282,11 +271,11 @@
     if (self.selectedLocationData.count == 0) {
         vehsToAddStep5 = vehsToAddStep4;
     } else {
-        for (CTVehicle *v in vehsToAddStep4) {
-            for (CTVehicle *selectedVeh in self.selectedLocationData) {
+        for (CTAvailabilityItem *v in vehsToAddStep4) {
+            for (CTAvailabilityItem *selectedVeh in self.selectedLocationData) {
                 BOOL found = NO;
                 
-                if (v.vendor.pickupType == selectedVeh.vendor.pickupType) {
+                if (v.vendor.pickupLocation.pickupType == selectedVeh.vendor.pickupLocation.pickupType) {
                     found = YES;
                 }
                 
@@ -300,7 +289,8 @@
     }
     
     _filteredData = [[NSMutableArray alloc] initWithArray:vehsToAddStep5];
-    _filteredData = [[NSMutableArray alloc] initWithArray:[CTFilter sortPrice:YES cars:self.filteredData]];
+    //_filteredData = [[NSMutableArray alloc] initWithArray:[CTFilter sortPrice:YES cars:self.filteredData]];
+    
 }
 
 @end

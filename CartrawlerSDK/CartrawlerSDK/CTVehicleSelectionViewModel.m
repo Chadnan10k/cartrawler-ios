@@ -11,14 +11,14 @@
 
 @interface CTVehicleSelectionViewModel()
 
-@property (nonatomic, strong) NSArray <CTVehicle *> *vehicles;
+@property (nonatomic, strong) NSArray <CTAvailabilityItem *> *vehicles;
 @property (nonatomic, strong) VehicleSelectionCompletion selectedVehicle;
 
 @end
 
 @implementation CTVehicleSelectionViewModel
 
-- (id)initWithData:(NSArray <CTVehicle *> *)data cellSelected:(VehicleSelectionCompletion)cellSeleted
+- (id)initWithData:(NSArray <CTAvailabilityItem *> *)data cellSelected:(VehicleSelectionCompletion)cellSeleted
 {
     self = [super init];
 

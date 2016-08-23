@@ -10,9 +10,9 @@
 
 @implementation LocalisedStrings
 
-+ (NSString *)pickupType:(CTVehicle *)vehicle
++ (NSString *)pickupType:(CTAvailabilityItem *)item
 {
-    switch (vehicle.vendor.pickupType) {
+    switch (item.vendor.pickupLocation.pickupType) {
         case PickupTypeTerminal:
             return NSLocalizedString(@"In Terminal", @"");
             break;
@@ -30,7 +30,7 @@
             break;
         case PickupTypeUnknown:
             
-            if (vehicle.vendor.atAirport) {
+            if (item.vendor.pickupLocation.atAirport) {
                 return NSLocalizedString(@"At Airport", @"At Airport");
             } else {
                 return NSLocalizedString(@"", @"");
@@ -39,7 +39,7 @@
             return NSLocalizedString(@"", @"");
             break;
         default:
-            if (vehicle.vendor.atAirport) {
+            if (item.vendor.pickupLocation.atAirport) {
                 return NSLocalizedString(@"At Airport", @"At Airport");
             } else {
                 return NSLocalizedString(@"", @"");
