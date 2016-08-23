@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CartrawlerAPI/CTVehicle.h"
+#import "CartrawlerAPI/CTAvailabilityItem.h"
 
 @interface VehicleTableViewCell : UITableViewCell
 
@@ -17,7 +17,7 @@
  *  @param vehicle CTVehicle object
  *
  */
-- (void)initWithVehicle:(CTVehicle *)vehicle;
+- (void)initWithVehicle:(CTAvailabilityItem *)item;
 
 
 + (void)forceLinkerLoad_;

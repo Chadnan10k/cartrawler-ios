@@ -12,5 +12,6 @@
 @interface LocalisedStrings : NSObject
 
 + (NSString *)pickupType:(CTAvailabilityItem *)item;
++ (NSString *)vehicleSize:(VehicleSize)size;
 
 @end

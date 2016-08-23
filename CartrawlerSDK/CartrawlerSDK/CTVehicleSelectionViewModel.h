@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "CartrawlerAPI/CTVehicleAvailability.h"
-#import "CartrawlerAPI/CTVehicle.h"
 #import <UIKit/UIKit.h>
 
 @interface CTVehicleSelectionViewModel : NSObject <UITableViewDelegate, UITableViewDataSource>

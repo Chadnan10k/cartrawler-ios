@@ -13,7 +13,7 @@
 @interface CTSearch : NSObject
 
 @property (nonatomic, strong) CTVehicleAvailability *vehicleAvailability;
-@property (nonatomic, strong) CTVehicle *selectedVehicle;
+@property (nonatomic, strong) CTAvailabilityItem *selectedVehicle;
 @property (nonatomic, strong) CTMatchedLocation *pickupLocation;
 @property (nonatomic, strong) CTMatchedLocation *dropoffLocation;
 @property (nonatomic, strong) NSDate *pickupDate;

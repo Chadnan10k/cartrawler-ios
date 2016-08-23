@@ -22,6 +22,18 @@
 
 - (void)refresh { }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    for (CALayer* layer in [self.view.layer sublayers])
+    {
+        [layer removeAllAnimations];
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
 - (void)pushToDestination
 {
     [CTViewManager canTransitionToStep:self.destinationViewController

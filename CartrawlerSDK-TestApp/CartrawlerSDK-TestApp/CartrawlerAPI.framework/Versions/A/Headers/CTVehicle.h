@@ -174,6 +174,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface CTVehicle : NSObject
 
+
+@property (nonatomic, nonnull, readonly) NSNumber *orderIndex;
 /**
  *  Bool value if vehicle requires payment card information or not
  */

@@ -36,8 +36,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    CTVehicle *vehicle = self.vehicles[indexPath.row];
+    CTAvailabilityItem *vehicle = self.vehicles[indexPath.row];
     VehicleTableViewCell *cell = (VehicleTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"VehicleCell" forIndexPath:indexPath];
     [cell initWithVehicle:vehicle];
     return cell;

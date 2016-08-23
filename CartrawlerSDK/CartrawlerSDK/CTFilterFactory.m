@@ -22,7 +22,7 @@
 @property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedFuelPolicyData;
 @property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedTransmissionData;
 @property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedCarSpecsData;
-@property (strong, nonatomic) NSArray<CTAvailabilityItem *>*selectedLocationData;
+@property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedLocationData;
 @property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedVendorsData;
 
 @property (copy, nonatomic) CTVehicleAvailability *data;

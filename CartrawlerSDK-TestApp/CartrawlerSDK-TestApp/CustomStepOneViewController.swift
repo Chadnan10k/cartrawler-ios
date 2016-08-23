@@ -13,7 +13,6 @@ class CustomStepOneViewController: CTViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewType = ViewTypeSearchDetails
         /*
         let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
         
@@ -36,24 +35,26 @@ class CustomStepOneViewController: CTViewController {
     
     @IBAction func next(_ sender: AnyObject) {
         
-        dataValidationCompletion = { success, errorMessage in
-            if let errorMessage = errorMessage {
-                print("\(self) \(errorMessage)")
-            }
-        }
+//        dataValidationCompletion = { success, errorMessage in
+//            if let errorMessage = errorMessage {
+//                print("\(self) \(errorMessage)")
+//            }
+//        }
+//        
+//        search.pickupDate = NSDate().addingTimeInterval(100000) as Date!
+//        search.dropoffDate = NSDate().addingTimeInterval(200000) as Date!
+//        search.driverAge = 30
+//        
+//        cartrawlerAPI?.locationSearch(withAirportCode: "DUB", completion: { (locations, error) in
+//            if let locations = locations {
+//                self.search.pickupLocation = locations.matchedLocations.first
+//                self.search.dropoffLocation = locations.matchedLocations.first
+//                DispatchQueue.main.async {
+//                    self.pushToDestination()
+//                }
+//            }
+//        })
         
-        search.pickupDate = NSDate().addingTimeInterval(100000) as Date!
-        search.dropoffDate = NSDate().addingTimeInterval(200000) as Date!
-        search.driverAge = 30
-        
-        cartrawlerAPI?.locationSearch(withAirportCode: "DUB", completion: { (locations, error) in
-            if let locations = locations {
-                self.search.pickupLocation = locations.matchedLocations.first
-                self.search.dropoffLocation = locations.matchedLocations.first
-                DispatchQueue.main.async {
-                    self.pushToDestination()
-                }
-            }
-        })
+        pushToDestination()
     }
 }

@@ -112,16 +112,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CartrawlerSDK/CartrawlerSDK/CTViewController.m"
+            timestampString = "493649046.776926"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "-didReceiveMemoryWarning"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CartrawlerSDK/CartrawlerSDK/CTFilterFactory.m"
-            timestampString = "493644863.171397"
+            filePath = "CartrawlerSDK/CartrawlerSDK/CartrawlerSDK.m"
+            timestampString = "493660580.284745"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
-            landmarkName = "-filter"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-initWithRequestorID:languageCode:isDebug:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

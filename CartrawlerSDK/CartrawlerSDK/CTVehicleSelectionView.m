@@ -26,19 +26,19 @@
 - (void)showLoading
 {
     __weak typeof (self) weakSelf = self;
-   /// [UIView animateWithDuration:0.3 animations:^{
-        self.tableView.alpha = 0;
-        self.tableView.scrollsToTop = YES;
-    ///}];
+    [UIView animateWithDuration:0.3 animations:^{
+        weakSelf.tableView.alpha = 0;
+        weakSelf.tableView.scrollsToTop = YES;
+    }];
 }
 
 - (void)hideLoading
 {
     __weak typeof (self) weakSelf = self;
-   // [UIView animateWithDuration:0.3 animations:^{
-        self.tableView.alpha = 1;
-        self.tableView.scrollsToTop = YES;
-   // }];
+    [UIView animateWithDuration:0.3 animations:^{
+        weakSelf.tableView.alpha = 1;
+        weakSelf.tableView.scrollsToTop = YES;
+    }];
 }
 
 - (void)initWithVehicleAvailability:(NSArray <CTAvailabilityItem *> *)data

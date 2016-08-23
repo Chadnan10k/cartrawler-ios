@@ -57,12 +57,36 @@
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     _bundle = [NSBundle bundleWithPath:bundlePath];
     
-    _searchDetailsViewController = [self searchDetailsViewController_];
-    (self.searchDetailsViewController).search = [CTSearch instance];
-    
     if (isDebug) {
         [self.cartrawlerAPI enableLogging:YES];
     }
+    
+    //set default views
+    UIStoryboard *sa = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:self.bundle];
+    _searchDetailsViewController = [sa instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:kSearchResultsViewStoryboard bundle:self.bundle];
+    _vehicleSelectionViewController = [sb instantiateViewControllerWithIdentifier:@"SearchResultsViewController"];
+    
+    UIStoryboard *sc = [UIStoryboard storyboardWithName:kVehicleDetailsViewStoryboard bundle:self.bundle];
+    _vehicleDetailsViewController = [sc instantiateViewControllerWithIdentifier:@"VehicleDetailsViewController"];
+    
+    UIStoryboard *sd = [UIStoryboard storyboardWithName:kExtrasViewStoryboard bundle:self.bundle];
+    _insuranceExtrasViewController = [sd instantiateViewControllerWithIdentifier:@"ExtrasViewController"];
+    
+    UIStoryboard *se = [UIStoryboard storyboardWithName:kSummaryViewStoryboard bundle:self.bundle];
+    _paymentSummaryViewController = [se instantiateViewControllerWithIdentifier:@"PaymentSummaryViewController"];
+    
+    UIStoryboard *sf = [UIStoryboard storyboardWithName:kDetailsViewStoryboard bundle:self.bundle];
+    _driverDetialsViewController = [sf instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
+    
+    UIStoryboard *sg = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:self.bundle];
+    _paymentViewController = [sg instantiateViewControllerWithIdentifier:@"PaymentViewController"];
+    
+    UIStoryboard *sh = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:self.bundle];
+    _paymentCompletionViewController = [sh instantiateViewControllerWithIdentifier:@"PaymentCompletionViewController"];
+    
+    [self configureViews];
     
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
 
@@ -78,10 +102,10 @@
 {
     
     [[CTSearch instance] reset];
+
     CTNavigationController *navController;
     
-    navController = [[CTNavigationController alloc] initWithRootViewController:
-                                           [self searchDetailsViewController_]];
+    navController = [[CTNavigationController alloc] initWithRootViewController: self.searchDetailsViewController];
 
     navController.navigationBar.hidden = YES;
     [viewController presentViewController:navController animated:YES completion:nil];
@@ -94,273 +118,77 @@
     [viewController presentViewController:navController animated:YES completion:nil];
 }
 
-- (void)presentStepTwoWithData:(NSString *)pickupLocationCode
-            returnLocationCode:(NSString *)returnLocationCode
-           customerCountryCode:(NSString *)customerCountryCode
-                  passengerQty:(NSNumber *)passengerQty
-                     driverAge:(NSNumber *)driverAge
-                pickUpDateTime:(NSDate *)pickupDateTime
-                returnDateTime:(NSDate *)returnDateTime
-                  currencyCode:(NSString *)currencyCode
-              inViewController:(UIViewController *)viewController
-{
+- (void)configureViews {
+    [self configureViewController:self.searchDetailsViewController viewType:ViewTypeSearchDetails destination:self.vehicleSelectionViewController fallback:nil];
     
+    [self configureViewController:self.vehicleSelectionViewController viewType:ViewTypeVehicleSelection destination:self.vehicleDetailsViewController fallback:nil];
+    
+    [self configureViewController:self.vehicleDetailsViewController viewType:ViewTypeGeneric destination:self.insuranceExtrasViewController fallback:nil];
+    
+    [self configureViewController:self.insuranceExtrasViewController viewType:ViewTypeInsurance destination:self.paymentSummaryViewController fallback:nil];
+    
+    [self configureViewController:self.paymentSummaryViewController viewType:ViewTypeGeneric destination:self.driverDetialsViewController fallback:nil];
+    
+    [self configureViewController:self.driverDetialsViewController viewType:ViewTypeDriverDetails destination:self.paymentViewController fallback:nil];
+    
+    [self configureViewController:self.paymentViewController viewType:ViewTypePaymentDetails destination:self.paymentCompletionViewController fallback:nil];
+    
+    [self configureViewController:self.paymentCompletionViewController viewType:ViewTypeGeneric destination:self.vehicleSelectionViewController fallback:nil];
 }
 
 - (void)overrideSearchDetailsViewController:(CTViewController *)viewController
 {
     _searchDetailsViewControllerOverride = viewController;
-    (self.searchDetailsViewControllerOverride).cartrawlerAPI = self.cartrawlerAPI;
+    [self configureViews];
 }
 
 - (void)overrideVehicleSelectionViewController:(CTViewController *)viewController
 {
     _vehicleSelectionViewController = viewController;
-    (self.vehicleSelectionViewController).cartrawlerAPI = self.cartrawlerAPI;
+    [self configureViews];
 }
 
 - (void)overrideVehicleDetailsViewController:(CTViewController *)viewController
 {
     _vehicleDetailsViewController = viewController;
-    (self.vehicleDetailsViewController).cartrawlerAPI = self.cartrawlerAPI;
+    [self configureViews];
 }
 
 - (void)overrideInsuranceExtrasViewController:(CTViewController *)viewController
 {
     _insuranceExtrasViewController = viewController;
-    (self.insuranceExtrasViewController).cartrawlerAPI = self.cartrawlerAPI;
+    [self configureViews];
 }
 
 - (void)overridePaymentSummaryViewController:(CTViewController *)viewController
 {
     _paymentSummaryViewController = viewController;
-    (self.paymentSummaryViewController).cartrawlerAPI = self.cartrawlerAPI;
+    [self configureViews];
 }
 
 - (void)overrideDriverDetialsViewController:(CTViewController *)viewController
 {
     _driverDetialsViewController = viewController;
-    (self.driverDetialsViewController).cartrawlerAPI = self.cartrawlerAPI;
+    [self configureViews];
 }
 
 - (void)overridePaymentCompletionViewController:(CTViewController *)viewController
 {
     _paymentCompletionViewController = viewController;
-    (self.paymentCompletionViewController).cartrawlerAPI = self.cartrawlerAPI;
+    [self configureViews];
 }
 
-- (CTViewController *)searchDetailsViewController_
+- (CTViewController *)configureViewController:(CTViewController *)viewController
+                                     viewType:(ViewType)viewType
+                                  destination:(CTViewController *)destination
+                                     fallback:(CTViewController *)fallback
 {
-    if (self.searchDetailsViewControllerOverride) {
-        self.searchDetailsViewControllerOverride.search = [CTSearch instance];
-        return self.searchDetailsViewControllerOverride;
-    } else {
-
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:self.bundle];
-        _searchDetailsViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
-        
-        self.searchDetailsViewController.destinationViewController = [self vehicleSelectionViewController_];
-        [self.searchDetailsViewController setFallBackViewController:nil];
-        self.searchDetailsViewController.viewType = ViewTypeSearchDetails;
-        self.searchDetailsViewController.cartrawlerAPI = self.cartrawlerAPI;
-        self.searchDetailsViewController.search = [CTSearch instance];
-
-        return self.searchDetailsViewController;
-    }
-}
-
-- (CTViewController *)vehicleSelectionViewController_
-{
-    if (self.vehicleSelectionViewController == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchResultsViewStoryboard bundle:self.bundle];
-        _vehicleSelectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchResultsViewController"];
-
-        (self.vehicleSelectionViewController).destinationViewController = [self vehicleDetailsViewController_];
-        (self.vehicleSelectionViewController).viewType = ViewTypeVehicleSelection;
-        [self.vehicleSelectionViewController setFallBackViewController:nil];
-        (self.vehicleSelectionViewController).cartrawlerAPI = self.cartrawlerAPI;
-
-        return self.vehicleSelectionViewController;
-    } else {
-        return self.vehicleSelectionViewController;
-    }
-}
-
-- (CTViewController *)vehicleDetailsViewController_
-{
-    if (self.vehicleDetailsViewController == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kVehicleDetailsViewStoryboard bundle:self.bundle];
-        _vehicleDetailsViewController = [storyboard instantiateViewControllerWithIdentifier:@"VehicleDetailsViewController"];
-        
-        (self.vehicleDetailsViewController).destinationViewController = [self insuranceExtrasViewController_];
-        (self.vehicleDetailsViewController).viewType = ViewTypeGeneric;
-        (self.vehicleDetailsViewController).fallBackViewController = [self paymentSummaryViewController_];
-        (self.vehicleDetailsViewController).cartrawlerAPI = self.cartrawlerAPI;
-        
-        return self.vehicleDetailsViewController;
-    } else {
-        return self.vehicleDetailsViewController;
-    }
-}
-
-- (CTViewController *)insuranceExtrasViewController_
-{
-    if (self.insuranceExtrasViewController == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kExtrasViewStoryboard bundle:self.bundle];
-        
-        _insuranceExtrasViewController = [storyboard instantiateViewControllerWithIdentifier:@"ExtrasViewController"];
-        
-        (self.insuranceExtrasViewController).destinationViewController = [self paymentSummaryViewController_];
-        (self.insuranceExtrasViewController).viewType = ViewTypeInsurance;
-        (self.insuranceExtrasViewController).fallBackViewController = [self driverDetialsViewController_];
-        (self.insuranceExtrasViewController).cartrawlerAPI = self.cartrawlerAPI;
-        
-        return self.insuranceExtrasViewController;
-
-        
-    } else {
-        return self.insuranceExtrasViewController;
-    }
-}
-
-
-- (CTViewController *)paymentSummaryViewController_
-{
-    if (self.paymentSummaryViewController == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSummaryViewStoryboard bundle:self.bundle];
-        _paymentSummaryViewController = [storyboard instantiateViewControllerWithIdentifier:@"PaymentSummaryViewController"];
-        
-        (self.paymentSummaryViewController).destinationViewController = [self driverDetialsViewController_];
-        (self.paymentSummaryViewController).viewType = ViewTypeGeneric;
-        [self.paymentSummaryViewController setFallBackViewController:nil];
-        (self.paymentSummaryViewController).cartrawlerAPI = self.cartrawlerAPI;
-        
-        return self.paymentSummaryViewController;
-
-    } else {
-        return self.paymentSummaryViewController;
-    }
-}
-
-- (CTViewController *)driverDetialsViewController_
-{
-    if (self.driverDetialsViewController == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kDetailsViewStoryboard bundle:self.bundle];
-        _driverDetialsViewController = [storyboard instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
-        
-        (self.driverDetialsViewController).viewType = ViewTypeDriverDetails;
-        (self.driverDetialsViewController).destinationViewController = [self paymentViewController_];
-        [self.driverDetialsViewController setFallBackViewController:nil];
-        (self.driverDetialsViewController).cartrawlerAPI = self.cartrawlerAPI;
-        
-        return self.driverDetialsViewController;
-    } else {
-        return self.driverDetialsViewController;
-    }
-}
-
-- (CTViewController *)paymentViewController_
-{
-    if (self.paymentViewController == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:self.bundle];
-        _paymentViewController = [storyboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
-        
-        (self.paymentViewController).viewType = ViewTypePaymentDetails;
-        (self.paymentViewController).destinationViewController = [self paymentCompletionViewController_];
-
-        return self.paymentViewController;
-
-    } else {
-        return self.paymentViewController;
-    }
-}
-
-- (CTViewController *)paymentCompletionViewController_
-{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:self.bundle];
-    _paymentCompletionViewController = [storyboard instantiateViewControllerWithIdentifier:@"PaymentCompletionViewController"];
-    
-    (self.paymentCompletionViewController).viewType = ViewTypeGeneric;
-    
-    return self.paymentCompletionViewController;
-}
-
-- (void)setCarRentalViewsFromArray:(NSArray <CTViewController *> *)carRentalViews
-{
-    NSMutableArray <CTViewController *>* viewArr = [[NSMutableArray alloc] init];
-    
-    BOOL hasSearchDetails = NO;
-    BOOL hasVehicleSelection= NO;
-    BOOL hasInsurance = NO;
-    BOOL hasDrvierDetails = NO;
-    BOOL hasPaymentDetails = NO;
-    
-    for (CTViewController *vc in carRentalViews) {
-        
-        vc.cartrawlerAPI = self.cartrawlerAPI;
-        
-        if (vc.viewType == ViewTypeSearchDetails) {
-            hasSearchDetails = YES;
-        }
-        
-        if (vc.viewType == ViewTypeVehicleSelection) {
-            hasVehicleSelection = YES;
-        }
-        
-        if (vc.viewType == ViewTypeInsurance) {
-            hasInsurance = YES;
-        }
-        
-        if (vc.viewType == ViewTypeDriverDetails) {
-            hasDrvierDetails = YES;
-        }
-        
-        if (vc.viewType == ViewTypePaymentDetails) {
-            hasPaymentDetails = YES;
-        }
-        
-        [viewArr addObject:vc];
-    }
-    
-    if (!hasSearchDetails)
-    {
-        [viewArr removeAllObjects];
-        NSLog(@"CartrawlerSDK: Cannot set custom views, could not find ViewTypeSearchDetails");
-    }
-    
-    if (!hasVehicleSelection)
-    {
-        [viewArr removeAllObjects];
-        NSLog(@"CartrawlerSDK: Cannot set custom views, could not find ViewTypeVehicleSelection");
-    }
-    
-    if (!hasInsurance)
-    {
-        [viewArr removeAllObjects];
-        NSLog(@"CartrawlerSDK: Cannot set custom views, could not find ViewTypeInsurance");
-    }
-    
-    if (!hasDrvierDetails)
-    {
-        [viewArr removeAllObjects];
-        NSLog(@"CartrawlerSDK: Cannot set custom views, could not find ViewTypeDriverDetails");
-    }
-    
-    if (!hasPaymentDetails)
-    {
-        [viewArr removeAllObjects];
-        NSLog(@"CartrawlerSDK: Cannot set custom views, could not find ViewTypePaymentDetails");
-    }
-    
-    if (hasSearchDetails &&
-        hasVehicleSelection &&
-        hasInsurance &&
-        hasDrvierDetails &&
-        hasPaymentDetails)
-    {
-        _customViewControllers = [[NSArray alloc] initWithArray:viewArr];
-    }
-    
+    viewController.destinationViewController = destination;
+    viewController.fallBackViewController = fallback;
+    viewController.viewType = viewType;
+    viewController.cartrawlerAPI = self.cartrawlerAPI;
+    viewController.search = [CTSearch instance];
+    return viewController;
 }
 
 - (void)rerouteViewController:(CTViewController *)viewController
