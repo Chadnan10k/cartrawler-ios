@@ -75,15 +75,7 @@
 
 - (void)shakeAnimation
 {
-    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:1 options:0 animations:^{
-        self.transform = CGAffineTransformMakeScale(1.02, 1.02);
-        self.backgroundColor = [UIColor redColor];
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.4 animations:^{
-            self.transform = CGAffineTransformMakeScale(1.0, 1.0);
-            self.backgroundColor = [UIColor whiteColor];
-        }];
-    }];
+    [super shakeAnimation];
 }
 
 - (BOOL)isValidEmail

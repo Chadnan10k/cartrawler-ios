@@ -37,6 +37,10 @@ static CGFloat const kFloatingLabelHideAnimationDuration = 0.3f;
     BOOL _isFloatingLabelFontDefault;
     NSStringUtils *stringUtils;
     CALayer *border;
+    
+    CALayer *bottomBorder;
+    CALayer *topBorder;
+
 }
 
 + (void)forceLinkerLoad_
@@ -357,15 +361,16 @@ static CGFloat const kFloatingLabelHideAnimationDuration = 0.3f;
     
     if (self.useBottomBorder) {
         
-        CALayer *topBorder = [CALayer layer];
+        topBorder = [CALayer layer];
         topBorder.frame = CGRectMake(0.0f, 0, self.frame.size.width, 1.0f);
         topBorder.backgroundColor = self.backgroundColor.CGColor;
         [self.layer addSublayer:topBorder];
         
-        CALayer *bottomBorder = [CALayer layer];
+        bottomBorder = [CALayer layer];
         bottomBorder.frame = CGRectMake(0.0f, self.frame.size.height - 1, self.frame.size.width, 1.0f);
         bottomBorder.backgroundColor = [UIColor lightGrayColor].CGColor;
         [self.layer addSublayer:bottomBorder];
+        
     }
 }
 
@@ -378,6 +383,32 @@ static CGFloat const kFloatingLabelHideAnimationDuration = 0.3f;
 {
     if (border) {
         border.borderColor = [UIColor redColor].CGColor;
+    }
+}
+
+- (void)shakeAnimation
+{
+    if (bottomBorder) {
+        CAKeyframeAnimation *colorsAnimation = [CAKeyframeAnimation animationWithKeyPath:@"backgroundColor"];
+        colorsAnimation.values = [NSArray arrayWithObjects: (id)[UIColor redColor].CGColor, (id)[UIColor lightGrayColor].CGColor, nil];
+        
+        colorsAnimation.keyTimes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:2.5], [NSNumber numberWithFloat:0.5], nil];
+        colorsAnimation.calculationMode = kCAAnimationPaced;
+        colorsAnimation.removedOnCompletion = YES;
+        colorsAnimation.fillMode = kCAFillModeForwards;
+        colorsAnimation.duration = 3.0f;
+    
+        [bottomBorder addAnimation:colorsAnimation forKey:nil];
+    } else {
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:1 options:0 animations:^{
+            self.transform = CGAffineTransformMakeScale(1.02, 1.02);
+            self.backgroundColor = [UIColor redColor];
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.4 animations:^{
+                self.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                self.backgroundColor = [UIColor whiteColor];
+            }];
+        }];
     }
 }
 

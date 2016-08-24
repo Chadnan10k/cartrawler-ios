@@ -113,6 +113,7 @@
         for (int x = 0; x < self.vendorsData.count; ++x) {
             if ([data.items[i].vendor.name isEqualToString:self.vendorsData[x].vendor.name]) {
                 found = YES;
+                break;
             } else {
                 found = NO;
             }

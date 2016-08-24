@@ -58,6 +58,8 @@
 
 @implementation SearchDetailsViewController
 
+//This all got fairly messy from the 'R&D' of the whole thing, refactor when we have some new designs
+
 + (void)forceLinkerLoad_
 {
     
@@ -234,6 +236,23 @@
     
     [self.scrollView setContentOffset:
      CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
+    
+    if (!self.search.pickupLocation) {
+        [self.pickupView setTextFieldText:@""];
+    }
+    
+    if (!self.search.pickupDate) {
+        [self.calendarView setTextFieldText:@""];
+    }
+    
+    if (!self.search.dropoffDate) {
+        [self.calendarView setTextFieldText:@""];
+    }
+    
+    if (!self.search.driverAge) {
+        self.ageContainer.text = @"";
+        self.search.driverAge = @30;
+    }
 }
 
 #pragma mark Calendar delegate

@@ -139,4 +139,6 @@ IB_DESIGNABLE
  */
 - (void)invalidText:(BOOL)isEmail;
 
+- (void)shakeAnimation;
+
 @end

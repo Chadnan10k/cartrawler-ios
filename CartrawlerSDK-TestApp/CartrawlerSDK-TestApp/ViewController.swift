@@ -53,10 +53,14 @@ class ViewController: UIViewController {
         //643826 RYR
         //592248
         
-        let customStepOne = storyboard?.instantiateViewController(withIdentifier: "CustomStepOneViewController") as! CustomStepOneViewController
-        customStepOne.viewType = ViewTypeGeneric
-        //cartrawlerSDK.overrideVehicleDetailsViewController(customStepOne)
-        
+//        let customStepOne = storyboard?.instantiateViewController(withIdentifier: "CustomStepOneViewController") as! CustomStepOneViewController
+//        customStepOne.viewType = ViewTypeGeneric
+//        
+//        let customStepTwo = storyboard?.instantiateViewController(withIdentifier: "CustomStepOneViewController") as! CustomStepOneViewController
+//        customStepTwo.viewType = ViewTypeGeneric
+//        cartrawlerSDK.overrideVehicleDetailsViewController(customStepOne)
+//        cartrawlerSDK.overridePaymentSummaryViewController(customStepTwo)
+
         //cartrawlerSDK.rerouteViewController(cartrawlerSDK.vehicleSelectionViewController, destination: cartrawlerSDK.paymentSummaryViewController, fallback: cartrawlerSDK.paymentSummaryViewController)
         
         cartrawlerSDK.presentCarRental(in: self)
