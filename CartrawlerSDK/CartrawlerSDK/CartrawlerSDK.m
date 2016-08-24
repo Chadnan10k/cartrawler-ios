@@ -209,6 +209,18 @@
     }
 }
 
+#pragma mark Push Notifications
+
++ (void)registerForPushNotifications:(NSData *)deviceToken
+{
+    //send call to server
+}
+
++ (void)didReceivePushNotification:(NSDictionary *)notification
+{
+    //open booking info
+}
+
 #pragma Crash handling
 
 void uncaughtExceptionHandler(NSException *exception)

@@ -54,6 +54,21 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)presentCarRentalInViewController:(UIViewController *)viewController;
 
+/**
+ *  Register the CartrawlerSDK to use push notifications so information can be sent to your customer about their booking
+ *
+ *  @param deviceToken The iOS device token taken from the AppDelegate
+ */
++ (void)registerForPushNotifications:(NSData *)deviceToken;
+
+/**
+ *  Presents a view showing the user information about their upcoming booking
+ *
+ *  @param notification The dictionary with notification information
+ */
++ (void)didReceivePushNotification:(NSDictionary *)notification;
+
+
 /*  ----------------------------------------------------------------------------
  *  View Controller Overriding:
  *  You can set a custom view for any step of the user journey by subclassing
