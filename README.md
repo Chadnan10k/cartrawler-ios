@@ -1,2 +1,7 @@
-# Cartrawler-UI-iOS
-Reusable UI components which will later be embedded into the Cartrawler iOS framework
+# Cartrawler-iOS-SDK
+
+This repo contains an xcode workspace which builds 3 products:
+
+CartrawlerAPI.Framework - This framework talks to the OTA server and provides data.
+CartrawlerSDK.Framework - This framework contains a kit for preset UI and custom UI components
+CartrawlerResources.Bundle - This bundle contains assets and resources for CartrawlerSDK.Framework
