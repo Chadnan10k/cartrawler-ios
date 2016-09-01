@@ -1,0 +1,294 @@
+{
+    "Success": [],
+    "PlanForQuoteRS": {
+        "@PlanID": "CTWUSCLWW",
+        "@Name": "Excess Cover",
+        "@Type": "Protection",
+        "QuoteDetail": {
+            "ProviderCompany": {
+                "@CompanyShortName": "MONDIAL",
+                "@Department": "ALLIANZ"
+            },
+            "QuoteDetailURL": "http://www.cartrawler.com/insurance/Cartrawler_TC_Allianz.pdf"
+        },
+        "InsCoverageDetail": {
+            "@Type": "SingleTrip",
+            "CoverageRequirements": {
+                "CoverageRequirement": {
+                    "@CoverageType": "12",
+                    "PolicyLimit": {
+                        "@Amount": "40000.00",
+                        "@CurrencyCode": "USD"
+                    }
+                }
+            },
+            "TotalTripCost": {
+                "@Amount": "120.59",
+                "@Currency": "USD"
+            }
+        },
+        "PlanCost": {
+            "@Amount": "72.00",
+            "@CurrencyCode": "USD",
+            "BasePremium": {
+                "@Amount": "72.00",
+                "@CurrencyCode": "USD"
+            }
+        }
+    },
+    "TPA_Extensions": {
+        "CurrencyExchange": {
+            "@QuoteToChargeRate": "1.000000"
+        },
+        "Data": {
+            "Title": {
+                "@OrderID": "1",
+                "#text": "Rental Car Protector"
+            },
+            "Image": {
+                "@OrderID": "2",
+                "@UIToken": "ct_s3_ea_logo_us",
+                "#text": "https://cdn.cartrawler.com/insurance/logos/allianz_global.png"
+            },
+            "List": {
+                "@OrderID": "3",
+                "@Title": "Policy covers:",
+                "Item": [
+                         "Protect yourself against rental car losses or damages for as little as USD 10.29 per day with Allianz Car Rental Protector, it may be less expensive now than at the car counter.",
+                         "Policies provide up to $40,000 in primary coverage for rentals up to 45 consecutive days.",
+                         "Exclusions, conditions and limitations may apply, ${link1}"
+                         ]
+            },
+            "Links": {
+                "@OrderID": "4",
+                "Link": {
+                    "@OrderID": "1",
+                    "@Code": "link1",
+                    "@Text": "learn more",
+                    "@Url": "http://www.cartrawler.com/insurance/Cartrawler_TC_Allianz.pdf"
+                }
+            },
+            "SelectControl": {
+                "@OrderID": "5",
+                "@Title": "Select state",
+                "@Type": "State",
+                "Item": [
+                         {
+                         "@Key": "",
+                         "@DefaultValue": "true",
+                         "#text": "Please select"
+                         },
+                         {
+                         "@Key": "AK",
+                         "#text": "Alaska"
+                         },
+                         {
+                         "@Key": "AL",
+                         "#text": "Alabama"
+                         },
+                         {
+                         "@Key": "AR",
+                         "#text": "Arkansas"
+                         },
+                         {
+                         "@Key": "AZ",
+                         "#text": "Arizona"
+                         },
+                         {
+                         "@Key": "CA",
+                         "#text": "California"
+                         },
+                         {
+                         "@Key": "CO",
+                         "#text": "Colorado"
+                         },
+                         {
+                         "@Key": "CT",
+                         "#text": "Connecticut"
+                         },
+                         {
+                         "@Key": "DC",
+                         "#text": "District of Columbia"
+                         },
+                         {
+                         "@Key": "DE",
+                         "#text": "Delaware"
+                         },
+                         {
+                         "@Key": "FL",
+                         "#text": "Florida"
+                         },
+                         {
+                         "@Key": "GA",
+                         "#text": "Georgia"
+                         },
+                         {
+                         "@Key": "HI",
+                         "#text": "Hawaii"
+                         },
+                         {
+                         "@Key": "IA",
+                         "#text": "Iowa"
+                         },
+                         {
+                         "@Key": "ID",
+                         "#text": "Idaho"
+                         },
+                         {
+                         "@Key": "IL",
+                         "#text": "Illinois"
+                         },
+                         {
+                         "@Key": "IN",
+                         "#text": "Indiana"
+                         },
+                         {
+                         "@Key": "KS",
+                         "#text": "Kansas"
+                         },
+                         {
+                         "@Key": "KY",
+                         "#text": "Kentucky"
+                         },
+                         {
+                         "@Key": "LA",
+                         "#text": "Louisiana"
+                         },
+                         {
+                         "@Key": "MA",
+                         "#text": "Massachusetts"
+                         },
+                         {
+                         "@Key": "MD",
+                         "#text": "Maryland"
+                         },
+                         {
+                         "@Key": "ME",
+                         "#text": "Maine"
+                         },
+                         {
+                         "@Key": "MI",
+                         "#text": "Michigan"
+                         },
+                         {
+                         "@Key": "MN",
+                         "#text": "Minnesota"
+                         },
+                         {
+                         "@Key": "MO",
+                         "#text": "Missouri"
+                         },
+                         {
+                         "@Key": "MS",
+                         "#text": "Mississippi"
+                         },
+                         {
+                         "@Key": "MT",
+                         "#text": "Montana"
+                         },
+                         {
+                         "@Key": "NC",
+                         "#text": "North Carolina"
+                         },
+                         {
+                         "@Key": "ND",
+                         "#text": "North Dakota"
+                         },
+                         {
+                         "@Key": "NE",
+                         "#text": "Nebraska"
+                         },
+                         {
+                         "@Key": "NH",
+                         "#text": "New Hampshire"
+                         },
+                         {
+                         "@Key": "NJ",
+                         "#text": "New Jersey"
+                         },
+                         {
+                         "@Key": "NM",
+                         "#text": "New Mexico"
+                         },
+                         {
+                         "@Key": "NV",
+                         "#text": "Nevada"
+                         },
+                         {
+                         "@Key": "NY",
+                         "#text": "New York"
+                         },
+                         {
+                         "@Key": "OH",
+                         "#text": "Ohio"
+                         },
+                         {
+                         "@Key": "OK",
+                         "#text": "Oklahoma"
+                         },
+                         {
+                         "@Key": "OR",
+                         "#text": "Oregon"
+                         },
+                         {
+                         "@Key": "PA",
+                         "#text": "Pennsylvania"
+                         },
+                         {
+                         "@Key": "RI",
+                         "#text": "Rhode Island"
+                         },
+                         {
+                         "@Key": "SC",
+                         "#text": "South Carolina"
+                         },
+                         {
+                         "@Key": "SD",
+                         "#text": "South Dakota"
+                         },
+                         {
+                         "@Key": "TN",
+                         "#text": "Tennessee"
+                         },
+                         {
+                         "@Key": "UT",
+                         "#text": "Utah"
+                         },
+                         {
+                         "@Key": "VA",
+                         "#text": "Virginia"
+                         },
+                         {
+                         "@Key": "VT",
+                         "#text": "Vermont"
+                         },
+                         {
+                         "@Key": "WA",
+                         "#text": "Washington"
+                         },
+                         {
+                         "@Key": "WI",
+                         "#text": "Wisconsin"
+                         },
+                         {
+                         "@Key": "WV",
+                         "#text": "West Virginia"
+                         },
+                         {
+                         "@Key": "WY",
+                         "#text": "Wyoming"
+                         }
+                         ]
+            },
+            "Functional": {
+                "@OrderID": "6",
+                "Option": {
+                    "@OrderID": "1",
+                    "@Type": "CHECKBOX",
+                    "@Enabled": "false",
+                    "@Title": "I wish to purchase Rental Car Protector for USD 72.00."
+                }
+            }
+        }
+    }
+}

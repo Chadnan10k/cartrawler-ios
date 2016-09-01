@@ -1,0 +1,193 @@
+{
+    "Success": [],
+    "VehRetResRSCore": {
+        "VehReservation": {
+            "@Status": "Confirmed",
+            "Customer": {
+                "Primary": {
+                    "PersonName": {
+                        "GivenName": "Gyy",
+                        "Surname": "Jjj"
+                    },
+                    "Telephone": {
+                        "@PhoneNumber": "35355555555"
+                    },
+                    "Email": {
+                        "@EmailType": "2",
+                        "#text": "HHHH@BBBB.NJNN"
+                    },
+                    "Address": {
+                        "AddressLine": "Hhhhhh, Tttt, Trtt, US, United States of America",
+                        "CountryName": {
+                            "@Code": "US",
+                            "#text": "United States of America"
+                        }
+                    },
+                    "TPA_Extensions": {
+                        "DriverType": {
+                            "@Age": "33"
+                        }
+                    }
+                }
+            },
+            "VehSegmentCore": {
+                "ConfId": [{
+                           "@Type": "16",
+                           "@ID": "ES520691560",
+                           "@ID_Context": "RESID"
+                           }, {
+                           "@Type": "16",
+                           "@ID": "CT-Test1464791167621",
+                           "@ID_Context": "CARTRAWLER"
+                           }],
+                "PricedEquips": [],
+                "Vendor": {
+                    "@CompanyShortName": "GOLDCAR",
+                    "@Code": "298",
+                    "@CodeContext": "CARTRAWLER",
+                    "#text": "Goldcar"
+                },
+                "VehRentalCore": {
+                    "@PickUpDateTime": "2016-06-04T15:15:00",
+                    "@ReturnDateTime": "2016-06-06T15:15:00",
+                    "PickUpLocation": {
+                        "@CodeContext": "CARTRAWLER",
+                        "@LocationCode": "480",
+                        "@Name": "Mallorca - Airport"
+                    },
+                    "ReturnLocation": {
+                        "@CodeContext": "CARTRAWLER",
+                        "@LocationCode": "480",
+                        "@Name": "Mallorca - Airport"
+                    }
+                },
+                "Vehicle": {
+                    "@AirConditionInd": "true",
+                    "@TransmissionType": "Manual",
+                    "@FuelType": "Petrol",
+                    "@DriveType": "Unspecified",
+                    "@PassengerQuantity": "5",
+                    "@BaggageQuantity": "3",
+                    "@Code": "CLMR",
+                    "@CodeContext": "CARTRAWLER",
+                    "VehType": {
+                        "@VehicleCategory": "7",
+                        "@DoorCount": "5"
+                    },
+                    "VehClass": {
+                        "@Size": "4"
+                    },
+                    "VehMakeModel": {
+                        "@Name": "Volkswagen Golf or similar",
+                        "@Code": "CLMR"
+                    },
+                    "PictureURL": "https://cdn.cartrawler.com/otaimages/volkswagen/golf_nologo.jpg"
+                },
+                "TPA_Extensions": {
+                    "ClientID": {
+                        "@ID": "621369"
+                    },
+                    "ConfID": {
+                        "@Type": "14",
+                        "@ID": "CT-Test1464791167621"
+                    },
+                    "VendorPictureURL": "https://cdn.cartrawler.com/otaimages/vendor/goldcar-europa.jpg",
+                    "Insurance": {
+                        "@Upsell": "true",
+                        "RentalInfo": {
+                            "@Cost": "173.45",
+                            "@Currency": "EUR"
+                        }
+                    },
+                    "Reservation": {
+                        "@CreatedDate": "2016-06-01 15:26:06.527"
+                    },
+                    "Status": "Confirmed",
+                    "CancellationPolicy": "What is your cancellation policy for fully prepaid or part-paid bookings?\n\n1 - If you cancel 24 hours prior to your pick up, you will be refunded in full.\n2 - If you cancel less than 24 hours in advance, you'll receive a refund minus USD56 for fully prepaid bookings or if your online payment is less than USD 56, no refund will be made for your car hire booking. \n3 - If your booking is made less than 24 hours before pick up, the cancellation policy will automatically apply to your booking.\n4 - All cancellations should be made on our online portal and not with the car hire agent. Should you agree to cancel directly with the car hire agent on arrival, you must also inform us of this change to your booking. \n5 - Amending your booking or cancelling optional extras may not be possible less than 24 hours before pick up. \n\nIf you purchased our Damage Refund Insurance product and have since decided to cancel your car rental booking, the Damage Refund Insurance will be cancelled automatically. \nIf you wish to amend or rearrange your booking, the Damage Refund Insurance will initially be cancelled. We will, however, automatically create a new policy for your new booking. \nIn both cases you will receive an email to confirm the cancellation at the email address you have provided during the online booking process. \nPlease be aware that if you cancel your policy less than 24 hours before the start of your car hire agreement, no refund will be granted.\n\nWhat is a no-show?\nA 'no-show' occurs for the following reasons:\n1 - You didn't inform us about your cancellation prior to your pick up date.\n2 - You failed to pick up the car at the arranged time and date.\n3 - You failed to provide the documentation that's required to pick up the car.\n4 - You failed to provide a credit card in the main driver's name with enough available funds on it. \n\nIn the event of any of the above, no refunds will be made to you.\n\nThe car hire company reserves the right to refuse a car if you fail to arrive on time with all necessary documentation and a credit card with enough available funds for the car's security deposit. In such a case, unless the car hire has been cancelled at least 24 hours in advance, you will not be entitled to a refund.",
+                    "Reference": {
+                        "@Type": "16",
+                        "@ID": "480:298:23593",
+                        "@ID_Context": "CARTRAWLER"
+                    }
+                }
+            },
+            "VehSegmentInfo": {
+                "LocationDetails": [{
+                                    "@Code": "480",
+                                    "@Name": "Mallorca - Airport",
+                                    "@AtAirport": "1",
+                                    "@ExtendedLocationCode": "203112",
+                                    "@CodeContext": "Pickup Location",
+                                    "Address": {
+                                    "@Remark": "39.5490000,2.7320000",
+                                    "AddressLine": "Mallorca Airport , Mallorca, 07071, Palma de Mallorca",
+                                    "CountryName": {
+                                    "@Code": "ES"
+                                    }
+                                    },
+                                    "Telephone": {
+                                    "@PhoneNumber": "+34 965 23 31 81"
+                                    },
+                                    "AdditionalInfo": {
+                                    "VehRentLocInfos": {
+                                    "VehRentLocInfo": {
+                                    "@Type": "VLI_1.VLI.X"
+                                    }
+                                    },
+                                    "CounterLocation": {
+                                    "@Location": "VWF_1.VWF.X"
+                                    }
+                                    }
+                                    }, {
+                                    "@Code": "480",
+                                    "@Name": "Mallorca - Airport",
+                                    "@AtAirport": "1",
+                                    "@ExtendedLocationCode": "203112",
+                                    "@CodeContext": "Return Location",
+                                    "Address": {
+                                    "@Remark": "39.5490000,2.7320000",
+                                    "AddressLine": "Mallorca Airport , Mallorca, 07071, Palma de Mallorca",
+                                    "CountryName": {
+                                    "@Code": "ES"
+                                    }
+                                    },
+                                    "Telephone": {
+                                    "@PhoneNumber": "+34 965 23 31 81"
+                                    },
+                                    "AdditionalInfo": {
+                                    "VehRentLocInfos": {
+                                    "VehRentLocInfo": {
+                                    "@Type": "VLI_1.VLI.X"
+                                    }
+                                    },
+                                    "CounterLocation": {
+                                    "@Location": "VWF_1.VWF.X"
+                                    }
+                                    }
+                                    }],
+                "PaymentRules": [{
+                                 "@RuleType": "9",
+                                 "@CurrencyCode": "USD",
+                                 "@Amount": "-193.39"
+                                 }, {
+                                 "@RuleType": "10",
+                                 "@CurrencyCode": "USD",
+                                 "@Amount": "193.39"
+                                 }, {
+                                 "@RuleType": "1",
+                                 "@CurrencyCode": "EUR",
+                                 "@Amount": "0.00"
+                                 }],
+                "RentalPaymentAmount": {
+                    "PaymentCard": {
+                        "@CardType": "1",
+                        "@CardCode": "VI",
+                        "@MaskedCardNumber": "************1111",
+                        "@ExpireDate": "1222",
+                        "CardHolderName": "Tt"
+                    }
+                }
+            }
+        }
+    }
+}
