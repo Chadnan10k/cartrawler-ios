@@ -9,3 +9,4 @@ CartrawlerSDK.Framework - This framework contains a kit for preset UI and custom
 CartrawlerResources.Bundle - This bundle contains assets and resources for CartrawlerSDK.Framework 
 
 
+To build all products in the workspace select 'Build All Debug' from the target selection then clean & build
