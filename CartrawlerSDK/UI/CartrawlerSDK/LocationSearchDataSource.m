@@ -11,6 +11,7 @@
 #import "CTLabel.h"
 #import "CTSDKSettings.h"
 #import "LocationSearchTableViewCell.h"
+#import "GooglePlaceService.h"
 
 @interface LocationSearchDataSource()
 @property (nonatomic, strong) NSMutableArray <CTMatchedLocation *> *airportLocations;
@@ -40,33 +41,48 @@
     return self;
 }
 
-- (void)updateData:(NSString *)partialText completion:(void (^)(BOOL didSnucceed))completion
+- (void)updateData:(NSString *)partialText completion:(void (^)(BOOL didSucceed))completion
 {
+    
+    _airportLocations = [[NSMutableArray alloc] init];
+    _otherLocations = [[NSMutableArray alloc] init];
+    completion(YES);//clear the view of any current results
+    
     [self.cartrawlerAPI locationSearchWithPartialString:partialText
-                                       needsCoordinates:NO
-                                        completion:^(CTLocationSearch *response, CTErrorResponse *error) {
-                                            if (error == nil) {
-                                                dispatch_async(dispatch_get_main_queue(), ^{
-                                                    _airportLocations = [[NSMutableArray alloc] init];
-                                                    _otherLocations = [[NSMutableArray alloc] init];
-                                                    completion(YES);
+                                       needsCoordinates:self.enableGroundTransportLocations
+                                        completion:^(CTLocationSearch *response, CTErrorResponse *error)
+     {
+        if (error == nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
 
-                                                    for (CTMatchedLocation *location in response.matchedLocations) {
-                                                        if (location.isAtAirport) {
-                                                            [self.airportLocations addObject:location];
-                                                        } else {
-                                                            [self.otherLocations addObject:location];
-                                                        }
-                                                    }
-                                                    completion(YES);
-                                                });
-                                            } else {
-                                                NSLog(@"%@", error.errorMessage);
-                                                dispatch_async(dispatch_get_main_queue(), ^{
-                                                    completion(NO);
-                                                });
-                                            }
-                                        }];
+                for (CTMatchedLocation *location in response.matchedLocations) {
+                    if (location.isAtAirport) {
+                        [self.airportLocations addObject:location];
+                    } else {
+                        if (!self.enableGroundTransportLocations) {
+                            [self.otherLocations addObject:location];
+                        }
+                    }
+                }
+                completion(YES);
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(NO);
+            });
+        }
+    }];
+
+    if (self.enableGroundTransportLocations) {
+        [GooglePlaceService searchWithPartialString:partialText completion:^(BOOL success, NSArray *results) {
+            if (results) {
+                [self.otherLocations addObjectsFromArray:results];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(YES);
+                });
+            }
+        }];
+    }
 }
 
 #pragma mark UITableViewDataSource
@@ -117,7 +133,19 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30;
+    if (section == 0) {
+        if (self.airportLocations.count > 0) {
+            return 30;
+        } else {
+            return 0;
+        }
+    } else {
+        if (self.otherLocations.count > 0) {
+            return 30;
+        } else {
+            return 0;
+        }
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

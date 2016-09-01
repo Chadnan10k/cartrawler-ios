@@ -45,6 +45,10 @@
 		45233D331CF492C500B8E2B2 /* CTGroundBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 45233D311CF492C500B8E2B2 /* CTGroundBooking.m */; };
 		4542BFFC1CBE8C1F00EC17BF /* CTLocationSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4542BFFB1CBE8C1F00EC17BF /* CTLocationSearch.m */; };
 		4542C00C1CBEA0E100EC17BF /* CTMatchedLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4542C00B1CBEA0E100EC17BF /* CTMatchedLocation.m */; };
+		457CF8911D7884C800BC55E2 /* GTInclusion.h in Headers */ = {isa = PBXBuildFile; fileRef = 457CF88F1D7884C800BC55E2 /* GTInclusion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		457CF8921D7884C800BC55E2 /* GTInclusion.m in Sources */ = {isa = PBXBuildFile; fileRef = 457CF8901D7884C800BC55E2 /* GTInclusion.m */; };
+		457CF8951D78869600BC55E2 /* GTShuttle.h in Headers */ = {isa = PBXBuildFile; fileRef = 457CF8931D78869600BC55E2 /* GTShuttle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		457CF8961D78869600BC55E2 /* GTShuttle.m in Sources */ = {isa = PBXBuildFile; fileRef = 457CF8941D78869600BC55E2 /* GTShuttle.m */; };
 		459103F81CF736DB00D97F46 /* CTGroundCustomer.h in Headers */ = {isa = PBXBuildFile; fileRef = 459103F61CF736DB00D97F46 /* CTGroundCustomer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		459103F91CF736DB00D97F46 /* CTGroundCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 459103F71CF736DB00D97F46 /* CTGroundCustomer.m */; };
 		45916DCA1CBBDAEE00389B88 /* CartrawlerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 45916DC91CBBDAEE00389B88 /* CartrawlerAPI.m */; };
@@ -162,6 +166,10 @@
 		4542C00A1CBEA0E100EC17BF /* CTMatchedLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMatchedLocation.h; sourceTree = "<group>"; };
 		4542C00B1CBEA0E100EC17BF /* CTMatchedLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMatchedLocation.m; sourceTree = "<group>"; };
 		455EAEF11CF2F0A0006E7CBB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		457CF88F1D7884C800BC55E2 /* GTInclusion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTInclusion.h; sourceTree = "<group>"; };
+		457CF8901D7884C800BC55E2 /* GTInclusion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTInclusion.m; sourceTree = "<group>"; };
+		457CF8931D78869600BC55E2 /* GTShuttle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTShuttle.h; sourceTree = "<group>"; };
+		457CF8941D78869600BC55E2 /* GTShuttle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTShuttle.m; sourceTree = "<group>"; };
 		459103F61CF736DB00D97F46 /* CTGroundCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTGroundCustomer.h; sourceTree = "<group>"; };
 		459103F71CF736DB00D97F46 /* CTGroundCustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTGroundCustomer.m; sourceTree = "<group>"; };
 		45916DC41CBBDAEE00389B88 /* libCartrawlerAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCartrawlerAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -357,6 +365,10 @@
 				459103F71CF736DB00D97F46 /* CTGroundCustomer.m */,
 				45233D301CF492C500B8E2B2 /* CTGroundBooking.h */,
 				45233D311CF492C500B8E2B2 /* CTGroundBooking.m */,
+				457CF88F1D7884C800BC55E2 /* GTInclusion.h */,
+				457CF8901D7884C800BC55E2 /* GTInclusion.m */,
+				457CF8931D78869600BC55E2 /* GTShuttle.h */,
+				457CF8941D78869600BC55E2 /* GTShuttle.m */,
 			);
 			name = "Ground transport";
 			sourceTree = "<group>";
@@ -477,6 +489,8 @@
 				45E3F9C71CEDB9BC000D2219 /* CTVendorRating.h in Headers */,
 				45233D251CF44F0E00B8E2B2 /* CTGroundService.h in Headers */,
 				45C69A371D462BA30045136D /* InsuranceLink.h in Headers */,
+				457CF8911D7884C800BC55E2 /* GTInclusion.h in Headers */,
+				457CF8951D78869600BC55E2 /* GTShuttle.h in Headers */,
 				45AEF2651D6C493F00DA0894 /* CTVendorLocation.h in Headers */,
 				45FBACB91D67453900C75FC9 /* CTTermAndCondition.h in Headers */,
 				45AEF2601D6C418200DA0894 /* CTAvailabilityItem.h in Headers */,
@@ -640,6 +654,7 @@
 				45233D1A1CF35DD700B8E2B2 /* CTGroundLocation.m in Sources */,
 				45AEF2611D6C418200DA0894 /* CTAvailabilityItem.m in Sources */,
 				45F4E15F1CC0EDFC00D620D0 /* CTPaymentCard.m in Sources */,
+				457CF8961D78869600BC55E2 /* GTShuttle.m in Sources */,
 				45FCA0921CBFDB980079AA68 /* CTFee.m in Sources */,
 				45FCA08F1CBFDB980079AA68 /* CTVehicle.m in Sources */,
 				45F5426F1CDCE138006C099D /* NSDataUtils.m in Sources */,
@@ -649,6 +664,7 @@
 				459103F91CF736DB00D97F46 /* CTGroundCustomer.m in Sources */,
 				45233D331CF492C500B8E2B2 /* CTGroundBooking.m in Sources */,
 				45A2029C1CBCE9A000DCFF02 /* CTErrorResponse.m in Sources */,
+				457CF8921D7884C800BC55E2 /* GTInclusion.m in Sources */,
 				45FCA0931CBFDB980079AA68 /* CTVendor.m in Sources */,
 				4542BFFC1CBE8C1F00EC17BF /* CTLocationSearch.m in Sources */,
 				4542C00C1CBEA0E100EC17BF /* CTMatchedLocation.m in Sources */,

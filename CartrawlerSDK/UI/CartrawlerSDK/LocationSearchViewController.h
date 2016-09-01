@@ -17,4 +17,6 @@ typedef void (^SelectedLocationCompletion)(CTMatchedLocation *location);
 
 @property (nonatomic, strong) SelectedLocationCompletion selectedLocation;
 
+@property BOOL enableGroundTransportLocations;
+
 @end

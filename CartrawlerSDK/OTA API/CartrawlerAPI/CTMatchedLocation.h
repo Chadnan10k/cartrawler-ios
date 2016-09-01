@@ -50,22 +50,24 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Location latitude, if available
  */
-@property (nonatomic, nonnull, readonly) NSNumber *latitude;
+@property (nonatomic, nullable, readonly) NSNumber *latitude;
 /**
  *  Location longitude, if available
  */
-@property (nonatomic, nonnull, readonly) NSNumber *longitude;
+@property (nonatomic, nullable, readonly) NSNumber *longitude;
 /**
  *  Location distance, if available
  */
-@property (nonatomic, nonnull, readonly) NSNumber *distance;
+@property (nonatomic, nullable, readonly) NSNumber *distance;
 /**
  *  Distance unit, km or miles, if available
  */
-@property (nonatomic, nonnull, readonly) NSString *distanceUnit;
+@property (nonatomic, nullable, readonly) NSString *distanceUnit;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary  ;
-- (instancetype)initWithPartialStringDictionary:(NSDictionary *)dictionary  ;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithPartialStringDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithGooglePlacesDictionary:(NSDictionary *)dictionary;
+
 @end
 
 NS_ASSUME_NONNULL_END

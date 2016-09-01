@@ -14,23 +14,57 @@
 {
     self = [super init];
     
-    if ([dict[@"Service"][@"@DisabilityVehicleInd"] isEqualToString:@"true"]) {
-        _disabilityVehicle = YES;
+    //check if shuttle is available
+    
+    if (dict[@"Shuttle"]) {
+        
+        if ([dict[@"Shuttle"][@"Vehicle"][@"@DisabilityInd"] isEqualToString:@"true"]) {
+            _disabilityVehicle = YES;
+        } else {
+            _disabilityVehicle = NO;
+        }
+        
+        _maxPassengers = dict[@"Shuttle"][@"Vehicle"][@"VehicleSize"][@"@MaxBaggageCapacity"];
+        _maxBaggage = dict[@"Shuttle"][@"Vehicle"][@"VehicleSize"][@"@MaxPassengerCapacity"];
+        
+        //initialise the other half of the shuttle
+        
     } else {
-        _disabilityVehicle = NO;
+        
+        if ([dict[@"Service"][@"@DisabilityVehicleInd"] isEqualToString:@"true"]) {
+            _disabilityVehicle = YES;
+        } else {
+            _disabilityVehicle = NO;
+        }
+        
+        _maxPassengers = dict[@"Service"][@"@MaxPassengerCapacity"];
+        _maxBaggage = dict[@"Service"][@"@MaxBaggageCapacity"];
+        
     }
     
-    if ([dict[@"Service"][@"@MeetAndGreetInd"]isEqualToString:@"true"]) {
-        _meetAndGreet = YES;
-    } else {
-        _meetAndGreet = NO;
-    }
+//    if ([dict[@"Service"][@"ServiceLevel"] isEqualToString:@"NONE"]) {
+//        _serviceLevel = ServiceLevelNone;
+//    } else if ([dict[@"Service"][@"ServiceLevel"] isEqualToString:@"STANDARD"]) {
+//        _serviceLevel = ServiceLevelStandard;
+//    } else if ([dict[@"Service"][@"ServiceLevel"] isEqualToString:@"BUSINESS"]) {
+//        _serviceLevel = ServiceLevelBusiness;
+//    } else if ([dict[@"Service"][@"ServiceLevel"] isEqualToString:@"PREMIUM"]) {
+//        _serviceLevel = ServiceLevelPremium;
+//    } else if ([dict[@"Service"][@"ServiceLevel"] isEqualToString:@"STANDARD_CLASS"]) {
+//        _serviceLevel = ServiceLevelStandardClass;
+//    } else if ([dict[@"Service"][@"ServiceLevel"] isEqualToString:@"FIRST_CLASS"]) {
+//        _serviceLevel = ServiceLevelFirstClass;
+//    }
     
-    _maxPassengers = dict[@"Service"][@"@MaximumPassengers"];
-    _maxBaggage = dict[@"Service"][@"@MaximumBaggage"];
-    _serviceLevel = dict[@"Service"][@"ServiceLevel"];
-    _vehicleType = dict[@"Service"][@"VehicleType"];
-    _vehicleSize = dict[@"Service"][@"VehicleSize"];
+    //get inclusions
+    
+    NSLog(@"%@", dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Inclusions"]);
+    
+    NSMutableArray *inclusionArr = [[NSMutableArray alloc] init];
+    for (NSString *str in dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Inclusions"]) {
+        GTInclusion *inclusion = [[GTInclusion alloc] initFromInclusionString:str];
+        [inclusionArr addObject:inclusion];
+    }
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     NSNumber *totalCharge = [numberFormatter numberFromString:dict[@"TotalCharge"][@"@RateTotalAmount"]];
@@ -46,6 +80,8 @@
     NSURL *vehImgUrl = [[NSURL alloc] initWithString:dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Vehicle"][@"PictureURL"]];
     
     _vehicleImage = vehImgUrl;
+    
+    //TODO: Locations
     return self;
 }
 

@@ -20,4 +20,6 @@ typedef void (^SelectedLocationCompletion)(CTMatchedLocation *location);
 
 - (void)updateData:(NSString *)partialText completion:(void (^)(BOOL didSucceed))completion;
 
+@property BOOL enableGroundTransportLocations;
+
 @end

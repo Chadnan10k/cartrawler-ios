@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GTShuttle.h"
+#import "GTInclusion.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,14 +17,32 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface CTGroundService : NSObject
 
-/**
- *  Bool value if vehicle has support for disability
- */
+typedef NS_ENUM(NSUInteger, ServiceLevel) {
+
+    ServiceLevelNone = 0,
+
+    ServiceLevelEconomy,
+
+    ServiceLevelStandard,
+
+    ServiceLevelBusiness,
+
+    ServiceLevelLuxury,
+
+    ServiceLevelPremium,
+    
+    ServiceLevelStandardClass,
+    
+    ServiceLevelFirstClass
+
+};
+
+//Can be null
+@property (nonatomic, nullable, readonly) GTShuttle *shuttle;
+
+@property (nonatomic, nonnull, readonly) NSArray <GTInclusion*> *inclusions;
+
 @property (nonatomic, readonly) BOOL disabilityVehicle;
-/**
- *  Bool value if meet and greet is available
- */
-@property (nonatomic, readonly) BOOL meetAndGreet;
 /**
  *  Picture url for the vehicle
  */
@@ -36,9 +56,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, nonnull, readonly) NSNumber *maxBaggage;
 /**
- *  The service level eg. Regular
+ *  The service level eg. First class, economy class
  */
-@property (nonatomic, nonnull, readonly) NSString *serviceLevel;
+@property (nonatomic, readonly) ServiceLevel serviceLevel;
 /**
  *  The vehicle type
  */

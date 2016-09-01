@@ -90,4 +90,22 @@
     return self;
 }
 
+- (instancetype)initWithGooglePlacesDictionary:(NSDictionary *)dictionary
+{
+    self = [super init];
+    
+    for (NSString *type in dictionary[@"types"]) {
+        if ([type isEqualToString:@"airport"]) {
+            _isAtAirport = YES;
+        }
+    }
+    
+    _name = dictionary[@"formatted_address"];
+    _addressLine = dictionary[@"formatted_address"];
+    _latitude = dictionary[@"geometry"][@"location"][@"lat"];
+    _longitude = dictionary[@"geometry"][@"location"][@"lng"];
+
+    return self;
+}
+
 @end

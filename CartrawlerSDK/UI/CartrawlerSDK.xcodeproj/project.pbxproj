@@ -131,6 +131,9 @@
 		45645DFB1D33E8240075A3D2 /* PaymentSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DF91D33E8240075A3D2 /* PaymentSummaryTableViewCell.m */; };
 		456979281D2C03E7006A321E /* TabButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 456979261D2C03E7006A321E /* TabButton.h */; };
 		456979291D2C03E7006A321E /* TabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 456979271D2C03E7006A321E /* TabButton.m */; };
+		457CF8891D78425900BC55E2 /* GroundTransport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45EE26DA1D37924000A1FB51 /* GroundTransport.storyboard */; };
+		457CF88D1D785ADC00BC55E2 /* GooglePlaceService.h in Headers */ = {isa = PBXBuildFile; fileRef = 457CF88B1D785ADC00BC55E2 /* GooglePlaceService.h */; };
+		457CF88E1D785ADC00BC55E2 /* GooglePlaceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 457CF88C1D785ADC00BC55E2 /* GooglePlaceService.m */; };
 		45819FA51D3500E8001AE0F5 /* NSNumberUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45819FA31D3500E8001AE0F5 /* NSNumberUtils.h */; };
 		45819FA61D3500E8001AE0F5 /* NSNumberUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45819FA41D3500E8001AE0F5 /* NSNumberUtils.m */; };
 		45819FAA1D35036A001AE0F5 /* BookingSummaryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45819FA81D35036A001AE0F5 /* BookingSummaryViewController.h */; };
@@ -357,6 +360,8 @@
 		45645DF91D33E8240075A3D2 /* PaymentSummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSummaryTableViewCell.m; sourceTree = "<group>"; };
 		456979261D2C03E7006A321E /* TabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabButton.h; sourceTree = "<group>"; };
 		456979271D2C03E7006A321E /* TabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabButton.m; sourceTree = "<group>"; };
+		457CF88B1D785ADC00BC55E2 /* GooglePlaceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooglePlaceService.h; sourceTree = "<group>"; };
+		457CF88C1D785ADC00BC55E2 /* GooglePlaceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooglePlaceService.m; sourceTree = "<group>"; };
 		45819FA31D3500E8001AE0F5 /* NSNumberUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberUtils.h; sourceTree = "<group>"; };
 		45819FA41D3500E8001AE0F5 /* NSNumberUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberUtils.m; sourceTree = "<group>"; };
 		45819FA81D35036A001AE0F5 /* BookingSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingSummaryViewController.h; sourceTree = "<group>"; };
@@ -681,6 +686,15 @@
 			name = "Summary (Step Five)";
 			sourceTree = "<group>";
 		};
+		457CF88A1D785AC400BC55E2 /* Google Places */ = {
+			isa = PBXGroup;
+			children = (
+				457CF88B1D785ADC00BC55E2 /* GooglePlaceService.h */,
+				457CF88C1D785ADC00BC55E2 /* GooglePlaceService.m */,
+			);
+			name = "Google Places";
+			sourceTree = "<group>";
+		};
 		45819FA71D350353001AE0F5 /* Booking Summary */ = {
 			isa = PBXGroup;
 			children = (
@@ -817,6 +831,7 @@
 		45E942991D1300F900ACF604 /* Preset Views */ = {
 			isa = PBXGroup;
 			children = (
+				45E942B91D1301F800ACF604 /* Location Search */,
 				45F4736B1D369E1100DF548B /* Booking Completion */,
 				45E942C01D13021300ACF604 /* DateTime Picker */,
 				45E942A21D13015900ACF604 /* Calender */,
@@ -835,7 +850,6 @@
 		45E9429A1D13011B00ACF604 /* Search (Step One) */ = {
 			isa = PBXGroup;
 			children = (
-				45E942B91D1301F800ACF604 /* Location Search */,
 				450F9D371D3CE08E002C6F6B /* SettingsSelectionViewController.h */,
 				450F9D381D3CE08E002C6F6B /* SettingsSelectionViewController.m */,
 				450F9D471D3D00C8002C6F6B /* SettingsViewController.h */,
@@ -1024,6 +1038,7 @@
 		45EE26DC1D37A77900A1FB51 /* Ground Transport */ = {
 			isa = PBXGroup;
 			children = (
+				457CF88A1D785AC400BC55E2 /* Google Places */,
 				4509B4771D37ED3200259255 /* Step Two */,
 				4509B4751D37ED2000259255 /* Step One */,
 			);
@@ -1080,6 +1095,7 @@
 				4550618B1D59CD91004EAC43 /* LocalisedStrings.h in Headers */,
 				45CFC7DD1D2CF822006E6F83 /* ExtrasViewController.h in Headers */,
 				45C488C71D4793860044612C /* CTViewManager.h in Headers */,
+				457CF88D1D785ADC00BC55E2 /* GooglePlaceService.h in Headers */,
 				45EC250F1D49132B00A3C09D /* CTViewController.h in Headers */,
 				453EE5201D53381300D92E59 /* CTSearch.h in Headers */,
 				450F9D351D3929E5002C6F6B /* SupplierRatingsViewController.h in Headers */,
@@ -1253,6 +1269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				457CF8891D78425900BC55E2 /* GroundTransport.storyboard in Resources */,
 				45C48D521D52542B005C9377 /* samplePayment.json in Resources */,
 				45F473611D36640F00DF548B /* Payment.storyboard in Resources */,
 				45F4735F1D36476900DF548B /* StepSix.storyboard in Resources */,
@@ -1373,6 +1390,7 @@
 				45E942AF1D1301C600ACF604 /* CTCalendarViewController.m in Sources */,
 				45E942DB1D1302CA00ACF604 /* CTLabel.m in Sources */,
 				45E942D51D1302A200ACF604 /* CTPlaceholderView.m in Sources */,
+				457CF88E1D785ADC00BC55E2 /* GooglePlaceService.m in Sources */,
 				45E942B81D1301EE00ACF604 /* VehicleSelectionViewController.m in Sources */,
 				45E942B41D1301C600ACF604 /* CTMiddleDateCell.m in Sources */,
 				45E942C31D13022100ACF604 /* CTTimePickerView.m in Sources */,

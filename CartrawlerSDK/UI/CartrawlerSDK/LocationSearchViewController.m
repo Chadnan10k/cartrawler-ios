@@ -36,6 +36,7 @@
     self.headerView.backgroundColor = [CTAppearance instance].locationSelectionBarColor;
     
     _dataSource = [[LocationSearchDataSource alloc] init];
+    self.dataSource.enableGroundTransportLocations = self.enableGroundTransportLocations;
     
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self.dataSource;

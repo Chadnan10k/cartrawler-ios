@@ -94,6 +94,8 @@
         NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:bundle];
         LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
+        locSearchVC.enableGroundTransportLocations = YES;
+        
         [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
         
         locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
@@ -126,6 +128,7 @@
         NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:bundle];
         LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
+        locSearchVC.enableGroundTransportLocations = YES;
         [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
         
         locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
@@ -278,7 +281,6 @@
     CartrawlerAPI *api = [[CartrawlerAPI alloc] initWithClientKey:@"592248"
                                                        language:[CTSDKSettings instance].languageCode
                                                           debug:[CTSDKSettings instance].isDebug];
-    //[d enableLogging:YES];
     
     CTGroundLocation *pickupLoc = [[CTGroundLocation alloc] initWithLatitude:self.pickupLat
                                                                    longitude:self.pickupLong

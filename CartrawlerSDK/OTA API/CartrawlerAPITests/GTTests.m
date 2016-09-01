@@ -103,5 +103,20 @@
     }];
 }
 
+- (void)testGroundAvailJson
+{
+    CTGroundAvailability *avail = [[CTGroundAvailability alloc] initWithDictionary:[GTTests dictionaryWithContentsOfJSONString:@"GroundAvailRSJSON.json"]];
+    NSLog(@"%@", avail);
+}
+
++(NSDictionary*)dictionaryWithContentsOfJSONString:(NSString*)fileName{
+    NSString *filePath = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:fileName];
+    NSData* data = [NSData dataWithContentsOfFile:filePath];
+    __autoreleasing NSError* error = nil;
+    id result = [NSJSONSerialization JSONObjectWithData:data
+                                                options:kNilOptions error:&error];
+    if (error != nil) return nil;
+    return result;
+}
 
 @end
