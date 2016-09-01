@@ -1,0 +1,8622 @@
+{
+"Success": [],
+"VehAvailRSCore": {
+"VehRentalCore": {
+"@PickUpDateTime": "2016-06-04T13:30:00Z",
+"@ReturnDateTime": "2016-06-06T13:30:00Z",
+"PickUpLocation": {
+"@CodeContext": "CARTRAWLER",
+"@LocationCode": "480",
+"@Name": "Mallorca - Airport"
+},
+"ReturnLocation": {
+"@CodeContext": "CARTRAWLER",
+"@LocationCode": "480",
+"@Name": "Mallorca - Airport"
+}
+},
+"VehVendorAvails": [{
+"Vendor": {
+"@Code": "3",
+"@CodeContext": "CARTRAWLER"
+},
+"VehAvails": [{
+"VehAvailCore": {
+"@Status": "OnRequest",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "4",
+"@BaggageQuantity": "1",
+"@Code": "NSAV",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "13",
+"@DoorCount": "2"
+},
+"VehClass": {
+"@Size": "10"
+},
+"VehMakeModel": {
+"@Name": "Fiat 500 Abarth",
+"@Code": "NSAV"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/fiat/500_abarth_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "0"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "192.60",
+"@EstimatedTotalAmount": "192.60",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "13.98",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "19.98",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "19.98",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "32.98",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "4",
+"Description": "Ski rack"
+},
+"Charge": {
+"@Amount": "48.80",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "44.58",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "192.60",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "513831012",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "e4596943-ad6f-48bf-947f-e5269483e1b5.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLFULL",
+"@Description": "Fuel: Pick up and return full."
+},
+"Config": {
+"@OrderBy": "36",
+"@Insurance": "true",
+"@Duration": "2",
+"@Guaranteed": "1",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "36"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "false",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "834.18",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "OnRequest",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "5",
+"@Code": "PDAR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "4"
+},
+"VehClass": {
+"@Size": "8"
+},
+"VehMakeModel": {
+"@Name": "Audi A5",
+"@Code": "PDAR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/audi/a5_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "0"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "420.22",
+"@EstimatedTotalAmount": "420.22",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "13.98",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "19.98",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "19.98",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "32.98",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "4",
+"Description": "Ski rack"
+},
+"Charge": {
+"@Amount": "48.80",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "44.58",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "420.22",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1385551953",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "2d7c7f91-ed9d-49c8-87cb-4c5dc8d6ee23.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLFULL",
+"@Description": "Fuel: Pick up and return full."
+},
+"Config": {
+"@OrderBy": "41",
+"@Insurance": "true",
+"@Duration": "2",
+"@Guaranteed": "1",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "41"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "false",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "900.92",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "OnRequest",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "4",
+"@Code": "FCAR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "4"
+},
+"VehClass": {
+"@Size": "8"
+},
+"VehMakeModel": {
+"@Name": "Mercedes C Class",
+"@Code": "FCAR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/mercedes_benz/c_class_saloon_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "0"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "355.56",
+"@EstimatedTotalAmount": "355.56",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "13.98",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "19.98",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "19.98",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "32.98",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "4",
+"Description": "Ski rack"
+},
+"Charge": {
+"@Amount": "48.80",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "44.58",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "355.56",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1690752917",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "3b2112d2-6106-47d7-8ed7-0531883124ec.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLFULL",
+"@Description": "Fuel: Pick up and return full."
+},
+"Config": {
+"@OrderBy": "40",
+"@Insurance": "true",
+"@Duration": "2",
+"@Limited": "1",
+"@Guaranteed": "1",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "40"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "false",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "900.92",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}],
+"Info": {
+"LocationDetails": {
+"@Code": "480",
+"@Name": "Mallorca - Airport",
+"@AtAirport": "1",
+"Address": {
+"@Remark": "39.5490000,2.7320000",
+"AddressLine": "SON SAN JUAN AEROPUERTO MOSTRADOR TERMINAL A, MALLORCA, 07014",
+"CountryName": {
+"@Code": "ES"
+}
+},
+"Telephone": {
+"@PhoneNumber": "34902105055"
+},
+"AdditionalInfo": {
+"VehRentLocInfos": {
+"VehRentLocInfo": {
+"@Type": "VLI_5.VLI.X"
+}
+},
+"CounterLocation": {
+"@Location": "VWF_5.VWF.X"
+}
+}
+},
+"TPA_Extensions": {
+"VendorPruningCategory": {
+"@Key": "4",
+"@Description": "CORPORATE"
+},
+"CustomerReviews": {
+"@total": "6",
+"@overall": "4.59",
+"@agent": "84",
+"@location": "275324",
+"@name": "EUROPCAR Corporate",
+"@overall_review": "91",
+"@car_review": "96",
+"@desk_review": "93",
+"@dropoff_review": "90",
+"@price_review": "84",
+"@pickup_review": "93",
+"@wait_time": "1",
+"@ave_wait_mins": "13",
+"@total_agent": "3614"
+},
+"Ranking": {
+"@index": "1000"
+}
+}
+}
+}, {
+"Vendor": {
+"@Code": "5",
+"@CodeContext": "CARTRAWLER"
+},
+"VehAvails": [{
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "4",
+"@Code": "CMMV",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "19",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "45"
+},
+"VehMakeModel": {
+"@Name": "Citroen Berlingo or similar",
+"@Code": "CMMV"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/citreon/berlingo_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "9045"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "45.91",
+"@EstimatedTotalAmount": "45.91",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "10.34",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "35.57",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "153892100",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "92fb471a-12e9-4e05-931c-42a848272404.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "8",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "8"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1200.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "32"
+},
+"Charge": {
+"@Description": "Personal accident insurance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Diesel",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "5",
+"@Code": "CWMD",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "8",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "44"
+},
+"VehMakeModel": {
+"@Name": "Ford Focus Estate or similar",
+"@Code": "CWMD"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/ford/focus_sw_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "2953"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "52.31",
+"@EstimatedTotalAmount": "52.31",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "11.17",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "41.14",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "843180253",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "5ff0affc-8de1-40c2-a06d-193c77c76d47.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "9",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "9"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1200.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "32"
+},
+"Charge": {
+"@Description": "Personal accident insurance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "3",
+"@Code": "CDMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "4"
+},
+"VehMakeModel": {
+"@Name": "Volkswagen Golf or similar",
+"@Code": "CDMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/volkswagen/golf_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "4833"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "30.14",
+"@EstimatedTotalAmount": "30.14",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "8.28",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "21.86",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "245693117",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "0978b60e-d0f9-431c-a291-b85bddde5546.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "4",
+"@Insurance": "true",
+"@Duration": "2",
+"@BestPrice": "1",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "4"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "950.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "32"
+},
+"Charge": {
+"@Description": "Personal accident insurance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Diesel",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "2",
+"@Code": "EDMD",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "3"
+},
+"VehMakeModel": {
+"@Name": "Ford Fiesta or similar",
+"@Code": "EDMD"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/ford/fiesta_5dr_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "21301"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "37.56",
+"@EstimatedTotalAmount": "37.56",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "11.42",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "26.14",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1715561770",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "3b4f43f7-2a43-487e-9715-cdd5761cd921.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "6",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "6"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "950.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "32"
+},
+"Charge": {
+"@Description": "Personal accident insurance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Diesel",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "5",
+"@Code": "CMMD",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "19",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "45"
+},
+"VehMakeModel": {
+"@Name": "Ford C-Max or similar",
+"@Code": "CMMD"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/ford/c_max_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "51236"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "54.78",
+"@EstimatedTotalAmount": "54.78",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "11.49",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "43.29",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1478105620",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "cc1b4ba4-be32-4313-ae42-13b4b99d4641.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "12",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "12"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1200.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "32"
+},
+"Charge": {
+"@Description": "Personal accident insurance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "7",
+"@BaggageQuantity": "1",
+"@Code": "IVAR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "2",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "46"
+},
+"VehMakeModel": {
+"@Name": "Volkswagen Touran or similar",
+"@Code": "IVAR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/volkswagen/touran_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "4081"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "93.23",
+"@EstimatedTotalAmount": "93.23",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "19.94",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "73.29",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1819789323",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "4162ee0e-8376-4893-a301-d87cbb9b4168.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "25",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "25"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1200.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "32"
+},
+"Charge": {
+"@Description": "Personal accident insurance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Diesel",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "3",
+"@Code": "CDMD",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "4"
+},
+"VehMakeModel": {
+"@Name": "Volkswagen Golf or similar",
+"@Code": "CDMD"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/volkswagen/golf_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "1677"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "36.54",
+"@EstimatedTotalAmount": "36.54",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "9.11",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "27.43",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1180641480",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "8c06a6da-9d2e-40f3-8374-234dc8a12fd5.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "5",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "5"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "950.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "32"
+},
+"Charge": {
+"@Description": "Personal accident insurance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "2",
+"@Code": "EDMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "3"
+},
+"VehMakeModel": {
+"@Name": "Volkswagen Polo or similar",
+"@Code": "EDMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/volkswagen/polo_5dr_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "2665"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "27.71",
+"@EstimatedTotalAmount": "27.71",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "10.14",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "17.57",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "183569127",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "d98952dc-1a4b-47d0-a30f-c1896f50b356.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "3",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "3"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "950.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "32"
+},
+"Charge": {
+"@Description": "Personal accident insurance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "2",
+"@Code": "ECMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "3"
+},
+"VehClass": {
+"@Size": "3"
+},
+"VehMakeModel": {
+"@Name": "Opel Corsa or similar",
+"@Code": "ECMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/opel/corsa_3dr_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "2305"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "27.21",
+"@EstimatedTotalAmount": "27.21",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "10.07",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "17.14",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "813503226",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "d1990218-bca1-4797-b694-979fdcc2d0da.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "2",
+"@Insurance": "true",
+"@Duration": "2",
+"@BestPrice": "1",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "2"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "950.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "32"
+},
+"Charge": {
+"@Description": "Personal accident insurance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "5",
+"@Code": "CWMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "8",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "44"
+},
+"VehMakeModel": {
+"@Name": "Ford Focus Estate or similar",
+"@Code": "CWMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/ford/focus_sw_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "1469"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "40.91",
+"@EstimatedTotalAmount": "40.91",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "5.34",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "35.57",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1946439012",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "0669ec71-864c-4e24-a89b-a534351a4f4e.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "7",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "7"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1200.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "32"
+},
+"Charge": {
+"@Description": "Personal accident insurance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Diesel",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "7",
+"@BaggageQuantity": "1",
+"@Code": "FVMD",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "2",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "46"
+},
+"VehMakeModel": {
+"@Name": "Ford Galaxy or similar",
+"@Code": "FVMD"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/ford/galaxy_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "4089"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "70.48",
+"@EstimatedTotalAmount": "70.48",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "9.19",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "61.29",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "123108757",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "d4918177-7ba3-4997-9101-d1a7d4164330.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "18",
+"@Insurance": "true",
+"@Duration": "2",
+"@Limited": "1",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "18"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1500.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "32"
+},
+"Charge": {
+"@Description": "Personal accident insurance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "9",
+"@BaggageQuantity": "5",
+"@Code": "SVMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "13",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "47"
+},
+"VehMakeModel": {
+"@Name": "Mercedes Vito Traveliner or similar",
+"@Code": "SVMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/mercedes_benz/vito_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "4285"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "172.50",
+"@EstimatedTotalAmount": "172.50",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "22.50",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "150.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1120181110",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "799c509f-52ec-497b-91b1-2450c770f852.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "35",
+"@Insurance": "true",
+"@Duration": "2",
+"@Limited": "1",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "35"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1500.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "32"
+},
+"Charge": {
+"@Description": "Personal accident insurance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "7",
+"@BaggageQuantity": "1",
+"@Code": "IVMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "2",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "46"
+},
+"VehMakeModel": {
+"@Name": "Volkswagen Touran or similar",
+"@Code": "IVMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/volkswagen/touran_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "5805"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "69.40",
+"@EstimatedTotalAmount": "69.40",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "14.54",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "54.86",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1494138734",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "7376a310-7ec3-443c-bc03-d986653bc313.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "14",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "14"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1200.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "32"
+},
+"Charge": {
+"@Description": "Personal accident insurance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "4",
+"@BaggageQuantity": "1",
+"@Code": "MCMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "3"
+},
+"VehClass": {
+"@Size": "1"
+},
+"VehMakeModel": {
+"@Name": "Peugeot 107 or similar",
+"@Code": "MCMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/peugeot/107_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "25217"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "19.22",
+"@EstimatedTotalAmount": "19.22",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "2.51",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "16.71",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1274258512",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "7b0bf336-b801-4edb-85d3-b33e91bdc6d0.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "1",
+"@Insurance": "true",
+"@Duration": "2",
+"@BestPrice": "1",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "1"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "950.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "32"
+},
+"Charge": {
+"@Description": "Personal accident insurance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}],
+"Info": {
+"LocationDetails": {
+"@Code": "480",
+"@Name": "Mallorca - Airport",
+"@AtAirport": "1",
+"Address": {
+"@Remark": "39.5490000,2.7320000",
+"AddressLine": "Pol. Ind. Son Oms, Carrer son Fangós, Can Pastilla, Palma de Mallorca, 07610",
+"CountryName": {
+"@Code": "ES"
+}
+},
+"Telephone": {
+"@PhoneNumber": "+34 971494160"
+},
+"AdditionalInfo": {
+"VehRentLocInfos": {
+"VehRentLocInfo": {
+"@Type": "VLI_2.VLI.X"
+}
+},
+"CounterLocation": {
+"@Location": "VWF_2.VWF.X"
+}
+}
+},
+"TPA_Extensions": {
+"VendorPruningCategory": {
+"@Key": "2",
+"@Description": "LOW"
+},
+"CustomerReviews": {
+"@total": "74",
+"@overall": "3.61",
+"@agent": "479",
+"@location": "279904",
+"@name": "CENTAURO",
+"@overall_review": "72",
+"@car_review": "69",
+"@desk_review": "71",
+"@dropoff_review": "72",
+"@price_review": "74",
+"@pickup_review": "73",
+"@wait_time": "1",
+"@ave_wait_mins": "15",
+"@total_agent": "4178"
+},
+"Ranking": {
+"@index": "1000"
+}
+}
+}
+}, {
+"Vendor": {
+"@Code": "12",
+"@CodeContext": "CARTRAWLER"
+},
+"VehAvails": [{
+"VehAvailCore": {
+"@Status": "OnRequest",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Electric",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "2",
+"@Code": "CDAE",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "4"
+},
+"VehMakeModel": {
+"@Name": "Nissan Leaf Electric or similar",
+"@Code": "CDAE"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/nissan/leaf_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "50497"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "2000",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Limited Mileage:Max kilometers included per rental: 2,000",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.60",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "134.75",
+"@EstimatedTotalAmount": "134.75",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "18.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "134.75",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1702267312",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "071204e0-c326-4c49-b39b-11a012c04f06.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLFULL",
+"@Description": "Fuel: Pick up and return full."
+},
+"Config": {
+"@OrderBy": "22",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "22"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"SpecialOffers": {
+"Offer": {
+"@Type": "electric_car",
+"@ShortText": "Electric car - no fuel or congestion charges with this car",
+"@UIToken": "electric_car",
+"#text": "This is an electric/hybrid car, that allows you to reduce fuel cost or congestion charges."
+}
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "5"
+},
+"Charge": {
+"@Description": "Complete cover package",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "17"
+},
+"Charge": {
+"@Description": "Glass/Tyre waiver",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}],
+"Info": {
+"LocationDetails": {
+"@Code": "480",
+"@Name": "Mallorca - Airport",
+"@AtAirport": "1",
+"Address": {
+"@Remark": "39.5490000,2.7320000",
+"AddressLine": "C/ Son Fangós, s/n, Aeropuerto – Polígono Son Oms, 07610, Mallorca",
+"CountryName": {
+"@Code": "ES"
+}
+},
+"Telephone": {
+"@PhoneNumber": "+34 902 36 06 36"
+},
+"AdditionalInfo": {
+"VehRentLocInfos": {
+"VehRentLocInfo": {
+"@Type": "VLI_2.VLI.X"
+}
+},
+"CounterLocation": {
+"@Location": "VWF_2.VWF.X"
+}
+}
+},
+"TPA_Extensions": {
+"VendorPruningCategory": {
+"@Key": "2",
+"@Description": "LOW"
+},
+"CustomerReviews": {
+"@total": "12",
+"@overall": "2.97",
+"@agent": "2323",
+"@location": "420201",
+"@name": "OK RENT A CAR",
+"@overall_review": "59",
+"@car_review": "49",
+"@desk_review": "60",
+"@dropoff_review": "61",
+"@price_review": "70",
+"@pickup_review": "54",
+"@wait_time": "2",
+"@ave_wait_mins": "33",
+"@total_agent": "2379"
+},
+"Ranking": {
+"@index": "1000"
+}
+}
+}
+}, {
+"Vendor": {
+"@Code": "14",
+"@CodeContext": "CARTRAWLER"
+},
+"VehAvails": [{
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "4",
+"@BaggageQuantity": "1",
+"@Code": "MTAR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "4",
+"@DoorCount": "2"
+},
+"VehClass": {
+"@Size": "43"
+},
+"VehMakeModel": {
+"@Name": "Fiat 500 Convertible or similar",
+"@Code": "MTAR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/fiat/500_convertible_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "52697"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "1500",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Limited Mileage:Max kilometers included per rental: 1,500",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.30",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "125.63",
+"@EstimatedTotalAmount": "125.63",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "125.63",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1741136484",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "3e32fced-4afb-4626-b26b-805aecf986be.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "31",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "31"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "750.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "3",
+"@Code": "FDAR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "4"
+},
+"VehClass": {
+"@Size": "8"
+},
+"VehMakeModel": {
+"@Name": "BMW 3 Series or similar",
+"@Code": "FDAR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/bmw/3_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "3189"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "1500",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Limited Mileage:Max kilometers included per rental: 1,500",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.30",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "159.46",
+"@EstimatedTotalAmount": "159.46",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "159.46",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "366651243",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "718e8267-d549-4aac-b000-33446245e9c0.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "34",
+"@Insurance": "true",
+"@Duration": "2",
+"@Limited": "1",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "34"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1250.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "OnRequest",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Diesel",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "3",
+"@BaggageQuantity": "0",
+"@Code": "QKMD",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "23",
+"@DoorCount": "4"
+},
+"VehClass": {
+"@Size": "15"
+},
+"VehMakeModel": {
+"@Name": "Renault Master Cargo Van (10m3) or similar",
+"@Code": "QKMD"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/renault/master_new_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "59861"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "1500",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Limited Mileage:Max kilometers included per rental: 1,500",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.30",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "111.14",
+"@EstimatedTotalAmount": "111.14",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "111.14",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1934171347",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "d37392e0-505b-4a64-a901-7af484f69efc.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "29",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "29"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "750.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "3",
+"@Code": "IFMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "3",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "48"
+},
+"VehMakeModel": {
+"@Name": "Nissan Qashqai",
+"@Code": "IFMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/nissan/qashqai_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "0"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "1500",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Limited Mileage:Max kilometers included per rental: 1,500",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.30",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "86.99",
+"@EstimatedTotalAmount": "86.99",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "86.99",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1009229213",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "e6d4be17-9211-40f8-9793-dc343b4ec127.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "26",
+"@Insurance": "true",
+"@Duration": "2",
+"@Limited": "1",
+"@Guaranteed": "1",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "26"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "750.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "4",
+"@Code": "WGAR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "22",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "48"
+},
+"VehMakeModel": {
+"@Name": "Range Rover Sport or similar",
+"@Code": "WGAR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/range_rover/sport_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "50209"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "1500",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Limited Mileage:Max kilometers included per rental: 1,500",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.30",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "628.15",
+"@EstimatedTotalAmount": "628.15",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "628.15",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1732482473",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "ecd4562e-29b5-4b09-816a-5a3c86def968.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "42",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "42"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "3500.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Unspecified",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "3",
+"@Code": "WFMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "3",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "48"
+},
+"VehMakeModel": {
+"@Name": "Mercedes ML or similar",
+"@Code": "WFMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/mercedes_benz/ml_nologo.jpeg",
+"VehIdentity": {
+"@VehicleAssetNumber": "56529"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "1500",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Limited Mileage:Max kilometers included per rental: 1,500",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.30",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "246.42",
+"@EstimatedTotalAmount": "246.42",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "246.42",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1178742045",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "0c0d2a69-3472-4689-b055-ec7cdc898368.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "37",
+"@Insurance": "true",
+"@Duration": "2",
+"@Limited": "1",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "37"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "2500.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "3",
+"@Code": "IFAR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "3",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "48"
+},
+"VehMakeModel": {
+"@Name": "Toyota Rav4 or similar",
+"@Code": "IFAR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/toyota/rav_4_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "5485"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "1500",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Limited Mileage:Max kilometers included per rental: 1,500",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.30",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "270.60",
+"@EstimatedTotalAmount": "270.60",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "270.60",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "548473927",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "1c0bd49a-3d70-424a-8030-694bfa0a319f.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "38",
+"@Insurance": "true",
+"@Duration": "2",
+"@Limited": "1",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "38"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "2500.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "4",
+"@Code": "IDAR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "4"
+},
+"VehClass": {
+"@Size": "6"
+},
+"VehMakeModel": {
+"@Name": "Toyota Avensis or similar",
+"@Code": "IDAR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/toyota/avensis_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "5037"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "1500",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Limited Mileage:Max kilometers included per rental: 1,500",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.30",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "120.80",
+"@EstimatedTotalAmount": "120.80",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "120.80",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1161829695",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "32b56ad5-5361-4c7f-94d6-31d64d34906f.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "30",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "30"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "900.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "OnRequest",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Unspecified",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "2",
+"@BaggageQuantity": "0",
+"@Code": "CKMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "23",
+"@DoorCount": "4"
+},
+"VehClass": {
+"@Size": "15"
+},
+"VehMakeModel": {
+"@Name": "Peugeot Partner or similar",
+"@Code": "CKMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/peugeot/partner_cargo_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "59017"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "1500",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Limited Mileage:Max kilometers included per rental: 1,500",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.30",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "57.98",
+"@EstimatedTotalAmount": "57.98",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "57.98",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "2119926727",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "2181010a-e07f-465c-81d7-5c998cc1a3da.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "13",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "13"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "900.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "OnRequest",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Electric",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "2",
+"@Code": "CDAE",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "4"
+},
+"VehMakeModel": {
+"@Name": "Nissan Leaf Electric or similar",
+"@Code": "CDAE"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/nissan/leaf_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "50497"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "1500",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Limited Mileage:Max kilometers included per rental: 1,500",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.30",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "84.75",
+"@EstimatedTotalAmount": "84.75",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "84.75",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1122854374",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "46ae7349-8d71-4735-b90b-3ef1acf73df4.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "20",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "20"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"SpecialOffers": {
+"Offer": {
+"@Type": "electric_car",
+"@ShortText": "Electric car - no fuel or congestion charges with this car",
+"@UIToken": "electric_car",
+"#text": "This is an electric/hybrid car, that allows you to reduce fuel cost or congestion charges."
+}
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "900.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Unspecified",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "4",
+"@BaggageQuantity": "1",
+"@Code": "MBAR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "3"
+},
+"VehClass": {
+"@Size": "1"
+},
+"VehMakeModel": {
+"@Name": "Fiat 500 S Dualogic or similar",
+"@Code": "MBAR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/fiat/500_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "60565"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "1500",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Limited Mileage:Max kilometers included per rental: 1,500",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.30",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "48.32",
+"@EstimatedTotalAmount": "48.32",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "48.32",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "520728645",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "ac0778b8-b552-4633-8b7a-f12d8be13e52.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "10",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "10"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "600.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "2",
+"@Code": "EDAR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "3"
+},
+"VehMakeModel": {
+"@Name": "Toyota Yaris or similar",
+"@Code": "EDAR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/toyota/yaris_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "25901"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "1500",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Limited Mileage:Max kilometers included per rental: 1,500",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.30",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "82.47",
+"@EstimatedTotalAmount": "82.47",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "82.47",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1273204107",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "cc3a6e70-14ec-4f1f-8733-15d0b9fa68e3.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "23",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "23"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "600.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "4",
+"@BaggageQuantity": "2",
+"@Code": "CTMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "4",
+"@DoorCount": "2"
+},
+"VehClass": {
+"@Size": "43"
+},
+"VehMakeModel": {
+"@Name": "Renault Megane Convertible or similar",
+"@Code": "CTMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/renault/megane_cabrio_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "5725"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "1500",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Limited Mileage:Max kilometers included per rental: 1,500",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.30",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "137.70",
+"@EstimatedTotalAmount": "137.70",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "12.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "137.70",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "432927707",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "56b3005a-b1a7-4fff-ab3c-04e96d6373dc.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLEMPTYREFUND",
+"@Description": "Fuel: Pre-purchase fuel with partial refund."
+},
+"Config": {
+"@OrderBy": "33",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "33"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "750.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}],
+"Info": {
+"LocationDetails": {
+"@Code": "480",
+"@Name": "Mallorca - Airport",
+"@AtAirport": "1",
+"Address": {
+"@Remark": "39.5490000,2.7320000",
+"AddressLine": "C/ Son Fangós, s/n, Aeropuerto – Polígono Son Oms, 07610, Mallorca",
+"CountryName": {
+"@Code": "ES"
+}
+},
+"Telephone": {
+"@PhoneNumber": "+34 902 36 06 36"
+},
+"AdditionalInfo": {
+"VehRentLocInfos": {
+"VehRentLocInfo": {
+"@Type": "VLI_2.VLI.X"
+}
+},
+"CounterLocation": {
+"@Location": "VWF_2.VWF.X"
+}
+}
+},
+"TPA_Extensions": {
+"VendorPruningCategory": {
+"@Key": "2",
+"@Description": "LOW"
+},
+"CustomerReviews": {
+"@total": "12",
+"@overall": "2.97",
+"@agent": "2323",
+"@location": "420201",
+"@name": "OK RENT A CAR",
+"@overall_review": "59",
+"@car_review": "49",
+"@desk_review": "60",
+"@dropoff_review": "61",
+"@price_review": "70",
+"@pickup_review": "54",
+"@wait_time": "2",
+"@ave_wait_mins": "33",
+"@total_agent": "2379"
+},
+"Ranking": {
+"@index": "1000"
+}
+}
+}
+}, {
+"Vendor": {
+"@Code": "15",
+"@CodeContext": "CARTRAWLER"
+},
+"VehAvails": [{
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "4",
+"@BaggageQuantity": "2",
+"@Code": "EBMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "3"
+},
+"VehClass": {
+"@Size": "3"
+},
+"VehMakeModel": {
+"@Name": "Fiat Panda or similar",
+"@Code": "EBMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/fiat/panda_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "58673"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@DistUnitName": "Km",
+"@Quantity": "2000",
+"@Unlimited": "false",
+"@VehiclePeriodUnitName": "RentalPeriod"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Limited Mileage:Max kilometers included per rental: 2,000",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "618.VCP.X"
+}, {
+"@Description": "Additional distance",
+"@Amount": "0.45",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false",
+"@Purpose": "8",
+"Calculation": {
+"@Applicability": "BeforePickup"
+}
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "46.66",
+"@EstimatedTotalAmount": "46.66",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "7.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "9.90",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "9.90",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "11.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "7.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "46.66",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1768160055",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "b93f02e2-a399-41e4-a505-38801dbfabde.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLFULL",
+"@Description": "Fuel: Pick up and return full."
+},
+"Config": {
+"@OrderBy": "11",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "11"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1000.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}],
+"Info": {
+"LocationDetails": {
+"@Code": "480",
+"@Name": "Mallorca - Airport",
+"@AtAirport": "1",
+"Address": {
+"@Remark": "39.5490000,2.7320000",
+"AddressLine": "Carrer del canal de Sant Jordi, Polígono Industrial Son Oms, Palma de Mallorca , 07199, Baleares",
+"CountryName": {
+"@Code": "ES"
+}
+},
+"Telephone": {
+"@PhoneNumber": "00 34 648 89 89 21 "
+},
+"AdditionalInfo": {
+"VehRentLocInfos": {
+"VehRentLocInfo": {
+"@Type": "VLI_2.VLI.X"
+}
+},
+"CounterLocation": {
+"@Location": "VWF_2.VWF.X"
+}
+}
+},
+"TPA_Extensions": {
+"VendorPruningCategory": {
+"@Key": "2",
+"@Description": "LOW"
+},
+"CustomerReviews": {
+"@total": "7",
+"@overall": "3.61",
+"@agent": "1938",
+"@location": "444353",
+"@name": "Drivalia Car Rental",
+"@overall_review": "72",
+"@car_review": "69",
+"@desk_review": "62",
+"@dropoff_review": "73",
+"@price_review": "86",
+"@pickup_review": "68",
+"@wait_time": "1",
+"@ave_wait_mins": "12",
+"@total_agent": "960"
+},
+"Ranking": {
+"@index": "1000"
+}
+}
+}
+}, {
+"Vendor": {
+"@Code": "20",
+"@CodeContext": "CARTRAWLER"
+},
+"VehAvails": [{
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "4",
+"@Code": "IDMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "4"
+},
+"VehClass": {
+"@Size": "6"
+},
+"VehMakeModel": {
+"@Name": "Toyota Avensis or similar",
+"@Code": "IDMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/toyota/avensis_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "4805"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PARTPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "70.59",
+"@EstimatedTotalAmount": "70.59",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "6.62",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "13.22",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "13.22",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "13.22",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "4",
+"Description": "Ski rack"
+},
+"Charge": {
+"@Amount": "44.63",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "44.63",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "19.17",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "51.42",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "340711319",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "ce861e53-a1d3-4600-b61e-87164e1ffdb2.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "0"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLFULL",
+"@Description": "Fuel: Pick up and return full."
+},
+"Config": {
+"@OrderBy": "16",
+"@Insurance": "false",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "16"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "false",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1150.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}],
+"Info": {
+"LocationDetails": {
+"@Code": "480",
+"@Name": "Mallorca - Airport",
+"@AtAirport": "1",
+"Address": {
+"@Remark": "39.5490000,2.7320000",
+"AddressLine": "ENTERPRISE RENT A CAR, AEROPUERTO SON SANT JOAN, MALLORCA, 07611, IB",
+"CountryName": {
+"@Code": "ES"
+}
+},
+"Telephone": {
+"@PhoneNumber": "971266001"
+},
+"AdditionalInfo": {
+"VehRentLocInfos": {
+"VehRentLocInfo": {
+"@Type": "VLI_1.VLI.X"
+}
+},
+"CounterLocation": {
+"@Location": "VWF_1.VWF.X"
+}
+}
+},
+"TPA_Extensions": {
+"VendorPruningCategory": {
+"@Key": "2",
+"@Description": "LOW"
+},
+"CustomerReviews": {
+"@total": "11",
+"@overall": "4.45",
+"@agent": "2789",
+"@location": "478253",
+"@name": "Alamo EHI",
+"@overall_review": "88",
+"@car_review": "89",
+"@desk_review": "87",
+"@dropoff_review": "89",
+"@price_review": "90",
+"@pickup_review": "88",
+"@wait_time": "1",
+"@ave_wait_mins": "26",
+"@total_agent": "289"
+},
+"Ranking": {
+"@index": "1000"
+}
+}
+}
+}, {
+"Vendor": {
+"@Code": "21",
+"@CodeContext": "CARTRAWLER"
+},
+"VehAvails": [{
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "3",
+"@Code": "CDAR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "4"
+},
+"VehMakeModel": {
+"@Name": "Volkswagen Golf or similar",
+"@Code": "CDAR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/volkswagen/golf_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "1089"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "93.54",
+"@EstimatedTotalAmount": "93.54",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "6.62",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "13.22",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "13.22",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "13.22",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "4",
+"Description": "Ski rack"
+},
+"Charge": {
+"@Amount": "44.63",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "44.63",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "93.54",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "469670791",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "324cdb8b-d656-4714-8e7d-f728692f1435.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "0"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLFULL",
+"@Description": "Fuel: Pick up and return full."
+},
+"Config": {
+"@OrderBy": "24",
+"@Insurance": "false",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "24"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "false",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1100.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Unspecified",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "3",
+"@Code": "IMMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "19",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "45"
+},
+"VehMakeModel": {
+"@Name": "Renault Scenic or similar",
+"@Code": "IMMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/renault/scenic_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "59821"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "109.25",
+"@EstimatedTotalAmount": "109.25",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "6.62",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "13.22",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "13.22",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "13.22",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "4",
+"Description": "Ski rack"
+},
+"Charge": {
+"@Amount": "44.63",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "44.63",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "109.25",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1314142662",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "a93afa9d-003c-470e-88ed-8c279c0828e8.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "0"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLFULL",
+"@Description": "Fuel: Pick up and return full."
+},
+"Config": {
+"@OrderBy": "28",
+"@Insurance": "false",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "28"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "false",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1100.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "4",
+"@Code": "SDMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "4"
+},
+"VehClass": {
+"@Size": "7"
+},
+"VehMakeModel": {
+"@Name": "Volkswagen Passat or similar",
+"@Code": "SDMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/volkswagen/passat_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "5393"
+}
+},
+"RentalRate": {
+"RateDistance": {
+"@Unlimited": "true"
+},
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}, {
+"@Description": "Unlimited mileage",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "609.VCP.X"
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "65.96",
+"@EstimatedTotalAmount": "65.96",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "6.62",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "13.22",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "13.22",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "13",
+"Description": "GPS - Satellite Navigational System"
+},
+"Charge": {
+"@Amount": "13.22",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "4",
+"Description": "Ski rack"
+},
+"Charge": {
+"@Amount": "44.63",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "10",
+"Description": "Snow chain set"
+},
+"Charge": {
+"@Amount": "44.63",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "false",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "65.96",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1831151799",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "f9150dd0-c0ef-4ce7-9633-4a68755c88ed.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "0"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLFULL",
+"@Description": "Fuel: Pick up and return full."
+},
+"Config": {
+"@OrderBy": "17",
+"@Insurance": "false",
+"@Duration": "2",
+"@Limited": "1",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "17"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "false",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1150.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}],
+"Info": {
+"LocationDetails": {
+"@Code": "480",
+"@Name": "Mallorca - Airport",
+"@AtAirport": "1",
+"Address": {
+"@Remark": "39.5490000,2.7320000",
+"AddressLine": "ENTERPRISE RENT A CAR, AEROPUERTO SON SANT JOAN, MALLORCA, 07611, IB",
+"CountryName": {
+"@Code": "ES"
+}
+},
+"Telephone": {
+"@PhoneNumber": "971266001"
+},
+"AdditionalInfo": {
+"VehRentLocInfos": {
+"VehRentLocInfo": {
+"@Type": "VLI_1.VLI.X"
+}
+},
+"CounterLocation": {
+"@Location": "VWF_1.VWF.X"
+}
+}
+},
+"TPA_Extensions": {
+"VendorPruningCategory": {
+"@Key": "2",
+"@Description": "LOW"
+},
+"CustomerReviews": {
+"@total": "11",
+"@overall": "4.45",
+"@agent": "2789",
+"@location": "478253",
+"@name": "Alamo EHI",
+"@overall_review": "88",
+"@car_review": "89",
+"@desk_review": "87",
+"@dropoff_review": "89",
+"@price_review": "90",
+"@pickup_review": "88",
+"@wait_time": "1",
+"@ave_wait_mins": "26",
+"@total_agent": "289"
+},
+"Ranking": {
+"@index": "1000"
+}
+}
+}
+}, {
+"Vendor": {
+"@Code": "24",
+"@CodeContext": "CARTRAWLER"
+},
+"VehAvails": [{
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "3",
+"@Code": "JGMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "22",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "45"
+},
+"VehMakeModel": {
+"@Name": "Renault Scenic or similar",
+"@Code": "JGMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/renault/scenic_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "5313"
+}
+},
+"RentalRate": {
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "92.52",
+"@EstimatedTotalAmount": "92.52",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "92.52",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "568344794",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "ffe92467-c00b-43c0-86f6-633893cfe837.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLFULL",
+"@Description": "Fuel: Pick up and return full."
+},
+"Config": {
+"@OrderBy": "27",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "27"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "2000.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Automatic",
+"@FuelType": "Electric",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "2",
+"@Code": "CDAE",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "4"
+},
+"VehMakeModel": {
+"@Name": "Nissan Leaf Electric or similar",
+"@Code": "CDAE"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/nissan/leaf_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "50497"
+}
+},
+"RentalRate": {
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "107.40",
+"@EstimatedTotalAmount": "107.40",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "107.40",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1412816665",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "b768555c-39d7-4065-be39-d829c093b5ab.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLFULL",
+"@Description": "Fuel: Pick up and return full."
+},
+"Config": {
+"@OrderBy": "21",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "21"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "2000.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "false",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "2",
+"@Code": "EDMG",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "1",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "3"
+},
+"VehMakeModel": {
+"@Name": "Ford Fiesta (GPS) or similar",
+"@Code": "EDMG"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/ford/fiesta_5dr_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "26073"
+}
+},
+"RentalRate": {
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "60.75",
+"@EstimatedTotalAmount": "60.75",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "60.75",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1424322992",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "c5224b6d-ed33-405f-bc00-3f73aefeed02.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLFULL",
+"@Description": "Fuel: Pick up and return full."
+},
+"Config": {
+"@OrderBy": "15",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "15"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "1200.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}, {
+"VehAvailCore": {
+"@Status": "Available",
+"Vehicle": {
+"@AirConditionInd": "true",
+"@TransmissionType": "Manual",
+"@FuelType": "Petrol",
+"@DriveType": "Unspecified",
+"@PassengerQuantity": "5",
+"@BaggageQuantity": "3",
+"@Code": "CLMR",
+"@CodeContext": "CARTRAWLER",
+"VehType": {
+"@VehicleCategory": "7",
+"@DoorCount": "5"
+},
+"VehClass": {
+"@Size": "4"
+},
+"VehMakeModel": {
+"@Name": "Volkswagen Golf or similar",
+"@Code": "CLMR"
+},
+"PictureURL": "https://cdn.cartrawler.com/otaimages/volkswagen/golf_nologo.jpg",
+"VehIdentity": {
+"@VehicleAssetNumber": "52493"
+}
+},
+"RentalRate": {
+"VehicleCharges": [{
+"@Description": "Breakdown assistance",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "602.VCP.X"
+}, {
+"@Description": "Airport fee",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true",
+"@Purpose": "30"
+}, {
+"@Description": "Tax",
+"@IncludedInRate": "true",
+"@Purpose": "7"
+}],
+"RateQualifier": {
+"@RateQualifier": "PREPAID-IN"
+}
+},
+"TotalCharge": {
+"@RateTotalAmount": "70.23",
+"@EstimatedTotalAmount": "70.23",
+"@CurrencyCode": "EUR"
+},
+"PricedEquips": [{
+"Equipment": {
+"@EquipType": "9",
+"Description": "Booster seat"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "8",
+"Description": "Child toddler seat"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "7",
+"Description": "Infant child seat"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}, {
+"Equipment": {
+"@EquipType": "101.EQP",
+"Description": "Additional Driver"
+},
+"Charge": {
+"@Amount": "14.00",
+"@CurrencyCode": "EUR",
+"@TaxInclusive": "true",
+"@IncludedInRate": "false"
+}
+}],
+"Fees": [{
+"@Amount": "70.23",
+"@CurrencyCode": "EUR",
+"@Purpose": "22"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "23"
+}, {
+"@Amount": "0.00",
+"@CurrencyCode": "EUR",
+"@Purpose": "6"
+}],
+"Reference": {
+"@Type": "16",
+"@ID": "1119122028",
+"@ID_Context": "CARTRAWLER",
+"@DateTime": "2016-06-01T12:22:46.929+01:00",
+"@URL": "c14c78d0-9841-4314-91d7-0cd745c00ef6.62"
+},
+"TPA_Extensions": {
+"UpSell": {
+"@Insurance": "1"
+},
+"PPDep": {
+"@Available": "false",
+"@Keep": "false"
+},
+"FuelPolicy": {
+"@Type": "FULLFULL",
+"@Description": "Fuel: Pick up and return full."
+},
+"Config": {
+"@OrderBy": "19",
+"@Insurance": "true",
+"@Duration": "2",
+"@CC_Info": "true"
+},
+"OrderBy": {
+"@Index": "19"
+},
+"CC_Info": {
+"@Required": "true"
+},
+"Duration": {
+"@Days": "2"
+}
+}
+},
+"VehAvailInfo": {
+"PricedCoverages": [{
+"Coverage": {
+"@CoverageType": "6"
+},
+"Charge": {
+"@Description": "Collision damage waiver (CDW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+},
+"Deductible": {
+"@Amount": "2000.00",
+"@CurrencyCode": "EUR"
+}
+}, {
+"Coverage": {
+"@CoverageType": "47"
+},
+"Charge": {
+"@Description": "Theft waiver (TW)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}, {
+"Coverage": {
+"@CoverageType": "50"
+},
+"Charge": {
+"@Description": "Third party liability protection (TP)",
+"@TaxInclusive": "true",
+"@IncludedInRate": "true"
+}
+}]
+}
+}],
+"Info": {
+"LocationDetails": {
+"@Code": "480",
+"@Name": "Mallorca - Airport",
+"@AtAirport": "1",
+"Address": {
+"@Remark": "39.5490000,2.7320000",
+"AddressLine": "Desk inside the Terminal building, Mallorca, 07071, Palma de Mallorca",
+"CountryName": {
+"@Code": "ES"
+}
+},
+"Telephone": {
+"@PhoneNumber": "+34 965 23 31 81"
+},
+"AdditionalInfo": {
+"VehRentLocInfos": {
+"VehRentLocInfo": {
+"@Type": "VLI_1.VLI.X"
+}
+},
+"CounterLocation": {
+"@Location": "VWF_1.VWF.X"
+}
+}
+},
+"TPA_Extensions": {
+"VendorPruningCategory": {
+"@Key": "2",
+"@Description": "LOW"
+},
+"Ranking": {
+"@index": "1000"
+}
+}
+}
+}]
+}
+}

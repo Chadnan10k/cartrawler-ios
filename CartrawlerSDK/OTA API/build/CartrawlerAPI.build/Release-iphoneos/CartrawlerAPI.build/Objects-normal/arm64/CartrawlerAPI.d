@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI.m \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTErrorResponse.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTLocationSearch.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTMatchedLocation.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTVehicleAvailability.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTVendor.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTVehicle.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTPricedCoverage.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTExtraEquipment.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTVehicleCharge.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTFee.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTVendorRating.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTInsurance.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTPaymentCard.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTCustomer.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTBooking.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTTermsAndConditions.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTGroundLocation.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTAirport.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTGroundAvailability.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTGroundService.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTGroundBooking.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTGroundCustomer.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/PostRequest.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/Constants.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/CTRequestBuilder.h \
+  /Users/leemaguire/CartrawlerAPI-iOS/CartrawlerAPI/CartrawlerAPI/CartrawlerAPI/NSDateUtils.h
