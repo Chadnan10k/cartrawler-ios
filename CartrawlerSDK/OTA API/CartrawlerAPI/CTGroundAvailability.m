@@ -17,12 +17,20 @@
     dict = dict[@"GroundServices"];
     
     NSMutableArray *tempServices = [[NSMutableArray alloc] init];
-    for (NSDictionary *service in dict) {
-        CTGroundService *groundService = [[CTGroundService alloc] initWithDictionary: service];
-        [tempServices addObject:groundService];
-    }
-    _services = tempServices;
+    NSMutableArray *tempShuttles = [[NSMutableArray alloc] init];
 
+    for (NSDictionary *service in dict) {
+        if (service[@"Shuttle"]) {
+            CTGroundShuttle *shuttle = [[CTGroundShuttle alloc] initWithDictionary:service];
+            [tempShuttles addObject:shuttle];
+        } else {
+            CTGroundService *groundService = [[CTGroundService alloc] initWithDictionary: service];
+            [tempServices addObject:groundService];
+        }
+    }
+    
+    _services = tempServices;
+    _shuttles = tempShuttles;
     
     return self;
 }

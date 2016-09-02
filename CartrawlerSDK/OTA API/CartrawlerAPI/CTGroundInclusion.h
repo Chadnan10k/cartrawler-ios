@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GTInclusion : NSObject
+@interface CTGroundInclusion : NSObject
 
 typedef NS_ENUM(NSUInteger, Inclusion) {
     

@@ -48,18 +48,25 @@ typedef NS_ENUM(NSUInteger, LocationType) {
  *  The latitude of the location
  */
 @property (nonatomic, nonnull, readonly) NSNumber *latitude;
+
 /**
  *  The longitude of the location
  */
 @property (nonatomic, nonnull, readonly) NSNumber *longitude;
+
 /**
  *  String representation of the LocationType enum
  */
-@property (nonatomic, nonnull, readonly) NSString *locationType;
+@property (nonatomic, nonnull, readonly) NSString *locationTypeDescription;
+
+@property (nonatomic, nonnull, readonly) NSString *name;
+
+@property (nonatomic, readonly) LocationType locationType;
+
 /**
  *  the date / time for searching availability of a location
  */
-@property (nonatomic, nonnull, readonly) NSDate   *dateTime;
+@property (nonatomic, nonnull, readonly) NSDate *dateTime;
 
 /**
  *  Use this for searching the ground transport services of a location
@@ -76,6 +83,8 @@ typedef NS_ENUM(NSUInteger, LocationType) {
           locationType:(LocationType)locationType
               dateTime:(NSDate *)dateTime;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
 /**
  *  Convenience method for getting the LocationType
  *
@@ -84,6 +93,8 @@ typedef NS_ENUM(NSUInteger, LocationType) {
  *  @return A LocationType
  */
 + (LocationType)locationType:(LocationType)locationType;
+
+
 
 @end
 

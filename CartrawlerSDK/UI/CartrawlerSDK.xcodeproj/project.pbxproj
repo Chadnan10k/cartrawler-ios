@@ -118,6 +118,7 @@
 		454D20F01D549AD10050CA9E /* NSDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D20EE1D549AD10050CA9E /* NSDateUtils.m */; };
 		4550618B1D59CD91004EAC43 /* LocalisedStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 455061891D59CD91004EAC43 /* LocalisedStrings.h */; };
 		4550618C1D59CD91004EAC43 /* LocalisedStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4550618A1D59CD91004EAC43 /* LocalisedStrings.m */; };
+		455685701D79B87A000AA1A0 /* MockGTRS.json in Resources */ = {isa = PBXBuildFile; fileRef = 4556856F1D79B87A000AA1A0 /* MockGTRS.json */; };
 		4557FE421D3636400026F038 /* CTSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4557FE401D3636400026F038 /* CTSearch.m */; };
 		455914B21D782281008AFA51 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455914B11D782281008AFA51 /* CartrawlerAPI.framework */; };
 		45645D8B1D2D4A310075A3D2 /* HTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645D891D2D4A310075A3D2 /* HTMLParser.h */; };
@@ -182,6 +183,10 @@
 		45D866D71D141BB100D19B74 /* LinkerUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D866D51D141BB100D19B74 /* LinkerUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45D866D81D141BB100D19B74 /* LinkerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D866D61D141BB100D19B74 /* LinkerUtils.m */; };
 		45D866D91D142CAC00D19B74 /* VehicleTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E942C81D13028600ACF604 /* VehicleTableViewCell_iPhone.xib */; };
+		45E84CCB1D79C61600D6BC47 /* InclusionTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E84CC91D79C61600D6BC47 /* InclusionTableViewCell.h */; };
+		45E84CCC1D79C61600D6BC47 /* InclusionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E84CCA1D79C61600D6BC47 /* InclusionTableViewCell.m */; };
+		45E84CCF1D79C69C00D6BC47 /* InclusionTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E84CCD1D79C69C00D6BC47 /* InclusionTableViewDataSource.h */; };
+		45E84CD01D79C69C00D6BC47 /* InclusionTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E84CCE1D79C69C00D6BC47 /* InclusionTableViewDataSource.m */; };
 		45E942491D12FF0F00ACF604 /* CartrawlerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */; };
 		45E942971D1300ED00ACF604 /* CTVehicleSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942941D1300ED00ACF604 /* CTVehicleSelectionView.m */; };
 		45E942981D1300ED00ACF604 /* CTVehicleSelectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942961D1300ED00ACF604 /* CTVehicleSelectionViewModel.m */; };
@@ -346,6 +351,7 @@
 		454D20EE1D549AD10050CA9E /* NSDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateUtils.m; sourceTree = "<group>"; };
 		455061891D59CD91004EAC43 /* LocalisedStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalisedStrings.h; sourceTree = "<group>"; };
 		4550618A1D59CD91004EAC43 /* LocalisedStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalisedStrings.m; sourceTree = "<group>"; };
+		4556856F1D79B87A000AA1A0 /* MockGTRS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockGTRS.json; sourceTree = "<group>"; };
 		4557FE3F1D3636400026F038 /* CTSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSearch.h; sourceTree = "<group>"; };
 		4557FE401D3636400026F038 /* CTSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSearch.m; sourceTree = "<group>"; };
 		455914B11D782281008AFA51 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerAPI.framework; path = ../CartrawlerAPI.framework; sourceTree = "<group>"; };
@@ -388,6 +394,10 @@
 		45D866571D13F0CA00D19B74 /* CartrawlerResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D866D51D141BB100D19B74 /* LinkerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkerUtils.h; sourceTree = "<group>"; };
 		45D866D61D141BB100D19B74 /* LinkerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkerUtils.m; sourceTree = "<group>"; };
+		45E84CC91D79C61600D6BC47 /* InclusionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InclusionTableViewCell.h; sourceTree = "<group>"; };
+		45E84CCA1D79C61600D6BC47 /* InclusionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionTableViewCell.m; sourceTree = "<group>"; };
+		45E84CCD1D79C69C00D6BC47 /* InclusionTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InclusionTableViewDataSource.h; sourceTree = "<group>"; };
+		45E84CCE1D79C69C00D6BC47 /* InclusionTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionTableViewDataSource.m; sourceTree = "<group>"; };
 		45E942431D12FF0F00ACF604 /* libCartrawlerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCartrawlerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartrawlerSDK.h; sourceTree = "<group>"; };
 		45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartrawlerSDK.m; sourceTree = "<group>"; };
@@ -486,6 +496,7 @@
 			children = (
 				45EE26DD1D37A79900A1FB51 /* GroundTransportViewController.h */,
 				45EE26DE1D37A79900A1FB51 /* GroundTransportViewController.m */,
+				4556856F1D79B87A000AA1A0 /* MockGTRS.json */,
 			);
 			name = "Step One";
 			sourceTree = "<group>";
@@ -503,6 +514,10 @@
 		4509B4781D37ED6700259255 /* Table view cell */ = {
 			isa = PBXGroup;
 			children = (
+				45E84CCD1D79C69C00D6BC47 /* InclusionTableViewDataSource.h */,
+				45E84CCE1D79C69C00D6BC47 /* InclusionTableViewDataSource.m */,
+				45E84CC91D79C61600D6BC47 /* InclusionTableViewCell.h */,
+				45E84CCA1D79C61600D6BC47 /* InclusionTableViewCell.m */,
 				4509B4791D37ED8100259255 /* GTServiceTableViewCell.h */,
 				4509B47A1D37ED8100259255 /* GTServiceTableViewCell.m */,
 			);
@@ -1148,6 +1163,7 @@
 				451B4BEE1D2BC99B006A57E7 /* TermsDetailViewController.h in Headers */,
 				454AD7C71D2AB8E7005C6CFF /* CTDesignableView.h in Headers */,
 				45AC546F1D130A1600805268 /* CalendarLogicController.h in Headers */,
+				45E84CCB1D79C61600D6BC47 /* InclusionTableViewCell.h in Headers */,
 				454AD7B81D2A69D2005C6CFF /* ExpandingInfoView.h in Headers */,
 				45F4735C1D36451F00DF548B /* AddressDetailsViewController.h in Headers */,
 				45361BEB1D2BA1BA00295124 /* UnderLinedButton.h in Headers */,
@@ -1157,6 +1173,7 @@
 				45C48D4F1D5226CA005C9377 /* CTFilterFactory.h in Headers */,
 				45AC54701D130A1600805268 /* CTMiddleDateCell.h in Headers */,
 				450F9D391D3CE08E002C6F6B /* SettingsSelectionViewController.h in Headers */,
+				45E84CCF1D79C69C00D6BC47 /* InclusionTableViewDataSource.h in Headers */,
 				45AC545D1D1309F300805268 /* JVFloatLabeledTextField.h in Headers */,
 				456979281D2C03E7006A321E /* TabButton.h in Headers */,
 				45137C841D476AB100089928 /* CTPickerView.h in Headers */,
@@ -1278,6 +1295,7 @@
 				454AD7BE1D2A7089005C6CFF /* StepThree.storyboard in Resources */,
 				454AD7931D26C985005C6CFF /* StepTwo.storyboard in Resources */,
 				450F9D4C1D3D14FF002C6F6B /* CTLanguages.csv in Resources */,
+				455685701D79B87A000AA1A0 /* MockGTRS.json in Resources */,
 				4538D2551D14436600C723E5 /* Info.plist in Resources */,
 				450F9D3E1D3CE8D5002C6F6B /* CTISOCountries.csv in Resources */,
 				4588E3131D538803008F4267 /* CTPCI.html in Resources */,
@@ -1371,6 +1389,7 @@
 				45E942D41D1302A200ACF604 /* CTImageCache.m in Sources */,
 				454AD78C1D255E1F005C6CFF /* CTFilterTableViewCell.m in Sources */,
 				4511E5481D1837D4000ED6B0 /* LocationSearchTableViewCell.m in Sources */,
+				45E84CCC1D79C61600D6BC47 /* InclusionTableViewCell.m in Sources */,
 				4511E5441D181B36000ED6B0 /* CTTextField.m in Sources */,
 				45E942BE1D13020300ACF604 /* LocationSearchViewController.m in Sources */,
 				45819FAB1D35036A001AE0F5 /* BookingSummaryViewController.m in Sources */,
@@ -1441,6 +1460,7 @@
 				45C488CC1D479B020044612C /* OptionalExtrasView.m in Sources */,
 				4511E5381D17F766000ED6B0 /* CTNavigationItem.m in Sources */,
 				4511E51E1D1450CE000ED6B0 /* CTSDKSettings.m in Sources */,
+				45E84CD01D79C69C00D6BC47 /* InclusionTableViewDataSource.m in Sources */,
 				45EC25101D49132B00A3C09D /* CTViewController.m in Sources */,
 				45EE26E01D37A79900A1FB51 /* GroundTransportViewController.m in Sources */,
 				451FE5B81D6EF286004D85D1 /* SearchValidation.m in Sources */,

@@ -32,57 +32,80 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
         return;
     }
     
-    if (step.viewType == ViewTypeVehicleSelection) {
-        [self canTransitionToVehicleSelection:cartrawlerAPI
-                                       search:[CTSearch instance]
-                                   completion:^(BOOL success, NSString *errorMessage) {
-            if (success) {
+    switch (step.viewType) {
+        case ViewTypeVehicleSelection:
+        {
+            [self canTransitionToVehicleSelection:cartrawlerAPI
+                                           search:[CTSearch instance]
+                                       completion:^(BOOL success, NSString *errorMessage) {
+                                           if (success) {
+                                               completion(YES, nil);
+                                               return;
+                                           } else {
+                                               completion(NO, errorMessage);
+                                               return;
+                                           }
+                                       }];
+        }
+            break;
+        case ViewTypeInsurance:
+        {
+            [self canTransitionToInsuranceQuote:cartrawlerAPI
+                                         search:[CTSearch instance]
+                                     completion:^(BOOL success, NSString *errorMessage) {
+                                         if (success) {
+                                             completion(YES, nil);
+                                             return;
+                                         } else {
+                                             completion(NO, errorMessage);
+                                             return;
+                                         }
+                                     }];
+        }
+            break;
+            
+        case ViewTypeDriverDetails:
+        {
+            if ([GenericValidation validate:[CTSearch instance]]) {
                 completion(YES, nil);
                 return;
             } else {
-                completion(NO, errorMessage);
+                completion(NO, @"");
                 return;
             }
-        }];
-    } else if (step.viewType == ViewTypeInsurance) {
-        [self canTransitionToInsuranceQuote:cartrawlerAPI
-                                     search:[CTSearch instance]
-                                 completion:^(BOOL success, NSString *errorMessage) {
-            if (success) {
+        }
+            break;
+            
+        case ViewTypePaymentDetails:
+        {
+            if ([self validationForPaymentDetails:[CTSearch instance]]) {
                 completion(YES, nil);
                 return;
             } else {
-                completion(NO, errorMessage);
+                completion(NO, @"ViewTypePaymentDetails: Validation error");
                 return;
             }
-        }];
-    } else if (step.viewType == ViewTypeDriverDetails) {
-        if ([GenericValidation validate:[CTSearch instance]]) {
-            completion(YES, nil);
-            return;
-        } else {
-            completion(NO, @"");
-            return;
         }
-    } else if (step.viewType == ViewTypePaymentDetails) {
-        if ([self validationForPaymentDetails:[CTSearch instance]]) {
-            completion(YES, nil);
-            return;
-        } else {
-            completion(NO, @"ViewTypePaymentDetails: Validation error");
-            return;
+            break;
+            
+        case ViewTypeGeneric:
+        {
+            if ([GenericValidation validate:[CTSearch instance]]) {
+                completion(YES, nil);
+                return;
+            } else {
+                completion(NO, @"");
+                return;
+            }
         }
-    } else if (step.viewType == ViewTypeGeneric) {
-        if ([GenericValidation validate:[CTSearch instance]]) {
-            completion(YES, nil);
-            return;
-        } else {
-            completion(NO, @"");
-            return;
+            break;
+        default:
+        {
+            completion(NO, @"CartrawlerSDK: Each CTViewController must have viewType set.");
         }
-    } else {
-        completion(NO, @"CartrawlerSDK: Each CTViewController must have viewType set.");
+            break;
     }
+    
     
 }
 
@@ -95,18 +118,18 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
         return;
     }
     
-    [cartrawlerAPI requestVehicleAvailabilityForLocation:[CTSearch instance].pickupLocation.code
-                                           returnLocationCode:[CTSearch instance].dropoffLocation.code
+    [cartrawlerAPI requestVehicleAvailabilityForLocation:search.pickupLocation.code
+                                           returnLocationCode:search.dropoffLocation.code
                                           customerCountryCode:[CTSDKSettings instance].homeCountryCode
                                                  passengerQty:@3
-                                                    driverAge:[CTSearch instance].driverAge
-                                               pickUpDateTime:[CTSearch instance].pickupDate
-                                               returnDateTime:[CTSearch instance].dropoffDate
+                                                    driverAge:search.driverAge
+                                               pickUpDateTime:search.pickupDate
+                                               returnDateTime:search.dropoffDate
                                                  currencyCode:[CTSDKSettings instance].currencyCode
                                                    completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
                                                        if (response) {
                                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                                               [CTSearch instance].vehicleAvailability = response;
+                                                               search.vehicleAvailability = response;
                                                                completion(YES, nil);
                                                            });
                                                        } else {
@@ -129,28 +152,28 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
 
     [cartrawlerAPI requestInsuranceQuoteForVehicle:[CTSDKSettings instance].homeCountryCode
                                                currency:[CTSDKSettings instance].currencyCode
-                                              totalCost:[NSString stringWithFormat:@"%.02f", [CTSearch instance].selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue]
-                                         pickupDateTime:[CTSearch instance].pickupDate
-                                         returnDateTime:[CTSearch instance].dropoffDate
-                                 destinationCountryCode:[CTSearch instance].pickupLocation.codeContext
+                                              totalCost:[NSString stringWithFormat:@"%.02f", search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue]
+                                         pickupDateTime:search.pickupDate
+                                         returnDateTime:search.dropoffDate
+                                 destinationCountryCode:search.pickupLocation.codeContext
                                              completion:
      ^(CTInsurance *response, CTErrorResponse *error) {
          if (response) {
              
              dispatch_async(dispatch_get_main_queue(), ^{
-                 [CTSearch instance].insurance = response;
+                 search.insurance = response;
                  completion(YES, nil);
              });
              
          } else {
              dispatch_async(dispatch_get_main_queue(), ^{
-                 if ([CTSearch instance].selectedVehicle.vehicle.extraEquipment.count == 0) {
-                     [CTSearch instance].insurance = nil;
-                     [CTSearch instance].isBuyingInsurance = NO;
+                 if (search.selectedVehicle.vehicle.extraEquipment.count == 0) {
+                     search.insurance = nil;
+                     search.isBuyingInsurance = NO;
                      completion(NO, @"");
                  } else {
-                     [CTSearch instance].insurance = nil;
-                     [CTSearch instance].isBuyingInsurance = NO;
+                     search.insurance = nil;
+                     search.isBuyingInsurance = NO;
                      completion(YES, nil);
                  }
              });

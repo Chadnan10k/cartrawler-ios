@@ -6,9 +6,9 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "GTInclusion.h"
+#import "CTGroundInclusion.h"
 
-@implementation GTInclusion
+@implementation CTGroundInclusion
 
 - (instancetype)initFromInclusionString:(NSString *)inclusionString
 {

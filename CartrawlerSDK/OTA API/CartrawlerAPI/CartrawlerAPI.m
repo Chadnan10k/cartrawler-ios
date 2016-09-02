@@ -482,8 +482,8 @@
                                                       puLong:[NSString stringWithFormat:@"%.5f", pickupLocation.longitude.floatValue]
                                                        doLat:[NSString stringWithFormat:@"%.5f", dropoffLocation.latitude.floatValue]
                                                       doLong:[NSString stringWithFormat:@"%.5f", dropoffLocation.longitude.floatValue]
-                                              puLocationType:pickupLocation.locationType
-                                              doLocationType:dropoffLocation.locationType
+                                              puLocationType:pickupLocation.locationTypeDescription
+                                              doLocationType:dropoffLocation.locationTypeDescription
                                      airportIsPickupLocation:airportIsPickupLocation
                                                   flightType:airport.flightType
                                                  airportCode:airport.IATACode
@@ -512,6 +512,7 @@
              completion(nil, error);
          }
      }];
+
 }
 
 - (void)groundTransportationBooking:(CTAirport *)airport
@@ -548,13 +549,13 @@
                                              stateProvience:customer.addressStateProvince
                                                 countryCode:customer.countryCode
                                                 countryName:customer.countryName
-                                         pickupLocationType:pickupLocation.locationType
+                                         pickupLocationType:pickupLocation.locationTypeDescription
                                          pickupLocationName:pickupLocationName
                                         specialInstructions:specialInstructions
                                             dropOffdateTime:[NSDateUtils stringFromDateWithFormat:dropoffLocation.dateTime format:CTAvailRequestDateFormat]
                                             dropoffLatitude:[NSString stringWithFormat:@"%.5f",dropoffLocation.latitude.floatValue]
                                            dropoffLongitude:[NSString stringWithFormat:@"%.5f",dropoffLocation.longitude.floatValue]
-                                        dropoffLocationType:dropoffLocation.locationType
+                                        dropoffLocationType:dropoffLocation.locationTypeDescription
                                                 airportCode:airport.IATACode
                                                  terminalNo:airport.terminalNumber
                                                   airlineId:airline

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CTGroundService.h"
+#import "CTGroundShuttle.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,8 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
  *  An array of services for ground transportation
  */
 @property (nonatomic, nonnull, readonly) NSArray<CTGroundService *> *services;
+@property (nonatomic, nonnull, readonly) NSArray<CTGroundShuttle *> *shuttles;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dict  ;
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
 
 @end
 

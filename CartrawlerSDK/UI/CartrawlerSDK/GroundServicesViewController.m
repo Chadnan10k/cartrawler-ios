@@ -14,6 +14,7 @@
 @property (nonatomic, strong) CTGroundAvailability *availability;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation GroundServicesViewController
@@ -34,27 +35,18 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 80;
+    self.tableView.estimatedRowHeight = 300;
     
-    [self.tableView reloadData];
-    [self.tableView layoutIfNeeded];    
-    self.tableViewHeight.constant = self.tableView.contentSize.height;
+//    [self.tableView reloadData];
+//    [self.tableView layoutIfNeeded];    
+//    self.tableViewHeight.constant = self.tableView.contentSize.height;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark TABLE VIEW
 
@@ -73,6 +65,11 @@
     GTServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     [cell setService:self.availability.services[indexPath.row]];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 230;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

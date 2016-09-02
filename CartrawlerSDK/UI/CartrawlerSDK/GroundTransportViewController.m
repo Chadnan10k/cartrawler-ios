@@ -292,24 +292,27 @@
                                                                  locationType:self.dropoffLocType
                                                                      dateTime:self.dropoffDate];
     
-    [api groundTransportationAvail:self.airport
-                  pickupLocation:pickupLoc
-                 dropoffLocation:dropoffLoc
-         airportIsPickupLocation:airportIsPickupLocation
-                        adultQty:@1
-                        childQty:@0
-                       infantQty:@0
-                    currencyCode:@"EUR"
-                      completion:^(CTGroundAvailability *response, CTErrorResponse *error) {
-                          if (response) {
-                              dispatch_async(dispatch_get_main_queue(), ^{
-                                  [self performSegueWithIdentifier:@"showServices" sender:response];
-                              });
-                          } else {
-                              NSLog(@"%@", error);
-                          }
-                      }];
+//    [api groundTransportationAvail:self.airport
+//                  pickupLocation:pickupLoc
+//                 dropoffLocation:dropoffLoc
+//         airportIsPickupLocation:airportIsPickupLocation
+//                        adultQty:@1
+//                        childQty:@0
+//                       infantQty:@0
+//                    currencyCode:@"EUR"
+//                      completion:^(CTGroundAvailability *response, CTErrorResponse *error) {
+//                          if (response) {
+//                              dispatch_async(dispatch_get_main_queue(), ^{
+//                                  [self performSegueWithIdentifier:@"showServices" sender:response];
+//                              });
+//                          } else {
+//                              NSLog(@"%@", error);
+//                          }
+//                      }];
     
+    
+    CTGroundAvailability *avail = [[CTGroundAvailability alloc] initWithDictionary:[self dictionaryWithContentsOfJSONString:@"MockGTRS.json"]];
+    [self performSegueWithIdentifier:@"showServices" sender:avail];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -321,6 +324,19 @@
 - (IBAction)cancel:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (NSDictionary*)dictionaryWithContentsOfJSONString:(NSString*)fileName {
+    
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    
+    NSString *filePath = [[[NSBundle bundleWithPath:bundlePath] resourcePath] stringByAppendingPathComponent:fileName];
+    NSData* data = [NSData dataWithContentsOfFile:filePath];
+    __autoreleasing NSError* error = nil;
+    id result = [NSJSONSerialization JSONObjectWithData:data
+                                                options:kNilOptions error:&error];
+    if (error != nil) return nil;
+    return result;
 }
 
 @end

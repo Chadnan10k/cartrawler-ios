@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GTShuttle.h"
-#import "GTInclusion.h"
+#import "CTGroundService.h"
+#import "CTGroundInclusion.h"
+#import "CTGroundLocation.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,32 +18,17 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface CTGroundService : NSObject
 
-typedef NS_ENUM(NSUInteger, ServiceLevel) {
 
-    ServiceLevelNone = 0,
+@property (nonatomic, nonnull, readonly) CTGroundLocation *pickupLocation;
 
-    ServiceLevelEconomy,
+@property (nonatomic, nonnull, readonly) CTGroundLocation *dropoffLocation;
 
-    ServiceLevelStandard,
-
-    ServiceLevelBusiness,
-
-    ServiceLevelLuxury,
-
-    ServiceLevelPremium,
-    
-    ServiceLevelStandardClass,
-    
-    ServiceLevelFirstClass
-
-};
-
-//Can be null
-@property (nonatomic, nullable, readonly) GTShuttle *shuttle;
-
-@property (nonatomic, nonnull, readonly) NSArray <GTInclusion*> *inclusions;
+@property (nonatomic, nonnull, readonly) NSArray <CTGroundInclusion *> *inclusions;
 
 @property (nonatomic, readonly) BOOL disabilityVehicle;
+
+@property (nonatomic, readonly) BOOL meetAndGreet;
+
 /**
  *  Picture url for the vehicle
  */
@@ -55,10 +41,6 @@ typedef NS_ENUM(NSUInteger, ServiceLevel) {
  *  The max amount of baggage the vehicle can hold
  */
 @property (nonatomic, nonnull, readonly) NSNumber *maxBaggage;
-/**
- *  The service level eg. First class, economy class
- */
-@property (nonatomic, readonly) ServiceLevel serviceLevel;
 /**
  *  The vehicle type
  */

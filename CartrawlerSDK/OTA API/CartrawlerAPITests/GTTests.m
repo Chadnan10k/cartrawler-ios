@@ -106,7 +106,7 @@
 - (void)testGroundAvailJson
 {
     CTGroundAvailability *avail = [[CTGroundAvailability alloc] initWithDictionary:[GTTests dictionaryWithContentsOfJSONString:@"GroundAvailRSJSON.json"]];
-    NSLog(@"%@", avail);
+    
 }
 
 +(NSDictionary*)dictionaryWithContentsOfJSONString:(NSString*)fileName{

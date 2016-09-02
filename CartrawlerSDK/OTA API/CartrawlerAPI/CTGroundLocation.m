@@ -7,6 +7,7 @@
 //
 
 #import "CTGroundLocation.h"
+#import "NSDateUtils.h"
 
 @implementation CTGroundLocation
 
@@ -19,22 +20,22 @@
     _longitude = longitude;
     switch (locationType) {
         case LocationTypeAirport:
-            _locationType = @"Airport";
+            _locationTypeDescription = @"Airport";
             break;
         case LocationTypeCompany:
-            _locationType = @"Company";
+            _locationTypeDescription = @"Company";
             break;
         case LocationTypeHotel:
-            _locationType = @"Hotel";
+            _locationTypeDescription = @"Hotel";
             break;
         case LocationTypeHomeResidence:
-            _locationType = @"HomeResidence";
+            _locationTypeDescription = @"HomeResidence";
             break;
         case LocationTypeTrainStation:
-            _locationType = @"TrainStation";
+            _locationTypeDescription = @"TrainStation";
             break;
         case LocationTypeVicinity:
-            _locationType = @"Vicinity";
+            _locationTypeDescription = @"Vicinity";
             break;
     }
 
@@ -42,6 +43,41 @@
     return self;
 }
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [super init];
+    
+    _latitude = dictionary[@"Address"][@"@Latitude"];
+    _longitude = dictionary[@"Address"][@"@Longitude"];
+  
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"yyyy-MM-DD'T'HH:mm:ss"; //2016-10-03T16:13:14
+
+    df.locale = [NSLocale currentLocale];
+    NSString *date = dictionary[@"@DateTime"];
+    
+    _dateTime = [df dateFromString:date];
+    NSString *locType = dictionary[@"Address"][@"LocationType"];
+    _locationTypeDescription = locType;
+    
+    if ([locType isEqualToString:@"Airport"]) {
+        _locationType = LocationTypeAirport;
+    } else if ([locType isEqualToString:@"Company"]) {
+        _locationType = LocationTypeCompany;
+    } else if ([locType isEqualToString:@"Hotel"]) {
+        _locationType = LocationTypeHotel;
+    } else if ([locType isEqualToString:@"HomeResidence"]) {
+        _locationType = LocationTypeHomeResidence;
+    } else if ([locType isEqualToString:@"TrainStation"]) {
+        _locationType = LocationTypeTrainStation;
+    } else if ([locType isEqualToString:@"Vicinity"]) {
+        _locationType = LocationTypeVicinity;
+    }
+    
+    _name = dictionary[@"Address"][@"LocationName"];
+    
+    return self;
+}
 
 + (LocationType)locationType:(LocationType)locationType
 {

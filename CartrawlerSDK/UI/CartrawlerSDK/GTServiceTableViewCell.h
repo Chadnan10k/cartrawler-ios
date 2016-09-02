@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTGroundService.h>
-
+#import <CartrawlerAPI/CTGroundShuttle.h>
 @interface GTServiceTableViewCell : UITableViewCell
 
 + (void)forceLinkerLoad_;
 
 - (void)setService:(CTGroundService *)service;
+- (void)setShuttle:(CTGroundShuttle *)shuttle;
 
 @end

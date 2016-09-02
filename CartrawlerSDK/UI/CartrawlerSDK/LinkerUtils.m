@@ -69,6 +69,7 @@
 #import "OptionalExtrasView.h"
 #import "CTSegmentedControl.h"
 #import "PaymentCompletionViewController.h"
+#import "InclusionTableViewCell.h"
 
 @implementation LinkerUtils
 
@@ -135,7 +136,7 @@
     [OptionalExtrasView forceLinkerLoad_];
     [CTSegmentedControl forceLinkerLoad_];
     [PaymentCompletionViewController forceLinkerLoad_];
-
+    [InclusionTableViewCell forceLinkerLoad_];
 }
 
 @end
