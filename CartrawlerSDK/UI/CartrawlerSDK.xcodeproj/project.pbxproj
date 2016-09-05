@@ -74,6 +74,8 @@
 		451B4BEF1D2BC99B006A57E7 /* TermsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B4BED1D2BC99B006A57E7 /* TermsDetailViewController.m */; };
 		451B513B1D38DD35004EBFDC /* GTBookNowButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 451B51391D38DD35004EBFDC /* GTBookNowButton.h */; };
 		451B513C1D38DD35004EBFDC /* GTBookNowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B513A1D38DD35004EBFDC /* GTBookNowButton.m */; };
+		451C8EF91D7D8ADB00B9324D /* InclusionFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8EF71D7D8ADB00B9324D /* InclusionFlowLayout.h */; };
+		451C8EFA1D7D8ADB00B9324D /* InclusionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8EF81D7D8ADB00B9324D /* InclusionFlowLayout.m */; };
 		451FE5AB1D6EF248004D85D1 /* GenericValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451FE5A91D6EF248004D85D1 /* GenericValidation.h */; };
 		451FE5AC1D6EF248004D85D1 /* GenericValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451FE5AA1D6EF248004D85D1 /* GenericValidation.m */; };
 		451FE5B31D6EF286004D85D1 /* InsuranceValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451FE5AD1D6EF286004D85D1 /* InsuranceValidation.h */; };
@@ -183,8 +185,8 @@
 		45D866D71D141BB100D19B74 /* LinkerUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D866D51D141BB100D19B74 /* LinkerUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45D866D81D141BB100D19B74 /* LinkerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D866D61D141BB100D19B74 /* LinkerUtils.m */; };
 		45D866D91D142CAC00D19B74 /* VehicleTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E942C81D13028600ACF604 /* VehicleTableViewCell_iPhone.xib */; };
-		45E84CCB1D79C61600D6BC47 /* InclusionTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E84CC91D79C61600D6BC47 /* InclusionTableViewCell.h */; };
-		45E84CCC1D79C61600D6BC47 /* InclusionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E84CCA1D79C61600D6BC47 /* InclusionTableViewCell.m */; };
+		45E84CCB1D79C61600D6BC47 /* InclusionCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E84CC91D79C61600D6BC47 /* InclusionCollectionViewCell.h */; };
+		45E84CCC1D79C61600D6BC47 /* InclusionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E84CCA1D79C61600D6BC47 /* InclusionCollectionViewCell.m */; };
 		45E84CCF1D79C69C00D6BC47 /* InclusionTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E84CCD1D79C69C00D6BC47 /* InclusionTableViewDataSource.h */; };
 		45E84CD01D79C69C00D6BC47 /* InclusionTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E84CCE1D79C69C00D6BC47 /* InclusionTableViewDataSource.m */; };
 		45E942491D12FF0F00ACF604 /* CartrawlerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */; };
@@ -309,6 +311,8 @@
 		451B4BED1D2BC99B006A57E7 /* TermsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsDetailViewController.m; sourceTree = "<group>"; };
 		451B51391D38DD35004EBFDC /* GTBookNowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTBookNowButton.h; sourceTree = "<group>"; };
 		451B513A1D38DD35004EBFDC /* GTBookNowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTBookNowButton.m; sourceTree = "<group>"; };
+		451C8EF71D7D8ADB00B9324D /* InclusionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InclusionFlowLayout.h; sourceTree = "<group>"; };
+		451C8EF81D7D8ADB00B9324D /* InclusionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionFlowLayout.m; sourceTree = "<group>"; };
 		451FE5A91D6EF248004D85D1 /* GenericValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericValidation.h; sourceTree = "<group>"; };
 		451FE5AA1D6EF248004D85D1 /* GenericValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericValidation.m; sourceTree = "<group>"; };
 		451FE5AD1D6EF286004D85D1 /* InsuranceValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceValidation.h; sourceTree = "<group>"; };
@@ -394,8 +398,8 @@
 		45D866571D13F0CA00D19B74 /* CartrawlerResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D866D51D141BB100D19B74 /* LinkerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkerUtils.h; sourceTree = "<group>"; };
 		45D866D61D141BB100D19B74 /* LinkerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkerUtils.m; sourceTree = "<group>"; };
-		45E84CC91D79C61600D6BC47 /* InclusionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InclusionTableViewCell.h; sourceTree = "<group>"; };
-		45E84CCA1D79C61600D6BC47 /* InclusionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionTableViewCell.m; sourceTree = "<group>"; };
+		45E84CC91D79C61600D6BC47 /* InclusionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InclusionCollectionViewCell.h; sourceTree = "<group>"; };
+		45E84CCA1D79C61600D6BC47 /* InclusionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionCollectionViewCell.m; sourceTree = "<group>"; };
 		45E84CCD1D79C69C00D6BC47 /* InclusionTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InclusionTableViewDataSource.h; sourceTree = "<group>"; };
 		45E84CCE1D79C69C00D6BC47 /* InclusionTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionTableViewDataSource.m; sourceTree = "<group>"; };
 		45E942431D12FF0F00ACF604 /* libCartrawlerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCartrawlerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -504,24 +508,26 @@
 		4509B4771D37ED3200259255 /* Step Two */ = {
 			isa = PBXGroup;
 			children = (
-				4509B4781D37ED6700259255 /* Table view cell */,
+				4509B4781D37ED6700259255 /* TableViewCell */,
 				4509B4711D37E72700259255 /* GroundServicesViewController.h */,
 				4509B4721D37E72700259255 /* GroundServicesViewController.m */,
 			);
 			name = "Step Two";
 			sourceTree = "<group>";
 		};
-		4509B4781D37ED6700259255 /* Table view cell */ = {
+		4509B4781D37ED6700259255 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				45E84CCD1D79C69C00D6BC47 /* InclusionTableViewDataSource.h */,
 				45E84CCE1D79C69C00D6BC47 /* InclusionTableViewDataSource.m */,
-				45E84CC91D79C61600D6BC47 /* InclusionTableViewCell.h */,
-				45E84CCA1D79C61600D6BC47 /* InclusionTableViewCell.m */,
+				45E84CC91D79C61600D6BC47 /* InclusionCollectionViewCell.h */,
+				45E84CCA1D79C61600D6BC47 /* InclusionCollectionViewCell.m */,
 				4509B4791D37ED8100259255 /* GTServiceTableViewCell.h */,
 				4509B47A1D37ED8100259255 /* GTServiceTableViewCell.m */,
+				451C8EF71D7D8ADB00B9324D /* InclusionFlowLayout.h */,
+				451C8EF81D7D8ADB00B9324D /* InclusionFlowLayout.m */,
 			);
-			name = "Table view cell";
+			name = TableViewCell;
 			sourceTree = "<group>";
 		};
 		4511E5211D17DF8E000ED6B0 /* Theme */ = {
@@ -1122,6 +1128,7 @@
 				45AC54681D130A1600805268 /* CTTimePickerView.h in Headers */,
 				450F9D411D3CE9D6002C6F6B /* CSVItem.h in Headers */,
 				458954921D58C1B00006D34F /* Reachability.h in Headers */,
+				451C8EF91D7D8ADB00B9324D /* InclusionFlowLayout.h in Headers */,
 				453386E31D2BA4EA0021D392 /* IncludedCollectionViewLayout.h in Headers */,
 				4530DA331D46660900CF3186 /* CTTextView.h in Headers */,
 				4511E51D1D1450CE000ED6B0 /* CTSDKSettings.h in Headers */,
@@ -1163,7 +1170,7 @@
 				451B4BEE1D2BC99B006A57E7 /* TermsDetailViewController.h in Headers */,
 				454AD7C71D2AB8E7005C6CFF /* CTDesignableView.h in Headers */,
 				45AC546F1D130A1600805268 /* CalendarLogicController.h in Headers */,
-				45E84CCB1D79C61600D6BC47 /* InclusionTableViewCell.h in Headers */,
+				45E84CCB1D79C61600D6BC47 /* InclusionCollectionViewCell.h in Headers */,
 				454AD7B81D2A69D2005C6CFF /* ExpandingInfoView.h in Headers */,
 				45F4735C1D36451F00DF548B /* AddressDetailsViewController.h in Headers */,
 				45361BEB1D2BA1BA00295124 /* UnderLinedButton.h in Headers */,
@@ -1389,7 +1396,7 @@
 				45E942D41D1302A200ACF604 /* CTImageCache.m in Sources */,
 				454AD78C1D255E1F005C6CFF /* CTFilterTableViewCell.m in Sources */,
 				4511E5481D1837D4000ED6B0 /* LocationSearchTableViewCell.m in Sources */,
-				45E84CCC1D79C61600D6BC47 /* InclusionTableViewCell.m in Sources */,
+				45E84CCC1D79C61600D6BC47 /* InclusionCollectionViewCell.m in Sources */,
 				4511E5441D181B36000ED6B0 /* CTTextField.m in Sources */,
 				45E942BE1D13020300ACF604 /* LocationSearchViewController.m in Sources */,
 				45819FAB1D35036A001AE0F5 /* BookingSummaryViewController.m in Sources */,
@@ -1426,6 +1433,7 @@
 				45E942D31D1302A200ACF604 /* LocaleUtils.m in Sources */,
 				450F9D3A1D3CE08E002C6F6B /* SettingsSelectionViewController.m in Sources */,
 				45F4736F1D369E2A00DF548B /* CompletionViewController.m in Sources */,
+				451C8EFA1D7D8ADB00B9324D /* InclusionFlowLayout.m in Sources */,
 				450F9D4A1D3D00C8002C6F6B /* SettingsViewController.m in Sources */,
 				45E942EA1D1302FF00ACF604 /* NSStringUtils.m in Sources */,
 				454AD7801D25587D005C6CFF /* CTFilterDataSource.m in Sources */,

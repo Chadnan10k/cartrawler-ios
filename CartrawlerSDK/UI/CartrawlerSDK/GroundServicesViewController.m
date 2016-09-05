@@ -35,11 +35,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 300;
-    
-//    [self.tableView reloadData];
-//    [self.tableView layoutIfNeeded];    
-//    self.tableViewHeight.constant = self.tableView.contentSize.height;
+    self.tableView.estimatedRowHeight = 80;
     
 }
 
@@ -52,25 +48,36 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.availability.services.count;
+    if (section == 1) {
+        return self.availability.services.count;
+    } else {
+        return self.availability.shuttles.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GTServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    [cell setService:self.availability.services[indexPath.row]];
+    if (indexPath.section == 1) {
+        [cell setService:self.availability.services[indexPath.row]];
+    } else {
+        [cell setShuttle:self.availability.shuttles[indexPath.row]];
+    }
+    
+    NSLog(@"CTHEIGHT %f", cell.inclusionsCollectionView.contentSize.height);
+    
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 230;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 250;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

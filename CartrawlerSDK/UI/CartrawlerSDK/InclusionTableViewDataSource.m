@@ -7,7 +7,9 @@
 //
 
 #import "InclusionTableViewDataSource.h"
-#import "InclusionTableViewCell.h"
+#import "InclusionCollectionViewCell.h"
+#import <CartrawlerAPI/CTGroundInclusion.h>
+#import <CartrawlerSDK/CTAppearance.h>
 
 @interface InclusionTableViewDataSource()
 
@@ -22,26 +24,124 @@
     _inclusions = inclusions;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 5;
+    return self.inclusions.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    InclusionTableViewCell *cell = (InclusionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell"];
-    [cell setText:@"Test"];
+    InclusionCollectionViewCell *cell = (InclusionCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell"
+                                                                                                       forIndexPath:indexPath];
+    [cell setText:[self inclusionText:self.inclusions[indexPath.row].inclusion]];
+    
+    [cell layoutIfNeeded];
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 25;
+    CGSize textSize = [[self inclusionText:self.inclusions[indexPath.row].inclusion]
+                       sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:[CTAppearance instance].boldFontName size:17]}];
+    return CGSizeMake(textSize.width + 50, 40);
+}
+
+- (NSString *)inclusionText:(Inclusion)inclusion
+{
+    
+    switch (inclusion) {
+        case InclusionAirCon: {
+            return NSLocalizedString(@"Air Con", @"Air Con");
+            
+        }
+        case InclusionBathroom: {
+            return NSLocalizedString(@"Bathroom", @"Bathroom");
+            
+        }
+        case InclusionBike: {
+            return NSLocalizedString(@"Bike", @"Bike");
+            
+        }
+        case InclusionChildSeats: {
+            return NSLocalizedString(@"Child Seats", @"");
+            
+        }
+        case InclusionDriverLanguages: {
+            return NSLocalizedString(@"Driver Languages", @"");
+            
+        }
+        case InclusionExtraPrivacyLegroom: {
+            return NSLocalizedString(@"Extra Privacy & Legroom", @"");
+            
+        }
+        case InclusionMagazines: {
+            return NSLocalizedString(@"Magazines", @"");
+            
+        }
+        case InclusionMakeModel: {
+            return NSLocalizedString(@"Make model", @""); // ??
+            
+        }
+        case InclusionNewspaper: {
+            return NSLocalizedString(@"Newspaper", @"");
+            
+        }
+        case InclusionOversizeLuggage: {
+            return NSLocalizedString(@"Oversize Luggage", @"");
+            
+        }
+        case InclusionPhoneCharger: {
+            return NSLocalizedString(@"Phone Charger", @"");
+            
+        }
+        case InclusionPowerSocket: {
+            return NSLocalizedString(@"Power Socket", @"");
+            
+        }
+        case InclusionSMS: {
+            return NSLocalizedString(@"SMS", @"");
+            
+        }
+        case InclusionSnacks: {
+            return NSLocalizedString(@"Snacks", @"");
+            
+        }
+        case InclusionTablet: {
+            return NSLocalizedString(@"Tablet", @"");
+            
+        }
+        case InclusionWaitMinutes: {
+            return NSLocalizedString(@"Wait Minutes", @""); //??
+            
+        }
+        case InclusionWheelchairAccess: {
+            return NSLocalizedString(@"Wheelchair Access", @"");
+            
+        }
+        case InclusionWifi: {
+            return NSLocalizedString(@"Wifi", @"");
+            
+        }
+        case InclusionWorkTable: {
+            return NSLocalizedString(@"Work Table", @"");
+            
+        }
+        case InclusionVideo: {
+            return NSLocalizedString(@"Video", @"");
+            
+        }
+        case InclusionWater: {
+            return NSLocalizedString(@"Water", @"");
+            
+        }
+    }
+    
+    return @"";
 }
 
 @end

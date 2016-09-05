@@ -16,4 +16,6 @@
 - (void)setService:(CTGroundService *)service;
 - (void)setShuttle:(CTGroundShuttle *)shuttle;
 
+@property (weak, nonatomic) IBOutlet UICollectionView *inclusionsCollectionView;
+
 @end

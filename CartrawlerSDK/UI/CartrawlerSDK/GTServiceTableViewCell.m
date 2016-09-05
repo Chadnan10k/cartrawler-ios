@@ -11,9 +11,9 @@
 #import "CTImageCache.h"
 #import "NSNumberUtils.h"
 #import "InclusionTableViewDataSource.h"
-#import "InclusionTableViewCell.h"
+#import "InclusionCollectionViewCell.h"
 
-@interface GTServiceTableViewCell() <UITableViewDelegate, UITableViewDataSource>
+@interface GTServiceTableViewCell() 
 
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
 @property (weak, nonatomic) IBOutlet CTLabel *carTypeLabel;
@@ -22,8 +22,8 @@
 @property (weak, nonatomic) IBOutlet CTLabel *passengersLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *greetingLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UITableView *inclusionsTableView;
 @property (nonatomic, strong) NSArray <CTGroundInclusion *> *inclusions;
+@property (nonatomic, strong) InclusionTableViewDataSource *inclusionDataSource;
 
 @end
 
@@ -74,19 +74,31 @@
     [pickupStr appendAttributedString:pickupInfo];
     self.greetingLabel.attributedText = pickupStr;
     
-    self.inclusionsTableView.dataSource = self;
-    self.inclusionsTableView.delegate = self;
-    [self.inclusionsTableView reloadData];
+    NSLayoutConstraint *heightConstraint;
+    for (NSLayoutConstraint *constraint in self.inclusionsCollectionView.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeHeight) {
+            heightConstraint = constraint;
+            break;
+        }
+    }
     
-//    NSLayoutConstraint *heightConstraint;
-//    for (NSLayoutConstraint *constraint in self.inclusionsTableView.constraints) {
-//        if (constraint.firstAttribute == NSLayoutAttributeHeight) {
-//            heightConstraint = constraint;
-//            break;
-//        }
-//    }
-//    heightConstraint.constant = 1000;
-//    [self.inclusionsTableView layoutIfNeeded];
+    if (service.inclusions.count > 0) {
+        self.inclusionsCollectionView.hidden = NO;
+        
+        [self.inclusionDataSource setInclusions:service.inclusions];
+        
+        self.inclusionsCollectionView.dataSource = self.inclusionDataSource;
+        self.inclusionsCollectionView.delegate = self.inclusionDataSource;
+        [self.inclusionsCollectionView reloadData];
+        [self.inclusionsCollectionView layoutIfNeeded];
+        
+        heightConstraint.constant = self.inclusionsCollectionView.collectionViewLayout.collectionViewContentSize.height;
+        [self.inclusionsCollectionView layoutIfNeeded];
+        [self layoutIfNeeded];
+    } else {
+        heightConstraint = 0;
+        self.inclusionsCollectionView.hidden = YES;
+    }
     
 }
 
@@ -99,12 +111,7 @@
     
     self.baggageLabel.text = [NSString stringWithFormat:@"%@", shuttle.maxBaggage];
     self.passengersLabel.text = [NSString stringWithFormat:@"%@", shuttle.maxPassengers];
-    //    if (service.meetAndGreet) {
-    //        self.greetingLabel.text = @"Meet and greet";
-    //    } else {
-    //        self.greetingLabel.text = @"Curbside pickup: Call driver ";
-    //    }
-    
+
     self.priceLabel.text = [NSNumberUtils numberStringWithCurrencyCode:shuttle.totalCharge];
     
     
@@ -123,37 +130,43 @@
     [pickupStr appendAttributedString:pickupInfo];
     self.greetingLabel.attributedText = pickupStr;
     
-    self.inclusionsTableView.dataSource = self;
-    self.inclusionsTableView.delegate = self;
-    [self.inclusionsTableView reloadData];
-
+    NSLayoutConstraint *heightConstraint;
+    for (NSLayoutConstraint *constraint in self.inclusionsCollectionView.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeHeight) {
+            heightConstraint = constraint;
+            break;
+        }
+    }
+    
+    if (shuttle.inclusions.count > 0) {
+        
+        InclusionTableViewDataSource *i = [[InclusionTableViewDataSource alloc] init];
+        
+        self.inclusionsCollectionView.hidden = NO;
+        
+        [i setInclusions:shuttle.inclusions];
+        
+        self.inclusionsCollectionView.dataSource = i;
+        self.inclusionsCollectionView.delegate = i;
+        [self.inclusionsCollectionView reloadData];
+        [self.inclusionsCollectionView layoutIfNeeded];
+        
+        heightConstraint.constant = self.inclusionsCollectionView.collectionViewLayout.collectionViewContentSize.height;
+        [self.inclusionsCollectionView layoutIfNeeded];
+        [self layoutIfNeeded];
+        
+        
+    } else {
+        heightConstraint = 0;
+        self.inclusionsCollectionView.hidden = YES;
+    }
+    
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    _inclusionDataSource = [[InclusionTableViewDataSource alloc] init];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.inclusions.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    InclusionTableViewCell *cell = (InclusionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell"];
-    [cell setText:@""];
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 25;
-}
 
 @end
