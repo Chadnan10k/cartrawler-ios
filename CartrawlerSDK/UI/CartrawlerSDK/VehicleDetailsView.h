@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CartrawlerAPI.h>
-#import <CartrawlerSDK/CTSearch.h>
+#import <CartrawlerSDK/CarRentalSearch.h>
 
 @interface VehicleDetailsView : UIViewController
 
@@ -19,7 +19,7 @@ typedef void (^CTVehicleDetailsHeight)(CGFloat height);
 
 - (void)setupView;
 
-- (void)setData:(CTSearch *)search
+- (void)setData:(CarRentalSearch *)search
             api:(CartrawlerAPI *)api
      pickupDate:(NSDate *)pickupDate
      returnDate:(NSDate *)returnDate

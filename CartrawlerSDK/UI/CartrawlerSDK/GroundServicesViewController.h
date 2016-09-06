@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTGroundAvailability.h>
+#import "CTViewController.h"
 
-@interface GroundServicesViewController : UIViewController
+@interface GroundServicesViewController : CTViewController
 
 + (void)forceLinkerLoad_;
 

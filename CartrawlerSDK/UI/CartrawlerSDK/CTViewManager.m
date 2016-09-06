@@ -7,12 +7,14 @@
 //
 
 #import "CTViewManager.h"
-#import "CTSearch.h"
+#import "CarRentalSearch.h"
 #import "CTSDKSettings.h"
 #import "PaymentValidation.h"
 #import "InsuranceValidation.h"
 #import "SearchValidation.h"
 #import "GenericValidation.h"
+#import "GTSearchValidation.h"
+#import "GroundTransportSearch.h"
 
 @interface CTViewManager()
 typedef void (^VehAvailCompletion)(BOOL success, NSString *errorMessage);
@@ -22,8 +24,10 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
 @implementation CTViewManager
 
 + (void)canTransitionToStep:(CTViewController *)step
+            carRentalSearch:(CarRentalSearch *)carRentalSearch
+      groundTransportSearch:(GroundTransportSearch *)groundTransportSearch
               cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
-                 completion:(ValidationCompletion)completion;
+                 completion:(ValidationCompletion)completion
 {
     
     if (!step) {
@@ -36,7 +40,7 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
         case ViewTypeVehicleSelection:
         {
             [self canTransitionToVehicleSelection:cartrawlerAPI
-                                           search:[CTSearch instance]
+                                           search:[CarRentalSearch instance]
                                        completion:^(BOOL success, NSString *errorMessage) {
                                            if (success) {
                                                completion(YES, nil);
@@ -51,7 +55,7 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
         case ViewTypeInsurance:
         {
             [self canTransitionToInsuranceQuote:cartrawlerAPI
-                                         search:[CTSearch instance]
+                                         search:[CarRentalSearch instance]
                                      completion:^(BOOL success, NSString *errorMessage) {
                                          if (success) {
                                              completion(YES, nil);
@@ -66,7 +70,7 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
             
         case ViewTypeDriverDetails:
         {
-            if ([GenericValidation validate:[CTSearch instance]]) {
+            if ([GenericValidation validate:[CarRentalSearch instance]]) {
                 completion(YES, nil);
                 return;
             } else {
@@ -78,7 +82,7 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
             
         case ViewTypePaymentDetails:
         {
-            if ([self validationForPaymentDetails:[CTSearch instance]]) {
+            if ([self validationForPaymentDetails:[CarRentalSearch instance]]) {
                 completion(YES, nil);
                 return;
             } else {
@@ -90,7 +94,7 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
             
         case ViewTypeGeneric:
         {
-            if ([GenericValidation validate:[CTSearch instance]]) {
+            if ([GenericValidation validate:[CarRentalSearch instance]]) {
                 completion(YES, nil);
                 return;
             } else {
@@ -110,7 +114,7 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
 }
 
 + (void)canTransitionToVehicleSelection:(CartrawlerAPI *)cartrawlerAPI
-                                 search:(CTSearch *)search
+                                 search:(CarRentalSearch *)search
                              completion:(VehAvailCompletion)completion
 {
     if (![SearchValidation validate:search]) {
@@ -141,7 +145,7 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
 }
 
 + (void)canTransitionToInsuranceQuote:(CartrawlerAPI *)cartrawlerAPI
-                               search:(CTSearch *)search
+                               search:(CarRentalSearch *)search
                            completion:(VehAvailCompletion)completion
 {
     
@@ -181,9 +185,10 @@ typedef void (^InsuranceCompletion)(BOOL success, NSString *errorMessage);
      }];
 }
 
-+ (BOOL)validationForPaymentDetails:(CTSearch *)search
++ (BOOL)validationForPaymentDetails:(CarRentalSearch *)search
 {
     return [PaymentValidation validate:search];
 }
+
 
 @end

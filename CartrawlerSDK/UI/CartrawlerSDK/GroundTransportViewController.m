@@ -278,65 +278,27 @@
 - (IBAction)search:(id)sender
 {
     
-    CartrawlerAPI *api = [[CartrawlerAPI alloc] initWithClientKey:@"592248"
-                                                       language:[CTSDKSettings instance].languageCode
-                                                          debug:[CTSDKSettings instance].isDebug];
-    
-    CTGroundLocation *pickupLoc = [[CTGroundLocation alloc] initWithLatitude:self.pickupLat
-                                                                   longitude:self.pickupLong
-                                                                locationType:self.pickupLocType
-                                                                    dateTime:self.pickupDate];
-    
-    CTGroundLocation *dropoffLoc = [[CTGroundLocation alloc] initWithLatitude:self.dropoffLat
-                                                                    longitude:self.dropoffLong
-                                                                 locationType:self.dropoffLocType
-                                                                     dateTime:self.dropoffDate];
-    
-//    [api groundTransportationAvail:self.airport
-//                  pickupLocation:pickupLoc
-//                 dropoffLocation:dropoffLoc
-//         airportIsPickupLocation:airportIsPickupLocation
-//                        adultQty:@1
-//                        childQty:@0
-//                       infantQty:@0
-//                    currencyCode:@"EUR"
-//                      completion:^(CTGroundAvailability *response, CTErrorResponse *error) {
-//                          if (response) {
-//                              dispatch_async(dispatch_get_main_queue(), ^{
-//                                  [self performSegueWithIdentifier:@"showServices" sender:response];
-//                              });
-//                          } else {
-//                              NSLog(@"%@", error);
-//                          }
-//                      }];
+//    CartrawlerAPI *api = [[CartrawlerAPI alloc] initWithClientKey:@"592248"
+//                                                       language:[CTSDKSettings instance].languageCode
+//                                                          debug:[CTSDKSettings instance].isDebug];
+//    
+//    CTGroundLocation *pickupLoc = [[CTGroundLocation alloc] initWithLatitude:self.pickupLat
+//                                                                   longitude:self.pickupLong
+//                                                                locationType:self.pickupLocType
+//                                                                    dateTime:self.pickupDate];
+//    
+//    CTGroundLocation *dropoffLoc = [[CTGroundLocation alloc] initWithLatitude:self.dropoffLat
+//                                                                    longitude:self.dropoffLong
+//                                                                 locationType:self.dropoffLocType
+//                                                                     dateTime:self.dropoffDate];
     
     
-    CTGroundAvailability *avail = [[CTGroundAvailability alloc] initWithDictionary:[self dictionaryWithContentsOfJSONString:@"MockGTRS.json"]];
-    [self performSegueWithIdentifier:@"showServices" sender:avail];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    GroundServicesViewController *vc = segue.destinationViewController;
-    [vc setAvailability:(CTGroundAvailability *)sender];
+    [self pushToDestination];
 }
 
 - (IBAction)cancel:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (NSDictionary*)dictionaryWithContentsOfJSONString:(NSString*)fileName {
-    
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    
-    NSString *filePath = [[[NSBundle bundleWithPath:bundlePath] resourcePath] stringByAppendingPathComponent:fileName];
-    NSData* data = [NSData dataWithContentsOfFile:filePath];
-    __autoreleasing NSError* error = nil;
-    id result = [NSJSONSerialization JSONObjectWithData:data
-                                                options:kNilOptions error:&error];
-    if (error != nil) return nil;
-    return result;
 }
 
 @end

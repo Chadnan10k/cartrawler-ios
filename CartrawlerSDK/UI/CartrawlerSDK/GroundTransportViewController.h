@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTViewController.h"
 
-@interface GroundTransportViewController : UIViewController
+@interface GroundTransportViewController : CTViewController
 
 + (void)forceLinkerLoad_;
 

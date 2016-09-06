@@ -24,14 +24,12 @@
     
 }
 
-- (void)setAvailability:(CTGroundAvailability *)availabilty
-{
-    _availability = availabilty;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    _availability = self.groundSearch.availability;
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -81,7 +79,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [self pushToDestination];
 }
 
 @end

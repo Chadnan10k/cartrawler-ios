@@ -92,7 +92,8 @@
     destination.destinationViewController = self.destinationViewController;
     destination.fallBackViewController = self.fallBackViewController;
     destination.cartrawlerAPI = self.cartrawlerAPI;
-
+    destination.validationController = self.validationController;
+    destination.search = self.search;
 }
 
 - (IBAction)confirmDetails:(id)sender
@@ -178,14 +179,8 @@
 - (void)keyboardWillHide:(NSNotification *)n
 {
     NSDictionary* userInfo = n.userInfo;
-    
-    // get the size of the keyboard
     CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    
-    // resize the scrollview
     CGRect viewFrame = self.scrollView.frame;
-    // I'm also subtracting a constant kTabBarHeight because my UIScrollView was offset by the UITabBar so really only the portion of the keyboard that is leftover pass the UITabBar is obscuring my UIScrollView.
     viewFrame.size.height += (keyboardSize.height - kTabBarHeight);
     
     [UIView beginAnimations:nil context:NULL];
@@ -198,19 +193,13 @@
 
 - (void)keyboardWillShow:(NSNotification *)n
 {
-    // This is an ivar I'm using to ensure that we do not do the frame size adjustment on the `UIScrollView` if the keyboard is already shown.  This can happen if the user, after fixing editing a `UITextField`, scrolls the resized `UIScrollView` to another `UITextField` and attempts to edit the next `UITextField`.  If we were to resize the `UIScrollView` again, it would be disastrous.  NOTE: The keyboard notification will fire even when the keyboard is already shown.
     if (keyboardIsShown) {
         return;
     }
     
     NSDictionary* userInfo = n.userInfo;
-    
-    // get the size of the keyboard
     CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    // resize the noteView
     CGRect viewFrame = self.scrollView.frame;
-    // I'm also subtracting a constant kTabBarHeight because my UIScrollView was offset by the UITabBar so really only the portion of the keyboard that is leftover pass the UITabBar is obscuring my UIScrollView.
     viewFrame.size.height -= (keyboardSize.height - kTabBarHeight);
     
     [UIView beginAnimations:nil context:NULL];

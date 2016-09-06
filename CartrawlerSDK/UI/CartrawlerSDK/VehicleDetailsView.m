@@ -12,7 +12,7 @@
 #import "TermsViewController.h"
 #import "CTAppearance.h"
 #import "CTLabel.h"
-#import "CTSearch.h"
+#import "CarRentalSearch.h"
 
 #define kCellsPerRow 4
 
@@ -30,7 +30,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UICollectionView *includedCollectionView;
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 
-@property (strong, nonatomic) CTSearch *search;
+@property (strong, nonatomic) CarRentalSearch *search;
 @property (strong, nonatomic) CartrawlerAPI *api;
 @property (strong, nonatomic) NSDate *pickupDate;
 @property (strong, nonatomic) NSDate *returnDate;
@@ -117,7 +117,7 @@
     
 }
 
-- (void)setData:(CTSearch *)search
+- (void)setData:(CarRentalSearch *)search
             api:(CartrawlerAPI *)api
      pickupDate:(NSDate *)pickupDate
      returnDate:(NSDate *)returnDate

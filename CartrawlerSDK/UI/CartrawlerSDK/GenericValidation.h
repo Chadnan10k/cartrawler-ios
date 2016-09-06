@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CTSearch.h"
+#import "CarRentalSearch.h"
 
 @interface GenericValidation : NSObject
 
-+ (BOOL)validate:(CTSearch *)search;
++ (BOOL)validate:(CarRentalSearch *)search;
 
 @end

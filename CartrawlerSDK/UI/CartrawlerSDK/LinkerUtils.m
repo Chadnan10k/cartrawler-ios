@@ -71,6 +71,8 @@
 #import "PaymentCompletionViewController.h"
 #import "InclusionCollectionViewCell.h"
 #import "InclusionFlowLayout.h"
+#import "GTPaymentViewController.h"
+#import "GTPaymentCompletionViewController.h"
 
 @implementation LinkerUtils
 
@@ -139,6 +141,8 @@
     [PaymentCompletionViewController forceLinkerLoad_];
     [InclusionCollectionViewCell forceLinkerLoad_];
     [InclusionFlowLayout forceLinkerLoad_];
+    [GTPaymentViewController forceLinkerLoad_];
+    [GTPaymentCompletionViewController forceLinkerLoad_];
 }
 
 @end

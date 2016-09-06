@@ -20,14 +20,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CartrawlerSDK : NSObject
 
+//---Car Rental View Controllers ---
 @property (nonatomic, strong, nonnull, readonly) CTViewController *searchDetailsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleSelectionViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleDetailsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceExtrasViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentSummaryViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *driverDetialsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentSummaryViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *paymentViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *paymentCompletionViewController;
+//----------------------------------
+
+//---Ground Transport View Controllers---
+@property (nonatomic, strong, nonnull, readonly) CTViewController *gtSearchDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *gtServiceSelectionViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *gtDriverDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *gtPaymentViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *gtPaymentCompletionViewController;
+//---------------------------------------
+
 
 /**
  *  Initialize the CartrawlerAPI

@@ -8,7 +8,7 @@
 
 #import "PaymentCompletionViewController.h"
 #import "CTLabel.h"
-#import "CTSearch.h"
+#import "CarRentalSearch.h"
 #import "CTImageCache.h"
 #import "CTAppearance.h"
 #import "NSDateUtils.h"
@@ -48,23 +48,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [[CTImageCache sharedInstance] cachedImage: [CTSearch instance].selectedVehicle.vehicle.pictureURL completion:^(UIImage *image) {
+    [[CTImageCache sharedInstance] cachedImage: [CarRentalSearch instance].selectedVehicle.vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImage.image = image;
     }];
     
-    [[CTImageCache sharedInstance] cachedImage: [CTSearch instance].selectedVehicle.vendor.logoURL completion:^(UIImage *image) {
+    [[CTImageCache sharedInstance] cachedImage: [CarRentalSearch instance].selectedVehicle.vendor.logoURL completion:^(UIImage *image) {
         self.supplierImage.image = image;
     }];
     
-    self.supplierLabel.text = [CTSearch instance].selectedVehicle.vendor.name;
+    self.supplierLabel.text = [CarRentalSearch instance].selectedVehicle.vendor.name;
     
-    self.vehicleName.text = [CTSearch instance].selectedVehicle.vehicle.makeModelName;
+    self.vehicleName.text = [CarRentalSearch instance].selectedVehicle.vehicle.makeModelName;
     
-    NSAttributedString *pickupLoc = [[NSAttributedString alloc] initWithString:[CTSearch instance].pickupLocation.name
+    NSAttributedString *pickupLoc = [[NSAttributedString alloc] initWithString:[CarRentalSearch instance].pickupLocation.name
                                                                     attributes:@{NSFontAttributeName:
                                                                                      [UIFont fontWithName:[CTAppearance instance].boldFontName size:16]}];
     
-    NSAttributedString *pickupDate = [[NSAttributedString alloc] initWithString:[NSDateUtils stringFromDateWithFormat:[CTSearch instance].pickupDate
+    NSAttributedString *pickupDate = [[NSAttributedString alloc] initWithString:[NSDateUtils stringFromDateWithFormat:[CarRentalSearch instance].pickupDate
                                                                                                                format:@"EEE, MMM YYYY, hh:mm a"]
                                                                     attributes:@{NSFontAttributeName:
                                                                                      [UIFont fontWithName:[CTAppearance instance].fontName size:16]}];
@@ -74,11 +74,11 @@
     [pickup appendAttributedString:[[NSAttributedString alloc] initWithString:@" \n "]];
     [pickup appendAttributedString:pickupDate];
     
-    NSAttributedString *dropoffLoc = [[NSAttributedString alloc] initWithString:[CTSearch instance].dropoffLocation.name
+    NSAttributedString *dropoffLoc = [[NSAttributedString alloc] initWithString:[CarRentalSearch instance].dropoffLocation.name
                                                                     attributes:@{NSFontAttributeName:
                                                                                      [UIFont fontWithName:[CTAppearance instance].boldFontName size:16]}];
     
-    NSAttributedString *dropoffDate = [[NSAttributedString alloc] initWithString:[NSDateUtils stringFromDateWithFormat:[CTSearch instance].dropoffDate
+    NSAttributedString *dropoffDate = [[NSAttributedString alloc] initWithString:[NSDateUtils stringFromDateWithFormat:[CarRentalSearch instance].dropoffDate
                                                                                                                format:@"EEE, MMM YYYY, hh:mm a"]
                                                                      attributes:@{NSFontAttributeName:
                                                                                       [UIFont fontWithName:[CTAppearance instance].fontName size:16]}];

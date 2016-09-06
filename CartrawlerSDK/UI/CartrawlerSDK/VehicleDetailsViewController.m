@@ -63,7 +63,7 @@
     self.tabSelection.selectedSegmentIndex = 0;
     
     if (self.vehicleDetailView) {
-        [self.vehicleDetailView setData:[CTSearch instance]
+        [self.vehicleDetailView setData:[CarRentalSearch instance]
                                     api:self.cartrawlerAPI
                              pickupDate:self.search.pickupDate
                              returnDate:self.search.dropoffDate
@@ -167,7 +167,7 @@
     if ([segue.identifier isEqualToString:@"VehicleEmbed"]) {
         _vehicleDetailView = (VehicleDetailsView *)segue.destinationViewController;
         [self.vehicleDetailView
-         setData:[CTSearch instance]
+         setData:[CarRentalSearch instance]
                 api:self.cartrawlerAPI
          pickupDate:self.search.pickupDate
          returnDate:self.search.dropoffDate

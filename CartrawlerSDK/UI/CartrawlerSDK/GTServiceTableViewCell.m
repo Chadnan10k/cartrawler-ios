@@ -82,27 +82,27 @@
         }
     }
     
-    if (service.inclusions.count > 0) {
-        self.inclusionsCollectionView.hidden = NO;
-        
-        [self.inclusionDataSource setInclusions:service.inclusions];
-        
-        self.inclusionsCollectionView.dataSource = self.inclusionDataSource;
-        self.inclusionsCollectionView.delegate = self.inclusionDataSource;
-        [self.inclusionsCollectionView reloadData];
-        [self.inclusionsCollectionView layoutIfNeeded];
-        
-        heightConstraint.constant = self.inclusionsCollectionView.collectionViewLayout.collectionViewContentSize.height;
-        [self.inclusionsCollectionView layoutIfNeeded];
-        [self layoutIfNeeded];
-    } else {
+//    if (service.inclusions.count > 0) {
+//        self.inclusionsCollectionView.hidden = NO;
+//        
+//        [self.inclusionDataSource setInclusions:service.inclusions];
+//        
+//        self.inclusionsCollectionView.dataSource = self.inclusionDataSource;
+//        self.inclusionsCollectionView.delegate = self.inclusionDataSource;
+//        [self.inclusionsCollectionView reloadData];
+//        [self.inclusionsCollectionView layoutIfNeeded];
+//        
+//        heightConstraint.constant = self.inclusionsCollectionView.collectionViewLayout.collectionViewContentSize.height;
+//        [self.inclusionsCollectionView layoutIfNeeded];
+//        [self layoutIfNeeded];
+//    } else {
         heightConstraint = 0;
         self.inclusionsCollectionView.hidden = YES;
-    }
+    //}
     
 }
 
-- (void)setShuttle:(CTGroundService *)shuttle
+- (void)setShuttle:(CTGroundShuttle *)shuttle
 {
     
     [[CTImageCache sharedInstance] cachedImage: shuttle.vehicleImage completion:^(UIImage *image) {
@@ -113,23 +113,7 @@
     self.passengersLabel.text = [NSString stringWithFormat:@"%@", shuttle.maxPassengers];
 
     self.priceLabel.text = [NSNumberUtils numberStringWithCurrencyCode:shuttle.totalCharge];
-    
-    
-    NSAttributedString *pickupType = [[NSAttributedString alloc] initWithString:@"Curbside: "
-                                                                     attributes:@{NSFontAttributeName:
-                                                                                      [UIFont fontWithName:@"Avenir-HeavyOblique" size:16]}];
-    
-    NSAttributedString *pickupInfo = [[NSAttributedString alloc] initWithString:@"Call driver on courtesy telephone to arrange pick-up point"
-                                                                     attributes:@{NSFontAttributeName:
-                                                                                      [UIFont fontWithName:@"Avenir-Oblique" size:16]}];
-    
-    
-    NSMutableAttributedString *pickupStr = [[NSMutableAttributedString alloc] init];
-    
-    [pickupStr appendAttributedString:pickupType];
-    [pickupStr appendAttributedString:pickupInfo];
-    self.greetingLabel.attributedText = pickupStr;
-    
+        
     NSLayoutConstraint *heightConstraint;
     for (NSLayoutConstraint *constraint in self.inclusionsCollectionView.constraints) {
         if (constraint.firstAttribute == NSLayoutAttributeHeight) {
@@ -138,28 +122,28 @@
         }
     }
     
-    if (shuttle.inclusions.count > 0) {
-        
-        InclusionTableViewDataSource *i = [[InclusionTableViewDataSource alloc] init];
-        
-        self.inclusionsCollectionView.hidden = NO;
-        
-        [i setInclusions:shuttle.inclusions];
-        
-        self.inclusionsCollectionView.dataSource = i;
-        self.inclusionsCollectionView.delegate = i;
-        [self.inclusionsCollectionView reloadData];
-        [self.inclusionsCollectionView layoutIfNeeded];
-        
-        heightConstraint.constant = self.inclusionsCollectionView.collectionViewLayout.collectionViewContentSize.height;
-        [self.inclusionsCollectionView layoutIfNeeded];
-        [self layoutIfNeeded];
-        
-        
-    } else {
+//    if (shuttle.inclusions.count > 0) {
+//        
+//        InclusionTableViewDataSource *i = [[InclusionTableViewDataSource alloc] init];
+//        
+//        self.inclusionsCollectionView.hidden = NO;
+//        
+//        [i setInclusions:shuttle.inclusions];
+//        
+//        self.inclusionsCollectionView.dataSource = i;
+//        self.inclusionsCollectionView.delegate = i;
+//        [self.inclusionsCollectionView reloadData];
+//        [self.inclusionsCollectionView layoutIfNeeded];
+//        
+//        heightConstraint.constant = self.inclusionsCollectionView.collectionViewLayout.collectionViewContentSize.height;
+//        [self.inclusionsCollectionView layoutIfNeeded];
+//        [self layoutIfNeeded];
+//        
+//        
+//    } else {
         heightConstraint = 0;
         self.inclusionsCollectionView.hidden = YES;
-    }
+    //}
     
 }
 

@@ -11,9 +11,12 @@
 #import "LinkerUtils.h"
 #import "CTSDKSettings.h"
 #import "CTNavigationController.h"
-#import "CTSearch.h"
-
-#import "GroundTransportViewController.h"
+#import "CarRentalSearch.h"
+#import "CTValidation.h"
+#import "GTSearchValidation.h"
+#import "GTSelectionValidation.h"
+#import "GTPassengerDetailsValidation.h"
+#import "GTGenericValidation.h"
 
 #define kSearchViewStoryboard           @"StepOne"
 #define kSearchResultsViewStoryboard    @"StepTwo"
@@ -22,6 +25,7 @@
 #define kSummaryViewStoryboard          @"StepFive"
 #define kDetailsViewStoryboard          @"StepSix"
 #define kPaymentViewStoryboard          @"Payment"
+#define kGroundTransportStoryboard      @"GroundTransport"
 
 #define kGTViewStoryboard @"GroundTransport"
 
@@ -29,13 +33,13 @@
 
 @property (nonatomic, strong, readonly) CTViewController *searchDetailsViewControllerOverride;
 
-@property (nonatomic, strong) GroundTransportViewController *groundTransportViewController;
-
 @property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
 @property (nonatomic, strong) NSArray <CTViewController *> *customViewControllers;
 
 @property (nonatomic, strong) NSBundle *bundle;
+
+@property (nonatomic) BOOL isCarRental;//remove this hack
 
 @end
 
@@ -61,30 +65,44 @@
         [self.cartrawlerAPI enableLogging:YES];
     }
     
-    //set default views
-    UIStoryboard *sa = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:self.bundle];
-    _searchDetailsViewController = [sa instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
+    //---SET DEFAULT CAR RENTAL VIEWS---
+    UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:self.bundle];
+    _searchDetailsViewController = [searchStoryboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
     
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:kSearchResultsViewStoryboard bundle:self.bundle];
-    _vehicleSelectionViewController = [sb instantiateViewControllerWithIdentifier:@"SearchResultsViewController"];
+    UIStoryboard *searchResultsStoryboard = [UIStoryboard storyboardWithName:kSearchResultsViewStoryboard bundle:self.bundle];
+    _vehicleSelectionViewController = [searchResultsStoryboard instantiateViewControllerWithIdentifier:@"SearchResultsViewController"];
     
-    UIStoryboard *sc = [UIStoryboard storyboardWithName:kVehicleDetailsViewStoryboard bundle:self.bundle];
-    _vehicleDetailsViewController = [sc instantiateViewControllerWithIdentifier:@"VehicleDetailsViewController"];
+    UIStoryboard *vehicleDetailsStoryboard = [UIStoryboard storyboardWithName:kVehicleDetailsViewStoryboard bundle:self.bundle];
+    _vehicleDetailsViewController = [vehicleDetailsStoryboard instantiateViewControllerWithIdentifier:@"VehicleDetailsViewController"];
     
-    UIStoryboard *sd = [UIStoryboard storyboardWithName:kExtrasViewStoryboard bundle:self.bundle];
-    _insuranceExtrasViewController = [sd instantiateViewControllerWithIdentifier:@"ExtrasViewController"];
+    UIStoryboard *extrasStoryboard = [UIStoryboard storyboardWithName:kExtrasViewStoryboard bundle:self.bundle];
+    _insuranceExtrasViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:@"ExtrasViewController"];
     
-    UIStoryboard *se = [UIStoryboard storyboardWithName:kSummaryViewStoryboard bundle:self.bundle];
-    _paymentSummaryViewController = [se instantiateViewControllerWithIdentifier:@"PaymentSummaryViewController"];
+    UIStoryboard *summaryStoryboard = [UIStoryboard storyboardWithName:kSummaryViewStoryboard bundle:self.bundle];
+    _paymentSummaryViewController = [summaryStoryboard instantiateViewControllerWithIdentifier:@"PaymentSummaryViewController"];
     
-    UIStoryboard *sf = [UIStoryboard storyboardWithName:kDetailsViewStoryboard bundle:self.bundle];
-    _driverDetialsViewController = [sf instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
+    UIStoryboard *detailsStoryboard = [UIStoryboard storyboardWithName:kDetailsViewStoryboard bundle:self.bundle];
+    _driverDetialsViewController = [detailsStoryboard instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
     
-    UIStoryboard *sg = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:self.bundle];
-    _paymentViewController = [sg instantiateViewControllerWithIdentifier:@"PaymentViewController"];
+    UIStoryboard *paymentStoryboard = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:self.bundle];
+    _paymentViewController = [paymentStoryboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
+    _paymentCompletionViewController = [paymentStoryboard instantiateViewControllerWithIdentifier:@"PaymentCompletionViewController"];
+
+    //---------------------------------
     
-    UIStoryboard *sh = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:self.bundle];
-    _paymentCompletionViewController = [sh instantiateViewControllerWithIdentifier:@"PaymentCompletionViewController"];
+    //---SET DEFAULT GROUND TRANSPORT VIEWS---
+    UIStoryboard *groundTransportStoryboard = [UIStoryboard storyboardWithName:kGroundTransportStoryboard bundle:self.bundle];
+    _gtSearchDetailsViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"GTSearchViewController"];
+    
+    _gtServiceSelectionViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"GroundServicesViewController"];
+    
+    _gtDriverDetailsViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
+    
+    _gtPaymentViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
+    
+    _gtPaymentCompletionViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"PaymentCompletionViewController"];
+    
+    //----------------------------------------
     
     [self configureViews];
     
@@ -100,8 +118,9 @@
 
 - (void)presentCarRentalInViewController:(UIViewController *)viewController;
 {
+    _isCarRental = YES;
     
-    [[CTSearch instance] reset];
+    [[CarRentalSearch instance] reset];
     
     [self configureViews];
 
@@ -115,12 +134,23 @@
 
 - (void)presentGroundTransportInViewController:(UIViewController *)viewController
 {
-    CTNavigationController *navController=[[CTNavigationController alloc]initWithRootViewController:[self groundTransportViewController_]];
+    _isCarRental = NO;
+    
+    [[GroundTransportSearch instance] reset];
+    
+    [self configureViews];
+    
+    CTNavigationController *navController;
+    
+    navController = [[CTNavigationController alloc] initWithRootViewController: self.gtSearchDetailsViewController];
+    
     navController.navigationBar.hidden = YES;
     [viewController presentViewController:navController animated:YES completion:nil];
 }
 
 - (void)configureViews {
+    
+    //CAR RENTAL
     [self configureViewController:self.searchDetailsViewController viewType:ViewTypeSearchDetails destination:self.vehicleSelectionViewController fallback:nil];
     
     [self configureViewController:self.vehicleSelectionViewController viewType:ViewTypeVehicleSelection destination:self.vehicleDetailsViewController fallback:nil];
@@ -136,6 +166,16 @@
     [self configureViewController:self.paymentViewController viewType:ViewTypePaymentDetails destination:self.paymentCompletionViewController fallback:nil];
     
     [self configureViewController:self.paymentCompletionViewController viewType:ViewTypeGeneric destination:self.vehicleSelectionViewController fallback:nil];
+    
+    //GROUND TRANSPORT
+    
+    [self configureViewController:self.gtSearchDetailsViewController validationController:[[GTSearchValidation alloc] init] destination:self.gtServiceSelectionViewController fallback:nil];
+    
+    [self configureViewController:self.gtServiceSelectionViewController validationController:[[GTSelectionValidation alloc] init] destination:self.gtDriverDetailsViewController fallback:nil];
+
+    [self configureViewController:self.gtDriverDetailsViewController validationController:[[GTPassengerDetailsValidation alloc] init] destination:self.gtPaymentViewController fallback:nil];
+
+    [self configureViewController:self.gtPaymentViewController validationController:[[GTGenericValidation alloc] init] destination:self.gtPaymentCompletionViewController fallback:nil];
 }
 
 - (void)overrideSearchDetailsViewController:(CTViewController *)viewController
@@ -189,7 +229,27 @@
     viewController.fallBackViewController = fallback;
     viewController.viewType = viewType;
     viewController.cartrawlerAPI = self.cartrawlerAPI;
-    viewController.search = [CTSearch instance];
+    viewController.search = [CarRentalSearch instance];
+    return viewController;
+}
+
+- (CTViewController *)configureViewController:(CTViewController *)viewController
+                         validationController:(CTValidation *)validationController
+                                  destination:(CTViewController *)destination
+                                     fallback:(CTViewController *)fallback
+{
+    viewController.destinationViewController = destination;
+    viewController.fallBackViewController = fallback;
+    viewController.cartrawlerAPI = self.cartrawlerAPI;
+    
+    if (self.isCarRental) {
+        viewController.search = [CarRentalSearch instance];
+    } else {
+        viewController.groundSearch = [GroundTransportSearch instance];
+    }
+    
+    viewController.validationController = validationController;
+    
     return viewController;
 }
 
@@ -201,15 +261,6 @@
     viewController.fallBackViewController = fallback;
 }
 
-- (GroundTransportViewController *)groundTransportViewController_
-{
-    if (self.groundTransportViewController == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kGTViewStoryboard bundle:self.bundle];
-        return [storyboard instantiateViewControllerWithIdentifier:@"GroundTransportViewController"];
-    } else {
-        return self.groundTransportViewController;
-    }
-}
 
 #pragma mark Push Notifications
 
@@ -230,6 +281,5 @@ void uncaughtExceptionHandler(NSException *exception)
     NSLog(@"\n\n\nCartrawlerSDK Crash:\n%@\n\n\n", exception);
     NSLog(@"\n\n\nCartrawlerSDK Stack Trace:\n\n\n%@", exception.callStackSymbols);
 }
-
 
 @end

@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "CTSearch.h"
+#import "CarRentalSearch.h"
+#import "GroundTransportSearch.h"
 #import "CTViewController.h"
 
 ///Checks whether or not we can push to a certain view
@@ -17,6 +18,8 @@
 typedef void (^ValidationCompletion)(BOOL success, NSString *errorMessage);
 
 + (void)canTransitionToStep:(CTViewController *)step
+            carRentalSearch:(CarRentalSearch *)carRentalSearch
+      groundTransportSearch:(GroundTransportSearch *)groundTransportSearch
               cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
                  completion:(ValidationCompletion)completion;
 @end

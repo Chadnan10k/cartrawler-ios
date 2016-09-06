@@ -10,39 +10,39 @@
 
 @implementation InsuranceValidation
 
-+ (BOOL)validate:(CTSearch *)search {
++ (BOOL)validate:(CarRentalSearch *)search {
 
-if ([CTSearch instance].pickupLocation == nil) {
+if ([CarRentalSearch instance].pickupLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupLocation IS NOT SET \n\n");
         return NO;
     }
 
-    if ([CTSearch instance].dropoffLocation == nil) {
+    if ([CarRentalSearch instance].dropoffLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.dropoffLocation IS NOT SET \n\n");
         return NO;
     }
 
-    if ([CTSearch instance].pickupDate == nil) {
+    if ([CarRentalSearch instance].pickupDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupDate IS NOT SET \n\n");
         return NO;
     }
 
-    if ([CTSearch instance].dropoffDate == nil) {
+    if ([CarRentalSearch instance].dropoffDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.dropoffDate IS NOT SET \n\n");
         return NO;
     }
 
-    if ([CTSearch instance].driverAge == nil) {
+    if ([CarRentalSearch instance].driverAge == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.driverAge IS NOT SET \n\n");
         return NO;
     }
 
-    if ([CTSearch instance].selectedVehicle == nil) {
+    if ([CarRentalSearch instance].selectedVehicle == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.vehicleAvailability IS NOT SET \n\n");
         return NO;
     }
 
-    if ([CTSearch instance].selectedVehicle.vehicle.extraEquipment == nil) {
+    if ([CarRentalSearch instance].selectedVehicle.vehicle.extraEquipment == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS extras IS NOT SET \n\n");
         return NO;
     }

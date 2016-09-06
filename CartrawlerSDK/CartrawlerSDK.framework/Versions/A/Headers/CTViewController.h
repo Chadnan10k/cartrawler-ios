@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CTSearch.h"
+#import "CarRentalSearch.h"
+#import "GroundTransportSearch.h"
+#import "CTValidation.h"
 
 @interface CTViewController : UIViewController
 
@@ -19,14 +21,20 @@ typedef enum ViewType : NSUInteger {
     ViewTypeInsurance,
     ViewTypeDriverDetails,
     ViewTypePaymentDetails,
-    ViewTypeGeneric
+    ViewTypeGeneric,
+    ViewTypeGTSearch,
+    ViewTypeGTSelection
 } ViewType;
-
-@property (nonatomic) Completion dataValidationCompletion;
 
 @property (nonatomic) ViewType viewType;
 
-@property (nonatomic, strong) CTSearch *search;
+@property (nonatomic) Completion dataValidationCompletion;
+
+@property (nonatomic, strong) CarRentalSearch *search;
+@property (nonatomic, strong) GroundTransportSearch *groundSearch;
+
+@property (nonatomic, strong) CTValidation *validationController;
+
 @property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
 @property (nonatomic, strong) CTViewController *destinationViewController;

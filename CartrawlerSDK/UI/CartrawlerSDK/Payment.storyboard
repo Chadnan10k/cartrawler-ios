@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11185.3" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ol5-el-QKA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ol5-el-QKA">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11151.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -45,38 +45,23 @@
                                     <constraint firstItem="tPg-jI-Nk9" firstAttribute="top" secondItem="SBI-wA-GBx" secondAttribute="top" constant="24" id="XJc-xh-9iE"/>
                                 </constraints>
                             </view>
-                            <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RK-53-SSz">
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <dataDetectorType key="dataDetectorTypes"/>
-                            </webView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIk-ow-XDv" customClass="CTButton">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="V26-t3-Wf1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Book Now"/>
-                                <connections>
-                                    <action selector="bookNow:" destination="ol5-el-QKA" eventType="touchUpInside" id="R6Z-sN-skn"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Hs-sg-tEL">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="dIk-ow-XDv" secondAttribute="trailing" constant="16" id="3bH-Vk-iJc"/>
+                            <constraint firstAttribute="trailing" secondItem="6Hs-sg-tEL" secondAttribute="trailing" id="6ne-l5-nwV"/>
                             <constraint firstAttribute="trailing" secondItem="SBI-wA-GBx" secondAttribute="trailing" id="BWs-FG-G17"/>
                             <constraint firstItem="SBI-wA-GBx" firstAttribute="leading" secondItem="7TW-N7-21d" secondAttribute="leading" id="Fxw-go-6Ut"/>
-                            <constraint firstItem="oLg-Fc-5Ot" firstAttribute="top" secondItem="dIk-ow-XDv" secondAttribute="bottom" constant="20" id="UvC-EQ-jRx"/>
-                            <constraint firstItem="dIk-ow-XDv" firstAttribute="top" secondItem="3RK-53-SSz" secondAttribute="bottom" constant="8" id="V5c-hU-m5r"/>
-                            <constraint firstAttribute="trailing" secondItem="3RK-53-SSz" secondAttribute="trailing" id="Vjm-c7-eTC"/>
-                            <constraint firstItem="dIk-ow-XDv" firstAttribute="leading" secondItem="7TW-N7-21d" secondAttribute="leading" constant="16" id="mxl-gI-jo7"/>
+                            <constraint firstItem="6Hs-sg-tEL" firstAttribute="leading" secondItem="7TW-N7-21d" secondAttribute="leading" id="Pj9-dx-X4Z"/>
+                            <constraint firstItem="6Hs-sg-tEL" firstAttribute="top" secondItem="SBI-wA-GBx" secondAttribute="bottom" id="VlB-z4-ljI"/>
+                            <constraint firstItem="oLg-Fc-5Ot" firstAttribute="top" secondItem="6Hs-sg-tEL" secondAttribute="bottom" id="cLa-dR-Fks"/>
                             <constraint firstItem="SBI-wA-GBx" firstAttribute="top" secondItem="7TW-N7-21d" secondAttribute="top" id="xCH-va-Ctf"/>
-                            <constraint firstItem="3RK-53-SSz" firstAttribute="leading" secondItem="7TW-N7-21d" secondAttribute="leading" id="zIf-qG-827"/>
-                            <constraint firstItem="3RK-53-SSz" firstAttribute="top" secondItem="SBI-wA-GBx" secondAttribute="bottom" constant="-1" id="zfv-IL-IHE"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="3RK-53-SSz" id="yuc-qT-bd8"/>
+                        <outlet property="webViewContainer" destination="6Hs-sg-tEL" id="KjY-4a-InC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9jb-vS-cbs" userLabel="First Responder" sceneMemberID="firstResponder"/>

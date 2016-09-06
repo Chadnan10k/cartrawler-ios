@@ -10,7 +10,7 @@
 
 @implementation GenericValidation
 
-+ (BOOL)validate:(CTSearch *)search
++ (BOOL)validate:(CarRentalSearch *)search
 {
     if (search.pickupLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupLocation IS NOT SET \n\n");
