@@ -11,6 +11,8 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) CartrawlerSDK *sdk;
+
 @end
 
 @implementation ViewController
@@ -25,10 +27,7 @@
 {
     [super viewDidAppear:animated];
     
-    CartrawlerSDK *sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"592248" languageCode:@"EN" isDebug:YES];
-    
-    //[sdk presentGroundTransportInViewController:self];
-    [sdk presentCarRentalInViewController:self];
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"592248" languageCode:@"EN" isDebug:YES];
 }
 
 
@@ -37,5 +36,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)openCarRental:(id)sender {
+    [self.sdk presentCarRentalInViewController:self];
+}
+
+- (IBAction)openGroundTransport:(id)sender {
+    [self.sdk presentGroundTransportInViewController:self];
+}
 
 @end

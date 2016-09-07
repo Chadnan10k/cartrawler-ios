@@ -624,7 +624,7 @@
     @"                } \n"
     @"            }, \n"
     @"            \"Dropoff\":       { \n"
-    @"                \"@DateTime\": \"%@\", \n"
+    //@"                \"@DateTime\": \"%@\", \n"
     @"                \"Address\":         { \n"
     @"                    \"@Latitude\": \"%@\", \n"
     @"                    \"@Longitude\": \"%@\", \n"
@@ -702,7 +702,7 @@
                       pickupLocationType,
                       pickupLocationName,
                       specialInstructions,
-                      dropOffdateTime,
+                      //dropOffdateTime,
                       dropoffLatitude,
                       dropoffLongitude,
                       dropoffLocationType,

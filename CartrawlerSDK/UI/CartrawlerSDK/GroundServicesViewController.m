@@ -8,12 +8,15 @@
 
 #import "GroundServicesViewController.h"
 #import "GTServiceTableViewCell.h"
+#import "InclusionTableViewDataSource.h"
 
 @interface GroundServicesViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) CTGroundAvailability *availability;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) InclusionTableViewDataSource *inclusionDataSource;
 
 @end
 
@@ -35,11 +38,16 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 80;
     
+    _inclusionDataSource = [[InclusionTableViewDataSource alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark TABLE VIEW
@@ -58,16 +66,24 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    GTServiceTableViewCell *c = [tableView cellForRowAtIndexPath:indexPath];
+//
+//    [c.inclusionDataSource setInclusions:self.availability.shuttles[indexPath.row].inclusions];
+
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GTServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    cell.inclusionDataSource = self.inclusionDataSource;
     if (indexPath.section == 1) {
         [cell setService:self.availability.services[indexPath.row]];
     } else {
+         [cell.inclusionDataSource setInclusions:self.availability.shuttles[indexPath.row].inclusions];
         [cell setShuttle:self.availability.shuttles[indexPath.row]];
     }
-    
-    NSLog(@"CTHEIGHT %f", cell.inclusionsCollectionView.contentSize.height);
     
     return cell;
 }
@@ -79,6 +95,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 1) {
+        self.groundSearch.selectedService = self.availability.services[indexPath.row];
+    } else {
+        self.groundSearch.selectedShuttle = self.availability.shuttles[indexPath.row];
+    }
     [self pushToDestination];
 }
 

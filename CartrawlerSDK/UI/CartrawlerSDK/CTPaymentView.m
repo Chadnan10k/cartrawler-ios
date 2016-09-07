@@ -12,6 +12,7 @@
 #import "CTSDKSettings.h"
 #import "NSDateUtils.h"
 #import "CTButton.h"
+#import "GTPaymentRequest.h"
 
 @interface CTPaymentView() <UIWebViewDelegate, UIAlertViewDelegate, NSURLConnectionDataDelegate>
 
@@ -136,16 +137,73 @@
 
 - (void)setForGTPayment:(GroundTransportSearch *)search
 {
+    NSString *flightNo = [[search.flightNumber componentsSeparatedByCharactersInSet:
+                           [NSCharacterSet decimalDigitCharacterSet].invertedSet]
+                          componentsJoinedByString:@""];
     
+    NSString *airline = [[search.flightNumber componentsSeparatedByCharactersInSet:
+                          [NSCharacterSet letterCharacterSet].invertedSet]
+                         componentsJoinedByString:@""];
+    
+    NSString *request = [GTPaymentRequest CT_GroundBook:[NSDateUtils stringFromDateWithFormat:search.pickupLocation.dateTime format:@"yyyy-MM-dd'T'HH:mm:ss"]
+                     pickupLatitude:search.pickupLocation.latitude.stringValue
+                    pickupLongitude:search.pickupLocation.longitude.stringValue
+                       addressLine1:search.addressLine1
+                       addressLine2:search.addressLine2
+                               town:search.addressLine1
+                               city:@"Dublin"
+                           postcode:@"2"
+                     stateProvience:@"Leinster"
+                        countryCode:@"IE"
+                        countryName:@"Ireland"
+                 pickupLocationType:search.pickupLocation.locationTypeDescription
+                 pickupLocationName:@"Cartrawler"
+                specialInstructions:@"Some instruction"
+                    dropOffdateTime:nil
+                    dropoffLatitude:search.dropoffLocation.latitude.stringValue
+                   dropoffLongitude:search.dropoffLocation.longitude.stringValue
+                dropoffLocationType:search.dropoffLocation.locationTypeDescription
+                        airportCode:search.airport.IATACode
+                         terminalNo:search.airport.terminalNumber
+                          airlineId:airline
+                         flightType:search.airport.flightType
+                           flightNo:flightNo
+                          firstName:search.firstName
+                            surname:search.surname
+                              phone:search.phone
+               passengerCountryCode:@"IE"
+                     passengerEmail:search.email
+                 additionalAdultQty:@"0"
+                        childrenQty:@"0"
+                          infantQty:@"0"
+                              refId:search.selectedService != nil ? search.selectedService.refId : search.selectedShuttle.refId
+                             refUrl:search.selectedService != nil ? search.selectedService.refUrl : search.selectedShuttle.refUrl
+                       currencyCode:[CTSDKSettings instance].currencyCode
+                           clientID:[CTSDKSettings instance].clientId
+                             target:@"Test"
+                             locale:[CTSDKSettings instance].languageCode
+                          ipaddress:@"127.0.0.1"];
+    
+    NSLog(@"%@", request);
+    
+    NSString *urlStr;
+    
+    if ([CTSDKSettings instance].isDebug) {
+        urlStr = [NSString stringWithFormat:@"http://external-dev.cartrawler.com:20002/cartrawlerpay/paymentform?type=OTA_VehResRQ&mobile=true"];
+    } else {
+        urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_VehResRQ&mobile=true"];
+    }
+    
+    self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"[URLPLACEHOLDER]" withString:urlStr];
+    
+    [self.webView loadHTMLString:self.htmlString baseURL: self.bundle.bundleURL];
 }
 
 - (void)setForCarRentalPayment:(CarRentalSearch *)search
 {
     
-    NSString *s = [PaymentRequest OTA_VehResRQ:[NSDateUtils stringFromDateWithFormat:search.pickupDate
-                                                                              format:@"yyyy-MM-dd'T'HH:mm:ss"]
-                                returnDateTime:[NSDateUtils stringFromDateWithFormat:search.dropoffDate
-                                                                              format:@"yyyy-MM-dd'T'HH:mm:ss"]
+    NSString *s = [PaymentRequest OTA_VehResRQ:[NSDateUtils stringFromDateWithFormat:search.pickupDate format:@"yyyy-MM-dd'T'HH:mm:ss"]
+                                returnDateTime:[NSDateUtils stringFromDateWithFormat:search.dropoffDate format:@"yyyy-MM-dd'T'HH:mm:ss"]
                             pickupLocationCode:search.pickupLocation.code
                            dropoffLocationCode:search.dropoffLocation.code
                                    homeCountry:[CTSDKSettings instance].homeCountryCode

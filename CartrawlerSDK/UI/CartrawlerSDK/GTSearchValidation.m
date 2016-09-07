@@ -16,22 +16,26 @@
                      completion:(CTSearchValidation)completion
 {
     
-//    if (!search.airport) {
-//        completion(nil, @"CTAirport not set");
-//    }
-//    
-//    if (!search.pickupLocation) {
-//        completion(nil, @"Ground Transport Pickup location not set");
-//    }
-//    
-//    if (!search.dropoffLocation) {
-//        completion(nil, @"Ground Transport Dropoff location not set");
-//    }
-//    
-//    if (!search.adultQty) {    //we just need 1 adult passenger to make call
-//        completion(nil, @"No passengers set for Ground transport");
-//    }
-//    
+    if (!search.airport) {
+        completion(nil, @"CTAirport not set");
+        return;
+    }
+    
+    if (!search.pickupLocation) {
+        completion(nil, @"Ground Transport Pickup location not set");
+        return;
+    }
+    
+    if (!search.dropoffLocation) {
+        completion(nil, @"Ground Transport Dropoff location not set");
+        return;
+    }
+    
+    if (!search.adultQty) {    //we just need 1 adult passenger to make call
+        completion(nil, @"No passengers set for Ground transport");
+        return;
+    }
+    
 //    [cartrawlerAPI groundTransportationAvail:search.airport
 //                              pickupLocation:search.pickupLocation
 //                             dropoffLocation:search.dropoffLocation
@@ -42,6 +46,7 @@
 //                                currencyCode:[CTSDKSettings instance].currencyCode
 //                                  completion:^(CTGroundAvailability *response, CTErrorResponse *error) {
 //                                      if (response) {
+//                                          search.availability = response;
 //                                          completion(response, nil);
 //                                      } else if (error) {
 //                                          completion(nil, error.errorMessage);

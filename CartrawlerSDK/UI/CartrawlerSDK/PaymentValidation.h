@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CarRentalSearch.h"
+#import "CTValidation.h"
 
-@interface PaymentValidation : NSObject
+@interface PaymentValidation : CTValidation
 
-+ (BOOL)validate:(CarRentalSearch *)search;
-
+- (void)validateCarRental:(CarRentalSearch *)search
+            cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
+               completion:(CTSearchValidation)completion;
 @end

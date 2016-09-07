@@ -11,7 +11,6 @@
 #import "CTLabel.h"
 #import "DateUtils.h"
 #import "CTFilterViewController.h"
-#import "CTViewManager.h"
 
 @interface VehicleSelectionViewController ()
 

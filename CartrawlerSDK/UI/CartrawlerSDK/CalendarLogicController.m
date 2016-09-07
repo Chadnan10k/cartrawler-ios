@@ -111,6 +111,10 @@
 
         if (dateDay == cellDay && dateMonth == cellMonth && cellYear == dateYear) {
             [cell headSetSelected];
+            //if single trip
+            if (self.dateSelected) {
+                self.dateSelected(cell.date);
+            }
         }
     }
     //tail

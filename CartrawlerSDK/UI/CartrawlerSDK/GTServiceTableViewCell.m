@@ -10,7 +10,6 @@
 #import "CTLabel.h"
 #import "CTImageCache.h"
 #import "NSNumberUtils.h"
-#import "InclusionTableViewDataSource.h"
 #import "InclusionCollectionViewCell.h"
 
 @interface GTServiceTableViewCell() 
@@ -23,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet CTLabel *greetingLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
 @property (nonatomic, strong) NSArray <CTGroundInclusion *> *inclusions;
-@property (nonatomic, strong) InclusionTableViewDataSource *inclusionDataSource;
 
 @end
 
@@ -122,34 +120,29 @@
         }
     }
     
-//    if (shuttle.inclusions.count > 0) {
-//        
-//        InclusionTableViewDataSource *i = [[InclusionTableViewDataSource alloc] init];
-//        
-//        self.inclusionsCollectionView.hidden = NO;
-//        
-//        [i setInclusions:shuttle.inclusions];
-//        
-//        self.inclusionsCollectionView.dataSource = i;
-//        self.inclusionsCollectionView.delegate = i;
-//        [self.inclusionsCollectionView reloadData];
-//        [self.inclusionsCollectionView layoutIfNeeded];
-//        
-//        heightConstraint.constant = self.inclusionsCollectionView.collectionViewLayout.collectionViewContentSize.height;
-//        [self.inclusionsCollectionView layoutIfNeeded];
-//        [self layoutIfNeeded];
-//        
-//        
-//    } else {
+    if (shuttle.inclusions.count > 0) {
+        
+        self.inclusionsCollectionView.hidden = NO;
+        
+        //[self.inclusionDataSource setInclusions:shuttle.inclusions];
+        
+        self.inclusionsCollectionView.dataSource = self.inclusionDataSource;
+        self.inclusionsCollectionView.delegate = self.inclusionDataSource;
+        [self.inclusionsCollectionView reloadData];
+        
+        heightConstraint.constant = 200;
+        [self.inclusionsCollectionView layoutIfNeeded];
+        [self layoutIfNeeded];
+        
+    } else {
         heightConstraint = 0;
         self.inclusionsCollectionView.hidden = YES;
-    //}
-    
+    }
+
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    _inclusionDataSource = [[InclusionTableViewDataSource alloc] init];
 }
 
 

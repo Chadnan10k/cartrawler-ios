@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+IB_DESIGNABLE
 @interface CTCheckbox : UIView
 
 typedef void (^SelectionCompletion)(BOOL selection);
 
 @property (nonatomic, strong) SelectionCompletion viewTapped;
 
-- (id)initEnabled:(BOOL)enabled containerView:(UIView *)containerView;
+@property (nonatomic) IBInspectable BOOL enabled;
 
 + (void)forceLinkerLoad_;
 

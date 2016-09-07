@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTGroundService.h>
 #import <CartrawlerAPI/CTGroundShuttle.h>
+#import "InclusionTableViewDataSource.h"
+
 @interface GTServiceTableViewCell : UITableViewCell
 
 + (void)forceLinkerLoad_;
@@ -17,5 +19,6 @@
 - (void)setShuttle:(CTGroundShuttle *)shuttle;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *inclusionsCollectionView;
+@property (nonatomic, strong) InclusionTableViewDataSource *inclusionDataSource;
 
 @end

@@ -82,11 +82,11 @@
     self.search.phone = self.phoneTextField.text;
     self.search.flightNumber = self.flightNoTextField.text;
     
-//    vc.addressLine1 = self.addressLine1;
-//    vc.addressLine2 = self.addressLine2;
-//    vc.city = self.city;
-//    vc.postcode = self.postcode;
-//    vc.country = self.country;
+    self.groundSearch.firstName = self.firstNameTextField.text;
+    self.groundSearch.surname = self.lastNameTextField.text;
+    self.groundSearch.email = self.emailTextField.text;
+    self.groundSearch.phone = self.phoneTextField.text;
+    self.groundSearch.flightNumber = self.flightNoTextField.text;
 
     AddressDetailsViewController *destination = (AddressDetailsViewController *)segue.destinationViewController;
     destination.destinationViewController = self.destinationViewController;
@@ -94,6 +94,7 @@
     destination.cartrawlerAPI = self.cartrawlerAPI;
     destination.validationController = self.validationController;
     destination.search = self.search;
+    destination.groundSearch = self.groundSearch;
 }
 
 - (IBAction)confirmDetails:(id)sender

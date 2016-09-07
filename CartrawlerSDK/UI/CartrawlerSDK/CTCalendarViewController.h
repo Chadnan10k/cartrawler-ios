@@ -20,5 +20,6 @@
 + (void)forceLinkerLoad_;
 
 @property (nonatomic, weak) id<CTCalendarDelegate> delegate;
+@property (nonatomic) BOOL singleDateSelection;
 
 @end

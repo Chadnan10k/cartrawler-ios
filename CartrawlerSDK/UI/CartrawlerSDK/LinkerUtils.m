@@ -73,6 +73,7 @@
 #import "InclusionFlowLayout.h"
 #import "GTPaymentViewController.h"
 #import "GTPaymentCompletionViewController.h"
+#import "CTSelectView.h"
 
 @implementation LinkerUtils
 
@@ -143,6 +144,7 @@
     [InclusionFlowLayout forceLinkerLoad_];
     [GTPaymentViewController forceLinkerLoad_];
     [GTPaymentCompletionViewController forceLinkerLoad_];
+    [CTSelectView forceLinkerLoad_];
 }
 
 @end

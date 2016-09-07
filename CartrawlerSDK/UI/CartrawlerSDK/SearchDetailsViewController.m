@@ -14,20 +14,14 @@
 #import "DateUtils.h"
 #import "CTTimePickerView.h"
 #import "CTTextField.h"
-#import "CTViewManager.h"
 
 #define kSearchViewStoryboard @"StepOne"
 
 @interface SearchDetailsViewController () <CTCalendarDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *pickupContainer;
-@property (weak, nonatomic) IBOutlet UIView *dropoffContainer;
-@property (weak, nonatomic) IBOutlet UIView *pickupTimeContainer;
-@property (weak, nonatomic) IBOutlet UIView *dropoffTimeContainer;
-@property (weak, nonatomic) IBOutlet UIView *calendarContainer;
 @property (weak, nonatomic) IBOutlet CTTextField *ageContainer;
-@property (weak, nonatomic) IBOutlet UIView *sameLocationCheckBox;
-@property (weak, nonatomic) IBOutlet UIView *ageCheckBoxContainer;
+@property (weak, nonatomic) IBOutlet CTCheckbox *sameLocationCheckBox;
+@property (weak, nonatomic) IBOutlet CTCheckbox *ageCheckBoxContainer;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dropoffLocTopConstraint;
@@ -36,11 +30,11 @@
 
 @property (strong, nonatomic) UIView *activeView;
 
-@property (strong, nonatomic) CTSelectView *pickupView;
-@property (strong, nonatomic) CTSelectView *dropoffView;
-@property (strong, nonatomic) CTSelectView *calendarView;
-@property (strong, nonatomic) CTSelectView *dropoffTimeView;
-@property (strong, nonatomic) CTSelectView *pickupTimeView;
+@property (strong, nonatomic) IBOutlet CTSelectView *pickupView;
+@property (strong, nonatomic) IBOutlet CTSelectView *dropoffView;
+@property (strong, nonatomic) IBOutlet CTSelectView *calendarView;
+@property (strong, nonatomic) IBOutlet CTSelectView *dropoffTimeView;
+@property (strong, nonatomic) IBOutlet CTSelectView *pickupTimeView;
 
 @property (strong, nonatomic) CTTimePickerView *pickupTimePicker;
 @property (strong, nonatomic) CTTimePickerView *dropoffTimePicker;
@@ -101,7 +95,7 @@
     
     __weak typeof (self) weakSelf = self;
     
-    self.pickupView = [[CTSelectView alloc] initWithView:self.pickupContainer placeholder:@"Pick-up location"];
+    self.pickupView.placeholder = @"Pick-up location";
     self.pickupView.viewTapped = ^{
         
         [weakSelf.view endEditing:YES];
@@ -119,7 +113,7 @@
         };
     };
     
-    self.dropoffView = [[CTSelectView alloc] initWithView:self.dropoffContainer placeholder:@"Drop-off location"];
+    self.dropoffView.placeholder = @"Drop-off location";
     self.dropoffView.viewTapped = ^{
         
         [weakSelf.view endEditing:YES];
@@ -135,9 +129,7 @@
 
     _activeView = self.pickupView;
     
-    
-    
-    _pickupTimeView = [[CTSelectView alloc] initWithView:self.pickupTimeContainer placeholder:@"Pick-up time"];
+    self.pickupTimeView.placeholder = @"Pick-up time";
     [self.pickupTimeView setTextFieldText:[DateUtils stringFromDate:self.pickupTime withFormat:@"hh:mm a"]];
 
     self.pickupTimeView.viewTapped = ^{
@@ -153,7 +145,7 @@
         };
     };
     
-    _dropoffTimeView = [[CTSelectView alloc] initWithView:self.dropoffTimeContainer placeholder:@"Drop-off time"];
+    self.dropoffTimeView.placeholder = @"Drop-off time";
     [self.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:self.dropoffTime withFormat:@"hh:mm a"]];
     self.dropoffTimeView.viewTapped = ^{
         
@@ -168,20 +160,19 @@
         };
     };
     
-    _calendarView = [[CTSelectView alloc] initWithView:self.calendarContainer placeholder:@"Select dates"];
+    self.calendarView.placeholder = @"Select dates";
     self.calendarView.viewTapped = ^{
         _activeView = self.calendarView;
         [weakSelf presentViewController:weakSelf.calendar animated:YES completion:nil];
     };
     
-    CTCheckbox *sameLoc = [[CTCheckbox alloc] initEnabled:YES containerView:self.sameLocationCheckBox ];
-    sameLoc.viewTapped = ^(BOOL selection) {
+    self.sameLocationCheckBox.viewTapped = ^(BOOL selection) {
         if (selection) {
             _isReturningSameLocation = NO;
             (weakSelf.search).dropoffLocation = self.search.pickupLocation;
             self.dropoffLocTopConstraint.constant = 15;
             [UIView animateWithDuration:0.3 animations:^{
-                self.dropoffContainer.alpha = 0;
+                self.dropoffView.alpha = 0;
                 [self.view layoutIfNeeded];
             }];
         } else {
@@ -190,16 +181,15 @@
             [weakSelf.dropoffView setTextFieldText:@""];
             self.dropoffLocTopConstraint.constant = 80;
             [UIView animateWithDuration:0.3 animations:^{
-                self.dropoffContainer.alpha = 1;
+                self.dropoffView.alpha = 1;
                 [self.view layoutIfNeeded];
             }];
         }
-        _activeView = sameLoc;
+        _activeView = weakSelf.sameLocationCheckBox;
     };
     
     
-    CTCheckbox *ageCheckbox = [[CTCheckbox alloc] initEnabled:YES containerView:self.ageCheckBoxContainer];
-    ageCheckbox.viewTapped = ^(BOOL selection) {
+    self.ageCheckBoxContainer.viewTapped = ^(BOOL selection) {
         if (selection) {
             
             [weakSelf.view endEditing:YES];
@@ -221,7 +211,7 @@
     };
     
     self.dropoffLocTopConstraint.constant = 15;
-    self.dropoffContainer.alpha = 0;
+    self.dropoffView.alpha = 0;
     
     self.ageTopConstraint.constant = 0;
     self.ageContainer.alpha = 0;
@@ -245,9 +235,9 @@
         [self.calendarView setTextFieldText:@""];
     }
     
-    if (!self.search.dropoffDate) {
-        [self.calendarView setTextFieldText:@""];
-    }
+//    if (!self.search.dropoffDate) {
+//        [self.calendarView setTextFieldText:@""];
+//    }
     
     if (!self.search.driverAge) {
         self.ageContainer.text = @"";
