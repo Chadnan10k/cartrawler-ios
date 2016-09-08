@@ -18,12 +18,10 @@
                         town:(NSString *)town
                         city:(NSString *)city
                     postcode:(NSString *)postcode
-              stateProvience:(NSString *)stateProvience
                  countryCode:(NSString *)countryCode
                  countryName:(NSString *)countryName
           pickupLocationType:(NSString *)pickupLocationType
           pickupLocationName:(NSString *)pickupLocationName
-         specialInstructions:(NSString *)specialInstructions
              dropOffdateTime:(NSString *)dropOffdateTime
              dropoffLatitude:(NSString *)dropoffLatitude
             dropoffLongitude:(NSString *)dropoffLongitude

@@ -153,12 +153,10 @@
                                town:search.addressLine1
                                city:@"Dublin"
                            postcode:@"2"
-                     stateProvience:@"Leinster"
                         countryCode:@"IE"
                         countryName:@"Ireland"
                  pickupLocationType:search.pickupLocation.locationTypeDescription
                  pickupLocationName:@"Cartrawler"
-                specialInstructions:@"Some instruction"
                     dropOffdateTime:nil
                     dropoffLatitude:search.dropoffLocation.latitude.stringValue
                    dropoffLongitude:search.dropoffLocation.longitude.stringValue

@@ -23,8 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, nonnull, readonly) CTGroundLocation *dropoffLocation;
 
-@property (nonatomic, nonnull, readonly) NSArray <CTGroundInclusion *> *inclusions;
-
 @property (nonatomic, readonly) BOOL disabilityVehicle;
 
 @property (nonatomic, readonly) BOOL meetAndGreet;

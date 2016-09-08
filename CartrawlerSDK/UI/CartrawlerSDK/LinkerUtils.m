@@ -74,6 +74,8 @@
 #import "GTPaymentViewController.h"
 #import "GTPaymentCompletionViewController.h"
 #import "CTSelectView.h"
+#import "GTShuttleTableViewCell.h"
+#import "GTPassengerViewController.h"
 
 @implementation LinkerUtils
 
@@ -145,6 +147,8 @@
     [GTPaymentViewController forceLinkerLoad_];
     [GTPaymentCompletionViewController forceLinkerLoad_];
     [CTSelectView forceLinkerLoad_];
+    [GTShuttleTableViewCell forceLinkerLoad_];
+    [GTPassengerViewController forceLinkerLoad_];
 }
 
 @end

@@ -38,6 +38,10 @@
 		4509B4741D37E72700259255 /* GroundServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4509B4721D37E72700259255 /* GroundServicesViewController.m */; };
 		4509B47B1D37ED8100259255 /* GTServiceTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4509B4791D37ED8100259255 /* GTServiceTableViewCell.h */; };
 		4509B47C1D37ED8100259255 /* GTServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4509B47A1D37ED8100259255 /* GTServiceTableViewCell.m */; };
+		450DF3991D8191EA00EF51DE /* GTShuttleTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 450DF3971D8191EA00EF51DE /* GTShuttleTableViewCell.h */; };
+		450DF39A1D8191EA00EF51DE /* GTShuttleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 450DF3981D8191EA00EF51DE /* GTShuttleTableViewCell.m */; };
+		450DF39E1D81A55900EF51DE /* GTPassengerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450DF39C1D81A55900EF51DE /* GTPassengerViewController.h */; };
+		450DF39F1D81A55900EF51DE /* GTPassengerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450DF39D1D81A55900EF51DE /* GTPassengerViewController.m */; };
 		450F9D351D3929E5002C6F6B /* SupplierRatingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D331D3929E5002C6F6B /* SupplierRatingsViewController.h */; };
 		450F9D361D3929E5002C6F6B /* SupplierRatingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D341D3929E5002C6F6B /* SupplierRatingsViewController.m */; };
 		450F9D391D3CE08E002C6F6B /* SettingsSelectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D371D3CE08E002C6F6B /* SettingsSelectionViewController.h */; };
@@ -292,6 +296,10 @@
 		4509B4721D37E72700259255 /* GroundServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundServicesViewController.m; sourceTree = "<group>"; };
 		4509B4791D37ED8100259255 /* GTServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTServiceTableViewCell.h; sourceTree = "<group>"; };
 		4509B47A1D37ED8100259255 /* GTServiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTServiceTableViewCell.m; sourceTree = "<group>"; };
+		450DF3971D8191EA00EF51DE /* GTShuttleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTShuttleTableViewCell.h; sourceTree = "<group>"; };
+		450DF3981D8191EA00EF51DE /* GTShuttleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTShuttleTableViewCell.m; sourceTree = "<group>"; };
+		450DF39C1D81A55900EF51DE /* GTPassengerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTPassengerViewController.h; sourceTree = "<group>"; };
+		450DF39D1D81A55900EF51DE /* GTPassengerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTPassengerViewController.m; sourceTree = "<group>"; };
 		450F9D331D3929E5002C6F6B /* SupplierRatingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierRatingsViewController.h; sourceTree = "<group>"; };
 		450F9D341D3929E5002C6F6B /* SupplierRatingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierRatingsViewController.m; sourceTree = "<group>"; };
 		450F9D371D3CE08E002C6F6B /* SettingsSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSelectionViewController.h; sourceTree = "<group>"; };
@@ -558,12 +566,23 @@
 				45E84CCE1D79C69C00D6BC47 /* InclusionTableViewDataSource.m */,
 				45E84CC91D79C61600D6BC47 /* InclusionCollectionViewCell.h */,
 				45E84CCA1D79C61600D6BC47 /* InclusionCollectionViewCell.m */,
-				4509B4791D37ED8100259255 /* GTServiceTableViewCell.h */,
-				4509B47A1D37ED8100259255 /* GTServiceTableViewCell.m */,
 				451C8EF71D7D8ADB00B9324D /* InclusionFlowLayout.h */,
 				451C8EF81D7D8ADB00B9324D /* InclusionFlowLayout.m */,
+				4509B4791D37ED8100259255 /* GTServiceTableViewCell.h */,
+				4509B47A1D37ED8100259255 /* GTServiceTableViewCell.m */,
+				450DF3971D8191EA00EF51DE /* GTShuttleTableViewCell.h */,
+				450DF3981D8191EA00EF51DE /* GTShuttleTableViewCell.m */,
 			);
 			name = TableViewCell;
+			sourceTree = "<group>";
+		};
+		450DF39B1D81A52000EF51DE /* Step Three */ = {
+			isa = PBXGroup;
+			children = (
+				450DF39C1D81A55900EF51DE /* GTPassengerViewController.h */,
+				450DF39D1D81A55900EF51DE /* GTPassengerViewController.m */,
+			);
+			name = "Step Three";
 			sourceTree = "<group>";
 		};
 		4511E5211D17DF8E000ED6B0 /* Theme */ = {
@@ -1146,6 +1165,7 @@
 		45EE26DC1D37A77900A1FB51 /* Ground Transport */ = {
 			isa = PBXGroup;
 			children = (
+				450DF39B1D81A52000EF51DE /* Step Three */,
 				458773651D7F1460000CB1E5 /* Payment */,
 				457CF88A1D785AC400BC55E2 /* Google Places */,
 				4509B4771D37ED3200259255 /* Step Two */,
@@ -1218,6 +1238,7 @@
 				45AC54681D130A1600805268 /* CTTimePickerView.h in Headers */,
 				450F9D411D3CE9D6002C6F6B /* CSVItem.h in Headers */,
 				458954921D58C1B00006D34F /* Reachability.h in Headers */,
+				450DF3991D8191EA00EF51DE /* GTShuttleTableViewCell.h in Headers */,
 				451C8EF91D7D8ADB00B9324D /* InclusionFlowLayout.h in Headers */,
 				453386E31D2BA4EA0021D392 /* IncludedCollectionViewLayout.h in Headers */,
 				4530DA331D46660900CF3186 /* CTTextView.h in Headers */,
@@ -1230,6 +1251,7 @@
 				45AC546A1D130A1600805268 /* LocationSearchDataSource.h in Headers */,
 				451C8F101D7EF37700B9324D /* GTSelectionValidation.h in Headers */,
 				458773701D806064000CB1E5 /* GTPaymentRequest.h in Headers */,
+				450DF39E1D81A55900EF51DE /* GTPassengerViewController.h in Headers */,
 				45645DD41D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h in Headers */,
 				45AC54641D130A1600805268 /* CTPlaceholderView.h in Headers */,
 				45AC54711D130A1600805268 /* CTSelectView.h in Headers */,
@@ -1557,6 +1579,8 @@
 				454AD77C1D2551F5005C6CFF /* CTFilterViewController.m in Sources */,
 				45645DD51D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.m in Sources */,
 				4511E52F1D17F4B0000ED6B0 /* CTView.m in Sources */,
+				450DF39A1D8191EA00EF51DE /* GTShuttleTableViewCell.m in Sources */,
+				450DF39F1D81A55900EF51DE /* GTPassengerViewController.m in Sources */,
 				454AD7C81D2AB8E7005C6CFF /* CTDesignableView.m in Sources */,
 				45F473661D366D6A00DF548B /* PaymentViewController.m in Sources */,
 				45C1ECF61D5103150059EF89 /* CTFilterTableView.m in Sources */,

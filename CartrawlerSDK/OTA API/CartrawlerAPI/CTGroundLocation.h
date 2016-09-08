@@ -81,7 +81,8 @@ typedef NS_ENUM(NSUInteger, LocationType) {
 - (instancetype)initWithLatitude:(NSNumber *)latitude
              longitude:(NSNumber *)longitude
           locationType:(LocationType)locationType
-              dateTime:(NSDate *)dateTime;
+              dateTime:(NSDate *)dateTime
+                  name:(NSString *)name;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 

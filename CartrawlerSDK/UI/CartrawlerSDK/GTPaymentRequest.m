@@ -83,7 +83,6 @@
                       @"                } \n"
                       @"            }, \n"
                       @"            \"Dropoff\":       { \n"
-                      //@"                \"@DateTime\": \"%@\", \n"
                       @"                \"Address\":         { \n"
                       @"                    \"@Latitude\": \"%@\", \n"
                       @"                    \"@Longitude\": \"%@\", \n"
@@ -161,8 +160,6 @@
                       flightNo,
                       firstName,
                       surname,
-                      //                      phoneCountryCode,
-                      //                      phoneVendorPrefix,
                       phone,
                       passengerCountryCode,
                       passengerEmail,

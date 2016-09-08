@@ -32,7 +32,7 @@
         return;
     }
     
-    if (!search.selectedService && !search.selectedShuttle) {
+    if (search.selectedService == nil && search.selectedShuttle == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.selectedService IS NOT SET \n\n");
         completion(nil, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
         return;

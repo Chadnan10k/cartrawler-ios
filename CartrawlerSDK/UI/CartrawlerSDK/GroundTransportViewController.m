@@ -40,6 +40,8 @@
 @property (strong, nonatomic) CTTimePickerView *pickupTimePicker;
 @property (strong, nonatomic) CTTimePickerView *dropoffTimePicker;
 
+@property (nonatomic, strong) NSString *pickupName;
+@property (nonatomic, strong) NSString *dropoffName;
 @property (nonatomic, strong) NSNumber *pickupLat;
 @property (nonatomic, strong) NSNumber *pickupLong;
 @property (nonatomic, strong) NSNumber *dropoffLat;
@@ -112,7 +114,7 @@
             
             weakSelf.pickupLat = location.latitude;
             weakSelf.pickupLong = location.longitude;
-            
+            weakSelf.pickupName = location.name;
             if (location.isAtAirport) {
                 weakSelf.groundSearch.airportIsPickupLocation = YES;
                 _airport = [[CTAirport alloc] initWithFlightType:FlightTypeArrival IATACode:location.airportCode terminalNumber:@"1"];
@@ -141,9 +143,10 @@
             
             weakSelf.dropoffLat = location.latitude;
             weakSelf.dropoffLong = location.longitude;
-            
+            weakSelf.dropoffName = location.name;
+
             if (location.isAtAirport) {
-                weakSelf.groundSearch.airportIsPickupLocation = YES;
+                weakSelf.groundSearch.airportIsPickupLocation = NO;
                 _airport = [[CTAirport alloc] initWithFlightType:FlightTypeArrival IATACode:location.airportCode terminalNumber:@"1"];
             }
         };
@@ -233,21 +236,21 @@
     
     if (self.activeView == self.calendarView) {
         [self.calendarView setTextFieldText:dateString];
-        self.pickupDate = pickupDate;
+        _pickupDate = pickupDate;
     } else if (self.activeView == self.dropoffCalendarView) {
         [self.dropoffCalendarView setTextFieldText:dateString];
-        self.dropoffDate = dropoffDate;
+        _dropoffDate = pickupDate;
     }
 }
 
 - (void)combineDates
 {
     NSDate *puDate = [DateUtils mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.pickupDate];
-    self.pickupDate = puDate;
+    _pickupDate = puDate;
 
     if (self.dropoffDate && self.dropoffTime) {
         NSDate *doDate = [DateUtils mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.dropoffDate];
-        self.dropoffDate = doDate;
+        _dropoffDate = doDate;
     }
 }
 
@@ -299,12 +302,15 @@
     CTGroundLocation *pickupLoc = [[CTGroundLocation alloc] initWithLatitude:self.pickupLat
                                                                    longitude:self.pickupLong
                                                                 locationType:self.pickupLocType
-                                                                    dateTime:self.pickupDate];
+                                                                     dateTime:self.pickupDate
+                                                                         name:self.pickupName];
     
     CTGroundLocation *dropoffLoc = [[CTGroundLocation alloc] initWithLatitude:self.dropoffLat
                                                                     longitude:self.dropoffLong
                                                                  locationType:self.dropoffLocType
-                                                                     dateTime:self.dropoffDate];
+                                                                     dateTime:self.dropoffDate
+                                                                         name:self.dropoffName];
+
     self.groundSearch.airport = self.airport;
     self.groundSearch.pickupLocation = pickupLoc;
     self.groundSearch.dropoffLocation = dropoffLoc;

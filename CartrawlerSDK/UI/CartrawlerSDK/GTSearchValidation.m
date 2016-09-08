@@ -36,29 +36,29 @@
         return;
     }
     
-//    [cartrawlerAPI groundTransportationAvail:search.airport
-//                              pickupLocation:search.pickupLocation
-//                             dropoffLocation:search.dropoffLocation
-//                     airportIsPickupLocation:search.airportIsPickupLocation
-//                                    adultQty:search.adultQty
-//                                    childQty:search.childQty
-//                                   infantQty:search.infantQty
-//                                currencyCode:[CTSDKSettings instance].currencyCode
-//                                  completion:^(CTGroundAvailability *response, CTErrorResponse *error) {
-//                                      if (response) {
-//                                          search.availability = response;
-//                                          completion(response, nil);
-//                                      } else if (error) {
-//                                          completion(nil, error.errorMessage);
-//                                      } else {
-//                                          completion(nil, @"Could not perform groundTransportationAvail");
-//                                      }
-//                                  }];
+    [cartrawlerAPI groundTransportationAvail:search.airport
+                              pickupLocation:search.pickupLocation
+                             dropoffLocation:search.dropoffLocation
+                     airportIsPickupLocation:search.airportIsPickupLocation
+                                    adultQty:search.adultQty
+                                    childQty:search.childQty
+                                   infantQty:search.infantQty
+                                currencyCode:[CTSDKSettings instance].currencyCode
+                                  completion:^(CTGroundAvailability *response, CTErrorResponse *error) {
+                                      if (response) {
+                                          search.availability = response;
+                                          completion(response, nil);
+                                      } else if (error) {
+                                          completion(nil, error.errorMessage);
+                                      } else {
+                                          completion(nil, @"Could not perform groundTransportationAvail");
+                                      }
+                                  }];
     
     //TODO: REMOVE MOCK DATA
-    CTGroundAvailability *avail = [[CTGroundAvailability alloc] initWithDictionary:[self dictionaryWithContentsOfJSONString:@"MockGTRS.json"]];
-    search.availability = avail;
-    completion(avail, nil);
+//    CTGroundAvailability *avail = [[CTGroundAvailability alloc] initWithDictionary:[self dictionaryWithContentsOfJSONString:@"MockGTRS.json"]];
+//    search.availability = avail;
+//    completion(avail, nil);
 }
 
 - (NSDictionary*)dictionaryWithContentsOfJSONString:(NSString*)fileName {

@@ -28,13 +28,13 @@
         _pickupLocation = [[CTGroundLocation alloc] initWithDictionary:dict[@"Service"][@"Location"][@"Pickup"]];
         _dropoffLocation = [[CTGroundLocation alloc] initWithDictionary:dict[@"Service"][@"Location"][@"Pickup"]];
     }
-
-    NSMutableArray *inclusionArr = [[NSMutableArray alloc] init];
-    for (NSString *str in dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Inclusions"]) {
-        CTGroundInclusion *inclusion = [[CTGroundInclusion alloc] initFromInclusionString:str];
-        [inclusionArr addObject:inclusion];
-    }
-    _inclusions = inclusionArr;
+//
+//    NSMutableArray *inclusionArr = [[NSMutableArray alloc] init];
+//    for (NSString *str in dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Inclusions"]) {
+//        CTGroundInclusion *inclusion = [[CTGroundInclusion alloc] initFromInclusionString:str];
+//        [inclusionArr addObject:inclusion];
+//    }
+//    _inclusions = inclusionArr;
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     NSNumber *totalCharge = [numberFormatter numberFromString:dict[@"TotalCharge"][@"@RateTotalAmount"]];

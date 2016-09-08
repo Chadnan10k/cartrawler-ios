@@ -15,7 +15,7 @@
     self = [super init];
     
     //check if shuttle is available
-    
+        
     if ([dict[@"RateQualifier"][@"SpecialInputs"][@"@Value"] isEqualToString:@"NONE"]) {
         _serviceLevel = ServiceLevelNone;
     } else if ([dict[@"RateQualifier"][@"SpecialInputs"][@"@Value"] isEqualToString:@"STANDARD"]) {

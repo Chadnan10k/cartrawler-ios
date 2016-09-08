@@ -9,6 +9,7 @@
 #import "GroundServicesViewController.h"
 #import "GTServiceTableViewCell.h"
 #import "InclusionTableViewDataSource.h"
+#import "GTShuttleTableViewCell.h"
 
 @interface GroundServicesViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -66,39 +67,32 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//    GTServiceTableViewCell *c = [tableView cellForRowAtIndexPath:indexPath];
-//
-//    [c.inclusionDataSource setInclusions:self.availability.shuttles[indexPath.row].inclusions];
-
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    GTServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.inclusionDataSource = self.inclusionDataSource;
     if (indexPath.section == 1) {
+        GTServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"service"];
         [cell setService:self.availability.services[indexPath.row]];
+        return cell;
+
     } else {
-         [cell.inclusionDataSource setInclusions:self.availability.shuttles[indexPath.row].inclusions];
+        GTShuttleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"shuttle"];
+        cell.inclusionDataSource = self.inclusionDataSource;
+        [cell.inclusionDataSource setInclusions:self.availability.shuttles[indexPath.row].inclusions];
         [cell setShuttle:self.availability.shuttles[indexPath.row]];
+        cell.inclusionHeightConstraint.constant = cell.inclusionsCollectionView.contentSize.height;
+        return cell;
     }
     
-    return cell;
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 250;
-//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1) {
         self.groundSearch.selectedService = self.availability.services[indexPath.row];
+        self.groundSearch.selectedShuttle = nil;
     } else {
         self.groundSearch.selectedShuttle = self.availability.shuttles[indexPath.row];
+        self.groundSearch.selectedService = nil;
     }
     [self pushToDestination];
 }

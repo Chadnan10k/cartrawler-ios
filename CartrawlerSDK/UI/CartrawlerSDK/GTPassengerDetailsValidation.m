@@ -24,7 +24,7 @@
         return;
     }
     
-    if (search.selectedService == nil || search.selectedShuttle) {
+    if (search.selectedService == nil && search.selectedShuttle == nil) {
         completion(nil, @"\n\n ERROR: CANNOT PUSH TO PAYMENT AS selectedService or selectedShuttle IS NOT SET \n\n");
         return;
     }
@@ -46,11 +46,6 @@
     
     if (search.phone == nil) {
         completion(nil, @"\n\n ERROR: CANNOT PUSH TO PAYMENT AS self.phone IS NOT SET \n\n");
-        return;
-    }
-    
-    if (search.flightNumber == nil) {
-        completion(nil, @"\n\n ERROR: CANNOT PUSH TO PAYMENT AS self.flightNumber IS NOT SET \n\n");
         return;
     }
     
