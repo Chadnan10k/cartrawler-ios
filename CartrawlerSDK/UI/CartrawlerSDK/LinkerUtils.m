@@ -76,6 +76,7 @@
 #import "CTSelectView.h"
 #import "GTShuttleTableViewCell.h"
 #import "GTPassengerViewController.h"
+#import "GTFilterCollectionViewCell.h"
 
 @implementation LinkerUtils
 
@@ -149,6 +150,8 @@
     [CTSelectView forceLinkerLoad_];
     [GTShuttleTableViewCell forceLinkerLoad_];
     [GTPassengerViewController forceLinkerLoad_];
+    [GTFilterCollectionViewCell forceLinkerLoad_];
+
 }
 
 @end

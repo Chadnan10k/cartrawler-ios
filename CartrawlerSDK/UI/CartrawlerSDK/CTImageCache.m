@@ -8,6 +8,10 @@
 
 #import "CTImageCache.h"
 
+@interface CTImageCache() <NSURLSessionDelegate>
+
+@end
+
 @implementation CTImageCache
 
 + (void)forceLinkerLoad_
@@ -28,12 +32,14 @@
     return sharedInstance;
 }
 
-//once again categories wont be available in a static framework so better off making static funcs
 - (void)cachedImage:(NSURL *)imageUrl completion:(ImageCacheCompletion)completion;
 {
     if ([[CTImageCache sharedInstance] objectForKey: imageUrl.absoluteString] == nil) {
         
-        NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:imageUrl
+        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate:self delegateQueue: [NSOperationQueue mainQueue]];
+        
+        NSURLSessionTask *task = [defaultSession dataTaskWithURL:imageUrl
                                                              completionHandler:^(NSData * _Nullable data,
                                                                                  NSURLResponse * _Nullable response,
                                                                                  NSError * _Nullable error)
@@ -59,6 +65,11 @@
             completion([[CTImageCache sharedInstance] objectForKey: imageUrl.absoluteString]);
         });
     }
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
+{
+    completionHandler(NSURLSessionAuthChallengeUseCredential, [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust]);
 }
 
 

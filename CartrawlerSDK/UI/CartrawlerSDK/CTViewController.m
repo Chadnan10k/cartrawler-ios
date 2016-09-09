@@ -34,7 +34,7 @@
     
         [self.validationController validateGroundTransport:self.groundSearch
                                              cartrawlerAPI:self.cartrawlerAPI
-                                                completion:^(id success, NSString *errorMessage) {
+                                                completion:^(BOOL success, NSString *errorMessage) {
                                                     dispatch_async(dispatch_get_main_queue(), ^{
                                                         if (success) {
                                                             if (self.dataValidationCompletion) {
@@ -61,7 +61,7 @@
  
         [self.validationController validateCarRental:self.search
                                        cartrawlerAPI:self.cartrawlerAPI
-                                          completion:^(id success, NSString *errorMessage) {
+                                          completion:^(BOOL success, NSString *errorMessage) {
                                               dispatch_async(dispatch_get_main_queue(), ^{
                                                   if (success) {
                                                       if (self.dataValidationCompletion) {

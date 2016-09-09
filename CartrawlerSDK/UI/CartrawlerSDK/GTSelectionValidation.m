@@ -15,37 +15,37 @@
                      completion:(CTSearchValidation)completion
 {
     if (!search.airport) {
-        completion(nil, @"CTAirport not set");
+        completion(NO, @"CTAirport not set");
         return;
     }
 
     if (!search.pickupLocation) {
-        completion(nil, @"Ground Transport Pickup location not set");
+        completion(NO, @"Ground Transport Pickup location not set");
         return;
     }
 
     if (!search.dropoffLocation) {
-        completion(nil, @"Ground Transport Dropoff location not set");
+        completion(NO, @"Ground Transport Dropoff location not set");
         return;
     }
 
     if (!search.adultQty) {    //we just need 1 adult passenger to make call
-        completion(nil, @"No passengers set for Ground transport");
+        completion(NO, @"No passengers set for Ground transport");
         return;
     }
     
     if (!search.availability) {
-        completion(nil, @"No availability set for Ground transport");
+        completion(NO, @"No availability set for Ground transport");
         return;
     }
     
     if (!search.selectedService && !search.selectedShuttle) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.selectedService IS NOT SET \n\n");
-        completion(nil, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
         return;
     }
     
-    completion(@"Success", nil);
+    completion(YES, nil);
 }
 
 @end

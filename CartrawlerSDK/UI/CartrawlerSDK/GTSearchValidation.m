@@ -17,22 +17,22 @@
 {
     
     if (!search.airport) {
-        completion(nil, @"CTAirport not set");
+        completion(NO, @"CTAirport not set");
         return;
     }
     
     if (!search.pickupLocation) {
-        completion(nil, @"Ground Transport Pickup location not set");
+        completion(NO, @"Ground Transport Pickup location not set");
         return;
     }
     
     if (!search.dropoffLocation) {
-        completion(nil, @"Ground Transport Dropoff location not set");
+        completion(NO, @"Ground Transport Dropoff location not set");
         return;
     }
     
     if (!search.adultQty) {    //we just need 1 adult passenger to make call
-        completion(nil, @"No passengers set for Ground transport");
+        completion(NO, @"No passengers set for Ground transport");
         return;
     }
     
@@ -47,11 +47,11 @@
                                   completion:^(CTGroundAvailability *response, CTErrorResponse *error) {
                                       if (response) {
                                           search.availability = response;
-                                          completion(response, nil);
+                                          completion(YES, nil);
                                       } else if (error) {
-                                          completion(nil, error.errorMessage);
+                                          completion(NO, error.errorMessage);
                                       } else {
-                                          completion(nil, @"Could not perform groundTransportationAvail");
+                                          completion(NO, @"Could not perform groundTransportationAvail");
                                       }
                                   }];
     

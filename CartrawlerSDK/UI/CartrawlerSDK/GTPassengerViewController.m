@@ -94,7 +94,7 @@
     self.groundSearch.surname = self.lastNameTextField.text;
     self.groundSearch.email = self.emailTextField.text;
     self.groundSearch.phone = self.phoneTextField.text;
-    self.groundSearch.flightNumber = self.flightNoTextField.text;
+    self.groundSearch.flightNumber = self.groundSearch.selectedService ? self.flightNoTextField.text : nil;
     
     AddressDetailsViewController *destination = (AddressDetailsViewController *)segue.destinationViewController;
     destination.destinationViewController = self.destinationViewController;

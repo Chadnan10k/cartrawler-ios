@@ -62,11 +62,9 @@
     if (shuttle.inclusions.count > 0) {
         
         self.inclusionsCollectionView.hidden = NO;
-        
         self.inclusionsCollectionView.dataSource = self.inclusionDataSource;
         self.inclusionsCollectionView.delegate = self.inclusionDataSource;
         [self.inclusionsCollectionView reloadData];
-        
         [self.inclusionsCollectionView layoutIfNeeded];
         [self layoutIfNeeded];
         

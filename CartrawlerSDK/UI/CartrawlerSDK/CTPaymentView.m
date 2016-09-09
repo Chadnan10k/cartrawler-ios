@@ -145,9 +145,13 @@
                           [NSCharacterSet letterCharacterSet].invertedSet]
                          componentsJoinedByString:@""];
     
+    NSNumberFormatter *f = [NSNumberFormatter new];
+    f.maximumFractionDigits = 5;
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+
     NSString *request = [GTPaymentRequest CT_GroundBook:[NSDateUtils stringFromDateWithFormat:search.pickupLocation.dateTime format:@"yyyy-MM-dd'T'HH:mm:ss"]
-                     pickupLatitude:search.pickupLocation.latitude.stringValue
-                    pickupLongitude:search.pickupLocation.longitude.stringValue
+                     pickupLatitude:[f stringFromNumber:search.pickupLocation.latitude]
+                    pickupLongitude:[f stringFromNumber:search.pickupLocation.longitude]
                        addressLine1:search.addressLine1
                        addressLine2:search.addressLine2
                                town:search.addressLine1
@@ -158,9 +162,10 @@
                  pickupLocationType:search.pickupLocation.locationTypeDescription
                  pickupLocationName:@"Cartrawler"
                     dropOffdateTime:nil
-                    dropoffLatitude:search.dropoffLocation.latitude.stringValue
-                   dropoffLongitude:search.dropoffLocation.longitude.stringValue
+                    dropoffLatitude:[f stringFromNumber:search.dropoffLocation.latitude]
+                   dropoffLongitude:[f stringFromNumber:search.dropoffLocation.longitude]
                 dropoffLocationType:search.dropoffLocation.locationTypeDescription
+                    airportIsPickup:search.airportIsPickupLocation
                         airportCode:search.airport.IATACode
                          terminalNo:search.airport.terminalNumber
                           airlineId:airline
@@ -171,14 +176,14 @@
                               phone:search.phone
                passengerCountryCode:@"IE"
                      passengerEmail:search.email
-                 additionalAdultQty:@"0"
+                 additionalAdultQty:search.adultQty.stringValue
                         childrenQty:@"0"
                           infantQty:@"0"
                               refId:search.selectedService != nil ? search.selectedService.refId : search.selectedShuttle.refId
                              refUrl:search.selectedService != nil ? search.selectedService.refUrl : search.selectedShuttle.refUrl
                        currencyCode:[CTSDKSettings instance].currencyCode
                            clientID:[CTSDKSettings instance].clientId
-                             target:@"Test"
+                             target:[CTSDKSettings instance].target
                              locale:[CTSDKSettings instance].languageCode
                           ipaddress:@"127.0.0.1"];
     
@@ -220,7 +225,7 @@
                                insuranceObject:search.insurance
                              isBuyingInsurance:search.isBuyingInsurance
                                       clientID:[CTSDKSettings instance].clientId
-                                        target:@"Test"
+                                        target:[CTSDKSettings instance].target
                                         locale:[CTSDKSettings instance].languageCode
                                       currency:[CTSDKSettings instance].currencyCode];
     

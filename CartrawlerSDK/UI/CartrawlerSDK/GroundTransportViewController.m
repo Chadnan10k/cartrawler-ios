@@ -54,7 +54,9 @@
 
 @property (nonatomic) LocationType pickupLocType;
 @property (nonatomic) LocationType dropoffLocType;
-@property (nonatomic, strong) CTAirport *airport;
+@property (nonatomic, strong) CTAirport *pickupAirport;
+@property (nonatomic, strong) CTAirport *dropoffAirport;
+
 @end
 
 @implementation GroundTransportViewController
@@ -117,7 +119,9 @@
             weakSelf.pickupName = location.name;
             if (location.isAtAirport) {
                 weakSelf.groundSearch.airportIsPickupLocation = YES;
-                _airport = [[CTAirport alloc] initWithFlightType:FlightTypeArrival IATACode:location.airportCode terminalNumber:@"1"];
+                _pickupAirport = [[CTAirport alloc] initWithFlightType:FlightTypeArrival IATACode:location.airportCode terminalNumber:@"1"];
+            } else {
+                weakSelf.groundSearch.airportIsPickupLocation = NO;
             }
         };
     };
@@ -147,7 +151,9 @@
 
             if (location.isAtAirport) {
                 weakSelf.groundSearch.airportIsPickupLocation = NO;
-                _airport = [[CTAirport alloc] initWithFlightType:FlightTypeArrival IATACode:location.airportCode terminalNumber:@"1"];
+                _dropoffAirport = [[CTAirport alloc] initWithFlightType:FlightTypeArrival IATACode:location.airportCode terminalNumber:@"1"];
+            } else {
+                weakSelf.groundSearch.airportIsPickupLocation = YES;
             }
         };
     };
@@ -299,6 +305,8 @@
 
 - (IBAction)search:(id)sender
 {
+    UIButton *b = (UIButton *)sender;
+   
     CTGroundLocation *pickupLoc = [[CTGroundLocation alloc] initWithLatitude:self.pickupLat
                                                                    longitude:self.pickupLong
                                                                 locationType:self.pickupLocType
@@ -310,17 +318,35 @@
                                                                  locationType:self.dropoffLocType
                                                                      dateTime:self.dropoffDate
                                                                          name:self.dropoffName];
+    //if the two destinations are airports what do we do?
+    if (pickupLoc.locationType == LocationTypeAirport && dropoffLoc.locationType == LocationTypeAirport) {
+        self.groundSearch.airportIsPickupLocation = YES;
+        self.groundSearch.airport = self.pickupAirport;
+    } else if (self.groundSearch.airportIsPickupLocation) {
+        self.groundSearch.airport = self.pickupAirport;
+    } else {
+        self.groundSearch.airport = self.dropoffAirport;
+    }
 
-    self.groundSearch.airport = self.airport;
     self.groundSearch.pickupLocation = pickupLoc;
     self.groundSearch.dropoffLocation = dropoffLoc;
-    self.groundSearch.adultQty = @1;
-    self.groundSearch.childQty = @1;
-    self.groundSearch.infantQty = @1;
+    
+    NSNumberFormatter *nf = [NSNumberFormatter new];
+    
+    self.groundSearch.adultQty = [nf numberFromString:self.passengersTextField.text];
+    self.groundSearch.childQty = @0;
+    self.groundSearch.infantQty = @0;
     
     if ([self validate]) {
+        b.enabled = NO;
+        b.alpha = 0.8;
         [self pushToDestination];
     }
+    
+    self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage) {
+        b.enabled = YES;
+        b.alpha = 1;
+    };
 }
 
 - (BOOL)validate

@@ -12,7 +12,7 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 
 @interface CTValidation : NSObject
-typedef void (^CTSearchValidation)(id success, NSString *errorMessage);
+typedef void (^CTSearchValidation)(BOOL success, NSString *errorMessage);
 
 - (void)validateGroundTransport:(GroundTransportSearch *)search
                   cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI

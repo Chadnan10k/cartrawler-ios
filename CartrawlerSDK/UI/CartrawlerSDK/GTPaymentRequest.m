@@ -26,6 +26,7 @@
              dropoffLatitude:(NSString *)dropoffLatitude
             dropoffLongitude:(NSString *)dropoffLongitude
          dropoffLocationType:(NSString *)dropoffLocationType
+             airportIsPickup:(BOOL)airportIsPickup
                  airportCode:(NSString *)airportCode
                   terminalNo:(NSString *)terminalNo
                    airlineId:(NSString *)airlineId
@@ -59,6 +60,39 @@
     
 //    NSString *paymentExtension = [NSString stringWithFormat:@"\"RentalPaymentPref\":{\"PaymentCard\":{\"@CardType\":\"1\",\"@CardCode\":\"%@\",\"@CardNumber\":\"%@\",\"@ExpireDate\":\"%@\",\"@SeriesCode\":\"%@\",\"CardHolderName\":\"%@\"}},", @"[CARDCODE]", @"[CARDNUMBER]", @"[EXPIREDATE]", @"[SERIESCODE]", @"[CARDHOLDERNAME]"];
     
+    NSString *flightNoInfo = @"";
+    
+    if (flightNo != nil && airlineId != nil) {
+        flightNoInfo = [NSString stringWithFormat:
+           @", \n"
+           @"                \"Airline\":         { \n"
+           @"                    \"@CodeContext\": \"IATA\", \n"
+           @"                    \"@Code\": \"%@\", \n"
+           @"                    \"@FlightNumber\": \"%@\"    \n"
+           @"                } \n", airlineId, flightNo];
+    }
+    
+    NSString *airportPickup = @"";
+    NSString *airportDropoff = @"";
+
+    NSString *airportInfo = [NSString stringWithFormat:
+                             @",    \n"
+                             @"                \"AirportInfo\": {\"%@\":         { \n"
+                             @"                    \"@CodeContext\": \"IATA\", \n"
+                             @"                    \"@LocationCode\": \"%@\",   \n"
+                             @"                    \"@Terminal\": \"%@\"  \n"
+                             @"                }} %@",
+                             @"Arrival",
+                             airportCode,
+                             terminalNo,
+                             flightNoInfo];
+    
+    if (airportIsPickup) {
+        airportPickup = airportInfo;
+    } else {
+        airportDropoff = airportInfo;
+    }
+
     
     NSString *tail = [[NSString alloc]initWithFormat:
                       
@@ -80,24 +114,14 @@
                       @"                    }, \n"
                       @"                    \"LocationType\": \"%@\", \n"
                       @"                    \"LocationName\": \"%@\"   \n"
-                      @"                } \n"
+                      @"                } %@ \n"
                       @"            }, \n"
                       @"            \"Dropoff\":       { \n"
                       @"                \"Address\":         { \n"
                       @"                    \"@Latitude\": \"%@\", \n"
                       @"                    \"@Longitude\": \"%@\", \n"
                       @"                    \"LocationType\": \"%@\" \n"
-                      @"                },    \n"
-                      @"                \"AirportInfo\": {\"%@\":         { \n"
-                      @"                    \"@CodeContext\": \"IATA\", \n"
-                      @"                    \"@LocationCode\": \"%@\",   \n"
-                      @"                    \"@Terminal\": \"%@\"  \n"
-                      @"                }}, \n"
-                      @"                \"Airline\":         { \n"
-                      @"                    \"@CodeContext\": \"IATA\", \n"
-                      @"                    \"@Code\": \"%@\", \n"
-                      @"                    \"@FlightNumber\": \"%@\"    \n"
-                      @"                } \n"
+                      @"                } %@ \n"
                       @"            } \n"
                       @"        },    \n"
                       @"        \"Passenger\":     { \n"
@@ -149,15 +173,11 @@
                       countryName,
                       pickupLocationType,
                       pickupLocationName,
-                      //dropOffdateTime,
+                      airportPickup,
                       dropoffLatitude,
                       dropoffLongitude,
                       dropoffLocationType,
-                      flightType,
-                      airportCode,
-                      terminalNo,
-                      airlineId,
-                      flightNo,
+                      airportDropoff,
                       firstName,
                       surname,
                       phone,
@@ -176,7 +196,7 @@
 
 + (NSString *)groundTransportHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency
 {
-    return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.002\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": {\"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
+    return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.002\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"@ERSP_UserID\":\"KO\", \"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
 }
 
 @end

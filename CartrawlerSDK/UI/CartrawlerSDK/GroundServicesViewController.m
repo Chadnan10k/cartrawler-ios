@@ -10,14 +10,17 @@
 #import "GTServiceTableViewCell.h"
 #import "InclusionTableViewDataSource.h"
 #import "GTShuttleTableViewCell.h"
+#import "FilterCollectionViewDataSource.h"
 
 @interface GroundServicesViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) CTGroundAvailability *availability;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UICollectionView *filterCollectionView;
 
 @property (strong, nonatomic) InclusionTableViewDataSource *inclusionDataSource;
+@property (strong, nonatomic) FilterCollectionViewDataSource *filterDataSource;
 
 @end
 
@@ -28,18 +31,30 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    _availability = self.groundSearch.availability;
+    _filterDataSource.avail = self.groundSearch.availability;
+
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    _availability = self.groundSearch.availability;
+    _inclusionDataSource = [[InclusionTableViewDataSource alloc] init];
+    _filterDataSource = [[FilterCollectionViewDataSource alloc] init];
+    _filterDataSource.avail = self.groundSearch.availability;
+
+    self.filterCollectionView.dataSource = self.filterDataSource;
+    self.filterCollectionView.delegate = self.filterDataSource;
+    [self.filterCollectionView reloadData];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 80;
-    
-    _inclusionDataSource = [[InclusionTableViewDataSource alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,7 +97,6 @@
         cell.inclusionHeightConstraint.constant = cell.inclusionsCollectionView.contentSize.height;
         return cell;
     }
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,6 +106,7 @@
         self.groundSearch.selectedShuttle = nil;
     } else {
         self.groundSearch.selectedShuttle = self.availability.shuttles[indexPath.row];
+        self.groundSearch.flightNumber = nil;
         self.groundSearch.selectedService = nil;
     }
     [self pushToDestination];

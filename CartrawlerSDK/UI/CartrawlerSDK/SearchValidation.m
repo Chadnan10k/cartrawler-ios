@@ -58,11 +58,11 @@
                                                   if (response) {
                                                       dispatch_async(dispatch_get_main_queue(), ^{
                                                           search.vehicleAvailability = response;
-                                                          completion(@"success", nil);
+                                                          completion(YES, nil);
                                                       });
                                                   } else {
                                                       dispatch_async(dispatch_get_main_queue(), ^{
-                                                          completion(nil, error.errorMessage);
+                                                          completion(NO, error.errorMessage);
                                                       });
                                                   }
                                               }];
