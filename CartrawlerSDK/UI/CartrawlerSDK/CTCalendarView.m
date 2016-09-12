@@ -88,7 +88,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CTCalendarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CalendarCell" forIndexPath:indexPath];
-    
+    if (self.mininumDate) {
+        cell.mininumDate = self.mininumDate;
+    }
     [cell setData:self.months[indexPath.section] section:indexPath.section logicController:self.logicController];
     return cell;
 }

@@ -14,13 +14,16 @@ typedef NS_ENUM(NSUInteger, GTFilterType) {
     
     GTFilterTypeShuttle = 0,
     
-    GTFilterTypeService
+    GTFilterTypeService,
+    
+    GTFilterTypeNone
 };
 
 @property (nonatomic) GTFilterType filterType;
 @property (nonatomic, strong) NSString *price;
 
-- (void)setFilterType:(GTFilterType)filterType currency:(NSString *)currency price:(NSString *)price;
+- (void)setFilterType:(GTFilterType)filterType price:(NSString *)price;
+- (void)animate;
 
 + (void)forceLinkerLoad_;
 

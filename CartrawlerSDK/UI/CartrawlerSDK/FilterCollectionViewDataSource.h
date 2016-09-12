@@ -15,7 +15,7 @@
 
 typedef void (^GTFilterCompletion)(GTFilterType selectedItem);
 
-@property (weak, nonatomic) GTFilterCompletion selectedFilter;
+@property (nonatomic) GTFilterCompletion selectedFilter;
 @property (nonatomic, strong) CTGroundAvailability *avail;
 
 

@@ -215,8 +215,8 @@
 		45DC6B8D1D82BE0400010B4D /* GTInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45DC6B8B1D82BE0400010B4D /* GTInterstitialViewController.m */; };
 		45E84CCB1D79C61600D6BC47 /* InclusionCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E84CC91D79C61600D6BC47 /* InclusionCollectionViewCell.h */; };
 		45E84CCC1D79C61600D6BC47 /* InclusionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E84CCA1D79C61600D6BC47 /* InclusionCollectionViewCell.m */; };
-		45E84CCF1D79C69C00D6BC47 /* InclusionTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E84CCD1D79C69C00D6BC47 /* InclusionTableViewDataSource.h */; };
-		45E84CD01D79C69C00D6BC47 /* InclusionTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E84CCE1D79C69C00D6BC47 /* InclusionTableViewDataSource.m */; };
+		45E84CCF1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E84CCD1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.h */; };
+		45E84CD01D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E84CCE1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m */; };
 		45E942491D12FF0F00ACF604 /* CartrawlerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */; };
 		45E942971D1300ED00ACF604 /* CTVehicleSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942941D1300ED00ACF604 /* CTVehicleSelectionView.m */; };
 		45E942981D1300ED00ACF604 /* CTVehicleSelectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942961D1300ED00ACF604 /* CTVehicleSelectionViewModel.m */; };
@@ -245,6 +245,8 @@
 		45E942EC1D1303C500ACF604 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E942EB1D1303C500ACF604 /* UIKit.framework */; };
 		45E942EE1D13040800ACF604 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E942ED1D13040800ACF604 /* Foundation.framework */; };
 		45E942F11D13060E00ACF604 /* CartrawlerSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45EB45B41D86FB1600090B7C /* InclusionsTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EB45B21D86FB1600090B7C /* InclusionsTableViewCell.h */; };
+		45EB45B51D86FB1600090B7C /* InclusionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EB45B31D86FB1600090B7C /* InclusionsTableViewCell.m */; };
 		45EC250B1D48E04700A3C09D /* CTSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC25091D48E04700A3C09D /* CTSegmentedControl.h */; };
 		45EC250C1D48E04700A3C09D /* CTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC250A1D48E04700A3C09D /* CTSegmentedControl.m */; };
 		45EC250F1D49132B00A3C09D /* CTViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC250D1D49132B00A3C09D /* CTViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -456,8 +458,8 @@
 		45DC6B8B1D82BE0400010B4D /* GTInterstitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTInterstitialViewController.m; sourceTree = "<group>"; };
 		45E84CC91D79C61600D6BC47 /* InclusionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InclusionCollectionViewCell.h; sourceTree = "<group>"; };
 		45E84CCA1D79C61600D6BC47 /* InclusionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionCollectionViewCell.m; sourceTree = "<group>"; };
-		45E84CCD1D79C69C00D6BC47 /* InclusionTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InclusionTableViewDataSource.h; sourceTree = "<group>"; };
-		45E84CCE1D79C69C00D6BC47 /* InclusionTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionTableViewDataSource.m; sourceTree = "<group>"; };
+		45E84CCD1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InclusionCollectionViewDataSource.h; sourceTree = "<group>"; };
+		45E84CCE1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionCollectionViewDataSource.m; sourceTree = "<group>"; };
 		45E942431D12FF0F00ACF604 /* libCartrawlerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCartrawlerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartrawlerSDK.h; sourceTree = "<group>"; };
 		45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartrawlerSDK.m; sourceTree = "<group>"; };
@@ -512,6 +514,8 @@
 		45E942E81D1302FF00ACF604 /* NSStringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringUtils.m; sourceTree = "<group>"; };
 		45E942EB1D1303C500ACF604 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		45E942ED1D13040800ACF604 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		45EB45B21D86FB1600090B7C /* InclusionsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InclusionsTableViewCell.h; sourceTree = "<group>"; };
+		45EB45B31D86FB1600090B7C /* InclusionsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionsTableViewCell.m; sourceTree = "<group>"; };
 		45EC25091D48E04700A3C09D /* CTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSegmentedControl.h; sourceTree = "<group>"; };
 		45EC250A1D48E04700A3C09D /* CTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSegmentedControl.m; sourceTree = "<group>"; };
 		45EC250D1D49132B00A3C09D /* CTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTViewController.h; sourceTree = "<group>"; };
@@ -575,8 +579,8 @@
 		4509B4781D37ED6700259255 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				45E84CCD1D79C69C00D6BC47 /* InclusionTableViewDataSource.h */,
-				45E84CCE1D79C69C00D6BC47 /* InclusionTableViewDataSource.m */,
+				45E84CCD1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.h */,
+				45E84CCE1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m */,
 				45E84CC91D79C61600D6BC47 /* InclusionCollectionViewCell.h */,
 				45E84CCA1D79C61600D6BC47 /* InclusionCollectionViewCell.m */,
 				451C8EF71D7D8ADB00B9324D /* InclusionFlowLayout.h */,
@@ -585,6 +589,8 @@
 				4509B47A1D37ED8100259255 /* GTServiceTableViewCell.m */,
 				450DF3971D8191EA00EF51DE /* GTShuttleTableViewCell.h */,
 				450DF3981D8191EA00EF51DE /* GTShuttleTableViewCell.m */,
+				45EB45B21D86FB1600090B7C /* InclusionsTableViewCell.h */,
+				45EB45B31D86FB1600090B7C /* InclusionsTableViewCell.m */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -1331,12 +1337,13 @@
 				45C48D4F1D5226CA005C9377 /* CTFilterFactory.h in Headers */,
 				45AC54701D130A1600805268 /* CTMiddleDateCell.h in Headers */,
 				450F9D391D3CE08E002C6F6B /* SettingsSelectionViewController.h in Headers */,
-				45E84CCF1D79C69C00D6BC47 /* InclusionTableViewDataSource.h in Headers */,
+				45E84CCF1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.h in Headers */,
 				45AC545D1D1309F300805268 /* JVFloatLabeledTextField.h in Headers */,
 				456979281D2C03E7006A321E /* TabButton.h in Headers */,
 				45137C841D476AB100089928 /* CTPickerView.h in Headers */,
 				454AD7B11D2A6236005C6CFF /* VehicleDetailsViewController.h in Headers */,
 				4509B4731D37E72700259255 /* GroundServicesViewController.h in Headers */,
+				45EB45B41D86FB1600090B7C /* InclusionsTableViewCell.h in Headers */,
 				4511E5431D181B36000ED6B0 /* CTTextField.h in Headers */,
 				45AC54631D130A1600805268 /* CTImageCache.h in Headers */,
 				45AC545E1D1309FB00805268 /* NSStringUtils.h in Headers */,
@@ -1607,6 +1614,7 @@
 				45F4735D1D36451F00DF548B /* AddressDetailsViewController.m in Sources */,
 				45C48D501D5226CA005C9377 /* CTFilterFactory.m in Sources */,
 				45E942B31D1301C600ACF604 /* CalendarLogicController.m in Sources */,
+				45EB45B51D86FB1600090B7C /* InclusionsTableViewCell.m in Sources */,
 				454D20F01D549AD10050CA9E /* NSDateUtils.m in Sources */,
 				45361BEC1D2BA1BA00295124 /* UnderLinedButton.m in Sources */,
 				451FE5B41D6EF286004D85D1 /* InsuranceValidation.m in Sources */,
@@ -1634,7 +1642,7 @@
 				45C488CC1D479B020044612C /* OptionalExtrasView.m in Sources */,
 				4511E5381D17F766000ED6B0 /* CTNavigationItem.m in Sources */,
 				4511E51E1D1450CE000ED6B0 /* CTSDKSettings.m in Sources */,
-				45E84CD01D79C69C00D6BC47 /* InclusionTableViewDataSource.m in Sources */,
+				45E84CD01D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m in Sources */,
 				451C8F111D7EF37700B9324D /* GTSelectionValidation.m in Sources */,
 				4546D40F1D8301700081A2F9 /* FilterCollectionViewDataSource.m in Sources */,
 				45EC25101D49132B00A3C09D /* CTViewController.m in Sources */,

@@ -43,7 +43,9 @@
     
     self.headerBottomSection.backgroundColor = [CTAppearance instance].calendarHeaderBottomSectionColor;
     
-    
+    if (self.mininumDate) {
+        self.calendarView.mininumDate = self.mininumDate;
+    }
     [self.calendarView setupWithFrame:self.view.frame];
     
     self.calendarView.datesSelected = ^(NSDate *pickup, NSDate *dropoff){

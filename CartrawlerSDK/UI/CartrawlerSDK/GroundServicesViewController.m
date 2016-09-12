@@ -8,7 +8,7 @@
 
 #import "GroundServicesViewController.h"
 #import "GTServiceTableViewCell.h"
-#import "InclusionTableViewDataSource.h"
+#import "InclusionCollectionViewDataSource.h"
 #import "GTShuttleTableViewCell.h"
 #import "FilterCollectionViewDataSource.h"
 
@@ -19,9 +19,10 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UICollectionView *filterCollectionView;
 
-@property (strong, nonatomic) InclusionTableViewDataSource *inclusionDataSource;
+@property (strong, nonatomic) InclusionCollectionViewDataSource *inclusionDataSource;
 @property (strong, nonatomic) FilterCollectionViewDataSource *filterDataSource;
 
+@property (nonatomic) GTFilterType selectedFilterType;
 @end
 
 @implementation GroundServicesViewController
@@ -34,22 +35,30 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    _selectedFilterType = GTFilterTypeNone;
     _availability = self.groundSearch.availability;
-    _filterDataSource.avail = self.groundSearch.availability;
-
+    _filterDataSource.avail = self.availability;
+    [self.filterCollectionView reloadData];
     [self.tableView reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _inclusionDataSource = [[InclusionTableViewDataSource alloc] init];
+    _inclusionDataSource = [[InclusionCollectionViewDataSource alloc] init];
     _filterDataSource = [[FilterCollectionViewDataSource alloc] init];
     _filterDataSource.avail = self.groundSearch.availability;
-
+    
     self.filterCollectionView.dataSource = self.filterDataSource;
     self.filterCollectionView.delegate = self.filterDataSource;
     [self.filterCollectionView reloadData];
+    
+    __weak typeof (self) weakSelf = self;
+    
+    self.filterDataSource.selectedFilter = ^(GTFilterType selectedFilter) {
+        weakSelf.selectedFilterType = selectedFilter;
+        [weakSelf.tableView reloadData];
+    };
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -75,10 +84,29 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 1) {
-        return self.availability.services.count;
-    } else {
-        return self.availability.shuttles.count;
+    
+    switch (self.selectedFilterType) {
+        case GTFilterTypeService:
+            if (section == 1) {
+                return self.availability.services.count;
+            } else {
+                return 0;
+            }
+            break;
+        case GTFilterTypeShuttle:
+            if (section == 1) {
+                return 0;
+            } else {
+                return self.availability.shuttles.count;
+            }
+            break;
+        default:
+            if (section == 1) {
+                return self.availability.services.count;
+            } else {
+                return self.availability.shuttles.count;
+            }
+            break;
     }
 }
 
@@ -86,15 +114,17 @@
 {
     if (indexPath.section == 1) {
         GTServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"service"];
+        
+        
         [cell setService:self.availability.services[indexPath.row]];
         return cell;
 
     } else {
         GTShuttleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"shuttle"];
-        cell.inclusionDataSource = self.inclusionDataSource;
-        [cell.inclusionDataSource setInclusions:self.availability.shuttles[indexPath.row].inclusions];
+//        cell.inclusionDataSource = self.inclusionDataSource;
+//        [cell.inclusionDataSource setInclusions:self.availability.shuttles[indexPath.row].inclusions];
         [cell setShuttle:self.availability.shuttles[indexPath.row]];
-        cell.inclusionHeightConstraint.constant = cell.inclusionsCollectionView.contentSize.height;
+//        cell.inclusionHeightConstraint.constant = cell.inclusionsCollectionView.contentSize.height;
         return cell;
     }
 }

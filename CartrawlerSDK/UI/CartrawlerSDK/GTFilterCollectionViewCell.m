@@ -8,6 +8,7 @@
 
 #import "GTFilterCollectionViewCell.h"
 #import "CTLabel.h"
+#import "CTAppearance.h"
 
 @interface GTFilterCollectionViewCell()
 
@@ -23,7 +24,7 @@
     
 }
 
-- (void)setFilterType:(GTFilterType)filterType currency:(NSString *)currency price:(NSString *)price
+- (void)setFilterType:(GTFilterType)filterType price:(NSString *)price
 {
     _filterType = filterType;
     
@@ -46,7 +47,33 @@
             break;
     }
     
-    self.priceLabel.text = [NSString stringWithFormat:@"%@ From: %@ %@ ", filter, currency, price];
+    
+    NSAttributedString *serviceType = [[NSAttributedString alloc] initWithString: [NSString stringWithFormat:@"%@ from\n", filter]
+                                                              attributes:@{NSFontAttributeName:
+                                                                               [UIFont fontWithName:[CTAppearance instance].fontName size:12]}];
+    
+    NSAttributedString *priceStr = [[NSAttributedString alloc] initWithString: [NSString stringWithFormat:@"%@", price]
+                                                                 attributes:@{NSFontAttributeName:
+                                                                                  [UIFont fontWithName:[CTAppearance instance].boldFontName size:16]}];
+    
+    
+    
+    NSMutableAttributedString *serviceStr = [[NSMutableAttributedString alloc] init];
+    
+    [serviceStr appendAttributedString:serviceType];
+    [serviceStr appendAttributedString:priceStr];
+    
+    self.priceLabel.attributedText = serviceStr;
 }
 
+- (void)animate
+{
+    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0 options:0 animations:^{
+        self.imageView.transform = CGAffineTransformMakeScale(1.4, 1.4);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.imageView.transform = CGAffineTransformIdentity;
+        }];
+    }];
+}
 @end

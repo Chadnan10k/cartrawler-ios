@@ -17,13 +17,14 @@
 #import "CTCheckbox.h"
 #import "CTTextField.h"
 #import "CTSDKSettings.h"
-#import "GroundServicesViewController.h"
+#import "CTButton.h"
 
 @interface GroundTransportViewController () <CTCalendarDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *returnTripConstraint;
 @property (weak, nonatomic) IBOutlet UIView *returnTripContainer;
 
+@property (weak, nonatomic) IBOutlet CTButton *searchButton;
 @property (weak, nonatomic) IBOutlet CTCheckbox *sameLocationCheckBox;
 @property (weak, nonatomic) IBOutlet CTTextField *passengersTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -72,6 +73,7 @@
     
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:bundle];
 
     [self registerForKeyboardNotifications];
     
@@ -83,37 +85,28 @@
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *initialTimeComp = [gregorianCalendar components:NSHourCalendarUnit
                                                              fromDate:[NSDate date]];
-    
     initialTimeComp.hour = 10;
     
     _pickupTime = [gregorianCalendar dateFromComponents:initialTimeComp];
-    
     _pickupTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
     _dropoffTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
     
+    _activeView = self.pickupView;
+
     __weak typeof (self) weakSelf = self;
     
     self.pickupView.placeholder = @"Pick-up location";
     self.pickupView.viewTapped = ^{
-        
         [weakSelf.view endEditing:YES];
-        
         _activeView = self.pickupView;
-        
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:bundle];
         LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
         locSearchVC.enableGroundTransportLocations = YES;
-        
         [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
-        
         locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
-
             [weakSelf.pickupView setTextFieldText:location.name];
-            
             weakSelf.pickupLocType = location.isAtAirport ?
             [CTGroundLocation locationType:LocationTypeAirport] :
             [CTGroundLocation locationType:LocationTypeVicinity];
-            
             weakSelf.pickupLat = location.latitude;
             weakSelf.pickupLong = location.longitude;
             weakSelf.pickupName = location.name;
@@ -128,27 +121,19 @@
     
     self.dropoffView.placeholder = @"Drop-off location";
     self.dropoffView.viewTapped = ^{
-        
         [weakSelf.view endEditing:YES];
-        
         _activeView = self.pickupView;
-        
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:bundle];
         LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
         locSearchVC.enableGroundTransportLocations = YES;
         [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
-        
         locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
             [weakSelf.dropoffView setTextFieldText:location.name];
-            
             weakSelf.dropoffLocType = location.isAtAirport ?
             [CTGroundLocation locationType:LocationTypeAirport] :
             [CTGroundLocation locationType:LocationTypeVicinity];
-            
             weakSelf.dropoffLat = location.latitude;
             weakSelf.dropoffLong = location.longitude;
             weakSelf.dropoffName = location.name;
-
             if (location.isAtAirport) {
                 weakSelf.groundSearch.airportIsPickupLocation = NO;
                 _dropoffAirport = [[CTAirport alloc] initWithFlightType:FlightTypeArrival IATACode:location.airportCode terminalNumber:@"1"];
@@ -158,35 +143,26 @@
         };
     };
     
-    _activeView = self.pickupView;
-    
     self.pickupTimeView.placeholder = @"Time";
     [self.pickupTimeView setTextFieldText:[DateUtils stringFromDate:self.pickupTime withFormat:@"hh:mm a"]];
     self.pickupTimeView.viewTapped = ^{
-        
         [weakSelf.view endEditing:YES];
-        
         _activeView = self.pickupTimeView;
         [weakSelf.pickupTimePicker present];
         [weakSelf.dropoffTimePicker hide];
         weakSelf.pickupTimePicker.timeSelection = ^(NSDate *date){
-
             [weakSelf.pickupTimeView setTextFieldText:[DateUtils stringFromDate:date withFormat:@"hh:mm a"]];
             weakSelf.pickupTime = date;
-
         };
     };
     
     self.dropoffTimeView.placeholder = @"Time";
     self.dropoffTimeView.viewTapped = ^{
-        
         [weakSelf.view endEditing:YES];
-        
         _activeView = weakSelf.dropoffTimeView;
         [weakSelf.dropoffTimePicker present];
         [weakSelf.pickupTimePicker hide];
         weakSelf.dropoffTimePicker.timeSelection = ^(NSDate *date){
-
             [weakSelf.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:date withFormat:@"hh:mm a"]];
             weakSelf.dropoffTime = date;
         };
@@ -195,8 +171,6 @@
     self.calendarView.placeholder = @"Pick-up date";
     self.calendarView.viewTapped = ^{
         _activeView = self.calendarView;
-        
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:bundle];
         CTCalendarViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];
         vc.singleDateSelection = YES;
         vc.delegate = weakSelf;
@@ -205,10 +179,13 @@
     
     self.dropoffCalendarView.placeholder = @"Dropoff date";
     self.dropoffCalendarView.viewTapped = ^{
+        if (weakSelf.pickupDate == nil) {
+            [weakSelf.calendarView shakeAnimation];
+            return;
+        }
         _activeView = self.dropoffCalendarView;
-        
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:bundle];
         CTCalendarViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];
+        vc.mininumDate = weakSelf.pickupDate;
         vc.singleDateSelection = YES;
         vc.delegate = weakSelf;
         [weakSelf presentViewController:vc animated:YES completion:nil];
@@ -229,6 +206,14 @@
             }];
         }
         _activeView = weakSelf.sameLocationCheckBox;
+    };
+    
+    self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage) {
+        weakSelf.searchButton.enabled = YES;
+        weakSelf.searchButton.alpha = 1;
+        if (errorMessage) {
+            [weakSelf displayError:errorMessage];
+        }
     };
     
 }
@@ -342,11 +327,16 @@
         b.alpha = 0.8;
         [self pushToDestination];
     }
-    
-    self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage) {
-        b.enabled = YES;
-        b.alpha = 1;
-    };
+}
+
+- (void)displayError:(NSString *)error
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                    message:error
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 - (BOOL)validate

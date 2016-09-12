@@ -60,7 +60,7 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-    NSCalendar * cal = [NSCalendar currentCalendar];
+    NSCalendar *cal = [NSCalendar currentCalendar];
     
     NSDateComponents * comps = [cal components:NSUIntegerMax
                                       fromDate:month];
@@ -129,8 +129,8 @@
     
     if (![self.dates[indexPath.row] isEqual:[NSNull null]]) {
         
-        NSDate *now = [NSDate date];
-        NSDate *previousDay = [now dateByAddingTimeInterval:-1*24*60*60];
+        NSDate *now = self.mininumDate ?: [NSDate date];
+        NSDate *previousDay = self.mininumDate ?: [now dateByAddingTimeInterval:-1*24*60*60];
         
         if ([((NSDate *)self.dates[indexPath.row]) compare:previousDay] == NSOrderedAscending) {
             [cell setLabelColor:[UIColor lightGrayColor]];
