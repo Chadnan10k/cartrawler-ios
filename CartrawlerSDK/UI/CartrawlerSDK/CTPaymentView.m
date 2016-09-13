@@ -31,6 +31,7 @@
 
 - (void)presentInView:(UIView *)parentView
 {
+    self.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     _bundle = [NSBundle bundleWithPath:bundlePath];
@@ -149,7 +150,8 @@
     f.maximumFractionDigits = 5;
     f.numberStyle = NSNumberFormatterDecimalStyle;
 
-    NSString *request = [GTPaymentRequest CT_GroundBook:[NSDateUtils stringFromDateWithFormat:search.pickupLocation.dateTime format:@"yyyy-MM-dd'T'HH:mm:ss"]
+    NSString *s = [GTPaymentRequest
+                      CT_GroundBook:[NSDateUtils stringFromDateWithFormat:search.pickupLocation.dateTime format:@"yyyy-MM-dd'T'HH:mm:ss"]
                      pickupLatitude:[f stringFromNumber:search.pickupLocation.latitude]
                     pickupLongitude:[f stringFromNumber:search.pickupLocation.longitude]
                        addressLine1:search.addressLine1
@@ -161,7 +163,8 @@
                         countryName:@"Ireland"
                  pickupLocationType:search.pickupLocation.locationTypeDescription
                  pickupLocationName:@"Cartrawler"
-                    dropOffdateTime:nil
+                    dropOffdateTime:[NSDateUtils stringFromDateWithFormat:[search.pickupLocation.dateTime
+                                                                           dateByAddingTimeInterval:1*24*60*60] format:@"yyyy-MM-dd'T'HH:mm:ss"]
                     dropoffLatitude:[f stringFromNumber:search.dropoffLocation.latitude]
                    dropoffLongitude:[f stringFromNumber:search.dropoffLocation.longitude]
                 dropoffLocationType:search.dropoffLocation.locationTypeDescription
@@ -187,16 +190,16 @@
                              locale:[CTSDKSettings instance].languageCode
                           ipaddress:@"127.0.0.1"];
     
-    NSLog(@"%@", request);
-    
     NSString *urlStr;
+    NSString *escapedString = [s stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    escapedString = [escapedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     
     if ([CTSDKSettings instance].isDebug) {
-        urlStr = [NSString stringWithFormat:@"http://external-dev.cartrawler.com:20002/cartrawlerpay/paymentform?type=OTA_VehResRQ&mobile=true"];
+        urlStr = [NSString stringWithFormat:@"https://otasecuretest.cartrawler.com:20001/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&mobile=true&msg=%@", escapedString];
     } else {
-        urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_VehResRQ&mobile=true"];
+        urlStr = [NSString stringWithFormat:@"https://otasecuretest.cartrawler.com:20001/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&mobile=true&msg=%@", escapedString];
     }
-    
+
     self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"[URLPLACEHOLDER]" withString:urlStr];
     
     [self.webView loadHTMLString:self.htmlString baseURL: self.bundle.bundleURL];
@@ -328,15 +331,27 @@
 - (void)currentState
 {
 
-    viewState = [self.webView stringByEvaluatingJavaScriptFromString:@"getCurrentState()"];
+    __weak typeof (self) weakSelf = self;
     
+    viewState = [self.webView stringByEvaluatingJavaScriptFromString:@"getCurrentState()"];
+
     if ([viewState isEqualToString:@"SendingPayment"]) {
+        //wait 3 seconds
+        self.alpha = 0;
         [self.timer invalidate];
         
-        //callback success to parent
-        if (self.completion) {
-            self.completion();
-        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            if ([viewState isEqualToString:@"PaymentError"]) {
+                [weakSelf showError:@"Sorry" message:@"Error occured"];
+                self.alpha = 1;
+
+            } else {
+                //callback success to parent
+                if (self.completion) {
+                    self.completion();
+                }
+            }
+        });
     }
     
 }

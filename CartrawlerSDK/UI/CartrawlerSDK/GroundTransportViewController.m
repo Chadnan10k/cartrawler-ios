@@ -102,7 +102,7 @@
         LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
         locSearchVC.enableGroundTransportLocations = YES;
         [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
-        locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
+        locSearchVC.selectedLocation = ^(CTMatchedLocation *location){
             [weakSelf.pickupView setTextFieldText:location.name];
             weakSelf.pickupLocType = location.isAtAirport ?
             [CTGroundLocation locationType:LocationTypeAirport] :

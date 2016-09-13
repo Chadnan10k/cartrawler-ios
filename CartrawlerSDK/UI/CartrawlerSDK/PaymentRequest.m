@@ -188,10 +188,4 @@
     return [NSString stringWithFormat:@"{%@%@}", [self currencyHeader:clientID target:target locale:locale currency:currency], tail];
 }
 
-
-
-
-
-
-
 @end

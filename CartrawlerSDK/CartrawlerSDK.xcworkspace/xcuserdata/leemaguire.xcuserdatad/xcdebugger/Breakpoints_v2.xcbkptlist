@@ -13,5 +13,21 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UI/CartrawlerSDK/PaymentRequest.m"
+            timestampString = "495458514.695509"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "+OTA_VehResRQ:returnDateTime:pickupLocationCode:dropoffLocationCode:homeCountry:driverAge:numPassengers:flightNumber:refID:refTimeStamp:refURL:extrasArray:givenName:surName:emailAddress:address:phoneNumber:insuranceObject:isBuyingInsurance:clientID:target:locale:currency:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

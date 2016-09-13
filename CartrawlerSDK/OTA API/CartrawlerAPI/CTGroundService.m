@@ -37,6 +37,8 @@
 //    _inclusions = inclusionArr;
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier: @"es_US"]];
+
     NSNumber *totalCharge = [numberFormatter numberFromString:dict[@"TotalCharge"][@"@RateTotalAmount"]];
 
     _currency = dict[@"TotalCharge"][@"@CurrencyCode"];

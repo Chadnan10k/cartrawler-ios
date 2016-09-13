@@ -79,7 +79,11 @@
     }
     
     NSNumberFormatter *f = [NSNumberFormatter new];
+    [f setLocale:[[NSLocale alloc] initWithLocaleIdentifier: @"es_US"]];
+
+    f.numberStyle = NSNumberFormatterDecimalStyle;
     f.maximumFractionDigits = 5;
+
     _latitude = [f numberFromString:dictionary[@"@Lat"]];
     _longitude = [f numberFromString:dictionary[@"@Lng"]];
 
