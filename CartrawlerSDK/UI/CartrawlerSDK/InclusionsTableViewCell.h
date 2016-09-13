@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <CartrawlerAPI/CTGroundInclusion.h>
 @interface InclusionsTableViewCell : UITableViewCell
 
 + (void)forceLinkerLoad_;
 
-- (void)setText:(NSString *)text;
+- (void)setText:(Inclusion)inclusion;
+
 @end

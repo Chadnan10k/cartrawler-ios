@@ -22,7 +22,7 @@
     
     _maxPassengers = dict[@"Service"][@"@MaximumPassengers"];
     _maxBaggage = dict[@"Service"][@"@MaximumBaggage"];
-    _meetAndGreet = [dict[@"Service"][@"MeetAndGreetInd"] isEqualToString:@"true"] ? YES : NO;
+    _meetAndGreet = [dict[@"Service"][@"@MeetAndGreetInd"] isEqualToString:@"true"] ? YES : NO;
     
     if (dict[@"Service"][@"Location"]) {
         _pickupLocation = [[CTGroundLocation alloc] initWithDictionary:dict[@"Service"][@"Location"][@"Pickup"]];

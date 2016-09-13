@@ -48,7 +48,7 @@
     
     self.inclusionsTableView.dataSource = self;
     self.inclusionsTableView.rowHeight = UITableViewAutomaticDimension;
-    self.inclusionsTableView.estimatedRowHeight = 30;
+    self.inclusionsTableView.estimatedRowHeight = 32;
 }
 
 - (void)setShuttle:(CTGroundShuttle *)shuttle
@@ -58,8 +58,6 @@
     }];
     
     _inclusions = shuttle.inclusions;
-    [self.inclusionsTableView reloadData];
-    self.tableViewHeight.constant = self.inclusionsTableView.contentSize.height;
     
     self.shuttleName.text = shuttle.companyName;
     self.shuttleInfo.text = [self shuttleServiceLevel:shuttle.serviceLevel];
@@ -68,20 +66,13 @@
     self.passengersLabel.text = [NSString stringWithFormat:@"%@", shuttle.maxPassengers];
     self.priceLabel.text = [NSNumberUtils numberStringWithCurrencyCode:shuttle.totalCharge];
     
-    if (self.inclusionsCollectionView) {
-        if (shuttle.inclusions.count > 0) {
-            
-            self.inclusionsCollectionView.hidden = NO;
-            self.inclusionsCollectionView.dataSource = self.inclusionDataSource;
-            self.inclusionsCollectionView.delegate = self.inclusionDataSource;
-            [self.inclusionsCollectionView reloadData];
-            [self.inclusionsCollectionView layoutIfNeeded];
-            [self layoutIfNeeded];
-            
-        } else {
-            self.inclusionsCollectionView.hidden = YES;
-        }
-    }
+    [self.inclusionsTableView reloadData];
+    [self.inclusionsTableView setNeedsLayout];
+    [self.inclusionsTableView layoutIfNeeded];
+    [self.inclusionsTableView reloadData];
+    self.tableViewHeight.constant = self.inclusionsTableView.contentSize.height;
+    [self.inclusionsTableView updateConstraintsIfNeeded];
+    
 }
 
 - (NSString *)shuttleType:(ShuttleType)type
@@ -131,101 +122,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     InclusionsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    [cell setText:[self inclusionText:self.inclusions[indexPath.row].inclusion]];
+    [cell setText:self.inclusions[indexPath.row].inclusion];
     return cell;
 }
 
-- (NSString *)inclusionText:(Inclusion)inclusion
-{
-    
-    switch (inclusion) {
-        case InclusionAirCon: {
-            return NSLocalizedString(@"Air Con", @"Air Con");
-            
-        }
-        case InclusionBathroom: {
-            return NSLocalizedString(@"Bathroom", @"Bathroom");
-            
-        }
-        case InclusionBike: {
-            return NSLocalizedString(@"Bike", @"Bike");
-            
-        }
-        case InclusionChildSeats: {
-            return NSLocalizedString(@"Child Seats", @"");
-            
-        }
-        case InclusionDriverLanguages: {
-            return NSLocalizedString(@"Driver Languages", @"");
-            
-        }
-        case InclusionExtraPrivacyLegroom: {
-            return NSLocalizedString(@"Extra Privacy & Legroom", @"");
-            
-        }
-        case InclusionMagazines: {
-            return NSLocalizedString(@"Magazines", @"");
-            
-        }
-        case InclusionMakeModel: {
-            return NSLocalizedString(@"Make model", @""); // ??
-            
-        }
-        case InclusionNewspaper: {
-            return NSLocalizedString(@"Newspaper", @"");
-            
-        }
-        case InclusionOversizeLuggage: {
-            return NSLocalizedString(@"Oversize Luggage", @"");
-            
-        }
-        case InclusionPhoneCharger: {
-            return NSLocalizedString(@"Phone Charger", @"");
-            
-        }
-        case InclusionPowerSocket: {
-            return NSLocalizedString(@"Power Socket", @"");
-            
-        }
-        case InclusionSMS: {
-            return NSLocalizedString(@"SMS", @"");
-            
-        }
-        case InclusionSnacks: {
-            return NSLocalizedString(@"Snacks", @"");
-            
-        }
-        case InclusionTablet: {
-            return NSLocalizedString(@"Tablet", @"");
-            
-        }
-        case InclusionWaitMinutes: {
-            return NSLocalizedString(@"Wait Minutes", @""); //??
-            
-        }
-        case InclusionWheelchairAccess: {
-            return NSLocalizedString(@"Wheelchair Access", @"");
-            
-        }
-        case InclusionWifi: {
-            return NSLocalizedString(@"Wifi", @"");
-            
-        }
-        case InclusionWorkTable: {
-            return NSLocalizedString(@"Work Table", @"");
-            
-        }
-        case InclusionVideo: {
-            return NSLocalizedString(@"Video", @"");
-            
-        }
-        case InclusionWater: {
-            return NSLocalizedString(@"Water", @"");
-            
-        }
-    }
-    
-    return @"";
-}
 
 @end

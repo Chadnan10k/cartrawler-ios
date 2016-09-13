@@ -63,7 +63,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 80;
+    self.tableView.estimatedRowHeight = 250;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,17 +114,12 @@
 {
     if (indexPath.section == 1) {
         GTServiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"service"];
-        
-        
         [cell setService:self.availability.services[indexPath.row]];
         return cell;
 
     } else {
         GTShuttleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"shuttle"];
-//        cell.inclusionDataSource = self.inclusionDataSource;
-//        [cell.inclusionDataSource setInclusions:self.availability.shuttles[indexPath.row].inclusions];
         [cell setShuttle:self.availability.shuttles[indexPath.row]];
-//        cell.inclusionHeightConstraint.constant = cell.inclusionsCollectionView.contentSize.height;
         return cell;
     }
 }
