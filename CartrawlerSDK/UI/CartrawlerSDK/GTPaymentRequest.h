@@ -22,6 +22,7 @@
                  countryName:(NSString *)countryName
           pickupLocationType:(NSString *)pickupLocationType
           pickupLocationName:(NSString *)pickupLocationName
+         specialInstructions:(NSString *)specialInstructions
              dropOffdateTime:(NSString *)dropOffdateTime
              dropoffLatitude:(NSString *)dropoffLatitude
             dropoffLongitude:(NSString *)dropoffLongitude

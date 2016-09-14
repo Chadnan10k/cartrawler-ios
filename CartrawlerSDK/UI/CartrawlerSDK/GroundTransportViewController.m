@@ -193,6 +193,12 @@
 
     self.sameLocationCheckBox.viewTapped = ^(BOOL selection) {
         if (selection) {
+            
+            weakSelf.dropoffTime = nil;
+            weakSelf.dropoffDate = nil;
+            [weakSelf.dropoffTimeView setTextFieldText:@""];
+            [weakSelf.dropoffCalendarView setTextFieldText:@""];
+
             weakSelf.returnTripConstraint.constant = 8;
             [UIView animateWithDuration:0.3 animations:^{
                 weakSelf.returnTripContainer.alpha = 0;

@@ -53,8 +53,9 @@
 
 - (void)setShuttle:(CTGroundShuttle *)shuttle
 {
+    __weak typeof (self) weakSelf = self;
     [[CTImageCache sharedInstance] cachedImage: shuttle.vehicleImage completion:^(UIImage *image) {
-        self.vehicleImageView.image = image;
+        weakSelf.vehicleImageView.image = image;
     }];
     
     _inclusions = shuttle.inclusions;

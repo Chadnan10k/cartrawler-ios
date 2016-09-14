@@ -21,7 +21,6 @@
 @property (nonatomic, strong) NSNumber *adultQty;
 @property (nonatomic, strong) NSNumber *childQty;
 @property (nonatomic, strong) NSNumber *infantQty;
-
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *surname;
 @property (nonatomic, strong) NSString *email;
@@ -32,8 +31,8 @@
 @property (nonatomic, strong) NSString *city;
 @property (nonatomic, strong) NSString *postcode;
 @property (nonatomic, strong) NSString *country;
-
-@property (nonatomic, strong, readonly) NSString *concatinatedAddress;
+@property (nonatomic, strong) NSString *countryCode;
+@property (nonatomic, strong) NSString *specialInstructions;
 
 + (instancetype)instance;
 

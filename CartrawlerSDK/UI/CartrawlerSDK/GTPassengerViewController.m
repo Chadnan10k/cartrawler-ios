@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet CTTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet CTTextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet CTTextField *flightNoTextField;
+@property (weak, nonatomic) IBOutlet CTTextField *instructionsTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet CTLabel *flightDetailsLabel;
 @property (weak, nonatomic) IBOutlet CTDesignableView *flightDetailsContainer;
@@ -90,23 +91,25 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
-    self.groundSearch.firstName = self.firstNameTextField.text;
-    self.groundSearch.surname = self.lastNameTextField.text;
-    self.groundSearch.email = self.emailTextField.text;
-    self.groundSearch.phone = self.phoneTextField.text;
-    self.groundSearch.flightNumber = self.groundSearch.selectedService ? self.flightNoTextField.text : nil;
-    
-    AddressDetailsViewController *destination = (AddressDetailsViewController *)segue.destinationViewController;
-    destination.destinationViewController = self.destinationViewController;
-    destination.fallBackViewController = self.fallBackViewController;
-    destination.cartrawlerAPI = self.cartrawlerAPI;
-    destination.validationController = self.validationController;
-    destination.groundSearch = self.groundSearch;
+//    AddressDetailsViewController *destination = (AddressDetailsViewController *)segue.destinationViewController;
+//    destination.destinationViewController = self.destinationViewController;
+//    destination.fallBackViewController = self.fallBackViewController;
+//    destination.cartrawlerAPI = self.cartrawlerAPI;
+//    destination.validationController = self.validationController;
+//    destination.groundSearch = self.groundSearch;
 }
 
 - (IBAction)confirmDetails:(id)sender
 {
     [self done];
+    
+    self.groundSearch.firstName = self.firstNameTextField.text;
+    self.groundSearch.surname = self.lastNameTextField.text;
+    self.groundSearch.email = self.emailTextField.text;
+    self.groundSearch.phone = self.phoneTextField.text;
+    self.groundSearch.flightNumber = self.groundSearch.selectedService ? self.flightNoTextField.text : nil;
+    self.groundSearch.specialInstructions = self.instructionsTextField.text;
+    
     BOOL validated = YES;
     
     if ([self.firstNameTextField.text isEqualToString: @""]) {
@@ -135,7 +138,7 @@
     }
     
     if (validated) {
-        [self performSegueWithIdentifier:@"addressDetails" sender:nil];
+        [self pushToDestination];
     }
 }
 

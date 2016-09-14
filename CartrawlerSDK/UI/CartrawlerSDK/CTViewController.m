@@ -30,6 +30,9 @@
 
 - (void)pushToDestination
 {
+    
+    __weak typeof (self) weakSelf = self;
+    
     if (!self.search) {
     
         [self.validationController validateGroundTransport:self.groundSearch
@@ -37,20 +40,20 @@
                                                 completion:^(BOOL success, NSString *errorMessage) {
                                                     dispatch_async(dispatch_get_main_queue(), ^{
                                                         if (success) {
-                                                            if (self.dataValidationCompletion) {
-                                                                self.dataValidationCompletion(YES, nil);
+                                                            if (weakSelf.dataValidationCompletion) {
+                                                                weakSelf.dataValidationCompletion(YES, nil);
                                                             }
-                                                            [self.navigationController pushViewController:self.destinationViewController animated:YES];
-                                                            [self.destinationViewController refresh];
+                                                            [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
+                                                            [weakSelf.destinationViewController refresh];
                                                         } else {
-                                                            if (self.fallBackViewController) {
-                                                                if (self.dataValidationCompletion) {
-                                                                    self.dataValidationCompletion(NO, errorMessage);
+                                                            if (weakSelf.fallBackViewController) {
+                                                                if (weakSelf.dataValidationCompletion) {
+                                                                    weakSelf.dataValidationCompletion(NO, errorMessage);
                                                                 }
-                                                                [self.navigationController pushViewController:self.fallBackViewController animated:YES];
+                                                                [weakSelf.navigationController pushViewController:weakSelf.fallBackViewController animated:YES];
                                                             } else {
-                                                                if (self.dataValidationCompletion) {
-                                                                    self.dataValidationCompletion(NO, errorMessage);
+                                                                if (weakSelf.dataValidationCompletion) {
+                                                                    weakSelf.dataValidationCompletion(NO, errorMessage);
                                                                 }
                                                             }
                                                         }
@@ -64,20 +67,20 @@
                                           completion:^(BOOL success, NSString *errorMessage) {
                                               dispatch_async(dispatch_get_main_queue(), ^{
                                                   if (success) {
-                                                      if (self.dataValidationCompletion) {
-                                                          self.dataValidationCompletion(YES, nil);
+                                                      if (weakSelf.dataValidationCompletion) {
+                                                          weakSelf.dataValidationCompletion(YES, nil);
                                                       }
-                                                      [self.navigationController pushViewController:self.destinationViewController animated:YES];
-                                                      [self.destinationViewController refresh];
+                                                      [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
+                                                      [weakSelf.destinationViewController refresh];
                                                   } else {
-                                                      if (self.fallBackViewController) {
-                                                          if (self.dataValidationCompletion) {
-                                                              self.dataValidationCompletion(NO, errorMessage);
+                                                      if (weakSelf.fallBackViewController) {
+                                                          if (weakSelf.dataValidationCompletion) {
+                                                              weakSelf.dataValidationCompletion(NO, errorMessage);
                                                           }
-                                                          [self.navigationController pushViewController:self.fallBackViewController animated:YES];
+                                                          [weakSelf.navigationController pushViewController:self.fallBackViewController animated:YES];
                                                       } else {
-                                                          if (self.dataValidationCompletion) {
-                                                              self.dataValidationCompletion(NO, errorMessage);
+                                                          if (weakSelf.dataValidationCompletion) {
+                                                              weakSelf.dataValidationCompletion(NO, errorMessage);
                                                           }
                                                       }
                                                   }

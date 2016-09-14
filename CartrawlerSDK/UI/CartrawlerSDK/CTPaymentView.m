@@ -156,13 +156,14 @@
                     pickupLongitude:[f stringFromNumber:search.pickupLocation.longitude]
                        addressLine1:search.addressLine1
                        addressLine2:search.addressLine2
-                               town:search.addressLine1
-                               city:@"Dublin"
-                           postcode:@"2"
-                        countryCode:@"IE"
-                        countryName:@"Ireland"
+                               town:search.city
+                               city:search.city
+                           postcode:search.postcode
+                        countryCode:search.country
+                        countryName:search.country
                  pickupLocationType:search.pickupLocation.locationTypeDescription
-                 pickupLocationName:@"Cartrawler"
+                 pickupLocationName:search.pickupLocation.name
+                specialInstructions:search.specialInstructions
                     dropOffdateTime:[NSDateUtils stringFromDateWithFormat:[search.pickupLocation.dateTime
                                                                            dateByAddingTimeInterval:1*24*60*60] format:@"yyyy-MM-dd'T'HH:mm:ss"]
                     dropoffLatitude:[f stringFromNumber:search.dropoffLocation.latitude]
@@ -177,7 +178,7 @@
                           firstName:search.firstName
                             surname:search.surname
                               phone:search.phone
-               passengerCountryCode:@"IE"
+               passengerCountryCode:search.countryCode
                      passengerEmail:search.email
                  additionalAdultQty:search.adultQty.stringValue
                         childrenQty:@"0"
@@ -197,12 +198,14 @@
     if ([CTSDKSettings instance].isDebug) {
         urlStr = [NSString stringWithFormat:@"https://otasecuretest.cartrawler.com:20001/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&mobile=true&msg=%@", escapedString];
     } else {
-        urlStr = [NSString stringWithFormat:@"https://otasecuretest.cartrawler.com:20001/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&mobile=true&msg=%@", escapedString];
+        urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&mobile=true&msg=%@", escapedString];
     }
 
     self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"[URLPLACEHOLDER]" withString:urlStr];
     
     [self.webView loadHTMLString:self.htmlString baseURL: self.bundle.bundleURL];
+    
+    [self setupWebView];
 }
 
 - (void)setForCarRentalPayment:(CarRentalSearch *)search
@@ -247,11 +250,12 @@
     
     [self.webView loadHTMLString:self.htmlString baseURL: self.bundle.bundleURL];
 
+    [self setupWebView];
 }
 
 - (void)setupWebView
 {
-    
+    self.alpha = 1;
 }
 
 - (void)reachabilityChanged:(NSNotification *)notification {
@@ -337,14 +341,20 @@
 
     if ([viewState isEqualToString:@"SendingPayment"]) {
         //wait 3 seconds
-        self.alpha = 0;
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            self.alpha = 0;
+        }];
+        
         [self.timer invalidate];
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             if ([viewState isEqualToString:@"PaymentError"]) {
                 [weakSelf showError:@"Sorry" message:@"Error occured"];
-                self.alpha = 1;
-
+                [UIView animateWithDuration:0.2 animations:^{
+                    weakSelf.alpha = 1;
+                }];
+                
             } else {
                 //callback success to parent
                 if (self.completion) {

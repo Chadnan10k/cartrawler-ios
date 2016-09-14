@@ -32,31 +32,29 @@
     return sharedInstance;
 }
 
+//once again categories wont be available in a static framework so better off making static funcs
 - (void)cachedImage:(NSURL *)imageUrl completion:(ImageCacheCompletion)completion;
 {
     if ([[CTImageCache sharedInstance] objectForKey: imageUrl.absoluteString] == nil) {
         
-        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate:self delegateQueue: [NSOperationQueue mainQueue]];
-        
-        NSURLSessionTask *task = [defaultSession dataTaskWithURL:imageUrl
+        NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:imageUrl
                                                              completionHandler:^(NSData * _Nullable data,
                                                                                  NSURLResponse * _Nullable response,
                                                                                  NSError * _Nullable error)
-        {
-            if (error == nil) {
-                if (data != nil) {
-                    UIImage *image = [[UIImage alloc] initWithData:data];
-                    [[CTImageCache sharedInstance] setObject:image
-                                                      forKey:imageUrl.absoluteString
-                                                        cost:data.length];
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        completion(image);
-                    });
-                }
-            }
-        }];
+                                  {
+                                      if (error == nil) {
+                                          if (data != nil) {
+                                              UIImage *image = [[UIImage alloc] initWithData:data];
+                                              [[CTImageCache sharedInstance] setObject:image
+                                                                                forKey:imageUrl.absoluteString
+                                                                                  cost:data.length];
+                                              
+                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                  completion(image);
+                                              });
+                                          }
+                                      }
+                                  }];
         
         [task resume];
         
@@ -66,12 +64,5 @@
         });
     }
 }
-
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
-{
-    completionHandler(NSURLSessionAuthChallengeUseCredential, [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust]);
-}
-
-
 
 @end

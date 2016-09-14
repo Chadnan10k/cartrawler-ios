@@ -22,6 +22,7 @@
                  countryName:(NSString *)countryName
           pickupLocationType:(NSString *)pickupLocationType
           pickupLocationName:(NSString *)pickupLocationName
+         specialInstructions:(NSString *)specialInstructions
              dropOffdateTime:(NSString *)dropOffdateTime
              dropoffLatitude:(NSString *)dropoffLatitude
             dropoffLongitude:(NSString *)dropoffLongitude
@@ -131,7 +132,8 @@
                       @"\"#text\": \"%@\"\n"
                       @"}, \n"
                       @"\"LocationType\": \"%@\", \n"
-                      @"\"LocationName\": \"%@\"   \n"
+                      @"\"LocationName\": \"%@\",   \n"
+                      "@\"SpecialInstructions\": \"%@\" \n"
                       @"} %@ \n"
                       @"}, \n"
                       @"\"Dropoff\":       { \n"
@@ -192,6 +194,7 @@
                       countryName,
                       pickupLocationType,
                       pickupLocationName,
+                      @"instruction",
                       airportPickup,
                       dropOffdateTime,
                       dropoffLatitude,

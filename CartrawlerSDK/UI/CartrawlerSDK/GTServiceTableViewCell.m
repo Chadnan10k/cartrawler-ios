@@ -38,8 +38,9 @@
 
 - (void)setService:(CTGroundService *)service
 {
+    __weak typeof (self) weakSelf = self;
     [[CTImageCache sharedInstance] cachedImage: service.vehicleImage completion:^(UIImage *image) {
-        self.vehicleImageView.image = image;
+        weakSelf.vehicleImageView.image = image;
     }];
     
     self.carTypeLabel.text = service.vehicleType;

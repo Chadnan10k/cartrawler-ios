@@ -100,7 +100,9 @@
     
     _gtServiceSelectionViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"GroundServicesViewController"];
     
-    _gtDriverDetailsViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
+    _gtPassengerDetailsViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
+    
+    _gtAddressDetailsViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"AddressDetailsViewController"];
     
     _gtPaymentViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
     
@@ -166,9 +168,12 @@
 
     //GROUND TRANSPORT
     [self configureViewController:self.gtSearchDetailsViewController validationController:[[GTSearchValidation alloc] init] destination:self.gtServiceSelectionViewController fallback:nil];
-    [self configureViewController:self.gtServiceSelectionViewController validationController:[[GTSelectionValidation alloc] init] destination:self.gtDriverDetailsViewController fallback:nil];
-    [self configureViewController:self.gtDriverDetailsViewController validationController:[[GTPassengerDetailsValidation alloc] init] destination:self.gtPaymentViewController fallback:nil];
+    [self configureViewController:self.gtServiceSelectionViewController validationController:[[GTSelectionValidation alloc] init] destination:self.gtPassengerDetailsViewController fallback:nil];
+    [self configureViewController:self.gtPassengerDetailsViewController validationController:[[GTGenericValidation alloc] init] destination:self.gtAddressDetailsViewController fallback:nil];
+    [self configureViewController:self.gtAddressDetailsViewController validationController:[[GTPassengerDetailsValidation alloc] init] destination:self.gtPaymentViewController fallback:nil];
     [self configureViewController:self.gtPaymentViewController validationController:[[GTGenericValidation alloc] init] destination:self.gtPaymentCompletionViewController fallback:nil];
+    [self configureViewController:self.gtPaymentCompletionViewController validationController:nil destination:nil fallback:nil];
+
 }
 
 - (void)overrideSearchDetailsViewController:(CTViewController *)viewController
