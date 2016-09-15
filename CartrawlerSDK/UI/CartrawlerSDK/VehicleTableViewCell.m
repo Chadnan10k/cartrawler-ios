@@ -121,8 +121,8 @@
     }];
 }
 
-- (NSString *)fuelPolicyString:(FuelPolicy)fuelPolicy {
-    
+- (NSString *)fuelPolicyString:(FuelPolicy)fuelPolicy
+{
     if (fuelPolicy == FuelPolicyFullToFull) {
         return NSLocalizedString(@"Full to full", @"Full to full");
     }

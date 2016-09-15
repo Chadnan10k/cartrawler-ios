@@ -27,6 +27,11 @@
     return self;
 }
 
+- (void)updateData:(NSArray <CTAvailabilityItem *> *)data
+{
+    _vehicles = data;
+}
+
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -17,6 +17,7 @@
 typedef void (^VehicleSelectionCompletion)(CTAvailabilityItem *vehicle);
 
 - (void)initWithVehicleAvailability:(NSArray <CTAvailabilityItem *> *)data completion:(VehicleSelectionCompletion)completion;
+- (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data;
 - (void)showLoading;
 - (void)hideLoading;
 

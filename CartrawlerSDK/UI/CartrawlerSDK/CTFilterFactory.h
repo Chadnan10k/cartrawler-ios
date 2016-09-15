@@ -23,6 +23,7 @@
 - (void)setDataSources;
 
 - (id)initWithFilterData:(CTVehicleAvailability *)data;
+- (void)update:(CTVehicleAvailability *)data;
 
 - (void)filter;
 

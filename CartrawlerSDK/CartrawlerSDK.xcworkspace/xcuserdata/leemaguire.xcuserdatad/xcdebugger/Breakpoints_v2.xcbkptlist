@@ -16,16 +16,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UI/CartrawlerSDK/PaymentRequest.m"
-            timestampString = "495458514.695509"
+            filePath = "UI/CartrawlerSDK/VehicleSelectionViewController.m"
+            timestampString = "495626604.776568"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "+OTA_VehResRQ:returnDateTime:pickupLocationCode:dropoffLocationCode:homeCountry:driverAge:numPassengers:flightNumber:refID:refTimeStamp:refURL:extrasArray:givenName:surName:emailAddress:address:phoneNumber:insuranceObject:isBuyingInsurance:clientID:target:locale:currency:"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UI/CartrawlerSDK/CTFilterViewController.m"
+            timestampString = "495627389.103455"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-updateData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -36,12 +52,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UI/CartrawlerSDK/VehicleSelectionViewController.m"
-            timestampString = "495557840.623048"
+            timestampString = "495632661.435947"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "-refresh"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UI/CartrawlerSDK/VehicleSelectionViewController.m"
-            timestampString = "495563978.849342"
+            filePath = "OTA API/CartrawlerAPI/CTVehicleAvailability.m"
+            timestampString = "495635248.815461"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "-refresh"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-initFromVehAvailRSCoreDictionary:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

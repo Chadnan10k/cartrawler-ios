@@ -78,6 +78,11 @@
         if (self.supplierRatingView) {
             [self.supplierRatingView setVendor:self.search.selectedVehicle.vendor];
             [self.supplierRatingView setupView];
+            
+            if (self.tabSelection.numberOfSegments != 2) {
+                [self.tabSelection insertSegmentWithTitle:@"SUPPLIER RATING" atIndex:1 animated:YES];
+            }
+            
         }
     } else {
         [self.tabSelection removeSegmentAtIndex:1 animated:NO];
@@ -148,7 +153,6 @@
     [priceString appendAttributedString:cents];
     
     self.priceLabel.attributedText = priceString;
-        
     }
     
 }
@@ -200,7 +204,6 @@
         default:
             break;
     }
-    
 }
 
 - (void)detailsTapped

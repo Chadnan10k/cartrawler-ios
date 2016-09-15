@@ -27,7 +27,7 @@
     
     _title = dict[@"TPA_Extensions"][@"Data"][@"Title"][@"#text"];
 
-    _imageURL = [[NSURL alloc] initWithString:dict[@"TPA_Extensions"][@"Data"][@"Image"][@"#text"]];
+    _imageURL = [[NSURL alloc] initWithString:(dict[@"TPA_Extensions"][@"Data"][@"Image"][@"#text"] ?: @"")];
     
     _summary = dict[@"TPA_Extensions"][@"Data"][@"Summary"][@"#text"];
     

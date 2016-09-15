@@ -61,8 +61,12 @@
     [ratingStr appendAttributedString:slash];
     [ratingStr appendAttributedString:ten];
     
-    self.vendorRatingLabel.attributedText = ratingStr;
-
+    if (self.item.vendor.rating) {
+        self.vendorRatingLabel.attributedText = ratingStr;
+    } else {
+        self.vendorRatingLabel.text = @"";
+    }
+    
     self.carModelLabel.text = self.item.vehicle.makeModelName;
     self.vendorNameLabel.text = self.item.vendor.name;
     self.pickupDateLabel.text = [DateUtils stringFromDate:self.pickupDate withFormat:@"hh:mm a dd MMMM YYYY"];

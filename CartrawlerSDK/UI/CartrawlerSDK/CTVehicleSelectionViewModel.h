@@ -15,5 +15,5 @@
 typedef void (^VehicleSelectionCompletion)(CTAvailabilityItem *vehicle);
 
 - (id)initWithData:(NSArray <CTAvailabilityItem *> *)data cellSelected:(VehicleSelectionCompletion)cellSeleted;
-
+- (void)updateData:(NSArray <CTAvailabilityItem *> *)data;
 @end
