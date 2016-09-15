@@ -18,6 +18,7 @@
 @property (nonatomic, strong) CTGroundLocation *pickupLocation;
 @property (nonatomic, strong) CTGroundLocation *dropoffLocation;
 @property (nonatomic) BOOL airportIsPickupLocation;
+@property (nonatomic) BOOL returnTrip;
 @property (nonatomic, strong) NSNumber *adultQty;
 @property (nonatomic, strong) NSNumber *childQty;
 @property (nonatomic, strong) NSNumber *infantQty;

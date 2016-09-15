@@ -20,8 +20,18 @@
             NSArray *errors = dict[@"Errors"];
             NSDictionary *firstError = errors.firstObject;
             _errorMessage = firstError[@"@ShortText"];
+        } else if (dict[@"Errors"][@"Error"]) {
+            
+            if ([dict[@"Errors"][@"Error"] isKindOfClass:[NSArray class]]) {
+                NSArray *errors = dict[@"Errors"][@"Error"];
+                NSDictionary *firstError = errors.firstObject;
+                _errorMessage = firstError[@"@ShortText"];
+
+            } else {
+                _errorMessage = NSLocalizedString(@"Bad Request", @"Bad Request");
+            }
         } else {
-            _errorMessage = dict[@"Errors"][@"Error"][@"@ShortText"];
+            _errorMessage = NSLocalizedString(@"Bad Request", @"Bad Request");
         }
 
     } else if (dict[@"@ErrorMessage"] != nil) {

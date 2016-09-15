@@ -133,7 +133,7 @@
             self.countryTextField.text = item.name;
             weakSelf.search.country = item.name;
             weakSelf.groundSearch.country = item.name;
-            weakSelf.groundSearch.countryCode = item.name;
+            weakSelf.groundSearch.countryCode = item.code;
         };
         return NO;
     }

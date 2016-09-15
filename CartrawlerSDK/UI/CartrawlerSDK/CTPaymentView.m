@@ -159,7 +159,7 @@
                                town:search.city
                                city:search.city
                            postcode:search.postcode
-                        countryCode:search.country
+                        countryCode:search.countryCode
                         countryName:search.country
                  pickupLocationType:search.pickupLocation.locationTypeDescription
                  pickupLocationName:search.pickupLocation.name
@@ -170,6 +170,7 @@
                    dropoffLongitude:[f stringFromNumber:search.dropoffLocation.longitude]
                 dropoffLocationType:search.dropoffLocation.locationTypeDescription
                     airportIsPickup:search.airportIsPickupLocation
+                         returnTrip:search.returnTrip
                         airportCode:search.airport.IATACode
                          terminalNo:search.airport.terminalNumber
                           airlineId:airline
@@ -348,13 +349,13 @@
         
         [self.timer invalidate];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            if ([viewState isEqualToString:@"PaymentError"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+
+            if ([[self.webView stringByEvaluatingJavaScriptFromString:@"getCurrentState()"] isEqualToString:@"PaymentError"]) {
                 [weakSelf showError:@"Sorry" message:@"Error occured"];
                 [UIView animateWithDuration:0.2 animations:^{
                     weakSelf.alpha = 1;
                 }];
-                
             } else {
                 //callback success to parent
                 if (self.completion) {

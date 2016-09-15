@@ -28,6 +28,7 @@
             dropoffLongitude:(NSString *)dropoffLongitude
          dropoffLocationType:(NSString *)dropoffLocationType
              airportIsPickup:(BOOL)airportIsPickup
+                  returnTrip:(BOOL)returnTrip
                  airportCode:(NSString *)airportCode
                   terminalNo:(NSString *)terminalNo
                    airlineId:(NSString *)airlineId

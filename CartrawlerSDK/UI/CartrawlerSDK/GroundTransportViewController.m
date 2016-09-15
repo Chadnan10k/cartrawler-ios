@@ -192,8 +192,8 @@
     };
 
     self.sameLocationCheckBox.viewTapped = ^(BOOL selection) {
+        weakSelf.groundSearch.returnTrip = !selection;
         if (selection) {
-            
             weakSelf.dropoffTime = nil;
             weakSelf.dropoffDate = nil;
             [weakSelf.dropoffTimeView setTextFieldText:@""];

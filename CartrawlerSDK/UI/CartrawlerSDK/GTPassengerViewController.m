@@ -88,17 +88,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    
-//    AddressDetailsViewController *destination = (AddressDetailsViewController *)segue.destinationViewController;
-//    destination.destinationViewController = self.destinationViewController;
-//    destination.fallBackViewController = self.fallBackViewController;
-//    destination.cartrawlerAPI = self.cartrawlerAPI;
-//    destination.validationController = self.validationController;
-//    destination.groundSearch = self.groundSearch;
-}
-
 - (IBAction)confirmDetails:(id)sender
 {
     [self done];

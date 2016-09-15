@@ -28,6 +28,7 @@
             dropoffLongitude:(NSString *)dropoffLongitude
          dropoffLocationType:(NSString *)dropoffLocationType
              airportIsPickup:(BOOL)airportIsPickup
+                  returnTrip:(BOOL)returnTrip
                  airportCode:(NSString *)airportCode
                   terminalNo:(NSString *)terminalNo
                    airlineId:(NSString *)airlineId
@@ -59,7 +60,18 @@
         address = [NSString stringWithFormat:@"\"%@\",\n\"%@\",\n\"%@\"\n", addressLine1, addressLine2, city];
     }
     
-//    NSString *paymentExtension = [NSString stringWithFormat:@"\"RentalPaymentPref\":{\"PaymentCard\":{\"@CardType\":\"1\",\"@CardCode\":\"%@\",\"@CardNumber\":\"%@\",\"@ExpireDate\":\"%@\",\"@SeriesCode\":\"%@\",\"CardHolderName\":\"%@\"}},", @"[CARDCODE]", @"[CARDNUMBER]", @"[EXPIREDATE]", @"[SERIESCODE]", @"[CARDHOLDERNAME]"];
+    NSString *returnDate = @"";
+    
+    if (returnTrip) {
+        returnDate =  [NSString stringWithFormat:@""
+                       @","
+                       @"\"TPA_Extensions\": "
+                       @"{ "
+                       @"\"IncludeReturn\": {"
+                       @"\"@PickupDateTime\": \"%@\" "
+                       @"}"
+                       @"}", dropOffdateTime];
+    }
     
     NSString *payment = [NSString stringWithFormat:
                       @"\"Payments\": {\n"
@@ -77,7 +89,6 @@
                       @"}\n"
                       @"}\n"
                       @"}\n", @"[CARDCODE]", @"[EXPIREDATE]", @"[CARDHOLDERNAME]", @"[CARDNUMBER]", @"[SERIESCODE]"];
-    
     
     NSString *flightNoInfo = @"";
     
@@ -111,7 +122,6 @@
     } else {
         airportDropoff = airportInfo;
     }
-
     
     NSString *tail = [[NSString alloc]initWithFormat:
                       
@@ -133,7 +143,7 @@
                       @"}, \n"
                       @"\"LocationType\": \"%@\", \n"
                       @"\"LocationName\": \"%@\",   \n"
-                      "@\"SpecialInstructions\": \"%@\" \n"
+                      @"\"SpecialInstructions\": \"%@\" \n"
                       @"} %@ \n"
                       @"}, \n"
                       @"\"Dropoff\":       { \n"
@@ -183,6 +193,7 @@
                       @"\"@URL\": \"%@\" \n"
                       @"} \n"
                       @"},\n"
+                      @"%@ \n"
                       @"%@",
                       pickupDateTime,
                       pickupLatitude,
@@ -194,7 +205,7 @@
                       countryName,
                       pickupLocationType,
                       pickupLocationName,
-                      @"instruction",
+                      specialInstructions ?: @"No instructions stated",
                       airportPickup,
                       dropOffdateTime,
                       dropoffLatitude,
@@ -211,10 +222,10 @@
                       infantQty,
                       refId,
                       refUrl,
-                      payment];
+                      payment,
+                      returnDate];
     
     return [NSString stringWithFormat:@"{%@%@}", [self groundTransportHeader:clientID target:target locale:locale currency:currencyCode], tail];
-    
 }
 
 + (NSString *)groundTransportHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency
