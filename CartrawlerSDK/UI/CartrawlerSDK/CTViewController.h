@@ -25,7 +25,6 @@ typedef void (^Completion)(BOOL success, NSString *errorMessage);
 @property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
 @property (nonatomic, strong) CTViewController *destinationViewController;
-@property (nonatomic, strong) CTViewController *fallBackViewController;
 
 - (void)refresh;
 

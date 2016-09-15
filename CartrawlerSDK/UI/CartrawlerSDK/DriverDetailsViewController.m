@@ -84,7 +84,6 @@
 
     AddressDetailsViewController *destination = (AddressDetailsViewController *)segue.destinationViewController;
     destination.destinationViewController = self.destinationViewController;
-    destination.fallBackViewController = self.fallBackViewController;
     destination.cartrawlerAPI = self.cartrawlerAPI;
     destination.validationController = self.validationController;
     destination.search = self.search;

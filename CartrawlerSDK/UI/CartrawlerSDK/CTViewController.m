@@ -46,15 +46,8 @@
                                                             [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
                                                             [weakSelf.destinationViewController refresh];
                                                         } else {
-                                                            if (weakSelf.fallBackViewController) {
-                                                                if (weakSelf.dataValidationCompletion) {
-                                                                    weakSelf.dataValidationCompletion(NO, errorMessage);
-                                                                }
-                                                                [weakSelf.navigationController pushViewController:weakSelf.fallBackViewController animated:YES];
-                                                            } else {
-                                                                if (weakSelf.dataValidationCompletion) {
-                                                                    weakSelf.dataValidationCompletion(NO, errorMessage);
-                                                                }
+                                                            if (weakSelf.dataValidationCompletion) {
+                                                                weakSelf.dataValidationCompletion(NO, errorMessage);
                                                             }
                                                         }
                                                     });
@@ -73,15 +66,8 @@
                                                       [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
                                                       [weakSelf.destinationViewController refresh];
                                                   } else {
-                                                      if (weakSelf.fallBackViewController) {
-                                                          if (weakSelf.dataValidationCompletion) {
-                                                              weakSelf.dataValidationCompletion(NO, errorMessage);
-                                                          }
-                                                          [weakSelf.navigationController pushViewController:self.fallBackViewController animated:YES];
-                                                      } else {
-                                                          if (weakSelf.dataValidationCompletion) {
-                                                              weakSelf.dataValidationCompletion(NO, errorMessage);
-                                                          }
+                                                      if (weakSelf.dataValidationCompletion) {
+                                                          weakSelf.dataValidationCompletion(NO, errorMessage);
                                                       }
                                                   }
                                               });

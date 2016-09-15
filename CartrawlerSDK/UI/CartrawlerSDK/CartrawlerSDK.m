@@ -224,7 +224,6 @@
                                      fallback:(CTViewController *)fallback
 {
     viewController.destinationViewController = destination;
-    viewController.fallBackViewController = fallback;
     viewController.cartrawlerAPI = self.cartrawlerAPI;
     
     if (self.isCarRental) {
@@ -245,7 +244,6 @@
                      fallback:(CTViewController *)fallback
 {
     viewController.destinationViewController = destination;
-    viewController.fallBackViewController = fallback;
 }
 
 
