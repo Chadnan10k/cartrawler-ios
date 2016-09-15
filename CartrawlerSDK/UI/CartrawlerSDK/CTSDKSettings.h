@@ -21,6 +21,8 @@
 @property (nonatomic, strong) NSString *homeCountryCode;
 @property (nonatomic, strong) NSString *homeCountryName;
 
+@property (nonatomic, strong) NSString *target;
+
 @property (nonatomic) BOOL isDebug;
 
 + (instancetype)instance;

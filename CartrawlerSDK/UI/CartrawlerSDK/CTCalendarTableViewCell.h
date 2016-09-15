@@ -11,6 +11,8 @@
 
 @interface CTCalendarTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) NSDate *mininumDate;
+
 + (void)forceLinkerLoad_;
 
 - (void)setData:(NSDate *)month section:(NSInteger)section logicController:(CalendarLogicController *)logicController;

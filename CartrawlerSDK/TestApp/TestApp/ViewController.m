@@ -11,6 +11,8 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) CartrawlerSDK *sdk;
+
 @end
 
 @implementation ViewController
@@ -18,24 +20,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"68622" languageCode:@"EN" isDebug:YES];
 
 }
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    CartrawlerSDK *sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"592248" languageCode:@"EN" isDebug:YES];
-    
-    //[sdk presentGroundTransportInViewController:self];
-    [sdk presentCarRentalInViewController:self];
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)openCarRental:(id)sender {
+    [self.sdk presentCarRentalInViewController:self];
+}
+
+- (IBAction)openGroundTransport:(id)sender {
+    [self.sdk presentGroundTransportInViewController:self];
+}
 
 @end

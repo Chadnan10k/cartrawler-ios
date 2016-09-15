@@ -13,18 +13,13 @@
 - (instancetype)initWithDictionary:(nullable NSDictionary *)dict;
 {
     self = [super init];
-    //TODO: this is a bit rough, clean up
-    if (dict[@"Errors"] != nil) {
-        
-        if ([dict[@"Errors"][@"Error"] isKindOfClass:[NSArray class]]) {
-            NSDictionary *err = dict[@"Errors"][@"Error"];
-            
-            if ([err isKindOfClass:[NSArray class]]) {
-                NSArray *errors = dict[@"Errors"][@"Error"];
-                NSDictionary *firstError = errors.firstObject;
-                _errorMessage = firstError[@"@ShortText"];
-            }
 
+    if (dict[@"Errors"] != nil) {
+
+        if ([dict[@"Errors"] isKindOfClass:[NSArray class]]) {
+            NSArray *errors = dict[@"Errors"];
+            NSDictionary *firstError = errors.firstObject;
+            _errorMessage = firstError[@"@ShortText"];
         } else {
             _errorMessage = dict[@"Errors"][@"Error"][@"@ShortText"];
         }

@@ -17,6 +17,10 @@
 #import "GTSelectionValidation.h"
 #import "GTPassengerDetailsValidation.h"
 #import "GTGenericValidation.h"
+#import "GenericValidation.h"
+#import "InsuranceValidation.h"
+#import "PaymentValidation.h"
+#import "SearchValidation.h"
 
 #define kSearchViewStoryboard           @"StepOne"
 #define kSearchResultsViewStoryboard    @"StepTwo"
@@ -96,7 +100,9 @@
     
     _gtServiceSelectionViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"GroundServicesViewController"];
     
-    _gtDriverDetailsViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
+    _gtPassengerDetailsViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
+    
+    _gtAddressDetailsViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"AddressDetailsViewController"];
     
     _gtPaymentViewController = [groundTransportStoryboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
     
@@ -148,34 +154,26 @@
     [viewController presentViewController:navController animated:YES completion:nil];
 }
 
-- (void)configureViews {
-    
+- (void)configureViews
+{
     //CAR RENTAL
-    [self configureViewController:self.searchDetailsViewController viewType:ViewTypeSearchDetails destination:self.vehicleSelectionViewController fallback:nil];
-    
-    [self configureViewController:self.vehicleSelectionViewController viewType:ViewTypeVehicleSelection destination:self.vehicleDetailsViewController fallback:nil];
-    
-    [self configureViewController:self.vehicleDetailsViewController viewType:ViewTypeGeneric destination:self.insuranceExtrasViewController fallback:nil];
-    
-    [self configureViewController:self.insuranceExtrasViewController viewType:ViewTypeInsurance destination:self.paymentSummaryViewController fallback:nil];
-    
-    [self configureViewController:self.paymentSummaryViewController viewType:ViewTypeGeneric destination:self.driverDetialsViewController fallback:nil];
-    
-    [self configureViewController:self.driverDetialsViewController viewType:ViewTypeDriverDetails destination:self.paymentViewController fallback:nil];
-    
-    [self configureViewController:self.paymentViewController viewType:ViewTypePaymentDetails destination:self.paymentCompletionViewController fallback:nil];
-    
-    [self configureViewController:self.paymentCompletionViewController viewType:ViewTypeGeneric destination:self.vehicleSelectionViewController fallback:nil];
-    
+    [self configureViewController:self.searchDetailsViewController validationController:[[SearchValidation alloc] init] destination:self.vehicleSelectionViewController fallback:nil];
+    [self configureViewController:self.vehicleSelectionViewController validationController:[[GenericValidation alloc] init] destination:self.vehicleDetailsViewController fallback:nil];
+    [self configureViewController:self.vehicleDetailsViewController validationController:[[InsuranceValidation alloc] init] destination:self.insuranceExtrasViewController fallback:nil];
+    [self configureViewController:self.insuranceExtrasViewController validationController:[[GenericValidation alloc] init] destination:self.paymentSummaryViewController fallback:nil];
+    [self configureViewController:self.paymentSummaryViewController validationController:[[GenericValidation alloc] init] destination:self.driverDetialsViewController fallback:nil];
+    [self configureViewController:self.driverDetialsViewController validationController:[[PaymentValidation alloc] init] destination:self.paymentViewController fallback:nil];
+    [self configureViewController:self.paymentViewController validationController:[[PaymentValidation alloc] init] destination:self.paymentCompletionViewController fallback:nil];
+    [self configureViewController:self.paymentCompletionViewController validationController:[[GenericValidation alloc] init] destination:self.vehicleSelectionViewController fallback:nil];
+
     //GROUND TRANSPORT
-    
     [self configureViewController:self.gtSearchDetailsViewController validationController:[[GTSearchValidation alloc] init] destination:self.gtServiceSelectionViewController fallback:nil];
-    
-    [self configureViewController:self.gtServiceSelectionViewController validationController:[[GTSelectionValidation alloc] init] destination:self.gtDriverDetailsViewController fallback:nil];
-
-    [self configureViewController:self.gtDriverDetailsViewController validationController:[[GTPassengerDetailsValidation alloc] init] destination:self.gtPaymentViewController fallback:nil];
-
+    [self configureViewController:self.gtServiceSelectionViewController validationController:[[GTSelectionValidation alloc] init] destination:self.gtPassengerDetailsViewController fallback:nil];
+    [self configureViewController:self.gtPassengerDetailsViewController validationController:[[GTGenericValidation alloc] init] destination:self.gtAddressDetailsViewController fallback:nil];
+    [self configureViewController:self.gtAddressDetailsViewController validationController:[[GTPassengerDetailsValidation alloc] init] destination:self.gtPaymentViewController fallback:nil];
     [self configureViewController:self.gtPaymentViewController validationController:[[GTGenericValidation alloc] init] destination:self.gtPaymentCompletionViewController fallback:nil];
+    [self configureViewController:self.gtPaymentCompletionViewController validationController:nil destination:nil fallback:nil];
+
 }
 
 - (void)overrideSearchDetailsViewController:(CTViewController *)viewController
@@ -221,19 +219,6 @@
 }
 
 - (CTViewController *)configureViewController:(CTViewController *)viewController
-                                     viewType:(ViewType)viewType
-                                  destination:(CTViewController *)destination
-                                     fallback:(CTViewController *)fallback
-{
-    viewController.destinationViewController = destination;
-    viewController.fallBackViewController = fallback;
-    viewController.viewType = viewType;
-    viewController.cartrawlerAPI = self.cartrawlerAPI;
-    viewController.search = [CarRentalSearch instance];
-    return viewController;
-}
-
-- (CTViewController *)configureViewController:(CTViewController *)viewController
                          validationController:(CTValidation *)validationController
                                   destination:(CTViewController *)destination
                                      fallback:(CTViewController *)fallback
@@ -244,8 +229,10 @@
     
     if (self.isCarRental) {
         viewController.search = [CarRentalSearch instance];
+        viewController.groundSearch = nil;
     } else {
         viewController.groundSearch = [GroundTransportSearch instance];
+        viewController.search = nil;
     }
     
     viewController.validationController = validationController;

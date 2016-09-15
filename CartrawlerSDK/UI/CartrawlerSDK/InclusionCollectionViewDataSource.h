@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTGroundInclusion.h>
 
-@interface InclusionTableViewDataSource : NSObject <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface InclusionCollectionViewDataSource : NSObject <UICollectionViewDelegate, UICollectionViewDataSource>
 
 - (void)setInclusions:(NSArray <CTGroundInclusion *> *)inclusions;
 

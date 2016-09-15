@@ -15,19 +15,6 @@
 
 typedef void (^Completion)(BOOL success, NSString *errorMessage);
 
-typedef enum ViewType : NSUInteger {
-    ViewTypeSearchDetails,
-    ViewTypeVehicleSelection,
-    ViewTypeInsurance,
-    ViewTypeDriverDetails,
-    ViewTypePaymentDetails,
-    ViewTypeGeneric,
-    ViewTypeGTSearch,
-    ViewTypeGTSelection
-} ViewType;
-
-@property (nonatomic) ViewType viewType;
-
 @property (nonatomic) Completion dataValidationCompletion;
 
 @property (nonatomic, strong) CarRentalSearch *search;

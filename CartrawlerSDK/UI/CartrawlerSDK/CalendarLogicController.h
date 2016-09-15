@@ -15,9 +15,13 @@
 typedef void (^CTCalenderRefresh)(void);
 
 typedef void (^CTDateSelectionCompletion)(NSDate *pickup, NSDate *dropoff);
+typedef void (^CTSingleDateSelectionCompletion)(NSDate *pickup);
+
 typedef void (^CTDiscardDates)(void);
 
 @property (nonatomic) CTDateSelectionCompletion datesSelected;
+@property (nonatomic) CTSingleDateSelectionCompletion dateSelected;
+
 @property (nonatomic) CTDiscardDates discard;
 @property (nonatomic) CTCalenderRefresh refresh;
 @property (nonatomic, strong) NSMutableArray <NSNumber *> *cellHeights;

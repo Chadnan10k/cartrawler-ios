@@ -42,6 +42,12 @@
     self.homeCountryName = country;
     self.currencyName = currency;
     self.languageName = languageCode;
+    
+    if (isDebug) {
+        _target = @"Test";
+    } else {
+        _target = @"Production";
+    }
 }
 
 - (void)setLanguageCode:(NSString *)languageCode

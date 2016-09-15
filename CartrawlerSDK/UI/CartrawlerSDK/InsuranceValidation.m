@@ -7,49 +7,86 @@
 //
 
 #import "InsuranceValidation.h"
+#import "CTSDKSettings.h"
 
 @implementation InsuranceValidation
 
-+ (BOOL)validate:(CarRentalSearch *)search {
+- (void)validateCarRental:(CarRentalSearch *)search
+            cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
+               completion:(CTSearchValidation)completion
+{
 
-if ([CarRentalSearch instance].pickupLocation == nil) {
+    if (search.pickupLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupLocation IS NOT SET \n\n");
-        return NO;
+        completion(NO, @"");
+        return;
     }
 
-    if ([CarRentalSearch instance].dropoffLocation == nil) {
+    if (search.dropoffLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.dropoffLocation IS NOT SET \n\n");
-        return NO;
+        completion(NO, @"");
+        return;
     }
 
-    if ([CarRentalSearch instance].pickupDate == nil) {
+    if (search.pickupDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupDate IS NOT SET \n\n");
-        return NO;
+        completion(NO, @"");
+        return;
     }
 
-    if ([CarRentalSearch instance].dropoffDate == nil) {
+    if (search.dropoffDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.dropoffDate IS NOT SET \n\n");
-        return NO;
+        completion(NO, @"");
+        return;
     }
 
-    if ([CarRentalSearch instance].driverAge == nil) {
+    if (search.driverAge == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.driverAge IS NOT SET \n\n");
-        return NO;
+        completion(NO, @"");
+        return;
     }
 
-    if ([CarRentalSearch instance].selectedVehicle == nil) {
+    if (search.selectedVehicle == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.vehicleAvailability IS NOT SET \n\n");
-        return NO;
+        completion(NO, @"");
+        return;
     }
 
-    if ([CarRentalSearch instance].selectedVehicle.vehicle.extraEquipment == nil) {
+    if (search.selectedVehicle.vehicle.extraEquipment == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS extras IS NOT SET \n\n");
-        return NO;
+        completion(NO, @"");
+        return;
     }
     
-    
-    return YES;
-    
+    [cartrawlerAPI requestInsuranceQuoteForVehicle:[CTSDKSettings instance].homeCountryCode
+                                          currency:[CTSDKSettings instance].currencyCode
+                                         totalCost:[NSString stringWithFormat:@"%.02f", search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue]
+                                    pickupDateTime:search.pickupDate
+                                    returnDateTime:search.dropoffDate
+                            destinationCountryCode:search.pickupLocation.codeContext
+                                        completion:
+     ^(CTInsurance *response, CTErrorResponse *error) {
+         if (response) {
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 search.insurance = response;
+                 completion(response, nil);
+             });
+             
+         } else {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 if (search.selectedVehicle.vehicle.extraEquipment.count == 0) {
+                     search.insurance = nil;
+                     search.isBuyingInsurance = NO;
+                     completion(NO, @"");
+                 } else {
+                     search.insurance = nil;
+                     search.isBuyingInsurance = NO;
+                     completion(YES, nil);
+                 }
+             });
+         }
+     }];
 }
 
 @end

@@ -16,44 +16,49 @@
                      completion:(CTSearchValidation)completion
 {
     
-//    if (!search.airport) {
-//        completion(nil, @"CTAirport not set");
-//    }
-//    
-//    if (!search.pickupLocation) {
-//        completion(nil, @"Ground Transport Pickup location not set");
-//    }
-//    
-//    if (!search.dropoffLocation) {
-//        completion(nil, @"Ground Transport Dropoff location not set");
-//    }
-//    
-//    if (!search.adultQty) {    //we just need 1 adult passenger to make call
-//        completion(nil, @"No passengers set for Ground transport");
-//    }
-//    
-//    [cartrawlerAPI groundTransportationAvail:search.airport
-//                              pickupLocation:search.pickupLocation
-//                             dropoffLocation:search.dropoffLocation
-//                     airportIsPickupLocation:search.airportIsPickupLocation
-//                                    adultQty:search.adultQty
-//                                    childQty:search.childQty
-//                                   infantQty:search.infantQty
-//                                currencyCode:[CTSDKSettings instance].currencyCode
-//                                  completion:^(CTGroundAvailability *response, CTErrorResponse *error) {
-//                                      if (response) {
-//                                          completion(response, nil);
-//                                      } else if (error) {
-//                                          completion(nil, error.errorMessage);
-//                                      } else {
-//                                          completion(nil, @"Could not perform groundTransportationAvail");
-//                                      }
-//                                  }];
+    if (!search.airport) {
+        completion(NO, @"CTAirport not set");
+        return;
+    }
+    
+    if (!search.pickupLocation) {
+        completion(NO, @"Ground Transport Pickup location not set");
+        return;
+    }
+    
+    if (!search.dropoffLocation) {
+        completion(NO, @"Ground Transport Dropoff location not set");
+        return;
+    }
+    
+    if (!search.adultQty) {    //we just need 1 adult passenger to make call
+        completion(NO, @"No passengers set for Ground transport");
+        return;
+    }
+    
+    [cartrawlerAPI groundTransportationAvail:search.airport
+                              pickupLocation:search.pickupLocation
+                             dropoffLocation:search.dropoffLocation
+                     airportIsPickupLocation:search.airportIsPickupLocation
+                                    adultQty:search.adultQty
+                                    childQty:search.childQty
+                                   infantQty:search.infantQty
+                                currencyCode:[CTSDKSettings instance].currencyCode
+                                  completion:^(CTGroundAvailability *response, CTErrorResponse *error) {
+                                      if (response) {
+                                          search.availability = response;
+                                          completion(YES, nil);
+                                      } else if (error) {
+                                          completion(NO, error.errorMessage);
+                                      } else {
+                                          completion(NO, @"Could not perform groundTransportationAvail");
+                                      }
+                                  }];
     
     //TODO: REMOVE MOCK DATA
-    CTGroundAvailability *avail = [[CTGroundAvailability alloc] initWithDictionary:[self dictionaryWithContentsOfJSONString:@"MockGTRS.json"]];
-    search.availability = avail;
-    completion(avail, nil);
+//    CTGroundAvailability *avail = [[CTGroundAvailability alloc] initWithDictionary:[self dictionaryWithContentsOfJSONString:@"MockGTRS.json"]];
+//    search.availability = avail;
+//    completion(YES, nil);
 }
 
 - (NSDictionary*)dictionaryWithContentsOfJSONString:(NSString*)fileName {

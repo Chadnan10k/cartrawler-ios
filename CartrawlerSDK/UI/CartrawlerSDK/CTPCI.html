@@ -1,15 +1,4 @@
 <html>
-    
-    <!--
-     lmaguire@cartrawler.com
-     
-     HowTo: So the payment for MUST be loaded into an iFrame, we then create a listen for the parent view, UIWebView & WebView can then listen for messages through delegates.
-     
-     Timeline of events:
-     
-     IFrame created -> OnLoad triggered -> msg payload sent from native app with postMessage -> from validation success / error callback -> payment success / fail callback -> 😎 Finish
-     
-     -->
     <head>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     </head>
@@ -18,7 +7,6 @@
     <script>
         
         $(document).ready(function () {
-                          
                           
           $("iframe").load(function() {
                            var frameContents;
@@ -36,6 +24,7 @@
       // Listen to message from child window
       eventer(messageEvent,function(e) {
           var paymentFormMsg = JSON.parse(e.data);
+              
           if (paymentFormMsg.action === "onLoad") {
           //currentState = "Loaded";
           
@@ -55,6 +44,9 @@
           if (paymentFormMsg.action === "onError") {
             currentState = "PaymentError"
           }
+              
+        
+              
       },false);
       
       function getCurrentState() {
@@ -69,7 +61,6 @@
           securePaymentWin.postMessage({"action" : "submitForm"} , "*");
       }
     
-                          
         </script>
     
     <style>

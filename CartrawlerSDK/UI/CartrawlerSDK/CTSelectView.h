@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTMatchedLocation.h>
+
+IB_DESIGNABLE
 @interface CTSelectView : UIView
+
++ (void)forceLinkerLoad_;
 
 typedef void (^CTSelectionCompletion)(void);
 
 @property (nonatomic, strong) CTSelectionCompletion viewTapped;
 
-- (id)initWithView:(UIView *)view placeholder:(NSString *)placeholder;
+@property (nonatomic, strong) NSString *placeholder;
 
 - (void)setTextFieldText:(NSString *)text;
 

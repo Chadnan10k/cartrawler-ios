@@ -17,31 +17,32 @@
 #import "CTCheckbox.h"
 #import "CTTextField.h"
 #import "CTSDKSettings.h"
-#import "GroundServicesViewController.h"
+#import "CTButton.h"
 
 @interface GroundTransportViewController () <CTCalendarDelegate, UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *returnTripConstraint;
+@property (weak, nonatomic) IBOutlet UIView *returnTripContainer;
 
-@property (weak, nonatomic) IBOutlet UIView *pickupContainer;
-@property (weak, nonatomic) IBOutlet UIView *dropoffContainer;
-@property (weak, nonatomic) IBOutlet UIView *pickupTimeContainer;
-@property (weak, nonatomic) IBOutlet UIView *dropoffTimeContainer;
-@property (weak, nonatomic) IBOutlet UIView *calendarContainer;
-@property (weak, nonatomic) IBOutlet UIView *sameLocationCheckBox;
+@property (weak, nonatomic) IBOutlet CTButton *searchButton;
+@property (weak, nonatomic) IBOutlet CTCheckbox *sameLocationCheckBox;
 @property (weak, nonatomic) IBOutlet CTTextField *passengersTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) UIView *activeView;
 
-@property (strong, nonatomic) CTSelectView *pickupView;
-@property (strong, nonatomic) CTSelectView *dropoffView;
-@property (strong, nonatomic) CTSelectView *calendarView;
-@property (strong, nonatomic) CTSelectView *dropoffTimeView;
-@property (strong, nonatomic) CTSelectView *pickupTimeView;
+@property (strong, nonatomic) IBOutlet CTSelectView *pickupView;
+@property (strong, nonatomic) IBOutlet CTSelectView *dropoffView;
+@property (strong, nonatomic) IBOutlet CTSelectView *calendarView;
+@property (strong, nonatomic) IBOutlet CTSelectView *pickupTimeView;
+@property (strong, nonatomic) IBOutlet CTSelectView *dropoffCalendarView;
+@property (strong, nonatomic) IBOutlet CTSelectView *dropoffTimeView;
 
 @property (strong, nonatomic) CTTimePickerView *pickupTimePicker;
 @property (strong, nonatomic) CTTimePickerView *dropoffTimePicker;
 
+@property (nonatomic, strong) NSString *pickupName;
+@property (nonatomic, strong) NSString *dropoffName;
 @property (nonatomic, strong) NSNumber *pickupLat;
 @property (nonatomic, strong) NSNumber *pickupLong;
 @property (nonatomic, strong) NSNumber *dropoffLat;
@@ -54,13 +55,12 @@
 
 @property (nonatomic) LocationType pickupLocType;
 @property (nonatomic) LocationType dropoffLocType;
-@property (nonatomic, strong) CTAirport *airport;
+@property (nonatomic, strong) CTAirport *pickupAirport;
+@property (nonatomic, strong) CTAirport *dropoffAirport;
+
 @end
 
 @implementation GroundTransportViewController
-{
-    BOOL airportIsPickupLocation;
-}
 
 
 + (void)forceLinkerLoad_
@@ -70,141 +70,157 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:bundle];
 
     [self registerForKeyboardNotifications];
     
+    self.returnTripConstraint.constant = 8;
+    self.returnTripContainer.alpha = 0;
+    
     self.passengersTextField.delegate = self;
     
-    _pickupDate = [NSDate date];
-    _dropoffDate = [NSDate date];
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *initialTimeComp = [gregorianCalendar components:NSHourCalendarUnit
+                                                             fromDate:[NSDate date]];
+    initialTimeComp.hour = 10;
     
-    __weak typeof (self) weakSelf = self;
-    
-    _pickupTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:[NSDate date]];
+    _pickupTime = [gregorianCalendar dateFromComponents:initialTimeComp];
+    _pickupTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
     _dropoffTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
     
-    self.pickupView = [[CTSelectView alloc] initWithView:self.pickupContainer placeholder:@"Pick-up location"];
+    _activeView = self.pickupView;
+
+    __weak typeof (self) weakSelf = self;
+    
+    self.pickupView.placeholder = @"Pick-up location";
     self.pickupView.viewTapped = ^{
-        
         [weakSelf.view endEditing:YES];
-        
         _activeView = self.pickupView;
-        
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:bundle];
         LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
         locSearchVC.enableGroundTransportLocations = YES;
-        
         [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
-        
-        locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
-
+        locSearchVC.selectedLocation = ^(CTMatchedLocation *location){
             [weakSelf.pickupView setTextFieldText:location.name];
-            
             weakSelf.pickupLocType = location.isAtAirport ?
             [CTGroundLocation locationType:LocationTypeAirport] :
             [CTGroundLocation locationType:LocationTypeVicinity];
-            
             weakSelf.pickupLat = location.latitude;
             weakSelf.pickupLong = location.longitude;
-            
+            weakSelf.pickupName = location.name;
             if (location.isAtAirport) {
-                airportIsPickupLocation = YES;
-                _airport = [[CTAirport alloc] initWithFlightType:FlightTypeArrival IATACode:location.airportCode terminalNumber:@"1"];
+                weakSelf.groundSearch.airportIsPickupLocation = YES;
+                _pickupAirport = [[CTAirport alloc] initWithFlightType:FlightTypeArrival IATACode:location.airportCode terminalNumber:@"1"];
+            } else {
+                weakSelf.groundSearch.airportIsPickupLocation = NO;
             }
-
         };
     };
     
-    self.dropoffView = [[CTSelectView alloc] initWithView:self.dropoffContainer placeholder:@"Drop-off location"];
+    self.dropoffView.placeholder = @"Drop-off location";
     self.dropoffView.viewTapped = ^{
-        
         [weakSelf.view endEditing:YES];
-        
         _activeView = self.pickupView;
-        
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:bundle];
         LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
         locSearchVC.enableGroundTransportLocations = YES;
         [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
-        
         locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
             [weakSelf.dropoffView setTextFieldText:location.name];
-            
             weakSelf.dropoffLocType = location.isAtAirport ?
             [CTGroundLocation locationType:LocationTypeAirport] :
             [CTGroundLocation locationType:LocationTypeVicinity];
-            
             weakSelf.dropoffLat = location.latitude;
             weakSelf.dropoffLong = location.longitude;
-            
+            weakSelf.dropoffName = location.name;
             if (location.isAtAirport) {
-                airportIsPickupLocation = NO;
-                _airport = [[CTAirport alloc] initWithFlightType:FlightTypeArrival IATACode:location.airportCode terminalNumber:@"1"];
+                weakSelf.groundSearch.airportIsPickupLocation = NO;
+                _dropoffAirport = [[CTAirport alloc] initWithFlightType:FlightTypeArrival IATACode:location.airportCode terminalNumber:@"1"];
+            } else {
+                weakSelf.groundSearch.airportIsPickupLocation = YES;
             }
-        
         };
     };
     
-    _activeView = self.pickupView;
-    
-    _pickupTimeView = [[CTSelectView alloc] initWithView:self.pickupTimeContainer placeholder:@"Pick-up time"];
+    self.pickupTimeView.placeholder = @"Time";
+    [self.pickupTimeView setTextFieldText:[DateUtils stringFromDate:self.pickupTime withFormat:@"hh:mm a"]];
     self.pickupTimeView.viewTapped = ^{
-        
         [weakSelf.view endEditing:YES];
-        
         _activeView = self.pickupTimeView;
         [weakSelf.pickupTimePicker present];
         [weakSelf.dropoffTimePicker hide];
         weakSelf.pickupTimePicker.timeSelection = ^(NSDate *date){
-
             [weakSelf.pickupTimeView setTextFieldText:[DateUtils stringFromDate:date withFormat:@"hh:mm a"]];
             weakSelf.pickupTime = date;
-
         };
     };
     
-    _dropoffTimeView = [[CTSelectView alloc] initWithView:self.dropoffTimeContainer placeholder:@"Drop-off time"];
+    self.dropoffTimeView.placeholder = @"Time";
     self.dropoffTimeView.viewTapped = ^{
-        
         [weakSelf.view endEditing:YES];
-        
         _activeView = weakSelf.dropoffTimeView;
         [weakSelf.dropoffTimePicker present];
         [weakSelf.pickupTimePicker hide];
         weakSelf.dropoffTimePicker.timeSelection = ^(NSDate *date){
-
             [weakSelf.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:date withFormat:@"hh:mm a"]];
             weakSelf.dropoffTime = date;
         };
     };
     
-    _calendarView = [[CTSelectView alloc] initWithView:self.calendarContainer placeholder:@"Select dates"];
+    self.calendarView.placeholder = @"Pick-up date";
     self.calendarView.viewTapped = ^{
         _activeView = self.calendarView;
-        
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:bundle];
         CTCalendarViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];
+        vc.singleDateSelection = YES;
+        vc.delegate = weakSelf;
+        [weakSelf presentViewController:vc animated:YES completion:nil];
+    };
+    
+    self.dropoffCalendarView.placeholder = @"Dropoff date";
+    self.dropoffCalendarView.viewTapped = ^{
+        if (weakSelf.pickupDate == nil) {
+            [weakSelf.calendarView shakeAnimation];
+            return;
+        }
+        _activeView = self.dropoffCalendarView;
+        CTCalendarViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];
+        vc.mininumDate = weakSelf.pickupDate;
+        vc.singleDateSelection = YES;
         vc.delegate = weakSelf;
         [weakSelf presentViewController:vc animated:YES completion:nil];
     };
 
-//    CTCheckbox *sameLoc = [[CTCheckbox alloc] initEnabled:YES containerView:self.sameLocationCheckBox ];
-//    sameLoc.viewTapped = ^(BOOL selection) {
-//        if (selection) {
-//
-//            
-//        } else {
-//
-//            
-//        }
-//        _activeView = sameLoc;
-//    };
+    self.sameLocationCheckBox.viewTapped = ^(BOOL selection) {
+        if (selection) {
+            
+            weakSelf.dropoffTime = nil;
+            weakSelf.dropoffDate = nil;
+            [weakSelf.dropoffTimeView setTextFieldText:@""];
+            [weakSelf.dropoffCalendarView setTextFieldText:@""];
+
+            weakSelf.returnTripConstraint.constant = 8;
+            [UIView animateWithDuration:0.3 animations:^{
+                weakSelf.returnTripContainer.alpha = 0;
+                [weakSelf.view layoutIfNeeded];
+            }];
+        } else {
+            weakSelf.returnTripConstraint.constant = 70;
+            [UIView animateWithDuration:0.3 animations:^{
+                weakSelf.returnTripContainer.alpha = 1;
+                [weakSelf.view layoutIfNeeded];
+            }];
+        }
+        _activeView = weakSelf.sameLocationCheckBox;
+    };
+    
+    self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage) {
+        weakSelf.searchButton.enabled = YES;
+        weakSelf.searchButton.alpha = 1;
+        if (errorMessage) {
+            [weakSelf displayError:errorMessage];
+        }
+    };
     
 }
 
@@ -212,24 +228,27 @@
 
 - (void)didPickDates:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
 {
-    NSString *dateString = [NSString stringWithFormat:@"%@ - %@",
-                            [DateUtils shortDescriptionFromDate:pickupDate],
-                            [DateUtils shortDescriptionFromDate:dropoffDate]];
+    NSString *dateString = [NSString stringWithFormat:@"%@",
+                            [DateUtils shortDescriptionFromDate:pickupDate]];
     
-    [self.calendarView setTextFieldText:dateString];
-    
-    self.pickupDate = pickupDate;
-    self.dropoffDate = dropoffDate;
-
+    if (self.activeView == self.calendarView) {
+        [self.calendarView setTextFieldText:dateString];
+        _pickupDate = pickupDate;
+    } else if (self.activeView == self.dropoffCalendarView) {
+        [self.dropoffCalendarView setTextFieldText:dateString];
+        _dropoffDate = pickupDate;
+    }
 }
 
 - (void)combineDates
 {
     NSDate *puDate = [DateUtils mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.pickupDate];
-    NSDate *doDate = [DateUtils mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.dropoffDate];
-    
-    self.pickupDate = puDate;
-    self.dropoffDate = doDate;
+    _pickupDate = puDate;
+
+    if (self.dropoffDate && self.dropoffTime) {
+        NSDate *doDate = [DateUtils mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.dropoffDate];
+        _dropoffDate = doDate;
+    }
 }
 
 - (void)registerForKeyboardNotifications
@@ -264,7 +283,7 @@
 {
     
     NSDictionary* userInfo = n.userInfo;
-    CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGSize keyboardSize = [userInfo [UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     CGRect viewFrame = self.scrollView.frame;
     
     viewFrame.size.height -= (keyboardSize.height + 45);
@@ -277,23 +296,85 @@
 
 - (IBAction)search:(id)sender
 {
+    UIButton *b = (UIButton *)sender;
+   
+    CTGroundLocation *pickupLoc = [[CTGroundLocation alloc] initWithLatitude:self.pickupLat
+                                                                   longitude:self.pickupLong
+                                                                locationType:self.pickupLocType
+                                                                     dateTime:self.pickupDate
+                                                                         name:self.pickupName];
     
-//    CartrawlerAPI *api = [[CartrawlerAPI alloc] initWithClientKey:@"592248"
-//                                                       language:[CTSDKSettings instance].languageCode
-//                                                          debug:[CTSDKSettings instance].isDebug];
-//    
-//    CTGroundLocation *pickupLoc = [[CTGroundLocation alloc] initWithLatitude:self.pickupLat
-//                                                                   longitude:self.pickupLong
-//                                                                locationType:self.pickupLocType
-//                                                                    dateTime:self.pickupDate];
-//    
-//    CTGroundLocation *dropoffLoc = [[CTGroundLocation alloc] initWithLatitude:self.dropoffLat
-//                                                                    longitude:self.dropoffLong
-//                                                                 locationType:self.dropoffLocType
-//                                                                     dateTime:self.dropoffDate];
+    CTGroundLocation *dropoffLoc = [[CTGroundLocation alloc] initWithLatitude:self.dropoffLat
+                                                                    longitude:self.dropoffLong
+                                                                 locationType:self.dropoffLocType
+                                                                     dateTime:self.dropoffDate
+                                                                         name:self.dropoffName];
+    //if the two destinations are airports what do we do?
+    if (pickupLoc.locationType == LocationTypeAirport && dropoffLoc.locationType == LocationTypeAirport) {
+        self.groundSearch.airportIsPickupLocation = YES;
+        self.groundSearch.airport = self.pickupAirport;
+    } else if (self.groundSearch.airportIsPickupLocation) {
+        self.groundSearch.airport = self.pickupAirport;
+    } else {
+        self.groundSearch.airport = self.dropoffAirport;
+    }
+
+    self.groundSearch.pickupLocation = pickupLoc;
+    self.groundSearch.dropoffLocation = dropoffLoc;
     
+    NSNumberFormatter *nf = [NSNumberFormatter new];
     
-    [self pushToDestination];
+    self.groundSearch.adultQty = [nf numberFromString:self.passengersTextField.text];
+    self.groundSearch.childQty = @0;
+    self.groundSearch.infantQty = @0;
+    
+    if ([self validate]) {
+        b.enabled = NO;
+        b.alpha = 0.8;
+        [self pushToDestination];
+    }
+}
+
+- (void)displayError:(NSString *)error
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                    message:error
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+- (BOOL)validate
+{
+    BOOL validated = YES;
+    
+    if (self.pickupLat == nil || self.pickupLong == nil) {
+        [self.pickupView shakeAnimation];
+        validated = NO;
+    }
+    
+    if (self.dropoffLat == nil || self.dropoffLong == nil) {
+        [self.dropoffView shakeAnimation];
+        validated = NO;
+    }
+    
+    if (!self.pickupDate) {
+        [self.calendarView shakeAnimation];
+        [self.pickupTimeView shakeAnimation];
+        validated = NO;
+    }
+    
+    if (!self.groundSearch.adultQty) {
+        [self.passengersTextField shakeAnimation];
+        validated = NO;
+    }
+    
+    if (validated) {
+        [self combineDates];
+    }
+    
+    return validated;
 }
 
 - (IBAction)cancel:(id)sender

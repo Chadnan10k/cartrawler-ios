@@ -25,7 +25,7 @@
 @property (strong, nonatomic) UIViewController *parentViewContoller;
 
 @property (nonatomic, strong) CTFilterFactory *filterFactory;
-
+@property (nonatomic, strong) NSArray <CTFilterTableView *>*viewArray;
 @end
 
 @implementation CTFilterViewController
@@ -70,27 +70,40 @@
     
 }
 
-- (void)setFilterData:(CTVehicleAvailability *)data
+- (void)updateData:(CTVehicleAvailability *)data
 {
-    _filterFactory = [[CTFilterFactory alloc] initWithFilterData:data];
+    if (!self.filterFactory) {
+        _filterFactory = [[CTFilterFactory alloc] initWithFilterData:data];
+    } else {
+        [self.filterFactory update:data];
+    }
+    
+    for (CTFilterTableView *tv in self.viewArray) {
+        [tv reloadData];
+        for (NSLayoutConstraint *constraint in tv.constraints) {
+            if (constraint.firstAttribute == NSLayoutAttributeHeight) {
+                constraint.constant = tv.contentSize.height;
+                break;
+            }
+        }
+    }
 }
 
  - (void)buildTableViews
 {
-    
-    NSArray <CTFilterTableView *>*viewArray = @[self.carSizeTableView,
+    _viewArray = @[self.carSizeTableView,
                                          self.pickupLocationTableView,
                                          self.vendorsTableView,
                                          self.fuelPolicyTableView,
                                          self.transmissionTableView];
     
-    for (int i = 0; i < viewArray.count; ++i) {
-        viewArray[i].translatesAutoresizingMaskIntoConstraints = NO;
-        [self.scrollView addSubview:viewArray[i]];
+    for (int i = 0; i < self.viewArray.count; ++i) {
+        self.viewArray[i].translatesAutoresizingMaskIntoConstraints = NO;
+        [self.scrollView addSubview:self.viewArray[i]];
         
-        [viewArray[i] reloadData];
+        [self.viewArray[i] reloadData];
 
-        CGFloat height = viewArray[i].contentSize.height-1;
+        CGFloat height = self.viewArray[i].contentSize.height-1;
         
         if (i == 0) {
             
@@ -98,7 +111,7 @@
             titleLabel.useBoldFont = YES;
             [self.scrollView addSubview:titleLabel];
             titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-            titleLabel.text = viewArray[i].tableViewTitle;
+            titleLabel.text = self.viewArray[i].tableViewTitle;
             
             NSLayoutConstraint *labelTopConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
                                                                              attribute:NSLayoutAttributeTop
@@ -133,7 +146,7 @@
                                                                               multiplier:1.0
                                                                                 constant:-5];
             
-            NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+            NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                              attribute:NSLayoutAttributeTop
                                                                              relatedBy:NSLayoutRelationEqual
                                                                                 toItem:titleLabel
@@ -141,15 +154,15 @@
                                                                             multiplier:1.0
                                                                               constant:8];
             
-            NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+            NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                                 attribute:NSLayoutAttributeHeight
                                                                                 relatedBy:NSLayoutRelationEqual
                                                                                    toItem:nil
-                                                                                attribute:NSLayoutAttributeNotAnAttribute
+                                                                                attribute:NSLayoutAttributeHeight
                                                                                multiplier:1.0
                                                                                  constant:height];
             
-            NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+            NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                               attribute:NSLayoutAttributeLeft
                                                                               relatedBy:NSLayoutRelationEqual
                                                                                  toItem:self.view
@@ -157,7 +170,7 @@
                                                                              multiplier:1.0
                                                                                constant:5];
             
-            NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+            NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                                attribute:NSLayoutAttributeRight
                                                                                relatedBy:NSLayoutRelationEqual
                                                                                   toItem:self.view
@@ -173,20 +186,22 @@
                                         rightConstraint,
                                         heightConstraint]];
             
+            [self.viewArray[i] addConstraint:heightConstraint];
+            [self.viewArray[i] updateConstraints];            
             [self.view updateConstraints];
             
-        } else if (i < viewArray.count-1) {
+        } else if (i < self.viewArray.count-1) {
             
             CTLabel *titleLabel = [[CTLabel alloc] initWithFrame:CGRectZero];
             titleLabel.useBoldFont = YES;
             [self.scrollView addSubview:titleLabel];
             titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-            titleLabel.text = viewArray[i].tableViewTitle;
+            titleLabel.text = self.viewArray[i].tableViewTitle;
             
             NSLayoutConstraint *labelTopConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
                                                                                   attribute:NSLayoutAttributeTop
                                                                                   relatedBy:NSLayoutRelationEqual
-                                                                                     toItem:viewArray[i-1]
+                                                                                     toItem:self.viewArray[i-1]
                                                                                   attribute:NSLayoutAttributeBottom
                                                                                  multiplier:1.0
                                                                                    constant:8];
@@ -195,7 +210,7 @@
                                                                                      attribute:NSLayoutAttributeHeight
                                                                                      relatedBy:NSLayoutRelationEqual
                                                                                         toItem:nil
-                                                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                                                     attribute:NSLayoutAttributeHeight
                                                                                     multiplier:1.0
                                                                                       constant:20];
             
@@ -216,7 +231,7 @@
                                                                                    multiplier:1.0
                                                                                      constant:-5];
             
-            NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+            NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                              attribute:NSLayoutAttributeTop
                                                                              relatedBy:NSLayoutRelationEqual
                                                                                 toItem:titleLabel
@@ -224,15 +239,15 @@
                                                                             multiplier:1.0
                                                                               constant:5];
             
-            NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+            NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                                 attribute:NSLayoutAttributeHeight
                                                                                 relatedBy:NSLayoutRelationEqual
                                                                                    toItem:nil
-                                                                                attribute:NSLayoutAttributeNotAnAttribute
+                                                                                attribute:NSLayoutAttributeHeight
                                                                                multiplier:1.0
                                                                                  constant:height];
             
-            NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+            NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                               attribute:NSLayoutAttributeLeft
                                                                               relatedBy:NSLayoutRelationEqual
                                                                                  toItem:self.view
@@ -240,7 +255,7 @@
                                                                              multiplier:1.0
                                                                                constant:5];
             
-            NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+            NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                                attribute:NSLayoutAttributeRight
                                                                                relatedBy:NSLayoutRelationEqual
                                                                                   toItem:self.view
@@ -256,6 +271,8 @@
                                         rightConstraint,
                                         heightConstraint]];
             
+            [self.viewArray[i] addConstraint:heightConstraint];
+            [self.viewArray[i] updateConstraints];
             [self.view updateConstraints];
              
     } else {
@@ -263,12 +280,12 @@
         titleLabel.useBoldFont = YES;
         [self.scrollView addSubview:titleLabel];
         titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        titleLabel.text = viewArray[i].tableViewTitle;
+        titleLabel.text = self.viewArray[i].tableViewTitle;
         
         NSLayoutConstraint *labelTopConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
                                                                               attribute:NSLayoutAttributeTop
                                                                               relatedBy:NSLayoutRelationEqual
-                                                                                 toItem:viewArray[i-1]
+                                                                                 toItem:self.viewArray[i-1]
                                                                               attribute:NSLayoutAttributeBottom
                                                                              multiplier:1.0
                                                                                constant:8];
@@ -298,7 +315,7 @@
                                                                                multiplier:1.0
                                                                                  constant:-5];
         
-        NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+        NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                          attribute:NSLayoutAttributeTop
                                                                          relatedBy:NSLayoutRelationEqual
                                                                             toItem:titleLabel
@@ -306,7 +323,7 @@
                                                                         multiplier:1.0
                                                                           constant:5];
         
-        NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+        NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                             attribute:NSLayoutAttributeHeight
                                                                             relatedBy:NSLayoutRelationEqual
                                                                                toItem:nil
@@ -314,7 +331,7 @@
                                                                            multiplier:1.0
                                                                              constant:height];
         
-        NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+        NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                           attribute:NSLayoutAttributeLeft
                                                                           relatedBy:NSLayoutRelationEqual
                                                                              toItem:self.view
@@ -322,7 +339,7 @@
                                                                          multiplier:1.0
                                                                            constant:5];
         
-        NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+        NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                            attribute:NSLayoutAttributeRight
                                                                            relatedBy:NSLayoutRelationEqual
                                                                               toItem:self.view
@@ -330,7 +347,7 @@
                                                                           multiplier:1.0
                                                                             constant:-5];
         
-        NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
+        NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                            attribute:NSLayoutAttributeBottom
                                                                            relatedBy:NSLayoutRelationEqual
                                                                               toItem:self.scrollView
@@ -347,8 +364,9 @@
                                     rightConstraint,
                                     bottomConstraint]];
         
+        [self.viewArray[i] addConstraint:heightConstraint];
+        [self.viewArray[i] updateConstraints];
         [self.view updateConstraints];
-
     }
     }
     
@@ -360,7 +378,7 @@
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepTwo" bundle:bundle];
     CTFilterViewController *vc = (CTFilterViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CTFilterViewController"];
-    [vc setFilterData:data];
+    [vc updateData:data];
     vc.parentViewContoller = viewController;
     return vc;
 }

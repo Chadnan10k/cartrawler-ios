@@ -12,6 +12,7 @@
 #import "CTSDKSettings.h"
 #import "NSDateUtils.h"
 #import "CTButton.h"
+#import "GTPaymentRequest.h"
 
 @interface CTPaymentView() <UIWebViewDelegate, UIAlertViewDelegate, NSURLConnectionDataDelegate>
 
@@ -30,6 +31,7 @@
 
 - (void)presentInView:(UIView *)parentView
 {
+    self.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     _bundle = [NSBundle bundleWithPath:bundlePath];
@@ -136,16 +138,81 @@
 
 - (void)setForGTPayment:(GroundTransportSearch *)search
 {
+    NSString *flightNo = [[search.flightNumber componentsSeparatedByCharactersInSet:
+                           [NSCharacterSet decimalDigitCharacterSet].invertedSet]
+                          componentsJoinedByString:@""];
     
+    NSString *airline = [[search.flightNumber componentsSeparatedByCharactersInSet:
+                          [NSCharacterSet letterCharacterSet].invertedSet]
+                         componentsJoinedByString:@""];
+    
+    NSNumberFormatter *f = [NSNumberFormatter new];
+    f.maximumFractionDigits = 5;
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+
+    NSString *s = [GTPaymentRequest
+                      CT_GroundBook:[NSDateUtils stringFromDateWithFormat:search.pickupLocation.dateTime format:@"yyyy-MM-dd'T'HH:mm:ss"]
+                     pickupLatitude:[f stringFromNumber:search.pickupLocation.latitude]
+                    pickupLongitude:[f stringFromNumber:search.pickupLocation.longitude]
+                       addressLine1:search.addressLine1
+                       addressLine2:search.addressLine2
+                               town:search.city
+                               city:search.city
+                           postcode:search.postcode
+                        countryCode:search.country
+                        countryName:search.country
+                 pickupLocationType:search.pickupLocation.locationTypeDescription
+                 pickupLocationName:search.pickupLocation.name
+                specialInstructions:search.specialInstructions
+                    dropOffdateTime:[NSDateUtils stringFromDateWithFormat:[search.pickupLocation.dateTime
+                                                                           dateByAddingTimeInterval:1*24*60*60] format:@"yyyy-MM-dd'T'HH:mm:ss"]
+                    dropoffLatitude:[f stringFromNumber:search.dropoffLocation.latitude]
+                   dropoffLongitude:[f stringFromNumber:search.dropoffLocation.longitude]
+                dropoffLocationType:search.dropoffLocation.locationTypeDescription
+                    airportIsPickup:search.airportIsPickupLocation
+                        airportCode:search.airport.IATACode
+                         terminalNo:search.airport.terminalNumber
+                          airlineId:airline
+                         flightType:search.airport.flightType
+                           flightNo:flightNo
+                          firstName:search.firstName
+                            surname:search.surname
+                              phone:search.phone
+               passengerCountryCode:search.countryCode
+                     passengerEmail:search.email
+                 additionalAdultQty:search.adultQty.stringValue
+                        childrenQty:@"0"
+                          infantQty:@"0"
+                              refId:search.selectedService != nil ? search.selectedService.refId : search.selectedShuttle.refId
+                             refUrl:search.selectedService != nil ? search.selectedService.refUrl : search.selectedShuttle.refUrl
+                       currencyCode:[CTSDKSettings instance].currencyCode
+                           clientID:[CTSDKSettings instance].clientId
+                             target:[CTSDKSettings instance].target
+                             locale:[CTSDKSettings instance].languageCode
+                          ipaddress:@"127.0.0.1"];
+    
+    NSString *urlStr;
+    NSString *escapedString = [s stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    escapedString = [escapedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
+    
+    if ([CTSDKSettings instance].isDebug) {
+        urlStr = [NSString stringWithFormat:@"https://otasecuretest.cartrawler.com:20001/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&mobile=true&msg=%@", escapedString];
+    } else {
+        urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&mobile=true&msg=%@", escapedString];
+    }
+
+    self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"[URLPLACEHOLDER]" withString:urlStr];
+    
+    [self.webView loadHTMLString:self.htmlString baseURL: self.bundle.bundleURL];
+    
+    [self setupWebView];
 }
 
 - (void)setForCarRentalPayment:(CarRentalSearch *)search
 {
     
-    NSString *s = [PaymentRequest OTA_VehResRQ:[NSDateUtils stringFromDateWithFormat:search.pickupDate
-                                                                              format:@"yyyy-MM-dd'T'HH:mm:ss"]
-                                returnDateTime:[NSDateUtils stringFromDateWithFormat:search.dropoffDate
-                                                                              format:@"yyyy-MM-dd'T'HH:mm:ss"]
+    NSString *s = [PaymentRequest OTA_VehResRQ:[NSDateUtils stringFromDateWithFormat:search.pickupDate format:@"yyyy-MM-dd'T'HH:mm:ss"]
+                                returnDateTime:[NSDateUtils stringFromDateWithFormat:search.dropoffDate format:@"yyyy-MM-dd'T'HH:mm:ss"]
                             pickupLocationCode:search.pickupLocation.code
                            dropoffLocationCode:search.dropoffLocation.code
                                    homeCountry:[CTSDKSettings instance].homeCountryCode
@@ -164,7 +231,7 @@
                                insuranceObject:search.insurance
                              isBuyingInsurance:search.isBuyingInsurance
                                       clientID:[CTSDKSettings instance].clientId
-                                        target:@"Test"
+                                        target:[CTSDKSettings instance].target
                                         locale:[CTSDKSettings instance].languageCode
                                       currency:[CTSDKSettings instance].currencyCode];
     
@@ -183,11 +250,12 @@
     
     [self.webView loadHTMLString:self.htmlString baseURL: self.bundle.bundleURL];
 
+    [self setupWebView];
 }
 
 - (void)setupWebView
 {
-    
+    self.alpha = 1;
 }
 
 - (void)reachabilityChanged:(NSNotification *)notification {
@@ -267,15 +335,33 @@
 - (void)currentState
 {
 
-    viewState = [self.webView stringByEvaluatingJavaScriptFromString:@"getCurrentState()"];
+    __weak typeof (self) weakSelf = self;
     
+    viewState = [self.webView stringByEvaluatingJavaScriptFromString:@"getCurrentState()"];
+
     if ([viewState isEqualToString:@"SendingPayment"]) {
+        //wait 3 seconds
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            self.alpha = 0;
+        }];
+        
         [self.timer invalidate];
         
-        //callback success to parent
-        if (self.completion) {
-            self.completion();
-        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            if ([viewState isEqualToString:@"PaymentError"]) {
+                [weakSelf showError:@"Sorry" message:@"Error occured"];
+                [UIView animateWithDuration:0.2 animations:^{
+                    weakSelf.alpha = 1;
+                }];
+                
+            } else {
+                //callback success to parent
+                if (self.completion) {
+                    self.completion();
+                }
+            }
+        });
     }
     
 }

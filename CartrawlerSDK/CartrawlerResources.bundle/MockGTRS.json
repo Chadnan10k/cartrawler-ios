@@ -218,7 +218,7 @@
                        "Service": {
                        "@MaximumPassengers": "3",
                        "@MaximumBaggage": "3",
-                       "@MeetAndGreetInd": "false",
+                       "@MeetAndGreetInd": "true",
                        "@Notes": "DEBUG PRIVATE_TRANSFER.SEDAN.STANDARD.UNKNOWN.PRIVATE",
                        "@DisabilityVehicleInd": "false",
                        "Location": {

@@ -20,7 +20,6 @@
 @property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedSizeData;
 @property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedFuelPolicyData;
 @property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedTransmissionData;
-@property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedCarSpecsData;
 @property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedLocationData;
 @property (strong, nonatomic) NSArray<CTAvailabilityItem *> *selectedVendorsData;
 
@@ -74,17 +73,40 @@
     };
 }
 
+- (void)update:(CTVehicleAvailability *)data
+{
+    _data = data;
+
+    self.filteredData = [[NSMutableArray alloc] init];
+    
+    _selectedVendorsData    = [[NSArray alloc] init];
+    _selectedLocationData   = [[NSArray alloc] init];
+    _selectedSizeData       = [[NSArray alloc] init];
+    _selectedFuelPolicyData = [[NSArray alloc] init];
+    _selectedTransmissionData = [[NSArray alloc] init];
+    
+    [self.sizeData removeAllObjects];
+    [self.locationData removeAllObjects];
+    [self.vendorsData removeAllObjects];
+    [self.transmissionData removeAllObjects];
+    [self.carSpecsData removeAllObjects];
+    [self.fuelPolicyData removeAllObjects];
+    
+    [self setupData];
+}
+
 - (id)initWithFilterData:(CTVehicleAvailability *)data;
 {
     self = [super init];
     _filteredData = [[NSMutableArray alloc] init];
     
     _data = data;
-    _selectedVendorsData    = [[NSMutableArray alloc] init];
-    _selectedLocationData   = [[NSMutableArray alloc] init];
-    _selectedSizeData       = [[NSMutableArray alloc] init];
-    _selectedFuelPolicyData = [[NSMutableArray alloc] init];
-    
+    _selectedVendorsData    = [[NSArray alloc] init];
+    _selectedLocationData   = [[NSArray alloc] init];
+    _selectedSizeData       = [[NSArray alloc] init];
+    _selectedFuelPolicyData = [[NSArray alloc] init];
+    _selectedTransmissionData = [[NSArray alloc] init];
+
     _sizeData       = [[NSMutableArray alloc] init];
     _locationData   = [[NSMutableArray alloc] init];
     _vendorsData    = [[NSMutableArray alloc] init];
@@ -92,6 +114,12 @@
     _carSpecsData   = [[NSMutableArray alloc] init];
     _fuelPolicyData = [[NSMutableArray alloc] init];
     
+    [self setupData];
+    return self;
+}
+
+- (void)setupData
+{
     //vehicle size
     for (CTAvailabilityItem *item in self.data.items) {
         BOOL found = NO;
@@ -106,11 +134,11 @@
     }
     
     //vendors
-    for (int i = 0; i < data.items.count; ++i) {
+    for (int i = 0; i < self.data.items.count; ++i) {
         
         BOOL found = NO;
         for (int x = 0; x < self.vendorsData.count; ++x) {
-            if ([data.items[i].vendor.name isEqualToString:self.vendorsData[x].vendor.name]) {
+            if ([self.data.items[i].vendor.name isEqualToString:self.vendorsData[x].vendor.name]) {
                 found = YES;
                 break;
             } else {
@@ -118,12 +146,12 @@
             }
         }
         if (!found) {
-            [self.vendorsData addObject:data.items[i]];
+            [self.vendorsData addObject:self.data.items[i]];
         }
     }
     
-//    //location
-    for (CTAvailabilityItem *v in data.items) {
+    //    //location
+    for (CTAvailabilityItem *v in self.data.items) {
         BOOL found = NO;
         for (CTAvailabilityItem *s in self.locationData) {
             if (v.vendor.pickupLocation.pickupType == PickupTypeUnknown) {
@@ -136,9 +164,9 @@
             [self.locationData addObject:v];
         }
     }
-
+    
     //fuel policy
-    for (CTAvailabilityItem *v in data.items) {
+    for (CTAvailabilityItem *v in self.data.items) {
         BOOL found = NO;
         for (CTAvailabilityItem *s in self.fuelPolicyData) {
             if (v.vehicle.fuelPolicy == s.vehicle.fuelPolicy) {
@@ -149,9 +177,9 @@
             [self.fuelPolicyData addObject:v];
         }
     }
-
+    
     //transmission
-    for (CTAvailabilityItem *v in data.items) {
+    for (CTAvailabilityItem *v in self.data.items) {
         BOOL found = NO;
         for (CTAvailabilityItem *s in self.transmissionData) {
             if ([v.vehicle.transmissionType isEqualToString: s.vehicle.transmissionType]) {
@@ -162,8 +190,8 @@
             [self.transmissionData addObject:v];
         }
     }
-    return self;
 }
+
 
 - (void)filter
 {
@@ -230,7 +258,7 @@
         for (CTAvailabilityItem *veh in vehsToAddStep2) {
             for (CTAvailabilityItem *selectedVeh in self.selectedFuelPolicyData) {
                 BOOL found = NO;
-                
+
                 if (veh.vehicle.fuelPolicy == selectedVeh.vehicle.fuelPolicy) {
                     found = YES;
                 }

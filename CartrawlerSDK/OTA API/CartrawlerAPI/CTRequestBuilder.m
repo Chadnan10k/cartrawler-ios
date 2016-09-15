@@ -470,11 +470,15 @@
                        locale:(NSString *)locale
                     ipaddress:(NSString *)ipaddress
 {
-    
     NSString *dropoffTime = @"";
     if (doDateTime) {
-        dropoffTime = [NSString stringWithFormat:@"         \"@DateTime\": \"%@\", \n", doDateTime];
+        dropoffTime = [NSString stringWithFormat:
+        @", \n"
+        @" \"IncludeReturn\": { \n"
+        @"    \"@PickupDateTime\": \"%@\" \n"
+        @" } ", doDateTime];
     }
+
     
     NSString *airportDropoff = @"";
     NSString *airportPickup = @"";
@@ -508,7 +512,6 @@
                    @"       %@"
                    @"     }, "
                    @"     \"Dropoff\":     { \n"
-                   @"         %@"
                    @"         \"Address\":       { \n"
                    @"             \"@Latitude\": \"%@\", \n"
                    @"             \"@Longitude\": \"%@\", \n"
@@ -536,7 +539,6 @@
                      puLong,
                      puLocationType,
                      airportPickup,
-                     dropoffTime,
                      doLat,
                      doLong,
                      doLocationType,
@@ -544,7 +546,7 @@
                      adults,
                      children,
                      infants,
-                     [NSString stringWithFormat:@"{\"ConsumerIP\": \"%@\"}", ipaddress]];
+                     [NSString stringWithFormat:@"{\"ConsumerIP\": \"%@\" %@ }", ipaddress, dropoffTime]];
 
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:currencyCode], tail];
 }
@@ -624,7 +626,7 @@
     @"                } \n"
     @"            }, \n"
     @"            \"Dropoff\":       { \n"
-    @"                \"@DateTime\": \"%@\", \n"
+    //@"                \"@DateTime\": \"%@\", \n"
     @"                \"Address\":         { \n"
     @"                    \"@Latitude\": \"%@\", \n"
     @"                    \"@Longitude\": \"%@\", \n"
@@ -702,7 +704,7 @@
                       pickupLocationType,
                       pickupLocationName,
                       specialInstructions,
-                      dropOffdateTime,
+                      //dropOffdateTime,
                       dropoffLatitude,
                       dropoffLongitude,
                       dropoffLocationType,

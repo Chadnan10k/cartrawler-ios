@@ -12,9 +12,10 @@
 @implementation CTGroundLocation
 
 - (instancetype)initWithLatitude:(NSNumber *)latitude
-             longitude:(NSNumber *)longitude
-          locationType:(LocationType)locationType
-              dateTime:(NSDate *)dateTime
+                       longitude:(NSNumber *)longitude
+                    locationType:(LocationType)locationType
+                        dateTime:(NSDate *)dateTime
+                            name:(NSString *)name
 {
     _latitude = latitude;
     _longitude = longitude;
@@ -40,6 +41,8 @@
     }
 
     _dateTime = dateTime;
+    _name = name;
+    
     return self;
 }
 

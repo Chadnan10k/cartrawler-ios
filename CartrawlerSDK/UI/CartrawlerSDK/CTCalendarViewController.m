@@ -43,20 +43,26 @@
     
     self.headerBottomSection.backgroundColor = [CTAppearance instance].calendarHeaderBottomSectionColor;
     
-    
+    if (self.mininumDate) {
+        self.calendarView.mininumDate = self.mininumDate;
+    }
     [self.calendarView setupWithFrame:self.view.frame];
     
     self.calendarView.datesSelected = ^(NSDate *pickup, NSDate *dropoff){
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if (self.delegate != nil) {
-                [self.delegate didPickDates:pickup dropoffDate:dropoff];
+                if (pickup && !dropoff && self.singleDateSelection) {
+                    [self.delegate didPickDates:pickup dropoffDate:dropoff];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                } else if (!self.singleDateSelection && pickup && dropoff) {
+                    [self.delegate didPickDates:pickup dropoffDate:dropoff];
+                }
             }
             
             [self animateDateLabels:[DateUtils shortDescriptionFromDate:pickup]
                         dropoffText:[DateUtils shortDescriptionFromDate:dropoff]];
             
-            //[self dismissViewControllerAnimated:YES completion:nil];
         });
     };
     
@@ -71,18 +77,18 @@
 
 - (void)animateDateLabels:(NSString *)pickupText dropoffText:(NSString *)dropoffText
 {
-    self.pickupDateLabel.text = pickupText;
-    self.dropOffDateLabel.text = dropoffText;
-    
-    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:0.5 options:0 animations:^{
-        self.pickupDateLabel.transform = CGAffineTransformMakeScale(1.1, 1.1);
-        self.dropOffDateLabel.transform = CGAffineTransformMakeScale(1.1, 1.1);
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.4 animations:^{
-            self.pickupDateLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
-            self.dropOffDateLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
-        }];
-    }];
+//    self.pickupDateLabel.text = pickupText;
+//    self.dropOffDateLabel.text = dropoffText;
+//    
+//    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:0.5 options:0 animations:^{
+//        self.pickupDateLabel.transform = CGAffineTransformMakeScale(1.1, 1.1);
+//        self.dropOffDateLabel.transform = CGAffineTransformMakeScale(1.1, 1.1);
+//    } completion:^(BOOL finished) {
+//        [UIView animateWithDuration:0.4 animations:^{
+//            self.pickupDateLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
+//            self.dropOffDateLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
+//        }];
+//    }];
 }
 
 - (IBAction)closeTapped:(id)sender {

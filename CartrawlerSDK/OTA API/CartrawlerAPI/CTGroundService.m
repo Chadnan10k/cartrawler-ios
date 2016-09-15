@@ -22,21 +22,23 @@
     
     _maxPassengers = dict[@"Service"][@"@MaximumPassengers"];
     _maxBaggage = dict[@"Service"][@"@MaximumBaggage"];
-    _meetAndGreet = [dict[@"Service"][@"MeetAndGreetInd"] isEqualToString:@"true"] ? YES : NO;
+    _meetAndGreet = [dict[@"Service"][@"@MeetAndGreetInd"] isEqualToString:@"true"] ? YES : NO;
     
     if (dict[@"Service"][@"Location"]) {
         _pickupLocation = [[CTGroundLocation alloc] initWithDictionary:dict[@"Service"][@"Location"][@"Pickup"]];
         _dropoffLocation = [[CTGroundLocation alloc] initWithDictionary:dict[@"Service"][@"Location"][@"Pickup"]];
     }
-
-    NSMutableArray *inclusionArr = [[NSMutableArray alloc] init];
-    for (NSString *str in dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Inclusions"]) {
-        CTGroundInclusion *inclusion = [[CTGroundInclusion alloc] initFromInclusionString:str];
-        [inclusionArr addObject:inclusion];
-    }
-    _inclusions = inclusionArr;
+//
+//    NSMutableArray *inclusionArr = [[NSMutableArray alloc] init];
+//    for (NSString *str in dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Inclusions"]) {
+//        CTGroundInclusion *inclusion = [[CTGroundInclusion alloc] initFromInclusionString:str];
+//        [inclusionArr addObject:inclusion];
+//    }
+//    _inclusions = inclusionArr;
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier: @"es_US"]];
+
     NSNumber *totalCharge = [numberFormatter numberFromString:dict[@"TotalCharge"][@"@RateTotalAmount"]];
 
     _currency = dict[@"TotalCharge"][@"@CurrencyCode"];

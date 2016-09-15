@@ -18,59 +18,14 @@
 
 @implementation CTSelectView
 
++ (void)forceLinkerLoad_
+{
+    
+}
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    
-    return self;
-}
-
-- (id)initWithView:(UIView *)view placeholder:(NSString *)placeholder
-{
-    self = [super init];
-    
-    self.frame = CGRectZero;
-    
-    [view addSubview:self];
-    self.translatesAutoresizingMaskIntoConstraints = false;
-    
-    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self
-                                                                      attribute:NSLayoutAttributeTop
-                                                                      relatedBy:NSLayoutRelationEqual
-                                                                         toItem:view
-                                                                      attribute:NSLayoutAttributeTop
-                                                                     multiplier:1.0
-                                                                       constant:0];
-    
-    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self
-                                                                      attribute:NSLayoutAttributeBottom
-                                                                      relatedBy:NSLayoutRelationEqual
-                                                                         toItem:view
-                                                                      attribute:NSLayoutAttributeBottom
-                                                                     multiplier:1.0
-                                                                       constant:5];
-    
-    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self
-                                                                        attribute:NSLayoutAttributeLeft
-                                                                        relatedBy:NSLayoutRelationEqual
-                                                                           toItem:view
-                                                                        attribute:NSLayoutAttributeLeft
-                                                                       multiplier:1.0
-                                                                         constant:0];
-    
-    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self
-                                                                      attribute:NSLayoutAttributeRight
-                                                                      relatedBy:NSLayoutRelationEqual
-                                                                         toItem:view
-                                                                      attribute:NSLayoutAttributeRight
-                                                                     multiplier:1.0
-                                                                       constant:0];
-    [view addConstraints:@[topConstraint,
-                           bottomConstraint,
-                           leftConstraint,
-                           rightConstraint]];
-    
-    [view addSubview: self];
     
     //Add textfield
     
@@ -82,47 +37,53 @@
     self.textField.translatesAutoresizingMaskIntoConstraints = false;
     
     NSLayoutConstraint *textFieldTopConstraint = [NSLayoutConstraint constraintWithItem:self.textField
-                                                                     attribute:NSLayoutAttributeTop
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:self
-                                                                     attribute:NSLayoutAttributeTop
-                                                                    multiplier:1.0
-                                                                      constant:5];
+                                                                              attribute:NSLayoutAttributeTop
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:self
+                                                                              attribute:NSLayoutAttributeTop
+                                                                             multiplier:1.0
+                                                                               constant:5];
     NSLayoutConstraint *textFieldBottomConstraint = [NSLayoutConstraint constraintWithItem:self.textField
-                                                                        attribute:NSLayoutAttributeBottom
-                                                                        relatedBy:NSLayoutRelationEqual
-                                                                           toItem:self
-                                                                        attribute:NSLayoutAttributeBottom
-                                                                       multiplier:1.0
-                                                                         constant:-5];
+                                                                                 attribute:NSLayoutAttributeBottom
+                                                                                 relatedBy:NSLayoutRelationEqual
+                                                                                    toItem:self
+                                                                                 attribute:NSLayoutAttributeBottom
+                                                                                multiplier:1.0
+                                                                                  constant:-5];
     NSLayoutConstraint *textFieldLeftConstraint = [NSLayoutConstraint constraintWithItem:self.textField
-                                                                      attribute:NSLayoutAttributeLeft
-                                                                      relatedBy:NSLayoutRelationEqual
-                                                                         toItem:self
-                                                                      attribute:NSLayoutAttributeLeft
-                                                                     multiplier:1.0
-                                                                       constant:10];
+                                                                               attribute:NSLayoutAttributeLeft
+                                                                               relatedBy:NSLayoutRelationEqual
+                                                                                  toItem:self
+                                                                               attribute:NSLayoutAttributeLeft
+                                                                              multiplier:1.0
+                                                                                constant:10];
     NSLayoutConstraint *textFieldRightConstraint = [NSLayoutConstraint constraintWithItem:self.textField
-                                                                       attribute:NSLayoutAttributeRight
-                                                                       relatedBy:NSLayoutRelationEqual
-                                                                          toItem:self
-                                                                       attribute:NSLayoutAttributeRight
-                                                                      multiplier:1.0
-                                                                        constant:5];
+                                                                                attribute:NSLayoutAttributeRight
+                                                                                relatedBy:NSLayoutRelationEqual
+                                                                                   toItem:self
+                                                                                attribute:NSLayoutAttributeRight
+                                                                               multiplier:1.0
+                                                                                 constant:5];
     [self addConstraints:@[textFieldTopConstraint,
                            textFieldBottomConstraint,
                            textFieldLeftConstraint,
                            textFieldRightConstraint]];
     
     self.textField.delegate = self;
-    (self.textField).placeholder = placeholder;
+
+    self.textField.placeholder = self.placeholder;
     
-    view.layer.cornerRadius = 5;
-    view.layer.masksToBounds = YES;
+    self.layer.cornerRadius = 5;
+    self.layer.masksToBounds = YES;
     
     self.textField.adjustsFontSizeToFitWidth = YES;
     
     return self;
+}
+
+- (void)setPlaceholder:(NSString *)placeholder
+{
+    self.textField.placeholder = placeholder;
 }
 
 - (void)setTextFieldText:(NSString *)text

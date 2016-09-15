@@ -11,6 +11,7 @@
 
 @interface GTPaymentViewController ()
 @property (weak, nonatomic) IBOutlet UIView *webViewContainer;
+@property (strong, nonatomic) CTPaymentView *paymentView;
 
 @end
 
@@ -21,16 +22,22 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.paymentView setForGTPayment:self.groundSearch];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    CTPaymentView *paymentView = [[CTPaymentView alloc] initWithFrame:CGRectZero];
-    [paymentView presentInView:self.webViewContainer];
-    [paymentView setForGTPayment:self.groundSearch];
+    _paymentView = [[CTPaymentView alloc] initWithFrame:CGRectZero];
+    [self.paymentView presentInView:self.webViewContainer];
     
     __weak typeof (self) weakSelf = self;
     
-    paymentView.completion = ^(){
+    self.paymentView.completion = ^(){
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf pushToDestination];
         });

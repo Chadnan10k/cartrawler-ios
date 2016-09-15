@@ -11,7 +11,6 @@
 #import "CTLabel.h"
 #import "DateUtils.h"
 #import "CTFilterViewController.h"
-#import "CTViewManager.h"
 
 @interface VehicleSelectionViewController ()
 
@@ -37,51 +36,26 @@
 {
     [super viewDidLoad];
     
-    self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)self.search.vehicleAvailability.items.count,
-                               NSLocalizedString(@"cars available", @"cars available")];
     __weak typeof (self) weakSelf = self;
 
+    [self.vehicleSelectionView initWithVehicleAvailability:self.search.vehicleAvailability.items completion:^(CTAvailabilityItem *vehicle) {
+        self.search.selectedVehicle = vehicle;
+        [self pushToDestination];
+    }];
+    
     _filterViewController = [CTFilterViewController initInViewController:self withData:self.search.vehicleAvailability];
     
     self.filterViewController.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            [weakSelf.vehicleSelectionView initWithVehicleAvailability:filteredData completion:^(CTAvailabilityItem *vehicle) {
-                weakSelf.search.selectedVehicle = vehicle;
-                [weakSelf pushToDestination];
-            }];
-            
-            weakSelf.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)filteredData.count
-                                           ,NSLocalizedString(@"cars available", @"cars available")];
-        });
+        [weakSelf.vehicleSelectionView updateSelection:filteredData];
+        [weakSelf updateAvailableCarsLabel:filteredData.count];
     };
     
-    [self.vehicleSelectionView initWithVehicleAvailability:self.search.vehicleAvailability.items completion:^(CTAvailabilityItem *vehicle) {
-        self.search.selectedVehicle = vehicle;
-       [self pushToDestination];
-    }];
+    [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    __weak typeof (self) weakSelf = self;
-    if (viewLoaded) {
-        self.carCountLabel.text = [NSString stringWithFormat:@"%@", NSLocalizedString(@"Getting latest vehicles", @"Getting latest vehicles")];
-        [self.vehicleSelectionView showLoading];
-        [self.search refreshResults:^(BOOL success, NSString *errorMessage) {
-            if (success) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [weakSelf.vehicleSelectionView hideLoading];
-                    [weakSelf refresh];
-                });
-            } else {
-                //could not refresh
-            }
-        }];
-    } else {
-        viewLoaded = YES;
-    }
     
     if (self.search.pickupLocation == self.search.dropoffLocation) {
         self.locationsLabel.text = [NSString stringWithFormat:@"%@", self.search.pickupLocation.name];
@@ -89,7 +63,6 @@
         self.locationsLabel.text = [NSString stringWithFormat:@"%@\n- to -\n%@",
                                     self.search.pickupLocation.name, self.search.dropoffLocation.name];
     }
-    
     
     NSString *pickupDate = [DateUtils shortDescriptionFromDate:self.search.pickupDate];
     NSString *dropoffDate = [DateUtils shortDescriptionFromDate:self.search.dropoffDate];
@@ -99,10 +72,19 @@
 
 - (void)refresh
 {
-    self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)self.search.vehicleAvailability.items.count,
-                               NSLocalizedString(@"cars available", @"cars available")];
+    if (self.filterViewController) {
+        [self.filterViewController updateData:self.search.vehicleAvailability];
+    }
     
-    [self.filterViewController setFilterData:self.search.vehicleAvailability];
+    [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items];
+
+    [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
+}
+
+- (void)updateAvailableCarsLabel:(NSInteger)availableCars
+{
+    self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)availableCars
+                               ,NSLocalizedString(@"vehicles available", @"cars available")];
 }
 
 - (IBAction)backTapped:(id)sender {

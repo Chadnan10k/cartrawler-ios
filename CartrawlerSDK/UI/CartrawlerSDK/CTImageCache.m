@@ -8,6 +8,10 @@
 
 #import "CTImageCache.h"
 
+@interface CTImageCache() <NSURLSessionDelegate>
+
+@end
+
 @implementation CTImageCache
 
 + (void)forceLinkerLoad_
@@ -37,20 +41,20 @@
                                                              completionHandler:^(NSData * _Nullable data,
                                                                                  NSURLResponse * _Nullable response,
                                                                                  NSError * _Nullable error)
-        {
-            if (error == nil) {
-                if (data != nil) {
-                    UIImage *image = [[UIImage alloc] initWithData:data];
-                    [[CTImageCache sharedInstance] setObject:image
-                                                      forKey:imageUrl.absoluteString
-                                                        cost:data.length];
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        completion(image);
-                    });
-                }
-            }
-        }];
+                                  {
+                                      if (error == nil) {
+                                          if (data != nil) {
+                                              UIImage *image = [[UIImage alloc] initWithData:data];
+                                              [[CTImageCache sharedInstance] setObject:image
+                                                                                forKey:imageUrl.absoluteString
+                                                                                  cost:data.length];
+                                              
+                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                  completion(image);
+                                              });
+                                          }
+                                      }
+                                  }];
         
         [task resume];
         
@@ -60,7 +64,5 @@
         });
     }
 }
-
-
 
 @end

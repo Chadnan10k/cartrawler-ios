@@ -16,6 +16,6 @@ typedef void (^CTFilteredCompletion)(NSArray<CTVehicle *> *filteredData);
 @property (nonatomic, strong) CTFilteredCompletion filterCompletion;
 
 + (CTFilterViewController *)initInViewController:(UIViewController *)viewController withData:(CTVehicleAvailability *)data;
-- (void)setFilterData:(CTVehicleAvailability *)data;
+- (void)updateData:(CTVehicleAvailability *)data;
 - (void)present;
 @end

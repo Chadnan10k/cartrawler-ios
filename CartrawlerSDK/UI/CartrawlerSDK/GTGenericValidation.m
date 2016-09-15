@@ -13,6 +13,31 @@
                   cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
                      completion:(CTSearchValidation)completion
 {
-    completion(@"Success", nil);
+    
+    if (search.pickupLocation == nil) {
+        NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupLocation IS NOT SET \n\n");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        return;
+    }
+    
+    if (search.dropoffLocation == nil) {
+        NSLog(@"\n\n ERROR: CANNOT PUSH AS self.dropoffLocation IS NOT SET \n\n");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        return;
+    }
+    
+    if (search.adultQty == nil) {
+        NSLog(@"\n\n ERROR: CANNOT PUSH AS self.adultQty IS NOT SET \n\n");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        return;
+    }
+    
+    if (search.selectedService == nil && search.selectedShuttle == nil) {
+        NSLog(@"\n\n ERROR: CANNOT PUSH AS self.selectedService IS NOT SET \n\n");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        return;
+    }
+    
+    completion(YES, nil);
 }
 @end

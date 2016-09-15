@@ -34,7 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 //---Ground Transport View Controllers---
 @property (nonatomic, strong, nonnull, readonly) CTViewController *gtSearchDetailsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *gtServiceSelectionViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *gtDriverDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *gtPassengerDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *gtAddressDetailsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *gtPaymentViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *gtPaymentCompletionViewController;
 //---------------------------------------

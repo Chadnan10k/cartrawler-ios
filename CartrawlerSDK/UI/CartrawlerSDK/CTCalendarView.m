@@ -33,8 +33,6 @@
 
 - (void)setupWithFrame:(CGRect)frame
 {
-
-    
     // Do any additional setup after loading the view.
     _logicController = [[CalendarLogicController alloc] init];
     
@@ -45,14 +43,20 @@
     };
     
     self.logicController.discard = ^{
-        if (self.discard != nil) {
+        if (weakSelf.discard != nil) {
             weakSelf.discard();
         }
     };
     
-    self.logicController.datesSelected = ^(NSDate *pickup, NSDate *dropoff){
-        if (self.datesSelected != nil) {
+    self.logicController.datesSelected = ^(NSDate *pickup, NSDate *dropoff) {
+        if (weakSelf.datesSelected != nil) {
             weakSelf.datesSelected(pickup, dropoff);
+        }
+    };
+    
+    self.logicController.dateSelected = ^(NSDate *date) {
+        if (weakSelf.datesSelected) {
+            weakSelf.datesSelected(date, nil);
         }
     };
 
@@ -84,7 +88,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CTCalendarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CalendarCell" forIndexPath:indexPath];
-    
+    if (self.mininumDate) {
+        cell.mininumDate = self.mininumDate;
+    }
     [cell setData:self.months[indexPath.section] section:indexPath.section logicController:self.logicController];
     return cell;
 }

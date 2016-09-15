@@ -45,7 +45,7 @@
         
     } else {
         //only one vendor
-        NSDictionary *vendorDict = [vehAvailRSCoreDictionary objectForKey:@"VehVendorAvails"];
+        NSDictionary *vendorDict = [vehAvailRSCoreDictionary objectForKey:@"VehVendorAvails"][@"VehVendorAvail"];
         
         CTVendor *vendor = [[CTVendor alloc] initWithVendorInfo:vendorDict];
         
@@ -62,7 +62,6 @@
     _items = tempItems;
     
     //order by order id
-    
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.orderIndex"
                                                                  ascending:YES];
     _items =  [self.items sortedArrayUsingDescriptors:@[descriptor]];

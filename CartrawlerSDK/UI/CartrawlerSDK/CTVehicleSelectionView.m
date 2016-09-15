@@ -45,9 +45,9 @@
                          completion:(VehicleSelectionCompletion)completion;
 {
     
-//    [self.tableView setContentOffset:
-//     CGPointMake(0, -self.tableView.contentInset.top) animated:YES];
-//    
+    [self.tableView setContentOffset:
+     CGPointMake(0, -self.tableView.contentInset.top) animated:YES];
+    
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     [self.tableView registerNib:[UINib nibWithNibName:@"VehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];
@@ -62,8 +62,12 @@
     [self.tableView reloadData];
     
     self.tableView.scrollsToTop = YES;
-
 }
 
+- (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data
+{
+    [self.dataSource updateData:data];
+    [self.tableView reloadData];
+}
 
 @end

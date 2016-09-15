@@ -7,7 +7,6 @@
 //
 
 #import "CTViewController.h"
-#import "CTViewManager.h"
 
 @interface CTViewController ()
 
@@ -31,27 +30,30 @@
 
 - (void)pushToDestination
 {
+    
+    __weak typeof (self) weakSelf = self;
+    
     if (!self.search) {
     
         [self.validationController validateGroundTransport:self.groundSearch
                                              cartrawlerAPI:self.cartrawlerAPI
-                                                completion:^(id success, NSString *errorMessage) {
+                                                completion:^(BOOL success, NSString *errorMessage) {
                                                     dispatch_async(dispatch_get_main_queue(), ^{
                                                         if (success) {
-                                                            if (self.dataValidationCompletion) {
-                                                                self.dataValidationCompletion(YES, nil);
+                                                            if (weakSelf.dataValidationCompletion) {
+                                                                weakSelf.dataValidationCompletion(YES, nil);
                                                             }
-                                                            [self.navigationController pushViewController:self.destinationViewController animated:YES];
-                                                            [self.destinationViewController refresh];
+                                                            [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
+                                                            [weakSelf.destinationViewController refresh];
                                                         } else {
-                                                            if (self.fallBackViewController) {
-                                                                if (self.dataValidationCompletion) {
-                                                                    self.dataValidationCompletion(NO, errorMessage);
+                                                            if (weakSelf.fallBackViewController) {
+                                                                if (weakSelf.dataValidationCompletion) {
+                                                                    weakSelf.dataValidationCompletion(NO, errorMessage);
                                                                 }
-                                                                [self.navigationController pushViewController:self.fallBackViewController animated:YES];
+                                                                [weakSelf.navigationController pushViewController:weakSelf.fallBackViewController animated:YES];
                                                             } else {
-                                                                if (self.dataValidationCompletion) {
-                                                                    self.dataValidationCompletion(NO, errorMessage);
+                                                                if (weakSelf.dataValidationCompletion) {
+                                                                    weakSelf.dataValidationCompletion(NO, errorMessage);
                                                                 }
                                                             }
                                                         }
@@ -59,34 +61,31 @@
                                                 }];
         
     } else {
-    
-        [CTViewManager canTransitionToStep:self.destinationViewController
-                           carRentalSearch:self.search
-                     groundTransportSearch:self.groundSearch
-                             cartrawlerAPI:self.cartrawlerAPI
-                                completion:^(BOOL success, NSString *errorMessage)
-         {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (success) {
-                    if (self.dataValidationCompletion) {
-                        self.dataValidationCompletion(YES, nil);
-                    }
-                    [self.navigationController pushViewController:self.destinationViewController animated:YES];
-                    [self.destinationViewController refresh];
-                } else {
-                    if (self.fallBackViewController) {
-                        if (self.dataValidationCompletion) {
-                            self.dataValidationCompletion(NO, errorMessage);
-                        }
-                        [self.navigationController pushViewController:self.fallBackViewController animated:YES];
-                    } else {
-                        if (self.dataValidationCompletion) {
-                            self.dataValidationCompletion(NO, errorMessage);
-                        }
-                    }
-                }
-            });
-        }];
+ 
+        [self.validationController validateCarRental:self.search
+                                       cartrawlerAPI:self.cartrawlerAPI
+                                          completion:^(BOOL success, NSString *errorMessage) {
+                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                  if (success) {
+                                                      if (weakSelf.dataValidationCompletion) {
+                                                          weakSelf.dataValidationCompletion(YES, nil);
+                                                      }
+                                                      [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
+                                                      [weakSelf.destinationViewController refresh];
+                                                  } else {
+                                                      if (weakSelf.fallBackViewController) {
+                                                          if (weakSelf.dataValidationCompletion) {
+                                                              weakSelf.dataValidationCompletion(NO, errorMessage);
+                                                          }
+                                                          [weakSelf.navigationController pushViewController:self.fallBackViewController animated:YES];
+                                                      } else {
+                                                          if (weakSelf.dataValidationCompletion) {
+                                                              weakSelf.dataValidationCompletion(NO, errorMessage);
+                                                          }
+                                                      }
+                                                  }
+                                              });
+                                          }];
     }
 }
 

@@ -6,18 +6,18 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "InclusionTableViewDataSource.h"
+#import "InclusionCollectionViewDataSource.h"
 #import "InclusionCollectionViewCell.h"
 #import <CartrawlerAPI/CTGroundInclusion.h>
 #import <CartrawlerSDK/CTAppearance.h>
 
-@interface InclusionTableViewDataSource()
+@interface InclusionCollectionViewDataSource()
 
 @property (nonatomic, strong) NSArray <CTGroundInclusion *> *inclusions;
 
 @end
 
-@implementation InclusionTableViewDataSource
+@implementation InclusionCollectionViewDataSource
 
 - (void)setInclusions:(NSArray <CTGroundInclusion *> *)inclusions;
 {

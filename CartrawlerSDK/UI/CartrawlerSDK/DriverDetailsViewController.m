@@ -81,12 +81,6 @@
     self.search.email = self.emailTextField.text;
     self.search.phone = self.phoneTextField.text;
     self.search.flightNumber = self.flightNoTextField.text;
-    
-//    vc.addressLine1 = self.addressLine1;
-//    vc.addressLine2 = self.addressLine2;
-//    vc.city = self.city;
-//    vc.postcode = self.postcode;
-//    vc.country = self.country;
 
     AddressDetailsViewController *destination = (AddressDetailsViewController *)segue.destinationViewController;
     destination.destinationViewController = self.destinationViewController;
