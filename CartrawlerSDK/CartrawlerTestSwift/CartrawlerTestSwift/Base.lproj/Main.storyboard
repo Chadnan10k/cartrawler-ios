@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="CartrawlerTestSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9OI-cW-lJR">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="oXb-DM-dVv"/>
+                                </constraints>
+                                <state key="normal" title="Car Rental"/>
+                                <connections>
+                                    <action selector="carRental:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k1Z-9R-ney"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9OI-cW-lJR" secondAttribute="trailing" constant="16" id="7uK-xK-ni7"/>
+                            <constraint firstItem="9OI-cW-lJR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="UtF-6s-JTC"/>
+                            <constraint firstItem="9OI-cW-lJR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="299" id="er1-Bs-eEO"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-426.39999999999998" y="35.532233883058474"/>
+        </scene>
+        <!--Booking Summary View Controller-->
+        <scene sceneID="E0j-ks-lVA">
+            <objects>
+                <viewController storyboardIdentifier="BookingSummaryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1dM-GU-jgF" customClass="BookingSummaryViewController" customModule="CartrawlerTestSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cJy-xu-zC9"/>
+                        <viewControllerLayoutGuide type="bottom" id="qBY-hp-GhE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pib-RL-FJK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zbg-Ve-v4x">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking Summary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pA8-Zh-bQv">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="v5q-MJ-P5c"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nR-YK-dDM">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="2o4-OX-Qrm"/>
+                                            <constraint firstAttribute="width" constant="40" id="NOZ-5g-8JA"/>
+                                        </constraints>
+                                        <state key="normal" image="backArrow"/>
+                                        <connections>
+                                            <action selector="back:" destination="1dM-GU-jgF" eventType="touchUpInside" id="5Ss-UJ-2fb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.36470588240000001" green="0.66666666669999997" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="pA8-Zh-bQv" firstAttribute="top" secondItem="Zbg-Ve-v4x" secondAttribute="top" constant="29" id="4N6-uJ-RhO"/>
+                                    <constraint firstItem="pA8-Zh-bQv" firstAttribute="centerX" secondItem="Zbg-Ve-v4x" secondAttribute="centerX" id="9VG-Yi-GBR"/>
+                                    <constraint firstAttribute="bottom" secondItem="8nR-YK-dDM" secondAttribute="bottom" constant="5" id="Ntk-RM-pKm"/>
+                                    <constraint firstItem="8nR-YK-dDM" firstAttribute="leading" secondItem="Zbg-Ve-v4x" secondAttribute="leading" constant="8" id="UOb-4m-dgh"/>
+                                    <constraint firstAttribute="height" constant="60" id="XZu-v0-hjf"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZSf-cW-AHJ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="9rZ-ox-jWy"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ford Focus or similar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbI-Lk-bLP">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="dSA-3e-nh4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Supplier name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5a9-tS-rmv">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="oL7-jA-YbC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYm-LZ-Hgc">
+                                <color key="backgroundColor" red="0.36470588240000001" green="0.66666666669999997" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="e6W-Tn-wID"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="next:" destination="1dM-GU-jgF" eventType="touchUpInside" id="UEn-IY-mhf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nYm-LZ-Hgc" firstAttribute="top" secondItem="5a9-tS-rmv" secondAttribute="bottom" constant="22" id="JSC-sO-wbb"/>
+                            <constraint firstItem="Zbg-Ve-v4x" firstAttribute="leading" secondItem="pib-RL-FJK" secondAttribute="leading" id="PT1-rs-Yeb"/>
+                            <constraint firstItem="JbI-Lk-bLP" firstAttribute="centerX" secondItem="ZSf-cW-AHJ" secondAttribute="centerX" id="WrF-zv-zBu"/>
+                            <constraint firstItem="Zbg-Ve-v4x" firstAttribute="top" secondItem="pib-RL-FJK" secondAttribute="top" id="XZm-7y-hOU"/>
+                            <constraint firstItem="5a9-tS-rmv" firstAttribute="centerX" secondItem="JbI-Lk-bLP" secondAttribute="centerX" id="i6g-oR-8IN"/>
+                            <constraint firstAttribute="trailing" secondItem="ZSf-cW-AHJ" secondAttribute="trailing" constant="16" id="kDB-Te-6tj"/>
+                            <constraint firstItem="ZSf-cW-AHJ" firstAttribute="leading" secondItem="pib-RL-FJK" secondAttribute="leading" constant="16" id="sCO-Sy-jue"/>
+                            <constraint firstItem="JbI-Lk-bLP" firstAttribute="top" secondItem="ZSf-cW-AHJ" secondAttribute="bottom" constant="23" id="upH-DB-HN7"/>
+                            <constraint firstAttribute="trailing" secondItem="Zbg-Ve-v4x" secondAttribute="trailing" id="v0r-QZ-hss"/>
+                            <constraint firstItem="ZSf-cW-AHJ" firstAttribute="top" secondItem="Zbg-Ve-v4x" secondAttribute="bottom" constant="24" id="v4m-78-iXQ"/>
+                            <constraint firstAttribute="trailing" secondItem="nYm-LZ-Hgc" secondAttribute="trailing" constant="16" id="wF1-fg-XZo"/>
+                            <constraint firstItem="5a9-tS-rmv" firstAttribute="top" secondItem="JbI-Lk-bLP" secondAttribute="bottom" constant="19" id="xZQ-uk-CQH"/>
+                            <constraint firstItem="nYm-LZ-Hgc" firstAttribute="leading" secondItem="pib-RL-FJK" secondAttribute="leading" constant="16" id="xat-EN-SIx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="supplierNameLabel" destination="5a9-tS-rmv" id="1iQ-GP-FB8"/>
+                        <outlet property="vehicleImageView" destination="ZSf-cW-AHJ" id="lL1-vf-5Ht"/>
+                        <outlet property="vehicleNameLabel" destination="JbI-Lk-bLP" id="hwu-Wg-Ww7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FW3-O7-O3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="277.60000000000002" y="35.532233883058474"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="backArrow" width="32" height="32"/>
+    </resources>
+</document>

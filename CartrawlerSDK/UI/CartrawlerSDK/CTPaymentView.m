@@ -22,12 +22,11 @@
 @property (strong, nonatomic) Reachability *reachability;
 @property (strong, nonatomic) NSString *htmlString;
 @property (strong, nonatomic) NSBundle *bundle;
+@property (strong, nonatomic) NSString *jsonResponse;
 
 @end
 
-@implementation CTPaymentView {
-    NSString *viewState;
-}
+@implementation CTPaymentView
 
 - (void)presentInView:(UIView *)parentView
 {
@@ -125,8 +124,6 @@
     
     [self registerForKeyboardNotifications];
     
-    viewState = @"";
-    
     _reachability = [Reachability reachabilityWithHostName:@"www.google.com"];
     
     [self.reachability startNotifier];
@@ -197,7 +194,7 @@
     escapedString = [escapedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     
     if ([CTSDKSettings instance].isDebug) {
-        urlStr = [NSString stringWithFormat:@"https://otasecuretest.cartrawler.com:20001/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&mobile=true&msg=%@", escapedString];
+        urlStr = [NSString stringWithFormat:@"https://external-dev.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&mobile=true&msg=%@", escapedString];
     } else {
         urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&mobile=true&msg=%@", escapedString];
     }
@@ -257,24 +254,25 @@
 - (void)setupWebView
 {
     self.alpha = 1;
+    [self startTimer];
 }
 
 - (void)reachabilityChanged:(NSNotification *)notification {
     Reachability *reachability = notification.object;
     NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
     
-    if(remoteHostStatus == NotReachable) {
-        [self.timer invalidate];
-        viewState = @"ConnectionError";
-    } else if (remoteHostStatus == ReachableViaWiFi) {
-        [self.timer invalidate];
-        [self startTimer];
-        viewState = @"";
-    } else if (remoteHostStatus == ReachableViaWWAN) {
-        [self.timer invalidate];
-        [self startTimer];
-        viewState = @"";
-    }
+//    if(remoteHostStatus == NotReachable) {
+//        [self.timer invalidate];
+//        viewState = @"ConnectionError";
+//    } else if (remoteHostStatus == ReachableViaWiFi) {
+//        [self.timer invalidate];
+//        [self startTimer];
+//        viewState = @"";
+//    } else if (remoteHostStatus == ReachableViaWWAN) {
+//        [self.timer invalidate];
+//        [self startTimer];
+//        viewState = @"";
+//    }
 }
 
 - (void)startTimer
@@ -335,36 +333,60 @@
 
 - (void)currentState
 {
-
     __weak typeof (self) weakSelf = self;
     
-    viewState = [self.webView stringByEvaluatingJavaScriptFromString:@"getCurrentState()"];
-
-    if ([viewState isEqualToString:@"SendingPayment"]) {
-        //wait 3 seconds
-        
-        [UIView animateWithDuration:0.2 animations:^{
-            self.alpha = 0;
-        }];
-        
-        [self.timer invalidate];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-
-            if ([[self.webView stringByEvaluatingJavaScriptFromString:@"getCurrentState()"] isEqualToString:@"PaymentError"]) {
-                [weakSelf showError:@"Sorry" message:@"Error occured"];
-                [UIView animateWithDuration:0.2 animations:^{
-                    weakSelf.alpha = 1;
-                }];
-            } else {
-                //callback success to parent
-                if (self.completion) {
-                    self.completion();
-                }
-            }
-        });
-    }
+    _jsonResponse = [self.webView stringByEvaluatingJavaScriptFromString:@"getJsonResponse()"];
     
+    if (![self.jsonResponse isEqualToString:@""]) {
+//        NSError *jsonError;
+//        NSData *objectData = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+//        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+//                                                             options:NSJSONReadingMutableContainers
+//                                                               error:&jsonError];
+//        if (json[@"Errors"]) {
+//            [self showError:@"Sorry" message:@"Error occured"];
+//            [self.timer invalidate];
+//        } else {
+//            self.completion();
+//        }
+        
+        //NSLog(@"JSONRESPONSE: %@", json[@""]);
+        
+        if ([self.jsonResponse containsString:@"Errors"]) {
+            NSLog(@"JSONRESPONSE: %@", self.jsonResponse);
+
+        } else if ([self.jsonResponse containsString:@"GroundBookRS"]) {
+            NSLog(@"JSONRESPONSE: %@", self.jsonResponse);
+        }
+        
+    }
+
+//    if ([viewState isEqualToString:@"SendingPayment"]) {
+//        //wait 3 seconds
+//        
+//        [UIView animateWithDuration:0.2 animations:^{
+//            self.alpha = 0;
+//        }];
+//        
+
+        
+//        [self.timer invalidate];
+//        
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//            NSLog(@"%@", viewState);
+//            if ([[self.webView stringByEvaluatingJavaScriptFromString:@"getCurrentState()"] isEqualToString:@"PaymentError"]) {
+//                [weakSelf showError:@"Sorry" message:@"Error occured"];
+//                [UIView animateWithDuration:0.2 animations:^{
+//                    weakSelf.alpha = 1;
+//                }];
+//            } else {
+//                //callback success to parent
+//                if (self.completion) {
+//                    self.completion();
+//                }
+//            }
+//        });
+ //   }
 }
 
 - (void)showError:(NSString *)title message:(NSString *)message

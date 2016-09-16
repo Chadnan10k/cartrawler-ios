@@ -14,20 +14,45 @@
 {
     self = [super init];
     
-    //check if shuttle is available
-        
-    if ([dict[@"RateQualifier"][@"SpecialInputs"][@"@Value"] isEqualToString:@"NONE"]) {
-        _serviceLevel = ServiceLevelNone;
-    } else if ([dict[@"RateQualifier"][@"SpecialInputs"][@"@Value"] isEqualToString:@"STANDARD"]) {
-        _serviceLevel = ServiceLevelStandard;
-    } else if ([dict[@"RateQualifier"][@"SpecialInputs"][@"@Value"] isEqualToString:@"BUSINESS"]) {
-        _serviceLevel = ServiceLevelBusiness;
-    } else if ([dict[@"RateQualifier"][@"SpecialInputs"][@"@Value"] isEqualToString:@"PREMIUM"]) {
-        _serviceLevel = ServiceLevelPremium;
-    } else if ([dict[@"RateQualifier"][@"SpecialInputs"][@"@Value"] isEqualToString:@"STANDARD_CLASS"]) {
-        _serviceLevel = ServiceLevelStandardClass;
-    } else if ([dict[@"RateQualifier"][@"SpecialInputs"][@"@Value"] isEqualToString:@"FIRST_CLASS"]) {
-        _serviceLevel = ServiceLevelFirstClass;
+    if(![dict[@"RateQualifier"] isKindOfClass:[NSArray class]]) {
+        if ([dict[@"RateQualifier"][@"SpecialInputs"][@"@Value"] isEqualToString:@"NONE"]) {
+            _serviceLevel = ServiceLevelNone;
+        } else if ([dict[@"RateQualifier"][@"SpecialInputs"][@"@Value"] isEqualToString:@"STANDARD"]) {
+            _serviceLevel = ServiceLevelStandard;
+        } else if ([dict[@"RateQualifier"][@"SpecialInputs"][@"@Value"] isEqualToString:@"BUSINESS"]) {
+            _serviceLevel = ServiceLevelBusiness;
+        } else if ([dict[@"RateQualifier"][@"SpecialInputs"][@"@Value"] isEqualToString:@"PREMIUM"]) {
+            _serviceLevel = ServiceLevelPremium;
+        } else if ([dict[@"RateQualifier"][@"SpecialInputs"][@"@Value"] isEqualToString:@"STANDARD_CLASS"]) {
+            _serviceLevel = ServiceLevelStandardClass;
+        } else if ([dict[@"RateQualifier"][@"SpecialInputs"][@"@Value"] isEqualToString:@"FIRST_CLASS"]) {
+            _serviceLevel = ServiceLevelFirstClass;
+        }
+    } else {
+        for (NSDictionary *d in dict[@"RateQualifier"]) {
+            
+            if ([d[@"@Name"] isEqualToString:@"ServiceType"]) {
+                if ([d[@"@Value"] isEqualToString:@"RAIL"]) {
+                    _shuttleType = ShuttleTypeTrain;
+                }
+            }
+            
+            if ([d[@"@Name"] isEqualToString:@"TicketType"]) {
+                if ([d[@"@Value"] isEqualToString:@"NONE"]) {
+                    _serviceLevel = ServiceLevelNone;
+                } else if ([d[@"@Value"] isEqualToString:@"STANDARD"]) {
+                    _serviceLevel = ServiceLevelStandard;
+                } else if ([d[@"@Value"] isEqualToString:@"BUSINESS"]) {
+                    _serviceLevel = ServiceLevelBusiness;
+                } else if ([d[@"@Value"] isEqualToString:@"PREMIUM"]) {
+                    _serviceLevel = ServiceLevelPremium;
+                } else if ([d[@"@Value"] isEqualToString:@"STANDARD_CLASS"]) {
+                    _serviceLevel = ServiceLevelStandardClass;
+                } else if ([d[@"@Value"] isEqualToString:@"FIRST_CLASS"]) {
+                    _serviceLevel = ServiceLevelFirstClass;
+                }
+            }
+        }
     }
     
     if ([dict[@"Shuttle"][@"@Vehicle"][@"@Type"][@"@Code"] isEqualToString:@"TRAIN"]) {
