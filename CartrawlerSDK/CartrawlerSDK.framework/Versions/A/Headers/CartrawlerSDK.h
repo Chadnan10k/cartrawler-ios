@@ -147,11 +147,9 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @param viewController The CTViewController you would like to edit
  *  @param destination    The destination for this CTViewController
- *  @param fallback       The fallback for this CTViewController
  */
 - (void)rerouteViewController:(CTViewController *)viewController
-                  destination:(CTViewController *)destination
-                     fallback:(CTViewController *)fallback;
+                  destination:(CTViewController *)destination;
 
 @end
 

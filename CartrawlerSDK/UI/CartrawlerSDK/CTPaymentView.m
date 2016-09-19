@@ -23,7 +23,8 @@
 @property (strong, nonatomic) NSString *htmlString;
 @property (strong, nonatomic) NSBundle *bundle;
 @property (strong, nonatomic) NSString *jsonResponse;
-
+@property (nonatomic) BOOL runLoop;
+@property (nonatomic) BOOL termsChecked;
 @end
 
 @implementation CTPaymentView
@@ -124,13 +125,12 @@
     
     [self registerForKeyboardNotifications];
     
-    _reachability = [Reachability reachabilityWithHostName:@"www.google.com"];
-    
+    _reachability = [Reachability reachabilityForInternetConnection];
     [self.reachability startNotifier];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
-    
-    [self startTimer];
+    [self setupWebView];
 }
 
 - (void)setForGTPayment:(GroundTransportSearch *)search
@@ -194,9 +194,9 @@
     escapedString = [escapedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     
     if ([CTSDKSettings instance].isDebug) {
-        urlStr = [NSString stringWithFormat:@"https://external-dev.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&mobile=true&msg=%@", escapedString];
+        urlStr = [NSString stringWithFormat:@"https://external-dev.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&hideButton=true&mobile=true&msg=%@", escapedString];
     } else {
-        urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&mobile=true&msg=%@", escapedString];
+        urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&hideButton=true&mobile=true&msg=%@", escapedString];
     }
 
     self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"[URLPLACEHOLDER]" withString:urlStr];
@@ -239,9 +239,9 @@
     NSString *urlStr;
     
     if ([CTSDKSettings instance].isDebug) {
-        urlStr = [NSString stringWithFormat:@"http://external-dev.cartrawler.com:20002/cartrawlerpay/paymentform?type=OTA_VehResRQ&mobile=true&msg=%@", escapedString];
+        urlStr = [NSString stringWithFormat:@"http://external-dev.cartrawler.com/cartrawlerpay/paymentform?type=OTA_VehResRQ&hideButton=true&mobile=true&msg=%@", escapedString];
     } else {
-        urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_VehResRQ&mobile=true&msg=%@", escapedString];
+        urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_VehResRQ&hideButton=true&mobile=true&msg=%@", escapedString];
     }
 
     self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"[URLPLACEHOLDER]" withString:urlStr];
@@ -261,27 +261,24 @@
     Reachability *reachability = notification.object;
     NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
     
-//    if(remoteHostStatus == NotReachable) {
-//        [self.timer invalidate];
-//        viewState = @"ConnectionError";
-//    } else if (remoteHostStatus == ReachableViaWiFi) {
-//        [self.timer invalidate];
-//        [self startTimer];
-//        viewState = @"";
-//    } else if (remoteHostStatus == ReachableViaWWAN) {
-//        [self.timer invalidate];
-//        [self startTimer];
-//        viewState = @"";
-//    }
+    if(remoteHostStatus == NotReachable) {
+        [self showError:@"Error" message:@"No internet connection"];
+    } else {
+        NSLog(@"INTERNET AVAILABLE");
+    }
 }
 
 - (void)startTimer
 {
-    _timer = [NSTimer scheduledTimerWithTimeInterval:0.1f
-                                              target:self
-                                            selector:@selector(currentState)
-                                            userInfo:nil
-                                             repeats:YES];
+    //Invalidate timer does not seem to work even when explicitly stating the thread
+    _runLoop = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.1f
+                                                  target:self
+                                                selector:@selector(currentState)
+                                                userInfo:nil
+                                                 repeats:YES];
+    });
 }
 
 - (void)registerForKeyboardNotifications
@@ -311,82 +308,45 @@
 
 #pragma mark Web View
 
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    
-}
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    return YES;
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    
-}
-
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    
+    NSLog(@"CARTRAWLERSDK PAYMENTVIEW FAILED LOAD");
+    [self showError:@"Error" message:@"Cannot load payment"];
 }
 
 - (void)currentState
 {
-    __weak typeof (self) weakSelf = self;
-    
-    _jsonResponse = [self.webView stringByEvaluatingJavaScriptFromString:@"getJsonResponse()"];
-    
-    if (![self.jsonResponse isEqualToString:@""]) {
-//        NSError *jsonError;
-//        NSData *objectData = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-//        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-//                                                             options:NSJSONReadingMutableContainers
-//                                                               error:&jsonError];
-//        if (json[@"Errors"]) {
-//            [self showError:@"Sorry" message:@"Error occured"];
-//            [self.timer invalidate];
-//        } else {
-//            self.completion();
-//        }
+    if (self.runLoop) {
         
-        //NSLog(@"JSONRESPONSE: %@", json[@""]);
+        _jsonResponse = [self.webView stringByEvaluatingJavaScriptFromString:@"getJsonResponse()"];
         
-        if ([self.jsonResponse containsString:@"Errors"]) {
-            NSLog(@"JSONRESPONSE: %@", self.jsonResponse);
-
-        } else if ([self.jsonResponse containsString:@"GroundBookRS"]) {
-            NSLog(@"JSONRESPONSE: %@", self.jsonResponse);
+        if (![self.jsonResponse isEqualToString:@""]) {
+            NSError *jsonError;
+            NSData *objectData = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                                 options:NSJSONReadingMutableContainers
+                                                                   error:&jsonError];
+            
+            if ([self.jsonResponse containsString:@"Errors"]) {
+                NSLog(@"%@", self.jsonResponse);
+                CTErrorResponse *error = [[CTErrorResponse alloc] initWithDictionary:json];
+                
+                [self showError:@"Error" message:error.errorMessage];
+                _runLoop = NO;
+            } else if ([self.jsonResponse containsString:@"SpecialInstructions"]) {
+                _runLoop = NO;
+                if (self.completion) {
+                    CTGroundBooking *booking = [[CTGroundBooking alloc] initWithDictionary:json];
+                    self.completion(booking);
+                }
+            } else if ([self.jsonResponse containsString:@"VehResRQCore"]) {
+                if (self.completion) {
+                    CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:json];
+                    self.completion(booking);
+                }
+            }
         }
-        
     }
-
-//    if ([viewState isEqualToString:@"SendingPayment"]) {
-//        //wait 3 seconds
-//        
-//        [UIView animateWithDuration:0.2 animations:^{
-//            self.alpha = 0;
-//        }];
-//        
-
-        
-//        [self.timer invalidate];
-//        
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-//            NSLog(@"%@", viewState);
-//            if ([[self.webView stringByEvaluatingJavaScriptFromString:@"getCurrentState()"] isEqualToString:@"PaymentError"]) {
-//                [weakSelf showError:@"Sorry" message:@"Error occured"];
-//                [UIView animateWithDuration:0.2 animations:^{
-//                    weakSelf.alpha = 1;
-//                }];
-//            } else {
-//                //callback success to parent
-//                if (self.completion) {
-//                    self.completion();
-//                }
-//            }
-//        });
- //   }
 }
 
 - (void)showError:(NSString *)title message:(NSString *)message
@@ -397,17 +357,21 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [self startTimer];
+    //[self startTimer];
 }
 
-- (IBAction)bookNow:(id)sender {
-    
-    //if ([viewState isEqualToString:@"PaymentError"] || [viewState isEqualToString:@"ConnectionError"]) {
-    //     [self.timer invalidate];
-    //     [self showError:@"Payment error" message:@"Please try again"];
-    // } else {
-    [self.webView stringByEvaluatingJavaScriptFromString:@"validateAndBook()"];
-    // }
+- (void)termsAndConditionsChecked:(BOOL)check
+{
+    _termsChecked = check;
+}
+
+- (void)confirmPayment
+{
+    if (self.termsChecked) {
+        [self.webView stringByEvaluatingJavaScriptFromString:@"validateAndBook()"];
+    } else {
+        [self showError:@"Sorry" message:@"You must check terms and conditions"];
+    }
 }
 
 @end

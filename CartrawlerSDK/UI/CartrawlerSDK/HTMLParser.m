@@ -19,9 +19,10 @@
 {
     
     if ([text isKindOfClass:[NSString class]]) {
-        NSString *string = [text stringByAppendingString:[NSString stringWithFormat:@"<style>body{font-family: '%@'; font-size:%fpx;} b{color: %@} </style>",
+        NSString *string = [text stringByAppendingString:[NSString stringWithFormat:@"<style>body{font-family: '%@'; font-size:%fpx;} b{color: %@} a{color: %@}</style>",
                                                           font,
                                                           pointSize,
+                                                          color,
                                                           color]];
         
         NSAttributedString *attributedText = [[NSAttributedString alloc] initWithData:[string dataUsingEncoding:NSUnicodeStringEncoding]

@@ -8,11 +8,15 @@
 
 #import "TermsViewController.h"
 #import "TermsDetailViewController.h"
+#import "CTSDKSettings.h"
+#import "CarRentalSearch.h"
 
 @interface TermsViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) CTTermsAndConditions *data;
+@property (strong, nonatomic) CartrawlerAPI *api;
+@property (strong, nonatomic) CarRentalSearch *search;
 
 @end
 
@@ -26,11 +30,32 @@
 
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    __weak typeof (self) weakSelf = self;
+    
+    [self.api requestTermsAndConditions:self.search.pickupDate
+                              returnDateTime:self.search.dropoffDate
+                          pickupLocationCode:self.search.pickupLocation.code
+                          returnLocationCode:self.search.dropoffLocation.code
+                                 homeCountry:[CTSDKSettings instance].homeCountryCode
+                                         car:self.search.selectedVehicle.vehicle
+                                  completion:^(CTTermsAndConditions *response, CTErrorResponse *error) {
+                                      if (error) {
+
+                                      } else {
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              weakSelf.data = response;
+                                              [weakSelf.tableView reloadData];
+                                          });
+                                      }
+                                  }];
+    
 }
 
-- (void)setData:(CTTermsAndConditions *)data
+- (void)setData:(CarRentalSearch *)data cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI;
 {
-    _data = data;
+    _search = data;
+    _api = cartrawlerAPI;
 }
 
 - (IBAction)close:(id)sender {

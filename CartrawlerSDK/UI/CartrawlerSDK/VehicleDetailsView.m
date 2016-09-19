@@ -136,25 +136,12 @@
 
 - (IBAction)termsAndCondTapped:(id)sender
 {
-    [self.api requestTermsAndConditions:self.pickupDate
-                    returnDateTime:self.returnDate
-                pickupLocationCode:self.pickupCode
-                returnLocationCode:self.returnCode
-                       homeCountry:self.homeCountry
-                               car:self.search.selectedVehicle.vehicle
-                        completion:^(CTTermsAndConditions *response, CTErrorResponse *error) {
-                            if (error) {
-                                
-                            } else {
-                                UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"TermsViewControllerNav"];
-                                TermsViewController *vc = (TermsViewController *)nav.topViewController;
-                                [vc setData:response];
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    [self presentViewController:nav animated:YES completion:nil];
-                                });
-                            }
-                        }];
-
+    UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"TermsViewControllerNav"];
+    TermsViewController *vc = (TermsViewController *)nav.topViewController;
+    [vc setData:self.search cartrawlerAPI:self.api];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:nav animated:YES completion:nil];
+    });
 }
 
 #pragma mark Included Collection View

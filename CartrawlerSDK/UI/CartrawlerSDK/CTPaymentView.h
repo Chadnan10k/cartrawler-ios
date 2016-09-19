@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "GroundTransportSearch.h"
 #import "CarRentalSearch.h"
+#import <CartrawlerAPI/CTGroundBooking.h>
 
 @interface CTPaymentView : UIView
 
-typedef void (^PaymentCompletion)();
+typedef void (^PaymentCompletion)(id booking);
 
 @property (nonatomic, strong) PaymentCompletion completion;
 
@@ -20,5 +21,10 @@ typedef void (^PaymentCompletion)();
 
 - (void)setForGTPayment:(GroundTransportSearch *)search;
 - (void)setForCarRentalPayment:(CarRentalSearch *)search;
+
+//Controls
+
+- (void)confirmPayment;
+- (void)termsAndConditionsChecked:(BOOL)check;
 
 @end

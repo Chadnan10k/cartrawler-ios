@@ -73,6 +73,12 @@
     return self;
 }
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.imageView.alpha = self.enabled;
+}
+
 + (void)forceLinkerLoad_
 {
     
@@ -99,103 +105,5 @@
     }
 }
 
-//- (id)initEnabled:(BOOL)enabled containerView:(UIView *)containerView;
-//{
-//    self = [super init];
-//    
-//    self.checkEnabled = enabled;
-//    
-//    self.frame = CGRectZero;
-//    
-//    [containerView addSubview:self];
-//    self.translatesAutoresizingMaskIntoConstraints = false;
-//    
-//    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self
-//                                                                     attribute:NSLayoutAttributeTop
-//                                                                     relatedBy:NSLayoutRelationEqual
-//                                                                        toItem:containerView
-//                                                                     attribute:NSLayoutAttributeTop
-//                                                                    multiplier:1.0
-//                                                                      constant:0];
-//    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self
-//                                                                        attribute:NSLayoutAttributeBottom
-//                                                                        relatedBy:NSLayoutRelationEqual
-//                                                                           toItem:containerView
-//                                                                        attribute:NSLayoutAttributeBottom
-//                                                                       multiplier:1.0
-//                                                                         constant:0];
-//    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self
-//                                                                      attribute:NSLayoutAttributeLeft
-//                                                                      relatedBy:NSLayoutRelationEqual
-//                                                                         toItem:containerView
-//                                                                      attribute:NSLayoutAttributeLeft
-//                                                                     multiplier:1.0
-//                                                                       constant:0];
-//    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self
-//                                                                       attribute:NSLayoutAttributeRight
-//                                                                       relatedBy:NSLayoutRelationEqual
-//                                                                          toItem:containerView
-//                                                                       attribute:NSLayoutAttributeRight
-//                                                                      multiplier:1.0
-//                                                                        constant:0];
-//    [containerView addConstraints:@[topConstraint,
-//                           bottomConstraint,
-//                           leftConstraint,
-//                           rightConstraint]];
-//    
-//    [containerView addSubview: self];
-//    
-//    //Add imageView
-//    
-//    self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-//    NSBundle* bundle = [NSBundle bundleWithURL:[[NSBundle mainBundle]URLForResource:@"CartrawlerResources" withExtension:@"bundle"]];    
-//    UIImage* image =[UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil];
-//    
-//    (self.imageView).image = image;
-//    [self addSubview:self.imageView];
-//    self.imageView.translatesAutoresizingMaskIntoConstraints = false;
-//    (self.imageView).contentMode = UIViewContentModeScaleAspectFit;
-//    
-//    NSLayoutConstraint *imageViewTopConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
-//                                                                              attribute:NSLayoutAttributeTop
-//                                                                              relatedBy:NSLayoutRelationEqual
-//                                                                                 toItem:self
-//                                                                              attribute:NSLayoutAttributeTop
-//                                                                             multiplier:1.0
-//                                                                               constant:5];
-//    NSLayoutConstraint *imageViewBottomConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
-//                                                                                 attribute:NSLayoutAttributeBottom
-//                                                                                 relatedBy:NSLayoutRelationEqual
-//                                                                                    toItem:self
-//                                                                                 attribute:NSLayoutAttributeBottom
-//                                                                                multiplier:1.0
-//                                                                                  constant:-5];
-//    NSLayoutConstraint *imageViewLeftConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
-//                                                                               attribute:NSLayoutAttributeLeft
-//                                                                               relatedBy:NSLayoutRelationEqual
-//                                                                                  toItem:self
-//                                                                               attribute:NSLayoutAttributeLeft
-//                                                                              multiplier:1.0
-//                                                                                constant:5];
-//    NSLayoutConstraint *imageViewRightConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
-//                                                                                attribute:NSLayoutAttributeRight
-//                                                                                relatedBy:NSLayoutRelationEqual
-//                                                                                   toItem:self
-//                                                                                attribute:NSLayoutAttributeRight
-//                                                                               multiplier:1.0
-//                                                                                 constant:-5];
-//    [self addConstraints:@[imageViewTopConstraint,
-//                           imageViewBottomConstraint,
-//                           imageViewLeftConstraint,
-//                           imageViewRightConstraint]];
-//    
-//    containerView.layer.cornerRadius = 5;
-//    containerView.layer.masksToBounds = YES;
-//    
-//    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(boxTapped:)];
-//    [self addGestureRecognizer:gesture];
-//        
-//    return self;
-//}
 
 @end

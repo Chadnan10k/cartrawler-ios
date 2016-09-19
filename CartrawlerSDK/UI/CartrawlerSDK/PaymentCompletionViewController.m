@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet CTLabel *dropoffLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *supplierLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *supplierImage;
+@property (weak, nonatomic) IBOutlet CTLabel *bookingReferenceLabel;
 
 @end
 
@@ -90,6 +91,8 @@
     
     self.pickupLabel.attributedText = pickup;
     self.dropoffLabel.attributedText = dropoff;
+    
+    self.bookingReferenceLabel.text = [NSString stringWithFormat:@"Booking reference: %@", self.search.booking.confID];
 }
 
 - (void)didReceiveMemoryWarning {

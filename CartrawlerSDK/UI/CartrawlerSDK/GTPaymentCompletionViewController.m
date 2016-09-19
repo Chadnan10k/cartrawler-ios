@@ -47,10 +47,10 @@
     
     NSString *returnDate = self.groundSearch.dropoffLocation.dateTime ? [NSString stringWithFormat:@"\nReturn date: %@", [NSDateUtils stringFromDateWithFormat:self.groundSearch.dropoffLocation.dateTime format:@"dd/MM/yyyy hh:mm a"]] : @"";
     
-    NSString *locationDetails = [NSString stringWithFormat:@"Pickup: %@ \n\n%@ \n\nDropoff: %@\n%@",
+    NSString *locationDetails = [NSString stringWithFormat:@"Pickup: %@ \n\n%@ \n\nDropoff: %@\n%@ \nBooking reference: %@\n",
                                  self.groundSearch.pickupLocation.name,
                                  [NSDateUtils stringFromDateWithFormat:self.groundSearch.pickupLocation.dateTime format:@"dd/MM/yyyy hh:mm a"],
-                                 self.groundSearch.dropoffLocation.name, returnDate];
+                                 self.groundSearch.dropoffLocation.name, returnDate, self.groundSearch.booking.confirmationId];
     
     self.locationLabel.text = locationDetails;
     

@@ -33,6 +33,7 @@
 @property (nonatomic, strong) NSString *city;
 @property (nonatomic, strong) NSString *postcode;
 @property (nonatomic, strong) NSString *country;
+@property (nonatomic, strong) CTBooking *booking;
 
 @property (nonatomic, strong, readonly) NSString *concatinatedAddress;
 

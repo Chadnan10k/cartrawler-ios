@@ -90,7 +90,7 @@
 		451C8F111D7EF37700B9324D /* GTSelectionValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F0F1D7EF37700B9324D /* GTSelectionValidation.m */; };
 		451C8F141D7EF63D00B9324D /* GTPassengerDetailsValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F121D7EF63D00B9324D /* GTPassengerDetailsValidation.h */; };
 		451C8F151D7EF63D00B9324D /* GTPassengerDetailsValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F131D7EF63D00B9324D /* GTPassengerDetailsValidation.m */; };
-		451C8F181D7EFF3400B9324D /* CTPaymentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F161D7EFF3400B9324D /* CTPaymentView.h */; };
+		451C8F181D7EFF3400B9324D /* CTPaymentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F161D7EFF3400B9324D /* CTPaymentView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		451C8F191D7EFF3400B9324D /* CTPaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F171D7EFF3400B9324D /* CTPaymentView.m */; };
 		451FE5AB1D6EF248004D85D1 /* GenericValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451FE5A91D6EF248004D85D1 /* GenericValidation.h */; };
 		451FE5AC1D6EF248004D85D1 /* GenericValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451FE5AA1D6EF248004D85D1 /* GenericValidation.m */; };
@@ -196,6 +196,10 @@
 		45AC54721D130A1600805268 /* SearchDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E9429B1D13012400ACF604 /* SearchDetailsViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC54731D130A1600805268 /* VehicleTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942C61D13028600ACF604 /* VehicleTableViewCell.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC54761D130A1600805268 /* CTVehicleSelectionViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942951D1300ED00ACF604 /* CTVehicleSelectionViewModel.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		45B264F71D902C8B000005F2 /* GTBookingCompletionValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B264F51D902C8B000005F2 /* GTBookingCompletionValidation.h */; };
+		45B264F81D902C8B000005F2 /* GTBookingCompletionValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B264F61D902C8B000005F2 /* GTBookingCompletionValidation.m */; };
+		45B264FB1D902C9C000005F2 /* BookingCompletionValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B264F91D902C9C000005F2 /* BookingCompletionValidation.h */; };
+		45B264FC1D902C9C000005F2 /* BookingCompletionValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B264FA1D902C9C000005F2 /* BookingCompletionValidation.m */; };
 		45C1ECF51D5103150059EF89 /* CTFilterTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C1ECF31D5103150059EF89 /* CTFilterTableView.h */; };
 		45C1ECF61D5103150059EF89 /* CTFilterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C1ECF41D5103150059EF89 /* CTFilterTableView.m */; };
 		45C488CB1D479B020044612C /* OptionalExtrasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C488C91D479B020044612C /* OptionalExtrasView.h */; };
@@ -440,6 +444,10 @@
 		458954901D58C1B00006D34F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		458954911D58C1B00006D34F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		45AC547B1D13E47F00805268 /* StepOne.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepOne.storyboard; sourceTree = "<group>"; };
+		45B264F51D902C8B000005F2 /* GTBookingCompletionValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTBookingCompletionValidation.h; sourceTree = "<group>"; };
+		45B264F61D902C8B000005F2 /* GTBookingCompletionValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTBookingCompletionValidation.m; sourceTree = "<group>"; };
+		45B264F91D902C9C000005F2 /* BookingCompletionValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingCompletionValidation.h; sourceTree = "<group>"; };
+		45B264FA1D902C9C000005F2 /* BookingCompletionValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingCompletionValidation.m; sourceTree = "<group>"; };
 		45C1ECF31D5103150059EF89 /* CTFilterTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterTableView.h; sourceTree = "<group>"; };
 		45C1ECF41D5103150059EF89 /* CTFilterTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterTableView.m; sourceTree = "<group>"; };
 		45C488C91D479B020044612C /* OptionalExtrasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalExtrasView.h; sourceTree = "<group>"; };
@@ -693,6 +701,8 @@
 				451FE5B01D6EF286004D85D1 /* PaymentValidation.m */,
 				451FE5B11D6EF286004D85D1 /* SearchValidation.h */,
 				451FE5B21D6EF286004D85D1 /* SearchValidation.m */,
+				45B264F91D902C9C000005F2 /* BookingCompletionValidation.h */,
+				45B264FA1D902C9C000005F2 /* BookingCompletionValidation.m */,
 			);
 			name = "Car Rental";
 			sourceTree = "<group>";
@@ -708,6 +718,8 @@
 				451C8F131D7EF63D00B9324D /* GTPassengerDetailsValidation.m */,
 				458773611D7F1284000CB1E5 /* GTGenericValidation.h */,
 				458773621D7F1284000CB1E5 /* GTGenericValidation.m */,
+				45B264F51D902C8B000005F2 /* GTBookingCompletionValidation.h */,
+				45B264F61D902C8B000005F2 /* GTBookingCompletionValidation.m */,
 			);
 			name = "Ground Transport";
 			sourceTree = "<group>";
@@ -871,8 +883,6 @@
 				458773671D7F1478000CB1E5 /* GTPaymentViewController.m */,
 				4587736A1D7F1517000CB1E5 /* GTPaymentCompletionViewController.h */,
 				4587736B1D7F1517000CB1E5 /* GTPaymentCompletionViewController.m */,
-				4587736E1D806064000CB1E5 /* GTPaymentRequest.h */,
-				4587736F1D806064000CB1E5 /* GTPaymentRequest.m */,
 			);
 			name = Payment;
 			sourceTree = "<group>";
@@ -884,6 +894,20 @@
 				45EE26DA1D37924000A1FB51 /* GroundTransport.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		45B264F41D8FDE28000005F2 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				4587736E1D806064000CB1E5 /* GTPaymentRequest.h */,
+				4587736F1D806064000CB1E5 /* GTPaymentRequest.m */,
+				4588E3161D538FB1008F4267 /* PaymentRequest.h */,
+				4588E3171D538FB1008F4267 /* PaymentRequest.m */,
+				451C8F161D7EFF3400B9324D /* CTPaymentView.h */,
+				451C8F171D7EFF3400B9324D /* CTPaymentView.m */,
+				4588E3121D538803008F4267 /* CTPCI.html */,
+			);
+			name = Payment;
 			sourceTree = "<group>";
 		};
 		45C1ECF21D5102FF0059EF89 /* UITableView */ = {
@@ -956,6 +980,7 @@
 		45E942451D12FF0F00ACF604 /* CartrawlerSDK */ = {
 			isa = PBXGroup;
 			children = (
+				45B264F41D8FDE28000005F2 /* Payment */,
 				45819FAC1D351CDF001AE0F5 /* Localization */,
 				4511E5261D17EE4D000ED6B0 /* Settings */,
 				45D866DD1D14340900D19B74 /* Resources */,
@@ -1217,15 +1242,10 @@
 		45F473621D366D2900DF548B /* Payment (Step Seven) */ = {
 			isa = PBXGroup;
 			children = (
-				4588E3121D538803008F4267 /* CTPCI.html */,
 				45F473631D366D6A00DF548B /* PaymentViewController.h */,
 				45F473641D366D6A00DF548B /* PaymentViewController.m */,
-				4588E3161D538FB1008F4267 /* PaymentRequest.h */,
-				4588E3171D538FB1008F4267 /* PaymentRequest.m */,
 				453FD4411D588076002E4CC6 /* PaymentCompletionViewController.h */,
 				453FD4421D588076002E4CC6 /* PaymentCompletionViewController.m */,
-				451C8F161D7EFF3400B9324D /* CTPaymentView.h */,
-				451C8F171D7EFF3400B9324D /* CTPaymentView.m */,
 			);
 			name = "Payment (Step Seven)";
 			sourceTree = "<group>";
@@ -1262,15 +1282,17 @@
 				451C8EFE1D7ECCE900B9324D /* GroundTransportSearch.h in Headers */,
 				450F9D491D3D00C8002C6F6B /* SettingsViewController.h in Headers */,
 				451C8F081D7ED78100B9324D /* CTValidation.h in Headers */,
+				451C8F181D7EFF3400B9324D /* CTPaymentView.h in Headers */,
 				4550618B1D59CD91004EAC43 /* LocalisedStrings.h in Headers */,
 				45CFC7DD1D2CF822006E6F83 /* ExtrasViewController.h in Headers */,
+				45B264FB1D902C9C000005F2 /* BookingCompletionValidation.h in Headers */,
 				457CF88D1D785ADC00BC55E2 /* GooglePlaceService.h in Headers */,
 				45EC250F1D49132B00A3C09D /* CTViewController.h in Headers */,
 				453EE5201D53381300D92E59 /* CarRentalSearch.h in Headers */,
 				450F9D351D3929E5002C6F6B /* SupplierRatingsViewController.h in Headers */,
 				4511E5241D17DFA4000ED6B0 /* CTAppearance.h in Headers */,
 				454D20EF1D549AD10050CA9E /* NSDateUtils.h in Headers */,
-				451C8F181D7EFF3400B9324D /* CTPaymentView.h in Headers */,
+				45B264F71D902C8B000005F2 /* GTBookingCompletionValidation.h in Headers */,
 				458773681D7F1478000CB1E5 /* GTPaymentViewController.h in Headers */,
 				45E942F11D13060E00ACF604 /* CartrawlerSDK.h in Headers */,
 				4511E5321D17F6C8000ED6B0 /* CTNavigationBar.h in Headers */,
@@ -1610,6 +1632,7 @@
 				456979291D2C03E7006A321E /* TabButton.m in Sources */,
 				451FE5AC1D6EF248004D85D1 /* GenericValidation.m in Sources */,
 				458954931D58C1B00006D34F /* Reachability.m in Sources */,
+				45B264FC1D902C9C000005F2 /* BookingCompletionValidation.m in Sources */,
 				450F9D361D3929E5002C6F6B /* SupplierRatingsViewController.m in Sources */,
 				45F4735D1D36451F00DF548B /* AddressDetailsViewController.m in Sources */,
 				45C48D501D5226CA005C9377 /* CTFilterFactory.m in Sources */,
@@ -1645,6 +1668,7 @@
 				45E84CD01D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m in Sources */,
 				451C8F111D7EF37700B9324D /* GTSelectionValidation.m in Sources */,
 				4546D40F1D8301700081A2F9 /* FilterCollectionViewDataSource.m in Sources */,
+				45B264F81D902C8B000005F2 /* GTBookingCompletionValidation.m in Sources */,
 				45EC25101D49132B00A3C09D /* CTViewController.m in Sources */,
 				45EE26E01D37A79900A1FB51 /* GroundTransportViewController.m in Sources */,
 				451FE5B81D6EF286004D85D1 /* SearchValidation.m in Sources */,

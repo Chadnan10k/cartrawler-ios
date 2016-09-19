@@ -34,6 +34,7 @@
 @property (nonatomic, strong) NSString *country;
 @property (nonatomic, strong) NSString *countryCode;
 @property (nonatomic, strong) NSString *specialInstructions;
+@property (nonatomic, strong) CTGroundBooking *booking;
 
 + (instancetype)instance;
 

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTDesignableView.h"
 
 IB_DESIGNABLE
-@interface CTCheckbox : UIView
+@interface CTCheckbox : CTDesignableView
 
 typedef void (^SelectionCompletion)(BOOL selection);
 

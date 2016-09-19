@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTTermsAndConditions.h>
+#import "CarRentalSearch.h"
+#import <CartrawlerAPI/CartrawlerAPI.h>
 
 @interface TermsViewController : UIViewController
 
 + (void)forceLinkerLoad_;
 
-- (void)setData:(CTTermsAndConditions *)data;
+- (void)setData:(CarRentalSearch *)data cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI;
 
 @end
