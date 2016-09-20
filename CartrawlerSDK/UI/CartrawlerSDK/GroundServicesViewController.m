@@ -63,7 +63,11 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 250;
+    self.tableView.estimatedRowHeight = 500;
+    
+    [self.tableView setNeedsLayout];
+    [self.tableView layoutIfNeeded];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -120,6 +124,7 @@
     } else {
         GTShuttleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"shuttle"];
         [cell setShuttle:self.availability.shuttles[indexPath.row]];
+        [cell layoutIfNeeded];
         return cell;
     }
 }

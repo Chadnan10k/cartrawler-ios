@@ -21,7 +21,7 @@ static CGFloat const ITEM_SPACING = 10.0f;
     NSArray *attributesForElementsInRect = [super layoutAttributesForElementsInRect:contentRect];
     NSMutableArray *newAttributesForElementsInRect = [[NSMutableArray alloc] initWithCapacity:attributesForElementsInRect.count];
     
-    CGFloat leftMargin = self.sectionInset.left; //initalized to silence compiler, and actaully safer, but not planning to use.
+    CGFloat leftMargin = self.sectionInset.left; 
     NSMutableDictionary *leftMarginDictionary = [[NSMutableDictionary alloc] init];
     
     for (UICollectionViewLayoutAttributes *attributes in attributesForElementsInRect) {

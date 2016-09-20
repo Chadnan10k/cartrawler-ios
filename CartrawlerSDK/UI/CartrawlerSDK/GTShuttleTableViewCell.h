@@ -17,9 +17,6 @@
 - (void)setShuttle:(CTGroundShuttle *)shuttle;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *inclusionsCollectionView;
-@property (nonatomic, strong) InclusionCollectionViewDataSource *inclusionDataSource;
-@property (nonatomic, strong) NSLayoutConstraint *inclusionHeightConstraint;
-@property (weak, nonatomic) IBOutlet UITableView *inclusionsTableView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *inclusionHeightConstraint;
 
 @end
