@@ -28,7 +28,13 @@
                 _errorMessage = firstError[@"@ShortText"];
 
             } else {
-                _errorMessage = NSLocalizedString(@"Bad Request", @"Bad Request");
+                
+                if (dict[@"Errors"][@"Error"][@"#text"]) {
+                    _errorMessage = dict[@"Errors"][@"Error"][@"#text"];
+                    _errorMessage = [self.errorMessage stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+                } else {
+                    _errorMessage = NSLocalizedString(@"Bad Request", @"Bad Request");
+                }
             }
         } else {
             _errorMessage = NSLocalizedString(@"Bad Request", @"Bad Request");

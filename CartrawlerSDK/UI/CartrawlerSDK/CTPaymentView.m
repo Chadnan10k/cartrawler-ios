@@ -36,6 +36,9 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 @property (nonatomic) BOOL termsChecked;
 @property (nonatomic) CTPaymentType paymentType;
 
+@property (nonatomic, copy) GroundTransportSearch *groundSearch;
+@property (nonatomic, copy) CarRentalSearch *carRentalSearch;
+
 @end
 
 @implementation CTPaymentView
@@ -146,7 +149,8 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 
 - (void)setForGTPayment:(GroundTransportSearch *)search
 {
-    
+    _groundSearch = search;
+    _runLoop = NO;
     _paymentType = CTPaymentTypeGroundTransport;
     
     NSString *flightNo = [[search.flightNumber componentsSeparatedByCharactersInSet:
@@ -212,16 +216,20 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     } else {
         urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&hideButton=true&mobile=true&msg=%@", escapedString];
     }
-
-    self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"[URLPLACEHOLDER]" withString:urlStr];
+    
+    NSString *htmlFile = [self.bundle pathForResource:@"CTPCI" ofType:@"html"];
+    _htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    _htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"[URLPLACEHOLDER]" withString:urlStr];
     
     [self.webView loadHTMLString:self.htmlString baseURL: self.bundle.bundleURL];
     
     [self setupWebView];
+    
 }
 
 - (void)setForCarRentalPayment:(CarRentalSearch *)search
 {
+    _carRentalSearch = search;
     _runLoop = NO;
     _paymentType = CTPaymentTypeCarRental;
 
@@ -260,13 +268,13 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
         urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_VehResRQ&hideButton=true&mobile=true&msg=%@", escapedString];
     }
 
+    NSString *htmlFile = [self.bundle pathForResource:@"CTPCI" ofType:@"html"];
+    _htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
     self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"[URLPLACEHOLDER]" withString:urlStr];
     
     [self.webView loadHTMLString:self.htmlString baseURL: self.bundle.bundleURL];
 
     [self setupWebView];
-    
-    NSLog(@"VEHREF: %@, %@", search.selectedVehicle.vehicle.refID, self.htmlString);
 }
 
 - (void)setupWebView
@@ -344,6 +352,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
         _jsonResponse = [self.webView stringByEvaluatingJavaScriptFromString:@"getJsonResponse()"];
         
         if (![self.jsonResponse isEqualToString:@""]) {
+            
             NSError *jsonError;
             NSData *objectData = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
@@ -351,30 +360,41 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                                                                    error:&jsonError];
             
             if ([self.jsonResponse containsString:@"Errors"]) {
+                
                 NSLog(@"%@", self.jsonResponse);
                 CTErrorResponse *error = [[CTErrorResponse alloc] initWithDictionary:json];
                 [self showError:@"Error" message:error.errorMessage];
                 _runLoop = NO;
                 [self.webView stringByEvaluatingJavaScriptFromString:@"resetResponses()"];
+                
             } else {
                 _runLoop = NO;
+                
                 if (self.completion) {
+                    
                     [self.webView stringByEvaluatingJavaScriptFromString:@"resetResponses()"];
+                    
                     switch (self.paymentType) {
+                            
                         case CTPaymentTypeCarRental: {
                             CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:json];
-                            self.completion(booking);
+                            self.carRentalSearch.booking = booking;
+                            self.completion();
                         }
+                            
                             break;
                         case CTPaymentTypeGroundTransport: {
                             CTGroundBooking *booking = [[CTGroundBooking alloc] initWithDictionary:json];
-                            self.completion(booking);
+                            self.groundSearch.booking = booking;
+                            self.completion();
                         }
+                            
                             break;
                         default:
                             break;
                     }
                 }
+                
             }
         }
     }
@@ -400,6 +420,9 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 
 - (void)confirmPayment
 {
+    if (!self.runLoop) {
+        [self setupWebView];
+    }
     if (self.termsChecked) {
         [self.webView stringByEvaluatingJavaScriptFromString:@"validateAndBook()"];
     } else {

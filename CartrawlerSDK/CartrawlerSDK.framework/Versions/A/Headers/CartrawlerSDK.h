@@ -136,7 +136,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)overrideDriverDetialsViewController:(CTViewController *)viewController;
 
 /**
- *  Override the success / failure view for payment
+ *  Override the success view for payment
  *
  *  @param viewController A CTViewController subclass with its viewType set to ViewTypeGeneric
  */

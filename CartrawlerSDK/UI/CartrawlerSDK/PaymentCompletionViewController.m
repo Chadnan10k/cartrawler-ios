@@ -66,7 +66,7 @@
                                                                                      [UIFont fontWithName:[CTAppearance instance].boldFontName size:16]}];
     
     NSAttributedString *pickupDate = [[NSAttributedString alloc] initWithString:[NSDateUtils stringFromDateWithFormat:[CarRentalSearch instance].pickupDate
-                                                                                                               format:@"EEE, MMM YYYY, hh:mm a"]
+                                                                                                               format:@"dd, MMM YYYY, hh:mm a"]
                                                                     attributes:@{NSFontAttributeName:
                                                                                      [UIFont fontWithName:[CTAppearance instance].fontName size:16]}];
     
@@ -80,7 +80,7 @@
                                                                                      [UIFont fontWithName:[CTAppearance instance].boldFontName size:16]}];
     
     NSAttributedString *dropoffDate = [[NSAttributedString alloc] initWithString:[NSDateUtils stringFromDateWithFormat:[CarRentalSearch instance].dropoffDate
-                                                                                                               format:@"EEE, MMM YYYY, hh:mm a"]
+                                                                                                               format:@"dd, MMM YYYY, hh:mm a"]
                                                                      attributes:@{NSFontAttributeName:
                                                                                       [UIFont fontWithName:[CTAppearance instance].fontName size:16]}];
     

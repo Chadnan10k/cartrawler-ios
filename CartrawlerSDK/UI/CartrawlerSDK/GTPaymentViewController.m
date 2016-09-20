@@ -33,7 +33,6 @@
 {
     [super viewWillAppear:animated];
     [self.paymentView setForGTPayment:self.groundSearch];
-    
 }
 
 - (void)viewDidLoad {
@@ -44,9 +43,8 @@
     
     __weak typeof (self) weakSelf = self;
     
-    self.paymentView.completion = ^(CTGroundBooking *booking){
+    self.paymentView.completion = ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            weakSelf.groundSearch.booking = booking;
             [weakSelf pushToDestination];
         });
     };

@@ -35,7 +35,7 @@
 
     if (self.keyboardType == UIKeyboardTypeNumberPad || self.keyboardType == UIKeyboardTypePhonePad) {
 
-        UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+        UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 0)];
         [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:20.0]} forState:UIControlStateNormal];
         numberToolbar.barStyle = UIBarStyleDefault;
         numberToolbar.items = @[[[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneTapped)],

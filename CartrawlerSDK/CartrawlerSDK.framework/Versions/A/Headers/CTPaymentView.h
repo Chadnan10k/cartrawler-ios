@@ -13,7 +13,7 @@
 
 @interface CTPaymentView : UIView
 
-typedef void (^PaymentCompletion)(id booking);
+typedef void (^PaymentCompletion)();
 
 @property (nonatomic, strong) PaymentCompletion completion;
 

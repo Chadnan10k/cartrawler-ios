@@ -101,6 +101,7 @@
         _activeView = self.pickupView;
         LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
         locSearchVC.enableGroundTransportLocations = YES;
+        locSearchVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
         [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
         locSearchVC.selectedLocation = ^(CTMatchedLocation *location){
             [weakSelf.pickupView setTextFieldText:location.name];
@@ -125,6 +126,7 @@
         _activeView = self.pickupView;
         LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
         locSearchVC.enableGroundTransportLocations = YES;
+        locSearchVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
         [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
         locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
             [weakSelf.dropoffView setTextFieldText:location.name];
@@ -172,6 +174,7 @@
     self.calendarView.viewTapped = ^{
         _activeView = self.calendarView;
         CTCalendarViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];
+        vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
         vc.singleDateSelection = YES;
         vc.delegate = weakSelf;
         [weakSelf presentViewController:vc animated:YES completion:nil];
@@ -185,6 +188,7 @@
         }
         _activeView = self.dropoffCalendarView;
         CTCalendarViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];
+        vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
         vc.mininumDate = weakSelf.pickupDate;
         vc.singleDateSelection = YES;
         vc.delegate = weakSelf;
@@ -221,7 +225,31 @@
             [weakSelf displayError:errorMessage];
         }
     };
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
+    if (!self.groundSearch.pickupLocation) {
+        [self.pickupView setTextFieldText:@""];
+    }
+    
+    if (!self.groundSearch.dropoffLocation) {
+        [self.dropoffView setTextFieldText:@""];
+    }
+    
+    if (!self.groundSearch.pickupLocation.dateTime) {
+        [self.calendarView setTextFieldText:@""];
+    }
+    
+    if (!self.groundSearch.dropoffLocation.dateTime) {
+        [self.dropoffCalendarView setTextFieldText:@""];
+    }
+    
+    if (!self.groundSearch.adultQty) {
+        self.passengersTextField.text = @"";
+    }
 }
 
 #pragma mark Calendar delegate
@@ -271,7 +299,7 @@
     CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     CGRect viewFrame = self.scrollView.frame;
-    viewFrame.size.height += (keyboardSize.height + 45);
+    viewFrame.size.height += (keyboardSize.height);
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
@@ -286,7 +314,7 @@
     CGSize keyboardSize = [userInfo [UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     CGRect viewFrame = self.scrollView.frame;
     
-    viewFrame.size.height -= (keyboardSize.height + 45);
+    viewFrame.size.height -= (keyboardSize.height);
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
@@ -297,6 +325,11 @@
 - (IBAction)search:(id)sender
 {
     UIButton *b = (UIButton *)sender;
+    
+    if (self.sameLocationCheckBox.enabled && (self.dropoffDate == nil)) {
+        [self.dropoffCalendarView shakeAnimation];
+        [self.dropoffTimeView shakeAnimation];
+    }
    
     CTGroundLocation *pickupLoc = [[CTGroundLocation alloc] initWithLatitude:self.pickupLat
                                                                    longitude:self.pickupLong

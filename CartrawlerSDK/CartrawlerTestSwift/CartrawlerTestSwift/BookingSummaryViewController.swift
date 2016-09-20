@@ -19,7 +19,12 @@ class BookingSummaryViewController: CTViewController {
 
         vehicleNameLabel.text = search.selectedVehicle.vehicle.makeModelName
         supplierNameLabel.text = search.selectedVehicle.vendor.name
-                
+        
+        //called when pushToDestination() fails so you can display an error to user
+        dataValidationCompletion = { success, errorMessage in
+            
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

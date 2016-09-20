@@ -46,7 +46,8 @@
     self.emailTextField.delegate = self;
     self.phoneTextField.delegate = self;
     self.flightNoTextField.delegate = self;
-    
+    self.instructionsTextField.delegate = self;
+
     UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
     [keyboardDoneButtonView sizeToFit];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"

@@ -350,11 +350,11 @@
     CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
 
     CGRect viewFrame = self.scrollView.frame;
-    viewFrame.size.height += (keyboardSize.height + 45);
+    viewFrame.size.height += (keyboardSize.height);
 
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
-    (self.scrollView).frame = viewFrame;
+    self.scrollView.frame = viewFrame;
     [UIView commitAnimations];
 }
 
@@ -365,11 +365,11 @@
     CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     CGRect viewFrame = self.scrollView.frame;
 
-    viewFrame.size.height -= (keyboardSize.height + 45);
+    viewFrame.size.height -= (keyboardSize.height);
 
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationBeginsFromCurrentState:YES];
-    (self.scrollView).frame = viewFrame;
+    self.scrollView.frame = viewFrame;
     [UIView commitAnimations];
 }
 

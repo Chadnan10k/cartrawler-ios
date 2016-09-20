@@ -140,7 +140,6 @@
 		454D20F01D549AD10050CA9E /* NSDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D20EE1D549AD10050CA9E /* NSDateUtils.m */; };
 		4550618B1D59CD91004EAC43 /* LocalisedStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 455061891D59CD91004EAC43 /* LocalisedStrings.h */; };
 		4550618C1D59CD91004EAC43 /* LocalisedStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4550618A1D59CD91004EAC43 /* LocalisedStrings.m */; };
-		455685701D79B87A000AA1A0 /* MockGTRS.json in Resources */ = {isa = PBXBuildFile; fileRef = 4556856F1D79B87A000AA1A0 /* MockGTRS.json */; };
 		4557FE421D3636400026F038 /* CarRentalSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4557FE401D3636400026F038 /* CarRentalSearch.m */; };
 		455914B21D782281008AFA51 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455914B11D782281008AFA51 /* CartrawlerAPI.framework */; };
 		45645D8B1D2D4A310075A3D2 /* HTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645D891D2D4A310075A3D2 /* HTMLParser.h */; };
@@ -207,7 +206,6 @@
 		45C488D01D47AF4E0044612C /* OptionalExtraTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C488CD1D479B260044612C /* OptionalExtraTableViewCell.xib */; };
 		45C48D4F1D5226CA005C9377 /* CTFilterFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C48D4D1D5226CA005C9377 /* CTFilterFactory.h */; };
 		45C48D501D5226CA005C9377 /* CTFilterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C48D4E1D5226CA005C9377 /* CTFilterFactory.m */; };
-		45C48D521D52542B005C9377 /* samplePayment.json in Resources */ = {isa = PBXBuildFile; fileRef = 45C48D511D525309005C9377 /* samplePayment.json */; };
 		45CFC7DD1D2CF822006E6F83 /* ExtrasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFC7DB1D2CF822006E6F83 /* ExtrasViewController.h */; };
 		45CFC7DE1D2CF822006E6F83 /* ExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFC7DC1D2CF822006E6F83 /* ExtrasViewController.m */; };
 		45CFC7DF1D2CF95C006E6F83 /* StepFour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45CFC7D91D2CF4D9006E6F83 /* StepFour.storyboard */; };
@@ -409,7 +407,6 @@
 		454D20EE1D549AD10050CA9E /* NSDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateUtils.m; sourceTree = "<group>"; };
 		455061891D59CD91004EAC43 /* LocalisedStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalisedStrings.h; sourceTree = "<group>"; };
 		4550618A1D59CD91004EAC43 /* LocalisedStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalisedStrings.m; sourceTree = "<group>"; };
-		4556856F1D79B87A000AA1A0 /* MockGTRS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockGTRS.json; sourceTree = "<group>"; };
 		4557FE3F1D3636400026F038 /* CarRentalSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarRentalSearch.h; sourceTree = "<group>"; };
 		4557FE401D3636400026F038 /* CarRentalSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarRentalSearch.m; sourceTree = "<group>"; };
 		455914B11D782281008AFA51 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerAPI.framework; path = ../CartrawlerAPI.framework; sourceTree = "<group>"; };
@@ -455,7 +452,6 @@
 		45C488CD1D479B260044612C /* OptionalExtraTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionalExtraTableViewCell.xib; sourceTree = "<group>"; };
 		45C48D4D1D5226CA005C9377 /* CTFilterFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterFactory.h; sourceTree = "<group>"; };
 		45C48D4E1D5226CA005C9377 /* CTFilterFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterFactory.m; sourceTree = "<group>"; };
-		45C48D511D525309005C9377 /* samplePayment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = samplePayment.json; path = CartrawlerSDK/samplePayment.json; sourceTree = SOURCE_ROOT; };
 		45CFC7D91D2CF4D9006E6F83 /* StepFour.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepFour.storyboard; sourceTree = "<group>"; };
 		45CFC7DB1D2CF822006E6F83 /* ExtrasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtrasViewController.h; sourceTree = "<group>"; };
 		45CFC7DC1D2CF822006E6F83 /* ExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtrasViewController.m; sourceTree = "<group>"; };
@@ -568,7 +564,6 @@
 			children = (
 				45EE26DD1D37A79900A1FB51 /* GroundTransportViewController.h */,
 				45EE26DE1D37A79900A1FB51 /* GroundTransportViewController.m */,
-				4556856F1D79B87A000AA1A0 /* MockGTRS.json */,
 			);
 			name = "Step One";
 			sourceTree = "<group>";
@@ -933,7 +928,6 @@
 			isa = PBXGroup;
 			children = (
 				4538D2541D14436600C723E5 /* Info.plist */,
-				45C48D511D525309005C9377 /* samplePayment.json */,
 			);
 			name = CartrawlerResources;
 			path = CartrawlerBundle;
@@ -1477,7 +1471,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				457CF8891D78425900BC55E2 /* GroundTransport.storyboard in Resources */,
-				45C48D521D52542B005C9377 /* samplePayment.json in Resources */,
 				45F473611D36640F00DF548B /* Payment.storyboard in Resources */,
 				45F4735F1D36476900DF548B /* StepSix.storyboard in Resources */,
 				450F9D3D1D3CE8D5002C6F6B /* CTCurrency.csv in Resources */,
@@ -1485,7 +1478,6 @@
 				454AD7BE1D2A7089005C6CFF /* StepThree.storyboard in Resources */,
 				454AD7931D26C985005C6CFF /* StepTwo.storyboard in Resources */,
 				450F9D4C1D3D14FF002C6F6B /* CTLanguages.csv in Resources */,
-				455685701D79B87A000AA1A0 /* MockGTRS.json in Resources */,
 				4538D2551D14436600C723E5 /* Info.plist in Resources */,
 				450F9D3E1D3CE8D5002C6F6B /* CTISOCountries.csv in Resources */,
 				4588E3131D538803008F4267 /* CTPCI.html in Resources */,

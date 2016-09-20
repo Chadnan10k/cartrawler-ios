@@ -22,7 +22,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"68622" languageCode:@"EN" isDebug:YES];
     
-    [CTAppearance instance].buttonColor = [UIColor blackColor];
+    //[CTAppearance instance].buttonColor = [UIColor blackColor];
     
 
 }

@@ -49,9 +49,8 @@
     
     __weak typeof (self) weakSelf = self;
     
-    self.paymentView.completion = ^(CTBooking *booking){
+    self.paymentView.completion = ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            weakSelf.search.booking = booking;
             [weakSelf pushToDestination];
         });
     };
@@ -61,7 +60,7 @@
     
     NSString *link1 = @"<a href='www.cartrawler.com'><b>Rental conditions</b></a>";
     
-    NSString *termsStr = [NSString stringWithFormat:@"I agree to the %@ <style>body { text-align: center; }</style>", link1];
+    NSString *termsStr = [NSString stringWithFormat:@"I agree to the %@<style>body {text-align: left;}</style>", link1];
     
     //seems lazy but efficient
     self.termsLabel.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
@@ -69,7 +68,6 @@
                                                                      text:termsStr
                                                             boldFontColor:@"#000000"];
     self.termsLabel.delegate = self;
-    
 }
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
