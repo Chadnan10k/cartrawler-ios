@@ -76,6 +76,30 @@
             self.flightDetailsLabel.text = dropoff;
         }
     }
+    
+    if (!self.groundSearch.firstName) {
+        self.firstNameTextField.text = @"";
+    }
+    
+    if (!self.groundSearch.surname) {
+        self.lastNameTextField.text = @"";
+    }
+    
+    if (!self.groundSearch.email) {
+        self.emailTextField.text = @"";
+    }
+    
+    if (!self.groundSearch.phone) {
+        self.phoneTextField.text = @"";
+    }
+    
+    if (!self.groundSearch.flightNumber) {
+        self.flightNoTextField.text = @"";
+    }
+    
+    if (!self.groundSearch.specialInstructions) {
+        self.instructionsTextField.text = @"";
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

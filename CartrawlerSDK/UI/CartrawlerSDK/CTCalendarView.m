@@ -31,6 +31,11 @@
     
 }
 
+- (void)reset
+{
+    [self.logicController reset];
+}
+
 - (void)setupWithFrame:(CGRect)frame
 {
     // Do any additional setup after loading the view.

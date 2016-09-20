@@ -71,7 +71,6 @@
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
-    NSLog(@"Link tapped");
     return YES;
 }
 - (IBAction)back:(id)sender {

@@ -49,6 +49,11 @@
     return self;
 }
 
+- (void)reset
+{
+    [self deselect];
+}
+
 - (void)pushCellHeight:(NSNumber *)cellHeight forSection:(NSInteger)section
 {
     if (self.cellHeights == nil) {

@@ -72,12 +72,13 @@
     self.locSearchVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
     
     _calendar = [storyboard instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];
+    self.calendar.modalPresentationStyle = UIModalPresentationOverFullScreen;
     self.calendar.delegate = self;
     
     [self registerForKeyboardNotifications];
     
-    (self.search).driverAge = @30;
-    (self.search).passengerQty = @3;
+    self.search.driverAge = @30;
+    self.search.passengerQty = @3;
     
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *initialTimeComp = [gregorianCalendar components:NSHourCalendarUnit
@@ -235,14 +236,12 @@
         [self.calendarView setTextFieldText:@""];
     }
     
-//    if (!self.search.dropoffDate) {
-//        [self.calendarView setTextFieldText:@""];
-//    }
-    
     if (!self.search.driverAge) {
         self.ageContainer.text = @"";
         self.search.driverAge = @30;
     }
+    
+    [self.calendar reset];
 }
 
 #pragma mark Calendar delegate
@@ -313,8 +312,7 @@
         
         __weak typeof (self) weakSelf = self;
         
-        self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage)
-        {
+        self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage) {
             if (success) {
                 [weakSelf.activityView stopAnimating];
                 button.enabled = YES;
@@ -328,7 +326,6 @@
                 }
             }
         };
-        
         [self pushToDestination];
     }
 }

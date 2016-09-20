@@ -16,6 +16,14 @@
 
 @interface CTPaymentView() <UIWebViewDelegate, UIAlertViewDelegate, NSURLConnectionDataDelegate>
 
+typedef NS_ENUM(NSUInteger, CTPaymentType) {
+    
+    CTPaymentTypeCarRental = 0,
+    
+    CTPaymentTypeGroundTransport,
+    
+};
+
 @property (nonatomic, strong) UIWebView *webView;
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) UIAlertView *alertView;
@@ -23,8 +31,11 @@
 @property (strong, nonatomic) NSString *htmlString;
 @property (strong, nonatomic) NSBundle *bundle;
 @property (strong, nonatomic) NSString *jsonResponse;
+
 @property (nonatomic) BOOL runLoop;
 @property (nonatomic) BOOL termsChecked;
+@property (nonatomic) CTPaymentType paymentType;
+
 @end
 
 @implementation CTPaymentView
@@ -135,6 +146,9 @@
 
 - (void)setForGTPayment:(GroundTransportSearch *)search
 {
+    
+    _paymentType = CTPaymentTypeGroundTransport;
+    
     NSString *flightNo = [[search.flightNumber componentsSeparatedByCharactersInSet:
                            [NSCharacterSet decimalDigitCharacterSet].invertedSet]
                           componentsJoinedByString:@""];
@@ -208,7 +222,9 @@
 
 - (void)setForCarRentalPayment:(CarRentalSearch *)search
 {
-    
+    _runLoop = NO;
+    _paymentType = CTPaymentTypeCarRental;
+
     NSString *s = [PaymentRequest OTA_VehResRQ:[NSDateUtils stringFromDateWithFormat:search.pickupDate format:@"yyyy-MM-dd'T'HH:mm:ss"]
                                 returnDateTime:[NSDateUtils stringFromDateWithFormat:search.dropoffDate format:@"yyyy-MM-dd'T'HH:mm:ss"]
                             pickupLocationCode:search.pickupLocation.code
@@ -249,6 +265,8 @@
     [self.webView loadHTMLString:self.htmlString baseURL: self.bundle.bundleURL];
 
     [self setupWebView];
+    
+    NSLog(@"VEHREF: %@, %@", search.selectedVehicle.vehicle.refID, self.htmlString);
 }
 
 - (void)setupWebView
@@ -308,6 +326,11 @@
 
 #pragma mark Web View
 
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+
+}
+
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     NSLog(@"CARTRAWLERSDK PAYMENTVIEW FAILED LOAD");
@@ -330,19 +353,27 @@
             if ([self.jsonResponse containsString:@"Errors"]) {
                 NSLog(@"%@", self.jsonResponse);
                 CTErrorResponse *error = [[CTErrorResponse alloc] initWithDictionary:json];
-                
                 [self showError:@"Error" message:error.errorMessage];
                 _runLoop = NO;
-            } else if ([self.jsonResponse containsString:@"SpecialInstructions"]) {
+                [self.webView stringByEvaluatingJavaScriptFromString:@"resetResponses()"];
+            } else {
                 _runLoop = NO;
                 if (self.completion) {
-                    CTGroundBooking *booking = [[CTGroundBooking alloc] initWithDictionary:json];
-                    self.completion(booking);
-                }
-            } else if ([self.jsonResponse containsString:@"VehResRQCore"]) {
-                if (self.completion) {
-                    CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:json];
-                    self.completion(booking);
+                    [self.webView stringByEvaluatingJavaScriptFromString:@"resetResponses()"];
+                    switch (self.paymentType) {
+                        case CTPaymentTypeCarRental: {
+                            CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:json];
+                            self.completion(booking);
+                        }
+                            break;
+                        case CTPaymentTypeGroundTransport: {
+                            CTGroundBooking *booking = [[CTGroundBooking alloc] initWithDictionary:json];
+                            self.completion(booking);
+                        }
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
@@ -357,7 +388,9 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    //[self startTimer];
+    if (buttonIndex == 0) {
+        [self startTimer];
+    }
 }
 
 - (void)termsAndConditionsChecked:(BOOL)check

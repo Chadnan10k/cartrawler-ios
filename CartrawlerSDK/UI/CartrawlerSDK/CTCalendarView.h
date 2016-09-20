@@ -22,5 +22,6 @@ typedef void (^CTDiscardDates)(void);
 @property (nonatomic, strong) NSDate *mininumDate;
 
 - (void)setupWithFrame:(CGRect)frame;
+- (void)reset;
 
 @end

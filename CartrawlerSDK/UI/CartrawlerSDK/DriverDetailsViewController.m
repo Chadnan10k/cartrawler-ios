@@ -61,6 +61,26 @@
                             isBuyingInsurance:self.search.isBuyingInsurance];
     
     [self registerForKeyboardNotifications];
+    
+    if (!self.search.firstName) {
+        self.firstNameTextField.text = @"";
+    }
+    
+    if (!self.search.surname) {
+        self.lastNameTextField.text = @"";
+    }
+    
+    if (!self.search.email) {
+        self.emailTextField.text = @"";
+    }
+    
+    if (!self.search.phone) {
+        self.phoneTextField.text = @"";
+    }
+    
+    if (!self.search.flightNumber) {
+        self.flightNoTextField.text = @"";
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

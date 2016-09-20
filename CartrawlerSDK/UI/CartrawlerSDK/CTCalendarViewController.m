@@ -75,6 +75,11 @@
     
 }
 
+- (void)reset
+{
+    [self.calendarView reset];
+}
+
 - (void)animateDateLabels:(NSString *)pickupText dropoffText:(NSString *)dropoffText
 {
 //    self.pickupDateLabel.text = pickupText;

@@ -16,6 +16,7 @@
 #import "CTCheckbox.h"
 #import "HTMLParser.h"
 #import "CTAppearance.h"
+#import "TermsViewController.h"
 
 @interface PaymentViewController () <UITextViewDelegate>
 
@@ -58,7 +59,7 @@
         [weakSelf.paymentView termsAndConditionsChecked:tapped];
     };
     
-    NSString *link1 = @"<a href=''><b>Rental conditions</b></a>";
+    NSString *link1 = @"<a href='www.cartrawler.com'><b>Rental conditions</b></a>";
     
     NSString *termsStr = [NSString stringWithFormat:@"I agree to the %@ <style>body { text-align: center; }</style>", link1];
     
@@ -73,8 +74,15 @@
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
-    NSLog(@"Link tapped");
-    return YES;
+    NSBundle* bundle = [NSBundle bundleWithURL:[[NSBundle mainBundle]URLForResource:@"CartrawlerResources" withExtension:@"bundle"]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepThree" bundle:bundle];
+    UINavigationController *nav = [storyboard instantiateViewControllerWithIdentifier:@"TermsViewControllerNav"];
+    TermsViewController *vc = (TermsViewController *)nav.topViewController;
+    [vc setData:self.search cartrawlerAPI:self.cartrawlerAPI];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:nav animated:YES completion:nil];
+    });
+    return NO;
 }
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

@@ -39,4 +39,6 @@ typedef void (^CTDiscardDates)(void);
 
 - (void)pushCellHeight:(NSNumber *)cellHeight forSection:(NSInteger)section;
 
+- (void)reset;
+
 @end

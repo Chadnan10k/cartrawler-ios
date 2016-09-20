@@ -55,6 +55,50 @@
                             isBuyingInsurance:self.search.isBuyingInsurance];
     
     [self registerForKeyboardNotifications];
+    
+    if (self.search) {
+        if (!self.search.addressLine1) {
+            self.addressLine1TextField.text = @"";
+        }
+        
+        if (!self.search.addressLine2) {
+            self.addressLine2TextField.text = @"";
+        }
+        
+        if (!self.search.city) {
+            self.cityTextField.text = @"";
+        }
+        
+        if (!self.search.postcode) {
+            self.postCodeTextField.text = @"";
+        }
+        
+        if (!self.search.country) {
+            self.countryTextField.text = @"";
+        }
+    }
+    
+    if (self.groundSearch) {
+        if (!self.groundSearch.addressLine1) {
+            self.addressLine1TextField.text = @"";
+        }
+        
+        if (!self.groundSearch.addressLine2) {
+            self.addressLine2TextField.text = @"";
+        }
+        
+        if (!self.groundSearch.city) {
+            self.cityTextField.text = @"";
+        }
+        
+        if (!self.groundSearch.postcode) {
+            self.postCodeTextField.text = @"";
+        }
+        
+        if (!self.groundSearch.country) {
+            self.countryTextField.text = @"";
+        }
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -124,7 +168,7 @@
         UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:b];
         SettingsSelectionViewController *vc = [settingsStoryboard instantiateViewControllerWithIdentifier:@"SettingsSelectionViewController"];
         [vc setSettingsType:SettingsTypeCountry];
-        
+        vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
         [self presentViewController:vc animated:YES completion:nil];
         
         __weak typeof (self) weakSelf = self;

@@ -60,6 +60,11 @@
           var securePaymentWin = document.getElementById("ct-secure-payment");
           securePaymentWin.contentWindow.postMessage({"action" : "submitForm"} , "*");
       }
+    
+    function resetResponses() {
+        currentState = "";
+        jsonResponse = "";
+    }
 
     </script>
 
