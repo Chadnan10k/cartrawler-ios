@@ -162,8 +162,17 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    NSMutableCharacterSet *characterSet = [NSMutableCharacterSet alphanumericCharacterSet];
+    [characterSet addCharactersInString:@" "];
+    
     if (textField == self.phoneTextField) {
         return [self validatePhone:[NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string]];
+    } else if (textField != self.emailTextField) {
+        if ([[NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string] rangeOfCharacterFromSet:[characterSet invertedSet]].location != NSNotFound) {
+            return NO;
+        } else {
+            return YES;
+        }
     } else {
         return YES;
     }

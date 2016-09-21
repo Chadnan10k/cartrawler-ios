@@ -13,7 +13,7 @@
 
 + (void)forceLinkerLoad_ {}
 
-static CGFloat const ITEM_SPACING = 10.0f;
+static CGFloat const ITEM_SPACING = 0.0f;
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     CGRect contentRect = {CGPointZero, self.collectionViewContentSize};

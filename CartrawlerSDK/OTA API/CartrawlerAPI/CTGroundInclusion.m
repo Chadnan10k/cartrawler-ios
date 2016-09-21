@@ -26,9 +26,13 @@
         _inclusion = InclusionWifi;
     } else if ([inclusionString isEqualToString:@"@WorkTable"]) {
         _inclusion = InclusionWorkTable;
+    } else if ([inclusionString isEqualToString:@"@PhoneCharger"]) {
+        _inclusion = InclusionPhoneCharger;
+    } else if ([inclusionString isEqualToString:@"@Water"]) {
+        _inclusion = InclusionWater;
     } else {
         //TODO: Include the rest
-        _inclusion = nil;
+        _inclusion = InclusionAirCon;
     }
     
     return self;

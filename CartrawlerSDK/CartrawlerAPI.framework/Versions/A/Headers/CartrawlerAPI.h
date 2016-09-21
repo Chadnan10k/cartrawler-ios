@@ -243,35 +243,4 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
                      currencyCode:(NSString *)currencyCode
                        completion:(GroundAvailCompletion)completion;
 
-/**
- *  Creates a Ground Transportation booking
- *
- *  @param airport                       The populated CTAirport object
- *  @param service                       The choosen CTGroundService object
- *  @param pickupLocation                Populated CTGroundLocation object for pickup
- *  @param dropoffLocation               Populated CTGroundLocation object for drop off
- *  @param pickupLocationName            The name of your pickup location, eg. a company name
- *  @param customer                      Populated CTGroundCustomer Object
- *  @param specialInstructions           Any special instructions a customer may give to the driver.
- *  @param flightNumber                  Customers flight number
- *  @param additionalAdultQty            The amount of *Additional* adults, dont include the customer making the booking
- *  @param childrenQty                   The amount of children traveling
- *  @param infantQty                     The amount of infants traveling
- *  @param currencyCode                  The currency code eg. EUR, GBP, USD
- *  @param completion                    On completion a CTGroundBooking will be returned if successfull, on fail a CTErrorResponse will be returned.
- */
-- (void)groundTransportationBooking:(CTAirport *)airport
-                            service:(CTGroundService *)service
-                     pickupLocation:(CTGroundLocation *)pickupLocation
-                    dropoffLocation:(CTGroundLocation *)dropoffLocation
-                 pickupLocationName:(NSString *)pickupLocationName
-                           customer:(CTGroundCustomer *)customer
-                specialInstructions:(NSString *)specialInstructions
-                       flightNumber:(NSString *)flightNumber
-                 additionalAdultQty:(NSNumber *)additionalAdultQty
-                        childrenQty:(NSNumber *)childrenQty
-                          infantQty:(NSNumber *)infantQty
-                       currencyCode:(NSString *)currencyCode
-                         completion:(GroundBookingCompletion)completion;
-
 @end

@@ -17,6 +17,7 @@
 #import "HTMLParser.h"
 #import "CTAppearance.h"
 #import "TermsViewController.h"
+#import "CTButton.h"
 
 @interface PaymentViewController () <UITextViewDelegate>
 
@@ -24,6 +25,8 @@
 @property (strong, nonatomic) CTPaymentView *paymentView;
 @property (weak, nonatomic) IBOutlet CTCheckbox *termsCheckbox;
 @property (weak, nonatomic) IBOutlet UITextView *termsLabel;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet CTButton *confirmButton;
 
 @end
 
@@ -49,10 +52,15 @@
     
     __weak typeof (self) weakSelf = self;
     
-    self.paymentView.completion = ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf pushToDestination];
-        });
+    self.paymentView.completion = ^(BOOL success){
+        [weakSelf enableControls:YES];
+        if (success) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf pushToDestination];
+            });
+        } else {
+            
+        }
     };
     self.termsCheckbox.viewTapped = ^(BOOL tapped){
         [weakSelf.paymentView termsAndConditionsChecked:tapped];
@@ -87,8 +95,23 @@
 }
 
 - (IBAction)confirmPayment:(id)sender {
+    [self enableControls:NO];
     [self.paymentView confirmPayment];
 }
 
+- (void)enableControls:(BOOL)enabled
+{
+    if (enabled) {
+        self.backButton.enabled = YES;
+        self.backButton.alpha = 1;
+        self.confirmButton.enabled = YES;
+        self.confirmButton.alpha = 1;
+    } else {
+        self.backButton.enabled = NO;
+        self.backButton.alpha = 0.8;
+        self.confirmButton.enabled = NO;
+        self.confirmButton.alpha = 0.8;
+    }
+}
 
 @end

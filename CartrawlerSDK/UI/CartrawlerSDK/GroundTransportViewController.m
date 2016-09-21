@@ -273,7 +273,7 @@
     NSDate *puDate = [DateUtils mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.pickupDate];
     _pickupDate = puDate;
 
-    if (self.dropoffDate && self.dropoffTime) {
+    if (self.dropoffDate != nil && self.dropoffTime != nil) {
         NSDate *doDate = [DateUtils mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.dropoffDate];
         _dropoffDate = doDate;
     }
@@ -330,7 +330,11 @@
         [self.dropoffCalendarView shakeAnimation];
         [self.dropoffTimeView shakeAnimation];
     }
-   
+    
+    if (self.pickupDate != nil && self.pickupTime != nil) {
+        [self combineDates];
+    }
+    
     CTGroundLocation *pickupLoc = [[CTGroundLocation alloc] initWithLatitude:self.pickupLat
                                                                    longitude:self.pickupLong
                                                                 locationType:self.pickupLocType
@@ -402,11 +406,7 @@
         [self.passengersTextField shakeAnimation];
         validated = NO;
     }
-    
-    if (validated) {
-        [self combineDates];
-    }
-    
+
     return validated;
 }
 

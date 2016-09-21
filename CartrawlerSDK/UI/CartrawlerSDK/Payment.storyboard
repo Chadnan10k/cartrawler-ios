@@ -383,6 +383,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="6hc-Cu-ibz" id="fAv-E0-jmL"/>
+                        <outlet property="confirmButton" destination="Qyq-JL-8xg" id="CvS-ln-ufq"/>
                         <outlet property="termsCheckbox" destination="l1O-IH-0OC" id="TJL-mi-Dig"/>
                         <outlet property="termsLabel" destination="1uI-xE-89L" id="VNd-hg-ftf"/>
                         <outlet property="webViewContainer" destination="3BO-Yq-P4E" id="4fY-i8-myh"/>

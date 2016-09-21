@@ -66,6 +66,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)presentCarRentalInViewController:(UIViewController *)viewController;
 
+/**
+ *  Presents the ground transport engine modally in the designated UIViewController
+ *
+ *  @param viewController The parent view controller
+ */
 - (void)presentGroundTransportInViewController:(UIViewController *)viewController;
 
 /**
@@ -86,9 +91,9 @@ NS_ASSUME_NONNULL_BEGIN
 /*  ----------------------------------------------------------------------------
  *  View Controller Overriding:
  *  You can set a custom view for any step of the user journey by subclassing
- *  the designated step view controller.
+ *  CTViewController
  *
- *  You must set all of the properties of the step view controller in order to
+ *  You must set all of the required properties of the search in order to
  *  push to the next view.
  *  ----------------------------------------------------------------------------
  */

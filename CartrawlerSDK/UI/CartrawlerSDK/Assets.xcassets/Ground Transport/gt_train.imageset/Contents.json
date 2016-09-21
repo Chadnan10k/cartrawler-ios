@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "train (1).png",
+      "filename" : "train.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "train.png",
+      "filename" : "train (1).png",
       "scale" : "2x"
     },
     {

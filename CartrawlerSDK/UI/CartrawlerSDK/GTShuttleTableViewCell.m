@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet CTLabel *passengersLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
 @property (nonatomic, strong) NSArray <CTGroundInclusion *> *inclusions;
+@property (weak, nonatomic) IBOutlet UICollectionView *inclusionsCollectionView;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *inclusionHeightConstraint;
 
 @end
 
@@ -32,18 +34,18 @@
     
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
-    
-    self.inclusionsCollectionView.dataSource = self;
+     self.inclusionsCollectionView.dataSource = self;
      self.inclusionsCollectionView.delegate = self;
-
 }
 
 - (void)setShuttle:(CTGroundShuttle *)shuttle
@@ -63,23 +65,32 @@
     self.priceLabel.text = [NSNumberUtils numberStringWithCurrencyCode:shuttle.totalCharge];
     
     [self.inclusionsCollectionView reloadData];
-    [self.inclusionsCollectionView layoutIfNeeded];
-    [self.inclusionsCollectionView.collectionViewLayout invalidateLayout];
-    [self.inclusionsCollectionView layoutIfNeeded];
-    [self.inclusionsCollectionView setNeedsDisplay];
+    [self.contentView updateConstraints];
+    [self.contentView layoutIfNeeded];
+    self.inclusionHeightConstraint.constant = [self calculateCellHeight];
     
-    //self.uiCollectionView.collectionViewLayout.collectionViewCon‌​tentSize().height
+}
+
+- (CGFloat)calculateCellHeight
+{
+    CGFloat widthConstraint = self.inclusionsCollectionView.frame.size.width;
+    CGFloat height = 30;
+    CGFloat currentRow = 0.0;
     
-    NSLog(@"HEIGHT: %f", self.inclusionsCollectionView.collectionViewLayout.collectionViewContentSize.height);
-    
-    self.inclusionHeightConstraint.constant = self.inclusionsCollectionView.contentSize.height;
-    
-    for (InclusionCollectionViewCell *cell in self.inclusionsCollectionView.visibleCells) {
-        NSLog(@"CELL Width: %f", cell.frame.size.width);
+    for (CTGroundInclusion *inclusion in self.inclusions) {
+        CGSize textSize = [[self inclusionText:inclusion.inclusion]
+                           sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:[CTAppearance instance].boldFontName size:17]}];
         
-        //add width of cells until reaches collectionview width, then increment line count, reset for next line
+        CGFloat width = (textSize.width) + 50 < self.inclusionsCollectionView.frame.size.width ?
+        (textSize.width + 50) : (self.inclusionsCollectionView.frame.size.width - 50);
+        
+        if ((currentRow + width) >= widthConstraint) {
+            height += 30;
+        } else {
+            currentRow += width;
+        }
     }
-    
+    return height;
 }
 
 - (NSString *)shuttleType:(ShuttleType)type
@@ -140,9 +151,9 @@
     CGSize textSize = [[self inclusionText:self.inclusions[indexPath.row].inclusion]
                        sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:[CTAppearance instance].boldFontName size:17]}];
     
-    CGFloat width = (textSize.width) + 50 < collectionView.frame.size.width ? (textSize.width + 50) : (collectionView.frame.size.width - 50);
+    CGFloat width = (textSize.width) + 30 < collectionView.frame.size.width ? (textSize.width + 30) : (collectionView.frame.size.width - 30);
     
-    return CGSizeMake(width, 40);
+    return CGSizeMake(width, 30);
 }
 
 - (NSString *)inclusionText:(Inclusion)inclusion
@@ -237,7 +248,5 @@
     
     return @"";
 }
-
-
 
 @end

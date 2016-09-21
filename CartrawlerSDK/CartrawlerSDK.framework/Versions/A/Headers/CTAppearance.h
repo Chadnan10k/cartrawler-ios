@@ -11,9 +11,6 @@
 
 @interface CTAppearance : NSObject
 
-@property (nonatomic, strong)       UIColor  *navigationItemTint;
-@property (nonatomic, strong)       UIColor  *navigationBarTint;
-@property (nonatomic, strong)       UIImage  *navigationBarImage;
 @property (nonatomic, strong)       UIColor  *buttonColor;
 @property (nonatomic, strong)       UIColor  *buttonTextColor;
 @property (nonatomic)               CGFloat  buttonCornerRadius;

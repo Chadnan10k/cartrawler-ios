@@ -57,6 +57,8 @@
 		45AEF2611D6C418200DA0894 /* CTAvailabilityItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AEF25F1D6C418200DA0894 /* CTAvailabilityItem.m */; };
 		45AEF2651D6C493F00DA0894 /* CTVendorLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45AEF2631D6C493F00DA0894 /* CTVendorLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45AEF2661D6C493F00DA0894 /* CTVendorLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AEF2641D6C493F00DA0894 /* CTVendorLocation.m */; };
+		45B265001D92A8B4000005F2 /* CTGroundItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B264FE1D92A8B3000005F2 /* CTGroundItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45B265011D92A8B4000005F2 /* CTGroundItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B264FF1D92A8B3000005F2 /* CTGroundItem.m */; };
 		45C69A301D460F310045136D /* USInsurance.json in Resources */ = {isa = PBXBuildFile; fileRef = 45C69A2F1D460F310045136D /* USInsurance.json */; };
 		45C69A331D4616140045136D /* InsuranceSelectorItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C69A311D4616140045136D /* InsuranceSelectorItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45C69A341D4616140045136D /* InsuranceSelectorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C69A321D4616140045136D /* InsuranceSelectorItem.m */; };
@@ -181,6 +183,8 @@
 		45AEF25F1D6C418200DA0894 /* CTAvailabilityItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAvailabilityItem.m; sourceTree = "<group>"; };
 		45AEF2631D6C493F00DA0894 /* CTVendorLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVendorLocation.h; sourceTree = "<group>"; };
 		45AEF2641D6C493F00DA0894 /* CTVendorLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVendorLocation.m; sourceTree = "<group>"; };
+		45B264FE1D92A8B3000005F2 /* CTGroundItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTGroundItem.h; sourceTree = "<group>"; };
+		45B264FF1D92A8B3000005F2 /* CTGroundItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTGroundItem.m; sourceTree = "<group>"; };
 		45C69A2F1D460F310045136D /* USInsurance.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = USInsurance.json; sourceTree = "<group>"; };
 		45C69A311D4616140045136D /* InsuranceSelectorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceSelectorItem.h; sourceTree = "<group>"; };
 		45C69A321D4616140045136D /* InsuranceSelectorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceSelectorItem.m; sourceTree = "<group>"; };
@@ -296,6 +300,15 @@
 			name = "Avail Item";
 			sourceTree = "<group>";
 		};
+		45B264FD1D92A87E000005F2 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				45A2029A1CBCE9A000DCFF02 /* CTErrorResponse.h */,
+				45A2029B1CBCE9A000DCFF02 /* CTErrorResponse.m */,
+			);
+			name = Error;
+			sourceTree = "<group>";
+		};
 		45D53D3A1CBBDBF500DEDB0B /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,8 +317,7 @@
 				45FBACBE1D67458700C75FC9 /* Vehicle avail */,
 				45FBACBC1D67455600C75FC9 /* Terms and conditions */,
 				45FBACC11D67495800C75FC9 /* Booking */,
-				45A2029A1CBCE9A000DCFF02 /* CTErrorResponse.h */,
-				45A2029B1CBCE9A000DCFF02 /* CTErrorResponse.m */,
+				45B264FD1D92A87E000005F2 /* Error */,
 				45FBACC21D67496C00C75FC9 /* Insurance */,
 				45FBACBD1D67456700C75FC9 /* Ground transport */,
 			);
@@ -369,6 +381,8 @@
 				45233D241CF44F0E00B8E2B2 /* CTGroundService.m */,
 				457CF8931D78869600BC55E2 /* CTGroundShuttle.h */,
 				457CF8941D78869600BC55E2 /* CTGroundShuttle.m */,
+				45B264FE1D92A8B3000005F2 /* CTGroundItem.h */,
+				45B264FF1D92A8B3000005F2 /* CTGroundItem.m */,
 			);
 			name = "Ground transport";
 			sourceTree = "<group>";
@@ -491,6 +505,7 @@
 				45C69A371D462BA30045136D /* InsuranceLink.h in Headers */,
 				457CF8911D7884C800BC55E2 /* CTGroundInclusion.h in Headers */,
 				457CF8951D78869600BC55E2 /* CTGroundShuttle.h in Headers */,
+				45B265001D92A8B4000005F2 /* CTGroundItem.h in Headers */,
 				45AEF2651D6C493F00DA0894 /* CTVendorLocation.h in Headers */,
 				45FBACB91D67453900C75FC9 /* CTTermAndCondition.h in Headers */,
 				45AEF2601D6C418200DA0894 /* CTAvailabilityItem.h in Headers */,
@@ -666,6 +681,7 @@
 				45A2029C1CBCE9A000DCFF02 /* CTErrorResponse.m in Sources */,
 				457CF8921D7884C800BC55E2 /* CTGroundInclusion.m in Sources */,
 				45FCA0931CBFDB980079AA68 /* CTVendor.m in Sources */,
+				45B265011D92A8B4000005F2 /* CTGroundItem.m in Sources */,
 				4542BFFC1CBE8C1F00EC17BF /* CTLocationSearch.m in Sources */,
 				4542C00C1CBEA0E100EC17BF /* CTMatchedLocation.m in Sources */,
 				45FBACBA1D67453900C75FC9 /* CTTermAndCondition.m in Sources */,

@@ -160,6 +160,18 @@
     [self.view endEditing:YES];
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSMutableCharacterSet *characterSet = [NSMutableCharacterSet alphanumericCharacterSet];
+    [characterSet addCharactersInString:@" "];
+    
+    if ([[NSString stringWithFormat:@"%@%@", textField.text, string] rangeOfCharacterFromSet:[characterSet invertedSet]].location != NSNotFound) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     if (textField == self.countryTextField) {

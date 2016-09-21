@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "51A77CA044040D2850CAC217A6DAFB5DE86A709D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "51A77CA044040D2850CAC217A6DAFB5DE86A709D" : 9223372036854775807,
+    "E6BACD7DC63A7EB88F2FA9073282E39F7C61AA6D" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "11F1913F-718C-40D9-89F0-ECE5CBFC3176",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "51A77CA044040D2850CAC217A6DAFB5DE86A709D" : "Cartrawler-UI-iOS\/",
+    "E6BACD7DC63A7EB88F2FA9073282E39F7C61AA6D" : "cartrawler-ios\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "CartrawlerSDK",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "CartrawlerSDK\/CartrawlerSDK.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.cartrawler.com\/lmaguire\/Cartrawler-UI-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "51A77CA044040D2850CAC217A6DAFB5DE86A709D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/cartrawler\/cartrawler-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E6BACD7DC63A7EB88F2FA9073282E39F7C61AA6D"
+    }
+  ]
+}

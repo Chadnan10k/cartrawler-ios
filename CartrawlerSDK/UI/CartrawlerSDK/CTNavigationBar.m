@@ -20,7 +20,6 @@
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    self.barTintColor = [CTAppearance instance].navigationBarTint;
     self.translucent = NO;
     return self;
 }

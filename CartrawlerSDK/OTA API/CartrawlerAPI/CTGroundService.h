@@ -10,14 +10,14 @@
 #import "CTGroundService.h"
 #import "CTGroundInclusion.h"
 #import "CTGroundLocation.h"
+#import "CTGroundItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  CTGroundService
  */
-@interface CTGroundService : NSObject
-
+@interface CTGroundService : CTGroundItem
 
 @property (nonatomic, nonnull, readonly) CTGroundLocation *pickupLocation;
 
@@ -27,6 +27,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) BOOL meetAndGreet;
 
+@property (nonatomic, nonnull, readonly) NSArray <CTGroundInclusion *> *inclusions;
+/**
+ *  The service level eg. First class, economy class
+ */
+@property (nonatomic, readonly) ServiceLevel serviceLevel;
 /**
  *  Picture url for the vehicle
  */

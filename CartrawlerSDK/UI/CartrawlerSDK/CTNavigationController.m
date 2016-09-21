@@ -18,12 +18,7 @@
 - (id)initWithRootViewController:(UIViewController *)rootViewController
 {
     self = [super initWithRootViewController:rootViewController];
-    
 
-    (self.navigationBar).barTintColor = [CTAppearance instance].navigationBarTint;
-    
-
-    
     return self;
 }
 

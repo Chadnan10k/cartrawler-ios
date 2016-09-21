@@ -10,33 +10,14 @@
 #import "CTGroundShuttle.h"
 #import "CTGroundInclusion.h"
 #import "CTGroundLocation.h"
+#import "CTGroundItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  GTShuttle
  */
-@interface CTGroundShuttle : NSObject
-
-typedef NS_ENUM(NSUInteger, ServiceLevel) {
-    
-    ServiceLevelNone = 0,
-    
-    ServiceLevelEconomy,
-    
-    ServiceLevelStandard,
-    
-    ServiceLevelBusiness,
-    
-    ServiceLevelLuxury,
-    
-    ServiceLevelPremium,
-    
-    ServiceLevelStandardClass,
-    
-    ServiceLevelFirstClass
-    
-};
+@interface CTGroundShuttle : CTGroundItem
 
 typedef NS_ENUM(NSUInteger, ShuttleType) {
     

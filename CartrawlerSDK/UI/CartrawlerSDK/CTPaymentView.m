@@ -349,6 +349,12 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 {
     if (self.runLoop) {
         
+        if ( [[self.webView stringByEvaluatingJavaScriptFromString:@"getCurrentState()"] isEqualToString:@"ValidationError"]) {
+            if (self.completion) {
+                self.completion(NO);
+            }
+        }
+        
         _jsonResponse = [self.webView stringByEvaluatingJavaScriptFromString:@"getJsonResponse()"];
         
         if (![self.jsonResponse isEqualToString:@""]) {
@@ -361,7 +367,10 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
             
             if ([self.jsonResponse containsString:@"Errors"]) {
                 
-                NSLog(@"%@", self.jsonResponse);
+                if (self.completion) {
+                    self.completion(NO);
+                }
+
                 CTErrorResponse *error = [[CTErrorResponse alloc] initWithDictionary:json];
                 [self showError:@"Error" message:error.errorMessage];
                 _runLoop = NO;
@@ -379,14 +388,14 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                         case CTPaymentTypeCarRental: {
                             CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:json];
                             self.carRentalSearch.booking = booking;
-                            self.completion();
+                            self.completion(YES);
                         }
                             
                             break;
                         case CTPaymentTypeGroundTransport: {
                             CTGroundBooking *booking = [[CTGroundBooking alloc] initWithDictionary:json];
                             self.groundSearch.booking = booking;
-                            self.completion();
+                            self.completion(YES);
                         }
                             
                             break;
@@ -427,6 +436,9 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
         [self.webView stringByEvaluatingJavaScriptFromString:@"validateAndBook()"];
     } else {
         [self showError:@"Sorry" message:@"You must check terms and conditions"];
+        if (self.completion) {
+            self.completion(NO);
+        }
     }
 }
 

@@ -18,9 +18,6 @@
         sharedInstance = [[CTAppearance alloc] init];
         
         //set the default theme here
-        sharedInstance.navigationItemTint = [UIColor blueColor];
-        sharedInstance.navigationBarTint = [UIColor whiteColor];
-        //sharedInstance.navigationBarImage = [UIImage imageNamed:@""];
         
         sharedInstance.buttonColor = [UIColor colorWithRed:1.0/255.0 green:51.0/255.0 blue:84.0/255.0 alpha:1.0];
         sharedInstance.buttonTextColor = [UIColor whiteColor];
