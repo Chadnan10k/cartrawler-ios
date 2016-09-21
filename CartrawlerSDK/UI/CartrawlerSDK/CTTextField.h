@@ -9,7 +9,10 @@
 #import <CartrawlerSDK/CartrawlerSDK.h>
 #import "JVFloatLabeledTextField.h"
 
+IB_DESIGNABLE
 @interface CTTextField : JVFloatLabeledTextField
+
+@property (nonatomic) IBInspectable BOOL enableShadow;
 
 + (void)forceLinkerLoad_;
 

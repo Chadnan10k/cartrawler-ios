@@ -73,6 +73,21 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)presentGroundTransportInViewController:(UIViewController *)viewController;
 
+- (void)presentCarRentalWithFlightDetails:(NSString *)IATACode
+                                firstName:(NSString *)firstName
+                                  surname:(NSString *)surname
+                     additionalPassengers:(NSNumber *)additionalPassengers
+                                    email:(NSString *)email
+                                    phone:(NSString *)phone
+                                 flightNo:(NSString *)flightNo
+                             addressLine1:(NSString *)addressLine1
+                             addressLine2:(NSString *)addressLine2
+                                     city:(NSString *)city
+                                 postcode:(NSString *)postcode
+                              countryCode:(NSString *)countryCode
+                              countryName:(NSString *)countryName
+                               completion:(id)completion;
+
 /**
  *  Register the CartrawlerSDK to use push notifications so information can be sent to your customer about their booking
  *

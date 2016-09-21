@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTMatchedLocation.h>
+#import "CTDesignableView.h"
 
 IB_DESIGNABLE
-@interface CTSelectView : UIView
+@interface CTSelectView : CTDesignableView
 
 + (void)forceLinkerLoad_;
 

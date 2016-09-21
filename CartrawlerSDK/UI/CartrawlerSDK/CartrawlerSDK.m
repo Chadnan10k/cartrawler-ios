@@ -116,6 +116,74 @@
     [viewController presentViewController:navController animated:YES completion:nil];
 }
 
+- (void)presentCarRentalWithFlightDetails:(NSString *)IATACode
+                               pickupDate:(NSDate *)pickupDate
+                               returnDate:(NSDate *)returnDate
+                                firstName:(NSString *)firstName
+                                  surname:(NSString *)surname
+                                driverAge:(NSNumber *)driverAge
+                     additionalPassengers:(NSNumber *)additionalPassengers
+                                    email:(NSString *)email
+                                    phone:(NSString *)phone
+                                 flightNo:(NSString *)flightNo
+                             addressLine1:(NSString *)addressLine1
+                             addressLine2:(NSString *)addressLine2
+                                     city:(NSString *)city
+                                 postcode:(NSString *)postcode
+                              countryCode:(NSString *)countryCode
+                              countryName:(NSString *)countryName
+                       overViewController:(UIViewController *)viewController
+                               completion:(id)completion
+{
+    
+    _isCarRental = YES;
+    
+    [[CarRentalSearch instance] reset];
+    
+    [CarRentalSearch instance].pickupDate = pickupDate;
+    [CarRentalSearch instance].dropoffDate = returnDate;
+
+    [CarRentalSearch instance].firstName = firstName;
+    [CarRentalSearch instance].surname = surname;
+    [CarRentalSearch instance].passengerQty = [NSNumber numberWithInt:1 + additionalPassengers.intValue];
+    [CarRentalSearch instance].driverAge = driverAge;
+    [CarRentalSearch instance].email = email;
+    [CarRentalSearch instance].phone = phone;
+    [CarRentalSearch instance].flightNumber = flightNo;
+    [CarRentalSearch instance].addressLine1 = addressLine1;
+    [CarRentalSearch instance].addressLine2 = addressLine2;
+    [CarRentalSearch instance].city = city;
+    [CarRentalSearch instance].postcode = postcode;
+    [CarRentalSearch instance].country = countryCode;
+    [self configureViews];
+    CTNavigationController *navController;
+    navController = [[CTNavigationController alloc] initWithRootViewController: self.searchDetailsViewController];
+    navController.navigationBar.hidden = YES;
+
+    
+    //first we need to map the iata to the location code, id recommend getting a list of popular airports and hardcoding them for speed
+    
+    [self.cartrawlerAPI locationSearchWithAirportCode:IATACode completion:^(CTLocationSearch *response, CTErrorResponse *error) {
+        if (error) {
+            NSLog(@"Damn");
+        } else {
+            if (response) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    if(response.matchedLocations.count > 0) {
+                        [CarRentalSearch instance].pickupLocation =  response.matchedLocations.firstObject;
+                        [CarRentalSearch instance].dropoffLocation =  response.matchedLocations.firstObject;
+                    }
+                    
+                    [viewController presentViewController:navController animated:YES completion:nil];
+
+                });
+            }
+        }
+    }];
+}
+
 - (void)setDefaultViews
 {
     

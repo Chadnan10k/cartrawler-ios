@@ -21,6 +21,18 @@
     
 }
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    if (self.enableShadow) {
+        self.layer.masksToBounds = NO;
+        self.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.layer.shadowOffset = CGSizeMake(0, 0);
+        self.layer.shadowOpacity = 0.2;
+        self.layer.shadowRadius = 3;
+    }
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];

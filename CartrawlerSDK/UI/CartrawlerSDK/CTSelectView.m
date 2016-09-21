@@ -70,12 +70,7 @@
                            textFieldRightConstraint]];
     
     self.textField.delegate = self;
-
     self.textField.placeholder = self.placeholder;
-    
-    self.layer.cornerRadius = 5;
-    self.layer.masksToBounds = YES;
-    
     self.textField.adjustsFontSizeToFitWidth = YES;
     
     return self;

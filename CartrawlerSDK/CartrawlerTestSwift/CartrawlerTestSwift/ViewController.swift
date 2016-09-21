@@ -53,7 +53,23 @@ class ViewController: UIViewController {
     @IBAction func groundTransport(_ sender: AnyObject) {
         sdk.presentGroundTransport(in: self)
     }
-
+    
+    @IBAction func airportSearch(_ sender: AnyObject) {
+        sdk.presentCarRental(withFlightDetails: "DUB",
+                             firstName: "Lee",
+                             surname: "Maguire",
+                             additionalPassengers: 1,
+                             email: "lmaguire@cartrawler.com",
+                             phone: "0866666666",
+                             flightNo: "FR444",
+                             addressLine1: "123 Cartrawler St",
+                             addressLine2: "",
+                             city: "Dublin",
+                             postcode: "5",
+                             countryCode: "IE",
+                             countryName: "Ireland",
+                             completion: "")
+    }
 
 }
 

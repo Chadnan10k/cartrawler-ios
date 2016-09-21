@@ -21,13 +21,13 @@
         
         sharedInstance.buttonColor = [UIColor colorWithRed:1.0/255.0 green:51.0/255.0 blue:84.0/255.0 alpha:1.0];
         sharedInstance.buttonTextColor = [UIColor whiteColor];
-        sharedInstance.buttonCornerRadius = 5.0;
+        sharedInstance.buttonCornerRadius = 3.0;
         sharedInstance.buttonShadowEnabled = YES;
         
         sharedInstance.fontName = @"Avenir";
         sharedInstance.boldFontName = @"Avenir-Medium";
         sharedInstance.viewBackgroundColor = [UIColor colorWithRed:1.0/255.0 green:177.0/255.0 blue:201.0/255.0 alpha:1.0];
-        sharedInstance.textFieldCornerRadius = 5.0;
+        sharedInstance.textFieldCornerRadius = 3.0;
         sharedInstance.textFieldTint = [UIColor colorWithRed:1.0/255.0 green:177.0/255.0 blue:201.0/255.0 alpha:1.0];
         sharedInstance.textFieldBackgroundColor = [UIColor whiteColor];
         

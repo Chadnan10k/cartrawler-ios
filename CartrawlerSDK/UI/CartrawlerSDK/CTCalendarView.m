@@ -144,6 +144,7 @@
 
 - (void)setupWeekDayTitle:(CGRect)frame
 {
+    
     [self.weekDayTitle.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     CGFloat width = (CGRectGetWidth(frame) - self.padding * 2) / 7;
     
@@ -168,7 +169,7 @@
     }
     
     if (labelArray.count == 7) {
-        NSString *layoutStringH = @"H:|-0-[sun(<=width)]-0-[mon(<=width)]-0-[tue(width)]-0-[wed(width)]-0-[thu(width)]-0-[fri(width)]-0-[sat(width)]-0-|";
+        NSString *layoutStringH = @"H:|-0-[sun(width)]-0-[mon(width)]-0-[tue(width)]-0-[wed(width)]-0-[thu(width)]-0-[fri(width)]-0-[sat(width)]-0-|";
         NSString *layoutStringVSun = @"V:|-[sun]-|";
         NSString *layoutStringVMon = @"V:|-[mon]-|";
         NSString *layoutStringVTue = @"V:|-[tue]-|";
@@ -185,7 +186,7 @@
                                    @"fri" : labelArray[5],
                                    @"sat" : labelArray[6]};
         
-        NSDictionary *metrics = @{@"width" : [NSNumber numberWithFloat:width]};
+        NSDictionary *metrics = @{@"width" : [NSNumber numberWithFloat:width], @"lowPriority":@(UILayoutPriorityDefaultLow)};
         
         NSArray *hConstraint = [NSLayoutConstraint constraintsWithVisualFormat:layoutStringH
                                                                                   options:0

@@ -67,6 +67,14 @@
     self.titleLabel.minimumScaleFactor = 0.5f;
     self.titleLabel.numberOfLines = 1;
     self.titleLabel.adjustsFontSizeToFitWidth = YES;
+    
+    if ([CTAppearance instance].buttonShadowEnabled) {
+        self.layer.masksToBounds = NO;
+        self.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.layer.shadowOffset = CGSizeMake(0, 3);
+        self.layer.shadowOpacity = 0.2;
+        self.layer.shadowRadius = 3;
+    }
 }
 
 - (void)shake
