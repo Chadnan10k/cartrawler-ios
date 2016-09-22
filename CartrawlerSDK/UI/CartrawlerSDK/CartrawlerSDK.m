@@ -212,7 +212,8 @@
     
     UIStoryboard *detailsStoryboard = [UIStoryboard storyboardWithName:kDetailsViewStoryboard bundle:self.bundle];
     _driverDetialsViewController = [detailsStoryboard instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
-    
+    _addressDetialsViewController = [detailsStoryboard instantiateViewControllerWithIdentifier:@"AddressDetailsViewController"];
+
     UIStoryboard *paymentStoryboard = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:self.bundle];
     _paymentViewController = [paymentStoryboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
     _paymentCompletionViewController = [paymentStoryboard instantiateViewControllerWithIdentifier:@"PaymentCompletionViewController"];
@@ -244,9 +245,10 @@
     [self configureViewController:self.vehicleDetailsViewController validationController:[[InsuranceValidation alloc] init] destination:self.insuranceExtrasViewController];
     [self configureViewController:self.insuranceExtrasViewController validationController:[[GenericValidation alloc] init] destination:self.paymentSummaryViewController];
     [self configureViewController:self.paymentSummaryViewController validationController:[[GenericValidation alloc] init] destination:self.driverDetialsViewController];
-    [self configureViewController:self.driverDetialsViewController validationController:[[PaymentValidation alloc] init] destination:self.paymentViewController];
+    [self configureViewController:self.driverDetialsViewController validationController:[[GenericValidation alloc] init] destination:self.addressDetialsViewController];
+    [self configureViewController:self.addressDetialsViewController validationController:[[PaymentValidation alloc] init] destination:self.paymentViewController];
     [self configureViewController:self.paymentViewController validationController:[[BookingCompletionValidation alloc] init] destination:self.paymentCompletionViewController];
-    [self configureViewController:self.paymentCompletionViewController validationController:nil destination:self.vehicleSelectionViewController];
+    [self configureViewController:self.paymentCompletionViewController validationController:nil destination:nil];
 
     //GROUND TRANSPORT
     [self configureViewController:self.gtSearchDetailsViewController validationController:[[GTSearchValidation alloc] init] destination:self.gtServiceSelectionViewController];
@@ -291,6 +293,12 @@
 - (void)overrideDriverDetialsViewController:(CTViewController *)viewController
 {
     _driverDetialsViewController = viewController;
+    [self configureViews];
+}
+
+- (void)overrideAddressDetialsViewController:(CTViewController *)viewController
+{
+    _addressDetialsViewController = viewController;
     [self configureViews];
 }
 

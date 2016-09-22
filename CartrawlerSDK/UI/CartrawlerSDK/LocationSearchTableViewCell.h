@@ -12,6 +12,6 @@
 
 + (void)forceLinkerLoad_;
 
-- (void)setLabelText:(NSString *)text;
+- (void)setLabelText:(NSString *)text isAirport:(BOOL)isAirport;
 
 @end

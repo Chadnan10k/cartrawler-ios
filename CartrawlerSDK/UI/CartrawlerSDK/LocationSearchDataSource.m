@@ -110,12 +110,12 @@
     if (indexPath.section == 0) {
         //cell.imageView.image = [UIImage imageNamed:@""];
         if(self.airportLocations[indexPath.row] != (id)[NSNull null]) {
-            [cell setLabelText:self.airportLocations[indexPath.row].name];
+            [cell setLabelText:self.airportLocations[indexPath.row].name isAirport:YES];
         }
     } else {
         //cell.imageView.image = [UIImage imageNamed:@""];
         if(self.otherLocations[indexPath.row] != (id)[NSNull null]) {
-            [cell setLabelText:self.otherLocations[indexPath.row].name];
+            [cell setLabelText:self.otherLocations[indexPath.row].name isAirport:NO];
         }
     }
     
@@ -150,28 +150,29 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-        CTLabel *customLabel = [[CTLabel alloc] initWithFrame:CGRectMake(10.0,5.0,200.0,20.0)];
-        customLabel.textColor = [UIColor darkGrayColor];
-    
-        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 20)];
-        headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        [headerView addSubview:customLabel];
-    
-        if (section == 0) {
-            [customLabel setText:NSLocalizedString(@"Airport", @"")];
-            if (self.airportLocations.count > 0) {
-                return headerView;
-            } else {
-                return nil;
-            }
+    CTLabel *customLabel = [[CTLabel alloc] initWithFrame:CGRectMake(10.0,5.0,200.0,20.0)];
+    customLabel.textColor = [UIColor darkGrayColor];
+
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 20)];
+    headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    headerView.alpha = 0.9;
+    [headerView addSubview:customLabel];
+
+    if (section == 0) {
+        [customLabel setText:NSLocalizedString(@"Airport", @"")];
+        if (self.airportLocations.count > 0) {
+            return headerView;
         } else {
-            [customLabel setText:NSLocalizedString(@"All other locations", @"")];
-            if (self.otherLocations.count > 0) {
-                return headerView;
-            } else {
-                return nil;
-            }
+            return nil;
         }
+    } else {
+        [customLabel setText:NSLocalizedString(@"All other locations", @"")];
+        if (self.otherLocations.count > 0) {
+            return headerView;
+        } else {
+            return nil;
+        }
+    }
 }
 
 @end

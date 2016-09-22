@@ -78,6 +78,8 @@
 #import "GTPassengerViewController.h"
 #import "GTFilterCollectionViewCell.h"
 #import "InclusionsTableViewCell.h"
+#import "VehicleDetailsPageViewController.h"
+#import "SupplierRatingCollectionViewCell.h"
 
 @implementation LinkerUtils
 
@@ -153,7 +155,8 @@
     [GTPassengerViewController forceLinkerLoad_];
     [GTFilterCollectionViewCell forceLinkerLoad_];
     [InclusionsTableViewCell forceLinkerLoad_];
-
+    [VehicleDetailsPageViewController forceLinkerLoad_];
+    [SupplierRatingCollectionViewCell forceLinkerLoad_];
 }
 
 @end

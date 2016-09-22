@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTVendor.h>
+#import "CTViewController.h"
 
-@interface SupplierRatingsViewController : UIViewController
+@interface SupplierRatingsViewController : CTViewController
 
 + (void)forceLinkerLoad_;
-
-- (void)setVendor:(CTVendor *)vendor;
-- (void)setupView;
 
 @end

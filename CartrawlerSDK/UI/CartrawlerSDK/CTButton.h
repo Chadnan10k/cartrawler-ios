@@ -13,6 +13,7 @@ IB_DESIGNABLE
 
 @property (nonatomic, strong) IBInspectable UIColor *overrideBackgroundColor;
 @property (nonatomic, strong) IBInspectable UIColor *overrideTextColor;
+@property (nonatomic) IBInspectable BOOL disableShadow;
 
 + (void)forceLinkerLoad_;
 

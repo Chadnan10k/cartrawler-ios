@@ -133,6 +133,7 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 20)];
     
     headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    headerView.alpha = 0.9;
     [headerView addSubview:customLabel];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateFormat = @"MMMM YYYY";

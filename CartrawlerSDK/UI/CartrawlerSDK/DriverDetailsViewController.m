@@ -103,23 +103,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+
+- (IBAction)confirmDetails:(id)sender
 {
+    
     self.search.firstName = self.firstNameTextField.text;
     self.search.surname = self.lastNameTextField.text;
     self.search.email = self.emailTextField.text;
     self.search.phone = self.phoneTextField.text;
     self.search.flightNumber = self.flightNoTextField.text;
-
-    AddressDetailsViewController *destination = (AddressDetailsViewController *)segue.destinationViewController;
-    destination.destinationViewController = self.destinationViewController;
-    destination.cartrawlerAPI = self.cartrawlerAPI;
-    destination.validationController = self.validationController;
-    destination.search = self.search;
-}
-
-- (IBAction)confirmDetails:(id)sender
-{
+    
     BOOL validated = YES;
     
     if ([self.firstNameTextField.text isEqualToString: @""]) {
@@ -148,7 +141,7 @@
     }
     
     if (validated) {
-        [self performSegueWithIdentifier:@"addressDetails" sender:nil];
+        [self pushToDestination];
     }
 }
 

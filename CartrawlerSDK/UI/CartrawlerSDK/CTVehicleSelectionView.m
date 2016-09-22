@@ -45,8 +45,7 @@
                          completion:(VehicleSelectionCompletion)completion;
 {
     
-    [self.tableView setContentOffset:
-     CGPointMake(0, -self.tableView.contentInset.top) animated:YES];
+    [self.tableView setContentInset:UIEdgeInsetsMake(40,0,0,0)];
     
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];

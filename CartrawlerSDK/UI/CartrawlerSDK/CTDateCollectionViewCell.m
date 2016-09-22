@@ -24,6 +24,13 @@
     
 }
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.layer.cornerRadius = 3;
+    self.layer.masksToBounds = NO;
+}
+
 - (void)setDateLabel:(NSDate *)date indexPath:(NSIndexPath *)indexPath section:(NSNumber *)section;
 {
     if (date != nil) {

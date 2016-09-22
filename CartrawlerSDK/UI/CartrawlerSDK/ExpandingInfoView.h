@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTDesignableView.h"
 
-@interface ExpandingInfoView : UIView
+@interface ExpandingInfoView : CTDesignableView
 
 + (void)forceLinkerLoad_;
 

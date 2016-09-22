@@ -33,11 +33,6 @@
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    
-    self.layer.cornerRadius = 3;
-    self.layer.borderWidth = 1;
-    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.layer.masksToBounds = YES;
     self.textView = [[UITextView alloc] initWithFrame:CGRectZero];
     return self;
 }

@@ -30,6 +30,7 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 @property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleDetailsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceExtrasViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *driverDetialsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *addressDetialsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *paymentSummaryViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *paymentViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *paymentCompletionViewController;
@@ -124,49 +125,56 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 /**
  *  Override the initial Search Details View Controller
  *
- *  @param viewController A CTViewController subclass with its viewType set to ViewTypeSearchDetails
+ *  @param viewController A CTViewController subclass
  */
 - (void)overrideSearchDetailsViewController:(CTViewController *)viewController;
 
 /**
  *  Override the vehicle selection view controller
  *
- *  @param viewController A CTViewController subclass with its viewType set to ViewTypeVehicleSelection
+ *  @param viewController A CTViewController subclass
  */
 - (void)overrideVehicleSelectionViewController:(CTViewController *)viewController;
 
 /**
  *  Override the vehicle details view controller
  *
- *  @param viewController A CTViewController subclass with its viewType set to ViewTypeGeneric
+ *  @param viewController A CTViewController subclass
  */
 - (void)overrideVehicleDetailsViewController:(CTViewController *)viewController;
 
 /**
  *  Override the insurance & extras view controller
  *
- *  @param viewController A CTViewController subclass with its viewType set to ViewTypeInsurance
+ *  @param viewController A CTViewController subclass
  */
 - (void)overrideInsuranceExtrasViewController:(CTViewController *)viewController;
 
 /**
  *  Override the payment summary view controller
  *
- *  @param viewController A CTViewController subclass with its viewType set to ViewTypeGeneric
+ *  @param viewController A CTViewController subclass
  */
 - (void)overridePaymentSummaryViewController:(CTViewController *)viewController;
 
 /**
  *  Override the driver details view controller
  *
- *  @param viewController A CTViewController subclass with its viewType set to ViewTypeDriverDetails
+ *  @param viewController A CTViewController subclass
  */
 - (void)overrideDriverDetialsViewController:(CTViewController *)viewController;
 
 /**
+ *  Override the address details view controller
+ *
+ *  @param viewController A CTViewController subclass
+ */
+- (void)overrideAddressDetialsViewController:(CTViewController *)viewController;
+
+/**
  *  Override the success view for payment
  *
- *  @param viewController A CTViewController subclass with its viewType set to ViewTypeGeneric
+ *  @param viewController A CTViewController subclass
  */
 - (void)overridePaymentCompletionViewController:(CTViewController *)viewController;
 

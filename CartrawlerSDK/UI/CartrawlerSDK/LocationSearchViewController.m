@@ -31,7 +31,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    self.tableView.alpha = 0;
+    //self.tableView.alpha = 0;
     
     self.headerView.backgroundColor = [CTAppearance instance].locationSelectionBarColor;
     
@@ -54,8 +54,9 @@
             if ([subSubview conformsToProtocol:@protocol(UITextInputTraits)])
             {
                 UITextField *textField = (UITextField *)subSubview;
-
                 textField.returnKeyType = UIReturnKeyDone;
+                textField.font = [UIFont fontWithName:[CTAppearance instance].fontName size:14];
+                textField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
                 break;
             }
         }
@@ -84,13 +85,13 @@
     [self.dataSource updateData:searchText completion:^(BOOL didSucceed) {
         if (didSucceed) {
             [self.tableView reloadData];
-            [UIView animateWithDuration:0.2 animations:^{
-                self.tableView.alpha = 1;
-            }];
+//            [UIView animateWithDuration:0.2 animations:^{
+//                self.tableView.alpha = 1;
+//            }];
         } else {
-            [UIView animateWithDuration:0.2 animations:^{
-                self.tableView.alpha = 0;
-            }];
+//            [UIView animateWithDuration:0.2 animations:^{
+//                self.tableView.alpha = 0;
+//            }];
         }
     }];
 }

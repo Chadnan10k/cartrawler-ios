@@ -12,6 +12,7 @@
 @interface LocationSearchTableViewCell()
 
 @property (weak, nonatomic) IBOutlet CTLabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
 
 @end
 
@@ -22,8 +23,17 @@
     
 }
 
-- (void)setLabelText:(NSString *)text
+- (void)setLabelText:(NSString *)text isAirport:(BOOL)isAirport
 {
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    
+    if (isAirport) {
+        self.locationImageView.image = [UIImage imageNamed:@"location_airport" inBundle:b compatibleWithTraitCollection:nil];
+    } else {
+        self.locationImageView.image = [UIImage imageNamed:@"location_city" inBundle:b compatibleWithTraitCollection:nil];
+    }
+    
     self.locationLabel.text = text;
 }
 

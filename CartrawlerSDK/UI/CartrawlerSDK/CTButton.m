@@ -42,7 +42,7 @@
     
     _overrideBackgroundColor = [CTAppearance instance].buttonColor;
     _overrideTextColor = [CTAppearance instance].buttonTextColor;
-    
+    _disableShadow = NO;
     self.backgroundColor = [CTAppearance instance].buttonColor;
     [self setTitleColor:[CTAppearance instance].buttonTextColor forState:UIControlStateNormal];
     
@@ -68,12 +68,14 @@
     self.titleLabel.numberOfLines = 1;
     self.titleLabel.adjustsFontSizeToFitWidth = YES;
     
-    if ([CTAppearance instance].buttonShadowEnabled) {
-        self.layer.masksToBounds = NO;
-        self.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.layer.shadowOffset = CGSizeMake(0, 3);
-        self.layer.shadowOpacity = 0.2;
-        self.layer.shadowRadius = 3;
+    if (!self.disableShadow) {
+        if ([CTAppearance instance].buttonShadowEnabled) {
+            self.layer.masksToBounds = NO;
+            self.layer.shadowColor = [UIColor blackColor].CGColor;
+            self.layer.shadowOffset = CGSizeMake(0, 3);
+            self.layer.shadowOpacity = 0.2;
+            self.layer.shadowRadius = 3;
+        }
     }
 }
 

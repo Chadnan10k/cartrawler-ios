@@ -12,4 +12,10 @@
 
 + (void)forceLinkerLoad_;
 
+typedef void (^VehicleDetailsViewControllerCompletion)(BOOL tapped);
+
+@property (nonatomic, strong) VehicleDetailsViewControllerCompletion tappedContinue;
+
+- (void)stopAnimating;
+
 @end

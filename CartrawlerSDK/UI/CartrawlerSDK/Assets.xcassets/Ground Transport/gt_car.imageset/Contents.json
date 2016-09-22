@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "taxi.png",
+      "filename" : "car.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "taxi (1).png",
+      "filename" : "car-1.png",
       "scale" : "2x"
     },
     {

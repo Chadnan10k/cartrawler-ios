@@ -27,9 +27,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *vehicleDetailsHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *vendorRatingHeightConstraint;
 @property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
-@property (weak, nonatomic) IBOutlet CTSegmentedControl *tabSelection;
 @property (weak, nonatomic) VehicleDetailsView *vehicleDetailView;
-@property (weak, nonatomic) SupplierRatingsViewController *supplierRatingView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet CTButton *continueButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
@@ -48,20 +46,13 @@
 {
     [super viewWillAppear:animated];
     
-    UIFont *font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
-    NSDictionary *attributes = @{NSFontAttributeName: font};
-    [self.tabSelection setTitleTextAttributes:attributes
-                                     forState:UIControlStateNormal];
-    
     [self detailsTapped];
     
     self.continueButton.enabled = YES;
     
     [self.scrollView setContentOffset:
      CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
-    
-    self.tabSelection.selectedSegmentIndex = 0;
-    
+        
     if (self.vehicleDetailView) {
         [self.vehicleDetailView setData:[CarRentalSearch instance]
                                     api:self.cartrawlerAPI
@@ -73,30 +64,6 @@
         
         [self.vehicleDetailView setupView];
     }
-    
-    if (self.search.selectedVehicle.vendor.rating) {
-        if (self.supplierRatingView) {
-            [self.supplierRatingView setVendor:self.search.selectedVehicle.vendor];
-            [self.supplierRatingView setupView];
-            
-            if (self.tabSelection.numberOfSegments != 2) {
-                [self.tabSelection insertSegmentWithTitle:@"SUPPLIER RATING" atIndex:1 animated:YES];
-            }
-            
-        }
-    } else {
-        [self.tabSelection removeSegmentAtIndex:1 animated:NO];
-    }
-    
-    self.vendorRatingContainer.layer.cornerRadius = 5;
-    self.vendorRatingContainer.layer.masksToBounds = YES;
-    self.vehicleDetailsContainer.layer.cornerRadius = 5;
-    self.vehicleDetailsContainer.layer.masksToBounds = YES;
-    
-    self.vehicleDetailsContainer.layer.borderWidth = 1;
-    self.vehicleDetailsContainer.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.vendorRatingContainer.layer.borderWidth = 1;
-    self.vendorRatingContainer.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
     NSBundle *b = [NSBundle bundleWithPath:bundlePath];
@@ -185,25 +152,6 @@
             });
         };
     }
-    
-    if ([segue.identifier isEqualToString:@"RatingEmbed"]) {
-        _supplierRatingView = (SupplierRatingsViewController *)segue.destinationViewController;
-        [self.supplierRatingView setVendor:self.search.selectedVehicle.vendor];
-    }
-}
-
-- (IBAction)tabChange:(id)sender {
-    
-    switch (self.tabSelection.selectedSegmentIndex) {
-        case 0:
-            [self detailsTapped];
-            break;
-        case 1:
-            [self supplierTapped];
-            break;
-        default:
-            break;
-    }
 }
 
 - (void)detailsTapped
@@ -232,16 +180,19 @@
 }
 
 - (IBAction)continueTapped:(id)sender {
-    [self pushToDestination];
-    [self.activityView startAnimating];
+
+    if (self.tappedContinue) {
+        self.tappedContinue(YES);
+    }
     
-    __weak typeof (self) weakSelf = self;
-    self.dataValidationCompletion = ^(BOOL insuranceSuccess, NSString *errorMessage) {
-        [weakSelf.activityView stopAnimating];
-    };
+    [self.activityView startAnimating];
     
     self.continueButton.enabled = NO;
 }
 
+- (void)stopAnimating
+{
+    [self.activityView stopAnimating];
+}
 
 @end

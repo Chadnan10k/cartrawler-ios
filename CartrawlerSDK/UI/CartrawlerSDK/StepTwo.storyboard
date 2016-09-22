@@ -85,12 +85,12 @@
                                             <constraint firstItem="CdZ-Gx-aUS" firstAttribute="leading" secondItem="vrA-86-Eph" secondAttribute="trailing" constant="17" id="6Jt-2y-ePG"/>
                                             <constraint firstAttribute="trailing" secondItem="xpG-V5-fPS" secondAttribute="trailing" constant="56" id="Iia-qr-5d9"/>
                                             <constraint firstAttribute="height" constant="62" id="Ivo-Rd-6IQ"/>
-                                            <constraint firstItem="xpG-V5-fPS" firstAttribute="top" secondItem="bSS-OR-ReL" secondAttribute="top" id="PAq-gO-EUG"/>
-                                            <constraint firstAttribute="bottom" secondItem="CdZ-Gx-aUS" secondAttribute="bottom" constant="8" id="Sfv-NS-yFN"/>
+                                            <constraint firstItem="xpG-V5-fPS" firstAttribute="top" secondItem="bSS-OR-ReL" secondAttribute="top" constant="24" id="PAq-gO-EUG"/>
+                                            <constraint firstAttribute="bottom" secondItem="CdZ-Gx-aUS" secondAttribute="bottom" constant="5" id="Sfv-NS-yFN"/>
                                             <constraint firstItem="vrA-86-Eph" firstAttribute="leading" secondItem="bSS-OR-ReL" secondAttribute="leading" constant="8" id="cXR-Uk-S1Z"/>
                                             <constraint firstAttribute="trailing" secondItem="CdZ-Gx-aUS" secondAttribute="trailing" constant="56" id="d9M-MU-pRQ"/>
                                             <constraint firstItem="CdZ-Gx-aUS" firstAttribute="top" secondItem="xpG-V5-fPS" secondAttribute="bottom" constant="1" id="ral-gB-m6V"/>
-                                            <constraint firstItem="vrA-86-Eph" firstAttribute="centerY" secondItem="bSS-OR-ReL" secondAttribute="centerY" constant="-4" id="w8A-CN-yvv"/>
+                                            <constraint firstItem="vrA-86-Eph" firstAttribute="centerY" secondItem="bSS-OR-ReL" secondAttribute="centerY" constant="10" id="w8A-CN-yvv"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -98,67 +98,66 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5p-Fg-bul" customClass="CTButton">
-                                        <color key="backgroundColor" red="0.10980392160000001" green="0.30588235289999999" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="90" id="VKQ-ud-yWu"/>
-                                            <constraint firstAttribute="height" constant="30" id="fA2-kI-acX"/>
-                                        </constraints>
-                                        <state key="normal" title="Filter">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="filterTapped:" destination="L45-dG-eg7" eventType="touchUpInside" id="6St-dO-cTr"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x cars available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obb-FK-iCf" customClass="CTLabel">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="SOg-jh-jyy"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LR2-Vc-J9I" userLabel="Fade" customClass="CTDesignableView">
+                                    <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GF2-Fa-L6p">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5p-Fg-bul" customClass="CTButton">
+                                                <color key="backgroundColor" red="0.10980392160000001" green="0.30588235289999999" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="Grk-Wc-51O"/>
+                                                    <constraint firstAttribute="width" constant="90" id="ckZ-Du-WGX"/>
+                                                </constraints>
+                                                <state key="normal" title="Filter">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="filterTapped:" destination="L45-dG-eg7" eventType="touchUpInside" id="6St-dO-cTr"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x cars available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obb-FK-iCf" customClass="CTLabel">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="yhz-jG-W5G"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="aLH-wc-pGF"/>
+                                            <constraint firstAttribute="height" constant="40" id="79A-Rz-RJg"/>
+                                            <constraint firstAttribute="trailing" secondItem="K5p-Fg-bul" secondAttribute="trailing" constant="8" id="VW2-Vb-KUk"/>
+                                            <constraint firstItem="Obb-FK-iCf" firstAttribute="leading" secondItem="GF2-Fa-L6p" secondAttribute="leading" constant="8" id="XCz-eh-lgc"/>
+                                            <constraint firstItem="K5p-Fg-bul" firstAttribute="centerY" secondItem="GF2-Fa-L6p" secondAttribute="centerY" id="dYm-hs-Elu"/>
+                                            <constraint firstItem="Obb-FK-iCf" firstAttribute="centerY" secondItem="K5p-Fg-bul" secondAttribute="centerY" id="gq9-hV-AaB"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="enableGradient" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="0.0"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="bSS-OR-ReL" secondAttribute="trailing" id="33g-HY-0Rk"/>
                                     <constraint firstItem="bSS-OR-ReL" firstAttribute="leading" secondItem="K77-Ev-AB4" secondAttribute="leading" id="3il-wg-34V"/>
-                                    <constraint firstItem="Obb-FK-iCf" firstAttribute="leading" secondItem="K77-Ev-AB4" secondAttribute="leading" constant="13" id="3jI-M8-kpG"/>
-                                    <constraint firstAttribute="bottom" secondItem="sgN-4a-2Mi" secondAttribute="bottom" id="88V-fa-i9z"/>
-                                    <constraint firstItem="sgN-4a-2Mi" firstAttribute="leading" secondItem="K77-Ev-AB4" secondAttribute="leading" id="M5t-bj-shp"/>
-                                    <constraint firstAttribute="trailing" secondItem="sgN-4a-2Mi" secondAttribute="trailing" id="OWm-PM-fdR"/>
-                                    <constraint firstItem="Obb-FK-iCf" firstAttribute="top" secondItem="bSS-OR-ReL" secondAttribute="bottom" constant="9.5" id="a9g-F1-Etg"/>
+                                    <constraint firstAttribute="trailing" secondItem="sgN-4a-2Mi" secondAttribute="trailing" id="7eA-Eq-LKT"/>
+                                    <constraint firstItem="sgN-4a-2Mi" firstAttribute="top" secondItem="GF2-Fa-L6p" secondAttribute="bottom" constant="-40" id="R1o-2E-KZj"/>
                                     <constraint firstItem="bSS-OR-ReL" firstAttribute="top" secondItem="K77-Ev-AB4" secondAttribute="top" id="bkw-iy-kgH"/>
-                                    <constraint firstItem="LR2-Vc-J9I" firstAttribute="leading" secondItem="K77-Ev-AB4" secondAttribute="leading" id="c56-N4-9sw"/>
-                                    <constraint firstItem="K5p-Fg-bul" firstAttribute="top" secondItem="bSS-OR-ReL" secondAttribute="bottom" constant="4.5" id="hyT-U5-H1Q"/>
-                                    <constraint firstItem="LR2-Vc-J9I" firstAttribute="top" secondItem="K5p-Fg-bul" secondAttribute="bottom" constant="4" id="lBx-Qc-P9r"/>
-                                    <constraint firstItem="sgN-4a-2Mi" firstAttribute="top" secondItem="K5p-Fg-bul" secondAttribute="bottom" constant="7.5" id="nW1-vl-0Mq"/>
-                                    <constraint firstAttribute="trailing" secondItem="K5p-Fg-bul" secondAttribute="trailing" constant="8" id="o0g-kJ-zj4"/>
+                                    <constraint firstItem="sgN-4a-2Mi" firstAttribute="leading" secondItem="K77-Ev-AB4" secondAttribute="leading" id="f1G-6Z-91o"/>
+                                    <constraint firstItem="GF2-Fa-L6p" firstAttribute="top" secondItem="bSS-OR-ReL" secondAttribute="bottom" id="hcp-WL-W15"/>
+                                    <constraint firstAttribute="trailing" secondItem="GF2-Fa-L6p" secondAttribute="trailing" id="kb7-q4-9aZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="sgN-4a-2Mi" secondAttribute="bottom" constant="-1" id="llR-Yc-KpK"/>
                                     <constraint firstItem="CQg-OE-5vD" firstAttribute="centerX" secondItem="K77-Ev-AB4" secondAttribute="centerX" id="rCZ-BI-B0N"/>
-                                    <constraint firstItem="CQg-OE-5vD" firstAttribute="centerY" secondItem="K77-Ev-AB4" secondAttribute="centerY" id="se9-yO-Haw"/>
-                                    <constraint firstAttribute="trailing" secondItem="LR2-Vc-J9I" secondAttribute="trailing" id="yys-lV-TDN"/>
+                                    <constraint firstItem="CQg-OE-5vD" firstAttribute="centerY" secondItem="K77-Ev-AB4" secondAttribute="centerY" constant="-10" id="se9-yO-Haw"/>
+                                    <constraint firstItem="GF2-Fa-L6p" firstAttribute="leading" secondItem="K77-Ev-AB4" secondAttribute="leading" id="x63-uw-nth"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="tableView" destination="sgN-4a-2Mi" id="Aks-Eg-2bv"/>
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.7074409196" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="K77-Ev-AB4" firstAttribute="top" secondItem="fH4-tN-Ycb" secondAttribute="bottom" id="0fA-FY-on9"/>
+                            <constraint firstItem="K77-Ev-AB4" firstAttribute="top" secondItem="fH4-tN-Ycb" secondAttribute="bottom" constant="-20" id="0fA-FY-on9"/>
                             <constraint firstItem="E9l-zn-9hT" firstAttribute="top" secondItem="K77-Ev-AB4" secondAttribute="bottom" id="Ixt-8k-7I4"/>
                             <constraint firstItem="K77-Ev-AB4" firstAttribute="leading" secondItem="166-G8-B8t" secondAttribute="leading" id="WxW-vg-gtW"/>
                             <constraint firstAttribute="trailing" secondItem="K77-Ev-AB4" secondAttribute="trailing" id="uee-fV-Q3n"/>
@@ -175,7 +174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ds-F9-f02" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1148" y="1108.6956521739132"/>
+            <point key="canvasLocation" x="1144.8" y="1112.2938530734634"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="idy-IN-qDj">
@@ -210,6 +209,7 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="overrideTextColor">
                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="doneTapped:" destination="fce-sX-LUV" eventType="touchUpInside" id="Q6K-Cd-cwW"/>
@@ -239,6 +239,7 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="overrideTextColor">
                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="resetTapped:" destination="fce-sX-LUV" eventType="touchUpInside" id="nhW-u0-1pb"/>
@@ -247,12 +248,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.7074409196" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="rAG-vh-DhK" firstAttribute="top" secondItem="dig-pC-OGW" secondAttribute="top" constant="30" id="7wi-Cl-zGO"/>
-                                    <constraint firstItem="eXq-E9-iXo" firstAttribute="top" secondItem="dig-pC-OGW" secondAttribute="top" constant="32" id="CKI-3K-grJ"/>
+                                    <constraint firstItem="rAG-vh-DhK" firstAttribute="top" secondItem="dig-pC-OGW" secondAttribute="top" constant="23" id="7wi-Cl-zGO"/>
+                                    <constraint firstItem="eXq-E9-iXo" firstAttribute="top" secondItem="dig-pC-OGW" secondAttribute="top" constant="25" id="CKI-3K-grJ"/>
                                     <constraint firstItem="JgV-q9-Lxs" firstAttribute="leading" secondItem="dig-pC-OGW" secondAttribute="leading" constant="8" id="Luz-3I-vXQ"/>
                                     <constraint firstAttribute="trailing" secondItem="rAG-vh-DhK" secondAttribute="trailing" constant="8" id="Thk-J8-MuT"/>
-                                    <constraint firstItem="JgV-q9-Lxs" firstAttribute="top" secondItem="dig-pC-OGW" secondAttribute="top" constant="30" id="ZpK-Ba-yeZ"/>
-                                    <constraint firstAttribute="height" constant="75" id="mme-SU-vC3"/>
+                                    <constraint firstItem="JgV-q9-Lxs" firstAttribute="top" secondItem="dig-pC-OGW" secondAttribute="top" constant="23" id="ZpK-Ba-yeZ"/>
+                                    <constraint firstAttribute="height" constant="60" id="mme-SU-vC3"/>
                                     <constraint firstItem="eXq-E9-iXo" firstAttribute="centerX" secondItem="dig-pC-OGW" secondAttribute="centerX" id="yrW-kc-8jy"/>
                                 </constraints>
                             </view>
