@@ -133,7 +133,7 @@
                               countryCode:(NSString *)countryCode
                               countryName:(NSString *)countryName
                        overViewController:(UIViewController *)viewController
-                               completion:(id)completion
+                               completion:(CarRentalWithFlightDetailsCompletion)completion
 {
     
     _isCarRental = YES;
@@ -159,13 +159,13 @@
     CTNavigationController *navController;
     navController = [[CTNavigationController alloc] initWithRootViewController: self.searchDetailsViewController];
     navController.navigationBar.hidden = YES;
-
-    
     //first we need to map the iata to the location code, id recommend getting a list of popular airports and hardcoding them for speed
     
     [self.cartrawlerAPI locationSearchWithAirportCode:IATACode completion:^(CTLocationSearch *response, CTErrorResponse *error) {
         if (error) {
-            NSLog(@"Damn");
+            if (completion) {
+                completion(NO, error.errorMessage);
+            }
         } else {
             if (response) {
                 
@@ -174,10 +174,17 @@
                     if(response.matchedLocations.count > 0) {
                         [CarRentalSearch instance].pickupLocation =  response.matchedLocations.firstObject;
                         [CarRentalSearch instance].dropoffLocation =  response.matchedLocations.firstObject;
-                    }
-                    
-                    [viewController presentViewController:navController animated:YES completion:nil];
+                        [viewController presentViewController:navController animated:YES completion:nil];
 
+                        if (completion) {
+                            completion(YES, @"");
+                        }
+                        
+                    } else {
+                        if (completion) {
+                            completion(NO, @"Airport not found");
+                        }
+                    }
                 });
             }
         }

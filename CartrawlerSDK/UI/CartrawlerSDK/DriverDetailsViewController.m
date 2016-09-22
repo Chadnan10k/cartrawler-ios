@@ -64,22 +64,32 @@
     
     if (!self.search.firstName) {
         self.firstNameTextField.text = @"";
+    } else {
+        self.firstNameTextField.text = self.search.firstName;
     }
     
     if (!self.search.surname) {
         self.lastNameTextField.text = @"";
+    } else {
+        self.lastNameTextField.text = self.search.surname;
     }
     
     if (!self.search.email) {
         self.emailTextField.text = @"";
+    } else {
+        self.emailTextField.text = self.search.email;
     }
     
     if (!self.search.phone) {
         self.phoneTextField.text = @"";
+    } else {
+        self.phoneTextField.text = self.search.phone;
     }
     
     if (!self.search.flightNumber) {
         self.flightNoTextField.text = @"";
+    } else {
+        self.flightNoTextField.text = self.search.flightNumber;
     }
 }
 
@@ -95,7 +105,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-
     self.search.firstName = self.firstNameTextField.text;
     self.search.surname = self.lastNameTextField.text;
     self.search.email = self.emailTextField.text;

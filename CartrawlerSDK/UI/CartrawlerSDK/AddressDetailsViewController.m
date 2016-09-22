@@ -59,22 +59,32 @@
     if (self.search) {
         if (!self.search.addressLine1) {
             self.addressLine1TextField.text = @"";
+        } else {
+            self.addressLine1TextField.text = self.search.addressLine1;
         }
         
         if (!self.search.addressLine2) {
             self.addressLine2TextField.text = @"";
+        } else {
+            self.addressLine2TextField.text = self.search.addressLine2;
         }
         
         if (!self.search.city) {
             self.cityTextField.text = @"";
+        } else {
+            self.cityTextField.text = self.search.city;
         }
         
         if (!self.search.postcode) {
             self.postCodeTextField.text = @"";
+        } else {
+            self.postCodeTextField.text = self.search.postcode;
         }
         
         if (!self.search.country) {
             self.countryTextField.text = @"";
+        } else {
+            self.countryTextField.text = self.search.country;
         }
     }
     

@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         
         CartrawlerSDK.appearance().buttonColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
         CartrawlerSDK.appearance().buttonShadowEnabled = true
-        CartrawlerSDK.appearance().buttonCornerRadius = 30
+        CartrawlerSDK.appearance().buttonCornerRadius = 3
         CartrawlerSDK.appearance().buttonTextColor = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
         
         CartrawlerSDK.appearance().viewBackgroundColor = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
@@ -35,10 +35,8 @@ class ViewController: UIViewController {
         CartrawlerSDK.appearance().calendarEndCellColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
         
         CartrawlerSDK.appearance().textFieldTint = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
-        CartrawlerSDK.appearance().fontName = "AppleSDGothicNeo-Regular"
         CartrawlerSDK.appearance().boldFontName = "AppleSDGothicNeo-Bold"
 
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,10 +53,21 @@ class ViewController: UIViewController {
     }
     
     @IBAction func airportSearch(_ sender: AnyObject) {
+        
+        
+        let strTime = "2016-09-27 10:00:00 +0000"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        let pickupDate = formatter.date(from: strTime)!
+        let dropoffDate = pickupDate.addingTimeInterval(60 * 60 * 24)
+        
         sdk.presentCarRental(withFlightDetails: "DUB",
+                             pickupDate: pickupDate,
+                             return: dropoffDate,
                              firstName: "Lee",
                              surname: "Maguire",
-                             additionalPassengers: 1,
+                             driverAge: 30,
+                             additionalPassengers: 2,
                              email: "lmaguire@cartrawler.com",
                              phone: "0866666666",
                              flightNo: "FR444",
@@ -68,7 +77,10 @@ class ViewController: UIViewController {
                              postcode: "5",
                              countryCode: "IE",
                              countryName: "Ireland",
-                             completion: "")
+                             overViewController: self)
+        { (success, errorMessage) in
+            
+        }
     }
 
 }

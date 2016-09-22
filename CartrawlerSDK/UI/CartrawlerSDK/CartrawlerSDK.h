@@ -20,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CartrawlerSDK : NSObject
 
+//---CarRentalWithFlightDetails---
+typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *errorMessage);
+
+
 //---Car Rental View Controllers ---
 @property (nonatomic, strong, nonnull, readonly) CTViewController *searchDetailsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleSelectionViewController;
@@ -74,8 +78,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)presentGroundTransportInViewController:(UIViewController *)viewController;
 
 - (void)presentCarRentalWithFlightDetails:(NSString *)IATACode
+                               pickupDate:(NSDate *)pickupDate
+                               returnDate:(NSDate *)returnDate
                                 firstName:(NSString *)firstName
                                   surname:(NSString *)surname
+                                driverAge:(NSNumber *)driverAge
                      additionalPassengers:(NSNumber *)additionalPassengers
                                     email:(NSString *)email
                                     phone:(NSString *)phone
@@ -86,7 +93,8 @@ NS_ASSUME_NONNULL_BEGIN
                                  postcode:(NSString *)postcode
                               countryCode:(NSString *)countryCode
                               countryName:(NSString *)countryName
-                               completion:(id)completion;
+                       overViewController:(UIViewController *)viewController
+                               completion:(CarRentalWithFlightDetailsCompletion)completion;
 
 /**
  *  Register the CartrawlerSDK to use push notifications so information can be sent to your customer about their booking

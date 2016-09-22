@@ -79,16 +79,7 @@
     
     self.search.driverAge = @30;
     self.search.passengerQty = @3;
-    
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *initialTimeComp = [gregorianCalendar components:NSHourCalendarUnit
-                                                             fromDate:[NSDate date]];
-    
-    initialTimeComp.hour = 10;
-    
-    _pickupTime = [gregorianCalendar dateFromComponents:initialTimeComp];
-    _dropoffTime = [gregorianCalendar dateFromComponents:initialTimeComp];
-    
+        
     _pickupTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
     _dropoffTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
 
@@ -230,10 +221,17 @@
     
     if (!self.search.pickupLocation) {
         [self.pickupView setTextFieldText:@""];
+    } else {
+        [self.pickupView setTextFieldText:self.search.pickupLocation.name];
     }
     
     if (!self.search.pickupDate) {
         [self.calendarView setTextFieldText:@""];
+        [self setDefaultPickupDropoffTimes];
+    } else if (self.search.dropoffDate && self.search.pickupDate) {
+        [self setDateString:self.search.pickupDate dropoffDate:self.search.dropoffDate];
+        [self.pickupTimeView setTextFieldText:[DateUtils stringFromDate:self.search.pickupDate withFormat:@"hh:mm a"]];
+        [self.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:self.search.dropoffDate withFormat:@"hh:mm a"]];
     }
     
     if (!self.search.driverAge) {
@@ -248,14 +246,31 @@
 
 - (void)didPickDates:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
 {
+    self.search.pickupDate = pickupDate;
+    self.search.dropoffDate = dropoffDate;
+    [self setDateString:self.search.pickupDate dropoffDate:self.search.dropoffDate];
+}
+
+- (void)setDateString:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
+{
     NSString *dateString = [NSString stringWithFormat:@"%@ - %@",
                             [DateUtils shortDescriptionFromDate:pickupDate],
                             [DateUtils shortDescriptionFromDate:dropoffDate]];
     
     [self.calendarView setTextFieldText:dateString];
+}
+
+- (void)setDefaultPickupDropoffTimes
+{
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *initialTimeComp = [gregorianCalendar components:NSHourCalendarUnit
+                                                             fromDate:[NSDate date]];
+    initialTimeComp.hour = 10;
     
-    (self.search).pickupDate = pickupDate;
-    (self.search).dropoffDate = dropoffDate;
+    _pickupTime = [gregorianCalendar dateFromComponents:initialTimeComp];
+    _dropoffTime = [gregorianCalendar dateFromComponents:initialTimeComp];
+    [self.pickupTimeView setTextFieldText:[DateUtils stringFromDate:self.pickupTime withFormat:@"hh:mm a"]];
+    [self.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:self.dropoffTime withFormat:@"hh:mm a"]];
 }
 
 - (void)combineDates
