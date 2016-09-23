@@ -175,6 +175,8 @@
 		4588E3191D538FB1008F4267 /* PaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4588E3171D538FB1008F4267 /* PaymentRequest.m */; };
 		458954921D58C1B00006D34F /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 458954901D58C1B00006D34F /* Reachability.h */; };
 		458954931D58C1B00006D34F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 458954911D58C1B00006D34F /* Reachability.m */; };
+		4590BBF21D9512F000CD9ED5 /* PageSelectionCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4590BBF01D9512F000CD9ED5 /* PageSelectionCollectionViewCell.h */; };
+		4590BBF31D9512F000CD9ED5 /* PageSelectionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4590BBF11D9512F000CD9ED5 /* PageSelectionCollectionViewCell.m */; };
 		45AC545D1D1309F300805268 /* JVFloatLabeledTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E51D1302FF00ACF604 /* JVFloatLabeledTextField.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC545E1D1309FB00805268 /* NSStringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E71D1302FF00ACF604 /* NSStringUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45AC545F1D130A0000805268 /* CTCheckbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E11D1302EF00ACF604 /* CTCheckbox.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -446,6 +448,8 @@
 		4588E3171D538FB1008F4267 /* PaymentRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentRequest.m; sourceTree = "<group>"; };
 		458954901D58C1B00006D34F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		458954911D58C1B00006D34F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		4590BBF01D9512F000CD9ED5 /* PageSelectionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageSelectionCollectionViewCell.h; sourceTree = "<group>"; };
+		4590BBF11D9512F000CD9ED5 /* PageSelectionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageSelectionCollectionViewCell.m; sourceTree = "<group>"; };
 		45AC547B1D13E47F00805268 /* StepOne.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepOne.storyboard; sourceTree = "<group>"; };
 		45B264F51D902C8B000005F2 /* GTBookingCompletionValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTBookingCompletionValidation.h; sourceTree = "<group>"; };
 		45B264F61D902C8B000005F2 /* GTBookingCompletionValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTBookingCompletionValidation.m; sourceTree = "<group>"; };
@@ -966,6 +970,8 @@
 			children = (
 				45DD07541D94162F00501FEE /* VehicleDetailsPageViewController.h */,
 				45DD07551D94162F00501FEE /* VehicleDetailsPageViewController.m */,
+				4590BBF01D9512F000CD9ED5 /* PageSelectionCollectionViewCell.h */,
+				4590BBF11D9512F000CD9ED5 /* PageSelectionCollectionViewCell.m */,
 			);
 			name = "Page View Controller";
 			sourceTree = "<group>";
@@ -1390,6 +1396,7 @@
 				4511E53F1D17F999000ED6B0 /* CTNavigationController.h in Headers */,
 				45D866D71D141BB100D19B74 /* LinkerUtils.h in Headers */,
 				45AC546D1D130A1600805268 /* CTCalendarTableViewCell.h in Headers */,
+				4590BBF21D9512F000CD9ED5 /* PageSelectionCollectionViewCell.h in Headers */,
 				45AC54621D130A1600805268 /* LocaleUtils.h in Headers */,
 				4546D40E1D8301700081A2F9 /* FilterCollectionViewDataSource.h in Headers */,
 				451FE5B31D6EF286004D85D1 /* InsuranceValidation.h in Headers */,
@@ -1603,6 +1610,7 @@
 				451C8EFF1D7ECCE900B9324D /* GroundTransportSearch.m in Sources */,
 				45E942D61D1302A200ACF604 /* DateUtils.m in Sources */,
 				4509B47C1D37ED8100259255 /* GTServiceTableViewCell.m in Sources */,
+				4590BBF31D9512F000CD9ED5 /* PageSelectionCollectionViewCell.m in Sources */,
 				451B4BEF1D2BC99B006A57E7 /* TermsDetailViewController.m in Sources */,
 				458773711D806064000CB1E5 /* GTPaymentRequest.m in Sources */,
 				451C8F151D7EF63D00B9324D /* GTPassengerDetailsValidation.m in Sources */,

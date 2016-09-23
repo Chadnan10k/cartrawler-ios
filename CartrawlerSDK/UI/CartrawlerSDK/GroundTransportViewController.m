@@ -77,7 +77,7 @@
 
     [self registerForKeyboardNotifications];
     
-    self.returnTripConstraint.constant = 8;
+    self.returnTripConstraint.constant = 16;
     self.returnTripContainer.alpha = 0;
     
     self.passengersTextField.delegate = self;
@@ -203,13 +203,13 @@
             [weakSelf.dropoffTimeView setTextFieldText:@""];
             [weakSelf.dropoffCalendarView setTextFieldText:@""];
 
-            weakSelf.returnTripConstraint.constant = 8;
+            weakSelf.returnTripConstraint.constant = 16;
             [UIView animateWithDuration:0.3 animations:^{
                 weakSelf.returnTripContainer.alpha = 0;
                 [weakSelf.view layoutIfNeeded];
             }];
         } else {
-            weakSelf.returnTripConstraint.constant = 70;
+            weakSelf.returnTripConstraint.constant = 95;
             [UIView animateWithDuration:0.3 animations:^{
                 weakSelf.returnTripContainer.alpha = 1;
                 [weakSelf.view layoutIfNeeded];

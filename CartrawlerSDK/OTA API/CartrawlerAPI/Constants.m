@@ -21,7 +21,7 @@ NSString *const CTLocationGTSearchHeader = @"CTLocationHeaderGT";
 NSString *const CTGroundTransportHeader = @"CTGroundTransportHeader";
 
 NSString *const CTTestInternalAPI = @"http://internal-dev.cartrawler.com:8180/cartrawlerota/json?type=";
-NSString *const CTTestAPI = @"http://external-dev.cartrawler.com:20002/cartrawlerota/json?type=";
+NSString *const CTTestAPI = @"http://external-dev.cartrawler.com/cartrawlerota/json?type=";
 NSString *const CTTestAPISecure = @"https://external-dev.cartrawler.com/cartrawlerpay/json?sec=true&type=";
 NSString *const CTTestTarget = @"Test";
 

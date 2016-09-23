@@ -62,11 +62,6 @@
     [self.scrollView setContentOffset:
      CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
     
-    self.insuranceView.layer.cornerRadius = 3;
-    self.insuranceView.layer.borderWidth = 1;
-    self.insuranceView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.insuranceView.layer.masksToBounds = YES;
-    
     if (self.search.selectedVehicle.vehicle.extraEquipment.count > 0) {
         [self.optionalExtrasView hideView:NO];
         (self.optionalExtrasView).extras = self.search.selectedVehicle.vehicle.extraEquipment;

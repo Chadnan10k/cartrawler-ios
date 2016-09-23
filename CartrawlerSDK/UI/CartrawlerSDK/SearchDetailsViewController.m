@@ -17,6 +17,12 @@
 
 #define kSearchViewStoryboard @"StepOne"
 
+#define kDropoffLocationOpen 94.0
+#define kDropoffLocationClosed 18.0
+
+#define kAgeOpen 67.0
+#define kAgeClosed 16.0
+
 @interface SearchDetailsViewController () <CTCalendarDelegate>
 
 @property (weak, nonatomic) IBOutlet CTTextField *ageContainer;
@@ -51,8 +57,6 @@
 @end
 
 @implementation SearchDetailsViewController
-
-//This all got fairly messy from the 'R&D' of the whole thing, refactor when we have some new designs
 
 + (void)forceLinkerLoad_
 {
@@ -162,7 +166,7 @@
         if (selection) {
             _isReturningSameLocation = NO;
             (weakSelf.search).dropoffLocation = self.search.pickupLocation;
-            self.dropoffLocTopConstraint.constant = 15;
+            self.dropoffLocTopConstraint.constant = kDropoffLocationClosed;
             [UIView animateWithDuration:0.3 animations:^{
                 self.dropoffView.alpha = 0;
                 [self.view layoutIfNeeded];
@@ -171,7 +175,7 @@
             _isReturningSameLocation = YES;
             [weakSelf.search setDropoffLocation:nil];
             [weakSelf.dropoffView setTextFieldText:@""];
-            self.dropoffLocTopConstraint.constant = 80;
+            self.dropoffLocTopConstraint.constant = kDropoffLocationOpen;
             [UIView animateWithDuration:0.3 animations:^{
                 self.dropoffView.alpha = 1;
                 [self.view layoutIfNeeded];
@@ -187,14 +191,14 @@
             [weakSelf.view endEditing:YES];
             weakSelf.driverUnderage = NO;
             weakSelf.search.driverAge = @30;
-            self.ageTopConstraint.constant = 0;
+            self.ageTopConstraint.constant = kAgeClosed;
             [UIView animateWithDuration:0.3 animations:^{
                 self.ageContainer.alpha = 0;
                 [self.view layoutIfNeeded];
             }];
         } else {
             weakSelf.driverUnderage = YES;
-            self.ageTopConstraint.constant = 50;
+            self.ageTopConstraint.constant = kAgeOpen;
            [UIView animateWithDuration:0.3 animations:^{
                self.ageContainer.alpha = 1;
                [self.view layoutIfNeeded];
@@ -202,10 +206,10 @@
         }
     };
     
-    self.dropoffLocTopConstraint.constant = 15;
+    self.dropoffLocTopConstraint.constant = kDropoffLocationClosed;
     self.dropoffView.alpha = 0;
     
-    self.ageTopConstraint.constant = 0;
+    self.ageTopConstraint.constant = kAgeClosed;
     self.ageContainer.alpha = 0;
     
     [self.view layoutIfNeeded];

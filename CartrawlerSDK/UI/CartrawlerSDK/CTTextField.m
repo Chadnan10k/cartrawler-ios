@@ -31,6 +31,10 @@
         self.layer.shadowOpacity = 0.2;
         self.layer.shadowRadius = 3;
     }
+    
+    self.layer.borderWidth = self.borderWidth;
+    self.layer.borderColor = self.borderColor.CGColor;
+
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder

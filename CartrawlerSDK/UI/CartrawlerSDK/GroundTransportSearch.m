@@ -29,8 +29,6 @@
     _airport = nil;
     _pickupLocation = nil;
     _dropoffLocation = nil;
-    _airportIsPickupLocation = nil;
-    _returnTrip = nil;
     _adultQty = nil;
     _childQty = nil;
     _infantQty = nil;

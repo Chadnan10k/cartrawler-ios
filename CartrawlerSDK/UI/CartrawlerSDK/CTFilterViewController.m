@@ -407,6 +407,14 @@
     [self.fuelPolicyTableView reloadData];
     [self.transmissionTableView reloadData];
     [self.carSpecsTableView reloadData];
+    
+    [self.filterFactory filter];
+
+    if (self.filterCompletion) {
+        self.filterCompletion(self.filterFactory.filteredData);
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)doneTapped:(id)sender

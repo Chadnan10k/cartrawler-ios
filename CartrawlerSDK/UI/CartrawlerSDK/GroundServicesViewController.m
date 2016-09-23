@@ -15,7 +15,6 @@
 @interface GroundServicesViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) CTGroundAvailability *availability;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UICollectionView *filterCollectionView;
 

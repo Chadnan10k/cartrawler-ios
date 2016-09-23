@@ -54,11 +54,11 @@
     
     self.reviewsAmount.text = [NSString stringWithFormat:@"Based on %ld customer reviews", (long)self.search.selectedVehicle.vendor.rating.totalReviews.integerValue];
     
-    _ratings = @[@{@"type" : @"Reviews", @"value" : @"680"},
-                 @{@"type" : @"Wait time", @"value" : @"10 mins"},
-                 @{@"type" : @"Overall Score", @"value" : @"8/10"},
-                 @{@"type" : @"Desk Review", @"value" : @"9/10"},
-                 @{@"type" : @"Car Review", @"value" : @"8/10"}];
+    _ratings = @[@{@"type" : @"Reviews", @"value" : self.search.selectedVehicle.vendor.rating.totalReviews.stringValue },
+                 @{@"type" : @"Wait time", @"value" : [NSString stringWithFormat:@"%@ mins", self.search.selectedVehicle.vendor.rating.waitTime.stringValue]},
+                 @{@"type" : @"Overall Score", @"value" : [NSString stringWithFormat:@"%.1f/10", self.search.selectedVehicle.vendor.rating.overallScore.doubleValue]},
+                 @{@"type" : @"Desk Review", @"value" : [NSString stringWithFormat:@"%.1f/10", self.search.selectedVehicle.vendor.rating.deskReview.doubleValue/10]},
+                 @{@"type" : @"Vehicle Review", @"value" : [NSString stringWithFormat:@"%.1f/10", self.search.selectedVehicle.vendor.rating.carReview.doubleValue/10]}];
     
     [self.collectionView reloadData];
 }

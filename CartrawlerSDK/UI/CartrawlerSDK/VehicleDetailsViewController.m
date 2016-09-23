@@ -99,27 +99,27 @@
     [self.view layoutIfNeeded];
     
     if (self.search.selectedVehicle.vehicle.totalPriceForThisVehicle) {
-    
-    NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
-    NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];
-    
-    NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject
+        
+        NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
+        NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];
+        
+        NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject
+                                                                      attributes:@{NSFontAttributeName:
+                                                                                       [UIFont fontWithName:[CTAppearance instance].boldFontName size:20]}];
+        
+        NSAttributedString *dot = [[NSAttributedString alloc] initWithString:@"."
                                                                   attributes:@{NSFontAttributeName:
-                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:20]}];
-    
-    NSAttributedString *dot = [[NSAttributedString alloc] initWithString:@"."
-                                                              attributes:@{NSFontAttributeName:
-                                                                               [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
-    
-    NSAttributedString *cents = [[NSAttributedString alloc] initWithString:priceStrings.lastObject
-                                                                attributes:@{NSFontAttributeName:
-                                                                                 [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
-    
-    [priceString appendAttributedString:dollars];
-    [priceString appendAttributedString:dot];
-    [priceString appendAttributedString:cents];
-    
-    self.priceLabel.attributedText = priceString;
+                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
+        
+        NSAttributedString *cents = [[NSAttributedString alloc] initWithString:priceStrings.lastObject
+                                                                    attributes:@{NSFontAttributeName:
+                                                                                     [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
+        
+        [priceString appendAttributedString:dollars];
+        [priceString appendAttributedString:dot];
+        [priceString appendAttributedString:cents];
+        
+        self.priceLabel.attributedText = priceString;
     }
     
 }

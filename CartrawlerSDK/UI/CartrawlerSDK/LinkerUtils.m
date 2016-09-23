@@ -80,6 +80,7 @@
 #import "InclusionsTableViewCell.h"
 #import "VehicleDetailsPageViewController.h"
 #import "SupplierRatingCollectionViewCell.h"
+#import "PageSelectionCollectionViewCell.h"
 
 @implementation LinkerUtils
 
@@ -157,6 +158,8 @@
     [InclusionsTableViewCell forceLinkerLoad_];
     [VehicleDetailsPageViewController forceLinkerLoad_];
     [SupplierRatingCollectionViewCell forceLinkerLoad_];
+    [PageSelectionCollectionViewCell forceLinkerLoad_];
+
 }
 
 @end

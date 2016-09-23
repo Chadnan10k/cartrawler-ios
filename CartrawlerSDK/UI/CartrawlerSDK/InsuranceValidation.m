@@ -70,7 +70,7 @@
              
              dispatch_async(dispatch_get_main_queue(), ^{
                  search.insurance = response;
-                 completion(response, nil);
+                 completion(YES, nil);
              });
              
          } else {

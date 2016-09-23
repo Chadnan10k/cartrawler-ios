@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet CTLabel *passengersLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *greetingLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *companyLabel;
 @property (nonatomic, strong) NSArray <CTGroundInclusion *> *inclusions;
 @property (weak, nonatomic) IBOutlet UICollectionView *inclusionsCollectionView;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *inclusionHeightConstraint;
@@ -57,9 +58,9 @@
     _inclusions = service.inclusions;
 
     self.carTypeLabel.text = [self serviceLevel:service.serviceLevel];
-    //self.serviceLevelLabel.text = service.serviceLevel;
-    self.baggageLabel.text = [NSString stringWithFormat:@"%@", service.maxBaggage];
-    self.passengersLabel.text = [NSString stringWithFormat:@"%@", service.maxPassengers];
+    self.companyLabel.text = service.companyName;
+    self.baggageLabel.text = [NSString stringWithFormat:@"%@ bags", service.maxBaggage];
+    self.passengersLabel.text = [NSString stringWithFormat:@"%@ passengers", service.maxPassengers];
     
     if (service.meetAndGreet) {
         NSAttributedString *pickupType = [[NSAttributedString alloc] initWithString:@"Meet and Greet: "

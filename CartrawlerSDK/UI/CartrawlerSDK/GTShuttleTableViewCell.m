@@ -60,8 +60,8 @@
     self.shuttleName.text = shuttle.companyName;
     self.shuttleInfo.text = [self shuttleServiceLevel:shuttle.serviceLevel];
     
-    self.baggageLabel.text = [NSString stringWithFormat:@"%@", shuttle.maxBaggage];
-    self.passengersLabel.text = [NSString stringWithFormat:@"%@", shuttle.maxPassengers];
+    self.baggageLabel.text = [NSString stringWithFormat:@"%@ bags", shuttle.maxBaggage];
+    self.passengersLabel.text = [NSString stringWithFormat:@"%@ passengers", shuttle.maxPassengers];
     self.priceLabel.text = [NSNumberUtils numberStringWithCurrencyCode:shuttle.totalCharge];
     
     [self.inclusionsCollectionView reloadData];

@@ -45,13 +45,16 @@
                                       if (error == nil) {
                                           if (data != nil) {
                                               UIImage *image = [[UIImage alloc] initWithData:data];
-                                              [[CTImageCache sharedInstance] setObject:image
-                                                                                forKey:imageUrl.absoluteString
-                                                                                  cost:data.length];
                                               
-                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                  completion(image);
-                                              });
+                                              if (image != nil) {
+                                                  [[CTImageCache sharedInstance] setObject:image
+                                                                                    forKey:imageUrl.absoluteString
+                                                                                      cost:data.length];
+                                                  
+                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                      completion(image);
+                                                  });
+                                              }
                                           }
                                       }
                                   }];

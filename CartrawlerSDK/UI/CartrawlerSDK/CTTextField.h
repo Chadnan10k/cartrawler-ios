@@ -13,6 +13,8 @@ IB_DESIGNABLE
 @interface CTTextField : JVFloatLabeledTextField
 
 @property (nonatomic) IBInspectable BOOL enableShadow;
+@property (nonatomic) IBInspectable CGFloat borderWidth;
+@property (nonatomic) IBInspectable UIColor *borderColor;
 
 + (void)forceLinkerLoad_;
 
