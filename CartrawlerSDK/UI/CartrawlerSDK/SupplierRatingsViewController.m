@@ -81,7 +81,7 @@
     
     _ratings = @[
                  @{@"type" : @"Wait time", @"value" : [NSString stringWithFormat:@"%@ mins", self.search.selectedVehicle.vendor.rating.waitTime.stringValue]},
-                 @{@"type" : @"Overall Score", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.overallScore.doubleValue]},
+                 @{@"type" : @"Overall Score", @"value" : [NSString stringWithFormat:@"%.1f/10", self.search.selectedVehicle.vendor.rating.overallScore.floatValue * 2]},
                  @{@"type" : @"Desk Review", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.deskReview.doubleValue/10]},
                  @{@"type" : @"Vehicle Review", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.carReview.doubleValue/10]}];
     

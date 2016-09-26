@@ -80,7 +80,7 @@
                                             <constraint firstItem="hCE-UD-4wA" firstAttribute="top" secondItem="cba-4A-LKy" secondAttribute="top" constant="11" id="col-lw-jzn"/>
                                             <constraint firstItem="zHr-zH-ujB" firstAttribute="top" secondItem="cba-4A-LKy" secondAttribute="top" constant="8" id="dua-o8-ebP"/>
                                             <constraint firstItem="tcm-aS-z3O" firstAttribute="centerY" secondItem="hCE-UD-4wA" secondAttribute="centerY" constant="0.5" id="eDW-JF-JHN"/>
-                                            <constraint firstItem="hCE-UD-4wA" firstAttribute="leading" secondItem="cba-4A-LKy" secondAttribute="leading" constant="17" id="reR-7v-r9K"/>
+                                            <constraint firstItem="hCE-UD-4wA" firstAttribute="leading" secondItem="cba-4A-LKy" secondAttribute="leading" constant="8" id="reR-7v-r9K"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="enableShadow" value="NO"/>
@@ -133,7 +133,7 @@
                                             <constraint firstItem="Rbr-dv-1Yv" firstAttribute="top" secondItem="U3D-4j-EDX" secondAttribute="top" constant="10" id="8lI-Er-GT9"/>
                                             <constraint firstAttribute="trailing" secondItem="Rbr-dv-1Yv" secondAttribute="trailing" constant="24" id="Gwe-UU-vPK"/>
                                             <constraint firstAttribute="height" constant="49" id="e5t-Iw-NKP"/>
-                                            <constraint firstItem="YGt-YP-aIF" firstAttribute="leading" secondItem="U3D-4j-EDX" secondAttribute="leading" constant="15" id="gTv-rf-rJJ"/>
+                                            <constraint firstItem="YGt-YP-aIF" firstAttribute="leading" secondItem="U3D-4j-EDX" secondAttribute="leading" constant="8" id="gTv-rf-rJJ"/>
                                             <constraint firstItem="YGt-YP-aIF" firstAttribute="top" secondItem="U3D-4j-EDX" secondAttribute="top" constant="13" id="j3j-u6-FV7"/>
                                             <constraint firstItem="Fpm-Je-qX2" firstAttribute="leading" secondItem="YGt-YP-aIF" secondAttribute="trailing" constant="8" id="wNo-Vq-w6M"/>
                                             <constraint firstItem="Fpm-Je-qX2" firstAttribute="centerY" secondItem="YGt-YP-aIF" secondAttribute="centerY" constant="-2" id="wi3-cG-dvg"/>
@@ -1017,13 +1017,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="airport_gray" width="32" height="32"/>
+        <image name="airport_gray" width="50" height="50"/>
         <image name="backArrow" width="32" height="32"/>
-        <image name="baggage" width="32" height="32"/>
+        <image name="baggage" width="100" height="100"/>
         <image name="checkmark" width="32" height="32"/>
-        <image name="doors" width="32" height="32"/>
-        <image name="fuel" width="32" height="32"/>
-        <image name="gears" width="32" height="32"/>
+        <image name="doors" width="50" height="50"/>
+        <image name="fuel" width="50" height="50"/>
+        <image name="gears" width="50" height="50"/>
         <image name="people" width="32" height="32"/>
     </resources>
 </document>

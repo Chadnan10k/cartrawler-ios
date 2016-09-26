@@ -99,12 +99,12 @@
     
     if ([extraId isEqualToString:@"8"]) {
         //toddler seat
-        return [UIImage imageNamed:@"booster_seat" inBundle:bundle compatibleWithTraitCollection:nil];
+        return [UIImage imageNamed:@"toddler_seat" inBundle:bundle compatibleWithTraitCollection:nil];
     }
     
     if ([extraId isEqualToString:@"7"]) {
         //infant seat
-        return [UIImage imageNamed:@"booster_seat" inBundle:bundle compatibleWithTraitCollection:nil];
+        return [UIImage imageNamed:@"infant_seat" inBundle:bundle compatibleWithTraitCollection:nil];
     }
     
     if ([extraId isEqualToString:@"13"]) {
