@@ -44,6 +44,8 @@
 - (void)updateData:(NSString *)partialText completion:(void (^)(BOOL didSucceed))completion
 {
     
+    __weak typeof (self) weakSelf = self;
+    
     _airportLocations = [[NSMutableArray alloc] init];
     _otherLocations = [[NSMutableArray alloc] init];
     completion(YES);//clear the view of any current results
@@ -54,13 +56,15 @@
      {
         if (error == nil) {
             dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [weakSelf.airportLocations removeAllObjects];
 
                 for (CTMatchedLocation *location in response.matchedLocations) {
                     if (location.isAtAirport) {
-                        [self.airportLocations addObject:location];
+                        [weakSelf.airportLocations addObject:location];
                     } else {
-                        if (!self.enableGroundTransportLocations) {
-                            [self.otherLocations addObject:location];
+                        if (!weakSelf.enableGroundTransportLocations) {
+                            [weakSelf.otherLocations addObject:location];
                         }
                     }
                 }
@@ -76,7 +80,7 @@
     if (self.enableGroundTransportLocations) {
         [GooglePlaceService searchWithPartialString:partialText completion:^(BOOL success, NSArray *results) {
             if (results) {
-                [self.otherLocations addObjectsFromArray:results];
+                [weakSelf.otherLocations addObjectsFromArray:results];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completion(YES);
                 });
