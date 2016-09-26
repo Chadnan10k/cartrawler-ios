@@ -255,8 +255,8 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="oHr-O3-KVD"/>
                                                 <exclude reference="L30-8C-82Y"/>
+                                                <exclude reference="oHr-O3-KVD"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -592,7 +592,7 @@
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First class" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDP-ok-i72" customClass="CTLabel">
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="16" id="wL9-9w-Keb"/>
+                                                                <constraint firstAttribute="height" constant="24" id="wL9-9w-Keb"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
                                                             <color key="textColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -705,7 +705,7 @@
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPq-uK-OJb" customClass="CTLabel">
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="16" id="YVp-sL-y7k"/>
+                                                                <constraint firstAttribute="height" constant="24" id="YVp-sL-y7k"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
                                                             <color key="textColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1993,10 +1993,10 @@
     </scenes>
     <resources>
         <image name="backArrow" width="32" height="32"/>
-        <image name="baggage" width="32" height="32"/>
+        <image name="baggage" width="100" height="100"/>
         <image name="black_checkmark" width="32" height="32"/>
         <image name="gt_car" width="256" height="170"/>
         <image name="gt_train" width="256" height="170"/>
-        <image name="people" width="32" height="32"/>
+        <image name="people" width="50" height="50"/>
     </resources>
 </document>
