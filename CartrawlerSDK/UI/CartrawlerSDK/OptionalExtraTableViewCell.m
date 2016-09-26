@@ -9,15 +9,15 @@
 #import "OptionalExtraTableViewCell.h"
 #import "CTLabel.h"
 #import "NSNumberUtils.h"
+#import "CTStepper.h"
 
 @interface OptionalExtraTableViewCell()
-@property (weak, nonatomic) IBOutlet UIButton *addButton;
-@property (weak, nonatomic) IBOutlet UIButton *lessButton;
+
 @property (weak, nonatomic) IBOutlet CTLabel *amountLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *extraImageView;
 @property (weak, nonatomic) IBOutlet CTLabel *itemTitleLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *itemPriceLabel;
-//@property (nonatomic) NSInteger itemAmount;
+@property (weak, nonatomic) IBOutlet CTStepper *stepper;
 
 @end
 
@@ -33,13 +33,6 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.addButton.layer.cornerRadius = 5;
-    self.addButton.layer.masksToBounds = YES;
-    self.lessButton.layer.cornerRadius = 5;
-    self.lessButton.layer.masksToBounds = YES;
-    
-    self.lessButton.backgroundColor = [UIColor lightGrayColor];
-    self.addButton.backgroundColor = [UIColor darkGrayColor];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -59,7 +52,8 @@
     self.itemPriceLabel.text = [NSNumberUtils numberStringWithCurrencyCode: extra.chargeAmount];
     
     self.extraImageView.image = [self imageForExtra:extra.equipType];
-    
+    self.stepper.value = [NSNumber numberWithInteger:extra.qty].doubleValue;
+
     [self updateAmountLabel];
 }
 
@@ -77,27 +71,15 @@
     }
 }
 
+- (IBAction)qtyChanged:(id)sender {
+    
+    UIStepper *stepper = sender;
+    _extra.qty = [NSNumber numberWithDouble:stepper.value].integerValue;
+    [self updateAmountLabel];
+}
+
 - (void)updateAmountLabel
 {
-    
-    if (_extra.qty == 0) {
-        self.lessButton.backgroundColor = [UIColor lightGrayColor];
-    } else {
-        self.addButton.backgroundColor = [UIColor darkGrayColor];
-    }
-
-    if (_extra.qty == 4) {
-        self.addButton.backgroundColor = [UIColor lightGrayColor];
-        self.lessButton.backgroundColor = [UIColor darkGrayColor];
-    } else {
-        self.lessButton.backgroundColor = [UIColor darkGrayColor];
-    }
-    
-    if (!_extra.qty) {
-        self.addButton.backgroundColor = [UIColor darkGrayColor];
-        self.lessButton.backgroundColor = [UIColor lightGrayColor];
-    }
-    
     self.amountLabel.text = [NSString stringWithFormat:@"%ld", (long)_extra.qty];
 }
 

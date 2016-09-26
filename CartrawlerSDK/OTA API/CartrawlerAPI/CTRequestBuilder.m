@@ -464,6 +464,7 @@
                        adults:(NSString *)adults
                      children:(NSString *)children
                       infants:(NSString *)infants
+                      seniors:(NSString *)seniors
                  currencyCode:(NSString *)currencyCode
                      clientID:(NSString *)clientID
                        target:(NSString *)target
@@ -532,6 +533,10 @@
                                      @"{"
                                      @"    \"@Quantity\": \"%@\", \n"
                                      @"    \"Category\": \"Infant\" \n"
+                                     @"},"
+                                     @"{"
+                                     @"    \"@Quantity\": \"%@\", \n"
+                                     @"    \"Category\": \"Senior\" \n"
                                      @"}"
                                      @"],\"TPA_Extensions\":%@",
                      puDateTime,
@@ -546,6 +551,7 @@
                      adults,
                      children,
                      infants,
+                     seniors,
                      [NSString stringWithFormat:@"{\"ConsumerIP\": \"%@\" %@ }", ipaddress, dropoffTime]];
 
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:currencyCode], tail];

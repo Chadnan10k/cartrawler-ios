@@ -376,10 +376,10 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="Bwg-oq-oKf"/>
                                                 <exclude reference="XgW-hE-lVX"/>
                                                 <exclude reference="kEF-bn-ynO"/>
                                                 <exclude reference="Jpu-WH-6ep"/>
+                                                <exclude reference="Bwg-oq-oKf"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -752,8 +752,8 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SqW-i4-hhV" customClass="CTButton">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="p2z-Si-6SR"/>
-                                            <constraint firstAttribute="height" constant="20" id="vlT-44-2cV"/>
+                                            <constraint firstAttribute="width" constant="48" id="Anh-mq-bR2"/>
+                                            <constraint firstAttribute="height" constant="20" id="TRf-5x-fXE"/>
                                         </constraints>
                                         <state key="normal" title="Done">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -777,8 +777,8 @@
                                     <constraint firstItem="7OM-zy-kYl" firstAttribute="centerX" secondItem="lIJ-uF-TjO" secondAttribute="centerX" id="1vr-Qh-Q6w"/>
                                     <constraint firstItem="7OM-zy-kYl" firstAttribute="top" secondItem="lIJ-uF-TjO" secondAttribute="top" constant="28" id="71p-Ui-Jgj"/>
                                     <constraint firstAttribute="height" constant="60" id="BU3-VO-xSM"/>
-                                    <constraint firstItem="SqW-i4-hhV" firstAttribute="top" secondItem="lIJ-uF-TjO" secondAttribute="top" constant="29" id="ps8-L2-CqX"/>
-                                    <constraint firstItem="SqW-i4-hhV" firstAttribute="leading" secondItem="lIJ-uF-TjO" secondAttribute="leading" constant="8" id="yeS-9M-3VO"/>
+                                    <constraint firstAttribute="trailing" secondItem="SqW-i4-hhV" secondAttribute="trailing" constant="8" id="HAP-O1-8be"/>
+                                    <constraint firstItem="SqW-i4-hhV" firstAttribute="centerY" secondItem="7OM-zy-kYl" secondAttribute="centerY" id="ypj-WJ-PTJ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUl-G5-QHc" userLabel="CTCalendarView" customClass="CTCalendarView">
@@ -793,10 +793,10 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CalendarCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalendarCell" rowHeight="322" id="JqB-8l-X2u" customClass="CTCalendarTableViewCell">
-                                                <rect key="frame" x="0.0" y="28" width="1000" height="322"/>
+                                                <rect key="frame" x="0.0" y="28" width="375" height="322"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JqB-8l-X2u" id="8uf-Sl-dce">
-                                                    <frame key="frameInset" width="1000" height="321"/>
+                                                    <frame key="frameInset" width="375" height="321"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rUQ-Yj-b4C">
@@ -943,10 +943,10 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19h-a8-EoC" customClass="CTButton">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="25" id="IyP-Hb-feU"/>
+                                            <constraint firstAttribute="width" constant="47" id="IyP-Hb-feU"/>
                                             <constraint firstAttribute="height" constant="25" id="lMS-z9-evH"/>
                                         </constraints>
-                                        <state key="normal" image="close_button">
+                                        <state key="normal" title="Back">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -1013,12 +1013,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vf-D3-fSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1169" y="1836"/>
+            <point key="canvasLocation" x="1168.8" y="1835.5322338830586"/>
         </scene>
     </scenes>
     <resources>
         <image name="airport_gray" width="32" height="32"/>
-        <image name="close_button" width="32" height="32"/>
         <image name="settings" width="32" height="32"/>
     </resources>
 </document>

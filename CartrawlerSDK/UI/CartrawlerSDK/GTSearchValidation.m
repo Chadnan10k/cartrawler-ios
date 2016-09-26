@@ -43,6 +43,7 @@
                                     adultQty:search.adultQty
                                     childQty:search.childQty
                                    infantQty:search.infantQty
+                                   seniorQty:search.seniorQty
                                 currencyCode:[CTSDKSettings instance].currencyCode
                                   completion:^(CTGroundAvailability *response, CTErrorResponse *error) {
                                       if (response) {

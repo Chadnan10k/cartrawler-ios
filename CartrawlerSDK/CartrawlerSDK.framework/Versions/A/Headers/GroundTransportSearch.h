@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSNumber *adultQty;
 @property (nonatomic, strong) NSNumber *childQty;
 @property (nonatomic, strong) NSNumber *infantQty;
+@property (nonatomic, strong) NSNumber *seniorQty;
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *surname;
 @property (nonatomic, strong) NSString *email;

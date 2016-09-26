@@ -169,6 +169,7 @@
                        adults:(NSString *)adults
                      children:(NSString *)children
                       infants:(NSString *)infants
+                      seniors:(NSString *)seniors
                  currencyCode:(NSString *)currencyCode
                      clientID:(NSString *)clientID
                        target:(NSString *)target

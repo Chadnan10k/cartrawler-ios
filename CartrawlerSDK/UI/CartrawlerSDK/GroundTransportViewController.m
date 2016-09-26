@@ -18,6 +18,7 @@
 #import "CTTextField.h"
 #import "CTSDKSettings.h"
 #import "CTButton.h"
+#import "PassengerSelectionViewController.h"
 
 @interface GroundTransportViewController () <CTCalendarDelegate, UITextFieldDelegate>
 
@@ -26,17 +27,17 @@
 
 @property (weak, nonatomic) IBOutlet CTButton *searchButton;
 @property (weak, nonatomic) IBOutlet CTCheckbox *sameLocationCheckBox;
-@property (weak, nonatomic) IBOutlet CTTextField *passengersTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) UIView *activeView;
 
-@property (strong, nonatomic) IBOutlet CTSelectView *pickupView;
-@property (strong, nonatomic) IBOutlet CTSelectView *dropoffView;
-@property (strong, nonatomic) IBOutlet CTSelectView *calendarView;
-@property (strong, nonatomic) IBOutlet CTSelectView *pickupTimeView;
-@property (strong, nonatomic) IBOutlet CTSelectView *dropoffCalendarView;
-@property (strong, nonatomic) IBOutlet CTSelectView *dropoffTimeView;
+@property (weak, nonatomic) IBOutlet CTSelectView *pickupView;
+@property (weak, nonatomic) IBOutlet CTSelectView *dropoffView;
+@property (weak, nonatomic) IBOutlet CTSelectView *calendarView;
+@property (weak, nonatomic) IBOutlet CTSelectView *pickupTimeView;
+@property (weak, nonatomic) IBOutlet CTSelectView *dropoffCalendarView;
+@property (weak, nonatomic) IBOutlet CTSelectView *dropoffTimeView;
+@property (weak, nonatomic) IBOutlet CTSelectView *passengersView;
 
 @property (strong, nonatomic) CTTimePickerView *pickupTimePicker;
 @property (strong, nonatomic) CTTimePickerView *dropoffTimePicker;
@@ -79,8 +80,6 @@
     
     self.returnTripConstraint.constant = 16;
     self.returnTripContainer.alpha = 0;
-    
-    self.passengersTextField.delegate = self;
     
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *initialTimeComp = [gregorianCalendar components:NSHourCalendarUnit
@@ -180,6 +179,19 @@
         [weakSelf presentViewController:vc animated:YES completion:nil];
     };
     
+    self.passengersView.placeholder = @"Passengers";
+    self.passengersView.viewTapped = ^{
+        _activeView = self.passengersView;
+        PassengerSelectionViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"PassengerSelectionViewController"];
+        vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        vc.groundSearch = weakSelf.groundSearch;
+        [weakSelf presentViewController:vc animated:YES completion:nil];
+        
+        vc.updatedData = ^(NSString *text){
+            [weakSelf.passengersView setTextFieldText:text];
+        };
+    };
+    
     self.dropoffCalendarView.placeholder = @"Dropoff date";
     self.dropoffCalendarView.viewTapped = ^{
         if (weakSelf.pickupDate == nil) {
@@ -248,7 +260,8 @@
     }
     
     if (!self.groundSearch.adultQty) {
-        self.passengersTextField.text = @"";
+        [self.passengersView setTextFieldText:@""];
+        self.passengersView.placeholder = @"Passengers";
     }
 }
 
@@ -359,12 +372,6 @@
     self.groundSearch.pickupLocation = pickupLoc;
     self.groundSearch.dropoffLocation = dropoffLoc;
     
-    NSNumberFormatter *nf = [NSNumberFormatter new];
-    
-    self.groundSearch.adultQty = [nf numberFromString:self.passengersTextField.text];
-    self.groundSearch.childQty = @0;
-    self.groundSearch.infantQty = @0;
-    
     if ([self validate]) {
         b.enabled = NO;
         b.alpha = 0.8;
@@ -403,7 +410,7 @@
     }
     
     if (!self.groundSearch.adultQty) {
-        [self.passengersTextField shakeAnimation];
+        [self.passengersView shakeAnimation];
         validated = NO;
     }
 

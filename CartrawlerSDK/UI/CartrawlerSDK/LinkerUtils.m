@@ -81,6 +81,8 @@
 #import "VehicleDetailsPageViewController.h"
 #import "SupplierRatingCollectionViewCell.h"
 #import "PageSelectionCollectionViewCell.h"
+#import "PassengerSelectionViewController.h"
+#import "CTStepper.h"
 
 @implementation LinkerUtils
 
@@ -159,7 +161,8 @@
     [VehicleDetailsPageViewController forceLinkerLoad_];
     [SupplierRatingCollectionViewCell forceLinkerLoad_];
     [PageSelectionCollectionViewCell forceLinkerLoad_];
-
+    [PassengerSelectionViewController forceLinkerLoad_];
+    [CTStepper forceLinkerLoad_];
 }
 
 @end

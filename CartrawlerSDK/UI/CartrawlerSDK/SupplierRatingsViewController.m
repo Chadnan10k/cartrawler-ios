@@ -9,6 +9,7 @@
 #import "SupplierRatingsViewController.h"
 #import "CTImageCache.h"
 #import "SupplierRatingCollectionViewCell.h"
+#import "CTAppearance.h"
 
 @interface SupplierRatingsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *ratingScore;
@@ -44,21 +45,45 @@
         self.vendorImageView.image = image;
     }];
     
-    self.ratingScore.text = [NSString stringWithFormat:@"%.1f/10", self.search.selectedVehicle.vendor.rating.overallScore.floatValue * 2];
+    NSAttributedString *scoreAttr = [[NSAttributedString alloc] initWithString: [NSString stringWithFormat:@"%.1f", self.search.selectedVehicle.vendor.rating.overallScore.floatValue * 2]
+                                                                         attributes:@{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].boldFontName size:30.0], NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
+    NSAttributedString *scoreBaseAttr = [[NSAttributedString alloc] initWithString:@" / 10"
+                                                                         attributes:@{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].fontName size:15.0], NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
+    NSMutableAttributedString *scoreStr = [[NSMutableAttributedString alloc] init];
+    [scoreStr appendAttributedString:scoreAttr];
+    [scoreStr appendAttributedString:scoreBaseAttr];
+    self.ratingScore.attributedText = scoreStr;
+    
+    NSString *ratingType = @"";
     
     if (self.search.selectedVehicle.vendor.rating.overallScore.floatValue * 2 < 5) {
-        self.ratingDescription.text = @"Below average";
+        ratingType = @"Below average";
+    } else if (self.search.selectedVehicle.vendor.rating.overallScore.floatValue * 2 < 7)  {
+        ratingType = @"Good";
     } else {
-        self.ratingDescription.text = @"Good";
+        ratingType = @"Excellent";
     }
     
-    self.reviewsAmount.text = [NSString stringWithFormat:@"Based on %ld customer reviews", (long)self.search.selectedVehicle.vendor.rating.totalReviews.integerValue];
+    NSAttributedString *ratingTypeAttr = [[NSAttributedString alloc] initWithString:ratingType
+                                                                         attributes:@{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].boldFontName size:20.0], NSForegroundColorAttributeName: [UIColor yellowColor]}];
     
-    _ratings = @[@{@"type" : @"Reviews", @"value" : self.search.selectedVehicle.vendor.rating.totalReviews.stringValue },
+    NSAttributedString *ratingBaseAttr = [[NSAttributedString alloc] initWithString:@"Customers rate this company as "
+                                                                         attributes:@{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].fontName size:20.0], NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
+    NSMutableAttributedString *ratingStr = [[NSMutableAttributedString alloc] init];
+    [ratingStr appendAttributedString:ratingBaseAttr];
+    [ratingStr appendAttributedString:ratingTypeAttr];
+    self.ratingDescription.attributedText = ratingStr;
+    
+    self.reviewsAmount.text = [NSString stringWithFormat:@"%ld reviews", (long)self.search.selectedVehicle.vendor.rating.totalReviews.integerValue];
+    
+    _ratings = @[
                  @{@"type" : @"Wait time", @"value" : [NSString stringWithFormat:@"%@ mins", self.search.selectedVehicle.vendor.rating.waitTime.stringValue]},
-                 @{@"type" : @"Overall Score", @"value" : [NSString stringWithFormat:@"%.1f/10", self.search.selectedVehicle.vendor.rating.overallScore.doubleValue]},
-                 @{@"type" : @"Desk Review", @"value" : [NSString stringWithFormat:@"%.1f/10", self.search.selectedVehicle.vendor.rating.deskReview.doubleValue/10]},
-                 @{@"type" : @"Vehicle Review", @"value" : [NSString stringWithFormat:@"%.1f/10", self.search.selectedVehicle.vendor.rating.carReview.doubleValue/10]}];
+                 @{@"type" : @"Overall Score", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.overallScore.doubleValue]},
+                 @{@"type" : @"Desk Review", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.deskReview.doubleValue/10]},
+                 @{@"type" : @"Vehicle Review", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.carReview.doubleValue/10]}];
     
     [self.collectionView reloadData];
 }
@@ -86,6 +111,10 @@
 {
     return CGSizeMake(collectionView.frame.size.width/2-30, 105);
 }
+
+//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+//    return UIEdgeInsetsMake(8, 8, 8, 8);
+//}
 
 
 @end

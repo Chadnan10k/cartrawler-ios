@@ -12,7 +12,7 @@
 #import "CTView.h"
 #import "CTSegmentedControl.h"
 
-@interface VehicleDetailsPageViewController () <UIPageViewControllerDataSource, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface VehicleDetailsPageViewController () <UIPageViewControllerDataSource>
 
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic) int index;
@@ -63,8 +63,6 @@
         [weakSelf.vehicleDetails stopAnimating];
     };
     
-    //[self.selectionCollectionView reloadData];
-
 }
 
 - (void)viewDidLoad {
@@ -82,9 +80,6 @@
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-    
-//    self.selectionCollectionView.delegate = self;
-//    self.selectionCollectionView.dataSource = self;
     
     [self.view bringSubviewToFront:self.headerView];
 
@@ -134,61 +129,6 @@
 {
     [self.selectionControl setSelectedSegmentIndex:(forward ? 1:0)];
     return self.viewArray[index];
-}
-
-#pragma MARK CollectionView
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return self.viewArray.count;
-}
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 1;
-}
-
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    PageSelectionCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    switch (indexPath.row) {
-        case 0:
-            [cell setText:@"Vehicle"];
-            break;
-        case 1:
-            [cell setText:@"Supplier"];
-            break;
-        default:
-            break;
-    }
-    return cell;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [(PageSelectionCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath] animate];
-    
-    switch (indexPath.row) {
-        case 0:
-            [self.pageViewController setViewControllers:@[self.vehicleDetails] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
-            break;
-        case 1:
-            [self.pageViewController setViewControllers:@[self.supplierDetails] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-            break;
-        default:
-            break;
-    }
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (self.search.selectedVehicle.vendor.rating) {
-        return CGSizeMake(collectionView.frame.size.width/2, collectionView.frame.size.height);
-    } else {
-        return CGSizeMake(collectionView.frame.size.width, collectionView.frame.size.height);
-    }
 }
 
 #pragma MARK CTSegmentedControl

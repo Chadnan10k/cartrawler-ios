@@ -473,6 +473,7 @@
                          adultQty:(NSNumber *)adultQty
                          childQty:(NSNumber *)childQty
                         infantQty:(NSNumber *)infantQty
+                        seniorQty:(NSNumber *)seniorQty
                      currencyCode:(NSString *)currencyCode
                        completion:(GroundAvailCompletion)completion
 {
@@ -491,6 +492,7 @@
                                                       adults:adultQty.stringValue
                                                     children:childQty.stringValue
                                                      infants:infantQty.stringValue
+                                                     seniors:seniorQty.stringValue
                                                 currencyCode:currencyCode
                                                     clientID:self.clientAPIKey
                                                       target:self.apiTarget

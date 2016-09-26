@@ -114,6 +114,10 @@
 		453EE5201D53381300D92E59 /* CarRentalSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 4557FE3F1D3636400026F038 /* CarRentalSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		453FD4431D588076002E4CC6 /* PaymentCompletionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 453FD4411D588076002E4CC6 /* PaymentCompletionViewController.h */; };
 		453FD4441D588076002E4CC6 /* PaymentCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 453FD4421D588076002E4CC6 /* PaymentCompletionViewController.m */; };
+		454446391D991B3C0047873F /* PassengerSelectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454446371D991B3C0047873F /* PassengerSelectionViewController.h */; };
+		4544463A1D991B3C0047873F /* PassengerSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454446381D991B3C0047873F /* PassengerSelectionViewController.m */; };
+		4544463E1D992BAA0047873F /* CTStepper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4544463C1D992BAA0047873F /* CTStepper.h */; };
+		4544463F1D992BAA0047873F /* CTStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4544463D1D992BAA0047873F /* CTStepper.m */; };
 		4546D40E1D8301700081A2F9 /* FilterCollectionViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 4546D40C1D8301700081A2F9 /* FilterCollectionViewDataSource.h */; };
 		4546D40F1D8301700081A2F9 /* FilterCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4546D40D1D8301700081A2F9 /* FilterCollectionViewDataSource.m */; };
 		4546D4121D8303A90081A2F9 /* GTFilterCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4546D4101D8303A90081A2F9 /* GTFilterCollectionViewCell.h */; };
@@ -388,6 +392,10 @@
 		4538D2541D14436600C723E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CartrawlerResources/Info.plist; sourceTree = SOURCE_ROOT; };
 		453FD4411D588076002E4CC6 /* PaymentCompletionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentCompletionViewController.h; sourceTree = "<group>"; };
 		453FD4421D588076002E4CC6 /* PaymentCompletionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentCompletionViewController.m; sourceTree = "<group>"; };
+		454446371D991B3C0047873F /* PassengerSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerSelectionViewController.h; sourceTree = "<group>"; };
+		454446381D991B3C0047873F /* PassengerSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerSelectionViewController.m; sourceTree = "<group>"; };
+		4544463C1D992BAA0047873F /* CTStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTStepper.h; sourceTree = "<group>"; };
+		4544463D1D992BAA0047873F /* CTStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTStepper.m; sourceTree = "<group>"; };
 		4546D40C1D8301700081A2F9 /* FilterCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCollectionViewDataSource.h; sourceTree = "<group>"; };
 		4546D40D1D8301700081A2F9 /* FilterCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCollectionViewDataSource.m; sourceTree = "<group>"; };
 		4546D4101D8303A90081A2F9 /* GTFilterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTFilterCollectionViewCell.h; sourceTree = "<group>"; };
@@ -576,6 +584,8 @@
 			children = (
 				45EE26DD1D37A79900A1FB51 /* GroundTransportViewController.h */,
 				45EE26DE1D37A79900A1FB51 /* GroundTransportViewController.m */,
+				454446371D991B3C0047873F /* PassengerSelectionViewController.h */,
+				454446381D991B3C0047873F /* PassengerSelectionViewController.m */,
 			);
 			name = "Step One";
 			sourceTree = "<group>";
@@ -702,7 +712,6 @@
 			children = (
 				451FE5A91D6EF248004D85D1 /* GenericValidation.h */,
 				451FE5AA1D6EF248004D85D1 /* GenericValidation.m */,
-				451FE5AD1D6EF286004D85D1 /* InsuranceValidation.h */,
 				451FE5AE1D6EF286004D85D1 /* InsuranceValidation.m */,
 				451FE5AF1D6EF286004D85D1 /* PaymentValidation.h */,
 				451FE5B01D6EF286004D85D1 /* PaymentValidation.m */,
@@ -751,6 +760,15 @@
 				4530DA321D46660900CF3186 /* CTTextView.m */,
 			);
 			name = UITextView;
+			sourceTree = "<group>";
+		};
+		4544463B1D992B950047873F /* UIStepper */ = {
+			isa = PBXGroup;
+			children = (
+				4544463C1D992BAA0047873F /* CTStepper.h */,
+				4544463D1D992BAA0047873F /* CTStepper.m */,
+			);
+			name = UIStepper;
 			sourceTree = "<group>";
 		};
 		4546D40B1D8301550081A2F9 /* Filter Collection View */ = {
@@ -1177,6 +1195,7 @@
 		45E942D71D1302B800ACF604 /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
+				4544463B1D992B950047873F /* UIStepper */,
 				45C1ECF21D5102FF0059EF89 /* UITableView */,
 				45EC25081D48E02E00A3C09D /* UISegmentedControl */,
 				45137C811D476A9800089928 /* UIPickerView */,
@@ -1285,6 +1304,7 @@
 				451C8F011D7ECD6800B9324D /* Ground Transport */,
 				451C8F001D7ECD5C00B9324D /* Car Rental */,
 				451C8F061D7ED78100B9324D /* CTValidation.h */,
+				451FE5AD1D6EF286004D85D1 /* InsuranceValidation.h */,
 				451C8F0B1D7EE21200B9324D /* CTValidation.m */,
 			);
 			name = "View Manager";
@@ -1316,6 +1336,7 @@
 				458773681D7F1478000CB1E5 /* GTPaymentViewController.h in Headers */,
 				45E942F11D13060E00ACF604 /* CartrawlerSDK.h in Headers */,
 				4511E5321D17F6C8000ED6B0 /* CTNavigationBar.h in Headers */,
+				4544463E1D992BAA0047873F /* CTStepper.h in Headers */,
 				454AD7C31D2AAD14005C6CFF /* IncludedCollectionViewCell.h in Headers */,
 				45AC54681D130A1600805268 /* CTTimePickerView.h in Headers */,
 				450F9D411D3CE9D6002C6F6B /* CSVItem.h in Headers */,
@@ -1357,6 +1378,7 @@
 				45819FA51D3500E8001AE0F5 /* NSNumberUtils.h in Headers */,
 				45DD07561D94162F00501FEE /* VehicleDetailsPageViewController.h in Headers */,
 				45AC546C1D130A1600805268 /* CTCalendarView.h in Headers */,
+				454446391D991B3C0047873F /* PassengerSelectionViewController.h in Headers */,
 				451C8F141D7EF63D00B9324D /* GTPassengerDetailsValidation.h in Headers */,
 				45645DFA1D33E8240075A3D2 /* PaymentSummaryTableViewCell.h in Headers */,
 				45AC54611D130A0800805268 /* CTLabel.h in Headers */,
@@ -1655,6 +1677,7 @@
 				456979291D2C03E7006A321E /* TabButton.m in Sources */,
 				451FE5AC1D6EF248004D85D1 /* GenericValidation.m in Sources */,
 				458954931D58C1B00006D34F /* Reachability.m in Sources */,
+				4544463A1D991B3C0047873F /* PassengerSelectionViewController.m in Sources */,
 				45B264FC1D902C9C000005F2 /* BookingCompletionValidation.m in Sources */,
 				450F9D361D3929E5002C6F6B /* SupplierRatingsViewController.m in Sources */,
 				45F4735D1D36451F00DF548B /* AddressDetailsViewController.m in Sources */,
@@ -1674,6 +1697,7 @@
 				4511E52F1D17F4B0000ED6B0 /* CTView.m in Sources */,
 				450DF39A1D8191EA00EF51DE /* GTShuttleTableViewCell.m in Sources */,
 				450DF39F1D81A55900EF51DE /* GTPassengerViewController.m in Sources */,
+				4544463F1D992BAA0047873F /* CTStepper.m in Sources */,
 				45DD07571D94162F00501FEE /* VehicleDetailsPageViewController.m in Sources */,
 				454AD7C81D2AB8E7005C6CFF /* CTDesignableView.m in Sources */,
 				45F473661D366D6A00DF548B /* PaymentViewController.m in Sources */,

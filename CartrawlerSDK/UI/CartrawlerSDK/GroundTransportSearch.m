@@ -29,9 +29,10 @@
     _airport = nil;
     _pickupLocation = nil;
     _dropoffLocation = nil;
-    _adultQty = nil;
-    _childQty = nil;
-    _infantQty = nil;
+    _adultQty = [NSNumber numberWithInteger:0];
+    _childQty = [NSNumber numberWithInteger:0];
+    _infantQty = [NSNumber numberWithInteger:0];
+    _seniorQty = [NSNumber numberWithInteger:0];
     _firstName = nil;
     _surname = nil;
     _email = nil;
