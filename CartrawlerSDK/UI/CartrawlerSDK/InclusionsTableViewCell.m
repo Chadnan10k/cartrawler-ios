@@ -126,6 +126,9 @@
             return NSLocalizedString(@"Water", @"");
             
         }
+        case InclusionUnknown: {
+            return NSLocalizedString(@"Unknown", @"");
+        }
     }
     
     return @"";

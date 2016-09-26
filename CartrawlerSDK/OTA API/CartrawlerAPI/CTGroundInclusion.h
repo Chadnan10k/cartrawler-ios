@@ -54,7 +54,9 @@ typedef NS_ENUM(NSUInteger, Inclusion) {
     
     InclusionVideo,
     
-    InclusionWater
+    InclusionWater,
+    
+    InclusionUnknown
     
 };
 
