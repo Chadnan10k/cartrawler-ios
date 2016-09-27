@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <CartrawlerAPI/CTAvailabilityItem.h>
+#import <CartrawlerAPI/CTGroundService.h>
 
 @interface LocalisedStrings : NSObject
 
 + (NSString *)pickupType:(CTAvailabilityItem *)item;
 + (NSString *)vehicleSize:(VehicleSize)size;
++ (NSString *)serviceLevel:(ServiceLevel)type;
++ (NSString *)inclusionText:(Inclusion)inclusion;
 
 @end

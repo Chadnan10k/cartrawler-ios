@@ -33,7 +33,7 @@
     
     //self.tableView.alpha = 0;
     
-    self.headerView.backgroundColor = [CTAppearance instance].locationSelectionBarColor;
+    self.headerView.backgroundColor = [CTAppearance instance].navigationBarColor;
     
     _dataSource = [[LocationSearchDataSource alloc] init];
     self.dataSource.enableGroundTransportLocations = self.enableGroundTransportLocations;

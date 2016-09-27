@@ -21,20 +21,19 @@
         
         sharedInstance.buttonColor = [UIColor colorWithRed:1.0/255.0 green:51.0/255.0 blue:84.0/255.0 alpha:1.0];
         sharedInstance.buttonTextColor = [UIColor whiteColor];
-        sharedInstance.buttonCornerRadius = 3.0;
-        sharedInstance.buttonShadowEnabled = YES;
+        sharedInstance.buttonCornerRadius = 2.0;
+        sharedInstance.enableShadows = NO;
         
-        sharedInstance.fontName = @"Avenir";
-        sharedInstance.boldFontName = @"Avenir-Medium";
         sharedInstance.viewBackgroundColor = [UIColor colorWithRed:1.0/255.0 green:177.0/255.0 blue:201.0/255.0 alpha:1.0];
+        sharedInstance.navigationBarColor = [UIColor colorWithRed:1.0/255.0 green:177.0/255.0 blue:201.0/255.0 alpha:1.0];
+
         sharedInstance.textFieldCornerRadius = 3.0;
         sharedInstance.textFieldTint = [UIColor colorWithRed:1.0/255.0 green:177.0/255.0 blue:201.0/255.0 alpha:1.0];
         sharedInstance.textFieldBackgroundColor = [UIColor whiteColor];
         
-        sharedInstance.locationSelectionBarColor = [UIColor colorWithRed:1.0/255.0 green:177.0/255.0 blue:201.0/255.0 alpha:1.0];
-
-        sharedInstance.calendarHeaderTopSectionColor = [UIColor colorWithRed:1.0/255.0 green:177.0/255.0 blue:201.0/255.0 alpha:1.0];
-        sharedInstance.calendarHeaderBottomSectionColor = [UIColor colorWithRed:123.0/255.0 green:201.0/255.0 blue:212.0/255.0 alpha:1.0];
+        sharedInstance.fontName = @"Avenir";
+        sharedInstance.boldFontName = @"Avenir-Medium";
+        
         sharedInstance.calendarStartCellColor = [UIColor colorWithRed:1.0/255.0 green:177.0/255.0 blue:201.0/255.0 alpha:1.0];
         sharedInstance.calendarEndCellColor = [UIColor colorWithRed:1.0/255.0 green:177.0/255.0 blue:201.0/255.0 alpha:1.0];
         sharedInstance.calendarMidCellColor = [UIColor colorWithRed:236.0/255.0 green:99.0/255.0 blue:0.0/255.0 alpha:1.0];

@@ -83,6 +83,8 @@
 #import "PageSelectionCollectionViewCell.h"
 #import "PassengerSelectionViewController.h"
 #import "CTStepper.h"
+#import "CTNavigationView.h"
+#import "GTFilterCollectionViewFlowLayout.h"
 
 @implementation LinkerUtils
 
@@ -163,6 +165,9 @@
     [PageSelectionCollectionViewCell forceLinkerLoad_];
     [PassengerSelectionViewController forceLinkerLoad_];
     [CTStepper forceLinkerLoad_];
+    [CTNavigationView forceLinkerLoad_];
+    [GTFilterCollectionViewFlowLayout forceLinkerLoad_];
+
 }
 
 @end

@@ -69,7 +69,7 @@
     self.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     if (!self.disableShadow) {
-        if ([CTAppearance instance].buttonShadowEnabled) {
+        if ([CTAppearance instance].enableShadows) {
             self.layer.masksToBounds = NO;
             self.layer.shadowColor = [UIColor blackColor].CGColor;
             self.layer.shadowOffset = CGSizeMake(0, 3);

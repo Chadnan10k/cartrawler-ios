@@ -79,27 +79,24 @@
     }
 }
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    NSInteger cellCount = [collectionView.dataSource collectionView:collectionView numberOfItemsInSection:section];
-    if( cellCount >0 )
-    {
-        CGFloat cellWidth = ((UICollectionViewFlowLayout*)collectionViewLayout).itemSize.width+((UICollectionViewFlowLayout*)collectionViewLayout).minimumInteritemSpacing;
-        CGFloat totalCellWidth = cellWidth*cellCount;
-        CGFloat contentWidth = collectionView.frame.size.width-collectionView.contentInset.left-collectionView.contentInset.right;
-        if( totalCellWidth<contentWidth )
-        {
-            CGFloat padding = (contentWidth - totalCellWidth) / 2.0;
-            return UIEdgeInsetsMake(0, padding, 0, padding);
-        }
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    
+    CGFloat cellWidth = 120;
+    if (self.avail.shuttles.count > 0 && self.avail.services.count > 0) {
+        cellWidth = 240;
+    } else {
+        cellWidth = 120;
     }
-    return UIEdgeInsetsZero;
+    CGFloat cellSpacing = 16;
+    
+    CGFloat inset = (collectionView.frame.size.width - (cellWidth + cellSpacing)) / 2;
+    
+    return UIEdgeInsetsMake(8, inset, 0, inset);
 }
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    CGFloat width = collectionView.frame.size.width;
-//    return CGSizeMake(width/3, 85);
-//}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(120, 90);
+}
 
 @end

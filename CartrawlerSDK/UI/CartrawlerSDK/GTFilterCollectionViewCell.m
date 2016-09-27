@@ -76,7 +76,7 @@
 - (void)animate
 {
     [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0 options:0 animations:^{
-        self.transform = CGAffineTransformMakeScale(1.1, 1.1);
+        self.transform = CGAffineTransformMakeScale(1.02, 1.02);
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.2 animations:^{
             self.transform = CGAffineTransformIdentity;

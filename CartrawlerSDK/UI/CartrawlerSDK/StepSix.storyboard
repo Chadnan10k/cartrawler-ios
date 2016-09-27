@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8V-8u-4hO" customClass="CTView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8V-8u-4hO" customClass="CTNavigationView">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driver details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITt-u9-Qov" customClass="CTLabel">
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -39,10 +39,19 @@
                                 <color key="backgroundColor" red="0.10980392160000001" green="0.63137254899999995" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="ITt-u9-Qov" firstAttribute="centerX" secondItem="e8V-8u-4hO" secondAttribute="centerX" id="7TN-fh-uYw"/>
+                                    <constraint firstItem="0dg-qV-0HG" firstAttribute="centerY" secondItem="ITt-u9-Qov" secondAttribute="centerY" id="944-1g-YpT"/>
                                     <constraint firstItem="0dg-qV-0HG" firstAttribute="leading" secondItem="e8V-8u-4hO" secondAttribute="leading" constant="8" id="LCd-P9-4cO"/>
                                     <constraint firstAttribute="bottom" secondItem="0dg-qV-0HG" secondAttribute="bottom" constant="12" id="PJJ-6V-hy0"/>
+                                    <constraint firstAttribute="height" constant="60" id="VSb-oY-cuW"/>
+                                    <constraint firstAttribute="bottom" secondItem="ITt-u9-Qov" secondAttribute="bottom" constant="8" id="hAS-wF-KI9"/>
                                     <constraint firstItem="ITt-u9-Qov" firstAttribute="top" secondItem="e8V-8u-4hO" secondAttribute="top" constant="24" id="jCq-Of-yEC"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PJJ-6V-hy0"/>
+                                        <exclude reference="jCq-Of-yEC"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QfB-rI-hRj">
                                 <subviews>
@@ -323,13 +332,21 @@
                             <constraint firstItem="QfB-rI-hRj" firstAttribute="leading" secondItem="Xzq-cL-qLQ" secondAttribute="leading" id="85i-XV-fHP"/>
                             <constraint firstAttribute="trailing" secondItem="QfB-rI-hRj" secondAttribute="trailing" id="KDo-uk-zqg"/>
                             <constraint firstItem="Gv7-Ev-Vib" firstAttribute="top" secondItem="QfB-rI-hRj" secondAttribute="bottom" id="OZ7-fr-HUK"/>
+                            <constraint firstItem="e8V-8u-4hO" firstAttribute="top" secondItem="Xzq-cL-qLQ" secondAttribute="top" id="Q8x-kM-lu9"/>
                             <constraint firstItem="QfB-rI-hRj" firstAttribute="width" secondItem="Xzq-cL-qLQ" secondAttribute="width" id="Slf-z0-Qvy"/>
+                            <constraint firstItem="e8V-8u-4hO" firstAttribute="leading" secondItem="Xzq-cL-qLQ" secondAttribute="leading" id="Ylj-dN-8GQ"/>
                             <constraint firstItem="QfB-rI-hRj" firstAttribute="top" secondItem="Xzq-cL-qLQ" secondAttribute="top" constant="64" id="gzN-mH-GUe"/>
+                            <constraint firstAttribute="trailing" secondItem="e8V-8u-4hO" secondAttribute="trailing" id="kx6-G1-xTB"/>
                             <constraint firstItem="e8V-8u-4hO" firstAttribute="top" secondItem="Xzq-cL-qLQ" secondAttribute="top" id="tz9-T2-v3s"/>
                             <constraint firstItem="e8V-8u-4hO" firstAttribute="leading" secondItem="Xzq-cL-qLQ" secondAttribute="leading" id="xQn-at-4Z5"/>
                             <constraint firstItem="QfB-rI-hRj" firstAttribute="top" secondItem="e8V-8u-4hO" secondAttribute="bottom" id="xSe-yM-gmJ"/>
                             <constraint firstAttribute="trailing" secondItem="e8V-8u-4hO" secondAttribute="trailing" id="y2Y-Rm-1Zn"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="gzN-mH-GUe"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="r2Q-TA-duN" id="tut-A6-lWJ"/>
@@ -357,7 +374,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C70-GE-CoJ" customClass="CTView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C70-GE-CoJ" customClass="CTNavigationView">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtR-va-opM" customClass="CTLabel">
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -379,9 +396,20 @@
                                 <constraints>
                                     <constraint firstItem="wtR-va-opM" firstAttribute="top" secondItem="C70-GE-CoJ" secondAttribute="top" constant="24" id="ABG-a1-NH7"/>
                                     <constraint firstItem="7eJ-dv-454" firstAttribute="leading" secondItem="C70-GE-CoJ" secondAttribute="leading" constant="8" id="EBp-Gf-u3n"/>
+                                    <constraint firstAttribute="bottom" secondItem="wtR-va-opM" secondAttribute="bottom" constant="8" id="LY2-We-atK"/>
+                                    <constraint firstAttribute="bottom" secondItem="wtR-va-opM" secondAttribute="bottom" constant="8" id="OTd-N8-nn7"/>
+                                    <constraint firstAttribute="height" constant="60" id="ggM-Uu-BLw"/>
                                     <constraint firstAttribute="bottom" secondItem="7eJ-dv-454" secondAttribute="bottom" constant="12" id="nKj-h2-Tzx"/>
                                     <constraint firstItem="wtR-va-opM" firstAttribute="centerX" secondItem="C70-GE-CoJ" secondAttribute="centerX" id="qwZ-m2-MiM"/>
+                                    <constraint firstItem="7eJ-dv-454" firstAttribute="centerY" secondItem="wtR-va-opM" secondAttribute="centerY" id="v27-7F-cqM"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="nKj-h2-Tzx"/>
+                                        <exclude reference="ABG-a1-NH7"/>
+                                        <exclude reference="OTd-N8-nn7"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yYJ-ia-7gH">
                                 <subviews>
@@ -663,12 +691,20 @@
                             <constraint firstItem="yYJ-ia-7gH" firstAttribute="top" secondItem="C70-GE-CoJ" secondAttribute="bottom" constant="-1" id="9Ge-4f-fdL"/>
                             <constraint firstItem="C70-GE-CoJ" firstAttribute="top" secondItem="M3m-Gw-WZL" secondAttribute="top" id="9kU-WG-blg"/>
                             <constraint firstItem="9Dq-r1-ZqN" firstAttribute="top" secondItem="yYJ-ia-7gH" secondAttribute="bottom" id="Fn7-RG-n8Q"/>
+                            <constraint firstAttribute="trailing" secondItem="C70-GE-CoJ" secondAttribute="trailing" id="NDf-0E-A6m"/>
+                            <constraint firstItem="C70-GE-CoJ" firstAttribute="top" secondItem="M3m-Gw-WZL" secondAttribute="top" id="OQK-Qm-A2W"/>
+                            <constraint firstItem="C70-GE-CoJ" firstAttribute="leading" secondItem="M3m-Gw-WZL" secondAttribute="leading" id="PEs-V2-yRM"/>
                             <constraint firstAttribute="trailing" secondItem="C70-GE-CoJ" secondAttribute="trailing" id="Zjn-Xa-8XC"/>
                             <constraint firstAttribute="trailing" secondItem="yYJ-ia-7gH" secondAttribute="trailing" id="cDX-mS-GYo"/>
                             <constraint firstItem="C70-GE-CoJ" firstAttribute="leading" secondItem="M3m-Gw-WZL" secondAttribute="leading" id="cYs-0W-zTM"/>
                             <constraint firstItem="yYJ-ia-7gH" firstAttribute="width" secondItem="M3m-Gw-WZL" secondAttribute="width" id="f3U-1k-qNv"/>
                             <constraint firstItem="yYJ-ia-7gH" firstAttribute="top" secondItem="M3m-Gw-WZL" secondAttribute="top" constant="63" id="u9T-Cf-XPT"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="u9T-Cf-XPT"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="addressLine1TextField" destination="vLC-Ey-1KF" id="l29-oG-QA7"/>

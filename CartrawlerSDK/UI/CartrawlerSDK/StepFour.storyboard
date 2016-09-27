@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="740"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghn-kF-Cyc" customClass="CTView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghn-kF-Cyc" customClass="CTNavigationView">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWQ-WU-v3z">
                                         <constraints>
@@ -45,12 +45,16 @@
                                     <constraint firstAttribute="height" constant="60" id="1ic-gQ-6WH"/>
                                     <constraint firstItem="vWQ-WU-v3z" firstAttribute="leading" secondItem="ghn-kF-Cyc" secondAttribute="leading" constant="8" id="4oV-Dc-Ues"/>
                                     <constraint firstAttribute="height" constant="64" id="Rmq-r9-XJX"/>
+                                    <constraint firstItem="vWQ-WU-v3z" firstAttribute="centerY" secondItem="clN-oO-7uF" secondAttribute="centerY" id="SzV-sb-2jk"/>
+                                    <constraint firstAttribute="bottom" secondItem="clN-oO-7uF" secondAttribute="bottom" constant="8" id="YxD-x8-rNZ"/>
                                     <constraint firstItem="clN-oO-7uF" firstAttribute="centerX" secondItem="ghn-kF-Cyc" secondAttribute="centerX" id="iEW-tW-DQp"/>
                                     <constraint firstItem="vWQ-WU-v3z" firstAttribute="top" secondItem="ghn-kF-Cyc" secondAttribute="top" constant="22" id="qtv-qT-3n3"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="1ic-gQ-6WH"/>
+                                        <exclude reference="qtv-qT-3n3"/>
+                                        <exclude reference="06a-AA-xcO"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -194,7 +198,7 @@
                                     <constraint firstItem="pVo-BM-CmF" firstAttribute="top" secondItem="Jzu-GV-SyL" secondAttribute="bottom" constant="8" id="QZ0-3i-fii"/>
                                     <constraint firstItem="Jzu-GV-SyL" firstAttribute="leading" secondItem="cqJ-fN-run" secondAttribute="leading" id="Tvn-ru-ejU"/>
                                     <constraint firstItem="4OM-g5-xEo" firstAttribute="top" secondItem="Jzu-GV-SyL" secondAttribute="bottom" constant="431" id="ZtU-7Y-scv"/>
-                                    <constraint firstItem="Jzu-GV-SyL" firstAttribute="top" secondItem="cqJ-fN-run" secondAttribute="top" constant="5" id="b5J-z7-RBA"/>
+                                    <constraint firstItem="Jzu-GV-SyL" firstAttribute="top" secondItem="cqJ-fN-run" secondAttribute="top" constant="8" id="b5J-z7-RBA"/>
                                     <constraint firstAttribute="bottom" secondItem="Jmn-vg-0jx" secondAttribute="bottom" constant="9" id="fM1-CZ-l5F"/>
                                     <constraint firstAttribute="bottom" secondItem="4OM-g5-xEo" secondAttribute="bottom" constant="69" id="iuE-GA-W3B"/>
                                     <constraint firstItem="Jmn-vg-0jx" firstAttribute="top" secondItem="4OM-g5-xEo" secondAttribute="bottom" constant="8" id="mCL-JJ-RfM"/>

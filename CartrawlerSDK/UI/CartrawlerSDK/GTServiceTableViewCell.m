@@ -12,6 +12,7 @@
 #import "NSNumberUtils.h"
 #import "CTAppearance.h"
 #import "InclusionCollectionViewCell.h"
+#import "LocalisedStrings.h"
 
 @interface GTServiceTableViewCell() <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -57,7 +58,7 @@
     
     _inclusions = service.inclusions;
 
-    self.carTypeLabel.text = [self serviceLevel:service.serviceLevel];
+    self.carTypeLabel.text = [LocalisedStrings serviceLevel:service.serviceLevel];
     self.companyLabel.text = service.companyName;
     self.baggageLabel.text = [NSString stringWithFormat:@"%@ bags", service.maxBaggage];
     self.passengersLabel.text = [NSString stringWithFormat:@"%@ passengers", service.maxPassengers];
@@ -113,7 +114,7 @@
         CGFloat currentRow = 0.0;
         
         for (CTGroundInclusion *inclusion in self.inclusions) {
-            CGSize textSize = [[self inclusionText:inclusion.inclusion]
+            CGSize textSize = [[LocalisedStrings inclusionText:inclusion.inclusion]
                                sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:[CTAppearance instance].boldFontName size:17]}];
             
             CGFloat width = (textSize.width) + 50 < self.inclusionsCollectionView.frame.size.width ?
@@ -143,7 +144,7 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     InclusionCollectionViewCell *cell = (InclusionCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    [cell setText:[self inclusionText:self.inclusions[indexPath.row].inclusion]];
+    [cell setText:[LocalisedStrings inclusionText:self.inclusions[indexPath.row].inclusion]];
     return cell;
 }
 
@@ -151,130 +152,12 @@
 {
     
     
-    CGSize textSize = [[self inclusionText:self.inclusions[indexPath.row].inclusion]
+    CGSize textSize = [[LocalisedStrings inclusionText:self.inclusions[indexPath.row].inclusion]
                        sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:[CTAppearance instance].boldFontName size:17]}];
     
     CGFloat width = (textSize.width) + 30 < collectionView.frame.size.width ? (textSize.width + 30) : (collectionView.frame.size.width - 30);
     
     return CGSizeMake(width, 30);
 }
-
-- (NSString *)serviceLevel:(ServiceLevel)type
-{
-    switch (type) {
-        case ServiceLevelNone:
-            return @"Unknown";
-        case ServiceLevelEconomy:
-            return @"Economy";
-        case ServiceLevelStandard:
-            return @"Standard";
-        case ServiceLevelBusiness:
-            return @"Business";
-        case ServiceLevelLuxury:
-            return @"Luxury";
-        case ServiceLevelPremium:
-            return @"Premium";
-        case ServiceLevelStandardClass:
-            return @"Standard Class";
-        case ServiceLevelFirstClass:
-            return @"First Class";
-        default:
-            return @"Unknown";
-    }
-}
-
-- (NSString *)inclusionText:(Inclusion)inclusion
-{
-    
-    switch (inclusion) {
-        case InclusionAirCon: {
-            return NSLocalizedString(@"Air Con", @"Air Con");
-            
-        }
-        case InclusionBathroom: {
-            return NSLocalizedString(@"Bathroom", @"Bathroom");
-            
-        }
-        case InclusionBike: {
-            return NSLocalizedString(@"Bike", @"Bike");
-            
-        }
-        case InclusionChildSeats: {
-            return NSLocalizedString(@"Child Seats", @"");
-            
-        }
-        case InclusionDriverLanguages: {
-            return NSLocalizedString(@"Driver Languages", @"");
-            
-        }
-        case InclusionExtraPrivacyLegroom: {
-            return NSLocalizedString(@"Extra Privacy & Legroom", @"");
-            
-        }
-        case InclusionMagazines: {
-            return NSLocalizedString(@"Magazines", @"");
-            
-        }
-        case InclusionMakeModel: {
-            return NSLocalizedString(@"Make model", @""); // ??
-            
-        }
-        case InclusionNewspaper: {
-            return NSLocalizedString(@"Newspaper", @"");
-            
-        }
-        case InclusionOversizeLuggage: {
-            return NSLocalizedString(@"Oversize Luggage", @"");
-            
-        }
-        case InclusionPhoneCharger: {
-            return NSLocalizedString(@"Phone Charger", @"");
-            
-        }
-        case InclusionPowerSocket: {
-            return NSLocalizedString(@"Power Socket", @"");
-            
-        }
-        case InclusionSMS: {
-            return NSLocalizedString(@"SMS", @"");
-            
-        }
-        case InclusionSnacks: {
-            return NSLocalizedString(@"Snacks", @"");
-            
-        }
-        case InclusionTablet: {
-            return NSLocalizedString(@"Tablet", @"");
-            
-        }
-        case InclusionWaitMinutes: {
-            return NSLocalizedString(@"Wait Minutes", @""); //??
-            
-        }
-        case InclusionWheelchairAccess: {
-            return NSLocalizedString(@"Wheelchair Access", @"");
-            
-        }
-        case InclusionWifi: {
-            return NSLocalizedString(@"Wifi", @"");
-            
-        }
-        case InclusionWorkTable: {
-            return NSLocalizedString(@"Work Table", @"");
-            
-        }
-        case InclusionVideo: {
-            return NSLocalizedString(@"Video", @"");
-            
-        }
-        case InclusionWater: {
-            return NSLocalizedString(@"Water", @"");
-            
-        }
-    }
-    
-    return @"";
-}
-
 
 @end

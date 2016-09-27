@@ -11,20 +11,24 @@
 
 @interface CTAppearance : NSObject
 
+//Buttons
 @property (nonatomic, strong)       UIColor  *buttonColor;
 @property (nonatomic, strong)       UIColor  *buttonTextColor;
 @property (nonatomic)               CGFloat  buttonCornerRadius;
-@property (nonatomic)               BOOL     buttonShadowEnabled;
-@property (nonatomic, strong)       NSString *fontName;
-@property (nonatomic, strong)       NSString *boldFontName;
+@property (nonatomic)               BOOL     enableShadows;
+
+//Views
 @property (nonatomic, strong)       UIColor  *viewBackgroundColor;
+@property (nonatomic, strong)       UIColor  *navigationBarColor;
+
+//Text
 @property (nonatomic)               CGFloat  textFieldCornerRadius;
 @property (nonatomic, strong)       UIColor  *textFieldTint;
 @property (nonatomic, strong)       UIColor  *textFieldBackgroundColor;
-@property (nonatomic, strong)       UIColor  *locationSelectionBarColor;
+@property (nonatomic, strong)       NSString *fontName;
+@property (nonatomic, strong)       NSString *boldFontName;
 
-@property (nonatomic, strong)       UIColor  *calendarHeaderTopSectionColor;
-@property (nonatomic, strong)       UIColor  *calendarHeaderBottomSectionColor;
+//Calendar
 @property (nonatomic, strong)       UIColor  *calendarStartCellColor;
 @property (nonatomic, strong)       UIColor  *calendarMidCellColor;
 @property (nonatomic, strong)       UIColor  *calendarEndCellColor;

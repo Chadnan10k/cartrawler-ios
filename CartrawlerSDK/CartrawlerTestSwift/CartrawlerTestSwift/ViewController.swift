@@ -15,9 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-//        let bookingSummary = storyboard?.instantiateViewController(withIdentifier: "BookingSummaryViewController") as! BookingSummaryViewController
-//        sdk.overridePaymentSummaryViewController(bookingSummary)
-        
+
         UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
         
         CartrawlerSDK.appearance().buttonColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
@@ -28,14 +26,14 @@ class ViewController: UIViewController {
         CartrawlerSDK.appearance().viewBackgroundColor = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
         CartrawlerSDK.appearance().locationSelectionBarColor = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
         
-        CartrawlerSDK.appearance().calendarHeaderTopSectionColor = UIColor.init(red: 0.0/255, green: 55.0/255.0, blue: 145.0/255.0, alpha: 1)
+        CartrawlerSDK.appearance().calendarHeaderTopSectionColor = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
         CartrawlerSDK.appearance().calendarHeaderBottomSectionColor = UIColor.init(red: 18.0/255, green: 147.0/255.0, blue: 233.0/255.0, alpha: 1)
         CartrawlerSDK.appearance().calendarStartCellColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
         CartrawlerSDK.appearance().calendarMidCellColor = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
         CartrawlerSDK.appearance().calendarEndCellColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
         
         CartrawlerSDK.appearance().textFieldTint = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
-        CartrawlerSDK.appearance().boldFontName = "AppleSDGothicNeo-Bold"
+        //CartrawlerSDK.appearance().boldFontName = "AppleSDGothicNeo-Bold"
 
     }
 

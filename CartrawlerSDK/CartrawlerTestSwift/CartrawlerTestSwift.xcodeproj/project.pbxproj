@@ -7,21 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		45202B831D92D13A009F2962 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45202B801D92D13A009F2962 /* CartrawlerAPI.framework */; };
-		45202B841D92D13A009F2962 /* CartrawlerResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 45202B811D92D13A009F2962 /* CartrawlerResources.bundle */; };
-		45202B851D92D13A009F2962 /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45202B821D92D13A009F2962 /* CartrawlerSDK.framework */; };
+		454446431D9A63DE0047873F /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454446401D9A63DE0047873F /* CartrawlerAPI.framework */; };
+		454446441D9A63DE0047873F /* CartrawlerResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 454446411D9A63DE0047873F /* CartrawlerResources.bundle */; };
+		454446451D9A63DE0047873F /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454446421D9A63DE0047873F /* CartrawlerSDK.framework */; };
+		454446481D9A64520047873F /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 454446461D9A644D0047873F /* OpenSans-Light.ttf */; };
+		454446491D9A64570047873F /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 454446471D9A644D0047873F /* OpenSans-Semibold.ttf */; };
 		45B264D81D8BE28F000005F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B264D71D8BE28F000005F2 /* AppDelegate.swift */; };
 		45B264DA1D8BE28F000005F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B264D91D8BE28F000005F2 /* ViewController.swift */; };
 		45B264DD1D8BE28F000005F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45B264DB1D8BE28F000005F2 /* Main.storyboard */; };
 		45B264DF1D8BE28F000005F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45B264DE1D8BE28F000005F2 /* Assets.xcassets */; };
 		45B264E21D8BE28F000005F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45B264E01D8BE28F000005F2 /* LaunchScreen.storyboard */; };
-		45B264EA1D8BE2F3000005F2 /* BookingSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B264E91D8BE2F3000005F2 /* BookingSummaryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		45202B801D92D13A009F2962 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerAPI.framework; path = "../../../../cartrawler-ios/CartrawlerAPI.framework"; sourceTree = "<group>"; };
-		45202B811D92D13A009F2962 /* CartrawlerResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = CartrawlerResources.bundle; path = "../../../../cartrawler-ios/CartrawlerResources.bundle"; sourceTree = "<group>"; };
-		45202B821D92D13A009F2962 /* CartrawlerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerSDK.framework; path = "../../../../cartrawler-ios/CartrawlerSDK.framework"; sourceTree = "<group>"; };
+		454446401D9A63DE0047873F /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CartrawlerAPI.framework; sourceTree = "<group>"; };
+		454446411D9A63DE0047873F /* CartrawlerResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CartrawlerResources.bundle; sourceTree = "<group>"; };
+		454446421D9A63DE0047873F /* CartrawlerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CartrawlerSDK.framework; sourceTree = "<group>"; };
+		454446461D9A644D0047873F /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		454446471D9A644D0047873F /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		45B264D41D8BE28F000005F2 /* CartrawlerTestSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CartrawlerTestSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45B264D71D8BE28F000005F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45B264D91D8BE28F000005F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,7 +32,6 @@
 		45B264DE1D8BE28F000005F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45B264E11D8BE28F000005F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45B264E31D8BE28F000005F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		45B264E91D8BE2F3000005F2 /* BookingSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingSummaryViewController.swift; sourceTree = "<group>"; };
 		45B264F11D8BE5F0000005F2 /* CartrawlerTestSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CartrawlerTestSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -38,8 +40,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45202B851D92D13A009F2962 /* CartrawlerSDK.framework in Frameworks */,
-				45202B831D92D13A009F2962 /* CartrawlerAPI.framework in Frameworks */,
+				454446451D9A63DE0047873F /* CartrawlerSDK.framework in Frameworks */,
+				454446431D9A63DE0047873F /* CartrawlerAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,12 +67,13 @@
 		45B264D61D8BE28F000005F2 /* CartrawlerTestSwift */ = {
 			isa = PBXGroup;
 			children = (
-				45202B801D92D13A009F2962 /* CartrawlerAPI.framework */,
-				45202B811D92D13A009F2962 /* CartrawlerResources.bundle */,
-				45202B821D92D13A009F2962 /* CartrawlerSDK.framework */,
+				454446401D9A63DE0047873F /* CartrawlerAPI.framework */,
+				454446411D9A63DE0047873F /* CartrawlerResources.bundle */,
+				454446421D9A63DE0047873F /* CartrawlerSDK.framework */,
 				45B264D71D8BE28F000005F2 /* AppDelegate.swift */,
 				45B264D91D8BE28F000005F2 /* ViewController.swift */,
-				45B264E91D8BE2F3000005F2 /* BookingSummaryViewController.swift */,
+				454446461D9A644D0047873F /* OpenSans-Light.ttf */,
+				454446471D9A644D0047873F /* OpenSans-Semibold.ttf */,
 				45B264DB1D8BE28F000005F2 /* Main.storyboard */,
 				45B264DE1D8BE28F000005F2 /* Assets.xcassets */,
 				45B264E01D8BE28F000005F2 /* LaunchScreen.storyboard */,
@@ -141,9 +144,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45202B841D92D13A009F2962 /* CartrawlerResources.bundle in Resources */,
+				454446491D9A64570047873F /* OpenSans-Semibold.ttf in Resources */,
+				454446441D9A63DE0047873F /* CartrawlerResources.bundle in Resources */,
 				45B264E21D8BE28F000005F2 /* LaunchScreen.storyboard in Resources */,
 				45B264DF1D8BE28F000005F2 /* Assets.xcassets in Resources */,
+				454446481D9A64520047873F /* OpenSans-Light.ttf in Resources */,
 				45B264DD1D8BE28F000005F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,7 +161,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				45B264DA1D8BE28F000005F2 /* ViewController.swift in Sources */,
-				45B264EA1D8BE2F3000005F2 /* BookingSummaryViewController.swift in Sources */,
 				45B264D81D8BE28F000005F2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +284,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CartrawlerTestSwift",
+				);
 				INFOPLIST_FILE = CartrawlerTestSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.CartrawlerTestSwift;
@@ -296,6 +304,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CartrawlerTestSwift",
+				);
 				INFOPLIST_FILE = CartrawlerTestSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.CartrawlerTestSwift;

@@ -40,7 +40,7 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSS-OR-ReL" customClass="CTView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSS-OR-ReL" customClass="CTNavigationView">
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dublin Airport - Dublin Airport" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpG-V5-fPS" customClass="CTLabel">
                                                 <constraints>
@@ -191,7 +191,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEh-7y-dW1">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dig-pC-OGW" customClass="CTView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dig-pC-OGW" customClass="CTNavigationView">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAG-vh-DhK" customClass="CTButton">
                                         <constraints>
@@ -251,11 +251,21 @@
                                     <constraint firstItem="rAG-vh-DhK" firstAttribute="top" secondItem="dig-pC-OGW" secondAttribute="top" constant="23" id="7wi-Cl-zGO"/>
                                     <constraint firstItem="eXq-E9-iXo" firstAttribute="top" secondItem="dig-pC-OGW" secondAttribute="top" constant="25" id="CKI-3K-grJ"/>
                                     <constraint firstItem="JgV-q9-Lxs" firstAttribute="leading" secondItem="dig-pC-OGW" secondAttribute="leading" constant="8" id="Luz-3I-vXQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="eXq-E9-iXo" secondAttribute="bottom" constant="8" id="OsL-Qf-jza"/>
                                     <constraint firstAttribute="trailing" secondItem="rAG-vh-DhK" secondAttribute="trailing" constant="8" id="Thk-J8-MuT"/>
+                                    <constraint firstItem="rAG-vh-DhK" firstAttribute="centerY" secondItem="eXq-E9-iXo" secondAttribute="centerY" id="Tne-Gv-igG"/>
                                     <constraint firstItem="JgV-q9-Lxs" firstAttribute="top" secondItem="dig-pC-OGW" secondAttribute="top" constant="23" id="ZpK-Ba-yeZ"/>
+                                    <constraint firstItem="JgV-q9-Lxs" firstAttribute="centerY" secondItem="eXq-E9-iXo" secondAttribute="centerY" id="dIy-nd-vjB"/>
                                     <constraint firstAttribute="height" constant="60" id="mme-SU-vC3"/>
                                     <constraint firstItem="eXq-E9-iXo" firstAttribute="centerX" secondItem="dig-pC-OGW" secondAttribute="centerX" id="yrW-kc-8jy"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ZpK-Ba-yeZ"/>
+                                        <exclude reference="CKI-3K-grJ"/>
+                                        <exclude reference="7wi-Cl-zGO"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

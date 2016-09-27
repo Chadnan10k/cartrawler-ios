@@ -135,10 +135,10 @@
         validated = NO;
     }
     
-    if ([self.flightNoTextField.text isEqualToString: @""]) {
-        [self.flightNoTextField shakeAnimation];
-        validated = NO;
-    }
+//    if ([self.flightNoTextField.text isEqualToString: @""]) {
+//        [self.flightNoTextField shakeAnimation];
+//        validated = NO;
+//    }
     
     if (validated) {
         [self pushToDestination];

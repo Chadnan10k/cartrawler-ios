@@ -21,6 +21,11 @@
 @property (weak, nonatomic) IBOutlet CTStepper *infantStepper;
 @property (weak, nonatomic) IBOutlet CTStepper *seniorStepper;
 
+@property (weak, nonatomic) IBOutlet CTLabel *adultCountLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *childrenCountLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *infantsCountLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *seniorsCountLabel;
+
 @end
 
 @implementation PassengerSelectionViewController
@@ -39,10 +44,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.adultsLabel.text = [NSString stringWithFormat:@"Adults (%d)", self.groundSearch.adultQty.intValue];
-    self.childrenLabel.text = [NSString stringWithFormat:@"Children (%d)", self.groundSearch.childQty.intValue];
-    self.infantsLabel.text = [NSString stringWithFormat:@"Infants (%d)", self.groundSearch.infantQty.intValue];
-    self.seniorsLabel.text = [NSString stringWithFormat:@"Seniors (%d)", self.groundSearch.seniorQty.intValue];
+    self.adultCountLabel.text = [NSString stringWithFormat:@"%d", self.groundSearch.adultQty.intValue];
+    self.childrenCountLabel.text = [NSString stringWithFormat:@"%d", self.groundSearch.childQty.intValue];
+    self.infantsCountLabel.text = [NSString stringWithFormat:@"%d", self.groundSearch.infantQty.intValue];
+    self.seniorsCountLabel.text = [NSString stringWithFormat:@"%d", self.groundSearch.seniorQty.intValue];
     
     self.adultStepper.value = self.groundSearch.adultQty.doubleValue;
     self.childStepper.value = self.groundSearch.childQty.doubleValue;
@@ -59,7 +64,7 @@
 {
     UIStepper *stepper = sender;
     [self shakeAnimation:self.adultsLabel];
-    self.adultsLabel.text = [NSString stringWithFormat:@"Adults (%.0f)", stepper.value];
+    self.adultCountLabel.text = [NSString stringWithFormat:@"%.0f", stepper.value];
     self.groundSearch.adultQty = [NSNumber numberWithDouble:stepper.value];
 }
 
@@ -67,7 +72,7 @@
 {
     UIStepper *stepper = sender;
     [self shakeAnimation:self.childrenLabel];
-    self.childrenLabel.text = [NSString stringWithFormat:@"Children (%.0f)", stepper.value];
+    self.childrenCountLabel.text = [NSString stringWithFormat:@"%.0f", stepper.value];
     self.groundSearch.childQty = [NSNumber numberWithDouble:stepper.value];
 }
 
@@ -75,7 +80,7 @@
 {
     UIStepper *stepper = sender;
     [self shakeAnimation:self.infantsLabel];
-    self.infantsLabel.text = [NSString stringWithFormat:@"Infants (%.0f)", stepper.value];
+    self.infantsCountLabel.text = [NSString stringWithFormat:@"%.0f", stepper.value];
     self.groundSearch.infantQty = [NSNumber numberWithDouble:stepper.value];
 }
 
@@ -83,7 +88,7 @@
 {
     UIStepper *stepper = sender;
     [self shakeAnimation:self.seniorsLabel];
-    self.seniorsLabel.text = [NSString stringWithFormat:@"Seniors (%.0f)", stepper.value];
+    self.seniorsCountLabel.text = [NSString stringWithFormat:@"%.0f", stepper.value];
     self.groundSearch.seniorQty = [NSNumber numberWithDouble:stepper.value];
 }
 

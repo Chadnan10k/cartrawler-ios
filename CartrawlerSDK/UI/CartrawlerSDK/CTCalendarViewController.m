@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet CTLabel *pickupDateLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *dropOffDateLabel;
 @property (weak, nonatomic) IBOutlet CTCalendarView *calendarView;
-@property (weak, nonatomic) IBOutlet UIView *headerBottomSection;
 @property (weak, nonatomic) IBOutlet UIView *headerTopSection;
 
 @end
@@ -39,9 +38,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.headerTopSection.backgroundColor = [CTAppearance instance].calendarHeaderTopSectionColor;
-    
-    self.headerBottomSection.backgroundColor = [CTAppearance instance].calendarHeaderBottomSectionColor;
+    self.headerTopSection.backgroundColor = [CTAppearance instance].navigationBarColor;
     
     if (self.mininumDate) {
         self.calendarView.mininumDate = self.mininumDate;

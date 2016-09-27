@@ -244,22 +244,30 @@
     [super viewWillAppear:animated];
     
     if (!self.groundSearch.pickupLocation) {
+        _pickupLat = nil;
+        _pickupLong = nil;
         [self.pickupView setTextFieldText:@""];
     }
     
     if (!self.groundSearch.dropoffLocation) {
+        _dropoffLat = nil;
+        _dropoffLong = nil;
         [self.dropoffView setTextFieldText:@""];
     }
     
     if (!self.groundSearch.pickupLocation.dateTime) {
+        _pickupDate = nil;
+        _pickupTime = nil;
         [self.calendarView setTextFieldText:@""];
     }
     
     if (!self.groundSearch.dropoffLocation.dateTime) {
+        _dropoffDate = nil;
+        _dropoffTime = nil;
         [self.dropoffCalendarView setTextFieldText:@""];
     }
     
-    if (!self.groundSearch.adultQty) {
+    if (self.groundSearch.adultQty.intValue == 0) {
         [self.passengersView setTextFieldText:@""];
         self.passengersView.placeholder = @"Passengers";
     }
@@ -409,7 +417,7 @@
         validated = NO;
     }
     
-    if (!self.groundSearch.adultQty) {
+    if (self.groundSearch.adultQty.intValue == 0) {
         [self.passengersView shakeAnimation];
         validated = NO;
     }
