@@ -13,9 +13,9 @@
 		45295F671D78412600A09B8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45295F651D78412600A09B8A /* Main.storyboard */; };
 		45295F691D78412600A09B8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45295F681D78412600A09B8A /* Assets.xcassets */; };
 		45295F6C1D78412600A09B8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45295F6A1D78412600A09B8A /* LaunchScreen.storyboard */; };
-		45295F761D78413400A09B8A /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45295F731D78413400A09B8A /* CartrawlerAPI.framework */; };
-		45295F771D78413400A09B8A /* CartrawlerResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 45295F741D78413400A09B8A /* CartrawlerResources.bundle */; };
-		45295F781D78413400A09B8A /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45295F751D78413400A09B8A /* CartrawlerSDK.framework */; };
+		45A7B74B1D9AC109006611EB /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A7B7481D9AC109006611EB /* CartrawlerAPI.framework */; };
+		45A7B74C1D9AC109006611EB /* CartrawlerResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7491D9AC109006611EB /* CartrawlerResources.bundle */; };
+		45A7B74D1D9AC109006611EB /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A7B74A1D9AC109006611EB /* CartrawlerSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +29,9 @@
 		45295F681D78412600A09B8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45295F6B1D78412600A09B8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45295F6D1D78412600A09B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		45295F731D78413400A09B8A /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerAPI.framework; path = ../../CartrawlerAPI.framework; sourceTree = "<group>"; };
-		45295F741D78413400A09B8A /* CartrawlerResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = CartrawlerResources.bundle; path = ../../CartrawlerResources.bundle; sourceTree = "<group>"; };
-		45295F751D78413400A09B8A /* CartrawlerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerSDK.framework; path = ../../CartrawlerSDK.framework; sourceTree = "<group>"; };
+		45A7B7481D9AC109006611EB /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerAPI.framework; path = ../../CartrawlerAPI.framework; sourceTree = "<group>"; };
+		45A7B7491D9AC109006611EB /* CartrawlerResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = CartrawlerResources.bundle; path = ../../CartrawlerResources.bundle; sourceTree = "<group>"; };
+		45A7B74A1D9AC109006611EB /* CartrawlerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerSDK.framework; path = ../../CartrawlerSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,8 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45295F781D78413400A09B8A /* CartrawlerSDK.framework in Frameworks */,
-				45295F761D78413400A09B8A /* CartrawlerAPI.framework in Frameworks */,
+				45A7B74D1D9AC109006611EB /* CartrawlerSDK.framework in Frameworks */,
+				45A7B74B1D9AC109006611EB /* CartrawlerAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,9 +66,9 @@
 		45295F5B1D78412500A09B8A /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
-				45295F731D78413400A09B8A /* CartrawlerAPI.framework */,
-				45295F741D78413400A09B8A /* CartrawlerResources.bundle */,
-				45295F751D78413400A09B8A /* CartrawlerSDK.framework */,
+				45A7B7481D9AC109006611EB /* CartrawlerAPI.framework */,
+				45A7B7491D9AC109006611EB /* CartrawlerResources.bundle */,
+				45A7B74A1D9AC109006611EB /* CartrawlerSDK.framework */,
 				45295F5F1D78412500A09B8A /* AppDelegate.h */,
 				45295F601D78412500A09B8A /* AppDelegate.m */,
 				45295F621D78412500A09B8A /* ViewController.h */,
@@ -150,7 +150,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45295F771D78413400A09B8A /* CartrawlerResources.bundle in Resources */,
+				45A7B74C1D9AC109006611EB /* CartrawlerResources.bundle in Resources */,
 				45295F6C1D78412600A09B8A /* LaunchScreen.storyboard in Resources */,
 				45295F691D78412600A09B8A /* Assets.xcassets in Resources */,
 				45295F671D78412600A09B8A /* Main.storyboard in Resources */,

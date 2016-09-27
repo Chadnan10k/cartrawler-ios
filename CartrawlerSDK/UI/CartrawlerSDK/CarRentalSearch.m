@@ -29,8 +29,8 @@
     _dropoffLocation = nil;
     _pickupDate = nil;
     _dropoffDate = nil;
-    _driverAge = nil;
-    _passengerQty = nil;
+    _driverAge = [NSNumber numberWithInteger:0];
+    _passengerQty = [NSNumber numberWithInteger:1];
     _insurance = nil;
     _insuranceItem = nil;
     _isBuyingInsurance = NO;

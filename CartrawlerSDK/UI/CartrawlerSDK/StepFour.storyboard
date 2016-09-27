@@ -44,7 +44,7 @@
                                     <constraint firstItem="clN-oO-7uF" firstAttribute="top" secondItem="ghn-kF-Cyc" secondAttribute="top" constant="25" id="06a-AA-xcO"/>
                                     <constraint firstAttribute="height" constant="60" id="1ic-gQ-6WH"/>
                                     <constraint firstItem="vWQ-WU-v3z" firstAttribute="leading" secondItem="ghn-kF-Cyc" secondAttribute="leading" constant="8" id="4oV-Dc-Ues"/>
-                                    <constraint firstAttribute="height" constant="64" id="Rmq-r9-XJX"/>
+                                    <constraint firstAttribute="height" constant="60" id="Rmq-r9-XJX"/>
                                     <constraint firstItem="vWQ-WU-v3z" firstAttribute="centerY" secondItem="clN-oO-7uF" secondAttribute="centerY" id="SzV-sb-2jk"/>
                                     <constraint firstAttribute="bottom" secondItem="clN-oO-7uF" secondAttribute="bottom" constant="8" id="YxD-x8-rNZ"/>
                                     <constraint firstItem="clN-oO-7uF" firstAttribute="centerX" secondItem="ghn-kF-Cyc" secondAttribute="centerX" id="iEW-tW-DQp"/>
@@ -53,8 +53,8 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="1ic-gQ-6WH"/>
-                                        <exclude reference="qtv-qT-3n3"/>
                                         <exclude reference="06a-AA-xcO"/>
+                                        <exclude reference="qtv-qT-3n3"/>
                                     </mask>
                                 </variation>
                             </view>

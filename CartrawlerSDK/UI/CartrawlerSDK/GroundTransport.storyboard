@@ -285,6 +285,11 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="SKt-k0-7QD"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="cancel:" destination="6g3-iz-Ynm" eventType="touchUpInside" id="thU-4s-jLD"/>
                                         </connections>
@@ -301,12 +306,12 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="UuF-lw-5Pp" firstAttribute="centerX" secondItem="hiL-Tf-xv5" secondAttribute="centerX" id="Imn-dY-irO"/>
                                     <constraint firstAttribute="height" constant="60" id="hy3-HY-A02"/>
                                     <constraint firstItem="UuF-lw-5Pp" firstAttribute="top" secondItem="hiL-Tf-xv5" secondAttribute="top" constant="30" id="tJr-e9-bOX"/>
-                                    <constraint firstItem="MTy-zK-qpE" firstAttribute="leading" secondItem="hiL-Tf-xv5" secondAttribute="leading" constant="4" id="u1R-q0-Iwj"/>
+                                    <constraint firstItem="MTy-zK-qpE" firstAttribute="leading" secondItem="hiL-Tf-xv5" secondAttribute="leading" constant="8" id="u1R-q0-Iwj"/>
                                     <constraint firstAttribute="bottom" secondItem="MTy-zK-qpE" secondAttribute="bottom" constant="6" id="uaJ-p6-Y0Y"/>
                                 </constraints>
                             </view>
@@ -1529,6 +1534,7 @@
                         <outlet property="flightDetailsContainer" destination="2jy-Hd-JHN" id="ZQw-Ix-G5m"/>
                         <outlet property="flightDetailsLabel" destination="dJ4-o6-aDe" id="Na5-g3-NRd"/>
                         <outlet property="flightNoTextField" destination="kre-Le-0vg" id="RV7-mw-snQ"/>
+                        <outlet property="instructionsTextField" destination="geD-TG-PEn" id="8iZ-H3-WQN"/>
                         <outlet property="lastNameTextField" destination="REa-2r-n2Q" id="hh2-1h-L1Y"/>
                         <outlet property="phoneTextField" destination="ceT-oh-bNK" id="fhj-1Z-oZ0"/>
                         <outlet property="scrollView" destination="ZfG-AZ-g2Y" id="jId-MK-qy5"/>
@@ -1536,7 +1542,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s15-Oa-2Ht" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1936.8" y="825.33733133433293"/>
+            <point key="canvasLocation" x="1900" y="824"/>
         </scene>
         <!--Address Details View Controller-->
         <scene sceneID="Hdb-YW-EA2">

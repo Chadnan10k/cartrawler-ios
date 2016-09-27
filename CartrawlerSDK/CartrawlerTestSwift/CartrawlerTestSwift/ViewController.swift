@@ -19,15 +19,13 @@ class ViewController: UIViewController {
         UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
         
         CartrawlerSDK.appearance().buttonColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
-        CartrawlerSDK.appearance().buttonShadowEnabled = true
-        CartrawlerSDK.appearance().buttonCornerRadius = 3
+        CartrawlerSDK.appearance().enableShadows = false
+        CartrawlerSDK.appearance().buttonCornerRadius = 2
         CartrawlerSDK.appearance().buttonTextColor = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
         
         CartrawlerSDK.appearance().viewBackgroundColor = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
-        CartrawlerSDK.appearance().locationSelectionBarColor = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
-        
-        CartrawlerSDK.appearance().calendarHeaderTopSectionColor = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
-        CartrawlerSDK.appearance().calendarHeaderBottomSectionColor = UIColor.init(red: 18.0/255, green: 147.0/255.0, blue: 233.0/255.0, alpha: 1)
+        CartrawlerSDK.appearance().navigationBarColor = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
+
         CartrawlerSDK.appearance().calendarStartCellColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
         CartrawlerSDK.appearance().calendarMidCellColor = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
         CartrawlerSDK.appearance().calendarEndCellColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)

@@ -82,7 +82,7 @@
     [self registerForKeyboardNotifications];
     
     self.search.driverAge = @30;
-    self.search.passengerQty = @3;
+    self.search.passengerQty = @1;
         
     _pickupTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
     _dropoffTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
@@ -238,7 +238,7 @@
         [self.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:self.search.dropoffDate withFormat:@"hh:mm a"]];
     }
     
-    if (!self.search.driverAge) {
+    if (self.search.driverAge.intValue == 0) {
         self.ageContainer.text = @"";
         self.search.driverAge = @30;
     }

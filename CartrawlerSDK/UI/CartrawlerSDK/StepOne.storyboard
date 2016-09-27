@@ -403,6 +403,11 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="MeH-nQ-8cg"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="cancel:" destination="dn2-4f-MD7" eventType="touchUpInside" id="hzJ-VH-YcF"/>
                                         </connections>
@@ -434,7 +439,7 @@
                                     <constraint firstAttribute="bottom" secondItem="n5L-L6-l2M" secondAttribute="bottom" constant="7" id="Fa8-BG-jjn"/>
                                     <constraint firstAttribute="bottom" secondItem="gTf-ab-aLm" secondAttribute="bottom" constant="8" id="JvE-CI-4AL"/>
                                     <constraint firstAttribute="height" constant="60" id="MYq-pr-Xey"/>
-                                    <constraint firstItem="Qsf-Ek-vxw" firstAttribute="leading" secondItem="h8O-tU-CcW" secondAttribute="leading" constant="4" id="Nfa-oG-ZGk"/>
+                                    <constraint firstItem="Qsf-Ek-vxw" firstAttribute="leading" secondItem="h8O-tU-CcW" secondAttribute="leading" constant="8" id="Nfa-oG-ZGk"/>
                                     <constraint firstItem="gTf-ab-aLm" firstAttribute="top" secondItem="h8O-tU-CcW" secondAttribute="top" constant="30" id="QNX-5F-5FY"/>
                                     <constraint firstAttribute="bottom" secondItem="Qsf-Ek-vxw" secondAttribute="bottom" constant="6" id="R7l-kP-cl1"/>
                                     <constraint firstAttribute="trailing" secondItem="n5L-L6-l2M" secondAttribute="trailing" constant="8" id="bqo-HM-6lh"/>
@@ -911,7 +916,7 @@
                 <navigationController storyboardIdentifier="InitialNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sui-XM-uDt" customClass="CTNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="pxI-o6-pEv" customClass="CTNavigationBar">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="pxI-o6-pEv" customClass="CTNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

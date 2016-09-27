@@ -123,6 +123,10 @@
         airportDropoff = airportInfo;
     }
     
+    if ([specialInstructions isEqualToString:@""] || specialInstructions == nil) {
+        specialInstructions = @"No instructions stated";
+    }
+    
     NSString *tail = [[NSString alloc]initWithFormat:
                       
                       @"\"GroundReservation\":{ \n"
@@ -205,7 +209,7 @@
                       countryName,
                       pickupLocationType,
                       pickupLocationName,
-                      specialInstructions ?: @"No instructions stated",
+                      specialInstructions,
                       airportPickup,
                       dropOffdateTime,
                       dropoffLatitude,
