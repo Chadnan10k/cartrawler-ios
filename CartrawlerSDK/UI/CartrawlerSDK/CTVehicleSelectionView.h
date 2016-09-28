@@ -15,6 +15,9 @@
 + (void)forceLinkerLoad_;
 
 typedef void (^VehicleSelectionCompletion)(CTAvailabilityItem *vehicle);
+typedef void (^CTScrollDirectionChanged)(BOOL up);
+
+@property (nonatomic) CTScrollDirectionChanged direction;
 
 - (void)initWithVehicleAvailability:(NSArray <CTAvailabilityItem *> *)data completion:(VehicleSelectionCompletion)completion;
 - (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data;

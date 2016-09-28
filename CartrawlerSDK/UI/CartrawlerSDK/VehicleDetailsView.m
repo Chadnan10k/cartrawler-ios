@@ -13,22 +13,25 @@
 #import "CTAppearance.h"
 #import "CTLabel.h"
 #import "CarRentalSearch.h"
+#import "NSNumberUtils.h"
+#import "CTInclusionTableViewCell.h"
 
 #define kCellsPerRow 4
 
-@interface VehicleDetailsView() <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface VehicleDetailsView() <UITableViewDelegate, UITableViewDataSource>
 
 @property (unsafe_unretained, nonatomic) IBOutlet CTLabel *vehicleNameLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *vehicleImageView;
 @property (unsafe_unretained, nonatomic) IBOutlet CTLabel *passengersLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet CTLabel *doorsLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet CTLabel *bagsLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet CTLabel *priceLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet CTLabel *transmissionLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *vendorImageView;
-@property (unsafe_unretained, nonatomic) IBOutlet CTLabel *vendorRatingLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UILabel *vendorRatingTitle;
-@property (unsafe_unretained, nonatomic) IBOutlet UICollectionView *includedCollectionView;
-@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+//@property (unsafe_unretained, nonatomic) IBOutlet UICollectionView *includedCollectionView;
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeight;
+@property (weak, nonatomic) IBOutlet UITableView *includedTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *includedHeight;
 
 @property (strong, nonatomic) CarRentalSearch *search;
 @property (strong, nonatomic) CartrawlerAPI *api;
@@ -37,7 +40,6 @@
 @property (strong, nonatomic) NSString *pickupCode;
 @property (strong, nonatomic) NSString *returnCode;
 @property (strong, nonatomic) NSString *homeCountry;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeight;
 
 @end
 
@@ -50,6 +52,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupView];
+    
+    self.includedTableView.dataSource = self;
+    self.includedTableView.estimatedRowHeight = 40;
+    self.includedTableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)setupView
@@ -62,8 +68,8 @@
         self.vendorImageView.image = image;
     }];
     
-    self.includedCollectionView.dataSource = self;
-    self.includedCollectionView.delegate = self;
+//    self.includedCollectionView.dataSource = self;
+//    self.includedCollectionView.delegate = self;
     
     self.vehicleNameLabel.text = self.search.selectedVehicle.vehicle.makeModelName;
     self.passengersLabel.text = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.passengerQty.stringValue, NSLocalizedString(@"passengers", @"passengers")];
@@ -78,41 +84,37 @@
     self.transmissionLabel.text = self.search.selectedVehicle.vehicle.transmissionType;
     
     self.view.translatesAutoresizingMaskIntoConstraints = false;
-    if (self.search.selectedVehicle.vendor.rating.overallScore != nil) {
-        
-        NSString *score = [NSString stringWithFormat:@"%.1f", self.search.selectedVehicle.vendor.rating.overallScore.floatValue * 2];
-        
-        NSMutableAttributedString *ratingString = [[NSMutableAttributedString alloc] init];
-        
-        NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:score
-                                                                      attributes:@{NSFontAttributeName:
-                                                                                       [UIFont fontWithName:[CTAppearance instance].boldFontName size:18]}];
-        
-        NSAttributedString *dot = [[NSAttributedString alloc] initWithString:@"/"
-                                                                  attributes:@{NSFontAttributeName:
-                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
-        
-        NSAttributedString *cents = [[NSAttributedString alloc] initWithString:@"10"
-                                                                    attributes:@{NSFontAttributeName:
-                                                                                     [UIFont fontWithName:[CTAppearance instance].boldFontName size:14], NSForegroundColorAttributeName : [UIColor lightGrayColor]}];
-        
-        [ratingString appendAttributedString:dollars];
-        [ratingString appendAttributedString:dot];
-        [ratingString appendAttributedString:cents];
-        
-        self.ratingLabel.alpha = 1;
-        self.vendorRatingTitle.alpha = 1;
-        self.ratingLabel.attributedText = ratingString;
-        
-    } else {
-        self.ratingLabel.alpha = 0;
-        self.vendorRatingTitle.alpha = 0;
-    }
     
     if (self.search.selectedVehicle.vehicle.pricedCoverages.count > 0) {
-        [self.includedCollectionView reloadData];
+        //[self.includedCollectionView reloadData];
+        [self.includedTableView reloadData];
+
     } else {
         self.heightChanged(-50);
+    }
+    
+    if (self.search.selectedVehicle.vehicle.totalPriceForThisVehicle) {
+        
+        NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
+        NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];
+        
+        NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject
+                                                                      attributes:@{NSFontAttributeName:
+                                                                                       [UIFont fontWithName:[CTAppearance instance].boldFontName size:23]}];
+        
+        NSAttributedString *dot = [[NSAttributedString alloc] initWithString:@"."
+                                                                  attributes:@{NSFontAttributeName:
+                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:18]}];
+        
+        NSAttributedString *cents = [[NSAttributedString alloc] initWithString:priceStrings.lastObject
+                                                                    attributes:@{NSFontAttributeName:
+                                                                                     [UIFont fontWithName:[CTAppearance instance].boldFontName size:18]}];
+        
+        [priceString appendAttributedString:dollars];
+        [priceString appendAttributedString:dot];
+        [priceString appendAttributedString:cents];
+        
+        self.priceLabel.attributedText = priceString;
     }
     
 }
@@ -134,53 +136,68 @@
     _api = api;
 }
 
-- (IBAction)termsAndCondTapped:(id)sender
-{
-    UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"TermsViewControllerNav"];
-    TermsViewController *vc = (TermsViewController *)nav.topViewController;
-    [vc setData:self.search cartrawlerAPI:self.api];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self presentViewController:nav animated:YES completion:nil];
-    });
-}
-
 #pragma mark Included Collection View
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return self.search.selectedVehicle.vehicle.pricedCoverages.count;
-}
+//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+//{
+//    return self.search.selectedVehicle.vehicle.pricedCoverages.count;
+//}
+//
+//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+//{
+//    return 1;
+//}
+//
+//- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    IncludedCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+//    [cell setDetails:self.search.selectedVehicle.vehicle.pricedCoverages[indexPath.row].chargeDescription];
+//    
+//    self.collectionViewHeight.constant = self.includedCollectionView.contentSize.height;
+//    if (self.heightChanged) {
+//        self.heightChanged(self.includedCollectionView.contentSize.height);
+//    }
+//    
+//    return cell;
+//}
+//
+//- (CGSize)collectionView:(UICollectionView *)collectionView
+//                  layout:(UICollectionViewLayout *)collectionViewLayout
+//  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    CGSize cellSize = CGSizeMake(self.view.frame.size.width * 0.46, 50);
+//    
+//    return cellSize;
+//}
+//
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+//{
+//    return 0;
+//}
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+#pragma mark UITableView
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    IncludedCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    [cell setDetails:self.search.selectedVehicle.vehicle.pricedCoverages[indexPath.row].chargeDescription];
+    return self.search.selectedVehicle.vehicle.pricedCoverages.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
-    self.collectionViewHeight.constant = self.includedCollectionView.contentSize.height;
+    CTInclusionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    [cell setLabelText:self.search.selectedVehicle.vehicle.pricedCoverages[indexPath.row].chargeDescription];
+    self.includedHeight.constant = self.includedTableView.contentSize.height;
     if (self.heightChanged) {
-        self.heightChanged(self.includedCollectionView.contentSize.height);
+        self.heightChanged(self.includedTableView.contentSize.height);
     }
     
     return cell;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    CGSize cellSize = CGSizeMake(self.view.frame.size.width * 0.46, 50);
-    
-    return cellSize;
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 0;
 }
 
 @end

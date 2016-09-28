@@ -12,7 +12,7 @@
 #import "DateUtils.h"
 #import "CTFilterViewController.h"
 
-@interface VehicleSelectionViewController ()
+@interface VehicleSelectionViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet CTVehicleSelectionView *vehicleSelectionView;
 @property (weak, nonatomic) IBOutlet UILabel *locationsLabel;
@@ -20,6 +20,10 @@
 @property (weak, nonatomic) IBOutlet CTLabel *carCountLabel;
 
 @property (nonatomic, strong) CTFilterViewController *filterViewController;
+
+@property (nonatomic, assign) BOOL lastScrollDirection;
+
+#pragma MARK ScrollView
 
 @end
 
@@ -51,23 +55,43 @@
     };
     
     [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
+    
+    self.vehicleSelectionView.direction = ^(BOOL scrollDirectionUp) {
+        [weakSelf showText:scrollDirectionUp];
+    };
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
+    NSString *pickupDate = [DateUtils shortDescriptionFromDate:self.search.pickupDate];
+    NSString *dropoffDate = [DateUtils shortDescriptionFromDate:self.search.dropoffDate];
+    
+    self.datesLabel.text = [NSString stringWithFormat:@"%@ - %@", pickupDate, dropoffDate];
+    [self produceHeaderText];
+}
+
+- (void)showText:(BOOL)show
+{
+    if (show != self.lastScrollDirection) {
+        if (show) {
+            [self produceHeaderText];
+        } else {
+            self.locationsLabel.text = @"";
+        }
+        _lastScrollDirection = show;
+    }
+}
+
+- (void)produceHeaderText
+{
     if (self.search.pickupLocation == self.search.dropoffLocation) {
         self.locationsLabel.text = [NSString stringWithFormat:@"%@", self.search.pickupLocation.name];
     } else {
         self.locationsLabel.text = [NSString stringWithFormat:@"%@\n- to -\n%@",
                                     self.search.pickupLocation.name, self.search.dropoffLocation.name];
     }
-    
-    NSString *pickupDate = [DateUtils shortDescriptionFromDate:self.search.pickupDate];
-    NSString *dropoffDate = [DateUtils shortDescriptionFromDate:self.search.dropoffDate];
-    
-    self.datesLabel.text = [NSString stringWithFormat:@"%@ - %@", pickupDate, dropoffDate];
 }
 
 - (void)refresh

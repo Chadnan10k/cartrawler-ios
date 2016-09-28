@@ -167,7 +167,7 @@
                                             <constraint firstAttribute="trailing" secondItem="LDx-Zv-6p7" secondAttribute="trailing" constant="21" id="CtN-Dh-MoI"/>
                                             <constraint firstItem="fpf-AD-Leh" firstAttribute="centerY" secondItem="3zM-ty-RTT" secondAttribute="centerY" id="KlI-5O-f5F"/>
                                             <constraint firstAttribute="trailing" secondItem="q9G-iU-7lb" secondAttribute="trailing" constant="21" id="O2u-e0-8Cc"/>
-                                            <constraint firstAttribute="trailing" secondItem="MIj-z8-U9J" secondAttribute="trailing" constant="21" id="Om5-la-AE2"/>
+                                            <constraint firstAttribute="trailing" secondItem="MIj-z8-U9J" secondAttribute="trailing" constant="8" id="Om5-la-AE2"/>
                                             <constraint firstItem="fpf-AD-Leh" firstAttribute="leading" secondItem="3zM-ty-RTT" secondAttribute="trailing" constant="-12" id="PFp-h7-Twe"/>
                                             <constraint firstItem="fpf-AD-Leh" firstAttribute="top" secondItem="q9G-iU-7lb" secondAttribute="bottom" constant="11" id="Qcj-sG-PWL"/>
                                             <constraint firstItem="q9G-iU-7lb" firstAttribute="leading" secondItem="uir-d9-bUg" secondAttribute="leading" constant="20" id="Rdg-mm-78u"/>
@@ -177,7 +177,7 @@
                                             <constraint firstItem="q9G-iU-7lb" firstAttribute="top" secondItem="LDx-Zv-6p7" secondAttribute="bottom" constant="8" id="g9t-VC-6KD"/>
                                             <constraint firstAttribute="bottom" secondItem="MIj-z8-U9J" secondAttribute="bottom" constant="21" id="paE-A5-06I"/>
                                             <constraint firstItem="MIj-z8-U9J" firstAttribute="top" secondItem="3zM-ty-RTT" secondAttribute="bottom" constant="36" id="z0Y-BR-Klj"/>
-                                            <constraint firstItem="MIj-z8-U9J" firstAttribute="leading" secondItem="uir-d9-bUg" secondAttribute="leading" constant="20" id="zhF-6D-NKV"/>
+                                            <constraint firstItem="MIj-z8-U9J" firstAttribute="leading" secondItem="uir-d9-bUg" secondAttribute="leading" constant="8" id="zhF-6D-NKV"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -291,9 +291,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="oDd-Cw-eXB"/>
                                 <exclude reference="nGI-ad-a4R"/>
                                 <exclude reference="ygH-wn-9B9"/>
+                                <exclude reference="oDd-Cw-eXB"/>
                                 <exclude reference="UU2-s9-JC6"/>
                             </mask>
                         </variation>

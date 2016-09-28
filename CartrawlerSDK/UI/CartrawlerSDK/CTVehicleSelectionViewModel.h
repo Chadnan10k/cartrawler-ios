@@ -13,7 +13,9 @@
 @interface CTVehicleSelectionViewModel : NSObject <UITableViewDelegate, UITableViewDataSource>
 
 typedef void (^VehicleSelectionCompletion)(CTAvailabilityItem *vehicle);
+typedef void (^CTScrollViewDirection)(BOOL up);
 
 - (id)initWithData:(NSArray <CTAvailabilityItem *> *)data cellSelected:(VehicleSelectionCompletion)cellSeleted;
 - (void)updateData:(NSArray <CTAvailabilityItem *> *)data;
+@property (nonatomic) CTScrollViewDirection direction;
 @end

@@ -44,7 +44,8 @@
 - (void)initWithVehicleAvailability:(NSArray <CTAvailabilityItem *> *)data
                          completion:(VehicleSelectionCompletion)completion;
 {
-    
+    __weak typeof (self) weakSelf = self;
+
     [self.tableView setContentInset:UIEdgeInsetsMake(40,0,0,0)];
     
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
@@ -54,6 +55,10 @@
     _dataSource = [[CTVehicleSelectionViewModel alloc] initWithData:data cellSelected:^(CTAvailabilityItem *vehicle) {
         completion(vehicle);
     }];
+    
+    self.dataSource.direction = ^(BOOL direction) {
+        weakSelf.direction(direction);
+    };
     
     self.tableView.delegate = self.dataSource;
     self.tableView.dataSource = self.dataSource;
@@ -67,6 +72,8 @@
 {
     [self.dataSource updateData:data];
     [self.tableView reloadData];
+    NSIndexPath* top = [NSIndexPath indexPathForRow:NSNotFound inSection:0];
+    [self.tableView scrollToRowAtIndexPath:top atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 @end

@@ -190,7 +190,7 @@
             break;
         }
     }
-    heightConstraint.constant = textViewHeight + tableViewHeight + 50;
+    heightConstraint.constant = textViewHeight + tableViewHeight + 65;
 }
 
 - (IBAction)drawerControl:(id)sender

@@ -22,8 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.textView.layer.cornerRadius = 5;
-    self.textView.layer.masksToBounds = YES;
+//    self.textView.layer.cornerRadius = 5;
+//    self.textView.layer.masksToBounds = YES;
     self.textView.text = self.data.bodyText;
     self.textView.scrollEnabled = NO;
 

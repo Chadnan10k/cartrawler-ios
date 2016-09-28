@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSArray <CTAvailabilityItem *> *vehicles;
 @property (nonatomic, strong) VehicleSelectionCompletion selectedVehicle;
 
+@property (nonatomic, assign) CGFloat lastContentOffset;
+
 @end
 
 @implementation CTVehicleSelectionViewModel
@@ -49,7 +51,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 211;
+    return 208;
 }
 
 #pragma mark UITableViewDelegate
@@ -59,6 +61,34 @@
     if (self.selectedVehicle != nil) {
         self.selectedVehicle(self.vehicles[indexPath.row]);
     }
+}
+
+-(void) scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGPoint currentOffset = scrollView.contentOffset;
+
+    if (!(currentOffset.y < 0)) {
+        
+        if (currentOffset.y < 1000) {
+            
+            if (currentOffset.y >= self.lastContentOffset)
+            {
+                if (self.direction) {
+                    self.direction(NO);
+                }
+            } else {
+                if (self.direction) {
+                    self.direction(YES);
+                }
+            }
+        }
+        
+    } else {
+        if (self.direction) {
+            self.direction(YES);
+        }
+    }
+    self.lastContentOffset = currentOffset.y;
 }
 
 @end

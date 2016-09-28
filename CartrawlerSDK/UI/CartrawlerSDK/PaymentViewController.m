@@ -18,6 +18,7 @@
 #import "CTAppearance.h"
 #import "TermsViewController.h"
 #import "CTButton.h"
+#import "CTAppearance.h"
 
 @interface PaymentViewController () <UITextViewDelegate>
 
@@ -27,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *termsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet CTButton *confirmButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *termsAndCondHeight;
 
 @end
 
@@ -76,6 +78,11 @@
                                                                      text:termsStr
                                                             boldFontColor:@"#000000"];
     self.termsLabel.delegate = self;
+    
+//    CGSize textSize = [self.termsLabel.text
+//                       sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:[CTAppearance instance].boldFontName size:15]}];
+//    
+//    self.termsAndCondHeight.constant = textSize.height;
 }
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange

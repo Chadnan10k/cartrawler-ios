@@ -174,11 +174,11 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="112" id="EOu-Ms-hCX"/>
-                                            <constraint firstAttribute="trailing" secondItem="RTg-2z-px8" secondAttribute="trailing" constant="16" id="FGc-I4-tLd"/>
+                                            <constraint firstAttribute="trailing" secondItem="RTg-2z-px8" secondAttribute="trailing" constant="8" id="FGc-I4-tLd"/>
                                             <constraint firstAttribute="trailing" secondItem="vNH-7W-dg9" secondAttribute="trailing" constant="16" id="SOW-ks-HM2"/>
                                             <constraint firstItem="vNH-7W-dg9" firstAttribute="leading" secondItem="4OM-g5-xEo" secondAttribute="leading" constant="16" id="Sd3-6P-Chr"/>
                                             <constraint firstAttribute="bottom" secondItem="RTg-2z-px8" secondAttribute="bottom" constant="15" id="TcK-5o-j9R"/>
-                                            <constraint firstItem="RTg-2z-px8" firstAttribute="leading" secondItem="4OM-g5-xEo" secondAttribute="leading" constant="16" id="UpB-Xj-1sr"/>
+                                            <constraint firstItem="RTg-2z-px8" firstAttribute="leading" secondItem="4OM-g5-xEo" secondAttribute="leading" constant="8" id="UpB-Xj-1sr"/>
                                             <constraint firstItem="vNH-7W-dg9" firstAttribute="top" secondItem="4OM-g5-xEo" secondAttribute="top" constant="8" id="XBG-fm-foI"/>
                                             <constraint firstAttribute="height" constant="516" id="eGg-C6-BhW"/>
                                         </constraints>
@@ -193,8 +193,8 @@
                                     <constraint firstAttribute="trailing" secondItem="Jzu-GV-SyL" secondAttribute="trailing" id="3pg-tE-OR6"/>
                                     <constraint firstItem="pVo-BM-CmF" firstAttribute="leading" secondItem="cqJ-fN-run" secondAttribute="leading" constant="8" id="6mt-Vd-KhV"/>
                                     <constraint firstItem="4OM-g5-xEo" firstAttribute="leading" secondItem="cqJ-fN-run" secondAttribute="leading" id="JL5-35-dgD"/>
-                                    <constraint firstAttribute="trailing" secondItem="Jmn-vg-0jx" secondAttribute="trailing" constant="17" id="KtP-8U-Byh"/>
-                                    <constraint firstItem="Jmn-vg-0jx" firstAttribute="leading" secondItem="cqJ-fN-run" secondAttribute="leading" constant="17" id="Pcq-7w-Vlm"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jmn-vg-0jx" secondAttribute="trailing" constant="8" id="KtP-8U-Byh"/>
+                                    <constraint firstItem="Jmn-vg-0jx" firstAttribute="leading" secondItem="cqJ-fN-run" secondAttribute="leading" constant="8" id="Pcq-7w-Vlm"/>
                                     <constraint firstItem="pVo-BM-CmF" firstAttribute="top" secondItem="Jzu-GV-SyL" secondAttribute="bottom" constant="8" id="QZ0-3i-fii"/>
                                     <constraint firstItem="Jzu-GV-SyL" firstAttribute="leading" secondItem="cqJ-fN-run" secondAttribute="leading" id="Tvn-ru-ejU"/>
                                     <constraint firstItem="4OM-g5-xEo" firstAttribute="top" secondItem="Jzu-GV-SyL" secondAttribute="bottom" constant="431" id="ZtU-7Y-scv"/>

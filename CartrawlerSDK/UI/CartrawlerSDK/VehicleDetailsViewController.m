@@ -17,16 +17,14 @@
 #import "CTSDKSettings.h"
 #import "CTButton.h"
 #import "CTSegmentedControl.h"
+#import "TermsViewController.h"
 
 @interface VehicleDetailsViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *vehicleDetailsContainer;
-@property (weak, nonatomic) IBOutlet UIView *vendorRatingContainer;
 @property (weak, nonatomic) IBOutlet ExpandingInfoView *pickupLocationView;
 @property (weak, nonatomic) IBOutlet ExpandingInfoView *fuelPolicyView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *vehicleDetailsHeightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *vendorRatingHeightConstraint;
-@property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
 @property (weak, nonatomic) VehicleDetailsView *vehicleDetailView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet CTButton *continueButton;
@@ -45,9 +43,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self detailsTapped];
-    
+        
     self.continueButton.enabled = YES;
     
     [self.scrollView setContentOffset:
@@ -98,30 +94,6 @@
     
     [self.view layoutIfNeeded];
     
-    if (self.search.selectedVehicle.vehicle.totalPriceForThisVehicle) {
-        
-        NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
-        NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];
-        
-        NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject
-                                                                      attributes:@{NSFontAttributeName:
-                                                                                       [UIFont fontWithName:[CTAppearance instance].boldFontName size:20]}];
-        
-        NSAttributedString *dot = [[NSAttributedString alloc] initWithString:@"."
-                                                                  attributes:@{NSFontAttributeName:
-                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
-        
-        NSAttributedString *cents = [[NSAttributedString alloc] initWithString:priceStrings.lastObject
-                                                                    attributes:@{NSFontAttributeName:
-                                                                                     [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
-        
-        [priceString appendAttributedString:dollars];
-        [priceString appendAttributedString:dot];
-        [priceString appendAttributedString:cents];
-        
-        self.priceLabel.attributedText = priceString;
-    }
-    
 }
 
 - (IBAction)backTapped:(id)sender {
@@ -148,35 +120,20 @@
         
         self.vehicleDetailView.heightChanged = ^(CGFloat height) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.vehicleDetailsHeightConstraint.constant = height + 265;
+                self.vehicleDetailsHeightConstraint.constant = height + 355;
             });
         };
     }
 }
 
-- (void)detailsTapped
+- (IBAction)termsAndCondTapped:(id)sender
 {
-    
-    [self.vehicleDetailView setupView];
-    
-    self.vehicleDetailView.heightChanged = ^(CGFloat height) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.vehicleDetailsHeightConstraint.constant = height + 265;
-        });
-    };
-    
-    self.vehicleDetailsContainer.alpha = 1;
-    self.vendorRatingContainer.alpha = 0;
-}
-
-- (void)supplierTapped
-{
-    
-    self.vehicleDetailsHeightConstraint.constant = 170;
-
-    
-    self.vehicleDetailsContainer.alpha = 0;
-    self.vendorRatingContainer.alpha = 1;
+    UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"TermsViewControllerNav"];
+    TermsViewController *vc = (TermsViewController *)nav.topViewController;
+    [vc setData:self.search cartrawlerAPI:self.cartrawlerAPI];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:nav animated:YES completion:nil];
+    });
 }
 
 - (IBAction)continueTapped:(id)sender {

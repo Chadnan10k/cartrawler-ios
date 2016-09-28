@@ -218,6 +218,8 @@
 		45C488D01D47AF4E0044612C /* OptionalExtraTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C488CD1D479B260044612C /* OptionalExtraTableViewCell.xib */; };
 		45C48D4F1D5226CA005C9377 /* CTFilterFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C48D4D1D5226CA005C9377 /* CTFilterFactory.h */; };
 		45C48D501D5226CA005C9377 /* CTFilterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C48D4E1D5226CA005C9377 /* CTFilterFactory.m */; };
+		45CB6D041D9C139F00754DCD /* CTInclusionTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CB6D021D9C139F00754DCD /* CTInclusionTableViewCell.h */; };
+		45CB6D051D9C139F00754DCD /* CTInclusionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CB6D031D9C139F00754DCD /* CTInclusionTableViewCell.m */; };
 		45CFC7DD1D2CF822006E6F83 /* ExtrasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFC7DB1D2CF822006E6F83 /* ExtrasViewController.h */; };
 		45CFC7DE1D2CF822006E6F83 /* ExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFC7DC1D2CF822006E6F83 /* ExtrasViewController.m */; };
 		45CFC7DF1D2CF95C006E6F83 /* StepFour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45CFC7D91D2CF4D9006E6F83 /* StepFour.storyboard */; };
@@ -478,6 +480,8 @@
 		45C488CD1D479B260044612C /* OptionalExtraTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionalExtraTableViewCell.xib; sourceTree = "<group>"; };
 		45C48D4D1D5226CA005C9377 /* CTFilterFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterFactory.h; sourceTree = "<group>"; };
 		45C48D4E1D5226CA005C9377 /* CTFilterFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterFactory.m; sourceTree = "<group>"; };
+		45CB6D021D9C139F00754DCD /* CTInclusionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInclusionTableViewCell.h; sourceTree = "<group>"; };
+		45CB6D031D9C139F00754DCD /* CTInclusionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInclusionTableViewCell.m; sourceTree = "<group>"; };
 		45CFC7D91D2CF4D9006E6F83 /* StepFour.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepFour.storyboard; sourceTree = "<group>"; };
 		45CFC7DB1D2CF822006E6F83 /* ExtrasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtrasViewController.h; sourceTree = "<group>"; };
 		45CFC7DC1D2CF822006E6F83 /* ExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtrasViewController.m; sourceTree = "<group>"; };
@@ -826,6 +830,7 @@
 		454AD7B31D2A62A6005C6CFF /* Car details tab */ = {
 			isa = PBXGroup;
 			children = (
+				45CB6D011D9C136400754DCD /* Included TableView */,
 				454AD7C01D2AAD02005C6CFF /* IncludedCollectionView */,
 				454AD7BA1D2A6C5F005C6CFF /* VehicleDetailsView.h */,
 				454AD7BB1D2A6C5F005C6CFF /* VehicleDetailsView.m */,
@@ -957,6 +962,15 @@
 				45C1ECF41D5103150059EF89 /* CTFilterTableView.m */,
 			);
 			name = UITableView;
+			sourceTree = "<group>";
+		};
+		45CB6D011D9C136400754DCD /* Included TableView */ = {
+			isa = PBXGroup;
+			children = (
+				45CB6D021D9C139F00754DCD /* CTInclusionTableViewCell.h */,
+				45CB6D031D9C139F00754DCD /* CTInclusionTableViewCell.m */,
+			);
+			name = "Included TableView";
 			sourceTree = "<group>";
 		};
 		45CFC7DA1D2CF7EA006E6F83 /* Extras (Step Four) */ = {
@@ -1361,6 +1375,7 @@
 				45DC6B8C1D82BE0400010B4D /* GTInterstitialViewController.h in Headers */,
 				45A7B7401D9AAA04006611EB /* GTFilterCollectionViewFlowLayout.h in Headers */,
 				45819FAA1D35036A001AE0F5 /* BookingSummaryViewController.h in Headers */,
+				45CB6D041D9C139F00754DCD /* CTInclusionTableViewCell.h in Headers */,
 				454AD77F1D25587D005C6CFF /* CTFilterDataSource.h in Headers */,
 				45F4736E1D369E2A00DF548B /* CompletionViewController.h in Headers */,
 				45C488CB1D479B020044612C /* OptionalExtrasView.h in Headers */,
@@ -1674,6 +1689,7 @@
 				4544464D1D9A7FE80047873F /* CTNavigationView.m in Sources */,
 				45DC6B8D1D82BE0400010B4D /* GTInterstitialViewController.m in Sources */,
 				4550618C1D59CD91004EAC43 /* LocalisedStrings.m in Sources */,
+				45CB6D051D9C139F00754DCD /* CTInclusionTableViewCell.m in Sources */,
 				4588E3191D538FB1008F4267 /* PaymentRequest.m in Sources */,
 				451B513C1D38DD35004EBFDC /* GTBookNowButton.m in Sources */,
 				4530DA341D46660900CF3186 /* CTTextView.m in Sources */,

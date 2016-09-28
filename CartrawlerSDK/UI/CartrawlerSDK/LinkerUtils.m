@@ -85,6 +85,7 @@
 #import "CTStepper.h"
 #import "CTNavigationView.h"
 #import "GTFilterCollectionViewFlowLayout.h"
+#import "CTInclusionTableViewCell.h"
 
 @implementation LinkerUtils
 
@@ -167,7 +168,7 @@
     [CTStepper forceLinkerLoad_];
     [CTNavigationView forceLinkerLoad_];
     [GTFilterCollectionViewFlowLayout forceLinkerLoad_];
-
+    [CTInclusionTableViewCell forceLinkerLoad_];
 }
 
 @end

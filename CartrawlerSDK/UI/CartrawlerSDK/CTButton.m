@@ -42,6 +42,8 @@
     
     _overrideBackgroundColor = [CTAppearance instance].buttonColor;
     _overrideTextColor = [CTAppearance instance].buttonTextColor;
+    _overrideCornerRadius = [CTAppearance instance].buttonCornerRadius;
+    
     _disableShadow = NO;
     self.backgroundColor = [CTAppearance instance].buttonColor;
     [self setTitleColor:[CTAppearance instance].buttonTextColor forState:UIControlStateNormal];
@@ -63,6 +65,7 @@
     [super awakeFromNib];
     self.backgroundColor = self.overrideBackgroundColor;
     [self setTitleColor:self.overrideTextColor forState:UIControlStateNormal];
+    self.layer.cornerRadius = self.overrideCornerRadius;
     
     self.titleLabel.minimumScaleFactor = 0.5f;
     self.titleLabel.numberOfLines = 1;
