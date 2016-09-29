@@ -916,7 +916,7 @@
                 <navigationController storyboardIdentifier="InitialNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sui-XM-uDt" customClass="CTNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="pxI-o6-pEv" customClass="CTNavigationBar">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="pxI-o6-pEv" customClass="CTNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -980,10 +980,12 @@
                                     <constraint firstAttribute="bottom" secondItem="19h-a8-EoC" secondAttribute="bottom" constant="10" id="OwI-GV-tIg"/>
                                     <constraint firstItem="wbD-15-kjI" firstAttribute="centerX" secondItem="7B1-TU-F8m" secondAttribute="centerX" id="TSl-M2-r8J"/>
                                     <constraint firstItem="19h-a8-EoC" firstAttribute="leading" secondItem="7B1-TU-F8m" secondAttribute="leading" constant="8" id="bc9-c9-EyJ"/>
+                                    <constraint firstItem="19h-a8-EoC" firstAttribute="centerY" secondItem="wbD-15-kjI" secondAttribute="centerY" id="fXd-tk-lJl"/>
                                     <constraint firstItem="wbD-15-kjI" firstAttribute="top" secondItem="7B1-TU-F8m" secondAttribute="top" constant="28" id="oer-SD-VmK"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="OwI-GV-tIg"/>
                                         <exclude reference="oer-SD-VmK"/>
                                     </mask>
                                 </variation>

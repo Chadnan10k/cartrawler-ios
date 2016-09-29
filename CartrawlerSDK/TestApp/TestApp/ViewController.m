@@ -22,8 +22,8 @@
     
     // Do any additional setup after loading the view, typically from a nib.
     
-    [CartrawlerSDK appearance].fontName = @"OpenSans-Light";
-    [CartrawlerSDK appearance].boldFontName = @"OpenSans-Semibold";
+    [CartrawlerSDK appearance].fontName = @"HelveticaNeue-Light";
+    [CartrawlerSDK appearance].boldFontName = @"HelveticaNeue-Medium";
     
     _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"68622" languageCode:@"EN" isDebug:YES];
     

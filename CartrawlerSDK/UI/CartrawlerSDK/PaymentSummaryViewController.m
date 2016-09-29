@@ -36,7 +36,15 @@
     
 }
 
-
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 80;
+    
+    self.tableView.dataSource = self;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -69,17 +77,23 @@
     
     self.totalLabel.text = [NSNumberUtils numberStringWithCurrencyCode:@(total)];
     
-    self.tableView.dataSource = self;
+//    [self.view layoutIfNeeded];
+//    [self.tableView layoutIfNeeded];
+//    self.tableViewHeight.constant = self.tableView.contentSize.height;
     
+    self.tableView.alpha = 0;
     [self.tableView reloadData];
-    
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 80;
-    
-    [self.view layoutIfNeeded];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tableView layoutIfNeeded];
     self.tableViewHeight.constant = self.tableView.contentSize.height;
-    
-    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.tableView.alpha = 1;
+    }];
 }
 
 - (IBAction)pushView:(id)sender {

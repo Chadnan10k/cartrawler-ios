@@ -89,10 +89,10 @@
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="6HZ-Uh-H8o" firstAttribute="leading" secondItem="Jzu-GV-SyL" secondAttribute="leading" constant="20" id="5Sy-wL-FJS"/>
+                                            <constraint firstItem="6HZ-Uh-H8o" firstAttribute="leading" secondItem="Jzu-GV-SyL" secondAttribute="leading" constant="8" id="5Sy-wL-FJS"/>
                                             <constraint firstItem="6HZ-Uh-H8o" firstAttribute="top" secondItem="Jzu-GV-SyL" secondAttribute="top" constant="14" id="7tp-lx-3YV"/>
                                             <constraint firstAttribute="height" constant="51" id="Ilz-mf-gKC"/>
-                                            <constraint firstAttribute="trailing" secondItem="qBc-ff-MxG" secondAttribute="trailing" constant="20" id="ea7-Vc-RyU"/>
+                                            <constraint firstAttribute="trailing" secondItem="qBc-ff-MxG" secondAttribute="trailing" constant="8" id="ea7-Vc-RyU"/>
                                             <constraint firstItem="qBc-ff-MxG" firstAttribute="leading" secondItem="6HZ-Uh-H8o" secondAttribute="trailing" constant="8" id="lxT-9c-566"/>
                                             <constraint firstItem="qBc-ff-MxG" firstAttribute="top" secondItem="Jzu-GV-SyL" secondAttribute="top" constant="10" id="ppp-6C-F2t"/>
                                         </constraints>
@@ -176,7 +176,7 @@
                                             <constraint firstAttribute="height" constant="112" id="EOu-Ms-hCX"/>
                                             <constraint firstAttribute="trailing" secondItem="RTg-2z-px8" secondAttribute="trailing" constant="8" id="FGc-I4-tLd"/>
                                             <constraint firstAttribute="trailing" secondItem="vNH-7W-dg9" secondAttribute="trailing" constant="16" id="SOW-ks-HM2"/>
-                                            <constraint firstItem="vNH-7W-dg9" firstAttribute="leading" secondItem="4OM-g5-xEo" secondAttribute="leading" constant="16" id="Sd3-6P-Chr"/>
+                                            <constraint firstItem="vNH-7W-dg9" firstAttribute="leading" secondItem="4OM-g5-xEo" secondAttribute="leading" constant="8" id="Sd3-6P-Chr"/>
                                             <constraint firstAttribute="bottom" secondItem="RTg-2z-px8" secondAttribute="bottom" constant="15" id="TcK-5o-j9R"/>
                                             <constraint firstItem="RTg-2z-px8" firstAttribute="leading" secondItem="4OM-g5-xEo" secondAttribute="leading" constant="8" id="UpB-Xj-1sr"/>
                                             <constraint firstItem="vNH-7W-dg9" firstAttribute="top" secondItem="4OM-g5-xEo" secondAttribute="top" constant="8" id="XBG-fm-foI"/>

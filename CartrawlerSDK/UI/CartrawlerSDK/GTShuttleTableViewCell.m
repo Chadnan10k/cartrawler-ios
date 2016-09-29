@@ -133,4 +133,9 @@
     return CGSizeMake(width, 30);
 }
 
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
 @end

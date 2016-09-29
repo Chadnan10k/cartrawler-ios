@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +16,7 @@
                 <frame key="frameInset" width="375" height="64"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekp-FH-hnW" customClass="CTLabel">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekp-FH-hnW" customClass="CTLabel">
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -50,6 +51,10 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="4" translatesAutoresizingMaskIntoConstraints="NO" id="15K-M1-9VB" customClass="CTStepper">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="29" id="2mx-YZ-vL3"/>
+                            <constraint firstAttribute="width" constant="94" id="SU2-gd-FUV"/>
+                        </constraints>
                         <connections>
                             <action selector="qtyChanged:" destination="R7o-Vt-8Qx" eventType="valueChanged" id="CNn-ER-W5n"/>
                         </connections>
@@ -57,17 +62,17 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="SEu-5X-OdB" firstAttribute="top" secondItem="Rx1-2f-iWc" secondAttribute="top" constant="12" id="58g-HR-ddN"/>
-                    <constraint firstItem="Ekp-FH-hnW" firstAttribute="leading" secondItem="SEu-5X-OdB" secondAttribute="trailing" constant="23" id="5w7-rv-rPz"/>
                     <constraint firstItem="wRh-ic-F9h" firstAttribute="centerY" secondItem="15K-M1-9VB" secondAttribute="centerY" id="7Rg-tt-Dre"/>
-                    <constraint firstItem="wRh-ic-F9h" firstAttribute="leading" secondItem="Ekp-FH-hnW" secondAttribute="trailing" constant="8" id="D7m-27-QbQ"/>
+                    <constraint firstItem="Ekp-FH-hnW" firstAttribute="top" secondItem="Rx1-2f-iWc" secondAttribute="topMargin" constant="4" id="8A4-Xz-jDK"/>
                     <constraint firstAttribute="trailing" secondItem="15K-M1-9VB" secondAttribute="trailing" constant="8" id="Hz3-gn-76U"/>
-                    <constraint firstItem="sWi-BF-Loe" firstAttribute="top" secondItem="Ekp-FH-hnW" secondAttribute="bottom" constant="13" id="IMd-r7-9bj"/>
                     <constraint firstItem="sWi-BF-Loe" firstAttribute="leading" secondItem="SEu-5X-OdB" secondAttribute="trailing" constant="23" id="MmI-MO-yu3"/>
-                    <constraint firstItem="Ekp-FH-hnW" firstAttribute="top" secondItem="Rx1-2f-iWc" secondAttribute="top" constant="12" id="cY4-rc-dpA"/>
+                    <constraint firstItem="wRh-ic-F9h" firstAttribute="leading" secondItem="Ekp-FH-hnW" secondAttribute="trailing" constant="8" id="XpT-CZ-oYX"/>
                     <constraint firstAttribute="bottom" secondItem="sWi-BF-Loe" secondAttribute="bottom" constant="7" id="eVa-OI-Lga"/>
                     <constraint firstItem="SEu-5X-OdB" firstAttribute="leading" secondItem="Rx1-2f-iWc" secondAttribute="leading" constant="8" id="gsb-47-5wt"/>
+                    <constraint firstItem="Ekp-FH-hnW" firstAttribute="leading" secondItem="SEu-5X-OdB" secondAttribute="trailing" constant="23" id="lJu-k6-X5b"/>
                     <constraint firstItem="15K-M1-9VB" firstAttribute="leading" secondItem="wRh-ic-F9h" secondAttribute="trailing" constant="8" id="nO0-3K-Cpc"/>
                     <constraint firstItem="15K-M1-9VB" firstAttribute="centerY" secondItem="Rx1-2f-iWc" secondAttribute="centerY" id="nps-0M-gcI"/>
+                    <constraint firstItem="sWi-BF-Loe" firstAttribute="top" secondItem="Ekp-FH-hnW" secondAttribute="bottom" constant="13" id="yyT-Z9-0T3"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -82,6 +87,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="generic_extra" width="32" height="32"/>
+        <image name="generic_extra" width="50" height="50"/>
     </resources>
 </document>

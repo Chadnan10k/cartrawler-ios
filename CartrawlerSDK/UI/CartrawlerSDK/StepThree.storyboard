@@ -767,7 +767,7 @@
         <!--Supplier Ratings View Controller-->
         <scene sceneID="1lX-kP-1dw">
             <objects>
-                <viewController storyboardIdentifier="SupplierDetails" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pIE-ro-U4a" customClass="SupplierRatingsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SupplierDetails" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pIE-ro-U4a" customClass="SupplierRatingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dxL-NH-Qj6"/>
                         <viewControllerLayoutGuide type="bottom" id="MY4-9e-tnU"/>
@@ -983,7 +983,7 @@
             <objects>
                 <navigationController storyboardIdentifier="TermsViewControllerNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="zaw-2W-wIV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LTW-fF-QCn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LTW-fF-QCn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
