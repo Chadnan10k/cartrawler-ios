@@ -42,7 +42,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGu-gG-koo">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGu-gG-koo">
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nIz-ff-Vhb" customClass="CTDesignableView">
                                         <subviews>
@@ -229,6 +229,11 @@
                                     <constraint firstAttribute="height" constant="50" id="Rl6-h1-704"/>
                                 </constraints>
                                 <state key="normal" title="Done"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="overrideCornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="done:" destination="iTv-ta-V0B" eventType="touchUpInside" id="dEa-AK-5Xg"/>
                                 </connections>
@@ -372,8 +377,8 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="Wuh-yh-5fV"/>
                                         <exclude reference="lKy-oc-8Ul"/>
+                                        <exclude reference="Wuh-yh-5fV"/>
                                     </mask>
                                 </variation>
                             </view>

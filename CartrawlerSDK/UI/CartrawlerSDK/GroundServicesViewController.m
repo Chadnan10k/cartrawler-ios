@@ -39,6 +39,9 @@
     _filterDataSource.avail = self.availability;
     [self.filterCollectionView reloadData];
     [self.tableView reloadData];
+    
+//    NSIndexPath* top = [NSIndexPath indexPathForRow:NSNotFound inSection:0];
+//    [self.tableView scrollToRowAtIndexPath:top atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 - (void)viewDidLoad {

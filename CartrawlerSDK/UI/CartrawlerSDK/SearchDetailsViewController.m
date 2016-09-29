@@ -14,6 +14,7 @@
 #import "DateUtils.h"
 #import "CTTimePickerView.h"
 #import "CTTextField.h"
+#import "CTInterstitialViewController.h"
 
 #define kSearchViewStoryboard @"StepOne"
 
@@ -332,20 +333,19 @@
         __weak typeof (self) weakSelf = self;
         
         self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage) {
-            if (success) {
-                [weakSelf.activityView stopAnimating];
-                button.enabled = YES;
-                button.alpha = 1.0;
-            } else {
-                [weakSelf.activityView stopAnimating];
-                button.enabled = YES;
-                button.alpha = 1.0;
-                if (errorMessage) {
-                    [weakSelf presentAlertWithError:errorMessage];
-                }
+            [CTInterstitialViewController dismiss];
+            [weakSelf.activityView stopAnimating];
+            button.enabled = YES;
+            button.alpha = 1.0;
+            
+            if (!success && errorMessage) {
+                [weakSelf presentAlertWithError:errorMessage];
             }
         };
+        
         [self pushToDestination];
+        [CTInterstitialViewController present:self];
+        
     }
 }
 

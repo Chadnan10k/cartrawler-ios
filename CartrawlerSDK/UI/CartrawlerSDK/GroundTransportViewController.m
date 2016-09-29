@@ -19,6 +19,7 @@
 #import "CTSDKSettings.h"
 #import "CTButton.h"
 #import "PassengerSelectionViewController.h"
+#import "CTInterstitialViewController.h"
 
 @interface GroundTransportViewController () <CTCalendarDelegate, UITextFieldDelegate>
 
@@ -231,6 +232,7 @@
     };
     
     self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage) {
+        [CTInterstitialViewController dismiss];
         weakSelf.searchButton.enabled = YES;
         weakSelf.searchButton.alpha = 1;
         if (errorMessage) {
@@ -384,6 +386,7 @@
         b.enabled = NO;
         b.alpha = 0.8;
         [self pushToDestination];
+        [CTInterstitialViewController present:self];
     }
 }
 

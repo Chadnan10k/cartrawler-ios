@@ -86,6 +86,7 @@
 #import "CTNavigationView.h"
 #import "GTFilterCollectionViewFlowLayout.h"
 #import "CTInclusionTableViewCell.h"
+#import "CTInterstitialViewController.h"
 
 @implementation LinkerUtils
 
@@ -169,6 +170,7 @@
     [CTNavigationView forceLinkerLoad_];
     [GTFilterCollectionViewFlowLayout forceLinkerLoad_];
     [CTInclusionTableViewCell forceLinkerLoad_];
+    [CTInterstitialViewController forceLinkerLoad_];
 }
 
 @end
