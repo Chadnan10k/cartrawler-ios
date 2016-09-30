@@ -35,8 +35,8 @@
                     NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&serializationError];
                     if (responseDict) {
                         if ([responseDict[@"results"] isKindOfClass:[NSArray class]]) {
-                            NSMutableArray *locs = [[NSMutableArray alloc] init];
-                            NSArray *arr = responseDict[@"results"];
+                            NSMutableArray <CTMatchedLocation *>*locs = [[NSMutableArray alloc] init];
+                            NSArray <CTMatchedLocation *>*arr = responseDict[@"results"];
                             for (NSDictionary *d in arr) {
                                 CTMatchedLocation *loc = [[CTMatchedLocation alloc] initWithGooglePlacesDictionary:d];
                                 [locs addObject:loc];

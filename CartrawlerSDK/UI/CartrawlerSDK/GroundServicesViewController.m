@@ -22,6 +22,9 @@
 @property (strong, nonatomic) FilterCollectionViewDataSource *filterDataSource;
 
 @property (nonatomic) GTFilterType selectedFilterType;
+
+@property (nonatomic) BOOL needsRefresh;
+
 @end
 
 @implementation GroundServicesViewController
@@ -31,17 +34,32 @@
     
 }
 
+- (void)refresh
+{
+    _needsRefresh = YES;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    _selectedFilterType = GTFilterTypeNone;
-    _availability = self.groundSearch.availability;
-    _filterDataSource.avail = self.availability;
-    [self.filterCollectionView reloadData];
-    [self.tableView reloadData];
-    
-//    NSIndexPath* top = [NSIndexPath indexPathForRow:NSNotFound inSection:0];
-//    [self.tableView scrollToRowAtIndexPath:top atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    if (self.needsRefresh) {
+        _selectedFilterType = GTFilterTypeNone;
+        _availability = self.groundSearch.availability;
+        _filterDataSource.avail = self.availability;
+        [self.filterCollectionView reloadData];
+        [self.tableView reloadData];
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.needsRefresh) {
+        [self.filterDataSource collectionView:self.filterCollectionView didSelectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        CGPoint point = CGPointMake(0, 0);
+        self.tableView.contentOffset = point;
+        _needsRefresh = NO;
+    }
 }
 
 - (void)viewDidLoad {

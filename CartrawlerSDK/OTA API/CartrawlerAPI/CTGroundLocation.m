@@ -19,6 +19,8 @@
 {
     _latitude = latitude;
     _longitude = longitude;
+    _locationType = locationType;
+    
     switch (locationType) {
         case LocationTypeAirport:
             _locationTypeDescription = @"Airport";
@@ -60,21 +62,48 @@
     NSString *date = dictionary[@"@DateTime"];
     
     _dateTime = [df dateFromString:date];
-    NSString *locType = dictionary[@"Address"][@"LocationType"];
-    _locationTypeDescription = locType;
     
-    if ([locType isEqualToString:@"Airport"]) {
-        _locationType = LocationTypeAirport;
-    } else if ([locType isEqualToString:@"Company"]) {
-        _locationType = LocationTypeCompany;
-    } else if ([locType isEqualToString:@"Hotel"]) {
-        _locationType = LocationTypeHotel;
-    } else if ([locType isEqualToString:@"HomeResidence"]) {
-        _locationType = LocationTypeHomeResidence;
-    } else if ([locType isEqualToString:@"TrainStation"]) {
-        _locationType = LocationTypeTrainStation;
-    } else if ([locType isEqualToString:@"Vicinity"]) {
-        _locationType = LocationTypeVicinity;
+    if ([dictionary[@"Address"][@"LocationType"] isKindOfClass:[NSDictionary class]]) {
+        if(dictionary[@"Address"][@"LocationType"][@"@Code"]) {
+            NSString *locType = dictionary[@"Address"][@"LocationType"][@"@Code"];
+            _locationTypeDescription = locType;
+            if ([locType isEqualToString:@"Airport"]) {
+                _locationType = LocationTypeAirport;
+            } else if ([locType isEqualToString:@"Company"]) {
+                _locationType = LocationTypeCompany;
+            } else if ([locType isEqualToString:@"Hotel"]) {
+                _locationType = LocationTypeHotel;
+            } else if ([locType isEqualToString:@"HomeResidence"]) {
+                _locationType = LocationTypeHomeResidence;
+            } else if ([locType isEqualToString:@"TrainStation"]) {
+                _locationType = LocationTypeTrainStation;
+            } else if ([locType isEqualToString:@"Vicinity"]) {
+                _locationType = LocationTypeVicinity;
+            } else if ([locType isEqualToString:@"BusStation"]) {
+                _locationType = LocationTypeBusStation;
+            }
+        }
+    } else {
+    
+        NSString *locType = dictionary[@"Address"][@"LocationType"];
+        _locationTypeDescription = locType;
+        
+        if ([locType isEqualToString:@"Airport"]) {
+            _locationType = LocationTypeAirport;
+        } else if ([locType isEqualToString:@"Company"]) {
+            _locationType = LocationTypeCompany;
+        } else if ([locType isEqualToString:@"Hotel"]) {
+            _locationType = LocationTypeHotel;
+        } else if ([locType isEqualToString:@"HomeResidence"]) {
+            _locationType = LocationTypeHomeResidence;
+        } else if ([locType isEqualToString:@"TrainStation"]) {
+            _locationType = LocationTypeTrainStation;
+        } else if ([locType isEqualToString:@"Vicinity"]) {
+            _locationType = LocationTypeVicinity;
+        } else if ([locType isEqualToString:@"BusStation"]) {
+            _locationType = LocationTypeBusStation;
+        }
+        
     }
     
     _name = dictionary[@"Address"][@"LocationName"];

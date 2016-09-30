@@ -22,8 +22,9 @@ typedef NS_ENUM(NSUInteger, GTFilterType) {
 @property (nonatomic) GTFilterType filterType;
 @property (nonatomic, strong) NSString *price;
 
-- (void)setFilterType:(GTFilterType)filterType price:(NSString *)price;
+- (void)setFilterType:(GTFilterType)filterType price:(NSString *)price imageURL:(NSURL *)url;
 - (void)animate;
+- (void)deselect;
 
 + (void)forceLinkerLoad_;
 

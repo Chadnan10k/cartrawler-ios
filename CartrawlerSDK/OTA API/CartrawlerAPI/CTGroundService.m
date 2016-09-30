@@ -7,6 +7,7 @@
 //
 
 #import "CTGroundService.h"
+#import "ImageResizeURL.h"
 
 @implementation CTGroundService
 
@@ -86,9 +87,9 @@
     
     _companyName = dict[@"Reference"][@"CompanyName"][@"@Division"];
     
-    NSURL *vehImgUrl = [[NSURL alloc] initWithString:dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Vehicle"][@"PictureURL"]];
+    //NSURL *vehImgUrl = [[NSURL alloc] initWithString:dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Vehicle"][@"PictureURL"]];
     
-    _vehicleImage = vehImgUrl;
+    _vehicleImage = [ImageResizeURL gtVehicle:dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Vehicle"][@"PictureURL"]];
     _vehicleType = dict[@"Service"][@"VehicleType"];
     
     return self;

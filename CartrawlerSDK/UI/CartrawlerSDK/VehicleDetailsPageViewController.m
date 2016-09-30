@@ -11,6 +11,7 @@
 #import "PageSelectionCollectionViewCell.h"
 #import "CTView.h"
 #import "CTSegmentedControl.h"
+#import "CTButton.h"
 
 @interface VehicleDetailsPageViewController () <UIPageViewControllerDataSource>
 
@@ -22,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *selectionCollectionView;
 @property (weak, nonatomic) IBOutlet CTView *headerView;
 @property (weak, nonatomic) IBOutlet CTSegmentedControl *selectionControl;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
+@property (weak, nonatomic) IBOutlet CTButton *continueButton;
 
 @end
 
@@ -34,6 +37,8 @@
     [super viewWillAppear:animated];
     
     _index = 0;
+    
+    self.continueButton.enabled = YES;
     
     self.vehicleDetails.search = self.search;
     self.vehicleDetails.cartrawlerAPI = self.cartrawlerAPI;
@@ -55,12 +60,9 @@
     [self.pageViewController setViewControllers:@[self.vehicleDetails] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 
     __weak typeof (self) weakSelf = self;
-    self.vehicleDetails.tappedContinue = ^(BOOL tapped) {
-        [weakSelf pushToDestination];
-    };
-    
+
     self.dataValidationCompletion = ^(BOOL insuranceSuccess, NSString *errorMessage) {
-        [weakSelf.vehicleDetails stopAnimating];
+        [weakSelf stopAnimating];
     };
     
 }
@@ -71,7 +73,6 @@
     _vehicleDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"VehicleDetails"];
     _supplierDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"SupplierDetails"];
 
-    
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
     self.pageViewController.dataSource = self;
     
@@ -82,16 +83,30 @@
     [self.pageViewController didMoveToParentViewController:self];
     
     [self.view bringSubviewToFront:self.headerView];
+    [self.view bringSubviewToFront:self.continueButton];
+    [self.view bringSubviewToFront:self.activityView];
 
+    for (UIScrollView *view in self.pageViewController.view.subviews) {
+        if ([view isKindOfClass:[UIScrollView class]]) {
+            view.scrollEnabled = NO;
+        }
+    }
 }
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)continueTapped:(id)sender {
+    
+    [self.activityView startAnimating];
+    self.continueButton.enabled = NO;
+    [self pushToDestination];
+}
+
+- (void)stopAnimating
+{
+    [self.activityView stopAnimating];
 }
 
 #pragma MARK PageViewController

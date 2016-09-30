@@ -34,6 +34,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 
 @property (nonatomic) BOOL runLoop;
 @property (nonatomic) BOOL termsChecked;
+
 @property (nonatomic) CTPaymentType paymentType;
 
 @property (nonatomic, copy) GroundTransportSearch *groundSearch;
@@ -348,13 +349,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 - (void)currentState
 {
     if (self.runLoop) {
-        
-        if ( [[self.webView stringByEvaluatingJavaScriptFromString:@"getCurrentState()"] isEqualToString:@"ValidationError"]) {
-            if (self.completion) {
-                self.completion(NO);
-            }
-        }
-        
+    
         _jsonResponse = [self.webView stringByEvaluatingJavaScriptFromString:@"getJsonResponse()"];
         
         if (![self.jsonResponse isEqualToString:@""]) {
@@ -375,6 +370,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                 [self showError:@"Error" message:error.errorMessage];
                 _runLoop = NO;
                 [self.webView stringByEvaluatingJavaScriptFromString:@"resetResponses()"];
+                
                 
             } else {
                 _runLoop = NO;
@@ -403,7 +399,14 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                             break;
                     }
                 }
-                
+            }
+        } else {
+            if ([[self.webView stringByEvaluatingJavaScriptFromString:@"getCurrentState()"] isEqualToString:@"ValidationError"]) {
+                [self.webView stringByEvaluatingJavaScriptFromString:@"resetResponses()"];
+                if (self.completion) {
+                    self.completion(NO);
+                }
+                _runLoop = NO;
             }
         }
     }
@@ -434,6 +437,8 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     }
     if (self.termsChecked) {
         [self.webView stringByEvaluatingJavaScriptFromString:@"validateAndBook()"];
+        _runLoop = YES;
+
     } else {
         [self showError:@"Sorry" message:@"You must check terms and conditions"];
         if (self.completion) {

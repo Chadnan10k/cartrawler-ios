@@ -100,6 +100,7 @@
     
     for (NSString *type in dictionary[@"types"]) {
         if ([type isEqualToString:@"airport"]) {
+            NSLog(@"AIRPORT NAME: %@", dictionary[@"formatted_address"]);
             _isAtAirport = YES;
         }
     }

@@ -37,7 +37,7 @@
     _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
                                                      language:[CTSDKSettings instance].languageCode
                                                         debug:[CTSDKSettings instance].isDebug];
-    [self.cartrawlerAPI enableLogging:YES];
+    [self.cartrawlerAPI enableLogging:NO];
     return self;
 }
 
@@ -80,8 +80,14 @@
     if (self.enableGroundTransportLocations) {
         [GooglePlaceService searchWithPartialString:partialText completion:^(BOOL success, NSArray *results) {
             if (results) {
-                [weakSelf.otherLocations addObjectsFromArray:results];
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    for (CTMatchedLocation *location in results) {
+                        if (location.isAtAirport) {
+                            //[weakSelf.airportLocations addObject:location];
+                        } else {
+                            [weakSelf.otherLocations addObject:location];
+                        }
+                    }
                     completion(YES);
                 });
             }

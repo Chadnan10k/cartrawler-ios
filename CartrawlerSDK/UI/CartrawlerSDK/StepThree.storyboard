@@ -198,50 +198,19 @@
                                     </mask>
                                 </variation>
                             </scrollView>
-                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndQ-xF-Dhy" customClass="CTButton">
-                                <color key="backgroundColor" red="0.10980392160000001" green="0.30588235289999999" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="MA7-3h-gGb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Continue">
-                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="overrideCornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="continueTapped:" destination="3HX-7a-ja0" eventType="touchUpInside" id="8U8-CK-vLw"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zvg-Mx-h56">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="AQ3-BT-hpn"/>
-                                    <constraint firstAttribute="width" constant="37" id="q3g-VR-H0z"/>
-                                </constraints>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ndQ-xF-Dhy" firstAttribute="leading" secondItem="P83-YX-uHD" secondAttribute="leading" id="8sC-HQ-G3f"/>
-                            <constraint firstItem="ftz-8S-Imp" firstAttribute="top" secondItem="zvg-Mx-h56" secondAttribute="bottom" constant="6" id="Duw-L7-sim"/>
                             <constraint firstItem="z1i-bM-q5G" firstAttribute="width" secondItem="P83-YX-uHD" secondAttribute="width" id="Q9A-YJ-fRR"/>
                             <constraint firstItem="z1i-bM-q5G" firstAttribute="leading" secondItem="P83-YX-uHD" secondAttribute="leading" id="TN3-cW-yE9"/>
                             <constraint firstItem="z1i-bM-q5G" firstAttribute="top" secondItem="CI1-rV-9vf" secondAttribute="bottom" constant="69" id="WwB-ld-UxV"/>
                             <constraint firstAttribute="trailing" secondItem="z1i-bM-q5G" secondAttribute="trailing" id="cfs-2L-8IE"/>
                             <constraint firstItem="ftz-8S-Imp" firstAttribute="top" secondItem="z1i-bM-q5G" secondAttribute="bottom" id="hNN-oQ-jPs"/>
-                            <constraint firstAttribute="trailing" secondItem="zvg-Mx-h56" secondAttribute="trailing" constant="4" id="ijQ-94-Tlz"/>
-                            <constraint firstItem="ftz-8S-Imp" firstAttribute="top" secondItem="ndQ-xF-Dhy" secondAttribute="bottom" id="j4F-Jm-NZ0"/>
-                            <constraint firstAttribute="trailing" secondItem="ndQ-xF-Dhy" secondAttribute="trailing" id="jbZ-Ia-9qj"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="710"/>
                     <connections>
-                        <outlet property="activityView" destination="zvg-Mx-h56" id="Xvj-Gx-hqF"/>
-                        <outlet property="continueButton" destination="ndQ-xF-Dhy" id="ksY-sN-f4Y"/>
                         <outlet property="fuelPolicyView" destination="U3D-4j-EDX" id="txU-dH-JNb"/>
                         <outlet property="pickupLocationView" destination="cba-4A-LKy" id="nfr-iE-cYy"/>
                         <outlet property="scrollView" destination="z1i-bM-q5G" id="OpZ-Wv-tE0"/>
@@ -317,17 +286,49 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFI-7G-2S8" customClass="CTButton">
+                                <color key="backgroundColor" red="0.10980392160000001" green="0.30588235289999999" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="zhJ-s2-Bwm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="overrideCornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="continueTapped:" destination="3HX-7a-ja0" eventType="touchUpInside" id="D4h-us-kbT"/>
+                                    <action selector="continueTapped:" destination="Suh-ST-8Gy" eventType="touchUpInside" id="MO7-Vo-y4V"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="mTu-GR-6aK">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="a9L-Kd-pmF"/>
+                                    <constraint firstAttribute="width" constant="37" id="swu-VS-HKz"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="bFI-7G-2S8" firstAttribute="leading" secondItem="eYo-Bd-HeU" secondAttribute="leading" id="86W-RW-a1w"/>
+                            <constraint firstAttribute="trailing" secondItem="bFI-7G-2S8" secondAttribute="trailing" id="AlW-kj-pXw"/>
+                            <constraint firstItem="vg2-hq-tF0" firstAttribute="top" secondItem="mTu-GR-6aK" secondAttribute="bottom" constant="8" id="JVf-hv-IOJ"/>
                             <constraint firstItem="kIa-Mx-ztI" firstAttribute="top" secondItem="eYo-Bd-HeU" secondAttribute="top" id="QRC-oi-P5b"/>
+                            <constraint firstItem="vg2-hq-tF0" firstAttribute="top" secondItem="bFI-7G-2S8" secondAttribute="bottom" id="RqC-as-3IW"/>
                             <constraint firstAttribute="trailing" secondItem="kIa-Mx-ztI" secondAttribute="trailing" id="fqM-eg-Hsi"/>
                             <constraint firstItem="kIa-Mx-ztI" firstAttribute="leading" secondItem="eYo-Bd-HeU" secondAttribute="leading" id="rus-UT-xhZ"/>
+                            <constraint firstAttribute="trailing" secondItem="mTu-GR-6aK" secondAttribute="trailing" constant="8" id="v9J-mx-E62"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
+                        <outlet property="activityView" destination="mTu-GR-6aK" id="TMy-BV-XbD"/>
+                        <outlet property="continueButton" destination="bFI-7G-2S8" id="GiC-c1-u4h"/>
                         <outlet property="headerView" destination="kIa-Mx-ztI" id="Mf6-Xu-L6N"/>
                         <outlet property="selectionControl" destination="UHX-A0-jg3" id="0TD-Go-3Y4"/>
                     </connections>
@@ -983,7 +984,7 @@
             <objects>
                 <navigationController storyboardIdentifier="TermsViewControllerNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="zaw-2W-wIV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LTW-fF-QCn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LTW-fF-QCn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

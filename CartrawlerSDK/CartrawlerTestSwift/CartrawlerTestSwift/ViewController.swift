@@ -31,7 +31,9 @@ class ViewController: UIViewController {
         CartrawlerSDK.appearance().calendarEndCellColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
         
         CartrawlerSDK.appearance().textFieldTint = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
-        //CartrawlerSDK.appearance().boldFontName = "AppleSDGothicNeo-Bold"
+        
+        CartrawlerSDK.appearance().boldFontName = "HelveticaNeue-Medium"
+        CartrawlerSDK.appearance().fontName = "HelveticaNeue-Light"
 
     }
 

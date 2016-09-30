@@ -17,7 +17,7 @@
 {
     
     if (!search.airport) {
-        completion(NO, @"CTAirport not set");
+        completion(NO, @"You must select an airport");
         return;
     }
     
@@ -31,7 +31,7 @@
         return;
     }
     
-    if (!search.adultQty) {    //we just need 1 adult passenger to make call
+    if (search.adultQty.intValue == 0) {    //we just need 1 adult passenger to make call
         completion(NO, @"No passengers set for Ground transport");
         return;
     }

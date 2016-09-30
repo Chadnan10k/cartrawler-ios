@@ -77,13 +77,13 @@
     CGFloat widthConstraint = self.inclusionsCollectionView.frame.size.width;
     CGFloat height = 30;
     CGFloat currentRow = 0.0;
-    
+    CGFloat padding = 35;
     for (CTGroundInclusion *inclusion in self.inclusions) {
         CGSize textSize = [[LocalisedStrings inclusionText:inclusion.inclusion]
                            sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:[CTAppearance instance].boldFontName size:17]}];
         
-        CGFloat width = (textSize.width) + 50 < self.inclusionsCollectionView.frame.size.width ?
-        (textSize.width + 50) : (self.inclusionsCollectionView.frame.size.width - 50);
+        CGFloat width = (textSize.width) + padding < self.inclusionsCollectionView.frame.size.width ?
+        (textSize.width + padding) : (self.inclusionsCollectionView.frame.size.width - padding);
         
         if ((currentRow + width) >= widthConstraint) {
             height += 30;

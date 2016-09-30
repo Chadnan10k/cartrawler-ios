@@ -77,6 +77,7 @@
 {
     [super awakeFromNib];
     self.imageView.alpha = self.enabled;
+    _checkEnabled = self.enabled;
 }
 
 + (void)forceLinkerLoad_

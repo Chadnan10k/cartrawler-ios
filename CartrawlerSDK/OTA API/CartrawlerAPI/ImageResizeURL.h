@@ -13,4 +13,6 @@
 + (NSURL *)vendor:(NSString *)urlString;
 + (NSURL *)vehicle:(NSString *)urlString;
 
++ (NSURL *)gtVehicle:(NSString *)urlString;
+
 @end

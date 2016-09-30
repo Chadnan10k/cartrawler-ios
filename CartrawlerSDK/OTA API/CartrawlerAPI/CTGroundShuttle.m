@@ -7,6 +7,7 @@
 //
 
 #import "CTGroundShuttle.h"
+#import "ImageResizeURL.h"
 
 @implementation CTGroundShuttle
 
@@ -72,10 +73,20 @@
     //initialise the other half of the shuttle
     
     NSMutableArray *locations = [[NSMutableArray alloc] init];
-    for(NSDictionary *d in dict[@"Shuttle"][@"ServiceLocation"]) {
-        CTGroundLocation *location = [[CTGroundLocation alloc] initWithDictionary:d];
-        [locations addObject:location];
+    
+    if ([dict[@"Shuttle"][@"ServiceLocation"] isKindOfClass:[NSArray class]]) {
         
+        for(NSDictionary *address in dict[@"Shuttle"][@"ServiceLocation"]) {
+                CTGroundLocation *location = [[CTGroundLocation alloc] initWithDictionary:address];
+                [locations addObject:location];
+        }
+        
+    } else {
+        for(NSDictionary *d in dict[@"Shuttle"][@"ServiceLocation"]) {
+            CTGroundLocation *location = [[CTGroundLocation alloc] initWithDictionary:d];
+            [locations addObject:location];
+            
+        }
     }
     
     NSMutableArray *inclusionArr = [[NSMutableArray alloc] init];
@@ -98,9 +109,9 @@
     
     _companyName = dict[@"Reference"][@"CompanyName"][@"#text"];
     
-    NSURL *vehImgUrl = [[NSURL alloc] initWithString:dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Vehicle"][@"PictureURL"]];
+    //NSURL *vehImgUrl = [[NSURL alloc] initWithString:dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Vehicle"][@"PictureURL"]];
     
-    _vehicleImage = vehImgUrl;
+    _vehicleImage = [ImageResizeURL gtVehicle:dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Vehicle"][@"PictureURL"]];
     
     return self;
 }

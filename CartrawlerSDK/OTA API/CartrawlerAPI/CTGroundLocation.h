@@ -42,7 +42,12 @@ typedef NS_ENUM(NSUInteger, LocationType) {
     /**
      *  Vicinity Area
      */
-    LocationTypeVicinity
+    LocationTypeVicinity,
+    /**
+     *  Bus Station
+     */
+    LocationTypeBusStation
+
 };
 /**
  *  The latitude of the location

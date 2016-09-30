@@ -19,7 +19,18 @@
     NSMutableArray *tempServices = [[NSMutableArray alloc] init];
     NSMutableArray *tempShuttles = [[NSMutableArray alloc] init];
 
-    for (NSDictionary *service in dict) {
+    if ([dict isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *service in dict) {
+            if (service[@"Shuttle"]) {
+                CTGroundShuttle *shuttle = [[CTGroundShuttle alloc] initWithDictionary:service];
+                [tempShuttles addObject:shuttle];
+            } else {
+                CTGroundService *groundService = [[CTGroundService alloc] initWithDictionary: service];
+                [tempServices addObject:groundService];
+            }
+        }
+    } else {
+        NSDictionary *service = dict[@"GroundService"];
         if (service[@"Shuttle"]) {
             CTGroundShuttle *shuttle = [[CTGroundShuttle alloc] initWithDictionary:service];
             [tempShuttles addObject:shuttle];

@@ -27,8 +27,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *vehicleDetailsHeightConstraint;
 @property (weak, nonatomic) VehicleDetailsView *vehicleDetailView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet CTButton *continueButton;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 @end
 
@@ -43,9 +41,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-        
-    self.continueButton.enabled = YES;
-    
+            
     [self.scrollView setContentOffset:
      CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
         
@@ -134,22 +130,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self presentViewController:nav animated:YES completion:nil];
     });
-}
-
-- (IBAction)continueTapped:(id)sender {
-
-    if (self.tappedContinue) {
-        self.tappedContinue(YES);
-    }
-    
-    [self.activityView startAnimating];
-    
-    self.continueButton.enabled = NO;
-}
-
-- (void)stopAnimating
-{
-    [self.activityView stopAnimating];
 }
 
 @end

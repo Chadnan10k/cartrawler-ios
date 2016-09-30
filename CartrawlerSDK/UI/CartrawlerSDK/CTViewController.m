@@ -43,8 +43,8 @@
                                                             if (weakSelf.dataValidationCompletion) {
                                                                 weakSelf.dataValidationCompletion(YES, nil);
                                                             }
-                                                            [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
                                                             [weakSelf.destinationViewController refresh];
+                                                            [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
                                                         } else {
                                                             if (weakSelf.dataValidationCompletion) {
                                                                 weakSelf.dataValidationCompletion(NO, errorMessage);
@@ -63,8 +63,8 @@
                                                       if (weakSelf.dataValidationCompletion) {
                                                           weakSelf.dataValidationCompletion(YES, nil);
                                                       }
-                                                      [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
                                                       [weakSelf.destinationViewController refresh];
+                                                      [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
                                                   } else {
                                                       if (weakSelf.dataValidationCompletion) {
                                                           weakSelf.dataValidationCompletion(NO, errorMessage);
