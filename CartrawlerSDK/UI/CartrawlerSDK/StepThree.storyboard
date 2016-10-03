@@ -623,7 +623,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.7074409196" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Vop-eO-ioO" firstAttribute="top" secondItem="j84-aY-MYv" secondAttribute="top" constant="25" id="HDI-5d-hEH"/>
-                                    <constraint firstAttribute="bottom" secondItem="Vop-eO-ioO" secondAttribute="bottom" constant="8" id="U3L-C7-dH8"/>
+                                    <constraint firstAttribute="bottom" secondItem="Vop-eO-ioO" secondAttribute="bottom" constant="4" id="U3L-C7-dH8"/>
                                     <constraint firstItem="Vop-eO-ioO" firstAttribute="leading" secondItem="m3i-qK-byT" secondAttribute="trailing" constant="23" id="XX3-6N-LPJ"/>
                                     <constraint firstAttribute="trailing" secondItem="Vop-eO-ioO" secondAttribute="trailing" constant="78" id="iOm-n9-IK5"/>
                                     <constraint firstItem="m3i-qK-byT" firstAttribute="leading" secondItem="j84-aY-MYv" secondAttribute="leading" constant="8" id="kpV-Je-PT4"/>
@@ -738,7 +738,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qGA-8Y-qZV">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qGA-8Y-qZV" customClass="CTTextView">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -843,7 +843,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uh6-QT-M1I">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="Qz6-Db-KMJ">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="Qz6-Db-KMJ">
                                     <size key="itemSize" width="165" height="105"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -949,7 +949,7 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="MY4-9e-tnU" firstAttribute="top" secondItem="Uh6-QT-M1I" secondAttribute="bottom" id="59x-GT-1Jj"/>
+                            <constraint firstItem="MY4-9e-tnU" firstAttribute="top" secondItem="Uh6-QT-M1I" secondAttribute="bottom" constant="50" id="59x-GT-1Jj"/>
                             <constraint firstItem="uc3-sG-Qcd" firstAttribute="top" secondItem="dxL-NH-Qj6" secondAttribute="bottom" constant="69" id="5gT-Ft-xSz"/>
                             <constraint firstAttribute="trailing" secondItem="Uh6-QT-M1I" secondAttribute="trailing" id="BPH-65-lQH"/>
                             <constraint firstItem="Uh6-QT-M1I" firstAttribute="leading" secondItem="Ks9-QB-akS" secondAttribute="leading" id="DLl-h7-Q7Q"/>

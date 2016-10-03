@@ -83,7 +83,9 @@
                  @{@"type" : @"Wait time", @"value" : [NSString stringWithFormat:@"%@ mins", self.search.selectedVehicle.vendor.rating.waitTime.stringValue]},
                  @{@"type" : @"Overall Score", @"value" : [NSString stringWithFormat:@"%.1f/10", self.search.selectedVehicle.vendor.rating.overallScore.floatValue * 2]},
                  @{@"type" : @"Desk Review", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.deskReview.doubleValue/10]},
-                 @{@"type" : @"Vehicle Review", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.carReview.doubleValue/10]}];
+                 @{@"type" : @"Vehicle Review", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.carReview.doubleValue/10]},
+                 @{@"type" : @"Price Score", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.priceScore.doubleValue/10]},
+                 @{@"type" : @"Dropoff Review", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.dropoffReview.doubleValue/10]}];
     
     [self.collectionView reloadData];
 }
@@ -112,9 +114,14 @@
     return CGSizeMake(collectionView.frame.size.width/2-30, 105);
 }
 
-//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-//    return UIEdgeInsetsMake(8, 8, 8, 8);
-//}
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    CGFloat cellWidth = collectionView.frame.size.width/2-30;
+    
+    CGFloat inset = fabs(((cellWidth * 2) - collectionView.frame.size.width) / 2) - 8;
+    
+    return UIEdgeInsetsMake(8, inset, 8, inset);
+}
 
 
 @end

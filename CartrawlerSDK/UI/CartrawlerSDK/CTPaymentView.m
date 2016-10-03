@@ -198,8 +198,9 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                passengerCountryCode:search.countryCode
                      passengerEmail:search.email
                  additionalAdultQty:search.adultQty.stringValue
-                        childrenQty:@"0"
-                          infantQty:@"0"
+                        childrenQty:search.childQty.stringValue
+                          infantQty:search.infantQty.stringValue
+                          seniorQty:search.seniorQty.stringValue
                               refId:search.selectedService != nil ? search.selectedService.refId : search.selectedShuttle.refId
                              refUrl:search.selectedService != nil ? search.selectedService.refUrl : search.selectedShuttle.refUrl
                        currencyCode:[CTSDKSettings instance].currencyCode
@@ -213,7 +214,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     escapedString = [escapedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     
     if ([CTSDKSettings instance].isDebug) {
-        urlStr = [NSString stringWithFormat:@"https://internal-dev.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&hideButton=true&mobile=true&msg=%@", escapedString];
+        urlStr = [NSString stringWithFormat:@"https://external-dev.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&hideButton=true&mobile=true&msg=%@", escapedString];
     } else {
         urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&hideButton=true&mobile=true&msg=%@", escapedString];
     }
@@ -342,7 +343,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    NSLog(@"CARTRAWLERSDK PAYMENTVIEW FAILED LOAD");
+    NSLog(@"CARTRAWLERSDK: Could not load PCI WebView %@", error.localizedDescription);
     [self showError:@"Error" message:@"Cannot load payment"];
 }
 

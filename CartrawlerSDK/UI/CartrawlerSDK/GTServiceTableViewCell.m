@@ -105,29 +105,32 @@
 
 - (CGFloat)calculateCellHeight
 {
-    if (self.inclusions.count == 0) {
-        return 0;
-    } else {
+    CGFloat widthConstraint = self.inclusionsCollectionView.frame.size.width;
+    CGFloat height;
+    CGFloat currentRow = 0.0;
+    CGFloat padding = 35;
     
-        CGFloat widthConstraint = self.inclusionsCollectionView.frame.size.width;
-        CGFloat height = 30;
-        CGFloat currentRow = 0.0;
-        
-        for (CTGroundInclusion *inclusion in self.inclusions) {
-            CGSize textSize = [[LocalisedStrings inclusionText:inclusion.inclusion]
-                               sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:[CTAppearance instance].boldFontName size:17]}];
-            
-            CGFloat width = (textSize.width) + 50 < self.inclusionsCollectionView.frame.size.width ?
-            (textSize.width + 50) : (self.inclusionsCollectionView.frame.size.width - 50);
-            
-            if ((currentRow + width) >= widthConstraint) {
-                height += 30;
-            } else {
-                currentRow += width;
-            }
-        }
-        return height;
+    if (self.inclusions.count > 0) {
+        height += 30;
+    } else {
+        return 0;
     }
+    
+    for (CTGroundInclusion *inclusion in self.inclusions) {
+        CGSize textSize = [[LocalisedStrings inclusionText:inclusion.inclusion]
+                           sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:[CTAppearance instance].boldFontName size:17]}];
+        
+        CGFloat width = (textSize.width) + padding < self.inclusionsCollectionView.frame.size.width ?
+        (textSize.width + padding) : (self.inclusionsCollectionView.frame.size.width - padding);
+        
+        if ((currentRow + width) >= widthConstraint) {
+            height += 30;
+        } else {
+            currentRow += width;
+        }
+    }
+    
+    return height;
 }
 
 

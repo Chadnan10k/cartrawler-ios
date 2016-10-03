@@ -65,6 +65,9 @@
 }
 
 - (IBAction)done:(id)sender {
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

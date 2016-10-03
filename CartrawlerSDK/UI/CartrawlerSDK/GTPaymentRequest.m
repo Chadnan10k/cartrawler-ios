@@ -42,6 +42,7 @@
           additionalAdultQty:(NSString *)additionalAdultQty
                  childrenQty:(NSString *)childrenQty
                    infantQty:(NSString *)infantQty
+                   seniorQty:(NSString *)seniorQty
                        refId:(NSString *)refId
                       refUrl:(NSString *)refUrl
                 currencyCode:(NSString *)currencyCode
@@ -186,6 +187,10 @@
                       @"{\"AdditionalPersonType\":{ \n"
                       @"\"@Quantity\": \"%@\", \n"
                       @"\"@Code\": \"Infant\" \n"
+                      @"}},\n"
+                      @"{\"AdditionalPersonType\":{ \n"
+                      @"\"@Quantity\": \"%@\", \n"
+                      @"\"@Code\": \"Senior\" \n"
                       @"}}\n"
                       @"]\n"
                       @"},\n"
@@ -224,6 +229,7 @@
                       additionalAdultQty,
                       childrenQty,
                       infantQty,
+                      seniorQty,
                       refId,
                       refUrl,
                       payment,

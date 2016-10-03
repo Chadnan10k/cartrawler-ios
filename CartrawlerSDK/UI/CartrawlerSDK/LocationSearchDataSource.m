@@ -100,9 +100,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return self.airportLocations.count;
+        return self.invertData ? self.otherLocations.count : self.airportLocations.count;
     } else if (section == 1) {
-        return self.otherLocations.count;
+        return self.invertData ? self.airportLocations.count : self.otherLocations.count;
     } else {
         return 0;
     }
@@ -117,7 +117,7 @@
 {
     LocationSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
-    if (indexPath.section == 0) {
+    if (indexPath.section == (self.invertData ? 1 : 0)) {
         //cell.imageView.image = [UIImage imageNamed:@""];
         if(self.airportLocations[indexPath.row] != (id)[NSNull null]) {
             [cell setLabelText:self.airportLocations[indexPath.row].name isAirport:YES];
@@ -134,16 +134,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
+    if (indexPath.section == (self.invertData ? 1 : 0)) {
         self.selectedLocation(self.airportLocations[indexPath.row]);
-    } else if (indexPath.section == 1) {
+    } else if (indexPath.section == (self.invertData ? 0 : 1)) {
         self.selectedLocation(self.otherLocations[indexPath.row]);
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) {
+    if (section == (self.invertData ? 1 : 0)) {
         if (self.airportLocations.count > 0) {
             return 30;
         } else {
@@ -168,7 +168,7 @@
     headerView.alpha = 0.9;
     [headerView addSubview:customLabel];
 
-    if (section == 0) {
+    if (section == (self.invertData ? 1 : 0)) {
         [customLabel setText:NSLocalizedString(@"Airport", @"")];
         if (self.airportLocations.count > 0) {
             return headerView;

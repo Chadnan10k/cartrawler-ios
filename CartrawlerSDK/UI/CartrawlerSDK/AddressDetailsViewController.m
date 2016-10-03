@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet BookingSummaryButton *summaryContainer;
 
+@property (strong, nonatomic) UIView *selectedView;
+
 @end
 
 #define kTabBarHeight 0.0
@@ -43,6 +45,8 @@
     self.cityTextField.delegate = self;
     self.postCodeTextField.delegate = self;
     self.countryTextField.delegate = self;
+    
+    _selectedView = self.addressLine1TextField;
 
 }
 
@@ -56,6 +60,9 @@
     
     [self registerForKeyboardNotifications];
     
+    [self.addressLine1TextField becomeFirstResponder];
+    _selectedView = self.addressLine1TextField;
+
     if (self.search) {
         if (!self.search.addressLine1) {
             self.addressLine1TextField.text = @"";
@@ -184,81 +191,104 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    _selectedView = textField;
     if (textField == self.countryTextField) {
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-        UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:b];
-        SettingsSelectionViewController *vc = [settingsStoryboard instantiateViewControllerWithIdentifier:@"SettingsSelectionViewController"];
-        [vc setSettingsType:SettingsTypeCountry];
-        vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
-        [self presentViewController:vc animated:YES completion:nil];
-        
-        __weak typeof (self) weakSelf = self;
-        
-        vc.settingsCompletion = ^(CSVItem *item){
-            self.countryTextField.text = item.name;
-            weakSelf.search.country = item.name;
-            weakSelf.groundSearch.country = item.name;
-            weakSelf.groundSearch.countryCode = item.code;
-        };
+        [self openCountrySelection];
         return NO;
     }
     return YES;
 }
 
+- (void)openCountrySelection
+{
+    [self.view endEditing:YES];
+    
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:b];
+    SettingsSelectionViewController *vc = [settingsStoryboard instantiateViewControllerWithIdentifier:@"SettingsSelectionViewController"];
+    [vc setSettingsType:SettingsTypeCountry];
+    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:vc animated:YES completion:nil];
+    
+    __weak typeof (self) weakSelf = self;
+    
+    vc.settingsCompletion = ^(CSVItem *item){
+        self.countryTextField.text = item.name;
+        weakSelf.search.country = item.name;
+        weakSelf.groundSearch.country = item.name;
+        weakSelf.groundSearch.countryCode = item.code;
+    };
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     
-    [self.view endEditing:YES];
-    return YES;
+    switch (textField.tag) {
+        case 0:
+            [self.addressLine2TextField becomeFirstResponder];
+            return NO;
+            break;
+        case 1:
+            [self.cityTextField becomeFirstResponder];
+            return NO;
+            break;
+        case 2:
+            [self.postCodeTextField becomeFirstResponder];
+            return NO;
+            break;
+        case 3:
+            [self openCountrySelection];
+            return NO;
+            break;
+        case 4:
+            [self.view resignFirstResponder];
+            [self.view endEditing:YES];
+            return YES;
+            break;
+        default:
+            [self.view endEditing:YES];
+            return YES;
+            break;
+    }
+    
 }
 
 - (void)registerForKeyboardNotifications
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+    
 }
 
 - (void)deregisterForKeyboardNotifications
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)keyboardWillHide:(NSNotification *)n
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
 {
-    NSDictionary* userInfo = n.userInfo;
-    CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    CGRect viewFrame = self.scrollView.frame;
-    viewFrame.size.height += (keyboardSize.height - kTabBarHeight);
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height + 50, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    (self.scrollView).frame = viewFrame;
-    [UIView commitAnimations];
-    
-    keyboardIsShown = NO;
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, self.selectedView.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, self.selectedView.frame.origin.y-kbSize.height);
+        [self.scrollView setContentOffset:scrollPoint animated:YES];
+    }
 }
 
-- (void)keyboardWillShow:(NSNotification *)n
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
-
-    if (keyboardIsShown) {
-        return;
-    }
-    
-    NSDictionary* userInfo = n.userInfo;
-    
-    CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    CGRect viewFrame = self.scrollView.frame;
-    viewFrame.size.height -= (keyboardSize.height - kTabBarHeight);
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    (self.scrollView).frame = viewFrame;
-    [UIView commitAnimations];
-    keyboardIsShown = YES;
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
 }
 
 - (IBAction)back:(id)sender {

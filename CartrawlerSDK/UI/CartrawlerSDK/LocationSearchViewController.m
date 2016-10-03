@@ -37,6 +37,7 @@
     
     _dataSource = [[LocationSearchDataSource alloc] init];
     self.dataSource.enableGroundTransportLocations = self.enableGroundTransportLocations;
+    self.dataSource.invertData = self.invertData;
     
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self.dataSource;

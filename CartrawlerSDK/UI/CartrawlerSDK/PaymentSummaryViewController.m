@@ -41,7 +41,7 @@
     [super viewDidLoad];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 80;
+    self.tableView.estimatedRowHeight = 50;
     
     self.tableView.dataSource = self;
 }
@@ -76,24 +76,14 @@
     total += self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue;
     
     self.totalLabel.text = [NSNumberUtils numberStringWithCurrencyCode:@(total)];
-    
-//    [self.view layoutIfNeeded];
-//    [self.tableView layoutIfNeeded];
-//    self.tableViewHeight.constant = self.tableView.contentSize.height;
-    
-    self.tableView.alpha = 0;
+
     [self.tableView reloadData];
-
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     [self.tableView layoutIfNeeded];
+
+    self.tableView.alpha = 1;
     self.tableViewHeight.constant = self.tableView.contentSize.height;
-    [UIView animateWithDuration:0.2 animations:^{
-        self.tableView.alpha = 1;
-    }];
+
+
 }
 
 - (IBAction)pushView:(id)sender {

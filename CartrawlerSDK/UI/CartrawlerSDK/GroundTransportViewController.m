@@ -20,6 +20,7 @@
 #import "CTButton.h"
 #import "PassengerSelectionViewController.h"
 #import "CTInterstitialViewController.h"
+#import "SettingsViewController.h"
 
 @interface GroundTransportViewController () <CTCalendarDelegate, UITextFieldDelegate>
 
@@ -125,6 +126,7 @@
         [weakSelf.view endEditing:YES];
         _activeView = self.pickupView;
         LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
+        locSearchVC.invertData = YES;
         locSearchVC.enableGroundTransportLocations = YES;
         locSearchVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
         [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
@@ -349,11 +351,6 @@
 {
     UIButton *b = (UIButton *)sender;
     
-    if (self.sameLocationCheckBox.enabled && (self.dropoffDate == nil)) {
-        [self.dropoffCalendarView shakeAnimation];
-        [self.dropoffTimeView shakeAnimation];
-    }
-    
     if (self.pickupDate != nil && self.pickupTime != nil) {
         [self combineDates];
     }
@@ -420,12 +417,26 @@
         validated = NO;
     }
     
+    if (!self.dropoffDate && !self.sameLocationCheckBox.enabled) {
+        [self.dropoffTimeView shakeAnimation];
+        [self.dropoffCalendarView shakeAnimation];
+        validated = NO;
+    }
+    
     if (self.groundSearch.adultQty.intValue == 0) {
         [self.passengersView shakeAnimation];
         validated = NO;
     }
 
     return validated;
+}
+
+- (IBAction)openSettings:(id)sender
+{
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    SettingsViewController *vc = [[UIStoryboard storyboardWithName:@"StepOne" bundle:b] instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (IBAction)cancel:(id)sender

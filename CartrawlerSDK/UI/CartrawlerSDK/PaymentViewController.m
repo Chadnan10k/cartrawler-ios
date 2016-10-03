@@ -43,7 +43,15 @@
 {
     [super viewWillAppear:animated];
     [self.paymentView setForCarRentalPayment:self.search];
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+}
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
 - (void)viewDidLoad
@@ -113,11 +121,16 @@
         self.backButton.alpha = 1;
         self.confirmButton.enabled = YES;
         self.confirmButton.alpha = 1;
+        self.termsLabel.userInteractionEnabled = YES;
+        self.termsCheckbox.userInteractionEnabled = YES;
     } else {
         self.backButton.enabled = NO;
         self.backButton.alpha = 0.8;
         self.confirmButton.enabled = NO;
         self.confirmButton.alpha = 0.8;
+        self.termsLabel.userInteractionEnabled = NO;
+        self.termsCheckbox.userInteractionEnabled = NO;
+
     }
 }
 

@@ -89,6 +89,7 @@
 {
     if (self.checkEnabled) {
         self.checkEnabled = NO;
+        _enabled = NO;
         [UIView animateWithDuration:0.2 animations:^{
             self.imageView.alpha = 0;
         }];
@@ -97,6 +98,7 @@
         });
     } else {
         self.checkEnabled = YES;
+        _enabled = YES;
         [UIView animateWithDuration:0.2 animations:^{
             self.imageView.alpha = 1;
         }];

@@ -36,6 +36,15 @@
 {
     [super viewWillAppear:animated];
     [self.paymentView setForGTPayment:self.groundSearch];
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
 - (void)viewDidLoad {
@@ -72,7 +81,6 @@
                                                                      text:termsStr
                                                             boldFontColor:@"#000000"];
     self.termsLabel.delegate = self;
-
 }
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
@@ -95,11 +103,16 @@
         self.backButton.alpha = 1;
         self.confirmButton.enabled = YES;
         self.confirmButton.alpha = 1;
+        self.termsLabel.userInteractionEnabled = YES;
+        self.termsCheckbox.userInteractionEnabled = YES;
     } else {
         self.backButton.enabled = NO;
         self.backButton.alpha = 0.8;
         self.confirmButton.enabled = NO;
         self.confirmButton.alpha = 0.8;
+        self.termsLabel.userInteractionEnabled = NO;
+        self.termsCheckbox.userInteractionEnabled = NO;
+        
     }
 }
 

@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet CTDesignableView *flightDetailsContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *flightDetailsConstraint;
 
+@property (strong, nonatomic) UIView *selectedView;
 
 @end
 
@@ -56,11 +57,20 @@
     keyboardDoneButtonView.items = @[doneButton];
     self.phoneTextField.inputAccessoryView = keyboardDoneButtonView;
     
+    _selectedView = self.firstNameTextField;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [self registerForKeyboardNotifications];
+    _selectedView = self.firstNameTextField;
+
+    if (self.groundSearch.selectedService) {
+        [self.flightNoTextField becomeFirstResponder];
+    } else {
+        [self.firstNameTextField becomeFirstResponder];
+    }
     
     if (self.groundSearch.selectedShuttle) {
         self.flightDetailsContainer.hidden = YES;
@@ -161,15 +171,49 @@
     [self.view endEditing:YES];
 }
 
+#pragma mark TextField
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    _selectedView = textField;
     return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self.view endEditing:YES];
-    return YES;
+    
+    switch (textField.tag) {
+        case 0: //flight details
+            [self.firstNameTextField becomeFirstResponder];
+            return NO;
+            break;
+        case 1: //first name
+            [self.lastNameTextField becomeFirstResponder];
+            return NO;
+            break;
+        case 2: //surname
+            [self.emailTextField becomeFirstResponder];
+            return NO;
+            break;
+        case 3: //email
+            [self.phoneTextField becomeFirstResponder];
+            return NO;
+            break;
+        case 4: //phone
+            [self.instructionsTextField becomeFirstResponder];
+            return NO;
+            break;
+        case 5: //instructions
+            [self.view endEditing:YES];
+            return NO;
+            break;
+            
+        default:
+            [self.view endEditing:YES];
+            return YES;
+            break;
+    }
+    
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -200,47 +244,39 @@
 
 - (void)registerForKeyboardNotifications
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+    
 }
 
 - (void)deregisterForKeyboardNotifications
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)keyboardWillHide:(NSNotification *)n
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
 {
-    NSDictionary* userInfo = n.userInfo;
-    CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    CGRect viewFrame = self.scrollView.frame;
-    viewFrame.size.height += (keyboardSize.height - kTabBarHeight);
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height + 50, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    (self.scrollView).frame = viewFrame;
-    [UIView commitAnimations];
-    
-    keyboardIsShown = NO;
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, self.selectedView.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, self.selectedView.frame.origin.y-kbSize.height);
+        [self.scrollView setContentOffset:scrollPoint animated:YES];
+    }
 }
 
-- (void)keyboardWillShow:(NSNotification *)n
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
-    if (keyboardIsShown) {
-        return;
-    }
-    
-    NSDictionary* userInfo = n.userInfo;
-    CGSize keyboardSize = [userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    CGRect viewFrame = self.scrollView.frame;
-    viewFrame.size.height -= (keyboardSize.height - kTabBarHeight);
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    (self.scrollView).frame = viewFrame;
-    [UIView commitAnimations];
-    keyboardIsShown = YES;
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
 }
 
 - (IBAction)back:(id)sender {

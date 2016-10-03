@@ -41,7 +41,7 @@
 //    [CartrawlerSDK appearance].fontName = @"HelveticaNeue-Light";
 //    [CartrawlerSDK appearance].boldFontName = @"HelveticaNeue-Medium";
     
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"68622" languageCode:@"EN" isDebug:YES];
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"68622" languageCode:@"EN" isDebug:NO];
     
     //[CTAppearance instance].buttonColor = [UIColor blackColor];
     

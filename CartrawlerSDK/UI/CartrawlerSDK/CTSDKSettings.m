@@ -41,7 +41,17 @@
     
     self.homeCountryName = country;
     self.currencyName = currency;
-    self.languageName = languageCode;
+    
+    NSArray *languages = [NSLocale preferredLanguages];
+//    for (NSString *language in languages) {
+//        NSLocale *locale = [[[NSLocale alloc] initWithLocaleIdentifier:language] autorelease];
+//        NSLog(@"language code = %@, display name = %@, in language = %@",
+//              language,
+//              [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:language],
+//              [locale displayNameForKey:NSLocaleIdentifier value:language]);
+//    }
+
+    self.languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:languages.firstObject];
     
     if (isDebug) {
         _target = @"Test";

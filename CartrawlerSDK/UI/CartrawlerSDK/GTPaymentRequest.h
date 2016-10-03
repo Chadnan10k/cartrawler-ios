@@ -42,6 +42,7 @@
           additionalAdultQty:(NSString *)additionalAdultQty
                  childrenQty:(NSString *)childrenQty
                    infantQty:(NSString *)infantQty
+                   seniorQty:(NSString *)seniorQty
                        refId:(NSString *)refId
                       refUrl:(NSString *)refUrl
                 currencyCode:(NSString *)currencyCode
