@@ -97,7 +97,11 @@
     navController = [[CTNavigationController alloc] initWithRootViewController: self.searchDetailsViewController];
 
     navController.navigationBar.hidden = YES;
-    [viewController presentViewController:navController animated:YES completion:nil];
+    
+    navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
+    navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
+
+    [viewController presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
 }
 
 - (void)presentGroundTransportInViewController:(UIViewController *)viewController
@@ -113,7 +117,11 @@
     navController = [[CTNavigationController alloc] initWithRootViewController: self.gtSearchDetailsViewController];
     
     navController.navigationBar.hidden = YES;
-    [viewController presentViewController:navController animated:YES completion:nil];
+    
+    navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
+    navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
+    
+    [viewController presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
 }
 
 - (void)presentCarRentalWithFlightDetails:(NSString *)IATACode

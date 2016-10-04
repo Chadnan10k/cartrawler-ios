@@ -13,11 +13,11 @@
 		45295F671D78412600A09B8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45295F651D78412600A09B8A /* Main.storyboard */; };
 		45295F691D78412600A09B8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45295F681D78412600A09B8A /* Assets.xcassets */; };
 		45295F6C1D78412600A09B8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45295F6A1D78412600A09B8A /* LaunchScreen.storyboard */; };
-		45A7B74B1D9AC109006611EB /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A7B7481D9AC109006611EB /* CartrawlerAPI.framework */; };
-		45A7B74C1D9AC109006611EB /* CartrawlerResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7491D9AC109006611EB /* CartrawlerResources.bundle */; };
-		45A7B74D1D9AC109006611EB /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A7B74A1D9AC109006611EB /* CartrawlerSDK.framework */; };
 		45A7B7561D9BE003006611EB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */; };
 		45A7B7571D9BE007006611EB /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */; };
+		45F6FE7D1DA29E20004ED2C3 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F6FE7A1DA29E20004ED2C3 /* CartrawlerAPI.framework */; };
+		45F6FE7E1DA29E20004ED2C3 /* CartrawlerResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 45F6FE7B1DA29E20004ED2C3 /* CartrawlerResources.bundle */; };
+		45F6FE7F1DA29E20004ED2C3 /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F6FE7C1DA29E20004ED2C3 /* CartrawlerSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,11 +31,11 @@
 		45295F681D78412600A09B8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45295F6B1D78412600A09B8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45295F6D1D78412600A09B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		45A7B7481D9AC109006611EB /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerAPI.framework; path = ../../CartrawlerAPI.framework; sourceTree = "<group>"; };
-		45A7B7491D9AC109006611EB /* CartrawlerResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = CartrawlerResources.bundle; path = ../../CartrawlerResources.bundle; sourceTree = "<group>"; };
-		45A7B74A1D9AC109006611EB /* CartrawlerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerSDK.framework; path = ../../CartrawlerSDK.framework; sourceTree = "<group>"; };
 		45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		45F6FE7A1DA29E20004ED2C3 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CartrawlerAPI.framework; sourceTree = "<group>"; };
+		45F6FE7B1DA29E20004ED2C3 /* CartrawlerResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CartrawlerResources.bundle; sourceTree = "<group>"; };
+		45F6FE7C1DA29E20004ED2C3 /* CartrawlerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CartrawlerSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,8 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45A7B74D1D9AC109006611EB /* CartrawlerSDK.framework in Frameworks */,
-				45A7B74B1D9AC109006611EB /* CartrawlerAPI.framework in Frameworks */,
+				45F6FE7F1DA29E20004ED2C3 /* CartrawlerSDK.framework in Frameworks */,
+				45F6FE7D1DA29E20004ED2C3 /* CartrawlerAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,9 +70,9 @@
 		45295F5B1D78412500A09B8A /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
-				45A7B7481D9AC109006611EB /* CartrawlerAPI.framework */,
-				45A7B7491D9AC109006611EB /* CartrawlerResources.bundle */,
-				45A7B74A1D9AC109006611EB /* CartrawlerSDK.framework */,
+				45F6FE7A1DA29E20004ED2C3 /* CartrawlerAPI.framework */,
+				45F6FE7B1DA29E20004ED2C3 /* CartrawlerResources.bundle */,
+				45F6FE7C1DA29E20004ED2C3 /* CartrawlerSDK.framework */,
 				45295F5F1D78412500A09B8A /* AppDelegate.h */,
 				45295F601D78412500A09B8A /* AppDelegate.m */,
 				45295F621D78412500A09B8A /* ViewController.h */,
@@ -156,8 +156,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45F6FE7E1DA29E20004ED2C3 /* CartrawlerResources.bundle in Resources */,
 				45A7B7571D9BE007006611EB /* OpenSans-Semibold.ttf in Resources */,
-				45A7B74C1D9AC109006611EB /* CartrawlerResources.bundle in Resources */,
 				45295F6C1D78412600A09B8A /* LaunchScreen.storyboard in Resources */,
 				45295F691D78412600A09B8A /* Assets.xcassets in Resources */,
 				45A7B7561D9BE003006611EB /* OpenSans-Light.ttf in Resources */,
@@ -311,6 +311,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestApp",
+				);
 				INFOPLIST_FILE = TestApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -324,6 +328,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestApp",
+				);
 				INFOPLIST_FILE = TestApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

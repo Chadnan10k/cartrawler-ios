@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let sdk = CartrawlerSDK(requestorID: "68622", languageCode: "EN", isDebug: false)
+    let sdk = CartrawlerSDK(requestorID: "68622", languageCode: "EN", isDebug: true)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +32,13 @@ class ViewController: UIViewController {
         
         CartrawlerSDK.appearance().textFieldTint = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
         
-        CartrawlerSDK.appearance().boldFontName = "HelveticaNeue-Medium"
-        CartrawlerSDK.appearance().fontName = "HelveticaNeue-Light"
+//        CartrawlerSDK.appearance().boldFontName = "HelveticaNeue-Medium"
+//        CartrawlerSDK.appearance().fontName = "HelveticaNeue-Light"
+        
+        CartrawlerSDK.appearance().presentAnimated = true
+        CartrawlerSDK.appearance().modalTransitionStyle = .coverVertical
+        CartrawlerSDK.appearance().modalPresentationStyle = .overFullScreen
+
 
     }
 
@@ -53,9 +58,9 @@ class ViewController: UIViewController {
     @IBAction func airportSearch(_ sender: AnyObject) {
         
         
-        let strTime = "2016-09-27 10:00:00 +0000"
+        let strTime = "2016-09-27 10:00:00"
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let pickupDate = formatter.date(from: strTime)!
         let dropoffDate = pickupDate.addingTimeInterval(60 * 60 * 24)
         

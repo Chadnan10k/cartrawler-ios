@@ -235,6 +235,8 @@
         [self setDefaultPickupDropoffTimes];
     } else if (self.search.dropoffDate && self.search.pickupDate) {
         [self setDateString:self.search.pickupDate dropoffDate:self.search.dropoffDate];
+        _pickupTime = self.search.pickupDate;
+        _dropoffTime = self.search.dropoffDate;
         [self.pickupTimeView setTextFieldText:[DateUtils stringFromDate:self.search.pickupDate withFormat:@"hh:mm a"]];
         [self.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:self.search.dropoffDate withFormat:@"hh:mm a"]];
     }

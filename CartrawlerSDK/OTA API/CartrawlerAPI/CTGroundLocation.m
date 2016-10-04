@@ -40,6 +40,9 @@
         case LocationTypeVicinity:
             _locationTypeDescription = @"Vicinity";
             break;
+        case LocationTypeBusStation:
+            _locationTypeDescription = @"BusStation";
+            break;
     }
 
     _dateTime = dateTime;

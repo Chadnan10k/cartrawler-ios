@@ -59,6 +59,14 @@
     
     _selectedView = self.firstNameTextField;
     
+    UITapGestureRecognizer *viewTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewWasTapped)];
+    [self.view addGestureRecognizer:viewTapped];
+    
+}
+
+- (void)viewWasTapped
+{
+    [self.view endEditing:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated

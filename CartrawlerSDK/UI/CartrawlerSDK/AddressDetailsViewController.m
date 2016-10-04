@@ -48,6 +48,14 @@
     
     _selectedView = self.addressLine1TextField;
 
+    UITapGestureRecognizer *viewTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewWasTapped)];
+    [self.view addGestureRecognizer:viewTapped];
+    
+}
+
+- (void)viewWasTapped
+{
+    [self.view endEditing:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated

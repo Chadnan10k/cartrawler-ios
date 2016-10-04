@@ -37,6 +37,11 @@
         sharedInstance.calendarStartCellColor = [UIColor colorWithRed:1.0/255.0 green:177.0/255.0 blue:201.0/255.0 alpha:1.0];
         sharedInstance.calendarEndCellColor = [UIColor colorWithRed:1.0/255.0 green:177.0/255.0 blue:201.0/255.0 alpha:1.0];
         sharedInstance.calendarMidCellColor = [UIColor colorWithRed:236.0/255.0 green:99.0/255.0 blue:0.0/255.0 alpha:1.0];
+        
+        sharedInstance.presentAnimated = YES;
+        sharedInstance.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        sharedInstance.modalPresentationStyle = UIModalPresentationCurrentContext;
+        
     });
     return sharedInstance;
 }

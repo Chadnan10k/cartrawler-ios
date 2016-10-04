@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    </head>
+    
+    <body>
+        <iframe id="ct-secure-payment"  src="[URLPLACEHOLDER]"> </iframe>
+    </body>
+    
+    <script>
+
+      $(document).ready(function () {
+
+        $("iframe").load(function() {
+                         var frameContents;
+                         frameContents = $("#ct-secure-payment").contents();
+                         frameContents.find("#ct-container").css("background-color","#EFEFF4");
+                         });
+      });
+
+      var currentState;
+      var jsonResponse;
+
+      window.addEventListener("message", function(e) {
+        var paymentFormMsg;
+  		  try {
+  			  paymentFormMsg = JSON.parse(e.data);
+  				switch(paymentFormMsg.action) {
+  					case "sendMessage":
+  					  currentState = "SendingPayment";
+  					  break;
+  					case "sendError":
+  					  currentState = "PaymentError";
+  					  break;
+  					case "validation":
+  					  currentState = "ValidationError";
+  					  break;
+  					case "onError":
+  					  currentState = "PaymentError";
+  					  break;
+  				}
+  		  } catch(ex) {
+  			   jsonResponse = decodeURIComponent(e.data);
+  		  }
+      });
+
+      function getCurrentState() {
+          return currentState;
+      }
+    
+      function getJsonResponse() {
+          return jsonResponse;
+      }
+
+      function generateMessage(jsonPayload) {
+          return encodeURIComponent(JSON.stringify(jsonPayload));
+      }
+
+      function validateAndBook() {
+          var securePaymentWin = document.getElementById("ct-secure-payment");
+          securePaymentWin.contentWindow.postMessage({"action" : "submitForm"} , "*");
+      }
+    
+    function resetResponses() {
+        currentState = "";
+        jsonResponse = "";
+    }
+
+    </script>
+
+    <style>
+        #ct-secure-payment {
+            height: 100%;
+            width: 100%;
+            border: 0px;
+        }
+
+    body {
+        background-color: #EFEFF4;
+    }
+
+    </style>
+
+</html>

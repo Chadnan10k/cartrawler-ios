@@ -279,8 +279,6 @@
 		45F473611D36640F00DF548B /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F473601D3655EB00DF548B /* Payment.storyboard */; };
 		45F473651D366D6A00DF548B /* PaymentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F473631D366D6A00DF548B /* PaymentViewController.h */; };
 		45F473661D366D6A00DF548B /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F473641D366D6A00DF548B /* PaymentViewController.m */; };
-		45F4736E1D369E2A00DF548B /* CompletionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4736C1D369E2A00DF548B /* CompletionViewController.h */; };
-		45F4736F1D369E2A00DF548B /* CompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4736D1D369E2A00DF548B /* CompletionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -571,8 +569,6 @@
 		45F473601D3655EB00DF548B /* Payment.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		45F473631D366D6A00DF548B /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
 		45F473641D366D6A00DF548B /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
-		45F4736C1D369E2A00DF548B /* CompletionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletionViewController.h; sourceTree = "<group>"; };
-		45F4736D1D369E2A00DF548B /* CompletionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletionViewController.m; sourceTree = "<group>"; };
 		45F6EEE61D6C86AC00AB341B /* en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = en.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1101,7 +1097,6 @@
 			isa = PBXGroup;
 			children = (
 				45E942B91D1301F800ACF604 /* Location Search */,
-				45F4736B1D369E1100DF548B /* Booking Completion */,
 				45E942C01D13021300ACF604 /* DateTime Picker */,
 				45E942A21D13015900ACF604 /* Calender */,
 				45E9429E1D13013900ACF604 /* CTSelectView */,
@@ -1332,15 +1327,6 @@
 			name = "Payment (Step Seven)";
 			sourceTree = "<group>";
 		};
-		45F4736B1D369E1100DF548B /* Booking Completion */ = {
-			isa = PBXGroup;
-			children = (
-				45F4736C1D369E2A00DF548B /* CompletionViewController.h */,
-				45F4736D1D369E2A00DF548B /* CompletionViewController.m */,
-			);
-			name = "Booking Completion";
-			sourceTree = "<group>";
-		};
 		45FBACB61D65BD4700C75FC9 /* View Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1394,7 +1380,6 @@
 				45819FAA1D35036A001AE0F5 /* BookingSummaryViewController.h in Headers */,
 				45CB6D041D9C139F00754DCD /* CTInclusionTableViewCell.h in Headers */,
 				454AD77F1D25587D005C6CFF /* CTFilterDataSource.h in Headers */,
-				45F4736E1D369E2A00DF548B /* CompletionViewController.h in Headers */,
 				45C488CB1D479B020044612C /* OptionalExtrasView.h in Headers */,
 				451B513B1D38DD35004EBFDC /* GTBookNowButton.h in Headers */,
 				45AC546A1D130A1600805268 /* LocationSearchDataSource.h in Headers */,
@@ -1719,7 +1704,6 @@
 				45E942D31D1302A200ACF604 /* LocaleUtils.m in Sources */,
 				458773641D7F1284000CB1E5 /* GTGenericValidation.m in Sources */,
 				450F9D3A1D3CE08E002C6F6B /* SettingsSelectionViewController.m in Sources */,
-				45F4736F1D369E2A00DF548B /* CompletionViewController.m in Sources */,
 				451C8EFA1D7D8ADB00B9324D /* InclusionFlowLayout.m in Sources */,
 				450F9D4A1D3D00C8002C6F6B /* SettingsViewController.m in Sources */,
 				45E942EA1D1302FF00ACF604 /* NSStringUtils.m in Sources */,

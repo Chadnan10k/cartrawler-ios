@@ -41,10 +41,13 @@
 //    [CartrawlerSDK appearance].fontName = @"HelveticaNeue-Light";
 //    [CartrawlerSDK appearance].boldFontName = @"HelveticaNeue-Medium";
     
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"68622" languageCode:@"EN" isDebug:NO];
+    [CartrawlerSDK appearance].presentAnimated = YES;
+    [CartrawlerSDK appearance].modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [CartrawlerSDK appearance].modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"68622" languageCode:@"EN" isDebug:YES];
     
     //[CTAppearance instance].buttonColor = [UIColor blackColor];
-    
 
 }
 
