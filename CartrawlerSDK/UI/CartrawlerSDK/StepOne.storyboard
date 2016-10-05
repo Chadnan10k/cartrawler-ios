@@ -9,7 +9,7 @@
         <!--Location Search View Controller-->
         <scene sceneID="zWg-Eh-ylu">
             <objects>
-                <viewController restorationIdentifier="LocationSearchViewController" storyboardIdentifier="LocationSearchViewController" automaticallyAdjustsScrollViewInsets="NO" id="BWK-eH-GLE" customClass="LocationSearchViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="LocationSearchViewController" storyboardIdentifier="LocationSearchViewController" automaticallyAdjustsScrollViewInsets="NO" id="BWK-eH-GLE" customClass="CTLocationSearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RE2-Tz-UdR"/>
                         <viewControllerLayoutGuide type="bottom" id="oXd-U6-xOt"/>
@@ -84,6 +84,9 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="overrideCornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="closeTapped:" destination="BWK-eH-GLE" eventType="touchUpInside" id="0n9-KJ-QQz"/>
@@ -402,6 +405,9 @@
                                                 <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="overrideCornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -540,6 +546,9 @@
                                                 <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="overrideCornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="close:" destination="Ff3-Gb-K9j" eventType="touchUpInside" id="mDJ-ug-qN0"/>
@@ -770,6 +779,9 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="overrideCornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="closeTapped:" destination="rlh-pu-78Z" eventType="touchUpInside" id="bGu-jg-Aap"/>
@@ -967,6 +979,9 @@
                                                 <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="overrideCornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="close:" destination="C99-vf-zKZ" eventType="touchUpInside" id="5gm-b2-TMn"/>

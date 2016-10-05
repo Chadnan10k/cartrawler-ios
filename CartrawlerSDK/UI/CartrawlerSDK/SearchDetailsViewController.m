@@ -9,7 +9,7 @@
 #import "SearchDetailsViewController.h"
 #import "CTSelectView.h"
 #import "CTCheckbox.h"
-#import "LocationSearchViewController.h"
+#import "CTLocationSearchViewController.h"
 #import "CTCalendarViewController.h"
 #import "DateUtils.h"
 #import "CTTimePickerView.h"
@@ -49,7 +49,7 @@
 @property (nonatomic, strong) NSDate *pickupTime;
 @property (nonatomic, strong) NSDate *dropoffTime;
 
-@property (nonatomic, strong) LocationSearchViewController *locSearchVC;
+@property (nonatomic, strong) CTLocationSearchViewController *locSearchVC;
 @property (nonatomic, strong) CTCalendarViewController *calendar;
 
 @property (readwrite, nonatomic) BOOL isReturningSameLocation;
@@ -73,7 +73,7 @@
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
     
-    _locSearchVC = (LocationSearchViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
+    _locSearchVC = (CTLocationSearchViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
     self.locSearchVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
     
     _calendar = [storyboard instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];

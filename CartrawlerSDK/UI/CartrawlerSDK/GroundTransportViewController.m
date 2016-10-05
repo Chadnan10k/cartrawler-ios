@@ -10,7 +10,7 @@
 #import "JVFloatLabeledTextField.h"
 #import "CTSelectView.h"
 #import "CTTimePickerView.h"
-#import "LocationSearchViewController.h"
+#import "CTLocationSearchViewController.h"
 #import <CartrawlerAPI/CTGroundLocation.h>
 #import "CTCalendarViewController.h"
 #import "DateUtils.h"
@@ -100,7 +100,7 @@
     self.pickupView.viewTapped = ^{
         [weakSelf.view endEditing:YES];
         _activeView = self.pickupView;
-        LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
+        CTLocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
         locSearchVC.enableGroundTransportLocations = YES;
         locSearchVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
         [weakSelf presentViewController:locSearchVC animated:YES completion:nil];
@@ -125,7 +125,7 @@
     self.dropoffView.viewTapped = ^{
         [weakSelf.view endEditing:YES];
         _activeView = self.pickupView;
-        LocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
+        CTLocationSearchViewController *locSearchVC = [storyboard instantiateViewControllerWithIdentifier:@"LocationSearchViewController"];
         locSearchVC.invertData = YES;
         locSearchVC.enableGroundTransportLocations = YES;
         locSearchVC.modalPresentationStyle = UIModalPresentationOverFullScreen;

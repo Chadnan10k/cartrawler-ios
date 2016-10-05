@@ -10,6 +10,7 @@
 #import "BookingSummaryButton.h"
 #import "AddressDetailsViewController.h"
 #import "CTLabel.h"
+#import "FlightNumberValidation.h"
 
 @interface GTPassengerViewController () <UITextFieldDelegate>
 
@@ -164,7 +165,7 @@
         validated = NO;
     }
     
-    if ([self.flightNoTextField.text isEqualToString: @""] && self.groundSearch.selectedService != nil) {
+    if (![FlightNumberValidation isValid:self.flightNoTextField.text] && self.groundSearch.selectedService != nil ) {
         [self.flightNoTextField shakeAnimation];
         validated = NO;
     }
@@ -226,17 +227,10 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    NSMutableCharacterSet *characterSet = [NSMutableCharacterSet alphanumericCharacterSet];
-    [characterSet addCharactersInString:@" "];
-    
     if (textField == self.phoneTextField) {
         return [self validatePhone:[NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string]];
     } else if (textField != self.emailTextField) {
-        if ([[NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string] rangeOfCharacterFromSet:[characterSet invertedSet]].location != NSNotFound) {
-            return NO;
-        } else {
             return YES;
-        }
     } else {
         return YES;
     }
@@ -244,7 +238,7 @@
 
 - (BOOL)validatePhone:(NSString *)phoneNumber
 {
-    NSString *phoneRegex = @"^[0-9]+$";
+    NSString *phoneRegex = @"(^\\+|[0-9456])([0-9]{0,15}$)";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
     
     return [phoneTest evaluateWithObject:phoneNumber];

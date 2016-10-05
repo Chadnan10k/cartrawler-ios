@@ -10,6 +10,7 @@
 #import "CTTextField.h"
 #import "BookingSummaryButton.h"
 #import "AddressDetailsViewController.h"
+#import "FlightNumberValidation.h"
 
 @interface DriverDetailsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet CTTextField *firstNameTextField;
@@ -148,10 +149,10 @@
         validated = NO;
     }
     
-//    if ([self.flightNoTextField.text isEqualToString: @""]) {
-//        [self.flightNoTextField shakeAnimation];
-//        validated = NO;
-//    }
+    if (![self.flightNoTextField.text isEqualToString: @""] && ![FlightNumberValidation isValid:self.flightNoTextField.text]) {
+        [self.flightNoTextField shakeAnimation];
+        validated = NO;
+    }
     
     if (validated) {
         [self pushToDestination];
@@ -223,7 +224,7 @@
 
 - (BOOL)validatePhone:(NSString *)phoneNumber
 {
-    NSString *phoneRegex = @"^[0-9]+$";
+    NSString *phoneRegex = @"(^\\+|[0-9456])([0-9]{0,15}$)";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
     
     return [phoneTest evaluateWithObject:phoneNumber];

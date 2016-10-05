@@ -19,7 +19,7 @@
 #import "CTPlaceholderView.h"
 #import "DateUtils.h"
 #import "CTTimePickerView.h"
-#import "LocationSearchViewController.h"
+#import "CTLocationSearchViewController.h"
 #import "LocationSearchDataSource.h"
 #import "CTCalendarViewController.h"
 #import "CTCalendarView.h"
@@ -102,7 +102,7 @@
     [CTPlaceholderView forceLinkerLoad_];
     [DateUtils forceLinkerLoad_];
     [CTTimePickerView forceLinkerLoad_];
-    [LocationSearchViewController forceLinkerLoad_];
+    [CTLocationSearchViewController forceLinkerLoad_];
     [LocationSearchDataSource forceLinkerLoad_];
     [CTCalendarViewController forceLinkerLoad_];
     [CTCalendarView forceLinkerLoad_];

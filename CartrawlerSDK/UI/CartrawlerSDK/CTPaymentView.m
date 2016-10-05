@@ -361,7 +361,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                                                                  options:NSJSONReadingMutableContainers
                                                                    error:&jsonError];
             
-            if ([self.jsonResponse containsString:@"Errors"]) {
+            if ([self.jsonResponse containsString:@"ErrorCode"] || [self.jsonResponse containsString:@"@ShortText"]) {
                 
                 if (self.completion) {
                     self.completion(NO);

@@ -210,6 +210,9 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="overrideCornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="doneTapped:" destination="fce-sX-LUV" eventType="touchUpInside" id="Q6K-Cd-cwW"/>
@@ -240,6 +243,9 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="overrideCornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="resetTapped:" destination="fce-sX-LUV" eventType="touchUpInside" id="nhW-u0-1pb"/>
