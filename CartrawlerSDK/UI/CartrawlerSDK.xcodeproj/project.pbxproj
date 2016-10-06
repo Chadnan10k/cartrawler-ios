@@ -228,6 +228,8 @@
 		45CFC7DF1D2CF95C006E6F83 /* StepFour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45CFC7D91D2CF4D9006E6F83 /* StepFour.storyboard */; };
 		45D6CC911DA55FBB000D7A6C /* FlightNumberValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D6CC8F1DA55FBB000D7A6C /* FlightNumberValidation.h */; };
 		45D6CC921DA55FBB000D7A6C /* FlightNumberValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D6CC901DA55FBB000D7A6C /* FlightNumberValidation.m */; };
+		45D6CC9B1DA6A569000D7A6C /* CTFilterContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D6CC991DA6A569000D7A6C /* CTFilterContainer.h */; };
+		45D6CC9C1DA6A569000D7A6C /* CTFilterContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D6CC9A1DA6A569000D7A6C /* CTFilterContainer.m */; };
 		45D8665D1D13F0E900D19B74 /* StepOne.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45AC547B1D13E47F00805268 /* StepOne.storyboard */; };
 		45D866D71D141BB100D19B74 /* LinkerUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D866D51D141BB100D19B74 /* LinkerUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		45D866D81D141BB100D19B74 /* LinkerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D866D61D141BB100D19B74 /* LinkerUtils.m */; };
@@ -493,6 +495,8 @@
 		45CFC7DC1D2CF822006E6F83 /* ExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtrasViewController.m; sourceTree = "<group>"; };
 		45D6CC8F1DA55FBB000D7A6C /* FlightNumberValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightNumberValidation.h; sourceTree = "<group>"; };
 		45D6CC901DA55FBB000D7A6C /* FlightNumberValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightNumberValidation.m; sourceTree = "<group>"; };
+		45D6CC991DA6A569000D7A6C /* CTFilterContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterContainer.h; sourceTree = "<group>"; };
+		45D6CC9A1DA6A569000D7A6C /* CTFilterContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterContainer.m; sourceTree = "<group>"; };
 		45D866571D13F0CA00D19B74 /* CartrawlerResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D866D51D141BB100D19B74 /* LinkerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkerUtils.h; sourceTree = "<group>"; };
 		45D866D61D141BB100D19B74 /* LinkerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkerUtils.m; sourceTree = "<group>"; };
@@ -816,6 +820,8 @@
 				454AD78A1D255E1F005C6CFF /* CTFilterTableViewCell.m */,
 				45C48D4D1D5226CA005C9377 /* CTFilterFactory.h */,
 				45C48D4E1D5226CA005C9377 /* CTFilterFactory.m */,
+				45D6CC991DA6A569000D7A6C /* CTFilterContainer.h */,
+				45D6CC9A1DA6A569000D7A6C /* CTFilterContainer.m */,
 			);
 			name = Filter;
 			sourceTree = "<group>";
@@ -1423,6 +1429,7 @@
 				45645DF51D33E70B0075A3D2 /* PaymentSummaryViewController.h in Headers */,
 				45C1ECF51D5103150059EF89 /* CTFilterTableView.h in Headers */,
 				45AC546E1D130A1600805268 /* CTDateCollectionViewCell.h in Headers */,
+				45D6CC9B1DA6A569000D7A6C /* CTFilterContainer.h in Headers */,
 				451FE5B51D6EF286004D85D1 /* PaymentValidation.h in Headers */,
 				45AC54761D130A1600805268 /* CTVehicleSelectionViewModel.h in Headers */,
 				451B4BEE1D2BC99B006A57E7 /* TermsDetailViewController.h in Headers */,
@@ -1711,6 +1718,7 @@
 				45E942D31D1302A200ACF604 /* LocaleUtils.m in Sources */,
 				458773641D7F1284000CB1E5 /* GTGenericValidation.m in Sources */,
 				450F9D3A1D3CE08E002C6F6B /* SettingsSelectionViewController.m in Sources */,
+				45D6CC9C1DA6A569000D7A6C /* CTFilterContainer.m in Sources */,
 				451C8EFA1D7D8ADB00B9324D /* InclusionFlowLayout.m in Sources */,
 				450F9D4A1D3D00C8002C6F6B /* SettingsViewController.m in Sources */,
 				45E942EA1D1302FF00ACF604 /* NSStringUtils.m in Sources */,

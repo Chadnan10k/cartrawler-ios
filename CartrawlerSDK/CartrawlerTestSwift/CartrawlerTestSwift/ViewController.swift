@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let sdk = CartrawlerSDK(requestorID: "68622", languageCode: "EN", isDebug: true)
+    let sdk = CartrawlerSDK(requestorID: "68622", languageCode: "EN", isDebug: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
