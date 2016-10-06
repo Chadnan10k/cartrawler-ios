@@ -261,7 +261,12 @@
     
     if (!self.groundSearch.pickupLocation.dateTime) {
         _pickupDate = nil;
-        _pickupTime = nil;
+        NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDateComponents *initialTimeComp = [gregorianCalendar components:NSHourCalendarUnit
+                                                                 fromDate:[NSDate date]];
+        initialTimeComp.hour = 10;
+        
+        _pickupTime = [gregorianCalendar dateFromComponents:initialTimeComp];
         [self.calendarView setTextFieldText:@""];
     }
     

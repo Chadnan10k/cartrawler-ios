@@ -62,15 +62,20 @@
     [self.scrollView setContentOffset:
      CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
     
+    
+    [self setupView:self.search.insurance];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     if (self.search.selectedVehicle.vehicle.extraEquipment.count > 0) {
         [self.optionalExtrasView hideView:NO];
-        (self.optionalExtrasView).extras = self.search.selectedVehicle.vehicle.extraEquipment;
-        (self.optionalExtrasView).initialFrame = self.view.frame;
+        self.optionalExtrasView.extras = self.search.selectedVehicle.vehicle.extraEquipment;
+        self.optionalExtrasView.initialFrame = self.view.frame;
     } else {
         [self.optionalExtrasView hideView:YES];
     }
-    
-    [self setupView:self.search.insurance];
 }
 
 - (void)viewDidLayoutSubviews

@@ -34,6 +34,10 @@
 {
     self = [super initWithCoder:aDecoder];
     self.textView = [[UITextView alloc] initWithFrame:CGRectZero];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sizeViewTapped:)];
+    [self addGestureRecognizer:tap];
+    
     return self;
 }
 
@@ -55,6 +59,7 @@
     
     self.textView.translatesAutoresizingMaskIntoConstraints = false;
     self.translatesAutoresizingMaskIntoConstraints = false;
+    
 }
 
 - (IBAction)sizeViewTapped:(id)sender

@@ -28,6 +28,14 @@
     
 }
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(drawerControl:)];
+    [self addGestureRecognizer:tap];
+    return self;
+}
+
 - (void)hideView:(BOOL)hide
 {
     NSLayoutConstraint *heightConstraint;
@@ -76,7 +84,7 @@
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero];
     self.tableView.allowsSelection = NO;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 80;
+    self.tableView.estimatedRowHeight = 75;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.scrollEnabled = NO;
     
@@ -100,7 +108,7 @@
     self.textView.text = extrasTitle;
     
     CGFloat textViewHeight = [self textViewHeightForAttributedText:self.textView.attributedText
-                                                          andWidth:self.initialFrame.size.width - 20];
+                                                          andWidth:self.initialFrame.size.width - 10];
     
     NSLayoutConstraint *textviewTopConstraint = [NSLayoutConstraint constraintWithItem:self.textView
                                                                      attribute:NSLayoutAttributeTop
@@ -141,7 +149,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView reloadData];
-    
+    [self.tableView layoutIfNeeded];
+
     CGFloat tableViewHeight = self.tableView.contentSize.height;
     
     NSLayoutConstraint *tableviewTopConstraint = [NSLayoutConstraint constraintWithItem:self.tableView
@@ -150,7 +159,7 @@
                                                                                 toItem:self.textView
                                                                              attribute:NSLayoutAttributeBottom
                                                                             multiplier:1.0
-                                                                              constant:10];
+                                                                              constant:8];
     
     NSLayoutConstraint *tableviewHeightConstraint = [NSLayoutConstraint constraintWithItem:self.tableView
                                                                                 attribute:NSLayoutAttributeHeight
@@ -190,7 +199,7 @@
             break;
         }
     }
-    heightConstraint.constant = textViewHeight + tableViewHeight + 65;
+    heightConstraint.constant = textViewHeight + tableViewHeight + 56;
 }
 
 - (IBAction)drawerControl:(id)sender

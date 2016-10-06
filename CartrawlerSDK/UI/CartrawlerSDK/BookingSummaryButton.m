@@ -30,6 +30,14 @@
     
 }
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+    [self addGestureRecognizer:tap];
+    return self;
+}
+
 - (void)setDataWithVehicle:(CTAvailabilityItem *)vehicle
                 pickupDate:(NSDate *)pickupDate
                dropoffDate:(NSDate *)dropoffDate
