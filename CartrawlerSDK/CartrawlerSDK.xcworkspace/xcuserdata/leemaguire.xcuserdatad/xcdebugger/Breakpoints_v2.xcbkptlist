@@ -244,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UI/CartrawlerSDK/CTFilterContainer.m"
-            timestampString = "497466656.96985"
+            timestampString = "497526066.698732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "-setTableView:"
             landmarkType = "7">
          </BreakpointContent>
@@ -260,27 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UI/CartrawlerSDK/CTFilterContainer.m"
-            timestampString = "497466656.96985"
+            timestampString = "497526066.698732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "-expand"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "UI/CartrawlerSDK/CTFilterContainer.m"
-            timestampString = "497466717.609645"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "-handleGesture:"
             landmarkType = "7">
          </BreakpointContent>

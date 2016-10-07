@@ -78,18 +78,10 @@
     if (!self.filterFactory) {
         _filterFactory = [[CTFilterFactory alloc] initWithFilterData:data];
     } else {
+        [self reset];
         [self.filterFactory update:data];
     }
     
-    for (CTFilterTableView *tv in self.viewArray) {
-        [tv reloadData];
-        for (NSLayoutConstraint *constraint in tv.constraints) {
-            if (constraint.firstAttribute == NSLayoutAttributeHeight) {
-                constraint.constant = tv.contentSize.height;
-                break;
-            }
-        }
-    }
 }
 
 - (void)setupContainers
@@ -268,9 +260,8 @@
     [self.parentViewContoller presentViewController:self animated:YES completion:nil];
 }
 
-- (IBAction)resetTapped:(id)sender
+- (void)reset
 {
-    
     self.filterFactory.filteredData = [[NSMutableArray alloc] init];
     
     [self.filterFactory.carSizeDataSource reset];
@@ -279,7 +270,7 @@
     [self.filterFactory.fuelPolicyDataSource reset];
     [self.filterFactory.transmissionDataSource reset];
     [self.filterFactory.vendorsDataSource reset];
-
+    
     [self.carSizeTableView reloadData];
     [self.pickupLocationTableView reloadData];
     [self.vendorsTableView reloadData];
@@ -288,20 +279,31 @@
     [self.carSpecsTableView reloadData];
     
     [self.filterFactory filter];
-
+    
     if (self.filterCompletion) {
         self.filterCompletion(self.filterFactory.filteredData);
     }
     
+    for (CTFilterContainer *c in self.viewArray) {
+        [c close];
+    }
+}
+
+- (IBAction)resetTapped:(id)sender
+{
+    [self reset];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)doneTapped:(id)sender
 {
     [self.filterFactory filter];
-    //[self filter];
     if (self.filterCompletion) {
         self.filterCompletion(self.filterFactory.filteredData);
+    }
+    
+    for (CTFilterContainer *c in self.viewArray) {
+        [c close];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

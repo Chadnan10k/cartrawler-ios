@@ -13,6 +13,7 @@
 
 @property (nonatomic) BOOL isExpanded;
 @property (nonatomic, strong) CTFilterTableView *tableView;
+@property (nonatomic, strong) UIImageView *imageView;
 
 @end
 
@@ -24,8 +25,6 @@
 {
     self = [super initWithCoder:aDecoder];
     
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expand)];
-//    [self addGestureRecognizer:tap];
     return self;
 }
 
@@ -33,8 +32,6 @@
 {
     self = [super initWithFrame:frame];
     
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expand)];
-//    [self addGestureRecognizer:tap];
     return self;
 }
 
@@ -62,6 +59,48 @@
     [titleLabel setUserInteractionEnabled:YES];
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     [titleLabel addGestureRecognizer:gesture];
+    
+    //image view
+    
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    _imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow" inBundle:b compatibleWithTraitCollection:nil]];
+    [self addSubview:self.imageView];
+    self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    
+    NSLayoutConstraint *imageViewTopConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
+                                                                          attribute:NSLayoutAttributeTop
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:self
+                                                                          attribute:NSLayoutAttributeTop
+                                                                         multiplier:1.0
+                                                                           constant:10];
+    
+    NSLayoutConstraint *imageViewRightConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
+                                                                              attribute:NSLayoutAttributeRight
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:self
+                                                                              attribute:NSLayoutAttributeRight
+                                                                             multiplier:1.0
+                                                                               constant:-8];
+    
+    NSLayoutConstraint *imageViewWidthConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
+                                                                                attribute:NSLayoutAttributeWidth
+                                                                                relatedBy:NSLayoutRelationEqual
+                                                                                   toItem:nil
+                                                                                attribute:NSLayoutAttributeNotAnAttribute
+                                                                               multiplier:1.0
+                                                                                 constant:30];
+    
+    NSLayoutConstraint *imageViewHeightConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
+                                                                                attribute:NSLayoutAttributeHeight
+                                                                                relatedBy:NSLayoutRelationEqual
+                                                                                   toItem:nil
+                                                                                attribute:NSLayoutAttributeNotAnAttribute
+                                                                               multiplier:1.0
+                                                                                 constant:30];
+    
 
     NSLayoutConstraint *labelTopConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
                                                                           attribute:NSLayoutAttributeTop
@@ -133,9 +172,43 @@
                            labelRightConstraint,
                            topConstraint,
                            leftConstraint,
-                           rightConstraint]];
+                           rightConstraint,
+                           imageViewTopConstraint,
+                           imageViewRightConstraint,
+                           imageViewWidthConstraint,
+                           imageViewHeightConstraint]];
     
     [self.tableView addConstraint:heightConstraint];
+}
+
+- (void)close
+{
+    NSLayoutConstraint *c = nil;
+    NSLayoutConstraint *tableViewHeight = nil;
+    
+    for (NSLayoutConstraint *l in self.constraints) {
+        if (l.firstAttribute == NSLayoutAttributeHeight) {
+            c = l;
+        }
+    }
+    
+    for (NSLayoutConstraint *l in self.tableView.constraints) {
+        if (l.firstAttribute == NSLayoutAttributeHeight) {
+            tableViewHeight = l;
+        }
+    }
+    
+    if (c) {
+        
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.imageView.transform = CGAffineTransformMakeRotation(0);
+        } completion:nil];
+        
+        tableViewHeight.constant = 0;
+        c.constant = 50;
+    }
+    _isExpanded = NO;
+
 }
 
 - (void)expand
@@ -157,14 +230,24 @@
     
     if (self.isExpanded) {
         if (c) {
+            
+            [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.imageView.transform = CGAffineTransformMakeRotation(0);
+            } completion:nil];
+            
             tableViewHeight.constant = 0;
             c.constant = 50;
         }
         _isExpanded = NO;
     } else {
         if (c) {
+            
+            [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.imageView.transform = CGAffineTransformMakeRotation(M_PI_2);
+            } completion:nil];
+            
             tableViewHeight.constant = self.tableView.contentSize.height-1;
-            CGFloat height = self.tableView.contentSize.height + 20;
+            CGFloat height = self.tableView.contentSize.height + 50;
             c.constant = height;
         }
         _isExpanded = YES;
