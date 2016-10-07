@@ -100,6 +100,7 @@
     [self.inclusionsCollectionView reloadData];
     [self.contentView updateConstraints];
     [self.contentView layoutIfNeeded];
+    
     self.inclusionHeightConstraint.constant = [self calculateCellHeight];
 }
 

@@ -27,8 +27,8 @@
 @interface SearchDetailsViewController () <CTCalendarDelegate>
 
 @property (weak, nonatomic) IBOutlet CTTextField *ageContainer;
-@property (weak, nonatomic) IBOutlet CTCheckbox *sameLocationCheckBox;
-@property (weak, nonatomic) IBOutlet CTCheckbox *ageCheckBoxContainer;
+//@property (weak, nonatomic) IBOutlet CTCheckbox *sameLocationCheckBox;
+//@property (weak, nonatomic) IBOutlet CTCheckbox *ageCheckBoxContainer;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dropoffLocTopConstraint;
@@ -162,51 +162,7 @@
         _activeView = self.calendarView;
         [weakSelf presentViewController:weakSelf.calendar animated:YES completion:nil];
     };
-    
-    self.sameLocationCheckBox.viewTapped = ^(BOOL selection) {
-        if (selection) {
-            _isReturningSameLocation = NO;
-            (weakSelf.search).dropoffLocation = self.search.pickupLocation;
-            self.dropoffLocTopConstraint.constant = kDropoffLocationClosed;
-            [UIView animateWithDuration:0.3 animations:^{
-                self.dropoffView.alpha = 0;
-                [self.view layoutIfNeeded];
-            }];
-        } else {
-            _isReturningSameLocation = YES;
-            [weakSelf.search setDropoffLocation:nil];
-            [weakSelf.dropoffView setTextFieldText:@""];
-            self.dropoffLocTopConstraint.constant = kDropoffLocationOpen;
-            [UIView animateWithDuration:0.3 animations:^{
-                self.dropoffView.alpha = 1;
-                [self.view layoutIfNeeded];
-            }];
-        }
-        _activeView = weakSelf.sameLocationCheckBox;
-    };
-    
-    
-    self.ageCheckBoxContainer.viewTapped = ^(BOOL selection) {
-        if (selection) {
-            
-            [weakSelf.view endEditing:YES];
-            weakSelf.driverUnderage = NO;
-            weakSelf.search.driverAge = @30;
-            self.ageTopConstraint.constant = kAgeClosed;
-            [UIView animateWithDuration:0.3 animations:^{
-                self.ageContainer.alpha = 0;
-                [self.view layoutIfNeeded];
-            }];
-        } else {
-            weakSelf.driverUnderage = YES;
-            self.ageTopConstraint.constant = kAgeOpen;
-           [UIView animateWithDuration:0.3 animations:^{
-               self.ageContainer.alpha = 1;
-               [self.view layoutIfNeeded];
-           }];
-        }
-    };
-    
+
     self.dropoffLocTopConstraint.constant = kDropoffLocationClosed;
     self.dropoffView.alpha = 0;
     
@@ -247,6 +203,49 @@
     }
     
     [self.calendar reset];
+}
+
+- (IBAction)sameLocation:(id)sender {
+    BOOL selection = ((UISwitch *)sender).isOn;
+    if (selection) {
+        _isReturningSameLocation = NO;
+        (self.search).dropoffLocation = self.search.pickupLocation;
+        self.dropoffLocTopConstraint.constant = kDropoffLocationClosed;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.dropoffView.alpha = 0;
+            [self.view layoutIfNeeded];
+        }];
+    } else {
+        _isReturningSameLocation = YES;
+        [self.search setDropoffLocation:nil];
+        [self.dropoffView setTextFieldText:@""];
+        self.dropoffLocTopConstraint.constant = kDropoffLocationOpen;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.dropoffView.alpha = 1;
+            [self.view layoutIfNeeded];
+        }];
+    }
+}
+
+- (IBAction)driverAge:(id)sender {
+    BOOL selection = ((UISwitch *)sender).isOn;
+    if (selection) {
+        [self.view endEditing:YES];
+        self.driverUnderage = NO;
+        self.search.driverAge = @30;
+        self.ageTopConstraint.constant = kAgeClosed;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.ageContainer.alpha = 0;
+            [self.view layoutIfNeeded];
+        }];
+    } else {
+        self.driverUnderage = YES;
+        self.ageTopConstraint.constant = kAgeOpen;
+       [UIView animateWithDuration:0.3 animations:^{
+           self.ageContainer.alpha = 1;
+           [self.view layoutIfNeeded];
+       }];
+    }
 }
 
 #pragma mark Calendar delegate

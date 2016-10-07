@@ -28,7 +28,6 @@
 @property (weak, nonatomic) IBOutlet UIView *returnTripContainer;
 
 @property (weak, nonatomic) IBOutlet CTButton *searchButton;
-@property (weak, nonatomic) IBOutlet CTCheckbox *sameLocationCheckBox;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) UIView *activeView;
@@ -40,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet CTSelectView *dropoffCalendarView;
 @property (weak, nonatomic) IBOutlet CTSelectView *dropoffTimeView;
 @property (weak, nonatomic) IBOutlet CTSelectView *passengersView;
+@property (weak, nonatomic) IBOutlet UISwitch *oneWaySwitch;
 
 @property (strong, nonatomic) CTTimePickerView *pickupTimePicker;
 @property (strong, nonatomic) CTTimePickerView *dropoffTimePicker;
@@ -209,29 +209,6 @@
         vc.delegate = weakSelf;
         [weakSelf presentViewController:vc animated:YES completion:nil];
     };
-
-    self.sameLocationCheckBox.viewTapped = ^(BOOL selection) {
-        weakSelf.groundSearch.returnTrip = !selection;
-        if (selection) {
-            weakSelf.dropoffTime = nil;
-            weakSelf.dropoffDate = nil;
-            [weakSelf.dropoffTimeView setTextFieldText:@""];
-            [weakSelf.dropoffCalendarView setTextFieldText:@""];
-
-            weakSelf.returnTripConstraint.constant = 16;
-            [UIView animateWithDuration:0.3 animations:^{
-                weakSelf.returnTripContainer.alpha = 0;
-                [weakSelf.view layoutIfNeeded];
-            }];
-        } else {
-            weakSelf.returnTripConstraint.constant = 95;
-            [UIView animateWithDuration:0.3 animations:^{
-                weakSelf.returnTripContainer.alpha = 1;
-                [weakSelf.view layoutIfNeeded];
-            }];
-        }
-        _activeView = weakSelf.sameLocationCheckBox;
-    };
     
     self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage) {
         [CTInterstitialViewController dismiss];
@@ -279,6 +256,31 @@
     if (self.groundSearch.adultQty.intValue == 0) {
         [self.passengersView setTextFieldText:@""];
         self.passengersView.placeholder = @"Passengers";
+    }
+}
+
+- (IBAction)oneWay:(id)sender
+{
+    BOOL selection = ((UISwitch *)sender).isOn;
+    
+    self.groundSearch.returnTrip = !selection;
+    if (selection) {
+        self.dropoffTime = nil;
+        self.dropoffDate = nil;
+        [self.dropoffTimeView setTextFieldText:@""];
+        [self.dropoffCalendarView setTextFieldText:@""];
+        
+        self.returnTripConstraint.constant = 16;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.returnTripContainer.alpha = 0;
+            [self.view layoutIfNeeded];
+        }];
+    } else {
+        self.returnTripConstraint.constant = 95;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.returnTripContainer.alpha = 1;
+            [self.view layoutIfNeeded];
+        }];
     }
 }
 
@@ -422,7 +424,7 @@
         validated = NO;
     }
     
-    if (!self.dropoffDate && !self.sameLocationCheckBox.enabled) {
+    if (!self.dropoffDate && !self.oneWaySwitch.isOn) {
         [self.dropoffTimeView shakeAnimation];
         [self.dropoffCalendarView shakeAnimation];
         validated = NO;
