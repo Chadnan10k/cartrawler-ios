@@ -65,9 +65,7 @@
     self.fuelPolicyTableView.tableViewTitle     = NSLocalizedString(@"Fuel policy", @"Fuel policy");
     self.transmissionTableView.tableViewTitle   = NSLocalizedString(@"Transmission", @"Transmission");
 
-    //[self buildTableViews];
     [self setupContainers];
-    
     
     [self.view layoutIfNeeded];
     
