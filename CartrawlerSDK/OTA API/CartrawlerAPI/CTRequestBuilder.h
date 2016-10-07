@@ -174,7 +174,8 @@
                      clientID:(NSString *)clientID
                        target:(NSString *)target
                        locale:(NSString *)locale
-                    ipaddress:(NSString *)ipaddress;
+                    ipaddress:(NSString *)ipaddress
+                  countryCode:(NSString *)countryCode;
 
 + (NSString *) CT_GroundBook:(NSString *)pickupDateTime
               pickupLatitude:(NSString *)pickupLatitude

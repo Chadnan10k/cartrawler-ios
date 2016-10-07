@@ -475,6 +475,7 @@
                         infantQty:(NSNumber *)infantQty
                         seniorQty:(NSNumber *)seniorQty
                      currencyCode:(NSString *)currencyCode
+                      countryCode:(NSString *)countryCode
                        completion:(GroundAvailCompletion)completion
 {
     NSString *requestBody = [CTRequestBuilder CT_GroundAvail:[NSDateUtils stringFromDateWithFormat:pickupLocation.dateTime format:CTAvailRequestDateFormat]
@@ -497,7 +498,8 @@
                                                     clientID:self.clientAPIKey
                                                       target:self.apiTarget
                                                       locale:self.locale
-                                                   ipaddress:self.ipAddress];
+                                                   ipaddress:self.ipAddress
+                                                 countryCode:countryCode];
     
     NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.groundTransportEndPoint, @"OTA_GroundAvailRQ"];
     

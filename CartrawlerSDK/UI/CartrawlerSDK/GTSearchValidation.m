@@ -45,6 +45,7 @@
                                    infantQty:search.infantQty
                                    seniorQty:search.seniorQty
                                 currencyCode:[CTSDKSettings instance].currencyCode
+                                 countryCode:[CTSDKSettings instance].homeCountryCode
                                   completion:^(CTGroundAvailability *response, CTErrorResponse *error) {
                                       if (response) {
                                           search.availability = response;

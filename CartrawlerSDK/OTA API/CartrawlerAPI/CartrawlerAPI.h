@@ -242,6 +242,7 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
                         infantQty:(NSNumber *)infantQty
                         seniorQty:(NSNumber *)seniorQty
                      currencyCode:(NSString *)currencyCode
+                      countryCode:(NSString *)countryCode
                        completion:(GroundAvailCompletion)completion;
 
 @end

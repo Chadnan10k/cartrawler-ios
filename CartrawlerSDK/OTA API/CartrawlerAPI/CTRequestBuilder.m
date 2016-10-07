@@ -58,9 +58,9 @@
     return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.002\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": {\"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
 }
 
-+ (NSString *)groundTransportHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency
++ (NSString *)groundTransportHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency country:(NSString *)country
 {
-    return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.002\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": {\"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
+    return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.002\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": {\"@ISOCurrency\": \"%@\",\"@ISOCountry\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, country, clientID];
 }
 
 + (NSString *) stringToSha1:(NSString *)str {
@@ -470,6 +470,7 @@
                        target:(NSString *)target
                        locale:(NSString *)locale
                     ipaddress:(NSString *)ipaddress
+                  countryCode:(NSString *)countryCode
 {
     NSString *dropoffTime = @"";
     if (doDateTime) {
@@ -554,7 +555,7 @@
                      seniors,
                      [NSString stringWithFormat:@"{\"ConsumerIP\": \"%@\" %@ }", ipaddress, dropoffTime]];
 
-    return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:currencyCode], tail];
+    return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder groundTransportHeader:clientID target:target locale:locale currency:currencyCode country:countryCode], tail];
 }
 
 + (NSString *) CT_GroundBook:(NSString *)pickupDateTime
@@ -733,7 +734,7 @@
                       refUrl,
                       [NSString stringWithFormat:@"{\"ConsumerIP\": \"%@\"}", ipaddress]];
     
-    return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder groundTransportHeader:clientID target:target locale:locale currency:currencyCode], tail];
+    return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder groundTransportHeader:clientID target:target locale:locale currency:currencyCode country:countryCode], tail];
 
 }
 
