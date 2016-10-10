@@ -13,8 +13,12 @@
 
 @interface GTPaymentCompletionViewController () <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
-@property (weak, nonatomic) IBOutlet CTLabel *locationLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *pickupLocationLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *companyLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *dropoffLocationLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *dateLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *bookingRefLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *dropoffDateLabel;
 
 @end
 
@@ -36,8 +40,9 @@
     }
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     NSURL *selectedVehImg = self.groundSearch.selectedService.vehicleImage ?: self.groundSearch.selectedShuttle.vehicleImage;
     
@@ -45,18 +50,45 @@
         self.vehicleImageView.image = image;
     }];
     
-    NSString *returnDate = self.groundSearch.dropoffLocation.dateTime ? [NSString stringWithFormat:@"\nReturn date: %@", [NSDateUtils stringFromDateWithFormat:self.groundSearch.dropoffLocation.dateTime format:@"dd/MM/yyyy hh:mm a"]] : @"";
-    
-    NSString *locationDetails = [NSString stringWithFormat:@"Pickup: %@ \n\n%@ \n\nDropoff: %@\n%@ \nBooking reference: %@\n",
-                                 self.groundSearch.pickupLocation.name,
-                                 [NSDateUtils stringFromDateWithFormat:self.groundSearch.pickupLocation.dateTime format:@"dd/MM/yyyy hh:mm a"],
-                                 self.groundSearch.dropoffLocation.name, returnDate, self.groundSearch.booking.confirmationId];
-    
-    self.locationLabel.text = locationDetails;
-    
+    self.pickupLocationLabel.text = self.groundSearch.pickupLocation.name;
+    self.dropoffLocationLabel.text = self.groundSearch.dropoffLocation.name;
     NSString *companyDetails = self.groundSearch.selectedService.companyName ?: self.groundSearch.selectedShuttle.companyName;
     self.companyLabel.text = companyDetails;
+    
+    self.bookingRefLabel.text = [NSString stringWithFormat:@"Booking Reference: %@", self.groundSearch.booking.confirmationId];
+    
+    NSMutableAttributedString *dropoff = [[NSMutableAttributedString alloc] init];
+    
+    if (self.groundSearch.dropoffLocation.dateTime) {
+        
+        NSAttributedString *dropoffPrefix = [[NSAttributedString alloc] initWithString:@"Dropoff Date: "
+                                                                            attributes:@{NSFontAttributeName:
+                                                                                             [UIFont fontWithName:[CTAppearance instance].boldFontName size:20]}];
+        
+        NSAttributedString *dropoffSuffix = [[NSAttributedString alloc] initWithString:[NSDateUtils stringFromDateWithFormat:self.groundSearch.pickupLocation.dateTime format:@"dd/MM/yyyy hh:mm a"]
+                                                                            attributes:@{NSFontAttributeName:
+                                                                                             [UIFont fontWithName:[CTAppearance instance].fontName size:20]}];
+        
+        [dropoff appendAttributedString:dropoffPrefix];
+        [dropoff appendAttributedString:dropoffSuffix];
+        
+    }
+    
+    NSAttributedString *pickupPrefix = [[NSAttributedString alloc] initWithString:@"Pickup Date: "
+                                                                      attributes:@{NSFontAttributeName:
+                                                                                       [UIFont fontWithName:[CTAppearance instance].boldFontName size:20]}];
+    
+    NSAttributedString *pickupSuffix = [[NSAttributedString alloc] initWithString:[NSDateUtils stringFromDateWithFormat:self.groundSearch.pickupLocation.dateTime format:@"dd/MM/yyyy hh:mm a"]
+                                                                       attributes:@{NSFontAttributeName:
+                                                                                        [UIFont fontWithName:[CTAppearance instance].fontName size:20]}];
+    
+    NSMutableAttributedString *pickup = [[NSMutableAttributedString alloc] init];
+    [pickup appendAttributedString:pickupPrefix];
+    [pickup appendAttributedString:pickupSuffix];
+    self.dateLabel.attributedText = pickup;
+    self.dropoffDateLabel.attributedText = dropoff;
 
+    
 }
 
 - (void)didReceiveMemoryWarning {

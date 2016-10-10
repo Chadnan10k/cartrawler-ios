@@ -470,10 +470,10 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="27" id="s7W-a2-9gr" customClass="CTInclusionTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="584" height="27"/>
+                                        <rect key="frame" x="0.0" y="28" width="984" height="27"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s7W-a2-9gr" id="glr-f6-1V9">
-                                            <frame key="frameInset" width="584" height="27"/>
+                                            <frame key="frameInset" width="984" height="27"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray_checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="AN2-zl-CxF">

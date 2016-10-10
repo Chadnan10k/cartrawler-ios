@@ -41,6 +41,10 @@
 //    [CartrawlerSDK appearance].fontName = @"HelveticaNeue-Light";
 //    [CartrawlerSDK appearance].boldFontName = @"HelveticaNeue-Medium";
     
+    //UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     [CartrawlerSDK appearance].presentAnimated = YES;
     [CartrawlerSDK appearance].modalPresentationStyle = UIModalPresentationOverFullScreen;
     [CartrawlerSDK appearance].modalTransitionStyle = UIModalTransitionStyleCoverVertical;

@@ -42,7 +42,7 @@
         _endPoint = CTTestAPI;
         _secureEndPoint = CTTestAPISecure;
         _apiTarget = CTTestTarget;
-        _groundTransportEndPoint = CTTestAPI;
+        _groundTransportEndPoint = CTTestInternalAPI;
     } else {
         _groundTransportEndPoint = CTProductionAPI;
         _endPoint = CTProductionAPI;

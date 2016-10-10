@@ -214,7 +214,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     escapedString = [escapedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     
     if ([CTSDKSettings instance].isDebug) {
-        urlStr = [NSString stringWithFormat:@"https://external-dev.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&hideButton=true&mobile=true&msg=%@", escapedString];
+        urlStr = [NSString stringWithFormat:@"https://internal-dev.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&hideButton=true&mobile=true&msg=%@", escapedString];
     } else {
         urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&hideButton=true&mobile=true&msg=%@", escapedString];
     }

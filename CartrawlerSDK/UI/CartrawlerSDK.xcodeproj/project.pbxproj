@@ -1074,7 +1074,7 @@
 				45E942D71D1302B800ACF604 /* UI Elements */,
 				45E942CA1D13029600ACF604 /* Utilities */,
 				45E942891D13003D00ACF604 /* Base View Controllers */,
-				45E942991D1300F900ACF604 /* Preset Views */,
+				45E942991D1300F900ACF604 /* Rental Views */,
 				45EE26DC1D37A77900A1FB51 /* Ground Transport */,
 				45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */,
 				45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */,
@@ -1103,7 +1103,7 @@
 			name = "Search Results";
 			sourceTree = "<group>";
 		};
-		45E942991D1300F900ACF604 /* Preset Views */ = {
+		45E942991D1300F900ACF604 /* Rental Views */ = {
 			isa = PBXGroup;
 			children = (
 				45E942B91D1301F800ACF604 /* Location Search */,
@@ -1119,7 +1119,7 @@
 				4525216C1D353C0700B47DE6 /* Driver Details (Step Six) */,
 				45F473621D366D2900DF548B /* Payment (Step Seven) */,
 			);
-			name = "Preset Views";
+			name = "Rental Views";
 			sourceTree = "<group>";
 		};
 		45E9429A1D13011B00ACF604 /* Search (Step One) */ = {
