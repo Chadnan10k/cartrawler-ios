@@ -49,7 +49,7 @@
     self.delegate = self;
     self.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
 
-    if (self.keyboardType == UIKeyboardTypeNumberPad || self.keyboardType == UIKeyboardTypePhonePad) {
+   // if (self.keyboardType == UIKeyboardTypeNumberPad || self.keyboardType == UIKeyboardTypePhonePad) {
 
         UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 0)];
         [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:20.0]} forState:UIControlStateNormal];
@@ -61,7 +61,7 @@
         [numberToolbar sizeToFit];
         self.inputAccessoryView = numberToolbar;
         
-    }
+    //}
     
     return self;
 }
