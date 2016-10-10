@@ -65,7 +65,7 @@
                                                                             attributes:@{NSFontAttributeName:
                                                                                              [UIFont fontWithName:[CTAppearance instance].boldFontName size:20]}];
         
-        NSAttributedString *dropoffSuffix = [[NSAttributedString alloc] initWithString:[NSDateUtils stringFromDateWithFormat:self.groundSearch.pickupLocation.dateTime format:@"dd/MM/yyyy hh:mm a"]
+        NSAttributedString *dropoffSuffix = [[NSAttributedString alloc] initWithString:[NSDateUtils stringFromDateWithFormat:self.groundSearch.dropoffLocation.dateTime format:@"dd/MM/yyyy hh:mm a"]
                                                                             attributes:@{NSFontAttributeName:
                                                                                              [UIFont fontWithName:[CTAppearance instance].fontName size:20]}];
         
