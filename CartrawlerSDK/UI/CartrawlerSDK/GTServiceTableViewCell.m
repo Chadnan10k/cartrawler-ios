@@ -107,7 +107,7 @@
 - (CGFloat)calculateCellHeight
 {
     CGFloat widthConstraint = self.inclusionsCollectionView.frame.size.width;
-    CGFloat height;
+    CGFloat height = 0;
     CGFloat currentRow = 0.0;
     CGFloat padding = 35;
     

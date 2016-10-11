@@ -344,7 +344,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     NSLog(@"CARTRAWLERSDK: Could not load PCI WebView %@", error.localizedDescription);
-    [self showError:@"Error" message:@"Cannot load payment"];
+    //[self showError:@"Error" message:@"Cannot load payment"];
 }
 
 - (void)currentState
@@ -422,7 +422,16 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
-        [self startTimer];
+        
+        if (self.groundSearch) {
+            [self setForGTPayment:self.groundSearch];
+        } else if (self.carRentalSearch) {
+            [self setForCarRentalPayment:self.carRentalSearch];
+        }
+        
+        if (self.completion) {
+            self.completion(NO);
+        }
     }
 }
 
