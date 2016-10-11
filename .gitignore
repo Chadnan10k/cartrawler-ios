@@ -24,6 +24,5 @@ xcuserdata/
 *.xcscmblueprint
 
 ## Frameworks
-CartrawlerAPI.framework
-CartrawlerResources.bundle
-CartrawlerSDK.framework
+*.framework
+*.bundle

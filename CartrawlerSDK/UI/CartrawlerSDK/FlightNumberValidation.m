@@ -12,6 +12,11 @@
 
 + (BOOL)isValid:(NSString *)flightNumber
 {
+    
+    if (![self isAlphaNumeric:flightNumber]) {
+        return NO;
+    }
+    
     NSString *flightNo = [[flightNumber componentsSeparatedByCharactersInSet:
                            [NSCharacterSet decimalDigitCharacterSet].invertedSet]
                           componentsJoinedByString:@""];
@@ -29,7 +34,12 @@
     } else {
         return NO;
     }
-        
+}
+
++ (BOOL)isAlphaNumeric:(NSString *)str
+{
+    NSCharacterSet *unwantedCharacters = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    return ([str rangeOfCharacterFromSet:unwantedCharacters].location == NSNotFound);
 }
 
 @end
