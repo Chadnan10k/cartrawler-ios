@@ -10,3 +10,6 @@ CartrawlerResources.Bundle - This bundle contains assets and resources for Cartr
 
 
 To build all products in the workspace select 'Build All Debug' from the scheme selection then clean & build
+
+
+### For library usage see: https://github.com/cartrawler/cartrawler-ios-build
