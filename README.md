@@ -1,4 +1,4 @@
-# Cartrawler-iOS-SDK
+# Cartrawler-iOS-SDK (Source)
 
 This repo contains an xcode workspace which builds 3 products:
 
