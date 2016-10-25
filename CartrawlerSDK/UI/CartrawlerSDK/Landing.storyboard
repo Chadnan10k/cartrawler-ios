@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="udK-E6-pbA">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Ground Transport-->
+        <scene sceneID="5pQ-Lo-kyk">
+            <objects>
+                <viewController storyboardIdentifier="GTBookingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t5a-IZ-3La" customClass="GTBookingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R4A-0v-9mE"/>
+                        <viewControllerLayoutGuide type="bottom" id="t6s-XS-pjC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wpM-ML-cj6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rsf-VC-Lai">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5K-Oh-lz0" customClass="CTButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="fh5-rl-ZA9"/>
+                                            <constraint firstAttribute="height" constant="25" id="uec-sh-qfW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="33"/>
+                                        <state key="normal" title="+"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="overrideBackgroundColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="overrideTextColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="newBooking:" destination="t5a-IZ-3La" eventType="touchUpInside" id="Fny-Be-nwg"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ground Transport" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QuG-Jc-Lg0" customClass="CTLabel">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="xUM-ZX-2UC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="1" green="0.92326956987380981" blue="0.27098661661148071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.10980392160000001" green="0.30588235289999999" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="T5K-Oh-lz0" secondAttribute="bottom" constant="8" id="FJw-Zd-bt1"/>
+                                    <constraint firstItem="QuG-Jc-Lg0" firstAttribute="centerX" secondItem="rsf-VC-Lai" secondAttribute="centerX" id="Nzt-TL-bL1"/>
+                                    <constraint firstAttribute="height" constant="60" id="jQz-mb-2Nl"/>
+                                    <constraint firstAttribute="trailing" secondItem="T5K-Oh-lz0" secondAttribute="trailing" constant="8" id="s5Z-oW-1Js"/>
+                                    <constraint firstAttribute="bottom" secondItem="QuG-Jc-Lg0" secondAttribute="bottom" constant="8" id="yG9-wN-0Em"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="141" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Oko-fv-d0u">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="105" id="7cs-yo-yVA" customClass="GTBookingTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="105"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7cs-yo-yVA" id="9sM-nW-lZM">
+                                            <frame key="frameInset" width="375" height="104"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zuQ-Ib-YxI">
+                                                    <frame key="frameInset" minX="8" minY="8" width="90" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12/12/16 12:30 PM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxi-Z5-GOe" customClass="CTLabel">
+                                                    <frame key="frameInset" minX="106" minY="37" width="125" height="33"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reference" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onh-se-Bln" customClass="CTLabel">
+                                                    <frame key="frameInset" minX="106" minY="73" width="99" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="London Heathrow to London City Center" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9Z-uQ-5vd" customClass="CTLabel">
+                                                    <frame key="frameInset" minX="106" minY="8" width="179" height="23"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bookingImageView" destination="zuQ-Ib-YxI" id="Vyg-Ta-oVL"/>
+                                            <outlet property="dateLabel" destination="vxi-Z5-GOe" id="Lh0-8o-C0h"/>
+                                            <outlet property="locationLabel" destination="c9Z-uQ-5vd" id="gWm-eg-352"/>
+                                            <outlet property="refLabel" destination="Onh-se-Bln" id="Opz-YO-s4e"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rsf-VC-Lai" firstAttribute="top" secondItem="wpM-ML-cj6" secondAttribute="top" id="8Vo-bP-Q0y"/>
+                            <constraint firstItem="Oko-fv-d0u" firstAttribute="leading" secondItem="wpM-ML-cj6" secondAttribute="leading" id="C0c-OC-xTe"/>
+                            <constraint firstItem="t6s-XS-pjC" firstAttribute="top" secondItem="Oko-fv-d0u" secondAttribute="bottom" id="NRb-Ee-91a"/>
+                            <constraint firstItem="Oko-fv-d0u" firstAttribute="top" secondItem="wpM-ML-cj6" secondAttribute="top" id="YK5-zm-Q0d"/>
+                            <constraint firstItem="Oko-fv-d0u" firstAttribute="top" secondItem="rsf-VC-Lai" secondAttribute="bottom" id="axi-6V-Sdw"/>
+                            <constraint firstAttribute="trailing" secondItem="Oko-fv-d0u" secondAttribute="trailing" id="d07-74-4le"/>
+                            <constraint firstAttribute="trailing" secondItem="rsf-VC-Lai" secondAttribute="trailing" id="l5m-sF-2cG"/>
+                            <constraint firstItem="rsf-VC-Lai" firstAttribute="leading" secondItem="wpM-ML-cj6" secondAttribute="leading" id="z2H-CE-rWI"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="YK5-zm-Q0d"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Ground Transport" id="Vuy-8N-m6E"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rBR-Zt-afT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="232.80000000000001" y="447.52623688155927"/>
+        </scene>
+        <!--Car Rental-->
+        <scene sceneID="nSM-vE-a8m">
+            <objects>
+                <viewController storyboardIdentifier="RentalBookingsViewController" id="E4O-cF-wcO" customClass="RentalBookingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7i9-EB-8e7"/>
+                        <viewControllerLayoutGuide type="bottom" id="sah-zD-Re5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="COx-te-T5m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IzT-tK-dak">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEB-Iz-mHy" customClass="CTButton">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="NsB-ze-uqu"/>
+                                            <constraint firstAttribute="width" constant="24" id="tKg-Uw-Pgs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="33"/>
+                                        <state key="normal" title="+"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="overrideBackgroundColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="overrideTextColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="newBooking:" destination="E4O-cF-wcO" eventType="touchUpInside" id="vu8-XH-4tG"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Car Rental" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4i-Bm-vpX" customClass="CTLabel">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="RqM-FE-abJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="1" green="0.92326956987380981" blue="0.27098661661148071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.10980392160000001" green="0.30588235289999999" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="KEB-Iz-mHy" secondAttribute="trailing" constant="8" id="EEc-nd-IVo"/>
+                                    <constraint firstAttribute="height" constant="60" id="Eff-Bf-rB0"/>
+                                    <constraint firstItem="b4i-Bm-vpX" firstAttribute="centerX" secondItem="IzT-tK-dak" secondAttribute="centerX" id="KOL-cD-1bK"/>
+                                    <constraint firstAttribute="bottom" secondItem="KEB-Iz-mHy" secondAttribute="bottom" constant="8" id="ivt-jY-Bey"/>
+                                    <constraint firstAttribute="bottom" secondItem="b4i-Bm-vpX" secondAttribute="bottom" constant="8" id="uQ7-z6-wYv"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="160" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="poe-1z-aH2">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="160" id="r1G-Ig-kXi" customClass="RentalBookingCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r1G-Ig-kXi" id="efQ-l6-nsZ">
+                                            <frame key="frameInset" width="375" height="159"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ohN-5J-c7I">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="90" id="8xZ-FK-Mq0"/>
+                                                        <constraint firstAttribute="width" constant="90" id="q8d-Hx-E0Z"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London Heathrow to London City Center" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHr-Bj-EiK" customClass="CTLabel">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/12/16 12:30 PM to 12/12/16 12:30 PM" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8F-Uo-4e4" customClass="CTLabel">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reference" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5L1-T1-FVV" customClass="CTLabel">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="5L1-T1-FVV" secondAttribute="trailing" constant="8" id="3Vy-Lf-fJb"/>
+                                                <constraint firstAttribute="trailing" secondItem="B8F-Uo-4e4" secondAttribute="trailing" constant="8" id="AoI-me-ipV"/>
+                                                <constraint firstItem="ohN-5J-c7I" firstAttribute="top" secondItem="efQ-l6-nsZ" secondAttribute="top" constant="8" id="DXM-eX-YGk"/>
+                                                <constraint firstItem="AHr-Bj-EiK" firstAttribute="centerY" secondItem="ohN-5J-c7I" secondAttribute="centerY" id="GZ9-N0-NWm"/>
+                                                <constraint firstItem="5L1-T1-FVV" firstAttribute="leading" secondItem="efQ-l6-nsZ" secondAttribute="leading" constant="8" id="IW0-Jj-lay"/>
+                                                <constraint firstItem="5L1-T1-FVV" firstAttribute="top" secondItem="B8F-Uo-4e4" secondAttribute="bottom" constant="8" id="OOd-Hu-uJz"/>
+                                                <constraint firstAttribute="trailing" secondItem="AHr-Bj-EiK" secondAttribute="trailing" constant="8" id="Y6p-GX-A2t"/>
+                                                <constraint firstItem="AHr-Bj-EiK" firstAttribute="leading" secondItem="ohN-5J-c7I" secondAttribute="trailing" constant="8" id="guQ-o2-Vka"/>
+                                                <constraint firstItem="B8F-Uo-4e4" firstAttribute="leading" secondItem="efQ-l6-nsZ" secondAttribute="leading" constant="8" id="iY6-c0-CG2"/>
+                                                <constraint firstItem="B8F-Uo-4e4" firstAttribute="top" secondItem="ohN-5J-c7I" secondAttribute="bottom" constant="8" id="jsa-cO-kpN"/>
+                                                <constraint firstAttribute="bottom" secondItem="5L1-T1-FVV" secondAttribute="bottom" priority="200" constant="8" id="twC-zk-DiX"/>
+                                                <constraint firstItem="ohN-5J-c7I" firstAttribute="leading" secondItem="efQ-l6-nsZ" secondAttribute="leading" constant="8" id="zvR-Nb-7Co"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="bookingImageView" destination="ohN-5J-c7I" id="n28-RL-esa"/>
+                                            <outlet property="dateLabel" destination="B8F-Uo-4e4" id="PhS-7S-8JB"/>
+                                            <outlet property="locationLabel" destination="AHr-Bj-EiK" id="aZi-im-IHJ"/>
+                                            <outlet property="refLabel" destination="5L1-T1-FVV" id="z7i-Bm-J7J"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="poe-1z-aH2" firstAttribute="top" secondItem="IzT-tK-dak" secondAttribute="bottom" id="JC8-0o-0dp"/>
+                            <constraint firstAttribute="trailing" secondItem="IzT-tK-dak" secondAttribute="trailing" id="N2h-6d-HwE"/>
+                            <constraint firstAttribute="trailing" secondItem="poe-1z-aH2" secondAttribute="trailing" id="Y2p-Jq-xCR"/>
+                            <constraint firstItem="poe-1z-aH2" firstAttribute="leading" secondItem="COx-te-T5m" secondAttribute="leading" id="aXa-L9-Koa"/>
+                            <constraint firstItem="IzT-tK-dak" firstAttribute="top" secondItem="COx-te-T5m" secondAttribute="top" id="fFs-v9-hvX"/>
+                            <constraint firstItem="sah-zD-Re5" firstAttribute="top" secondItem="poe-1z-aH2" secondAttribute="bottom" id="fUL-i2-YMK"/>
+                            <constraint firstItem="IzT-tK-dak" firstAttribute="leading" secondItem="COx-te-T5m" secondAttribute="leading" id="mY0-lM-fpO"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Car Rental" image="rental" id="E7l-3d-Unv"/>
+                    <connections>
+                        <outlet property="tableView" destination="poe-1z-aH2" id="7a7-ub-C4U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WTv-8e-PYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="232.80000000000001" y="-213.64317841079463"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="fXS-AI-paU">
+            <objects>
+                <tabBarController restorationIdentifier="CommonTabBar" storyboardIdentifier="CommonTabBar" id="udK-E6-pbA" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="kfR-Gg-Pch">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="E4O-cF-wcO" kind="relationship" relationship="viewControllers" id="L80-CH-TPm"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0wB-Yt-tlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-719" y="116"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="rental" width="25" height="25"/>
+    </resources>
+</document>
