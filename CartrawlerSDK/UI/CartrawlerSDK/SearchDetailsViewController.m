@@ -102,10 +102,10 @@
         
         weakSelf.locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
             [weakSelf.pickupView setTextFieldText:location.name];
-            (weakSelf.search).pickupLocation = location;
+            weakSelf.search.pickupLocation = location;
             
-            if (weakSelf.isReturningSameLocation) {
-                (weakSelf.search).dropoffLocation = location;
+            if (weakSelf.isReturningSameLocation || weakSelf.search.dropoffLocation == nil) {
+                weakSelf.search.dropoffLocation = location;
             }
         };
     };
@@ -259,11 +259,15 @@
 
 - (void)setDateString:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
 {
-    NSString *dateString = [NSString stringWithFormat:@"%@ - %@",
-                            [DateUtils shortDescriptionFromDate:pickupDate],
-                            [DateUtils shortDescriptionFromDate:dropoffDate]];
-    
-    [self.calendarView setTextFieldText:dateString];
+    if (pickupDate && dropoffDate) {
+        NSString *dateString = [NSString stringWithFormat:@"%@ - %@",
+                                [DateUtils shortDescriptionFromDate:pickupDate],
+                                [DateUtils shortDescriptionFromDate:dropoffDate]];
+        
+        [self.calendarView setTextFieldText:dateString];
+    } else {
+        [self.calendarView setTextFieldText:@""];
+    }
 }
 
 - (void)setDefaultPickupDropoffTimes

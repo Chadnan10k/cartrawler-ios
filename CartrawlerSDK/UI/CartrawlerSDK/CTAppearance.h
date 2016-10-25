@@ -20,6 +20,7 @@
 //Views
 @property (nonatomic, strong) UIColor  *viewBackgroundColor;
 @property (nonatomic, strong) UIColor  *navigationBarColor;
+@property (nonatomic, strong) UIColor  *tabBarTint;
 
 //Text
 @property (nonatomic)         CGFloat  textFieldCornerRadius;
@@ -32,6 +33,9 @@
 @property (nonatomic, strong) UIColor  *calendarStartCellColor;
 @property (nonatomic, strong) UIColor  *calendarMidCellColor;
 @property (nonatomic, strong) UIColor  *calendarEndCellColor;
+@property (nonatomic, strong) UIColor  *calendarSummaryViewColor;
+@property (nonatomic, strong) UIColor  *calendarSummaryTitleLabelColor;
+
 
 //Presentation
 @property (nonatomic)         UIModalPresentationStyle modalPresentationStyle;

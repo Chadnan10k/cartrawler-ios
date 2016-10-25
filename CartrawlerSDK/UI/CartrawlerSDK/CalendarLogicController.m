@@ -118,7 +118,7 @@
             [cell headSetSelected];
             //if single trip
             if (self.dateSelected) {
-                self.dateSelected(cell.date);
+                self.dateSelected(self.tailDate == nil ? self.headDate : self.tailDate, self.tailDate == nil ? YES : NO);
             }
         }
     }

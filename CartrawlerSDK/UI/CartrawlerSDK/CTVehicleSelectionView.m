@@ -7,11 +7,11 @@
 //
 
 #import "CTVehicleSelectionView.h"
-#import "CTVehicleSelectionViewModel.h"
+#import "CTVehicleSelectionDataSource.h"
 
 @interface CTVehicleSelectionView()
 
-@property (nonatomic, strong) CTVehicleSelectionViewModel *dataSource;
+@property (nonatomic, strong) CTVehicleSelectionDataSource *dataSource;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @end
@@ -52,7 +52,7 @@
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     [self.tableView registerNib:[UINib nibWithNibName:@"VehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];
 
-    _dataSource = [[CTVehicleSelectionViewModel alloc] initWithData:data cellSelected:^(CTAvailabilityItem *vehicle) {
+    _dataSource = [[CTVehicleSelectionDataSource alloc] initWithData:data cellSelected:^(CTAvailabilityItem *vehicle) {
         completion(vehicle);
     }];
     

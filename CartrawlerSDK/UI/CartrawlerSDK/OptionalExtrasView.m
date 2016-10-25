@@ -68,9 +68,9 @@
 - (void)open:(BOOL)hideExpandButton
 {
     
-    if (self.tableView && self.textView) {
-        [self close];
-    }
+//    if (self.tableView && self.textView) {
+//        [self close];
+//    }
     
     if (hideExpandButton) {
         self.expandButton.alpha = 0;
@@ -207,7 +207,7 @@
     if (isOpen) {
         [self close];
     } else {
-        [self open:NO];
+        [self open:!self.expandButton.alpha];
     }
 }
 

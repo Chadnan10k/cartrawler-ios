@@ -20,18 +20,17 @@
 
 @interface VehicleDetailsView() <UITableViewDelegate, UITableViewDataSource>
 
-@property (unsafe_unretained, nonatomic) IBOutlet CTLabel *vehicleNameLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *vehicleImageView;
-@property (unsafe_unretained, nonatomic) IBOutlet CTLabel *passengersLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet CTLabel *doorsLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet CTLabel *bagsLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet CTLabel *priceLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet CTLabel *transmissionLabel;
-@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *vendorImageView;
-//@property (unsafe_unretained, nonatomic) IBOutlet UICollectionView *includedCollectionView;
-//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeight;
+@property (weak, nonatomic) IBOutlet CTLabel *vehicleNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
+@property (weak, nonatomic) IBOutlet CTLabel *passengersLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *doorsLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *bagsLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *transmissionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *vendorImageView;
 @property (weak, nonatomic) IBOutlet UITableView *includedTableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *includedHeight;
+@property (weak, nonatomic) IBOutlet CTLabel *includedForFreeLabel;
 
 @property (strong, nonatomic) CarRentalSearch *search;
 @property (strong, nonatomic) CartrawlerAPI *api;
@@ -67,10 +66,7 @@
     [[CTImageCache sharedInstance] cachedImage: self.search.selectedVehicle.vendor.logoURL completion:^(UIImage *image) {
         self.vendorImageView.image = image;
     }];
-    
-//    self.includedCollectionView.dataSource = self;
-//    self.includedCollectionView.delegate = self;
-    
+
     self.vehicleNameLabel.text = self.search.selectedVehicle.vehicle.makeModelName;
     self.passengersLabel.text = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.passengerQty.stringValue, NSLocalizedString(@"passengers", @"passengers")];
     self.doorsLabel.text = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.doorCount.stringValue, NSLocalizedString(@"doors", @"doors")];
@@ -86,11 +82,16 @@
     self.view.translatesAutoresizingMaskIntoConstraints = false;
     
     if (self.search.selectedVehicle.vehicle.pricedCoverages.count > 0) {
-        //[self.includedCollectionView reloadData];
         [self.includedTableView reloadData];
+        [self.includedTableView beginUpdates];
+        [self.includedTableView endUpdates];
 
+        self.includedForFreeLabel.hidden = NO;
     } else {
-        self.heightChanged(-50);
+        [self.includedTableView reloadData];
+        self.heightChanged(-60);
+        self.includedHeight.constant = 0;
+        self.includedForFreeLabel.hidden = YES;
     }
     
     if (self.search.selectedVehicle.vehicle.totalPriceForThisVehicle) {
@@ -136,45 +137,6 @@
     _api = api;
 }
 
-#pragma mark Included Collection View
-
-//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-//{
-//    return self.search.selectedVehicle.vehicle.pricedCoverages.count;
-//}
-//
-//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-//{
-//    return 1;
-//}
-//
-//- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    IncludedCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-//    [cell setDetails:self.search.selectedVehicle.vehicle.pricedCoverages[indexPath.row].chargeDescription];
-//    
-//    self.collectionViewHeight.constant = self.includedCollectionView.contentSize.height;
-//    if (self.heightChanged) {
-//        self.heightChanged(self.includedCollectionView.contentSize.height);
-//    }
-//    
-//    return cell;
-//}
-//
-//- (CGSize)collectionView:(UICollectionView *)collectionView
-//                  layout:(UICollectionViewLayout *)collectionViewLayout
-//  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    CGSize cellSize = CGSizeMake(self.view.frame.size.width * 0.46, 50);
-//    
-//    return cellSize;
-//}
-//
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    return 0;
-//}
-
 #pragma mark UITableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -189,7 +151,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     CTInclusionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     [cell setLabelText:self.search.selectedVehicle.vehicle.pricedCoverages[indexPath.row].chargeDescription];
     self.includedHeight.constant = self.includedTableView.contentSize.height;

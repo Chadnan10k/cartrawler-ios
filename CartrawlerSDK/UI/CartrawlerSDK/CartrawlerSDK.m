@@ -23,6 +23,8 @@
 #import "SearchValidation.h"
 #import "GTBookingCompletionValidation.h"
 #import "BookingCompletionValidation.h"
+#import "RentalBookingsViewController.h"
+#import "GTBookingsViewController.h"
 
 #define kSearchViewStoryboard           @"StepOne"
 #define kSearchResultsViewStoryboard    @"StepTwo"
@@ -45,7 +47,7 @@
 
 @property (nonatomic, strong) NSBundle *bundle;
 
-@property (nonatomic) BOOL isCarRental;//remove this hack
+@property (nonatomic) BOOL isCarRental;
 
 @end
 
@@ -122,6 +124,34 @@
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
     
     [viewController presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
+}
+
+- (void)presentTabViewInViewController:(UIViewController *)viewController
+{
+    _isCarRental = YES;
+    __weak typeof (self) weakSelf = self;
+    
+    [[CarRentalSearch instance] reset];
+    
+    [self configureViews];
+    
+    UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:@"Landing" bundle:self.bundle];
+    UITabBarController *tabBarController = [searchStoryboard instantiateViewControllerWithIdentifier:@"CommonTabBar"];
+    tabBarController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
+    tabBarController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
+    [tabBarController.tabBar setTintColor:[CTAppearance instance].tabBarTint];
+    
+    RentalBookingsViewController *rentalBookingsVC = tabBarController.viewControllers[0];
+    rentalBookingsVC.showRentalEngine = ^(UIViewController *vc){
+        [weakSelf presentCarRentalInViewController:vc];
+    };
+    
+//    GTBookingsViewController *gtBookingsVC = tabBarController.viewControllers[1];
+//    gtBookingsVC.showGTEngine = ^(UIViewController *vc){
+//        [weakSelf presentGroundTransportInViewController:vc];
+//    };
+    
+    [viewController presentViewController:tabBarController animated:[CTAppearance instance].presentAnimated completion:nil];
 }
 
 - (void)presentCarRentalWithFlightDetails:(NSString *)IATACode

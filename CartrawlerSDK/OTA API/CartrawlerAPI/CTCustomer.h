@@ -44,21 +44,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, nonnull) NSString *phone;
 
-/**
- *  Creates a customer object
- *
- *  @param homeCountry  Customer home country code eg. IE
- *  @param age          Customer age
- *  @param namePrefix   Use NamePrefix enum
- *  @param firstName    First name
- *  @param lastName     Surname
- *  @param email        Customer Email
- *  @param address      Customer Address
- *  @param numberPrefix Must contain numbers only eg. +353 -> 353
- *  @param phone        Customer phone number
- *
- *  @return Initialized Customer object
- */
 - (instancetype)initWithHomeCountry:(NSString *)homeCountry
                       age:(NSNumber *)age
                 firstName:(NSString *)firstName

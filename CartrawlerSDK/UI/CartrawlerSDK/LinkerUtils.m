@@ -87,6 +87,10 @@
 #import "CTInclusionTableViewCell.h"
 #import "CTInterstitialViewController.h"
 #import "CTFilterContainer.h"
+#import "RentalBookingsViewController.h"
+#import "RentalBookingCell.h"
+#import "GTBookingsViewController.h"
+#import "GTBookingTableViewCell.h"
 
 @implementation LinkerUtils
 
@@ -171,6 +175,10 @@
     [CTInclusionTableViewCell forceLinkerLoad_];
     [CTInterstitialViewController forceLinkerLoad_];
     [CTFilterContainer forceLinkerLoad_];
+    [RentalBookingsViewController forceLinkerLoad_];
+    [RentalBookingCell forceLinkerLoad_];
+    [GTBookingsViewController forceLinkerLoad_];
+    [GTBookingTableViewCell forceLinkerLoad_];
 }
 
 @end
