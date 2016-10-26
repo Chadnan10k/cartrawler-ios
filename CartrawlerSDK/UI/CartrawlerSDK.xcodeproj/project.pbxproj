@@ -148,6 +148,8 @@
 		4550618C1D59CD91004EAC43 /* LocalisedStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4550618A1D59CD91004EAC43 /* LocalisedStrings.m */; };
 		4557FE421D3636400026F038 /* CarRentalSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4557FE401D3636400026F038 /* CarRentalSearch.m */; };
 		455914B21D782281008AFA51 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455914B11D782281008AFA51 /* CartrawlerAPI.framework */; };
+		455CA0B41DC0BE7C006472D0 /* CTToolTip.h in Headers */ = {isa = PBXBuildFile; fileRef = 455CA0B21DC0BE7C006472D0 /* CTToolTip.h */; };
+		455CA0B51DC0BE7C006472D0 /* CTToolTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 455CA0B31DC0BE7C006472D0 /* CTToolTip.m */; };
 		455F27571D9D4E2B00B6BB5B /* CTInterstitialViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 455F27551D9D4E2B00B6BB5B /* CTInterstitialViewController.h */; };
 		455F27581D9D4E2B00B6BB5B /* CTInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455F27561D9D4E2B00B6BB5B /* CTInterstitialViewController.m */; };
 		455F27591D9D57E700B6BB5B /* Interstitial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455F27531D9D4B0D00B6BB5B /* Interstitial.storyboard */; };
@@ -437,6 +439,8 @@
 		4557FE3F1D3636400026F038 /* CarRentalSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarRentalSearch.h; sourceTree = "<group>"; };
 		4557FE401D3636400026F038 /* CarRentalSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarRentalSearch.m; sourceTree = "<group>"; };
 		455914B11D782281008AFA51 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerAPI.framework; path = ../CartrawlerAPI.framework; sourceTree = "<group>"; };
+		455CA0B21DC0BE7C006472D0 /* CTToolTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTToolTip.h; sourceTree = "<group>"; };
+		455CA0B31DC0BE7C006472D0 /* CTToolTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTToolTip.m; sourceTree = "<group>"; };
 		455F27531D9D4B0D00B6BB5B /* Interstitial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interstitial.storyboard; sourceTree = "<group>"; };
 		455F27551D9D4E2B00B6BB5B /* CTInterstitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInterstitialViewController.h; sourceTree = "<group>"; };
 		455F27561D9D4E2B00B6BB5B /* CTInterstitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInterstitialViewController.m; sourceTree = "<group>"; };
@@ -882,6 +886,15 @@
 			name = IncludedCollectionView;
 			sourceTree = "<group>";
 		};
+		455CA0B11DC0BE60006472D0 /* Tool Tip */ = {
+			isa = PBXGroup;
+			children = (
+				455CA0B21DC0BE7C006472D0 /* CTToolTip.h */,
+				455CA0B31DC0BE7C006472D0 /* CTToolTip.m */,
+			);
+			name = "Tool Tip";
+			sourceTree = "<group>";
+		};
 		455F27541D9D4DFC00B6BB5B /* Interstitial */ = {
 			isa = PBXGroup;
 			children = (
@@ -1244,6 +1257,7 @@
 		45E942D71D1302B800ACF604 /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
+				455CA0B11DC0BE60006472D0 /* Tool Tip */,
 				4511E5341D17F6CC000ED6B0 /* UINavigationBar */,
 				4544463B1D992B950047873F /* UIStepper */,
 				45C1ECF21D5102FF0059EF89 /* UITableView */,
@@ -1443,6 +1457,7 @@
 				45EC250B1D48E04700A3C09D /* CTSegmentedControl.h in Headers */,
 				4546D4121D8303A90081A2F9 /* GTFilterCollectionViewCell.h in Headers */,
 				4569984D1D9428F600551F9F /* SupplierRatingCollectionViewCell.h in Headers */,
+				455CA0B41DC0BE7C006472D0 /* CTToolTip.h in Headers */,
 				451FE5AB1D6EF248004D85D1 /* GenericValidation.h in Headers */,
 				4509B47B1D37ED8100259255 /* GTServiceTableViewCell.h in Headers */,
 				45C48D4F1D5226CA005C9377 /* CTFilterFactory.h in Headers */,
@@ -1678,6 +1693,7 @@
 				4557FE421D3636400026F038 /* CarRentalSearch.m in Sources */,
 				451C8EFF1D7ECCE900B9324D /* GroundTransportSearch.m in Sources */,
 				45E942D61D1302A200ACF604 /* DateUtils.m in Sources */,
+				455CA0B51DC0BE7C006472D0 /* CTToolTip.m in Sources */,
 				4509B47C1D37ED8100259255 /* GTServiceTableViewCell.m in Sources */,
 				4590BBF31D9512F000CD9ED5 /* PageSelectionCollectionViewCell.m in Sources */,
 				451B4BEF1D2BC99B006A57E7 /* TermsDetailViewController.m in Sources */,

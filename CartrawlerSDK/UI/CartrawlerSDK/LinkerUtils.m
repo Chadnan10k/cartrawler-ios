@@ -87,6 +87,7 @@
 #import "CTInclusionTableViewCell.h"
 #import "CTInterstitialViewController.h"
 #import "CTFilterContainer.h"
+#import "CTToolTip.h"
 
 @implementation LinkerUtils
 
@@ -171,6 +172,7 @@
     [CTInclusionTableViewCell forceLinkerLoad_];
     [CTInterstitialViewController forceLinkerLoad_];
     [CTFilterContainer forceLinkerLoad_];
+    [CTToolTip forceLinkerLoad_];
 }
 
 @end
