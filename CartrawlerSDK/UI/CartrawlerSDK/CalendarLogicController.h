@@ -14,7 +14,7 @@
 
 typedef void (^CTCalenderRefresh)(void);
 
-typedef void (^CTDatesSelection)(NSDate *pickup, NSDate *dropoff);
+typedef void (^CTDatesSelection)(NSDate *pickup, NSDate *dropoff, BOOL needsScroll);
 typedef void (^CTDateSelection)(NSDate *pickup, BOOL headDate);
 
 typedef void (^CTDiscardDates)(void);

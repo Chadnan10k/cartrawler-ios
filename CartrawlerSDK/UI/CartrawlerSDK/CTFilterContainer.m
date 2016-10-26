@@ -47,6 +47,7 @@
     CTLabel *titleLabel = [[CTLabel alloc] initWithFrame:CGRectZero];
     titleLabel.text = tableView.tableViewTitle;
     titleLabel.useBoldFont = YES;
+    titleLabel.font = [UIFont fontWithName:titleLabel.font.fontName size:20];
     [self addSubview:titleLabel];
     [self addSubview:tableView];
     titleLabel.translatesAutoresizingMaskIntoConstraints = NO;

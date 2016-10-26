@@ -54,7 +54,12 @@
         }
     };
     
-    self.logicController.datesSelected = ^(NSDate *pickup, NSDate *dropoff) {
+    self.logicController.datesSelected = ^(NSDate *pickup, NSDate *dropoff, BOOL needsScroll) {
+        if (needsScroll) {
+            [UIView animateWithDuration:0.2 animations:^{
+                [weakSelf.tableView setContentOffset:CGPointMake(weakSelf.tableView.contentOffset.x, weakSelf.tableView.contentOffset.y+90)];
+            }];
+        }
         if (weakSelf.datesSelected) {
             weakSelf.datesSelected(pickup, dropoff);
         }
@@ -89,7 +94,6 @@
 {
     return 30;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -15,6 +15,7 @@
 #import "CarRentalSearch.h"
 #import "NSNumberUtils.h"
 #import "CTInclusionTableViewCell.h"
+#import "VehicleFeaturesDataSource.h"
 
 #define kCellsPerRow 4
 
@@ -22,15 +23,15 @@
 
 @property (weak, nonatomic) IBOutlet CTLabel *vehicleNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
-@property (weak, nonatomic) IBOutlet CTLabel *passengersLabel;
-@property (weak, nonatomic) IBOutlet CTLabel *doorsLabel;
-@property (weak, nonatomic) IBOutlet CTLabel *bagsLabel;
+
 @property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
-@property (weak, nonatomic) IBOutlet CTLabel *transmissionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *vendorImageView;
 @property (weak, nonatomic) IBOutlet UITableView *includedTableView;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *includedHeight;
 @property (weak, nonatomic) IBOutlet CTLabel *includedForFreeLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *featuresCollectionViewHeight;
+@property (weak, nonatomic) IBOutlet UICollectionView *featuresCollectionView;
 
 @property (strong, nonatomic) CarRentalSearch *search;
 @property (strong, nonatomic) CartrawlerAPI *api;
@@ -39,6 +40,8 @@
 @property (strong, nonatomic) NSString *pickupCode;
 @property (strong, nonatomic) NSString *returnCode;
 @property (strong, nonatomic) NSString *homeCountry;
+
+@property (strong, nonatomic) VehicleFeaturesDataSource *vehicleFeaturesDataSource;
 
 @end
 
@@ -49,7 +52,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    _vehicleFeaturesDataSource = [[VehicleFeaturesDataSource alloc] init];
     [self setupView];
     
     self.includedTableView.dataSource = self;
@@ -68,16 +72,28 @@
     }];
 
     self.vehicleNameLabel.text = self.search.selectedVehicle.vehicle.makeModelName;
-    self.passengersLabel.text = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.passengerQty.stringValue, NSLocalizedString(@"passengers", @"passengers")];
-    self.doorsLabel.text = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.doorCount.stringValue, NSLocalizedString(@"doors", @"doors")];
     
-    if (self.search.selectedVehicle.vehicle.baggageQty.integerValue > 1) {
-        self.bagsLabel.text = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.baggageQty.stringValue, NSLocalizedString(@"bags", @"bags")];
-    } else {
-        self.bagsLabel.text = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.baggageQty.stringValue, NSLocalizedString(@"bag", @"bags")];
+    //self.featuresCollectionView.de
+    NSMutableArray *featureData = [[NSMutableArray alloc] init];
+    [featureData addObject:@{ @"text" : [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.passengerQty.stringValue, NSLocalizedString(@"passengers", @"passengers")], @"image" : @"people" }];
+    [featureData addObject:@{ @"text" : [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.doorCount.stringValue, NSLocalizedString(@"doors", @"doors")], @"image" : @"doors" }];
+    [featureData addObject:@{ @"text" : [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.baggageQty.stringValue, NSLocalizedString(@"bags", @"bags")], @"image" : @"baggage" }];
+    [featureData addObject:@{ @"text" : self.search.selectedVehicle.vehicle.transmissionType, @"image" : @"gears" }];
+    
+    if (self.search.selectedVehicle.vehicle.isAirConditioned) {
+        [featureData addObject:@{ @"text" : NSLocalizedString(@"Air conditioning", @"Air Conditioning"), @"image" : @"winter_package" }];
     }
     
-    self.transmissionLabel.text = self.search.selectedVehicle.vehicle.transmissionType;
+    [self.vehicleFeaturesDataSource setData:featureData];
+    self.featuresCollectionView.dataSource = self.vehicleFeaturesDataSource;
+    self.featuresCollectionView.delegate = self.vehicleFeaturesDataSource;
+    [self.featuresCollectionView reloadData];
+    [self.featuresCollectionView layoutIfNeeded];
+    [self.view layoutIfNeeded];
+    self.featuresCollectionViewHeight.constant = self.featuresCollectionView.contentSize.height;
+    if (self.heightChanged) {
+        self.heightChanged(self.featuresCollectionView.contentSize.height);
+    }
     
     self.view.translatesAutoresizingMaskIntoConstraints = false;
     
@@ -89,7 +105,7 @@
         self.includedForFreeLabel.hidden = NO;
     } else {
         [self.includedTableView reloadData];
-        self.heightChanged(-60);
+        self.heightChanged(self.featuresCollectionView.contentSize.height-126);
         self.includedHeight.constant = 0;
         self.includedForFreeLabel.hidden = YES;
     }
@@ -155,7 +171,7 @@
     [cell setLabelText:self.search.selectedVehicle.vehicle.pricedCoverages[indexPath.row].chargeDescription];
     self.includedHeight.constant = self.includedTableView.contentSize.height;
     if (self.heightChanged) {
-        self.heightChanged(self.includedTableView.contentSize.height);
+        self.heightChanged(self.includedTableView.contentSize.height + self.featuresCollectionView.contentSize.height-76);
     }
     
     return cell;

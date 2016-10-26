@@ -119,7 +119,6 @@
     }
 
     [UIView animateWithDuration:0.3 animations:^{
-        //[self.view layoutIfNeeded];
         self.continueButtonContainer.alpha = show;
     }];
 }

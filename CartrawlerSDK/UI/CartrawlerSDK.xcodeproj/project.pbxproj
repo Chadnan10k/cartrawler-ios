@@ -165,6 +165,10 @@
 		4550618C1D59CD91004EAC43 /* LocalisedStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4550618A1D59CD91004EAC43 /* LocalisedStrings.m */; };
 		4557FE421D3636400026F038 /* CarRentalSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4557FE401D3636400026F038 /* CarRentalSearch.m */; };
 		455914B21D782281008AFA51 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455914B11D782281008AFA51 /* CartrawlerAPI.framework */; };
+		455CA0AB1DBF9D5B006472D0 /* VehicleFeaturesDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 455CA0A91DBF9D5B006472D0 /* VehicleFeaturesDataSource.h */; };
+		455CA0AC1DBF9D5B006472D0 /* VehicleFeaturesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 455CA0AA1DBF9D5B006472D0 /* VehicleFeaturesDataSource.m */; };
+		455CA0AF1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 455CA0AD1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.h */; };
+		455CA0B01DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 455CA0AE1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.m */; };
 		455F27571D9D4E2B00B6BB5B /* CTInterstitialViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 455F27551D9D4E2B00B6BB5B /* CTInterstitialViewController.h */; };
 		455F27581D9D4E2B00B6BB5B /* CTInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455F27561D9D4E2B00B6BB5B /* CTInterstitialViewController.m */; };
 		455F27591D9D57E700B6BB5B /* Interstitial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455F27531D9D4B0D00B6BB5B /* Interstitial.storyboard */; };
@@ -471,6 +475,10 @@
 		4557FE3F1D3636400026F038 /* CarRentalSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarRentalSearch.h; sourceTree = "<group>"; };
 		4557FE401D3636400026F038 /* CarRentalSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarRentalSearch.m; sourceTree = "<group>"; };
 		455914B11D782281008AFA51 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerAPI.framework; path = ../CartrawlerAPI.framework; sourceTree = "<group>"; };
+		455CA0A91DBF9D5B006472D0 /* VehicleFeaturesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleFeaturesDataSource.h; sourceTree = "<group>"; };
+		455CA0AA1DBF9D5B006472D0 /* VehicleFeaturesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleFeaturesDataSource.m; sourceTree = "<group>"; };
+		455CA0AD1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleFeatureCollectionViewCell.h; sourceTree = "<group>"; };
+		455CA0AE1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleFeatureCollectionViewCell.m; sourceTree = "<group>"; };
 		455F27531D9D4B0D00B6BB5B /* Interstitial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interstitial.storyboard; sourceTree = "<group>"; };
 		455F27551D9D4E2B00B6BB5B /* CTInterstitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInterstitialViewController.h; sourceTree = "<group>"; };
 		455F27561D9D4E2B00B6BB5B /* CTInterstitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInterstitialViewController.m; sourceTree = "<group>"; };
@@ -928,6 +936,7 @@
 		454AD7B31D2A62A6005C6CFF /* Car details tab */ = {
 			isa = PBXGroup;
 			children = (
+				455CA0A81DBF9D2B006472D0 /* Features collection view */,
 				45CB6D011D9C136400754DCD /* Included TableView */,
 				454AD7C01D2AAD02005C6CFF /* IncludedCollectionView */,
 				454AD7BA1D2A6C5F005C6CFF /* VehicleDetailsView.h */,
@@ -965,6 +974,17 @@
 				453386E21D2BA4EA0021D392 /* IncludedCollectionViewLayout.m */,
 			);
 			name = IncludedCollectionView;
+			sourceTree = "<group>";
+		};
+		455CA0A81DBF9D2B006472D0 /* Features collection view */ = {
+			isa = PBXGroup;
+			children = (
+				455CA0A91DBF9D5B006472D0 /* VehicleFeaturesDataSource.h */,
+				455CA0AA1DBF9D5B006472D0 /* VehicleFeaturesDataSource.m */,
+				455CA0AD1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.h */,
+				455CA0AE1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.m */,
+			);
+			name = "Features collection view";
 			sourceTree = "<group>";
 		};
 		455F27541D9D4DFC00B6BB5B /* Interstitial */ = {
@@ -1490,6 +1510,7 @@
 				451D7E2C1DAFC1F3001A4062 /* GTBookingTableViewCell.h in Headers */,
 				45819FAA1D35036A001AE0F5 /* BookingSummaryViewController.h in Headers */,
 				45CB6D041D9C139F00754DCD /* CTInclusionTableViewCell.h in Headers */,
+				455CA0AB1DBF9D5B006472D0 /* VehicleFeaturesDataSource.h in Headers */,
 				454AD77F1D25587D005C6CFF /* CTFilterDataSource.h in Headers */,
 				45C488CB1D479B020044612C /* OptionalExtrasView.h in Headers */,
 				451B513B1D38DD35004EBFDC /* GTBookNowButton.h in Headers */,
@@ -1544,6 +1565,7 @@
 				4569984D1D9428F600551F9F /* SupplierRatingCollectionViewCell.h in Headers */,
 				451FE5AB1D6EF248004D85D1 /* GenericValidation.h in Headers */,
 				4509B47B1D37ED8100259255 /* GTServiceTableViewCell.h in Headers */,
+				455CA0AF1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.h in Headers */,
 				45C48D4F1D5226CA005C9377 /* CTFilterFactory.h in Headers */,
 				45AC54701D130A1600805268 /* CTMiddleDateCell.h in Headers */,
 				450F9D391D3CE08E002C6F6B /* SettingsSelectionViewController.h in Headers */,
@@ -1760,6 +1782,7 @@
 				4569984E1D9428F600551F9F /* SupplierRatingCollectionViewCell.m in Sources */,
 				451C8F051D7ECE2D00B9324D /* GTSearchValidation.m in Sources */,
 				454AD7B91D2A69D2005C6CFF /* ExpandingInfoView.m in Sources */,
+				455CA0B01DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.m in Sources */,
 				45EC250C1D48E04700A3C09D /* CTSegmentedControl.m in Sources */,
 				45645DF61D33E70B0075A3D2 /* PaymentSummaryViewController.m in Sources */,
 				452521701D353C4200B47DE6 /* DriverDetailsViewController.m in Sources */,
@@ -1872,6 +1895,7 @@
 				451D7E341DAFC548001A4062 /* GTBooking.m in Sources */,
 				45C488CC1D479B020044612C /* OptionalExtrasView.m in Sources */,
 				4511E5381D17F766000ED6B0 /* CTNavigationItem.m in Sources */,
+				455CA0AC1DBF9D5B006472D0 /* VehicleFeaturesDataSource.m in Sources */,
 				4511E51E1D1450CE000ED6B0 /* CTSDKSettings.m in Sources */,
 				45E84CD01D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m in Sources */,
 				451C8F111D7EF37700B9324D /* GTSelectionValidation.m in Sources */,

@@ -91,6 +91,7 @@
 #import "RentalBookingCell.h"
 #import "GTBookingsViewController.h"
 #import "GTBookingTableViewCell.h"
+#import "VehicleFeatureCollectionViewCell.h"
 
 @implementation LinkerUtils
 
@@ -179,6 +180,7 @@
     [RentalBookingCell forceLinkerLoad_];
     [GTBookingsViewController forceLinkerLoad_];
     [GTBookingTableViewCell forceLinkerLoad_];
+    [VehicleFeatureCollectionViewCell forceLinkerLoad_];
 }
 
 @end
