@@ -110,6 +110,9 @@
 }
 */
 - (IBAction)done:(id)sender {
+    
+    
+    
     [[CTImageCache sharedInstance] removeAllObjects];
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;

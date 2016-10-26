@@ -61,7 +61,8 @@
 }
 
 - (IBAction)openCarRental:(id)sender {
-    [self.sdk presentCarRentalInViewController:self];
+    //[self.sdk presentCarRentalInViewController:self];
+    [self.sdk presentTabViewInViewController:self];
 }
 
 - (IBAction)openGroundTransport:(id)sender {

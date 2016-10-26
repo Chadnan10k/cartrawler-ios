@@ -19,7 +19,7 @@
     
     _termsAndConditionsTitle = dict[@"TPA_Extensions"][@"Data"][@"Links"][@"Link"][@"@Text"];
     
-	_termsAndConditionsURL = [[NSURL alloc] initWithString:dict[@"PlanForQuoteRS"][@"QuoteDetail"][@"QuoteDetailURL"]];
+    _termsAndConditionsURL = [[NSURL alloc] initWithString:dict[@"PlanForQuoteRS"][@"QuoteDetail"][@"QuoteDetailURL"] ?: @""];
 	_costAmount = [formatter numberFromString:dict[@"PlanForQuoteRS"][@"PlanCost"][@"@Amount"]];
 	_costCurrencyCode = dict[@"PlanForQuoteRS"][@"PlanCost"][@"@CurrencyCode"];
 	_premiumAmount = [formatter numberFromString:dict[@"PlanForQuoteRS"][@"PlanCost"][@"BasePremium"][@"@Amount"]];

@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="208"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s9a-CW-Vhl" id="IHL-eK-8dY">
-                <frame key="frameInset" width="600" height="207.5"/>
+                <frame key="frameInset" width="600" height="207"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHn-no-xJJ" customClass="CTDesignableView">
@@ -75,7 +75,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3aV-Bt-Dtw">
-                                <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Avenir-LightOblique" family="Avenir" pointSize="15"/>
                                 <color key="textColor" red="0.19346955129999999" green="0.19346955129999999" blue="0.19346955129999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -128,6 +128,12 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail_disclosure" translatesAutoresizingMaskIntoConstraints="NO" id="hb0-gl-PNH">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="1q4-LP-dUc"/>
+                                    <constraint firstAttribute="height" constant="30" id="sNz-Pf-WRa"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -140,6 +146,7 @@
                             <constraint firstItem="p8k-Dg-pTF" firstAttribute="leading" secondItem="hHn-no-xJJ" secondAttribute="leading" constant="8" id="FFV-vk-wi0"/>
                             <constraint firstAttribute="trailing" secondItem="CmS-84-x9T" secondAttribute="trailing" id="G2Y-oc-heo"/>
                             <constraint firstItem="Fbb-gQ-OyK" firstAttribute="top" secondItem="B5l-YS-Cvn" secondAttribute="bottom" constant="8" id="HJg-xQ-3GS"/>
+                            <constraint firstAttribute="trailing" secondItem="hb0-gl-PNH" secondAttribute="trailing" constant="4" id="Ibb-Y1-1UF"/>
                             <constraint firstAttribute="trailing" secondItem="9K3-lE-Cnc" secondAttribute="trailing" constant="8" id="JZc-vK-fNu"/>
                             <constraint firstItem="k5t-L6-a4D" firstAttribute="top" secondItem="Fbb-gQ-OyK" secondAttribute="bottom" constant="12" id="Kjt-OW-KMK"/>
                             <constraint firstItem="Rje-wO-iNr" firstAttribute="centerY" secondItem="gZl-th-Lec" secondAttribute="centerY" id="LhH-8i-i7V"/>
@@ -170,6 +177,7 @@
                             <constraint firstItem="5Xb-bk-V9O" firstAttribute="leading" secondItem="8W2-kj-olL" secondAttribute="trailing" constant="8" id="vyl-Wq-fWa"/>
                             <constraint firstItem="JWd-ex-J4h" firstAttribute="bottom" secondItem="LPi-AG-13m" secondAttribute="bottom" id="wdD-nb-VAK"/>
                             <constraint firstItem="CmS-84-x9T" firstAttribute="centerY" secondItem="k5t-L6-a4D" secondAttribute="centerY" constant="-0.5" id="wen-m3-WcU"/>
+                            <constraint firstItem="hb0-gl-PNH" firstAttribute="centerY" secondItem="hHn-no-xJJ" secondAttribute="centerY" id="yT6-8b-zVu"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -212,6 +220,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="detail_disclosure" width="30" height="30"/>
         <image name="fuel" width="50" height="50"/>
         <image name="gears" width="50" height="50"/>
         <image name="people" width="50" height="50"/>

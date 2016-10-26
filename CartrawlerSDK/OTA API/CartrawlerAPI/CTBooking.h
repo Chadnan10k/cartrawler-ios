@@ -244,16 +244,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, nonnull, readonly) NSString *cancelationPolicy;
 
-/**
- *  Convenience method to set the customer email
- *
- *  @param customerEmail The customers email
- */
-- (void)setCustomerEmail:(NSString *)customerEmail;
-
-
-- (instancetype)initFromRetrievedBookingDictionary:(NSDictionary *)vehReservationDictionary  ;
-- (instancetype)initFromVehReservationDictionary:(NSDictionary *)vehReservationDictionary  ;
+- (instancetype)initFromRetrievedBookingDictionary:(NSDictionary *)vehReservationDictionary;
+- (instancetype)initFromVehReservationDictionary:(NSDictionary *)vehReservationDictionary;
 
 @end
 

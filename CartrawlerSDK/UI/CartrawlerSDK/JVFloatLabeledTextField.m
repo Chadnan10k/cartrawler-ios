@@ -388,28 +388,33 @@ static CGFloat const kFloatingLabelHideAnimationDuration = 0.3f;
 
 - (void)shakeAnimation
 {
-    if (bottomBorder) {
-        CAKeyframeAnimation *colorsAnimation = [CAKeyframeAnimation animationWithKeyPath:@"backgroundColor"];
-        colorsAnimation.values = [NSArray arrayWithObjects: (id)[UIColor redColor].CGColor, (id)[UIColor lightGrayColor].CGColor, nil];
-        
-        colorsAnimation.keyTimes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:2.5], [NSNumber numberWithFloat:0.5], nil];
-        colorsAnimation.calculationMode = kCAAnimationPaced;
-        colorsAnimation.removedOnCompletion = YES;
-        colorsAnimation.fillMode = kCAFillModeForwards;
-        colorsAnimation.duration = 3.0f;
-    
-        [bottomBorder addAnimation:colorsAnimation forKey:nil];
-    } else {
-        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:1 options:0 animations:^{
-            self.transform = CGAffineTransformMakeScale(1.02, 1.02);
-            self.backgroundColor = [UIColor redColor];
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.4 animations:^{
-                self.transform = CGAffineTransformMakeScale(1.0, 1.0);
-                self.backgroundColor = [UIColor whiteColor];
-            }];
-        }];
-    }
+//    if (bottomBorder) {
+//        CAKeyframeAnimation *colorsAnimation = [CAKeyframeAnimation animationWithKeyPath:@"backgroundColor"];
+//        colorsAnimation.values = [NSArray arrayWithObjects: (id)[UIColor redColor].CGColor, (id)[UIColor lightGrayColor].CGColor, nil];
+//        
+//        colorsAnimation.keyTimes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:2.5], [NSNumber numberWithFloat:0.5], nil];
+//        colorsAnimation.calculationMode = kCAAnimationPaced;
+//        colorsAnimation.removedOnCompletion = YES;
+//        colorsAnimation.fillMode = kCAFillModeForwards;
+//        colorsAnimation.duration = 3.0f;
+//    
+//        [bottomBorder addAnimation:colorsAnimation forKey:nil];
+//    } else {
+//        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.1 initialSpringVelocity:1 options:0 animations:^{
+//            self.transform = CGAffineTransformMakeScale(1.02, 1.02);
+//            self.backgroundColor = [UIColor redColor];
+//        } completion:^(BOOL finished) {
+//            [UIView animateWithDuration:0.4 animations:^{
+//                self.transform = CGAffineTransformMakeScale(1.0, 1.0);
+//                self.backgroundColor = [UIColor whiteColor];
+//            }];
+//        }];
+//    }
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    animation.duration = 0.6;
+    animation.values = @[ @(-20), @(20), @(-20), @(20), @(-10), @(10), @(-5), @(5), @(0) ];
+    [self.layer addAnimation:animation forKey:@"shake"];
 }
 
 @end

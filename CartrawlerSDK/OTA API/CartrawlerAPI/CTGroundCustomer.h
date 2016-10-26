@@ -65,25 +65,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, nonnull, readonly) NSString *surname;
 
-/**
- *  Creates a CTGroundCustomer object
- *
- *  @param AddressLine1          The customer address line 1
- *  @param AddressLine2          The customer address line 2
- *  @param AddressTown           The customers town address
- *  @param AddressCity           The customers city address
- *  @param AddressPostCode       The customers post code if available
- *  @param AddressStateProvince The customers State / Provience eg. Florida, Leinster
- *  @param CountryCode           The customers country code eg. IE, US
- *  @param CountryName           the customer country name eg. Ireland
- *  @param Email                 The customers email
- *  @param Phone                 The customers phone number
- *  @param FirstName             the customers first name
- *  @param Surname               The customers surname
- *  @param NamePrefix            The customers name prefix
- *
- *  @return returns initialised object
- */
 - (instancetype)initWithAddressLine1:(NSString *)addressLine1
               addressLine2:(NSString *)addressLine2
                addressTown:(NSString *)addressTown

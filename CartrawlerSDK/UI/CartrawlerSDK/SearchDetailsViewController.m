@@ -15,6 +15,7 @@
 #import "CTTimePickerView.h"
 #import "CTTextField.h"
 #import "CTInterstitialViewController.h"
+#import "CTToolTip.h"
 
 #define kSearchViewStoryboard @"StepOne"
 
@@ -27,8 +28,6 @@
 @interface SearchDetailsViewController () <CTCalendarDelegate>
 
 @property (weak, nonatomic) IBOutlet CTTextField *ageContainer;
-//@property (weak, nonatomic) IBOutlet CTCheckbox *sameLocationCheckBox;
-//@property (weak, nonatomic) IBOutlet CTCheckbox *ageCheckBoxContainer;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dropoffLocTopConstraint;
@@ -102,10 +101,10 @@
         
         weakSelf.locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
             [weakSelf.pickupView setTextFieldText:location.name];
-            (weakSelf.search).pickupLocation = location;
+            weakSelf.search.pickupLocation = location;
             
-            if (weakSelf.isReturningSameLocation) {
-                (weakSelf.search).dropoffLocation = location;
+            if (weakSelf.isReturningSameLocation || weakSelf.search.dropoffLocation == nil) {
+                weakSelf.search.dropoffLocation = location;
             }
         };
     };
@@ -205,6 +204,14 @@
     [self.calendar reset];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    CTToolTip *tt = [[CTToolTip alloc] initWithFrame:self.view.frame];
+    [tt presentForView:self.pickupTimeView text:@"This is a tool tip and it is very snazzy, dismiss it by tapping anywhere" presentFrom:CTToolTipPresentationLeft];
+}
+
 - (IBAction)sameLocation:(id)sender {
     BOOL selection = ((UISwitch *)sender).isOn;
     if (selection) {
@@ -259,11 +266,15 @@
 
 - (void)setDateString:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
 {
-    NSString *dateString = [NSString stringWithFormat:@"%@ - %@",
-                            [DateUtils shortDescriptionFromDate:pickupDate],
-                            [DateUtils shortDescriptionFromDate:dropoffDate]];
-    
-    [self.calendarView setTextFieldText:dateString];
+    if (pickupDate && dropoffDate) {
+        NSString *dateString = [NSString stringWithFormat:@"%@ - %@",
+                                [DateUtils shortDescriptionFromDate:pickupDate],
+                                [DateUtils shortDescriptionFromDate:dropoffDate]];
+        
+        [self.calendarView setTextFieldText:dateString];
+    } else {
+        [self.calendarView setTextFieldText:@""];
+    }
 }
 
 - (void)setDefaultPickupDropoffTimes

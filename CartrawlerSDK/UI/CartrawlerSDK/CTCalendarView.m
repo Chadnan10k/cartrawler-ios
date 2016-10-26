@@ -33,6 +33,7 @@
 
 - (void)reset
 {
+    [self.tableView setContentOffset:CGPointZero animated:YES];
     [self.logicController reset];
 }
 
@@ -53,15 +54,20 @@
         }
     };
     
-    self.logicController.datesSelected = ^(NSDate *pickup, NSDate *dropoff) {
-        if (weakSelf.datesSelected != nil) {
+    self.logicController.datesSelected = ^(NSDate *pickup, NSDate *dropoff, BOOL needsScroll) {
+        if (needsScroll) {
+            [UIView animateWithDuration:0.2 animations:^{
+                [weakSelf.tableView setContentOffset:CGPointMake(weakSelf.tableView.contentOffset.x, weakSelf.tableView.contentOffset.y+90)];
+            }];
+        }
+        if (weakSelf.datesSelected) {
             weakSelf.datesSelected(pickup, dropoff);
         }
     };
     
-    self.logicController.dateSelected = ^(NSDate *date) {
-        if (weakSelf.datesSelected) {
-            weakSelf.datesSelected(date, nil);
+    self.logicController.dateSelected = ^(NSDate *date, BOOL headCell) {
+        if (weakSelf.dateSelected) {
+            weakSelf.dateSelected(date, headCell);
         }
     };
 
@@ -88,7 +94,6 @@
 {
     return 30;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -128,8 +133,10 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    CTLabel *customLabel = [[CTLabel alloc] initWithFrame:CGRectMake(10.0,5.0,200.0,20.0)];
-    customLabel.textColor = [UIColor darkGrayColor];
+    UILabel *customLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0,5.0,200.0,20.0)];
+    customLabel.textColor = [CTAppearance instance].viewBackgroundColor;
+    customLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:17];
+
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 20)];
     
     headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -157,14 +164,15 @@
                         NSLocalizedString(@"Fri", @""),
                         NSLocalizedString(@"Sat", @"")];
     
-    NSMutableArray<CTLabel *> *labelArray = [[NSMutableArray alloc] init];
+    NSMutableArray<UILabel *> *labelArray = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < 7; i++) {
-        CTLabel *label = [[CTLabel alloc] initWithFrame:CGRectZero];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
         label.textAlignment = NSTextAlignmentCenter;
         label.text = titles[i];
-        label.textColor = [UIColor darkGrayColor];
+        label.textColor = [CTAppearance instance].viewBackgroundColor;
         label.translatesAutoresizingMaskIntoConstraints = NO;
+        label.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:14];
         [self.weekDayTitle addSubview:label];
         [labelArray addObject:label];
     }

@@ -14,13 +14,13 @@
 
 typedef void (^CTCalenderRefresh)(void);
 
-typedef void (^CTDateSelectionCompletion)(NSDate *pickup, NSDate *dropoff);
-typedef void (^CTSingleDateSelectionCompletion)(NSDate *pickup);
+typedef void (^CTDatesSelection)(NSDate *pickup, NSDate *dropoff, BOOL needsScroll);
+typedef void (^CTDateSelection)(NSDate *pickup, BOOL headDate);
 
 typedef void (^CTDiscardDates)(void);
 
-@property (nonatomic) CTDateSelectionCompletion datesSelected;
-@property (nonatomic) CTSingleDateSelectionCompletion dateSelected;
+@property (nonatomic) CTDatesSelection datesSelected;
+@property (nonatomic) CTDateSelection dateSelected;
 
 @property (nonatomic) CTDiscardDates discard;
 @property (nonatomic) CTCalenderRefresh refresh;

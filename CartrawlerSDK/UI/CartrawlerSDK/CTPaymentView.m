@@ -13,6 +13,7 @@
 #import "NSDateUtils.h"
 #import "CTButton.h"
 #import "GTPaymentRequest.h"
+#import "DataStore.h"
 
 @interface CTPaymentView() <UIWebViewDelegate, UIAlertViewDelegate, NSURLConnectionDataDelegate>
 
@@ -385,6 +386,17 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                         case CTPaymentTypeCarRental: {
                             CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:json];
                             self.carRentalSearch.booking = booking;
+                            
+                            RentalBooking *savedBooking = [[RentalBooking alloc] init];
+                            savedBooking.bookingId = booking.confID;
+                            savedBooking.pickupLocation = self.carRentalSearch.pickupLocation.name;
+                            savedBooking.dropoffLocation = self.carRentalSearch.dropoffLocation.name;
+                            savedBooking.pickupDate = self.carRentalSearch.pickupDate;
+                            savedBooking.dropoffDate = self.carRentalSearch.dropoffDate;
+                            savedBooking.vehicleImage = self.carRentalSearch.selectedVehicle.vehicle.pictureURL.absoluteString;
+                            savedBooking.vehicleName = self.carRentalSearch.selectedVehicle.vehicle.makeModelName;
+                            [DataStore storeRentalBooking:savedBooking];
+                            
                             self.completion(YES);
                         }
                             
@@ -392,6 +404,17 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                         case CTPaymentTypeGroundTransport: {
                             CTGroundBooking *booking = [[CTGroundBooking alloc] initWithDictionary:json];
                             self.groundSearch.booking = booking;
+                            
+                            GTBooking *savedBooking = [[GTBooking alloc] init];
+                            savedBooking.bookingId = booking.confirmationId;
+                            savedBooking.pickupLocation = self.groundSearch.pickupLocation.name;
+                            savedBooking.dropoffLocation = self.groundSearch.dropoffLocation.name;
+                            savedBooking.pickupDate = self.groundSearch.pickupLocation.dateTime;
+                            savedBooking.dropoffDate = self.groundSearch.dropoffLocation.dateTime;
+                            savedBooking.vehicleImage = self.groundSearch.selectedService.vehicleImage != nil ? self.groundSearch.selectedService.vehicleImage.absoluteString : self.groundSearch.selectedShuttle.vehicleImage.absoluteString;
+                            savedBooking.vehicleName = self.groundSearch.selectedShuttle != nil ? self.groundSearch.selectedShuttle.companyName : self.groundSearch.selectedService.companyName;
+                            [DataStore storeGTBooking:savedBooking];
+                            
                             self.completion(YES);
                         }
                             
@@ -445,16 +468,10 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     if (!self.runLoop) {
         [self setupWebView];
     }
-    if (self.termsChecked) {
-        [self.webView stringByEvaluatingJavaScriptFromString:@"validateAndBook()"];
-        _runLoop = YES;
 
-    } else {
-        [self showError:@"Sorry" message:@"You must check terms and conditions"];
-        if (self.completion) {
-            self.completion(NO);
-        }
-    }
+    [self.webView stringByEvaluatingJavaScriptFromString:@"validateAndBook()"];
+    _runLoop = YES;
+
 }
 
 @end

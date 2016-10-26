@@ -118,7 +118,7 @@
             [cell headSetSelected];
             //if single trip
             if (self.dateSelected) {
-                self.dateSelected(cell.date);
+                self.dateSelected(self.tailDate == nil ? self.headDate : self.tailDate, self.tailDate == nil ? YES : NO);
             }
         }
     }
@@ -246,7 +246,18 @@
         [self tailSetSelected:cell indexPath:indexPath section:section];
         self.refresh();
         if (self.datesSelected != nil) {
-            self.datesSelected(self.headDate, self.tailDate);
+            
+            BOOL needsScroll = NO;
+            double constraint = [UIScreen mainScreen].bounds.size.height-[self.tailCell.superview convertPoint:self.tailCell.frame.origin toView:nil].y;
+            NSLog(@"%f",  [UIScreen mainScreen].bounds.size.height-[self.tailCell.superview convertPoint:self.tailCell.frame.origin toView:nil].y);
+            
+            if (self.tailCell) {
+                if (constraint < 90) {
+                    needsScroll = YES;
+                }
+            }
+            
+            self.datesSelected(self.headDate, self.tailDate, needsScroll);
         }
         
     } else {

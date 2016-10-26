@@ -25,6 +25,11 @@ NSString *const CTTestAPI = @"http://external-dev.cartrawler.com/cartrawlerota/j
 NSString *const CTTestAPISecure = @"https://external-dev.cartrawler.com/cartrawlerpay/json?sec=true&type=";
 NSString *const CTTestTarget = @"Test";
 
+//NSString *const CTTestInternalAPI = @"http://localhost:8080/cartrawlerota/json?type=";
+//NSString *const CTTestAPI = @"http://localhost:8080/cartrawlerota/json?type=";
+//NSString *const CTTestAPISecure = @"http://localhost:8080/cartrawlerpay/json?sec=true&type=";
+//NSString *const CTTestTarget = @"Test";
+
 NSString *const CTProductionAPI = @"https://otageo.cartrawler.com/cartrawlerota/json?type=";
 NSString *const CTProductionAPISecure = @"https://otasecure.cartrawler.com/cartrawlerpay/json?sec=true&type=";
 NSString *const CTProductionTarget = @"Production";

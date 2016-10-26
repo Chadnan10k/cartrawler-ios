@@ -78,6 +78,8 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
  */
 - (void)presentGroundTransportInViewController:(UIViewController *)viewController;
 
+- (void)presentTabViewInViewController:(UIViewController *)viewController;
+
 - (void)presentCarRentalWithFlightDetails:(NSString *)IATACode
                                pickupDate:(NSDate *)pickupDate
                                returnDate:(NSDate *)returnDate

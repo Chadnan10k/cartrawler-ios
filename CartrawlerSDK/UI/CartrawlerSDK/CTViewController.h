@@ -10,12 +10,18 @@
 #import "CarRentalSearch.h"
 #import "GroundTransportSearch.h"
 #import "CTValidation.h"
+#import "RentalBooking.h"
+#import "GTBooking.h"
 
 @interface CTViewController : UIViewController
 
 typedef void (^Completion)(BOOL success, NSString *errorMessage);
+typedef void (^RentalBookingCompletion)(RentalBooking *booking);
+typedef void (^GTBookingCompletion)(GTBooking *booking);
 
 @property (nonatomic) Completion dataValidationCompletion;
+@property (nonatomic) RentalBookingCompletion rentalBookingCompletion;
+@property (nonatomic) GTBookingCompletion gtBookingCompletion;
 
 @property (nonatomic, strong) CarRentalSearch *search;
 @property (nonatomic, strong) GroundTransportSearch *groundSearch;

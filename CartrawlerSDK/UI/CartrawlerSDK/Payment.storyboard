@@ -307,35 +307,16 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hee-Gt-jYn" customClass="CTCheckbox">
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="Mb3-Hf-H6e"/>
-                                                    <constraint firstAttribute="width" constant="40" id="dT3-zs-7rO"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="enabled" value="NO"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="enableGradient" value="NO"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="c54-jM-Sxn" secondAttribute="trailing" id="2pm-aI-TT8"/>
                                             <constraint firstItem="hWi-uf-kjB" firstAttribute="top" secondItem="c54-jM-Sxn" secondAttribute="bottom" constant="45" id="4si-f2-MwI"/>
+                                            <constraint firstItem="hWi-uf-kjB" firstAttribute="leading" secondItem="fLz-vi-TIj" secondAttribute="leading" constant="8" id="9Hy-HM-2ST"/>
                                             <constraint firstItem="c54-jM-Sxn" firstAttribute="top" secondItem="fLz-vi-TIj" secondAttribute="top" id="Dbx-xS-9JI"/>
-                                            <constraint firstItem="Hee-Gt-jYn" firstAttribute="top" secondItem="c54-jM-Sxn" secondAttribute="bottom" constant="45" id="HjQ-Yi-g1a"/>
                                             <constraint firstAttribute="height" constant="607" id="Kgn-VK-fmG"/>
                                             <constraint firstItem="c54-jM-Sxn" firstAttribute="leading" secondItem="fLz-vi-TIj" secondAttribute="leading" id="KtS-3k-TWu"/>
-                                            <constraint firstItem="hWi-uf-kjB" firstAttribute="leading" secondItem="Hee-Gt-jYn" secondAttribute="trailing" constant="8" id="QN7-EB-oek"/>
                                             <constraint firstItem="ccX-j1-yDM" firstAttribute="centerX" secondItem="fLz-vi-TIj" secondAttribute="centerX" id="Qhw-jJ-q8g"/>
-                                            <constraint firstItem="Hee-Gt-jYn" firstAttribute="leading" secondItem="fLz-vi-TIj" secondAttribute="leading" constant="8" id="j8G-7f-DOp"/>
                                             <constraint firstAttribute="bottom" secondItem="hWi-uf-kjB" secondAttribute="bottom" constant="75" id="qkv-xC-GNX"/>
                                             <constraint firstAttribute="trailing" secondItem="hWi-uf-kjB" secondAttribute="trailing" constant="8" id="stS-gb-zbI"/>
                                         </constraints>
@@ -418,7 +399,6 @@
                     <connections>
                         <outlet property="backButton" destination="med-a6-6uJ" id="3JN-fb-gDg"/>
                         <outlet property="confirmButton" destination="9RB-BO-e31" id="Urj-az-AMD"/>
-                        <outlet property="termsCheckbox" destination="Hee-Gt-jYn" id="RXb-Mr-gxN"/>
                         <outlet property="termsLabel" destination="hWi-uf-kjB" id="nh8-O2-WN6"/>
                         <outlet property="webViewContainer" destination="c54-jM-Sxn" id="5T8-an-LuL"/>
                     </connections>

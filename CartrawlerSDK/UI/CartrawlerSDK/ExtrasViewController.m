@@ -30,13 +30,15 @@
 
 @property (strong, nonatomic) CTButton *itemSelectButton;
 @property (strong, nonatomic) CTPickerView *pickerView;
+
+@property (strong, nonatomic) NSMutableArray <CTTextView *>*textViews;
+@property (strong, nonatomic) UIImageView *imageView;
+@property (assign, nonatomic) BOOL needsSelectedItem;
+
 @end
 
 @implementation ExtrasViewController
-{
-    NSMutableArray <CTTextView *>*textViews;
-    BOOL needsSelectedItem;
-}
+
 
 + (void)forceLinkerLoad_
 {
@@ -47,14 +49,18 @@
 {
     [super viewWillAppear:animated];
     
-    needsSelectedItem = NO;
+    self.needsSelectedItem = NO;
     
     if (self.itemSelectButton) {
         [self.itemSelectButton removeFromSuperview];
     }
     
-    for (CTTextView *textView in textViews) {
+    for (CTTextView *textView in self.textViews) {
         [textView removeFromSuperview];
+    }
+    
+    if (self.imageView) {
+        [self.imageView removeFromSuperview];
     }
 
     self.insuranceView.hidden = YES;
@@ -70,7 +76,9 @@
 {
     [super viewDidAppear:animated];
     if (self.search.selectedVehicle.vehicle.extraEquipment.count > 0) {
-        [self.optionalExtrasView hideView:NO];
+        if (self.search.insurance) {
+            [self.optionalExtrasView hideView:NO];
+        }
         self.optionalExtrasView.extras = self.search.selectedVehicle.vehicle.extraEquipment;
         self.optionalExtrasView.initialFrame = self.view.frame;
     } else {
@@ -80,7 +88,7 @@
 
 - (void)viewDidLayoutSubviews
 {
-    for (CTTextView *textView in textViews) {
+    for (CTTextView *textView in self.textViews) {
         [textView setContentOffset:CGPointZero animated:NO];
     }
 }
@@ -102,7 +110,7 @@
         
         self.insuranceView.translatesAutoresizingMaskIntoConstraints = false;
 
-        textViews = [[NSMutableArray alloc] init];
+        self.textViews = [[NSMutableArray alloc] init];
         
         BOOL noResponse = YES;
         
@@ -114,7 +122,7 @@
             textView.editable = NO;
             textView.scrollEnabled = NO;
             textView.translatesAutoresizingMaskIntoConstraints = false;
-            [textViews addObject:textView];
+            [self.textViews addObject:textView];
             [self.insuranceView addSubview:textView];
             noResponse = NO;
         }
@@ -127,7 +135,7 @@
             textView.editable = NO;
             textView.scrollEnabled = NO;
             textView.translatesAutoresizingMaskIntoConstraints = false;
-            [textViews addObject:textView];
+            [self.textViews addObject:textView];
             [self.insuranceView addSubview:textView];
             noResponse = NO;
         }
@@ -140,7 +148,7 @@
             textView.editable = NO;
             textView.scrollEnabled = NO;
             textView.translatesAutoresizingMaskIntoConstraints = false;
-            [textViews addObject:textView];
+            [self.textViews addObject:textView];
             [self.insuranceView addSubview:textView];
             noResponse = NO;
         }
@@ -154,13 +162,13 @@
             textView.scrollEnabled = NO;
             textView.dataDetectorTypes = UIDataDetectorTypeLink;
             textView.translatesAutoresizingMaskIntoConstraints = false;
-            [textViews addObject:textView];
+            [self.textViews addObject:textView];
             [self.insuranceView addSubview:textView];
             noResponse = NO;
         }
         [self.view layoutIfNeeded];
         [self.insuranceView layoutIfNeeded];
-        [self createTextViews:textViews container:self.insuranceView response:response];
+        [self createTextViews:self.textViews container:self.insuranceView response:response];
         
         if (response.selectorItems && response.selectorTitle) {
             [self createItemSelector:response];
@@ -197,18 +205,18 @@
 
         if (i == 0) {
             
-            UIImageView *insurerImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-            [self.insuranceView addSubview:insurerImageView];
-            insurerImageView.translatesAutoresizingMaskIntoConstraints = NO;
-            insurerImageView.contentMode = UIViewContentModeScaleAspectFit;
+            self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+            [self.insuranceView addSubview:self.imageView];
+            self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
+            self.imageView.contentMode = UIViewContentModeScaleAspectFit;
             
             if (response.imageURL) {
                 [[CTImageCache sharedInstance] cachedImage: response.imageURL completion:^(UIImage *image) {
-                    insurerImageView.image = image;
+                    self.imageView.image = image;
                 }];
             }
             
-            NSLayoutConstraint *imageTopConstraint = [NSLayoutConstraint constraintWithItem:insurerImageView
+            NSLayoutConstraint *imageTopConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
                                                                              attribute:NSLayoutAttributeTop
                                                                              relatedBy:NSLayoutRelationEqual
                                                                                 toItem:container
@@ -216,7 +224,7 @@
                                                                             multiplier:1.0
                                                                               constant:40];
             
-            NSLayoutConstraint *imageHeightConstraint = [NSLayoutConstraint constraintWithItem:insurerImageView
+            NSLayoutConstraint *imageHeightConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
                                                                                 attribute:NSLayoutAttributeHeight
                                                                                 relatedBy:NSLayoutRelationEqual
                                                                                    toItem:nil
@@ -224,7 +232,7 @@
                                                                                multiplier:1.0
                                                                                  constant:50];
             
-            NSLayoutConstraint *imageLeftConstraint = [NSLayoutConstraint constraintWithItem:insurerImageView
+            NSLayoutConstraint *imageLeftConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
                                                                               attribute:NSLayoutAttributeLeft
                                                                               relatedBy:NSLayoutRelationEqual
                                                                                  toItem:container
@@ -232,7 +240,7 @@
                                                                              multiplier:1.0
                                                                                constant:5];
             
-            NSLayoutConstraint *imageRightConstraint = [NSLayoutConstraint constraintWithItem:insurerImageView
+            NSLayoutConstraint *imageRightConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
                                                                                attribute:NSLayoutAttributeRight
                                                                                relatedBy:NSLayoutRelationEqual
                                                                                   toItem:container
@@ -250,7 +258,7 @@
             NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:viewArray[i]
                                                                              attribute:NSLayoutAttributeTop
                                                                              relatedBy:NSLayoutRelationEqual
-                                                                                toItem:insurerImageView
+                                                                                toItem:self.imageView
                                                                              attribute:NSLayoutAttributeBottom
                                                                             multiplier:1.0
                                                                               constant:8];
@@ -352,7 +360,7 @@
     [self.insuranceView addSubview:self.itemSelectButton];
     self.itemSelectButton.translatesAutoresizingMaskIntoConstraints = NO;
     
-    if (textViews.count == 0) {
+    if (self.textViews.count == 0) {
         //no insurance text, what do we do?
         return;
     }
@@ -360,7 +368,7 @@
     NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.itemSelectButton
                                                                      attribute:NSLayoutAttributeTop
                                                                      relatedBy:NSLayoutRelationEqual
-                                                                        toItem:textViews.lastObject
+                                                                        toItem:self.textViews.lastObject
                                                                      attribute:NSLayoutAttributeBottom
                                                                     multiplier:1.0
                                                                       constant:10];
@@ -395,7 +403,7 @@
     
     self.insuranceViewHeight.constant = self.insuranceViewHeight.constant + 70;
     
-    needsSelectedItem = YES;
+    self.needsSelectedItem = YES;
 }
 
 - (void)presentPicker:(id)sender
@@ -521,7 +529,7 @@
 
 - (IBAction)addInsurance:(id)sender
 {
-    if (needsSelectedItem && !self.search.insuranceItem) {
+    if (self.needsSelectedItem && !self.search.insuranceItem) {
         [self.itemSelectButton shake];
         return;
     }

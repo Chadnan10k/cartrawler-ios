@@ -19,6 +19,7 @@
 #import "TermsViewController.h"
 #import "CTButton.h"
 #import "CTAppearance.h"
+#import "DataStore.h"
 
 @interface PaymentViewController () <UITextViewDelegate>
 
