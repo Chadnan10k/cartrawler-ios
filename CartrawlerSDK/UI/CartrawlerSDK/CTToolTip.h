@@ -10,15 +10,10 @@
 
 @interface CTToolTip : UIView
 
-typedef NS_ENUM(NSUInteger, CTToolTipPresentation) {
-    CTToolTipPresentationLeft = 0,
-    CTToolTipPresentationRight,
-    CTToolTipPresentationTop,
-    CTToolTipPresentationBottom
-};
-
++ (instancetype)instance;
 
 + (void)forceLinkerLoad_;
-- (void)presentForView:(UIView *)anchorView text:(NSString *)text presentFrom:(CTToolTipPresentation)presentFrom;
+
+- (void)presentForView:(UIView *)anchorView text:(NSString *)text superview:(UIView *)superview;
 
 @end

@@ -1,0 +1,50 @@
+//
+//  CTInclusionsDataSource.m
+//  CartrawlerSDK
+//
+//  Created by Lee Maguire on 27/10/2016.
+//  Copyright © 2016 Cartrawler. All rights reserved.
+//
+
+#import "CTInclusionsDataSource.h"
+#import "CTInclusionTableViewCell.h"
+
+@interface CTInclusionsDataSource()
+
+@property (nonatomic, strong) NSArray <CTPricedCoverage *> *coverages;
+
+@end
+
+@implementation CTInclusionsDataSource
+
+- (void)setData:(NSArray <CTPricedCoverage *> *)coverages
+{
+    _coverages = coverages;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.coverages.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CTInclusionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    [cell setLabelText:self.coverages[indexPath.row].chargeDescription];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.cellTapped) {
+        self.cellTapped(tableView);
+    }
+}
+
+@end

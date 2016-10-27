@@ -152,8 +152,6 @@
 		454AD7B21D2A6236005C6CFF /* VehicleDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7B01D2A6236005C6CFF /* VehicleDetailsViewController.m */; };
 		454AD7B81D2A69D2005C6CFF /* ExpandingInfoView.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7B61D2A69D2005C6CFF /* ExpandingInfoView.h */; };
 		454AD7B91D2A69D2005C6CFF /* ExpandingInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7B71D2A69D2005C6CFF /* ExpandingInfoView.m */; };
-		454AD7BC1D2A6C5F005C6CFF /* VehicleDetailsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7BA1D2A6C5F005C6CFF /* VehicleDetailsView.h */; };
-		454AD7BD1D2A6C5F005C6CFF /* VehicleDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7BB1D2A6C5F005C6CFF /* VehicleDetailsView.m */; };
 		454AD7BE1D2A7089005C6CFF /* StepThree.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 454AD7AD1D2A5E7B005C6CFF /* StepThree.storyboard */; };
 		454AD7C31D2AAD14005C6CFF /* IncludedCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7C11D2AAD14005C6CFF /* IncludedCollectionViewCell.h */; };
 		454AD7C41D2AAD14005C6CFF /* IncludedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7C21D2AAD14005C6CFF /* IncludedCollectionViewCell.m */; };
@@ -265,6 +263,8 @@
 		45E84CCC1D79C61600D6BC47 /* InclusionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E84CCA1D79C61600D6BC47 /* InclusionCollectionViewCell.m */; };
 		45E84CCF1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E84CCD1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.h */; };
 		45E84CD01D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E84CCE1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m */; };
+		45E8689D1DC24AD400DB84EF /* CTInclusionsDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E8689B1DC24AD400DB84EF /* CTInclusionsDataSource.h */; };
+		45E8689E1DC24AD400DB84EF /* CTInclusionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E8689C1DC24AD400DB84EF /* CTInclusionsDataSource.m */; };
 		45E942491D12FF0F00ACF604 /* CartrawlerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */; };
 		45E942971D1300ED00ACF604 /* CTVehicleSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942941D1300ED00ACF604 /* CTVehicleSelectionView.m */; };
 		45E942981D1300ED00ACF604 /* CTVehicleSelectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942961D1300ED00ACF604 /* CTVehicleSelectionDataSource.m */; };
@@ -464,8 +464,6 @@
 		454AD7B01D2A6236005C6CFF /* VehicleDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleDetailsViewController.m; sourceTree = "<group>"; };
 		454AD7B61D2A69D2005C6CFF /* ExpandingInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpandingInfoView.h; sourceTree = "<group>"; };
 		454AD7B71D2A69D2005C6CFF /* ExpandingInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpandingInfoView.m; sourceTree = "<group>"; };
-		454AD7BA1D2A6C5F005C6CFF /* VehicleDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleDetailsView.h; sourceTree = "<group>"; };
-		454AD7BB1D2A6C5F005C6CFF /* VehicleDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleDetailsView.m; sourceTree = "<group>"; };
 		454AD7C11D2AAD14005C6CFF /* IncludedCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncludedCollectionViewCell.h; sourceTree = "<group>"; };
 		454AD7C21D2AAD14005C6CFF /* IncludedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncludedCollectionViewCell.m; sourceTree = "<group>"; };
 		454AD7C51D2AB8E7005C6CFF /* CTDesignableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDesignableView.h; sourceTree = "<group>"; };
@@ -554,6 +552,8 @@
 		45E84CCA1D79C61600D6BC47 /* InclusionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionCollectionViewCell.m; sourceTree = "<group>"; };
 		45E84CCD1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InclusionCollectionViewDataSource.h; sourceTree = "<group>"; };
 		45E84CCE1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionCollectionViewDataSource.m; sourceTree = "<group>"; };
+		45E8689B1DC24AD400DB84EF /* CTInclusionsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInclusionsDataSource.h; sourceTree = "<group>"; };
+		45E8689C1DC24AD400DB84EF /* CTInclusionsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInclusionsDataSource.m; sourceTree = "<group>"; };
 		45E942431D12FF0F00ACF604 /* libCartrawlerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCartrawlerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartrawlerSDK.h; sourceTree = "<group>"; };
 		45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartrawlerSDK.m; sourceTree = "<group>"; };
@@ -943,8 +943,6 @@
 				455CA0A81DBF9D2B006472D0 /* Features collection view */,
 				45CB6D011D9C136400754DCD /* Included TableView */,
 				454AD7C01D2AAD02005C6CFF /* IncludedCollectionView */,
-				454AD7BA1D2A6C5F005C6CFF /* VehicleDetailsView.h */,
-				454AD7BB1D2A6C5F005C6CFF /* VehicleDetailsView.m */,
 			);
 			name = "Car details tab";
 			sourceTree = "<group>";
@@ -1110,6 +1108,8 @@
 			children = (
 				45CB6D021D9C139F00754DCD /* CTInclusionTableViewCell.h */,
 				45CB6D031D9C139F00754DCD /* CTInclusionTableViewCell.m */,
+				45E8689B1DC24AD400DB84EF /* CTInclusionsDataSource.h */,
+				45E8689C1DC24AD400DB84EF /* CTInclusionsDataSource.m */,
 			);
 			name = "Included TableView";
 			sourceTree = "<group>";
@@ -1550,7 +1550,6 @@
 				45AC546B1D130A1600805268 /* CTCalendarViewController.h in Headers */,
 				45AC545F1D130A0000805268 /* CTCheckbox.h in Headers */,
 				451D7E201DAFBE9D001A4062 /* RentalBookingsViewController.h in Headers */,
-				454AD7BC1D2A6C5F005C6CFF /* VehicleDetailsView.h in Headers */,
 				45819FA51D3500E8001AE0F5 /* NSNumberUtils.h in Headers */,
 				45DD07561D94162F00501FEE /* VehicleDetailsPageViewController.h in Headers */,
 				454446391D991B3C0047873F /* PassengerSelectionViewController.h in Headers */,
@@ -1586,6 +1585,7 @@
 				450F9D391D3CE08E002C6F6B /* SettingsSelectionViewController.h in Headers */,
 				45E84CCF1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.h in Headers */,
 				45AC545D1D1309F300805268 /* JVFloatLabeledTextField.h in Headers */,
+				45E8689D1DC24AD400DB84EF /* CTInclusionsDataSource.h in Headers */,
 				456979281D2C03E7006A321E /* TabButton.h in Headers */,
 				45137C841D476AB100089928 /* CTPickerView.h in Headers */,
 				454AD7B11D2A6236005C6CFF /* VehicleDetailsViewController.h in Headers */,
@@ -1801,7 +1801,6 @@
 				45EC250C1D48E04700A3C09D /* CTSegmentedControl.m in Sources */,
 				45645DF61D33E70B0075A3D2 /* PaymentSummaryViewController.m in Sources */,
 				452521701D353C4200B47DE6 /* DriverDetailsViewController.m in Sources */,
-				454AD7BD1D2A6C5F005C6CFF /* VehicleDetailsView.m in Sources */,
 				45E942E91D1302FF00ACF604 /* JVFloatLabeledTextField.m in Sources */,
 				45E9429D1D13012400ACF604 /* SearchDetailsViewController.m in Sources */,
 				451D7E2D1DAFC1F3001A4062 /* GTBookingTableViewCell.m in Sources */,
@@ -1885,6 +1884,7 @@
 				451FE5B41D6EF286004D85D1 /* InsuranceValidation.m in Sources */,
 				454AD7B21D2A6236005C6CFF /* VehicleDetailsViewController.m in Sources */,
 				4546D4131D8303A90081A2F9 /* GTFilterCollectionViewCell.m in Sources */,
+				45E8689E1DC24AD400DB84EF /* CTInclusionsDataSource.m in Sources */,
 				45E942971D1300ED00ACF604 /* CTVehicleSelectionView.m in Sources */,
 				45E942C91D13028600ACF604 /* VehicleTableViewCell.m in Sources */,
 				45E942A11D13014400ACF604 /* CTSelectView.m in Sources */,

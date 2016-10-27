@@ -204,14 +204,6 @@
     [self.calendar reset];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    CTToolTip *tt = [[CTToolTip alloc] initWithFrame:self.view.frame];
-    [tt presentForView:self.pickupTimeView text:@"This is a tool tip and it is very snazzy, dismiss it by tapping anywhere" presentFrom:CTToolTipPresentationLeft];
-}
-
 - (IBAction)sameLocation:(id)sender {
     BOOL selection = ((UISwitch *)sender).isOn;
     if (selection) {

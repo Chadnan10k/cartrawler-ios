@@ -69,7 +69,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+        
     _vehicleDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"VehicleDetails"];
     _supplierDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"SupplierDetails"];
 

@@ -17,12 +17,23 @@
 
 @implementation CTToolTip
 
++ (instancetype)instance
+{
+    static CTToolTip *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[CTToolTip alloc] initWithFrame:CGRectZero];
+    });
+    return sharedInstance;
+}
+
 + (void)forceLinkerLoad_ { }
 
-- (void)presentForView:(UIView *)anchorView text:(NSString *)text presentFrom:(CTToolTipPresentation)presentFrom
+- (void)presentForView:(UIView *)anchorView text:(NSString *)text superview:(UIView *)superview
 {
-    self.frame = anchorView.superview.frame;
-    _backgroundView = [[UIView alloc] initWithFrame:anchorView.superview.frame];
+    [self removeView];
+    self.frame = superview.frame;
+    _backgroundView = [[UIView alloc] initWithFrame:superview.frame];
     self.backgroundView.backgroundColor = [UIColor colorWithWhite:0.6 alpha:0.7];
     [self addSubview:self.backgroundView];
     [anchorView.superview addSubview:self];
@@ -42,9 +53,6 @@
     self.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:tipBox];
     [tipBox addSubview:tipLabel];
-
-    [anchorView.superview bringSubviewToFront:anchorView];
-    
     
     float maxTipTextWidth = 200;
     //create constraints
@@ -53,39 +61,45 @@
     float tipWidth = stringBoundingBox.width > 200 ? stringBoundingBox.width / (stringBoundingBox.width / maxTipTextWidth)+16 : stringBoundingBox.width+16;
     float tipHeight = (stringBoundingBox.width / maxTipTextWidth) * stringBoundingBox.height+50;
     
-    [anchorView.superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(width)]" options:0 metrics:@{ @"width" : [NSNumber numberWithFloat:tipWidth] }  views:@{ @"view" : tipBox, @"anchor" : anchorView }]];
-
-    switch (presentFrom) {
-        case CTToolTipPresentationLeft:
-            [anchorView.superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(height)]-8-[anchor]" options:0 metrics:@{ @"height" : [NSNumber numberWithFloat:tipHeight] } views:@{ @"view" : tipBox , @"anchor" : anchorView }]];
-            [anchorView.superview addConstraint:[NSLayoutConstraint constraintWithItem:tipBox attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:anchorView attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
-            break;
-        case CTToolTipPresentationRight:
-            [anchorView.superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(height)]-8-[anchor]" options:0 metrics:@{ @"height" : [NSNumber numberWithFloat:tipHeight] } views:@{ @"view" : tipBox , @"anchor" : anchorView }]];
-            [anchorView.superview addConstraint:[NSLayoutConstraint constraintWithItem:tipBox attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:anchorView attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
-            break;
-        case CTToolTipPresentationTop:
-            [anchorView.superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[anchor]-8-[view(height)]" options:0 metrics:@{ @"height" : [NSNumber numberWithFloat:tipHeight] } views:@{ @"view" : tipBox , @"anchor" : anchorView }]];
-            [anchorView.superview addConstraint:[NSLayoutConstraint constraintWithItem:tipBox attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:anchorView attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
-            break;
-        case CTToolTipPresentationBottom:
-            [anchorView.superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(height)]-8-[anchor]" options:0 metrics:@{ @"height" : [NSNumber numberWithFloat:tipHeight] } views:@{ @"view" : tipBox , @"anchor" : anchorView }]];
-            [anchorView.superview addConstraint:[NSLayoutConstraint constraintWithItem:tipBox attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:anchorView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
-            break;
+    [superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(width)]" options:0 metrics:@{ @"width" : [NSNumber numberWithFloat:tipWidth] }  views:@{ @"view" : tipBox, @"anchor" : anchorView }]];
+    
+    CGPoint windowPoint = [anchorView convertPoint:anchorView.bounds.origin toView:superview.window];
+    
+    if ((windowPoint.y + 100) < superview.frame.size.height && (windowPoint.y- tipHeight+16) > tipHeight-8) {
+        [superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(height)]-8-[anchor]" options:0 metrics:@{ @"height" : [NSNumber numberWithFloat:tipHeight] } views:@{ @"view" : tipBox , @"anchor" : anchorView }]];
+    } else {
+        [superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[anchor]-8-[view(height)]" options:0 metrics:@{ @"height" : [NSNumber numberWithFloat:tipHeight] } views:@{ @"view" : tipBox , @"anchor" : anchorView }]];
     }
     
-    [anchorView.superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{ @"view" : self, @"super" : anchorView.superview }]];
-    [anchorView.superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{ @"view" : self, @"super" : anchorView.superview }]];
+    if ((anchorView.frame.origin.x + tipWidth) > superview.frame.size.width) {
+        [superview addConstraint:[NSLayoutConstraint constraintWithItem:tipBox attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:anchorView attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
+    } else {
+        [superview addConstraint:[NSLayoutConstraint constraintWithItem:tipBox attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:anchorView attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
+    }
+    
+    [superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{ @"view" : self, @"super" : superview }]];
+    [superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{ @"view" : self, @"super" : superview }]];
     
     [tipBox addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[view]-8-|" options:0 metrics:nil views:@{ @"view" : tipLabel, @"super" : tipBox }]];
     [tipBox addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[view]-8-|" options:0 metrics:nil views:@{ @"view" : tipLabel, @"super" : tipBox }]];
 
     UITapGestureRecognizer *removeTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeView)];
     [self addGestureRecognizer:removeTap];
+    
+    [anchorView.superview bringSubviewToFront:anchorView];
+
 }
 
 - (void)removeView
 {
+    for (UIView *subView in self.subviews) {
+        [subView removeFromSuperview];
+    }
+    
+    for (UIGestureRecognizer *gesture in self.gestureRecognizers) {
+        [self removeGestureRecognizer:gesture];
+    }
+    
     [self removeFromSuperview];
 }
 
