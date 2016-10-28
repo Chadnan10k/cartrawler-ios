@@ -35,8 +35,10 @@
     self.frame = superview.frame;
     _backgroundView = [[UIView alloc] initWithFrame:superview.frame];
     self.backgroundView.backgroundColor = [UIColor colorWithWhite:0.6 alpha:0.7];
+    self.backgroundView.translatesAutoresizingMaskIntoConstraints = NO;
+    
     [self addSubview:self.backgroundView];
-    [anchorView.superview addSubview:self];
+    [superview addSubview:self];
     
     //create the tool tip box
     UIView *tipBox = [[UIView alloc] initWithFrame:CGRectZero];
@@ -65,7 +67,15 @@
     
     CGPoint windowPoint = [anchorView convertPoint:anchorView.bounds.origin toView:superview.window];
     
-    if ((windowPoint.y + 100) < superview.frame.size.height && (windowPoint.y- tipHeight+16) > tipHeight-8) {
+    //see if touchpoint is at top or bottom
+    
+    //let take our superviews frame height and divide it by 2
+    float superviewHeight = superview.frame.size.height;
+    //lets take our touch point
+    float touchY = windowPoint.y;
+    float yPosition = touchY / superviewHeight;
+    
+    if (yPosition > 0.5) {
         [superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(height)]-8-[anchor]" options:0 metrics:@{ @"height" : [NSNumber numberWithFloat:tipHeight] } views:@{ @"view" : tipBox , @"anchor" : anchorView }]];
     } else {
         [superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[anchor]-8-[view(height)]" options:0 metrics:@{ @"height" : [NSNumber numberWithFloat:tipHeight] } views:@{ @"view" : tipBox , @"anchor" : anchorView }]];
@@ -83,10 +93,46 @@
     [tipBox addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[view]-8-|" options:0 metrics:nil views:@{ @"view" : tipLabel, @"super" : tipBox }]];
     [tipBox addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[view]-8-|" options:0 metrics:nil views:@{ @"view" : tipLabel, @"super" : tipBox }]];
 
+    [superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{ @"view" : self.backgroundView }]];
+    [superview addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{ @"view" : self.backgroundView }]];
+    
     UITapGestureRecognizer *removeTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeView)];
     [self addGestureRecognizer:removeTap];
     
-    [anchorView.superview bringSubviewToFront:anchorView];
+    [superview bringSubviewToFront:self];
+    [superview bringSubviewToFront:anchorView];
+
+}
+
+- (void)presentPartialOverlayInView:(UIView *)view
+{
+    [self removeView];
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.8];
+    [view addSubview:self];
+    [view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{ @"view" : self, @"superview" : view }]];
+    [view addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{ @"view" : self, @"superview" : view  }]];
+    [view bringSubviewToFront:self];
+    //create uiview with initial height
+    UIView *containerView = [[UIView alloc] initWithFrame:CGRectZero];
+    containerView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:containerView];
+    
+    [self addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(300)]-0-|" options:0 metrics:nil views:@{ @"view" : containerView }]];
+    [self addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{ @"view" : containerView }]];
+    containerView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.9];
+    
+    UITapGestureRecognizer *removeTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeView)];
+    [self addGestureRecognizer:removeTap];
+    
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    closeButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [closeButton setTitle:@"X" forState:UIControlStateNormal];
+    [closeButton addTarget:self action:@selector(removeView) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:closeButton];
+    
+    [self addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(15)]-8-|" options:0 metrics:nil views:@{ @"view" : closeButton }]];
+    [self addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(15)]-8-|" options:0 metrics:nil views:@{ @"view" : closeButton }]];
 
 }
 

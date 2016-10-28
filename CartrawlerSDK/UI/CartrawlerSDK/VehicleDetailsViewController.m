@@ -65,9 +65,10 @@
     
     __weak typeof(self) weakSelf = self;
     
-    self.inclusionDataSource.cellTapped = ^(UIView *cell) {
+    self.inclusionDataSource.cellTapped = ^(UIView *cell, NSString *text) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[CTToolTip instance] presentForView:cell text:@"Some example text" superview:weakSelf.view];
+            //[[CTToolTip instance] presentForView:cell text:text superview:weakSelf.scrollView];
+            [[CTToolTip instance] presentPartialOverlayInView:weakSelf.view];
         });
     };
     

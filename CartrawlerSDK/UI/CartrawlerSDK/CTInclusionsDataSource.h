@@ -12,7 +12,7 @@
 
 @interface CTInclusionsDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-typedef void (^CTInclusionTableCellTapped)(UIView *cell);
+typedef void (^CTInclusionTableCellTapped)(UIView *cell, NSString *text);
 
 @property (nonatomic) CTInclusionTableCellTapped cellTapped;
 

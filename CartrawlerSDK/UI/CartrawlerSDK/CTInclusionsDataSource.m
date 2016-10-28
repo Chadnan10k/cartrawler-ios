@@ -43,8 +43,25 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.cellTapped) {
-        self.cellTapped(tableView);
+        self.cellTapped(tableView, [self tooltipTextForPricedCoverage:self.coverages[indexPath.row]]);
     }
+}
+
+- (NSString *)tooltipTextForPricedCoverage:(CTPricedCoverage *)coverage
+{
+    if ([coverage.coverageType isEqualToString:@"6"]) {//CDW
+        return @"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
+    }
+    
+    if ([coverage.coverageType isEqualToString:@"47"]) {//TW
+        return @"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
+    }
+    
+    if ([coverage.coverageType isEqualToString:@"50"]) {//TP
+        return @"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
+    }
+    
+    return @"This item is included in the price of this vehicle";
 }
 
 @end
