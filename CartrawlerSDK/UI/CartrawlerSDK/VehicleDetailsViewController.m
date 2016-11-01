@@ -68,7 +68,7 @@
     self.inclusionDataSource.cellTapped = ^(UIView *cell, NSString *text) {
         dispatch_async(dispatch_get_main_queue(), ^{
             //[[CTToolTip instance] presentForView:cell text:text superview:weakSelf.scrollView];
-            [[CTToolTip instance] presentPartialOverlayInView:weakSelf.view];
+            [[CTToolTip instance] presentPartialOverlayInView:weakSelf.view text: text];
         });
     };
     

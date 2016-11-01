@@ -15,6 +15,6 @@
 + (void)forceLinkerLoad_;
 
 - (void)presentForView:(UIView *)anchorView text:(NSString *)text superview:(UIView *)superview;
-- (void)presentPartialOverlayInView:(UIView *)view;
+- (void)presentPartialOverlayInView:(UIView *)view text:(NSString *)text;
 
 @end

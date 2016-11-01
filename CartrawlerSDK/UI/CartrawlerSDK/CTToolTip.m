@@ -104,7 +104,7 @@
 
 }
 
-- (void)presentPartialOverlayInView:(UIView *)view
+- (void)presentPartialOverlayInView:(UIView *)view text:(NSString *)text
 {
     [self removeView];
     self.translatesAutoresizingMaskIntoConstraints = NO;
@@ -127,13 +127,28 @@
     
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectZero];
     closeButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [closeButton setTitle:@"X" forState:UIControlStateNormal];
-    [closeButton addTarget:self action:@selector(removeView) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:closeButton];
     
-    [self addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(15)]-8-|" options:0 metrics:nil views:@{ @"view" : closeButton }]];
-    [self addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(15)]-8-|" options:0 metrics:nil views:@{ @"view" : closeButton }]];
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
+    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    
+    [closeButton setImage:[UIImage imageNamed:@"tooltip_close" inBundle:b compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+    [closeButton addTarget:self action:@selector(removeView) forControlEvents:UIControlEventTouchUpInside];
+    [containerView addSubview:closeButton];
+    
+    [containerView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(25)]-8-|" options:0 metrics:nil views:@{ @"view" : closeButton }]];
+    [containerView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[view(25)]" options:0 metrics:nil views:@{ @"view" : closeButton }]];
+    
+    CTLabel *textLabel = [[CTLabel alloc] initWithFrame:CGRectZero];
+    textLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    textLabel.text = text;
+    textLabel.textColor = [UIColor whiteColor];
+    textLabel.numberOfLines = 0;
+    
+    [containerView addSubview:textLabel];
 
+    [containerView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[view]-8-|" options:0 metrics:nil views:@{ @"view" : textLabel }]];
+    [containerView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat:@"V:[button]-8-[view]" options:0 metrics:nil views:@{ @"view" : textLabel, @"button" : closeButton}]];
 }
 
 - (void)removeView
