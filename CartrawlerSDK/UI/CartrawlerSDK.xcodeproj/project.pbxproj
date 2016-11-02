@@ -170,6 +170,8 @@
 		455F27571D9D4E2B00B6BB5B /* CTInterstitialViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 455F27551D9D4E2B00B6BB5B /* CTInterstitialViewController.h */; };
 		455F27581D9D4E2B00B6BB5B /* CTInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455F27561D9D4E2B00B6BB5B /* CTInterstitialViewController.m */; };
 		455F27591D9D57E700B6BB5B /* Interstitial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455F27531D9D4B0D00B6BB5B /* Interstitial.storyboard */; };
+		456176591DCA03C500754DFA /* CTMerhandisingBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 456176571DCA03C500754DFA /* CTMerhandisingBanner.h */; };
+		4561765A1DCA03C500754DFA /* CTMerhandisingBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 456176581DCA03C500754DFA /* CTMerhandisingBanner.m */; };
 		45645D8B1D2D4A310075A3D2 /* HTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645D891D2D4A310075A3D2 /* HTMLParser.h */; };
 		45645D8C1D2D4A310075A3D2 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645D8A1D2D4A310075A3D2 /* HTMLParser.m */; };
 		45645DD41D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645DD21D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h */; };
@@ -482,6 +484,8 @@
 		455F27531D9D4B0D00B6BB5B /* Interstitial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interstitial.storyboard; sourceTree = "<group>"; };
 		455F27551D9D4E2B00B6BB5B /* CTInterstitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInterstitialViewController.h; sourceTree = "<group>"; };
 		455F27561D9D4E2B00B6BB5B /* CTInterstitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInterstitialViewController.m; sourceTree = "<group>"; };
+		456176571DCA03C500754DFA /* CTMerhandisingBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMerhandisingBanner.h; sourceTree = "<group>"; };
+		456176581DCA03C500754DFA /* CTMerhandisingBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMerhandisingBanner.m; sourceTree = "<group>"; };
 		45645D891D2D4A310075A3D2 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
 		45645D8A1D2D4A310075A3D2 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		45645DD21D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalExtraTableViewCell.h; sourceTree = "<group>"; };
@@ -1323,6 +1327,8 @@
 				45E942C61D13028600ACF604 /* VehicleTableViewCell.h */,
 				45E942C71D13028600ACF604 /* VehicleTableViewCell.m */,
 				45E942C81D13028600ACF604 /* VehicleTableViewCell_iPhone.xib */,
+				456176571DCA03C500754DFA /* CTMerhandisingBanner.h */,
+				456176581DCA03C500754DFA /* CTMerhandisingBanner.m */,
 			);
 			name = "Table View";
 			sourceTree = "<group>";
@@ -1571,6 +1577,7 @@
 				451D7E281DAFC1E5001A4062 /* RentalBookingCell.h in Headers */,
 				45E84CCB1D79C61600D6BC47 /* InclusionCollectionViewCell.h in Headers */,
 				454AD7B81D2A69D2005C6CFF /* ExpandingInfoView.h in Headers */,
+				456176591DCA03C500754DFA /* CTMerhandisingBanner.h in Headers */,
 				45F4735C1D36451F00DF548B /* AddressDetailsViewController.h in Headers */,
 				45361BEB1D2BA1BA00295124 /* UnderLinedButton.h in Headers */,
 				45EC250B1D48E04700A3C09D /* CTSegmentedControl.h in Headers */,
@@ -1912,6 +1919,7 @@
 				45C488CC1D479B020044612C /* OptionalExtrasView.m in Sources */,
 				4511E5381D17F766000ED6B0 /* CTNavigationItem.m in Sources */,
 				455CA0AC1DBF9D5B006472D0 /* VehicleFeaturesDataSource.m in Sources */,
+				4561765A1DCA03C500754DFA /* CTMerhandisingBanner.m in Sources */,
 				4511E51E1D1450CE000ED6B0 /* CTSDKSettings.m in Sources */,
 				45E84CD01D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m in Sources */,
 				451C8F111D7EF37700B9324D /* GTSelectionValidation.m in Sources */,

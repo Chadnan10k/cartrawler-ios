@@ -45,6 +45,12 @@
 		4542BFFC1CBE8C1F00EC17BF /* CTLocationSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4542BFFB1CBE8C1F00EC17BF /* CTLocationSearch.m */; };
 		4542C00C1CBEA0E100EC17BF /* CTMatchedLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4542C00B1CBEA0E100EC17BF /* CTMatchedLocation.m */; };
 		455685671D79B547000AA1A0 /* GroundAvailRSJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 45233D271CF4542100B8E2B2 /* GroundAvailRSJSON.json */; };
+		4561764D1DC8AB9D00754DFA /* CTVehicleConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 4561764B1DC8AB9D00754DFA /* CTVehicleConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4561764E1DC8AB9D00754DFA /* CTVehicleConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4561764C1DC8AB9D00754DFA /* CTVehicleConfig.m */; };
+		456176511DC8AD2100754DFA /* CTSpecialOffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4561764F1DC8AD2100754DFA /* CTSpecialOffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		456176521DC8AD2100754DFA /* CTSpecialOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 456176501DC8AD2100754DFA /* CTSpecialOffer.m */; };
+		456176551DC8AD4A00754DFA /* CTVehicleIndexation.h in Headers */ = {isa = PBXBuildFile; fileRef = 456176531DC8AD4A00754DFA /* CTVehicleIndexation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		456176561DC8AD4A00754DFA /* CTVehicleIndexation.m in Sources */ = {isa = PBXBuildFile; fileRef = 456176541DC8AD4A00754DFA /* CTVehicleIndexation.m */; };
 		457CF8911D7884C800BC55E2 /* CTGroundInclusion.h in Headers */ = {isa = PBXBuildFile; fileRef = 457CF88F1D7884C800BC55E2 /* CTGroundInclusion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		457CF8921D7884C800BC55E2 /* CTGroundInclusion.m in Sources */ = {isa = PBXBuildFile; fileRef = 457CF8901D7884C800BC55E2 /* CTGroundInclusion.m */; };
 		457CF8951D78869600BC55E2 /* CTGroundShuttle.h in Headers */ = {isa = PBXBuildFile; fileRef = 457CF8931D78869600BC55E2 /* CTGroundShuttle.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -79,7 +85,7 @@
 		45F4E1AD1CC62EFC00D620D0 /* CartrawlerAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 45916DC71CBBDAEE00389B88 /* CartrawlerAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45F4E1C51CC653BE00D620D0 /* CTErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 45A2029A1CBCE9A000DCFF02 /* CTErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45F4E1C61CC6540B00D620D0 /* NSDateUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA07A1CBF9C340079AA68 /* NSDateUtils.h */; };
-		45F4E1C71CC6540B00D620D0 /* CTRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA07D1CBFAD250079AA68 /* CTRequestBuilder.h */; };
+		45F4E1C71CC6540B00D620D0 /* CTRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA07D1CBFAD250079AA68 /* CTRequestBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45F4E1C81CC6540B00D620D0 /* PostRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D53D3E1CBBDC7700DEDB0B /* PostRequest.h */; };
 		45F4E1C91CC6540B00D620D0 /* CTTermsAndConditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4E1711CC53F2000D620D0 /* CTTermsAndConditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45F4E1CA1CC6540B00D620D0 /* CTBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4E1631CC1009500D620D0 /* CTBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -168,6 +174,12 @@
 		4542C00A1CBEA0E100EC17BF /* CTMatchedLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMatchedLocation.h; sourceTree = "<group>"; };
 		4542C00B1CBEA0E100EC17BF /* CTMatchedLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMatchedLocation.m; sourceTree = "<group>"; };
 		455EAEF11CF2F0A0006E7CBB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4561764B1DC8AB9D00754DFA /* CTVehicleConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVehicleConfig.h; sourceTree = "<group>"; };
+		4561764C1DC8AB9D00754DFA /* CTVehicleConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleConfig.m; sourceTree = "<group>"; };
+		4561764F1DC8AD2100754DFA /* CTSpecialOffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSpecialOffer.h; sourceTree = "<group>"; };
+		456176501DC8AD2100754DFA /* CTSpecialOffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSpecialOffer.m; sourceTree = "<group>"; };
+		456176531DC8AD4A00754DFA /* CTVehicleIndexation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVehicleIndexation.h; sourceTree = "<group>"; };
+		456176541DC8AD4A00754DFA /* CTVehicleIndexation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleIndexation.m; sourceTree = "<group>"; };
 		457CF88F1D7884C800BC55E2 /* CTGroundInclusion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTGroundInclusion.h; sourceTree = "<group>"; };
 		457CF8901D7884C800BC55E2 /* CTGroundInclusion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTGroundInclusion.m; sourceTree = "<group>"; };
 		457CF8931D78869600BC55E2 /* CTGroundShuttle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTGroundShuttle.h; sourceTree = "<group>"; };
@@ -296,6 +308,12 @@
 				45FCA08B1CBFDB980079AA68 /* CTVendor.m */,
 				45AEF2631D6C493F00DA0894 /* CTVendorLocation.h */,
 				45AEF2641D6C493F00DA0894 /* CTVendorLocation.m */,
+				4561764B1DC8AB9D00754DFA /* CTVehicleConfig.h */,
+				4561764C1DC8AB9D00754DFA /* CTVehicleConfig.m */,
+				4561764F1DC8AD2100754DFA /* CTSpecialOffer.h */,
+				456176501DC8AD2100754DFA /* CTSpecialOffer.m */,
+				456176531DC8AD4A00754DFA /* CTVehicleIndexation.h */,
+				456176541DC8AD4A00754DFA /* CTVehicleIndexation.m */,
 			);
 			name = "Avail Item";
 			sourceTree = "<group>";
@@ -503,9 +521,13 @@
 				45E3F9C71CEDB9BC000D2219 /* CTVendorRating.h in Headers */,
 				45233D251CF44F0E00B8E2B2 /* CTGroundService.h in Headers */,
 				45C69A371D462BA30045136D /* InsuranceLink.h in Headers */,
+				456176511DC8AD2100754DFA /* CTSpecialOffer.h in Headers */,
+				4561764D1DC8AB9D00754DFA /* CTVehicleConfig.h in Headers */,
 				457CF8911D7884C800BC55E2 /* CTGroundInclusion.h in Headers */,
+				45F4E1C71CC6540B00D620D0 /* CTRequestBuilder.h in Headers */,
 				457CF8951D78869600BC55E2 /* CTGroundShuttle.h in Headers */,
 				45B265001D92A8B4000005F2 /* CTGroundItem.h in Headers */,
+				456176551DC8AD4A00754DFA /* CTVehicleIndexation.h in Headers */,
 				45AEF2651D6C493F00DA0894 /* CTVendorLocation.h in Headers */,
 				45FBACB91D67453900C75FC9 /* CTTermAndCondition.h in Headers */,
 				45AEF2601D6C418200DA0894 /* CTAvailabilityItem.h in Headers */,
@@ -513,7 +535,6 @@
 				45F4E1D41CC6540B00D620D0 /* CTVehicleCharge.h in Headers */,
 				45F4E1D61CC6540B00D620D0 /* CTFee.h in Headers */,
 				45F4E1C61CC6540B00D620D0 /* NSDateUtils.h in Headers */,
-				45F4E1C71CC6540B00D620D0 /* CTRequestBuilder.h in Headers */,
 				45F4E1C81CC6540B00D620D0 /* PostRequest.h in Headers */,
 				45E3F9CB1CEDCFFB000D2219 /* ImageResizeURL.h in Headers */,
 				45F4E1DC1CC6540B00D620D0 /* Constants.h in Headers */,
@@ -648,9 +669,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				45FCA0911CBFDB980079AA68 /* CTPricedCoverage.m in Sources */,
+				456176521DC8AD2100754DFA /* CTSpecialOffer.m in Sources */,
 				45916DCA1CBBDAEE00389B88 /* CartrawlerAPI.m in Sources */,
 				45D53D401CBBDC7700DEDB0B /* PostRequest.m in Sources */,
 				45AEF2661D6C493F00DA0894 /* CTVendorLocation.m in Sources */,
+				4561764E1DC8AB9D00754DFA /* CTVehicleConfig.m in Sources */,
 				45233D261CF44F0E00B8E2B2 /* CTGroundService.m in Sources */,
 				45FCA07C1CBF9C340079AA68 /* NSDateUtils.m in Sources */,
 				45C69A381D462BA30045136D /* InsuranceLink.m in Sources */,
@@ -679,6 +702,7 @@
 				459103F91CF736DB00D97F46 /* CTGroundCustomer.m in Sources */,
 				45233D331CF492C500B8E2B2 /* CTGroundBooking.m in Sources */,
 				45A2029C1CBCE9A000DCFF02 /* CTErrorResponse.m in Sources */,
+				456176561DC8AD4A00754DFA /* CTVehicleIndexation.m in Sources */,
 				457CF8921D7884C800BC55E2 /* CTGroundInclusion.m in Sources */,
 				45FCA0931CBFDB980079AA68 /* CTVendor.m in Sources */,
 				45B265011D92A8B4000005F2 /* CTGroundItem.m in Sources */,

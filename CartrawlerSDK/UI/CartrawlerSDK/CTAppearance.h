@@ -42,6 +42,10 @@
 @property (nonatomic)         UIModalTransitionStyle   modalTransitionStyle;
 @property (nonatomic)         BOOL                     presentAnimated;
 
+//Merchandising Banner
+@property (nonatomic, strong) UIColor  *merchandisingBestSeller;
+@property (nonatomic, strong) UIColor  *merchandisingGreatValue;
+
 + (instancetype)instance;
 
 @end

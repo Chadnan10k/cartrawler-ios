@@ -44,6 +44,10 @@
         sharedInstance.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         sharedInstance.modalPresentationStyle = UIModalPresentationCurrentContext;
         
+        sharedInstance.merchandisingBestSeller = [UIColor colorWithRed:39.0/255.0 green:173.0/255.0 blue:249.0/255.0 alpha:1.0];
+        sharedInstance.merchandisingGreatValue = [UIColor colorWithRed:25.0/255.0 green:173.0/255.0 blue:79.0/255.0 alpha:1.0];
+
+        
     });
     return sharedInstance;
 }

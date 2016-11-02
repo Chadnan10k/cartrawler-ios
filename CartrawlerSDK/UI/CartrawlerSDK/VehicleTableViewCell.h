@@ -17,7 +17,7 @@
  *  @param vehicle CTVehicle object
  *
  */
-- (void)initWithVehicle:(CTAvailabilityItem *)item;
+- (void)initWithVehicle:(CTAvailabilityItem *)item index:(NSInteger)index;
 
 
 + (void)forceLinkerLoad_;

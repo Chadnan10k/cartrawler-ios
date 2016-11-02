@@ -12,38 +12,63 @@
 @interface CTInclusionsDataSource()
 
 @property (nonatomic, strong) NSArray <CTPricedCoverage *> *coverages;
+@property (nonatomic, strong) NSArray <CTExtraEquipment *> *extras;
 
 @end
 
 @implementation CTInclusionsDataSource
 
-- (void)setData:(NSArray <CTPricedCoverage *> *)coverages
+- (void)setData:(NSArray <CTPricedCoverage *> *)coverages extras:(NSArray <CTPricedCoverage *> *)extras;
 {
     _coverages = coverages;
+    
+    NSMutableArray *tempExtras = [NSMutableArray new];
+    for(CTExtraEquipment *extra in extras) {
+        if (extra.isIncludedInRate) {
+            [tempExtras addObject:extra];
+        }
+    }
+    
+    _extras = tempExtras;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.coverages.count;
+    if (section == 0) {
+        return self.coverages.count;
+    } else {
+        return self.extras.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CTInclusionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    [cell setLabelText:self.coverages[indexPath.row].chargeDescription];
-    
-    return cell;
+    if (indexPath.section == 0) {
+        CTInclusionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        [cell setLabelText:self.coverages[indexPath.row].chargeDescription];
+        return cell;
+    } else {
+        CTInclusionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        [cell setLabelText:self.extras[indexPath.row].equipDescription];
+        return cell;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.cellTapped) {
-        self.cellTapped(tableView, [self tooltipTextForPricedCoverage:self.coverages[indexPath.row]]);
+    if (indexPath.section == 0) {
+        if (self.cellTapped) {
+            self.cellTapped(tableView, [self tooltipTextForPricedCoverage:self.coverages[indexPath.row]]);
+        }
+    } else {
+        if (self.cellTapped) {
+            self.cellTapped(tableView, @"This vehicle includes a free additional driver");
+        }
     }
 }
 

@@ -92,6 +92,7 @@
 #import "GTBookingTableViewCell.h"
 #import "VehicleFeatureCollectionViewCell.h"
 #import "CTToolTip.h"
+#import "CTMerhandisingBanner.h"
 
 @implementation LinkerUtils
 
@@ -181,6 +182,7 @@
     [GTBookingTableViewCell forceLinkerLoad_];
     [VehicleFeatureCollectionViewCell forceLinkerLoad_];
     [CTToolTip forceLinkerLoad_];
+    [CTMerhandisingBanner forceLinkerLoad_];
 }
 
 @end

@@ -46,6 +46,12 @@
 	
     self = [super init];
     
+    _indexation = [[CTVehicleIndexation alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Indexation"]];
+    
+    _specialOffer = [[CTSpecialOffer alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"SpecialOffers"]];
+
+    _config = [[CTVehicleConfig alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Config"]];
+    
     NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
     
     _orderIndex = [numFormatter numberFromString:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"OrderBy"][@"@Index"]];
@@ -79,9 +85,15 @@
 	_doorCount = [numFormatter numberFromString:dictionary[@"VehAvailCore"][@"Vehicle"][@"VehType"][@"@DoorCount"]];
 	
 	_classSize = [dictionary[@"VehAvailCore"][@"Vehicle"][@"VehClass"][@"@Size"] integerValue];
-	
-	_makeModelName = dictionary[@"VehAvailCore"][@"Vehicle"][@"VehMakeModel"][@"@Name"];
-	
+    
+    if (dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"VehMakeModel"][@"@Name"] && dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"VehMakeModel"][@"@orSimiliar"]) {
+        _makeModelName = dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"VehMakeModel"][@"@Name"];
+        _orSimilar = dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"VehMakeModel"][@"@orSimiliar"];
+    } else {
+        _makeModelName = dictionary[@"VehAvailCore"][@"Vehicle"][@"VehMakeModel"][@"@Name"];
+        _orSimilar = @"";
+    }
+
 	_makeModelCode = dictionary[@"VehAvailCore"][@"Vehicle"][@"VehMakeModel"][@"@Code"];
 	
     _pictureURL = [ImageResizeURL vehicle:dictionary[@"VehAvailCore"][@"Vehicle"][@"PictureURL"]];

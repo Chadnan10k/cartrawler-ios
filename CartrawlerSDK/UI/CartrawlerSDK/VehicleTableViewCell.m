@@ -15,6 +15,7 @@
 #import "NSNumberUtils.h"
 #import "CTLabel.h"
 #import "LocalisedStrings.h"
+#import "CTMerhandisingBanner.h"
 
 @interface VehicleTableViewCell ()
 
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ratingTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *airconImageView;
+@property (weak, nonatomic) IBOutlet CTMerhandisingBanner *merchBannerView;
 
 @end
 
@@ -45,10 +47,33 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
-- (void)initWithVehicle:(CTAvailabilityItem *)item
+- (void)initWithVehicle:(CTAvailabilityItem *)item index:(NSInteger)index;
 {
     
-    self.vehicleNameLabel.text = item.vehicle.makeModelName;
+    if (index == 0 || index == 1) {
+        [self.merchBannerView setBannerType:CTMerhandisingBannerTypeBestSeller];
+    } else if (index == 2 || index == 3) {
+        [self.merchBannerView setBannerType:CTMerhandisingBannerTypeGreatValue];
+    } else {
+        [self.merchBannerView setBannerType:CTMerhandisingBannerTypeNone];
+    }
+    
+    NSMutableAttributedString *vehicleName = [[NSMutableAttributedString alloc] init];
+    
+    NSAttributedString *name = [[NSAttributedString alloc] initWithString:item.vehicle.makeModelName
+                                                                  attributes:@{NSFontAttributeName:
+                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:15]}];
+    
+    NSAttributedString *orSimilar = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@", item.vehicle.orSimilar]
+                                                              attributes:@{NSFontAttributeName:
+                                                                               [UIFont fontWithName:[CTAppearance instance].fontName size:15]}];
+    
+    
+    [vehicleName appendAttributedString:name];
+    [vehicleName appendAttributedString:orSimilar];
+    
+    self.vehicleNameLabel.attributedText = vehicleName;
+    
     self.passengerQtyLabel.text = [NSString stringWithFormat:@"%d %@", item.vehicle.passengerQty.intValue, NSLocalizedString(@"passengers", @"passengers")];
     self.transmissionLabel.text = item.vehicle.transmissionType;
     self.fuelPolicyLabel.text = [self fuelPolicyString: item.vehicle.fuelPolicy];

@@ -24,14 +24,14 @@
 {
     self = [super init];
 
-    _vehicles = data;
+    _vehicles = [self sortVehiclesByRecommendedIndex:data];
     _selectedVehicle = cellSeleted;
     return self;
 }
 
 - (void)updateData:(NSArray <CTAvailabilityItem *> *)data
 {
-    _vehicles = data;
+    _vehicles = [self sortVehiclesByRecommendedIndex:data];
 }
 
 #pragma mark UITableViewDataSource
@@ -45,7 +45,7 @@
 {
     CTAvailabilityItem *vehicle = self.vehicles[indexPath.row];
     VehicleTableViewCell *cell = (VehicleTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"VehicleCell" forIndexPath:indexPath];
-    [cell initWithVehicle:vehicle];
+    [cell initWithVehicle:vehicle index:indexPath.row];
     return cell;
 }
 
@@ -89,6 +89,16 @@
         }
     }
     self.lastContentOffset = currentOffset.y;
+}
+
+#pragma mark Sorting
+
+- (NSArray <CTAvailabilityItem *> *)sortVehiclesByRecommendedIndex:(NSArray <CTAvailabilityItem *> *)stockArray
+{
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey: @"vehicle.config.relevance" ascending: YES];
+    
+    return [stockArray sortedArrayUsingDescriptors: [NSArray arrayWithObject:sortDescriptor]];
 }
 
 @end

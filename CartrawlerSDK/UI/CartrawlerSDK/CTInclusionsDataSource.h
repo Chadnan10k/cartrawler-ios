@@ -16,6 +16,6 @@ typedef void (^CTInclusionTableCellTapped)(UIView *cell, NSString *text);
 
 @property (nonatomic) CTInclusionTableCellTapped cellTapped;
 
-- (void)setData:(NSArray <CTPricedCoverage *> *)coverages;
+- (void)setData:(NSArray <CTPricedCoverage *> *)coverages extras:(NSArray <CTExtraEquipment *> *)extras;
 
 @end

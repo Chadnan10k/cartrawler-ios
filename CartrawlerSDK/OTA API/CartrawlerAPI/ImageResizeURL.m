@@ -32,7 +32,7 @@
     
     if (![path containsString:@"v5"] || ![path containsString:@"V5"]) {
         NSRange range = [path rangeOfString:@"/otaimages/"];
-        if (range.location != NSNotFound) {
+        if (range.location != NSNotFound && (![path containsString:@"v5"] && ![path containsString:@"V5"])) {
             [path insertString:@"v5/" atIndex:range.length];
         }
     }

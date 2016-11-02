@@ -155,7 +155,7 @@
         self.includedForFreeLabel.hidden = YES;
     }
     
-    [self.inclusionDataSource setData:self.search.selectedVehicle.vehicle.pricedCoverages];
+    [self.inclusionDataSource setData:self.search.selectedVehicle.vehicle.pricedCoverages extras: self.search.selectedVehicle.vehicle.extraEquipment];
     self.includedTableView.dataSource = self.inclusionDataSource;
     self.includedTableView.delegate = self.inclusionDataSource;
     
