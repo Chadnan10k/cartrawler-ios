@@ -49,7 +49,7 @@
     [CartrawlerSDK appearance].modalPresentationStyle = UIModalPresentationOverFullScreen;
     [CartrawlerSDK appearance].modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"643826" languageCode:@"EN" isDebug:NO];
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"643826" languageCode:@"EN" isDebug:YES];
     
     //[CTAppearance instance].buttonColor = [UIColor blackColor];
 

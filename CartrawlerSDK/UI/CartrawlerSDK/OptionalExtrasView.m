@@ -199,6 +199,12 @@
             break;
         }
     }
+    
+    [self.tableView layoutIfNeeded];
+    
+    tableViewHeight = self.tableView.contentSize.height;
+
+    
     heightConstraint.constant = textViewHeight + tableViewHeight + 56;
 }
 

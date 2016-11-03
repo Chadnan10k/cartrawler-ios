@@ -63,7 +63,12 @@
     
     _listItems = strArray;
 
-    _functionalText = dict[@"TPA_Extensions"][@"Data"][@"Functional"][@"Option"][@"@Title"];
+    if ([dict[@"TPA_Extensions"][@"Data"][@"Functional"][@"Option"] isKindOfClass:[NSArray class]]) {
+        _functionalText = dict[@"TPA_Extensions"][@"Data"][@"Functional"][@"Option"][0][@"@Title"];
+    } else {
+        _functionalText = dict[@"TPA_Extensions"][@"Data"][@"Functional"][@"Option"][@"@Title"];
+    }
+    
     
     _selectorTitle = dict[@"TPA_Extensions"][@"Data"][@"SelectControl"][@"@Title"];
     NSMutableArray <InsuranceSelectorItem *> *selectorItemsArr = [[NSMutableArray alloc] init];
