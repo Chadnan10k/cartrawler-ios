@@ -63,11 +63,10 @@
 //    completion(YES, nil);
 }
 
-- (NSDictionary*)dictionaryWithContentsOfJSONString:(NSString*)fileName {
+- (NSDictionary*)dictionaryWithContentsOfJSONString:(NSString*)fileName
+{
     
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    
-    NSString *filePath = [[[NSBundle bundleWithPath:bundlePath] resourcePath] stringByAppendingPathComponent:fileName];
+    NSString *filePath = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:fileName];
     NSData* data = [NSData dataWithContentsOfFile:filePath];
     __autoreleasing NSError* error = nil;
     id result = [NSJSONSerialization JSONObjectWithData:data

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Constants : NSObject
+@interface CTConstants : NSObject
 
 extern NSString *const CTHeader;
 extern NSString *const CTMobileHeader;

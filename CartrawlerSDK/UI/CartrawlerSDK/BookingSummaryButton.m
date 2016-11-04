@@ -44,8 +44,8 @@
          isBuyingInsurance:(BOOL)isBuyingInsurance
 {
     if (!self.bookingSummaryView) {
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+
+        NSBundle *b = [NSBundle bundleForClass:[self class]];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepFive" bundle:b];
         _bookingSummaryView = [storyboard instantiateViewControllerWithIdentifier:@"BookingSummaryView"];
     }

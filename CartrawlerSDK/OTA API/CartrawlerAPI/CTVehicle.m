@@ -8,7 +8,7 @@
 #import "CTPricedCoverage.h"
 #import "CTVehicleCharge.h"
 #import "CTExtraEquipment.h"
-#import "ImageResizeURL.h"
+#import "CartrawlerAPI+NSURL.h"
 
 @interface CTVehicle()
 
@@ -96,7 +96,7 @@
 
 	_makeModelCode = dictionary[@"VehAvailCore"][@"Vehicle"][@"VehMakeModel"][@"@Code"];
 	
-    _pictureURL = [ImageResizeURL vehicle:dictionary[@"VehAvailCore"][@"Vehicle"][@"PictureURL"]];
+    _pictureURL = [NSURL vehicle:dictionary[@"VehAvailCore"][@"Vehicle"][@"PictureURL"]];
 	
 	_vehicleAssetNumber = dictionary[@"VehAvailCore"][@"Vehicle"][@"VehIdentity"][@"@VehicleAssetNumber"];
 	

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NetworkUtils : NSObject
+@interface CTNetworkUtils : NSObject
 
 + (NSString *)IPAddress;
 

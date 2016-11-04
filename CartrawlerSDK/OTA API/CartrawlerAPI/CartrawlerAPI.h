@@ -1,5 +1,5 @@
 //
-//  CartrawlerAPI.h
+//  CartrawlerAPI.m
 //  CartrawlerAPI
 //
 //  Created by Lee Maguire on 11/04/2016.
@@ -22,12 +22,15 @@
 #import "CTGroundLocation.h"
 #import "CTAirport.h"
 #import "CTGroundAvailability.h"
-#import "CTGroundBooking.h" 
+#import "CTGroundBooking.h"
 #import "CTGroundCustomer.h"
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-#error CartrawlerAPI supports iOS7 and upwards
-#endif
+//! Project version number for CartrawlerAPI.
+FOUNDATION_EXPORT double CartrawlerAPIVersionNumber;
+
+//! Project version string for CartrawlerAPI.
+FOUNDATION_EXPORT const unsigned char CartrawlerAPIVersionString[];
+
 
 /**
  *  Use the Cartrawler iOS Framework to:

@@ -48,11 +48,11 @@
     if ([dict[@"TPA_Extensions"][@"Data"][@"Links"] isKindOfClass:[NSArray class]]) {
         NSMutableArray *linkArray = [[NSMutableArray alloc] init];
         for(NSDictionary *link in dict[@"TPA_Extensions"][@"Data"][@"Links"]) {
-            [linkArray addObject:[[InsuranceLink alloc] initWithLink:link[@"Link"][@"@Url"] title:link[@"Link"][@"@Text"] code:link[@"Link"][@"@Code"]]];
+            [linkArray addObject:[[CTInsuranceLink alloc] initWithLink:link[@"Link"][@"@Url"] title:link[@"Link"][@"@Text"] code:link[@"Link"][@"@Code"]]];
         }
     } else {
         NSDictionary *link = dict[@"TPA_Extensions"][@"Data"][@"Links"][@"Link"];
-        _links = @[ [[InsuranceLink alloc] initWithLink:link[@"@Url"] title:link[@"@Text"] code:link[@"@Code"]] ];
+        _links = @[ [[CTInsuranceLink alloc] initWithLink:link[@"@Url"] title:link[@"@Text"] code:link[@"@Code"]] ];
     }
     
     
@@ -69,11 +69,10 @@
         _functionalText = dict[@"TPA_Extensions"][@"Data"][@"Functional"][@"Option"][@"@Title"];
     }
     
-    
     _selectorTitle = dict[@"TPA_Extensions"][@"Data"][@"SelectControl"][@"@Title"];
-    NSMutableArray <InsuranceSelectorItem *> *selectorItemsArr = [[NSMutableArray alloc] init];
+    NSMutableArray <CTInsuranceSelectorItem *> *selectorItemsArr = [[NSMutableArray alloc] init];
     for (NSDictionary *d in dict[@"TPA_Extensions"][@"Data"][@"SelectControl"][@"Item"]) {
-        [selectorItemsArr addObject:[[InsuranceSelectorItem alloc] initWithName:d[@"#text"] code:d[@"@Key"]]];
+        [selectorItemsArr addObject:[[CTInsuranceSelectorItem alloc] initWithName:d[@"#text"] code:d[@"@Key"]]];
     }
     _selectorItems = selectorItemsArr;
     

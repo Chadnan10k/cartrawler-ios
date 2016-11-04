@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CTErrorResponse.h"
 
-@interface PostRequest : NSObject <NSURLSessionDelegate>
+@interface CTPostRequest : NSObject <NSURLSessionDelegate>
 
 typedef void (^PostCompletion)(NSDictionary *response, CTErrorResponse *error);
 

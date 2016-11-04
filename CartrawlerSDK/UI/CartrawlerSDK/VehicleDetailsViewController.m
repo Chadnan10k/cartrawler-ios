@@ -81,8 +81,7 @@
     [self.scrollView setContentOffset:
     CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
     
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    NSBundle *b = [NSBundle bundleForClass:[self class]];
     
     if (self.search.selectedVehicle.vendor.pickupLocation.atAirport) {
         [self.pickupLocationView setTitle:@"At Airport"

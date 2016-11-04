@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSLayoutConstraint *topConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *leftConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *rightConstraint;
-@property (nonatomic, strong) NSArray<InsuranceSelectorItem *> *data;
+@property (nonatomic, strong) NSArray<CTInsuranceSelectorItem *> *data;
 @property (nonatomic, strong) UIToolbar *toolBar;
 
 @end
@@ -36,7 +36,7 @@
     return self;
 }
 
-- (void)presentInView:(UIView *)view data:(NSArray<InsuranceSelectorItem *> *)data
+- (void)presentInView:(UIView *)view data:(NSArray<CTInsuranceSelectorItem *> *)data
 {
     _data = data;
     self.translatesAutoresizingMaskIntoConstraints = false;

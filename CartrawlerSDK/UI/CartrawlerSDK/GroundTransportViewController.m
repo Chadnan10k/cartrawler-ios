@@ -74,8 +74,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:bundle];
 
     [self registerForKeyboardNotifications];
@@ -440,8 +439,7 @@
 
 - (IBAction)openSettings:(id)sender
 {
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    NSBundle *b = [NSBundle bundleForClass:[self class]];
     SettingsViewController *vc = [[UIStoryboard storyboardWithName:@"StepOne" bundle:b] instantiateViewControllerWithIdentifier:@"SettingsViewController"];
     [self presentViewController:vc animated:YES completion:nil];
 }

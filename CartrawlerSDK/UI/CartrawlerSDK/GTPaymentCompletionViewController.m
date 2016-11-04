@@ -9,7 +9,7 @@
 #import "GTPaymentCompletionViewController.h"
 #import "CTLabel.h"
 #import "CTImageCache.h"
-#import "NSDateUtils.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 
 @interface GTPaymentCompletionViewController () <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
@@ -65,7 +65,7 @@
                                                                             attributes:@{NSFontAttributeName:
                                                                                              [UIFont fontWithName:[CTAppearance instance].boldFontName size:20]}];
         
-        NSAttributedString *dropoffSuffix = [[NSAttributedString alloc] initWithString:[NSDateUtils stringFromDateWithFormat:self.groundSearch.dropoffLocation.dateTime format:@"dd/MM/yyyy hh:mm a"]
+        NSAttributedString *dropoffSuffix = [[NSAttributedString alloc] initWithString:[self.groundSearch.dropoffLocation.dateTime stringFromDateWithFormat:@"dd/MM/yyyy hh:mm a"]
                                                                             attributes:@{NSFontAttributeName:
                                                                                              [UIFont fontWithName:[CTAppearance instance].fontName size:20]}];
         
@@ -78,7 +78,7 @@
                                                                       attributes:@{NSFontAttributeName:
                                                                                        [UIFont fontWithName:[CTAppearance instance].boldFontName size:20]}];
     
-    NSAttributedString *pickupSuffix = [[NSAttributedString alloc] initWithString:[NSDateUtils stringFromDateWithFormat:self.groundSearch.pickupLocation.dateTime format:@"dd/MM/yyyy hh:mm a"]
+    NSAttributedString *pickupSuffix = [[NSAttributedString alloc] initWithString:[self.groundSearch.pickupLocation.dateTime stringFromDateWithFormat:@"dd/MM/yyyy hh:mm a"]
                                                                        attributes:@{NSFontAttributeName:
                                                                                         [UIFont fontWithName:[CTAppearance instance].fontName size:20]}];
     

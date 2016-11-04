@@ -8,9 +8,9 @@
 //  TAKEN FROM: http://stackoverflow.com/questions/3266428/accessing-ip-address-with-nshost/3301169#3301169
 //
 
-#import "NetworkUtils.h"
+#import "CTNetworkUtils.h"
 
-@implementation NetworkUtils
+@implementation CTNetworkUtils
 
 + (NSString *)IPAddress {
 

@@ -7,7 +7,7 @@
 //
 
 #import "CTGroundShuttle.h"
-#import "ImageResizeURL.h"
+#import "CartrawlerAPI+NSURL.h"
 
 @implementation CTGroundShuttle
 
@@ -111,7 +111,7 @@
     
     //NSURL *vehImgUrl = [[NSURL alloc] initWithString:dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Vehicle"][@"PictureURL"]];
     
-    _vehicleImage = [ImageResizeURL gtVehicle:dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Vehicle"][@"PictureURL"]];
+    _vehicleImage = [NSURL gtVehicle:dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Vehicle"][@"PictureURL"]];
     
     return self;
 }

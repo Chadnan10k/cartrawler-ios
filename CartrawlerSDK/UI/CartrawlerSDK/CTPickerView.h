@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/InsuranceSelectorItem.h>
+#import <CartrawlerAPI/CTInsuranceSelectorItem.h>
 
 @protocol CTPickerViewDelegate <NSObject>
 
-- (void)pickerViewDidSelectItem:(InsuranceSelectorItem *)item;
+- (void)pickerViewDidSelectItem:(CTInsuranceSelectorItem *)item;
 
 @end
 
@@ -21,7 +21,7 @@
 
 @property (weak, nonatomic) id<CTPickerViewDelegate> pickerDelegate;
 
-- (void)presentInView:(UIView *)view data:(NSArray<InsuranceSelectorItem *> *)data;
+- (void)presentInView:(UIView *)view data:(NSArray<CTInsuranceSelectorItem *> *)data;
 
 - (void)removeFromView;
 

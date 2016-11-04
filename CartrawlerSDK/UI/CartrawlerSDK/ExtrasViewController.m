@@ -429,7 +429,7 @@
 
 - (NSAttributedString *)scanForLinks:(NSAttributedString *)attrText response:(CTInsurance *)response
 {
-    for (InsuranceLink *link in response.links) {
+    for (CTInsuranceLink *link in response.links) {
         
         NSString *text = attrText.string;
         NSRange range = [text rangeOfString:[NSString stringWithFormat:@"${%@}", link.code]];
@@ -547,7 +547,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)pickerViewDidSelectItem:(InsuranceSelectorItem *)item
+- (void)pickerViewDidSelectItem:(CTInsuranceSelectorItem *)item
 {
     (self.search).insuranceItem = item;
     [self.itemSelectButton setTitle:item.name forState:UIControlStateNormal];

@@ -30,8 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+
+    NSBundle *b = [NSBundle bundleForClass:[self class]];
     _settingsStoryboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:b];
     // Do any additional setup after loading the view.
     [self.currencyButton setTitle:[CTSDKSettings instance].currencyName forState:UIControlStateNormal];

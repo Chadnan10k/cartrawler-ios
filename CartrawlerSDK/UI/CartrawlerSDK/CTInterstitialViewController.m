@@ -51,8 +51,7 @@
     static CTInterstitialViewController *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *b = [NSBundle bundleWithPath:bundlePath];                   
+        NSBundle *b = [NSBundle bundleForClass:[self class]];
         UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"Interstitial" bundle:b];
         sharedInstance = [settingsStoryboard instantiateViewControllerWithIdentifier:@"CTInterstitialViewController"];
     });

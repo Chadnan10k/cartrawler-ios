@@ -34,8 +34,7 @@
         [self addSubview:self.checkmarkImageView];
         [self addSubview:self.label];
         
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-        NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+        NSBundle *b = [NSBundle bundleForClass:[self class]];
         self.checkmarkImageView.image = [UIImage imageNamed:@"checkmark" inBundle:b compatibleWithTraitCollection:nil];
         
         self.checkmarkImageView.translatesAutoresizingMaskIntoConstraints = NO;

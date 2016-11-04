@@ -6,9 +6,9 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "InsuranceSelectorItem.h"
+#import "CTInsuranceSelectorItem.h"
 
-@implementation InsuranceSelectorItem
+@implementation CTInsuranceSelectorItem
 
 - (instancetype)initWithName:(NSString *)name code:(NSString *)code
 {

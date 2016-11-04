@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ImageResizeURL : NSURL
+@interface NSURL (CartrawlerAPI)
 
 + (NSURL *)vendor:(NSString *)urlString;
 + (NSURL *)vehicle:(NSString *)urlString;
-
 + (NSURL *)gtVehicle:(NSString *)urlString;
 
 @end

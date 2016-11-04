@@ -63,8 +63,7 @@
     
     //image view
     
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    NSBundle *b = [NSBundle bundleForClass:[self class]];
     _imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow" inBundle:b compatibleWithTraitCollection:nil]];
     [self addSubview:self.imageView];
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;

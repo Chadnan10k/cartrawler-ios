@@ -12,9 +12,9 @@
 #import "CTAppearance.h"
 #import "CTViewController.h"
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-#error This version (1.0.0) of CartrawlerSDK for iOS supports iOS 7.0 upwards.
-#endif
+FOUNDATION_EXPORT double CartrawlerSDKVersionNumber;
+
+FOUNDATION_EXPORT const unsigned char CartrawlerSDKVersionString[];
 
 NS_ASSUME_NONNULL_BEGIN
 

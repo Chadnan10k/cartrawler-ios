@@ -7,7 +7,7 @@
 //
 
 #import "CTGroundLocation.h"
-#import "NSDateUtils.h"
+#import "CartrawlerAPI+NSDate.h"
 
 @implementation CTGroundLocation
 

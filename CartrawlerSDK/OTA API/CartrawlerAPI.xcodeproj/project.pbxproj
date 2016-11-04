@@ -6,146 +6,90 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		4577E1DE1D7837F7005459DE /* Framework_OTA */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 4577E1E21D7837F7005459DE /* Build configuration list for PBXAggregateTarget "Framework_OTA" */;
-			buildPhases = (
-				4577E1E11D7837F7005459DE /* ShellScript */,
-			);
-			dependencies = (
-				4577E1DF1D7837F7005459DE /* PBXTargetDependency */,
-			);
-			name = Framework_OTA;
-			productName = Framework;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
-		451B99C91CFEF184001D07A7 /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B99C81CFEF184001D07A7 /* LocationTests.m */; };
-		451B99CB1CFEF24E001D07A7 /* VehicleBookingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B99CA1CFEF24E001D07A7 /* VehicleBookingTests.m */; };
-		451B99CF1CFEF5B8001D07A7 /* InsuranceQuoteJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 451B99CE1CFEF5B8001D07A7 /* InsuranceQuoteJSON.json */; };
-		451B99D11CFEFD2C001D07A7 /* VehAvailJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 451B99D01CFEFD2C001D07A7 /* VehAvailJSON.json */; };
-		451B99D31CFF2835001D07A7 /* BookVehicleJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 451B99D21CFF2835001D07A7 /* BookVehicleJSON.json */; };
-		451B99D51CFF2A01001D07A7 /* RetRes.json in Resources */ = {isa = PBXBuildFile; fileRef = 451B99D41CFF2A01001D07A7 /* RetRes.json */; };
-		451B99F71CFF40E0001D07A7 /* TermsAndCond.json in Resources */ = {isa = PBXBuildFile; fileRef = 451B99F61CFF40E0001D07A7 /* TermsAndCond.json */; };
-		451B9A511D005F2B001D07A7 /* GTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B9A501D005F2B001D07A7 /* GTTests.m */; };
-		451B9A581D006B08001D07A7 /* NetworkUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 451B9A561D006B08001D07A7 /* NetworkUtils.h */; };
-		451B9A591D006B08001D07A7 /* NetworkUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B9A571D006B08001D07A7 /* NetworkUtils.m */; };
-		45233D191CF35DD700B8E2B2 /* CTGroundLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45233D171CF35DD700B8E2B2 /* CTGroundLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45233D1A1CF35DD700B8E2B2 /* CTGroundLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45233D181CF35DD700B8E2B2 /* CTGroundLocation.m */; };
-		45233D1D1CF44A5600B8E2B2 /* CTAirport.h in Headers */ = {isa = PBXBuildFile; fileRef = 45233D1B1CF44A5600B8E2B2 /* CTAirport.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45233D1E1CF44A5600B8E2B2 /* CTAirport.m in Sources */ = {isa = PBXBuildFile; fileRef = 45233D1C1CF44A5600B8E2B2 /* CTAirport.m */; };
-		45233D211CF44D4500B8E2B2 /* CTGroundAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = 45233D1F1CF44D4500B8E2B2 /* CTGroundAvailability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45233D221CF44D4500B8E2B2 /* CTGroundAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = 45233D201CF44D4500B8E2B2 /* CTGroundAvailability.m */; };
-		45233D251CF44F0E00B8E2B2 /* CTGroundService.h in Headers */ = {isa = PBXBuildFile; fileRef = 45233D231CF44F0E00B8E2B2 /* CTGroundService.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45233D261CF44F0E00B8E2B2 /* CTGroundService.m in Sources */ = {isa = PBXBuildFile; fileRef = 45233D241CF44F0E00B8E2B2 /* CTGroundService.m */; };
-		45233D321CF492C500B8E2B2 /* CTGroundBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 45233D301CF492C500B8E2B2 /* CTGroundBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45233D331CF492C500B8E2B2 /* CTGroundBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 45233D311CF492C500B8E2B2 /* CTGroundBooking.m */; };
-		4542BFFC1CBE8C1F00EC17BF /* CTLocationSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4542BFFB1CBE8C1F00EC17BF /* CTLocationSearch.m */; };
-		4542C00C1CBEA0E100EC17BF /* CTMatchedLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4542C00B1CBEA0E100EC17BF /* CTMatchedLocation.m */; };
-		455685671D79B547000AA1A0 /* GroundAvailRSJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 45233D271CF4542100B8E2B2 /* GroundAvailRSJSON.json */; };
-		4561764D1DC8AB9D00754DFA /* CTVehicleConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 4561764B1DC8AB9D00754DFA /* CTVehicleConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4561764E1DC8AB9D00754DFA /* CTVehicleConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4561764C1DC8AB9D00754DFA /* CTVehicleConfig.m */; };
-		456176511DC8AD2100754DFA /* CTSpecialOffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4561764F1DC8AD2100754DFA /* CTSpecialOffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		456176521DC8AD2100754DFA /* CTSpecialOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 456176501DC8AD2100754DFA /* CTSpecialOffer.m */; };
-		456176551DC8AD4A00754DFA /* CTVehicleIndexation.h in Headers */ = {isa = PBXBuildFile; fileRef = 456176531DC8AD4A00754DFA /* CTVehicleIndexation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		456176561DC8AD4A00754DFA /* CTVehicleIndexation.m in Sources */ = {isa = PBXBuildFile; fileRef = 456176541DC8AD4A00754DFA /* CTVehicleIndexation.m */; };
-		457CF8911D7884C800BC55E2 /* CTGroundInclusion.h in Headers */ = {isa = PBXBuildFile; fileRef = 457CF88F1D7884C800BC55E2 /* CTGroundInclusion.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		457CF8921D7884C800BC55E2 /* CTGroundInclusion.m in Sources */ = {isa = PBXBuildFile; fileRef = 457CF8901D7884C800BC55E2 /* CTGroundInclusion.m */; };
-		457CF8951D78869600BC55E2 /* CTGroundShuttle.h in Headers */ = {isa = PBXBuildFile; fileRef = 457CF8931D78869600BC55E2 /* CTGroundShuttle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		457CF8961D78869600BC55E2 /* CTGroundShuttle.m in Sources */ = {isa = PBXBuildFile; fileRef = 457CF8941D78869600BC55E2 /* CTGroundShuttle.m */; };
-		459103F81CF736DB00D97F46 /* CTGroundCustomer.h in Headers */ = {isa = PBXBuildFile; fileRef = 459103F61CF736DB00D97F46 /* CTGroundCustomer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		459103F91CF736DB00D97F46 /* CTGroundCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 459103F71CF736DB00D97F46 /* CTGroundCustomer.m */; };
-		45916DCA1CBBDAEE00389B88 /* CartrawlerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 45916DC91CBBDAEE00389B88 /* CartrawlerAPI.m */; };
-		45A2029C1CBCE9A000DCFF02 /* CTErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A2029B1CBCE9A000DCFF02 /* CTErrorResponse.m */; };
-		45AEF2601D6C418200DA0894 /* CTAvailabilityItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 45AEF25E1D6C418200DA0894 /* CTAvailabilityItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45AEF2611D6C418200DA0894 /* CTAvailabilityItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AEF25F1D6C418200DA0894 /* CTAvailabilityItem.m */; };
-		45AEF2651D6C493F00DA0894 /* CTVendorLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45AEF2631D6C493F00DA0894 /* CTVendorLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45AEF2661D6C493F00DA0894 /* CTVendorLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AEF2641D6C493F00DA0894 /* CTVendorLocation.m */; };
-		45B265001D92A8B4000005F2 /* CTGroundItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B264FE1D92A8B3000005F2 /* CTGroundItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45B265011D92A8B4000005F2 /* CTGroundItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B264FF1D92A8B3000005F2 /* CTGroundItem.m */; };
-		45C69A301D460F310045136D /* USInsurance.json in Resources */ = {isa = PBXBuildFile; fileRef = 45C69A2F1D460F310045136D /* USInsurance.json */; };
-		45C69A331D4616140045136D /* InsuranceSelectorItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C69A311D4616140045136D /* InsuranceSelectorItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45C69A341D4616140045136D /* InsuranceSelectorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C69A321D4616140045136D /* InsuranceSelectorItem.m */; };
-		45C69A371D462BA30045136D /* InsuranceLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C69A351D462BA30045136D /* InsuranceLink.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45C69A381D462BA30045136D /* InsuranceLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C69A361D462BA30045136D /* InsuranceLink.m */; };
-		45D53D3D1CBBDC5000DEDB0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D53D3C1CBBDC5000DEDB0B /* UIKit.framework */; };
-		45D53D401CBBDC7700DEDB0B /* PostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D53D3F1CBBDC7700DEDB0B /* PostRequest.m */; };
-		45D53D451CBBE34F00DEDB0B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D53D441CBBE34F00DEDB0B /* Constants.m */; };
-		45D53D521CBBE8E600DEDB0B /* libCartrawlerAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45916DC41CBBDAEE00389B88 /* libCartrawlerAPI.a */; };
-		45E3F9C71CEDB9BC000D2219 /* CTVendorRating.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E3F9C51CEDB9BC000D2219 /* CTVendorRating.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45E3F9C81CEDB9BC000D2219 /* CTVendorRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F9C61CEDB9BC000D2219 /* CTVendorRating.m */; };
-		45E3F9CB1CEDCFFB000D2219 /* ImageResizeURL.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E3F9C91CEDCFFB000D2219 /* ImageResizeURL.h */; };
-		45E3F9CC1CEDCFFB000D2219 /* ImageResizeURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F9CA1CEDCFFB000D2219 /* ImageResizeURL.m */; };
-		45F4E15F1CC0EDFC00D620D0 /* CTPaymentCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4E15E1CC0EDFC00D620D0 /* CTPaymentCard.m */; };
-		45F4E1621CC0F10A00D620D0 /* CTCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4E1611CC0F10A00D620D0 /* CTCustomer.m */; };
-		45F4E1651CC1009500D620D0 /* CTBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4E1641CC1009500D620D0 /* CTBooking.m */; };
-		45F4E1731CC53F2000D620D0 /* CTTermsAndConditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4E1721CC53F2000D620D0 /* CTTermsAndConditions.m */; };
-		45F4E1AD1CC62EFC00D620D0 /* CartrawlerAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 45916DC71CBBDAEE00389B88 /* CartrawlerAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1C51CC653BE00D620D0 /* CTErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 45A2029A1CBCE9A000DCFF02 /* CTErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1C61CC6540B00D620D0 /* NSDateUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA07A1CBF9C340079AA68 /* NSDateUtils.h */; };
-		45F4E1C71CC6540B00D620D0 /* CTRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA07D1CBFAD250079AA68 /* CTRequestBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1C81CC6540B00D620D0 /* PostRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D53D3E1CBBDC7700DEDB0B /* PostRequest.h */; };
-		45F4E1C91CC6540B00D620D0 /* CTTermsAndConditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4E1711CC53F2000D620D0 /* CTTermsAndConditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1CA1CC6540B00D620D0 /* CTBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4E1631CC1009500D620D0 /* CTBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1D01CC6540B00D620D0 /* CTLocationSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 4542BFFA1CBE8C1F00EC17BF /* CTLocationSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1D11CC6540B00D620D0 /* CTMatchedLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4542C00A1CBEA0E100EC17BF /* CTMatchedLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1D21CC6540B00D620D0 /* CTExtraEquipment.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA0801CBFDB980079AA68 /* CTExtraEquipment.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1D31CC6540B00D620D0 /* CTVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA0821CBFDB980079AA68 /* CTVehicle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1D41CC6540B00D620D0 /* CTVehicleCharge.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA0841CBFDB980079AA68 /* CTVehicleCharge.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1D51CC6540B00D620D0 /* CTPricedCoverage.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA0861CBFDB980079AA68 /* CTPricedCoverage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1D61CC6540B00D620D0 /* CTFee.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA0881CBFDB980079AA68 /* CTFee.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1D71CC6540B00D620D0 /* CTVendor.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA08A1CBFDB980079AA68 /* CTVendor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1D81CC6540B00D620D0 /* CTVehicleAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA08C1CBFDB980079AA68 /* CTVehicleAvailability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1DC1CC6540B00D620D0 /* Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D53D431CBBE34F00DEDB0B /* Constants.h */; };
-		45F4E1DD1CC6540B00D620D0 /* CTInsurance.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA0981CBFE4890079AA68 /* CTInsurance.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1DE1CC6540B00D620D0 /* CTPaymentCard.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4E15D1CC0EDFC00D620D0 /* CTPaymentCard.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F4E1DF1CC6540B00D620D0 /* CTCustomer.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4E1601CC0F10A00D620D0 /* CTCustomer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45F5426E1CDCE138006C099D /* NSDataUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F5426C1CDCE138006C099D /* NSDataUtils.h */; };
-		45F5426F1CDCE138006C099D /* NSDataUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F5426D1CDCE138006C099D /* NSDataUtils.m */; };
-		45FBACB91D67453900C75FC9 /* CTTermAndCondition.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FBACB71D67453900C75FC9 /* CTTermAndCondition.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45FBACBA1D67453900C75FC9 /* CTTermAndCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FBACB81D67453900C75FC9 /* CTTermAndCondition.m */; };
-		45FCA07C1CBF9C340079AA68 /* NSDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA07B1CBF9C340079AA68 /* NSDateUtils.m */; };
-		45FCA07F1CBFAD250079AA68 /* CTRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA07E1CBFAD250079AA68 /* CTRequestBuilder.m */; };
-		45FCA08E1CBFDB980079AA68 /* CTExtraEquipment.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA0811CBFDB980079AA68 /* CTExtraEquipment.m */; };
-		45FCA08F1CBFDB980079AA68 /* CTVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA0831CBFDB980079AA68 /* CTVehicle.m */; };
-		45FCA0901CBFDB980079AA68 /* CTVehicleCharge.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA0851CBFDB980079AA68 /* CTVehicleCharge.m */; };
-		45FCA0911CBFDB980079AA68 /* CTPricedCoverage.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA0871CBFDB980079AA68 /* CTPricedCoverage.m */; };
-		45FCA0921CBFDB980079AA68 /* CTFee.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA0891CBFDB980079AA68 /* CTFee.m */; };
-		45FCA0931CBFDB980079AA68 /* CTVendor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA08B1CBFDB980079AA68 /* CTVendor.m */; };
-		45FCA0941CBFDB980079AA68 /* CTVehicleAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA08D1CBFDB980079AA68 /* CTVehicleAvailability.m */; };
-		45FCA09A1CBFE4890079AA68 /* CTInsurance.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA0991CBFE4890079AA68 /* CTInsurance.m */; };
+		455B57D11DCC8D9500CA4790 /* CartrawlerAPI+NSData.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F5426C1CDCE138006C099D /* CartrawlerAPI+NSData.h */; };
+		455B57D21DCC8D9500CA4790 /* CartrawlerAPI+NSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F5426D1CDCE138006C099D /* CartrawlerAPI+NSData.m */; };
+		455B57D31DCC8D9500CA4790 /* CartrawlerAPI+NSDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA07A1CBF9C340079AA68 /* CartrawlerAPI+NSDate.h */; };
+		455B57D41DCC8D9500CA4790 /* CartrawlerAPI+NSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA07B1CBF9C340079AA68 /* CartrawlerAPI+NSDate.m */; };
+		455B57D51DCC8D9500CA4790 /* CTRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA07D1CBFAD250079AA68 /* CTRequestBuilder.h */; };
+		455B57D61DCC8D9500CA4790 /* CTRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA07E1CBFAD250079AA68 /* CTRequestBuilder.m */; };
+		455B57D71DCC8D9500CA4790 /* CTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D53D431CBBE34F00DEDB0B /* CTConstants.h */; };
+		455B57D81DCC8D9500CA4790 /* CTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D53D441CBBE34F00DEDB0B /* CTConstants.m */; };
+		455B57D91DCC8D9500CA4790 /* CartrawlerAPI+NSURL.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E3F9C91CEDCFFB000D2219 /* CartrawlerAPI+NSURL.h */; };
+		455B57DA1DCC8D9500CA4790 /* CartrawlerAPI+NSURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F9CA1CEDCFFB000D2219 /* CartrawlerAPI+NSURL.m */; };
+		455B57DB1DCC8D9500CA4790 /* CTNetworkUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 451B9A561D006B08001D07A7 /* CTNetworkUtils.h */; };
+		455B57DC1DCC8D9500CA4790 /* CTNetworkUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B9A571D006B08001D07A7 /* CTNetworkUtils.m */; };
+		455B57DD1DCC8D9500CA4790 /* CTPostRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D53D3E1CBBDC7700DEDB0B /* CTPostRequest.h */; };
+		455B57DE1DCC8D9500CA4790 /* CTPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D53D3F1CBBDC7700DEDB0B /* CTPostRequest.m */; };
+		455B57E01DCC8D9500CA4790 /* CartrawlerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 45916DC91CBBDAEE00389B88 /* CartrawlerAPI.m */; };
+		455B57E11DCC8D9500CA4790 /* CTCustomer.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4E1601CC0F10A00D620D0 /* CTCustomer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57E21DCC8D9500CA4790 /* CTCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4E1611CC0F10A00D620D0 /* CTCustomer.m */; };
+		455B57E31DCC8D9500CA4790 /* CTLocationSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 4542BFFA1CBE8C1F00EC17BF /* CTLocationSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57E41DCC8D9500CA4790 /* CTLocationSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4542BFFB1CBE8C1F00EC17BF /* CTLocationSearch.m */; };
+		455B57E51DCC8D9500CA4790 /* CTMatchedLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 4542C00A1CBEA0E100EC17BF /* CTMatchedLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57E61DCC8D9500CA4790 /* CTMatchedLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4542C00B1CBEA0E100EC17BF /* CTMatchedLocation.m */; };
+		455B57E71DCC8D9500CA4790 /* CTAirport.h in Headers */ = {isa = PBXBuildFile; fileRef = 45233D1B1CF44A5600B8E2B2 /* CTAirport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57E81DCC8D9500CA4790 /* CTAirport.m in Sources */ = {isa = PBXBuildFile; fileRef = 45233D1C1CF44A5600B8E2B2 /* CTAirport.m */; };
+		455B57E91DCC8D9500CA4790 /* CTVendorRating.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E3F9C51CEDB9BC000D2219 /* CTVendorRating.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57EA1DCC8D9500CA4790 /* CTVendorRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F9C61CEDB9BC000D2219 /* CTVendorRating.m */; };
+		455B57EB1DCC8D9500CA4790 /* CTExtraEquipment.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA0801CBFDB980079AA68 /* CTExtraEquipment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57EC1DCC8D9500CA4790 /* CTExtraEquipment.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA0811CBFDB980079AA68 /* CTExtraEquipment.m */; };
+		455B57ED1DCC8D9500CA4790 /* CTVehicleCharge.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA0841CBFDB980079AA68 /* CTVehicleCharge.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57EE1DCC8D9500CA4790 /* CTVehicleCharge.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA0851CBFDB980079AA68 /* CTVehicleCharge.m */; };
+		455B57EF1DCC8D9500CA4790 /* CTPricedCoverage.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA0861CBFDB980079AA68 /* CTPricedCoverage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57F01DCC8D9500CA4790 /* CTPricedCoverage.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA0871CBFDB980079AA68 /* CTPricedCoverage.m */; };
+		455B57F11DCC8D9500CA4790 /* CTFee.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA0881CBFDB980079AA68 /* CTFee.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57F21DCC8D9500CA4790 /* CTFee.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA0891CBFDB980079AA68 /* CTFee.m */; };
+		455B57F31DCC8D9500CA4790 /* CTVehicleAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA08C1CBFDB980079AA68 /* CTVehicleAvailability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57F41DCC8D9500CA4790 /* CTVehicleAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA08D1CBFDB980079AA68 /* CTVehicleAvailability.m */; };
+		455B57F51DCC8D9500CA4790 /* CTAvailabilityItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 45AEF25E1D6C418200DA0894 /* CTAvailabilityItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57F61DCC8D9500CA4790 /* CTAvailabilityItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AEF25F1D6C418200DA0894 /* CTAvailabilityItem.m */; };
+		455B57F71DCC8D9500CA4790 /* CTVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA0821CBFDB980079AA68 /* CTVehicle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57F81DCC8D9500CA4790 /* CTVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA0831CBFDB980079AA68 /* CTVehicle.m */; };
+		455B57F91DCC8D9500CA4790 /* CTVendor.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA08A1CBFDB980079AA68 /* CTVendor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57FA1DCC8D9500CA4790 /* CTVendor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA08B1CBFDB980079AA68 /* CTVendor.m */; };
+		455B57FB1DCC8D9500CA4790 /* CTVendorLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45AEF2631D6C493F00DA0894 /* CTVendorLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57FC1DCC8D9500CA4790 /* CTVendorLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AEF2641D6C493F00DA0894 /* CTVendorLocation.m */; };
+		455B57FD1DCC8D9500CA4790 /* CTVehicleConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 4561764B1DC8AB9D00754DFA /* CTVehicleConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B57FE1DCC8D9500CA4790 /* CTVehicleConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 4561764C1DC8AB9D00754DFA /* CTVehicleConfig.m */; };
+		455B57FF1DCC8D9500CA4790 /* CTSpecialOffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4561764F1DC8AD2100754DFA /* CTSpecialOffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58001DCC8D9500CA4790 /* CTSpecialOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 456176501DC8AD2100754DFA /* CTSpecialOffer.m */; };
+		455B58011DCC8D9500CA4790 /* CTVehicleIndexation.h in Headers */ = {isa = PBXBuildFile; fileRef = 456176531DC8AD4A00754DFA /* CTVehicleIndexation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58021DCC8D9500CA4790 /* CTVehicleIndexation.m in Sources */ = {isa = PBXBuildFile; fileRef = 456176541DC8AD4A00754DFA /* CTVehicleIndexation.m */; };
+		455B58031DCC8D9500CA4790 /* CTTermsAndConditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4E1711CC53F2000D620D0 /* CTTermsAndConditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58041DCC8D9500CA4790 /* CTTermsAndConditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4E1721CC53F2000D620D0 /* CTTermsAndConditions.m */; };
+		455B58051DCC8D9500CA4790 /* CTTermAndCondition.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FBACB71D67453900C75FC9 /* CTTermAndCondition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58061DCC8D9500CA4790 /* CTTermAndCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FBACB81D67453900C75FC9 /* CTTermAndCondition.m */; };
+		455B58071DCC8D9500CA4790 /* CTPaymentCard.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4E15D1CC0EDFC00D620D0 /* CTPaymentCard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58081DCC8D9500CA4790 /* CTPaymentCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4E15E1CC0EDFC00D620D0 /* CTPaymentCard.m */; };
+		455B58091DCC8D9500CA4790 /* CTBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4E1631CC1009500D620D0 /* CTBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B580A1DCC8D9500CA4790 /* CTBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4E1641CC1009500D620D0 /* CTBooking.m */; };
+		455B580B1DCC8D9500CA4790 /* CTErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 45A2029A1CBCE9A000DCFF02 /* CTErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B580C1DCC8D9500CA4790 /* CTErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A2029B1CBCE9A000DCFF02 /* CTErrorResponse.m */; };
+		455B580D1DCC8D9500CA4790 /* CTInsurance.h in Headers */ = {isa = PBXBuildFile; fileRef = 45FCA0981CBFE4890079AA68 /* CTInsurance.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B580E1DCC8D9500CA4790 /* CTInsurance.m in Sources */ = {isa = PBXBuildFile; fileRef = 45FCA0991CBFE4890079AA68 /* CTInsurance.m */; };
+		455B580F1DCC8D9500CA4790 /* CTInsuranceSelectorItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C69A311D4616140045136D /* CTInsuranceSelectorItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58101DCC8D9500CA4790 /* CTInsuranceSelectorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C69A321D4616140045136D /* CTInsuranceSelectorItem.m */; };
+		455B58111DCC8D9500CA4790 /* CTInsuranceLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C69A351D462BA30045136D /* CTInsuranceLink.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58121DCC8D9500CA4790 /* CTInsuranceLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C69A361D462BA30045136D /* CTInsuranceLink.m */; };
+		455B58131DCC8D9500CA4790 /* CTGroundLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45233D171CF35DD700B8E2B2 /* CTGroundLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58141DCC8D9500CA4790 /* CTGroundLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45233D181CF35DD700B8E2B2 /* CTGroundLocation.m */; };
+		455B58151DCC8D9500CA4790 /* CTGroundAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = 45233D1F1CF44D4500B8E2B2 /* CTGroundAvailability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58161DCC8D9500CA4790 /* CTGroundAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = 45233D201CF44D4500B8E2B2 /* CTGroundAvailability.m */; };
+		455B58171DCC8D9500CA4790 /* CTGroundCustomer.h in Headers */ = {isa = PBXBuildFile; fileRef = 459103F61CF736DB00D97F46 /* CTGroundCustomer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58181DCC8D9500CA4790 /* CTGroundCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 459103F71CF736DB00D97F46 /* CTGroundCustomer.m */; };
+		455B58191DCC8D9500CA4790 /* CTGroundBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 45233D301CF492C500B8E2B2 /* CTGroundBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B581A1DCC8D9500CA4790 /* CTGroundBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 45233D311CF492C500B8E2B2 /* CTGroundBooking.m */; };
+		455B581B1DCC8D9500CA4790 /* CTGroundInclusion.h in Headers */ = {isa = PBXBuildFile; fileRef = 457CF88F1D7884C800BC55E2 /* CTGroundInclusion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B581C1DCC8D9500CA4790 /* CTGroundInclusion.m in Sources */ = {isa = PBXBuildFile; fileRef = 457CF8901D7884C800BC55E2 /* CTGroundInclusion.m */; };
+		455B581D1DCC8D9500CA4790 /* CTGroundService.h in Headers */ = {isa = PBXBuildFile; fileRef = 45233D231CF44F0E00B8E2B2 /* CTGroundService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B581E1DCC8D9500CA4790 /* CTGroundService.m in Sources */ = {isa = PBXBuildFile; fileRef = 45233D241CF44F0E00B8E2B2 /* CTGroundService.m */; };
+		455B581F1DCC8D9500CA4790 /* CTGroundShuttle.h in Headers */ = {isa = PBXBuildFile; fileRef = 457CF8931D78869600BC55E2 /* CTGroundShuttle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58201DCC8D9500CA4790 /* CTGroundShuttle.m in Sources */ = {isa = PBXBuildFile; fileRef = 457CF8941D78869600BC55E2 /* CTGroundShuttle.m */; };
+		455B58211DCC8D9500CA4790 /* CTGroundItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B264FE1D92A8B3000005F2 /* CTGroundItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58221DCC8D9500CA4790 /* CTGroundItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B264FF1D92A8B3000005F2 /* CTGroundItem.m */; };
+		455B58251DCC903600CA4790 /* CartrawlerAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 45916DC71CBBDAEE00389B88 /* CartrawlerAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		4577E1E01D7837F7005459DE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45916DBC1CBBDAEE00389B88 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 45916DC31CBBDAEE00389B88;
-			remoteInfo = CartrawlerAPI;
-		};
-		45D53D531CBBE8E600DEDB0B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45916DBC1CBBDAEE00389B88 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 45916DC31CBBDAEE00389B88;
-			remoteInfo = CartrawlerAPI;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		45916DC21CBBDAEE00389B88 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		451B99C81CFEF184001D07A7 /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTests.m; sourceTree = "<group>"; };
@@ -156,8 +100,8 @@
 		451B99D41CFF2A01001D07A7 /* RetRes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RetRes.json; sourceTree = "<group>"; };
 		451B99F61CFF40E0001D07A7 /* TermsAndCond.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TermsAndCond.json; sourceTree = "<group>"; };
 		451B9A501D005F2B001D07A7 /* GTTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTTests.m; sourceTree = "<group>"; };
-		451B9A561D006B08001D07A7 /* NetworkUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtils.h; sourceTree = "<group>"; };
-		451B9A571D006B08001D07A7 /* NetworkUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkUtils.m; sourceTree = "<group>"; };
+		451B9A561D006B08001D07A7 /* CTNetworkUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNetworkUtils.h; sourceTree = "<group>"; };
+		451B9A571D006B08001D07A7 /* CTNetworkUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTNetworkUtils.m; sourceTree = "<group>"; };
 		45233D171CF35DD700B8E2B2 /* CTGroundLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTGroundLocation.h; sourceTree = "<group>"; };
 		45233D181CF35DD700B8E2B2 /* CTGroundLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTGroundLocation.m; sourceTree = "<group>"; };
 		45233D1B1CF44A5600B8E2B2 /* CTAirport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAirport.h; sourceTree = "<group>"; };
@@ -173,6 +117,8 @@
 		4542BFFB1CBE8C1F00EC17BF /* CTLocationSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLocationSearch.m; sourceTree = "<group>"; };
 		4542C00A1CBEA0E100EC17BF /* CTMatchedLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMatchedLocation.h; sourceTree = "<group>"; };
 		4542C00B1CBEA0E100EC17BF /* CTMatchedLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMatchedLocation.m; sourceTree = "<group>"; };
+		455B57C91DCC8D7900CA4790 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CartrawlerAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		455B57CC1DCC8D7900CA4790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		455EAEF11CF2F0A0006E7CBB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4561764B1DC8AB9D00754DFA /* CTVehicleConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVehicleConfig.h; sourceTree = "<group>"; };
 		4561764C1DC8AB9D00754DFA /* CTVehicleConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleConfig.m; sourceTree = "<group>"; };
@@ -186,7 +132,6 @@
 		457CF8941D78869600BC55E2 /* CTGroundShuttle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTGroundShuttle.m; sourceTree = "<group>"; };
 		459103F61CF736DB00D97F46 /* CTGroundCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTGroundCustomer.h; sourceTree = "<group>"; };
 		459103F71CF736DB00D97F46 /* CTGroundCustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTGroundCustomer.m; sourceTree = "<group>"; };
-		45916DC41CBBDAEE00389B88 /* libCartrawlerAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCartrawlerAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		45916DC71CBBDAEE00389B88 /* CartrawlerAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartrawlerAPI.h; sourceTree = "<group>"; };
 		45916DC91CBBDAEE00389B88 /* CartrawlerAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartrawlerAPI.m; sourceTree = "<group>"; };
 		45A2029A1CBCE9A000DCFF02 /* CTErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTErrorResponse.h; sourceTree = "<group>"; };
@@ -198,21 +143,20 @@
 		45B264FE1D92A8B3000005F2 /* CTGroundItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTGroundItem.h; sourceTree = "<group>"; };
 		45B264FF1D92A8B3000005F2 /* CTGroundItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTGroundItem.m; sourceTree = "<group>"; };
 		45C69A2F1D460F310045136D /* USInsurance.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = USInsurance.json; sourceTree = "<group>"; };
-		45C69A311D4616140045136D /* InsuranceSelectorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceSelectorItem.h; sourceTree = "<group>"; };
-		45C69A321D4616140045136D /* InsuranceSelectorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceSelectorItem.m; sourceTree = "<group>"; };
-		45C69A351D462BA30045136D /* InsuranceLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceLink.h; sourceTree = "<group>"; };
-		45C69A361D462BA30045136D /* InsuranceLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceLink.m; sourceTree = "<group>"; };
+		45C69A311D4616140045136D /* CTInsuranceSelectorItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInsuranceSelectorItem.h; sourceTree = "<group>"; };
+		45C69A321D4616140045136D /* CTInsuranceSelectorItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsuranceSelectorItem.m; sourceTree = "<group>"; };
+		45C69A351D462BA30045136D /* CTInsuranceLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInsuranceLink.h; sourceTree = "<group>"; };
+		45C69A361D462BA30045136D /* CTInsuranceLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsuranceLink.m; sourceTree = "<group>"; };
 		45D53D3C1CBBDC5000DEDB0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		45D53D3E1CBBDC7700DEDB0B /* PostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostRequest.h; sourceTree = "<group>"; };
-		45D53D3F1CBBDC7700DEDB0B /* PostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostRequest.m; sourceTree = "<group>"; };
-		45D53D431CBBE34F00DEDB0B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		45D53D441CBBE34F00DEDB0B /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		45D53D4D1CBBE8E600DEDB0B /* CartrawlerAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		45D53D3E1CBBDC7700DEDB0B /* CTPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPostRequest.h; sourceTree = "<group>"; };
+		45D53D3F1CBBDC7700DEDB0B /* CTPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPostRequest.m; sourceTree = "<group>"; };
+		45D53D431CBBE34F00DEDB0B /* CTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTConstants.h; sourceTree = "<group>"; };
+		45D53D441CBBE34F00DEDB0B /* CTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTConstants.m; sourceTree = "<group>"; };
 		45D53D511CBBE8E600DEDB0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45E3F9C51CEDB9BC000D2219 /* CTVendorRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVendorRating.h; sourceTree = "<group>"; };
 		45E3F9C61CEDB9BC000D2219 /* CTVendorRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVendorRating.m; sourceTree = "<group>"; };
-		45E3F9C91CEDCFFB000D2219 /* ImageResizeURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageResizeURL.h; sourceTree = "<group>"; };
-		45E3F9CA1CEDCFFB000D2219 /* ImageResizeURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageResizeURL.m; sourceTree = "<group>"; };
+		45E3F9C91CEDCFFB000D2219 /* CartrawlerAPI+NSURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerAPI+NSURL.h"; sourceTree = "<group>"; };
+		45E3F9CA1CEDCFFB000D2219 /* CartrawlerAPI+NSURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerAPI+NSURL.m"; sourceTree = "<group>"; };
 		45F4E15D1CC0EDFC00D620D0 /* CTPaymentCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPaymentCard.h; sourceTree = "<group>"; };
 		45F4E15E1CC0EDFC00D620D0 /* CTPaymentCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPaymentCard.m; sourceTree = "<group>"; };
 		45F4E1601CC0F10A00D620D0 /* CTCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCustomer.h; sourceTree = "<group>"; };
@@ -221,12 +165,12 @@
 		45F4E1641CC1009500D620D0 /* CTBooking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBooking.m; sourceTree = "<group>"; };
 		45F4E1711CC53F2000D620D0 /* CTTermsAndConditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTermsAndConditions.h; sourceTree = "<group>"; };
 		45F4E1721CC53F2000D620D0 /* CTTermsAndConditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTermsAndConditions.m; sourceTree = "<group>"; };
-		45F5426C1CDCE138006C099D /* NSDataUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataUtils.h; sourceTree = "<group>"; };
-		45F5426D1CDCE138006C099D /* NSDataUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataUtils.m; sourceTree = "<group>"; };
+		45F5426C1CDCE138006C099D /* CartrawlerAPI+NSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerAPI+NSData.h"; sourceTree = "<group>"; };
+		45F5426D1CDCE138006C099D /* CartrawlerAPI+NSData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerAPI+NSData.m"; sourceTree = "<group>"; };
 		45FBACB71D67453900C75FC9 /* CTTermAndCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTermAndCondition.h; sourceTree = "<group>"; };
 		45FBACB81D67453900C75FC9 /* CTTermAndCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTermAndCondition.m; sourceTree = "<group>"; };
-		45FCA07A1CBF9C340079AA68 /* NSDateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateUtils.h; sourceTree = "<group>"; };
-		45FCA07B1CBF9C340079AA68 /* NSDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateUtils.m; sourceTree = "<group>"; };
+		45FCA07A1CBF9C340079AA68 /* CartrawlerAPI+NSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerAPI+NSDate.h"; sourceTree = "<group>"; };
+		45FCA07B1CBF9C340079AA68 /* CartrawlerAPI+NSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerAPI+NSDate.m"; sourceTree = "<group>"; };
 		45FCA07D1CBFAD250079AA68 /* CTRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRequestBuilder.h; sourceTree = "<group>"; };
 		45FCA07E1CBFAD250079AA68 /* CTRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRequestBuilder.m; sourceTree = "<group>"; };
 		45FCA0801CBFDB980079AA68 /* CTExtraEquipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTExtraEquipment.h; sourceTree = "<group>"; };
@@ -248,19 +192,10 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		45916DC11CBBDAEE00389B88 /* Frameworks */ = {
+		455B57C51DCC8D7900CA4790 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45D53D3D1CBBDC5000DEDB0B /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		45D53D4A1CBBE8E600DEDB0B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				45D53D521CBBE8E600DEDB0B /* libCartrawlerAPI.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,8 +216,7 @@
 		45916DC51CBBDAEE00389B88 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				45916DC41CBBDAEE00389B88 /* libCartrawlerAPI.a */,
-				45D53D4D1CBBE8E600DEDB0B /* CartrawlerAPITests.xctest */,
+				455B57C91DCC8D7900CA4790 /* CartrawlerAPI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -290,6 +224,9 @@
 		45916DC61CBBDAEE00389B88 /* CartrawlerAPI */ = {
 			isa = PBXGroup;
 			children = (
+				455B57CC1DCC8D7900CA4790 /* Info.plist */,
+				45916DC71CBBDAEE00389B88 /* CartrawlerAPI.h */,
+				45916DC91CBBDAEE00389B88 /* CartrawlerAPI.m */,
 				45FCA0791CBF9C1E0079AA68 /* Utils */,
 				45D53D3B1CBBDBFA00DEDB0B /* Services */,
 				45D53D3A1CBBDBF500DEDB0B /* Models */,
@@ -345,10 +282,8 @@
 		45D53D3B1CBBDBFA00DEDB0B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				45D53D3E1CBBDC7700DEDB0B /* PostRequest.h */,
-				45D53D3F1CBBDC7700DEDB0B /* PostRequest.m */,
-				45916DC71CBBDAEE00389B88 /* CartrawlerAPI.h */,
-				45916DC91CBBDAEE00389B88 /* CartrawlerAPI.m */,
+				45D53D3E1CBBDC7700DEDB0B /* CTPostRequest.h */,
+				45D53D3F1CBBDC7700DEDB0B /* CTPostRequest.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -454,10 +389,10 @@
 			children = (
 				45FCA0981CBFE4890079AA68 /* CTInsurance.h */,
 				45FCA0991CBFE4890079AA68 /* CTInsurance.m */,
-				45C69A311D4616140045136D /* InsuranceSelectorItem.h */,
-				45C69A321D4616140045136D /* InsuranceSelectorItem.m */,
-				45C69A351D462BA30045136D /* InsuranceLink.h */,
-				45C69A361D462BA30045136D /* InsuranceLink.m */,
+				45C69A311D4616140045136D /* CTInsuranceSelectorItem.h */,
+				45C69A321D4616140045136D /* CTInsuranceSelectorItem.m */,
+				45C69A351D462BA30045136D /* CTInsuranceLink.h */,
+				45C69A361D462BA30045136D /* CTInsuranceLink.m */,
 			);
 			name = Insurance;
 			sourceTree = "<group>";
@@ -474,18 +409,18 @@
 		45FCA0791CBF9C1E0079AA68 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				45F5426C1CDCE138006C099D /* NSDataUtils.h */,
-				45F5426D1CDCE138006C099D /* NSDataUtils.m */,
-				45FCA07A1CBF9C340079AA68 /* NSDateUtils.h */,
-				45FCA07B1CBF9C340079AA68 /* NSDateUtils.m */,
+				45F5426C1CDCE138006C099D /* CartrawlerAPI+NSData.h */,
+				45F5426D1CDCE138006C099D /* CartrawlerAPI+NSData.m */,
+				45FCA07A1CBF9C340079AA68 /* CartrawlerAPI+NSDate.h */,
+				45FCA07B1CBF9C340079AA68 /* CartrawlerAPI+NSDate.m */,
 				45FCA07D1CBFAD250079AA68 /* CTRequestBuilder.h */,
 				45FCA07E1CBFAD250079AA68 /* CTRequestBuilder.m */,
-				45D53D431CBBE34F00DEDB0B /* Constants.h */,
-				45D53D441CBBE34F00DEDB0B /* Constants.m */,
-				45E3F9C91CEDCFFB000D2219 /* ImageResizeURL.h */,
-				45E3F9CA1CEDCFFB000D2219 /* ImageResizeURL.m */,
-				451B9A561D006B08001D07A7 /* NetworkUtils.h */,
-				451B9A571D006B08001D07A7 /* NetworkUtils.m */,
+				45D53D431CBBE34F00DEDB0B /* CTConstants.h */,
+				45D53D441CBBE34F00DEDB0B /* CTConstants.m */,
+				45E3F9C91CEDCFFB000D2219 /* CartrawlerAPI+NSURL.h */,
+				45E3F9CA1CEDCFFB000D2219 /* CartrawlerAPI+NSURL.m */,
+				451B9A561D006B08001D07A7 /* CTNetworkUtils.h */,
+				451B9A571D006B08001D07A7 /* CTNetworkUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -493,66 +428,65 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		45F4E17A1CC62EB100D620D0 /* Headers */ = {
+		455B57C61DCC8D7900CA4790 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45F4E1AD1CC62EFC00D620D0 /* CartrawlerAPI.h in Headers */,
-				45F4E1C51CC653BE00D620D0 /* CTErrorResponse.h in Headers */,
-				45F4E1D01CC6540B00D620D0 /* CTLocationSearch.h in Headers */,
-				45F4E1DD1CC6540B00D620D0 /* CTInsurance.h in Headers */,
-				45F4E1D81CC6540B00D620D0 /* CTVehicleAvailability.h in Headers */,
-				45F4E1D31CC6540B00D620D0 /* CTVehicle.h in Headers */,
-				45F5426E1CDCE138006C099D /* NSDataUtils.h in Headers */,
-				45F4E1C91CC6540B00D620D0 /* CTTermsAndConditions.h in Headers */,
-				45F4E1CA1CC6540B00D620D0 /* CTBooking.h in Headers */,
-				45F4E1D21CC6540B00D620D0 /* CTExtraEquipment.h in Headers */,
-				45F4E1DE1CC6540B00D620D0 /* CTPaymentCard.h in Headers */,
-				45F4E1DF1CC6540B00D620D0 /* CTCustomer.h in Headers */,
-				45F4E1D11CC6540B00D620D0 /* CTMatchedLocation.h in Headers */,
-				45F4E1D51CC6540B00D620D0 /* CTPricedCoverage.h in Headers */,
-				45233D211CF44D4500B8E2B2 /* CTGroundAvailability.h in Headers */,
-				451B9A581D006B08001D07A7 /* NetworkUtils.h in Headers */,
-				45233D191CF35DD700B8E2B2 /* CTGroundLocation.h in Headers */,
-				45233D1D1CF44A5600B8E2B2 /* CTAirport.h in Headers */,
-				45233D321CF492C500B8E2B2 /* CTGroundBooking.h in Headers */,
-				45F4E1D71CC6540B00D620D0 /* CTVendor.h in Headers */,
-				45C69A331D4616140045136D /* InsuranceSelectorItem.h in Headers */,
-				45E3F9C71CEDB9BC000D2219 /* CTVendorRating.h in Headers */,
-				45233D251CF44F0E00B8E2B2 /* CTGroundService.h in Headers */,
-				45C69A371D462BA30045136D /* InsuranceLink.h in Headers */,
-				456176511DC8AD2100754DFA /* CTSpecialOffer.h in Headers */,
-				4561764D1DC8AB9D00754DFA /* CTVehicleConfig.h in Headers */,
-				457CF8911D7884C800BC55E2 /* CTGroundInclusion.h in Headers */,
-				45F4E1C71CC6540B00D620D0 /* CTRequestBuilder.h in Headers */,
-				457CF8951D78869600BC55E2 /* CTGroundShuttle.h in Headers */,
-				45B265001D92A8B4000005F2 /* CTGroundItem.h in Headers */,
-				456176551DC8AD4A00754DFA /* CTVehicleIndexation.h in Headers */,
-				45AEF2651D6C493F00DA0894 /* CTVendorLocation.h in Headers */,
-				45FBACB91D67453900C75FC9 /* CTTermAndCondition.h in Headers */,
-				45AEF2601D6C418200DA0894 /* CTAvailabilityItem.h in Headers */,
-				459103F81CF736DB00D97F46 /* CTGroundCustomer.h in Headers */,
-				45F4E1D41CC6540B00D620D0 /* CTVehicleCharge.h in Headers */,
-				45F4E1D61CC6540B00D620D0 /* CTFee.h in Headers */,
-				45F4E1C61CC6540B00D620D0 /* NSDateUtils.h in Headers */,
-				45F4E1C81CC6540B00D620D0 /* PostRequest.h in Headers */,
-				45E3F9CB1CEDCFFB000D2219 /* ImageResizeURL.h in Headers */,
-				45F4E1DC1CC6540B00D620D0 /* Constants.h in Headers */,
+				455B57E11DCC8D9500CA4790 /* CTCustomer.h in Headers */,
+				455B57E31DCC8D9500CA4790 /* CTLocationSearch.h in Headers */,
+				455B57E51DCC8D9500CA4790 /* CTMatchedLocation.h in Headers */,
+				455B57E71DCC8D9500CA4790 /* CTAirport.h in Headers */,
+				455B57E91DCC8D9500CA4790 /* CTVendorRating.h in Headers */,
+				455B57EB1DCC8D9500CA4790 /* CTExtraEquipment.h in Headers */,
+				455B57ED1DCC8D9500CA4790 /* CTVehicleCharge.h in Headers */,
+				455B57EF1DCC8D9500CA4790 /* CTPricedCoverage.h in Headers */,
+				455B57F11DCC8D9500CA4790 /* CTFee.h in Headers */,
+				455B57F31DCC8D9500CA4790 /* CTVehicleAvailability.h in Headers */,
+				455B57F51DCC8D9500CA4790 /* CTAvailabilityItem.h in Headers */,
+				455B57F71DCC8D9500CA4790 /* CTVehicle.h in Headers */,
+				455B57F91DCC8D9500CA4790 /* CTVendor.h in Headers */,
+				455B57FB1DCC8D9500CA4790 /* CTVendorLocation.h in Headers */,
+				455B57FD1DCC8D9500CA4790 /* CTVehicleConfig.h in Headers */,
+				455B57FF1DCC8D9500CA4790 /* CTSpecialOffer.h in Headers */,
+				455B58011DCC8D9500CA4790 /* CTVehicleIndexation.h in Headers */,
+				455B58031DCC8D9500CA4790 /* CTTermsAndConditions.h in Headers */,
+				455B58051DCC8D9500CA4790 /* CTTermAndCondition.h in Headers */,
+				455B58071DCC8D9500CA4790 /* CTPaymentCard.h in Headers */,
+				455B58091DCC8D9500CA4790 /* CTBooking.h in Headers */,
+				455B580B1DCC8D9500CA4790 /* CTErrorResponse.h in Headers */,
+				455B580D1DCC8D9500CA4790 /* CTInsurance.h in Headers */,
+				455B580F1DCC8D9500CA4790 /* CTInsuranceSelectorItem.h in Headers */,
+				455B58111DCC8D9500CA4790 /* CTInsuranceLink.h in Headers */,
+				455B58131DCC8D9500CA4790 /* CTGroundLocation.h in Headers */,
+				455B58151DCC8D9500CA4790 /* CTGroundAvailability.h in Headers */,
+				455B58171DCC8D9500CA4790 /* CTGroundCustomer.h in Headers */,
+				455B58191DCC8D9500CA4790 /* CTGroundBooking.h in Headers */,
+				455B581B1DCC8D9500CA4790 /* CTGroundInclusion.h in Headers */,
+				455B581D1DCC8D9500CA4790 /* CTGroundService.h in Headers */,
+				455B581F1DCC8D9500CA4790 /* CTGroundShuttle.h in Headers */,
+				455B58251DCC903600CA4790 /* CartrawlerAPI.h in Headers */,
+				455B58211DCC8D9500CA4790 /* CTGroundItem.h in Headers */,
+				455B57D11DCC8D9500CA4790 /* CartrawlerAPI+NSData.h in Headers */,
+				455B57D31DCC8D9500CA4790 /* CartrawlerAPI+NSDate.h in Headers */,
+				455B57D51DCC8D9500CA4790 /* CTRequestBuilder.h in Headers */,
+				455B57D71DCC8D9500CA4790 /* CTConstants.h in Headers */,
+				455B57D91DCC8D9500CA4790 /* CartrawlerAPI+NSURL.h in Headers */,
+				455B57DB1DCC8D9500CA4790 /* CTNetworkUtils.h in Headers */,
+				455B57DD1DCC8D9500CA4790 /* CTPostRequest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		45916DC31CBBDAEE00389B88 /* CartrawlerAPI */ = {
+		455B57C81DCC8D7900CA4790 /* CartrawlerAPI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 45916DCD1CBBDAEE00389B88 /* Build configuration list for PBXNativeTarget "CartrawlerAPI" */;
+			buildConfigurationList = 455B57CE1DCC8D7900CA4790 /* Build configuration list for PBXNativeTarget "CartrawlerAPI" */;
 			buildPhases = (
-				45916DC01CBBDAEE00389B88 /* Sources */,
-				45916DC11CBBDAEE00389B88 /* Frameworks */,
-				45916DC21CBBDAEE00389B88 /* CopyFiles */,
-				45F4E17A1CC62EB100D620D0 /* Headers */,
-				45F4E1B91CC6308D00D620D0 /* ShellScript */,
+				455B57C41DCC8D7900CA4790 /* Sources */,
+				455B57C51DCC8D7900CA4790 /* Frameworks */,
+				455B57C61DCC8D7900CA4790 /* Headers */,
+				455B57C71DCC8D7900CA4790 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -560,26 +494,8 @@
 			);
 			name = CartrawlerAPI;
 			productName = CartrawlerAPI;
-			productReference = 45916DC41CBBDAEE00389B88 /* libCartrawlerAPI.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		45D53D4C1CBBE8E600DEDB0B /* CartrawlerAPITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 45D53D551CBBE8E600DEDB0B /* Build configuration list for PBXNativeTarget "CartrawlerAPITests" */;
-			buildPhases = (
-				45D53D491CBBE8E600DEDB0B /* Sources */,
-				45D53D4A1CBBE8E600DEDB0B /* Frameworks */,
-				45D53D4B1CBBE8E600DEDB0B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				45D53D541CBBE8E600DEDB0B /* PBXTargetDependency */,
-			);
-			name = CartrawlerAPITests;
-			productName = CartrawlerAPITests;
-			productReference = 45D53D4D1CBBE8E600DEDB0B /* CartrawlerAPITests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			productReference = 455B57C91DCC8D7900CA4790 /* CartrawlerAPI.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -587,14 +503,13 @@
 		45916DBC1CBBDAEE00389B88 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Cartrawler;
 				TargetAttributes = {
-					45916DC31CBBDAEE00389B88 = {
-						CreatedOnToolsVersion = 7.3;
-					};
-					45D53D4C1CBBE8E600DEDB0B = {
-						CreatedOnToolsVersion = 7.3;
+					455B57C81DCC8D7900CA4790 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 93JSQ29ZDX;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -610,149 +525,122 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				45916DC31CBBDAEE00389B88 /* CartrawlerAPI */,
-				45D53D4C1CBBE8E600DEDB0B /* CartrawlerAPITests */,
-				4577E1DE1D7837F7005459DE /* Framework_OTA */,
+				455B57C81DCC8D7900CA4790 /* CartrawlerAPI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		45D53D4B1CBBE8E600DEDB0B /* Resources */ = {
+		455B57C71DCC8D7900CA4790 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				451B99D11CFEFD2C001D07A7 /* VehAvailJSON.json in Resources */,
-				451B99F71CFF40E0001D07A7 /* TermsAndCond.json in Resources */,
-				45C69A301D460F310045136D /* USInsurance.json in Resources */,
-				451B99D31CFF2835001D07A7 /* BookVehicleJSON.json in Resources */,
-				455685671D79B547000AA1A0 /* GroundAvailRSJSON.json in Resources */,
-				451B99D51CFF2A01001D07A7 /* RetRes.json in Resources */,
-				451B99CF1CFEF5B8001D07A7 /* InsuranceQuoteJSON.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		4577E1E11D7837F7005459DE /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\n\n# If we're already inside this script then die\nif [ -n \"$RW_MULTIPLATFORM_BUILD_IN_PROGRESS\" ]; then\nexit 0\nfi\nexport RW_MULTIPLATFORM_BUILD_IN_PROGRESS=1\n\nRW_FRAMEWORK_NAME=${PROJECT_NAME}\nRW_INPUT_STATIC_LIB=\"lib${PROJECT_NAME}.a\"\nRW_FRAMEWORK_LOCATION=\"${BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework\"\n\nfunction build_static_library {\n    # Will rebuild the static library as specified\n    #     build_static_library sdk\n    xcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" \\\n    -target \"${TARGET_NAME}\" \\\n    -configuration \"${CONFIGURATION}\" \\\n    -sdk \"${1}\" \\\n    ONLY_ACTIVE_ARCH=NO \\\n    BUILD_DIR=\"${BUILD_DIR}\" \\\n    OBJROOT=\"${OBJROOT}\" \\\n    BUILD_ROOT=\"${BUILD_ROOT}\" \\\n    SYMROOT=\"${SYMROOT}\" $ACTION\n}\n\nfunction make_fat_library {\n    # Will smash 2 static libs together\n    #     make_fat_library in1 in2 out\n    xcrun lipo -create \"${1}\" \"${2}\" -output \"${3}\"\n}\n\n# 1 - Extract the platform (iphoneos/iphonesimulator) from the SDK name\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]; then\nRW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\n# 2 - Extract the version from the SDK\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]; then\nRW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\n# 3 - Determine the other platform\nif [ \"$RW_SDK_PLATFORM\" == \"iphoneos\" ]; then\nRW_OTHER_PLATFORM=iphonesimulator\nelse\nRW_OTHER_PLATFORM=iphoneos\nfi\n\n# 4 - Find the build directory\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$RW_SDK_PLATFORM$ ]]; then\nRW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${RW_OTHER_PLATFORM}\"\nelse\necho \"Could not find other platform build directory.\"\nexit 1\nfi\n\n# Build the other platform.\nbuild_static_library \"${RW_OTHER_PLATFORM}${RW_SDK_VERSION}\"\n\n# If we're currently building for iphonesimulator, then need to rebuild\n#   to ensure that we get both i386 and x86_64\nif [ \"$RW_SDK_PLATFORM\" == \"iphonesimulator\" ]; then\nbuild_static_library \"${SDK_NAME}\"\nfi\n\n# Join the 2 static libs into 1 and push into the .framework\nmake_fat_library \"${BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n\"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n\"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n# Ensure that the framework is present in both platform's build directories\ncp -a \"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\" \\\n\"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n\nditto \"${RW_FRAMEWORK_LOCATION}\" \"../${RW_FRAMEWORK_NAME}.framework\"";
-		};
-		45F4E1B91CC6308D00D620D0 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\n\nexport FRAMEWORK_LOCN=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework\"\n\n# Create the path to the real Headers die\nmkdir -p \"${FRAMEWORK_LOCN}/Versions/A/Headers\"\n\n# Create the required symlinks\n/bin/ln -sfh A \"${FRAMEWORK_LOCN}/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${FRAMEWORK_LOCN}/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \\\n\"${FRAMEWORK_LOCN}/${PRODUCT_NAME}\"\n\n# Copy the public headers into the framework\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \\\n\"${FRAMEWORK_LOCN}/Versions/A/Headers\"\n\n#appledoc Xcode script\n# Start constants\ncompany=\"Cartrawler\";\ncompanyID=\"com.cartrawler\";\ncompanyURL=\"http://cartrawler.com\";\ntarget=\"iphoneos\";\n\nbuildPlist=\"Info.plist\"\nbuildVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" $buildPlist)\n\n# End constants\n\n#jazzy \\\n#--objc  \\\n#--clean \\\n#--skip-undocumented \\\n#--author Cartrawler \\\n#--min-acl public \\\n#--umbrella-header CartrawlerAPI/CartrawlerAPI.h \\\n#--framework-root . \\\n#--theme apple \\\n#--output docs\n\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		45916DC01CBBDAEE00389B88 /* Sources */ = {
+		455B57C41DCC8D7900CA4790 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45FCA0911CBFDB980079AA68 /* CTPricedCoverage.m in Sources */,
-				456176521DC8AD2100754DFA /* CTSpecialOffer.m in Sources */,
-				45916DCA1CBBDAEE00389B88 /* CartrawlerAPI.m in Sources */,
-				45D53D401CBBDC7700DEDB0B /* PostRequest.m in Sources */,
-				45AEF2661D6C493F00DA0894 /* CTVendorLocation.m in Sources */,
-				4561764E1DC8AB9D00754DFA /* CTVehicleConfig.m in Sources */,
-				45233D261CF44F0E00B8E2B2 /* CTGroundService.m in Sources */,
-				45FCA07C1CBF9C340079AA68 /* NSDateUtils.m in Sources */,
-				45C69A381D462BA30045136D /* InsuranceLink.m in Sources */,
-				45FCA08E1CBFDB980079AA68 /* CTExtraEquipment.m in Sources */,
-				45FCA0901CBFDB980079AA68 /* CTVehicleCharge.m in Sources */,
-				451B9A591D006B08001D07A7 /* NetworkUtils.m in Sources */,
-				45E3F9C81CEDB9BC000D2219 /* CTVendorRating.m in Sources */,
-				45F4E1731CC53F2000D620D0 /* CTTermsAndConditions.m in Sources */,
-				45FCA07F1CBFAD250079AA68 /* CTRequestBuilder.m in Sources */,
-				45FCA0941CBFDB980079AA68 /* CTVehicleAvailability.m in Sources */,
-				45F4E1651CC1009500D620D0 /* CTBooking.m in Sources */,
-				45C69A341D4616140045136D /* InsuranceSelectorItem.m in Sources */,
-				45233D1E1CF44A5600B8E2B2 /* CTAirport.m in Sources */,
-				45E3F9CC1CEDCFFB000D2219 /* ImageResizeURL.m in Sources */,
-				45D53D451CBBE34F00DEDB0B /* Constants.m in Sources */,
-				45233D1A1CF35DD700B8E2B2 /* CTGroundLocation.m in Sources */,
-				45AEF2611D6C418200DA0894 /* CTAvailabilityItem.m in Sources */,
-				45F4E15F1CC0EDFC00D620D0 /* CTPaymentCard.m in Sources */,
-				457CF8961D78869600BC55E2 /* CTGroundShuttle.m in Sources */,
-				45FCA0921CBFDB980079AA68 /* CTFee.m in Sources */,
-				45FCA08F1CBFDB980079AA68 /* CTVehicle.m in Sources */,
-				45F5426F1CDCE138006C099D /* NSDataUtils.m in Sources */,
-				45233D221CF44D4500B8E2B2 /* CTGroundAvailability.m in Sources */,
-				45FCA09A1CBFE4890079AA68 /* CTInsurance.m in Sources */,
-				45F4E1621CC0F10A00D620D0 /* CTCustomer.m in Sources */,
-				459103F91CF736DB00D97F46 /* CTGroundCustomer.m in Sources */,
-				45233D331CF492C500B8E2B2 /* CTGroundBooking.m in Sources */,
-				45A2029C1CBCE9A000DCFF02 /* CTErrorResponse.m in Sources */,
-				456176561DC8AD4A00754DFA /* CTVehicleIndexation.m in Sources */,
-				457CF8921D7884C800BC55E2 /* CTGroundInclusion.m in Sources */,
-				45FCA0931CBFDB980079AA68 /* CTVendor.m in Sources */,
-				45B265011D92A8B4000005F2 /* CTGroundItem.m in Sources */,
-				4542BFFC1CBE8C1F00EC17BF /* CTLocationSearch.m in Sources */,
-				4542C00C1CBEA0E100EC17BF /* CTMatchedLocation.m in Sources */,
-				45FBACBA1D67453900C75FC9 /* CTTermAndCondition.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		45D53D491CBBE8E600DEDB0B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				451B99CB1CFEF24E001D07A7 /* VehicleBookingTests.m in Sources */,
-				451B99C91CFEF184001D07A7 /* LocationTests.m in Sources */,
-				451B9A511D005F2B001D07A7 /* GTTests.m in Sources */,
+				455B57D21DCC8D9500CA4790 /* CartrawlerAPI+NSData.m in Sources */,
+				455B57D41DCC8D9500CA4790 /* CartrawlerAPI+NSDate.m in Sources */,
+				455B57D61DCC8D9500CA4790 /* CTRequestBuilder.m in Sources */,
+				455B57D81DCC8D9500CA4790 /* CTConstants.m in Sources */,
+				455B57DA1DCC8D9500CA4790 /* CartrawlerAPI+NSURL.m in Sources */,
+				455B57DC1DCC8D9500CA4790 /* CTNetworkUtils.m in Sources */,
+				455B57DE1DCC8D9500CA4790 /* CTPostRequest.m in Sources */,
+				455B57E01DCC8D9500CA4790 /* CartrawlerAPI.m in Sources */,
+				455B57E21DCC8D9500CA4790 /* CTCustomer.m in Sources */,
+				455B57E41DCC8D9500CA4790 /* CTLocationSearch.m in Sources */,
+				455B57E61DCC8D9500CA4790 /* CTMatchedLocation.m in Sources */,
+				455B57E81DCC8D9500CA4790 /* CTAirport.m in Sources */,
+				455B57EA1DCC8D9500CA4790 /* CTVendorRating.m in Sources */,
+				455B57EC1DCC8D9500CA4790 /* CTExtraEquipment.m in Sources */,
+				455B57EE1DCC8D9500CA4790 /* CTVehicleCharge.m in Sources */,
+				455B57F01DCC8D9500CA4790 /* CTPricedCoverage.m in Sources */,
+				455B57F21DCC8D9500CA4790 /* CTFee.m in Sources */,
+				455B57F41DCC8D9500CA4790 /* CTVehicleAvailability.m in Sources */,
+				455B57F61DCC8D9500CA4790 /* CTAvailabilityItem.m in Sources */,
+				455B57F81DCC8D9500CA4790 /* CTVehicle.m in Sources */,
+				455B57FA1DCC8D9500CA4790 /* CTVendor.m in Sources */,
+				455B57FC1DCC8D9500CA4790 /* CTVendorLocation.m in Sources */,
+				455B57FE1DCC8D9500CA4790 /* CTVehicleConfig.m in Sources */,
+				455B58001DCC8D9500CA4790 /* CTSpecialOffer.m in Sources */,
+				455B58021DCC8D9500CA4790 /* CTVehicleIndexation.m in Sources */,
+				455B58041DCC8D9500CA4790 /* CTTermsAndConditions.m in Sources */,
+				455B58061DCC8D9500CA4790 /* CTTermAndCondition.m in Sources */,
+				455B58081DCC8D9500CA4790 /* CTPaymentCard.m in Sources */,
+				455B580A1DCC8D9500CA4790 /* CTBooking.m in Sources */,
+				455B580C1DCC8D9500CA4790 /* CTErrorResponse.m in Sources */,
+				455B580E1DCC8D9500CA4790 /* CTInsurance.m in Sources */,
+				455B58101DCC8D9500CA4790 /* CTInsuranceSelectorItem.m in Sources */,
+				455B58121DCC8D9500CA4790 /* CTInsuranceLink.m in Sources */,
+				455B58141DCC8D9500CA4790 /* CTGroundLocation.m in Sources */,
+				455B58161DCC8D9500CA4790 /* CTGroundAvailability.m in Sources */,
+				455B58181DCC8D9500CA4790 /* CTGroundCustomer.m in Sources */,
+				455B581A1DCC8D9500CA4790 /* CTGroundBooking.m in Sources */,
+				455B581C1DCC8D9500CA4790 /* CTGroundInclusion.m in Sources */,
+				455B581E1DCC8D9500CA4790 /* CTGroundService.m in Sources */,
+				455B58201DCC8D9500CA4790 /* CTGroundShuttle.m in Sources */,
+				455B58221DCC8D9500CA4790 /* CTGroundItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		4577E1DF1D7837F7005459DE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 45916DC31CBBDAEE00389B88 /* CartrawlerAPI */;
-			targetProxy = 4577E1E01D7837F7005459DE /* PBXContainerItemProxy */;
-		};
-		45D53D541CBBE8E600DEDB0B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 45916DC31CBBDAEE00389B88 /* CartrawlerAPI */;
-			targetProxy = 45D53D531CBBE8E600DEDB0B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		4577E1E31D7837F7005459DE /* Debug */ = {
+		455B57CF1DCC8D7900CA4790 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				INFOPLIST_FILE = "Framework copy2-Info.plist";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 93JSQ29ZDX;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CartrawlerAPI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Cartrawler.CartrawlerAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		4577E1E41D7837F7005459DE /* Release */ = {
+		455B57D01DCC8D7900CA4790 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				INFOPLIST_FILE = "Framework copy2-Info.plist";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 93JSQ29ZDX;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CartrawlerAPI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Cartrawler.CartrawlerAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -770,8 +658,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -794,7 +684,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -815,8 +705,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -834,98 +726,29 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		45916DCE1CBBDAEE00389B88 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEAD_CODE_STRIPPING = YES;
-				INFOPLIST_FILE = Info.plist;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PROJECT_NAME)";
-				SKIP_INSTALL = YES;
-				STRIP_STYLE = all;
-			};
-			name = Debug;
-		};
-		45916DCF1CBBDAEE00389B88 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEAD_CODE_STRIPPING = YES;
-				INFOPLIST_FILE = Info.plist;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PROJECT_NAME)";
-				SKIP_INSTALL = YES;
-				STRIP_STYLE = all;
-			};
-			name = Release;
-		};
-		45D53D561CBBE8E600DEDB0B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = CartrawlerAPITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.CartrawlerAPITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		45D53D571CBBE8E600DEDB0B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = CartrawlerAPITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.CartrawlerAPITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4577E1E21D7837F7005459DE /* Build configuration list for PBXAggregateTarget "Framework_OTA" */ = {
+		455B57CE1DCC8D7900CA4790 /* Build configuration list for PBXNativeTarget "CartrawlerAPI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4577E1E31D7837F7005459DE /* Debug */,
-				4577E1E41D7837F7005459DE /* Release */,
+				455B57CF1DCC8D7900CA4790 /* Debug */,
+				455B57D01DCC8D7900CA4790 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		45916DBF1CBBDAEE00389B88 /* Build configuration list for PBXProject "CartrawlerAPI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				45916DCB1CBBDAEE00389B88 /* Debug */,
 				45916DCC1CBBDAEE00389B88 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		45916DCD1CBBDAEE00389B88 /* Build configuration list for PBXNativeTarget "CartrawlerAPI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				45916DCE1CBBDAEE00389B88 /* Debug */,
-				45916DCF1CBBDAEE00389B88 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		45D53D551CBBE8E600DEDB0B /* Build configuration list for PBXNativeTarget "CartrawlerAPITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				45D53D561CBBE8E600DEDB0B /* Debug */,
-				45D53D571CBBE8E600DEDB0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

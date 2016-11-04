@@ -10,7 +10,7 @@
 #import "Reachability.h"
 #import "PaymentRequest.h"
 #import "CTSDKSettings.h"
-#import "NSDateUtils.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 #import "CTButton.h"
 #import "GTPaymentRequest.h"
 #import "DataStore.h"
@@ -49,8 +49,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 {
     self.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    _bundle = [NSBundle bundleWithPath:bundlePath];
+    _bundle = [NSBundle bundleForClass:[self class]];
     
     NSString *htmlFile = [self.bundle pathForResource:@"CTPCI" ofType:@"html"];
     _htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
@@ -168,7 +167,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     f.numberStyle = NSNumberFormatterDecimalStyle;
 
     NSString *s = [GTPaymentRequest
-                      CT_GroundBook:[NSDateUtils stringFromDateWithFormat:search.pickupLocation.dateTime format:@"yyyy-MM-dd'T'HH:mm:ss"]
+                      CT_GroundBook:[search.pickupLocation.dateTime  stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
                      pickupLatitude:[f stringFromNumber:search.pickupLocation.latitude]
                     pickupLongitude:[f stringFromNumber:search.pickupLocation.longitude]
                        addressLine1:search.addressLine1
@@ -181,8 +180,8 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                  pickupLocationType:search.pickupLocation.locationTypeDescription
                  pickupLocationName:search.pickupLocation.name
                 specialInstructions:search.specialInstructions
-                    dropOffdateTime:[NSDateUtils stringFromDateWithFormat:[search.pickupLocation.dateTime
-                                                                           dateByAddingTimeInterval:1*24*60*60] format:@"yyyy-MM-dd'T'HH:mm:ss"]
+                   dropOffdateTime:[[search.pickupLocation.dateTime
+                                     dateByAddingTimeInterval:1*24*60*60] stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
                     dropoffLatitude:[f stringFromNumber:search.dropoffLocation.latitude]
                    dropoffLongitude:[f stringFromNumber:search.dropoffLocation.longitude]
                 dropoffLocationType:search.dropoffLocation.locationTypeDescription
@@ -236,8 +235,8 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     _runLoop = NO;
     _paymentType = CTPaymentTypeCarRental;
 
-    NSString *s = [PaymentRequest OTA_VehResRQ:[NSDateUtils stringFromDateWithFormat:search.pickupDate format:@"yyyy-MM-dd'T'HH:mm:ss"]
-                                returnDateTime:[NSDateUtils stringFromDateWithFormat:search.dropoffDate format:@"yyyy-MM-dd'T'HH:mm:ss"]
+    NSString *s = [PaymentRequest OTA_VehResRQ:[search.pickupDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
+                                returnDateTime:[search.dropoffDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
                             pickupLocationCode:search.pickupLocation.code
                            dropoffLocationCode:search.dropoffLocation.code
                                    homeCountry:[CTSDKSettings instance].homeCountryCode

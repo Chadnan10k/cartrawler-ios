@@ -6,9 +6,9 @@
 //  Copyright © 2016 Lee Maguire. All rights reserved.
 //
 
-#import "PostRequest.h"
+#import "CTPostRequest.h"
 
-@implementation PostRequest {
+@implementation CTPostRequest {
     BOOL performingRequest;
     NSURLSessionDataTask *task;
     NSDictionary *responseDict;

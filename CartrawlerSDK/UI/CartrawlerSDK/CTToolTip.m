@@ -128,8 +128,7 @@
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectZero];
     closeButton.translatesAutoresizingMaskIntoConstraints = NO;
     
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    NSBundle *b = [NSBundle bundleForClass:[self class]];
     
     [closeButton setImage:[UIImage imageNamed:@"tooltip_close" inBundle:b compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(removeView) forControlEvents:UIControlEventTouchUpInside];

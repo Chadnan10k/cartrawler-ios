@@ -38,8 +38,8 @@
 //    [CartrawlerSDK appearance].calendarMidCellColor = [UIColor someColor];
 //    [CartrawlerSDK appearance].calendarEndCellColor= [UIColor someColor];
 //
-//    [CartrawlerSDK appearance].fontName = @"HelveticaNeue-Light";
-//    [CartrawlerSDK appearance].boldFontName = @"HelveticaNeue-Medium";
+    [CartrawlerSDK appearance].fontName = @"Roboto-Regular";
+    [CartrawlerSDK appearance].boldFontName = @"Roboto-Bold";
     
     //UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
 

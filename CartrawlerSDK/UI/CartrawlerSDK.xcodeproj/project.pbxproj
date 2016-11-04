@@ -18,334 +18,283 @@
 			name = "Build All Debug";
 			productName = "Build All Debug";
 		};
-		45AC54561D1307A000805268 /* Framework_UI */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 45AC54571D1307A000805268 /* Build configuration list for PBXAggregateTarget "Framework_UI" */;
-			buildPhases = (
-				45AC545C1D1307B600805268 /* ShellScript */,
-			);
-			dependencies = (
-				45D866C91D14096100D19B74 /* PBXTargetDependency */,
-				45AC545B1D1307AB00805268 /* PBXTargetDependency */,
-			);
-			name = Framework_UI;
-			productName = Framework;
-		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		4509B4731D37E72700259255 /* GroundServicesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4509B4711D37E72700259255 /* GroundServicesViewController.h */; };
-		4509B4741D37E72700259255 /* GroundServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4509B4721D37E72700259255 /* GroundServicesViewController.m */; };
-		4509B47B1D37ED8100259255 /* GTServiceTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4509B4791D37ED8100259255 /* GTServiceTableViewCell.h */; };
-		4509B47C1D37ED8100259255 /* GTServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4509B47A1D37ED8100259255 /* GTServiceTableViewCell.m */; };
-		450DF3991D8191EA00EF51DE /* GTShuttleTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 450DF3971D8191EA00EF51DE /* GTShuttleTableViewCell.h */; };
-		450DF39A1D8191EA00EF51DE /* GTShuttleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 450DF3981D8191EA00EF51DE /* GTShuttleTableViewCell.m */; };
-		450DF39E1D81A55900EF51DE /* GTPassengerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450DF39C1D81A55900EF51DE /* GTPassengerViewController.h */; };
-		450DF39F1D81A55900EF51DE /* GTPassengerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450DF39D1D81A55900EF51DE /* GTPassengerViewController.m */; };
-		450F9D351D3929E5002C6F6B /* SupplierRatingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D331D3929E5002C6F6B /* SupplierRatingsViewController.h */; };
-		450F9D361D3929E5002C6F6B /* SupplierRatingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D341D3929E5002C6F6B /* SupplierRatingsViewController.m */; };
-		450F9D391D3CE08E002C6F6B /* SettingsSelectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D371D3CE08E002C6F6B /* SettingsSelectionViewController.h */; };
-		450F9D3A1D3CE08E002C6F6B /* SettingsSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D381D3CE08E002C6F6B /* SettingsSelectionViewController.m */; };
-		450F9D3D1D3CE8D5002C6F6B /* CTCurrency.csv in Resources */ = {isa = PBXBuildFile; fileRef = 450F9D3B1D3CE8D5002C6F6B /* CTCurrency.csv */; };
-		450F9D3E1D3CE8D5002C6F6B /* CTISOCountries.csv in Resources */ = {isa = PBXBuildFile; fileRef = 450F9D3C1D3CE8D5002C6F6B /* CTISOCountries.csv */; };
-		450F9D411D3CE9D6002C6F6B /* CSVItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D3F1D3CE9D6002C6F6B /* CSVItem.h */; };
-		450F9D421D3CE9D6002C6F6B /* CSVItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D401D3CE9D6002C6F6B /* CSVItem.m */; };
-		450F9D491D3D00C8002C6F6B /* SettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D471D3D00C8002C6F6B /* SettingsViewController.h */; };
-		450F9D4A1D3D00C8002C6F6B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D481D3D00C8002C6F6B /* SettingsViewController.m */; };
-		450F9D4C1D3D14FF002C6F6B /* CTLanguages.csv in Resources */ = {isa = PBXBuildFile; fileRef = 450F9D4B1D3D14FF002C6F6B /* CTLanguages.csv */; };
-		4511E51D1D1450CE000ED6B0 /* CTSDKSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E51B1D1450CE000ED6B0 /* CTSDKSettings.h */; };
-		4511E51E1D1450CE000ED6B0 /* CTSDKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E51C1D1450CE000ED6B0 /* CTSDKSettings.m */; };
-		4511E5201D145779000ED6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4511E51F1D145779000ED6B0 /* Assets.xcassets */; };
-		4511E5241D17DFA4000ED6B0 /* CTAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5221D17DFA4000ED6B0 /* CTAppearance.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4511E5251D17DFA4000ED6B0 /* CTAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5231D17DFA4000ED6B0 /* CTAppearance.m */; };
-		4511E52E1D17F4B0000ED6B0 /* CTView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E52C1D17F4B0000ED6B0 /* CTView.h */; };
-		4511E52F1D17F4B0000ED6B0 /* CTView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E52D1D17F4B0000ED6B0 /* CTView.m */; };
-		4511E5321D17F6C8000ED6B0 /* CTNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5301D17F6C8000ED6B0 /* CTNavigationBar.h */; };
-		4511E5331D17F6C8000ED6B0 /* CTNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5311D17F6C8000ED6B0 /* CTNavigationBar.m */; };
-		4511E5371D17F766000ED6B0 /* CTNavigationItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5351D17F766000ED6B0 /* CTNavigationItem.h */; };
-		4511E5381D17F766000ED6B0 /* CTNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5361D17F766000ED6B0 /* CTNavigationItem.m */; };
-		4511E53F1D17F999000ED6B0 /* CTNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E53D1D17F999000ED6B0 /* CTNavigationController.h */; };
-		4511E5401D17F999000ED6B0 /* CTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E53E1D17F999000ED6B0 /* CTNavigationController.m */; };
-		4511E5431D181B36000ED6B0 /* CTTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5411D181B36000ED6B0 /* CTTextField.h */; };
-		4511E5441D181B36000ED6B0 /* CTTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5421D181B36000ED6B0 /* CTTextField.m */; };
-		4511E5471D1837D4000ED6B0 /* LocationSearchTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5451D1837D4000ED6B0 /* LocationSearchTableViewCell.h */; };
-		4511E5481D1837D4000ED6B0 /* LocationSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5461D1837D4000ED6B0 /* LocationSearchTableViewCell.m */; };
-		45130C951DBF674F0081582B /* UIColorUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45130C931DBF674F0081582B /* UIColorUtils.h */; };
-		45130C961DBF674F0081582B /* UIColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45130C941DBF674F0081582B /* UIColorUtils.m */; };
-		45137C841D476AB100089928 /* CTPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45137C821D476AB100089928 /* CTPickerView.h */; };
-		45137C851D476AB100089928 /* CTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45137C831D476AB100089928 /* CTPickerView.m */; };
-		451B4BE91D2BC8C3006A57E7 /* TermsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451B4BE71D2BC8C3006A57E7 /* TermsViewController.h */; };
-		451B4BEA1D2BC8C3006A57E7 /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B4BE81D2BC8C3006A57E7 /* TermsViewController.m */; };
-		451B4BEE1D2BC99B006A57E7 /* TermsDetailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451B4BEC1D2BC99B006A57E7 /* TermsDetailViewController.h */; };
-		451B4BEF1D2BC99B006A57E7 /* TermsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B4BED1D2BC99B006A57E7 /* TermsDetailViewController.m */; };
-		451B513B1D38DD35004EBFDC /* GTBookNowButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 451B51391D38DD35004EBFDC /* GTBookNowButton.h */; };
-		451B513C1D38DD35004EBFDC /* GTBookNowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B513A1D38DD35004EBFDC /* GTBookNowButton.m */; };
-		451C8EF91D7D8ADB00B9324D /* InclusionFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8EF71D7D8ADB00B9324D /* InclusionFlowLayout.h */; };
-		451C8EFA1D7D8ADB00B9324D /* InclusionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8EF81D7D8ADB00B9324D /* InclusionFlowLayout.m */; };
-		451C8EFE1D7ECCE900B9324D /* GroundTransportSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8EFC1D7ECCE900B9324D /* GroundTransportSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		451C8EFF1D7ECCE900B9324D /* GroundTransportSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8EFD1D7ECCE900B9324D /* GroundTransportSearch.m */; };
-		451C8F041D7ECE2D00B9324D /* GTSearchValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F021D7ECE2D00B9324D /* GTSearchValidation.h */; };
-		451C8F051D7ECE2D00B9324D /* GTSearchValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F031D7ECE2D00B9324D /* GTSearchValidation.m */; };
-		451C8F081D7ED78100B9324D /* CTValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F061D7ED78100B9324D /* CTValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		451C8F0D1D7EE21200B9324D /* CTValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F0B1D7EE21200B9324D /* CTValidation.m */; };
-		451C8F101D7EF37700B9324D /* GTSelectionValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F0E1D7EF37700B9324D /* GTSelectionValidation.h */; };
-		451C8F111D7EF37700B9324D /* GTSelectionValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F0F1D7EF37700B9324D /* GTSelectionValidation.m */; };
-		451C8F141D7EF63D00B9324D /* GTPassengerDetailsValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F121D7EF63D00B9324D /* GTPassengerDetailsValidation.h */; };
-		451C8F151D7EF63D00B9324D /* GTPassengerDetailsValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F131D7EF63D00B9324D /* GTPassengerDetailsValidation.m */; };
-		451C8F181D7EFF3400B9324D /* CTPaymentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F161D7EFF3400B9324D /* CTPaymentView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		451C8F191D7EFF3400B9324D /* CTPaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F171D7EFF3400B9324D /* CTPaymentView.m */; };
-		451D7E201DAFBE9D001A4062 /* RentalBookingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E1E1DAFBE9D001A4062 /* RentalBookingsViewController.h */; };
-		451D7E211DAFBE9D001A4062 /* RentalBookingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E1F1DAFBE9D001A4062 /* RentalBookingsViewController.m */; };
-		451D7E241DAFBEAB001A4062 /* GTBookingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E221DAFBEAB001A4062 /* GTBookingsViewController.h */; };
-		451D7E251DAFBEAB001A4062 /* GTBookingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E231DAFBEAB001A4062 /* GTBookingsViewController.m */; };
-		451D7E281DAFC1E5001A4062 /* RentalBookingCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E261DAFC1E5001A4062 /* RentalBookingCell.h */; };
-		451D7E291DAFC1E5001A4062 /* RentalBookingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E271DAFC1E5001A4062 /* RentalBookingCell.m */; };
-		451D7E2C1DAFC1F3001A4062 /* GTBookingTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E2A1DAFC1F3001A4062 /* GTBookingTableViewCell.h */; };
-		451D7E2D1DAFC1F3001A4062 /* GTBookingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E2B1DAFC1F3001A4062 /* GTBookingTableViewCell.m */; };
-		451D7E301DAFC4E2001A4062 /* Landing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 451D7E1C1DAFB922001A4062 /* Landing.storyboard */; };
-		451D7E331DAFC548001A4062 /* GTBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E311DAFC548001A4062 /* GTBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		451D7E341DAFC548001A4062 /* GTBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E321DAFC548001A4062 /* GTBooking.m */; };
-		451D7E371DAFC564001A4062 /* RentalBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E351DAFC564001A4062 /* RentalBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		451D7E381DAFC564001A4062 /* RentalBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E361DAFC564001A4062 /* RentalBooking.m */; };
-		451D7E811DBE1197001A4062 /* DataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E7F1DBE1197001A4062 /* DataStore.h */; };
-		451D7E821DBE1197001A4062 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E801DBE1197001A4062 /* DataStore.m */; };
-		451FE5AB1D6EF248004D85D1 /* GenericValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451FE5A91D6EF248004D85D1 /* GenericValidation.h */; };
-		451FE5AC1D6EF248004D85D1 /* GenericValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451FE5AA1D6EF248004D85D1 /* GenericValidation.m */; };
-		451FE5B31D6EF286004D85D1 /* InsuranceValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451FE5AD1D6EF286004D85D1 /* InsuranceValidation.h */; };
-		451FE5B41D6EF286004D85D1 /* InsuranceValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451FE5AE1D6EF286004D85D1 /* InsuranceValidation.m */; };
-		451FE5B51D6EF286004D85D1 /* PaymentValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451FE5AF1D6EF286004D85D1 /* PaymentValidation.h */; };
-		451FE5B61D6EF286004D85D1 /* PaymentValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451FE5B01D6EF286004D85D1 /* PaymentValidation.m */; };
-		451FE5B71D6EF286004D85D1 /* SearchValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451FE5B11D6EF286004D85D1 /* SearchValidation.h */; };
-		451FE5B81D6EF286004D85D1 /* SearchValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451FE5B21D6EF286004D85D1 /* SearchValidation.m */; };
-		4525216F1D353C4200B47DE6 /* DriverDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4525216D1D353C4200B47DE6 /* DriverDetailsViewController.h */; };
-		452521701D353C4200B47DE6 /* DriverDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4525216E1D353C4200B47DE6 /* DriverDetailsViewController.m */; };
-		452521731D35442100B47DE6 /* BookingSummaryButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 452521711D35442100B47DE6 /* BookingSummaryButton.h */; };
-		452521741D35442100B47DE6 /* BookingSummaryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 452521721D35442100B47DE6 /* BookingSummaryButton.m */; };
-		4530DA331D46660900CF3186 /* CTTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4530DA311D46660900CF3186 /* CTTextView.h */; };
-		4530DA341D46660900CF3186 /* CTTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4530DA321D46660900CF3186 /* CTTextView.m */; };
-		453386E31D2BA4EA0021D392 /* IncludedCollectionViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 453386E11D2BA4EA0021D392 /* IncludedCollectionViewLayout.h */; };
-		453386E41D2BA4EA0021D392 /* IncludedCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 453386E21D2BA4EA0021D392 /* IncludedCollectionViewLayout.m */; };
-		45361BEB1D2BA1BA00295124 /* UnderLinedButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 45361BE91D2BA1BA00295124 /* UnderLinedButton.h */; };
-		45361BEC1D2BA1BA00295124 /* UnderLinedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 45361BEA1D2BA1BA00295124 /* UnderLinedButton.m */; };
-		4538D2551D14436600C723E5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4538D2541D14436600C723E5 /* Info.plist */; };
-		453EE5201D53381300D92E59 /* CarRentalSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 4557FE3F1D3636400026F038 /* CarRentalSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		453FD4431D588076002E4CC6 /* PaymentCompletionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 453FD4411D588076002E4CC6 /* PaymentCompletionViewController.h */; };
-		453FD4441D588076002E4CC6 /* PaymentCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 453FD4421D588076002E4CC6 /* PaymentCompletionViewController.m */; };
-		454446391D991B3C0047873F /* PassengerSelectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454446371D991B3C0047873F /* PassengerSelectionViewController.h */; };
-		4544463A1D991B3C0047873F /* PassengerSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454446381D991B3C0047873F /* PassengerSelectionViewController.m */; };
-		4544463E1D992BAA0047873F /* CTStepper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4544463C1D992BAA0047873F /* CTStepper.h */; };
-		4544463F1D992BAA0047873F /* CTStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4544463D1D992BAA0047873F /* CTStepper.m */; };
-		4544464C1D9A7FE80047873F /* CTNavigationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4544464A1D9A7FE80047873F /* CTNavigationView.h */; };
-		4544464D1D9A7FE80047873F /* CTNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4544464B1D9A7FE80047873F /* CTNavigationView.m */; };
-		4546D40E1D8301700081A2F9 /* FilterCollectionViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 4546D40C1D8301700081A2F9 /* FilterCollectionViewDataSource.h */; };
-		4546D40F1D8301700081A2F9 /* FilterCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4546D40D1D8301700081A2F9 /* FilterCollectionViewDataSource.m */; };
-		4546D4121D8303A90081A2F9 /* GTFilterCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4546D4101D8303A90081A2F9 /* GTFilterCollectionViewCell.h */; };
-		4546D4131D8303A90081A2F9 /* GTFilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4546D4111D8303A90081A2F9 /* GTFilterCollectionViewCell.m */; };
-		454AD77B1D2551F5005C6CFF /* CTFilterViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7791D2551F5005C6CFF /* CTFilterViewController.h */; };
-		454AD77C1D2551F5005C6CFF /* CTFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD77A1D2551F5005C6CFF /* CTFilterViewController.m */; };
-		454AD77F1D25587D005C6CFF /* CTFilterDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD77D1D25587D005C6CFF /* CTFilterDataSource.h */; };
-		454AD7801D25587D005C6CFF /* CTFilterDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD77E1D25587D005C6CFF /* CTFilterDataSource.m */; };
-		454AD78B1D255E1F005C6CFF /* CTFilterTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7891D255E1F005C6CFF /* CTFilterTableViewCell.h */; };
-		454AD78C1D255E1F005C6CFF /* CTFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD78A1D255E1F005C6CFF /* CTFilterTableViewCell.m */; };
-		454AD7931D26C985005C6CFF /* StepTwo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4511E5491D183C36000ED6B0 /* StepTwo.storyboard */; };
-		454AD7B11D2A6236005C6CFF /* VehicleDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7AF1D2A6236005C6CFF /* VehicleDetailsViewController.h */; };
-		454AD7B21D2A6236005C6CFF /* VehicleDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7B01D2A6236005C6CFF /* VehicleDetailsViewController.m */; };
-		454AD7B81D2A69D2005C6CFF /* ExpandingInfoView.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7B61D2A69D2005C6CFF /* ExpandingInfoView.h */; };
-		454AD7B91D2A69D2005C6CFF /* ExpandingInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7B71D2A69D2005C6CFF /* ExpandingInfoView.m */; };
-		454AD7BE1D2A7089005C6CFF /* StepThree.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 454AD7AD1D2A5E7B005C6CFF /* StepThree.storyboard */; };
-		454AD7C31D2AAD14005C6CFF /* IncludedCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7C11D2AAD14005C6CFF /* IncludedCollectionViewCell.h */; };
-		454AD7C41D2AAD14005C6CFF /* IncludedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7C21D2AAD14005C6CFF /* IncludedCollectionViewCell.m */; };
-		454AD7C71D2AB8E7005C6CFF /* CTDesignableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7C51D2AB8E7005C6CFF /* CTDesignableView.h */; };
-		454AD7C81D2AB8E7005C6CFF /* CTDesignableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7C61D2AB8E7005C6CFF /* CTDesignableView.m */; };
-		454D20EF1D549AD10050CA9E /* NSDateUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D20ED1D549AD10050CA9E /* NSDateUtils.h */; };
-		454D20F01D549AD10050CA9E /* NSDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D20EE1D549AD10050CA9E /* NSDateUtils.m */; };
-		4550618B1D59CD91004EAC43 /* LocalisedStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 455061891D59CD91004EAC43 /* LocalisedStrings.h */; };
-		4550618C1D59CD91004EAC43 /* LocalisedStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4550618A1D59CD91004EAC43 /* LocalisedStrings.m */; };
-		4557FE421D3636400026F038 /* CarRentalSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4557FE401D3636400026F038 /* CarRentalSearch.m */; };
-		455914B21D782281008AFA51 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455914B11D782281008AFA51 /* CartrawlerAPI.framework */; };
-		455CA0AB1DBF9D5B006472D0 /* VehicleFeaturesDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 455CA0A91DBF9D5B006472D0 /* VehicleFeaturesDataSource.h */; };
-		455CA0AC1DBF9D5B006472D0 /* VehicleFeaturesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 455CA0AA1DBF9D5B006472D0 /* VehicleFeaturesDataSource.m */; };
-		455CA0AF1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 455CA0AD1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.h */; };
-		455CA0B01DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 455CA0AE1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.m */; };
-		455F27571D9D4E2B00B6BB5B /* CTInterstitialViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 455F27551D9D4E2B00B6BB5B /* CTInterstitialViewController.h */; };
-		455F27581D9D4E2B00B6BB5B /* CTInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455F27561D9D4E2B00B6BB5B /* CTInterstitialViewController.m */; };
-		455F27591D9D57E700B6BB5B /* Interstitial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455F27531D9D4B0D00B6BB5B /* Interstitial.storyboard */; };
-		456176591DCA03C500754DFA /* CTMerhandisingBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 456176571DCA03C500754DFA /* CTMerhandisingBanner.h */; };
-		4561765A1DCA03C500754DFA /* CTMerhandisingBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 456176581DCA03C500754DFA /* CTMerhandisingBanner.m */; };
-		45645D8B1D2D4A310075A3D2 /* HTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645D891D2D4A310075A3D2 /* HTMLParser.h */; };
-		45645D8C1D2D4A310075A3D2 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645D8A1D2D4A310075A3D2 /* HTMLParser.m */; };
-		45645DD41D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645DD21D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h */; };
-		45645DD51D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DD31D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.m */; };
-		45645DE11D33DB1A0075A3D2 /* StepFive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45645DE01D33DB1A0075A3D2 /* StepFive.storyboard */; };
-		45645DF51D33E70B0075A3D2 /* PaymentSummaryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645DF31D33E70B0075A3D2 /* PaymentSummaryViewController.h */; };
-		45645DF61D33E70B0075A3D2 /* PaymentSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DF41D33E70B0075A3D2 /* PaymentSummaryViewController.m */; };
-		45645DFA1D33E8240075A3D2 /* PaymentSummaryTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645DF81D33E8240075A3D2 /* PaymentSummaryTableViewCell.h */; };
-		45645DFB1D33E8240075A3D2 /* PaymentSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DF91D33E8240075A3D2 /* PaymentSummaryTableViewCell.m */; };
-		456979281D2C03E7006A321E /* TabButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 456979261D2C03E7006A321E /* TabButton.h */; };
-		456979291D2C03E7006A321E /* TabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 456979271D2C03E7006A321E /* TabButton.m */; };
-		4569984D1D9428F600551F9F /* SupplierRatingCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4569984B1D9428F600551F9F /* SupplierRatingCollectionViewCell.h */; };
-		4569984E1D9428F600551F9F /* SupplierRatingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4569984C1D9428F600551F9F /* SupplierRatingCollectionViewCell.m */; };
-		457CF8891D78425900BC55E2 /* GroundTransport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45EE26DA1D37924000A1FB51 /* GroundTransport.storyboard */; };
-		457CF88D1D785ADC00BC55E2 /* GooglePlaceService.h in Headers */ = {isa = PBXBuildFile; fileRef = 457CF88B1D785ADC00BC55E2 /* GooglePlaceService.h */; };
-		457CF88E1D785ADC00BC55E2 /* GooglePlaceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 457CF88C1D785ADC00BC55E2 /* GooglePlaceService.m */; };
-		45819FA51D3500E8001AE0F5 /* NSNumberUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45819FA31D3500E8001AE0F5 /* NSNumberUtils.h */; };
-		45819FA61D3500E8001AE0F5 /* NSNumberUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45819FA41D3500E8001AE0F5 /* NSNumberUtils.m */; };
-		45819FAA1D35036A001AE0F5 /* BookingSummaryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45819FA81D35036A001AE0F5 /* BookingSummaryViewController.h */; };
-		45819FAB1D35036A001AE0F5 /* BookingSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45819FA91D35036A001AE0F5 /* BookingSummaryViewController.m */; };
-		458773631D7F1284000CB1E5 /* GTGenericValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 458773611D7F1284000CB1E5 /* GTGenericValidation.h */; };
-		458773641D7F1284000CB1E5 /* GTGenericValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 458773621D7F1284000CB1E5 /* GTGenericValidation.m */; };
-		458773681D7F1478000CB1E5 /* GTPaymentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 458773661D7F1478000CB1E5 /* GTPaymentViewController.h */; };
-		458773691D7F1478000CB1E5 /* GTPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 458773671D7F1478000CB1E5 /* GTPaymentViewController.m */; };
-		4587736C1D7F1517000CB1E5 /* GTPaymentCompletionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736A1D7F1517000CB1E5 /* GTPaymentCompletionViewController.h */; };
-		4587736D1D7F1517000CB1E5 /* GTPaymentCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4587736B1D7F1517000CB1E5 /* GTPaymentCompletionViewController.m */; };
-		458773701D806064000CB1E5 /* GTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736E1D806064000CB1E5 /* GTPaymentRequest.h */; };
-		458773711D806064000CB1E5 /* GTPaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4587736F1D806064000CB1E5 /* GTPaymentRequest.m */; };
-		4588E3131D538803008F4267 /* CTPCI.html in Resources */ = {isa = PBXBuildFile; fileRef = 4588E3121D538803008F4267 /* CTPCI.html */; };
-		4588E3181D538FB1008F4267 /* PaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4588E3161D538FB1008F4267 /* PaymentRequest.h */; };
-		4588E3191D538FB1008F4267 /* PaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4588E3171D538FB1008F4267 /* PaymentRequest.m */; };
-		458954921D58C1B00006D34F /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 458954901D58C1B00006D34F /* Reachability.h */; };
-		458954931D58C1B00006D34F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 458954911D58C1B00006D34F /* Reachability.m */; };
-		4590BBF21D9512F000CD9ED5 /* PageSelectionCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4590BBF01D9512F000CD9ED5 /* PageSelectionCollectionViewCell.h */; };
-		4590BBF31D9512F000CD9ED5 /* PageSelectionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4590BBF11D9512F000CD9ED5 /* PageSelectionCollectionViewCell.m */; };
-		45A7B7401D9AAA04006611EB /* GTFilterCollectionViewFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 45A7B73E1D9AAA04006611EB /* GTFilterCollectionViewFlowLayout.h */; };
-		45A7B7411D9AAA04006611EB /* GTFilterCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A7B73F1D9AAA04006611EB /* GTFilterCollectionViewFlowLayout.m */; };
-		45AC545D1D1309F300805268 /* JVFloatLabeledTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E51D1302FF00ACF604 /* JVFloatLabeledTextField.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC545E1D1309FB00805268 /* NSStringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E71D1302FF00ACF604 /* NSStringUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC545F1D130A0000805268 /* CTCheckbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E11D1302EF00ACF604 /* CTCheckbox.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC54601D130A0300805268 /* CTButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942DD1D1302DA00ACF604 /* CTButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45AC54611D130A0800805268 /* CTLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942D91D1302CA00ACF604 /* CTLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45AC54621D130A1600805268 /* LocaleUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942CB1D1302A200ACF604 /* LocaleUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC54631D130A1600805268 /* CTImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942CD1D1302A200ACF604 /* CTImageCache.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC54641D130A1600805268 /* CTPlaceholderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942CF1D1302A200ACF604 /* CTPlaceholderView.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC54651D130A1600805268 /* DateUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942D11D1302A200ACF604 /* DateUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC54681D130A1600805268 /* CTTimePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942C11D13022100ACF604 /* CTTimePickerView.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC54691D130A1600805268 /* CTLocationSearchViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942BA1D13020300ACF604 /* CTLocationSearchViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC546A1D130A1600805268 /* LocationSearchDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942BC1D13020300ACF604 /* LocationSearchDataSource.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC546B1D130A1600805268 /* CTCalendarViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A31D1301C600ACF604 /* CTCalendarViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC546C1D130A1600805268 /* CTCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A51D1301C600ACF604 /* CTCalendarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45AC546D1D130A1600805268 /* CTCalendarTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A71D1301C600ACF604 /* CTCalendarTableViewCell.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC546E1D130A1600805268 /* CTDateCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A91D1301C600ACF604 /* CTDateCollectionViewCell.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC546F1D130A1600805268 /* CalendarLogicController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942AB1D1301C600ACF604 /* CalendarLogicController.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC54701D130A1600805268 /* CTMiddleDateCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942AD1D1301C600ACF604 /* CTMiddleDateCell.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC54711D130A1600805268 /* CTSelectView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E9429F1D13014400ACF604 /* CTSelectView.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC54721D130A1600805268 /* SearchDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E9429B1D13012400ACF604 /* SearchDetailsViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC54731D130A1600805268 /* VehicleTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942C61D13028600ACF604 /* VehicleTableViewCell.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45AC54761D130A1600805268 /* CTVehicleSelectionDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942951D1300ED00ACF604 /* CTVehicleSelectionDataSource.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45B264F71D902C8B000005F2 /* GTBookingCompletionValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B264F51D902C8B000005F2 /* GTBookingCompletionValidation.h */; };
-		45B264F81D902C8B000005F2 /* GTBookingCompletionValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B264F61D902C8B000005F2 /* GTBookingCompletionValidation.m */; };
-		45B264FB1D902C9C000005F2 /* BookingCompletionValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B264F91D902C9C000005F2 /* BookingCompletionValidation.h */; };
-		45B264FC1D902C9C000005F2 /* BookingCompletionValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B264FA1D902C9C000005F2 /* BookingCompletionValidation.m */; };
-		45BC88D41DC0F8460041BD74 /* CTToolTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BC88D21DC0F8460041BD74 /* CTToolTip.m */; };
-		45BC88D51DC0F8460041BD74 /* CTToolTip.h in Headers */ = {isa = PBXBuildFile; fileRef = 45BC88D31DC0F8460041BD74 /* CTToolTip.h */; };
-		45C1ECF51D5103150059EF89 /* CTFilterTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C1ECF31D5103150059EF89 /* CTFilterTableView.h */; };
-		45C1ECF61D5103150059EF89 /* CTFilterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C1ECF41D5103150059EF89 /* CTFilterTableView.m */; };
-		45C488CB1D479B020044612C /* OptionalExtrasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C488C91D479B020044612C /* OptionalExtrasView.h */; };
-		45C488CC1D479B020044612C /* OptionalExtrasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C488CA1D479B020044612C /* OptionalExtrasView.m */; };
-		45C488D01D47AF4E0044612C /* OptionalExtraTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C488CD1D479B260044612C /* OptionalExtraTableViewCell.xib */; };
-		45C48D4F1D5226CA005C9377 /* CTFilterFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C48D4D1D5226CA005C9377 /* CTFilterFactory.h */; };
-		45C48D501D5226CA005C9377 /* CTFilterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C48D4E1D5226CA005C9377 /* CTFilterFactory.m */; };
-		45CB6D041D9C139F00754DCD /* CTInclusionTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CB6D021D9C139F00754DCD /* CTInclusionTableViewCell.h */; };
-		45CB6D051D9C139F00754DCD /* CTInclusionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CB6D031D9C139F00754DCD /* CTInclusionTableViewCell.m */; };
-		45CFC7DD1D2CF822006E6F83 /* ExtrasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFC7DB1D2CF822006E6F83 /* ExtrasViewController.h */; };
-		45CFC7DE1D2CF822006E6F83 /* ExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFC7DC1D2CF822006E6F83 /* ExtrasViewController.m */; };
-		45CFC7DF1D2CF95C006E6F83 /* StepFour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45CFC7D91D2CF4D9006E6F83 /* StepFour.storyboard */; };
-		45D6CC911DA55FBB000D7A6C /* FlightNumberValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D6CC8F1DA55FBB000D7A6C /* FlightNumberValidation.h */; };
-		45D6CC921DA55FBB000D7A6C /* FlightNumberValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D6CC901DA55FBB000D7A6C /* FlightNumberValidation.m */; };
-		45D6CC9B1DA6A569000D7A6C /* CTFilterContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D6CC991DA6A569000D7A6C /* CTFilterContainer.h */; };
-		45D6CC9C1DA6A569000D7A6C /* CTFilterContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D6CC9A1DA6A569000D7A6C /* CTFilterContainer.m */; };
-		45D8665D1D13F0E900D19B74 /* StepOne.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45AC547B1D13E47F00805268 /* StepOne.storyboard */; };
-		45D866D71D141BB100D19B74 /* LinkerUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D866D51D141BB100D19B74 /* LinkerUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		45D866D81D141BB100D19B74 /* LinkerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D866D61D141BB100D19B74 /* LinkerUtils.m */; };
-		45D866D91D142CAC00D19B74 /* VehicleTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E942C81D13028600ACF604 /* VehicleTableViewCell_iPhone.xib */; };
-		45DC6B8C1D82BE0400010B4D /* GTInterstitialViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45DC6B8A1D82BE0400010B4D /* GTInterstitialViewController.h */; };
-		45DC6B8D1D82BE0400010B4D /* GTInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45DC6B8B1D82BE0400010B4D /* GTInterstitialViewController.m */; };
-		45DD07561D94162F00501FEE /* VehicleDetailsPageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45DD07541D94162F00501FEE /* VehicleDetailsPageViewController.h */; };
-		45DD07571D94162F00501FEE /* VehicleDetailsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45DD07551D94162F00501FEE /* VehicleDetailsPageViewController.m */; };
-		45E84CCB1D79C61600D6BC47 /* InclusionCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E84CC91D79C61600D6BC47 /* InclusionCollectionViewCell.h */; };
-		45E84CCC1D79C61600D6BC47 /* InclusionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E84CCA1D79C61600D6BC47 /* InclusionCollectionViewCell.m */; };
-		45E84CCF1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E84CCD1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.h */; };
-		45E84CD01D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E84CCE1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m */; };
-		45E8689D1DC24AD400DB84EF /* CTInclusionsDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E8689B1DC24AD400DB84EF /* CTInclusionsDataSource.h */; };
-		45E8689E1DC24AD400DB84EF /* CTInclusionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E8689C1DC24AD400DB84EF /* CTInclusionsDataSource.m */; };
-		45E942491D12FF0F00ACF604 /* CartrawlerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */; };
-		45E942971D1300ED00ACF604 /* CTVehicleSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942941D1300ED00ACF604 /* CTVehicleSelectionView.m */; };
-		45E942981D1300ED00ACF604 /* CTVehicleSelectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942961D1300ED00ACF604 /* CTVehicleSelectionDataSource.m */; };
-		45E9429D1D13012400ACF604 /* SearchDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E9429C1D13012400ACF604 /* SearchDetailsViewController.m */; };
-		45E942A11D13014400ACF604 /* CTSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A01D13014400ACF604 /* CTSelectView.m */; };
-		45E942AF1D1301C600ACF604 /* CTCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A41D1301C600ACF604 /* CTCalendarViewController.m */; };
-		45E942B01D1301C600ACF604 /* CTCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A61D1301C600ACF604 /* CTCalendarView.m */; };
-		45E942B11D1301C600ACF604 /* CTCalendarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A81D1301C600ACF604 /* CTCalendarTableViewCell.m */; };
-		45E942B21D1301C600ACF604 /* CTDateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AA1D1301C600ACF604 /* CTDateCollectionViewCell.m */; };
-		45E942B31D1301C600ACF604 /* CalendarLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AC1D1301C600ACF604 /* CalendarLogicController.m */; };
-		45E942B41D1301C600ACF604 /* CTMiddleDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AE1D1301C600ACF604 /* CTMiddleDateCell.m */; };
-		45E942B81D1301EE00ACF604 /* VehicleSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942B71D1301EE00ACF604 /* VehicleSelectionViewController.m */; };
-		45E942BE1D13020300ACF604 /* CTLocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942BB1D13020300ACF604 /* CTLocationSearchViewController.m */; };
-		45E942BF1D13020300ACF604 /* LocationSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942BD1D13020300ACF604 /* LocationSearchDataSource.m */; };
-		45E942C31D13022100ACF604 /* CTTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942C21D13022100ACF604 /* CTTimePickerView.m */; };
-		45E942C91D13028600ACF604 /* VehicleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942C71D13028600ACF604 /* VehicleTableViewCell.m */; };
-		45E942D31D1302A200ACF604 /* LocaleUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942CC1D1302A200ACF604 /* LocaleUtils.m */; };
-		45E942D41D1302A200ACF604 /* CTImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942CE1D1302A200ACF604 /* CTImageCache.m */; };
-		45E942D51D1302A200ACF604 /* CTPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942D01D1302A200ACF604 /* CTPlaceholderView.m */; };
-		45E942D61D1302A200ACF604 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942D21D1302A200ACF604 /* DateUtils.m */; };
-		45E942DB1D1302CA00ACF604 /* CTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942DA1D1302CA00ACF604 /* CTLabel.m */; };
-		45E942DF1D1302DA00ACF604 /* CTButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942DE1D1302DA00ACF604 /* CTButton.m */; };
-		45E942E31D1302EF00ACF604 /* CTCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942E21D1302EF00ACF604 /* CTCheckbox.m */; };
-		45E942E91D1302FF00ACF604 /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942E61D1302FF00ACF604 /* JVFloatLabeledTextField.m */; };
-		45E942EA1D1302FF00ACF604 /* NSStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942E81D1302FF00ACF604 /* NSStringUtils.m */; };
-		45E942EC1D1303C500ACF604 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E942EB1D1303C500ACF604 /* UIKit.framework */; };
-		45E942EE1D13040800ACF604 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E942ED1D13040800ACF604 /* Foundation.framework */; };
-		45E942F11D13060E00ACF604 /* CartrawlerSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45EB45B41D86FB1600090B7C /* InclusionsTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EB45B21D86FB1600090B7C /* InclusionsTableViewCell.h */; };
-		45EB45B51D86FB1600090B7C /* InclusionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EB45B31D86FB1600090B7C /* InclusionsTableViewCell.m */; };
-		45EC250B1D48E04700A3C09D /* CTSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC25091D48E04700A3C09D /* CTSegmentedControl.h */; };
-		45EC250C1D48E04700A3C09D /* CTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC250A1D48E04700A3C09D /* CTSegmentedControl.m */; };
-		45EC250F1D49132B00A3C09D /* CTViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC250D1D49132B00A3C09D /* CTViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45EC25101D49132B00A3C09D /* CTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC250E1D49132B00A3C09D /* CTViewController.m */; };
-		45EE26E01D37A79900A1FB51 /* GroundTransportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EE26DE1D37A79900A1FB51 /* GroundTransportViewController.m */; };
-		45F4735C1D36451F00DF548B /* AddressDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4735A1D36451F00DF548B /* AddressDetailsViewController.h */; };
-		45F4735D1D36451F00DF548B /* AddressDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4735B1D36451F00DF548B /* AddressDetailsViewController.m */; };
-		45F4735F1D36476900DF548B /* StepSix.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F4735E1D3646D100DF548B /* StepSix.storyboard */; };
-		45F473611D36640F00DF548B /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F473601D3655EB00DF548B /* Payment.storyboard */; };
-		45F473651D366D6A00DF548B /* PaymentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F473631D366D6A00DF548B /* PaymentViewController.h */; };
-		45F473661D366D6A00DF548B /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F473641D366D6A00DF548B /* PaymentViewController.m */; };
+		455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736E1D806064000CB1E5 /* GTPaymentRequest.h */; };
+		455B58341DCC914300CA4790 /* GTPaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4587736F1D806064000CB1E5 /* GTPaymentRequest.m */; };
+		455B58351DCC914300CA4790 /* PaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4588E3161D538FB1008F4267 /* PaymentRequest.h */; };
+		455B58361DCC914300CA4790 /* PaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4588E3171D538FB1008F4267 /* PaymentRequest.m */; };
+		455B58371DCC914300CA4790 /* CTPaymentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F161D7EFF3400B9324D /* CTPaymentView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58381DCC914300CA4790 /* CTPaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F171D7EFF3400B9324D /* CTPaymentView.m */; };
+		455B583C1DCC914300CA4790 /* CTSDKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E51C1D1450CE000ED6B0 /* CTSDKSettings.m */; };
+		455B58481DCC914300CA4790 /* CTToolTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BC88D21DC0F8460041BD74 /* CTToolTip.m */; };
+		455B58491DCC914300CA4790 /* CTToolTip.h in Headers */ = {isa = PBXBuildFile; fileRef = 45BC88D31DC0F8460041BD74 /* CTToolTip.h */; };
+		455B584A1DCC914300CA4790 /* CTNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5301D17F6C8000ED6B0 /* CTNavigationBar.h */; };
+		455B584B1DCC914300CA4790 /* CTNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5311D17F6C8000ED6B0 /* CTNavigationBar.m */; };
+		455B584C1DCC914300CA4790 /* CTNavigationItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5351D17F766000ED6B0 /* CTNavigationItem.h */; };
+		455B584D1DCC914300CA4790 /* CTNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5361D17F766000ED6B0 /* CTNavigationItem.m */; };
+		455B584E1DCC914300CA4790 /* CTNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E53D1D17F999000ED6B0 /* CTNavigationController.h */; };
+		455B584F1DCC914300CA4790 /* CTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E53E1D17F999000ED6B0 /* CTNavigationController.m */; };
+		455B58501DCC914300CA4790 /* CTStepper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4544463C1D992BAA0047873F /* CTStepper.h */; };
+		455B58511DCC914300CA4790 /* CTStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4544463D1D992BAA0047873F /* CTStepper.m */; };
+		455B58521DCC914300CA4790 /* CTFilterTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C1ECF31D5103150059EF89 /* CTFilterTableView.h */; };
+		455B58531DCC914300CA4790 /* CTFilterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C1ECF41D5103150059EF89 /* CTFilterTableView.m */; };
+		455B58541DCC914300CA4790 /* CTSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC25091D48E04700A3C09D /* CTSegmentedControl.h */; };
+		455B58551DCC914300CA4790 /* CTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC250A1D48E04700A3C09D /* CTSegmentedControl.m */; };
+		455B58561DCC914300CA4790 /* CTPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45137C821D476AB100089928 /* CTPickerView.h */; };
+		455B58571DCC914300CA4790 /* CTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45137C831D476AB100089928 /* CTPickerView.m */; };
+		455B58581DCC914300CA4790 /* CTTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4530DA311D46660900CF3186 /* CTTextView.h */; };
+		455B58591DCC914300CA4790 /* CTTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4530DA321D46660900CF3186 /* CTTextView.m */; };
+		455B585A1DCC914300CA4790 /* CTPlaceholderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942CF1D1302A200ACF604 /* CTPlaceholderView.h */; };
+		455B585B1DCC914300CA4790 /* CTPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942D01D1302A200ACF604 /* CTPlaceholderView.m */; };
+		455B585C1DCC914300CA4790 /* CTView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E52C1D17F4B0000ED6B0 /* CTView.h */; };
+		455B585D1DCC914300CA4790 /* CTView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E52D1D17F4B0000ED6B0 /* CTView.m */; };
+		455B585E1DCC914300CA4790 /* CTDesignableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7C51D2AB8E7005C6CFF /* CTDesignableView.h */; };
+		455B585F1DCC914300CA4790 /* CTDesignableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7C61D2AB8E7005C6CFF /* CTDesignableView.m */; };
+		455B58601DCC914300CA4790 /* CTNavigationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4544464A1D9A7FE80047873F /* CTNavigationView.h */; };
+		455B58611DCC914300CA4790 /* CTNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4544464B1D9A7FE80047873F /* CTNavigationView.m */; };
+		455B58621DCC914300CA4790 /* CTAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5221D17DFA4000ED6B0 /* CTAppearance.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58631DCC914300CA4790 /* CTAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5231D17DFA4000ED6B0 /* CTAppearance.m */; };
+		455B58641DCC914300CA4790 /* JVFloatLabeledTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E51D1302FF00ACF604 /* JVFloatLabeledTextField.h */; };
+		455B58651DCC914300CA4790 /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942E61D1302FF00ACF604 /* JVFloatLabeledTextField.m */; };
+		455B58661DCC914300CA4790 /* NSStringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E71D1302FF00ACF604 /* NSStringUtils.h */; };
+		455B58671DCC914300CA4790 /* NSStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942E81D1302FF00ACF604 /* NSStringUtils.m */; };
+		455B58681DCC914300CA4790 /* CTTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5411D181B36000ED6B0 /* CTTextField.h */; };
+		455B58691DCC914300CA4790 /* CTTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5421D181B36000ED6B0 /* CTTextField.m */; };
+		455B586A1DCC914300CA4790 /* CTCheckbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E11D1302EF00ACF604 /* CTCheckbox.h */; };
+		455B586B1DCC914300CA4790 /* CTCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942E21D1302EF00ACF604 /* CTCheckbox.m */; };
+		455B586C1DCC914300CA4790 /* CTButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942DD1D1302DA00ACF604 /* CTButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B586D1DCC914300CA4790 /* CTButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942DE1D1302DA00ACF604 /* CTButton.m */; };
+		455B586E1DCC914300CA4790 /* UnderLinedButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 45361BE91D2BA1BA00295124 /* UnderLinedButton.h */; };
+		455B586F1DCC914300CA4790 /* UnderLinedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 45361BEA1D2BA1BA00295124 /* UnderLinedButton.m */; };
+		455B58701DCC914300CA4790 /* TabButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 456979261D2C03E7006A321E /* TabButton.h */; };
+		455B58711DCC914300CA4790 /* TabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 456979271D2C03E7006A321E /* TabButton.m */; };
+		455B58721DCC914300CA4790 /* GTBookNowButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 451B51391D38DD35004EBFDC /* GTBookNowButton.h */; };
+		455B58731DCC914300CA4790 /* GTBookNowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B513A1D38DD35004EBFDC /* GTBookNowButton.m */; };
+		455B58741DCC914300CA4790 /* CTLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942D91D1302CA00ACF604 /* CTLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58751DCC914300CA4790 /* CTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942DA1D1302CA00ACF604 /* CTLabel.m */; };
+		455B58761DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D20ED1D549AD10050CA9E /* CartrawlerSDK+NSDateUtils.h */; };
+		455B58771DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D20EE1D549AD10050CA9E /* CartrawlerSDK+NSDateUtils.m */; };
+		455B587B1DCC914300CA4790 /* LocaleUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942CB1D1302A200ACF604 /* LocaleUtils.h */; };
+		455B587C1DCC914300CA4790 /* LocaleUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942CC1D1302A200ACF604 /* LocaleUtils.m */; };
+		455B587D1DCC914300CA4790 /* CTImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942CD1D1302A200ACF604 /* CTImageCache.h */; };
+		455B587E1DCC914300CA4790 /* CTImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942CE1D1302A200ACF604 /* CTImageCache.m */; };
+		455B587F1DCC914300CA4790 /* DateUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942D11D1302A200ACF604 /* DateUtils.h */; };
+		455B58801DCC914300CA4790 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942D21D1302A200ACF604 /* DateUtils.m */; };
+		455B58811DCC914300CA4790 /* NSNumberUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45819FA31D3500E8001AE0F5 /* NSNumberUtils.h */; };
+		455B58821DCC914300CA4790 /* NSNumberUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45819FA41D3500E8001AE0F5 /* NSNumberUtils.m */; };
+		455B58831DCC914300CA4790 /* LinkerUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D866D51D141BB100D19B74 /* LinkerUtils.h */; };
+		455B58841DCC914300CA4790 /* LinkerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D866D61D141BB100D19B74 /* LinkerUtils.m */; };
+		455B58851DCC914300CA4790 /* HTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645D891D2D4A310075A3D2 /* HTMLParser.h */; };
+		455B58861DCC914300CA4790 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645D8A1D2D4A310075A3D2 /* HTMLParser.m */; };
+		455B58871DCC914300CA4790 /* CarRentalSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 4557FE3F1D3636400026F038 /* CarRentalSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58881DCC914300CA4790 /* CarRentalSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4557FE401D3636400026F038 /* CarRentalSearch.m */; };
+		455B58891DCC914300CA4790 /* GroundTransportSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8EFC1D7ECCE900B9324D /* GroundTransportSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B588A1DCC914300CA4790 /* GroundTransportSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8EFD1D7ECCE900B9324D /* GroundTransportSearch.m */; };
+		455B588B1DCC914300CA4790 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 458954901D58C1B00006D34F /* Reachability.h */; };
+		455B588C1DCC914300CA4790 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 458954911D58C1B00006D34F /* Reachability.m */; };
+		455B588D1DCC914300CA4790 /* LocalisedStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 455061891D59CD91004EAC43 /* LocalisedStrings.h */; };
+		455B588E1DCC914300CA4790 /* LocalisedStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4550618A1D59CD91004EAC43 /* LocalisedStrings.m */; };
+		455B588F1DCC914300CA4790 /* FlightNumberValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D6CC8F1DA55FBB000D7A6C /* FlightNumberValidation.h */; };
+		455B58901DCC914300CA4790 /* FlightNumberValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D6CC901DA55FBB000D7A6C /* FlightNumberValidation.m */; };
+		455B58911DCC914300CA4790 /* DataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E7F1DBE1197001A4062 /* DataStore.h */; };
+		455B58921DCC914300CA4790 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E801DBE1197001A4062 /* DataStore.m */; };
+		455B58931DCC914300CA4790 /* UIColorUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45130C931DBF674F0081582B /* UIColorUtils.h */; };
+		455B58941DCC914300CA4790 /* UIColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45130C941DBF674F0081582B /* UIColorUtils.m */; };
+		455B58951DCC914300CA4790 /* RentalBookingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E1E1DAFBE9D001A4062 /* RentalBookingsViewController.h */; };
+		455B58961DCC914300CA4790 /* RentalBookingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E1F1DAFBE9D001A4062 /* RentalBookingsViewController.m */; };
+		455B58971DCC914300CA4790 /* RentalBookingCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E261DAFC1E5001A4062 /* RentalBookingCell.h */; };
+		455B58981DCC914300CA4790 /* RentalBookingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E271DAFC1E5001A4062 /* RentalBookingCell.m */; };
+		455B58991DCC914300CA4790 /* RentalBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E351DAFC564001A4062 /* RentalBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B589A1DCC914300CA4790 /* RentalBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E361DAFC564001A4062 /* RentalBooking.m */; };
+		455B589B1DCC914300CA4790 /* GTBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E311DAFC548001A4062 /* GTBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B589C1DCC914300CA4790 /* GTBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E321DAFC548001A4062 /* GTBooking.m */; };
+		455B589D1DCC914300CA4790 /* GTBookingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E221DAFBEAB001A4062 /* GTBookingsViewController.h */; };
+		455B589E1DCC914300CA4790 /* GTBookingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E231DAFBEAB001A4062 /* GTBookingsViewController.m */; };
+		455B589F1DCC914300CA4790 /* GTBookingTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E2A1DAFC1F3001A4062 /* GTBookingTableViewCell.h */; };
+		455B58A01DCC914300CA4790 /* GTBookingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E2B1DAFC1F3001A4062 /* GTBookingTableViewCell.m */; };
+		455B58A11DCC914300CA4790 /* GTSearchValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F021D7ECE2D00B9324D /* GTSearchValidation.h */; };
+		455B58A21DCC914300CA4790 /* GTSearchValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F031D7ECE2D00B9324D /* GTSearchValidation.m */; };
+		455B58A31DCC914300CA4790 /* GTSelectionValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F0E1D7EF37700B9324D /* GTSelectionValidation.h */; };
+		455B58A41DCC914300CA4790 /* GTSelectionValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F0F1D7EF37700B9324D /* GTSelectionValidation.m */; };
+		455B58A51DCC914300CA4790 /* GTPassengerDetailsValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F121D7EF63D00B9324D /* GTPassengerDetailsValidation.h */; };
+		455B58A61DCC914300CA4790 /* GTPassengerDetailsValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F131D7EF63D00B9324D /* GTPassengerDetailsValidation.m */; };
+		455B58A71DCC914300CA4790 /* GTGenericValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 458773611D7F1284000CB1E5 /* GTGenericValidation.h */; };
+		455B58A81DCC914300CA4790 /* GTGenericValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 458773621D7F1284000CB1E5 /* GTGenericValidation.m */; };
+		455B58A91DCC914300CA4790 /* GTBookingCompletionValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B264F51D902C8B000005F2 /* GTBookingCompletionValidation.h */; };
+		455B58AA1DCC914300CA4790 /* GTBookingCompletionValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B264F61D902C8B000005F2 /* GTBookingCompletionValidation.m */; };
+		455B58AB1DCC914300CA4790 /* GenericValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451FE5A91D6EF248004D85D1 /* GenericValidation.h */; };
+		455B58AC1DCC914400CA4790 /* GenericValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451FE5AA1D6EF248004D85D1 /* GenericValidation.m */; };
+		455B58AD1DCC914400CA4790 /* InsuranceValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451FE5AE1D6EF286004D85D1 /* InsuranceValidation.m */; };
+		455B58AE1DCC914400CA4790 /* PaymentValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451FE5AF1D6EF286004D85D1 /* PaymentValidation.h */; };
+		455B58AF1DCC914400CA4790 /* PaymentValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451FE5B01D6EF286004D85D1 /* PaymentValidation.m */; };
+		455B58B01DCC914400CA4790 /* SearchValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451FE5B11D6EF286004D85D1 /* SearchValidation.h */; };
+		455B58B11DCC914400CA4790 /* SearchValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451FE5B21D6EF286004D85D1 /* SearchValidation.m */; };
+		455B58B21DCC914400CA4790 /* BookingCompletionValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45B264F91D902C9C000005F2 /* BookingCompletionValidation.h */; };
+		455B58B31DCC914400CA4790 /* BookingCompletionValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B264FA1D902C9C000005F2 /* BookingCompletionValidation.m */; };
+		455B58B41DCC914400CA4790 /* CTValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F061D7ED78100B9324D /* CTValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58B51DCC914400CA4790 /* InsuranceValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451FE5AD1D6EF286004D85D1 /* InsuranceValidation.h */; };
+		455B58B61DCC914400CA4790 /* CTValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F0B1D7EE21200B9324D /* CTValidation.m */; };
+		455B58B71DCC914400CA4790 /* CTViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC250D1D49132B00A3C09D /* CTViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58B81DCC914400CA4790 /* CTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC250E1D49132B00A3C09D /* CTViewController.m */; };
+		455B58B91DCC914400CA4790 /* CTLocationSearchViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942BA1D13020300ACF604 /* CTLocationSearchViewController.h */; };
+		455B58BA1DCC914400CA4790 /* CTLocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942BB1D13020300ACF604 /* CTLocationSearchViewController.m */; };
+		455B58BB1DCC914400CA4790 /* LocationSearchDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942BC1D13020300ACF604 /* LocationSearchDataSource.h */; };
+		455B58BC1DCC914400CA4790 /* LocationSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942BD1D13020300ACF604 /* LocationSearchDataSource.m */; };
+		455B58BD1DCC914400CA4790 /* LocationSearchTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5451D1837D4000ED6B0 /* LocationSearchTableViewCell.h */; };
+		455B58BE1DCC914400CA4790 /* LocationSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5461D1837D4000ED6B0 /* LocationSearchTableViewCell.m */; };
+		455B58BF1DCC914400CA4790 /* CTTimePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942C11D13022100ACF604 /* CTTimePickerView.h */; };
+		455B58C01DCC914400CA4790 /* CTTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942C21D13022100ACF604 /* CTTimePickerView.m */; };
+		455B58C11DCC914400CA4790 /* CTCalendarViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A31D1301C600ACF604 /* CTCalendarViewController.h */; };
+		455B58C21DCC914400CA4790 /* CTCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A41D1301C600ACF604 /* CTCalendarViewController.m */; };
+		455B58C31DCC914400CA4790 /* CTCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A51D1301C600ACF604 /* CTCalendarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58C41DCC914400CA4790 /* CTCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A61D1301C600ACF604 /* CTCalendarView.m */; };
+		455B58C51DCC914400CA4790 /* CTCalendarTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A71D1301C600ACF604 /* CTCalendarTableViewCell.h */; };
+		455B58C61DCC914400CA4790 /* CTCalendarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A81D1301C600ACF604 /* CTCalendarTableViewCell.m */; };
+		455B58C71DCC914400CA4790 /* CTDateCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A91D1301C600ACF604 /* CTDateCollectionViewCell.h */; };
+		455B58C81DCC914400CA4790 /* CTDateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AA1D1301C600ACF604 /* CTDateCollectionViewCell.m */; };
+		455B58C91DCC914400CA4790 /* CalendarLogicController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942AB1D1301C600ACF604 /* CalendarLogicController.h */; };
+		455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AC1D1301C600ACF604 /* CalendarLogicController.m */; };
+		455B58CB1DCC914400CA4790 /* CTMiddleDateCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942AD1D1301C600ACF604 /* CTMiddleDateCell.h */; };
+		455B58CC1DCC914400CA4790 /* CTMiddleDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AE1D1301C600ACF604 /* CTMiddleDateCell.m */; };
+		455B58CD1DCC914400CA4790 /* CTSelectView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E9429F1D13014400ACF604 /* CTSelectView.h */; };
+		455B58CE1DCC914400CA4790 /* CTSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A01D13014400ACF604 /* CTSelectView.m */; };
+		455B58CF1DCC914400CA4790 /* SettingsSelectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D371D3CE08E002C6F6B /* SettingsSelectionViewController.h */; };
+		455B58D01DCC914400CA4790 /* SettingsSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D381D3CE08E002C6F6B /* SettingsSelectionViewController.m */; };
+		455B58D11DCC914400CA4790 /* SettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D471D3D00C8002C6F6B /* SettingsViewController.h */; };
+		455B58D21DCC914400CA4790 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D481D3D00C8002C6F6B /* SettingsViewController.m */; };
+		455B58D31DCC914400CA4790 /* SearchDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E9429B1D13012400ACF604 /* SearchDetailsViewController.h */; };
+		455B58D41DCC914400CA4790 /* SearchDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E9429C1D13012400ACF604 /* SearchDetailsViewController.m */; };
+		455B58D51DCC914400CA4790 /* CTInterstitialViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 455F27551D9D4E2B00B6BB5B /* CTInterstitialViewController.h */; };
+		455B58D61DCC914400CA4790 /* CTInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455F27561D9D4E2B00B6BB5B /* CTInterstitialViewController.m */; };
+		455B58D71DCC914400CA4790 /* CTFilterViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7791D2551F5005C6CFF /* CTFilterViewController.h */; };
+		455B58D81DCC914400CA4790 /* CTFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD77A1D2551F5005C6CFF /* CTFilterViewController.m */; };
+		455B58D91DCC914400CA4790 /* CTFilterDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD77D1D25587D005C6CFF /* CTFilterDataSource.h */; };
+		455B58DA1DCC914400CA4790 /* CTFilterDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD77E1D25587D005C6CFF /* CTFilterDataSource.m */; };
+		455B58DB1DCC914400CA4790 /* CTFilterTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7891D255E1F005C6CFF /* CTFilterTableViewCell.h */; };
+		455B58DC1DCC914400CA4790 /* CTFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD78A1D255E1F005C6CFF /* CTFilterTableViewCell.m */; };
+		455B58DD1DCC914400CA4790 /* CTFilterFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C48D4D1D5226CA005C9377 /* CTFilterFactory.h */; };
+		455B58DE1DCC914400CA4790 /* CTFilterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C48D4E1D5226CA005C9377 /* CTFilterFactory.m */; };
+		455B58DF1DCC914400CA4790 /* CTFilterContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D6CC991DA6A569000D7A6C /* CTFilterContainer.h */; };
+		455B58E01DCC914400CA4790 /* CTFilterContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D6CC9A1DA6A569000D7A6C /* CTFilterContainer.m */; };
+		455B58E11DCC914400CA4790 /* CTVehicleSelectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942931D1300ED00ACF604 /* CTVehicleSelectionView.h */; };
+		455B58E21DCC914400CA4790 /* CTVehicleSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942941D1300ED00ACF604 /* CTVehicleSelectionView.m */; };
+		455B58E31DCC914400CA4790 /* CTVehicleSelectionDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942951D1300ED00ACF604 /* CTVehicleSelectionDataSource.h */; };
+		455B58E41DCC914400CA4790 /* CTVehicleSelectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942961D1300ED00ACF604 /* CTVehicleSelectionDataSource.m */; };
+		455B58E51DCC914400CA4790 /* VehicleTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942C61D13028600ACF604 /* VehicleTableViewCell.h */; };
+		455B58E61DCC914400CA4790 /* VehicleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942C71D13028600ACF604 /* VehicleTableViewCell.m */; };
+		455B58E81DCC914400CA4790 /* CTMerhandisingBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 456176571DCA03C500754DFA /* CTMerhandisingBanner.h */; };
+		455B58E91DCC914400CA4790 /* CTMerhandisingBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 456176581DCA03C500754DFA /* CTMerhandisingBanner.m */; };
+		455B58EA1DCC914400CA4790 /* VehicleSelectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942B61D1301EE00ACF604 /* VehicleSelectionViewController.h */; };
+		455B58EB1DCC914400CA4790 /* VehicleSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942B71D1301EE00ACF604 /* VehicleSelectionViewController.m */; };
+		455B58EC1DCC914400CA4790 /* VehicleDetailsPageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45DD07541D94162F00501FEE /* VehicleDetailsPageViewController.h */; };
+		455B58ED1DCC914400CA4790 /* VehicleDetailsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45DD07551D94162F00501FEE /* VehicleDetailsPageViewController.m */; };
+		455B58EE1DCC914400CA4790 /* PageSelectionCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4590BBF01D9512F000CD9ED5 /* PageSelectionCollectionViewCell.h */; };
+		455B58EF1DCC914400CA4790 /* PageSelectionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4590BBF11D9512F000CD9ED5 /* PageSelectionCollectionViewCell.m */; };
+		455B58F01DCC914400CA4790 /* TermsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451B4BE71D2BC8C3006A57E7 /* TermsViewController.h */; };
+		455B58F11DCC914400CA4790 /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B4BE81D2BC8C3006A57E7 /* TermsViewController.m */; };
+		455B58F21DCC914400CA4790 /* TermsDetailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451B4BEC1D2BC99B006A57E7 /* TermsDetailViewController.h */; };
+		455B58F31DCC914400CA4790 /* TermsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B4BED1D2BC99B006A57E7 /* TermsDetailViewController.m */; };
+		455B58F41DCC914400CA4790 /* ExpandingInfoView.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7B61D2A69D2005C6CFF /* ExpandingInfoView.h */; };
+		455B58F51DCC914400CA4790 /* ExpandingInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7B71D2A69D2005C6CFF /* ExpandingInfoView.m */; };
+		455B58F61DCC914400CA4790 /* SupplierRatingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D331D3929E5002C6F6B /* SupplierRatingsViewController.h */; };
+		455B58F71DCC914400CA4790 /* SupplierRatingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D341D3929E5002C6F6B /* SupplierRatingsViewController.m */; };
+		455B58F81DCC914400CA4790 /* SupplierRatingCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4569984B1D9428F600551F9F /* SupplierRatingCollectionViewCell.h */; };
+		455B58F91DCC914400CA4790 /* SupplierRatingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4569984C1D9428F600551F9F /* SupplierRatingCollectionViewCell.m */; };
+		455B58FA1DCC914400CA4790 /* VehicleFeaturesDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 455CA0A91DBF9D5B006472D0 /* VehicleFeaturesDataSource.h */; };
+		455B58FB1DCC914400CA4790 /* VehicleFeaturesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 455CA0AA1DBF9D5B006472D0 /* VehicleFeaturesDataSource.m */; };
+		455B58FC1DCC914400CA4790 /* VehicleFeatureCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 455CA0AD1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.h */; };
+		455B58FD1DCC914400CA4790 /* VehicleFeatureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 455CA0AE1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.m */; };
+		455B58FE1DCC914400CA4790 /* CTInclusionTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CB6D021D9C139F00754DCD /* CTInclusionTableViewCell.h */; };
+		455B58FF1DCC914400CA4790 /* CTInclusionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CB6D031D9C139F00754DCD /* CTInclusionTableViewCell.m */; };
+		455B59001DCC914400CA4790 /* CTInclusionsDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E8689B1DC24AD400DB84EF /* CTInclusionsDataSource.h */; };
+		455B59011DCC914400CA4790 /* CTInclusionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E8689C1DC24AD400DB84EF /* CTInclusionsDataSource.m */; };
+		455B59021DCC914400CA4790 /* IncludedCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7C11D2AAD14005C6CFF /* IncludedCollectionViewCell.h */; };
+		455B59031DCC914400CA4790 /* IncludedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7C21D2AAD14005C6CFF /* IncludedCollectionViewCell.m */; };
+		455B59041DCC914400CA4790 /* IncludedCollectionViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 453386E11D2BA4EA0021D392 /* IncludedCollectionViewLayout.h */; };
+		455B59051DCC914400CA4790 /* IncludedCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 453386E21D2BA4EA0021D392 /* IncludedCollectionViewLayout.m */; };
+		455B59061DCC914400CA4790 /* VehicleDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7AF1D2A6236005C6CFF /* VehicleDetailsViewController.h */; };
+		455B59071DCC914400CA4790 /* VehicleDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7B01D2A6236005C6CFF /* VehicleDetailsViewController.m */; };
+		455B59081DCC914400CA4790 /* ExtrasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFC7DB1D2CF822006E6F83 /* ExtrasViewController.h */; };
+		455B59091DCC914400CA4790 /* ExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFC7DC1D2CF822006E6F83 /* ExtrasViewController.m */; };
+		455B590A1DCC914400CA4790 /* OptionalExtrasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C488C91D479B020044612C /* OptionalExtrasView.h */; };
+		455B590B1DCC914400CA4790 /* OptionalExtrasView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C488CA1D479B020044612C /* OptionalExtrasView.m */; };
+		455B590C1DCC914400CA4790 /* OptionalExtraTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645DD21D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h */; };
+		455B590D1DCC914400CA4790 /* OptionalExtraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DD31D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.m */; };
+		455B590F1DCC914400CA4790 /* BookingSummaryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45819FA81D35036A001AE0F5 /* BookingSummaryViewController.h */; };
+		455B59101DCC914400CA4790 /* BookingSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45819FA91D35036A001AE0F5 /* BookingSummaryViewController.m */; };
+		455B59111DCC914400CA4790 /* BookingSummaryButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 452521711D35442100B47DE6 /* BookingSummaryButton.h */; };
+		455B59121DCC914400CA4790 /* BookingSummaryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 452521721D35442100B47DE6 /* BookingSummaryButton.m */; };
+		455B59131DCC914400CA4790 /* PaymentSummaryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645DF31D33E70B0075A3D2 /* PaymentSummaryViewController.h */; };
+		455B59141DCC914400CA4790 /* PaymentSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DF41D33E70B0075A3D2 /* PaymentSummaryViewController.m */; };
+		455B59151DCC914400CA4790 /* PaymentSummaryTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645DF81D33E8240075A3D2 /* PaymentSummaryTableViewCell.h */; };
+		455B59161DCC914400CA4790 /* PaymentSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645DF91D33E8240075A3D2 /* PaymentSummaryTableViewCell.m */; };
+		455B59171DCC914400CA4790 /* DriverDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4525216D1D353C4200B47DE6 /* DriverDetailsViewController.h */; };
+		455B59181DCC914400CA4790 /* DriverDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4525216E1D353C4200B47DE6 /* DriverDetailsViewController.m */; };
+		455B59191DCC914400CA4790 /* AddressDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4735A1D36451F00DF548B /* AddressDetailsViewController.h */; };
+		455B591A1DCC914400CA4790 /* AddressDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4735B1D36451F00DF548B /* AddressDetailsViewController.m */; };
+		455B591B1DCC914400CA4790 /* CSVItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D3F1D3CE9D6002C6F6B /* CSVItem.h */; };
+		455B591C1DCC914400CA4790 /* CSVItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D401D3CE9D6002C6F6B /* CSVItem.m */; };
+		455B591D1DCC914400CA4790 /* PaymentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F473631D366D6A00DF548B /* PaymentViewController.h */; };
+		455B591E1DCC914400CA4790 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F473641D366D6A00DF548B /* PaymentViewController.m */; };
+		455B591F1DCC914400CA4790 /* PaymentCompletionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 453FD4411D588076002E4CC6 /* PaymentCompletionViewController.h */; };
+		455B59201DCC914400CA4790 /* PaymentCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 453FD4421D588076002E4CC6 /* PaymentCompletionViewController.m */; };
+		455B59211DCC914400CA4790 /* GTInterstitialViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45DC6B8A1D82BE0400010B4D /* GTInterstitialViewController.h */; };
+		455B59221DCC914400CA4790 /* GTInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45DC6B8B1D82BE0400010B4D /* GTInterstitialViewController.m */; };
+		455B59231DCC914400CA4790 /* GTPaymentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 458773661D7F1478000CB1E5 /* GTPaymentViewController.h */; };
+		455B59241DCC914400CA4790 /* GTPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 458773671D7F1478000CB1E5 /* GTPaymentViewController.m */; };
+		455B59251DCC914400CA4790 /* GTPaymentCompletionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736A1D7F1517000CB1E5 /* GTPaymentCompletionViewController.h */; };
+		455B59261DCC914400CA4790 /* GTPaymentCompletionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4587736B1D7F1517000CB1E5 /* GTPaymentCompletionViewController.m */; };
+		455B59271DCC914400CA4790 /* GooglePlaceService.h in Headers */ = {isa = PBXBuildFile; fileRef = 457CF88B1D785ADC00BC55E2 /* GooglePlaceService.h */; };
+		455B59281DCC914400CA4790 /* GooglePlaceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 457CF88C1D785ADC00BC55E2 /* GooglePlaceService.m */; };
+		455B59291DCC914400CA4790 /* GTPassengerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450DF39C1D81A55900EF51DE /* GTPassengerViewController.h */; };
+		455B592A1DCC914400CA4790 /* GTPassengerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450DF39D1D81A55900EF51DE /* GTPassengerViewController.m */; };
+		455B592B1DCC914400CA4790 /* FilterCollectionViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 4546D40C1D8301700081A2F9 /* FilterCollectionViewDataSource.h */; };
+		455B592C1DCC914400CA4790 /* FilterCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4546D40D1D8301700081A2F9 /* FilterCollectionViewDataSource.m */; };
+		455B592D1DCC914400CA4790 /* GTFilterCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4546D4101D8303A90081A2F9 /* GTFilterCollectionViewCell.h */; };
+		455B592E1DCC914400CA4790 /* GTFilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4546D4111D8303A90081A2F9 /* GTFilterCollectionViewCell.m */; };
+		455B592F1DCC914400CA4790 /* GTFilterCollectionViewFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 45A7B73E1D9AAA04006611EB /* GTFilterCollectionViewFlowLayout.h */; };
+		455B59301DCC914400CA4790 /* GTFilterCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A7B73F1D9AAA04006611EB /* GTFilterCollectionViewFlowLayout.m */; };
+		455B59311DCC914400CA4790 /* InclusionCollectionViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E84CCD1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.h */; };
+		455B59321DCC914400CA4790 /* InclusionCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E84CCE1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m */; };
+		455B59331DCC914400CA4790 /* InclusionCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E84CC91D79C61600D6BC47 /* InclusionCollectionViewCell.h */; };
+		455B59341DCC914400CA4790 /* InclusionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E84CCA1D79C61600D6BC47 /* InclusionCollectionViewCell.m */; };
+		455B59351DCC914400CA4790 /* InclusionFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8EF71D7D8ADB00B9324D /* InclusionFlowLayout.h */; };
+		455B59361DCC914400CA4790 /* InclusionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8EF81D7D8ADB00B9324D /* InclusionFlowLayout.m */; };
+		455B59371DCC914400CA4790 /* GTServiceTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4509B4791D37ED8100259255 /* GTServiceTableViewCell.h */; };
+		455B59381DCC914400CA4790 /* GTServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4509B47A1D37ED8100259255 /* GTServiceTableViewCell.m */; };
+		455B59391DCC914400CA4790 /* GTShuttleTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 450DF3971D8191EA00EF51DE /* GTShuttleTableViewCell.h */; };
+		455B593A1DCC914400CA4790 /* GTShuttleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 450DF3981D8191EA00EF51DE /* GTShuttleTableViewCell.m */; };
+		455B593B1DCC914400CA4790 /* InclusionsTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EB45B21D86FB1600090B7C /* InclusionsTableViewCell.h */; };
+		455B593C1DCC914400CA4790 /* InclusionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EB45B31D86FB1600090B7C /* InclusionsTableViewCell.m */; };
+		455B593D1DCC914400CA4790 /* GroundServicesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4509B4711D37E72700259255 /* GroundServicesViewController.h */; };
+		455B593E1DCC914400CA4790 /* GroundServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4509B4721D37E72700259255 /* GroundServicesViewController.m */; };
+		455B593F1DCC914400CA4790 /* GroundTransportViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EE26DD1D37A79900A1FB51 /* GroundTransportViewController.h */; };
+		455B59401DCC914400CA4790 /* GroundTransportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EE26DE1D37A79900A1FB51 /* GroundTransportViewController.m */; };
+		455B59411DCC914400CA4790 /* PassengerSelectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454446371D991B3C0047873F /* PassengerSelectionViewController.h */; };
+		455B59421DCC914400CA4790 /* PassengerSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454446381D991B3C0047873F /* PassengerSelectionViewController.m */; };
+		455B59441DCC914400CA4790 /* CartrawlerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */; };
+		455B59451DCC91F900CA4790 /* CTPCI.html in Resources */ = {isa = PBXBuildFile; fileRef = 4588E3121D538803008F4267 /* CTPCI.html */; };
+		455B59461DCC91F900CA4790 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4511E51F1D145779000ED6B0 /* Assets.xcassets */; };
+		455B59471DCC91F900CA4790 /* Landing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 451D7E1C1DAFB922001A4062 /* Landing.storyboard */; };
+		455B59481DCC91F900CA4790 /* GroundTransport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45EE26DA1D37924000A1FB51 /* GroundTransport.storyboard */; };
+		455B59491DCC91F900CA4790 /* StepOne.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45AC547B1D13E47F00805268 /* StepOne.storyboard */; };
+		455B594A1DCC91F900CA4790 /* Interstitial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455F27531D9D4B0D00B6BB5B /* Interstitial.storyboard */; };
+		455B594B1DCC91F900CA4790 /* StepTwo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4511E5491D183C36000ED6B0 /* StepTwo.storyboard */; };
+		455B594C1DCC91F900CA4790 /* StepThree.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 454AD7AD1D2A5E7B005C6CFF /* StepThree.storyboard */; };
+		455B594D1DCC91F900CA4790 /* StepFour.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45CFC7D91D2CF4D9006E6F83 /* StepFour.storyboard */; };
+		455B594E1DCC91F900CA4790 /* StepFive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45645DE01D33DB1A0075A3D2 /* StepFive.storyboard */; };
+		455B594F1DCC91F900CA4790 /* StepSix.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F4735E1D3646D100DF548B /* StepSix.storyboard */; };
+		455B59501DCC91F900CA4790 /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45F473601D3655EB00DF548B /* Payment.storyboard */; };
+		455B59511DCC91F900CA4790 /* CTCurrency.csv in Resources */ = {isa = PBXBuildFile; fileRef = 450F9D3B1D3CE8D5002C6F6B /* CTCurrency.csv */; };
+		455B59521DCC91F900CA4790 /* CTISOCountries.csv in Resources */ = {isa = PBXBuildFile; fileRef = 450F9D3C1D3CE8D5002C6F6B /* CTISOCountries.csv */; };
+		455B59531DCC91F900CA4790 /* CTLanguages.csv in Resources */ = {isa = PBXBuildFile; fileRef = 450F9D4B1D3D14FF002C6F6B /* CTLanguages.csv */; };
+		455B59541DCC91F900CA4790 /* VehicleTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E942C81D13028600ACF604 /* VehicleTableViewCell_iPhone.xib */; };
+		455B59551DCC91F900CA4790 /* OptionalExtraTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C488CD1D479B260044612C /* OptionalExtraTableViewCell.xib */; };
+		455B59581DCC954400CA4790 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455B59571DCC954400CA4790 /* CartrawlerAPI.framework */; };
+		455B59591DCC96D500CA4790 /* CartrawlerSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		45AC545A1D1307AB00805268 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45E9423B1D12FF0F00ACF604 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 45E942421D12FF0F00ACF604;
-			remoteInfo = CartrawlerSDK;
-		};
-		45D866C61D14076B00D19B74 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45E9423B1D12FF0F00ACF604 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 45D866561D13F0CA00D19B74;
-			remoteInfo = CartrawlerBundle;
-		};
-		45D866C81D14096100D19B74 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45E9423B1D12FF0F00ACF604 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 45D866561D13F0CA00D19B74;
-			remoteInfo = CartrawlerBundle;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		45E942411D12FF0F00ACF604 /* Copy Files (1 item) */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			name = "Copy Files (1 item)";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4509B4711D37E72700259255 /* GroundServicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundServicesViewController.h; sourceTree = "<group>"; };
@@ -470,13 +419,15 @@
 		454AD7C21D2AAD14005C6CFF /* IncludedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncludedCollectionViewCell.m; sourceTree = "<group>"; };
 		454AD7C51D2AB8E7005C6CFF /* CTDesignableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDesignableView.h; sourceTree = "<group>"; };
 		454AD7C61D2AB8E7005C6CFF /* CTDesignableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDesignableView.m; sourceTree = "<group>"; };
-		454D20ED1D549AD10050CA9E /* NSDateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateUtils.h; sourceTree = "<group>"; };
-		454D20EE1D549AD10050CA9E /* NSDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateUtils.m; sourceTree = "<group>"; };
+		454D20ED1D549AD10050CA9E /* CartrawlerSDK+NSDateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+NSDateUtils.h"; sourceTree = "<group>"; };
+		454D20EE1D549AD10050CA9E /* CartrawlerSDK+NSDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+NSDateUtils.m"; sourceTree = "<group>"; };
 		455061891D59CD91004EAC43 /* LocalisedStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalisedStrings.h; sourceTree = "<group>"; };
 		4550618A1D59CD91004EAC43 /* LocalisedStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalisedStrings.m; sourceTree = "<group>"; };
 		4557FE3F1D3636400026F038 /* CarRentalSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarRentalSearch.h; sourceTree = "<group>"; };
 		4557FE401D3636400026F038 /* CarRentalSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarRentalSearch.m; sourceTree = "<group>"; };
-		455914B11D782281008AFA51 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerAPI.framework; path = ../CartrawlerAPI.framework; sourceTree = "<group>"; };
+		455B582B1DCC90D300CA4790 /* CartrawlerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CartrawlerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		455B582E1DCC90D300CA4790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		455B59571DCC954400CA4790 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerAPI.framework; path = "../OTA API/build/Debug-iphoneos/CartrawlerAPI.framework"; sourceTree = "<group>"; };
 		455CA0A91DBF9D5B006472D0 /* VehicleFeaturesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleFeaturesDataSource.h; sourceTree = "<group>"; };
 		455CA0AA1DBF9D5B006472D0 /* VehicleFeaturesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleFeaturesDataSource.m; sourceTree = "<group>"; };
 		455CA0AD1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleFeatureCollectionViewCell.h; sourceTree = "<group>"; };
@@ -545,7 +496,6 @@
 		45D6CC901DA55FBB000D7A6C /* FlightNumberValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightNumberValidation.m; sourceTree = "<group>"; };
 		45D6CC991DA6A569000D7A6C /* CTFilterContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterContainer.h; sourceTree = "<group>"; };
 		45D6CC9A1DA6A569000D7A6C /* CTFilterContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterContainer.m; sourceTree = "<group>"; };
-		45D866571D13F0CA00D19B74 /* CartrawlerResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D866D51D141BB100D19B74 /* LinkerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkerUtils.h; sourceTree = "<group>"; };
 		45D866D61D141BB100D19B74 /* LinkerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkerUtils.m; sourceTree = "<group>"; };
 		45DC6B8A1D82BE0400010B4D /* GTInterstitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTInterstitialViewController.h; sourceTree = "<group>"; };
@@ -558,7 +508,6 @@
 		45E84CCE1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionCollectionViewDataSource.m; sourceTree = "<group>"; };
 		45E8689B1DC24AD400DB84EF /* CTInclusionsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInclusionsDataSource.h; sourceTree = "<group>"; };
 		45E8689C1DC24AD400DB84EF /* CTInclusionsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInclusionsDataSource.m; sourceTree = "<group>"; };
-		45E942431D12FF0F00ACF604 /* libCartrawlerSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCartrawlerSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartrawlerSDK.h; sourceTree = "<group>"; };
 		45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartrawlerSDK.m; sourceTree = "<group>"; };
 		45E942931D1300ED00ACF604 /* CTVehicleSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVehicleSelectionView.h; sourceTree = "<group>"; };
@@ -631,20 +580,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		45D866541D13F0CA00D19B74 /* Frameworks */ = {
+		455B58271DCC90D300CA4790 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		45E942401D12FF0F00ACF604 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				455914B21D782281008AFA51 /* CartrawlerAPI.framework in Frameworks */,
-				45E942EE1D13040800ACF604 /* Foundation.framework in Frameworks */,
-				45E942EC1D1303C500ACF604 /* UIKit.framework in Frameworks */,
+				455B59581DCC954400CA4790 /* CartrawlerAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,6 +922,14 @@
 			name = IncludedCollectionView;
 			sourceTree = "<group>";
 		};
+		455B59561DCC954300CA4790 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				455B59571DCC954400CA4790 /* CartrawlerAPI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		455CA0A81DBF9D2B006472D0 /* Features collection view */ = {
 			isa = PBXGroup;
 			children = (
@@ -1168,20 +1116,19 @@
 		45E9423A1D12FF0F00ACF604 = {
 			isa = PBXGroup;
 			children = (
-				455914B11D782281008AFA51 /* CartrawlerAPI.framework */,
 				45E942ED1D13040800ACF604 /* Foundation.framework */,
 				45E942EB1D1303C500ACF604 /* UIKit.framework */,
 				45E942451D12FF0F00ACF604 /* CartrawlerSDK */,
 				45D866581D13F0CA00D19B74 /* CartrawlerResources */,
 				45E942441D12FF0F00ACF604 /* Products */,
+				455B59561DCC954300CA4790 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		45E942441D12FF0F00ACF604 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				45E942431D12FF0F00ACF604 /* libCartrawlerSDK.a */,
-				45D866571D13F0CA00D19B74 /* CartrawlerResources.bundle */,
+				455B582B1DCC90D300CA4790 /* CartrawlerSDK.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1189,6 +1136,9 @@
 		45E942451D12FF0F00ACF604 /* CartrawlerSDK */ = {
 			isa = PBXGroup;
 			children = (
+				45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */,
+				45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */,
+				455B582E1DCC90D300CA4790 /* Info.plist */,
 				45B264F41D8FDE28000005F2 /* Payment */,
 				45819FAC1D351CDF001AE0F5 /* Localization */,
 				4511E5261D17EE4D000ED6B0 /* Settings */,
@@ -1199,8 +1149,6 @@
 				45E942891D13003D00ACF604 /* Base View Controllers */,
 				45E942991D1300F900ACF604 /* Rental Views */,
 				45EE26DC1D37A77900A1FB51 /* Ground Transport */,
-				45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */,
-				45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */,
 			);
 			path = CartrawlerSDK;
 			sourceTree = "<group>";
@@ -1336,8 +1284,8 @@
 		45E942CA1D13029600ACF604 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				454D20ED1D549AD10050CA9E /* NSDateUtils.h */,
-				454D20EE1D549AD10050CA9E /* NSDateUtils.m */,
+				454D20ED1D549AD10050CA9E /* CartrawlerSDK+NSDateUtils.h */,
+				454D20EE1D549AD10050CA9E /* CartrawlerSDK+NSDateUtils.m */,
 				450F9D3B1D3CE8D5002C6F6B /* CTCurrency.csv */,
 				450F9D3C1D3CE8D5002C6F6B /* CTISOCountries.csv */,
 				450F9D4B1D3D14FF002C6F6B /* CTLanguages.csv */,
@@ -1485,178 +1433,160 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		45E942F01D1305F600ACF604 /* Headers */ = {
+		455B58281DCC90D300CA4790 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				458773631D7F1284000CB1E5 /* GTGenericValidation.h in Headers */,
-				4511E5371D17F766000ED6B0 /* CTNavigationItem.h in Headers */,
-				451C8EFE1D7ECCE900B9324D /* GroundTransportSearch.h in Headers */,
-				450F9D491D3D00C8002C6F6B /* SettingsViewController.h in Headers */,
-				451D7E331DAFC548001A4062 /* GTBooking.h in Headers */,
-				451D7E371DAFC564001A4062 /* RentalBooking.h in Headers */,
-				451C8F081D7ED78100B9324D /* CTValidation.h in Headers */,
-				451C8F181D7EFF3400B9324D /* CTPaymentView.h in Headers */,
-				4550618B1D59CD91004EAC43 /* LocalisedStrings.h in Headers */,
-				45AC546C1D130A1600805268 /* CTCalendarView.h in Headers */,
-				45AC54611D130A0800805268 /* CTLabel.h in Headers */,
-				45AC54601D130A0300805268 /* CTButton.h in Headers */,
-				45CFC7DD1D2CF822006E6F83 /* ExtrasViewController.h in Headers */,
-				45B264FB1D902C9C000005F2 /* BookingCompletionValidation.h in Headers */,
-				457CF88D1D785ADC00BC55E2 /* GooglePlaceService.h in Headers */,
-				45EC250F1D49132B00A3C09D /* CTViewController.h in Headers */,
-				453EE5201D53381300D92E59 /* CarRentalSearch.h in Headers */,
-				450F9D351D3929E5002C6F6B /* SupplierRatingsViewController.h in Headers */,
-				45D6CC911DA55FBB000D7A6C /* FlightNumberValidation.h in Headers */,
-				4511E5241D17DFA4000ED6B0 /* CTAppearance.h in Headers */,
-				454D20EF1D549AD10050CA9E /* NSDateUtils.h in Headers */,
-				45B264F71D902C8B000005F2 /* GTBookingCompletionValidation.h in Headers */,
-				458773681D7F1478000CB1E5 /* GTPaymentViewController.h in Headers */,
-				45E942F11D13060E00ACF604 /* CartrawlerSDK.h in Headers */,
-				4511E5321D17F6C8000ED6B0 /* CTNavigationBar.h in Headers */,
-				4544463E1D992BAA0047873F /* CTStepper.h in Headers */,
-				454AD7C31D2AAD14005C6CFF /* IncludedCollectionViewCell.h in Headers */,
-				45AC54681D130A1600805268 /* CTTimePickerView.h in Headers */,
-				450F9D411D3CE9D6002C6F6B /* CSVItem.h in Headers */,
-				451D7E241DAFBEAB001A4062 /* GTBookingsViewController.h in Headers */,
-				458954921D58C1B00006D34F /* Reachability.h in Headers */,
-				450DF3991D8191EA00EF51DE /* GTShuttleTableViewCell.h in Headers */,
-				451C8EF91D7D8ADB00B9324D /* InclusionFlowLayout.h in Headers */,
-				453386E31D2BA4EA0021D392 /* IncludedCollectionViewLayout.h in Headers */,
-				4530DA331D46660900CF3186 /* CTTextView.h in Headers */,
-				4511E51D1D1450CE000ED6B0 /* CTSDKSettings.h in Headers */,
-				45DC6B8C1D82BE0400010B4D /* GTInterstitialViewController.h in Headers */,
-				45A7B7401D9AAA04006611EB /* GTFilterCollectionViewFlowLayout.h in Headers */,
-				451D7E2C1DAFC1F3001A4062 /* GTBookingTableViewCell.h in Headers */,
-				45819FAA1D35036A001AE0F5 /* BookingSummaryViewController.h in Headers */,
-				45CB6D041D9C139F00754DCD /* CTInclusionTableViewCell.h in Headers */,
-				455CA0AB1DBF9D5B006472D0 /* VehicleFeaturesDataSource.h in Headers */,
-				454AD77F1D25587D005C6CFF /* CTFilterDataSource.h in Headers */,
-				45C488CB1D479B020044612C /* OptionalExtrasView.h in Headers */,
-				451B513B1D38DD35004EBFDC /* GTBookNowButton.h in Headers */,
-				45AC546A1D130A1600805268 /* LocationSearchDataSource.h in Headers */,
-				451C8F101D7EF37700B9324D /* GTSelectionValidation.h in Headers */,
-				458773701D806064000CB1E5 /* GTPaymentRequest.h in Headers */,
-				450DF39E1D81A55900EF51DE /* GTPassengerViewController.h in Headers */,
-				45645DD41D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h in Headers */,
-				45AC54641D130A1600805268 /* CTPlaceholderView.h in Headers */,
-				45AC54711D130A1600805268 /* CTSelectView.h in Headers */,
-				45AC54731D130A1600805268 /* VehicleTableViewCell.h in Headers */,
-				451FE5B71D6EF286004D85D1 /* SearchValidation.h in Headers */,
-				454AD77B1D2551F5005C6CFF /* CTFilterViewController.h in Headers */,
-				4588E3181D538FB1008F4267 /* PaymentRequest.h in Headers */,
-				45F473651D366D6A00DF548B /* PaymentViewController.h in Headers */,
-				45AC54721D130A1600805268 /* SearchDetailsViewController.h in Headers */,
-				45645D8B1D2D4A310075A3D2 /* HTMLParser.h in Headers */,
-				4525216F1D353C4200B47DE6 /* DriverDetailsViewController.h in Headers */,
-				4511E52E1D17F4B0000ED6B0 /* CTView.h in Headers */,
-				454AD78B1D255E1F005C6CFF /* CTFilterTableViewCell.h in Headers */,
-				451B4BE91D2BC8C3006A57E7 /* TermsViewController.h in Headers */,
-				452521731D35442100B47DE6 /* BookingSummaryButton.h in Headers */,
-				45AC546B1D130A1600805268 /* CTCalendarViewController.h in Headers */,
-				45AC545F1D130A0000805268 /* CTCheckbox.h in Headers */,
-				451D7E201DAFBE9D001A4062 /* RentalBookingsViewController.h in Headers */,
-				45819FA51D3500E8001AE0F5 /* NSNumberUtils.h in Headers */,
-				45DD07561D94162F00501FEE /* VehicleDetailsPageViewController.h in Headers */,
-				454446391D991B3C0047873F /* PassengerSelectionViewController.h in Headers */,
-				451C8F141D7EF63D00B9324D /* GTPassengerDetailsValidation.h in Headers */,
-				45645DFA1D33E8240075A3D2 /* PaymentSummaryTableViewCell.h in Headers */,
-				4511E5471D1837D4000ED6B0 /* LocationSearchTableViewCell.h in Headers */,
-				45645DF51D33E70B0075A3D2 /* PaymentSummaryViewController.h in Headers */,
-				45C1ECF51D5103150059EF89 /* CTFilterTableView.h in Headers */,
-				45AC546E1D130A1600805268 /* CTDateCollectionViewCell.h in Headers */,
-				45D6CC9B1DA6A569000D7A6C /* CTFilterContainer.h in Headers */,
-				451FE5B51D6EF286004D85D1 /* PaymentValidation.h in Headers */,
-				45AC54761D130A1600805268 /* CTVehicleSelectionDataSource.h in Headers */,
-				45130C951DBF674F0081582B /* UIColorUtils.h in Headers */,
-				451B4BEE1D2BC99B006A57E7 /* TermsDetailViewController.h in Headers */,
-				451D7E811DBE1197001A4062 /* DataStore.h in Headers */,
-				455F27571D9D4E2B00B6BB5B /* CTInterstitialViewController.h in Headers */,
-				454AD7C71D2AB8E7005C6CFF /* CTDesignableView.h in Headers */,
-				45AC546F1D130A1600805268 /* CalendarLogicController.h in Headers */,
-				451D7E281DAFC1E5001A4062 /* RentalBookingCell.h in Headers */,
-				45E84CCB1D79C61600D6BC47 /* InclusionCollectionViewCell.h in Headers */,
-				454AD7B81D2A69D2005C6CFF /* ExpandingInfoView.h in Headers */,
-				456176591DCA03C500754DFA /* CTMerhandisingBanner.h in Headers */,
-				45F4735C1D36451F00DF548B /* AddressDetailsViewController.h in Headers */,
-				45361BEB1D2BA1BA00295124 /* UnderLinedButton.h in Headers */,
-				45EC250B1D48E04700A3C09D /* CTSegmentedControl.h in Headers */,
-				4546D4121D8303A90081A2F9 /* GTFilterCollectionViewCell.h in Headers */,
-				4569984D1D9428F600551F9F /* SupplierRatingCollectionViewCell.h in Headers */,
-				451FE5AB1D6EF248004D85D1 /* GenericValidation.h in Headers */,
-				4509B47B1D37ED8100259255 /* GTServiceTableViewCell.h in Headers */,
-				455CA0AF1DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.h in Headers */,
-				45C48D4F1D5226CA005C9377 /* CTFilterFactory.h in Headers */,
-				45AC54701D130A1600805268 /* CTMiddleDateCell.h in Headers */,
-				45BC88D51DC0F8460041BD74 /* CTToolTip.h in Headers */,
-				450F9D391D3CE08E002C6F6B /* SettingsSelectionViewController.h in Headers */,
-				45E84CCF1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.h in Headers */,
-				45AC545D1D1309F300805268 /* JVFloatLabeledTextField.h in Headers */,
-				45E8689D1DC24AD400DB84EF /* CTInclusionsDataSource.h in Headers */,
-				456979281D2C03E7006A321E /* TabButton.h in Headers */,
-				45137C841D476AB100089928 /* CTPickerView.h in Headers */,
-				454AD7B11D2A6236005C6CFF /* VehicleDetailsViewController.h in Headers */,
-				4509B4731D37E72700259255 /* GroundServicesViewController.h in Headers */,
-				45EB45B41D86FB1600090B7C /* InclusionsTableViewCell.h in Headers */,
-				4511E5431D181B36000ED6B0 /* CTTextField.h in Headers */,
-				45AC54631D130A1600805268 /* CTImageCache.h in Headers */,
-				45AC545E1D1309FB00805268 /* NSStringUtils.h in Headers */,
-				45AC54651D130A1600805268 /* DateUtils.h in Headers */,
-				4544464C1D9A7FE80047873F /* CTNavigationView.h in Headers */,
-				453FD4431D588076002E4CC6 /* PaymentCompletionViewController.h in Headers */,
-				4511E53F1D17F999000ED6B0 /* CTNavigationController.h in Headers */,
-				45D866D71D141BB100D19B74 /* LinkerUtils.h in Headers */,
-				45AC546D1D130A1600805268 /* CTCalendarTableViewCell.h in Headers */,
-				4590BBF21D9512F000CD9ED5 /* PageSelectionCollectionViewCell.h in Headers */,
-				45AC54621D130A1600805268 /* LocaleUtils.h in Headers */,
-				4546D40E1D8301700081A2F9 /* FilterCollectionViewDataSource.h in Headers */,
-				451FE5B31D6EF286004D85D1 /* InsuranceValidation.h in Headers */,
-				4587736C1D7F1517000CB1E5 /* GTPaymentCompletionViewController.h in Headers */,
-				451C8F041D7ECE2D00B9324D /* GTSearchValidation.h in Headers */,
-				45AC54691D130A1600805268 /* CTLocationSearchViewController.h in Headers */,
+				455B589B1DCC914300CA4790 /* GTBooking.h in Headers */,
+				455B58621DCC914300CA4790 /* CTAppearance.h in Headers */,
+				455B586C1DCC914300CA4790 /* CTButton.h in Headers */,
+				455B58741DCC914300CA4790 /* CTLabel.h in Headers */,
+				455B58C31DCC914400CA4790 /* CTCalendarView.h in Headers */,
+				455B58371DCC914300CA4790 /* CTPaymentView.h in Headers */,
+				455B58B41DCC914400CA4790 /* CTValidation.h in Headers */,
+				455B58891DCC914300CA4790 /* GroundTransportSearch.h in Headers */,
+				455B59591DCC96D500CA4790 /* CartrawlerSDK.h in Headers */,
+				455B58871DCC914300CA4790 /* CarRentalSearch.h in Headers */,
+				455B58B71DCC914400CA4790 /* CTViewController.h in Headers */,
+				455B58991DCC914300CA4790 /* RentalBooking.h in Headers */,
+				455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */,
+				455B58351DCC914300CA4790 /* PaymentRequest.h in Headers */,
+				455B58491DCC914300CA4790 /* CTToolTip.h in Headers */,
+				455B584A1DCC914300CA4790 /* CTNavigationBar.h in Headers */,
+				455B584C1DCC914300CA4790 /* CTNavigationItem.h in Headers */,
+				455B584E1DCC914300CA4790 /* CTNavigationController.h in Headers */,
+				455B58501DCC914300CA4790 /* CTStepper.h in Headers */,
+				455B58521DCC914300CA4790 /* CTFilterTableView.h in Headers */,
+				455B58541DCC914300CA4790 /* CTSegmentedControl.h in Headers */,
+				455B58561DCC914300CA4790 /* CTPickerView.h in Headers */,
+				455B58581DCC914300CA4790 /* CTTextView.h in Headers */,
+				455B585A1DCC914300CA4790 /* CTPlaceholderView.h in Headers */,
+				455B585C1DCC914300CA4790 /* CTView.h in Headers */,
+				455B585E1DCC914300CA4790 /* CTDesignableView.h in Headers */,
+				455B58601DCC914300CA4790 /* CTNavigationView.h in Headers */,
+				455B58641DCC914300CA4790 /* JVFloatLabeledTextField.h in Headers */,
+				455B58661DCC914300CA4790 /* NSStringUtils.h in Headers */,
+				455B58681DCC914300CA4790 /* CTTextField.h in Headers */,
+				455B586A1DCC914300CA4790 /* CTCheckbox.h in Headers */,
+				455B586E1DCC914300CA4790 /* UnderLinedButton.h in Headers */,
+				455B58701DCC914300CA4790 /* TabButton.h in Headers */,
+				455B58721DCC914300CA4790 /* GTBookNowButton.h in Headers */,
+				455B58761DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.h in Headers */,
+				455B587B1DCC914300CA4790 /* LocaleUtils.h in Headers */,
+				455B587D1DCC914300CA4790 /* CTImageCache.h in Headers */,
+				455B587F1DCC914300CA4790 /* DateUtils.h in Headers */,
+				455B58811DCC914300CA4790 /* NSNumberUtils.h in Headers */,
+				455B58831DCC914300CA4790 /* LinkerUtils.h in Headers */,
+				455B58851DCC914300CA4790 /* HTMLParser.h in Headers */,
+				455B588B1DCC914300CA4790 /* Reachability.h in Headers */,
+				455B588D1DCC914300CA4790 /* LocalisedStrings.h in Headers */,
+				455B588F1DCC914300CA4790 /* FlightNumberValidation.h in Headers */,
+				455B58911DCC914300CA4790 /* DataStore.h in Headers */,
+				455B58931DCC914300CA4790 /* UIColorUtils.h in Headers */,
+				455B58951DCC914300CA4790 /* RentalBookingsViewController.h in Headers */,
+				455B58971DCC914300CA4790 /* RentalBookingCell.h in Headers */,
+				455B589D1DCC914300CA4790 /* GTBookingsViewController.h in Headers */,
+				455B589F1DCC914300CA4790 /* GTBookingTableViewCell.h in Headers */,
+				455B58A11DCC914300CA4790 /* GTSearchValidation.h in Headers */,
+				455B58A31DCC914300CA4790 /* GTSelectionValidation.h in Headers */,
+				455B58A51DCC914300CA4790 /* GTPassengerDetailsValidation.h in Headers */,
+				455B58A71DCC914300CA4790 /* GTGenericValidation.h in Headers */,
+				455B58A91DCC914300CA4790 /* GTBookingCompletionValidation.h in Headers */,
+				455B58AB1DCC914300CA4790 /* GenericValidation.h in Headers */,
+				455B58AE1DCC914400CA4790 /* PaymentValidation.h in Headers */,
+				455B58B01DCC914400CA4790 /* SearchValidation.h in Headers */,
+				455B58B21DCC914400CA4790 /* BookingCompletionValidation.h in Headers */,
+				455B58B51DCC914400CA4790 /* InsuranceValidation.h in Headers */,
+				455B58B91DCC914400CA4790 /* CTLocationSearchViewController.h in Headers */,
+				455B58BB1DCC914400CA4790 /* LocationSearchDataSource.h in Headers */,
+				455B58BD1DCC914400CA4790 /* LocationSearchTableViewCell.h in Headers */,
+				455B58BF1DCC914400CA4790 /* CTTimePickerView.h in Headers */,
+				455B58C11DCC914400CA4790 /* CTCalendarViewController.h in Headers */,
+				455B58C51DCC914400CA4790 /* CTCalendarTableViewCell.h in Headers */,
+				455B58C71DCC914400CA4790 /* CTDateCollectionViewCell.h in Headers */,
+				455B58C91DCC914400CA4790 /* CalendarLogicController.h in Headers */,
+				455B58CB1DCC914400CA4790 /* CTMiddleDateCell.h in Headers */,
+				455B58CD1DCC914400CA4790 /* CTSelectView.h in Headers */,
+				455B58CF1DCC914400CA4790 /* SettingsSelectionViewController.h in Headers */,
+				455B58D11DCC914400CA4790 /* SettingsViewController.h in Headers */,
+				455B58D31DCC914400CA4790 /* SearchDetailsViewController.h in Headers */,
+				455B58D51DCC914400CA4790 /* CTInterstitialViewController.h in Headers */,
+				455B58D71DCC914400CA4790 /* CTFilterViewController.h in Headers */,
+				455B58D91DCC914400CA4790 /* CTFilterDataSource.h in Headers */,
+				455B58DB1DCC914400CA4790 /* CTFilterTableViewCell.h in Headers */,
+				455B58DD1DCC914400CA4790 /* CTFilterFactory.h in Headers */,
+				455B58DF1DCC914400CA4790 /* CTFilterContainer.h in Headers */,
+				455B58E11DCC914400CA4790 /* CTVehicleSelectionView.h in Headers */,
+				455B58E31DCC914400CA4790 /* CTVehicleSelectionDataSource.h in Headers */,
+				455B58E51DCC914400CA4790 /* VehicleTableViewCell.h in Headers */,
+				455B58E81DCC914400CA4790 /* CTMerhandisingBanner.h in Headers */,
+				455B58EA1DCC914400CA4790 /* VehicleSelectionViewController.h in Headers */,
+				455B58EC1DCC914400CA4790 /* VehicleDetailsPageViewController.h in Headers */,
+				455B58EE1DCC914400CA4790 /* PageSelectionCollectionViewCell.h in Headers */,
+				455B58F01DCC914400CA4790 /* TermsViewController.h in Headers */,
+				455B58F21DCC914400CA4790 /* TermsDetailViewController.h in Headers */,
+				455B58F41DCC914400CA4790 /* ExpandingInfoView.h in Headers */,
+				455B58F61DCC914400CA4790 /* SupplierRatingsViewController.h in Headers */,
+				455B58F81DCC914400CA4790 /* SupplierRatingCollectionViewCell.h in Headers */,
+				455B58FA1DCC914400CA4790 /* VehicleFeaturesDataSource.h in Headers */,
+				455B58FC1DCC914400CA4790 /* VehicleFeatureCollectionViewCell.h in Headers */,
+				455B58FE1DCC914400CA4790 /* CTInclusionTableViewCell.h in Headers */,
+				455B59001DCC914400CA4790 /* CTInclusionsDataSource.h in Headers */,
+				455B59021DCC914400CA4790 /* IncludedCollectionViewCell.h in Headers */,
+				455B59041DCC914400CA4790 /* IncludedCollectionViewLayout.h in Headers */,
+				455B59061DCC914400CA4790 /* VehicleDetailsViewController.h in Headers */,
+				455B59081DCC914400CA4790 /* ExtrasViewController.h in Headers */,
+				455B590A1DCC914400CA4790 /* OptionalExtrasView.h in Headers */,
+				455B590C1DCC914400CA4790 /* OptionalExtraTableViewCell.h in Headers */,
+				455B590F1DCC914400CA4790 /* BookingSummaryViewController.h in Headers */,
+				455B59111DCC914400CA4790 /* BookingSummaryButton.h in Headers */,
+				455B59131DCC914400CA4790 /* PaymentSummaryViewController.h in Headers */,
+				455B59151DCC914400CA4790 /* PaymentSummaryTableViewCell.h in Headers */,
+				455B59171DCC914400CA4790 /* DriverDetailsViewController.h in Headers */,
+				455B59191DCC914400CA4790 /* AddressDetailsViewController.h in Headers */,
+				455B591B1DCC914400CA4790 /* CSVItem.h in Headers */,
+				455B591D1DCC914400CA4790 /* PaymentViewController.h in Headers */,
+				455B591F1DCC914400CA4790 /* PaymentCompletionViewController.h in Headers */,
+				455B59211DCC914400CA4790 /* GTInterstitialViewController.h in Headers */,
+				455B59231DCC914400CA4790 /* GTPaymentViewController.h in Headers */,
+				455B59251DCC914400CA4790 /* GTPaymentCompletionViewController.h in Headers */,
+				455B59271DCC914400CA4790 /* GooglePlaceService.h in Headers */,
+				455B59291DCC914400CA4790 /* GTPassengerViewController.h in Headers */,
+				455B592B1DCC914400CA4790 /* FilterCollectionViewDataSource.h in Headers */,
+				455B592D1DCC914400CA4790 /* GTFilterCollectionViewCell.h in Headers */,
+				455B592F1DCC914400CA4790 /* GTFilterCollectionViewFlowLayout.h in Headers */,
+				455B59311DCC914400CA4790 /* InclusionCollectionViewDataSource.h in Headers */,
+				455B59331DCC914400CA4790 /* InclusionCollectionViewCell.h in Headers */,
+				455B59351DCC914400CA4790 /* InclusionFlowLayout.h in Headers */,
+				455B59371DCC914400CA4790 /* GTServiceTableViewCell.h in Headers */,
+				455B59391DCC914400CA4790 /* GTShuttleTableViewCell.h in Headers */,
+				455B593B1DCC914400CA4790 /* InclusionsTableViewCell.h in Headers */,
+				455B593D1DCC914400CA4790 /* GroundServicesViewController.h in Headers */,
+				455B593F1DCC914400CA4790 /* GroundTransportViewController.h in Headers */,
+				455B59411DCC914400CA4790 /* PassengerSelectionViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		45D866561D13F0CA00D19B74 /* CartrawlerResources */ = {
+		455B582A1DCC90D300CA4790 /* CartrawlerSDK */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 45D8665A1D13F0CA00D19B74 /* Build configuration list for PBXNativeTarget "CartrawlerResources" */;
+			buildConfigurationList = 455B58301DCC90D300CA4790 /* Build configuration list for PBXNativeTarget "CartrawlerSDK" */;
 			buildPhases = (
-				45D866531D13F0CA00D19B74 /* Sources */,
-				45D866541D13F0CA00D19B74 /* Frameworks */,
-				45D866551D13F0CA00D19B74 /* Resources */,
-				45D0423E1D6AEDF4004822D2 /* ShellScript */,
+				455B58261DCC90D300CA4790 /* Sources */,
+				455B58271DCC90D300CA4790 /* Frameworks */,
+				455B58281DCC90D300CA4790 /* Headers */,
+				455B58291DCC90D300CA4790 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			name = CartrawlerResources;
-			productName = CartrawlerBundle;
-			productReference = 45D866571D13F0CA00D19B74 /* CartrawlerResources.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		45E942421D12FF0F00ACF604 /* CartrawlerSDK */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 45E9424C1D12FF0F00ACF604 /* Build configuration list for PBXNativeTarget "CartrawlerSDK" */;
-			buildPhases = (
-				45E9423F1D12FF0F00ACF604 /* Sources */,
-				45E942401D12FF0F00ACF604 /* Frameworks */,
-				45E942411D12FF0F00ACF604 /* Copy Files (1 item) */,
-				45E942F01D1305F600ACF604 /* Headers */,
-				45E942EF1D13048D00ACF604 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				45D866C71D14076B00D19B74 /* PBXTargetDependency */,
 			);
 			name = CartrawlerSDK;
 			productName = CartrawlerSDK;
-			productReference = 45E942431D12FF0F00ACF604 /* libCartrawlerSDK.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = 455B582B1DCC90D300CA4790 /* CartrawlerSDK.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -1664,7 +1594,7 @@
 		45E9423B1D12FF0F00ACF604 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Cartrawler;
 				TargetAttributes = {
 					45364CB31D782E23003EBB5D = {
@@ -1672,16 +1602,10 @@
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
 					};
-					45AC54561D1307A000805268 = {
-						CreatedOnToolsVersion = 7.3.1;
-					};
-					45D866561D13F0CA00D19B74 = {
-						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 3L8QU4R2JJ;
+					455B582A1DCC90D300CA4790 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 93JSQ29ZDX;
 						ProvisioningStyle = Automatic;
-					};
-					45E942421D12FF0F00ACF604 = {
-						CreatedOnToolsVersion = 7.3.1;
 					};
 				};
 			};
@@ -1697,37 +1621,34 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				45E942421D12FF0F00ACF604 /* CartrawlerSDK */,
-				45AC54561D1307A000805268 /* Framework_UI */,
-				45D866561D13F0CA00D19B74 /* CartrawlerResources */,
 				45364CB31D782E23003EBB5D /* Build All Debug */,
+				455B582A1DCC90D300CA4790 /* CartrawlerSDK */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		45D866551D13F0CA00D19B74 /* Resources */ = {
+		455B58291DCC90D300CA4790 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				451D7E301DAFC4E2001A4062 /* Landing.storyboard in Resources */,
-				455F27591D9D57E700B6BB5B /* Interstitial.storyboard in Resources */,
-				457CF8891D78425900BC55E2 /* GroundTransport.storyboard in Resources */,
-				45F473611D36640F00DF548B /* Payment.storyboard in Resources */,
-				45F4735F1D36476900DF548B /* StepSix.storyboard in Resources */,
-				450F9D3D1D3CE8D5002C6F6B /* CTCurrency.csv in Resources */,
-				45CFC7DF1D2CF95C006E6F83 /* StepFour.storyboard in Resources */,
-				454AD7BE1D2A7089005C6CFF /* StepThree.storyboard in Resources */,
-				454AD7931D26C985005C6CFF /* StepTwo.storyboard in Resources */,
-				450F9D4C1D3D14FF002C6F6B /* CTLanguages.csv in Resources */,
-				4538D2551D14436600C723E5 /* Info.plist in Resources */,
-				450F9D3E1D3CE8D5002C6F6B /* CTISOCountries.csv in Resources */,
-				4588E3131D538803008F4267 /* CTPCI.html in Resources */,
-				45C488D01D47AF4E0044612C /* OptionalExtraTableViewCell.xib in Resources */,
-				45D866D91D142CAC00D19B74 /* VehicleTableViewCell_iPhone.xib in Resources */,
-				45645DE11D33DB1A0075A3D2 /* StepFive.storyboard in Resources */,
-				4511E5201D145779000ED6B0 /* Assets.xcassets in Resources */,
-				45D8665D1D13F0E900D19B74 /* StepOne.storyboard in Resources */,
+				455B59451DCC91F900CA4790 /* CTPCI.html in Resources */,
+				455B59461DCC91F900CA4790 /* Assets.xcassets in Resources */,
+				455B59471DCC91F900CA4790 /* Landing.storyboard in Resources */,
+				455B59481DCC91F900CA4790 /* GroundTransport.storyboard in Resources */,
+				455B59491DCC91F900CA4790 /* StepOne.storyboard in Resources */,
+				455B594A1DCC91F900CA4790 /* Interstitial.storyboard in Resources */,
+				455B594B1DCC91F900CA4790 /* StepTwo.storyboard in Resources */,
+				455B594C1DCC91F900CA4790 /* StepThree.storyboard in Resources */,
+				455B594D1DCC91F900CA4790 /* StepFour.storyboard in Resources */,
+				455B594E1DCC91F900CA4790 /* StepFive.storyboard in Resources */,
+				455B594F1DCC91F900CA4790 /* StepSix.storyboard in Resources */,
+				455B59501DCC91F900CA4790 /* Payment.storyboard in Resources */,
+				455B59511DCC91F900CA4790 /* CTCurrency.csv in Resources */,
+				455B59521DCC91F900CA4790 /* CTISOCountries.csv in Resources */,
+				455B59531DCC91F900CA4790 /* CTLanguages.csv in Resources */,
+				455B59541DCC91F900CA4790 /* VehicleTableViewCell_iPhone.xib in Resources */,
+				455B59551DCC91F900CA4790 /* OptionalExtraTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1747,209 +1668,145 @@
 			shellPath = /bin/sh;
 			shellScript = "#build ota api project\ncd ../\nxcodebuild -scheme Framework_OTA\n#build UI\nxcodebuild -scheme Framework_UI";
 		};
-		45AC545C1D1307B600805268 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\n\n# If we're already inside this script then die\nif [ -n \"$RW_MULTIPLATFORM_BUILD_IN_PROGRESS\" ]; then\nexit 0\nfi\nexport RW_MULTIPLATFORM_BUILD_IN_PROGRESS=1\n\nRW_FRAMEWORK_NAME=${PROJECT_NAME}\nRW_INPUT_STATIC_LIB=\"lib${PROJECT_NAME}.a\"\nRW_FRAMEWORK_LOCATION=\"${BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework\"\n\nfunction build_static_library {\n    # Will rebuild the static library as specified\n    #     build_static_library sdk\n    xcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" \\\n    -target \"${TARGET_NAME}\" \\\n    -configuration \"${CONFIGURATION}\" \\\n    -sdk \"${1}\" \\\n    ONLY_ACTIVE_ARCH=NO \\\n    BUILD_DIR=\"${BUILD_DIR}\" \\\n    OBJROOT=\"${OBJROOT}\" \\\n    BUILD_ROOT=\"${BUILD_ROOT}\" \\\n    SYMROOT=\"${SYMROOT}\" $ACTION\n}\n\nfunction make_fat_library {\n    # Will smash 2 static libs together\n    #     make_fat_library in1 in2 out\n    xcrun lipo -create \"${1}\" \"${2}\" -output \"${3}\"\n}\n\n# 1 - Extract the platform (iphoneos/iphonesimulator) from the SDK name\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]; then\nRW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\n# 2 - Extract the version from the SDK\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]; then\nRW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\n# 3 - Determine the other platform\nif [ \"$RW_SDK_PLATFORM\" == \"iphoneos\" ]; then\nRW_OTHER_PLATFORM=iphonesimulator\nelse\nRW_OTHER_PLATFORM=iphoneos\nfi\n\n# 4 - Find the build directory\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$RW_SDK_PLATFORM$ ]]; then\nRW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${RW_OTHER_PLATFORM}\"\nelse\necho \"Could not find other platform build directory.\"\nexit 1\nfi\n\n# Build the other platform.\nbuild_static_library \"${RW_OTHER_PLATFORM}${RW_SDK_VERSION}\"\n\n# If we're currently building for iphonesimulator, then need to rebuild\n#   to ensure that we get both i386 and x86_64\nif [ \"$RW_SDK_PLATFORM\" == \"iphonesimulator\" ]; then\nbuild_static_library \"${SDK_NAME}\"\nfi\n\n# Join the 2 static libs into 1 and push into the .framework\nmake_fat_library \"${BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n\"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n\"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n# Ensure that the framework is present in both platform's build directories\ncp -a \"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\" \\\n\"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n# Copy the framework to the user's desktop\nditto \"${RW_FRAMEWORK_LOCATION}\" \"../${RW_FRAMEWORK_NAME}.framework\"";
-		};
-		45D0423E1D6AEDF4004822D2 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd \"${BUILT_PRODUCTS_DIR}\"\nCT_BUNDLE_LOCATION= \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.bundle\"\n\nditto \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.bundle\" \"${SOURCE_ROOT}/${PRODUCT_NAME}.bundle\"\ncd \"${SOURCE_ROOT}\"\nrsync -a \"${PRODUCT_NAME}.bundle\" ../";
-		};
-		45E942EF1D13048D00ACF604 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\n\nexport FRAMEWORK_LOCN=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework\"\n\n# Create the path to the real Headers die\nmkdir -p \"${FRAMEWORK_LOCN}/Versions/A/Headers\"\n\n# Create the required symlinks\n/bin/ln -sfh A \"${FRAMEWORK_LOCN}/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${FRAMEWORK_LOCN}/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \\\n\"${FRAMEWORK_LOCN}/${PRODUCT_NAME}\"\n\n# Copy the public headers into the framework\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \\\n\"${FRAMEWORK_LOCN}/Versions/A/Headers\"\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		45D866531D13F0CA00D19B74 /* Sources */ = {
+		455B58261DCC90D300CA4790 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		45E9423F1D12FF0F00ACF604 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				45E942B11D1301C600ACF604 /* CTCalendarTableViewCell.m in Sources */,
-				4569984E1D9428F600551F9F /* SupplierRatingCollectionViewCell.m in Sources */,
-				451C8F051D7ECE2D00B9324D /* GTSearchValidation.m in Sources */,
-				454AD7B91D2A69D2005C6CFF /* ExpandingInfoView.m in Sources */,
-				455CA0B01DBF9E37006472D0 /* VehicleFeatureCollectionViewCell.m in Sources */,
-				45EC250C1D48E04700A3C09D /* CTSegmentedControl.m in Sources */,
-				45645DF61D33E70B0075A3D2 /* PaymentSummaryViewController.m in Sources */,
-				452521701D353C4200B47DE6 /* DriverDetailsViewController.m in Sources */,
-				45E942E91D1302FF00ACF604 /* JVFloatLabeledTextField.m in Sources */,
-				45E9429D1D13012400ACF604 /* SearchDetailsViewController.m in Sources */,
-				451D7E2D1DAFC1F3001A4062 /* GTBookingTableViewCell.m in Sources */,
-				45D866D81D141BB100D19B74 /* LinkerUtils.m in Sources */,
-				453FD4441D588076002E4CC6 /* PaymentCompletionViewController.m in Sources */,
-				45E942D41D1302A200ACF604 /* CTImageCache.m in Sources */,
-				454AD78C1D255E1F005C6CFF /* CTFilterTableViewCell.m in Sources */,
-				4511E5481D1837D4000ED6B0 /* LocationSearchTableViewCell.m in Sources */,
-				45E84CCC1D79C61600D6BC47 /* InclusionCollectionViewCell.m in Sources */,
-				4511E5441D181B36000ED6B0 /* CTTextField.m in Sources */,
-				45E942BE1D13020300ACF604 /* CTLocationSearchViewController.m in Sources */,
-				45819FAB1D35036A001AE0F5 /* BookingSummaryViewController.m in Sources */,
-				4557FE421D3636400026F038 /* CarRentalSearch.m in Sources */,
-				451C8EFF1D7ECCE900B9324D /* GroundTransportSearch.m in Sources */,
-				45E942D61D1302A200ACF604 /* DateUtils.m in Sources */,
-				4509B47C1D37ED8100259255 /* GTServiceTableViewCell.m in Sources */,
-				4590BBF31D9512F000CD9ED5 /* PageSelectionCollectionViewCell.m in Sources */,
-				451B4BEF1D2BC99B006A57E7 /* TermsDetailViewController.m in Sources */,
-				455F27581D9D4E2B00B6BB5B /* CTInterstitialViewController.m in Sources */,
-				451D7E381DAFC564001A4062 /* RentalBooking.m in Sources */,
-				451D7E211DAFBE9D001A4062 /* RentalBookingsViewController.m in Sources */,
-				458773711D806064000CB1E5 /* GTPaymentRequest.m in Sources */,
-				451C8F151D7EF63D00B9324D /* GTPassengerDetailsValidation.m in Sources */,
-				4511E5331D17F6C8000ED6B0 /* CTNavigationBar.m in Sources */,
-				45819FA61D3500E8001AE0F5 /* NSNumberUtils.m in Sources */,
-				454AD7C41D2AAD14005C6CFF /* IncludedCollectionViewCell.m in Sources */,
-				45E942B01D1301C600ACF604 /* CTCalendarView.m in Sources */,
-				45E942E31D1302EF00ACF604 /* CTCheckbox.m in Sources */,
-				4509B4741D37E72700259255 /* GroundServicesViewController.m in Sources */,
-				45E942491D12FF0F00ACF604 /* CartrawlerSDK.m in Sources */,
-				45E942DF1D1302DA00ACF604 /* CTButton.m in Sources */,
-				45E942981D1300ED00ACF604 /* CTVehicleSelectionDataSource.m in Sources */,
-				45E942AF1D1301C600ACF604 /* CTCalendarViewController.m in Sources */,
-				45A7B7411D9AAA04006611EB /* GTFilterCollectionViewFlowLayout.m in Sources */,
-				45E942DB1D1302CA00ACF604 /* CTLabel.m in Sources */,
-				45E942D51D1302A200ACF604 /* CTPlaceholderView.m in Sources */,
-				457CF88E1D785ADC00BC55E2 /* GooglePlaceService.m in Sources */,
-				45E942B81D1301EE00ACF604 /* VehicleSelectionViewController.m in Sources */,
-				45E942B41D1301C600ACF604 /* CTMiddleDateCell.m in Sources */,
-				45E942C31D13022100ACF604 /* CTTimePickerView.m in Sources */,
-				452521741D35442100B47DE6 /* BookingSummaryButton.m in Sources */,
-				451D7E291DAFC1E5001A4062 /* RentalBookingCell.m in Sources */,
-				450F9D421D3CE9D6002C6F6B /* CSVItem.m in Sources */,
-				45130C961DBF674F0081582B /* UIColorUtils.m in Sources */,
-				4511E5251D17DFA4000ED6B0 /* CTAppearance.m in Sources */,
-				458773691D7F1478000CB1E5 /* GTPaymentViewController.m in Sources */,
-				4544464D1D9A7FE80047873F /* CTNavigationView.m in Sources */,
-				45DC6B8D1D82BE0400010B4D /* GTInterstitialViewController.m in Sources */,
-				4550618C1D59CD91004EAC43 /* LocalisedStrings.m in Sources */,
-				45CB6D051D9C139F00754DCD /* CTInclusionTableViewCell.m in Sources */,
-				4588E3191D538FB1008F4267 /* PaymentRequest.m in Sources */,
-				451B513C1D38DD35004EBFDC /* GTBookNowButton.m in Sources */,
-				4530DA341D46660900CF3186 /* CTTextView.m in Sources */,
-				45645DFB1D33E8240075A3D2 /* PaymentSummaryTableViewCell.m in Sources */,
-				4511E5401D17F999000ED6B0 /* CTNavigationController.m in Sources */,
-				45CFC7DE1D2CF822006E6F83 /* ExtrasViewController.m in Sources */,
-				45E942D31D1302A200ACF604 /* LocaleUtils.m in Sources */,
-				458773641D7F1284000CB1E5 /* GTGenericValidation.m in Sources */,
-				450F9D3A1D3CE08E002C6F6B /* SettingsSelectionViewController.m in Sources */,
-				45D6CC9C1DA6A569000D7A6C /* CTFilterContainer.m in Sources */,
-				451C8EFA1D7D8ADB00B9324D /* InclusionFlowLayout.m in Sources */,
-				450F9D4A1D3D00C8002C6F6B /* SettingsViewController.m in Sources */,
-				45E942EA1D1302FF00ACF604 /* NSStringUtils.m in Sources */,
-				454AD7801D25587D005C6CFF /* CTFilterDataSource.m in Sources */,
-				451FE5B61D6EF286004D85D1 /* PaymentValidation.m in Sources */,
-				4587736D1D7F1517000CB1E5 /* GTPaymentCompletionViewController.m in Sources */,
-				456979291D2C03E7006A321E /* TabButton.m in Sources */,
-				451FE5AC1D6EF248004D85D1 /* GenericValidation.m in Sources */,
-				458954931D58C1B00006D34F /* Reachability.m in Sources */,
-				4544463A1D991B3C0047873F /* PassengerSelectionViewController.m in Sources */,
-				45B264FC1D902C9C000005F2 /* BookingCompletionValidation.m in Sources */,
-				450F9D361D3929E5002C6F6B /* SupplierRatingsViewController.m in Sources */,
-				45F4735D1D36451F00DF548B /* AddressDetailsViewController.m in Sources */,
-				451D7E821DBE1197001A4062 /* DataStore.m in Sources */,
-				45C48D501D5226CA005C9377 /* CTFilterFactory.m in Sources */,
-				45E942B31D1301C600ACF604 /* CalendarLogicController.m in Sources */,
-				451D7E251DAFBEAB001A4062 /* GTBookingsViewController.m in Sources */,
-				45EB45B51D86FB1600090B7C /* InclusionsTableViewCell.m in Sources */,
-				454D20F01D549AD10050CA9E /* NSDateUtils.m in Sources */,
-				45361BEC1D2BA1BA00295124 /* UnderLinedButton.m in Sources */,
-				451FE5B41D6EF286004D85D1 /* InsuranceValidation.m in Sources */,
-				454AD7B21D2A6236005C6CFF /* VehicleDetailsViewController.m in Sources */,
-				4546D4131D8303A90081A2F9 /* GTFilterCollectionViewCell.m in Sources */,
-				45E8689E1DC24AD400DB84EF /* CTInclusionsDataSource.m in Sources */,
-				45E942971D1300ED00ACF604 /* CTVehicleSelectionView.m in Sources */,
-				45E942C91D13028600ACF604 /* VehicleTableViewCell.m in Sources */,
-				45E942A11D13014400ACF604 /* CTSelectView.m in Sources */,
-				454AD77C1D2551F5005C6CFF /* CTFilterViewController.m in Sources */,
-				45645DD51D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.m in Sources */,
-				4511E52F1D17F4B0000ED6B0 /* CTView.m in Sources */,
-				450DF39A1D8191EA00EF51DE /* GTShuttleTableViewCell.m in Sources */,
-				450DF39F1D81A55900EF51DE /* GTPassengerViewController.m in Sources */,
-				4544463F1D992BAA0047873F /* CTStepper.m in Sources */,
-				45DD07571D94162F00501FEE /* VehicleDetailsPageViewController.m in Sources */,
-				45D6CC921DA55FBB000D7A6C /* FlightNumberValidation.m in Sources */,
-				454AD7C81D2AB8E7005C6CFF /* CTDesignableView.m in Sources */,
-				45F473661D366D6A00DF548B /* PaymentViewController.m in Sources */,
-				45C1ECF61D5103150059EF89 /* CTFilterTableView.m in Sources */,
-				453386E41D2BA4EA0021D392 /* IncludedCollectionViewLayout.m in Sources */,
-				451C8F191D7EFF3400B9324D /* CTPaymentView.m in Sources */,
-				451B4BEA1D2BC8C3006A57E7 /* TermsViewController.m in Sources */,
-				451C8F0D1D7EE21200B9324D /* CTValidation.m in Sources */,
-				45E942B21D1301C600ACF604 /* CTDateCollectionViewCell.m in Sources */,
-				45137C851D476AB100089928 /* CTPickerView.m in Sources */,
-				45E942BF1D13020300ACF604 /* LocationSearchDataSource.m in Sources */,
-				45645D8C1D2D4A310075A3D2 /* HTMLParser.m in Sources */,
-				45BC88D41DC0F8460041BD74 /* CTToolTip.m in Sources */,
-				451D7E341DAFC548001A4062 /* GTBooking.m in Sources */,
-				45C488CC1D479B020044612C /* OptionalExtrasView.m in Sources */,
-				4511E5381D17F766000ED6B0 /* CTNavigationItem.m in Sources */,
-				455CA0AC1DBF9D5B006472D0 /* VehicleFeaturesDataSource.m in Sources */,
-				4561765A1DCA03C500754DFA /* CTMerhandisingBanner.m in Sources */,
-				4511E51E1D1450CE000ED6B0 /* CTSDKSettings.m in Sources */,
-				45E84CD01D79C69C00D6BC47 /* InclusionCollectionViewDataSource.m in Sources */,
-				451C8F111D7EF37700B9324D /* GTSelectionValidation.m in Sources */,
-				4546D40F1D8301700081A2F9 /* FilterCollectionViewDataSource.m in Sources */,
-				45B264F81D902C8B000005F2 /* GTBookingCompletionValidation.m in Sources */,
-				45EC25101D49132B00A3C09D /* CTViewController.m in Sources */,
-				45EE26E01D37A79900A1FB51 /* GroundTransportViewController.m in Sources */,
-				451FE5B81D6EF286004D85D1 /* SearchValidation.m in Sources */,
+				455B58341DCC914300CA4790 /* GTPaymentRequest.m in Sources */,
+				455B58361DCC914300CA4790 /* PaymentRequest.m in Sources */,
+				455B58381DCC914300CA4790 /* CTPaymentView.m in Sources */,
+				455B583C1DCC914300CA4790 /* CTSDKSettings.m in Sources */,
+				455B58481DCC914300CA4790 /* CTToolTip.m in Sources */,
+				455B584B1DCC914300CA4790 /* CTNavigationBar.m in Sources */,
+				455B584D1DCC914300CA4790 /* CTNavigationItem.m in Sources */,
+				455B584F1DCC914300CA4790 /* CTNavigationController.m in Sources */,
+				455B58511DCC914300CA4790 /* CTStepper.m in Sources */,
+				455B58531DCC914300CA4790 /* CTFilterTableView.m in Sources */,
+				455B58551DCC914300CA4790 /* CTSegmentedControl.m in Sources */,
+				455B58571DCC914300CA4790 /* CTPickerView.m in Sources */,
+				455B58591DCC914300CA4790 /* CTTextView.m in Sources */,
+				455B585B1DCC914300CA4790 /* CTPlaceholderView.m in Sources */,
+				455B585D1DCC914300CA4790 /* CTView.m in Sources */,
+				455B585F1DCC914300CA4790 /* CTDesignableView.m in Sources */,
+				455B58611DCC914300CA4790 /* CTNavigationView.m in Sources */,
+				455B58631DCC914300CA4790 /* CTAppearance.m in Sources */,
+				455B58651DCC914300CA4790 /* JVFloatLabeledTextField.m in Sources */,
+				455B58671DCC914300CA4790 /* NSStringUtils.m in Sources */,
+				455B58691DCC914300CA4790 /* CTTextField.m in Sources */,
+				455B586B1DCC914300CA4790 /* CTCheckbox.m in Sources */,
+				455B586D1DCC914300CA4790 /* CTButton.m in Sources */,
+				455B586F1DCC914300CA4790 /* UnderLinedButton.m in Sources */,
+				455B58711DCC914300CA4790 /* TabButton.m in Sources */,
+				455B58731DCC914300CA4790 /* GTBookNowButton.m in Sources */,
+				455B58751DCC914300CA4790 /* CTLabel.m in Sources */,
+				455B58771DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.m in Sources */,
+				455B587C1DCC914300CA4790 /* LocaleUtils.m in Sources */,
+				455B587E1DCC914300CA4790 /* CTImageCache.m in Sources */,
+				455B58801DCC914300CA4790 /* DateUtils.m in Sources */,
+				455B58821DCC914300CA4790 /* NSNumberUtils.m in Sources */,
+				455B58841DCC914300CA4790 /* LinkerUtils.m in Sources */,
+				455B58861DCC914300CA4790 /* HTMLParser.m in Sources */,
+				455B58881DCC914300CA4790 /* CarRentalSearch.m in Sources */,
+				455B588A1DCC914300CA4790 /* GroundTransportSearch.m in Sources */,
+				455B588C1DCC914300CA4790 /* Reachability.m in Sources */,
+				455B588E1DCC914300CA4790 /* LocalisedStrings.m in Sources */,
+				455B58901DCC914300CA4790 /* FlightNumberValidation.m in Sources */,
+				455B58921DCC914300CA4790 /* DataStore.m in Sources */,
+				455B58941DCC914300CA4790 /* UIColorUtils.m in Sources */,
+				455B58961DCC914300CA4790 /* RentalBookingsViewController.m in Sources */,
+				455B58981DCC914300CA4790 /* RentalBookingCell.m in Sources */,
+				455B589A1DCC914300CA4790 /* RentalBooking.m in Sources */,
+				455B589C1DCC914300CA4790 /* GTBooking.m in Sources */,
+				455B589E1DCC914300CA4790 /* GTBookingsViewController.m in Sources */,
+				455B58A01DCC914300CA4790 /* GTBookingTableViewCell.m in Sources */,
+				455B58A21DCC914300CA4790 /* GTSearchValidation.m in Sources */,
+				455B58A41DCC914300CA4790 /* GTSelectionValidation.m in Sources */,
+				455B58A61DCC914300CA4790 /* GTPassengerDetailsValidation.m in Sources */,
+				455B58A81DCC914300CA4790 /* GTGenericValidation.m in Sources */,
+				455B58AA1DCC914300CA4790 /* GTBookingCompletionValidation.m in Sources */,
+				455B58AC1DCC914400CA4790 /* GenericValidation.m in Sources */,
+				455B58AD1DCC914400CA4790 /* InsuranceValidation.m in Sources */,
+				455B58AF1DCC914400CA4790 /* PaymentValidation.m in Sources */,
+				455B58B11DCC914400CA4790 /* SearchValidation.m in Sources */,
+				455B58B31DCC914400CA4790 /* BookingCompletionValidation.m in Sources */,
+				455B58B61DCC914400CA4790 /* CTValidation.m in Sources */,
+				455B58B81DCC914400CA4790 /* CTViewController.m in Sources */,
+				455B58BA1DCC914400CA4790 /* CTLocationSearchViewController.m in Sources */,
+				455B58BC1DCC914400CA4790 /* LocationSearchDataSource.m in Sources */,
+				455B58BE1DCC914400CA4790 /* LocationSearchTableViewCell.m in Sources */,
+				455B58C01DCC914400CA4790 /* CTTimePickerView.m in Sources */,
+				455B58C21DCC914400CA4790 /* CTCalendarViewController.m in Sources */,
+				455B58C41DCC914400CA4790 /* CTCalendarView.m in Sources */,
+				455B58C61DCC914400CA4790 /* CTCalendarTableViewCell.m in Sources */,
+				455B58C81DCC914400CA4790 /* CTDateCollectionViewCell.m in Sources */,
+				455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */,
+				455B58CC1DCC914400CA4790 /* CTMiddleDateCell.m in Sources */,
+				455B58CE1DCC914400CA4790 /* CTSelectView.m in Sources */,
+				455B58D01DCC914400CA4790 /* SettingsSelectionViewController.m in Sources */,
+				455B58D21DCC914400CA4790 /* SettingsViewController.m in Sources */,
+				455B58D41DCC914400CA4790 /* SearchDetailsViewController.m in Sources */,
+				455B58D61DCC914400CA4790 /* CTInterstitialViewController.m in Sources */,
+				455B58D81DCC914400CA4790 /* CTFilterViewController.m in Sources */,
+				455B58DA1DCC914400CA4790 /* CTFilterDataSource.m in Sources */,
+				455B58DC1DCC914400CA4790 /* CTFilterTableViewCell.m in Sources */,
+				455B58DE1DCC914400CA4790 /* CTFilterFactory.m in Sources */,
+				455B58E01DCC914400CA4790 /* CTFilterContainer.m in Sources */,
+				455B58E21DCC914400CA4790 /* CTVehicleSelectionView.m in Sources */,
+				455B58E41DCC914400CA4790 /* CTVehicleSelectionDataSource.m in Sources */,
+				455B58E61DCC914400CA4790 /* VehicleTableViewCell.m in Sources */,
+				455B58E91DCC914400CA4790 /* CTMerhandisingBanner.m in Sources */,
+				455B58EB1DCC914400CA4790 /* VehicleSelectionViewController.m in Sources */,
+				455B58ED1DCC914400CA4790 /* VehicleDetailsPageViewController.m in Sources */,
+				455B58EF1DCC914400CA4790 /* PageSelectionCollectionViewCell.m in Sources */,
+				455B58F11DCC914400CA4790 /* TermsViewController.m in Sources */,
+				455B58F31DCC914400CA4790 /* TermsDetailViewController.m in Sources */,
+				455B58F51DCC914400CA4790 /* ExpandingInfoView.m in Sources */,
+				455B58F71DCC914400CA4790 /* SupplierRatingsViewController.m in Sources */,
+				455B58F91DCC914400CA4790 /* SupplierRatingCollectionViewCell.m in Sources */,
+				455B58FB1DCC914400CA4790 /* VehicleFeaturesDataSource.m in Sources */,
+				455B58FD1DCC914400CA4790 /* VehicleFeatureCollectionViewCell.m in Sources */,
+				455B58FF1DCC914400CA4790 /* CTInclusionTableViewCell.m in Sources */,
+				455B59011DCC914400CA4790 /* CTInclusionsDataSource.m in Sources */,
+				455B59031DCC914400CA4790 /* IncludedCollectionViewCell.m in Sources */,
+				455B59051DCC914400CA4790 /* IncludedCollectionViewLayout.m in Sources */,
+				455B59071DCC914400CA4790 /* VehicleDetailsViewController.m in Sources */,
+				455B59091DCC914400CA4790 /* ExtrasViewController.m in Sources */,
+				455B590B1DCC914400CA4790 /* OptionalExtrasView.m in Sources */,
+				455B590D1DCC914400CA4790 /* OptionalExtraTableViewCell.m in Sources */,
+				455B59101DCC914400CA4790 /* BookingSummaryViewController.m in Sources */,
+				455B59121DCC914400CA4790 /* BookingSummaryButton.m in Sources */,
+				455B59141DCC914400CA4790 /* PaymentSummaryViewController.m in Sources */,
+				455B59161DCC914400CA4790 /* PaymentSummaryTableViewCell.m in Sources */,
+				455B59181DCC914400CA4790 /* DriverDetailsViewController.m in Sources */,
+				455B591A1DCC914400CA4790 /* AddressDetailsViewController.m in Sources */,
+				455B591C1DCC914400CA4790 /* CSVItem.m in Sources */,
+				455B591E1DCC914400CA4790 /* PaymentViewController.m in Sources */,
+				455B59201DCC914400CA4790 /* PaymentCompletionViewController.m in Sources */,
+				455B59221DCC914400CA4790 /* GTInterstitialViewController.m in Sources */,
+				455B59241DCC914400CA4790 /* GTPaymentViewController.m in Sources */,
+				455B59261DCC914400CA4790 /* GTPaymentCompletionViewController.m in Sources */,
+				455B59281DCC914400CA4790 /* GooglePlaceService.m in Sources */,
+				455B592A1DCC914400CA4790 /* GTPassengerViewController.m in Sources */,
+				455B592C1DCC914400CA4790 /* FilterCollectionViewDataSource.m in Sources */,
+				455B592E1DCC914400CA4790 /* GTFilterCollectionViewCell.m in Sources */,
+				455B59301DCC914400CA4790 /* GTFilterCollectionViewFlowLayout.m in Sources */,
+				455B59321DCC914400CA4790 /* InclusionCollectionViewDataSource.m in Sources */,
+				455B59341DCC914400CA4790 /* InclusionCollectionViewCell.m in Sources */,
+				455B59361DCC914400CA4790 /* InclusionFlowLayout.m in Sources */,
+				455B59381DCC914400CA4790 /* GTServiceTableViewCell.m in Sources */,
+				455B593A1DCC914400CA4790 /* GTShuttleTableViewCell.m in Sources */,
+				455B593C1DCC914400CA4790 /* InclusionsTableViewCell.m in Sources */,
+				455B593E1DCC914400CA4790 /* GroundServicesViewController.m in Sources */,
+				455B59401DCC914400CA4790 /* GroundTransportViewController.m in Sources */,
+				455B59441DCC914400CA4790 /* CartrawlerSDK.m in Sources */,
+				455B59421DCC914400CA4790 /* PassengerSelectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		45AC545B1D1307AB00805268 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 45E942421D12FF0F00ACF604 /* CartrawlerSDK */;
-			targetProxy = 45AC545A1D1307AB00805268 /* PBXContainerItemProxy */;
-		};
-		45D866C71D14076B00D19B74 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 45D866561D13F0CA00D19B74 /* CartrawlerResources */;
-			targetProxy = 45D866C61D14076B00D19B74 /* PBXContainerItemProxy */;
-		};
-		45D866C91D14096100D19B74 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 45D866561D13F0CA00D19B74 /* CartrawlerResources */;
-			targetProxy = 45D866C81D14096100D19B74 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		45364CB51D782E23003EBB5D /* Debug */ = {
@@ -1968,81 +1825,55 @@
 			};
 			name = Release;
 		};
-		45AC54581D1307A000805268 /* Debug */ = {
+		455B58311DCC90D300CA4790 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "";
-				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = NO;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 93JSQ29ZDX;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CartrawlerSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Cartrawler.CartrawlerSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				STRIP_STYLE = "non-global";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		45AC54591D1307A000805268 /* Release */ = {
+		455B58321DCC90D300CA4790 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "";
-				COPY_PHASE_STRIP = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 93JSQ29ZDX;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CartrawlerSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Cartrawler.CartrawlerSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		45D8665B1D13F0CA00D19B74 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				INFOPLIST_FILE = CartrawlerResources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.CartrawlerBundle;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		45D8665C1D13F0CA00D19B74 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				INFOPLIST_FILE = CartrawlerResources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.CartrawlerBundle;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -2060,8 +1891,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2084,7 +1917,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2105,8 +1938,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2123,54 +1958,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		45E9424D1D12FF0F00ACF604 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PROJECT_NAME)";
-				"PUBLIC_HEADERS_FOLDER_PATH[sdk=*]" = "include/$(PROJECT_NAME)";
-				SKIP_INSTALL = YES;
-				STRIP_INSTALLED_PRODUCT = NO;
-				STRIP_STYLE = "non-global";
-			};
-			name = Debug;
-		};
-		45E9424E1D12FF0F00ACF604 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				COPY_PHASE_STRIP = YES;
-				DEAD_CODE_STRIPPING = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PROJECT_NAME)";
-				SKIP_INSTALL = YES;
-				STRIP_STYLE = all;
 			};
 			name = Release;
 		};
@@ -2186,38 +1977,19 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		45AC54571D1307A000805268 /* Build configuration list for PBXAggregateTarget "Framework_UI" */ = {
+		455B58301DCC90D300CA4790 /* Build configuration list for PBXNativeTarget "CartrawlerSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				45AC54581D1307A000805268 /* Debug */,
-				45AC54591D1307A000805268 /* Release */,
+				455B58311DCC90D300CA4790 /* Debug */,
+				455B58321DCC90D300CA4790 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		45D8665A1D13F0CA00D19B74 /* Build configuration list for PBXNativeTarget "CartrawlerResources" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				45D8665B1D13F0CA00D19B74 /* Debug */,
-				45D8665C1D13F0CA00D19B74 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		45E9423E1D12FF0F00ACF604 /* Build configuration list for PBXProject "CartrawlerSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				45E9424A1D12FF0F00ACF604 /* Debug */,
 				45E9424B1D12FF0F00ACF604 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		45E9424C1D12FF0F00ACF604 /* Build configuration list for PBXNativeTarget "CartrawlerSDK" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				45E9424D1D12FF0F00ACF604 /* Debug */,
-				45E9424E1D12FF0F00ACF604 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -48,8 +48,7 @@
 
     [self.tableView setContentInset:UIEdgeInsetsMake(40,0,0,0)];
     
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     [self.tableView registerNib:[UINib nibWithNibName:@"VehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];
 
     _dataSource = [[CTVehicleSelectionDataSource alloc] initWithData:data cellSelected:^(CTAvailabilityItem *vehicle) {

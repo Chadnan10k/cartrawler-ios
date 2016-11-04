@@ -1,5 +1,5 @@
 //
-//  USState.h
+//  InsuranceLink.h
 //  CartrawlerAPI
 //
 //  Created by Lee Maguire on 25/07/2016.
@@ -10,11 +10,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 ///Abstract: Used for US insurance quotes
-@interface InsuranceSelectorItem : NSObject
+@interface CTInsuranceLink : NSObject
 
-@property (nonatomic, readonly, nonnull) NSString *name;
+@property (nonatomic, readonly, nonnull) NSURL *link;
+@property (nonatomic, readonly, nonnull) NSString *title;
 @property (nonatomic, readonly, nonnull) NSString *code;
 
-- (instancetype)initWithName:(NSString *)name code:(NSString *)code  ;
+- (instancetype)initWithLink:(NSString *)link title:(NSString *)title code:(NSString *)code  ;
 @end
 NS_ASSUME_NONNULL_END

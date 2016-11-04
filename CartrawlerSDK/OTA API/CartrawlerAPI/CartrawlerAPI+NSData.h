@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CartrawlerAPI.h"
 
-@interface NSDataUtils : NSData
+@interface NSData (CartrawlerAPI)
 
-+ (NSString *)hexadecimalString:(NSData *)bytes;
+- (NSString *)hexadecimalString;
 
 @end

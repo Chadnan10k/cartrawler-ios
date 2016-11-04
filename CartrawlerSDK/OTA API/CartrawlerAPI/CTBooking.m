@@ -4,8 +4,8 @@
 //
 
 #import "CTBooking.h"
-#import "ImageResizeURL.h"
-#import "Constants.h"
+#import "CartrawlerAPI+NSURL.h"
+#import "CTConstants.h"
 
 @implementation CTBooking
 
@@ -76,10 +76,10 @@
     _vehClassSize           = vehReservationDictionary[@"VehSegmentCore"][@"Vehicle"][@"VehClass"][@"@Size"];
     _vehMakeModelName       = vehReservationDictionary[@"VehSegmentCore"][@"Vehicle"][@"VehMakeModel"][@"@Name"];
     _vehMakeModelCode       = vehReservationDictionary[@"VehSegmentCore"][@"Vehicle"][@"VehMakeModel"][@"@Code"];
-    _vehPictureUrl          = [ImageResizeURL vehicle:vehReservationDictionary[@"VehSegmentCore"][@"Vehicle"][@"PictureURL"]];
+    _vehPictureUrl          = [NSURL vehicle:vehReservationDictionary[@"VehSegmentCore"][@"Vehicle"][@"PictureURL"]];
     
     if (vehReservationDictionary[@"VehSegmentCore"][@"TPA_Extensions"][@"VendorPictureURL"]) {
-        _vendorImageUrl = [ImageResizeURL vendor:vehReservationDictionary[@"VehSegmentCore"][@"TPA_Extensions"][@"VendorPictureURL"]];
+        _vendorImageUrl = [NSURL vendor:vehReservationDictionary[@"VehSegmentCore"][@"TPA_Extensions"][@"VendorPictureURL"]];
     }
     
     _rentalPaymentTransactionCode = vehReservationDictionary[@"VehSegmentInfo"][@"RentalPaymentAmount"][@"@PaymentTransactionTypeCode"];
@@ -146,7 +146,7 @@
 	_vehClassSize           = vehReservationDictionary[@"VehSegmentCore"][@"Vehicle"][@"VehClass"][@"@Size"];
 	_vehMakeModelName       = vehReservationDictionary[@"VehSegmentCore"][@"Vehicle"][@"VehMakeModel"][@"@Name"];
 	_vehMakeModelCode       = vehReservationDictionary[@"VehSegmentCore"][@"Vehicle"][@"VehMakeModel"][@"@Code"];
-	_vehPictureUrl          = [ImageResizeURL vehicle:vehReservationDictionary[@"VehSegmentCore"][@"Vehicle"][@"PictureURL"] ?: @""];
+	_vehPictureUrl          = [NSURL vehicle:vehReservationDictionary[@"VehSegmentCore"][@"Vehicle"][@"PictureURL"] ?: @""];
 	_vehAssetNumber         = vehReservationDictionary[@"VehSegmentCore"][@"Vehicle"][@"VehIdentity"][@"@VehicleAssetNumber"];
 	
 	// Fees
@@ -190,7 +190,7 @@
 	_vendorBookingRef = self.tpaConfID;
 	
 	if (vehReservationDictionary[@"VehSegmentCore"][@"TPA_Extensions"][@"VendorPictureURL"]) {
-        _vendorImageUrl = [ImageResizeURL vendor:vehReservationDictionary[@"VehSegmentCore"][@"TPA_Extensions"][@"VendorPictureURL"] ?: @""];
+        _vendorImageUrl = [NSURL vendor:vehReservationDictionary[@"VehSegmentCore"][@"TPA_Extensions"][@"VendorPictureURL"] ?: @""];
 	}
 	
 	// Payment Rules

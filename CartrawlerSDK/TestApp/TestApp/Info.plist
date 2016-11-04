@@ -50,6 +50,8 @@
 	<array>
 		<string>OpenSans-Light.ttf</string>
 		<string>OpenSans-Semibold.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+		<string>Roboto-Bold.ttf</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

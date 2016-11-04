@@ -11,7 +11,7 @@
 #import "CarRentalSearch.h"
 #import "CTImageCache.h"
 #import "CTAppearance.h"
-#import "NSDateUtils.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 
 @interface PaymentCompletionViewController () <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet CTLabel *paymentTitleLabel;
@@ -65,8 +65,7 @@
                                                                     attributes:@{NSFontAttributeName:
                                                                                      [UIFont fontWithName:[CTAppearance instance].boldFontName size:16]}];
     
-    NSAttributedString *pickupDate = [[NSAttributedString alloc] initWithString:[NSDateUtils stringFromDateWithFormat:[CarRentalSearch instance].pickupDate
-                                                                                                               format:@"dd, MMM YYYY, hh:mm a"]
+    NSAttributedString *pickupDate = [[NSAttributedString alloc] initWithString:[[CarRentalSearch instance].pickupDate stringFromDateWithFormat:@"dd, MMM YYYY, hh:mm a"]
                                                                     attributes:@{NSFontAttributeName:
                                                                                      [UIFont fontWithName:[CTAppearance instance].fontName size:16]}];
     
@@ -79,8 +78,7 @@
                                                                     attributes:@{NSFontAttributeName:
                                                                                      [UIFont fontWithName:[CTAppearance instance].boldFontName size:16]}];
     
-    NSAttributedString *dropoffDate = [[NSAttributedString alloc] initWithString:[NSDateUtils stringFromDateWithFormat:[CarRentalSearch instance].dropoffDate
-                                                                                                               format:@"dd, MMM YYYY, hh:mm a"]
+    NSAttributedString *dropoffDate = [[NSAttributedString alloc] initWithString:[[CarRentalSearch instance].dropoffDate stringFromDateWithFormat:@"dd, MMM YYYY, hh:mm a"]
                                                                      attributes:@{NSFontAttributeName:
                                                                                       [UIFont fontWithName:[CTAppearance instance].fontName size:16]}];
     

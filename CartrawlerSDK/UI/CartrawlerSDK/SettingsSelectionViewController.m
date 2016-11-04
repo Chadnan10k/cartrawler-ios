@@ -50,8 +50,7 @@
             break;
     }
     
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    NSBundle *b = [NSBundle bundleForClass:[self class]];
     
     NSString* path = [b pathForResource:fileName
                                         ofType:@"csv"];

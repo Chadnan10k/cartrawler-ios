@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
-#import "InsuranceSelectorItem.h"
-#import "InsuranceLink.h"
+#import "CTInsuranceSelectorItem.h"
+#import "CTInsuranceLink.h"
 
 NS_ASSUME_NONNULL_BEGIN
 /**
@@ -60,8 +60,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, nullable) NSString *functionalText;
 
 @property (nonatomic, readonly, nullable) NSString *selectorTitle;
-@property (nonatomic, readonly, nullable) NSArray <InsuranceSelectorItem *> *selectorItems;
-@property (nonatomic, readonly, nullable) NSArray <InsuranceLink *> *links;
+@property (nonatomic, readonly, nullable) NSArray <CTInsuranceSelectorItem *> *selectorItems;
+@property (nonatomic, readonly, nullable) NSArray <CTInsuranceLink *> *links;
 
 - (instancetype)initFromDict:(NSDictionary *)dict  ;
 

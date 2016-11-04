@@ -6,9 +6,9 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "InsuranceLink.h"
+#import "CTInsuranceLink.h"
 
-@implementation InsuranceLink
+@implementation CTInsuranceLink
 
 - (instancetype)initWithLink:(NSString *)link title:(NSString *)title code:(NSString *)code
 {

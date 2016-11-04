@@ -6,9 +6,9 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "Constants.h"
+#import "CTConstants.h"
 
-@implementation Constants
+@implementation CTConstants
 
 NSString *const CTHeader = @"CTHeader";
 NSString *const CTMobileHeader = @"CTMobileHeader";

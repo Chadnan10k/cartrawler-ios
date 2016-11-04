@@ -41,8 +41,7 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    NSBundle *b = [NSBundle bundleForClass:[self class]];
     NSString *text = [self.items[indexPath.row] objectForKey:@"text"];
     UIImage *image = [UIImage imageNamed:[self.items[indexPath.row] objectForKey:@"image"] inBundle:b compatibleWithTraitCollection:nil];
 

@@ -211,9 +211,7 @@
 {
     [self.view endEditing:YES];
     
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
-    UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:b];
+    UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"StepOne" bundle:[NSBundle bundleForClass:self.class]];
     SettingsSelectionViewController *vc = [settingsStoryboard instantiateViewControllerWithIdentifier:@"SettingsSelectionViewController"];
     [vc setSettingsType:SettingsTypeCountry];
     vc.modalPresentationStyle = UIModalPresentationOverFullScreen;

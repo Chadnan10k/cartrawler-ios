@@ -25,8 +25,7 @@
 
 - (void)setLabelText:(NSString *)text isAirport:(BOOL)isAirport
 {
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *b = [NSBundle bundleWithPath:bundlePath];
+    NSBundle *b = [NSBundle bundleForClass:[self class]];
     
     if (isAirport) {
         self.locationImageView.image = [UIImage imageNamed:@"location_airport" inBundle:b compatibleWithTraitCollection:nil];

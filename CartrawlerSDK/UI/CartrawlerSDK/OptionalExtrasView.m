@@ -88,8 +88,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.scrollEnabled = NO;
     
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     [self.tableView registerNib:[UINib nibWithNibName:@"OptionalExtraTableViewCell" bundle:bundle] forCellReuseIdentifier:@"cell"];
     
     self.textView.scrollEnabled = NO;

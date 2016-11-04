@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDateUtils : NSDate
+@interface NSDate (CartrawlerAPI)
 //static framework doesnt like categories so I guess we're stuck creating extensions like this
 
-+ (NSString *)stringFromDateWithFormat:(NSDate *)date format:(NSString *)format;
+- (NSString *)stringFromDateWithFormat:(NSString *)format;
 
 @end

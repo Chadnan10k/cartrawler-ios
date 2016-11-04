@@ -86,7 +86,7 @@
 - (UIImage *)imageForExtra:(NSString *)extraId
 {
     
-    NSBundle* bundle = [NSBundle bundleWithURL:[[NSBundle mainBundle]URLForResource:@"CartrawlerResources" withExtension:@"bundle"]];
+    NSBundle* bundle = [NSBundle bundleForClass:[self class]];
     if ([extraId isEqualToString:@"3"]) {
         //luggage rack
         return [UIImage imageNamed:@"luggage_rack" inBundle:bundle compatibleWithTraitCollection:nil];

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import <CartrawlerSDK/CartrawlerSDK.h>
+#import "CartrawlerSDK.h"
 
 @interface GTPassengerDetailsValidation : CTValidation
 

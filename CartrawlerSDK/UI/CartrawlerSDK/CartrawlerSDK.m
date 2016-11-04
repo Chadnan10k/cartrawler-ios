@@ -59,15 +59,14 @@
 {
     self = [super self];
     
-    [LinkerUtils loadFiles];
+    //[LinkerUtils loadFiles];
     [[CTSDKSettings instance] setClientId:requestorID languageCode:languageCode isDebug:isDebug];
     
     _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
                                                      language:[CTSDKSettings instance].languageCode
                                                         debug:[CTSDKSettings instance].isDebug];
     
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"CartrawlerResources" ofType:@"bundle"];
-    _bundle = [NSBundle bundleWithPath:bundlePath];
+    _bundle = [NSBundle bundleForClass:[self class]];
     
     if (isDebug) {
         [self.cartrawlerAPI enableLogging:YES];

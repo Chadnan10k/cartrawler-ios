@@ -7,9 +7,9 @@
 //
 
 #import "CTRequestBuilder.h"
-#import "Constants.h"
-#import "NSDateUtils.h"
-#import "NSDataUtils.h"
+#import "CTConstants.h"
+#import "CartrawlerAPI+NSDate.h"
+#import "CartrawlerAPI+NSData.h"
 #import "CTExtraEquipment.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <UIKit/UIKit.h>
@@ -63,12 +63,13 @@
     return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.002\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": {\"@ISOCurrency\": \"%@\",\"@ISOCountry\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, country, clientID];
 }
 
-+ (NSString *) stringToSha1:(NSString *)str {
++ (NSString *)stringToSha1:(NSString *)str
+{
     NSData *dataToHash = [str dataUsingEncoding:NSUTF8StringEncoding];
     unsigned char hashBytes[CC_SHA1_DIGEST_LENGTH];
     CC_SHA1(dataToHash.bytes, (CC_LONG)dataToHash.length, hashBytes);
     NSData *encodedData = [NSData dataWithBytes:hashBytes length:CC_SHA1_DIGEST_LENGTH];
-    return [NSDataUtils hexadecimalString: encodedData];
+    return [encodedData hexadecimalString];
 }
 
 + (NSString *)tpaExtenstionContruct:(NSString *)clientID {
@@ -388,7 +389,7 @@
                                target:(NSString *)target
                                locale:(NSString *)locale
 {    //we don't know their name or the amount of passengers
-    NSString *tail = [NSString stringWithFormat:@"\"PlanForQuoteRQ\":{\"@PlanID\":\"ACME\",\"@Type\":\"Protection\",\"CoveredTravelers\":{\"CoveredTraveler\":{\"CoveredPerson\":{\"@Relation\":\"Traveler 1\",\"GivenName\":\"Test\",\"Surname\":\"Test\"},\"CitizenCountryName\":{\"@Code\":\"%@\"}}},\"InsCoverageDetail\":{\"@Type\":\"SingleTrip\",\"TotalTripCost\":{\"@CurrencyCode\":\"%@\",\"@Amount\":\"%@\"},\"CoveredTrips\":{\"CoveredTrip\":{\"@Start\": \"%@\",\"@End\":\"%@\",\"Destinations\":{\"Destination\":{\"CountryName\":\"%@\"}}}}}}", homeCountry, activeCurrency, totalCost, [NSDateUtils stringFromDateWithFormat:pickupDateTime format:CTAvailRequestDateFormat], [NSDateUtils stringFromDateWithFormat:dropOffDateTime format:CTAvailRequestDateFormat], destinationCountryCode];
+    NSString *tail = [NSString stringWithFormat:@"\"PlanForQuoteRQ\":{\"@PlanID\":\"ACME\",\"@Type\":\"Protection\",\"CoveredTravelers\":{\"CoveredTraveler\":{\"CoveredPerson\":{\"@Relation\":\"Traveler 1\",\"GivenName\":\"Test\",\"Surname\":\"Test\"},\"CitizenCountryName\":{\"@Code\":\"%@\"}}},\"InsCoverageDetail\":{\"@Type\":\"SingleTrip\",\"TotalTripCost\":{\"@CurrencyCode\":\"%@\",\"@Amount\":\"%@\"},\"CoveredTrips\":{\"CoveredTrip\":{\"@Start\": \"%@\",\"@End\":\"%@\",\"Destinations\":{\"Destination\":{\"CountryName\":\"%@\"}}}}}}", homeCountry, activeCurrency, totalCost, [pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat], [dropOffDateTime stringFromDateWithFormat:CTAvailRequestDateFormat], destinationCountryCode];
     
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:activeCurrency], tail];
 

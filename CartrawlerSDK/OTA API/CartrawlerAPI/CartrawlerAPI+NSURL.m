@@ -6,9 +6,9 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "ImageResizeURL.h"
+#import "CartrawlerAPI+NSURL.h"
 
-@implementation ImageResizeURL
+@implementation NSURL (CartrawlerAPI)
 
 + (NSURL *)vendor:(NSString *)urlString
 {

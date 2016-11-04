@@ -9,7 +9,7 @@
 #import "PaymentViewController.h"
 #import "PaymentRequest.h"
 #import "CTSDKSettings.h"
-#import "NSDateUtils.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 #import "PaymentCompletionViewController.h"
 #import "Reachability.h"
 #import "CTPaymentView.h"
@@ -96,7 +96,7 @@
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
-    NSBundle* bundle = [NSBundle bundleWithURL:[[NSBundle mainBundle]URLForResource:@"CartrawlerResources" withExtension:@"bundle"]];
+    NSBundle* bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepThree" bundle:bundle];
     UINavigationController *nav = [storyboard instantiateViewControllerWithIdentifier:@"TermsViewControllerNav"];
     TermsViewController *vc = (TermsViewController *)nav.topViewController;
