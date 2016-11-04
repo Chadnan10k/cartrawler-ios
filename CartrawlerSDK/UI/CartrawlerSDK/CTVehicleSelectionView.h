@@ -12,7 +12,7 @@
 
 @interface CTVehicleSelectionView : UIView
 
-+ (void)forceLinkerLoad_;
+
 
 typedef void (^VehicleSelectionCompletion)(CTAvailabilityItem *vehicle);
 typedef void (^CTScrollDirectionChanged)(BOOL up);

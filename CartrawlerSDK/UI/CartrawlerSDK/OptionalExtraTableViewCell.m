@@ -8,7 +8,7 @@
 
 #import "OptionalExtraTableViewCell.h"
 #import "CTLabel.h"
-#import "NSNumberUtils.h"
+#import "CartrawlerSDK+NSNumber.h" 
 #import "CTStepper.h"
 
 @interface OptionalExtraTableViewCell()
@@ -24,10 +24,6 @@
 @implementation OptionalExtraTableViewCell
 {
     CTExtraEquipment *_extra;
-}
-
-+ (void)forceLinkerLoad_
-{
 }
 
 - (void)awakeFromNib
@@ -49,7 +45,7 @@
     _extra = extra;
 
     self.itemTitleLabel.text = extra.equipDescription;
-    self.itemPriceLabel.text = [NSNumberUtils numberStringWithCurrencyCode: extra.chargeAmount];
+    self.itemPriceLabel.text = [extra.chargeAmount numberStringWithCurrencyCode];
     
     self.extraImageView.image = [self imageForExtra:extra.equipType];
     self.stepper.value = [NSNumber numberWithInteger:extra.qty].doubleValue;

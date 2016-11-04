@@ -11,7 +11,7 @@
 
 @implementation GTBookNowButton
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

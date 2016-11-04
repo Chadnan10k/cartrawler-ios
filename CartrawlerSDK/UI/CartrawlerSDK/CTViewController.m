@@ -17,6 +17,7 @@
 - (void)refresh { }
 
 - (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     for (CALayer* layer in [self.view.layer sublayers])
     {
         [layer removeAllAnimations];

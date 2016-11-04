@@ -9,10 +9,10 @@
 #import "CTCalendarViewController.h"
 #import "CTLabel.h"
 #import "CTCalendarView.h"
-#import "DateUtils.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 #import "CTAppearance.h"
 #import "CTView.h"
-#import "UIColorUtils.h"
+#import "CartrawlerSDK+UIColor.h"
 
 @interface CTCalendarViewController()
 
@@ -35,7 +35,7 @@
 
 @implementation CTCalendarViewController
 
-+ (void)forceLinkerLoad_
+
 {
     
 }
@@ -93,9 +93,9 @@
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
             if (headDate) {
-                [self animatePickupLabel:[DateUtils shortDescriptionFromDate:date]];
+                [self animatePickupLabel:[date shortDescriptionFromDate]];
             } else {
-                [self animateDropoffLabel:[DateUtils shortDescriptionFromDate:date]];
+                [self animateDropoffLabel:[date shortDescriptionFromDate]];
             }
         }
     };

@@ -9,7 +9,7 @@
 #import "VehicleSelectionViewController.h"
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "CTLabel.h"
-#import "DateUtils.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 #import "CTFilterViewController.h"
 
 @interface VehicleSelectionViewController () <UIScrollViewDelegate>
@@ -29,11 +29,6 @@
 
 @implementation VehicleSelectionViewController {
     BOOL viewLoaded;
-}
-
-+ (void)forceLinkerLoad_
-{
-    
 }
 
 - (void)viewDidLoad
@@ -63,10 +58,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     
-    NSString *pickupDate = [DateUtils shortDescriptionFromDate:self.search.pickupDate];
-    NSString *dropoffDate = [DateUtils shortDescriptionFromDate:self.search.dropoffDate];
+    NSString *pickupDate = [self.search.pickupDate shortDescriptionFromDate];
+    NSString *dropoffDate = [self.search.dropoffDate shortDescriptionFromDate];
     
     self.datesLabel.text = [NSString stringWithFormat:@"%@ - %@", pickupDate, dropoffDate];
     [self produceHeaderText];

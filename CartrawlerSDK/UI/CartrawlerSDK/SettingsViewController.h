@@ -10,6 +10,6 @@
 
 @interface SettingsViewController : UIViewController
 
-+ (void)forceLinkerLoad_;
+
 
 @end

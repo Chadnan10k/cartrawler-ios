@@ -8,7 +8,6 @@
 
 
 #import "CartrawlerSDK.h"
-#import "LinkerUtils.h"
 #import "CTSDKSettings.h"
 #import "CTNavigationController.h"
 #import "CarRentalSearch.h"
@@ -57,7 +56,7 @@
              languageCode:(NSString *)languageCode
                   isDebug:(BOOL)isDebug
 {
-    self = [super self];
+    self = [super init];
     
     //[LinkerUtils loadFiles];
     [[CTSDKSettings instance] setClientId:requestorID languageCode:languageCode isDebug:isDebug];

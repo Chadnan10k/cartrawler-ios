@@ -10,7 +10,7 @@
 
 @implementation CTDesignableView
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

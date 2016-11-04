@@ -17,7 +17,7 @@
 
 @implementation CTInclusionTableViewCell
 
-+ (void)forceLinkerLoad_ {}
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];

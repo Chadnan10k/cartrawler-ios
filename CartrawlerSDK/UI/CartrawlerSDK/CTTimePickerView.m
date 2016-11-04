@@ -18,14 +18,14 @@
 
 @implementation CTTimePickerView
 
-+ (void)forceLinkerLoad_
+
 {
     
 }
 
 - (id)initInView:(UIView *)superview mininumDate:(NSDate *)mininumDate
 {
-    self = [super self];
+    self = [super init];
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
     _pickerView = [[UIDatePicker alloc] init];
@@ -169,7 +169,7 @@
     
     NSDate *returnDate;
     NSInteger minuteInterval = 15;
-    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSMinuteCalendarUnit fromDate:inDate];
+    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitMinute fromDate:inDate];
     NSInteger minutes = dateComponents.minute;
     NSInteger minutesRounded = ( (NSInteger)(minutes / minuteInterval) ) * minuteInterval;
     NSDate *roundedDate = [[NSDate alloc] initWithTimeInterval:60.0 * (minutesRounded - minutes) sinceDate:inDate];

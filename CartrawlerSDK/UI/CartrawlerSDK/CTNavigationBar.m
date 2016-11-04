@@ -31,9 +31,4 @@
     return self;
 }
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 @end

@@ -11,7 +11,7 @@
 #import "CTViewController.h"
 @interface VehicleSelectionViewController : CTViewController
 
-+ (void)forceLinkerLoad_;
+
 
 @end
 

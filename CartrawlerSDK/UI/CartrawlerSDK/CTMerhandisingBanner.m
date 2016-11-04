@@ -18,7 +18,7 @@
 
 @implementation CTMerhandisingBanner
 
-+ (void)forceLinkerLoad_ {}
+
 
 - (void)awakeFromNib
 {

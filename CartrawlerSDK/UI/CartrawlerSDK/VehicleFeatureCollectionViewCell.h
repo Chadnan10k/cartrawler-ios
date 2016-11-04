@@ -10,7 +10,7 @@
 
 @interface VehicleFeatureCollectionViewCell : UICollectionViewCell
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setData:(NSString *)text image:(UIImage *)image;
 

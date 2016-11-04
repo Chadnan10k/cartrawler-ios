@@ -13,7 +13,7 @@
 #import "CTLocationSearchViewController.h"
 #import <CartrawlerAPI/CTGroundLocation.h>
 #import "CTCalendarViewController.h"
-#import "DateUtils.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 #import "CTCheckbox.h"
 #import "CTTextField.h"
 #import "CTSDKSettings.h"
@@ -66,7 +66,7 @@
 @implementation GroundTransportViewController
 
 
-+ (void)forceLinkerLoad_
+
 {
     
 }
@@ -82,8 +82,8 @@
     self.returnTripConstraint.constant = 16;
     self.returnTripContainer.alpha = 0;
     
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *initialTimeComp = [gregorianCalendar components:NSHourCalendarUnit
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *initialTimeComp = [gregorianCalendar components:NSCalendarUnitHour
                                                              fromDate:[NSDate date]];
     initialTimeComp.hour = 10;
     
@@ -147,14 +147,14 @@
     };
     
     self.pickupTimeView.placeholder = @"Time";
-    [self.pickupTimeView setTextFieldText:[DateUtils stringFromDate:self.pickupTime withFormat:@"hh:mm a"]];
+    [self.pickupTimeView setTextFieldText:[self.pickupTime stringFromDate:@"hh:mm a"]];
     self.pickupTimeView.viewTapped = ^{
         [weakSelf.view endEditing:YES];
         _activeView = self.pickupTimeView;
         [weakSelf.pickupTimePicker present];
         [weakSelf.dropoffTimePicker hide];
         weakSelf.pickupTimePicker.timeSelection = ^(NSDate *date){
-            [weakSelf.pickupTimeView setTextFieldText:[DateUtils stringFromDate:date withFormat:@"hh:mm a"]];
+            [weakSelf.pickupTimeView setTextFieldText:[date stringFromDate:@"hh:mm a"]];
             weakSelf.pickupTime = date;
         };
     };
@@ -166,7 +166,7 @@
         [weakSelf.dropoffTimePicker present];
         [weakSelf.pickupTimePicker hide];
         weakSelf.dropoffTimePicker.timeSelection = ^(NSDate *date){
-            [weakSelf.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:date withFormat:@"hh:mm a"]];
+            [weakSelf.dropoffTimeView setTextFieldText:[date stringFromDate:@"hh:mm a"]];
             weakSelf.dropoffTime = date;
         };
     };
@@ -237,8 +237,8 @@
     
     if (!self.groundSearch.pickupLocation.dateTime) {
         _pickupDate = nil;
-        NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        NSDateComponents *initialTimeComp = [gregorianCalendar components:NSHourCalendarUnit
+        NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSDateComponents *initialTimeComp = [gregorianCalendar components:NSCalendarUnitHour
                                                                  fromDate:[NSDate date]];
         initialTimeComp.hour = 10;
         
@@ -288,7 +288,7 @@
 - (void)didPickDates:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
 {
     NSString *dateString = [NSString stringWithFormat:@"%@",
-                            [DateUtils shortDescriptionFromDate:pickupDate]];
+                            [pickupDate shortDescriptionFromDate]];
     
     if (self.activeView == self.calendarView) {
         [self.calendarView setTextFieldText:dateString];
@@ -301,11 +301,11 @@
 
 - (void)combineDates
 {
-    NSDate *puDate = [DateUtils mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.pickupDate];
+    NSDate *puDate = [NSDate mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.pickupDate];
     _pickupDate = puDate;
 
     if (self.dropoffDate != nil && self.dropoffTime != nil) {
-        NSDate *doDate = [DateUtils mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.dropoffDate];
+        NSDate *doDate = [NSDate mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.dropoffDate];
         _dropoffDate = doDate;
     }
 }

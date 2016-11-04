@@ -11,7 +11,7 @@
 
 @implementation CTLabel
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

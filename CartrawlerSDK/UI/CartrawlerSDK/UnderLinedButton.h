@@ -10,6 +10,6 @@
 
 @interface UnderLinedButton : UIButton
 
-+ (void)forceLinkerLoad_;
+
 
 @end

@@ -18,7 +18,7 @@
 
 @implementation VehicleFeatureCollectionViewCell
 
-+ (void)forceLinkerLoad_ { }
+
 
 - (void)setData:(NSString *)text image:(UIImage *)image
 {

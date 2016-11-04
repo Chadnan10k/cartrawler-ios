@@ -11,7 +11,7 @@
 
 @interface CTFilterViewController : UIViewController
 
-+ (void)forceLinkerLoad_;
+
 typedef void (^CTFilteredCompletion)(NSArray<CTVehicle *> *filteredData);
 @property (nonatomic, strong) CTFilteredCompletion filterCompletion;
 

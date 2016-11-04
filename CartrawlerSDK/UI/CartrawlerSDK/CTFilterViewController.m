@@ -31,7 +31,7 @@
 
 @implementation CTFilterViewController
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

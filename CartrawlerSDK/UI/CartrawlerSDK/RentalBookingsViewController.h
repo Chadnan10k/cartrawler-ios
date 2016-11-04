@@ -10,7 +10,7 @@
 
 @interface RentalBookingsViewController : UIViewController
 
-+ (void)forceLinkerLoad_;
+
 
 typedef void (^ShowRentalEngine)(UIViewController *viewController);
 

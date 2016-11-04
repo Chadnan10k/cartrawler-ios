@@ -17,7 +17,7 @@
 
 @implementation GTBookingsViewController
 
-+ (void)forceLinkerLoad_ { }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

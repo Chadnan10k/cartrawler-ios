@@ -8,7 +8,7 @@
 
 #import "BookingSummaryViewController.h"
 #import <CartrawlerAPI/CTVendor.h>
-#import "DateUtils.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 #import "CTButton.h"
 #import "CTLabel.h"
 #import "CTAppearance.h"
@@ -29,11 +29,6 @@
 @end
 
 @implementation BookingSummaryViewController
-
-+ (void)forceLinkerLoad_
-{
-    
-}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -69,8 +64,8 @@
     
     self.carModelLabel.text = self.item.vehicle.makeModelName;
     self.vendorNameLabel.text = self.item.vendor.name;
-    self.pickupDateLabel.text = [DateUtils stringFromDate:self.pickupDate withFormat:@"hh:mm a dd MMMM YYYY"];
-    self.dropOffDateLabel.text = [DateUtils stringFromDate:self.dropoffDate withFormat:@"hh:mm a dd MMMM YYYY"];
+    self.pickupDateLabel.text = [self.pickupDate stringFromDate:@"hh:mm a dd MMMM YYYY"];
+    self.dropOffDateLabel.text = [self.dropoffDate stringFromDate:@"hh:mm a dd MMMM YYYY"];
  
     if (self.isBuyingInsurance) {
         [self.insuranceButton setTitleColor:[UIColor colorWithRed:97.0/255.0 green:163.0/255.0 blue:59.0/255.0 alpha:1] forState:UIControlStateNormal];

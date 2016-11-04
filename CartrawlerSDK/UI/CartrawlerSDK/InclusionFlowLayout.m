@@ -11,7 +11,7 @@
 
 @implementation InclusionFlowLayout
 
-+ (void)forceLinkerLoad_ {}
+
 
 static CGFloat const ITEM_SPACING = 0.0f;
 

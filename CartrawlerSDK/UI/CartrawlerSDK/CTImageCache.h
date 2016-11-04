@@ -13,8 +13,6 @@
 
 typedef void (^ImageCacheCompletion)(UIImage *image);
 
-+ (void)forceLinkerLoad_;
-
 + (CTImageCache *)sharedInstance;
 - (void)cachedImage:(NSURL *)imageUrl completion:(ImageCacheCompletion)completion;
 

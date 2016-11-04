@@ -18,7 +18,7 @@
 
 @implementation TermsDetailViewController
 
-+ (void)forceLinkerLoad_{}
+{}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

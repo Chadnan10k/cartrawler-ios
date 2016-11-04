@@ -18,6 +18,6 @@ typedef void (^SelectionCompletion)(BOOL selection);
 
 @property (nonatomic) IBInspectable BOOL enabled;
 
-+ (void)forceLinkerLoad_;
+
 
 @end

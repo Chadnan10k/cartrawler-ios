@@ -22,7 +22,7 @@
 
 @implementation LocationSearchDataSource
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

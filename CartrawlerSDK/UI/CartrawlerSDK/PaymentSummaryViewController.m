@@ -10,7 +10,7 @@
 #import "PaymentSummaryTableViewCell.h"
 #import "CTDesignableView.h"
 #import "CTSDKSettings.h"
-#import "NSNumberUtils.h"
+#import "CartrawlerSDK+NSNumber.h"
 #import "BookingSummaryButton.h"
 #import "CTLabel.h"
 @interface PaymentSummaryViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -29,11 +29,6 @@
 {
     BOOL summaryVisible;
     double total;
-}
-
-+ (void)forceLinkerLoad_
-{
-    
 }
 
 - (void)viewDidLoad
@@ -75,7 +70,7 @@
     
     total += self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue;
     
-    self.totalLabel.text = [NSNumberUtils numberStringWithCurrencyCode:@(total)];
+    self.totalLabel.text = [@(total) numberStringWithCurrencyCode];
 
     [self.tableView reloadData];
     [self.tableView layoutIfNeeded];

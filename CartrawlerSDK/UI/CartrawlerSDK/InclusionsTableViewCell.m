@@ -17,7 +17,7 @@
 
 @implementation InclusionsTableViewCell
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

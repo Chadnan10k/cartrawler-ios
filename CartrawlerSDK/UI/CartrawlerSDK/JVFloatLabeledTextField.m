@@ -43,11 +43,6 @@ static CGFloat const kFloatingLabelHideAnimationDuration = 0.3f;
 
 }
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

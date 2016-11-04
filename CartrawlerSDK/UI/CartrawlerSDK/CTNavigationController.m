@@ -39,9 +39,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 @end

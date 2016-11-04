@@ -10,6 +10,6 @@
 
 @interface VehicleDetailsPageViewController : CTViewController
 
-+ (void)forceLinkerLoad_;
+
 
 @end

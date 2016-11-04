@@ -9,7 +9,7 @@
 #import "PaymentSummaryTableViewCell.h"
 #import "CTLabel.h"
 #import "CTSDKSettings.h"
-#import "NSNumberUtils.h"
+#import "CartrawlerSDK+NSNumber.h"
 
 @interface PaymentSummaryTableViewCell()
 
@@ -20,7 +20,7 @@
 
 @implementation PaymentSummaryTableViewCell
 
-+ (void)forceLinkerLoad_
+
 {
     
 }
@@ -38,7 +38,7 @@
 
 - (void)setDetails:(NSString *)detail price:(NSNumber *)price
 {
-    self.priceLabel.text = [NSNumberUtils numberStringWithCurrencyCode:price];
+    self.priceLabel.text = [price numberStringWithCurrencyCode];
     self.infoLabel.text = detail;
 }
 

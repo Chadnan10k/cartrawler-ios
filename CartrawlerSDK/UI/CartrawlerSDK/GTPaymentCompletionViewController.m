@@ -24,7 +24,7 @@
 
 @implementation GTPaymentCompletionViewController
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

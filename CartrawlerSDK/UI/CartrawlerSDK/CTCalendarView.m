@@ -26,7 +26,7 @@
 
 @implementation CTCalendarView
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

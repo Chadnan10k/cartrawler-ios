@@ -26,7 +26,7 @@ typedef void (^CTDiscardDates)(void);
 @property (nonatomic) CTCalenderRefresh refresh;
 @property (nonatomic, strong) NSMutableArray <NSNumber *> *cellHeights;
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)cellSelected:(CTDateCollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath section:(NSInteger)section;
 

@@ -18,7 +18,7 @@
 
 @implementation LocationSearchTableViewCell
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

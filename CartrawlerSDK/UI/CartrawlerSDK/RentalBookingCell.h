@@ -11,7 +11,7 @@
 
 @interface RentalBookingCell : UITableViewCell
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setData:(RentalBooking *)booking;
 

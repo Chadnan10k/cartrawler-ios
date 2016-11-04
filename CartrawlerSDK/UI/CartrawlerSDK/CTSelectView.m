@@ -18,7 +18,7 @@
 
 @implementation CTSelectView
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

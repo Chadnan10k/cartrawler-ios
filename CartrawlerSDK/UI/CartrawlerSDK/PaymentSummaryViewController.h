@@ -10,6 +10,6 @@
 
 @interface PaymentSummaryViewController : CTViewController
 
-+ (void)forceLinkerLoad_;
+
 
 @end

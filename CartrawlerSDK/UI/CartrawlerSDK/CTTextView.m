@@ -11,7 +11,7 @@
 
 @implementation CTTextView
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

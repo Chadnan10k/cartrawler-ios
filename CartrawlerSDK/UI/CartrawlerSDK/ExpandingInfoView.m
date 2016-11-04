@@ -28,7 +28,7 @@
     BOOL expanded;
 }
 
-+ (void)forceLinkerLoad_ {}
+
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

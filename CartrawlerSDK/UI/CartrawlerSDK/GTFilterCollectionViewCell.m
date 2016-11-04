@@ -20,7 +20,7 @@
 
 @implementation GTFilterCollectionViewCell
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

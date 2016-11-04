@@ -10,6 +10,6 @@
 
 @interface GTPassengerViewController : CTViewController
 
-+ (void)forceLinkerLoad_;
+
 
 @end

@@ -11,7 +11,7 @@
 
 @interface GTBookingTableViewCell : UITableViewCell
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setData:(GTBooking *)booking;
 

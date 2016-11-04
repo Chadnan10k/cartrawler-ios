@@ -30,7 +30,7 @@
 
 @implementation VehicleDetailsPageViewController
 
-+ (void)forceLinkerLoad_ {}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {

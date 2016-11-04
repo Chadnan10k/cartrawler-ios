@@ -12,7 +12,7 @@
 
 @interface LocationSearchDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-+ (void)forceLinkerLoad_;
+
 
 typedef void (^SelectedLocationCompletion)(CTMatchedLocation *location);
 

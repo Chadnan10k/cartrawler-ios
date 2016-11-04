@@ -10,6 +10,6 @@
 
 @interface SearchDetailsViewController : CTViewController
 
-+ (void)forceLinkerLoad_;
+
 
 @end

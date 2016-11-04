@@ -10,6 +10,6 @@
 
 @interface InclusionFlowLayout : UICollectionViewFlowLayout
 
-+ (void)forceLinkerLoad_;
+
 
 @end

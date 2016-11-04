@@ -7,7 +7,6 @@
 //
 
 #import "CTPaymentView.h"
-#import "Reachability.h"
 #import "PaymentRequest.h"
 #import "CTSDKSettings.h"
 #import "CartrawlerSDK+NSDateUtils.h"
@@ -28,7 +27,6 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 @property (nonatomic, strong) UIWebView *webView;
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) UIAlertView *alertView;
-@property (strong, nonatomic) Reachability *reachability;
 @property (strong, nonatomic) NSString *htmlString;
 @property (strong, nonatomic) NSBundle *bundle;
 @property (strong, nonatomic) NSString *jsonResponse;
@@ -140,10 +138,10 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     
     [self registerForKeyboardNotifications];
     
-    _reachability = [Reachability reachabilityForInternetConnection];
-    [self.reachability startNotifier];
+    //_reachability = [Reachability reachabilityForInternetConnection];
+    //[self.reachability startNotifier];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
     
     [self setupWebView];
 }
@@ -286,6 +284,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 }
 
 - (void)reachabilityChanged:(NSNotification *)notification {
+    /*
     Reachability *reachability = notification.object;
     NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
     
@@ -294,6 +293,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     } else {
         NSLog(@"INTERNET AVAILABLE");
     }
+     */
 }
 
 - (void)startTimer

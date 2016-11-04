@@ -10,6 +10,6 @@
 
 @interface CTView : UIView
 
-+ (void)forceLinkerLoad_;
+
 
 @end

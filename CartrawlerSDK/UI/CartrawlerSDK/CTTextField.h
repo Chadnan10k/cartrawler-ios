@@ -16,7 +16,7 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat borderWidth;
 @property (nonatomic) IBInspectable UIColor *borderColor;
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)shakeAnimation;
 

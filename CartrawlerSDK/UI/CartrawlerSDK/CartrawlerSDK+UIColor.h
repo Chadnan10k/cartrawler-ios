@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface UIColorUtils : NSObject
+@interface UIColor (CartrawlerSDK)
 
-+ (UIColor *)lighterColorForColor:(UIColor *)c;
+- (UIColor *)lighterColorForColor;
 
 @end

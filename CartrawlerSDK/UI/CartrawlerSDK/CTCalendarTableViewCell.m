@@ -23,7 +23,7 @@
 
 @implementation CTCalendarTableViewCell
 
-+ (void)forceLinkerLoad_
+
 {
     
 }
@@ -72,8 +72,8 @@
     NSDateComponents* comp = [cal components:NSUIntegerMax fromDate:adjustedDate];
     
     NSCalendar *c = [NSCalendar currentCalendar];
-    NSRange days = [c rangeOfUnit:NSDayCalendarUnit
-                           inUnit:NSMonthCalendarUnit
+    NSRange days = [c rangeOfUnit:NSCalendarUnitDay
+                           inUnit:NSCalendarUnitMonth
                           forDate:adjustedDate];
     
     _startDay = comp.weekday;

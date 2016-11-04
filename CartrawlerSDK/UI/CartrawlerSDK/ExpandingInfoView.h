@@ -11,7 +11,7 @@
 
 @interface ExpandingInfoView : CTDesignableView
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setTitle:(NSString *)title text:(NSString *)text image:(UIImage *)image;
 

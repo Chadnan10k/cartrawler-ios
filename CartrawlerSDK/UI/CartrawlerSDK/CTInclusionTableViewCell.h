@@ -10,7 +10,7 @@
 
 @interface CTInclusionTableViewCell : UITableViewCell
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setLabelText:(NSString *)text;
 

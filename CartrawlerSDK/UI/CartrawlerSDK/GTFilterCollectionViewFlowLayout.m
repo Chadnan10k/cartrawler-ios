@@ -10,7 +10,7 @@
 
 @implementation GTFilterCollectionViewFlowLayout
 
-+ (void)forceLinkerLoad_ {}
+
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSArray *attributes = [super layoutAttributesForElementsInRect:rect];

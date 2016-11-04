@@ -18,7 +18,7 @@
 
 @implementation CTVehicleSelectionView
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

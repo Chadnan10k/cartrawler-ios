@@ -6,14 +6,14 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "UIColorUtils.h"
+#import "CartrawlerSDK+UIColor.h"
 
-@implementation UIColorUtils
+@implementation UIColor (CartrawlerSDK)
 
-+ (UIColor *)lighterColorForColor:(UIColor *)c
+- (UIColor *)lighterColorForColor;
 {
     CGFloat r, g, b, a;
-    if ([c getRed:&r green:&g blue:&b alpha:&a])
+    if ([self getRed:&r green:&g blue:&b alpha:&a])
         return [UIColor colorWithRed:MIN(r + 0.2, 1.0)
                                green:MIN(g + 0.2, 1.0)
                                 blue:MIN(b + 0.2, 1.0)

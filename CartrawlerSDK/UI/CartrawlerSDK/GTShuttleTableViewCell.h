@@ -12,7 +12,7 @@
 
 @interface GTShuttleTableViewCell : UITableViewCell
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setShuttle:(CTGroundShuttle *)shuttle;
 

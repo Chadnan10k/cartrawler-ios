@@ -21,7 +21,7 @@
 
 @implementation CTPickerView
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

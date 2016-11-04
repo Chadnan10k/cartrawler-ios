@@ -14,7 +14,7 @@
 
 @implementation CTImageCache
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

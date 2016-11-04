@@ -8,7 +8,7 @@
 
 #import "RentalBookingCell.h"
 #import "CTLabel.h"
-#import "DateUtils.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 #import "CTImageCache.h"
 
 @interface RentalBookingCell()
@@ -22,7 +22,7 @@
 
 @implementation RentalBookingCell
 
-+ (void)forceLinkerLoad_ { }
+
 
 
 - (void)awakeFromNib {
@@ -46,7 +46,7 @@
     } else {
         //sample car image?
     }
-    
+    /*
     NSString *locations = @"";
     
     if ([booking.pickupLocation isEqualToString:booking.dropoffLocation]) {
@@ -54,10 +54,10 @@
     } else {
         locations = [NSString stringWithFormat:@"%@\nto\n%@", booking.pickupLocation, booking.dropoffLocation];
     }
-    
+    */
     self.locationLabel.text = booking.pickupLocation;
     
-    NSString *dates = [NSString stringWithFormat:@"%@\nto\n%@", [DateUtils stringFromDate:booking.pickupDate withFormat:@"dd/MM/yyyy hh:mm a"], [DateUtils stringFromDate:booking.dropoffDate withFormat:@"dd/MM/yyyy hh:mm a"]];
+    NSString *dates = [NSString stringWithFormat:@"%@\nto\n%@", [booking.pickupDate stringFromDate:@"dd/MM/yyyy hh:mm a"], [booking.dropoffDate  stringFromDate:@"dd/MM/yyyy hh:mm a"]];
     
     self.dateLabel.text = dates;
     self.refLabel.text = booking.bookingId;

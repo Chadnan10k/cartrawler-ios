@@ -194,10 +194,8 @@
 
 
 - (void)filter
-{
-    NSMutableArray<CTAvailabilityItem *> *filteredData = [[NSMutableArray alloc] init];
-    
-    filteredData =  [[NSMutableArray alloc] initWithArray:self.data.items];
+{    
+    NSMutableArray<CTAvailabilityItem *> *filteredData =  [[NSMutableArray alloc] initWithArray:self.data.items];
     
     //pick away each car one by one
     NSMutableArray *vehsToAdd = [[NSMutableArray alloc] init];

@@ -10,7 +10,7 @@
 
 @interface VehicleDetailsViewController : CTViewController
 
-+ (void)forceLinkerLoad_;
+
 
 typedef void (^VehicleDetailsViewControllerCompletion)(BOOL tapped);
 

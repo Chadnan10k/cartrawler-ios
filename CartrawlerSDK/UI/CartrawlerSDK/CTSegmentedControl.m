@@ -11,7 +11,7 @@
 
 @implementation CTSegmentedControl
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

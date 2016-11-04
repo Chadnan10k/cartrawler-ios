@@ -10,7 +10,7 @@
 
 @interface CTFilterTableViewCell : UITableViewCell
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setText:(NSString *)text;
 

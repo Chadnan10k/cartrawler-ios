@@ -29,7 +29,7 @@
 
 @implementation GroundServicesViewController
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

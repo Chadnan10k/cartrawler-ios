@@ -19,7 +19,7 @@
 
 @implementation CTFilterContainer
 
-+ (void)forceLinkerLoad_ {}
+
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {

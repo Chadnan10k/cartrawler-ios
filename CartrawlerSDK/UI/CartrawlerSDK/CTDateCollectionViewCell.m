@@ -19,7 +19,7 @@
 
 @implementation CTDateCollectionViewCell
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

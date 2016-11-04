@@ -8,7 +8,7 @@
 
 #import "FilterCollectionViewDataSource.h"
 #import "CTSDKSettings.h"
-#import "NSNumberUtils.h"
+#import "CartrawlerSDK+NSNumber.h"
 
 @interface FilterCollectionViewDataSource()
 
@@ -54,18 +54,18 @@
     if (self.avail.shuttles.count > 0 && self.avail.services.count > 0) {
         switch (indexPath.row) {
             case 0:
-                [cell setFilterType:GTFilterTypeService price:[NSNumberUtils numberStringWithCurrencyCode:[self serviceLowestPrice]] imageURL:self.avail.services.firstObject.vehicleImage];
+                [cell setFilterType:GTFilterTypeService price:[[self serviceLowestPrice] numberStringWithCurrencyCode] imageURL:self.avail.services.firstObject.vehicleImage];
                 break;
             case 1:
-                [cell setFilterType:GTFilterTypeShuttle price:[NSNumberUtils numberStringWithCurrencyCode:[self shuttleLowestPrice]] imageURL:self.avail.shuttles.firstObject.vehicleImage];
+                [cell setFilterType:GTFilterTypeShuttle price:[[self shuttleLowestPrice] numberStringWithCurrencyCode] imageURL:self.avail.shuttles.firstObject.vehicleImage];
                 break;
             default:
                 break;
         }
     } else if (self.avail.shuttles.count == 0 && self.avail.services.count > 0){
-        [cell setFilterType:GTFilterTypeService price:[NSNumberUtils numberStringWithCurrencyCode:[self serviceLowestPrice]] imageURL:self.avail.services.firstObject.vehicleImage];
+        [cell setFilterType:GTFilterTypeService price:[[self serviceLowestPrice] numberStringWithCurrencyCode] imageURL:self.avail.services.firstObject.vehicleImage];
     } else {
-        [cell setFilterType:GTFilterTypeShuttle price:[NSNumberUtils numberStringWithCurrencyCode:[self shuttleLowestPrice]] imageURL:self.avail.shuttles.firstObject.vehicleImage];
+        [cell setFilterType:GTFilterTypeShuttle price:[[self shuttleLowestPrice] numberStringWithCurrencyCode] imageURL:self.avail.shuttles.firstObject.vehicleImage];
     }
     return cell;
 }

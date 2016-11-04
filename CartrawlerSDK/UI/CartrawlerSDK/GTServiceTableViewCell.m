@@ -9,7 +9,7 @@
 #import "GTServiceTableViewCell.h"
 #import "CTLabel.h"
 #import "CTImageCache.h"
-#import "NSNumberUtils.h"
+#import "CartrawlerSDK+NSNumber.h"
 #import "CTAppearance.h"
 #import "InclusionCollectionViewCell.h"
 #import "LocalisedStrings.h"
@@ -31,7 +31,7 @@
 
 @implementation GTServiceTableViewCell
 
-+ (void)forceLinkerLoad_
+
 {
     
 }
@@ -95,7 +95,7 @@
         self.greetingLabel.attributedText = pickupStr;
     }
     
-    self.priceLabel.text = [NSNumberUtils numberStringWithCurrencyCode:service.totalCharge];
+    self.priceLabel.text = [service.totalCharge numberStringWithCurrencyCode];
     
     [self.inclusionsCollectionView reloadData];
     [self.contentView updateConstraints];

@@ -30,7 +30,7 @@
 
 @implementation PassengerSelectionViewController
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

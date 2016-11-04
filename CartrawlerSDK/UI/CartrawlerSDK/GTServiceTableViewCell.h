@@ -11,7 +11,7 @@
 
 @interface GTServiceTableViewCell : UITableViewCell
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setService:(CTGroundService *)service;
 

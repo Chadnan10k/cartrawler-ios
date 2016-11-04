@@ -11,7 +11,7 @@
 
 @interface TermsDetailViewController : UIViewController
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setData:(CTTermAndCondition *)data;
 

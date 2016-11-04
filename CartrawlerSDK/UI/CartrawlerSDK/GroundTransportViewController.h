@@ -11,6 +11,6 @@
 
 @interface GroundTransportViewController : CTViewController
 
-+ (void)forceLinkerLoad_;
+
 
 @end

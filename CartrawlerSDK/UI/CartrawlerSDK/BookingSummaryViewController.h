@@ -11,7 +11,7 @@
 
 @interface BookingSummaryViewController : UIViewController
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setDataWithVehicle:(CTAvailabilityItem *)vehicle
                 pickupDate:(NSDate *)pickupDate

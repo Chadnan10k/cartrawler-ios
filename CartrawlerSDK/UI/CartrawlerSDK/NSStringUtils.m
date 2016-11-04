@@ -31,11 +31,6 @@
 
 @implementation NSString (TextDirectionality)
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 // Function takes UTF32 character, and not a unichar (=UTF16 character),
 // because some Unicode characters need full 32 bits to represent.
 static BOOL isCodePointStrongRTL(UTF32Char c)

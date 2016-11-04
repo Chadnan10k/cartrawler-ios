@@ -15,7 +15,7 @@
 
 @implementation IncludedCollectionViewCell
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

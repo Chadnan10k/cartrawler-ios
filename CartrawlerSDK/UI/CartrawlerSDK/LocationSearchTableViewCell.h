@@ -10,7 +10,7 @@
 
 @interface LocationSearchTableViewCell : UITableViewCell
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setLabelText:(NSString *)text isAirport:(BOOL)isAirport;
 

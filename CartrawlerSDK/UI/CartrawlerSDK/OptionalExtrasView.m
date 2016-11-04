@@ -23,11 +23,6 @@
     BOOL isOpen;
 }
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];

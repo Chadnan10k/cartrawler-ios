@@ -10,6 +10,6 @@
 
 @interface ExtrasViewController : CTViewController
 
-+ (void)forceLinkerLoad_;
+
 
 @end

@@ -11,7 +11,7 @@
 
 @interface PassengerSelectionViewController : UIViewController
 
-+ (void)forceLinkerLoad_;
+
 
 typedef void (^PassengerSelectionUpdated)(NSString *text);
 

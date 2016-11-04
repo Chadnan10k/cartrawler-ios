@@ -10,7 +10,7 @@
 
 @interface GTBookingsViewController : UIViewController
 
-+ (void)forceLinkerLoad_;
+
 
 typedef void (^ShowGTEngine)(UIViewController *viewController);
 

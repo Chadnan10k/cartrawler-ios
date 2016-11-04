@@ -10,6 +10,6 @@
 
 @interface DriverDetailsViewController : CTViewController
 
-+ (void)forceLinkerLoad_;
+
 
 @end

@@ -15,7 +15,7 @@
 @property (strong, nonatomic) NSArray <CTExtraEquipment *> *extras;
 @property (nonatomic) CGRect initialFrame;
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)open:(BOOL)hideExpandButton;
 - (void)close;

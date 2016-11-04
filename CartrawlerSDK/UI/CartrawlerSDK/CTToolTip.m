@@ -27,7 +27,7 @@
     return sharedInstance;
 }
 
-+ (void)forceLinkerLoad_ { }
+
 
 - (void)presentForView:(UIView *)anchorView text:(NSString *)text superview:(UIView *)superview
 {

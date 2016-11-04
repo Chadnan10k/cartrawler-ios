@@ -10,7 +10,7 @@
 
 @implementation CTMiddleDateCell
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

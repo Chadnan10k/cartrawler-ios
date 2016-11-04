@@ -12,6 +12,6 @@
 
 @interface SupplierRatingsViewController : CTViewController
 
-+ (void)forceLinkerLoad_;
+
 
 @end

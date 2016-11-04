@@ -13,7 +13,7 @@
 IB_DESIGNABLE
 @interface CTSelectView : CTDesignableView
 
-+ (void)forceLinkerLoad_;
+
 
 typedef void (^CTSelectionCompletion)(void);
 

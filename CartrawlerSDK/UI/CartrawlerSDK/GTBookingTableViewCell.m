@@ -9,7 +9,7 @@
 #import "GTBookingTableViewCell.h"
 #import "CTLabel.h"
 #import "CTImageCache.h"
-#import "DateUtils.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 
 @interface GTBookingTableViewCell()
 
@@ -22,7 +22,7 @@
 
 @implementation GTBookingTableViewCell
 
-+ (void)forceLinkerLoad_ { }
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -46,7 +46,7 @@
     }
     
     self.locationLabel.text = booking.pickupLocation;
-    self.dateLabel.text = [DateUtils stringFromDate:booking.pickupDate withFormat:@"dd/mm/yyyy hh:mm a"];
+    self.dateLabel.text = [booking.pickupDate stringFromDate:@"dd/mm/yyyy hh:mm a"];
     self.refLabel.text = booking.bookingId;
 }
 

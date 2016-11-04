@@ -14,7 +14,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *spinnerImageView;
 @property (unsafe_unretained, nonatomic) IBOutlet CTLabel *loadingLabel;
 
-+ (void)forceLinkerLoad_;
+
 
 + (void)present:(UIViewController *)viewController;
 + (void)dismiss;

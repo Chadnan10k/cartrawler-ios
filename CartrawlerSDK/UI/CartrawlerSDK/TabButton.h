@@ -10,7 +10,7 @@
 
 @interface TabButton : UIButton
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)focus:(BOOL)willFocus;
 

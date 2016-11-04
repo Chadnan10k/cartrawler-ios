@@ -12,7 +12,7 @@
 
 @interface TermsViewController : UIViewController
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setData:(CarRentalSearch *)data cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI;
 

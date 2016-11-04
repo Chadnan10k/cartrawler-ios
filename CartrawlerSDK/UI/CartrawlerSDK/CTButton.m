@@ -11,7 +11,7 @@
 
 @implementation CTButton
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

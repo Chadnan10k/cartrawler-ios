@@ -10,6 +10,6 @@
 
 @interface CTSegmentedControl : UISegmentedControl
 
-+ (void)forceLinkerLoad_;
+
 
 @end

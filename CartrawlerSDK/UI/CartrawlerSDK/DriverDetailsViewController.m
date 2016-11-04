@@ -29,7 +29,7 @@
 
 @implementation DriverDetailsViewController
 
-+ (void)forceLinkerLoad_
+
 {
     
 }
@@ -46,7 +46,7 @@
     UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
     [keyboardDoneButtonView sizeToFit];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
-                                                                   style:UIBarButtonItemStyleBordered target:self
+                                                                   style:UIBarButtonItemStylePlain target:self
                                                                   action:@selector(done)];
     keyboardDoneButtonView.items = @[doneButton];
     self.phoneTextField.inputAccessoryView = keyboardDoneButtonView;
@@ -65,6 +65,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self.summaryContainer closeIfOpen];
     [self.summaryContainer setDataWithVehicle:self.search.selectedVehicle
                                    pickupDate:self.search.pickupDate
@@ -109,6 +110,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     [self deregisterForKeyboardNotifications];
 }
 

@@ -11,7 +11,6 @@
 #import "CTSDKSettings.h"
 #import "CartrawlerSDK+NSDateUtils.h"
 #import "PaymentCompletionViewController.h"
-#import "Reachability.h"
 #import "CTPaymentView.h"
 #import "CTCheckbox.h"
 #import "HTMLParser.h"

@@ -14,12 +14,11 @@
 /**
  *  Populates vehicle table cell
  *
- *  @param vehicle CTVehicle object
  *
  */
 - (void)initWithVehicle:(CTAvailabilityItem *)item index:(NSInteger)index;
 
 
-+ (void)forceLinkerLoad_;
+
 
 @end

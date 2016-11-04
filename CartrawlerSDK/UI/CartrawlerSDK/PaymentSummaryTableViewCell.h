@@ -10,7 +10,7 @@
 #import <CartrawlerAPI/CTExtraEquipment.h>
 @interface PaymentSummaryTableViewCell : UITableViewCell
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setDetails:(CTExtraEquipment *)detail price:(NSNumber *)price;
 - (void)setDetailsItalic:(NSString *)detail;

@@ -10,6 +10,4 @@
 
 @interface AddressDetailsViewController : CTViewController
 
-+ (void)forceLinkerLoad_;
-
 @end

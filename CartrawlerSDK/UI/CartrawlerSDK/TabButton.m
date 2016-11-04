@@ -11,7 +11,7 @@
 
 @implementation TabButton
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

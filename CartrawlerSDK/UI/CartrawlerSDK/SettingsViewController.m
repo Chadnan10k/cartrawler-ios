@@ -22,7 +22,7 @@
 
 @implementation SettingsViewController
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

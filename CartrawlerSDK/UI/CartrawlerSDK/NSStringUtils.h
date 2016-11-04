@@ -54,7 +54,7 @@ typedef NS_ENUM(NSUInteger, JVTextDirection) {
  */
 @interface NSStringUtils : NSObject
 
-+ (void)forceLinkerLoad_;
+
 
 /**
  *  Inspects the string and makes a best guess at text directionality.

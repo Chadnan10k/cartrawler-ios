@@ -20,7 +20,7 @@
 
 @implementation CTFilterTableViewCell
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

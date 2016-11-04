@@ -25,11 +25,6 @@
     BOOL summaryVisible;
 }
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];

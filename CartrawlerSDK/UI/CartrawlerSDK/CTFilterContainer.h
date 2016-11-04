@@ -11,7 +11,7 @@
 
 @interface CTFilterContainer : UIView
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setTableView:(CTFilterTableView *)tableView;
 - (void)close;

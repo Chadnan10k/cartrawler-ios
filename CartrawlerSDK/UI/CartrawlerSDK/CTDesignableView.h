@@ -10,7 +10,7 @@
 IB_DESIGNABLE
 @interface CTDesignableView : UIView
 
-+ (void)forceLinkerLoad_;
+
 
 @property (nonatomic) IBInspectable UIColor *borderColor;
 @property (nonatomic) IBInspectable CGFloat cornerRadius;

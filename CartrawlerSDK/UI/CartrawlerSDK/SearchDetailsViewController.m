@@ -11,7 +11,7 @@
 #import "CTCheckbox.h"
 #import "CTLocationSearchViewController.h"
 #import "CTCalendarViewController.h"
-#import "DateUtils.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 #import "CTTimePickerView.h"
 #import "CTTextField.h"
 #import "CTInterstitialViewController.h"
@@ -58,7 +58,7 @@
 
 @implementation SearchDetailsViewController
 
-+ (void)forceLinkerLoad_
+
 {
     
 }
@@ -125,7 +125,7 @@
     _activeView = self.pickupView;
     
     self.pickupTimeView.placeholder = @"Pick-up time";
-    [self.pickupTimeView setTextFieldText:[DateUtils stringFromDate:self.pickupTime withFormat:@"hh:mm a"]];
+    [self.pickupTimeView setTextFieldText:[self.pickupTime stringFromDate:@"hh:mm a"]];
 
     self.pickupTimeView.viewTapped = ^{
         
@@ -136,12 +136,12 @@
         [weakSelf.dropoffTimePicker hide];
         weakSelf.pickupTimePicker.timeSelection = ^(NSDate *date){
             _pickupTime = date;
-            [weakSelf.pickupTimeView setTextFieldText:[DateUtils stringFromDate:date withFormat:@"hh:mm a"]];
+            [weakSelf.pickupTimeView setTextFieldText:[date stringFromDate:@"hh:mm a"]];
         };
     };
     
     self.dropoffTimeView.placeholder = @"Drop-off time";
-    [self.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:self.dropoffTime withFormat:@"hh:mm a"]];
+    [self.dropoffTimeView setTextFieldText:[self.dropoffTime stringFromDate:@"hh:mm a"]];
     self.dropoffTimeView.viewTapped = ^{
         
         [weakSelf.view endEditing:YES];
@@ -151,7 +151,7 @@
         [weakSelf.pickupTimePicker hide];
         weakSelf.dropoffTimePicker.timeSelection = ^(NSDate *date){
             _dropoffTime = date;
-            [weakSelf.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:date withFormat:@"hh:mm a"]];
+            [weakSelf.dropoffTimeView setTextFieldText:[date stringFromDate:@"hh:mm a"]];
         };
     };
     
@@ -191,8 +191,8 @@
         [self setDateString:self.search.pickupDate dropoffDate:self.search.dropoffDate];
         _pickupTime = self.search.pickupDate;
         _dropoffTime = self.search.dropoffDate;
-        [self.pickupTimeView setTextFieldText:[DateUtils stringFromDate:self.search.pickupDate withFormat:@"hh:mm a"]];
-        [self.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:self.search.dropoffDate withFormat:@"hh:mm a"]];
+        [self.pickupTimeView setTextFieldText:[self.search.pickupDate  stringFromDate:@"hh:mm a"]];
+        [self.dropoffTimeView setTextFieldText:[self.search.dropoffDate stringFromDate:@"hh:mm a"]];
     }
     
     if (self.search.driverAge.intValue == 0) {
@@ -259,8 +259,8 @@
 {
     if (pickupDate && dropoffDate) {
         NSString *dateString = [NSString stringWithFormat:@"%@ - %@",
-                                [DateUtils shortDescriptionFromDate:pickupDate],
-                                [DateUtils shortDescriptionFromDate:dropoffDate]];
+                                [pickupDate shortDescriptionFromDate],
+                                [dropoffDate shortDescriptionFromDate]];
         
         [self.calendarView setTextFieldText:dateString];
     } else {
@@ -270,21 +270,21 @@
 
 - (void)setDefaultPickupDropoffTimes
 {
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *initialTimeComp = [gregorianCalendar components:NSHourCalendarUnit
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *initialTimeComp = [gregorianCalendar components:NSCalendarUnitHour
                                                              fromDate:[NSDate date]];
     initialTimeComp.hour = 10;
     
     _pickupTime = [gregorianCalendar dateFromComponents:initialTimeComp];
     _dropoffTime = [gregorianCalendar dateFromComponents:initialTimeComp];
-    [self.pickupTimeView setTextFieldText:[DateUtils stringFromDate:self.pickupTime withFormat:@"hh:mm a"]];
-    [self.dropoffTimeView setTextFieldText:[DateUtils stringFromDate:self.dropoffTime withFormat:@"hh:mm a"]];
+    [self.pickupTimeView setTextFieldText:[self.pickupTime stringFromDate:@"hh:mm a"]];
+    [self.dropoffTimeView setTextFieldText:[self.dropoffTime stringFromDate:@"hh:mm a"]];
 }
 
 - (void)combineDates
 {
-    NSDate *puDate = [DateUtils mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.search.pickupDate];
-    NSDate *doDate = [DateUtils mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.search.dropoffDate];
+    NSDate *puDate = [NSDate mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.search.pickupDate];
+    NSDate *doDate = [NSDate mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.search.dropoffDate];
 
     (self.search).pickupDate = puDate;
     (self.search).dropoffDate = doDate;

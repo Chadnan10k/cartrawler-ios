@@ -19,7 +19,7 @@
 
 @implementation RentalBookingsViewController
 
-+ (void)forceLinkerLoad_ { }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

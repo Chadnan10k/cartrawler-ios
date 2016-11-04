@@ -11,7 +11,7 @@
 
 @implementation UnderLinedButton
 
-+ (void)forceLinkerLoad_{}
+{}
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

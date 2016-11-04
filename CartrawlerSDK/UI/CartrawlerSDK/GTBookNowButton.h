@@ -10,6 +10,6 @@
 
 @interface GTBookNowButton : UIButton
 
-+ (void)forceLinkerLoad_;
+
 
 @end

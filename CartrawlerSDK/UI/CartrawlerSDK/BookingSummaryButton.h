@@ -12,8 +12,6 @@
 
 @interface BookingSummaryButton : CTDesignableView
 
-+ (void)forceLinkerLoad_;
-
 - (void)closeIfOpen;
 
 - (void)setDataWithVehicle:(CTAvailabilityItem *)vehicle

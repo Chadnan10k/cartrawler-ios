@@ -10,7 +10,7 @@
 
 @interface IncludedCollectionViewCell : UICollectionViewCell
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setDetails:(NSString *)details;
 

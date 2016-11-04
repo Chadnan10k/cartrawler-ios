@@ -10,6 +10,6 @@
 
 @interface GTFilterCollectionViewFlowLayout : UICollectionViewFlowLayout
 
-+ (void)forceLinkerLoad_;
+
 
 @end

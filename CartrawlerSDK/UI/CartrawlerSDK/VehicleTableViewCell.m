@@ -7,12 +7,11 @@
 //
 
 #import "VehicleTableViewCell.h"
-#import "LocaleUtils.h"
 #import "CTImageCache.h"
 #import "CartrawlerAPI/CTVendor.h"
 #import "CartrawlerAPI/CTVendorRating.h"
 #import "CTAppearance.h"
-#import "NSNumberUtils.h"
+#import "CartrawlerSDK+NSNumber.h"
 #import "CTLabel.h"
 #import "LocalisedStrings.h"
 #import "CTMerhandisingBanner.h"
@@ -36,7 +35,7 @@
 
 @implementation VehicleTableViewCell
 
-+ (void)forceLinkerLoad_
+
 {
     
 }
@@ -86,7 +85,7 @@
         self.airconImageView.alpha = 0;
     }
 
-    NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode: item.vehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
+    NSArray *priceStrings = [[item.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode] componentsSeparatedByString:@"."];
     NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];
 
     NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject

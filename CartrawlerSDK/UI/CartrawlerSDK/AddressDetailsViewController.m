@@ -32,11 +32,6 @@
     BOOL keyboardIsShown;
 }
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -60,6 +55,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self.summaryContainer closeIfOpen];
     [self.summaryContainer setDataWithVehicle:self.search.selectedVehicle
                                    pickupDate:self.search.pickupDate
@@ -128,6 +124,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     [self deregisterForKeyboardNotifications];
 }
 

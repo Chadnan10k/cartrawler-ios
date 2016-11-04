@@ -13,6 +13,6 @@ IB_DESIGNABLE
 
 @property (nonatomic) IBInspectable BOOL useBoldFont;
 
-+ (void)forceLinkerLoad_;
+
 
 @end

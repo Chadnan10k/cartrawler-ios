@@ -11,7 +11,7 @@
 
 @implementation CTPlaceholderView
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

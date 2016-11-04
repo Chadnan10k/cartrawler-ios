@@ -14,7 +14,7 @@
 @property (nonatomic, retain) NSIndexPath *indexPath;
 @property (nonatomic, retain) NSNumber *section;
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setDateLabel:(NSDate *)date indexPath:(NSIndexPath *)indexPath section:(NSNumber *)section;
 - (void)setLabelColor:(UIColor *)color;

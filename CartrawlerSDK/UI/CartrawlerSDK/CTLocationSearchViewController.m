@@ -23,7 +23,7 @@
 
 @implementation CTLocationSearchViewController
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

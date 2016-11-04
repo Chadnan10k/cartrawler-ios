@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSNumberUtils : NSNumber
+@interface NSNumber (CartrawlerSDK)
 
-+ (NSString *)numberStringWithCurrencyCode:(NSNumber *)number;
+- (NSString *)numberStringWithCurrencyCode;
 
 @end

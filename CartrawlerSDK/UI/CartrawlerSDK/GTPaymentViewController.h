@@ -10,6 +10,6 @@
 
 @interface GTPaymentViewController : CTViewController
 
-+ (void)forceLinkerLoad_;
+
 
 @end

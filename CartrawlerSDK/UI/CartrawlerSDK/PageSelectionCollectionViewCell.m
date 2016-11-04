@@ -17,7 +17,7 @@
 
 @implementation PageSelectionCollectionViewCell
 
-+ (void)forceLinkerLoad_ {}
+
 
 - (void)setText:(NSString *)text
 {

@@ -11,7 +11,7 @@
 #import "CTAppearance.h"
 #import "CTLabel.h"
 #import "TabButton.h"
-#import "NSNumberUtils.h"
+#import "CartrawlerSDK+NSNumber.h"
 #import "SupplierRatingsViewController.h"
 #import "CTSDKSettings.h"
 #import "CTButton.h"
@@ -48,7 +48,7 @@
 
 @implementation VehicleDetailsViewController
 
-+ (void)forceLinkerLoad_ {}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -165,7 +165,7 @@
 
     if (self.search.selectedVehicle.vehicle.totalPriceForThisVehicle) {
         
-        NSArray *priceStrings = [[NSNumberUtils numberStringWithCurrencyCode:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle] componentsSeparatedByString:@"."];
+        NSArray *priceStrings = [[self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode] componentsSeparatedByString:@"."];
         NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];
         
         NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject

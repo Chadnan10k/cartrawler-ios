@@ -9,7 +9,7 @@
 #import "GTShuttleTableViewCell.h"
 #import "CTImageCache.h"
 #import "CTLabel.h"
-#import "NSNumberUtils.h"
+#import "CartrawlerSDK+NSNumber.h"
 #import "InclusionCollectionViewCell.h"
 #import "CTAppearance.h"
 #import "LocalisedStrings.h"
@@ -30,7 +30,7 @@
 
 @implementation GTShuttleTableViewCell
 
-+ (void)forceLinkerLoad_
+
 {
     
 }
@@ -63,7 +63,7 @@
     
     self.baggageLabel.text = [NSString stringWithFormat:@"%@ bags", shuttle.maxBaggage];
     self.passengersLabel.text = [NSString stringWithFormat:@"%@ passengers", shuttle.maxPassengers];
-    self.priceLabel.text = [NSNumberUtils numberStringWithCurrencyCode:shuttle.totalCharge];
+    self.priceLabel.text = [shuttle.totalCharge numberStringWithCurrencyCode];
     
     [self.inclusionsCollectionView reloadData];
     [self.contentView updateConstraints];

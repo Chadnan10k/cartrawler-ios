@@ -40,7 +40,7 @@
 @implementation ExtrasViewController
 
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

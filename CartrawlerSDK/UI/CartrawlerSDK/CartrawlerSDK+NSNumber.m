@@ -6,19 +6,19 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "NSNumberUtils.h"
+#import "CartrawlerSDK+NSNumber.h"
 #import "CTSDKSettings.h"
 
-@implementation NSNumberUtils
+@implementation NSNumber (CartrawlerSDK)
 
-+ (NSString *)numberStringWithCurrencyCode:(NSNumber *)number
+- (NSString *)numberStringWithCurrencyCode
 {
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     f.minimumFractionDigits = 2;
     f.currencyCode = [CTSDKSettings instance].currencyCode;
     f.numberStyle = NSNumberFormatterCurrencyStyle;
     
-    return [f stringFromNumber:number];
+    return [f stringFromNumber:self];
 }
 
 @end

@@ -11,7 +11,7 @@
 
 @interface CTLocationSearchViewController : UIViewController
 
-+ (void)forceLinkerLoad_;
+
 
 typedef void (^SelectedLocationCompletion)(CTMatchedLocation *location);
 

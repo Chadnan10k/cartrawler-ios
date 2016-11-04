@@ -10,7 +10,7 @@
 
 @interface PageSelectionCollectionViewCell : UICollectionViewCell
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setText:(NSString *)text;
 - (void)animate;

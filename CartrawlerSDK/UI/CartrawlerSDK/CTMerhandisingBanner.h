@@ -10,7 +10,7 @@
 
 @interface CTMerhandisingBanner : UIView
 
-+ (void)forceLinkerLoad_;
+
 
 typedef enum CTMerhandisingBannerType : NSUInteger {
     CTMerhandisingBannerTypeBestSeller = 0,

@@ -25,6 +25,6 @@
 
 - (void)removeFromView;
 
-+ (void)forceLinkerLoad_;
+
 
 @end

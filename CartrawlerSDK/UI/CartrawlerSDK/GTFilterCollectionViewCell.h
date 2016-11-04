@@ -26,6 +26,6 @@ typedef NS_ENUM(NSUInteger, GTFilterType) {
 - (void)animate;
 - (void)deselect;
 
-+ (void)forceLinkerLoad_;
+
 
 @end

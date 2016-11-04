@@ -34,11 +34,6 @@
     NSInteger tailSection;
 }
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 - (id)init
 {
     self = [super init];

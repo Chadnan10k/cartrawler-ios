@@ -12,7 +12,7 @@
 
 @interface GroundServicesViewController : CTViewController
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setAvailability:(CTGroundAvailability *)availabilty;
 

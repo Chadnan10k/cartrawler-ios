@@ -11,7 +11,7 @@
 
 @interface SettingsSelectionViewController : UIViewController
 
-+ (void)forceLinkerLoad_;
+
 
 typedef enum SettingsType : NSUInteger {
     SettingsTypeLanguage,

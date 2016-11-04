@@ -10,7 +10,7 @@
 
 @implementation IncludedCollectionViewLayout
 
-+ (void)forceLinkerLoad_
+
 {
     
 }

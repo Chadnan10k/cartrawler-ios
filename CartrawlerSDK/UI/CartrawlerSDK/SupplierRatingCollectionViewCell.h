@@ -10,7 +10,7 @@
 
 @interface SupplierRatingCollectionViewCell : UICollectionViewCell
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setType:(NSString *)typeText ratingText:(NSString *)ratingText;
 

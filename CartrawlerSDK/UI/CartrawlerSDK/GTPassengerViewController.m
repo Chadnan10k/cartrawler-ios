@@ -35,11 +35,6 @@
     BOOL keyboardIsShown;
 }
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -53,7 +48,7 @@
     UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
     [keyboardDoneButtonView sizeToFit];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
-                                                                   style:UIBarButtonItemStyleBordered target:self
+                                                                   style:UIBarButtonItemStylePlain target:self
                                                                   action:@selector(done)];
     keyboardDoneButtonView.items = @[doneButton];
     self.phoneTextField.inputAccessoryView = keyboardDoneButtonView;
@@ -72,6 +67,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self registerForKeyboardNotifications];
     _selectedView = self.firstNameTextField;
 
@@ -124,6 +120,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     [self deregisterForKeyboardNotifications];
 }
 

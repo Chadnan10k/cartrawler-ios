@@ -22,7 +22,7 @@
 
 @implementation TermsViewController
 
-+ (void)forceLinkerLoad_{}
+{}
 
 - (void)viewDidLoad
 {

@@ -22,13 +22,15 @@
 
 @implementation SettingsSelectionViewController
 
-+ (void)forceLinkerLoad_
+
 {
     
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     _data = [[NSMutableArray alloc] init];
     
     NSString *fileName;

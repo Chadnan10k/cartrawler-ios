@@ -12,7 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *inclusionLabel;
 
-+ (void)forceLinkerLoad_;
+
 
 - (void)setText:(NSString *)text;
 

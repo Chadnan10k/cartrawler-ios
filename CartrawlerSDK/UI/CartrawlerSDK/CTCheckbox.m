@@ -80,11 +80,6 @@
     _checkEnabled = self.enabled;
 }
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 - (void)boxTapped:(UIGestureRecognizer *)gesture
 {
     if (self.checkEnabled) {
