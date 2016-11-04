@@ -9,6 +9,7 @@
 #import "ExpandingInfoView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CTAppearance.h"
+#import "CTToolTip.h"
 
 @interface ExpandingInfoView()
 
@@ -43,7 +44,7 @@
 
 - (void)setTitle:(NSString *)title text:(NSString *)text image:(UIImage *)image
 {
-    [self.button setTitle:@"+" forState:UIControlStateNormal];
+    //[self.button setTitle:@"+" forState:UIControlStateNormal];
 
     self.titleLabel.text = title;
     self.imageView.image = image;
@@ -64,79 +65,7 @@
 
 - (IBAction)sizeViewTapped:(id)sender
 {
-    if (!expanded) {
-        
-        [self.button setTitle:@"-" forState:UIControlStateNormal];
-
-            
-        [self addSubview:self.textView];
-        self.textView.translatesAutoresizingMaskIntoConstraints = NO;
-        
-        self.heightConstraint.constant = 60 + [self textViewHeightForAttributedText:self.textView.attributedText
-                                                                           andWidth:self.frame.size.width-20];
-
-        self.topConstraint = [NSLayoutConstraint constraintWithItem:self.textView
-                                                         attribute:NSLayoutAttributeTop
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeTop
-                                                        multiplier:1.0
-                                                          constant:50];
-        
-        self.bottomConstraint = [NSLayoutConstraint constraintWithItem:self.textView
-                                                            attribute:NSLayoutAttributeBottom
-                                                            relatedBy:NSLayoutRelationEqual
-                                                               toItem:self
-                                                            attribute:NSLayoutAttributeBottom
-                                                           multiplier:1.0
-                                                             constant:-10];
-        
-        self.leftConstraint = [NSLayoutConstraint constraintWithItem:self.textView
-                                                          attribute:NSLayoutAttributeLeft
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self
-                                                          attribute:NSLayoutAttributeLeft
-                                                         multiplier:1.0
-                                                           constant:10];
-        
-        self.rightConstraint = [NSLayoutConstraint constraintWithItem:self.textView
-                                                           attribute:NSLayoutAttributeRight
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:self
-                                                           attribute:NSLayoutAttributeRight
-                                                          multiplier:1.0
-                                                            constant:-10];
-            [self addConstraints:@[self.topConstraint,
-                                   self.bottomConstraint,
-                                   self.leftConstraint,
-                                   self.rightConstraint]];
-        
-        [self setNeedsUpdateConstraints];
-        [self layoutIfNeeded];
-        [self layoutSubviews];
-        self.textView.alpha = 1;
-        
-        expanded = YES;
-
-    } else {
-        
-        [self.button setTitle:@"+" forState:UIControlStateNormal];
-
-        self.textView.alpha = 0;
-        [self.textView removeFromSuperview];
-        
-        [self removeConstraints:@[self.topConstraint,
-                               self.bottomConstraint,
-                               self.leftConstraint,
-                               self.rightConstraint]];
-        
-        self.heightConstraint.constant = 50;
-
-        [self setNeedsUpdateConstraints];
-        [self layoutIfNeeded];
-        
-        expanded = NO;
-    }
+    [[CTToolTip instance] presentPartialOverlayInView:self.superview text:@"Some info text"];
 }
 
 - (void)viewDidLayoutSubviews {

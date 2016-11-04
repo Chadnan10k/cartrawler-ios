@@ -28,6 +28,7 @@
 @property (nonatomic, strong) UIColor  *textFieldBackgroundColor;
 @property (nonatomic, strong) NSString *fontName;
 @property (nonatomic, strong) NSString *boldFontName;
+@property (nonatomic)         BOOL     enableTextFieldShadows;
 
 //Calendar
 @property (nonatomic, strong) UIColor  *calendarStartCellColor;

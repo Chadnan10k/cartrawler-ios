@@ -22,7 +22,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    if (self.enableShadow || [CTAppearance instance].enableShadows) {
+    if (self.enableShadow || [CTAppearance instance].enableTextFieldShadows) {
         self.layer.masksToBounds = NO;
         self.layer.shadowColor = [UIColor blackColor].CGColor;
         self.layer.shadowOffset = CGSizeMake(0, 0);

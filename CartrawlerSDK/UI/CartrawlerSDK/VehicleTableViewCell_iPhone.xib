@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="208"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s9a-CW-Vhl" id="IHL-eK-8dY">
-                <frame key="frameInset" width="600" height="207.5"/>
+                <frame key="frameInset" width="600" height="207"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHn-no-xJJ" customClass="CTDesignableView">
@@ -193,8 +193,9 @@
                                 <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="0.0"/>
+                                <real key="value" value="5"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="enableShadow" value="NO"/>
                         </userDefinedRuntimeAttributes>
                         <variation key="default">
                             <mask key="constraints">
@@ -203,10 +204,10 @@
                         </variation>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="hHn-no-xJJ" secondAttribute="trailing" id="1Fd-B8-JeR"/>
-                    <constraint firstItem="hHn-no-xJJ" firstAttribute="leading" secondItem="IHL-eK-8dY" secondAttribute="leading" id="bp7-ZE-zDE"/>
+                    <constraint firstAttribute="trailing" secondItem="hHn-no-xJJ" secondAttribute="trailing" id="1Fd-B8-JeR" customClass="CTLayoutConstraint"/>
+                    <constraint firstItem="hHn-no-xJJ" firstAttribute="leading" secondItem="IHL-eK-8dY" secondAttribute="leading" id="bp7-ZE-zDE" customClass="CTLayoutConstraint"/>
                     <constraint firstAttribute="bottom" secondItem="hHn-no-xJJ" secondAttribute="bottom" constant="6" id="qtF-w8-cKJ"/>
                     <constraint firstItem="hHn-no-xJJ" firstAttribute="top" secondItem="IHL-eK-8dY" secondAttribute="top" constant="6" id="voT-9e-vly"/>
                 </constraints>

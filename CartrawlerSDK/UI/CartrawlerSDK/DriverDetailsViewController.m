@@ -29,9 +29,6 @@
 
 @implementation DriverDetailsViewController
 
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 

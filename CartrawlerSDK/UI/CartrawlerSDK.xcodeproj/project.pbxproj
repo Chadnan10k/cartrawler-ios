@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		451C83071DCCED1000A1E323 /* CTLogoImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C83051DCCED1000A1E323 /* CTLogoImageView.h */; };
+		451C83081DCCED1000A1E323 /* CTLogoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C83061DCCED1000A1E323 /* CTLogoImageView.m */; };
 		455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736E1D806064000CB1E5 /* GTPaymentRequest.h */; };
 		455B58341DCC914300CA4790 /* GTPaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4587736F1D806064000CB1E5 /* GTPaymentRequest.m */; };
 		455B58351DCC914300CA4790 /* PaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4588E3161D538FB1008F4267 /* PaymentRequest.h */; };
@@ -338,6 +340,8 @@
 		451B4BED1D2BC99B006A57E7 /* TermsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsDetailViewController.m; sourceTree = "<group>"; };
 		451B51391D38DD35004EBFDC /* GTBookNowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTBookNowButton.h; sourceTree = "<group>"; };
 		451B513A1D38DD35004EBFDC /* GTBookNowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTBookNowButton.m; sourceTree = "<group>"; };
+		451C83051DCCED1000A1E323 /* CTLogoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLogoImageView.h; sourceTree = "<group>"; };
+		451C83061DCCED1000A1E323 /* CTLogoImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLogoImageView.m; sourceTree = "<group>"; };
 		451C8EF71D7D8ADB00B9324D /* InclusionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InclusionFlowLayout.h; sourceTree = "<group>"; };
 		451C8EF81D7D8ADB00B9324D /* InclusionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionFlowLayout.m; sourceTree = "<group>"; };
 		451C8EFC1D7ECCE900B9324D /* GroundTransportSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundTransportSearch.h; sourceTree = "<group>"; };
@@ -634,6 +638,8 @@
 			children = (
 				4511E5221D17DFA4000ED6B0 /* CTAppearance.h */,
 				4511E5231D17DFA4000ED6B0 /* CTAppearance.m */,
+				451C83051DCCED1000A1E323 /* CTLogoImageView.h */,
+				451C83061DCCED1000A1E323 /* CTLogoImageView.m */,
 			);
 			name = Theme;
 			sourceTree = "<group>";
@@ -1538,6 +1544,7 @@
 				455B59231DCC914400CA4790 /* GTPaymentViewController.h in Headers */,
 				455B59251DCC914400CA4790 /* GTPaymentCompletionViewController.h in Headers */,
 				455B59271DCC914400CA4790 /* GooglePlaceService.h in Headers */,
+				451C83071DCCED1000A1E323 /* CTLogoImageView.h in Headers */,
 				455B59291DCC914400CA4790 /* GTPassengerViewController.h in Headers */,
 				455B592B1DCC914400CA4790 /* FilterCollectionViewDataSource.h in Headers */,
 				455B592D1DCC914400CA4790 /* GTFilterCollectionViewCell.h in Headers */,
@@ -1750,6 +1757,7 @@
 				455B58F71DCC914400CA4790 /* SupplierRatingsViewController.m in Sources */,
 				455B58F91DCC914400CA4790 /* SupplierRatingCollectionViewCell.m in Sources */,
 				455B58FB1DCC914400CA4790 /* VehicleFeaturesDataSource.m in Sources */,
+				451C83081DCCED1000A1E323 /* CTLogoImageView.m in Sources */,
 				455B58FD1DCC914400CA4790 /* VehicleFeatureCollectionViewCell.m in Sources */,
 				455B58FF1DCC914400CA4790 /* CTInclusionTableViewCell.m in Sources */,
 				455B59011DCC914400CA4790 /* CTInclusionsDataSource.m in Sources */,

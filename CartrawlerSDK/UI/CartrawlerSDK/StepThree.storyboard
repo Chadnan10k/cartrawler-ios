@@ -30,13 +30,12 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cba-4A-LKy" customClass="ExpandingInfoView">
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHr-zH-ujB">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHr-zH-ujB">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="G66-tf-kHh"/>
                                                     <constraint firstAttribute="height" constant="30" id="RDP-ld-AEl"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <state key="normal" title="+">
+                                                <state key="normal" image="information">
                                                     <color key="titleColor" red="0.19346955129999999" green="0.19346955129999999" blue="0.19346955129999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -85,13 +84,12 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3D-4j-EDX" customClass="ExpandingInfoView">
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbr-dv-1Yv">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbr-dv-1Yv">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="sbv-4X-psb"/>
                                                     <constraint firstAttribute="width" constant="30" id="thT-Tk-Jnp"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <state key="normal" title="+">
+                                                <state key="normal" image="information">
                                                     <color key="titleColor" red="0.19346955129999999" green="0.19346955129999999" blue="0.19346955129999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -949,6 +947,7 @@
         <image name="backArrow" width="25" height="25"/>
         <image name="fuel" width="50" height="50"/>
         <image name="gray_checkmark" width="15" height="15"/>
+        <image name="information" width="25" height="25"/>
         <image name="people" width="50" height="50"/>
     </resources>
 </document>

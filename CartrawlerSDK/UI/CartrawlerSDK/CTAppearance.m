@@ -30,6 +30,7 @@
         sharedInstance.textFieldCornerRadius = 3.0;
         sharedInstance.textFieldTint = [UIColor colorWithRed:26.0/255.0 green:38.0/255.0 blue:88.0/255.0 alpha:1.0];
         sharedInstance.textFieldBackgroundColor = [UIColor whiteColor];
+        sharedInstance.enableTextFieldShadows = NO;
         
         sharedInstance.fontName = @"Avenir";
         sharedInstance.boldFontName = @"Avenir-Medium";
