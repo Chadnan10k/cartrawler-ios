@@ -23,9 +23,7 @@
 @implementation SettingsSelectionViewController
 
 
-{
-    
-}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {

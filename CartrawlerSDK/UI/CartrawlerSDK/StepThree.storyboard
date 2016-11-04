@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -544,9 +544,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3i-qK-byT" customClass="CTButton">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="cB3-9v-Khs"/>
-                                            <constraint firstAttribute="width" constant="47" id="e1q-lY-uc3"/>
+                                            <constraint firstAttribute="width" constant="25" id="e1q-lY-uc3"/>
                                         </constraints>
-                                        <state key="normal" title="Back">
+                                        <state key="normal" image="backArrow">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -570,7 +570,7 @@
                                 <constraints>
                                     <constraint firstItem="Vop-eO-ioO" firstAttribute="top" secondItem="j84-aY-MYv" secondAttribute="top" constant="25" id="HDI-5d-hEH"/>
                                     <constraint firstAttribute="bottom" secondItem="Vop-eO-ioO" secondAttribute="bottom" constant="4" id="U3L-C7-dH8"/>
-                                    <constraint firstItem="Vop-eO-ioO" firstAttribute="leading" secondItem="m3i-qK-byT" secondAttribute="trailing" constant="23" id="XX3-6N-LPJ"/>
+                                    <constraint firstItem="Vop-eO-ioO" firstAttribute="leading" secondItem="m3i-qK-byT" secondAttribute="trailing" constant="45" id="XX3-6N-LPJ"/>
                                     <constraint firstAttribute="trailing" secondItem="Vop-eO-ioO" secondAttribute="trailing" constant="78" id="iOm-n9-IK5"/>
                                     <constraint firstItem="m3i-qK-byT" firstAttribute="leading" secondItem="j84-aY-MYv" secondAttribute="leading" constant="8" id="kpV-Je-PT4"/>
                                     <constraint firstItem="m3i-qK-byT" firstAttribute="centerY" secondItem="Vop-eO-ioO" secondAttribute="centerY" id="neb-pV-dT2"/>
@@ -653,10 +653,10 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6F-bp-Rev">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="6Qf-pf-Jni"/>
-                                            <constraint firstAttribute="height" constant="30" id="upL-cR-UcA"/>
+                                            <constraint firstAttribute="width" constant="25" id="6Qf-pf-Jni"/>
+                                            <constraint firstAttribute="height" constant="25" id="upL-cR-UcA"/>
                                         </constraints>
-                                        <state key="normal" title="Close" image="backArrow">
+                                        <state key="normal" image="backArrow">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -669,10 +669,10 @@
                                     <constraint firstItem="i6F-bp-Rev" firstAttribute="top" secondItem="QCU-2J-exE" secondAttribute="top" constant="25" id="DoL-1w-O81"/>
                                     <constraint firstItem="i6F-bp-Rev" firstAttribute="leading" secondItem="QCU-2J-exE" secondAttribute="leading" constant="8" id="Qg7-DV-5zf"/>
                                     <constraint firstAttribute="bottom" secondItem="jER-7i-mwr" secondAttribute="bottom" constant="8" id="SUn-Ao-KII"/>
-                                    <constraint firstItem="jER-7i-mwr" firstAttribute="centerY" secondItem="i6F-bp-Rev" secondAttribute="centerY" id="ZLg-O2-5Vd"/>
-                                    <constraint firstAttribute="bottom" secondItem="i6F-bp-Rev" secondAttribute="bottom" constant="5" id="kaj-tC-aa6"/>
+                                    <constraint firstItem="jER-7i-mwr" firstAttribute="centerY" secondItem="i6F-bp-Rev" secondAttribute="centerY" constant="2.5" id="ZLg-O2-5Vd"/>
+                                    <constraint firstAttribute="bottom" secondItem="i6F-bp-Rev" secondAttribute="bottom" constant="10" id="kaj-tC-aa6"/>
                                     <constraint firstAttribute="trailing" secondItem="jER-7i-mwr" secondAttribute="trailing" constant="63" id="qzR-T6-XiS"/>
-                                    <constraint firstItem="jER-7i-mwr" firstAttribute="leading" secondItem="i6F-bp-Rev" secondAttribute="trailing" constant="25" id="uDy-dI-mvw"/>
+                                    <constraint firstItem="jER-7i-mwr" firstAttribute="leading" secondItem="i6F-bp-Rev" secondAttribute="trailing" constant="30" id="uDy-dI-mvw"/>
                                     <constraint firstAttribute="height" constant="60" id="uiN-TT-dkl"/>
                                     <constraint firstItem="jER-7i-mwr" firstAttribute="top" secondItem="QCU-2J-exE" secondAttribute="top" constant="14" id="yZi-8e-biE"/>
                                 </constraints>
@@ -946,7 +946,7 @@
     </scenes>
     <resources>
         <image name="airport_gray" width="50" height="50"/>
-        <image name="backArrow" width="32" height="32"/>
+        <image name="backArrow" width="25" height="25"/>
         <image name="fuel" width="50" height="50"/>
         <image name="gray_checkmark" width="15" height="15"/>
         <image name="people" width="50" height="50"/>

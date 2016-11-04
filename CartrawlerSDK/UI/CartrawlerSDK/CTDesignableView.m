@@ -7,13 +7,9 @@
 //
 
 #import "CTDesignableView.h"
+#import "CTAppearance.h"
 
 @implementation CTDesignableView
-
-
-{
-    
-}
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -41,12 +37,12 @@
     self.layer.borderWidth = self.borderWidth;
     self.layer.cornerRadius = self.cornerRadius;
     
-    if (self.enableShadow) {
+    if (self.enableShadow || [CTAppearance instance].enableShadows) {
         self.layer.masksToBounds = NO;
         self.layer.shadowColor = [UIColor blackColor].CGColor;
         self.layer.shadowOffset = CGSizeMake(0, 0);
-        self.layer.shadowOpacity = 0.2;
-        self.layer.shadowRadius = 3;
+        self.layer.shadowOpacity = 0.1;
+        self.layer.shadowRadius = 10;
     }
     
     if (self.enableGradient) {

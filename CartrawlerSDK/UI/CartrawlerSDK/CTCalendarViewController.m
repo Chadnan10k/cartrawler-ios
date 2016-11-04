@@ -36,9 +36,7 @@
 @implementation CTCalendarViewController
 
 
-{
-    
-}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {

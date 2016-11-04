@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -68,10 +68,10 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrA-86-Eph">
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="92G-iK-wIp"/>
-                                                    <constraint firstAttribute="width" constant="29" id="AJn-55-edi"/>
+                                                    <constraint firstAttribute="height" constant="25" id="92G-iK-wIp"/>
+                                                    <constraint firstAttribute="width" constant="25" id="AJn-55-edi"/>
                                                 </constraints>
-                                                <state key="normal" title="&lt;" image="backArrow">
+                                                <state key="normal" image="backArrow">
                                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
@@ -81,16 +81,16 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.7074409196" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="xpG-V5-fPS" firstAttribute="leading" secondItem="vrA-86-Eph" secondAttribute="trailing" constant="17" id="3zf-Qg-qr3"/>
-                                            <constraint firstItem="CdZ-Gx-aUS" firstAttribute="leading" secondItem="vrA-86-Eph" secondAttribute="trailing" constant="17" id="6Jt-2y-ePG"/>
-                                            <constraint firstAttribute="trailing" secondItem="xpG-V5-fPS" secondAttribute="trailing" constant="56" id="Iia-qr-5d9"/>
+                                            <constraint firstItem="xpG-V5-fPS" firstAttribute="leading" secondItem="vrA-86-Eph" secondAttribute="trailing" constant="8" id="3zf-Qg-qr3"/>
+                                            <constraint firstItem="CdZ-Gx-aUS" firstAttribute="leading" secondItem="vrA-86-Eph" secondAttribute="trailing" constant="8" id="6Jt-2y-ePG"/>
+                                            <constraint firstAttribute="trailing" secondItem="xpG-V5-fPS" secondAttribute="trailing" constant="40" id="Iia-qr-5d9"/>
                                             <constraint firstAttribute="height" constant="62" id="Ivo-Rd-6IQ"/>
                                             <constraint firstItem="xpG-V5-fPS" firstAttribute="top" secondItem="bSS-OR-ReL" secondAttribute="top" constant="24" id="PAq-gO-EUG"/>
                                             <constraint firstAttribute="bottom" secondItem="CdZ-Gx-aUS" secondAttribute="bottom" constant="5" id="Sfv-NS-yFN"/>
                                             <constraint firstItem="vrA-86-Eph" firstAttribute="leading" secondItem="bSS-OR-ReL" secondAttribute="leading" constant="8" id="cXR-Uk-S1Z"/>
-                                            <constraint firstAttribute="trailing" secondItem="CdZ-Gx-aUS" secondAttribute="trailing" constant="56" id="d9M-MU-pRQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="CdZ-Gx-aUS" secondAttribute="trailing" constant="40" id="d9M-MU-pRQ"/>
                                             <constraint firstItem="CdZ-Gx-aUS" firstAttribute="top" secondItem="xpG-V5-fPS" secondAttribute="bottom" constant="1" id="ral-gB-m6V"/>
-                                            <constraint firstItem="vrA-86-Eph" firstAttribute="centerY" secondItem="bSS-OR-ReL" secondAttribute="centerY" constant="10" id="w8A-CN-yvv"/>
+                                            <constraint firstItem="vrA-86-Eph" firstAttribute="centerY" secondItem="bSS-OR-ReL" secondAttribute="centerY" constant="7.75" id="w8A-CN-yvv"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -297,6 +297,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="32" height="32"/>
+        <image name="backArrow" width="25" height="25"/>
     </resources>
 </document>

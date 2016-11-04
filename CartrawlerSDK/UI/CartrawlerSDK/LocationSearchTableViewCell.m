@@ -19,9 +19,7 @@
 @implementation LocationSearchTableViewCell
 
 
-{
-    
-}
+
 
 - (void)setLabelText:(NSString *)text isAirport:(BOOL)isAirport
 {

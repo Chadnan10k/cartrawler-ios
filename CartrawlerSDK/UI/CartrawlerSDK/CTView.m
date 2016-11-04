@@ -12,9 +12,7 @@
 @implementation CTView
 
 
-{
-    
-}
+
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

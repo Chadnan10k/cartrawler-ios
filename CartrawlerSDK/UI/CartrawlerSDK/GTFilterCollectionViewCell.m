@@ -21,9 +21,7 @@
 @implementation GTFilterCollectionViewCell
 
 
-{
-    
-}
+
 
 - (void)awakeFromNib
 {

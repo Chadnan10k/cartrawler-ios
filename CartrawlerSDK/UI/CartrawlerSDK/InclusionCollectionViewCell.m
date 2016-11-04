@@ -15,9 +15,7 @@
 @implementation InclusionCollectionViewCell
 
 
-{
-    
-}
+
 
 - (void)setText:(NSString *)text
 {

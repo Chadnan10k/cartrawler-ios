@@ -21,9 +21,7 @@
 @implementation CTFilterTableViewCell
 
 
-{
-    
-}
+
 
 - (void)setup
 {

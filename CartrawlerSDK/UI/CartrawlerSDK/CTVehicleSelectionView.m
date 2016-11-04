@@ -19,9 +19,7 @@
 @implementation CTVehicleSelectionView
 
 
-{
-    
-}
+
 
 - (void)showLoading
 {

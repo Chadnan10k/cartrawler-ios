@@ -12,9 +12,7 @@
 @implementation CTPlaceholderView
 
 
-{
-    
-}
+
 
 - (id)initWithFrame:(CGRect)frame
 {

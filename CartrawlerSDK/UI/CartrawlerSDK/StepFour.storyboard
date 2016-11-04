@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -22,8 +22,8 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWQ-WU-v3z">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="R2Q-Ye-LrS"/>
-                                            <constraint firstAttribute="height" constant="30" id="bQ0-2c-f1d"/>
+                                            <constraint firstAttribute="width" constant="25" id="R2Q-Ye-LrS"/>
+                                            <constraint firstAttribute="height" constant="25" id="bQ0-2c-f1d"/>
                                         </constraints>
                                         <state key="normal" image="backArrow"/>
                                         <connections>
@@ -45,8 +45,8 @@
                                     <constraint firstAttribute="height" constant="60" id="1ic-gQ-6WH"/>
                                     <constraint firstItem="vWQ-WU-v3z" firstAttribute="leading" secondItem="ghn-kF-Cyc" secondAttribute="leading" constant="8" id="4oV-Dc-Ues"/>
                                     <constraint firstAttribute="height" constant="60" id="Rmq-r9-XJX"/>
-                                    <constraint firstItem="vWQ-WU-v3z" firstAttribute="centerY" secondItem="clN-oO-7uF" secondAttribute="centerY" id="SzV-sb-2jk"/>
-                                    <constraint firstAttribute="bottom" secondItem="clN-oO-7uF" secondAttribute="bottom" constant="8" id="YxD-x8-rNZ"/>
+                                    <constraint firstItem="vWQ-WU-v3z" firstAttribute="centerY" secondItem="clN-oO-7uF" secondAttribute="centerY" constant="0.5" id="SzV-sb-2jk"/>
+                                    <constraint firstAttribute="bottom" secondItem="clN-oO-7uF" secondAttribute="bottom" constant="11" id="YxD-x8-rNZ"/>
                                     <constraint firstItem="clN-oO-7uF" firstAttribute="centerX" secondItem="ghn-kF-Cyc" secondAttribute="centerX" id="iEW-tW-DQp"/>
                                     <constraint firstItem="vWQ-WU-v3z" firstAttribute="top" secondItem="ghn-kF-Cyc" secondAttribute="top" constant="22" id="qtv-qT-3n3"/>
                                 </constraints>
@@ -252,6 +252,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="32" height="32"/>
+        <image name="backArrow" width="25" height="25"/>
     </resources>
 </document>

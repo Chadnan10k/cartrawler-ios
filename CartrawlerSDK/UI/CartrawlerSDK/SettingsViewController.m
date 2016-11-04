@@ -23,9 +23,7 @@
 @implementation SettingsViewController
 
 
-{
-    
-}
+
 
 - (void)viewDidLoad
 {

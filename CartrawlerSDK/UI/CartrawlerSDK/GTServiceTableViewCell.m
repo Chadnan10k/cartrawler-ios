@@ -32,9 +32,7 @@
 @implementation GTServiceTableViewCell
 
 
-{
-    
-}
+
 
 - (void)awakeFromNib
 {

@@ -25,9 +25,7 @@
 @implementation SupplierRatingsViewController
 
 
-{
-    
-}
+
 
 - (void)viewDidLoad
 {

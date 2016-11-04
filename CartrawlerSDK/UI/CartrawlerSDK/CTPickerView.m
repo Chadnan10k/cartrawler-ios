@@ -22,9 +22,7 @@
 @implementation CTPickerView
 
 
-{
-    
-}
+
 
 - (id)initWithFrame:(CGRect)frame
 {

@@ -24,9 +24,7 @@
 @implementation CTCalendarTableViewCell
 
 
-{
-    
-}
+
 
 - (void)awakeFromNib
 {

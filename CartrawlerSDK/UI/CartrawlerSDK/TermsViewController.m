@@ -10,6 +10,7 @@
 #import "TermsDetailViewController.h"
 #import "CTSDKSettings.h"
 #import "CarRentalSearch.h"
+#import "CTAppearance.h"
 
 @interface TermsViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -78,6 +79,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     cell.textLabel.text = self.data.termsAndConditions[indexPath.row].titleText;
+    cell.textLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:14];
     return cell;
 }
 

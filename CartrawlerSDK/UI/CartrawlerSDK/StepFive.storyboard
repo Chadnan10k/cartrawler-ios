@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2yw-qu-8gF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2yw-qu-8gF">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -21,6 +21,16 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2b-5G-YU7" customClass="CTNavigationView">
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEQ-UJ-04p">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="DLH-sE-r6U"/>
+                                            <constraint firstAttribute="height" constant="25" id="zX2-7Q-Spi"/>
+                                        </constraints>
+                                        <state key="normal" image="backArrow"/>
+                                        <connections>
+                                            <action selector="back:" destination="2yw-qu-8gF" eventType="touchUpInside" id="QTt-gC-Ykj"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment summary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mq-YO-5qf" customClass="CTLabel">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="LhO-Rf-XcP"/>
@@ -34,26 +44,16 @@
                                             </mask>
                                         </variation>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEQ-UJ-04p">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="DLH-sE-r6U"/>
-                                            <constraint firstAttribute="height" constant="30" id="zX2-7Q-Spi"/>
-                                        </constraints>
-                                        <state key="normal" title="Button" image="backArrow"/>
-                                        <connections>
-                                            <action selector="back:" destination="2yw-qu-8gF" eventType="touchUpInside" id="QTt-gC-Ykj"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.7074409196" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="OEQ-UJ-04p" secondAttribute="bottom" constant="8" id="19g-Sm-tsz"/>
                                     <constraint firstAttribute="height" constant="60" id="1jP-gn-URv"/>
-                                    <constraint firstItem="OEQ-UJ-04p" firstAttribute="centerY" secondItem="8Mq-YO-5qf" secondAttribute="centerY" id="DcW-tX-ulW"/>
+                                    <constraint firstItem="OEQ-UJ-04p" firstAttribute="centerY" secondItem="8Mq-YO-5qf" secondAttribute="centerY" constant="0.5" id="DcW-tX-ulW"/>
                                     <constraint firstItem="OEQ-UJ-04p" firstAttribute="top" secondItem="H2b-5G-YU7" secondAttribute="top" constant="26" id="EhI-fs-CyX"/>
                                     <constraint firstItem="OEQ-UJ-04p" firstAttribute="leading" secondItem="H2b-5G-YU7" secondAttribute="leading" constant="8" id="NZ9-YR-eh6"/>
                                     <constraint firstAttribute="height" constant="60" id="ROO-hG-bR7"/>
-                                    <constraint firstAttribute="bottom" secondItem="8Mq-YO-5qf" secondAttribute="bottom" constant="8" id="bgP-cJ-Z5e"/>
+                                    <constraint firstAttribute="bottom" secondItem="8Mq-YO-5qf" secondAttribute="bottom" constant="11" id="bgP-cJ-Z5e"/>
                                     <constraint firstItem="8Mq-YO-5qf" firstAttribute="centerX" secondItem="H2b-5G-YU7" secondAttribute="centerX" id="vYw-Dt-NIb"/>
                                 </constraints>
                                 <variation key="default">
@@ -296,10 +296,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="oDd-Cw-eXB"/>
                                 <exclude reference="nGI-ad-a4R"/>
                                 <exclude reference="p9Z-EG-prq"/>
                                 <exclude reference="ygH-wn-9B9"/>
+                                <exclude reference="oDd-Cw-eXB"/>
                                 <exclude reference="UU2-s9-JC6"/>
                             </mask>
                         </variation>
@@ -522,6 +522,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="32" height="32"/>
+        <image name="backArrow" width="25" height="25"/>
     </resources>
 </document>

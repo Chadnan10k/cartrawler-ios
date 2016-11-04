@@ -11,9 +11,7 @@
 @implementation CTMiddleDateCell
 
 
-{
-    
-}
+
 
 - (id)initWithCell:(CTDateCollectionViewCell *)cell section:(NSNumber *)section indexPath:(NSIndexPath *)indexPath
 {

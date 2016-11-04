@@ -16,9 +16,7 @@
 @implementation IncludedCollectionViewCell
 
 
-{
-    
-}
+
 
 - (void)setDetails:(NSString *)details
 {

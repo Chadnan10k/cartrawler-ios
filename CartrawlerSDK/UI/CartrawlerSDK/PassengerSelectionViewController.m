@@ -31,9 +31,7 @@
 @implementation PassengerSelectionViewController
 
 
-{
-    
-}
+
 
 - (void)viewDidLoad
 {

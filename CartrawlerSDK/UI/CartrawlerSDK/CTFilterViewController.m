@@ -32,9 +32,7 @@
 @implementation CTFilterViewController
 
 
-{
-    
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

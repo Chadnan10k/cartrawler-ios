@@ -24,9 +24,7 @@
 @implementation CTLocationSearchViewController
 
 
-{
-    
-}
+
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

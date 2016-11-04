@@ -25,9 +25,7 @@
 @implementation GTPaymentCompletionViewController
 
 
-{
-    
-}
+
 
 - (void)viewDidAppear:(BOOL)animated
 {

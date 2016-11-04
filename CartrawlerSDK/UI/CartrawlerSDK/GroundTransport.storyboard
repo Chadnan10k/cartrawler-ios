@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6g3-iz-Ynm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6g3-iz-Ynm">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -256,13 +256,12 @@
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hiL-Tf-xv5" customClass="CTNavigationView">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTy-zK-qpE" customClass="CTButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTy-zK-qpE" customClass="CTButton">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="59" id="SKt-k0-7QD"/>
                                             <constraint firstAttribute="height" constant="26" id="kwh-PV-fyW"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Back">
+                                        <state key="normal" image="backArrow">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -380,7 +379,7 @@
                                             <constraint firstAttribute="height" constant="30" id="5gB-ot-Rdt"/>
                                             <constraint firstAttribute="width" constant="30" id="bpe-5g-8gX"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="backArrow"/>
+                                        <state key="normal" image="backArrow"/>
                                         <connections>
                                             <action selector="back:" destination="RTa-dj-14I" eventType="touchUpInside" id="Tmq-2N-Cnc"/>
                                         </connections>
@@ -1216,7 +1215,7 @@
                                             <constraint firstAttribute="height" constant="30" id="FU3-Gm-huL"/>
                                             <constraint firstAttribute="width" constant="30" id="ngC-b8-MvC"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="backArrow"/>
+                                        <state key="normal" image="backArrow"/>
                                         <connections>
                                             <action selector="back:" destination="Q50-Kj-2Rr" eventType="touchUpInside" id="yKM-mt-JhA"/>
                                         </connections>
@@ -1583,7 +1582,7 @@
                                             <constraint firstAttribute="width" constant="30" id="Mcg-IE-akY"/>
                                             <constraint firstAttribute="height" constant="30" id="S0g-sE-oGk"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="backArrow"/>
+                                        <state key="normal" image="backArrow"/>
                                         <connections>
                                             <action selector="back:" destination="Xo5-Ke-guZ" eventType="touchUpInside" id="5PX-Ak-gmG"/>
                                         </connections>
@@ -2193,7 +2192,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="32" height="32"/>
+        <image name="backArrow" width="25" height="25"/>
         <image name="baggage" width="100" height="100"/>
         <image name="black_checkmark" width="32" height="32"/>
         <image name="gt_car" width="256" height="170"/>

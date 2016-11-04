@@ -23,9 +23,7 @@
 @implementation LocationSearchDataSource
 
 
-{
-    
-}
+
 
 - (id)init
 {

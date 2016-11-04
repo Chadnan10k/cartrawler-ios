@@ -19,7 +19,7 @@
 
 #define kSearchViewStoryboard @"StepOne"
 
-#define kDropoffLocationOpen 94.0
+#define kDropoffLocationOpen 101.0
 #define kDropoffLocationClosed 18.0
 
 #define kAgeOpen 67.0
@@ -59,9 +59,7 @@
 @implementation SearchDetailsViewController
 
 
-{
-    
-}
+
 
 - (void)viewDidLoad
 {

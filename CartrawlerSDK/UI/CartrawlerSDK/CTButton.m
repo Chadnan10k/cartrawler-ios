@@ -12,9 +12,7 @@
 @implementation CTButton
 
 
-{
-    
-}
+
 
 - (id)init
 {
@@ -70,7 +68,7 @@
     self.titleLabel.minimumScaleFactor = 0.5f;
     self.titleLabel.numberOfLines = 1;
     self.titleLabel.adjustsFontSizeToFitWidth = YES;
-    
+    /*
     if (!self.disableShadow) {
         if ([CTAppearance instance].enableShadows) {
             self.layer.masksToBounds = NO;
@@ -79,6 +77,13 @@
             self.layer.shadowOpacity = 0.2;
             self.layer.shadowRadius = 3;
         }
+    }
+     */
+    
+    if (self.useBoldFont) {
+        self.titleLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.titleLabel.font.pointSize];
+    } else {
+        self.titleLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:self.titleLabel.font.pointSize];
     }
 }
 

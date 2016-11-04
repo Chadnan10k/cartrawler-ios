@@ -28,9 +28,7 @@
 @implementation GTPaymentViewController
 
 
-{
-    
-}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {

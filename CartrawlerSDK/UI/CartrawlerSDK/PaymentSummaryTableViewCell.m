@@ -21,9 +21,7 @@
 @implementation PaymentSummaryTableViewCell
 
 
-{
-    
-}
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];

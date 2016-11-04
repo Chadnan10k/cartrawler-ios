@@ -11,9 +11,7 @@
 @implementation IncludedCollectionViewLayout
 
 
-{
-    
-}
+
 
 - (NSArray *) layoutAttributesForElementsInRect:(CGRect)rect {
     NSArray *answer = [super layoutAttributesForElementsInRect:rect];

@@ -12,9 +12,7 @@
 @implementation CTSegmentedControl
 
 
-{
-    
-}
+
 
 - (void)awakeFromNib
 {

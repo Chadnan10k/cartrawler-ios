@@ -30,9 +30,7 @@
 @implementation GroundServicesViewController
 
 
-{
-    
-}
+
 
 - (void)refresh
 {

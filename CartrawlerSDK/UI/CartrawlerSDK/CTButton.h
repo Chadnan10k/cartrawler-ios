@@ -15,6 +15,7 @@ IB_DESIGNABLE
 @property (nonatomic, strong) IBInspectable UIColor *overrideTextColor;
 @property (nonatomic) IBInspectable CGFloat overrideCornerRadius;
 @property (nonatomic) IBInspectable BOOL disableShadow;
+@property (nonatomic) IBInspectable BOOL useBoldFont;
 
 
 

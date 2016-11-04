@@ -18,11 +18,6 @@
 
 @implementation CTSelectView
 
-
-{
-    
-}
-
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];

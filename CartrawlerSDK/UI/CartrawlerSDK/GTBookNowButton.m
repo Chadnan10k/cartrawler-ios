@@ -12,9 +12,7 @@
 @implementation GTBookNowButton
 
 
-{
-    
-}
+
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

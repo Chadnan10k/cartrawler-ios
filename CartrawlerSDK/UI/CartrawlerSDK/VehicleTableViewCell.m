@@ -36,9 +36,7 @@
 @implementation VehicleTableViewCell
 
 
-{
-    
-}
+
 
 - (void)awakeFromNib
 {

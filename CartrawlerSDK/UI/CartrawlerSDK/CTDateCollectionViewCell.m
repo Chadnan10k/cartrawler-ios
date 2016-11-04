@@ -19,11 +19,6 @@
 
 @implementation CTDateCollectionViewCell
 
-
-{
-    
-}
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];

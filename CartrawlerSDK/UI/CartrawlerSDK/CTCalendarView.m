@@ -27,9 +27,7 @@
 @implementation CTCalendarView
 
 
-{
-    
-}
+
 
 - (void)reset
 {

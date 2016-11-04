@@ -25,7 +25,7 @@
 //    [CartrawlerSDK appearance].buttonColor = [UIColor someColor];
 //    [CartrawlerSDK appearance].buttonTextColor = [UIColor someColor];
 //    [CartrawlerSDK appearance].buttonCornerRadius = 2
-//    [CartrawlerSDK appearance].enableShadows = NO;
+    [CartrawlerSDK appearance].enableShadows = YES;
 //    
 //    [CartrawlerSDK appearance].viewBackgroundColor =  = [UIColor someColor];
 //    [CartrawlerSDK appearance].navigationBarColor = [UIColor someColor];
@@ -49,7 +49,7 @@
     [CartrawlerSDK appearance].modalPresentationStyle = UIModalPresentationOverFullScreen;
     [CartrawlerSDK appearance].modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"643826" languageCode:@"EN" isDebug:YES];
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"643826" languageCode:@"EN" sandboxMode:YES];
     
     //[CTAppearance instance].buttonColor = [UIColor blackColor];
 

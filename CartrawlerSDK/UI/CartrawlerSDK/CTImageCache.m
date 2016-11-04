@@ -15,9 +15,7 @@
 @implementation CTImageCache
 
 
-{
-    
-}
+
 
 + (CTImageCache *)sharedInstance {
     static CTImageCache *sharedInstance = nil;

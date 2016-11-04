@@ -19,12 +19,12 @@
         
         //set the default theme here
         sharedInstance.buttonColor = [UIColor colorWithRed:241.0/255.0 green:201.0/255.0 blue:51.0/255.0 alpha:1.0];
-        sharedInstance.buttonTextColor = [UIColor colorWithRed:26.0/255.0 green:38.0/255.0 blue:88.0/255.0 alpha:1.0];
-        sharedInstance.buttonCornerRadius = 2.0;
-        sharedInstance.enableShadows = NO;
+        sharedInstance.buttonTextColor = [UIColor colorWithRed:6.0/255.0 green:43.0/255.0 blue:113.0/255.0 alpha:1.0];
+        sharedInstance.buttonCornerRadius = 5.0;
+        sharedInstance.enableShadows = YES;
         
         sharedInstance.viewBackgroundColor = [UIColor colorWithRed:27.0/255.0 green:78.0/255.0 blue:148.0/255.0 alpha:1.0];
-        sharedInstance.navigationBarColor = [UIColor colorWithRed:27.0/255.0 green:78.0/255.0 blue:148.0/255.0 alpha:1.0];
+        sharedInstance.navigationBarColor = [UIColor colorWithRed:7.0/255.0 green:53.0/255.0 blue:144.0/255.0 alpha:1.0];
         sharedInstance.tabBarTint = [UIColor colorWithRed:27.0/255.0 green:78.0/255.0 blue:148.0/255.0 alpha:1.0];
         
         sharedInstance.textFieldCornerRadius = 3.0;
@@ -34,10 +34,10 @@
         sharedInstance.fontName = @"Avenir";
         sharedInstance.boldFontName = @"Avenir-Medium";
         
-        sharedInstance.calendarStartCellColor = [UIColor colorWithRed:26.0/255.0 green:38.0/255.0 blue:88.0/255.0 alpha:1.0];
-        sharedInstance.calendarEndCellColor = [UIColor colorWithRed:26.0/255.0 green:38.0/255.0 blue:88.0/255.0 alpha:1.0];
+        sharedInstance.calendarStartCellColor = [UIColor colorWithRed:27.0/255.0 green:78.0/255.0 blue:148.0/255.0 alpha:1.0];
+        sharedInstance.calendarEndCellColor = [UIColor colorWithRed:27.0/255.0 green:78.0/255.0 blue:148.0/255.0 alpha:1.0];
         sharedInstance.calendarMidCellColor = [UIColor colorWithRed:241.0/255.0 green:201.0/255.0 blue:51.0/255.0 alpha:1.0];
-        sharedInstance.calendarSummaryViewColor = [UIColor colorWithRed:0/255.0 green:175/255.0 blue:255/255.0 alpha:1.0];
+        sharedInstance.calendarSummaryViewColor = [UIColor colorWithRed:32/255.0 green:145/255.0 blue:235/255.0 alpha:1.0];
         sharedInstance.calendarSummaryTitleLabelColor = [UIColor colorWithRed:27.0/255.0 green:78.0/255.0 blue:148.0/255.0 alpha:1.0];
         
         sharedInstance.presentAnimated = YES;

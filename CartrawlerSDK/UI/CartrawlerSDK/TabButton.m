@@ -12,9 +12,7 @@
 @implementation TabButton
 
 
-{
-    
-}
+
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

@@ -12,9 +12,7 @@
 @implementation CTLabel
 
 
-{
-    
-}
+
 
 - (id)initWithFrame:(CGRect)frame
 {

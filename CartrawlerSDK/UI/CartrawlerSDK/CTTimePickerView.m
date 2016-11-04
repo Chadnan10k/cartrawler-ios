@@ -19,9 +19,7 @@
 @implementation CTTimePickerView
 
 
-{
-    
-}
+
 
 - (id)initInView:(UIView *)superview mininumDate:(NSDate *)mininumDate
 {

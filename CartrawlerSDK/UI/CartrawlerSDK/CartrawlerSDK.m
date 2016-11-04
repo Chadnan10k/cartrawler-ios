@@ -54,12 +54,12 @@
 
 - (instancetype)initWithRequestorID:(NSString *)requestorID
              languageCode:(NSString *)languageCode
-                  isDebug:(BOOL)isDebug
+              sandboxMode:(BOOL)sandboxMode;
 {
     self = [super init];
     
     //[LinkerUtils loadFiles];
-    [[CTSDKSettings instance] setClientId:requestorID languageCode:languageCode isDebug:isDebug];
+    [[CTSDKSettings instance] setClientId:requestorID languageCode:languageCode isDebug:sandboxMode];
     
     _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
                                                      language:[CTSDKSettings instance].languageCode
@@ -67,7 +67,7 @@
     
     _bundle = [NSBundle bundleForClass:[self class]];
     
-    if (isDebug) {
+    if (sandboxMode) {
         [self.cartrawlerAPI enableLogging:YES];
     }
     

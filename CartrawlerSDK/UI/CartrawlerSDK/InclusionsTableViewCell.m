@@ -18,9 +18,7 @@
 @implementation InclusionsTableViewCell
 
 
-{
-    
-}
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];
