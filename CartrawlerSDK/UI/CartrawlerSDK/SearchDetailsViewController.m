@@ -58,9 +58,6 @@
 
 @implementation SearchDetailsViewController
 
-
-
-
 - (void)viewDidLoad
 {
     
@@ -395,6 +392,9 @@
 
 - (IBAction)cancel:(id)sender
 {
+    if (self.delegate) {
+        [self.delegate didDismissViewController];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

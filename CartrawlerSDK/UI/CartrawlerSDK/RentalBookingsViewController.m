@@ -13,7 +13,7 @@
 @interface RentalBookingsViewController () <UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray<RentalBooking *> *bookings;
+@property (strong, nonatomic) NSArray<CTRentalBooking *> *bookings;
 
 @end
 

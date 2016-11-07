@@ -386,7 +386,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                             CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:json];
                             self.carRentalSearch.booking = booking;
                             
-                            RentalBooking *savedBooking = [[RentalBooking alloc] init];
+                            CTRentalBooking *savedBooking = [[CTRentalBooking alloc] init];
                             savedBooking.bookingId = booking.confID;
                             savedBooking.pickupLocation = self.carRentalSearch.pickupLocation.name;
                             savedBooking.dropoffLocation = self.carRentalSearch.dropoffLocation.name;

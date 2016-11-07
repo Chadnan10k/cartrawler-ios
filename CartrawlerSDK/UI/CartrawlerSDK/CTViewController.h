@@ -10,13 +10,22 @@
 #import "CarRentalSearch.h"
 #import "GroundTransportSearch.h"
 #import "CTValidation.h"
-#import "RentalBooking.h"
+#import "CTRentalBooking.h"
 #import "GTBooking.h"
+
+@protocol CTViewControllerDelegate <NSObject>
+
+@required
+- (void)didDismissViewController;
+- (void)didBookVehicle:(CTRentalBooking *)booking;
+- (void)didBookGroundTransport:(CTRentalBooking *)booking;
+
+@end
 
 @interface CTViewController : UIViewController
 
 typedef void (^Completion)(BOOL success, NSString *errorMessage);
-typedef void (^RentalBookingCompletion)(RentalBooking *booking);
+typedef void (^RentalBookingCompletion)(CTRentalBooking *booking);
 typedef void (^GTBookingCompletion)(GTBooking *booking);
 
 @property (nonatomic) Completion dataValidationCompletion;
@@ -31,9 +40,11 @@ typedef void (^GTBookingCompletion)(GTBooking *booking);
 @property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
 @property (nonatomic, strong) CTViewController *destinationViewController;
+@property (nonatomic, strong) CTViewController *fallbackViewController;
+
+@property (nonatomic, weak) id<CTViewControllerDelegate> delegate;
 
 - (void)refresh;
-
 - (void)pushToDestination;
 
 @end

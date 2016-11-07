@@ -8,6 +8,7 @@
 
 #import "BookingSummaryButton.h"
 #import "BookingSummaryViewController.h"
+#import "CTLabel.h"
 
 @interface BookingSummaryButton()
 
@@ -18,11 +19,41 @@
 @property (strong, nonatomic) BookingSummaryViewController *bookingSummaryView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryHeight;
 
+@property (strong, nonatomic) CTLabel *titleLabel;
+@property (strong, nonatomic) UIButton *expandButton;
+
 @end
 
 @implementation BookingSummaryButton
 {
     BOOL summaryVisible;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    _titleLabel = [CTLabel new];
+    _expandButton = [UIButton new];
+
+    [self.expandButton setImage:[UIImage imageNamed:@"arrow"
+                                           inBundle:[NSBundle bundleForClass:[self class]]
+                      compatibleWithTraitCollection:nil]
+                       forState:UIControlStateNormal];
+    
+    self.titleLabel.text = NSLocalizedString(@"Booking summary", @"Booking summary");
+    
+    self.expandButton.translatesAutoresizingMaskIntoConstraints = NO;
+    self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.expandButton addTarget:self action:@selector(viewTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview: self.expandButton];
+    [self addSubview: self.titleLabel];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-12-[view]" options:0 metrics:nil views:@{@"view" : self.titleLabel }]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[view]" options:0 metrics:nil views:@{@"view" : self.titleLabel }]];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-12-[view(25)]" options:0 metrics:nil views:@{@"view" : self.expandButton }]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(25)]-8-|" options:0 metrics:nil views:@{@"view" : self.expandButton }]];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -68,6 +99,16 @@
 - (void)closeView
 {
     if (summaryVisible) {
+        
+        [UIView animateWithDuration:0.5
+                              delay:0
+             usingSpringWithDamping:0.2
+              initialSpringVelocity:0.2
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             self.expandButton.transform = CGAffineTransformMakeRotation(0);
+                         } completion:nil];
+        
         self.summaryHeight.constant = 50;
         
         [self removeConstraints:@[self.topConstraint,
@@ -78,6 +119,16 @@
         [self.bookingSummaryView.view removeFromSuperview];
         summaryVisible = NO;
     } else {
+        
+        [UIView animateWithDuration:0.5
+                              delay:0
+             usingSpringWithDamping:0.2
+              initialSpringVelocity:0.2
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             self.expandButton.transform = CGAffineTransformMakeRotation(M_PI_2);
+                         } completion:nil];
+        
         self.summaryHeight.constant = 320;
         
         

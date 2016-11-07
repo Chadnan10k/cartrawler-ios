@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RentalBooking.h"
+#import "CTRentalBooking.h"
 
 @interface RentalBookingCell : UITableViewCell
 
-
-
-- (void)setData:(RentalBooking *)booking;
+- (void)setData:(CTRentalBooking *)booking;
 
 @end

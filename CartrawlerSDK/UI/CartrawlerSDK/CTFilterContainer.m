@@ -200,7 +200,12 @@
     
     if (c) {
         
-        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:0.5
+                              delay:0
+             usingSpringWithDamping:0.2
+              initialSpringVelocity:0.2
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
             self.imageView.transform = CGAffineTransformMakeRotation(0);
         } completion:nil];
         
@@ -231,7 +236,12 @@
     if (self.isExpanded) {
         if (c) {
             
-            [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [UIView animateWithDuration:0.5
+                                  delay:0
+                 usingSpringWithDamping:0.2
+                  initialSpringVelocity:0.2
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
                 self.imageView.transform = CGAffineTransformMakeRotation(0);
             } completion:nil];
             
@@ -242,7 +252,12 @@
     } else {
         if (c) {
             
-            [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [UIView animateWithDuration:0.5
+                                  delay:0
+                 usingSpringWithDamping:0.2
+                  initialSpringVelocity:0.2
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
                 self.imageView.transform = CGAffineTransformMakeRotation(M_PI_2);
             } completion:nil];
             

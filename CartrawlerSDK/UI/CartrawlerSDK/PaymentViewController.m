@@ -62,6 +62,9 @@
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf pushToDestination];
+                if (weakSelf.delegate) {
+                    [weakSelf.delegate didBookVehicle:weakSelf.search.booking];
+                }
             });
         } else {
             
@@ -82,10 +85,6 @@
                                                             boldFontColor:@"#000000"];
     self.termsLabel.delegate = self;
     
-//    CGSize textSize = [self.termsLabel.text
-//                       sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:[CTAppearance instance].boldFontName size:15]}];
-//    
-//    self.termsAndCondHeight.constant = textSize.height;
 }
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange

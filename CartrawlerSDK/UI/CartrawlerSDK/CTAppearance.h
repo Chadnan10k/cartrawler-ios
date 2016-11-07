@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIColor  *viewBackgroundColor;
 @property (nonatomic, strong) UIColor  *navigationBarColor;
 @property (nonatomic, strong) UIColor  *tabBarTint;
+@property (nonatomic, strong) UIImage  *navigationBarLogoImage;
 
 //Text
 @property (nonatomic)         CGFloat  textFieldCornerRadius;

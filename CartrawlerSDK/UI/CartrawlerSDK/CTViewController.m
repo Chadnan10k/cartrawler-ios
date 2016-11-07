@@ -68,7 +68,13 @@
                                                       [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
                                                   } else {
                                                       if (weakSelf.dataValidationCompletion) {
-                                                          weakSelf.dataValidationCompletion(NO, errorMessage);
+                                                          if (weakSelf.fallbackViewController) {
+                                                              weakSelf.dataValidationCompletion(YES, nil);
+                                                              [weakSelf.destinationViewController refresh];
+                                                              [weakSelf.navigationController pushViewController:weakSelf.fallbackViewController animated:YES];
+                                                          } else {
+                                                              weakSelf.dataValidationCompletion(NO, errorMessage);
+                                                          }
                                                       }
                                                   }
                                               });

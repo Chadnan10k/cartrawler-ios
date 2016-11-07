@@ -13,10 +13,10 @@
 		45295F671D78412600A09B8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45295F651D78412600A09B8A /* Main.storyboard */; };
 		45295F691D78412600A09B8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45295F681D78412600A09B8A /* Assets.xcassets */; };
 		45295F6C1D78412600A09B8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45295F6A1D78412600A09B8A /* LaunchScreen.storyboard */; };
-		455B59701DCCA25900CA4790 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455B596F1DCCA25900CA4790 /* CartrawlerAPI.framework */; };
-		455B59711DCCA25900CA4790 /* CartrawlerAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 455B596F1DCCA25900CA4790 /* CartrawlerAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		455B59731DCCA25900CA4790 /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455B59721DCCA25900CA4790 /* CartrawlerSDK.framework */; };
-		455B59741DCCA25900CA4790 /* CartrawlerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 455B59721DCCA25900CA4790 /* CartrawlerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4559D4861DD0939500B5DC51 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4559D4851DD0939500B5DC51 /* CartrawlerAPI.framework */; };
+		4559D4871DD0939500B5DC51 /* CartrawlerAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4559D4851DD0939500B5DC51 /* CartrawlerAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4559D4891DD0939500B5DC51 /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4559D4881DD0939500B5DC51 /* CartrawlerSDK.framework */; };
+		4559D48A1DD0939500B5DC51 /* CartrawlerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4559D4881DD0939500B5DC51 /* CartrawlerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		455B59771DCCB22A00CA4790 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 455B59751DCCB22500CA4790 /* Roboto-Bold.ttf */; };
 		455B59781DCCB22E00CA4790 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 455B59761DCCB22500CA4790 /* Roboto-Regular.ttf */; };
 		45A7B7561D9BE003006611EB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */; };
@@ -24,14 +24,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		455B59621DCC979300CA4790 /* Embed Frameworks */ = {
+		4559D48B1DD0939600B5DC51 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				455B59741DCCA25900CA4790 /* CartrawlerSDK.framework in Embed Frameworks */,
-				455B59711DCCA25900CA4790 /* CartrawlerAPI.framework in Embed Frameworks */,
+				4559D48A1DD0939500B5DC51 /* CartrawlerSDK.framework in Embed Frameworks */,
+				4559D4871DD0939500B5DC51 /* CartrawlerAPI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,8 +49,8 @@
 		45295F681D78412600A09B8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45295F6B1D78412600A09B8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45295F6D1D78412600A09B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		455B596F1DCCA25900CA4790 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		455B59721DCCA25900CA4790 /* CartrawlerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4559D4851DD0939500B5DC51 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4559D4881DD0939500B5DC51 /* CartrawlerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		455B59751DCCB22500CA4790 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		455B59761DCCB22500CA4790 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -62,8 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				455B59731DCCA25900CA4790 /* CartrawlerSDK.framework in Frameworks */,
-				455B59701DCCA25900CA4790 /* CartrawlerAPI.framework in Frameworks */,
+				4559D4891DD0939500B5DC51 /* CartrawlerSDK.framework in Frameworks */,
+				4559D4861DD0939500B5DC51 /* CartrawlerAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,8 +73,8 @@
 		45295F501D78412500A09B8A = {
 			isa = PBXGroup;
 			children = (
-				455B59721DCCA25900CA4790 /* CartrawlerSDK.framework */,
-				455B596F1DCCA25900CA4790 /* CartrawlerAPI.framework */,
+				4559D4881DD0939500B5DC51 /* CartrawlerSDK.framework */,
+				4559D4851DD0939500B5DC51 /* CartrawlerAPI.framework */,
 				45295F5B1D78412500A09B8A /* TestApp */,
 				45295F5A1D78412500A09B8A /* Products */,
 			);
@@ -127,7 +127,7 @@
 				45295F561D78412500A09B8A /* Frameworks */,
 				45295F571D78412500A09B8A /* Resources */,
 				455685711D79BBEA000AA1A0 /* ShellScript */,
-				455B59621DCC979300CA4790 /* Embed Frameworks */,
+				4559D48B1DD0939600B5DC51 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RentalBooking.h"
+#import "CTRentalBooking.h"
 #import "GTBooking.h"
 
 @interface DataStore : NSObject
 
-+ (void)storeRentalBooking:(RentalBooking *)booking;
++ (void)storeRentalBooking:(CTRentalBooking *)booking;
 + (void)storeGTBooking:(GTBooking *)booking;
 
-+ (NSArray<RentalBooking *> *)retrieveRentalBookings;
++ (NSArray<CTRentalBooking *> *)retrieveRentalBookings;
 + (NSArray<GTBooking *> *)retrieveGTBookings;
 
 @end

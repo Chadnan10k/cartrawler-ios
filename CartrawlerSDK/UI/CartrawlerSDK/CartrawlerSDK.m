@@ -36,7 +36,7 @@
 
 #define kGTViewStoryboard @"GroundTransport"
 
-@interface CartrawlerSDK()
+@interface CartrawlerSDK() <CTViewControllerDelegate>
 
 @property (nonatomic, strong, readonly) CTViewController *searchDetailsViewControllerOverride;
 
@@ -276,23 +276,68 @@
 - (void)configureViews
 {
     //CAR RENTAL
-    [self configureViewController:self.searchDetailsViewController validationController:[[SearchValidation alloc] init] destination:self.vehicleSelectionViewController];
-    [self configureViewController:self.vehicleSelectionViewController validationController:[[GenericValidation alloc] init] destination:self.vehicleDetailsViewController];
-    [self configureViewController:self.vehicleDetailsViewController validationController:[[InsuranceValidation alloc] init] destination:self.insuranceExtrasViewController];
-    [self configureViewController:self.insuranceExtrasViewController validationController:[[GenericValidation alloc] init] destination:self.paymentSummaryViewController];
-    [self configureViewController:self.paymentSummaryViewController validationController:[[GenericValidation alloc] init] destination:self.driverDetialsViewController];
-    [self configureViewController:self.driverDetialsViewController validationController:[[GenericValidation alloc] init] destination:self.addressDetialsViewController];
-    [self configureViewController:self.addressDetialsViewController validationController:[[PaymentValidation alloc] init] destination:self.paymentViewController];
-    [self configureViewController:self.paymentViewController validationController:[[BookingCompletionValidation alloc] init] destination:self.paymentCompletionViewController];
-    [self configureViewController:self.paymentCompletionViewController validationController:nil destination:nil];
+    [self configureViewController:self.searchDetailsViewController
+             validationController:[[SearchValidation alloc] init]
+                      destination:self.vehicleSelectionViewController];
+    
+    [self configureViewController:self.vehicleSelectionViewController
+             validationController:[[GenericValidation alloc] init]
+                      destination:self.vehicleDetailsViewController];
 
+    [self configureViewController:self.vehicleDetailsViewController
+             validationController:[[InsuranceValidation alloc] init]
+                      destination:self.insuranceExtrasViewController
+                         fallback:self.paymentSummaryViewController];
+    
+    
+    [self configureViewController:self.insuranceExtrasViewController
+             validationController:[[GenericValidation alloc] init]
+                      destination:self.paymentSummaryViewController];
+    
+    [self configureViewController:self.paymentSummaryViewController
+             validationController:[[GenericValidation alloc] init]
+                      destination:self.driverDetialsViewController];
+    
+    [self configureViewController:self.driverDetialsViewController
+             validationController:[[GenericValidation alloc] init]
+                      destination:self.addressDetialsViewController];
+    
+    [self configureViewController:self.addressDetialsViewController
+             validationController:[[PaymentValidation alloc] init]
+                      destination:self.paymentViewController];
+    
+    [self configureViewController:self.paymentViewController
+             validationController:[[BookingCompletionValidation alloc] init]
+                      destination:self.paymentCompletionViewController];
+    
+    [self configureViewController:self.paymentCompletionViewController
+             validationController:nil destination:nil];
+
+    
     //GROUND TRANSPORT
-    [self configureViewController:self.gtSearchDetailsViewController validationController:[[GTSearchValidation alloc] init] destination:self.gtServiceSelectionViewController];
-    [self configureViewController:self.gtServiceSelectionViewController validationController:[[GTSelectionValidation alloc] init] destination:self.gtPassengerDetailsViewController];
-    [self configureViewController:self.gtPassengerDetailsViewController validationController:[[GTGenericValidation alloc] init] destination:self.gtAddressDetailsViewController];
-    [self configureViewController:self.gtAddressDetailsViewController validationController:[[GTPassengerDetailsValidation alloc] init] destination:self.gtPaymentViewController];
-    [self configureViewController:self.gtPaymentViewController validationController:[[GTBookingCompletionValidation alloc] init] destination:self.gtPaymentCompletionViewController];
-    [self configureViewController:self.gtPaymentCompletionViewController validationController:nil destination:nil];
+    [self configureViewController:self.gtSearchDetailsViewController
+             validationController:[[GTSearchValidation alloc] init]
+                      destination:self.gtServiceSelectionViewController];
+    
+    [self configureViewController:self.gtServiceSelectionViewController
+             validationController:[[GTSelectionValidation alloc] init]
+                      destination:self.gtPassengerDetailsViewController];
+    
+    [self configureViewController:self.gtPassengerDetailsViewController
+             validationController:[[GTGenericValidation alloc] init]
+                      destination:self.gtAddressDetailsViewController];
+    
+    [self configureViewController:self.gtAddressDetailsViewController
+             validationController:[[GTPassengerDetailsValidation alloc] init]
+                      destination:self.gtPaymentViewController];
+    
+    [self configureViewController:self.gtPaymentViewController
+             validationController:[[GTBookingCompletionValidation alloc] init]
+                      destination:self.gtPaymentCompletionViewController];
+    
+    [self configureViewController:self.gtPaymentCompletionViewController
+             validationController:nil
+                      destination:nil];
 
 }
 
@@ -347,9 +392,33 @@
 - (CTViewController *)configureViewController:(CTViewController *)viewController
                          validationController:(CTValidation *)validationController
                                   destination:(CTViewController *)destination
+                                  fallback:(CTViewController *)fallback
+{
+    viewController.destinationViewController = destination;
+    viewController.fallbackViewController = fallback;
+    viewController.cartrawlerAPI = self.cartrawlerAPI;
+    viewController.delegate = self;
+    
+    if (self.isCarRental) {
+        viewController.search = [CarRentalSearch instance];
+        viewController.groundSearch = nil;
+    } else {
+        viewController.groundSearch = [GroundTransportSearch instance];
+        viewController.search = nil;
+    }
+    
+    viewController.validationController = validationController;
+    
+    return viewController;
+}
+
+- (CTViewController *)configureViewController:(CTViewController *)viewController
+                         validationController:(CTValidation *)validationController
+                                  destination:(CTViewController *)destination
 {
     viewController.destinationViewController = destination;
     viewController.cartrawlerAPI = self.cartrawlerAPI;
+    viewController.delegate = self;
     
     if (self.isCarRental) {
         viewController.search = [CarRentalSearch instance];
@@ -389,6 +458,29 @@ void uncaughtExceptionHandler(NSException *exception)
 {
     NSLog(@"\n\n\nCartrawlerSDK Crash:\n%@\n\n\n", exception);
     NSLog(@"\n\n\nCartrawlerSDK Stack Trace:\n\n\n%@", exception.callStackSymbols);
+}
+
+#pragma CTViewControllerDelegate
+
+- (void)didDismissViewController
+{
+    if (self.delegate) {
+        [self.delegate didCancelVehicleBooking];
+    }
+}
+
+- (void)didBookVehicle:(CTRentalBooking *)booking
+{
+    if (self.delegate) {
+        [self.delegate didBookVehicle:booking];
+    }
+}
+
+- (void)didBookGroundTransport:(CTRentalBooking *)booking
+{
+    if (self.delegate) {
+        
+    }
 }
 
 @end

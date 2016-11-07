@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let sdk = CartrawlerSDK(requestorID: "68622", languageCode: "EN", isDebug: false)
+    let sdk = CartrawlerSDK(requestorID: "68622", languageCode: "EN", sandboxMode: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,27 +18,12 @@ class ViewController: UIViewController {
 
         UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
         
-        CartrawlerSDK.appearance().buttonColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
-        CartrawlerSDK.appearance().enableShadows = false
-        CartrawlerSDK.appearance().buttonCornerRadius = 2
-        CartrawlerSDK.appearance().buttonTextColor = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
-        
-        CartrawlerSDK.appearance().viewBackgroundColor = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
-        CartrawlerSDK.appearance().navigationBarColor = UIColor.init(red: 27.0/255, green: 78.0/255.0, blue: 148.0/255.0, alpha: 1)
-
-        CartrawlerSDK.appearance().calendarStartCellColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
-        CartrawlerSDK.appearance().calendarMidCellColor = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
-        CartrawlerSDK.appearance().calendarEndCellColor = UIColor.init(red: 241.0/255, green: 201.0/255.0, blue: 51.0/255.0, alpha: 1)
-        
-        CartrawlerSDK.appearance().textFieldTint = UIColor.init(red: 26.0/255, green: 38.0/255.0, blue: 88.0/255.0, alpha: 1)
-        
 //        CartrawlerSDK.appearance().boldFontName = "HelveticaNeue-Medium"
 //        CartrawlerSDK.appearance().fontName = "HelveticaNeue-Light"
         
         CartrawlerSDK.appearance().presentAnimated = true
         CartrawlerSDK.appearance().modalTransitionStyle = .coverVertical
         CartrawlerSDK.appearance().modalPresentationStyle = .overFullScreen
-
 
     }
 

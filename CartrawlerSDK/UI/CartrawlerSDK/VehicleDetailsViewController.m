@@ -186,7 +186,6 @@
         
         self.priceLabel.attributedText = priceString;
     }
-
 }
 
 - (IBAction)backTapped:(id)sender {

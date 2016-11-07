@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RentalBooking : NSObject <NSCoding>
+@interface CTRentalBooking : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString *bookingId;
 @property (nonatomic, strong) NSString *pickupLocation;

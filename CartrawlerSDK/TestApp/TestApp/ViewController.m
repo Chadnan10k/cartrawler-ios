@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import <CartrawlerSDK/CartrawlerSDK.h>
 
-@interface ViewController ()
+@interface ViewController () <CartrawlerSDKDelegate>
 
 @property (nonatomic, strong) CartrawlerSDK *sdk;
 
@@ -20,29 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view, typically from a nib.
-    
-//    [CartrawlerSDK appearance].buttonColor = [UIColor someColor];
-//    [CartrawlerSDK appearance].buttonTextColor = [UIColor someColor];
-//    [CartrawlerSDK appearance].buttonCornerRadius = 2
-    [CartrawlerSDK appearance].enableShadows = YES;
-//    
-//    [CartrawlerSDK appearance].viewBackgroundColor =  = [UIColor someColor];
-//    [CartrawlerSDK appearance].navigationBarColor = [UIColor someColor];
-//    
-//    [CartrawlerSDK appearance].textFieldCornerRadius = [UIColor someColor];
-//    [CartrawlerSDK appearance].textFieldTint = [UIColor someColor];
-//    [CartrawlerSDK appearance].textFieldBackgroundColor = [UIColor someColor];
-//
-//    [CartrawlerSDK appearance].calendarStartCellColor = [UIColor someColor];
-//    [CartrawlerSDK appearance].calendarMidCellColor = [UIColor someColor];
-//    [CartrawlerSDK appearance].calendarEndCellColor= [UIColor someColor];
-//
     [CartrawlerSDK appearance].fontName = @"Roboto-Regular";
     [CartrawlerSDK appearance].boldFontName = @"Roboto-Bold";
     
-    //UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
-
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     [CartrawlerSDK appearance].presentAnimated = YES;
@@ -51,8 +31,7 @@
 
     _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"643826" languageCode:@"EN" sandboxMode:YES];
     
-    //[CTAppearance instance].buttonColor = [UIColor blackColor];
-
+    self.sdk.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,12 +40,24 @@
 }
 
 - (IBAction)openCarRental:(id)sender {
-    //[self.sdk presentCarRentalInViewController:self];
-    [self.sdk presentTabViewInViewController:self];
+    [self.sdk presentCarRentalInViewController:self];
+    //[self.sdk presentTabViewInViewController:self];
 }
 
 - (IBAction)openGroundTransport:(id)sender {
     [self.sdk presentGroundTransportInViewController:self];
+}
+
+#pragma Mark CartrawlerSDKDelegate
+
+- (void)didCancelVehicleBooking
+{
+    NSLog(@"The vehicle booking was canceled");
+}
+
+- (void)didBookVehicle:(CTRentalBooking *)booking
+{
+    NSLog(@"We booked a vehicle!");
 }
 
 @end

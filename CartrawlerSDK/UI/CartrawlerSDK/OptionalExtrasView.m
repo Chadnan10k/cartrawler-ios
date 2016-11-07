@@ -28,6 +28,7 @@
     self = [super initWithCoder:aDecoder];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(drawerControl:)];
     [self addGestureRecognizer:tap];
+    
     return self;
 }
 
@@ -48,11 +49,11 @@
         heightConstraint.constant = 50;
         self.alpha = 1;
     }
-    
 }
 
 - (void)hideExpandbutton:(BOOL)hide
 {
+    
     if (hide) {
         self.expandButton.alpha = 0;
     } else {
@@ -62,10 +63,14 @@
 
 - (void)open:(BOOL)hideExpandButton
 {
+
+    if (self.textView) {
+        [self.textView removeFromSuperview];
+    }
     
-//    if (self.tableView && self.textView) {
-//        [self close];
-//    }
+    if (self.tableView) {
+        [self.tableView removeFromSuperview];
+    }
     
     if (hideExpandButton) {
         self.expandButton.alpha = 0;
@@ -74,7 +79,6 @@
     }
     
     isOpen = YES;
-    [self.expandButton setTitle:@"-" forState:UIControlStateNormal];
     _textView = [[CTTextView alloc] initWithFrame:CGRectZero];
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero];
     self.tableView.allowsSelection = NO;
@@ -104,41 +108,13 @@
     CGFloat textViewHeight = [self textViewHeightForAttributedText:self.textView.attributedText
                                                           andWidth:self.initialFrame.size.width - 10];
     
-    NSLayoutConstraint *textviewTopConstraint = [NSLayoutConstraint constraintWithItem:self.textView
-                                                                     attribute:NSLayoutAttributeTop
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:self
-                                                                     attribute:NSLayoutAttributeTop
-                                                                    multiplier:1.0
-                                                                      constant:40];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[textView]-|" options:0
+                                                                 metrics:nil
+                                                                   views:@{ @"textView" : self.textView}]];
     
-    NSLayoutConstraint *textviewHeightConstraint = [NSLayoutConstraint constraintWithItem:self.textView
-                                                                        attribute:NSLayoutAttributeHeight
-                                                                        relatedBy:NSLayoutRelationEqual
-                                                                           toItem:nil
-                                                                        attribute:NSLayoutAttributeNotAnAttribute
-                                                                       multiplier:1.0
-                                                                         constant:textViewHeight];
-    
-    NSLayoutConstraint *textviewLeftConstraint = [NSLayoutConstraint constraintWithItem:self.textView
-                                                                      attribute:NSLayoutAttributeLeft
-                                                                      relatedBy:NSLayoutRelationEqual
-                                                                         toItem:self
-                                                                      attribute:NSLayoutAttributeLeft
-                                                                     multiplier:1.0
-                                                                       constant:5];
-    
-    NSLayoutConstraint *textviewRightConstraint = [NSLayoutConstraint constraintWithItem:self.textView
-                                                                       attribute:NSLayoutAttributeRight
-                                                                       relatedBy:NSLayoutRelationEqual
-                                                                          toItem:self
-                                                                       attribute:NSLayoutAttributeRight
-                                                                      multiplier:1.0
-                                                                        constant:-5];
-    [self addConstraints:@[textviewTopConstraint,
-                            textviewHeightConstraint,
-                            textviewLeftConstraint,
-                            textviewRightConstraint]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[expand]-8-[textView(height)]" options:0
+                                                                 metrics:@{ @"height" : [NSNumber numberWithFloat:textViewHeight] }
+                                                                   views:@{ @"textView" : self.textView, @"expand" : self.expandButton }]];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -147,41 +123,17 @@
 
     CGFloat tableViewHeight = self.tableView.contentSize.height;
     
-    NSLayoutConstraint *tableviewTopConstraint = [NSLayoutConstraint constraintWithItem:self.tableView
-                                                                             attribute:NSLayoutAttributeTop
-                                                                             relatedBy:NSLayoutRelationEqual
-                                                                                toItem:self.textView
-                                                                             attribute:NSLayoutAttributeBottom
-                                                                            multiplier:1.0
-                                                                              constant:8];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[table]-8-|" options:0
+                                                                 metrics:nil
+                                                                   views:@{ @"table" : self.tableView }]];
     
-    NSLayoutConstraint *tableviewHeightConstraint = [NSLayoutConstraint constraintWithItem:self.tableView
-                                                                                attribute:NSLayoutAttributeHeight
-                                                                                relatedBy:NSLayoutRelationEqual
-                                                                                   toItem:nil
-                                                                                attribute:NSLayoutAttributeNotAnAttribute
-                                                                               multiplier:1.0
-                                                                                 constant:tableViewHeight];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[text]-8-[table]" options:0
+                                                                 metrics:@{ @"height" : [NSNumber numberWithFloat:tableViewHeight] }
+                                                                   views:@{ @"table" : self.tableView, @"text" : self.textView }]];
     
-    NSLayoutConstraint *tableviewLeftConstraint = [NSLayoutConstraint constraintWithItem:self.tableView
-                                                                              attribute:NSLayoutAttributeLeft
-                                                                              relatedBy:NSLayoutRelationEqual
-                                                                                 toItem:self
-                                                                              attribute:NSLayoutAttributeLeft
-                                                                             multiplier:1.0
-                                                                               constant:5];
-    
-    NSLayoutConstraint *tableviewRightConstraint = [NSLayoutConstraint constraintWithItem:self.tableView
-                                                                               attribute:NSLayoutAttributeRight
-                                                                               relatedBy:NSLayoutRelationEqual
-                                                                                  toItem:self
-                                                                               attribute:NSLayoutAttributeRight
-                                                                              multiplier:1.0
-                                                                                constant:-5];
-    [self addConstraints:@[tableviewTopConstraint,
-                           tableviewHeightConstraint,
-                           tableviewLeftConstraint,
-                           tableviewRightConstraint]];
+    [self.tableView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[table(height)]" options:0
+                                                                 metrics:@{ @"height" : [NSNumber numberWithFloat:tableViewHeight] }
+                                                                   views:@{ @"table" : self.tableView}]];
     
     
     //create tableview
@@ -196,18 +148,42 @@
     
     [self.tableView layoutIfNeeded];
     
-    tableViewHeight = self.tableView.contentSize.height;
-
+    NSLayoutConstraint *tableHeight;
+    for (NSLayoutConstraint *constraint in self.tableView.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeHeight) {
+            tableHeight = constraint;
+            break;
+        }
+    }
     
-    heightConstraint.constant = textViewHeight + tableViewHeight + 56;
+    tableViewHeight = self.tableView.contentSize.height;    
+    heightConstraint.constant = textViewHeight + tableHeight.constant + 72;
 }
 
 - (IBAction)drawerControl:(id)sender
 {
-    if (isOpen) {
-        [self close];
-    } else {
-        [self open:!self.expandButton.alpha];
+    if (!self.disableAccordion) {
+        if (isOpen) {
+            [UIView animateWithDuration:0.5
+                                  delay:0
+                 usingSpringWithDamping:0.2
+                  initialSpringVelocity:0.2
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                                 self.expandButton.transform = CGAffineTransformMakeRotation(0);
+                             } completion:nil];
+            [self close];
+        } else {
+            [UIView animateWithDuration:0.5
+                                  delay:0
+                 usingSpringWithDamping:0.2
+                  initialSpringVelocity:0.2
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                                 self.expandButton.transform = CGAffineTransformMakeRotation(M_PI_2);
+                             } completion:nil];
+            [self open:!self.expandButton.alpha];
+        }
     }
 }
 
@@ -225,7 +201,6 @@
         return;
     }
     isOpen = NO;
-    [self.expandButton setTitle:@"+" forState:UIControlStateNormal];
     [self removeConstraints:self.textView.constraints];
     [self removeConstraints:self.tableView.constraints];
     [self.tableView removeFromSuperview];
@@ -238,8 +213,8 @@
             break;
         }
     }
-    heightConstraint.constant = 50;
 
+    heightConstraint.constant = 50;
 }
 
 #pragma mark Table View
@@ -260,11 +235,5 @@
     [cell setData:self.extras[indexPath.row]];
     return cell;
 }
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 65;
-//}
-
 
 @end

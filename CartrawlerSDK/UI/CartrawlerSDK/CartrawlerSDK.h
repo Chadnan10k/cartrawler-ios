@@ -11,6 +11,7 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "CTAppearance.h"
 #import "CTViewController.h"
+#import "CTRentalBooking.h"
 
 FOUNDATION_EXPORT double CartrawlerSDKVersionNumber;
 
@@ -18,11 +19,21 @@ FOUNDATION_EXPORT const unsigned char CartrawlerSDKVersionString[];
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol CartrawlerSDKDelegate <NSObject>
+
+@optional
+- (void)didBookVehicle:(CTRentalBooking *)booking;
+- (void)didCancelVehicleBooking;
+
+@end
+
 @interface CartrawlerSDK : NSObject
 
 //---CarRentalWithFlightDetails---
 typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *errorMessage);
 
+//--Delegate--
+@property (nonatomic, weak) id<CartrawlerSDKDelegate> delegate;
 
 //---Car Rental View Controllers ---
 @property (nonatomic, strong, nonnull, readonly) CTViewController *searchDetailsViewController;
@@ -51,7 +62,7 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
  *
  *  @param requestorID  Your requester ID
  *  @param languageCode The initial language code eg. EN
- *  @param isDebug      Flag to indicate if you want to point to test or production endpoints
+ *  @param sandboxMode      Flag to indicate if you want to point to test or production endpoints
  *
  */
 - (instancetype)initWithRequestorID:(NSString *)requestorID

@@ -14,8 +14,7 @@
 
 @property (strong, nonatomic) NSArray <CTExtraEquipment *> *extras;
 @property (nonatomic) CGRect initialFrame;
-
-
+@property (nonatomic) BOOL disableAccordion;
 
 - (void)open:(BOOL)hideExpandButton;
 - (void)close;

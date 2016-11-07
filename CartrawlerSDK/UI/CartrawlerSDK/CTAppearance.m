@@ -22,10 +22,13 @@
         sharedInstance.buttonTextColor = [UIColor colorWithRed:6.0/255.0 green:43.0/255.0 blue:113.0/255.0 alpha:1.0];
         sharedInstance.buttonCornerRadius = 5.0;
         sharedInstance.enableShadows = YES;
-        
-        sharedInstance.viewBackgroundColor = [UIColor colorWithRed:27.0/255.0 green:78.0/255.0 blue:148.0/255.0 alpha:1.0];
+
+        sharedInstance.viewBackgroundColor = [UIColor colorWithRed:7.0/255.0 green:53.0/255.0 blue:144.0/255.0 alpha:1.0];
         sharedInstance.navigationBarColor = [UIColor colorWithRed:7.0/255.0 green:53.0/255.0 blue:144.0/255.0 alpha:1.0];
         sharedInstance.tabBarTint = [UIColor colorWithRed:27.0/255.0 green:78.0/255.0 blue:148.0/255.0 alpha:1.0];
+        sharedInstance.navigationBarLogoImage = [UIImage imageNamed:@"sample_header_logo"
+                                                           inBundle:[NSBundle bundleForClass:[self class]]
+                                                           compatibleWithTraitCollection:nil];
         
         sharedInstance.textFieldCornerRadius = 3.0;
         sharedInstance.textFieldTint = [UIColor colorWithRed:26.0/255.0 green:38.0/255.0 blue:88.0/255.0 alpha:1.0];

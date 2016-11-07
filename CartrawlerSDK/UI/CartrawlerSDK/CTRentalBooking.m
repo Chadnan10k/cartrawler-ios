@@ -6,9 +6,9 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "RentalBooking.h"
+#import "CTRentalBooking.h"
 
-@implementation RentalBooking
+@implementation CTRentalBooking
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {

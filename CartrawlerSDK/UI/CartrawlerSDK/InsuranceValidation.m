@@ -52,11 +52,11 @@
         return;
     }
 
-    if (search.selectedVehicle.vehicle.extraEquipment == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH AS extras IS NOT SET \n\n");
-        completion(NO, @"");
-        return;
-    }
+//    if (search.selectedVehicle.vehicle.extraEquipment == nil) {
+//        NSLog(@"\n\n ERROR: CANNOT PUSH AS extras IS NOT SET \n\n");
+//        completion(NO, @"");
+//        return;
+//    }
     
     [cartrawlerAPI requestInsuranceQuoteForVehicle:[CTSDKSettings instance].homeCountryCode
                                           currency:[CTSDKSettings instance].currencyCode
@@ -67,7 +67,6 @@
                                         completion:
      ^(CTInsurance *response, CTErrorResponse *error) {
          if (response) {
-             
              dispatch_async(dispatch_get_main_queue(), ^{
                  search.insurance = response;
                  completion(YES, nil);

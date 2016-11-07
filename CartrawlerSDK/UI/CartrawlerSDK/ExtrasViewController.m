@@ -39,10 +39,6 @@
 
 @implementation ExtrasViewController
 
-
-
-
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -74,8 +70,10 @@
         self.optionalExtrasView.initialFrame = self.view.frame;
         
         if (self.search.insurance) {
+            self.optionalExtrasView.disableAccordion = NO;
             [self.optionalExtrasView hideView:NO];
         } else {
+            self.optionalExtrasView.disableAccordion = YES;
             [self.optionalExtrasView open:YES];
         }
     } else {

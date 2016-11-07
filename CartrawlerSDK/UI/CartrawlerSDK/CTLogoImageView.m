@@ -7,6 +7,7 @@
 //
 
 #import "CTLogoImageView.h"
+#import "CTAppearance.h"
 
 @implementation CTLogoImageView
 
@@ -17,5 +18,13 @@
     // Drawing code
 }
 */
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    if ([CTAppearance instance].navigationBarLogoImage) {
+        self.image = [CTAppearance instance].navigationBarLogoImage;
+    }
+}
 
 @end

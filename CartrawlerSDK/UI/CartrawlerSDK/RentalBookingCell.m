@@ -37,7 +37,7 @@
     // Configure the view for the selected state
 }
 
-- (void)setData:(RentalBooking *)booking
+- (void)setData:(CTRentalBooking *)booking
 {
     if (booking.vehicleImage) {
         [[CTImageCache sharedInstance] cachedImage:[[NSURL alloc] initWithString:booking.vehicleImage] completion:^(UIImage *image) {

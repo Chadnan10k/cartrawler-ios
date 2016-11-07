@@ -100,8 +100,8 @@
 		455B58961DCC914300CA4790 /* RentalBookingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E1F1DAFBE9D001A4062 /* RentalBookingsViewController.m */; };
 		455B58971DCC914300CA4790 /* RentalBookingCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E261DAFC1E5001A4062 /* RentalBookingCell.h */; };
 		455B58981DCC914300CA4790 /* RentalBookingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E271DAFC1E5001A4062 /* RentalBookingCell.m */; };
-		455B58991DCC914300CA4790 /* RentalBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E351DAFC564001A4062 /* RentalBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		455B589A1DCC914300CA4790 /* RentalBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E361DAFC564001A4062 /* RentalBooking.m */; };
+		455B58991DCC914300CA4790 /* CTRentalBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E351DAFC564001A4062 /* CTRentalBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B589A1DCC914300CA4790 /* CTRentalBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E361DAFC564001A4062 /* CTRentalBooking.m */; };
 		455B589B1DCC914300CA4790 /* GTBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E311DAFC548001A4062 /* GTBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		455B589C1DCC914300CA4790 /* GTBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E321DAFC548001A4062 /* GTBooking.m */; };
 		455B589D1DCC914300CA4790 /* GTBookingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E221DAFBEAB001A4062 /* GTBookingsViewController.h */; };
@@ -367,8 +367,8 @@
 		451D7E2B1DAFC1F3001A4062 /* GTBookingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTBookingTableViewCell.m; sourceTree = "<group>"; };
 		451D7E311DAFC548001A4062 /* GTBooking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTBooking.h; sourceTree = "<group>"; };
 		451D7E321DAFC548001A4062 /* GTBooking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTBooking.m; sourceTree = "<group>"; };
-		451D7E351DAFC564001A4062 /* RentalBooking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentalBooking.h; sourceTree = "<group>"; };
-		451D7E361DAFC564001A4062 /* RentalBooking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentalBooking.m; sourceTree = "<group>"; };
+		451D7E351DAFC564001A4062 /* CTRentalBooking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRentalBooking.h; sourceTree = "<group>"; };
+		451D7E361DAFC564001A4062 /* CTRentalBooking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRentalBooking.m; sourceTree = "<group>"; };
 		451D7E7F1DBE1197001A4062 /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
 		451D7E801DBE1197001A4062 /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
 		451FE5A91D6EF248004D85D1 /* GenericValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericValidation.h; sourceTree = "<group>"; };
@@ -781,8 +781,8 @@
 				451D7E1F1DAFBE9D001A4062 /* RentalBookingsViewController.m */,
 				451D7E261DAFC1E5001A4062 /* RentalBookingCell.h */,
 				451D7E271DAFC1E5001A4062 /* RentalBookingCell.m */,
-				451D7E351DAFC564001A4062 /* RentalBooking.h */,
-				451D7E361DAFC564001A4062 /* RentalBooking.m */,
+				451D7E351DAFC564001A4062 /* CTRentalBooking.h */,
+				451D7E361DAFC564001A4062 /* CTRentalBooking.m */,
 			);
 			name = Rental;
 			sourceTree = "<group>";
@@ -1440,7 +1440,7 @@
 				455B59591DCC96D500CA4790 /* CartrawlerSDK.h in Headers */,
 				455B58871DCC914300CA4790 /* CarRentalSearch.h in Headers */,
 				455B58B71DCC914400CA4790 /* CTViewController.h in Headers */,
-				455B58991DCC914300CA4790 /* RentalBooking.h in Headers */,
+				455B58991DCC914300CA4790 /* CTRentalBooking.h in Headers */,
 				455B58371DCC914300CA4790 /* CTPaymentView.h in Headers */,
 				455B58C31DCC914400CA4790 /* CTCalendarView.h in Headers */,
 				455B58741DCC914300CA4790 /* CTLabel.h in Headers */,
@@ -1708,7 +1708,7 @@
 				455B58941DCC914300CA4790 /* CartrawlerSDK+UIColor.m in Sources */,
 				455B58961DCC914300CA4790 /* RentalBookingsViewController.m in Sources */,
 				455B58981DCC914300CA4790 /* RentalBookingCell.m in Sources */,
-				455B589A1DCC914300CA4790 /* RentalBooking.m in Sources */,
+				455B589A1DCC914300CA4790 /* CTRentalBooking.m in Sources */,
 				455B589C1DCC914300CA4790 /* GTBooking.m in Sources */,
 				455B589E1DCC914300CA4790 /* GTBookingsViewController.m in Sources */,
 				455B58A01DCC914300CA4790 /* GTBookingTableViewCell.m in Sources */,

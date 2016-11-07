@@ -13,9 +13,9 @@
 NSString * const RentalBookingKey = @"cartrawler_rental_bookings";
 NSString * const GTBookingKey = @"cartrawler_gt_bookings";
 
-+ (void)storeRentalBooking:(RentalBooking *)booking
++ (void)storeRentalBooking:(CTRentalBooking *)booking
 {
-    NSMutableArray<RentalBooking *> *arr = [[NSMutableArray alloc] initWithArray:[self retrieveRentalBookings]];
+    NSMutableArray<CTRentalBooking *> *arr = [[NSMutableArray alloc] initWithArray:[self retrieveRentalBookings]];
     [arr addObject:booking];
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:arr];
     [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:RentalBookingKey];
@@ -29,7 +29,7 @@ NSString * const GTBookingKey = @"cartrawler_gt_bookings";
     [[NSUserDefaults standardUserDefaults] setObject:arrToStore forKey:GTBookingKey];
 }
 
-+ (NSArray<RentalBooking *> *)retrieveRentalBookings
++ (NSArray<CTRentalBooking *> *)retrieveRentalBookings
 {
     NSArray *data = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:RentalBookingKey]];
     return data ?: @[];

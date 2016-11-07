@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
 @property (strong, nonatomic) NSMutableArray *items;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryHeight;
 
 @property (weak, nonatomic) IBOutlet BookingSummaryButton *bookingSummaryContainer;
 @property (weak, nonatomic) IBOutlet CTLabel *totalLabel;
