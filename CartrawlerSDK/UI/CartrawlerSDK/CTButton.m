@@ -11,9 +11,6 @@
 
 @implementation CTButton
 
-
-
-
 - (id)init
 {
     self = [super init];

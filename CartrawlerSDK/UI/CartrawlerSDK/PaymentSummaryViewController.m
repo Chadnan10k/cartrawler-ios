@@ -76,8 +76,6 @@
 
     self.tableView.alpha = 1;
     self.tableViewHeight.constant = self.tableView.contentSize.height;
-
-
 }
 
 - (IBAction)pushView:(id)sender {

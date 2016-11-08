@@ -11,8 +11,6 @@
 
 @interface CTFilterContainer : UIView
 
-
-
 - (void)setTableView:(CTFilterTableView *)tableView;
 - (void)close;
 

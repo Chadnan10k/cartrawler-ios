@@ -35,7 +35,7 @@
 {
     self.layer.borderColor = self.borderColor.CGColor;
     self.layer.borderWidth = self.borderWidth;
-    self.layer.cornerRadius = self.cornerRadius;
+    self.layer.cornerRadius = [CTAppearance instance].containerViewCornerRadius;
     
     if (self.enableShadow || [CTAppearance instance].enableShadows) {
         self.layer.masksToBounds = NO;

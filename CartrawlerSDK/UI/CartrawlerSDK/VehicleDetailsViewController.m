@@ -121,9 +121,26 @@
         self.vendorImageView.image = image;
     }];
     
-    self.vehicleNameLabel.text = self.search.selectedVehicle.vehicle.makeModelName;
+    
+    NSMutableAttributedString *vehicleName = [[NSMutableAttributedString alloc] init];
+    
+    NSAttributedString *name = [[NSAttributedString alloc]
+                                initWithString:self.search.selectedVehicle.vehicle.makeModelName
+                                                               attributes:@{NSFontAttributeName:
+                                                                                [UIFont fontWithName:[CTAppearance instance].boldFontName size:15]}];
+    
+    NSAttributedString *orSimilar = [[NSAttributedString alloc]
+                                     initWithString:[NSString stringWithFormat:@" %@", self.search.selectedVehicle.vehicle.orSimilar]
+                                                                    attributes:@{NSFontAttributeName:
+                                                                                     [UIFont fontWithName:[CTAppearance instance].fontName size:15]}];
+    
+    [vehicleName appendAttributedString:name];
+    [vehicleName appendAttributedString:orSimilar];
+    
+    self.vehicleNameLabel.attributedText = vehicleName;
+    
+    
 
-    //self.featuresCollectionView.de
     NSMutableArray *featureData = [[NSMutableArray alloc] init];
     [featureData addObject:@{ @"text" : [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.passengerQty.stringValue, NSLocalizedString(@"passengers", @"passengers")], @"image" : @"people" }];
     [featureData addObject:@{ @"text" : [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.doorCount.stringValue, NSLocalizedString(@"doors", @"doors")], @"image" : @"doors" }];

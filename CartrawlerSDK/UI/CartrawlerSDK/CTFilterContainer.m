@@ -8,6 +8,7 @@
 
 #import "CTFilterContainer.h"
 #import "CTLabel.h"
+#import "CTAppearance.h"
 
 @interface CTFilterContainer()
 
@@ -19,19 +20,19 @@
 
 @implementation CTFilterContainer
 
-
-
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    
+    self.layer.cornerRadius = [CTAppearance instance].containerViewCornerRadius;
+
     return self;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    
+    self.layer.cornerRadius = [CTAppearance instance].containerViewCornerRadius;
+
     return self;
 }
 

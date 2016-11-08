@@ -40,8 +40,19 @@
 }
 
 - (IBAction)openCarRental:(id)sender {
-    [self.sdk presentCarRentalInViewController:self];
-    //[self.sdk presentTabViewInViewController:self];
+   // [self.sdk presentCarRentalInViewController:self];
+    [self.sdk presentCarRentalInViewController:self
+                                     firstName:@"Lee"
+                                       surname:@"Maguire"
+                                     driverAge:@30
+                          additionalPassengers:@0
+                                         email:@"lmaguire@cartrawler.com"
+                                         phone:@"0865555555"
+                                      flightNo:@"FR1234"
+                                  addressLine1:@"123 Cartrawler St"
+                                  addressLine2:@""
+                                          city:@"Dublin"
+                                      postcode:@"Dublin 1"];
 }
 
 - (IBAction)openGroundTransport:(id)sender {
@@ -55,7 +66,7 @@
     NSLog(@"The vehicle booking was canceled");
 }
 
-- (void)didBookVehicle:(CTRentalBooking *)booking
+- (void)didBookVehicle:(CTBooking *)booking
 {
     NSLog(@"We booked a vehicle!");
 }

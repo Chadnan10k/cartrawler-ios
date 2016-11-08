@@ -17,8 +17,8 @@
 
 @required
 - (void)didDismissViewController;
-- (void)didBookVehicle:(CTRentalBooking *)booking;
-- (void)didBookGroundTransport:(CTRentalBooking *)booking;
+- (void)didBookVehicle:(CTBooking *)booking;
+- (void)didBookGroundTransport:(GTBooking *)booking;
 
 @end
 

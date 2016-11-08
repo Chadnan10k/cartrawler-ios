@@ -12,6 +12,7 @@
 #import "CTLabel.h"
 #import "CTFilterFactory.h"
 #import "CTFilterContainer.h"
+#import "CTAppearance.h"
 
 @interface CTFilterViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -30,9 +31,6 @@
 @end
 
 @implementation CTFilterViewController
-
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -125,7 +123,7 @@
                                                                                  toItem:self.view
                                                                               attribute:NSLayoutAttributeLeft
                                                                              multiplier:1.0
-                                                                               constant:0];
+                                                                               constant:[CTAppearance instance].containerViewMarginPadding];
             
             NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                                attribute:NSLayoutAttributeRight
@@ -133,7 +131,7 @@
                                                                                   toItem:self.view
                                                                                attribute:NSLayoutAttributeRight
                                                                               multiplier:1.0
-                                                                                constant:0];
+                                                                                constant:([CTAppearance instance].containerViewMarginPadding * -1)];
             [self.view addConstraints:@[topConstraint,
                                         leftConstraint,
                                         rightConstraint,
@@ -167,7 +165,7 @@
                                                                                  toItem:self.view
                                                                               attribute:NSLayoutAttributeLeft
                                                                              multiplier:1.0
-                                                                               constant:0];
+                                                                               constant:[CTAppearance instance].containerViewMarginPadding];
             
             NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                                attribute:NSLayoutAttributeRight
@@ -175,7 +173,7 @@
                                                                                   toItem:self.view
                                                                                attribute:NSLayoutAttributeRight
                                                                               multiplier:1.0
-                                                                                constant:0];
+                                                                                constant:([CTAppearance instance].containerViewMarginPadding * -1)];
             [self.view addConstraints:@[topConstraint,
                                         leftConstraint,
                                         rightConstraint,
@@ -209,7 +207,7 @@
                                                                                  toItem:self.view
                                                                               attribute:NSLayoutAttributeLeft
                                                                              multiplier:1.0
-                                                                               constant:0];
+                                                                               constant:[CTAppearance instance].containerViewMarginPadding];
             
             NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                                attribute:NSLayoutAttributeRight
@@ -217,7 +215,7 @@
                                                                                   toItem:self.view
                                                                                attribute:NSLayoutAttributeRight
                                                                               multiplier:1.0
-                                                                                constant:0];
+                                                                                constant:([CTAppearance instance].containerViewMarginPadding * -1)];
             
             NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.viewArray[i]
                                                                                 attribute:NSLayoutAttributeBottom

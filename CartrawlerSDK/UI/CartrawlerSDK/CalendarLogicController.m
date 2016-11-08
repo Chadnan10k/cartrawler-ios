@@ -244,7 +244,6 @@
             
             BOOL needsScroll = NO;
             double constraint = [UIScreen mainScreen].bounds.size.height-[self.tailCell.superview convertPoint:self.tailCell.frame.origin toView:nil].y;
-            NSLog(@"%f",  [UIScreen mainScreen].bounds.size.height-[self.tailCell.superview convertPoint:self.tailCell.frame.origin toView:nil].y);
             
             if (self.tailCell) {
                 if (constraint < 90) {

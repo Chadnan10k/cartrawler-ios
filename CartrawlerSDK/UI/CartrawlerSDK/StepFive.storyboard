@@ -69,6 +69,7 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="overrideCornerRadius">
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="pushView:" destination="2yw-qu-8gF" eventType="touchUpInside" id="5kx-nK-Dg9"/>

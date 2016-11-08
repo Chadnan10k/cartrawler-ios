@@ -349,10 +349,10 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="Bwg-oq-oKf"/>
                                                 <exclude reference="XgW-hE-lVX"/>
                                                 <exclude reference="kEF-bn-ynO"/>
                                                 <exclude reference="mCU-7u-4Bi"/>
-                                                <exclude reference="Bwg-oq-oKf"/>
                                             </mask>
                                         </variation>
                                     </view>

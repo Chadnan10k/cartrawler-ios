@@ -17,8 +17,6 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable BOOL disableShadow;
 @property (nonatomic) IBInspectable BOOL useBoldFont;
 
-
-
 - (void)shake;
 
 @end

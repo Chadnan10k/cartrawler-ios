@@ -35,7 +35,6 @@
     __weak typeof (self) weakSelf = self;
     
     if (!self.search) {
-    
         [self.validationController validateGroundTransport:self.groundSearch
                                              cartrawlerAPI:self.cartrawlerAPI
                                                 completion:^(BOOL success, NSString *errorMessage) {
@@ -45,7 +44,13 @@
                                                                 weakSelf.dataValidationCompletion(YES, nil);
                                                             }
                                                             [weakSelf.destinationViewController refresh];
-                                                            [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
+                                                            @try {
+                                                                [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
+                                                            } @catch (NSException * e) {
+                                                                NSLog(@"Exception: %@", e);
+                                                            } @finally {
+
+                                                            }
                                                         } else {
                                                             if (weakSelf.dataValidationCompletion) {
                                                                 weakSelf.dataValidationCompletion(NO, errorMessage);
@@ -53,9 +58,7 @@
                                                         }
                                                     });
                                                 }];
-        
     } else {
- 
         [self.validationController validateCarRental:self.search
                                        cartrawlerAPI:self.cartrawlerAPI
                                           completion:^(BOOL success, NSString *errorMessage) {
@@ -65,14 +68,27 @@
                                                           weakSelf.dataValidationCompletion(YES, nil);
                                                       }
                                                       [weakSelf.destinationViewController refresh];
-                                                      [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
+                                                      
+                                                      @try {
+                                                          [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
+                                                      } @catch (NSException * e) {
+                                                          NSLog(@"Exception: %@", e);
+                                                      } @finally {
+
+                                                      }
+                                                      
                                                   } else {
                                                       if (weakSelf.dataValidationCompletion) {
                                                           if (weakSelf.fallbackViewController) {
                                                               weakSelf.dataValidationCompletion(YES, nil);
                                                               [weakSelf.destinationViewController refresh];
-                                                              [weakSelf.navigationController pushViewController:weakSelf.fallbackViewController animated:YES];
-                                                          } else {
+                                                              @try {
+                                                                  [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
+                                                              } @catch (NSException * e) {
+                                                                  NSLog(@"Exception: %@", e);
+                                                              } @finally {
+
+                                                              }                                                          } else {
                                                               weakSelf.dataValidationCompletion(NO, errorMessage);
                                                           }
                                                       }

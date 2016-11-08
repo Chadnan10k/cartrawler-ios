@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet CTLabel *supplierLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *supplierImage;
 @property (weak, nonatomic) IBOutlet CTLabel *bookingReferenceLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *emailLabel;
 
 @end
 
@@ -45,8 +46,8 @@
     return NO;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     // Do any additional setup after loading the view.
     
     [[CTImageCache sharedInstance] cachedImage: [CarRentalSearch instance].selectedVehicle.vehicle.pictureURL completion:^(UIImage *image) {
@@ -91,6 +92,8 @@
     self.dropoffLabel.attributedText = dropoff;
     
     self.bookingReferenceLabel.text = [NSString stringWithFormat:@"Booking reference: %@", self.search.booking.confID];
+    self.emailLabel.text = [NSString stringWithFormat:@"We have sent an email to %@ with your booking details.", self.search.email];
+
 }
 
 - (void)didReceiveMemoryWarning {

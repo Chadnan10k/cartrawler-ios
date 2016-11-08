@@ -7,16 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		450DF20F1DD1F2D600A365A0 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450DF20D1DD1F2D600A365A0 /* CartrawlerAPI.framework */; };
+		450DF2101DD1F2D600A365A0 /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450DF20E1DD1F2D600A365A0 /* CartrawlerSDK.framework */; };
 		45295F5E1D78412500A09B8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45295F5D1D78412500A09B8A /* main.m */; };
 		45295F611D78412500A09B8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45295F601D78412500A09B8A /* AppDelegate.m */; };
 		45295F641D78412500A09B8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45295F631D78412500A09B8A /* ViewController.m */; };
 		45295F671D78412600A09B8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45295F651D78412600A09B8A /* Main.storyboard */; };
 		45295F691D78412600A09B8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45295F681D78412600A09B8A /* Assets.xcassets */; };
 		45295F6C1D78412600A09B8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45295F6A1D78412600A09B8A /* LaunchScreen.storyboard */; };
-		4559D4861DD0939500B5DC51 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4559D4851DD0939500B5DC51 /* CartrawlerAPI.framework */; };
-		4559D4871DD0939500B5DC51 /* CartrawlerAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4559D4851DD0939500B5DC51 /* CartrawlerAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4559D4891DD0939500B5DC51 /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4559D4881DD0939500B5DC51 /* CartrawlerSDK.framework */; };
-		4559D48A1DD0939500B5DC51 /* CartrawlerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4559D4881DD0939500B5DC51 /* CartrawlerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		455B59771DCCB22A00CA4790 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 455B59751DCCB22500CA4790 /* Roboto-Bold.ttf */; };
 		455B59781DCCB22E00CA4790 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 455B59761DCCB22500CA4790 /* Roboto-Regular.ttf */; };
 		45A7B7561D9BE003006611EB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */; };
@@ -30,8 +28,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4559D48A1DD0939500B5DC51 /* CartrawlerSDK.framework in Embed Frameworks */,
-				4559D4871DD0939500B5DC51 /* CartrawlerAPI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,6 +35,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		450DF20D1DD1F2D600A365A0 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CartrawlerAPI.framework; sourceTree = "<group>"; };
+		450DF20E1DD1F2D600A365A0 /* CartrawlerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CartrawlerSDK.framework; sourceTree = "<group>"; };
 		45295F591D78412500A09B8A /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45295F5D1D78412500A09B8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		45295F5F1D78412500A09B8A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -49,8 +47,6 @@
 		45295F681D78412600A09B8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45295F6B1D78412600A09B8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45295F6D1D78412600A09B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4559D4851DD0939500B5DC51 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4559D4881DD0939500B5DC51 /* CartrawlerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		455B59751DCCB22500CA4790 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		455B59761DCCB22500CA4790 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -62,8 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4559D4891DD0939500B5DC51 /* CartrawlerSDK.framework in Frameworks */,
-				4559D4861DD0939500B5DC51 /* CartrawlerAPI.framework in Frameworks */,
+				450DF2101DD1F2D600A365A0 /* CartrawlerSDK.framework in Frameworks */,
+				450DF20F1DD1F2D600A365A0 /* CartrawlerAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,8 +69,8 @@
 		45295F501D78412500A09B8A = {
 			isa = PBXGroup;
 			children = (
-				4559D4881DD0939500B5DC51 /* CartrawlerSDK.framework */,
-				4559D4851DD0939500B5DC51 /* CartrawlerAPI.framework */,
+				450DF20D1DD1F2D600A365A0 /* CartrawlerAPI.framework */,
+				450DF20E1DD1F2D600A365A0 /* CartrawlerSDK.framework */,
 				45295F5B1D78412500A09B8A /* TestApp */,
 				45295F5A1D78412500A09B8A /* Products */,
 			);
@@ -336,6 +332,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TestApp",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = TestApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -353,6 +350,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TestApp",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = TestApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

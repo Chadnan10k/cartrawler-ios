@@ -29,6 +29,8 @@
         sharedInstance.navigationBarLogoImage = [UIImage imageNamed:@"sample_header_logo"
                                                            inBundle:[NSBundle bundleForClass:[self class]]
                                                            compatibleWithTraitCollection:nil];
+        sharedInstance.containerViewCornerRadius = 5.0;
+        sharedInstance.containerViewMarginPadding = 16;
         
         sharedInstance.textFieldCornerRadius = 3.0;
         sharedInstance.textFieldTint = [UIColor colorWithRed:26.0/255.0 green:38.0/255.0 blue:88.0/255.0 alpha:1.0];

@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		450DF2131DD2131C00A365A0 /* CTInterstitialCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 450DF2111DD2131C00A365A0 /* CTInterstitialCollectionViewCell.h */; };
+		450DF2141DD2131C00A365A0 /* CTInterstitialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 450DF2121DD2131C00A365A0 /* CTInterstitialCollectionViewCell.m */; };
 		451C83071DCCED1000A1E323 /* CTLogoImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C83051DCCED1000A1E323 /* CTLogoImageView.h */; };
 		451C83081DCCED1000A1E323 /* CTLogoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C83061DCCED1000A1E323 /* CTLogoImageView.m */; };
 		455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736E1D806064000CB1E5 /* GTPaymentRequest.h */; };
@@ -297,6 +299,8 @@
 		4509B4721D37E72700259255 /* GroundServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundServicesViewController.m; sourceTree = "<group>"; };
 		4509B4791D37ED8100259255 /* GTServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTServiceTableViewCell.h; sourceTree = "<group>"; };
 		4509B47A1D37ED8100259255 /* GTServiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTServiceTableViewCell.m; sourceTree = "<group>"; };
+		450DF2111DD2131C00A365A0 /* CTInterstitialCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInterstitialCollectionViewCell.h; sourceTree = "<group>"; };
+		450DF2121DD2131C00A365A0 /* CTInterstitialCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInterstitialCollectionViewCell.m; sourceTree = "<group>"; };
 		450DF3971D8191EA00EF51DE /* GTShuttleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTShuttleTableViewCell.h; sourceTree = "<group>"; };
 		450DF3981D8191EA00EF51DE /* GTShuttleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTShuttleTableViewCell.m; sourceTree = "<group>"; };
 		450DF39C1D81A55900EF51DE /* GTPassengerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTPassengerViewController.h; sourceTree = "<group>"; };
@@ -940,6 +944,8 @@
 			children = (
 				455F27551D9D4E2B00B6BB5B /* CTInterstitialViewController.h */,
 				455F27561D9D4E2B00B6BB5B /* CTInterstitialViewController.m */,
+				450DF2111DD2131C00A365A0 /* CTInterstitialCollectionViewCell.h */,
+				450DF2121DD2131C00A365A0 /* CTInterstitialCollectionViewCell.m */,
 			);
 			name = Interstitial;
 			sourceTree = "<group>";
@@ -1181,12 +1187,12 @@
 		45E942991D1300F900ACF604 /* Rental Views */ = {
 			isa = PBXGroup;
 			children = (
+				455F27541D9D4DFC00B6BB5B /* Interstitial */,
 				45E942B91D1301F800ACF604 /* Location Search */,
 				45E942C01D13021300ACF604 /* DateTime Picker */,
 				45E942A21D13015900ACF604 /* Calender */,
 				45E9429E1D13013900ACF604 /* CTSelectView */,
 				45E9429A1D13011B00ACF604 /* Search (Step One) */,
-				455F27541D9D4DFC00B6BB5B /* Interstitial */,
 				45E942B51D1301D000ACF604 /* Vehicle Selection (Step Two) */,
 				454AD7AE1D2A61E1005C6CFF /* Vehicle Details (Step Three) */,
 				45CFC7DA1D2CF7EA006E6F83 /* Extras (Step Four) */,
@@ -1483,6 +1489,7 @@
 				455B58A31DCC914300CA4790 /* GTSelectionValidation.h in Headers */,
 				455B58A51DCC914300CA4790 /* GTPassengerDetailsValidation.h in Headers */,
 				455B58A71DCC914300CA4790 /* GTGenericValidation.h in Headers */,
+				450DF2131DD2131C00A365A0 /* CTInterstitialCollectionViewCell.h in Headers */,
 				455B58A91DCC914300CA4790 /* GTBookingCompletionValidation.h in Headers */,
 				455B58AB1DCC914300CA4790 /* GenericValidation.h in Headers */,
 				455B58AE1DCC914400CA4790 /* PaymentValidation.h in Headers */,
@@ -1789,6 +1796,7 @@
 				455B59341DCC914400CA4790 /* InclusionCollectionViewCell.m in Sources */,
 				455B59361DCC914400CA4790 /* InclusionFlowLayout.m in Sources */,
 				455B59381DCC914400CA4790 /* GTServiceTableViewCell.m in Sources */,
+				450DF2141DD2131C00A365A0 /* CTInterstitialCollectionViewCell.m in Sources */,
 				455B593A1DCC914400CA4790 /* GTShuttleTableViewCell.m in Sources */,
 				455B593C1DCC914400CA4790 /* InclusionsTableViewCell.m in Sources */,
 				455B593E1DCC914400CA4790 /* GroundServicesViewController.m in Sources */,

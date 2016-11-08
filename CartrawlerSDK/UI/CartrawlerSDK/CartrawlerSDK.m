@@ -104,6 +104,49 @@
     [viewController presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
 }
 
+- (void)presentCarRentalInViewController:(UIViewController *)viewController
+                               firstName:(NSString *)firstName
+                                 surname:(NSString *)surname
+                               driverAge:(NSNumber *)driverAge
+                    additionalPassengers:(NSNumber *)additionalPassengers
+                                   email:(NSString *)email
+                                   phone:(NSString *)phone
+                                flightNo:(NSString *)flightNo
+                            addressLine1:(NSString *)addressLine1
+                            addressLine2:(NSString *)addressLine2
+                                    city:(NSString *)city
+                                postcode:(NSString *)postcode
+{
+    _isCarRental = YES;
+    
+    [[CarRentalSearch instance] reset];
+    
+    [CarRentalSearch instance].firstName = firstName;
+    [CarRentalSearch instance].surname = surname;
+    [CarRentalSearch instance].passengerQty = [NSNumber numberWithInt:1 + additionalPassengers.intValue];
+    [CarRentalSearch instance].driverAge = driverAge;
+    [CarRentalSearch instance].email = email;
+    [CarRentalSearch instance].phone = phone;
+    [CarRentalSearch instance].flightNumber = flightNo;
+    [CarRentalSearch instance].addressLine1 = addressLine1;
+    [CarRentalSearch instance].addressLine2 = addressLine2;
+    [CarRentalSearch instance].city = city;
+    [CarRentalSearch instance].postcode = postcode;
+
+    [self configureViews];
+    
+    CTNavigationController *navController;
+    
+    navController = [[CTNavigationController alloc] initWithRootViewController: self.searchDetailsViewController];
+    
+    navController.navigationBar.hidden = YES;
+    
+    navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
+    navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
+    
+    [viewController presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
+}
+
 - (void)presentGroundTransportInViewController:(UIViewController *)viewController
 {
     _isCarRental = NO;
@@ -469,7 +512,7 @@ void uncaughtExceptionHandler(NSException *exception)
     }
 }
 
-- (void)didBookVehicle:(CTRentalBooking *)booking
+- (void)didBookVehicle:(CTBooking *)booking
 {
     if (self.delegate) {
         [self.delegate didBookVehicle:booking];

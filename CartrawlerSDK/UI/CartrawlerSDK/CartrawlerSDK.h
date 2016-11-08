@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol CartrawlerSDKDelegate <NSObject>
 
 @optional
-- (void)didBookVehicle:(CTRentalBooking *)booking;
+- (void)didBookVehicle:(CTBooking *)booking;
 - (void)didCancelVehicleBooking;
 
 @end
@@ -71,7 +71,6 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 
 /**
  *  Use CTAppearance for overriding the preset views color scheme
- *
  */
 + (CTAppearance *)appearance;
 
@@ -83,13 +82,29 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 - (void)presentCarRentalInViewController:(UIViewController *)viewController;
 
 /**
+ *  Presents the car rental engine modally in the designated UIViewController, with predefined user details
+ *
+ *  @param viewController The parent view controller
+ */
+- (void)presentCarRentalInViewController:(UIViewController *)viewController
+                               firstName:(NSString *)firstName
+                                 surname:(NSString *)surname
+                               driverAge:(NSNumber *)driverAge
+                    additionalPassengers:(NSNumber *)additionalPassengers
+                                   email:(NSString *)email
+                                   phone:(NSString *)phone
+                                flightNo:(NSString *)flightNo
+                            addressLine1:(NSString *)addressLine1
+                            addressLine2:(NSString *)addressLine2
+                                    city:(NSString *)city
+                                postcode:(NSString *)postcode;
+
+/**
  *  Presents the ground transport engine modally in the designated UIViewController
  *
  *  @param viewController The parent view controller
  */
 - (void)presentGroundTransportInViewController:(UIViewController *)viewController;
-
-- (void)presentTabViewInViewController:(UIViewController *)viewController;
 
 - (void)presentCarRentalWithFlightDetails:(NSString *)IATACode
                                pickupDate:(NSDate *)pickupDate
