@@ -22,19 +22,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TM6-e8-Twy" customClass="CTLabel">
-                                <rect key="frame" x="16" y="330" width="343" height="30"/>
+                                <rect key="frame" x="16" y="285" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="for your perfect car at the best price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Df-dg-nD6">
-                                <rect key="frame" x="8" y="368" width="359" height="21"/>
+                                <rect key="frame" x="8" y="323" width="359" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FZX-8A-2Qv">
-                                <rect key="frame" x="8" y="397" width="359" height="262"/>
+                                <rect key="frame" x="8" y="352" width="359" height="307"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WPS-4y-SSe">
                                     <size key="itemSize" width="130" height="55"/>
@@ -54,7 +54,7 @@
                                 </cells>
                             </collectionView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spinner" translatesAutoresizingMaskIntoConstraints="NO" id="Wor-Dd-iAs">
-                                <rect key="frame" x="167" y="282" width="40" height="40"/>
+                                <rect key="frame" x="167.5" y="237" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="EJ6-pg-oiN"/>
                                     <constraint firstAttribute="height" constant="40" id="bCT-dp-uW2"/>
@@ -63,6 +63,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2Df-dg-nD6" firstAttribute="centerY" secondItem="Uo3-03-c80" secondAttribute="centerY" id="0Ja-Kr-LrE"/>
                             <constraint firstItem="2Df-dg-nD6" firstAttribute="leading" secondItem="Uo3-03-c80" secondAttribute="leading" constant="8" id="DCF-Q7-C0I"/>
                             <constraint firstItem="FZX-8A-2Qv" firstAttribute="top" secondItem="2Df-dg-nD6" secondAttribute="bottom" constant="8" id="HbJ-iD-BtG"/>
                             <constraint firstItem="q2f-W6-FsN" firstAttribute="top" secondItem="FZX-8A-2Qv" secondAttribute="bottom" constant="8" id="K4Z-34-d21"/>
@@ -73,9 +74,14 @@
                             <constraint firstItem="Wor-Dd-iAs" firstAttribute="centerX" secondItem="Uo3-03-c80" secondAttribute="centerX" id="ZHa-tY-R76"/>
                             <constraint firstItem="FZX-8A-2Qv" firstAttribute="leading" secondItem="Uo3-03-c80" secondAttribute="leading" constant="8" id="dkc-b6-Kz0"/>
                             <constraint firstAttribute="trailing" secondItem="TM6-e8-Twy" secondAttribute="trailing" constant="16" id="e8s-PL-K4e"/>
-                            <constraint firstItem="Wor-Dd-iAs" firstAttribute="top" secondItem="ucl-0i-eY9" secondAttribute="bottom" constant="262" id="ifk-Er-rF6"/>
+                            <constraint firstItem="Wor-Dd-iAs" firstAttribute="top" secondItem="ucl-0i-eY9" secondAttribute="bottom" constant="128" id="ifk-Er-rF6"/>
                             <constraint firstItem="TM6-e8-Twy" firstAttribute="leading" secondItem="Uo3-03-c80" secondAttribute="leading" constant="16" id="vKK-eb-wZN"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ifk-Er-rF6"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="loadingLabel" destination="TM6-e8-Twy" id="188-vu-37Y"/>

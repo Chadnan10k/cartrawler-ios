@@ -19,8 +19,9 @@
 #import "CTButton.h"
 #import "CTAppearance.h"
 #import "DataStore.h"
+#import "Reachability.h"
 
-@interface PaymentViewController () <UITextViewDelegate>
+@interface PaymentViewController () <UITextViewDelegate, CTPaymentViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *webViewContainer;
 @property (strong, nonatomic) CTPaymentView *paymentView;
@@ -53,7 +54,12 @@
 {
     [super viewDidLoad];
     _paymentView = [[CTPaymentView alloc] initWithFrame:CGRectZero];
+    self.paymentView.delegate = self;
     [self.paymentView presentInView:self.webViewContainer];
+    
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    [reachability startNotifier];
     
     __weak typeof (self) weakSelf = self;
     
@@ -76,7 +82,7 @@
     
     NSString *link1 = @"<a href='www.cartrawler.com'><b>Rental conditions</b></a>";
     
-    NSString *termsStr = [NSString stringWithFormat:@"I agree to the %@<style>body {text-align: center;}</style>", link1];
+    NSString *termsStr = [NSString stringWithFormat:@"By tapping <b>Confirm</b> you agree to the %@<style>body {text-align: center;}</style>", link1];
     
     //seems lazy but efficient
     self.termsLabel.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
@@ -128,4 +134,28 @@
     }
 }
 
+#pragma mark CTPaymentViewDelegate
+
+- (void)didLoadPaymentView
+{
+    
+}
+
+- (void)didFailLoadingPaymentView
+{
+    
+}
+
+- (void)didMakeBooking
+{
+    
+}
+
+#pragma mark Reachability
+
+- (void) reachabilityChanged:(NSNotification *)note
+{
+    Reachability* curReach = [note object];
+    NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
+}
 @end

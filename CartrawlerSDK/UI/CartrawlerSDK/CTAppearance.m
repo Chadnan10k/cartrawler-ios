@@ -26,9 +26,7 @@
         sharedInstance.viewBackgroundColor = [UIColor colorWithRed:7.0/255.0 green:53.0/255.0 blue:144.0/255.0 alpha:1.0];
         sharedInstance.navigationBarColor = [UIColor colorWithRed:7.0/255.0 green:53.0/255.0 blue:144.0/255.0 alpha:1.0];
         sharedInstance.tabBarTint = [UIColor colorWithRed:27.0/255.0 green:78.0/255.0 blue:148.0/255.0 alpha:1.0];
-        sharedInstance.navigationBarLogoImage = [UIImage imageNamed:@"sample_header_logo"
-                                                           inBundle:[NSBundle bundleForClass:[self class]]
-                                                           compatibleWithTraitCollection:nil];
+
         sharedInstance.containerViewCornerRadius = 5.0;
         sharedInstance.containerViewMarginPadding = 16;
         

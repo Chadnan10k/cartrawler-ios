@@ -288,7 +288,7 @@
                                                                         <constraint firstAttribute="width" constant="15" id="EhR-mm-BB3"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 passengers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="XLY-ME-h3G" customClass="CTLabel">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 passengers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="XLY-ME-h3G" customClass="CTLabel">
                                                                     <rect key="frame" x="23" y="4" width="99" height="22"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
                                                                     <color key="textColor" red="0.19346955128205123" green="0.19346955128205123" blue="0.19346955128205123" alpha="1" colorSpace="calibratedRGB"/>
@@ -982,7 +982,7 @@
             <objects>
                 <navigationController storyboardIdentifier="TermsViewControllerNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="zaw-2W-wIV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LTW-fF-QCn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LTW-fF-QCn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

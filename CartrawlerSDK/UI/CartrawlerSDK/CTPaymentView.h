@@ -11,11 +11,20 @@
 #import "CarRentalSearch.h"
 #import <CartrawlerAPI/CTGroundBooking.h>
 
+@protocol CTPaymentViewDelegate <NSObject>
+
+- (void)didLoadPaymentView;
+- (void)didFailLoadingPaymentView;
+- (void)didMakeBooking;
+
+@end
+
 @interface CTPaymentView : UIView
 
 typedef void (^PaymentCompletion)(BOOL success);
 
 @property (nonatomic, strong) PaymentCompletion completion;
+@property (nonatomic, weak) id<CTPaymentViewDelegate> delegate;
 
 - (void)presentInView:(UIView *)parentView;
 

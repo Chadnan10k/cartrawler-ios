@@ -13,15 +13,13 @@
 #import "CTButton.h"
 #import "GTPaymentRequest.h"
 #import "DataStore.h"
+#import "Reachability.h"
 
 @interface CTPaymentView() <UIWebViewDelegate, UIAlertViewDelegate, NSURLConnectionDataDelegate>
 
 typedef NS_ENUM(NSUInteger, CTPaymentType) {
-    
     CTPaymentTypeCarRental = 0,
-    
     CTPaymentTypeGroundTransport,
-    
 };
 
 @property (nonatomic, strong) UIWebView *webView;

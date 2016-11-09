@@ -27,6 +27,8 @@
     if (!self.vendorImageView) {
         _vendorImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         self.vendorImageView.translatesAutoresizingMaskIntoConstraints = NO;
+        self.vendorImageView.contentMode = UIViewContentModeScaleAspectFit;
+        
         [self addSubview:self.vendorImageView];
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[image]-|"
@@ -41,21 +43,31 @@
     
     if (self.vendorImageView) {
         self.vendorImageView.image = image;
-        [self animateRandomly];
     }
 }
 
-- (void)animateRandomly
+- (void)animate:(int)delay
 {
-    int delay = arc4random()%5;
+    //int delay = randInRange(1, 6);
 
-    [UIView animateWithDuration:0.5 delay:delay usingSpringWithDamping:0.1 initialSpringVelocity:0.5 options:0 animations:^{
-        self.transform = CGAffineTransformMakeScale(1.5, 1.5);
+    [UIView animateWithDuration:0.5
+                          delay:delay
+         usingSpringWithDamping:0.5
+          initialSpringVelocity:0.2
+                        options:0
+                     animations:^{
+                         self.transform = CGAffineTransformMakeScale(1.2, 1.2);
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.4 animations:^{
-            self.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        [UIView animateWithDuration:0.4
+                         animations:^{
+                             self.transform = CGAffineTransformIdentity;
         }];
     }];
+}
+
+int randInRange(int min, int max)
+{
+    return min + (int) (rand() / (double) (RAND_MAX + 1) * (max - min + 1));
 }
 
 @end

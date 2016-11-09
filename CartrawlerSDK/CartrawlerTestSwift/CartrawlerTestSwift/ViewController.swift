@@ -42,7 +42,6 @@ class ViewController: UIViewController {
     
     @IBAction func airportSearch(_ sender: AnyObject) {
         
-        
         let strTime = "2016-09-27 10:00:00"
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"

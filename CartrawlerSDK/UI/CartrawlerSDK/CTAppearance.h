@@ -21,7 +21,6 @@
 @property (nonatomic, strong) UIColor  *viewBackgroundColor;
 @property (nonatomic, strong) UIColor  *navigationBarColor;
 @property (nonatomic, strong) UIColor  *tabBarTint;
-@property (nonatomic, strong) UIImage  *navigationBarLogoImage;
 @property (nonatomic) CGFloat          containerViewCornerRadius;
 @property (nonatomic) CGFloat          containerViewMarginPadding;
 

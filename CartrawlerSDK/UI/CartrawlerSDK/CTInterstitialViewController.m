@@ -23,19 +23,21 @@
     // Do any additional setup after loading the view.
     self.vendorCollectionView.dataSource = self;
     self.vendorCollectionView.delegate = self;
-
-    _vendorImages = @[[UIImage imageNamed:@"vendor_europcar" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil],
-                      [UIImage imageNamed:@"vendor_europcar" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil],
-                      [UIImage imageNamed:@"vendor_europcar" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil],
-                      [UIImage imageNamed:@"vendor_europcar" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil],
-                      [UIImage imageNamed:@"vendor_europcar" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil],
-                      [UIImage imageNamed:@"vendor_europcar" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil]
-                      ];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    _vendorImages = @[[UIImage imageNamed:@"vendor_europcar" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil],
+                      [UIImage imageNamed:@"vendor_sixt" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil],
+                      [UIImage imageNamed:@"vendor_budget" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil],
+                      [UIImage imageNamed:@"vendor_alamo" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil],
+                      [UIImage imageNamed:@"vendor_hertz" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil],
+                      [UIImage imageNamed:@"vendor_enterprise" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil]
+                      ];
+
+    [self.vendorCollectionView reloadData];
     
     if ([self.spinnerImageView.layer animationForKey:@"SpinAnimation"] == nil) {
         CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
@@ -81,7 +83,6 @@
 + (void)dismiss
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        //[[CTInterstitialViewController sharedInstance].spinnerImageView.layer removeAnimationForKey:@"SpinAnimation"];
         [[CTInterstitialViewController sharedInstance] dismissViewControllerAnimated:YES completion:nil];
     });
 }
@@ -105,11 +106,16 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [(CTInterstitialCollectionViewCell *)cell animate:indexPath.row];
+}
+
 #pragma mark Collection view layout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGSize elementSize = CGSizeMake(104, 50);
+    CGSize elementSize = CGSizeMake((self.view.frame.size.width/3)-16, 50);
     return elementSize;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
