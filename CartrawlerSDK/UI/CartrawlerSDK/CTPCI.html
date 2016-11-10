@@ -1,55 +1,49 @@
 <html>
     <head>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     </head>
     
     <body>
         <iframe id="ct-secure-payment"  src="[URLPLACEHOLDER]"> </iframe>
-    </body>
     
     <script>
-
-      $(document).ready(function () {
-
-        $("iframe").load(function() {
-                         var frameContents;
-                         frameContents = $("#ct-secure-payment").contents();
-                         frameContents.find("#ct-container").css("background-color","#EFEFF4");
-                         });
-      });
-
-      var currentState;
-      var jsonResponse;
-
+    var currentState = "NoState";
+    var jsonResponse = "NoResponse";
+        
+    document.addEventListener("DOMContentLoaded", function () {
       window.addEventListener("message", function(e) {
-        var paymentFormMsg;
-  		  try {
-  			  paymentFormMsg = JSON.parse(e.data);
-  				switch(paymentFormMsg.action) {
-  					case "sendMessage":
-  					  currentState = "SendingPayment";
-  					  break;
-  					case "sendError":
-  					  currentState = "PaymentError";
-  					  break;
-  					case "validation":
-  					  currentState = "ValidationError";
-  					  break;
-  					case "onError":
-  					  currentState = "PaymentError";
-  					  break;
-  				}
-  		  } catch(ex) {
-  			   jsonResponse = decodeURIComponent(e.data);
-  		  }
+            var paymentFormMsg;
+              try {
+                  paymentFormMsg = JSON.parse(e.data);
+                    switch(paymentFormMsg.action) {
+                        case "sendMessage":
+                          currentState = "SendingPayment";
+                          securePaymentWin.contentWindow.postMessage({"disableBackButton" : "disable"} , "*");
+                          break;
+                        case "sendError":
+                          currentState = "PaymentError";
+                          break;
+                        case "validation":
+                          currentState = "ValidationError";
+                          break;
+                        case "onError":
+                          currentState = "PaymentError";
+                          break;
+                    }
+              } catch(ex) {
+                   jsonResponse = decodeURIComponent(e.data);
+                   if (JSON.parse(jsonResponse).hasOwnProperty('@xmlns') || JSON.parse(jsonResponse).hasOwnProperty('Success')) {
+                       window.webkit.messageHandlers.CTWebView.postMessage({"jsonResponse": jsonResponse});
+                   }
+              }
+          });
       });
 
       function getCurrentState() {
-          return currentState;
+          window.webkit.messageHandlers.CTWebView.postMessage({"currentState":currentState});
       }
     
       function getJsonResponse() {
-          return jsonResponse;
+          window.webkit.messageHandlers.CTWebView.postMessage({"jsonResponse": jsonResponse});
       }
 
       function generateMessage(jsonPayload) {
@@ -58,15 +52,25 @@
 
       function validateAndBook() {
           var securePaymentWin = document.getElementById("ct-secure-payment");
-          securePaymentWin.contentWindow.postMessage({"action" : "submitForm"} , "*");
+          
+          if (currentState !== "SendingPayment") {
+              securePaymentWin.contentWindow.postMessage({"action" : "submitForm"} , "*");
+          } else {
+              securePaymentWin.contentWindow.postMessage({"disableBackButton" : "disable"} , "*");
+          }
+          
+          window.webkit.messageHandlers.CTWebView.postMessage({"currentState": currentState});
+
       }
     
-    function resetResponses() {
-        currentState = "";
-        jsonResponse = "";
-    }
-
+      function resetResponses() {
+          currentState = "";
+          jsonResponse = "";
+      }
+    
     </script>
+    </body>
+
 
     <style>
         #ct-secure-payment {

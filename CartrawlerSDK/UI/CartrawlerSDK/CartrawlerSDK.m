@@ -95,9 +95,7 @@
     CTNavigationController *navController;
     
     navController = [[CTNavigationController alloc] initWithRootViewController: self.searchDetailsViewController];
-
     navController.navigationBar.hidden = YES;
-    
     navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
 

@@ -31,7 +31,6 @@
 
 - (void)pushToDestination
 {
-    
     __weak typeof (self) weakSelf = self;
     
     if (!self.search) {

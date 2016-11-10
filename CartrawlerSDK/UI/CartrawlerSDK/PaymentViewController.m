@@ -21,15 +21,17 @@
 #import "DataStore.h"
 #import "Reachability.h"
 
-@interface PaymentViewController () <UITextViewDelegate, CTPaymentViewDelegate>
+@interface PaymentViewController () <UITextViewDelegate, CTPaymentViewDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *webViewContainer;
 @property (strong, nonatomic) CTPaymentView *paymentView;
-@property (weak, nonatomic) IBOutlet CTCheckbox *termsCheckbox;
 @property (weak, nonatomic) IBOutlet UITextView *termsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet CTButton *confirmButton;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *termsAndCondHeight;
+
+@property (nonatomic) Reachability *internetReachability;
+
+@property (nonatomic, strong) UIAlertView *alertView;
 
 @end
 
@@ -42,6 +44,8 @@
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
+    self.backButton.enabled = YES;
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -57,10 +61,10 @@
     self.paymentView.delegate = self;
     [self.paymentView presentInView:self.webViewContainer];
     
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    _internetReachability = [Reachability reachabilityForInternetConnection];
+    [self.internetReachability startNotifier];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
-    [reachability startNotifier];
-    
+
     __weak typeof (self) weakSelf = self;
     
     self.paymentView.completion = ^(BOOL success){
@@ -75,9 +79,6 @@
         } else {
             
         }
-    };
-    self.termsCheckbox.viewTapped = ^(BOOL tapped){
-        [weakSelf.paymentView termsAndConditionsChecked:tapped];
     };
     
     NSString *link1 = @"<a href='www.cartrawler.com'><b>Rental conditions</b></a>";
@@ -110,7 +111,7 @@
 }
 
 - (IBAction)confirmPayment:(id)sender {
-    [self enableControls:NO];
+    //[self enableControls:NO];
     [self.paymentView confirmPayment];
 }
 
@@ -122,19 +123,27 @@
         self.confirmButton.enabled = YES;
         self.confirmButton.alpha = 1;
         self.termsLabel.userInteractionEnabled = YES;
-        self.termsCheckbox.userInteractionEnabled = YES;
     } else {
         self.backButton.enabled = NO;
         self.backButton.alpha = 0.8;
         self.confirmButton.enabled = NO;
         self.confirmButton.alpha = 0.8;
         self.termsLabel.userInteractionEnabled = NO;
-        self.termsCheckbox.userInteractionEnabled = NO;
 
     }
 }
 
 #pragma mark CTPaymentViewDelegate
+
+- (void)paymentFailed
+{
+    [self enableControls:YES];
+}
+
+- (void)willMakeBooking
+{
+    [self enableControls:NO];
+}
 
 - (void)didLoadPaymentView
 {
@@ -143,12 +152,15 @@
 
 - (void)didFailLoadingPaymentView
 {
-    
+    //retry
+    [self presentAlertView:@"Sorry"
+                   message:@"We are having trouble loading the payment screen"];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didMakeBooking
 {
-    
+    [self enableControls:YES];
 }
 
 #pragma mark Reachability
@@ -156,6 +168,63 @@
 - (void) reachabilityChanged:(NSNotification *)note
 {
     Reachability* curReach = [note object];
-    NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
+    NetworkStatus networkStatus = [curReach currentReachabilityStatus];
+    switch (networkStatus) {
+        case NotReachable:
+            NSLog(@"retry webview load");
+            //retry
+            
+            //also disallow the user to make payment as they are going to a dead end
+            
+            [self presentAlertView:@"No Internet Connection"
+                           message:@"In order to complete your booking you will need an internet connection"];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+
+            break;
+        case ReachableViaWiFi:
+            //carry on
+            [self dismissAlertView];
+            [self enableControls:YES];
+            break;
+            
+        case ReachableViaWWAN:
+            //carry on
+            [self dismissAlertView];
+            [self enableControls:YES];
+            break;
+        default:
+            break;
+    }
 }
+
+#pragma mark UIAlertView
+
+- (void)dismissAlertView
+{
+    if (self.alertView) {
+        [self.alertView dismissWithClickedButtonIndex:0 animated:YES];
+    }
+}
+
+- (void)presentAlertView:(NSString *)title message:(NSString *)message
+{
+    if (self.alertView) {
+        self.alertView.title = title;
+        self.alertView.message = message;
+    } else {
+        _alertView = [[UIAlertView alloc] initWithTitle:title
+                                                message:message
+                                               delegate:self
+                                      cancelButtonTitle:@"OK"
+                                      otherButtonTitles:nil, nil];
+    }
+    [self.alertView show];
+
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+}
+
 @end

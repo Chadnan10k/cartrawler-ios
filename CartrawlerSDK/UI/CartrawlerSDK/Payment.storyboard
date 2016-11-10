@@ -335,23 +335,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c54-jM-Sxn">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ccX-j1-yDM" customClass="CTLabel">
-                                                        <rect key="frame" x="134" y="193" width="107" height="36"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <color key="textColor" red="0.19346955129999999" green="0.19346955129999999" blue="0.19346955129999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="396"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="ccX-j1-yDM" firstAttribute="top" secondItem="c54-jM-Sxn" secondAttribute="top" constant="193" id="2Bo-LI-lS8"/>
-                                                    <constraint firstAttribute="height" constant="300" id="V40-qS-763"/>
+                                                    <constraint firstAttribute="height" constant="396" id="V40-qS-763"/>
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" editable="NO" text="Terms and conditions" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hWi-uf-kjB">
-                                                <rect key="frame" x="8" y="345" width="359" height="187"/>
+                                                <rect key="frame" x="8" y="404" width="359" height="128"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="textColor" red="0.19346955129999999" green="0.19346955129999999" blue="0.19346955129999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -359,15 +350,14 @@
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="c54-jM-Sxn" secondAttribute="trailing" id="2pm-aI-TT8"/>
-                                            <constraint firstItem="hWi-uf-kjB" firstAttribute="top" secondItem="c54-jM-Sxn" secondAttribute="bottom" constant="45" id="4si-f2-MwI"/>
+                                            <constraint firstItem="hWi-uf-kjB" firstAttribute="top" secondItem="c54-jM-Sxn" secondAttribute="bottom" constant="8" id="4si-f2-MwI"/>
                                             <constraint firstItem="hWi-uf-kjB" firstAttribute="leading" secondItem="fLz-vi-TIj" secondAttribute="leading" constant="8" id="9Hy-HM-2ST"/>
                                             <constraint firstItem="c54-jM-Sxn" firstAttribute="top" secondItem="fLz-vi-TIj" secondAttribute="top" id="Dbx-xS-9JI"/>
                                             <constraint firstAttribute="height" constant="607" id="Kgn-VK-fmG"/>
                                             <constraint firstItem="c54-jM-Sxn" firstAttribute="leading" secondItem="fLz-vi-TIj" secondAttribute="leading" id="KtS-3k-TWu"/>
-                                            <constraint firstItem="ccX-j1-yDM" firstAttribute="centerX" secondItem="fLz-vi-TIj" secondAttribute="centerX" id="Qhw-jJ-q8g"/>
                                             <constraint firstAttribute="bottom" secondItem="hWi-uf-kjB" secondAttribute="bottom" constant="75" id="qkv-xC-GNX"/>
                                             <constraint firstAttribute="trailing" secondItem="hWi-uf-kjB" secondAttribute="trailing" constant="8" id="stS-gb-zbI"/>
                                         </constraints>
@@ -447,10 +437,16 @@
                             <constraint firstItem="u4T-7C-Ab2" firstAttribute="top" secondItem="DNO-Hn-L6b" secondAttribute="bottom" id="SgJ-7l-2lF"/>
                             <constraint firstItem="DNO-Hn-L6b" firstAttribute="top" secondItem="1Pw-yJ-j5f" secondAttribute="bottom" constant="40" id="fOB-Rm-1ZL"/>
                             <constraint firstItem="u4T-7C-Ab2" firstAttribute="top" secondItem="9RB-BO-e31" secondAttribute="bottom" id="gBe-9W-IEG"/>
+                            <constraint firstItem="DNO-Hn-L6b" firstAttribute="top" secondItem="Vsn-us-gk8" secondAttribute="bottom" id="iCZ-Lz-42a"/>
                             <constraint firstItem="fLz-vi-TIj" firstAttribute="width" secondItem="PjK-wo-uj7" secondAttribute="width" id="lvg-lX-QIU"/>
                             <constraint firstItem="Vsn-us-gk8" firstAttribute="top" secondItem="PjK-wo-uj7" secondAttribute="top" id="ot3-el-mxW"/>
                             <constraint firstAttribute="trailing" secondItem="9RB-BO-e31" secondAttribute="trailing" id="rH8-VZ-yHx"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fOB-Rm-1ZL"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="med-a6-6uJ" id="3JN-fb-gDg"/>

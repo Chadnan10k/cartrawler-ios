@@ -14,23 +14,22 @@
 #import "GTPaymentRequest.h"
 #import "DataStore.h"
 #import "Reachability.h"
+#import <WebKit/WebKit.h>
+#import "CartrawlerSDK+WKWebView.h"
 
-@interface CTPaymentView() <UIWebViewDelegate, UIAlertViewDelegate, NSURLConnectionDataDelegate>
+@interface CTPaymentView() <UIAlertViewDelegate, NSURLConnectionDataDelegate, WKScriptMessageHandler, WKNavigationDelegate>
 
 typedef NS_ENUM(NSUInteger, CTPaymentType) {
     CTPaymentTypeCarRental = 0,
     CTPaymentTypeGroundTransport,
 };
 
-@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) WKWebView *webView;
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) UIAlertView *alertView;
 @property (strong, nonatomic) NSString *htmlString;
 @property (strong, nonatomic) NSBundle *bundle;
 @property (strong, nonatomic) NSString *jsonResponse;
-
-@property (nonatomic) BOOL runLoop;
-@property (nonatomic) BOOL termsChecked;
 
 @property (nonatomic) CTPaymentType paymentType;
 
@@ -50,104 +49,143 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     NSString *htmlFile = [self.bundle pathForResource:@"CTPCI" ofType:@"html"];
     _htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
     
-    _webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    NSString *jScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+    
+    WKUserScript *wkUScript = [[WKUserScript alloc] initWithSource:jScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+    WKUserContentController *wkUController = [[WKUserContentController alloc] init];
+    [wkUController addUserScript:wkUScript];
+    
+    WKWebViewConfiguration *wkWebConfig = [[WKWebViewConfiguration alloc] init];
+    wkWebConfig.userContentController = wkUController;
+    [wkWebConfig.userContentController addScriptMessageHandler:self name:@"CTWebView"];
+    
+    _webView = [[WKWebView alloc] initWithFrame:self.frame configuration:wkWebConfig];
+
+    self.webView.navigationDelegate = self;
     self.webView.translatesAutoresizingMaskIntoConstraints = NO;
     self.translatesAutoresizingMaskIntoConstraints = NO;
     [parentView addSubview:self];
     [self addSubview:self.webView];
     
-    //first bind the entire view to superview
-    NSLayoutConstraint *viewTopConstraint = [NSLayoutConstraint constraintWithItem:self
-                                                                     attribute:NSLayoutAttributeTop
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:parentView
-                                                                     attribute:NSLayoutAttributeTop
-                                                                    multiplier:1.0
-                                                                      constant:0];
+    [parentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]-|"
+                                                                       options:0
+                                                                       metrics:nil
+                                                                         views:@{@"view" : self}]];
     
-    NSLayoutConstraint *viewBottomConstraint = [NSLayoutConstraint constraintWithItem:self
-                                                                        attribute:NSLayoutAttributeBottom
-                                                                        relatedBy:NSLayoutRelationEqual
-                                                                           toItem:parentView
-                                                                        attribute:NSLayoutAttributeBottom
-                                                                       multiplier:1.0
-                                                                         constant:0];
+    [parentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|"
+                                                                       options:0
+                                                                       metrics:nil
+                                                                         views:@{@"view" : self}]];
     
-    NSLayoutConstraint *viewLeftConstraint = [NSLayoutConstraint constraintWithItem:self
-                                                                      attribute:NSLayoutAttributeLeft
-                                                                      relatedBy:NSLayoutRelationEqual
-                                                                         toItem:parentView
-                                                                      attribute:NSLayoutAttributeLeft
-                                                                     multiplier:1.0
-                                                                       constant:0];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[view]-8-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"view" : self.webView}]];
     
-    NSLayoutConstraint *viewRightConstraint = [NSLayoutConstraint constraintWithItem:self
-                                                                       attribute:NSLayoutAttributeRight
-                                                                       relatedBy:NSLayoutRelationEqual
-                                                                          toItem:parentView
-                                                                       attribute:NSLayoutAttributeRight
-                                                                      multiplier:1.0
-                                                                        constant:0];
-    [parentView addConstraints:@[viewTopConstraint,
-                           viewBottomConstraint,
-                           viewLeftConstraint,
-                           viewRightConstraint]];
-    
-    //Now bind webview to self
-    NSLayoutConstraint *webTopConstraint = [NSLayoutConstraint constraintWithItem:self.webView
-                                                                         attribute:NSLayoutAttributeTop
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self
-                                                                         attribute:NSLayoutAttributeTop
-                                                                        multiplier:1.0
-                                                                          constant:0];
-    
-    NSLayoutConstraint *webBottomConstraint = [NSLayoutConstraint constraintWithItem:self.webView
-                                                                            attribute:NSLayoutAttributeBottom
-                                                                            relatedBy:NSLayoutRelationEqual
-                                                                               toItem:self
-                                                                            attribute:NSLayoutAttributeBottom
-                                                                           multiplier:1.0
-                                                                             constant:40];
-    
-    NSLayoutConstraint *webLeftConstraint = [NSLayoutConstraint constraintWithItem:self.webView
-                                                                          attribute:NSLayoutAttributeLeft
-                                                                          relatedBy:NSLayoutRelationEqual
-                                                                             toItem:self
-                                                                          attribute:NSLayoutAttributeLeft
-                                                                         multiplier:1.0
-                                                                           constant:0];
-    
-    NSLayoutConstraint *webRightConstraint = [NSLayoutConstraint constraintWithItem:self.webView
-                                                                           attribute:NSLayoutAttributeRight
-                                                                           relatedBy:NSLayoutRelationEqual
-                                                                              toItem:self
-                                                                           attribute:NSLayoutAttributeRight
-                                                                          multiplier:1.0
-                                                                            constant:0];
-    [self addConstraints:@[webTopConstraint,
-                                 webBottomConstraint,
-                                 webLeftConstraint,
-                                 webRightConstraint]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[view]-8-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"view" : self.webView}]];
 
-    
-    self.webView.delegate = self;
+    //self.webView.UIDelegate = self;
     self.webView.scrollView.scrollEnabled = NO;
     
     [self registerForKeyboardNotifications];
-    
-    //_reachability = [Reachability reachabilityForInternetConnection];
-    //[self.reachability startNotifier];
-
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
-    
     [self setupWebView];
+}
+
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
+{
+    NSDictionary *sentData = (NSDictionary*)message.body;
+    NSLog(@"%@", sentData);
+    
+    if (sentData[@"jsonResponse"]) {
+        _jsonResponse = sentData[@"jsonResponse"];
+        NSError *jsonError;
+        NSData *objectData = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                             options:NSJSONReadingMutableContainers
+                                                               error:&jsonError];
+        
+        if ([self.jsonResponse containsString:@"ErrorCode"] || [self.jsonResponse containsString:@"@ShortText"]) {
+            
+            if (self.completion) {
+                self.completion(NO);
+            }
+            
+            if (self.delegate) {
+                [self.delegate paymentFailed];
+            }
+            
+            CTErrorResponse *error = [[CTErrorResponse alloc] initWithDictionary:json];
+            [self showError:@"Error" message:error.errorMessage];
+            [self.webView evaluateJavaScript:@"resetResponses()" completionHandler:nil];
+            
+        } else {
+            
+            if (self.completion) {
+                
+                [self.webView evaluateJavaScript:@"resetResponses()" completionHandler:nil];
+                
+                if (self.delegate) {
+                    [self.delegate didMakeBooking];
+                }
+                
+                switch (self.paymentType) {
+                        
+                    case CTPaymentTypeCarRental: {
+                        CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:json];
+                        self.carRentalSearch.booking = booking;
+                        
+                        CTRentalBooking *savedBooking = [[CTRentalBooking alloc] init];
+                        savedBooking.bookingId = booking.confID;
+                        savedBooking.pickupLocation = self.carRentalSearch.pickupLocation.name;
+                        savedBooking.dropoffLocation = self.carRentalSearch.dropoffLocation.name;
+                        savedBooking.pickupDate = self.carRentalSearch.pickupDate;
+                        savedBooking.dropoffDate = self.carRentalSearch.dropoffDate;
+                        savedBooking.vehicleImage = self.carRentalSearch.selectedVehicle.vehicle.pictureURL.absoluteString;
+                        savedBooking.vehicleName = self.carRentalSearch.selectedVehicle.vehicle.makeModelName;
+                        [DataStore storeRentalBooking:savedBooking];
+                        
+                        self.completion(YES);
+                    }
+                        
+                        break;
+                    case CTPaymentTypeGroundTransport: {
+                        CTGroundBooking *booking = [[CTGroundBooking alloc] initWithDictionary:json];
+                        self.groundSearch.booking = booking;
+                        
+                        GTBooking *savedBooking = [[GTBooking alloc] init];
+                        savedBooking.bookingId = booking.confirmationId;
+                        savedBooking.pickupLocation = self.groundSearch.pickupLocation.name;
+                        savedBooking.dropoffLocation = self.groundSearch.dropoffLocation.name;
+                        savedBooking.pickupDate = self.groundSearch.pickupLocation.dateTime;
+                        savedBooking.dropoffDate = self.groundSearch.dropoffLocation.dateTime;
+                        savedBooking.vehicleImage = self.groundSearch.selectedService.vehicleImage != nil ? self.groundSearch.selectedService.vehicleImage.absoluteString : self.groundSearch.selectedShuttle.vehicleImage.absoluteString;
+                        savedBooking.vehicleName = self.groundSearch.selectedShuttle != nil ? self.groundSearch.selectedShuttle.companyName : self.groundSearch.selectedService.companyName;
+                        [DataStore storeGTBooking:savedBooking];
+                        
+                        self.completion(YES);
+                    }
+                        
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+    
+    if (sentData[@"disableBackButton"]) {
+        if (self.delegate) {
+            [self.delegate willMakeBooking];
+        }
+    }
 }
 
 - (void)setForGTPayment:(GroundTransportSearch *)search
 {
     _groundSearch = search;
-    _runLoop = NO;
     _paymentType = CTPaymentTypeGroundTransport;
     
     NSString *flightNo = [[search.flightNumber componentsSeparatedByCharactersInSet:
@@ -228,7 +266,6 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 - (void)setForCarRentalPayment:(CarRentalSearch *)search
 {
     _carRentalSearch = search;
-    _runLoop = NO;
     _paymentType = CTPaymentTypeCarRental;
 
     NSString *s = [PaymentRequest OTA_VehResRQ:[search.pickupDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
@@ -278,33 +315,6 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 - (void)setupWebView
 {
     self.alpha = 1;
-    [self startTimer];
-}
-
-- (void)reachabilityChanged:(NSNotification *)notification {
-    /*
-    Reachability *reachability = notification.object;
-    NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
-    
-    if(remoteHostStatus == NotReachable) {
-        [self showError:@"Error" message:@"No internet connection"];
-    } else {
-        NSLog(@"INTERNET AVAILABLE");
-    }
-     */
-}
-
-- (void)startTimer
-{
-    //Invalidate timer does not seem to work even when explicitly stating the thread
-    _runLoop = YES;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        _timer = [NSTimer scheduledTimerWithTimeInterval:0.1f
-                                                  target:self
-                                                selector:@selector(currentState)
-                                                userInfo:nil
-                                                 repeats:YES];
-    });
 }
 
 - (void)registerForKeyboardNotifications
@@ -336,100 +346,20 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-
+    if (self.delegate) {
+        [self.delegate didLoadPaymentView];
+    }
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error
 {
-    NSLog(@"CARTRAWLERSDK: Could not load PCI WebView %@", error.localizedDescription);
-    //[self showError:@"Error" message:@"Cannot load payment"];
-}
-
-- (void)currentState
-{
-    if (self.runLoop) {
     
-        _jsonResponse = [self.webView stringByEvaluatingJavaScriptFromString:@"getJsonResponse()"];
-        
-        if (![self.jsonResponse isEqualToString:@""]) {
-            
-            NSError *jsonError;
-            NSData *objectData = [self.jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-                                                                 options:NSJSONReadingMutableContainers
-                                                                   error:&jsonError];
-            
-            if ([self.jsonResponse containsString:@"ErrorCode"] || [self.jsonResponse containsString:@"@ShortText"]) {
-                
-                if (self.completion) {
-                    self.completion(NO);
-                }
+}
 
-                CTErrorResponse *error = [[CTErrorResponse alloc] initWithDictionary:json];
-                [self showError:@"Error" message:error.errorMessage];
-                _runLoop = NO;
-                [self.webView stringByEvaluatingJavaScriptFromString:@"resetResponses()"];
-                
-                
-            } else {
-                _runLoop = NO;
-                
-                if (self.completion) {
-                    
-                    [self.webView stringByEvaluatingJavaScriptFromString:@"resetResponses()"];
-                    
-                    switch (self.paymentType) {
-                            
-                        case CTPaymentTypeCarRental: {
-                            CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:json];
-                            self.carRentalSearch.booking = booking;
-                            
-                            CTRentalBooking *savedBooking = [[CTRentalBooking alloc] init];
-                            savedBooking.bookingId = booking.confID;
-                            savedBooking.pickupLocation = self.carRentalSearch.pickupLocation.name;
-                            savedBooking.dropoffLocation = self.carRentalSearch.dropoffLocation.name;
-                            savedBooking.pickupDate = self.carRentalSearch.pickupDate;
-                            savedBooking.dropoffDate = self.carRentalSearch.dropoffDate;
-                            savedBooking.vehicleImage = self.carRentalSearch.selectedVehicle.vehicle.pictureURL.absoluteString;
-                            savedBooking.vehicleName = self.carRentalSearch.selectedVehicle.vehicle.makeModelName;
-                            [DataStore storeRentalBooking:savedBooking];
-                            
-                            self.completion(YES);
-                        }
-                            
-                            break;
-                        case CTPaymentTypeGroundTransport: {
-                            CTGroundBooking *booking = [[CTGroundBooking alloc] initWithDictionary:json];
-                            self.groundSearch.booking = booking;
-                            
-                            GTBooking *savedBooking = [[GTBooking alloc] init];
-                            savedBooking.bookingId = booking.confirmationId;
-                            savedBooking.pickupLocation = self.groundSearch.pickupLocation.name;
-                            savedBooking.dropoffLocation = self.groundSearch.dropoffLocation.name;
-                            savedBooking.pickupDate = self.groundSearch.pickupLocation.dateTime;
-                            savedBooking.dropoffDate = self.groundSearch.dropoffLocation.dateTime;
-                            savedBooking.vehicleImage = self.groundSearch.selectedService.vehicleImage != nil ? self.groundSearch.selectedService.vehicleImage.absoluteString : self.groundSearch.selectedShuttle.vehicleImage.absoluteString;
-                            savedBooking.vehicleName = self.groundSearch.selectedShuttle != nil ? self.groundSearch.selectedShuttle.companyName : self.groundSearch.selectedService.companyName;
-                            [DataStore storeGTBooking:savedBooking];
-                            
-                            self.completion(YES);
-                        }
-                            
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-        } else {
-            if ([[self.webView stringByEvaluatingJavaScriptFromString:@"getCurrentState()"] isEqualToString:@"ValidationError"]) {
-                [self.webView stringByEvaluatingJavaScriptFromString:@"resetResponses()"];
-                if (self.completion) {
-                    self.completion(NO);
-                }
-                _runLoop = NO;
-            }
-        }
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error
+{
+    if (self.delegate) {
+        [self.delegate didFailLoadingPaymentView];
     }
 }
 
@@ -455,20 +385,12 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     }
 }
 
-- (void)termsAndConditionsChecked:(BOOL)check
-{
-    _termsChecked = check;
-}
-
 - (void)confirmPayment
 {
-    if (!self.runLoop) {
-        [self setupWebView];
+    [self.webView evaluateJavaScript:@"validateAndBook()" completionHandler:nil];
+    if (self.delegate) {
+        [self.delegate willMakeBooking];
     }
-
-    [self.webView stringByEvaluatingJavaScriptFromString:@"validateAndBook()"];
-    _runLoop = YES;
-
 }
 
 @end

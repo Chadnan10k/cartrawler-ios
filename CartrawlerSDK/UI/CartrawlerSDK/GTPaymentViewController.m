@@ -18,7 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *webViewContainer;
 @property (strong, nonatomic) CTPaymentView *paymentView;
-@property (weak, nonatomic) IBOutlet CTCheckbox *termsCheckbox;
 @property (weak, nonatomic) IBOutlet UITextView *termsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet CTButton *confirmButton;
@@ -64,10 +63,6 @@
         }
     };
     
-    self.termsCheckbox.viewTapped = ^(BOOL tapped){
-        [weakSelf.paymentView termsAndConditionsChecked:tapped];
-    };
-    
     NSString *link1 = @"<a href='https://ajaxgeo.cartrawler.com/webapp-gt-1.6.36-3//tc/services/booking-conditions_EN.html'><b>Transfer conditions</b></a>";
     NSString *link2 = @"<a href='https://ajaxgeo.cartrawler.com/webapp-gt-1.6.36-3//tc/booking/booking-conditions_EN.html'><b>Booking Terms and Conditions</b></a>";
 
@@ -102,14 +97,12 @@
         self.confirmButton.enabled = YES;
         self.confirmButton.alpha = 1;
         self.termsLabel.userInteractionEnabled = YES;
-        self.termsCheckbox.userInteractionEnabled = YES;
     } else {
         self.backButton.enabled = NO;
         self.backButton.alpha = 0.8;
         self.confirmButton.enabled = NO;
         self.confirmButton.alpha = 0.8;
         self.termsLabel.userInteractionEnabled = NO;
-        self.termsCheckbox.userInteractionEnabled = NO;
         
     }
 }

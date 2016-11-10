@@ -23,6 +23,8 @@
 /* Begin PBXBuildFile section */
 		450DF2131DD2131C00A365A0 /* CTInterstitialCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 450DF2111DD2131C00A365A0 /* CTInterstitialCollectionViewCell.h */; };
 		450DF2141DD2131C00A365A0 /* CTInterstitialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 450DF2121DD2131C00A365A0 /* CTInterstitialCollectionViewCell.m */; };
+		4513B6241DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4513B6221DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h */; };
+		4513B6251DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4513B6231DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m */; };
 		454D91F01DD34E24001AE96C /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D91EE1DD34E24001AE96C /* Reachability.h */; };
 		454D91F11DD34E24001AE96C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D91EF1DD34E24001AE96C /* Reachability.m */; };
 		455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736E1D806064000CB1E5 /* GTPaymentRequest.h */; };
@@ -338,6 +340,8 @@
 		45130C941DBF674F0081582B /* CartrawlerSDK+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+UIColor.m"; sourceTree = "<group>"; };
 		45137C821D476AB100089928 /* CTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPickerView.h; sourceTree = "<group>"; };
 		45137C831D476AB100089928 /* CTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPickerView.m; sourceTree = "<group>"; };
+		4513B6221DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+WKWebView.h"; sourceTree = "<group>"; };
+		4513B6231DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+WKWebView.m"; sourceTree = "<group>"; };
 		451B4BE71D2BC8C3006A57E7 /* TermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsViewController.h; sourceTree = "<group>"; };
 		451B4BE81D2BC8C3006A57E7 /* TermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsViewController.m; sourceTree = "<group>"; };
 		451B4BEC1D2BC99B006A57E7 /* TermsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsDetailViewController.h; sourceTree = "<group>"; };
@@ -1316,6 +1320,8 @@
 				451D7E801DBE1197001A4062 /* DataStore.m */,
 				454D91EE1DD34E24001AE96C /* Reachability.h */,
 				454D91EF1DD34E24001AE96C /* Reachability.m */,
+				4513B6221DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h */,
+				4513B6231DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1505,6 +1511,7 @@
 				455B58C51DCC914400CA4790 /* CTCalendarTableViewCell.h in Headers */,
 				455B58C71DCC914400CA4790 /* CTDateCollectionViewCell.h in Headers */,
 				455B58C91DCC914400CA4790 /* CalendarLogicController.h in Headers */,
+				4513B6241DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h in Headers */,
 				455B58CB1DCC914400CA4790 /* CTMiddleDateCell.h in Headers */,
 				455B58CD1DCC914400CA4790 /* CTSelectView.h in Headers */,
 				455B58CF1DCC914400CA4790 /* SettingsSelectionViewController.h in Headers */,
@@ -1727,6 +1734,7 @@
 				455B58AC1DCC914400CA4790 /* GenericValidation.m in Sources */,
 				455B58AD1DCC914400CA4790 /* InsuranceValidation.m in Sources */,
 				455B58AF1DCC914400CA4790 /* PaymentValidation.m in Sources */,
+				4513B6251DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m in Sources */,
 				455B58B11DCC914400CA4790 /* SearchValidation.m in Sources */,
 				455B58B31DCC914400CA4790 /* BookingCompletionValidation.m in Sources */,
 				455B58B61DCC914400CA4790 /* CTValidation.m in Sources */,

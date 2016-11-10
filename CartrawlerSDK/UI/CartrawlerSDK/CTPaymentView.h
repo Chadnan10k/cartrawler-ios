@@ -15,6 +15,8 @@
 
 - (void)didLoadPaymentView;
 - (void)didFailLoadingPaymentView;
+- (void)willMakeBooking;
+- (void)paymentFailed;
 - (void)didMakeBooking;
 
 @end
@@ -34,6 +36,5 @@ typedef void (^PaymentCompletion)(BOOL success);
 //Controls
 
 - (void)confirmPayment;
-- (void)termsAndConditionsChecked:(BOOL)check;
 
 @end

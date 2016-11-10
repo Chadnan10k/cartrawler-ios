@@ -26,21 +26,25 @@
 
 + (NSURL *)vehicle:(NSString *)urlString
 {
-    NSString *endpoint = @"https://ct-images.imgix.net";
-    NSURL *baseURL = [NSURL URLWithString:urlString];
-    NSMutableString *path = [[NSMutableString alloc] initWithString:[baseURL path]];
-    
-    if (![path containsString:@"v5"] || ![path containsString:@"V5"]) {
-        NSRange range = [path rangeOfString:@"/otaimages/"];
-        if (range.location != NSNotFound && (![path containsString:@"v5"] && ![path containsString:@"V5"])) {
-            [path insertString:@"v5/" atIndex:range.length];
+    if (![urlString isEqualToString:@""] || !urlString) {
+        NSString *endpoint = @"https://ct-images.imgix.net";
+        NSURL *baseURL = [NSURL URLWithString:urlString];
+        NSMutableString *path = [[NSMutableString alloc] initWithString:[baseURL path]];
+        
+        if (![path containsString:@"v5"] || ![path containsString:@"V5"]) {
+            NSRange range = [path rangeOfString:@"/otaimages/"];
+            if (range.location != NSNotFound && (![path containsString:@"v5"] && ![path containsString:@"V5"])) {
+                [path insertString:@"v5/" atIndex:range.length];
+            }
         }
-    }
-    
-    [path insertString:endpoint atIndex:0];
-    [path appendString:@"?w=180&dpr=2"];
+        
+        [path insertString:endpoint atIndex:0];
+        [path appendString:@"?w=180&dpr=2"];
 
-    return [[NSURL alloc] initWithString:path];
+        return [[NSURL alloc] initWithString:path];
+    } else {
+        return nil;
+    }
 }
 
 + (NSURL *)gtVehicle:(NSString *)urlString

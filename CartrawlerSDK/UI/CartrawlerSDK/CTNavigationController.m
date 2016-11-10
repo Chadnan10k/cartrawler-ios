@@ -18,20 +18,11 @@
 - (id)initWithRootViewController:(UIViewController *)rootViewController
 {
     self = [super initWithRootViewController:rootViewController];
-
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSShadow *shadow = [NSShadow new];
-    shadow.shadowColor = [UIColor clearColor];
-    shadow.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].fontName size:20],
-                                NSForegroundColorAttributeName: [UIColor blackColor]};
-    
-    [UINavigationBar appearance].titleTextAttributes = attributes;
 }
 
 - (void)didReceiveMemoryWarning {
