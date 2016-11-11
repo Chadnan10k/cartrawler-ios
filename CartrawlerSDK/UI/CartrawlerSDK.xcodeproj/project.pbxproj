@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		45364CB31D782E23003EBB5D /* Build All Debug */ = {
+		45D385ED1DD61BAB000F02D1 /* CartrawlerSDK-Universal */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 45364CB41D782E23003EBB5D /* Build configuration list for PBXAggregateTarget "Build All Debug" */;
+			buildConfigurationList = 45D385EE1DD61BAB000F02D1 /* Build configuration list for PBXAggregateTarget "CartrawlerSDK-Universal" */;
 			buildPhases = (
-				45364CB71D782E27003EBB5D /* ShellScript */,
+				45D385F11DD61BB1000F02D1 /* ShellScript */,
 			);
 			dependencies = (
 			);
-			name = "Build All Debug";
-			productName = "Build All Debug";
+			name = "CartrawlerSDK-Universal";
+			productName = "CartrawlerSDK-Universal";
 		};
 /* End PBXAggregateTarget section */
 
@@ -294,6 +294,7 @@
 		455B59591DCC96D500CA4790 /* CartrawlerSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45C980C21DCCDB95002D99AB /* CTLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C980C01DCCDB95002D99AB /* CTLayoutConstraint.h */; };
 		45C980C31DCCDB95002D99AB /* CTLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C980C11DCCDB95002D99AB /* CTLayoutConstraint.m */; };
+		45D3860A1DD62281000F02D1 /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45D386091DD62281000F02D1 /* strip-frameworks.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -498,6 +499,7 @@
 		45CFC7D91D2CF4D9006E6F83 /* StepFour.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StepFour.storyboard; sourceTree = "<group>"; };
 		45CFC7DB1D2CF822006E6F83 /* ExtrasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtrasViewController.h; sourceTree = "<group>"; };
 		45CFC7DC1D2CF822006E6F83 /* ExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtrasViewController.m; sourceTree = "<group>"; };
+		45D386091DD62281000F02D1 /* strip-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "strip-frameworks.sh"; sourceTree = "<group>"; };
 		45D6CC8F1DA55FBB000D7A6C /* FlightNumberValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightNumberValidation.h; sourceTree = "<group>"; };
 		45D6CC901DA55FBB000D7A6C /* FlightNumberValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightNumberValidation.m; sourceTree = "<group>"; };
 		45D6CC991DA6A569000D7A6C /* CTFilterContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterContainer.h; sourceTree = "<group>"; };
@@ -1127,6 +1129,7 @@
 		45E9423A1D12FF0F00ACF604 = {
 			isa = PBXGroup;
 			children = (
+				45D386091DD62281000F02D1 /* strip-frameworks.sh */,
 				45E942ED1D13040800ACF604 /* Foundation.framework */,
 				45E942EB1D1303C500ACF604 /* UIKit.framework */,
 				45E942451D12FF0F00ACF604 /* CartrawlerSDK */,
@@ -1605,13 +1608,13 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Cartrawler;
 				TargetAttributes = {
-					45364CB31D782E23003EBB5D = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 3L8QU4R2JJ;
-						ProvisioningStyle = Automatic;
-					};
 					455B582A1DCC90D300CA4790 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 93JSQ29ZDX;
+						ProvisioningStyle = Automatic;
+					};
+					45D385ED1DD61BAB000F02D1 = {
+						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 93JSQ29ZDX;
 						ProvisioningStyle = Automatic;
 					};
@@ -1629,8 +1632,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				45364CB31D782E23003EBB5D /* Build All Debug */,
 				455B582A1DCC90D300CA4790 /* CartrawlerSDK */,
+				45D385ED1DD61BAB000F02D1 /* CartrawlerSDK-Universal */,
 			);
 		};
 /* End PBXProject section */
@@ -1654,6 +1657,7 @@
 				455B59501DCC91F900CA4790 /* Payment.storyboard in Resources */,
 				455B59511DCC91F900CA4790 /* CTCurrency.csv in Resources */,
 				455B59521DCC91F900CA4790 /* CTISOCountries.csv in Resources */,
+				45D3860A1DD62281000F02D1 /* strip-frameworks.sh in Resources */,
 				455B59531DCC91F900CA4790 /* CTLanguages.csv in Resources */,
 				455B59541DCC91F900CA4790 /* VehicleTableViewCell_iPhone.xib in Resources */,
 				455B59551DCC91F900CA4790 /* OptionalExtraTableViewCell.xib in Resources */,
@@ -1663,7 +1667,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		45364CB71D782E27003EBB5D /* ShellScript */ = {
+		45D385F11DD61BB1000F02D1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1674,7 +1678,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#build ota api project\ncd ../\nxcodebuild -scheme Framework_OTA\n#build UI\nxcodebuild -scheme Framework_UI";
+			shellScript = "\n######################\n# Options\n######################\n\nREVEAL_ARCHIVE_IN_FINDER=true\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal-CartrawlerSDK\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\n\n######################\n# Build Frameworks\n######################\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphonesimulator -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator 2>&1\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphoneos -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos 2>&1\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n\n# For Swift framework, Swiftmodule needs to be copied in the universal framework\nif [ -d \"${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" ]; then\ncp -f ${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule\n\n\"${FRAMEWORK}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" | echo\n                                                                      fi\n                                                                      \n                                                                      if [ -d \"${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" ]; then\n                                                                      cp -f ${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule\n\"${FRAMEWORK}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" | echo\n                                                                      fi\n                                                                      \n                                                                      ######################\n                                                                      # On Release, copy the result to release directory\n                                                                      ######################\n                                                                      OUTPUT_DIR=\"${PROJECT_DIR}/Output/${FRAMEWORK_NAME}-${CONFIGURATION}-iphoneuniversal/\"\n                                                                      \n                                                                      rm -rf \"$OUTPUT_DIR\"\n                                                                      mkdir -p \"$OUTPUT_DIR\"\n                                                                      \n                                                                      cp -r \"${FRAMEWORK}\" \"$OUTPUT_DIR\"\n                                                                      \n                                                                      if [ ${REVEAL_ARCHIVE_IN_FINDER} = true ]; then\n                                                                      open \"${OUTPUT_DIR}/\"\n                                                                      fi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1817,22 +1821,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		45364CB51D782E23003EBB5D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		45364CB61D782E23003EBB5D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		455B58311DCC90D300CA4790 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1882,6 +1870,22 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		45D385EF1DD61BAB000F02D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 93JSQ29ZDX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45D385F01DD61BAB000F02D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 93JSQ29ZDX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -1976,15 +1980,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		45364CB41D782E23003EBB5D /* Build configuration list for PBXAggregateTarget "Build All Debug" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				45364CB51D782E23003EBB5D /* Debug */,
-				45364CB61D782E23003EBB5D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		455B58301DCC90D300CA4790 /* Build configuration list for PBXNativeTarget "CartrawlerSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1993,6 +1988,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		45D385EE1DD61BAB000F02D1 /* Build configuration list for PBXAggregateTarget "CartrawlerSDK-Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45D385EF1DD61BAB000F02D1 /* Debug */,
+				45D385F01DD61BAB000F02D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		45E9423E1D12FF0F00ACF604 /* Build configuration list for PBXProject "CartrawlerSDK" */ = {
 			isa = XCConfigurationList;

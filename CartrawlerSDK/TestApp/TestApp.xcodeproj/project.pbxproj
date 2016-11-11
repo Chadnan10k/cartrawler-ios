@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		450DF20F1DD1F2D600A365A0 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450DF20D1DD1F2D600A365A0 /* CartrawlerAPI.framework */; };
-		450DF2101DD1F2D600A365A0 /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450DF20E1DD1F2D600A365A0 /* CartrawlerSDK.framework */; };
 		45295F5E1D78412500A09B8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45295F5D1D78412500A09B8A /* main.m */; };
 		45295F611D78412500A09B8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45295F601D78412500A09B8A /* AppDelegate.m */; };
 		45295F641D78412500A09B8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45295F631D78412500A09B8A /* ViewController.m */; };
@@ -19,6 +17,10 @@
 		455B59781DCCB22E00CA4790 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 455B59761DCCB22500CA4790 /* Roboto-Regular.ttf */; };
 		45A7B7561D9BE003006611EB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */; };
 		45A7B7571D9BE007006611EB /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */; };
+		45D3860C1DD622D4000F02D1 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D3860B1DD622D4000F02D1 /* CartrawlerAPI.framework */; };
+		45D3860D1DD622D4000F02D1 /* CartrawlerAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 45D3860B1DD622D4000F02D1 /* CartrawlerAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		45D3860F1DD622D4000F02D1 /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D3860E1DD622D4000F02D1 /* CartrawlerSDK.framework */; };
+		45D386101DD622D4000F02D1 /* CartrawlerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 45D3860E1DD622D4000F02D1 /* CartrawlerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +30,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				45D386101DD622D4000F02D1 /* CartrawlerSDK.framework in Embed Frameworks */,
+				45D3860D1DD622D4000F02D1 /* CartrawlerAPI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -35,8 +39,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		450DF20D1DD1F2D600A365A0 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CartrawlerAPI.framework; sourceTree = "<group>"; };
-		450DF20E1DD1F2D600A365A0 /* CartrawlerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CartrawlerSDK.framework; sourceTree = "<group>"; };
 		45295F591D78412500A09B8A /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45295F5D1D78412500A09B8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		45295F5F1D78412500A09B8A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +53,8 @@
 		455B59761DCCB22500CA4790 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		45D3860B1DD622D4000F02D1 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45D3860E1DD622D4000F02D1 /* CartrawlerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				450DF2101DD1F2D600A365A0 /* CartrawlerSDK.framework in Frameworks */,
-				450DF20F1DD1F2D600A365A0 /* CartrawlerAPI.framework in Frameworks */,
+				45D3860F1DD622D4000F02D1 /* CartrawlerSDK.framework in Frameworks */,
+				45D3860C1DD622D4000F02D1 /* CartrawlerAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,8 +73,8 @@
 		45295F501D78412500A09B8A = {
 			isa = PBXGroup;
 			children = (
-				450DF20D1DD1F2D600A365A0 /* CartrawlerAPI.framework */,
-				450DF20E1DD1F2D600A365A0 /* CartrawlerSDK.framework */,
+				45D3860E1DD622D4000F02D1 /* CartrawlerSDK.framework */,
+				45D3860B1DD622D4000F02D1 /* CartrawlerAPI.framework */,
 				45295F5B1D78412500A09B8A /* TestApp */,
 				45295F5A1D78412500A09B8A /* Products */,
 			);
@@ -140,7 +144,7 @@
 		45295F511D78412500A09B8A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Cartrawler;
 				TargetAttributes = {
 					45295F581D78412500A09B8A = {
@@ -197,7 +201,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/CartrawlerSDK.framework/strip-frameworks.sh\"\nbash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/CartrawlerAPI.framework/strip-frameworks.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -252,6 +256,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -300,6 +305,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
