@@ -108,11 +108,6 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                                                                error:&jsonError];
         
         if ([self.jsonResponse containsString:@"ErrorCode"] || [self.jsonResponse containsString:@"@ShortText"]) {
-            
-            if (self.completion) {
-                self.completion(NO);
-            }
-            
             if (self.delegate) {
                 [self.delegate paymentFailed];
             }
@@ -123,62 +118,62 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
             
         } else {
             
-            if (self.completion) {
-                
-                [self.webView evaluateJavaScript:@"resetResponses()" completionHandler:nil];
-                
-                if (self.delegate) {
-                    [self.delegate didMakeBooking];
+            [self.webView evaluateJavaScript:@"resetResponses()" completionHandler:nil];
+            
+            if (self.delegate) {
+                [self.delegate didMakeBooking];
+            }
+            
+            switch (self.paymentType) {
+                    
+                case CTPaymentTypeCarRental: {
+                    CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:json];
+                    self.carRentalSearch.booking = booking;
+                    
+                    CTRentalBooking *savedBooking = [[CTRentalBooking alloc] init];
+                    savedBooking.bookingId = booking.confID;
+                    savedBooking.pickupLocation = self.carRentalSearch.pickupLocation.name;
+                    savedBooking.dropoffLocation = self.carRentalSearch.dropoffLocation.name;
+                    savedBooking.pickupDate = self.carRentalSearch.pickupDate;
+                    savedBooking.dropoffDate = self.carRentalSearch.dropoffDate;
+                    savedBooking.vehicleImage = self.carRentalSearch.selectedVehicle.vehicle.pictureURL.absoluteString;
+                    savedBooking.vehicleName = self.carRentalSearch.selectedVehicle.vehicle.makeModelName;
+                    [DataStore storeRentalBooking:savedBooking];
+                    
                 }
-                
-                switch (self.paymentType) {
-                        
-                    case CTPaymentTypeCarRental: {
-                        CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:json];
-                        self.carRentalSearch.booking = booking;
-                        
-                        CTRentalBooking *savedBooking = [[CTRentalBooking alloc] init];
-                        savedBooking.bookingId = booking.confID;
-                        savedBooking.pickupLocation = self.carRentalSearch.pickupLocation.name;
-                        savedBooking.dropoffLocation = self.carRentalSearch.dropoffLocation.name;
-                        savedBooking.pickupDate = self.carRentalSearch.pickupDate;
-                        savedBooking.dropoffDate = self.carRentalSearch.dropoffDate;
-                        savedBooking.vehicleImage = self.carRentalSearch.selectedVehicle.vehicle.pictureURL.absoluteString;
-                        savedBooking.vehicleName = self.carRentalSearch.selectedVehicle.vehicle.makeModelName;
-                        [DataStore storeRentalBooking:savedBooking];
-                        
-                        self.completion(YES);
-                    }
-                        
-                        break;
-                    case CTPaymentTypeGroundTransport: {
-                        CTGroundBooking *booking = [[CTGroundBooking alloc] initWithDictionary:json];
-                        self.groundSearch.booking = booking;
-                        
-                        GTBooking *savedBooking = [[GTBooking alloc] init];
-                        savedBooking.bookingId = booking.confirmationId;
-                        savedBooking.pickupLocation = self.groundSearch.pickupLocation.name;
-                        savedBooking.dropoffLocation = self.groundSearch.dropoffLocation.name;
-                        savedBooking.pickupDate = self.groundSearch.pickupLocation.dateTime;
-                        savedBooking.dropoffDate = self.groundSearch.dropoffLocation.dateTime;
-                        savedBooking.vehicleImage = self.groundSearch.selectedService.vehicleImage != nil ? self.groundSearch.selectedService.vehicleImage.absoluteString : self.groundSearch.selectedShuttle.vehicleImage.absoluteString;
-                        savedBooking.vehicleName = self.groundSearch.selectedShuttle != nil ? self.groundSearch.selectedShuttle.companyName : self.groundSearch.selectedService.companyName;
-                        [DataStore storeGTBooking:savedBooking];
-                        
-                        self.completion(YES);
-                    }
-                        
-                        break;
-                    default:
-                        break;
+                    
+                    break;
+                case CTPaymentTypeGroundTransport: {
+                    CTGroundBooking *booking = [[CTGroundBooking alloc] initWithDictionary:json];
+                    self.groundSearch.booking = booking;
+                    
+                    GTBooking *savedBooking = [[GTBooking alloc] init];
+                    savedBooking.bookingId = booking.confirmationId;
+                    savedBooking.pickupLocation = self.groundSearch.pickupLocation.name;
+                    savedBooking.dropoffLocation = self.groundSearch.dropoffLocation.name;
+                    savedBooking.pickupDate = self.groundSearch.pickupLocation.dateTime;
+                    savedBooking.dropoffDate = self.groundSearch.dropoffLocation.dateTime;
+                    savedBooking.vehicleImage = self.groundSearch.selectedService.vehicleImage != nil ? self.groundSearch.selectedService.vehicleImage.absoluteString : self.groundSearch.selectedShuttle.vehicleImage.absoluteString;
+                    savedBooking.vehicleName = self.groundSearch.selectedShuttle != nil ? self.groundSearch.selectedShuttle.companyName : self.groundSearch.selectedService.companyName;
+                    [DataStore storeGTBooking:savedBooking];
+                    
                 }
+                    break;
+                default:
+                    break;
             }
         }
     }
     
-    if (sentData[@"disableBackButton"]) {
-        if (self.delegate) {
-            [self.delegate willMakeBooking];
+    if (sentData[@"backButtonEnabled"]) {
+        if ([sentData[@"backButtonEnabled"] intValue] == 0) {
+            if (self.delegate) {
+                [self.delegate willMakeBooking];
+            }
+        } else {
+            if (self.delegate) {
+                [self.delegate paymentFailed];
+            }
         }
     }
 }
@@ -341,8 +336,12 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     
 }
 
-
 #pragma mark Web View
+
+- (void)reload
+{
+    [self.webView reload];
+}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
@@ -351,9 +350,16 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     }
 }
 
-- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
     
+}
+
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error
+{
+    if (self.delegate) {
+        [self.delegate didFailLoadingPaymentView];
+    }
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error
@@ -377,10 +383,6 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
             [self setForGTPayment:self.groundSearch];
         } else if (self.carRentalSearch) {
             [self setForCarRentalPayment:self.carRentalSearch];
-        }
-        
-        if (self.completion) {
-            self.completion(NO);
         }
     }
 }

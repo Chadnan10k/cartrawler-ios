@@ -23,13 +23,10 @@
 
 @interface CTPaymentView : UIView
 
-typedef void (^PaymentCompletion)(BOOL success);
-
-@property (nonatomic, strong) PaymentCompletion completion;
 @property (nonatomic, weak) id<CTPaymentViewDelegate> delegate;
 
 - (void)presentInView:(UIView *)parentView;
-
+- (void)reload;
 - (void)setForGTPayment:(GroundTransportSearch *)search;
 - (void)setForCarRentalPayment:(CarRentalSearch *)search;
 

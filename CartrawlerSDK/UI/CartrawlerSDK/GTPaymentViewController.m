@@ -49,19 +49,17 @@
     // Do any additional setup after loading the view.
     _paymentView = [[CTPaymentView alloc] initWithFrame:CGRectZero];
     [self.paymentView presentInView:self.webViewContainer];
-    
-    __weak typeof (self) weakSelf = self;
-    
-    self.paymentView.completion = ^(BOOL success){
-        [weakSelf enableControls:YES];
-        if (success) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf pushToDestination];
-            });
-        } else {
-            
-        }
-    };
+        //TODO: fix
+//    self.paymentView.completion = ^(BOOL success){
+//        [weakSelf enableControls:YES];
+//        if (success) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [weakSelf pushToDestination];
+//            });
+//        } else {
+//            
+//        }
+//    };
     
     NSString *link1 = @"<a href='https://ajaxgeo.cartrawler.com/webapp-gt-1.6.36-3//tc/services/booking-conditions_EN.html'><b>Transfer conditions</b></a>";
     NSString *link2 = @"<a href='https://ajaxgeo.cartrawler.com/webapp-gt-1.6.36-3//tc/booking/booking-conditions_EN.html'><b>Booking Terms and Conditions</b></a>";

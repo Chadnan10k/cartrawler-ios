@@ -46,7 +46,7 @@
     }
 }
 
-- (void)animate:(int)delay
+- (void)animate:(NSInteger)delay
 {
     //int delay = randInRange(1, 6);
 
@@ -63,11 +63,6 @@
                              self.transform = CGAffineTransformIdentity;
         }];
     }];
-}
-
-int randInRange(int min, int max)
-{
-    return min + (int) (rand() / (double) (RAND_MAX + 1) * (max - min + 1));
 }
 
 @end

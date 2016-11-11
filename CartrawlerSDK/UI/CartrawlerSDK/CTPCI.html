@@ -17,13 +17,14 @@
                     switch(paymentFormMsg.action) {
                         case "sendMessage":
                           currentState = "SendingPayment";
-                          securePaymentWin.contentWindow.postMessage({"disableBackButton" : "disable"} , "*");
+                          window.webkit.messageHandlers.CTWebView.postMessage({"backButtonEnabled" : false} , "*");
                           break;
                         case "sendError":
                           currentState = "PaymentError";
                           break;
                         case "validation":
                           currentState = "ValidationError";
+                          window.webkit.messageHandlers.CTWebView.postMessage({"backButtonEnabled" : true} , "*");
                           break;
                         case "onError":
                           currentState = "PaymentError";

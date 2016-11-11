@@ -11,6 +11,6 @@
 @interface CTInterstitialCollectionViewCell : UICollectionViewCell
 
 - (void)setData:(UIImage *)image;
-- (void)animate:(int)delay;
+- (void)animate:(NSInteger)delay;
 
 @end

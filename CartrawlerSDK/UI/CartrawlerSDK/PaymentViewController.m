@@ -45,7 +45,25 @@
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
     self.backButton.enabled = YES;
-
+    
+    Reachability* curReach = self.internetReachability;
+    NetworkStatus networkStatus = [curReach currentReachabilityStatus];
+    switch (networkStatus) {
+        case NotReachable:
+            NSLog(@"no internet");
+            [self presentAlertView:@"No Internet Connection"
+                           message:@"In order to complete your booking you will need an internet connection"];
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
+        case ReachableViaWiFi:
+            NSLog(@"has internet");
+            break;
+        case ReachableViaWWAN:
+            NSLog(@"has internet");
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -64,22 +82,6 @@
     _internetReachability = [Reachability reachabilityForInternetConnection];
     [self.internetReachability startNotifier];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
-
-    __weak typeof (self) weakSelf = self;
-    
-    self.paymentView.completion = ^(BOOL success){
-        [weakSelf enableControls:YES];
-        if (success) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf pushToDestination];
-                if (weakSelf.delegate) {
-                    [weakSelf.delegate didBookVehicle:weakSelf.search.booking];
-                }
-            });
-        } else {
-            
-        }
-    };
     
     NSString *link1 = @"<a href='www.cartrawler.com'><b>Rental conditions</b></a>";
     
@@ -161,11 +163,15 @@
 - (void)didMakeBooking
 {
     [self enableControls:YES];
+    [self pushToDestination];
+    if (self.delegate) {
+        [self.delegate didBookVehicle:self.search.booking];
+    }
 }
 
 #pragma mark Reachability
 
-- (void) reachabilityChanged:(NSNotification *)note
+- (void)reachabilityChanged:(NSNotification *)note
 {
     Reachability* curReach = [note object];
     NetworkStatus networkStatus = [curReach currentReachabilityStatus];
@@ -184,12 +190,14 @@
             break;
         case ReachableViaWiFi:
             //carry on
+            [self.paymentView reload];
             [self dismissAlertView];
             [self enableControls:YES];
             break;
             
         case ReachableViaWWAN:
             //carry on
+            [self.paymentView reload];
             [self dismissAlertView];
             [self enableControls:YES];
             break;
@@ -225,6 +233,7 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
+    
 }
 
 @end
