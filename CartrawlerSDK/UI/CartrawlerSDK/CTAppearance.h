@@ -24,6 +24,9 @@
 @property (nonatomic, strong) UIColor  *iconTint;
 @property (nonatomic) CGFloat          containerViewCornerRadius;
 @property (nonatomic) CGFloat          containerViewMarginPadding;
+@property (nonatomic, strong) UIColor  *headerTitleColor;
+@property (nonatomic, strong) UIColor  *subheaderTitleColor;
+
 
 //Text
 @property (nonatomic)         CGFloat  textFieldCornerRadius;

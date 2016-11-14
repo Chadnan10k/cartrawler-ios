@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="250"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s9a-CW-Vhl" id="IHL-eK-8dY">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="249"/>
+                <rect key="frame" x="0.0" y="0.0" width="600" height="249.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHn-no-xJJ" customClass="CTDesignableView">
@@ -98,7 +98,7 @@
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Air conditioning" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="OcP-n9-n3b" customClass="CTLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="OcP-n9-n3b" customClass="CTLabel">
                                         <rect key="frame" x="31" y="109.5" width="413" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="LyO-m7-S6E"/>
@@ -271,11 +271,11 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="airconImageView" destination="drJ-uI-cWc" id="vCB-SE-Sdt"/>
-                <outlet property="airconLabel" destination="OcP-n9-n3b" id="tvw-JN-ef1"/>
                 <outlet property="fuelPolicyLabel" destination="Rje-wO-iNr" id="lXF-uT-zeo"/>
                 <outlet property="headerView" destination="Ij8-sP-xJs" id="NuP-2w-0ZG"/>
                 <outlet property="merchBannerView" destination="aHb-Ff-zoI" id="2B3-o2-B6D"/>
                 <outlet property="passengerQtyLabel" destination="CmS-84-x9T" id="Dct-R4-fAr"/>
+                <outlet property="pickupLabel" destination="OcP-n9-n3b" id="CkO-nA-Ukr"/>
                 <outlet property="specialOfferBannerView" destination="hBZ-Er-3Cy" id="CLN-cw-28v"/>
                 <outlet property="totalPriceBottomConstranit" destination="imu-q5-AXa" id="Rox-xG-EQY"/>
                 <outlet property="totalPriceLabel" destination="9K3-lE-Cnc" id="v8o-pA-pfZ"/>

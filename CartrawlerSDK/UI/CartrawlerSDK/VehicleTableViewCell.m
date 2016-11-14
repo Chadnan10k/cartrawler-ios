@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet CTLabel *vehicleNameLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *passengerQtyLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *transmissionLabel;
-@property (weak, nonatomic) IBOutlet CTLabel *airconLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *pickupLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *fuelPolicyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
@@ -89,7 +89,7 @@
     self.transmissionLabel.text = item.vehicle.transmissionType;
     self.fuelPolicyLabel.text = [self fuelPolicyString: item.vehicle.fuelPolicy];
     
-    self.airconLabel.text = [LocalisedStrings pickupType:item];
+    self.pickupLabel.text = [LocalisedStrings pickupType:item];
 
     self.totalPriceLabel.text = [item.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
     self.totalPriceLabel.textColor = [CTAppearance instance].vehicleCellTint;

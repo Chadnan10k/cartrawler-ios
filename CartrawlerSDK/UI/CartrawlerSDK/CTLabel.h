@@ -12,7 +12,7 @@ IB_DESIGNABLE
 @interface CTLabel : UILabel
 
 @property (nonatomic) IBInspectable BOOL useBoldFont;
-
-
+@property (nonatomic) IBInspectable BOOL isHeaderTitle;
+@property (nonatomic) IBInspectable BOOL isSubheaderTitle;
 
 @end

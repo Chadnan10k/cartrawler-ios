@@ -24,25 +24,21 @@
 
 @interface VehicleDetailsViewController ()
 
-@property (weak, nonatomic) IBOutlet ExpandingInfoView *pickupLocationView;
-@property (weak, nonatomic) IBOutlet ExpandingInfoView *fuelPolicyView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet CTLabel *vehicleNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
 
 @property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *vendorImageView;
 @property (weak, nonatomic) IBOutlet UITableView *includedTableView;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *includedHeight;
 @property (weak, nonatomic) IBOutlet CTLabel *includedForFreeLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *featuresCollectionViewHeight;
 @property (weak, nonatomic) IBOutlet UICollectionView *featuresCollectionView;
 
 
 @property (strong, nonatomic) VehicleFeaturesDataSource *vehicleFeaturesDataSource;
 @property (strong, nonatomic) CTInclusionsDataSource *inclusionDataSource;
+@property (weak, nonatomic) IBOutlet UIView *inclusionsContainerView;
 
 @end
 
@@ -71,7 +67,7 @@
             [[CTToolTip instance] presentPartialOverlayInView:weakSelf.view text: text];
         });
     };
-    
+    self.inclusionsContainerView.backgroundColor = [CTAppearance instance].iconTint;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -82,73 +78,19 @@
     CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
     
     NSBundle *b = [NSBundle bundleForClass:[self class]];
-    
-    if (self.search.selectedVehicle.vendor.pickupLocation.atAirport) {
-        [self.pickupLocationView setTitle:@"At Airport"
-                                     text:NSLocalizedString(@"This supplier is located in the airport.", @"This supplier is located in the airport.")
-                                    image:[UIImage imageNamed:@"airport_gray" inBundle:b compatibleWithTraitCollection:nil]];
-    } else {
-        
-        NSArray *addressComponents = [self.search.selectedVehicle.vendor.pickupLocation.address componentsSeparatedByString:@","];
-        
-        NSMutableString *address = [[NSMutableString alloc] init];
-
-        for (int i = 0; i < addressComponents.count; ++i) {
-            [address appendString:[addressComponents[i] stringByTrimmingCharactersInSet:
-             [NSCharacterSet whitespaceAndNewlineCharacterSet]]];
-            
-            if (i != addressComponents.count-1) {
-                [address appendString:@"\n"];
-            }
-        }
-        
-        [self.pickupLocationView setTitle:@"Supplier address"
-                                     text:address
-                                    image:[UIImage imageNamed:@"address" inBundle:b compatibleWithTraitCollection:nil]];
-    }
-    
-    [self.fuelPolicyView setTitle:@"Fuel policy"
-                             text:self.search.selectedVehicle.vehicle.fuelPolicyDescription
-                            image:[UIImage imageNamed:@"fuel" inBundle:b compatibleWithTraitCollection:nil]];
-
     [self.view layoutIfNeeded];
 
     [[CTImageCache sharedInstance] cachedImage: self.search.selectedVehicle.vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;
     }];
-    
-    [[CTImageCache sharedInstance] cachedImage: self.search.selectedVehicle.vendor.logoURL completion:^(UIImage *image) {
-        self.vendorImageView.image = image;
-    }];
-    
-    
-    NSMutableAttributedString *vehicleName = [[NSMutableAttributedString alloc] init];
-    
-    NSAttributedString *name = [[NSAttributedString alloc]
-                                initWithString:self.search.selectedVehicle.vehicle.makeModelName
-                                                               attributes:@{NSFontAttributeName:
-                                                                                [UIFont fontWithName:[CTAppearance instance].boldFontName size:15]}];
-    
-    NSAttributedString *orSimilar = [[NSAttributedString alloc]
-                                     initWithString:[NSString stringWithFormat:@" %@", self.search.selectedVehicle.vehicle.orSimilar]
-                                                                    attributes:@{NSFontAttributeName:
-                                                                                     [UIFont fontWithName:[CTAppearance instance].fontName size:15]}];
-    
-    [vehicleName appendAttributedString:name];
-    [vehicleName appendAttributedString:orSimilar];
-    
-    self.vehicleNameLabel.attributedText = vehicleName;
-    
-    
 
-    NSMutableArray *featureData = [[NSMutableArray alloc] init];
-    [featureData addObject:@{ @"text" : [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.passengerQty.stringValue, NSLocalizedString(@"passengers", @"passengers")], @"image" : @"people" }];
-    [featureData addObject:@{ @"text" : [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.doorCount.stringValue, NSLocalizedString(@"doors", @"doors")], @"image" : @"doors" }];
-    [featureData addObject:@{ @"text" : [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.baggageQty.stringValue, NSLocalizedString(@"bags", @"bags")], @"image" : @"baggage" }];
-    [featureData addObject:@{ @"text" : self.search.selectedVehicle.vehicle.transmissionType, @"image" : @"gears" }];
+    self.vehicleNameLabel.text = self.search.selectedVehicle.vehicle.makeModelName;
     
-    if (self.search.selectedVehicle.vehicle.isAirConditioned) {
-        [featureData addObject:@{ @"text" : NSLocalizedString(@"Air conditioning", @"Air Conditioning"), @"image" : @"winter_package" }];
+    NSMutableArray *featureData = [[NSMutableArray alloc] init];
+    
+    for (CTPricedCoverage *pc in self.search.selectedVehicle.vehicle.pricedCoverages) {
+        [featureData addObject:@{ @"text" : [NSString stringWithFormat:@"%@ %@", pc.chargeDescription,
+                                             NSLocalizedString(@"passengers", @"passengers")], @"image" : @"white_checkmark" }];
     }
     
     [self.vehicleFeaturesDataSource setData:featureData];
@@ -157,8 +99,13 @@
     [self.featuresCollectionView reloadData];
     [self.featuresCollectionView layoutIfNeeded];
     [self.view layoutIfNeeded];
-    self.featuresCollectionViewHeight.constant = self.featuresCollectionView.contentSize.height;
-
+    
+    for (NSLayoutConstraint *c in self.featuresCollectionView.constraints) {
+        if (c.firstAttribute == NSLayoutAttributeHeight) {
+            c.constant = self.featuresCollectionView.contentSize.height;
+        }
+    }
+    
     if (self.search.selectedVehicle.vehicle.pricedCoverages.count > 0) {
         [self.includedTableView reloadData];
         [self.includedTableView beginUpdates];
@@ -167,7 +114,11 @@
         self.includedForFreeLabel.hidden = NO;
     } else {
         [self.includedTableView reloadData];
-        self.includedHeight.constant = 0;
+        for (NSLayoutConstraint *c in self.includedTableView.constraints) {
+            if (c.firstAttribute == NSLayoutAttributeHeight) {
+                c.constant = 0;
+            }
+        }
         self.includedForFreeLabel.hidden = YES;
     }
     
@@ -178,30 +129,14 @@
     [self.includedTableView reloadData];
     [self.includedTableView layoutIfNeeded];
     [self.view layoutIfNeeded];
-    self.includedHeight.constant = self.includedTableView.contentSize.height;
+    for (NSLayoutConstraint *c in self.includedTableView.constraints) {
+        if (c.firstAttribute == NSLayoutAttributeHeight) {
+            c.constant = self.includedTableView.contentSize.height;
+        }
+    }
 
     if (self.search.selectedVehicle.vehicle.totalPriceForThisVehicle) {
-        
-        NSArray *priceStrings = [[self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode] componentsSeparatedByString:@"."];
-        NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];
-        
-        NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject
-                                                                      attributes:@{NSFontAttributeName:
-                                                                                       [UIFont fontWithName:[CTAppearance instance].boldFontName size:23]}];
-        
-        NSAttributedString *dot = [[NSAttributedString alloc] initWithString:@"."
-                                                                  attributes:@{NSFontAttributeName:
-                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:18]}];
-        
-        NSAttributedString *cents = [[NSAttributedString alloc] initWithString:priceStrings.lastObject
-                                                                    attributes:@{NSFontAttributeName:
-                                                                                     [UIFont fontWithName:[CTAppearance instance].boldFontName size:18]}];
-        
-        [priceString appendAttributedString:dollars];
-        [priceString appendAttributedString:dot];
-        [priceString appendAttributedString:cents];
-        
-        self.priceLabel.attributedText = priceString;
+        self.priceLabel.text = [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
     }
 }
 
