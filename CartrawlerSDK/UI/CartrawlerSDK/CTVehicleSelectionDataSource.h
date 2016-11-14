@@ -16,6 +16,6 @@ typedef void (^VehicleSelectionCompletion)(CTAvailabilityItem *vehicle);
 typedef void (^CTScrollViewDirection)(BOOL up);
 
 - (id)initWithData:(NSArray <CTAvailabilityItem *> *)data cellSelected:(VehicleSelectionCompletion)cellSeleted;
-- (void)updateData:(NSArray <CTAvailabilityItem *> *)data;
+- (void)updateData:(NSArray <CTAvailabilityItem *> *)data sortByPrice:(BOOL)sortByPrice;
 @property (nonatomic) CTScrollViewDirection direction;
 @end

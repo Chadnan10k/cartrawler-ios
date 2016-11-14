@@ -29,7 +29,7 @@
     [CartrawlerSDK appearance].modalPresentationStyle = UIModalPresentationOverFullScreen;
     [CartrawlerSDK appearance].modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"643826" languageCode:@"EN" sandboxMode:YES];
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"643826" languageCode:@"EN" sandboxMode:NO];
     
     self.sdk.delegate = self;
 }

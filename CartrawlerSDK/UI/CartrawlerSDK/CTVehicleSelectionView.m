@@ -44,7 +44,7 @@
 {
     __weak typeof (self) weakSelf = self;
 
-    [self.tableView setContentInset:UIEdgeInsetsMake(40,0,0,0)];
+    [self.tableView setContentInset:UIEdgeInsetsMake(45,0,0,0)];
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     [self.tableView registerNib:[UINib nibWithNibName:@"VehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];
@@ -65,9 +65,9 @@
     self.tableView.scrollsToTop = YES;
 }
 
-- (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data
+- (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data sortByPrice:(BOOL)sortByPrice
 {
-    [self.dataSource updateData:data];
+    [self.dataSource updateData:data sortByPrice:sortByPrice];
     [self.tableView reloadData];
     NSIndexPath* top = [NSIndexPath indexPathForRow:NSNotFound inSection:0];
     [self.tableView scrollToRowAtIndexPath:top atScrollPosition:UITableViewScrollPositionTop animated:YES];

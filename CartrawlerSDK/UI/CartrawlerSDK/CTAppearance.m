@@ -26,6 +26,7 @@
         sharedInstance.viewBackgroundColor = [UIColor colorWithRed:7.0/255.0 green:53.0/255.0 blue:144.0/255.0 alpha:1.0];
         sharedInstance.navigationBarColor = [UIColor colorWithRed:7.0/255.0 green:53.0/255.0 blue:144.0/255.0 alpha:1.0];
         sharedInstance.tabBarTint = [UIColor colorWithRed:27.0/255.0 green:78.0/255.0 blue:148.0/255.0 alpha:1.0];
+        sharedInstance.iconTint = [UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1.0];
 
         sharedInstance.containerViewCornerRadius = 5.0;
         sharedInstance.containerViewMarginPadding = 16;
@@ -48,12 +49,15 @@
         sharedInstance.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         sharedInstance.modalPresentationStyle = UIModalPresentationCurrentContext;
         
-        sharedInstance.merchandisingBestSeller = [UIColor colorWithRed:39.0/255.0 green:173.0/255.0 blue:249.0/255.0 alpha:1.0];
+        sharedInstance.merchandisingBestSeller = [UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1.0];
         sharedInstance.merchandisingGreatValue = [UIColor colorWithRed:25.0/255.0 green:173.0/255.0 blue:79.0/255.0 alpha:1.0];
 
+        sharedInstance.vehicleCellTint = [UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1.0];
         
     });
     return sharedInstance;
 }
+    
+    //RYR 32, 145, 235 bright blue
 
 @end

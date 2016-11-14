@@ -21,6 +21,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		450725B21DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 450725B01DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h */; };
+		450725B31DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 450725B11DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m */; };
+		450725B71DD9C99500D56C8A /* CTImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 450725B51DD9C99500D56C8A /* CTImageView.h */; };
+		450725B81DD9C99500D56C8A /* CTImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 450725B61DD9C99500D56C8A /* CTImageView.m */; };
 		450DF2131DD2131C00A365A0 /* CTInterstitialCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 450DF2111DD2131C00A365A0 /* CTInterstitialCollectionViewCell.h */; };
 		450DF2141DD2131C00A365A0 /* CTInterstitialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 450DF2121DD2131C00A365A0 /* CTInterstitialCollectionViewCell.m */; };
 		4513B6241DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4513B6221DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h */; };
@@ -298,6 +302,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		450725B01DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+UIImageView.h"; sourceTree = "<group>"; };
+		450725B11DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+UIImageView.m"; sourceTree = "<group>"; };
+		450725B51DD9C99500D56C8A /* CTImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTImageView.h; sourceTree = "<group>"; };
+		450725B61DD9C99500D56C8A /* CTImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTImageView.m; sourceTree = "<group>"; };
 		4509B4711D37E72700259255 /* GroundServicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundServicesViewController.h; sourceTree = "<group>"; };
 		4509B4721D37E72700259255 /* GroundServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundServicesViewController.m; sourceTree = "<group>"; };
 		4509B4791D37ED8100259255 /* GTServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTServiceTableViewCell.h; sourceTree = "<group>"; };
@@ -593,6 +601,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		450725B41DD9C98400D56C8A /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				450725B51DD9C99500D56C8A /* CTImageView.h */,
+				450725B61DD9C99500D56C8A /* CTImageView.m */,
+			);
+			name = UIImageView;
+			sourceTree = "<group>";
+		};
 		4509B4751D37ED2000259255 /* Step One */ = {
 			isa = PBXGroup;
 			children = (
@@ -1325,6 +1342,8 @@
 				454D91EF1DD34E24001AE96C /* Reachability.m */,
 				4513B6221DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h */,
 				4513B6231DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m */,
+				450725B01DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h */,
+				450725B11DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1332,6 +1351,7 @@
 		45E942D71D1302B800ACF604 /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
+				450725B41DD9C98400D56C8A /* UIImageView */,
 				45D7BBD51DCCDA9F008DD631 /* Constraints */,
 				45BC88D11DC0F8370041BD74 /* ToolTip */,
 				4511E5341D17F6CC000ED6B0 /* UINavigationBar */,
@@ -1492,6 +1512,7 @@
 				455B58911DCC914300CA4790 /* DataStore.h in Headers */,
 				455B58931DCC914300CA4790 /* CartrawlerSDK+UIColor.h in Headers */,
 				455B58951DCC914300CA4790 /* RentalBookingsViewController.h in Headers */,
+				450725B71DD9C99500D56C8A /* CTImageView.h in Headers */,
 				455B58971DCC914300CA4790 /* RentalBookingCell.h in Headers */,
 				455B589D1DCC914300CA4790 /* GTBookingsViewController.h in Headers */,
 				455B589F1DCC914300CA4790 /* GTBookingTableViewCell.h in Headers */,
@@ -1530,6 +1551,7 @@
 				455B58E11DCC914400CA4790 /* CTVehicleSelectionView.h in Headers */,
 				455B58E31DCC914400CA4790 /* CTVehicleSelectionDataSource.h in Headers */,
 				455B58E51DCC914400CA4790 /* VehicleTableViewCell.h in Headers */,
+				450725B21DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h in Headers */,
 				455B58E81DCC914400CA4790 /* CTMerhandisingBanner.h in Headers */,
 				455B58EA1DCC914400CA4790 /* VehicleSelectionViewController.h in Headers */,
 				455B58EC1DCC914400CA4790 /* VehicleDetailsPageViewController.h in Headers */,
@@ -1611,6 +1633,7 @@
 					455B582A1DCC90D300CA4790 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 93JSQ29ZDX;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					45D385ED1DD61BAB000F02D1 = {
@@ -1754,6 +1777,7 @@
 				455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */,
 				455B58CC1DCC914400CA4790 /* CTMiddleDateCell.m in Sources */,
 				455B58CE1DCC914400CA4790 /* CTSelectView.m in Sources */,
+				450725B81DD9C99500D56C8A /* CTImageView.m in Sources */,
 				455B58D01DCC914400CA4790 /* SettingsSelectionViewController.m in Sources */,
 				455B58D21DCC914400CA4790 /* SettingsViewController.m in Sources */,
 				455B58D41DCC914400CA4790 /* SearchDetailsViewController.m in Sources */,
@@ -1777,6 +1801,7 @@
 				455B58F91DCC914400CA4790 /* SupplierRatingCollectionViewCell.m in Sources */,
 				455B58FB1DCC914400CA4790 /* VehicleFeaturesDataSource.m in Sources */,
 				455B58FD1DCC914400CA4790 /* VehicleFeatureCollectionViewCell.m in Sources */,
+				450725B31DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m in Sources */,
 				455B58FF1DCC914400CA4790 /* CTInclusionTableViewCell.m in Sources */,
 				455B59011DCC914400CA4790 /* CTInclusionsDataSource.m in Sources */,
 				455B59031DCC914400CA4790 /* IncludedCollectionViewCell.m in Sources */,
@@ -1824,6 +1849,7 @@
 		455B58311DCC90D300CA4790 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
@@ -1842,6 +1868,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Cartrawler.CartrawlerSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1851,6 +1879,7 @@
 		455B58321DCC90D300CA4790 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
@@ -1869,6 +1898,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Cartrawler.CartrawlerSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2004,6 +2034,7 @@
 				45D385F01DD61BAB000F02D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		45E9423E1D12FF0F00ACF604 /* Build configuration list for PBXProject "CartrawlerSDK" */ = {
 			isa = XCConfigurationList;

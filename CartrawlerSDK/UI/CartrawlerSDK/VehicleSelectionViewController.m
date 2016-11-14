@@ -20,8 +20,10 @@
 @property (weak, nonatomic) IBOutlet CTLabel *carCountLabel;
 
 @property (nonatomic, strong) CTFilterViewController *filterViewController;
-
+@property (nonatomic, strong) NSArray<CTAvailabilityItem *> *filteredData;
+    
 @property (nonatomic, assign) BOOL lastScrollDirection;
+@property (nonatomic, assign) BOOL sortingByPrice;
 
 #pragma MARK ScrollView
 
@@ -45,7 +47,8 @@
     _filterViewController = [CTFilterViewController initInViewController:self withData:self.search.vehicleAvailability];
     
     self.filterViewController.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData) {
-        [weakSelf.vehicleSelectionView updateSelection:filteredData];
+        weakSelf.filteredData = filteredData;
+        [weakSelf.vehicleSelectionView updateSelection:filteredData sortByPrice:self.sortingByPrice];
         [weakSelf updateAvailableCarsLabel:filteredData.count];
     };
     
@@ -60,8 +63,8 @@
 {
     [super viewWillAppear:animated];
     
-    NSString *pickupDate = [self.search.pickupDate shortDescriptionFromDate];
-    NSString *dropoffDate = [self.search.dropoffDate shortDescriptionFromDate];
+    NSString *pickupDate = [self.search.pickupDate stringFromDate:@"dd MMM, hh:mm a"];
+    NSString *dropoffDate = [self.search.dropoffDate stringFromDate:@"dd MMM, hh:mm a"];
     
     self.datesLabel.text = [NSString stringWithFormat:@"%@ - %@", pickupDate, dropoffDate];
     [self produceHeaderText];
@@ -95,7 +98,7 @@
         [self.filterViewController updateData:self.search.vehicleAvailability];
     }
     
-    [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items];
+    [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items sortByPrice:self.sortingByPrice];
 
     [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
 }
@@ -103,7 +106,7 @@
 - (void)updateAvailableCarsLabel:(NSInteger)availableCars
 {
     self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)availableCars
-                               ,NSLocalizedString(@"vehicles available", @"cars available")];
+                               ,NSLocalizedString(@"results", @"results")];
 }
 
 - (IBAction)backTapped:(id)sender {
@@ -112,6 +115,32 @@
 
 - (IBAction)filterTapped:(id)sender {
     [self.filterViewController present];
+}
+    
+- (void)sortVehicles:(BOOL)byPrice
+{
+    _sortingByPrice = byPrice;
+    [self.vehicleSelectionView updateSelection:self.filteredData ?: self.search.vehicleAvailability.items
+                                   sortByPrice:self.sortingByPrice];
+}
+    
+- (IBAction)sortTapped:(id)sender {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sort results"
+                                                                   message:nil
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *lowestPrice = [UIAlertAction actionWithTitle:@"Lowest Price" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [self sortVehicles:YES];
+                                                          }];
+    UIAlertAction *recommendedVehicles = [UIAlertAction actionWithTitle:@"Recommended Vehicles" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [self sortVehicles:NO];
+                                                          }];
+    
+    [alert addAction:lowestPrice];
+    [alert addAction:recommendedVehicles];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

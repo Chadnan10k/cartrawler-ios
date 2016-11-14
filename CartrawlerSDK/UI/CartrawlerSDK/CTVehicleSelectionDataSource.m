@@ -29,9 +29,13 @@
     return self;
 }
 
-- (void)updateData:(NSArray <CTAvailabilityItem *> *)data
+- (void)updateData:(NSArray <CTAvailabilityItem *> *)data sortByPrice:(BOOL)sortByPrice
 {
-    _vehicles = [self sortVehiclesByRecommendedIndex:data];
+    if (sortByPrice) {
+        _vehicles = [self sortVehiclesByPrice:data];
+    } else {
+        _vehicles = [self sortVehiclesByRecommendedIndex:data];
+    }
 }
 
 #pragma mark UITableViewDataSource
@@ -97,6 +101,14 @@
 {
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                         initWithKey: @"vehicle.config.relevance" ascending: YES];
+    
+    return [stockArray sortedArrayUsingDescriptors: [NSArray arrayWithObject:sortDescriptor]];
+}
+    
+- (NSArray <CTAvailabilityItem *> *)sortVehiclesByPrice:(NSArray <CTAvailabilityItem *> *)stockArray
+{
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey: @"vehicle.totalPriceForThisVehicle" ascending: YES];
     
     return [stockArray sortedArrayUsingDescriptors: [NSArray arrayWithObject:sortDescriptor]];
 }

@@ -26,22 +26,21 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *vendorImageView;
-@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
-@property (weak, nonatomic) IBOutlet UILabel *ratingTitle;
+//@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *ratingTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *airconImageView;
 @property (weak, nonatomic) IBOutlet CTMerhandisingBanner *merchBannerView;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 
 @end
 
 @implementation VehicleTableViewCell
 
-
-
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.headerView.backgroundColor = [CTAppearance instance].vehicleCellTint;
 }
 
 - (void)initWithVehicle:(CTAvailabilityItem *)item index:(NSInteger)index;
@@ -83,26 +82,8 @@
         self.airconImageView.alpha = 0;
     }
 
-    NSArray *priceStrings = [[item.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode] componentsSeparatedByString:@"."];
-    NSMutableAttributedString *priceString = [[NSMutableAttributedString alloc] init];
-
-    NSAttributedString *dollars = [[NSAttributedString alloc] initWithString:priceStrings.firstObject
-                                                                  attributes:@{NSFontAttributeName:
-                                                                                   [UIFont fontWithName:[CTAppearance instance].boldFontName size:20]}];
-    
-    NSAttributedString *dot = [[NSAttributedString alloc] initWithString:@"."
-                                                              attributes:@{NSFontAttributeName:
-                                                                          [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
-
-    NSAttributedString *cents = [[NSAttributedString alloc] initWithString:priceStrings.lastObject
-                                                                attributes:@{NSFontAttributeName:
-                                                                                 [UIFont fontWithName:[CTAppearance instance].boldFontName size:14]}];
-    
-    [priceString appendAttributedString:dollars];
-    [priceString appendAttributedString:dot];
-    [priceString appendAttributedString:cents];
-    
-    self.totalPriceLabel.attributedText = priceString;
+    self.totalPriceLabel.text = [item.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
+    self.totalPriceLabel.textColor = [CTAppearance instance].vehicleCellTint;
     
     if (item.vendor.rating.overallScore != nil) {
         
@@ -125,13 +106,13 @@
         [ratingString appendAttributedString:rating];
         [ratingString appendAttributedString:slash];
         [ratingString appendAttributedString:ten];
-        self.ratingTitle.text = NSLocalizedString(@"Rating", @"Rating");
+        //self.ratingTitle.text = NSLocalizedString(@"Rating", @"Rating");
 
-        self.ratingLabel.attributedText = ratingString;
+       // self.ratingLabel.attributedText = ratingString;
         
     } else {
-        self.ratingTitle.text = @"";
-        self.ratingLabel.text = @"";
+        //self.ratingTitle.text = @"";
+       //self.ratingLabel.text = @"";
     }
 
     [[CTImageCache sharedInstance] cachedImage: item.vehicle.pictureURL completion:^(UIImage *image) {

@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIColor  *viewBackgroundColor;
 @property (nonatomic, strong) UIColor  *navigationBarColor;
 @property (nonatomic, strong) UIColor  *tabBarTint;
+@property (nonatomic, strong) UIColor  *iconTint;
 @property (nonatomic) CGFloat          containerViewCornerRadius;
 @property (nonatomic) CGFloat          containerViewMarginPadding;
 
@@ -48,6 +49,9 @@
 //Merchandising Banner
 @property (nonatomic, strong) UIColor  *merchandisingBestSeller;
 @property (nonatomic, strong) UIColor  *merchandisingGreatValue;
+    
+//Vehicle TableViewCell
+@property (nonatomic, strong) UIColor  *vehicleCellTint;
 
 + (instancetype)instance;
 

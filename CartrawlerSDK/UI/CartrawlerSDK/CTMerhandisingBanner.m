@@ -34,9 +34,11 @@
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[text]-4-|" options:0
                                                                  metrics:nil
                                                                    views:@{ @"text" : self.textLabel }]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-4-[text]-8-|" options:0
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-4-[text]-4-|" options:0
                                                                  metrics:nil
                                                                    views:@{ @"text" : self.textLabel }]];
+    
+    self.layer.cornerRadius = 5;
     
 }
 
@@ -44,14 +46,14 @@
 {
     switch (bannerType) {
         case CTMerhandisingBannerTypeBestSeller:
-            self.textLabel.text = @"BEST SELLER";
+            self.textLabel.text = @"Best Seller";
             self.backgroundColor = [CTAppearance instance].merchandisingBestSeller;
             self.textLabel.textColor = [UIColor whiteColor];
             self.hidden = NO;
             break;
             
         case CTMerhandisingBannerTypeGreatValue:
-            self.textLabel.text = @"GREAT VALUE";
+            self.textLabel.text = @"Great Value";
             self.backgroundColor = [CTAppearance instance].merchandisingGreatValue;
             self.textLabel.textColor = [UIColor whiteColor];
             self.hidden = NO;
