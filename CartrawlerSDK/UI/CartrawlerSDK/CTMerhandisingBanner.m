@@ -39,7 +39,24 @@
                                                                    views:@{ @"text" : self.textLabel }]];
     
     self.layer.cornerRadius = 5;
+}
     
+- (void)setSpecialOffer:(NSString *)offerText
+{
+    self.textLabel.text = [NSString stringWithFormat:@"Special Offer - Free %@", offerText];
+    self.textLabel.textAlignment = NSTextAlignmentLeft;
+    self.backgroundColor = [CTAppearance instance].merchandisingSpecialOffer;
+    self.textLabel.textColor = [UIColor whiteColor];
+    self.hidden = NO;
+    
+    CGSize textSize = [self.textLabel.text
+                       sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:[CTAppearance instance].boldFontName size:12]}];
+    
+    for (NSLayoutConstraint *c in self.constraints) {
+        if (c.firstAttribute == NSLayoutAttributeWidth) {
+            c.constant = textSize.width + 8;
+        }
+    }
 }
 
 - (void)setBannerType:(CTMerhandisingBannerType)bannerType

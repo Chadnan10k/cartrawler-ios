@@ -31,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *airconImageView;
 @property (weak, nonatomic) IBOutlet CTMerhandisingBanner *merchBannerView;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *totalPriceBottomConstranit;
+@property (weak, nonatomic) IBOutlet CTMerhandisingBanner *specialOfferBannerView;
 
 @end
 
@@ -54,6 +56,21 @@
         [self.merchBannerView setBannerType:CTMerhandisingBannerTypeNone];
     }
     
+    //Do we display special offer? or any extras included in the price?
+//    for (CTSpecialOffer *so in item.vehicle.specialOffers) {
+//        NSLog(@"%@", so.shortText);
+//    }
+    
+    [self.specialOfferBannerView setBannerType:CTMerhandisingBannerTypeNone];
+    self.totalPriceBottomConstranit.constant = 8;
+    for (CTExtraEquipment *ee in item.vehicle.extraEquipment) {
+        if (ee.isIncludedInRate) {
+            [self.specialOfferBannerView setSpecialOffer:ee.equipDescription];
+            self.totalPriceBottomConstranit.constant = 44;
+            break;
+        }
+    }
+
     NSMutableAttributedString *vehicleName = [[NSMutableAttributedString alloc] init];
     
     NSAttributedString *name = [[NSAttributedString alloc] initWithString:item.vehicle.makeModelName
@@ -63,8 +80,6 @@
     NSAttributedString *orSimilar = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@", item.vehicle.orSimilar]
                                                               attributes:@{NSFontAttributeName:
                                                                                [UIFont fontWithName:[CTAppearance instance].fontName size:15]}];
-    
-    
     [vehicleName appendAttributedString:name];
     [vehicleName appendAttributedString:orSimilar];
     
@@ -74,13 +89,7 @@
     self.transmissionLabel.text = item.vehicle.transmissionType;
     self.fuelPolicyLabel.text = [self fuelPolicyString: item.vehicle.fuelPolicy];
     
-    if (item.vehicle.isAirConditioned) {
-        self.airconLabel.alpha = 1;
-        self.airconImageView.alpha = 1;
-    } else {
-        self.airconLabel.alpha = 0;
-        self.airconImageView.alpha = 0;
-    }
+    self.airconLabel.text = [LocalisedStrings pickupType:item];
 
     self.totalPriceLabel.text = [item.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
     self.totalPriceLabel.textColor = [CTAppearance instance].vehicleCellTint;

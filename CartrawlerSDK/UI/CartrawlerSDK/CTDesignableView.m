@@ -38,7 +38,7 @@
     self.layer.cornerRadius = [CTAppearance instance].containerViewCornerRadius;
     
     if (self.enableShadow || [CTAppearance instance].enableShadows && self.enableShadow != NO) {
-        self.layer.masksToBounds = YES;
+        self.layer.masksToBounds = NO;
         self.layer.shadowColor = [UIColor blackColor].CGColor;
         self.layer.shadowOffset = CGSizeMake(0, 0);
         self.layer.shadowOpacity = 0.05;

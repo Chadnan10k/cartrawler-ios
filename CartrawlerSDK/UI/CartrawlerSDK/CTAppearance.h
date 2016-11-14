@@ -49,6 +49,7 @@
 //Merchandising Banner
 @property (nonatomic, strong) UIColor  *merchandisingBestSeller;
 @property (nonatomic, strong) UIColor  *merchandisingGreatValue;
+@property (nonatomic, strong) UIColor  *merchandisingSpecialOffer;
     
 //Vehicle TableViewCell
 @property (nonatomic, strong) UIColor  *vehicleCellTint;

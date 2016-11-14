@@ -320,7 +320,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, nonnull, readonly) CTVehicleIndexation *indexation;
 
-@property (nonatomic, nullable, readonly) CTSpecialOffer *specialOffer;
+@property (nonatomic, nonnull, readonly) NSArray <CTSpecialOffer *> *specialOffers;
 
 @property (nonatomic, nonnull, readonly) CTVehicleConfig *config;
 

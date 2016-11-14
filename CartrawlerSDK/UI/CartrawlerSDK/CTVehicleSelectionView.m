@@ -18,8 +18,12 @@
 
 @implementation CTVehicleSelectionView
 
-
-
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.tableView.estimatedRowHeight = 240;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+}
 
 - (void)showLoading
 {

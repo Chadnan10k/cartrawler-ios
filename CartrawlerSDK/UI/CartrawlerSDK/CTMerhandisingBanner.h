@@ -19,5 +19,6 @@ typedef enum CTMerhandisingBannerType : NSUInteger {
 }CTMerhandisingBannerType;
 
 - (void)setBannerType:(CTMerhandisingBannerType)bannerType;
+- (void)setSpecialOffer:(NSString *)offerText;
 
 @end

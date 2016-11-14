@@ -48,7 +48,20 @@
     
     _indexation = [[CTVehicleIndexation alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Indexation"]];
     
-    _specialOffer = [[CTSpecialOffer alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"SpecialOffers"]];
+    NSMutableArray *tempSpecialOffers = [[NSMutableArray alloc] init];
+    
+    if ([dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"SpecialOffers"] isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *offerDict in dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"SpecialOffers"]) {
+            [tempSpecialOffers addObject:[[CTSpecialOffer alloc] initFromDictionary: offerDict]];
+        }
+        _specialOffers = tempSpecialOffers;
+    } else {
+        
+        CTSpecialOffer *specialOffer = [[CTSpecialOffer alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"SpecialOffers"]];
+        if (specialOffer) {
+            _specialOffers = @[specialOffer];
+        }
+    }
 
     _config = [[CTVehicleConfig alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Config"]];
     

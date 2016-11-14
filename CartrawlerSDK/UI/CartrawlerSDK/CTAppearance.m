@@ -29,7 +29,7 @@
         sharedInstance.iconTint = [UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1.0];
 
         sharedInstance.containerViewCornerRadius = 5.0;
-        sharedInstance.containerViewMarginPadding = 16;
+        sharedInstance.containerViewMarginPadding = 8;
         
         sharedInstance.textFieldCornerRadius = 3.0;
         sharedInstance.textFieldTint = [UIColor colorWithRed:26.0/255.0 green:38.0/255.0 blue:88.0/255.0 alpha:1.0];
@@ -51,6 +51,7 @@
         
         sharedInstance.merchandisingBestSeller = [UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1.0];
         sharedInstance.merchandisingGreatValue = [UIColor colorWithRed:25.0/255.0 green:173.0/255.0 blue:79.0/255.0 alpha:1.0];
+        sharedInstance.merchandisingSpecialOffer = [UIColor colorWithRed:252.0/255.0 green:121.0/255.0 blue:55.0/255.0 alpha:1.0];
 
         sharedInstance.vehicleCellTint = [UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1.0];
         
