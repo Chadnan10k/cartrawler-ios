@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet CTSegmentedControl *selectionControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 @property (weak, nonatomic) IBOutlet CTNextButton *continueButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *navBarHeight;
 
 @end
 
@@ -36,6 +37,14 @@
     [super viewWillAppear:animated];
     
     _index = 0;
+    
+    if (self.search.selectedVehicle.vendor.rating) {
+        self.navBarHeight.constant = 100;
+        self.selectionControl.hidden = NO;
+    } else {
+        self.navBarHeight.constant = 60;
+        self.selectionControl.hidden = YES;
+    }
     
     self.continueButton.userInteractionEnabled = YES;
     

@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWQ-WU-v3z">
-                                        <rect key="frame" x="8" y="24.5" width="25" height="25"/>
+                                        <rect key="frame" x="8" y="25" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="R2Q-Ye-LrS"/>
                                             <constraint firstAttribute="height" constant="25" id="bQ0-2c-f1d"/>
@@ -36,7 +36,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add extras" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clN-oO-7uF" customClass="CTLabel">
-                                        <rect key="frame" x="252" y="25" width="96.5" height="24"/>
+                                        <rect key="frame" x="252" y="25" width="97" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="KEL-Fm-tkn"/>
                                         </constraints>

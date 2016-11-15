@@ -202,8 +202,8 @@
 		455B58F51DCC914400CA4790 /* ExpandingInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7B71D2A69D2005C6CFF /* ExpandingInfoView.m */; };
 		455B58F61DCC914400CA4790 /* SupplierRatingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D331D3929E5002C6F6B /* SupplierRatingsViewController.h */; };
 		455B58F71DCC914400CA4790 /* SupplierRatingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D341D3929E5002C6F6B /* SupplierRatingsViewController.m */; };
-		455B58F81DCC914400CA4790 /* SupplierRatingCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4569984B1D9428F600551F9F /* SupplierRatingCollectionViewCell.h */; };
-		455B58F91DCC914400CA4790 /* SupplierRatingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4569984C1D9428F600551F9F /* SupplierRatingCollectionViewCell.m */; };
+		455B58F81DCC914400CA4790 /* SupplierRatingTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 4569984B1D9428F600551F9F /* SupplierRatingTableViewCell.h */; };
+		455B58F91DCC914400CA4790 /* SupplierRatingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4569984C1D9428F600551F9F /* SupplierRatingTableViewCell.m */; };
 		455B58FA1DCC914400CA4790 /* CTVehicleInclusionsDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 455CA0A91DBF9D5B006472D0 /* CTVehicleInclusionsDataSource.h */; };
 		455B58FB1DCC914400CA4790 /* CTVehicleInclusionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 455CA0AA1DBF9D5B006472D0 /* CTVehicleInclusionsDataSource.m */; };
 		455B58FC1DCC914400CA4790 /* CTInclusionCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 455CA0AD1DBF9E37006472D0 /* CTInclusionCollectionViewCell.h */; };
@@ -472,8 +472,8 @@
 		45645DF91D33E8240075A3D2 /* PaymentSummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSummaryTableViewCell.m; sourceTree = "<group>"; };
 		456979261D2C03E7006A321E /* TabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabButton.h; sourceTree = "<group>"; };
 		456979271D2C03E7006A321E /* TabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabButton.m; sourceTree = "<group>"; };
-		4569984B1D9428F600551F9F /* SupplierRatingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierRatingCollectionViewCell.h; sourceTree = "<group>"; };
-		4569984C1D9428F600551F9F /* SupplierRatingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierRatingCollectionViewCell.m; sourceTree = "<group>"; };
+		4569984B1D9428F600551F9F /* SupplierRatingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierRatingTableViewCell.h; sourceTree = "<group>"; };
+		4569984C1D9428F600551F9F /* SupplierRatingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierRatingTableViewCell.m; sourceTree = "<group>"; };
 		457CF88B1D785ADC00BC55E2 /* GooglePlaceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooglePlaceService.h; sourceTree = "<group>"; };
 		457CF88C1D785ADC00BC55E2 /* GooglePlaceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooglePlaceService.m; sourceTree = "<group>"; };
 		45819FA31D3500E8001AE0F5 /* CartrawlerSDK+NSNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+NSNumber.h"; sourceTree = "<group>"; };
@@ -936,8 +936,8 @@
 			children = (
 				450F9D331D3929E5002C6F6B /* SupplierRatingsViewController.h */,
 				450F9D341D3929E5002C6F6B /* SupplierRatingsViewController.m */,
-				4569984B1D9428F600551F9F /* SupplierRatingCollectionViewCell.h */,
-				4569984C1D9428F600551F9F /* SupplierRatingCollectionViewCell.m */,
+				4569984B1D9428F600551F9F /* SupplierRatingTableViewCell.h */,
+				4569984C1D9428F600551F9F /* SupplierRatingTableViewCell.m */,
 			);
 			name = "Supplier rating tab";
 			sourceTree = "<group>";
@@ -1590,7 +1590,7 @@
 				455B58F21DCC914400CA4790 /* TermsDetailViewController.h in Headers */,
 				455B58F41DCC914400CA4790 /* ExpandingInfoView.h in Headers */,
 				455B58F61DCC914400CA4790 /* SupplierRatingsViewController.h in Headers */,
-				455B58F81DCC914400CA4790 /* SupplierRatingCollectionViewCell.h in Headers */,
+				455B58F81DCC914400CA4790 /* SupplierRatingTableViewCell.h in Headers */,
 				455B58FA1DCC914400CA4790 /* CTVehicleInclusionsDataSource.h in Headers */,
 				455B58FC1DCC914400CA4790 /* CTInclusionCollectionViewCell.h in Headers */,
 				455B58FE1DCC914400CA4790 /* CTVehicleFeatureTableViewCell.h in Headers */,
@@ -1831,7 +1831,7 @@
 				455B58F31DCC914400CA4790 /* TermsDetailViewController.m in Sources */,
 				455B58F51DCC914400CA4790 /* ExpandingInfoView.m in Sources */,
 				455B58F71DCC914400CA4790 /* SupplierRatingsViewController.m in Sources */,
-				455B58F91DCC914400CA4790 /* SupplierRatingCollectionViewCell.m in Sources */,
+				455B58F91DCC914400CA4790 /* SupplierRatingTableViewCell.m in Sources */,
 				455B58FB1DCC914400CA4790 /* CTVehicleInclusionsDataSource.m in Sources */,
 				455B58FD1DCC914400CA4790 /* CTInclusionCollectionViewCell.m in Sources */,
 				450725B31DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m in Sources */,

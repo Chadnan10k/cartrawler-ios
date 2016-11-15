@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SupplierRatingCollectionViewCell : UICollectionViewCell
-
-
+@interface SupplierRatingTableViewCell : UITableViewCell
 
 - (void)setType:(NSString *)typeText ratingText:(NSString *)ratingText;
 

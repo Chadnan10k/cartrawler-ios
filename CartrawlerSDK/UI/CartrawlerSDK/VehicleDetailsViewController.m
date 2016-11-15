@@ -46,6 +46,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inclusionsVerticalSpace;
 @property (weak, nonatomic) IBOutlet CTToolTipButton *fuelPolicyButton;
 @property (weak, nonatomic) IBOutlet CTToolTipButton *pickupLocationButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpacing;
 
 @end
 
@@ -69,6 +70,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (self.search.selectedVehicle.vendor.rating) {
+        self.topSpacing.constant = 80;
+    } else {
+        self.topSpacing.constant = 40;
+    }
     
     [self.scrollView setContentOffset:
     CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
@@ -167,7 +174,7 @@
         [self.inclusionsCollectionView reloadData];
         [self.inclusionsCollectionView layoutIfNeeded];
         self.inclusionsCollectionViewHeight.constant = self.inclusionsCollectionView.contentSize.height;
-        self.inclusionsVerticalSpace.constant = self.inclusionsCollectionView.contentSize.height+65;
+        self.inclusionsVerticalSpace.constant = self.inclusionsCollectionView.contentSize.height+70;
     }
 }
 

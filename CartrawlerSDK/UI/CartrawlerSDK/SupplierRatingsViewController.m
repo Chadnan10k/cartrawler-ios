@@ -8,17 +8,17 @@
 
 #import "SupplierRatingsViewController.h"
 #import "CTImageCache.h"
-#import "SupplierRatingCollectionViewCell.h"
+#import "SupplierRatingTableViewCell.h"
 #import "CTAppearance.h"
 
-@interface SupplierRatingsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface SupplierRatingsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *ratingScore;
 @property (weak, nonatomic) IBOutlet UILabel *ratingDescription;
-@property (weak, nonatomic) IBOutlet UILabel *reviewsAmount;
 @property (weak, nonatomic) IBOutlet UIImageView *vendorImageView;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSArray <NSDictionary *> *ratings;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpacing;
 
 @end
 
@@ -30,8 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.collectionView.dataSource = self;
-    self.collectionView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -44,10 +44,12 @@
     }];
     
     NSAttributedString *scoreAttr = [[NSAttributedString alloc] initWithString: [NSString stringWithFormat:@"%.1f", self.search.selectedVehicle.vendor.rating.overallScore.floatValue * 2]
-                                                                         attributes:@{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].boldFontName size:30.0], NSForegroundColorAttributeName: [UIColor whiteColor]}];
+                                                                         attributes:@{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].boldFontName size:30.0],
+                                                                                      NSForegroundColorAttributeName: [CTAppearance instance].supplierDetailPrimaryColor}];
     
     NSAttributedString *scoreBaseAttr = [[NSAttributedString alloc] initWithString:@" / 10"
-                                                                         attributes:@{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].fontName size:15.0], NSForegroundColorAttributeName: [UIColor whiteColor]}];
+                                                                         attributes:@{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].fontName size:20.0],
+                                                                                      NSForegroundColorAttributeName: [CTAppearance instance].subheaderTitleColor}];
     
     NSMutableAttributedString *scoreStr = [[NSMutableAttributedString alloc] init];
     [scoreStr appendAttributedString:scoreAttr];
@@ -65,61 +67,44 @@
     }
     
     NSAttributedString *ratingTypeAttr = [[NSAttributedString alloc] initWithString:ratingType
-                                                                         attributes:@{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].boldFontName size:20.0], NSForegroundColorAttributeName: [UIColor yellowColor]}];
+                                                                         attributes:@{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].boldFontName size:17.0], NSForegroundColorAttributeName: [CTAppearance instance].supplierDetailSecondaryColor}];
+    NSString *reviewString = [NSString stringWithFormat:@"%ld customers rate this car rental company as:\n", (long)self.search.selectedVehicle.vendor.rating.totalReviews.integerValue];
     
-    NSAttributedString *ratingBaseAttr = [[NSAttributedString alloc] initWithString:@"Customers rate this company as "
-                                                                         attributes:@{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].fontName size:20.0], NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    NSAttributedString *ratingBaseAttr = [[NSAttributedString alloc] initWithString:reviewString
+                                                                         attributes:@{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].fontName size:17.0], NSForegroundColorAttributeName: [CTAppearance instance].supplierDetailPrimaryColor}];
     
     NSMutableAttributedString *ratingStr = [[NSMutableAttributedString alloc] init];
     [ratingStr appendAttributedString:ratingBaseAttr];
     [ratingStr appendAttributedString:ratingTypeAttr];
     self.ratingDescription.attributedText = ratingStr;
     
-    self.reviewsAmount.text = [NSString stringWithFormat:@"%ld reviews", (long)self.search.selectedVehicle.vendor.rating.totalReviews.integerValue];
-    
     _ratings = @[
-                 @{@"type" : @"Wait time", @"value" : [NSString stringWithFormat:@"%@ mins", self.search.selectedVehicle.vendor.rating.waitTime.stringValue]},
-                 @{@"type" : @"Overall Score", @"value" : [NSString stringWithFormat:@"%.1f/10", self.search.selectedVehicle.vendor.rating.overallScore.floatValue * 2]},
-                 @{@"type" : @"Desk Review", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.deskReview.doubleValue/10]},
-                 @{@"type" : @"Vehicle Review", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.carReview.doubleValue/10]},
-                 @{@"type" : @"Price Score", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.priceScore.doubleValue/10]},
-                 @{@"type" : @"Dropoff Review", @"value" : [NSString stringWithFormat:@"%.0f/10", self.search.selectedVehicle.vendor.rating.dropoffReview.doubleValue/10]}];
+                 @{@"type" : @"Overall value for money", @"value" : [NSString stringWithFormat:@"%.1f",
+                                                           self.search.selectedVehicle.vendor.rating.priceScore.doubleValue/10]},
+                 @{@"type" : @"Cleanliness of car", @"value" : [NSString stringWithFormat:@"%.1f",
+                                                         self.search.selectedVehicle.vendor.rating.carReview.doubleValue/10]},
+                 @{@"type" : @"Service at desk", @"value" : [NSString stringWithFormat:@"%.1f", self.search.selectedVehicle.vendor.rating.deskReview.doubleValue/10]},
+                 @{@"type" : @"Pick-up process", @"value" : [NSString stringWithFormat:@"%.1f", self.search.selectedVehicle.vendor.rating.pickupScore.doubleValue/10]},
+                 @{@"type" : @"Drop-off process", @"value" : [NSString stringWithFormat:@"%.1f", self.search.selectedVehicle.vendor.rating.dropoffReview.doubleValue/10]}];
     
-    [self.collectionView reloadData];
+    [self.tableView reloadData];
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.ratings.count;
 }
 
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SupplierRatingCollectionViewCell *cell = (SupplierRatingCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell"
-                                                                                                                 forIndexPath:indexPath];
-    
+    SupplierRatingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     [cell setType:[self.ratings[indexPath.row] objectForKey:@"type"] ratingText:[self.ratings[indexPath.row] objectForKey:@"value"]];
     return cell;
 }
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return CGSizeMake(collectionView.frame.size.width/2-30, 105);
-}
-
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    CGFloat cellWidth = collectionView.frame.size.width/2-30;
-    
-    CGFloat inset = fabs(((cellWidth * 2) - collectionView.frame.size.width) / 2) - 8;
-    
-    return UIEdgeInsetsMake(8, inset, 8, inset);
-}
-
 
 @end

@@ -28,7 +28,6 @@
 @property (nonatomic, strong) UIColor  *subheaderTitleColor;
 @property (nonatomic, strong) UIColor  *tooltipBackgroundColor;
 
-
 //Text
 @property (nonatomic)         CGFloat  textFieldCornerRadius;
 @property (nonatomic, strong) UIColor  *textFieldTint;
@@ -36,6 +35,8 @@
 @property (nonatomic, strong) NSString *fontName;
 @property (nonatomic, strong) NSString *boldFontName;
 @property (nonatomic)         BOOL     enableTextFieldShadows;
+@property (nonatomic, strong) UIColor  *supplierDetailPrimaryColor;
+@property (nonatomic, strong) UIColor  *supplierDetailSecondaryColor;
 
 //Calendar
 @property (nonatomic, strong) UIColor  *calendarStartCellColor;
