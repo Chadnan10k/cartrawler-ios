@@ -12,6 +12,7 @@
 #import "CTView.h"
 #import "CTSegmentedControl.h"
 #import "CTButton.h"
+#import "CTNextButton.h"
 
 @interface VehicleDetailsPageViewController () <UIPageViewControllerDataSource>
 
@@ -24,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet CTView *headerView;
 @property (weak, nonatomic) IBOutlet CTSegmentedControl *selectionControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
-@property (weak, nonatomic) IBOutlet CTButton *continueButton;
+@property (weak, nonatomic) IBOutlet CTNextButton *continueButton;
 
 @end
 
@@ -36,7 +37,7 @@
     
     _index = 0;
     
-    self.continueButton.enabled = YES;
+    self.continueButton.userInteractionEnabled = YES;
     
     self.vehicleDetails.search = self.search;
     self.vehicleDetails.cartrawlerAPI = self.cartrawlerAPI;
@@ -50,19 +51,25 @@
     [self.selectionControl insertSegmentWithTitle:@"Supplier info" atIndex:1 animated:NO];
     _viewArray = @[self.vehicleDetails, self.supplierDetails];
 
-    [self.pageViewController setViewControllers:@[self.vehicleDetails] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self.pageViewController setViewControllers:@[self.vehicleDetails]
+                                      direction:UIPageViewControllerNavigationDirectionForward
+                                       animated:NO
+                                     completion:nil];
 
     __weak typeof (self) weakSelf = self;
-
     self.dataValidationCompletion = ^(BOOL insuranceSuccess, NSString *errorMessage) {
         [weakSelf stopAnimating];
     };
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
+    
+    __weak typeof(self) weakSelf = self;
+    [self.continueButton setText:NSLocalizedString(@"Continue", @"Continue") didTap:^{
+        [weakSelf continueTapped];
+    }];
+    
     _vehicleDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"VehicleDetails"];
     _supplierDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"SupplierDetails"];
 
@@ -90,10 +97,10 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)continueTapped:(id)sender {
+- (void)continueTapped {
     
     [self.activityView startAnimating];
-    self.continueButton.enabled = NO;
+    self.continueButton.userInteractionEnabled = NO;
     [self pushToDestination];
 }
 

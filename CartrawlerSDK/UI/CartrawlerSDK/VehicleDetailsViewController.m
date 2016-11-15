@@ -85,13 +85,20 @@
         self.priceLabel.text = [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
     }
     
-    [self.fuelPolicyButton setText:[LocalisedStrings fuelPolicy:self.search.selectedVehicle.vehicle.fuelPolicy]
-                            didTap:^{
-        NSLog(@"tapped");
+    __weak typeof(self) weakSelf = self;
+    
+    [self.fuelPolicyButton setText:[LocalisedStrings fuelPolicy:self.search.selectedVehicle.vehicle.fuelPolicy] didTap:^{
+        [weakSelf presentViewController:[CTToolTip fullScreenTooltip:NSLocalizedString(@"Fuel policy", @"Fuel policy tooltip title")
+                                                          detailText:weakSelf.search.selectedVehicle.vehicle.fuelPolicyDescription]
+                               animated:YES
+                             completion:nil];
     }];
     
     [self.pickupLocationButton setText:[LocalisedStrings pickupType:self.search.selectedVehicle] didTap:^{
-        NSLog(@"tapped");
+        [weakSelf presentViewController:[CTToolTip fullScreenTooltip:NSLocalizedString(@"Pickup location", @"Pickup location tooltip title")
+                                                          detailText:[LocalisedStrings pickupType:weakSelf.search.selectedVehicle]]
+                               animated:YES
+                             completion:nil];
     }];
     
     [self setupFeatureTableView];

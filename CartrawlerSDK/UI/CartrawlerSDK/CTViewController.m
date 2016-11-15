@@ -80,9 +80,10 @@
                                                       if (weakSelf.dataValidationCompletion) {
                                                           if (weakSelf.fallbackViewController) {
                                                               weakSelf.dataValidationCompletion(YES, nil);
-                                                              [weakSelf.destinationViewController refresh];
+                                                              [weakSelf.fallbackViewController refresh];
                                                               @try {
-                                                                  [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
+                                                                  [weakSelf.navigationController pushViewController:weakSelf.fallbackViewController
+                                                                                                           animated:YES];
                                                               } @catch (NSException * e) {
                                                                   NSLog(@"Exception: %@", e);
                                                               } @finally {

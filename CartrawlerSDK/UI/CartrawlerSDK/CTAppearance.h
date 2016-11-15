@@ -26,6 +26,7 @@
 @property (nonatomic) CGFloat          containerViewMarginPadding;
 @property (nonatomic, strong) UIColor  *headerTitleColor;
 @property (nonatomic, strong) UIColor  *subheaderTitleColor;
+@property (nonatomic, strong) UIColor  *tooltipBackgroundColor;
 
 
 //Text

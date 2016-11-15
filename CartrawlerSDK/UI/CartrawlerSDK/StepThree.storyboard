@@ -26,14 +26,14 @@
                         <viewControllerLayoutGuide type="bottom" id="ftz-8S-Imp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="P83-YX-uHD">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="760"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="780"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1i-bM-q5G">
-                                <rect key="frame" x="0.0" y="89" width="600" height="671"/>
+                                <rect key="frame" x="0.0" y="89" width="600" height="691"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kJ-BG-kTB" customClass="CTDesignableView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="671"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="691"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle name label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2q0-Lk-wW2" customClass="CTLabel">
                                                 <rect key="frame" x="8" y="16" width="479" height="29"/>
@@ -321,7 +321,7 @@
                                             <constraint firstAttribute="trailing" secondItem="8IQ-9U-qwm" secondAttribute="trailing" constant="16" id="F3k-pM-cTY" customClass="CTLayoutConstraint"/>
                                             <constraint firstItem="aq6-tM-uXj" firstAttribute="trailing" secondItem="suR-xq-s0h" secondAttribute="trailing" id="GLs-3h-jjm"/>
                                             <constraint firstItem="DoH-OQ-nkN" firstAttribute="leading" secondItem="8kJ-BG-kTB" secondAttribute="leading" constant="16" id="H5S-jc-YTo" customClass="CTLayoutConstraint"/>
-                                            <constraint firstAttribute="bottom" secondItem="VON-Iy-sbh" secondAttribute="bottom" constant="323" id="JKP-1o-kWz"/>
+                                            <constraint firstAttribute="bottom" secondItem="VON-Iy-sbh" secondAttribute="bottom" constant="343" id="JKP-1o-kWz"/>
                                             <constraint firstAttribute="height" constant="388.5" id="JpV-bJ-gbm"/>
                                             <constraint firstItem="8IQ-9U-qwm" firstAttribute="top" secondItem="DoH-OQ-nkN" secondAttribute="bottom" constant="8" id="Mh9-SQ-2xh"/>
                                             <constraint firstItem="aq6-tM-uXj" firstAttribute="leading" secondItem="kVu-8Q-jLO" secondAttribute="trailing" constant="4" id="Pv4-YK-aYg"/>
@@ -397,7 +397,7 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="760"/>
+                    <size key="freeformSize" width="600" height="780"/>
                     <connections>
                         <outlet property="featuresTableView" destination="kVu-8Q-jLO" id="WKe-cL-KwJ"/>
                         <outlet property="fuelPolicyButton" destination="8IQ-9U-qwm" id="lgA-G0-J70"/>
@@ -486,52 +486,40 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFI-7G-2S8" customClass="CTButton">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.10980392160000001" green="0.30588235289999999" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J5q-1r-Ssg" customClass="CTNextButton">
+                                <rect key="frame" x="0.0" y="577" width="375" height="90"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="mTu-GR-6aK">
+                                        <rect key="frame" x="322" y="27" width="37" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="37" id="bVw-dM-7K5"/>
+                                            <constraint firstAttribute="height" constant="37" id="d14-U1-nXJ"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.3634259259" green="0.37151572150000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="zhJ-s2-Bwm"/>
+                                    <constraint firstItem="mTu-GR-6aK" firstAttribute="centerY" secondItem="J5q-1r-Ssg" secondAttribute="centerY" id="Ayu-jH-bpG"/>
+                                    <constraint firstAttribute="trailing" secondItem="mTu-GR-6aK" secondAttribute="trailing" constant="16" id="ptN-IQ-g7m"/>
+                                    <constraint firstAttribute="height" constant="90" id="zfP-q1-H6k"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Continue">
-                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="overrideCornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="continueTapped:" destination="3HX-7a-ja0" eventType="touchUpInside" id="D4h-us-kbT"/>
-                                    <action selector="continueTapped:" destination="Suh-ST-8Gy" eventType="touchUpInside" id="MO7-Vo-y4V"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="mTu-GR-6aK">
-                                <rect key="frame" x="330" y="622" width="37" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="a9L-Kd-pmF"/>
-                                    <constraint firstAttribute="width" constant="37" id="swu-VS-HKz"/>
-                                </constraints>
-                            </activityIndicatorView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bFI-7G-2S8" firstAttribute="leading" secondItem="eYo-Bd-HeU" secondAttribute="leading" id="86W-RW-a1w"/>
-                            <constraint firstAttribute="trailing" secondItem="bFI-7G-2S8" secondAttribute="trailing" id="AlW-kj-pXw"/>
-                            <constraint firstItem="vg2-hq-tF0" firstAttribute="top" secondItem="mTu-GR-6aK" secondAttribute="bottom" constant="8" id="JVf-hv-IOJ"/>
                             <constraint firstItem="kIa-Mx-ztI" firstAttribute="top" secondItem="eYo-Bd-HeU" secondAttribute="top" id="QRC-oi-P5b"/>
-                            <constraint firstItem="vg2-hq-tF0" firstAttribute="top" secondItem="bFI-7G-2S8" secondAttribute="bottom" id="RqC-as-3IW"/>
                             <constraint firstAttribute="trailing" secondItem="kIa-Mx-ztI" secondAttribute="trailing" id="fqM-eg-Hsi"/>
+                            <constraint firstAttribute="trailing" secondItem="J5q-1r-Ssg" secondAttribute="trailing" id="jip-bb-cye"/>
+                            <constraint firstItem="J5q-1r-Ssg" firstAttribute="leading" secondItem="eYo-Bd-HeU" secondAttribute="leading" id="juU-HT-5ZT"/>
                             <constraint firstItem="kIa-Mx-ztI" firstAttribute="leading" secondItem="eYo-Bd-HeU" secondAttribute="leading" id="rus-UT-xhZ"/>
-                            <constraint firstAttribute="trailing" secondItem="mTu-GR-6aK" secondAttribute="trailing" constant="8" id="v9J-mx-E62"/>
+                            <constraint firstItem="vg2-hq-tF0" firstAttribute="top" secondItem="J5q-1r-Ssg" secondAttribute="bottom" id="uAD-Mw-KQm"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="activityView" destination="mTu-GR-6aK" id="TMy-BV-XbD"/>
-                        <outlet property="continueButton" destination="bFI-7G-2S8" id="GiC-c1-u4h"/>
+                        <outlet property="continueButton" destination="J5q-1r-Ssg" id="leQ-WS-uyO"/>
                         <outlet property="headerView" destination="kIa-Mx-ztI" id="Mf6-Xu-L6N"/>
                         <outlet property="selectionControl" destination="UHX-A0-jg3" id="0TD-Go-3Y4"/>
                     </connections>

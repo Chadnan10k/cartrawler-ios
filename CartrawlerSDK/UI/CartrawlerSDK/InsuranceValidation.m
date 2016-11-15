@@ -77,7 +77,7 @@
                  if (search.selectedVehicle.vehicle.extraEquipment.count == 0) {
                      search.insurance = nil;
                      search.isBuyingInsurance = NO;
-                     completion(NO, @"");
+                     completion(NO, @"No Insurance Available");
                  } else {
                      search.insurance = nil;
                      search.isBuyingInsurance = NO;

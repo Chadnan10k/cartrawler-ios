@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTToolTipViewController.h"
 
 @interface CTToolTip : UIView
 
@@ -14,6 +15,6 @@
 
 - (void)presentForView:(UIView *)anchorView text:(NSString *)text superview:(UIView *)superview;
 - (void)presentPartialOverlayInView:(UIView *)view text:(NSString *)text;
-- (void)presentFullScreenTooltip:(NSString *)text;
++ (CTToolTipViewController *)fullScreenTooltip:(NSString *)titleText detailText:(NSString *)detailText;
 
 @end
