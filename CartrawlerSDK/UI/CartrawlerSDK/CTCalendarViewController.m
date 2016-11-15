@@ -13,9 +13,11 @@
 #import "CTAppearance.h"
 #import "CTView.h"
 #import "CartrawlerSDK+UIColor.h"
+#import "CTNextButton.h"
 
 @interface CTCalendarViewController()
 
+@property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
 @property (weak, nonatomic) IBOutlet CTLabel *pickupDateLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *dropOffDateLabel;
 @property (weak, nonatomic) IBOutlet CTCalendarView *calendarView;
@@ -35,13 +37,10 @@
 
 @implementation CTCalendarViewController
 
-
-
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
     self.calendarTitleLabel.text = self.singleDateSelection ? @"Select date" : @"Select your dates";
     
     if (self.singleDateSelection) {
@@ -56,6 +55,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    __weak typeof (self) weakSelf = self;
+    [self.nextButton setText:NSLocalizedString(@"Continue", @"Calander Continue") didTap:^{
+        [weakSelf closeTapped];
+    }];
 
     [self showCloseButton:NO];
     
@@ -158,7 +162,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)closeTapped:(id)sender {
+- (void)closeTapped {
     if (self.delegate) {
         [self.delegate didPickDates:self.pickupDate dropoffDate:self.dropoffDate];
     }

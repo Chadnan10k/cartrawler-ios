@@ -1,16 +1,16 @@
 //
-//  CTInclusionsDataSource.h
+//  VehicleFeaturesDataSource.h
 //  CartrawlerSDK
 //
-//  Created by Lee Maguire on 27/10/2016.
+//  Created by Lee Maguire on 25/10/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#include "CarRentalSearch.h"
 #import <UIKit/UIKit.h>
+#import "CarRentalSearch.h"
 
-@interface CTInclusionsDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
+@interface CTVehicleInclusionsDataSource : NSObject <UICollectionViewDataSource, UICollectionViewDelegate>
 
 typedef void (^CTInclusionTableCellTapped)(UIView *cell, NSString *text);
 

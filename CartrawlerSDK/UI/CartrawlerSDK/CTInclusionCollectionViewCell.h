@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VehicleFeatureCollectionViewCell : UICollectionViewCell
+@interface CTInclusionCollectionViewCell : UICollectionViewCell
 
-
-
-- (void)setData:(NSString *)text image:(UIImage *)image;
+- (void)setData:(NSString *)text;
 
 @end

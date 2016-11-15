@@ -124,6 +124,7 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="transparent" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="filterTapped:" destination="L45-dG-eg7" eventType="touchUpInside" id="6St-dO-cTr"/>
@@ -153,6 +154,7 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="transparent" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="sortTapped:" destination="L45-dG-eg7" eventType="touchUpInside" id="6KQ-TF-hhI"/>

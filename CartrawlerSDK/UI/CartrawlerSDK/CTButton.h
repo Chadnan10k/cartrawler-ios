@@ -16,6 +16,7 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat overrideCornerRadius;
 @property (nonatomic) IBInspectable BOOL disableShadow;
 @property (nonatomic) IBInspectable BOOL useBoldFont;
+@property (nonatomic) IBInspectable BOOL transparent;
 
 - (void)shake;
 

@@ -14,5 +14,6 @@
 
 - (void)presentForView:(UIView *)anchorView text:(NSString *)text superview:(UIView *)superview;
 - (void)presentPartialOverlayInView:(UIView *)view text:(NSString *)text;
+- (void)presentFullScreenTooltip:(NSString *)text;
 
 @end

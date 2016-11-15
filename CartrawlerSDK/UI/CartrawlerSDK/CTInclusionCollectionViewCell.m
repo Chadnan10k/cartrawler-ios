@@ -6,24 +6,20 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "VehicleFeatureCollectionViewCell.h"
+#import "CTInclusionCollectionViewCell.h"
 #import "CTLabel.h"
 
-@interface VehicleFeatureCollectionViewCell()
+@interface CTInclusionCollectionViewCell()
 
 @property (weak, nonatomic) IBOutlet CTLabel *itemTextLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *itemImageView;
 
 @end
 
-@implementation VehicleFeatureCollectionViewCell
+@implementation CTInclusionCollectionViewCell
 
-
-
-- (void)setData:(NSString *)text image:(UIImage *)image
+- (void)setData:(NSString *)text
 {
     self.itemTextLabel.text = text;
-    self.itemImageView.image = image;
 }
 
 @end

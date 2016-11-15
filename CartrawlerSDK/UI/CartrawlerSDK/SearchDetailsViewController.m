@@ -16,6 +16,7 @@
 #import "CTTextField.h"
 #import "CTInterstitialViewController.h"
 #import "CTToolTip.h"
+#import "CTNextButton.h"
 
 #define kSearchViewStoryboard @"StepOne"
 
@@ -27,12 +28,12 @@
 
 @interface SearchDetailsViewController () <CTCalendarDelegate>
 
+@property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
 @property (weak, nonatomic) IBOutlet CTTextField *ageContainer;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dropoffLocTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ageTopConstraint;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 @property (strong, nonatomic) UIView *activeView;
 
@@ -62,6 +63,11 @@
 {
     
     [super viewDidLoad];
+    __weak typeof (self) weakSelf = self;
+
+    [self.nextButton setText:NSLocalizedString(@"Search for cars", @"Search for cars") didTap:^{
+        [weakSelf searchTapped];
+    }];
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
@@ -83,7 +89,6 @@
 
     _isReturningSameLocation = YES;
     
-    __weak typeof (self) weakSelf = self;
     
     self.pickupView.placeholder = @"Pick-up location";
     self.pickupView.viewTapped = ^{
@@ -318,23 +323,19 @@
     return validated;
 }
 
-- (IBAction)searchTapped:(id)sender
+- (void)searchTapped
 {
-    
     if([self validate]) {
-        [self.activityView startAnimating];
         [self combineDates];
-        UIButton *button = (UIButton *)sender;
-        button.enabled = NO;
-        button.alpha = 0.8;
+        self.nextButton.userInteractionEnabled = NO;
+        self.nextButton.alpha = 0.8;
         
         __weak typeof (self) weakSelf = self;
         
         self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage) {
             [CTInterstitialViewController dismiss];
-            [weakSelf.activityView stopAnimating];
-            button.enabled = YES;
-            button.alpha = 1.0;
+            self.nextButton.userInteractionEnabled = YES;
+            self.nextButton.alpha = 1.0;
             
             if (!success && errorMessage) {
                 [weakSelf presentAlertWithError:errorMessage];
@@ -343,7 +344,6 @@
         
         [self pushToDestination];
         [CTInterstitialViewController present:self];
-        
     }
 }
 

@@ -87,7 +87,7 @@
     
     self.passengerQtyLabel.text = [NSString stringWithFormat:@"%d %@", item.vehicle.passengerQty.intValue, NSLocalizedString(@"passengers", @"passengers")];
     self.transmissionLabel.text = item.vehicle.transmissionType;
-    self.fuelPolicyLabel.text = [self fuelPolicyString: item.vehicle.fuelPolicy];
+    self.fuelPolicyLabel.text = [LocalisedStrings fuelPolicy:item.vehicle.fuelPolicy];
     
     self.pickupLabel.text = [LocalisedStrings pickupType:item];
 
@@ -131,63 +131,6 @@
     [[CTImageCache sharedInstance] cachedImage: item.vendor.logoURL completion:^(UIImage *image) {
         self.vendorImageView.image = image;
     }];
-}
-
-- (NSString *)fuelPolicyString:(FuelPolicy)fuelPolicy
-{
-    if (fuelPolicy == FuelPolicyFullToFull) {
-        return NSLocalizedString(@"Full to full", @"Full to full");
-    }
-    
-    if (fuelPolicy == FuelPolicyFullEmptyRefund) {
-        return NSLocalizedString(@"Full to empty refund", @"Full to empty refund");
-    }
-    
-    if (fuelPolicy == FuelPolicyFullToEmpty) {
-        return NSLocalizedString(@"Full to empty", @"Full to empty");
-    }
-    
-    if (fuelPolicy == FuelPolicyElectricVehicle) {
-        return NSLocalizedString(@"Electric vehicle", @"Electric vehicle");
-    }
-    
-    if (fuelPolicy == FuelPolicyElectricVehicle) {
-        return NSLocalizedString(@"Electric vehicle", @"Electric vehicle");
-    }
-    
-    if (fuelPolicy == FuelPolicyEmptyToEmpty) {
-        return NSLocalizedString(@"Empty to empty", @"Empty to empty");
-    }
-    
-    if (fuelPolicy == FuelPolicyHalfToEmpty) {
-        return NSLocalizedString(@"Half to empty", @"Half to empty");
-    }
-    
-    if (fuelPolicy == FuelPolicyQuarterToEmpty) {
-        return NSLocalizedString(@"Quarter to empty", @"Quarter to empty");
-    }
-
-    if (fuelPolicy == FuelPolicyHalfToHalf) {
-        return NSLocalizedString(@"Half to half", @"Half to half");
-    }
-    
-    if (fuelPolicy == FuelPolicyQuarterToQuarter) {
-        return NSLocalizedString(@"Quarter to quarter", @"Quarter to quarter");
-    }
-    
-    if (fuelPolicy == FuelPolicyQuarterToQuarter) {
-        return NSLocalizedString(@"Unknown", @"Unknown");
-    }
-
-    if (fuelPolicy == FuelPolicyFullToFullHybrid) {
-        return NSLocalizedString(@"Full to full hybrid", @"Full to full hybrid");
-    }
-
-    if (fuelPolicy == FuelPolicyChaufFullFull) {
-        return NSLocalizedString(@"Full to full chauf", @"Full to full chauf");
-    }
-
-    return @"Unknown";
 }
 
 @end

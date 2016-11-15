@@ -27,8 +27,6 @@
     return sharedInstance;
 }
 
-
-
 - (void)presentForView:(UIView *)anchorView text:(NSString *)text superview:(UIView *)superview
 {
     [self removeView];
@@ -161,6 +159,11 @@
     }
     
     [self removeFromSuperview];
+}
+
+- (void)presentFullScreenTooltip:(NSString *)text
+{
+    
 }
 
 @end

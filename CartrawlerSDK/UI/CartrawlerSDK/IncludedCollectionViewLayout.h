@@ -10,6 +10,6 @@
 
 @interface IncludedCollectionViewLayout : UICollectionViewFlowLayout
 
-
+- (void)alignToTopForSameLineElements:(NSArray *)sameLineElements;
 
 @end

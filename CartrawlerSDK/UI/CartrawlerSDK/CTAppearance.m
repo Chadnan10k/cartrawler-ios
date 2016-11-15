@@ -19,7 +19,7 @@
         
         //set the default theme here
         sharedInstance.buttonColor = [UIColor colorWithRed:241.0/255.0 green:201.0/255.0 blue:51.0/255.0 alpha:1.0];
-        sharedInstance.buttonTextColor = [UIColor colorWithRed:6.0/255.0 green:43.0/255.0 blue:113.0/255.0 alpha:1.0];
+        sharedInstance.buttonTextColor = [UIColor colorWithRed:7.0/255.0 green:53.0/255.0 blue:144.0/255.0 alpha:1.0];
         sharedInstance.buttonCornerRadius = 5.0;
         sharedInstance.enableShadows = YES;
 
@@ -41,9 +41,9 @@
         sharedInstance.fontName = @"Avenir";
         sharedInstance.boldFontName = @"Avenir-Medium";
         
-        sharedInstance.calendarStartCellColor = [UIColor colorWithRed:27.0/255.0 green:78.0/255.0 blue:148.0/255.0 alpha:1.0];
-        sharedInstance.calendarEndCellColor = [UIColor colorWithRed:27.0/255.0 green:78.0/255.0 blue:148.0/255.0 alpha:1.0];
-        sharedInstance.calendarMidCellColor = [UIColor colorWithRed:241.0/255.0 green:201.0/255.0 blue:51.0/255.0 alpha:1.0];
+        sharedInstance.calendarStartCellColor = [UIColor colorWithRed:241.0/255.0 green:201.0/255.0 blue:51.0/255.0 alpha:1.0];
+        sharedInstance.calendarEndCellColor = [UIColor colorWithRed:241.0/255.0 green:201.0/255.0 blue:51.0/255.0 alpha:1.0];
+        sharedInstance.calendarMidCellColor = [UIColor colorWithRed:7.0/255.0 green:53.0/255.0 blue:144.0/255.0 alpha:1.0];
         sharedInstance.calendarSummaryViewColor = [UIColor colorWithRed:32/255.0 green:145/255.0 blue:235/255.0 alpha:1.0];
         sharedInstance.calendarSummaryTitleLabelColor = [UIColor colorWithRed:27.0/255.0 green:78.0/255.0 blue:148.0/255.0 alpha:1.0];
         

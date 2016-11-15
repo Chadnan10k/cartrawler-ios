@@ -18,7 +18,7 @@
     // Drawing code
 }
 */
-    
+  
 - (void)awakeFromNib
 {
     [super awakeFromNib];

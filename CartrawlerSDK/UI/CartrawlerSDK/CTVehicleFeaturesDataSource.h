@@ -1,15 +1,15 @@
 //
-//  VehicleFeaturesDataSource.h
+//  CTInclusionsDataSource.h
 //  CartrawlerSDK
 //
-//  Created by Lee Maguire on 25/10/2016.
+//  Created by Lee Maguire on 27/10/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface VehicleFeaturesDataSource : NSObject <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CTVehicleFeaturesDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
 - (void)setData:(NSArray <NSDictionary *> *)items;
 

@@ -148,7 +148,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ZU-KR-mPT">
-                                <rect key="frame" x="0.0" y="63" width="600" height="565"/>
+                                <rect key="frame" x="0.0" y="63" width="600" height="545"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61t-ct-JPK">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="517"/>
@@ -438,39 +438,11 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1m-G3-Dck" customClass="CTView">
-                                <rect key="frame" x="0.0" y="628" width="600" height="70"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXO-3s-baL" customClass="CTButton">
-                                        <rect key="frame" x="8" y="12" width="584" height="46"/>
-                                        <color key="backgroundColor" red="0.94509803920000002" green="0.78823529410000004" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="rzV-Mv-FAo"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Search for cars">
-                                            <color key="titleColor" red="0.027450980392156862" green="0.20784313725490194" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="rzV-Mv-FAo"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <action selector="searchTapped:" destination="dn2-4f-MD7" eventType="touchUpInside" id="n3i-yU-zph"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1m-G3-Dck" customClass="CTNextButton">
+                                <rect key="frame" x="0.0" y="608" width="600" height="90"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="BXO-3s-baL" firstAttribute="top" secondItem="d1m-G3-Dck" secondAttribute="top" constant="12" id="03b-Sk-0vG"/>
-                                    <constraint firstItem="BXO-3s-baL" firstAttribute="leading" secondItem="d1m-G3-Dck" secondAttribute="leading" constant="8" id="4uZ-F5-pAm" customClass="CTLayoutConstraint"/>
-                                    <constraint firstAttribute="trailing" secondItem="BXO-3s-baL" secondAttribute="trailing" constant="8" id="MjW-DM-OQr" customClass="CTLayoutConstraint"/>
-                                    <constraint firstAttribute="bottom" secondItem="BXO-3s-baL" secondAttribute="bottom" constant="12" id="Qm2-xT-8V3"/>
-                                    <constraint firstAttribute="height" constant="70" id="w7l-cn-XAu"/>
+                                    <constraint firstAttribute="height" constant="90" id="w7l-cn-XAu"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -508,6 +480,7 @@
                         <outlet property="dropoffLocTopConstraint" destination="NVC-0Q-MkJ" id="iEd-gU-Ole"/>
                         <outlet property="dropoffTimeView" destination="b3i-9q-LoW" id="s4a-qo-ptn"/>
                         <outlet property="dropoffView" destination="OXn-mb-0jv" id="aPf-al-b11"/>
+                        <outlet property="nextButton" destination="d1m-G3-Dck" id="PBM-ro-pk2"/>
                         <outlet property="pickupTimeView" destination="ckE-oY-mnT" id="iKn-C1-bZX"/>
                         <outlet property="pickupView" destination="uUT-Ub-urr" id="OTM-jq-NfH"/>
                         <outlet property="scrollView" destination="3ZU-KR-mPT" id="K3R-CB-RU5"/>
@@ -836,7 +809,7 @@
                                 <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="322" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7g7-DL-xk1">
-                                        <rect key="frame" x="0.0" y="99" width="375" height="448"/>
+                                        <rect key="frame" x="0.0" y="99" width="375" height="418"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CalendarCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalendarCell" rowHeight="322" id="JqB-8l-X2u" customClass="CTCalendarTableViewCell">
@@ -981,27 +954,11 @@
                                             <constraint firstItem="Uiu-Eo-ZDX" firstAttribute="centerX" secondItem="yNv-1S-ynl" secondAttribute="centerX" id="yvw-cc-hRD"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ki0-gd-zej" customClass="CTView">
-                                        <rect key="frame" x="0.0" y="547" width="375" height="60"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDS-sM-H5g" customClass="CTButton">
-                                                <rect key="frame" x="8" y="8" width="359" height="44"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <state key="normal" title="Continue">
-                                                    <color key="titleColor" red="1" green="0.92326956987380981" blue="0.27098661661148071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="closeTapped:" destination="rlh-pu-78Z" eventType="touchUpInside" id="plM-fO-2xy"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ki0-gd-zej" customClass="CTNextButton">
+                                        <rect key="frame" x="0.0" y="517" width="375" height="90"/>
                                         <color key="backgroundColor" red="0.10980392160000001" green="0.30588235289999999" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="UDS-sM-H5g" firstAttribute="leading" secondItem="Ki0-gd-zej" secondAttribute="leading" constant="8" id="EmJ-ip-Ncl"/>
-                                            <constraint firstAttribute="height" constant="60" id="OTc-xg-jUn"/>
-                                            <constraint firstAttribute="bottom" secondItem="UDS-sM-H5g" secondAttribute="bottom" constant="8" id="Wd9-Sy-RJ5"/>
-                                            <constraint firstItem="UDS-sM-H5g" firstAttribute="top" secondItem="Ki0-gd-zej" secondAttribute="top" constant="8" id="cNT-9N-bvv"/>
-                                            <constraint firstAttribute="trailing" secondItem="UDS-sM-H5g" secondAttribute="trailing" constant="8" id="vJY-Dq-p0O"/>
+                                            <constraint firstAttribute="height" constant="90" id="OTc-xg-jUn"/>
                                         </constraints>
                                     </view>
                                     <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ft-To-hge" userLabel="Weekday">
@@ -1025,7 +982,7 @@
                                     <constraint firstItem="Ki0-gd-zej" firstAttribute="leading" secondItem="rUl-G5-QHc" secondAttribute="leading" id="VmU-Sh-P37"/>
                                     <constraint firstAttribute="trailing" secondItem="Ki0-gd-zej" secondAttribute="trailing" id="YlK-8B-HEd"/>
                                     <constraint firstItem="8ft-To-hge" firstAttribute="leading" secondItem="rUl-G5-QHc" secondAttribute="leading" id="crd-8K-eID"/>
-                                    <constraint firstAttribute="bottom" secondItem="7g7-DL-xk1" secondAttribute="bottom" constant="60" id="pNf-3z-6Xr"/>
+                                    <constraint firstAttribute="bottom" secondItem="7g7-DL-xk1" secondAttribute="bottom" constant="90" id="pNf-3z-6Xr"/>
                                     <constraint firstAttribute="bottom" secondItem="Ki0-gd-zej" secondAttribute="bottom" id="qlv-5m-wcY"/>
                                 </constraints>
                                 <variation key="default">
@@ -1057,6 +1014,7 @@
                         <outlet property="continueButtonContainer" destination="Ki0-gd-zej" id="u4j-fU-5dm"/>
                         <outlet property="dropOffDateLabel" destination="jDV-do-69d" id="dax-KL-EZt"/>
                         <outlet property="headerTopSection" destination="lIJ-uF-TjO" id="T4o-4w-aJY"/>
+                        <outlet property="nextButton" destination="Ki0-gd-zej" id="7Qs-EV-5OT"/>
                         <outlet property="pickupDateLabel" destination="JdK-ia-Rpr" id="k5Q-BS-uZQ"/>
                         <outlet property="pickupTitleLabel" destination="vB0-Ef-zcR" id="0uG-pJ-QhX"/>
                         <outlet property="returnTitleLabel" destination="CzL-LR-bbS" id="Q1a-D0-eo7"/>

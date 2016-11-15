@@ -45,16 +45,11 @@
     self.supplierDetails.cartrawlerAPI = self.cartrawlerAPI;
     
     [self.selectionControl removeAllSegments];
-    [self.selectionControl insertSegmentWithTitle:@"Vehicle" atIndex:0 animated:NO];
+    [self.selectionControl insertSegmentWithTitle:@"Car info" atIndex:0 animated:NO];
     [self.selectionControl setSelectedSegmentIndex:0];
-    
-    if (self.search.selectedVehicle.vendor.rating) {
-        [self.selectionControl insertSegmentWithTitle:@"Supplier" atIndex:1 animated:NO];
-        _viewArray = @[self.vehicleDetails, self.supplierDetails];
-    } else {
-        _viewArray = @[self.vehicleDetails];
-    }
-    
+    [self.selectionControl insertSegmentWithTitle:@"Supplier info" atIndex:1 animated:NO];
+    _viewArray = @[self.vehicleDetails, self.supplierDetails];
+
     [self.pageViewController setViewControllers:@[self.vehicleDetails] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 
     __weak typeof (self) weakSelf = self;

@@ -10,25 +10,42 @@
 
 @implementation IncludedCollectionViewLayout
 
-
-
-
-- (NSArray *) layoutAttributesForElementsInRect:(CGRect)rect {
-    NSArray *answer = [super layoutAttributesForElementsInRect:rect];
-    
-    for(int i = 1; i < answer.count; ++i) {
-        UICollectionViewLayoutAttributes *currentLayoutAttributes = answer[i];
-        UICollectionViewLayoutAttributes *prevLayoutAttributes = answer[i - 1];
-        NSInteger maximumSpacing = 4;
-        NSInteger origin = CGRectGetMaxX(prevLayoutAttributes.frame);
-        
-        if (origin + maximumSpacing + currentLayoutAttributes.frame.size.width < self.collectionViewContentSize.width) {
-            CGRect frame = currentLayoutAttributes.frame;
-            frame.origin.x = origin + maximumSpacing;
-            currentLayoutAttributes.frame = frame;
+- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect;
+{
+    NSArray *attrs = [super layoutAttributesForElementsInRect:rect];
+    CGFloat baseline = -2;
+    NSMutableArray *sameLineElements = [NSMutableArray array];
+    for (UICollectionViewLayoutAttributes *element in attrs) {
+        if (element.representedElementCategory == UICollectionElementCategoryCell) {
+            CGRect frame = element.frame;
+            CGFloat centerY = CGRectGetMidY(frame);
+            if (ABS(centerY - baseline) > 1) {
+                baseline = centerY;
+                [self alignToTopForSameLineElements:sameLineElements];
+                [sameLineElements removeAllObjects];
+            }
+            [sameLineElements addObject:element];
         }
     }
-    return answer;
+    [self alignToTopForSameLineElements:sameLineElements];//align one more time for the last line
+    return attrs;
+}
+
+- (void)alignToTopForSameLineElements:(NSArray *)sameLineElements
+{
+    if (sameLineElements.count == 0) {
+        return;
+    }
+    NSArray *sorted = [sameLineElements sortedArrayUsingComparator:^NSComparisonResult(UICollectionViewLayoutAttributes *obj1, UICollectionViewLayoutAttributes *obj2) {
+        CGFloat height1 = obj1.frame.size.height;
+        CGFloat height2 = obj2.frame.size.height;
+        CGFloat delta = height1 - height2;
+        return delta == 0. ? NSOrderedSame : ABS(delta)/delta;
+    }];
+    UICollectionViewLayoutAttributes *tallest = [sorted lastObject];
+    [sameLineElements enumerateObjectsUsingBlock:^(UICollectionViewLayoutAttributes *obj, NSUInteger idx, BOOL *stop) {
+        obj.frame = CGRectOffset(obj.frame, 0, tallest.frame.origin.y - obj.frame.origin.y);
+    }];
 }
 
 @end

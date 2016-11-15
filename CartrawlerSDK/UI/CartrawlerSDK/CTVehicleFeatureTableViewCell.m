@@ -6,18 +6,19 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "CTInclusionTableViewCell.h"
+#import "CTVehicleFeatureTableViewCell.h"
 #import "CTLabel.h"
+#import "CTImageView.h"
+#import "CartrawlerSDK+UIImageView.h"
 
-@interface CTInclusionTableViewCell()
+@interface CTVehicleFeatureTableViewCell()
 
-@property (weak, nonatomic) IBOutlet CTLabel *inclusionLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *detailLabel;
+@property (weak, nonatomic) IBOutlet CTImageView *detailImageView;
 
 @end
 
-@implementation CTInclusionTableViewCell
-
-
+@implementation CTVehicleFeatureTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -30,9 +31,11 @@
     // Configure the view for the selected state
 }
 
-- (void)setLabelText:(NSString *)text
+- (void)setData:(NSString *)text image:(UIImage *)image
 {
-    self.inclusionLabel.text = text;
+    self.detailLabel.text = text;
+    self.detailImageView.image = image;
+    [self.detailImageView applyTint];
 }
 
 @end

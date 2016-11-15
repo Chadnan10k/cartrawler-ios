@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CTInclusionTableViewCell : UITableViewCell
+@interface CTVehicleFeatureTableViewCell : UITableViewCell
 
-
-
-- (void)setLabelText:(NSString *)text;
+- (void)setData:(NSString *)text image:(UIImage *)image;
 
 @end

@@ -18,9 +18,12 @@
 #import "CTSegmentedControl.h"
 #import "TermsViewController.h"
 #import "CTToolTip.h"
-#import "VehicleFeaturesDataSource.h"
-#import "CTInclusionsDataSource.h"
+#import "CTVehicleInclusionsDataSource.h"
+#import "CTVehicleFeaturesDataSource.h"
 #import "CTImageCache.h"
+#import "CartrawlerSDK+UIView.h"
+#import "CTToolTipButton.h"
+#import "LocalisedStrings.h"
 
 @interface VehicleDetailsViewController ()
 
@@ -30,44 +33,37 @@
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
 
 @property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UITableView *includedTableView;
+@property (weak, nonatomic) IBOutlet UITableView *featuresTableView;
 
 @property (weak, nonatomic) IBOutlet CTLabel *includedForFreeLabel;
-@property (weak, nonatomic) IBOutlet UICollectionView *featuresCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *inclusionsCollectionView;
 
 
-@property (strong, nonatomic) VehicleFeaturesDataSource *vehicleFeaturesDataSource;
-@property (strong, nonatomic) CTInclusionsDataSource *inclusionDataSource;
+@property (strong, nonatomic) CTVehicleFeaturesDataSource *vehicleFeaturesDataSource;
+@property (strong, nonatomic) CTVehicleInclusionsDataSource *inclusionDataSource;
 @property (weak, nonatomic) IBOutlet UIView *inclusionsContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inclusionsCollectionViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inclusionsVerticalSpace;
+@property (weak, nonatomic) IBOutlet CTToolTipButton *fuelPolicyButton;
+@property (weak, nonatomic) IBOutlet CTToolTipButton *pickupLocationButton;
 
 @end
 
 @implementation VehicleDetailsViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _inclusionDataSource = [[CTInclusionsDataSource alloc] init];
-    _vehicleFeaturesDataSource = [[VehicleFeaturesDataSource alloc] init];
-    
-    self.includedTableView.dataSource = self.inclusionDataSource;
-    self.includedTableView.delegate = self.inclusionDataSource;
-        
-    self.includedTableView.estimatedRowHeight = 40;
-    self.includedTableView.rowHeight = UITableViewAutomaticDimension;
-    self.includedTableView.layer.cornerRadius = 5;
-    
-    __weak typeof(self) weakSelf = self;
-    
-    self.inclusionDataSource.cellTapped = ^(UIView *cell, NSString *text) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //[[CTToolTip instance] presentForView:cell text:text superview:weakSelf.scrollView];
-            [[CTToolTip instance] presentPartialOverlayInView:weakSelf.view text: text];
-        });
-    };
+    _inclusionDataSource = [[CTVehicleInclusionsDataSource alloc] init];
+    _vehicleFeaturesDataSource = [[CTVehicleFeaturesDataSource alloc] init];
     self.inclusionsContainerView.backgroundColor = [CTAppearance instance].iconTint;
+    
+    self.featuresTableView.dataSource = self.vehicleFeaturesDataSource;
+    self.inclusionsCollectionView.dataSource = self.inclusionDataSource;
+    self.inclusionsCollectionView.delegate = self.inclusionDataSource;
+
+    self.featuresTableView.estimatedRowHeight = 30;
+    self.featuresTableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -77,7 +73,6 @@
     [self.scrollView setContentOffset:
     CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
     
-    NSBundle *b = [NSBundle bundleForClass:[self class]];
     [self.view layoutIfNeeded];
 
     [[CTImageCache sharedInstance] cachedImage: self.search.selectedVehicle.vehicle.pictureURL completion:^(UIImage *image) {
@@ -86,67 +81,91 @@
 
     self.vehicleNameLabel.text = self.search.selectedVehicle.vehicle.makeModelName;
     
+    if (self.search.selectedVehicle.vehicle.totalPriceForThisVehicle) {
+        self.priceLabel.text = [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
+    }
+    
+    [self.fuelPolicyButton setText:[LocalisedStrings fuelPolicy:self.search.selectedVehicle.vehicle.fuelPolicy]
+                            didTap:^{
+        NSLog(@"tapped");
+    }];
+    
+    [self.pickupLocationButton setText:[LocalisedStrings pickupType:self.search.selectedVehicle] didTap:^{
+        NSLog(@"tapped");
+    }];
+    
+    [self setupFeatureTableView];
+    [self setupInclusionsCollectionView];
+}
+
+- (void)setupFeatureTableView
+{
     NSMutableArray *featureData = [[NSMutableArray alloc] init];
     
-    for (CTPricedCoverage *pc in self.search.selectedVehicle.vehicle.pricedCoverages) {
-        [featureData addObject:@{ @"text" : [NSString stringWithFormat:@"%@ %@", pc.chargeDescription,
-                                             NSLocalizedString(@"passengers", @"passengers")], @"image" : @"white_checkmark" }];
+    [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@ %@",
+                                        self.search.selectedVehicle.vehicle.passengerQty.stringValue,
+                                        NSLocalizedString(@"passengers", @"passengers")],
+                                        @"image" : @"people"}];
+    
+    [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@ %@",
+                                        self.search.selectedVehicle.vehicle.baggageQty.stringValue,
+                                        NSLocalizedString(@"bags", @"bags")],
+                                        @"image" : @"baggage"}];
+    
+    [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@ %@",
+                                        self.search.selectedVehicle.vehicle.doorCount.stringValue,
+                                        NSLocalizedString(@"doors", @"doors")],
+                                        @"image" : @"doors"}];
+    
+    [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@",
+                                        self.search.selectedVehicle.vehicle.transmissionType],
+                                        @"image" : @"gears"}];
+    
+    if (self.search.selectedVehicle.vehicle.isAirConditioned) {
+        [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@",
+                                            NSLocalizedString(@"Air Conditioning", @"Air Conditioning")],
+                                            @"image" : @"winter_package"}];
     }
     
     [self.vehicleFeaturesDataSource setData:featureData];
-    self.featuresCollectionView.dataSource = self.vehicleFeaturesDataSource;
-    self.featuresCollectionView.delegate = self.vehicleFeaturesDataSource;
-    [self.featuresCollectionView reloadData];
-    [self.featuresCollectionView layoutIfNeeded];
-    [self.view layoutIfNeeded];
     
-    for (NSLayoutConstraint *c in self.featuresCollectionView.constraints) {
-        if (c.firstAttribute == NSLayoutAttributeHeight) {
-            c.constant = self.featuresCollectionView.contentSize.height;
-        }
-    }
-    
-    if (self.search.selectedVehicle.vehicle.pricedCoverages.count > 0) {
-        [self.includedTableView reloadData];
-        [self.includedTableView beginUpdates];
-        [self.includedTableView endUpdates];
-        
-        self.includedForFreeLabel.hidden = NO;
-    } else {
-        [self.includedTableView reloadData];
-        for (NSLayoutConstraint *c in self.includedTableView.constraints) {
-            if (c.firstAttribute == NSLayoutAttributeHeight) {
-                c.constant = 0;
-            }
-        }
-        self.includedForFreeLabel.hidden = YES;
-    }
-    
-    [self.inclusionDataSource setData:self.search.selectedVehicle.vehicle.pricedCoverages extras: self.search.selectedVehicle.vehicle.extraEquipment];
-    self.includedTableView.dataSource = self.inclusionDataSource;
-    self.includedTableView.delegate = self.inclusionDataSource;
-    
-    [self.includedTableView reloadData];
-    [self.includedTableView layoutIfNeeded];
-    [self.view layoutIfNeeded];
-    for (NSLayoutConstraint *c in self.includedTableView.constraints) {
-        if (c.firstAttribute == NSLayoutAttributeHeight) {
-            c.constant = self.includedTableView.contentSize.height;
-        }
-    }
+    [self.featuresTableView reloadData];
+    [self.featuresTableView layoutIfNeeded];
 
-    if (self.search.selectedVehicle.vehicle.totalPriceForThisVehicle) {
-        self.priceLabel.text = [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
+    if (self.featuresTableView.heightConstraint) {
+        self.featuresTableView.heightConstraint.constant = self.featuresTableView.contentSize.height;
+    }
+}
+
+- (void)setupInclusionsCollectionView
+{
+    BOOL hasFreeExtra = NO;
+    for (CTExtraEquipment *ex in self.search.selectedVehicle.vehicle.extraEquipment) {
+        if (ex.isIncludedInRate) {
+            hasFreeExtra = YES;
+            break;
+        }
+    }
+    
+    if (self.search.selectedVehicle.vehicle.pricedCoverages.count == 0 && !hasFreeExtra)
+    {
+        self.inclusionsVerticalSpace.constant = 8;
+        self.inclusionsContainerView.hidden = YES;
+    } else {
+        self.inclusionsContainerView.hidden = NO;
+        [self.inclusionDataSource setData:self.search.selectedVehicle.vehicle.pricedCoverages
+                                   extras:self.search.selectedVehicle.vehicle.extraEquipment];
+
+        [self.inclusionsCollectionView.collectionViewLayout invalidateLayout];
+        [self.inclusionsCollectionView reloadData];
+        [self.inclusionsCollectionView layoutIfNeeded];
+        self.inclusionsCollectionViewHeight.constant = self.inclusionsCollectionView.contentSize.height;
+        self.inclusionsVerticalSpace.constant = self.inclusionsCollectionView.contentSize.height+65;
     }
 }
 
 - (IBAction)backTapped:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)termsAndCondTapped:(id)sender

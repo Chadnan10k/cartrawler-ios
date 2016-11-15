@@ -82,6 +82,13 @@
     } else {
         self.titleLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:self.titleLabel.font.pointSize];
     }
+    
+    if (self.transparent) {
+        self.layer.borderColor = [CTAppearance instance].iconTint.CGColor;
+        [self setTitleColor:[CTAppearance instance].iconTint forState:UIControlStateNormal];
+        self.backgroundColor = [UIColor clearColor];
+        self.layer.borderWidth = 0.5;
+    }
 }
 
 - (void)shake

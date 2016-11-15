@@ -16,5 +16,6 @@
 + (NSString *)vehicleSize:(VehicleSize)size;
 + (NSString *)serviceLevel:(ServiceLevel)type;
 + (NSString *)inclusionText:(Inclusion)inclusion;
++ (NSString *)fuelPolicy:(FuelPolicy)fuelPolicy;
 
 @end
