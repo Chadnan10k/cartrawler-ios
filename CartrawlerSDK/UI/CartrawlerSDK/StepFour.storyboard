@@ -143,7 +143,7 @@
                                             <constraint firstAttribute="height" constant="60" id="277-I5-9d2"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="No, continue">
+                                        <state key="normal" title="Continue without insurance">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -166,7 +166,7 @@
                                             <constraint firstAttribute="height" constant="60" id="Ege-Hk-bXF"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Yes, add insurance">
+                                        <state key="normal" title="Continue with insurance">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -180,7 +180,7 @@
                                         <rect key="frame" x="0.0" y="422" width="600" height="112"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insurance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNH-7W-dg9" customClass="CTLabel">
-                                                <rect key="frame" x="8" y="8" width="576" height="21"/>
+                                                <rect key="frame" x="8" y="8" width="75" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="zEy-TO-E0T"/>
                                                 </constraints>
@@ -191,18 +191,39 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" $xx.xx per day" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlt-eA-ln3" customClass="CTLabel">
+                                                <rect key="frame" x="476" y="8" width="116" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="42" id="fRC-Lk-df3"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeaderTitle" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="fRC-Lk-df3"/>
+                                                    </mask>
+                                                </variation>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="100" constant="112" id="EOu-Ms-hCX"/>
-                                            <constraint firstAttribute="trailing" secondItem="vNH-7W-dg9" secondAttribute="trailing" constant="16" id="SOW-ks-HM2"/>
+                                            <constraint firstAttribute="trailing" secondItem="qlt-eA-ln3" secondAttribute="trailing" constant="8" id="Qni-ev-n5y"/>
+                                            <constraint firstAttribute="trailing" secondItem="vNH-7W-dg9" secondAttribute="trailing" constant="142" id="SOW-ks-HM2"/>
                                             <constraint firstItem="vNH-7W-dg9" firstAttribute="leading" secondItem="4OM-g5-xEo" secondAttribute="leading" constant="8" id="Sd3-6P-Chr"/>
                                             <constraint firstItem="vNH-7W-dg9" firstAttribute="top" secondItem="4OM-g5-xEo" secondAttribute="top" constant="8" id="XBG-fm-foI"/>
+                                            <constraint firstItem="qlt-eA-ln3" firstAttribute="top" secondItem="4OM-g5-xEo" secondAttribute="top" constant="8" id="cFH-lr-Hf1"/>
                                             <constraint firstAttribute="height" constant="516" id="eGg-C6-BhW"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="eGg-C6-BhW"/>
+                                                <exclude reference="SOW-ks-HM2"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -269,6 +290,7 @@
                         <outlet property="insuranceViewSpace" destination="ZtU-7Y-scv" id="VJJ-PE-Xjh"/>
                         <outlet property="noInsuranceButton" destination="Jmn-vg-0jx" id="Xe6-fq-fnn"/>
                         <outlet property="optionalExtrasView" destination="Jzu-GV-SyL" id="XGU-3i-Deg"/>
+                        <outlet property="pricePerDayLabel" destination="qlt-eA-ln3" id="vb3-Cq-UWU"/>
                         <outlet property="scrollView" destination="cqJ-fN-run" id="Nm9-Mf-HPJ"/>
                     </connections>
                 </viewController>

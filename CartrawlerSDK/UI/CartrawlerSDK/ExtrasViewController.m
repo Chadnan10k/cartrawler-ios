@@ -16,6 +16,7 @@
 #import "CTPickerView.h"
 #import "CTImageCache.h"
 #import "CartrawlerSDK+UIColor.h"
+#import "CartrawlerSDK+NSNumber.h"
 
 @interface ExtrasViewController () <UITextViewDelegate, CTPickerViewDelegate>
 
@@ -35,6 +36,7 @@
 @property (strong, nonatomic) NSMutableArray <NSDictionary *>*textViews;
 @property (strong, nonatomic) UIView *imageContainer;
 @property (assign, nonatomic) BOOL needsSelectedItem;
+@property (weak, nonatomic) IBOutlet CTLabel *pricePerDayLabel;
 
 @end
 
@@ -83,6 +85,18 @@
 
 }
 
+- (void)setPricePerDay
+{
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:self.search.pickupDate
+                                                          toDate:self.search.dropoffDate
+                                                         options:0];
+
+    self.pricePerDayLabel.text = [NSString stringWithFormat:@"%@ %@",
+                                  [[NSNumber numberWithFloat:self.search.insurance.premiumAmount.floatValue / [components day]] numberStringWithCurrencyCode], NSLocalizedString(@"per day", @"")];
+}
+
 - (void)viewDidLayoutSubviews
 {
     for (NSDictionary *textViewDict in self.textViews) {
@@ -97,6 +111,9 @@
     [self.view layoutIfNeeded];
     if (response)
     {
+        
+        [self setPricePerDay];
+        
         [self.optionalExtrasView hideExpandbutton:NO];
         [self.optionalExtrasView close];
         
@@ -506,7 +523,8 @@
     UIView *placeholder = [UIView new];
     placeholder.translatesAutoresizingMaskIntoConstraints = NO;
     placeholder.backgroundColor = [UIColor groupTableViewBackgroundColor];
-
+    placeholder.layer.cornerRadius = [CTAppearance instance].buttonCornerRadius;
+    
     UIImageView *insurerImageView = [UIImageView new];
     insurerImageView.translatesAutoresizingMaskIntoConstraints = NO;
     insurerImageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -547,7 +565,6 @@
                                                                                 options:0
                                                                                 metrics:nil
                                                                                   views:@{@"image" : insurerImageView, @"view" : insurerTitle}]];
-    
     
     return placeholder;
 }
