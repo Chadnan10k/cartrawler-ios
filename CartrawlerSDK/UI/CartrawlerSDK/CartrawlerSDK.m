@@ -328,14 +328,9 @@
     [self configureViewController:self.vehicleDetailsViewController
              validationController:[[InsuranceValidation alloc] init]
                       destination:self.insuranceExtrasViewController
-                         fallback:self.paymentSummaryViewController];
-    
+                         fallback:self.driverDetialsViewController];
     
     [self configureViewController:self.insuranceExtrasViewController
-             validationController:[[GenericValidation alloc] init]
-                      destination:self.paymentSummaryViewController];
-    
-    [self configureViewController:self.paymentSummaryViewController
              validationController:[[GenericValidation alloc] init]
                       destination:self.driverDetialsViewController];
     
@@ -345,6 +340,10 @@
     
     [self configureViewController:self.addressDetialsViewController
              validationController:[[PaymentValidation alloc] init]
+                      destination:self.paymentSummaryViewController];
+    
+    [self configureViewController:self.paymentSummaryViewController
+             validationController:[[GenericValidation alloc] init]
                       destination:self.paymentViewController];
     
     [self configureViewController:self.paymentViewController

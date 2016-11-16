@@ -16,14 +16,17 @@
                                        pointSize:(float)pointSize
                                             text:(NSString *)text
                                    boldFontColor:(NSString *)color
+                                       fontColor:(NSString *)fontColor
 {
     
     if ([text isKindOfClass:[NSString class]]) {
-        NSString *string = [text stringByAppendingString:[NSString stringWithFormat:@"<style>body{font-family: '%@'; font-size:%fpx;} b{color: %@} a{color: %@}</style>",
+        NSString *string = [text stringByAppendingString:[NSString stringWithFormat:@"<style>body{font-family: '%@'; font-size:%fpx; color: %@} b{color: %@} a{color: %@} p{color: %@}</style>",
                                                           font,
                                                           pointSize,
+                                                          fontColor,
                                                           color,
-                                                          color]];
+                                                          color,
+                                                          fontColor]];
         
         NSAttributedString *attributedText = [[NSAttributedString alloc] initWithData:[string dataUsingEncoding:NSUnicodeStringEncoding]
                                                                               options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,

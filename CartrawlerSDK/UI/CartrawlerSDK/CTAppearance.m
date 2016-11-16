@@ -40,8 +40,8 @@
         sharedInstance.enableTextFieldShadows = NO;
         sharedInstance.supplierDetailPrimaryColor = [UIColor colorWithRed:7.0/255.0 green:53.0/255.0 blue:144.0/255.0 alpha:1.0];
         sharedInstance.supplierDetailSecondaryColor = [UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1.0];
+        sharedInstance.insurancePrimaryColor = [UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1.0];
 
-        
         sharedInstance.fontName = @"Avenir";
         sharedInstance.boldFontName = @"Avenir-Medium";
         

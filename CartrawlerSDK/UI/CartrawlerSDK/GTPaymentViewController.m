@@ -67,10 +67,10 @@
     NSString *termsStr = [NSString stringWithFormat:@"I agree to the %@ and %@ <style>body { text-align: center; }</style>", link1, link2];
     
     //seems lazy but efficient
-    self.termsLabel.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
-                                                                pointSize:15.0
-                                                                     text:termsStr
-                                                            boldFontColor:@"#000000"];
+//    self.termsLabel.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
+//                                                                pointSize:15.0
+//                                                                     text:termsStr
+//                                                            boldFontColor:@"#000000"];
     self.termsLabel.delegate = self;
 }
 

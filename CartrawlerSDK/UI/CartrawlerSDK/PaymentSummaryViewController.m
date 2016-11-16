@@ -13,6 +13,8 @@
 #import "CartrawlerSDK+NSNumber.h"
 #import "BookingSummaryButton.h"
 #import "CTLabel.h"
+#import "CTNextButton.h"
+
 @interface PaymentSummaryViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -21,6 +23,7 @@
 
 @property (weak, nonatomic) IBOutlet BookingSummaryButton *bookingSummaryContainer;
 @property (weak, nonatomic) IBOutlet CTLabel *totalLabel;
+@property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
 
 @end
 
@@ -38,6 +41,11 @@
     self.tableView.estimatedRowHeight = 50;
     
     self.tableView.dataSource = self;
+    
+    __weak typeof(self) weakSelf = self;
+    [self.nextButton setText:NSLocalizedString(@"Continue", @"Continue") didTap:^{
+        [weakSelf pushToDestination];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -76,10 +84,6 @@
 
     self.tableView.alpha = 1;
     self.tableViewHeight.constant = self.tableView.contentSize.height;
-}
-
-- (IBAction)pushView:(id)sender {
-    [self pushToDestination];
 }
 
 #pragma mark TABLE VIEW

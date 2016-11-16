@@ -37,6 +37,7 @@
 @property (nonatomic)         BOOL     enableTextFieldShadows;
 @property (nonatomic, strong) UIColor  *supplierDetailPrimaryColor;
 @property (nonatomic, strong) UIColor  *supplierDetailSecondaryColor;
+@property (nonatomic, strong) UIColor  *insurancePrimaryColor;
 
 //Calendar
 @property (nonatomic, strong) UIColor  *calendarStartCellColor;

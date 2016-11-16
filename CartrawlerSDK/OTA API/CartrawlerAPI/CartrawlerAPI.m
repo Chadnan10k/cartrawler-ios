@@ -255,8 +255,12 @@
                                           CTErrorResponse *error)
     {
         if (error == nil) {
-            CTInsurance *insurance = [[CTInsurance alloc] initFromDict:response];
-            completion(insurance, nil);
+            if (response[@"Success"]) {
+                CTInsurance *insurance = [[CTInsurance alloc] initFromDict:response];
+                completion(insurance, nil);
+            } else {
+                completion(nil, [CTErrorResponse new]);
+            }
         } else {
             completion(nil, error);
         }

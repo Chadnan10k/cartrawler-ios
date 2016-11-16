@@ -16,7 +16,7 @@
 #import "HTMLParser.h"
 #import "CTAppearance.h"
 #import "TermsViewController.h"
-#import "CTButton.h"
+#import "CTNextButton.h"
 #import "CTAppearance.h"
 #import "DataStore.h"
 #import "Reachability.h"
@@ -27,7 +27,7 @@
 @property (strong, nonatomic) CTPaymentView *paymentView;
 @property (weak, nonatomic) IBOutlet UITextView *termsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
-@property (weak, nonatomic) IBOutlet CTButton *confirmButton;
+@property (weak, nonatomic) IBOutlet CTNextButton *confirmButton;
 
 @property (nonatomic) Reachability *internetReachability;
 
@@ -75,6 +75,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    __weak typeof(self) weakSelf = self;
+    [self.confirmButton setText:NSLocalizedString(@"Book now", @"Book now") didTap:^{
+        [weakSelf confirmPayment];
+    }];
+    
     _paymentView = [[CTPaymentView alloc] initWithFrame:CGRectZero];
     self.paymentView.delegate = self;
     [self.paymentView presentInView:self.webViewContainer];
@@ -91,7 +97,8 @@
     self.termsLabel.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
                                                                 pointSize:15.0
                                                                      text:termsStr
-                                                            boldFontColor:@"#000000"];
+                                                            boldFontColor:@"#000000"
+                                                                fontColor:@"#000000"];
     self.termsLabel.delegate = self;
     
 }
@@ -108,11 +115,13 @@
     });
     return NO;
 }
-- (IBAction)back:(id)sender {
+- (IBAction)back:(id)sender
+{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)confirmPayment:(id)sender {
+- (void)confirmPayment
+{
     //[self enableControls:NO];
     [self.paymentView confirmPayment];
 }
@@ -122,13 +131,13 @@
     if (enabled) {
         self.backButton.enabled = YES;
         self.backButton.alpha = 1;
-        self.confirmButton.enabled = YES;
+        self.confirmButton.userInteractionEnabled = YES;
         self.confirmButton.alpha = 1;
         self.termsLabel.userInteractionEnabled = YES;
     } else {
         self.backButton.enabled = NO;
         self.backButton.alpha = 0.8;
-        self.confirmButton.enabled = NO;
+        self.confirmButton.userInteractionEnabled = NO;
         self.confirmButton.alpha = 0.8;
         self.termsLabel.userInteractionEnabled = NO;
 
@@ -228,7 +237,6 @@
                                       otherButtonTitles:nil, nil];
     }
     [self.alertView show];
-
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex

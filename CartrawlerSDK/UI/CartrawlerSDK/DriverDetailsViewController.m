@@ -11,6 +11,7 @@
 #import "BookingSummaryButton.h"
 #import "AddressDetailsViewController.h"
 #import "FlightNumberValidation.h"
+#import "CTNextButton.h"
 
 @interface DriverDetailsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet CTTextField *firstNameTextField;
@@ -19,7 +20,8 @@
 @property (weak, nonatomic) IBOutlet CTTextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet CTTextField *flightNoTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet BookingSummaryButton *summaryContainer;
+@property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
+
 
 @property (strong, nonatomic) UIView *selectedView;
 
@@ -31,6 +33,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    __weak typeof(self) weakSelf = self;
+    [self.nextButton setText:NSLocalizedString(@"Continue", @"") didTap:^{
+        [weakSelf confirmDetails];
+    }];
 
     self.firstNameTextField.delegate = self;
     self.lastNameTextField.delegate = self;
@@ -61,11 +68,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.summaryContainer closeIfOpen];
-    [self.summaryContainer setDataWithVehicle:self.search.selectedVehicle
-                                   pickupDate:self.search.pickupDate
-                                  dropoffDate:self.search.dropoffDate
-                            isBuyingInsurance:self.search.isBuyingInsurance];
     
     [self registerForKeyboardNotifications];
     
@@ -115,7 +117,7 @@
 }
 
 
-- (IBAction)confirmDetails:(id)sender
+- (void)confirmDetails
 {
     
     self.search.firstName = self.firstNameTextField.text;
@@ -163,7 +165,6 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    [self.summaryContainer closeIfOpen];
     _selectedView = textField;
     return YES;
 }

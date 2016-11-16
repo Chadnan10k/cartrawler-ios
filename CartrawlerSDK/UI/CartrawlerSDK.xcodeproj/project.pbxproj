@@ -707,8 +707,6 @@
 				454AD7C61D2AB8E7005C6CFF /* CTDesignableView.m */,
 				4544464A1D9A7FE80047873F /* CTNavigationView.h */,
 				4544464B1D9A7FE80047873F /* CTNavigationView.m */,
-				459CB2E21DDB3FA2008522BA /* CTToolTipButton.h */,
-				459CB2E31DDB3FA2008522BA /* CTToolTipButton.m */,
 			);
 			name = UIView;
 			sourceTree = "<group>";
@@ -1082,6 +1080,8 @@
 		45BC88D11DC0F8370041BD74 /* ToolTip */ = {
 			isa = PBXGroup;
 			children = (
+				459CB2E21DDB3FA2008522BA /* CTToolTipButton.h */,
+				459CB2E31DDB3FA2008522BA /* CTToolTipButton.m */,
 				45BC88D21DC0F8460041BD74 /* CTToolTip.m */,
 				45BC88D31DC0F8460041BD74 /* CTToolTip.h */,
 				459CB2EC1DDB6638008522BA /* CTToolTipViewController.h */,

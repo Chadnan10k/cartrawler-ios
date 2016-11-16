@@ -11,6 +11,7 @@
 #import "BookingSummaryButton.h"
 #import "SettingsSelectionViewController.h"
 #import "CTImageCache.h"
+#import "CTNextButton.h"
 
 @interface AddressDetailsViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
@@ -20,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet CTTextField *postCodeTextField;
 @property (weak, nonatomic) IBOutlet CTTextField *countryTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet BookingSummaryButton *summaryContainer;
+@property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
 
 @property (strong, nonatomic) UIView *selectedView;
 
@@ -35,6 +36,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    __weak typeof(self) weakSelf = self;
+    [self.nextButton setText:NSLocalizedString(@"Continue", @"Continue") didTap:^{
+        [weakSelf continueToPayment];
+    }];
     self.addressLine1TextField.delegate = self;
     self.addressLine2TextField.delegate = self;
     self.cityTextField.delegate = self;
@@ -56,11 +61,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.summaryContainer closeIfOpen];
-    [self.summaryContainer setDataWithVehicle:self.search.selectedVehicle
-                                   pickupDate:self.search.pickupDate
-                                  dropoffDate:self.search.dropoffDate
-                            isBuyingInsurance:self.search.isBuyingInsurance];
     
     [self registerForKeyboardNotifications];
     
@@ -133,7 +133,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)continueToPayment:(id)sender
+- (void)continueToPayment
 {
     //do some validation
     

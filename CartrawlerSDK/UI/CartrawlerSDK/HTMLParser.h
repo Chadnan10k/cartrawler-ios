@@ -13,6 +13,7 @@
 + (NSAttributedString *)htmlStringWithFontFamily:(NSString *)font
                                        pointSize:(float)pointSize
                                             text:(NSString *)text
-                                   boldFontColor:(NSString *)color;
+                                   boldFontColor:(NSString *)color
+                                       fontColor:(NSString *)fontColor;
 
 @end

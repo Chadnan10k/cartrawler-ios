@@ -328,11 +328,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iE3-lT-4WK" customClass="CTNextButton">
+                                <rect key="frame" x="0.0" y="577" width="375" height="90"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="cPS-yd-ha3"/>
+                                </constraints>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNO-Hn-L6b">
-                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <rect key="frame" x="0.0" y="60" width="375" height="517"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLz-vi-TIj">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="517"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c54-jM-Sxn">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="396"/>
@@ -342,7 +349,7 @@
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" editable="NO" text="Terms and conditions" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hWi-uf-kjB">
-                                                <rect key="frame" x="8" y="404" width="359" height="128"/>
+                                                <rect key="frame" x="8" y="404" width="359" height="105"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="textColor" red="0.19346955129999999" green="0.19346955129999999" blue="0.19346955129999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -356,9 +363,9 @@
                                             <constraint firstItem="hWi-uf-kjB" firstAttribute="top" secondItem="c54-jM-Sxn" secondAttribute="bottom" constant="8" id="4si-f2-MwI"/>
                                             <constraint firstItem="hWi-uf-kjB" firstAttribute="leading" secondItem="fLz-vi-TIj" secondAttribute="leading" constant="8" id="9Hy-HM-2ST"/>
                                             <constraint firstItem="c54-jM-Sxn" firstAttribute="top" secondItem="fLz-vi-TIj" secondAttribute="top" id="Dbx-xS-9JI"/>
-                                            <constraint firstAttribute="height" constant="607" id="Kgn-VK-fmG"/>
+                                            <constraint firstAttribute="height" constant="517" id="Kgn-VK-fmG"/>
                                             <constraint firstItem="c54-jM-Sxn" firstAttribute="leading" secondItem="fLz-vi-TIj" secondAttribute="leading" id="KtS-3k-TWu"/>
-                                            <constraint firstAttribute="bottom" secondItem="hWi-uf-kjB" secondAttribute="bottom" constant="75" id="qkv-xC-GNX"/>
+                                            <constraint firstAttribute="bottom" secondItem="hWi-uf-kjB" secondAttribute="bottom" constant="8" id="qkv-xC-GNX"/>
                                             <constraint firstAttribute="trailing" secondItem="hWi-uf-kjB" secondAttribute="trailing" constant="8" id="stS-gb-zbI"/>
                                         </constraints>
                                     </view>
@@ -408,39 +415,22 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RB-BO-e31" customClass="CTButton">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.50196078430000002" green="0.84705882349999995" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="pXH-Sd-cia"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Confirm"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="overrideCornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="confirmPayment:" destination="v32-36-Voc" eventType="touchUpInside" id="x6x-7D-5F8"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9RB-BO-e31" firstAttribute="leading" secondItem="PjK-wo-uj7" secondAttribute="leading" id="6Xo-07-Rcy"/>
                             <constraint firstAttribute="trailing" secondItem="DNO-Hn-L6b" secondAttribute="trailing" id="6ec-Sr-a7W"/>
+                            <constraint firstItem="u4T-7C-Ab2" firstAttribute="top" secondItem="iE3-lT-4WK" secondAttribute="bottom" id="7jO-bG-avK"/>
                             <constraint firstItem="Vsn-us-gk8" firstAttribute="leading" secondItem="PjK-wo-uj7" secondAttribute="leading" id="8HM-gB-xgv"/>
                             <constraint firstAttribute="trailing" secondItem="Vsn-us-gk8" secondAttribute="trailing" id="BHy-04-87Q"/>
                             <constraint firstItem="DNO-Hn-L6b" firstAttribute="leading" secondItem="PjK-wo-uj7" secondAttribute="leading" id="NmA-qE-mhB"/>
-                            <constraint firstItem="u4T-7C-Ab2" firstAttribute="top" secondItem="DNO-Hn-L6b" secondAttribute="bottom" id="SgJ-7l-2lF"/>
+                            <constraint firstItem="u4T-7C-Ab2" firstAttribute="top" secondItem="DNO-Hn-L6b" secondAttribute="bottom" constant="90" id="SgJ-7l-2lF"/>
+                            <constraint firstAttribute="trailing" secondItem="iE3-lT-4WK" secondAttribute="trailing" id="cfp-RH-dWg"/>
                             <constraint firstItem="DNO-Hn-L6b" firstAttribute="top" secondItem="1Pw-yJ-j5f" secondAttribute="bottom" constant="40" id="fOB-Rm-1ZL"/>
-                            <constraint firstItem="u4T-7C-Ab2" firstAttribute="top" secondItem="9RB-BO-e31" secondAttribute="bottom" id="gBe-9W-IEG"/>
                             <constraint firstItem="DNO-Hn-L6b" firstAttribute="top" secondItem="Vsn-us-gk8" secondAttribute="bottom" id="iCZ-Lz-42a"/>
                             <constraint firstItem="fLz-vi-TIj" firstAttribute="width" secondItem="PjK-wo-uj7" secondAttribute="width" id="lvg-lX-QIU"/>
+                            <constraint firstItem="iE3-lT-4WK" firstAttribute="top" secondItem="DNO-Hn-L6b" secondAttribute="bottom" id="msH-le-YFB"/>
                             <constraint firstItem="Vsn-us-gk8" firstAttribute="top" secondItem="PjK-wo-uj7" secondAttribute="top" id="ot3-el-mxW"/>
-                            <constraint firstAttribute="trailing" secondItem="9RB-BO-e31" secondAttribute="trailing" id="rH8-VZ-yHx"/>
+                            <constraint firstItem="iE3-lT-4WK" firstAttribute="leading" secondItem="PjK-wo-uj7" secondAttribute="leading" id="viM-Zl-8xf"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -450,7 +440,7 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="med-a6-6uJ" id="3JN-fb-gDg"/>
-                        <outlet property="confirmButton" destination="9RB-BO-e31" id="Urj-az-AMD"/>
+                        <outlet property="confirmButton" destination="iE3-lT-4WK" id="GY3-zr-5v8"/>
                         <outlet property="termsLabel" destination="hWi-uf-kjB" id="nh8-O2-WN6"/>
                         <outlet property="webViewContainer" destination="c54-jM-Sxn" id="5T8-an-LuL"/>
                     </connections>

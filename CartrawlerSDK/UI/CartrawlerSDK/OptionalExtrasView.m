@@ -56,6 +56,7 @@
     
     if (hide) {
         self.expandButton.alpha = 0;
+        self.alpha = 1;
     } else {
         self.expandButton.alpha = 1;
     }
@@ -63,7 +64,7 @@
 
 - (void)open:(BOOL)hideExpandButton
 {
-
+    self.alpha = 1;
     if (self.textView) {
         [self.textView removeFromSuperview];
     }
