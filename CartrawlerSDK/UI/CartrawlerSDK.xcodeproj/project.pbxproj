@@ -31,6 +31,7 @@
 		4513B6251DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4513B6231DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m */; };
 		4540550A1DDDD62C00FD493A /* OptionalExtrasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454055081DDDD62C00FD493A /* OptionalExtrasViewController.h */; };
 		4540550B1DDDD62C00FD493A /* OptionalExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454055091DDDD62C00FD493A /* OptionalExtrasViewController.m */; };
+		4540550E1DDE10DF00FD493A /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4540550D1DDE0E3D00FD493A /* en.strings */; };
 		454D91F01DD34E24001AE96C /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D91EE1DD34E24001AE96C /* Reachability.h */; };
 		454D91F11DD34E24001AE96C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D91EF1DD34E24001AE96C /* Reachability.m */; };
 		455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736E1D806064000CB1E5 /* GTPaymentRequest.h */; };
@@ -420,6 +421,7 @@
 		453FD4421D588076002E4CC6 /* PaymentCompletionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentCompletionViewController.m; sourceTree = "<group>"; };
 		454055081DDDD62C00FD493A /* OptionalExtrasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalExtrasViewController.h; sourceTree = "<group>"; };
 		454055091DDDD62C00FD493A /* OptionalExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalExtrasViewController.m; sourceTree = "<group>"; };
+		4540550C1DDE0E3D00FD493A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/en.strings; sourceTree = "<group>"; };
 		454446371D991B3C0047873F /* PassengerSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerSelectionViewController.h; sourceTree = "<group>"; };
 		454446381D991B3C0047873F /* PassengerSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerSelectionViewController.m; sourceTree = "<group>"; };
 		4544463C1D992BAA0047873F /* CTStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTStepper.h; sourceTree = "<group>"; };
@@ -608,7 +610,6 @@
 		45F473601D3655EB00DF548B /* Payment.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		45F473631D366D6A00DF548B /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
 		45F473641D366D6A00DF548B /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
-		45F6EEE61D6C86AC00AB341B /* en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = en.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1043,7 +1044,7 @@
 		45819FAC1D351CDF001AE0F5 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				45F6EEE61D6C86AC00AB341B /* en.strings */,
+				4540550D1DDE0E3D00FD493A /* en.strings */,
 			);
 			name = Localization;
 			sourceTree = "<group>";
@@ -1704,6 +1705,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4540550E1DDE10DF00FD493A /* en.strings in Resources */,
 				455B59451DCC91F900CA4790 /* CTPCI.html in Resources */,
 				455B59461DCC91F900CA4790 /* Assets.xcassets in Resources */,
 				455B59471DCC91F900CA4790 /* Landing.storyboard in Resources */,
@@ -1888,6 +1890,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4540550D1DDE0E3D00FD493A /* en.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4540550C1DDE0E3D00FD493A /* en */,
+			);
+			name = en.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		455B58311DCC90D300CA4790 /* Debug */ = {

@@ -17,6 +17,7 @@
 #import "CTInterstitialViewController.h"
 #import "CTToolTip.h"
 #import "CTNextButton.h"
+#import "LocalisedStrings.h"
 
 #define kSearchViewStoryboard @"StepOne"
 
@@ -168,6 +169,8 @@
     self.ageContainer.alpha = 0;
     
     [self.view layoutIfNeeded];
+    
+    NSLog(@"%@", [LocalisedStrings localizedStringForKey:@"Continue"]);
 
 }
 

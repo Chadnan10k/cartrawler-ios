@@ -96,14 +96,14 @@
     
     [self.fuelPolicyButton setText:[LocalisedStrings fuelPolicy:self.search.selectedVehicle.vehicle.fuelPolicy] didTap:^{
         [weakSelf presentViewController:[CTToolTip fullScreenTooltip:NSLocalizedString(@"Fuel policy", @"Fuel policy tooltip title")
-                                                          detailText:weakSelf.search.selectedVehicle.vehicle.fuelPolicyDescription]
+                                                          detailText:[LocalisedStrings toolTipTextForFuelPolicy:weakSelf.search.selectedVehicle.vehicle.fuelPolicy]]
                                animated:YES
                              completion:nil];
     }];
     
     [self.pickupLocationButton setText:[LocalisedStrings pickupType:self.search.selectedVehicle] didTap:^{
         [weakSelf presentViewController:[CTToolTip fullScreenTooltip:NSLocalizedString(@"Pickup location", @"Pickup location tooltip title")
-                                                          detailText:[LocalisedStrings pickupType:weakSelf.search.selectedVehicle]]
+                                                          detailText:[LocalisedStrings toolTipTextForFuelPolicy:weakSelf.search.selectedVehicle.vendor.pickupLocation.pickupType]]
                                animated:YES
                              completion:nil];
     }];

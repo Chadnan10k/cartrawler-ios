@@ -18,4 +18,9 @@
 + (NSString *)inclusionText:(Inclusion)inclusion;
 + (NSString *)fuelPolicy:(FuelPolicy)fuelPolicy;
 
++ (NSString *)toolTipTextForFuelPolicy:(FuelPolicy)fuelPolicy;
++ (NSString *)toolTipTextForPickupType:(PickupType)pickupType;
+
++ (NSString *)localizedStringForKey:(NSString *)key;
+
 @end

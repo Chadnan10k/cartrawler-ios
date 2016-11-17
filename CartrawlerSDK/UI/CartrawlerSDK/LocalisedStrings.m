@@ -391,4 +391,79 @@
     return @"Unknown";
 }
 
++ (NSString *)toolTipTextForFuelPolicy:(FuelPolicy)fuelPolicy
+{
+    if (fuelPolicy == FuelPolicyFullToFull) {
+        return [self localizedStringForKey:@"FUEL_POLICY_FULL_FULL"];
+    }
+    
+    if (fuelPolicy == FuelPolicyFullEmptyRefund) {
+        return [self localizedStringForKey:@"FUEL_POLICY_FULL_EMPTY_REFUND"];
+    }
+    
+    if (fuelPolicy == FuelPolicyFullToEmpty) {
+        return [self localizedStringForKey:@"FUEL_POLICY_FULL_EMPTY"];
+    }
+    
+    if (fuelPolicy == FuelPolicyElectricVehicle) {
+        return [self localizedStringForKey:@"FUEL_POLICY_ELECTRIC_VEHICLE"];
+    }
+    
+    if (fuelPolicy == FuelPolicyEmptyToEmpty) {
+        return [self localizedStringForKey:@"FUEL_POLICY_EMPTY_EMPTY"];
+    }
+    
+    if (fuelPolicy == FuelPolicyHalfToEmpty) {
+        return [self localizedStringForKey:@"FUEL_POLICY_HALF_EMPTY"];
+    }
+    
+    if (fuelPolicy == FuelPolicyQuarterToEmpty) {
+        return [self localizedStringForKey:@"FUEL_POLICY_QUARTER_EMPTY"];
+    }
+    
+    if (fuelPolicy == FuelPolicyHalfToHalf) {
+        return [self localizedStringForKey:@"FUEL_POLICY_HALF_HALF"];
+    }
+    
+    if (fuelPolicy == FuelPolicyQuarterToQuarter) {
+        return [self localizedStringForKey:@"FUEL_POLICY_QUARTER_QUARTER"];
+    }
+    
+    if (fuelPolicy == FuelPolicyFullToFullHybrid) {
+        return [self localizedStringForKey:@"FUEL_POLICY_FULL_FULL_HYBRID"];
+    }
+    
+    if (fuelPolicy == FuelPolicyChaufFullFull) {
+        return [self localizedStringForKey:@"FUEL_POLICY_CHAUF_FULL_FULL"];
+    }
+    
+    return @"Unknown";
+}
+
++ (NSString *)toolTipTextForPickupType:(PickupType)pickupType
+{
+    switch (pickupType) {
+        case PickupTypeTerminal:
+            return [self localizedStringForKey:@"PICKUP_IN_TERMINAL"];
+        case PickupTypeShuttleBus:
+            return [self localizedStringForKey:@"PICKUP_FREE_SHUTTLE_BUS"];
+        case PickupTypeTerminalAndShuttle:
+            return [self localizedStringForKey:@"PICKUP_FREE_SHUTTLE_BUS"];
+        case PickupTypeMeetAndGreet:
+            return [self localizedStringForKey:@"PICKUP_MEET_GREET"];
+        case PickupTypeCarDriver:
+            return [self localizedStringForKey:@"PICKUP_PERSONAL_DRIVER"];
+        case PickupTypeUnknown:
+            return [self localizedStringForKey:@"PICKUP_UNKNOWN"];
+    }
+}
+
++ (NSString *)localizedStringForKey:(NSString *)key
+{
+    return NSLocalizedStringFromTableInBundle(key,
+                                              @"en",
+                                              [NSBundle bundleForClass:[self class]], nil);
+}
+
+
 @end
