@@ -17,35 +17,35 @@
     
     if (search.pickupLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupLocation IS NOT SET \n\n");
-        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER", NO);
         return;
     }
     
     if (search.dropoffLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.dropoffLocation IS NOT SET \n\n");
-        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER", NO);
         return;
     }
     
     if (search.adultQty == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.adultQty IS NOT SET \n\n");
-        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER", NO);
         return;
     }
     
     if (search.selectedService == nil && search.selectedShuttle == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.selectedService IS NOT SET \n\n");
-        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER", NO);
         return;
     }
     
     if (search.booking == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.booking IS NOT SET \n\n");
-        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER", NO);
         return;
     }
     
-    completion(YES, nil);
+    completion(YES, nil, NO);
 }
 
 @end

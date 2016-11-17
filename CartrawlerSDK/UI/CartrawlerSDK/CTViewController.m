@@ -36,7 +36,7 @@
     if (!self.search) {
         [self.validationController validateGroundTransport:self.groundSearch
                                              cartrawlerAPI:self.cartrawlerAPI
-                                                completion:^(BOOL success, NSString *errorMessage) {
+                                                completion:^(BOOL success, NSString *errorMessage, BOOL useOptionalRoute) {
                                                     dispatch_async(dispatch_get_main_queue(), ^{
                                                         if (success) {
                                                             if (weakSelf.dataValidationCompletion) {
@@ -60,7 +60,7 @@
     } else {
         [self.validationController validateCarRental:self.search
                                        cartrawlerAPI:self.cartrawlerAPI
-                                          completion:^(BOOL success, NSString *errorMessage) {
+                                          completion:^(BOOL success, NSString *errorMessage, BOOL useOptionalRoute) {
                                               dispatch_async(dispatch_get_main_queue(), ^{
                                                   if (success) {
                                                       if (weakSelf.dataValidationCompletion) {
@@ -78,7 +78,7 @@
                                                       
                                                   } else {
                                                       if (weakSelf.dataValidationCompletion) {
-                                                          if (weakSelf.fallbackViewController) {
+                                                          if (weakSelf.fallbackViewController && !useOptionalRoute) {
                                                               weakSelf.dataValidationCompletion(YES, nil);
                                                               [weakSelf.fallbackViewController refresh];
                                                               @try {
@@ -88,7 +88,17 @@
                                                                   NSLog(@"Exception: %@", e);
                                                               } @finally {
 
-                                                              }                                                          } else {
+                                                              }
+                                                          } else if(useOptionalRoute && weakSelf.optionalRoute) {
+                                                              @try {
+                                                                  [weakSelf.navigationController pushViewController:weakSelf.optionalRoute
+                                                                                                           animated:YES];
+                                                              } @catch (NSException * e) {
+                                                                  NSLog(@"Exception: %@", e);
+                                                              } @finally {
+                                                                  
+                                                              }
+                                                          } else {
                                                               weakSelf.dataValidationCompletion(NO, errorMessage);
                                                           }
                                                       }

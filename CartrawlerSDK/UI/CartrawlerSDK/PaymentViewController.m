@@ -78,7 +78,8 @@
     
     __weak typeof(self) weakSelf = self;
     [self.confirmButton setText:NSLocalizedString(@"Book now", @"Book now") didTap:^{
-        [weakSelf confirmPayment];
+        [weakSelf pushToDestination];
+        //[weakSelf confirmPayment];
     }];
     
     _paymentView = [[CTPaymentView alloc] initWithFrame:CGRectZero];
@@ -100,7 +101,7 @@
                                                             boldFontColor:@"#000000"
                                                                 fontColor:@"#000000"];
     self.termsLabel.delegate = self;
-    
+    self.paymentView.backgroundColor = [UIColor whiteColor];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange

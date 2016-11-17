@@ -283,6 +283,7 @@
     
     UIStoryboard *extrasStoryboard = [UIStoryboard storyboardWithName:kExtrasViewStoryboard bundle:self.bundle];
     _insuranceExtrasViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:@"ExtrasViewController"];
+    _extrasViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:@"OptionalExtrasViewController"];
     
     UIStoryboard *summaryStoryboard = [UIStoryboard storyboardWithName:kSummaryViewStoryboard bundle:self.bundle];
     _paymentSummaryViewController = [summaryStoryboard instantiateViewControllerWithIdentifier:@"PaymentSummaryViewController"];
@@ -328,9 +329,14 @@
     [self configureViewController:self.vehicleDetailsViewController
              validationController:[[InsuranceValidation alloc] init]
                       destination:self.insuranceExtrasViewController
-                         fallback:self.driverDetialsViewController];
+                         fallback:self.driverDetialsViewController
+                    optionalRoute:self.extrasViewController];
     
     [self configureViewController:self.insuranceExtrasViewController
+             validationController:[[GenericValidation alloc] init]
+                      destination:self.driverDetialsViewController];
+    
+    [self configureViewController:self.extrasViewController
              validationController:[[GenericValidation alloc] init]
                       destination:self.driverDetialsViewController];
     
@@ -405,6 +411,12 @@
     [self configureViews];
 }
 
+- (void)overrideExtrasViewController:(CTViewController *)viewController
+{
+    _extrasViewController = viewController;
+    [self configureViews];
+}
+
 - (void)overridePaymentSummaryViewController:(CTViewController *)viewController
 {
     _paymentSummaryViewController = viewController;
@@ -433,9 +445,12 @@
                          validationController:(CTValidation *)validationController
                                   destination:(CTViewController *)destination
                                   fallback:(CTViewController *)fallback
+                             optionalRoute:(CTViewController *)optionalRoute
 {
     viewController.destinationViewController = destination;
     viewController.fallbackViewController = fallback;
+    viewController.optionalRoute = optionalRoute;
+
     viewController.cartrawlerAPI = self.cartrawlerAPI;
     viewController.delegate = self;
     

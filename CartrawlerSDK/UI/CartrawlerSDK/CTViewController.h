@@ -41,6 +41,7 @@ typedef void (^GTBookingCompletion)(GTBooking *booking);
 
 @property (nonatomic, strong) CTViewController *destinationViewController;
 @property (nonatomic, strong) CTViewController *fallbackViewController;
+@property (nonatomic, strong) CTViewController *optionalRoute;
 
 @property (nonatomic, weak) id<CTViewControllerDelegate> delegate;
 

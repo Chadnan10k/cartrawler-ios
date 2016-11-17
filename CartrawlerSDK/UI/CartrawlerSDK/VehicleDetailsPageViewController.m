@@ -13,6 +13,7 @@
 #import "CTSegmentedControl.h"
 #import "CTButton.h"
 #import "CTNextButton.h"
+#import "OptionalExtrasViewController.h"
 
 @interface VehicleDetailsPageViewController () <UIPageViewControllerDataSource>
 

@@ -11,5 +11,6 @@
 @interface UIView (CartrawlerSDK)
 
 - (NSLayoutConstraint *)heightConstraint;
+- (NSLayoutConstraint *)bottomConstraint;
 
 @end

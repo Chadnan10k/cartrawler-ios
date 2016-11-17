@@ -21,4 +21,15 @@
     return nil;
 }
 
+- (NSLayoutConstraint *)bottomConstraint
+{
+    for (NSLayoutConstraint *c in self.constraints) {
+        if (c.firstAttribute == NSLayoutAttributeBottom) {
+            return c;
+        }
+    }
+    
+    return nil;
+}
+
 @end

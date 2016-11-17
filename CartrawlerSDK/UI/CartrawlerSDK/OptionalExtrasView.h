@@ -10,15 +10,16 @@
 #import "CTDesignableView.h"
 #import <CartrawlerAPI/CTExtraEquipment.h>
 
+@protocol OptionalExtrasDelegate <NSObject>
+
+- (void)pushToExtrasView;
+
+@end
+
 @interface OptionalExtrasView : CTDesignableView
 
 @property (strong, nonatomic) NSArray <CTExtraEquipment *> *extras;
-@property (nonatomic) CGRect initialFrame;
-@property (nonatomic) BOOL disableAccordion;
-
-- (void)open:(BOOL)hideExpandButton;
-- (void)close;
-- (void)hideExpandbutton:(BOOL)hide;
+@property (weak) id<OptionalExtrasDelegate> delegate;
 
 - (void)hideView:(BOOL)hide;
 

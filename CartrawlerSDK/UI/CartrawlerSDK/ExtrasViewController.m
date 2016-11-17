@@ -17,8 +17,9 @@
 #import "CTImageCache.h"
 #import "CartrawlerSDK+UIColor.h"
 #import "CartrawlerSDK+NSNumber.h"
+#import "OptionalExtrasViewController.h"
 
-@interface ExtrasViewController () <UITextViewDelegate, CTPickerViewDelegate>
+@interface ExtrasViewController () <UITextViewDelegate, CTPickerViewDelegate, OptionalExtrasDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *insuranceView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *insuranceViewHeight;
@@ -42,10 +43,16 @@
 
 @implementation ExtrasViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.optionalExtrasView.delegate = self;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
     self.needsSelectedItem = NO;
     
     if (self.itemSelectButton) {
@@ -70,14 +77,9 @@
     if (self.search.selectedVehicle.vehicle.extraEquipment.count > 0) {
 
         self.optionalExtrasView.extras = self.search.selectedVehicle.vehicle.extraEquipment;
-        self.optionalExtrasView.initialFrame = self.view.frame;
         
         if (self.search.insurance) {
-            self.optionalExtrasView.disableAccordion = NO;
             [self.optionalExtrasView hideView:NO];
-        } else {
-            self.optionalExtrasView.disableAccordion = YES;
-            [self.optionalExtrasView open:YES];
         }
     } else {
         [self.optionalExtrasView hideView:YES];
@@ -113,9 +115,6 @@
     {
         
         [self setPricePerDay];
-        
-        [self.optionalExtrasView hideExpandbutton:NO];
-        [self.optionalExtrasView close];
         
         self.insuranceView.hidden = NO;
         self.noInsuranceButton.hidden = NO;
@@ -257,20 +256,18 @@
         }
         
         if (noResponse) {
-            [self.optionalExtrasView open:YES];
-            self.insuranceViewHeight.constant = 20;
+            self.insuranceViewHeight.constant = 8;
             self.continueButton.hidden = NO;
-            self.insuranceViewSpace.constant = -20;
+            self.insuranceViewSpace.constant = -8;
             self.insuranceView.hidden = YES;
             self.noInsuranceButton.hidden = YES;
             self.addInuranceButton.hidden = YES;
         }
         
     } else {
-        [self.optionalExtrasView open:YES];
-        self.insuranceViewHeight.constant = 20;
+        self.insuranceViewHeight.constant = 8;
         self.continueButton.hidden = NO;
-        self.insuranceViewSpace.constant = -20;
+        self.insuranceViewSpace.constant = -8;
         self.insuranceView.hidden = YES;
         self.noInsuranceButton.hidden = YES;
         self.addInuranceButton.hidden = YES;
@@ -593,6 +590,13 @@
 {
     (self.search).insuranceItem = item;
     [self.itemSelectButton setTitle:item.name forState:UIControlStateNormal];
+}
+
+#pragma mark OptionalExtrasDelegate
+
+- (void)pushToExtrasView
+{
+    [self performSegueWithIdentifier:@"showOptionalExtras" sender:nil];
 }
 
 @end

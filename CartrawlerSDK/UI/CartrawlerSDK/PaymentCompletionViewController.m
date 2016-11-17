@@ -91,7 +91,7 @@
     self.pickupLabel.attributedText = pickup;
     self.dropoffLabel.attributedText = dropoff;
     
-    self.bookingReferenceLabel.text = [NSString stringWithFormat:@"Booking reference: %@", self.search.booking.confID];
+    self.bookingReferenceLabel.text = [NSString stringWithFormat:@"Booking reference: %@", self.search.booking.confID ?: @"CTTest123456789"];
     self.emailLabel.text = [NSString stringWithFormat:@"We have sent an email to %@ with your booking details.", self.search.email];
 
 }

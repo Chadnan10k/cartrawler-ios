@@ -10,14 +10,16 @@
 #import "CTLabel.h"
 #import "CartrawlerSDK+NSNumber.h" 
 #import "CTStepper.h"
+#import "CTAppearance.h"
+#import "CarRentalSearch.h"
 
 @interface OptionalExtraTableViewCell()
 
 @property (weak, nonatomic) IBOutlet CTLabel *amountLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *extraImageView;
 @property (weak, nonatomic) IBOutlet CTLabel *itemTitleLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *itemPriceLabel;
-@property (weak, nonatomic) IBOutlet CTStepper *stepper;
+@property (weak, nonatomic) IBOutlet UIButton *plusButton;
+@property (weak, nonatomic) IBOutlet UIButton *minusButton;
 
 @end
 
@@ -47,10 +49,24 @@
     self.itemTitleLabel.text = extra.equipDescription;
     self.itemPriceLabel.text = [extra.chargeAmount numberStringWithCurrencyCode];
     
-    self.extraImageView.image = [self imageForExtra:extra.equipType];
-    self.stepper.value = [NSNumber numberWithInteger:extra.qty].doubleValue;
-
+    self.amountLabel.textColor = [CTAppearance instance].navigationBarColor;
+    self.plusButton.tintColor = [CTAppearance instance].headerTitleColor;
+    self.minusButton.tintColor = [CTAppearance instance].subheaderTitleColor;
+    
     [self updateAmountLabel];
+    [self setPricePerDay];
+}
+
+- (void)setPricePerDay
+{
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:[CarRentalSearch instance].pickupDate
+                                                          toDate:[CarRentalSearch instance].dropoffDate
+                                                         options:0];
+    
+    self.itemPriceLabel.text = [NSString stringWithFormat:@"%@ %@",
+                            [[NSNumber numberWithFloat:_extra.chargeAmount.floatValue / [components day]] numberStringWithCurrencyCode], NSLocalizedString(@"per day", @"")];
 }
 
 - (IBAction)add:(id)sender {
@@ -58,6 +74,15 @@
         _extra.qty++;
         [self updateAmountLabel];
     }
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.1 options:0 animations:^{
+        self.plusButton.transform = CGAffineTransformMakeScale(1.25, 1.25);
+        self.amountLabel.transform = CGAffineTransformMakeScale(1.25, 1.25);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.4 animations:^{
+            self.plusButton.transform = CGAffineTransformMakeScale(1.0, 1.0);
+            self.amountLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        }];
+    }];
 }
 
 - (IBAction)subtract:(id)sender {
@@ -65,13 +90,15 @@
         _extra.qty--;
         [self updateAmountLabel];
     }
-}
-
-- (IBAction)qtyChanged:(id)sender {
-    
-    UIStepper *stepper = sender;
-    _extra.qty = [NSNumber numberWithDouble:stepper.value].integerValue;
-    [self updateAmountLabel];
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:0 animations:^{
+        self.minusButton.transform = CGAffineTransformMakeScale(1.25, 1.25);
+        self.amountLabel.transform = CGAffineTransformMakeScale(1.25, 1.25);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.4 animations:^{
+            self.minusButton.transform = CGAffineTransformMakeScale(1.0, 1.0);
+            self.amountLabel.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        }];
+    }];
 }
 
 - (void)updateAmountLabel

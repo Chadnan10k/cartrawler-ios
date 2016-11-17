@@ -11,8 +11,6 @@
 
 @interface OptionalExtraTableViewCell : UITableViewCell
 
-
-
 - (void)setData:(CTExtraEquipment *)extra;
 
 @end

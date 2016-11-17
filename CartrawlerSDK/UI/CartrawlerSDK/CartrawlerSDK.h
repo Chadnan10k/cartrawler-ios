@@ -40,6 +40,7 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 @property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleSelectionViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleDetailsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceExtrasViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *extrasViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *driverDetialsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *addressDetialsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *paymentSummaryViewController;

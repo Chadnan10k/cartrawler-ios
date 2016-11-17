@@ -9,6 +9,7 @@
 #import "CTFilterContainer.h"
 #import "CTLabel.h"
 #import "CTAppearance.h"
+#import "CartrawlerSDK+UIImageView.h"
 
 @interface CTFilterContainer()
 
@@ -24,7 +25,6 @@
 {
     self = [super initWithCoder:aDecoder];
     self.layer.cornerRadius = [CTAppearance instance].containerViewCornerRadius;
-
     return self;
 }
 
@@ -32,7 +32,6 @@
 {
     self = [super initWithFrame:frame];
     self.layer.cornerRadius = [CTAppearance instance].containerViewCornerRadius;
-
     return self;
 }
 
@@ -68,7 +67,7 @@
     _imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow" inBundle:b compatibleWithTraitCollection:nil]];
     [self addSubview:self.imageView];
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
-
+    [self.imageView applyTint];
     
     NSLayoutConstraint *imageViewTopConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
                                                                           attribute:NSLayoutAttributeTop

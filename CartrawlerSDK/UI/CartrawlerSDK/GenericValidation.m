@@ -16,41 +16,41 @@
 {
     if (search.pickupLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupLocation IS NOT SET \n\n");
-        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER", NO);
         return;
     }
     
     if (search.dropoffLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.dropoffLocation IS NOT SET \n\n");
-        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER", NO);
         return;
     }
     
     if (search.pickupDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupDate IS NOT SET \n\n");
-        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER", NO);
         return;
     }
     
     if (search.dropoffDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.dropoffDate IS NOT SET \n\n");
-        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER", NO);
         return;
     }
     
     if (search.driverAge == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.driverAge IS NOT SET \n\n");
-        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER", NO);
         return;
     }
     
     if (search.selectedVehicle == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.vehicleAvailability IS NOT SET \n\n");
-        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER");
+        completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER", NO);
         return;
     }
     
-    completion(YES, nil);
+    completion(YES, nil, NO);
 }
 
 @end

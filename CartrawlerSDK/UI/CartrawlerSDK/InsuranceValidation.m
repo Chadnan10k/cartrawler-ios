@@ -18,37 +18,37 @@
 
     if (search.pickupLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupLocation IS NOT SET \n\n");
-        completion(NO, @"");
+        completion(NO, @"", NO);
         return;
     }
 
     if (search.dropoffLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.dropoffLocation IS NOT SET \n\n");
-        completion(NO, @"");
+        completion(NO, @"", NO);
         return;
     }
 
     if (search.pickupDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupDate IS NOT SET \n\n");
-        completion(NO, @"");
+        completion(NO, @"", NO);
         return;
     }
 
     if (search.dropoffDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.dropoffDate IS NOT SET \n\n");
-        completion(NO, @"");
+        completion(NO, @"", NO);
         return;
     }
 
     if (search.driverAge == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.driverAge IS NOT SET \n\n");
-        completion(NO, @"");
+        completion(NO, @"", NO);
         return;
     }
 
     if (search.selectedVehicle == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.vehicleAvailability IS NOT SET \n\n");
-        completion(NO, @"");
+        completion(NO, @"", NO);
         return;
     }
 
@@ -69,19 +69,19 @@
          if (response) {
              dispatch_async(dispatch_get_main_queue(), ^{
                  search.insurance = response;
-                 completion(YES, nil);
+                 completion(YES, nil, NO);
              });
              
          } else {
              dispatch_async(dispatch_get_main_queue(), ^{
-                 if (search.selectedVehicle.vehicle.extraEquipment.count == 0) {
+                 if (search.selectedVehicle.vehicle.extraEquipment.count > 0) {
                      search.insurance = nil;
                      search.isBuyingInsurance = NO;
-                     completion(NO, @"No Insurance Available");
+                     completion(NO, @"No Insurance Available", YES);
                  } else {
                      search.insurance = nil;
                      search.isBuyingInsurance = NO;
-                     completion(YES, nil);
+                     completion(NO, @"No Insurance Available", NO);
                  }
              });
          }

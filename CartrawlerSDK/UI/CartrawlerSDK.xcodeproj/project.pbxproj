@@ -29,6 +29,8 @@
 		450DF2141DD2131C00A365A0 /* CTInterstitialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 450DF2121DD2131C00A365A0 /* CTInterstitialCollectionViewCell.m */; };
 		4513B6241DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4513B6221DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h */; };
 		4513B6251DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4513B6231DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m */; };
+		4540550A1DDDD62C00FD493A /* OptionalExtrasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454055081DDDD62C00FD493A /* OptionalExtrasViewController.h */; };
+		4540550B1DDDD62C00FD493A /* OptionalExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454055091DDDD62C00FD493A /* OptionalExtrasViewController.m */; };
 		454D91F01DD34E24001AE96C /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D91EE1DD34E24001AE96C /* Reachability.h */; };
 		454D91F11DD34E24001AE96C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D91EF1DD34E24001AE96C /* Reachability.m */; };
 		455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736E1D806064000CB1E5 /* GTPaymentRequest.h */; };
@@ -416,6 +418,8 @@
 		4538D2541D14436600C723E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CartrawlerResources/Info.plist; sourceTree = SOURCE_ROOT; };
 		453FD4411D588076002E4CC6 /* PaymentCompletionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentCompletionViewController.h; sourceTree = "<group>"; };
 		453FD4421D588076002E4CC6 /* PaymentCompletionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentCompletionViewController.m; sourceTree = "<group>"; };
+		454055081DDDD62C00FD493A /* OptionalExtrasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalExtrasViewController.h; sourceTree = "<group>"; };
+		454055091DDDD62C00FD493A /* OptionalExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionalExtrasViewController.m; sourceTree = "<group>"; };
 		454446371D991B3C0047873F /* PassengerSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerSelectionViewController.h; sourceTree = "<group>"; };
 		454446381D991B3C0047873F /* PassengerSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerSelectionViewController.m; sourceTree = "<group>"; };
 		4544463C1D992BAA0047873F /* CTStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTStepper.h; sourceTree = "<group>"; };
@@ -998,6 +1002,8 @@
 				45645DD21D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.h */,
 				45645DD31D2E9ADA0075A3D2 /* OptionalExtraTableViewCell.m */,
 				45C488CD1D479B260044612C /* OptionalExtraTableViewCell.xib */,
+				454055081DDDD62C00FD493A /* OptionalExtrasViewController.h */,
+				454055091DDDD62C00FD493A /* OptionalExtrasViewController.m */,
 			);
 			name = "Optional Extras";
 			sourceTree = "<group>";
@@ -1627,6 +1633,7 @@
 				455B593D1DCC914400CA4790 /* GroundServicesViewController.h in Headers */,
 				455B593F1DCC914400CA4790 /* GroundTransportViewController.h in Headers */,
 				459CB2E41DDB3FA2008522BA /* CTToolTipButton.h in Headers */,
+				4540550A1DDDD62C00FD493A /* OptionalExtrasViewController.h in Headers */,
 				455B59411DCC914400CA4790 /* PassengerSelectionViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1771,6 +1778,7 @@
 				455B58751DCC914300CA4790 /* CTLabel.m in Sources */,
 				455B58771DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.m in Sources */,
 				455B587E1DCC914300CA4790 /* CTImageCache.m in Sources */,
+				4540550B1DDDD62C00FD493A /* OptionalExtrasViewController.m in Sources */,
 				455B58821DCC914300CA4790 /* CartrawlerSDK+NSNumber.m in Sources */,
 				455B58861DCC914300CA4790 /* HTMLParser.m in Sources */,
 				455B58881DCC914300CA4790 /* CarRentalSearch.m in Sources */,

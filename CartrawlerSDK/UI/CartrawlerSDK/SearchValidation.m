@@ -18,31 +18,31 @@
 
     if ([CarRentalSearch instance].pickupLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupLocation IS NOT SET \n\n");
-        completion(NO, @"search.pickupLocation is not set");
+        completion(NO, @"search.pickupLocation is not set", NO);
         return;
     }
 
     if ([CarRentalSearch instance].dropoffLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.dropoffLocation IS NOT SET \n\n");
-        completion(NO, @"search.dropoffLocation is not set");
+        completion(NO, @"search.dropoffLocation is not set", NO);
         return;
     }
 
     if ([CarRentalSearch instance].pickupDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupDate IS NOT SET \n\n");
-        completion(NO, @"search.pickupDate is not set");
+        completion(NO, @"search.pickupDate is not set", NO);
         return;
     }
 
     if ([CarRentalSearch instance].dropoffDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.dropoffDate IS NOT SET \n\n");
-        completion(NO, @"search.dropoffDate is not set");
+        completion(NO, @"search.dropoffDate is not set", NO);
         return;
     }
 
     if ([CarRentalSearch instance].driverAge == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.driverAge IS NOT SET \n\n");
-        completion(NO, @"search.driverAge is not set");
+        completion(NO, @"search.driverAge is not set", NO);
         return;
     }
     
@@ -58,11 +58,11 @@
                                                   if (response) {
                                                       dispatch_async(dispatch_get_main_queue(), ^{
                                                           search.vehicleAvailability = response;
-                                                          completion(YES, nil);
+                                                          completion(YES, nil, NO);
                                                       });
                                                   } else {
                                                       dispatch_async(dispatch_get_main_queue(), ^{
-                                                          completion(NO, error.errorMessage);
+                                                          completion(NO, error.errorMessage, NO);
                                                       });
                                                   }
                                               }];
