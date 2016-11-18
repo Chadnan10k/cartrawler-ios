@@ -12,6 +12,7 @@
 #import "SettingsSelectionViewController.h"
 #import "CTImageCache.h"
 #import "CTNextButton.h"
+#import "CartrawlerSDK+UITextField.h"
 
 @interface AddressDetailsViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
@@ -51,6 +52,12 @@
     UITapGestureRecognizer *viewTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewWasTapped)];
     [self.view addGestureRecognizer:viewTapped];
     
+    [self.addressLine1TextField addDoneButton];
+    [self.addressLine2TextField addDoneButton];
+    [self.cityTextField addDoneButton];
+    [self.postCodeTextField addDoneButton];
+    [self.countryTextField addDoneButton];
+
 }
 
 - (void)viewWasTapped

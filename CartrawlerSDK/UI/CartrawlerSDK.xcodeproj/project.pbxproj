@@ -299,6 +299,8 @@
 		455B59551DCC91F900CA4790 /* OptionalExtraTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45C488CD1D479B260044612C /* OptionalExtraTableViewCell.xib */; };
 		455B59581DCC954400CA4790 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455B59571DCC954400CA4790 /* CartrawlerAPI.framework */; };
 		455B59591DCC96D500CA4790 /* CartrawlerSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		457128C11DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 457128BF1DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h */; };
+		457128C21DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 457128C01DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m */; };
 		459CB2E01DDB1D9E008522BA /* CartrawlerSDK+UIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 459CB2DE1DDB1D9E008522BA /* CartrawlerSDK+UIView.h */; };
 		459CB2E11DDB1D9E008522BA /* CartrawlerSDK+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 459CB2DF1DDB1D9E008522BA /* CartrawlerSDK+UIView.m */; };
 		459CB2E41DDB3FA2008522BA /* CTToolTipButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 459CB2E21DDB3FA2008522BA /* CTToolTipButton.h */; };
@@ -480,6 +482,8 @@
 		456979271D2C03E7006A321E /* TabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabButton.m; sourceTree = "<group>"; };
 		4569984B1D9428F600551F9F /* SupplierRatingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierRatingTableViewCell.h; sourceTree = "<group>"; };
 		4569984C1D9428F600551F9F /* SupplierRatingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierRatingTableViewCell.m; sourceTree = "<group>"; };
+		457128BF1DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+UITextField.h"; sourceTree = "<group>"; };
+		457128C01DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+UITextField.m"; sourceTree = "<group>"; };
 		457CF88B1D785ADC00BC55E2 /* GooglePlaceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooglePlaceService.h; sourceTree = "<group>"; };
 		457CF88C1D785ADC00BC55E2 /* GooglePlaceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooglePlaceService.m; sourceTree = "<group>"; };
 		45819FA31D3500E8001AE0F5 /* CartrawlerSDK+NSNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+NSNumber.h"; sourceTree = "<group>"; };
@@ -1446,6 +1450,8 @@
 				45E942E81D1302FF00ACF604 /* NSStringUtils.m */,
 				4511E5411D181B36000ED6B0 /* CTTextField.h */,
 				4511E5421D181B36000ED6B0 /* CTTextField.m */,
+				457128BF1DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h */,
+				457128C01DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m */,
 			);
 			name = UITextField;
 			sourceTree = "<group>";
@@ -1566,6 +1572,7 @@
 				455B58B91DCC914400CA4790 /* CTLocationSearchViewController.h in Headers */,
 				455B58BB1DCC914400CA4790 /* LocationSearchDataSource.h in Headers */,
 				455B58BD1DCC914400CA4790 /* LocationSearchTableViewCell.h in Headers */,
+				457128C11DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h in Headers */,
 				455B58BF1DCC914400CA4790 /* CTTimePickerView.h in Headers */,
 				455B58C11DCC914400CA4790 /* CTCalendarViewController.h in Headers */,
 				455B58C51DCC914400CA4790 /* CTCalendarTableViewCell.h in Headers */,
@@ -1752,6 +1759,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				455B58341DCC914300CA4790 /* GTPaymentRequest.m in Sources */,
+				457128C21DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m in Sources */,
 				455B58361DCC914300CA4790 /* PaymentRequest.m in Sources */,
 				455B58381DCC914300CA4790 /* CTPaymentView.m in Sources */,
 				455B583C1DCC914300CA4790 /* CTSDKSettings.m in Sources */,

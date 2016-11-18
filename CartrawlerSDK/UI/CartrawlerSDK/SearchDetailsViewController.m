@@ -18,6 +18,7 @@
 #import "CTToolTip.h"
 #import "CTNextButton.h"
 #import "LocalisedStrings.h"
+#import "CartrawlerSDK+UITextField.h"
 
 #define kSearchViewStoryboard @"StepOne"
 
@@ -70,6 +71,8 @@
         [weakSelf searchTapped];
     }];
     
+    [self.ageContainer addDoneButton];
+    
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:bundle];
     
@@ -89,7 +92,6 @@
     _dropoffTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
 
     _isReturningSameLocation = YES;
-    
     
     self.pickupView.placeholder = @"Pick-up location";
     self.pickupView.viewTapped = ^{

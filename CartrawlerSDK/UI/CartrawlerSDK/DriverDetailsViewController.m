@@ -12,6 +12,7 @@
 #import "AddressDetailsViewController.h"
 #import "FlightNumberValidation.h"
 #import "CTNextButton.h"
+#import "CartrawlerSDK+UITextField.h"
 
 @interface DriverDetailsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet CTTextField *firstNameTextField;
@@ -58,6 +59,12 @@
     UITapGestureRecognizer *viewTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewWasTapped)];
     [self.view addGestureRecognizer:viewTapped];
     
+    [self.firstNameTextField addDoneButton];
+    [self.lastNameTextField addDoneButton];
+    [self.emailTextField addDoneButton];
+    [self.phoneTextField addDoneButton];
+    [self.flightNoTextField addDoneButton];
+
 }
 
 - (void)viewWasTapped

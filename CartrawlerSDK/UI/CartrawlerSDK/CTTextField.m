@@ -45,7 +45,7 @@
     self.font = [UIFont fontWithName:[CTAppearance instance].fontName size:self.font.pointSize];
     self.delegate = self;
     self.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
-//
+
 //    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 0)];
 //    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:20.0]} forState:UIControlStateNormal];
 //
