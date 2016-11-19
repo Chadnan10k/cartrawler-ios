@@ -232,7 +232,7 @@
                                                 </variation>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or similar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVd-LH-ouP" customClass="CTLabel">
-                                                <rect key="frame" x="8" y="46" width="59.5" height="17"/>
+                                                <rect key="frame" x="8" y="46" width="60" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -252,7 +252,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fuel policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoH-OQ-nkN" customClass="CTLabel">
-                                                <rect key="frame" x="16" y="356" width="82" height="20.5"/>
+                                                <rect key="frame" x="16" y="356" width="82" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="ogN-97-DOx"/>
                                                 </constraints>
@@ -266,14 +266,14 @@
                                                 </variation>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8IQ-9U-qwm" customClass="CTToolTipButton">
-                                                <rect key="frame" x="16" y="384.5" width="568" height="50"/>
+                                                <rect key="frame" x="16" y="385" width="568" height="50"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="qkz-g7-NLV"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick-up location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vta-al-w5Z" customClass="CTLabel">
-                                                <rect key="frame" x="16" y="450.5" width="124" height="21"/>
+                                                <rect key="frame" x="16" y="451" width="124" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="76M-Z6-skw"/>
                                                 </constraints>
@@ -287,14 +287,14 @@
                                                 </variation>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0db-sE-P5y" customClass="CTToolTipButton">
-                                                <rect key="frame" x="16" y="479" width="568" height="50"/>
+                                                <rect key="frame" x="16" y="480" width="568" height="50"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="khw-9Z-y8S"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHN-wG-rla" customClass="CTButton">
-                                                <rect key="frame" x="16" y="545" width="568" height="50"/>
+                                                <rect key="frame" x="16" y="546" width="568" height="50"/>
                                                 <color key="backgroundColor" red="0.65376514880000003" green="0.78721816980000003" blue="0.51248123329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="T3P-hp-5Gr"/>
@@ -450,7 +450,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1B1-42-kh7" customClass="CTLabel">
-                                        <rect key="frame" x="123" y="28" width="129.5" height="22"/>
+                                        <rect key="frame" x="123" y="28" width="130" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="Rtj-qa-JOT"/>
                                         </constraints>
@@ -659,7 +659,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms and Conditions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jER-7i-mwr" customClass="CTLabel">
-                                        <rect key="frame" x="63" y="25.5" width="249" height="29"/>
+                                        <rect key="frame" x="63" y="26" width="249" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="G33-jD-Ra7"/>
                                         </constraints>
@@ -828,7 +828,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Whv-bB-Acl">
-                                                            <rect key="frame" x="284" y="1" width="1" height="43.5"/>
+                                                            <rect key="frame" x="284" y="1" width="1" height="44"/>
                                                             <color key="backgroundColor" red="0.65376514880000003" green="0.78721816980000003" blue="0.51248123329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="1" id="hyw-RE-RIU"/>

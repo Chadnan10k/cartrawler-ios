@@ -10,7 +10,7 @@
 #import "OptionalExtraTableViewCell.h"
 #import "CTTextView.h"
 
-@interface OptionalExtrasView() <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface OptionalExtrasView() <UIScrollViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) CTTextView *textView;

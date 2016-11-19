@@ -29,4 +29,10 @@
     }
 }
 
+- (void)doneTapped
+{
+    [self resignFirstResponder];
+    [self endEditing:YES];
+}
+
 @end

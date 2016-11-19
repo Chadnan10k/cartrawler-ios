@@ -282,7 +282,6 @@
 
 - (void)createTextViews:(NSMutableArray <NSDictionary *>*)viewArray container:(UIView *)container response:(CTInsurance *)response
 {
-    CGFloat containerHeight = 0;
     for (int i = 0; i < viewArray.count; i++) {
         
         NSString *format = @"";
@@ -511,7 +510,6 @@
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
-    NSLog(@"Link tapped");
     return YES;
 }
 

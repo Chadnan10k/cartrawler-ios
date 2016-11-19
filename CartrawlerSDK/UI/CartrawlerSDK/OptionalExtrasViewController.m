@@ -10,7 +10,7 @@
 #import "OptionalExtraTableViewCell.h"
 #import "CTNextButton.h"
 
-@interface OptionalExtrasViewController ()
+@interface OptionalExtrasViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
 @property (weak, nonatomic) IBOutlet CTNextButton *nextButton;

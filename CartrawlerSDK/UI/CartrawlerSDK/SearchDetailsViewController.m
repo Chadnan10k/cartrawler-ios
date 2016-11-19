@@ -171,9 +171,6 @@
     self.ageContainer.alpha = 0;
     
     [self.view layoutIfNeeded];
-    
-    NSLog(@"%@", [LocalisedStrings localizedStringForKey:@"Continue"]);
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -339,8 +336,8 @@
         
         self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage) {
             [CTInterstitialViewController dismiss];
-            self.nextButton.userInteractionEnabled = YES;
-            self.nextButton.alpha = 1.0;
+            weakSelf.nextButton.userInteractionEnabled = YES;
+            weakSelf.nextButton.alpha = 1.0;
             
             if (!success && errorMessage) {
                 [weakSelf presentAlertWithError:errorMessage];

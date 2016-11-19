@@ -103,7 +103,7 @@
     
     [self.pickupLocationButton setText:[LocalisedStrings pickupType:self.search.selectedVehicle] didTap:^{
         [weakSelf presentViewController:[CTToolTip fullScreenTooltip:NSLocalizedString(@"Pickup location", @"Pickup location tooltip title")
-                                                          detailText:[LocalisedStrings toolTipTextForFuelPolicy:weakSelf.search.selectedVehicle.vendor.pickupLocation.pickupType]]
+                                                          detailText:[LocalisedStrings toolTipTextForPickupType:weakSelf.search.selectedVehicle.vendor.pickupLocation.pickupType]]
                                animated:YES
                              completion:nil];
     }];

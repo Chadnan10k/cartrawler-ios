@@ -301,6 +301,7 @@
 		455B59591DCC96D500CA4790 /* CartrawlerSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		457128C11DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 457128BF1DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h */; };
 		457128C21DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 457128C01DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m */; };
+		457128E01DDF5726008FF204 /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45D386091DD62281000F02D1 /* strip-frameworks.sh */; };
 		459CB2E01DDB1D9E008522BA /* CartrawlerSDK+UIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 459CB2DE1DDB1D9E008522BA /* CartrawlerSDK+UIView.h */; };
 		459CB2E11DDB1D9E008522BA /* CartrawlerSDK+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 459CB2DF1DDB1D9E008522BA /* CartrawlerSDK+UIView.m */; };
 		459CB2E41DDB3FA2008522BA /* CTToolTipButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 459CB2E21DDB3FA2008522BA /* CTToolTipButton.h */; };
@@ -312,7 +313,6 @@
 		459CB2EF1DDB6638008522BA /* CTToolTipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 459CB2ED1DDB6638008522BA /* CTToolTipViewController.m */; };
 		45C980C21DCCDB95002D99AB /* CTLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C980C01DCCDB95002D99AB /* CTLayoutConstraint.h */; };
 		45C980C31DCCDB95002D99AB /* CTLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C980C11DCCDB95002D99AB /* CTLayoutConstraint.m */; };
-		45D3860A1DD62281000F02D1 /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45D386091DD62281000F02D1 /* strip-frameworks.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1712,6 +1712,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				457128E01DDF5726008FF204 /* strip-frameworks.sh in Resources */,
 				4540550E1DDE10DF00FD493A /* en.strings in Resources */,
 				455B59451DCC91F900CA4790 /* CTPCI.html in Resources */,
 				455B59461DCC91F900CA4790 /* Assets.xcassets in Resources */,
@@ -1728,7 +1729,6 @@
 				455B59501DCC91F900CA4790 /* Payment.storyboard in Resources */,
 				455B59511DCC91F900CA4790 /* CTCurrency.csv in Resources */,
 				455B59521DCC91F900CA4790 /* CTISOCountries.csv in Resources */,
-				45D3860A1DD62281000F02D1 /* strip-frameworks.sh in Resources */,
 				455B59531DCC91F900CA4790 /* CTLanguages.csv in Resources */,
 				455B59541DCC91F900CA4790 /* VehicleTableViewCell_iPhone.xib in Resources */,
 				455B59551DCC91F900CA4790 /* OptionalExtraTableViewCell.xib in Resources */,

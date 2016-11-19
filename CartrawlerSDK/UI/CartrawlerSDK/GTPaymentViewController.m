@@ -61,11 +61,11 @@
 //        }
 //    };
     
-    NSString *link1 = @"<a href='https://ajaxgeo.cartrawler.com/webapp-gt-1.6.36-3//tc/services/booking-conditions_EN.html'><b>Transfer conditions</b></a>";
-    NSString *link2 = @"<a href='https://ajaxgeo.cartrawler.com/webapp-gt-1.6.36-3//tc/booking/booking-conditions_EN.html'><b>Booking Terms and Conditions</b></a>";
-
-    NSString *termsStr = [NSString stringWithFormat:@"I agree to the %@ and %@ <style>body { text-align: center; }</style>", link1, link2];
-    
+//    NSString *link1 = @"<a href='https://ajaxgeo.cartrawler.com/webapp-gt-1.6.36-3//tc/services/booking-conditions_EN.html'><b>Transfer conditions</b></a>";
+//    NSString *link2 = @"<a href='https://ajaxgeo.cartrawler.com/webapp-gt-1.6.36-3//tc/booking/booking-conditions_EN.html'><b>Booking Terms and Conditions</b></a>";
+//
+//    NSString *termsStr = [NSString stringWithFormat:@"I agree to the %@ and %@ <style>body { text-align: center; }</style>", link1, link2];
+//    
     //seems lazy but efficient
 //    self.termsLabel.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
 //                                                                pointSize:15.0

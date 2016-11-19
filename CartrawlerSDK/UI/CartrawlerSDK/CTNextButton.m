@@ -23,7 +23,7 @@
     _didTap = didTap;
     self.backgroundColor = [CTAppearance instance].buttonTextColor;
     CTButton *button = [CTButton new];
-    button.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:21];
+    button.titleLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:21];
     [button setTitle:text forState:UIControlStateNormal];
     [button addTarget:self action:@selector(tapped) forControlEvents:UIControlEventTouchUpInside];
     button.translatesAutoresizingMaskIntoConstraints = NO;

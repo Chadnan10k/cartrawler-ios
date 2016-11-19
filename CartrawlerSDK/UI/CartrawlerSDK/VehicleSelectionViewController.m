@@ -48,7 +48,7 @@
     
     self.filterViewController.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData) {
         weakSelf.filteredData = filteredData;
-        [weakSelf.vehicleSelectionView updateSelection:filteredData sortByPrice:self.sortingByPrice];
+        [weakSelf.vehicleSelectionView updateSelection:filteredData sortByPrice:weakSelf.sortingByPrice];
         [weakSelf updateAvailableCarsLabel:filteredData.count];
     };
     
