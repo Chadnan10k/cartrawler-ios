@@ -41,7 +41,7 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="NO"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="airport_gray" translatesAutoresizingMaskIntoConstraints="NO" id="AJW-mo-fZa">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AJW-mo-fZa">
                                                     <rect key="frame" x="8" y="22" width="15" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="15" id="DqX-Jj-kUv"/>
@@ -1159,7 +1159,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="airport_gray" width="50" height="50"/>
         <image name="backArrow" width="25" height="25"/>
         <image name="settings" width="32" height="32"/>
     </resources>

@@ -1,15 +1,15 @@
 //
-//  BookingSummaryViewController.h
+//  CTPaymentSummaryTableViewCell.h
 //  CartrawlerSDK
 //
-//  Created by Lee Maguire on 12/07/2016.
+//  Created by Lee Maguire on 18/11/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "CarRentalSearch.h"
 
-@interface BookingSummaryViewController : UIViewController
+@interface CTPaymentSummaryTableViewCell : UITableViewCell
 
 - (void)setData:(CarRentalSearch *)search;
 

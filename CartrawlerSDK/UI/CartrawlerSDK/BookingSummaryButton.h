@@ -10,13 +10,14 @@
 #import "CTDesignableView.h"
 #import <CartrawlerAPI/CTAvailabilityItem.h>
 
+@protocol BookingSummaryButtonDelegate <NSObject>
+
+- (void)openSummaryTapped;
+
+@end
+
 @interface BookingSummaryButton : CTDesignableView
 
-- (void)closeIfOpen;
-
-- (void)setDataWithVehicle:(CTAvailabilityItem *)vehicle
-                pickupDate:(NSDate *)pickupDate
-               dropoffDate:(NSDate *)dropoffDate
-         isBuyingInsurance:(BOOL)isBuyingInsurance;
+@property (nonatomic, weak) id<BookingSummaryButtonDelegate> delegate;
 
 @end

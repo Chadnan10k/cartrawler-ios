@@ -14,8 +14,10 @@
 #import "BookingSummaryButton.h"
 #import "CTLabel.h"
 #import "CTNextButton.h"
+#import "BookingSummaryViewController.h"
+#import "CartrawlerSDK+UIView.h"
 
-@interface PaymentSummaryViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface PaymentSummaryViewController () <UITableViewDelegate, UITableViewDataSource, BookingSummaryButtonDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeight;
@@ -37,9 +39,10 @@
 {
     [super viewDidLoad];
     
+    self.bookingSummaryContainer.delegate = self;
+    
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 50;
-    
     self.tableView.dataSource = self;
     
     __weak typeof(self) weakSelf = self;
@@ -48,16 +51,18 @@
     }];
 }
 
+- (void)openSummaryTapped
+{
+    [self performSegueWithIdentifier:@"bookingSummary" sender:nil];
+}
+
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self.bookingSummaryContainer closeIfOpen];
-    
-    [self.bookingSummaryContainer setDataWithVehicle:self.search.selectedVehicle
-                                          pickupDate:self.search.pickupDate
-                                         dropoffDate:self.search.dropoffDate
-                                   isBuyingInsurance:self.search.isBuyingInsurance];
     
     total = 0;
     _items = [[NSMutableArray alloc] init];
@@ -83,7 +88,7 @@
     [self.tableView layoutIfNeeded];
 
     self.tableView.alpha = 1;
-    self.tableViewHeight.constant = self.tableView.contentSize.height;
+    self.tableView.heightConstraint.constant = self.tableView.contentSize.height;
 }
 
 #pragma mark TABLE VIEW
@@ -96,11 +101,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.items.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,8 +116,13 @@
     
     return cell;
 }
-- (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"bookingSummary"]) {
+        BookingSummaryViewController *vc = segue.destinationViewController;
+        [vc setData:self.search];
+    }
 }
 
 @end
