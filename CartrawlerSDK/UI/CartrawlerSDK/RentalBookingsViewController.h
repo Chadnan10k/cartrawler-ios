@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTViewController.h"
 
-@interface RentalBookingsViewController : UIViewController
-
-
+@interface RentalBookingsViewController : CTViewController
 
 typedef void (^ShowRentalEngine)(UIViewController *viewController);
 

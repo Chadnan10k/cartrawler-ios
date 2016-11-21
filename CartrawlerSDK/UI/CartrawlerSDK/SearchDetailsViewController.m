@@ -397,7 +397,10 @@
     if (self.delegate) {
         [self.delegate didDismissViewController];
     }
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if (![self.navigationController popViewControllerAnimated:YES]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)presentAlertWithError:(NSString *)error

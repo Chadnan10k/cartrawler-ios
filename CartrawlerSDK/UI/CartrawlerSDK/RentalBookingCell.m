@@ -9,14 +9,18 @@
 #import "RentalBookingCell.h"
 #import "CTLabel.h"
 #import "CartrawlerSDK+NSDateUtils.h"
-#import "CTImageCache.h"
+#import "CTAppearance.h"
 
 @interface RentalBookingCell()
 
-@property (weak, nonatomic) IBOutlet UIImageView *bookingImageView;
 @property (weak, nonatomic) IBOutlet CTLabel *locationLabel;
-@property (weak, nonatomic) IBOutlet CTLabel *dateLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *pickupTimeLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *pickupDateLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *dropoffTimeLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *dropoffDateLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *vehicleNameLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *refLabel;
+@property (weak, nonatomic) IBOutlet UIView *locationContainerView;
 
 @end
 
@@ -29,6 +33,7 @@
     [super awakeFromNib];
     // Initialization code
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.locationContainerView.backgroundColor = [CTAppearance instance].iconTint;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -39,28 +44,29 @@
 
 - (void)setData:(CTRentalBooking *)booking
 {
-    if (booking.vehicleImage) {
-        [[CTImageCache sharedInstance] cachedImage:[[NSURL alloc] initWithString:booking.vehicleImage] completion:^(UIImage *image) {
-            self.bookingImageView.image = image;
-        }];
-    } else {
-        //sample car image?
-    }
-    /*
-    NSString *locations = @"";
-    
-    if ([booking.pickupLocation isEqualToString:booking.dropoffLocation]) {
-        locations = booking.pickupLocation;
-    } else {
-        locations = [NSString stringWithFormat:@"%@\nto\n%@", booking.pickupLocation, booking.dropoffLocation];
-    }
-    */
     self.locationLabel.text = booking.pickupLocation;
+    self.pickupTimeLabel.text = [booking.pickupDate stringFromDateWithFormat:@"hh:mm a"];
+    self.dropoffTimeLabel.text = [booking.dropoffDate stringFromDateWithFormat:@"hh:mm a"];
+    self.pickupDateLabel.text = [booking.pickupDate stringFromDateWithFormat:@"dd MMM YYYY"];
+    self.dropoffDateLabel.text = [booking.dropoffDate stringFromDateWithFormat:@"dd MMM YYYY"];
+    self.refLabel.text = [NSString stringWithFormat:@"Booking reference: %@", booking.bookingId];
+    self.vehicleNameLabel.text = booking.vehicleName;
     
-    NSString *dates = [NSString stringWithFormat:@"%@\nto\n%@", [booking.pickupDate stringFromDate:@"dd/MM/yyyy hh:mm a"], [booking.dropoffDate  stringFromDate:@"dd/MM/yyyy hh:mm a"]];
-    
-    self.dateLabel.text = dates;
-    self.refLabel.text = booking.bookingId;
+    NSAttributedString *vehicleName = [[NSAttributedString alloc] initWithString:booking.vehicleName
+                                                                      attributes:@{
+                                                                                   NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].boldFontName size:17],
+                                                                                   NSForegroundColorAttributeName : [CTAppearance instance].navigationBarColor
+                                                                                   }];
+    NSAttributedString *orSimilar = [[NSAttributedString alloc] initWithString:@" or similar"
+                                                                      attributes:@{
+                                                                                   NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:17],
+                                                                                   NSForegroundColorAttributeName : [CTAppearance instance].navigationBarColor
+                                                                                   }];
+    NSMutableAttributedString *compoundVehicleName = [[NSMutableAttributedString alloc] init];
+    [compoundVehicleName appendAttributedString:vehicleName];
+    [compoundVehicleName appendAttributedString:orSimilar];
+
+    self.vehicleNameLabel.attributedText = compoundVehicleName;
 }
 
 @end

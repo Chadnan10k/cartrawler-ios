@@ -89,8 +89,12 @@
     self.transmissionLabel.text = item.vehicle.transmissionType;
     self.fuelPolicyLabel.text = [LocalisedStrings fuelPolicy:item.vehicle.fuelPolicy];
     
-    self.pickupLabel.text = [LocalisedStrings pickupType:item];
-
+    if ([LocalisedStrings pickupType:item]) {
+        self.pickupLabel.text = [LocalisedStrings pickupType:item];
+    } else {
+        self.pickupLabel.text = item.vendor.pickupLocation.address;
+    }
+    
     self.totalPriceLabel.text = [item.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
     self.totalPriceLabel.textColor = [CTAppearance instance].vehicleCellTint;
     

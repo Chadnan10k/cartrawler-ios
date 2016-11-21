@@ -7,8 +7,8 @@
 //
 
 #import "BookingSummaryButton.h"
-#import "BookingSummaryViewController.h"
 #import "CTLabel.h"
+#import "CTAppearance.h"
 
 @interface BookingSummaryButton()
 
@@ -32,12 +32,14 @@
     [super awakeFromNib];
     
     _titleLabel = [CTLabel new];
-    _expandButton = [UIButton new];
+    _expandButton = [UIButton buttonWithType:UIButtonTypeSystem];
 
     [self.expandButton setImage:[UIImage imageNamed:@"arrow"
                                            inBundle:[NSBundle bundleForClass:[self class]]
                       compatibleWithTraitCollection:nil]
                        forState:UIControlStateNormal];
+    
+    [self.expandButton setTintColor:[CTAppearance instance].iconTint];
     
     self.titleLabel.text = NSLocalizedString(@"Booking summary", @"Booking summary");
     

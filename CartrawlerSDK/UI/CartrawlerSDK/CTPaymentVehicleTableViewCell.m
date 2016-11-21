@@ -76,7 +76,7 @@
     if (search.selectedVehicle.vehicle.isAirConditioned) {
         [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@",
                                             NSLocalizedString(@"Air Conditioning", @"Air Conditioning")],
-                                 @"image" : @"winter_package"}];
+                                 @"image" : @"aircon"}];
     }
     
     _vehicleFeaturesDataSource = [[CTVehicleFeaturesDataSource alloc] init];

@@ -12,28 +12,40 @@
 #import "CTImageCache.h"
 #import "CTAppearance.h"
 #import "CartrawlerSDK+NSDateUtils.h"
+#import "CTNextButton.h"
+#import "CTView.h"
+#import "CartrawlerSDK+UIView.h"
+#import "CTBookingSummaryView.h"
 
 @interface PaymentCompletionViewController () <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet CTLabel *paymentTitleLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *paymentSubtitleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImage;
-@property (weak, nonatomic) IBOutlet CTLabel *vehicleName;
-@property (weak, nonatomic) IBOutlet CTLabel *pickupLabel;
-@property (weak, nonatomic) IBOutlet CTLabel *dropoffLabel;
-@property (weak, nonatomic) IBOutlet CTLabel *supplierLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *supplierImage;
 @property (weak, nonatomic) IBOutlet CTLabel *bookingReferenceLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *emailLabel;
+@property (weak, nonatomic) IBOutlet CTNextButton *doneButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet CTView *completionView;
+@property (weak, nonatomic) IBOutlet UIView *summaryView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryHeight;
 
 @end
 
 @implementation PaymentCompletionViewController
 
-+(void)forceLinkerLoad_ { }
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    __weak typeof (self) weakSelf = self;
+    [self.doneButton setText:@"Back to homepage" didTap:^{
+        [weakSelf done];
+    }];
+}
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
     // Disable iOS 7 back gesture
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
@@ -49,76 +61,33 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     // Do any additional setup after loading the view.
-    
-    [[CTImageCache sharedInstance] cachedImage: [CarRentalSearch instance].selectedVehicle.vehicle.pictureURL completion:^(UIImage *image) {
-        self.vehicleImage.image = image;
-    }];
-    
-    [[CTImageCache sharedInstance] cachedImage: [CarRentalSearch instance].selectedVehicle.vendor.logoURL completion:^(UIImage *image) {
-        self.supplierImage.image = image;
-    }];
-    
-    self.supplierLabel.text = [CarRentalSearch instance].selectedVehicle.vendor.name;
-    
-    self.vehicleName.text = [CarRentalSearch instance].selectedVehicle.vehicle.makeModelName;
-    
-    NSAttributedString *pickupLoc = [[NSAttributedString alloc] initWithString:[CarRentalSearch instance].pickupLocation.name
-                                                                    attributes:@{NSFontAttributeName:
-                                                                                     [UIFont fontWithName:[CTAppearance instance].boldFontName size:16]}];
-    
-    NSAttributedString *pickupDate = [[NSAttributedString alloc] initWithString:[[CarRentalSearch instance].pickupDate stringFromDateWithFormat:@"dd, MMM YYYY, hh:mm a"]
-                                                                    attributes:@{NSFontAttributeName:
-                                                                                     [UIFont fontWithName:[CTAppearance instance].fontName size:16]}];
-    
-    NSMutableAttributedString *pickup = [[NSMutableAttributedString alloc] init];
-    [pickup appendAttributedString:pickupLoc];
-    [pickup appendAttributedString:[[NSAttributedString alloc] initWithString:@" \n "]];
-    [pickup appendAttributedString:pickupDate];
-    
-    NSAttributedString *dropoffLoc = [[NSAttributedString alloc] initWithString:[CarRentalSearch instance].dropoffLocation.name
-                                                                    attributes:@{NSFontAttributeName:
-                                                                                     [UIFont fontWithName:[CTAppearance instance].boldFontName size:16]}];
-    
-    NSAttributedString *dropoffDate = [[NSAttributedString alloc] initWithString:[[CarRentalSearch instance].dropoffDate stringFromDateWithFormat:@"dd, MMM YYYY, hh:mm a"]
-                                                                     attributes:@{NSFontAttributeName:
-                                                                                      [UIFont fontWithName:[CTAppearance instance].fontName size:16]}];
-    
-    NSMutableAttributedString *dropoff = [[NSMutableAttributedString alloc] init];
-    [dropoff appendAttributedString:dropoffLoc];
-    [dropoff appendAttributedString:[[NSAttributedString alloc] initWithString:@" \n "]];
-    [dropoff appendAttributedString:dropoffDate];
-    
-    self.pickupLabel.attributedText = pickup;
-    self.dropoffLabel.attributedText = dropoff;
-    
-    self.bookingReferenceLabel.text = [NSString stringWithFormat:@"Booking reference: %@", self.search.booking.confID ?: @"CTTest123456789"];
-    self.emailLabel.text = [NSString stringWithFormat:@"We have sent an email to %@ with your booking details.", self.search.email];
+    [self.scrollView setContentOffset:CGPointZero];
+
+    self.bookingReferenceLabel.text = [NSString stringWithFormat:@"%@", self.search.booking.confID ?: @"CTTest123456789"];
+    self.emailLabel.text = [NSString stringWithFormat:@"We have sent a confirmation email to %@. This may take up to 15 minutes to arrive. Please review your voucher before picking up your car.", self.search.email];
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-- (IBAction)done:(id)sender {
-    
-    
+- (void)done {
     
     [[CTImageCache sharedInstance] removeAllObjects];
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     }
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"setSummary"]) {
+        CTBookingSummaryView *vc = segue.destinationViewController;
+        vc.search = self.search;
+        [vc enableScroll:NO];
+        __weak typeof (self) weakSelf = self;
+        vc.heightChanged = ^(CGFloat height) {
+            weakSelf.summaryHeight.constant = height;
+        };
+    }
 }
 
 @end

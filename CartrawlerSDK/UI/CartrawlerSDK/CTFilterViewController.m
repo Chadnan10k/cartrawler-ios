@@ -75,7 +75,6 @@
         [self reset];
         [self.filterFactory update:data];
     }
-    
 }
 
 - (void)setupContainers

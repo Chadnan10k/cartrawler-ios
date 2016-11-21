@@ -14,7 +14,7 @@
 #import "BookingSummaryButton.h"
 #import "CTLabel.h"
 #import "CTNextButton.h"
-#import "BookingSummaryViewController.h"
+#import "CTBookingSummaryViewController.h"
 #import "CartrawlerSDK+UIView.h"
 
 @interface PaymentSummaryViewController () <UITableViewDelegate, UITableViewDataSource, BookingSummaryButtonDelegate>
@@ -120,8 +120,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"bookingSummary"]) {
-        BookingSummaryViewController *vc = segue.destinationViewController;
-        [vc setData:self.search];
+        CTBookingSummaryViewController *vc = segue.destinationViewController;
+        vc.search = self.search;
     }
 }
 

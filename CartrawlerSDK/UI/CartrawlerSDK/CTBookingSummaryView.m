@@ -6,7 +6,7 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "BookingSummaryViewController.h"
+#import "CTBookingSummaryView.h"
 #import <CartrawlerAPI/CTVendor.h>
 #import "CartrawlerSDK+NSDateUtils.h"
 #import "CTButton.h"
@@ -14,18 +14,25 @@
 #import "CTAppearance.h"
 #import "CTPaymentSummaryDataSource.h"
 
-@interface BookingSummaryViewController ()
+@interface CTBookingSummaryView ()
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) CTPaymentSummaryDataSource *dataSource;
 
 @end
 
-@implementation BookingSummaryViewController
+@implementation CTBookingSummaryView
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (self.dataSource) {
+        [self.dataSource setData:self.search];
+    } else {
+        _dataSource = [[CTPaymentSummaryDataSource alloc] init];
+        [self.dataSource setData:self.search];
+    }
     
     if (!self.dataSource) {
         _dataSource = [[CTPaymentSummaryDataSource alloc] init];
@@ -35,29 +42,21 @@
     self.tableView.delegate = self.dataSource;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
-    
 }
 
-- (IBAction)back:(id)sender
+- (void)viewDidAppear:(BOOL)animated
 {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
+    [super viewDidAppear:animated];
     [self.tableView reloadData];
+    [self.tableView layoutIfNeeded];
+    if (self.heightChanged) {
+        self.heightChanged(self.tableView.contentSize.height);
+    }
 }
 
-- (void)setData:(CarRentalSearch *)search
+- (void)enableScroll:(BOOL)enable
 {
-    if (self.dataSource) {
-        [self.dataSource setData:search];
-    } else {
-        _dataSource = [[CTPaymentSummaryDataSource alloc] init];
-        [self.dataSource setData:search];
-    }
+    self.tableView.scrollEnabled = enable;
 }
 
 @end

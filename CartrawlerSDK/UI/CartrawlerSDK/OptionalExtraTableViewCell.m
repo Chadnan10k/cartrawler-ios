@@ -152,7 +152,7 @@
     
     if ([extraId isEqualToString:@"30"]) {
         //winter package
-        return [UIImage imageNamed:@"winter_package" inBundle:bundle compatibleWithTraitCollection:nil];
+        return [UIImage imageNamed:@"aircon" inBundle:bundle compatibleWithTraitCollection:nil];
     }
     
     if ([extraId isEqualToString:@"34"]) {

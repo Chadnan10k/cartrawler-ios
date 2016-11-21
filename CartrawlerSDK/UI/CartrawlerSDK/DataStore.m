@@ -41,4 +41,18 @@ NSString * const GTBookingKey = @"cartrawler_gt_bookings";
     return data ?: @[];
 }
 
++ (BOOL)checkHasUpcomingBookings
+{
+    NSDate *refDate = [NSDate date];
+    NSMutableArray <CTRentalBooking *> *filteredBookings = [NSMutableArray new];
+    BOOL hasUpcomingDates = NO;
+    for (CTRentalBooking *booking in [self retrieveRentalBookings]) {
+        if (!([booking.pickupDate timeIntervalSinceDate:refDate] < -86400)) {
+            [filteredBookings addObject:booking];
+            hasUpcomingDates = YES;
+        }
+    }
+    return hasUpcomingDates;
+}
+
 @end

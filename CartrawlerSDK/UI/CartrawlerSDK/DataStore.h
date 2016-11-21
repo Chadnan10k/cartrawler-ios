@@ -18,4 +18,6 @@
 + (NSArray<CTRentalBooking *> *)retrieveRentalBookings;
 + (NSArray<GTBooking *> *)retrieveGTBookings;
 
++ (BOOL)checkHasUpcomingBookings;
+
 @end

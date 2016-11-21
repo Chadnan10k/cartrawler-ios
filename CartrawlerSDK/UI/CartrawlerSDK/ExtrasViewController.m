@@ -545,18 +545,18 @@
     CTLabel *insurerTitle = [CTLabel new];
     insurerTitle.textColor = [UIColor blackColor];
     insurerTitle.textAlignment = NSTextAlignmentCenter;
-    insurerTitle.font = [UIFont fontWithName:[CTAppearance instance].fontName size:14];
+    insurerTitle.font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
     insurerTitle.translatesAutoresizingMaskIntoConstraints = NO;
     insurerTitle.text = NSLocalizedString(@"Provided by global insurance & asset management leader Axa.", @"");
     insurerTitle.numberOfLines = 0;
     [placeholder addSubview:insurerTitle];
     
-    [placeholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[view]-8-|"
+    [placeholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[view]-4-|"
                                                                                 options:0
                                                                                 metrics:nil
                                                                                   views:@{@"view" : insurerTitle}]];
     
-    [placeholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[image]-8-[view]-8-|"
+    [placeholder addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[image]-4-[view]-4-|"
                                                                                 options:0
                                                                                 metrics:nil
                                                                                   views:@{@"image" : insurerImageView, @"view" : insurerTitle}]];

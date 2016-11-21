@@ -28,14 +28,14 @@
             if (item.vendor.pickupLocation.atAirport) {
                 return NSLocalizedString(@"At Airport", @"At Airport");
             } else {
-                return NSLocalizedString(@"", @"");
+                return nil;
             }
             
         default:
             if (item.vendor.pickupLocation.atAirport) {
                 return NSLocalizedString(@"At Airport", @"At Airport");
             } else {
-                return NSLocalizedString(@"", @"");
+                return nil;
             }
     }
 }

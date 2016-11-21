@@ -9,24 +9,39 @@
 #import "RentalBookingsViewController.h"
 #import "RentalBookingCell.h"
 #import "DataStore.h"
+#import "CTNextButton.h"
+#import "CTAppearance.h"
 
 @interface RentalBookingsViewController () <UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray<CTRentalBooking *> *bookings;
+@property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
+@property (weak, nonatomic) IBOutlet UIView *subHeaderView;
 
 @end
 
 @implementation RentalBookingsViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.subHeaderView.backgroundColor = [CTAppearance instance].iconTint;
+    
     self.tableView.dataSource = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 120.0;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    __weak typeof(self) weakSelf = self;
+    [self.nextButton setText:@"Add a booking" didTap:^{
+        [weakSelf pushToDestination];
+    }];
+}
+
+- (IBAction)back:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -34,17 +49,6 @@
     [super viewWillAppear:animated];
     _bookings = [DataStore retrieveRentalBookings];
     [self.tableView reloadData];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)newBooking:(id)sender {
-    if (self.showRentalEngine) {
-        self.showRentalEngine(self);
-    }
 }
 
 #pragma MARK UITableView

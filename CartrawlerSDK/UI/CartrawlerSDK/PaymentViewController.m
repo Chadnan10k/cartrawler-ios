@@ -78,8 +78,8 @@
     
     __weak typeof(self) weakSelf = self;
     [self.confirmButton setText:NSLocalizedString(@"Book now", @"Book now") didTap:^{
-        [weakSelf pushToDestination];
-        //[weakSelf confirmPayment];
+//        [weakSelf pushToDestination];
+        [weakSelf confirmPayment];
     }];
     
     _paymentView = [[CTPaymentView alloc] initWithFrame:CGRectZero];
@@ -92,7 +92,7 @@
     
     NSString *link1 = @"<a href='www.cartrawler.com'><b>Rental conditions</b></a>";
     
-    NSString *termsStr = [NSString stringWithFormat:@"By tapping <b>Confirm</b> you agree to the %@<style>body {text-align: center;}</style>", link1];
+    NSString *termsStr = [NSString stringWithFormat:@"By tapping <b>Confirm</b> you agree to the %@", link1];
     
     //seems lazy but efficient
     self.termsLabel.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName

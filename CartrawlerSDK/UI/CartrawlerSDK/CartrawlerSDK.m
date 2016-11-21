@@ -24,6 +24,8 @@
 #import "BookingCompletionValidation.h"
 #import "RentalBookingsViewController.h"
 #import "GTBookingsViewController.h"
+#import "DataStore.h"
+#import "CTBasketValidation.h"
 
 #define kSearchViewStoryboard           @"StepOne"
 #define kSearchResultsViewStoryboard    @"StepTwo"
@@ -89,17 +91,8 @@
     _isCarRental = YES;
     
     [[CarRentalSearch instance] reset];
-    
     [self configureViews];
-
-    CTNavigationController *navController;
-    
-    navController = [[CTNavigationController alloc] initWithRootViewController: self.searchDetailsViewController];
-    navController.navigationBar.hidden = YES;
-    navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
-    navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
-
-    [viewController presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
+    [self presenteRentalNavigationController:viewController];
 }
 
 - (void)presentCarRentalInViewController:(UIViewController *)viewController
@@ -132,65 +125,7 @@
     [CarRentalSearch instance].postcode = postcode;
 
     [self configureViews];
-    
-    CTNavigationController *navController;
-    
-    navController = [[CTNavigationController alloc] initWithRootViewController: self.searchDetailsViewController];
-    
-    navController.navigationBar.hidden = YES;
-    
-    navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
-    navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
-    
-    [viewController presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
-}
-
-- (void)presentGroundTransportInViewController:(UIViewController *)viewController
-{
-    _isCarRental = NO;
-    
-    [[GroundTransportSearch instance] reset];
-    
-    [self configureViews];
-    
-    CTNavigationController *navController;
-    
-    navController = [[CTNavigationController alloc] initWithRootViewController: self.gtSearchDetailsViewController];
-    
-    navController.navigationBar.hidden = YES;
-    
-    navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
-    navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
-    
-    [viewController presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
-}
-
-- (void)presentTabViewInViewController:(UIViewController *)viewController
-{
-    _isCarRental = YES;
-    __weak typeof (self) weakSelf = self;
-    
-    [[CarRentalSearch instance] reset];
-    
-    [self configureViews];
-    
-    UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:@"Landing" bundle:self.bundle];
-    UITabBarController *tabBarController = [searchStoryboard instantiateViewControllerWithIdentifier:@"CommonTabBar"];
-    tabBarController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
-    tabBarController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
-    [tabBarController.tabBar setTintColor:[CTAppearance instance].tabBarTint];
-    
-    RentalBookingsViewController *rentalBookingsVC = tabBarController.viewControllers[0];
-    rentalBookingsVC.showRentalEngine = ^(UIViewController *vc){
-        [weakSelf presentCarRentalInViewController:vc];
-    };
-    
-//    GTBookingsViewController *gtBookingsVC = tabBarController.viewControllers[1];
-//    gtBookingsVC.showGTEngine = ^(UIViewController *vc){
-//        [weakSelf presentGroundTransportInViewController:vc];
-//    };
-    
-    [viewController presentViewController:tabBarController animated:[CTAppearance instance].presentAnimated completion:nil];
+    [self presenteRentalNavigationController:viewController];
 }
 
 - (void)presentCarRentalWithFlightDetails:(NSString *)IATACode
@@ -233,11 +168,8 @@
     [CarRentalSearch instance].postcode = postcode;
     [CarRentalSearch instance].country = countryCode;
     [self configureViews];
-    CTNavigationController *navController;
-    navController = [[CTNavigationController alloc] initWithRootViewController: self.searchDetailsViewController];
-    navController.navigationBar.hidden = YES;
-    //first we need to map the iata to the location code, id recommend getting a list of popular airports and hardcoding them for speed
-    
+
+    __weak typeof(self) weakself = self;
     [self.cartrawlerAPI locationSearchWithAirportCode:IATACode completion:^(CTLocationSearch *response, CTErrorResponse *error) {
         if (error) {
             if (completion) {
@@ -251,7 +183,7 @@
                     if(response.matchedLocations.count > 0) {
                         [CarRentalSearch instance].pickupLocation =  response.matchedLocations.firstObject;
                         [CarRentalSearch instance].dropoffLocation =  response.matchedLocations.firstObject;
-                        [viewController presentViewController:navController animated:YES completion:nil];
+                        [weakself presenteRentalNavigationController:viewController];
 
                         if (completion) {
                             completion(YES, @"");
@@ -266,6 +198,51 @@
             }
         }
     }];
+}
+
+- (void)presenteRentalNavigationController:(UIViewController *)parent
+{
+    CTNavigationController *navController = [[CTNavigationController alloc] init];
+    navController.navigationBar.hidden = YES;
+    navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
+    navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
+    
+    if ([DataStore checkHasUpcomingBookings]) {
+        
+        UIStoryboard *landingStoryboard = [UIStoryboard storyboardWithName:@"Landing" bundle:self.bundle];
+        RentalBookingsViewController *upcomingBookingsVC = [landingStoryboard instantiateViewControllerWithIdentifier:@"RentalBookingsViewController"];
+        
+        [self configureViewController:upcomingBookingsVC
+                 validationController:[[CTBasketValidation alloc] init]
+                          destination:self.searchDetailsViewController];
+        
+        [navController setViewControllers:@[upcomingBookingsVC]];
+        [parent presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
+        
+    } else {
+        [navController setViewControllers:@[self.searchDetailsViewController]];
+        [parent presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
+    }
+}
+
+- (void)presentGroundTransportInViewController:(UIViewController *)viewController
+{
+    _isCarRental = NO;
+    
+    [[GroundTransportSearch instance] reset];
+    
+    [self configureViews];
+    
+    CTNavigationController *navController;
+    
+    navController = [[CTNavigationController alloc] initWithRootViewController: self.gtSearchDetailsViewController];
+    
+    navController.navigationBar.hidden = YES;
+    
+    navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
+    navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
+    
+    [viewController presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
 }
 
 - (void)setDefaultViews
