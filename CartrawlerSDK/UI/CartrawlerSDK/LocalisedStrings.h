@@ -19,7 +19,7 @@
 + (NSString *)fuelPolicy:(FuelPolicy)fuelPolicy;
 
 + (NSString *)toolTipTextForFuelPolicy:(FuelPolicy)fuelPolicy;
-+ (NSString *)toolTipTextForPickupType:(PickupType)pickupType;
++ (NSString *)toolTipTextForPickupType:(CTAvailabilityItem *)item;
 
 + (NSString *)localizedStringForKey:(NSString *)key;
 

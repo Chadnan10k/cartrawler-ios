@@ -440,9 +440,9 @@
     return @"Unknown";
 }
 
-+ (NSString *)toolTipTextForPickupType:(PickupType)pickupType
++ (NSString *)toolTipTextForPickupType:(CTAvailabilityItem *)item
 {
-    switch (pickupType) {
+    switch (item.vendor.pickupLocation.pickupType) {
         case PickupTypeTerminal:
             return [self localizedStringForKey:@"PICKUP_IN_TERMINAL"];
         case PickupTypeShuttleBus:
@@ -454,7 +454,17 @@
         case PickupTypeCarDriver:
             return [self localizedStringForKey:@"PICKUP_PERSONAL_DRIVER"];
         case PickupTypeUnknown:
-            return [self localizedStringForKey:@"PICKUP_UNKNOWN"];
+            if (item.vendor.pickupLocation.atAirport) {
+                return [self localizedStringForKey:@"PICKUP_IN_TERMINAL"];
+            } else {
+                return @"";
+            }
+        default:
+            if (item.vendor.pickupLocation.atAirport) {
+                return [self localizedStringForKey:@"PICKUP_IN_TERMINAL"];
+            } else {
+                return @"";
+            }
     }
 }
 

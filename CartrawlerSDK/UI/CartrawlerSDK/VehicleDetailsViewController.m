@@ -96,14 +96,37 @@
     
     [self.fuelPolicyButton setText:[LocalisedStrings fuelPolicy:self.search.selectedVehicle.vehicle.fuelPolicy] didTap:^{
         [weakSelf presentViewController:[CTToolTip fullScreenTooltip:NSLocalizedString(@"Fuel policy", @"Fuel policy tooltip title")
-                                                          detailText:[LocalisedStrings toolTipTextForFuelPolicy:weakSelf.search.selectedVehicle.vehicle.fuelPolicy]]
+                                                          detailText:[[NSAttributedString alloc]
+                                                                      initWithString:[LocalisedStrings
+                                                                                      toolTipTextForFuelPolicy: weakSelf.search.selectedVehicle.vehicle.fuelPolicy]]]
                                animated:YES
                              completion:nil];
     }];
     
-    [self.pickupLocationButton setText:[LocalisedStrings pickupType:self.search.selectedVehicle] didTap:^{
+    NSString *pickupText = [LocalisedStrings pickupType:self.search.selectedVehicle] ?: @"Supplier address";
+    NSMutableAttributedString *toolTipText = [[NSMutableAttributedString alloc] initWithString:@""];
+    
+    if ([LocalisedStrings pickupType:self.search.selectedVehicle]) {
+        [toolTipText appendAttributedString:[[NSAttributedString alloc]
+                                             initWithString:[LocalisedStrings
+                                                             toolTipTextForPickupType: weakSelf.search.selectedVehicle]
+                                             attributes: @{
+                                                           NSForegroundColorAttributeName : [UIColor whiteColor],
+                                                           NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:21]
+                                                           }]];
+    } else {
+        [toolTipText appendAttributedString: [[NSAttributedString alloc]
+                                              initWithString:[NSString stringWithFormat:@"The suppliers address is:\n\n%@",
+                                                              self.search.selectedVehicle.vendor.pickupLocation.address]
+                                              attributes: @{
+                                                            NSForegroundColorAttributeName : [UIColor whiteColor],
+                                                            NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:21]
+                                                            }]];
+    }
+    
+    [self.pickupLocationButton setText:pickupText didTap:^{
         [weakSelf presentViewController:[CTToolTip fullScreenTooltip:NSLocalizedString(@"Pickup location", @"Pickup location tooltip title")
-                                                          detailText:[LocalisedStrings toolTipTextForPickupType:weakSelf.search.selectedVehicle.vendor.pickupLocation.pickupType]]
+                                                          detailText:toolTipText]
                                animated:YES
                              completion:nil];
     }];

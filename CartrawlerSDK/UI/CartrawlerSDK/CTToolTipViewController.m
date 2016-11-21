@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet CTLabel *tipTitleLabel;
 @property (weak, nonatomic) IBOutlet CTTextView *detailTextView;
 @property (strong, nonatomic) NSString *titleText;
-@property (strong, nonatomic) NSString *detailText;
+@property (strong, nonatomic) NSAttributedString *detailText;
 
 @end
 
@@ -29,7 +29,7 @@
     self.closeButton.tintColor = [UIColor whiteColor];
     
     self.tipTitleLabel.text = self.titleText ?: @"";
-    self.detailTextView.text = self.detailText ?: @"";
+    self.detailTextView.attributedText = self.detailText;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,7 +37,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setTitle:(NSString *)title text:(NSString *)text
+- (void)setTitle:(NSString *)title text:(NSAttributedString *)text
 {
     _titleText = title;
     _detailText = text;

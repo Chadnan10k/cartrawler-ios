@@ -20,6 +20,7 @@
 #import "CTAppearance.h"
 #import "DataStore.h"
 #import "Reachability.h"
+#import "CartrawlerSDK+NSNumber.h"
 
 @interface PaymentViewController () <UITextViewDelegate, CTPaymentViewDelegate, UIAlertViewDelegate>
 
@@ -77,8 +78,8 @@
     [super viewDidLoad];
     
     __weak typeof(self) weakSelf = self;
-    [self.confirmButton setText:NSLocalizedString(@"Book now", @"Book now") didTap:^{
-//        [weakSelf pushToDestination];
+    NSString *buttonText = [NSString stringWithFormat:@"Book now for %@", [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode]];
+    [self.confirmButton setText:buttonText didTap:^{
         [weakSelf confirmPayment];
     }];
     
@@ -90,9 +91,9 @@
     [self.internetReachability startNotifier];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     
-    NSString *link1 = @"<a href='www.cartrawler.com'><b>Rental conditions</b></a>";
+    NSString *link1 = @"<a href='www.cartrawler.com'><b>Terms and conditions</b></a>";
     
-    NSString *termsStr = [NSString stringWithFormat:@"By tapping <b>Confirm</b> you agree to the %@", link1];
+    NSString *termsStr = [NSString stringWithFormat:@"Tap ‘Book now’ to complete your booking and accept our %@", link1];
     
     //seems lazy but efficient
     self.termsLabel.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName

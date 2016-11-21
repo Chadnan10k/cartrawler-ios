@@ -10,6 +10,6 @@
 
 @interface CTToolTipViewController : UIViewController
 
-- (void)setTitle:(NSString *)title text:(NSString *)text;
+- (void)setTitle:(NSString *)title text:(NSAttributedString *)text;
 
 @end

@@ -138,8 +138,13 @@
                                                               [self sortVehicles:NO];
                                                           }];
     
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
+                                                                handler:nil];
+    
     [alert addAction:lowestPrice];
     [alert addAction:recommendedVehicles];
+    [alert addAction:cancel];
+
     [self presentViewController:alert animated:YES completion:nil];
 }
 

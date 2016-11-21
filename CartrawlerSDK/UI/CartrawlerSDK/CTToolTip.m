@@ -161,7 +161,7 @@
     [self removeFromSuperview];
 }
 
-+ (CTToolTipViewController *)fullScreenTooltip:(NSString *)titleText detailText:(NSString *)detailText
++ (CTToolTipViewController *)fullScreenTooltip:(NSString *)titleText detailText:(NSAttributedString *)detailText
 {
     NSBundle *b = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ToolTips" bundle:b];
