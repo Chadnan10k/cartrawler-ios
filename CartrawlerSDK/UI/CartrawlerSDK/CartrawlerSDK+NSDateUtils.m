@@ -10,7 +10,7 @@
 
 @implementation NSDate (CartrawlerSDK)
 
-- (NSString *)stringFromDateWithFormat:(NSString *)format;
+- (NSString *)stringFromDateWithFormat:(NSString *)format
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
@@ -26,11 +26,19 @@
     return [formatter stringFromDate:self];
 }
 
-- (NSString *)shortDescriptionFromDate;
+- (NSString *)shortDescriptionFromDate
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateStyle = NSDateFormatterMediumStyle;
     formatter.timeStyle = NSDateFormatterNoStyle;
+    return [formatter stringFromDate:self];
+}
+
+- (NSString *)simpleTimeString
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateStyle = NSDateFormatterNoStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
     return [formatter stringFromDate:self];
 }
 

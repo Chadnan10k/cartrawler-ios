@@ -128,7 +128,7 @@
     _activeView = self.pickupView;
     
     self.pickupTimeView.placeholder = @"Pick-up time";
-    [self.pickupTimeView setTextFieldText:[self.pickupTime stringFromDate:@"hh:mm a"]];
+    [self.pickupTimeView setTextFieldText:[self.pickupTime simpleTimeString]];
 
     self.pickupTimeView.viewTapped = ^{
         
@@ -139,12 +139,12 @@
         [weakSelf.dropoffTimePicker hide];
         weakSelf.pickupTimePicker.timeSelection = ^(NSDate *date){
             _pickupTime = date;
-            [weakSelf.pickupTimeView setTextFieldText:[date stringFromDate:@"hh:mm a"]];
+            [weakSelf.pickupTimeView setTextFieldText:[date simpleTimeString]];
         };
     };
     
     self.dropoffTimeView.placeholder = @"Drop-off time";
-    [self.dropoffTimeView setTextFieldText:[self.dropoffTime stringFromDate:@"hh:mm a"]];
+    [self.dropoffTimeView setTextFieldText:[self.dropoffTime simpleTimeString]];
     self.dropoffTimeView.viewTapped = ^{
         
         [weakSelf.view endEditing:YES];
@@ -154,7 +154,7 @@
         [weakSelf.pickupTimePicker hide];
         weakSelf.dropoffTimePicker.timeSelection = ^(NSDate *date){
             _dropoffTime = date;
-            [weakSelf.dropoffTimeView setTextFieldText:[date stringFromDate:@"hh:mm a"]];
+            [weakSelf.dropoffTimeView setTextFieldText:[date simpleTimeString]];
         };
     };
     
@@ -193,8 +193,8 @@
         [self setDateString:self.search.pickupDate dropoffDate:self.search.dropoffDate];
         _pickupTime = self.search.pickupDate;
         _dropoffTime = self.search.dropoffDate;
-        [self.pickupTimeView setTextFieldText:[self.search.pickupDate  stringFromDate:@"hh:mm a"]];
-        [self.dropoffTimeView setTextFieldText:[self.search.dropoffDate stringFromDate:@"hh:mm a"]];
+        [self.pickupTimeView setTextFieldText:[self.search.pickupDate  simpleTimeString]];
+        [self.dropoffTimeView setTextFieldText:[self.search.dropoffDate simpleTimeString]];
     }
     
     if (self.search.driverAge.intValue == 0) {
@@ -279,8 +279,8 @@
     
     _pickupTime = [gregorianCalendar dateFromComponents:initialTimeComp];
     _dropoffTime = [gregorianCalendar dateFromComponents:initialTimeComp];
-    [self.pickupTimeView setTextFieldText:[self.pickupTime stringFromDate:@"hh:mm a"]];
-    [self.dropoffTimeView setTextFieldText:[self.dropoffTime stringFromDate:@"hh:mm a"]];
+    [self.pickupTimeView setTextFieldText:[self.pickupTime simpleTimeString]];
+    [self.dropoffTimeView setTextFieldText:[self.dropoffTime simpleTimeString]];
 }
 
 - (void)combineDates

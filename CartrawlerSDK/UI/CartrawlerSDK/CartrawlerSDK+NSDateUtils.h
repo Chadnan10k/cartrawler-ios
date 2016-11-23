@@ -15,5 +15,6 @@
 - (NSString *)stringFromDate:(NSString *)format;
 - (NSString *)shortDescriptionFromDate;
 + (NSDate *)mergeTimeWithDateWithTime:(NSDate *)dateWithTime dateWithDay:(NSDate *)dateWithDay;
+- (NSString *)simpleTimeString;
 
 @end
