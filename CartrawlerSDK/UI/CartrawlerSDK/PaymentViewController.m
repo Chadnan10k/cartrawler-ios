@@ -21,6 +21,7 @@
 #import "DataStore.h"
 #import "Reachability.h"
 #import "CartrawlerSDK+NSNumber.h"
+#import "CTPaymentLoadingViewController.h"
 
 @interface PaymentViewController () <UITextViewDelegate, CTPaymentViewDelegate, UIAlertViewDelegate>
 
@@ -153,7 +154,7 @@
 - (void)paymentFailed
 {
     if (self.loadingViewVisible) {
-        //[CTInterstitialViewController dismiss];
+        [CTPaymentLoadingViewController dismiss];
         _loadingViewVisible = NO;
     }
     if (!self.loadingViewVisible) {
@@ -164,7 +165,7 @@
 - (void)willMakeBooking
 {
     if (!self.loadingViewVisible) {
-        //[CTInterstitialViewController present:self];
+        [CTPaymentLoadingViewController present:self];
     }
     _loadingViewVisible = YES;
     [self enableControls:NO];
@@ -187,7 +188,7 @@
 
 - (void)didMakeBooking
 {
-    //[CTInterstitialViewController dismiss];
+    [CTPaymentLoadingViewController dismiss];
     [self enableControls:YES];
     [self pushToDestination];
     if (self.delegate) {
