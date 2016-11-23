@@ -16,8 +16,9 @@
 #import "Reachability.h"
 #import <WebKit/WebKit.h>
 #import "CartrawlerSDK+WKWebView.h"
+#import "CTPaymentCheck.h"
 
-@interface CTPaymentView() <UIAlertViewDelegate, NSURLConnectionDataDelegate, WKScriptMessageHandler, WKNavigationDelegate>
+@interface CTPaymentView() <UIAlertViewDelegate, NSURLConnectionDataDelegate, WKScriptMessageHandler, WKNavigationDelegate, CTPaymentCheckDelegate>
 
 typedef NS_ENUM(NSUInteger, CTPaymentType) {
     CTPaymentTypeCarRental = 0,
@@ -35,6 +36,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 
 @property (nonatomic, copy) GroundTransportSearch *groundSearch;
 @property (nonatomic, copy) CarRentalSearch *carRentalSearch;
+@property (nonatomic, strong) CTPaymentCheck *paymentCheck;
 
 @end
 
@@ -97,7 +99,6 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
 {
     NSDictionary *sentData = (NSDictionary*)message.body;
-    NSLog(@"%@", sentData);
     
     if (sentData[@"jsonResponse"]) {
         _jsonResponse = sentData[@"jsonResponse"];
@@ -109,6 +110,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
         
         if ([self.jsonResponse containsString:@"ErrorCode"] || [self.jsonResponse containsString:@"@ShortText"]) {
             if (self.delegate) {
+                [self.paymentCheck stop];
                 [self.delegate paymentFailed];
             }
             
@@ -121,7 +123,10 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
             [self.webView evaluateJavaScript:@"resetResponses()" completionHandler:nil];
             
             if (self.delegate) {
-                [self.delegate didMakeBooking];
+                [self.paymentCheck stop];
+                if (self.delegate) {
+                    [self.delegate didMakeBooking];
+                }
             }
             
             switch (self.paymentType) {
@@ -263,6 +268,12 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     _carRentalSearch = search;
     _paymentType = CTPaymentTypeCarRental;
 
+    _paymentCheck = [[CTPaymentCheck alloc] initWithRequestorId:[CTSDKSettings instance].clientId
+                                                    sandboxMode:[CTSDKSettings instance].isDebug
+                                                     pickupDate:self.carRentalSearch.pickupDate
+                                                          email:self.carRentalSearch.email];
+    self.paymentCheck.delegate = self;
+    
     NSString *s = [PaymentRequest OTA_VehResRQ:[search.pickupDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
                                 returnDateTime:[search.dropoffDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
                             pickupLocationCode:search.pickupLocation.code
@@ -305,6 +316,8 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     [self.webView loadHTMLString:self.htmlString baseURL: self.bundle.bundleURL];
 
     [self setupWebView];
+    [self.paymentCheck start];
+
 }
 
 - (void)setupWebView
@@ -392,6 +405,28 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     [self.webView evaluateJavaScript:@"validateAndBook()" completionHandler:nil];
     if (self.delegate) {
         [self.delegate willMakeBooking];
+    }
+}
+
+#pragma mark CTPaymentCheckDelegate
+
+- (void)checkDidReceiveResponse:(CTPaymentStatus)status
+{
+    switch (status) {
+        case CTPaymentStatusSuccess:
+            if (self.delegate) {
+                [self.delegate didMakeBooking];
+            }
+            [self.paymentCheck stop];
+            break;
+        case CTPaymentStatusNotAvailable:
+            
+            break;
+        case CTPaymentStatusError:
+            
+            break;
+        default:
+            break;
     }
 }
 

@@ -829,6 +829,7 @@
 				45D385EA1DD61982000F02D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

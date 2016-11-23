@@ -52,7 +52,7 @@
     self.refLabel.text = [NSString stringWithFormat:@"Booking reference: %@", booking.bookingId];
     self.vehicleNameLabel.text = booking.vehicleName;
     
-    NSAttributedString *vehicleName = [[NSAttributedString alloc] initWithString:booking.vehicleName
+    NSAttributedString *vehicleName = [[NSAttributedString alloc] initWithString:booking.vehicleName ?: @""
                                                                       attributes:@{
                                                                                    NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].boldFontName size:17],
                                                                                    NSForegroundColorAttributeName : [CTAppearance instance].navigationBarColor

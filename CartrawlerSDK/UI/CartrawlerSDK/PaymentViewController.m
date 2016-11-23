@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *termsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet CTNextButton *confirmButton;
+@property (nonatomic) BOOL loadingViewVisible;
 
 @property (nonatomic) Reachability *internetReachability;
 
@@ -65,6 +66,8 @@
         default:
             break;
     }
+    
+    _loadingViewVisible = NO;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -142,7 +145,6 @@
         self.confirmButton.userInteractionEnabled = NO;
         self.confirmButton.alpha = 0.8;
         self.termsLabel.userInteractionEnabled = NO;
-
     }
 }
 
@@ -150,11 +152,21 @@
 
 - (void)paymentFailed
 {
-    [self enableControls:YES];
+    if (self.loadingViewVisible) {
+        //[CTInterstitialViewController dismiss];
+        _loadingViewVisible = NO;
+    }
+    if (!self.loadingViewVisible) {
+        [self enableControls:YES];
+    }
 }
 
 - (void)willMakeBooking
 {
+    if (!self.loadingViewVisible) {
+        //[CTInterstitialViewController present:self];
+    }
+    _loadingViewVisible = YES;
     [self enableControls:NO];
 }
 
@@ -166,13 +178,16 @@
 - (void)didFailLoadingPaymentView
 {
     //retry
-    [self presentAlertView:@"Sorry"
-                   message:@"We are having trouble loading the payment screen"];
-    [self.navigationController popViewControllerAnimated:YES];
+    if (!self.loadingViewVisible) {
+        [self presentAlertView:@"Sorry"
+                       message:@"We are having trouble loading the payment screen"];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)didMakeBooking
 {
+    //[CTInterstitialViewController dismiss];
     [self enableControls:YES];
     [self pushToDestination];
     if (self.delegate) {
@@ -182,9 +197,9 @@
 
 #pragma mark Reachability
 
-- (void)reachabilityChanged:(NSNotification *)note
+- (void)reachabilityChanged:(NSNotification *)not
 {
-    Reachability* curReach = [note object];
+    Reachability* curReach = [not object];
     NetworkStatus networkStatus = [curReach currentReachabilityStatus];
     switch (networkStatus) {
         case NotReachable:
@@ -192,11 +207,12 @@
             //retry
             
             //also disallow the user to make payment as they are going to a dead end
-            
-            [self presentAlertView:@"No Internet Connection"
-                           message:@"In order to complete your booking you will need an internet connection"];
-            
-            [self.navigationController popViewControllerAnimated:YES];
+            if (!self.loadingViewVisible) {
+                [self presentAlertView:@"No Internet Connection"
+                               message:@"In order to complete your booking you will need an internet connection"];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            }
 
             break;
         case ReachableViaWiFi:
