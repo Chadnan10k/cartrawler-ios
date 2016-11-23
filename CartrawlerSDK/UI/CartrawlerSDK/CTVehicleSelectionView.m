@@ -58,7 +58,9 @@
     }];
     
     self.dataSource.direction = ^(BOOL direction) {
-        weakSelf.direction(direction);
+        if (weakSelf.direction) {
+            weakSelf.direction(direction);
+        }
     };
     
     self.tableView.delegate = self.dataSource;

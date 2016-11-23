@@ -54,9 +54,9 @@
     
     [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
     
-    self.vehicleSelectionView.direction = ^(BOOL scrollDirectionUp) {
-        [weakSelf showText:scrollDirectionUp];
-    };
+//    self.vehicleSelectionView.direction = ^(BOOL scrollDirectionUp) {
+//        [weakSelf showText:scrollDirectionUp];
+//    };
 }
 
 - (void)viewWillAppear:(BOOL)animated
