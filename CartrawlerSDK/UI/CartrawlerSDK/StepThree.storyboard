@@ -134,7 +134,7 @@
                                                 <rect key="frame" x="0.0" y="195" width="600" height="153"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" alpha="0.45000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car_background" translatesAutoresizingMaskIntoConstraints="NO" id="gUd-G4-jap">
-                                                        <rect key="frame" x="16" y="16" width="568" height="121"/>
+                                                        <rect key="frame" x="32" y="30" width="536" height="99"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Included for free" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R59-4K-Teu" customClass="CTLabel">
                                                         <rect key="frame" x="16" y="8" width="576" height="21"/>
@@ -212,18 +212,18 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.26236741879999997" green="0.55808807910000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="gUd-G4-jap" firstAttribute="top" secondItem="VON-Iy-sbh" secondAttribute="top" constant="16" id="6pI-cF-JoH"/>
+                                                    <constraint firstItem="gUd-G4-jap" firstAttribute="top" secondItem="VON-Iy-sbh" secondAttribute="top" constant="30" id="6pI-cF-JoH"/>
                                                     <constraint firstItem="0LE-SH-gVu" firstAttribute="leading" secondItem="VON-Iy-sbh" secondAttribute="leading" constant="16" id="BFm-av-bCE" customClass="CTLayoutConstraint"/>
                                                     <constraint firstAttribute="trailing" secondItem="R59-4K-Teu" secondAttribute="trailing" constant="8" id="MGm-UL-dgk" customClass="CTLayoutConstraint"/>
                                                     <constraint firstAttribute="height" constant="124" id="NRp-Ms-hX1"/>
-                                                    <constraint firstAttribute="trailing" secondItem="gUd-G4-jap" secondAttribute="trailing" constant="16" id="Nz8-iw-e0L"/>
+                                                    <constraint firstAttribute="trailing" secondItem="gUd-G4-jap" secondAttribute="trailing" constant="32" id="Nz8-iw-e0L"/>
                                                     <constraint firstItem="0LE-SH-gVu" firstAttribute="top" secondItem="R59-4K-Teu" secondAttribute="bottom" constant="8" id="PFj-dC-RnW"/>
                                                     <constraint firstItem="R59-4K-Teu" firstAttribute="leading" secondItem="VON-Iy-sbh" secondAttribute="leading" constant="16" id="YnY-bn-mIw" customClass="CTLayoutConstraint"/>
                                                     <constraint firstAttribute="trailing" secondItem="0LE-SH-gVu" secondAttribute="trailing" constant="13" id="att-Ew-qXC" customClass="CTLayoutConstraint"/>
                                                     <constraint firstAttribute="bottom" secondItem="0LE-SH-gVu" secondAttribute="bottom" constant="16" id="b9e-LU-RKH"/>
-                                                    <constraint firstAttribute="bottom" secondItem="gUd-G4-jap" secondAttribute="bottom" constant="16" id="p5p-OK-Blb"/>
+                                                    <constraint firstAttribute="bottom" secondItem="gUd-G4-jap" secondAttribute="bottom" constant="24" id="p5p-OK-Blb"/>
                                                     <constraint firstItem="R59-4K-Teu" firstAttribute="top" secondItem="VON-Iy-sbh" secondAttribute="top" constant="8" id="rqT-x8-cVC"/>
-                                                    <constraint firstItem="gUd-G4-jap" firstAttribute="leading" secondItem="VON-Iy-sbh" secondAttribute="leading" constant="16" id="uWc-RE-7cy"/>
+                                                    <constraint firstItem="gUd-G4-jap" firstAttribute="leading" secondItem="VON-Iy-sbh" secondAttribute="leading" constant="32" id="uWc-RE-7cy"/>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -896,7 +896,7 @@
             <objects>
                 <navigationController storyboardIdentifier="TermsViewControllerNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="zaw-2W-wIV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LTW-fF-QCn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LTW-fF-QCn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -911,7 +911,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="25" height="25"/>
+        <image name="backArrow" width="24" height="24"/>
         <image name="car_background" width="213" height="88"/>
         <image name="gray_checkmark" width="15" height="15"/>
         <image name="white_checkmark" width="32" height="32"/>
