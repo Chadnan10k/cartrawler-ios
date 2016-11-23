@@ -93,7 +93,7 @@
     
 	_size = [self vehicleSizeFromNumber:dictionary[@"VehAvailCore"][@"Vehicle"][@"VehClass"][@"@Size"]];
     
-    _sizeCode = dictionary[@"VehAvailCore"][@"Vehicle"][@"VehType"][@"@VehicleCategory"];
+    _sizeCode = dictionary[@"VehAvailCore"][@"Vehicle"][@"VehClass"][@"@Size"];
 	
 	_doorCount = [numFormatter numberFromString:dictionary[@"VehAvailCore"][@"Vehicle"][@"VehType"][@"@DoorCount"]];
 	

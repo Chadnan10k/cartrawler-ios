@@ -11,14 +11,6 @@
 
 @interface VehicleTableViewCell : UITableViewCell
 
-/**
- *  Populates vehicle table cell
- *
- *
- */
 - (void)initWithVehicle:(CTAvailabilityItem *)item index:(NSInteger)index;
-
-
-
 
 @end
