@@ -142,7 +142,6 @@
 
 - (void)continueToPayment
 {
-    //do some validation
     
     BOOL validated = YES;
     
@@ -153,11 +152,6 @@
     
     if ([self.cityTextField.text isEqualToString: @""]) {
         [self.cityTextField shakeAnimation];
-        validated = NO;
-    }
-    
-    if ([self.postCodeTextField.text isEqualToString: @""]) {
-        [self.postCodeTextField shakeAnimation];
         validated = NO;
     }
     
