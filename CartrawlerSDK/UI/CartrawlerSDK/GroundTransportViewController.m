@@ -387,7 +387,7 @@
         b.enabled = NO;
         b.alpha = 0.8;
         [self pushToDestination];
-        [CTInterstitialViewController present:self];
+        //[CTInterstitialViewController present:self];
     }
 }
 

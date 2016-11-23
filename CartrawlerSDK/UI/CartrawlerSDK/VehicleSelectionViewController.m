@@ -62,11 +62,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    NSString *pickupDate = [self.search.pickupDate stringFromDate:@"dd MMM, hh:mm a"];
-    NSString *dropoffDate = [self.search.dropoffDate stringFromDate:@"dd MMM, hh:mm a"];
-    
-    self.datesLabel.text = [NSString stringWithFormat:@"%@ - %@", pickupDate, dropoffDate];
     [self produceHeaderText];
 }
 
@@ -80,6 +75,11 @@
         }
         _lastScrollDirection = show;
     }
+    
+    NSString *pickupDate = [self.search.pickupDate stringFromDate:@"dd MMM, hh:mm a"];
+    NSString *dropoffDate = [self.search.dropoffDate stringFromDate:@"dd MMM, hh:mm a"];
+    
+    self.datesLabel.text = [NSString stringWithFormat:@"%@ - %@", pickupDate, dropoffDate];
 }
 
 - (void)produceHeaderText

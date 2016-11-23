@@ -8,11 +8,16 @@
 
 #import "CTInterstitialViewController.h"
 #import "CTInterstitialCollectionViewCell.h"
+#import "CTLabel.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 
 @interface CTInterstitialViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *vendorCollectionView;
 @property (nonatomic, strong) NSArray <UIImage *>* vendorImages;
+@property (nonatomic, strong) CarRentalSearch *search;
+@property (weak, nonatomic) IBOutlet CTLabel *locationLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *dateLabel;
 
 @end
 
@@ -47,6 +52,23 @@
         animation.repeatCount = INFINITY;
         [self.spinnerImageView.layer addAnimation:animation forKey:@"SpinAnimation"];
     }
+    
+    [self produceHeaderText];
+}
+
+- (void)produceHeaderText
+{
+    if (self.search.pickupLocation == self.search.dropoffLocation) {
+        self.locationLabel.text = [NSString stringWithFormat:@"%@", self.search.pickupLocation.name];
+    } else {
+        self.locationLabel.text = [NSString stringWithFormat:@"%@\n- to -\n%@",
+                                    self.search.pickupLocation.name, self.search.dropoffLocation.name];
+    }
+    
+    NSString *pickupDate = [self.search.pickupDate stringFromDate:@"dd MMM, hh:mm a"];
+    NSString *dropoffDate = [self.search.dropoffDate stringFromDate:@"dd MMM, hh:mm a"];
+    
+    self.dateLabel.text = [NSString stringWithFormat:@"%@ - %@", pickupDate, dropoffDate];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -71,12 +93,12 @@
     return sharedInstance;
 }
 
-+ (void)present:(UIViewController *)viewController
++ (void)present:(UIViewController *)viewController search:(CarRentalSearch *)search;
 {
 
     [[CTInterstitialViewController sharedInstance] setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [[CTInterstitialViewController sharedInstance] setModalPresentationStyle:UIModalPresentationOverFullScreen];
-
+    [CTInterstitialViewController sharedInstance].search = search;
     [viewController presentViewController:[CTInterstitialViewController sharedInstance] animated:YES completion:nil];
 }
 

@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "CTLabel.h"
+#import "CarRentalSearch.h"
 
 @interface CTInterstitialViewController : UIViewController
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *spinnerImageView;
 @property (unsafe_unretained, nonatomic) IBOutlet CTLabel *loadingLabel;
 
-+ (void)present:(UIViewController *)viewController;
++ (void)present:(UIViewController *)viewController search:(CarRentalSearch *)search;
 + (void)dismiss;
 
 @end
