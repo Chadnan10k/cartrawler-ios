@@ -30,6 +30,7 @@
     
     self.tipTitleLabel.text = self.titleText ?: @"";
     self.detailTextView.attributedText = self.detailText;
+    self.detailTextView.editable = NO;
 }
 
 - (void)didReceiveMemoryWarning {
