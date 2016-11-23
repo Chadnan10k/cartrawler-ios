@@ -50,7 +50,7 @@
         }
         case 1: {
             CTPaymentLocationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"location"];
-            [cell setData:self.search.pickupLocation date:self.search.pickupDate];
+            [cell setData:self.search.dropoffLocation date:self.search.dropoffDate];
             return cell;
         }
         case 2: {

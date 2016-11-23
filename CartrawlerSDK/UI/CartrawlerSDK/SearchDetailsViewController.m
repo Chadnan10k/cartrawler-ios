@@ -345,7 +345,7 @@
         };
         
         [self pushToDestination];
-        [CTInterstitialViewController present:self];
+        [CTInterstitialViewController present:self search:self.search];
     }
 }
 
