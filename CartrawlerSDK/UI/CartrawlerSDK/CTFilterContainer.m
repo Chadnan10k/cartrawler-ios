@@ -25,6 +25,8 @@
 {
     self = [super initWithCoder:aDecoder];
     self.layer.cornerRadius = [CTAppearance instance].containerViewCornerRadius;
+    self.layer.borderWidth = 0.5;
+    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
     return self;
 }
 
@@ -32,6 +34,8 @@
 {
     self = [super initWithFrame:frame];
     self.layer.cornerRadius = [CTAppearance instance].containerViewCornerRadius;
+    self.layer.borderWidth = 0.5;
+    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
     return self;
 }
 
@@ -46,8 +50,7 @@
     self.backgroundColor = [UIColor whiteColor];
     CTLabel *titleLabel = [[CTLabel alloc] initWithFrame:CGRectZero];
     titleLabel.text = tableView.tableViewTitle;
-    titleLabel.useBoldFont = YES;
-    titleLabel.font = [UIFont fontWithName:titleLabel.font.fontName size:20];
+    titleLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:20];
     [self addSubview:titleLabel];
     [self addSubview:tableView];
     titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -75,7 +78,7 @@
                                                                              toItem:self
                                                                           attribute:NSLayoutAttributeTop
                                                                          multiplier:1.0
-                                                                           constant:10];
+                                                                           constant:15];
     
     NSLayoutConstraint *imageViewRightConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
                                                                               attribute:NSLayoutAttributeRight
@@ -91,7 +94,7 @@
                                                                                    toItem:nil
                                                                                 attribute:NSLayoutAttributeNotAnAttribute
                                                                                multiplier:1.0
-                                                                                 constant:30];
+                                                                                 constant:20];
     
     NSLayoutConstraint *imageViewHeightConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
                                                                                 attribute:NSLayoutAttributeHeight
@@ -99,7 +102,7 @@
                                                                                    toItem:nil
                                                                                 attribute:NSLayoutAttributeNotAnAttribute
                                                                                multiplier:1.0
-                                                                                 constant:30];
+                                                                                 constant:20];
     
 
     NSLayoutConstraint *labelTopConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
@@ -125,7 +128,7 @@
                                                                               toItem:self
                                                                            attribute:NSLayoutAttributeLeft
                                                                           multiplier:1.0
-                                                                            constant:5];
+                                                                            constant:[CTAppearance instance].containerViewMarginPadding];
     
     NSLayoutConstraint *labelRightConstraint = [NSLayoutConstraint constraintWithItem:titleLabel
                                                                             attribute:NSLayoutAttributeRight

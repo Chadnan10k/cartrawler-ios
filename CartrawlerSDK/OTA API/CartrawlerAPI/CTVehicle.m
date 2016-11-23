@@ -90,8 +90,8 @@
 	_code = dictionary[@"VehAvailCore"][@"Vehicle"][@"@Code"];
 	
 	_codeContext = dictionary[@"VehAvailCore"][@"Vehicle"][@"@CodeContext"];
-	
-	_size = [self vehcileCategoryStringFromNumber:dictionary[@"VehAvailCore"][@"Vehicle"][@"VehType"][@"@VehicleCategory"]];
+    
+	_size = [self vehicleSizeFromNumber:dictionary[@"VehAvailCore"][@"Vehicle"][@"VehClass"][@"@Size"]];
     
     _sizeCode = dictionary[@"VehAvailCore"][@"Vehicle"][@"VehType"][@"@VehicleCategory"];
 	
@@ -275,7 +275,7 @@
 }
 
 
-- (VehicleSize)vehcileCategoryStringFromNumber:(NSString *)vehCatStr {
+- (VehicleSize)vehicleSizeFromNumber:(NSString *)vehCatStr {
     if ([vehCatStr isEqualToString:@"1"]) {
         return VehicleSizeMini;
     } else if ([vehCatStr isEqualToString:@"2"]) {
@@ -358,7 +358,17 @@
         return VehicleSizeLuxuryElite;
     } else if ([vehCatStr isEqualToString:@"41"]) {
         return VehicleSizeOversize;
-    } else {
+    } else if ([vehCatStr isEqualToString:@"44"]) {
+        return VehicleSizeEstate;
+    } else if ([vehCatStr isEqualToString:@"45"]) {
+        return VehicleSizeFiveSeatCarrier;
+    } else if ([vehCatStr isEqualToString:@"46"]) {
+        return VehicleSizeSevenSeatCarrier;
+    } else if ([vehCatStr isEqualToString:@"47"]) {
+        return VehicleSizeNineSeatCarrier;
+    } else if ([vehCatStr isEqualToString:@"48"]) {
+        return VehicleSizeSUV;
+    }else {
         return VehicleSizeUnknown;
     }
 }
