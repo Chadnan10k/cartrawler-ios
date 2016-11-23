@@ -80,41 +80,44 @@
         return;
     }
     
-    if (search.flightNumber == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION AS self.flightNumber IS NOT SET \n\n");
-        completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION", NO);
-        return;
-    }
+    if (search.isBuyingInsurance) {
+        if (search.flightNumber == nil) {
+            NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION AS self.flightNumber IS NOT SET \n\n");
+            completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION", NO);
+            return;
+        }
     
-    if (search.addressLine1 == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION AS self.addressLine1 IS NOT SET \n\n");
-        completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION", NO);
-        return;
-    }
+        if (search.addressLine1 == nil) {
+            NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION AS self.addressLine1 IS NOT SET \n\n");
+            completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION", NO);
+            return;
+        }
     
-    if (search.addressLine2 == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION AS self.addressLine2 IS NOT SET \n\n");
-        completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION", NO);
-        return;
-    }
+        if (search.addressLine2 == nil) {
+            NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION AS self.addressLine2 IS NOT SET \n\n");
+            completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION", NO);
+            return;
+        }
     
-    if (search.city == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION AS self.city IS NOT SET \n\n");
-        completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION", NO);
-        return;
-    }
+        if (search.city == nil) {
+            NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION AS self.city IS NOT SET \n\n");
+            completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION", NO);
+            return;
+        }
     
-    if (search.postcode == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION AS self.postcode IS NOT SET \n\n");
-        completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION", NO);
-        return;
-    }
+        if (search.postcode == nil) {
+            NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION AS self.postcode IS NOT SET \n\n");
+            completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION", NO);
+            return;
+        }
     
-    if (search.country == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION AS self.country IS NOT SET \n\n");
-        completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION", NO);
-        return;
+        if (search.country == nil) {
+            NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION AS self.country IS NOT SET \n\n");
+            completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION", NO);
+            return;
+        }
     }
+
     
 //    if (search.booking == nil) {
 //        NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT COMPLETION AS self.booking IS NOT SET \n\n");

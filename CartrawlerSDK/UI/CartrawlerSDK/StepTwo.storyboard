@@ -109,11 +109,11 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GF2-Fa-L6p">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GF2-Fa-L6p">
                                         <rect key="frame" x="0.0" y="78" width="375" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5p-Fg-bul" customClass="CTButton">
-                                                <rect key="frame" x="277" y="6" width="90" height="35"/>
+                                                <rect key="frame" x="277" y="8" width="90" height="35"/>
                                                 <color key="backgroundColor" red="0.10980392160000001" green="0.30588235289999999" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="Grk-Wc-51O"/>
@@ -130,20 +130,8 @@
                                                     <action selector="filterTapped:" destination="L45-dG-eg7" eventType="touchUpInside" id="6St-dO-cTr"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x cars available" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obb-FK-iCf" customClass="CTLabel">
-                                                <rect key="frame" x="8" y="14" width="163" height="21"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="yhz-jG-W5G"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="NO"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOM-WV-XPW" customClass="CTButton">
-                                                <rect key="frame" x="179" y="6" width="90" height="35"/>
+                                                <rect key="frame" x="179" y="8" width="90" height="35"/>
                                                 <color key="backgroundColor" red="0.10980392160000001" green="0.30588235289999999" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="90" id="UeP-fb-nLV"/>
@@ -160,6 +148,18 @@
                                                     <action selector="sortTapped:" destination="L45-dG-eg7" eventType="touchUpInside" id="6KQ-TF-hhI"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x cars available" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obb-FK-iCf" customClass="CTLabel">
+                                                <rect key="frame" x="8" y="15" width="163" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="yhz-jG-W5G"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.5410576923" green="0.81884615380000003" blue="0.44366586540000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -169,7 +169,7 @@
                                             <constraint firstAttribute="trailing" secondItem="K5p-Fg-bul" secondAttribute="trailing" constant="8" id="VW2-Vb-KUk" customClass="CTLayoutConstraint"/>
                                             <constraint firstItem="Obb-FK-iCf" firstAttribute="leading" secondItem="GF2-Fa-L6p" secondAttribute="leading" constant="8" id="XCz-eh-lgc" customClass="CTLayoutConstraint"/>
                                             <constraint firstItem="LOM-WV-XPW" firstAttribute="leading" secondItem="Obb-FK-iCf" secondAttribute="trailing" constant="8" id="Zbp-KU-nrN"/>
-                                            <constraint firstItem="K5p-Fg-bul" firstAttribute="centerY" secondItem="GF2-Fa-L6p" secondAttribute="centerY" constant="-1.5" id="dYm-hs-Elu"/>
+                                            <constraint firstItem="K5p-Fg-bul" firstAttribute="centerY" secondItem="GF2-Fa-L6p" secondAttribute="centerY" constant="0.5" id="dYm-hs-Elu"/>
                                             <constraint firstItem="Obb-FK-iCf" firstAttribute="centerY" secondItem="K5p-Fg-bul" secondAttribute="centerY" constant="0.5" id="gq9-hV-AaB"/>
                                         </constraints>
                                     </view>

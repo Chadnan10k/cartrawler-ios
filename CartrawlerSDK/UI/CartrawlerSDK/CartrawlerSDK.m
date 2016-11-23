@@ -26,6 +26,7 @@
 #import "GTBookingsViewController.h"
 #import "DataStore.h"
 #import "CTBasketValidation.h"
+#import "CTDriverDetailsValidation.h"
 
 #define kSearchViewStoryboard           @"StepOne"
 #define kSearchResultsViewStoryboard    @"StepTwo"
@@ -92,7 +93,7 @@
     
     [[CarRentalSearch instance] reset];
     [self configureViews];
-    [self presenteRentalNavigationController:viewController];
+    [self presentRentalNavigationController:viewController];
 }
 
 - (void)presentCarRentalInViewController:(UIViewController *)viewController
@@ -125,7 +126,7 @@
     [CarRentalSearch instance].postcode = postcode;
 
     [self configureViews];
-    [self presenteRentalNavigationController:viewController];
+    [self presentRentalNavigationController:viewController];
 }
 
 - (void)presentCarRentalWithFlightDetails:(NSString *)IATACode
@@ -183,7 +184,7 @@
                     if(response.matchedLocations.count > 0) {
                         [CarRentalSearch instance].pickupLocation =  response.matchedLocations.firstObject;
                         [CarRentalSearch instance].dropoffLocation =  response.matchedLocations.firstObject;
-                        [weakself presenteRentalNavigationController:viewController];
+                        [weakself presentRentalNavigationController:viewController];
 
                         if (completion) {
                             completion(YES, @"");
@@ -200,7 +201,7 @@
     }];
 }
 
-- (void)presenteRentalNavigationController:(UIViewController *)parent
+- (void)presentRentalNavigationController:(UIViewController *)parent
 {
     CTNavigationController *navController = [[CTNavigationController alloc] init];
     navController.navigationBar.hidden = YES;
@@ -318,8 +319,10 @@
                       destination:self.driverDetialsViewController];
     
     [self configureViewController:self.driverDetialsViewController
-             validationController:[[GenericValidation alloc] init]
-                      destination:self.addressDetialsViewController];
+             validationController:[[CTDriverDetailsValidation alloc] init]
+                      destination:self.addressDetialsViewController
+                         fallback:self.paymentSummaryViewController
+                    optionalRoute:nil];
     
     [self configureViewController:self.addressDetialsViewController
              validationController:[[PaymentValidation alloc] init]

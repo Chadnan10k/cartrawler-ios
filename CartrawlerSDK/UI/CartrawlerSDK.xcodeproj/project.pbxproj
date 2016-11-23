@@ -34,6 +34,8 @@
 		4540550A1DDDD62C00FD493A /* OptionalExtrasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454055081DDDD62C00FD493A /* OptionalExtrasViewController.h */; };
 		4540550B1DDDD62C00FD493A /* OptionalExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454055091DDDD62C00FD493A /* OptionalExtrasViewController.m */; };
 		4540550E1DDE10DF00FD493A /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4540550D1DDE0E3D00FD493A /* en.strings */; };
+		45493E451DE5E97D005A8AD0 /* CTDriverDetailsValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45493E431DE5E97D005A8AD0 /* CTDriverDetailsValidation.h */; };
+		45493E461DE5E97D005A8AD0 /* CTDriverDetailsValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45493E441DE5E97D005A8AD0 /* CTDriverDetailsValidation.m */; };
 		454D91F01DD34E24001AE96C /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D91EE1DD34E24001AE96C /* Reachability.h */; };
 		454D91F11DD34E24001AE96C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D91EF1DD34E24001AE96C /* Reachability.m */; };
 		455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736E1D806064000CB1E5 /* GTPaymentRequest.h */; };
@@ -452,6 +454,8 @@
 		4546D40D1D8301700081A2F9 /* FilterCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCollectionViewDataSource.m; sourceTree = "<group>"; };
 		4546D4101D8303A90081A2F9 /* GTFilterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTFilterCollectionViewCell.h; sourceTree = "<group>"; };
 		4546D4111D8303A90081A2F9 /* GTFilterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTFilterCollectionViewCell.m; sourceTree = "<group>"; };
+		45493E431DE5E97D005A8AD0 /* CTDriverDetailsValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDriverDetailsValidation.h; sourceTree = "<group>"; };
+		45493E441DE5E97D005A8AD0 /* CTDriverDetailsValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDriverDetailsValidation.m; sourceTree = "<group>"; };
 		454AD7791D2551F5005C6CFF /* CTFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterViewController.h; sourceTree = "<group>"; };
 		454AD77A1D2551F5005C6CFF /* CTFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterViewController.m; sourceTree = "<group>"; };
 		454AD77D1D25587D005C6CFF /* CTFilterDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterDataSource.h; sourceTree = "<group>"; };
@@ -813,6 +817,8 @@
 				45B264FA1D902C9C000005F2 /* BookingCompletionValidation.m */,
 				45A5073F1DE33FD000661AC2 /* CTBasketValidation.h */,
 				45A507401DE33FD000661AC2 /* CTBasketValidation.m */,
+				45493E431DE5E97D005A8AD0 /* CTDriverDetailsValidation.h */,
+				45493E441DE5E97D005A8AD0 /* CTDriverDetailsValidation.m */,
 			);
 			name = "Car Rental";
 			sourceTree = "<group>";
@@ -1681,6 +1687,7 @@
 				455B59111DCC914400CA4790 /* BookingSummaryButton.h in Headers */,
 				455B59131DCC914400CA4790 /* PaymentSummaryViewController.h in Headers */,
 				455B59151DCC914400CA4790 /* PaymentSummaryTableViewCell.h in Headers */,
+				45493E451DE5E97D005A8AD0 /* CTDriverDetailsValidation.h in Headers */,
 				455B59171DCC914400CA4790 /* DriverDetailsViewController.h in Headers */,
 				455B59191DCC914400CA4790 /* AddressDetailsViewController.h in Headers */,
 				455B591B1DCC914400CA4790 /* CSVItem.h in Headers */,
@@ -1956,6 +1963,7 @@
 				455B59301DCC914400CA4790 /* GTFilterCollectionViewFlowLayout.m in Sources */,
 				454D91F11DD34E24001AE96C /* Reachability.m in Sources */,
 				455B59321DCC914400CA4790 /* InclusionCollectionViewDataSource.m in Sources */,
+				45493E461DE5E97D005A8AD0 /* CTDriverDetailsValidation.m in Sources */,
 				455B59341DCC914400CA4790 /* InclusionCollectionViewCell.m in Sources */,
 				455B59361DCC914400CA4790 /* InclusionFlowLayout.m in Sources */,
 				455B59381DCC914400CA4790 /* GTServiceTableViewCell.m in Sources */,
