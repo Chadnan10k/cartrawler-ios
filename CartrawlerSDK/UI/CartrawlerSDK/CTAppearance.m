@@ -32,7 +32,7 @@
         sharedInstance.tooltipBackgroundColor = [UIColor colorWithRed:31.0/255.0 green:73.0/255.0 blue:155.0/255.0 alpha:1.0];
 
         sharedInstance.containerViewCornerRadius = 5.0;
-        sharedInstance.containerViewMarginPadding = 8;
+        sharedInstance.containerViewMarginPadding = 16;
         
         sharedInstance.textFieldCornerRadius = 3.0;
         sharedInstance.textFieldTint = [UIColor colorWithRed:26.0/255.0 green:38.0/255.0 blue:88.0/255.0 alpha:1.0];

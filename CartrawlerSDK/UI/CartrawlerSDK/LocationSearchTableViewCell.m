@@ -8,6 +8,7 @@
 
 #import "LocationSearchTableViewCell.h"
 #import "CTLabel.h"
+#import "CartrawlerSDK+UIImageView.h"
 
 @interface LocationSearchTableViewCell()
 
@@ -28,9 +29,10 @@
     if (isAirport) {
         self.locationImageView.image = [UIImage imageNamed:@"location_airport" inBundle:b compatibleWithTraitCollection:nil];
     } else {
-        self.locationImageView.image = [UIImage imageNamed:@"location_city" inBundle:b compatibleWithTraitCollection:nil];
+        self.locationImageView.image = [UIImage imageNamed:@"location" inBundle:b compatibleWithTraitCollection:nil];
     }
     
+    [self.locationImageView applyTint];
     self.locationLabel.text = text;
 }
 

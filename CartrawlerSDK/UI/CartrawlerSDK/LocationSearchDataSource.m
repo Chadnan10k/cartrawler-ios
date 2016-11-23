@@ -12,6 +12,7 @@
 #import "CTSDKSettings.h"
 #import "LocationSearchTableViewCell.h"
 #import "GooglePlaceService.h"
+#import "CTAppearance.h"
 
 @interface LocationSearchDataSource()
 @property (nonatomic, strong) NSMutableArray <CTMatchedLocation *> *airportLocations;
@@ -158,23 +159,30 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    CTLabel *customLabel = [[CTLabel alloc] initWithFrame:CGRectMake(10.0,5.0,200.0,20.0)];
-    customLabel.textColor = [UIColor darkGrayColor];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [CTAppearance instance].viewBackgroundColor;
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    label.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:17];
+    label.textAlignment = NSTextAlignmentLeft;
 
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 20)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 45)];
     headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     headerView.alpha = 0.9;
-    [headerView addSubview:customLabel];
+    [headerView addSubview:label];
+    
+    [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-padding-[label]-padding-|" options:0 metrics:@{@"padding" : [NSNumber numberWithFloat:[CTAppearance instance].containerViewMarginPadding]} views:@{@"label" : label}]];
+    [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[label]-0-|" options:0 metrics:nil views:@{@"label" : label}]];
 
     if (section == (self.invertData ? 1 : 0)) {
-        [customLabel setText:NSLocalizedString(@"Airport", @"")];
+        [label setText:NSLocalizedString(@"Airport", @"")];
         if (self.airportLocations.count > 0) {
             return headerView;
         } else {
             return nil;
         }
     } else {
-        [customLabel setText:NSLocalizedString(@"All other locations", @"")];
+        [label setText:NSLocalizedString(@"All other locations", @"")];
         if (self.otherLocations.count > 0) {
             return headerView;
         } else {
