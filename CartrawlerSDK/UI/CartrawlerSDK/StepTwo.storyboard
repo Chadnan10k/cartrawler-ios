@@ -125,7 +125,6 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="transparent" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="filterTapped:" destination="L45-dG-eg7" eventType="touchUpInside" id="6St-dO-cTr"/>
@@ -137,6 +136,7 @@
                                                     <constraint firstAttribute="height" constant="21" id="yhz-jG-W5G"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="NO"/>
@@ -155,14 +155,13 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="transparent" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="sortTapped:" destination="L45-dG-eg7" eventType="touchUpInside" id="6KQ-TF-hhI"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.5410576923" green="0.81884615380000003" blue="0.44366586540000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="79A-Rz-RJg"/>
                                             <constraint firstItem="K5p-Fg-bul" firstAttribute="leading" secondItem="LOM-WV-XPW" secondAttribute="trailing" constant="8" id="KNM-fc-Dus"/>
@@ -209,6 +208,7 @@
                         <outlet property="carCountLabel" destination="Obb-FK-iCf" id="UxT-eU-A08"/>
                         <outlet property="datesLabel" destination="CdZ-Gx-aUS" id="GIQ-1n-ccz"/>
                         <outlet property="locationsLabel" destination="xpG-V5-fPS" id="qY9-VD-AvE"/>
+                        <outlet property="subheaderView" destination="GF2-Fa-L6p" id="H2H-f8-lxV"/>
                         <outlet property="vehicleSelectionView" destination="K77-Ev-AB4" id="jSr-v3-L97"/>
                     </connections>
                 </viewController>
@@ -342,6 +342,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="25" height="25"/>
+        <image name="backArrow" width="24" height="24"/>
     </resources>
 </document>

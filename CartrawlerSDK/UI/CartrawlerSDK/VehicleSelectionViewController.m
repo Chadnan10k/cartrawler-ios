@@ -11,6 +11,7 @@
 #import "CTLabel.h"
 #import "CartrawlerSDK+NSDateUtils.h"
 #import "CTFilterViewController.h"
+#import "CTAppearance.h"
 
 @interface VehicleSelectionViewController () <UIScrollViewDelegate>
 
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *locationsLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *datesLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *carCountLabel;
+@property (weak, nonatomic) IBOutlet UIView *subheaderView;
 
 @property (nonatomic, strong) CTFilterViewController *filterViewController;
 @property (nonatomic, strong) NSArray<CTAvailabilityItem *> *filteredData;
@@ -54,9 +56,7 @@
     
     [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
     
-//    self.vehicleSelectionView.direction = ^(BOOL scrollDirectionUp) {
-//        [weakSelf showText:scrollDirectionUp];
-//    };
+    self.subheaderView.backgroundColor = [CTAppearance instance].iconTint;
 }
 
 - (void)viewWillAppear:(BOOL)animated
