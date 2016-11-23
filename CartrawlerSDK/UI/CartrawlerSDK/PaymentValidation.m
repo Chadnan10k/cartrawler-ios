@@ -86,35 +86,38 @@
         return;
     }
     
-    if (search.addressLine1 == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT AS self.addressLine1 IS NOT SET \n\n");
-        completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT", NO);
-        return;
+    if (search.isBuyingInsurance) {
+        if (search.addressLine1 == nil) {
+            NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT AS self.addressLine1 IS NOT SET \n\n");
+            completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT", NO);
+            return;
+        }
+    
+        if (search.addressLine2 == nil) {
+            NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT AS self.addressLine2 IS NOT SET \n\n");
+            completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT", NO);
+            return;
+        }
+    
+        if (search.city == nil) {
+            NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT AS self.city IS NOT SET \n\n");
+            completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT", NO);
+            return;
+        }
+    
+        if (search.postcode == nil) {
+            NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT AS self.postcode IS NOT SET \n\n");
+            completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT", NO);
+            return;
+        }
+    
+        if (search.country == nil) {
+            NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT AS self.country IS NOT SET \n\n");
+            completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT", NO);
+            return;
+        }
     }
     
-    if (search.addressLine2 == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT AS self.addressLine2 IS NOT SET \n\n");
-        completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT", NO);
-        return;
-    }
-    
-    if (search.city == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT AS self.city IS NOT SET \n\n");
-        completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT", NO);
-        return;
-    }
-    
-    if (search.postcode == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT AS self.postcode IS NOT SET \n\n");
-        completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT", NO);
-        return;
-    }
-    
-    if (search.country == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH TO PAYMENT AS self.country IS NOT SET \n\n");
-        completion(NO, @"\n\n ERROR: CANNOT PUSH TO PAYMENT", NO);
-        return;
-    }
     
     completion(YES, nil, NO);
 

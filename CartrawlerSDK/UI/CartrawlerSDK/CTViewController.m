@@ -47,8 +47,6 @@
                                                                 [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
                                                             } @catch (NSException * e) {
                                                                 NSLog(@"Exception: %@", e);
-                                                            } @finally {
-
                                                             }
                                                         } else {
                                                             if (weakSelf.dataValidationCompletion) {
@@ -72,14 +70,13 @@
                                                           [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
                                                       } @catch (NSException * e) {
                                                           NSLog(@"Exception: %@", e);
-                                                      } @finally {
-
                                                       }
                                                       
                                                   } else {
-                                                      if (weakSelf.dataValidationCompletion) {
                                                           if (weakSelf.fallbackViewController && !useOptionalRoute) {
-                                                              weakSelf.dataValidationCompletion(YES, nil);
+                                                              if (weakSelf.dataValidationCompletion) {
+                                                                  weakSelf.dataValidationCompletion(YES, nil);
+                                                              }
                                                               [weakSelf.fallbackViewController refresh];
                                                               @try {
                                                                   [weakSelf.navigationController pushViewController:weakSelf.fallbackViewController
@@ -95,13 +92,12 @@
                                                                                                            animated:YES];
                                                               } @catch (NSException * e) {
                                                                   NSLog(@"Exception: %@", e);
-                                                              } @finally {
-                                                                  
                                                               }
                                                           } else {
-                                                              weakSelf.dataValidationCompletion(NO, errorMessage);
+                                                              if (weakSelf.dataValidationCompletion) {
+                                                                  weakSelf.dataValidationCompletion(NO, errorMessage);
+                                                              }
                                                           }
-                                                      }
                                                   }
                                               });
                                           }];
