@@ -312,7 +312,6 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     NSString *htmlFile = [self.bundle pathForResource:@"CTPCI" ofType:@"html"];
     _htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
     self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"[URLPLACEHOLDER]" withString:urlStr];
-    NSLog(@"%@ ", urlStr);
     [self.webView loadHTMLString:self.htmlString baseURL: self.bundle.bundleURL];
 
     [self setupWebView];
