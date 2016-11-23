@@ -472,7 +472,7 @@
 {
     NSDictionary *termsAttr = @{ NSForegroundColorAttributeName : [UIColor lightGrayColor],
                                  NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName
-                                                                       size:15]};
+                                                                       size:11]};
     return [self scanForLinks:[[NSAttributedString alloc] initWithString:response.paragraphSubfooter
                                                               attributes:termsAttr]
                      response:response];
