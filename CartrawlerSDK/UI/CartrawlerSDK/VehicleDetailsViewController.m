@@ -98,7 +98,11 @@
         [weakSelf presentViewController:[CTToolTip fullScreenTooltip:NSLocalizedString(@"Fuel policy", @"Fuel policy tooltip title")
                                                           detailText:[[NSAttributedString alloc]
                                                                       initWithString:[LocalisedStrings
-                                                                                      toolTipTextForFuelPolicy: weakSelf.search.selectedVehicle.vehicle.fuelPolicy]]]
+                                                                                      toolTipTextForFuelPolicy: weakSelf.search.selectedVehicle.vehicle.fuelPolicy]
+                                                                      attributes: @{
+                                                                                    NSForegroundColorAttributeName : [UIColor whiteColor],
+                                                                                    NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:21]
+                                                                                    }]]
                                animated:YES
                              completion:nil];
     }];
