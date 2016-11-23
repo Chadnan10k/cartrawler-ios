@@ -210,6 +210,26 @@
             
             return NSLocalizedString(@"Unknown", @"");;
         }
+        case VehicleSizeEstate: {
+            
+            return NSLocalizedString(@"Estate", @"");;
+        }
+        case VehicleSizeFiveSeatCarrier: {
+            
+            return NSLocalizedString(@"5 seat carrier", @"");;
+        }
+        case VehicleSizeSevenSeatCarrier: {
+            
+            return NSLocalizedString(@"7 seat carrier", @"");;
+        }
+        case VehicleSizeNineSeatCarrier: {
+            
+            return NSLocalizedString(@"9 seat carrier", @"");;
+        }
+        case VehicleSizeSUV: {
+            
+            return NSLocalizedString(@"SUV", @"");;
+        }   
     }
 }
 

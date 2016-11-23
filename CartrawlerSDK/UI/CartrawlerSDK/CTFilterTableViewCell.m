@@ -95,7 +95,7 @@
                                                                              toItem:self
                                                                           attribute:NSLayoutAttributeLeft
                                                                          multiplier:1.0
-                                                                           constant:5];
+                                                                           constant:[CTAppearance instance].containerViewMarginPadding];
         
         NSLayoutConstraint *labelRightConstraint = [NSLayoutConstraint constraintWithItem:self.label
                                                                            attribute:NSLayoutAttributeRight

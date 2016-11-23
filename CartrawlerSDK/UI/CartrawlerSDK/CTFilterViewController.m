@@ -56,8 +56,8 @@
     self.transmissionTableView.delegate   = self.filterFactory.transmissionDataSource;
     
     self.carSizeTableView.tableViewTitle        = NSLocalizedString(@"Vehicle Size", @"Vehicle Size");
-    self.pickupLocationTableView.tableViewTitle = NSLocalizedString(@"Pickup", @"Pickup");
-    self.vendorsTableView.tableViewTitle        = NSLocalizedString(@"Vendors", @"Vendors");
+    self.pickupLocationTableView.tableViewTitle = NSLocalizedString(@"Pick-up desk location", @"Pickup");
+    self.vendorsTableView.tableViewTitle        = NSLocalizedString(@"Car rental companies", @"Vendors");
     self.fuelPolicyTableView.tableViewTitle     = NSLocalizedString(@"Fuel policy", @"Fuel policy");
     self.transmissionTableView.tableViewTitle   = NSLocalizedString(@"Transmission", @"Transmission");
 
