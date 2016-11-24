@@ -70,7 +70,9 @@
 
 - (void)refresh
 {
-    [self.paymentView setForCarRentalPayment:self.search];
+    if (self.paymentView) {
+        [self.paymentView setForCarRentalPayment:self.search];
+    }
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
@@ -95,7 +97,8 @@
     _paymentView = [[CTPaymentView alloc] initWithFrame:CGRectZero];
     self.paymentView.delegate = self;
     [self.paymentView presentInView:self.webViewContainer];
-    
+    [self.paymentView setForCarRentalPayment:self.search];//for initial load
+
     _internetReachability = [Reachability reachabilityForInternetConnection];
     [self.internetReachability startNotifier];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
