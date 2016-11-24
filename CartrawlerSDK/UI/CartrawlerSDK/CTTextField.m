@@ -16,9 +16,6 @@
 
 @implementation CTTextField
 
-
-
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -32,6 +29,9 @@
     
     self.layer.borderWidth = self.borderWidth;
     self.layer.borderColor = self.borderColor.CGColor;
+    
+    self.floatingLabelTextColor = [UIColor lightGrayColor];
+    self.floatingLabelActiveTextColor = [CTAppearance instance].navigationBarColor;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
