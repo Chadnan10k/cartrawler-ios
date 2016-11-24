@@ -292,37 +292,25 @@
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" editable="NO" text="Terms and conditions" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hWi-uf-kjB">
-                                                <rect key="frame" x="8" y="358" width="359" height="122"/>
+                                                <rect key="frame" x="8" y="358" width="359" height="151"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="textColor" red="0.19346955129999999" green="0.19346955129999999" blue="0.19346955129999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100% SECURE &amp; ENCRYPTED " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rN-b9-MHS" customClass="CTLabel">
-                                                <rect key="frame" x="8" y="488" width="359" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="c54-jM-Sxn" secondAttribute="trailing" id="2pm-aI-TT8"/>
                                             <constraint firstItem="hWi-uf-kjB" firstAttribute="top" secondItem="c54-jM-Sxn" secondAttribute="bottom" constant="8" id="4si-f2-MwI"/>
+                                            <constraint firstAttribute="bottom" secondItem="hWi-uf-kjB" secondAttribute="bottom" constant="8" id="8SE-aO-Pk7"/>
                                             <constraint firstItem="hWi-uf-kjB" firstAttribute="leading" secondItem="fLz-vi-TIj" secondAttribute="leading" constant="8" id="9Hy-HM-2ST"/>
                                             <constraint firstItem="c54-jM-Sxn" firstAttribute="top" secondItem="fLz-vi-TIj" secondAttribute="top" id="Dbx-xS-9JI"/>
-                                            <constraint firstItem="8rN-b9-MHS" firstAttribute="top" secondItem="hWi-uf-kjB" secondAttribute="bottom" constant="8" id="Hjb-mX-upP"/>
                                             <constraint firstAttribute="height" constant="517" id="Kgn-VK-fmG"/>
                                             <constraint firstItem="c54-jM-Sxn" firstAttribute="leading" secondItem="fLz-vi-TIj" secondAttribute="leading" id="KtS-3k-TWu"/>
-                                            <constraint firstAttribute="bottom" secondItem="8rN-b9-MHS" secondAttribute="bottom" constant="8" id="Po5-rh-y3S"/>
-                                            <constraint firstItem="8rN-b9-MHS" firstAttribute="leading" secondItem="fLz-vi-TIj" secondAttribute="leading" constant="8" id="R0C-BL-r9q"/>
                                             <constraint firstAttribute="bottom" secondItem="hWi-uf-kjB" secondAttribute="bottom" constant="50" id="qkv-xC-GNX"/>
                                             <constraint firstAttribute="trailing" secondItem="hWi-uf-kjB" secondAttribute="trailing" constant="8" id="stS-gb-zbI"/>
-                                            <constraint firstAttribute="trailing" secondItem="8rN-b9-MHS" secondAttribute="trailing" constant="8" id="vHY-JK-Uw6"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
