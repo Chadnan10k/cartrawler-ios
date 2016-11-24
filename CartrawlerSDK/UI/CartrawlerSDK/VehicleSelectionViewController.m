@@ -90,6 +90,11 @@
         self.locationsLabel.text = [NSString stringWithFormat:@"%@\n- to -\n%@",
                                     self.search.pickupLocation.name, self.search.dropoffLocation.name];
     }
+    
+    NSString *pickupDate = [self.search.pickupDate stringFromDate:@"dd MMM, hh:mm a"];
+    NSString *dropoffDate = [self.search.dropoffDate stringFromDate:@"dd MMM, hh:mm a"];
+    
+    self.datesLabel.text = [NSString stringWithFormat:@"%@ - %@", pickupDate, dropoffDate];
 }
 
 - (void)refresh
