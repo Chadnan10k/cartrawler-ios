@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,35 +21,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="bPw-gO-w2c">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVk-QN-XbT">
-                                <color key="backgroundColor" red="0.50196078430000002" green="0.84705882349999995" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="8" y="533" width="359" height="114"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="ibI-Yh-8Fy"/>
+                                    <constraint firstAttribute="height" constant="114" id="PIQ-7R-Byy"/>
                                 </constraints>
-                                <state key="normal" title="Car Rental"/>
                                 <connections>
                                     <action selector="openCarRental:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XiP-Zb-yjW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XqA-bi-TUI">
-                                <color key="backgroundColor" red="0.50196078430000002" green="0.84705882349999995" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="IiE-5I-f6H"/>
-                                </constraints>
-                                <state key="normal" title="Ground Transport"/>
-                                <connections>
-                                    <action selector="openGroundTransport:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ybT-Sj-JQ4"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="XqA-bi-TUI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="Isf-N5-ix8"/>
-                            <constraint firstItem="XqA-bi-TUI" firstAttribute="top" secondItem="JVk-QN-XbT" secondAttribute="bottom" constant="26" id="JMm-rv-K3F"/>
-                            <constraint firstAttribute="trailing" secondItem="XqA-bi-TUI" secondAttribute="trailing" constant="8" id="JfE-Oo-qbo"/>
-                            <constraint firstAttribute="trailing" secondItem="JVk-QN-XbT" secondAttribute="trailing" constant="8" id="YuQ-fD-DJX"/>
-                            <constraint firstItem="JVk-QN-XbT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="oba-ni-XQk"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XqA-bi-TUI" secondAttribute="bottom" constant="96" id="uGz-x6-xmd"/>
+                            <constraint firstItem="JVk-QN-XbT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="BDl-bf-omz"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bPw-gO-w2c" secondAttribute="bottom" id="FVB-aL-Wb3"/>
+                            <constraint firstItem="bPw-gO-w2c" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Fz2-wk-lyh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JVk-QN-XbT" secondAttribute="bottom" constant="20" id="GIC-y8-eUT"/>
+                            <constraint firstAttribute="trailing" secondItem="bPw-gO-w2c" secondAttribute="trailing" id="O5O-v0-kLo"/>
+                            <constraint firstAttribute="trailing" secondItem="JVk-QN-XbT" secondAttribute="trailing" constant="8" id="TtD-Xi-igI"/>
+                            <constraint firstItem="bPw-gO-w2c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZGQ-96-p4e"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -55,4 +52,7 @@
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bg" width="750" height="1334"/>
+    </resources>
 </document>

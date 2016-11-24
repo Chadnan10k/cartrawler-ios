@@ -43,10 +43,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.paymentView setForCarRentalPayment:self.search];
-    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-    }
+
     self.backButton.enabled = YES;
     
     Reachability* curReach = self.internetReachability;
@@ -69,6 +66,14 @@
     }
     
     _loadingViewVisible = NO;
+}
+
+- (void)refresh
+{
+    [self.paymentView setForCarRentalPayment:self.search];
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
