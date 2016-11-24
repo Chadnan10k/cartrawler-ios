@@ -8,8 +8,15 @@
     <script>
     var currentState = "NoState";
     var jsonResponse = "NoResponse";
-        
+    
     document.addEventListener("DOMContentLoaded", function () {
+                              
+      var iframeWin = document.getElementById("ct-secure-payment");
+      iframeWin.onload = function() {
+      window.webkit.messageHandlers.CTWebView.postMessage({"iframeDidLoad" : true} , "*");
+      };
+
+                              
       window.addEventListener("message", function(e) {
             var paymentFormMsg;
               try {

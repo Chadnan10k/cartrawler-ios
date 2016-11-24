@@ -181,7 +181,7 @@
 
 - (void)didLoadPaymentView
 {
-    
+
 }
 
 - (void)didFailLoadingPaymentView

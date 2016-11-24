@@ -37,6 +37,8 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 @property (nonatomic, copy) GroundTransportSearch *groundSearch;
 @property (nonatomic, copy) CarRentalSearch *carRentalSearch;
 @property (nonatomic, strong) CTPaymentCheck *paymentCheck;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic) BOOL iframeLoaded;
 
 @end
 
@@ -88,6 +90,22 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                                                                  options:0
                                                                  metrics:nil
                                                                    views:@{@"view" : self.webView}]];
+    
+    _activityIndicator = [UIActivityIndicatorView new];
+    self.activityIndicator.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.activityIndicator];
+    self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    self.activityIndicator.startAnimating;
+    self.activityIndicator.alpha = 1;
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[view]-8-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"view" : self.activityIndicator}]];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[view]-8-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"view" : self.activityIndicator}]];
 
     //self.webView.UIDelegate = self;
     self.webView.scrollView.scrollEnabled = NO;
@@ -99,6 +117,13 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
 {
     NSDictionary *sentData = (NSDictionary*)message.body;
+    
+    if (sentData[@"iframeDidLoad"]) {
+        _iframeLoaded = YES;
+        self.activityIndicator.stopAnimating;
+        self.activityIndicator.alpha = 0;
+        [self.delegate didLoadPaymentView];
+    }
     
     if (sentData[@"jsonResponse"]) {
         _jsonResponse = sentData[@"jsonResponse"];
@@ -313,7 +338,9 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     _htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
     self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"[URLPLACEHOLDER]" withString:urlStr];
     [self.webView loadHTMLString:self.htmlString baseURL: self.bundle.bundleURL];
-
+    _iframeLoaded = NO;
+    self.activityIndicator.startAnimating;
+    self.activityIndicator.alpha = 1;
     [self setupWebView];
     [self.paymentCheck start];
 
@@ -401,9 +428,11 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 
 - (void)confirmPayment
 {
-    [self.webView evaluateJavaScript:@"validateAndBook()" completionHandler:nil];
-    if (self.delegate) {
-        [self.delegate willMakeBooking];
+    if (self.iframeLoaded) {
+        [self.webView evaluateJavaScript:@"validateAndBook()" completionHandler:nil];
+        if (self.delegate) {
+            [self.delegate willMakeBooking];
+        }
     }
 }
 
