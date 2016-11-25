@@ -84,7 +84,7 @@ typedef void (^ CTPaymentCheckResponse)(CTPaymentStatus response);
     
     NSURL *url = [NSURL URLWithString: endPoint];
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:Nil];
+    session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:Nil];
     
     if (jsonBody != nil && endPoint != nil && ![jsonBody isEqualToString:@""]) {
         

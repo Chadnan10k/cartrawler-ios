@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIZ-6A-YDr" customClass="CTNavigationView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIZ-6A-YDr">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EW2-25-5Rk" customClass="CTLabel">
@@ -35,7 +35,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.10980392160000001" green="0.63137254899999995" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="EAA-iL-Z7T"/>
                                     <constraint firstItem="EW2-25-5Rk" firstAttribute="centerX" secondItem="uIZ-6A-YDr" secondAttribute="centerX" id="R2E-Sk-ZfK"/>
@@ -66,7 +66,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="payment_car" translatesAutoresizingMaskIntoConstraints="NO" id="qFa-hd-wum">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success_car" translatesAutoresizingMaskIntoConstraints="NO" id="qFa-hd-wum">
                                                 <rect key="frame" x="8" y="86" width="359" height="80"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="mzd-XR-j15"/>
@@ -341,7 +341,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZY-vA-PvS" customClass="CTLabel">
-                                        <rect key="frame" x="150.5" y="27" width="74.5" height="23"/>
+                                        <rect key="frame" x="150.5" y="27" width="75" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -445,7 +445,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPT-yX-Aoh">
-                                <rect key="frame" x="186.5" y="228" width="1" height="79"/>
+                                <rect key="frame" x="187" y="228" width="1" height="79"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="xKW-7o-h4i"/>
@@ -514,5 +514,6 @@
         <image name="lock" width="34" height="34"/>
         <image name="payment_car" width="100" height="67"/>
         <image name="payment_card" width="218" height="120"/>
+        <image name="success_car" width="336" height="256"/>
     </resources>
 </document>

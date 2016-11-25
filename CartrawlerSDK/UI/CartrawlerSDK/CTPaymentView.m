@@ -95,7 +95,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     self.activityIndicator.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.activityIndicator];
     self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-    self.activityIndicator.startAnimating;
+    [self.activityIndicator startAnimating];
     self.activityIndicator.alpha = 1;
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[view]-8-|"
                                                                  options:0
@@ -120,7 +120,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     
     if (sentData[@"iframeDidLoad"]) {
         _iframeLoaded = YES;
-        self.activityIndicator.stopAnimating;
+        [self.activityIndicator stopAnimating];
         self.activityIndicator.alpha = 0;
         [self.delegate didLoadPaymentView];
     }
@@ -339,7 +339,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"[URLPLACEHOLDER]" withString:urlStr];
     [self.webView loadHTMLString:self.htmlString baseURL: self.bundle.bundleURL];
     _iframeLoaded = NO;
-    self.activityIndicator.startAnimating;
+    [self.activityIndicator startAnimating];
     self.activityIndicator.alpha = 1;
     [self setupWebView];
     [self.paymentCheck start];

@@ -75,10 +75,9 @@
             return cell;
         }
         default:
-            break;
+            return [UITableViewCell new];
+
     }
-    
-    return nil;
 }
 
 
