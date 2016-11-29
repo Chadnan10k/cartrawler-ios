@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		45D385E81DD61982000F02D1 /* CartrawlerAPI-Universal */ = {
+		45CB04741DEDCECF0086BEA0 /* BuildAPI */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 45D385EB1DD61982000F02D1 /* Build configuration list for PBXAggregateTarget "CartrawlerAPI-Universal" */;
+			buildConfigurationList = 45CB04751DEDCECF0086BEA0 /* Build configuration list for PBXAggregateTarget "BuildAPI" */;
 			buildPhases = (
-				45D385EC1DD6198B000F02D1 /* ShellScript */,
+				45CB047C1DEDCEE80086BEA0 /* ShellScript */,
 			);
 			dependencies = (
 			);
-			name = "CartrawlerAPI-Universal";
-			productName = "CartrawlerAPI-Universal";
+			name = BuildAPI;
+			productName = BuildAPI;
 		};
 /* End PBXAggregateTarget section */
 
@@ -528,9 +528,9 @@
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
 					};
-					45D385E81DD61982000F02D1 = {
+					45CB04741DEDCECF0086BEA0 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 93JSQ29ZDX;
+						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -548,7 +548,7 @@
 			projectRoot = "";
 			targets = (
 				455B57C81DCC8D7900CA4790 /* CartrawlerAPI */,
-				45D385E81DD61982000F02D1 /* CartrawlerAPI-Universal */,
+				45CB04741DEDCECF0086BEA0 /* BuildAPI */,
 			);
 		};
 /* End PBXProject section */
@@ -565,7 +565,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		45D385EC1DD6198B000F02D1 /* ShellScript */ = {
+		45CB047C1DEDCEE80086BEA0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -576,7 +576,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n######################\n# Options\n######################\n\nREVEAL_ARCHIVE_IN_FINDER=true\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal-CartrawlerAPI\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\n\n######################\n# Build Frameworks\n######################\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphonesimulator -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator 2>&1\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphoneos -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos 2>&1\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n\n# For Swift framework, Swiftmodule needs to be copied in the universal framework\nif [ -d \"${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" ]; then\ncp -f ${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule\n\n\"${FRAMEWORK}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" | echo\n                                                                      fi\n                                                                      \n                                                                      if [ -d \"${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" ]; then\n                                                                      cp -f ${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule\n\"${FRAMEWORK}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" | echo\n                                                                      fi\n                                                                      \n                                                                      ######################\n                                                                      # On Release, copy the result to release directory\n                                                                      ######################\n                                                                      OUTPUT_DIR=\"${PROJECT_DIR}/Output/${FRAMEWORK_NAME}-${CONFIGURATION}-iphoneuniversal/\"\n                                                                      \n                                                                      rm -rf \"$OUTPUT_DIR\"\n                                                                      mkdir -p \"$OUTPUT_DIR\"\n                                                                      \n                                                                      cp -r \"${FRAMEWORK}\" \"$OUTPUT_DIR\"\n                                                                      \n                                                                      if [ ${REVEAL_ARCHIVE_IN_FINDER} = true ]; then\n                                                                      open \"${OUTPUT_DIR}/\"\n                                                                      fi";
+			shellScript = "\n######################\n# Options\n######################\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal-CartrawlerSDK\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\nexport VERSION= \"defaults read ${INFO_PLIST} CFBundleVersionString\"\n\n######################\n# Build Frameworks\n######################\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme ${FRAMEWORK_NAME} -configuration Debug -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk \"iphoneos\"\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme ${FRAMEWORK_NAME} -configuration Debug -arch x86_64 -arch i386 only_active_arch=no defines_module=yes -sdk \"iphonesimulator\"\n\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n\n######################\n# On Release, copy the result to release directory\n######################\nOUTPUT_DIR=\"${SRCROOT}/../../../Artifacts_Latest\"\nmkdir -p \"$OUTPUT_DIR\"\n\ncp -r \"${FRAMEWORK}\" \"$OUTPUT_DIR\"\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -782,23 +782,18 @@
 			};
 			name = Release;
 		};
-		45D385E91DD61982000F02D1 /* Debug */ = {
+		45CB04761DEDCECF0086BEA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 93JSQ29ZDX;
-				ENABLE_BITCODE = NO;
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "";
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		45D385EA1DD61982000F02D1 /* Release */ = {
+		45CB04771DEDCECF0086BEA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 93JSQ29ZDX;
-				ENABLE_BITCODE = NO;
-				OTHER_CFLAGS = "";
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -824,14 +819,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		45D385EB1DD61982000F02D1 /* Build configuration list for PBXAggregateTarget "CartrawlerAPI-Universal" */ = {
+		45CB04751DEDCECF0086BEA0 /* Build configuration list for PBXAggregateTarget "BuildAPI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				45D385E91DD61982000F02D1 /* Debug */,
-				45D385EA1DD61982000F02D1 /* Release */,
+				45CB04761DEDCECF0086BEA0 /* Debug */,
+				45CB04771DEDCECF0086BEA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
