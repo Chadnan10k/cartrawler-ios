@@ -20,7 +20,7 @@ LICENSE
 s.author             = { "Cartrawler" => "" }
 s.platform     = :ios
 s.platform     = :ios, "8.0"
-s.source       = { :git => "https://github.com/cartrawler/cartrawler-ios-build.git", :tag => "FRAMEWORK_VERSION" }
+s.source       = { :git => "https://github.com/cartrawler/cartrawler-ios-build.git", :tag => "vFRAMEWORK_VERSION" }
 
 s.ios.vendored_frameworks = 'FRAMEWORK_NAME.framework'
 
