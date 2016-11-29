@@ -1,0 +1,135 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		45CB04851DEDD1740086BEA0 /* BuildAll */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 45CB04861DEDD1740086BEA0 /* Build configuration list for PBXAggregateTarget "BuildAll" */;
+			buildPhases = (
+				45CB04891DEDD17C0086BEA0 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = BuildAll;
+			productName = BuildAll;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXFileReference section */
+		45CB048A1DEDDD2C0086BEA0 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		45CB047E1DEDD1600086BEA0 = {
+			isa = PBXGroup;
+			children = (
+				45CB048A1DEDDD2C0086BEA0 /* info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		45CB047F1DEDD1600086BEA0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				TargetAttributes = {
+					45CB04851DEDD1740086BEA0 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 45CB04821DEDD1600086BEA0 /* Build configuration list for PBXProject "CI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 45CB047E1DEDD1600086BEA0;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				45CB04851DEDD1740086BEA0 /* BuildAll */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		45CB04891DEDD17C0086BEA0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildAPI\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildSDK\n\nOUTPUT_DIR=\"${SRCROOT}/../../../Artifacts_Latest\"\n\ncd ${OUTPUT_DIR}\n\n#lets create the commit\n\nBUILD_PLIST=\"${PROJECT_DIR}/Info.plist\"\n\n# Get the existing buildVersion and buildNumber values from the buildPlist\nBUILD_VERSION=$(defaults read ${OUTPUT_DIR}/CartrawlerSDK.framework/Info CFBundleShortVersionString)\nBUILD_NUMBER=$(defaults read ${PROJECT_DIR}/Info BuildNumber)\ndefaults write ${PROJECT_DIR}/Info BuildNumber $((${BUILD_NUMBER}+1))\n\nGIT_REMOTE=\"https://github.com/cartrawler/cartrawler-ios-build.git\"\nGIT_BRANCH=\"${BUILD_VERSION}\"\nGIT_TAG=\"v${BUILD_VERSION}\"\n\ngit checkout -b \"${GIT_BRANCH}\"\ngit add -A\ngit commit -m \"version ${BUILD_VERSION} build ${BUILD_NUMBER}\"\ngit tag  \"${GIT_TAG}\"\ngit push  \"${GIT_REMOTE}\" \"${GIT_BRANCH}\" --tags\n\n#we have now dumped the new binaries to the build repo, lets update cocoapods next\n\nPODSPEC_TEMPLATE=\"${PROJECT_DIR}/PodTemplate.podspec\"\n#copy the spec for the two frameworks\ncp ${PODSPEC_TEMPLATE} ${PROJECT_DIR}/CartrawlerAPI.podspec\ncp ${PODSPEC_TEMPLATE} ${PROJECT_DIR}/CartrawlerSDK.podspec\n\nPODSPEC_TEMPLATE=\"${PROJECT_DIR}/CartrawlerAPI.podspec\"\nsed -i .temp \"s/FRAMEWORK_NAME/CartrawlerAPI/g; s/FRAMEWORK_VERSION/${BUILD_VERSION}/g\" ${PODSPEC_TEMPLATE}\n\nPODSPEC_TEMPLATE=\"${PROJECT_DIR}/CartrawlerSDK.podspec\"\nsed -i .temp \"s/FRAMEWORK_NAME/CartrawlerSDK/g; s/FRAMEWORK_VERSION/${BUILD_VERSION}/g\" ${PODSPEC_TEMPLATE}\n\n#push these pod specs, first move them to the spec repo\n\nPODSPEC_DIR=\"${SRCROOT}/../../../cocoapods\"\nmkdir -p \"$PODSPEC_DIR\"\n\nmv -f ${PROJECT_DIR}/CartrawlerAPI.podspec $PODSPEC_DIR\nmv -f ${PROJECT_DIR}/CartrawlerSDK.podspec $PODSPEC_DIR\n\ncd $PODSPEC_DIR\nexport LANG=en_US.UTF-8\n\n/usr/local/bin/pod repo push cartrawlerpods CartrawlerAPI.podspec\n/usr/local/bin/pod repo push cartrawlerpods CartrawlerSDK.podspec\n\n\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		45CB04831DEDD1600086BEA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		45CB04841DEDD1600086BEA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		45CB04871DEDD1740086BEA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45CB04881DEDD1740086BEA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		45CB04821DEDD1600086BEA0 /* Build configuration list for PBXProject "CI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45CB04831DEDD1600086BEA0 /* Debug */,
+				45CB04841DEDD1600086BEA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45CB04861DEDD1740086BEA0 /* Build configuration list for PBXAggregateTarget "BuildAll" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45CB04871DEDD1740086BEA0 /* Debug */,
+				45CB04881DEDD1740086BEA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 45CB047F1DEDD1600086BEA0 /* Project object */;
+}
