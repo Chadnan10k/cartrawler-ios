@@ -70,6 +70,7 @@
     self.dataValidationCompletion = ^(BOOL insuranceSuccess, NSString *errorMessage) {
         [weakSelf stopAnimating];
     };
+    [self stopAnimating];
 }
 
 - (void)viewDidLoad {
