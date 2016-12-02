@@ -66,7 +66,7 @@
                             destinationCountryCode:search.pickupLocation.codeContext
                                         completion:
      ^(CTInsurance *response, CTErrorResponse *error) {
-         if (response) {
+         if (response && response.premiumAmount) {
              dispatch_async(dispatch_get_main_queue(), ^{
                  search.insurance = response;
                  completion(YES, nil, NO);
