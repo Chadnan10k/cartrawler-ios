@@ -324,7 +324,7 @@
                                 </variation>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yYJ-ia-7gH">
-                                <rect key="frame" x="0.0" y="59" width="375" height="518"/>
+                                <rect key="frame" x="0.0" y="60" width="375" height="517"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3nj-2w-Ovb" customClass="CTDesignableView">
                                         <rect key="frame" x="0.0" y="16" width="375" height="316"/>
@@ -493,7 +493,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="yYJ-ia-7gH" firstAttribute="leading" secondItem="M3m-Gw-WZL" secondAttribute="leading" id="9CM-bJ-nYL"/>
-                            <constraint firstItem="yYJ-ia-7gH" firstAttribute="top" secondItem="C70-GE-CoJ" secondAttribute="bottom" constant="-1" id="9Ge-4f-fdL"/>
+                            <constraint firstItem="yYJ-ia-7gH" firstAttribute="top" secondItem="C70-GE-CoJ" secondAttribute="bottom" id="9Ge-4f-fdL"/>
                             <constraint firstItem="C70-GE-CoJ" firstAttribute="top" secondItem="M3m-Gw-WZL" secondAttribute="top" id="9kU-WG-blg"/>
                             <constraint firstItem="3nj-2w-Ovb" firstAttribute="centerX" secondItem="C70-GE-CoJ" secondAttribute="centerX" id="9uM-ZD-ySJ"/>
                             <constraint firstItem="9Dq-r1-ZqN" firstAttribute="top" secondItem="yYJ-ia-7gH" secondAttribute="bottom" constant="90" id="Fn7-RG-n8Q"/>
