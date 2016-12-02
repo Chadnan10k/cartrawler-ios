@@ -22,7 +22,7 @@
     _termsAndConditionsURL = [[NSURL alloc] initWithString:dict[@"PlanForQuoteRS"][@"QuoteDetail"][@"QuoteDetailURL"] ?: @""];
 	_costAmount = [formatter numberFromString:dict[@"PlanForQuoteRS"][@"PlanCost"][@"@Amount"]];
 	_costCurrencyCode = dict[@"PlanForQuoteRS"][@"PlanCost"][@"@CurrencyCode"];
-    _premiumAmount = [formatter numberFromString:dict[@"PlanForQuoteRS"][@"PlanCost"][@"BasePremium"][@"@Amount"]] ?: @0;
+    _premiumAmount = [formatter numberFromString:dict[@"PlanForQuoteRS"][@"PlanCost"][@"BasePremium"][@"@Amount"]];
 	_premiumCurrencyCode = dict[@"PlanForQuoteRS"][@"PlanCost"][@"BasePremium"][@"@CurrencyCode"];
     
     _title = dict[@"TPA_Extensions"][@"Data"][@"Title"][@"#text"];

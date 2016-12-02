@@ -19,9 +19,20 @@
 		45295F6C1D78412600A09B8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45295F6A1D78412600A09B8A /* LaunchScreen.storyboard */; };
 		455B59771DCCB22A00CA4790 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 455B59751DCCB22500CA4790 /* Roboto-Bold.ttf */; };
 		455B59781DCCB22E00CA4790 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 455B59761DCCB22500CA4790 /* Roboto-Regular.ttf */; };
+		45709A681DF1C51300E6CA4E /* QAUITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 45709A671DF1C51300E6CA4E /* QAUITest.m */; };
 		45A7B7561D9BE003006611EB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */; };
 		45A7B7571D9BE007006611EB /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		45709A6A1DF1C51300E6CA4E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45295F511D78412500A09B8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 45295F581D78412500A09B8A;
+			remoteInfo = TestApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		4559D48B1DD0939600B5DC51 /* Embed Frameworks */ = {
@@ -53,6 +64,9 @@
 		45295F6D1D78412600A09B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		455B59751DCCB22500CA4790 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		455B59761DCCB22500CA4790 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		45709A651DF1C51300E6CA4E /* QAUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QAUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		45709A671DF1C51300E6CA4E /* QAUITest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QAUITest.m; sourceTree = "<group>"; };
+		45709A691DF1C51300E6CA4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +81,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		45709A621DF1C51300E6CA4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -76,6 +97,7 @@
 				450725BC1DDA0C2000D56C8A /* CartrawlerSDK.framework */,
 				450725B91DDA0C2000D56C8A /* CartrawlerAPI.framework */,
 				45295F5B1D78412500A09B8A /* TestApp */,
+				45709A661DF1C51300E6CA4E /* QAUITest */,
 				45295F5A1D78412500A09B8A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				45295F591D78412500A09B8A /* TestApp.app */,
+				45709A651DF1C51300E6CA4E /* QAUITest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,6 +139,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		45709A661DF1C51300E6CA4E /* QAUITest */ = {
+			isa = PBXGroup;
+			children = (
+				45709A671DF1C51300E6CA4E /* QAUITest.m */,
+				45709A691DF1C51300E6CA4E /* Info.plist */,
+			);
+			path = QAUITest;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +170,24 @@
 			productReference = 45295F591D78412500A09B8A /* TestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		45709A641DF1C51300E6CA4E /* QAUITest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45709A6E1DF1C51300E6CA4E /* Build configuration list for PBXNativeTarget "QAUITest" */;
+			buildPhases = (
+				45709A611DF1C51300E6CA4E /* Sources */,
+				45709A621DF1C51300E6CA4E /* Frameworks */,
+				45709A631DF1C51300E6CA4E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				45709A6B1DF1C51300E6CA4E /* PBXTargetDependency */,
+			);
+			name = QAUITest;
+			productName = QAUITest;
+			productReference = 45709A651DF1C51300E6CA4E /* QAUITest.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -151,6 +201,12 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
+					};
+					45709A641DF1C51300E6CA4E = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 45295F581D78412500A09B8A;
 					};
 				};
 			};
@@ -168,6 +224,7 @@
 			projectRoot = "";
 			targets = (
 				45295F581D78412500A09B8A /* TestApp */,
+				45709A641DF1C51300E6CA4E /* QAUITest */,
 			);
 		};
 /* End PBXProject section */
@@ -184,6 +241,13 @@
 				45295F691D78412600A09B8A /* Assets.xcassets in Resources */,
 				45A7B7561D9BE003006611EB /* OpenSans-Light.ttf in Resources */,
 				45295F671D78412600A09B8A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45709A631DF1C51300E6CA4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +280,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		45709A611DF1C51300E6CA4E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45709A681DF1C51300E6CA4E /* QAUITest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		45709A6B1DF1C51300E6CA4E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 45295F581D78412500A09B8A /* TestApp */;
+			targetProxy = 45709A6A1DF1C51300E6CA4E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		45295F651D78412600A09B8A /* Main.storyboard */ = {
@@ -368,6 +448,32 @@
 			};
 			name = Release;
 		};
+		45709A6C1DF1C51300E6CA4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				INFOPLIST_FILE = QAUITest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.qa.QAUITest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = TestApp;
+			};
+			name = Debug;
+		};
+		45709A6D1DF1C51300E6CA4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				INFOPLIST_FILE = QAUITest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.qa.QAUITest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = TestApp;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -388,6 +494,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		45709A6E1DF1C51300E6CA4E /* Build configuration list for PBXNativeTarget "QAUITest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45709A6C1DF1C51300E6CA4E /* Debug */,
+				45709A6D1DF1C51300E6CA4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
