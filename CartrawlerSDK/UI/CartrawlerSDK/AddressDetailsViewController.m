@@ -240,7 +240,7 @@
     if (buttonIndex == 1 && self.selectedCountryItem) {
         [[CTSDKSettings instance] setHomeCountryCode:self.selectedCountryItem.code];
         [[CTSDKSettings instance] setHomeCountryName:self.selectedCountryItem.name];
-        self.search = self.selectedCountryItem.code;
+        self.search.country = self.selectedCountryItem.name;
         [self popToSearchViewController];
     }
 }
