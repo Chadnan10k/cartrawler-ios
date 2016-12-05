@@ -2187,6 +2187,7 @@
 				45CB047B1DEDCEDA0086BEA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		45E9423E1D12FF0F00ACF604 /* Build configuration list for PBXProject "CartrawlerSDK" */ = {
 			isa = XCConfigurationList;
