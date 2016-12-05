@@ -13,6 +13,7 @@
 #import "CTImageCache.h"
 #import "CTNextButton.h"
 #import "CartrawlerSDK+UITextField.h"
+#import "CTSDKSettings.h"
 
 @interface AddressDetailsViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
@@ -23,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet CTTextField *countryTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
-
+@property (strong, nonatomic) CSVItem *selectedCountryItem;
 @property (strong, nonatomic) UIView *selectedView;
 
 @end
@@ -99,11 +100,9 @@
             self.postCodeTextField.text = self.search.postcode;
         }
         
-        if (!self.search.country) {
-            self.countryTextField.text = @"";
-        } else {
-            self.countryTextField.text = self.search.country;
-        }
+        self.countryTextField.text = [CTSDKSettings instance].homeCountryName;
+        self.search.country = [CTSDKSettings instance].homeCountryCode;
+
     }
     
     if (self.groundSearch) {
@@ -217,12 +216,33 @@
     
     __weak typeof (self) weakSelf = self;
     
-    vc.settingsCompletion = ^(CSVItem *item){
-        self.countryTextField.text = item.name;
-        weakSelf.search.country = item.name;
-        weakSelf.groundSearch.country = item.name;
-        weakSelf.groundSearch.countryCode = item.code;
+    vc.settingsCompletion = ^(CSVItem *item) {
+        if (![item.code isEqualToString:[CTSDKSettings instance].homeCountryCode]) {
+            [weakSelf presentAlert:@"Warning" message:@"Changing your country of residence can affect the price and availability of your selected car. You will be redirected to the Results page, where your search will be updated."];
+            weakSelf.selectedCountryItem = item;
+        }
     };
+}
+
+- (void)presentAlert:(NSString *)title message:(NSString *)message
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"Continue booking"
+                                              otherButtonTitles:@"Refresh search",
+                              nil];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1 && self.selectedCountryItem) {
+        [[CTSDKSettings instance] setHomeCountryCode:self.selectedCountryItem.code];
+        [[CTSDKSettings instance] setHomeCountryName:self.selectedCountryItem.name];
+        self.search = self.selectedCountryItem.code;
+        [self popToSearchViewController];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

@@ -41,8 +41,4 @@
 
 - (void)reset;
 
-typedef void (^RefreshCompletion)(BOOL success, NSString *errorMessage);
-
-- (void)refreshResults:(RefreshCompletion)completion;
-
 @end

@@ -325,6 +325,13 @@
     return validated;
 }
 
+- (void)performSearch
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self searchTapped];
+    });
+}
+
 - (void)searchTapped
 {
     if([self validate]) {

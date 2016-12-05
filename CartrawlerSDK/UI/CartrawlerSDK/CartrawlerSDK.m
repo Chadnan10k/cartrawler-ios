@@ -61,7 +61,6 @@
 {
     self = [super init];
     
-    //[LinkerUtils loadFiles];
     [[CTSDKSettings instance] setClientId:requestorID languageCode:languageCode isDebug:sandboxMode];
     
     _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
@@ -90,7 +89,7 @@
 - (void)presentCarRentalInViewController:(UIViewController *)viewController;
 {
     _isCarRental = YES;
-    
+    [[CTSDKSettings instance] resetCountryToDeviceLocale];
     [[CarRentalSearch instance] reset];
     [self configureViews];
     [self presentRentalNavigationController:viewController];
