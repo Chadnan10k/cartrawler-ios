@@ -16,10 +16,7 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat borderWidth;
 @property (nonatomic) IBInspectable UIColor *borderColor;
 
-
-
 - (void)shakeAnimation;
-
 - (BOOL)isValidEmail;
 
 @end
