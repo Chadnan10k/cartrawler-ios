@@ -47,7 +47,12 @@
     
     __weak typeof(self) weakSelf = self;
     [self.nextButton setText:NSLocalizedString(@"Continue", @"Continue") didTap:^{
-        [weakSelf pushToDestination];
+        
+        if (weakSelf.inPathEnabled) {
+            [weakSelf produceInPathPayload];
+        } else {
+            [weakSelf pushToDestination];
+        }
     }];
 }
 
@@ -70,6 +75,7 @@
     [self.items addObject:@{@"Normal" : @{@"Name" : @"Car hire", @"Price" : self.search.selectedVehicle.vehicle.totalPriceForThisVehicle}}];
 
     if (self.search.isBuyingInsurance) {
+
         [self.items addObject:@{@"Normal" : @{@"Name" : @"Damage Refund Insurance", @"Price" : self.search.insurance.premiumAmount}}];
         total += self.search.insurance.premiumAmount.doubleValue;
     }

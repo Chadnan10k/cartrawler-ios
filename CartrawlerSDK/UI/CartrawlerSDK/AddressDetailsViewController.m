@@ -172,7 +172,7 @@
         self.groundSearch.city = self.cityTextField.text;
         self.groundSearch.postcode = self.postCodeTextField.text;
         self.groundSearch.country = self.countryTextField.text;
-        
+                
         [self pushToDestination];
     }
 }

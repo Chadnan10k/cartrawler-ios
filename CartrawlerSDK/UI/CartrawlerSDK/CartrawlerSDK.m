@@ -144,17 +144,20 @@
                                  postcode:(NSString *)postcode
                               countryCode:(NSString *)countryCode
                               countryName:(NSString *)countryName
+                          isInPathBooking:(BOOL)isInPathBooking
                        overViewController:(UIViewController *)viewController
-                               completion:(CarRentalWithFlightDetailsCompletion)completion
+                               completion:(CarRentalWithFlightDetailsCompletion)completion;
 {
     
     _isCarRental = YES;
     
     [[CarRentalSearch instance] reset];
     
+    [[CTSDKSettings instance] setHomeCountryCode:countryCode];
+    [[CTSDKSettings instance] setHomeCountryName:countryName];
+    
     [CarRentalSearch instance].pickupDate = pickupDate;
     [CarRentalSearch instance].dropoffDate = returnDate;
-
     [CarRentalSearch instance].firstName = firstName;
     [CarRentalSearch instance].surname = surname;
     [CarRentalSearch instance].passengerQty = [NSNumber numberWithInt:1 + additionalPassengers.intValue];
@@ -168,6 +171,8 @@
     [CarRentalSearch instance].postcode = postcode;
     [CarRentalSearch instance].country = countryCode;
     [self configureViews];
+    
+    self.paymentSummaryViewController.inPathEnabled = isInPathBooking;
 
     __weak typeof(self) weakself = self;
     [self.cartrawlerAPI locationSearchWithAirportCode:IATACode completion:^(CTLocationSearch *response, CTErrorResponse *error) {
@@ -516,5 +521,13 @@ void uncaughtExceptionHandler(NSException *exception)
         
     }
 }
+
+- (void)didProduceInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
+{
+    if (self.delegate) {
+        [self.delegate didGenerateInPathRequest:request vehicle:vehicle];
+    }
+}
+
 
 @end

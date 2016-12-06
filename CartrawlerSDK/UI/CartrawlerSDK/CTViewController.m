@@ -8,6 +8,7 @@
 
 #import "CTViewController.h"
 #import "SearchDetailsViewController.h"
+#import "CTInPathPayment.h"
 
 @interface CTViewController ()
 
@@ -37,6 +38,18 @@
             [self.navigationController popToViewController:vc animated:NO];
             [(SearchDetailsViewController *)vc performSearch];
         }
+    }
+}
+
+- (void)produceInPathPayload
+{
+    if (self.delegate) {
+        [self.delegate didProduceInPathRequest:[CTInPathPayment createInPathRequest:self.search]
+                                       vehicle:[[CTInPathVehicle alloc]
+                                          init:self.search]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self dismissViewControllerAnimated:YES completion:nil];
+        });
     }
 }
 

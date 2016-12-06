@@ -40,7 +40,8 @@
 }
 
 - (IBAction)openCarRental:(id)sender {
-    [self.sdk presentCarRentalInViewController:self];
+    //[self.sdk presentCarRentalInViewController:self];
+    
 //    [self.sdk presentCarRentalInViewController:self
 //                                     firstName:@"Lee"
 //                                       surname:@"Maguire"
@@ -53,6 +54,28 @@
 //                                  addressLine2:@""
 //                                          city:@"Dublin"
 //                                      postcode:@"Dublin 1"];
+    
+    [self.sdk presentCarRentalWithFlightDetails:@"ALC"
+                                     pickupDate:[NSDate dateWithTimeIntervalSinceNow:480000]
+                                     returnDate:[NSDate dateWithTimeIntervalSinceNow:960000]
+                                      firstName:@"Lee"
+                                        surname:@"Maguire"
+                                      driverAge:@30
+                           additionalPassengers:@0
+                                          email:@"lmaguire@cartrawler.com"
+                                          phone:@"0866666666"
+                                       flightNo:@"FR1234"
+                                   addressLine1:@"123 abc"
+                                   addressLine2:@""
+                                           city:@"Dublin"
+                                       postcode:@""
+                                    countryCode:@"IE"
+                                    countryName:@"Ireland"
+                                isInPathBooking:NO
+                             overViewController:self
+                                     completion:^(BOOL success, NSString * _Nonnull errorMessage) {
+                                         
+                                     }];
 }
 
 - (IBAction)openGroundTransport:(id)sender {
@@ -69,6 +92,11 @@
 - (void)didBookVehicle:(CTBooking *)booking
 {
     NSLog(@"We booked a vehicle!");
+}
+
+- (void)didGenerateInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
+{
+    NSLog(@"%@", vehicle.vehicleName);
 }
 
 @end

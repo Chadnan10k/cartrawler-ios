@@ -330,10 +330,26 @@
 		459CB2EF1DDB6638008522BA /* CTToolTipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 459CB2ED1DDB6638008522BA /* CTToolTipViewController.m */; };
 		45A507411DE33FD000661AC2 /* CTBasketValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45A5073F1DE33FD000661AC2 /* CTBasketValidation.h */; };
 		45A507421DE33FD000661AC2 /* CTBasketValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A507401DE33FD000661AC2 /* CTBasketValidation.m */; };
+		45C072271DF03BAB001D6E64 /* CTInPathVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C072251DF03BAB001D6E64 /* CTInPathVehicle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45C072281DF03BAB001D6E64 /* CTInPathVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C072261DF03BAB001D6E64 /* CTInPathVehicle.m */; };
 		45C980C21DCCDB95002D99AB /* CTLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C980C01DCCDB95002D99AB /* CTLayoutConstraint.h */; };
 		45C980C31DCCDB95002D99AB /* CTLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C980C11DCCDB95002D99AB /* CTLayoutConstraint.m */; };
 		45D3860A1DD62281000F02D1 /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45D386091DD62281000F02D1 /* strip-frameworks.sh */; };
+		45F5D75D1DEEF41A005AE1AD /* CTInPathPayment.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F5D75B1DEEF41A005AE1AD /* CTInPathPayment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45F5D75E1DEEF41A005AE1AD /* CTInPathPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F5D75C1DEEF41A005AE1AD /* CTInPathPayment.m */; };
+		45F5D76A1DEF00C3005AE1AD /* CartrawlerSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F5D7691DEF00C3005AE1AD /* CartrawlerSDKTests.m */; };
+		45F5D76C1DEF00C3005AE1AD /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455B582B1DCC90D300CA4790 /* CartrawlerSDK.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		45F5D76D1DEF00C3005AE1AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45E9423B1D12FF0F00ACF604 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 455B582A1DCC90D300CA4790;
+			remoteInfo = CartrawlerSDK;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		450725B01DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+UIImageView.h"; sourceTree = "<group>"; };
@@ -561,6 +577,8 @@
 		45B264FA1D902C9C000005F2 /* BookingCompletionValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingCompletionValidation.m; sourceTree = "<group>"; };
 		45BC88D21DC0F8460041BD74 /* CTToolTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTToolTip.m; sourceTree = "<group>"; };
 		45BC88D31DC0F8460041BD74 /* CTToolTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTToolTip.h; sourceTree = "<group>"; };
+		45C072251DF03BAB001D6E64 /* CTInPathVehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathVehicle.h; sourceTree = "<group>"; };
+		45C072261DF03BAB001D6E64 /* CTInPathVehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathVehicle.m; sourceTree = "<group>"; };
 		45C1ECF31D5103150059EF89 /* CTFilterTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterTableView.h; sourceTree = "<group>"; };
 		45C1ECF41D5103150059EF89 /* CTFilterTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterTableView.m; sourceTree = "<group>"; };
 		45C488C91D479B020044612C /* OptionalExtrasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalExtrasView.h; sourceTree = "<group>"; };
@@ -654,6 +672,11 @@
 		45F473601D3655EB00DF548B /* Payment.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		45F473631D366D6A00DF548B /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
 		45F473641D366D6A00DF548B /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
+		45F5D75B1DEEF41A005AE1AD /* CTInPathPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathPayment.h; sourceTree = "<group>"; };
+		45F5D75C1DEEF41A005AE1AD /* CTInPathPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathPayment.m; sourceTree = "<group>"; };
+		45F5D7671DEF00C3005AE1AD /* CartrawlerSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		45F5D7691DEF00C3005AE1AD /* CartrawlerSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartrawlerSDKTests.m; sourceTree = "<group>"; };
+		45F5D76B1DEF00C3005AE1AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -662,6 +685,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				455B59581DCC954400CA4790 /* CartrawlerAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45F5D7641DEF00C3005AE1AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45F5D76C1DEF00C3005AE1AD /* CartrawlerSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1152,6 +1183,10 @@
 				451C8F161D7EFF3400B9324D /* CTPaymentView.h */,
 				451C8F171D7EFF3400B9324D /* CTPaymentView.m */,
 				4588E3121D538803008F4267 /* CTPCI.html */,
+				45F5D75B1DEEF41A005AE1AD /* CTInPathPayment.h */,
+				45F5D75C1DEEF41A005AE1AD /* CTInPathPayment.m */,
+				45C072251DF03BAB001D6E64 /* CTInPathVehicle.h */,
+				45C072261DF03BAB001D6E64 /* CTInPathVehicle.m */,
 			);
 			name = Payment;
 			sourceTree = "<group>";
@@ -1253,6 +1288,7 @@
 				45E942EB1D1303C500ACF604 /* UIKit.framework */,
 				45E942451D12FF0F00ACF604 /* CartrawlerSDK */,
 				45D866581D13F0CA00D19B74 /* CartrawlerResources */,
+				45F5D7681DEF00C3005AE1AD /* CartrawlerSDKTests */,
 				45E942441D12FF0F00ACF604 /* Products */,
 				455B59561DCC954300CA4790 /* Frameworks */,
 			);
@@ -1262,6 +1298,7 @@
 			isa = PBXGroup;
 			children = (
 				455B582B1DCC90D300CA4790 /* CartrawlerSDK.framework */,
+				45F5D7671DEF00C3005AE1AD /* CartrawlerSDKTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1557,6 +1594,15 @@
 			name = "Payment (Step Seven)";
 			sourceTree = "<group>";
 		};
+		45F5D7681DEF00C3005AE1AD /* CartrawlerSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				45F5D7691DEF00C3005AE1AD /* CartrawlerSDKTests.m */,
+				45F5D76B1DEF00C3005AE1AD /* Info.plist */,
+			);
+			path = CartrawlerSDKTests;
+			sourceTree = "<group>";
+		};
 		45FBACB61D65BD4700C75FC9 /* View Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1576,6 +1622,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45F5D75D1DEEF41A005AE1AD /* CTInPathPayment.h in Headers */,
+				45C072271DF03BAB001D6E64 /* CTInPathVehicle.h in Headers */,
 				455B589B1DCC914300CA4790 /* GTBooking.h in Headers */,
 				455B58621DCC914300CA4790 /* CTAppearance.h in Headers */,
 				455B58B41DCC914400CA4790 /* CTValidation.h in Headers */,
@@ -1745,6 +1793,24 @@
 			productReference = 455B582B1DCC90D300CA4790 /* CartrawlerSDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		45F5D7661DEF00C3005AE1AD /* CartrawlerSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45F5D76F1DEF00C3005AE1AD /* Build configuration list for PBXNativeTarget "CartrawlerSDKTests" */;
+			buildPhases = (
+				45F5D7631DEF00C3005AE1AD /* Sources */,
+				45F5D7641DEF00C3005AE1AD /* Frameworks */,
+				45F5D7651DEF00C3005AE1AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				45F5D76E1DEF00C3005AE1AD /* PBXTargetDependency */,
+			);
+			name = CartrawlerSDKTests;
+			productName = CartrawlerSDKTests;
+			productReference = 45F5D7671DEF00C3005AE1AD /* CartrawlerSDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1766,6 +1832,11 @@
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
 					};
+					45F5D7661DEF00C3005AE1AD = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 45E9423E1D12FF0F00ACF604 /* Build configuration list for PBXProject "CartrawlerSDK" */;
@@ -1782,6 +1853,7 @@
 			targets = (
 				455B582A1DCC90D300CA4790 /* CartrawlerSDK */,
 				45CB04781DEDCEDA0086BEA0 /* BuildSDK */,
+				45F5D7661DEF00C3005AE1AD /* CartrawlerSDKTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1814,6 +1886,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		45F5D7651DEF00C3005AE1AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1841,6 +1920,7 @@
 				457128C21DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m in Sources */,
 				457128CB1DDF47A8008FF204 /* CTPaymentLocationTableViewCell.m in Sources */,
 				45A507421DE33FD000661AC2 /* CTBasketValidation.m in Sources */,
+				45F5D75E1DEEF41A005AE1AD /* CTInPathPayment.m in Sources */,
 				455B58361DCC914300CA4790 /* PaymentRequest.m in Sources */,
 				455B58381DCC914300CA4790 /* CTPaymentView.m in Sources */,
 				455B583C1DCC914300CA4790 /* CTSDKSettings.m in Sources */,
@@ -1955,6 +2035,7 @@
 				455B59181DCC914400CA4790 /* DriverDetailsViewController.m in Sources */,
 				455B591A1DCC914400CA4790 /* AddressDetailsViewController.m in Sources */,
 				455B591C1DCC914400CA4790 /* CSVItem.m in Sources */,
+				45C072281DF03BAB001D6E64 /* CTInPathVehicle.m in Sources */,
 				455B591E1DCC914400CA4790 /* PaymentViewController.m in Sources */,
 				45C980C31DCCDB95002D99AB /* CTLayoutConstraint.m in Sources */,
 				455B59201DCC914400CA4790 /* PaymentCompletionViewController.m in Sources */,
@@ -1986,7 +2067,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		45F5D7631DEF00C3005AE1AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45F5D76A1DEF00C3005AE1AD /* CartrawlerSDKTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		45F5D76E1DEF00C3005AE1AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 455B582A1DCC90D300CA4790 /* CartrawlerSDK */;
+			targetProxy = 45F5D76D1DEF00C3005AE1AD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4540550D1DDE0E3D00FD493A /* en.strings */ = {
@@ -2168,6 +2265,35 @@
 			};
 			name = Release;
 		};
+		45F5D7701DEF00C3005AE1AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				INFOPLIST_FILE = CartrawlerSDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.qa.CartrawlerSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45F5D7711DEF00C3005AE1AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				INFOPLIST_FILE = CartrawlerSDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.qa.CartrawlerSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2194,6 +2320,15 @@
 			buildConfigurations = (
 				45E9424A1D12FF0F00ACF604 /* Debug */,
 				45E9424B1D12FF0F00ACF604 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45F5D76F1DEF00C3005AE1AD /* Build configuration list for PBXNativeTarget "CartrawlerSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45F5D7701DEF00C3005AE1AD /* Debug */,
+				45F5D7711DEF00C3005AE1AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -12,6 +12,7 @@
 #import "CTValidation.h"
 #import "CTRentalBooking.h"
 #import "GTBooking.h"
+#import "CTInPathVehicle.h"
 
 @protocol CTViewControllerDelegate <NSObject>
 
@@ -19,6 +20,7 @@
 - (void)didDismissViewController;
 - (void)didBookVehicle:(CTBooking *)booking;
 - (void)didBookGroundTransport:(GTBooking *)booking;
+- (void)didProduceInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle;
 
 @end
 
@@ -42,11 +44,13 @@ typedef void (^GTBookingCompletion)(GTBooking *booking);
 @property (nonatomic, strong) CTViewController *destinationViewController;
 @property (nonatomic, strong) CTViewController *fallbackViewController;
 @property (nonatomic, strong) CTViewController *optionalRoute;
+@property (nonatomic) BOOL inPathEnabled;
 
 @property (nonatomic, weak) id<CTViewControllerDelegate> delegate;
 
 - (void)refresh;
 - (void)pushToDestination;
+- (void)produceInPathPayload;
 - (void)popToSearchViewController;
 
 @end

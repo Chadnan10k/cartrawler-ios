@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 - (void)didBookVehicle:(CTBooking *)booking;
 - (void)didCancelVehicleBooking;
+- (void)didGenerateInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle;
 
 @end
 
@@ -116,6 +117,7 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
                                  postcode:(NSString *)postcode
                               countryCode:(NSString *)countryCode
                               countryName:(NSString *)countryName
+                          isInPathBooking:(BOOL)isInPathBooking
                        overViewController:(UIViewController *)viewController
                                completion:(CarRentalWithFlightDetailsCompletion)completion;
 
@@ -139,7 +141,6 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
  *  @param notification The dictionary with notification information
  */
 + (void)didReceivePushNotification:(NSDictionary *)notification;
-
 
 /*  ----------------------------------------------------------------------------
  *  View Controller Overriding:
