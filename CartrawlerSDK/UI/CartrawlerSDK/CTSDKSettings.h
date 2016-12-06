@@ -31,6 +31,8 @@
        languageCode:(NSString *)languageCode
             isDebug:(BOOL)isDebug;
 
+- (void)resetCountryToDeviceLocale;
+
 - (void)setLanguageCode:(NSString *)languageCode;
 - (void)setCurrencyCode:(NSString *)currencyCode;
 - (void)setHomeCountryCode:(NSString *)homeCountryCode;

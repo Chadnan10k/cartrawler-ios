@@ -47,5 +47,6 @@ typedef void (^GTBookingCompletion)(GTBooking *booking);
 
 - (void)refresh;
 - (void)pushToDestination;
+- (void)popToSearchViewController;
 
 @end

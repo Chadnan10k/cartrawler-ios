@@ -100,13 +100,6 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
                                     city:(NSString *)city
                                 postcode:(NSString *)postcode;
 
-/**
- *  Presents the ground transport engine modally in the designated UIViewController
- *
- *  @param viewController The parent view controller
- */
-- (void)presentGroundTransportInViewController:(UIViewController *)viewController;
-
 - (void)presentCarRentalWithFlightDetails:(NSString *)IATACode
                                pickupDate:(NSDate *)pickupDate
                                returnDate:(NSDate *)returnDate
@@ -125,6 +118,13 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
                               countryName:(NSString *)countryName
                        overViewController:(UIViewController *)viewController
                                completion:(CarRentalWithFlightDetailsCompletion)completion;
+
+/**
+ *  Presents the ground transport engine modally in the designated UIViewController
+ *
+ *  @param viewController The parent view controller
+ */
+- (void)presentGroundTransportInViewController:(UIViewController *)viewController;
 
 /**
  *  Register the CartrawlerSDK to use push notifications so information can be sent to your customer about their booking
