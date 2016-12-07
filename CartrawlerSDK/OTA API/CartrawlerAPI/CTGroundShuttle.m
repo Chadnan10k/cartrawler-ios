@@ -97,7 +97,7 @@
     _inclusions = inclusionArr;
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier: @"es_US"]];
+    [numberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier: @"en_US"]];
 
     NSNumber *totalCharge = [numberFormatter numberFromString:dict[@"TotalCharge"][@"@RateTotalAmount"]];
     

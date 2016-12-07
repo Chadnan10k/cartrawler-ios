@@ -27,7 +27,8 @@
     self = [super init];
  
     NSNumberFormatter *nf = [NSNumberFormatter new];
-    
+    [nf setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+
     _orderBy = [nf numberFromString:dict[@"@OrderBy"]].integerValue;
     _relevance = [nf numberFromString:dict[@"@Relevance"]].integerValue;
     _rentalDuration = [nf numberFromString:dict[@"@Duration"]].integerValue;

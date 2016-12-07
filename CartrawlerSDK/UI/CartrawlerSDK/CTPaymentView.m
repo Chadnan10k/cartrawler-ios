@@ -222,6 +222,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                          componentsJoinedByString:@""];
     
     NSNumberFormatter *f = [NSNumberFormatter new];
+    [f setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
     f.maximumFractionDigits = 5;
     f.numberStyle = NSNumberFormatterDecimalStyle;
 
