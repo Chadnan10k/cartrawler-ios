@@ -66,7 +66,8 @@
     _config = [[CTVehicleConfig alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Config"]];
     
     NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
-    
+    [numFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+
     _orderIndex = [numFormatter numberFromString:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"OrderBy"][@"@Index"]];
 	
 	if ([dictionary[@"VehAvailCore"][@"@Status"] isEqualToString:@"Available"]) {
@@ -209,6 +210,7 @@
     
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     f.numberStyle = NSNumberFormatterDecimalStyle;
+    [f setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
     
     _estimatedTotalAmount = [f numberFromString:dictionary[@"VehAvailCore"][@"TotalCharge"][@"@EstimatedTotalAmount"]];
     _rateTotalAmount = dictionary[@"VehAvailCore"][@"TotalCharge"][@"@RateTotalAmount"];

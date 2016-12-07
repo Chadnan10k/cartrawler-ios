@@ -15,7 +15,8 @@
     self = [super init];
     
     NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
-    
+    [numFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+
     _agent           = [numFormatter numberFromString: dict[@"@agent"]];
     _averageWaitTime = [numFormatter numberFromString: dict[@"@ave_wait_mins"]];
     _carReview       = [numFormatter numberFromString: dict[@"@car_review"]];

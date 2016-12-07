@@ -13,7 +13,8 @@
     self = [super init];
 
     NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
-    
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+
 	_planID = dict[@"PlanForQuoteRS"][@"@PlanID"];
 	_name = dict[@"PlanForQuoteRS"][@"@Name"];
     

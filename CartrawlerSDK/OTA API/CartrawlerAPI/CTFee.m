@@ -14,6 +14,7 @@
     self = [super init];
 
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
     NSNumber *amount = [formatter numberFromString:feeDictionary[@"@Amount"]];
     
     _feeAmount = amount;

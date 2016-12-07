@@ -21,7 +21,8 @@
 {
     self = [super init];
     NSNumberFormatter *nf = [NSNumberFormatter new];
-    
+    [nf setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+
     _key = [nf numberFromString:dict[@"IndexByPrice"][@"@Key"]].integerValue;
     _bundleText = dict[@"IndexByPrice"][@"@BundleText"];
     _bundleType = dict[@"IndexByPrice"][@"@BundleType"];
