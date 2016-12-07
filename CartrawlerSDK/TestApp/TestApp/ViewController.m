@@ -8,10 +8,12 @@
 
 #import "ViewController.h"
 #import <CartrawlerSDK/CartrawlerSDK.h>
+#import <CartrawlerSDK/CTInPathView.h>
 
 @interface ViewController () <CartrawlerSDKDelegate>
 
 @property (nonatomic, strong) CartrawlerSDK *sdk;
+@property (weak, nonatomic) IBOutlet CTInPathView *inPathView;
 
 @end
 
@@ -78,6 +80,31 @@
                                      }];
 }
 
+- (IBAction)openInPath:(id)sender
+{
+    [self.sdk presentCarRentalWithFlightDetails:@"ALC"
+                                     pickupDate:[NSDate dateWithTimeIntervalSinceNow:480000]
+                                     returnDate:[NSDate dateWithTimeIntervalSinceNow:960000]
+                                      firstName:@"Lee"
+                                        surname:@"Maguire"
+                                      driverAge:@30
+                           additionalPassengers:@0
+                                          email:@"lmaguire@cartrawler.com"
+                                          phone:@"0866666666"
+                                       flightNo:@"FR1234"
+                                   addressLine1:@"123 abc"
+                                   addressLine2:@""
+                                           city:@"Dublin"
+                                       postcode:@""
+                                    countryCode:@"IE"
+                                    countryName:@"Ireland"
+                                isInPathBooking:YES
+                             overViewController:self
+                                     completion:^(BOOL success, NSString * _Nonnull errorMessage) {
+                                         
+                                     }];
+}
+
 - (IBAction)openGroundTransport:(id)sender {
     [self.sdk presentGroundTransportInViewController:self];
 }
@@ -96,7 +123,7 @@
 
 - (void)didGenerateInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
 {
-    NSLog(@"%@", vehicle.vehicleName);
+    [self.inPathView renderVehicleDetails:vehicle];
 }
 
 @end

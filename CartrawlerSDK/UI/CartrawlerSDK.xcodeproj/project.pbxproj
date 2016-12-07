@@ -95,7 +95,7 @@
 		455B58751DCC914300CA4790 /* CTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942DA1D1302CA00ACF604 /* CTLabel.m */; };
 		455B58761DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D20ED1D549AD10050CA9E /* CartrawlerSDK+NSDateUtils.h */; };
 		455B58771DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D20EE1D549AD10050CA9E /* CartrawlerSDK+NSDateUtils.m */; };
-		455B587D1DCC914300CA4790 /* CTImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942CD1D1302A200ACF604 /* CTImageCache.h */; };
+		455B587D1DCC914300CA4790 /* CTImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942CD1D1302A200ACF604 /* CTImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		455B587E1DCC914300CA4790 /* CTImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942CE1D1302A200ACF604 /* CTImageCache.m */; };
 		455B58811DCC914300CA4790 /* CartrawlerSDK+NSNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 45819FA31D3500E8001AE0F5 /* CartrawlerSDK+NSNumber.h */; };
 		455B58821DCC914300CA4790 /* CartrawlerSDK+NSNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 45819FA41D3500E8001AE0F5 /* CartrawlerSDK+NSNumber.m */; };
@@ -335,6 +335,8 @@
 		45C980C21DCCDB95002D99AB /* CTLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C980C01DCCDB95002D99AB /* CTLayoutConstraint.h */; };
 		45C980C31DCCDB95002D99AB /* CTLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C980C11DCCDB95002D99AB /* CTLayoutConstraint.m */; };
 		45D3860A1DD62281000F02D1 /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45D386091DD62281000F02D1 /* strip-frameworks.sh */; };
+		45E0EA841DF828AA00845205 /* CTInPathView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E0EA821DF828AA00845205 /* CTInPathView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45E0EA851DF828AA00845205 /* CTInPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E0EA831DF828AA00845205 /* CTInPathView.m */; };
 		45F5D75D1DEEF41A005AE1AD /* CTInPathPayment.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F5D75B1DEEF41A005AE1AD /* CTInPathPayment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45F5D75E1DEEF41A005AE1AD /* CTInPathPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F5D75C1DEEF41A005AE1AD /* CTInPathPayment.m */; };
 		45F5D76A1DEF00C3005AE1AD /* CartrawlerSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F5D7691DEF00C3005AE1AD /* CartrawlerSDKTests.m */; };
@@ -602,6 +604,8 @@
 		45DC6B8B1D82BE0400010B4D /* GTInterstitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTInterstitialViewController.m; sourceTree = "<group>"; };
 		45DD07541D94162F00501FEE /* VehicleDetailsPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleDetailsPageViewController.h; sourceTree = "<group>"; };
 		45DD07551D94162F00501FEE /* VehicleDetailsPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleDetailsPageViewController.m; sourceTree = "<group>"; };
+		45E0EA821DF828AA00845205 /* CTInPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathView.h; sourceTree = "<group>"; };
+		45E0EA831DF828AA00845205 /* CTInPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathView.m; sourceTree = "<group>"; };
 		45E84CC91D79C61600D6BC47 /* InclusionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InclusionCollectionViewCell.h; sourceTree = "<group>"; };
 		45E84CCA1D79C61600D6BC47 /* InclusionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InclusionCollectionViewCell.m; sourceTree = "<group>"; };
 		45E84CCD1D79C69C00D6BC47 /* InclusionCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InclusionCollectionViewDataSource.h; sourceTree = "<group>"; };
@@ -1183,10 +1187,6 @@
 				451C8F161D7EFF3400B9324D /* CTPaymentView.h */,
 				451C8F171D7EFF3400B9324D /* CTPaymentView.m */,
 				4588E3121D538803008F4267 /* CTPCI.html */,
-				45F5D75B1DEEF41A005AE1AD /* CTInPathPayment.h */,
-				45F5D75C1DEEF41A005AE1AD /* CTInPathPayment.m */,
-				45C072251DF03BAB001D6E64 /* CTInPathVehicle.h */,
-				45C072261DF03BAB001D6E64 /* CTInPathVehicle.m */,
 			);
 			name = Payment;
 			sourceTree = "<group>";
@@ -1280,6 +1280,19 @@
 			name = "Page View Controller";
 			sourceTree = "<group>";
 		};
+		45E0EA811DF8276800845205 /* InPath */ = {
+			isa = PBXGroup;
+			children = (
+				45F5D75B1DEEF41A005AE1AD /* CTInPathPayment.h */,
+				45F5D75C1DEEF41A005AE1AD /* CTInPathPayment.m */,
+				45C072251DF03BAB001D6E64 /* CTInPathVehicle.h */,
+				45C072261DF03BAB001D6E64 /* CTInPathVehicle.m */,
+				45E0EA821DF828AA00845205 /* CTInPathView.h */,
+				45E0EA831DF828AA00845205 /* CTInPathView.m */,
+			);
+			name = InPath;
+			sourceTree = "<group>";
+		};
 		45E9423A1D12FF0F00ACF604 = {
 			isa = PBXGroup;
 			children = (
@@ -1309,6 +1322,7 @@
 				45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */,
 				45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */,
 				455B582E1DCC90D300CA4790 /* Info.plist */,
+				45E0EA811DF8276800845205 /* InPath */,
 				45B264F41D8FDE28000005F2 /* Payment */,
 				45819FAC1D351CDF001AE0F5 /* Localization */,
 				4511E5261D17EE4D000ED6B0 /* Settings */,
@@ -1622,8 +1636,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				455B587D1DCC914300CA4790 /* CTImageCache.h in Headers */,
 				45F5D75D1DEEF41A005AE1AD /* CTInPathPayment.h in Headers */,
 				45C072271DF03BAB001D6E64 /* CTInPathVehicle.h in Headers */,
+				45E0EA841DF828AA00845205 /* CTInPathView.h in Headers */,
 				455B589B1DCC914300CA4790 /* GTBooking.h in Headers */,
 				455B58621DCC914300CA4790 /* CTAppearance.h in Headers */,
 				455B58B41DCC914400CA4790 /* CTValidation.h in Headers */,
@@ -1664,7 +1680,6 @@
 				455B58701DCC914300CA4790 /* TabButton.h in Headers */,
 				455B58721DCC914300CA4790 /* GTBookNowButton.h in Headers */,
 				455B58761DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.h in Headers */,
-				455B587D1DCC914300CA4790 /* CTImageCache.h in Headers */,
 				455B58811DCC914300CA4790 /* CartrawlerSDK+NSNumber.h in Headers */,
 				455B58851DCC914300CA4790 /* HTMLParser.h in Headers */,
 				455B588D1DCC914300CA4790 /* LocalisedStrings.h in Headers */,
@@ -1987,6 +2002,7 @@
 				455B58C01DCC914400CA4790 /* CTTimePickerView.m in Sources */,
 				455B58C21DCC914400CA4790 /* CTCalendarViewController.m in Sources */,
 				455B58C41DCC914400CA4790 /* CTCalendarView.m in Sources */,
+				45E0EA851DF828AA00845205 /* CTInPathView.m in Sources */,
 				455B58C61DCC914400CA4790 /* CTCalendarTableViewCell.m in Sources */,
 				455B58C81DCC914400CA4790 /* CTDateCollectionViewCell.m in Sources */,
 				455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */,

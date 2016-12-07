@@ -182,19 +182,35 @@
   
     switch (textField.tag) {
         case 0:
-            [self.lastNameTextField becomeFirstResponder];
+            if (self.firstNameTextField.text.length > 0) {
+                [self.lastNameTextField becomeFirstResponder];
+            } else {
+                [self.firstNameTextField shakeAnimation];
+            }
             return NO;
             break;
         case 1:
-            [self.emailTextField becomeFirstResponder];
+            if (self.lastNameTextField.text.length > 0) {
+                [self.emailTextField becomeFirstResponder];
+            } else {
+                [self.lastNameTextField shakeAnimation];
+            }
             return NO;
             break;
         case 2:
-            [self.phoneTextField becomeFirstResponder];
+            if (![self.emailTextField isValidEmail]) {
+                [self.emailTextField shakeAnimation];
+            } else {
+                [self.phoneTextField becomeFirstResponder];
+            }
             return NO;
             break;
         case 3:
-            [self.flightNoTextField becomeFirstResponder];
+            if (self.phoneTextField.text.length > 0) {
+                [self.flightNoTextField becomeFirstResponder];
+            } else {
+                [self.phoneTextField shakeAnimation];
+            }
             return NO;
             break;
         case 4:

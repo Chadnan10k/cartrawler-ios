@@ -92,7 +92,8 @@
     [[CTSDKSettings instance] resetCountryToDeviceLocale];
     [[CarRentalSearch instance] reset];
     [self configureViews];
-    [self presentRentalNavigationController:viewController];
+    [self presentRentalNavigationController:viewController isInPath:NO];
+
 }
 
 - (void)presentCarRentalInViewController:(UIViewController *)viewController
@@ -125,7 +126,7 @@
     [CarRentalSearch instance].postcode = postcode;
 
     [self configureViews];
-    [self presentRentalNavigationController:viewController];
+    [self presentRentalNavigationController:viewController isInPath:NO];
 }
 
 - (void)presentCarRentalWithFlightDetails:(NSString *)IATACode
@@ -188,7 +189,7 @@
                     if(response.matchedLocations.count > 0) {
                         [CarRentalSearch instance].pickupLocation =  response.matchedLocations.firstObject;
                         [CarRentalSearch instance].dropoffLocation =  response.matchedLocations.firstObject;
-                        [weakself presentRentalNavigationController:viewController];
+                        [weakself presentRentalNavigationController:viewController isInPath:isInPathBooking];
 
                         if (completion) {
                             completion(YES, @"");
@@ -205,14 +206,14 @@
     }];
 }
 
-- (void)presentRentalNavigationController:(UIViewController *)parent
+- (void)presentRentalNavigationController:(UIViewController *)parent isInPath:(BOOL)isInPath
 {
     CTNavigationController *navController = [[CTNavigationController alloc] init];
     navController.navigationBar.hidden = YES;
     navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
     
-    if ([DataStore checkHasUpcomingBookings]) {
+    if ([DataStore checkHasUpcomingBookings] && !isInPath) {
         
         UIStoryboard *landingStoryboard = [UIStoryboard storyboardWithName:@"Landing" bundle:self.bundle];
         RentalBookingsViewController *upcomingBookingsVC = [landingStoryboard instantiateViewControllerWithIdentifier:@"RentalBookingsViewController"];
@@ -524,7 +525,7 @@ void uncaughtExceptionHandler(NSException *exception)
 
 - (void)didProduceInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
 {
-    if (self.delegate) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didGenerateInPathRequest:vehicle:)]) {
         [self.delegate didGenerateInPathRequest:request vehicle:vehicle];
     }
 }
