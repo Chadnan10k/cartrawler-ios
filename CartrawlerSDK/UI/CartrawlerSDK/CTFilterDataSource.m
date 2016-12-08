@@ -10,7 +10,7 @@
 #import "CTAppearance.h"
 #import "CTFilterTableViewCell.h"
 #import <CartrawlerAPI/CTAvailabilityItem.h>
-#import "LocalisedStrings.h"
+#import "CTLocalisedStrings.h"
 
 @interface CTFilterDataSource()
 
@@ -75,7 +75,7 @@
         [cell setText:item.vendor.name];
     } else if (self.filterType == FilterDataTypeVehicleSize) {
         CTAvailabilityItem *item = self.data[indexPath.row];
-        [cell setText:[LocalisedStrings vehicleSize:item.vehicle.size]];
+        [cell setText:[CTLocalisedStrings vehicleSize:item.vehicle.size]];
     } else if (self.filterType == FilterDataTypeFuelPolicy) {
         CTAvailabilityItem *item = self.data[indexPath.row];
         [cell setText:item.vehicle.fuelPolicyDescription];

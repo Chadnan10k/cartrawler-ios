@@ -1,5 +1,5 @@
 //
-//  OptionalExtrasView.h
+//  CTOptionalExtrasView.h
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 26/07/2016.
@@ -16,7 +16,7 @@
 
 @end
 
-@interface OptionalExtrasView : CTDesignableView
+@interface CTOptionalExtrasView : CTDesignableView
 
 @property (strong, nonatomic) NSArray <CTExtraEquipment *> *extras;
 @property (weak) id<OptionalExtrasDelegate> delegate;

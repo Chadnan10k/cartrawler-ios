@@ -1,5 +1,5 @@
 //
-//  LocalisedStrings.h
+//  CTLocalisedStrings.h
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 09/08/2016.
@@ -10,7 +10,7 @@
 #import <CartrawlerAPI/CTAvailabilityItem.h>
 #import <CartrawlerAPI/CTGroundService.h>
 
-@interface LocalisedStrings : NSObject
+@interface CTLocalisedStrings : NSObject
 
 + (NSString *)pickupType:(CTAvailabilityItem *)item;
 + (NSString *)vehicleSize:(VehicleSize)size;

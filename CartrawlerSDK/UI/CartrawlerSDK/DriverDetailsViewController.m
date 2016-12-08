@@ -10,7 +10,7 @@
 #import "CTTextField.h"
 #import "BookingSummaryButton.h"
 #import "AddressDetailsViewController.h"
-#import "FlightNumberValidation.h"
+#import "CTFlightNumberValidation.h"
 #import "CTNextButton.h"
 #import "CartrawlerSDK+UITextField.h"
 #import "CTInPathPayment.h"
@@ -156,7 +156,7 @@
         validated = NO;
     }
     
-    if (![self.flightNoTextField.text isEqualToString: @""] && ![FlightNumberValidation isValid:self.flightNoTextField.text]) {
+    if (![self.flightNoTextField.text isEqualToString: @""] && ![CTFlightNumberValidation isValid:self.flightNoTextField.text]) {
         [self.flightNoTextField shakeAnimation];
         validated = NO;
     }

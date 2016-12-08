@@ -31,6 +31,9 @@
 {
     [super awakeFromNib];
     [self renderStaticPlaceholder];
+    [self renderVehicleDetailsPlaceholders];
+    [self.staticPlaceholderView setHidden:NO];
+    [self.selectedVehicleView setHidden:YES];
 }
 
 - (void)renderStaticPlaceholder
@@ -85,15 +88,8 @@
     
 }
 
-#pragma mark Render Vehicle
-- (void)renderVehicleDetails:(CTInPathVehicle *)vehicle
+- (void)renderVehicleDetailsPlaceholders
 {
-    [self renderView:vehicle];
-}
-
-- (void)renderView:(CTInPathVehicle *)vehicle
-{
-    [self.staticPlaceholderView setHidden:YES];
     
     _selectedVehicleView = [UIView new];
     self.selectedVehicleView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -113,21 +109,15 @@
     self.vehicleImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.selectedVehicleView addSubview:self.vehicleImageView];
     [self.selectedVehicleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view(120)]"
-                                                                                       options:0
-                                                                                       metrics:nil
-                                                                                         views:@{@"view" : self.vehicleImageView}]];
+                                                                                     options:0
+                                                                                     metrics:nil
+                                                                                       views:@{@"view" : self.vehicleImageView}]];
     [self.selectedVehicleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(120)]-16-|"
-                                                                                       options:0
-                                                                                       metrics:nil
-                                                                                         views:@{@"view" : self.vehicleImageView}]];
-    
-    __weak typeof(self) weakself = self;
-    [[CTImageCache sharedInstance] cachedImage:vehicle.vehicleImageURL completion:^(UIImage *image) {
-        weakself.vehicleImageView.image = image;
-    }];
+                                                                                     options:0
+                                                                                     metrics:nil
+                                                                                       views:@{@"view" : self.vehicleImageView}]];
     
     _vehicleNameLabel = [CTLabel new];
-    self.vehicleNameLabel.text = vehicle.vehicleName;
     self.vehicleNameLabel.textAlignment = NSTextAlignmentLeft;
     self.vehicleNameLabel.numberOfLines = 0;
     self.vehicleNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -141,11 +131,22 @@
                                                                         multiplier:1 constant:0]];
     
     [self.selectedVehicleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[text]-8-[image]"
-                                                                                       options:0
-                                                                                       metrics:nil
-                                                                                         views:@{@"text" : self.vehicleNameLabel,
-                                                                                                 @"image" : self.vehicleImageView}]];
-    
+                                                                                     options:0
+                                                                                     metrics:nil
+                                                                                       views:@{@"text" : self.vehicleNameLabel,
+                                                                                               @"image" : self.vehicleImageView}]];
+}
+
+#pragma mark Render Vehicle
+- (void)renderVehicleDetails:(CTInPathVehicle *)vehicle
+{
+    [self.staticPlaceholderView setHidden:YES];
+    [self.selectedVehicleView setHidden:NO];
+    self.vehicleNameLabel.text = vehicle.vehicleName;
+    __weak typeof(self) weakself = self;
+    [[CTImageCache sharedInstance] cachedImage:vehicle.vehicleImageURL completion:^(UIImage *image) {
+        weakself.vehicleImageView.image = image;
+    }];
 }
 
 @end

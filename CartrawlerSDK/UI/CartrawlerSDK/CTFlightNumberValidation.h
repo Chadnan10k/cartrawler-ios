@@ -1,5 +1,5 @@
 //
-//  FlightNumberValidation.h
+//  CTFlightNumberValidation.h
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 05/10/2016.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FlightNumberValidation : NSObject
+@interface CTFlightNumberValidation : NSObject
 
 + (BOOL)isValid:(NSString *)flightNumber;
 

@@ -11,6 +11,4 @@
 
 @interface InPathViewController : UIViewController
 
-@property (nonatomic, strong) CartrawlerSDK *sdk;
-
 @end

@@ -1,5 +1,5 @@
 //
-//  OptionalExtrasViewController.h
+//  CTOptionalExtrasViewController.h
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 17/11/2016.
@@ -8,6 +8,6 @@
 
 #import <CartrawlerSDK/CartrawlerSDK.h>
 
-@interface OptionalExtrasViewController : CTViewController
+@interface CTOptionalExtrasViewController : CTViewController
 
 @end

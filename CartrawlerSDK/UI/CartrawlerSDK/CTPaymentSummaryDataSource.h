@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "CarRentalSearch.h"
+#import "CTRentalSearch.h"
 
 @interface CTPaymentSummaryDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
-- (void)setData:(CarRentalSearch *)search;
+- (void)setData:(CTRentalSearch *)search;
 
 @end

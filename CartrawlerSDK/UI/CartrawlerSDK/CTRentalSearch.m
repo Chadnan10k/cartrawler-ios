@@ -1,22 +1,22 @@
 //
-//  CarRentalSearch.m
+//  CTRentalSearch.m
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 13/07/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "CarRentalSearch.h"
+#import "CTRentalSearch.h"
 #import "CTSDKSettings.h"
 
-@implementation CarRentalSearch
+@implementation CTRentalSearch
 
 + (instancetype)instance
 {
-    static CarRentalSearch *sharedInstance = nil;
+    static CTRentalSearch *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[CarRentalSearch alloc] init];
+        sharedInstance = [[CTRentalSearch alloc] init];
     });
     return sharedInstance;
 }

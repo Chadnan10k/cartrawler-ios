@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CarRentalSearch.h"
+#import "CTRentalSearch.h"
 #import "CTValidation.h"
 
 @interface SearchValidation : CTValidation
 
-- (void)validateCarRental:(CarRentalSearch *)search
+- (void)validateCarRental:(CTRentalSearch *)search
             cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
                completion:(CTSearchValidation)completion;
 

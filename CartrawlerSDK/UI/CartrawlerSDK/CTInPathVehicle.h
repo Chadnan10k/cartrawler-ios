@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CarRentalSearch.h"
+#import "CTRentalSearch.h"
 
 @interface CTInPathVehicle : NSObject
 
@@ -25,6 +25,6 @@
 @property (nonatomic, readonly) NSNumber *insuranceCost;
 @property (nonatomic, readonly) NSNumber *totalCost;
 
-- (instancetype)init:(CarRentalSearch *)search;
+- (instancetype)init:(CTRentalSearch *)search;
 
 @end

@@ -10,7 +10,7 @@
 #import "CartrawlerSDK.h"
 #import "CTSDKSettings.h"
 #import "CTNavigationController.h"
-#import "CarRentalSearch.h"
+#import "CTRentalSearch.h"
 #import "CTValidation.h"
 #import "GTSearchValidation.h"
 #import "GTSelectionValidation.h"
@@ -51,6 +51,19 @@
 
 @property (nonatomic) BOOL isCarRental;
 
+//---Car Rental View Controllers ---
+@property (nonatomic, strong, nonnull, readonly) CTViewController *searchDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleSelectionViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceExtrasViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *extrasViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *driverDetialsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *addressDetialsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentSummaryViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentCompletionViewController;
+//----------------------------------
+
 //---Ground Transport View Controllers---
 @property (nonatomic, strong, nonnull, readonly) CTViewController *gtSearchDetailsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *gtServiceSelectionViewController;
@@ -65,18 +78,26 @@
 
 @implementation CartrawlerSDK
 
-- (instancetype)initWithRequestorID:(NSString *)requestorID
-             languageCode:(NSString *)languageCode
-              sandboxMode:(BOOL)sandboxMode;
++ (instancetype)instance
 {
-    self = [super init];
+    static CartrawlerSDK *sharedInstance = nil;
+    static dispatch_once_t onceToken;
     
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[CartrawlerSDK alloc] init];
+    });
+    return sharedInstance;
+}
+
+- (void)setRequestorID:(NSString *)requestorID
+          languageCode:(NSString *)languageCode
+           sandboxMode:(BOOL)sandboxMode;
+{
     [[CTSDKSettings instance] setClientId:requestorID languageCode:languageCode isDebug:sandboxMode];
     
     _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
                                                      language:[CTSDKSettings instance].languageCode
                                                         debug:[CTSDKSettings instance].isDebug];
-    
     _bundle = [NSBundle bundleForClass:[self class]];
     
     if (sandboxMode) {
@@ -87,8 +108,6 @@
     [self configureViews];
     
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
-
-    return self;
 }
 
 + (CTAppearance *)appearance
@@ -100,7 +119,7 @@
 {
     _isCarRental = YES;
     [[CTSDKSettings instance] resetCountryToDeviceLocale];
-    [[CarRentalSearch instance] reset];
+    [[CTRentalSearch instance] reset];
     [self configureViews];
     [self presentRentalNavigationController:viewController isInPath:NO];
 
@@ -129,25 +148,25 @@
     
     _isCarRental = YES;
     
-    [[CarRentalSearch instance] reset];
+    [[CTRentalSearch instance] reset];
     
     [[CTSDKSettings instance] setHomeCountryCode:countryCode];
     [[CTSDKSettings instance] setHomeCountryName:countryName];
     
-    [CarRentalSearch instance].pickupDate = pickupDate;
-    [CarRentalSearch instance].dropoffDate = returnDate;
-    [CarRentalSearch instance].firstName = firstName;
-    [CarRentalSearch instance].surname = surname;
-    [CarRentalSearch instance].passengerQty = [NSNumber numberWithInt:1 + additionalPassengers.intValue];
-    [CarRentalSearch instance].driverAge = driverAge;
-    [CarRentalSearch instance].email = email;
-    [CarRentalSearch instance].phone = phone;
-    [CarRentalSearch instance].flightNumber = flightNo;
-    [CarRentalSearch instance].addressLine1 = addressLine1;
-    [CarRentalSearch instance].addressLine2 = addressLine2;
-    [CarRentalSearch instance].city = city;
-    [CarRentalSearch instance].postcode = postcode;
-    [CarRentalSearch instance].country = countryCode;
+    [CTRentalSearch instance].pickupDate = pickupDate;
+    [CTRentalSearch instance].dropoffDate = returnDate;
+    [CTRentalSearch instance].firstName = firstName;
+    [CTRentalSearch instance].surname = surname;
+    [CTRentalSearch instance].passengerQty = [NSNumber numberWithInt:1 + additionalPassengers.intValue];
+    [CTRentalSearch instance].driverAge = driverAge;
+    [CTRentalSearch instance].email = email;
+    [CTRentalSearch instance].phone = phone;
+    [CTRentalSearch instance].flightNumber = flightNo;
+    [CTRentalSearch instance].addressLine1 = addressLine1;
+    [CTRentalSearch instance].addressLine2 = addressLine2;
+    [CTRentalSearch instance].city = city;
+    [CTRentalSearch instance].postcode = postcode;
+    [CTRentalSearch instance].country = countryCode;
     [self configureViews];
     
     self.paymentSummaryViewController.inPathEnabled = isInPathBooking;
@@ -164,8 +183,8 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
                     if(response.matchedLocations.count > 0) {
-                        [CarRentalSearch instance].pickupLocation =  response.matchedLocations.firstObject;
-                        [CarRentalSearch instance].dropoffLocation =  response.matchedLocations.firstObject;
+                        [CTRentalSearch instance].pickupLocation =  response.matchedLocations.firstObject;
+                        [CTRentalSearch instance].dropoffLocation =  response.matchedLocations.firstObject;
                         [weakself presentRentalNavigationController:viewController isInPath:isInPathBooking];
 
                         if (completion) {
@@ -206,26 +225,6 @@
         [navController setViewControllers:@[self.searchDetailsViewController]];
         [parent presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
     }
-}
-
-- (void)presentGroundTransportInViewController:(UIViewController *)viewController
-{
-    _isCarRental = NO;
-    
-    [[GroundTransportSearch instance] reset];
-    
-    [self configureViews];
-    
-    CTNavigationController *navController;
-    
-    navController = [[CTNavigationController alloc] initWithRootViewController: self.gtSearchDetailsViewController];
-    
-    navController.navigationBar.hidden = YES;
-    
-    navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
-    navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
-    
-    [viewController presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
 }
 
 - (void)setDefaultViews
@@ -349,60 +348,6 @@
 
 }
 
-- (void)overrideSearchDetailsViewController:(CTViewController *)viewController
-{
-    _searchDetailsViewControllerOverride = viewController;
-    [self configureViews];
-}
-
-- (void)overrideVehicleSelectionViewController:(CTViewController *)viewController
-{
-    _vehicleSelectionViewController = viewController;
-    [self configureViews];
-}
-
-- (void)overrideVehicleDetailsViewController:(CTViewController *)viewController
-{
-    _vehicleDetailsViewController = viewController;
-    [self configureViews];
-}
-
-- (void)overrideInsuranceExtrasViewController:(CTViewController *)viewController
-{
-    _insuranceExtrasViewController = viewController;
-    [self configureViews];
-}
-
-- (void)overrideExtrasViewController:(CTViewController *)viewController
-{
-    _extrasViewController = viewController;
-    [self configureViews];
-}
-
-- (void)overridePaymentSummaryViewController:(CTViewController *)viewController
-{
-    _paymentSummaryViewController = viewController;
-    [self configureViews];
-}
-
-- (void)overrideDriverDetialsViewController:(CTViewController *)viewController
-{
-    _driverDetialsViewController = viewController;
-    [self configureViews];
-}
-
-- (void)overrideAddressDetialsViewController:(CTViewController *)viewController
-{
-    _addressDetialsViewController = viewController;
-    [self configureViews];
-}
-
-- (void)overridePaymentCompletionViewController:(CTViewController *)viewController
-{
-    _paymentCompletionViewController = viewController;
-    [self configureViews];
-}
-
 - (CTViewController *)configureViewController:(CTViewController *)viewController
                          validationController:(CTValidation *)validationController
                                   destination:(CTViewController *)destination
@@ -417,7 +362,7 @@
     viewController.delegate = self;
     
     if (self.isCarRental) {
-        viewController.search = [CarRentalSearch instance];
+        viewController.search = [CTRentalSearch instance];
         viewController.groundSearch = nil;
     } else {
         viewController.groundSearch = [GroundTransportSearch instance];
@@ -438,7 +383,7 @@
     viewController.delegate = self;
     
     if (self.isCarRental) {
-        viewController.search = [CarRentalSearch instance];
+        viewController.search = [CTRentalSearch instance];
         viewController.groundSearch = nil;
     } else {
         viewController.groundSearch = [GroundTransportSearch instance];
@@ -449,13 +394,6 @@
     
     return viewController;
 }
-
-- (void)rerouteViewController:(CTViewController *)viewController
-                  destination:(CTViewController *)destination
-{
-    viewController.destinationViewController = destination;
-}
-
 
 #pragma mark Push Notifications
 

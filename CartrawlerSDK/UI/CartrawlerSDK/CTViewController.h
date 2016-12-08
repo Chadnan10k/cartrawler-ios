@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CarRentalSearch.h"
+#import "CTRentalSearch.h"
 #import "GroundTransportSearch.h"
 #import "CTValidation.h"
 #import "CTRentalBooking.h"
@@ -34,7 +34,7 @@ typedef void (^GTBookingCompletion)(GTBooking *booking);
 @property (nonatomic) RentalBookingCompletion rentalBookingCompletion;
 @property (nonatomic) GTBookingCompletion gtBookingCompletion;
 
-@property (nonatomic, strong) CarRentalSearch *search;
+@property (nonatomic, strong) CTRentalSearch *search;
 @property (nonatomic, strong) GroundTransportSearch *groundSearch;
 
 @property (nonatomic, strong) CTValidation *validationController;

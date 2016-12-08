@@ -1,5 +1,5 @@
 //
-//  CarRentalSearch.h
+//  CTRentalSearch.h
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 13/07/2016.
@@ -10,7 +10,7 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 
 
-@interface CarRentalSearch : NSObject
+@interface CTRentalSearch : NSObject
 
 @property (nonatomic, strong) CTVehicleAvailability *vehicleAvailability;
 @property (nonatomic, strong) CTAvailabilityItem *selectedVehicle;

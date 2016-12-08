@@ -8,22 +8,22 @@
 
 #import "ExtrasViewController.h"
 #import "CTLabel.h"
-#import "HTMLParser.h"
+#import "CTHTMLParser.h"
 #import "CTAppearance.h"
-#import "OptionalExtrasView.h"
+#import "CTOptionalExtrasView.h"
 #import "CTButton.h"
 #import "CTTextView.h"
 #import "CTPickerView.h"
 #import "CTImageCache.h"
 #import "CartrawlerSDK+UIColor.h"
 #import "CartrawlerSDK+NSNumber.h"
-#import "OptionalExtrasViewController.h"
+#import "CTOptionalExtrasViewController.h"
 
 @interface ExtrasViewController () <UITextViewDelegate, CTPickerViewDelegate, OptionalExtrasDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *insuranceView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *insuranceViewHeight;
-@property (weak, nonatomic) IBOutlet OptionalExtrasView *optionalExtrasView;
+@property (weak, nonatomic) IBOutlet CTOptionalExtrasView *optionalExtrasView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet CTButton *continueButton;
@@ -483,7 +483,7 @@
 {
     NSMutableAttributedString *listItems = [[NSMutableAttributedString alloc] init];
     for (int i = 0; i < response.listItems.count; ++i) {
-        [listItems appendAttributedString:[HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
+        [listItems appendAttributedString:[CTHTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
                                                                      pointSize:15
                                                                           text:response.listItems[i]
                                                                  boldFontColor:@"#FFFFFF"
@@ -499,7 +499,7 @@
 
 - (NSAttributedString *)summaryText:(CTInsurance *)response
 {
-    NSAttributedString *htmlText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
+    NSAttributedString *htmlText = [CTHTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
                                                               pointSize:15
                                                                    text:response.summary
                                                           boldFontColor:[[CTAppearance instance].insurancePrimaryColor hex]

@@ -10,7 +10,7 @@
 
 @implementation CTInPathVehicle
 
-- (instancetype)init:(CarRentalSearch *)search
+- (instancetype)init:(CTRentalSearch *)search
 {
     self = [super init];
     

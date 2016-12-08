@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet CTInPathView *inPathView;
 @property (weak, nonatomic) IBOutlet UIButton *bookButton;
 
+@property (strong, nonnull) CTInPathVehicle *selectedVehicle;
+@property (strong, nonnull) NSDictionary *selectedVehicleDict;
+
 @end
 
 @implementation InPathViewController
@@ -22,17 +25,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.sdk.delegate = self;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [CartrawlerSDK instance].delegate = self;
 }
 
 - (IBAction)openInPath:(id)sender
 {
-    [self.sdk presentCarRentalWithFlightDetails:@"ALC"
+    [[CartrawlerSDK instance] presentCarRentalWithFlightDetails:@"ALC"
                                      pickupDate:[NSDate dateWithTimeIntervalSinceNow:480000]
                                      returnDate:[NSDate dateWithTimeIntervalSinceNow:960000]
                                       firstName:@"Lee"
@@ -59,8 +57,11 @@
 - (void)didGenerateInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
 {
     [self.inPathView renderVehicleDetails:vehicle];
-    [self.bookButton setTitle:[NSString stringWithFormat:@"Car for %@", [vehicle.totalCost numberStringWithCurrencyCode]] forState:UIControlStateNormal];
+    [self.bookButton setTitle:[NSString stringWithFormat:@"Car for %@",
+                               [vehicle.totalCost numberStringWithCurrencyCode]] forState:UIControlStateNormal];
     NSLog(@"%@", request);
+    _selectedVehicle = vehicle;
+    _selectedVehicleDict = request;
 }
 
 @end

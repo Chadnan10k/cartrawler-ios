@@ -17,7 +17,7 @@
 #import "CTInterstitialViewController.h"
 #import "CTToolTip.h"
 #import "CTNextButton.h"
-#import "LocalisedStrings.h"
+#import "CTLocalisedStrings.h"
 #import "CartrawlerSDK+UITextField.h"
 
 #define kSearchViewStoryboard @"StepOne"

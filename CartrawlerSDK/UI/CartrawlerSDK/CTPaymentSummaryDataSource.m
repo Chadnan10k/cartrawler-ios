@@ -15,13 +15,13 @@
 
 @interface CTPaymentSummaryDataSource() 
 
-@property (nonatomic, strong) CarRentalSearch *search;
+@property (nonatomic, strong) CTRentalSearch *search;
 
 @end
 
 @implementation CTPaymentSummaryDataSource
 
-- (void)setData:(CarRentalSearch *)search
+- (void)setData:(CTRentalSearch *)search
 {
     _search = search;
 }

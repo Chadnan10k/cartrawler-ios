@@ -12,7 +12,7 @@
 #import "CartrawlerSDK+NSNumber.h"
 #import "InclusionCollectionViewCell.h"
 #import "CTAppearance.h"
-#import "LocalisedStrings.h"
+#import "CTLocalisedStrings.h"
 
 @interface GTShuttleTableViewCell() <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -57,7 +57,7 @@
     _inclusions = shuttle.inclusions;
     
     self.shuttleName.text = shuttle.companyName;
-    self.shuttleInfo.text = [LocalisedStrings serviceLevel:shuttle.serviceLevel];
+    self.shuttleInfo.text = [CTLocalisedStrings serviceLevel:shuttle.serviceLevel];
     
     self.baggageLabel.text = [NSString stringWithFormat:@"%@ bags", shuttle.maxBaggage];
     self.passengersLabel.text = [NSString stringWithFormat:@"%@ passengers", shuttle.maxPassengers];
@@ -77,7 +77,7 @@
     CGFloat currentRow = 0.0;
     CGFloat padding = 35;
     for (CTGroundInclusion *inclusion in self.inclusions) {
-        CGSize textSize = [[LocalisedStrings inclusionText:inclusion.inclusion]
+        CGSize textSize = [[CTLocalisedStrings inclusionText:inclusion.inclusion]
                            sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:[CTAppearance instance].boldFontName size:17]}];
         
         CGFloat width = (textSize.width) + padding < self.inclusionsCollectionView.frame.size.width ?
@@ -115,7 +115,7 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     InclusionCollectionViewCell *cell = (InclusionCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    [cell setText:[LocalisedStrings inclusionText:self.inclusions[indexPath.row].inclusion]];
+    [cell setText:[CTLocalisedStrings inclusionText:self.inclusions[indexPath.row].inclusion]];
     return cell;
 }
 
@@ -123,7 +123,7 @@
 {
     
     
-    CGSize textSize = [[LocalisedStrings inclusionText:self.inclusions[indexPath.row].inclusion]
+    CGSize textSize = [[CTLocalisedStrings inclusionText:self.inclusions[indexPath.row].inclusion]
                        sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:[CTAppearance instance].boldFontName size:17]}];
     
     CGFloat width = (textSize.width) + 30 < collectionView.frame.size.width ? (textSize.width + 30) : (collectionView.frame.size.width - 30);

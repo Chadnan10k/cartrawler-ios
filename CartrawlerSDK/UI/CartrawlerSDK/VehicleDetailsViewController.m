@@ -23,7 +23,7 @@
 #import "CTImageCache.h"
 #import "CartrawlerSDK+UIView.h"
 #import "CTToolTipButton.h"
-#import "LocalisedStrings.h"
+#import "CTLocalisedStrings.h"
 
 @interface VehicleDetailsViewController ()
 
@@ -94,10 +94,10 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [self.fuelPolicyButton setText:[LocalisedStrings fuelPolicy:self.search.selectedVehicle.vehicle.fuelPolicy] didTap:^{
+    [self.fuelPolicyButton setText:[CTLocalisedStrings fuelPolicy:self.search.selectedVehicle.vehicle.fuelPolicy] didTap:^{
         [weakSelf presentViewController:[CTToolTip fullScreenTooltip:NSLocalizedString(@"Fuel policy", @"Fuel policy tooltip title")
                                                           detailText:[[NSAttributedString alloc]
-                                                                      initWithString:[LocalisedStrings
+                                                                      initWithString:[CTLocalisedStrings
                                                                                       toolTipTextForFuelPolicy: weakSelf.search.selectedVehicle.vehicle.fuelPolicy]
                                                                       attributes: @{
                                                                                     NSForegroundColorAttributeName : [UIColor whiteColor],
@@ -107,12 +107,12 @@
                              completion:nil];
     }];
     
-    NSString *pickupText = [LocalisedStrings pickupType:self.search.selectedVehicle] ?: @"Supplier address";
+    NSString *pickupText = [CTLocalisedStrings pickupType:self.search.selectedVehicle] ?: @"Supplier address";
     NSMutableAttributedString *toolTipText = [[NSMutableAttributedString alloc] initWithString:@""];
     
-    if ([LocalisedStrings pickupType:self.search.selectedVehicle]) {
+    if ([CTLocalisedStrings pickupType:self.search.selectedVehicle]) {
         [toolTipText appendAttributedString:[[NSAttributedString alloc]
-                                             initWithString:[LocalisedStrings
+                                             initWithString:[CTLocalisedStrings
                                                              toolTipTextForPickupType: weakSelf.search.selectedVehicle]
                                              attributes: @{
                                                            NSForegroundColorAttributeName : [UIColor whiteColor],

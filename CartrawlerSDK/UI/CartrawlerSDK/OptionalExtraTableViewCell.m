@@ -11,7 +11,7 @@
 #import "CartrawlerSDK+NSNumber.h" 
 #import "CTStepper.h"
 #import "CTAppearance.h"
-#import "CarRentalSearch.h"
+#import "CTRentalSearch.h"
 
 @interface OptionalExtraTableViewCell()
 
@@ -61,8 +61,8 @@
 {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                        fromDate:[CarRentalSearch instance].pickupDate
-                                                          toDate:[CarRentalSearch instance].dropoffDate
+                                                        fromDate:[CTRentalSearch instance].pickupDate
+                                                          toDate:[CTRentalSearch instance].dropoffDate
                                                          options:0];
     
     self.itemPriceLabel.text = [NSString stringWithFormat:@"%@ %@",

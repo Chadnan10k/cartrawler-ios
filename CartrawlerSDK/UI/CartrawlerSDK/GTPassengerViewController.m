@@ -10,7 +10,7 @@
 #import "BookingSummaryButton.h"
 #import "AddressDetailsViewController.h"
 #import "CTLabel.h"
-#import "FlightNumberValidation.h"
+#import "CTFlightNumberValidation.h"
 
 @interface GTPassengerViewController () <UITextFieldDelegate>
 
@@ -162,7 +162,7 @@
         validated = NO;
     }
     
-    if (![FlightNumberValidation isValid:self.flightNoTextField.text] && self.groundSearch.selectedService != nil ) {
+    if (![CTFlightNumberValidation isValid:self.flightNoTextField.text] && self.groundSearch.selectedService != nil ) {
         [self.flightNoTextField shakeAnimation];
         validated = NO;
     }

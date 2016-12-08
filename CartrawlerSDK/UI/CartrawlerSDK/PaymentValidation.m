@@ -10,7 +10,7 @@
 
 @implementation PaymentValidation
 
-- (void)validateCarRental:(CarRentalSearch *)search
+- (void)validateCarRental:(CTRentalSearch *)search
             cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
                completion:(CTSearchValidation)completion
 {

@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <CartrawlerAPI/CartrawlerAPI.h>
-#import "CarRentalSearch.h"
+#import "CTRentalSearch.h"
 
 @interface CTInPathPayment : NSObject
 
-+ (NSDictionary *)createInPathRequest:(CarRentalSearch *)search;
++ (NSDictionary *)createInPathRequest:(CTRentalSearch *)search;
 
 @end

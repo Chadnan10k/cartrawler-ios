@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GroundTransportSearch.h"
-#import "CarRentalSearch.h"
+#import "CTRentalSearch.h"
 #import <CartrawlerAPI/CartrawlerAPI.h>
 
 @interface CTValidation : NSObject
@@ -18,7 +18,7 @@ typedef void (^CTSearchValidation)(BOOL success, NSString *errorMessage, BOOL us
                   cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
                      completion:(CTSearchValidation)completion;
 
-- (void)validateCarRental:(CarRentalSearch *)search
+- (void)validateCarRental:(CTRentalSearch *)search
             cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
                completion:(CTSearchValidation)completion;
 @end

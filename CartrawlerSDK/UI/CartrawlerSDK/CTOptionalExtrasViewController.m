@@ -1,16 +1,16 @@
 //
-//  OptionalExtrasViewController.m
+//  CTOptionalExtrasViewController.m
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 17/11/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "OptionalExtrasViewController.h"
+#import "CTOptionalExtrasViewController.h"
 #import "OptionalExtraTableViewCell.h"
 #import "CTNextButton.h"
 
-@interface OptionalExtrasViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface CTOptionalExtrasViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
 @property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
@@ -18,7 +18,7 @@
 @property (nonatomic, strong) NSArray<CTExtraEquipment *> *extras;
 @end
 
-@implementation OptionalExtrasViewController
+@implementation CTOptionalExtrasViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,13 +43,13 @@
 {
     [super viewWillAppear:animated];
     
-    if ([CarRentalSearch instance].insurance) {
+    if ([CTRentalSearch instance].insurance) {
         self.bottomSpace.constant = 0;
     } else {
         self.bottomSpace.constant = 90;
     }
     
-    _extras = [CarRentalSearch instance].selectedVehicle.vehicle.extraEquipment;
+    _extras = [CTRentalSearch instance].selectedVehicle.vehicle.extraEquipment;
     [self.tableView reloadData];
     [self.tableView layoutIfNeeded];
 }

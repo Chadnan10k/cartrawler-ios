@@ -35,7 +35,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 @property (nonatomic) CTPaymentType paymentType;
 
 @property (nonatomic, copy) GroundTransportSearch *groundSearch;
-@property (nonatomic, copy) CarRentalSearch *carRentalSearch;
+@property (nonatomic, copy) CTRentalSearch *carRentalSearch;
 @property (nonatomic, strong) CTPaymentCheck *paymentCheck;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic) BOOL iframeLoaded;
@@ -289,7 +289,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     
 }
 
-- (void)setForCarRentalPayment:(CarRentalSearch *)search
+- (void)setForCarRentalPayment:(CTRentalSearch *)search
 {
     _carRentalSearch = search;
     _paymentType = CTPaymentTypeCarRental;

@@ -36,19 +36,8 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 //--Delegate--
 @property (nonatomic, weak) id<CartrawlerSDKDelegate> delegate;
 
-//---Car Rental View Controllers ---
-@property (nonatomic, strong, nonnull, readonly) CTViewController *searchDetailsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleSelectionViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleDetailsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceExtrasViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *extrasViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *driverDetialsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *addressDetialsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentSummaryViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentCompletionViewController;
-//----------------------------------
-
+//Shared instance
++ (instancetype)instance;
 
 /**
  *  Initialize the CartrawlerAPI
@@ -58,9 +47,9 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
  *  @param sandboxMode      Flag to indicate if you want to point to test or production endpoints
  *
  */
-- (instancetype)initWithRequestorID:(NSString *)requestorID
-                       languageCode:(NSString *)languageCode
-                        sandboxMode:(BOOL)sandboxMode;
+- (void)setRequestorID:(NSString *)requestorID
+          languageCode:(NSString *)languageCode
+           sandboxMode:(BOOL)sandboxMode;
 
 /**
  *  Use CTAppearance for overriding the preset views color scheme
@@ -98,95 +87,6 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
                           isInPathBooking:(BOOL)isInPathBooking
                        overViewController:(UIViewController *)viewController
                                completion:(CarRentalWithFlightDetailsCompletion)completion;
-
-/**
- *  Register the CartrawlerSDK to use push notifications so information can be sent to your customer about their booking
- *
- *  @param deviceToken The iOS device token taken from the AppDelegate
- */
-+ (void)registerForPushNotifications:(NSData *)deviceToken;
-
-/**
- *  Presents a view showing the user information about their upcoming booking
- *
- *  @param notification The dictionary with notification information
- */
-+ (void)didReceivePushNotification:(NSDictionary *)notification;
-
-/*  ----------------------------------------------------------------------------
- *  View Controller Overriding:
- *  You can set a custom view for any step of the user journey by subclassing
- *  CTViewController
- *
- *  You must set all of the required properties of the search in order to
- *  push to the next view.
- *  ----------------------------------------------------------------------------
- */
-
-/**
- *  Override the initial Search Details View Controller
- *
- *  @param viewController A CTViewController subclass
- */
-- (void)overrideSearchDetailsViewController:(CTViewController *)viewController;
-
-/**
- *  Override the vehicle selection view controller
- *
- *  @param viewController A CTViewController subclass
- */
-- (void)overrideVehicleSelectionViewController:(CTViewController *)viewController;
-
-/**
- *  Override the vehicle details view controller
- *
- *  @param viewController A CTViewController subclass
- */
-- (void)overrideVehicleDetailsViewController:(CTViewController *)viewController;
-
-/**
- *  Override the insurance & extras view controller
- *
- *  @param viewController A CTViewController subclass
- */
-- (void)overrideInsuranceExtrasViewController:(CTViewController *)viewController;
-
-/**
- *  Override the payment summary view controller
- *
- *  @param viewController A CTViewController subclass
- */
-- (void)overridePaymentSummaryViewController:(CTViewController *)viewController;
-
-/**
- *  Override the driver details view controller
- *
- *  @param viewController A CTViewController subclass
- */
-- (void)overrideDriverDetialsViewController:(CTViewController *)viewController;
-
-/**
- *  Override the address details view controller
- *
- *  @param viewController A CTViewController subclass
- */
-- (void)overrideAddressDetialsViewController:(CTViewController *)viewController;
-
-/**
- *  Override the success view for payment
- *
- *  @param viewController A CTViewController subclass
- */
-- (void)overridePaymentCompletionViewController:(CTViewController *)viewController;
-
-/**
- *  Reroute the destination of a CTViewController
- *
- *  @param viewController The CTViewController you would like to edit
- *  @param destination    The destination for this CTViewController
- */
-- (void)rerouteViewController:(CTViewController *)viewController
-                  destination:(CTViewController *)destination;
 
 @end
 

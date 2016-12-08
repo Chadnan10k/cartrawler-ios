@@ -1,14 +1,14 @@
 //
-//  LocalisedStrings.m
+//  CTLocalisedStrings.m
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 09/08/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "LocalisedStrings.h"
+#import "CTLocalisedStrings.h"
 
-@implementation LocalisedStrings
+@implementation CTLocalisedStrings
 
 + (NSString *)pickupType:(CTAvailabilityItem *)item
 {

@@ -1,5 +1,5 @@
 //
-//  HTMLParser.h
+//  CTHTMLParser.h
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 06/07/2016.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HTMLParser : NSObject
+@interface CTHTMLParser : NSObject
 
 + (NSAttributedString *)htmlStringWithFontFamily:(NSString *)font
                                        pointSize:(float)pointSize

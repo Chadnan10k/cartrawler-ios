@@ -1,15 +1,15 @@
 //
-//  HTMLParser.m
+//  CTHTMLParser.m
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 06/07/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "HTMLParser.h"
+#import "CTHTMLParser.h"
 #import <UIKit/UIKit.h>
 
-@implementation HTMLParser
+@implementation CTHTMLParser
 
 
 + (NSAttributedString *)htmlStringWithFontFamily:(NSString *)font

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CarRentalSearch.h"
+#import "CTRentalSearch.h"
 
 @interface CTPaymentVehicleTableViewCell : UITableViewCell
 
-- (void)setData:(CarRentalSearch *)search;
+- (void)setData:(CTRentalSearch *)search;
 
 @end

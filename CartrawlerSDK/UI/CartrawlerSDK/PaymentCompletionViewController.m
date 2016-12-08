@@ -8,7 +8,7 @@
 
 #import "PaymentCompletionViewController.h"
 #import "CTLabel.h"
-#import "CarRentalSearch.h"
+#import "CTRentalSearch.h"
 #import "CTImageCache.h"
 #import "CTAppearance.h"
 #import "CartrawlerSDK+NSDateUtils.h"

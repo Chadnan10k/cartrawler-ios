@@ -1,23 +1,23 @@
 //
-//  OptionalExtrasView.m
+//  CTOptionalExtrasView.m
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 26/07/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "OptionalExtrasView.h"
+#import "CTOptionalExtrasView.h"
 #import "OptionalExtraTableViewCell.h"
 #import "CTTextView.h"
 
-@interface OptionalExtrasView() <UIScrollViewDelegate>
+@interface CTOptionalExtrasView() <UIScrollViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) CTTextView *textView;
 
 @end
 
-@implementation OptionalExtrasView
+@implementation CTOptionalExtrasView
 {
     BOOL isOpen;
 }

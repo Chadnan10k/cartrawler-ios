@@ -13,7 +13,7 @@
 #import "PaymentCompletionViewController.h"
 #import "CTPaymentView.h"
 #import "CTCheckbox.h"
-#import "HTMLParser.h"
+#import "CTHTMLParser.h"
 #import "CTAppearance.h"
 #import "TermsViewController.h"
 #import "CTNextButton.h"
@@ -108,7 +108,7 @@
     NSString *termsStr = [NSString stringWithFormat:@"Tap ‘Book now’ to complete your booking and accept our %@", link1];
     
     //seems lazy but efficient
-    self.termsLabel.attributedText = [HTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
+    self.termsLabel.attributedText = [CTHTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
                                                                 pointSize:15.0
                                                                      text:termsStr
                                                             boldFontColor:@"#000000"

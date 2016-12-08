@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *vendorCollectionView;
 @property (nonatomic, strong) NSArray <UIImage *>* vendorImages;
-@property (nonatomic, strong) CarRentalSearch *search;
+@property (nonatomic, strong) CTRentalSearch *search;
 @property (weak, nonatomic) IBOutlet CTLabel *locationLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *dateLabel;
 
@@ -93,7 +93,7 @@
     return sharedInstance;
 }
 
-+ (void)present:(UIViewController *)viewController search:(CarRentalSearch *)search;
++ (void)present:(UIViewController *)viewController search:(CTRentalSearch *)search;
 {
 
     [[CTInterstitialViewController sharedInstance] setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];

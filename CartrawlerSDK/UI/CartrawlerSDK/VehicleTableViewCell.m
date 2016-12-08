@@ -13,7 +13,7 @@
 #import "CTAppearance.h"
 #import "CartrawlerSDK+NSNumber.h"
 #import "CTLabel.h"
-#import "LocalisedStrings.h"
+#import "CTLocalisedStrings.h"
 #import "CTMerhandisingBanner.h"
 
 @interface VehicleTableViewCell ()
@@ -85,10 +85,10 @@
     
     self.passengerQtyLabel.text = [NSString stringWithFormat:@"%d %@", item.vehicle.passengerQty.intValue, NSLocalizedString(@"passengers", @"passengers")];
     self.transmissionLabel.text = item.vehicle.transmissionType;
-    self.fuelPolicyLabel.text = [LocalisedStrings fuelPolicy:item.vehicle.fuelPolicy];
+    self.fuelPolicyLabel.text = [CTLocalisedStrings fuelPolicy:item.vehicle.fuelPolicy];
     
-    if ([LocalisedStrings pickupType:item]) {
-        self.pickupLabel.text = [LocalisedStrings pickupType:item];
+    if ([CTLocalisedStrings pickupType:item]) {
+        self.pickupLabel.text = [CTLocalisedStrings pickupType:item];
     } else {
         self.pickupLabel.text = item.vendor.pickupLocation.address;
     }

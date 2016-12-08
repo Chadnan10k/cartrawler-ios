@@ -12,7 +12,7 @@
 
 @interface ViewController () <CartrawlerSDKDelegate>
 
-@property (nonatomic, strong) CartrawlerSDK *sdk;
+//@property (nonatomic, strong) CartrawlerSDK *sdk;
 
 @end
 
@@ -30,19 +30,18 @@
     [CartrawlerSDK appearance].modalPresentationStyle = UIModalPresentationOverFullScreen;
     [CartrawlerSDK appearance].modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:YES];
+    [[CartrawlerSDK instance] setRequestorID:@"642619" languageCode:@"EN" sandboxMode:YES];
     
-    self.sdk.delegate = self;
+    [CartrawlerSDK instance].delegate = self;
 }
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    InPathViewController *vc = segue.destinationViewController;
-    vc.sdk = self.sdk;
-}
+//
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    InPathViewController *vc = segue.destinationViewController;
+//}
 
 - (IBAction)openCarRental:(id)sender {
-    [self.sdk presentCarRentalInViewController:self];
+    [[CartrawlerSDK instance] presentCarRentalInViewController:self];
 }
 
 #pragma Mark CartrawlerSDKDelegate

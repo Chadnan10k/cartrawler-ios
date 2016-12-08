@@ -11,36 +11,36 @@
 
 @implementation SearchValidation
 
-- (void)validateCarRental:(CarRentalSearch *)search
+- (void)validateCarRental:(CTRentalSearch *)search
             cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
                completion:(CTSearchValidation)completion
 {
 
-    if ([CarRentalSearch instance].pickupLocation == nil) {
+    if ([CTRentalSearch instance].pickupLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupLocation IS NOT SET \n\n");
         completion(NO, @"search.pickupLocation is not set", NO);
         return;
     }
 
-    if ([CarRentalSearch instance].dropoffLocation == nil) {
+    if ([CTRentalSearch instance].dropoffLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.dropoffLocation IS NOT SET \n\n");
         completion(NO, @"search.dropoffLocation is not set", NO);
         return;
     }
 
-    if ([CarRentalSearch instance].pickupDate == nil) {
+    if ([CTRentalSearch instance].pickupDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupDate IS NOT SET \n\n");
         completion(NO, @"search.pickupDate is not set", NO);
         return;
     }
 
-    if ([CarRentalSearch instance].dropoffDate == nil) {
+    if ([CTRentalSearch instance].dropoffDate == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.dropoffDate IS NOT SET \n\n");
         completion(NO, @"search.dropoffDate is not set", NO);
         return;
     }
 
-    if ([CarRentalSearch instance].driverAge == nil) {
+    if ([CTRentalSearch instance].driverAge == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.driverAge IS NOT SET \n\n");
         completion(NO, @"search.driverAge is not set", NO);
         return;

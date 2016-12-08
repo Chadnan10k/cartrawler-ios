@@ -9,7 +9,7 @@
 #import "TermsViewController.h"
 #import "TermsDetailViewController.h"
 #import "CTSDKSettings.h"
-#import "CarRentalSearch.h"
+#import "CTRentalSearch.h"
 #import "CTAppearance.h"
 
 @interface TermsViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) CTTermsAndConditions *data;
 @property (strong, nonatomic) CartrawlerAPI *api;
-@property (strong, nonatomic) CarRentalSearch *search;
+@property (strong, nonatomic) CTRentalSearch *search;
 
 @end
 
@@ -53,7 +53,7 @@
     
 }
 
-- (void)setData:(CarRentalSearch *)data cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI;
+- (void)setData:(CTRentalSearch *)data cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI;
 {
     _search = data;
     _api = cartrawlerAPI;

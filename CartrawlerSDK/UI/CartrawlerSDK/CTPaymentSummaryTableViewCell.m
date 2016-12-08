@@ -35,7 +35,7 @@
     // Configure the view for the selected state
 }
 
-- (void)setData:(CarRentalSearch *)search
+- (void)setData:(CTRentalSearch *)search
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 

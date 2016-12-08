@@ -14,7 +14,7 @@
 
 @implementation CTInPathPayment
 
-+ (NSDictionary *)createInPathRequest:(CarRentalSearch *)search
++ (NSDictionary *)createInPathRequest:(CTRentalSearch *)search
 {
     
     NSString *json = [PaymentRequest OTA_VehResRQ:[search.pickupDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]

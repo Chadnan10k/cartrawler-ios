@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "CarRentalSearch.h"
+#import "CTRentalSearch.h"
 
 @interface CTVehicleInclusionsDataSource : NSObject <UICollectionViewDataSource, UICollectionViewDelegate>
 
