@@ -1,5 +1,5 @@
 //
-//  DataStore.h
+//  CTDataStore.h
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 24/10/2016.
@@ -10,7 +10,7 @@
 #import "CTRentalBooking.h"
 #import "GTBooking.h"
 
-@interface DataStore : NSObject
+@interface CTDataStore : NSObject
 
 + (void)storeRentalBooking:(CTRentalBooking *)booking;
 + (void)storeGTBooking:(GTBooking *)booking;

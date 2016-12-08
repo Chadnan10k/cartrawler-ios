@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CSVItem.h"
+#import "CTCSVItem.h"
 
 @interface SettingsSelectionViewController : UIViewController
 
@@ -19,7 +19,7 @@ typedef enum SettingsType : NSUInteger {
     SettingsTypeCountry
 }SettingsType;
 
-typedef void (^CTSettingsCompletion)(CSVItem *settingsItem);
+typedef void (^CTSettingsCompletion)(CTCSVItem *settingsItem);
 @property (nonatomic, strong) CTSettingsCompletion settingsCompletion;
 
 - (void)setSettingsType:(SettingsType)settingsType;

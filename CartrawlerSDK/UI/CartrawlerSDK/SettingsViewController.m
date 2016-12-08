@@ -9,7 +9,7 @@
 #import "SettingsViewController.h"
 #import "SettingsSelectionViewController.h"
 #import "CTNavigationController.h"
-#import "CSVItem.h"
+#import "CTCSVItem.h"
 #import "CTSDKSettings.h"
 
 @interface SettingsViewController ()
@@ -56,7 +56,7 @@
     
     [self presentViewController:vc animated:YES completion:nil];
     __weak typeof (self) weakSelf = self;
-    vc.settingsCompletion = ^(CSVItem *item){
+    vc.settingsCompletion = ^(CTCSVItem *item){
         [CTSDKSettings instance].currencyCode = [item.code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         [CTSDKSettings instance].currencyName = [item.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         [weakSelf.currencyButton setTitle:item.name forState:UIControlStateNormal];
@@ -71,7 +71,7 @@
     
     [self presentViewController:vc animated:YES completion:nil];
     __weak typeof (self) weakSelf = self;
-    vc.settingsCompletion = ^(CSVItem *item){
+    vc.settingsCompletion = ^(CTCSVItem *item){
         [CTSDKSettings instance].languageCode = [item.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         [CTSDKSettings instance].languageName = [item.code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         [weakSelf.languageButton setTitle:item.code forState:UIControlStateNormal];
@@ -86,7 +86,7 @@
     
     [self presentViewController:vc animated:YES completion:nil];
     __weak typeof (self) weakSelf = self;
-    vc.settingsCompletion = ^(CSVItem *item){
+    vc.settingsCompletion = ^(CTCSVItem *item){
         [CTSDKSettings instance].homeCountryCode = [item.code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         [CTSDKSettings instance].homeCountryName = [item.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         [weakSelf.countryButton setTitle:item.name forState:UIControlStateNormal];

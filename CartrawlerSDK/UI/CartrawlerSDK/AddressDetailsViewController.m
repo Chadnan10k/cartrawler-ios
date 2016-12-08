@@ -24,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet CTTextField *countryTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
-@property (strong, nonatomic) CSVItem *selectedCountryItem;
+@property (strong, nonatomic) CTCSVItem *selectedCountryItem;
 @property (strong, nonatomic) UIView *selectedView;
 
 @end
@@ -216,7 +216,7 @@
     
     __weak typeof (self) weakSelf = self;
     
-    vc.settingsCompletion = ^(CSVItem *item) {
+    vc.settingsCompletion = ^(CTCSVItem *item) {
         if (![item.code isEqualToString:[CTSDKSettings instance].homeCountryCode]) {
             [weakSelf presentAlert:@"Warning" message:@"Changing your country of residence can affect the price and availability of your selected car. You will be redirected to the Results page, where your search will be updated."];
             weakSelf.selectedCountryItem = item;

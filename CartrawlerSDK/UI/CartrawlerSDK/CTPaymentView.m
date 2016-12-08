@@ -12,7 +12,7 @@
 #import "CartrawlerSDK+NSDateUtils.h"
 #import "CTButton.h"
 #import "GTPaymentRequest.h"
-#import "DataStore.h"
+#import "CTDataStore.h"
 #import "Reachability.h"
 #import <WebKit/WebKit.h>
 #import "CartrawlerSDK+WKWebView.h"
@@ -168,7 +168,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                     savedBooking.dropoffDate = self.carRentalSearch.dropoffDate;
                     savedBooking.vehicleImage = self.carRentalSearch.selectedVehicle.vehicle.pictureURL.absoluteString;
                     savedBooking.vehicleName = self.carRentalSearch.selectedVehicle.vehicle.makeModelName;
-                    [DataStore storeRentalBooking:savedBooking];
+                    [CTDataStore storeRentalBooking:savedBooking];
                     
                 }
                     
@@ -185,7 +185,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                     savedBooking.dropoffDate = self.groundSearch.dropoffLocation.dateTime;
                     savedBooking.vehicleImage = self.groundSearch.selectedService.vehicleImage != nil ? self.groundSearch.selectedService.vehicleImage.absoluteString : self.groundSearch.selectedShuttle.vehicleImage.absoluteString;
                     savedBooking.vehicleName = self.groundSearch.selectedShuttle != nil ? self.groundSearch.selectedShuttle.companyName : self.groundSearch.selectedService.companyName;
-                    [DataStore storeGTBooking:savedBooking];
+                    [CTDataStore storeGTBooking:savedBooking];
                     
                 }
                     break;
@@ -222,6 +222,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                          componentsJoinedByString:@""];
     
     NSNumberFormatter *f = [NSNumberFormatter new];
+    [f setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
     f.maximumFractionDigits = 5;
     f.numberStyle = NSNumberFormatterDecimalStyle;
 

@@ -1,5 +1,5 @@
 //
-//  CSVItem.h
+//  CTCSVItem.h
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 18/07/2016.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CSVItem : NSObject
+@interface CTCSVItem : NSObject
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *code;

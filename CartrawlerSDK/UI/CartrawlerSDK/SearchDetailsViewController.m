@@ -314,6 +314,7 @@
     
     if (self.driverUnderage) {
         NSNumberFormatter *d = [NSNumberFormatter new];
+        [d setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
         self.search.driverAge = [d numberFromString:self.ageContainer.text];
     }
     

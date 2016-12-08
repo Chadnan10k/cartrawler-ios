@@ -8,12 +8,11 @@
 
 #import "ViewController.h"
 #import <CartrawlerSDK/CartrawlerSDK.h>
-#import <CartrawlerSDK/CTInPathView.h>
+#import "InPathViewController.h"
 
 @interface ViewController () <CartrawlerSDKDelegate>
 
 @property (nonatomic, strong) CartrawlerSDK *sdk;
-@property (weak, nonatomic) IBOutlet CTInPathView *inPathView;
 
 @end
 
@@ -36,77 +35,14 @@
     self.sdk.delegate = self;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    InPathViewController *vc = segue.destinationViewController;
+    vc.sdk = self.sdk;
 }
 
 - (IBAction)openCarRental:(id)sender {
-    //[self.sdk presentCarRentalInViewController:self];
-    
-//    [self.sdk presentCarRentalInViewController:self
-//                                     firstName:@"Lee"
-//                                       surname:@"Maguire"
-//                                     driverAge:@30
-//                          additionalPassengers:@0
-//                                         email:@"lmaguire@cartrawler.com"
-//                                         phone:@"0865555555"
-//                                      flightNo:@"FR1234"
-//                                  addressLine1:@"123 Cartrawler St"
-//                                  addressLine2:@""
-//                                          city:@"Dublin"
-//                                      postcode:@"Dublin 1"];
-    
-    [self.sdk presentCarRentalWithFlightDetails:@"ALC"
-                                     pickupDate:[NSDate dateWithTimeIntervalSinceNow:480000]
-                                     returnDate:[NSDate dateWithTimeIntervalSinceNow:960000]
-                                      firstName:@"Lee"
-                                        surname:@"Maguire"
-                                      driverAge:@30
-                           additionalPassengers:@0
-                                          email:@"lmaguire@cartrawler.com"
-                                          phone:@"0866666666"
-                                       flightNo:@"FR1234"
-                                   addressLine1:@"123 abc"
-                                   addressLine2:@""
-                                           city:@"Dublin"
-                                       postcode:@""
-                                    countryCode:@"IE"
-                                    countryName:@"Ireland"
-                                isInPathBooking:NO
-                             overViewController:self
-                                     completion:^(BOOL success, NSString * _Nonnull errorMessage) {
-                                         
-                                     }];
-}
-
-- (IBAction)openInPath:(id)sender
-{
-    [self.sdk presentCarRentalWithFlightDetails:@"ALC"
-                                     pickupDate:[NSDate dateWithTimeIntervalSinceNow:480000]
-                                     returnDate:[NSDate dateWithTimeIntervalSinceNow:960000]
-                                      firstName:@"Lee"
-                                        surname:@"Maguire"
-                                      driverAge:@30
-                           additionalPassengers:@0
-                                          email:@"lmaguire@cartrawler.com"
-                                          phone:@"0866666666"
-                                       flightNo:@"FR1234"
-                                   addressLine1:@"123 abc"
-                                   addressLine2:@""
-                                           city:@"Dublin"
-                                       postcode:@""
-                                    countryCode:@"IE"
-                                    countryName:@"Ireland"
-                                isInPathBooking:YES
-                             overViewController:self
-                                     completion:^(BOOL success, NSString * _Nonnull errorMessage) {
-                                         
-                                     }];
-}
-
-- (IBAction)openGroundTransport:(id)sender {
-    [self.sdk presentGroundTransportInViewController:self];
+    [self.sdk presentCarRentalInViewController:self];
 }
 
 #pragma Mark CartrawlerSDKDelegate
@@ -116,14 +52,11 @@
     NSLog(@"The vehicle booking was canceled");
 }
 
+#pragma mark For standalone
 - (void)didBookVehicle:(CTBooking *)booking
 {
     NSLog(@"We booked a vehicle!");
 }
 
-- (void)didGenerateInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
-{
-    [self.inPathView renderVehicleDetails:vehicle];
-}
 
 @end

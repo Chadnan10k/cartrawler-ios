@@ -22,6 +22,8 @@
 		45709A681DF1C51300E6CA4E /* QAUITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 45709A671DF1C51300E6CA4E /* QAUITest.m */; };
 		45A7B7561D9BE003006611EB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */; };
 		45A7B7571D9BE007006611EB /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */; };
+		45D4A76C1DF96E5D00338889 /* InPathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D4A76B1DF96E5D00338889 /* InPathViewController.m */; };
+		45D4A76F1DF981E200338889 /* CT+NSNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D4A76E1DF981E200338889 /* CT+NSNumber.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,10 @@
 		45709A691DF1C51300E6CA4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		45D4A76A1DF96E5D00338889 /* InPathViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InPathViewController.h; sourceTree = "<group>"; };
+		45D4A76B1DF96E5D00338889 /* InPathViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InPathViewController.m; sourceTree = "<group>"; };
+		45D4A76D1DF981E200338889 /* CT+NSNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CT+NSNumber.h"; sourceTree = "<group>"; };
+		45D4A76E1DF981E200338889 /* CT+NSNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CT+NSNumber.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,10 +120,14 @@
 		45295F5B1D78412500A09B8A /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
+				45D4A76D1DF981E200338889 /* CT+NSNumber.h */,
+				45D4A76E1DF981E200338889 /* CT+NSNumber.m */,
 				45295F5F1D78412500A09B8A /* AppDelegate.h */,
 				45295F601D78412500A09B8A /* AppDelegate.m */,
 				45295F621D78412500A09B8A /* ViewController.h */,
 				45295F631D78412500A09B8A /* ViewController.m */,
+				45D4A76A1DF96E5D00338889 /* InPathViewController.h */,
+				45D4A76B1DF96E5D00338889 /* InPathViewController.m */,
 				455B59751DCCB22500CA4790 /* Roboto-Bold.ttf */,
 				455B59761DCCB22500CA4790 /* Roboto-Regular.ttf */,
 				45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */,
@@ -274,7 +284,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45D4A76C1DF96E5D00338889 /* InPathViewController.m in Sources */,
 				45295F641D78412500A09B8A /* ViewController.m in Sources */,
+				45D4A76F1DF981E200338889 /* CT+NSNumber.m in Sources */,
 				45295F611D78412500A09B8A /* AppDelegate.m in Sources */,
 				45295F5E1D78412500A09B8A /* main.m in Sources */,
 			);

@@ -49,15 +49,6 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 @property (nonatomic, strong, nonnull, readonly) CTViewController *paymentCompletionViewController;
 //----------------------------------
 
-//---Ground Transport View Controllers---
-@property (nonatomic, strong, nonnull, readonly) CTViewController *gtSearchDetailsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *gtServiceSelectionViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *gtPassengerDetailsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *gtAddressDetailsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *gtPaymentViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *gtPaymentCompletionViewController;
-//---------------------------------------
-
 
 /**
  *  Initialize the CartrawlerAPI
@@ -88,19 +79,6 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
  *
  *  @param viewController The parent view controller
  */
-- (void)presentCarRentalInViewController:(UIViewController *)viewController
-                               firstName:(NSString *)firstName
-                                 surname:(NSString *)surname
-                               driverAge:(NSNumber *)driverAge
-                    additionalPassengers:(NSNumber *)additionalPassengers
-                                   email:(NSString *)email
-                                   phone:(NSString *)phone
-                                flightNo:(NSString *)flightNo
-                            addressLine1:(NSString *)addressLine1
-                            addressLine2:(NSString *)addressLine2
-                                    city:(NSString *)city
-                                postcode:(NSString *)postcode;
-
 - (void)presentCarRentalWithFlightDetails:(NSString *)IATACode
                                pickupDate:(NSDate *)pickupDate
                                returnDate:(NSDate *)returnDate
@@ -120,13 +98,6 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
                           isInPathBooking:(BOOL)isInPathBooking
                        overViewController:(UIViewController *)viewController
                                completion:(CarRentalWithFlightDetailsCompletion)completion;
-
-/**
- *  Presents the ground transport engine modally in the designated UIViewController
- *
- *  @param viewController The parent view controller
- */
-- (void)presentGroundTransportInViewController:(UIViewController *)viewController;
 
 /**
  *  Register the CartrawlerSDK to use push notifications so information can be sent to your customer about their booking

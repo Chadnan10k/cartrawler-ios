@@ -8,7 +8,7 @@
 
 #import "RentalBookingsViewController.h"
 #import "RentalBookingCell.h"
-#import "DataStore.h"
+#import "CTDataStore.h"
 #import "CTNextButton.h"
 #import "CTAppearance.h"
 
@@ -47,7 +47,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    _bookings = [DataStore retrieveRentalBookings];
+    _bookings = [CTDataStore retrieveRentalBookings];
     [self.tableView reloadData];
 }
 

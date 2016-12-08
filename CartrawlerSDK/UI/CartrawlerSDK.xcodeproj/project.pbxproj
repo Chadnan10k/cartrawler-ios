@@ -109,8 +109,8 @@
 		455B588E1DCC914300CA4790 /* LocalisedStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4550618A1D59CD91004EAC43 /* LocalisedStrings.m */; };
 		455B588F1DCC914300CA4790 /* FlightNumberValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D6CC8F1DA55FBB000D7A6C /* FlightNumberValidation.h */; };
 		455B58901DCC914300CA4790 /* FlightNumberValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D6CC901DA55FBB000D7A6C /* FlightNumberValidation.m */; };
-		455B58911DCC914300CA4790 /* DataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E7F1DBE1197001A4062 /* DataStore.h */; };
-		455B58921DCC914300CA4790 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E801DBE1197001A4062 /* DataStore.m */; };
+		455B58911DCC914300CA4790 /* CTDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E7F1DBE1197001A4062 /* CTDataStore.h */; };
+		455B58921DCC914300CA4790 /* CTDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E801DBE1197001A4062 /* CTDataStore.m */; };
 		455B58931DCC914300CA4790 /* CartrawlerSDK+UIColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 45130C931DBF674F0081582B /* CartrawlerSDK+UIColor.h */; };
 		455B58941DCC914300CA4790 /* CartrawlerSDK+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45130C941DBF674F0081582B /* CartrawlerSDK+UIColor.m */; };
 		455B58951DCC914300CA4790 /* RentalBookingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E1E1DAFBE9D001A4062 /* RentalBookingsViewController.h */; };
@@ -245,8 +245,8 @@
 		455B59181DCC914400CA4790 /* DriverDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4525216E1D353C4200B47DE6 /* DriverDetailsViewController.m */; };
 		455B59191DCC914400CA4790 /* AddressDetailsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F4735A1D36451F00DF548B /* AddressDetailsViewController.h */; };
 		455B591A1DCC914400CA4790 /* AddressDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F4735B1D36451F00DF548B /* AddressDetailsViewController.m */; };
-		455B591B1DCC914400CA4790 /* CSVItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D3F1D3CE9D6002C6F6B /* CSVItem.h */; };
-		455B591C1DCC914400CA4790 /* CSVItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D401D3CE9D6002C6F6B /* CSVItem.m */; };
+		455B591B1DCC914400CA4790 /* CTCSVItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D3F1D3CE9D6002C6F6B /* CTCSVItem.h */; };
+		455B591C1DCC914400CA4790 /* CTCSVItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D401D3CE9D6002C6F6B /* CTCSVItem.m */; };
 		455B591D1DCC914400CA4790 /* PaymentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45F473631D366D6A00DF548B /* PaymentViewController.h */; };
 		455B591E1DCC914400CA4790 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F473641D366D6A00DF548B /* PaymentViewController.m */; };
 		455B591F1DCC914400CA4790 /* PaymentCompletionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 453FD4411D588076002E4CC6 /* PaymentCompletionViewController.h */; };
@@ -374,8 +374,8 @@
 		450F9D381D3CE08E002C6F6B /* SettingsSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSelectionViewController.m; sourceTree = "<group>"; };
 		450F9D3B1D3CE8D5002C6F6B /* CTCurrency.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTCurrency.csv; sourceTree = "<group>"; };
 		450F9D3C1D3CE8D5002C6F6B /* CTISOCountries.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTISOCountries.csv; sourceTree = "<group>"; };
-		450F9D3F1D3CE9D6002C6F6B /* CSVItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVItem.h; sourceTree = "<group>"; };
-		450F9D401D3CE9D6002C6F6B /* CSVItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVItem.m; sourceTree = "<group>"; };
+		450F9D3F1D3CE9D6002C6F6B /* CTCSVItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCSVItem.h; sourceTree = "<group>"; };
+		450F9D401D3CE9D6002C6F6B /* CTCSVItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCSVItem.m; sourceTree = "<group>"; };
 		450F9D471D3D00C8002C6F6B /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		450F9D481D3D00C8002C6F6B /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		450F9D4B1D3D14FF002C6F6B /* CTLanguages.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTLanguages.csv; sourceTree = "<group>"; };
@@ -436,8 +436,8 @@
 		451D7E321DAFC548001A4062 /* GTBooking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTBooking.m; sourceTree = "<group>"; };
 		451D7E351DAFC564001A4062 /* CTRentalBooking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRentalBooking.h; sourceTree = "<group>"; };
 		451D7E361DAFC564001A4062 /* CTRentalBooking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRentalBooking.m; sourceTree = "<group>"; };
-		451D7E7F1DBE1197001A4062 /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
-		451D7E801DBE1197001A4062 /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
+		451D7E7F1DBE1197001A4062 /* CTDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDataStore.h; sourceTree = "<group>"; };
+		451D7E801DBE1197001A4062 /* CTDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDataStore.m; sourceTree = "<group>"; };
 		451FE5A91D6EF248004D85D1 /* GenericValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericValidation.h; sourceTree = "<group>"; };
 		451FE5AA1D6EF248004D85D1 /* GenericValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericValidation.m; sourceTree = "<group>"; };
 		451FE5AD1D6EF286004D85D1 /* InsuranceValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceValidation.h; sourceTree = "<group>"; };
@@ -939,8 +939,6 @@
 				4525216E1D353C4200B47DE6 /* DriverDetailsViewController.m */,
 				45F4735A1D36451F00DF548B /* AddressDetailsViewController.h */,
 				45F4735B1D36451F00DF548B /* AddressDetailsViewController.m */,
-				450F9D3F1D3CE9D6002C6F6B /* CSVItem.h */,
-				450F9D401D3CE9D6002C6F6B /* CSVItem.m */,
 			);
 			name = "Driver Details (Step Six)";
 			sourceTree = "<group>";
@@ -1487,8 +1485,8 @@
 				451C8EFD1D7ECCE900B9324D /* GroundTransportSearch.m */,
 				45D6CC8F1DA55FBB000D7A6C /* FlightNumberValidation.h */,
 				45D6CC901DA55FBB000D7A6C /* FlightNumberValidation.m */,
-				451D7E7F1DBE1197001A4062 /* DataStore.h */,
-				451D7E801DBE1197001A4062 /* DataStore.m */,
+				451D7E7F1DBE1197001A4062 /* CTDataStore.h */,
+				451D7E801DBE1197001A4062 /* CTDataStore.m */,
 				454D91EE1DD34E24001AE96C /* Reachability.h */,
 				454D91EF1DD34E24001AE96C /* Reachability.m */,
 				4513B6221DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h */,
@@ -1497,6 +1495,8 @@
 				450725B11DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m */,
 				459CB2DE1DDB1D9E008522BA /* CartrawlerSDK+UIView.h */,
 				459CB2DF1DDB1D9E008522BA /* CartrawlerSDK+UIView.m */,
+				450F9D3F1D3CE9D6002C6F6B /* CTCSVItem.h */,
+				450F9D401D3CE9D6002C6F6B /* CTCSVItem.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1684,7 +1684,7 @@
 				455B58851DCC914300CA4790 /* HTMLParser.h in Headers */,
 				455B588D1DCC914300CA4790 /* LocalisedStrings.h in Headers */,
 				455B588F1DCC914300CA4790 /* FlightNumberValidation.h in Headers */,
-				455B58911DCC914300CA4790 /* DataStore.h in Headers */,
+				455B58911DCC914300CA4790 /* CTDataStore.h in Headers */,
 				4595F1761DE482BA00990495 /* CTPaymentCheck.h in Headers */,
 				455B58931DCC914300CA4790 /* CartrawlerSDK+UIColor.h in Headers */,
 				455B58951DCC914300CA4790 /* RentalBookingsViewController.h in Headers */,
@@ -1760,7 +1760,7 @@
 				45493E451DE5E97D005A8AD0 /* CTDriverDetailsValidation.h in Headers */,
 				455B59171DCC914400CA4790 /* DriverDetailsViewController.h in Headers */,
 				455B59191DCC914400CA4790 /* AddressDetailsViewController.h in Headers */,
-				455B591B1DCC914400CA4790 /* CSVItem.h in Headers */,
+				455B591B1DCC914400CA4790 /* CTCSVItem.h in Headers */,
 				455B591D1DCC914400CA4790 /* PaymentViewController.h in Headers */,
 				455B591F1DCC914400CA4790 /* PaymentCompletionViewController.h in Headers */,
 				455B59211DCC914400CA4790 /* GTInterstitialViewController.h in Headers */,
@@ -1973,7 +1973,7 @@
 				455B588A1DCC914300CA4790 /* GroundTransportSearch.m in Sources */,
 				455B588E1DCC914300CA4790 /* LocalisedStrings.m in Sources */,
 				455B58901DCC914300CA4790 /* FlightNumberValidation.m in Sources */,
-				455B58921DCC914300CA4790 /* DataStore.m in Sources */,
+				455B58921DCC914300CA4790 /* CTDataStore.m in Sources */,
 				455B58941DCC914300CA4790 /* CartrawlerSDK+UIColor.m in Sources */,
 				455B58961DCC914300CA4790 /* RentalBookingsViewController.m in Sources */,
 				455B58981DCC914300CA4790 /* RentalBookingCell.m in Sources */,
@@ -2050,7 +2050,7 @@
 				455B59161DCC914400CA4790 /* PaymentSummaryTableViewCell.m in Sources */,
 				455B59181DCC914400CA4790 /* DriverDetailsViewController.m in Sources */,
 				455B591A1DCC914400CA4790 /* AddressDetailsViewController.m in Sources */,
-				455B591C1DCC914400CA4790 /* CSVItem.m in Sources */,
+				455B591C1DCC914400CA4790 /* CTCSVItem.m in Sources */,
 				45C072281DF03BAB001D6E64 /* CTInPathVehicle.m in Sources */,
 				455B591E1DCC914400CA4790 /* PaymentViewController.m in Sources */,
 				45C980C31DCCDB95002D99AB /* CTLayoutConstraint.m in Sources */,

@@ -18,7 +18,7 @@
 #import "TermsViewController.h"
 #import "CTNextButton.h"
 #import "CTAppearance.h"
-#import "DataStore.h"
+#import "CTDataStore.h"
 #import "Reachability.h"
 #import "CartrawlerSDK+NSNumber.h"
 #import "CTPaymentLoadingViewController.h"

@@ -24,7 +24,7 @@
 #import "BookingCompletionValidation.h"
 #import "RentalBookingsViewController.h"
 #import "GTBookingsViewController.h"
-#import "DataStore.h"
+#import "CTDataStore.h"
 #import "CTBasketValidation.h"
 #import "CTDriverDetailsValidation.h"
 
@@ -50,6 +50,16 @@
 @property (nonatomic, strong) NSBundle *bundle;
 
 @property (nonatomic) BOOL isCarRental;
+
+//---Ground Transport View Controllers---
+@property (nonatomic, strong, nonnull, readonly) CTViewController *gtSearchDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *gtServiceSelectionViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *gtPassengerDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *gtAddressDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *gtPaymentViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *gtPaymentCompletionViewController;
+//---------------------------------------
+
 
 @end
 
@@ -94,39 +104,6 @@
     [self configureViews];
     [self presentRentalNavigationController:viewController isInPath:NO];
 
-}
-
-- (void)presentCarRentalInViewController:(UIViewController *)viewController
-                               firstName:(NSString *)firstName
-                                 surname:(NSString *)surname
-                               driverAge:(NSNumber *)driverAge
-                    additionalPassengers:(NSNumber *)additionalPassengers
-                                   email:(NSString *)email
-                                   phone:(NSString *)phone
-                                flightNo:(NSString *)flightNo
-                            addressLine1:(NSString *)addressLine1
-                            addressLine2:(NSString *)addressLine2
-                                    city:(NSString *)city
-                                postcode:(NSString *)postcode
-{
-    _isCarRental = YES;
-    
-    [[CarRentalSearch instance] reset];
-    
-    [CarRentalSearch instance].firstName = firstName;
-    [CarRentalSearch instance].surname = surname;
-    [CarRentalSearch instance].passengerQty = [NSNumber numberWithInt:1 + additionalPassengers.intValue];
-    [CarRentalSearch instance].driverAge = driverAge;
-    [CarRentalSearch instance].email = email;
-    [CarRentalSearch instance].phone = phone;
-    [CarRentalSearch instance].flightNumber = flightNo;
-    [CarRentalSearch instance].addressLine1 = addressLine1;
-    [CarRentalSearch instance].addressLine2 = addressLine2;
-    [CarRentalSearch instance].city = city;
-    [CarRentalSearch instance].postcode = postcode;
-
-    [self configureViews];
-    [self presentRentalNavigationController:viewController isInPath:NO];
 }
 
 - (void)presentCarRentalWithFlightDetails:(NSString *)IATACode
@@ -213,7 +190,7 @@
     navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
     
-    if ([DataStore checkHasUpcomingBookings] && !isInPath) {
+    if ([CTDataStore checkHasUpcomingBookings] && !isInPath) {
         
         UIStoryboard *landingStoryboard = [UIStoryboard storyboardWithName:@"Landing" bundle:self.bundle];
         RentalBookingsViewController *upcomingBookingsVC = [landingStoryboard instantiateViewControllerWithIdentifier:@"RentalBookingsViewController"];
@@ -504,14 +481,14 @@ void uncaughtExceptionHandler(NSException *exception)
 
 - (void)didDismissViewController
 {
-    if (self.delegate) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didCancelVehicleBooking)]) {
         [self.delegate didCancelVehicleBooking];
     }
 }
 
 - (void)didBookVehicle:(CTBooking *)booking
 {
-    if (self.delegate) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didBookVehicle:)]) {
         [self.delegate didBookVehicle:booking];
     }
 }

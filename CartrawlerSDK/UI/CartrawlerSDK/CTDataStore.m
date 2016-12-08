@@ -1,14 +1,14 @@
 //
-//  DataStore.m
+//  CTDataStore.m
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 24/10/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "DataStore.h"
+#import "CTDataStore.h"
 
-@implementation DataStore
+@implementation CTDataStore
 
 NSString * const RentalBookingKey = @"cartrawler_rental_bookings";
 NSString * const GTBookingKey = @"cartrawler_gt_bookings";

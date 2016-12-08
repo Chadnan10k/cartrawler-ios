@@ -20,6 +20,7 @@
 //static placeholder
 @property (nonatomic, strong) UIView *staticPlaceholderView;
 @property (nonatomic, strong) UIImageView *placeholderImageView;
+@property (nonatomic, strong) CTLabel *placeholderInfoLabel;
 
 @end
 
@@ -47,20 +48,41 @@
                                                                  metrics:nil
                                                                    views:@{@"view" : self.staticPlaceholderView}]];
     _placeholderImageView = [UIImageView new];
+    self.placeholderImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.placeholderImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.staticPlaceholderView addSubview:self.placeholderImageView];
     
-    [self.staticPlaceholderView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|"
+    [self.staticPlaceholderView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-16-[view]"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:@{@"view" : self.placeholderImageView}]];
-    [self.staticPlaceholderView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|"
+    [self.staticPlaceholderView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-32-[view]-32-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:@{@"view" : self.placeholderImageView}]];
     self.placeholderImageView.image = [UIImage imageNamed:@"success_car"
                                                  inBundle:[NSBundle bundleForClass:[self class]]
                             compatibleWithTraitCollection:nil];
+    
+    _placeholderInfoLabel = [CTLabel new];
+    self.placeholderInfoLabel.text = @"Book now and get 10% off!";
+    self.placeholderInfoLabel.textAlignment = NSTextAlignmentCenter;
+    self.placeholderInfoLabel.numberOfLines = 0;
+    self.placeholderInfoLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.staticPlaceholderView addSubview:self.placeholderInfoLabel];
+    
+    [self.staticPlaceholderView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[image]-16-[text(20)]-8-|"
+                                                                                       options:0
+                                                                                       metrics:nil
+                                                                                         views:@{@"text" : self.placeholderInfoLabel,
+                                                                                                 @"image" : self.placeholderImageView}]];
+    
+    [self.staticPlaceholderView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[text]-8-|"
+                                                                                       options:0
+                                                                                       metrics:nil
+                                                                                         views:@{@"text" : self.placeholderInfoLabel}]];
+    
+    
 }
 
 #pragma mark Render Vehicle
@@ -90,11 +112,11 @@
     self.vehicleImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.vehicleImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.selectedVehicleView addSubview:self.vehicleImageView];
-    [self.selectedVehicleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-32-[view]-32-|"
+    [self.selectedVehicleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view(120)]"
                                                                                        options:0
                                                                                        metrics:nil
                                                                                          views:@{@"view" : self.vehicleImageView}]];
-    [self.selectedVehicleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-32-[view]-32-|"
+    [self.selectedVehicleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(120)]-16-|"
                                                                                        options:0
                                                                                        metrics:nil
                                                                                          views:@{@"view" : self.vehicleImageView}]];
@@ -103,6 +125,26 @@
     [[CTImageCache sharedInstance] cachedImage:vehicle.vehicleImageURL completion:^(UIImage *image) {
         weakself.vehicleImageView.image = image;
     }];
+    
+    _vehicleNameLabel = [CTLabel new];
+    self.vehicleNameLabel.text = vehicle.vehicleName;
+    self.vehicleNameLabel.textAlignment = NSTextAlignmentLeft;
+    self.vehicleNameLabel.numberOfLines = 0;
+    self.vehicleNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.selectedVehicleView addSubview:self.vehicleNameLabel];
+    
+    [self.selectedVehicleView addConstraint:[NSLayoutConstraint constraintWithItem:self.vehicleNameLabel
+                                                                         attribute:NSLayoutAttributeCenterY
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.selectedVehicleView
+                                                                         attribute:NSLayoutAttributeCenterY
+                                                                        multiplier:1 constant:0]];
+    
+    [self.selectedVehicleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[text]-8-[image]"
+                                                                                       options:0
+                                                                                       metrics:nil
+                                                                                         views:@{@"text" : self.vehicleNameLabel,
+                                                                                                 @"image" : self.vehicleImageView}]];
     
 }
 

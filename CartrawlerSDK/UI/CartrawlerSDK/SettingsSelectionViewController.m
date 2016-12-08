@@ -13,7 +13,7 @@
 @interface SettingsSelectionViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray<CSVItem *> *data;
+@property (strong, nonatomic) NSMutableArray<CTCSVItem *> *data;
 @property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 
 @property (nonatomic) SettingsType settingType;
@@ -64,7 +64,7 @@
     for (NSString *row in rows){
         NSArray* columns = [row componentsSeparatedByString:@","];
         if (columns.count >=2) {
-            [self.data addObject:[[CSVItem alloc] initWithName:columns[0] code:columns[1]]];
+            [self.data addObject:[[CTCSVItem alloc] initWithName:columns[0] code:columns[1]]];
         }
     }
     
