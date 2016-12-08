@@ -43,6 +43,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    __weak typeof(self) weakSelf = self;
+    NSString *buttonText = [NSString stringWithFormat:@"Book now for %@", [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode]];
+    [self.confirmButton setText:buttonText didTap:^{
+        [weakSelf confirmPayment];
+    }];
 
     self.backButton.enabled = YES;
     
@@ -87,12 +93,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    __weak typeof(self) weakSelf = self;
-    NSString *buttonText = [NSString stringWithFormat:@"Book now for %@", [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode]];
-    [self.confirmButton setText:buttonText didTap:^{
-        [weakSelf confirmPayment];
-    }];
     
     _paymentView = [[CTPaymentView alloc] initWithFrame:CGRectZero];
     self.paymentView.delegate = self;
