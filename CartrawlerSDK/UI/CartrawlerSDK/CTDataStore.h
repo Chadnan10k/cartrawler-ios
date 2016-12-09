@@ -20,4 +20,10 @@
 
 + (BOOL)checkHasUpcomingBookings;
 
+/*
+ For In Path
+*/
++ (void)cachePotentialInPathBooking:(CTRentalBooking *)potentialBooking;
++ (void)didMakeInPathBooking:(NSString *)referenceNumber;
+
 @end

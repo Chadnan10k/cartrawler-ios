@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTRentalSearch.h"
 
 @interface CTRentalBooking : NSObject <NSCoding>
 
@@ -17,5 +18,7 @@
 @property (nonatomic, strong) NSDate   *dropoffDate;
 @property (nonatomic, strong) NSString *vehicleImage;
 @property (nonatomic, strong) NSString *vehicleName;
+
+- (instancetype)initFromSearch:(CTRentalSearch *)rentalSearch;
 
 @end

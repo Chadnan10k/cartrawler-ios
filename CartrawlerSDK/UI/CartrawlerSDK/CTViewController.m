@@ -9,6 +9,7 @@
 #import "CTViewController.h"
 #import "SearchDetailsViewController.h"
 #import "CTInPathPayment.h"
+#import "CTDataStore.h"
 
 @interface CTViewController ()
 
@@ -43,6 +44,9 @@
 
 - (void)produceInPathPayload
 {
+    CTRentalBooking *booking = [[CTRentalBooking alloc] initFromSearch:self.search];
+    [CTDataStore cachePotentialInPathBooking:booking];
+    
     if (self.delegate) {
         [self.delegate didProduceInPathRequest:[CTInPathPayment createInPathRequest:self.search]
                                        vehicle:[[CTInPathVehicle alloc]

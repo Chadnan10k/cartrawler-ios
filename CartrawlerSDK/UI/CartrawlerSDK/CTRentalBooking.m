@@ -36,4 +36,16 @@
     [aCoder encodeObject:self.vehicleName forKey:@"vehicleName"];
 }
 
+- (instancetype)initFromSearch:(CTRentalSearch *)rentalSearch
+{
+    self = [super init];
+    _pickupLocation = rentalSearch.pickupLocation.name;
+    _dropoffLocation = rentalSearch.dropoffLocation.name;
+    _pickupDate = rentalSearch.pickupDate;
+    _dropoffDate = rentalSearch.dropoffDate;
+    _vehicleImage = rentalSearch.selectedVehicle.vehicle.pictureURL.absoluteString;
+    _vehicleName = rentalSearch.selectedVehicle.vehicle.makeModelName;
+    return self;
+}
+
 @end

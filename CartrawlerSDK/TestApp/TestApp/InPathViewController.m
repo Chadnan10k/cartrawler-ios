@@ -44,13 +44,19 @@
                                    addressLine2:nil
                                            city:nil
                                        postcode:nil
-                                    countryCode:nil
-                                    countryName:nil
+                                    countryCode:@"IE"
+                                    countryName:@"Ireland"
                                 isInPathBooking:YES
                              overViewController:self
                                      completion:^(BOOL success, NSString * _Nonnull errorMessage) {
                                          
                                      }];
+}
+
+- (IBAction)makePayment:(id)sender
+{
+    //Lets simulate a successful payment
+    [[CartrawlerSDK instance] didMakeInPathBooking:@{@"bookingId" : @"INPATH12345"}];
 }
 
 #pragma mark For in path

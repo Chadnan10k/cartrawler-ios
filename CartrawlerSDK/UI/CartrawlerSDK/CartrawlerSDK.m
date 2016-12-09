@@ -27,6 +27,7 @@
 #import "CTDataStore.h"
 #import "CTBasketValidation.h"
 #import "CTDriverDetailsValidation.h"
+#import "SearchDetailsViewController.h"
 
 #define kSearchViewStoryboard           @"StepOne"
 #define kSearchResultsViewStoryboard    @"StepTwo"
@@ -224,9 +225,20 @@
     } else {
         [navController setViewControllers:@[self.searchDetailsViewController]];
         [parent presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
+        if ([CTRentalSearch instance].pickupDate && [CTRentalSearch instance].dropoffDate) {
+            [(SearchDetailsViewController *)self.searchDetailsViewController performSearch];
+        }
     }
 }
 
+#pragma mark In Path
+- (void)didMakeInPathBooking:(NSDictionary *)cartrawlerResponse
+{
+    NSString *testRes = cartrawlerResponse[@"bookingId"];
+    [CTDataStore didMakeInPathBooking:testRes];
+}
+
+#pragma mark View Config
 - (void)setDefaultViews
 {
     

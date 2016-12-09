@@ -12,6 +12,7 @@
 
 NSString * const RentalBookingKey = @"cartrawler_rental_bookings";
 NSString * const GTBookingKey = @"cartrawler_gt_bookings";
+NSString * const PotentialBookingKey = @"cartrawler_potenital_booking";
 
 + (void)storeRentalBooking:(CTRentalBooking *)booking
 {
@@ -31,13 +32,15 @@ NSString * const GTBookingKey = @"cartrawler_gt_bookings";
 
 + (NSArray<CTRentalBooking *> *)retrieveRentalBookings
 {
-    NSArray *data = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:RentalBookingKey]];
+    NSArray *data = [NSKeyedUnarchiver unarchiveObjectWithData:
+                     [[NSUserDefaults standardUserDefaults] objectForKey:RentalBookingKey]];
     return data ?: @[];
 }
 
 +(NSArray<GTBooking *> *)retrieveGTBookings
 {
-    NSArray *data = [NSKeyedUnarchiver unarchiveObjectWithData: [[NSUserDefaults standardUserDefaults] objectForKey:GTBookingKey]];
+    NSArray *data = [NSKeyedUnarchiver unarchiveObjectWithData:
+                     [[NSUserDefaults standardUserDefaults] objectForKey:GTBookingKey]];
     return data ?: @[];
 }
 
@@ -53,6 +56,28 @@ NSString * const GTBookingKey = @"cartrawler_gt_bookings";
         }
     }
     return hasUpcomingDates;
+}
+
+#pragma mark In Path
+
++ (void)cachePotentialInPathBooking:(CTRentalBooking *)potentialBooking
+{
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:potentialBooking];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:PotentialBookingKey];
+}
+
++ (void)didMakeInPathBooking:(NSString *)referenceNumber
+{
+    CTRentalBooking *potentialBooking = [NSKeyedUnarchiver unarchiveObjectWithData:
+                                         [[NSUserDefaults standardUserDefaults] objectForKey:PotentialBookingKey]];
+    
+    if (potentialBooking) {
+        potentialBooking.bookingId = referenceNumber;
+        NSMutableArray<CTRentalBooking *> *arr = [[NSMutableArray alloc] initWithArray:[self retrieveRentalBookings]];
+        [arr addObject:potentialBooking];
+        NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:arr];
+        [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:RentalBookingKey];
+    }
 }
 
 @end

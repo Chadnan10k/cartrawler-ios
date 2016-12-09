@@ -91,6 +91,8 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
                        overViewController:(nonnull UIViewController *)viewController
                                completion:(CarRentalWithFlightDetailsCompletion)completion;
 
+- (void)didMakeInPathBooking:(NSDictionary *)cartrawlerResponse;
+
 @end
 
 NS_ASSUME_NONNULL_END

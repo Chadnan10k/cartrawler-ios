@@ -62,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="998" y="139"/>
+            <point key="canvasLocation" x="1098" y="139"/>
         </scene>
         <!--In Path View Controller-->
         <scene sceneID="gBA-rQ-i6F">
@@ -124,6 +124,18 @@
                                     <constraint firstAttribute="bottom" secondItem="iIh-9d-YCf" secondAttribute="bottom" id="bGf-Ic-YwN"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xed-eD-UPO">
+                                <rect key="frame" x="0.0" y="612" width="375" height="55"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.78823529410000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="6Um-x9-JGE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Make Payment"/>
+                                <connections>
+                                    <action selector="makePayment:" destination="9HL-5W-v1q" eventType="touchUpInside" id="ZMw-g2-mPi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -131,6 +143,9 @@
                             <constraint firstItem="lzk-tW-vOj" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="16" id="JuW-Cq-FDt"/>
                             <constraint firstItem="7vh-Hy-L1z" firstAttribute="top" secondItem="ydC-Dt-pdY" secondAttribute="bottom" id="Mqf-j4-i71"/>
                             <constraint firstItem="7vh-Hy-L1z" firstAttribute="top" secondItem="ax6-HZ-Y0J" secondAttribute="bottom" constant="8" id="XyJ-le-fNy"/>
+                            <constraint firstItem="7vh-Hy-L1z" firstAttribute="top" secondItem="xed-eD-UPO" secondAttribute="bottom" id="Y43-r6-4oT"/>
+                            <constraint firstAttribute="trailing" secondItem="xed-eD-UPO" secondAttribute="trailing" id="Y5V-Mv-GTH"/>
+                            <constraint firstItem="xed-eD-UPO" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="c8H-XD-VRU"/>
                             <constraint firstAttribute="trailing" secondItem="lzk-tW-vOj" secondAttribute="trailing" constant="16" id="cCZ-5R-Y4L"/>
                             <constraint firstItem="ydC-Dt-pdY" firstAttribute="top" secondItem="BDW-7a-xVM" secondAttribute="top" id="d4y-ex-30R"/>
                             <constraint firstItem="lzk-tW-vOj" firstAttribute="top" secondItem="Ets-M0-nR8" secondAttribute="bottom" constant="261" id="dak-WO-yKO"/>
@@ -146,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2MH-hR-edb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1730" y="139"/>
+            <point key="canvasLocation" x="2092" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iEA-L5-dss">
