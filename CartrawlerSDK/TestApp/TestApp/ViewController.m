@@ -23,9 +23,7 @@
     
     [CartrawlerSDK appearance].fontName = @"Roboto-Regular";
     [CartrawlerSDK appearance].boldFontName = @"Roboto-Bold";
-    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
     [CartrawlerSDK appearance].presentAnimated = YES;
     [CartrawlerSDK appearance].modalPresentationStyle = UIModalPresentationOverFullScreen;
     [CartrawlerSDK appearance].modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -34,11 +32,6 @@
     
     [CartrawlerSDK instance].delegate = self;
 }
-//
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    InPathViewController *vc = segue.destinationViewController;
-//}
 
 - (IBAction)openCarRental:(id)sender {
     [[CartrawlerSDK instance] presentCarRentalInViewController:self];

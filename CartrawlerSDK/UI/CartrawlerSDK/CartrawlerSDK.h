@@ -22,9 +22,12 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol CartrawlerSDKDelegate <NSObject>
 
 @optional
+//Standalone
 - (void)didBookVehicle:(CTBooking *)booking;
 - (void)didCancelVehicleBooking;
+//In Path
 - (void)didGenerateInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle;
+
 
 @end
 
@@ -68,24 +71,24 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
  *
  *  @param viewController The parent view controller
  */
-- (void)presentCarRentalWithFlightDetails:(NSString *)IATACode
-                               pickupDate:(NSDate *)pickupDate
-                               returnDate:(NSDate *)returnDate
-                                firstName:(NSString *)firstName
-                                  surname:(NSString *)surname
-                                driverAge:(NSNumber *)driverAge
-                     additionalPassengers:(NSNumber *)additionalPassengers
-                                    email:(NSString *)email
-                                    phone:(NSString *)phone
-                                 flightNo:(NSString *)flightNo
-                             addressLine1:(NSString *)addressLine1
-                             addressLine2:(NSString *)addressLine2
-                                     city:(NSString *)city
-                                 postcode:(NSString *)postcode
-                              countryCode:(NSString *)countryCode
-                              countryName:(NSString *)countryName
+- (void)presentCarRentalWithFlightDetails:(nonnull NSString *)IATACode
+                               pickupDate:(nullable NSDate *)pickupDate
+                               returnDate:(nullable NSDate *)returnDate
+                                firstName:(nullable NSString *)firstName
+                                  surname:(nullable NSString *)surname
+                                driverAge:(nullable NSNumber *)driverAge
+                     additionalPassengers:(nullable NSNumber *)additionalPassengers
+                                    email:(nullable NSString *)email
+                                    phone:(nullable NSString *)phone
+                                 flightNo:(nullable NSString *)flightNo
+                             addressLine1:(nullable NSString *)addressLine1
+                             addressLine2:(nullable NSString *)addressLine2
+                                     city:(nullable NSString *)city
+                                 postcode:(nullable NSString *)postcode
+                              countryCode:(nullable NSString *)countryCode
+                              countryName:(nullable NSString *)countryName
                           isInPathBooking:(BOOL)isInPathBooking
-                       overViewController:(UIViewController *)viewController
+                       overViewController:(nonnull UIViewController *)viewController
                                completion:(CarRentalWithFlightDetailsCompletion)completion;
 
 @end

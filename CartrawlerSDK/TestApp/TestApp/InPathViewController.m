@@ -40,12 +40,12 @@
                                           email:@"lmaguire@cartrawler.com"
                                           phone:@"0866666666"
                                        flightNo:@"FR1234"
-                                   addressLine1:@"123 abc"
-                                   addressLine2:@""
-                                           city:@"Dublin"
-                                       postcode:@""
-                                    countryCode:@"IE"
-                                    countryName:@"Ireland"
+                                   addressLine1:nil
+                                   addressLine2:nil
+                                           city:nil
+                                       postcode:nil
+                                    countryCode:nil
+                                    countryName:nil
                                 isInPathBooking:YES
                              overViewController:self
                                      completion:^(BOOL success, NSString * _Nonnull errorMessage) {

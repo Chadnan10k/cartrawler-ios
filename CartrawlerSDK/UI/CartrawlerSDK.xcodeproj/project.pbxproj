@@ -332,6 +332,8 @@
 		45A507421DE33FD000661AC2 /* CTBasketValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A507401DE33FD000661AC2 /* CTBasketValidation.m */; };
 		45C072271DF03BAB001D6E64 /* CTInPathVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C072251DF03BAB001D6E64 /* CTInPathVehicle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45C072281DF03BAB001D6E64 /* CTInPathVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C072261DF03BAB001D6E64 /* CTInPathVehicle.m */; };
+		45C3F1CD1DFABEBD00610FA0 /* CTTagManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C3F1CB1DFABEBD00610FA0 /* CTTagManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45C3F1CE1DFABEBD00610FA0 /* CTTagManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C3F1CC1DFABEBD00610FA0 /* CTTagManager.m */; };
 		45C980C21DCCDB95002D99AB /* CTLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C980C01DCCDB95002D99AB /* CTLayoutConstraint.h */; };
 		45C980C31DCCDB95002D99AB /* CTLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C980C11DCCDB95002D99AB /* CTLayoutConstraint.m */; };
 		45D3860A1DD62281000F02D1 /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45D386091DD62281000F02D1 /* strip-frameworks.sh */; };
@@ -583,6 +585,8 @@
 		45C072261DF03BAB001D6E64 /* CTInPathVehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathVehicle.m; sourceTree = "<group>"; };
 		45C1ECF31D5103150059EF89 /* CTFilterTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterTableView.h; sourceTree = "<group>"; };
 		45C1ECF41D5103150059EF89 /* CTFilterTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterTableView.m; sourceTree = "<group>"; };
+		45C3F1CB1DFABEBD00610FA0 /* CTTagManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTagManager.h; sourceTree = "<group>"; };
+		45C3F1CC1DFABEBD00610FA0 /* CTTagManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTagManager.m; sourceTree = "<group>"; };
 		45C488C91D479B020044612C /* CTOptionalExtrasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTOptionalExtrasView.h; sourceTree = "<group>"; };
 		45C488CA1D479B020044612C /* CTOptionalExtrasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTOptionalExtrasView.m; sourceTree = "<group>"; };
 		45C488CD1D479B260044612C /* OptionalExtraTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionalExtraTableViewCell.xib; sourceTree = "<group>"; };
@@ -1211,6 +1215,17 @@
 			name = UITableView;
 			sourceTree = "<group>";
 		};
+		45C3F1CF1DFABF6100610FA0 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */,
+				45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */,
+				45C3F1CB1DFABEBD00610FA0 /* CTTagManager.h */,
+				45C3F1CC1DFABEBD00610FA0 /* CTTagManager.m */,
+			);
+			name = Public;
+			sourceTree = "<group>";
+		};
 		45CB6D011D9C136400754DCD /* Included TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1317,8 +1332,7 @@
 		45E942451D12FF0F00ACF604 /* CartrawlerSDK */ = {
 			isa = PBXGroup;
 			children = (
-				45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */,
-				45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */,
+				45C3F1CF1DFABF6100610FA0 /* Public */,
 				455B582E1DCC90D300CA4790 /* Info.plist */,
 				45E0EA811DF8276800845205 /* InPath */,
 				45B264F41D8FDE28000005F2 /* Payment */,
@@ -1636,6 +1650,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45C3F1CD1DFABEBD00610FA0 /* CTTagManager.h in Headers */,
 				455B587D1DCC914300CA4790 /* CTImageCache.h in Headers */,
 				45F5D75D1DEEF41A005AE1AD /* CTInPathPayment.h in Headers */,
 				45C072271DF03BAB001D6E64 /* CTInPathVehicle.h in Headers */,
@@ -1962,6 +1977,7 @@
 				455B586D1DCC914300CA4790 /* CTButton.m in Sources */,
 				455B586F1DCC914300CA4790 /* UnderLinedButton.m in Sources */,
 				455B58711DCC914300CA4790 /* TabButton.m in Sources */,
+				45C3F1CE1DFABEBD00610FA0 /* CTTagManager.m in Sources */,
 				455B58731DCC914300CA4790 /* GTBookNowButton.m in Sources */,
 				455B58751DCC914300CA4790 /* CTLabel.m in Sources */,
 				455B58771DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.m in Sources */,
