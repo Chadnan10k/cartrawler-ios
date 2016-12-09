@@ -44,8 +44,16 @@
 {
     [super viewWillAppear:animated];
     
+    double total = 0;
+    
+    if (self.search.isBuyingInsurance) {
+        total += self.search.insurance.premiumAmount.doubleValue;
+    }
+    
+    total += self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue;
+    
     __weak typeof(self) weakSelf = self;
-    NSString *buttonText = [NSString stringWithFormat:@"Book now for %@", [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode]];
+    NSString *buttonText = [NSString stringWithFormat:@"Book now for %@", [@(total) numberStringWithCurrencyCode]];
     [self.confirmButton setText:buttonText didTap:^{
         [weakSelf confirmPayment];
     }];
