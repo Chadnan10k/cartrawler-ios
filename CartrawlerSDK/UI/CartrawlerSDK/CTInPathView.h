@@ -12,5 +12,6 @@
 @interface CTInPathView : UIView
 
 - (void)renderVehicleDetails:(CTInPathVehicle *)vehicle;
+- (void)renderDefault;
 
 @end

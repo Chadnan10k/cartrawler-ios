@@ -18,6 +18,8 @@
 @property (strong, nonnull) CTInPathVehicle *selectedVehicle;
 @property (strong, nonnull) NSDictionary *selectedVehicleDict;
 
+@property (nonatomic) BOOL didBookCar;
+
 @end
 
 @implementation InPathViewController
@@ -30,27 +32,37 @@
 
 - (IBAction)openInPath:(id)sender
 {
-    [[CartrawlerSDK instance] presentCarRentalWithFlightDetails:@"ALC"
-                                     pickupDate:[NSDate dateWithTimeIntervalSinceNow:480000]
-                                     returnDate:[NSDate dateWithTimeIntervalSinceNow:960000]
-                                      firstName:@"Lee"
-                                        surname:@"Maguire"
-                                      driverAge:@30
-                           additionalPassengers:@3
-                                          email:@"lmaguire@cartrawler.com"
-                                          phone:@"0866666666"
-                                       flightNo:@"FR1234"
-                                   addressLine1:nil
-                                   addressLine2:nil
-                                           city:nil
-                                       postcode:nil
-                                    countryCode:@"IE"
-                                    countryName:@"Ireland"
-                                isInPathBooking:YES
-                             overViewController:self
-                                     completion:^(BOOL success, NSString * _Nonnull errorMessage) {
-                                         
-                                     }];
+    if (self.didBookCar) {
+        _didBookCar = NO;
+        [self.inPathView renderDefault];
+        _selectedVehicle = nil;
+        _selectedVehicleDict = nil;
+        [self.bookButton setTitle:@"Book vehicle" forState:UIControlStateNormal];
+    } else {
+        [[CartrawlerSDK instance] presentCarRentalWithFlightDetails:@"ALC"
+                                         pickupDate:[NSDate dateWithTimeIntervalSinceNow:480000]
+                                         returnDate:[NSDate dateWithTimeIntervalSinceNow:960000]
+                                          firstName:@"Lee"
+                                            surname:@"Maguire"
+                                          driverAge:@30
+                               additionalPassengers:@3
+                                              email:@"lmaguire@cartrawler.com"
+                                              phone:@"0866666666"
+                                           flightNo:@"FR1234"
+                                       addressLine1:nil
+                                       addressLine2:nil
+                                               city:nil
+                                           postcode:nil
+                                        countryCode:@"IE"
+                                        countryName:@"Ireland"
+                                    isInPathBooking:YES
+                                 overViewController:self
+                                         completion:^(BOOL success, NSString * _Nonnull errorMessage) {
+                                             if (errorMessage) {
+                                                 NSLog(@"%@", errorMessage);
+                                             }
+                                         }];
+    }
 }
 
 - (IBAction)makePayment:(id)sender
@@ -63,11 +75,11 @@
 - (void)didGenerateInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
 {
     [self.inPathView renderVehicleDetails:vehicle];
-    [self.bookButton setTitle:[NSString stringWithFormat:@"Car for %@",
-                               [vehicle.totalCost numberStringWithCurrencyCode]] forState:UIControlStateNormal];
+    [self.bookButton setTitle:@"Remove vehicle" forState:UIControlStateNormal];
     NSLog(@"%@", request);
     _selectedVehicle = vehicle;
     _selectedVehicleDict = request;
+    _didBookCar = YES;
 }
 
 @end

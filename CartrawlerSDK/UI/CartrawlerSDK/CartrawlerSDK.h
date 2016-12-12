@@ -68,8 +68,6 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 
 /**
  *  Presents the car rental engine modally in the designated UIViewController, with predefined user details
- *
- *  @param viewController The parent view controller
  */
 - (void)presentCarRentalWithFlightDetails:(nonnull NSString *)IATACode
                                pickupDate:(nullable NSDate *)pickupDate
@@ -91,6 +89,9 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
                        overViewController:(nonnull UIViewController *)viewController
                                completion:(CarRentalWithFlightDetailsCompletion)completion;
 
+/**
+ * If you made a successfull in path booking,
+ */
 - (void)didMakeInPathBooking:(NSDictionary *)cartrawlerResponse;
 
 @end
