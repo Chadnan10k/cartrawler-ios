@@ -8,8 +8,11 @@
 
 #import "CTBookingSummaryViewController.h"
 #import "CTBookingSummaryView.h"
-
+#import "CTNextButton.h"
 @interface CTBookingSummaryViewController ()
+
+@property (weak, nonatomic) IBOutlet CTNextButton *continueButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerBottomSpace;
 
 @end
 
@@ -17,7 +20,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    __weak typeof(self) weakSelf = self;
+    [self.continueButton setText:@"Continue" didTap:^{
+        if (weakSelf.inPathEnabled) {
+            [weakSelf produceInPathPayload];
+        } else {
+            [weakSelf pushToDestination];
+        }
+    }];
 }
 
 - (IBAction)back:(id)sender {

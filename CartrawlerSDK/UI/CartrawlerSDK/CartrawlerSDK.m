@@ -236,6 +236,7 @@
 {
     NSString *testRes = cartrawlerResponse[@"bookingId"];
     [CTDataStore didMakeInPathBooking:testRes];
+    //Fire off to tag manager
 }
 
 #pragma mark View Config
@@ -257,7 +258,7 @@
     _extrasViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:@"OptionalExtrasViewController"];
     
     UIStoryboard *summaryStoryboard = [UIStoryboard storyboardWithName:kSummaryViewStoryboard bundle:self.bundle];
-    _paymentSummaryViewController = [summaryStoryboard instantiateViewControllerWithIdentifier:@"PaymentSummaryViewController"];
+    _paymentSummaryViewController = [summaryStoryboard instantiateViewControllerWithIdentifier:@"CTBookingSummaryViewController"];
     
     UIStoryboard *detailsStoryboard = [UIStoryboard storyboardWithName:kDetailsViewStoryboard bundle:self.bundle];
     _driverDetialsViewController = [detailsStoryboard instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];

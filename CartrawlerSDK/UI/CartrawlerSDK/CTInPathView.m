@@ -32,8 +32,8 @@
     [super awakeFromNib];
     [self renderStaticPlaceholder];
     [self renderVehicleDetailsPlaceholders];
-    [self.staticPlaceholderView setHidden:NO];
-    [self.selectedVehicleView setHidden:YES];
+    self.staticPlaceholderView.alpha = 1;
+    self.selectedVehicleView.alpha = 0;
 }
 
 - (void)renderStaticPlaceholder
@@ -140,12 +140,20 @@
 #pragma mark Render Vehicle
 - (void)renderVehicleDetails:(CTInPathVehicle *)vehicle
 {
-    [self.staticPlaceholderView setHidden:YES];
-    [self.selectedVehicleView setHidden:NO];
+    self.staticPlaceholderView.alpha = 0;
+    self.selectedVehicleView.alpha = 1;
     self.vehicleNameLabel.text = vehicle.vehicleName;
     __weak typeof(self) weakself = self;
     [[CTImageCache sharedInstance] cachedImage:vehicle.vehicleImageURL completion:^(UIImage *image) {
         weakself.vehicleImageView.image = image;
+    }];
+}
+
+- (void)renderDefault
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.staticPlaceholderView.alpha = 1;
+        self.selectedVehicleView.alpha = 0;
     }];
 }
 
