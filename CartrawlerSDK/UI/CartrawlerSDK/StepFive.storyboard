@@ -117,7 +117,7 @@
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z92-uz-UpI">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="517"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="location" rowHeight="60" id="54N-qr-62g" userLabel="Locations" customClass="CTPaymentLocationTableViewCell">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
@@ -139,6 +139,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="5bS-W6-zmv" secondAttribute="trailing" id="8ah-lN-eQ2"/>
                                                         <constraint firstItem="5bS-W6-zmv" firstAttribute="leading" secondItem="a5s-uM-glK" secondAttribute="leading" constant="8" id="EZy-rg-bdc"/>
@@ -169,6 +170,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="KIN-xK-KZX" firstAttribute="leading" secondItem="aRU-qj-Hdu" secondAttribute="leading" constant="8" id="9NA-GV-8oy"/>
                                                         <constraint firstAttribute="trailing" secondItem="KIN-xK-KZX" secondAttribute="trailing" constant="8" id="bja-vT-196"/>
@@ -300,6 +302,7 @@
                                                             </constraints>
                                                         </view>
                                                     </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="83H-xR-3bG" secondAttribute="bottom" id="GXK-8f-6wG"/>
                                                         <constraint firstAttribute="trailing" secondItem="83H-xR-3bG" secondAttribute="trailing" id="UF8-jv-FvM"/>
@@ -329,7 +332,7 @@
                                                                     <rect key="frame" x="16" y="16" width="343" height="149"/>
                                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="148.5" id="fu4-PV-Jya"/>
+                                                                        <constraint firstAttribute="height" priority="100" constant="148.5" id="fu4-PV-Jya"/>
                                                                     </constraints>
                                                                     <prototypes>
                                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="30" id="Uog-9g-zuD" customClass="PaymentSummaryTableViewCell">
@@ -401,7 +404,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="pPh-de-sxY" secondAttribute="trailing" constant="16" id="FzK-fa-1RO"/>
                                                                 <constraint firstItem="OWM-iO-y1d" firstAttribute="leading" secondItem="f4U-FP-zYc" secondAttribute="leading" constant="16" id="Kys-y4-UbJ"/>
@@ -417,6 +420,7 @@
                                                             </constraints>
                                                         </view>
                                                     </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="f4U-FP-zYc" secondAttribute="trailing" id="QRT-RI-FGy"/>
                                                         <constraint firstItem="f4U-FP-zYc" firstAttribute="top" secondItem="crE-MN-u3m" secondAttribute="top" id="fof-FQ-9aG"/>
@@ -433,7 +437,7 @@
                                         </prototypes>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="z92-uz-UpI" firstAttribute="top" secondItem="Hzf-yu-66D" secondAttribute="top" id="NW1-qo-sNr"/>
                                     <constraint firstAttribute="trailing" secondItem="z92-uz-UpI" secondAttribute="trailing" id="UGI-oQ-juu"/>
@@ -442,7 +446,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Hzf-yu-66D" secondAttribute="trailing" id="32x-SF-n7s"/>
                             <constraint firstItem="EKH-e8-AOG" firstAttribute="top" secondItem="Hzf-yu-66D" secondAttribute="bottom" id="W4c-09-o6i"/>

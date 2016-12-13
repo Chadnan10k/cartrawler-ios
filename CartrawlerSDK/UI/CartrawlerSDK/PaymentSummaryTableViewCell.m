@@ -20,9 +20,6 @@
 
 @implementation PaymentSummaryTableViewCell
 
-
-
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
