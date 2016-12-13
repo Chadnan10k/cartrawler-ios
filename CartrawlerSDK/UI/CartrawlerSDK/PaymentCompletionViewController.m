@@ -17,6 +17,8 @@
 #import "CartrawlerSDK+UIView.h"
 #import "CTBookingSummaryView.h"
 
+#import "CTBookingSummaryView.h"
+
 @interface PaymentCompletionViewController () <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet CTLabel *paymentTitleLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *paymentSubtitleLabel;
@@ -26,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet CTNextButton *doneButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet CTView *completionView;
-@property (weak, nonatomic) IBOutlet UIView *summaryView;
+@property (weak, nonatomic) IBOutlet CTView *summaryView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryHeight;
 
 @end
@@ -40,6 +42,7 @@
     [self.doneButton setText:@"Back to homepage" didTap:^{
         [weakSelf done];
     }];
+    self.scrollView.backgroundColor = [CTAppearance instance].viewBackgroundColor;
 }
 
 
@@ -63,7 +66,7 @@
     // Do any additional setup after loading the view.
     [self.scrollView setContentOffset:CGPointZero];
 
-    self.bookingReferenceLabel.text = [NSString stringWithFormat:@"%@", self.search.booking.confID ?: @"CTTest123456789"];
+    self.bookingReferenceLabel.text = [NSString stringWithFormat:@"%@", self.search.booking.confID ?: @"No Booking Ref"];
     self.emailLabel.text = [NSString stringWithFormat:@"We have sent a confirmation email to %@. This may take up to 15 minutes to arrive. Please review your voucher before picking up your car.", self.search.email];
 
 }
@@ -87,6 +90,8 @@
         vc.heightChanged = ^(CGFloat height) {
             weakSelf.summaryHeight.constant = height;
         };
+        segue.destinationViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+
     }
 }
 

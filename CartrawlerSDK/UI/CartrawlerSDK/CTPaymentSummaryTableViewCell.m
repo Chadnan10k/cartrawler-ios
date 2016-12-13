@@ -26,7 +26,7 @@
     [super awakeFromNib];
     // Initialization code
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 50;
+    self.tableView.estimatedRowHeight = 35;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

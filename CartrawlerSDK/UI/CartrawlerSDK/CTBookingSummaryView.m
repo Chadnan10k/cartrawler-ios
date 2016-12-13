@@ -13,6 +13,7 @@
 #import "CTLabel.h"
 #import "CTAppearance.h"
 #import "CTPaymentSummaryDataSource.h"
+#import "CartrawlerSDK+UIView.h"
 
 @interface CTBookingSummaryView ()
 
@@ -41,15 +42,34 @@
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self.dataSource;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 80;
+    self.tableView.estimatedRowHeight = 130;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+    [self.tableView layoutIfNeeded];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.tableView reloadData];
     [self.tableView layoutIfNeeded];
+    
     if (self.heightChanged) {
+        [self.tableView reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView layoutIfNeeded];
+            self.heightChanged(self.tableView.contentSize.height);
+            [UIView animateWithDuration:0.0 animations:^{
+                [self.tableView layoutIfNeeded];
+                [self.view layoutIfNeeded];
+                self.heightChanged(self.tableView.contentSize.height);
+            }];
+        });
         self.heightChanged(self.tableView.contentSize.height);
     }
 }
