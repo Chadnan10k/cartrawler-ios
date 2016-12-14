@@ -14,6 +14,7 @@
 @interface CTDateCollectionViewCell()
 
 @property (nonatomic, weak) IBOutlet CTLabel *label;
+@property (nonatomic, weak) IBOutlet UIImageView *selectedImageView;
 
 @end
 
@@ -24,6 +25,7 @@
     [super awakeFromNib];
     self.layer.cornerRadius = 3;
     self.layer.masksToBounds = NO;
+    self.selectedImageView.contentMode = UIViewContentModeScaleToFill;
 }
 
 - (void)setDateLabel:(NSDate *)date indexPath:(NSIndexPath *)indexPath section:(NSNumber *)section;
@@ -50,40 +52,57 @@
 
 - (void)headSetSelected
 {
-    self.backgroundColor = [CTAppearance instance].calendarStartCellColor;
+    if ([CTAppearance instance].calendarStartCellImage) {
+        self.selectedImageView.image = [CTAppearance instance].calendarStartCellImage;
+    } else {
+        self.backgroundColor = [CTAppearance instance].calendarStartCellColor;
+    }
     self.label.textColor = [UIColor whiteColor];
 }
 
 - (void)midSetSelected
 {
     if (![self.date isEqual:[NSNull null]]) {
-        self.backgroundColor = [CTAppearance instance].calendarMidCellColor;
-        self.label.textColor = [UIColor whiteColor];
+        if ([CTAppearance instance].calendarMidCellImage) {
+            self.selectedImageView.image = [CTAppearance instance].calendarMidCellImage;
+        } else {
+            self.backgroundColor = [CTAppearance instance].calendarMidCellColor;
+        }
+        self.label.textColor = [UIColor blackColor];
     }
 }
 
 - (void)tailSetSelected
 {
-    self.backgroundColor = [CTAppearance instance].calendarEndCellColor;
+    if ([CTAppearance instance].calendarEndCellImage) {
+        self.selectedImageView.image = [CTAppearance instance].calendarEndCellImage;
+    } else {
+        self.backgroundColor = [CTAppearance instance].calendarEndCellColor;
+    }
     self.label.textColor = [UIColor whiteColor];
 }
 
 - (void)sameDaySetSelected
 {
-    self.backgroundColor = [UIColor colorWithRed:28.0/255 green:78.0/255 blue:149.0/255 alpha:1];
+    if ([CTAppearance instance].calendarEndCellImage) {
+        self.selectedImageView.image = [CTAppearance instance].calendarSameDayCellImage;
+    } else {
+        self.backgroundColor = [CTAppearance instance].calendarSameDayCellColor;
+    }
     self.label.textColor = [UIColor whiteColor];
 }
 
 - (void)deselect
 {
     self.backgroundColor = [UIColor clearColor];
+    self.selectedImageView.image = nil;
     
     if (![self.date isEqual:[NSNull null]]) {
         NSDate *now = [NSDate date];
         NSDate *previousDay = [now dateByAddingTimeInterval:-1*24*60*60];
         
         if ([self.date compare:previousDay] == NSOrderedDescending) {
-            self.label.textColor = [UIColor darkGrayColor];
+            self.label.textColor = [UIColor blackColor];
         }
     }
 }

@@ -43,9 +43,14 @@
 @property (nonatomic, strong) UIColor  *calendarStartCellColor;
 @property (nonatomic, strong) UIColor  *calendarMidCellColor;
 @property (nonatomic, strong) UIColor  *calendarEndCellColor;
+@property (nonatomic, strong) UIColor  *calendarSameDayCellColor;
 @property (nonatomic, strong) UIColor  *calendarSummaryViewColor;
 @property (nonatomic, strong) UIColor  *calendarSummaryTitleLabelColor;
-
+//You can set images for the selected states on the cells if you like.
+@property (nonatomic, strong) UIImage  *calendarStartCellImage;
+@property (nonatomic, strong) UIImage  *calendarMidCellImage;
+@property (nonatomic, strong) UIImage  *calendarEndCellImage;
+@property (nonatomic, strong) UIImage  *calendarSameDayCellImage;
 
 //Presentation
 @property (nonatomic)         UIModalPresentationStyle modalPresentationStyle;
