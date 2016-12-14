@@ -13,7 +13,6 @@
 #import "CTLabel.h"
 #import "CTAppearance.h"
 #import "CTPaymentSummaryDataSource.h"
-#import "CartrawlerSDK+UIView.h"
 
 @interface CTBookingSummaryView ()
 
