@@ -96,7 +96,7 @@
                                                          options:0];
 
     self.pricePerDayLabel.text = [NSString stringWithFormat:@"%@ %@",
-                                  [[NSNumber numberWithFloat:self.search.insurance.premiumAmount.floatValue / [components day]] numberStringWithCurrencyCode], NSLocalizedString(@"per day", @"")];
+                                  [[NSNumber numberWithFloat:self.search.insurance.premiumAmount.floatValue / ([components day] ?: 1)] numberStringWithCurrencyCode], NSLocalizedString(@"per day", @"")];
 }
 
 - (void)viewDidLayoutSubviews
