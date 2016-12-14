@@ -250,7 +250,11 @@
     
     switch (textField.tag) {
         case 0:
-            [self.addressLine2TextField becomeFirstResponder];
+            if (self.addressLine1TextField.text.length > 0) {
+                [self.addressLine2TextField becomeFirstResponder];
+            } else {
+                [self.addressLine1TextField shakeAnimation];
+            }
             return NO;
             break;
         case 1:
@@ -258,7 +262,11 @@
             return NO;
             break;
         case 2:
-            [self.postCodeTextField becomeFirstResponder];
+            if (self.cityTextField.text.length > 0) {
+                [self.postCodeTextField becomeFirstResponder];
+            } else {
+                [self.cityTextField shakeAnimation];
+            }
             return NO;
             break;
         case 3:
