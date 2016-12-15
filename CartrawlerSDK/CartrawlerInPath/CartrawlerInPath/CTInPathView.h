@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerSDK/CTInPathVehicle.h>
+#import "CTInPathVehicle.h"
 
 @interface CTInPathView : UIView
 

@@ -63,7 +63,7 @@
     
     components3.hour = components2.hour;
     components3.minute = components2.minute;
-    components3.second = components2.second;
+    components3.second = 0;
     
     // Generate a new NSDate from components3.
     return [gregorianCalendar dateFromComponents:components3];

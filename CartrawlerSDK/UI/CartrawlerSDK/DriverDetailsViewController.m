@@ -13,7 +13,6 @@
 #import "CTFlightNumberValidation.h"
 #import "CTNextButton.h"
 #import "CartrawlerSDK+UITextField.h"
-#import "CTInPathPayment.h"
 
 @interface DriverDetailsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet CTTextField *firstNameTextField;

@@ -7,9 +7,9 @@
 //
 
 #import "CTInPathPayment.h"
-#import "CTSDKSettings.h"
-#import "CartrawlerSDK+NSDateUtils.h"
-#import "PaymentRequest.h"
+#import "CartrawlerSDK/CTSDKSettings.h"
+#import "CartrawlerSDK/CartrawlerSDK+NSDateUtils.h"
+#import "CartrawlerSDK/PaymentRequest.h"
 #import "CTInPathVehicle.h"
 
 @implementation CTInPathPayment

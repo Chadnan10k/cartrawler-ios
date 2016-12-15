@@ -7,7 +7,7 @@
 //
 
 #import "CTInPathView.h"
-#import "CTLabel.h"
+#import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTImageCache.h>
 
 @interface CTInPathView()
@@ -27,13 +27,36 @@
 @implementation CTInPathView
 
 #pragma mark Render Placeholder
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    [self setup];
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    [self setup];
+    return self;
+}
+
+- (void)setup
+{
+    if (!self.staticPlaceholderView) {
+        [self renderStaticPlaceholder];
+    }
+    if (!self.selectedVehicleView) {
+        [self renderVehicleDetailsPlaceholders];
+    }
+    self.staticPlaceholderView.alpha = 1;
+    self.selectedVehicleView.alpha = 0;
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    [self renderStaticPlaceholder];
-    [self renderVehicleDetailsPlaceholders];
-    self.staticPlaceholderView.alpha = 1;
-    self.selectedVehicleView.alpha = 0;
 }
 
 - (void)renderStaticPlaceholder

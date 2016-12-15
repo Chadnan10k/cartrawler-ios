@@ -13,4 +13,7 @@
    <FileRef
       location = "group:UI/CartrawlerSDK.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:CartrawlerInPath/CartrawlerInPath.xcodeproj">
+   </FileRef>
 </Workspace>

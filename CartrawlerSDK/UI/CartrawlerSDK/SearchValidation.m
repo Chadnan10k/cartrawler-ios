@@ -8,6 +8,7 @@
 
 #import "SearchValidation.h"
 #import "CTSDKSettings.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 
 @implementation SearchValidation
 
@@ -45,6 +46,9 @@
         completion(NO, @"search.driverAge is not set", NO);
         return;
     }
+    
+    NSLog(@"Payment pickup: %@", [search.pickupDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]);
+    NSLog(@"Payment dropoff: %@", [search.dropoffDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]);
     
     [cartrawlerAPI requestVehicleAvailabilityForLocation:search.pickupLocation.code
                                       returnLocationCode:search.dropoffLocation.code

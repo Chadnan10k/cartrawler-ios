@@ -22,8 +22,8 @@
     [super viewDidLoad];
     __weak typeof(self) weakSelf = self;
     [self.continueButton setText:@"Continue" didTap:^{
-        if (weakSelf.inPathEnabled) {
-            [weakSelf produceInPathPayload];
+        if (!weakSelf.destinationViewController) {
+            [weakSelf dismiss];
         } else {
             [weakSelf pushToDestination];
         }

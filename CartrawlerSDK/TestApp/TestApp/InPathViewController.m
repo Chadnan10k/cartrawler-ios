@@ -7,16 +7,18 @@
 //
 
 #import "InPathViewController.h"
-#import <CartrawlerSDK/CTInPathView.h>
+#import <CartrawlerInPath/CTInPathView.h>
 #import "CT+NSNumber.h"
+#import <CartrawlerInPath/CartrawlerInPath.h>
 
-@interface InPathViewController () <CartrawlerSDKDelegate>
+@interface InPathViewController () <CartrawlerInPathDelegate>
 
-@property (weak, nonatomic) IBOutlet CTInPathView *inPathView;
+@property (weak, nonatomic) IBOutlet UIView *inPathViewContainer;
 @property (weak, nonatomic) IBOutlet UIButton *bookButton;
 
 @property (strong, nonnull) CTInPathVehicle *selectedVehicle;
 @property (strong, nonnull) NSDictionary *selectedVehicleDict;
+@property (strong, nonatomic) CartrawlerInPath *inPath;
 
 @property (nonatomic) BOOL didBookCar;
 
@@ -26,20 +28,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [CartrawlerSDK instance].delegate = self;
+    CartrawlerSDK *sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:YES];
+    _inPath = [[CartrawlerInPath alloc] initWithCartrawlerSDK:sdk];
+    [self.inPath addCrossSellCardToView:self.inPathViewContainer];
+    self.inPath.delegate = self;
 }
 
 - (IBAction)openInPath:(id)sender
 {
     if (self.didBookCar) {
         _didBookCar = NO;
-        [self.inPathView renderDefault];
         _selectedVehicle = nil;
         _selectedVehicleDict = nil;
+        [self.inPath removeVehicle];
         [self.bookButton setTitle:@"Book vehicle" forState:UIControlStateNormal];
     } else {
-        [[CartrawlerSDK instance] presentCarRentalWithFlightDetails:@"ALC"
+        [self.inPath presentCarRentalWithFlightDetails:@"ALC"
                                          pickupDate:[NSDate dateWithTimeIntervalSinceNow:480000]
                                          returnDate:[NSDate dateWithTimeIntervalSinceNow:960000]
                                           firstName:@"Lee"
@@ -55,7 +59,6 @@
                                            postcode:nil
                                         countryCode:@"IE"
                                         countryName:@"Ireland"
-                                    isInPathBooking:YES
                                  overViewController:self
                                          completion:^(BOOL success, NSString * _Nonnull errorMessage) {
                                              if (errorMessage) {
@@ -68,13 +71,13 @@
 - (IBAction)makePayment:(id)sender
 {
     //Lets simulate a successful payment
-    [[CartrawlerSDK instance] didMakeInPathBooking:@{@"bookingId" : @"INPATH12345"}];
+    [self.inPath didReceiveBookingResponse:@{@"bookingId" : @"INPATH67890"}];
 }
 
 #pragma mark For in path
-- (void)didGenerateInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
+
+- (void)didProduceInPathRequest:(nonnull NSDictionary *)request vehicle:(nonnull CTInPathVehicle *)vehicle
 {
-    [self.inPathView renderVehicleDetails:vehicle];
     [self.bookButton setTitle:@"Remove vehicle" forState:UIControlStateNormal];
     NSLog(@"%@", request);
     _selectedVehicle = vehicle;

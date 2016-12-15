@@ -24,6 +24,8 @@
 		45A7B7571D9BE007006611EB /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */; };
 		45D4A76C1DF96E5D00338889 /* InPathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D4A76B1DF96E5D00338889 /* InPathViewController.m */; };
 		45D4A76F1DF981E200338889 /* CT+NSNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D4A76E1DF981E200338889 /* CT+NSNumber.m */; };
+		45EC99B31E02BA3500B76741 /* CartrawlerInPath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45EC99B21E02BA3500B76741 /* CartrawlerInPath.framework */; };
+		45EC99B41E02BA3500B76741 /* CartrawlerInPath.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 45EC99B21E02BA3500B76741 /* CartrawlerInPath.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				450725BE1DDA0C2000D56C8A /* CartrawlerSDK.framework in Embed Frameworks */,
+				45EC99B41E02BA3500B76741 /* CartrawlerInPath.framework in Embed Frameworks */,
 				450725BB1DDA0C2000D56C8A /* CartrawlerAPI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -75,6 +78,7 @@
 		45D4A76B1DF96E5D00338889 /* InPathViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InPathViewController.m; sourceTree = "<group>"; };
 		45D4A76D1DF981E200338889 /* CT+NSNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CT+NSNumber.h"; sourceTree = "<group>"; };
 		45D4A76E1DF981E200338889 /* CT+NSNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CT+NSNumber.m"; sourceTree = "<group>"; };
+		45EC99B21E02BA3500B76741 /* CartrawlerInPath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerInPath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				450725BD1DDA0C2000D56C8A /* CartrawlerSDK.framework in Frameworks */,
+				45EC99B31E02BA3500B76741 /* CartrawlerInPath.framework in Frameworks */,
 				450725BA1DDA0C2000D56C8A /* CartrawlerAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,6 +105,7 @@
 		45295F501D78412500A09B8A = {
 			isa = PBXGroup;
 			children = (
+				45EC99B21E02BA3500B76741 /* CartrawlerInPath.framework */,
 				450725BC1DDA0C2000D56C8A /* CartrawlerSDK.framework */,
 				450725B91DDA0C2000D56C8A /* CartrawlerAPI.framework */,
 				45295F5B1D78412500A09B8A /* TestApp */,

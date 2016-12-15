@@ -288,8 +288,8 @@
     NSDate *puDate = [NSDate mergeTimeWithDateWithTime:self.pickupTime dateWithDay:self.search.pickupDate];
     NSDate *doDate = [NSDate mergeTimeWithDateWithTime:self.dropoffTime dateWithDay:self.search.dropoffDate];
 
-    (self.search).pickupDate = puDate;
-    (self.search).dropoffDate = doDate;
+    self.search.pickupDate = puDate;
+    self.search.dropoffDate = doDate;
 }
 
 - (BOOL)validate
@@ -403,7 +403,7 @@
 - (IBAction)cancel:(id)sender
 {
     if (self.delegate) {
-        [self.delegate didDismissViewController];
+        [self.delegate didDismissViewController:self.restorationIdentifier];
     }
     
     if (![self.navigationController popViewControllerAnimated:YES]) {

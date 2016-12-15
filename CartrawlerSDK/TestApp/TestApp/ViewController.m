@@ -12,7 +12,7 @@
 
 @interface ViewController () <CartrawlerSDKDelegate>
 
-//@property (nonatomic, strong) CartrawlerSDK *sdk;
+@property (nonatomic, strong) CartrawlerSDK *sdk;
 
 @end
 
@@ -20,25 +20,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [CartrawlerSDK appearance].fontName = @"Roboto-Regular";
-    [CartrawlerSDK appearance].boldFontName = @"Roboto-Bold";
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [CartrawlerSDK appearance].presentAnimated = YES;
-    [CartrawlerSDK appearance].modalPresentationStyle = UIModalPresentationOverFullScreen;
-    [CartrawlerSDK appearance].modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [CartrawlerSDK appearance].calendarStartCellImage = [UIImage imageNamed:@"calStart"];
-    [CartrawlerSDK appearance].calendarMidCellImage = [UIImage imageNamed:@"calMid"];
-    [CartrawlerSDK appearance].calendarEndCellImage = [UIImage imageNamed:@"calEnd"];
-    [CartrawlerSDK appearance].calendarSameDayCellImage = [UIImage imageNamed:@"calSame"];
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:YES];
 
-    [[CartrawlerSDK instance] setRequestorID:@"642619" languageCode:@"EN" sandboxMode:YES];
-    
-    [CartrawlerSDK instance].delegate = self;
+    self.sdk.delegate = self;
 }
 
 - (IBAction)openCarRental:(id)sender {
-    [[CartrawlerSDK instance] presentCarRentalInViewController:self];
+    [self.sdk presentCarRentalInViewController:self];
 }
 
 #pragma Mark CartrawlerSDKDelegate

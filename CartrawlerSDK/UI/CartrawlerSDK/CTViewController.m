@@ -8,7 +8,6 @@
 
 #import "CTViewController.h"
 #import "SearchDetailsViewController.h"
-#import "CTInPathPayment.h"
 #import "CTDataStore.h"
 
 @interface CTViewController ()
@@ -42,19 +41,15 @@
     }
 }
 
-- (void)produceInPathPayload
+- (void)dismiss
 {
-    CTRentalBooking *booking = [[CTRentalBooking alloc] initFromSearch:self.search];
-    [CTDataStore cachePotentialInPathBooking:booking];
-    
-    if (self.delegate) {
-        [self.delegate didProduceInPathRequest:[CTInPathPayment createInPathRequest:self.search]
-                                       vehicle:[[CTInPathVehicle alloc]
-                                          init:self.search]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self dismissViewControllerAnimated:YES completion:nil];
-        });
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self dismissViewControllerAnimated:YES completion:^{
+            if (self.delegate) {
+                [self.delegate didDismissViewController:self.restorationIdentifier];
+            }
+        }];
+    });
 }
 
 - (void)pushToDestination

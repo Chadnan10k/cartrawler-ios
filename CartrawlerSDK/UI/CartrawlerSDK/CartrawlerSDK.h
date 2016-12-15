@@ -24,23 +24,31 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 //Standalone
 - (void)didBookVehicle:(CTBooking *)booking;
-- (void)didCancelVehicleBooking;
-//In Path
-- (void)didGenerateInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle;
-
 
 @end
 
 @interface CartrawlerSDK : NSObject
+
+//---Car Rental View Controllers ---
+@property (nonatomic, strong, nonnull, readonly) CTViewController *searchDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleSelectionViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceExtrasViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *extrasViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *driverDetialsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *addressDetialsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentSummaryViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentCompletionViewController;
+//----------------------------------
+
+@property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
 //---CarRentalWithFlightDetails---
 typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *errorMessage);
 
 //--Delegate--
 @property (nonatomic, weak) id<CartrawlerSDKDelegate> delegate;
-
-//Shared instance
-+ (instancetype)instance;
 
 /**
  *  Initialize the CartrawlerAPI
@@ -50,9 +58,9 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
  *  @param sandboxMode      Flag to indicate if you want to point to test or production endpoints
  *
  */
-- (void)setRequestorID:(NSString *)requestorID
-          languageCode:(NSString *)languageCode
-           sandboxMode:(BOOL)sandboxMode;
+- (instancetype)initWithRequestorID:(NSString *)requestorID
+                  languageCode:(NSString *)languageCode
+                   sandboxMode:(BOOL)sandboxMode;
 
 /**
  *  Use CTAppearance for overriding the preset views color scheme
@@ -65,29 +73,6 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
  *  @param viewController The parent view controller
  */
 - (void)presentCarRentalInViewController:(UIViewController *)viewController;
-
-/**
- *  Presents the car rental engine modally in the designated UIViewController, with predefined user details
- */
-- (void)presentCarRentalWithFlightDetails:(nonnull NSString *)IATACode
-                               pickupDate:(nullable NSDate *)pickupDate
-                               returnDate:(nullable NSDate *)returnDate
-                                firstName:(nullable NSString *)firstName
-                                  surname:(nullable NSString *)surname
-                                driverAge:(nullable NSNumber *)driverAge
-                     additionalPassengers:(nullable NSNumber *)additionalPassengers
-                                    email:(nullable NSString *)email
-                                    phone:(nullable NSString *)phone
-                                 flightNo:(nullable NSString *)flightNo
-                             addressLine1:(nullable NSString *)addressLine1
-                             addressLine2:(nullable NSString *)addressLine2
-                                     city:(nullable NSString *)city
-                                 postcode:(nullable NSString *)postcode
-                              countryCode:(nullable NSString *)countryCode
-                              countryName:(nullable NSString *)countryName
-                          isInPathBooking:(BOOL)isInPathBooking
-                       overViewController:(nonnull UIViewController *)viewController
-                               completion:(CarRentalWithFlightDetailsCompletion)completion;
 
 /**
  * If you made a successfull in path booking,

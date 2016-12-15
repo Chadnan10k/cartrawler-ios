@@ -48,8 +48,8 @@
     __weak typeof(self) weakSelf = self;
     [self.nextButton setText:NSLocalizedString(@"Continue", @"Continue") didTap:^{
         
-        if (weakSelf.inPathEnabled) {
-            [weakSelf produceInPathPayload];
+        if (!weakSelf.destinationViewController) {
+            [weakSelf dismiss];
         } else {
             [weakSelf pushToDestination];
         }

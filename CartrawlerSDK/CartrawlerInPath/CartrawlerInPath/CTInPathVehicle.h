@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CTRentalSearch.h"
+#import "CartrawlerSDK/CTRentalSearch.h"
 
 @interface CTInPathVehicle : NSObject
 
