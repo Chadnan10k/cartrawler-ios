@@ -21,7 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:YES];
-
     self.sdk.delegate = self;
 }
 

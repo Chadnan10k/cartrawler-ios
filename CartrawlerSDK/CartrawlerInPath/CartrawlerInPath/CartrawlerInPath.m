@@ -169,7 +169,6 @@
         [CTDataStore cachePotentialInPathBooking:booking];
         [self.delegate didProduceInPathRequest:[CTInPathPayment createInPathRequest:search]
                                        vehicle:[[CTInPathVehicle alloc] init:search]];
-        NSLog(@"Dismissed for in path");
     }
 }
 

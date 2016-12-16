@@ -11,8 +11,6 @@
 
 @interface SettingsSelectionViewController : UIViewController
 
-
-
 typedef enum SettingsType : NSUInteger {
     SettingsTypeLanguage,
     SettingsTypeCurrency,
