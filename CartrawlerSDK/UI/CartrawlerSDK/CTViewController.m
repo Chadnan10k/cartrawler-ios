@@ -7,7 +7,6 @@
 //
 
 #import "CTViewController.h"
-#import "SearchDetailsViewController.h"
 #import "CTDataStore.h"
 
 @interface CTViewController ()
@@ -32,13 +31,13 @@
 }
 
 - (void)popToSearchViewController
-{
+{/*
     for (CTViewController *vc in self.navigationController.viewControllers) {
         if ([vc isKindOfClass:[SearchDetailsViewController class]]) {
             [self.navigationController popToViewController:vc animated:NO];
             [(SearchDetailsViewController *)vc performSearch];
         }
-    }
+    }*/
 }
 
 - (void)dismiss

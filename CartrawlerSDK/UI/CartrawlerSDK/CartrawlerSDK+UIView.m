@@ -17,7 +17,6 @@
             return c;
         }
     }
-    
     return nil;
 }
 
@@ -28,7 +27,6 @@
             return c;
         }
     }
-    
     return nil;
 }
 

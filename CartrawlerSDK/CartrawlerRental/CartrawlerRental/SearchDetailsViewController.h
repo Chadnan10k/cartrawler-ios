@@ -6,7 +6,7 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-#import "CTViewController.h"
+#import <CartrawlerSDK/CTViewController.h>
 
 @interface SearchDetailsViewController : CTViewController
 

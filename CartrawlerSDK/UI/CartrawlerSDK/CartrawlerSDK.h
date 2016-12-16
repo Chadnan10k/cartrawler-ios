@@ -11,7 +11,6 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "CTAppearance.h"
 #import "CTViewController.h"
-#import "CTRentalBooking.h"
 
 FOUNDATION_EXPORT double CartrawlerSDKVersionNumber;
 
@@ -67,12 +66,13 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
  */
 + (CTAppearance *)appearance;
 
-/**
- *  Presents the car rental engine modally in the designated UIViewController
- *
- *  @param viewController The parent view controller
- */
-- (void)presentCarRentalInViewController:(UIViewController *)viewController;
+- (CTViewController *)configureViewController:(nonnull CTViewController *)viewController
+                         validationController:(nonnull CTValidation *)validationController
+                                  destination:(nullable CTViewController *)destination
+                                     fallback:(nullable CTViewController *)fallback
+                                optionalRoute:(nullable CTViewController *)optionalRoute
+                                       search:(nonnull id<NSObject>)search
+                                       target:(id)target;
 
 @end
 

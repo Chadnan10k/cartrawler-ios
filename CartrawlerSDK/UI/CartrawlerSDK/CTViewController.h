@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CTRentalSearch.h"
 #import "CTValidation.h"
-#import "CTRentalBooking.h"
 
 @protocol CTViewControllerDelegate <NSObject>
 
@@ -22,7 +21,7 @@
 @interface CTViewController : UIViewController
 
 typedef void (^Completion)(BOOL success, NSString *errorMessage);
-typedef void (^RentalBookingCompletion)(CTRentalBooking *booking);
+typedef void (^RentalBookingCompletion)(id *booking);
 
 @property (nonatomic) Completion dataValidationCompletion;
 @property (nonatomic) RentalBookingCompletion rentalBookingCompletion;
