@@ -34,7 +34,6 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 
 @property (nonatomic) CTPaymentType paymentType;
 
-@property (nonatomic, copy) GroundTransportSearch *groundSearch;
 @property (nonatomic, copy) CTRentalSearch *carRentalSearch;
 @property (nonatomic, strong) CTPaymentCheck *paymentCheck;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
@@ -171,23 +170,6 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                     [CTDataStore storeRentalBooking:savedBooking];
                     
                 }
-                    
-                    break;
-                case CTPaymentTypeGroundTransport: {
-                    CTGroundBooking *booking = [[CTGroundBooking alloc] initWithDictionary:json];
-                    self.groundSearch.booking = booking;
-                    
-                    GTBooking *savedBooking = [[GTBooking alloc] init];
-                    savedBooking.bookingId = booking.confirmationId;
-                    savedBooking.pickupLocation = self.groundSearch.pickupLocation.name;
-                    savedBooking.dropoffLocation = self.groundSearch.dropoffLocation.name;
-                    savedBooking.pickupDate = self.groundSearch.pickupLocation.dateTime;
-                    savedBooking.dropoffDate = self.groundSearch.dropoffLocation.dateTime;
-                    savedBooking.vehicleImage = self.groundSearch.selectedService.vehicleImage != nil ? self.groundSearch.selectedService.vehicleImage.absoluteString : self.groundSearch.selectedShuttle.vehicleImage.absoluteString;
-                    savedBooking.vehicleName = self.groundSearch.selectedShuttle != nil ? self.groundSearch.selectedShuttle.companyName : self.groundSearch.selectedService.companyName;
-                    [CTDataStore storeGTBooking:savedBooking];
-                    
-                }
                     break;
                 default:
                     break;
@@ -206,87 +188,6 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
             }
         }
     }
-}
-
-- (void)setForGTPayment:(GroundTransportSearch *)search
-{
-    _groundSearch = search;
-    _paymentType = CTPaymentTypeGroundTransport;
-    
-    NSString *flightNo = [[search.flightNumber componentsSeparatedByCharactersInSet:
-                           [NSCharacterSet decimalDigitCharacterSet].invertedSet]
-                          componentsJoinedByString:@""];
-    
-    NSString *airline = [[search.flightNumber componentsSeparatedByCharactersInSet:
-                          [NSCharacterSet letterCharacterSet].invertedSet]
-                         componentsJoinedByString:@""];
-    
-    NSNumberFormatter *f = [NSNumberFormatter new];
-    [f setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
-    f.maximumFractionDigits = 5;
-    f.numberStyle = NSNumberFormatterDecimalStyle;
-
-    NSString *s = [GTPaymentRequest
-                      CT_GroundBook:[search.pickupLocation.dateTime  stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
-                     pickupLatitude:[f stringFromNumber:search.pickupLocation.latitude]
-                    pickupLongitude:[f stringFromNumber:search.pickupLocation.longitude]
-                       addressLine1:search.addressLine1
-                       addressLine2:search.addressLine2
-                               town:search.city
-                               city:search.city
-                           postcode:search.postcode
-                        countryCode:search.countryCode
-                        countryName:search.country
-                 pickupLocationType:search.pickupLocation.locationTypeDescription
-                 pickupLocationName:search.pickupLocation.name
-                specialInstructions:search.specialInstructions
-                   dropOffdateTime:[[search.pickupLocation.dateTime
-                                     dateByAddingTimeInterval:1*24*60*60] stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
-                    dropoffLatitude:[f stringFromNumber:search.dropoffLocation.latitude]
-                   dropoffLongitude:[f stringFromNumber:search.dropoffLocation.longitude]
-                dropoffLocationType:search.dropoffLocation.locationTypeDescription
-                    airportIsPickup:search.airportIsPickupLocation
-                         returnTrip:search.returnTrip
-                        airportCode:search.airport.IATACode
-                         terminalNo:search.airport.terminalNumber
-                          airlineId:airline
-                         flightType:search.airport.flightType
-                           flightNo:flightNo
-                          firstName:search.firstName
-                            surname:search.surname
-                              phone:search.phone
-               passengerCountryCode:search.countryCode
-                     passengerEmail:search.email
-                 additionalAdultQty:search.adultQty.stringValue
-                        childrenQty:search.childQty.stringValue
-                          infantQty:search.infantQty.stringValue
-                          seniorQty:search.seniorQty.stringValue
-                              refId:search.selectedService != nil ? search.selectedService.refId : search.selectedShuttle.refId
-                             refUrl:search.selectedService != nil ? search.selectedService.refUrl : search.selectedShuttle.refUrl
-                       currencyCode:[CTSDKSettings instance].currencyCode
-                           clientID:[CTSDKSettings instance].clientId
-                             target:[CTSDKSettings instance].target
-                             locale:[CTSDKSettings instance].languageCode
-                          ipaddress:@"127.0.0.1"];
-    
-    NSString *urlStr;
-    NSString *escapedString = [s stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-    escapedString = [escapedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
-    
-    if ([CTSDKSettings instance].isDebug) {
-        urlStr = [NSString stringWithFormat:@"https://internal-dev.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&hideButton=true&mobile=true&msg=%@", escapedString];
-    } else {
-        urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_GroundBookRQ&hideButton=true&mobile=true&msg=%@", escapedString];
-    }
-    
-    NSString *htmlFile = [self.bundle pathForResource:@"CTPCI" ofType:@"html"];
-    _htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
-    _htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"[URLPLACEHOLDER]" withString:urlStr];
-    
-    [self.webView loadHTMLString:self.htmlString baseURL: self.bundle.bundleURL];
-    
-    [self setupWebView];
-    
 }
 
 - (void)setForCarRentalPayment:(CTRentalSearch *)search
@@ -421,10 +322,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
-        
-        if (self.groundSearch) {
-            [self setForGTPayment:self.groundSearch];
-        } else if (self.carRentalSearch) {
+        if (self.carRentalSearch) {
             [self setForCarRentalPayment:self.carRentalSearch];
         }
     }

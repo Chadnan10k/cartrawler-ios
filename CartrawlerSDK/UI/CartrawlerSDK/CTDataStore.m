@@ -22,28 +22,6 @@ NSString * const PotentialBookingKey = @"cartrawler_potenital_booking";
     [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:RentalBookingKey];
 }
 
-+ (void)storeGTBooking:(GTBooking *)booking
-{
-    NSMutableArray<GTBooking *> *arr = [[NSMutableArray alloc] initWithArray:[self retrieveGTBookings]];
-    [arr addObject:booking];
-    NSArray *arrToStore = [[NSArray alloc] initWithArray:arr];
-    [[NSUserDefaults standardUserDefaults] setObject:arrToStore forKey:GTBookingKey];
-}
-
-+ (NSArray<CTRentalBooking *> *)retrieveRentalBookings
-{
-    NSArray *data = [NSKeyedUnarchiver unarchiveObjectWithData:
-                     [[NSUserDefaults standardUserDefaults] objectForKey:RentalBookingKey]];
-    return data ?: @[];
-}
-
-+(NSArray<GTBooking *> *)retrieveGTBookings
-{
-    NSArray *data = [NSKeyedUnarchiver unarchiveObjectWithData:
-                     [[NSUserDefaults standardUserDefaults] objectForKey:GTBookingKey]];
-    return data ?: @[];
-}
-
 + (BOOL)checkHasUpcomingBookings
 {
     NSDate *refDate = [NSDate date];

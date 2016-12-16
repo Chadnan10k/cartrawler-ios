@@ -11,9 +11,6 @@
 
 @implementation CTSegmentedControl
 
-
-
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];

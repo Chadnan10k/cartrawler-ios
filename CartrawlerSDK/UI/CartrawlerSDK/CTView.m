@@ -11,9 +11,6 @@
 
 @implementation CTView
 
-
-
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];

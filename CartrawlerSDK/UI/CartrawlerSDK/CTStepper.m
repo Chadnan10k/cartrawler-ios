@@ -11,8 +11,6 @@
 
 @implementation CTStepper
 
-
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];

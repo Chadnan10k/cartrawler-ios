@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GroundTransportSearch.h"
 #import "CTRentalSearch.h"
 #import <CartrawlerAPI/CTGroundBooking.h>
 
@@ -27,7 +26,6 @@
 
 - (void)presentInView:(UIView *)parentView;
 - (void)reload;
-- (void)setForGTPayment:(GroundTransportSearch *)search;
 - (void)setForCarRentalPayment:(CTRentalSearch *)search;
 
 //Controls

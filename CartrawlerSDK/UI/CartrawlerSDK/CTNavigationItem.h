@@ -10,6 +10,4 @@
 
 @interface CTNavigationItem : UINavigationItem
 
-
-
 @end

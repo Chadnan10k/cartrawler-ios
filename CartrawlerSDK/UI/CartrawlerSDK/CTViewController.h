@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CTRentalSearch.h"
-#import "GroundTransportSearch.h"
 #import "CTValidation.h"
 #import "CTRentalBooking.h"
-#import "GTBooking.h"
 
 @protocol CTViewControllerDelegate <NSObject>
 
@@ -25,14 +23,11 @@
 
 typedef void (^Completion)(BOOL success, NSString *errorMessage);
 typedef void (^RentalBookingCompletion)(CTRentalBooking *booking);
-typedef void (^GTBookingCompletion)(GTBooking *booking);
 
 @property (nonatomic) Completion dataValidationCompletion;
 @property (nonatomic) RentalBookingCompletion rentalBookingCompletion;
-@property (nonatomic) GTBookingCompletion gtBookingCompletion;
 
 @property (nonatomic, strong) CTRentalSearch *search;
-@property (nonatomic, strong) GroundTransportSearch *groundSearch;
 
 @property (nonatomic, strong) CTValidation *validationController;
 

@@ -10,6 +10,4 @@
 
 @interface CTPlaceholderView : UIView
 
-
-
 @end

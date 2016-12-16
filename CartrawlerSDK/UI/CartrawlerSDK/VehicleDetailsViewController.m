@@ -10,7 +10,6 @@
 #import "ExpandingInfoView.h"
 #import "CTAppearance.h"
 #import "CTLabel.h"
-#import "TabButton.h"
 #import "CartrawlerSDK+NSNumber.h"
 #import "SupplierRatingsViewController.h"
 #import "CTSDKSettings.h"

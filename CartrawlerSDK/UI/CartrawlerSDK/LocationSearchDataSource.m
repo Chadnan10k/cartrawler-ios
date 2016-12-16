@@ -11,7 +11,6 @@
 #import "CTLabel.h"
 #import "CTSDKSettings.h"
 #import "LocationSearchTableViewCell.h"
-#import "GooglePlaceService.h"
 #import "CTAppearance.h"
 
 @interface LocationSearchDataSource()
@@ -75,23 +74,6 @@
             });
         }
     }];
-
-    if (self.enableGroundTransportLocations) {
-        [GooglePlaceService searchWithPartialString:partialText completion:^(BOOL success, NSArray *results) {
-            if (results) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    for (CTMatchedLocation *location in results) {
-                        if (location.isAtAirport) {
-                            //[weakSelf.airportLocations addObject:location];
-                        } else {
-                            [weakSelf.otherLocations addObject:location];
-                        }
-                    }
-                    completion(YES);
-                });
-            }
-        }];
-    }
 }
 
 #pragma mark UITableViewDataSource

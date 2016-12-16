@@ -8,7 +8,6 @@
 
 #import "GTPaymentViewController.h"
 #import "CTPaymentView.h"
-#import "CTCheckbox.h"
 #import "CTLabel.h"
 #import "CTHTMLParser.h"
 #import "CTAppearance.h"

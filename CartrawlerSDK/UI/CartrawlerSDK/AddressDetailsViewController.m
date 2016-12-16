@@ -104,28 +104,6 @@
         self.search.country = [CTSDKSettings instance].homeCountryCode;
 
     }
-    
-    if (self.groundSearch) {
-        if (!self.groundSearch.addressLine1) {
-            self.addressLine1TextField.text = @"";
-        }
-        
-        if (!self.groundSearch.addressLine2) {
-            self.addressLine2TextField.text = @"";
-        }
-        
-        if (!self.groundSearch.city) {
-            self.cityTextField.text = @"";
-        }
-        
-        if (!self.groundSearch.postcode) {
-            self.postCodeTextField.text = @"";
-        }
-        
-        if (!self.groundSearch.country) {
-            self.countryTextField.text = @"";
-        }
-    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -166,13 +144,7 @@
         self.search.city = self.cityTextField.text;
         self.search.postcode = self.postCodeTextField.text;
         self.search.country = self.countryTextField.text;
-        
-        self.groundSearch.addressLine1 = self.addressLine1TextField.text;
-        self.groundSearch.addressLine2 = self.addressLine2TextField.text;
-        self.groundSearch.city = self.cityTextField.text;
-        self.groundSearch.postcode = self.postCodeTextField.text;
-        self.groundSearch.country = self.countryTextField.text;
-                
+            
         [self pushToDestination];
     }
 }

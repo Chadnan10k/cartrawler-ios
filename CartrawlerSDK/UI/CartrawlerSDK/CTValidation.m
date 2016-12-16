@@ -10,13 +10,6 @@
 
 @implementation CTValidation
 
-- (void)validateGroundTransport:(GroundTransportSearch *)search
-                  cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
-                     completion:(CTSearchValidation)completion
-{
-    
-}
-
 - (void)validateCarRental:(CTRentalSearch *)search
             cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
                completion:(CTSearchValidation)completion

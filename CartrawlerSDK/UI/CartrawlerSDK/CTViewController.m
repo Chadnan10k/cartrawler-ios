@@ -56,75 +56,51 @@
 {
     __weak typeof (self) weakSelf = self;
     
-    if (!self.search) {
-        [self.validationController validateGroundTransport:self.groundSearch
-                                             cartrawlerAPI:self.cartrawlerAPI
-                                                completion:^(BOOL success, NSString *errorMessage, BOOL useOptionalRoute) {
-                                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                                        if (success) {
-                                                            if (weakSelf.dataValidationCompletion) {
-                                                                weakSelf.dataValidationCompletion(YES, nil);
-                                                            }
-                                                            [weakSelf.destinationViewController refresh];
-                                                            @try {
-                                                                [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
-                                                            } @catch (NSException * e) {
-                                                                NSLog(@"Exception: %@", e);
-                                                            }
-                                                        } else {
-                                                            if (weakSelf.dataValidationCompletion) {
-                                                                weakSelf.dataValidationCompletion(NO, errorMessage);
-                                                            }
-                                                        }
-                                                    });
-                                                }];
-    } else {
-        [self.validationController validateCarRental:self.search
-                                       cartrawlerAPI:self.cartrawlerAPI
-                                          completion:^(BOOL success, NSString *errorMessage, BOOL useOptionalRoute) {
-                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                  if (success) {
-                                                      if (weakSelf.dataValidationCompletion) {
-                                                          weakSelf.dataValidationCompletion(YES, nil);
-                                                      }
-                                                      [weakSelf.destinationViewController refresh];
-                                                      
-                                                      @try {
-                                                          [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
-                                                      } @catch (NSException * e) {
-                                                          NSLog(@"Exception: %@", e);
-                                                      }
-                                                      
-                                                  } else {
-                                                          if (weakSelf.fallbackViewController && !useOptionalRoute) {
-                                                              if (weakSelf.dataValidationCompletion) {
-                                                                  weakSelf.dataValidationCompletion(YES, nil);
-                                                              }
-                                                              [weakSelf.fallbackViewController refresh];
-                                                              @try {
-                                                                  [weakSelf.navigationController pushViewController:weakSelf.fallbackViewController
-                                                                                                           animated:YES];
-                                                              } @catch (NSException * e) {
-                                                                  NSLog(@"Exception: %@", e);
-                                                              } @finally {
-
-                                                              }
-                                                          } else if(useOptionalRoute && weakSelf.optionalRoute) {
-                                                              @try {
-                                                                  [weakSelf.navigationController pushViewController:weakSelf.optionalRoute
-                                                                                                           animated:YES];
-                                                              } @catch (NSException * e) {
-                                                                  NSLog(@"Exception: %@", e);
-                                                              }
-                                                          } else {
-                                                              if (weakSelf.dataValidationCompletion) {
-                                                                  weakSelf.dataValidationCompletion(NO, errorMessage);
-                                                              }
-                                                          }
+    [self.validationController validateCarRental:self.search
+                                   cartrawlerAPI:self.cartrawlerAPI
+                                      completion:^(BOOL success, NSString *errorMessage, BOOL useOptionalRoute) {
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              if (success) {
+                                                  if (weakSelf.dataValidationCompletion) {
+                                                      weakSelf.dataValidationCompletion(YES, nil);
                                                   }
-                                              });
-                                          }];
-    }
+                                                  [weakSelf.destinationViewController refresh];
+                                                  
+                                                  @try {
+                                                      [weakSelf.navigationController pushViewController:weakSelf.destinationViewController animated:YES];
+                                                  } @catch (NSException * e) {
+                                                      NSLog(@"Exception: %@", e);
+                                                  }
+                                                  
+                                              } else {
+                                                      if (weakSelf.fallbackViewController && !useOptionalRoute) {
+                                                          if (weakSelf.dataValidationCompletion) {
+                                                              weakSelf.dataValidationCompletion(YES, nil);
+                                                          }
+                                                          [weakSelf.fallbackViewController refresh];
+                                                          @try {
+                                                              [weakSelf.navigationController pushViewController:weakSelf.fallbackViewController
+                                                                                                       animated:YES];
+                                                          } @catch (NSException * e) {
+                                                              NSLog(@"Exception: %@", e);
+                                                          } @finally {
+
+                                                          }
+                                                      } else if(useOptionalRoute && weakSelf.optionalRoute) {
+                                                          @try {
+                                                              [weakSelf.navigationController pushViewController:weakSelf.optionalRoute
+                                                                                                       animated:YES];
+                                                          } @catch (NSException * e) {
+                                                              NSLog(@"Exception: %@", e);
+                                                          }
+                                                      } else {
+                                                          if (weakSelf.dataValidationCompletion) {
+                                                              weakSelf.dataValidationCompletion(NO, errorMessage);
+                                                          }
+                                                      }
+                                              }
+                                          });
+                                      }];
 }
 
 @end

@@ -12,18 +12,12 @@
 #import "CTNavigationController.h"
 #import "CTRentalSearch.h"
 #import "CTValidation.h"
-#import "GTSearchValidation.h"
-#import "GTSelectionValidation.h"
-#import "GTPassengerDetailsValidation.h"
-#import "GTGenericValidation.h"
 #import "GenericValidation.h"
 #import "InsuranceValidation.h"
 #import "PaymentValidation.h"
 #import "SearchValidation.h"
-#import "GTBookingCompletionValidation.h"
 #import "BookingCompletionValidation.h"
 #import "RentalBookingsViewController.h"
-#import "GTBookingsViewController.h"
 #import "CTDataStore.h"
 #import "CTBasketValidation.h"
 #import "CTDriverDetailsValidation.h"
@@ -36,8 +30,6 @@
 #define kSummaryViewStoryboard          @"StepFive"
 #define kDetailsViewStoryboard          @"StepSix"
 #define kPaymentViewStoryboard          @"Payment"
-
-#define kGTViewStoryboard @"GroundTransport"
 
 @interface CartrawlerSDK() <CTViewControllerDelegate>
 
@@ -219,7 +211,6 @@
     viewController.delegate = self;
 
     viewController.search = [CTRentalSearch instance];
-    viewController.groundSearch = nil;
 
     viewController.validationController = validationController;
     
@@ -235,8 +226,6 @@
     viewController.delegate = self;
 
     viewController.search = [CTRentalSearch instance];
-    viewController.groundSearch = nil;
-    
     viewController.validationController = validationController;
     
     return viewController;

@@ -10,6 +10,4 @@
 
 @interface CTStepper : UIStepper
 
-
-
 @end
