@@ -30,7 +30,7 @@
 		45EC99BC1E02C96B00B76741 /* CTInPathPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99B61E02C96B00B76741 /* CTInPathPayment.m */; };
 		45EC99BD1E02C96B00B76741 /* CTInPathVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC99B71E02C96B00B76741 /* CTInPathVehicle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45EC99BE1E02C96B00B76741 /* CTInPathVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99B81E02C96B00B76741 /* CTInPathVehicle.m */; };
-		45EC99BF1E02C96B00B76741 /* CTInPathView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC99B91E02C96B00B76741 /* CTInPathView.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		45EC99BF1E02C96B00B76741 /* CTInPathView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC99B91E02C96B00B76741 /* CTInPathView.h */; };
 		45EC99C01E02C96B00B76741 /* CTInPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99BA1E02C96B00B76741 /* CTInPathView.m */; };
 /* End PBXBuildFile section */
 

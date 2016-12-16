@@ -57,8 +57,8 @@
 {
     [super viewDidAppear:animated];
     [self.tableView layoutIfNeeded];
-    
     if (self.heightChanged) {
+        self.view.alpha = 0;
         [self.tableView reloadData];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView layoutIfNeeded];
@@ -66,6 +66,7 @@
             [UIView animateWithDuration:0.0 animations:^{
                 [self.tableView layoutIfNeeded];
                 [self.view layoutIfNeeded];
+                self.view.alpha = 1;
                 self.heightChanged(self.tableView.contentSize.height);
             }];
         });

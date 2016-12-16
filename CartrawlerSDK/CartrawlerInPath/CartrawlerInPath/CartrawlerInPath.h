@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <CartrawlerSDK/CartrawlerSDK.h>
 #import "CTInPathVehicle.h"
-#import "CTInPathView.h"
 
 //! Project version number for CartrawlerInPath.
 FOUNDATION_EXPORT double CartrawlerInPathVersionNumber;

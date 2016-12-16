@@ -74,11 +74,6 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
  */
 - (void)presentCarRentalInViewController:(UIViewController *)viewController;
 
-/**
- * If you made a successfull in path booking,
- */
-- (void)didMakeInPathBooking:(NSDictionary *)cartrawlerResponse;
-
 @end
 
 NS_ASSUME_NONNULL_END

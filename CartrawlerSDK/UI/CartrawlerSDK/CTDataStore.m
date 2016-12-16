@@ -22,6 +22,13 @@ NSString * const PotentialBookingKey = @"cartrawler_potenital_booking";
     [[NSUserDefaults standardUserDefaults] setObject:encodedObject forKey:RentalBookingKey];
 }
 
++ (NSArray<CTRentalBooking *> *)retrieveRentalBookings
+{
+    NSArray *data = [NSKeyedUnarchiver unarchiveObjectWithData:
+                     [[NSUserDefaults standardUserDefaults] objectForKey:RentalBookingKey]];
+    return data ?: @[];
+}
+
 + (BOOL)checkHasUpcomingBookings
 {
     NSDate *refDate = [NSDate date];

@@ -7,7 +7,6 @@
 //
 
 #import "InPathViewController.h"
-#import <CartrawlerInPath/CTInPathView.h>
 #import "CT+NSNumber.h"
 #import <CartrawlerInPath/CartrawlerInPath.h>
 
