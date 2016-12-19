@@ -7,13 +7,13 @@
 //
 
 #import "VehicleTableViewCell.h"
-#import "CTImageCache.h"
+#import <CartrawlerSDK/CTImageCache.h>
 #import "CartrawlerAPI/CTVendor.h"
 #import "CartrawlerAPI/CTVendorRating.h"
-#import "CTAppearance.h"
-#import "CartrawlerSDK+NSNumber.h"
-#import "CTLabel.h"
-#import "CTLocalisedStrings.h"
+#import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 #import "CTMerhandisingBanner.h"
 
 @interface VehicleTableViewCell ()

@@ -9,10 +9,10 @@
 #import "VehicleDetailsPageViewController.h"
 #import "VehicleDetailsViewController.h"
 #import "PageSelectionCollectionViewCell.h"
-#import "CTView.h"
-#import "CTSegmentedControl.h"
-#import "CTButton.h"
-#import "CTNextButton.h"
+#import <CartrawlerSDK/CTView.h>
+#import <CartrawlerSDK/CTSegmentedControl.h>
+#import <CartrawlerSDK/CTButton.h>
+#import <CartrawlerSDK/CTNextButton.h>
 #import "CTOptionalExtrasViewController.h"
 
 @interface VehicleDetailsPageViewController () <UIPageViewControllerDataSource>

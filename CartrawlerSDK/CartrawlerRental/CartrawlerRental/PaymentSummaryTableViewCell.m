@@ -7,9 +7,9 @@
 //
 
 #import "PaymentSummaryTableViewCell.h"
-#import "CTLabel.h"
-#import "CTSDKSettings.h"
-#import "CartrawlerSDK+NSNumber.h"
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 
 @interface PaymentSummaryTableViewCell()
 

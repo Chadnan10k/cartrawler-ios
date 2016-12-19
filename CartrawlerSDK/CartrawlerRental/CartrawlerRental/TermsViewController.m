@@ -8,9 +8,9 @@
 
 #import "TermsViewController.h"
 #import "TermsDetailViewController.h"
-#import "CTSDKSettings.h"
-#import "CTRentalSearch.h"
-#import "CTAppearance.h"
+#import <CartrawlerSDK/CTSDKSettings.h>
+#import <CartrawlerSDK/CTRentalSearch.h>
+#import <CartrawlerSDK/CTAppearance.h>
 
 @interface TermsViewController () <UITableViewDelegate, UITableViewDataSource>
 

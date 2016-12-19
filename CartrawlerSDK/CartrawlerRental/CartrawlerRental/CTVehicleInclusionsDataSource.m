@@ -8,7 +8,7 @@
 
 #import "CTVehicleInclusionsDataSource.h"
 #import "CTInclusionCollectionViewCell.h"
-#import "CTAppearance.h"
+#import <CartrawlerSDK/CTAppearance.h>
 
 @interface CTVehicleInclusionsDataSource()
 

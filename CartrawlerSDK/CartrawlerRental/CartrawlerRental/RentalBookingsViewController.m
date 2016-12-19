@@ -8,9 +8,9 @@
 
 #import "RentalBookingsViewController.h"
 #import "RentalBookingCell.h"
-#import "CTDataStore.h"
-#import "CTNextButton.h"
-#import "CTAppearance.h"
+#import <CartrawlerSDK/CTDataStore.h>
+#import <CartrawlerSDK/CTNextButton.h>
+#import <CartrawlerSDK/CTAppearance.h>
 
 @interface RentalBookingsViewController () <UITableViewDataSource>
 

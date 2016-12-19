@@ -7,10 +7,10 @@
 //
 
 #import "CTPaymentVehicleTableViewCell.h"
-#import "CTLabel.h"
+#import <CartrawlerSDK/CTLabel.h>
 #import "CTVehicleFeaturesDataSource.h"
-#import "CTImageCache.h"
-#import "CartrawlerSDK+UIView.h"
+#import <CartrawlerSDK/CTImageCache.h>
+#import <CartrawlerSDK/CartrawlerSDK+UIView.h>
 
 @interface CTPaymentVehicleTableViewCell()
 

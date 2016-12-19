@@ -7,7 +7,7 @@
 //
 
 #import "CTPaymentLoadingViewController.h"
-#import "CTLabel.h"
+#import <CartrawlerSDK/CTLabel.h>
 
 @interface CTPaymentLoadingViewController ()
 

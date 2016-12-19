@@ -12,8 +12,6 @@
 
 @interface LocationSearchDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-
-
 typedef void (^SelectedLocationCompletion)(CTMatchedLocation *location);
 
 @property (nonatomic, strong) SelectedLocationCompletion selectedLocation;

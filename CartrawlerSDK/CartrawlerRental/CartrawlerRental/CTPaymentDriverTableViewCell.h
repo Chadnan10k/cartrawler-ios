@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CTRentalSearch.h"
+#import <CartrawlerSDK/CTRentalSearch.h>
+
 @interface CTPaymentDriverTableViewCell : UITableViewCell
 
 - (void)setData:(NSString *)text;

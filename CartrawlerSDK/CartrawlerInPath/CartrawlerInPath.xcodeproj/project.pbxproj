@@ -21,10 +21,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		45154EFA1E07E09600FB32FA /* CartrawlerRental.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45154EF91E07E09600FB32FA /* CartrawlerRental.framework */; };
 		45D1339D1E01997900D7816F /* CartrawlerInPath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D133931E01997800D7816F /* CartrawlerInPath.framework */; };
 		45D133A21E01997900D7816F /* CartrawlerInPathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D133A11E01997900D7816F /* CartrawlerInPathTests.m */; };
 		45D133A41E01997900D7816F /* CartrawlerInPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D133961E01997800D7816F /* CartrawlerInPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45D133BC1E0199F500D7816F /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D133BB1E0199F500D7816F /* CartrawlerSDK.framework */; };
 		45EC99B01E02B3FB00B76741 /* CartrawlerInPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99AF1E02B3FB00B76741 /* CartrawlerInPath.m */; };
 		45EC99BB1E02C96B00B76741 /* CTInPathPayment.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC99B51E02C96B00B76741 /* CTInPathPayment.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45EC99BC1E02C96B00B76741 /* CTInPathPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99B61E02C96B00B76741 /* CTInPathPayment.m */; };
@@ -45,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		45154EF91E07E09600FB32FA /* CartrawlerRental.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerRental.framework; path = "../../../Library/Developer/Xcode/DerivedData/CartrawlerSDK-ggnkifmwdjtizbfixejavfojdsbe/Build/Products/Debug-iphonesimulator/CartrawlerRental.framework"; sourceTree = "<group>"; };
 		45D133931E01997800D7816F /* CartrawlerInPath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CartrawlerInPath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D133961E01997800D7816F /* CartrawlerInPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartrawlerInPath.h; sourceTree = "<group>"; };
 		45D133971E01997800D7816F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -66,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45D133BC1E0199F500D7816F /* CartrawlerSDK.framework in Frameworks */,
+				45154EFA1E07E09600FB32FA /* CartrawlerRental.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +124,7 @@
 		45D133BA1E0199F500D7816F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				45154EF91E07E09600FB32FA /* CartrawlerRental.framework */,
 				45D133BB1E0199F500D7816F /* CartrawlerSDK.framework */,
 			);
 			name = Frameworks;

@@ -7,9 +7,9 @@
 //
 
 #import "CTVehicleFeatureTableViewCell.h"
-#import "CTLabel.h"
-#import "CTImageView.h"
-#import "CartrawlerSDK+UIImageView.h"
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTImageView.h>
+#import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
 
 @interface CTVehicleFeatureTableViewCell()
 

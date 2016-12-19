@@ -9,7 +9,7 @@
 #import "CTLocationSearchViewController.h"
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "LocationSearchDataSource.h"
-#import "CTAppearance.h"
+#import <CartrawlerSDK/CTAppearance.h>
 @interface CTLocationSearchViewController () <UISearchBarDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;

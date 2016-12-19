@@ -7,8 +7,8 @@
 //
 
 #import "SettingsSelectionViewController.h"
-#import "CTAppearance.h"
-#import "CTLabel.h"
+#import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CTLabel.h>
 
 @interface SettingsSelectionViewController () <UITableViewDelegate, UITableViewDataSource>
 

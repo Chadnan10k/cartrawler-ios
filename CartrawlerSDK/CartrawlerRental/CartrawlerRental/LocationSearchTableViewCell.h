@@ -10,8 +10,6 @@
 
 @interface LocationSearchTableViewCell : UITableViewCell
 
-
-
 - (void)setLabelText:(NSString *)text isAirport:(BOOL)isAirport;
 
 @end

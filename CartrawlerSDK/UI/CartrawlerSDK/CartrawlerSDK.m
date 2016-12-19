@@ -16,17 +16,6 @@
 
 @implementation CartrawlerSDK
 
-+ (instancetype)instance
-{
-    static CartrawlerSDK *sharedInstance = nil;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^{
-        sharedInstance = [[CartrawlerSDK alloc] init];
-    });
-    return sharedInstance;
-}
-
 - (instancetype)initWithRequestorID:(NSString *)requestorID
                        languageCode:(NSString *)languageCode
                         sandboxMode:(BOOL)sandboxMode;

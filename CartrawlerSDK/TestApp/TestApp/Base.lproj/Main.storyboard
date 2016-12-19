@@ -103,8 +103,8 @@
                                             <color key="titleColor" red="0.14901960780000001" green="0.33725490200000002" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="bookCar:" destination="9HL-5W-v1q" eventType="touchUpInside" id="Rc3-EK-Fbs"/>
                                             <action selector="openInPath:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Id-45-d11"/>
-                                            <action selector="openInPath:" destination="9HL-5W-v1q" eventType="touchUpInside" id="UUJ-0U-kSJ"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5h-mR-ZJM">
@@ -133,7 +133,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Make Payment"/>
                                 <connections>
-                                    <action selector="makePayment:" destination="9HL-5W-v1q" eventType="touchUpInside" id="ZMw-g2-mPi"/>
+                                    <action selector="mockPayment:" destination="9HL-5W-v1q" eventType="touchUpInside" id="UPq-TY-SYx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -155,8 +155,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bookButton" destination="iIh-9d-YCf" id="O73-ea-Sld"/>
-                        <outlet property="inPathViewContainer" destination="K5h-mR-ZJM" id="yaf-hY-m0G"/>
+                        <outlet property="bookButton" destination="iIh-9d-YCf" id="zXh-TL-Ev0"/>
+                        <outlet property="cardContainer" destination="K5h-mR-ZJM" id="uHO-gp-Edd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2MH-hR-edb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -168,7 +168,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="zsj-16-95s" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c1K-lO-dAv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="c1K-lO-dAv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

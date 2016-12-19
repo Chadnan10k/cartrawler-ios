@@ -7,9 +7,9 @@
 //
 
 #import "SupplierRatingsViewController.h"
-#import "CTImageCache.h"
+#import <CartrawlerSDK/CTImageCache.h>
 #import "SupplierRatingTableViewCell.h"
-#import "CTAppearance.h"
+#import <CartrawlerSDK/CTAppearance.h>
 
 @interface SupplierRatingsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *ratingScore;

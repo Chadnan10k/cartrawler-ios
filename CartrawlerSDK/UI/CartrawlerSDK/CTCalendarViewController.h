@@ -17,8 +17,6 @@
 
 @interface CTCalendarViewController : UIViewController
 
-
-
 @property (nonatomic, weak) id<CTCalendarDelegate> delegate;
 @property (nonatomic) BOOL singleDateSelection;
 @property (nonatomic, strong) NSDate *mininumDate;

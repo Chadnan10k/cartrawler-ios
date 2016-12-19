@@ -7,8 +7,8 @@
 //
 
 #import "CTPaymentLocationTableViewCell.h"
-#import "CTLabel.h"
-#import "CartrawlerSDK+NSDateUtils.h"
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
 
 @interface CTPaymentLocationTableViewCell()
 

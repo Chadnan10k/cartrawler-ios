@@ -2,24 +2,18 @@
 //  InPathViewController.m
 //  TestApp
 //
-//  Created by Lee Maguire on 08/12/2016.
+//  Created by Lee Maguire on 19/12/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
 #import "InPathViewController.h"
-#import "CT+NSNumber.h"
 #import <CartrawlerInPath/CartrawlerInPath.h>
 
 @interface InPathViewController () <CartrawlerInPathDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *inPathViewContainer;
+@property (nonatomic, strong) CartrawlerInPath *inPath;
+@property (weak, nonatomic) IBOutlet UIView *cardContainer;
 @property (weak, nonatomic) IBOutlet UIButton *bookButton;
-
-@property (strong, nonnull) CTInPathVehicle *selectedVehicle;
-@property (strong, nonnull) NSDictionary *selectedVehicleDict;
-@property (strong, nonatomic) CartrawlerInPath *inPath;
-
-@property (nonatomic) BOOL didBookCar;
 
 @end
 
@@ -27,61 +21,58 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CartrawlerSDK *sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:YES];
-    _inPath = [[CartrawlerInPath alloc] initWithCartrawlerSDK:sdk];
-    [self.inPath addCrossSellCardToView:self.inPathViewContainer];
+    
+    _inPath = [[CartrawlerInPath alloc] initWithCartrawlerRental:self.rental];
     self.inPath.delegate = self;
+    [self.inPath addCrossSellCardToView:self.cardContainer];
 }
 
-- (IBAction)openInPath:(id)sender
-{
-    if (self.didBookCar) {
-        _didBookCar = NO;
-        _selectedVehicle = nil;
-        _selectedVehicleDict = nil;
-        [self.inPath removeVehicle];
-        [self.bookButton setTitle:@"Book vehicle" forState:UIControlStateNormal];
-    } else {
-        [self.inPath presentCarRentalWithFlightDetails:@"ALC"
-                                         pickupDate:[NSDate dateWithTimeIntervalSinceNow:480000]
-                                         returnDate:[NSDate dateWithTimeIntervalSinceNow:960000]
-                                          firstName:@"Lee"
-                                            surname:@"Maguire"
-                                          driverAge:@30
-                               additionalPassengers:@3
-                                              email:@"lmaguire@cartrawler.com"
-                                              phone:@"0866666666"
-                                           flightNo:@"FR1234"
-                                       addressLine1:nil
-                                       addressLine2:nil
-                                               city:nil
-                                           postcode:nil
-                                        countryCode:@"IE"
-                                        countryName:@"Ireland"
-                                 overViewController:self
-                                         completion:^(BOOL success, NSString * _Nonnull errorMessage) {
-                                             if (errorMessage) {
-                                                 NSLog(@"%@", errorMessage);
-                                             }
-                                         }];
-    }
+- (IBAction)bookCar:(id)sender {
+    [self.inPath presentCarRentalWithFlightDetails:@"ALC"
+                                        pickupDate:[NSDate dateWithTimeIntervalSinceNow:48000]
+                                        returnDate:[NSDate dateWithTimeIntervalSinceNow:96000]
+                                         firstName:@"Lee"
+                                           surname:@"Maguire"
+                                         driverAge:@30
+                              additionalPassengers:@3
+                                             email:@"lmaguire@cartrawler.com"
+                                             phone:@"0866666666"
+                                          flightNo:@"FR1234"
+                                      addressLine1:@"123 Cartrawler St."
+                                      addressLine2:@""
+                                              city:@"Dublin"
+                                          postcode:@"D1"
+                                       countryCode:@"IE"
+                                       countryName:@"Ireland"
+                                overViewController:self
+                                        completion:^(BOOL success, NSString * _Nonnull errorMessage) {
+                                            
+                                        }];
 }
 
-- (IBAction)makePayment:(id)sender
-{
-    //Lets simulate a successful payment
-    [self.inPath didReceiveBookingResponse:@{@"bookingId" : @"INPATH67890"}];
+- (IBAction)mockPayment:(id)sender {
+    [self.inPath didReceiveBookingResponse:@{@"bookingId" : @"INPATHTEST"}];
+}
+ 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
-#pragma mark For in path
+/*
+#pragma mark - Navigation
 
-- (void)didProduceInPathRequest:(nonnull NSDictionary *)request vehicle:(nonnull CTInPathVehicle *)vehicle
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+- (void)didProduceInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
 {
-    [self.bookButton setTitle:@"Remove vehicle" forState:UIControlStateNormal];
     NSLog(@"%@", request);
-    _selectedVehicle = vehicle;
-    _selectedVehicleDict = request;
-    _didBookCar = YES;
+    NSLog(@"%@", vehicle.vehicleName);
 }
 
 @end

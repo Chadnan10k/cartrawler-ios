@@ -7,8 +7,8 @@
 //
 
 #import "CTMerhandisingBanner.h"
-#import "CTLabel.h"
-#import "CTAppearance.h"
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTAppearance.h>
 
 @interface CTMerhandisingBanner()
 

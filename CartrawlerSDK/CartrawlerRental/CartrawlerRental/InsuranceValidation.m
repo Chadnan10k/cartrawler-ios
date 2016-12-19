@@ -7,7 +7,7 @@
 //
 
 #import "InsuranceValidation.h"
-#import "CTSDKSettings.h"
+#import <CartrawlerSDK/CTSDKSettings.h>
 
 @implementation InsuranceValidation
 

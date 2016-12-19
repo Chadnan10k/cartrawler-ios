@@ -8,7 +8,7 @@
 
 #import "CartrawlerInPath.h"
 #import <CartrawlerSDK/CTSDKSettings.h>
-#import <CartrawlerSDK/SearchDetailsViewController.h>
+#import <CartrawlerRental/SearchDetailsViewController.h>
 #import <CartrawlerSDK/CTNavigationController.h>
 #import <CartrawlerSDK/CTDataStore.h>
 #import "CTInPathPayment.h"
@@ -16,17 +16,17 @@
 
 @interface CartrawlerInPath()
 
-@property (nonatomic, strong) CartrawlerSDK *sdk;
+@property (nonatomic, strong) CartrawlerRental *rental;
 @property (nonatomic, strong) CTInPathView *cardView;
 
 @end
 
 @implementation CartrawlerInPath
 
-- (instancetype)initWithCartrawlerSDK:(CartrawlerSDK *)cartrawlerSDK
+- (instancetype)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental
 {
     self = [super init];
-    _sdk = cartrawlerSDK;
+    _rental = cartrawlerRental;
     return self;
 }
 
@@ -69,7 +69,7 @@
     [CTRentalSearch instance].postcode = postcode;
     [CTRentalSearch instance].country = countryCode;
     
-    [self.sdk.cartrawlerAPI locationSearchWithAirportCode:IATACode completion:^(CTLocationSearch *response, CTErrorResponse *error) {
+    [self.rental.cartrawlerSDK.cartrawlerAPI locationSearchWithAirportCode:IATACode completion:^(CTLocationSearch *response, CTErrorResponse *error) {
         if (error) {
             if (completion) {
                 completion(NO, error.errorMessage);
@@ -105,10 +105,10 @@
 {
     //The sdk handles most of the routing, but for in path we only need to display up to payment summary,
     //so lets nil the summary destination so it will dismiss
-    self.sdk.paymentSummaryViewController.destinationViewController = nil;
-    self.sdk.paymentSummaryViewController.fallbackViewController = nil;
-    self.sdk.paymentSummaryViewController.optionalRoute = nil;
-    self.sdk.paymentSummaryViewController.delegate = self;
+    self.rental.paymentSummaryViewController.destinationViewController = nil;
+    self.rental.paymentSummaryViewController.fallbackViewController = nil;
+    self.rental.paymentSummaryViewController.optionalRoute = nil;
+    self.rental.paymentSummaryViewController.delegate = self;
 }
 
 - (void)presentRentalNavigationController:(UIViewController *)parent
@@ -117,10 +117,10 @@
     navController.navigationBar.hidden = YES;
     navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
-    [navController setViewControllers:@[self.sdk.searchDetailsViewController]];
+    [navController setViewControllers:@[self.rental.searchDetailsViewController]];
     [parent presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
     if ([CTRentalSearch instance].pickupDate && [CTRentalSearch instance].dropoffDate) {
-        [(SearchDetailsViewController *)self.sdk.searchDetailsViewController performSearch];
+        [(SearchDetailsViewController *)self.rental.searchDetailsViewController performSearch];
     }
 }
 

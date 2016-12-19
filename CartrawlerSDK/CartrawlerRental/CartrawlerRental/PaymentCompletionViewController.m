@@ -7,16 +7,14 @@
 //
 
 #import "PaymentCompletionViewController.h"
-#import "CTLabel.h"
-#import "CTRentalSearch.h"
-#import "CTImageCache.h"
-#import "CTAppearance.h"
-#import "CartrawlerSDK+NSDateUtils.h"
-#import "CTNextButton.h"
-#import "CTView.h"
-#import "CartrawlerSDK+UIView.h"
-#import "CTBookingSummaryView.h"
-
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTRentalSearch.h>
+#import <CartrawlerSDK/CTImageCache.h>
+#import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
+#import <CartrawlerSDK/CTNextButton.h>
+#import <CartrawlerSDK/CTView.h>
+#import <CartrawlerSDK/CartrawlerSDK+UIView.h>
 #import "CTBookingSummaryView.h"
 
 @interface PaymentCompletionViewController () <UIGestureRecognizerDelegate>

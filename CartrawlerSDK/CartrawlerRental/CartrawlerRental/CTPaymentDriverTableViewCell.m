@@ -8,7 +8,7 @@
 //
 
 #import "CTPaymentDriverTableViewCell.h"
-#import "CTLabel.h"
+#import <CartrawlerSDK/CTLabel.h>
 
 @interface CTPaymentDriverTableViewCell()
 

@@ -8,11 +8,13 @@
 
 #import "ViewController.h"
 #import <CartrawlerSDK/CartrawlerSDK.h>
+#import <CartrawlerRental/CartrawlerRental.h>
 #import "InPathViewController.h"
 
-@interface ViewController () <CartrawlerSDKDelegate>
+@interface ViewController () <CartrawlerRentalDelegate>
 
 @property (nonatomic, strong) CartrawlerSDK *sdk;
+@property (nonatomic, strong) CartrawlerRental *rental;
 
 @end
 
@@ -21,11 +23,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:YES];
-    self.sdk.delegate = self;
+    _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
+    self.rental.delegate = self;
+
 }
 
 - (IBAction)openCarRental:(id)sender {
-    [self.sdk presentCarRentalInViewController:self];
+    [self.rental presentCarRentalInViewController:self];
 }
 
 #pragma Mark CartrawlerSDKDelegate
@@ -39,6 +43,12 @@
 - (void)didBookVehicle:(CTBooking *)booking
 {
     NSLog(@"We booked a vehicle!");
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    InPathViewController *vc = segue.destinationViewController;
+    vc.rental = self.rental;
 }
 
 

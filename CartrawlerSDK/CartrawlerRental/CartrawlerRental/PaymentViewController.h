@@ -6,7 +6,7 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "CartrawlerSDK.h"
+#import <CartrawlerSDK/CartrawlerSDK.h>
 
 @interface PaymentViewController : CTViewController
 

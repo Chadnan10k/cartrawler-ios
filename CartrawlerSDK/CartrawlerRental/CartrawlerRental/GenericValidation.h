@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CTValidation.h"
+#import <CartrawlerSDK/CTValidation.h>
 
 @interface GenericValidation : CTValidation
 

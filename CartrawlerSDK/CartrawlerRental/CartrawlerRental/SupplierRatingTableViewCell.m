@@ -7,8 +7,8 @@
 //
 
 #import "SupplierRatingTableViewCell.h"
-#import "CTLabel.h"
-#import "CTAppearance.h"
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTAppearance.h>
 
 @interface SupplierRatingTableViewCell()
 @property (weak, nonatomic) IBOutlet CTLabel *rating;

@@ -7,8 +7,8 @@
 //
 
 #import "LocationSearchTableViewCell.h"
-#import "CTLabel.h"
-#import "CartrawlerSDK+UIImageView.h"
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
 
 @interface LocationSearchTableViewCell()
 

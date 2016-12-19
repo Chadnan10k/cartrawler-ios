@@ -8,7 +8,8 @@
 
 #import "CTBookingSummaryViewController.h"
 #import "CTBookingSummaryView.h"
-#import "CTNextButton.h"
+#import <CartrawlerSDK/CTNextButton.h>
+
 @interface CTBookingSummaryViewController ()
 
 @property (weak, nonatomic) IBOutlet CTNextButton *continueButton;

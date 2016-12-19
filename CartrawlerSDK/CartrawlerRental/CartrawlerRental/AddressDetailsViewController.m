@@ -7,13 +7,13 @@
 //
 
 #import "AddressDetailsViewController.h"
-#import "CTTextField.h"
+#import <CartrawlerSDK/CTTextField.h>
 #import "BookingSummaryButton.h"
 #import "SettingsSelectionViewController.h"
-#import "CTImageCache.h"
-#import "CTNextButton.h"
-#import "CartrawlerSDK+UITextField.h"
-#import "CTSDKSettings.h"
+#import <CartrawlerSDK/CTImageCache.h>
+#import <CartrawlerSDK/CTNextButton.h>
+#import <CartrawlerSDK/CartrawlerSDK+UITextField.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 
 @interface AddressDetailsViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 

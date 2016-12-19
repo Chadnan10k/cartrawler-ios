@@ -7,8 +7,8 @@
 //
 
 #import "CTFilterTableViewCell.h"
-#import "CTAppearance.h"
-#import "CTLabel.h"
+#import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CTLabel.h>
 @interface CTFilterTableViewCell()
 
 @property (strong, nonatomic) UIImageView *checkmarkImageView;

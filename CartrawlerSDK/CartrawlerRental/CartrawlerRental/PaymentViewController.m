@@ -7,20 +7,19 @@
 //
 
 #import "PaymentViewController.h"
-#import "PaymentRequest.h"
-#import "CTSDKSettings.h"
-#import "CartrawlerSDK+NSDateUtils.h"
+#import <CartrawlerSDK/PaymentRequest.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
 #import "PaymentCompletionViewController.h"
-#import "CTPaymentView.h"
-#import "CTCheckbox.h"
-#import "CTHTMLParser.h"
-#import "CTAppearance.h"
+#import <CartrawlerSDK/CTPaymentView.h>
+#import <CartrawlerSDK/CTHTMLParser.h>
+#import <CartrawlerSDK/CTAppearance.h>
 #import "TermsViewController.h"
-#import "CTNextButton.h"
-#import "CTAppearance.h"
-#import "CTDataStore.h"
-#import "Reachability.h"
-#import "CartrawlerSDK+NSNumber.h"
+#import <CartrawlerSDK/CTNextButton.h>
+#import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CTDataStore.h>
+#import <CartrawlerSDK/Reachability.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 #import "CTPaymentLoadingViewController.h"
 
 @interface PaymentViewController () <UITextViewDelegate, CTPaymentViewDelegate, UIAlertViewDelegate>

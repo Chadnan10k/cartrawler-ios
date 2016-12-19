@@ -8,10 +8,10 @@
 
 #import "LocationSearchDataSource.h"
 #import <CartrawlerAPI/CartrawlerAPI.h>
-#import "CTLabel.h"
-#import "CTSDKSettings.h"
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 #import "LocationSearchTableViewCell.h"
-#import "CTAppearance.h"
+#import <CartrawlerSDK/CTAppearance.h>
 
 @interface LocationSearchDataSource()
 @property (nonatomic, strong) NSMutableArray <CTMatchedLocation *> *airportLocations;

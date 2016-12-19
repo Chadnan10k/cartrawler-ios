@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CTCSVItem.h"
+#import <CartrawlerSDK/CTCSVItem.h>
 
 @interface SettingsSelectionViewController : UIViewController
 

@@ -10,15 +10,15 @@
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import <CartrawlerSDK/CTNavigationController.h>
 #import <CartrawlerSDK/CTDataStore.h>
-#import <CartrawlerSDK/RentalBookingsViewController.h>
-#import <CartrawlerSDK/CTBasketValidation.h>
-#import <CartrawlerSDK/SearchDetailsViewController.h>
-#import <CartrawlerSDK/SearchValidation.h>
-#import <CartrawlerSDK/GenericValidation.h>
-#import <CartrawlerSDK/InsuranceValidation.h>
-#import <CartrawlerSDK/CTDriverDetailsValidation.h>
-#import <CartrawlerSDK/BookingCompletionValidation.h>
-#import <CartrawlerSDK/PaymentValidation.h>
+#import "RentalBookingsViewController.h"
+#import "CTBasketValidation.h"
+#import "SearchDetailsViewController.h"
+#import "SearchValidation.h"
+#import "GenericValidation.h"
+#import "InsuranceValidation.h"
+#import "CTDriverDetailsValidation.h"
+#import "BookingCompletionValidation.h"
+#import "PaymentValidation.h"
 
 #define kSearchViewStoryboard           @"StepOne"
 #define kSearchResultsViewStoryboard    @"StepTwo"
@@ -30,20 +30,6 @@
 
 @interface CartrawlerRental() <CTViewControllerDelegate>
 
-//---Car Rental View Controllers ---
-@property (nonatomic, strong, nonnull, readonly) CTViewController *searchDetailsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleSelectionViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleDetailsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceExtrasViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *extrasViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *driverDetialsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *addressDetialsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentSummaryViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentCompletionViewController;
-//----------------------------------
-
-@property (nonatomic, strong, nonnull, readonly) CartrawlerSDK *cartrawlerSDK;
 @property (nonatomic, strong, nonnull, readonly) NSBundle *bundle;
 
 @end

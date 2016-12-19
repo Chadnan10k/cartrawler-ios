@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerSDK/CartrawlerSDK.h>
+#import <CartrawlerRental/CartrawlerRental.h>
 #import "CTInPathVehicle.h"
 
 //! Project version number for CartrawlerInPath.
@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id<CartrawlerInPathDelegate> delegate;
 
-- (instancetype)initWithCartrawlerSDK:(nonnull CartrawlerSDK *)cartrawlerSDK;
+- (instancetype)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental;
 
 - (void)presentCarRentalWithFlightDetails:(nonnull NSString *)IATACode
                                pickupDate:(nullable NSDate *)pickupDate
@@ -51,6 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
                                completion:(nonnull CarRentalWithFlightDetailsCompletion)completion;
 
 - (void)addCrossSellCardToView:(UIView *)view;
+
 - (void)removeVehicle;
 
 - (void)didReceiveBookingResponse:(NSDictionary *)response;

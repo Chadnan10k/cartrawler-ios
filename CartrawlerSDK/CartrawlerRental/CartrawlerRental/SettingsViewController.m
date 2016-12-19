@@ -8,9 +8,9 @@
 
 #import "SettingsViewController.h"
 #import "SettingsSelectionViewController.h"
-#import "CTNavigationController.h"
-#import "CTCSVItem.h"
-#import "CTSDKSettings.h"
+#import <CartrawlerSDK/CTNavigationController.h>
+#import <CartrawlerSDK/CTCSVItem.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *currencyButton;

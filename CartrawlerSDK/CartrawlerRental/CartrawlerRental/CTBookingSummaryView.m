@@ -8,10 +8,10 @@
 
 #import "CTBookingSummaryView.h"
 #import <CartrawlerAPI/CTVendor.h>
-#import "CartrawlerSDK+NSDateUtils.h"
-#import "CTButton.h"
-#import "CTLabel.h"
-#import "CTAppearance.h"
+#import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
+#import <CartrawlerSDK/CTButton.h>
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTAppearance.h>
 #import "CTPaymentSummaryDataSource.h"
 
 @interface CTBookingSummaryView ()

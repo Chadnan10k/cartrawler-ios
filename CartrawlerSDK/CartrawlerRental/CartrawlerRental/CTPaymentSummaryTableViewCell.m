@@ -7,10 +7,10 @@
 //
 
 #import "CTPaymentSummaryTableViewCell.h"
-#import "CTLabel.h"
+#import <CartrawlerSDK/CTLabel.h>
 #import "PaymentSummaryTableViewCell.h"
-#import "CartrawlerSDK+NSNumber.h"
-#import "CartrawlerSDK+UIView.h"
+#import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
+#import <CartrawlerSDK/CartrawlerSDK+UIView.h>
 
 @interface CTPaymentSummaryTableViewCell() <UITableViewDataSource>
 

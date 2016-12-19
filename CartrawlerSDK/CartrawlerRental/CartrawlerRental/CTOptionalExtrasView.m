@@ -8,7 +8,7 @@
 
 #import "CTOptionalExtrasView.h"
 #import "OptionalExtraTableViewCell.h"
-#import "CTTextView.h"
+#import <CartrawlerSDK/CTTextView.h>
 
 @interface CTOptionalExtrasView() <UIScrollViewDelegate>
 

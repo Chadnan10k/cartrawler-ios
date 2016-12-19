@@ -29,7 +29,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CartrawlerRental : NSObject
 
-@property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
+//---Car Rental View Controllers ---
+@property (nonatomic, strong, nonnull, readonly) CTViewController *searchDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleSelectionViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleDetailsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceExtrasViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *extrasViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *driverDetialsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *addressDetialsViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentSummaryViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentCompletionViewController;
+//----------------------------------
+
+@property (nonatomic, strong, nonnull, readonly) CartrawlerSDK *cartrawlerSDK;
 
 //---CarRentalWithFlightDetails---
 typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *errorMessage);

@@ -8,7 +8,7 @@
 
 #import "CTOptionalExtrasViewController.h"
 #import "OptionalExtraTableViewCell.h"
-#import "CTNextButton.h"
+#import <CartrawlerSDK/CTNextButton.h>
 
 @interface CTOptionalExtrasViewController () <UITableViewDelegate, UITableViewDataSource>
 

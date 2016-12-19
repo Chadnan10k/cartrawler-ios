@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CTLabel.h"
-#import "CTRentalSearch.h"
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTRentalSearch.h>
 
 @interface CTInterstitialViewController : UIViewController
 

@@ -7,10 +7,10 @@
 //
 
 #import "CTFilterDataSource.h"
-#import "CTAppearance.h"
+#import <CartrawlerSDK/CTAppearance.h>
 #import "CTFilterTableViewCell.h"
 #import <CartrawlerAPI/CTAvailabilityItem.h>
-#import "CTLocalisedStrings.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTFilterDataSource()
 

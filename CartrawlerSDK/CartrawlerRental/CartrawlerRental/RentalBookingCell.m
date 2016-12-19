@@ -7,9 +7,9 @@
 //
 
 #import "RentalBookingCell.h"
-#import "CTLabel.h"
-#import "CartrawlerSDK+NSDateUtils.h"
-#import "CTAppearance.h"
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
+#import <CartrawlerSDK/CTAppearance.h>
 
 @interface RentalBookingCell()
 

@@ -7,8 +7,8 @@
 //
 
 #import "SearchValidation.h"
-#import "CTSDKSettings.h"
-#import "CartrawlerSDK+NSDateUtils.h"
+#import <CartrawlerSDK/CTSDKSettings.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
 
 @implementation SearchValidation
 

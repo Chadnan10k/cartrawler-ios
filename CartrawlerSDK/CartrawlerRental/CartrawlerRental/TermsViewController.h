@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CTRentalSearch.h"
+#import <CartrawlerSDK/CTRentalSearch.h>
 #import <CartrawlerAPI/CartrawlerAPI.h>
 
 @interface TermsViewController : UIViewController

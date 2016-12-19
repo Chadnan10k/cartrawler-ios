@@ -8,8 +8,8 @@
 
 #import "ExpandingInfoView.h"
 #import <QuartzCore/QuartzCore.h>
-#import "CTAppearance.h"
-#import "CTToolTip.h"
+#import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CTToolTip.h>
 
 @interface ExpandingInfoView()
 

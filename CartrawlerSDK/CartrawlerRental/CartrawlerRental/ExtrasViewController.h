@@ -6,7 +6,7 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import <CTViewController.h>
+#import <CartrawlerSDK/CTViewController.h>
 
 @interface ExtrasViewController : CTViewController
 

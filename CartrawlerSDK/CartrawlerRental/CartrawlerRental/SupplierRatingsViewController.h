@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTVendor.h>
-#import "CTViewController.h"
+#import <CartrawlerSDK/CTViewController.h>
 
 @interface SupplierRatingsViewController : CTViewController
 

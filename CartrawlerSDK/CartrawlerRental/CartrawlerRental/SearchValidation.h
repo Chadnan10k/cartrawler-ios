@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CTRentalSearch.h"
-#import "CTValidation.h"
+#import <CartrawlerSDK/CTRentalSearch.h>
+#import <CartrawlerSDK/CTValidation.h>
 
 @interface SearchValidation : CTValidation
 

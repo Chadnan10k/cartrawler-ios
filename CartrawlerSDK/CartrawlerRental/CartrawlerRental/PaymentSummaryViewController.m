@@ -8,14 +8,14 @@
 
 #import "PaymentSummaryViewController.h"
 #import "PaymentSummaryTableViewCell.h"
-#import "CTDesignableView.h"
-#import "CTSDKSettings.h"
-#import "CartrawlerSDK+NSNumber.h"
+#import <CartrawlerSDK/CTDesignableView.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 #import "BookingSummaryButton.h"
-#import "CTLabel.h"
-#import "CTNextButton.h"
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTNextButton.h>
 #import "CTBookingSummaryViewController.h"
-#import "CartrawlerSDK+UIView.h"
+#import <CartrawlerSDK/CartrawlerSDK+UIView.h>
 
 @interface PaymentSummaryViewController () <UITableViewDelegate, UITableViewDataSource, BookingSummaryButtonDelegate>
 

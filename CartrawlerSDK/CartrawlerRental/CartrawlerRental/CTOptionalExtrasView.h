@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CTDesignableView.h"
+#import <CartrawlerSDK/CTDesignableView.h>
 #import <CartrawlerAPI/CTExtraEquipment.h>
 
 @protocol OptionalExtrasDelegate <NSObject>

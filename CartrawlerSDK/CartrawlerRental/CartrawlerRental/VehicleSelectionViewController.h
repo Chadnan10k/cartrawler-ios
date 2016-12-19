@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CTVehicleSelectionView.h"
-#import "CTViewController.h"
+#import <CartrawlerSDK/CTViewController.h>
+
 @interface VehicleSelectionViewController : CTViewController
-
-
 
 @end
 

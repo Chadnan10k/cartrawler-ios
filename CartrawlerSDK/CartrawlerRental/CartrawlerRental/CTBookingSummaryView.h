@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CTRentalSearch.h"
-#import "CTViewController.h"
+#import <CartrawlerSDK/CTRentalSearch.h>
+#import <CartrawlerSDK/CTViewController.h>
 
 @interface CTBookingSummaryView: CTViewController
 

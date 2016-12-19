@@ -27,7 +27,7 @@
 		450725B81DD9C99500D56C8A /* CTImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 450725B61DD9C99500D56C8A /* CTImageView.m */; };
 		4513B6241DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4513B6221DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4513B6251DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4513B6231DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m */; };
-		451E763A1E04438300D58F71 /* CTRentalBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E76381E04438300D58F71 /* CTRentalBooking.h */; };
+		451E763A1E04438300D58F71 /* CTRentalBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E76381E04438300D58F71 /* CTRentalBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		451E763B1E04438300D58F71 /* CTRentalBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E76391E04438300D58F71 /* CTRentalBooking.m */; };
 		4540550E1DDE10DF00FD493A /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4540550D1DDE0E3D00FD493A /* en.strings */; };
 		454D91F01DD34E24001AE96C /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D91EE1DD34E24001AE96C /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -714,6 +714,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				455B58741DCC914300CA4790 /* CTLabel.h in Headers */,
+				451E763A1E04438300D58F71 /* CTRentalBooking.h in Headers */,
 				455B58761DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.h in Headers */,
 				455B58351DCC914300CA4790 /* PaymentRequest.h in Headers */,
 				455B58911DCC914300CA4790 /* CTDataStore.h in Headers */,
@@ -724,7 +725,6 @@
 				455B58621DCC914300CA4790 /* CTAppearance.h in Headers */,
 				455B58B41DCC914400CA4790 /* CTValidation.h in Headers */,
 				455B59591DCC96D500CA4790 /* CartrawlerSDK.h in Headers */,
-				451E763A1E04438300D58F71 /* CTRentalBooking.h in Headers */,
 				455B58871DCC914300CA4790 /* CTRentalSearch.h in Headers */,
 				455B58B71DCC914400CA4790 /* CTViewController.h in Headers */,
 				455B58371DCC914300CA4790 /* CTPaymentView.h in Headers */,

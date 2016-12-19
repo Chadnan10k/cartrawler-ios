@@ -9,10 +9,10 @@
 #import "CTFilterViewController.h"
 #import "CTFilterDataSource.h"
 #import "CTFilterTableView.h"
-#import "CTLabel.h"
+#import <CartrawlerSDK/CTLabel.h>
 #import "CTFilterFactory.h"
 #import "CTFilterContainer.h"
-#import "CTAppearance.h"
+#import <CartrawlerSDK/CTAppearance.h>
 
 @interface CTFilterViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;

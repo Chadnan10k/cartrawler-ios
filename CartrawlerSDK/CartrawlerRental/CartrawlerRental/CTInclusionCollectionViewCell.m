@@ -7,7 +7,7 @@
 //
 
 #import "CTInclusionCollectionViewCell.h"
-#import "CTLabel.h"
+#import <CartrawlerSDK/CTLabel.h>
 
 @interface CTInclusionCollectionViewCell()
 

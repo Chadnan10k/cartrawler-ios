@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CTRentalBooking.h"
+#import <CartrawlerSDK/CTRentalBooking.h>
 
 @interface RentalBookingCell : UITableViewCell
 

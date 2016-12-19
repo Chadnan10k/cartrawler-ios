@@ -7,9 +7,9 @@
 //
 
 #import "CTFilterContainer.h"
-#import "CTLabel.h"
-#import "CTAppearance.h"
-#import "CartrawlerSDK+UIImageView.h"
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
 
 @interface CTFilterContainer()
 

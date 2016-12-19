@@ -7,11 +7,11 @@
 //
 
 #import "OptionalExtraTableViewCell.h"
-#import "CTLabel.h"
-#import "CartrawlerSDK+NSNumber.h" 
-#import "CTStepper.h"
-#import "CTAppearance.h"
-#import "CTRentalSearch.h"
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
+#import <CartrawlerSDK/CTStepper.h>
+#import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CTRentalSearch.h>
 
 @interface OptionalExtraTableViewCell()
 
