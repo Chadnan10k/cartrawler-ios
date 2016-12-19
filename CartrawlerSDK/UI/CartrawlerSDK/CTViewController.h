@@ -35,13 +35,13 @@ typedef void (^RentalBookingCompletion)(id *booking);
 @property (nonatomic, strong) CTViewController *destinationViewController;
 @property (nonatomic, strong) CTViewController *fallbackViewController;
 @property (nonatomic, strong) CTViewController *optionalRoute;
-//@property (nonatomic) BOOL inPathEnabled;
 
 @property (nonatomic, weak) id<CTViewControllerDelegate> delegate;
 
 - (void)refresh;
+
 - (void)pushToDestination;
-- (void)popToSearchViewController;
+
 - (void)dismiss;
 
 @end

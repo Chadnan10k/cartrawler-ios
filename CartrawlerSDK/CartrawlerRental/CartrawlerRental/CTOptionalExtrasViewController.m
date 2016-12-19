@@ -1,5 +1,5 @@
 //
-//  CTOptionalExtrasViewController.m
+//  CTOptionalCTExtrasViewController.m
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 17/11/2016.
@@ -7,7 +7,7 @@
 //
 
 #import "CTOptionalExtrasViewController.h"
-#import "OptionalExtraTableViewCell.h"
+#import "CTOptionalExtraTableViewCell.h"
 #import <CartrawlerSDK/CTNextButton.h>
 
 @interface CTOptionalExtrasViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -32,7 +32,7 @@
     self.tableView.estimatedRowHeight = 75;
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    [self.tableView registerNib:[UINib nibWithNibName:@"OptionalExtraTableViewCell" bundle:bundle] forCellReuseIdentifier:@"cell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CTOptionalExtraTableViewCell" bundle:bundle] forCellReuseIdentifier:@"cell"];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -72,7 +72,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    OptionalExtraTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    CTOptionalExtraTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     [cell setData:self.extras[indexPath.row]];
     return cell;
 }

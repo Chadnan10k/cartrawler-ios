@@ -20,7 +20,7 @@
 #import "CTButton.h"
 #import "PassengerSelectionViewController.h"
 #import "CTInterstitialViewController.h"
-#import "SettingsViewController.h"
+#import "CTSettingsViewController.h"
 
 @interface GroundTransportViewController () <CTCalendarDelegate, UITextFieldDelegate>
 
@@ -438,7 +438,7 @@
 - (IBAction)openSettings:(id)sender
 {
     NSBundle *b = [NSBundle bundleForClass:[self class]];
-    SettingsViewController *vc = [[UIStoryboard storyboardWithName:@"StepOne" bundle:b] instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+    CTSettingsViewController *vc = [[UIStoryboard storyboardWithName:@"StepOne" bundle:b] instantiateViewControllerWithIdentifier:@"CTSettingsViewController"];
     [self presentViewController:vc animated:YES completion:nil];
 }
 

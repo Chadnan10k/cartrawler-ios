@@ -30,16 +30,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)popToSearchViewController
-{/*
-    for (CTViewController *vc in self.navigationController.viewControllers) {
-        if ([vc isKindOfClass:[SearchDetailsViewController class]]) {
-            [self.navigationController popToViewController:vc animated:NO];
-            [(SearchDetailsViewController *)vc performSearch];
-        }
-    }*/
-}
-
 - (void)dismiss
 {
     dispatch_async(dispatch_get_main_queue(), ^{

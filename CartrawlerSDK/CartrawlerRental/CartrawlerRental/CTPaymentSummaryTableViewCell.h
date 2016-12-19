@@ -1,5 +1,5 @@
 //
-//  CTPaymentSummaryTableViewCell.h
+//  CTCTPaymentSummaryTableViewCell.h
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 18/11/2016.

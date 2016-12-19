@@ -10,6 +10,7 @@
 #import "CTInterstitialCollectionViewCell.h"
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
+#import "CTRentalConstants.h"
 
 @interface CTInterstitialViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -87,8 +88,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSBundle *b = [NSBundle bundleForClass:[self class]];
-        UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"Interstitial" bundle:b];
-        sharedInstance = [settingsStoryboard instantiateViewControllerWithIdentifier:@"CTInterstitialViewController"];
+        UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:CTRentalInterstitialStoryboard bundle:b];
+        sharedInstance = [settingsStoryboard instantiateViewControllerWithIdentifier:CTRentalInterstitialViewIdentifier];
     });
     return sharedInstance;
 }

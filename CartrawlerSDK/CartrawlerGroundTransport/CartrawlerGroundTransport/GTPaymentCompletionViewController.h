@@ -1,5 +1,5 @@
 //
-//  GTPaymentCompletionViewController.h
+//  GTCTPaymentCompletionViewController.h
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 06/09/2016.
@@ -8,7 +8,7 @@
 
 #import "CartrawlerSDK.h"
 
-@interface GTPaymentCompletionViewController : CTViewController
+@interface GTCTPaymentCompletionViewController : CTViewController
 
 
 

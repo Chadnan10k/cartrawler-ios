@@ -1,5 +1,5 @@
 //
-//  CTOptionalExtrasViewController.h
+//  CTOptionalCTExtrasViewController.h
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 17/11/2016.

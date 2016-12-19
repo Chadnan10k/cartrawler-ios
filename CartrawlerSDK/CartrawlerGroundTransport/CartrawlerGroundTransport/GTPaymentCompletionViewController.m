@@ -1,17 +1,17 @@
 //
-//  GTPaymentCompletionViewController.m
+//  GTCTPaymentCompletionViewController.m
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 06/09/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "GTPaymentCompletionViewController.h"
+#import "GTCTPaymentCompletionViewController.h"
 #import "CTLabel.h"
 #import "CTImageCache.h"
 #import "CartrawlerSDK+NSDateUtils.h"
 
-@interface GTPaymentCompletionViewController () <UIGestureRecognizerDelegate>
+@interface GTCTPaymentCompletionViewController () <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
 @property (weak, nonatomic) IBOutlet CTLabel *pickupLocationLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *companyLabel;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation GTPaymentCompletionViewController
+@implementation GTCTPaymentCompletionViewController
 
 
 

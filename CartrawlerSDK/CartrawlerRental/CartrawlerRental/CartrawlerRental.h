@@ -9,10 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "CartrawlerSDK/CartrawlerSDK.h"
-#import "CartrawlerSDK/CTAppearance.h"
-#import "CartrawlerSDK/CTViewController.h"
-#import "CartrawlerSDK/CTRentalBooking.h"
-#import "CartrawlerAPI/CartrawlerAPI.h"
 
 FOUNDATION_EXPORT double CartrawlerRentalVersionNumber;
 
@@ -33,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nonnull, readonly) CTViewController *searchDetailsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleSelectionViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleDetailsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceExtrasViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceCTExtrasViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *extrasViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *driverDetialsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *addressDetialsViewController;

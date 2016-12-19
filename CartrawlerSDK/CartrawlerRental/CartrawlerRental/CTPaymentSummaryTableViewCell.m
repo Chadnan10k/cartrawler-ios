@@ -1,5 +1,5 @@
 //
-//  CTPaymentSummaryTableViewCell.m
+//  CTCTPaymentSummaryTableViewCell.m
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 18/11/2016.
@@ -8,7 +8,8 @@
 
 #import "CTPaymentSummaryTableViewCell.h"
 #import <CartrawlerSDK/CTLabel.h>
-#import "PaymentSummaryTableViewCell.h"
+#import "CTPaymentSummaryTableViewCell.h"
+#import "CTPaymentSummaryItemTableViewCell.h"
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIView.h>
 
@@ -80,7 +81,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PaymentSummaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    CTPaymentSummaryItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     NSDictionary *data = self.items[indexPath.row];
     
     if (data[@"Extra"]) {

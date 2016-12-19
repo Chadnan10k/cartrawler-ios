@@ -11,10 +11,10 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 
 @interface CTValidation : NSObject
-typedef void (^CTSearchValidation)(BOOL success, NSString *errorMessage, BOOL useOptionalRoute);
+typedef void (^CTSearchValidationCompletion)(BOOL success, NSString *errorMessage, BOOL useOptionalRoute);
 
 - (void)validateCarRental:(CTRentalSearch *)search
             cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
-               completion:(CTSearchValidation)completion;
+               completion:(CTSearchValidationCompletion)completion;
 @end
 

@@ -8,54 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CartrawlerAPI.h>
-#import "CTAppearance.h"
-#import "CTViewController.h"
-#import "CTLabel.h"
-#import "CTNextButton.h"
-#import "CTSDKSettings.h"
-#import "CartrawlerSDK+NSNumber.h"
-#import "CTImageView.h"
-#import "CartrawlerSDK+UIImageView.h"
-#import "CTImageCache.h"
-#import "CTLocalisedStrings.h"
-#import "CTRentalBooking.h"
-#import "CTCalendarViewController.h"
-#import "Reachability.h"
-#import "PaymentRequest.h"
-#import "CTTextField.h"
-#import "NSStringUtils.h"
-#import "CartrawlerSDK+NSDateUtils.h"
-#import "CartrawlerSDK+UIColor.h"
-#import "CartrawlerSDK+UITextField.h"
-#import "CartrawlerSDK+UIView.h"
-#import "CartrawlerSDK+WKWebView.h"
-#import "CTButton.h"
-#import "CTCheckbox.h"
-#import "CTCSVItem.h"
-#import "CTDataStore.h"
-#import "CTFlightNumberValidation.h"
-#import "CTHTMLParser.h"
-#import "CTLayoutConstraint.h"
-#import "CTNavigationBar.h"
-#import "CTNavigationItem.h"
-#import "CTNavigationView.h"
-#import "CTView.h"
-#import "CTNavigationController.h"
-#import "CTPaymentCheck.h"
-#import "CTPaymentView.h"
-#import "CTPlaceholderView.h"
-#import "CTSegmentedControl.h"
-#import "CTSelectView.h"
-#import "CTStepper.h"
-#import "CTPickerView.h"
-#import "CTTagManager.h"
-#import "CTTextView.h"
-#import "CTTimePickerView.h"
-#import "CTToolTip.h"
-#import "CTToolTipButton.h"
-#import "CTToolTipViewController.h"
-
+#import "CTHeaders.h"
 
 FOUNDATION_EXPORT double CartrawlerSDKVersionNumber;
 
@@ -77,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nonnull, readonly) CTViewController *searchDetailsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleSelectionViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleDetailsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceExtrasViewController;
+@property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceCTExtrasViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *extrasViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *driverDetialsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *addressDetialsViewController;

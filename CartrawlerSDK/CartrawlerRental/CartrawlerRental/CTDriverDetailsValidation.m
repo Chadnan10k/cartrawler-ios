@@ -12,7 +12,7 @@
 
 - (void)validateCarRental:(CTRentalSearch *)search
             cartrawlerAPI:(CartrawlerAPI *)cartrawlerAPI
-               completion:(CTSearchValidation)completion
+               completion:(CTSearchValidationCompletion)completion
 {
     if (search.pickupLocation == nil) {
         NSLog(@"\n\n ERROR: CANNOT PUSH AS self.pickupLocation IS NOT SET \n\n");

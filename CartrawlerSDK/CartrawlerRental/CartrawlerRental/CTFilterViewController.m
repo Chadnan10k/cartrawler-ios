@@ -13,8 +13,10 @@
 #import "CTFilterFactory.h"
 #import "CTFilterContainer.h"
 #import <CartrawlerSDK/CTAppearance.h>
+#import "CTRentalConstants.h"
 
 @interface CTFilterViewController ()
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) CTFilterTableView *carSizeTableView;
@@ -28,6 +30,7 @@
 
 @property (nonatomic, strong) CTFilterFactory *filterFactory;
 @property (nonatomic, strong) NSArray <CTFilterContainer *>*viewArray;
+
 @end
 
 @implementation CTFilterViewController
@@ -239,7 +242,7 @@
 + (CTFilterViewController *)initInViewController:(UIViewController *)viewController withData:(CTVehicleAvailability *)data
 {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StepTwo" bundle:bundle];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalResultsStoryboard bundle:bundle];
     CTFilterViewController *vc = (CTFilterViewController *)[storyboard instantiateViewControllerWithIdentifier:@"CTFilterViewController"];
     [vc updateData:data];
     vc.parentViewContoller = viewController;

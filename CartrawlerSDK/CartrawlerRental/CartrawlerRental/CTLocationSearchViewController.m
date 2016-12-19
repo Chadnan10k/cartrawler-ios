@@ -8,14 +8,14 @@
 
 #import "CTLocationSearchViewController.h"
 #import <CartrawlerAPI/CartrawlerAPI.h>
-#import "LocationSearchDataSource.h"
+#import "CTLocationSearchDataSource.h"
 #import <CartrawlerSDK/CTAppearance.h>
 @interface CTLocationSearchViewController () <UISearchBarDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray <CTMatchedLocation *> *airportLocations;
 @property (nonatomic, strong) NSArray <CTMatchedLocation *> *otherLocations;
-@property (nonatomic, strong) LocationSearchDataSource *dataSource;
+@property (nonatomic, strong) CTLocationSearchDataSource *dataSource;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 
@@ -33,7 +33,7 @@
     
     self.headerView.backgroundColor = [CTAppearance instance].navigationBarColor;
     
-    _dataSource = [[LocationSearchDataSource alloc] init];
+    _dataSource = [[CTLocationSearchDataSource alloc] init];
     self.dataSource.enableGroundTransportLocations = self.enableGroundTransportLocations;
     self.dataSource.invertData = self.invertData;
     

@@ -8,7 +8,7 @@
 #import "GTPassengerViewController.h"
 #import "CTTextField.h"
 #import "BookingSummaryButton.h"
-#import "AddressDetailsViewController.h"
+#import "CTAddressDetailsViewController.h"
 #import "CTLabel.h"
 #import "CTFlightNumberValidation.h"
 

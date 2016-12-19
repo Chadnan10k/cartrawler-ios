@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CartrawlerRental/CartrawlerRental.h>
 #import "CTInPathVehicle.h"
+#import "CTInPathPayment.h"
 
 //! Project version number for CartrawlerInPath.
 FOUNDATION_EXPORT double CartrawlerInPathVersionNumber;

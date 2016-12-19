@@ -8,6 +8,7 @@
 
 #import "CTPaymentLoadingViewController.h"
 #import <CartrawlerSDK/CTLabel.h>
+#import "CTRentalConstants.h"
 
 @interface CTPaymentLoadingViewController ()
 
@@ -51,7 +52,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSBundle *b = [NSBundle bundleForClass:[self class]];
-        UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:@"Payment" bundle:b];
+        UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:CTRentalPaymentStoryboard bundle:b];
         sharedInstance = [settingsStoryboard instantiateViewControllerWithIdentifier:@"CTPaymentLoadingViewController"];
     });
     return sharedInstance;

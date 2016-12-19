@@ -7,7 +7,7 @@
 //
 
 #import "CTVehicleSelectionDataSource.h"
-#import "VehicleTableViewCell.h"
+#import "CTVehicleTableViewCell.h"
 
 @interface CTVehicleSelectionDataSource()
 
@@ -48,7 +48,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CTAvailabilityItem *vehicle = self.vehicles[indexPath.row];
-    VehicleTableViewCell *cell = (VehicleTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"VehicleCell" forIndexPath:indexPath];
+    CTVehicleTableViewCell *cell = (CTVehicleTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"VehicleCell" forIndexPath:indexPath];
     [cell initWithVehicle:vehicle index:indexPath.row];
     return cell;
 }

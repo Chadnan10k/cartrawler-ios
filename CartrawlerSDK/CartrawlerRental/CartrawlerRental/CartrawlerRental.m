@@ -10,23 +10,16 @@
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import <CartrawlerSDK/CTNavigationController.h>
 #import <CartrawlerSDK/CTDataStore.h>
-#import "RentalBookingsViewController.h"
+#import "CTRentalBookingsViewController.h"
 #import "CTBasketValidation.h"
-#import "SearchDetailsViewController.h"
-#import "SearchValidation.h"
-#import "GenericValidation.h"
-#import "InsuranceValidation.h"
+#import "CTSearchDetailsViewController.h"
+#import "CTSearchValidation.h"
+#import "CTGenericValidation.h"
+#import "CTInsuranceValidation.h"
 #import "CTDriverDetailsValidation.h"
-#import "BookingCompletionValidation.h"
-#import "PaymentValidation.h"
-
-#define kSearchViewStoryboard           @"StepOne"
-#define kSearchResultsViewStoryboard    @"StepTwo"
-#define kVehicleDetailsViewStoryboard   @"StepThree"
-#define kExtrasViewStoryboard           @"StepFour"
-#define kSummaryViewStoryboard          @"StepFive"
-#define kDetailsViewStoryboard          @"StepSix"
-#define kPaymentViewStoryboard          @"Payment"
+#import "CTBookingCompletionValidation.h"
+#import "CTPaymentValidation.h"
+#import "CTRentalConstants.h"
 
 @interface CartrawlerRental() <CTViewControllerDelegate>
 
@@ -62,8 +55,8 @@
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
     
     if ([CTDataStore checkHasUpcomingBookings]) {
-        UIStoryboard *landingStoryboard = [UIStoryboard storyboardWithName:@"Landing" bundle:self.bundle];
-        RentalBookingsViewController *upcomingBookingsVC = [landingStoryboard instantiateViewControllerWithIdentifier:@"RentalBookingsViewController"];
+        UIStoryboard *landingStoryboard = [UIStoryboard storyboardWithName:CTRentalBookingManagerStoryboard bundle:self.bundle];
+        CTRentalBookingsViewController *upcomingBookingsVC = [landingStoryboard instantiateViewControllerWithIdentifier:CTRentalBookingManagerViewIdentifier];
         
         [self.cartrawlerSDK configureViewController:upcomingBookingsVC
                                validationController:[[CTBasketValidation alloc] init]
@@ -79,7 +72,7 @@
         [navController setViewControllers:@[self.searchDetailsViewController]];
         [parent presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
         if ([CTRentalSearch instance].pickupDate && [CTRentalSearch instance].dropoffDate) {
-            [(SearchDetailsViewController *)self.searchDetailsViewController performSearch];
+            [(CTSearchDetailsViewController *)self.searchDetailsViewController performSearch];
         }
     }
 }
@@ -87,35 +80,35 @@
 #pragma mark View Config
 - (void)setDefaultViews
 {
-    UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:kSearchViewStoryboard bundle:self.bundle];
-    _searchDetailsViewController = [searchStoryboard instantiateViewControllerWithIdentifier:@"SearchDetailsViewController"];
+    UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:self.bundle];
+    _searchDetailsViewController = [searchStoryboard instantiateViewControllerWithIdentifier:CTRentalSearchViewIdentifier];
     
-    UIStoryboard *searchResultsStoryboard = [UIStoryboard storyboardWithName:kSearchResultsViewStoryboard bundle:self.bundle];
-    _vehicleSelectionViewController = [searchResultsStoryboard instantiateViewControllerWithIdentifier:@"SearchResultsViewController"];
+    UIStoryboard *searchResultsStoryboard = [UIStoryboard storyboardWithName:CTRentalResultsStoryboard bundle:self.bundle];
+    _vehicleSelectionViewController = [searchResultsStoryboard instantiateViewControllerWithIdentifier:CTRentalResultsViewIdentifier];
     
-    UIStoryboard *vehicleDetailsStoryboard = [UIStoryboard storyboardWithName:kVehicleDetailsViewStoryboard bundle:self.bundle];
-    _vehicleDetailsViewController = [vehicleDetailsStoryboard instantiateViewControllerWithIdentifier:@"VehicleDetailsViewController"];
+    UIStoryboard *vehicleDetailsStoryboard = [UIStoryboard storyboardWithName:CTRentalVehicleDetailsStoryboard bundle:self.bundle];
+    _vehicleDetailsViewController = [vehicleDetailsStoryboard instantiateViewControllerWithIdentifier:CTRentalVehicleDetailsViewIdentifier];
     
-    UIStoryboard *extrasStoryboard = [UIStoryboard storyboardWithName:kExtrasViewStoryboard bundle:self.bundle];
-    _insuranceExtrasViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:@"ExtrasViewController"];
-    _extrasViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:@"OptionalExtrasViewController"];
+    UIStoryboard *extrasStoryboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:self.bundle];
+    _insuranceCTExtrasViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:CTRentalInsuranceViewIdentifier];
+    _extrasViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:CTRentalExtrasViewIdentifier];
     
-    UIStoryboard *summaryStoryboard = [UIStoryboard storyboardWithName:kSummaryViewStoryboard bundle:self.bundle];
-    _paymentSummaryViewController = [summaryStoryboard instantiateViewControllerWithIdentifier:@"CTBookingSummaryViewController"];
+    UIStoryboard *summaryStoryboard = [UIStoryboard storyboardWithName:CTRentalBookingSummaryStoryboard bundle:self.bundle];
+    _paymentSummaryViewController = [summaryStoryboard instantiateViewControllerWithIdentifier:CTRentalBookingSummaryViewIdentifier];
     
-    UIStoryboard *detailsStoryboard = [UIStoryboard storyboardWithName:kDetailsViewStoryboard bundle:self.bundle];
-    _driverDetialsViewController = [detailsStoryboard instantiateViewControllerWithIdentifier:@"DriverDetailsViewController"];
-    _addressDetialsViewController = [detailsStoryboard instantiateViewControllerWithIdentifier:@"AddressDetailsViewController"];
+    UIStoryboard *detailsStoryboard = [UIStoryboard storyboardWithName:CTRentalDriverDetailsStoryboard bundle:self.bundle];
+    _driverDetialsViewController = [detailsStoryboard instantiateViewControllerWithIdentifier:CTRentalDriverDetailsViewIdentifier];
+    _addressDetialsViewController = [detailsStoryboard instantiateViewControllerWithIdentifier:CTRentalDriverAddressViewIdentifier];
     
-    UIStoryboard *paymentStoryboard = [UIStoryboard storyboardWithName:kPaymentViewStoryboard bundle:self.bundle];
-    _paymentViewController = [paymentStoryboard instantiateViewControllerWithIdentifier:@"PaymentViewController"];
-    _paymentCompletionViewController = [paymentStoryboard instantiateViewControllerWithIdentifier:@"PaymentCompletionViewController"];
+    UIStoryboard *paymentStoryboard = [UIStoryboard storyboardWithName:CTRentalPaymentStoryboard bundle:self.bundle];
+    _paymentViewController = [paymentStoryboard instantiateViewControllerWithIdentifier:CTRentalPaymentViewIdentifier];
+    _paymentCompletionViewController = [paymentStoryboard instantiateViewControllerWithIdentifier:CTRentalPaymentCompletionViewIdentifier];
 }
 
 - (void)configureViews
 {
     [self.cartrawlerSDK configureViewController:self.searchDetailsViewController
-                           validationController:[[SearchValidation alloc] init]
+                           validationController:[[CTSearchValidation alloc] init]
                                     destination:self.vehicleSelectionViewController
                                        fallback:nil
                                   optionalRoute:nil
@@ -123,7 +116,7 @@
                                          target:self];
     
     [self.cartrawlerSDK configureViewController:self.vehicleSelectionViewController
-                           validationController:[[GenericValidation alloc] init]
+                           validationController:[[CTGenericValidation alloc] init]
                                     destination:self.vehicleDetailsViewController
                                        fallback:nil
                                   optionalRoute:nil
@@ -131,15 +124,15 @@
                                          target:self];
     
     [self.cartrawlerSDK configureViewController:self.vehicleDetailsViewController
-                           validationController:[[InsuranceValidation alloc] init]
-                                    destination:self.insuranceExtrasViewController
+                           validationController:[[CTInsuranceValidation alloc] init]
+                                    destination:self.insuranceCTExtrasViewController
                                        fallback:self.driverDetialsViewController
                                   optionalRoute:self.extrasViewController
                                          search:[CTRentalSearch instance]
                                          target:self];
     
-    [self.cartrawlerSDK configureViewController:self.insuranceExtrasViewController
-                           validationController:[[GenericValidation alloc] init]
+    [self.cartrawlerSDK configureViewController:self.insuranceCTExtrasViewController
+                           validationController:[[CTGenericValidation alloc] init]
                                     destination:self.driverDetialsViewController
                                        fallback:nil
                                   optionalRoute:nil
@@ -147,7 +140,7 @@
                                          target:self];
     
     [self.cartrawlerSDK configureViewController:self.extrasViewController
-                           validationController:[[GenericValidation alloc] init]
+                           validationController:[[CTGenericValidation alloc] init]
                                     destination:self.driverDetialsViewController
                                        fallback:nil
                                   optionalRoute:nil
@@ -163,7 +156,7 @@
                                          target:self];
     
     [self.cartrawlerSDK configureViewController:self.addressDetialsViewController
-                           validationController:[[PaymentValidation alloc] init]
+                           validationController:[[CTPaymentValidation alloc] init]
                                     destination:self.paymentSummaryViewController
                                        fallback:nil
                                   optionalRoute:nil
@@ -171,7 +164,7 @@
                                          target:self];
     
     [self.cartrawlerSDK configureViewController:self.paymentSummaryViewController
-                           validationController:[[GenericValidation alloc] init]
+                           validationController:[[CTGenericValidation alloc] init]
                                     destination:self.paymentViewController
                                        fallback:nil
                                   optionalRoute:nil
@@ -179,7 +172,7 @@
                                          target:self];
     
     [self.cartrawlerSDK configureViewController:self.paymentViewController
-                           validationController:[[BookingCompletionValidation alloc] init]
+                           validationController:[[CTBookingCompletionValidation alloc] init]
                                     destination:self.paymentCompletionViewController
                                        fallback:nil
                                   optionalRoute:nil
@@ -187,7 +180,7 @@
                                          target:self];
     
     [self.cartrawlerSDK configureViewController:self.paymentCompletionViewController
-                           validationController:[[GenericValidation alloc] init]
+                           validationController:[[CTGenericValidation alloc] init]
                                     destination:nil
                                        fallback:nil
                                   optionalRoute:nil

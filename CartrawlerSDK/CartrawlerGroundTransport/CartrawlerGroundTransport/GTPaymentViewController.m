@@ -1,19 +1,19 @@
 //
-//  GTPaymentViewController.m
+//  GTCTPaymentViewController.m
 //  CartrawlerSDK
 //
 //  Created by Lee Maguire on 06/09/2016.
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "GTPaymentViewController.h"
+#import "GTCTPaymentViewController.h"
 #import "CTPaymentView.h"
 #import "CTLabel.h"
 #import "CTHTMLParser.h"
 #import "CTAppearance.h"
 #import "CTButton.h"
 
-@interface GTPaymentViewController () <UITextViewDelegate>
+@interface GTCTPaymentViewController () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *webViewContainer;
 @property (strong, nonatomic) CTPaymentView *paymentView;
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation GTPaymentViewController
+@implementation GTCTPaymentViewController
 
 
 

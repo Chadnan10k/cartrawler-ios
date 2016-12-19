@@ -51,7 +51,7 @@
     [self.tableView setContentInset:UIEdgeInsetsMake(55,0,0,0)];
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    [self.tableView registerNib:[UINib nibWithNibName:@"VehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CTVehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];
 
     _dataSource = [[CTVehicleSelectionDataSource alloc] initWithData:data cellSelected:^(CTAvailabilityItem *vehicle) {
         completion(vehicle);

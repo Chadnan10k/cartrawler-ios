@@ -8,7 +8,7 @@
 
 #import "CartrawlerInPath.h"
 #import <CartrawlerSDK/CTSDKSettings.h>
-#import <CartrawlerRental/SearchDetailsViewController.h>
+#import <CartrawlerRental/CTSearchDetailsViewController.h>
 #import <CartrawlerSDK/CTNavigationController.h>
 #import <CartrawlerSDK/CTDataStore.h>
 #import "CTInPathPayment.h"
@@ -120,7 +120,7 @@
     [navController setViewControllers:@[self.rental.searchDetailsViewController]];
     [parent presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
     if ([CTRentalSearch instance].pickupDate && [CTRentalSearch instance].dropoffDate) {
-        [(SearchDetailsViewController *)self.rental.searchDetailsViewController performSearch];
+        [(CTSearchDetailsViewController *)self.rental.searchDetailsViewController performSearch];
     }
 }
 
