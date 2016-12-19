@@ -32,7 +32,7 @@
 		4540550E1DDE10DF00FD493A /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4540550D1DDE0E3D00FD493A /* en.strings */; };
 		454D91F01DD34E24001AE96C /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D91EE1DD34E24001AE96C /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		454D91F11DD34E24001AE96C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D91EF1DD34E24001AE96C /* Reachability.m */; };
-		455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736E1D806064000CB1E5 /* GTPaymentRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736E1D806064000CB1E5 /* GTPaymentRequest.h */; };
 		455B58341DCC914300CA4790 /* GTPaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4587736F1D806064000CB1E5 /* GTPaymentRequest.m */; };
 		455B58351DCC914300CA4790 /* PaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4588E3161D538FB1008F4267 /* PaymentRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		455B58361DCC914300CA4790 /* PaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4588E3171D538FB1008F4267 /* PaymentRequest.m */; };
@@ -103,15 +103,15 @@
 		455B58C01DCC914400CA4790 /* CTTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942C21D13022100ACF604 /* CTTimePickerView.m */; };
 		455B58C11DCC914400CA4790 /* CTCalendarViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A31D1301C600ACF604 /* CTCalendarViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		455B58C21DCC914400CA4790 /* CTCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A41D1301C600ACF604 /* CTCalendarViewController.m */; };
-		455B58C31DCC914400CA4790 /* CTCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A51D1301C600ACF604 /* CTCalendarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58C31DCC914400CA4790 /* CTCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A51D1301C600ACF604 /* CTCalendarView.h */; };
 		455B58C41DCC914400CA4790 /* CTCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A61D1301C600ACF604 /* CTCalendarView.m */; };
-		455B58C51DCC914400CA4790 /* CTCalendarTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A71D1301C600ACF604 /* CTCalendarTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58C51DCC914400CA4790 /* CTCalendarTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A71D1301C600ACF604 /* CTCalendarTableViewCell.h */; };
 		455B58C61DCC914400CA4790 /* CTCalendarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A81D1301C600ACF604 /* CTCalendarTableViewCell.m */; };
-		455B58C71DCC914400CA4790 /* CTDateCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A91D1301C600ACF604 /* CTDateCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58C71DCC914400CA4790 /* CTDateCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A91D1301C600ACF604 /* CTDateCollectionViewCell.h */; };
 		455B58C81DCC914400CA4790 /* CTDateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AA1D1301C600ACF604 /* CTDateCollectionViewCell.m */; };
-		455B58C91DCC914400CA4790 /* CalendarLogicController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942AB1D1301C600ACF604 /* CalendarLogicController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58C91DCC914400CA4790 /* CalendarLogicController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942AB1D1301C600ACF604 /* CalendarLogicController.h */; };
 		455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AC1D1301C600ACF604 /* CalendarLogicController.m */; };
-		455B58CB1DCC914400CA4790 /* CTMiddleDateCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942AD1D1301C600ACF604 /* CTMiddleDateCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58CB1DCC914400CA4790 /* CTMiddleDateCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942AD1D1301C600ACF604 /* CTMiddleDateCell.h */; };
 		455B58CC1DCC914400CA4790 /* CTMiddleDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AE1D1301C600ACF604 /* CTMiddleDateCell.m */; };
 		455B58CD1DCC914400CA4790 /* CTSelectView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E9429F1D13014400ACF604 /* CTSelectView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		455B58CE1DCC914400CA4790 /* CTSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A01D13014400ACF604 /* CTSelectView.m */; };
@@ -728,9 +728,7 @@
 				455B58871DCC914300CA4790 /* CTRentalSearch.h in Headers */,
 				455B58B71DCC914400CA4790 /* CTViewController.h in Headers */,
 				455B58371DCC914300CA4790 /* CTPaymentView.h in Headers */,
-				455B58C31DCC914400CA4790 /* CTCalendarView.h in Headers */,
 				455B586C1DCC914300CA4790 /* CTButton.h in Headers */,
-				455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */,
 				455B58491DCC914300CA4790 /* CTToolTip.h in Headers */,
 				455B584A1DCC914300CA4790 /* CTNavigationBar.h in Headers */,
 				455B584C1DCC914300CA4790 /* CTNavigationItem.h in Headers */,
@@ -743,7 +741,6 @@
 				455B585E1DCC914300CA4790 /* CTDesignableView.h in Headers */,
 				455B58601DCC914300CA4790 /* CTNavigationView.h in Headers */,
 				454D91F01DD34E24001AE96C /* Reachability.h in Headers */,
-				455B58641DCC914300CA4790 /* JVFloatLabeledTextField.h in Headers */,
 				455B58661DCC914300CA4790 /* NSStringUtils.h in Headers */,
 				455B58681DCC914300CA4790 /* CTTextField.h in Headers */,
 				455B586A1DCC914300CA4790 /* CTCheckbox.h in Headers */,
@@ -759,17 +756,20 @@
 				457128C11DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h in Headers */,
 				455B58BF1DCC914400CA4790 /* CTTimePickerView.h in Headers */,
 				455B58C11DCC914400CA4790 /* CTCalendarViewController.h in Headers */,
-				455B58C51DCC914400CA4790 /* CTCalendarTableViewCell.h in Headers */,
 				459CB2E81DDB5BF8008522BA /* CTNextButton.h in Headers */,
-				455B58C71DCC914400CA4790 /* CTDateCollectionViewCell.h in Headers */,
-				455B58C91DCC914400CA4790 /* CalendarLogicController.h in Headers */,
 				4513B6241DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h in Headers */,
-				455B58CB1DCC914400CA4790 /* CTMiddleDateCell.h in Headers */,
 				455B58CD1DCC914400CA4790 /* CTSelectView.h in Headers */,
 				45C980C21DCCDB95002D99AB /* CTLayoutConstraint.h in Headers */,
+				455B58641DCC914300CA4790 /* JVFloatLabeledTextField.h in Headers */,
 				450725B21DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h in Headers */,
 				455B591B1DCC914400CA4790 /* CTCSVItem.h in Headers */,
 				459CB2E41DDB3FA2008522BA /* CTToolTipButton.h in Headers */,
+				455B58C71DCC914400CA4790 /* CTDateCollectionViewCell.h in Headers */,
+				455B58CB1DCC914400CA4790 /* CTMiddleDateCell.h in Headers */,
+				455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */,
+				455B58C31DCC914400CA4790 /* CTCalendarView.h in Headers */,
+				455B58C51DCC914400CA4790 /* CTCalendarTableViewCell.h in Headers */,
+				455B58C91DCC914400CA4790 /* CalendarLogicController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
