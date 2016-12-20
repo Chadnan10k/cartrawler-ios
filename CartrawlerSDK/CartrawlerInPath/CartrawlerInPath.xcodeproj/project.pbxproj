@@ -22,6 +22,11 @@
 
 /* Begin PBXBuildFile section */
 		45154EFA1E07E09600FB32FA /* CartrawlerRental.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45154EF91E07E09600FB32FA /* CartrawlerRental.framework */; };
+		45CFD44C1E0941B800A57849 /* CTNewBookingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFD44A1E0941B800A57849 /* CTNewBookingView.h */; };
+		45CFD44D1E0941B800A57849 /* CTNewBookingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFD44B1E0941B800A57849 /* CTNewBookingView.m */; };
+		45CFD44F1E09453100A57849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CFD44E1E09453100A57849 /* Assets.xcassets */; };
+		45CFD4521E09863C00A57849 /* CTInPathBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFD4501E09863C00A57849 /* CTInPathBanner.h */; };
+		45CFD4531E09863C00A57849 /* CTInPathBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFD4511E09863C00A57849 /* CTInPathBanner.m */; };
 		45D1339D1E01997900D7816F /* CartrawlerInPath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D133931E01997800D7816F /* CartrawlerInPath.framework */; };
 		45D133A21E01997900D7816F /* CartrawlerInPathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D133A11E01997900D7816F /* CartrawlerInPathTests.m */; };
 		45D133A41E01997900D7816F /* CartrawlerInPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D133961E01997800D7816F /* CartrawlerInPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,6 +51,11 @@
 
 /* Begin PBXFileReference section */
 		45154EF91E07E09600FB32FA /* CartrawlerRental.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerRental.framework; path = "../../../Library/Developer/Xcode/DerivedData/CartrawlerSDK-ggnkifmwdjtizbfixejavfojdsbe/Build/Products/Debug-iphonesimulator/CartrawlerRental.framework"; sourceTree = "<group>"; };
+		45CFD44A1E0941B800A57849 /* CTNewBookingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNewBookingView.h; sourceTree = "<group>"; };
+		45CFD44B1E0941B800A57849 /* CTNewBookingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTNewBookingView.m; sourceTree = "<group>"; };
+		45CFD44E1E09453100A57849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		45CFD4501E09863C00A57849 /* CTInPathBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathBanner.h; sourceTree = "<group>"; };
+		45CFD4511E09863C00A57849 /* CTInPathBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathBanner.m; sourceTree = "<group>"; };
 		45D133931E01997800D7816F /* CartrawlerInPath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CartrawlerInPath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D133961E01997800D7816F /* CartrawlerInPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartrawlerInPath.h; sourceTree = "<group>"; };
 		45D133971E01997800D7816F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +92,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45CFD4491E09419400A57849 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				45CFD44A1E0941B800A57849 /* CTNewBookingView.h */,
+				45CFD44B1E0941B800A57849 /* CTNewBookingView.m */,
+				45CFD4501E09863C00A57849 /* CTInPathBanner.h */,
+				45CFD4511E09863C00A57849 /* CTInPathBanner.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		45D133891E01997800D7816F = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +125,8 @@
 		45D133951E01997800D7816F /* CartrawlerInPath */ = {
 			isa = PBXGroup;
 			children = (
+				45CFD44E1E09453100A57849 /* Assets.xcassets */,
+				45CFD4491E09419400A57849 /* Views */,
 				45EC99AE1E02AA2100B76741 /* Public */,
 				45D133961E01997800D7816F /* CartrawlerInPath.h */,
 				45EC99AF1E02B3FB00B76741 /* CartrawlerInPath.m */,
@@ -152,6 +175,8 @@
 			files = (
 				45EC99BD1E02C96B00B76741 /* CTInPathVehicle.h in Headers */,
 				45EC99BB1E02C96B00B76741 /* CTInPathPayment.h in Headers */,
+				45CFD44C1E0941B800A57849 /* CTNewBookingView.h in Headers */,
+				45CFD4521E09863C00A57849 /* CTInPathBanner.h in Headers */,
 				45D133A41E01997900D7816F /* CartrawlerInPath.h in Headers */,
 				45EC99BF1E02C96B00B76741 /* CTInPathView.h in Headers */,
 			);
@@ -246,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45CFD44F1E09453100A57849 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +307,9 @@
 			files = (
 				45EC99BE1E02C96B00B76741 /* CTInPathVehicle.m in Sources */,
 				45EC99B01E02B3FB00B76741 /* CartrawlerInPath.m in Sources */,
+				45CFD44D1E0941B800A57849 /* CTNewBookingView.m in Sources */,
 				45EC99BC1E02C96B00B76741 /* CTInPathPayment.m in Sources */,
+				45CFD4531E09863C00A57849 /* CTInPathBanner.m in Sources */,
 				45EC99C01E02C96B00B76741 /* CTInPathView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

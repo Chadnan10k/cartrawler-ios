@@ -30,7 +30,7 @@
 - (IBAction)bookCar:(id)sender {
     [self.inPath presentCarRentalWithFlightDetails:@"ALC"
                                         pickupDate:[NSDate dateWithTimeIntervalSinceNow:48000]
-                                        returnDate:[NSDate dateWithTimeIntervalSinceNow:96000]
+                                        returnDate:[NSDate dateWithTimeIntervalSinceNow:128000]
                                          firstName:@"Lee"
                                            surname:@"Maguire"
                                          driverAge:@30
