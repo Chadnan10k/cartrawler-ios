@@ -131,12 +131,12 @@
         self.cardView.translatesAutoresizingMaskIntoConstraints = NO;
         [view addSubview:self.cardView];
         [self.cardView renderDefault];
-        [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]-|"
+        [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:@{@"view" : self.cardView}]];
         
-        [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|"
+        [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:@{@"view" : self.cardView}]];

@@ -11,5 +11,6 @@
 @interface UIImageView (CartrawlerSDK)
 
 - (void)applyTint;
-    
+- (void)applyTintWithColor:(UIColor *)color;
+
 @end
