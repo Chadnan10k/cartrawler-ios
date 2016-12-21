@@ -10,7 +10,7 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 
 
-@interface CTRentalSearch : NSObject
+@interface CTRentalSearch : NSObject <NSCopying>
 
 @property (nonatomic, strong) CTVehicleAvailability *vehicleAvailability;
 @property (nonatomic, strong) CTAvailabilityItem *selectedVehicle;
@@ -38,6 +38,8 @@
 @property (nonatomic, strong, readonly) NSString *concatinatedAddress;
 
 + (instancetype)instance;
+
+- (void)setFromCopy:(CTRentalSearch *)copy;
 
 - (void)reset;
 

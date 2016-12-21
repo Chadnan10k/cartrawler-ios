@@ -19,36 +19,34 @@
 @property (nonatomic, strong) CartrawlerRental *rental;
 @property (nonatomic, strong) CTInPathView *cardView;
 
+@property (nonatomic, strong) CTRentalSearch *defaultSearch;
+
 @end
 
 @implementation CartrawlerInPath
 
 - (instancetype)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental
+                                IATACode:(nonnull NSString *)IATACode
+                              pickupDate:(nullable NSDate *)pickupDate
+                              returnDate:(nullable NSDate *)returnDate
+                               firstName:(nullable NSString *)firstName
+                                 surname:(nullable NSString *)surname
+                               driverAge:(nullable NSNumber *)driverAge
+                    additionalPassengers:(nullable NSNumber *)additionalPassengers
+                                   email:(nullable NSString *)email
+                                   phone:(nullable NSString *)phone
+                                flightNo:(nullable NSString *)flightNo
+                            addressLine1:(nullable NSString *)addressLine1
+                            addressLine2:(nullable NSString *)addressLine2
+                                    city:(nullable NSString *)city
+                                postcode:(nullable NSString *)postcode
+                             countryCode:(nullable NSString *)countryCode
+                             countryName:(nullable NSString *)countryName
+                              completion:(nullable CarRentalWithFlightDetailsCompletion)completion
 {
     self = [super init];
     _rental = cartrawlerRental;
-    return self;
-}
-
-- (void)presentCarRentalWithFlightDetails:(nonnull NSString *)IATACode
-                               pickupDate:(nullable NSDate *)pickupDate
-                               returnDate:(nullable NSDate *)returnDate
-                                firstName:(nullable NSString *)firstName
-                                  surname:(nullable NSString *)surname
-                                driverAge:(nullable NSNumber *)driverAge
-                     additionalPassengers:(nullable NSNumber *)additionalPassengers
-                                    email:(nullable NSString *)email
-                                    phone:(nullable NSString *)phone
-                                 flightNo:(nullable NSString *)flightNo
-                             addressLine1:(nullable NSString *)addressLine1
-                             addressLine2:(nullable NSString *)addressLine2
-                                     city:(nullable NSString *)city
-                                 postcode:(nullable NSString *)postcode
-                              countryCode:(nullable NSString *)countryCode
-                              countryName:(nullable NSString *)countryName
-                       overViewController:(nonnull UIViewController *)viewController
-                               completion:(nonnull CarRentalWithFlightDetailsCompletion)completion
-{
+    
     [[CTRentalSearch instance] reset];
     
     [[CTSDKSettings instance] setHomeCountryCode:countryCode];
@@ -77,27 +75,56 @@
         } else {
             if (response) {
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if(response.matchedLocations.count > 0) {
-                        [CTRentalSearch instance].pickupLocation = response.matchedLocations.firstObject;
-                        [CTRentalSearch instance].dropoffLocation = response.matchedLocations.firstObject;
-                        [self configureViews];
-                        [self presentRentalNavigationController:viewController];
-                        
-                        if (completion) {
-                            completion(YES, @"");
-                        }
-                        
-                    } else {
-                        if (completion) {
-                            completion(NO, @"Airport not found");
-                        }
+                if(response.matchedLocations.count > 0) {
+                    [CTRentalSearch instance].pickupLocation = response.matchedLocations.firstObject;
+                    [CTRentalSearch instance].dropoffLocation = response.matchedLocations.firstObject;
+
+                    [self.rental.cartrawlerSDK.cartrawlerAPI requestVehicleAvailabilityForLocation:[CTRentalSearch instance].pickupLocation.code
+                                                                                returnLocationCode:[CTRentalSearch instance].dropoffLocation.code
+                                                                               customerCountryCode:countryCode
+                                                                                      passengerQty:@1
+                                                                                         driverAge:driverAge
+                                                                                    pickUpDateTime:pickupDate
+                                                                                    returnDateTime:returnDate
+                                                                                      currencyCode:@"EUR"
+                                                                                        completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
+                                                                                            if (response.items.count > 0) {
+                                                                                                [CTRentalSearch instance].vehicleAvailability = response;
+                                                                                                _defaultSearch = [[CTRentalSearch instance] copy];
+                                                                                                NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
+                                                                                                                                                             ascending:YES];
+                                                                                                CTAvailabilityItem *cheapestvehicle = ((CTAvailabilityItem *)[response.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
+                                                                                                if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
+                                                                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                                                                        [self.delegate didReceiveBestDailyRate:cheapestvehicle.vehicle.totalPriceForThisVehicle currency:cheapestvehicle.vehicle.currencyCode];
+                                                                                                    });
+                                                                                                }
+                                                                                                if (completion) {
+                                                                                                    completion(YES, nil);
+                                                                                                }
+                                                                                            } else {
+                                                                                                if (completion) {
+                                                                                                    completion(NO, @"No results for car hire");
+                                                                                                }
+                                                                                            }
+                                                                                        }];
+                } else {
+                    if (completion) {
+                        completion(NO, @"Airport not found");
                     }
-                });
+                }
             }
         }
     }];
 
+    return self;
+}
+
+- (void)presentCarRentalWithFlightDetails:(nonnull UIViewController *)parentViewController
+{
+    [[CTRentalSearch instance] setFromCopy:self.defaultSearch];
+    [self configureViews];
+    [self presentRentalNavigationController:parentViewController];
 }
  
 //Lets take what views we need for the nav stack
