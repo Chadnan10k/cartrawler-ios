@@ -90,7 +90,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lzk-tW-vOj">
-                                <rect key="frame" x="16" y="281" width="343" height="170"/>
+                                <rect key="frame" x="16" y="80" width="343" height="170"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIh-9d-YCf">
                                         <rect key="frame" x="0.0" y="125" width="343" height="45"/>
@@ -141,6 +141,17 @@
                                     <action selector="mockPayment:" destination="9HL-5W-v1q" eventType="touchUpInside" id="UPq-TY-SYx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7js-LD-TYj">
+                                <rect key="frame" x="0.0" y="545" width="375" height="59"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.78823529410000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="Z6x-Jf-O9B"/>
+                                </constraints>
+                                <state key="normal" title="REMOVE CAR"/>
+                                <connections>
+                                    <action selector="remove:" destination="9HL-5W-v1q" eventType="touchUpInside" id="kQP-ZW-p9o"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -153,10 +164,13 @@
                             <constraint firstItem="xed-eD-UPO" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="c8H-XD-VRU"/>
                             <constraint firstAttribute="trailing" secondItem="lzk-tW-vOj" secondAttribute="trailing" constant="16" id="cCZ-5R-Y4L"/>
                             <constraint firstItem="ydC-Dt-pdY" firstAttribute="top" secondItem="BDW-7a-xVM" secondAttribute="top" id="d4y-ex-30R"/>
-                            <constraint firstItem="lzk-tW-vOj" firstAttribute="top" secondItem="Ets-M0-nR8" secondAttribute="bottom" constant="261" id="dak-WO-yKO"/>
+                            <constraint firstItem="lzk-tW-vOj" firstAttribute="top" secondItem="Ets-M0-nR8" secondAttribute="bottom" constant="60" id="dak-WO-yKO"/>
+                            <constraint firstItem="xed-eD-UPO" firstAttribute="top" secondItem="7js-LD-TYj" secondAttribute="bottom" constant="8" id="ezp-MD-b5l"/>
+                            <constraint firstItem="7js-LD-TYj" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="mIe-SP-2X9"/>
                             <constraint firstItem="ydC-Dt-pdY" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="mXr-i1-akE"/>
                             <constraint firstAttribute="trailing" secondItem="ydC-Dt-pdY" secondAttribute="trailing" id="wMh-Zp-oGA"/>
                             <constraint firstItem="ax6-HZ-Y0J" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="8" id="yvS-g6-FLB"/>
+                            <constraint firstAttribute="trailing" secondItem="7js-LD-TYj" secondAttribute="trailing" id="zVY-WU-Dgi"/>
                         </constraints>
                     </view>
                     <connections>
@@ -166,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2MH-hR-edb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2092" y="139"/>
+            <point key="canvasLocation" x="2092" y="138.98050974512745"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iEA-L5-dss">

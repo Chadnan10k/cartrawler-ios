@@ -14,7 +14,8 @@
 {
     self = [super init];
     
-    _vehicleName = [NSString stringWithFormat:@"%@ %@", search.selectedVehicle.vehicle.makeModelName, search.selectedVehicle.vehicle.orSimilar];
+    _vehicleName = search.selectedVehicle.vehicle.makeModelName;
+    _vehicleOrSimilar = search.selectedVehicle.vehicle.orSimilar;
     _vendorName = search.selectedVehicle.vendor.name;
     _vehicleImageURL = search.selectedVehicle.vehicle.pictureURL;
     _vendorImageURL = search.selectedVehicle.vendor.logoURL;

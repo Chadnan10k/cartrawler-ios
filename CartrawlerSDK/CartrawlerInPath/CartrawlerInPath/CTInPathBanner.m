@@ -40,7 +40,7 @@
                                    constant:0]];
     [self addBannerImageView];
     [self addInfoLabel];
-    [self applyColors];
+    [self applyColorsToBackground:[CTAppearance instance].buttonColor];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -132,10 +132,19 @@
     }
 }
 
-- (void)applyColors
+- (void)applyColorsToBackground:(UIColor *)color
 {
-    [self.bannerImageView applyTintWithColor:[CTAppearance instance].buttonColor];
-    self.bannerBackground.backgroundColor = [CTAppearance instance].buttonColor;
+    [self.bannerImageView applyTintWithColor:color];
+    self.bannerBackground.backgroundColor = color;
+}
+
+- (void)setIcon:(UIImage *)image backgroundColor:(UIColor *)backgroundColor textColor:(UIColor *)textColor
+{
+    self.starImageView.image = image;
+    [self.starImageView applyTintWithColor:textColor];
+
+    [self applyColorsToBackground:backgroundColor];
+    self.infoLabel.textColor = textColor;
 }
 
 - (CGFloat)widthOfString:(NSString *)string withFont:(NSFont *)font

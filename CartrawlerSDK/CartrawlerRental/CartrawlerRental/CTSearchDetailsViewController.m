@@ -66,6 +66,7 @@
     __weak typeof (self) weakSelf = self;
 
     [self.nextButton setText:NSLocalizedString(@"Search for cars", @"Search for cars") didTap:^{
+        weakSelf.search.vehicleAvailability = nil;
         [weakSelf searchTapped];
     }];
     

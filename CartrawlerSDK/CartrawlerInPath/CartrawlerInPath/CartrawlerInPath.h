@@ -24,32 +24,37 @@ NS_ASSUME_NONNULL_BEGIN
 @required
 - (void)didProduceInPathRequest:(nonnull NSDictionary *)request vehicle:(nonnull CTInPathVehicle *)vehicle;
 
+@optional
+- (void)didReceiveBestDailyRate:(NSNumber *)price currency:(NSString *)currency;
+
 @end
 
 @interface CartrawlerInPath : NSObject
 
+typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *errorMessage);
+
 @property (nonatomic, weak) id<CartrawlerInPathDelegate> delegate;
 
-- (instancetype)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental;
+- (instancetype)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental
+                                IATACode:(nonnull NSString *)IATACode
+                              pickupDate:(nullable NSDate *)pickupDate
+                              returnDate:(nullable NSDate *)returnDate
+                               firstName:(nullable NSString *)firstName
+                                 surname:(nullable NSString *)surname
+                               driverAge:(nullable NSNumber *)driverAge
+                    additionalPassengers:(nullable NSNumber *)additionalPassengers
+                                   email:(nullable NSString *)email
+                                   phone:(nullable NSString *)phone
+                                flightNo:(nullable NSString *)flightNo
+                            addressLine1:(nullable NSString *)addressLine1
+                            addressLine2:(nullable NSString *)addressLine2
+                                    city:(nullable NSString *)city
+                                postcode:(nullable NSString *)postcode
+                            countryCode:(nullable NSString *)countryCode
+                            countryName:(nullable NSString *)countryName
+                            completion:(nullable CarRentalWithFlightDetailsCompletion)completion;
 
-- (void)presentCarRentalWithFlightDetails:(nonnull NSString *)IATACode
-                               pickupDate:(nullable NSDate *)pickupDate
-                               returnDate:(nullable NSDate *)returnDate
-                                firstName:(nullable NSString *)firstName
-                                  surname:(nullable NSString *)surname
-                                driverAge:(nullable NSNumber *)driverAge
-                     additionalPassengers:(nullable NSNumber *)additionalPassengers
-                                    email:(nullable NSString *)email
-                                    phone:(nullable NSString *)phone
-                                 flightNo:(nullable NSString *)flightNo
-                             addressLine1:(nullable NSString *)addressLine1
-                             addressLine2:(nullable NSString *)addressLine2
-                                     city:(nullable NSString *)city
-                                 postcode:(nullable NSString *)postcode
-                              countryCode:(nullable NSString *)countryCode
-                              countryName:(nullable NSString *)countryName
-                       overViewController:(nonnull UIViewController *)viewController
-                               completion:(nonnull CarRentalWithFlightDetailsCompletion)completion;
+- (void)presentCarRentalWithFlightDetails:(nonnull UIViewController *)parentViewController;
 
 - (void)addCrossSellCardToView:(UIView *)view;
 

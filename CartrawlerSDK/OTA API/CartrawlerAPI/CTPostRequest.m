@@ -34,7 +34,7 @@
             request.HTTPMethod = @"POST";
             [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
             request.HTTPBody = processedData;
-            request.timeoutInterval = 30;
+            request.timeoutInterval = 10;
             
             if (loggingEnabled)
                 NSLog(@"\n*************REQUEST***************\n\nEND POINT: %@\n\n%@\n\n******************************", endPoint, jsonBody);
