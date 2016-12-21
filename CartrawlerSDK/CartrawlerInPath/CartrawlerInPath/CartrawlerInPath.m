@@ -18,7 +18,6 @@
 
 @property (nonatomic, strong) CartrawlerRental *rental;
 @property (nonatomic, strong) CTInPathView *cardView;
-
 @property (nonatomic, strong) CTRentalSearch *defaultSearch;
 
 @end
