@@ -109,7 +109,6 @@
 {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     _tickImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    //self.tickImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.tickImageView.image = [UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil];
     self.tickImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.tickImageView applyTintWithColor:[CTAppearance instance].buttonColor];
@@ -130,11 +129,8 @@
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[star]-4-[textView]-4-[cars]" options:0 metrics:nil views:@{@"textView" : self.infoLabel, @"star" : self.tickImageView, @"cars" : self.vehicleImageView}]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[headerLabel]-4-[textView]-4-|" options:0 metrics:nil views:@{@"textView" : self.infoLabel, @"headerLabel" : self.headerLabel}]];
     [self.infoLabel sizeToFit];
-    //self.infoLabel.numberOfLines = 0;
     self.infoLabel.scrollEnabled = NO;
     [self.infoLabel setTextContainerInset:UIEdgeInsetsZero];
-
-
 }
 
 - (void)addMerchandisingBanner
