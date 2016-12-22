@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		45A47DFC1E0C01BD00500D71 /* CartrawlerAPI_CI */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 45A47DFF1E0C01BD00500D71 /* Build configuration list for PBXAggregateTarget "CartrawlerAPI_CI" */;
+			buildPhases = (
+				45A47E001E0C01C100500D71 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = CartrawlerAPI_CI;
+			productName = CartrawlerAPI_CI;
+		};
 		45CB04851DEDD1740086BEA0 /* BuildAll */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 45CB04861DEDD1740086BEA0 /* Build configuration list for PBXAggregateTarget "BuildAll" */;
@@ -40,6 +51,11 @@
 			attributes = {
 				LastUpgradeCheck = 0810;
 				TargetAttributes = {
+					45A47DFC1E0C01BD00500D71 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
 					45CB04851DEDD1740086BEA0 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 3L8QU4R2JJ;
@@ -59,11 +75,25 @@
 			projectRoot = "";
 			targets = (
 				45CB04851DEDD1740086BEA0 /* BuildAll */,
+				45A47DFC1E0C01BD00500D71 /* CartrawlerAPI_CI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		45A47E001E0C01C100500D71 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FRAMEWORK_NAME=\"CartrawlerAPI\"\nBUILD_SCHEME=\"BuildAPI\"\n\nexport LANG=en_US.UTF-8\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme ${BUILD_SCHEME}\n\nCURRENT_USER=$(whoami)\n\n#if [ \"$CURRENT_USER\" = \"jenkins\" ]\n#then\n\nOUTPUT_DIR=\"${SRCROOT}/../../../Artifacts_Latest\"\n\ncd ${OUTPUT_DIR}\n\n#lets create the commit\n\n# Get the existing buildVersion and buildNumber values from the buildPlist\nBUILD_VERSION=$(defaults read ${OUTPUT_DIR}/${FRAMEWORK_NAME}.framework/Info CFBundleShortVersionString)\n\nGIT_REMOTE=\"https://github.com/cartrawler/cartrawler-ios-build.git\"\nGIT_BRANCH=\"${BUILD_VERSION}${FRAMEWORK_NAME}\"\nGIT_TAG=\"2.0.0\"\n\ngit init\ngit checkout -b \"${GIT_BRANCH}\"\ngit add -A\ngit commit -m \"version ${BUILD_VERSION} ${FRAMEWORK_NAME}\"\ngit tag \"${GIT_TAG}\"\ngit push \"${GIT_REMOTE}\" \"${GIT_BRANCH}\" --tags\n\n#we have now dumped the new binaries to the build repo, lets update cocoapods next\n\nPODSPEC_TEMPLATE=\"${PROJECT_DIR}/PodTemplate.podspec\"\n\ncp ${PODSPEC_TEMPLATE} ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec\n\nPODSPEC_TEMPLATE=\"${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec\"\nsed -i .temp \"s/FRAMEWORK_NAME/${FRAMEWORK_NAME}/g; s/FRAMEWORK_VERSION/${BUILD_VERSION}/g; s/TAG_NAME/${GIT_TAG}/g\" ${PODSPEC_TEMPLATE}\n\n#push these pod specs, first move them to the spec repo\n\nPODSPEC_DIR=\"${SRCROOT}/../../../cocoapods\"\nmkdir -p \"$PODSPEC_DIR\"\n\nmv -f ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec $PODSPEC_DIR\n\ncd $PODSPEC_DIR\n\n/usr/local/bin/pod repo push cartrawlerpods ${FRAMEWORK_NAME}.podspec\n\n#else\n#    echo \"You are not the CI server\"\n#fi\n\n";
+		};
 		45CB04891DEDD17C0086BEA0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -80,6 +110,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		45A47DFD1E0C01BD00500D71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45A47DFE1E0C01BD00500D71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		45CB04831DEDD1600086BEA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -111,6 +157,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		45A47DFF1E0C01BD00500D71 /* Build configuration list for PBXAggregateTarget "CartrawlerAPI_CI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45A47DFD1E0C01BD00500D71 /* Debug */,
+				45A47DFE1E0C01BD00500D71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		45CB04821DEDD1600086BEA0 /* Build configuration list for PBXProject "CI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

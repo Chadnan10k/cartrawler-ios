@@ -25,20 +25,20 @@
     _inPath = [[CartrawlerInPath alloc] initWithCartrawlerRental:self.rental
                                                         IATACode:@"ALC"
                                                       pickupDate:[NSDate dateWithTimeIntervalSinceNow:48000]
-                                                      returnDate:[NSDate dateWithTimeIntervalSinceNow:128000]
+                                                      returnDate:nil
                                                        firstName:@"Lee"
                                                          surname:@"Maguire"
                                                        driverAge:@30
-                                            additionalPassengers:@3
-                                                           email:@"lmaguire@cartrawler.com"
-                                                           phone:@"0866666666"
-                                                        flightNo:@"FR1234"
-                                                    addressLine1:@"123 Cartrawler St."
-                                                    addressLine2:@""
-                                                            city:@"Dublin"
-                                                        postcode:@"D1"
-                                                     countryCode:@"IE"
-                                                     countryName:@"Ireland"
+                                            additionalPassengers:@0
+                                                           email:nil
+                                                           phone:nil
+                                                        flightNo:@"FR 1234"
+                                                    addressLine1:nil
+                                                    addressLine2:nil
+                                                            city:nil
+                                                        postcode:nil
+                                                     countryCode:nil
+                                                     countryName:nil
                                                       completion:nil];
     self.inPath.delegate = self;
     [self.inPath addCrossSellCardToView:self.cardContainer];
@@ -63,6 +63,7 @@
 
 - (void)didProduceInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
 {
+    [self.bookButton setTitle:@"you booked a car" forState:UIControlStateNormal];
     NSLog(@"%@", request);
     NSLog(@"%@", vehicle.vehicleName);
 }

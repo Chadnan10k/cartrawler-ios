@@ -48,23 +48,38 @@
     
     [[CTRentalSearch instance] reset];
     
-    [[CTSDKSettings instance] setHomeCountryCode:countryCode];
-    [[CTSDKSettings instance] setHomeCountryName:countryName];
+    if (!countryCode || !countryName) {
+        [CTRentalSearch instance].country = [CTSDKSettings instance].homeCountryCode;
+    } else {
+        [[CTSDKSettings instance] setHomeCountryCode:countryCode];
+        [[CTSDKSettings instance] setHomeCountryName:countryName];
+        [CTRentalSearch instance].country = countryCode;
+    }
+
+    if (returnDate) {
+        [CTRentalSearch instance].dropoffDate = returnDate;
+    } else {
+        [CTRentalSearch instance].dropoffDate = [pickupDate dateByAddingTimeInterval:259200];//3 days
+    }
     
     [CTRentalSearch instance].pickupDate = pickupDate;
-    [CTRentalSearch instance].dropoffDate = returnDate;
     [CTRentalSearch instance].firstName = firstName;
     [CTRentalSearch instance].surname = surname;
     [CTRentalSearch instance].passengerQty = [NSNumber numberWithInt:1 + additionalPassengers.intValue];
     [CTRentalSearch instance].driverAge = driverAge;
     [CTRentalSearch instance].email = email;
     [CTRentalSearch instance].phone = phone;
-    [CTRentalSearch instance].flightNumber = flightNo;
+    [CTRentalSearch instance].flightNumber = [flightNo stringByReplacingOccurrencesOfString:@" " withString:@""];
     [CTRentalSearch instance].addressLine1 = addressLine1;
     [CTRentalSearch instance].addressLine2 = addressLine2;
     [CTRentalSearch instance].city = city;
     [CTRentalSearch instance].postcode = postcode;
-    [CTRentalSearch instance].country = countryCode;
+    
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:[CTRentalSearch instance].pickupDate
+                                                          toDate:[CTRentalSearch instance].dropoffDate
+                                                         options:0];
     
     [self.rental.cartrawlerSDK.cartrawlerAPI locationSearchWithAirportCode:IATACode completion:^(CTLocationSearch *response, CTErrorResponse *error) {
         if (error) {
@@ -80,11 +95,11 @@
 
                     [self.rental.cartrawlerSDK.cartrawlerAPI requestVehicleAvailabilityForLocation:[CTRentalSearch instance].pickupLocation.code
                                                                                 returnLocationCode:[CTRentalSearch instance].dropoffLocation.code
-                                                                               customerCountryCode:countryCode
+                                                                               customerCountryCode:[CTSDKSettings instance].homeCountryCode
                                                                                       passengerQty:@1
-                                                                                         driverAge:driverAge
-                                                                                    pickUpDateTime:pickupDate
-                                                                                    returnDateTime:returnDate
+                                                                                         driverAge:driverAge ?: @30
+                                                                                    pickUpDateTime:[CTRentalSearch instance].pickupDate
+                                                                                    returnDateTime:[CTRentalSearch instance].dropoffDate
                                                                                       currencyCode:@"EUR"
                                                                                         completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
                                                                                             if (response.items.count > 0) {
@@ -95,7 +110,10 @@
                                                                                                 CTAvailabilityItem *cheapestvehicle = ((CTAvailabilityItem *)[response.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
                                                                                                 if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
                                                                                                     dispatch_async(dispatch_get_main_queue(), ^{
-                                                                                                        [self.delegate didReceiveBestDailyRate:cheapestvehicle.vehicle.totalPriceForThisVehicle currency:cheapestvehicle.vehicle.currencyCode];
+                                                                                                        
+                                                                                                        NSNumber *dailyRate = [NSNumber numberWithFloat:cheapestvehicle.vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
+                                                                                                        
+                                                                                                        [self.delegate didReceiveBestDailyRate:dailyRate currency:cheapestvehicle.vehicle.currencyCode];
                                                                                                     });
                                                                                                 }
                                                                                                 if (completion) {
@@ -173,6 +191,23 @@
 {
     if (self.cardView) {
         [self.cardView renderDefault];
+    }
+    
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:[CTRentalSearch instance].pickupDate
+                                                          toDate:[CTRentalSearch instance].dropoffDate
+                                                         options:0];
+    
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
+                                                                 ascending:YES];
+    
+    CTAvailabilityItem *cheapestvehicle = ((CTAvailabilityItem *)[self.defaultSearch.vehicleAvailability.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSNumber *dailyRate = [NSNumber numberWithFloat:cheapestvehicle.vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
+            [self.delegate didReceiveBestDailyRate:dailyRate currency:cheapestvehicle.vehicle.currencyCode];
+        });
     }
 }
 
