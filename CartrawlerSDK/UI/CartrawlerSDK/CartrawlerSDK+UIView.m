@@ -10,20 +10,10 @@
 
 @implementation UIView (CartrawlerSDK)
 
-- (NSLayoutConstraint *)heightConstraint
+- (NSLayoutConstraint *)cartrawlerConstraintForAttribute:(NSLayoutAttribute)attribute
 {
     for (NSLayoutConstraint *c in self.constraints) {
-        if (c.firstAttribute == NSLayoutAttributeHeight) {
-            return c;
-        }
-    }
-    return nil;
-}
-
-- (NSLayoutConstraint *)bottomConstraint
-{
-    for (NSLayoutConstraint *c in self.constraints) {
-        if (c.firstAttribute == NSLayoutAttributeBottom) {
+        if (c.firstAttribute == attribute) {
             return c;
         }
     }

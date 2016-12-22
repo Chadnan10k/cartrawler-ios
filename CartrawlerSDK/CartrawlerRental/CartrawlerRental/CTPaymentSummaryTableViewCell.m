@@ -63,8 +63,7 @@
     self.tableView.dataSource = self;
     [self.tableView reloadData];
     [self.tableView layoutIfNeeded];
-    
-    self.tableView.heightConstraint.constant = self.tableView.contentSize.height;
+    [self.tableView cartrawlerConstraintForAttribute:NSLayoutAttributeHeight].constant = self.tableView.contentSize.height;
 }
 
 #pragma mark TABLE VIEW

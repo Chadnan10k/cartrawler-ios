@@ -172,8 +172,8 @@
     [self.featuresTableView reloadData];
     [self.featuresTableView layoutIfNeeded];
 
-    if (self.featuresTableView.heightConstraint) {
-        self.featuresTableView.heightConstraint.constant = self.featuresTableView.contentSize.height;
+    if ([self.featuresTableView cartrawlerConstraintForAttribute:NSLayoutAttributeHeight]) {
+        [self.featuresTableView cartrawlerConstraintForAttribute:NSLayoutAttributeHeight].constant = self.featuresTableView.contentSize.height;
     }
 }
 

@@ -84,9 +84,7 @@
     self.featuresTableView.dataSource = self.vehicleFeaturesDataSource;
     [self.featuresTableView reloadData];
     [self.featuresTableView layoutIfNeeded];
-    
-    self.featuresTableView.heightConstraint.constant = self.featuresTableView.contentSize.height;
-
+    [self.featuresTableView cartrawlerConstraintForAttribute:NSLayoutAttributeHeight].constant = self.featuresTableView.contentSize.height;
 }
 
 @end
