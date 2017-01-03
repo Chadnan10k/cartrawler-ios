@@ -342,7 +342,7 @@
         __weak typeof (self) weakSelf = self;
         
         self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage) {
-            [CTInterstitialViewController dismiss];
+            //[CTInterstitialViewController dismiss];
             weakSelf.nextButton.userInteractionEnabled = YES;
             weakSelf.nextButton.alpha = 1.0;
             
@@ -352,7 +352,7 @@
         };
         
         [self pushToDestination];
-        [CTInterstitialViewController present:self search:self.search];
+        //[CTInterstitialViewController present:self search:self.search];
     }
 }
 

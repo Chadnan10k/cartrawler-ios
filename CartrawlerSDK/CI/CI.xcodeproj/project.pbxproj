@@ -7,6 +7,39 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		456B9E691E1BF10A0036CD60 /* CartrawlerSDK_CI */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 456B9E6A1E1BF10A0036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerSDK_CI" */;
+			buildPhases = (
+				456B9E6D1E1BF1140036CD60 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = CartrawlerSDK_CI;
+			productName = CartrawlerSDK_CI;
+		};
+		456B9E6E1E1C03B50036CD60 /* CartrawlerRental_CI */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 456B9E6F1E1C03B50036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerRental_CI" */;
+			buildPhases = (
+				456B9E721E1C03D30036CD60 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = CartrawlerRental_CI;
+			productName = CartrawlerRental_CI;
+		};
+		456B9E731E1C03F30036CD60 /* CartrawlerInPath_CI */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 456B9E741E1C03F30036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerInPath_CI" */;
+			buildPhases = (
+				456B9E771E1C03F70036CD60 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = CartrawlerInPath_CI;
+			productName = CartrawlerInPath_CI;
+		};
 		45A47DFC1E0C01BD00500D71 /* CartrawlerAPI_CI */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 45A47DFF1E0C01BD00500D71 /* Build configuration list for PBXAggregateTarget "CartrawlerAPI_CI" */;
@@ -18,22 +51,10 @@
 			name = CartrawlerAPI_CI;
 			productName = CartrawlerAPI_CI;
 		};
-		45CB04851DEDD1740086BEA0 /* BuildAll */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 45CB04861DEDD1740086BEA0 /* Build configuration list for PBXAggregateTarget "BuildAll" */;
-			buildPhases = (
-				45CB04891DEDD17C0086BEA0 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = BuildAll;
-			productName = BuildAll;
-		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
-		456B9E491E1BB1B90036CD60 /* BuildAll.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = BuildAll.sh; sourceTree = "<group>"; };
-		456B9E681E1BD32E0036CD60 /* CI_CartrawlerAPI.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = CI_CartrawlerAPI.sh; sourceTree = "<group>"; };
+		456B9E681E1BD32E0036CD60 /* CI_Build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = CI_Build.sh; sourceTree = "<group>"; };
 		45CB048A1DEDDD2C0086BEA0 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -41,8 +62,7 @@
 		45CB047E1DEDD1600086BEA0 = {
 			isa = PBXGroup;
 			children = (
-				456B9E681E1BD32E0036CD60 /* CI_CartrawlerAPI.sh */,
-				456B9E491E1BB1B90036CD60 /* BuildAll.sh */,
+				456B9E681E1BD32E0036CD60 /* CI_Build.sh */,
 				45CB048A1DEDDD2C0086BEA0 /* info.plist */,
 			);
 			sourceTree = "<group>";
@@ -55,12 +75,22 @@
 			attributes = {
 				LastUpgradeCheck = 0810;
 				TargetAttributes = {
-					45A47DFC1E0C01BD00500D71 = {
-						CreatedOnToolsVersion = 8.1;
+					456B9E691E1BF10A0036CD60 = {
+						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
 					};
-					45CB04851DEDD1740086BEA0 = {
+					456B9E6E1E1C03B50036CD60 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
+					456B9E731E1C03F30036CD60 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
+					45A47DFC1E0C01BD00500D71 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
@@ -78,13 +108,54 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				45CB04851DEDD1740086BEA0 /* BuildAll */,
 				45A47DFC1E0C01BD00500D71 /* CartrawlerAPI_CI */,
+				456B9E691E1BF10A0036CD60 /* CartrawlerSDK_CI */,
+				456B9E6E1E1C03B50036CD60 /* CartrawlerRental_CI */,
+				456B9E731E1C03F30036CD60 /* CartrawlerInPath_CI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		456B9E6D1E1BF1140036CD60 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./CI_Build.sh CartrawlerSDK BuildSDK";
+		};
+		456B9E721E1C03D30036CD60 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./CI_Build.sh CartrawlerRental BuildRental";
+		};
+		456B9E771E1C03F70036CD60 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./CI_Build.sh CartrawlerInPath BuildInPath";
+		};
 		45A47E001E0C01C100500D71 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -96,24 +167,59 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = ./CI_CartrawlerAPI.sh;
-		};
-		45CB04891DEDD17C0086BEA0 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = ./BuildAll.sh;
+			shellScript = "./CI_Build.sh CartrawlerAPI BuildAPI";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		456B9E6B1E1BF10A0036CD60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		456B9E6C1E1BF10A0036CD60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		456B9E701E1C03B50036CD60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		456B9E711E1C03B50036CD60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		456B9E751E1C03F30036CD60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		456B9E761E1C03F30036CD60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		45A47DFD1E0C01BD00500D71 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -142,25 +248,33 @@
 			};
 			name = Release;
 		};
-		45CB04871DEDD1740086BEA0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		45CB04881DEDD1740086BEA0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		456B9E6A1E1BF10A0036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerSDK_CI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				456B9E6B1E1BF10A0036CD60 /* Debug */,
+				456B9E6C1E1BF10A0036CD60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		456B9E6F1E1C03B50036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerRental_CI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				456B9E701E1C03B50036CD60 /* Debug */,
+				456B9E711E1C03B50036CD60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		456B9E741E1C03F30036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerInPath_CI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				456B9E751E1C03F30036CD60 /* Debug */,
+				456B9E761E1C03F30036CD60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		45A47DFF1E0C01BD00500D71 /* Build configuration list for PBXAggregateTarget "CartrawlerAPI_CI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -175,15 +289,6 @@
 			buildConfigurations = (
 				45CB04831DEDD1600086BEA0 /* Debug */,
 				45CB04841DEDD1600086BEA0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		45CB04861DEDD1740086BEA0 /* Build configuration list for PBXAggregateTarget "BuildAll" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				45CB04871DEDD1740086BEA0 /* Debug */,
-				45CB04881DEDD1740086BEA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
