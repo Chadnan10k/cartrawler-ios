@@ -7,6 +7,39 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		456B9E691E1BF10A0036CD60 /* CartrawlerSDK_CI */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 456B9E6A1E1BF10A0036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerSDK_CI" */;
+			buildPhases = (
+				456B9E6D1E1BF1140036CD60 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = CartrawlerSDK_CI;
+			productName = CartrawlerSDK_CI;
+		};
+		456B9E6E1E1C03B50036CD60 /* CartrawlerRental_CI */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 456B9E6F1E1C03B50036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerRental_CI" */;
+			buildPhases = (
+				456B9E721E1C03D30036CD60 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = CartrawlerRental_CI;
+			productName = CartrawlerRental_CI;
+		};
+		456B9E731E1C03F30036CD60 /* CartrawlerInPath_CI */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 456B9E741E1C03F30036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerInPath_CI" */;
+			buildPhases = (
+				456B9E771E1C03F70036CD60 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = CartrawlerInPath_CI;
+			productName = CartrawlerInPath_CI;
+		};
 		45A47DFC1E0C01BD00500D71 /* CartrawlerAPI_CI */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 45A47DFF1E0C01BD00500D71 /* Build configuration list for PBXAggregateTarget "CartrawlerAPI_CI" */;
@@ -18,20 +51,10 @@
 			name = CartrawlerAPI_CI;
 			productName = CartrawlerAPI_CI;
 		};
-		45CB04851DEDD1740086BEA0 /* BuildAll */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 45CB04861DEDD1740086BEA0 /* Build configuration list for PBXAggregateTarget "BuildAll" */;
-			buildPhases = (
-				45CB04891DEDD17C0086BEA0 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = BuildAll;
-			productName = BuildAll;
-		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
+		456B9E681E1BD32E0036CD60 /* CI_Build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = CI_Build.sh; sourceTree = "<group>"; };
 		45CB048A1DEDDD2C0086BEA0 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,6 +62,7 @@
 		45CB047E1DEDD1600086BEA0 = {
 			isa = PBXGroup;
 			children = (
+				456B9E681E1BD32E0036CD60 /* CI_Build.sh */,
 				45CB048A1DEDDD2C0086BEA0 /* info.plist */,
 			);
 			sourceTree = "<group>";
@@ -51,12 +75,22 @@
 			attributes = {
 				LastUpgradeCheck = 0810;
 				TargetAttributes = {
-					45A47DFC1E0C01BD00500D71 = {
-						CreatedOnToolsVersion = 8.1;
+					456B9E691E1BF10A0036CD60 = {
+						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
 					};
-					45CB04851DEDD1740086BEA0 = {
+					456B9E6E1E1C03B50036CD60 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
+					456B9E731E1C03F30036CD60 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
+					45A47DFC1E0C01BD00500D71 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
@@ -74,13 +108,54 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				45CB04851DEDD1740086BEA0 /* BuildAll */,
 				45A47DFC1E0C01BD00500D71 /* CartrawlerAPI_CI */,
+				456B9E691E1BF10A0036CD60 /* CartrawlerSDK_CI */,
+				456B9E6E1E1C03B50036CD60 /* CartrawlerRental_CI */,
+				456B9E731E1C03F30036CD60 /* CartrawlerInPath_CI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		456B9E6D1E1BF1140036CD60 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./CI_Build.sh CartrawlerSDK BuildSDK";
+		};
+		456B9E721E1C03D30036CD60 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./CI_Build.sh CartrawlerRental BuildRental";
+		};
+		456B9E771E1C03F70036CD60 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./CI_Build.sh CartrawlerInPath BuildInPath";
+		};
 		45A47E001E0C01C100500D71 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -92,24 +167,59 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "FRAMEWORK_NAME=\"CartrawlerAPI\"\nBUILD_SCHEME=\"BuildAPI\"\n\nexport LANG=en_US.UTF-8\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme ${BUILD_SCHEME}\n\nCURRENT_USER=$(whoami)\n\n#if [ \"$CURRENT_USER\" = \"jenkins\" ]\n#then\n\nOUTPUT_DIR=\"${SRCROOT}/../../../Artifacts_Latest\"\n\ncd ${OUTPUT_DIR}\n\n#lets create the commit\n\n# Get the existing buildVersion and buildNumber values from the buildPlist\nBUILD_VERSION=$(defaults read ${OUTPUT_DIR}/${FRAMEWORK_NAME}.framework/Info CFBundleShortVersionString)\n\nGIT_REMOTE=\"https://github.com/cartrawler/cartrawler-ios-build.git\"\nGIT_BRANCH=\"${BUILD_VERSION}${FRAMEWORK_NAME}\"\nGIT_TAG=\"2.0.0\"\n\ngit init\ngit checkout -b \"${GIT_BRANCH}\"\ngit add -A\ngit commit -m \"version ${BUILD_VERSION} ${FRAMEWORK_NAME}\"\ngit tag \"${GIT_TAG}\"\ngit push \"${GIT_REMOTE}\" \"${GIT_BRANCH}\" --tags\n\n#we have now dumped the new binaries to the build repo, lets update cocoapods next\n\nPODSPEC_TEMPLATE=\"${PROJECT_DIR}/PodTemplate.podspec\"\n\ncp ${PODSPEC_TEMPLATE} ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec\n\nPODSPEC_TEMPLATE=\"${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec\"\nsed -i .temp \"s/FRAMEWORK_NAME/${FRAMEWORK_NAME}/g; s/FRAMEWORK_VERSION/${BUILD_VERSION}/g; s/TAG_NAME/${GIT_TAG}/g\" ${PODSPEC_TEMPLATE}\n\n#push these pod specs, first move them to the spec repo\n\nPODSPEC_DIR=\"${SRCROOT}/../../../cocoapods\"\nmkdir -p \"$PODSPEC_DIR\"\n\nmv -f ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec $PODSPEC_DIR\n\ncd $PODSPEC_DIR\n\n/usr/local/bin/pod repo push cartrawlerpods ${FRAMEWORK_NAME}.podspec\n\n#else\n#    echo \"You are not the CI server\"\n#fi\n\n";
-		};
-		45CB04891DEDD17C0086BEA0 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildAPI\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildSDK\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildRental\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildInPath\n\nCURRENT_USER = $(whoami)\n\nif [ \"$CURRENT_USER\" = \"jenkins\" ]\nthen\n\nOUTPUT_DIR=\"${SRCROOT}/../../../Artifacts_Latest\"\n\ncd ${OUTPUT_DIR}\n\n#lets create the commit\n\nBUILD_PLIST=\"${PROJECT_DIR}/Info.plist\"\n\n# Get the existing buildVersion and buildNumber values from the buildPlist\nBUILD_VERSION=$(defaults read ${OUTPUT_DIR}/CartrawlerSDK.framework/Info CFBundleShortVersionString)\nBUILD_NUMBER=$(defaults read ${PROJECT_DIR}/Info BuildNumber)\ndefaults write ${PROJECT_DIR}/Info BuildNumber $((${BUILD_NUMBER}+1))\n\nGIT_REMOTE=\"https://github.com/cartrawler/cartrawler-ios-build.git\"\nGIT_BRANCH=\"${BUILD_VERSION}\"\nGIT_TAG=\"v${BUILD_VERSION}\"\n\ngit checkout -b \"${GIT_BRANCH}\"\ngit add -A\ngit commit -m \"version ${BUILD_VERSION} build ${BUILD_NUMBER}\"\ngit tag  \"${GIT_TAG}\"\ngit push  \"${GIT_REMOTE}\" \"${GIT_BRANCH}\" --tags\n\n#we have now dumped the new binaries to the build repo, lets update cocoapods next\n\nPODSPEC_TEMPLATE=\"${PROJECT_DIR}/PodTemplate.podspec\"\n#copy the spec for the two frameworks\ncp ${PODSPEC_TEMPLATE} ${PROJECT_DIR}/CartrawlerAPI.podspec\ncp ${PODSPEC_TEMPLATE} ${PROJECT_DIR}/CartrawlerSDK.podspec\n\nPODSPEC_TEMPLATE=\"${PROJECT_DIR}/CartrawlerAPI.podspec\"\nsed -i .temp \"s/FRAMEWORK_NAME/CartrawlerAPI/g; s/FRAMEWORK_VERSION/${BUILD_VERSION}/g\" ${PODSPEC_TEMPLATE}\n\nPODSPEC_TEMPLATE=\"${PROJECT_DIR}/CartrawlerSDK.podspec\"\nsed -i .temp \"s/FRAMEWORK_NAME/CartrawlerSDK/g; s/FRAMEWORK_VERSION/${BUILD_VERSION}/g\" ${PODSPEC_TEMPLATE}\n\n#push these pod specs, first move them to the spec repo\n\nPODSPEC_DIR=\"${SRCROOT}/../../../cocoapods\"\nmkdir -p \"$PODSPEC_DIR\"\n\nmv -f ${PROJECT_DIR}/CartrawlerAPI.podspec $PODSPEC_DIR\nmv -f ${PROJECT_DIR}/CartrawlerSDK.podspec $PODSPEC_DIR\n\ncd $PODSPEC_DIR\nexport LANG=en_US.UTF-8\n\n/usr/local/bin/pod repo push cartrawlerpods CartrawlerAPI.podspec\n/usr/local/bin/pod repo push cartrawlerpods CartrawlerSDK.podspec\n\nelse\n    echo \"You are not the CI server\"\nfi\n\n";
+			shellScript = "./CI_Build.sh CartrawlerAPI BuildAPI";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		456B9E6B1E1BF10A0036CD60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		456B9E6C1E1BF10A0036CD60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		456B9E701E1C03B50036CD60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		456B9E711E1C03B50036CD60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		456B9E751E1C03F30036CD60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		456B9E761E1C03F30036CD60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		45A47DFD1E0C01BD00500D71 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -138,25 +248,33 @@
 			};
 			name = Release;
 		};
-		45CB04871DEDD1740086BEA0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		45CB04881DEDD1740086BEA0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		456B9E6A1E1BF10A0036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerSDK_CI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				456B9E6B1E1BF10A0036CD60 /* Debug */,
+				456B9E6C1E1BF10A0036CD60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		456B9E6F1E1C03B50036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerRental_CI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				456B9E701E1C03B50036CD60 /* Debug */,
+				456B9E711E1C03B50036CD60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		456B9E741E1C03F30036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerInPath_CI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				456B9E751E1C03F30036CD60 /* Debug */,
+				456B9E761E1C03F30036CD60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		45A47DFF1E0C01BD00500D71 /* Build configuration list for PBXAggregateTarget "CartrawlerAPI_CI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -164,21 +282,13 @@
 				45A47DFE1E0C01BD00500D71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		45CB04821DEDD1600086BEA0 /* Build configuration list for PBXProject "CI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				45CB04831DEDD1600086BEA0 /* Debug */,
 				45CB04841DEDD1600086BEA0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		45CB04861DEDD1740086BEA0 /* Build configuration list for PBXAggregateTarget "BuildAll" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				45CB04871DEDD1740086BEA0 /* Debug */,
-				45CB04881DEDD1740086BEA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

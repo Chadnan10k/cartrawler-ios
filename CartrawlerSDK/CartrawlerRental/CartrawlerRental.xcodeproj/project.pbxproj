@@ -429,8 +429,8 @@
 			isa = PBXGroup;
 			children = (
 				451E75281E042B5700D58F71 /* CTInterstitialCollectionViewCell.h */,
-				451E75291E042B5700D58F71 /* CTInterstitialViewController.h */,
 				451E752A1E042B5700D58F71 /* CTInterstitialCollectionViewCell.m */,
+				451E75291E042B5700D58F71 /* CTInterstitialViewController.h */,
 				451E752B1E042B5700D58F71 /* CTInterstitialViewController.m */,
 			);
 			name = Interstitial;
