@@ -39,19 +39,7 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
                                 IATACode:(nonnull NSString *)IATACode
                               pickupDate:(nullable NSDate *)pickupDate
                               returnDate:(nullable NSDate *)returnDate
-                               firstName:(nullable NSString *)firstName
-                                 surname:(nullable NSString *)surname
-                               driverAge:(nullable NSNumber *)driverAge
-                    additionalPassengers:(nullable NSNumber *)additionalPassengers
-                                   email:(nullable NSString *)email
-                                   phone:(nullable NSString *)phone
-                                flightNo:(nullable NSString *)flightNo
-                            addressLine1:(nullable NSString *)addressLine1
-                            addressLine2:(nullable NSString *)addressLine2
-                                    city:(nullable NSString *)city
-                                postcode:(nullable NSString *)postcode
-                            countryCode:(nullable NSString *)countryCode
-                            countryName:(nullable NSString *)countryName
+                             userDetails:(nullable CTUserDetails *)userDetails
                             completion:(nullable CarRentalWithFlightDetailsCompletion)completion;
 
 - (void)presentCarRentalWithFlightDetails:(nonnull UIViewController *)parentViewController;

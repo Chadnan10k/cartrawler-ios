@@ -22,23 +22,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    CTUserDetails *userDetails = [CTUserDetails new];
+    userDetails.firstName = @"Lee";
+    userDetails.surname = @"Maguire";
+    
     _inPath = [[CartrawlerInPath alloc] initWithCartrawlerRental:self.rental
-                                                        IATACode:@"ALC"
+                                                        IATACode:@"DUB"
                                                       pickupDate:[NSDate dateWithTimeIntervalSinceNow:48000]
                                                       returnDate:nil
-                                                       firstName:@"Lee"
-                                                         surname:@"Maguire"
-                                                       driverAge:@30
-                                            additionalPassengers:@0
-                                                           email:nil
-                                                           phone:nil
-                                                        flightNo:@"FR 1234"
-                                                    addressLine1:nil
-                                                    addressLine2:nil
-                                                            city:nil
-                                                        postcode:nil
-                                                     countryCode:nil
-                                                     countryName:nil
+                                                     userDetails:userDetails
                                                       completion:nil];
     self.inPath.delegate = self;
     [self.inPath addCrossSellCardToView:self.cardContainer];

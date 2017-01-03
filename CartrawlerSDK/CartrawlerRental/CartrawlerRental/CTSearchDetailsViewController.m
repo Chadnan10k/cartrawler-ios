@@ -327,7 +327,7 @@
 
 - (void)performSearch
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self searchTapped];
     });
 }
@@ -342,7 +342,7 @@
         __weak typeof (self) weakSelf = self;
         
         self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage) {
-            //[CTInterstitialViewController dismiss];
+            [CTInterstitialViewController dismiss];
             weakSelf.nextButton.userInteractionEnabled = YES;
             weakSelf.nextButton.alpha = 1.0;
             
@@ -352,7 +352,7 @@
         };
         
         [self pushToDestination];
-        //[CTInterstitialViewController present:self search:self.search];
+        [CTInterstitialViewController present:self search:self.search];
     }
 }
 
