@@ -124,6 +124,8 @@
 		455B59531DCC91F900CA4790 /* CTLanguages.csv in Resources */ = {isa = PBXBuildFile; fileRef = 450F9D4B1D3D14FF002C6F6B /* CTLanguages.csv */; };
 		455B59581DCC954400CA4790 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455B59571DCC954400CA4790 /* CartrawlerAPI.framework */; };
 		455B59591DCC96D500CA4790 /* CartrawlerSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		456B9E7A1E1C09E30036CD60 /* CTUserDetails.h in Headers */ = {isa = PBXBuildFile; fileRef = 456B9E781E1C09E30036CD60 /* CTUserDetails.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		456B9E7B1E1C09E30036CD60 /* CTUserDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 456B9E791E1C09E30036CD60 /* CTUserDetails.m */; };
 		457128C11DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 457128BF1DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		457128C21DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 457128C01DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m */; };
 		457678501E08021500FE591A /* CTHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 4576784F1E08021100FE591A /* CTHeaders.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -217,6 +219,8 @@
 		455B59571DCC954400CA4790 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerAPI.framework; path = "../OTA API/build/Debug-iphoneos/CartrawlerAPI.framework"; sourceTree = "<group>"; };
 		45645D891D2D4A310075A3D2 /* CTHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHTMLParser.h; sourceTree = "<group>"; };
 		45645D8A1D2D4A310075A3D2 /* CTHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHTMLParser.m; sourceTree = "<group>"; };
+		456B9E781E1C09E30036CD60 /* CTUserDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTUserDetails.h; sourceTree = "<group>"; };
+		456B9E791E1C09E30036CD60 /* CTUserDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTUserDetails.m; sourceTree = "<group>"; };
 		457128BF1DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+UITextField.h"; sourceTree = "<group>"; };
 		457128C01DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+UITextField.m"; sourceTree = "<group>"; };
 		4576784F1E08021100FE591A /* CTHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTHeaders.h; sourceTree = "<group>"; };
@@ -466,6 +470,8 @@
 				45C3F1CC1DFABEBD00610FA0 /* CTTagManager.m */,
 				451E76381E04438300D58F71 /* CTRentalBooking.h */,
 				451E76391E04438300D58F71 /* CTRentalBooking.m */,
+				456B9E781E1C09E30036CD60 /* CTUserDetails.h */,
+				456B9E791E1C09E30036CD60 /* CTUserDetails.m */,
 			);
 			name = Public;
 			sourceTree = "<group>";
@@ -747,6 +753,7 @@
 				45C980C21DCCDB95002D99AB /* CTLayoutConstraint.h in Headers */,
 				455B58641DCC914300CA4790 /* JVFloatLabeledTextField.h in Headers */,
 				457678501E08021500FE591A /* CTHeaders.h in Headers */,
+				456B9E7A1E1C09E30036CD60 /* CTUserDetails.h in Headers */,
 				450725B21DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h in Headers */,
 				455B591B1DCC914400CA4790 /* CTCSVItem.h in Headers */,
 				459CB2E41DDB3FA2008522BA /* CTToolTipButton.h in Headers */,
@@ -917,6 +924,7 @@
 				45C3F1CE1DFABEBD00610FA0 /* CTTagManager.m in Sources */,
 				455B58751DCC914300CA4790 /* CTLabel.m in Sources */,
 				455B58771DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.m in Sources */,
+				456B9E7B1E1C09E30036CD60 /* CTUserDetails.m in Sources */,
 				455B587E1DCC914300CA4790 /* CTImageCache.m in Sources */,
 				455B58821DCC914300CA4790 /* CartrawlerSDK+NSNumber.m in Sources */,
 				455B58861DCC914300CA4790 /* CTHTMLParser.m in Sources */,

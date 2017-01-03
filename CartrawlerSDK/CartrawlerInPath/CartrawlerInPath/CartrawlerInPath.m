@@ -14,7 +14,7 @@
 #import "CTInPathPayment.h"
 #import "CTInPathView.h"
 
-@interface CartrawlerInPath()
+@interface CartrawlerInPath() <CTViewControllerDelegate>
 
 @property (nonatomic, strong) CartrawlerRental *rental;
 @property (nonatomic, strong) CTInPathView *cardView;
@@ -28,19 +28,7 @@
                                 IATACode:(nonnull NSString *)IATACode
                               pickupDate:(nullable NSDate *)pickupDate
                               returnDate:(nullable NSDate *)returnDate
-                               firstName:(nullable NSString *)firstName
-                                 surname:(nullable NSString *)surname
-                               driverAge:(nullable NSNumber *)driverAge
-                    additionalPassengers:(nullable NSNumber *)additionalPassengers
-                                   email:(nullable NSString *)email
-                                   phone:(nullable NSString *)phone
-                                flightNo:(nullable NSString *)flightNo
-                            addressLine1:(nullable NSString *)addressLine1
-                            addressLine2:(nullable NSString *)addressLine2
-                                    city:(nullable NSString *)city
-                                postcode:(nullable NSString *)postcode
-                             countryCode:(nullable NSString *)countryCode
-                             countryName:(nullable NSString *)countryName
+                             userDetails:(nullable CTUserDetails *)userDetails
                               completion:(nullable CarRentalWithFlightDetailsCompletion)completion
 {
     self = [super init];
@@ -48,12 +36,12 @@
     
     [[CTRentalSearch instance] reset];
     
-    if (!countryCode || !countryName) {
+    if (!userDetails.countryCode || !userDetails.countryName) {
         [CTRentalSearch instance].country = [CTSDKSettings instance].homeCountryCode;
     } else {
-        [[CTSDKSettings instance] setHomeCountryCode:countryCode];
-        [[CTSDKSettings instance] setHomeCountryName:countryName];
-        [CTRentalSearch instance].country = countryCode;
+        [[CTSDKSettings instance] setHomeCountryCode:userDetails.countryCode];
+        [[CTSDKSettings instance] setHomeCountryName:userDetails.countryName];
+        [CTRentalSearch instance].country = userDetails.countryCode;
     }
 
     if (returnDate) {
@@ -63,17 +51,17 @@
     }
     
     [CTRentalSearch instance].pickupDate = pickupDate;
-    [CTRentalSearch instance].firstName = firstName;
-    [CTRentalSearch instance].surname = surname;
-    [CTRentalSearch instance].passengerQty = [NSNumber numberWithInt:1 + additionalPassengers.intValue];
-    [CTRentalSearch instance].driverAge = driverAge;
-    [CTRentalSearch instance].email = email;
-    [CTRentalSearch instance].phone = phone;
-    [CTRentalSearch instance].flightNumber = [flightNo stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [CTRentalSearch instance].addressLine1 = addressLine1;
-    [CTRentalSearch instance].addressLine2 = addressLine2;
-    [CTRentalSearch instance].city = city;
-    [CTRentalSearch instance].postcode = postcode;
+    [CTRentalSearch instance].firstName = userDetails.firstName;
+    [CTRentalSearch instance].surname = userDetails.surname;
+    [CTRentalSearch instance].passengerQty = [NSNumber numberWithInt:1 + userDetails.additionalPassengers.intValue];
+    [CTRentalSearch instance].driverAge = userDetails.driverAge;
+    [CTRentalSearch instance].email = userDetails.email;
+    [CTRentalSearch instance].phone = userDetails.phone;
+    [CTRentalSearch instance].flightNumber = [userDetails.flightNo stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [CTRentalSearch instance].addressLine1 = userDetails.addressLine1;
+    [CTRentalSearch instance].addressLine2 = userDetails.addressLine2;
+    [CTRentalSearch instance].city = userDetails.city;
+    [CTRentalSearch instance].postcode = userDetails.postcode;
     
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
@@ -97,7 +85,7 @@
                                                                                 returnLocationCode:[CTRentalSearch instance].dropoffLocation.code
                                                                                customerCountryCode:[CTSDKSettings instance].homeCountryCode
                                                                                       passengerQty:@1
-                                                                                         driverAge:driverAge ?: @30
+                                                                                         driverAge:userDetails.driverAge ?: @30
                                                                                     pickUpDateTime:[CTRentalSearch instance].pickupDate
                                                                                     returnDateTime:[CTRentalSearch instance].dropoffDate
                                                                                       currencyCode:@"EUR"
