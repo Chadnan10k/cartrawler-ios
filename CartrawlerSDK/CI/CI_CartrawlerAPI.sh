@@ -1,0 +1,33 @@
+#!/bin/sh
+
+#  CI
+#
+#  Created by Lee Maguire on 03/01/2017.
+#  Use this script to build a fat library -> push it to the build dump repo -> create a version tag with git -> create a pod spec and push to cocoapods
+
+
+FRAMEWORK_NAME="CartrawlerAPI"
+
+/usr/bin/xcodebuild build -workspace "${SRCROOT}/../CartrawlerSDK.xcworkspace" -scheme BuildAPI
+
+#fat library is now built, lets push it to the repo
+
+BUILD_VERSION=$(defaults read ${OUTPUT_DIR}/${FRAMEWORK_NAME}.framework/Info CFBundleShortVersionString)
+
+GIT_REMOTE="https://github.com/cartrawler/cartrawler-ios-build.git"
+GIT_BRANCH="${FRAMEWORK_NAME}-${BUILD_VERSION}"
+GIT_TAG="v${BUILD_VERSION}-${FRAMEWORK_NAME}"
+
+git checkout -b "${GIT_BRANCH}"
+git add -A
+git commit -m "${FRAMEWORK_NAME} version ${BUILD_VERSION} build ${BUILD_NUMBER}"
+git tag "${GIT_TAG}"
+git push "${GIT_REMOTE}" "${GIT_BRANCH}" --tags
+
+#we have now dumped the new binaries to the build repo, lets update cocoapods next
+
+PODSPEC_TEMPLATE="${PROJECT_DIR}/PodTemplate.podspec"
+cp ${PODSPEC_TEMPLATE} ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec
+
+PODSPEC_TEMPLATE="${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec"
+sed -i .temp "s/FRAMEWORK_NAME/${FRAMEWORK_NAME}/g; s/FRAMEWORK_VERSION/${BUILD_VERSION}/g; s/TAG_NAME/${GIT_TAG}/g;" ${PODSPEC_TEMPLATE}
