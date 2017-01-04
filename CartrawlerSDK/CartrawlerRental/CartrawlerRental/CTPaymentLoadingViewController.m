@@ -60,7 +60,6 @@
 
 + (void)present:(UIViewController *)viewController
 {
-    
     [[CTPaymentLoadingViewController sharedInstance] setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [[CTPaymentLoadingViewController sharedInstance] setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [viewController presentViewController:[CTPaymentLoadingViewController sharedInstance] animated:YES completion:nil];

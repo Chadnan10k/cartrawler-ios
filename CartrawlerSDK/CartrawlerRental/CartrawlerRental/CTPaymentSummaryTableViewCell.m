@@ -27,7 +27,7 @@
     [super awakeFromNib];
     // Initialization code
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 35;
+    self.tableView.estimatedRowHeight = 40;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -43,7 +43,15 @@
     double total = 0;
     _items = [[NSMutableArray alloc] init];
     
-    [self.items addObject:@{@"Normal" : @{@"Name" : @"Car hire", @"Price" : search.selectedVehicle.vehicle.totalPriceForThisVehicle}}];
+    for (CTFee *fee in search.selectedVehicle.vehicle.fees) {
+        if ([fee.feePurpose isEqualToString:@"22"] && fee.feeAmount.doubleValue > 0.0) {//Deposit
+            [self.items addObject:@{@"Normal" : @{@"Name" : @"Pay now for vehicle", @"Price" : fee.feeAmount}}];
+        } else if ([fee.feePurpose isEqualToString:@"23"] && fee.feeAmount.doubleValue > 0.0) {//Pay at desk
+            [self.items addObject:@{@"Normal" : @{@"Name" : @"Pay at desk for vehicle", @"Price" : fee.feeAmount}}];
+        } else if ([fee.feePurpose isEqualToString:@"6"] && fee.feeAmount.doubleValue > 0.0) {//Booking fee
+            [self.items addObject:@{@"Normal" : @{@"Name" : @"Booking fee", @"Price" : fee.feeAmount}}];
+        }
+    }
     
     if (search.isBuyingInsurance) {
         [self.items addObject:@{@"Normal" : @{@"Name" : @"Damage Refund Insurance", @"Price" : search.insurance.premiumAmount}}];
@@ -52,6 +60,7 @@
     
     for (CTExtraEquipment *extra in search.selectedVehicle.vehicle.extraEquipment) {
         if (extra.qty > 0) {
+           // [self.items addObject:@{@"Normal" : @{@"Name" : extra.equipDescription, @"Price" : extra.chargeAmount}}];
             [self.items addObject:@{@"Extra" : @{@"Name" : extra.equipDescription, @"Price" : @"Pay at desk"}}];
         }
     }
