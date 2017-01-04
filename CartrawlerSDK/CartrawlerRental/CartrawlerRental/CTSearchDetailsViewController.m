@@ -26,7 +26,7 @@
 #define kAgeOpen 67.0
 #define kAgeClosed 16.0
 
-@interface CTSearchDetailsViewController () <CTCalendarDelegate>
+@interface CTSearchDetailsViewController () <CTCalendarDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
 @property (weak, nonatomic) IBOutlet CTTextField *ageContainer;
@@ -71,6 +71,7 @@
     }];
     
     [self.ageContainer addDoneButton];
+    self.ageContainer.delegate = self;
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
@@ -317,7 +318,7 @@
         self.search.driverAge = [d numberFromString:self.ageContainer.text];
     }
     
-    if (self.search.driverAge == nil) {
+    if (self.search.driverAge == nil || self.search.driverAge.intValue > 99 || self.search.driverAge.intValue < 18) {
         [self.ageContainer shakeAnimation];
         validated = NO;
     }
@@ -367,7 +368,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
-
 
 - (void)keyboardWillHide:(NSNotification *)n
 {
@@ -419,5 +419,32 @@
                                           otherButtonTitles:nil, nil];
     [alert show];
 }
+
+#pragma mark UITextFieldDelegate
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self resignFirstResponder];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSMutableCharacterSet *characterSet = [NSMutableCharacterSet alphanumericCharacterSet];
+    [characterSet addCharactersInString:@" "];
+    if ([NSString stringWithFormat:@"%@%@", self.ageContainer.text, string].length < 3) {
+        return [self validatePhone:[NSString stringWithFormat:@"%@%@", self.ageContainer.text, string]];
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)validatePhone:(NSString *)phoneNumber
+{
+    NSString *phoneRegex = @"(^\\+|[0-9456])([0-9]{0,15}$)";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    
+    return [phoneTest evaluateWithObject:phoneNumber];
+}
+
 
 @end
