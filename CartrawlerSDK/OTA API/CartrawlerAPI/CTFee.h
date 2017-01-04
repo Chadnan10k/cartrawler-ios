@@ -38,10 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  Purpose of the fee
  */
 @property (nonatomic, nonnull, readonly) NSString *feePurpose;
-/**
- *  Description of the fee purpose
- */
-@property (nonatomic, nonnull, readonly) NSString *feePurposeDescription;
 
 - (instancetype)initFromFeeDictionary:(NSDictionary *)feeDictionary;
 

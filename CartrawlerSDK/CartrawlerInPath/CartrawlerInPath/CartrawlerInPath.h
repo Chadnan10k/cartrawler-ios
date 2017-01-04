@@ -26,12 +26,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 - (void)didReceiveBestDailyRate:(NSNumber *)price currency:(NSString *)currency;
+- (void)didFailToReceiveBestDailyRate;
 
 @end
 
 @interface CartrawlerInPath : NSObject
-
-typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *errorMessage);
 
 @property (nonatomic, weak) id<CartrawlerInPathDelegate> delegate;
 
@@ -39,8 +38,7 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
                                 IATACode:(nonnull NSString *)IATACode
                               pickupDate:(nullable NSDate *)pickupDate
                               returnDate:(nullable NSDate *)returnDate
-                             userDetails:(nullable CTUserDetails *)userDetails
-                            completion:(nullable CarRentalWithFlightDetailsCompletion)completion;
+                             userDetails:(nullable CTUserDetails *)userDetails;
 
 - (void)presentCarRentalWithFlightDetails:(nonnull UIViewController *)parentViewController;
 

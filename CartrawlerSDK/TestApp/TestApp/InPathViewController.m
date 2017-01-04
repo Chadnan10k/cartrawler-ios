@@ -25,13 +25,14 @@
     CTUserDetails *userDetails = [CTUserDetails new];
     userDetails.firstName = @"Lee";
     userDetails.surname = @"Maguire";
+    userDetails.email = @"lee@maguire.com";
+    userDetails.phone = @"086666666";
     
     _inPath = [[CartrawlerInPath alloc] initWithCartrawlerRental:self.rental
-                                                        IATACode:@"DUB"
+                                                        IATACode:@"ALC"
                                                       pickupDate:[NSDate dateWithTimeIntervalSinceNow:48000]
                                                       returnDate:nil
-                                                     userDetails:userDetails
-                                                      completion:nil];
+                                                     userDetails:userDetails];
     self.inPath.delegate = self;
     [self.inPath addCrossSellCardToView:self.cardContainer];
 }
@@ -60,5 +61,9 @@
     NSLog(@"%@", vehicle.vehicleName);
 }
 
+- (void)didFailToReceiveBestDailyRate
+{
+    [self.bookButton setTitle:@"Book a car" forState:UIControlStateNormal];
+}
 
 @end

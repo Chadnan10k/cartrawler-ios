@@ -29,7 +29,6 @@
                               pickupDate:(nullable NSDate *)pickupDate
                               returnDate:(nullable NSDate *)returnDate
                              userDetails:(nullable CTUserDetails *)userDetails
-                              completion:(nullable CarRentalWithFlightDetailsCompletion)completion
 {
     self = [super init];
     _rental = cartrawlerRental;
@@ -62,7 +61,8 @@
     [CTRentalSearch instance].addressLine2 = userDetails.addressLine2;
     [CTRentalSearch instance].city = userDetails.city;
     [CTRentalSearch instance].postcode = userDetails.postcode;
-    
+    _defaultSearch = [[CTRentalSearch instance] copy];//copy over the user details first
+
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
                                                         fromDate:[CTRentalSearch instance].pickupDate
@@ -71,8 +71,10 @@
     
     [self.rental.cartrawlerSDK.cartrawlerAPI locationSearchWithAirportCode:IATACode completion:^(CTLocationSearch *response, CTErrorResponse *error) {
         if (error) {
-            if (completion) {
-                completion(NO, error.errorMessage);
+            if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.delegate didFailToReceiveBestDailyRate];
+                });
             }
         } else {
             if (response) {
@@ -80,6 +82,7 @@
                 if(response.matchedLocations.count > 0) {
                     [CTRentalSearch instance].pickupLocation = response.matchedLocations.firstObject;
                     [CTRentalSearch instance].dropoffLocation = response.matchedLocations.firstObject;
+                    _defaultSearch = [[CTRentalSearch instance] copy];
 
                     [self.rental.cartrawlerSDK.cartrawlerAPI requestVehicleAvailabilityForLocation:[CTRentalSearch instance].pickupLocation.code
                                                                                 returnLocationCode:[CTRentalSearch instance].dropoffLocation.code
@@ -98,24 +101,23 @@
                                                                                                 CTAvailabilityItem *cheapestvehicle = ((CTAvailabilityItem *)[response.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
                                                                                                 if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
                                                                                                     dispatch_async(dispatch_get_main_queue(), ^{
-                                                                                                        
                                                                                                         NSNumber *dailyRate = [NSNumber numberWithFloat:cheapestvehicle.vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
-                                                                                                        
                                                                                                         [self.delegate didReceiveBestDailyRate:dailyRate currency:cheapestvehicle.vehicle.currencyCode];
                                                                                                     });
                                                                                                 }
-                                                                                                if (completion) {
-                                                                                                    completion(YES, nil);
-                                                                                                }
                                                                                             } else {
-                                                                                                if (completion) {
-                                                                                                    completion(NO, @"No results for car hire");
+                                                                                                if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
+                                                                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                                                                        [self.delegate didFailToReceiveBestDailyRate];
+                                                                                                    });
                                                                                                 }
                                                                                             }
                                                                                         }];
                 } else {
-                    if (completion) {
-                        completion(NO, @"Airport not found");
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.delegate didFailToReceiveBestDailyRate];
+                        });
                     }
                 }
             }
@@ -189,13 +191,14 @@
     
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
                                                                  ascending:YES];
-    
-    CTAvailabilityItem *cheapestvehicle = ((CTAvailabilityItem *)[self.defaultSearch.vehicleAvailability.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
-    if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSNumber *dailyRate = [NSNumber numberWithFloat:cheapestvehicle.vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
-            [self.delegate didReceiveBestDailyRate:dailyRate currency:cheapestvehicle.vehicle.currencyCode];
-        });
+    if (self.defaultSearch) {
+        CTAvailabilityItem *cheapestvehicle = ((CTAvailabilityItem *)[self.defaultSearch.vehicleAvailability.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
+        if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSNumber *dailyRate = [NSNumber numberWithFloat:cheapestvehicle.vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
+                [self.delegate didReceiveBestDailyRate:dailyRate currency:cheapestvehicle.vehicle.currencyCode];
+            });
+        }
     }
 }
 

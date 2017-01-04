@@ -353,7 +353,9 @@
         };
         
         [self pushToDestination];
-        [CTInterstitialViewController present:self search:self.search];
+        if (!self.search.vehicleAvailability) {
+            [CTInterstitialViewController present:self search:self.search];
+        }
     }
 }
 
@@ -442,7 +444,6 @@
 {
     NSString *phoneRegex = @"(^\\+|[0-9456])([0-9]{0,15}$)";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
-    
     return [phoneTest evaluateWithObject:phoneNumber];
 }
 

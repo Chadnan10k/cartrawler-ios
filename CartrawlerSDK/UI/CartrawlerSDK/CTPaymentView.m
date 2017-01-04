@@ -190,9 +190,6 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 {
     _carRentalSearch = search;
     _paymentType = CTPaymentTypeCarRental;
-    
-    NSLog(@"Payment pickup: %@", [search.pickupDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]);
-    NSLog(@"Payment dropoff: %@", [search.dropoffDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]);
 
     NSString *s = [PaymentRequest OTA_VehResRQ:[search.pickupDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
                                 returnDateTime:[search.dropoffDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
