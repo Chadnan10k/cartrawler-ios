@@ -152,9 +152,10 @@ print("Making sure we are building a new version of this framework..")
 func start(_ args: [String]) {
     let frameworkToCheck = args[1]
     let buildScheme: String = args[2]
-    
     let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
     let outputDir = "\(path)/../Artifacts_Latest"
+    
+    shell("mkdir", "-p", "\(outputDir)")
     shell("/usr/bin/xcodebuild" ,"build" ,"-workspace", "\(path)/../cartrawler-ios/CartrawlerSDK/CartrawlerSDK.xcworkspace" ,"-scheme", "\(buildScheme)")
     
     let versionToCheck = shell("defaults", "read", "\(outputDir)/\(frameworkToCheck).framework/Info", "CFBundleShortVersionString")
