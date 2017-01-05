@@ -200,7 +200,7 @@ func start(_ args: [String]) {
         }
     }
     
-    print("Finished building \(frameworkToCheck)🎉")
+    print("Finished building \(frameworkToCheck)🎉 \(buildDir)")
 }
 
 start(CommandLine.arguments)
