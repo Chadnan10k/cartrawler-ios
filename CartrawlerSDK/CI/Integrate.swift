@@ -152,9 +152,10 @@ print("Making sure we are building a new version of this framework..")
 func start(_ args: [String]) {
     let frameworkToCheck = args[1]
     let buildScheme: String = args[2]
-    
     let artifactsDir = args[3]
     let buildDir = args[4]
+    
+    print("WORKSPACE LOCATION: \(buildDir)")
 
     shell("mkdir", "-p", "\(artifactsDir)")
     shell("/usr/bin/xcodebuild" ,"build" ,"-workspace", "\(buildDir)" ,"-scheme", "\(buildScheme)")
