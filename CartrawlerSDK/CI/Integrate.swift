@@ -8,7 +8,7 @@
 
 import Foundation
 
-let file = "CT_iOS_Frameworks__.json"
+let file = "CT_iOS_Frameworks.json"
 
 func frameworkListExists(filename: String!) -> Bool {
     let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
@@ -152,13 +152,14 @@ print("Making sure we are building a new version of this framework..")
 func start(_ args: [String]) {
     let frameworkToCheck = args[1]
     let buildScheme: String = args[2]
-    let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-    let outputDir = "\(path)/../Artifacts_Latest"
     
-    shell("mkdir", "-p", "\(outputDir)")
-    shell("/usr/bin/xcodebuild" ,"build" ,"-workspace", "\(path)/../cartrawler-ios/CartrawlerSDK/CartrawlerSDK.xcworkspace" ,"-scheme", "\(buildScheme)")
-    
-    let versionToCheck = shell("defaults", "read", "\(outputDir)/\(frameworkToCheck).framework/Info", "CFBundleShortVersionString")
+    let artifactsDir = args[3]
+    let buildDir = args[4]
+
+    shell("mkdir", "-p", "\(artifactsDir)")
+    shell("/usr/bin/xcodebuild" ,"build" ,"-workspace", "\(buildDir)" ,"-scheme", "\(buildScheme)")
+
+    let versionToCheck = shell("defaults", "read", "\(artifactsDir)/\(frameworkToCheck).framework/Info", "CFBundleShortVersionString")
 
     if !frameworkListExists(filename: file) {
         print("file does not exist")
@@ -181,7 +182,7 @@ func start(_ args: [String]) {
                     //we have a new version let write to file
                     frameworks[i].version = versionToCheck
                     print("now lets push to cocoapods")
-                    //shell("CI_Build", frameworkToCheck, versionToCheck)
+                    //shell("Cocoapod", frameworkToCheck, versionToCheck)
                 } else {
                     // there is no new version to push to cocoapods
                     print("This version of \(frameworkToCheck) already exists 👞💥")

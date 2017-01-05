@@ -66,7 +66,7 @@
 
 /* Begin PBXFileReference section */
 		450886AA1E1D426000E0379E /* Integrate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Integrate.swift; sourceTree = "<group>"; };
-		456B9E681E1BD32E0036CD60 /* CI_Build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = CI_Build.sh; sourceTree = "<group>"; };
+		456B9E681E1BD32E0036CD60 /* Cocoapod.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Cocoapod.sh; sourceTree = "<group>"; };
 		45CB048A1DEDDD2C0086BEA0 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				450886AA1E1D426000E0379E /* Integrate.swift */,
-				456B9E681E1BD32E0036CD60 /* CI_Build.sh */,
+				456B9E681E1BD32E0036CD60 /* Cocoapod.sh */,
 				45CB048A1DEDDD2C0086BEA0 /* info.plist */,
 			);
 			sourceTree = "<group>";
@@ -147,7 +147,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "BuildAPI\nBuildSDK\nBuildRental\nBuildInPath\n\nswift Integrate.swift CartrawlerAPI BuildAPI\nswift Integrate.swift CartrawlerSDK BuildSDK\nswift Integrate.swift CartrawlerRental BuildRental\nswift Integrate.swift CartrawlerInPath BuildInPath";
+			shellScript = "\nWORKSPACE_DIR=${SRCROOT}/../CartrawlerSDK.xcworkspace\nARTIFACTS_DIR=${SRCROOT}/../../../Artifacts_Latest\n\nswift Integrate.swift CartrawlerAPI BuildAPI ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\nswift Integrate.swift CartrawlerSDK BuildSDK ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\nswift Integrate.swift CartrawlerRental BuildRental ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\nswift Integrate.swift CartrawlerInPath BuildInPath ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n";
 		};
 		456B9E6D1E1BF1140036CD60 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -342,6 +342,7 @@
 				4539561E1E1EA2EE00B66350 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		456B9E6A1E1BF10A0036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerSDK_CI" */ = {
 			isa = XCConfigurationList;
