@@ -147,7 +147,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swift Integrate.swift CartrawlerAPI BuildAPI\nswift Integrate.swift CartrawlerSDK BuildSDK\nswift Integrate.swift CartrawlerRental BuildRental\nswift Integrate.swift CartrawlerInPath BuildInPath";
+			shellScript = "BuildAPI\nBuildSDK\nBuildRental\nBuildInPath\n\nswift Integrate.swift CartrawlerAPI BuildAPI\nswift Integrate.swift CartrawlerSDK BuildSDK\nswift Integrate.swift CartrawlerRental BuildRental\nswift Integrate.swift CartrawlerInPath BuildInPath";
 		};
 		456B9E6D1E1BF1140036CD60 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
