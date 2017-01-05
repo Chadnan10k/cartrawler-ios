@@ -6,16 +6,9 @@
 #  Use this script to build a fat library -> push it to the build dump repo -> create a version tag with git -> create a pod spec and push to cocoapods
 
 FRAMEWORK_NAME=$1
+BUILD_VERSION=$2
+
 OUTPUT_DIR="${SRCROOT}/../../../Artifacts_Latest"
-
-#make sure we have a clean build folder
-rm -r ${OUTPUT_DIR}/*
-
-/usr/bin/xcodebuild build -workspace "${SRCROOT}/../CartrawlerSDK.xcworkspace" -scheme $2
-
-#fat library is now built, lets push it to the repo
-
-BUILD_VERSION=$(defaults read ${OUTPUT_DIR}/${FRAMEWORK_NAME}.framework/Info CFBundleShortVersionString)
 
 GIT_REMOTE="https://github.com/cartrawler/cartrawler-ios-build.git"
 GIT_BRANCH="${FRAMEWORK_NAME}-${BUILD_VERSION}"

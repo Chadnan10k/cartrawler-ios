@@ -8,7 +8,7 @@
 
 import Foundation
 
-let file = "Frameworks1.json"
+let file = "CT_iOS_Frameworks.json"
 
 func frameworkListExists(filename: String!) -> Bool {
     let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
@@ -23,7 +23,14 @@ func frameworkListExists(filename: String!) -> Bool {
 }
 
 func save(_ frameworks: [Framework]) {
-    
+    do {
+        let jsonData = try JSONSerialization.data(withJSONObject: Framework.convertToDictionary(frameworks), options: .prettyPrinted)
+        let jsonString = String(data: jsonData, encoding: String.Encoding.utf8)
+        writeToFile(data: jsonString!)
+    } catch {
+        print("cannot write new dict")
+        print(error.localizedDescription)
+    }
 }
 
 func writeToFile(data: String!) {
@@ -31,7 +38,8 @@ func writeToFile(data: String!) {
         
         let path = dir.appendingPathComponent(file)
         do {
-            try data.write(to: path, atomically: false, encoding: String.Encoding.utf8)
+            print("writing new values to file..")
+            try data.write(to: path, atomically: true, encoding: String.Encoding.utf8)
         }
         catch { print("error writing to file") }
     }
@@ -80,19 +88,39 @@ struct Framework {
     var name: String!
     var version: String!
     
+    init(name: String!, version: String!) {
+        self.name = name
+        self.version = version
+    }
+    
     init(dict: [String : Any]) {
         name = dict["name"] as! String
         version = dict["version"] as! String
     }
-    
+
     static func arrayFromDictionary(dict: [String : Any]) -> [Framework] {
         var frameworks:[Framework] = []
+        guard let list = dict["frameworks"] as? [[String : Any]] else {
+            return []
+        }
         
-        for obj in dict["frameworks"] as! [[String : Any]] {
+        for obj in list {
             frameworks.append(Framework(dict:obj))
         }
         
         return frameworks
+    }
+
+}
+
+extension Framework {
+    static func convertToDictionary(_ objects: [Framework]) -> [String : Any] {
+        var dict:[[String:Any]] = []
+        for obj in objects {
+            dict.append(["name" : obj.name, "version" : obj.version])
+        }
+        
+        return ["frameworks" : dict]
     }
 }
 
@@ -103,60 +131,74 @@ extension String {
     }
 }
 
+@discardableResult
+func shell(_ args: String...) -> String {
+    let task = Process()
+    task.launchPath = "/usr/bin/env"
+    task.arguments = args
+    let pipe = Pipe()
+    task.standardOutput = pipe
+    task.launch()
+    let data = pipe.fileHandleForReading.readDataToEndOfFile()
+    let output = String(data: data, encoding: String.Encoding.utf8)
+    print(output!)
+    return output!
+}
+
+
+
 //Start Integration
 print("Making sure we are building a new version of this framework..")
 
-if !frameworkListExists(filename: file) {
-    //create the file
-    print("Initializing json file")
-    let initData = ["frameworks" :
-                [
-                    [ "name" : "CartrawlerAPI", "version" : "2.0.0" ],
-                    [ "name" : "CartrawlerSDK", "version" : "2.0.0" ],
-                    [ "name" : "CartrawlerRental", "version" : "2.0.0" ],
-                    [ "name" : "CartrawlerInPath", "version" : "2.0.0" ]
-                ]
-               ]
-    
-    do {
-        let jsonData = try JSONSerialization.data(withJSONObject: initData, options: .prettyPrinted)
-        let jsonString = String(data: jsonData, encoding: String.Encoding.utf8)
-        writeToFile(data: jsonString!)
-    } catch {
-        print("cannot create init dict")
-        print(error.localizedDescription)
-    }
-}
-
 func start(_ args: [String]) {
     let frameworkToCheck = args[1]
-    let versionToCheck = args[2]
+    let buildScheme: String = args[2]
     
-    let storeVersion = "3.14.10"
-    let currentVersion = "3.130.10"
-    storeVersion.versionToInt().lexicographicallyPrecedes(currentVersion.versionToInt())
+    
+    let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+    let outputDir = "\(path)/../Artifacts_Latest"
+    shell("/usr/bin/xcodebuild" ,"build" ,"-workspace", "\(path)/../cartrawler-ios/CartrawlerSDK/CartrawlerSDK.xcworkspace" ,"-scheme", "\(buildScheme)")
+    
+    let versionToCheck = shell("defaults", "read", "\(outputDir)/\(frameworkToCheck).framework/Info", "CFBundleShortVersionString").replacingOccurrences(of: "^\\s*", with: "", options: .regularExpression)
 
     
-    
-    print("Reading from json file...")
-    let jsonList = readFromFile()
-    let frameworks = Framework.arrayFromDictionary(dict: jsonList)
-    for framework in frameworks {
-        if framework.name == frameworkToCheck {
-            print("last version: " + framework.version)
-            print("new version: " + versionToCheck)
-            let versionCheck = framework.version.versionToInt().lexicographicallyPrecedes(versionToCheck.versionToInt())
-            if versionCheck {
-                //we have a new version let write to file
-                framework.version = versionToCheck
-                save(frameworks)
-            } else {
-                // there is no new version to push to cocoapods
+    if !frameworkListExists(filename: file) {
+        print("file does not exist")
+        print("adding \(frameworkToCheck) to the framework list")
+        save([Framework.init(name: frameworkToCheck, version: versionToCheck)])
+    } else {
+        print("Reading from json file...")
+        let jsonList = readFromFile()
+        var frameworks = Framework.arrayFromDictionary(dict: jsonList)
+        var found = false
+
+        for i in 0..<frameworks.count {
+            if frameworks[i].name == frameworkToCheck {
+                found = true
+                print("last version: " + frameworks[i].version)
+                print("new version: " + versionToCheck)
+                let versionCheck = frameworks[i].version.versionToInt().lexicographicallyPrecedes(versionToCheck.versionToInt())
+                if versionCheck {
+                    //we have a new version let write to file
+                    frameworks[i].version = versionToCheck
+                    save(frameworks)
+                    print("now lets push to cocoapods")
+                    //shell("CI_Build", frameworkToCheck, versionToCheck)
+                } else {
+                    // there is no new version to push to cocoapods
+                    print("This version of \(frameworkToCheck) already exists 👞💥")
+                }
             }
-            
+        }
+        
+        if !found {
+            print("adding \(frameworkToCheck) to the framework list")
+            frameworks.append(Framework.init(name: frameworkToCheck, version: versionToCheck))
+            save(frameworks)
         }
     }
     
+    print("Finished building \(frameworkToCheck)🎉")
 }
 
 start(CommandLine.arguments)

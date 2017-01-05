@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		450886AB1E1D43A400E0379E /* Version Check */ = {
+		4539561B1E1EA2EE00B66350 /* CI Build All */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 450886AC1E1D43A400E0379E /* Build configuration list for PBXAggregateTarget "Version Check" */;
+			buildConfigurationList = 4539561C1E1EA2EE00B66350 /* Build configuration list for PBXAggregateTarget "CI Build All" */;
 			buildPhases = (
-				450886AF1E1D43A800E0379E /* ShellScript */,
+				4539561F1E1EA2F600B66350 /* ShellScript */,
 			);
 			dependencies = (
 			);
-			name = "Version Check";
-			productName = "Version Check";
+			name = "CI Build All";
+			productName = "CI Build All";
 		};
 		456B9E691E1BF10A0036CD60 /* CartrawlerSDK_CI */ = {
 			isa = PBXAggregateTarget;
@@ -88,7 +88,7 @@
 			attributes = {
 				LastUpgradeCheck = 0820;
 				TargetAttributes = {
-					450886AB1E1D43A400E0379E = {
+					4539561B1E1EA2EE00B66350 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
@@ -130,13 +130,13 @@
 				456B9E691E1BF10A0036CD60 /* CartrawlerSDK_CI */,
 				456B9E6E1E1C03B50036CD60 /* CartrawlerRental_CI */,
 				456B9E731E1C03F30036CD60 /* CartrawlerInPath_CI */,
-				450886AB1E1D43A400E0379E /* Version Check */,
+				4539561B1E1EA2EE00B66350 /* CI Build All */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		450886AF1E1D43A800E0379E /* ShellScript */ = {
+		4539561F1E1EA2F600B66350 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -147,7 +147,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swift Integrate.swift";
+			shellScript = "swift Integrate.swift CartrawlerAPI BuildAPI\nswift Integrate.swift CartrawlerSDK BuildSDK\nswift Integrate.swift CartrawlerRental BuildRental\nswift Integrate.swift CartrawlerInPath BuildInPath";
 		};
 		456B9E6D1E1BF1140036CD60 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -204,7 +204,7 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		450886AD1E1D43A400E0379E /* Debug */ = {
+		4539561D1E1EA2EE00B66350 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
@@ -212,7 +212,7 @@
 			};
 			name = Debug;
 		};
-		450886AE1E1D43A400E0379E /* Release */ = {
+		4539561E1E1EA2EE00B66350 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
@@ -335,11 +335,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		450886AC1E1D43A400E0379E /* Build configuration list for PBXAggregateTarget "Version Check" */ = {
+		4539561C1E1EA2EE00B66350 /* Build configuration list for PBXAggregateTarget "CI Build All" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				450886AD1E1D43A400E0379E /* Debug */,
-				450886AE1E1D43A400E0379E /* Release */,
+				4539561D1E1EA2EE00B66350 /* Debug */,
+				4539561E1E1EA2EE00B66350 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
