@@ -18,50 +18,6 @@
 			name = "CI Build All";
 			productName = "CI Build All";
 		};
-		456B9E691E1BF10A0036CD60 /* CartrawlerSDK_CI */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 456B9E6A1E1BF10A0036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerSDK_CI" */;
-			buildPhases = (
-				456B9E6D1E1BF1140036CD60 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = CartrawlerSDK_CI;
-			productName = CartrawlerSDK_CI;
-		};
-		456B9E6E1E1C03B50036CD60 /* CartrawlerRental_CI */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 456B9E6F1E1C03B50036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerRental_CI" */;
-			buildPhases = (
-				456B9E721E1C03D30036CD60 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = CartrawlerRental_CI;
-			productName = CartrawlerRental_CI;
-		};
-		456B9E731E1C03F30036CD60 /* CartrawlerInPath_CI */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 456B9E741E1C03F30036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerInPath_CI" */;
-			buildPhases = (
-				456B9E771E1C03F70036CD60 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = CartrawlerInPath_CI;
-			productName = CartrawlerInPath_CI;
-		};
-		45A47DFC1E0C01BD00500D71 /* CartrawlerAPI_CI */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 45A47DFF1E0C01BD00500D71 /* Build configuration list for PBXAggregateTarget "CartrawlerAPI_CI" */;
-			buildPhases = (
-				45A47E001E0C01C100500D71 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = CartrawlerAPI_CI;
-			productName = CartrawlerAPI_CI;
-		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
@@ -93,26 +49,6 @@
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
 					};
-					456B9E691E1BF10A0036CD60 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 3L8QU4R2JJ;
-						ProvisioningStyle = Automatic;
-					};
-					456B9E6E1E1C03B50036CD60 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 3L8QU4R2JJ;
-						ProvisioningStyle = Automatic;
-					};
-					456B9E731E1C03F30036CD60 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 3L8QU4R2JJ;
-						ProvisioningStyle = Automatic;
-					};
-					45A47DFC1E0C01BD00500D71 = {
-						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 3L8QU4R2JJ;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
 			buildConfigurationList = 45CB04821DEDD1600086BEA0 /* Build configuration list for PBXProject "CI" */;
@@ -126,10 +62,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				45A47DFC1E0C01BD00500D71 /* CartrawlerAPI_CI */,
-				456B9E691E1BF10A0036CD60 /* CartrawlerSDK_CI */,
-				456B9E6E1E1C03B50036CD60 /* CartrawlerRental_CI */,
-				456B9E731E1C03F30036CD60 /* CartrawlerInPath_CI */,
 				4539561B1E1EA2EE00B66350 /* CI Build All */,
 			);
 		};
@@ -147,59 +79,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\nWORKSPACE_DIR=${SRCROOT}/../CartrawlerSDK.xcworkspace\nARTIFACTS_DIR=${SRCROOT}/../../../Artifacts_Latest\n\nswift Integrate.swift CartrawlerAPI BuildAPI ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\nswift Integrate.swift CartrawlerSDK BuildSDK ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\nswift Integrate.swift CartrawlerRental BuildRental ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\nswift Integrate.swift CartrawlerInPath BuildInPath ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n";
-		};
-		456B9E6D1E1BF1140036CD60 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./CI_Build.sh CartrawlerSDK BuildSDK";
-		};
-		456B9E721E1C03D30036CD60 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./CI_Build.sh CartrawlerRental BuildRental";
-		};
-		456B9E771E1C03F70036CD60 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./CI_Build.sh CartrawlerInPath BuildInPath";
-		};
-		45A47E001E0C01C100500D71 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./CI_Build.sh CartrawlerAPI BuildAPI";
+			shellScript = "\nWORKSPACE_DIR=${SRCROOT}/../CartrawlerSDK.xcworkspace\nARTIFACTS_DIR=${SRCROOT}/../../../Artifacts_Latest\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildAPI\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildSDK\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildRental\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildInPath\n\nswift Integrate.swift CartrawlerAPI BuildAPI ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\nswift Integrate.swift CartrawlerSDK BuildSDK ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\nswift Integrate.swift CartrawlerRental BuildRental ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\nswift Integrate.swift CartrawlerInPath BuildInPath ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -213,70 +93,6 @@
 			name = Debug;
 		};
 		4539561E1E1EA2EE00B66350 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		456B9E6B1E1BF10A0036CD60 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		456B9E6C1E1BF10A0036CD60 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		456B9E701E1C03B50036CD60 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		456B9E711E1C03B50036CD60 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		456B9E751E1C03F30036CD60 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		456B9E761E1C03F30036CD60 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		45A47DFD1E0C01BD00500D71 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		45A47DFE1E0C01BD00500D71 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
@@ -340,42 +156,6 @@
 			buildConfigurations = (
 				4539561D1E1EA2EE00B66350 /* Debug */,
 				4539561E1E1EA2EE00B66350 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		456B9E6A1E1BF10A0036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerSDK_CI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				456B9E6B1E1BF10A0036CD60 /* Debug */,
-				456B9E6C1E1BF10A0036CD60 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		456B9E6F1E1C03B50036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerRental_CI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				456B9E701E1C03B50036CD60 /* Debug */,
-				456B9E711E1C03B50036CD60 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		456B9E741E1C03F30036CD60 /* Build configuration list for PBXAggregateTarget "CartrawlerInPath_CI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				456B9E751E1C03F30036CD60 /* Debug */,
-				456B9E761E1C03F30036CD60 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		45A47DFF1E0C01BD00500D71 /* Build configuration list for PBXAggregateTarget "CartrawlerAPI_CI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				45A47DFD1E0C01BD00500D71 /* Debug */,
-				45A47DFE1E0C01BD00500D71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
