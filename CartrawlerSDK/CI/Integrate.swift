@@ -8,7 +8,7 @@
 
 import Foundation
 
-let file = "CT_iOS_Frameworks.json"
+let file = "CT_iOS_Frameworks__.json"
 
 func frameworkListExists(filename: String!) -> Bool {
     let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
@@ -87,15 +87,18 @@ func convertToDictionary(text: String) -> [String: Any]? {
 struct Framework {
     var name: String!
     var version: String!
+    var buildNum = 0
     
     init(name: String!, version: String!) {
         self.name = name
         self.version = version
+        buildNum = 1
     }
     
     init(dict: [String : Any]) {
         name = dict["name"] as! String
         version = dict["version"] as! String
+        buildNum = dict["buildNum"] as? Int ?? 1
     }
 
     static func arrayFromDictionary(dict: [String : Any]) -> [Framework] {
@@ -107,17 +110,15 @@ struct Framework {
         for obj in list {
             frameworks.append(Framework(dict:obj))
         }
-        
         return frameworks
     }
-
 }
 
 extension Framework {
     static func convertToDictionary(_ objects: [Framework]) -> [String : Any] {
         var dict:[[String:Any]] = []
         for obj in objects {
-            dict.append(["name" : obj.name, "version" : obj.version])
+            dict.append(["name" : obj.name, "version" : obj.version, "buildNum" : obj.buildNum])
         }
         
         return ["frameworks" : dict]
@@ -145,8 +146,6 @@ func shell(_ args: String...) -> String {
     return output!
 }
 
-
-
 //Start Integration
 print("Making sure we are building a new version of this framework..")
 
@@ -154,14 +153,12 @@ func start(_ args: [String]) {
     let frameworkToCheck = args[1]
     let buildScheme: String = args[2]
     
-    
     let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
     let outputDir = "\(path)/../Artifacts_Latest"
     shell("/usr/bin/xcodebuild" ,"build" ,"-workspace", "\(path)/../cartrawler-ios/CartrawlerSDK/CartrawlerSDK.xcworkspace" ,"-scheme", "\(buildScheme)")
     
-    let versionToCheck = shell("defaults", "read", "\(outputDir)/\(frameworkToCheck).framework/Info", "CFBundleShortVersionString").replacingOccurrences(of: "^\\s*", with: "", options: .regularExpression)
+    let versionToCheck = shell("defaults", "read", "\(outputDir)/\(frameworkToCheck).framework/Info", "CFBundleShortVersionString")
 
-    
     if !frameworkListExists(filename: file) {
         print("file does not exist")
         print("adding \(frameworkToCheck) to the framework list")
@@ -177,11 +174,11 @@ func start(_ args: [String]) {
                 found = true
                 print("last version: " + frameworks[i].version)
                 print("new version: " + versionToCheck)
+                frameworks[i].buildNum = frameworks[i].buildNum+1
                 let versionCheck = frameworks[i].version.versionToInt().lexicographicallyPrecedes(versionToCheck.versionToInt())
                 if versionCheck {
                     //we have a new version let write to file
                     frameworks[i].version = versionToCheck
-                    save(frameworks)
                     print("now lets push to cocoapods")
                     //shell("CI_Build", frameworkToCheck, versionToCheck)
                 } else {
@@ -190,6 +187,8 @@ func start(_ args: [String]) {
                 }
             }
         }
+        
+        save(frameworks)
         
         if !found {
             print("adding \(frameworkToCheck) to the framework list")
