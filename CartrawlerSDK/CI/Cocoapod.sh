@@ -35,4 +35,4 @@ sed -i .temp "s/FRAMEWORK_NAME/${FRAMEWORK_NAME}/g; s/FRAMEWORK_VERSION/${BUILD_
 #go back to the project dir
 cd "${PROJECT_DIR}/"
 echo "Pushing pod spec ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec"
-pod repo push cartrawlerpods ${FRAMEWORK_NAME}.podspec
+pod repo push cartrawlerpods ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec
