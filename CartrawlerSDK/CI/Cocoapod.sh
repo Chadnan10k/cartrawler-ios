@@ -36,5 +36,4 @@ sed -i .temp "s/FRAMEWORK_NAME/${FRAMEWORK_NAME}/g; s/FRAMEWORK_VERSION/${BUILD_
 cd "${PROJECT_DIR}/"
 echo "Pushing pod spec ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec"
 export LANG=en_US.UTF-8
-echo "pod repo push cartrawlerpods ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec"
-pod repo push cartrawlerpods ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec
+/usr/bin/pod repo push cartrawlerpods ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec
