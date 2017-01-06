@@ -118,7 +118,7 @@ extension Framework {
     static func convertToDictionary(_ objects: [Framework]) -> [String : Any] {
         var dict:[[String:Any]] = []
         for obj in objects {
-            dict.append(["name" : obj.name, "version" : obj.version, "buildNum" : obj.buildNum])
+            dict.append(["name" : obj.name, "version" : obj.version.strip(), "buildNum" : obj.buildNum])
         }
         
         return ["frameworks" : dict]
@@ -129,6 +129,10 @@ extension String {
     func versionToInt() -> [Int] {
         return self.components(separatedBy: ".")
             .map { Int.init($0) ?? 0 }
+    }
+    
+    func strip() -> String {
+        return self.replacingOccurrences(of: "\n", with: "")
     }
 }
 
@@ -160,8 +164,8 @@ func start(_ args: [String]) {
     shell("mkdir", "-p", "\(artifactsDir)")
     shell("/usr/bin/xcodebuild" ,"build" ,"-workspace", "\(buildDir)" ,"-scheme", "\(buildScheme)")
 
-    let versionToCheck = shell("defaults", "read", "\(artifactsDir)/\(frameworkToCheck).framework/Info", "CFBundleShortVersionString")
-
+    let versionToCheck = shell("defaults", "read", "\(artifactsDir)/\(frameworkToCheck).framework/Info", "CFBundleShortVersionString").strip()
+    
     if !frameworkListExists(filename: file) {
         print("file does not exist")
         print("adding \(frameworkToCheck) to the framework list")
@@ -178,7 +182,8 @@ func start(_ args: [String]) {
                 print("last version: " + frameworks[i].version)
                 print("new version: " + versionToCheck)
                 frameworks[i].buildNum = frameworks[i].buildNum+1
-                let versionCheck = frameworks[i].version.versionToInt().lexicographicallyPrecedes(versionToCheck.versionToInt())
+                let versionCheck = frameworks[i].version.strip().versionToInt().lexicographicallyPrecedes(versionToCheck.versionToInt())
+                
                 if versionCheck {
                     //we have a new version let write to file
                     frameworks[i].version = versionToCheck
