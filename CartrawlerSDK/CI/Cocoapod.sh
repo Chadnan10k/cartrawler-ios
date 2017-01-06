@@ -5,6 +5,8 @@
 #  Created by Lee Maguire on 03/01/2017.
 #  Use this script to build a fat library -> push it to the build dump repo -> create a version tag with git -> create a pod spec and push to cocoapods
 
+echo "WE WILL NOW PUSH TO COCOAPODS ☕️"
+
 FRAMEWORK_NAME=$1
 BUILD_VERSION=$2
 

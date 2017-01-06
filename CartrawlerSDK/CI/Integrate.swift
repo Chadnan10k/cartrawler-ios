@@ -162,7 +162,7 @@ func start(_ args: [String]) {
     print("WORKSPACE LOCATION: \(buildDir)")
 
     shell("mkdir", "-p", "\(artifactsDir)")
-    shell("/usr/bin/xcodebuild" ,"build" ,"-workspace", "\(buildDir)" ,"-scheme", "\(buildScheme)")
+    shell("/usr/bin/xcodebuild" ,"build" ,"-workspace", "\(buildDir)/../CartrawlerSDK.xcworkspace" ,"-scheme", "\(buildScheme)")
 
     let versionToCheck = shell("defaults", "read", "\(artifactsDir)/\(frameworkToCheck).framework/Info", "CFBundleShortVersionString").strip()
     
@@ -187,8 +187,7 @@ func start(_ args: [String]) {
                 if versionCheck {
                     //we have a new version let write to file
                     frameworks[i].version = versionToCheck
-                    print("now lets push to cocoapods")
-                    shell("Cocoapod", frameworkToCheck, versionToCheck)
+                    shell("Cocoapod.sh", frameworkToCheck, versionToCheck)
                 } else {
                     // there is no new version to push to cocoapods
                     print("This version of \(frameworkToCheck) already exists 👞💥")
