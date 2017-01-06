@@ -158,6 +158,7 @@
 		4576785A1E08388100FE591A /* CTCurrency.csv in Resources */ = {isa = PBXBuildFile; fileRef = 457678571E08388100FE591A /* CTCurrency.csv */; };
 		4576785B1E08388100FE591A /* CTISOCountries.csv in Resources */ = {isa = PBXBuildFile; fileRef = 457678581E08388100FE591A /* CTISOCountries.csv */; };
 		4576785C1E08388100FE591A /* CTLanguages.csv in Resources */ = {isa = PBXBuildFile; fileRef = 457678591E08388100FE591A /* CTLanguages.csv */; };
+		45BA0F661E1FA25A00EB26ED /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45BA0F651E1FA25A00EB26ED /* strip-frameworks.sh */; };
 		45BF774E1E084A0E00F6D7E9 /* CTVehicleTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BF774D1E084A0E00F6D7E9 /* CTVehicleTableViewCell_iPhone.xib */; };
 /* End PBXBuildFile section */
 
@@ -313,6 +314,7 @@
 		457678571E08388100FE591A /* CTCurrency.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTCurrency.csv; sourceTree = "<group>"; };
 		457678581E08388100FE591A /* CTISOCountries.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTISOCountries.csv; sourceTree = "<group>"; };
 		457678591E08388100FE591A /* CTLanguages.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTLanguages.csv; sourceTree = "<group>"; };
+		45BA0F651E1FA25A00EB26ED /* strip-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = "strip-frameworks.sh"; path = "CartrawlerRental/strip-frameworks.sh"; sourceTree = "<group>"; };
 		45BF774D1E084A0E00F6D7E9 /* CTVehicleTableViewCell_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CTVehicleTableViewCell_iPhone.xib; path = CartrawlerRental/CTVehicleTableViewCell_iPhone.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -339,6 +341,7 @@
 		451E73BE1E040BAC00D58F71 = {
 			isa = PBXGroup;
 			children = (
+				45BA0F651E1FA25A00EB26ED /* strip-frameworks.sh */,
 				451E73CA1E040BAC00D58F71 /* CartrawlerRental */,
 				451E73D51E040BAC00D58F71 /* CartrawlerRentalTests */,
 				451E73C91E040BAC00D58F71 /* Products */,
@@ -915,6 +918,7 @@
 				45BF774E1E084A0E00F6D7E9 /* CTVehicleTableViewCell_iPhone.xib in Resources */,
 				4576785B1E08388100FE591A /* CTISOCountries.csv in Resources */,
 				451E76171E043D4300D58F71 /* CTDriverDetails.storyboard in Resources */,
+				45BA0F661E1FA25A00EB26ED /* strip-frameworks.sh in Resources */,
 				4576785C1E08388100FE591A /* CTLanguages.csv in Resources */,
 				45154EF81E07DFB100FB32FA /* Assets.xcassets in Resources */,
 				451E76141E043D4300D58F71 /* CTInterstitial.storyboard in Resources */,

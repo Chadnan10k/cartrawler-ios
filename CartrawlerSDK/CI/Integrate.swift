@@ -183,7 +183,7 @@ func start(_ args: [String]) {
                     //we have a new version let write to file
                     frameworks[i].version = versionToCheck
                     print("now lets push to cocoapods")
-                    //shell("Cocoapod", frameworkToCheck, versionToCheck)
+                    shell("Cocoapod", frameworkToCheck, versionToCheck)
                 } else {
                     // there is no new version to push to cocoapods
                     print("This version of \(frameworkToCheck) already exists 👞💥")

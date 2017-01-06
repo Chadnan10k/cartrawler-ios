@@ -18,6 +18,17 @@
 			name = "CI Build All";
 			productName = "CI Build All";
 		};
+		45BA0F691E1FA29F00EB26ED /* Local Build All */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 45BA0F6C1E1FA29F00EB26ED /* Build configuration list for PBXAggregateTarget "Local Build All" */;
+			buildPhases = (
+				45BA0F6D1E1FA2A200EB26ED /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Local Build All";
+			productName = "Local Build All";
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +60,11 @@
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
 					};
+					45BA0F691E1FA29F00EB26ED = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 45CB04821DEDD1600086BEA0 /* Build configuration list for PBXProject "CI" */;
@@ -63,6 +79,7 @@
 			projectRoot = "";
 			targets = (
 				4539561B1E1EA2EE00B66350 /* CI Build All */,
+				45BA0F691E1FA29F00EB26ED /* Local Build All */,
 			);
 		};
 /* End PBXProject section */
@@ -81,6 +98,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\nWORKSPACE_DIR=${SRCROOT}/../CartrawlerSDK.xcworkspace\nARTIFACTS_DIR=${SRCROOT}/../../../Artifacts_Latest\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildAPI\nswift Integrate.swift CartrawlerAPI BuildAPI ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildSDK\nswift Integrate.swift CartrawlerSDK BuildSDK ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildRental\nswift Integrate.swift CartrawlerRental BuildRental ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildInPath\nswift Integrate.swift CartrawlerInPath BuildInPath ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n";
 		};
+		45BA0F6D1E1FA2A200EB26ED /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildAPI\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildSDK\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildRental\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildInPath\n\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
@@ -93,6 +123,22 @@
 			name = Debug;
 		};
 		4539561E1E1EA2EE00B66350 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		45BA0F6A1E1FA29F00EB26ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45BA0F6B1E1FA29F00EB26ED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
@@ -159,6 +205,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		45BA0F6C1E1FA29F00EB26ED /* Build configuration list for PBXAggregateTarget "Local Build All" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45BA0F6A1E1FA29F00EB26ED /* Debug */,
+				45BA0F6B1E1FA29F00EB26ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		45CB04821DEDD1600086BEA0 /* Build configuration list for PBXProject "CI" */ = {
 			isa = XCConfigurationList;

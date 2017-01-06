@@ -24,6 +24,7 @@
 		45154EFA1E07E09600FB32FA /* CartrawlerRental.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45154EF91E07E09600FB32FA /* CartrawlerRental.framework */; };
 		45A47DF51E0A912300500D71 /* CTSelectedVehicleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45A47DF31E0A912300500D71 /* CTSelectedVehicleView.h */; };
 		45A47DF61E0A912300500D71 /* CTSelectedVehicleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A47DF41E0A912300500D71 /* CTSelectedVehicleView.m */; };
+		45BA0F681E1FA27300EB26ED /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45BA0F671E1FA27300EB26ED /* strip-frameworks.sh */; };
 		45CFD44C1E0941B800A57849 /* CTNewBookingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFD44A1E0941B800A57849 /* CTNewBookingView.h */; };
 		45CFD44D1E0941B800A57849 /* CTNewBookingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFD44B1E0941B800A57849 /* CTNewBookingView.m */; };
 		45CFD44F1E09453100A57849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CFD44E1E09453100A57849 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		45154EF91E07E09600FB32FA /* CartrawlerRental.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerRental.framework; path = "../../../Library/Developer/Xcode/DerivedData/CartrawlerSDK-ggnkifmwdjtizbfixejavfojdsbe/Build/Products/Debug-iphonesimulator/CartrawlerRental.framework"; sourceTree = "<group>"; };
 		45A47DF31E0A912300500D71 /* CTSelectedVehicleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSelectedVehicleView.h; sourceTree = "<group>"; };
 		45A47DF41E0A912300500D71 /* CTSelectedVehicleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSelectedVehicleView.m; sourceTree = "<group>"; };
+		45BA0F671E1FA27300EB26ED /* strip-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "strip-frameworks.sh"; sourceTree = "<group>"; };
 		45CFD44A1E0941B800A57849 /* CTNewBookingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNewBookingView.h; sourceTree = "<group>"; };
 		45CFD44B1E0941B800A57849 /* CTNewBookingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTNewBookingView.m; sourceTree = "<group>"; };
 		45CFD44E1E09453100A57849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		45D133951E01997800D7816F /* CartrawlerInPath */ = {
 			isa = PBXGroup;
 			children = (
+				45BA0F671E1FA27300EB26ED /* strip-frameworks.sh */,
 				45CFD44E1E09453100A57849 /* Assets.xcassets */,
 				45CFD4491E09419400A57849 /* Views */,
 				45EC99AE1E02AA2100B76741 /* Public */,
@@ -278,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45BA0F681E1FA27300EB26ED /* strip-frameworks.sh in Resources */,
 				45CFD44F1E09453100A57849 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
