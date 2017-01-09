@@ -33,16 +33,17 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 120.0;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    __weak typeof(self) weakSelf = self;
-    [self.nextButton setText:@"Add a booking" didTap:^{
-        [weakSelf pushToDestination];
-    }];
+    [self.nextButton setText:@"Add a booking"];
 }
 
 - (IBAction)back:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (IBAction)newBooking:(id)sender {
+    [self pushToDestination];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {

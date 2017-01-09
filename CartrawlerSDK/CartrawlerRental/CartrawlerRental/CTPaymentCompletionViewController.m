@@ -37,9 +37,7 @@
 {
     [super viewDidLoad];
     __weak typeof (self) weakSelf = self;
-    [self.doneButton setText:@"Back to homepage" didTap:^{
-        [weakSelf done];
-    }];
+    [self.doneButton setText:@"Back to homepage"];
     self.scrollView.backgroundColor = [CTAppearance instance].viewBackgroundColor;
 }
 
@@ -69,8 +67,8 @@
 
 }
 
-- (void)done {
-    
+- (IBAction)done:(id)sender
+{
     [[CTImageCache sharedInstance] removeAllObjects];
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;

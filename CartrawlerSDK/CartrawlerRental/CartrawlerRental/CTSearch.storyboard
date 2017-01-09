@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Sui-XM-uDt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Sui-XM-uDt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -450,6 +450,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="w7l-cn-XAu"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="next:" destination="dn2-4f-MD7" eventType="touchUpInside" id="hGx-LS-6l4"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -974,6 +977,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="OTc-xg-jUn"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="continueTapped:" destination="rlh-pu-78Z" eventType="touchUpInside" id="Wma-mg-lA9"/>
+                                        </connections>
                                     </view>
                                     <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ft-To-hge" userLabel="Weekday">
                                         <rect key="frame" x="0.0" y="60" width="375" height="39"/>
@@ -1025,7 +1031,6 @@
                     <connections>
                         <outlet property="calendarTitleLabel" destination="7OM-zy-kYl" id="J5c-5p-JOs"/>
                         <outlet property="calendarView" destination="rUl-G5-QHc" id="Mi0-j0-Uso"/>
-                        <outlet property="continueButtonContainer" destination="Ki0-gd-zej" id="u4j-fU-5dm"/>
                         <outlet property="dropOffDateLabel" destination="jDV-do-69d" id="dax-KL-EZt"/>
                         <outlet property="headerTopSection" destination="lIJ-uF-TjO" id="T4o-4w-aJY"/>
                         <outlet property="nextButton" destination="Ki0-gd-zej" id="7Qs-EV-5OT"/>

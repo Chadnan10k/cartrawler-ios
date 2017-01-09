@@ -77,9 +77,7 @@
     [super viewDidLoad];
     
     __weak typeof(self) weakSelf = self;
-    [self.continueButton setText:NSLocalizedString(@"Continue", @"Continue") didTap:^{
-        [weakSelf continueTapped];
-    }];
+    [self.continueButton setText:NSLocalizedString(@"Continue", @"Continue")];
     
     _vehicleDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"VehicleDetails"];
     _supplierDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"SupplierDetails"];
@@ -104,12 +102,13 @@
     }
 }
 
-- (IBAction)back:(id)sender {
+- (IBAction)back:(id)sender
+{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)continueTapped {
-    
+- (IBAction)continueTapped:(id)sender
+{
     [self.activityView startAnimating];
     self.continueButton.userInteractionEnabled = NO;
     [self pushToDestination];

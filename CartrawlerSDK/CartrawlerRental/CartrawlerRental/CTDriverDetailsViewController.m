@@ -31,10 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    __weak typeof(self) weakSelf = self;
-    [self.nextButton setText:NSLocalizedString(@"Continue", @"") didTap:^{
-        [weakSelf confirmDetails];
-    }];
+    [self.nextButton setText:NSLocalizedString(@"Continue", @"")];
 
     self.firstNameTextField.delegate = self;
     self.lastNameTextField.delegate = self;
@@ -120,7 +117,7 @@
 }
 
 
-- (void)confirmDetails
+- (IBAction)confirmDetails:(id)sender
 {
     
     self.search.firstName = self.firstNameTextField.text;

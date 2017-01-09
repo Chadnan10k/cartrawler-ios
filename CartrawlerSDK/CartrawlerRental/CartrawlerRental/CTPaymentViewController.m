@@ -54,9 +54,7 @@
     
     __weak typeof(self) weakSelf = self;
     NSString *buttonText = [NSString stringWithFormat:@"Book now for %@", [@(total) numberStringWithCurrencyCode]];
-    [self.confirmButton setText:buttonText didTap:^{
-        [weakSelf confirmPayment];
-    }];
+    [self.confirmButton setText:buttonText];
 
     self.backButton.enabled = YES;
     
@@ -142,7 +140,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)confirmPayment
+- (IBAction)confirmPayment:(id)sender
 {
     //[self enableControls:NO];
     [self.paymentView confirmPayment];

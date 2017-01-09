@@ -12,15 +12,12 @@
 
 @interface CTNextButton()
 
-@property (nonatomic) CTToolTipButtonTapped didTap;
-
 @end
 
 @implementation CTNextButton
 
-- (void)setText:(NSString *)text didTap:(CTToolTipButtonTapped)didTap
+- (void)setText:(NSString *)text
 {
-    _didTap = didTap;
     self.backgroundColor = [CTAppearance instance].buttonTextColor;
     CTButton *button = [CTButton new];
     button.titleLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:21];
@@ -40,9 +37,21 @@
                                                                    views:@{@"view" : button}]];
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    
+    return self;
+}
+
 - (void)tapped
 {
-    self.didTap();
+    [self sendActionsForControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)prepareForInterfaceBuilder
+{
+    [self setText:@"Sample"];
 }
 
 @end

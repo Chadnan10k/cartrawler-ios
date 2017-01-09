@@ -61,14 +61,10 @@
 
 - (void)viewDidLoad
 {
-    
+    __weak typeof(self) weakSelf = self;
     [super viewDidLoad];
-    __weak typeof (self) weakSelf = self;
-
-    [self.nextButton setText:NSLocalizedString(@"Search for cars", @"Search for cars") didTap:^{
-        weakSelf.search.vehicleAvailability = nil;
-        [weakSelf searchTapped];
-    }];
+    
+    [self.nextButton setText:NSLocalizedString(@"Search for cars", @"Search for cars")];
     
     [self.ageContainer addDoneButton];
     self.ageContainer.delegate = self;
@@ -246,6 +242,11 @@
            [self.view layoutIfNeeded];
        }];
     }
+}
+
+- (IBAction)next:(id)sender {
+    self.search.vehicleAvailability = nil;
+    [self searchTapped];
 }
 
 #pragma mark Calendar delegate

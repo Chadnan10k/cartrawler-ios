@@ -23,9 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     __weak typeof(self) weakSelf = self;
-    [self.nextButton setText:NSLocalizedString(@"Continue", @"") didTap:^{
-        [weakSelf pushToDestination];
-    }];
+    [self.nextButton setText:NSLocalizedString(@"Continue", @"")];
     // Do any additional setup after loading the view.
     self.tableView.allowsSelection = NO;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -54,6 +52,9 @@
     [self.tableView layoutIfNeeded];
 }
 
+- (IBAction)next:(id)sender {
+    [self pushToDestination];
+}
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
