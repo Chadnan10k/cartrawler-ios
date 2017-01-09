@@ -92,11 +92,8 @@
        @"     \"GeoRadius\": 5, \r"
        @"     \"Window\": { \r"
        @"         \"@name\": \"iOS Engine\", \r"
-       @"         \"@engine\": \"CTABE-V5.2\", \r"
-       @"         \"@region\": \"en\",  \r"
-       @"         \"@svn\": \"5.2.43-01\" \r"
-       @"      }, \r"
-       @"     \"RefID\": {} \r"
+       @"         \"@engine\": \"CTABE-V5.2\" \r"
+       @"      } \r"
        @" }} \r";
     
     return tpa;

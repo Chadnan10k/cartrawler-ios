@@ -25,7 +25,6 @@
     _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:NO];
     _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
     self.rental.delegate = self;
-
 }
 
 - (IBAction)openCarRental:(id)sender {

@@ -23,9 +23,6 @@
 
 @implementation CTLocationSearchViewController
 
-
-
-
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
@@ -34,6 +31,7 @@
     self.headerView.backgroundColor = [CTAppearance instance].navigationBarColor;
     
     _dataSource = [[CTLocationSearchDataSource alloc] init];
+    self.dataSource.cartrawlerAPI = self.cartrawlerAPI;
     self.dataSource.enableGroundTransportLocations = self.enableGroundTransportLocations;
     self.dataSource.invertData = self.invertData;
     

@@ -39,10 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    __weak typeof(self) weakSelf = self;
-    [self.nextButton setText:NSLocalizedString(@"Continue", @"Continue") didTap:^{
-        [weakSelf continueToPayment];
-    }];
+    [self.nextButton setText:NSLocalizedString(@"Continue", @"Continue")];
     self.addressLine1TextField.delegate = self;
     self.addressLine2TextField.delegate = self;
     self.cityTextField.delegate = self;
@@ -118,9 +115,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)continueToPayment
+- (IBAction)continueToPayment:(id)sender
 {
-    
     BOOL validated = YES;
     
     if ([self.addressLine1TextField.text isEqualToString: @""]) {

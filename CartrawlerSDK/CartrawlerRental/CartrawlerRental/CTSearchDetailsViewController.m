@@ -61,14 +61,10 @@
 
 - (void)viewDidLoad
 {
-    
+    __weak typeof(self) weakSelf = self;
     [super viewDidLoad];
-    __weak typeof (self) weakSelf = self;
-
-    [self.nextButton setText:NSLocalizedString(@"Search for cars", @"Search for cars") didTap:^{
-        weakSelf.search.vehicleAvailability = nil;
-        [weakSelf searchTapped];
-    }];
+    
+    [self.nextButton setText:NSLocalizedString(@"Search for cars", @"Search for cars")];
     
     [self.ageContainer addDoneButton];
     self.ageContainer.delegate = self;
@@ -77,6 +73,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
     
     _locSearchVC = (CTLocationSearchViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalLocationSearchViewIdentifier];
+    self.locSearchVC.cartrawlerAPI = self.cartrawlerAPI;
     self.locSearchVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
     
     _calendar = [storyboard instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];
@@ -94,75 +91,13 @@
     _isReturningSameLocation = YES;
     
     self.pickupView.placeholder = @"Pick-up location";
-    self.pickupView.viewTapped = ^{
-        
-        [weakSelf.view endEditing:YES];
-        _activeView = self.pickupView;
-
-        [weakSelf presentViewController:weakSelf.locSearchVC animated:YES completion:nil];
-        
-        weakSelf.locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
-            [weakSelf.pickupView setTextFieldText:location.name];
-            weakSelf.search.pickupLocation = location;
-            
-            if (weakSelf.isReturningSameLocation || weakSelf.search.dropoffLocation == nil) {
-                weakSelf.search.dropoffLocation = location;
-            }
-        };
-    };
-    
     self.dropoffView.placeholder = @"Drop-off location";
-    self.dropoffView.viewTapped = ^{
-        
-        [weakSelf.view endEditing:YES];
-        
-        _activeView = self.pickupView;
-        [weakSelf presentViewController:weakSelf.locSearchVC animated:YES completion:nil];
-
-        weakSelf.locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
-            [weakSelf.dropoffView setTextFieldText:location.name];
-            (weakSelf.search).dropoffLocation = location;
-        };
-    };
-
     _activeView = self.pickupView;
-    
     self.pickupTimeView.placeholder = @"Pick-up time";
     [self.pickupTimeView setTextFieldText:[self.pickupTime simpleTimeString]];
-
-    self.pickupTimeView.viewTapped = ^{
-        
-        [weakSelf.view endEditing:YES];
-        
-        _activeView = self.pickupTimeView;
-        [weakSelf.pickupTimePicker present];
-        [weakSelf.dropoffTimePicker hide];
-        weakSelf.pickupTimePicker.timeSelection = ^(NSDate *date){
-            _pickupTime = date;
-            [weakSelf.pickupTimeView setTextFieldText:[date simpleTimeString]];
-        };
-    };
-    
     self.dropoffTimeView.placeholder = @"Drop-off time";
     [self.dropoffTimeView setTextFieldText:[self.dropoffTime simpleTimeString]];
-    self.dropoffTimeView.viewTapped = ^{
-        
-        [weakSelf.view endEditing:YES];
-        
-        _activeView = weakSelf.dropoffTimeView;
-        [weakSelf.dropoffTimePicker present];
-        [weakSelf.pickupTimePicker hide];
-        weakSelf.dropoffTimePicker.timeSelection = ^(NSDate *date){
-            _dropoffTime = date;
-            [weakSelf.dropoffTimeView setTextFieldText:[date simpleTimeString]];
-        };
-    };
-    
     self.calendarView.placeholder = @"Select dates";
-    self.calendarView.viewTapped = ^{
-        _activeView = self.calendarView;
-        [weakSelf presentViewController:weakSelf.calendar animated:YES completion:nil];
-    };
 
     self.dropoffLocTopConstraint.constant = kDropoffLocationClosed;
     self.dropoffView.alpha = 0;
@@ -203,6 +138,65 @@
     }
     
     [self.calendar reset];
+}
+
+- (IBAction)pickupTapped:(id)sender
+{
+    [self.view endEditing:YES];
+    _activeView = self.pickupView;
+    __weak typeof(self) weakSelf = self;
+    [self presentViewController:self.locSearchVC animated:YES completion:nil];
+    self.locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location) {
+        [weakSelf.pickupView setTextFieldText:location.name];
+        weakSelf.search.pickupLocation = location;
+        if (weakSelf.isReturningSameLocation || weakSelf.search.dropoffLocation == nil) {
+            weakSelf.search.dropoffLocation = location;
+        }
+    };
+}
+
+- (IBAction)dropoffTapped:(id)sender
+{
+    [self.view endEditing:YES];
+    _activeView = self.pickupView;
+    [self presentViewController:self.locSearchVC animated:YES completion:nil];
+    __weak typeof(self) weakSelf = self;
+    self.locSearchVC.selectedLocation = ^(__weak CTMatchedLocation *location){
+        [weakSelf.dropoffView setTextFieldText:location.name];
+        (weakSelf.search).dropoffLocation = location;
+    };
+}
+
+- (IBAction)pickupTimeTapped:(id)sender
+{
+    [self.view endEditing:YES];
+    _activeView = self.pickupTimeView;
+    [self.pickupTimePicker present];
+    [self.dropoffTimePicker hide];
+    __weak typeof(self) weakSelf = self;
+    self.pickupTimePicker.timeSelection = ^(NSDate *date){
+        _pickupTime = date;
+        [weakSelf.pickupTimeView setTextFieldText:[date simpleTimeString]];
+    };
+}
+
+- (IBAction)dropoffTimeTapped:(id)sender
+{
+    [self.view endEditing:YES];
+    _activeView = self.dropoffTimeView;
+    [self.dropoffTimePicker present];
+    [self.pickupTimePicker hide];
+    __weak typeof(self) weakSelf = self;
+    self.dropoffTimePicker.timeSelection = ^(NSDate *date){
+        _dropoffTime = date;
+        [weakSelf.dropoffTimeView setTextFieldText:[date simpleTimeString]];
+    };
+}
+
+- (IBAction)calendarTapped:(id)sender
+{
+    _activeView = self.calendarView;
+    [self presentViewController:self.calendar animated:YES completion:nil];
 }
 
 - (IBAction)sameLocation:(id)sender {
@@ -246,6 +240,11 @@
            [self.view layoutIfNeeded];
        }];
     }
+}
+
+- (IBAction)next:(id)sender {
+    self.search.vehicleAvailability = nil;
+    [self searchTapped];
 }
 
 #pragma mark Calendar delegate

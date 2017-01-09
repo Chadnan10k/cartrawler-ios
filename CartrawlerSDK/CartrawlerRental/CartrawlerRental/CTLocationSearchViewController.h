@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTMatchedLocation.h>
+#import <CartrawlerAPI/CartrawlerAPI.h>
 
 @interface CTLocationSearchViewController : UIViewController
 
 typedef void (^SelectedLocationCompletion)(CTMatchedLocation *location);
 
 @property (nonatomic, strong) SelectedLocationCompletion selectedLocation;
+@property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
 @property (nonatomic) BOOL enableGroundTransportLocations;
 @property (nonatomic) BOOL invertData;

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTMatchedLocation.h>
+#import <CartrawlerAPI/CartrawlerAPI.h>
 
 @interface CTLocationSearchDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
@@ -20,5 +21,6 @@ typedef void (^SelectedLocationCompletion)(CTMatchedLocation *location);
 
 @property (nonatomic) BOOL enableGroundTransportLocations;
 @property (nonatomic) BOOL invertData;
+@property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "CTLocationSearchDataSource.h"
-#import <CartrawlerAPI/CartrawlerAPI.h>
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import "CTLocationSearchTableViewCell.h"
@@ -16,34 +15,23 @@
 @interface CTLocationSearchDataSource()
 @property (nonatomic, strong) NSMutableArray <CTMatchedLocation *> *airportLocations;
 @property (nonatomic, strong) NSMutableArray <CTMatchedLocation *> *otherLocations;
-@property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
 @end
 
 @implementation CTLocationSearchDataSource
 
-
-
-
 - (id)init
 {
     self = [super init];
-    
     _airportLocations = [[NSMutableArray alloc] init];
     _otherLocations = [[NSMutableArray alloc] init];
-    
-    _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
-                                                     language:[CTSDKSettings instance].languageCode
-                                                        debug:[CTSDKSettings instance].isDebug];
     [self.cartrawlerAPI enableLogging:NO];
     return self;
 }
 
 - (void)updateData:(NSString *)partialText completion:(void (^)(BOOL didSucceed))completion
 {
-    
     __weak typeof (self) weakSelf = self;
-    
     _airportLocations = [[NSMutableArray alloc] init];
     _otherLocations = [[NSMutableArray alloc] init];
     completion(YES);//clear the view of any current results

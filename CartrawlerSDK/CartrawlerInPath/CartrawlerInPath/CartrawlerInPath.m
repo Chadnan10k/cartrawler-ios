@@ -191,7 +191,7 @@
     
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
                                                                  ascending:YES];
-    if (self.defaultSearch) {
+    if (self.defaultSearch.vehicleAvailability) {
         CTAvailabilityItem *cheapestvehicle = ((CTAvailabilityItem *)[self.defaultSearch.vehicleAvailability.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
         if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
             dispatch_async(dispatch_get_main_queue(), ^{

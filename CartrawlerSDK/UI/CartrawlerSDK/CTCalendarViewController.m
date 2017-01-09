@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet CTView *summaryContainerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *weekDayTopSpace;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewBottomSpace;
-@property (weak, nonatomic) IBOutlet CTView *continueButtonContainer;
+
 @property (weak, nonatomic) IBOutlet CTLabel *pickupTitleLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *returnTitleLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *calendarTitleLabel;
@@ -57,9 +57,7 @@
     [super viewDidLoad];
     
     __weak typeof (self) weakSelf = self;
-    [self.nextButton setText:NSLocalizedString(@"Continue", @"Calander Continue") didTap:^{
-        [weakSelf closeTapped];
-    }];
+    [self.nextButton setText:NSLocalizedString(@"Continue", @"Calander Continue")];
 
     [self showCloseButton:NO];
     
@@ -121,7 +119,7 @@
     }
 
     [UIView animateWithDuration:0.3 animations:^{
-        self.continueButtonContainer.alpha = show;
+        self.nextButton.alpha = show;
     }];
 }
 
@@ -162,7 +160,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)closeTapped {
+- (IBAction)continueTapped:(id)sender {
     if (self.delegate) {
         [self.delegate didPickDates:self.pickupDate dropoffDate:self.dropoffDate];
     }

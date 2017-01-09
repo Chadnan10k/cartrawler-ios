@@ -21,14 +21,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    __weak typeof(self) weakSelf = self;
-    [self.continueButton setText:@"Continue" didTap:^{
-        if (!weakSelf.destinationViewController) {
-            [weakSelf dismiss];
-        } else {
-            [weakSelf pushToDestination];
-        }
-    }];
+    [self.continueButton setText:@"Continue"];
+}
+
+- (IBAction)next:(id)sender {
+    if (!self.destinationViewController) {
+        [self dismiss];
+    } else {
+        [self pushToDestination];
+    }
 }
 
 - (IBAction)back:(id)sender {

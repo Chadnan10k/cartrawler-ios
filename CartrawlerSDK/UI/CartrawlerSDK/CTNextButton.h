@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CTNextButton : UIView
+IB_DESIGNABLE
+@interface CTNextButton : UIControl
 
-typedef void (^CTToolTipButtonTapped)(void);
-
-- (void)setText:(NSString *)text didTap:(CTToolTipButtonTapped)didTap;
+- (void)setText:(NSString *)text;
 
 @end
