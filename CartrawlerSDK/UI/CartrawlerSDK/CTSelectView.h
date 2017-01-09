@@ -11,18 +11,11 @@
 #import "CTDesignableView.h"
 
 IB_DESIGNABLE
-@interface CTSelectView : CTDesignableView
-
-
-
-typedef void (^CTSelectionCompletion)(void);
-
-@property (nonatomic, strong) CTSelectionCompletion viewTapped;
+@interface CTSelectView : UIControl
 
 @property (nonatomic, strong) NSString *placeholder;
 
 - (void)setTextFieldText:(NSString *)text;
-
 - (void)shakeAnimation;
 
 @end

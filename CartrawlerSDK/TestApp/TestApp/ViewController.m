@@ -22,10 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad]; //643826 ryr desktop 642619 ryr mobile
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:YES];
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:NO];
     _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
     self.rental.delegate = self;
-
 }
 
 - (IBAction)openCarRental:(id)sender {

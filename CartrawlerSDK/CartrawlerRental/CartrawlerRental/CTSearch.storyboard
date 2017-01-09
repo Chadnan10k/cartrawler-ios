@@ -160,17 +160,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="trQ-Lw-M8k"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.83481687307357788" green="0.83495765924453735" blue="0.83479827642440796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="pickupTapped:" destination="dn2-4f-MD7" eventType="touchUpInside" id="8UI-0e-Nds"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXn-mb-0jv" customClass="CTSelectView">
                                                 <rect key="frame" x="8" y="96" width="584" height="64"/>
@@ -178,17 +170,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="FVP-Tz-9TM"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.83481687307357788" green="0.83495765924453735" blue="0.83479827642440796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="dropoffTapped:" destination="dn2-4f-MD7" eventType="touchUpInside" id="KKL-Cw-IMj"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhq-oE-HlI" customClass="CTSelectView">
                                                 <rect key="frame" x="8" y="223" width="584" height="64"/>
@@ -196,17 +180,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="tGU-cq-UwZ"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.83481687307357788" green="0.83495765924453735" blue="0.83479827642440796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="calendarTapped:" destination="dn2-4f-MD7" eventType="touchUpInside" id="kqH-rg-3KU"/>
+                                                </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Return to the same location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9xf-tF-qLx" customClass="CTLabel">
                                                 <rect key="frame" x="8" y="181" width="527" height="21"/>
@@ -223,17 +199,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="kGG-zB-X9o"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.83481687307357788" green="0.83495765924453735" blue="0.83479827642440796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="pickupTimeTapped:" destination="dn2-4f-MD7" eventType="touchUpInside" id="vDz-xc-j0w"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbs-n2-6eR">
                                                 <rect key="frame" x="298" y="303" width="5" height="56"/>
@@ -249,17 +217,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="bkh-Km-u9a"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.83481687307357788" green="0.83495765924453735" blue="0.83479827642440796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="dropoffTimeTapped:" destination="dn2-4f-MD7" eventType="touchUpInside" id="KA0-i7-JPX"/>
+                                                </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driver aged between 25 and 70" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="G6C-1A-p1I" customClass="CTLabel">
                                                 <rect key="frame" x="8" y="389" width="527" height="21"/>
@@ -280,7 +240,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.83481687307357788" green="0.83495765924453735" blue="0.83479827642440796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" red="0.83529411764705885" green="0.83529411764705885" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                         <real key="value" value="1"/>

@@ -282,7 +282,7 @@
                                     <constraint firstAttribute="height" constant="90" id="cPS-yd-ha3"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="confirmPayment:" destination="v32-36-Voc" eventType="valueChanged" id="maS-bz-Inh"/>
+                                    <action selector="confirmPayment:" destination="v32-36-Voc" eventType="touchUpInside" id="3RZ-x0-d0r"/>
                                 </connections>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNO-Hn-L6b">
