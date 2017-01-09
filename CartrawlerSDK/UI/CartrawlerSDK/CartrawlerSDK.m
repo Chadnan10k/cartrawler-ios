@@ -44,7 +44,7 @@
                                   destination:(nullable CTViewController *)destination
                                      fallback:(nullable CTViewController *)fallback
                                 optionalRoute:(nullable CTViewController *)optionalRoute
-                                       search:(nonnull id<NSObject>)search
+                                       search:(CTRentalSearch *)search
                                        target:(id)target
 {
     viewController.destinationViewController = destination;

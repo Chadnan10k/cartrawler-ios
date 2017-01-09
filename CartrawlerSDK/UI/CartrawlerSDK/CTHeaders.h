@@ -46,7 +46,6 @@
 #import "CTSelectView.h"
 #import "CTStepper.h"
 #import "CTPickerView.h"
-#import "CTTagManager.h"
 #import "CTTextView.h"
 #import "CTTimePickerView.h"
 #import "CTToolTip.h"
