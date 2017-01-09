@@ -36,7 +36,13 @@ static const NSString *CTTagEndpoint = @"";
     
 }
 
-+ (void)tagError
++ (void)tagError:(nonnull NSString *)version
+            step:(nonnull NSString *)step
+           event:(nonnull NSString *)event
+         message:(nonnull NSString *)message
+    engineLoadID:(nonnull NSString *)engineLoadID
+        clientId:(nonnull NSString *)clientId
+          target:(nonnull NSString *)target
 {
     //test
     CTErrorTag *errorTag = [[CTErrorTag alloc] init:@"2.0.3"
