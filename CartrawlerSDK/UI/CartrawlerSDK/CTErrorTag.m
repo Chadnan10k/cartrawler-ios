@@ -10,7 +10,7 @@
 
 @implementation CTErrorTag
 
-static const NSString *CTErrorTaggingEndpoint = @"https://ct-errs.cartrawler.com/molog";
+static const NSString *CTErrorTaggingEndpoint = @"https://ct-errs.cartrawler.com/v5log";
 
 /*
 https://ct-errs.cartrawler.com/
@@ -41,13 +41,16 @@ https://ct-errs.cartrawler.com/
 
 - (NSURL *)produceURL
 {
+    NSString *escapedStep = [self.step stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    NSString *escapedEvent = [self.event stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    NSString *escapedMessage = [self.message stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     NSString *url = [NSString stringWithFormat:@"%@?app=MO&ver=%@&lvl=%@&dv=iOS&action=%@&subAction=%@&desc=%@&elID=%@&clientID=%@&target=%@",
                      CTErrorTaggingEndpoint,
                      self.version,
                      [self levelString:self.level],
-                     self.step,
-                     self.event,
-                     self.message,
+                     escapedStep,
+                     escapedEvent,
+                     escapedMessage,
                      self.engineLoadID,
                      self.clientId,
                      self.target];

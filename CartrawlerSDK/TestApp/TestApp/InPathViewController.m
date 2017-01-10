@@ -30,7 +30,7 @@
     
     _inPath = [[CartrawlerInPath alloc] initWithCartrawlerRental:self.rental
                                                         IATACode:@"ALC"
-                                                      pickupDate:[NSDate dateWithTimeIntervalSinceNow:48000]
+                                                      pickupDate:[NSDate dateWithTimeIntervalSinceNow:56000]
                                                       returnDate:nil
                                                      userDetails:userDetails];
     self.inPath.delegate = self;

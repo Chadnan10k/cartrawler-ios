@@ -9,13 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "CTVendor.h"
 #import "CTVehicle.h"
+#import "CTEngineInfo.h"
 
 @interface CTAvailabilityItem : NSObject
 
 @property (nonatomic, readonly) CTVendor *vendor;
 @property (nonatomic, readonly) CTVehicle *vehicle;
+@property (nonatomic, readonly) CTEngineInfo *engineInfo;
 
-- (id)initWithVendor:(CTVendor *)vendor
-             vehicle:(CTVehicle *)vehicle;
+- (instancetype)initWithVendor:(CTVendor *)vendor
+                       vehicle:(CTVehicle *)vehicle
+                    engineInfo:(CTEngineInfo *)engineInfo;
 
 @end

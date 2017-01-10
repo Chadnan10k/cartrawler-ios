@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CTRentalSearch.h"
 #import <CartrawlerAPI/CartrawlerAPI.h>
+#import "CTAnalytics.h"
 
 @interface CTValidation : NSObject
 typedef void (^CTSearchValidationCompletion)(BOOL success, NSString *errorMessage, BOOL useOptionalRoute);

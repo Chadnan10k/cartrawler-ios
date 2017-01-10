@@ -104,6 +104,8 @@
 		455B58221DCC8D9500CA4790 /* CTGroundItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B264FF1D92A8B3000005F2 /* CTGroundItem.m */; };
 		455B58251DCC903600CA4790 /* CartrawlerAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 45916DC71CBBDAEE00389B88 /* CartrawlerAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45D386081DD62277000F02D1 /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45D386071DD62277000F02D1 /* strip-frameworks.sh */; };
+		BC9F6E551E254289006DD990 /* CTEngineInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = BC9F6E531E254289006DD990 /* CTEngineInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC9F6E561E254289006DD990 /* CTEngineInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F6E541E254289006DD990 /* CTEngineInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -205,6 +207,8 @@
 		45FCA08D1CBFDB980079AA68 /* CTVehicleAvailability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleAvailability.m; sourceTree = "<group>"; };
 		45FCA0981CBFE4890079AA68 /* CTInsurance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInsurance.h; sourceTree = "<group>"; };
 		45FCA0991CBFE4890079AA68 /* CTInsurance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsurance.m; sourceTree = "<group>"; };
+		BC9F6E531E254289006DD990 /* CTEngineInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTEngineInfo.h; sourceTree = "<group>"; };
+		BC9F6E541E254289006DD990 /* CTEngineInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTEngineInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,6 +364,8 @@
 		45FBACBE1D67458700C75FC9 /* Vehicle avail */ = {
 			isa = PBXGroup;
 			children = (
+				BC9F6E531E254289006DD990 /* CTEngineInfo.h */,
+				BC9F6E541E254289006DD990 /* CTEngineInfo.m */,
 				45E3F9C51CEDB9BC000D2219 /* CTVendorRating.h */,
 				45E3F9C61CEDB9BC000D2219 /* CTVendorRating.m */,
 				45FCA0801CBFDB980079AA68 /* CTExtraEquipment.h */,
@@ -471,6 +477,7 @@
 				455B58071DCC8D9500CA4790 /* CTPaymentCard.h in Headers */,
 				455B58091DCC8D9500CA4790 /* CTBooking.h in Headers */,
 				455B580B1DCC8D9500CA4790 /* CTErrorResponse.h in Headers */,
+				BC9F6E551E254289006DD990 /* CTEngineInfo.h in Headers */,
 				455B580D1DCC8D9500CA4790 /* CTInsurance.h in Headers */,
 				455B580F1DCC8D9500CA4790 /* CTInsuranceSelectorItem.h in Headers */,
 				455B58111DCC8D9500CA4790 /* CTInsuranceLink.h in Headers */,
@@ -589,6 +596,7 @@
 				455B57D41DCC8D9500CA4790 /* CartrawlerAPI+NSDate.m in Sources */,
 				455B57D61DCC8D9500CA4790 /* CTRequestBuilder.m in Sources */,
 				455B57D81DCC8D9500CA4790 /* CTConstants.m in Sources */,
+				BC9F6E561E254289006DD990 /* CTEngineInfo.m in Sources */,
 				455B57DA1DCC8D9500CA4790 /* CartrawlerAPI+NSURL.m in Sources */,
 				455B57DC1DCC8D9500CA4790 /* CTNetworkUtils.m in Sources */,
 				455B57DE1DCC8D9500CA4790 /* CTPostRequest.m in Sources */,

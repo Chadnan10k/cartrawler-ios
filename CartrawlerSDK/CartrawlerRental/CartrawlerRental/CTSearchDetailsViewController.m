@@ -112,6 +112,8 @@
 {
     [super viewWillAppear:animated];
     
+    [CTAnalytics tagScreen:@"searchcars" detail:@"0.123" step:@1];
+    
     [self.scrollView setContentOffset:
      CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
     

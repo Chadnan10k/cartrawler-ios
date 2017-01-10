@@ -149,8 +149,9 @@
 		BC1379E91E23E4E400B1F727 /* CTAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1379E41E23E4E400B1F727 /* CTAnalytics.m */; };
 		BC1379EB1E23E4E400B1F727 /* CTTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1379E61E23E4E400B1F727 /* CTTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC1379EC1E23E4E400B1F727 /* CTTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1379E71E23E4E400B1F727 /* CTTag.m */; };
-		BC1379EF1E23E8E700B1F727 /* CTErrorTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */; };
+		BC1379EF1E23E8E700B1F727 /* CTErrorTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC1379F01E23E8E700B1F727 /* CTErrorTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1379EE1E23E8E700B1F727 /* CTErrorTag.m */; };
+		BC9F6E521E24EF91006DD990 /* CTAnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,6 +300,7 @@
 		BC1379E71E23E4E400B1F727 /* CTTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTag.m; sourceTree = "<group>"; };
 		BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTErrorTag.h; sourceTree = "<group>"; };
 		BC1379EE1E23E8E700B1F727 /* CTErrorTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTErrorTag.m; sourceTree = "<group>"; };
+		BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -692,6 +694,7 @@
 			children = (
 				45F5D7691DEF00C3005AE1AD /* CartrawlerSDKTests.m */,
 				45F5D76B1DEF00C3005AE1AD /* Info.plist */,
+				BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */,
 			);
 			path = CartrawlerSDKTests;
 			sourceTree = "<group>";
@@ -726,6 +729,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC1379E81E23E4E400B1F727 /* CTAnalytics.h in Headers */,
+				BC1379EF1E23E8E700B1F727 /* CTErrorTag.h in Headers */,
 				455B58741DCC914300CA4790 /* CTLabel.h in Headers */,
 				BC1379EB1E23E4E400B1F727 /* CTTag.h in Headers */,
 				451E763A1E04438300D58F71 /* CTRentalBooking.h in Headers */,
@@ -748,7 +752,6 @@
 				455B58501DCC914300CA4790 /* CTStepper.h in Headers */,
 				455B58541DCC914300CA4790 /* CTSegmentedControl.h in Headers */,
 				455B58561DCC914300CA4790 /* CTPickerView.h in Headers */,
-				BC1379EF1E23E8E700B1F727 /* CTErrorTag.h in Headers */,
 				455B58581DCC914300CA4790 /* CTTextView.h in Headers */,
 				455B585A1DCC914300CA4790 /* CTPlaceholderView.h in Headers */,
 				455B585C1DCC914300CA4790 /* CTView.h in Headers */,
@@ -987,6 +990,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45F5D76A1DEF00C3005AE1AD /* CartrawlerSDKTests.m in Sources */,
+				BC9F6E521E24EF91006DD990 /* CTAnalyticsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

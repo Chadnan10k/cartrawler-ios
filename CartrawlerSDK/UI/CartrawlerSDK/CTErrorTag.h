@@ -32,7 +32,8 @@ typedef NS_ENUM(NSUInteger, CTErrorLevel) {
 @property (nonatomic, strong) NSString *engineLoadID;
 @property (nonatomic, strong) NSString *clientId;
 @property (nonatomic, strong) NSString *target;
-
 @property (nonatomic) CTErrorLevel level;
+
+- (NSURL *)produceURL;
 
 @end

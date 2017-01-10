@@ -46,7 +46,7 @@
         return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.cartrawler.com/\",\"@Version\": \"1.000\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, clientID];
         
     } else if ([callType isEqualToString:CTLocationGTSearchHeader]) {
-        return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.cartrawler.com/\",\"@Version\": \"1.000\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"@ERSP_UserID\" : \"MP\", \"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, clientID];
+        return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.cartrawler.com/\",\"@Version\": \"1.000\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"@ERSP_UserID\" : \"MO\", \"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, clientID];
         
     } else {
         return @"";
@@ -55,7 +55,7 @@
 
 + (NSString *)currencyHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency
 {
-    return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.002\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"@ERSP_UserID\": \"MP\", \"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
+    return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.002\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"@ERSP_UserID\": \"MO\", \"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
 }
 
 + (NSString *)groundTransportHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency country:(NSString *)country
@@ -91,8 +91,8 @@
        @"     \"showBaseCost\": true, \r"
        @"     \"GeoRadius\": 5, \r"
        @"     \"Window\": { \r"
-       @"         \"@name\": \"iOS Engine\", \r"
-       @"         \"@engine\": \"CTABE-V5.2\" \r"
+       @"         \"@name\": \"IOS-V3\", \r"
+       @"         \"@engine\": \"IOS-V3\" \r"
        @"      } \r"
        @" }} \r";
     

@@ -23,6 +23,10 @@
 
 @property (nonatomic, strong) NSString *target;
 
+@property (nonatomic, strong, readonly) NSString *version;
+
+@property (nonatomic, strong) NSString *engineLoadID;
+
 @property (nonatomic) BOOL isDebug;
 
 + (instancetype)instance;

@@ -409,18 +409,18 @@
 		451E740A1E0429D000D58F71 /* View Manager */ = {
 			isa = PBXGroup;
 			children = (
+				451E75F61E042FE800D58F71 /* CTSearchValidation.h */,
+				451E75FB1E042FE800D58F71 /* CTSearchValidation.m */,
+				451E75F21E042FE800D58F71 /* CTGenericValidation.h */,
+				451E75F81E042FE800D58F71 /* CTGenericValidation.m */,
 				451E75F01E042FE800D58F71 /* CTBookingCompletionValidation.h */,
 				451E75FD1E042FE800D58F71 /* CTBookingCompletionValidation.m */,
 				451E75F51E042FE800D58F71 /* CTDriverDetailsValidation.h */,
 				451E75F91E042FE800D58F71 /* CTDriverDetailsValidation.m */,
 				451E75F41E042FE800D58F71 /* CTBasketValidation.h */,
 				451E75F11E042FE800D58F71 /* CTBasketValidation.m */,
-				451E75F21E042FE800D58F71 /* CTGenericValidation.h */,
-				451E75F81E042FE800D58F71 /* CTGenericValidation.m */,
 				451E75F31E042FE800D58F71 /* CTPaymentValidation.h */,
 				451E75FC1E042FE800D58F71 /* CTPaymentValidation.m */,
-				451E75F61E042FE800D58F71 /* CTSearchValidation.h */,
-				451E75FB1E042FE800D58F71 /* CTSearchValidation.m */,
 				451E75F71E042FE800D58F71 /* CTInsuranceValidation.h */,
 				451E75FA1E042FE800D58F71 /* CTInsuranceValidation.m */,
 			);

@@ -11,13 +11,15 @@
 @implementation CTAvailabilityItem
 
 
-- (id)initWithVendor:(CTVendor *)vendor
-             vehicle:(CTVehicle *)vehicle
+- (instancetype)initWithVendor:(CTVendor *)vendor
+                       vehicle:(CTVehicle *)vehicle
+                    engineInfo:(CTEngineInfo *)engineInfo
 {
     self = [super init];
     
     _vendor = vendor;
     _vehicle = vehicle;
+    _engineInfo = engineInfo;
     
     return self;
 }

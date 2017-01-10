@@ -8,6 +8,7 @@
 
 #import "CTViewController.h"
 #import "CTDataStore.h"
+#import "CTAnalytics.h"
 
 @interface CTViewController ()
 

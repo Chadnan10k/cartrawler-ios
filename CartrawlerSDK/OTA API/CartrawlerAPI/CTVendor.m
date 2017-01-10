@@ -12,7 +12,6 @@
 - (instancetype)initWithVendorInfo:(NSDictionary *)vendorInfo
 {
     self = [super init];
-    
     _code     = vendorInfo[@"Vendor"][@"@Code"];
     _name     = vendorInfo[@"Vendor"][@"@CompanyShortName"];
     _division = vendorInfo[@"Vendor"][@"@Division"];
