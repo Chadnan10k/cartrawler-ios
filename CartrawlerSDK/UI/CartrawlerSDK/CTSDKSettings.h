@@ -26,6 +26,8 @@
 @property (nonatomic, strong, readonly) NSString *version;
 
 @property (nonatomic, strong) NSString *engineLoadID;
+@property (nonatomic, strong) NSString *queryID;
+@property (nonatomic, strong) NSString *customerID;
 
 @property (nonatomic) BOOL isDebug;
 

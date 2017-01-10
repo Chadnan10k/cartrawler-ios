@@ -13,19 +13,22 @@
 
 @implementation CTAnalytics
 
-static const NSString *CTTagEndpoint = @"";
-
 + (void)tagScreen:(nonnull NSString *)name
            detail:(nonnull NSString *)detail
              step:(nonnull NSNumber *)step
 {
+    
+    double time = [[NSDate date] timeIntervalSince1970];
+    NSNumberFormatter *nf = [NSNumberFormatter new];
+    NSString *timeString = [nf stringFromNumber:[NSNumber numberWithDouble:time]];
+    
     CTTag *tag = [[CTTag alloc] init:name
                               detail:detail
                            container:@0
-                           timestamp:@"1233455"
-                        engineLoadID:@"1234567"
-                          customerID:@"1233455"
-                             queryID:@"1234566"
+                           timestamp:timeString
+                        engineLoadID:[CTSDKSettings instance].engineLoadID ?: @""
+                          customerID:[CTSDKSettings instance].customerID ?: @""
+                             queryID:[CTSDKSettings instance].queryID ?: @""
                                 step:step];
     
     [self fireTag:tag.toDictionary];
@@ -65,7 +68,7 @@ static const NSString *CTTagEndpoint = @"";
                                   ^(NSData *data, NSURLResponse *response, NSError *error) {
                                       if (error) {
                                           NSLog(@"CartrawlerSDK: Can't push tag");
-                                      }
+                                      } 
                                   }];
     [task resume];
     [session finishTasksAndInvalidate];

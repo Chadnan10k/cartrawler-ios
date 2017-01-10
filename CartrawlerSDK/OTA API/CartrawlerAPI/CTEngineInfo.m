@@ -13,10 +13,10 @@
 - (instancetype)initFromDictionary:(NSDictionary *)dict
 {
     self = [super init];
-    
-    _uniqueID = dict[@"@uniqueID"];
-    _engineLoadID = dict[@"@engineLoadID"];
-    _queryID = dict[@"@queryID"];
+    NSLog(@"%@", dict[@"TPA_Extensions"]);
+    _uniqueID = dict[@"TPA_Extensions"][@"BookEngine"][@"@uniqueID"];
+    _engineLoadID = dict[@"TPA_Extensions"][@"BookEngine"][@"@engineLoadID"];
+    _queryID = dict[@"TPA_Extensions"][@"BookEngine"][@"@queryID"];
 
     return self;
 }
