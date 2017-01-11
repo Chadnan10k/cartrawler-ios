@@ -53,7 +53,6 @@
     
     total += self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue;
     
-    __weak typeof(self) weakSelf = self;
     NSString *buttonText = [NSString stringWithFormat:@"Book now for %@", [@(total) numberStringWithCurrencyCode]];
     [self.confirmButton setText:buttonText];
 

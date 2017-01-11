@@ -36,7 +36,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    __weak typeof (self) weakSelf = self;
     [self.doneButton setText:@"Back to homepage"];
     self.scrollView.backgroundColor = [CTAppearance instance].viewBackgroundColor;
 }

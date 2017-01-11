@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface CTEngineInfo : NSObject
 
 @property (nonatomic, nonnull, readonly) NSString *uniqueID;
@@ -19,3 +21,4 @@
 - (instancetype)initFromDictionary:(nonnull NSDictionary *)dict;
 
 @end
+NS_ASSUME_NONNULL_END

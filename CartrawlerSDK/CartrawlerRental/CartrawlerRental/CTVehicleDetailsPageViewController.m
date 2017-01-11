@@ -77,7 +77,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    __weak typeof(self) weakSelf = self;
     [self.continueButton setText:NSLocalizedString(@"Continue", @"Continue")];
     
     _vehicleDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"VehicleDetails"];

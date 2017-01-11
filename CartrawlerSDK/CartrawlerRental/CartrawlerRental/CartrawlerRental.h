@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "CartrawlerSDK/CartrawlerSDK.h"
+#import "CTSearchDetailsViewController.h"
 
 FOUNDATION_EXPORT double CartrawlerRentalVersionNumber;
 

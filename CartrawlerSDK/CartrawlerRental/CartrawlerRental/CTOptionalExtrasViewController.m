@@ -22,7 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    __weak typeof(self) weakSelf = self;
     [self.nextButton setText:NSLocalizedString(@"Continue", @"")];
     // Do any additional setup after loading the view.
     self.tableView.allowsSelection = NO;

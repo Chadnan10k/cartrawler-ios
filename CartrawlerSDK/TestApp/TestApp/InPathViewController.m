@@ -66,4 +66,9 @@
     [self.bookButton setTitle:@"Book a car" forState:UIControlStateNormal];
 }
 
+- (void)prepareForInterfaceBuilder
+{
+    [self.inPath addCrossSellCardToView:self.cardContainer];
+}
+
 @end

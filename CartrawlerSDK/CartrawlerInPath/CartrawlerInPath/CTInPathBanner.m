@@ -119,9 +119,9 @@
     [self addConstraint:
      [NSLayoutConstraint constraintWithItem:self
                                   attribute:NSLayoutAttributeWidth
-                                  relatedBy:nil
+                                  relatedBy:0
                                      toItem:nil
-                                  attribute:nil
+                                  attribute:0
                                  multiplier:1
                                    constant:50]];// initial width
     
@@ -147,7 +147,7 @@
     self.infoLabel.textColor = textColor;
 }
 
-- (CGFloat)widthOfString:(NSString *)string withFont:(NSFont *)font
+- (CGFloat)widthOfString:(NSString *)string withFont:(UIFont *)font
 {
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, nil];
     return [[[NSAttributedString alloc] initWithString:string attributes:attributes] size].width;

@@ -7,8 +7,6 @@
 //
 
 #import "CTAnalytics.h"
-#import "CTTag.h"
-#import "CTErrorTag.h"
 #import "CTSDKSettings.h"
 
 @implementation CTAnalytics
@@ -51,7 +49,7 @@
 + (void)fireTag:(NSDictionary *)tagDict
 {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:Nil];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:Nil];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     request.URL = [NSURL URLWithString:@"https://tag.cartrawler.com/"];
     request.HTTPMethod = @"POST";
@@ -77,7 +75,7 @@
 + (void)fireErrorTag:(NSURL *)url
 {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:Nil];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:Nil];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     request.URL = url;
     request.HTTPMethod = @"GET";

@@ -61,7 +61,6 @@
 
 - (void)viewDidLoad
 {
-    __weak typeof(self) weakSelf = self;
     [super viewDidLoad];
     
     [self.nextButton setText:NSLocalizedString(@"Search for cars", @"Search for cars")];

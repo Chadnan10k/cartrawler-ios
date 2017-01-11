@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTTag.h"
+#import "CTErrorTag.h"
 
 @interface CTAnalytics : NSObject
 

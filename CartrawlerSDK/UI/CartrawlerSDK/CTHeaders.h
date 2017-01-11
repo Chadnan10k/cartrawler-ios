@@ -52,3 +52,4 @@
 #import "CTToolTipButton.h"
 #import "CTToolTipViewController.h"
 #import "CTUserDetails.h"
+#import "CTAnalytics.h"

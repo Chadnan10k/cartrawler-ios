@@ -39,7 +39,7 @@
         }
         
         if ([path containsString:@"/hi-res"]) {
-           path = [path stringByReplacingOccurrencesOfString:@"/hi-res" withString:@""];
+            path = [NSMutableString stringWithString:[path stringByReplacingOccurrencesOfString:@"/hi-res" withString:@""]];
         }
         
         [path insertString:endpoint atIndex:0];

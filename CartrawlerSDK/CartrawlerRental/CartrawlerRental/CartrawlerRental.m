@@ -12,7 +12,6 @@
 #import <CartrawlerSDK/CTDataStore.h>
 #import "CTRentalBookingsViewController.h"
 #import "CTBasketValidation.h"
-#import "CTSearchDetailsViewController.h"
 #import "CTSearchValidation.h"
 #import "CTGenericValidation.h"
 #import "CTInsuranceValidation.h"
