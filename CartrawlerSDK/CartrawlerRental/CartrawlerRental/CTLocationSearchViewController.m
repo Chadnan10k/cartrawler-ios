@@ -79,18 +79,15 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    [self.dataSource updateData:searchText completion:^(BOOL didSucceed) {
-        if (didSucceed) {
-            [self.tableView reloadData];
-//            [UIView animateWithDuration:0.2 animations:^{
-//                self.tableView.alpha = 1;
-//            }];
-        } else {
-//            [UIView animateWithDuration:0.2 animations:^{
-//                self.tableView.alpha = 0;
-//            }];
-        }
-    }];
+    if (searchText.length > 2) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+        [self.dataSource updateData:searchText completion:^(BOOL didSucceed) {
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            if (didSucceed) {
+                [self.tableView reloadData];
+            }
+        }];
+    }
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar

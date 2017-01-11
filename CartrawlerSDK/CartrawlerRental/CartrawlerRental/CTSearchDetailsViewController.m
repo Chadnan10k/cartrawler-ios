@@ -112,7 +112,7 @@
 {
     [super viewWillAppear:animated];
     
-    [CTAnalytics tagScreen:@"searchcars" detail:@"0.123" step:@1];
+    [CTAnalytics tagScreen:@"Step" detail:@"searchcars" step:@1];
     
     [self.scrollView setContentOffset:
      CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
@@ -404,6 +404,8 @@
 
 - (IBAction)cancel:(id)sender
 {
+    [CTAnalytics tagScreen:@"Exit" detail:@"1" step:@1];
+
     if (self.delegate) {
         [self.delegate didDismissViewController:self.restorationIdentifier];
     }

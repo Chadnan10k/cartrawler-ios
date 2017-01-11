@@ -40,7 +40,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [CTAnalytics tagScreen:@"Step" detail:@"vehicles-e" step:@4];
+
     if ([CTRentalSearch instance].insurance) {
         self.bottomSpace.constant = 0;
     } else {

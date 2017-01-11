@@ -70,8 +70,6 @@
 {
     [super viewWillAppear:animated];
     
-    NSLog(@"ENGINELOAD ID %@", self.search.selectedVehicle.engineInfo.engineLoadID);
-    
     if (self.search.selectedVehicle.vendor.rating) {
         self.topSpacing.constant = 80;
     } else {

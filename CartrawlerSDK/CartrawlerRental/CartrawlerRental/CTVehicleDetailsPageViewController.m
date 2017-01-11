@@ -36,7 +36,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [CTAnalytics tagScreen:@"Step" detail:@"vehicles-v" step:@3];
+
     _index = 0;
     
     if (self.search.selectedVehicle.vendor.rating) {

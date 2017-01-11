@@ -16,6 +16,6 @@
 
 @property (nonatomic, nonnull, readonly) NSString *queryID;
 
-- (instancetype)initFromDictionary:(NSDictionary *)dict;
+- (instancetype)initFromDictionary:(nonnull NSDictionary *)dict;
 
 @end

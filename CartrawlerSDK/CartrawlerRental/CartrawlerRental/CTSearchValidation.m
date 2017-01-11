@@ -62,6 +62,7 @@
                                                       if (response) {
                                                           dispatch_async(dispatch_get_main_queue(), ^{
                                                               search.vehicleAvailability = response;
+                                                              [search setEngineInfoFromAvail];
                                                               completion(YES, nil, NO);
                                                           });
                                                       } else {
@@ -72,7 +73,5 @@
                                                       }
                                                   }];
     }
-    
-
 }
 @end

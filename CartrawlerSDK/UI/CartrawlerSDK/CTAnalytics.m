@@ -24,7 +24,7 @@
     
     CTTag *tag = [[CTTag alloc] init:name
                               detail:detail
-                           container:@0
+                           container:@3
                            timestamp:timeString
                         engineLoadID:[CTSDKSettings instance].engineLoadID ?: @""
                           customerID:[CTSDKSettings instance].customerID ?: @""

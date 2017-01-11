@@ -68,7 +68,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [CTAnalytics tagScreen:@"Step" detail:@"vehicles-d" step:@5];
+
     [self registerForKeyboardNotifications];
     
     [self.firstNameTextField becomeFirstResponder];

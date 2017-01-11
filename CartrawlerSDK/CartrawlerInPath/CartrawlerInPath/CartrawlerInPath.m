@@ -69,7 +69,8 @@
                                                           toDate:[CTRentalSearch instance].dropoffDate
                                                          options:0];
     
-    [self.rental.cartrawlerSDK.cartrawlerAPI locationSearchWithAirportCode:IATACode completion:^(CTLocationSearch *response, CTErrorResponse *error) {
+    [self.rental.cartrawlerSDK.cartrawlerAPI locationSearchWithAirportCode:IATACode
+                                                                completion:^(CTLocationSearch *response, CTErrorResponse *error) {
         if (error) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -93,33 +94,36 @@
                                                                                     returnDateTime:[CTRentalSearch instance].dropoffDate
                                                                                       currencyCode:@"EUR"
                                                                                         completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
-                                                                                            if (response.items.count > 0) {
-                                                                                                [CTRentalSearch instance].vehicleAvailability = response;
-                                                                                                _defaultSearch = [[CTRentalSearch instance] copy];
-                                                                                                NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
-                                                                                                                                                             ascending:YES];
-                                                                                                CTAvailabilityItem *cheapestvehicle = ((CTAvailabilityItem *)[response.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
-                                                                                                if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
-                                                                                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                                                                                        NSNumber *dailyRate = [NSNumber numberWithFloat:cheapestvehicle.vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
-                                                                                                        [self.delegate didReceiveBestDailyRate:dailyRate currency:cheapestvehicle.vehicle.currencyCode];
-                                                                                                    });
-                                                                                                }
-                                                                                            } else {
-                                                                                                if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
-                                                                                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                                                                                        [self.delegate didFailToReceiveBestDailyRate];
-                                                                                                    });
-                                                                                                }
-                                                                                            }
-                                                                                        }];
-                } else {
-                    if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [self.delegate didFailToReceiveBestDailyRate];
-                        });
+                    if (response.items.count > 0) {
+                        [CTRentalSearch instance].vehicleAvailability = response;
+                        _defaultSearch = [[CTRentalSearch instance] copy];
+                        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
+                                                                                     ascending:YES];
+                        CTAvailabilityItem *cheapestvehicle =
+                        ((CTAvailabilityItem *)[response.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
+                        
+                        if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                NSNumber *dailyRate = [NSNumber numberWithFloat:
+                                                       cheapestvehicle.vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
+                                [self.delegate didReceiveBestDailyRate:dailyRate currency:cheapestvehicle.vehicle.currencyCode];
+                            });
+                        }
+                    } else {
+                        if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self.delegate didFailToReceiveBestDailyRate];
+                            });
+                        }
                     }
-                }
+                }];
+                    } else {
+                        if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self.delegate didFailToReceiveBestDailyRate];
+                            });
+                        }
+                    }
             }
         }
     }];
@@ -132,8 +136,9 @@
     [[CTRentalSearch instance] setFromCopy:self.defaultSearch];
     [self configureViews];
     [self presentRentalNavigationController:parentViewController];
+    [CTAnalytics tagScreen:@"Visit" detail:@"inflow" step:@1];
 }
- 
+
 //Lets take what views we need for the nav stack
 - (void)configureViews
 {

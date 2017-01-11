@@ -452,7 +452,7 @@
 			name = "Location Search";
 			sourceTree = "<group>";
 		};
-		451E743E1E0429F200D58F71 /* Search (Step One) */ = {
+		451E743E1E0429F200D58F71 /* Search */ = {
 			isa = PBXGroup;
 			children = (
 				451E763E1E044D0800D58F71 /* CTSearchDetailsViewController.h */,
@@ -462,7 +462,7 @@
 				451E761E1E043DA000D58F71 /* CTSettingsSelectionViewController.h */,
 				451E76201E043DA000D58F71 /* CTSettingsSelectionViewController.m */,
 			);
-			name = "Search (Step One)";
+			name = Search;
 			sourceTree = "<group>";
 		};
 		451E74491E0429F200D58F71 /* Filter */ = {
@@ -505,16 +505,18 @@
 			name = "Table View";
 			sourceTree = "<group>";
 		};
-		451E74571E0429F200D58F71 /* Vehicle Selection (Step Two) */ = {
+		451E74571E0429F200D58F71 /* Vehicle Selection */ = {
 			isa = PBXGroup;
 			children = (
+				451E75581E042CC100D58F71 /* CTVehicleSelectionViewController.h */,
+				451E755D1E042CC100D58F71 /* CTVehicleSelectionViewController.m */,
 				451E76341E0440AB00D58F71 /* CTFilterTableView.h */,
 				451E76351E0440AB00D58F71 /* CTFilterTableView.m */,
 				451E74491E0429F200D58F71 /* Filter */,
 				451E744E1E0429F200D58F71 /* Search Results */,
 				451E74541E0429F200D58F71 /* Table View */,
 			);
-			name = "Vehicle Selection (Step Two)";
+			name = "Vehicle Selection";
 			sourceTree = "<group>";
 		};
 		451E745C1E0429F200D58F71 /* Page View Controller */ = {
@@ -602,7 +604,7 @@
 			name = "Car details tab";
 			sourceTree = "<group>";
 		};
-		451E747C1E0429F200D58F71 /* Vehicle Details (Step Three) */ = {
+		451E747C1E0429F200D58F71 /* Vehicle Details */ = {
 			isa = PBXGroup;
 			children = (
 				451E745C1E0429F200D58F71 /* Page View Controller */,
@@ -611,16 +613,16 @@
 				451E74691E0429F200D58F71 /* Supplier rating tab */,
 				451E74791E0429F200D58F71 /* Car details tab */,
 			);
-			name = "Vehicle Details (Step Three)";
+			name = "Vehicle Details";
 			sourceTree = "<group>";
 		};
 		451E74861E0429F200D58F71 /* Optional Extras */ = {
 			isa = PBXGroup;
 			children = (
 				451E75A61E042EA200D58F71 /* CTOptionalExtrasViewController.h */,
+				451E75AA1E042EA200D58F71 /* CTOptionalExtrasViewController.m */,
 				451E75A81E042EA200D58F71 /* CTOptionalExtrasView.h */,
 				451E75A91E042EA200D58F71 /* CTOptionalExtrasView.m */,
-				451E75AA1E042EA200D58F71 /* CTOptionalExtrasViewController.m */,
 				451E75AB1E042EA200D58F71 /* CTOptionalExtraTableViewCell.m */,
 				451E75A71E042EA200D58F71 /* CTOptionalExtraTableViewCell.h */,
 				451E75AC1E042EA200D58F71 /* CTOptionalExtraTableViewCell.xib */,
@@ -628,14 +630,14 @@
 			name = "Optional Extras";
 			sourceTree = "<group>";
 		};
-		451E74871E0429F200D58F71 /* Extras (Step Four) */ = {
+		451E74871E0429F200D58F71 /* Extras */ = {
 			isa = PBXGroup;
 			children = (
 				451E75A21E042E9200D58F71 /* CTExtrasViewController.h */,
 				451E75A31E042E9200D58F71 /* CTExtrasViewController.m */,
 				451E74861E0429F200D58F71 /* Optional Extras */,
 			);
-			name = "Extras (Step Four)";
+			name = Extras;
 			sourceTree = "<group>";
 		};
 		451E74921E0429F200D58F71 /* TableView */ = {
@@ -668,16 +670,16 @@
 			name = "Booking Summary";
 			sourceTree = "<group>";
 		};
-		451E749E1E0429F200D58F71 /* Summary (Step Five) */ = {
+		451E749E1E0429F200D58F71 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
 				451E74921E0429F200D58F71 /* TableView */,
 				451E74991E0429F200D58F71 /* Booking Summary */,
 			);
-			name = "Summary (Step Five)";
+			name = Summary;
 			sourceTree = "<group>";
 		};
-		451E74A31E0429F200D58F71 /* Driver Details (Step Six) */ = {
+		451E74A31E0429F200D58F71 /* Driver Details */ = {
 			isa = PBXGroup;
 			children = (
 				451E75DC1E042F9200D58F71 /* CTAddressDetailsViewController.h */,
@@ -685,10 +687,10 @@
 				451E75E01E042FA400D58F71 /* CTDriverDetailsViewController.h */,
 				451E75E11E042FA400D58F71 /* CTDriverDetailsViewController.m */,
 			);
-			name = "Driver Details (Step Six)";
+			name = "Driver Details";
 			sourceTree = "<group>";
 		};
-		451E74AA1E0429F200D58F71 /* Payment (Step Seven) */ = {
+		451E74AA1E0429F200D58F71 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
 				451E75E41E042FB600D58F71 /* CTPaymentViewController.h */,
@@ -698,27 +700,22 @@
 				451E75E61E042FB600D58F71 /* CTPaymentLoadingViewController.h */,
 				451E75E71E042FB600D58F71 /* CTPaymentLoadingViewController.m */,
 			);
-			name = "Payment (Step Seven)";
+			name = Payment;
 			sourceTree = "<group>";
 		};
 		451E74AB1E0429F200D58F71 /* Rental Views */ = {
 			isa = PBXGroup;
 			children = (
-				451E76291E043DFF00D58F71 /* CTRentalBookingsViewController.h */,
-				451E762C1E043DFF00D58F71 /* CTRentalBookingsViewController.m */,
-				451E76281E043DFF00D58F71 /* CTRentalBookingCell.h */,
-				451E762D1E043DFF00D58F71 /* CTRentalBookingCell.m */,
+				BC9F6E571E2655E5006DD990 /* Bookings Manager */,
 				451E741D1E0429F200D58F71 /* Interstitial */,
 				451E74241E0429F200D58F71 /* Location Search */,
-				451E743E1E0429F200D58F71 /* Search (Step One) */,
-				451E74571E0429F200D58F71 /* Vehicle Selection (Step Two) */,
-				451E75581E042CC100D58F71 /* CTVehicleSelectionViewController.h */,
-				451E755D1E042CC100D58F71 /* CTVehicleSelectionViewController.m */,
-				451E747C1E0429F200D58F71 /* Vehicle Details (Step Three) */,
-				451E74871E0429F200D58F71 /* Extras (Step Four) */,
-				451E749E1E0429F200D58F71 /* Summary (Step Five) */,
-				451E74A31E0429F200D58F71 /* Driver Details (Step Six) */,
-				451E74AA1E0429F200D58F71 /* Payment (Step Seven) */,
+				451E743E1E0429F200D58F71 /* Search */,
+				451E74571E0429F200D58F71 /* Vehicle Selection */,
+				451E747C1E0429F200D58F71 /* Vehicle Details */,
+				451E74871E0429F200D58F71 /* Extras */,
+				451E749E1E0429F200D58F71 /* Summary */,
+				451E74A31E0429F200D58F71 /* Driver Details */,
+				451E74AA1E0429F200D58F71 /* Payment */,
 			);
 			name = "Rental Views";
 			path = ../../UI/CartrawlerSDK;
@@ -744,6 +741,17 @@
 				45154EF71E07DFB100FB32FA /* Assets.xcassets */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		BC9F6E571E2655E5006DD990 /* Bookings Manager */ = {
+			isa = PBXGroup;
+			children = (
+				451E76291E043DFF00D58F71 /* CTRentalBookingsViewController.h */,
+				451E762C1E043DFF00D58F71 /* CTRentalBookingsViewController.m */,
+				451E76281E043DFF00D58F71 /* CTRentalBookingCell.h */,
+				451E762D1E043DFF00D58F71 /* CTRentalBookingCell.m */,
+			);
+			name = "Bookings Manager";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

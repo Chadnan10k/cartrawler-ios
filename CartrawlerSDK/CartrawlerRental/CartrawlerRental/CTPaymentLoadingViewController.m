@@ -28,7 +28,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+
     [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:0 animations:^{
         self.topImageView.transform = CGAffineTransformMakeScale(1.35, 1.35);
     } completion:^(BOOL finished) {
