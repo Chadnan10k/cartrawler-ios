@@ -22,7 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    __weak typeof(self) weakSelf = self;
     [self.nextButton setText:NSLocalizedString(@"Continue", @"")];
     // Do any additional setup after loading the view.
     self.tableView.allowsSelection = NO;
@@ -40,7 +39,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [CTAnalytics tagScreen:@"Step" detail:@"vehicles-e" step:@4];
+
     if ([CTRentalSearch instance].insurance) {
         self.bottomSpace.constant = 0;
     } else {

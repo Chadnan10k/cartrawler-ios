@@ -19,12 +19,20 @@
 
 @implementation CTBookingSummaryViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self.continueButton setText:@"Continue"];
 }
 
-- (IBAction)next:(id)sender {
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [CTAnalytics tagScreen:@"Step" detail:@"vehicles-p" step:@7];
+}
+
+- (IBAction)next:(id)sender
+{
     if (!self.destinationViewController) {
         [self dismiss];
     } else {
@@ -32,7 +40,8 @@
     }
 }
 
-- (IBAction)back:(id)sender {
+- (IBAction)back:(id)sender
+{
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -38,6 +38,10 @@
             }
         }
         
+        if ([path containsString:@"/hi-res"]) {
+            path = [NSMutableString stringWithString:[path stringByReplacingOccurrencesOfString:@"/hi-res" withString:@""]];
+        }
+        
         [path insertString:endpoint atIndex:0];
         [path appendString:@"?w=180&dpr=2"];
 

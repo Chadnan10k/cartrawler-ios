@@ -12,7 +12,6 @@
 #import <CartrawlerSDK/CTDataStore.h>
 #import "CTRentalBookingsViewController.h"
 #import "CTBasketValidation.h"
-#import "CTSearchDetailsViewController.h"
 #import "CTSearchValidation.h"
 #import "CTGenericValidation.h"
 #import "CTInsuranceValidation.h"
@@ -45,6 +44,7 @@
     [[CTRentalSearch instance] reset];
     [self configureViews];
     [self presentRentalNavigationController:viewController];
+    [CTAnalytics tagScreen:@"Visit" detail:@"stand" step:@1];
 }
 
 - (void)presentRentalNavigationController:(UIViewController *)parent

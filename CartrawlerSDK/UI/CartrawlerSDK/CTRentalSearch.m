@@ -44,6 +44,26 @@
     _city = nil;
     _postcode = nil;
     _country = nil;
+    [CTSDKSettings instance].engineLoadID = @"";
+    [CTSDKSettings instance].customerID = @"";
+    [CTSDKSettings instance].queryID = @"";
+}
+
+- (void)setEngineInfoFromAvail
+{
+    if (self.vehicleAvailability) {
+        if (self.vehicleAvailability.items.firstObject) {
+            if (self.vehicleAvailability.items.firstObject.engineInfo.engineLoadID) {
+                [CTSDKSettings instance].engineLoadID = self.vehicleAvailability.items.firstObject.engineInfo.engineLoadID;
+            }
+            if (self.vehicleAvailability.items.firstObject.engineInfo.queryID) {
+                [CTSDKSettings instance].queryID = self.vehicleAvailability.items.firstObject.engineInfo.queryID;
+            }
+            if (self.vehicleAvailability.items.firstObject.engineInfo.uniqueID) {
+                [CTSDKSettings instance].customerID = self.vehicleAvailability.items.firstObject.engineInfo.uniqueID;
+            }
+        }
+    }
 }
 
 - (NSString *)concatinatedAddress

@@ -11,6 +11,7 @@
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import "CTLocationSearchTableViewCell.h"
 #import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTLocationSearchDataSource()
 @property (nonatomic, strong) NSMutableArray <CTMatchedLocation *> *airportLocations;
@@ -57,6 +58,11 @@
                 completion(YES);
             });
         } else {
+            
+            if (error) {
+                [CTAnalytics tagError:@"step1" event:@"CT_VehLocSearchRQ fail" message:error.errorMessage];
+            }
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(NO);
             });

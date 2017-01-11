@@ -36,7 +36,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [CTAnalytics tagScreen:@"Step" detail:@"vehicles-v" step:@3];
+
     _index = 0;
     
     if (self.search.selectedVehicle.vendor.rating) {
@@ -76,7 +77,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    __weak typeof(self) weakSelf = self;
     [self.continueButton setText:NSLocalizedString(@"Continue", @"Continue")];
     
     _vehicleDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"VehicleDetails"];

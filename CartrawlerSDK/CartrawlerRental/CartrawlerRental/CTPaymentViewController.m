@@ -43,7 +43,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [CTAnalytics tagScreen:@"Step" detail:@"payment" step:@8];
+
     double total = 0;
     
     if (self.search.isBuyingInsurance) {
@@ -52,7 +53,6 @@
     
     total += self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue;
     
-    __weak typeof(self) weakSelf = self;
     NSString *buttonText = [NSString stringWithFormat:@"Book now for %@", [@(total) numberStringWithCurrencyCode]];
     [self.confirmButton setText:buttonText];
 
@@ -192,6 +192,7 @@
 
 - (void)didFailLoadingPaymentView
 {
+    [CTAnalytics tagError:@"step8" event:@"Payment webview load" message:@"failed"];
     //retry
     if (!self.loadingViewVisible) {
         [self presentAlertView:@"Sorry"

@@ -68,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, nonnull, readonly) NSNumber *waitTime;
 
-- (instancetype)initFromDictionary:(NSDictionary *)dict  ;
+- (instancetype)initFromDictionary:(NSDictionary *)dict;
 
 @end
 

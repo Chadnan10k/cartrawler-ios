@@ -43,4 +43,6 @@
 
 - (void)reset;
 
+- (void)setEngineInfoFromAvail;
+
 @end

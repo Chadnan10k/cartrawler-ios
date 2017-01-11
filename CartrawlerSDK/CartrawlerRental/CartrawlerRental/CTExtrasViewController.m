@@ -52,6 +52,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [CTAnalytics tagScreen:@"Step" detail:@"vehicles-e" step:@4];
 
     self.needsSelectedItem = NO;
     
@@ -79,9 +80,11 @@
         self.optionalExtrasView.extras = self.search.selectedVehicle.vehicle.extraEquipment;
         
         if (self.search.insurance) {
+            [CTAnalytics tagScreen:@"Step" detail:@"Yes" step:@4];
             [self.optionalExtrasView hideView:NO];
         }
     } else {
+        [CTAnalytics tagScreen:@"Step" detail:@"No" step:@4];
         [self.optionalExtrasView hideView:YES];
     }
 
@@ -566,6 +569,7 @@
 
 - (IBAction)addInsurance:(id)sender
 {
+    [CTAnalytics tagScreen:@"Ins_click" detail:@"1" step:@4];
     if (self.needsSelectedItem && !self.search.insuranceItem) {
         [self.itemSelectButton shake];
         return;
@@ -576,6 +580,7 @@
 
 - (IBAction)continueNoInsurance:(id)sender
 {
+    [CTAnalytics tagScreen:@"Ins_click" detail:@"0" step:@4];
     [self.search setIsBuyingInsurance:NO];
     [self pushToDestination];
 }

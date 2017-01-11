@@ -44,7 +44,7 @@
                                   destination:(nullable CTViewController *)destination
                                      fallback:(nullable CTViewController *)fallback
                                 optionalRoute:(nullable CTViewController *)optionalRoute
-                                       search:(nonnull id<NSObject>)search
+                                       search:(CTRentalSearch *)search
                                        target:(id)target
 {
     viewController.destinationViewController = destination;
@@ -75,6 +75,7 @@ void uncaughtExceptionHandler(NSException *exception)
 {
     NSLog(@"\n\n\nCartrawlerSDK Crash:\n%@\n\n\n", exception);
     NSLog(@"\n\n\nCartrawlerSDK Stack Trace:\n\n\n%@", exception.callStackSymbols);
+    [CTAnalytics tagError:@"stepX" event:@"SDK CRASH" message:[NSString stringWithFormat:@"%@", exception.callStackSymbols]];
 }
 
 

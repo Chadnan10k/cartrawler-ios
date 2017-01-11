@@ -65,4 +65,9 @@ NSString * const PotentialBookingKey = @"cartrawler_potenital_booking";
     }
 }
 
++ (void)removePotentialInPathBooking
+{
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:PotentialBookingKey];
+}
+
 @end

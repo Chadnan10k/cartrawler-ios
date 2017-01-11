@@ -139,14 +139,19 @@
 		459CB2EE1DDB6638008522BA /* CTToolTipViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 459CB2EC1DDB6638008522BA /* CTToolTipViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		459CB2EF1DDB6638008522BA /* CTToolTipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 459CB2ED1DDB6638008522BA /* CTToolTipViewController.m */; };
 		45BF77501E08588900F6D7E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45BF774F1E08588900F6D7E9 /* Assets.xcassets */; };
-		45C3F1CD1DFABEBD00610FA0 /* CTTagManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C3F1CB1DFABEBD00610FA0 /* CTTagManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		45C3F1CE1DFABEBD00610FA0 /* CTTagManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C3F1CC1DFABEBD00610FA0 /* CTTagManager.m */; };
 		45C980C21DCCDB95002D99AB /* CTLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C980C01DCCDB95002D99AB /* CTLayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45C980C31DCCDB95002D99AB /* CTLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C980C11DCCDB95002D99AB /* CTLayoutConstraint.m */; };
 		45D3860A1DD62281000F02D1 /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45D386091DD62281000F02D1 /* strip-frameworks.sh */; };
 		45EC99B11E02B51600B76741 /* CTSDKSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E51B1D1450CE000ED6B0 /* CTSDKSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45F5D76A1DEF00C3005AE1AD /* CartrawlerSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F5D7691DEF00C3005AE1AD /* CartrawlerSDKTests.m */; };
 		45F5D76C1DEF00C3005AE1AD /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455B582B1DCC90D300CA4790 /* CartrawlerSDK.framework */; };
+		BC1379E81E23E4E400B1F727 /* CTAnalytics.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1379E31E23E4E400B1F727 /* CTAnalytics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC1379E91E23E4E400B1F727 /* CTAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1379E41E23E4E400B1F727 /* CTAnalytics.m */; };
+		BC1379EB1E23E4E400B1F727 /* CTTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1379E61E23E4E400B1F727 /* CTTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC1379EC1E23E4E400B1F727 /* CTTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1379E71E23E4E400B1F727 /* CTTag.m */; };
+		BC1379EF1E23E8E700B1F727 /* CTErrorTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC1379F01E23E8E700B1F727 /* CTErrorTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1379EE1E23E8E700B1F727 /* CTErrorTag.m */; };
+		BC9F6E521E24EF91006DD990 /* CTAnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,8 +248,6 @@
 		45BC88D21DC0F8460041BD74 /* CTToolTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTToolTip.m; sourceTree = "<group>"; };
 		45BC88D31DC0F8460041BD74 /* CTToolTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTToolTip.h; sourceTree = "<group>"; };
 		45BF774F1E08588900F6D7E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		45C3F1CB1DFABEBD00610FA0 /* CTTagManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTagManager.h; sourceTree = "<group>"; };
-		45C3F1CC1DFABEBD00610FA0 /* CTTagManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTagManager.m; sourceTree = "<group>"; };
 		45C980C01DCCDB95002D99AB /* CTLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLayoutConstraint.h; sourceTree = "<group>"; };
 		45C980C11DCCDB95002D99AB /* CTLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLayoutConstraint.m; sourceTree = "<group>"; };
 		45D386091DD62281000F02D1 /* strip-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "strip-frameworks.sh"; sourceTree = "<group>"; };
@@ -291,6 +294,13 @@
 		45F5D7671DEF00C3005AE1AD /* CartrawlerSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F5D7691DEF00C3005AE1AD /* CartrawlerSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartrawlerSDKTests.m; sourceTree = "<group>"; };
 		45F5D76B1DEF00C3005AE1AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC1379E31E23E4E400B1F727 /* CTAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalytics.h; sourceTree = "<group>"; };
+		BC1379E41E23E4E400B1F727 /* CTAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalytics.m; sourceTree = "<group>"; };
+		BC1379E61E23E4E400B1F727 /* CTTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTag.h; sourceTree = "<group>"; };
+		BC1379E71E23E4E400B1F727 /* CTTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTag.m; sourceTree = "<group>"; };
+		BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTErrorTag.h; sourceTree = "<group>"; };
+		BC1379EE1E23E8E700B1F727 /* CTErrorTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTErrorTag.m; sourceTree = "<group>"; };
+		BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,8 +476,6 @@
 				4576784F1E08021100FE591A /* CTHeaders.h */,
 				45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */,
 				45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */,
-				45C3F1CB1DFABEBD00610FA0 /* CTTagManager.h */,
-				45C3F1CC1DFABEBD00610FA0 /* CTTagManager.m */,
 				451E76381E04438300D58F71 /* CTRentalBooking.h */,
 				451E76391E04438300D58F71 /* CTRentalBooking.m */,
 				456B9E781E1C09E30036CD60 /* CTUserDetails.h */,
@@ -510,6 +518,7 @@
 		45E942451D12FF0F00ACF604 /* CartrawlerSDK */ = {
 			isa = PBXGroup;
 			children = (
+				BC1379E21E23E4DA00B1F727 /* Analytics */,
 				45C3F1CF1DFABF6100610FA0 /* Public */,
 				455B582E1DCC90D300CA4790 /* Info.plist */,
 				45B264F41D8FDE28000005F2 /* Payment */,
@@ -685,6 +694,7 @@
 			children = (
 				45F5D7691DEF00C3005AE1AD /* CartrawlerSDKTests.m */,
 				45F5D76B1DEF00C3005AE1AD /* Info.plist */,
+				BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */,
 			);
 			path = CartrawlerSDKTests;
 			sourceTree = "<group>";
@@ -698,6 +708,19 @@
 			name = "View Manager";
 			sourceTree = "<group>";
 		};
+		BC1379E21E23E4DA00B1F727 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				BC1379E31E23E4E400B1F727 /* CTAnalytics.h */,
+				BC1379E41E23E4E400B1F727 /* CTAnalytics.m */,
+				BC1379E61E23E4E400B1F727 /* CTTag.h */,
+				BC1379E71E23E4E400B1F727 /* CTTag.m */,
+				BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */,
+				BC1379EE1E23E8E700B1F727 /* CTErrorTag.m */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -705,14 +728,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1379E81E23E4E400B1F727 /* CTAnalytics.h in Headers */,
+				BC1379EF1E23E8E700B1F727 /* CTErrorTag.h in Headers */,
 				455B58741DCC914300CA4790 /* CTLabel.h in Headers */,
+				BC1379EB1E23E4E400B1F727 /* CTTag.h in Headers */,
 				451E763A1E04438300D58F71 /* CTRentalBooking.h in Headers */,
 				455B58761DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.h in Headers */,
 				455B58351DCC914300CA4790 /* PaymentRequest.h in Headers */,
 				455B58911DCC914300CA4790 /* CTDataStore.h in Headers */,
 				455B584E1DCC914300CA4790 /* CTNavigationController.h in Headers */,
 				45EC99B11E02B51600B76741 /* CTSDKSettings.h in Headers */,
-				45C3F1CD1DFABEBD00610FA0 /* CTTagManager.h in Headers */,
 				455B587D1DCC914300CA4790 /* CTImageCache.h in Headers */,
 				455B58621DCC914300CA4790 /* CTAppearance.h in Headers */,
 				455B58B41DCC914400CA4790 /* CTValidation.h in Headers */,
@@ -903,11 +928,13 @@
 				455B58361DCC914300CA4790 /* PaymentRequest.m in Sources */,
 				455B58381DCC914300CA4790 /* CTPaymentView.m in Sources */,
 				455B583C1DCC914300CA4790 /* CTSDKSettings.m in Sources */,
+				BC1379E91E23E4E400B1F727 /* CTAnalytics.m in Sources */,
 				455B58481DCC914300CA4790 /* CTToolTip.m in Sources */,
 				455B584B1DCC914300CA4790 /* CTNavigationBar.m in Sources */,
 				455B584D1DCC914300CA4790 /* CTNavigationItem.m in Sources */,
 				455B584F1DCC914300CA4790 /* CTNavigationController.m in Sources */,
 				455B58511DCC914300CA4790 /* CTStepper.m in Sources */,
+				BC1379F01E23E8E700B1F727 /* CTErrorTag.m in Sources */,
 				455B58551DCC914300CA4790 /* CTSegmentedControl.m in Sources */,
 				455B58571DCC914300CA4790 /* CTPickerView.m in Sources */,
 				455B58591DCC914300CA4790 /* CTTextView.m in Sources */,
@@ -918,10 +945,10 @@
 				455B58631DCC914300CA4790 /* CTAppearance.m in Sources */,
 				455B58651DCC914300CA4790 /* JVFloatLabeledTextField.m in Sources */,
 				455B58671DCC914300CA4790 /* NSStringUtils.m in Sources */,
+				BC1379EC1E23E4E400B1F727 /* CTTag.m in Sources */,
 				455B58691DCC914300CA4790 /* CTTextField.m in Sources */,
 				455B586B1DCC914300CA4790 /* CTCheckbox.m in Sources */,
 				455B586D1DCC914300CA4790 /* CTButton.m in Sources */,
-				45C3F1CE1DFABEBD00610FA0 /* CTTagManager.m in Sources */,
 				455B58751DCC914300CA4790 /* CTLabel.m in Sources */,
 				455B58771DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.m in Sources */,
 				456B9E7B1E1C09E30036CD60 /* CTUserDetails.m in Sources */,
@@ -963,6 +990,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45F5D76A1DEF00C3005AE1AD /* CartrawlerSDKTests.m in Sources */,
+				BC9F6E521E24EF91006DD990 /* CTAnalyticsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -61,7 +61,6 @@
 
 - (void)viewDidLoad
 {
-    __weak typeof(self) weakSelf = self;
     [super viewDidLoad];
     
     [self.nextButton setText:NSLocalizedString(@"Search for cars", @"Search for cars")];
@@ -111,6 +110,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [CTAnalytics tagScreen:@"Step" detail:@"searchcars" step:@1];
     
     [self.scrollView setContentOffset:
      CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
@@ -402,6 +403,8 @@
 
 - (IBAction)cancel:(id)sender
 {
+    [CTAnalytics tagScreen:@"Exit" detail:@"1" step:@1];
+
     if (self.delegate) {
         [self.delegate didDismissViewController:self.restorationIdentifier];
     }

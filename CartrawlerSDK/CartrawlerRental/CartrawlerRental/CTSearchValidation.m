@@ -62,16 +62,16 @@
                                                       if (response) {
                                                           dispatch_async(dispatch_get_main_queue(), ^{
                                                               search.vehicleAvailability = response;
+                                                              [search setEngineInfoFromAvail];
                                                               completion(YES, nil, NO);
                                                           });
                                                       } else {
                                                           dispatch_async(dispatch_get_main_queue(), ^{
                                                               completion(NO, error.errorMessage, NO);
+                                                              [CTAnalytics tagError:@"step1" event:@"VehAvail search" message:error.errorMessage];
                                                           });
                                                       }
                                                   }];
     }
-    
-
 }
 @end

@@ -56,7 +56,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    __weak typeof (self) weakSelf = self;
     [self.nextButton setText:NSLocalizedString(@"Continue", @"Calander Continue")];
 
     [self showCloseButton:NO];

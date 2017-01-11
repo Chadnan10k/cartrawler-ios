@@ -140,4 +140,11 @@
     return [d objectForKey:key];
 }
 
+- (NSString *)version
+{
+    NSDictionary *info = [[NSBundle bundleForClass:[self class]] infoDictionary];
+    NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
+    return version;
+}
+
 @end
