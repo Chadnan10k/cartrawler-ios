@@ -94,6 +94,10 @@
                                                                                     returnDateTime:[CTRentalSearch instance].dropoffDate
                                                                                       currencyCode:@"EUR"
                                                                                         completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
+                    if (error) {
+                        [CTAnalytics tagError:@"inpath" event:@"Avail fail" message:error.errorMessage];
+                    }
+                                                                                            
                     if (response.items.count > 0) {
                         [CTRentalSearch instance].vehicleAvailability = response;
                         _defaultSearch = [[CTRentalSearch instance] copy];
@@ -110,6 +114,7 @@
                             });
                         }
                     } else {
+                        [CTAnalytics tagError:@"inpath" event:@"no items" message:@"no vehicles available"];
                         if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 [self.delegate didFailToReceiveBestDailyRate];
@@ -117,7 +122,9 @@
                         }
                     }
                 }];
-                    } else {
+                    
+                } else {
+                    [CTAnalytics tagError:@"inpath" event:@"get location" message:[NSString stringWithFormat:@"no location for %@", IATACode]];
                         if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 [self.delegate didFailToReceiveBestDailyRate];

@@ -15,6 +15,9 @@
 
 @property (nonatomic, strong) CartrawlerSDK *sdk;
 @property (nonatomic, strong) CartrawlerRental *rental;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *endpointControl;
+
+@property (nonatomic) BOOL isDebug;
 
 @end
 
@@ -22,13 +25,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad]; //643826 ryr desktop 642619 ryr mobile
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:YES];
-    _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
     self.rental.delegate = self;
 }
 
 - (IBAction)openCarRental:(id)sender {
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:self.isDebug];
+    _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
     [self.rental presentCarRentalInViewController:self];
+}
+
+- (IBAction)endpointChanged:(id)sender {
+    if (self.endpointControl.selectedSegmentIndex == 0) {
+        _isDebug = YES;
+    } else {
+        _isDebug = NO;
+    }
 }
 
 #pragma Mark CartrawlerSDKDelegate
