@@ -75,6 +75,7 @@ void uncaughtExceptionHandler(NSException *exception)
 {
     NSLog(@"\n\n\nCartrawlerSDK Crash:\n%@\n\n\n", exception);
     NSLog(@"\n\n\nCartrawlerSDK Stack Trace:\n\n\n%@", exception.callStackSymbols);
+    [CTAnalytics tagError:@"stepX" event:@"SDK CRASH" message:[NSString stringWithFormat:@"%@", exception.callStackSymbols]];
 }
 
 
