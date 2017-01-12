@@ -59,6 +59,9 @@
     [self.bookButton setTitle:@"you booked a car" forState:UIControlStateNormal];
     NSLog(@"%@", request);
     NSLog(@"%@", vehicle.vehicleName);
+    NSLog(@"%@", vehicle.firstName);
+    NSLog(@"%@", vehicle.lastName);
+
 }
 
 - (void)didFailToReceiveBestDailyRate
@@ -66,9 +69,5 @@
     [self.bookButton setTitle:@"Book a car" forState:UIControlStateNormal];
 }
 
-- (void)prepareForInterfaceBuilder
-{
-    [self.inPath addCrossSellCardToView:self.cardContainer];
-}
 
 @end

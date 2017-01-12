@@ -7,7 +7,7 @@
 //
 
 #import "CTPaymentViewController.h"
-#import <CartrawlerSDK/PaymentRequest.h>
+#import <CartrawlerSDK/CTPaymentRequest.h>
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
 #import "CTPaymentCompletionViewController.h"

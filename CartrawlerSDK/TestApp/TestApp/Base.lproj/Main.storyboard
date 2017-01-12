@@ -23,10 +23,11 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVk-QN-XbT">
                                 <rect key="frame" x="8" y="581" width="359" height="66"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="PIQ-7R-Byy"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <state key="normal" title="Standalone"/>
                                 <connections>
                                     <action selector="openCarRental:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XiP-Zb-yjW"/>
@@ -34,30 +35,50 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQj-ud-r0u">
                                 <rect key="frame" x="16" y="490" width="343" height="71"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="iiD-JL-99E"/>
                                 </constraints>
-                                <state key="normal" title="In Path"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <state key="normal" title="In Path">
+                                    <color key="titleColor" red="0.43345346171800436" green="1" blue="0.3055113431990254" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <segue destination="9HL-5W-v1q" kind="show" id="NFW-kQ-zLK"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="egf-cx-egN">
+                                <rect key="frame" x="8" y="96" width="359" height="29"/>
+                                <segments>
+                                    <segment title="External dev"/>
+                                    <segment title="Production"/>
+                                </segments>
+                                <connections>
+                                    <action selector="endpointChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="TlZ-W8-4id"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="egf-cx-egN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="7Jk-uW-3c7"/>
                             <constraint firstItem="JVk-QN-XbT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="BDl-bf-omz"/>
                             <constraint firstItem="pQj-ud-r0u" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="CYb-Ia-Ezs"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JVk-QN-XbT" secondAttribute="bottom" constant="20" id="GIC-y8-eUT"/>
                             <constraint firstItem="JVk-QN-XbT" firstAttribute="top" secondItem="pQj-ud-r0u" secondAttribute="bottom" constant="20" id="MJB-f2-iAB"/>
                             <constraint firstAttribute="trailing" secondItem="JVk-QN-XbT" secondAttribute="trailing" constant="8" id="TtD-Xi-igI"/>
+                            <constraint firstItem="egf-cx-egN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="hmL-k9-IP0"/>
                             <constraint firstAttribute="trailing" secondItem="pQj-ud-r0u" secondAttribute="trailing" constant="16" id="uXo-QF-Xhz"/>
+                            <constraint firstAttribute="trailing" secondItem="egf-cx-egN" secondAttribute="trailing" constant="8" id="vpr-n4-A5Q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dR5-Ox-RAi"/>
+                    <connections>
+                        <outlet property="endpointControl" destination="egf-cx-egN" id="i2A-sT-3Lp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1098" y="139"/>
+            <point key="canvasLocation" x="1096.8" y="138.98050974512745"/>
         </scene>
         <!--In Path View Controller-->
         <scene sceneID="gBA-rQ-i6F">
@@ -175,7 +196,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zsj-16-95s" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="c1K-lO-dAv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c1K-lO-dAv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

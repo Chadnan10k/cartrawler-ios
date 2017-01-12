@@ -23,6 +23,8 @@
     _dropoffLocationName = search.dropoffLocation.name;
     _pickupDate = search.pickupDate;
     _dropoffDate = search.dropoffDate;
+    _firstName = search.firstName;
+    _lastName = search.surname;
     
     NSMutableArray *tempFreeExtras = [NSMutableArray new];
     NSMutableArray *tempPayableExtras = [NSMutableArray new];
