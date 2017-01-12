@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CartrawlerAPI/CartrawlerAPI.h>
 
-@interface PaymentRequest : NSObject
+@interface CTPaymentRequest : NSObject
 
 + (NSString *) OTA_VehResRQ:(NSString *)pickupDateTime
              returnDateTime:(NSString *)returnDateTime

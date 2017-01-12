@@ -7,7 +7,7 @@
 //
 
 #import "CTPaymentView.h"
-#import "PaymentRequest.h"
+#import "CTPaymentRequest.h"
 #import "CTSDKSettings.h"
 #import "CartrawlerSDK+NSDateUtils.h"
 #import "CTButton.h"
@@ -192,7 +192,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     _carRentalSearch = search;
     _paymentType = CTPaymentTypeCarRental;
 
-    NSString *s = [PaymentRequest OTA_VehResRQ:[search.pickupDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
+    NSString *s = [CTPaymentRequest OTA_VehResRQ:[search.pickupDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
                                 returnDateTime:[search.dropoffDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
                             pickupLocationCode:search.pickupLocation.code
                            dropoffLocationCode:search.dropoffLocation.code

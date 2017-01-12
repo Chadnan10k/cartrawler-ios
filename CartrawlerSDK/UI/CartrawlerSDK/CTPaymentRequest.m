@@ -6,9 +6,9 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "PaymentRequest.h"
+#import "CTPaymentRequest.h"
 
-@implementation PaymentRequest
+@implementation CTPaymentRequest
 
 + (NSString *)currencyHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency
 {

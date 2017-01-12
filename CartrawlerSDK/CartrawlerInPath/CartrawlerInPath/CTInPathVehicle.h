@@ -11,6 +11,8 @@
 
 @interface CTInPathVehicle : NSObject
 
+@property (nonatomic, strong, readonly) NSString *firstName;
+@property (nonatomic, strong, readonly) NSString *lastName;
 @property (nonatomic, strong, readonly) NSString *vehicleName;
 @property (nonatomic, strong, readonly) NSString *vehicleOrSimilar;
 @property (nonatomic, strong, readonly) NSString *vendorName;
