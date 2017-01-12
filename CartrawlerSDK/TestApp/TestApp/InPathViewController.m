@@ -27,6 +27,7 @@
     userDetails.surname = @"Maguire";
     userDetails.email = @"lee@maguire.com";
     userDetails.phone = @"086666666";
+    userDetails.currency = @"GBP";
     
     _inPath = [[CartrawlerInPath alloc] initWithCartrawlerRental:self.rental
                                                         IATACode:@"ALC"
@@ -42,7 +43,8 @@
 }
 
 - (IBAction)mockPayment:(id)sender {
-    [self.inPath didReceiveBookingResponse:@{@"bookingId" : @"INPATHTEST"}];
+    [self.inPath didReceiveBookingConfirmationID:@"INPATH"];
+    //[self.inPath didReceiveBookingResponse:@{@"bookingId" : @"INPATHTEST"}];
 }
 
 - (IBAction)remove:(id)sender {

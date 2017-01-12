@@ -35,6 +35,11 @@
     
     [[CTRentalSearch instance] reset];
     
+    if (userDetails.currency) {
+        [[CTSDKSettings instance] setCurrencyCode:userDetails.currency];
+        [[CTSDKSettings instance] setCurrencyName:userDetails.currency];
+    }
+    
     if (!userDetails.countryCode || !userDetails.countryName) {
         [CTRentalSearch instance].country = [CTSDKSettings instance].homeCountryCode;
     } else {
@@ -92,7 +97,7 @@
                                                                                          driverAge:userDetails.driverAge ?: @30
                                                                                     pickUpDateTime:[CTRentalSearch instance].pickupDate
                                                                                     returnDateTime:[CTRentalSearch instance].dropoffDate
-                                                                                      currencyCode:@"EUR"
+                                                                                      currencyCode:[CTSDKSettings instance].currencyCode
                                                                                         completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
                     if (error) {
                         [CTAnalytics tagError:@"inpath" event:@"Avail fail" message:error.errorMessage];
@@ -140,6 +145,7 @@
 
 - (void)presentCarRentalWithFlightDetails:(nonnull UIViewController *)parentViewController
 {
+    [CTSDKSettings instance].disableCurrencySelection = YES;
     [[CTRentalSearch instance] setFromCopy:self.defaultSearch];
     [self configureViews];
     [self presentRentalNavigationController:parentViewController];
@@ -214,10 +220,11 @@
     }
 }
 
-- (void)didReceiveBookingResponse:(NSDictionary *)response
+- (void)didReceiveBookingConfirmationID:(NSString *)confirmationID
 {
-    NSString *testRes = response[@"bookingId"];
-    [CTDataStore didMakeInPathBooking:testRes];
+    if (confirmationID) {
+        [CTDataStore didMakeInPathBooking:confirmationID];
+    }
 }
 
 #pragma mark CTViewController Delegate

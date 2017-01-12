@@ -12,19 +12,27 @@
 #import <CartrawlerSDK/CTCSVItem.h>
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import "CTRentalConstants.h"
+#import <CartrawlerSDK/CTDesignableView.h>
 
 @interface CTSettingsViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *currencyButton;
 @property (weak, nonatomic) IBOutlet UIButton *countryButton;
 @property (weak, nonatomic) IBOutlet UIButton *languageButton;
 @property (strong, nonatomic) UIStoryboard *settingsStoryboard;
+@property (weak, nonatomic) IBOutlet CTDesignableView *currencyView;
 
 @end
 
 @implementation CTSettingsViewController
 
-
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    if ([CTSDKSettings instance].disableCurrencySelection) {
+        self.currencyView.hidden = YES;
+    } else {
+        self.currencyView.hidden = NO;
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -32,7 +40,7 @@
 
     NSBundle *b = [NSBundle bundleForClass:[self class]];
     _settingsStoryboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:b];
-    // Do any additional setup after loading the view.
+
     [self.currencyButton setTitle:[CTSDKSettings instance].currencyName forState:UIControlStateNormal];
     [self.languageButton setTitle:[CTSDKSettings instance].languageName forState:UIControlStateNormal];
     [self.countryButton setTitle:[CTSDKSettings instance].homeCountryName forState:UIControlStateNormal];

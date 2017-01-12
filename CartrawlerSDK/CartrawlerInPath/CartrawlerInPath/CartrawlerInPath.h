@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)removeVehicle;
 
-- (void)didReceiveBookingResponse:(NSDictionary *)response;
+- (void)didReceiveBookingConfirmationID:(NSString *)confirmationID;
 
 @end
 

@@ -82,13 +82,13 @@
 {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     _vehicleImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.vehicleImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.vehicleImageView.contentMode = UIViewContentModeScaleToFill;
     self.vehicleImageView.image = [UIImage imageNamed:@"static_cars" inBundle:bundle compatibleWithTraitCollection:nil];
     self.vehicleImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.vehicleImageView];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(130)]-8-|" options:0 metrics:nil views:@{@"view" : self.vehicleImageView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[view]-8-|" options:0 metrics:nil views:@{@"view" : self.vehicleImageView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(160)]-8-|" options:0 metrics:nil views:@{@"view" : self.vehicleImageView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-24-[view(80)]" options:0 metrics:nil views:@{@"view" : self.vehicleImageView}]];
 
 }
 
@@ -127,7 +127,7 @@
     [self addSubview:self.infoLabel];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[star]-4-[textView]-4-[cars]" options:0 metrics:nil views:@{@"textView" : self.infoLabel, @"star" : self.tickImageView, @"cars" : self.vehicleImageView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[headerLabel]-4-[textView]-4-|" options:0 metrics:nil views:@{@"textView" : self.infoLabel, @"headerLabel" : self.headerLabel}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[headerLabel]-4-[textView]-16-|" options:0 metrics:nil views:@{@"textView" : self.infoLabel, @"headerLabel" : self.headerLabel}]];
     [self.infoLabel sizeToFit];
     self.infoLabel.scrollEnabled = NO;
     [self.infoLabel setTextContainerInset:UIEdgeInsetsZero];

@@ -103,10 +103,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lzk-tW-vOj">
-                                <rect key="frame" x="16" y="124" width="343" height="170"/>
+                                <rect key="frame" x="16" y="124" width="343" height="140"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIh-9d-YCf">
-                                        <rect key="frame" x="0.0" y="125" width="343" height="45"/>
+                                        <rect key="frame" x="0.0" y="95" width="343" height="45"/>
                                         <color key="backgroundColor" red="0.94509803920000002" green="0.78823529410000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="WGa-nb-h16"/>
@@ -121,7 +121,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5h-mR-ZJM">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="125"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="95"/>
                                         <color key="backgroundColor" red="0.65376514880000003" green="0.78721816980000003" blue="0.51248123329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
@@ -132,7 +132,7 @@
                                     <constraint firstItem="iIh-9d-YCf" firstAttribute="top" secondItem="K5h-mR-ZJM" secondAttribute="bottom" id="PGh-v4-TKR"/>
                                     <constraint firstItem="K5h-mR-ZJM" firstAttribute="leading" secondItem="lzk-tW-vOj" secondAttribute="leading" id="Siq-7x-Q3p"/>
                                     <constraint firstAttribute="trailing" secondItem="iIh-9d-YCf" secondAttribute="trailing" id="X8D-nQ-igr"/>
-                                    <constraint firstAttribute="height" constant="170" id="ZGA-yh-0J5"/>
+                                    <constraint firstAttribute="height" priority="100" constant="140" id="ZGA-yh-0J5"/>
                                     <constraint firstItem="iIh-9d-YCf" firstAttribute="leading" secondItem="lzk-tW-vOj" secondAttribute="leading" id="bF0-bv-ThG"/>
                                     <constraint firstAttribute="bottom" secondItem="iIh-9d-YCf" secondAttribute="bottom" id="bGf-Ic-YwN"/>
                                 </constraints>
@@ -196,7 +196,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zsj-16-95s" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c1K-lO-dAv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="c1K-lO-dAv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
