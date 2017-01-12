@@ -39,22 +39,7 @@
 
 - (void)setup
 {
-    _noSelectionView = [[CTNewBookingView alloc] initWithFrame:CGRectZero];
-    self.noSelectionView.backgroundColor = [UIColor whiteColor];
-    self.noSelectionView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.noSelectionView];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
-    
-    _selectedVehicleView = [[CTSelectedVehicleView alloc] initWithFrame:CGRectZero];
-    self.selectedVehicleView.backgroundColor = [UIColor whiteColor];
-    self.selectedVehicleView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.selectedVehicleView];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.selectedVehicleView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.selectedVehicleView}]];
-    
-    self.noSelectionView.alpha = 0;
-    self.selectedVehicleView.alpha = 1;
+    [self renderDefault];
 }
 
 - (void)awakeFromNib
@@ -75,6 +60,22 @@
 #pragma mark Render Vehicle
 - (void)renderVehicleDetails:(CTInPathVehicle *)vehicle
 {
+    if (self.noSelectionView) {
+        [self.noSelectionView removeFromSuperview];
+    }
+    
+    if (self.selectedVehicleView) {
+        [self.selectedVehicleView removeFromSuperview];
+    }
+    
+    _selectedVehicleView = [[CTSelectedVehicleView alloc] initWithFrame:CGRectZero];
+
+    self.selectedVehicleView.backgroundColor = [UIColor whiteColor];
+    self.selectedVehicleView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.selectedVehicleView];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.selectedVehicleView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.selectedVehicleView}]];
+    
     [self.selectedVehicleView setVehicle:vehicle];
     self.noSelectionView.alpha = 0;
     self.selectedVehicleView.alpha = 1;
@@ -82,8 +83,22 @@
 
 - (void)renderDefault
 {
-    self.noSelectionView.alpha = 1;
-    self.selectedVehicleView.alpha = 0;
+    if (self.noSelectionView) {
+        [self.noSelectionView removeFromSuperview];
+    }
+    
+    if (self.selectedVehicleView) {
+        [self.selectedVehicleView removeFromSuperview];
+    }
+    
+    _noSelectionView = [[CTNewBookingView alloc] initWithFrame:CGRectZero];
+    
+    self.noSelectionView.backgroundColor = [UIColor whiteColor];
+    self.noSelectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.noSelectionView];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
+
 }
 
 @end

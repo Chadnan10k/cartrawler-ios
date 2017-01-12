@@ -29,6 +29,8 @@
 @property (nonatomic, strong) NSString *queryID;
 @property (nonatomic, strong) NSString *customerID;
 
+@property (nonatomic) BOOL disableCurrencySelection;
+
 @property (nonatomic) BOOL isDebug;
 
 + (instancetype)instance;

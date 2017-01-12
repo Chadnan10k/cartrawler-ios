@@ -47,8 +47,8 @@
     self.vehicleImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:self.vehicleImageView];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(150)]-8-|" options:0 metrics:nil views:@{@"view" : self.vehicleImageView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-32-[view]-16-|" options:0 metrics:nil views:@{@"view" : self.vehicleImageView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-16-[view(84@750)]-16-|" options:0 metrics:nil views:@{@"view" : self.vehicleImageView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(148)]-8-|" options:0 metrics:nil views:@{@"view" : self.vehicleImageView}]];
     
 }
 

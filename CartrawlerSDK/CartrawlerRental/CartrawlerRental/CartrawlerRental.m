@@ -40,6 +40,7 @@
 
 - (void)presentCarRentalInViewController:(UIViewController *)viewController;
 {
+    [CTSDKSettings instance].disableCurrencySelection = NO;
     [[CTSDKSettings instance] resetCountryToDeviceLocale];
     [[CTRentalSearch instance] reset];
     [self configureViews];

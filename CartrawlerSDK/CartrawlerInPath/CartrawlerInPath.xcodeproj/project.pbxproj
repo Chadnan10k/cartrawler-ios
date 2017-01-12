@@ -103,10 +103,10 @@
 			children = (
 				45EC99B91E02C96B00B76741 /* CTInPathView.h */,
 				45EC99BA1E02C96B00B76741 /* CTInPathView.m */,
-				45CFD44A1E0941B800A57849 /* CTNewBookingView.h */,
-				45CFD44B1E0941B800A57849 /* CTNewBookingView.m */,
 				45CFD4501E09863C00A57849 /* CTInPathBanner.h */,
 				45CFD4511E09863C00A57849 /* CTInPathBanner.m */,
+				45CFD44A1E0941B800A57849 /* CTNewBookingView.h */,
+				45CFD44B1E0941B800A57849 /* CTNewBookingView.m */,
 				45A47DF31E0A912300500D71 /* CTSelectedVehicleView.h */,
 				45A47DF41E0A912300500D71 /* CTSelectedVehicleView.m */,
 			);

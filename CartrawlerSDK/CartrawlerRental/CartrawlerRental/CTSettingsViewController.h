@@ -10,6 +10,4 @@
 
 @interface CTSettingsViewController : UIViewController
 
-
-
 @end

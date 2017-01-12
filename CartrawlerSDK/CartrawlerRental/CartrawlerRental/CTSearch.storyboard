@@ -523,66 +523,14 @@
                                     <constraint firstItem="rRE-by-UDd" firstAttribute="centerX" secondItem="fvr-Lp-Udg" secondAttribute="centerX" id="wte-bK-KLp"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7G-St-KYp" customClass="CTDesignableView">
-                                <rect key="frame" x="9" y="68" width="358" height="61"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjq-ai-bJw" customClass="CTLabel">
-                                        <rect key="frame" x="8" y="4" width="342" height="16"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="c9j-9h-AQb"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sfv-Xc-4RJ" customClass="CTButton">
-                                        <rect key="frame" x="8" y="23" width="335" height="30"/>
-                                        <state key="normal" title="Euro (EUR)">
-                                            <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="overrideBackgroundColor">
-                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="overrideTextColor">
-                                                <color key="value" red="0.40781933069229126" green="0.40781933069229126" blue="0.40781933069229126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="currency:" destination="Ff3-Gb-K9j" eventType="touchUpInside" id="4hv-fe-7ts"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="6HX-Ca-wu3"/>
-                                    <constraint firstItem="Sfv-Xc-4RJ" firstAttribute="leading" secondItem="w7G-St-KYp" secondAttribute="leading" constant="8" id="6s2-Q3-eb8"/>
-                                    <constraint firstItem="wjq-ai-bJw" firstAttribute="top" secondItem="w7G-St-KYp" secondAttribute="top" constant="4" id="APR-9F-7RQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="wjq-ai-bJw" secondAttribute="trailing" constant="8" id="h3F-SI-PYx"/>
-                                    <constraint firstAttribute="trailing" secondItem="Sfv-Xc-4RJ" secondAttribute="trailing" constant="15" id="ssy-Em-17x"/>
-                                    <constraint firstItem="wjq-ai-bJw" firstAttribute="leading" secondItem="w7G-St-KYp" secondAttribute="leading" constant="8" id="vsW-sM-cKE"/>
-                                    <constraint firstItem="Sfv-Xc-4RJ" firstAttribute="top" secondItem="wjq-ai-bJw" secondAttribute="bottom" constant="3" id="w0l-Yt-NpW"/>
-                                    <constraint firstAttribute="bottom" secondItem="Sfv-Xc-4RJ" secondAttribute="bottom" constant="8" id="zHn-Yt-ShE"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PbW-tC-Dsb" customClass="CTDesignableView">
-                                <rect key="frame" x="9" y="137" width="358" height="61"/>
+                                <rect key="frame" x="9" y="68" width="358" height="61"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDF-O1-h8S" customClass="CTLabel">
                                         <rect key="frame" x="8" y="4" width="342" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="pIA-Y0-IvO"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="qDf-Wa-LHP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -608,14 +556,15 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="jDF-O1-h8S" secondAttribute="trailing" constant="8" id="2js-ya-cFh"/>
                                     <constraint firstItem="Bta-qX-js0" firstAttribute="top" secondItem="jDF-O1-h8S" secondAttribute="bottom" constant="3" id="5zh-cD-53x"/>
-                                    <constraint firstItem="jDF-O1-h8S" firstAttribute="leading" secondItem="PbW-tC-Dsb" secondAttribute="leading" constant="8" id="AkS-zV-n1e"/>
-                                    <constraint firstAttribute="height" constant="61" id="Slr-jd-qZg"/>
-                                    <constraint firstAttribute="bottom" secondItem="Bta-qX-js0" secondAttribute="bottom" constant="8" id="cfT-vB-5XK"/>
-                                    <constraint firstAttribute="trailing" secondItem="Bta-qX-js0" secondAttribute="trailing" constant="8" id="eS5-2z-bz6"/>
-                                    <constraint firstItem="Bta-qX-js0" firstAttribute="leading" secondItem="PbW-tC-Dsb" secondAttribute="leading" constant="8" id="kqb-Wu-lyO"/>
-                                    <constraint firstItem="jDF-O1-h8S" firstAttribute="top" secondItem="PbW-tC-Dsb" secondAttribute="top" constant="4" id="r8c-0P-qkl"/>
+                                    <constraint firstItem="Bta-qX-js0" firstAttribute="leading" secondItem="PbW-tC-Dsb" secondAttribute="leading" constant="8" id="86E-ug-z0d"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bta-qX-js0" secondAttribute="bottom" constant="8" id="H1L-vX-lFq"/>
+                                    <constraint firstAttribute="trailing" secondItem="jDF-O1-h8S" secondAttribute="trailing" constant="8" id="ZG9-PH-2AQ"/>
+                                    <constraint firstItem="Bta-qX-js0" firstAttribute="top" secondItem="jDF-O1-h8S" secondAttribute="bottom" constant="3" id="aiH-fR-Rc7"/>
+                                    <constraint firstItem="jDF-O1-h8S" firstAttribute="top" secondItem="PbW-tC-Dsb" secondAttribute="top" constant="4" id="emJ-cx-FlY"/>
+                                    <constraint firstItem="jDF-O1-h8S" firstAttribute="leading" secondItem="PbW-tC-Dsb" secondAttribute="leading" constant="8" id="fGo-KQ-PTh"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bta-qX-js0" secondAttribute="trailing" constant="8" id="v28-3V-Iws"/>
+                                    <constraint firstAttribute="height" constant="61" id="vgg-UF-vQ9"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -682,26 +631,82 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7G-St-KYp" customClass="CTDesignableView">
+                                <rect key="frame" x="9" y="137" width="358" height="61"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjq-ai-bJw" customClass="CTLabel">
+                                        <rect key="frame" x="8" y="4" width="342" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="Alo-yN-btk"/>
+                                            <constraint firstAttribute="height" constant="16" id="c9j-9h-AQb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sfv-Xc-4RJ" customClass="CTButton">
+                                        <rect key="frame" x="8" y="23" width="342" height="30"/>
+                                        <state key="normal" title="Euro (EUR)">
+                                            <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="overrideBackgroundColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="overrideTextColor">
+                                                <color key="value" red="0.40781933069229126" green="0.40781933069229126" blue="0.40781933069229126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="currency:" destination="Ff3-Gb-K9j" eventType="touchUpInside" id="4hv-fe-7ts"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Sfv-Xc-4RJ" secondAttribute="trailing" constant="8" id="DP8-Bw-SeS"/>
+                                    <constraint firstItem="wjq-ai-bJw" firstAttribute="leading" secondItem="w7G-St-KYp" secondAttribute="leading" constant="8" id="Ei9-R2-4vr"/>
+                                    <constraint firstAttribute="bottom" secondItem="Sfv-Xc-4RJ" secondAttribute="bottom" constant="8" id="EpC-Xc-gMj"/>
+                                    <constraint firstAttribute="height" constant="61" id="FD2-eO-leO"/>
+                                    <constraint firstItem="wjq-ai-bJw" firstAttribute="top" secondItem="w7G-St-KYp" secondAttribute="top" constant="4" id="Inx-yQ-S3x"/>
+                                    <constraint firstItem="Sfv-Xc-4RJ" firstAttribute="leading" secondItem="w7G-St-KYp" secondAttribute="leading" constant="8" id="dUg-0T-pSg"/>
+                                    <constraint firstItem="Sfv-Xc-4RJ" firstAttribute="top" secondItem="wjq-ai-bJw" secondAttribute="bottom" constant="3" id="hCQ-Xm-M9F"/>
+                                    <constraint firstItem="Sfv-Xc-4RJ" firstAttribute="top" secondItem="wjq-ai-bJw" secondAttribute="bottom" constant="3" id="w0l-Yt-NpW"/>
+                                    <constraint firstAttribute="trailing" secondItem="wjq-ai-bJw" secondAttribute="trailing" constant="8" id="zDd-Qv-dgv"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="w7G-St-KYp" secondAttribute="trailing" constant="8" id="14J-NI-q8f"/>
                             <constraint firstItem="fvr-Lp-Udg" firstAttribute="top" secondItem="jpb-4Q-7Es" secondAttribute="top" id="33I-GY-zpU"/>
-                            <constraint firstItem="PbW-tC-Dsb" firstAttribute="leading" secondItem="jpb-4Q-7Es" secondAttribute="leading" constant="9" id="3dy-SP-2Q0"/>
                             <constraint firstAttribute="trailing" secondItem="fvr-Lp-Udg" secondAttribute="trailing" id="8R9-eg-iSq"/>
-                            <constraint firstItem="PbW-tC-Dsb" firstAttribute="top" secondItem="w7G-St-KYp" secondAttribute="bottom" constant="8" id="FoA-Wx-sPN"/>
+                            <constraint firstAttribute="trailing" secondItem="w7G-St-KYp" secondAttribute="trailing" constant="8" id="9WS-AU-ffw"/>
+                            <constraint firstItem="PbW-tC-Dsb" firstAttribute="leading" secondItem="jpb-4Q-7Es" secondAttribute="leading" constant="9" id="AAH-ne-aaX"/>
+                            <constraint firstItem="w7G-St-KYp" firstAttribute="leading" secondItem="jpb-4Q-7Es" secondAttribute="leading" constant="9" id="FrE-vr-3mz"/>
+                            <constraint firstItem="w7G-St-KYp" firstAttribute="top" secondItem="PbW-tC-Dsb" secondAttribute="bottom" constant="8" id="K3t-mv-9IH"/>
                             <constraint firstItem="gRl-YW-7Oc" firstAttribute="leading" secondItem="jpb-4Q-7Es" secondAttribute="leading" constant="9" id="Ku2-ts-uKs"/>
-                            <constraint firstItem="w7G-St-KYp" firstAttribute="top" secondItem="fvr-Lp-Udg" secondAttribute="bottom" constant="8" id="NqC-yr-STc"/>
+                            <constraint firstItem="gRl-YW-7Oc" firstAttribute="top" secondItem="w7G-St-KYp" secondAttribute="bottom" constant="8" id="MjH-5G-Gji"/>
                             <constraint firstAttribute="trailing" secondItem="gRl-YW-7Oc" secondAttribute="trailing" constant="8" id="Sgm-F3-gpG"/>
-                            <constraint firstItem="w7G-St-KYp" firstAttribute="leading" secondItem="jpb-4Q-7Es" secondAttribute="leading" constant="9" id="UVx-Cl-yp8"/>
-                            <constraint firstItem="gRl-YW-7Oc" firstAttribute="top" secondItem="PbW-tC-Dsb" secondAttribute="bottom" constant="8" id="bsF-SB-bnR"/>
-                            <constraint firstAttribute="trailing" secondItem="PbW-tC-Dsb" secondAttribute="trailing" constant="8" id="jes-9H-s71"/>
+                            <constraint firstItem="PbW-tC-Dsb" firstAttribute="top" secondItem="fvr-Lp-Udg" secondAttribute="bottom" constant="8" id="kFr-Q3-CxA"/>
                             <constraint firstItem="fvr-Lp-Udg" firstAttribute="leading" secondItem="jpb-4Q-7Es" secondAttribute="leading" id="q8H-DF-2iE"/>
+                            <constraint firstAttribute="trailing" secondItem="PbW-tC-Dsb" secondAttribute="trailing" constant="8" id="vBI-Gc-fxj"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="countryButton" destination="Bta-qX-js0" id="RdN-KU-AGh"/>
                         <outlet property="currencyButton" destination="Sfv-Xc-4RJ" id="si1-eG-9F8"/>
+                        <outlet property="currencyView" destination="w7G-St-KYp" id="aYq-sh-kmc"/>
                         <outlet property="languageButton" destination="gh1-0v-uIg" id="kRH-u2-GRn"/>
                     </connections>
                 </viewController>
