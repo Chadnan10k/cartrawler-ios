@@ -105,6 +105,7 @@
                                                                                             
                     if (response.items.count > 0) {
                         [CTRentalSearch instance].vehicleAvailability = response;
+                        [[CTRentalSearch instance] setEngineInfoFromAvail];
                         _defaultSearch = [[CTRentalSearch instance] copy];
                         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
                                                                                      ascending:YES];

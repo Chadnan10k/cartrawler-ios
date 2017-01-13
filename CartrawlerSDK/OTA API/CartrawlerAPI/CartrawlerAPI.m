@@ -12,6 +12,7 @@
 #import "CartrawlerAPI+NSDate.h"
 #import "CTNetworkUtils.h"
 #import "CTRequestBuilder.h"
+#import "CT_IpToCountryRQ.h"
 
 @interface CartrawlerAPI ()
 
@@ -50,12 +51,16 @@
         _apiTarget = CTProductionTarget;
     }
     
-    _ipAddress = @"127.0.0.1";
-    
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        _ipAddress = [CTNetworkUtils IPAddress];
-    });
-    
+    //lets fire off a request to get the engine info
+    //move this to SDK
+    [CT_IpToCountryRQ performRequest:clientKey
+                            currency:@"EUR"
+                        languageCode:@"EN"
+                         countryCode:@"IE"
+                              target:@"Test"
+                          completion:^(CT_IpToCountryRS *response, CTErrorResponse *error) {
+                              
+                          }];
     return self;
 }
 

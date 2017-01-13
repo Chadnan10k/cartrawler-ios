@@ -29,7 +29,7 @@
                              queryID:[CTSDKSettings instance].queryID ?: @""
                                 step:step];
     
-    [self fireTag:tag.toDictionary];
+    [self fireTag:tag.produceURL];
 }
 
 + (void)tagError:(nonnull NSString *)step
@@ -43,36 +43,10 @@
                                        engineLoadID:[CTSDKSettings instance].engineLoadID
                                            clientId:[CTSDKSettings instance].clientId
                                              target:[CTSDKSettings instance].target];
-    [self fireErrorTag:errorTag.produceURL];
+    [self fireTag:errorTag.produceURL];
 }
 
-+ (void)fireTag:(NSDictionary *)tagDict
-{
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:Nil];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    request.URL = [NSURL URLWithString:@"https://tag.cartrawler.com/"];
-    request.HTTPMethod = @"POST";
-    request.timeoutInterval = 10;
-    NSError *error;
-    NSData *processedData = [NSJSONSerialization dataWithJSONObject:tagDict
-                                                            options:NSJSONWritingPrettyPrinted
-                                                              error:&error];
-    [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
-    request.HTTPBody = processedData;
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-                                            completionHandler:
-                                  ^(NSData *data, NSURLResponse *response, NSError *error) {
-                                      if (error) {
-                                          NSLog(@"CartrawlerSDK: Can't push tag");
-                                      } 
-                                  }];
-    [task resume];
-    [session finishTasksAndInvalidate];
-}
-
-+ (void)fireErrorTag:(NSURL *)url
++ (void)fireTag:(NSURL *)url
 {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:Nil];
@@ -85,7 +59,8 @@
                       completionHandler:
             ^(NSData *data, NSURLResponse *response, NSError *error) {
                 if (error) {
-                    NSLog(@"CartrawlerSDK: Can't push error tag");
+                    
+                    NSLog(@"CartrawlerSDK: Can't push tag");
                 }
             }];
     [task resume];
