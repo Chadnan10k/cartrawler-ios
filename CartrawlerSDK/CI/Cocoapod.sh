@@ -3,7 +3,7 @@
 #  CI
 #
 #  Created by Lee Maguire on 03/01/2017.
-#  Use this script to build a fat library -> push it to the build dump repo -> create a version tag with git -> create a pod spec and push to cocoapods
+#  push it to the build dump repo -> create a version tag with git -> create a pod spec and push to cocoapods
 
 echo "WE WILL NOW PUSH TO COCOAPODS ☕️"
 
@@ -36,4 +36,5 @@ sed -i .temp "s/FRAMEWORK_NAME/${FRAMEWORK_NAME}/g; s/FRAMEWORK_VERSION/${BUILD_
 cd "${PROJECT_DIR}/"
 echo "Pushing pod spec ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec"
 export LANG=en_US.UTF-8
+pod spec lint ${FRAMEWORK_NAME}.podspec
 pod repo push cartrawlerpods ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec

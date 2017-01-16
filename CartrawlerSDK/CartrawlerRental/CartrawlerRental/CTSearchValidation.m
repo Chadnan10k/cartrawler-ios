@@ -68,7 +68,7 @@
                                                       } else {
                                                           dispatch_async(dispatch_get_main_queue(), ^{
                                                               completion(NO, error.errorMessage, NO);
-                                                              [CTAnalytics tagError:@"step1" event:@"VehAvail search" message:error.errorMessage];
+                                                              [[CTAnalytics instance] tagError:@"step1" event:@"VehAvail search" message:error.errorMessage];
                                                           });
                                                       }
                                                   }];

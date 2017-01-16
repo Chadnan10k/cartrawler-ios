@@ -28,7 +28,7 @@
              queryID:(NSString *)queryID
                 step:(NSNumber *)step;
 
-- (NSDictionary *)toDictionary;
-- (NSString *)urlEncoded;
+
+- (NSURL *)produceURL;
 
 @end

@@ -12,6 +12,7 @@
 #import "CartrawlerAPI+NSDate.h"
 #import "CTNetworkUtils.h"
 #import "CTRequestBuilder.h"
+#import "CT_IpToCountryRQ.h"
 
 @interface CartrawlerAPI ()
 
@@ -37,7 +38,7 @@
     _locale = language;
     _loggingEnabled = NO;
     _postRequest = [[CTPostRequest alloc] init];
-    
+    _ipAddress = @"127.0.0.1";//initial value
     if (debug) {
         _endPoint = CTTestAPI;
         _secureEndPoint = CTTestAPISecure;
@@ -49,19 +50,32 @@
         _secureEndPoint = CTProductionAPISecure;
         _apiTarget = CTProductionTarget;
     }
-    
-    _ipAddress = @"127.0.0.1";
-    
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        _ipAddress = [CTNetworkUtils IPAddress];
-    });
-    
+
     return self;
 }
 
 - (void)cancelAllRequests
 {
     [self.postRequest cancel];
+}
+
+#pragma mark Get Engine Details
+
+- (void)requestNewSession:(NSString *)currencyCode
+             languageCode:(NSString *)languageCode
+              countryCode:(NSString *)countryCode
+               completion:(EngineDetailsCompletion)completion
+{
+    __weak typeof (self) weakSelf = self;
+    [CT_IpToCountryRQ performRequest:self.clientAPIKey
+                            currency:currencyCode
+                        languageCode:languageCode
+                         countryCode:countryCode
+                              target:self.apiTarget
+                          completion:^(CT_IpToCountryRS *response, CTErrorResponse *error) {
+                              weakSelf.ipAddress = response.ipAddress;
+                              completion(response, error);
+                          }];
 }
 
 #pragma mark Location Search

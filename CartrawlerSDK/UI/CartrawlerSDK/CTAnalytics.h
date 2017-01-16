@@ -10,14 +10,20 @@
 #import "CTTag.h"
 #import "CTErrorTag.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface CTAnalytics : NSObject
 
-+ (void)tagScreen:(nonnull NSString *)name
++ (instancetype)instance;
+
+- (void)tagScreen:(nonnull NSString *)name
            detail:(nonnull NSString *)detail
              step:(nonnull NSNumber *)step;
 
-+ (void)tagError:(nonnull NSString *)step
+- (void)tagError:(nonnull NSString *)step
            event:(nonnull NSString *)event
          message:(nonnull NSString *)message;
 
 @end
+
+NS_ASSUME_NONNULL_END

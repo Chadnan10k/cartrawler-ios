@@ -10,11 +10,6 @@
 
 @implementation CTPaymentRequest
 
-+ (NSString *)currencyHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency
-{
-    return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.002\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": {\"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
-}
-
 + (NSString *) OTA_VehResRQ:(NSString *)pickupDateTime
              returnDateTime:(NSString *)returnDateTime
          pickupLocationCode:(NSString *)pickupLocationCode
@@ -41,8 +36,16 @@
 
 {
     
+    NSString *insuranceJson = @"";
+    NSString *addressLine = @"";
+    
+    if (isBuyingInsurance) {
+        insuranceJson =     [NSString stringWithFormat:@"\"Reference\":{\"@Type\":\"16\"\r,\"@ID\":\"%@\"\r,\"@ID_Context\":\"INSURANCE\"\r,\"@Amount\":\"%@\"\r,\"@CurrencyCode\":\"%@\"\r,\"@URL\":\"%@\"},", ins.planID, ins.premiumAmount, ins.premiumCurrencyCode, ins.termsAndConditionsURL];
+    
+        addressLine = [NSString stringWithFormat:@"\"AddressLine\":\"%@\", \r", address];
+    }
+    
     NSString *extrasString = @"";
-    NSString *tail = @"";
     NSMutableArray *validExtras = [[NSMutableArray alloc] init];
     
     for (CTExtraEquipment *e in extrasArray) {
@@ -53,11 +56,11 @@
     
     if (validExtras.count > 0) {
         
-        extrasString = [extrasString stringByAppendingString:@",\"SpecialEquipPrefs\":{\"SpecialEquipPref\":["];
+        extrasString = [extrasString stringByAppendingString:@",\"SpecialEquipPrefs\":{\"SpecialEquipPref\":[\r"];
         for (int i = 0; i < validExtras.count; i++) {
             CTExtraEquipment *e = (CTExtraEquipment *)validExtras[i];
             if (e.qty != 0) {
-                extrasString = [extrasString stringByAppendingString:[NSString stringWithFormat:@"{\"@EquipType\":\"%@\",\"@Quantity\":\"%li\"}",e.equipType, (long)e.qty]];
+                extrasString = [extrasString stringByAppendingString:[NSString stringWithFormat:@"{\"@EquipType\":\"%@\",\"@Quantity\":\"%li\"}\r",e.equipType, (long)e.qty]];
                 if (validExtras.count > 1) {
                     if ((i + 1) != (validExtras.count)) {
                         extrasString = [extrasString stringByAppendingString:@","];
@@ -65,36 +68,111 @@
                 }
             }
         }
-        extrasString = [extrasString stringByAppendingString:@"]}"];
+        extrasString = [extrasString stringByAppendingString:@"]}\r"];
     } else {
         extrasString = @"";
     }
     
-    NSString *paymentExtension = [NSString stringWithFormat:@"\"RentalPaymentPref\":{\"PaymentCard\":{\"@CardType\":\"1\",\"@CardCode\":\"%@\",\"@CardNumber\":\"%@\",\"@ExpireDate\":\"%@\",\"@SeriesCode\":\"%@\",\"CardHolderName\":\"%@\"}},", @"[CARDCODE]", @"[CARDNUMBER]", @"[EXPIREDATE]", @"[SERIESCODE]", @"[CARDHOLDERNAME]"];
+    NSString *flightDetails = @"";
     
     if (flightNumber != nil && flightNumber.length > 2) {
         NSString *flightNumberPrefixString = [flightNumber substringToIndex:2];
         NSString *flightNumberString = [flightNumber substringFromIndex:2];
-        
-        if (isBuyingInsurance) {
-            // Tested, this works.
-            tail = [NSString stringWithFormat:@"\"VehResRQCore\":{\"@Status\":\"All\",\"VehRentalCore\":{\"@PickUpDateTime\":\"%@\",\"@ReturnDateTime\":\"%@\",\"PickUpLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"},\"ReturnLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"}},\"Customer\":{\"Primary\":{\"PersonName\":{\"GivenName\":\"%@\",\"Surname\":\"%@\"},\"Telephone\":{\"@PhoneTechType\":\"1\",\"@PhoneNumber\":\"%@\"},\"Email\":{\"@EmailType\":\"2\",\"#text\":\"%@\"},\"Address\":{\"@Type\":\"2\",\"AddressLine\":\"%@\",\"CountryName\":{\"@Code\":\"%@\"}},\"CitizenCountryName\":{\"@Code\":\"%@\"}}},\"DriverType\":{\"@Age\":\"%@\"}%@},\"VehResRQInfo\":{\"@PassengerQty\":\"%@\",\"ArrivalDetails\":{\"@TransportationCode\":\"14\",\"@Number\":\"%@\",\"OperatingCompany\":\"%@\"},%@\"Reference\":{\"@Type\":\"16\",\"@ID\":\"%@\",\"@ID_Context\":\"CARTRAWLER\",\"@DateTime\":\"%@\",\"@URL\":\"%@\"},\"TPA_Extensions\":{\"Reference\":{\"@Type\":\"16\",\"@ID\":\"%@\",\"@ID_Context\":\"INSURANCE\",\"@Amount\":\"%@\",\"@CurrencyCode\":\"%@\",\"@URL\":\"%@\"}}}" ,pickupDateTime, returnDateTime, pickupLocationCode, dropoffLocationCode, givenName, surName, phoneNumber, emailAddress, address, homeCountry, homeCountry, driverAge, extrasString, numPassengers, flightNumberString, flightNumberPrefixString, paymentExtension, refID, refTimeStamp, refURL, ins.planID, ins.premiumAmount, ins.premiumCurrencyCode, ins.termsAndConditionsURL];
-        } else {
-            // Tested this works.
-            tail = [NSString stringWithFormat:@"\"VehResRQCore\":{\"@Status\":\"All\",\"VehRentalCore\":{\"@PickUpDateTime\":\"%@\",\"@ReturnDateTime\":\"%@\",\"PickUpLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"},\"ReturnLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"}},\"Customer\":{\"Primary\":{\"PersonName\":{\"GivenName\":\"%@\",\"Surname\":\"%@\"},\"Telephone\":{\"@PhoneTechType\":\"1\",\"@PhoneNumber\":\"%@\"},\"Email\":{\"@EmailType\":\"2\",\"#text\":\"%@\"},\"Address\":{\"CountryName\":{\"@Code\":\"%@\"}},\"CitizenCountryName\":{\"@Code\":\"%@\"}}},\"DriverType\":{\"@Age\":\"%@\"}%@},\"VehResRQInfo\":{\"@PassengerQty\":\"%@\",\"ArrivalDetails\":{\"@TransportationCode\":\"14\",\"@Number\":\"%@\",\"OperatingCompany\":\"%@\"},%@\"Reference\":{\"@Type\":\"16\",\"@ID\":\"%@\",\"@ID_Context\":\"CARTRAWLER\",\"@DateTime\":\"%@\",\"@URL\":\"%@\"}}" ,pickupDateTime, returnDateTime, pickupLocationCode, dropoffLocationCode, givenName, surName, phoneNumber, emailAddress, homeCountry, homeCountry, driverAge, extrasString, numPassengers, flightNumberString, flightNumberPrefixString, paymentExtension, refID, refTimeStamp, refURL];
-        }
-    } else {
-        // There isn't a flight number
-        if (isBuyingInsurance) {
-            // Tested, this works.
-            tail = [NSString stringWithFormat:@"\"VehResRQCore\":{\"@Status\":\"All\",\"VehRentalCore\":{\"@PickUpDateTime\":\"%@\",\"@ReturnDateTime\":\"%@\",\"PickUpLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"},\"ReturnLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"}},\"Customer\":{\"Primary\":{\"PersonName\":{\"GivenName\":\"%@\",\"Surname\":\"%@\"},\"Telephone\":{\"@PhoneTechType\":\"1\",\"@PhoneNumber\":\"%@\"},\"Email\":{\"@EmailType\":\"2\",\"#text\":\"%@\"},\"Address\":{\"@Type\":\"2\",\"AddressLine\":\"%@\",\"CountryName\":{\"@Code\":\"%@\"}},\"CitizenCountryName\":{\"@Code\":\"%@\"}}},\"DriverType\":{\"@Age\":\"%@\"}%@},\"VehResRQInfo\":{\"@PassengerQty\":\"%@\",%@\"Reference\":{\"@Type\":\"16\",\"@ID\":\"%@\",\"@ID_Context\":\"CARTRAWLER\",\"@DateTime\":\"%@\",\"@URL\":\"%@\"},\"TPA_Extensions\":{\"Reference\":{\"@Type\":\"16\",\"@ID\":\"%@\",\"@ID_Context\":\"INSURANCE\",\"@Amount\":\"%@\",\"@CurrencyCode\":\"%@\",\"@URL\":\"%@\"}}}" ,pickupDateTime, returnDateTime, pickupLocationCode, dropoffLocationCode, givenName, surName, phoneNumber, emailAddress, address, homeCountry, homeCountry, driverAge, extrasString, numPassengers, paymentExtension, refID, refTimeStamp, refURL, ins.planID, ins.premiumAmount, ins.premiumCurrencyCode, ins.termsAndConditionsURL];
-        } else {
-            // Tested, this works.
-            tail = [NSString stringWithFormat:@"\"VehResRQCore\":{\"@Status\":\"All\",\"VehRentalCore\":{\"@PickUpDateTime\":\"%@\",\"@ReturnDateTime\":\"%@\",\"PickUpLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"},\"ReturnLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"}},\"Customer\":{\"Primary\":{\"PersonName\":{\"GivenName\":\"%@\",\"Surname\":\"%@\"},\"Telephone\":{\"@PhoneTechType\":\"1\",\"@PhoneNumber\":\"%@\"},\"Email\":{\"@EmailType\":\"2\",\"#text\":\"%@\"},\"Address\":{\"CountryName\":{\"@Code\":\"%@\"}},\"CitizenCountryName\":{\"@Code\":\"%@\"}}},\"DriverType\":{\"@Age\":\"%@\"}%@},\"VehResRQInfo\":{\"@PassengerQty\":\"%@\",%@\"Reference\":{\"@Type\":\"16\",\"@ID\":\"%@\",\"@ID_Context\":\"CARTRAWLER\",\"@DateTime\":\"%@\",\"@URL\":\"%@\"}}" ,pickupDateTime, returnDateTime, pickupLocationCode, dropoffLocationCode, givenName, surName, phoneNumber, emailAddress, homeCountry, homeCountry, driverAge, extrasString, numPassengers, paymentExtension, refID, refTimeStamp, refURL];
-        }
+        flightDetails = [NSString stringWithFormat:@"\"ArrivalDetails\":{\"@TransportationCode\":\"14\",\"@Number\":\"%@\",\"OperatingCompany\":\"%@\"}, \r", flightNumberPrefixString, flightNumberString];
     }
     
-    return [NSString stringWithFormat:@"{%@%@}", [self currencyHeader:clientID target:target locale:locale currency:currency], tail];
+    NSString *json = [NSString stringWithFormat:
+    @"{ \r"
+    @"    \"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\", \r"
+    @"    \"@Version\":\"1.002\", \r"
+    @"    \"@Target\":\"%@\", \r"
+    @"    \"@PrimaryLangID\":\"%@\", \r"
+    @"    \"POS\":{ \r"
+    @"        \"Source\":{ \r"
+    @"            \"@ISOCurrency\":\"%@\", \r"
+    @"            \"RequestorID\":{ \r"
+    @"                \"@Type\":\"16\", \r"
+    @"                \"@ID\":\"%@\", \r"
+    @"                \"@ID_Context\":\"CARTRAWLER\" \r"
+    @"            } \r"
+    @"        } \r"
+    @"    }, \r"
+    @"    \"VehResRQCore\":{ \r"
+    @"        \"@Status\":\"All\", \r"
+    @"        \"VehRentalCore\":{ \r"
+    @"            \"@PickUpDateTime\":\"%@\", \r"
+    @"            \"@ReturnDateTime\":\"%@\", \r"
+    @"            \"PickUpLocation\":{ \r"
+    @"                \"@CodeContext\":\"CARTRAWLER\", \r"
+    @"                \"@LocationCode\":\"%@\" \r"
+    @"            }, "
+    @"            \"ReturnLocation\":{ \r"
+    @"                \"@CodeContext\":\"CARTRAWLER\", \r"
+    @"                \"@LocationCode\":\"%@\" \r"
+    @"            } \r"
+    @"        }, \r"
+    @"        \"Customer\":{ \r"
+    @"            \"Primary\":{ \r"
+    @"                \"PersonName\":{ \r"
+    @"                    \"GivenName\":\"%@\", \r"
+    @"                    \"Surname\":\"%@\" \r"
+    @"                }, \r"
+    @"                \"Telephone\":{ \r"
+    @"                    \"@PhoneTechType\":\"1\", \r"
+    @"                    \"@PhoneNumber\":\"%@\" \r"
+    @"                }, \r"
+    @"                \"Email\":{ \r"
+    @"                    \"@EmailType\":\"2\", \r"
+    @"                    \"#text\":\"%@\" \r"
+    @"                }, \r"
+    @"                \"Address\":{ \r"
+    @"                    \"@Type\":\"2\", \r"
+    @"                    %@               \r"
+    @"                    \"CountryName\":{ \r"
+    @"                        \"@Code\":\"%@\" \r"
+    @"                    } \r"
+    @"                }, \r"
+    @"                \"CitizenCountryName\":{ \r"
+    @"                    \"@Code\":\"%@\" \r"
+    @"                } \r"
+    @"            } \r"
+    @"        }, \r"
+    @"        \"DriverType\":{  \r"
+    @"            \"@Age\":\"%@\"  \r"
+    @"        }  \r"
+    @"          %@    \r"
+    @"    },  \r"
+    @"    \"VehResRQInfo\":{ \r "
+    @"        \"@PassengerQty\":\"1\", \r "
+    @"               %@                      \r "
+    @"        \"RentalPaymentPref\":{  \r"
+    @"            \"PaymentCard\":{  \r"
+    @"                \"@CardType\":\"1\",  \r"
+    @"                \"@CardCode\":\"[CARDCODE]\",  \r"
+    @"                \"@CardNumber\":\"[CARDNUMBER]\",  \r"
+    @"                \"@ExpireDate\":\"[EXPIREDATE]\",  \r"
+    @"                \"@SeriesCode\":\"[SERIESCODE]\",  \r"
+    @"                \"CardHolderName\":\"[CARDHOLDERNAME]\" \r "
+    @"            }  \r"
+    @"        }, \r "
+    @"        \"Reference\":{  \r"
+    @"            \"@Type\":\"16\",  \r"
+    @"            \"@ID\":\"%@\", \r "
+    @"            \"@ID_Context\":\"CARTRAWLER\",  \r"
+    @"            \"@DateTime\":\"%@\",  \r"
+    @"            \"@URL\":\"%@\"  \r"
+    @"        },  \r"
+    @"        \"TPA_Extensions\":{  \r"
+    @"               %@             \r"
+    @"            \"Window\": { \r "
+    @"                \"@name\": \"IOS-V3\", \r "
+    @"                \"@engine\": \"IOS-V3\" \r "
+    @"            } \r"
+    @"        } \r"
+    @"    } \r"
+    @" }", target, locale, currency, clientID, pickupDateTime, returnDateTime, pickupLocationCode, dropoffLocationCode, givenName, surName, phoneNumber, emailAddress, addressLine, homeCountry, homeCountry, driverAge, extrasString, flightDetails, refID, refTimeStamp, refURL, insuranceJson];
+        
+    return json;
 }
 
 @end

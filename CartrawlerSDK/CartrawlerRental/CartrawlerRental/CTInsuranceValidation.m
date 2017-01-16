@@ -74,7 +74,7 @@
              
          } else {
              if (error) {
-                 [CTAnalytics tagError:@"step4" event:@"InsuranceQuoteRQ fail" message:error.errorMessage];
+                 [[CTAnalytics instance] tagError:@"step4" event:@"InsuranceQuoteRQ fail" message:error.errorMessage];
              }
              dispatch_async(dispatch_get_main_queue(), ^{
                  if (search.selectedVehicle.vehicle.extraEquipment.count > 0) {

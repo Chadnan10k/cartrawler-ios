@@ -9,9 +9,28 @@
 #import "CTAnalytics.h"
 #import "CTSDKSettings.h"
 
+@interface CTAnalytics()
+
+@property (nonatomic, strong) NSURLSessionConfiguration *config;
+@property (nonatomic, strong) NSMutableURLRequest *request;
+@property (nonatomic, strong) NSURLSessionDataTask *task;
+@end
+
 @implementation CTAnalytics
 
-+ (void)tagScreen:(nonnull NSString *)name
++ (instancetype)instance
+{
+    static CTAnalytics *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[CTAnalytics alloc] init];
+        sharedInstance.config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        sharedInstance.request = [[NSMutableURLRequest alloc] init];
+    });
+    return sharedInstance;
+}
+
+- (void)tagScreen:(nonnull NSString *)name
            detail:(nonnull NSString *)detail
              step:(nonnull NSNumber *)step
 {
@@ -29,10 +48,10 @@
                              queryID:[CTSDKSettings instance].queryID ?: @""
                                 step:step];
     
-    [self fireTag:tag.toDictionary];
+    [self fireTag:tag.produceURL];
 }
 
-+ (void)tagError:(nonnull NSString *)step
+- (void)tagError:(nonnull NSString *)step
            event:(nonnull NSString *)event
          message:(nonnull NSString *)message
 {
@@ -43,51 +62,18 @@
                                        engineLoadID:[CTSDKSettings instance].engineLoadID
                                            clientId:[CTSDKSettings instance].clientId
                                              target:[CTSDKSettings instance].target];
-    [self fireErrorTag:errorTag.produceURL];
+    [self fireTag:errorTag.produceURL];
 }
 
-+ (void)fireTag:(NSDictionary *)tagDict
+- (void)fireTag:(NSURL *)url
 {
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:Nil];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    request.URL = [NSURL URLWithString:@"https://tag.cartrawler.com/"];
-    request.HTTPMethod = @"POST";
-    request.timeoutInterval = 10;
-    NSError *error;
-    NSData *processedData = [NSJSONSerialization dataWithJSONObject:tagDict
-                                                            options:NSJSONWritingPrettyPrinted
-                                                              error:&error];
-    [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
-    request.HTTPBody = processedData;
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-                                            completionHandler:
-                                  ^(NSData *data, NSURLResponse *response, NSError *error) {
-                                      if (error) {
-                                          NSLog(@"CartrawlerSDK: Can't push tag");
-                                      } 
-                                  }];
-    [task resume];
-    [session finishTasksAndInvalidate];
-}
-
-+ (void)fireErrorTag:(NSURL *)url
-{
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:Nil];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    request.URL = url;
-    request.HTTPMethod = @"GET";
-    request.timeoutInterval = 10;
-
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-                      completionHandler:
-            ^(NSData *data, NSURLResponse *response, NSError *error) {
-                if (error) {
-                    NSLog(@"CartrawlerSDK: Can't push error tag");
-                }
-            }];
+    NSURLSession *session = [NSURLSession sharedSession];
+    self.request.URL = url;
+    self.request.HTTPMethod = @"GET";
+    self.request.timeoutInterval = 10;
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:self.request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+    }];
     [task resume];
     [session finishTasksAndInvalidate];
 }

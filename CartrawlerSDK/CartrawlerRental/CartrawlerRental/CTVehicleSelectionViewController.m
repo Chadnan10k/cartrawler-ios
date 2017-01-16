@@ -62,7 +62,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [CTAnalytics tagScreen:@"Step" detail:@"vehicles" step:@2];
+    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles" step:@2];
     [self produceHeaderText];
 }
 

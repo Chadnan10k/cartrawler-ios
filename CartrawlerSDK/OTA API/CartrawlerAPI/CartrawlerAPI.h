@@ -24,6 +24,7 @@
 #import "CTGroundAvailability.h"
 #import "CTGroundBooking.h"
 #import "CTGroundCustomer.h"
+#import "CT_IpToCountryRS.h"
 
 //! Project version number for CartrawlerAPI.
 FOUNDATION_EXPORT double CartrawlerAPIVersionNumber;
@@ -41,6 +42,7 @@ FOUNDATION_EXPORT const unsigned char CartrawlerAPIVersionString[];
  */
 @interface CartrawlerAPI : NSObject
 
+typedef void (^EngineDetailsCompletion)(CT_IpToCountryRS *response, CTErrorResponse *error);
 typedef void (^LocationSearchCompletion)(CTLocationSearch *response, CTErrorResponse *error);
 typedef void (^RequestAvailabilityCompletion)(CTVehicleAvailability*response, CTErrorResponse *error);
 typedef void (^InsuranceQuoteCompletion)(CTInsurance *response, CTErrorResponse *error);
@@ -64,6 +66,19 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
  *  Shows API requests and responses
  */
 - (void)enableLogging:(BOOL)enabled;
+
+/**
+ *  Gets your ip address and grabs a new engine load ID and customer ID
+ *
+ *  @param currencyCode currency code of choice
+ *  @param languageCode language code of choice
+ *  @param countryCode country code of choice
+ *  @param completion If successful you get a CT_IpToCountryRS, If failure an ErrorResponse will be returned
+ */
+- (void)requestNewSession:(NSString *)currencyCode
+             languageCode:(NSString *)languageCode
+              countryCode:(NSString *)countryCode
+               completion:(EngineDetailsCompletion)completion;
 
 #pragma mark Location Search
 

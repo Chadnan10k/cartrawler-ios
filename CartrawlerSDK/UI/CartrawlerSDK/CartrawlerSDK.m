@@ -26,12 +26,38 @@
     _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
                                                      language:[CTSDKSettings instance].languageCode
                                                         debug:[CTSDKSettings instance].isDebug];
-    if (sandboxMode) {
-        [self.cartrawlerAPI enableLogging:YES];
-    }
+    [self setNewSession];
 
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     return self;
+}
+
+- (void)enableLogs:(BOOL)enable
+{
+    if (enable) {
+        [self.cartrawlerAPI enableLogging:YES];
+    }
+}
+
+- (void)setNewSession
+{
+    static int trys;
+    [self.cartrawlerAPI requestNewSession:[CTSDKSettings instance].currencyCode
+                             languageCode:[CTSDKSettings instance].languageCode
+                              countryCode:[CTSDKSettings instance].homeCountryCode
+                               completion:^(CT_IpToCountryRS *response, CTErrorResponse *error) {
+                                   if (response) {
+                                       [CTSDKSettings instance].engineLoadID = response.engineLoadID;
+                                       [CTSDKSettings instance].customerID = response.customerID;
+                                   } else {
+                                       //retry
+                                       if (trys < 3) {
+                                           [self setNewSession];
+                                           ++trys;
+                                       }
+                                       [[CTAnalytics instance] tagError:@"sdk init" event:@"requestNewSession" message:error.errorMessage];
+                                   }
+                               }];
 }
 
 + (CTAppearance *)appearance
@@ -75,8 +101,7 @@ void uncaughtExceptionHandler(NSException *exception)
 {
     NSLog(@"\n\n\nCartrawlerSDK Crash:\n%@\n\n\n", exception);
     NSLog(@"\n\n\nCartrawlerSDK Stack Trace:\n\n\n%@", exception.callStackSymbols);
-    [CTAnalytics tagError:@"stepX" event:@"SDK CRASH" message:[NSString stringWithFormat:@"%@", exception.callStackSymbols]];
+    [[CTAnalytics instance] tagError:@"stepX" event:@"SDK CRASH" message:[NSString stringWithFormat:@"%@", exception.callStackSymbols]];
 }
-
 
 @end
