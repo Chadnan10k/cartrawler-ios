@@ -11,7 +11,7 @@ import Foundation
 @discardableResult
 func shell(_ args: String...) -> String {
     let task = Process()
-    task.launchPath = "/usr/bin/env"
+    task.launchPath = "/bin/sh"
     task.arguments = args
     let pipe = Pipe()
     task.standardOutput = pipe
