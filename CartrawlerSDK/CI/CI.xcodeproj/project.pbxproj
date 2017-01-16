@@ -140,7 +140,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swift BuildTestApp.swift";
+			shellScript = "pod install\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
