@@ -29,6 +29,17 @@
 			name = "Local Build All";
 			productName = "Local Build All";
 		};
+		BC6404861E2D1DE60026A305 /* CI Sample App */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = BC6404891E2D1DE60026A305 /* Build configuration list for PBXAggregateTarget "CI Sample App" */;
+			buildPhases = (
+				BC64048A1E2D1E100026A305 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "CI Sample App";
+			productName = "CI Sample App";
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +78,10 @@
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
 					};
+					BC6404861E2D1DE60026A305 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 45CB04821DEDD1600086BEA0 /* Build configuration list for PBXProject "CI" */;
@@ -82,6 +97,7 @@
 			targets = (
 				4539561B1E1EA2EE00B66350 /* CI Build All */,
 				45BA0F691E1FA29F00EB26ED /* Local Build All */,
+				BC6404861E2D1DE60026A305 /* CI Sample App */,
 			);
 		};
 /* End PBXProject section */
@@ -112,6 +128,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildAPI\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildSDK\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildRental\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildInPath\n\n";
+		};
+		BC64048A1E2D1E100026A305 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "swift BuildTestApp.swift";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -196,6 +225,20 @@
 			};
 			name = Release;
 		};
+		BC6404871E2D1DE60026A305 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BC6404881E2D1DE60026A305 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -225,6 +268,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		BC6404891E2D1DE60026A305 /* Build configuration list for PBXAggregateTarget "CI Sample App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC6404871E2D1DE60026A305 /* Debug */,
+				BC6404881E2D1DE60026A305 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

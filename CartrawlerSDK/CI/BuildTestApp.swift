@@ -8,12 +8,22 @@
 
 import Foundation
 
-//get latest pods 
+@discardableResult
+func shell(_ args: String...) -> String {
+    let task = Process()
+    task.launchPath = "/usr/bin/env"
+    task.arguments = args
+    let pipe = Pipe()
+    task.standardOutput = pipe
+    task.launch()
+    let data = pipe.fileHandleForReading.readDataToEndOfFile()
+    let output = String(data: data, encoding: String.Encoding.utf8)
+    print(output!)
+    return output!
+}
 
-//change dir to qa BuildTestApp
+func main() {
+    shell("pod")
+}
 
-//run pod update
-
-
-
-//
+main()
