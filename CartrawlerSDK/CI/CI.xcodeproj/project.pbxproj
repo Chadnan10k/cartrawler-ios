@@ -46,14 +46,12 @@
 		450886AA1E1D426000E0379E /* Integrate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Integrate.swift; sourceTree = "<group>"; };
 		456B9E681E1BD32E0036CD60 /* Cocoapod.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Cocoapod.sh; sourceTree = "<group>"; };
 		45CB048A1DEDDD2C0086BEA0 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
-		BCA0D4711E27E6B1005A50FC /* BuildTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTestApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		45CB047E1DEDD1600086BEA0 = {
 			isa = PBXGroup;
 			children = (
-				BCA0D4711E27E6B1005A50FC /* BuildTestApp.swift */,
 				450886AA1E1D426000E0379E /* Integrate.swift */,
 				456B9E681E1BD32E0036CD60 /* Cocoapod.sh */,
 				45CB048A1DEDDD2C0086BEA0 /* info.plist */,
