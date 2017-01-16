@@ -71,7 +71,9 @@
     self.request.URL = url;
     self.request.HTTPMethod = @"GET";
     self.request.timeoutInterval = 10;
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:self.request completionHandler:nil];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:self.request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+    }];
     [task resume];
     [session finishTasksAndInvalidate];
 }

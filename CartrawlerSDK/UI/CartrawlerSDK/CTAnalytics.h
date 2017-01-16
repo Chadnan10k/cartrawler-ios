@@ -10,6 +10,8 @@
 #import "CTTag.h"
 #import "CTErrorTag.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface CTAnalytics : NSObject
 
 + (instancetype)instance;
@@ -23,3 +25,5 @@
          message:(nonnull NSString *)message;
 
 @end
+
+NS_ASSUME_NONNULL_END

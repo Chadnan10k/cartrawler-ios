@@ -46,7 +46,6 @@
     }
     
     NSString *extrasString = @"";
-    NSString *tail = @"";
     NSMutableArray *validExtras = [[NSMutableArray alloc] init];
     
     for (CTExtraEquipment *e in extrasArray) {
@@ -172,9 +171,7 @@
     @"        } \r"
     @"    } \r"
     @" }", target, locale, currency, clientID, pickupDateTime, returnDateTime, pickupLocationCode, dropoffLocationCode, givenName, surName, phoneNumber, emailAddress, addressLine, homeCountry, homeCountry, driverAge, extrasString, flightDetails, refID, refTimeStamp, refURL, insuranceJson];
-    
-    NSLog(@"%@", json);
-    
+        
     return json;
 }
 

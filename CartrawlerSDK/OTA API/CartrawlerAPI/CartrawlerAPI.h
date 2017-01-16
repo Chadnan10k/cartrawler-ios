@@ -70,9 +70,9 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
 /**
  *  Gets your ip address and grabs a new engine load ID and customer ID
  *
- *  @param your currency code of choice
- *  @param your language code of choice
- *  @param your country code of choice
+ *  @param currencyCode currency code of choice
+ *  @param languageCode language code of choice
+ *  @param countryCode country code of choice
  *  @param completion If successful you get a CT_IpToCountryRS, If failure an ErrorResponse will be returned
  */
 - (void)requestNewSession:(NSString *)currencyCode
