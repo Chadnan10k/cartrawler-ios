@@ -23,6 +23,8 @@ func shell(_ args: String...) -> String {
 }
 
 func main() {
+    shell("whoami")
+    shell("pwd")
     shell("pod")
 }
 
