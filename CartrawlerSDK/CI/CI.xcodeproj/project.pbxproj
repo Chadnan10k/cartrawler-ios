@@ -140,7 +140,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "sudo pod install\n";
+			shellScript = /usr/local/bin/pod;
 		};
 /* End PBXShellScriptBuildPhase section */
 
