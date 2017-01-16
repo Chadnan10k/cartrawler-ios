@@ -9,9 +9,28 @@
 #import "CTAnalytics.h"
 #import "CTSDKSettings.h"
 
+@interface CTAnalytics()
+
+@property (nonatomic, strong) NSURLSessionConfiguration *config;
+@property (nonatomic, strong) NSMutableURLRequest *request;
+@property (nonatomic, strong) NSURLSessionDataTask *task;
+@end
+
 @implementation CTAnalytics
 
-+ (void)tagScreen:(nonnull NSString *)name
++ (instancetype)instance
+{
+    static CTAnalytics *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[CTAnalytics alloc] init];
+        sharedInstance.config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        sharedInstance.request = [[NSMutableURLRequest alloc] init];
+    });
+    return sharedInstance;
+}
+
+- (void)tagScreen:(nonnull NSString *)name
            detail:(nonnull NSString *)detail
              step:(nonnull NSNumber *)step
 {
@@ -32,7 +51,7 @@
     [self fireTag:tag.produceURL];
 }
 
-+ (void)tagError:(nonnull NSString *)step
+- (void)tagError:(nonnull NSString *)step
            event:(nonnull NSString *)event
          message:(nonnull NSString *)message
 {
@@ -46,23 +65,13 @@
     [self fireTag:errorTag.produceURL];
 }
 
-+ (void)fireTag:(NSURL *)url
+- (void)fireTag:(NSURL *)url
 {
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:Nil];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    request.URL = url;
-    request.HTTPMethod = @"GET";
-    request.timeoutInterval = 10;
-
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-                      completionHandler:
-            ^(NSData *data, NSURLResponse *response, NSError *error) {
-                if (error) {
-                    
-                    NSLog(@"CartrawlerSDK: Can't push tag");
-                }
-            }];
+    NSURLSession *session = [NSURLSession sharedSession];
+    self.request.URL = url;
+    self.request.HTTPMethod = @"GET";
+    self.request.timeoutInterval = 10;
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:self.request completionHandler:nil];
     [task resume];
     [session finishTasksAndInvalidate];
 }

@@ -302,7 +302,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
 
 - (void)showError:(NSString *)title message:(NSString *)message
 {
-    [CTAnalytics tagError:@"step8" event:title message:message];
+    [[CTAnalytics instance] tagError:@"step8" event:title message:message];
     _alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [self.alertView show];
 }

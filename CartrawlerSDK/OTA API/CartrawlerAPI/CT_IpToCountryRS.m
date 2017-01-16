@@ -13,7 +13,9 @@
 - (instancetype)initFromDictionary:(NSDictionary *)dict
 {
     self = [super init];
-    NSLog(@"%@", dict);
+    _engineLoadID = dict[@"Config"][@"@engineLoadID"];
+    _customerID = dict[@"Config"][@"@uniqueID"];
+    _ipAddress = dict[@"ClientAddress"][@"@IP"];
     return self;
 }
 

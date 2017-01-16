@@ -59,6 +59,8 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
                   languageCode:(NSString *)languageCode
                    sandboxMode:(BOOL)sandboxMode;
 
+- (void)enableLogs:(BOOL)enable;
+
 /**
  *  Use CTAppearance for overriding the preset views color scheme
  */

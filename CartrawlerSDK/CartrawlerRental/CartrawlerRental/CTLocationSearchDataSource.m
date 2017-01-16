@@ -60,7 +60,7 @@
         } else {
             
             if (error) {
-                [CTAnalytics tagError:@"step1" event:@"CT_VehLocSearchRQ fail" message:error.errorMessage];
+                [[CTAnalytics instance] tagError:@"step1" event:@"CT_VehLocSearchRQ fail" message:error.errorMessage];
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{

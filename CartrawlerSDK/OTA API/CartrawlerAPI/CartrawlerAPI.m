@@ -38,7 +38,7 @@
     _locale = language;
     _loggingEnabled = NO;
     _postRequest = [[CTPostRequest alloc] init];
-    
+    _ipAddress = @"127.0.0.1";//initial value
     if (debug) {
         _endPoint = CTTestAPI;
         _secureEndPoint = CTTestAPISecure;
@@ -50,23 +50,32 @@
         _secureEndPoint = CTProductionAPISecure;
         _apiTarget = CTProductionTarget;
     }
-    
-    //lets fire off a request to get the engine info
-    //move this to SDK
-    [CT_IpToCountryRQ performRequest:clientKey
-                            currency:@"EUR"
-                        languageCode:@"EN"
-                         countryCode:@"IE"
-                              target:@"Test"
-                          completion:^(CT_IpToCountryRS *response, CTErrorResponse *error) {
-                              
-                          }];
+
     return self;
 }
 
 - (void)cancelAllRequests
 {
     [self.postRequest cancel];
+}
+
+#pragma mark Get Engine Details
+
+- (void)requestNewSession:(NSString *)currencyCode
+             languageCode:(NSString *)languageCode
+              countryCode:(NSString *)countryCode
+               completion:(EngineDetailsCompletion)completion
+{
+    __weak typeof (self) weakSelf = self;
+    [CT_IpToCountryRQ performRequest:self.clientAPIKey
+                            currency:currencyCode
+                        languageCode:languageCode
+                         countryCode:countryCode
+                              target:self.apiTarget
+                          completion:^(CT_IpToCountryRS *response, CTErrorResponse *error) {
+                              weakSelf.ipAddress = response.ipAddress;
+                              completion(response, error);
+                          }];
 }
 
 #pragma mark Location Search

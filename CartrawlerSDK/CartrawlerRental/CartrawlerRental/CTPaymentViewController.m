@@ -43,7 +43,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [CTAnalytics tagScreen:@"Step" detail:@"payment" step:@8];
+    [[CTAnalytics instance] tagScreen:@"Step" detail:@"payment" step:@8];
 
     double total = 0;
     
@@ -192,7 +192,7 @@
 
 - (void)didFailLoadingPaymentView
 {
-    [CTAnalytics tagError:@"step8" event:@"Payment webview load" message:@"failed"];
+    [[CTAnalytics instance] tagError:@"step8" event:@"Payment webview load" message:@"failed"];
     //retry
     if (!self.loadingViewVisible) {
         [self presentAlertView:@"Sorry"

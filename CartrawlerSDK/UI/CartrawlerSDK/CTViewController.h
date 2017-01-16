@@ -32,9 +32,9 @@ typedef void (^RentalBookingCompletion)(id *booking);
 
 @property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
-@property (nonatomic, strong) CTViewController *destinationViewController;
-@property (nonatomic, strong) CTViewController *fallbackViewController;
-@property (nonatomic, strong) CTViewController *optionalRoute;
+@property (nonatomic, weak) CTViewController *destinationViewController;
+@property (nonatomic, weak) CTViewController *fallbackViewController;
+@property (nonatomic, weak) CTViewController *optionalRoute;
 
 @property (nonatomic, weak) id<CTViewControllerDelegate> delegate;
 

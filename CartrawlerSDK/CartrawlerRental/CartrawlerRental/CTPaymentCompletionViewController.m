@@ -45,7 +45,7 @@
 {
     [super viewDidAppear:animated];
     // Disable iOS 7 back gesture
-    [CTAnalytics tagScreen:@"Step" detail:@"confirmati" step:@9];
+    [[CTAnalytics instance] tagScreen:@"Step" detail:@"confirmati" step:@9];
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
         self.navigationController.interactivePopGestureRecognizer.delegate = self;
@@ -69,7 +69,7 @@
 
 - (IBAction)done:(id)sender
 {
-    [CTAnalytics tagScreen:@"Exit" detail:@"9" step:@9];
+    [[CTAnalytics instance] tagScreen:@"Exit" detail:@"9" step:@9];
     [[CTImageCache sharedInstance] removeAllObjects];
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;

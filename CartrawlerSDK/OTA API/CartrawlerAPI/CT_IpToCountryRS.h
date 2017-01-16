@@ -10,6 +10,10 @@
 
 @interface CT_IpToCountryRS : NSObject
 
+@property (nonatomic, strong) NSString *ipAddress;
+@property (nonatomic, strong) NSString *customerID;
+@property (nonatomic, strong) NSString *engineLoadID;
+
 - (instancetype)initFromDictionary:(NSDictionary *)dict;
 
 @end

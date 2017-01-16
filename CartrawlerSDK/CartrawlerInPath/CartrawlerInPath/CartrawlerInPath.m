@@ -100,10 +100,8 @@
                                                                                       currencyCode:[CTSDKSettings instance].currencyCode
                                                                                         completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
                     if (error) {
-                        [CTAnalytics tagError:@"inpath" event:@"Avail fail" message:error.errorMessage];
-                    }
-                                                                                            
-                    if (response.items.count > 0) {
+                        [[CTAnalytics instance] tagError:@"inpath" event:@"Avail fail" message:error.errorMessage];
+                    } else if (response.items.count > 0) {
                         [CTRentalSearch instance].vehicleAvailability = response;
                         [[CTRentalSearch instance] setEngineInfoFromAvail];
                         _defaultSearch = [[CTRentalSearch instance] copy];
@@ -120,7 +118,7 @@
                             });
                         }
                     } else {
-                        [CTAnalytics tagError:@"inpath" event:@"no items" message:@"no vehicles available"];
+                        [[CTAnalytics instance] tagError:@"inpath" event:@"no items" message:@"no vehicles available"];
                         if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 [self.delegate didFailToReceiveBestDailyRate];
@@ -130,7 +128,7 @@
                 }];
                     
                 } else {
-                    [CTAnalytics tagError:@"inpath" event:@"get location" message:[NSString stringWithFormat:@"no location for %@", IATACode]];
+                    [[CTAnalytics instance] tagError:@"inpath" event:@"get location" message:[NSString stringWithFormat:@"no location for %@", IATACode]];
                         if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 [self.delegate didFailToReceiveBestDailyRate];
@@ -150,7 +148,7 @@
     [[CTRentalSearch instance] setFromCopy:self.defaultSearch];
     [self configureViews];
     [self presentRentalNavigationController:parentViewController];
-    [CTAnalytics tagScreen:@"Visit" detail:@"inflow" step:@1];
+    [[CTAnalytics instance] tagScreen:@"Visit" detail:@"inflow" step:@1];
 }
 
 //Lets take what views we need for the nav stack
