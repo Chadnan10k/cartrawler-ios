@@ -13,7 +13,7 @@
 #import "CTPaymentSummaryTableViewCell.h"
 #import <CartrawlerSDK/CTAppearance.h>
 
-@interface CTPaymentSummaryDataSource() 
+@interface CTPaymentSummaryDataSource()
 
 @property (nonatomic, strong) CTRentalSearch *search;
 
@@ -87,30 +87,46 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UILabel *customLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0,5.0,200.0,20.0)];
-    customLabel.textColor = [CTAppearance instance].viewBackgroundColor;
-    customLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:17];
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 20)];
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    headerLabel.textColor = [CTAppearance instance].viewBackgroundColor;
+    headerLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:17];
+    headerLabel.translatesAutoresizingMaskIntoConstraints = NO;
     
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1.0, 20)];
     headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     headerView.alpha = 0.9;
-    [headerView addSubview:customLabel];
+    
+    [headerView addSubview:headerLabel];
+    NSNumber *padding = [NSNumber numberWithDouble:[CTAppearance instance].containerViewMarginPadding];
+    [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-padding-[label]"
+                                                                       options:0
+                                                                       metrics:@{@"padding" : padding}
+                                                                         views:@{@"label" : headerLabel}]];
+    
+    [headerView addConstraint:   [NSLayoutConstraint constraintWithItem:headerLabel
+                                                              attribute:NSLayoutAttributeCenterY
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:headerView
+                                                              attribute:NSLayoutAttributeCenterY
+                                                             multiplier:1
+                                                               constant:0]];
+    
     switch (section) {
         case 0:
-            customLabel.text = @"Pick-up";
+            headerLabel.text = @"Pick-up";
             break;
         case 1:
-            customLabel.text = @"Drop-off";
+            headerLabel.text = @"Drop-off";
             break;
         case 2:
-            customLabel.text = @"Lead driver details";
+            headerLabel.text = @"Lead driver details";
             break;
         case 3:
-            customLabel.text = @"Vehicle summary";
+            headerLabel.text = @"Vehicle summary";
             break;
         case 4:
-            customLabel.text = @"Payment summary";
+            headerLabel.text = @"Payment summary";
             break;
         default:
             break;

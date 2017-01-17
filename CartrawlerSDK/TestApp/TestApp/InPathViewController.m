@@ -22,6 +22,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    CTUserDetails *userDetails = [CTUserDetails new];
+//    userDetails.firstName = @"Lee";
+//    userDetails.surname = @"Maguire";
+//    userDetails.email = @"lee@maguire.com";
+//    userDetails.phone = @"086666666";
+//    userDetails.currency = @"GBP";
+//    
+//    _inPath = [[CartrawlerInPath alloc] initWithCartrawlerRental:self.rental
+//                                                        IATACode:@"ALC"
+//                                                      pickupDate:[NSDate dateWithTimeIntervalSinceNow:56000]
+//                                                      returnDate:nil
+//                                                     userDetails:userDetails];
+//    self.inPath.delegate = self;
+//    [self.inPath addCrossSellCardToView:self.cardContainer];
+    
     CTUserDetails *userDetails = [CTUserDetails new];
     userDetails.firstName = @"Lee";
     userDetails.surname = @"Maguire";
@@ -29,10 +44,12 @@
     userDetails.phone = @"086666666";
     userDetails.currency = @"GBP";
     
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:56000];
+    
     _inPath = [[CartrawlerInPath alloc] initWithCartrawlerRental:self.rental
                                                         IATACode:@"ALC"
-                                                      pickupDate:[NSDate dateWithTimeIntervalSinceNow:56000]
-                                                      returnDate:nil
+                                                      pickupDate:date
+                                                      returnDate:[date dateByAddingTimeInterval:56000]
                                                      userDetails:userDetails];
     self.inPath.delegate = self;
     [self.inPath addCrossSellCardToView:self.cardContainer];
@@ -49,6 +66,11 @@
 
 - (IBAction)remove:(id)sender {
     [self.inPath removeVehicle];
+}
+
+- (IBAction)loadCard:(id)sender {
+
+    [self.inPath addCrossSellCardToView:self.cardContainer];
 }
 
 - (void)didReceiveBestDailyRate:(NSNumber *)price currency:(NSString *)currency

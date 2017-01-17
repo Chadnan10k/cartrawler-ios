@@ -14,10 +14,10 @@
 - (void)addDoneButton
 {
     {
-        UIToolbar* toolbar = [[UIToolbar alloc]initWithFrame:CGRectZero];
+        UIToolbar *toolbar = [UIToolbar new];
         [toolbar setBarStyle:UIBarStyleDefault];
         [toolbar setTranslucent:NO];
-        
+
         [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:20.0]} forState:UIControlStateNormal];
         
         toolbar.items = @[[[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(doneTapped)],
@@ -26,6 +26,7 @@
         
         [toolbar sizeToFit];
         self.inputAccessoryView = toolbar;
+        
     }
 }
 

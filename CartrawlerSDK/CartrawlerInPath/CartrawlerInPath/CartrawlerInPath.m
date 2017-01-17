@@ -19,7 +19,9 @@
 @property (nonatomic, strong) CartrawlerRental *rental;
 @property (nonatomic, strong) CTInPathView *cardView;
 @property (nonatomic, strong) CTRentalSearch *defaultSearch;
-
+@property (nonatomic, strong) NSString *defaultCountryCode;
+@property (nonatomic, strong) NSString *defaultCountryName;
+@property (nonatomic) BOOL isReturnTrip;
 @end
 
 @implementation CartrawlerInPath
@@ -41,16 +43,22 @@
     }
     
     if (!userDetails.countryCode || !userDetails.countryName) {
+        _defaultCountryCode = [CTSDKSettings instance].homeCountryCode;
+        _defaultCountryName = [CTSDKSettings instance].homeCountryName;
         [CTRentalSearch instance].country = [CTSDKSettings instance].homeCountryCode;
     } else {
+        _defaultCountryCode = userDetails.countryCode;
+        _defaultCountryName = userDetails.countryName;
         [[CTSDKSettings instance] setHomeCountryCode:userDetails.countryCode];
         [[CTSDKSettings instance] setHomeCountryName:userDetails.countryName];
         [CTRentalSearch instance].country = userDetails.countryCode;
     }
-
+    
     if (returnDate) {
+        _isReturnTrip = YES;
         [CTRentalSearch instance].dropoffDate = returnDate;
     } else {
+        _isReturnTrip = NO;
         [CTRentalSearch instance].dropoffDate = [pickupDate dateByAddingTimeInterval:259200];//3 days
     }
     
@@ -58,7 +66,6 @@
     [CTRentalSearch instance].firstName = userDetails.firstName;
     [CTRentalSearch instance].surname = userDetails.surname;
     [CTRentalSearch instance].passengerQty = [NSNumber numberWithInt:1 + userDetails.additionalPassengers.intValue];
-    [CTRentalSearch instance].driverAge = userDetails.driverAge;
     [CTRentalSearch instance].email = userDetails.email;
     [CTRentalSearch instance].phone = userDetails.phone;
     [CTRentalSearch instance].flightNumber = [userDetails.flightNo stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -66,8 +73,13 @@
     [CTRentalSearch instance].addressLine2 = userDetails.addressLine2;
     [CTRentalSearch instance].city = userDetails.city;
     [CTRentalSearch instance].postcode = userDetails.postcode;
+    
+    if (!userDetails.driverAge) {
+        [CTRentalSearch instance].driverAge = @30;
+    }
+    
     _defaultSearch = [[CTRentalSearch instance] copy];//copy over the user details first
-
+    
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
                                                         fromDate:[CTRentalSearch instance].pickupDate
@@ -94,7 +106,7 @@
                                                                                 returnLocationCode:[CTRentalSearch instance].dropoffLocation.code
                                                                                customerCountryCode:[CTSDKSettings instance].homeCountryCode
                                                                                       passengerQty:@1
-                                                                                         driverAge:userDetails.driverAge ?: @30
+                                                                                         driverAge:[CTRentalSearch instance].driverAge
                                                                                     pickUpDateTime:[CTRentalSearch instance].pickupDate
                                                                                     returnDateTime:[CTRentalSearch instance].dropoffDate
                                                                                       currencyCode:[CTSDKSettings instance].currencyCode
@@ -144,6 +156,8 @@
 
 - (void)presentCarRentalWithFlightDetails:(nonnull UIViewController *)parentViewController
 {
+    [[CTSDKSettings instance] setHomeCountryCode: self.defaultCountryCode];
+    [[CTSDKSettings instance] setHomeCountryName: self.defaultCountryName];
     [CTSDKSettings instance].disableCurrencySelection = YES;
     [[CTRentalSearch instance] setFromCopy:self.defaultSearch];
     [self configureViews];
@@ -164,14 +178,23 @@
 
 - (void)presentRentalNavigationController:(UIViewController *)parent
 {
+    
     CTNavigationController *navController = [[CTNavigationController alloc] init];
     navController.navigationBar.hidden = YES;
     navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
-    [navController setViewControllers:@[self.rental.searchDetailsViewController]];
+    
+    if (self.isReturnTrip) {
+        [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
+    } else {
+        [navController setViewControllers:@[self.rental.searchDetailsViewController]];
+    }
+    
     [parent presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
-    if ([CTRentalSearch instance].pickupDate && [CTRentalSearch instance].dropoffDate) {
-        [(CTSearchDetailsViewController *)self.rental.searchDetailsViewController performSearch];
+    if (!self.isReturnTrip) {
+        if ([CTRentalSearch instance].pickupDate && [CTRentalSearch instance].dropoffDate) {
+            [(CTSearchDetailsViewController *)self.rental.searchDetailsViewController performSearch];
+        }
     }
 }
 

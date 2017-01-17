@@ -36,6 +36,7 @@
 - (IBAction)openCarRental:(id)sender {
     _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:self.isDebug];
     _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
+    [self.sdk enableLogs:YES];
     [self.rental presentCarRentalInViewController:self];
 }
 
@@ -64,6 +65,7 @@
 {
     _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:self.isDebug];
     _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
+    [self.sdk enableLogs:YES];
     InPathViewController *vc = segue.destinationViewController;
     vc.rental = self.rental;
 }

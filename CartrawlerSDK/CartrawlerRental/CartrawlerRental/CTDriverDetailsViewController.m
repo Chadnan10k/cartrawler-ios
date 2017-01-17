@@ -39,14 +39,6 @@
     self.phoneTextField.delegate = self;
     self.flightNoTextField.delegate = self;
 
-    UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
-    [keyboardDoneButtonView sizeToFit];
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
-                                                                   style:UIBarButtonItemStylePlain target:self
-                                                                  action:@selector(done)];
-    keyboardDoneButtonView.items = @[doneButton];
-    self.phoneTextField.inputAccessoryView = keyboardDoneButtonView;
-    
     _selectedView = self.firstNameTextField;
     
     UITapGestureRecognizer *viewTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewWasTapped)];
@@ -57,6 +49,7 @@
     [self.emailTextField addDoneButton];
     [self.phoneTextField addDoneButton];
     [self.flightNoTextField addDoneButton];
+    [self.phoneTextField addDoneButton];
 
 }
 
@@ -72,7 +65,6 @@
 
     [self registerForKeyboardNotifications];
     
-    [self.firstNameTextField becomeFirstResponder];
     _selectedView = self.firstNameTextField;
     
     if (!self.search.firstName) {
@@ -106,9 +98,16 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    //[self.firstNameTextField becomeFirstResponder];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [self.view endEditing:YES];
     [self deregisterForKeyboardNotifications];
 }
 

@@ -205,6 +205,7 @@
                     <navigationItem key="navigationItem" id="lVV-sg-VCq"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="backButton" destination="vrA-86-Eph" id="vMy-Ez-DZT"/>
                         <outlet property="carCountLabel" destination="Obb-FK-iCf" id="UxT-eU-A08"/>
                         <outlet property="datesLabel" destination="CdZ-Gx-aUS" id="GIQ-1n-ccz"/>
                         <outlet property="locationsLabel" destination="xpG-V5-fPS" id="qY9-VD-AvE"/>

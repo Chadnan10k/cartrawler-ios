@@ -12,5 +12,7 @@
 
 @interface CTVehicleSelectionViewController : CTViewController
 
+- (void)refreshFromOTA;
+
 @end
 
