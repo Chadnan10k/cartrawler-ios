@@ -165,6 +165,19 @@
                                     <action selector="remove:" destination="9HL-5W-v1q" eventType="touchUpInside" id="kQP-ZW-p9o"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cW3-DK-96E">
+                                <rect key="frame" x="0.0" y="482" width="375" height="55"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="q7o-JG-HBD"/>
+                                </constraints>
+                                <state key="normal" title="LOAD CARD">
+                                    <color key="titleColor" red="0.43345346169999999" green="1" blue="0.30551134320000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="loadCard:" destination="9HL-5W-v1q" eventType="touchUpInside" id="y4A-Kd-SKz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -173,10 +186,13 @@
                             <constraint firstItem="7vh-Hy-L1z" firstAttribute="top" secondItem="ax6-HZ-Y0J" secondAttribute="bottom" constant="8" id="XyJ-le-fNy"/>
                             <constraint firstItem="7vh-Hy-L1z" firstAttribute="top" secondItem="xed-eD-UPO" secondAttribute="bottom" id="Y43-r6-4oT"/>
                             <constraint firstAttribute="trailing" secondItem="xed-eD-UPO" secondAttribute="trailing" id="Y5V-Mv-GTH"/>
+                            <constraint firstItem="cW3-DK-96E" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="bvo-CV-Rd6"/>
                             <constraint firstItem="xed-eD-UPO" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="c8H-XD-VRU"/>
                             <constraint firstAttribute="trailing" secondItem="lzk-tW-vOj" secondAttribute="trailing" constant="16" id="cCZ-5R-Y4L"/>
                             <constraint firstItem="lzk-tW-vOj" firstAttribute="top" secondItem="Ets-M0-nR8" secondAttribute="bottom" constant="60" id="dak-WO-yKO"/>
+                            <constraint firstItem="7js-LD-TYj" firstAttribute="top" secondItem="cW3-DK-96E" secondAttribute="bottom" constant="8" id="eF6-5N-baj"/>
                             <constraint firstItem="xed-eD-UPO" firstAttribute="top" secondItem="7js-LD-TYj" secondAttribute="bottom" constant="8" id="ezp-MD-b5l"/>
+                            <constraint firstAttribute="trailing" secondItem="cW3-DK-96E" secondAttribute="trailing" id="kH0-Pi-fd6"/>
                             <constraint firstItem="7js-LD-TYj" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="mIe-SP-2X9"/>
                             <constraint firstItem="ax6-HZ-Y0J" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="8" id="yvS-g6-FLB"/>
                             <constraint firstAttribute="trailing" secondItem="7js-LD-TYj" secondAttribute="trailing" id="zVY-WU-Dgi"/>

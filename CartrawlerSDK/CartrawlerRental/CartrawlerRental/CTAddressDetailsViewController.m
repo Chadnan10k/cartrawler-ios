@@ -15,6 +15,7 @@
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import "CTRentalConstants.h"
 #import "CTSearchDetailsViewController.h"
+#import "CTVehicleSelectionViewController.h"
 
 @interface CTAddressDetailsViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
@@ -29,8 +30,6 @@
 @property (strong, nonatomic) UIView *selectedView;
 
 @end
-
-#define kTabBarHeight 0.0
 
 @implementation CTAddressDetailsViewController {
     BOOL keyboardIsShown;
@@ -71,7 +70,7 @@
 
     [self registerForKeyboardNotifications];
     
-    [self.addressLine1TextField becomeFirstResponder];
+    //[self.addressLine1TextField becomeFirstResponder];
     _selectedView = self.addressLine1TextField;
 
     if (self.search) {
@@ -200,6 +199,9 @@
         if ([vc isKindOfClass:[CTSearchDetailsViewController class]]) {
             [self.navigationController popToViewController:vc animated:NO];
             [(CTSearchDetailsViewController *)vc performSearch];
+        } else if ([vc isKindOfClass:[CTVehicleSelectionViewController class]]) {
+            [(CTVehicleSelectionViewController *)vc refreshFromOTA];
+            [self.navigationController popToRootViewControllerAnimated:NO];
         }
     }
 }

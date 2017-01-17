@@ -36,7 +36,6 @@
     self = [super init];
     _clientAPIKey = [[NSString alloc] initWithString:clientKey];
     _locale = language;
-    _loggingEnabled = NO;
     _postRequest = [[CTPostRequest alloc] init];
     _ipAddress = @"127.0.0.1";//initial value
     if (debug) {

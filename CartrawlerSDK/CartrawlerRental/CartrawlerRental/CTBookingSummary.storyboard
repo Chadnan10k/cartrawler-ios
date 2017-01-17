@@ -130,27 +130,27 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBL-9G-elI" customClass="CTLabel">
-                                                            <rect key="frame" x="8" y="8" width="359" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <rect key="frame" x="8" y="8" width="359" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.72336632013320923" green="0.72336632013320923" blue="0.72336632013320923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bS-W6-zmv" customClass="CTLabel">
-                                                            <rect key="frame" x="8" y="33" width="367" height="26"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                            <rect key="frame" x="8" y="30" width="359" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="5bS-W6-zmv" secondAttribute="trailing" id="8ah-lN-eQ2"/>
-                                                        <constraint firstItem="5bS-W6-zmv" firstAttribute="leading" secondItem="a5s-uM-glK" secondAttribute="leading" constant="8" id="EZy-rg-bdc"/>
+                                                        <constraint firstAttribute="trailing" secondItem="5bS-W6-zmv" secondAttribute="trailing" constant="8" id="8ah-lN-eQ2" customClass="CTLayoutConstraint"/>
+                                                        <constraint firstItem="5bS-W6-zmv" firstAttribute="leading" secondItem="a5s-uM-glK" secondAttribute="leading" constant="8" id="EZy-rg-bdc" customClass="CTLayoutConstraint"/>
                                                         <constraint firstItem="tBL-9G-elI" firstAttribute="top" secondItem="a5s-uM-glK" secondAttribute="top" constant="8" id="fLm-FE-eq3"/>
                                                         <constraint firstItem="5bS-W6-zmv" firstAttribute="top" secondItem="tBL-9G-elI" secondAttribute="bottom" constant="4" id="oP3-Vh-gkL"/>
                                                         <constraint firstAttribute="bottom" secondItem="5bS-W6-zmv" secondAttribute="bottom" priority="250" constant="8" id="rSX-Dk-hm8"/>
-                                                        <constraint firstItem="tBL-9G-elI" firstAttribute="leading" secondItem="a5s-uM-glK" secondAttribute="leading" constant="8" id="tCd-TF-KN1"/>
-                                                        <constraint firstAttribute="trailing" secondItem="tBL-9G-elI" secondAttribute="trailing" constant="8" id="zgS-7E-Hu7"/>
+                                                        <constraint firstItem="tBL-9G-elI" firstAttribute="leading" secondItem="a5s-uM-glK" secondAttribute="leading" constant="8" id="tCd-TF-KN1" customClass="CTLayoutConstraint"/>
+                                                        <constraint firstAttribute="trailing" secondItem="tBL-9G-elI" secondAttribute="trailing" constant="8" id="zgS-7E-Hu7" customClass="CTLayoutConstraint"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -168,15 +168,15 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIN-xK-KZX" customClass="CTLabel">
                                                             <rect key="frame" x="8" y="8" width="359" height="39"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="KIN-xK-KZX" firstAttribute="leading" secondItem="aRU-qj-Hdu" secondAttribute="leading" constant="8" id="9NA-GV-8oy"/>
-                                                        <constraint firstAttribute="trailing" secondItem="KIN-xK-KZX" secondAttribute="trailing" constant="8" id="bja-vT-196"/>
+                                                        <constraint firstItem="KIN-xK-KZX" firstAttribute="leading" secondItem="aRU-qj-Hdu" secondAttribute="leading" constant="8" id="9NA-GV-8oy" customClass="CTLayoutConstraint"/>
+                                                        <constraint firstAttribute="trailing" secondItem="KIN-xK-KZX" secondAttribute="trailing" constant="8" id="bja-vT-196" customClass="CTLayoutConstraint"/>
                                                         <constraint firstAttribute="bottom" secondItem="KIN-xK-KZX" secondAttribute="bottom" constant="8" id="ehw-Yi-my7"/>
                                                         <constraint firstItem="KIN-xK-KZX" firstAttribute="top" secondItem="aRU-qj-Hdu" secondAttribute="top" constant="8" id="wKR-Tt-jcH"/>
                                                     </constraints>
@@ -197,7 +197,7 @@
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle name label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="T8v-DI-uRc" customClass="CTLabel">
                                                                     <rect key="frame" x="8" y="8" width="251" height="27"/>
-                                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="21"/>
+                                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                     <userDefinedRuntimeAttributes>
@@ -290,11 +290,11 @@
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="cVQ-5F-2oK" firstAttribute="top" secondItem="hzw-aC-K6D" secondAttribute="bottom" constant="8" id="2Iq-En-E6p"/>
-                                                                <constraint firstItem="hzw-aC-K6D" firstAttribute="leading" secondItem="83H-xR-3bG" secondAttribute="leading" constant="8" id="3nf-Qf-Nh8"/>
-                                                                <constraint firstAttribute="trailing" secondItem="3yg-Va-0Wg" secondAttribute="trailing" constant="8" id="6kV-QW-Ldc"/>
-                                                                <constraint firstItem="cVQ-5F-2oK" firstAttribute="leading" secondItem="83H-xR-3bG" secondAttribute="leading" constant="8" id="90V-M5-n5F"/>
-                                                                <constraint firstAttribute="trailing" secondItem="aMc-K6-zbZ" secondAttribute="trailing" constant="8" id="Jbo-xN-M40"/>
-                                                                <constraint firstItem="T8v-DI-uRc" firstAttribute="leading" secondItem="83H-xR-3bG" secondAttribute="leading" constant="8" id="WKC-GA-2CP"/>
+                                                                <constraint firstItem="hzw-aC-K6D" firstAttribute="leading" secondItem="83H-xR-3bG" secondAttribute="leading" constant="8" id="3nf-Qf-Nh8" customClass="CTLayoutConstraint"/>
+                                                                <constraint firstAttribute="trailing" secondItem="3yg-Va-0Wg" secondAttribute="trailing" constant="8" id="6kV-QW-Ldc" customClass="CTLayoutConstraint"/>
+                                                                <constraint firstItem="cVQ-5F-2oK" firstAttribute="leading" secondItem="83H-xR-3bG" secondAttribute="leading" constant="8" id="90V-M5-n5F" customClass="CTLayoutConstraint"/>
+                                                                <constraint firstAttribute="trailing" secondItem="aMc-K6-zbZ" secondAttribute="trailing" constant="8" id="Jbo-xN-M40" customClass="CTLayoutConstraint"/>
+                                                                <constraint firstItem="T8v-DI-uRc" firstAttribute="leading" secondItem="83H-xR-3bG" secondAttribute="leading" constant="8" id="WKC-GA-2CP" customClass="CTLayoutConstraint"/>
                                                                 <constraint firstAttribute="bottom" secondItem="cVQ-5F-2oK" secondAttribute="bottom" constant="8" id="WLd-hi-1Mg"/>
                                                                 <constraint firstItem="3yg-Va-0Wg" firstAttribute="top" secondItem="83H-xR-3bG" secondAttribute="top" constant="17" id="eiJ-Gq-9OI"/>
                                                                 <constraint firstItem="hzw-aC-K6D" firstAttribute="top" secondItem="T8v-DI-uRc" secondAttribute="bottom" id="hDy-JY-uTi"/>
@@ -409,17 +409,17 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="pPh-de-sxY" secondAttribute="trailing" constant="16" id="FzK-fa-1RO"/>
-                                                                <constraint firstItem="OWM-iO-y1d" firstAttribute="leading" secondItem="f4U-FP-zYc" secondAttribute="leading" constant="16" id="Kys-y4-UbJ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="pPh-de-sxY" secondAttribute="trailing" constant="16" id="FzK-fa-1RO" customClass="CTLayoutConstraint"/>
+                                                                <constraint firstItem="OWM-iO-y1d" firstAttribute="leading" secondItem="f4U-FP-zYc" secondAttribute="leading" constant="16" id="Kys-y4-UbJ" customClass="CTLayoutConstraint"/>
                                                                 <constraint firstItem="W3H-UP-5Lg" firstAttribute="top" secondItem="f4U-FP-zYc" secondAttribute="top" constant="16" id="PYq-w7-V4S"/>
-                                                                <constraint firstAttribute="trailing" secondItem="W3H-UP-5Lg" secondAttribute="trailing" constant="16" id="Z7z-oc-1Ei"/>
+                                                                <constraint firstAttribute="trailing" secondItem="W3H-UP-5Lg" secondAttribute="trailing" constant="16" id="Z7z-oc-1Ei" customClass="CTLayoutConstraint"/>
                                                                 <constraint firstItem="oJz-WY-xOo" firstAttribute="top" secondItem="W3H-UP-5Lg" secondAttribute="bottom" constant="8" id="fu5-1W-noA"/>
                                                                 <constraint firstItem="pPh-de-sxY" firstAttribute="top" secondItem="oJz-WY-xOo" secondAttribute="bottom" constant="8" id="g8i-YE-IEK"/>
                                                                 <constraint firstItem="oJz-WY-xOo" firstAttribute="leading" secondItem="f4U-FP-zYc" secondAttribute="leading" constant="16" id="p67-8o-BAx"/>
                                                                 <constraint firstAttribute="bottom" secondItem="pPh-de-sxY" secondAttribute="bottom" constant="8" id="qG7-zw-Mc9"/>
                                                                 <constraint firstAttribute="bottom" secondItem="OWM-iO-y1d" secondAttribute="bottom" constant="8" id="wCq-fJ-ydG"/>
                                                                 <constraint firstAttribute="trailing" secondItem="oJz-WY-xOo" secondAttribute="trailing" constant="16" id="yeT-zI-2Ol"/>
-                                                                <constraint firstItem="W3H-UP-5Lg" firstAttribute="leading" secondItem="f4U-FP-zYc" secondAttribute="leading" constant="16" id="ymY-Ok-te4"/>
+                                                                <constraint firstItem="W3H-UP-5Lg" firstAttribute="leading" secondItem="f4U-FP-zYc" secondAttribute="leading" constant="16" id="ymY-Ok-te4" customClass="CTLayoutConstraint"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -464,7 +464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRb-rP-5Zk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1671" y="269"/>
+            <point key="canvasLocation" x="1669.5999999999999" y="268.51574212893553"/>
         </scene>
     </scenes>
     <resources>

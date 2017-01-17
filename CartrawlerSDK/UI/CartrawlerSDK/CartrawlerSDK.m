@@ -34,9 +34,7 @@
 
 - (void)enableLogs:(BOOL)enable
 {
-    if (enable) {
-        [self.cartrawlerAPI enableLogging:YES];
-    }
+    [self.cartrawlerAPI enableLogging:enable];
 }
 
 - (void)setNewSession

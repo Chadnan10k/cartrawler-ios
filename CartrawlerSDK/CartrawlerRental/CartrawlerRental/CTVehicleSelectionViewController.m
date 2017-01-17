@@ -12,6 +12,7 @@
 #import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
 #import "CTFilterViewController.h"
 #import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 
 @interface CTVehicleSelectionViewController () <UIScrollViewDelegate>
 
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet CTLabel *datesLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *carCountLabel;
 @property (weak, nonatomic) IBOutlet UIView *subheaderView;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 @property (nonatomic, strong) CTFilterViewController *filterViewController;
 @property (nonatomic, strong) NSArray<CTAvailabilityItem *> *filteredData;
@@ -57,6 +59,15 @@
     [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
     
     self.subheaderView.backgroundColor = [CTAppearance instance].iconTint;
+    
+    [self.search addObserver:self forKeyPath:@"vehicleAvailability" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self refresh];
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -116,7 +127,11 @@
 }
 
 - (IBAction)backTapped:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.navigationController.viewControllers.firstObject == self) {
+        [self dismiss];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (IBAction)filterTapped:(id)sender {
@@ -154,9 +169,27 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)refreshFromOTA
+{
+    self.search.vehicleAvailability = nil;
+    __weak typeof(self) weakSelf = self;
+    [self.cartrawlerAPI requestVehicleAvailabilityForLocation:self.search.pickupLocation.code
+                                           returnLocationCode:self.search.dropoffLocation.code
+                                          customerCountryCode:[CTSDKSettings instance].homeCountryCode
+                                                 passengerQty:self.search.passengerQty
+                                                    driverAge:self.search.driverAge
+                                               pickUpDateTime:self.search.pickupDate
+                                               returnDateTime:self.search.dropoffDate
+                                                 currencyCode:[CTSDKSettings instance].currencyCode
+                                                   completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
+                                                       if (response) {
+                                                           weakSelf.search.vehicleAvailability = response;
+                                                       } else if (error) {
+                                                           [[CTAnalytics instance] tagError:@"Vehicle selection"
+                                                                                      event:@" in path country change OTA avail"
+                                                                                    message:error.errorMessage];
+                                                       }
+                                            }];
 }
 
 @end

@@ -195,7 +195,7 @@
 
 - (void)didDismissViewController:(NSString *)identifier
 {
-    NSLog(@"CTViewController dismisse at: %@", identifier);
+
 }
 
 - (void)didBookVehicle:(CTBooking *)booking
