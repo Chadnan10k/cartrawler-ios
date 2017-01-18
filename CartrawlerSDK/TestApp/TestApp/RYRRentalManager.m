@@ -1,0 +1,130 @@
+//
+//  RYRRentalManager.m
+//  TestApp
+//
+//  Created by Lee Maguire on 18/01/2017.
+//  Copyright © 2017 Cartrawler. All rights reserved.
+//
+
+#import "RYRRentalManager.h"
+
+
+@interface RYRRentalManager()
+
+@property (strong, nonatomic) NSDate *pickupDate;
+@property (strong, nonatomic) NSDate *dropoffDate;
+
+@end
+
+@implementation RYRRentalManager
+
++ (instancetype)instance
+{
+    static RYRRentalManager *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[RYRRentalManager alloc] init];
+        [sharedInstance setup];
+    });
+    return sharedInstance;
+}
+
+- (void)reset
+{
+    CTUserDetails *userDetails = [CTUserDetails new];
+    userDetails.firstName = @"Lee";
+    userDetails.surname = @"Maguire";
+    userDetails.email = @"lee@maguire.com";
+    userDetails.phone = @"086666666";
+    userDetails.currency = @"GBP";
+    userDetails.driverAge = @21;
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:56000];
+    _pickupDate = date;
+    _inPath = [[CartrawlerInPath alloc] initWithCartrawlerRental:self.rental
+                                                        IATACode:@"ALC"
+                                                      pickupDate:self.pickupDate
+                                                      returnDate:self.dropoffDate
+                                                     userDetails:userDetails];
+    self.inPath.delegate = self;
+}
+
+- (void)setup
+{
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"en" sandboxMode:YES];
+    _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
+    [self.sdk enableLogs:YES];
+    self.rental.delegate = self;
+}
+
+- (void)setupInPath:(UIView *)view
+{
+    if (!self.inPath) {
+        [self reset];
+    }
+    
+    [self.inPath addCrossSellCardToView:view];
+}
+
+- (void)inPathOpenEngine:(UIViewController *)vc
+{
+    [self.inPath presentCarRentalWithFlightDetails:vc];
+}
+
+- (void)removeVehicle
+{
+    [self.inPath removeVehicle];
+}
+
+- (void)changeRoundTrip:(BOOL)isRoundTrip
+{
+    if (isRoundTrip) {
+        _dropoffDate = [self.pickupDate dateByAddingTimeInterval:112000];
+    } else {
+        _dropoffDate = nil;
+    }
+    [self.callToAction setTitle:@"LOADING" forState:UIControlStateNormal];
+    [self reset];
+}
+
+#pragma Mark CartrawlerSDKDelegate
+
+- (void)didCancelVehicleBooking
+{
+    NSLog(@"The vehicle booking was canceled");
+}
+
+#pragma mark For standalone
+- (void)didBookVehicle:(CTBooking *)booking
+{
+    NSLog(@"We booked a vehicle!");
+}
+
+#pragma mark InPath delegate
+
+- (void)didReceiveBestDailyRate:(NSNumber *)price currency:(NSString *)currency
+{
+    //[self.bookButton setTitle:[NSString stringWithFormat:@"Cars from: %@ %@", currency, price] forState:UIControlStateNormal];
+}
+
+- (void)didProduceInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
+{
+    //[self.bookButton setTitle:@"you booked a car" forState:UIControlStateNormal];
+    NSLog(@"%@", request);
+    NSLog(@"%@", vehicle.vehicleName);
+    NSLog(@"%@", vehicle.firstName);
+    NSLog(@"%@", vehicle.lastName);
+    
+}
+
+- (void)didFailToReceiveBestDailyRate
+{
+    //[self.bookButton setTitle:@"Book a car" forState:UIControlStateNormal];
+}
+
+- (void)mockPayment
+{
+    [self.inPath didReceiveBookingConfirmationID:@"INPATH"];
+}
+
+@end

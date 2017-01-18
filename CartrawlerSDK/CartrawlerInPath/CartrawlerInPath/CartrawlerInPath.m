@@ -22,6 +22,9 @@
 @property (nonatomic, strong) NSString *defaultCountryCode;
 @property (nonatomic, strong) NSString *defaultCountryName;
 @property (nonatomic) BOOL isReturnTrip;
+
+@property (nonatomic, strong) CTInPathVehicle *cachedVehicle;
+
 @end
 
 @implementation CartrawlerInPath
@@ -202,25 +205,35 @@
 
 - (void)addCrossSellCardToView:(UIView *)view
 {
+    //check what state we are in first
     if (!self.cardView) {
         _cardView = [[CTInPathView alloc] initWithFrame:CGRectZero];
-        self.cardView.translatesAutoresizingMaskIntoConstraints = NO;
-        [view addSubview:self.cardView];
-        [self.cardView renderDefault];
-        [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|"
-                                                                     options:0
-                                                                     metrics:nil
-                                                                       views:@{@"view" : self.cardView}]];
-        
-        [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|"
-                                                                     options:0
-                                                                     metrics:nil
-                                                                       views:@{@"view" : self.cardView}]];
     }
+    
+    if (self.cachedVehicle) {
+        [self.cardView renderVehicleDetails:self.cachedVehicle];
+    } else {
+        [self.cardView renderDefault];
+    }
+    
+    self.cardView.translatesAutoresizingMaskIntoConstraints = NO;
+    [view addSubview:self.cardView];
+
+    [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"view" : self.cardView}]];
+    
+    [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"view" : self.cardView}]];
+    
 }
 
 - (void)removeVehicle
 {
+    _cachedVehicle = nil;
     if (self.cardView) {
         [self.cardView renderDefault];
     }
@@ -259,6 +272,7 @@
     CTRentalBooking *booking = [[CTRentalBooking alloc] initFromSearch:search];
     CTInPathVehicle *vehicle = [[CTInPathVehicle alloc] init:search];
     [self.cardView renderVehicleDetails:vehicle];
+    _cachedVehicle = vehicle;
 
     if (self.delegate && [self.delegate respondsToSelector:@selector(didProduceInPathRequest:vehicle:)]) {
         [CTDataStore cachePotentialInPathBooking:booking];

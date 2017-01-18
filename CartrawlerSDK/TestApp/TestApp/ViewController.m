@@ -7,14 +7,11 @@
 //
 
 #import "ViewController.h"
-#import <CartrawlerSDK/CartrawlerSDK.h>
-#import <CartrawlerRental/CartrawlerRental.h>
+#import "RYRRentalManager.h"
 #import "InPathViewController.h"
 
-@interface ViewController () <CartrawlerRentalDelegate>
+@interface ViewController ()
 
-@property (nonatomic, strong) CartrawlerSDK *sdk;
-@property (nonatomic, strong) CartrawlerRental *rental;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *endpointControl;
 
 @property (nonatomic) BOOL isDebug;
@@ -26,18 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad]; //643826 ryr desktop 642619 ryr mobile
     _isDebug = YES;
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:YES];
-    [self.sdk enableLogs:YES];
-    _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
-    
-    self.rental.delegate = self;
 }
 
 - (IBAction)openCarRental:(id)sender {
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:self.isDebug];
-    _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
-    [self.sdk enableLogs:YES];
-    [self.rental presentCarRentalInViewController:self];
+    [[RYRRentalManager instance].rental presentCarRentalInViewController:self];
 }
 
 - (IBAction)endpointChanged:(id)sender {
@@ -48,26 +37,9 @@
     }
 }
 
-#pragma Mark CartrawlerSDKDelegate
-
-- (void)didCancelVehicleBooking
-{
-    NSLog(@"The vehicle booking was canceled");
-}
-
-#pragma mark For standalone
-- (void)didBookVehicle:(CTBooking *)booking
-{
-    NSLog(@"We booked a vehicle!");
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"EN" sandboxMode:self.isDebug];
-    _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
-    [self.sdk enableLogs:YES];
     InPathViewController *vc = segue.destinationViewController;
-    vc.rental = self.rental;
 }
 
 

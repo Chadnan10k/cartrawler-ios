@@ -27,6 +27,7 @@
 		45709A681DF1C51300E6CA4E /* QAUITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 45709A671DF1C51300E6CA4E /* QAUITest.m */; };
 		45A7B7561D9BE003006611EB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */; };
 		45A7B7571D9BE007006611EB /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */; };
+		BC3955D11E2FB5EF00C8636B /* RYRRentalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3955D01E2FB5EF00C8636B /* RYRRentalManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,8 @@
 		45709A691DF1C51300E6CA4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		BC3955CF1E2FB5EF00C8636B /* RYRRentalManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYRRentalManager.h; sourceTree = "<group>"; };
+		BC3955D01E2FB5EF00C8636B /* RYRRentalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYRRentalManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,8 @@
 				45295F631D78412500A09B8A /* ViewController.m */,
 				45154EFE1E07E1DF00FB32FA /* InPathViewController.h */,
 				45154EFF1E07E1DF00FB32FA /* InPathViewController.m */,
+				BC3955CF1E2FB5EF00C8636B /* RYRRentalManager.h */,
+				BC3955D01E2FB5EF00C8636B /* RYRRentalManager.m */,
 				455B59751DCCB22500CA4790 /* Roboto-Bold.ttf */,
 				455B59761DCCB22500CA4790 /* Roboto-Regular.ttf */,
 				45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */,
@@ -295,6 +300,7 @@
 				45295F611D78412500A09B8A /* AppDelegate.m in Sources */,
 				45295F5E1D78412500A09B8A /* main.m in Sources */,
 				45154F001E07E1DF00FB32FA /* InPathViewController.m in Sources */,
+				BC3955D11E2FB5EF00C8636B /* RYRRentalManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
