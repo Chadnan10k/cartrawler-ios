@@ -63,13 +63,13 @@
 {
     [super viewDidLoad];
     
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
+    
     [self.nextButton setText:NSLocalizedString(@"Search for cars", @"Search for cars")];
     
     [self.ageContainer addDoneButton];
     self.ageContainer.delegate = self;
-    
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
     
     _locSearchVC = (CTLocationSearchViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalLocationSearchViewIdentifier];
     self.locSearchVC.cartrawlerAPI = self.cartrawlerAPI;
@@ -81,22 +81,25 @@
     
     [self registerForKeyboardNotifications];
     
-    self.search.driverAge = @30;
+    if (!self.search.driverAge) {
+        self.search.driverAge = @30;
+    }
+    self.ageContainer.text = self.search.driverAge.stringValue;
     self.search.passengerQty = @1;
         
     _pickupTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
     _dropoffTimePicker = [[CTTimePickerView alloc] initInView:self.view mininumDate:nil];
 
     _isReturningSameLocation = YES;
-    
+    _activeView = self.pickupView;
+
     self.pickupView.placeholder = @"Pick-up location";
     self.dropoffView.placeholder = @"Drop-off location";
-    _activeView = self.pickupView;
     self.pickupTimeView.placeholder = @"Pick-up time";
-    [self.pickupTimeView setTextFieldText:[self.pickupTime simpleTimeString]];
     self.dropoffTimeView.placeholder = @"Drop-off time";
-    [self.dropoffTimeView setTextFieldText:[self.dropoffTime simpleTimeString]];
     self.calendarView.placeholder = @"Select dates";
+    [self.pickupTimeView setTextFieldText:[self.pickupTime simpleTimeString]];
+    [self.dropoffTimeView setTextFieldText:[self.dropoffTime simpleTimeString]];
 
     self.dropoffLocTopConstraint.constant = kDropoffLocationClosed;
     self.dropoffView.alpha = 0;
@@ -134,10 +137,14 @@
     }
     
     if (self.search.driverAge.intValue == 0) {
-        self.ageContainer.text = @"";
         self.search.driverAge = @30;
+        self.ageContainer.text = self.search.driverAge.stringValue;
     }
-    
+
+    if ((self.search.driverAge.intValue < 25) || (self.search.driverAge.intValue > 70)) {
+        [self openDriverAgeField:YES];
+    }
+
     [self.calendar reset];
 }
 
@@ -200,7 +207,8 @@
     [self presentViewController:self.calendar animated:YES completion:nil];
 }
 
-- (IBAction)sameLocation:(id)sender {
+- (IBAction)sameLocation:(id)sender
+{
     BOOL selection = ((UISwitch *)sender).isOn;
     if (selection) {
         _isReturningSameLocation = NO;
@@ -222,9 +230,22 @@
     }
 }
 
-- (IBAction)driverAge:(id)sender {
+- (IBAction)driverAge:(id)sender
+{
     BOOL selection = ((UISwitch *)sender).isOn;
-    if (selection) {
+    [self openDriverAgeField:!selection];
+}
+
+- (void)openDriverAgeField:(BOOL)open
+{
+    if (open) {
+        self.driverUnderage = YES;
+        self.ageTopConstraint.constant = kAgeOpen;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.ageContainer.alpha = 1;
+            [self.view layoutIfNeeded];
+        }];
+    } else {
         [self.view endEditing:YES];
         self.driverUnderage = NO;
         self.search.driverAge = @30;
@@ -233,13 +254,6 @@
             self.ageContainer.alpha = 0;
             [self.view layoutIfNeeded];
         }];
-    } else {
-        self.driverUnderage = YES;
-        self.ageTopConstraint.constant = kAgeOpen;
-       [UIView animateWithDuration:0.3 animations:^{
-           self.ageContainer.alpha = 1;
-           [self.view layoutIfNeeded];
-       }];
     }
 }
 
