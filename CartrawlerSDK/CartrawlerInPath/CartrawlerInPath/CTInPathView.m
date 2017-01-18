@@ -47,16 +47,6 @@
     [super awakeFromNib];
 }
 
-- (void)renderStaticPlaceholder
-{
-
-}
-
-- (void)renderVehicleDetailsPlaceholders
-{
-
-}
-
 #pragma mark Render Vehicle
 - (void)renderVehicleDetails:(CTInPathVehicle *)vehicle
 {
