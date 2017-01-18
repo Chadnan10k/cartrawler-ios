@@ -76,6 +76,8 @@
     
     if (!userDetails.driverAge) {
         [CTRentalSearch instance].driverAge = @30;
+    } else {
+        [CTRentalSearch instance].driverAge = userDetails.driverAge;
     }
     
     _defaultSearch = [[CTRentalSearch instance] copy];//copy over the user details first

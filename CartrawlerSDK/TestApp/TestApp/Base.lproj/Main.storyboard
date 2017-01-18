@@ -178,14 +178,28 @@
                                     <action selector="loadCard:" destination="9HL-5W-v1q" eventType="touchUpInside" id="y4A-Kd-SKz"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UNu-Gw-n2N">
+                                <rect key="frame" x="318" y="443" width="51" height="31"/>
+                                <connections>
+                                    <action selector="oneWayChanged:" destination="9HL-5W-v1q" eventType="valueChanged" id="cVq-Kl-Wv8"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One way trip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5S6-2V-Ifo">
+                                <rect key="frame" x="8" y="448" width="97" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ax6-HZ-Y0J" secondAttribute="trailing" constant="8" id="FT8-ry-sNs"/>
                             <constraint firstItem="lzk-tW-vOj" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="16" id="JuW-Cq-FDt"/>
+                            <constraint firstItem="5S6-2V-Ifo" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="8" id="VSm-gV-yKE"/>
                             <constraint firstItem="7vh-Hy-L1z" firstAttribute="top" secondItem="ax6-HZ-Y0J" secondAttribute="bottom" constant="8" id="XyJ-le-fNy"/>
                             <constraint firstItem="7vh-Hy-L1z" firstAttribute="top" secondItem="xed-eD-UPO" secondAttribute="bottom" id="Y43-r6-4oT"/>
                             <constraint firstAttribute="trailing" secondItem="xed-eD-UPO" secondAttribute="trailing" id="Y5V-Mv-GTH"/>
+                            <constraint firstItem="5S6-2V-Ifo" firstAttribute="centerY" secondItem="UNu-Gw-n2N" secondAttribute="centerY" id="bv6-jl-Is4"/>
                             <constraint firstItem="cW3-DK-96E" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="bvo-CV-Rd6"/>
                             <constraint firstItem="xed-eD-UPO" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="c8H-XD-VRU"/>
                             <constraint firstAttribute="trailing" secondItem="lzk-tW-vOj" secondAttribute="trailing" constant="16" id="cCZ-5R-Y4L"/>
@@ -194,6 +208,8 @@
                             <constraint firstItem="xed-eD-UPO" firstAttribute="top" secondItem="7js-LD-TYj" secondAttribute="bottom" constant="8" id="ezp-MD-b5l"/>
                             <constraint firstAttribute="trailing" secondItem="cW3-DK-96E" secondAttribute="trailing" id="kH0-Pi-fd6"/>
                             <constraint firstItem="7js-LD-TYj" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="mIe-SP-2X9"/>
+                            <constraint firstItem="cW3-DK-96E" firstAttribute="top" secondItem="UNu-Gw-n2N" secondAttribute="bottom" constant="8" id="n33-BT-LLt"/>
+                            <constraint firstAttribute="trailing" secondItem="UNu-Gw-n2N" secondAttribute="trailing" constant="8" id="sTq-op-HEz"/>
                             <constraint firstItem="ax6-HZ-Y0J" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="8" id="yvS-g6-FLB"/>
                             <constraint firstAttribute="trailing" secondItem="7js-LD-TYj" secondAttribute="trailing" id="zVY-WU-Dgi"/>
                         </constraints>
@@ -201,6 +217,7 @@
                     <connections>
                         <outlet property="bookButton" destination="iIh-9d-YCf" id="zXh-TL-Ev0"/>
                         <outlet property="cardContainer" destination="K5h-mR-ZJM" id="uHO-gp-Edd"/>
+                        <outlet property="oneWaySwitch" destination="UNu-Gw-n2N" id="fhE-Kb-zW2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2MH-hR-edb" userLabel="First Responder" sceneMemberID="firstResponder"/>
