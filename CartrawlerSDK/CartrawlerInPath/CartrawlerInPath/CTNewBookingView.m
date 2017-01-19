@@ -139,4 +139,15 @@
     [banner addToSuperViewWithString:@"NEW" superview:self.scrollingBannerContainer];
 }
 
+- (void)animateVehicle
+{
+    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:0.1 options:0 animations:^{
+        self.vehicleImageView.transform = CGAffineTransformMakeScale(1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.vehicleImageView.transform = CGAffineTransformMakeScale(1, 1);
+        }];
+    }];
+}
+
 @end

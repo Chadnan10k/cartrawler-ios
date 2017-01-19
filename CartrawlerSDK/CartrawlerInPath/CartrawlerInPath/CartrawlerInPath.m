@@ -227,9 +227,9 @@
     }
     
     if (self.cachedVehicle) {
-        [self.cardView renderVehicleDetails:self.cachedVehicle];
+        [self.cardView renderVehicleDetails:self.cachedVehicle animated:NO];
     } else {
-        [self.cardView renderDefault];
+        [self.cardView renderDefault:NO];
     }
     
     self.cardView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -251,7 +251,7 @@
 {
     _cachedVehicle = nil;
     if (self.cardView) {
-        [self.cardView renderDefault];
+        [self.cardView renderDefault:YES];
     }
     
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -287,7 +287,7 @@
     CTRentalSearch *search = [CTRentalSearch instance];
     CTRentalBooking *booking = [[CTRentalBooking alloc] initFromSearch:search];
     CTInPathVehicle *vehicle = [[CTInPathVehicle alloc] init:search];
-    [self.cardView renderVehicleDetails:vehicle];
+    [self.cardView renderVehicleDetails:vehicle animated:YES];
     _cachedVehicle = vehicle;
 
     if (self.delegate && [self.delegate respondsToSelector:@selector(didProduceInPathRequest:vehicle:)]) {

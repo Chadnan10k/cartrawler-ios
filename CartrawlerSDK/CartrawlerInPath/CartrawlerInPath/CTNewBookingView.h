@@ -10,4 +10,6 @@
 
 @interface CTNewBookingView : UIView
 
+- (void)animateVehicle;
+
 @end

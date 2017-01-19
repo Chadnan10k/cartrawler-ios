@@ -50,7 +50,8 @@
         [self pushToDestination];
     }];
     
-    _filterViewController = [CTFilterViewController initInViewController:self withData:self.search.vehicleAvailability];
+    _filterViewController = [CTFilterViewController initInViewController:self
+                                                                withData:self.search.vehicleAvailability];
     
     self.filterViewController.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData) {
         weakSelf.filteredData = filteredData;
@@ -62,7 +63,9 @@
     
     self.subheaderView.backgroundColor = [CTAppearance instance].iconTint;
     
-    [self.search addObserver:self forKeyPath:@"vehicleAvailability" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    [self.search addObserver:self forKeyPath:@"vehicleAvailability"
+                     options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                     context:nil];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -76,13 +79,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles" step:@2];
+    [self produceHeaderText];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     if (self.search.vehicleAvailability.items.count < 1) {
         [CTInterstitialViewController present:self search:self.search];
     }
-    
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles" step:@2];
-    [self produceHeaderText];
 }
 
 - (void)showText:(BOOL)show

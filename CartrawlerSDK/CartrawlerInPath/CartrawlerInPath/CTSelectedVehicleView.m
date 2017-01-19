@@ -81,14 +81,6 @@
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[label]-8-[cars]" options:0 metrics:nil views:@{@"label" : self.vehicleNameLabel, @"cars" : self.vehicleImageView}]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[banner]-8-[label]-8-|" options:0 metrics:nil views:@{@"label" : self.vehicleNameLabel, @"banner" : self.bannerContainer}]];
     
-//    [self addConstraint:
-//     [NSLayoutConstraint constraintWithItem:self.vehicleNameLabel
-//                                  attribute:NSLayoutAttributeCenterY
-//                                  relatedBy:NSLayoutRelationEqual
-//                                     toItem:self.vehicleImageView
-//                                  attribute:NSLayoutAttributeCenterY
-//                                 multiplier:1
-//                                   constant:0]];
 }
 
 - (void)setVehicle:(CTInPathVehicle *)vehicle
@@ -119,6 +111,17 @@
     [mutString appendAttributedString:orSimilarStr];
     
     return mutString;
+}
+
+- (void)animateVehicle
+{
+    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:0.1 options:0 animations:^{
+        self.vehicleImageView.transform = CGAffineTransformMakeScale(1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.vehicleImageView.transform = CGAffineTransformMakeScale(1, 1);
+        }];
+    }];
 }
 
 @end
