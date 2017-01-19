@@ -9,8 +9,6 @@
 #import "CartrawlerInPath.h"
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import <CartrawlerRental/CTSearchDetailsViewController.h>
-#import <CartrawlerRental/CTInterstitialViewController.h>
-
 #import <CartrawlerSDK/CTNavigationController.h>
 #import <CartrawlerSDK/CTDataStore.h>
 #import "CTInPathPayment.h"
