@@ -135,14 +135,18 @@
         [self.pickupTimeView setTextFieldText:[self.search.pickupDate  simpleTimeString]];
         [self.dropoffTimeView setTextFieldText:[self.search.dropoffDate simpleTimeString]];
     }
-    
+
     if (self.search.driverAge.intValue == 0) {
         self.search.driverAge = @30;
         self.ageContainer.text = self.search.driverAge.stringValue;
     }
 
     if ((self.search.driverAge.intValue < 25) || (self.search.driverAge.intValue > 70)) {
-        [self openDriverAgeField:YES];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self openDriverAgeField:YES];
+        });
+        
     }
 
     [self.calendar reset];
@@ -349,28 +353,35 @@
 
 - (void)searchTapped
 {
-    if([self validate]) {
-        [self combineDates];
-        self.nextButton.userInteractionEnabled = NO;
-        self.nextButton.alpha = 0.8;
-        
-        __weak typeof (self) weakSelf = self;
-        
-        self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage) {
-            [CTInterstitialViewController dismiss];
-            weakSelf.nextButton.userInteractionEnabled = YES;
-            weakSelf.nextButton.alpha = 1.0;
+    
+    if (self.navigationController) {
+        if([self validate]) {
+            [self combineDates];
+            self.nextButton.userInteractionEnabled = NO;
+            self.nextButton.alpha = 0.8;
             
-            if (!success && errorMessage) {
-                [weakSelf presentAlertWithError:errorMessage];
+            __weak typeof (self) weakSelf = self;
+            
+            self.dataValidationCompletion = ^(BOOL success, NSString *errorMessage) {
+                [CTInterstitialViewController dismiss];
+                
+                weakSelf.nextButton.userInteractionEnabled = YES;
+                weakSelf.nextButton.alpha = 1.0;
+                
+                if (!success && errorMessage) {
+                    [weakSelf presentAlertWithError:errorMessage];
+                }
+            };
+            
+            [self pushToDestination];
+            if (!self.search.vehicleAvailability) {
+                [CTInterstitialViewController present:self search:self.search];
             }
-        };
-        
-        [self pushToDestination];
-        if (!self.search.vehicleAvailability) {
-            [CTInterstitialViewController present:self search:self.search];
         }
+    } else {
+        [self dismiss];
     }
+
 }
 
 - (void)registerForKeyboardNotifications

@@ -25,6 +25,12 @@
     _isDebug = YES;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.endpointControl.selectedSegmentIndex = [RYRRentalManager instance].currentEndpoint;
+}
+
 - (IBAction)openCarRental:(id)sender {
     [[RYRRentalManager instance].rental presentCarRentalInViewController:self];
 }
@@ -35,12 +41,9 @@
     } else {
         _isDebug = NO;
     }
+    [[RYRRentalManager instance] changeEndpoint:!self.isDebug];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    InPathViewController *vc = segue.destinationViewController;
-}
 
 
 @end

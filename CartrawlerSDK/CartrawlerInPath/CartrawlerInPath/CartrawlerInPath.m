@@ -9,6 +9,8 @@
 #import "CartrawlerInPath.h"
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import <CartrawlerRental/CTSearchDetailsViewController.h>
+#import <CartrawlerRental/CTInterstitialViewController.h>
+
 #import <CartrawlerSDK/CTNavigationController.h>
 #import <CartrawlerSDK/CTDataStore.h>
 #import "CTInPathPayment.h"
@@ -22,6 +24,8 @@
 @property (nonatomic, strong) NSString *defaultCountryCode;
 @property (nonatomic, strong) NSString *defaultCountryName;
 @property (nonatomic) BOOL isReturnTrip;
+@property (nonatomic) BOOL didFailToFetchResults;
+@property (nonatomic) BOOL didFetchResults;
 
 @property (nonatomic, strong) CTInPathVehicle *cachedVehicle;
 
@@ -118,24 +122,34 @@
                                                                                         completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
                     if (error) {
                         [[CTAnalytics instance] tagError:@"inpath" event:@"Avail fail" message:error.errorMessage];
+                        _didFailToFetchResults = YES;
                     } else if (response.items.count > 0) {
-                        [CTRentalSearch instance].vehicleAvailability = response;
-                        [[CTRentalSearch instance] setEngineInfoFromAvail];
-                        _defaultSearch = [[CTRentalSearch instance] copy];
-                        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
-                                                                                     ascending:YES];
-                        CTAvailabilityItem *cheapestvehicle =
-                        ((CTAvailabilityItem *)[response.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
                         
-                        if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                NSNumber *dailyRate = [NSNumber numberWithFloat:
-                                                       cheapestvehicle.vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
-                                [self.delegate didReceiveBestDailyRate:dailyRate currency:cheapestvehicle.vehicle.currencyCode];
-                            });
-                        }
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            
+                            [CTRentalSearch instance].vehicleAvailability = response;
+                            [[CTRentalSearch instance] setEngineInfoFromAvail];
+                            _defaultSearch = [[CTRentalSearch instance] copy];
+                            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
+                                                                                         ascending:YES];
+                            CTAvailabilityItem *cheapestvehicle =
+                            ((CTAvailabilityItem *)[response.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
+                            _didFetchResults = YES;
+                            if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    NSNumber *dailyRate = [NSNumber numberWithFloat:
+                                                           cheapestvehicle.vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
+                                    [self.delegate didReceiveBestDailyRate:dailyRate currency:cheapestvehicle.vehicle.currencyCode];
+                                });
+                            }
+                        });
+                        
+                        
+                        
+                        
                     } else {
                         [[CTAnalytics instance] tagError:@"inpath" event:@"no items" message:@"no vehicles available"];
+                        _didFailToFetchResults = YES;
                         if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 [self.delegate didFailToReceiveBestDailyRate];
@@ -145,7 +159,10 @@
                 }];
                     
                 } else {
-                    [[CTAnalytics instance] tagError:@"inpath" event:@"get location" message:[NSString stringWithFormat:@"no location for %@", IATACode]];
+                    [[CTAnalytics instance] tagError:@"inpath"
+                                               event:@"get location"
+                                             message:[NSString stringWithFormat:@"no location for %@", IATACode]];
+                    _didFailToFetchResults = YES;
                         if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 [self.delegate didFailToReceiveBestDailyRate];
@@ -183,24 +200,23 @@
 
 - (void)presentRentalNavigationController:(UIViewController *)parent
 {
-    
     CTNavigationController *navController = [[CTNavigationController alloc] init];
     navController.navigationBar.hidden = YES;
     navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
     
-    if (self.isReturnTrip) {
-        [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
-    } else {
+    if (self.didFailToFetchResults) {
         [navController setViewControllers:@[self.rental.searchDetailsViewController]];
+    } else {
+        if (self.didFetchResults) {
+            [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
+        } else {
+            [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
+            [CTInterstitialViewController present:navController search:self.defaultSearch];
+        }
     }
     
     [parent presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
-    if (!self.isReturnTrip) {
-        if ([CTRentalSearch instance].pickupDate && [CTRentalSearch instance].dropoffDate) {
-            [(CTSearchDetailsViewController *)self.rental.searchDetailsViewController performSearch];
-        }
-    }
 }
 
 - (void)addCrossSellCardToView:(UIView *)view

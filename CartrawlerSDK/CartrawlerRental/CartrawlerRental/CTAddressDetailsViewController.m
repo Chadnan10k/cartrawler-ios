@@ -199,9 +199,6 @@
         if ([vc isKindOfClass:[CTSearchDetailsViewController class]]) {
             [self.navigationController popToViewController:vc animated:NO];
             [(CTSearchDetailsViewController *)vc performSearch];
-        } else if ([vc isKindOfClass:[CTVehicleSelectionViewController class]]) {
-            [(CTVehicleSelectionViewController *)vc refreshFromOTA];
-            [self.navigationController popToRootViewControllerAnimated:NO];
         }
     }
 }

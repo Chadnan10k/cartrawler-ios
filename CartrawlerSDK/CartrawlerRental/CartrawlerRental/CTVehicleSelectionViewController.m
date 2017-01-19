@@ -13,6 +13,8 @@
 #import "CTFilterViewController.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTSDKSettings.h>
+#import "CTSearchDetailsViewController.h"
+#import "CTInterstitialViewController.h"
 
 @interface CTVehicleSelectionViewController () <UIScrollViewDelegate>
 
@@ -68,11 +70,17 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self refresh];
     });
+    [CTInterstitialViewController dismiss];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (self.search.vehicleAvailability.items.count < 1) {
+        [CTInterstitialViewController present:self search:self.search];
+    }
+    
     [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles" step:@2];
     [self produceHeaderText];
 }
@@ -128,7 +136,8 @@
 
 - (IBAction)backTapped:(id)sender {
     if (self.navigationController.viewControllers.firstObject == self) {
-        [self dismiss];
+        //present the search details view modally
+        [self backToSearchModally];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -137,7 +146,13 @@
 - (IBAction)filterTapped:(id)sender {
     [self.filterViewController present];
 }
-    
+
+- (void)backToSearchModally
+{
+    [self.navigationController setViewControllers:[NSArray arrayWithObjects:self.optionalRoute,self,nil]];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)sortVehicles:(BOOL)byPrice
 {
     _sortingByPrice = byPrice;

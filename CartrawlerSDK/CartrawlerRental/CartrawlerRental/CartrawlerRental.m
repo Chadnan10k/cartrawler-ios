@@ -120,7 +120,7 @@
                            validationController:[[CTGenericValidation alloc] init]
                                     destination:self.vehicleDetailsViewController
                                        fallback:nil
-                                  optionalRoute:nil
+                                  optionalRoute:self.searchDetailsViewController
                                          search:[CTRentalSearch instance]
                                          target:self];
     

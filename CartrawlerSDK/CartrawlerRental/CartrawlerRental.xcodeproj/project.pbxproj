@@ -28,7 +28,7 @@
 		451E73D91E040BAC00D58F71 /* CartrawlerRental.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E73CB1E040BAC00D58F71 /* CartrawlerRental.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		451E73E31E040CF700D58F71 /* CartrawlerRental.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E73E21E040CF700D58F71 /* CartrawlerRental.m */; };
 		451E752C1E042B5700D58F71 /* CTInterstitialCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75281E042B5700D58F71 /* CTInterstitialCollectionViewCell.h */; };
-		451E752D1E042B5700D58F71 /* CTInterstitialViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75291E042B5700D58F71 /* CTInterstitialViewController.h */; };
+		451E752D1E042B5700D58F71 /* CTInterstitialViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75291E042B5700D58F71 /* CTInterstitialViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		451E752E1E042B5700D58F71 /* CTInterstitialCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E752A1E042B5700D58F71 /* CTInterstitialCollectionViewCell.m */; };
 		451E752F1E042B5700D58F71 /* CTInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E752B1E042B5700D58F71 /* CTInterstitialViewController.m */; };
 		451E75361E042B7000D58F71 /* CTLocationSearchTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75301E042B7000D58F71 /* CTLocationSearchTableViewCell.h */; };
@@ -761,6 +761,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				451E752D1E042B5700D58F71 /* CTInterstitialViewController.h in Headers */,
 				451E75C21E042F2E00D58F71 /* CTPaymentSummaryDataSource.h in Headers */,
 				451E76401E044D0800D58F71 /* CTSearchDetailsViewController.h in Headers */,
 				451E75901E042E4B00D58F71 /* CTVehicleInclusionsDataSource.h in Headers */,
@@ -819,7 +820,6 @@
 				451E75AE1E042EA200D58F71 /* CTOptionalExtraTableViewCell.h in Headers */,
 				451E75731E042D6800D58F71 /* CTTermsViewController.h in Headers */,
 				451E75551E042CB000D58F71 /* CTVehicleSelectionView.h in Headers */,
-				451E752D1E042B5700D58F71 /* CTInterstitialViewController.h in Headers */,
 				451E73D91E040BAC00D58F71 /* CartrawlerRental.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
