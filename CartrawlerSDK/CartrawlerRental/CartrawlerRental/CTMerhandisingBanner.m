@@ -47,6 +47,7 @@
     self.textLabel.textAlignment = NSTextAlignmentLeft;
     self.backgroundColor = [CTAppearance instance].merchandisingSpecialOffer;
     self.textLabel.textColor = [UIColor whiteColor];
+    self.textLabel.minimumScaleFactor = 0.5;
     self.hidden = NO;
     
     CGSize textSize = [self.textLabel.text
