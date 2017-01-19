@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *cardContainer;
 @property (weak, nonatomic) IBOutlet UIButton *bookButton;
 @property (weak, nonatomic) IBOutlet UISwitch *oneWaySwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *endpointSwitch;
 
 @end
 
@@ -22,6 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[RYRRentalManager instance] setupInPath:self.cardContainer];
+    [RYRRentalManager instance].callToAction = self.bookButton;
+    self.endpointSwitch.on = [RYRRentalManager instance].currentEndpoint;
+    
+    
 }
 
 - (IBAction)bookCar:(id)sender {
@@ -40,6 +45,12 @@
 - (IBAction)loadCard:(id)sender {
 
    // [self.inPath addCrossSellCardToView:self.cardContainer];
+}
+
+- (IBAction)changeEndpoint:(id)sender {
+    UISwitch *s = sender;
+    [[RYRRentalManager instance] changeEndpointInPath:s.isOn];
+
 }
 
 - (IBAction)oneWayChanged:(id)sender {

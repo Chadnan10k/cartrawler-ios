@@ -14,6 +14,8 @@
 @property (strong, nonatomic) NSDate *pickupDate;
 @property (strong, nonatomic) NSDate *dropoffDate;
 
+@property (nonatomic) BOOL isProduction;
+
 @end
 
 @implementation RYRRentalManager
@@ -24,9 +26,28 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[RYRRentalManager alloc] init];
+        sharedInstance.isProduction = NO;
         [sharedInstance setup];
     });
     return sharedInstance;
+}
+
+- (BOOL)currentEndpoint
+{
+    return self.isProduction;
+}
+
+- (void)changeEndpoint:(BOOL)production
+{
+    _isProduction = production;
+    [self setup];
+}
+
+- (void)changeEndpointInPath:(BOOL)production
+{
+    _isProduction = production;
+    [self setup];
+    [self reset];
 }
 
 - (void)reset
@@ -39,19 +60,21 @@
     userDetails.currency = @"GBP";
     userDetails.driverAge = @21;
     
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:56000];
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:86400];
     _pickupDate = date;
     _inPath = [[CartrawlerInPath alloc] initWithCartrawlerRental:self.rental
-                                                        IATACode:@"ALC"
+                                                        IATACode:@"LGW"
                                                       pickupDate:self.pickupDate
                                                       returnDate:self.dropoffDate
                                                      userDetails:userDetails];
     self.inPath.delegate = self;
+    [self.callToAction setTitle:@"Loading" forState:UIControlStateNormal];
+
 }
 
 - (void)setup
 {
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"en" sandboxMode:YES];
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"en" sandboxMode:!self.isProduction];
     _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
     [self.sdk enableLogs:YES];
     self.rental.delegate = self;
@@ -104,12 +127,12 @@
 
 - (void)didReceiveBestDailyRate:(NSNumber *)price currency:(NSString *)currency
 {
-    //[self.bookButton setTitle:[NSString stringWithFormat:@"Cars from: %@ %@", currency, price] forState:UIControlStateNormal];
+    [self.callToAction setTitle:[NSString stringWithFormat:@"Cars from: %@ %@", currency, price] forState:UIControlStateNormal];
 }
 
 - (void)didProduceInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
 {
-    //[self.bookButton setTitle:@"you booked a car" forState:UIControlStateNormal];
+    [self.callToAction setTitle:@"you booked a car" forState:UIControlStateNormal];
     NSLog(@"%@", request);
     NSLog(@"%@", vehicle.vehicleName);
     NSLog(@"%@", vehicle.firstName);
@@ -119,7 +142,7 @@
 
 - (void)didFailToReceiveBestDailyRate
 {
-    //[self.bookButton setTitle:@"Book a car" forState:UIControlStateNormal];
+    [self.callToAction setTitle:@"Book a car" forState:UIControlStateNormal];
 }
 
 - (void)mockPayment

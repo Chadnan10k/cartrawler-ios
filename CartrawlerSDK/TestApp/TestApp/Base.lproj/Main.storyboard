@@ -190,15 +190,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2f7-yJ-BcB">
+                                <rect key="frame" x="318" y="404" width="51" height="31"/>
+                                <connections>
+                                    <action selector="changeEndpoint:" destination="9HL-5W-v1q" eventType="valueChanged" id="h14-xQ-C4j"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avail from production" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DrR-L8-9q1">
+                                <rect key="frame" x="8" y="409" width="163" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="5S6-2V-Ifo" firstAttribute="top" secondItem="DrR-L8-9q1" secondAttribute="bottom" constant="18" id="94V-ah-2nr"/>
                             <constraint firstAttribute="trailing" secondItem="ax6-HZ-Y0J" secondAttribute="trailing" constant="8" id="FT8-ry-sNs"/>
                             <constraint firstItem="lzk-tW-vOj" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="16" id="JuW-Cq-FDt"/>
                             <constraint firstItem="5S6-2V-Ifo" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="8" id="VSm-gV-yKE"/>
                             <constraint firstItem="7vh-Hy-L1z" firstAttribute="top" secondItem="ax6-HZ-Y0J" secondAttribute="bottom" constant="8" id="XyJ-le-fNy"/>
                             <constraint firstItem="7vh-Hy-L1z" firstAttribute="top" secondItem="xed-eD-UPO" secondAttribute="bottom" id="Y43-r6-4oT"/>
                             <constraint firstAttribute="trailing" secondItem="xed-eD-UPO" secondAttribute="trailing" id="Y5V-Mv-GTH"/>
+                            <constraint firstItem="UNu-Gw-n2N" firstAttribute="top" secondItem="2f7-yJ-BcB" secondAttribute="bottom" constant="8" id="aQo-G5-sWb"/>
                             <constraint firstItem="5S6-2V-Ifo" firstAttribute="centerY" secondItem="UNu-Gw-n2N" secondAttribute="centerY" id="bv6-jl-Is4"/>
                             <constraint firstItem="cW3-DK-96E" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="bvo-CV-Rd6"/>
                             <constraint firstItem="xed-eD-UPO" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="c8H-XD-VRU"/>
@@ -210,13 +224,16 @@
                             <constraint firstItem="7js-LD-TYj" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="mIe-SP-2X9"/>
                             <constraint firstItem="cW3-DK-96E" firstAttribute="top" secondItem="UNu-Gw-n2N" secondAttribute="bottom" constant="8" id="n33-BT-LLt"/>
                             <constraint firstAttribute="trailing" secondItem="UNu-Gw-n2N" secondAttribute="trailing" constant="8" id="sTq-op-HEz"/>
+                            <constraint firstAttribute="trailing" secondItem="2f7-yJ-BcB" secondAttribute="trailing" constant="8" id="xuq-V3-NQa"/>
                             <constraint firstItem="ax6-HZ-Y0J" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="8" id="yvS-g6-FLB"/>
                             <constraint firstAttribute="trailing" secondItem="7js-LD-TYj" secondAttribute="trailing" id="zVY-WU-Dgi"/>
+                            <constraint firstItem="DrR-L8-9q1" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="8" id="zmY-gC-KfW"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bookButton" destination="iIh-9d-YCf" id="zXh-TL-Ev0"/>
                         <outlet property="cardContainer" destination="K5h-mR-ZJM" id="uHO-gp-Edd"/>
+                        <outlet property="endpointSwitch" destination="2f7-yJ-BcB" id="lRg-Vf-YCy"/>
                         <outlet property="oneWaySwitch" destination="UNu-Gw-n2N" id="fhE-Kb-zW2"/>
                     </connections>
                 </viewController>

@@ -16,7 +16,6 @@
 
 @property (nonatomic, strong) CTNewBookingView *noSelectionView;
 @property (nonatomic, strong) CTSelectedVehicleView *selectedVehicleView;
-
 @end
 
 @implementation CTInPathView
@@ -39,7 +38,7 @@
 
 - (void)setup
 {
-    [self renderDefault];
+    [self renderDefault:NO];
 }
 
 - (void)awakeFromNib
@@ -48,13 +47,20 @@
 }
 
 #pragma mark Render Vehicle
-- (void)renderVehicleDetails:(CTInPathVehicle *)vehicle
+- (void)renderVehicleDetails:(CTInPathVehicle *)vehicle animated:(BOOL)animated
 {
+    
     if (self.noSelectionView) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.noSelectionView.alpha = 0;
+        }];
         [self.noSelectionView removeFromSuperview];
     }
     
     if (self.selectedVehicleView) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.noSelectionView.alpha = 0;
+        }];
         [self.selectedVehicleView removeFromSuperview];
     }
     
@@ -67,11 +73,12 @@
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.selectedVehicleView}]];
     
     [self.selectedVehicleView setVehicle:vehicle];
-    self.noSelectionView.alpha = 0;
-    self.selectedVehicleView.alpha = 1;
+    if (animated) {
+        [self.selectedVehicleView animateVehicle];
+    }
 }
 
-- (void)renderDefault
+- (void)renderDefault:(BOOL)animated
 {
     if (self.noSelectionView) {
         [self.noSelectionView removeFromSuperview];
@@ -88,6 +95,10 @@
     [self addSubview:self.noSelectionView];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
+    
+    if (animated) {
+        [self.noSelectionView animateVehicle];
+    }
 
 }
 

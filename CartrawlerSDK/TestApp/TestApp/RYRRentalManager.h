@@ -17,9 +17,13 @@
 @property (nonatomic, strong) CartrawlerRental *rental;
 @property (nonatomic, strong) CartrawlerInPath *inPath;
 
-@property (weak, nonatomic) UIButton *callToAction;//bad practice passing this obj but who cares its a test app.
+@property (strong, nonatomic) UIButton *callToAction;//bad practice passing this obj but who cares its a test app.
 
 + (instancetype)instance;
+
+- (void)changeEndpoint:(BOOL)production;
+- (void)changeEndpointInPath:(BOOL)production;
+
 
 - (void)reset;
 - (void)setupInPath:(UIView *)view;
@@ -27,5 +31,7 @@
 - (void)removeVehicle;
 - (void)changeRoundTrip:(BOOL)isRoundTrip;
 - (void)mockPayment;
+
+- (BOOL)currentEndpoint;
 
 @end
