@@ -124,29 +124,21 @@
                         [[CTAnalytics instance] tagError:@"inpath" event:@"Avail fail" message:error.errorMessage];
                         _didFailToFetchResults = YES;
                     } else if (response.items.count > 0) {
-                        
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            
-                            [CTRentalSearch instance].vehicleAvailability = response;
-                            [[CTRentalSearch instance] setEngineInfoFromAvail];
-                            _defaultSearch = [[CTRentalSearch instance] copy];
-                            NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
-                                                                                         ascending:YES];
-                            CTAvailabilityItem *cheapestvehicle =
-                            ((CTAvailabilityItem *)[response.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
-                            _didFetchResults = YES;
-                            if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    NSNumber *dailyRate = [NSNumber numberWithFloat:
-                                                           cheapestvehicle.vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
-                                    [self.delegate didReceiveBestDailyRate:dailyRate currency:cheapestvehicle.vehicle.currencyCode];
-                                });
-                            }
-                        });
-                        
-                        
-                        
-                        
+                        [CTRentalSearch instance].vehicleAvailability = response;
+                        [[CTRentalSearch instance] setEngineInfoFromAvail];
+                        _defaultSearch = [[CTRentalSearch instance] copy];
+                        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
+                                                                                     ascending:YES];
+                        CTAvailabilityItem *cheapestvehicle =
+                        ((CTAvailabilityItem *)[response.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
+                        _didFetchResults = YES;
+                        if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                NSNumber *dailyRate = [NSNumber numberWithFloat:
+                                                       cheapestvehicle.vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
+                                [self.delegate didReceiveBestDailyRate:dailyRate currency:cheapestvehicle.vehicle.currencyCode];
+                            });
+                        }
                     } else {
                         [[CTAnalytics instance] tagError:@"inpath" event:@"no items" message:@"no vehicles available"];
                         _didFailToFetchResults = YES;
@@ -212,7 +204,6 @@
             [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
         } else {
             [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
-            [CTInterstitialViewController present:navController search:self.defaultSearch];
         }
     }
     

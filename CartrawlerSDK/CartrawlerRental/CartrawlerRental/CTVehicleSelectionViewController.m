@@ -88,6 +88,13 @@
     [super viewDidAppear:animated];
     if (self.search.vehicleAvailability.items.count < 1) {
         [CTInterstitialViewController present:self search:self.search];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            //is there results?
+            if (self.search.vehicleAvailability.items.count < 1) {
+                [CTInterstitialViewController dismiss];
+                [self backToSearch];
+            }
+        });
     }
 }
 
@@ -143,7 +150,7 @@
 - (IBAction)backTapped:(id)sender {
     if (self.navigationController.viewControllers.firstObject == self) {
         //present the search details view modally
-        [self backToSearchModally];
+        [self backToSearch];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -153,7 +160,7 @@
     [self.filterViewController present];
 }
 
-- (void)backToSearchModally
+- (void)backToSearch
 {
     [self.navigationController setViewControllers:[NSArray arrayWithObjects:self.optionalRoute,self,nil]];
     [self.navigationController popViewControllerAnimated:YES];
