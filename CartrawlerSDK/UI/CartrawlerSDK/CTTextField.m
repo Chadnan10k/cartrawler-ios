@@ -86,5 +86,16 @@
     return [emailTest evaluateWithObject:self.text];
 }
 
+- (BOOL)containsOnlyWhitespace
+{
+    NSCharacterSet *charSet = [NSCharacterSet whitespaceCharacterSet];
+    NSString *trimmedString = [self.text stringByTrimmingCharactersInSet:charSet];
+    if ([trimmedString isEqualToString:@""]) {
+        // it's empty or contains only white spaces
+        return YES;
+    }
+    return NO;
+}
+
 
 @end

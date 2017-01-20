@@ -18,5 +18,6 @@ IB_DESIGNABLE
 
 - (void)shakeAnimation;
 - (BOOL)isValidEmail;
+- (BOOL)containsOnlyWhitespace;
 
 @end

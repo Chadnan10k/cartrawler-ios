@@ -128,22 +128,22 @@
     
     BOOL validated = YES;
     
-    if ([self.firstNameTextField.text isEqualToString: @""]) {
+    if ([self.firstNameTextField.text isEqualToString: @""] || [self.firstNameTextField containsOnlyWhitespace]) {
         [self.firstNameTextField shakeAnimation];
         validated = NO;
     }
     
-    if ([self.lastNameTextField.text isEqualToString: @""]) {
+    if ([self.lastNameTextField.text isEqualToString: @""] || [self.lastNameTextField containsOnlyWhitespace]) {
         [self.lastNameTextField shakeAnimation];
         validated = NO;
     }
     
-    if ([self.emailTextField.text isEqualToString: @""] || ![self.emailTextField isValidEmail]) {
+    if ([self.emailTextField.text isEqualToString: @""] || ![self.emailTextField isValidEmail] || [self.emailTextField containsOnlyWhitespace]) {
         [self.emailTextField shakeAnimation];
         validated = NO;
     }
     
-    if ([self.phoneTextField.text isEqualToString: @""]) {
+    if ([self.phoneTextField.text isEqualToString: @""] || [self.phoneTextField containsOnlyWhitespace]) {
         [self.phoneTextField shakeAnimation];
         validated = NO;
     }
@@ -174,7 +174,7 @@
   
     switch (textField.tag) {
         case 0:
-            if (self.firstNameTextField.text.length > 0) {
+            if (self.firstNameTextField.text.length > 0 && ![self.firstNameTextField containsOnlyWhitespace]) {
                 [self.lastNameTextField becomeFirstResponder];
             } else {
                 [self.firstNameTextField shakeAnimation];
@@ -222,15 +222,8 @@
 {
     NSMutableCharacterSet *characterSet = [NSMutableCharacterSet alphanumericCharacterSet];
     [characterSet addCharactersInString:@" "];
-    
     if (textField == self.phoneTextField) {
         return [self validatePhone:[NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string]];
-    } else if (textField != self.emailTextField) {
-        if ([[NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string] rangeOfCharacterFromSet:[characterSet invertedSet]].location != NSNotFound) {
-            return NO;
-        } else {
-            return YES;
-        }
     } else {
         return YES;
     }

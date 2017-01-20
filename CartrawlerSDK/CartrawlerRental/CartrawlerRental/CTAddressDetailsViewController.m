@@ -119,12 +119,12 @@
 {
     BOOL validated = YES;
     
-    if ([self.addressLine1TextField.text isEqualToString: @""]) {
+    if ([self.addressLine1TextField.text isEqualToString: @""] || [self.addressLine1TextField containsOnlyWhitespace]) {
         [self.addressLine1TextField shakeAnimation];
         validated = NO;
     }
     
-    if ([self.cityTextField.text isEqualToString: @""]) {
+    if ([self.cityTextField.text isEqualToString: @""] || [self.cityTextField containsOnlyWhitespace]) {
         [self.cityTextField shakeAnimation];
         validated = NO;
     }
