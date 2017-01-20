@@ -41,12 +41,13 @@
                                         locale:[CTSDKSettings instance].languageCode
                                       currency:[CTSDKSettings instance].currencyCode];
     
-    CTInPathVehicle *vehicle = [[CTInPathVehicle alloc] init:search];
+
+    NSNumber *amount = search.selectedVehicle.vehicle.totalPriceForThisVehicle;
     
     NSString *vehDescription = @"";
     
     return @{@"ota" : json,
-             @"amt" : vehicle.totalCost.stringValue,
+             @"amt" : amount.stringValue,
              @"description" : vehDescription};
 }
 
