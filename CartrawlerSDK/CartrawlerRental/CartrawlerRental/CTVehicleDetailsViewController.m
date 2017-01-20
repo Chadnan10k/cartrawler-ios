@@ -173,7 +173,10 @@
     [self.featuresTableView layoutIfNeeded];
 
     if ([self.featuresTableView cartrawlerConstraintForAttribute:NSLayoutAttributeHeight]) {
-        [self.featuresTableView cartrawlerConstraintForAttribute:NSLayoutAttributeHeight].constant = self.featuresTableView.contentSize.height;
+        //IOS-122
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.featuresTableView cartrawlerConstraintForAttribute:NSLayoutAttributeHeight].constant = self.featuresTableView.contentSize.height;
+        });
     }
 }
 

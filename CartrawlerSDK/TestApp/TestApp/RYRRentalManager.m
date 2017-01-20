@@ -56,10 +56,11 @@
     userDetails.firstName = @"Lee";
     userDetails.surname = @"Maguire";
     userDetails.email = @"lee@maguire.com";
-    userDetails.phone = @"086666666";
+    userDetails.phone = @"+086666666";
     userDetails.currency = @"GBP";
     userDetails.driverAge = @21;
-    
+    userDetails.flightNo = @"FR 777";
+
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:86400];
     _pickupDate = date;
     _inPath = [[CartrawlerInPath alloc] initWithCartrawlerRental:self.rental
@@ -133,6 +134,9 @@
 - (void)didProduceInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
 {
     [self.callToAction setTitle:@"you booked a car" forState:UIControlStateNormal];
+    NSLog(@"Total %@", vehicle.totalCost);
+    NSLog(@"Insurance %@", vehicle.insuranceCost);
+
     NSLog(@"%@", request);
     NSLog(@"%@", vehicle.vehicleName);
     NSLog(@"%@", vehicle.firstName);
