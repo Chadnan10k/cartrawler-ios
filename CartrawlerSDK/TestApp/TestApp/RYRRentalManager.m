@@ -56,10 +56,11 @@
     userDetails.firstName = @"Lee";
     userDetails.surname = @"Maguire";
     userDetails.email = @"lee@maguire.com";
-    userDetails.phone = @"086666666";
+    userDetails.phone = @"+086666666";
     userDetails.currency = @"GBP";
     userDetails.driverAge = @21;
-    
+    userDetails.flightNo = @"FR 777";
+
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:86400];
     _pickupDate = date;
     _inPath = [[CartrawlerInPath alloc] initWithCartrawlerRental:self.rental
