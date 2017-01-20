@@ -175,8 +175,13 @@
 - (void)sortVehicles:(BOOL)byPrice
 {
     _sortingByPrice = byPrice;
-    [self.vehicleSelectionView updateSelection:self.filteredData ?: self.search.vehicleAvailability.items
-                                   sortByPrice:self.sortingByPrice];
+    if (self.filteredData.count > 0) {
+        [self.vehicleSelectionView updateSelection:self.filteredData
+                                       sortByPrice:self.sortingByPrice];
+    } else {
+        [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items
+                                       sortByPrice:self.sortingByPrice];
+    }
 }
     
 - (IBAction)sortTapped:(id)sender {
