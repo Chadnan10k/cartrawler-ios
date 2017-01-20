@@ -28,6 +28,7 @@
     // Initialization code
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 40;
+    self.tableView.dataSource = self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -69,9 +70,9 @@
     
     self.totalLabel.text = [@(total) numberStringWithCurrencyCode];
     
-    self.tableView.dataSource = self;
     [self.tableView reloadData];
     [self.tableView layoutIfNeeded];
+    
     [self.tableView cartrawlerConstraintForAttribute:NSLayoutAttributeHeight].constant = self.tableView.contentSize.height;
 }
 
