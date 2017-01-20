@@ -133,6 +133,9 @@
 - (void)didProduceInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
 {
     [self.callToAction setTitle:@"you booked a car" forState:UIControlStateNormal];
+    NSLog(@"Total %@", vehicle.totalCost);
+    NSLog(@"Insurance %@", vehicle.insuranceCost);
+
     NSLog(@"%@", request);
     NSLog(@"%@", vehicle.vehicleName);
     NSLog(@"%@", vehicle.firstName);

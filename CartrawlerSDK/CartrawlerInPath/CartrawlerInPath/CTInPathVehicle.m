@@ -38,7 +38,7 @@
     
     _isBuyingInsurance = search.isBuyingInsurance;
     if (search.isBuyingInsurance) {
-        _insuranceCost = search.insurance.costAmount;
+        _insuranceCost = search.insurance.premiumAmount;
     } else {
         _insuranceCost = @0;
     }
