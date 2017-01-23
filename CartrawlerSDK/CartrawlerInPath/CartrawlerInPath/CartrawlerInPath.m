@@ -92,10 +92,11 @@
                                                         fromDate:[CTRentalSearch instance].pickupDate
                                                           toDate:[CTRentalSearch instance].dropoffDate
                                                          options:0];
-    
+    _didFailToFetchResults = YES;//set to yes until someone sends a response
     [self.rental.cartrawlerSDK.cartrawlerAPI locationSearchWithAirportCode:IATACode
                                                                 completion:^(CTLocationSearch *response, CTErrorResponse *error) {
         if (error) {
+            _didFailToFetchResults = YES;
             if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.delegate didFailToReceiveBestDailyRate];
