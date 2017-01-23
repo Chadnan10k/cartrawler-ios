@@ -12,8 +12,6 @@
 
 @property (nonatomic) CGFloat padding UI_APPEARANCE_SELECTOR;
 
-+ (void)forceLinkerLoad_;
-
 typedef void (^CTDateSelectionCompletion)(NSDate *pickup, NSDate *dropoff);
 typedef void (^CTSingleDateSelectionCompletion)(NSDate *date, BOOL headCell);
 typedef void (^CTDiscardDates)(void);

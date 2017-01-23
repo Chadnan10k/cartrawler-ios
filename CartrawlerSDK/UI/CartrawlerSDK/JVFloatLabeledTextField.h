@@ -43,7 +43,7 @@
 IB_DESIGNABLE
 @interface JVFloatLabeledTextField : UITextField
 
-+ (void)forceLinkerLoad_;
+
 
 /**
  * Read-only access to the floating label.

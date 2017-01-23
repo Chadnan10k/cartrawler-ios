@@ -10,10 +10,8 @@
 
 @implementation CTMiddleDateCell
 
-+ (void)forceLinkerLoad_
-{
-    
-}
+
+
 
 - (id)initWithCell:(CTDateCollectionViewCell *)cell section:(NSNumber *)section indexPath:(NSIndexPath *)indexPath
 {

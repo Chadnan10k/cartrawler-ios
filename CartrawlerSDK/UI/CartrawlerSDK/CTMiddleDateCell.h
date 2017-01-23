@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSNumber *section;
 @property (nonatomic, strong) CTDateCollectionViewCell *cell;
 
-+ (void)forceLinkerLoad_;
+
 
 - (id)initWithCell:(CTDateCollectionViewCell *)cell section:(NSNumber *)section indexPath:(NSIndexPath *)indexPath;
 

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <CartrawlerSDK/CartrawlerSDK.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [CartrawlerSDK appearance].fontName = @"Roboto-Regular";
+    [CartrawlerSDK appearance].boldFontName = @"Roboto-Bold";
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [CartrawlerSDK appearance].presentAnimated = YES;
+    [CartrawlerSDK appearance].modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [CartrawlerSDK appearance].modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [CartrawlerSDK appearance].calendarStartCellImage = [UIImage imageNamed:@"calStart"];
+    [CartrawlerSDK appearance].calendarMidCellImage = [UIImage imageNamed:@"calMid"];
+    [CartrawlerSDK appearance].calendarEndCellImage = [UIImage imageNamed:@"calEnd"];
+    [CartrawlerSDK appearance].calendarSameDayCellImage = [UIImage imageNamed:@"calSame"];
+    
     return YES;
 }
 

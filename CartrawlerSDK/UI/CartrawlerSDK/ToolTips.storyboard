@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="NO">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <development version="7000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+    </dependencies>
+    <scenes>
+        <!--Tool Tip View Controller-->
+        <scene sceneID="l48-cO-E9R">
+            <objects>
+                <viewController restorationIdentifier="CTToolTipViewController" storyboardIdentifier="CTToolTipViewController" id="faV-1v-VPl" customClass="CTToolTipViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mLj-xy-f3H"/>
+                        <viewControllerLayoutGuide type="bottom" id="cbp-wc-qoo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9jd-UR-EGw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TsP-BO-w0i" customClass="CTNavigationView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tool tip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ah1-CV-zPD" customClass="CTLabel">
+                                        <rect key="frame" x="159.5" y="28" width="57" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEQ-KV-r0A">
+                                        <rect key="frame" x="8" y="28" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="LVR-Cp-5ah"/>
+                                            <constraint firstAttribute="width" constant="20" id="ylC-Nr-YfK"/>
+                                        </constraints>
+                                        <state key="normal" image="down_arrow"/>
+                                        <connections>
+                                            <action selector="close:" destination="faV-1v-VPl" eventType="touchUpInside" id="kbf-gM-MeQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.26236741879999997" green="0.55808807910000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="fEQ-KV-r0A" secondAttribute="bottom" constant="12" id="P4u-FT-UFd"/>
+                                    <constraint firstItem="ah1-CV-zPD" firstAttribute="centerY" secondItem="fEQ-KV-r0A" secondAttribute="centerY" id="Rfu-V8-5Pz"/>
+                                    <constraint firstItem="ah1-CV-zPD" firstAttribute="centerX" secondItem="TsP-BO-w0i" secondAttribute="centerX" id="bRF-gM-qnc"/>
+                                    <constraint firstAttribute="height" constant="60" id="rsp-r5-Ee9"/>
+                                    <constraint firstItem="fEQ-KV-r0A" firstAttribute="leading" secondItem="TsP-BO-w0i" secondAttribute="leading" constant="8" id="udk-pC-0sR"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Vqb-nB-fVf" customClass="CTTextView">
+                                <rect key="frame" x="16" y="76" width="343" height="591"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.65376514880000003" green="0.78721816980000003" blue="0.51248123329999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="TsP-BO-w0i" firstAttribute="top" secondItem="9jd-UR-EGw" secondAttribute="top" id="Cgi-UT-GHE"/>
+                            <constraint firstItem="TsP-BO-w0i" firstAttribute="leading" secondItem="9jd-UR-EGw" secondAttribute="leading" id="KCP-Ez-GYf"/>
+                            <constraint firstItem="cbp-wc-qoo" firstAttribute="top" secondItem="Vqb-nB-fVf" secondAttribute="bottom" id="diE-Dz-wMI"/>
+                            <constraint firstAttribute="trailing" secondItem="TsP-BO-w0i" secondAttribute="trailing" id="jyk-Lp-VtP"/>
+                            <constraint firstItem="Vqb-nB-fVf" firstAttribute="leading" secondItem="9jd-UR-EGw" secondAttribute="leading" constant="16" id="uu2-4w-ieY" customClass="CTLayoutConstraint"/>
+                            <constraint firstItem="Vqb-nB-fVf" firstAttribute="top" secondItem="TsP-BO-w0i" secondAttribute="bottom" constant="16" id="xNg-5A-pMu" customClass="CTLayoutConstraint"/>
+                            <constraint firstAttribute="trailing" secondItem="Vqb-nB-fVf" secondAttribute="trailing" constant="16" id="yGz-Em-NH3" customClass="CTLayoutConstraint"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="fEQ-KV-r0A" id="Oey-lz-c8m"/>
+                        <outlet property="detailTextView" destination="Vqb-nB-fVf" id="n0X-H6-cTy"/>
+                        <outlet property="tipTitleLabel" destination="ah1-CV-zPD" id="yUq-Rx-hRp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N4l-89-vOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="44" y="195.6521739130435"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="down_arrow" width="24" height="24"/>
+    </resources>
+</document>

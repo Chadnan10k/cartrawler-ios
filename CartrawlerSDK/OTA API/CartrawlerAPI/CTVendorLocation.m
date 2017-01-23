@@ -16,7 +16,7 @@
     
     _locationCode = dictionary[@"@Code"];
     _atAirport    = [dictionary[@"@AtAirport"] boolValue];
-    
+
     if ([dictionary[@"AdditionalInfo"][@"VehRentLocInfos"][@"VehRentLocInfo"][@"@Type"] isEqualToString:@"VLI_1.VLI.X"]) { //terminal counter + pickup
         _pickupType = PickupTypeTerminal;
     } else if ([dictionary[@"AdditionalInfo"][@"VehRentLocInfos"][@"VehRentLocInfo"][@"@Type"] isEqualToString:@"VLI_2.VLI.X"]) { //shuttle bus

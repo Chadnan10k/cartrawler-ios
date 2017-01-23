@@ -7,9 +7,9 @@
 //
 
 #import "CTRequestBuilder.h"
-#import "Constants.h"
-#import "NSDateUtils.h"
-#import "NSDataUtils.h"
+#import "CTConstants.h"
+#import "CartrawlerAPI+NSDate.h"
+#import "CartrawlerAPI+NSData.h"
 #import "CTExtraEquipment.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <UIKit/UIKit.h>
@@ -46,7 +46,7 @@
         return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.cartrawler.com/\",\"@Version\": \"1.000\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, clientID];
         
     } else if ([callType isEqualToString:CTLocationGTSearchHeader]) {
-        return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.cartrawler.com/\",\"@Version\": \"1.000\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"@ERSP_UserID\" : \"MP\", \"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, clientID];
+        return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.cartrawler.com/\",\"@Version\": \"1.000\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"@ERSP_UserID\" : \"MO\", \"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, clientID];
         
     } else {
         return @"";
@@ -55,7 +55,7 @@
 
 + (NSString *)currencyHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency
 {
-    return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.002\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": {\"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
+    return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.002\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"@ERSP_UserID\": \"MO\", \"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
 }
 
 + (NSString *)groundTransportHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency country:(NSString *)country
@@ -63,12 +63,13 @@
     return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.002\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": {\"@ISOCurrency\": \"%@\",\"@ISOCountry\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, country, clientID];
 }
 
-+ (NSString *) stringToSha1:(NSString *)str {
++ (NSString *)stringToSha1:(NSString *)str
+{
     NSData *dataToHash = [str dataUsingEncoding:NSUTF8StringEncoding];
     unsigned char hashBytes[CC_SHA1_DIGEST_LENGTH];
     CC_SHA1(dataToHash.bytes, (CC_LONG)dataToHash.length, hashBytes);
     NSData *encodedData = [NSData dataWithBytes:hashBytes length:CC_SHA1_DIGEST_LENGTH];
-    return [NSDataUtils hexadecimalString: encodedData];
+    return [encodedData hexadecimalString];
 }
 
 + (NSString *)tpaExtenstionContruct:(NSString *)clientID {
@@ -81,6 +82,21 @@
     NSString *stringTwo = [NSString stringWithFormat:@"%@.cartrawler", [self stringToSha1:stringTobeHashed]];
     
     return [NSString stringWithFormat:@"\"TPA_Extensions\": {\"ConsumerSignature\":{\"@ID\": \"%@\",\"@Hash\": \"%@\",\"@Stamp\": \"%@\"}}}", [self stringToSha1:[UIDevice currentDevice].identifierForVendor.UUIDString], [self stringToSha1:stringTwo], dateString];
+}
+
++ (NSString *)tpaExtensionForAvail
+{
+    NSString *tpa =
+       @" \"TPA_Extensions\": { \r"
+       @"     \"showBaseCost\": true, \r"
+       @"     \"GeoRadius\": 5, \r"
+       @"     \"Window\": { \r"
+       @"         \"@name\": \"IOS-V3\", \r"
+       @"         \"@engine\": \"IOS-V3\" \r"
+       @"      } \r"
+       @" }} \r";
+    
+    return tpa;
 }
 
 + (NSString *)OTA_VehLocSearchRQCity:(NSString *)cityName
@@ -187,7 +203,7 @@
                          currency:(NSString *)currency
 {
     
-    NSString *tail = [NSString stringWithFormat:@"\"VehAvailRQCore\":{\"@Status\":\"Available\",\"VehRentalCore\":{\"@PickUpDateTime\":\"%@\",\"@ReturnDateTime\":\"%@\",\"PickUpLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"},\"ReturnLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"}},\"DriverType\":{\"@Age\":\"%@\"}},\"VehAvailRQInfo\":{\"@PassengerQty\":\"%@\",\"Customer\":{\"Primary\":{\"CitizenCountryName\":{\"@Code\":\"%@\"}}},%@", pickUpDateTime, returnDateTime, pickUpLoactionCode, returnLocationCode, driverAge, passengerQty, homeCountryCode, [CTRequestBuilder tpaExtenstionContruct:clientID]];
+    NSString *tail = [NSString stringWithFormat:@"\"VehAvailRQCore\":{\"@Status\":\"Available\",\"VehRentalCore\":{\"@PickUpDateTime\":\"%@\",\"@ReturnDateTime\":\"%@\",\"PickUpLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"},\"ReturnLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"}},\"DriverType\":{\"@Age\":\"%@\"}},\"VehAvailRQInfo\":{\"@PassengerQty\":\"%@\",\"Customer\":{\"Primary\":{\"CitizenCountryName\":{\"@Code\":\"%@\"}}},%@", pickUpDateTime, returnDateTime, pickUpLoactionCode, returnLocationCode, driverAge, passengerQty, homeCountryCode, [CTRequestBuilder tpaExtensionForAvail]];
     
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:currency], tail];
 }
@@ -370,7 +386,7 @@
                                target:(NSString *)target
                                locale:(NSString *)locale
 {    //we don't know their name or the amount of passengers
-    NSString *tail = [NSString stringWithFormat:@"\"PlanForQuoteRQ\":{\"@PlanID\":\"ACME\",\"@Type\":\"Protection\",\"CoveredTravelers\":{\"CoveredTraveler\":{\"CoveredPerson\":{\"@Relation\":\"Traveler 1\",\"GivenName\":\"Test\",\"Surname\":\"Test\"},\"CitizenCountryName\":{\"@Code\":\"%@\"}}},\"InsCoverageDetail\":{\"@Type\":\"SingleTrip\",\"TotalTripCost\":{\"@CurrencyCode\":\"%@\",\"@Amount\":\"%@\"},\"CoveredTrips\":{\"CoveredTrip\":{\"@Start\": \"%@\",\"@End\":\"%@\",\"Destinations\":{\"Destination\":{\"CountryName\":\"%@\"}}}}}}", homeCountry, activeCurrency, totalCost, [NSDateUtils stringFromDateWithFormat:pickupDateTime format:CTAvailRequestDateFormat], [NSDateUtils stringFromDateWithFormat:dropOffDateTime format:CTAvailRequestDateFormat], destinationCountryCode];
+    NSString *tail = [NSString stringWithFormat:@"\"PlanForQuoteRQ\":{\"@PlanID\":\"ACME\",\"@Type\":\"Protection\",\"CoveredTravelers\":{\"CoveredTraveler\":{\"CoveredPerson\":{\"@Relation\":\"Traveler 1\",\"GivenName\":\"Test\",\"Surname\":\"Test\"},\"CitizenCountryName\":{\"@Code\":\"%@\"}}},\"InsCoverageDetail\":{\"@Type\":\"SingleTrip\",\"TotalTripCost\":{\"@CurrencyCode\":\"%@\",\"@Amount\":\"%@\"},\"CoveredTrips\":{\"CoveredTrip\":{\"@Start\": \"%@\",\"@End\":\"%@\",\"Destinations\":{\"Destination\":{\"CountryName\":\"%@\"}}}}}}", homeCountry, activeCurrency, totalCost, [pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat], [dropOffDateTime stringFromDateWithFormat:CTAvailRequestDateFormat], destinationCountryCode];
     
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:activeCurrency], tail];
 

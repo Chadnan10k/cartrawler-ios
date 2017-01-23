@@ -7,7 +7,7 @@
 //
 
 #import "CTGroundShuttle.h"
-#import "ImageResizeURL.h"
+#import "CartrawlerAPI+NSURL.h"
 
 @implementation CTGroundShuttle
 
@@ -97,7 +97,7 @@
     _inclusions = inclusionArr;
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier: @"es_US"]];
+    [numberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier: @"en_US"]];
 
     NSNumber *totalCharge = [numberFormatter numberFromString:dict[@"TotalCharge"][@"@RateTotalAmount"]];
     
@@ -111,7 +111,7 @@
     
     //NSURL *vehImgUrl = [[NSURL alloc] initWithString:dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Vehicle"][@"PictureURL"]];
     
-    _vehicleImage = [ImageResizeURL gtVehicle:dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Vehicle"][@"PictureURL"]];
+    _vehicleImage = [NSURL gtVehicle:dict[@"Reference"][@"TPA_Extensions"][@"GroundAvail"][@"Vehicle"][@"PictureURL"]];
     
     return self;
 }

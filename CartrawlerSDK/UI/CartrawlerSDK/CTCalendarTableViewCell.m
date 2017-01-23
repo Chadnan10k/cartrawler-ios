@@ -23,22 +23,14 @@
 
 @implementation CTCalendarTableViewCell
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 - (UICollectionView *)currentCollectionView
@@ -72,8 +64,8 @@
     NSDateComponents* comp = [cal components:NSUIntegerMax fromDate:adjustedDate];
     
     NSCalendar *c = [NSCalendar currentCalendar];
-    NSRange days = [c rangeOfUnit:NSDayCalendarUnit
-                           inUnit:NSMonthCalendarUnit
+    NSRange days = [c rangeOfUnit:NSCalendarUnitDay
+                           inUnit:NSCalendarUnitMonth
                           forDate:adjustedDate];
     
     _startDay = comp.weekday;
@@ -135,21 +127,16 @@
         if ([((NSDate *)self.dates[indexPath.row]) compare:previousDay] == NSOrderedAscending) {
             [cell setLabelColor:[UIColor lightGrayColor]];
         } else {
-            [cell setLabelColor:[UIColor darkGrayColor]];
+            [cell setLabelColor:[UIColor blackColor]];
         }
     } else {
-        [cell setLabelColor:[UIColor darkGrayColor]];
+        [cell setLabelColor:[UIColor blackColor]];
     }
     
     [cell setDateLabel:self.dates[indexPath.row] indexPath:indexPath section:@(self.section)];
     [self.logicController validateCell:(CTDateCollectionViewCell *)cell indexPath: indexPath section: self.section collectionView: collectionView];
 
     return cell;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    //[self.logicController validateCell:(CTDateCollectionViewCell *)cell indexPath: indexPath section: self.section collectionView: collectionView];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
@@ -172,22 +159,23 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 1.5;
+    return 0;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 2;
+    return 0;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(self.cellWidth, self.cellWidth);
+    return [self cellSize];
 }
 
-- (CGFloat)cellWidth
+- (CGSize)cellSize
 {
-    return (CGRectGetWidth(self.bounds) - 10 * 2) / 7;
+    CGFloat size = (CGRectGetWidth(self.bounds) - 5 * 2) / 7;
+    return  CGSizeMake(size, size);
 }
 
 @end

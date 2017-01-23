@@ -11,11 +11,6 @@
 
 @implementation CTSegmentedControl
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];

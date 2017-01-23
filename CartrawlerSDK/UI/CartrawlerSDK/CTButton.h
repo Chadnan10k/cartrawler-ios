@@ -15,8 +15,8 @@ IB_DESIGNABLE
 @property (nonatomic, strong) IBInspectable UIColor *overrideTextColor;
 @property (nonatomic) IBInspectable CGFloat overrideCornerRadius;
 @property (nonatomic) IBInspectable BOOL disableShadow;
-
-+ (void)forceLinkerLoad_;
+@property (nonatomic) IBInspectable BOOL useBoldFont;
+@property (nonatomic) IBInspectable BOOL transparent;
 
 - (void)shake;
 

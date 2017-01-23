@@ -18,14 +18,12 @@
 
 @implementation CTTimePickerView
 
-+ (void)forceLinkerLoad_
-{
-    
-}
+
+
 
 - (id)initInView:(UIView *)superview mininumDate:(NSDate *)mininumDate
 {
-    self = [super self];
+    self = [super init];
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
     _pickerView = [[UIDatePicker alloc] init];
@@ -169,27 +167,10 @@
     
     NSDate *returnDate;
     NSInteger minuteInterval = 15;
-    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSMinuteCalendarUnit fromDate:inDate];
+    NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitMinute fromDate:inDate];
     NSInteger minutes = dateComponents.minute;
     NSInteger minutesRounded = ( (NSInteger)(minutes / minuteInterval) ) * minuteInterval;
     NSDate *roundedDate = [[NSDate alloc] initWithTimeInterval:60.0 * (minutesRounded - minutes) sinceDate:inDate];
-    
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Set the date picker's value (and the selected date on the UI display) to
-    // the rounded date.
-    if ([roundedDate isEqualToDate:inDate])
-    {
-        // We need to set the date picker's value to something different than
-        // the rounded date, because the second call to set the date picker's
-        // date with the same value is ignored. Which could be bad since the
-        // call above to set the date picker's minute interval can leave the
-        // date picker with the wrong selected date (the whole reason why we are
-        // doing this).
-        NSDate *diffrentDate = [[NSDate alloc] initWithTimeInterval:60 sinceDate:roundedDate];
-        returnDate = diffrentDate;
-        //[diffrentDate release];
-    }
-    
     returnDate = roundedDate;
     return returnDate;
 }

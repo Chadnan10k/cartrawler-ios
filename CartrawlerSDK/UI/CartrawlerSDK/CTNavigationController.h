@@ -10,6 +10,4 @@
 
 @interface CTNavigationController : UINavigationController
 
-+ (void)forceLinkerLoad_;
-
 @end

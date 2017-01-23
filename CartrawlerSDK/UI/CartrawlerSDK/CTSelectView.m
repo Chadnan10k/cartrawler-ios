@@ -18,16 +18,15 @@
 
 @implementation CTSelectView
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     
     //Add textfield
+    
+    self.layer.borderColor = [UIColor colorWithRed:213.0/255.0 green:213.0/255.0 blue:213.0/255.0 alpha:1].CGColor;
+    self.layer.borderWidth = 1;
+    self.layer.cornerRadius = [CTAppearance instance].textFieldCornerRadius;
     
     self.textField = [[JVFloatLabeledTextField alloc] initWithFrame:CGRectZero];
     self.textField.font = [UIFont fontWithName:[CTAppearance instance].fontName size:20];
@@ -88,23 +87,12 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.viewTapped();
-    });
+    [self sendActionsForControlEvents:UIControlEventTouchUpInside];
     return NO;
 }
 
 - (void)shakeAnimation
 {
-//    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:0 animations:^{
-//       // self.transform = CGAffineTransformMakeScale(1.02, 1.02);
-//        self.backgroundColor = [UIColor redColor];
-//    } completion:^(BOOL finished) {
-//        [UIView animateWithDuration:0.4 animations:^{
-//           // self.transform = CGAffineTransformMakeScale(1.0, 1.0);
-//            self.backgroundColor = [UIColor whiteColor];
-//        }];
-//    }];
     
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];

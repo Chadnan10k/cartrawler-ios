@@ -5,18 +5,17 @@
 
 #import "CTVendor.h"
 #import "CTVehicle.h"
-#import "ImageResizeURL.h"
+#import "CartrawlerAPI+NSURL.h"
 
 @implementation CTVendor
 
 - (instancetype)initWithVendorInfo:(NSDictionary *)vendorInfo
 {
     self = [super init];
-    
     _code     = vendorInfo[@"Vendor"][@"@Code"];
     _name     = vendorInfo[@"Vendor"][@"@CompanyShortName"];
     _division = vendorInfo[@"Vendor"][@"@Division"];
-    _logoURL  = [ImageResizeURL vendor:vendorInfo[@"Info"][@"TPA_Extensions"][@"VendorPictureURL"][@"#text"] ?: @""];
+    _logoURL  = [NSURL vendor:vendorInfo[@"Info"][@"TPA_Extensions"][@"VendorPictureURL"][@"#text"] ?: @""];
     
     NSDictionary *ratingDict = vendorInfo[@"Info"][@"TPA_Extensions"][@"CustomerReviews"];
     if (ratingDict != nil) {

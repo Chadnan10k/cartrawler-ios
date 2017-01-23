@@ -11,11 +11,6 @@
 
 @implementation CTView
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];

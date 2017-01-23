@@ -10,6 +10,4 @@
 
 @interface CTNavigationView : UIView
 
-+ (void)forceLinkerLoad_;
-
 @end

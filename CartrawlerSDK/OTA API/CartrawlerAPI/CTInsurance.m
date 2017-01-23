@@ -13,7 +13,8 @@
     self = [super init];
 
     NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
-    
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+
 	_planID = dict[@"PlanForQuoteRS"][@"@PlanID"];
 	_name = dict[@"PlanForQuoteRS"][@"@Name"];
     
@@ -22,7 +23,7 @@
     _termsAndConditionsURL = [[NSURL alloc] initWithString:dict[@"PlanForQuoteRS"][@"QuoteDetail"][@"QuoteDetailURL"] ?: @""];
 	_costAmount = [formatter numberFromString:dict[@"PlanForQuoteRS"][@"PlanCost"][@"@Amount"]];
 	_costCurrencyCode = dict[@"PlanForQuoteRS"][@"PlanCost"][@"@CurrencyCode"];
-	_premiumAmount = [formatter numberFromString:dict[@"PlanForQuoteRS"][@"PlanCost"][@"BasePremium"][@"@Amount"]];
+    _premiumAmount = [formatter numberFromString:dict[@"PlanForQuoteRS"][@"PlanCost"][@"BasePremium"][@"@Amount"]];
 	_premiumCurrencyCode = dict[@"PlanForQuoteRS"][@"PlanCost"][@"BasePremium"][@"@CurrencyCode"];
     
     _title = dict[@"TPA_Extensions"][@"Data"][@"Title"][@"#text"];
@@ -48,11 +49,11 @@
     if ([dict[@"TPA_Extensions"][@"Data"][@"Links"] isKindOfClass:[NSArray class]]) {
         NSMutableArray *linkArray = [[NSMutableArray alloc] init];
         for(NSDictionary *link in dict[@"TPA_Extensions"][@"Data"][@"Links"]) {
-            [linkArray addObject:[[InsuranceLink alloc] initWithLink:link[@"Link"][@"@Url"] title:link[@"Link"][@"@Text"] code:link[@"Link"][@"@Code"]]];
+            [linkArray addObject:[[CTInsuranceLink alloc] initWithLink:link[@"Link"][@"@Url"] title:link[@"Link"][@"@Text"] code:link[@"Link"][@"@Code"]]];
         }
     } else {
         NSDictionary *link = dict[@"TPA_Extensions"][@"Data"][@"Links"][@"Link"];
-        _links = @[ [[InsuranceLink alloc] initWithLink:link[@"@Url"] title:link[@"@Text"] code:link[@"@Code"]] ];
+        _links = @[ [[CTInsuranceLink alloc] initWithLink:link[@"@Url"] title:link[@"@Text"] code:link[@"@Code"]] ];
     }
     
     
@@ -63,12 +64,16 @@
     
     _listItems = strArray;
 
-    _functionalText = dict[@"TPA_Extensions"][@"Data"][@"Functional"][@"Option"][@"@Title"];
+    if ([dict[@"TPA_Extensions"][@"Data"][@"Functional"][@"Option"] isKindOfClass:[NSArray class]]) {
+        _functionalText = dict[@"TPA_Extensions"][@"Data"][@"Functional"][@"Option"][0][@"@Title"];
+    } else {
+        _functionalText = dict[@"TPA_Extensions"][@"Data"][@"Functional"][@"Option"][@"@Title"];
+    }
     
     _selectorTitle = dict[@"TPA_Extensions"][@"Data"][@"SelectControl"][@"@Title"];
-    NSMutableArray <InsuranceSelectorItem *> *selectorItemsArr = [[NSMutableArray alloc] init];
+    NSMutableArray <CTInsuranceSelectorItem *> *selectorItemsArr = [[NSMutableArray alloc] init];
     for (NSDictionary *d in dict[@"TPA_Extensions"][@"Data"][@"SelectControl"][@"Item"]) {
-        [selectorItemsArr addObject:[[InsuranceSelectorItem alloc] initWithName:d[@"#text"] code:d[@"@Key"]]];
+        [selectorItemsArr addObject:[[CTInsuranceSelectorItem alloc] initWithName:d[@"#text"] code:d[@"@Key"]]];
     }
     _selectorItems = selectorItemsArr;
     

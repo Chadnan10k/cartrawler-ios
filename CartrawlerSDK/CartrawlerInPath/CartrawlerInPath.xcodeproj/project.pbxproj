@@ -1,0 +1,566 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		45EC99C11E02DA8400B76741 /* BuildInPath */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 45EC99C21E02DA8400B76741 /* Build configuration list for PBXAggregateTarget "BuildInPath" */;
+			buildPhases = (
+				45EC99C51E02DA8F00B76741 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = BuildInPath;
+			productName = "Build InPath";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		45154EFA1E07E09600FB32FA /* CartrawlerRental.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45154EF91E07E09600FB32FA /* CartrawlerRental.framework */; };
+		45A47DF51E0A912300500D71 /* CTSelectedVehicleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45A47DF31E0A912300500D71 /* CTSelectedVehicleView.h */; };
+		45A47DF61E0A912300500D71 /* CTSelectedVehicleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A47DF41E0A912300500D71 /* CTSelectedVehicleView.m */; };
+		45BA0F681E1FA27300EB26ED /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45BA0F671E1FA27300EB26ED /* strip-frameworks.sh */; };
+		45CFD44C1E0941B800A57849 /* CTNewBookingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFD44A1E0941B800A57849 /* CTNewBookingView.h */; };
+		45CFD44D1E0941B800A57849 /* CTNewBookingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFD44B1E0941B800A57849 /* CTNewBookingView.m */; };
+		45CFD44F1E09453100A57849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CFD44E1E09453100A57849 /* Assets.xcassets */; };
+		45CFD4521E09863C00A57849 /* CTInPathBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFD4501E09863C00A57849 /* CTInPathBanner.h */; };
+		45CFD4531E09863C00A57849 /* CTInPathBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFD4511E09863C00A57849 /* CTInPathBanner.m */; };
+		45D1339D1E01997900D7816F /* CartrawlerInPath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D133931E01997800D7816F /* CartrawlerInPath.framework */; };
+		45D133A21E01997900D7816F /* CartrawlerInPathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D133A11E01997900D7816F /* CartrawlerInPathTests.m */; };
+		45D133A41E01997900D7816F /* CartrawlerInPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D133961E01997800D7816F /* CartrawlerInPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45EC99B01E02B3FB00B76741 /* CartrawlerInPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99AF1E02B3FB00B76741 /* CartrawlerInPath.m */; };
+		45EC99BB1E02C96B00B76741 /* CTInPathPayment.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC99B51E02C96B00B76741 /* CTInPathPayment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45EC99BC1E02C96B00B76741 /* CTInPathPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99B61E02C96B00B76741 /* CTInPathPayment.m */; };
+		45EC99BD1E02C96B00B76741 /* CTInPathVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC99B71E02C96B00B76741 /* CTInPathVehicle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45EC99BE1E02C96B00B76741 /* CTInPathVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99B81E02C96B00B76741 /* CTInPathVehicle.m */; };
+		45EC99BF1E02C96B00B76741 /* CTInPathView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC99B91E02C96B00B76741 /* CTInPathView.h */; };
+		45EC99C01E02C96B00B76741 /* CTInPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99BA1E02C96B00B76741 /* CTInPathView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		45D1339E1E01997900D7816F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45D1338A1E01997800D7816F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 45D133921E01997800D7816F;
+			remoteInfo = CartrawlerInPath;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		45154EF91E07E09600FB32FA /* CartrawlerRental.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerRental.framework; path = "../../../Library/Developer/Xcode/DerivedData/CartrawlerSDK-ggnkifmwdjtizbfixejavfojdsbe/Build/Products/Debug-iphonesimulator/CartrawlerRental.framework"; sourceTree = "<group>"; };
+		45A47DF31E0A912300500D71 /* CTSelectedVehicleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSelectedVehicleView.h; sourceTree = "<group>"; };
+		45A47DF41E0A912300500D71 /* CTSelectedVehicleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSelectedVehicleView.m; sourceTree = "<group>"; };
+		45BA0F671E1FA27300EB26ED /* strip-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "strip-frameworks.sh"; sourceTree = "<group>"; };
+		45CFD44A1E0941B800A57849 /* CTNewBookingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNewBookingView.h; sourceTree = "<group>"; };
+		45CFD44B1E0941B800A57849 /* CTNewBookingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTNewBookingView.m; sourceTree = "<group>"; };
+		45CFD44E1E09453100A57849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		45CFD4501E09863C00A57849 /* CTInPathBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathBanner.h; sourceTree = "<group>"; };
+		45CFD4511E09863C00A57849 /* CTInPathBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathBanner.m; sourceTree = "<group>"; };
+		45D133931E01997800D7816F /* CartrawlerInPath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CartrawlerInPath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45D133961E01997800D7816F /* CartrawlerInPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartrawlerInPath.h; sourceTree = "<group>"; };
+		45D133971E01997800D7816F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45D1339C1E01997900D7816F /* CartrawlerInPathTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerInPathTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		45D133A11E01997900D7816F /* CartrawlerInPathTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartrawlerInPathTests.m; sourceTree = "<group>"; };
+		45D133A31E01997900D7816F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45D133BB1E0199F500D7816F /* CartrawlerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerSDK.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CartrawlerSDK-ggnkifmwdjtizbfixejavfojdsbe/Build/Products/Debug-iphonesimulator/CartrawlerSDK.framework"; sourceTree = "<group>"; };
+		45EC99AF1E02B3FB00B76741 /* CartrawlerInPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartrawlerInPath.m; sourceTree = "<group>"; };
+		45EC99B51E02C96B00B76741 /* CTInPathPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathPayment.h; sourceTree = "<group>"; };
+		45EC99B61E02C96B00B76741 /* CTInPathPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathPayment.m; sourceTree = "<group>"; };
+		45EC99B71E02C96B00B76741 /* CTInPathVehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathVehicle.h; sourceTree = "<group>"; };
+		45EC99B81E02C96B00B76741 /* CTInPathVehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathVehicle.m; sourceTree = "<group>"; };
+		45EC99B91E02C96B00B76741 /* CTInPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathView.h; sourceTree = "<group>"; };
+		45EC99BA1E02C96B00B76741 /* CTInPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		45D1338F1E01997800D7816F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45154EFA1E07E09600FB32FA /* CartrawlerRental.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45D133991E01997900D7816F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45D1339D1E01997900D7816F /* CartrawlerInPath.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		45CFD4491E09419400A57849 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				45EC99B91E02C96B00B76741 /* CTInPathView.h */,
+				45EC99BA1E02C96B00B76741 /* CTInPathView.m */,
+				45CFD4501E09863C00A57849 /* CTInPathBanner.h */,
+				45CFD4511E09863C00A57849 /* CTInPathBanner.m */,
+				45CFD44A1E0941B800A57849 /* CTNewBookingView.h */,
+				45CFD44B1E0941B800A57849 /* CTNewBookingView.m */,
+				45A47DF31E0A912300500D71 /* CTSelectedVehicleView.h */,
+				45A47DF41E0A912300500D71 /* CTSelectedVehicleView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		45D133891E01997800D7816F = {
+			isa = PBXGroup;
+			children = (
+				45D133951E01997800D7816F /* CartrawlerInPath */,
+				45D133A01E01997900D7816F /* CartrawlerInPathTests */,
+				45D133941E01997800D7816F /* Products */,
+				45D133BA1E0199F500D7816F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		45D133941E01997800D7816F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				45D133931E01997800D7816F /* CartrawlerInPath.framework */,
+				45D1339C1E01997900D7816F /* CartrawlerInPathTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		45D133951E01997800D7816F /* CartrawlerInPath */ = {
+			isa = PBXGroup;
+			children = (
+				45BA0F671E1FA27300EB26ED /* strip-frameworks.sh */,
+				45CFD44E1E09453100A57849 /* Assets.xcassets */,
+				45CFD4491E09419400A57849 /* Views */,
+				45EC99AE1E02AA2100B76741 /* Public */,
+				45D133961E01997800D7816F /* CartrawlerInPath.h */,
+				45EC99AF1E02B3FB00B76741 /* CartrawlerInPath.m */,
+				45D133971E01997800D7816F /* Info.plist */,
+			);
+			path = CartrawlerInPath;
+			sourceTree = "<group>";
+		};
+		45D133A01E01997900D7816F /* CartrawlerInPathTests */ = {
+			isa = PBXGroup;
+			children = (
+				45D133A11E01997900D7816F /* CartrawlerInPathTests.m */,
+				45D133A31E01997900D7816F /* Info.plist */,
+			);
+			path = CartrawlerInPathTests;
+			sourceTree = "<group>";
+		};
+		45D133BA1E0199F500D7816F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45154EF91E07E09600FB32FA /* CartrawlerRental.framework */,
+				45D133BB1E0199F500D7816F /* CartrawlerSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45EC99AE1E02AA2100B76741 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				45EC99B51E02C96B00B76741 /* CTInPathPayment.h */,
+				45EC99B61E02C96B00B76741 /* CTInPathPayment.m */,
+				45EC99B71E02C96B00B76741 /* CTInPathVehicle.h */,
+				45EC99B81E02C96B00B76741 /* CTInPathVehicle.m */,
+			);
+			name = Public;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		45D133901E01997800D7816F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45A47DF51E0A912300500D71 /* CTSelectedVehicleView.h in Headers */,
+				45EC99BD1E02C96B00B76741 /* CTInPathVehicle.h in Headers */,
+				45EC99BB1E02C96B00B76741 /* CTInPathPayment.h in Headers */,
+				45CFD44C1E0941B800A57849 /* CTNewBookingView.h in Headers */,
+				45CFD4521E09863C00A57849 /* CTInPathBanner.h in Headers */,
+				45D133A41E01997900D7816F /* CartrawlerInPath.h in Headers */,
+				45EC99BF1E02C96B00B76741 /* CTInPathView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		45D133921E01997800D7816F /* CartrawlerInPath */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45D133A71E01997900D7816F /* Build configuration list for PBXNativeTarget "CartrawlerInPath" */;
+			buildPhases = (
+				45D1338E1E01997800D7816F /* Sources */,
+				45D1338F1E01997800D7816F /* Frameworks */,
+				45D133901E01997800D7816F /* Headers */,
+				45D133911E01997800D7816F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CartrawlerInPath;
+			productName = CartrawlerInPath;
+			productReference = 45D133931E01997800D7816F /* CartrawlerInPath.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		45D1339B1E01997900D7816F /* CartrawlerInPathTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45D133AA1E01997900D7816F /* Build configuration list for PBXNativeTarget "CartrawlerInPathTests" */;
+			buildPhases = (
+				45D133981E01997900D7816F /* Sources */,
+				45D133991E01997900D7816F /* Frameworks */,
+				45D1339A1E01997900D7816F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				45D1339F1E01997900D7816F /* PBXTargetDependency */,
+			);
+			name = CartrawlerInPathTests;
+			productName = CartrawlerInPathTests;
+			productReference = 45D1339C1E01997900D7816F /* CartrawlerInPathTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		45D1338A1E01997800D7816F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = Cartrawler;
+				TargetAttributes = {
+					45D133921E01997800D7816F = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
+					45D1339B1E01997900D7816F = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
+					45EC99C11E02DA8400B76741 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 45D1338D1E01997800D7816F /* Build configuration list for PBXProject "CartrawlerInPath" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 45D133891E01997800D7816F;
+			productRefGroup = 45D133941E01997800D7816F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				45D133921E01997800D7816F /* CartrawlerInPath */,
+				45D1339B1E01997900D7816F /* CartrawlerInPathTests */,
+				45EC99C11E02DA8400B76741 /* BuildInPath */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		45D133911E01997800D7816F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45BA0F681E1FA27300EB26ED /* strip-frameworks.sh in Resources */,
+				45CFD44F1E09453100A57849 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45D1339A1E01997900D7816F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		45EC99C51E02DA8F00B76741 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n######################\n# Options\n######################\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal-CartrawlerSDK\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\nexport VERSION= \"defaults read ${INFO_PLIST} CFBundleVersionString\"\n\n######################\n# Build Frameworks\n######################\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme ${FRAMEWORK_NAME} -configuration Debug -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk \"iphoneos\"\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme ${FRAMEWORK_NAME} -configuration Debug -arch x86_64 -arch i386 only_active_arch=no defines_module=yes -sdk \"iphonesimulator\"\n\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n\n######################\n# On Release, copy the result to release directory\n######################\nOUTPUT_DIR=\"${SRCROOT}/../../../Artifacts_Latest\"\nmkdir -p \"$OUTPUT_DIR\"\n\ncp -r \"${FRAMEWORK}\" \"$OUTPUT_DIR\"\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		45D1338E1E01997800D7816F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45EC99BE1E02C96B00B76741 /* CTInPathVehicle.m in Sources */,
+				45EC99B01E02B3FB00B76741 /* CartrawlerInPath.m in Sources */,
+				45CFD44D1E0941B800A57849 /* CTNewBookingView.m in Sources */,
+				45EC99BC1E02C96B00B76741 /* CTInPathPayment.m in Sources */,
+				45A47DF61E0A912300500D71 /* CTSelectedVehicleView.m in Sources */,
+				45CFD4531E09863C00A57849 /* CTInPathBanner.m in Sources */,
+				45EC99C01E02C96B00B76741 /* CTInPathView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45D133981E01997900D7816F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45D133A21E01997900D7816F /* CartrawlerInPathTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		45D1339F1E01997900D7816F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 45D133921E01997800D7816F /* CartrawlerInPath */;
+			targetProxy = 45D1339E1E01997900D7816F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		45D133A51E01997900D7816F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		45D133A61E01997900D7816F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		45D133A81E01997900D7816F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = CartrawlerInPath/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.inpath;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		45D133A91E01997900D7816F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = CartrawlerInPath/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.inpath;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		45D133AB1E01997900D7816F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				INFOPLIST_FILE = CartrawlerInPathTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.inpath.CartrawlerInPathTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45D133AC1E01997900D7816F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				INFOPLIST_FILE = CartrawlerInPathTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.inpath.CartrawlerInPathTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		45EC99C31E02DA8400B76741 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45EC99C41E02DA8400B76741 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		45D1338D1E01997800D7816F /* Build configuration list for PBXProject "CartrawlerInPath" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45D133A51E01997900D7816F /* Debug */,
+				45D133A61E01997900D7816F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45D133A71E01997900D7816F /* Build configuration list for PBXNativeTarget "CartrawlerInPath" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45D133A81E01997900D7816F /* Debug */,
+				45D133A91E01997900D7816F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45D133AA1E01997900D7816F /* Build configuration list for PBXNativeTarget "CartrawlerInPathTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45D133AB1E01997900D7816F /* Debug */,
+				45D133AC1E01997900D7816F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45EC99C21E02DA8400B76741 /* Build configuration list for PBXAggregateTarget "BuildInPath" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45EC99C31E02DA8400B76741 /* Debug */,
+				45EC99C41E02DA8400B76741 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 45D1338A1E01997800D7816F /* Project object */;
+}

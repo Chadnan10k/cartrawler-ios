@@ -11,11 +11,6 @@
 
 @implementation CTPlaceholderView
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

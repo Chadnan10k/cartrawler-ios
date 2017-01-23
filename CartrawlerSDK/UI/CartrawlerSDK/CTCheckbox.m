@@ -23,7 +23,7 @@
     
     
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    NSBundle* bundle = [NSBundle bundleWithURL:[[NSBundle mainBundle]URLForResource:@"CartrawlerResources" withExtension:@"bundle"]];
+    NSBundle* bundle = [NSBundle bundleForClass:[self class]];
     UIImage* image =[UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil];
     
     (self.imageView).image = image;
@@ -78,11 +78,6 @@
     [super awakeFromNib];
     self.imageView.alpha = self.enabled;
     _checkEnabled = self.enabled;
-}
-
-+ (void)forceLinkerLoad_
-{
-    
 }
 
 - (void)boxTapped:(UIGestureRecognizer *)gesture

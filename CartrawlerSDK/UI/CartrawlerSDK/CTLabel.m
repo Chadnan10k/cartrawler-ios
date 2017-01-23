@@ -11,10 +11,8 @@
 
 @implementation CTLabel
 
-+ (void)forceLinkerLoad_
-{
-    
-}
+
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -44,6 +42,14 @@
         self.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.font.pointSize];
     } else {
         self.font = [UIFont fontWithName:[CTAppearance instance].fontName size:self.font.pointSize];
+    }
+    
+    if (self.isHeaderTitle) {
+        self.textColor = [CTAppearance instance].headerTitleColor;
+    }
+    
+    if (self.isSubheaderTitle) {
+        self.textColor = [CTAppearance instance].subheaderTitleColor;
     }
 }
 

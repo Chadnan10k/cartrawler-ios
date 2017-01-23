@@ -10,6 +10,4 @@
 
 @interface CTTextView : UITextView
 
-+ (void)forceLinkerLoad_;
-
 @end

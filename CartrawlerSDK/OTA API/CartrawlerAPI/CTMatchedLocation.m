@@ -79,7 +79,7 @@
     }
     
     NSNumberFormatter *f = [NSNumberFormatter new];
-    [f setLocale:[[NSLocale alloc] initWithLocaleIdentifier: @"es_US"]];
+    [f setLocale:[[NSLocale alloc] initWithLocaleIdentifier: @"en_US"]];
 
     f.numberStyle = NSNumberFormatterDecimalStyle;
     f.maximumFractionDigits = 5;

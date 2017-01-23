@@ -16,25 +16,22 @@
 
 @implementation CTTextField
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    if (self.enableShadow) {
+    if (self.enableShadow || [CTAppearance instance].enableTextFieldShadows) {
         self.layer.masksToBounds = NO;
         self.layer.shadowColor = [UIColor blackColor].CGColor;
         self.layer.shadowOffset = CGSizeMake(0, 0);
-        self.layer.shadowOpacity = 0.2;
-        self.layer.shadowRadius = 3;
+        self.layer.shadowOpacity = 0.1;
+        self.layer.shadowRadius = 10;
     }
     
     self.layer.borderWidth = self.borderWidth;
     self.layer.borderColor = self.borderColor.CGColor;
-
+    
+    self.floatingLabelTextColor = [UIColor lightGrayColor];
+    self.floatingLabelActiveTextColor = [CTAppearance instance].navigationBarColor;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -49,27 +46,7 @@
     self.delegate = self;
     self.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
 
-   // if (self.keyboardType == UIKeyboardTypeNumberPad || self.keyboardType == UIKeyboardTypePhonePad) {
-
-        UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 0)];
-        [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:20.0]} forState:UIControlStateNormal];
-        numberToolbar.barStyle = UIBarStyleDefault;
-        numberToolbar.items = @[[[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneTapped)],
-                               [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                               [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];
-        
-        [numberToolbar sizeToFit];
-        self.inputAccessoryView = numberToolbar;
-        
-    //}
-    
     return self;
-}
-
-- (void)doneTapped
-{
-    [self resignFirstResponder];
-    [self endEditing:YES];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -80,11 +57,11 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (string.length > 0) {
-        self.layer.sublayerTransform = CATransform3DMakeTranslation(10, 3, 20);
-    } else {
-        self.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 20);
-    }
+//    if (string.length > 0) {
+//        self.layer.sublayerTransform = CATransform3DMakeTranslation(10, 3, 20);
+//    } else {
+//        self.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 20);
+//    }
     
     return YES;
 }
@@ -107,6 +84,17 @@
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES[c] %@", emailRegex];
     
     return [emailTest evaluateWithObject:self.text];
+}
+
+- (BOOL)containsOnlyWhitespace
+{
+    NSCharacterSet *charSet = [NSCharacterSet whitespaceCharacterSet];
+    NSString *trimmedString = [self.text stringByTrimmingCharactersInSet:charSet];
+    if ([trimmedString isEqualToString:@""]) {
+        // it's empty or contains only white spaces
+        return YES;
+    }
+    return NO;
 }
 
 

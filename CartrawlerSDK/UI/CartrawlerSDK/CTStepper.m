@@ -11,8 +11,6 @@
 
 @implementation CTStepper
 
-+ (void)forceLinkerLoad_ {}
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];

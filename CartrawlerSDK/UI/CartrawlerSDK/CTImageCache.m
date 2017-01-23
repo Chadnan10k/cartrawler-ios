@@ -14,10 +14,8 @@
 
 @implementation CTImageCache
 
-+ (void)forceLinkerLoad_
-{
-    
-}
+
+
 
 + (CTImageCache *)sharedInstance {
     static CTImageCache *sharedInstance = nil;

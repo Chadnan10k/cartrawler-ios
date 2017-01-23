@@ -12,7 +12,8 @@
     self = [super init];
 
     NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
-    
+    [numFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+
 	_chargeAmount = [numFormatter numberFromString:dict[@"Charge"][@"@Amount"]];
     
     if ([dict[@"Charge"][@"@IncludedInRate"] isEqualToString:@"true"]) {

@@ -7,66 +7,43 @@
 //
 
 #import "ViewController.h"
-#import <CartrawlerSDK/CartrawlerSDK.h>
+#import "RYRRentalManager.h"
+#import "InPathViewController.h"
 
 @interface ViewController ()
 
-@property (nonatomic, strong) CartrawlerSDK *sdk;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *endpointControl;
+
+@property (nonatomic) BOOL isDebug;
 
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // Do any additional setup after loading the view, typically from a nib.
-    
-//    [CartrawlerSDK appearance].buttonColor = [UIColor someColor];
-//    [CartrawlerSDK appearance].buttonTextColor = [UIColor someColor];
-//    [CartrawlerSDK appearance].buttonCornerRadius = 2
-//    [CartrawlerSDK appearance].enableShadows = NO;
-//    
-//    [CartrawlerSDK appearance].viewBackgroundColor =  = [UIColor someColor];
-//    [CartrawlerSDK appearance].navigationBarColor = [UIColor someColor];
-//    
-//    [CartrawlerSDK appearance].textFieldCornerRadius = [UIColor someColor];
-//    [CartrawlerSDK appearance].textFieldTint = [UIColor someColor];
-//    [CartrawlerSDK appearance].textFieldBackgroundColor = [UIColor someColor];
-//
-//    [CartrawlerSDK appearance].calendarStartCellColor = [UIColor someColor];
-//    [CartrawlerSDK appearance].calendarMidCellColor = [UIColor someColor];
-//    [CartrawlerSDK appearance].calendarEndCellColor= [UIColor someColor];
-//
-//    [CartrawlerSDK appearance].fontName = @"HelveticaNeue-Light";
-//    [CartrawlerSDK appearance].boldFontName = @"HelveticaNeue-Medium";
-    
-    //UIApplication.shared.setStatusBarStyle(.lightContent, animated: false)
-
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
-    [CartrawlerSDK appearance].presentAnimated = YES;
-    [CartrawlerSDK appearance].modalPresentationStyle = UIModalPresentationOverFullScreen;
-    [CartrawlerSDK appearance].modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"68622" languageCode:@"EN" isDebug:YES];
-    
-    //[CTAppearance instance].buttonColor = [UIColor blackColor];
-
+    [super viewDidLoad]; //643826 ryr desktop 642619 ryr mobile
+    _isDebug = YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.endpointControl.selectedSegmentIndex = [RYRRentalManager instance].currentEndpoint;
 }
 
 - (IBAction)openCarRental:(id)sender {
-    //[self.sdk presentCarRentalInViewController:self];
-    [self.sdk presentTabViewInViewController:self];
+    [[RYRRentalManager instance].rental presentCarRentalInViewController:self];
 }
 
-- (IBAction)openGroundTransport:(id)sender {
-    [self.sdk presentGroundTransportInViewController:self];
+- (IBAction)endpointChanged:(id)sender {
+    if (self.endpointControl.selectedSegmentIndex == 0) {
+        _isDebug = YES;
+    } else {
+        _isDebug = NO;
+    }
+    [[RYRRentalManager instance] changeEndpoint:!self.isDebug];
 }
+
+
 
 @end

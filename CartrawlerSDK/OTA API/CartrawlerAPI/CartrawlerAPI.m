@@ -7,11 +7,12 @@
 //
 
 #import "CartrawlerAPI.h"
-#import "PostRequest.h"
-#import "Constants.h"
+#import "CTPostRequest.h"
+#import "CTConstants.h"
+#import "CartrawlerAPI+NSDate.h"
+#import "CTNetworkUtils.h"
 #import "CTRequestBuilder.h"
-#import "NSDateUtils.h"
-#import "NetworkUtils.h"
+#import "CT_IpToCountryRQ.h"
 
 @interface CartrawlerAPI ()
 
@@ -23,7 +24,7 @@
 @property (nonatomic, strong, nonnull) NSString *locale;
 @property (nonatomic, strong, nonnull) NSString *ipAddress;
 @property (nonatomic, strong, nonnull) NSURLSessionDataTask *currentTask;
-@property (nonatomic, strong, nonnull) PostRequest *postRequest;
+@property (nonatomic, strong, nonnull) CTPostRequest *postRequest;
 @property (nonatomic) BOOL loggingEnabled;
 
 @end
@@ -35,9 +36,8 @@
     self = [super init];
     _clientAPIKey = [[NSString alloc] initWithString:clientKey];
     _locale = language;
-    _loggingEnabled = NO;
-    _postRequest = [[PostRequest alloc] init];
-    
+    _postRequest = [[CTPostRequest alloc] init];
+    _ipAddress = @"127.0.0.1";//initial value
     if (debug) {
         _endPoint = CTTestAPI;
         _secureEndPoint = CTTestAPISecure;
@@ -49,19 +49,32 @@
         _secureEndPoint = CTProductionAPISecure;
         _apiTarget = CTProductionTarget;
     }
-    
-    _ipAddress = @"127.0.0.1";
-    
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        _ipAddress = [NetworkUtils IPAddress];
-    });
-    
+
     return self;
 }
 
 - (void)cancelAllRequests
 {
     [self.postRequest cancel];
+}
+
+#pragma mark Get Engine Details
+
+- (void)requestNewSession:(NSString *)currencyCode
+             languageCode:(NSString *)languageCode
+              countryCode:(NSString *)countryCode
+               completion:(EngineDetailsCompletion)completion
+{
+    __weak typeof (self) weakSelf = self;
+    [CT_IpToCountryRQ performRequest:self.clientAPIKey
+                            currency:currencyCode
+                        languageCode:languageCode
+                         countryCode:countryCode
+                              target:self.apiTarget
+                          completion:^(CT_IpToCountryRS *response, CTErrorResponse *error) {
+                              weakSelf.ipAddress = response.ipAddress;
+                              completion(response, error);
+                          }];
 }
 
 #pragma mark Location Search
@@ -198,8 +211,8 @@
     
     NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.endPoint, @"OTA_VehAvailRateRQ"];
     
-    NSString *requestBody = [CTRequestBuilder OTA_VehAvailRateRQ: [NSDateUtils stringFromDateWithFormat:pickupDateTime format:CTAvailRequestDateFormat]
-                                        returnDateTime: [NSDateUtils stringFromDateWithFormat:returnDateTime format:CTAvailRequestDateFormat]
+    NSString *requestBody = [CTRequestBuilder OTA_VehAvailRateRQ: [pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
+                                        returnDateTime: [returnDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
                                     pickUpLocationCode: pickupLocationCode
                                     returnLocationCode: returnLocationCode
                                              driverAge: driverAge.stringValue
@@ -255,8 +268,12 @@
                                           CTErrorResponse *error)
     {
         if (error == nil) {
-            CTInsurance *insurance = [[CTInsurance alloc] initFromDict:response];
-            completion(insurance, nil);
+            if (response[@"Success"]) {
+                CTInsurance *insurance = [[CTInsurance alloc] initFromDict:response];
+                completion(insurance, nil);
+            } else {
+                completion(nil, [CTErrorResponse new]);
+            }
         } else {
             completion(nil, error);
         }
@@ -282,8 +299,8 @@
     
     BOOL isBuyingInsurance = (insuranceObject != nil);
 
-    NSString *requestBody = [CTRequestBuilder OTA_VehResRQ:[NSDateUtils stringFromDateWithFormat:pickupDateTime format:CTAvailRequestDateFormat]
-                                            returnDateTime:[NSDateUtils stringFromDateWithFormat:returnDateTime format:CTAvailRequestDateFormat]
+    NSString *requestBody = [CTRequestBuilder OTA_VehResRQ:[pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
+                                            returnDateTime:[returnDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
                                         pickupLocationCode:pickupLocationCode
                                        dropoffLocationCode:returnLocationCode
                                                homeCountry:customer.homeCountry
@@ -366,8 +383,8 @@
                               car:(CTVehicle *)car
                        completion:(TermsAndConditionsCompletion)completion
 {
-    NSString *requestBody = [CTRequestBuilder CT_RentalConditionsRQ:[NSDateUtils stringFromDateWithFormat:pickupDateTime format:CTAvailRequestDateFormat]
-                                                         doDateTime:[NSDateUtils stringFromDateWithFormat:returnDateTime format:CTAvailRequestDateFormat]
+    NSString *requestBody = [CTRequestBuilder CT_RentalConditionsRQ:[pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
+                                                         doDateTime:[returnDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
                                                      puLocationCode:pickupLocationCode
                                                      doLocationCode:returnLocationCode
                                                         homeCountry:homeCountry
@@ -412,8 +429,8 @@
                                                        title:title
                                                    firstName:firstName
                                                      surname:surname
-                                                  puDateTime:[NSDateUtils stringFromDateWithFormat:pickupDateTime format:CTAvailRequestDateFormat]
-                                                  doDateTime:[NSDateUtils stringFromDateWithFormat:dropoffDateTime format:CTAvailRequestDateFormat]
+                                                  puDateTime:[pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
+                                                  doDateTime:[dropoffDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
                                               puLocationCode:pickupLocationCode
                                               doLocationCode:returnLocationCode
                                                     clientID:self.clientAPIKey
@@ -478,8 +495,8 @@
                       countryCode:(NSString *)countryCode
                        completion:(GroundAvailCompletion)completion
 {
-    NSString *requestBody = [CTRequestBuilder CT_GroundAvail:[NSDateUtils stringFromDateWithFormat:pickupLocation.dateTime format:CTAvailRequestDateFormat]
-                                                  doDateTime:[NSDateUtils stringFromDateWithFormat:dropoffLocation.dateTime format:CTAvailRequestDateFormat]
+    NSString *requestBody = [CTRequestBuilder CT_GroundAvail:[pickupLocation.dateTime  stringFromDateWithFormat:CTAvailRequestDateFormat]
+                                                  doDateTime:[dropoffLocation.dateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
                                                        puLat:[NSString stringWithFormat:@"%.5f", pickupLocation.latitude.floatValue]
                                                       puLong:[NSString stringWithFormat:@"%.5f", pickupLocation.longitude.floatValue]
                                                        doLat:[NSString stringWithFormat:@"%.5f", dropoffLocation.latitude.floatValue]
@@ -542,7 +559,7 @@
                           [NSCharacterSet letterCharacterSet].invertedSet]
                          componentsJoinedByString:@""];
     
-    NSString *requestBody = [CTRequestBuilder CT_GroundBook:[NSDateUtils stringFromDateWithFormat:pickupLocation.dateTime format:CTAvailRequestDateFormat]
+    NSString *requestBody = [CTRequestBuilder CT_GroundBook:[pickupLocation.dateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
                                              pickupLatitude:[NSString stringWithFormat:@"%.5f", pickupLocation.latitude.floatValue]
                                             pickupLongitude:[NSString stringWithFormat:@"%.5f", pickupLocation.longitude.floatValue]
                                                addressLine1:customer.addressLine1
@@ -556,7 +573,7 @@
                                          pickupLocationType:pickupLocation.locationTypeDescription
                                          pickupLocationName:pickupLocationName
                                         specialInstructions:specialInstructions
-                                            dropOffdateTime:[NSDateUtils stringFromDateWithFormat:dropoffLocation.dateTime format:CTAvailRequestDateFormat]
+                                            dropOffdateTime:[dropoffLocation.dateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
                                             dropoffLatitude:[NSString stringWithFormat:@"%.5f",dropoffLocation.latitude.floatValue]
                                            dropoffLongitude:[NSString stringWithFormat:@"%.5f",dropoffLocation.longitude.floatValue]
                                         dropoffLocationType:dropoffLocation.locationTypeDescription

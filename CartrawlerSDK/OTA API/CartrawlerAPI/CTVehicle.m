@@ -8,7 +8,7 @@
 #import "CTPricedCoverage.h"
 #import "CTVehicleCharge.h"
 #import "CTExtraEquipment.h"
-#import "ImageResizeURL.h"
+#import "CartrawlerAPI+NSURL.h"
 
 @interface CTVehicle()
 
@@ -46,8 +46,28 @@
 	
     self = [super init];
     
-    NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
+    _indexation = [[CTVehicleIndexation alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Indexation"]];
     
+    NSMutableArray *tempSpecialOffers = [[NSMutableArray alloc] init];
+    
+    if ([dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"SpecialOffers"] isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *offerDict in dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"SpecialOffers"]) {
+            [tempSpecialOffers addObject:[[CTSpecialOffer alloc] initFromDictionary: offerDict]];
+        }
+        _specialOffers = tempSpecialOffers;
+    } else {
+        
+        CTSpecialOffer *specialOffer = [[CTSpecialOffer alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"SpecialOffers"]];
+        if (specialOffer) {
+            _specialOffers = @[specialOffer];
+        }
+    }
+
+    _config = [[CTVehicleConfig alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Config"]];
+    
+    NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
+    [numFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+
     _orderIndex = [numFormatter numberFromString:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"OrderBy"][@"@Index"]];
 	
 	if ([dictionary[@"VehAvailCore"][@"@Status"] isEqualToString:@"Available"]) {
@@ -71,20 +91,26 @@
 	_code = dictionary[@"VehAvailCore"][@"Vehicle"][@"@Code"];
 	
 	_codeContext = dictionary[@"VehAvailCore"][@"Vehicle"][@"@CodeContext"];
-	
-	_size = [self vehcileCategoryStringFromNumber:dictionary[@"VehAvailCore"][@"Vehicle"][@"VehType"][@"@VehicleCategory"]];
     
-    _sizeCode = dictionary[@"VehAvailCore"][@"Vehicle"][@"VehType"][@"@VehicleCategory"];
+	_size = [self vehicleSizeFromNumber:dictionary[@"VehAvailCore"][@"Vehicle"][@"VehClass"][@"@Size"]];
+    
+    _sizeCode = dictionary[@"VehAvailCore"][@"Vehicle"][@"VehClass"][@"@Size"];
 	
 	_doorCount = [numFormatter numberFromString:dictionary[@"VehAvailCore"][@"Vehicle"][@"VehType"][@"@DoorCount"]];
 	
 	_classSize = [dictionary[@"VehAvailCore"][@"Vehicle"][@"VehClass"][@"@Size"] integerValue];
-	
-	_makeModelName = dictionary[@"VehAvailCore"][@"Vehicle"][@"VehMakeModel"][@"@Name"];
-	
+    
+    if (dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"VehMakeModel"][@"@Name"] && dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"VehMakeModel"][@"@orSimiliar"]) {
+        _makeModelName = dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"VehMakeModel"][@"@Name"];
+        _orSimilar = dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"VehMakeModel"][@"@orSimiliar"];
+    } else {
+        _makeModelName = dictionary[@"VehAvailCore"][@"Vehicle"][@"VehMakeModel"][@"@Name"];
+        _orSimilar = @"";
+    }
+
 	_makeModelCode = dictionary[@"VehAvailCore"][@"Vehicle"][@"VehMakeModel"][@"@Code"];
 	
-    _pictureURL = [ImageResizeURL vehicle:dictionary[@"VehAvailCore"][@"Vehicle"][@"PictureURL"]];
+    _pictureURL = [NSURL vehicle:dictionary[@"VehAvailCore"][@"Vehicle"][@"PictureURL"]];
 	
 	_vehicleAssetNumber = dictionary[@"VehAvailCore"][@"Vehicle"][@"VehIdentity"][@"@VehicleAssetNumber"];
 	
@@ -184,6 +210,7 @@
     
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     f.numberStyle = NSNumberFormatterDecimalStyle;
+    [f setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
     
     _estimatedTotalAmount = [f numberFromString:dictionary[@"VehAvailCore"][@"TotalCharge"][@"@EstimatedTotalAmount"]];
     _rateTotalAmount = dictionary[@"VehAvailCore"][@"TotalCharge"][@"@RateTotalAmount"];
@@ -250,7 +277,7 @@
 }
 
 
-- (VehicleSize)vehcileCategoryStringFromNumber:(NSString *)vehCatStr {
+- (VehicleSize)vehicleSizeFromNumber:(NSString *)vehCatStr {
     if ([vehCatStr isEqualToString:@"1"]) {
         return VehicleSizeMini;
     } else if ([vehCatStr isEqualToString:@"2"]) {
@@ -333,7 +360,17 @@
         return VehicleSizeLuxuryElite;
     } else if ([vehCatStr isEqualToString:@"41"]) {
         return VehicleSizeOversize;
-    } else {
+    } else if ([vehCatStr isEqualToString:@"44"]) {
+        return VehicleSizeEstate;
+    } else if ([vehCatStr isEqualToString:@"45"]) {
+        return VehicleSizeFiveSeatCarrier;
+    } else if ([vehCatStr isEqualToString:@"46"]) {
+        return VehicleSizeSevenSeatCarrier;
+    } else if ([vehCatStr isEqualToString:@"47"]) {
+        return VehicleSizeNineSeatCarrier;
+    } else if ([vehCatStr isEqualToString:@"48"]) {
+        return VehicleSizeSUV;
+    }else {
         return VehicleSizeUnknown;
     }
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import <CartrawlerSDK/CartrawlerSDK.h>
+#import "CartrawlerSDK.h"
 #import "JVFloatLabeledTextField.h"
 
 IB_DESIGNABLE
@@ -16,10 +16,8 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat borderWidth;
 @property (nonatomic) IBInspectable UIColor *borderColor;
 
-+ (void)forceLinkerLoad_;
-
 - (void)shakeAnimation;
-
 - (BOOL)isValidEmail;
+- (BOOL)containsOnlyWhitespace;
 
 @end

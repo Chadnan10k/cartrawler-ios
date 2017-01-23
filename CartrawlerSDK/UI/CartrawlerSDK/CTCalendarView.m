@@ -26,10 +26,8 @@
 
 @implementation CTCalendarView
 
-+ (void)forceLinkerLoad_
-{
-    
-}
+
+
 
 - (void)reset
 {

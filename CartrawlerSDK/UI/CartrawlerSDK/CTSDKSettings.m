@@ -16,7 +16,6 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[CTSDKSettings alloc] init];
-        [sharedInstance setClientId:@"" languageCode:@"" isDebug:YES];
     });
     return sharedInstance;
 }
@@ -35,29 +34,31 @@
     _clientId = clientId;
     _isDebug = isDebug;
     
-    self.languageCode = languageCode;
-    self.currencyCode = currency;
-    self.homeCountryCode = countryCode;
+    _languageCode = languageCode;
+    _currencyCode = currency;
+    _homeCountryCode = countryCode;
     
-    self.homeCountryName = country;
-    self.currencyName = currency;
+    _homeCountryName = country;
+    _currencyName = currency;
     
     NSArray *languages = [NSLocale preferredLanguages];
-//    for (NSString *language in languages) {
-//        NSLocale *locale = [[[NSLocale alloc] initWithLocaleIdentifier:language] autorelease];
-//        NSLog(@"language code = %@, display name = %@, in language = %@",
-//              language,
-//              [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:language],
-//              [locale displayNameForKey:NSLocaleIdentifier value:language]);
-//    }
-
-    self.languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:languages.firstObject];
+    _languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:languages.firstObject];
     
     if (isDebug) {
         _target = @"Test";
     } else {
         _target = @"Production";
     }
+}
+
+- (void)resetCountryToDeviceLocale
+{
+    NSLocale *locale = [NSLocale currentLocale];
+    NSString *countryCode = [locale objectForKey: NSLocaleCountryCode];
+    NSString *country = [locale displayNameForKey: NSLocaleCountryCode value: countryCode];
+
+    _homeCountryCode = countryCode;
+    _homeCountryName = country;
 }
 
 - (void)setLanguageCode:(NSString *)languageCode
@@ -138,4 +139,12 @@
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
     return [d objectForKey:key];
 }
+
+- (NSString *)version
+{
+    NSDictionary *info = [[NSBundle bundleForClass:[self class]] infoDictionary];
+    NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
+    return version;
+}
+
 @end

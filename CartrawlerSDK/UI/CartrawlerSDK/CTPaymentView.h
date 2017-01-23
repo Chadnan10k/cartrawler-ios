@@ -7,24 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GroundTransportSearch.h"
-#import "CarRentalSearch.h"
+#import "CTRentalSearch.h"
 #import <CartrawlerAPI/CTGroundBooking.h>
+
+@protocol CTPaymentViewDelegate <NSObject>
+
+- (void)didLoadPaymentView;
+- (void)didFailLoadingPaymentView;
+- (void)willMakeBooking;
+- (void)paymentFailed;
+- (void)didMakeBooking;
+
+@end
 
 @interface CTPaymentView : UIView
 
-typedef void (^PaymentCompletion)(BOOL success);
-
-@property (nonatomic, strong) PaymentCompletion completion;
+@property (nonatomic, weak) id<CTPaymentViewDelegate> delegate;
 
 - (void)presentInView:(UIView *)parentView;
-
-- (void)setForGTPayment:(GroundTransportSearch *)search;
-- (void)setForCarRentalPayment:(CarRentalSearch *)search;
+- (void)reload;
+- (void)setForCarRentalPayment:(CTRentalSearch *)search;
 
 //Controls
 
 - (void)confirmPayment;
-- (void)termsAndConditionsChecked:(BOOL)check;
 
 @end

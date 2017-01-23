@@ -3,6 +3,10 @@
 #import "CTExtraEquipment.h"
 #import "CTVehicleCharge.h"
 #import "CTFee.h"
+#import "CTVehicleConfig.h"
+#import "CTSpecialOffer.h"
+#import "CTVehicleIndexation.h"
+
 @class CTVendor;
 
 /**
@@ -143,6 +147,16 @@ typedef NS_ENUM(NSUInteger, VehicleSize) {
     
     VehicleSizeOversize,
     
+    VehicleSizeEstate,
+    
+    VehicleSizeFiveSeatCarrier,
+    
+    VehicleSizeSevenSeatCarrier,
+    
+    VehicleSizeNineSeatCarrier,
+    
+    VehicleSizeSUV,
+    
     VehicleSizeUnknown
 
 };
@@ -233,6 +247,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, nonnull, readonly) NSString *makeModelName;
 /**
+ *  Trailing 'or similar' text of vehicle name
+ */
+@property (nonatomic, nullable, readonly) NSString *orSimilar;
+
+/**
  *  The make / model code of the vehicle
  */
 @property (nonatomic, nonnull, readonly) NSString *makeModelCode;
@@ -308,6 +327,12 @@ NS_ASSUME_NONNULL_BEGIN
  *  Array of priced coverages for vehicle
  */
 @property (nonatomic, nonnull, readonly) NSArray<CTPricedCoverage *> *pricedCoverages;
+
+@property (nonatomic, nonnull, readonly) CTVehicleIndexation *indexation;
+
+@property (nonatomic, nonnull, readonly) NSArray <CTSpecialOffer *> *specialOffers;
+
+@property (nonatomic, nonnull, readonly) CTVehicleConfig *config;
 
 - (instancetype)initFromDictionary:(NSDictionary *)dictionary;
 

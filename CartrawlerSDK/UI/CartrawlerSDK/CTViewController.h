@@ -7,33 +7,41 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CarRentalSearch.h"
-#import "GroundTransportSearch.h"
+#import "CTRentalSearch.h"
 #import "CTValidation.h"
-#import "RentalBooking.h"
-#import "GTBooking.h"
+
+@protocol CTViewControllerDelegate <NSObject>
+
+@required
+- (void)didDismissViewController:(NSString *)identifier;
+@optional
+- (void)didBookVehicle:(CTBooking *)booking;
+@end
 
 @interface CTViewController : UIViewController
 
 typedef void (^Completion)(BOOL success, NSString *errorMessage);
-typedef void (^RentalBookingCompletion)(RentalBooking *booking);
-typedef void (^GTBookingCompletion)(GTBooking *booking);
+typedef void (^RentalBookingCompletion)(id *booking);
 
 @property (nonatomic) Completion dataValidationCompletion;
 @property (nonatomic) RentalBookingCompletion rentalBookingCompletion;
-@property (nonatomic) GTBookingCompletion gtBookingCompletion;
 
-@property (nonatomic, strong) CarRentalSearch *search;
-@property (nonatomic, strong) GroundTransportSearch *groundSearch;
+@property (nonatomic, strong) CTRentalSearch *search;
 
 @property (nonatomic, strong) CTValidation *validationController;
 
 @property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
-@property (nonatomic, strong) CTViewController *destinationViewController;
+@property (nonatomic, weak) CTViewController *destinationViewController;
+@property (nonatomic, weak) CTViewController *fallbackViewController;
+@property (nonatomic, weak) CTViewController *optionalRoute;
+
+@property (nonatomic, weak) id<CTViewControllerDelegate> delegate;
 
 - (void)refresh;
 
 - (void)pushToDestination;
+
+- (void)dismiss;
 
 @end

@@ -9,13 +9,15 @@
 #import "CTCalendarViewController.h"
 #import "CTLabel.h"
 #import "CTCalendarView.h"
-#import "DateUtils.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 #import "CTAppearance.h"
 #import "CTView.h"
-#import "UIColorUtils.h"
+#import "CartrawlerSDK+UIColor.h"
+#import "CTNextButton.h"
 
 @interface CTCalendarViewController()
 
+@property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
 @property (weak, nonatomic) IBOutlet CTLabel *pickupDateLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *dropOffDateLabel;
 @property (weak, nonatomic) IBOutlet CTCalendarView *calendarView;
@@ -23,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet CTView *summaryContainerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *weekDayTopSpace;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewBottomSpace;
-@property (weak, nonatomic) IBOutlet CTView *continueButtonContainer;
+
 @property (weak, nonatomic) IBOutlet CTLabel *pickupTitleLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *returnTitleLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *calendarTitleLabel;
@@ -35,15 +37,10 @@
 
 @implementation CTCalendarViewController
 
-+ (void)forceLinkerLoad_
-{
-    
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
     self.calendarTitleLabel.text = self.singleDateSelection ? @"Select date" : @"Select your dates";
     
     if (self.singleDateSelection) {
@@ -58,6 +55,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.nextButton setText:NSLocalizedString(@"Continue", @"Calander Continue")];
 
     [self showCloseButton:NO];
     
@@ -93,9 +92,9 @@
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
             if (headDate) {
-                [self animatePickupLabel:[DateUtils shortDescriptionFromDate:date]];
+                [self animatePickupLabel:[date shortDescriptionFromDate]];
             } else {
-                [self animateDropoffLabel:[DateUtils shortDescriptionFromDate:date]];
+                [self animateDropoffLabel:[date shortDescriptionFromDate]];
             }
         }
     };
@@ -119,7 +118,7 @@
     }
 
     [UIView animateWithDuration:0.3 animations:^{
-        self.continueButtonContainer.alpha = show;
+        self.nextButton.alpha = show;
     }];
 }
 
@@ -160,7 +159,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)closeTapped:(id)sender {
+- (IBAction)continueTapped:(id)sender {
     if (self.delegate) {
         [self.delegate didPickDates:self.pickupDate dropoffDate:self.dropoffDate];
     }

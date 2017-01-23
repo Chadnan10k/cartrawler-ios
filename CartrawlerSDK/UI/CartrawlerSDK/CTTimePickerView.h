@@ -10,8 +10,6 @@
 
 @interface CTTimePickerView : NSObject
 
-+ (void)forceLinkerLoad_;
-
 typedef void (^CTTimePickerCallback)(NSDate *time);
 
 @property (nonatomic) CTTimePickerCallback timeSelection;

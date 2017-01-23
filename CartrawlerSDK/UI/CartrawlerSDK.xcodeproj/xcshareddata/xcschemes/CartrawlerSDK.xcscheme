@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0820"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "45E942421D12FF0F00ACF604"
-               BuildableName = "libCartrawlerSDK.a"
+               BlueprintIdentifier = "455B582A1DCC90D300CA4790"
+               BuildableName = "CartrawlerSDK.framework"
                BlueprintName = "CartrawlerSDK"
                ReferencedContainer = "container:CartrawlerSDK.xcodeproj">
             </BuildableReference>
@@ -45,8 +45,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45E942421D12FF0F00ACF604"
-            BuildableName = "libCartrawlerSDK.a"
+            BlueprintIdentifier = "455B582A1DCC90D300CA4790"
+            BuildableName = "CartrawlerSDK.framework"
             BlueprintName = "CartrawlerSDK"
             ReferencedContainer = "container:CartrawlerSDK.xcodeproj">
          </BuildableReference>
@@ -63,8 +63,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45E942421D12FF0F00ACF604"
-            BuildableName = "libCartrawlerSDK.a"
+            BlueprintIdentifier = "455B582A1DCC90D300CA4790"
+            BuildableName = "CartrawlerSDK.framework"
             BlueprintName = "CartrawlerSDK"
             ReferencedContainer = "container:CartrawlerSDK.xcodeproj">
          </BuildableReference>

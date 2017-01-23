@@ -10,11 +10,9 @@
 
 @interface CTDateCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, retain) NSDate *date;
-@property (nonatomic, retain) NSIndexPath *indexPath;
-@property (nonatomic, retain) NSNumber *section;
-
-+ (void)forceLinkerLoad_;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, strong) NSNumber *section;
 
 - (void)setDateLabel:(NSDate *)date indexPath:(NSIndexPath *)indexPath section:(NSNumber *)section;
 - (void)setLabelColor:(UIColor *)color;
@@ -24,4 +22,5 @@
 - (void)tailSetSelected;
 - (void)sameDaySetSelected;
 - (void)deselect;
+
 @end

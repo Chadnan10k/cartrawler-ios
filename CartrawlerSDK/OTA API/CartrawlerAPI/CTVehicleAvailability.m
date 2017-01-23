@@ -7,6 +7,7 @@
 #import "CTVehicleAvailability.h"
 #import "CTVendor.h"
 #import "CTVehicle.h"
+#import "CTEngineInfo.h"
 
 @implementation CTVehicleAvailability
 
@@ -15,12 +16,12 @@
     self = [super init];
 
     vehAvailRSCoreDictionary = vehAvailRSCoreDictionary[@"VehAvailRSCore"];
-	_puDate = [[vehAvailRSCoreDictionary objectForKey:@"VehRentalCore"] objectForKey:@"@PickUpDateTime"];
-	_doDate = [[vehAvailRSCoreDictionary objectForKey:@"VehRentalCore"] objectForKey:@"@ReturnDateTime"];
-	_puLocationCode = [[[vehAvailRSCoreDictionary objectForKey:@"VehRentalCore"] objectForKey:@"PickUpLocation"] objectForKey:@"@LocationCode"];
-	_puLocationName = [[[vehAvailRSCoreDictionary objectForKey:@"VehRentalCore"] objectForKey:@"PickUpLocation"] objectForKey:@"@Name"];
-	_doLocationCode = [[[vehAvailRSCoreDictionary objectForKey:@"VehRentalCore"] objectForKey:@"ReturnLocation"] objectForKey:@"@LocationCode"];
-	_doLocationName = [[[vehAvailRSCoreDictionary objectForKey:@"VehRentalCore"] objectForKey:@"ReturnLocation"] objectForKey:@"@Name"];
+	_puDate = vehAvailRSCoreDictionary[@"VehRentalCore"][@"@PickUpDateTime"];
+	_doDate = vehAvailRSCoreDictionary[@"VehRentalCore"][@"@ReturnDateTime"];
+	_puLocationCode = vehAvailRSCoreDictionary[@"VehRentalCore"][@"PickUpLocation"][@"@LocationCode"];
+	_puLocationName = vehAvailRSCoreDictionary[@"VehRentalCore"][@"PickUpLocation"][@"@Name"];
+	_doLocationCode = vehAvailRSCoreDictionary[@"VehRentalCore"][@"ReturnLocation"][@"@LocationCode"];
+	_doLocationName = vehAvailRSCoreDictionary[@"VehRentalCore"][@"ReturnLocation"][@"@Name"];
     
     NSMutableArray *tempItems = [[NSMutableArray alloc] init];
     
@@ -28,16 +29,16 @@
         NSArray *rawVendorArray = [vehAvailRSCoreDictionary objectForKey:@"VehVendorAvails"];
 
         for (int i = 0; i < [rawVendorArray count]; i++) {
-
             NSDictionary *vendorDict = rawVendorArray[i];
 
             CTVendor *vendor = [[CTVendor alloc] initWithVendorInfo:vendorDict];
-            
+            CTEngineInfo *engineInfo = [[CTEngineInfo alloc] initFromDictionary:vendorDict];
+
             if ([vendorDict[@"VehAvails"] isKindOfClass:[NSArray class]]) {
                 NSArray *vehArray = vendorDict[@"VehAvails"];
                 for (int k = 0; k < vehArray.count; k++) {
                     CTVehicle *vehicle = [[CTVehicle alloc] initFromDictionary:vehArray[k]];
-                    CTAvailabilityItem *item = [[CTAvailabilityItem alloc] initWithVendor:vendor vehicle:vehicle];
+                    CTAvailabilityItem *item = [[CTAvailabilityItem alloc] initWithVendor:vendor vehicle:vehicle engineInfo:engineInfo];
                     [tempItems addObject:item];
                 }
             }
@@ -48,12 +49,13 @@
         NSDictionary *vendorDict = [vehAvailRSCoreDictionary objectForKey:@"VehVendorAvails"][@"VehVendorAvail"];
         
         CTVendor *vendor = [[CTVendor alloc] initWithVendorInfo:vendorDict];
-        
+        CTEngineInfo *engineInfo = [[CTEngineInfo alloc] initFromDictionary:vendorDict];
+
         if ([vendorDict[@"VehAvails"] isKindOfClass:[NSArray class]]) {
             NSArray *vehArray = vendorDict[@"VehAvails"];
             for (int k = 0; k < vehArray.count; k++) {
                 CTVehicle *vehicle = [[CTVehicle alloc] initFromDictionary:vehArray[k]];
-                CTAvailabilityItem *item = [[CTAvailabilityItem alloc] initWithVendor:vendor vehicle:vehicle];
+                CTAvailabilityItem *item = [[CTAvailabilityItem alloc] initWithVendor:vendor vehicle:vehicle engineInfo:engineInfo];
                 [tempItems addObject:item];
             }
         }
