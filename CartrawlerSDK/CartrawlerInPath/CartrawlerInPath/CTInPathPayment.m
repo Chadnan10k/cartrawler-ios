@@ -41,9 +41,14 @@
                                         locale:[CTSDKSettings instance].languageCode
                                       currency:[CTSDKSettings instance].currencyCode];
     
-
-    NSNumber *amount = search.selectedVehicle.vehicle.totalPriceForThisVehicle;
+    double amt = search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue;
     
+    if (search.isBuyingInsurance) {
+        amt += search.insurance.premiumAmount.doubleValue;
+    }
+    
+    NSNumber *amount = [NSNumber numberWithDouble:amt];
+
     NSString *vehDescription = @"";
     
     return @{@"ota" : json,

@@ -77,7 +77,7 @@
 {
     _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"en" sandboxMode:!self.isProduction];
     _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
-    [self.sdk enableLogs:NO];
+    [self.sdk enableLogs:YES];
     self.rental.delegate = self;
 }
 
