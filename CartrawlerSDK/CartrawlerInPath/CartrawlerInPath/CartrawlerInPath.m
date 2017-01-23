@@ -96,6 +96,7 @@
     [self.rental.cartrawlerSDK.cartrawlerAPI locationSearchWithAirportCode:IATACode
                                                                 completion:^(CTLocationSearch *response, CTErrorResponse *error) {
         if (error) {
+            [[CTAnalytics instance] tagError:@"inpath" event:@"no location" message:@"failed to get location"];
             _didFailToFetchResults = YES;
             if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -104,7 +105,7 @@
             }
         } else {
             if (response) {
-                
+                _didFailToFetchResults = NO;
                 if(response.matchedLocations.count > 0) {
                     [CTRentalSearch instance].pickupLocation = response.matchedLocations.firstObject;
                     [CTRentalSearch instance].dropoffLocation = response.matchedLocations.firstObject;
