@@ -490,9 +490,12 @@
 
 + (NSString *)localizedStringForKey:(NSString *)key
 {
-    return NSLocalizedStringFromTableInBundle(key,
-                                              @"en",
-                                              [NSBundle bundleForClass:[self class]], nil);
+    return CTLocalizedString(key);
+}
+
++ (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle
+{
+    return NSLocalizedStringFromTableInBundle(key, @"en", bundle, nil);
 }
 
 

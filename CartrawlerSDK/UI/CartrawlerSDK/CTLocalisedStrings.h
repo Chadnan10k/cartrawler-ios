@@ -10,6 +10,13 @@
 #import <CartrawlerAPI/CTAvailabilityItem.h>
 #import <CartrawlerAPI/CTGroundService.h>
 
+/**
+ *  Convenience macro for localized strings
+ *  Uses strings file from bundle of calling object
+ */
+#define CTLocalizedString(key) \
+[CTLocalisedStrings localizedStringForKey:(key) bundle:[NSBundle bundleForClass:[self class]]]
+
 @interface CTLocalisedStrings : NSObject
 
 + (NSString *)pickupType:(CTAvailabilityItem *)item;
@@ -21,6 +28,6 @@
 + (NSString *)toolTipTextForFuelPolicy:(FuelPolicy)fuelPolicy;
 + (NSString *)toolTipTextForPickupType:(CTAvailabilityItem *)item;
 
-+ (NSString *)localizedStringForKey:(NSString *)key;
++ (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle;
 
 @end

@@ -1,0 +1,9 @@
+
+// Booking Manager
+"BOOKING_NAVIGATION_BAR_TITLE" = "Car Hire";
+
+"BOOKING_TABLE_HEADER_TITLE" = "Upcoming Bookings";
+
+"BOOKING_REFERENCE_PREFIX" = "Booking reference";
+
+"ADD_A_BOOKING_BUTTON" = "Add a Booking";
