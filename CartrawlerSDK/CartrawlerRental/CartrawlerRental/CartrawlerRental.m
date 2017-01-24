@@ -55,7 +55,7 @@
     navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
     
-    if ([CTDataStore checkHasUpcomingBookings]) {
+    if (YES || [CTDataStore checkHasUpcomingBookings]) {
         UIStoryboard *landingStoryboard = [UIStoryboard storyboardWithName:CTRentalBookingManagerStoryboard bundle:self.bundle];
         CTRentalBookingsViewController *upcomingBookingsVC = [landingStoryboard instantiateViewControllerWithIdentifier:CTRentalBookingManagerViewIdentifier];
         
