@@ -74,8 +74,41 @@ NSString * const CTRentalBookingTableHeaderTitle = @"booking_table_header_title"
 
 NSString * const CTRentalBookingReferencePrefix = @"booking_reference_prefix";
 
+NSString * const CTRentalSettingsCountryTitle = @"settings_country_title";
 
+NSString * const CTRentalSettingsCurrencyTitle = @"settings_currency_title";
 
+NSString * const CTRentalResultsSort = @"results_sort";
+
+NSString * const CTRentalResultsFilter = @"results_filter";
+
+NSString * const CTRentalVehicleOrSimilar = @"vehicle_orsimilar";
+
+NSString * const CTRentalVehiclePassenger = @"vehicle_passenger";
+
+NSString * const CTRentalVehiclePassengers = @"vehicle_passengers";
+
+NSString * const CTRentalVehicleBag = @"vehicle_bag";
+
+NSString * const CTRentalVehicleBags = @"vehicle_bags";
+
+NSString * const CTRentalVehicleDoor = @"vehicle_door";
+
+NSString * const CTRentalVehicleDoors = @"vehicle_doors";
+
+NSString * const CTRentalVehicleDuration1 = @"vehicle_duration_1";
+
+NSString * const CTRentalVehicleDuration2 = @"vehicle_duration_2";
+
+NSString * const CTRentalVehicleDuration3 = @"vehicle_duration_3";
+
+NSString * const CTRentalVehicleTotalPrice = @"vehicle_total_price";
+
+NSString * const CTRentalVehicleBestSeller = @"vehicle_best_seller";
+
+NSString * const CTRentalVehicleGreatValue = @"vehicle_great_value";
+
+NSString * const CTRentalVehicleProvided = @"vehicle_provided";
 
 
 

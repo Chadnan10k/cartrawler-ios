@@ -17,6 +17,7 @@
 #import "CTInterstitialViewController.h"
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTButton.h>
 
 @interface CTVehicleSelectionViewController () <UIScrollViewDelegate>
 
@@ -26,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet CTLabel *carCountLabel;
 @property (weak, nonatomic) IBOutlet UIView *subheaderView;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet CTButton *sortButton;
+@property (weak, nonatomic) IBOutlet CTButton *filterButton;
 
 @property (nonatomic, strong) CTFilterViewController *filterViewController;
 @property (nonatomic, strong) NSArray<CTAvailabilityItem *> *filteredData;
@@ -64,6 +67,10 @@
     [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
     
     self.subheaderView.backgroundColor = [CTAppearance instance].iconTint;
+    
+    
+    [self.sortButton setTitle:CTLocalizedString(CTRentalResultsSort) forState:UIControlStateNormal];
+    [self.filterButton setTitle:CTLocalizedString(CTRentalResultsFilter) forState:UIControlStateNormal];
     
 }
 

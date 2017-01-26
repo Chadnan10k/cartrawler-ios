@@ -23,6 +23,7 @@
 #import <CartrawlerSDK/CartrawlerSDK+UIView.h>
 #import <CartrawlerSDK/CTToolTipButton.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import "CTRentalLocalizationConstants.h"
 
 @interface CTVehicleDetailsViewController ()
 
@@ -32,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
 
 @property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *totalPriceLabel;
 @property (weak, nonatomic) IBOutlet UITableView *featuresTableView;
 
 @property (weak, nonatomic) IBOutlet CTLabel *includedForFreeLabel;
@@ -64,6 +66,8 @@
 
     self.featuresTableView.estimatedRowHeight = 30;
     self.featuresTableView.rowHeight = UITableViewAutomaticDimension;
+    
+    self.totalPriceLabel.text = CTLocalizedString(CTRentalVehicleTotalPrice);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -144,17 +148,17 @@
     
     [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@ %@",
                                         self.search.selectedVehicle.vehicle.passengerQty.stringValue,
-                                        NSLocalizedString(@"passengers", @"passengers")],
+                                        CTLocalizedString(CTRentalVehiclePassengers)],
                                         @"image" : @"people"}];
     
     [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@ %@",
                                         self.search.selectedVehicle.vehicle.baggageQty.stringValue,
-                                        NSLocalizedString(@"bags", @"bags")],
+                                        CTLocalizedString(CTRentalVehicleBags)],
                                         @"image" : @"baggage"}];
     
     [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@ %@",
                                         self.search.selectedVehicle.vehicle.doorCount.stringValue,
-                                        NSLocalizedString(@"doors", @"doors")],
+                                        CTLocalizedString(CTRentalVehicleDoors)],
                                         @"image" : @"doors"}];
     
     [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@",

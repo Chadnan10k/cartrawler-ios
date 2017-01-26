@@ -10,29 +10,11 @@
 
 
 
-// Settings page (1-settings)
-"settings_country_title" = "Country *";
-"settings_currency_title" = "Currency *";
 
-// Results page (2-results)
-"results_sort" = "Sort *";
-"results_filter" = "Filter *";
 
-// Vehicle block (2-results, 5-details)
-"vehicle_orsimilar" = "or similar *";
-"vehicle_passenger" = "&#160;Passenger *";
-"vehicle_passengers" = "&#160;Passengers *";
-"vehicle_bag" = "&#160;Bag *";
-"vehicle_bags" = "&#160;Bags *";
-"vehicle_door" = "&#160;Door *";
-"vehicle_doors" = "&#160;Doors *";
-"vehicle_duration_1" = "Price for *";
-"vehicle_duration_2" = "day *";
-"vehicle_duration_3" = "days *";
-"vehicle_total_price" = "Total price *";
-"vehicle_best_seller" = "Best seller *";
-"vehicle_great_value" = "Great value *";
-"vehicle_provided" = "Provided by:&#160; *";
+
+
+
 
 // Sorting (3-sorting)
 "rental_sort_title" = "Sort results by *";

@@ -417,6 +417,7 @@
                         <outlet property="priceLabel" destination="ZU2-uO-73l" id="x5U-wP-wBs"/>
                         <outlet property="scrollView" destination="z1i-bM-q5G" id="OpZ-Wv-tE0"/>
                         <outlet property="topSpacing" destination="WwB-ld-UxV" id="j2H-Bx-YeA"/>
+                        <outlet property="totalPriceLabel" destination="suR-xq-s0h" id="6bR-tY-Rn7"/>
                         <outlet property="vehicleImageView" destination="aq6-tM-uXj" id="q2e-ct-pA6"/>
                         <outlet property="vehicleNameLabel" destination="2q0-Lk-wW2" id="xFp-mn-8XX"/>
                     </connections>

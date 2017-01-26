@@ -709,7 +709,9 @@
                     <connections>
                         <outlet property="closeButton" destination="7ny-B4-ATA" id="vzt-4I-05S"/>
                         <outlet property="countryButton" destination="Bta-qX-js0" id="RdN-KU-AGh"/>
+                        <outlet property="countryLabel" destination="jDF-O1-h8S" id="bSa-Zk-s8B"/>
                         <outlet property="currencyButton" destination="Sfv-Xc-4RJ" id="si1-eG-9F8"/>
+                        <outlet property="currencyLabel" destination="wjq-ai-bJw" id="Seo-j4-BmD"/>
                         <outlet property="currencyView" destination="w7G-St-KYp" id="aYq-sh-kmc"/>
                         <outlet property="languageButton" destination="gh1-0v-uIg" id="kRH-u2-GRn"/>
                         <outlet property="titleLabel" destination="rRE-by-UDd" id="oHz-MY-hTF"/>

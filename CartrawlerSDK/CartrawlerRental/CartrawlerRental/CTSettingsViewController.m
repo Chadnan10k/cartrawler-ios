@@ -26,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet CTDesignableView *currencyView;
 @property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet CTButton *closeButton;
+@property (weak, nonatomic) IBOutlet CTLabel *countryLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *currencyLabel;
 
 @end
 
@@ -54,6 +56,8 @@
     
     self.titleLabel.text = CTLocalizedString(CTRentalTitleSettings);
     [self.closeButton setTitle:CTLocalizedString(CTRentalCTAClose) forState:UIControlStateNormal];
+    self.countryLabel.text = CTLocalizedString(CTRentalSettingsCountryTitle);
+    self.currencyLabel.text = CTLocalizedString(CTRentalSettingsCurrencyTitle);
 }
 
 - (void)didReceiveMemoryWarning

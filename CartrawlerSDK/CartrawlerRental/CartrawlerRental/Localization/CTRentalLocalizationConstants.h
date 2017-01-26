@@ -76,11 +76,40 @@ extern NSString * const CTRentalBookingTableHeaderTitle;
 
 extern NSString * const CTRentalBookingReferencePrefix;
 
+extern NSString * const CTRentalSettingsCountryTitle;
 
+extern NSString * const CTRentalSettingsCurrencyTitle;
 
+extern NSString * const CTRentalResultsSort;
 
+extern NSString * const CTRentalResultsFilter;
 
+extern NSString * const CTRentalVehicleOrSimilar;
 
+extern NSString * const CTRentalVehiclePassenger;
 
+extern NSString * const CTRentalVehiclePassengers;
+
+extern NSString * const CTRentalVehicleBag;
+
+extern NSString * const CTRentalVehicleBags;
+
+extern NSString * const CTRentalVehicleDoor;
+
+extern NSString * const CTRentalVehicleDoors;
+
+extern NSString * const CTRentalVehicleDuration1;
+
+extern NSString * const CTRentalVehicleDuration2;
+
+extern NSString * const CTRentalVehicleDuration3;
+
+extern NSString * const CTRentalVehicleTotalPrice;
+
+extern NSString * const CTRentalVehicleBestSeller;
+
+extern NSString * const CTRentalVehicleGreatValue;
+
+extern NSString * const CTRentalVehicleProvided;
 
 @end
