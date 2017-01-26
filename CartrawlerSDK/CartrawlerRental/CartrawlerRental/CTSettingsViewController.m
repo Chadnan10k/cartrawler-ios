@@ -12,7 +12,11 @@
 #import <CartrawlerSDK/CTCSVItem.h>
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import "CTRentalConstants.h"
+#import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTDesignableView.h>
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTButton.h>
 
 @interface CTSettingsViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *currencyButton;
@@ -20,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *languageButton;
 @property (strong, nonatomic) UIStoryboard *settingsStoryboard;
 @property (weak, nonatomic) IBOutlet CTDesignableView *currencyView;
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
+@property (weak, nonatomic) IBOutlet CTButton *closeButton;
 
 @end
 
@@ -45,6 +51,9 @@
     [self.currencyButton setTitle:[CTSDKSettings instance].currencyName forState:UIControlStateNormal];
     [self.languageButton setTitle:[CTSDKSettings instance].languageName forState:UIControlStateNormal];
     [self.countryButton setTitle:[CTSDKSettings instance].homeCountryName forState:UIControlStateNormal];
+    
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleSettings);
+    [self.closeButton setTitle:CTLocalizedString(CTRentalCTAClose) forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning

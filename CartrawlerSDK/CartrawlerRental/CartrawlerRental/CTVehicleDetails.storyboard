@@ -529,6 +529,7 @@
                         <outlet property="headerView" destination="kIa-Mx-ztI" id="Mf6-Xu-L6N"/>
                         <outlet property="navBarHeight" destination="LtZ-uH-H8Z" id="8oq-JL-eYs"/>
                         <outlet property="selectionControl" destination="UHX-A0-jg3" id="0TD-Go-3Y4"/>
+                        <outlet property="titleLabel" destination="1B1-42-kh7" id="mdP-u1-vpV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WmV-pV-hJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -612,11 +613,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YmH-Hp-GAa" id="Ktw-NK-0QE">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="stV-yQ-lyC">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -642,6 +643,7 @@
                     <navigationItem key="navigationItem" id="aeZ-hg-sul"/>
                     <connections>
                         <outlet property="tableView" destination="iy2-b8-Xl6" id="sJj-ds-zqE"/>
+                        <outlet property="titleLabel" destination="Vop-eO-ioO" id="Ry3-qY-LAB"/>
                         <segue destination="bhF-be-KP9" kind="show" identifier="showTermsDetail" id="eQH-gf-wow"/>
                     </connections>
                 </viewController>

@@ -10,6 +10,9 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "CTLocationSearchDataSource.h"
 #import <CartrawlerSDK/CTAppearance.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+
 @interface CTLocationSearchViewController () <UISearchBarDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -38,6 +41,7 @@
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self.dataSource;
     self.searchBar.delegate = self;
+    self.searchBar.placeholder = CTLocalizedString(CTRentalSearchLocationsPlaceholder);
     self.searchBar.text = @"";
     
     (self.searchBar).backgroundImage = [UIImage new];

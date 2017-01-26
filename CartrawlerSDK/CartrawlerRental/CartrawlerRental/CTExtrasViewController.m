@@ -18,13 +18,18 @@
 #import <CartrawlerSDK/CartrawlerSDK+UIColor.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 #import "CTOptionalExtrasViewController.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTExtrasViewController () <UITextViewDelegate, CTPickerViewDelegate, OptionalExtrasDelegate>
 
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIView *insuranceView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *insuranceViewHeight;
 @property (weak, nonatomic) IBOutlet CTOptionalExtrasView *optionalExtrasView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet CTLabel *extrasTitleLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *insuranceTitleLabel;
 
 @property (weak, nonatomic) IBOutlet CTButton *continueButton;
 @property (weak, nonatomic) IBOutlet CTButton *addInuranceButton;
@@ -47,6 +52,11 @@
 {
     [super viewDidLoad];
     self.optionalExtrasView.delegate = self;
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleExtrasInsurace);
+    self.extrasTitleLabel.text = CTLocalizedString(CTRentalTitleExtras);
+    self.insuranceTitleLabel.text = CTLocalizedString(CTRentalTitleInsurance);
+    [self.addInuranceButton setTitle:CTLocalizedString(CTRentalCTAWithInsurance) forState:UIControlStateNormal];
+    [self.noInsuranceButton setTitle:CTLocalizedString(CTRentalCTANoInsurance) forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated

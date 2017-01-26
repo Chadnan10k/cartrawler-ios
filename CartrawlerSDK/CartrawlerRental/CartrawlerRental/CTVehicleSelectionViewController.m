@@ -15,6 +15,8 @@
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import "CTSearchDetailsViewController.h"
 #import "CTInterstitialViewController.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTVehicleSelectionViewController () <UIScrollViewDelegate>
 
@@ -150,7 +152,7 @@
 - (void)updateAvailableCarsLabel:(NSInteger)availableCars
 {
     self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)availableCars
-                               ,NSLocalizedString(@"results", @"results")];
+                               ,CTLocalizedString(CTRentalTitleResults)];
 }
 
 - (IBAction)backTapped:(id)sender {

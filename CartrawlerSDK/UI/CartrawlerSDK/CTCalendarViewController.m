@@ -14,6 +14,8 @@
 #import "CTView.h"
 #import "CartrawlerSDK+UIColor.h"
 #import "CTNextButton.h"
+#import "CTSDKLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTCalendarViewController()
 
@@ -41,7 +43,7 @@
 {
     [super viewWillAppear:animated];
 
-    self.calendarTitleLabel.text = self.singleDateSelection ? @"Select date" : @"Select your dates";
+    self.calendarTitleLabel.text = self.singleDateSelection ? CTLocalizedString(CTCalendarSelectDate) : CTLocalizedString(CTCalendarSelectDates);
     
     if (self.singleDateSelection) {
         self.weekDayTopSpace.constant = 0;
@@ -99,10 +101,12 @@
         }
     };
     
+    self.pickupDateLabel.text = CTLocalizedString(CTCalendarSelectDate);
+    self.dropOffDateLabel.text = CTLocalizedString(CTCalendarSelectDate);
     self.calendarView.discard = ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self animatePickupLabel:@"Select date"];
-            [self animateDropoffLabel:@"Select date"];
+            [self animatePickupLabel:CTLocalizedString(CTCalendarSelectDate)];
+            [self animateDropoffLabel:CTLocalizedString(CTCalendarSelectDate)];
             [self showCloseButton:NO];
         });
     };

@@ -22,6 +22,8 @@
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 #import "CTPaymentLoadingViewController.h"
 #import "CTRentalConstants.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTPaymentViewController () <UITextViewDelegate, CTPaymentViewDelegate, UIAlertViewDelegate>
 
@@ -35,6 +37,7 @@
 @property (nonatomic) Reachability *internetReachability;
 
 @property (nonatomic, strong) UIAlertView *alertView;
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 
 @end
 
@@ -53,7 +56,7 @@
     
     total += self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue;
     
-    NSString *buttonText = [NSString stringWithFormat:@"Book now for %@", [@(total) numberStringWithCurrencyCode]];
+    NSString *buttonText = [NSString stringWithFormat:@"%@ %@", CTLocalizedString(CTRentalCTABook), [@(total) numberStringWithCurrencyCode]];
     [self.confirmButton setText:buttonText];
 
     self.backButton.enabled = YES;
@@ -104,6 +107,8 @@
     self.paymentView.delegate = self;
     [self.paymentView presentInView:self.webViewContainer];
     [self.paymentView setForCarRentalPayment:self.search];//for initial load
+    
+    self.titleLabel.text = CTLocalizedString(CTRentalTitlePayment);
 
     _internetReachability = [Reachability reachabilityForInternetConnection];
     [self.internetReachability startNotifier];

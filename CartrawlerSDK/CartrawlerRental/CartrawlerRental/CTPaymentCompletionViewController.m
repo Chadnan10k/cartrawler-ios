@@ -16,6 +16,8 @@
 #import <CartrawlerSDK/CTView.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIView.h>
 #import "CTBookingSummaryView.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTPaymentCompletionViewController () <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet CTLabel *paymentTitleLabel;
@@ -36,7 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.doneButton setText:@"Back to homepage"];
+    [self.doneButton setText:CTLocalizedString(CTRentalCTAToHomepage)];
     self.scrollView.backgroundColor = [CTAppearance instance].viewBackgroundColor;
 }
 
