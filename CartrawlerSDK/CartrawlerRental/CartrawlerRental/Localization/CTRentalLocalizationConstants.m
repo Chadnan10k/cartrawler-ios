@@ -44,6 +44,8 @@ NSString * const CTRentalCTASearch = @"CTA_search";
 
 NSString * const CTRentalCTAClose = @"CTA_close";
 
+NSString * const CTRentalCTAContinue = @"CTA_continue";
+
 NSString * const CTRentalCTAWithInsurance = @"CTA_with_insurance";
 
 NSString * const CTRentalCTANoInsurance = @"CTA_no_insurance";
@@ -110,8 +112,13 @@ NSString * const CTRentalVehicleGreatValue = @"vehicle_great_value";
 
 NSString * const CTRentalVehicleProvided = @"vehicle_provided";
 
+NSString * const CTRentalSortTitle = @"rental_sort_title";
 
+NSString * const CTRentalSortPrice = @"rental_sort_price";
 
+NSString * const CTRentalSortRating = @"rental_sort_rating";
+
+NSString * const CTRentalSortRecommended = @"rental_sort_recommended";
 
 
 

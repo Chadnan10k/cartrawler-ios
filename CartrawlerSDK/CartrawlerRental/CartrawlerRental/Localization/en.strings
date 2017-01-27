@@ -111,6 +111,15 @@
 
 "vehicle_provided" = "Provided by *";
 
+// Sorting (3-sorting)
+"rental_sort_title" = "Sort results by *";
+
+"rental_sort_price" = "Price *";
+
+"rental_sort_rating" = "Rating *";
+
+"rental_sort_recommended" = "Recommended *";
+
 
 
 

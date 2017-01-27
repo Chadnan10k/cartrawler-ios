@@ -12,6 +12,7 @@
 #import <CartrawlerSDK/CTLabel.h>
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import "CTRentalLocalizationConstants.h"
 
 @interface CTBookingSummaryViewController ()
 
@@ -26,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.continueButton setText:@"Continue"];
+    [self.continueButton setText:CTLocalizedString(CTRentalCTAContinue)];
     self.titleLabel.text = CTLocalizedString(CTRentalTitleSummary);
 }
 

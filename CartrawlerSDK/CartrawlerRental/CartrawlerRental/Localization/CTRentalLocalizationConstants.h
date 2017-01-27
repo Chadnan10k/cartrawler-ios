@@ -44,6 +44,8 @@ extern NSString * const CTRentalCTASearch;
 
 extern NSString * const CTRentalCTAClose;
 
+extern NSString * const CTRentalCTAContinue;
+
 extern NSString * const CTRentalCTAWithInsurance;
 
 extern NSString * const CTRentalCTANoInsurance;
@@ -111,5 +113,13 @@ extern NSString * const CTRentalVehicleBestSeller;
 extern NSString * const CTRentalVehicleGreatValue;
 
 extern NSString * const CTRentalVehicleProvided;
+
+extern NSString * const CTRentalSortTitle;
+
+extern NSString * const CTRentalSortPrice;
+
+extern NSString * const CTRentalSortRating;
+
+extern NSString * const CTRentalSortRecommended;
 
 @end

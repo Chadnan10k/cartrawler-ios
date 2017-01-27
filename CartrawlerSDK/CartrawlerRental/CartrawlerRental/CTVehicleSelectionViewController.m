@@ -194,15 +194,21 @@
 }
     
 - (IBAction)sortTapped:(id)sender {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sort results"
+    NSString *sortResults = CTLocalizedString(CTRentalSortTitle);
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:sortResults
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *lowestPrice = [UIAlertAction actionWithTitle:@"Lowest Price" style:UIAlertActionStyleDefault
+    NSString *sortPrice = CTLocalizedString(CTRentalSortPrice);
+    UIAlertAction *lowestPrice = [UIAlertAction actionWithTitle:sortPrice
+                                                          style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [self sortVehicles:YES];
                                                           }];
-    UIAlertAction *recommendedVehicles = [UIAlertAction actionWithTitle:@"Recommended Vehicles" style:UIAlertActionStyleDefault
+    
+    NSString *sortRecommended = CTLocalizedString(CTRentalSortRecommended);
+    UIAlertAction *recommendedVehicles = [UIAlertAction actionWithTitle:sortRecommended
+                                                                  style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [self sortVehicles:NO];
                                                           }];

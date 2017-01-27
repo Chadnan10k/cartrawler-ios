@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.nextButton setText:NSLocalizedString(@"Continue", @"")];
+    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
     self.titleLabel.text = CTLocalizedString(CTRentalTitleUser);
 
     self.firstNameTextField.delegate = self;

@@ -80,7 +80,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.continueButton setText:CTLocalizedString(@"Continue")];
+    [self.continueButton setText:CTLocalizedString(CTRentalCTAContinue)];
     
     _vehicleDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"VehicleDetails"];
     _supplierDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"SupplierDetails"];
