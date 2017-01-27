@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="271"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s9a-CW-Vhl" id="IHL-eK-8dY">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="270"/>
+                <rect key="frame" x="0.0" y="0.0" width="600" height="270.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHn-no-xJJ" customClass="CTDesignableView">
@@ -275,9 +275,11 @@
                 <outlet property="merchBannerView" destination="aHb-Ff-zoI" id="2B3-o2-B6D"/>
                 <outlet property="passengerQtyLabel" destination="CmS-84-x9T" id="Dct-R4-fAr"/>
                 <outlet property="pickupLabel" destination="OcP-n9-n3b" id="CkO-nA-Ukr"/>
+                <outlet property="providedByLabel" destination="m65-KB-Qyk" id="WgH-Sp-N5e"/>
                 <outlet property="specialOfferBannerView" destination="hBZ-Er-3Cy" id="CLN-cw-28v"/>
                 <outlet property="totalPriceBottomConstranit" destination="9bP-iW-kyj" id="8rh-Tx-Z6W"/>
                 <outlet property="totalPriceLabel" destination="9K3-lE-Cnc" id="v8o-pA-pfZ"/>
+                <outlet property="totalPriceTitleLabel" destination="kiN-DD-Onr" id="c7l-Qz-dGB"/>
                 <outlet property="transmissionLabel" destination="5Xb-bk-V9O" id="gRf-Tp-08L"/>
                 <outlet property="vehicleImageView" destination="5tE-lv-Bpe" id="CdA-cU-Jg6"/>
                 <outlet property="vehicleNameLabel" destination="B5l-YS-Cvn" id="bS6-Of-DyV"/>

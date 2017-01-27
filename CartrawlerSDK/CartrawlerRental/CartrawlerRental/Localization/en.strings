@@ -1,9 +1,125 @@
 
+// Page Title, every page
+
+"title_search_rental" = "Car rental *";
+
+"title_settings" = "Settings *";
+
+"title_results" = "Results *";
+
+"title_details" = "Car Details *";
+
+"title_details_vehicle" = "Details *";
+
+"title_details_supplier" = "Supplier *";
+
+"title_conditions" = "Terms and Conditions *";
+
+"title_extras_insurance" = "Extras and Insurance *";
+
+"title_extras" = "Extras *";
+
+"title_insurance" = "Insurance *";
+
+"title_summary" = "Payment Summary *";
+
+"title_user" = "Lead Driver Details *";
+
+"title_payment" = "Payment Details *";
+
+// CTA buttons, every page
+
+"CTA_add" = "Add a booking *";
+
+"CTA_search" = "Search for cars *";
+
+"CTA_close" = "Close *";
+
+"CTA_continue" = "Continue *";
+
+"CTA_with_insurance" = "Continue with insurance *";
+
+"CTA_no_insurance" = "Continue without insurance *";
+
+"CTA_to_homepage" = "Back to homepage *";
+
+"CTA_book" = "Book now for *";
+
+// Search and locations pages (0-search)
+
+"search_pickup_location_text" = "Pick-up location *";
+
+"search_return_location_text" = "Return location *";
+
+"search_return_location_button" = "Return to same location *";
+
+"search_driver_age" = "Driver aged between 25 and 70 *";
+
+"search_driver_age_hint" = "Driver age *";
+
+"search_select_dates_hint" = "Select dates *";
+
+"search_pickup_time_text" = "Pick-up time *";
+
+"search_return_time_text" = "Return time *";
+
+"search_locations_placeholder" = "Type in location *";
+
 // Booking Manager
-"BOOKING_NAVIGATION_BAR_TITLE" = "Car Hire";
 
-"BOOKING_TABLE_HEADER_TITLE" = "Upcoming Bookings";
+"booking_table_header_title" = "Upcoming Bookings *";
 
-"BOOKING_REFERENCE_PREFIX" = "Booking reference";
+"booking_reference_prefix" = "Booking reference *";
 
-"ADD_A_BOOKING_BUTTON" = "Add a Booking";
+// Settings page (1-settings)
+"settings_country_title" = "Country *";
+
+"settings_currency_title" = "Currency *";
+
+// Results page (2-results)
+"results_sort" = "Sort *";
+
+"results_filter" = "Filter *";
+
+// Vehicle block (2-results, 5-details)
+
+"vehicle_orsimilar" = "or similar *";
+
+"vehicle_passenger" = "Passenger *";
+
+"vehicle_passengers" = "Passengers *";
+
+"vehicle_bag" = "Bag *";
+
+"vehicle_bags" = "Bags *";
+
+"vehicle_door" = "Door *";
+
+"vehicle_doors" = "Doors *";
+
+"vehicle_duration_1" = "Price for *";
+
+"vehicle_duration_2" = "day *";
+
+"vehicle_duration_3" = "days *";
+
+"vehicle_total_price" = "Total price *";
+
+"vehicle_best_seller" = "Best seller *";
+
+"vehicle_great_value" = "Great value *";
+
+"vehicle_provided" = "Provided by *";
+
+// Sorting (3-sorting)
+"rental_sort_title" = "Sort results by *";
+
+"rental_sort_price" = "Price *";
+
+"rental_sort_rating" = "Rating *";
+
+"rental_sort_recommended" = "Recommended *";
+
+
+
+

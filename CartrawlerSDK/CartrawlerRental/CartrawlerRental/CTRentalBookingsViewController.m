@@ -39,8 +39,8 @@
     self.tableView.estimatedRowHeight = 120.0;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    [self.nextButton setText:CTLocalizedString(CTRentalBookingAddABookingButton)];
-    self.titleLabel.text = CTLocalizedString(CTRentalBookingNavigationBarTitle);
+    [self.nextButton setText:CTLocalizedString(CTRentalCTAAdd)];
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleSearchRental);
     self.tableHeaderLabel.text = CTLocalizedString(CTRentalBookingTableHeaderTitle);
 }
 

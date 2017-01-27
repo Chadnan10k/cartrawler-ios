@@ -208,7 +208,9 @@
                         <outlet property="backButton" destination="vrA-86-Eph" id="vMy-Ez-DZT"/>
                         <outlet property="carCountLabel" destination="Obb-FK-iCf" id="UxT-eU-A08"/>
                         <outlet property="datesLabel" destination="CdZ-Gx-aUS" id="GIQ-1n-ccz"/>
+                        <outlet property="filterButton" destination="K5p-Fg-bul" id="DJz-Rd-iEf"/>
                         <outlet property="locationsLabel" destination="xpG-V5-fPS" id="qY9-VD-AvE"/>
+                        <outlet property="sortButton" destination="LOM-WV-XPW" id="kr2-gX-kHa"/>
                         <outlet property="subheaderView" destination="GF2-Fa-L6p" id="H2H-f8-lxV"/>
                         <outlet property="vehicleSelectionView" destination="K77-Ev-AB4" id="jSr-v3-L97"/>
                     </connections>
@@ -335,6 +337,7 @@
                     <size key="freeformSize" width="375" height="700"/>
                     <connections>
                         <outlet property="scrollView" destination="BEh-7y-dW1" id="7vc-jy-ZqK"/>
+                        <outlet property="titleLabel" destination="eXq-E9-iXo" id="rMd-jD-C2f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2Z-lc-ZMV" userLabel="First Responder" sceneMemberID="firstResponder"/>

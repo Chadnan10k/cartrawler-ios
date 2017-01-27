@@ -152,6 +152,8 @@
 		BC1379EF1E23E8E700B1F727 /* CTErrorTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC1379F01E23E8E700B1F727 /* CTErrorTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1379EE1E23E8E700B1F727 /* CTErrorTag.m */; };
 		BC9F6E521E24EF91006DD990 /* CTAnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */; };
+		E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */; };
+		E7CD21A81E38F794006BE519 /* CTSDKLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -301,6 +303,8 @@
 		BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTErrorTag.h; sourceTree = "<group>"; };
 		BC1379EE1E23E8E700B1F727 /* CTErrorTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTErrorTag.m; sourceTree = "<group>"; };
 		BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsTests.m; sourceTree = "<group>"; };
+		E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTSDKLocalizationConstants.h; path = Localization/CTSDKLocalizationConstants.h; sourceTree = "<group>"; };
+		E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTSDKLocalizationConstants.m; path = Localization/CTSDKLocalizationConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +434,8 @@
 				455061891D59CD91004EAC43 /* CTLocalisedStrings.h */,
 				4550618A1D59CD91004EAC43 /* CTLocalisedStrings.m */,
 				4540550D1DDE0E3D00FD493A /* en.strings */,
+				E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */,
+				E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */,
 			);
 			name = Localization;
 			sourceTree = "<group>";
@@ -753,6 +759,7 @@
 				455B58541DCC914300CA4790 /* CTSegmentedControl.h in Headers */,
 				455B58561DCC914300CA4790 /* CTPickerView.h in Headers */,
 				455B58581DCC914300CA4790 /* CTTextView.h in Headers */,
+				E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */,
 				455B585A1DCC914300CA4790 /* CTPlaceholderView.h in Headers */,
 				455B585C1DCC914300CA4790 /* CTView.h in Headers */,
 				455B585E1DCC914300CA4790 /* CTDesignableView.h in Headers */,
@@ -945,6 +952,7 @@
 				455B58631DCC914300CA4790 /* CTAppearance.m in Sources */,
 				455B58651DCC914300CA4790 /* JVFloatLabeledTextField.m in Sources */,
 				455B58671DCC914300CA4790 /* NSStringUtils.m in Sources */,
+				E7CD21A81E38F794006BE519 /* CTSDKLocalizationConstants.m in Sources */,
 				BC1379EC1E23E4E400B1F727 /* CTTag.m in Sources */,
 				455B58691DCC914300CA4790 /* CTTextField.m in Sources */,
 				455B586B1DCC914300CA4790 /* CTCheckbox.m in Sources */,

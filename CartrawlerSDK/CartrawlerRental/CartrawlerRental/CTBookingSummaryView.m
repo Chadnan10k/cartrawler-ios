@@ -13,11 +13,14 @@
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTAppearance.h>
 #import "CTPaymentSummaryDataSource.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTBookingSummaryView ()
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) CTPaymentSummaryDataSource *dataSource;
+@property (weak, nonatomic) IBOutlet CTLabel *orSimilarLabel;
 
 @end
 
@@ -43,6 +46,8 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 130;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    self.orSimilarLabel.text = CTLocalizedString(CTRentalVehicleOrSimilar);
 
 }
 

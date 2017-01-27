@@ -59,7 +59,8 @@
                                                                                    NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].boldFontName size:17],
                                                                                    NSForegroundColorAttributeName : [CTAppearance instance].navigationBarColor
                                                                                    }];
-    NSAttributedString *orSimilar = [[NSAttributedString alloc] initWithString:@" or similar"
+    NSString *orSimilarString = [NSString stringWithFormat:@" %@", CTLocalizedString(CTRentalVehicleOrSimilar)];
+    NSAttributedString *orSimilar = [[NSAttributedString alloc] initWithString:orSimilarString
                                                                       attributes:@{
                                                                                    NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:17],
                                                                                    NSForegroundColorAttributeName : [CTAppearance instance].navigationBarColor

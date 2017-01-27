@@ -262,6 +262,7 @@
                         <outlet property="nextButton" destination="6bj-4R-93U" id="qTR-Tg-Gbd"/>
                         <outlet property="phoneTextField" destination="UdF-8I-zF5" id="nWe-P2-vVM"/>
                         <outlet property="scrollView" destination="QfB-rI-hRj" id="h9E-O3-ITI"/>
+                        <outlet property="titleLabel" destination="ITt-u9-Qov" id="Gii-mB-jHw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UBC-NU-Bcf" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -9,11 +9,16 @@
 #import "CTBookingSummaryViewController.h"
 #import "CTBookingSummaryView.h"
 #import <CartrawlerSDK/CTNextButton.h>
+#import <CartrawlerSDK/CTLabel.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import "CTRentalLocalizationConstants.h"
 
 @interface CTBookingSummaryViewController ()
 
 @property (weak, nonatomic) IBOutlet CTNextButton *continueButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerBottomSpace;
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 
 @end
 
@@ -22,7 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.continueButton setText:@"Continue"];
+    [self.continueButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleSummary);
 }
 
 - (void)viewDidAppear:(BOOL)animated

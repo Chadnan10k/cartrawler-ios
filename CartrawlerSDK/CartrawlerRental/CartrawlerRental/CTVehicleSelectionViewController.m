@@ -15,6 +15,9 @@
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import "CTSearchDetailsViewController.h"
 #import "CTInterstitialViewController.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTButton.h>
 
 @interface CTVehicleSelectionViewController () <UIScrollViewDelegate>
 
@@ -24,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet CTLabel *carCountLabel;
 @property (weak, nonatomic) IBOutlet UIView *subheaderView;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet CTButton *sortButton;
+@property (weak, nonatomic) IBOutlet CTButton *filterButton;
 
 @property (nonatomic, strong) CTFilterViewController *filterViewController;
 @property (nonatomic, strong) NSArray<CTAvailabilityItem *> *filteredData;
@@ -62,6 +67,10 @@
     [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
     
     self.subheaderView.backgroundColor = [CTAppearance instance].iconTint;
+    
+    
+    [self.sortButton setTitle:CTLocalizedString(CTRentalResultsSort) forState:UIControlStateNormal];
+    [self.filterButton setTitle:CTLocalizedString(CTRentalResultsFilter) forState:UIControlStateNormal];
     
 }
 
@@ -150,7 +159,7 @@
 - (void)updateAvailableCarsLabel:(NSInteger)availableCars
 {
     self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)availableCars
-                               ,NSLocalizedString(@"results", @"results")];
+                               ,CTLocalizedString(CTRentalTitleResults)];
 }
 
 - (IBAction)backTapped:(id)sender {
@@ -185,15 +194,21 @@
 }
     
 - (IBAction)sortTapped:(id)sender {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sort results"
+    NSString *sortResults = CTLocalizedString(CTRentalSortTitle);
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:sortResults
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *lowestPrice = [UIAlertAction actionWithTitle:@"Lowest Price" style:UIAlertActionStyleDefault
+    NSString *sortPrice = CTLocalizedString(CTRentalSortPrice);
+    UIAlertAction *lowestPrice = [UIAlertAction actionWithTitle:sortPrice
+                                                          style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [self sortVehicles:YES];
                                                           }];
-    UIAlertAction *recommendedVehicles = [UIAlertAction actionWithTitle:@"Recommended Vehicles" style:UIAlertActionStyleDefault
+    
+    NSString *sortRecommended = CTLocalizedString(CTRentalSortRecommended);
+    UIAlertAction *recommendedVehicles = [UIAlertAction actionWithTitle:sortRecommended
+                                                                  style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [self sortVehicles:NO];
                                                           }];

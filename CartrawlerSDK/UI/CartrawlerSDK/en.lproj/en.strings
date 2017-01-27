@@ -1,4 +1,200 @@
 
+// Not used from spreadsheet
+"title_search_ground" = "Find ground transport *";
+"title_locations" = "Locations *";
+"title_calendar" = "Datepicker *";
+"CTA_save" = "Save settings *";
+"search_pickup_location_hint" = "Enter airport, city or station name *";
+"search_return_location_hint" = "Enter airport, city or station name *";
+"search_select_dates" = "Dates *";
+
+
+
+
+
+
+
+
+
+
+
+// Filter titles (4-filters)
+"filter_package" = "Package *";
+"filter_carsize" = "Car Size *";
+"filter_pickup" = "Pick-up Location *";
+"filter_supplier" = "Supplier *";
+"filter_rating" = "Rating *";
+"filter_fuel" = "Fuel Policy *";
+"filter_carfuel" = "Fuel Type *";
+"filter_carspec" = "Car Specifications *";
+"filter_transmission" = "Transmission *";
+"filter_specialoffers" = "Special Offer *";
+"filter_transfertype" = "Transfer Type *";
+"filter_transfertime" = "Journey Time *";
+
+// Vehicle types (4-filters)
+"vehicle_type_mini" = "Mini *";
+"vehicle_type_economy" = "Economy *";
+"vehicle_type_compact" = "Compact *";
+"vehicle_type_intermediate" = "Intermediate *";
+"vehicle_type_standard" = "Standard *";
+"vehicle_type_fullsize" = "Full-Size *";
+"vehicle_type_luxury" = "Luxury *";
+"vehicle_type_premium" = "Premium *";
+"vehicle_type_minivan" = "Minivan *";
+"vehicle_type_cargovan" = "Cargovan *";
+"vehicle_type_convertible" = "Convertible *";
+"vehicle_type_estate" = "Estate *";
+"vehicle_type_five_seatcarrier" = "5-Seat Minivan *";
+"vehicle_type_seven_seatcarrier" = "7-Seat Minivan *";
+"vehicle_type_nine_seatcarrier" = "9-Seat Minivan *";
+"vehicle_type_suv" = "SUV *";
+"vehicle_type_scooter" = "Scooter *";
+
+// Fuel type (4-filters)
+"vehicle_fuel_petrol" = "Petrol *";
+"vehicle_fuel_diesel" = "Diesel *";
+
+// Transmission (5-details)
+"vehicle_transmission_auto" = "Automatic *";
+"vehicle_transmission_manual" = "Manual *";
+
+// Fuel policy (6-vehicle)
+"vehicle_fuel_policy" = "Fuel policy *";
+"vehicle_fuel_policy_type_ELECTRICVEHICLE" = "Fully Charged *";
+"vehicle_fuel_policy_type_FULLFULL" = "Full to Full *";
+"vehicle_fuel_policy_type_EMPTYEMPTY" = "Empty to empty *";
+"vehicle_fuel_policy_type_FULLEMPTY" = "Pre-Purchase *";
+"vehicle_fuel_policy_type_HALFEMPTY" = "Half to empty *";
+"vehicle_fuel_policy_type_QUARTEREMPTY" = "Pick up quarter full and return empty *";
+"vehicle_fuel_policy_type_HALFHALF" = "Half to Half *";
+"vehicle_fuel_policy_type_QUARTERQUARTER" = "Quarter to Quarter *";
+"vehicle_fuel_policy_type_UNKNOWN" = "Unknown *";
+"vehicle_fuel_policy_type_FULLEMPTYREFUND" = "Pre-Purchase (partial refund) *";
+"vehicle_fuel_policy_type_FULLFULLHYBRID" = "Fuel: Choose at desk *";
+"vehicle_fuel_policy_type_CHAUFFULFUL" = "Fuel charges: Not included *";
+"vehicle_fuel_policy_type_CHAUFFUELINC" = "Fuel charges: Included *";
+"vehicle_fuel_policy_desc_ELECTRICVEHICLE" = "Your electric car comes with a fully charged battery, which gets you up to 150km of driving. You do not need to return the car fully charged - just make sure you have enough charge to return it! *";
+"vehicle_fuel_policy_desc_FULLFULL" = "This is the best fuel option. Your car comes with a full tank of fuel. Simply return the car with a full tank to avoid any re-fuelling charges. *";
+"vehicle_fuel_policy_desc_EMPTYEMPTY" = "Your car comes with sufficient fuel to get you to the closest petrol station. The car should be returned with an empty tank, as no refund will be given for any unused fuel. *";
+"vehicle_fuel_policy_desc_FULLEMPTY" = "Your car comes with a full tank of fuel but you will be charged for this at the service desk. The car should be returned with an empty tank, as no refund will be given for any unused fuel. *";
+"vehicle_fuel_policy_desc_HALFEMPTY" = "Your car is provided with a half tank of fuel. You will be charged for this fuel at the service desk. You can use as much of this fuel as you like and do not need to re-fill before returning the car. *";
+"vehicle_fuel_policy_desc_QUARTEREMPTY" = "Your car is provided with a quarter tank of fuel. You will be charged for this fuel at the service desk. You can use as much of this fuel as you like and do not need to re-fill before returning the car. *";
+"vehicle_fuel_policy_desc_HALFHALF" = "Your car comes with a half tank of fuel. Return the car with a half tank to avoid any refuelling charges. If you return the car with more fuel, you will not receive any additional refund. *";
+"vehicle_fuel_policy_desc_QUARTERQUARTER" = "Your car comes with a quarter tank of fuel. Return the car with a quarter tank to avoid any refuelling charges. If you return the car with more fuel, you will not receive any additional refund. *";
+"vehicle_fuel_policy_desc_UNKNOWN" = "See Terms and Conditions *";
+"vehicle_fuel_policy_desc_FULLEMPTYREFUND" = "Your car comes with a full tank of fuel. You will be charged for this at the service desk and you will incur a non-refundable administration fee. You will be refunded for any unused fuel once you return the car. *";
+"vehicle_fuel_policy_desc_FULLFULLHYBRID" = "Your car is supplied with a full tank of fuel. You can choose to pay for the fuel in advance at the service desk (Pre-Purchase) or to re-fill the tank before returning the car (Full to Full). Either way, be sure to let the car hire supplier know which fuel policy you would like. *";
+"vehicle_fuel_policy_desc_CHAUFFULFUL" = "Fuel charges are not included in the rate. You pay for re-filling the tank to full before your chauffeur drops you off. *";
+"vehicle_fuel_policy_desc_CHAUFFUELINC" = "All fuel charges are included.  You will not need to pay for any extra re-fuelling. *";
+
+// Pickup type (6-vehicle)
+"vehicle_pickup_type" = "Pickup Type *";
+"vehicle_pickup_location_VWF_1.VWF.X" = "In Terminal *";
+"vehicle_pickup_location_VWF_2.VWF.X" = "On Airport *";
+"vehicle_pickup_location_VWF_3.VWF.X" = "Airport terminal *";
+"vehicle_pickup_location_VWF_4.VWF.X" = "Railway Station *";
+"vehicle_pickup_location_VWF_5.VWF.X" = "Hotel delivery *";
+"vehicle_pickup_location_VWF_6.VWF.X" = "Car Dealer *";
+"vehicle_pickup_location_VWF_7.VWF.X" = "City Center/Downtown *";
+"vehicle_pickup_location_VWF_8.VWF.X" = "East Of City Center *";
+"vehicle_pickup_location_VWF_9.VWF.X" = "South Of City Center *";
+"vehicle_pickup_location_VWF_10.VWF.X" = "West Of City Center *";
+"vehicle_pickup_location_VWF_11.VWF.X" = "North Of City Center *";
+"vehicle_pickup_location_VWF_12.VWF.X" = "Port/Ferry *";
+"vehicle_pickup_location_VWF_13.VWF.X" = "Near Resort *";
+"vehicle_pickup_details_VWF_1.VWF.X" = "This is the most convenient pick-up option. The service desk is located within the airport terminal. *";
+"vehicle_pickup_details_VWF_2.VWF.X" = "The service desk is conveniently located within the grounds of the airport area. *";
+"vehicle_pickup_details_VWF_5.VWF.X" = "Your car will be available to pick-up from the front desk of your hotel. *";
+
+// "Included for free" section (6-vehicle)
+"included_title" = "Included for Free: *";
+"included_cancel" = "Cancellation *";
+"included_amend" = "Amendments *";
+"included_thirdparty" = "Third Party Liability *";
+"included_theft" = "Theft Protection *";
+"included_collision" = "Collision Damage Waiver *";
+"included_terms" = "Terms and Conditions *";
+
+// Supplier page (7-supplier)
+"supplier_reviews" = "reviews *";
+"supplier_car" = "Cleanliness of the car *";
+"supplier_desk" = "Service at the supplier desk *";
+"supplier_pickup" = "Car rental pick-up process *";
+"supplier_dropoff" = "Car rental drop-off process *";
+"supplier_price" = "Overall value for the money *";
+"supplier_waiting" = "Waiting time *";
+
+// Extras section (8-extras)
+"extras_equipment_aircon" = "Air Conditioning *";
+"extras_equipment_gps" = "GPS *";
+"extras_back" = "extras_back *";
+"extras_conditions" = "Please note that extras are paid at the car rental desk. We try to ensure customers get all extras however availability is not always guaranteed. *";
+
+// Insurance section (9-insurance)
+"insurance_summary_replace_src" = "tick the box below *";
+"insurance_summary_replace_val" = "choose to continue with insurance *";
+"insurance_summary_title" = "Reasons to get full cover *";
+"insurance_list_1" = "Great value - Eliminate potential liability of up to €3,000 for just €160 *";
+"insurance_list_2" = "Best protection - In the event of damage or theft to the car and you are required to pay the excess, it will be fully refunded *";
+"insurance_list_3" = "Peace of mind- You are fully covered for your excess when things go wrong *";
+"insurance_conditions_1" = "Please see the  *";
+"insurance_conditions_2" = "Terms and Conditions for full details. *";
+"insurance_provider" = "Provided by global insurance and asset management leader Axa *";
+"insurance_policy" = "This policy is underwritten by INTER PARTNER ASSISTANCE SA, member of the AXA Assistance Group, Avenue Louise 166, 1050 Brussels, Belgium. *";
+
+// User page (10-driver, 11-driver)
+"user_name_hint" = "Name *";
+"user_surname_hint" = "Surname *";
+"user_email_hint" = "Email *";
+"user_email2_hint" = "Confirm Email *";
+"user_phone_hint" = "Phone *";
+"user_address_hint" = "Address *";
+"user_city_hint" = "City *";
+"user_postcode_hint" = "Postcode *";
+"user_flight_hint" = "Flight Number (important) *";
+
+// Payment breakdown section (12-summary)
+"summary_desk" = "Pay at desk *";
+"summary_now" = "Pay now *";
+"summary_rental" = "Car Hire *";
+"summary_ground" = "Travel *";
+"summary_total" = "Total *";
+
+// Payment page (13-payment)
+"payment_text_1" = "Tap \"Book now\" to complete your booking and accept out *";
+"payment_text_2" = "Terms and Conditions *";
+
+// Receipt page (14-receipt, 15-receipt)
+"receipt_your_reference" = "Your booking reference: *";
+"receipt_email_text_1" = "We have sent a confirmation email to *";
+"receipt_email_text_2" = "This may take up to 15 minutes to arrive. Please review your voucher before picking up your car. *";
+"receipt_scroll" = "Scroll for summary *";
+"receipt_summary_pickup" = "Pickup *";
+"receipt_summary_dropoff" = "Dropoff *";
+"receipt_summary_driver" = "Lead driver details *";
+"receipt_summary_car" = "Car summary *";
+
+// Widget (16-widget)
+"widget_label" = "NEW *";
+"widget_title" = "Add car rental *";
+"widget_text" = "The quickest and easiest way to book car hire *";
+"widget_title_added" = "Car added *";
+
+// Validation and errors
+"general_form_empty" = "Please fill in this field *";
+"results_empty" = "No results *";
+"error_widget_no_cars" = "Could not find vehicles for this location *";
+"error_payment_general" = "Error occurred during payment *";
+"error_requestor_missing" = "No requestor ID was provided *";
+
+// Calendar Criteria
+
+"calendar_select_date" = "Select date *";
+
+"calendar_select_dates" = "Select your dates *";
+
+
 //PICKUP TYPES
 "PICKUP_FREE_SHUTTLE_BUS" = "A free shuttle bus will bring you from the airport terminal to the service desk.";
 

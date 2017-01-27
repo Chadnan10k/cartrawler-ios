@@ -12,6 +12,8 @@
 #import <CartrawlerSDK/CTFlightNumberValidation.h>
 #import <CartrawlerSDK/CTNextButton.h>
 #import <CartrawlerSDK/CartrawlerSDK+UITextField.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTDriverDetailsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet CTTextField *firstNameTextField;
@@ -21,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet CTTextField *flightNoTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 
 @property (strong, nonatomic) UIView *selectedView;
 
@@ -31,7 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.nextButton setText:NSLocalizedString(@"Continue", @"")];
+    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleUser);
 
     self.firstNameTextField.delegate = self;
     self.lastNameTextField.delegate = self;

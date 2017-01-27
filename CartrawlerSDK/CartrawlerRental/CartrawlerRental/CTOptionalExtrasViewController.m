@@ -9,6 +9,8 @@
 #import "CTOptionalExtrasViewController.h"
 #import "CTOptionalExtraTableViewCell.h"
 #import <CartrawlerSDK/CTNextButton.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTOptionalExtrasViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -22,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.nextButton setText:NSLocalizedString(@"Continue", @"")];
+    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
     // Do any additional setup after loading the view.
     self.tableView.allowsSelection = NO;
     self.tableView.rowHeight = UITableViewAutomaticDimension;

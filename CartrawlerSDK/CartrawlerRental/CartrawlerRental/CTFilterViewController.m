@@ -14,10 +14,14 @@
 #import "CTFilterContainer.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import "CTRentalConstants.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTFilterViewController ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 
 @property (strong, nonatomic) CTFilterTableView *carSizeTableView;
 @property (strong, nonatomic) CTFilterTableView *pickupLocationTableView;
@@ -46,6 +50,8 @@
     _carSpecsTableView = [[CTFilterTableView alloc] initWithFrame:CGRectZero];
     
     [self.filterFactory setDataSources];
+    
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleFilters);
     
     self.carSizeTableView.dataSource    = self.filterFactory.carSizeDataSource;
     self.carSizeTableView.delegate      = self.filterFactory.carSizeDataSource;

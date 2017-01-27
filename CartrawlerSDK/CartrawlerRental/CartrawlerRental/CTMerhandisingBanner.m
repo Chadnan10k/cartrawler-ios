@@ -9,6 +9,8 @@
 #import "CTMerhandisingBanner.h"
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTAppearance.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTMerhandisingBanner()
 
@@ -64,14 +66,14 @@
 {
     switch (bannerType) {
         case CTMerhandisingBannerTypeBestSeller:
-            self.textLabel.text = @"Best Seller";
+            self.textLabel.text = CTLocalizedString(CTRentalVehicleBestSeller);
             self.backgroundColor = [CTAppearance instance].merchandisingBestSeller;
             self.textLabel.textColor = [UIColor whiteColor];
             self.hidden = NO;
             break;
             
         case CTMerhandisingBannerTypeGreatValue:
-            self.textLabel.text = @"Great Value";
+            self.textLabel.text = CTLocalizedString(CTRentalVehicleGreatValue);
             self.backgroundColor = [CTAppearance instance].merchandisingGreatValue;
             self.textLabel.textColor = [UIColor whiteColor];
             self.hidden = NO;

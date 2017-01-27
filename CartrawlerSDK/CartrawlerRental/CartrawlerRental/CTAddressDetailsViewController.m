@@ -16,6 +16,8 @@
 #import "CTRentalConstants.h"
 #import "CTSearchDetailsViewController.h"
 #import "CTVehicleSelectionViewController.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTAddressDetailsViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
@@ -38,7 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.nextButton setText:NSLocalizedString(@"Continue", @"Continue")];
+    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
     self.addressLine1TextField.delegate = self;
     self.addressLine2TextField.delegate = self;
     self.cityTextField.delegate = self;

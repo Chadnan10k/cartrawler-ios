@@ -14,6 +14,8 @@
 #import <CartrawlerSDK/CTButton.h>
 #import <CartrawlerSDK/CTNextButton.h>
 #import "CTOptionalExtrasViewController.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTVehicleDetailsPageViewController () <UIPageViewControllerDataSource>
 
@@ -24,6 +26,7 @@
 @property (nonatomic, strong) CTViewController *supplierDetails;
 @property (weak, nonatomic) IBOutlet UICollectionView *selectionCollectionView;
 @property (weak, nonatomic) IBOutlet CTView *headerView;
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet CTSegmentedControl *selectionControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 @property (weak, nonatomic) IBOutlet CTNextButton *continueButton;
@@ -57,9 +60,9 @@
     self.supplierDetails.cartrawlerAPI = self.cartrawlerAPI;
     
     [self.selectionControl removeAllSegments];
-    [self.selectionControl insertSegmentWithTitle:@"Car info" atIndex:0 animated:NO];
+    [self.selectionControl insertSegmentWithTitle:CTLocalizedString(CTRentalTitleDetailsVehicle) atIndex:0 animated:NO];
     [self.selectionControl setSelectedSegmentIndex:0];
-    [self.selectionControl insertSegmentWithTitle:@"Supplier info" atIndex:1 animated:NO];
+    [self.selectionControl insertSegmentWithTitle:CTLocalizedString(CTRentalTitleDetailsSupplier) atIndex:1 animated:NO];
     _viewArray = @[self.vehicleDetails, self.supplierDetails];
 
     [self.pageViewController setViewControllers:@[self.vehicleDetails]
@@ -77,7 +80,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.continueButton setText:NSLocalizedString(@"Continue", @"Continue")];
+    [self.continueButton setText:CTLocalizedString(CTRentalCTAContinue)];
     
     _vehicleDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"VehicleDetails"];
     _supplierDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"SupplierDetails"];
@@ -90,6 +93,8 @@
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
+    
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleDetails);
     
     [self.view bringSubviewToFront:self.headerView];
     [self.view bringSubviewToFront:self.continueButton];

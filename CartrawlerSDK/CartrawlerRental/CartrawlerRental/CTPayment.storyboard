@@ -407,6 +407,7 @@
                         <outlet property="backButton" destination="med-a6-6uJ" id="3JN-fb-gDg"/>
                         <outlet property="confirmButton" destination="iE3-lT-4WK" id="GY3-zr-5v8"/>
                         <outlet property="termsLabel" destination="hWi-uf-kjB" id="nh8-O2-WN6"/>
+                        <outlet property="titleLabel" destination="DZY-vA-PvS" id="TWU-B3-Wrz"/>
                         <outlet property="webViewContainer" destination="c54-jM-Sxn" id="5T8-an-LuL"/>
                     </connections>
                 </viewController>
