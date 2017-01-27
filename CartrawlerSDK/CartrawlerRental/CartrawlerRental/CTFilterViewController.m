@@ -64,11 +64,11 @@
     self.transmissionTableView.dataSource = self.filterFactory.transmissionDataSource;
     self.transmissionTableView.delegate   = self.filterFactory.transmissionDataSource;
     
-    self.carSizeTableView.tableViewTitle        = NSLocalizedString(@"Vehicle Size", @"Vehicle Size");
-    self.pickupLocationTableView.tableViewTitle = NSLocalizedString(@"Pick-up desk location", @"Pickup");
-    self.vendorsTableView.tableViewTitle        = NSLocalizedString(@"Car rental companies", @"Vendors");
-    self.fuelPolicyTableView.tableViewTitle     = NSLocalizedString(@"Fuel policy", @"Fuel policy");
-    self.transmissionTableView.tableViewTitle   = NSLocalizedString(@"Transmission", @"Transmission");
+    self.carSizeTableView.tableViewTitle        = CTLocalizedString(CTRentalFilterCarsize);
+    self.pickupLocationTableView.tableViewTitle = CTLocalizedString(CTRentalFilterPickup);
+    self.vendorsTableView.tableViewTitle        = CTLocalizedString(CTRentalFilterSupplier);
+    self.fuelPolicyTableView.tableViewTitle     = CTLocalizedString(CTRentalFilterCarFuel);
+    self.transmissionTableView.tableViewTitle   = CTLocalizedString(CTRentalFilterTransmission);
 
     [self setupContainers];
     

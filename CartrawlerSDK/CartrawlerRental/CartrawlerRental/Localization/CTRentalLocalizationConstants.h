@@ -122,4 +122,84 @@ extern NSString * const CTRentalSortRating;
 
 extern NSString * const CTRentalSortRecommended;
 
+extern NSString * const CTRentalFilterPackage;
+
+extern NSString * const CTRentalFilterCarsize;
+
+extern NSString * const CTRentalFilterPickup;
+
+extern NSString * const CTRentalFilterSupplier;
+
+extern NSString * const CTRentalFilterRating;
+
+extern NSString * const CTRentalFilterFuel;
+
+extern NSString * const CTRentalFilterCarFuel;
+
+extern NSString * const CTRentalFilterCarspec;
+
+extern NSString * const CTRentalFilterTransmission;
+
+extern NSString * const CTRentalFilterSpecialOffers;
+
+extern NSString * const CTRentalFilterTransferType;
+
+extern NSString * const CTRentalFilterTransferTime;
+
+extern NSString * const CTRentalIncludedTitle;
+
+extern NSString * const CTRentalIncludedCancel;
+
+extern NSString * const CTRentalIncludedAmend;
+
+extern NSString * const CTRentalIncludedThirdParty;
+
+extern NSString * const CTRentalIncludedTheft;
+
+extern NSString * const CTRentalIncludedCollision;
+
+extern NSString * const CTRentalIncludedTerms;
+
+extern NSString * const CTRentalSupplierReviews;
+
+extern NSString * const CTRentalSupplierCar;
+
+extern NSString * const CTRentalSupplierDesk;
+
+extern NSString * const CTRentalSupplierPickup;
+
+extern NSString * const CTRentalSupplierDropoff;
+
+extern NSString * const CTRentalSupplierPrice;
+
+extern NSString * const CTRentalSupplierWaiting;
+
+extern NSString * const CTRentalExtrasConditions;
+
+extern NSString * const CTRentalInsuranceSummaryTitle;
+
+extern NSString * const CTRentalUserNameHint;
+
+extern NSString * const CTRentalUserFirstnameHint;
+
+extern NSString * const CTRentalUserSurnameHint;
+
+extern NSString * const CTRentalUserEmailHint;
+
+extern NSString * const CTRentalUserEmail2Hint;
+
+extern NSString * const CTRentalUserPhoneHint ;
+
+extern NSString * const CTRentalUserAddressLine1Hint;
+
+extern NSString * const CTRentalUserAddressLine2Hint;
+
+extern NSString * const CTRentalUserCityHint;
+
+extern NSString * const CTRentalUserPostcodeHint;
+
+extern NSString * const CTRentalUserFlightHint;
+
+extern NSString * const CTRentalUserCountryHint;
+
 @end

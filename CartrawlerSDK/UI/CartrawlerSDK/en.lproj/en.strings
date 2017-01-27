@@ -7,30 +7,23 @@
 "search_pickup_location_hint" = "Enter airport, city or station name *";
 "search_return_location_hint" = "Enter airport, city or station name *";
 "search_select_dates" = "Dates *";
+"vehicle_fuel_petrol" = "Petrol *";
+"vehicle_fuel_diesel" = "Diesel *";
+"vehicle_transmission_auto" = "Automatic *";
+"vehicle_transmission_manual" = "Manual *";
+"extras_equipment_aircon" = "Air Conditioning *";
+"extras_equipment_gps" = "GPS *";
+"extras_back" = "extras_back *";
+"insurance_summary_replace_src" = "tick the box below *";
+"insurance_summary_replace_val" = "choose to continue with insurance *";
+"insurance_list_1" = "Great value - Eliminate potential liability of up to €3,000 for just €160 *";
+"insurance_list_2" = "Best protection - In the event of damage or theft to the car and you are required to pay the excess, it will be fully refunded *";
+"insurance_list_3" = "Peace of mind- You are fully covered for your excess when things go wrong *";
+"insurance_conditions_1" = "Please see the  *";
+"insurance_conditions_2" = "Terms and Conditions for full details. *";
+"insurance_provider" = "Provided by global insurance and asset management leader Axa *";
+"insurance_policy" = "This policy is underwritten by INTER PARTNER ASSISTANCE SA, member of the AXA Assistance Group, Avenue Louise 166, 1050 Brussels, Belgium. *";
 
-
-
-
-
-
-
-
-
-
-
-// Filter titles (4-filters)
-"filter_package" = "Package *";
-"filter_carsize" = "Car Size *";
-"filter_pickup" = "Pick-up Location *";
-"filter_supplier" = "Supplier *";
-"filter_rating" = "Rating *";
-"filter_fuel" = "Fuel Policy *";
-"filter_carfuel" = "Fuel Type *";
-"filter_carspec" = "Car Specifications *";
-"filter_transmission" = "Transmission *";
-"filter_specialoffers" = "Special Offer *";
-"filter_transfertype" = "Transfer Type *";
-"filter_transfertime" = "Journey Time *";
 
 // Vehicle types (4-filters)
 "vehicle_type_mini" = "Mini *";
@@ -50,14 +43,40 @@
 "vehicle_type_nine_seatcarrier" = "9-Seat Minivan *";
 "vehicle_type_suv" = "SUV *";
 "vehicle_type_scooter" = "Scooter *";
-
-// Fuel type (4-filters)
-"vehicle_fuel_petrol" = "Petrol *";
-"vehicle_fuel_diesel" = "Diesel *";
-
-// Transmission (5-details)
-"vehicle_transmission_auto" = "Automatic *";
-"vehicle_transmission_manual" = "Manual *";
+"vehicle_type_subcompact" = "Subcompact *";
+"vehicle_type_midsize" = "Midsize *";
+"vehicle_type_twelve_passenger_van" = "12 Passenger Van *";
+"vehicle_type_moving_van" = "Moving Van *";
+"vehicle_type_fifteen_passenger_van" = "15 Passenger Van *";
+"vehicle_type_cargo_van" = "Cargo Van *";
+"vehicle_type_twelve_foot_truck" = "12 Foot Truck *";
+"vehicle_type_twenty_foot_truck" = "20 Foot Truck *";
+"vehicle_type_twenty_four_foot_truck" = "24 Foot Truck *";
+"vehicle_type_twenty_six_foot_truck" = "26 Foot Truck *";
+"vehicle_type_moped" = "Moped *";
+"vehicle_type_stretch" = "Stretch *";
+"vehicle_type_regular" = "Regular *";
+"vehicle_type_unique" = "Unique *";
+"vehicle_type_exotic" = "Exotic *";
+"vehicle_type_small_medium_truck" = "Small/Medium Truck *";
+"vehicle_type_large_truck" = "Large Truck *";
+"vehicle_type_small_SUV" = "Small SUV *";
+"vehicle_type_medium_SUV" = "Medium SUV *";
+"vehicle_type_large_SUV" = "Large SUV *";
+"vehicle_type_exotic_SUV" = "Exotic SUV *";
+"vehicle_type_four_wheel_drive" = "Four Wheel Drive *";
+"vehicle_type_special" = "Special *";
+"vehicle_type_mini_elite" = "Mini Elite *";
+"vehicle_type_economy_elite" = "Economy Elite *";
+"vehicle_type_compact_elite" = "Compact Elite *";
+"vehicle_type_intermediate_elite" = "Intermediate Elite *";
+"vehicle_type_standard_elite" = "Standard Elite *";
+"vehicle_type_fullsize_elite" = "Fullsize Elite *";
+"vehicle_type_premium_elite" = "Premium Elite *";
+"vehicle_type_luxury_elite" = "Luxury Elite *";
+"vehicle_type_oversize" = "Oversize *";
+"vehicle_type_unknown" = "Unknown *";
+"vehicle_type_estate" = "Estate *";
 
 // Fuel policy (6-vehicle)
 "vehicle_fuel_policy" = "Fuel policy *";
@@ -107,52 +126,15 @@
 "vehicle_pickup_details_VWF_2.VWF.X" = "The service desk is conveniently located within the grounds of the airport area. *";
 "vehicle_pickup_details_VWF_5.VWF.X" = "Your car will be available to pick-up from the front desk of your hotel. *";
 
-// "Included for free" section (6-vehicle)
-"included_title" = "Included for Free: *";
-"included_cancel" = "Cancellation *";
-"included_amend" = "Amendments *";
-"included_thirdparty" = "Third Party Liability *";
-"included_theft" = "Theft Protection *";
-"included_collision" = "Collision Damage Waiver *";
-"included_terms" = "Terms and Conditions *";
 
-// Supplier page (7-supplier)
-"supplier_reviews" = "reviews *";
-"supplier_car" = "Cleanliness of the car *";
-"supplier_desk" = "Service at the supplier desk *";
-"supplier_pickup" = "Car rental pick-up process *";
-"supplier_dropoff" = "Car rental drop-off process *";
-"supplier_price" = "Overall value for the money *";
-"supplier_waiting" = "Waiting time *";
 
-// Extras section (8-extras)
-"extras_equipment_aircon" = "Air Conditioning *";
-"extras_equipment_gps" = "GPS *";
-"extras_back" = "extras_back *";
-"extras_conditions" = "Please note that extras are paid at the car rental desk. We try to ensure customers get all extras however availability is not always guaranteed. *";
 
-// Insurance section (9-insurance)
-"insurance_summary_replace_src" = "tick the box below *";
-"insurance_summary_replace_val" = "choose to continue with insurance *";
-"insurance_summary_title" = "Reasons to get full cover *";
-"insurance_list_1" = "Great value - Eliminate potential liability of up to €3,000 for just €160 *";
-"insurance_list_2" = "Best protection - In the event of damage or theft to the car and you are required to pay the excess, it will be fully refunded *";
-"insurance_list_3" = "Peace of mind- You are fully covered for your excess when things go wrong *";
-"insurance_conditions_1" = "Please see the  *";
-"insurance_conditions_2" = "Terms and Conditions for full details. *";
-"insurance_provider" = "Provided by global insurance and asset management leader Axa *";
-"insurance_policy" = "This policy is underwritten by INTER PARTNER ASSISTANCE SA, member of the AXA Assistance Group, Avenue Louise 166, 1050 Brussels, Belgium. *";
 
-// User page (10-driver, 11-driver)
-"user_name_hint" = "Name *";
-"user_surname_hint" = "Surname *";
-"user_email_hint" = "Email *";
-"user_email2_hint" = "Confirm Email *";
-"user_phone_hint" = "Phone *";
-"user_address_hint" = "Address *";
-"user_city_hint" = "City *";
-"user_postcode_hint" = "Postcode *";
-"user_flight_hint" = "Flight Number (important) *";
+
+
+
+
+
 
 // Payment breakdown section (12-summary)
 "summary_desk" = "Pay at desk *";

@@ -382,7 +382,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="syv-9W-YKF" id="pp4-98-2cD">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="71.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -408,6 +408,7 @@
                     </view>
                     <connections>
                         <outlet property="bottomSpace" destination="6vq-WF-yfc" id="2Da-RQ-Z35"/>
+                        <outlet property="conditionsLabel" destination="kPo-HB-cF1" id="zRk-TL-fw5"/>
                         <outlet property="nextButton" destination="5WB-Xy-epn" id="DEC-G1-TE2"/>
                         <outlet property="tableView" destination="FUK-4R-Jb5" id="z67-Y4-fPq"/>
                     </connections>

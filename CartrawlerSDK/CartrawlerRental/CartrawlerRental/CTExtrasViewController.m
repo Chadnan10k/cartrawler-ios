@@ -191,7 +191,7 @@
             listContainerTitle.textAlignment = NSTextAlignmentCenter;
             listContainerTitle.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:21];
             listContainerTitle.translatesAutoresizingMaskIntoConstraints = NO;
-            listContainerTitle.text = NSLocalizedString(@"Reasons to get full cover", @"");
+            listContainerTitle.text = CTLocalizedString(CTRentalInsuranceSummaryTitle);
             [listContainer addSubview:listContainerTitle];
         
             

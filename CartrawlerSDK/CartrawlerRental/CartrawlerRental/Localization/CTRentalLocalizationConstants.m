@@ -120,6 +120,88 @@ NSString * const CTRentalSortRating = @"rental_sort_rating";
 
 NSString * const CTRentalSortRecommended = @"rental_sort_recommended";
 
+NSString * const CTRentalFilterPackage = @"filter_package";
+
+NSString * const CTRentalFilterCarsize = @"filter_carsize";
+
+NSString * const CTRentalFilterPickup = @"filter_pickup";
+
+NSString * const CTRentalFilterSupplier = @"filter_supplier";
+
+NSString * const CTRentalFilterRating = @"filter_rating";
+
+NSString * const CTRentalFilterFuel = @"filter_fuel";
+
+NSString * const CTRentalFilterCarFuel = @"filter_carfuel";
+
+NSString * const CTRentalFilterCarspec = @"filter_carspec";
+
+NSString * const CTRentalFilterTransmission = @"filter_transmission";
+
+NSString * const CTRentalFilterSpecialOffers = @"filter_specialoffers";
+
+NSString * const CTRentalFilterTransferType = @"filter_transfertype";
+
+NSString * const CTRentalFilterTransferTime = @"filter_transfertime";
+
+NSString * const CTRentalIncludedTitle = @"included_title";
+
+NSString * const CTRentalIncludedCancel = @"included_cancel";
+
+NSString * const CTRentalIncludedAmend = @"included_amend";
+
+NSString * const CTRentalIncludedThirdParty = @"included_thirdparty";
+
+NSString * const CTRentalIncludedTheft = @"included_theft";
+
+NSString * const CTRentalIncludedCollision = @"included_collision";
+
+NSString * const CTRentalIncludedTerms = @"included_terms";
+
+NSString * const CTRentalSupplierReviews = @"supplier_reviews";
+
+NSString * const CTRentalSupplierCar = @"supplier_car";
+
+NSString * const CTRentalSupplierDesk = @"supplier_desk";
+
+NSString * const CTRentalSupplierPickup = @"supplier_pickup";
+
+NSString * const CTRentalSupplierDropoff = @"supplier_dropoff";
+
+NSString * const CTRentalSupplierPrice = @"supplier_price";
+
+NSString * const CTRentalSupplierWaiting = @"supplier_waiting";
+
+NSString * const CTRentalExtrasConditions = @"extras_conditions";
+
+NSString * const CTRentalInsuranceSummaryTitle = @"insurance_summary_title";
+
+NSString * const CTRentalUserNameHint = @"user_name_hint";
+
+NSString * const CTRentalUserFirstnameHint = @"user_firstname_hint";
+
+NSString * const CTRentalUserSurnameHint = @"user_surname_hint";
+
+NSString * const CTRentalUserEmailHint = @"user_email_hint";
+
+NSString * const CTRentalUserEmail2Hint = @"user_email2_hint";
+
+NSString * const CTRentalUserPhoneHint = @"user_phone_hint";
+
+NSString * const CTRentalUserAddressLine1Hint = @"user_address_line1_hint";
+
+NSString * const CTRentalUserAddressLine2Hint = @"user_address_line2_hint";
+
+NSString * const CTRentalUserCityHint = @"user_city_hint";
+
+NSString * const CTRentalUserPostcodeHint = @"user_postcode_hint";
+
+NSString * const CTRentalUserFlightHint = @"user_flight_hint";
+
+NSString * const CTRentalUserCountryHint = @"user_country_hint";
+
+
+
 
 
 
