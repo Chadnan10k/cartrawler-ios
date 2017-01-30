@@ -152,6 +152,8 @@
 		BC1379EF1E23E8E700B1F727 /* CTErrorTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC1379F01E23E8E700B1F727 /* CTErrorTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1379EE1E23E8E700B1F727 /* CTErrorTag.m */; };
 		BC9F6E521E24EF91006DD990 /* CTAnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */; };
+		BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCDB4BEA1E3F50C6008004DA /* CTAnalyticsEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */; };
 		E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */; };
 		E7CD21A81E38F794006BE519 /* CTSDKLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */; };
 /* End PBXBuildFile section */
@@ -303,6 +305,8 @@
 		BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTErrorTag.h; sourceTree = "<group>"; };
 		BC1379EE1E23E8E700B1F727 /* CTErrorTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTErrorTag.m; sourceTree = "<group>"; };
 		BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsTests.m; sourceTree = "<group>"; };
+		BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalyticsEvent.h; sourceTree = "<group>"; };
+		BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsEvent.m; sourceTree = "<group>"; };
 		E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTSDKLocalizationConstants.h; path = Localization/CTSDKLocalizationConstants.h; sourceTree = "<group>"; };
 		E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTSDKLocalizationConstants.m; path = Localization/CTSDKLocalizationConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -717,6 +721,8 @@
 		BC1379E21E23E4DA00B1F727 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
+				BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */,
+				BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */,
 				BC1379E31E23E4E400B1F727 /* CTAnalytics.h */,
 				BC1379E41E23E4E400B1F727 /* CTAnalytics.m */,
 				BC1379E61E23E4E400B1F727 /* CTTag.h */,
@@ -785,6 +791,7 @@
 				45C980C21DCCDB95002D99AB /* CTLayoutConstraint.h in Headers */,
 				455B58641DCC914300CA4790 /* JVFloatLabeledTextField.h in Headers */,
 				457678501E08021500FE591A /* CTHeaders.h in Headers */,
+				BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */,
 				456B9E7A1E1C09E30036CD60 /* CTUserDetails.h in Headers */,
 				450725B21DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h in Headers */,
 				455B591B1DCC914400CA4790 /* CTCSVItem.h in Headers */,
@@ -984,6 +991,7 @@
 				451E763B1E04438300D58F71 /* CTRentalBooking.m in Sources */,
 				450725B31DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m in Sources */,
 				459CB2E91DDB5BF8008522BA /* CTNextButton.m in Sources */,
+				BCDB4BEA1E3F50C6008004DA /* CTAnalyticsEvent.m in Sources */,
 				455B591C1DCC914400CA4790 /* CTCSVItem.m in Sources */,
 				45C980C31DCCDB95002D99AB /* CTLayoutConstraint.m in Sources */,
 				459CB2E11DDB1D9E008522BA /* CartrawlerSDK+UIView.m in Sources */,

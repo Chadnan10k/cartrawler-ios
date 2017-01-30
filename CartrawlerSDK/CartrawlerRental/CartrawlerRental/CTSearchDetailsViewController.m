@@ -125,6 +125,8 @@
 {
     [super viewWillAppear:animated];
     
+    [self sendEvent:YES target:@"" user:@"" eventName:@"" eventType:@""];
+    
     [[CTAnalytics instance] tagScreen:@"Step" detail:@"searchcars" step:@1];
     
     [self.scrollView setContentOffset:

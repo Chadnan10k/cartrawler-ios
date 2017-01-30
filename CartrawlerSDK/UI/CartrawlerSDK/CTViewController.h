@@ -9,13 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "CTRentalSearch.h"
 #import "CTValidation.h"
+#import "CTAnalyticsEvent.h"
 
 @protocol CTViewControllerDelegate <NSObject>
-
 @required
 - (void)didDismissViewController:(NSString *)identifier;
 @optional
 - (void)didBookVehicle:(CTBooking *)booking;
+@end
+
+@protocol CTAnalyticsDelegate <NSObject>
+@required
+- (void)didSendEvent:(CTAnalyticsEvent *)event;
 @end
 
 @interface CTViewController : UIViewController
@@ -37,11 +42,17 @@ typedef void (^RentalBookingCompletion)(id *booking);
 @property (nonatomic, weak) CTViewController *optionalRoute;
 
 @property (nonatomic, weak) id<CTViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<CTAnalyticsDelegate> analyticsDelegate;
 
 - (void)refresh;
 
 - (void)pushToDestination;
 
 - (void)dismiss;
+
+#pragma mark Analytics
+
+- (void)sendEvent:(BOOL)cartrawlerOnly target:(NSString *)target user:(NSString *)user eventName:(NSString *)eventName eventType:(NSString *)eventType;
+- (void)trackSale:(NSString *)orderId saleType:(NSString *)saleType value:(NSString *)value quanity:(NSString *)quanity metrics:(NSString *)metrics;
 
 @end

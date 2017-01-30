@@ -10,7 +10,7 @@
 #import "CartrawlerSDK.h"
 #import "CTSDKSettings.h"
 
-@interface CartrawlerSDK()
+@interface CartrawlerSDK() <CTAnalyticsDelegate>
 
 @end
 
@@ -78,7 +78,17 @@
     viewController.delegate = target;
     viewController.search = search;
     viewController.validationController = validationController;
+    viewController.analyticsDelegate = self;
     return viewController;
+}
+
+#pragma mark CTExternalAnalyticsDelegate
+
+- (void)didSendEvent:(CTAnalyticsEvent *)event
+{
+    if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(didReceiveEvent:)]) {
+        [self.analyticsDelegate didReceiveEvent:event];
+    }
 }
 
 #pragma mark Push Notifications

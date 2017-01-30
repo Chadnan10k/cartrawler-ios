@@ -24,20 +24,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface CartrawlerSDK : NSObject
+@protocol CTExternalAnalyticsDelegate <NSObject>
 
-//---Car Rental View Controllers ---
-@property (nonatomic, strong, nonnull, readonly) CTViewController *searchDetailsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleSelectionViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleDetailsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceCTExtrasViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *extrasViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *driverDetialsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *addressDetialsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentSummaryViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentCompletionViewController;
-//----------------------------------
+- (void)didReceiveEvent:(CTAnalyticsEvent *)event;
+
+@end
+
+@interface CartrawlerSDK : NSObject
 
 @property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
@@ -46,13 +39,14 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 
 //--Delegate--
 @property (nonatomic, weak) id<CartrawlerSDKDelegate> delegate;
+@property (nonatomic, weak) id<CTExternalAnalyticsDelegate> analyticsDelegate;
 
 /**
  *  Initialize the CartrawlerAPI
  *
  *  @param requestorID  Your requester ID
  *  @param languageCode The initial language code eg. EN
- *  @param sandboxMode      Flag to indicate if you want to point to test or production endpoints
+ *  @param sandboxMode  Flag to indicate if you want to point to test or production endpoints
  *
  */
 - (instancetype)initWithRequestorID:(NSString *)requestorID

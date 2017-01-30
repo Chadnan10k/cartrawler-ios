@@ -10,6 +10,7 @@
 #import <CartrawlerSDK/CartrawlerSDK.h>
 #import <CartrawlerRental/CartrawlerRental.h>
 #import <CartrawlerInPath/CartrawlerInPath.h>
+#import <CartrawlerRakuten/CartrawlerRakuten.h>
 
 @interface RYRRentalManager : NSObject <CartrawlerRentalDelegate, CartrawlerInPathDelegate>
 

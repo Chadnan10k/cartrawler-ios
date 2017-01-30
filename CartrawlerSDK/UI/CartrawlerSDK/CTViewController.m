@@ -93,4 +93,25 @@
                                       }];
 }
 
+- (void)sendEvent:(BOOL)cartrawlerOnly target:(NSString *)target user:(NSString *)user eventName:(NSString *)eventName eventType:(NSString *)eventType
+{
+    if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(didSendEvent:)]) {
+        
+        CTAnalyticsEvent *event = [CTAnalyticsEvent new];
+        event.eventName = @"Test Sale";
+        [self.analyticsDelegate didSendEvent:event];
+    }
+}
+
+- (void)trackSale:(NSString *)orderId saleType:(NSString *)saleType value:(NSString *)value quanity:(NSString *)quanity metrics:(NSString *)metrics
+{
+    if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(didReceiveEvent:)]) {
+        
+        CTAnalyticsEvent *event = [CTAnalyticsEvent new];
+        event.eventName = @"Test Sale";
+
+        [self.analyticsDelegate didSendEvent:event];
+    }
+}
+
 @end
