@@ -105,7 +105,7 @@
 
 - (void)trackSale:(NSString *)orderId saleType:(NSString *)saleType value:(NSString *)value quanity:(NSString *)quanity metrics:(NSString *)metrics
 {
-    if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(didReceiveEvent:)]) {
+    if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(didSendEvent:)]) {
         
         CTAnalyticsEvent *event = [CTAnalyticsEvent new];
         event.eventName = @"Test Sale";

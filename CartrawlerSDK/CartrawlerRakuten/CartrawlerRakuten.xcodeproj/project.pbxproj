@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		BCDB4BF51E3F5BC5008004DA /* BuildRakuten */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = BCDB4BF61E3F5BC5008004DA /* Build configuration list for PBXAggregateTarget "BuildRakuten" */;
+			buildPhases = (
+				BCDB4BF91E3F5BC8008004DA /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = BuildRakuten;
+			productName = BuildRakuten;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		BCDB4BC71E3BBE3F008004DA /* CartrawlerRakuten.h in Headers */ = {isa = PBXBuildFile; fileRef = BCDB4BC51E3BBE3F008004DA /* CartrawlerRakuten.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCDB4BCE1E3BC042008004DA /* CartrawlerRakuten.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDB4BCD1E3BC042008004DA /* CartrawlerRakuten.m */; };
@@ -140,6 +154,11 @@
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
 					};
+					BCDB4BF51E3F5BC5008004DA = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = BCDB4BBC1E3BBE3F008004DA /* Build configuration list for PBXProject "CartrawlerRakuten" */;
@@ -155,6 +174,7 @@
 			projectRoot = "";
 			targets = (
 				BCDB4BC11E3BBE3F008004DA /* CartrawlerRakuten */,
+				BCDB4BF51E3F5BC5008004DA /* BuildRakuten */,
 			);
 		};
 /* End PBXProject section */
@@ -169,6 +189,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BCDB4BF91E3F5BC8008004DA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n######################\n# Options\n######################\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal-CartrawlerSDK\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\nexport VERSION= \"defaults read ${INFO_PLIST} CFBundleVersionString\"\n\n######################\n# Build Frameworks\n######################\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme ${FRAMEWORK_NAME} -configuration Debug -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk \"iphoneos\"\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme ${FRAMEWORK_NAME} -configuration Debug -arch x86_64 -arch i386 only_active_arch=no defines_module=yes -sdk \"iphonesimulator\"\n\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n\n######################\n# On Release, copy the result to release directory\n######################\nOUTPUT_DIR=\"${SRCROOT}/../../../Artifacts_Latest\"\nmkdir -p \"$OUTPUT_DIR\"\n\ncp -r \"${FRAMEWORK}\" \"$OUTPUT_DIR\"\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BCDB4BBD1E3BBE3F008004DA /* Sources */ = {
@@ -326,6 +362,22 @@
 			};
 			name = Release;
 		};
+		BCDB4BF71E3F5BC5008004DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BCDB4BF81E3F5BC5008004DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -346,6 +398,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		BCDB4BF61E3F5BC5008004DA /* Build configuration list for PBXAggregateTarget "BuildRakuten" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCDB4BF71E3F5BC5008004DA /* Debug */,
+				BCDB4BF81E3F5BC5008004DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
