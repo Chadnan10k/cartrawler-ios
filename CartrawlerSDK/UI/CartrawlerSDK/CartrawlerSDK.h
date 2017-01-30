@@ -39,7 +39,6 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 
 //--Delegate--
 @property (nonatomic, weak) id<CartrawlerSDKDelegate> delegate;
-@property (nonatomic, weak) id<CTExternalAnalyticsDelegate> analyticsDelegate;
 
 /**
  *  Initialize the CartrawlerAPI
@@ -54,6 +53,8 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
                    sandboxMode:(BOOL)sandboxMode;
 
 - (void)enableLogs:(BOOL)enable;
+
+- (void)addAnalyticsProvider:(NSObject<CTExternalAnalyticsDelegate> *)analyticsProvider;
 
 /**
  *  Use CTAppearance for overriding the preset views color scheme

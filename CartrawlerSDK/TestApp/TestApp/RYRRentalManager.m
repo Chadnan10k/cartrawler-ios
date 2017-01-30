@@ -12,7 +12,6 @@
 
 @property (strong, nonatomic) NSDate *pickupDate;
 @property (strong, nonatomic) NSDate *dropoffDate;
-@property (strong, nonatomic)  CartrawlerRakuten *externalAnalyitics;
 
 @property (nonatomic) BOOL isProduction;
 
@@ -78,10 +77,10 @@
 {
     _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"en" sandboxMode:!self.isProduction];
     _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
-    _externalAnalyitics = [[CartrawlerRakuten alloc] init];
-    self.sdk.analyticsDelegate = self.externalAnalyitics;
     
-    [self.sdk enableLogs:YES];
+    [self.sdk addAnalyticsProvider:[CartrawlerRakuten new]];
+
+    [self.sdk enableLogs:NO];
     self.rental.delegate = self;
 }
 

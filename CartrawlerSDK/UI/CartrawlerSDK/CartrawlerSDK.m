@@ -12,6 +12,8 @@
 
 @interface CartrawlerSDK() <CTAnalyticsDelegate>
 
+@property (nonatomic, strong) NSMutableArray <CTExternalAnalyticsDelegate> *analyticsProviders;
+
 @end
 
 @implementation CartrawlerSDK
@@ -82,12 +84,40 @@
     return viewController;
 }
 
+#pragma mark Analytics
+
+- (void)addAnalyticsProvider:(NSObject<CTExternalAnalyticsDelegate> *)analyticsProvider
+{
+    if (self.analyticsProviders) {
+        //check doesnt already exist
+        for (NSObject<CTExternalAnalyticsDelegate> *obj in self.analyticsProviders) {
+            //check for memory reference
+            if (obj == analyticsProvider) {
+                return;
+            }
+            //check for class name
+            if ([NSStringFromClass([obj class]) isEqualToString:NSStringFromClass([analyticsProvider class])]) {
+                return;
+            }
+        }
+        [self.analyticsProviders addObject:analyticsProvider];
+        
+    } else {
+        _analyticsProviders = [NSMutableArray new];
+        [self.analyticsProviders addObject:analyticsProvider];
+    }
+}
+
 #pragma mark CTExternalAnalyticsDelegate
 
 - (void)didSendEvent:(CTAnalyticsEvent *)event
 {
-    if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(didReceiveEvent:)]) {
-        [self.analyticsDelegate didReceiveEvent:event];
+    if (self.analyticsProviders) {
+        for (NSObject<CTExternalAnalyticsDelegate> *obj in self.analyticsProviders) {
+            if (obj && [obj respondsToSelector:@selector(didReceiveEvent:)]) {
+                [obj didReceiveEvent:event];
+            }
+        }
     }
 }
 
