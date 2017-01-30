@@ -7,6 +7,7 @@
 //
 
 #import "CTLocalisedStrings.h"
+#import "CTSDKLocalizationConstants.h"
 
 @implementation CTLocalisedStrings
 
@@ -44,191 +45,191 @@
     switch (size) {
         case VehicleSizeMini: {
             
-            return NSLocalizedString(@"Mini", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeMini);
         }
         case VehicleSizeSubcompact: {
             
-            return NSLocalizedString(@"Subcompact", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeSubcompact);
         }
         case VehicleSizeEconomy: {
             
-            return NSLocalizedString(@"Economy", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeEconomy);
         }
         case VehicleSizeCompact: {
             
-            return NSLocalizedString(@"Compact", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeEconomy);
         }
         case VehicleSizeMidsize: {
             
-            return NSLocalizedString(@"Midsize", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeMidsize);
         }
         case VehicleSizeIntermediate: {
             
-            return NSLocalizedString(@"Intermediate", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeIntermediate);
         }
         case VehicleSizeStandard: {
             
-            return NSLocalizedString(@"Standard", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeStandard);
         }
         case VehicleSizeFullsize: {
             
-            return NSLocalizedString(@"Fullsize", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeFullsize);
         }
         case VehicleSizeLuxury: {
             
-            return NSLocalizedString(@"Luxury", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeLuxury);
         }
         case VehicleSizePremium: {
             
-            return NSLocalizedString(@"Premium", @"");;
+            return CTLocalizedString(CTSDKVehicleTypePremium);
         }
         case VehicleSizeMinivan: {
             
-            return NSLocalizedString(@"Minivan", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeMinivan);
         }
         case VehicleSizeTwelvePassengerVan: {
             
-            return NSLocalizedString(@"12 Passenger Van", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeTwelvePassengerVan);
         }
         case VehicleSizeMovingVan: {
             
-            return NSLocalizedString(@"Moving Van", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeMovingVan);
         }
         case VehicleSizeFifteenPassengerVan: {
             
-            return NSLocalizedString(@"15 Passenger Van", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeFifteenPassengerVan);
         }
         case VehicleSizeCargoVan: {
             
-            return NSLocalizedString(@"Cargo Van", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeCargoVan);
         }
         case VehicleSizeTwelveFootTruck: {
             
-            return NSLocalizedString(@"12 Foot Truck", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeTwelveFootTruck);
         }
         case VehicleSizeTwentyFootTruck: {
             
-            return NSLocalizedString(@"20 Foot Truck", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeTwentyFootTruck);
         }
         case VehicleSizeTwentyFourFootTruck: {
             
-            return NSLocalizedString(@"24 Foot Truck", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeTwentyFourFootTruck);
         }
         case VehicleSizeTwentySixFootTruck: {
             
-            return NSLocalizedString(@"26 Foot Truck", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeTwentySixFootTruck);
         }
         case VehicleSizeMoped: {
             
-            return NSLocalizedString(@"Moped", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeMoped);
         }
         case VehicleSizeStretch: {
             
-            return NSLocalizedString(@"Stretch", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeStretch);
         }
         case VehicleSizeRegular: {
             
-            return NSLocalizedString(@"Regular", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeRegular);
         }
         case VehicleSizeUnique: {
             
-            return NSLocalizedString(@"Unique", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeUnique);
         }
         case VehicleSizeExotic: {
             
-            return NSLocalizedString(@"Exotic", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeExotic);
         }
         case VehicleSizeSmallMediumTruck: {
             
-            return NSLocalizedString(@"Small/Medium Truck", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeSmallMediumTruck);
         }
         case VehicleSizeLargeTruck: {
             
-            return NSLocalizedString(@"Large Truck", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeLargeTruck);
         }
         case VehicleSizeSmallSUV: {
             
-            return NSLocalizedString(@"Small SUV", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeSmallSUV);
         }
         case VehicleSizeMediumSUV: {
             
-            return NSLocalizedString(@"Medium SUV", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeMediumSUV);
         }
         case VehicleSizeLargeSUV: {
             
-            return NSLocalizedString(@"Large SUV", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeLargeSUV);
         }
         case VehicleSizeExoticSUV: {
             
-            return NSLocalizedString(@"Exotic SUV", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeExoticSUV);
         }
         case VehicleSizeFourWheelDrive: {
             
-            return NSLocalizedString(@"Four Wheel Drive", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeFourWheelDrive);
         }
         case VehicleSizeSpecial: {
             
-            return NSLocalizedString(@"Special", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeSpecial);
         }
         case VehicleSizeMiniElite: {
             
-            return NSLocalizedString(@"Mini Elite", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeMiniElite);
         }
         case VehicleSizeEconomyElite: {
             
-            return NSLocalizedString(@"Economy Elite", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeEconomyElite);
         }
         case VehicleSizeCompactElite: {
             
-            return NSLocalizedString(@"Compact Elite", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeCompactElite);
         }
         case VehicleSizeIntermediateElite: {
             
-            return NSLocalizedString(@"Intermediate Elite", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeIntermediateElite);
         }
         case VehicleSizeStandardElite: {
             
-            return NSLocalizedString(@"Standard Elite:", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeStandardElite);
         }
         case VehicleSizeFullsizeElite: {
             
-            return NSLocalizedString(@"Fullsize Elite", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeFullsizeElite);
         }
         case VehicleSizePremiumElite: {
             
-            return NSLocalizedString(@"Premium Elite", @"");;
+            return CTLocalizedString(CTSDKVehicleTypePremiumElite);
         }
         case VehicleSizeLuxuryElite: {
             
-            return NSLocalizedString(@"Luxury Elite", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeLuxuryElite);
         }
         case VehicleSizeOversize: {
             
-            return NSLocalizedString(@"Oversize", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeOversize);
         }
         case VehicleSizeUnknown: {
             
-            return NSLocalizedString(@"Unknown", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeUnknown);
         }
         case VehicleSizeEstate: {
             
-            return NSLocalizedString(@"Estate", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeEstate);
         }
         case VehicleSizeFiveSeatCarrier: {
             
-            return NSLocalizedString(@"5 seat carrier", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeFiveSeatCarrier);
         }
         case VehicleSizeSevenSeatCarrier: {
             
-            return NSLocalizedString(@"7 seat carrier", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeSevenSeatCarrier);
         }
         case VehicleSizeNineSeatCarrier: {
             
-            return NSLocalizedString(@"9 seat carrier", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeNineSeatCarrier);
         }
         case VehicleSizeSUV: {
             
-            return NSLocalizedString(@"SUV", @"");;
+            return CTLocalizedString(CTSDKVehicleTypeSUV);
         }   
     }
 }
@@ -357,107 +358,103 @@
 + (NSString *)fuelPolicy:(FuelPolicy)fuelPolicy
 {
     if (fuelPolicy == FuelPolicyFullToFull) {
-        return NSLocalizedString(@"Full to full", @"Full to full");
+        return CTLocalizedString(CTSDKVehicleFuelPolicyTypeFullFull);
     }
     
     if (fuelPolicy == FuelPolicyFullEmptyRefund) {
-        return NSLocalizedString(@"Full to empty refund", @"Full to empty refund");
+        return CTLocalizedString(CTSDKVehicleFuelPolicyTypeFullEmptyRefund);
     }
     
     if (fuelPolicy == FuelPolicyFullToEmpty) {
-        return NSLocalizedString(@"Full to empty", @"Full to empty");
+        return CTLocalizedString(CTSDKVehicleFuelPolicyTypeFullEmpty);
     }
     
     if (fuelPolicy == FuelPolicyElectricVehicle) {
-        return NSLocalizedString(@"Electric vehicle", @"Electric vehicle");
-    }
-    
-    if (fuelPolicy == FuelPolicyElectricVehicle) {
-        return NSLocalizedString(@"Electric vehicle", @"Electric vehicle");
+        return CTLocalizedString(CTSDKVehicleFuelPolicyTypeElectricVehicle);
     }
     
     if (fuelPolicy == FuelPolicyEmptyToEmpty) {
-        return NSLocalizedString(@"Empty to empty", @"Empty to empty");
+        return CTLocalizedString(CTSDKVehicleFuelPolicyTypeEmptyEmpty);
     }
     
     if (fuelPolicy == FuelPolicyHalfToEmpty) {
-        return NSLocalizedString(@"Half to empty", @"Half to empty");
+        return CTLocalizedString(CTSDKVehicleFuelPolicyTypeHalfEmpty);
     }
     
     if (fuelPolicy == FuelPolicyQuarterToEmpty) {
-        return NSLocalizedString(@"Quarter to empty", @"Quarter to empty");
+        return CTLocalizedString(CTSDKVehicleFuelPolicyTypeQuarterEmpty);
     }
     
     if (fuelPolicy == FuelPolicyHalfToHalf) {
-        return NSLocalizedString(@"Half to half", @"Half to half");
+        return CTLocalizedString(CTSDKVehicleFuelPolicyTypeHalfHalf);
     }
     
     if (fuelPolicy == FuelPolicyQuarterToQuarter) {
-        return NSLocalizedString(@"Quarter to quarter", @"Quarter to quarter");
+        return CTLocalizedString(CTSDKVehicleFuelPolicyTypeQuarterQuarter);
     }
     
     if (fuelPolicy == FuelPolicyQuarterToQuarter) {
-        return NSLocalizedString(@"Unknown", @"Unknown");
+        return CTLocalizedString(CTSDKVehicleFuelPolicyTypeUnknown);
     }
     
     if (fuelPolicy == FuelPolicyFullToFullHybrid) {
-        return NSLocalizedString(@"Full to full hybrid", @"Full to full hybrid");
+        return CTLocalizedString(CTSDKVehicleFuelPolicyTypeFullFullHybrid);
     }
     
     if (fuelPolicy == FuelPolicyChaufFullFull) {
-        return NSLocalizedString(@"Full to full chauf", @"Full to full chauf");
+        return CTLocalizedString(CTSDKVehicleFuelPolicyTypeChaufFulFul);
     }
     
-    return @"Unknown";
+    return CTLocalizedString(CTSDKVehicleFuelPolicyTypeUnknown);
 }
 
 + (NSString *)toolTipTextForFuelPolicy:(FuelPolicy)fuelPolicy
 {
     if (fuelPolicy == FuelPolicyFullToFull) {
-        return [self localizedStringForKey:@"FUEL_POLICY_FULL_FULL"];
+        return CTLocalizedString(CTSDKVehicleFuelPolicyDescFullFull);
     }
     
     if (fuelPolicy == FuelPolicyFullEmptyRefund) {
-        return [self localizedStringForKey:@"FUEL_POLICY_FULL_EMPTY_REFUND"];
+        return CTLocalizedString(CTSDKVehicleFuelPolicyDescFullEmptyRefund);
     }
     
     if (fuelPolicy == FuelPolicyFullToEmpty) {
-        return [self localizedStringForKey:@"FUEL_POLICY_FULL_EMPTY"];
+        return CTLocalizedString(CTSDKVehicleFuelPolicyDescFullEmpty);
     }
     
     if (fuelPolicy == FuelPolicyElectricVehicle) {
-        return [self localizedStringForKey:@"FUEL_POLICY_ELECTRIC_VEHICLE"];
+        return CTLocalizedString(CTSDKVehicleFuelPolicyDescElectricVehicle);
     }
     
     if (fuelPolicy == FuelPolicyEmptyToEmpty) {
-        return [self localizedStringForKey:@"FUEL_POLICY_EMPTY_EMPTY"];
+        return CTLocalizedString(CTSDKVehicleFuelPolicyDescEmptyEmpty);
     }
     
     if (fuelPolicy == FuelPolicyHalfToEmpty) {
-        return [self localizedStringForKey:@"FUEL_POLICY_HALF_EMPTY"];
+        return CTLocalizedString(CTSDKVehicleFuelPolicyDescHalfEmpty);
     }
     
     if (fuelPolicy == FuelPolicyQuarterToEmpty) {
-        return [self localizedStringForKey:@"FUEL_POLICY_QUARTER_EMPTY"];
+        return CTLocalizedString(CTSDKVehicleFuelPolicyDescQuarterEmpty);
     }
     
     if (fuelPolicy == FuelPolicyHalfToHalf) {
-        return [self localizedStringForKey:@"FUEL_POLICY_HALF_HALF"];
+        return CTLocalizedString(CTSDKVehicleFuelPolicyDescHalfHalf);
     }
     
     if (fuelPolicy == FuelPolicyQuarterToQuarter) {
-        return [self localizedStringForKey:@"FUEL_POLICY_QUARTER_QUARTER"];
+        return CTLocalizedString(CTSDKVehicleFuelPolicyDescQuarterQuarter);
     }
     
     if (fuelPolicy == FuelPolicyFullToFullHybrid) {
-        return [self localizedStringForKey:@"FUEL_POLICY_FULL_FULL_HYBRID"];
+        return CTLocalizedString(CTSDKVehicleFuelPolicyDescFullFullHybrid);
     }
     
     if (fuelPolicy == FuelPolicyChaufFullFull) {
-        return [self localizedStringForKey:@"FUEL_POLICY_CHAUF_FULL_FULL"];
+        return CTLocalizedString(CTSDKVehicleFuelPolicyDescChaufFulFul);
     }
     
-    return @"Unknown";
+    return CTLocalizedString(CTSDKVehicleFuelPolicyDescUnknown);
 }
 
 + (NSString *)toolTipTextForPickupType:(CTAvailabilityItem *)item

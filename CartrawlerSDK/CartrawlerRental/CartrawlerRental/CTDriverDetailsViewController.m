@@ -54,7 +54,12 @@
     [self.phoneTextField addDoneButton];
     [self.flightNoTextField addDoneButton];
     [self.phoneTextField addDoneButton];
-
+    
+    self.firstNameTextField.placeholder = CTLocalizedString(CTRentalUserFirstnameHint);
+    self.lastNameTextField.placeholder = CTLocalizedString(CTRentalUserSurnameHint);
+    self.emailTextField.placeholder = CTLocalizedString(CTRentalUserEmailHint);
+    self.phoneTextField.placeholder = CTLocalizedString(CTRentalUserPhoneHint);
+    self.flightNoTextField.placeholder = CTLocalizedString(CTRentalUserFlightHint);
 }
 
 - (void)viewWasTapped

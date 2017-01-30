@@ -57,7 +57,12 @@
     [self.cityTextField addDoneButton];
     [self.postCodeTextField addDoneButton];
     [self.countryTextField addDoneButton];
-
+    
+    self.addressLine1TextField.placeholder = CTLocalizedString(CTRentalUserAddressLine1Hint);
+    self.addressLine2TextField.placeholder = CTLocalizedString(CTRentalUserAddressLine2Hint);
+    self.cityTextField.placeholder = CTLocalizedString(CTRentalUserCityHint);
+    self.postCodeTextField.placeholder = CTLocalizedString(CTRentalUserPostcodeHint);
+    self.countryTextField.placeholder = CTLocalizedString(CTRentalUserCountryHint);
 }
 
 - (void)viewWasTapped

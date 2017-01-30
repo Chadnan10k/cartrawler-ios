@@ -48,6 +48,7 @@
 @property (weak, nonatomic) IBOutlet CTToolTipButton *fuelPolicyButton;
 @property (weak, nonatomic) IBOutlet CTToolTipButton *pickupLocationButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpacing;
+@property (weak, nonatomic) IBOutlet CTButton *termsAndConditionsButton;
 
 @end
 
@@ -68,6 +69,8 @@
     self.featuresTableView.rowHeight = UITableViewAutomaticDimension;
     
     self.totalPriceLabel.text = CTLocalizedString(CTRentalVehicleTotalPrice);
+    self.includedForFreeLabel.text = CTLocalizedString(CTRentalIncludedTitle);
+    [self.termsAndConditionsButton setTitle:CTLocalizedString(CTRentalIncludedTerms) forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated

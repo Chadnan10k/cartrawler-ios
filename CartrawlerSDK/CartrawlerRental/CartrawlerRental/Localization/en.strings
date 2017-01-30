@@ -112,6 +112,7 @@
 "vehicle_provided" = "Provided by *";
 
 // Sorting (3-sorting)
+
 "rental_sort_title" = "Sort results by *";
 
 "rental_sort_price" = "Price *";
@@ -120,6 +121,95 @@
 
 "rental_sort_recommended" = "Recommended *";
 
+// Filter titles (4-filters)
 
+"filter_package" = "Package *";
 
+"filter_carsize" = "Car Size *";
+
+"filter_pickup" = "Pick-up Location *";
+
+"filter_supplier" = "Supplier *";
+
+"filter_rating" = "Rating *";
+
+"filter_fuel" = "Fuel Policy *";
+
+"filter_carfuel" = "Fuel Type *";
+
+"filter_carspec" = "Car Specifications *";
+
+"filter_transmission" = "Transmission *";
+
+"filter_specialoffers" = "Special Offer *";
+
+"filter_transfertype" = "Transfer Type *";
+
+"filter_transfertime" = "Journey Time *";
+
+// "Included for free" section (6-vehicle)
+
+"included_title" = "Included for Free: *";
+
+"included_cancel" = "Cancellation *";
+
+"included_amend" = "Amendments *";
+
+"included_thirdparty" = "Third Party Liability *";
+
+"included_theft" = "Theft Protection *";
+
+"included_collision" = "Collision Damage Waiver *";
+
+"included_terms" = "Terms and Conditions *";
+
+// Supplier page (7-supplier)
+
+"supplier_reviews" = "reviews *";
+
+"supplier_car" = "Cleanliness of the car *";
+
+"supplier_desk" = "Service at the supplier desk *";
+
+"supplier_pickup" = "Car rental pick-up process *";
+
+"supplier_dropoff" = "Car rental drop-off process *";
+
+"supplier_price" = "Overall value for the money *";
+
+"supplier_waiting" = "Waiting time *";
+
+// Extras section (8-extras)
+
+"extras_conditions" = "Please note that extras are paid at the car rental desk. We try to ensure customers get all extras however availability is not always guaranteed. *";
+
+// Insurance section (9-insurance)
+
+"insurance_summary_title" = "Reasons to get full cover *";
+
+// User page (10-driver, 11-driver)
+
+"user_name_hint" = "Name *";
+
+"user_firstname_hint" = "First name *";
+
+"user_surname_hint" = "Surname *";
+
+"user_email_hint" = "Email *";
+
+"user_email2_hint" = "Confirm Email *";
+
+"user_phone_hint" = "Phone *";
+
+"user_address_line1_hint" = "Address line 1*";
+
+"user_address_line2_hint" = "Address line 2*";
+
+"user_city_hint" = "City *";
+
+"user_postcode_hint" = "Postcode *";
+
+"user_flight_hint" = "Flight Number (important) *";
+
+"user_country_hint" = "Country *";
 

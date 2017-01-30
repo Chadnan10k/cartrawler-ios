@@ -10,6 +10,8 @@
 #import <CartrawlerSDK/CTImageCache.h>
 #import "CTSupplierRatingTableViewCell.h"
 #import <CartrawlerSDK/CTAppearance.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTSupplierRatingsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *ratingScore;
@@ -23,9 +25,6 @@
 @end
 
 @implementation CTSupplierRatingsViewController
-
-
-
 
 - (void)viewDidLoad
 {
@@ -79,13 +78,13 @@
     self.ratingDescription.attributedText = ratingStr;
     
     _ratings = @[
-                 @{@"type" : @"Overall value for money", @"value" : [NSString stringWithFormat:@"%.1f",
+                 @{@"type" : CTLocalizedString(CTRentalSupplierPrice), @"value" : [NSString stringWithFormat:@"%.1f",
                                                            self.search.selectedVehicle.vendor.rating.priceScore.doubleValue/10]},
-                 @{@"type" : @"Cleanliness of car", @"value" : [NSString stringWithFormat:@"%.1f",
+                 @{@"type" : CTLocalizedString(CTRentalSupplierCar), @"value" : [NSString stringWithFormat:@"%.1f",
                                                          self.search.selectedVehicle.vendor.rating.carReview.doubleValue/10]},
-                 @{@"type" : @"Service at desk", @"value" : [NSString stringWithFormat:@"%.1f", self.search.selectedVehicle.vendor.rating.deskReview.doubleValue/10]},
-                 @{@"type" : @"Pick-up process", @"value" : [NSString stringWithFormat:@"%.1f", self.search.selectedVehicle.vendor.rating.pickupScore.doubleValue/10]},
-                 @{@"type" : @"Drop-off process", @"value" : [NSString stringWithFormat:@"%.1f", self.search.selectedVehicle.vendor.rating.dropoffReview.doubleValue/10]}];
+                 @{@"type" : CTLocalizedString(CTRentalSupplierDesk), @"value" : [NSString stringWithFormat:@"%.1f", self.search.selectedVehicle.vendor.rating.deskReview.doubleValue/10]},
+                 @{@"type" : CTLocalizedString(CTRentalSupplierPickup), @"value" : [NSString stringWithFormat:@"%.1f", self.search.selectedVehicle.vendor.rating.pickupScore.doubleValue/10]},
+                 @{@"type" : CTLocalizedString(CTRentalSupplierDropoff), @"value" : [NSString stringWithFormat:@"%.1f", self.search.selectedVehicle.vendor.rating.dropoffReview.doubleValue/10]}];
     
     [self.tableView reloadData];
 }
