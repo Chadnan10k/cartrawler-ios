@@ -10,9 +10,17 @@
 
 @implementation CTSDKLocalizationConstants
 
-NSString * const CTCalendarSelectDate = @"calendar_select_date";
+NSString * const CTSDKCalendarSelectDate = @"calendar_select_date";
 
-NSString * const CTCalendarSelectDates = @"calendar_select_dates";
+NSString * const CTSDKCalendarSelectDates = @"calendar_select_dates";
+
+NSString * const CTSDKCalendarPickupDate = @"calendar_pickup_date";
+
+NSString * const CTSDKCalendarReturnDate = @"calendar_return_date";
+
+NSString * const CTSDKCalendarContinue = @"calendar_continue";
+
+NSString * const CTSDKCalendarCancel = @"calendar_cancel";
 
 NSString * const CTSDKVehicleTypeMini = @"vehicle_type_mini";
 
@@ -114,7 +122,6 @@ NSString * const CTSDKVehicleTypeOversize = @"vehicle_type_oversize";
 
 NSString * const CTSDKVehicleTypeUnknown = @"vehicle_type_unknown";
 
-
 NSString * const CTSDKVehicleFuelPolicy = @"vehicle_fuel_policy";
 
 NSString * const CTSDKVehicleFuelPolicyTypeElectricVehicle = @"vehicle_fuel_policy_type_ELECTRICVEHICLE";
@@ -168,5 +175,19 @@ NSString * const CTSDKVehicleFuelPolicyDescFullFullHybrid = @"vehicle_fuel_polic
 NSString * const CTSDKVehicleFuelPolicyDescChaufFulFul = @"vehicle_fuel_policy_desc_CHAUFFULFUL";
 
 NSString * const CTSDKVehicleFuelPolicyDescChaufFuelInc = @"vehicle_fuel_policy_desc_CHAUFFUELINC";
+
+NSString * const CTSDKVehiclePickupTypeVLI1VLIX = @"vehicle_pickup_type_VLI_1.VLI.X";
+
+NSString * const CTSDKVehiclePickupTypeVLI2VLIX = @"vehicle_pickup_type_VLI_2.VLI.X";
+
+NSString * const CTSDKVehiclePickupTypeVLI3VLIX = @"vehicle_pickup_type_VLI_3.VLI.X";
+
+NSString * const CTSDKVehiclePickupTypeVLI4VLIX = @"vehicle_pickup_type_VLI_4.VLI.X";
+
+NSString * const CTSDKVehiclePickupTypeVLI6VLIX = @"vehicle_pickup_type_VLI_6.VLI.X";
+
+NSString * const CTSDKVehiclePickupTypeAtAirport = @"vehicle_pickup_at_airport";
+
+NSString * const CTSDKVehiclePickupTypeUnknown = @"vehicle_pickup_unknown";
 
 @end

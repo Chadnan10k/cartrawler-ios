@@ -413,6 +413,7 @@
                         <outlet property="inclusionsCollectionViewHeight" destination="Hga-em-ynZ" id="Ce6-n7-pvp"/>
                         <outlet property="inclusionsContainerView" destination="VON-Iy-sbh" id="GVk-2p-y0X"/>
                         <outlet property="inclusionsVerticalSpace" destination="52e-vS-CR1" id="4ud-YG-3Gt"/>
+                        <outlet property="orSimilarLabel" destination="eVd-LH-ouP" id="RiJ-OY-1Ld"/>
                         <outlet property="pickupLocationButton" destination="0db-sE-P5y" id="5gu-pr-qx1"/>
                         <outlet property="priceLabel" destination="ZU2-uO-73l" id="x5U-wP-wBs"/>
                         <outlet property="scrollView" destination="z1i-bM-q5G" id="OpZ-Wv-tE0"/>

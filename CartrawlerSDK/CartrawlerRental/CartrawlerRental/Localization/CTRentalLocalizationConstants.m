@@ -54,6 +54,10 @@ NSString * const CTRentalCTAToHomepage = @"CTA_to_homepage";
 
 NSString * const CTRentalCTABook = @"CTA_book";
 
+NSString * const CTRentalCTACancel = @"CTA_cancel";
+
+NSString * const CTRentalCTADone = @"CTA_done";
+
 NSString * const CTRentalSearchPickupLocationText = @"search_pickup_location_text";
 
 NSString * const CTRentalSearchReturnLocationText = @"search_return_location_text";
@@ -79,6 +83,12 @@ NSString * const CTRentalBookingReferencePrefix = @"booking_reference_prefix";
 NSString * const CTRentalSettingsCountryTitle = @"settings_country_title";
 
 NSString * const CTRentalSettingsCurrencyTitle = @"settings_currency_title";
+
+NSString * const CTRentalSettingsSelectCountry = @"settings_select_country";
+
+NSString * const CTRentalSettingsSelectCurrency = @"settings_select_currency";
+
+NSString * const CTRentalSettingsSelectLanguage = @"settings_select_languages";
 
 NSString * const CTRentalResultsSort = @"results_sort";
 
@@ -112,6 +122,20 @@ NSString * const CTRentalVehicleGreatValue = @"vehicle_great_value";
 
 NSString * const CTRentalVehicleProvided = @"vehicle_provided";
 
+NSString * const CTRentalVehicleAirConditioning = @"vehicle_air_conditioning";
+
+NSString * const CTRentalVehicleFuelPolicy = @"vehicle_fuel_policy";
+
+NSString * const CTRentalVehicleSupplierAddress = @"vehicle_supplier_address";
+
+NSString * const CTRentalVehicleSupplierAddressDetail = @"vehicle_suppliers_address_detail";
+
+NSString * const CTRentalVehiclePickupLocation = @"vehicle_pickup_location";
+
+NSString * const CTRentalVehiclePickupLocationUnknown = @"vehicle_pickup_location_unknown";
+
+NSString * const CTRentalVehicleVehicleInclusion = @"vehicle_vehicle_inclusion";
+
 NSString * const CTRentalSortTitle = @"rental_sort_title";
 
 NSString * const CTRentalSortPrice = @"rental_sort_price";
@@ -144,6 +168,8 @@ NSString * const CTRentalFilterTransferType = @"filter_transfertype";
 
 NSString * const CTRentalFilterTransferTime = @"filter_transfertime";
 
+NSString * const CTRentalFilterReset = @"filter_reset";
+
 NSString * const CTRentalIncludedTitle = @"included_title";
 
 NSString * const CTRentalIncludedCancel = @"included_cancel";
@@ -171,6 +197,14 @@ NSString * const CTRentalSupplierDropoff = @"supplier_dropoff";
 NSString * const CTRentalSupplierPrice = @"supplier_price";
 
 NSString * const CTRentalSupplierWaiting = @"supplier_waiting";
+
+NSString * const CTRentalSupplierBelowAverage = @"supplier_below_average";
+
+NSString * const CTRentalSupplierGood = @"supplier_good";
+
+NSString * const CTRentalSupplierExcellent = @"supplier_excellent";
+
+NSString * const CTRentalSupplierRatingDetail = @"supplier_rating_detail";
 
 NSString * const CTRentalExtrasConditions = @"extras_conditions";
 
@@ -200,25 +234,62 @@ NSString * const CTRentalUserFlightHint = @"user_flight_hint";
 
 NSString * const CTRentalUserCountryHint = @"user_country_hint";
 
+NSString * const CTRentalPaymentText1 = @"payment_text_1";
 
+NSString * const CTRentalPaymentText2 = @"payment_text_2";
 
+NSString * const CTRentalReceiptYourReference = @"receipt_your_reference";
 
+NSString * const CTRentalReceiptEmailText1 = @"receipt_email_text_1";
 
+NSString * const CTRentalReceiptEmailText2 = @"receipt_email_text_2";
 
+NSString * const CTRentalReceiptScroll = @"receipt_scroll";
 
+NSString * const CTRentalReceiptSummaryPickup = @"receipt_summary_pickup";
 
+NSString * const CTRentalReceiptSummaryDropoff = @"receipt_summary_dropoff";
 
+NSString * const CTRentalReceiptSummaryDriver = @"receipt_summary_driver";
 
+NSString * const CTRentalReceiptSummaryCar = @"receipt_summary_car";
 
+NSString * const CTRentalErrorPaymentNoInternet1 = @"error_payment_no_internet1";
 
+NSString * const CTRentalErrorPaymentNoInternet2 = @"error_payment_no_internet2";
 
+NSString * const CTRentalErrorPaymentLoading1 = @"error_payment_loading1";
 
+NSString * const CTRentalErrorPaymentLoading2 = @"error_payment_loading2";
 
+NSString * const CTRentalErrorOk = @"error_ok";
 
+NSString * const CTRentalErrorNoBookingRef = @"error_no_booking_ref";
 
+NSString * const CTRentalErrorNoInsuranceAvailable = @"error_no_insurance_available";
 
+NSString * const CTRentalSummaryPayAtDesk = @"summary_pay_at_desk";
 
+NSString * const CTRentalSummaryPayNow = @"summary_now";
 
+NSString * const CTRentalSummaryTotal = @"summary_total";
 
+NSString * const CTRentalSummaryPickup = @"summary_pickup";
+
+NSString * const CTRentalSummaryDropoff = @"summary_dropoff";
+
+NSString * const CTRentalSummaryLeadDriver = @"summary_lead_driver";
+
+NSString * const CTRentalSummaryVehicle = @"summary_vehicle";
+
+NSString * const CTRentalSummaryPayment = @"summary_payment";
+
+NSString * const CTRentalSummaryDamageRefund = @"summary_damage_refund";
+
+NSString * const CTRentalSummaryBookingFee = @"summary_booking_fee";
+
+NSString * const CTRentalInterstitialSearching1 = @"interstitial_searching_1";
+
+NSString * const CTRentalInterstitialSearching2 = @"interstitial_searching_2";
 
 @end

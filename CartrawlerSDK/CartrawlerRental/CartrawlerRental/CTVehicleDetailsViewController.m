@@ -49,6 +49,7 @@
 @property (weak, nonatomic) IBOutlet CTToolTipButton *pickupLocationButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpacing;
 @property (weak, nonatomic) IBOutlet CTButton *termsAndConditionsButton;
+@property (weak, nonatomic) IBOutlet CTLabel *orSimilarLabel;
 
 @end
 
@@ -71,6 +72,7 @@
     self.totalPriceLabel.text = CTLocalizedString(CTRentalVehicleTotalPrice);
     self.includedForFreeLabel.text = CTLocalizedString(CTRentalIncludedTitle);
     [self.termsAndConditionsButton setTitle:CTLocalizedString(CTRentalIncludedTerms) forState:UIControlStateNormal];
+    self.orSimilarLabel.text = CTLocalizedString(CTRentalVehicleOrSimilar);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -101,7 +103,7 @@
     __weak typeof(self) weakSelf = self;
     
     [self.fuelPolicyButton setText:[CTLocalisedStrings fuelPolicy:self.search.selectedVehicle.vehicle.fuelPolicy] didTap:^{
-        [weakSelf presentViewController:[CTToolTip fullScreenTooltip:NSLocalizedString(@"Fuel policy", @"Fuel policy tooltip title")
+        [weakSelf presentViewController:[CTToolTip fullScreenTooltip:CTLocalizedString(CTRentalVehicleFuelPolicy)
                                                           detailText:[[NSAttributedString alloc]
                                                                       initWithString:[CTLocalisedStrings
                                                                                       toolTipTextForFuelPolicy: weakSelf.search.selectedVehicle.vehicle.fuelPolicy]
@@ -113,7 +115,7 @@
                              completion:nil];
     }];
     
-    NSString *pickupText = [CTLocalisedStrings pickupType:self.search.selectedVehicle] ?: @"Supplier address";
+    NSString *pickupText = [CTLocalisedStrings pickupType:self.search.selectedVehicle] ?: CTLocalizedString(CTRentalVehicleSupplierAddress);
     NSMutableAttributedString *toolTipText = [[NSMutableAttributedString alloc] initWithString:@""];
     
     if ([CTLocalisedStrings pickupType:self.search.selectedVehicle]) {
@@ -126,7 +128,7 @@
                                                            }]];
     } else {
         [toolTipText appendAttributedString: [[NSAttributedString alloc]
-                                              initWithString:[NSString stringWithFormat:@"The suppliers address is:\n\n%@",
+                                              initWithString:[NSString stringWithFormat:@"%@\n\n%@", CTLocalizedString(CTRentalVehicleSupplierAddressDetail),
                                                               self.search.selectedVehicle.vendor.pickupLocation.address]
                                               attributes: @{
                                                             NSForegroundColorAttributeName : [UIColor whiteColor],
@@ -135,7 +137,7 @@
     }
     
     [self.pickupLocationButton setText:pickupText didTap:^{
-        [weakSelf presentViewController:[CTToolTip fullScreenTooltip:NSLocalizedString(@"Pickup location", @"Pickup location tooltip title")
+        [weakSelf presentViewController:[CTToolTip fullScreenTooltip:CTLocalizedString(CTRentalVehiclePickupLocation)
                                                           detailText:toolTipText]
                                animated:YES
                              completion:nil];
@@ -170,7 +172,7 @@
     
     if (self.search.selectedVehicle.vehicle.isAirConditioned) {
         [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@",
-                                            NSLocalizedString(@"Air Conditioning", @"Air Conditioning")],
+                                            CTLocalizedString(CTRentalVehicleAirConditioning)],
                                             @"image" : @"aircon"}];
     }
     

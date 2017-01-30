@@ -15,26 +15,26 @@
 {
     switch (item.vendor.pickupLocation.pickupType) {
         case PickupTypeTerminal:
-            return NSLocalizedString(@"In Terminal", @"");
+            return CTLocalizedString(CTSDKVehiclePickupTypeVLI1VLIX);
         case PickupTypeShuttleBus:
-            return NSLocalizedString(@"Free shuttle bus", @"");
+            return CTLocalizedString(CTSDKVehiclePickupTypeVLI2VLIX);
         case PickupTypeTerminalAndShuttle:
-            return NSLocalizedString(@"Free shuttle bus", @"");
+            return CTLocalizedString(CTSDKVehiclePickupTypeVLI3VLIX);
         case PickupTypeMeetAndGreet:
-            return NSLocalizedString(@"Meet and greet", @"");
+            return CTLocalizedString(CTSDKVehiclePickupTypeVLI4VLIX);
         case PickupTypeCarDriver:
-            return NSLocalizedString(@"Personal driver", @"");
+            return CTLocalizedString(CTSDKVehiclePickupTypeVLI6VLIX);
         case PickupTypeUnknown:
             
             if (item.vendor.pickupLocation.atAirport) {
-                return NSLocalizedString(@"At Airport", @"At Airport");
+                return CTLocalizedString(CTSDKVehiclePickupTypeAtAirport);
             } else {
                 return nil;
             }
             
         default:
             if (item.vendor.pickupLocation.atAirport) {
-                return NSLocalizedString(@"At Airport", @"At Airport");
+                return CTLocalizedString(CTSDKVehiclePickupTypeAtAirport);
             } else {
                 return nil;
             }

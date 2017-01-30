@@ -58,16 +58,16 @@
     NSString *ratingType = @"";
     
     if (self.search.selectedVehicle.vendor.rating.overallScore.floatValue * 2 < 5) {
-        ratingType = @"Below average";
+        ratingType = CTLocalizedString(CTRentalSupplierBelowAverage);
     } else if (self.search.selectedVehicle.vendor.rating.overallScore.floatValue * 2 < 7)  {
-        ratingType = @"Good";
+        ratingType = CTLocalizedString(CTRentalSupplierGood);
     } else {
-        ratingType = @"Excellent";
+        ratingType = CTLocalizedString(CTRentalSupplierExcellent);
     }
     
     NSAttributedString *ratingTypeAttr = [[NSAttributedString alloc] initWithString:ratingType
                                                                          attributes:@{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].boldFontName size:17.0], NSForegroundColorAttributeName: [CTAppearance instance].supplierDetailSecondaryColor}];
-    NSString *reviewString = [NSString stringWithFormat:@"%ld customers rate this car rental company as:\n", (long)self.search.selectedVehicle.vendor.rating.totalReviews.integerValue];
+    NSString *reviewString = [NSString stringWithFormat:@"%ld %@:\n", (long)self.search.selectedVehicle.vendor.rating.totalReviews.integerValue, CTLocalizedString(CTRentalSupplierRatingDetail)];
     
     NSAttributedString *ratingBaseAttr = [[NSAttributedString alloc] initWithString:reviewString
                                                                          attributes:@{NSFontAttributeName: [UIFont fontWithName:[CTAppearance instance].fontName size:17.0], NSForegroundColorAttributeName: [CTAppearance instance].supplierDetailPrimaryColor}];

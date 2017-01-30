@@ -16,6 +16,7 @@
 #import "CTRentalConstants.h"
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTButton.h>
 
 @interface CTFilterViewController ()
 
@@ -34,6 +35,8 @@
 
 @property (nonatomic, strong) CTFilterFactory *filterFactory;
 @property (nonatomic, strong) NSArray <CTFilterContainer *>*viewArray;
+@property (weak, nonatomic) IBOutlet CTButton *resetButton;
+@property (weak, nonatomic) IBOutlet CTButton *doneButton;
 
 @end
 
@@ -69,6 +72,9 @@
     self.vendorsTableView.tableViewTitle        = CTLocalizedString(CTRentalFilterSupplier);
     self.fuelPolicyTableView.tableViewTitle     = CTLocalizedString(CTRentalFilterCarFuel);
     self.transmissionTableView.tableViewTitle   = CTLocalizedString(CTRentalFilterTransmission);
+    
+    [self.resetButton setTitle:CTLocalizedString(CTRentalFilterReset) forState:UIControlStateNormal];
+    [self.doneButton setTitle:CTLocalizedString(CTRentalCTADone) forState:UIControlStateNormal];
 
     [self setupContainers];
     

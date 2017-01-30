@@ -212,8 +212,8 @@
                                                           handler:^(UIAlertAction * action) {
                                                               [self sortVehicles:NO];
                                                           }];
-    
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
+    NSString *cancelString = CTLocalizedString(CTRentalCTACancel);
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:cancelString style:UIAlertActionStyleCancel
                                                                 handler:nil];
     
     [alert addAction:lowestPrice];

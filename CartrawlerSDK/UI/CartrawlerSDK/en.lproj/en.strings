@@ -24,6 +24,29 @@
 "insurance_provider" = "Provided by global insurance and asset management leader Axa *";
 "insurance_policy" = "This policy is underwritten by INTER PARTNER ASSISTANCE SA, member of the AXA Assistance Group, Avenue Louise 166, 1050 Brussels, Belgium. *";
 
+// Pickup type (6-vehicle)
+"vehicle_pickup_type" = "Pickup Type *";
+"vehicle_pickup_location_VWF_1.VWF.X" = "In Terminal *";
+"vehicle_pickup_location_VWF_2.VWF.X" = "On Airport *";
+"vehicle_pickup_location_VWF_3.VWF.X" = "Airport terminal *";
+"vehicle_pickup_location_VWF_4.VWF.X" = "Railway Station *";
+"vehicle_pickup_location_VWF_5.VWF.X" = "Hotel delivery *";
+"vehicle_pickup_location_VWF_6.VWF.X" = "Car Dealer *";
+"vehicle_pickup_location_VWF_7.VWF.X" = "City Center/Downtown *";
+"vehicle_pickup_location_VWF_8.VWF.X" = "East Of City Center *";
+"vehicle_pickup_location_VWF_9.VWF.X" = "South Of City Center *";
+"vehicle_pickup_location_VWF_10.VWF.X" = "West Of City Center *";
+"vehicle_pickup_location_VWF_11.VWF.X" = "North Of City Center *";
+"vehicle_pickup_location_VWF_12.VWF.X" = "Port/Ferry *";
+"vehicle_pickup_location_VWF_13.VWF.X" = "Near Resort *";
+"vehicle_pickup_details_VWF_1.VWF.X" = "This is the most convenient pick-up option. The service desk is located within the airport terminal. *";
+"vehicle_pickup_details_VWF_2.VWF.X" = "The service desk is conveniently located within the grounds of the airport area. *";
+"vehicle_pickup_details_VWF_5.VWF.X" = "Your car will be available to pick-up from the front desk of your hotel. *";
+
+
+
+
+// USED
 
 // Vehicle types (4-filters)
 "vehicle_type_mini" = "Mini *";
@@ -107,26 +130,13 @@
 "vehicle_fuel_policy_desc_CHAUFFULFUL" = "Fuel charges are not included in the rate. You pay for re-filling the tank to full before your chauffeur drops you off. *";
 "vehicle_fuel_policy_desc_CHAUFFUELINC" = "All fuel charges are included.  You will not need to pay for any extra re-fuelling. *";
 
-// Pickup type (6-vehicle)
-"vehicle_pickup_type" = "Pickup Type *";
-"vehicle_pickup_location_VWF_1.VWF.X" = "In Terminal *";
-"vehicle_pickup_location_VWF_2.VWF.X" = "On Airport *";
-"vehicle_pickup_location_VWF_3.VWF.X" = "Airport terminal *";
-"vehicle_pickup_location_VWF_4.VWF.X" = "Railway Station *";
-"vehicle_pickup_location_VWF_5.VWF.X" = "Hotel delivery *";
-"vehicle_pickup_location_VWF_6.VWF.X" = "Car Dealer *";
-"vehicle_pickup_location_VWF_7.VWF.X" = "City Center/Downtown *";
-"vehicle_pickup_location_VWF_8.VWF.X" = "East Of City Center *";
-"vehicle_pickup_location_VWF_9.VWF.X" = "South Of City Center *";
-"vehicle_pickup_location_VWF_10.VWF.X" = "West Of City Center *";
-"vehicle_pickup_location_VWF_11.VWF.X" = "North Of City Center *";
-"vehicle_pickup_location_VWF_12.VWF.X" = "Port/Ferry *";
-"vehicle_pickup_location_VWF_13.VWF.X" = "Near Resort *";
-"vehicle_pickup_details_VWF_1.VWF.X" = "This is the most convenient pick-up option. The service desk is located within the airport terminal. *";
-"vehicle_pickup_details_VWF_2.VWF.X" = "The service desk is conveniently located within the grounds of the airport area. *";
-"vehicle_pickup_details_VWF_5.VWF.X" = "Your car will be available to pick-up from the front desk of your hotel. *";
-
-
+"vehicle_pickup_type_VLI_1.VLI.X" = "In Terminal *";
+"vehicle_pickup_type_VLI_2.VLI.X" = "Free shuttle bus *";
+"vehicle_pickup_type_VLI_3.VLI.X" = "Free shuttle bus *";
+"vehicle_pickup_type_VLI_4.VLI.X" = "Meet and greet *";
+"vehicle_pickup_type_VLI_6.VLI.X" = "Personal driver *";
+"vehicle_pickup_at_airport" = "At Airport *";
+"vehicle_pickup_unknown" = "Unknown *";
 
 
 
@@ -137,25 +147,13 @@
 
 
 // Payment breakdown section (12-summary)
-"summary_desk" = "Pay at desk *";
-"summary_now" = "Pay now *";
+
 "summary_rental" = "Car Hire *";
 "summary_ground" = "Travel *";
-"summary_total" = "Total *";
 
-// Payment page (13-payment)
-"payment_text_1" = "Tap \"Book now\" to complete your booking and accept out *";
-"payment_text_2" = "Terms and Conditions *";
 
-// Receipt page (14-receipt, 15-receipt)
-"receipt_your_reference" = "Your booking reference: *";
-"receipt_email_text_1" = "We have sent a confirmation email to *";
-"receipt_email_text_2" = "This may take up to 15 minutes to arrive. Please review your voucher before picking up your car. *";
-"receipt_scroll" = "Scroll for summary *";
-"receipt_summary_pickup" = "Pickup *";
-"receipt_summary_dropoff" = "Dropoff *";
-"receipt_summary_driver" = "Lead driver details *";
-"receipt_summary_car" = "Car summary *";
+
+
 
 // Widget (16-widget)
 "widget_label" = "NEW *";
@@ -176,6 +174,13 @@
 
 "calendar_select_dates" = "Select your dates *";
 
+"calendar_pickup_date" = "Pickup date *";
+
+"calendar_return_date" = "Return date *";
+
+"calendar_continue" = "Continue *";
+
+"calendar_cancel" = "Cancel *";
 
 //PICKUP TYPES
 "PICKUP_FREE_SHUTTLE_BUS" = "A free shuttle bus will bring you from the airport terminal to the service desk.";

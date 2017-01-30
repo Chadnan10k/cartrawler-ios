@@ -336,6 +336,8 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="700"/>
                     <connections>
+                        <outlet property="doneButton" destination="rAG-vh-DhK" id="EhH-rn-hx7"/>
+                        <outlet property="resetButton" destination="JgV-q9-Lxs" id="Tbn-eg-pqd"/>
                         <outlet property="scrollView" destination="BEh-7y-dW1" id="7vc-jy-ZqK"/>
                         <outlet property="titleLabel" destination="eXq-E9-iXo" id="rMd-jD-C2f"/>
                     </connections>

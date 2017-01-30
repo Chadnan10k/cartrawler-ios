@@ -10,9 +10,17 @@
 
 @interface CTSDKLocalizationConstants : NSObject
 
-extern NSString * const CTCalendarSelectDate;
+extern NSString * const CTSDKCalendarSelectDate;
 
-extern NSString * const CTCalendarSelectDates;
+extern NSString * const CTSDKCalendarSelectDates;
+
+extern NSString * const CTSDKCalendarPickupDate;
+
+extern NSString * const CTSDKCalendarReturnDate;
+
+extern NSString * const CTSDKCalendarContinue;
+
+extern NSString * const CTSDKCalendarCancel;
 
 extern NSString * const CTSDKVehicleTypeMini;
 
@@ -168,5 +176,19 @@ extern NSString * const CTSDKVehicleFuelPolicyDescFullFullHybrid;
 extern NSString * const CTSDKVehicleFuelPolicyDescChaufFulFul;
 
 extern NSString * const CTSDKVehicleFuelPolicyDescChaufFuelInc;
+
+extern NSString * const CTSDKVehiclePickupTypeVLI1VLIX;
+
+extern NSString * const CTSDKVehiclePickupTypeVLI2VLIX;
+
+extern NSString * const CTSDKVehiclePickupTypeVLI3VLIX;
+
+extern NSString * const CTSDKVehiclePickupTypeVLI4VLIX;
+
+extern NSString * const CTSDKVehiclePickupTypeVLI6VLIX;
+
+extern NSString * const CTSDKVehiclePickupTypeAtAirport;
+
+extern NSString * const CTSDKVehiclePickupTypeUnknown;
 
 @end
