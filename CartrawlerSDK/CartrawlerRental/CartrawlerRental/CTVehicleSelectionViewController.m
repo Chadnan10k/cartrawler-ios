@@ -95,6 +95,25 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Search Step",
+                                      @"stepName" : @"Step1",
+                                      @"age" : self.search.driverAge.stringValue,
+                                      @"clientID" : [CTSDKSettings instance].clientId,
+                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode,
+                                      @"pickupID" : self.search.pickupLocation.code,
+                                      @"pickupName" : self.search.pickupLocation.name,
+                                      @"pickupDate" : [self.search.pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                                      @"pickupTime" : [self.search.pickupDate stringFromDateWithFormat:@"HH:mm"],
+                                      @"pickupCountry" : self.search.pickupLocation.codeContext,
+                                      @"returnID" : self.search.dropoffLocation.code,
+                                      @"returnName" : self.search.dropoffLocation.name,
+                                      @"returnDate" : [self.search.dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                                      @"returnTime" : [self.search.dropoffDate stringFromDateWithFormat:@"HH:mm"],
+                                      @"returnCountry" : self.search.dropoffLocation.codeContext,
+                                      @"currency" : [CTSDKSettings instance].homeCountryCode
+                                      } eventName:@"Step of search" eventType:@"Step"];
+    
     if (self.search.vehicleAvailability.items.count < 1) {
         [CTInterstitialViewController present:self search:self.search];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

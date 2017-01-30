@@ -14,8 +14,7 @@
 
 //This header file should be shared to any external analytics frameworks
 
-@property (nonatomic, strong) NSString *target;
-@property (nonatomic, strong) NSString *user;
+@property (nonatomic, strong) NSString *params;
 @property (nonatomic, strong) NSString *eventName;
 @property (nonatomic, strong) NSString *eventType;
 @property (nonatomic, strong) NSString *orderID;

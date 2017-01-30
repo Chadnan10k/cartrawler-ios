@@ -14,6 +14,7 @@
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 
 @interface CTRentalBookingsViewController () <UITableViewDataSource>
 
@@ -49,6 +50,7 @@
 }
 
 - (IBAction)newBooking:(id)sender {
+    [self sendEvent:NO customParams:@{@"buttonName" : @"Add a booking"} eventName:@"Button Click" eventType:@"UserAction"];
     [self pushToDestination];
 }
 

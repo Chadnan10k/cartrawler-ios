@@ -103,7 +103,7 @@
         [self.analyticsProviders addObject:analyticsProvider];
         
     } else {
-        _analyticsProviders = [NSMutableArray new];
+        _analyticsProviders = [NSMutableArray<CTExternalAnalyticsDelegate> new];
         [self.analyticsProviders addObject:analyticsProvider];
     }
 }

@@ -93,12 +93,14 @@
                                       }];
 }
 
-- (void)sendEvent:(BOOL)cartrawlerOnly target:(NSString *)target user:(NSString *)user eventName:(NSString *)eventName eventType:(NSString *)eventType
+- (void)sendEvent:(BOOL)cartrawlerOnly customParams:(NSDictionary *)customParams eventName:(NSString *)eventName eventType:(NSString *)eventType
 {
-    if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(didSendEvent:)]) {
+    if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(didSendEvent:)] && !cartrawlerOnly) {
         
         CTAnalyticsEvent *event = [CTAnalyticsEvent new];
-        event.eventName = @"Test Sale";
+        event.eventName = eventName;
+        event.eventType = eventType;
+        event.params = customParams;
         [self.analyticsDelegate didSendEvent:event];
     }
 }

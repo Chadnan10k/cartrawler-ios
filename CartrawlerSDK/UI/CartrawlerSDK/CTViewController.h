@@ -52,7 +52,7 @@ typedef void (^RentalBookingCompletion)(id *booking);
 
 #pragma mark Analytics
 
-- (void)sendEvent:(BOOL)cartrawlerOnly target:(NSString *)target user:(NSString *)user eventName:(NSString *)eventName eventType:(NSString *)eventType;
+- (void)sendEvent:(BOOL)cartrawlerOnly customParams:(NSDictionary *)customParams eventName:(NSString *)eventName eventType:(NSString *)eventType;
 - (void)trackSale:(NSString *)orderId saleType:(NSString *)saleType value:(NSString *)value quanity:(NSString *)quanity metrics:(NSString *)metrics;
 
 @end

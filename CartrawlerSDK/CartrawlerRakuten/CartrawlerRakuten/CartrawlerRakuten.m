@@ -28,11 +28,18 @@
 
 - (void)didReceiveEvent:(CTAnalyticsEvent *)event
 {
-    NSLog(@"%@", event.eventName);
-//    NSError* error=nil;
-//    NSDictionary* params = [[NSDictionary alloc] initWithObjectsAndKeys: @"Add to Basket", @"Target", @"Jane Doe", @"User", nil];
-//    DCAppEvent* e = [[DCAppEvent alloc] initWithName:@"Tap" type:@"UserAction" andParams:params];
-//    [e logWithError:&error];
+    
+    NSDateFormatter *f = [NSDateFormatter new];
+    f.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss";
+    
+    NSLog(@"event name %@", event.eventName);
+    NSLog(@"event type %@", event.eventType);
+    NSLog(@"params %@", event.params);
+    NSLog(@"time %@", [f stringFromDate:[NSDate date]]);
+
+    NSError* error=nil;
+    DCAppEvent* e = [[DCAppEvent alloc] initWithName:event.eventName type:event.eventType andParams:event.params];
+    [e logWithError:&error];
 }
 
 - (void)didReceiveSaleEvent:(CTAnalyticsEvent *)event

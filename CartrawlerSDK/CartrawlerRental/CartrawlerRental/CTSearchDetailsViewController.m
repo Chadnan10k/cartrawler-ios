@@ -125,8 +125,12 @@
 {
     [super viewWillAppear:animated];
     
-    [self sendEvent:YES target:@"" user:@"" eventName:@"" eventType:@""];
-    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Search Step",
+                                      @"stepName" : @"Step1",
+                                      @"clientID" : [CTSDKSettings instance].clientId,
+                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode
+                                      } eventName:@"Step of search" eventType:@"Step"];
+
     [[CTAnalytics instance] tagScreen:@"Step" detail:@"searchcars" step:@1];
     
     [self.scrollView setContentOffset:
@@ -275,6 +279,7 @@
 }
 
 - (IBAction)next:(id)sender {
+    [self sendEvent:NO customParams:@{@"buttonName" : @"Search for cars"} eventName:@"Button Click" eventType:@"UserAction"];
     self.search.vehicleAvailability = nil;
     [self searchTapped];
 }
