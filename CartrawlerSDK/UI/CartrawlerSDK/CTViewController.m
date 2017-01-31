@@ -101,7 +101,7 @@
         event.eventName = eventName;
         event.eventType = eventType;
         event.params = customParams;
-        [self.analyticsDelegate didSendEvent:event];
+        [self.analyticsDelegate sendAnalyticsEvent:event];
     }
 }
 
@@ -112,7 +112,7 @@
         CTAnalyticsEvent *event = [CTAnalyticsEvent new];
         event.eventName = @"Test Sale";
 
-        [self.analyticsDelegate didSendEvent:event];
+        [self.analyticsDelegate sendAnalyticsEvent:event];
     }
 }
 

@@ -110,7 +110,7 @@
 
 #pragma mark CTExternalAnalyticsDelegate
 
-- (void)didSendEvent:(CTAnalyticsEvent *)event
+- (void)sendAnalyticsEvent:(CTAnalyticsEvent *)event
 {
     if (self.analyticsProviders) {
         for (NSObject<CTExternalAnalyticsDelegate> *obj in self.analyticsProviders) {

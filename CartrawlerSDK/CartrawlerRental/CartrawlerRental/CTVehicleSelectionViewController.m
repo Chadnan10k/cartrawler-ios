@@ -236,12 +236,12 @@
                                       @"pickupName" : self.search.pickupLocation.name,
                                       @"pickupDate" : [self.search.pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
                                       @"pickupTime" : [self.search.pickupDate stringFromDateWithFormat:@"HH:mm"],
-                                      @"pickupCountry" : self.search.pickupLocation.codeContext,
+                                      @"pickupCountry" : self.search.pickupLocation.countryCode,
                                       @"returnID" : self.search.dropoffLocation.code,
                                       @"returnName" : self.search.dropoffLocation.name,
                                       @"returnDate" : [self.search.dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
                                       @"returnTime" : [self.search.dropoffDate stringFromDateWithFormat:@"HH:mm"],
-                                      @"returnCountry" : self.search.dropoffLocation.codeContext,
+                                      @"returnCountry" : self.search.dropoffLocation.countryCode,
                                       @"currency" : [CTSDKSettings instance].homeCountryCode
                                       } eventName:@"Step of search" eventType:@"Step"];
     [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:@2];

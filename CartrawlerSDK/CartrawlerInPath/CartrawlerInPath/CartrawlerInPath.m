@@ -268,6 +268,27 @@
 {
     if (confirmationID) {
         
+        NSString *vehName = [NSString stringWithFormat:@"%@ %@", [CTRentalSearch instance].selectedVehicle.vehicle.makeModelName,
+                             [CTRentalSearch instance].selectedVehicle.vehicle.orSimilar];
+        
+        CTAnalyticsEvent *event = [CTAnalyticsEvent new];
+        event.eventName = @"Booking";
+        event.eventType = @"Booking";
+        event.params = @{@"eventName" : @"Booking",
+                           @"reservationID" : confirmationID,
+                           @"insuranceOffered" : [CTRentalSearch instance].insurance ? @"true" : @"false",
+                           @"insurancePurchased" : [CTRentalSearch instance].isBuyingInsurance ? @"true" : @"false",
+                           @"age" : [CTRentalSearch instance].driverAge.stringValue,
+                           @"clientID" : [CTSDKSettings instance].clientId,
+                           @"residenceID" : [CTSDKSettings instance].homeCountryCode,
+                           @"pickupName" : [CTRentalSearch instance].pickupLocation.name,
+                           @"pickupDate" : [[CTRentalSearch instance].pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                           @"returnName" : [CTRentalSearch instance].dropoffLocation.name,
+                           @"returnDate" : [[CTRentalSearch instance].dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                           @"carSelected" : vehName
+                           };
+        
+        [self.rental.cartrawlerSDK sendAnalyticsEvent:event];
         [CTDataStore didMakeInPathBooking:confirmationID];
     }
 }

@@ -41,7 +41,7 @@
                 if (addressDict[@"CountryName"] != nil) {
                     NSDictionary *countryDict = addressDict[@"CountryName"];
                     if (countryDict[@"@Code"] != nil) {
-                        _addressCode = countryDict[@"@Code"];
+                        _countryCode = countryDict[@"@Code"];
                         _addressStateCode = countryDict[@"@StateCode"];
                     }
                 }
@@ -87,7 +87,7 @@
     _latitude = [f numberFromString:dictionary[@"@Lat"]];
     _longitude = [f numberFromString:dictionary[@"@Lng"]];
 
-    _codeContext = dictionary[@"@CountryCode"];
+    _countryCode = dictionary[@"@CountryCode"];
     _code = dictionary[@"@Code"];
     _name = dictionary[@"@Name"];
     

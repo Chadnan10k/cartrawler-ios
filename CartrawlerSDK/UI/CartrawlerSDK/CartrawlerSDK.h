@@ -57,6 +57,14 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 - (void)addAnalyticsProvider:(NSObject<CTExternalAnalyticsDelegate> *)analyticsProvider;
 
 /**
+ *  Manual way of sending an analytics event
+ *
+ *  @param event The analytics event
+ *
+ */
+- (void)sendAnalyticsEvent:(CTAnalyticsEvent *)event;
+
+/**
  *  Use CTAppearance for overriding the preset views color scheme
  */
 + (CTAppearance *)appearance;

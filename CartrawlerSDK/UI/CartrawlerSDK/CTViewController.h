@@ -20,7 +20,7 @@
 
 @protocol CTAnalyticsDelegate <NSObject>
 @required
-- (void)didSendEvent:(CTAnalyticsEvent *)event;
+- (void)sendAnalyticsEvent:(CTAnalyticsEvent *)event;
 @end
 
 @interface CTViewController : UIViewController

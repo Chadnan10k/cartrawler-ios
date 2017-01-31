@@ -63,7 +63,7 @@
                                          totalCost:[NSString stringWithFormat:@"%.02f", search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue]
                                     pickupDateTime:search.pickupDate
                                     returnDateTime:search.dropoffDate
-                            destinationCountryCode:search.pickupLocation.codeContext
+                            destinationCountryCode:search.pickupLocation.countryCode
                                         completion:
      ^(CTInsurance *response, CTErrorResponse *error) {
          if (response) {
