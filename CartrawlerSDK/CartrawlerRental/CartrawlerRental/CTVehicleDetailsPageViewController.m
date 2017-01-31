@@ -36,7 +36,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-v" step:@3];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-v" step:@3];
 
     _index = 0;
     
