@@ -176,7 +176,7 @@
     [[CTRentalSearch instance] setFromCopy:self.defaultSearch];
     [self configureViews];
     [self presentRentalNavigationController:parentViewController];
-    [[CTAnalytics instance] tagScreen:@"Visit" detail:@"inflow" step:@1];
+    [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@1];
 }
 
 //Lets take what views we need for the nav stack
