@@ -313,7 +313,7 @@
 
 - (void)tagScreen
 {
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-a" step:@6];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-a" step:@6];
     [self sendEvent:NO customParams:@{@"eventName" : @"Address Details Step",
                                       @"stepName" : @"Step6",
                                       } eventName:@"Step of search" eventType:@"Step"];

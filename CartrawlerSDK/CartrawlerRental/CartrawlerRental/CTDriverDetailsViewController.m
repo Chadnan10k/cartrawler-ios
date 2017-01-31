@@ -287,7 +287,7 @@
 
 - (void)tagScreen
 {
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-d" step:@5];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-d" step:@5];
     [self sendEvent:NO customParams:@{@"eventName" : @"Driver Details Step",
                                       @"stepName" : @"Step5",
                                       } eventName:@"Step of search" eventType:@"Step"];

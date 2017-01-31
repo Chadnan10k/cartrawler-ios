@@ -74,7 +74,7 @@
 
 - (IBAction)done:(id)sender
 {
-    [[CTAnalytics instance] tagScreen:@"Exit" detail:@"9" step:@9];
+    [[CTAnalytics instance] tagScreen:@"exit" detail:@"9" step:@9];
     [[CTImageCache sharedInstance] removeAllObjects];
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
@@ -102,7 +102,7 @@
 - (void)tagScreen
 {
 
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"confirmati" step:@9];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"confirmati" step:@9];
     [self sendEvent:NO customParams:@{@"eventName" : @"Booking Confirmation Step",
                                       @"stepName" : @"Step9",
                                       } eventName:@"Step of search" eventType:@"Step"];

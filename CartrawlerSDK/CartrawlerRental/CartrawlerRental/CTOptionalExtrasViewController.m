@@ -83,11 +83,11 @@
 
 - (void)tagScreen
 {
-    NSString *insOfferedA = self.search.insurance ? @"YES" : @"NO";
+    NSString *insOfferedA = self.search.insurance ? @"yes" : @"no";
     NSString *insOfferedB = self.search.insurance ? @"true" : @"false";
 
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-e" step:@4];
-    [[CTAnalytics instance] tagScreen:@"Ins_offer" detail:insOfferedA step:@4];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-e" step:@4];
+    [[CTAnalytics instance] tagScreen:@"ins_offer" detail:insOfferedA step:@4];
     [self sendEvent:NO customParams:@{@"eventName" : @"Insurance & Extras Step",
                                       @"stepName" : @"Step4",
                                       @"insuranceOffered" : insOfferedB

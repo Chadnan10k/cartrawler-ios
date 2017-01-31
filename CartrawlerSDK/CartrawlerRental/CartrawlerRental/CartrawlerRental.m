@@ -45,7 +45,7 @@
     [[CTRentalSearch instance] reset];
     [self configureViews];
     [self presentRentalNavigationController:viewController];
-    [[CTAnalytics instance] tagScreen:@"Visit" detail:@"stand" step:@1];
+    [[CTAnalytics instance] tagScreen:@"visit" detail:@"stand" step:@1];
 }
 
 - (void)presentRentalNavigationController:(UIViewController *)parent

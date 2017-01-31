@@ -244,7 +244,7 @@
                                       @"returnCountry" : self.search.dropoffLocation.codeContext,
                                       @"currency" : [CTSDKSettings instance].homeCountryCode
                                       } eventName:@"Step of search" eventType:@"Step"];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles" step:@2];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:@2];
 }
 
 @end

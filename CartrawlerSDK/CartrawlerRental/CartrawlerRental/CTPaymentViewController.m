@@ -288,7 +288,7 @@
 
 - (void)tagScreen
 {
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"payment" step:@8];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"payment" step:@8];
     [self sendEvent:NO customParams:@{@"eventName" : @"Payment Step",
                                       @"stepName" : @"Step8",
                                       } eventName:@"Step of search" eventType:@"Step"];

@@ -147,7 +147,7 @@
                                       @"carPricePerDay" : pricePerDay.stringValue,
                                       @"carSelected" : vehName,
                                       } eventName:@"Step of search" eventType:@"Step"];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-v" step:@3];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-v" step:@3];
 }
 
 

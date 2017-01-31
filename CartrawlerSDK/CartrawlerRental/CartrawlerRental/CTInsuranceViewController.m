@@ -574,7 +574,7 @@
 
 - (IBAction)addInsurance:(id)sender
 {
-    [[CTAnalytics instance] tagScreen:@"Ins_click" detail:@"1" step:@4];
+    [[CTAnalytics instance] tagScreen:@"ins_click" detail:@"1" step:@4];
     if (self.needsSelectedItem && !self.search.insuranceItem) {
         [self.itemSelectButton shake];
         return;
@@ -585,7 +585,7 @@
 
 - (IBAction)continueNoInsurance:(id)sender
 {
-    [[CTAnalytics instance] tagScreen:@"Ins_click" detail:@"0" step:@4];
+    [[CTAnalytics instance] tagScreen:@"ins_click" detail:@"0" step:@4];
     [self.search setIsBuyingInsurance:NO];
     [self pushToDestination];
 }
@@ -611,8 +611,8 @@
 
 - (void)tagScreen
 {
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-e" step:@4];
-    [[CTAnalytics instance] tagScreen:@"Ins_offer" detail:@"YES" step:@4];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-e" step:@4];
+    [[CTAnalytics instance] tagScreen:@"ins_offer" detail:@"yes" step:@4];
     [self sendEvent:NO customParams:@{@"eventName" : @"Insurance & Extras Step",
                                       @"stepName" : @"Step4",
                                       @"insuranceOffered" : @"true"
