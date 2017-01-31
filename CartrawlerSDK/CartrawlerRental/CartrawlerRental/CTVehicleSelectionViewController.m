@@ -85,7 +85,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles" step:@2];
+    [self tagScreen];
     [self produceHeaderText];
     [self.search addObserver:self forKeyPath:@"vehicleAvailability"
                      options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
@@ -95,24 +95,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [self sendEvent:NO customParams:@{@"eventName" : @"Search Step",
-                                      @"stepName" : @"Step1",
-                                      @"age" : self.search.driverAge.stringValue,
-                                      @"clientID" : [CTSDKSettings instance].clientId,
-                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode,
-                                      @"pickupID" : self.search.pickupLocation.code,
-                                      @"pickupName" : self.search.pickupLocation.name,
-                                      @"pickupDate" : [self.search.pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
-                                      @"pickupTime" : [self.search.pickupDate stringFromDateWithFormat:@"HH:mm"],
-                                      @"pickupCountry" : self.search.pickupLocation.codeContext,
-                                      @"returnID" : self.search.dropoffLocation.code,
-                                      @"returnName" : self.search.dropoffLocation.name,
-                                      @"returnDate" : [self.search.dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
-                                      @"returnTime" : [self.search.dropoffDate stringFromDateWithFormat:@"HH:mm"],
-                                      @"returnCountry" : self.search.dropoffLocation.codeContext,
-                                      @"currency" : [CTSDKSettings instance].homeCountryCode
-                                      } eventName:@"Step of search" eventType:@"Step"];
     
     if (self.search.vehicleAvailability.items.count < 1) {
         [CTInterstitialViewController present:self search:self.search];
@@ -240,6 +222,29 @@
     [alert addAction:cancel];
 
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark analyitics
+- (void)tagScreen
+{
+    [self sendEvent:NO customParams:@{@"eventName" : @"Vehicle Selection Step",
+                                      @"stepName" : @"Step2",
+                                      @"age" : self.search.driverAge.stringValue,
+                                      @"clientID" : [CTSDKSettings instance].clientId,
+                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode,
+                                      @"pickupID" : self.search.pickupLocation.code,
+                                      @"pickupName" : self.search.pickupLocation.name,
+                                      @"pickupDate" : [self.search.pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                                      @"pickupTime" : [self.search.pickupDate stringFromDateWithFormat:@"HH:mm"],
+                                      @"pickupCountry" : self.search.pickupLocation.codeContext,
+                                      @"returnID" : self.search.dropoffLocation.code,
+                                      @"returnName" : self.search.dropoffLocation.name,
+                                      @"returnDate" : [self.search.dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                                      @"returnTime" : [self.search.dropoffDate stringFromDateWithFormat:@"HH:mm"],
+                                      @"returnCountry" : self.search.dropoffLocation.codeContext,
+                                      @"currency" : [CTSDKSettings instance].homeCountryCode
+                                      } eventName:@"Step of search" eventType:@"Step"];
+    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles" step:@2];
 }
 
 @end

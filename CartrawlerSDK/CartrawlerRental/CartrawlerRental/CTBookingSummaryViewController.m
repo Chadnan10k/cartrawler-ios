@@ -34,7 +34,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-p" step:@7];
+    [self tagScreen];
 }
 
 - (IBAction)next:(id)sender
@@ -55,6 +55,16 @@
 {
     CTBookingSummaryView *summaryView = segue.destinationViewController;
     summaryView.search = self.search;
+}
+
+#pragma mark Analytics
+
+- (void)tagScreen
+{
+    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-p" step:@7];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Booking Summary Step",
+                                      @"stepName" : @"Step7",
+                                      } eventName:@"Step of search" eventType:@"Step"];
 }
 
 @end

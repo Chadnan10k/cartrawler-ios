@@ -8,7 +8,7 @@
 
 #import <CartrawlerSDK/CTViewController.h>
 
-@interface CTExtrasViewController : CTViewController
+@interface CTInsuranceViewController : CTViewController
 
 
 

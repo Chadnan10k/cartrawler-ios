@@ -68,11 +68,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-a" step:@6];
 
+    [self tagScreen];
+    
     [self registerForKeyboardNotifications];
     
-    //[self.addressLine1TextField becomeFirstResponder];
     _selectedView = self.addressLine1TextField;
 
     if (self.search) {
@@ -307,6 +307,16 @@
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark Analytics
+
+- (void)tagScreen
+{
+    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-a" step:@6];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Address Details Step",
+                                      @"stepName" : @"Step6",
+                                      } eventName:@"Step of search" eventType:@"Step"];
 }
 
 @end

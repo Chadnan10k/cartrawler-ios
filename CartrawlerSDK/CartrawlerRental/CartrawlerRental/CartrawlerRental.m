@@ -91,7 +91,7 @@
     _vehicleDetailsViewController = [vehicleDetailsStoryboard instantiateViewControllerWithIdentifier:CTRentalVehicleDetailsViewIdentifier];
     
     UIStoryboard *extrasStoryboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:self.bundle];
-    _insuranceCTExtrasViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:CTRentalInsuranceViewIdentifier];
+    _insuranceViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:CTRentalInsuranceViewIdentifier];
     _extrasViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:CTRentalExtrasViewIdentifier];
     
     UIStoryboard *summaryStoryboard = [UIStoryboard storyboardWithName:CTRentalBookingSummaryStoryboard bundle:self.bundle];
@@ -126,17 +126,17 @@
     
     [self.cartrawlerSDK configureViewController:self.vehicleDetailsViewController
                            validationController:[[CTInsuranceValidation alloc] init]
-                                    destination:self.insuranceCTExtrasViewController
+                                    destination:self.insuranceViewController
                                        fallback:self.driverDetialsViewController
                                   optionalRoute:self.extrasViewController
                                          search:[CTRentalSearch instance]
                                          target:self];
     
-    [self.cartrawlerSDK configureViewController:self.insuranceCTExtrasViewController
+    [self.cartrawlerSDK configureViewController:self.insuranceViewController
                            validationController:[[CTGenericValidation alloc] init]
                                     destination:self.driverDetialsViewController
                                        fallback:nil
-                                  optionalRoute:nil
+                                  optionalRoute:self.extrasViewController
                                          search:[CTRentalSearch instance]
                                          target:self];
     

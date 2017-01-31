@@ -46,8 +46,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"payment" step:@8];
 
+    [self tagScreen];
+    
     double total = 0;
     
     if (self.search.isBuyingInsurance) {
@@ -281,6 +282,16 @@
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     
+}
+
+#pragma mark Analytics
+
+- (void)tagScreen
+{
+    [[CTAnalytics instance] tagScreen:@"Step" detail:@"payment" step:@8];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Payment Step",
+                                      @"stepName" : @"Step8",
+                                      } eventName:@"Step of search" eventType:@"Step"];
 }
 
 @end

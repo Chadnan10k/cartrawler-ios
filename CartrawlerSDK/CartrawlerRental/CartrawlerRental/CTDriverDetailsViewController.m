@@ -65,8 +65,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-d" step:@5];
 
+    [self tagScreen];
+    
     [self registerForKeyboardNotifications];
     
     _selectedView = self.firstNameTextField;
@@ -280,6 +281,16 @@
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark Analytics
+
+- (void)tagScreen
+{
+    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-d" step:@5];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Driver Details Step",
+                                      @"stepName" : @"Step5",
+                                      } eventName:@"Step of search" eventType:@"Step"];
 }
 
 @end

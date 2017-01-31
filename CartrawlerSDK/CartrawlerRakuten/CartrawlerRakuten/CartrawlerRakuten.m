@@ -17,8 +17,8 @@
     self = [super init];
     
     DCStorm* tracker = [DCStorm tracker];
-    tracker.siteID = @"5791";
-    tracker.appID = 1;
+    tracker.siteID = @"6957";// 5791
+    tracker.appID = 55;
     tracker.trackingType = TrackingTypeAllEvents;
     tracker.dataConnectType = DataConnectTypeWiFi;
     [[DCStorm tracker] startTracking];

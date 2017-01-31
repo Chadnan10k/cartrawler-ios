@@ -18,6 +18,7 @@
 #import "CTBookingSummaryView.h"
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 
 @interface CTPaymentCompletionViewController () <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet CTLabel *paymentTitleLabel;
@@ -47,7 +48,9 @@
 {
     [super viewDidAppear:animated];
     // Disable iOS 7 back gesture
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"confirmati" step:@9];
+
+    [self tagScreen];
+    
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
         self.navigationController.interactivePopGestureRecognizer.delegate = self;
@@ -92,6 +95,34 @@
         segue.destinationViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
 
     }
+}
+
+#pragma mark Analytics
+
+- (void)tagScreen
+{
+
+    [[CTAnalytics instance] tagScreen:@"Step" detail:@"confirmati" step:@9];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Booking Confirmation Step",
+                                      @"stepName" : @"Step9",
+                                      } eventName:@"Step of search" eventType:@"Step"];
+
+    NSString *vehName = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.makeModelName,
+                         self.search.selectedVehicle.vehicle.orSimilar];
+    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Booking",
+                                      @"reservationID" : self.search.booking.confID,
+                                      @"insuranceOffered" : self.search.insurance ? @"true" : @"false",
+                                      @"insurancePurchased" : self.search.isBuyingInsurance ? @"true" : @"false",
+                                      @"age" : self.search.driverAge.stringValue,
+                                      @"clientID" : [CTSDKSettings instance].clientId,
+                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode,
+                                      @"pickupName" : self.search.pickupLocation.name,
+                                      @"pickupDate" : [self.search.pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                                      @"returnName" : self.search.dropoffLocation.name,
+                                      @"returnDate" : [self.search.dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                                      @"carSelected" : vehName
+                                      } eventName:@"Booking" eventType:@"Booking"];
 }
 
 @end
