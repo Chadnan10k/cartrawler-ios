@@ -8,6 +8,8 @@
 
 #import "CTInsuranceValidation.h"
 #import <CartrawlerSDK/CTSDKSettings.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @implementation CTInsuranceValidation
 
@@ -80,11 +82,11 @@
                  if (search.selectedVehicle.vehicle.extraEquipment.count > 0) {
                      search.insurance = nil;
                      search.isBuyingInsurance = NO;
-                     completion(NO, @"No Insurance Available", YES);
+                     completion(NO, CTLocalizedString(CTRentalErrorNoInsuranceAvailable), YES);
                  } else {
                      search.insurance = nil;
                      search.isBuyingInsurance = NO;
-                     completion(NO, @"No Insurance Available", NO);
+                     completion(NO, CTLocalizedString(CTRentalErrorNoInsuranceAvailable), NO);
                  }
              });
          }

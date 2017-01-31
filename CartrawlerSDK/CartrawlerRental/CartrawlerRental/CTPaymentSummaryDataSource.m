@@ -12,6 +12,8 @@
 #import "CTPaymentVehicleTableViewCell.h"
 #import "CTPaymentSummaryTableViewCell.h"
 #import <CartrawlerSDK/CTAppearance.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTPaymentSummaryDataSource()
 
@@ -114,19 +116,19 @@
     
     switch (section) {
         case 0:
-            headerLabel.text = @"Pick-up";
+            headerLabel.text = CTLocalizedString(CTRentalSummaryPickup);
             break;
         case 1:
-            headerLabel.text = @"Drop-off";
+            headerLabel.text = CTLocalizedString(CTRentalSummaryDropoff);
             break;
         case 2:
-            headerLabel.text = @"Lead driver details";
+            headerLabel.text = CTLocalizedString(CTRentalSummaryLeadDriver);
             break;
         case 3:
-            headerLabel.text = @"Vehicle summary";
+            headerLabel.text = CTLocalizedString(CTRentalSummaryVehicle);
             break;
         case 4:
-            headerLabel.text = @"Payment summary";
+            headerLabel.text = CTLocalizedString(CTRentalSummaryPayment);
             break;
         default:
             break;

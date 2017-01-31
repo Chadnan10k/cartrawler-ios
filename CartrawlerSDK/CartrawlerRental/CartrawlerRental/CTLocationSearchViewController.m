@@ -12,6 +12,7 @@
 #import <CartrawlerSDK/CTAppearance.h>
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTButton.h>
 
 @interface CTLocationSearchViewController () <UISearchBarDelegate>
 
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) CTLocationSearchDataSource *dataSource;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet CTButton *cancelButton;
 
 @end
 
@@ -73,6 +75,8 @@
             }
         });
     };
+    
+    [self.cancelButton setTitle:CTLocalizedString(CTRentalCTACancel) forState:UIControlStateNormal];
 }
 
 - (IBAction)closeTapped:(id)sender {
