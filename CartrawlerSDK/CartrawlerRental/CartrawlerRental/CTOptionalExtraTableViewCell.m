@@ -12,6 +12,8 @@
 #import <CartrawlerSDK/CTStepper.h>
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTRentalSearch.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTOptionalExtraTableViewCell()
 
@@ -66,7 +68,7 @@
                                                          options:0];
     
     self.itemPriceLabel.text = [NSString stringWithFormat:@"%@ %@",
-                                [[NSNumber numberWithFloat:_extra.chargeAmount.floatValue / ([components day] ?: 1 )] numberStringWithCurrencyCode], NSLocalizedString(@"per day", @"")];
+                                [[NSNumber numberWithFloat:_extra.chargeAmount.floatValue / ([components day] ?: 1 )] numberStringWithCurrencyCode], CTLocalizedString(CTRentalExtrasPerDay)];
 }
 
 - (IBAction)add:(id)sender {

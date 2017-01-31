@@ -12,6 +12,8 @@
 #import <CartrawlerSDK/CTAppearance.h>
 #import "CTInPathBanner.h"
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
+#import "CTInPathLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTNewBookingView ()
 
@@ -96,7 +98,7 @@
 {
     _headerLabel = [[CTLabel alloc] initWithFrame:CGRectZero];
     self.headerLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:15];
-    self.headerLabel.text = @"Add Car Rental";
+    self.headerLabel.text = CTLocalizedString(CTInPathWidgetTitle);
     self.headerLabel.numberOfLines = 1;
     self.headerLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.headerLabel];
@@ -121,7 +123,7 @@
     _infoLabel = [[UITextView alloc] initWithFrame:CGRectZero];
     self.infoLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
     self.infoLabel.textColor = [UIColor lightGrayColor];
-    self.infoLabel.text = @"The quickest and easiest way to book car hire";
+    self.infoLabel.text = CTLocalizedString(CTInPathWidgetText);
     self.infoLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.infoLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:self.infoLabel];
@@ -136,7 +138,7 @@
 - (void)addMerchandisingBanner
 {
     CTInPathBanner *banner = [[CTInPathBanner alloc] init];
-    [banner addToSuperViewWithString:@"NEW" superview:self.scrollingBannerContainer];
+    [banner addToSuperViewWithString:CTLocalizedString(CTInPathWidgetLabel) superview:self.scrollingBannerContainer];
 }
 
 - (void)animateVehicle

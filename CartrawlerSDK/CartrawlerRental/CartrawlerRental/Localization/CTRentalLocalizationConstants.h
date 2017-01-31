@@ -78,6 +78,10 @@ extern NSString * const CTRentalSearchReturnTimeText;
 
 extern NSString * const CTRentalSearchLocationsPlaceholder;
 
+extern NSString * const CTRentalSearchLocationsAirport;
+
+extern NSString * const CTRentalSearchLocationsOther;
+
 extern NSString * const CTRentalBookingTableHeaderTitle;
 
 extern NSString * const CTRentalBookingReferencePrefix;
@@ -98,23 +102,11 @@ extern NSString * const CTRentalResultsFilter;
 
 extern NSString * const CTRentalVehicleOrSimilar;
 
-extern NSString * const CTRentalVehiclePassenger;
-
 extern NSString * const CTRentalVehiclePassengers;
-
-extern NSString * const CTRentalVehicleBag;
 
 extern NSString * const CTRentalVehicleBags;
 
-extern NSString * const CTRentalVehicleDoor;
-
 extern NSString * const CTRentalVehicleDoors;
-
-extern NSString * const CTRentalVehicleDuration1;
-
-extern NSString * const CTRentalVehicleDuration2;
-
-extern NSString * const CTRentalVehicleDuration3;
 
 extern NSString * const CTRentalVehicleTotalPrice;
 
@@ -146,43 +138,21 @@ extern NSString * const CTRentalSortRating;
 
 extern NSString * const CTRentalSortRecommended;
 
-extern NSString * const CTRentalFilterPackage;
-
 extern NSString * const CTRentalFilterCarsize;
 
 extern NSString * const CTRentalFilterPickup;
 
 extern NSString * const CTRentalFilterSupplier;
 
-extern NSString * const CTRentalFilterRating;
-
 extern NSString * const CTRentalFilterFuel;
 
 extern NSString * const CTRentalFilterCarFuel;
 
-extern NSString * const CTRentalFilterCarspec;
-
 extern NSString * const CTRentalFilterTransmission;
-
-extern NSString * const CTRentalFilterSpecialOffers;
-
-extern NSString * const CTRentalFilterTransferType;
-
-extern NSString * const CTRentalFilterTransferTime;
 
 extern NSString * const CTRentalFilterReset;
 
 extern NSString * const CTRentalIncludedTitle;
-
-extern NSString * const CTRentalIncludedCancel;
-
-extern NSString * const CTRentalIncludedAmend;
-
-extern NSString * const CTRentalIncludedThirdParty;
-
-extern NSString * const CTRentalIncludedTheft;
-
-extern NSString * const CTRentalIncludedCollision;
 
 extern NSString * const CTRentalIncludedTerms;
 
@@ -209,6 +179,10 @@ extern NSString * const CTRentalSupplierExcellent;
 extern NSString * const CTRentalSupplierRatingDetail;
 
 extern NSString * const CTRentalExtrasConditions;
+
+extern NSString * const CTRentalExtrasPerDay;
+
+extern NSString * const CTRentalExtrasPlaceholder;
 
 extern NSString * const CTRentalInsuranceSummaryTitle;
 
@@ -240,6 +214,10 @@ extern NSString * const CTRentalPaymentText1;
 
 extern NSString * const CTRentalPaymentText2;
 
+extern NSString * const CTRentalReceiptCongratulations;
+
+extern NSString * const CTRentalReceiptSuccess;
+
 extern NSString * const CTRentalReceiptYourReference;
 
 extern NSString * const CTRentalReceiptEmailText1;
@@ -247,14 +225,6 @@ extern NSString * const CTRentalReceiptEmailText1;
 extern NSString * const CTRentalReceiptEmailText2;
 
 extern NSString * const CTRentalReceiptScroll;
-
-extern NSString * const CTRentalReceiptSummaryPickup;
-
-extern NSString * const CTRentalReceiptSummaryDropoff;
-
-extern NSString * const CTRentalReceiptSummaryDriver;
-
-extern NSString * const CTRentalReceiptSummaryCar;
 
 extern NSString * const CTRentalErrorPaymentNoInternet1;
 

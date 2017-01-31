@@ -1,52 +1,9 @@
-
-// Not used from spreadsheet
-"title_search_ground" = "Find ground transport *";
-"title_locations" = "Locations *";
-"title_calendar" = "Datepicker *";
-"CTA_save" = "Save settings *";
-"search_pickup_location_hint" = "Enter airport, city or station name *";
-"search_return_location_hint" = "Enter airport, city or station name *";
-"search_select_dates" = "Dates *";
-"vehicle_fuel_petrol" = "Petrol *";
-"vehicle_fuel_diesel" = "Diesel *";
-"vehicle_transmission_auto" = "Automatic *";
-"vehicle_transmission_manual" = "Manual *";
-"extras_equipment_aircon" = "Air Conditioning *";
-"extras_equipment_gps" = "GPS *";
-"extras_back" = "extras_back *";
-"insurance_summary_replace_src" = "tick the box below *";
-"insurance_summary_replace_val" = "choose to continue with insurance *";
-"insurance_list_1" = "Great value - Eliminate potential liability of up to €3,000 for just €160 *";
-"insurance_list_2" = "Best protection - In the event of damage or theft to the car and you are required to pay the excess, it will be fully refunded *";
-"insurance_list_3" = "Peace of mind- You are fully covered for your excess when things go wrong *";
-"insurance_conditions_1" = "Please see the  *";
-"insurance_conditions_2" = "Terms and Conditions for full details. *";
-"insurance_provider" = "Provided by global insurance and asset management leader Axa *";
-"insurance_policy" = "This policy is underwritten by INTER PARTNER ASSISTANCE SA, member of the AXA Assistance Group, Avenue Louise 166, 1050 Brussels, Belgium. *";
-
 // Pickup type (6-vehicle)
-"vehicle_pickup_type" = "Pickup Type *";
-"vehicle_pickup_location_VWF_1.VWF.X" = "In Terminal *";
-"vehicle_pickup_location_VWF_2.VWF.X" = "On Airport *";
-"vehicle_pickup_location_VWF_3.VWF.X" = "Airport terminal *";
-"vehicle_pickup_location_VWF_4.VWF.X" = "Railway Station *";
-"vehicle_pickup_location_VWF_5.VWF.X" = "Hotel delivery *";
-"vehicle_pickup_location_VWF_6.VWF.X" = "Car Dealer *";
-"vehicle_pickup_location_VWF_7.VWF.X" = "City Center/Downtown *";
-"vehicle_pickup_location_VWF_8.VWF.X" = "East Of City Center *";
-"vehicle_pickup_location_VWF_9.VWF.X" = "South Of City Center *";
-"vehicle_pickup_location_VWF_10.VWF.X" = "West Of City Center *";
-"vehicle_pickup_location_VWF_11.VWF.X" = "North Of City Center *";
-"vehicle_pickup_location_VWF_12.VWF.X" = "Port/Ferry *";
-"vehicle_pickup_location_VWF_13.VWF.X" = "Near Resort *";
 "vehicle_pickup_details_VWF_1.VWF.X" = "This is the most convenient pick-up option. The service desk is located within the airport terminal. *";
 "vehicle_pickup_details_VWF_2.VWF.X" = "The service desk is conveniently located within the grounds of the airport area. *";
+"vehicle_pickup_details_VWF_4.VWF.X" = "This is a meet and greet service. Your driver will be waiting for you on arrival. Please supply us with your flight number so that the driver can track your flight for delays. *";
 "vehicle_pickup_details_VWF_5.VWF.X" = "Your car will be available to pick-up from the front desk of your hotel. *";
-
-
-
-
-// USED
+"vehicle_pickup_details_VWF_6.VWF.X" = "This is a meet and greet service. Your driver will be waiting for you on arrival. Please supply us with your flight number so that the driver can track your flight for delays. *";
 
 // Vehicle types (4-filters)
 "vehicle_type_mini" = "Mini *";
@@ -131,42 +88,18 @@
 "vehicle_fuel_policy_desc_CHAUFFUELINC" = "All fuel charges are included.  You will not need to pay for any extra re-fuelling. *";
 
 "vehicle_pickup_type_VLI_1.VLI.X" = "In Terminal *";
+
 "vehicle_pickup_type_VLI_2.VLI.X" = "Free shuttle bus *";
+
 "vehicle_pickup_type_VLI_3.VLI.X" = "Free shuttle bus *";
+
 "vehicle_pickup_type_VLI_4.VLI.X" = "Meet and greet *";
+
 "vehicle_pickup_type_VLI_6.VLI.X" = "Personal driver *";
+
 "vehicle_pickup_at_airport" = "At Airport *";
+
 "vehicle_pickup_unknown" = "Unknown *";
-
-
-
-
-
-
-
-
-
-// Payment breakdown section (12-summary)
-
-"summary_rental" = "Car Hire *";
-"summary_ground" = "Travel *";
-
-
-
-
-
-// Widget (16-widget)
-"widget_label" = "NEW *";
-"widget_title" = "Add car rental *";
-"widget_text" = "The quickest and easiest way to book car hire *";
-"widget_title_added" = "Car added *";
-
-// Validation and errors
-"general_form_empty" = "Please fill in this field *";
-"results_empty" = "No results *";
-"error_widget_no_cars" = "Could not find vehicles for this location *";
-"error_payment_general" = "Error occurred during payment *";
-"error_requestor_missing" = "No requestor ID was provided *";
 
 // Calendar Criteria
 
@@ -182,37 +115,16 @@
 
 "calendar_cancel" = "Cancel *";
 
-//PICKUP TYPES
-"PICKUP_FREE_SHUTTLE_BUS" = "A free shuttle bus will bring you from the airport terminal to the service desk.";
+"calendar_sun" = "Sun *";
 
-"PICKUP_MEET_GREET" = "This is a meet and greet service. Your driver will be waiting for you on arrival. Please supply us with your flight number so that the driver can track your flight for delays.";
+"calendar_mon" = "Mon *";
 
-"PICKUP_PERSONAL_DRIVER" = "This is a meet and greet service. Your driver will be waiting for you on arrival. Please supply us with your flight number so that the driver can track your flight for delays.";
+"calendar_tue" = "Tue *";
 
-"PICKUP_UNKNOWN" = "";
+"calendar_wed" = "Wed *";
 
-"PICKUP_IN_TERMINAL" = "This is the most convenient pick-up option. The service desk is located within the airport terminal.";
+"calendar_thu" = "Thu *";
 
-//FUEL POLICY
-"FUEL_POLICY_FULL_EMPTY_REFUND" = "Your car comes with a full tank of fuel. You will be charged for this at the service desk and you will incur a non-refundable administration fee. You will be refunded for any unused fuel once you return the car.";
+"calendar_fri" = "Fri *";
 
-"FUEL_POLICY_FULL_EMPTY" = "Your car comes with a full tank of fuel but you will be charged for this at the service desk. The car should be returned with an empty tank, as no refund will be given for any unused fuel.";
-
-"FUEL_POLICY_ELECTRIC_VEHICLE" = "Your electric car comes with a fully charged battery, which gets you up to 150km of driving. You do not need to return the car fully charged - just make sure you have enough charge to return it!";
-
-"FUEL_POLICY_FULL_FULL" = "This is the best fuel option. Your car comes with a full tank of fuel. Simply return the car with a full tank to avoid any re-fuelling charges.";
-
-"FUEL_POLICY_EMPTY_EMPTY" = "Your car comes with sufficient fuel to get you to the closest petrol station. The car should be returned with an empty tank, as no refund will be given for any unused fuel.";
-
-"FUEL_POLICY_HALF_EMPTY" = "Your car is provided with a half tank of fuel. You will be charged for this fuel at the service desk. You can use as much of this fuel as you like and do not need to re-fill before returning the car";
-
-"FUEL_POLICY_QUARTER_EMPTY" = "Your car is provided with a quarter tank of fuel. You will be charged for this fuel at the service desk. You can use as much of this fuel as you like and do not need to re-fill before returning the car";
-
-"FUEL_POLICY_HALF_HALF" = "Your car comes with a half tank of fuel. Return the car with a half tank to avoid any refuelling charges. If you return the car with more fuel, you will not receive any additional refund.";
-
-"FUEL_POLICY_QUARTER_QUARTER" = "Your car is provided with a quarter tank of fuel. You will be charged for this fuel at the service desk. You can use as much of this fuel as you like and do not need to re-fill before returning the car";
-
-"FUEL_POLICY_FULL_FULL_HYBRID" = "Your car is supplied with a full tank of fuel. You can choose to pay for the fuel in advance at the service desk (Pre-Purchase) or to re-fill the tank before returning the car (Full to Full). Either way, be sure to let the car hire supplier know which fuel policy you would like.";
-
-"FUEL_POLICY_CHAUF_FULL_FULL" = "Fuel charges are not included in the rate. You pay for re-filling the tank to full before your chauffeur drops you off.";
-
+"calendar_sat" = "Sat *";

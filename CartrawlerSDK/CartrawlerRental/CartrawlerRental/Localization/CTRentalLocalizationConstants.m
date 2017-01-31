@@ -76,6 +76,10 @@ NSString * const CTRentalSearchReturnTimeText = @"search_return_time_text";
 
 NSString * const CTRentalSearchLocationsPlaceholder = @"search_locations_placeholder";
 
+NSString * const CTRentalSearchLocationsAirport = @"search_locations_airport";
+
+NSString * const CTRentalSearchLocationsOther = @"search_locations_other";
+
 NSString * const CTRentalBookingTableHeaderTitle = @"booking_table_header_title";
 
 NSString * const CTRentalBookingReferencePrefix = @"booking_reference_prefix";
@@ -96,23 +100,11 @@ NSString * const CTRentalResultsFilter = @"results_filter";
 
 NSString * const CTRentalVehicleOrSimilar = @"vehicle_orsimilar";
 
-NSString * const CTRentalVehiclePassenger = @"vehicle_passenger";
-
 NSString * const CTRentalVehiclePassengers = @"vehicle_passengers";
-
-NSString * const CTRentalVehicleBag = @"vehicle_bag";
 
 NSString * const CTRentalVehicleBags = @"vehicle_bags";
 
-NSString * const CTRentalVehicleDoor = @"vehicle_door";
-
 NSString * const CTRentalVehicleDoors = @"vehicle_doors";
-
-NSString * const CTRentalVehicleDuration1 = @"vehicle_duration_1";
-
-NSString * const CTRentalVehicleDuration2 = @"vehicle_duration_2";
-
-NSString * const CTRentalVehicleDuration3 = @"vehicle_duration_3";
 
 NSString * const CTRentalVehicleTotalPrice = @"vehicle_total_price";
 
@@ -144,43 +136,21 @@ NSString * const CTRentalSortRating = @"rental_sort_rating";
 
 NSString * const CTRentalSortRecommended = @"rental_sort_recommended";
 
-NSString * const CTRentalFilterPackage = @"filter_package";
-
 NSString * const CTRentalFilterCarsize = @"filter_carsize";
 
 NSString * const CTRentalFilterPickup = @"filter_pickup";
 
 NSString * const CTRentalFilterSupplier = @"filter_supplier";
 
-NSString * const CTRentalFilterRating = @"filter_rating";
-
 NSString * const CTRentalFilterFuel = @"filter_fuel";
 
 NSString * const CTRentalFilterCarFuel = @"filter_carfuel";
 
-NSString * const CTRentalFilterCarspec = @"filter_carspec";
-
 NSString * const CTRentalFilterTransmission = @"filter_transmission";
-
-NSString * const CTRentalFilterSpecialOffers = @"filter_specialoffers";
-
-NSString * const CTRentalFilterTransferType = @"filter_transfertype";
-
-NSString * const CTRentalFilterTransferTime = @"filter_transfertime";
 
 NSString * const CTRentalFilterReset = @"filter_reset";
 
 NSString * const CTRentalIncludedTitle = @"included_title";
-
-NSString * const CTRentalIncludedCancel = @"included_cancel";
-
-NSString * const CTRentalIncludedAmend = @"included_amend";
-
-NSString * const CTRentalIncludedThirdParty = @"included_thirdparty";
-
-NSString * const CTRentalIncludedTheft = @"included_theft";
-
-NSString * const CTRentalIncludedCollision = @"included_collision";
 
 NSString * const CTRentalIncludedTerms = @"included_terms";
 
@@ -207,6 +177,10 @@ NSString * const CTRentalSupplierExcellent = @"supplier_excellent";
 NSString * const CTRentalSupplierRatingDetail = @"supplier_rating_detail";
 
 NSString * const CTRentalExtrasConditions = @"extras_conditions";
+
+NSString * const CTRentalExtrasPerDay = @"extras_per_day";
+
+NSString * const CTRentalExtrasPlaceholder = @"extras_placeholder";
 
 NSString * const CTRentalInsuranceSummaryTitle = @"insurance_summary_title";
 
@@ -238,6 +212,10 @@ NSString * const CTRentalPaymentText1 = @"payment_text_1";
 
 NSString * const CTRentalPaymentText2 = @"payment_text_2";
 
+NSString * const CTRentalReceiptCongratulations = @"receipt_congratulations";
+
+NSString * const CTRentalReceiptSuccess = @"receipt_success";
+
 NSString * const CTRentalReceiptYourReference = @"receipt_your_reference";
 
 NSString * const CTRentalReceiptEmailText1 = @"receipt_email_text_1";
@@ -245,14 +223,6 @@ NSString * const CTRentalReceiptEmailText1 = @"receipt_email_text_1";
 NSString * const CTRentalReceiptEmailText2 = @"receipt_email_text_2";
 
 NSString * const CTRentalReceiptScroll = @"receipt_scroll";
-
-NSString * const CTRentalReceiptSummaryPickup = @"receipt_summary_pickup";
-
-NSString * const CTRentalReceiptSummaryDropoff = @"receipt_summary_dropoff";
-
-NSString * const CTRentalReceiptSummaryDriver = @"receipt_summary_driver";
-
-NSString * const CTRentalReceiptSummaryCar = @"receipt_summary_car";
 
 NSString * const CTRentalErrorPaymentNoInternet1 = @"error_payment_no_internet1";
 

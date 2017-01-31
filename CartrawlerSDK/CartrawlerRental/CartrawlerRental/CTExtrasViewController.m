@@ -109,7 +109,7 @@
                                                          options:0];
 
     self.pricePerDayLabel.text = [NSString stringWithFormat:@"%@ %@",
-                                  [[NSNumber numberWithFloat:self.search.insurance.premiumAmount.floatValue / ([components day] ?: 1)] numberStringWithCurrencyCode], NSLocalizedString(@"per day", @"")];
+                                  [[NSNumber numberWithFloat:self.search.insurance.premiumAmount.floatValue / ([components day] ?: 1)] numberStringWithCurrencyCode], CTLocalizedString(CTRentalExtrasPerDay)];
 }
 
 - (void)viewDidLayoutSubviews
@@ -560,7 +560,7 @@
     insurerTitle.textAlignment = NSTextAlignmentCenter;
     insurerTitle.font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
     insurerTitle.translatesAutoresizingMaskIntoConstraints = NO;
-    insurerTitle.text = NSLocalizedString(@"Provided by global insurance & asset management leader Axa.", @"");
+    insurerTitle.text = CTLocalizedString(CTRentalExtrasPlaceholder);
     insurerTitle.numberOfLines = 0;
     [placeholder addSubview:insurerTitle];
     

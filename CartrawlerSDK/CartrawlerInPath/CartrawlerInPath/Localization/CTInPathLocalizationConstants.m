@@ -1,5 +1,5 @@
 //
-//  CTInPathLocalizationStrings.m
+//  CTInPathLocalizationConstants.m
 //  CartrawlerInPath
 //
 //  Created by Alan on 31/01/2017.

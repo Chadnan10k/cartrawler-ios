@@ -1,7 +1,7 @@
-/* 
-  en.strings
-  CartrawlerInPath
+"widget_label" = "NEW *";
 
-  Created by Alan on 31/01/2017.
-  Copyright © 2017 Cartrawler. All rights reserved.
-*/
+"widget_title" = "Add car rental *";
+
+"widget_text" = "The quickest and easiest way to book car hire *";
+
+"widget_title_added" = "Car added *";

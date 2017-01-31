@@ -22,6 +22,20 @@ NSString * const CTSDKCalendarContinue = @"calendar_continue";
 
 NSString * const CTSDKCalendarCancel = @"calendar_cancel";
 
+NSString * const CTSDKCalendarSun = @"calendar_sun";
+
+NSString * const CTSDKCalendarMon = @"calendar_mon";
+
+NSString * const CTSDKCalendarTue = @"calendar_tue";
+
+NSString * const CTSDKCalendarWed = @"calendar_wed";
+
+NSString * const CTSDKCalendarThu = @"calendar_thu";
+
+NSString * const CTSDKCalendarFri = @"calendar_fri";
+
+NSString * const CTSDKCalendarSat = @"calendar_sat";
+
 NSString * const CTSDKVehicleTypeMini = @"vehicle_type_mini";
 
 NSString * const CTSDKVehicleTypeEconomy = @"vehicle_type_economy";
@@ -175,6 +189,16 @@ NSString * const CTSDKVehicleFuelPolicyDescFullFullHybrid = @"vehicle_fuel_polic
 NSString * const CTSDKVehicleFuelPolicyDescChaufFulFul = @"vehicle_fuel_policy_desc_CHAUFFULFUL";
 
 NSString * const CTSDKVehicleFuelPolicyDescChaufFuelInc = @"vehicle_fuel_policy_desc_CHAUFFUELINC";
+
+NSString * const CTSDKVehiclePickupDetailsVWF1VWFX = @"vehicle_pickup_details_VWF_1.VWF.X";
+
+NSString * const CTSDKVehiclePickupDetailsVWF2VWFX = @"vehicle_pickup_details_VWF_2.VWF.X";
+
+NSString * const CTSDKVehiclePickupDetailsVWF4VWFX = @"vehicle_pickup_details_VWF_4.VWF.X";
+
+NSString * const CTSDKVehiclePickupDetailsVWF5VWFX = @"vehicle_pickup_details_VWF_5.VWF.X";
+
+NSString * const CTSDKVehiclePickupDetailsVWF6VWFX = @"vehicle_pickup_details_VWF_6.VWF.X";
 
 NSString * const CTSDKVehiclePickupTypeVLI1VLIX = @"vehicle_pickup_type_VLI_1.VLI.X";
 

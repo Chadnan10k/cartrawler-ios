@@ -12,6 +12,8 @@
 #import "CTLocationSearchTableViewCell.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTAnalytics.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTLocationSearchDataSource()
 @property (nonatomic, strong) NSMutableArray <CTMatchedLocation *> *airportLocations;
@@ -149,14 +151,14 @@
     [headerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[label]-0-|" options:0 metrics:nil views:@{@"label" : label}]];
 
     if (section == (self.invertData ? 1 : 0)) {
-        [label setText:NSLocalizedString(@"Airport", @"")];
+        [label setText:CTLocalizedString(CTRentalSearchLocationsAirport)];
         if (self.airportLocations.count > 0) {
             return headerView;
         } else {
             return nil;
         }
     } else {
-        [label setText:NSLocalizedString(@"All other locations", @"")];
+        [label setText:CTLocalizedString(CTRentalSearchLocationsOther)];
         if (self.otherLocations.count > 0) {
             return headerView;
         } else {

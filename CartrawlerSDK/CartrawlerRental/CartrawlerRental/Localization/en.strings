@@ -7,6 +7,8 @@
 
 "title_results" = "Results *";
 
+"title_filters" = "Filters *";
+
 "title_details" = "Car Details *";
 
 "title_details_vehicle" = "Details *";
@@ -69,6 +71,10 @@
 
 "search_locations_placeholder" = "Type in location *";
 
+"search_locations_airport" = "Airport *";
+
+"search_locations_other" = "All other locations *";
+
 // Booking Manager
 
 "booking_table_header_title" = "Upcoming Bookings *";
@@ -95,23 +101,11 @@
 
 "vehicle_orsimilar" = "or similar *";
 
-"vehicle_passenger" = "Passenger *";
-
 "vehicle_passengers" = "Passengers *";
-
-"vehicle_bag" = "Bag *";
 
 "vehicle_bags" = "Bags *";
 
-"vehicle_door" = "Door *";
-
 "vehicle_doors" = "Doors *";
-
-"vehicle_duration_1" = "Price for *";
-
-"vehicle_duration_2" = "day *";
-
-"vehicle_duration_3" = "days *";
 
 "vehicle_total_price" = "Total price *";
 
@@ -147,45 +141,23 @@
 
 // Filter titles (4-filters)
 
-"filter_package" = "Package *";
-
 "filter_carsize" = "Car Size *";
 
 "filter_pickup" = "Pick-up Location *";
 
 "filter_supplier" = "Supplier *";
 
-"filter_rating" = "Rating *";
-
 "filter_fuel" = "Fuel Policy *";
 
 "filter_carfuel" = "Fuel Type *";
 
-"filter_carspec" = "Car Specifications *";
-
 "filter_transmission" = "Transmission *";
-
-"filter_specialoffers" = "Special Offer *";
-
-"filter_transfertype" = "Transfer Type *";
-
-"filter_transfertime" = "Journey Time *";
 
 "filter_reset" = "Reset *";
 
 // "Included for free" section (6-vehicle)
 
 "included_title" = "Included for Free: *";
-
-"included_cancel" = "Cancellation *";
-
-"included_amend" = "Amendments *";
-
-"included_thirdparty" = "Third Party Liability *";
-
-"included_theft" = "Theft Protection *";
-
-"included_collision" = "Collision Damage Waiver *";
 
 "included_terms" = "Terms and Conditions *";
 
@@ -216,6 +188,10 @@
 // Extras section (8-extras)
 
 "extras_conditions" = "Please note that extras are paid at the car rental desk. We try to ensure customers get all extras however availability is not always guaranteed. *";
+
+"extras_per_day" = "per day *";
+
+"extras_placeholder" = "Provided by global insurance & asset management leader Axa. *";
 
 // Insurance section (9-insurance)
 
@@ -277,6 +253,10 @@
 
 // Receipt page (14-receipt, 15-receipt)
 
+"receipt_congratulations" = "Congratulations! *";
+
+"receipt_success" = "Your booking was successful *";
+
 "receipt_your_reference" = "Your booking reference: *";
 
 "receipt_email_text_1" = "We have sent a confirmation email to *";
@@ -284,14 +264,6 @@
 "receipt_email_text_2" = "This may take up to 15 minutes to arrive. Please review your voucher before picking up your car. *";
 
 "receipt_scroll" = "Scroll for summary *";
-
-"receipt_summary_pickup" = "Pickup *";
-
-"receipt_summary_dropoff" = "Dropoff *";
-
-"receipt_summary_driver" = "Lead driver details *";
-
-"receipt_summary_car" = "Car summary *";
 
 // Validation and errors
 
