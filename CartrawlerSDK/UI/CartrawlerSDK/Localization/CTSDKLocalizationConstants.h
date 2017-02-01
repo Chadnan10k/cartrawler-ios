@@ -22,6 +22,20 @@ extern NSString * const CTSDKCalendarContinue;
 
 extern NSString * const CTSDKCalendarCancel;
 
+extern NSString * const CTSDKCalendarSun;
+
+extern NSString * const CTSDKCalendarMon;
+
+extern NSString * const CTSDKCalendarTue;
+
+extern NSString * const CTSDKCalendarWed;
+
+extern NSString * const CTSDKCalendarThu;
+
+extern NSString * const CTSDKCalendarFri;
+
+extern NSString * const CTSDKCalendarSat;
+
 extern NSString * const CTSDKVehicleTypeMini;
 
 extern NSString * const CTSDKVehicleTypeEconomy;
@@ -122,7 +136,6 @@ extern NSString * const CTSDKVehicleTypeOversize;
 
 extern NSString * const CTSDKVehicleTypeUnknown;
 
-
 extern NSString * const CTSDKVehicleFuelPolicy;
 
 extern NSString * const CTSDKVehicleFuelPolicyTypeElectricVehicle;
@@ -176,6 +189,16 @@ extern NSString * const CTSDKVehicleFuelPolicyDescFullFullHybrid;
 extern NSString * const CTSDKVehicleFuelPolicyDescChaufFulFul;
 
 extern NSString * const CTSDKVehicleFuelPolicyDescChaufFuelInc;
+
+extern NSString * const CTSDKVehiclePickupDetailsVWF1VWFX;
+
+extern NSString * const CTSDKVehiclePickupDetailsVWF2VWFX;
+
+extern NSString * const CTSDKVehiclePickupDetailsVWF4VWFX;
+
+extern NSString * const CTSDKVehiclePickupDetailsVWF5VWFX;
+
+extern NSString * const CTSDKVehiclePickupDetailsVWF6VWFX;
 
 extern NSString * const CTSDKVehiclePickupTypeVLI1VLIX;
 

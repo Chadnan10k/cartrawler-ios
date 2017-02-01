@@ -13,6 +13,8 @@
 #import "CalendarLogicController.h"
 #import "CTCalendarView.h"
 #import "CTAppearance.h"
+#import "CTSDKLocalizationConstants.h"
+#import "CTLocalisedStrings.h"
 
 @interface CTCalendarView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -154,13 +156,13 @@
     [self.weekDayTitle.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     CGFloat width = (CGRectGetWidth(frame) - self.padding * 2) / 7;
     
-    NSArray *titles = @[NSLocalizedString(@"Sun", @""),
-                        NSLocalizedString(@"Mon", @""),
-                        NSLocalizedString(@"Tue", @""),
-                        NSLocalizedString(@"Wed", @""),
-                        NSLocalizedString(@"Thu", @""),
-                        NSLocalizedString(@"Fri", @""),
-                        NSLocalizedString(@"Sat", @"")];
+    NSArray *titles = @[CTLocalizedString(CTSDKCalendarSun),
+                        CTLocalizedString(CTSDKCalendarMon),
+                        CTLocalizedString(CTSDKCalendarTue),
+                        CTLocalizedString(CTSDKCalendarWed),
+                        CTLocalizedString(CTSDKCalendarThu),
+                        CTLocalizedString(CTSDKCalendarFri),
+                        CTLocalizedString(CTSDKCalendarSat)];
     
     NSMutableArray<UILabel *> *labelArray = [[NSMutableArray alloc] init];
     

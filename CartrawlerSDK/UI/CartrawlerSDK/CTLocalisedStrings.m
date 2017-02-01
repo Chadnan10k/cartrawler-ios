@@ -43,197 +43,104 @@
 
 + (NSString *)vehicleSize:(VehicleSize)size {
     switch (size) {
-        case VehicleSizeMini: {
-            
+        case VehicleSizeMini:
             return CTLocalizedString(CTSDKVehicleTypeMini);
-        }
-        case VehicleSizeSubcompact: {
-            
+        case VehicleSizeSubcompact:
             return CTLocalizedString(CTSDKVehicleTypeSubcompact);
-        }
-        case VehicleSizeEconomy: {
-            
+        case VehicleSizeEconomy:
             return CTLocalizedString(CTSDKVehicleTypeEconomy);
-        }
-        case VehicleSizeCompact: {
-            
+        case VehicleSizeCompact:
             return CTLocalizedString(CTSDKVehicleTypeEconomy);
-        }
-        case VehicleSizeMidsize: {
-            
+        case VehicleSizeMidsize:
             return CTLocalizedString(CTSDKVehicleTypeMidsize);
-        }
-        case VehicleSizeIntermediate: {
-            
+        case VehicleSizeIntermediate:
             return CTLocalizedString(CTSDKVehicleTypeIntermediate);
-        }
-        case VehicleSizeStandard: {
-            
+        case VehicleSizeStandard:
             return CTLocalizedString(CTSDKVehicleTypeStandard);
-        }
-        case VehicleSizeFullsize: {
-            
+        case VehicleSizeFullsize:
             return CTLocalizedString(CTSDKVehicleTypeFullsize);
-        }
-        case VehicleSizeLuxury: {
-            
+        case VehicleSizeLuxury:
             return CTLocalizedString(CTSDKVehicleTypeLuxury);
-        }
-        case VehicleSizePremium: {
-            
+        case VehicleSizePremium:
             return CTLocalizedString(CTSDKVehicleTypePremium);
-        }
-        case VehicleSizeMinivan: {
-            
+        case VehicleSizeMinivan:
             return CTLocalizedString(CTSDKVehicleTypeMinivan);
-        }
-        case VehicleSizeTwelvePassengerVan: {
-            
+        case VehicleSizeTwelvePassengerVan:
             return CTLocalizedString(CTSDKVehicleTypeTwelvePassengerVan);
-        }
-        case VehicleSizeMovingVan: {
-            
+        case VehicleSizeMovingVan:
             return CTLocalizedString(CTSDKVehicleTypeMovingVan);
-        }
-        case VehicleSizeFifteenPassengerVan: {
-            
+        case VehicleSizeFifteenPassengerVan:
             return CTLocalizedString(CTSDKVehicleTypeFifteenPassengerVan);
-        }
-        case VehicleSizeCargoVan: {
-            
+        case VehicleSizeCargoVan:
             return CTLocalizedString(CTSDKVehicleTypeCargoVan);
-        }
-        case VehicleSizeTwelveFootTruck: {
-            
+        case VehicleSizeTwelveFootTruck:
             return CTLocalizedString(CTSDKVehicleTypeTwelveFootTruck);
-        }
-        case VehicleSizeTwentyFootTruck: {
-            
+        case VehicleSizeTwentyFootTruck:
             return CTLocalizedString(CTSDKVehicleTypeTwentyFootTruck);
-        }
-        case VehicleSizeTwentyFourFootTruck: {
-            
+        case VehicleSizeTwentyFourFootTruck:
             return CTLocalizedString(CTSDKVehicleTypeTwentyFourFootTruck);
-        }
-        case VehicleSizeTwentySixFootTruck: {
-            
+        case VehicleSizeTwentySixFootTruck:
             return CTLocalizedString(CTSDKVehicleTypeTwentySixFootTruck);
-        }
-        case VehicleSizeMoped: {
-            
+        case VehicleSizeMoped:
             return CTLocalizedString(CTSDKVehicleTypeMoped);
-        }
-        case VehicleSizeStretch: {
-            
+        case VehicleSizeStretch:
             return CTLocalizedString(CTSDKVehicleTypeStretch);
-        }
-        case VehicleSizeRegular: {
-            
+        case VehicleSizeRegular:
             return CTLocalizedString(CTSDKVehicleTypeRegular);
-        }
-        case VehicleSizeUnique: {
-            
+        case VehicleSizeUnique:
             return CTLocalizedString(CTSDKVehicleTypeUnique);
-        }
-        case VehicleSizeExotic: {
-            
+        case VehicleSizeExotic:
             return CTLocalizedString(CTSDKVehicleTypeExotic);
-        }
-        case VehicleSizeSmallMediumTruck: {
-            
+        case VehicleSizeSmallMediumTruck:
             return CTLocalizedString(CTSDKVehicleTypeSmallMediumTruck);
-        }
-        case VehicleSizeLargeTruck: {
-            
+        case VehicleSizeLargeTruck:
             return CTLocalizedString(CTSDKVehicleTypeLargeTruck);
-        }
-        case VehicleSizeSmallSUV: {
-            
+        case VehicleSizeSmallSUV:
             return CTLocalizedString(CTSDKVehicleTypeSmallSUV);
-        }
-        case VehicleSizeMediumSUV: {
-            
+        case VehicleSizeMediumSUV:
             return CTLocalizedString(CTSDKVehicleTypeMediumSUV);
-        }
-        case VehicleSizeLargeSUV: {
-            
+        case VehicleSizeLargeSUV:
             return CTLocalizedString(CTSDKVehicleTypeLargeSUV);
-        }
-        case VehicleSizeExoticSUV: {
-            
+        case VehicleSizeExoticSUV:
             return CTLocalizedString(CTSDKVehicleTypeExoticSUV);
-        }
-        case VehicleSizeFourWheelDrive: {
-            
+        case VehicleSizeFourWheelDrive:
             return CTLocalizedString(CTSDKVehicleTypeFourWheelDrive);
-        }
-        case VehicleSizeSpecial: {
-            
+        case VehicleSizeSpecial:
             return CTLocalizedString(CTSDKVehicleTypeSpecial);
-        }
-        case VehicleSizeMiniElite: {
-            
+        case VehicleSizeMiniElite:
             return CTLocalizedString(CTSDKVehicleTypeMiniElite);
-        }
-        case VehicleSizeEconomyElite: {
-            
+        case VehicleSizeEconomyElite:
             return CTLocalizedString(CTSDKVehicleTypeEconomyElite);
-        }
-        case VehicleSizeCompactElite: {
-            
+        case VehicleSizeCompactElite:
             return CTLocalizedString(CTSDKVehicleTypeCompactElite);
-        }
-        case VehicleSizeIntermediateElite: {
-            
+        case VehicleSizeIntermediateElite:
             return CTLocalizedString(CTSDKVehicleTypeIntermediateElite);
-        }
-        case VehicleSizeStandardElite: {
-            
+        case VehicleSizeStandardElite:
             return CTLocalizedString(CTSDKVehicleTypeStandardElite);
-        }
-        case VehicleSizeFullsizeElite: {
-            
+        case VehicleSizeFullsizeElite:
             return CTLocalizedString(CTSDKVehicleTypeFullsizeElite);
-        }
-        case VehicleSizePremiumElite: {
-            
+        case VehicleSizePremiumElite:
             return CTLocalizedString(CTSDKVehicleTypePremiumElite);
-        }
-        case VehicleSizeLuxuryElite: {
-            
+        case VehicleSizeLuxuryElite:
             return CTLocalizedString(CTSDKVehicleTypeLuxuryElite);
-        }
-        case VehicleSizeOversize: {
-            
+        case VehicleSizeOversize:
             return CTLocalizedString(CTSDKVehicleTypeOversize);
-        }
-        case VehicleSizeUnknown: {
-            
+        case VehicleSizeUnknown:
             return CTLocalizedString(CTSDKVehicleTypeUnknown);
-        }
-        case VehicleSizeEstate: {
-            
+        case VehicleSizeEstate:
             return CTLocalizedString(CTSDKVehicleTypeEstate);
-        }
-        case VehicleSizeFiveSeatCarrier: {
-            
+        case VehicleSizeFiveSeatCarrier:
             return CTLocalizedString(CTSDKVehicleTypeFiveSeatCarrier);
-        }
-        case VehicleSizeSevenSeatCarrier: {
-            
+        case VehicleSizeSevenSeatCarrier:
             return CTLocalizedString(CTSDKVehicleTypeSevenSeatCarrier);
-        }
-        case VehicleSizeNineSeatCarrier: {
-            
+        case VehicleSizeNineSeatCarrier:
             return CTLocalizedString(CTSDKVehicleTypeNineSeatCarrier);
-        }
-        case VehicleSizeSUV: {
-            
+        case VehicleSizeSUV:
             return CTLocalizedString(CTSDKVehicleTypeSUV);
-        }   
     }
 }
 
+// Localise when Ground Transport implemented
 + (NSString *)serviceLevel:(ServiceLevel)type
 {
     switch (type) {
@@ -258,6 +165,7 @@
     }
 }
 
+// Localise when Ground Transport implemented
 + (NSString *)inclusionText:(Inclusion)inclusion
 {
     
@@ -461,33 +369,28 @@
 {
     switch (item.vendor.pickupLocation.pickupType) {
         case PickupTypeTerminal:
-            return [self localizedStringForKey:@"PICKUP_IN_TERMINAL"];
+            return CTLocalizedString(CTSDKVehiclePickupDetailsVWF1VWFX);
         case PickupTypeShuttleBus:
-            return [self localizedStringForKey:@"PICKUP_FREE_SHUTTLE_BUS"];
+            return CTLocalizedString(CTSDKVehiclePickupDetailsVWF2VWFX);
         case PickupTypeTerminalAndShuttle:
-            return [self localizedStringForKey:@"PICKUP_FREE_SHUTTLE_BUS"];
+            return CTLocalizedString(CTSDKVehiclePickupDetailsVWF2VWFX);
         case PickupTypeMeetAndGreet:
-            return [self localizedStringForKey:@"PICKUP_MEET_GREET"];
+            return CTLocalizedString(CTSDKVehiclePickupDetailsVWF4VWFX);
         case PickupTypeCarDriver:
-            return [self localizedStringForKey:@"PICKUP_PERSONAL_DRIVER"];
+            return CTLocalizedString(CTSDKVehiclePickupDetailsVWF6VWFX);
         case PickupTypeUnknown:
             if (item.vendor.pickupLocation.atAirport) {
-                return [self localizedStringForKey:@"PICKUP_IN_TERMINAL"];
+                return CTLocalizedString(CTSDKVehiclePickupDetailsVWF1VWFX);
             } else {
                 return @"";
             }
         default:
             if (item.vendor.pickupLocation.atAirport) {
-                return [self localizedStringForKey:@"PICKUP_IN_TERMINAL"];
+                return CTLocalizedString(CTSDKVehiclePickupDetailsVWF1VWFX);
             } else {
                 return @"";
             }
     }
-}
-
-+ (NSString *)localizedStringForKey:(NSString *)key
-{
-    return CTLocalizedString(key);
 }
 
 + (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle
