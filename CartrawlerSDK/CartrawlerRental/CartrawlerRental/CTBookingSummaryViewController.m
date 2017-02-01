@@ -34,7 +34,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-p" step:@7];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-p" step:@7];
 }
 
 - (IBAction)next:(id)sender

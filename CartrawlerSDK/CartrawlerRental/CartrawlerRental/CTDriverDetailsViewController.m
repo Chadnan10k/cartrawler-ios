@@ -70,7 +70,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-d" step:@5];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-d" step:@5];
 
     [self registerForKeyboardNotifications];
     

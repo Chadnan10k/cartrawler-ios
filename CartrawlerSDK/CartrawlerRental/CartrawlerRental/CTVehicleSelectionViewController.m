@@ -85,7 +85,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles" step:@2];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:@2];
     [self produceHeaderText];
     [self.search addObserver:self forKeyPath:@"vehicleAvailability"
                      options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld

@@ -62,7 +62,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-e" step:@4];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-e" step:@4];
 
     self.needsSelectedItem = NO;
     
@@ -90,11 +90,11 @@
         self.optionalExtrasView.extras = self.search.selectedVehicle.vehicle.extraEquipment;
         
         if (self.search.insurance) {
-            [[CTAnalytics instance] tagScreen:@"Ins_offer" detail:@"Yes" step:@4];
+            [[CTAnalytics instance] tagScreen:@"ins_offer" detail:@"yes" step:@4];
             [self.optionalExtrasView hideView:NO];
         }
     } else {
-        [[CTAnalytics instance] tagScreen:@"Ins_offer" detail:@"No" step:@4];
+        [[CTAnalytics instance] tagScreen:@"ins_offer" detail:@"no" step:@4];
         [self.optionalExtrasView hideView:YES];
     }
 
@@ -579,7 +579,7 @@
 
 - (IBAction)addInsurance:(id)sender
 {
-    [[CTAnalytics instance] tagScreen:@"Ins_click" detail:@"1" step:@4];
+    [[CTAnalytics instance] tagScreen:@"ins_click" detail:@"1" step:@4];
     if (self.needsSelectedItem && !self.search.insuranceItem) {
         [self.itemSelectButton shake];
         return;
@@ -590,7 +590,7 @@
 
 - (IBAction)continueNoInsurance:(id)sender
 {
-    [[CTAnalytics instance] tagScreen:@"Ins_click" detail:@"0" step:@4];
+    [[CTAnalytics instance] tagScreen:@"ins_click" detail:@"0" step:@4];
     [self.search setIsBuyingInsurance:NO];
     [self pushToDestination];
 }
