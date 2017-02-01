@@ -35,7 +35,7 @@
              step:(nonnull NSNumber *)step
 {
     
-    double time = [[NSDate date] timeIntervalSince1970];
+    double time = [[NSDate date] timeIntervalSince1970] * 1000;
     NSNumberFormatter *nf = [NSNumberFormatter new];
     NSString *timeString = [nf stringFromNumber:[NSNumber numberWithDouble:time]];
     
