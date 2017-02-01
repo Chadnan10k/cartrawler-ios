@@ -12,15 +12,7 @@
 
 @property (nonatomic, strong) NSString *clientId;
 
-/**
- *  Language code as specified by client
- */
 @property (nonatomic, strong) NSString *languageCode;
-
-/**
- *  Language code as specified by device settings
- */
-@property (nonatomic, readonly) NSString *deviceLanguageCode;
 @property (nonatomic, strong) NSString *languageName;
 
 @property (nonatomic, strong) NSString *currencyCode;

@@ -400,11 +400,6 @@
     if ([bundle pathForResource:language ofType:@"strings"]) {
         return NSLocalizedStringFromTableInBundle(key, language, bundle, nil);
     }
-    
-    NSString *deviceLanguage = [CTSDKSettings instance].deviceLanguageCode;    
-    if ([bundle pathForResource:deviceLanguage ofType:@"strings"]) {
-        return NSLocalizedStringFromTableInBundle(key, deviceLanguage, bundle, nil);
-    }
 
     return NSLocalizedStringFromTableInBundle(key, @"en", bundle, nil);
 }
