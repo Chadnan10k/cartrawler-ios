@@ -8,6 +8,7 @@
 
 #import "CTLocalisedStrings.h"
 #import "CTSDKLocalizationConstants.h"
+#import "CTSDKSettings.h"
 
 @implementation CTLocalisedStrings
 
@@ -395,6 +396,16 @@
 
 + (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle
 {
+    NSString *language = [CTSDKSettings instance].languageCode;
+    if ([bundle pathForResource:language ofType:@"strings"]) {
+        return NSLocalizedStringFromTableInBundle(key, language, bundle, nil);
+    }
+    
+    NSString *deviceLanguage = [CTSDKSettings instance].deviceLanguageCode;    
+    if ([bundle pathForResource:deviceLanguage ofType:@"strings"]) {
+        return NSLocalizedStringFromTableInBundle(key, deviceLanguage, bundle, nil);
+    }
+
     return NSLocalizedStringFromTableInBundle(key, @"en", bundle, nil);
 }
 

@@ -38,6 +38,10 @@
     _currencyCode = currency;
     _homeCountryCode = countryCode;
     
+    NSString *language = [[NSLocale preferredLanguages] firstObject];
+    NSDictionary *languageDictionary = [NSLocale componentsFromLocaleIdentifier:language];
+    _deviceLanguageCode = [languageDictionary objectForKey:NSLocaleLanguageCode];
+    
     _homeCountryName = country;
     _currencyName = currency;
     
