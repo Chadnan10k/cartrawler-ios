@@ -50,7 +50,6 @@
 }
 
 - (IBAction)newBooking:(id)sender {
-    [self sendEvent:NO customParams:@{@"buttonName" : @"Add a booking"} eventName:@"Button Click" eventType:@"UserAction"];
     [self pushToDestination];
 }
 

@@ -21,6 +21,7 @@
 @protocol CTAnalyticsDelegate <NSObject>
 @required
 - (void)sendAnalyticsEvent:(CTAnalyticsEvent *)event;
+- (void)sendAnalyticsSaleEvent:(CTAnalyticsEvent *)event;
 @end
 
 @interface CTViewController : UIViewController
@@ -53,6 +54,6 @@ typedef void (^RentalBookingCompletion)(id *booking);
 #pragma mark Analytics
 
 - (void)sendEvent:(BOOL)cartrawlerOnly customParams:(NSDictionary *)customParams eventName:(NSString *)eventName eventType:(NSString *)eventType;
-- (void)trackSale:(NSString *)orderId saleType:(NSString *)saleType value:(NSString *)value quanity:(NSString *)quanity metrics:(NSString *)metrics;
+- (void)trackSale;
 
 @end

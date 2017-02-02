@@ -46,6 +46,12 @@
     [self configureViews];
     [self presentRentalNavigationController:viewController];
     [[CTAnalytics instance] tagScreen:@"visit" detail:@"stand" step:@1];
+    
+    CTAnalyticsEvent *event = [[CTAnalyticsEvent alloc] init];
+    event.params = @{@"buttonName" : @"Cars"};
+    event.eventName = @"Button Click";
+    event.eventType = @"UserAction";
+    [self.cartrawlerSDK sendAnalyticsEvent:event];
 }
 
 - (void)presentRentalNavigationController:(UIViewController *)parent

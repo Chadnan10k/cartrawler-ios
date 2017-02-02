@@ -279,7 +279,6 @@
 }
 
 - (IBAction)next:(id)sender {
-    [self sendEvent:NO customParams:@{@"buttonName" : @"Search for cars"} eventName:@"Button Click" eventType:@"UserAction"];
     self.search.vehicleAvailability = nil;
     [self searchTapped];
 }
@@ -371,7 +370,6 @@
 
 - (void)searchTapped
 {
-    
     if (self.navigationController) {
         if([self validate]) {
             [self combineDates];

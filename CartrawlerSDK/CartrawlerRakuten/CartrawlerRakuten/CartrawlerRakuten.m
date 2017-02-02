@@ -28,7 +28,6 @@
 
 - (void)didReceiveEvent:(CTAnalyticsEvent *)event
 {
-    
     NSDateFormatter *f = [NSDateFormatter new];
     f.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss";
     
@@ -44,7 +43,18 @@
 
 - (void)didReceiveSaleEvent:(CTAnalyticsEvent *)event
 {
-    NSLog(@"%@", event.eventName);
+    NSLog(@"SALE: %@", event.orderID);
+    NSLog(@"SALE: %@", event.saleType);
+    NSLog(@"SALE: %@", event.quantity);
+    NSLog(@"SALE: %@", event.metricItem);
+    NSLog(@"SALE: %@", event.value);
+
+    NSError* error=nil;
+    DCSalesBasket *rentalBasket = [[DCSalesBasket alloc] initWithOrderID:event.orderID andSaleType:event.saleType];
+    DCBasketItem *rentalItem = [[DCBasketItem alloc] initWithItemValue:event.value.floatValue andItemQuantity:event.quantity.intValue];
+    [rentalItem.metrics setParamValueString:event.metricItem atIndex:1];
+    [rentalBasket addItem: rentalItem];
+    [rentalBasket logWithError:&error];
 }
 
 @end

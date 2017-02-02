@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)didReceiveEvent:(CTAnalyticsEvent *)event;
 
+- (void)didReceiveSaleEvent:(CTAnalyticsEvent *)event;
+
 @end
 
 @interface CartrawlerSDK : NSObject
@@ -63,6 +65,14 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
  *
  */
 - (void)sendAnalyticsEvent:(CTAnalyticsEvent *)event;
+
+/**
+ *  Manual way of sending a sale event for analytics purposes
+ *
+ *  @param event The analytics event
+ *
+ */
+- (void)sendAnalyticsSaleEvent:(CTAnalyticsEvent *)event;
 
 /**
  *  Use CTAppearance for overriding the preset views color scheme

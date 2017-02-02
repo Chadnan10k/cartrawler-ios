@@ -212,6 +212,7 @@
     [CTPaymentLoadingViewController dismiss];
     [self enableControls:YES];
     [self pushToDestination];
+    [self trackSale];
     if (self.delegate) {
         [self.delegate didBookVehicle:self.search.booking];
     }

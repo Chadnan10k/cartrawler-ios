@@ -121,6 +121,17 @@
     }
 }
 
+- (void)sendAnalyticsSaleEvent:(CTAnalyticsEvent *)event
+{
+    if (self.analyticsProviders) {
+        for (NSObject<CTExternalAnalyticsDelegate> *obj in self.analyticsProviders) {
+            if (obj && [obj respondsToSelector:@selector(didReceiveSaleEvent:)]) {
+                [obj didReceiveSaleEvent:event];
+            }
+        }
+    }
+}
+
 #pragma mark Push Notifications
 
 + (void)registerForPushNotifications:(NSData *)deviceToken

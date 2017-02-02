@@ -45,6 +45,11 @@ NSString * const PotentialBookingKey = @"cartrawler_potenital_booking";
 
 #pragma mark In Path
 
++ (void)deletePotentialInPathBooking
+{
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:PotentialBookingKey];
+}
+
 + (void)cachePotentialInPathBooking:(CTRentalBooking *)potentialBooking
 {
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:potentialBooking];

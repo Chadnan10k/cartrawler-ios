@@ -19,8 +19,8 @@
 @property (nonatomic, strong) NSString *eventType;
 @property (nonatomic, strong) NSString *orderID;
 @property (nonatomic, strong) NSString *saleType;
-@property (nonatomic, strong) NSString *value;
-@property (nonatomic, strong) NSString *quantity;
+@property (nonatomic, strong) NSNumber *value;
+@property (nonatomic, strong) NSNumber *quantity;
 @property (nonatomic, strong) NSString *metricItem;
 
 @end

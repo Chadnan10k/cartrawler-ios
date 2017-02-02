@@ -95,7 +95,7 @@
 
 - (void)sendEvent:(BOOL)cartrawlerOnly customParams:(NSDictionary *)customParams eventName:(NSString *)eventName eventType:(NSString *)eventType
 {
-    if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(didSendEvent:)] && !cartrawlerOnly) {
+    if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(sendAnalyticsEvent:)] && !cartrawlerOnly) {
         
         CTAnalyticsEvent *event = [CTAnalyticsEvent new];
         event.eventName = eventName;
@@ -105,14 +105,24 @@
     }
 }
 
-- (void)trackSale:(NSString *)orderId saleType:(NSString *)saleType value:(NSString *)value quanity:(NSString *)quanity metrics:(NSString *)metrics
+- (void)trackSale
 {
-    if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(didSendEvent:)]) {
+    if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(sendAnalyticsSaleEvent:)]) {
         
-        CTAnalyticsEvent *event = [CTAnalyticsEvent new];
-        event.eventName = @"Test Sale";
+        CTAnalyticsEvent *saleEvent = [CTAnalyticsEvent new];
+        saleEvent.saleType = @"Standalone";
+        saleEvent.orderID = self.search.booking.confID;
+        saleEvent.quantity = @1;
+        saleEvent.metricItem = self.search.pickupLocation.name;
+        
+        if (self.search.isBuyingInsurance) {
+            saleEvent.value = @(self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue +
+            self.search.insurance.premiumAmount.doubleValue);
+        } else {
+            saleEvent.value = self.search.selectedVehicle.vehicle.totalPriceForThisVehicle;
+        }
 
-        [self.analyticsDelegate sendAnalyticsEvent:event];
+        [self.analyticsDelegate sendAnalyticsSaleEvent:saleEvent];
     }
 }
 
