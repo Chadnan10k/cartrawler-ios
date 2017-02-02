@@ -33,6 +33,7 @@
 
 @property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UITableView *featuresTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *featuresTableViewHeightConstraint;
 
 @property (weak, nonatomic) IBOutlet CTLabel *includedForFreeLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *inclusionsCollectionView;
@@ -64,6 +65,7 @@
 
     self.featuresTableView.estimatedRowHeight = 30;
     self.featuresTableView.rowHeight = UITableViewAutomaticDimension;
+    [self.featuresTableView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -168,16 +170,7 @@
     }
     
     [self.vehicleFeaturesDataSource setData:featureData];
-    
     [self.featuresTableView reloadData];
-    [self.featuresTableView layoutIfNeeded];
-
-    if ([self.featuresTableView cartrawlerConstraintForAttribute:NSLayoutAttributeHeight]) {
-        //IOS-122
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.featuresTableView cartrawlerConstraintForAttribute:NSLayoutAttributeHeight].constant = self.featuresTableView.contentSize.height;
-        });
-    }
 }
 
 - (void)setupInclusionsCollectionView
@@ -219,6 +212,17 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self presentViewController:nav animated:YES completion:nil];
     });
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(UITableView *)featuresTableView change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    self.featuresTableViewHeightConstraint.constant = featuresTableView.contentSize.height;
+    [featuresTableView layoutIfNeeded];
+}
+
+- (void)dealloc
+{
+    [self.featuresTableView removeObserver:self forKeyPath:@"contentSize"];
 }
 
 @end
