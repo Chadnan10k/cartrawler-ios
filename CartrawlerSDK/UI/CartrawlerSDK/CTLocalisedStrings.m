@@ -206,6 +206,10 @@
             
             return NSLocalizedString(@"Oversize", @"");;
         }
+        case VehicleSizeConvertible: {
+            
+            return NSLocalizedString(@"Convertible", @"");
+        }
         case VehicleSizeUnknown: {
             
             return NSLocalizedString(@"Unknown", @"");;

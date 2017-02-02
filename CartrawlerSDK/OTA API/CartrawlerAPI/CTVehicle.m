@@ -360,6 +360,8 @@
         return VehicleSizeLuxuryElite;
     } else if ([vehCatStr isEqualToString:@"41"]) {
         return VehicleSizeOversize;
+    } else if ([vehCatStr isEqualToString:@"43"]) {
+        return VehicleSizeConvertible;
     } else if ([vehCatStr isEqualToString:@"44"]) {
         return VehicleSizeEstate;
     } else if ([vehCatStr isEqualToString:@"45"]) {
