@@ -41,16 +41,6 @@
                                         locale:[CTSDKSettings instance].languageCode
                                       currency:[CTSDKSettings instance].currencyCode];
     
-    double amt = search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue;
-    
-    if (search.isBuyingInsurance) {
-        amt += search.insurance.premiumAmount.doubleValue;
-    }
-    
-    NSNumber *amount = [NSNumber numberWithDouble:amt];
-
-    NSString *vehDescription = @"";
-    
     return @{@"ota" : json,
              @"amt" : [self calculatePayNowPrice:search.selectedVehicle.vehicle
                                        insurance:search.insurance
