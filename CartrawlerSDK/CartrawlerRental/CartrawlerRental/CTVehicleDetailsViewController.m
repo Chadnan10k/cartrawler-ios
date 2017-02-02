@@ -65,12 +65,13 @@
 
     self.featuresTableView.estimatedRowHeight = 30;
     self.featuresTableView.rowHeight = UITableViewAutomaticDimension;
-    [self.featuresTableView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.featuresTableView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
     
     if (self.search.selectedVehicle.vendor.rating) {
         self.topSpacing.constant = 80;
@@ -220,8 +221,9 @@
     [featuresTableView layoutIfNeeded];
 }
 
-- (void)dealloc
+- (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     [self.featuresTableView removeObserver:self forKeyPath:@"contentSize"];
 }
 
