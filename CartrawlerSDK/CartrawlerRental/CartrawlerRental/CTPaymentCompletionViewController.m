@@ -43,7 +43,7 @@
     [super viewDidLoad];
     [self.doneButton setText:CTLocalizedString(CTRentalCTAToHomepage)];
     self.scrollView.backgroundColor = [CTAppearance instance].viewBackgroundColor;
-    self.bookingReferenceTitleLabel = CTLocalizedString(CTRentalReceiptYourReference);
+    self.bookingReferenceTitleLabel.text = CTLocalizedString(CTRentalReceiptYourReference);
     self.scrollForSummaryLabel.text = CTLocalizedString(CTRentalReceiptScroll);
     self.paymentTitleLabel.text = CTLocalizedString(CTRentalReceiptCongratulations);
     self.paymentSubtitleLabel.text = CTLocalizedString(CTRentalReceiptSuccess);

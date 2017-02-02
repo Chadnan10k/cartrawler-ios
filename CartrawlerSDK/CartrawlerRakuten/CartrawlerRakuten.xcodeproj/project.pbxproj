@@ -26,7 +26,7 @@
 		BCCF421F1E43521100D6B5F8 /* DCBasketItemParams.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42151E43521100D6B5F8 /* DCBasketItemParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCCF42201E43521100D6B5F8 /* DCBasketParams.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42161E43521100D6B5F8 /* DCBasketParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCCF42211E43521100D6B5F8 /* DCEnums.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42171E43521100D6B5F8 /* DCEnums.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BCCF42221E43521100D6B5F8 /* DCErrorCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42181E43521100D6B5F8 /* DCErrorCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCF42221E43521100D6B5F8 /* DCErrorCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42181E43521100D6B5F8 /* DCErrorCodes.h */; };
 		BCCF42231E43521100D6B5F8 /* DCParams.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42191E43521100D6B5F8 /* DCParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCCF42241E43521100D6B5F8 /* DCSalesBasket.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF421A1E43521100D6B5F8 /* DCSalesBasket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCCF42251E43521100D6B5F8 /* DCStorm.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF421B1E43521100D6B5F8 /* DCStorm.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -149,18 +149,18 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCCF421E1E43521100D6B5F8 /* DCBasketItem.h in Headers */,
-				BCCF42211E43521100D6B5F8 /* DCEnums.h in Headers */,
-				BCCF42201E43521100D6B5F8 /* DCBasketParams.h in Headers */,
 				BCCF42261E43521100D6B5F8 /* Tracker.h in Headers */,
-				BCCF42221E43521100D6B5F8 /* DCErrorCodes.h in Headers */,
+				BCDB4BC71E3BBE3F008004DA /* CartrawlerRakuten.h in Headers */,
+				BCDB4BF41E3F5662008004DA /* CTAnalyticsEvent.h in Headers */,
+				BCCF421E1E43521100D6B5F8 /* DCBasketItem.h in Headers */,
 				BCCF42231E43521100D6B5F8 /* DCParams.h in Headers */,
 				BCCF421F1E43521100D6B5F8 /* DCBasketItemParams.h in Headers */,
 				BCCF42241E43521100D6B5F8 /* DCSalesBasket.h in Headers */,
 				BCCF42251E43521100D6B5F8 /* DCStorm.h in Headers */,
 				BCCF421D1E43521100D6B5F8 /* DCAppEvent.h in Headers */,
-				BCDB4BC71E3BBE3F008004DA /* CartrawlerRakuten.h in Headers */,
-				BCDB4BF41E3F5662008004DA /* CTAnalyticsEvent.h in Headers */,
+				BCCF42211E43521100D6B5F8 /* DCEnums.h in Headers */,
+				BCCF42201E43521100D6B5F8 /* DCBasketParams.h in Headers */,
+				BCCF42221E43521100D6B5F8 /* DCErrorCodes.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
