@@ -166,9 +166,7 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
             }
             
             if (self.delegate) {
-                if (self.delegate) {
-                    [self.delegate didMakeBooking];
-                }
+                [self.delegate didMakeBooking];
             }
             
         }
