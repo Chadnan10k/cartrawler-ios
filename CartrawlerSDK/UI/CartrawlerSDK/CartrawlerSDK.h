@@ -24,20 +24,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface CartrawlerSDK : NSObject
+@protocol CTExternalAnalyticsDelegate <NSObject>
 
-//---Car Rental View Controllers ---
-@property (nonatomic, strong, nonnull, readonly) CTViewController *searchDetailsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleSelectionViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *vehicleDetailsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceCTExtrasViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *extrasViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *driverDetialsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *addressDetialsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentSummaryViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *paymentCompletionViewController;
-//----------------------------------
+- (void)didReceiveEvent:(CTAnalyticsEvent *)event;
+
+- (void)didReceiveSaleEvent:(CTAnalyticsEvent *)event;
+
+@end
+
+@interface CartrawlerSDK : NSObject
 
 @property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
@@ -52,7 +47,7 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
  *
  *  @param requestorID  Your requester ID
  *  @param languageCode The initial language code eg. EN
- *  @param sandboxMode      Flag to indicate if you want to point to test or production endpoints
+ *  @param sandboxMode  Flag to indicate if you want to point to test or production endpoints
  *
  */
 - (instancetype)initWithRequestorID:(NSString *)requestorID
@@ -60,6 +55,24 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
                    sandboxMode:(BOOL)sandboxMode;
 
 - (void)enableLogs:(BOOL)enable;
+
+- (void)addAnalyticsProvider:(NSObject<CTExternalAnalyticsDelegate> *)analyticsProvider;
+
+/**
+ *  Manual way of sending an analytics event
+ *
+ *  @param event The analytics event
+ *
+ */
+- (void)sendAnalyticsEvent:(CTAnalyticsEvent *)event;
+
+/**
+ *  Manual way of sending a sale event for analytics purposes
+ *
+ *  @param event The analytics event
+ *
+ */
+- (void)sendAnalyticsSaleEvent:(CTAnalyticsEvent *)event;
 
 /**
  *  Use CTAppearance for overriding the preset views color scheme

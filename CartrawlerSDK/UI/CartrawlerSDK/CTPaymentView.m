@@ -143,13 +143,6 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
         } else {
             
             [self.webView evaluateJavaScript:@"resetResponses()" completionHandler:nil];
-            
-            if (self.delegate) {
-                if (self.delegate) {
-                    [self.delegate didMakeBooking];
-                }
-            }
-            
             switch (self.paymentType) {
                     
                 case CTPaymentTypeCarRental: {
@@ -171,6 +164,11 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                 default:
                     break;
             }
+            
+            if (self.delegate) {
+                [self.delegate didMakeBooking];
+            }
+            
         }
     }
     

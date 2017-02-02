@@ -125,6 +125,12 @@
 {
     [super viewWillAppear:animated];
     
+    [self sendEvent:NO customParams:@{@"eventName" : @"Search Step",
+                                      @"stepName" : @"Step1",
+                                      @"clientID" : [CTSDKSettings instance].clientId,
+                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode
+                                      } eventName:@"Step of search" eventType:@"Step"];
+
     [[CTAnalytics instance] tagScreen:@"step" detail:@"searchcars" step:@1];
     
     [self.scrollView setContentOffset:
@@ -364,7 +370,6 @@
 
 - (void)searchTapped
 {
-    
     if (self.navigationController) {
         if([self validate]) {
             [self combineDates];

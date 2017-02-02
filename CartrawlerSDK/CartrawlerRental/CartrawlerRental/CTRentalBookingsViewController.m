@@ -14,6 +14,7 @@
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 
 @interface CTRentalBookingsViewController () <UITableViewDataSource>
 

@@ -22,5 +22,6 @@
 + (void)cachePotentialInPathBooking:(CTRentalBooking *)potentialBooking;
 + (void)removePotentialInPathBooking;
 + (void)didMakeInPathBooking:(NSString *)referenceNumber;
++ (void)deletePotentialInPathBooking;
 
 @end

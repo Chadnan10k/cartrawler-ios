@@ -44,8 +44,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-e" step:@4];
-
+    [self tagScreen];
     if ([CTRentalSearch instance].insurance) {
         self.bottomSpace.constant = 0;
     } else {
@@ -81,6 +80,21 @@
     CTOptionalExtraTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     [cell setData:self.extras[indexPath.row]];
     return cell;
+}
+
+#pragma mark Analytics
+
+- (void)tagScreen
+{
+    NSString *insOfferedA = self.search.insurance ? @"yes" : @"no";
+    NSString *insOfferedB = self.search.insurance ? @"true" : @"false";
+
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-e" step:@4];
+    [[CTAnalytics instance] tagScreen:@"ins_offer" detail:insOfferedA step:@4];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Insurance & Extras Step",
+                                      @"stepName" : @"Step4",
+                                      @"insuranceOffered" : insOfferedB
+                                      } eventName:@"Step of search" eventType:@"Step"];
 }
 
 @end

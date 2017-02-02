@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CartrawlerRakuten/CartrawlerRakuten.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:CI/CI.xcodeproj">
    </FileRef>
    <FileRef

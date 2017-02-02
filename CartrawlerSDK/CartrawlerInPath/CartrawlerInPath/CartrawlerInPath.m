@@ -208,6 +208,12 @@
     }
     
     [parent presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
+    
+    CTAnalyticsEvent *event = [[CTAnalyticsEvent alloc] init];
+    event.params = @{@"smartblockName" : @"NEW *"};
+    event.eventName = @"Flight Path";
+    event.eventType = @"UserAction";
+    [self.rental.cartrawlerSDK sendAnalyticsEvent:event];
 }
 
 - (void)addCrossSellCardToView:(UIView *)view
@@ -240,6 +246,7 @@
 
 - (void)removeVehicle
 {
+    [CTDataStore deletePotentialInPathBooking];
     _cachedVehicle = nil;
     if (self.cardView) {
         [self.cardView renderDefault:YES];
@@ -267,6 +274,42 @@
 - (void)didReceiveBookingConfirmationID:(NSString *)confirmationID
 {
     if (confirmationID) {
+        
+        NSString *vehName = [NSString stringWithFormat:@"%@ %@", [CTRentalSearch instance].selectedVehicle.vehicle.makeModelName,
+                             [CTRentalSearch instance].selectedVehicle.vehicle.orSimilar];
+        
+        CTAnalyticsEvent *event = [CTAnalyticsEvent new];
+        event.eventName = @"Booking";
+        event.eventType = @"Booking";
+        event.params = @{@"eventName" : @"Booking",
+                           @"reservationID" : confirmationID,
+                           @"insuranceOffered" : [CTRentalSearch instance].insurance ? @"true" : @"false",
+                           @"insurancePurchased" : [CTRentalSearch instance].isBuyingInsurance ? @"true" : @"false",
+                           @"age" : [CTRentalSearch instance].driverAge.stringValue,
+                           @"clientID" : [CTSDKSettings instance].clientId,
+                           @"residenceID" : [CTSDKSettings instance].homeCountryCode,
+                           @"pickupName" : [CTRentalSearch instance].pickupLocation.name,
+                           @"pickupDate" : [[CTRentalSearch instance].pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                           @"returnName" : [CTRentalSearch instance].dropoffLocation.name,
+                           @"returnDate" : [[CTRentalSearch instance].dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                           @"carSelected" : vehName
+                           };
+        
+        CTAnalyticsEvent *saleEvent = [CTAnalyticsEvent new];
+        saleEvent.saleType = @"InPath";
+        saleEvent.orderID = confirmationID;
+        saleEvent.quantity = @1;
+        saleEvent.metricItem = [CTRentalSearch instance].pickupLocation.name;
+        
+        if ([CTRentalSearch instance].isBuyingInsurance) {
+            saleEvent.value = @([CTRentalSearch instance].selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue +
+                                [CTRentalSearch instance].insurance.premiumAmount.doubleValue);
+        } else {
+            saleEvent.value = [CTRentalSearch instance].selectedVehicle.vehicle.totalPriceForThisVehicle;
+        }
+        
+        [self.rental.cartrawlerSDK sendAnalyticsEvent:event];
+        [self.rental.cartrawlerSDK sendAnalyticsSaleEvent:saleEvent];
         [CTDataStore didMakeInPathBooking:confirmationID];
     }
 }

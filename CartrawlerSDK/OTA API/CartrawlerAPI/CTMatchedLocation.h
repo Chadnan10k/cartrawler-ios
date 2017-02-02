@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Location code context
  */
-@property (nonatomic, nonnull, readonly) NSString *codeContext;
+@property (nonatomic, nonnull, readonly) NSString *countryCode;
 /**
  *  Location address line
  */

@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Extras View Controller-->
+        <!--Insurance View Controller-->
         <scene sceneID="acH-uv-lMB">
             <objects>
-                <viewController storyboardIdentifier="CTExtrasViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="svs-v7-rRf" customClass="CTExtrasViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CTInsuranceViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="svs-v7-rRf" customClass="CTInsuranceViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IbM-Bm-PZ8"/>
                         <viewControllerLayoutGuide type="bottom" id="gIN-h0-YcF"/>

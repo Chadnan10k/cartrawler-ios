@@ -8,7 +8,6 @@
 
 #import "RYRRentalManager.h"
 
-
 @interface RYRRentalManager()
 
 @property (strong, nonatomic) NSDate *pickupDate;
@@ -68,6 +67,7 @@
                                                       pickupDate:self.pickupDate
                                                       returnDate:self.dropoffDate
                                                      userDetails:userDetails];
+    
     self.inPath.delegate = self;
     [self.callToAction setTitle:@"Loading" forState:UIControlStateNormal];
 
@@ -77,7 +77,10 @@
 {
     _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"en" sandboxMode:!self.isProduction];
     _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
-    [self.sdk enableLogs:YES];
+    
+    [self.sdk addAnalyticsProvider:[CartrawlerRakuten new]];
+
+    [self.sdk enableLogs:NO];
     self.rental.delegate = self;
 }
 

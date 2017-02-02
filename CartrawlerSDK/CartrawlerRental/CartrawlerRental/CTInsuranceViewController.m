@@ -6,7 +6,7 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "CTExtrasViewController.h"
+#import "CTInsuranceViewController.h"
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTHTMLParser.h>
 #import <CartrawlerSDK/CTAppearance.h>
@@ -21,7 +21,7 @@
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 
-@interface CTExtrasViewController () <UITextViewDelegate, CTPickerViewDelegate, OptionalExtrasDelegate>
+@interface CTInsuranceViewController () <UITextViewDelegate, CTPickerViewDelegate, OptionalExtrasDelegate>
 
 @property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIView *insuranceView;
@@ -46,7 +46,7 @@
 
 @end
 
-@implementation CTExtrasViewController
+@implementation CTInsuranceViewController
 
 - (void)viewDidLoad
 {
@@ -62,7 +62,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-e" step:@4];
+    
+    [self tagScreen];
 
     self.needsSelectedItem = NO;
     
@@ -86,15 +87,9 @@
     [self setupView:self.search.insurance];
     
     if (self.search.selectedVehicle.vehicle.extraEquipment.count > 0) {
-
         self.optionalExtrasView.extras = self.search.selectedVehicle.vehicle.extraEquipment;
-        
-        if (self.search.insurance) {
-            [[CTAnalytics instance] tagScreen:@"ins_offer" detail:@"yes" step:@4];
-            [self.optionalExtrasView hideView:NO];
-        }
+        [self.optionalExtrasView hideView:NO];
     } else {
-        [[CTAnalytics instance] tagScreen:@"ins_offer" detail:@"no" step:@4];
         [self.optionalExtrasView hideView:YES];
     }
 
@@ -609,7 +604,19 @@
 
 - (void)pushToExtrasView
 {
-    [self performSegueWithIdentifier:@"showOptionalExtras" sender:nil];
+    [self.navigationController pushViewController:self.optionalRoute animated:YES];
+}
+
+#pragma mark Analytics
+
+- (void)tagScreen
+{
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-e" step:@4];
+    [[CTAnalytics instance] tagScreen:@"ins_offer" detail:@"yes" step:@4];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Insurance & Extras Step",
+                                      @"stepName" : @"Step4",
+                                      @"insuranceOffered" : @"true"
+                                      } eventName:@"Step of search" eventType:@"Step"];
 }
 
 @end

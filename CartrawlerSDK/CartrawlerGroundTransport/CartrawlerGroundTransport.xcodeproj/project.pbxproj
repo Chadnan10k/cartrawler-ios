@@ -692,6 +692,7 @@
 				451E72E81E03FA2100D58F71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		451E72E91E03FA2100D58F71 /* Build configuration list for PBXNativeTarget "CartrawlerGroundTransportTests" */ = {
 			isa = XCConfigurationList;
@@ -700,6 +701,7 @@
 				451E72EB1E03FA2100D58F71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

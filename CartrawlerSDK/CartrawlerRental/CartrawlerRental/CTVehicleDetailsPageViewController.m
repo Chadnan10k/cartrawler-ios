@@ -39,8 +39,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-v" step:@3];
-
+    
+    [self tagScreen];
     _index = 0;
     
     if (self.search.selectedVehicle.vendor.rating) {
@@ -123,6 +123,33 @@
 {
     [self.activityView stopAnimating];
 }
+
+
+#pragma mark analyitics
+- (void)tagScreen
+{
+    
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:self.search.pickupDate
+                                                          toDate:self.search.dropoffDate
+                                                         options:0];
+    
+    NSNumber *pricePerDay = [NSNumber numberWithFloat:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.floatValue
+                              / ([components day] ?: 1)];
+    
+    NSString *vehName = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.makeModelName,
+                                                             self.search.selectedVehicle.vehicle.orSimilar];
+    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Vehicle Details Step",
+                                      @"stepName" : @"Step3",
+                                      @"carPrice" : self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.stringValue,
+                                      @"carPricePerDay" : pricePerDay.stringValue,
+                                      @"carSelected" : vehName,
+                                      } eventName:@"Step of search" eventType:@"Step"];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-v" step:@3];
+}
+
 
 #pragma MARK PageViewController
 
