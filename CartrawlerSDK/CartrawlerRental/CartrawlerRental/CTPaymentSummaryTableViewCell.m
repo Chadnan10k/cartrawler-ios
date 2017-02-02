@@ -12,12 +12,15 @@
 #import "CTPaymentSummaryItemTableViewCell.h"
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIView.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTPaymentSummaryTableViewCell() <UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet CTLabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<NSDictionary *> *items;
+@property (weak, nonatomic) IBOutlet UILabel *totalTitleLabel;
 
 @end
 
@@ -29,6 +32,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 40;
     self.tableView.dataSource = self;
+    self.totalTitleLabel.text = CTLocalizedString(CTRentalSummaryTotal);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -46,23 +50,23 @@
     
     for (CTFee *fee in search.selectedVehicle.vehicle.fees) {
         if ([fee.feePurpose isEqualToString:@"22"] && fee.feeAmount.doubleValue > 0.0) {//Deposit
-            [self.items addObject:@{@"Normal" : @{@"Name" : @"Pay now for vehicle", @"Price" : fee.feeAmount}}];
+            [self.items addObject:@{@"Normal" : @{@"Name" : CTLocalizedString(CTRentalSummaryPayNow), @"Price" : fee.feeAmount}}];
         } else if ([fee.feePurpose isEqualToString:@"23"] && fee.feeAmount.doubleValue > 0.0) {//Pay at desk
-            [self.items addObject:@{@"Normal" : @{@"Name" : @"Pay at desk for vehicle", @"Price" : fee.feeAmount}}];
+            [self.items addObject:@{@"Normal" : @{@"Name" : CTLocalizedString(CTRentalSummaryPayAtDesk), @"Price" : fee.feeAmount}}];
         } else if ([fee.feePurpose isEqualToString:@"6"] && fee.feeAmount.doubleValue > 0.0) {//Booking fee
-            [self.items addObject:@{@"Normal" : @{@"Name" : @"Booking fee", @"Price" : fee.feeAmount}}];
+            [self.items addObject:@{@"Normal" : @{@"Name" : CTLocalizedString(CTRentalSummaryBookingFee), @"Price" : fee.feeAmount}}];
         }
     }
     
     if (search.isBuyingInsurance) {
-        [self.items addObject:@{@"Normal" : @{@"Name" : @"Damage Refund Insurance", @"Price" : search.insurance.premiumAmount}}];
+        [self.items addObject:@{@"Normal" : @{@"Name" : CTLocalizedString(CTRentalSummaryDamageRefund), @"Price" : search.insurance.premiumAmount}}];
         total += search.insurance.premiumAmount.doubleValue;
     }
     
     for (CTExtraEquipment *extra in search.selectedVehicle.vehicle.extraEquipment) {
         if (extra.qty > 0) {
            // [self.items addObject:@{@"Normal" : @{@"Name" : extra.equipDescription, @"Price" : extra.chargeAmount}}];
-            [self.items addObject:@{@"Extra" : @{@"Name" : extra.equipDescription, @"Price" : @"Pay at desk"}}];
+            [self.items addObject:@{@"Extra" : @{@"Name" : extra.equipDescription, @"Price" : CTLocalizedString(CTRentalSummaryPayAtDesk)}}];
         }
     }
     

@@ -67,8 +67,8 @@
     switch (networkStatus) {
         case NotReachable:
             NSLog(@"no internet");
-            [self presentAlertView:@"No Internet Connection"
-                           message:@"In order to complete your booking you will need an internet connection"];
+            [self presentAlertView:CTLocalizedString(CTRentalErrorPaymentNoInternet1)
+                           message:CTLocalizedString(CTRentalErrorPaymentNoInternet2)];
             [self.navigationController popViewControllerAnimated:YES];
             break;
         case ReachableViaWiFi:
@@ -115,9 +115,9 @@
     [self.internetReachability startNotifier];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     
-    NSString *link1 = @"<a href='www.cartrawler.com'><b>Terms and conditions</b></a>";
+    NSString *link1 = [NSString stringWithFormat:@"<a href='www.cartrawler.com'><b>%@</b></a>", CTLocalizedString(CTRentalPaymentText2)];
     
-    NSString *termsStr = [NSString stringWithFormat:@"Tap ‘Book now’ to complete your booking and accept our %@", link1];
+    NSString *termsStr = [NSString stringWithFormat:@"%@ %@", CTLocalizedString(CTRentalPaymentText1), link1];
     
     //seems lazy but efficient
     self.termsLabel.attributedText = [CTHTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
@@ -201,8 +201,8 @@
     [[CTAnalytics instance] tagError:@"step8" event:@"Payment webview load" message:@"failed"];
     //retry
     if (!self.loadingViewVisible) {
-        [self presentAlertView:@"Sorry"
-                       message:@"We are having trouble loading the payment screen"];
+        [self presentAlertView:CTLocalizedString(CTRentalErrorPaymentLoading1)
+                       message:CTLocalizedString(CTRentalErrorPaymentLoading2)];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -231,8 +231,8 @@
             
             //also disallow the user to make payment as they are going to a dead end
             if (!self.loadingViewVisible) {
-                [self presentAlertView:@"No Internet Connection"
-                               message:@"In order to complete your booking you will need an internet connection"];
+                [self presentAlertView:CTLocalizedString(CTRentalErrorPaymentNoInternet1)
+                               message:CTLocalizedString(CTRentalErrorPaymentNoInternet2)];
                 
                 [self.navigationController popViewControllerAnimated:YES];
             }
@@ -274,7 +274,7 @@
         _alertView = [[UIAlertView alloc] initWithTitle:title
                                                 message:message
                                                delegate:self
-                                      cancelButtonTitle:@"OK"
+                                      cancelButtonTitle:CTLocalizedString(CTRentalErrorOk)
                                       otherButtonTitles:nil, nil];
     }
     [self.alertView show];

@@ -31,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet CTView *completionView;
 @property (weak, nonatomic) IBOutlet CTView *summaryView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryHeight;
+@property (weak, nonatomic) IBOutlet CTLabel *bookingReferenceTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scrollForSummaryLabel;
 
 @end
 
@@ -41,6 +43,10 @@
     [super viewDidLoad];
     [self.doneButton setText:CTLocalizedString(CTRentalCTAToHomepage)];
     self.scrollView.backgroundColor = [CTAppearance instance].viewBackgroundColor;
+    self.bookingReferenceTitleLabel = CTLocalizedString(CTRentalReceiptYourReference);
+    self.scrollForSummaryLabel.text = CTLocalizedString(CTRentalReceiptScroll);
+    self.paymentTitleLabel.text = CTLocalizedString(CTRentalReceiptCongratulations);
+    self.paymentSubtitleLabel.text = CTLocalizedString(CTRentalReceiptSuccess);
 }
 
 
@@ -67,8 +73,8 @@
     // Do any additional setup after loading the view.
     [self.scrollView setContentOffset:CGPointZero];
 
-    self.bookingReferenceLabel.text = [NSString stringWithFormat:@"%@", self.search.booking.confID ?: @"No Booking Ref"];
-    self.emailLabel.text = [NSString stringWithFormat:@"We have sent a confirmation email to %@. This may take up to 15 minutes to arrive. Please review your voucher before picking up your car.", self.search.email];
+    self.bookingReferenceLabel.text = [NSString stringWithFormat:@"%@", self.search.booking.confID ?: CTLocalizedString(CTRentalErrorNoBookingRef)];
+    self.emailLabel.text = [NSString stringWithFormat:@"%@ %@. %@", CTLocalizedString(CTRentalReceiptEmailText1), self.search.email, CTLocalizedString(CTRentalReceiptEmailText2)];
 
 }
 

@@ -16,6 +16,7 @@
 #import "CTRentalConstants.h"
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTButton.h>
 
 @interface CTFilterViewController ()
 
@@ -34,6 +35,8 @@
 
 @property (nonatomic, strong) CTFilterFactory *filterFactory;
 @property (nonatomic, strong) NSArray <CTFilterContainer *>*viewArray;
+@property (weak, nonatomic) IBOutlet CTButton *resetButton;
+@property (weak, nonatomic) IBOutlet CTButton *doneButton;
 
 @end
 
@@ -64,11 +67,14 @@
     self.transmissionTableView.dataSource = self.filterFactory.transmissionDataSource;
     self.transmissionTableView.delegate   = self.filterFactory.transmissionDataSource;
     
-    self.carSizeTableView.tableViewTitle        = NSLocalizedString(@"Vehicle Size", @"Vehicle Size");
-    self.pickupLocationTableView.tableViewTitle = NSLocalizedString(@"Pick-up desk location", @"Pickup");
-    self.vendorsTableView.tableViewTitle        = NSLocalizedString(@"Car rental companies", @"Vendors");
-    self.fuelPolicyTableView.tableViewTitle     = NSLocalizedString(@"Fuel policy", @"Fuel policy");
-    self.transmissionTableView.tableViewTitle   = NSLocalizedString(@"Transmission", @"Transmission");
+    self.carSizeTableView.tableViewTitle        = CTLocalizedString(CTRentalFilterCarsize);
+    self.pickupLocationTableView.tableViewTitle = CTLocalizedString(CTRentalFilterPickup);
+    self.vendorsTableView.tableViewTitle        = CTLocalizedString(CTRentalFilterSupplier);
+    self.fuelPolicyTableView.tableViewTitle     = CTLocalizedString(CTRentalFilterCarFuel);
+    self.transmissionTableView.tableViewTitle   = CTLocalizedString(CTRentalFilterTransmission);
+    
+    [self.resetButton setTitle:CTLocalizedString(CTRentalFilterReset) forState:UIControlStateNormal];
+    [self.doneButton setTitle:CTLocalizedString(CTRentalCTADone) forState:UIControlStateNormal];
 
     [self setupContainers];
     

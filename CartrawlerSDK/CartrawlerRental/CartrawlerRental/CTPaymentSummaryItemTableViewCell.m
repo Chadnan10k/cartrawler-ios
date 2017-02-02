@@ -10,6 +10,8 @@
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTPaymentSummaryItemTableViewCell()
 
@@ -40,7 +42,7 @@
 - (void)setDetailsItalic:(NSString *)detail
 {
     
-    NSAttributedString *rating = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"pay at desk", @"pay at desk")
+    NSAttributedString *rating = [[NSAttributedString alloc] initWithString:CTLocalizedString(CTRentalSummaryPayAtDesk)
                                                                  attributes:@{NSFontAttributeName:
                                                                                   [UIFont fontWithName:@"AvenirNext-Italic" size:17],
                                                                               NSForegroundColorAttributeName:

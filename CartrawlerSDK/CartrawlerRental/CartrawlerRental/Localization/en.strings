@@ -1,125 +1,289 @@
 
 // Page Title, every page
 
-"title_search_rental" = "Car rental *";
+"title_search_rental" = "Car rental";
 
-"title_settings" = "Settings *";
+"title_settings" = "Settings";
 
-"title_results" = "Results *";
+"title_results" = "Results";
 
-"title_details" = "Car Details *";
+"title_filters" = "Filters";
 
-"title_details_vehicle" = "Details *";
+"title_details" = "Car Details";
 
-"title_details_supplier" = "Supplier *";
+"title_details_vehicle" = "Details";
 
-"title_conditions" = "Terms and Conditions *";
+"title_details_supplier" = "Supplier";
 
-"title_extras_insurance" = "Extras and Insurance *";
+"title_conditions" = "Terms and Conditions";
 
-"title_extras" = "Extras *";
+"title_extras_insurance" = "Extras and Insurance";
 
-"title_insurance" = "Insurance *";
+"title_extras" = "Extras";
 
-"title_summary" = "Payment Summary *";
+"title_insurance" = "Insurance";
 
-"title_user" = "Lead Driver Details *";
+"title_summary" = "Payment Summary";
 
-"title_payment" = "Payment Details *";
+"title_user" = "Lead Driver Details";
+
+"title_payment" = "Payment Details";
 
 // CTA buttons, every page
 
-"CTA_add" = "Add a booking *";
+"CTA_add" = "Add a booking";
 
-"CTA_search" = "Search for cars *";
+"CTA_search" = "Search for cars";
 
-"CTA_close" = "Close *";
+"CTA_close" = "Close";
 
-"CTA_continue" = "Continue *";
+"CTA_continue" = "Continue";
 
-"CTA_with_insurance" = "Continue with insurance *";
+"CTA_with_insurance" = "Continue with insurance";
 
-"CTA_no_insurance" = "Continue without insurance *";
+"CTA_no_insurance" = "Continue without insurance";
 
-"CTA_to_homepage" = "Back to homepage *";
+"CTA_to_homepage" = "Back to homepage";
 
-"CTA_book" = "Book now for *";
+"CTA_book" = "Book now for";
+
+"CTA_cancel" = "Cancel";
+
+"CTA_done" = "Done";
 
 // Search and locations pages (0-search)
 
-"search_pickup_location_text" = "Pick-up location *";
+"search_pickup_location_text" = "Pick-up location";
 
-"search_return_location_text" = "Return location *";
+"search_return_location_text" = "Return location";
 
-"search_return_location_button" = "Return to same location *";
+"search_return_location_button" = "Return to same location";
 
-"search_driver_age" = "Driver aged between 25 and 70 *";
+"search_driver_age" = "Driver aged between 25 and 70";
 
-"search_driver_age_hint" = "Driver age *";
+"search_driver_age_hint" = "Driver age";
 
-"search_select_dates_hint" = "Select dates *";
+"search_select_dates_hint" = "Select dates";
 
-"search_pickup_time_text" = "Pick-up time *";
+"search_pickup_time_text" = "Pick-up time";
 
-"search_return_time_text" = "Return time *";
+"search_return_time_text" = "Return time";
 
-"search_locations_placeholder" = "Type in location *";
+"search_locations_placeholder" = "Type in location";
+
+"search_locations_airport" = "Airport";
+
+"search_locations_other" = "All other locations";
 
 // Booking Manager
 
-"booking_table_header_title" = "Upcoming Bookings *";
+"booking_table_header_title" = "Upcoming Bookings";
 
-"booking_reference_prefix" = "Booking reference *";
+"booking_reference_prefix" = "Booking reference";
 
 // Settings page (1-settings)
-"settings_country_title" = "Country *";
+"settings_country_title" = "Country";
 
-"settings_currency_title" = "Currency *";
+"settings_currency_title" = "Currency";
+
+"settings_select_country" = "Select Country";
+
+"settings_select_currency" = "Select Currency";
+
+"settings_select_languages" = "Select Language";
 
 // Results page (2-results)
-"results_sort" = "Sort *";
+"results_sort" = "Sort";
 
-"results_filter" = "Filter *";
+"results_filter" = "Filter";
 
 // Vehicle block (2-results, 5-details)
 
-"vehicle_orsimilar" = "or similar *";
+"vehicle_orsimilar" = "or similar";
 
-"vehicle_passenger" = "Passenger *";
+"vehicle_passengers" = "Passengers";
 
-"vehicle_passengers" = "Passengers *";
+"vehicle_bags" = "Bags";
 
-"vehicle_bag" = "Bag *";
+"vehicle_doors" = "Doors";
 
-"vehicle_bags" = "Bags *";
+"vehicle_total_price" = "Total price";
 
-"vehicle_door" = "Door *";
+"vehicle_best_seller" = "Best seller";
 
-"vehicle_doors" = "Doors *";
+"vehicle_great_value" = "Great value";
 
-"vehicle_duration_1" = "Price for *";
+"vehicle_provided" = "Provided by";
 
-"vehicle_duration_2" = "day *";
+"vehicle_air_conditioning" = "Air Conditioning";
 
-"vehicle_duration_3" = "days *";
+"vehicle_fuel_policy" = "Fuel Policy";
 
-"vehicle_total_price" = "Total price *";
+"vehicle_supplier_address" = "Supplier address";
 
-"vehicle_best_seller" = "Best seller *";
+"vehicle_suppliers_address_detail" = "The suppliers address is:";
 
-"vehicle_great_value" = "Great value *";
+"vehicle_pickup_location" = "Pickup location";
 
-"vehicle_provided" = "Provided by *";
+"vehicle_pickup_location_unknown" = "Unknown";
+
+"vehicle_vehicle_inclusion" = "This item is included in the price of this vehicle";
 
 // Sorting (3-sorting)
-"rental_sort_title" = "Sort results by *";
 
-"rental_sort_price" = "Price *";
+"rental_sort_title" = "Sort results by";
 
-"rental_sort_rating" = "Rating *";
+"rental_sort_price" = "Price";
 
-"rental_sort_recommended" = "Recommended *";
+"rental_sort_rating" = "Rating";
 
+"rental_sort_recommended" = "Recommended";
 
+// Filter titles (4-filters)
 
+"filter_carsize" = "Car Size";
+
+"filter_pickup" = "Pick-up Location";
+
+"filter_supplier" = "Supplier";
+
+"filter_fuel" = "Fuel Policy";
+
+"filter_carfuel" = "Fuel Type";
+
+"filter_transmission" = "Transmission";
+
+"filter_reset" = "Reset";
+
+// "Included for free" section (6-vehicle)
+
+"included_title" = "Included for Free:";
+
+"included_terms" = "Terms and Conditions";
+
+// Supplier page (7-supplier)
+
+"supplier_reviews" = "reviews";
+
+"supplier_car" = "Cleanliness of the car";
+
+"supplier_desk" = "Service at the supplier desk";
+
+"supplier_pickup" = "Car rental pick-up process";
+
+"supplier_dropoff" = "Car rental drop-off process";
+
+"supplier_price" = "Overall value for the money";
+
+"supplier_waiting" = "Waiting time";
+
+"supplier_below_average" = "Below average";
+
+"supplier_good" = "Good";
+
+"supplier_excellent" = "Excellent";
+
+"supplier_rating_detail" = "customers rate this car rental company as";
+
+// Extras section (8-extras)
+
+"extras_conditions" = "Please note that extras are paid at the car rental desk. We try to ensure customers get all extras however availability is not always guaranteed.";
+
+"extras_per_day" = "per day";
+
+"extras_placeholder" = "Provided by global insurance & asset management leader Axa.";
+
+// Insurance section (9-insurance)
+
+"insurance_summary_title" = "Reasons to get full cover";
+
+// User page (10-driver, 11-driver)
+
+"user_name_hint" = "Name";
+
+"user_firstname_hint" = "First name";
+
+"user_surname_hint" = "Surname";
+
+"user_email_hint" = "Email";
+
+"user_email2_hint" = "Confirm Email";
+
+"user_phone_hint" = "Phone";
+
+"user_address_line1_hint" = "Address line 1*";
+
+"user_address_line2_hint" = "Address line 2*";
+
+"user_city_hint" = "City";
+
+"user_postcode_hint" = "Postcode";
+
+"user_flight_hint" = "Flight Number (important)";
+
+"user_country_hint" = "Country";
+
+// Payment breakdown section (12-summary)
+
+"summary_pay_at_desk" = "Pay at desk";
+
+"summary_now" = "Pay now";
+
+"summary_total" = "Total";
+
+"summary_pickup" = "Pick-up";
+
+"summary_dropoff" = "Drop-off";
+
+"summary_lead_driver" = "Lead driver details";
+
+"summary_vehicle" = "Vehicle summary";
+
+"summary_payment" = "Payment summary";
+
+"summary_damage_refund" = "Damage Refund Insurance";
+
+"summary_booking_fee" = "Booking fee";
+
+// Payment page (13-payment)
+
+"payment_text_1" = "Tap \"Book now\" to complete your booking and accept our";
+
+"payment_text_2" = "Terms and Conditions";
+
+// Receipt page (14-receipt, 15-receipt)
+
+"receipt_congratulations" = "Congratulations!";
+
+"receipt_success" = "Your booking was successful";
+
+"receipt_your_reference" = "Your booking reference:";
+
+"receipt_email_text_1" = "We have sent a confirmation email to";
+
+"receipt_email_text_2" = "This may take up to 15 minutes to arrive. Please review your voucher before picking up your car.";
+
+"receipt_scroll" = "Scroll for summary";
+
+// Validation and errors
+
+"error_payment_no_internet1" = "No Internet Connection";
+
+"error_payment_no_internet2" = "In order to complete your booking you will need an internet connection";
+
+"error_payment_loading1" = "Sorry";
+
+"error_payment_loading2" = "We are having trouble loading the payment screen";
+
+"error_ok" = "OK";
+
+"error_no_booking_ref" = "No Booking Ref";
+
+"error_no_insurance_available" = "No Insurance Available";
+
+// Interstitial
+
+"interstitial_searching_1" = "Searching";
+
+"interstitial_searching_2" = "for your perfect car at the best price";
 

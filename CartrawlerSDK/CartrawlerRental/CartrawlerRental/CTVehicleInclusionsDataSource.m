@@ -9,6 +9,8 @@
 #import "CTVehicleInclusionsDataSource.h"
 #import "CTInclusionCollectionViewCell.h"
 #import <CartrawlerSDK/CTAppearance.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTVehicleInclusionsDataSource()
 
@@ -104,7 +106,7 @@
         return @"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
     }
     
-    return @"This item is included in the price of this vehicle";
+    return CTLocalizedString(CTRentalVehicleVehicleInclusion);
 }
 
 @end

@@ -9,6 +9,8 @@
 #import "CTSettingsSelectionViewController.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTLabel.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTSettingsSelectionViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -36,15 +38,15 @@
     switch (self.settingType) {
         case SettingsTypeCountry:
             fileName = @"CTISOCountries";
-            self.titleLabel.text = NSLocalizedString(@"Select Country", @"Select Country");
+            self.titleLabel.text = CTLocalizedString(CTRentalSettingsSelectCountry);
             break;
         case SettingsTypeCurrency:
             fileName = @"CTCurrency";
-            self.titleLabel.text = NSLocalizedString(@"Select Currency", @"Select Currency");
+            self.titleLabel.text = CTLocalizedString(CTRentalSettingsSelectCurrency);
             break;
         case SettingsTypeLanguage:
             fileName = @"CTLanguages";
-            self.titleLabel.text = NSLocalizedString(@"Select Language", @"Select Language");
+            self.titleLabel.text = CTLocalizedString(CTRentalSettingsSelectLanguage);
             break;
         default:
             break;

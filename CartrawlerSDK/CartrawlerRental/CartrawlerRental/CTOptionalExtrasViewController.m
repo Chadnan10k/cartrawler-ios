@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray<CTExtraEquipment *> *extras;
+@property (weak, nonatomic) IBOutlet CTLabel *conditionsLabel;
 @end
 
 @implementation CTOptionalExtrasViewController
@@ -36,6 +37,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    self.conditionsLabel.text = CTLocalizedString(CTRentalExtrasConditions);
 }
 
 - (void)viewWillAppear:(BOOL)animated

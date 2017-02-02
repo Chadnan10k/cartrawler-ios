@@ -78,7 +78,7 @@
     if (flightNumber != nil && flightNumber.length > 2) {
         NSString *flightNumberPrefixString = [flightNumber substringToIndex:2];
         NSString *flightNumberString = [flightNumber substringFromIndex:2];
-        flightDetails = [NSString stringWithFormat:@"\"ArrivalDetails\":{\"@TransportationCode\":\"14\",\"@Number\":\"%@\",\"OperatingCompany\":\"%@\"}, \r", flightNumberPrefixString, flightNumberString];
+        flightDetails = [NSString stringWithFormat:@"\"ArrivalDetails\":{\"@TransportationCode\":\"14\",\"@Number\":\"%@\",\"OperatingCompany\":\"%@\"}, \r", flightNumberString, flightNumberPrefixString];
     }
     
     NSString *json = [NSString stringWithFormat:
