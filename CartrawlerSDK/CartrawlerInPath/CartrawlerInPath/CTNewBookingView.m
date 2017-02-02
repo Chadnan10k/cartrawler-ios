@@ -124,6 +124,7 @@
     self.infoLabel.text = @"The quickest and easiest way to book car hire";
     self.infoLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.infoLabel.backgroundColor = [UIColor clearColor];
+    self.infoLabel.userInteractionEnabled = NO;
     [self addSubview:self.infoLabel];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[star]-4-[textView]-4-[cars]" options:0 metrics:nil views:@{@"textView" : self.infoLabel, @"star" : self.tickImageView, @"cars" : self.vehicleImageView}]];
