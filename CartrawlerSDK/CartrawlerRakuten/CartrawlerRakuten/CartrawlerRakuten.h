@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CTAnalyticsEvent.h"
+#import "Tracker.h"
 
 //! Project version number for CartrawlerRakuten.
 FOUNDATION_EXPORT double CartrawlerRakutenVersionNumber;

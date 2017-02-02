@@ -21,10 +21,19 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		BCCF421D1E43521100D6B5F8 /* DCAppEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42131E43521100D6B5F8 /* DCAppEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCF421E1E43521100D6B5F8 /* DCBasketItem.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42141E43521100D6B5F8 /* DCBasketItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCF421F1E43521100D6B5F8 /* DCBasketItemParams.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42151E43521100D6B5F8 /* DCBasketItemParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCF42201E43521100D6B5F8 /* DCBasketParams.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42161E43521100D6B5F8 /* DCBasketParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCF42211E43521100D6B5F8 /* DCEnums.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42171E43521100D6B5F8 /* DCEnums.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCF42221E43521100D6B5F8 /* DCErrorCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42181E43521100D6B5F8 /* DCErrorCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCF42231E43521100D6B5F8 /* DCParams.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42191E43521100D6B5F8 /* DCParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCF42241E43521100D6B5F8 /* DCSalesBasket.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF421A1E43521100D6B5F8 /* DCSalesBasket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCF42251E43521100D6B5F8 /* DCStorm.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF421B1E43521100D6B5F8 /* DCStorm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCF42261E43521100D6B5F8 /* Tracker.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF421C1E43521100D6B5F8 /* Tracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCDB4BC71E3BBE3F008004DA /* CartrawlerRakuten.h in Headers */ = {isa = PBXBuildFile; fileRef = BCDB4BC51E3BBE3F008004DA /* CartrawlerRakuten.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCDB4BCE1E3BC042008004DA /* CartrawlerRakuten.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDB4BCD1E3BC042008004DA /* CartrawlerRakuten.m */; };
 		BCDB4BD01E3BC10C008004DA /* libTrackingStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDB4BCF1E3BC10C008004DA /* libTrackingStatic.a */; settings = {ATTRIBUTES = (Required, ); }; };
-		BCDB4BD21E3BC112008004DA /* headers in Resources */ = {isa = PBXBuildFile; fileRef = BCDB4BD11E3BC112008004DA /* headers */; };
 		BCDB4BD91E3BC4F2008004DA /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDB4BD71E3BC4F2008004DA /* libsqlite3.0.tbd */; };
 		BCDB4BDA1E3BC4F2008004DA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDB4BD81E3BC4F2008004DA /* libsqlite3.tbd */; };
 		BCDB4BDC1E3BC4F7008004DA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDB4BDB1E3BC4F7008004DA /* SystemConfiguration.framework */; };
@@ -34,12 +43,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BCCF42131E43521100D6B5F8 /* DCAppEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAppEvent.h; sourceTree = "<group>"; };
+		BCCF42141E43521100D6B5F8 /* DCBasketItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCBasketItem.h; sourceTree = "<group>"; };
+		BCCF42151E43521100D6B5F8 /* DCBasketItemParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCBasketItemParams.h; sourceTree = "<group>"; };
+		BCCF42161E43521100D6B5F8 /* DCBasketParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCBasketParams.h; sourceTree = "<group>"; };
+		BCCF42171E43521100D6B5F8 /* DCEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCEnums.h; sourceTree = "<group>"; };
+		BCCF42181E43521100D6B5F8 /* DCErrorCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCErrorCodes.h; sourceTree = "<group>"; };
+		BCCF42191E43521100D6B5F8 /* DCParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCParams.h; sourceTree = "<group>"; };
+		BCCF421A1E43521100D6B5F8 /* DCSalesBasket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCSalesBasket.h; sourceTree = "<group>"; };
+		BCCF421B1E43521100D6B5F8 /* DCStorm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCStorm.h; sourceTree = "<group>"; };
+		BCCF421C1E43521100D6B5F8 /* Tracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tracker.h; sourceTree = "<group>"; };
 		BCDB4BC21E3BBE3F008004DA /* CartrawlerRakuten.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CartrawlerRakuten.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDB4BC51E3BBE3F008004DA /* CartrawlerRakuten.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartrawlerRakuten.h; sourceTree = "<group>"; };
 		BCDB4BC61E3BBE3F008004DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCDB4BCD1E3BC042008004DA /* CartrawlerRakuten.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartrawlerRakuten.m; sourceTree = "<group>"; };
 		BCDB4BCF1E3BC10C008004DA /* libTrackingStatic.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTrackingStatic.a; sourceTree = "<group>"; };
-		BCDB4BD11E3BC112008004DA /* headers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = headers; sourceTree = "<group>"; };
 		BCDB4BD71E3BC4F2008004DA /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		BCDB4BD81E3BC4F2008004DA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		BCDB4BDB1E3BC4F7008004DA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -65,6 +83,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BCCF42121E4351FA00D6B5F8 /* DCStorm */ = {
+			isa = PBXGroup;
+			children = (
+				BCCF42131E43521100D6B5F8 /* DCAppEvent.h */,
+				BCCF42141E43521100D6B5F8 /* DCBasketItem.h */,
+				BCCF42151E43521100D6B5F8 /* DCBasketItemParams.h */,
+				BCCF42161E43521100D6B5F8 /* DCBasketParams.h */,
+				BCCF42171E43521100D6B5F8 /* DCEnums.h */,
+				BCCF42181E43521100D6B5F8 /* DCErrorCodes.h */,
+				BCCF42191E43521100D6B5F8 /* DCParams.h */,
+				BCCF421A1E43521100D6B5F8 /* DCSalesBasket.h */,
+				BCCF421B1E43521100D6B5F8 /* DCStorm.h */,
+				BCCF421C1E43521100D6B5F8 /* Tracker.h */,
+			);
+			name = DCStorm;
+			sourceTree = "<group>";
+		};
 		BCDB4BB81E3BBE3F008004DA = {
 			isa = PBXGroup;
 			children = (
@@ -85,8 +120,8 @@
 		BCDB4BC41E3BBE3F008004DA /* CartrawlerRakuten */ = {
 			isa = PBXGroup;
 			children = (
+				BCCF42121E4351FA00D6B5F8 /* DCStorm */,
 				BCDB4BCF1E3BC10C008004DA /* libTrackingStatic.a */,
-				BCDB4BD11E3BC112008004DA /* headers */,
 				BCDB4BC51E3BBE3F008004DA /* CartrawlerRakuten.h */,
 				BCDB4BCD1E3BC042008004DA /* CartrawlerRakuten.m */,
 				BCDB4BF31E3F5662008004DA /* CTAnalyticsEvent.h */,
@@ -114,6 +149,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCCF421E1E43521100D6B5F8 /* DCBasketItem.h in Headers */,
+				BCCF42211E43521100D6B5F8 /* DCEnums.h in Headers */,
+				BCCF42201E43521100D6B5F8 /* DCBasketParams.h in Headers */,
+				BCCF42261E43521100D6B5F8 /* Tracker.h in Headers */,
+				BCCF42221E43521100D6B5F8 /* DCErrorCodes.h in Headers */,
+				BCCF42231E43521100D6B5F8 /* DCParams.h in Headers */,
+				BCCF421F1E43521100D6B5F8 /* DCBasketItemParams.h in Headers */,
+				BCCF42241E43521100D6B5F8 /* DCSalesBasket.h in Headers */,
+				BCCF42251E43521100D6B5F8 /* DCStorm.h in Headers */,
+				BCCF421D1E43521100D6B5F8 /* DCAppEvent.h in Headers */,
 				BCDB4BC71E3BBE3F008004DA /* CartrawlerRakuten.h in Headers */,
 				BCDB4BF41E3F5662008004DA /* CTAnalyticsEvent.h in Headers */,
 			);
@@ -184,7 +229,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCDB4BD21E3BC112008004DA /* headers in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +450,7 @@
 				BCDB4BF81E3F5BC5008004DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

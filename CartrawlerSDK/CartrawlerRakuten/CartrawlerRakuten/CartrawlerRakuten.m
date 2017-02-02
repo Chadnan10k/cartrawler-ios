@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "CartrawlerRakuten.h"
-#import "headers/Tracker.h"
 
 @implementation CartrawlerRakuten 
 
