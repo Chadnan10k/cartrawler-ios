@@ -247,8 +247,8 @@
     
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                        fromDate:[CTRentalSearch instance].pickupDate
-                                                          toDate:[CTRentalSearch instance].dropoffDate
+                                                        fromDate:self.defaultSearch.pickupDate
+                                                          toDate:self.defaultSearch.dropoffDate
                                                          options:0];
     
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
