@@ -147,6 +147,8 @@ typedef NS_ENUM(NSUInteger, VehicleSize) {
     
     VehicleSizeOversize,
     
+    VehicleSizeConvertible,
+    
     VehicleSizeEstate,
     
     VehicleSizeFiveSeatCarrier,
