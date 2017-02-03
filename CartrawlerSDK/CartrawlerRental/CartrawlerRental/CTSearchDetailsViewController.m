@@ -45,6 +45,7 @@
 
 @property (strong, nonatomic) CTTimePickerView *pickupTimePicker;
 @property (strong, nonatomic) CTTimePickerView *dropoffTimePicker;
+@property (weak, nonatomic) IBOutlet UISwitch *ageValidationSwitch;
 
 @property (nonatomic, strong) NSDate *pickupTime;
 @property (nonatomic, strong) NSDate *dropoffTime;
@@ -142,11 +143,13 @@
     }
 
     if ((self.search.driverAge.intValue < 25) || (self.search.driverAge.intValue > 70)) {
-        
+        self.ageValidationSwitch.on = NO;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self openDriverAgeField:YES];
         });
         
+    } else {
+        self.ageValidationSwitch.on = YES;
     }
 
     [self.calendar reset];
