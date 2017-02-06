@@ -138,6 +138,8 @@
             return CTLocalizedString(CTSDKVehicleTypeNineSeatCarrier);
         case VehicleSizeSUV:
             return CTLocalizedString(CTSDKVehicleTypeSUV);
+        case VehicleSizeConvertible:
+            return CTLocalizedString(CTSDKVehicleTypeConvertible);
     }
 }
 

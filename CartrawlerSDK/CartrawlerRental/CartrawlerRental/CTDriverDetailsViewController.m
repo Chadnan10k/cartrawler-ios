@@ -230,13 +230,19 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    NSMutableCharacterSet *characterSet = [NSMutableCharacterSet alphanumericCharacterSet];
-    [characterSet addCharactersInString:@" "];
+    
     if (textField == self.phoneTextField) {
         return [self validatePhone:[NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string]];
-    } else {
-        return YES;
     }
+    
+    if (textField == self.firstNameTextField || textField == self.lastNameTextField) {
+        NSMutableCharacterSet *characterSet = [NSMutableCharacterSet alphanumericCharacterSet];
+        [characterSet addCharactersInString:@" -'"];
+        NSCharacterSet *blockedCharacterSet = [characterSet invertedSet];
+        return ([string rangeOfCharacterFromSet:blockedCharacterSet].location == NSNotFound);
+    }
+    
+    return YES;
 }
 
 - (BOOL)validatePhone:(NSString *)phoneNumber

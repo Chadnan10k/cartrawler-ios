@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *totalPriceLabel;
 @property (weak, nonatomic) IBOutlet UITableView *featuresTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *featuresTableViewHeightConstraint;
 
 @property (weak, nonatomic) IBOutlet CTLabel *includedForFreeLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *inclusionsCollectionView;
@@ -78,6 +79,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.featuresTableView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
     
     if (self.search.selectedVehicle.vendor.rating) {
         self.topSpacing.constant = 80;
@@ -177,16 +180,7 @@
     }
     
     [self.vehicleFeaturesDataSource setData:featureData];
-    
     [self.featuresTableView reloadData];
-    [self.featuresTableView layoutIfNeeded];
-
-    if ([self.featuresTableView cartrawlerConstraintForAttribute:NSLayoutAttributeHeight]) {
-        //IOS-122
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.featuresTableView cartrawlerConstraintForAttribute:NSLayoutAttributeHeight].constant = self.featuresTableView.contentSize.height;
-        });
-    }
 }
 
 - (void)setupInclusionsCollectionView
@@ -228,6 +222,18 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self presentViewController:nav animated:YES completion:nil];
     });
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(UITableView *)featuresTableView change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    self.featuresTableViewHeightConstraint.constant = featuresTableView.contentSize.height;
+    [featuresTableView layoutIfNeeded];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.featuresTableView removeObserver:self forKeyPath:@"contentSize"];
 }
 
 @end
