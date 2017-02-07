@@ -156,14 +156,8 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                     CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:json];
                     self.carRentalSearch.booking = booking;
                     
-                    CTRentalBooking *savedBooking = [[CTRentalBooking alloc] init];
+                    CTRentalBooking *savedBooking = [[CTRentalBooking alloc] initFromSearch:self.carRentalSearch];
                     savedBooking.bookingId = booking.confID;
-                    savedBooking.pickupLocation = self.carRentalSearch.pickupLocation.name;
-                    savedBooking.dropoffLocation = self.carRentalSearch.dropoffLocation.name;
-                    savedBooking.pickupDate = self.carRentalSearch.pickupDate;
-                    savedBooking.dropoffDate = self.carRentalSearch.dropoffDate;
-                    savedBooking.vehicleImage = self.carRentalSearch.selectedVehicle.vehicle.pictureURL.absoluteString;
-                    savedBooking.vehicleName = self.carRentalSearch.selectedVehicle.vehicle.makeModelName;
                     [CTDataStore storeRentalBooking:savedBooking];
                     
                 }
