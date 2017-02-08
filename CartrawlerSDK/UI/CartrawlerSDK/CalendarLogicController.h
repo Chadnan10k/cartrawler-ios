@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "CTDateCollectionViewCell.h"
-#import "CTMiddleDateCell.h"
 
 @interface CalendarLogicController : NSObject
 

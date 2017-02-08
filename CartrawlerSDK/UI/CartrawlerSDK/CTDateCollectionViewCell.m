@@ -23,7 +23,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.layer.cornerRadius = 3;
+    self.layer.cornerRadius = 5;
     self.layer.masksToBounds = NO;
     self.selectedImageView.contentMode = UIViewContentModeScaleToFill;
 }
@@ -68,7 +68,7 @@
         } else {
             self.backgroundColor = [CTAppearance instance].calendarMidCellColor;
         }
-        self.label.textColor = [UIColor blackColor];
+        self.label.textColor = [UIColor whiteColor];
     }
 }
 
