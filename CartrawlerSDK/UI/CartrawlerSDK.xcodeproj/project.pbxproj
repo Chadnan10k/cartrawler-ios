@@ -111,8 +111,6 @@
 		455B58C81DCC914400CA4790 /* CTDateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AA1D1301C600ACF604 /* CTDateCollectionViewCell.m */; };
 		455B58C91DCC914400CA4790 /* CalendarLogicController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942AB1D1301C600ACF604 /* CalendarLogicController.h */; };
 		455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AC1D1301C600ACF604 /* CalendarLogicController.m */; };
-		455B58CB1DCC914400CA4790 /* CTMiddleDateCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942AD1D1301C600ACF604 /* CTMiddleDateCell.h */; };
-		455B58CC1DCC914400CA4790 /* CTMiddleDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AE1D1301C600ACF604 /* CTMiddleDateCell.m */; };
 		455B58CD1DCC914400CA4790 /* CTSelectView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E9429F1D13014400ACF604 /* CTSelectView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		455B58CE1DCC914400CA4790 /* CTSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A01D13014400ACF604 /* CTSelectView.m */; };
 		455B591B1DCC914400CA4790 /* CTCSVItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D3F1D3CE9D6002C6F6B /* CTCSVItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -267,8 +265,6 @@
 		45E942AA1D1301C600ACF604 /* CTDateCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDateCollectionViewCell.m; sourceTree = "<group>"; };
 		45E942AB1D1301C600ACF604 /* CalendarLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarLogicController.h; sourceTree = "<group>"; };
 		45E942AC1D1301C600ACF604 /* CalendarLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarLogicController.m; sourceTree = "<group>"; };
-		45E942AD1D1301C600ACF604 /* CTMiddleDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMiddleDateCell.h; sourceTree = "<group>"; };
-		45E942AE1D1301C600ACF604 /* CTMiddleDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMiddleDateCell.m; sourceTree = "<group>"; };
 		45E942C11D13022100ACF604 /* CTTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTimePickerView.h; sourceTree = "<group>"; };
 		45E942C21D13022100ACF604 /* CTTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTimePickerView.m; sourceTree = "<group>"; };
 		45E942CD1D1302A200ACF604 /* CTImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTImageCache.h; sourceTree = "<group>"; };
@@ -567,8 +563,6 @@
 				45E942AA1D1301C600ACF604 /* CTDateCollectionViewCell.m */,
 				45E942AB1D1301C600ACF604 /* CalendarLogicController.h */,
 				45E942AC1D1301C600ACF604 /* CalendarLogicController.m */,
-				45E942AD1D1301C600ACF604 /* CTMiddleDateCell.h */,
-				45E942AE1D1301C600ACF604 /* CTMiddleDateCell.m */,
 			);
 			name = Calender;
 			sourceTree = "<group>";
@@ -783,7 +777,6 @@
 				455B591B1DCC914400CA4790 /* CTCSVItem.h in Headers */,
 				459CB2E41DDB3FA2008522BA /* CTToolTipButton.h in Headers */,
 				455B58C71DCC914400CA4790 /* CTDateCollectionViewCell.h in Headers */,
-				455B58CB1DCC914400CA4790 /* CTMiddleDateCell.h in Headers */,
 				455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */,
 				455B58C31DCC914400CA4790 /* CTCalendarView.h in Headers */,
 				455B58C51DCC914400CA4790 /* CTCalendarTableViewCell.h in Headers */,
@@ -970,7 +963,6 @@
 				455B58C61DCC914400CA4790 /* CTCalendarTableViewCell.m in Sources */,
 				455B58C81DCC914400CA4790 /* CTDateCollectionViewCell.m in Sources */,
 				455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */,
-				455B58CC1DCC914400CA4790 /* CTMiddleDateCell.m in Sources */,
 				455B58CE1DCC914400CA4790 /* CTSelectView.m in Sources */,
 				450725B81DD9C99500D56C8A /* CTImageView.m in Sources */,
 				451E763B1E04438300D58F71 /* CTRentalBooking.m in Sources */,

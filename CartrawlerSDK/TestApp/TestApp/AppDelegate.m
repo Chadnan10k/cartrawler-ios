@@ -24,10 +24,10 @@
     [CartrawlerSDK appearance].presentAnimated = YES;
     [CartrawlerSDK appearance].modalPresentationStyle = UIModalPresentationOverFullScreen;
     [CartrawlerSDK appearance].modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [CartrawlerSDK appearance].calendarStartCellImage = [UIImage imageNamed:@"calStart"];
-    [CartrawlerSDK appearance].calendarMidCellImage = [UIImage imageNamed:@"calMid"];
-    [CartrawlerSDK appearance].calendarEndCellImage = [UIImage imageNamed:@"calEnd"];
-    [CartrawlerSDK appearance].calendarSameDayCellImage = [UIImage imageNamed:@"calSame"];
+//    [CartrawlerSDK appearance].calendarStartCellImage = [UIImage imageNamed:@"calStart"];
+//    [CartrawlerSDK appearance].calendarMidCellImage = [UIImage imageNamed:@"calMid"];
+//    [CartrawlerSDK appearance].calendarEndCellImage = [UIImage imageNamed:@"calEnd"];
+//    [CartrawlerSDK appearance].calendarSameDayCellImage = [UIImage imageNamed:@"calSame"];
     
     return YES;
 }
