@@ -35,7 +35,7 @@
 {
     self = [super initWithCoder:aDecoder];
     
-    _extra.qty = 0;
+    self.extra.qty = 0;
     
     return self;
 }
