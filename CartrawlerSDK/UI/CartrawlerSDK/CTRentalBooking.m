@@ -7,6 +7,7 @@
 //
 
 #import "CTRentalBooking.h"
+#import "CTRentalSearch.h"
 
 @implementation CTRentalBooking
 
@@ -21,6 +22,7 @@
     _dropoffDate = [aDecoder decodeObjectForKey:@"dropoffDate"];
     _vehicleImage = [aDecoder decodeObjectForKey:@"vehicleImage"];
     _vehicleName = [aDecoder decodeObjectForKey:@"vehicleName"];
+    _supplier = [aDecoder decodeObjectForKey:@"supplier"];
 
     return self;
 }
@@ -34,6 +36,7 @@
     [aCoder encodeObject:self.dropoffDate forKey:@"dropoffDate"];
     [aCoder encodeObject:self.vehicleImage forKey:@"vehicleImage"];
     [aCoder encodeObject:self.vehicleName forKey:@"vehicleName"];
+    [aCoder encodeObject:self.supplier forKey:@"supplier"];
 }
 
 - (instancetype)initFromSearch:(CTRentalSearch *)rentalSearch
@@ -45,6 +48,7 @@
     _dropoffDate = rentalSearch.dropoffDate;
     _vehicleImage = rentalSearch.selectedVehicle.vehicle.pictureURL.absoluteString;
     _vehicleName = rentalSearch.selectedVehicle.vehicle.makeModelName;
+    _supplier = rentalSearch.selectedVehicle.vendor.name;
     return self;
 }
 
