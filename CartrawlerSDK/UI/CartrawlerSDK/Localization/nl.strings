@@ -1,0 +1,15 @@
+"calendar_thu" = "do";
+"calendar_fri" = "vr";
+"calendar_tue" = "di";
+"calendar_continue" = "Doorgaan";
+"calendar_sat" = "za";
+"calendar_summary_pickup" = "Ophaaldatum";
+"calendar_select_date" = "Datum kiezen";
+"calendar_sun" = "zo";
+"calendar_mon" = "ma";
+"calendar_summary_dropoff" = "Inleverdatum";
+"calendar_return_date" = "Inleverdatum";
+"calendar_wed" = "wo";
+"calendar_pickup_date" = "Ophaaldatum";
+"calendar_summary_title" = "Datum kiezen";
+"calendar_select_dates" = "Kies uw data";

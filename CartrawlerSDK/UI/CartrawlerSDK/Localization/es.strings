@@ -1,0 +1,15 @@
+"calendar_thu" = "J";
+"calendar_fri" = "V";
+"calendar_tue" = "M";
+"calendar_continue" = "Continuar";
+"calendar_sat" = "S";
+"calendar_summary_pickup" = "Fecha de recogida";
+"calendar_select_date" = "Seleccionar fecha";
+"calendar_sun" = "D";
+"calendar_mon" = "L";
+"calendar_summary_dropoff" = "Fecha de devolución";
+"calendar_return_date" = "Fecha de devolución";
+"calendar_wed" = "X";
+"calendar_pickup_date" = "Fecha de recogida";
+"calendar_summary_title" = "Seleccionar fecha";
+"calendar_select_dates" = "Selecciona tus fechas";

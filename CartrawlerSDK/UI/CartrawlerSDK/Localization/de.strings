@@ -1,0 +1,15 @@
+"calendar_thu" = "Do";
+"calendar_fri" = "Fr";
+"calendar_tue" = "Di";
+"calendar_continue" = "Weiter";
+"calendar_sat" = "Sa";
+"calendar_summary_pickup" = "Abholdatum";
+"calendar_select_date" = "Datum auswählen";
+"calendar_sun" = "So";
+"calendar_mon" = "Mo";
+"calendar_summary_dropoff" = "Rückgabedatum";
+"calendar_return_date" = "Rückgabedatum";
+"calendar_wed" = "Mi";
+"calendar_pickup_date" = "Abholdatum";
+"calendar_summary_title" = "Datum auswählen";
+"calendar_select_dates" = "Daten auswählen";
