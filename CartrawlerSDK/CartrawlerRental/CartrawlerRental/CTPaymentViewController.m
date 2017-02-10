@@ -117,9 +117,10 @@
     
     NSString *link1 = [NSString stringWithFormat:@"<a href='www.cartrawler.com'><b>%@</b></a>", CTLocalizedString(CTRentalPaymentText2)];
     
-    NSString *termsStr = [NSString stringWithFormat:@"%@ %@", CTLocalizedString(CTRentalPaymentText1), link1];
+    NSString *termsStr = [NSString stringWithFormat:CTLocalizedString(CTRentalPaymentText1), link1];
     
     //seems lazy but efficient
+    
     self.termsLabel.attributedText = [CTHTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
                                                                 pointSize:15.0
                                                                      text:termsStr

@@ -15,6 +15,7 @@
 #import "CTAppearance.h"
 #import "CTSDKLocalizationConstants.h"
 #import "CTLocalisedStrings.h"
+#import "CTSDKSettings.h"
 
 @interface CTCalendarView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -143,6 +144,7 @@
     headerView.alpha = 0.9;
     [headerView addSubview:customLabel];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.locale = [NSLocale localeWithLocaleIdentifier:[CTSDKSettings instance].languageCode];
     df.dateFormat = @"MMMM YYYY";
     NSString *dateStr = [df stringFromDate:self.months[section]];
     customLabel.text = dateStr;

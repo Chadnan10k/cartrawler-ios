@@ -1,4 +1,5 @@
 "summary_total" = "Σύνολο";
+"locations_results_airports" = "Αεροδρόμια";
 "vehicle_type_fullsize" = "Μεγάλο";
 "insurance_list_3_title" = "Χωρίς άγχος";
 "receipt_your_reference" = "Ο αριθμός κράτησής σας είναι:";
@@ -40,9 +41,11 @@
 "vehicle_fuel_policy_type_EMPTYEMPTY" = "Άδειο ρεζερβουάρ κατά την παραλαβή και παράδοση";
 "filter_reset" = "Επαναφορά";
 "vehicle_pickup_location_VWF_13.VWF.X" = "Κοντά στο ξενοδοχείο";
+"locations_results_others" = "Όλες οι άλλες τοποθεσίες";
 "summary_now" = "Πληρωμή τώρα";
 "vehicle_pickup_location_VWF_9.VWF.X" = "Νότια του κέντρου της πόλης";
 "insurance_list_3_body" = "Έχετε πλήρη κάλυψη για το ποσό ευθύνης εάν κάτι πάει στραβά";
+"settings_currency_title" = "Νόμισμα";
 "receipt_email_text" = "Έχουμε στείλει e-mail επιβεβαίωσης στη διεύθυνση %@. Ίσως παρέλθουν έως και 15 λεπτά για να το λάβετε. Παρακαλούμε, εξετάστε την απόδειξή σας πριν την παραλαβή του αυτοκινήτου.";
 "vehicle_bags" = "Αποσκευές";
 "CTA_cancel" = "Ακύρωση";
@@ -88,6 +91,7 @@
 "vehicle_fuel_policy_type_FULLEMPTY" = "Προαγορά";
 "vehicle_type_twelve_passenger_van" = "Βαν 12 επιβατών";
 "vehicle_type_oversize" = "Μεγάλου μεγέθους";
+"settings_country_title" = "Χώρα";
 "vehicle_pickup_location_VWF_5.VWF.X" = "Μεταφορά στο ξενοδοχείο";
 "vehicle_type_vehicle_size_SUV" = "Μέγεθος οχήματος SUV";
 "filter_pickup" = "Τοποθεσία παραλαβής";
@@ -125,6 +129,7 @@
 "vehicle_vehicle_inclusion" = "Η παροχή αυτή περιλαμβάνεται στην τιμή του οχήματος";
 "vehicle_pickup_location_VWF_10.VWF.X" = "Δυτικά του κέντρου της πόλης";
 "vehicle_pickup_location_VWF_7.VWF.X" = "Κέντρο πόλης";
+"settings_select_languages" = "Επιλέξτε γλώσσα";
 "supplier_excellent" = "Εξαιρετικό";
 "vehicle_type_twenty_four_foot_truck" = "Φορτηγό μήκους 7,3μ.";
 "vehicle_pickup_type" = "Τύπος παραλαβής";
@@ -180,6 +185,7 @@
 "payment_text_1" = "Πατήστε \"Κράτηση τώρα\" για να ολοκληρώσετε την κράτησή σας και να αποδεχτείτε τους %@.";
 "payment_text_2" = "Όροι και Προϋποθέσεις";
 "vehicle_fuel_policy_desc_CHAUFFUELINC" = "Περιλαμβάνονται όλες οι χρεώσεις καυσίμου. Δεν θα χρειαστεί να πληρώσετε για το γέμισμα του ρεζερβουάρ.";
+"settings_select_currency" = "Επιλέξτε νόμισμα";
 "receipt_scroll" = "Κυλήστε για τη σύνοψη";
 "vehicle_type_luxury" = "Πολυτελές";
 "vehicle_pickup_details_VWF_2.VWF.X" = "Το γραφείο εξυπηρέτησης βρίσκεται εντός του αεροδρομίου.";
@@ -249,6 +255,7 @@
 "vehicle_fuel_policy_desc_QUARTERQUARTER" = "Το αυτοκίνητό σας παραδίδεται με ρεζερβουάρ καυσίμου που είναι γεμάτο κατά το ένα τέταρτο. Απλώς επιστρέψτε το αυτοκίνητο με ρεζερβουάρ γεμάτο κατά το ένα τέταρτο για να αποφύγετε τυχόν χρεώσεις αναπλήρωσης καυσίμου. Εάν επιστρέψετε το αυτοκίνητο με περισσότερα καύσιμα, δε θα σας επιστραφούν χρήματα.";
 "vehicle_pickup_location" = "Τόπος παραλαβής";
 "user_surname_hint" = "Επώνυμο";
+"settings_select_country" = "Επιλέξτε χώρα";
 "insurance_list_2_body" = "Σε περίπτωση ζημιάς ή κλοπής του αυτοκινήτου και εφόσον υποχρεωθείτε να καταβάλετε το ποσό ευθύνης, θα σας επιστραφεί εξολοκλήρου";
 "vehicle_passenger" = "Επιβάτης";
 "CTA_no_insurance" = "Συνέχεια χωρίς ασφάλιση";

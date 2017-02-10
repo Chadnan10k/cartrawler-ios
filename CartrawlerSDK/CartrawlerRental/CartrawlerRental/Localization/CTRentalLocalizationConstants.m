@@ -76,13 +76,13 @@ NSString * const CTRentalSearchReturnTimeText = @"search_return_time_text";
 
 NSString * const CTRentalSearchLocationsPlaceholder = @"search_locations_placeholder";
 
-NSString * const CTRentalSearchLocationsAirport = @"search_locations_airport";
+NSString * const CTRentalSearchLocationsAirport = @"locations_results_airports";
 
-NSString * const CTRentalSearchLocationsOther = @"search_locations_other";
+NSString * const CTRentalSearchLocationsOther = @"locations_results_others";
 
-NSString * const CTRentalBookingTableHeaderTitle = @"booking_table_header_title";
+NSString * const CTRentalBookingTableHeaderTitle = @"title_booking_manager";
 
-NSString * const CTRentalBookingReferencePrefix = @"booking_reference_prefix";
+NSString * const CTRentalBookingReferencePrefix = @"receipt_your_reference";
 
 NSString * const CTRentalSettingsCountryTitle = @"settings_country_title";
 

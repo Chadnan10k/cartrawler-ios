@@ -57,11 +57,6 @@
         [self.merchBannerView setBannerType:CTMerhandisingBannerTypeNone];
     }
     
-    //Do we display special offer? or any extras included in the price?
-//    for (CTSpecialOffer *so in item.vehicle.specialOffers) {
-//        NSLog(@"%@", so.shortText);
-//    }
-    
     [self.specialOfferBannerView setBannerType:CTMerhandisingBannerTypeNone];
     self.totalPriceBottomConstranit.constant = 8;
     for (CTExtraEquipment *ee in item.vehicle.extraEquipment) {

@@ -1,4 +1,5 @@
 "summary_total" = "Suma";
+"locations_results_airports" = "Lotniska";
 "vehicle_type_fullsize" = "Pełnowymiarowy";
 "insurance_list_3_title" = "Spokój ducha";
 "receipt_your_reference" = "Numer referencyjny rezerwacji:";
@@ -40,9 +41,11 @@
 "vehicle_fuel_policy_type_EMPTYEMPTY" = "Pusty do pustego";
 "filter_reset" = "Reset";
 "vehicle_pickup_location_VWF_13.VWF.X" = "Pobliski ośrodek";
+"locations_results_others" = "Wszystkie inne lokalizacje";
 "summary_now" = "Zapłać teraz";
 "vehicle_pickup_location_VWF_9.VWF.X" = "Na południe od centrum miasta";
 "insurance_list_3_body" = "Zyskujesz pełną ochronę w odniesieniu do wkładu własnego, jeśli coś pójdzie nie tak.";
+"settings_currency_title" = "Waluta";
 "receipt_email_text" = "Wysłaliśmy e-mail z potwierdzeniem na adres %@. Wiadomość e-mail powinna dotrzeć w ciągu 15 minut. Sprawdź swój voucher przed odbiorem samochodu.";
 "vehicle_bags" = "Bagaże";
 "CTA_cancel" = "Anuluj";
@@ -88,6 +91,7 @@
 "vehicle_fuel_policy_type_FULLEMPTY" = "Zakup uprzedni";
 "vehicle_type_twelve_passenger_van" = "Van na 12 pasażerów";
 "vehicle_type_oversize" = "Ponadwymiarowy";
+"settings_country_title" = "Kraj";
 "vehicle_pickup_location_VWF_5.VWF.X" = "Dostawa do hotelu";
 "vehicle_type_vehicle_size_SUV" = "SUV – rozmiar pojazdu";
 "filter_pickup" = "Lokalizacja odbioru";
@@ -125,6 +129,7 @@
 "vehicle_vehicle_inclusion" = "Ten element jest zawarty w cenie tego pojazdu";
 "vehicle_pickup_location_VWF_10.VWF.X" = "Na zachód od centrum miasta";
 "vehicle_pickup_location_VWF_7.VWF.X" = "Centrum miasta/śródmieście";
+"settings_select_languages" = "Wybierz język";
 "supplier_excellent" = "Doskonała";
 "vehicle_type_twenty_four_foot_truck" = "Ciężarówka 7,3 m";
 "vehicle_pickup_type" = "Typ odbioru";
@@ -180,6 +185,7 @@
 "payment_text_1" = "Wciśnij \"Zarezerwuj teraz\", aby zakończyć rezerwację i zaakceptować nasz %@.";
 "payment_text_2" = "Regulamin";
 "vehicle_fuel_policy_desc_CHAUFFUELINC" = "Wszystkie opłaty za paliwo są wliczone. Nie musisz płacić za dodatkowe tankowanie.";
+"settings_select_currency" = "Wybierz walutę";
 "receipt_scroll" = "Przewiń, aby uzyskać podsumowanie";
 "vehicle_type_luxury" = "Luksusowy";
 "vehicle_pickup_details_VWF_2.VWF.X" = "Biuro wypożyczalni jest dogodnie zlokalizowane na terenie lotniska.";
@@ -249,6 +255,7 @@
 "vehicle_fuel_policy_desc_QUARTERQUARTER" = "Samochód jest udostępniany z bakiem zatankowanym do jednej czwartej. Zwróć samochód z bakiem zatankowanym do jednej czwartej, aby uniknąć opłat za tankowanie. W przypadku większej ilości paliwa nie otrzymasz dodatkowego zwrotu.";
 "vehicle_pickup_location" = "Lokalizacja odbioru";
 "user_surname_hint" = "Nazwisko";
+"settings_select_country" = "Wybierz kraj";
 "insurance_list_2_body" = "W razie uszkodzenia lub kradzieży samochodu oraz konieczności uiszczenia wkładu własnego zostanie on w pełni zwrócony.";
 "vehicle_passenger" = "Pasażer";
 "CTA_no_insurance" = "Kontynuuj bez ubezpieczenia";

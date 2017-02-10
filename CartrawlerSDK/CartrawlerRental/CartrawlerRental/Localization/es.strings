@@ -1,4 +1,5 @@
 "summary_total" = "Total";
+"locations_results_airports" = "Aeropuertos";
 "vehicle_type_fullsize" = "Grande";
 "insurance_list_3_title" = "Tranquilidad absoluta";
 "receipt_your_reference" = "La referencia de tu reserva es:";
@@ -40,9 +41,11 @@
 "vehicle_fuel_policy_type_EMPTYEMPTY" = "Depósito vacío a depósito vacío";
 "filter_reset" = "Restablecer";
 "vehicle_pickup_location_VWF_13.VWF.X" = "Cerca del complejo";
+"locations_results_others" = "Otros lugares";
 "summary_now" = "Importe a pagar ahora";
 "vehicle_pickup_location_VWF_9.VWF.X" = "Al sur del centro de la ciudad";
 "insurance_list_3_body" = "Tu franquicia estará totalmente cubierta si algo sale mal";
+"settings_currency_title" = "Moneda";
 "receipt_email_text" = "Hemos enviado una confirmación por correo electrónico a %@. Puede tardar hasta 15 minutos en llegar. Por favor, revisa tu comprobante antes de recoger el coche.";
 "vehicle_bags" = "Maletas";
 "CTA_cancel" = "Cancelar";
@@ -88,6 +91,7 @@
 "vehicle_fuel_policy_type_FULLEMPTY" = "Compra anticipada";
 "vehicle_type_twelve_passenger_van" = "Furgoneta para doce pasajeros";
 "vehicle_type_oversize" = "Gran tamaño";
+"settings_country_title" = "País";
 "vehicle_pickup_location_VWF_5.VWF.X" = "Entrega en hotel";
 "vehicle_type_vehicle_size_SUV" = "Todoterreno de tamaño vehículo";
 "filter_pickup" = "Lugar de recogida";
@@ -125,6 +129,7 @@
 "vehicle_vehicle_inclusion" = "Este artículo está incluido en el precio de este vehículo";
 "vehicle_pickup_location_VWF_10.VWF.X" = "Al oeste del centro de la ciudad";
 "vehicle_pickup_location_VWF_7.VWF.X" = "Centro de la ciudad";
+"settings_select_languages" = "Seleccionar idioma";
 "supplier_excellent" = "Excelente";
 "vehicle_type_twenty_four_foot_truck" = "Vehículo de 7,3 metros";
 "vehicle_pickup_type" = "Tipo de recogida";
@@ -180,6 +185,7 @@
 "payment_text_1" = "Toca \"Reservar ahora\" para completar la reserva y aceptar nuestros %@.";
 "payment_text_2" = "Términos y condiciones";
 "vehicle_fuel_policy_desc_CHAUFFUELINC" = "Todos los cargos por combustible están incluidos. No deberás abonar ninguna cantidad extra en concepto de repostaje.";
+"settings_select_currency" = "Seleccionar moneda";
 "receipt_scroll" = "Desplázate hasta abajo para ver el resumen";
 "vehicle_type_luxury" = "Lujo";
 "vehicle_pickup_details_VWF_2.VWF.X" = "La oficina está cómodamente situada en la zona del aeropuerto.";
@@ -249,6 +255,7 @@
 "vehicle_fuel_policy_desc_QUARTERQUARTER" = "Tu coche se entrega con un cuarto de depósito de combustible lleno. Devuelve el coche con el depósito de combustible lleno hasta un cuarto para evitar cualquier cargo por el llenado del depósito. Si devuelves el coche con más combustible, no se te devolverá el importe adicional.";
 "vehicle_pickup_location" = "Lugar de recogida";
 "user_surname_hint" = "Apellido";
+"settings_select_country" = "Seleccionar país";
 "insurance_list_2_body" = "En caso de daños o robo del coche, si tienes que abonar la franquicia, esta se devolverá completamente";
 "vehicle_passenger" = "Pasajero";
 "CTA_no_insurance" = "Continuar sin seguro";

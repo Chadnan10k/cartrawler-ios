@@ -1,4 +1,5 @@
 "summary_total" = "Totaalbedrag";
+"locations_results_airports" = "Luchthavens";
 "vehicle_type_fullsize" = "Grote middenklasse";
 "insurance_list_3_title" = "Gemoedsrust";
 "receipt_your_reference" = "Uw boekingsreferentie:";
@@ -40,9 +41,11 @@
 "vehicle_fuel_policy_type_EMPTYEMPTY" = "Leeg naar leeg";
 "filter_reset" = "Opnieuw instellen";
 "vehicle_pickup_location_VWF_13.VWF.X" = "Bij resort";
+"locations_results_others" = "Alle andere locaties";
 "summary_now" = "Nu betalen";
 "vehicle_pickup_location_VWF_9.VWF.X" = "Stadscentrum - zuid";
 "insurance_list_3_body" = "U bent volledig gedekt voor uw eigen risico als er iets misgaat";
+"settings_currency_title" = "Valuta";
 "receipt_email_text" = "We hebben een bevestigingse-mail gestuurd naar %@. Ontvangst van deze e-mail kan tot 15 minuten duren. Kijk uw voucher na voordat u uw auto ophaalt.";
 "vehicle_bags" = "Tassen";
 "CTA_cancel" = "Annuleren";
@@ -88,6 +91,7 @@
 "vehicle_fuel_policy_type_FULLEMPTY" = "Vooraf betalen";
 "vehicle_type_twelve_passenger_van" = "Busje voor twaalf personen";
 "vehicle_type_oversize" = "Oversize";
+"settings_country_title" = "Land";
 "vehicle_pickup_location_VWF_5.VWF.X" = "Hotelaflevering";
 "vehicle_type_vehicle_size_SUV" = "Compacte SUV";
 "filter_pickup" = "Ophaallocatie";
@@ -125,6 +129,7 @@
 "vehicle_vehicle_inclusion" = "Dit is inbegrepen in de prijs van het voertuig";
 "vehicle_pickup_location_VWF_10.VWF.X" = "Stadscentrum - west";
 "vehicle_pickup_location_VWF_7.VWF.X" = "Stadscentrum/binnenstad";
+"settings_select_languages" = "Selecteer taal";
 "supplier_excellent" = "Uitstekend";
 "vehicle_type_twenty_four_foot_truck" = "Vrachtwagen van zeven meter";
 "vehicle_pickup_type" = "Wijze van ophalen";
@@ -180,6 +185,7 @@
 "payment_text_1" = "Tik op \"Boek nu\" om uw boeking af te ronden en onze %@ te accepteren.";
 "payment_text_2" = "Algemene voorwaarden";
 "vehicle_fuel_policy_desc_CHAUFFUELINC" = "Alle brandstofkosten zijn inbegrepen. U hoeft niets te betalen voor het eventueel voltanken.";
+"settings_select_currency" = "Selecteer valuta";
 "receipt_scroll" = "Scroll verder voor het overzicht";
 "vehicle_type_luxury" = "Luxe";
 "vehicle_pickup_details_VWF_2.VWF.X" = "De verhuurbalie is gunstig gelegen op het terrein van de luchthaven.";
@@ -249,6 +255,7 @@
 "vehicle_fuel_policy_desc_QUARTERQUARTER" = "Uw auto wordt met een kwartvolle tank geleverd. Lever de auto weer in met een kwartvolle tank om bijvulkosten te vermijden. Als u de auto inlevert met meer brandstof in de tank, zult u hiervoor geen aanvullende vergoeding ontvangen.";
 "vehicle_pickup_location" = "Ophaallocatie";
 "user_surname_hint" = "Achternaam";
+"settings_select_country" = "Selecteer land";
 "insurance_list_2_body" = "In geval van diefstal of schade aan de auto waardoor u verplicht bent om het eigen risico te betalen, zal dit bedrag volledig worden vergoed";
 "vehicle_passenger" = "Passagier";
 "CTA_no_insurance" = "Doorgaan zonder verzekering";

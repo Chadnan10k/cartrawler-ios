@@ -1,4 +1,5 @@
 "summary_total" = "Gesamtbetrag";
+"locations_results_airports" = "Flughäfen";
 "vehicle_type_fullsize" = "Fullsize";
 "insurance_list_3_title" = "Vollkommene Sorgenfreiheit";
 "receipt_your_reference" = "Ihre Buchungsreferenz:";
@@ -40,9 +41,11 @@
 "vehicle_fuel_policy_type_EMPTYEMPTY" = "Leer/leer";
 "filter_reset" = "Zurücksetzen";
 "vehicle_pickup_location_VWF_13.VWF.X" = "In Resortnähe";
+"locations_results_others" = "Alle anderen Standorte";
 "summary_now" = "Jetzt zahlen";
 "vehicle_pickup_location_VWF_9.VWF.X" = "Südlich des Stadtzentrums";
 "insurance_list_3_body" = "Falls einmal etwas schiefgehen sollte, ist Ihr Selbstbehalt gänzlich gedeckt";
+"settings_currency_title" = "Währung";
 "receipt_email_text" = "Wir haben eine E-Mail-Bestätigung an %@ gesendet. Es kann bis zu 15 Minuten dauern, bis Sie diese E-Mail erhalten. Bitte überprüfen Sie Ihren Buchungsbeleg, bevor Sie Ihr Auto abholen.";
 "vehicle_bags" = "Koffer";
 "CTA_cancel" = "Stornieren";
@@ -88,6 +91,7 @@
 "vehicle_fuel_policy_type_FULLEMPTY" = "Voll – Leer";
 "vehicle_type_twelve_passenger_van" = "Van mit Platz für 12 Passagiere";
 "vehicle_type_oversize" = "Erweiterbare Mittelklasse";
+"settings_country_title" = "Land";
 "vehicle_pickup_location_VWF_5.VWF.X" = "Übergabe am Hotel";
 "vehicle_type_vehicle_size_SUV" = "Geländelimousine in Fahrzeuggröße";
 "filter_pickup" = "Abholort";
@@ -125,6 +129,7 @@
 "vehicle_vehicle_inclusion" = "Dieser Artikel ist im Preis dieses Fahrzeugs inbegriffen";
 "vehicle_pickup_location_VWF_10.VWF.X" = "Westlich des Stadtzentrums";
 "vehicle_pickup_location_VWF_7.VWF.X" = "Stadtzentrum/Innenstadt";
+"settings_select_languages" = "Sprache auswählen";
 "supplier_excellent" = "Hervorragend";
 "vehicle_type_twenty_four_foot_truck" = "LKW mit sieben Metern";
 "vehicle_pickup_type" = "Art der Abholung";
@@ -180,6 +185,7 @@
 "payment_text_1" = "Tippen Sie auf \"Jetzt buchen\", um Ihre Buchung abzuschließen und unsere %@ zu akzeptieren.";
 "payment_text_2" = "Allgemeine Geschäftsbedingungen";
 "vehicle_fuel_policy_desc_CHAUFFUELINC" = "Sämtliche Kraftstoffkosten sind enthalten.Â Es fallen keine zusätzlichen Tankkosten für Sie an.";
+"settings_select_currency" = "Währung auswählen";
 "receipt_scroll" = "Übersicht unten";
 "vehicle_type_luxury" = "Luxuswagen";
 "vehicle_pickup_details_VWF_2.VWF.X" = "Der Mietschalter befindet sich direkt auf dem Flughafengelände.";
@@ -249,6 +255,7 @@
 "vehicle_fuel_policy_desc_QUARTERQUARTER" = "Sie erhalten das Fahrzeug mit viertelvollem Tank. Am Ende geben Sie den Mietwagen mit viertelvollem Tank zurück, damit Ihnen am Schalter keine Kosten für das Wiederauffüllen berechnet werden. Wenn Sie das Fahrzeug mit mehr Kraftstoff zurückgeben, erhalten Sie keine zusätzliche Rückerstattung.";
 "vehicle_pickup_location" = "Abholort";
 "user_surname_hint" = "Nachname";
+"settings_select_country" = "Land auswählen";
 "insurance_list_2_body" = "Im Schadensfall oder bei Autodiebstahl wird die von Ihnen zu entrichtende Selbstbeteiligung in voller Höhe erstattet";
 "vehicle_passenger" = "Passagier";
 "CTA_no_insurance" = "Ohne Versicherung fortfahren";

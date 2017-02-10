@@ -1,4 +1,5 @@
 "summary_total" = "Totale";
+"locations_results_airports" = "Aeroporti";
 "vehicle_type_fullsize" = "Grandi dimensioni";
 "insurance_list_3_title" = "Massima tranquillità";
 "receipt_your_reference" = "Riferimento prenotazione:";
@@ -40,9 +41,11 @@
 "vehicle_fuel_policy_type_EMPTYEMPTY" = "Vuoto-vuoto";
 "filter_reset" = "Reimposta";
 "vehicle_pickup_location_VWF_13.VWF.X" = "Vicino al resort";
+"locations_results_others" = "Tutte le altre località";
 "summary_now" = "Paga subito";
 "vehicle_pickup_location_VWF_9.VWF.X" = "A sud del centro città";
 "insurance_list_3_body" = "Copertura totale dell’importo della franchigia in caso di imprevisti";
+"settings_currency_title" = "Valuta";
 "receipt_email_text" = "Abbiamo inviato un’e-mail di conferma a %@. La ricezione dell’e-mail può richiedere fino a 15 minuti. Consulta il voucher prima di ritirare l’auto.";
 "vehicle_bags" = "Bagagli";
 "CTA_cancel" = "Annulla";
@@ -88,6 +91,7 @@
 "vehicle_fuel_policy_type_FULLEMPTY" = "Preacquisto";
 "vehicle_type_twelve_passenger_van" = "Furgone a dodici posti";
 "vehicle_type_oversize" = "Grandissima";
+"settings_country_title" = "Paese";
 "vehicle_pickup_location_VWF_5.VWF.X" = "Consegna in hotel";
 "vehicle_type_vehicle_size_SUV" = "SUV crossover";
 "filter_pickup" = "Località di ritiro";
@@ -125,6 +129,7 @@
 "vehicle_vehicle_inclusion" = "Questo elemento è incluso nel prezzo del veicolo";
 "vehicle_pickup_location_VWF_10.VWF.X" = "A ovest del centro città";
 "vehicle_pickup_location_VWF_7.VWF.X" = "Centro città";
+"settings_select_languages" = "Seleziona la lingua";
 "supplier_excellent" = "Eccellente";
 "vehicle_type_twenty_four_foot_truck" = "Autocarro ventiquattro piedi";
 "vehicle_pickup_type" = "Tipo di ritiro";
@@ -180,6 +185,7 @@
 "payment_text_1" = "Tocca \"Prenota ora\"per completare la prenotazione e accettare i %@.";
 "payment_text_2" = "Termini e condizioni";
 "vehicle_fuel_policy_desc_CHAUFFUELINC" = "Il carburante è incluso. Non dovrai pagare alcun extra per il rifornimento.";
+"settings_select_currency" = "Seleziona la valuta";
 "receipt_scroll" = "Scorri per il riepilogo";
 "vehicle_type_luxury" = "Lusso";
 "vehicle_pickup_details_VWF_2.VWF.X" = "Il banco di assistenza si trova all’interno dell’aeroporto.";
@@ -249,6 +255,7 @@
 "vehicle_fuel_policy_desc_QUARTERQUARTER" = "L’auto è consegnata con il serbatoio pieno per un quarto. Restituiscila con il serbatoio pieno per un quarto per evitare spese di rifornimento. Se la restituisci con più carburante non riceverai rimborsi aggiuntivi.";
 "vehicle_pickup_location" = "Località di ritiro";
 "user_surname_hint" = "Cognome";
+"settings_select_country" = "Seleziona il paese";
 "insurance_list_2_body" = "In caso di danni o furto dell’auto, qualora tu sia tenuto a pagare la franchigia, questa ti verrà rimborsata per intero";
 "vehicle_passenger" = "Passeggero";
 "CTA_no_insurance" = "Continua senza assicurazione";
