@@ -67,16 +67,19 @@
     
     NSNumber *depositAmount = @0;
     NSNumber *payAtDeskAmount = @0;
+    NSNumber *bookingFeeAmount = @0;
 
     for (CTFee *fee in vehicle.fees) {
         if ([fee.feePurpose isEqualToString:@"22"]) {
             depositAmount = fee.feeAmount;
         } else if ([fee.feePurpose isEqualToString:@"23"]) {
             payAtDeskAmount = fee.feeAmount;
+        } else if ([fee.feePurpose isEqualToString:@"6"]) {
+            bookingFeeAmount = fee.feeAmount;
         }
     }
     
-    NSNumber *payNowAmount = [NSNumber numberWithDouble:depositAmount.doubleValue + insuranceAmount.doubleValue];
+    NSNumber *payNowAmount = [NSNumber numberWithDouble:depositAmount.doubleValue + insuranceAmount.doubleValue + bookingFeeAmount.doubleValue];
     
     NSString *insuranceDesc = [NSString stringWithFormat:
     @"\r  \"insurance\":{ \r"

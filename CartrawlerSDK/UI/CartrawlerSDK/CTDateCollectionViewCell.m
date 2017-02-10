@@ -23,7 +23,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.layer.cornerRadius = 3;
+    self.layer.cornerRadius = 5;
     self.layer.masksToBounds = NO;
     self.selectedImageView.contentMode = UIViewContentModeScaleToFill;
 }
@@ -52,43 +52,27 @@
 
 - (void)headSetSelected
 {
-    if ([CTAppearance instance].calendarStartCellImage) {
-        self.selectedImageView.image = [CTAppearance instance].calendarStartCellImage;
-    } else {
-        self.backgroundColor = [CTAppearance instance].calendarStartCellColor;
-    }
+    self.backgroundColor = [CTAppearance instance].calendarStartCellColor;
     self.label.textColor = [UIColor whiteColor];
 }
 
 - (void)midSetSelected
 {
     if (![self.date isEqual:[NSNull null]]) {
-        if ([CTAppearance instance].calendarMidCellImage) {
-            self.selectedImageView.image = [CTAppearance instance].calendarMidCellImage;
-        } else {
-            self.backgroundColor = [CTAppearance instance].calendarMidCellColor;
-        }
-        self.label.textColor = [UIColor blackColor];
+        self.backgroundColor  = [CTAppearance instance].calendarMidCellColor;
+        self.label.textColor = [UIColor whiteColor];
     }
 }
 
 - (void)tailSetSelected
 {
-    if ([CTAppearance instance].calendarEndCellImage) {
-        self.selectedImageView.image = [CTAppearance instance].calendarEndCellImage;
-    } else {
-        self.backgroundColor = [CTAppearance instance].calendarEndCellColor;
-    }
+    self.backgroundColor = [CTAppearance instance].calendarEndCellColor;
     self.label.textColor = [UIColor whiteColor];
 }
 
 - (void)sameDaySetSelected
 {
-    if ([CTAppearance instance].calendarEndCellImage) {
-        self.selectedImageView.image = [CTAppearance instance].calendarSameDayCellImage;
-    } else {
-        self.backgroundColor = [CTAppearance instance].calendarSameDayCellColor;
-    }
+    self.backgroundColor = [CTAppearance instance].calendarSameDayCellColor;
     self.label.textColor = [UIColor whiteColor];
 }
 

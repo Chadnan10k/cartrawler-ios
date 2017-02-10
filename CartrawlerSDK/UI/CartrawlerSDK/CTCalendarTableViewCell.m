@@ -154,17 +154,17 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(5, 5, 5, 5); // top, left, bottom, right
+    return UIEdgeInsetsMake(2,2,2,2); // top, left, bottom, right
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 0;
+    return 0.5;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 0;
+    return 1;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -174,7 +174,7 @@
 
 - (CGSize)cellSize
 {
-    CGFloat size = (CGRectGetWidth(self.bounds) - 5 * 2) / 7;
+    CGFloat size = (CGRectGetWidth(self.bounds) - 7 * 2) / 7;
     return  CGSizeMake(size, size);
 }
 
