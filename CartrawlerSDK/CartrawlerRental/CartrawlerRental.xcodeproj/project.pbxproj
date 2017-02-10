@@ -630,8 +630,8 @@
 				451E75AA1E042EA200D58F71 /* CTOptionalExtrasViewController.m */,
 				451E75A81E042EA200D58F71 /* CTOptionalExtrasView.h */,
 				451E75A91E042EA200D58F71 /* CTOptionalExtrasView.m */,
-				451E75AB1E042EA200D58F71 /* CTOptionalExtraTableViewCell.m */,
 				451E75A71E042EA200D58F71 /* CTOptionalExtraTableViewCell.h */,
+				451E75AB1E042EA200D58F71 /* CTOptionalExtraTableViewCell.m */,
 				451E75AC1E042EA200D58F71 /* CTOptionalExtraTableViewCell.xib */,
 			);
 			name = "Optional Extras";
