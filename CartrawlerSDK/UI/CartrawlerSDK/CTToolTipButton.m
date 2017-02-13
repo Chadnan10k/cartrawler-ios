@@ -10,6 +10,7 @@
 #import "CTLabel.h"
 #import "CTAppearance.h"
 #import "CartrawlerSDK+UIImageView.h"
+#import "CartrawlerSDK+UIView.h"
 
 @interface CTToolTipButton()
 
@@ -27,6 +28,7 @@
     self.layer.cornerRadius = [CTAppearance instance].buttonCornerRadius;
     _textLabel = [CTLabel new];
     self.textLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:21];
+    self.textLabel.numberOfLines = 0;
     self.textLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.textLabel.textColor = [CTAppearance instance].iconTint;
     
@@ -51,6 +53,16 @@
                                                                  metrics:nil
                                                                    views:@{@"view" : self.imageView}]];
     
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-32-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"view" : self.textLabel}]];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"view" : self.textLabel}]];
+    
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.imageView
                                                      attribute:NSLayoutAttributeCenterY
                                                      relatedBy:NSLayoutRelationEqual
@@ -59,21 +71,21 @@
                                                     multiplier:1.0f
                                                       constant:0.0f]];
     
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.textLabel
-                                                     attribute:NSLayoutAttributeCenterY
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeCenterY
-                                                    multiplier:1.0f
-                                                      constant:0.0f]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.textLabel
-                                                     attribute:NSLayoutAttributeCenterX
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeCenterX
-                                                    multiplier:1.0f
-                                                      constant:0.0f]];
+//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.textLabel
+//                                                     attribute:NSLayoutAttributeCenterY
+//                                                     relatedBy:NSLayoutRelationEqual
+//                                                        toItem:self
+//                                                     attribute:NSLayoutAttributeCenterY
+//                                                    multiplier:1.0f
+//                                                      constant:0.0f]];
+//    
+//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.textLabel
+//                                                     attribute:NSLayoutAttributeCenterX
+//                                                     relatedBy:NSLayoutRelationEqual
+//                                                        toItem:self
+//                                                     attribute:NSLayoutAttributeCenterX
+//                                                    multiplier:1.0f
+//                                                      constant:0.0f]];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(showToolTip)];

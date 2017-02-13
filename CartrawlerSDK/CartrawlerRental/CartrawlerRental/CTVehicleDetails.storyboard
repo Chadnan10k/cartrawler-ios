@@ -30,10 +30,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1i-bM-q5G">
-                                <rect key="frame" x="0.0" y="100" width="600" height="700"/>
+                                <rect key="frame" x="0.0" y="100" width="600" height="610"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kJ-BG-kTB" customClass="CTDesignableView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="694"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="610"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle name label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2q0-Lk-wW2" customClass="CTLabel">
                                                 <rect key="frame" x="8" y="14" width="479" height="25"/>
@@ -270,7 +270,7 @@
                                                 <rect key="frame" x="16" y="379" width="568" height="50"/>
                                                 <color key="backgroundColor" red="0.72336632013320923" green="0.72336632013320923" blue="0.72336632013320923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="qkz-g7-NLV"/>
+                                                    <constraint firstAttribute="height" priority="100" constant="50" id="qkz-g7-NLV"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick-up location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vta-al-w5Z" customClass="CTLabel">
@@ -291,7 +291,7 @@
                                                 <rect key="frame" x="16" y="474" width="568" height="50"/>
                                                 <color key="backgroundColor" red="0.72336632013320923" green="0.72336632013320923" blue="0.72336632013320923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="khw-9Z-y8S"/>
+                                                    <constraint firstAttribute="height" priority="100" constant="50" id="khw-9Z-y8S"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHN-wG-rla" customClass="CTButton">
@@ -327,8 +327,9 @@
                                             <constraint firstItem="eVd-LH-ouP" firstAttribute="centerY" secondItem="suR-xq-s0h" secondAttribute="centerY" id="Fs1-YF-bfT"/>
                                             <constraint firstItem="aq6-tM-uXj" firstAttribute="trailing" secondItem="suR-xq-s0h" secondAttribute="trailing" id="GLs-3h-jjm"/>
                                             <constraint firstItem="DoH-OQ-nkN" firstAttribute="leading" secondItem="8kJ-BG-kTB" secondAttribute="leading" constant="16" id="H5S-jc-YTo" customClass="CTLayoutConstraint"/>
-                                            <constraint firstAttribute="bottom" secondItem="VON-Iy-sbh" secondAttribute="bottom" constant="352" id="JKP-1o-kWz"/>
+                                            <constraint firstAttribute="bottom" secondItem="VON-Iy-sbh" secondAttribute="bottom" constant="268" id="JKP-1o-kWz"/>
                                             <constraint firstAttribute="height" constant="388.5" id="JpV-bJ-gbm"/>
+                                            <constraint firstAttribute="bottom" secondItem="oHN-wG-rla" secondAttribute="bottom" priority="100" constant="20" id="K9U-R7-Ux7"/>
                                             <constraint firstItem="8IQ-9U-qwm" firstAttribute="top" secondItem="DoH-OQ-nkN" secondAttribute="bottom" constant="8" id="Mh9-SQ-2xh"/>
                                             <constraint firstItem="aq6-tM-uXj" firstAttribute="leading" secondItem="kVu-8Q-jLO" secondAttribute="trailing" constant="4" id="Pv4-YK-aYg"/>
                                             <constraint firstItem="ZU2-uO-73l" firstAttribute="top" secondItem="8kJ-BG-kTB" secondAttribute="top" constant="14" id="RDd-gj-7aV"/>
@@ -400,7 +401,7 @@
                             <constraint firstItem="z1i-bM-q5G" firstAttribute="top" secondItem="CI1-rV-9vf" secondAttribute="bottom" constant="80" id="WwB-ld-UxV"/>
                             <constraint firstItem="8kJ-BG-kTB" firstAttribute="width" secondItem="P83-YX-uHD" secondAttribute="width" id="cfU-UT-2ff"/>
                             <constraint firstAttribute="trailing" secondItem="z1i-bM-q5G" secondAttribute="trailing" id="cfs-2L-8IE"/>
-                            <constraint firstItem="ftz-8S-Imp" firstAttribute="top" secondItem="z1i-bM-q5G" secondAttribute="bottom" id="hNN-oQ-jPs"/>
+                            <constraint firstItem="ftz-8S-Imp" firstAttribute="top" secondItem="z1i-bM-q5G" secondAttribute="bottom" constant="90" id="hNN-oQ-jPs"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -617,11 +618,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YmH-Hp-GAa" id="Ktw-NK-0QE">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="stV-yQ-lyC">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -908,7 +909,7 @@
             <objects>
                 <navigationController storyboardIdentifier="CTTermsViewControllerNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="zaw-2W-wIV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LTW-fF-QCn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LTW-fF-QCn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

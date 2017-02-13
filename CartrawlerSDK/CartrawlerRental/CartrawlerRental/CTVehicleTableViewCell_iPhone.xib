@@ -225,10 +225,10 @@
                 </subviews>
                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="qlR-Zi-q6V" secondAttribute="trailing" id="1Lb-i0-P1a"/>
-                    <constraint firstAttribute="bottom" secondItem="qlR-Zi-q6V" secondAttribute="bottom" constant="8" id="AOd-ge-o56"/>
-                    <constraint firstItem="qlR-Zi-q6V" firstAttribute="top" secondItem="IHL-eK-8dY" secondAttribute="top" constant="8" id="TGS-mP-Q0r"/>
-                    <constraint firstItem="qlR-Zi-q6V" firstAttribute="leading" secondItem="IHL-eK-8dY" secondAttribute="leading" id="cav-V8-ENg"/>
+                    <constraint firstAttribute="trailing" secondItem="qlR-Zi-q6V" secondAttribute="trailing" id="1Lb-i0-P1a" customClass="CTLayoutConstraint"/>
+                    <constraint firstAttribute="bottom" secondItem="qlR-Zi-q6V" secondAttribute="bottom" constant="8" id="AOd-ge-o56" customClass="CTLayoutConstraint"/>
+                    <constraint firstItem="qlR-Zi-q6V" firstAttribute="top" secondItem="IHL-eK-8dY" secondAttribute="top" constant="8" id="TGS-mP-Q0r" customClass="CTLayoutConstraint"/>
+                    <constraint firstItem="qlR-Zi-q6V" firstAttribute="leading" secondItem="IHL-eK-8dY" secondAttribute="leading" id="cav-V8-ENg" customClass="CTLayoutConstraint"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
