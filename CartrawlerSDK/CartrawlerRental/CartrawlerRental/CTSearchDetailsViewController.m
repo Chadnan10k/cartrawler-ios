@@ -72,12 +72,8 @@
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
     
-    [self.nextButton setText:CTLocalizedString(CTRentalCTASearch)];
-    
     [self.ageContainer addDoneButton];
     self.ageContainer.delegate = self;
-    
-    self.titleLabel.text = CTLocalizedString(CTRentalTitleSearchRental);
     
     _locSearchVC = (CTLocationSearchViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalLocationSearchViewIdentifier];
     self.locSearchVC.cartrawlerAPI = self.cartrawlerAPI;
@@ -92,7 +88,6 @@
     if (!self.search.driverAge) {
         self.search.driverAge = @30;
     }
-    self.ageContainer.placeholder = CTLocalizedString(CTRentalSearchDriverAgeHint);
     self.ageContainer.text = self.search.driverAge.stringValue;
     self.search.passengerQty = @1;
         
@@ -102,17 +97,9 @@
     _isReturningSameLocation = YES;
     _activeView = self.pickupView;
 
-    self.pickupView.placeholder = CTLocalizedString(CTRentalSearchPickupLocationText);
-    self.dropoffView.placeholder = CTLocalizedString(CTRentalSearchReturnLocationText);
-    self.returnToSameLocationLabel.text = CTLocalizedString(CTRentalSearchReturnLocationButton);
-    self.pickupTimeView.placeholder = CTLocalizedString(CTRentalSearchPickupTimeText);
-    self.dropoffTimeView.placeholder = CTLocalizedString(CTRentalSearchReturnTimeText);
-    self.calendarView.placeholder = CTLocalizedString(CTRentalSearchSelectDatesHint);
     [self.pickupTimeView setTextFieldText:[self.pickupTime simpleTimeString]];
     [self.dropoffTimeView setTextFieldText:[self.dropoffTime simpleTimeString]];
     
-    self.driverAgeDescriptionLabel.text = CTLocalizedString(CTRentalSearchDriverAge);
-
     self.dropoffLocTopConstraint.constant = kDropoffLocationClosed;
     self.dropoffView.alpha = 0;
     
@@ -125,6 +112,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.pickupView.placeholder = CTLocalizedString(CTRentalSearchPickupLocationText);
+    self.dropoffView.placeholder = CTLocalizedString(CTRentalSearchReturnLocationText);
+    self.returnToSameLocationLabel.text = CTLocalizedString(CTRentalSearchReturnLocationButton);
+    self.pickupTimeView.placeholder = CTLocalizedString(CTRentalSearchPickupTimeText);
+    self.dropoffTimeView.placeholder = CTLocalizedString(CTRentalSearchReturnTimeText);
+    self.calendarView.placeholder = CTLocalizedString(CTRentalSearchSelectDatesHint);
+    self.driverAgeDescriptionLabel.text = CTLocalizedString(CTRentalSearchDriverAge);
+    self.ageContainer.placeholder = CTLocalizedString(CTRentalSearchDriverAgeHint);
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleSearchRental);
+    [self.nextButton setText:CTLocalizedString(CTRentalCTASearch)];
     
     [self sendEvent:NO customParams:@{@"eventName" : @"Search Step",
                                       @"stepName" : @"Step1",
