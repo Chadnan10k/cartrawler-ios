@@ -54,8 +54,6 @@
     
     [self.filterFactory setDataSources];
     
-    self.titleLabel.text = CTLocalizedString(CTRentalTitleFilters);
-    
     self.carSizeTableView.dataSource    = self.filterFactory.carSizeDataSource;
     self.carSizeTableView.delegate      = self.filterFactory.carSizeDataSource;
     self.pickupLocationTableView.dataSource = self.filterFactory.locationDataSource;
@@ -75,11 +73,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.carSizeTableView.tableViewTitle        = CTLocalizedString(CTRentalFilterCarsize);
-    self.pickupLocationTableView.tableViewTitle = CTLocalizedString(CTRentalFilterPickup);
-    self.vendorsTableView.tableViewTitle        = CTLocalizedString(CTRentalFilterSupplier);
-    self.fuelPolicyTableView.tableViewTitle     = CTLocalizedString(CTRentalFilterCarFuel);
-    self.transmissionTableView.tableViewTitle   = CTLocalizedString(CTRentalFilterTransmission);
+    
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleFilters);
     
     [self.resetButton setTitle:CTLocalizedString(CTRentalFilterReset) forState:UIControlStateNormal];
     [self.doneButton setTitle:CTLocalizedString(CTRentalCTADone) forState:UIControlStateNormal];
@@ -97,6 +92,12 @@
 
 - (void)setupContainers
 {
+    
+    self.carSizeTableView.tableViewTitle        = CTLocalizedString(CTRentalFilterCarsize);
+    self.pickupLocationTableView.tableViewTitle = CTLocalizedString(CTRentalFilterPickup);
+    self.vendorsTableView.tableViewTitle        = CTLocalizedString(CTRentalFilterSupplier);
+    self.fuelPolicyTableView.tableViewTitle     = CTLocalizedString(CTRentalFilterCarFuel);
+    self.transmissionTableView.tableViewTitle   = CTLocalizedString(CTRentalFilterTransmission);
     
     CTFilterContainer *carSizeContainer = [[CTFilterContainer alloc] initWithFrame:CGRectZero];
     [carSizeContainer setTableView:self.carSizeTableView];
@@ -252,6 +253,7 @@
             [self.view updateConstraints];
         }
     }
+    
 }
 
 + (CTFilterViewController *)initInViewController:(UIViewController *)viewController withData:(CTVehicleAvailability *)data
