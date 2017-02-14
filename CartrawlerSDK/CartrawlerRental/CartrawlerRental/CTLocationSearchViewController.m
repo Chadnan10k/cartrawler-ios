@@ -84,7 +84,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     if (searchText.length > 2) {

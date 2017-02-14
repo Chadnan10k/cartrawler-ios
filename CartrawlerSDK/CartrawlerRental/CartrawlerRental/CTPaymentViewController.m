@@ -82,6 +82,18 @@
     }
     
     _loadingViewVisible = NO;
+    
+    self.titleLabel.text = CTLocalizedString(CTRentalTitlePayment);
+    NSString *link1 = [NSString stringWithFormat:@"<a href='www.cartrawler.com'><b>%@</b></a>", CTLocalizedString(CTRentalPaymentText2)];
+    NSString *termsStr = [NSString stringWithFormat:CTLocalizedString(CTRentalPaymentText1), link1];
+    
+    //seems lazy but efficient
+    
+    self.termsLabel.attributedText = [CTHTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
+                                                                  pointSize:15.0
+                                                                       text:termsStr
+                                                              boldFontColor:@"#000000"
+                                                                  fontColor:@"#000000"];
 }
 
 - (void)refresh
@@ -109,23 +121,10 @@
     [self.paymentView presentInView:self.webViewContainer];
     [self.paymentView setForCarRentalPayment:self.search];//for initial load
     
-    self.titleLabel.text = CTLocalizedString(CTRentalTitlePayment);
-
     _internetReachability = [Reachability reachabilityForInternetConnection];
     [self.internetReachability startNotifier];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     
-    NSString *link1 = [NSString stringWithFormat:@"<a href='www.cartrawler.com'><b>%@</b></a>", CTLocalizedString(CTRentalPaymentText2)];
-    
-    NSString *termsStr = [NSString stringWithFormat:CTLocalizedString(CTRentalPaymentText1), link1];
-    
-    //seems lazy but efficient
-    
-    self.termsLabel.attributedText = [CTHTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
-                                                                pointSize:15.0
-                                                                     text:termsStr
-                                                            boldFontColor:@"#000000"
-                                                                fontColor:@"#000000"];
     self.termsLabel.delegate = self;
     self.paymentView.backgroundColor = [UIColor whiteColor];
 }

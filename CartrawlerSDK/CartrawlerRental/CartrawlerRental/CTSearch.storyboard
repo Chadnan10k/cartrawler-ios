@@ -342,7 +342,7 @@
                                         </constraints>
                                         <state key="normal" title="Button" image="settings"/>
                                         <connections>
-                                            <segue destination="Ff3-Gb-K9j" kind="showDetail" id="BQa-BP-Vrj"/>
+                                            <action selector="settingsTapped:" destination="dn2-4f-MD7" eventType="touchUpInside" id="BI9-iE-IcH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qsf-Ek-vxw" customClass="CTButton">

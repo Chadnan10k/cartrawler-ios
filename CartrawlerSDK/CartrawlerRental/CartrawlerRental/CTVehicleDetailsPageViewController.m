@@ -75,12 +75,13 @@
         [weakSelf stopAnimating];
     };
     [self stopAnimating];
+    
+    [self.continueButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleDetails);
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.continueButton setText:CTLocalizedString(CTRentalCTAContinue)];
     
     _vehicleDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"VehicleDetails"];
     _supplierDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"SupplierDetails"];
@@ -93,8 +94,6 @@
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-    
-    self.titleLabel.text = CTLocalizedString(CTRentalTitleDetails);
     
     [self.view bringSubviewToFront:self.headerView];
     [self.view bringSubviewToFront:self.continueButton];

@@ -41,12 +41,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.doneButton setText:CTLocalizedString(CTRentalCTAToHomepage)];
-    self.scrollView.backgroundColor = [CTAppearance instance].viewBackgroundColor;
-    self.bookingReferenceTitleLabel.text = CTLocalizedString(CTRentalReceiptYourReference);
-    self.scrollForSummaryLabel.text = CTLocalizedString(CTRentalReceiptScroll);
-    self.paymentTitleLabel.text = CTLocalizedString(CTRentalReceiptCongratulations);
-    self.paymentSubtitleLabel.text = CTLocalizedString(CTRentalReceiptSuccess);
 }
 
 
@@ -75,6 +69,13 @@
 
     self.bookingReferenceLabel.text = [NSString stringWithFormat:@"%@", self.search.booking.confID ?: CTLocalizedString(CTRentalErrorNoBookingRef)];
     self.emailLabel.text = [NSString stringWithFormat:@"%@ %@. %@", CTLocalizedString(CTRentalReceiptEmailText1), self.search.email, CTLocalizedString(CTRentalReceiptEmailText2)];
+    
+    [self.doneButton setText:CTLocalizedString(CTRentalCTAToHomepage)];
+    self.scrollView.backgroundColor = [CTAppearance instance].viewBackgroundColor;
+    self.bookingReferenceTitleLabel.text = CTLocalizedString(CTRentalReceiptYourReference);
+    self.scrollForSummaryLabel.text = CTLocalizedString(CTRentalReceiptScroll);
+    self.paymentTitleLabel.text = CTLocalizedString(CTRentalReceiptCongratulations);
+    self.paymentSubtitleLabel.text = CTLocalizedString(CTRentalReceiptSuccess);
 
 }
 

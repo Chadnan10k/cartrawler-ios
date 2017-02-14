@@ -58,6 +58,11 @@
     [self.postRequest cancel];
 }
 
+- (void)changeLanguage:(NSString *)languageCode
+{
+    _locale = languageCode;
+}
+
 #pragma mark Get Engine Details
 
 - (void)requestNewSession:(NSString *)currencyCode

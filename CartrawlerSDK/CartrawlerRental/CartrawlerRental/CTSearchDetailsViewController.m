@@ -20,6 +20,7 @@
 #import <CartrawlerSDK/CartrawlerSDK+UITextField.h>
 #import "CTRentalConstants.h"
 #import "CTRentalLocalizationConstants.h"
+#import "CTSettingsViewController.h"
 
 #define kDropoffLocationOpen 101.0
 #define kDropoffLocationClosed 18.0
@@ -56,6 +57,7 @@
 @property (nonatomic, strong) NSDate *dropoffTime;
 
 @property (nonatomic, strong) CTLocationSearchViewController *locSearchVC;
+@property (nonatomic, strong) CTSettingsViewController *settingsVC;
 @property (nonatomic, strong) CTCalendarViewController *calendar;
 
 @property (readwrite, nonatomic) BOOL isReturningSameLocation;
@@ -78,6 +80,8 @@
     _locSearchVC = (CTLocationSearchViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalLocationSearchViewIdentifier];
     self.locSearchVC.cartrawlerAPI = self.cartrawlerAPI;
     self.locSearchVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    
+    _settingsVC = (CTSettingsViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalSettingsViewIdentifier];
     
     _calendar = [storyboard instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];
     self.calendar.modalPresentationStyle = UIModalPresentationOverFullScreen;
@@ -168,6 +172,15 @@
     }
 
     [self.calendar reset];
+}
+
+- (IBAction)settingsTapped:(id)sender
+{
+    [self presentViewController:self.settingsVC animated:YES completion:nil];
+    __weak typeof (self) weakSelf = self;
+    self.settingsVC.changedLanguage = ^{
+        [weakSelf.cartrawlerAPI changeLanguage:[CTSDKSettings instance].languageCode];
+    };
 }
 
 - (IBAction)pickupTapped:(id)sender

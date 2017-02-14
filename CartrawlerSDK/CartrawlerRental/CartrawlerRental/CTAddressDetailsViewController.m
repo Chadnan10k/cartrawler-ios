@@ -40,7 +40,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
     self.addressLine1TextField.delegate = self;
     self.addressLine2TextField.delegate = self;
     self.cityTextField.delegate = self;
@@ -58,11 +57,6 @@
     [self.postCodeTextField addDoneButton];
     [self.countryTextField addDoneButton];
     
-    self.addressLine1TextField.placeholder = CTLocalizedString(CTRentalUserAddressLine1Hint);
-    self.addressLine2TextField.placeholder = CTLocalizedString(CTRentalUserAddressLine2Hint);
-    self.cityTextField.placeholder = CTLocalizedString(CTRentalUserCityHint);
-    self.postCodeTextField.placeholder = CTLocalizedString(CTRentalUserPostcodeHint);
-    self.countryTextField.placeholder = CTLocalizedString(CTRentalUserCountryHint);
 }
 
 - (void)viewWasTapped
@@ -73,6 +67,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    self.addressLine1TextField.placeholder = CTLocalizedString(CTRentalUserAddressLine1Hint);
+    self.addressLine2TextField.placeholder = CTLocalizedString(CTRentalUserAddressLine2Hint);
+    self.cityTextField.placeholder = CTLocalizedString(CTRentalUserCityHint);
+    self.postCodeTextField.placeholder = CTLocalizedString(CTRentalUserPostcodeHint);
+    self.countryTextField.placeholder = CTLocalizedString(CTRentalUserCountryHint);
 
     [self tagScreen];
     

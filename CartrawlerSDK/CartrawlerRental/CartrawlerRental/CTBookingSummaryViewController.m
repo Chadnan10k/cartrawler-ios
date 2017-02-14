@@ -24,9 +24,9 @@
 
 @implementation CTBookingSummaryViewController
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
     [self.continueButton setText:CTLocalizedString(CTRentalCTAContinue)];
     self.titleLabel.text = CTLocalizedString(CTRentalTitleSummary);
 }

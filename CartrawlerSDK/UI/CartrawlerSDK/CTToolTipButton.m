@@ -90,6 +90,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(showToolTip)];
     [self addGestureRecognizer:tap];
+
 }
 
 - (void)setText:(NSString *)text didTap:(CTToolTipButtonTapped)didTap;

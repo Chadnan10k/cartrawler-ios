@@ -69,16 +69,16 @@
 
     self.featuresTableView.estimatedRowHeight = 30;
     self.featuresTableView.rowHeight = UITableViewAutomaticDimension;
-    
-    self.totalPriceLabel.text = CTLocalizedString(CTRentalVehicleTotalPrice);
-    self.includedForFreeLabel.text = CTLocalizedString(CTRentalIncludedTitle);
-    [self.termsAndConditionsButton setTitle:CTLocalizedString(CTRentalIncludedTerms) forState:UIControlStateNormal];
-    self.orSimilarLabel.text = CTLocalizedString(CTRentalVehicleOrSimilar);
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.totalPriceLabel.text = CTLocalizedString(CTRentalVehicleTotalPrice);
+    self.includedForFreeLabel.text = CTLocalizedString(CTRentalIncludedTitle);
+    [self.termsAndConditionsButton setTitle:CTLocalizedString(CTRentalIncludedTerms) forState:UIControlStateNormal];
+    self.orSimilarLabel.text = CTLocalizedString(CTRentalVehicleOrSimilar);
     
     [self.featuresTableView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
     

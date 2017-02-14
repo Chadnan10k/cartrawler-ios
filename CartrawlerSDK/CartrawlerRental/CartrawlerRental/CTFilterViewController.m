@@ -66,7 +66,15 @@
     self.fuelPolicyTableView.delegate   = self.filterFactory.fuelPolicyDataSource;
     self.transmissionTableView.dataSource = self.filterFactory.transmissionDataSource;
     self.transmissionTableView.delegate   = self.filterFactory.transmissionDataSource;
+
+    [self setupContainers];
     
+    [self.view layoutIfNeeded];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     self.carSizeTableView.tableViewTitle        = CTLocalizedString(CTRentalFilterCarsize);
     self.pickupLocationTableView.tableViewTitle = CTLocalizedString(CTRentalFilterPickup);
     self.vendorsTableView.tableViewTitle        = CTLocalizedString(CTRentalFilterSupplier);
@@ -75,11 +83,6 @@
     
     [self.resetButton setTitle:CTLocalizedString(CTRentalFilterReset) forState:UIControlStateNormal];
     [self.doneButton setTitle:CTLocalizedString(CTRentalCTADone) forState:UIControlStateNormal];
-
-    [self setupContainers];
-    
-    [self.view layoutIfNeeded];
-    
 }
 
 - (void)updateData:(CTVehicleAvailability *)data

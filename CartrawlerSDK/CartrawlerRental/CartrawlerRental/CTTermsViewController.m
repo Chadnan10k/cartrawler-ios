@@ -27,14 +27,16 @@
 
 @implementation CTTermsViewController
 
-{}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleConditions);
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.titleLabel.text = CTLocalizedString(CTRentalTitleConditions);
-
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     

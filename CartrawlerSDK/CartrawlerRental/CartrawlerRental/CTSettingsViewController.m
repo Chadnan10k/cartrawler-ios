@@ -103,6 +103,9 @@
         [CTSDKSettings instance].languageName = [item.code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         [weakSelf.languageButton setTitle:item.code forState:UIControlStateNormal];
         [weakSelf refreshLocalisedStrings];
+        if (weakSelf.changedLanguage) {
+            weakSelf.changedLanguage();
+        }
     };
 }
 
