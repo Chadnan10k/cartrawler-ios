@@ -2,7 +2,7 @@
 "locations_results_airports" = "Aéroports";
 "vehicle_type_fullsize" = "Grande berline";
 "insurance_list_3_title" = "Tranquillité d’esprit";
-"receipt_your_reference" = "Votre référence de réservation est :";
+"receipt_your_reference" = "Votre numéro de réservation:";
 "vehicle_air_conditioning" = "Climatisation";
 "title_summary" = "Résumé du paiement";
 "vehicle_pickup_details_VWF_5.VWF.X" = "Vous pourrez retirer votre voiture à la réception de votre hôtel.";
@@ -14,7 +14,7 @@
 "CTA_book" = "Réserver maintenant pour";
 "vehicle_type_moped" = "Cyclomoteur";
 "summary_booking_fee" = "Frais de réservation";
-"summary_lead_driver" = "Informations concernant le conducteur";
+"summary_lead_driver" = "Conducteur principal";
 "vehicle_fuel_policy_type_QUARTERQUARTER" = "Quart au quart";
 "vehicle_door" = "Porte";
 "included_title" = "Inclus gratuitement :";
@@ -25,7 +25,7 @@
 "filter_transfertime" = "Durée du trajet";
 "vehicle_pickup_unknown" = "Inconnu";
 "insurance_policy" = "Cette police d’assurance est souscrite par INTER PARTNER ASSISTANCE SA, membre du groupe AXA Assistance, Avenue Louise 166, 1050 Bruxelles, Belgique.";
-"vehicle_fuel_policy_type_FULLFULL" = "Retrait et retour avec le plein";
+"vehicle_fuel_policy_type_FULLFULL" = "Plein a plein";
 "vehicle_type_regular" = "Regular";
 "vehicle_type_premium_elite" = "Premium élite";
 "CTA_to_homepage" = "Retour à la page d’accueil";
@@ -36,6 +36,7 @@
 "vehicle_fuel_policy_type_CHAUFFULFUL" = "Frais de carburant : Non inclus";
 "vehicle_type_large_truck" = "Camion - grand";
 "vehicle_type_small_medium_truck" = "Camion - petit/moyen";
+"mins_placeholder" = "mins";
 "vehicle_fuel_policy_type_FULLFULLHYBRID" = "Carburant : Sélection à l’agence";
 "vehicle_fuel_policy_type_HALFHALF" = "Moitié à moitié";
 "vehicle_fuel_policy_type_EMPTYEMPTY" = "Vide à vide";
@@ -72,9 +73,10 @@
 "title_search_rental" = "Location de voiture";
 "search_return_location_button" = "Retourner au même endroit";
 "insurance_summary_title" = "Raisons d’opter pour la couverture complète";
+"settings_language_header" = "Language";
 "vehicle_pickup_location_VWF_11.VWF.X" = "Au nord du centre-ville";
 "vehicle_type_compact" = "Compacte";
-"vehicle_orsimilar" = "ou de la même catégorie";
+"vehicle_orsimilar" = "ou équivalent";
 "extras_equipment_aircon" = "Climatisation";
 "vehicle_fuel_petrol" = "Essence";
 "vehicle_type_luxury_elite" = "De luxe élite";
@@ -107,7 +109,7 @@
 "supplier_reviews" = "avis";
 "CTA_continue" = "Continuer";
 "extras_equipment_gps" = "GPS";
-"search_return_location_hint" = "Saisissez le nom de l’aéroport, de la ville ou de la gare";
+"search_return_location_hint" = "Saisissez l'endroit de prise en charge";
 "vehicle_fuel_policy_desc_QUARTEREMPTY" = "La voiture vous est fournie avec un quart de réservoir. Ce carburant vous sera facturé à l’agence. Vous pouvez utiliser autant de carburant que nécessaire et n’avez pas besoin de refaire le plein avant de rendre le véhicule.";
 "filter_rating" = "Note";
 "vehicle_pickup_location_VWF_6.VWF.X" = "Concessionnaire automobile";
@@ -117,7 +119,7 @@
 "vehicle_fuel_policy_type_QUARTEREMPTY" = "Quart de réservoir au retrait et vide au retour";
 "extras_placeholder" = "Fourni par Axa, leader mondial en assurances et gestion des actifs.";
 "user_country_hint" = "Pays";
-"search_pickup_location_hint" = "Saisissez le nom de l’aéroport, de la ville ou de la gare";
+"search_pickup_location_hint" = "Saisissez l'endroit de prise en charge";
 "insurance_provider" = "Fourni par Axa, leader mondial en assurances et gestion des actifs";
 "receipt_summary_driver" = "Informations concernant le conducteur";
 "filter_package" = "Pack";
@@ -127,6 +129,7 @@
 "filter_fuel" = "Politique de carburant";
 "vehicle_type_economy_elite" = "Économique élite";
 "vehicle_vehicle_inclusion" = "Cet élément est inclus dans le prix de ce véhicule";
+"interstitial_header" = "Recherche la voiture parfaite avec le meilleure prix";
 "vehicle_pickup_location_VWF_10.VWF.X" = "À l’ouest du centre-ville";
 "vehicle_pickup_location_VWF_7.VWF.X" = "Centre-ville";
 "settings_select_languages" = "Sélectionnez la langue";
@@ -140,6 +143,7 @@
 "supplier_pickup" = "Processus de retrait du véhicule";
 "supplier_desk" = "Service à l’agence de location";
 "vehicle_pickup_at_airport" = "À l’aéroport";
+"address_details_title" = "Addresse";
 "vehicle_doors" = "Portes";
 "vehicle_best_seller" = "Le plus populaire";
 "vehicle_fuel_policy_type_CHAUFFUELINC" = "Frais de carburant : Inclus";
@@ -148,7 +152,7 @@
 "title_details" = "Détails de la Voiture";
 "summary_damage_refund" = "Assurance Remboursement des Dommages";
 "supplier_dropoff" = "Processus de remise du véhicule";
-"title_user" = "Informations concernant le conducteur";
+"title_user" = "Conducteur principal";
 "vehicle_fuel_policy_type_ELECTRICVEHICLE" = "Entièrement chargée";
 "supplier_price" = "Très bon rapport qualité-prix";
 "vehicle_type_compact_elite" = "Compacte élite";
@@ -201,6 +205,7 @@
 "extras_conditions" = "Veuillez noter que les suppléments sont réglés au comptoir de l’agence de location. Nous faisons notre possible pour que les clients aient tous leurs suppléments. Mais leur disponibilité n’est pas toujours garantie.";
 "supplier_car" = "Propreté du véhicule";
 "vehicle_fuel_policy_desc_FULLEMPTY" = "Votre voiture vous est fournie avec le réservoir plein, mais vous devez payer cela à l’agence. La voiture doit être retournée avec un réservoir vide, car aucun remboursement ne sera accordé pour du carburant non utilisé.";
+"confirmation_loading_subheader" = "Merci de patienter quelques instants, cela peut prendre 30 secondes";
 "vehicle_type_cargovan" = "Fourgonnette";
 "vehicle_pickup_type_VLI_4.VLI.X" = "Accueil à l’arrivée";
 "vehicle_type_special" = "Spécial";
@@ -229,6 +234,7 @@
 "CTA_save" = "Sauvegarder les réglages";
 "title_details_vehicle" = "Détails";
 "CTA_done" = "Terminé";
+"interstitial_subheader" = "Au meilleure prix";
 "vehicle_fuel_policy_desc_HALFHALF" = "La voiture vous est fournie avec une moitié de réservoir. Il vous suffit de restituer la voiture avec un réservoir à moitié plein afin d’éviter des frais de ravitaillement. Si vous retournez la voiture avec du carburant supplémentaire, aucun remboursement ne sera accordé pour cet extra.";
 "vehicle_type_medium_SUV" = "SUV - moyen";
 "vehicle_provided" = "Fourni par";
@@ -238,6 +244,7 @@
 "vehicle_pickup_details_VWF_6.VWF.X" = "Ce service comprend un accueil à l’arrivée. Votre chauffeur vous attendra à votre arrivée. Veuillez nous donner votre numéro de vol afin que le chauffeur puisse suivre votre vol et être informé des retards éventuels.";
 "vehicle_pickup_type_VLI_6.VLI.X" = "Chauffeur personnel";
 "summary_payment" = "Résumé du paiement";
+"confirmation_loading_header" = "Votre paiement est en cours de traitement";
 "vehicle_type_five_seat_carrier" = "Monospace 5 sièges";
 "title_results" = "Résultats";
 "vehicle_pickup_location_VWF_1.VWF.X" = "Au terminal";
@@ -250,6 +257,7 @@
 "CTA_with_insurance" = "Continuer avec assurance";
 "vehicle_type_intermediate_elite" = "Intermédiaire élite";
 "title_booking_manager" = "Réservations à venir";
+"add_extras_title" = "Option additionnelles";
 "summary_pickup" = "Retrait";
 "insurance_summary_replace_val" = "pour choisir de continuer avec une assurance";
 "vehicle_fuel_policy_desc_QUARTERQUARTER" = "La voiture vous est fournie avec un quart de réservoir. Il vous suffit de restituer la voiture avec un quart de plein afin d’éviter des frais de ravitaillement. Si vous retournez la voiture avec du carburant supplémentaire, aucun remboursement ne sera accordé pour cet extra.";

@@ -75,7 +75,7 @@
 
 - (void)setup
 {
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"pl" sandboxMode:!self.isProduction];
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"it" sandboxMode:!self.isProduction];
     _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
     
     [self.sdk addAnalyticsProvider:[CartrawlerRakuten new]];

@@ -36,6 +36,7 @@
 "vehicle_fuel_policy_type_CHAUFFULFUL" = "Fuel charges: Not included";
 "vehicle_type_large_truck" = "Large Truck";
 "vehicle_type_small_medium_truck" = "Small Medium Truck";
+"mins_placeholder" = "mins";
 "vehicle_fuel_policy_type_FULLFULLHYBRID" = "Fuel: Choose at desk";
 "vehicle_fuel_policy_type_HALFHALF" = "Half to Half";
 "vehicle_fuel_policy_type_EMPTYEMPTY" = "Empty to empty";
@@ -72,6 +73,7 @@
 "title_search_rental" = "Car hire";
 "search_return_location_button" = "Return to same location";
 "insurance_summary_title" = "Reasons to get full cover";
+"settings_language_header" = "Language";
 "vehicle_pickup_location_VWF_11.VWF.X" = "North Of City Centre";
 "vehicle_type_compact" = "Compact";
 "vehicle_orsimilar" = "or similar";
@@ -127,6 +129,7 @@
 "filter_fuel" = "Fuel Policy";
 "vehicle_type_economy_elite" = "Economy Elite";
 "vehicle_vehicle_inclusion" = "This item is included in the price of this vehicle";
+"interstitial_header" = "Searching for your perfect car";
 "vehicle_pickup_location_VWF_10.VWF.X" = "West Of City Centre";
 "vehicle_pickup_location_VWF_7.VWF.X" = "City Centre/Downtown";
 "settings_select_languages" = "Select Language";
@@ -140,6 +143,7 @@
 "supplier_pickup" = "Car hire pick-up process";
 "supplier_desk" = "Service at the supplier desk";
 "vehicle_pickup_at_airport" = "At Airport";
+"address_details_title" = "Address Details";
 "vehicle_doors" = "Doors";
 "vehicle_best_seller" = "Best seller";
 "vehicle_fuel_policy_type_CHAUFFUELINC" = "Fuel charges: Included";
@@ -201,6 +205,7 @@
 "extras_conditions" = "Please note that extras are paid at the rental desk. We try to ensure customers get all extras however availability is not always guaranteed.";
 "supplier_car" = "Cleanliness of the car";
 "vehicle_fuel_policy_desc_FULLEMPTY" = "Your car comes with a full tank of fuel but you will be charged for this at the service desk. The car should be returned with an empty tank, as no refund will be given for any unused fuel.";
+"confirmation_loading_subheader" = "This could take up to 30 seconds, please wait";
 "vehicle_type_cargovan" = "Cargovan";
 "vehicle_pickup_type_VLI_4.VLI.X" = "Meet and greet";
 "vehicle_type_special" = "Special";
@@ -229,6 +234,7 @@
 "CTA_save" = "Save settings";
 "title_details_vehicle" = "Details";
 "CTA_done" = "Done";
+"interstitial_subheader" = "at the best price";
 "vehicle_fuel_policy_desc_HALFHALF" = "Your car comes with a half tank of fuel. Return the car with a half tank to avoid any refuelling charges. If you return the car with more fuel, you will not receive any additional refund.";
 "vehicle_type_medium_SUV" = "Medium SUV";
 "vehicle_provided" = "Provided by";
@@ -238,6 +244,7 @@
 "vehicle_pickup_details_VWF_6.VWF.X" = "This is a meet and greet service. Your driver will be waiting for you on arrival. Please supply us with your flight number so that the driver can track your flight for delays.";
 "vehicle_pickup_type_VLI_6.VLI.X" = "Personal driver";
 "summary_payment" = "Payment summary";
+"confirmation_loading_header" = "We are currently processing your payment";
 "vehicle_type_five_seat_carrier" = "Five Seat Carrier";
 "title_results" = "Results";
 "vehicle_pickup_location_VWF_1.VWF.X" = "In Terminal";
@@ -250,6 +257,7 @@
 "CTA_with_insurance" = "Continue with insurance";
 "vehicle_type_intermediate_elite" = "Intermediate Elite";
 "title_booking_manager" = "Upcoming Bookings";
+"add_extras_title" = "Add Extras";
 "summary_pickup" = "Pick-up";
 "insurance_summary_replace_val" = "choose to continue with insurance";
 "vehicle_fuel_policy_desc_QUARTERQUARTER" = "Your car comes with a quarter tank of fuel. Return the car with a quarter tank to avoid any refuelling charges. If you return the car with more fuel, you will not receive any additional refund.";

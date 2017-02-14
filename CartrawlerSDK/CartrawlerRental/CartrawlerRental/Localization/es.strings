@@ -2,7 +2,7 @@
 "locations_results_airports" = "Aeropuertos";
 "vehicle_type_fullsize" = "Grande";
 "insurance_list_3_title" = "Tranquilidad absoluta";
-"receipt_your_reference" = "La referencia de tu reserva es:";
+"receipt_your_reference" = "Numero de reserva:";
 "vehicle_air_conditioning" = "Aire acondicionado";
 "title_summary" = "Resumen del pago";
 "vehicle_pickup_details_VWF_5.VWF.X" = "Tu coche está disponible para su recogida en la recepción del hotel.";
@@ -25,7 +25,7 @@
 "filter_transfertime" = "Duración del viaje";
 "vehicle_pickup_unknown" = "Desconocido";
 "insurance_policy" = "La presente póliza está suscrita por INTER PARTNER ASSISTANCE SA, miembro del grupo AXA Assistance Group, Avenue Louise 166, 1050 Bruselas, Bélgica.";
-"vehicle_fuel_policy_type_FULLFULL" = "Recogida y devolución con depósito lleno";
+"vehicle_fuel_policy_type_FULLFULL" = "Lleno a lleno";
 "vehicle_type_regular" = "Regular";
 "vehicle_type_premium_elite" = "Premium especial";
 "CTA_to_homepage" = "Volver a la página de inicio";
@@ -36,6 +36,7 @@
 "vehicle_fuel_policy_type_CHAUFFULFUL" = "Cargos por combustible: No incluidos";
 "vehicle_type_large_truck" = "Camión grande";
 "vehicle_type_small_medium_truck" = "Camioneta pequeña-mediana";
+"mins_placeholder" = "minutos";
 "vehicle_fuel_policy_type_FULLFULLHYBRID" = "Combustible: Seleccionar en la oficina";
 "vehicle_fuel_policy_type_HALFHALF" = "Recogida y devolución con la mitad del depósito lleno";
 "vehicle_fuel_policy_type_EMPTYEMPTY" = "Depósito vacío a depósito vacío";
@@ -72,6 +73,7 @@
 "title_search_rental" = "Alquiler coches";
 "search_return_location_button" = "Devolución en la misma ubicación";
 "insurance_summary_title" = "Motivos para comprar la cobertura completa";
+"settings_language_header" = "Idioma";
 "vehicle_pickup_location_VWF_11.VWF.X" = "Al norte del centro de la ciudad";
 "vehicle_type_compact" = "Pequeño";
 "vehicle_orsimilar" = "o similar";
@@ -107,17 +109,17 @@
 "supplier_reviews" = "comentarios";
 "CTA_continue" = "Continuar";
 "extras_equipment_gps" = "GPS";
-"search_return_location_hint" = "Introducir nombre de aeropuerto, ciudad o estación";
+"search_return_location_hint" = "Ubicacion / Aeropuerto";
 "vehicle_fuel_policy_desc_QUARTEREMPTY" = "El coche se entrega con un cuarto del depósito lleno. Tendrás que abonar el precio de dicho combustible en la oficina de alquiler de vehículos. Puedes usar todo el combustible que desees y no necesitas volver a llenar el depósito antes de devolver el coche.";
 "filter_rating" = "Valoración";
 "vehicle_pickup_location_VWF_6.VWF.X" = "Concesionario";
 "receipt_summary_car" = "Resumen del vehículo";
 "results_sort" = "Ordenar";
 "vehicle_supplier_address" = "Dirección del proveedor";
-"vehicle_fuel_policy_type_QUARTEREMPTY" = "Recogida con un cuarto de depósito lleno y devolución con depósito vacío";
+"vehicle_fuel_policy_type_QUARTEREMPTY" = "Recogida con cuarto de depósito lleno y devolución con depósito vacío";
 "extras_placeholder" = "Proporcionado por Axa, líder en seguros globales y gestión de activos.";
 "user_country_hint" = "País";
-"search_pickup_location_hint" = "Introducir nombre de aeropuerto, ciudad o estación";
+"search_pickup_location_hint" = "Ubicacion / Aeropuerto";
 "insurance_provider" = "Proporcionado por Axa, líder en seguros globales y gestión de activos";
 "receipt_summary_driver" = "Información del conductor principal";
 "filter_package" = "Paquete";
@@ -127,6 +129,7 @@
 "filter_fuel" = "Política de combustible";
 "vehicle_type_economy_elite" = "Económico especial";
 "vehicle_vehicle_inclusion" = "Este artículo está incluido en el precio de este vehículo";
+"interstitial_header" = "Buscando su coche ideal";
 "vehicle_pickup_location_VWF_10.VWF.X" = "Al oeste del centro de la ciudad";
 "vehicle_pickup_location_VWF_7.VWF.X" = "Centro de la ciudad";
 "settings_select_languages" = "Seleccionar idioma";
@@ -140,13 +143,14 @@
 "supplier_pickup" = "Proceso de recogida del coche de alquiler";
 "supplier_desk" = "Servicio en la oficina del proveedor";
 "vehicle_pickup_at_airport" = "En el aeropuerto";
+"address_details_title" = "Direccion";
 "vehicle_doors" = "Puertas";
 "vehicle_best_seller" = "Más vendidos";
 "vehicle_fuel_policy_type_CHAUFFUELINC" = "Cargos por combustible: Incluidos";
 "vehicle_type_mini" = "Mini";
 "vehicle_type_mini_elite" = "Mini especial";
 "title_details" = "Información del coche";
-"summary_damage_refund" = "Seguro de reembolso por daños";
+"summary_damage_refund" = "Seguro de proteccion de deposito";
 "supplier_dropoff" = "Proceso de devolución del coche de alquiler";
 "title_user" = "Información del conductor principal";
 "vehicle_fuel_policy_type_ELECTRICVEHICLE" = "Carga completa";
@@ -186,7 +190,7 @@
 "payment_text_2" = "Términos y condiciones";
 "vehicle_fuel_policy_desc_CHAUFFUELINC" = "Todos los cargos por combustible están incluidos. No deberás abonar ninguna cantidad extra en concepto de repostaje.";
 "settings_select_currency" = "Seleccionar moneda";
-"receipt_scroll" = "Desplázate hasta abajo para ver el resumen";
+"receipt_scroll" = "Desplázate abajo para ver el resumen";
 "vehicle_type_luxury" = "Lujo";
 "vehicle_pickup_details_VWF_2.VWF.X" = "La oficina está cómodamente situada en la zona del aeropuerto.";
 "vehicle_type_exotic_SUV" = "Todoterreno exótico";
@@ -201,6 +205,7 @@
 "extras_conditions" = "Por favor, ten en cuenta que los extras se pagan en la oficina de alquiler. Procuramos que los clientes tengan todos los extras, pero la disponibilidad no siempre está garantizada.";
 "supplier_car" = "Limpieza del coche";
 "vehicle_fuel_policy_desc_FULLEMPTY" = "Tu coche se entrega con el depósito de combustible lleno, pero se te cobrará por ello en la oficina de servicio. El coche deberá entregarse con el depósito vacío, ya que no se efectuarán devoluciones por el combustible no utilizado.";
+"confirmation_loading_subheader" = "Este proceso puede tardar unos 30 minutos, por favor espere";
 "vehicle_type_cargovan" = "Furgoneta de carga";
 "vehicle_pickup_type_VLI_4.VLI.X" = "Bienvenida";
 "vehicle_type_special" = "Especial";
@@ -222,13 +227,14 @@
 "vehicle_fuel_policy_desc_EMPTYEMPTY" = "Tu coche se entrega con combustible suficiente para que puedas llegar a la estación de servicio más cercana. El coche deberá entregarse con el depósito vacío, ya que no se efectuarán devoluciones por el combustible no utilizado.";
 "vehicle_fuel_policy_type_HALFEMPTY" = "Depósito medio lleno a depósito vacío";
 "filter_transfertype" = "Tipo de traslado";
-"search_driver_age" = "Conductor con edad comprendida entre 25 y 70 años";
+"search_driver_age" = "Edad del conductor";
 "insurance_list_2_title" = "La mejor protección";
 "vehicle_pickup_details_VWF_4.VWF.X" = "Este es un servicio de bienvenida. El chófer te estará esperando a la llegada. Por favor, facilítanos tu número de vuelo para que el chófer pueda monitorizar tu vuelo en caso de retraso.";
 "vehicle_fuel_policy_type_UNKNOWN" = "Desconocido";
 "CTA_save" = "Guardar configuración";
 "title_details_vehicle" = "Información";
 "CTA_done" = "Finalizar";
+"interstitial_subheader" = "al mejor precio";
 "vehicle_fuel_policy_desc_HALFHALF" = "Tu coche se entrega con la mitad del depósito de combustible lleno. Devuelve el coche con la mitad del depósito de combustible lleno para evitar cualquier cargo por el llenado del depósito. Si devuelves el coche con más combustible, no se te devolverá el importe adicional.";
 "vehicle_type_medium_SUV" = "Todoterreno mediano";
 "vehicle_provided" = "Empresa de alquiler";
@@ -238,6 +244,7 @@
 "vehicle_pickup_details_VWF_6.VWF.X" = "Este es un servicio de bienvenida. El chófer te estará esperando a la llegada. Por favor, facilítanos tu número de vuelo para que el chófer pueda monitorizar tu vuelo en caso de retraso.";
 "vehicle_pickup_type_VLI_6.VLI.X" = "Conductor personal";
 "summary_payment" = "Resumen del pago";
+"confirmation_loading_header" = "Estamos procesando su pago";
 "vehicle_type_five_seat_carrier" = "Vehículo de cinco asientos";
 "title_results" = "Resultados";
 "vehicle_pickup_location_VWF_1.VWF.X" = "En la terminal";
@@ -250,6 +257,7 @@
 "CTA_with_insurance" = "Continuar con seguro";
 "vehicle_type_intermediate_elite" = "Mediano especial";
 "title_booking_manager" = "Próximas reservas";
+"add_extras_title" = "Añade extras";
 "summary_pickup" = "Recogida";
 "insurance_summary_replace_val" = "elige continuar con el seguro";
 "vehicle_fuel_policy_desc_QUARTERQUARTER" = "Tu coche se entrega con un cuarto de depósito de combustible lleno. Devuelve el coche con el depósito de combustible lleno hasta un cuarto para evitar cualquier cargo por el llenado del depósito. Si devuelves el coche con más combustible, no se te devolverá el importe adicional.";
