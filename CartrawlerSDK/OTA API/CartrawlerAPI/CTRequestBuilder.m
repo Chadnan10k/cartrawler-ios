@@ -17,7 +17,7 @@
 @implementation CTRequestBuilder
 
 + (NSString *)buildHeader:(NSString *)callType clientID:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale {
-        
+    
     if ([callType isEqualToString:CTHeader]) {
         
         return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@xmlns:xsi\": \"http://www.w3.org/2001/XMLSchema-instance\",\"@Version\": \"1.005\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": {\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, clientID];
@@ -55,7 +55,7 @@
 
 + (NSString *)currencyHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency
 {
-    return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.002\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"@ERSP_UserID\": \"MO\", \"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
+    return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.005\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"@ERSP_UserID\": \"MO\", \"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
 }
 
 + (NSString *)groundTransportHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency country:(NSString *)country
@@ -77,7 +77,7 @@
     format.dateFormat = @"yyyyMMddHHmmss";
     NSDate *now = [NSDate date];
     NSString *dateString = [format stringFromDate:now];
-        
+    
     NSString *stringTobeHashed = [NSString stringWithFormat:@"%@.%@.%@", [self stringToSha1:[UIDevice currentDevice].identifierForVendor.UUIDString], dateString, clientID];
     NSString *stringTwo = [NSString stringWithFormat:@"%@.cartrawler", [self stringToSha1:stringTobeHashed]];
     
@@ -87,16 +87,17 @@
 + (NSString *)tpaExtensionForAvail
 {
     NSString *tpa =
-       @" \"TPA_Extensions\": { \r"
-       @"     \"showBaseCost\": true, \r"
-       @"     \"GeoRadius\": 5, \r"
-       @"     \"Window\": { \r"
-       @"         \"@name\": \"IOS-V3\", \r"
-       @"         \"@engine\": \"IOS-V3\" \r"
-       @"      } \r"
-       @" }} \r";
+    @" \"TPA_Extensions\": { \r"
+    @"     \"showBaseCost\": true, \r"
+    @"     \"GeoRadius\": 5, \r"
+    @"     \"Window\": { \r"
+    @"         \"@name\": \"IOS-V3\", \r"
+    @"         \"@engine\": \"IOS-V3\" \r"
+    @"      },\"RefID\": [] \r"
+    @" }} \r";
     
     return tpa;
+    
 }
 
 + (NSString *)OTA_VehLocSearchRQCity:(NSString *)cityName
@@ -106,13 +107,13 @@
                               locale:(NSString *)locale
 {
     NSString *tail = [NSString stringWithFormat: @"\"VehLocSearchCriterion\": { \n"
-                   " \"@ExactMatch\": \"true\", \n"
-                   " \"@ImportanceType\": \"Mandatory\", \n"
-                   " \"Address\": {  \n"
+                      " \"@ExactMatch\": \"true\", \n"
+                      " \"@ImportanceType\": \"Mandatory\", \n"
+                      " \"Address\": {  \n"
                       "  \"CityName\": \"%@\", \n"
                       "  \"CountryName\": {\"@Code\": \"%@\"} \n"
                       "  } \n"
-                   "  } ", cityName, countryName];
+                      "  } ", cityName, countryName];
     
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder buildHeader:CTHeader clientID:clientID target:target locale:locale], tail];
 }
@@ -123,10 +124,10 @@
                                  locale:(NSString *)locale
 {
     NSString *tail = [NSString stringWithFormat: @"  \"VehLocSearchCriterion\": { \n"
-                       " \"@ExactMatch\": \"true\", \n"
-                       " \"@ImportanceType\": \"Mandatory\", \n"
-                       "  \"RefPoint\": \"%@\" \n"
-                       " } ", airportCode];
+                      " \"@ExactMatch\": \"true\", \n"
+                      " \"@ImportanceType\": \"Mandatory\", \n"
+                      "  \"RefPoint\": \"%@\" \n"
+                      " } ", airportCode];
     
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder buildHeader:CTHeader clientID:clientID target:target locale:locale], tail];
 }
@@ -147,20 +148,20 @@
     } else {
         distanceUnit = @"km";
     }
-
+    
     NSString *tail = [NSString stringWithFormat: @" \"VehLocSearchCriterion\": { \n"
-                  "      \"@ExactMatch\": \"true\", \n"
-                  "  \"@ImportanceType\": \"Mandatory\", \n"
-                  "      \"Position\": { \n"
-                  "      \"@Latitude\": \"%@\", \n"
-                 "       \"@Longitude\": \"%@\" \n"
-                 "   }, \n"
-                 "   \"Radius\": { \n"
-                 "       \"@Distance\": \"%@\", \n"
-                 "       \"@DistanceMeasure\": \"%@\" \n"
-                 "   } \n"
-              "  } ", latitude, longitude, radius, distanceUnit];
-
+                      "      \"@ExactMatch\": \"true\", \n"
+                      "  \"@ImportanceType\": \"Mandatory\", \n"
+                      "      \"Position\": { \n"
+                      "      \"@Latitude\": \"%@\", \n"
+                      "       \"@Longitude\": \"%@\" \n"
+                      "   }, \n"
+                      "   \"Radius\": { \n"
+                      "       \"@Distance\": \"%@\", \n"
+                      "       \"@DistanceMeasure\": \"%@\" \n"
+                      "   } \n"
+                      "  } ", latitude, longitude, radius, distanceUnit];
+    
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder buildHeader:CTHeader clientID:clientID target:target locale:locale], tail];
 }
 
@@ -172,7 +173,7 @@
     NSString *tail = [NSString stringWithFormat:@"\"VehLocSearchCriterion\":{\"@ExactMatch\":\"true\",\"@ImportanceType\":\"Mandatory\",\"PickupLocation\":{\"@ID\":\"%@\",\"@ID_Context\":\"CARTRAWLER\"}}", pickupLocationCode];
     
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder buildHeader:CTHeader clientID:clientID target:target locale:locale], tail];
-
+    
 }
 
 + (NSString *) CT_VehLocSearchRQPartial:(NSString *)partialText
@@ -203,7 +204,7 @@
                          currency:(NSString *)currency
 {
     
-    NSString *tail = [NSString stringWithFormat:@"\"VehAvailRQCore\":{\"@Status\":\"Available\",\"VehRentalCore\":{\"@PickUpDateTime\":\"%@\",\"@ReturnDateTime\":\"%@\",\"PickUpLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"},\"ReturnLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"}},\"DriverType\":{\"@Age\":\"%@\"}},\"VehAvailRQInfo\":{\"@PassengerQty\":\"%@\",\"Customer\":{\"Primary\":{\"CitizenCountryName\":{\"@Code\":\"%@\"}}},%@", pickUpDateTime, returnDateTime, pickUpLoactionCode, returnLocationCode, driverAge, passengerQty, homeCountryCode, [CTRequestBuilder tpaExtensionForAvail]];
+    NSString *tail = [NSString stringWithFormat:@"\"VehAvailRQCore\":{\"@Status\":\"Available\",\"VehRentalCore\":{\"@PickUpDateTime\":\"%@\",\"@ReturnDateTime\":\"%@\",\"PickUpLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"},\"ReturnLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"}},\"DriverType\":{\"@Age\":\"%@\"}},\"VehAvailRQInfo\":{\"Customer\":{\"Primary\":{\"CitizenCountryName\":{\"@Code\":\"%@\"}}},%@", pickUpDateTime, returnDateTime, pickUpLoactionCode, returnLocationCode, driverAge, homeCountryCode, [CTRequestBuilder tpaExtensionForAvail]];
     
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:currency], tail];
 }
@@ -248,9 +249,9 @@
             [validExtras addObject:e];
         }
     }
-
+    
     if (validExtras.count > 0) {
-
+        
         extrasString = [extrasString stringByAppendingString:@",\"SpecialEquipPrefs\":{\"SpecialEquipPref\":["];
         for (int i = 0; i < validExtras.count; i++) {
             CTExtraEquipment *e = (CTExtraEquipment *)validExtras[i];
@@ -271,9 +272,9 @@
     NSString *paymentExtension = @"";
     
     if (![cardNumber isEqualToString:@""]) {
-       paymentExtension  = [NSString stringWithFormat:@"\"RentalPaymentPref\":{\"PaymentCard\":{\"@CardType\":\"1\",\"@CardCode\":\"%@\",\"@CardNumber\":\"%@\",\"@ExpireDate\":\"%@\",\"@SeriesCode\":\"%@\",\"CardHolderName\":\"%@\"}},", cardType, cardNumber, cardExpireDate, cardCCVNumber, cardHolderName];
+        paymentExtension  = [NSString stringWithFormat:@"\"RentalPaymentPref\":{\"PaymentCard\":{\"@CardType\":\"1\",\"@CardCode\":\"%@\",\"@CardNumber\":\"%@\",\"@ExpireDate\":\"%@\",\"@SeriesCode\":\"%@\",\"CardHolderName\":\"%@\"}},", cardType, cardNumber, cardExpireDate, cardCCVNumber, cardHolderName];
     }
-
+    
     if (flightNumber != nil && flightNumber.length > 2) {
         NSString *flightNumberPrefixString = [flightNumber substringToIndex:2];
         NSString *flightNumberString = [flightNumber substringFromIndex:2];
@@ -365,10 +366,10 @@
 }
 
 + (NSString *) CT_VehEmailRQ:(NSString *)bookingRef
-                 emailAddress:(NSString *)emailAddress
-                     clientID:(NSString *)clientID
-                       target:(NSString *)target
-                       locale:(NSString *)locale
+                emailAddress:(NSString *)emailAddress
+                    clientID:(NSString *)clientID
+                      target:(NSString *)target
+                      locale:(NSString *)locale
 {
     NSString * tail = [NSString stringWithFormat:@"\"VehModifyRQCore\": {\"@ModifyType\": \"Modify\",\"@Status\": \"Available\",\"UniqueID\": {\"@Type\": \"15\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"},\"TPA_Extensions\": {\"Email\": {\"@To\": \"%@\"},\"Action\": {\"@Value\": \"SendCustomerVoucher\"}}}", bookingRef, emailAddress];
     
@@ -389,7 +390,7 @@
     NSString *tail = [NSString stringWithFormat:@"\"PlanForQuoteRQ\":{\"@PlanID\":\"ACME\",\"@Type\":\"Protection\",\"CoveredTravelers\":{\"CoveredTraveler\":{\"CoveredPerson\":{\"@Relation\":\"Traveler 1\",\"GivenName\":\"Test\",\"Surname\":\"Test\"},\"CitizenCountryName\":{\"@Code\":\"%@\"}}},\"InsCoverageDetail\":{\"@Type\":\"SingleTrip\",\"TotalTripCost\":{\"@CurrencyCode\":\"%@\",\"@Amount\":\"%@\"},\"CoveredTrips\":{\"CoveredTrip\":{\"@Start\": \"%@\",\"@End\":\"%@\",\"Destinations\":{\"Destination\":{\"CountryName\":\"%@\"}}}}}}", homeCountry, activeCurrency, totalCost, [pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat], [dropOffDateTime stringFromDateWithFormat:CTAvailRequestDateFormat], destinationCountryCode];
     
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:activeCurrency], tail];
-
+    
 }
 
 + (NSString *) OTA_VehRetResRQ:(NSString *)bookingEmailAddress
@@ -435,32 +436,32 @@
 {
     
     NSString *tail =[NSString stringWithFormat: @"  \"VehCancelRQCore\":   { \n"
-                                 "      \"@CancelType\": \"Book\", \n"
-                                 "      \"UniqueID\":     { \n"
-                                 "          \"@Type\": \"15\", \n"
-                                 "          \"@ID\": \"%@\" \n"
-                                 "      },                 \n"
-                                 "      \"PersonName\":     { \n"
-                                 "          \"NamePrefix\": \"%@\", \n"
-                                 "          \"GivenName\": \"%@\", \n"
-                                 "          \"Surname\": \"%@\" \n"
-                                 "      } \n "
-                                 "  }, \n"
-                                 " \"VehCancelRQInfo\":   { \n "
-                                   "     \"RentalInfo\":     {\n "
-                                   "     \"@PickUpDateTime\": \"%@\", \n"
-                                   "     \"@ReturnDateTime\": \"%@\", \n"
-                                   "     \"PickUpLocation\":       {                   \n"
-                                   "        \"@CodeContext\": \"CARTRAWLER\",          \n"
-                                   "        \"@LocationCode\": \"%@\"                  \n"
-                                   "    },                                             \n"
-                                   "      \"ReturnLocation\":       {                  \n"
-                                   "         \"@CodeContext\": \"CARTRAWLER\",         \n"
-                                   "         \"@LocationCode\": \"%@\"                 \n"
-                                   "     }                                             \n"
-                                   " },                                                \n"
-                                   " \"TPA_Extensions\": {\"Refund\": {\"@Type\": \"FULL\"}} \n"
-                                "}",bookingRef, title, firstName, surname, puDateTime, doDateTime, puLocationCode, doLocationCode];
+                     "      \"@CancelType\": \"Book\", \n"
+                     "      \"UniqueID\":     { \n"
+                     "          \"@Type\": \"15\", \n"
+                     "          \"@ID\": \"%@\" \n"
+                     "      },                 \n"
+                     "      \"PersonName\":     { \n"
+                     "          \"NamePrefix\": \"%@\", \n"
+                     "          \"GivenName\": \"%@\", \n"
+                     "          \"Surname\": \"%@\" \n"
+                     "      } \n "
+                     "  }, \n"
+                     " \"VehCancelRQInfo\":   { \n "
+                     "     \"RentalInfo\":     {\n "
+                     "     \"@PickUpDateTime\": \"%@\", \n"
+                     "     \"@ReturnDateTime\": \"%@\", \n"
+                     "     \"PickUpLocation\":       {                   \n"
+                     "        \"@CodeContext\": \"CARTRAWLER\",          \n"
+                     "        \"@LocationCode\": \"%@\"                  \n"
+                     "    },                                             \n"
+                     "      \"ReturnLocation\":       {                  \n"
+                     "         \"@CodeContext\": \"CARTRAWLER\",         \n"
+                     "         \"@LocationCode\": \"%@\"                 \n"
+                     "     }                                             \n"
+                     " },                                                \n"
+                     " \"TPA_Extensions\": {\"Refund\": {\"@Type\": \"FULL\"}} \n"
+                     "}",bookingRef, title, firstName, surname, puDateTime, doDateTime, puLocationCode, doLocationCode];
     
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder buildHeader:CTCancelHeader clientID:clientID target:target locale:locale], tail];
 }
@@ -491,16 +492,16 @@
     NSString *dropoffTime = @"";
     if (doDateTime) {
         dropoffTime = [NSString stringWithFormat:
-        @", \n"
-        @" \"IncludeReturn\": { \n"
-        @"    \"@PickupDateTime\": \"%@\" \n"
-        @" } ", doDateTime];
+                       @", \n"
+                       @" \"IncludeReturn\": { \n"
+                       @"    \"@PickupDateTime\": \"%@\" \n"
+                       @" } ", doDateTime];
     }
-
+    
     
     NSString *airportDropoff = @"";
     NSString *airportPickup = @"";
-
+    
     
     NSString *airportInfo = [NSString stringWithFormat:
                              @"         ,\"AirportInfo\": {\"%@\":       { \n"
@@ -517,60 +518,60 @@
     } else {
         airportDropoff = airportInfo;
     }
-
-   NSString *tail = [[NSString alloc]initWithFormat:
-                   @" \"Service\":   { \n"
-                   @"     \"Pickup\":     { \n"
-                   @"         \"@DateTime\": \"%@\", \n"
-                   @"         \"Address\":       {  \n"
-                   @"             \"@Latitude\": \"%@\", \n"
-                   @"             \"@Longitude\": \"%@\", \n"
-                   @"             \"LocationType\": \"%@\" \n"
-                   @"         } "
-                   @"       %@"
-                   @"     }, "
-                   @"     \"Dropoff\":     { \n"
-                   @"         \"Address\":       { \n"
-                   @"             \"@Latitude\": \"%@\", \n"
-                   @"             \"@Longitude\": \"%@\", \n"
-                   @"             \"LocationType\": \"%@\" \n"
-                   @"         }"
-                   @"    %@ "
-                   @"    }"
-                   @" }, "
-                   @" \"Passengers\":   [ \n"
-                                     @"{ "
-                                     @"    \"@Quantity\": \"%@\", \n"
-                                     @"    \"Category\": \"Adult\" \n"
-                                     @"},"
-                                     @"{"
-                                     @"    \"@Quantity\": \"%@\", \n"
-                                     @"    \"Category\": \"Child\" \n"
-                                     @"},"
-                                     @"{"
-                                     @"    \"@Quantity\": \"%@\", \n"
-                                     @"    \"Category\": \"Infant\" \n"
-                                     @"},"
-                                     @"{"
-                                     @"    \"@Quantity\": \"%@\", \n"
-                                     @"    \"Category\": \"Senior\" \n"
-                                     @"}"
-                                     @"],\"TPA_Extensions\":%@",
-                     puDateTime,
-                     puLat,
-                     puLong,
-                     puLocationType,
-                     airportPickup,
-                     doLat,
-                     doLong,
-                     doLocationType,
-                     airportDropoff,
-                     adults,
-                     children,
-                     infants,
-                     seniors,
-                     [NSString stringWithFormat:@"{\"ConsumerIP\": \"%@\" %@ }", ipaddress, dropoffTime]];
-
+    
+    NSString *tail = [[NSString alloc]initWithFormat:
+                      @" \"Service\":   { \n"
+                      @"     \"Pickup\":     { \n"
+                      @"         \"@DateTime\": \"%@\", \n"
+                      @"         \"Address\":       {  \n"
+                      @"             \"@Latitude\": \"%@\", \n"
+                      @"             \"@Longitude\": \"%@\", \n"
+                      @"             \"LocationType\": \"%@\" \n"
+                      @"         } "
+                      @"       %@"
+                      @"     }, "
+                      @"     \"Dropoff\":     { \n"
+                      @"         \"Address\":       { \n"
+                      @"             \"@Latitude\": \"%@\", \n"
+                      @"             \"@Longitude\": \"%@\", \n"
+                      @"             \"LocationType\": \"%@\" \n"
+                      @"         }"
+                      @"    %@ "
+                      @"    }"
+                      @" }, "
+                      @" \"Passengers\":   [ \n"
+                      @"{ "
+                      @"    \"@Quantity\": \"%@\", \n"
+                      @"    \"Category\": \"Adult\" \n"
+                      @"},"
+                      @"{"
+                      @"    \"@Quantity\": \"%@\", \n"
+                      @"    \"Category\": \"Child\" \n"
+                      @"},"
+                      @"{"
+                      @"    \"@Quantity\": \"%@\", \n"
+                      @"    \"Category\": \"Infant\" \n"
+                      @"},"
+                      @"{"
+                      @"    \"@Quantity\": \"%@\", \n"
+                      @"    \"Category\": \"Senior\" \n"
+                      @"}"
+                      @"],\"TPA_Extensions\":%@",
+                      puDateTime,
+                      puLat,
+                      puLong,
+                      puLocationType,
+                      airportPickup,
+                      doLat,
+                      doLong,
+                      doLocationType,
+                      airportDropoff,
+                      adults,
+                      children,
+                      infants,
+                      seniors,
+                      [NSString stringWithFormat:@"{\"ConsumerIP\": \"%@\" %@ }", ipaddress, dropoffTime]];
+    
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder groundTransportHeader:clientID target:target locale:locale currency:currencyCode country:countryCode], tail];
 }
 
@@ -625,96 +626,96 @@
     
     
     NSString *tail = [[NSString alloc]initWithFormat:
-    
-    @"    \"GroundReservation\":   { \n"
-    @"        \"Location\":     {   \n"
-    @"            \"Pickup\":       {   \n"
-    @"                \"@DateTime\": \"%@\",   \n"
-    @"                \"Address\":         { \n"
-    @"                    \"@Latitude\": \"%@\",  \n"
-    @"                    \"@Longitude\": \"%@\", \n"
-    @"                    \"AddressLine\":           [  \n"
-    @"                                              %@  \n"
-    @"                                              ],  \n"
-    @"                    \"CityName\": \"%@\", \n"
-    @"                    \"PostalCode\": \"%@\", \n"
-    @"                    \"StateProv\": \"%@\", \n"
-    @"                    \"CountryName\":           { \n"
-    @"                        \"@Code\": \"%@\", \n"
-    @"                        \"#text\": \"%@\" \n"
-    @"                    }, \n"
-    @"                    \"LocationType\": \"%@\", \n"
-    @"                    \"LocationName\": \"%@\",   \n"
-    @"                    \"SpecialInstructions\": \"%@\" \n"
-    @"                } \n"
-    @"            }, \n"
-    @"            \"Dropoff\":       { \n"
-    //@"                \"@DateTime\": \"%@\", \n"
-    @"                \"Address\":         { \n"
-    @"                    \"@Latitude\": \"%@\", \n"
-    @"                    \"@Longitude\": \"%@\", \n"
-    @"                    \"LocationType\": \"%@\" \n"
-    @"                },    \n"
-    @"                \"AirportInfo\": {\"%@\":         { \n"
-    @"                    \"@CodeContext\": \"IATA\", \n"
-    @"                    \"@LocationCode\": \"%@\",   \n"
-    @"                    \"@Terminal\": \"%@\"  \n"
-    @"                }}, \n"
-    @"                \"Airline\":         { \n"
-    @"                    \"@CodeContext\": \"IATA\", \n"
-    @"                    \"@Code\": \"%@\", \n"
-    @"                    \"@FlightNumber\": \"%@\"    \n"
-    @"                } \n"
-    @"            } \n"
-    @"        },    \n"
-    @"        \"Passenger\":     { \n"
-    @"            \"Primary\":       {  \n"
-    @"                \"PersonName\":         { \n"
-    @"                    \"GivenName\": \"%@\", \n"
-    @"                    \"Surname\": \"%@\"    \n"
-    @"                },    \n"
-    @"                \"Telephone\":         [  \n"
-    @"                                      {   \n"
-    @"                                          \"@PhoneTechType\": \"5\",  \n"
-//    @"                                          \"@CountryAccessCode\": \"%@\",    \n"
-//    @"                                          \"@AreaCityCode\": \"%@\",  \n"
-    @"                                          \"@PhoneNumber\": \"%@\"   \n"
-    @"                                      }                              \n"
-//    @"                                      },  \n"
-//    @"                                      {   \n"
-//    @"                                          \"@PhoneTechType\": \"1\",  \n"
-//    @"                                          \"@CountryAccessCode\": \"353\",    \n"
-//    @"                                          \"@AreaCityCode\": \"1\",   \n"
-//    @"                                          \"@PhoneNumber\": \"0000000\"   \n"
-//    @"                                      }   \n"
-    @"                                      ],  \n"
-    @"                \"Address\": {\"CountryName\": {\"@Code\": \"%@\"}},  \n"
-    @"                \"Email\": \"%@\"   \n"
-    @"            },    \n"
-    @"            \"Additional\":       [   \n"
-      @"                                 {\"AdditionalPersonType\":         { \n"
-      @"                \"@Quantity\": \"%@\", \n"
-      @"                \"@Code\": \"Adult\"  \n"
-      @"            }},   \n"
-    @"                                 {\"AdditionalPersonType\":         { \n"
-    @"                \"@Quantity\": \"%@\", \n"
-    @"                \"@Code\": \"Child\"  \n"
-    @"            }},   \n"
-    @"                                 {\"AdditionalPersonType\":         { \n"
-    @"                \"@Quantity\": \"%@\", \n"
-    @"                \"@Code\": \"Infant\" \n"
-    @"            }}    \n"
-    @"                                 ]    \n"
-    @"        },    \n"
-    @"        \"Service\": {\"@DisabilityVehicleInd\": \"false\"},  "
-    @"        \"Reference\":     {  \n"
-    @"            \"@Type\": \"16\",    \n"
-    @"            \"@ID_Context\": \"CARTRAWLER\",  \n"
-    @"            \"@ID\": \"%@\",   \n"
-    @"            \"@URL\": \"%@\" \n"
-    @"        } \n"
-    @"    },    \n"
-    @"    \"TPA_Extensions\": %@   ",
+                      
+                      @"    \"GroundReservation\":   { \n"
+                      @"        \"Location\":     {   \n"
+                      @"            \"Pickup\":       {   \n"
+                      @"                \"@DateTime\": \"%@\",   \n"
+                      @"                \"Address\":         { \n"
+                      @"                    \"@Latitude\": \"%@\",  \n"
+                      @"                    \"@Longitude\": \"%@\", \n"
+                      @"                    \"AddressLine\":           [  \n"
+                      @"                                              %@  \n"
+                      @"                                              ],  \n"
+                      @"                    \"CityName\": \"%@\", \n"
+                      @"                    \"PostalCode\": \"%@\", \n"
+                      @"                    \"StateProv\": \"%@\", \n"
+                      @"                    \"CountryName\":           { \n"
+                      @"                        \"@Code\": \"%@\", \n"
+                      @"                        \"#text\": \"%@\" \n"
+                      @"                    }, \n"
+                      @"                    \"LocationType\": \"%@\", \n"
+                      @"                    \"LocationName\": \"%@\",   \n"
+                      @"                    \"SpecialInstructions\": \"%@\" \n"
+                      @"                } \n"
+                      @"            }, \n"
+                      @"            \"Dropoff\":       { \n"
+                      //@"                \"@DateTime\": \"%@\", \n"
+                      @"                \"Address\":         { \n"
+                      @"                    \"@Latitude\": \"%@\", \n"
+                      @"                    \"@Longitude\": \"%@\", \n"
+                      @"                    \"LocationType\": \"%@\" \n"
+                      @"                },    \n"
+                      @"                \"AirportInfo\": {\"%@\":         { \n"
+                      @"                    \"@CodeContext\": \"IATA\", \n"
+                      @"                    \"@LocationCode\": \"%@\",   \n"
+                      @"                    \"@Terminal\": \"%@\"  \n"
+                      @"                }}, \n"
+                      @"                \"Airline\":         { \n"
+                      @"                    \"@CodeContext\": \"IATA\", \n"
+                      @"                    \"@Code\": \"%@\", \n"
+                      @"                    \"@FlightNumber\": \"%@\"    \n"
+                      @"                } \n"
+                      @"            } \n"
+                      @"        },    \n"
+                      @"        \"Passenger\":     { \n"
+                      @"            \"Primary\":       {  \n"
+                      @"                \"PersonName\":         { \n"
+                      @"                    \"GivenName\": \"%@\", \n"
+                      @"                    \"Surname\": \"%@\"    \n"
+                      @"                },    \n"
+                      @"                \"Telephone\":         [  \n"
+                      @"                                      {   \n"
+                      @"                                          \"@PhoneTechType\": \"5\",  \n"
+                      //    @"                                          \"@CountryAccessCode\": \"%@\",    \n"
+                      //    @"                                          \"@AreaCityCode\": \"%@\",  \n"
+                      @"                                          \"@PhoneNumber\": \"%@\"   \n"
+                      @"                                      }                              \n"
+                      //    @"                                      },  \n"
+                      //    @"                                      {   \n"
+                      //    @"                                          \"@PhoneTechType\": \"1\",  \n"
+                      //    @"                                          \"@CountryAccessCode\": \"353\",    \n"
+                      //    @"                                          \"@AreaCityCode\": \"1\",   \n"
+                      //    @"                                          \"@PhoneNumber\": \"0000000\"   \n"
+                      //    @"                                      }   \n"
+                      @"                                      ],  \n"
+                      @"                \"Address\": {\"CountryName\": {\"@Code\": \"%@\"}},  \n"
+                      @"                \"Email\": \"%@\"   \n"
+                      @"            },    \n"
+                      @"            \"Additional\":       [   \n"
+                      @"                                 {\"AdditionalPersonType\":         { \n"
+                      @"                \"@Quantity\": \"%@\", \n"
+                      @"                \"@Code\": \"Adult\"  \n"
+                      @"            }},   \n"
+                      @"                                 {\"AdditionalPersonType\":         { \n"
+                      @"                \"@Quantity\": \"%@\", \n"
+                      @"                \"@Code\": \"Child\"  \n"
+                      @"            }},   \n"
+                      @"                                 {\"AdditionalPersonType\":         { \n"
+                      @"                \"@Quantity\": \"%@\", \n"
+                      @"                \"@Code\": \"Infant\" \n"
+                      @"            }}    \n"
+                      @"                                 ]    \n"
+                      @"        },    \n"
+                      @"        \"Service\": {\"@DisabilityVehicleInd\": \"false\"},  "
+                      @"        \"Reference\":     {  \n"
+                      @"            \"@Type\": \"16\",    \n"
+                      @"            \"@ID_Context\": \"CARTRAWLER\",  \n"
+                      @"            \"@ID\": \"%@\",   \n"
+                      @"            \"@URL\": \"%@\" \n"
+                      @"        } \n"
+                      @"    },    \n"
+                      @"    \"TPA_Extensions\": %@   ",
                       pickupDateTime,
                       pickupLatitude,
                       pickupLongitude,
@@ -738,8 +739,8 @@
                       flightNo,
                       firstName,
                       surname,
-//                      phoneCountryCode,
-//                      phoneVendorPrefix,
+                      //                      phoneCountryCode,
+                      //                      phoneVendorPrefix,
                       phone,
                       passengerCountryCode,
                       passengerEmail,
@@ -751,7 +752,7 @@
                       [NSString stringWithFormat:@"{\"ConsumerIP\": \"%@\"}", ipaddress]];
     
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder groundTransportHeader:clientID target:target locale:locale currency:currencyCode country:countryCode], tail];
-
+    
 }
 
 @end
