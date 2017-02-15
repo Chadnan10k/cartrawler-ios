@@ -8,7 +8,9 @@
 
 #import "CTPaymentLoadingViewController.h"
 #import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 #import "CTRentalConstants.h"
+#import "CTRentalLocalizationConstants.h"
 
 @interface CTPaymentLoadingViewController ()
 
@@ -23,6 +25,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.topLabel.text = CTLocalizedString(CTRentalBookingLoadingHeader);
+    self.bottomLabel.text = CTLocalizedString(CTRentalBookingLoadingSubheader);
+
 }
 
 - (void)viewDidAppear:(BOOL)animated

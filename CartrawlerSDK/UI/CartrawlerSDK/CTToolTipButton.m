@@ -31,7 +31,7 @@
     self.textLabel.numberOfLines = 0;
     self.textLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.textLabel.textColor = [CTAppearance instance].iconTint;
-    
+    self.textLabel.textAlignment = NSTextAlignmentCenter;
     self.textLabel.text = @"Sample text";
     [self addSubview:self.textLabel];
     
@@ -43,20 +43,20 @@
     self.imageView.image = image;
     [self.imageView applyTint];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(22)]"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(20)]"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:@{@"view" : self.imageView}]];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(22)]-16-|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(20)]-8-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:@{@"view" : self.imageView}]];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-32-|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-32-[view]-4-[image]"
                                                                  options:0
                                                                  metrics:nil
-                                                                   views:@{@"view" : self.textLabel}]];
+                                                                   views:@{@"view" : self.textLabel, @"image" : self.imageView}]];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]-|"
                                                                  options:0
@@ -70,22 +70,6 @@
                                                      attribute:NSLayoutAttributeCenterY
                                                     multiplier:1.0f
                                                       constant:0.0f]];
-    
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.textLabel
-//                                                     attribute:NSLayoutAttributeCenterY
-//                                                     relatedBy:NSLayoutRelationEqual
-//                                                        toItem:self
-//                                                     attribute:NSLayoutAttributeCenterY
-//                                                    multiplier:1.0f
-//                                                      constant:0.0f]];
-//    
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.textLabel
-//                                                     attribute:NSLayoutAttributeCenterX
-//                                                     relatedBy:NSLayoutRelationEqual
-//                                                        toItem:self
-//                                                     attribute:NSLayoutAttributeCenterX
-//                                                    multiplier:1.0f
-//                                                      constant:0.0f]];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(showToolTip)];

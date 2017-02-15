@@ -56,9 +56,9 @@
     } else {
         [self.merchBannerView setBannerType:CTMerhandisingBannerTypeNone];
     }
-    
+
     [self.specialOfferBannerView setBannerType:CTMerhandisingBannerTypeNone];
-    self.totalPriceBottomConstranit.constant = 8;
+    self.totalPriceBottomConstranit.constant = 16;
     for (CTExtraEquipment *ee in item.vehicle.extraEquipment) {
         if (ee.isIncludedInRate) {
             [self.specialOfferBannerView setSpecialOffer:ee.equipDescription];

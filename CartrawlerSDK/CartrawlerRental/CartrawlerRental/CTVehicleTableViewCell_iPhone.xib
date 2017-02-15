@@ -122,14 +122,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hBZ-Er-3Cy" customClass="CTMerhandisingBanner">
-                                <rect key="frame" x="8" y="228" width="481" height="25"/>
-                                <color key="backgroundColor" red="0.72336632013320923" green="0.72336632013320923" blue="0.72336632013320923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="Bpg-fz-Tz2"/>
-                                    <constraint firstAttribute="width" constant="481" id="boN-GO-OtN"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0n-ow-vO0">
                                 <rect key="frame" x="492" y="168" width="100" height="52"/>
                                 <subviews>
@@ -160,6 +152,14 @@
                                     <constraint firstAttribute="trailing" secondItem="9K3-lE-Cnc" secondAttribute="trailing" constant="4" id="t46-w0-nKq"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hBZ-Er-3Cy" customClass="CTMerhandisingBanner">
+                                <rect key="frame" x="8" y="224" width="481" height="25"/>
+                                <color key="backgroundColor" red="0.72336632013320923" green="0.72336632013320923" blue="0.72336632013320923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Bpg-fz-Tz2"/>
+                                    <constraint firstAttribute="width" constant="481" id="boN-GO-OtN"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -179,6 +179,7 @@
                             <constraint firstAttribute="trailing" secondItem="aHb-Ff-zoI" secondAttribute="trailing" constant="8" id="XHT-U7-Hop"/>
                             <constraint firstItem="5tE-lv-Bpe" firstAttribute="leading" secondItem="Rje-wO-iNr" secondAttribute="trailing" constant="8" id="Xrh-D8-Vbz"/>
                             <constraint firstItem="LPi-AG-13m" firstAttribute="leading" secondItem="m65-KB-Qyk" secondAttribute="trailing" constant="12" id="YTK-2G-Fia"/>
+                            <constraint firstItem="hBZ-Er-3Cy" firstAttribute="top" secondItem="LPi-AG-13m" secondAttribute="bottom" constant="12" id="YyM-eh-wlI"/>
                             <constraint firstItem="gZl-th-Lec" firstAttribute="top" secondItem="Rje-wO-iNr" secondAttribute="top" id="dYb-Pq-yBP"/>
                             <constraint firstItem="LPi-AG-13m" firstAttribute="centerY" secondItem="m65-KB-Qyk" secondAttribute="centerY" id="fFI-Fa-8UT"/>
                             <constraint firstItem="Rje-wO-iNr" firstAttribute="top" secondItem="5Xb-bk-V9O" secondAttribute="bottom" constant="10" id="fnx-2q-ucC"/>
@@ -219,6 +220,7 @@
                                 <exclude reference="g6y-Ux-nlu"/>
                                 <exclude reference="OMv-X9-eVA"/>
                                 <exclude reference="B9Q-r0-Y6G"/>
+                                <exclude reference="Pa2-TI-Tns"/>
                             </mask>
                         </variation>
                     </view>
@@ -226,8 +228,8 @@
                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="qlR-Zi-q6V" secondAttribute="trailing" id="1Lb-i0-P1a" customClass="CTLayoutConstraint"/>
-                    <constraint firstAttribute="bottom" secondItem="qlR-Zi-q6V" secondAttribute="bottom" constant="8" id="AOd-ge-o56" customClass="CTLayoutConstraint"/>
-                    <constraint firstItem="qlR-Zi-q6V" firstAttribute="top" secondItem="IHL-eK-8dY" secondAttribute="top" constant="8" id="TGS-mP-Q0r" customClass="CTLayoutConstraint"/>
+                    <constraint firstAttribute="bottom" secondItem="qlR-Zi-q6V" secondAttribute="bottom" constant="8" id="AOd-ge-o56"/>
+                    <constraint firstItem="qlR-Zi-q6V" firstAttribute="top" secondItem="IHL-eK-8dY" secondAttribute="top" constant="8" id="TGS-mP-Q0r"/>
                     <constraint firstItem="qlR-Zi-q6V" firstAttribute="leading" secondItem="IHL-eK-8dY" secondAttribute="leading" id="cav-V8-ENg" customClass="CTLayoutConstraint"/>
                 </constraints>
             </tableViewCellContentView>

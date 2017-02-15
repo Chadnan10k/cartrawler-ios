@@ -36,6 +36,7 @@
 "vehicle_fuel_policy_type_CHAUFFULFUL" = "Opłaty za paliwo: Nie wlicza się";
 "vehicle_type_large_truck" = "Duża ciężarówka";
 "vehicle_type_small_medium_truck" = "Niewielka, średnia ciężarówka";
+"mins_placeholder" = "min";
 "vehicle_fuel_policy_type_FULLFULLHYBRID" = "Paliwo: Wybierz w biurze";
 "vehicle_fuel_policy_type_HALFHALF" = "Połowa do połowy";
 "vehicle_fuel_policy_type_EMPTYEMPTY" = "Pusty do pustego";
@@ -72,6 +73,7 @@
 "title_search_rental" = "Wynajem samochodu";
 "search_return_location_button" = "Powrót do tej samej lokalizacji";
 "insurance_summary_title" = "Powody, dla których warto wykupić pełne ubezpieczenie";
+"settings_language_header" = "Wybierz jezyk";
 "vehicle_pickup_location_VWF_11.VWF.X" = "Na północ od centrum miasta";
 "vehicle_type_compact" = "Kompakt";
 "vehicle_orsimilar" = "lub podobne";
@@ -127,6 +129,7 @@
 "filter_fuel" = "Polityka dotycząca paliwa";
 "vehicle_type_economy_elite" = "Ekonomiczny Elite";
 "vehicle_vehicle_inclusion" = "Ten element jest zawarty w cenie tego pojazdu";
+"interstitial_header" = "Wyszukaj idealny samochod";
 "vehicle_pickup_location_VWF_10.VWF.X" = "Na zachód od centrum miasta";
 "vehicle_pickup_location_VWF_7.VWF.X" = "Centrum miasta/śródmieście";
 "settings_select_languages" = "Wybierz język";
@@ -140,6 +143,7 @@
 "supplier_pickup" = "Procedura odbioru wypożyczonego samochodu";
 "supplier_desk" = "Obsługa w biurze wypożyczalni";
 "vehicle_pickup_at_airport" = "Na lotnisku";
+"address_details_title" = "Adres";
 "vehicle_doors" = "Drzwi";
 "vehicle_best_seller" = "Bestseller";
 "vehicle_fuel_policy_type_CHAUFFUELINC" = "Opłaty za paliwo: Wliczone";
@@ -201,6 +205,7 @@
 "extras_conditions" = "Uwaga: za opcje dodatkowe płaci się w biurze wypożyczalni. Staramy się zapewniać, by klienci otrzymywali wszystkie opcje dodatkowe, jednak ich dostępność nie zawsze jest gwarantowana.";
 "supplier_car" = "Czystość samochodu";
 "vehicle_fuel_policy_desc_FULLEMPTY" = "Samochód jest udostępniany z pełnym bakiem, za który zostanie pobrana opłata w biurze obsługi. Samochód należy zwrócić z pustym bakiem, a kwota za ewentualne niezużyte paliwo nie zostanie zwrócona.";
+"confirmation_loading_subheader" = "Moze to potrwac do 30 sekund prosze czekac";
 "vehicle_type_cargovan" = "Van dostawczy";
 "vehicle_pickup_type_VLI_4.VLI.X" = "Odbiór z lotniska";
 "vehicle_type_special" = "Specjalny";
@@ -229,6 +234,7 @@
 "CTA_save" = "Zapisz ustawienia";
 "title_details_vehicle" = "Szczegóły";
 "CTA_done" = "Gotowe";
+"interstitial_subheader" = "w najepszej cenie";
 "vehicle_fuel_policy_desc_HALFHALF" = "Samochód jest udostępniany z bakiem zatankowanym do połowy. Zwróć samochód z bakiem zatankowanym do połowy, aby uniknąć opłat za tankowanie. W przypadku większej ilości paliwa nie otrzymasz dodatkowego zwrotu.";
 "vehicle_type_medium_SUV" = "Średni SUV";
 "vehicle_provided" = "Usługodawca:";
@@ -238,6 +244,7 @@
 "vehicle_pickup_details_VWF_6.VWF.X" = "Usługa odbioru z lotniska. Twój kierowca będzie czekał na Twoje przybycie. Podaj swój numer lotu, aby kierowca mógł śledzić jego trasę w razie opóźnień.";
 "vehicle_pickup_type_VLI_6.VLI.X" = "Osobisty kierowca";
 "summary_payment" = "Podsumowanie płatności";
+"confirmation_loading_header" = "Czekamy na platnosc";
 "vehicle_type_five_seat_carrier" = "Samochód 5-osobowy";
 "title_results" = "Wyniki";
 "vehicle_pickup_location_VWF_1.VWF.X" = "W terminalu";
@@ -250,6 +257,7 @@
 "CTA_with_insurance" = "Kontynuuj z ubezpieczeniem";
 "vehicle_type_intermediate_elite" = "Średniej wielkości Elite";
 "title_booking_manager" = "Zbliżające się rezerwacje";
+"add_extras_title" = "Dodaj dodatkowe opcje";
 "summary_pickup" = "Odbiór";
 "insurance_summary_replace_val" = "wybierz, aby kontynuować z ubezpieczeniem";
 "vehicle_fuel_policy_desc_QUARTERQUARTER" = "Samochód jest udostępniany z bakiem zatankowanym do jednej czwartej. Zwróć samochód z bakiem zatankowanym do jednej czwartej, aby uniknąć opłat za tankowanie. W przypadku większej ilości paliwa nie otrzymasz dodatkowego zwrotu.";

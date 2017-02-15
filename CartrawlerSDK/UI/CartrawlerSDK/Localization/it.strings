@@ -114,7 +114,7 @@
 "calendar_summary_title" = "Seleziona data";
 "vehicle_pickup_location_VWF_6.VWF.X" = "Concessionaria";
 "vehicle_pickup_location_VWF_1.VWF.X" = "Al terminal";
-"vehicle_fuel_policy_type_QUARTEREMPTY" = "Ritiro con serbatoio a un quarto e consegna con serbatoio vuoto";
+"vehicle_fuel_policy_type_QUARTEREMPTY" = "Ritiro con serbatoio a un quarto e consegna vuoto";
 "vehicle_type_intermediate_elite" = "Intermedia Elite";
 "vehicle_fuel_policy_desc_QUARTERQUARTER" = "L’auto è consegnata con il serbatoio pieno per un quarto. Restituiscila con il serbatoio pieno per un quarto per evitare spese di rifornimento. Se la restituisci con più carburante non riceverai rimborsi aggiuntivi.";
 "vehicle_type_economy_elite" = "Economy Elite";

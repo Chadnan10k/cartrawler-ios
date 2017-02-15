@@ -143,6 +143,7 @@
 "supplier_pickup" = "Διαδικασία παραλαβής ενοικιαζόμενου αυτοκινήτου";
 "supplier_desk" = "Υπηρεσία στο γραφείο ενοικίασης";
 "vehicle_pickup_at_airport" = "Στο αεροδρόμιο";
+"address_details_title" = "Διεύθυνση";
 "vehicle_doors" = "Πόρτες";
 "vehicle_best_seller" = "Best seller";
 "vehicle_fuel_policy_type_CHAUFFUELINC" = "Χρεώσεις καυσίμου: Περιλαμβάνεται";
@@ -256,6 +257,7 @@
 "CTA_with_insurance" = "Συνέχεια με ασφάλιση";
 "vehicle_type_intermediate_elite" = "Μεσαίο Elite";
 "title_booking_manager" = "Επερχόμενες κρατήσεις";
+"add_extras_title" = "Πρόσθετος εξοπλισμός";
 "summary_pickup" = "Παραλαβή";
 "insurance_summary_replace_val" = "επιλέξτε να συνεχίσετε χωρίς ασφάλιση";
 "vehicle_fuel_policy_desc_QUARTERQUARTER" = "Το αυτοκίνητό σας παραδίδεται με ρεζερβουάρ καυσίμου που είναι γεμάτο κατά το ένα τέταρτο. Απλώς επιστρέψτε το αυτοκίνητο με ρεζερβουάρ γεμάτο κατά το ένα τέταρτο για να αποφύγετε τυχόν χρεώσεις αναπλήρωσης καυσίμου. Εάν επιστρέψετε το αυτοκίνητο με περισσότερα καύσιμα, δε θα σας επιστραφούν χρήματα.";

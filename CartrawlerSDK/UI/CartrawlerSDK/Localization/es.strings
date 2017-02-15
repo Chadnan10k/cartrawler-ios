@@ -22,7 +22,7 @@
 "vehicle_type_compact_elite" = "Compacto especial";
 "vehicle_type_fullsize_elite" = "Grande especial";
 "vehicle_pickup_unknown" = "Desconocido";
-"vehicle_fuel_policy_type_FULLFULL" = "Recogida y devolución con depósito lleno";
+"vehicle_fuel_policy_type_FULLFULL" = "Lleno a lleno";
 "vehicle_type_regular" = "Regular";
 "vehicle_type_premium_elite" = "Premium especial";
 "calendar_summary_dropoff" = "Fecha de devolución";
@@ -114,7 +114,7 @@
 "calendar_summary_title" = "Seleccionar fecha";
 "vehicle_pickup_location_VWF_6.VWF.X" = "Concesionario";
 "vehicle_pickup_location_VWF_1.VWF.X" = "En la terminal";
-"vehicle_fuel_policy_type_QUARTEREMPTY" = "Recogida con un cuarto de depósito lleno y devolución con depósito vacío";
+"vehicle_fuel_policy_type_QUARTEREMPTY" = "Recogida con cuarto de depósito lleno y devolución con depósito vacío";
 "vehicle_type_intermediate_elite" = "Mediano especial";
 "vehicle_fuel_policy_desc_QUARTERQUARTER" = "Tu coche se entrega con un cuarto de depósito de combustible lleno. Devuelve el coche con el depósito de combustible lleno hasta un cuarto para evitar cualquier cargo por el llenado del depósito. Si devuelves el coche con más combustible, no se te devolverá el importe adicional.";
 "vehicle_type_economy_elite" = "Económico especial";

@@ -212,13 +212,13 @@ NSString * const CTRentalPaymentText1 = @"payment_text_1";
 
 NSString * const CTRentalPaymentText2 = @"payment_text_2";
 
-NSString * const CTRentalReceiptCongratulations = @"receipt_congratulations";
+NSString * const CTRentalReceiptCongratulations = @"receipt_title";
 
 NSString * const CTRentalReceiptSuccess = @"receipt_success";
 
 NSString * const CTRentalReceiptYourReference = @"receipt_your_reference";
 
-NSString * const CTRentalReceiptEmailText1 = @"receipt_email_text_1";
+NSString * const CTRentalReceiptEmailText = @"receipt_email_text";
 
 NSString * const CTRentalReceiptEmailText2 = @"receipt_email_text_2";
 
@@ -258,8 +258,12 @@ NSString * const CTRentalSummaryDamageRefund = @"summary_damage_refund";
 
 NSString * const CTRentalSummaryBookingFee = @"summary_booking_fee";
 
-NSString * const CTRentalInterstitialSearching1 = @"interstitial_searching_1";
+NSString * const CTRentalInterstitialSearching1 = @"interstitial_header";
 
-NSString * const CTRentalInterstitialSearching2 = @"interstitial_searching_2";
+NSString * const CTRentalInterstitialSearching2 = @"interstitial_subheader";
+
+NSString * const CTRentalBookingLoadingHeader = @"confirmation_loading_header";
+
+NSString * const CTRentalBookingLoadingSubheader = @"confirmation_loading_subheader";
 
 @end

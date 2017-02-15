@@ -22,7 +22,7 @@
 "vehicle_type_compact_elite" = "Compacte élite";
 "vehicle_type_fullsize_elite" = "Grand berline élite";
 "vehicle_pickup_unknown" = "Inconnu";
-"vehicle_fuel_policy_type_FULLFULL" = "Retrait et retour avec le plein";
+"vehicle_fuel_policy_type_FULLFULL" = "Plein a plein";
 "vehicle_type_regular" = "Regular";
 "vehicle_type_premium_elite" = "Premium élite";
 "calendar_summary_dropoff" = "Date de retour";

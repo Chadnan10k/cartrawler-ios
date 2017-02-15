@@ -51,6 +51,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpacing;
 @property (weak, nonatomic) IBOutlet CTButton *termsAndConditionsButton;
 @property (weak, nonatomic) IBOutlet CTLabel *orSimilarLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *fuelPolicyTitleLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *locationTitleLabel;
 
 @end
 
@@ -79,7 +81,9 @@
     self.includedForFreeLabel.text = CTLocalizedString(CTRentalIncludedTitle);
     [self.termsAndConditionsButton setTitle:CTLocalizedString(CTRentalIncludedTerms) forState:UIControlStateNormal];
     self.orSimilarLabel.text = CTLocalizedString(CTRentalVehicleOrSimilar);
-    
+    self.fuelPolicyTitleLabel.text = CTLocalizedString(CTRentalVehicleFuelPolicy);
+    self.locationTitleLabel.text = CTLocalizedString(CTRentalVehiclePickupLocation);
+
     [self.featuresTableView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
     
     if (self.search.selectedVehicle.vendor.rating) {
