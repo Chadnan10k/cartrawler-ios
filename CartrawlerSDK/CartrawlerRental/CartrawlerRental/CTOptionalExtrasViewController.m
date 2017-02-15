@@ -19,6 +19,8 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray<CTExtraEquipment *> *extras;
 @property (weak, nonatomic) IBOutlet CTLabel *conditionsLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *extrasTitleLabel;
+
 @end
 
 @implementation CTOptionalExtrasViewController
@@ -45,6 +47,7 @@
     
     [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
     self.conditionsLabel.text = CTLocalizedString(CTRentalExtrasConditions);
+    self.extrasTitleLabel.text = CTLocalizedString(CTRentalAddExtrasTitle);
     
     [self tagScreen];
     if ([CTRentalSearch instance].insurance) {

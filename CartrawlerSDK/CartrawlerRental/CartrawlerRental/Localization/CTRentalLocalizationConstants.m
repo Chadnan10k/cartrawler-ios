@@ -266,4 +266,7 @@ NSString * const CTRentalBookingLoadingHeader = @"confirmation_loading_header";
 
 NSString * const CTRentalBookingLoadingSubheader = @"confirmation_loading_subheader";
 
+NSString * const CTRentalAddExtrasTitle = @"add_extras_title";
+
+
 @end

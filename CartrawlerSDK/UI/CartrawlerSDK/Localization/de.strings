@@ -79,7 +79,7 @@
 "vehicle_fuel_petrol" = "Benzin";
 "vehicle_type_luxury_elite" = "Elite Luxus";
 "calendar_summary_pickup" = "Abholdatum";
-"calendar_select_date" = "Datum auswählen";
+"calendar_select_date" = "Auswählen";
 "vehicle_type_exotic" = "Außergewöhnlich";
 "vehicle_type_subcompact" = "Kleinwagen";
 "vehicle_pickup_type_VLI_1.VLI.X" = "Im Terminal";

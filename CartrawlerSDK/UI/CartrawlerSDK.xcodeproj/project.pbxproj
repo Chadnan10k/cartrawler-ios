@@ -156,6 +156,7 @@
 		BC3361961E4CCC520056E5A6 /* it.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33618E1E4CCC520056E5A6 /* it.strings */; };
 		BC3361971E4CCC520056E5A6 /* nl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33618F1E4CCC520056E5A6 /* nl.strings */; };
 		BC3361981E4CCC520056E5A6 /* pl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361901E4CCC520056E5A6 /* pl.strings */; };
+		BC54F1581E54980500A7C871 /* pt.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC54F1571E54980500A7C871 /* pt.strings */; };
 		BC9F6E521E24EF91006DD990 /* CTAnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */; };
 		BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCDB4BEA1E3F50C6008004DA /* CTAnalyticsEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */; };
@@ -314,6 +315,7 @@
 		BC33618E1E4CCC520056E5A6 /* it.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = it.strings; path = Localization/it.strings; sourceTree = "<group>"; };
 		BC33618F1E4CCC520056E5A6 /* nl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = nl.strings; path = Localization/nl.strings; sourceTree = "<group>"; };
 		BC3361901E4CCC520056E5A6 /* pl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pl.strings; path = Localization/pl.strings; sourceTree = "<group>"; };
+		BC54F1571E54980500A7C871 /* pt.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pt.strings; path = Localization/pt.strings; sourceTree = "<group>"; };
 		BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsTests.m; sourceTree = "<group>"; };
 		BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalyticsEvent.h; sourceTree = "<group>"; };
 		BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsEvent.m; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				BC33618E1E4CCC520056E5A6 /* it.strings */,
 				BC33618F1E4CCC520056E5A6 /* nl.strings */,
 				BC3361901E4CCC520056E5A6 /* pl.strings */,
+				BC54F1571E54980500A7C871 /* pt.strings */,
 				455061891D59CD91004EAC43 /* CTLocalisedStrings.h */,
 				4550618A1D59CD91004EAC43 /* CTLocalisedStrings.m */,
 				E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */,
@@ -916,6 +919,7 @@
 				BC3361941E4CCC520056E5A6 /* es.strings in Resources */,
 				455B59511DCC91F900CA4790 /* CTCurrency.csv in Resources */,
 				BC3361921E4CCC520056E5A6 /* el.strings in Resources */,
+				BC54F1581E54980500A7C871 /* pt.strings in Resources */,
 				BC3361911E4CCC520056E5A6 /* de.strings in Resources */,
 				455B59521DCC91F900CA4790 /* CTISOCountries.csv in Resources */,
 				45D3860A1DD62281000F02D1 /* strip-frameworks.sh in Resources */,

@@ -47,6 +47,7 @@
 		BC3361B01E4CCDB70056E5A6 /* it.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361A91E4CCDB70056E5A6 /* it.strings */; };
 		BC3361B11E4CCDB70056E5A6 /* nl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361AA1E4CCDB70056E5A6 /* nl.strings */; };
 		BC3361B21E4CCDB70056E5A6 /* pl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361AB1E4CCDB70056E5A6 /* pl.strings */; };
+		BC54F15C1E54983A00A7C871 /* pt.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC54F15B1E54983A00A7C871 /* pt.strings */; };
 		E7B3B49A1E40E85C0062C7AD /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7B3B4991E40E85C0062C7AD /* en.strings */; };
 		E7B3B49D1E40E8C70062C7AD /* CTInPathLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */; };
 		E7B3B49E1E40E8C70062C7AD /* CTInPathLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3B49C1E40E8C70062C7AD /* CTInPathLocalizationConstants.m */; };
@@ -93,6 +94,7 @@
 		BC3361A91E4CCDB70056E5A6 /* it.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = it.strings; path = Localization/it.strings; sourceTree = "<group>"; };
 		BC3361AA1E4CCDB70056E5A6 /* nl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = nl.strings; path = Localization/nl.strings; sourceTree = "<group>"; };
 		BC3361AB1E4CCDB70056E5A6 /* pl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pl.strings; path = Localization/pl.strings; sourceTree = "<group>"; };
+		BC54F15B1E54983A00A7C871 /* pt.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pt.strings; path = Localization/pt.strings; sourceTree = "<group>"; };
 		E7B3B4991E40E85C0062C7AD /* en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en.strings; path = Localization/en.strings; sourceTree = "<group>"; };
 		E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTInPathLocalizationConstants.h; path = Localization/CTInPathLocalizationConstants.h; sourceTree = "<group>"; };
 		E7B3B49C1E40E8C70062C7AD /* CTInPathLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTInPathLocalizationConstants.m; path = Localization/CTInPathLocalizationConstants.m; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				BC3361A91E4CCDB70056E5A6 /* it.strings */,
 				BC3361AA1E4CCDB70056E5A6 /* nl.strings */,
 				BC3361AB1E4CCDB70056E5A6 /* pl.strings */,
+				BC54F15B1E54983A00A7C871 /* pt.strings */,
 				E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */,
 				E7B3B49C1E40E8C70062C7AD /* CTInPathLocalizationConstants.m */,
 			);
@@ -320,6 +323,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC54F15C1E54983A00A7C871 /* pt.strings in Resources */,
 				BC3361AF1E4CCDB70056E5A6 /* fr.strings in Resources */,
 				E7B3B49A1E40E85C0062C7AD /* en.strings in Resources */,
 				45BA0F681E1FA27300EB26ED /* strip-frameworks.sh in Resources */,

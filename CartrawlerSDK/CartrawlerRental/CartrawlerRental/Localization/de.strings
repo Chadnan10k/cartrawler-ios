@@ -2,7 +2,7 @@
 "locations_results_airports" = "Flughäfen";
 "vehicle_type_fullsize" = "Fullsize";
 "insurance_list_3_title" = "Vollkommene Sorgenfreiheit";
-"receipt_your_reference" = "Ihre Buchungsreferenz:";
+"receipt_your_reference" = "Ihre Buchungsnummer:";
 "vehicle_air_conditioning" = "Klimaanlage";
 "title_summary" = "Zahlungsübersicht";
 "vehicle_pickup_details_VWF_5.VWF.X" = "Sie können Ihr Fahrzeug an der Rezeption Ihres Hotels abholen.";
@@ -36,6 +36,7 @@
 "vehicle_fuel_policy_type_CHAUFFULFUL" = "Kraftstoffgebühren: Nicht enthalten";
 "vehicle_type_large_truck" = "Großer Lkw";
 "vehicle_type_small_medium_truck" = "Kleiner/mittelgroßer Lkw";
+"mins_placeholder" = "min";
 "vehicle_fuel_policy_type_FULLFULLHYBRID" = "Kraftstoff: Am Schalter wählen";
 "vehicle_fuel_policy_type_HALFHALF" = "Halbvoll – Halbvoll";
 "vehicle_fuel_policy_type_EMPTYEMPTY" = "Leer/leer";
@@ -72,9 +73,10 @@
 "title_search_rental" = "Autovermietung";
 "search_return_location_button" = "Rückkehr zum selben Ort";
 "insurance_summary_title" = "Gründe für eine Vollabdeckung";
+"settings_language_header" = "Sprache";
 "vehicle_pickup_location_VWF_11.VWF.X" = "Nördlich des Stadtzentrums";
 "vehicle_type_compact" = "Kompaktwagen";
-"vehicle_orsimilar" = "oder ähnliches Fahrzeug";
+"vehicle_orsimilar" = "oder vergleichbar";
 "extras_equipment_aircon" = "Klimaanlage";
 "vehicle_fuel_petrol" = "Benzin";
 "vehicle_type_luxury_elite" = "Elite Luxus";
@@ -104,7 +106,7 @@
 "receipt_success" = "Ihre Buchung war erfolgreich";
 "vehicle_duration_2" = "Tag";
 "vehicle_duration_1" = "Preis für";
-"supplier_reviews" = "Bewertungen";
+"supplier_reviews" = "reviews";
 "CTA_continue" = "Weiter";
 "extras_equipment_gps" = "Navi";
 "search_return_location_hint" = "Flughafen, Stadt oder Bahnhofsnamen eingeben";
@@ -127,6 +129,7 @@
 "filter_fuel" = "Tankregelung";
 "vehicle_type_economy_elite" = "Elite-Kleinwagen";
 "vehicle_vehicle_inclusion" = "Dieser Artikel ist im Preis dieses Fahrzeugs inbegriffen";
+"interstitial_header" = "Suchen Sie nach dem perfekten Wagen für sich";
 "vehicle_pickup_location_VWF_10.VWF.X" = "Westlich des Stadtzentrums";
 "vehicle_pickup_location_VWF_7.VWF.X" = "Stadtzentrum/Innenstadt";
 "settings_select_languages" = "Sprache auswählen";
@@ -138,8 +141,9 @@
 "title_search_ground" = "Bodentransport suchen";
 "vehicle_fuel_policy_desc_HALFEMPTY" = "Sie übernehmen den Mietwagen mit halbvollem Tank. Diese Tankfüllung müssen Sie am Mietwagenschalter bezahlen. Vor der Rückgabe müssen Sie das Fahrzeug nicht betanken.";
 "supplier_pickup" = "Abholung des Mietwagens";
-"supplier_desk" = "Service am Anbieterschalter";
+"supplier_desk" = "Service am Schalter";
 "vehicle_pickup_at_airport" = "Am Flughafen";
+"address_details_title" = "Adresse";
 "vehicle_doors" = "Türen";
 "vehicle_best_seller" = "Bestseller";
 "vehicle_fuel_policy_type_CHAUFFUELINC" = "Kraftstoffgebühren: Inklusive";
@@ -182,8 +186,8 @@
 "vehicle_type_large_SUV" = "Große Geländelimousine";
 "supplier_rating_detail" = "Kundentarif in dieser Autovermietung bei";
 "insurance_list_1_title" = "Attraktiver Preis";
-"payment_text_1" = "Tippen Sie auf \"Jetzt buchen\", um Ihre Buchung abzuschließen und unsere %@ zu akzeptieren.";
-"payment_text_2" = "Allgemeine Geschäftsbedingungen";
+"payment_text_1" = "Klicken Sie auf \"Jetzt buchen\", um Ihre Buchung abzuschließen und unsere %@ zu akzeptieren.";
+"payment_text_2" = "Allgemeinen Geschäftsbedingungen";
 "vehicle_fuel_policy_desc_CHAUFFUELINC" = "Sämtliche Kraftstoffkosten sind enthalten.Â Es fallen keine zusätzlichen Tankkosten für Sie an.";
 "settings_select_currency" = "Währung auswählen";
 "receipt_scroll" = "Übersicht unten";
@@ -198,9 +202,10 @@
 "vehicle_type_seven_seat_carrier" = "Van mit sieben Sitzen";
 "vehicle_type_twenty_six_foot_truck" = "LKW mit acht Metern";
 "included_terms" = "Allgemeine Geschäftsbedingungen";
-"extras_conditions" = "Beachten Sie bitte, dass Extras am Mietschalter bezahlt werden müssen. Wir versuchen, sicherzustellen, dass Kunden alle Extras erhalten; die Verfügbarkeit ist jedoch nicht immer garantiert.";
+"extras_conditions" = "Beachten Sie bitte, dass Extras am Mietschalter bezahlt werden müssen. Wir versuchen, sicherzustellen, dass unsere Kunden alle Extras erhalten; die Verfügbarkeit ist jedoch nicht immer garantiert.";
 "supplier_car" = "Sauberkeit des Fahrzeugs";
 "vehicle_fuel_policy_desc_FULLEMPTY" = "Sie erhalten Ihr Fahrzeug mit einer vollen Tankfüllung, die Sie am Mietschalter bezahlen müssen. Das Fahrzeug sollte mit einem leeren Tank zurückgegeben werden, da es keine Rückzahlung für nicht genutzten Kraftstoff gibt.";
+"confirmation_loading_subheader" = "Dies kann bis zu 30 Sekunden dauern, bitte haben Sie etwas Geduld.";
 "vehicle_type_cargovan" = "Cargovan";
 "vehicle_pickup_type_VLI_4.VLI.X" = "Meet and Greet";
 "vehicle_type_special" = "Spezial";
@@ -229,6 +234,7 @@
 "CTA_save" = "Einstellungen speichern";
 "title_details_vehicle" = "Details";
 "CTA_done" = "Fertig";
+"interstitial_subheader" = "zum besten Preis";
 "vehicle_fuel_policy_desc_HALFHALF" = "Sie erhalten das Fahrzeug mit halbvollem Tank. Am Ende geben Sie den Mietwagen mit halbvollem Tank zurück, damit Ihnen am Schalter keine Kosten für das Wiederauffüllen berechnet werden. Wenn Sie das Fahrzeug mit mehr Kraftstoff zurückgeben, erhalten Sie keine zusätzliche Rückerstattung.";
 "vehicle_type_medium_SUV" = "Mittelgroße Geländelimousine";
 "vehicle_provided" = "Anbieter";
@@ -238,6 +244,7 @@
 "vehicle_pickup_details_VWF_6.VWF.X" = "Dies ist ein Meet and Greet-Service. Ihr Fahrer erwartet Sie bei Ihrer Ankunft. Bitte hinterlassen Sie uns Ihre Flugnummer, damit der Fahrer prüfen kann, ob sich Ihr Flug verspätet.";
 "vehicle_pickup_type_VLI_6.VLI.X" = "Persönlicher Fahrer";
 "summary_payment" = "Zahlungsübersicht";
+"confirmation_loading_header" = "Wir verarbeiten momentan noch Ihre Bezahlung.";
 "vehicle_type_five_seat_carrier" = "Van mit fünf Sitzen";
 "title_results" = "Ergebnisse";
 "vehicle_pickup_location_VWF_1.VWF.X" = "Im Terminal";
@@ -250,6 +257,7 @@
 "CTA_with_insurance" = "Mit Versicherung fortfahren";
 "vehicle_type_intermediate_elite" = "Elite Mittelklasse";
 "title_booking_manager" = "Anstehende Buchungen";
+"add_extras_title" = "Extras hinzufügen";
 "summary_pickup" = "Abholung";
 "insurance_summary_replace_val" = "Fortfahren mit Versicherung";
 "vehicle_fuel_policy_desc_QUARTERQUARTER" = "Sie erhalten das Fahrzeug mit viertelvollem Tank. Am Ende geben Sie den Mietwagen mit viertelvollem Tank zurück, damit Ihnen am Schalter keine Kosten für das Wiederauffüllen berechnet werden. Wenn Sie das Fahrzeug mit mehr Kraftstoff zurückgeben, erhalten Sie keine zusätzliche Rückerstattung.";
