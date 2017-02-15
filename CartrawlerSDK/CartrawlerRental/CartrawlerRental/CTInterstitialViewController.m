@@ -32,13 +32,14 @@
     // Do any additional setup after loading the view.
     self.vendorCollectionView.dataSource = self;
     self.vendorCollectionView.delegate = self;
-    self.loadingLabel.text = CTLocalizedString(CTRentalInterstitialSearching1);
-    self.loadingDetailLabel.text = CTLocalizedString(CTRentalInterstitialSearching2);
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.loadingLabel.text = CTLocalizedString(CTRentalInterstitialSearching1);
+    self.loadingDetailLabel.text = CTLocalizedString(CTRentalInterstitialSearching2);
     
     _vendorImages = @[[UIImage imageNamed:@"vendor_europcar" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil],
                       [UIImage imageNamed:@"vendor_sixt" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil],

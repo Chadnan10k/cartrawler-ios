@@ -21,6 +21,7 @@
 
 @interface CTAddressDetailsViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
+@property (weak, nonatomic) IBOutlet CTLabel *addressDetailsTitle;
 @property (weak, nonatomic) IBOutlet CTTextField *addressLine1TextField;
 @property (weak, nonatomic) IBOutlet CTTextField *addressLine2TextField;
 @property (weak, nonatomic) IBOutlet CTTextField *cityTextField;
@@ -74,6 +75,7 @@
     self.cityTextField.placeholder = CTLocalizedString(CTRentalUserCityHint);
     self.postCodeTextField.placeholder = CTLocalizedString(CTRentalUserPostcodeHint);
     self.countryTextField.placeholder = CTLocalizedString(CTRentalUserCountryHint);
+    self.addressDetailsTitle.text = CTLocalizedString(CTRentalUserCountryHint);
 
     [self tagScreen];
     

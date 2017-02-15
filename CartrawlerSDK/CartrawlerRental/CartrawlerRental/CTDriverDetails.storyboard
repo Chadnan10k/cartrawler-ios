@@ -509,6 +509,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="addressDetailsTitle" destination="wtR-va-opM" id="v2a-A1-1jU"/>
                         <outlet property="addressLine1TextField" destination="vLC-Ey-1KF" id="l29-oG-QA7"/>
                         <outlet property="addressLine2TextField" destination="y24-rK-YPW" id="FMW-92-Xn5"/>
                         <outlet property="cityTextField" destination="Fx4-JU-Fuv" id="tVG-nK-FqG"/>

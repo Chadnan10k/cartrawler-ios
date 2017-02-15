@@ -270,4 +270,6 @@ extern NSString * const CTRentalBookingLoadingSubheader;
 
 extern NSString * const CTRentalAddExtrasTitle;
 
+extern NSString * const CTRentalAddressDetailsTitle;
+
 @end
