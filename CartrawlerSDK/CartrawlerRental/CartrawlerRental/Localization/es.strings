@@ -222,12 +222,12 @@
 "vehicle_type_nine_seat_carrier" = "Vehículo de nueve asientos";
 "summary_ground" = "Viaje";
 "title_calendar" = "Calendario";
-"vehicle_great_value" = "Excelente relación calidad-precio";
+"vehicle_great_value" = "Buen precio";
 "filter_carsize" = "Tamaño del coche";
 "vehicle_fuel_policy_desc_EMPTYEMPTY" = "Tu coche se entrega con combustible suficiente para que puedas llegar a la estación de servicio más cercana. El coche deberá entregarse con el depósito vacío, ya que no se efectuarán devoluciones por el combustible no utilizado.";
 "vehicle_fuel_policy_type_HALFEMPTY" = "Depósito medio lleno a depósito vacío";
 "filter_transfertype" = "Tipo de traslado";
-"search_driver_age" = "Edad del conductor";
+"search_driver_age" = "Conductor entre 25 y 70 años";
 "insurance_list_2_title" = "La mejor protección";
 "vehicle_pickup_details_VWF_4.VWF.X" = "Este es un servicio de bienvenida. El chófer te estará esperando a la llegada. Por favor, facilítanos tu número de vuelo para que el chófer pueda monitorizar tu vuelo en caso de retraso.";
 "vehicle_fuel_policy_type_UNKNOWN" = "Desconocido";

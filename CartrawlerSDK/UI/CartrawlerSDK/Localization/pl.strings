@@ -55,6 +55,7 @@
 "vehicle_type_luxury" = "Luksusowy";
 "vehicle_pickup_details_VWF_2.VWF.X" = "Biuro wypożyczalni jest dogodnie zlokalizowane na terenie lotniska.";
 "vehicle_type_exotic_SUV" = "Egzotyczny SUV";
+"CTA_cancel" = "Anuluj";
 "vehicle_pickup_location_VWF_3.VWF.X" = "Terminal lotniska";
 "vehicle_fuel_policy_desc_UNKNOWN" = "Zobacz regulamin";
 "vehicle_type_seven_seat_carrier" = "Samochód 7-osobowy";

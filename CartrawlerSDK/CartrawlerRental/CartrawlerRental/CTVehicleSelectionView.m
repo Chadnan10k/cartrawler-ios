@@ -48,7 +48,7 @@
 {
     __weak typeof (self) weakSelf = self;
 
-    [self.tableView setContentInset:UIEdgeInsetsMake(55,0,0,0)];
+   // [self.tableView setContentInset:UIEdgeInsetsMake(55,0,0,0)];
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     [self.tableView registerNib:[UINib nibWithNibName:@"CTVehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];

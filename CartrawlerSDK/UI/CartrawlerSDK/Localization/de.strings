@@ -55,6 +55,7 @@
 "vehicle_type_luxury" = "Luxuswagen";
 "vehicle_pickup_details_VWF_2.VWF.X" = "Der Mietschalter befindet sich direkt auf dem Flughafengelände.";
 "vehicle_type_exotic_SUV" = "Prestige-Geländewagen";
+"CTA_cancel" = "Stornieren";
 "vehicle_pickup_location_VWF_3.VWF.X" = "Flughafenterminal";
 "vehicle_fuel_policy_desc_UNKNOWN" = "Siehe Allgemeine Geschäftsbedingungen";
 "vehicle_type_seven_seat_carrier" = "Van mit sieben Sitzen";

@@ -238,7 +238,7 @@ NSString * const CTRentalErrorNoBookingRef = @"error_no_booking_ref";
 
 NSString * const CTRentalErrorNoInsuranceAvailable = @"error_no_insurance_available";
 
-NSString * const CTRentalSummaryPayAtDesk = @"summary_pay_at_desk";
+NSString * const CTRentalSummaryPayAtDesk = @"summary_desk";
 
 NSString * const CTRentalSummaryPayNow = @"summary_now";
 

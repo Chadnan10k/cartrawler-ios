@@ -20,7 +20,7 @@ extern NSString * const CTSDKCalendarReturnDate;
 
 extern NSString * const CTSDKCalendarContinue;
 
-extern NSString * const CTSDKCalendarCancel;
+extern NSString * const CTSDKCTACancel;
 
 extern NSString * const CTSDKCalendarSun;
 

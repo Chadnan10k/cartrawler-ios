@@ -55,6 +55,7 @@
 "vehicle_type_luxury" = "Luxe";
 "vehicle_pickup_details_VWF_2.VWF.X" = "De verhuurbalie is gunstig gelegen op het terrein van de luchthaven.";
 "vehicle_type_exotic_SUV" = "Exotische SUV";
+"CTA_cancel" = "Annuleren";
 "vehicle_pickup_location_VWF_3.VWF.X" = "Luchthaventerminal";
 "vehicle_fuel_policy_desc_UNKNOWN" = "Zie algemene voorwaarden";
 "vehicle_type_seven_seat_carrier" = "Zevenzitter";

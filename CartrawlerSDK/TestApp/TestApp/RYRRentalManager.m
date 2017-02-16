@@ -59,6 +59,9 @@
     userDetails.currency = @"GBP";
     userDetails.driverAge = @21;
     userDetails.flightNo = @"FR 777";
+    userDetails.currency = @"EUR";
+    userDetails.countryCode = @"IE";
+    userDetails.countryName = @"Ireland";
 
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:86400];
     _pickupDate = date;
@@ -75,7 +78,9 @@
 
 - (void)setup
 {
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"en" sandboxMode:!self.isProduction];
+    NSString * language = @"el";
+
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:language sandboxMode:!self.isProduction];
     _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
     
     [self.sdk addAnalyticsProvider:[CartrawlerRakuten new]];

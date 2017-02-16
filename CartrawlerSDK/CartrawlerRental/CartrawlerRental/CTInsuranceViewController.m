@@ -188,6 +188,8 @@
             listContainerTitle.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:21];
             listContainerTitle.translatesAutoresizingMaskIntoConstraints = NO;
             listContainerTitle.text = CTLocalizedString(CTRentalInsuranceSummaryTitle);
+            listContainerTitle.numberOfLines = 1;
+            listContainerTitle.adjustsFontSizeToFitWidth = YES;
             [listContainer addSubview:listContainerTitle];
         
             
@@ -509,7 +511,7 @@
 - (NSAttributedString *)summaryText:(CTInsurance *)response
 {
     NSAttributedString *htmlText = [CTHTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
-                                                              pointSize:15
+                                                              pointSize:14
                                                                    text:response.summary
                                                           boldFontColor:[[CTAppearance instance].insurancePrimaryColor hex]
                                                               fontColor:@"#000000"];

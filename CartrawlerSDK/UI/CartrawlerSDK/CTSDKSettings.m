@@ -34,16 +34,14 @@
     _clientId = clientId;
     _isDebug = isDebug;
     
-    _languageCode = languageCode;
+    _languageCode = languageCode ?: @"en";
     _currencyCode = currency;
     _homeCountryCode = countryCode;
     
     _homeCountryName = country;
     _currencyName = currency;
-    
-    NSArray *languages = [NSLocale preferredLanguages];
-    _languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:languages.firstObject];
-    
+    _languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:self.languageCode];
+
     if (isDebug) {
         _target = @"Test";
     } else {
@@ -64,67 +62,67 @@
 - (void)setLanguageCode:(NSString *)languageCode
 {
     _languageCode = languageCode;
-    [self setItem:languageCode key:@"languageCode"];
+    [self setItem:languageCode key:@"CT_languageCode"];
 }
 
 - (void)setCurrencyCode:(NSString *)currencyCode
 {
     _currencyCode = currencyCode;
-    [self setItem:currencyCode key:@"currencyCode"];
+    [self setItem:currencyCode key:@"CT_currencyCode"];
 }
 
 - (void)setHomeCountryCode:(NSString *)homeCountryCode
 {
     _homeCountryCode = homeCountryCode;
-    [self setItem:homeCountryCode key:@"homeCountryCode"];
+    [self setItem:homeCountryCode key:@"CT_homeCountryCode"];
 }
 
 - (void)setLanguageName:(NSString *)languageName
 {
     _languageName = languageName;
-    [self setItem:languageName key:@"languageName"];
+    [self setItem:languageName key:@"CT_languageName"];
 }
 
 - (void)setCurrencyName:(NSString *)currencyName
 {
     _currencyName = currencyName;
-    [self setItem:currencyName key:@"currencyName"];
+    [self setItem:currencyName key:@"CT_currencyName"];
 }
 
 - (void)setHomeCountryName:(NSString *)homeCountryName
 {
     _homeCountryName = homeCountryName;
-    [self setItem:homeCountryName key:@"homeCountryName"];
+    [self setItem:homeCountryName key:@"CT_homeCountryName"];
 }
 
 - (NSString *)languageCode_
 {
-    return [self itemForKey:@"languageCode"];
+    return [self itemForKey:@"CT_languageCode"];
 }
 
 - (NSString *)currencyCode_
 {
-    return [self itemForKey:@"currencyCode"];
+    return [self itemForKey:@"CT_currencyCode"];
 }
 
 - (NSString *)homeCountryCode_
 {
-    return [self itemForKey:@"homeCountryCode"];
+    return [self itemForKey:@"CT_homeCountryCode"];
 }
 
 - (NSString *)languageName_
 {
-    return [self itemForKey:@"languageCode"];
+    return [self itemForKey:@"CT_languageCode"];
 }
 
 - (NSString *)currencyName_
 {
-    return [self itemForKey:@"currencyName"];
+    return [self itemForKey:@"CT_currencyName"];
 }
 
 - (NSString *)homeCountryName_
 {
-    return [self itemForKey:@"homeCountryName"];
+    return [self itemForKey:@"CT_homeCountryName"];
 }
 
 - (void)setItem:(NSString *)item key:(NSString *)key

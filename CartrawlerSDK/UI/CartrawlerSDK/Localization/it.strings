@@ -55,6 +55,7 @@
 "vehicle_type_luxury" = "Lusso";
 "vehicle_pickup_details_VWF_2.VWF.X" = "Il banco di assistenza si trova all’interno dell’aeroporto.";
 "vehicle_type_exotic_SUV" = "SUV fuoriserie";
+"CTA_cancel" = "Annulla";
 "vehicle_pickup_location_VWF_3.VWF.X" = "Terminal dell’aeroporto";
 "vehicle_fuel_policy_desc_UNKNOWN" = "Consulta i termini e le condizioni";
 "vehicle_type_seven_seat_carrier" = "Grande a sette posti";
