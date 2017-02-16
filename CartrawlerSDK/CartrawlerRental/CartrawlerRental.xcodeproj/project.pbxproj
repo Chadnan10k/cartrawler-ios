@@ -160,6 +160,14 @@
 		4576785C1E08388100FE591A /* CTLanguages.csv in Resources */ = {isa = PBXBuildFile; fileRef = 457678591E08388100FE591A /* CTLanguages.csv */; };
 		45BA0F661E1FA25A00EB26ED /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45BA0F651E1FA25A00EB26ED /* strip-frameworks.sh */; };
 		45BF774E1E084A0E00F6D7E9 /* CTVehicleTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BF774D1E084A0E00F6D7E9 /* CTVehicleTableViewCell_iPhone.xib */; };
+		BC3361881E4CC4DC0056E5A6 /* de.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361871E4CC4DC0056E5A6 /* de.strings */; };
+		BC33619F1E4CCD2F0056E5A6 /* el.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361991E4CCD2F0056E5A6 /* el.strings */; };
+		BC3361A01E4CCD2F0056E5A6 /* es.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33619A1E4CCD2F0056E5A6 /* es.strings */; };
+		BC3361A11E4CCD2F0056E5A6 /* fr.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33619B1E4CCD2F0056E5A6 /* fr.strings */; };
+		BC3361A21E4CCD2F0056E5A6 /* it.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33619C1E4CCD2F0056E5A6 /* it.strings */; };
+		BC3361A31E4CCD2F0056E5A6 /* nl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33619D1E4CCD2F0056E5A6 /* nl.strings */; };
+		BC3361A41E4CCD2F0056E5A6 /* pl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33619E1E4CCD2F0056E5A6 /* pl.strings */; };
+		BC54F15A1E54981B00A7C871 /* pt.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC54F1591E54981B00A7C871 /* pt.strings */; };
 		E7E8D9D51E37D9C9004B786C /* CTRentalLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7E8D9D31E37D9C9004B786C /* CTRentalLocalizationConstants.h */; };
 		E7E8D9D61E37D9C9004B786C /* CTRentalLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E8D9D41E37D9C9004B786C /* CTRentalLocalizationConstants.m */; };
 		E7E8D9D81E37DA1D004B786C /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7E8D9D71E37DA1D004B786C /* en.strings */; };
@@ -319,6 +327,14 @@
 		457678591E08388100FE591A /* CTLanguages.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTLanguages.csv; sourceTree = "<group>"; };
 		45BA0F651E1FA25A00EB26ED /* strip-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = "strip-frameworks.sh"; path = "CartrawlerRental/strip-frameworks.sh"; sourceTree = "<group>"; };
 		45BF774D1E084A0E00F6D7E9 /* CTVehicleTableViewCell_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CTVehicleTableViewCell_iPhone.xib; path = CartrawlerRental/CTVehicleTableViewCell_iPhone.xib; sourceTree = SOURCE_ROOT; };
+		BC3361871E4CC4DC0056E5A6 /* de.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de.strings; path = Localization/de.strings; sourceTree = "<group>"; };
+		BC3361991E4CCD2F0056E5A6 /* el.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = el.strings; path = Localization/el.strings; sourceTree = "<group>"; };
+		BC33619A1E4CCD2F0056E5A6 /* es.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = es.strings; path = Localization/es.strings; sourceTree = "<group>"; };
+		BC33619B1E4CCD2F0056E5A6 /* fr.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = fr.strings; path = Localization/fr.strings; sourceTree = "<group>"; };
+		BC33619C1E4CCD2F0056E5A6 /* it.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = it.strings; path = Localization/it.strings; sourceTree = "<group>"; };
+		BC33619D1E4CCD2F0056E5A6 /* nl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = nl.strings; path = Localization/nl.strings; sourceTree = "<group>"; };
+		BC33619E1E4CCD2F0056E5A6 /* pl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pl.strings; path = Localization/pl.strings; sourceTree = "<group>"; };
+		BC54F1591E54981B00A7C871 /* pt.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pt.strings; path = Localization/pt.strings; sourceTree = "<group>"; };
 		E7E8D9D31E37D9C9004B786C /* CTRentalLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTRentalLocalizationConstants.h; path = Localization/CTRentalLocalizationConstants.h; sourceTree = "<group>"; };
 		E7E8D9D41E37D9C9004B786C /* CTRentalLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTRentalLocalizationConstants.m; path = Localization/CTRentalLocalizationConstants.m; sourceTree = "<group>"; };
 		E7E8D9D71E37DA1D004B786C /* en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en.strings; path = Localization/en.strings; sourceTree = "<group>"; };
@@ -767,6 +783,14 @@
 				E7E8D9D31E37D9C9004B786C /* CTRentalLocalizationConstants.h */,
 				E7E8D9D41E37D9C9004B786C /* CTRentalLocalizationConstants.m */,
 				E7E8D9D71E37DA1D004B786C /* en.strings */,
+				BC3361871E4CC4DC0056E5A6 /* de.strings */,
+				BC3361991E4CCD2F0056E5A6 /* el.strings */,
+				BC33619A1E4CCD2F0056E5A6 /* es.strings */,
+				BC33619B1E4CCD2F0056E5A6 /* fr.strings */,
+				BC33619C1E4CCD2F0056E5A6 /* it.strings */,
+				BC33619D1E4CCD2F0056E5A6 /* nl.strings */,
+				BC33619E1E4CCD2F0056E5A6 /* pl.strings */,
+				BC54F1591E54981B00A7C871 /* pt.strings */,
 			);
 			name = Localization;
 			sourceTree = "<group>";
@@ -934,20 +958,28 @@
 			files = (
 				451E76191E043D4300D58F71 /* CTBookingSummary.storyboard in Resources */,
 				451E761B1E043D4300D58F71 /* CTSearch.storyboard in Resources */,
+				BC3361A01E4CCD2F0056E5A6 /* es.strings in Resources */,
 				451E76161E043D4300D58F71 /* CTExtras.storyboard in Resources */,
+				BC3361881E4CC4DC0056E5A6 /* de.strings in Resources */,
 				451E76151E043D4300D58F71 /* CTResults.storyboard in Resources */,
+				BC3361A31E4CCD2F0056E5A6 /* nl.strings in Resources */,
 				E7E8D9D81E37DA1D004B786C /* en.strings in Resources */,
 				451E761A1E043D4300D58F71 /* CTVehicleDetails.storyboard in Resources */,
+				BC33619F1E4CCD2F0056E5A6 /* el.strings in Resources */,
 				45154EF61E07DF4700FB32FA /* CTBookingManager.storyboard in Resources */,
 				4576785A1E08388100FE591A /* CTCurrency.csv in Resources */,
 				451E76181E043D4300D58F71 /* CTPayment.storyboard in Resources */,
 				451E75B31E042EA200D58F71 /* CTOptionalExtraTableViewCell.xib in Resources */,
+				BC3361A41E4CCD2F0056E5A6 /* pl.strings in Resources */,
 				45BF774E1E084A0E00F6D7E9 /* CTVehicleTableViewCell_iPhone.xib in Resources */,
+				BC3361A11E4CCD2F0056E5A6 /* fr.strings in Resources */,
 				4576785B1E08388100FE591A /* CTISOCountries.csv in Resources */,
 				451E76171E043D4300D58F71 /* CTDriverDetails.storyboard in Resources */,
 				45BA0F661E1FA25A00EB26ED /* strip-frameworks.sh in Resources */,
 				4576785C1E08388100FE591A /* CTLanguages.csv in Resources */,
+				BC3361A21E4CCD2F0056E5A6 /* it.strings in Resources */,
 				45154EF81E07DFB100FB32FA /* Assets.xcassets in Resources */,
+				BC54F15A1E54981B00A7C871 /* pt.strings in Resources */,
 				451E76141E043D4300D58F71 /* CTInterstitial.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

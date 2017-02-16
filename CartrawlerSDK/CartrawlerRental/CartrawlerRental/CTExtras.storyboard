@@ -409,6 +409,7 @@
                     <connections>
                         <outlet property="bottomSpace" destination="6vq-WF-yfc" id="2Da-RQ-Z35"/>
                         <outlet property="conditionsLabel" destination="kPo-HB-cF1" id="zRk-TL-fw5"/>
+                        <outlet property="extrasTitleLabel" destination="iOe-Ob-dnr" id="Ixt-rs-PCe"/>
                         <outlet property="nextButton" destination="5WB-Xy-epn" id="DEC-G1-TE2"/>
                         <outlet property="tableView" destination="FUK-4R-Jb5" id="z67-Y4-fPq"/>
                     </connections>

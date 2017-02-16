@@ -63,6 +63,13 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
 - (instancetype)initWithClientKey:(NSString *)clientKey language:(NSString *)language debug:(BOOL)debug;
 
 /**
+ *  Change the request language
+ *
+ *  @param languageCode The specified language code
+ */
+- (void)changeLanguage:(NSString *)languageCode;
+
+/**
  *  Shows API requests and responses
  */
 - (void)enableLogging:(BOOL)enabled;

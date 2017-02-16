@@ -20,6 +20,7 @@
 #import <CartrawlerSDK/CartrawlerSDK+UITextField.h>
 #import "CTRentalConstants.h"
 #import "CTRentalLocalizationConstants.h"
+#import "CTSettingsViewController.h"
 
 #define kDropoffLocationOpen 101.0
 #define kDropoffLocationClosed 18.0
@@ -56,6 +57,7 @@
 @property (nonatomic, strong) NSDate *dropoffTime;
 
 @property (nonatomic, strong) CTLocationSearchViewController *locSearchVC;
+@property (nonatomic, strong) CTSettingsViewController *settingsVC;
 @property (nonatomic, strong) CTCalendarViewController *calendar;
 
 @property (readwrite, nonatomic) BOOL isReturningSameLocation;
@@ -72,16 +74,14 @@
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
     
-    [self.nextButton setText:CTLocalizedString(CTRentalCTASearch)];
-    
     [self.ageContainer addDoneButton];
     self.ageContainer.delegate = self;
-    
-    self.titleLabel.text = CTLocalizedString(CTRentalTitleSearchRental);
     
     _locSearchVC = (CTLocationSearchViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalLocationSearchViewIdentifier];
     self.locSearchVC.cartrawlerAPI = self.cartrawlerAPI;
     self.locSearchVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    
+    _settingsVC = (CTSettingsViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalSettingsViewIdentifier];
     
     _calendar = [storyboard instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];
     self.calendar.modalPresentationStyle = UIModalPresentationOverFullScreen;
@@ -92,7 +92,6 @@
     if (!self.search.driverAge) {
         self.search.driverAge = @30;
     }
-    self.ageContainer.placeholder = CTLocalizedString(CTRentalSearchDriverAgeHint);
     self.ageContainer.text = self.search.driverAge.stringValue;
     self.search.passengerQty = @1;
         
@@ -102,17 +101,9 @@
     _isReturningSameLocation = YES;
     _activeView = self.pickupView;
 
-    self.pickupView.placeholder = CTLocalizedString(CTRentalSearchPickupLocationText);
-    self.dropoffView.placeholder = CTLocalizedString(CTRentalSearchReturnLocationText);
-    self.returnToSameLocationLabel.text = CTLocalizedString(CTRentalSearchReturnLocationButton);
-    self.pickupTimeView.placeholder = CTLocalizedString(CTRentalSearchPickupTimeText);
-    self.dropoffTimeView.placeholder = CTLocalizedString(CTRentalSearchReturnTimeText);
-    self.calendarView.placeholder = CTLocalizedString(CTRentalSearchSelectDatesHint);
     [self.pickupTimeView setTextFieldText:[self.pickupTime simpleTimeString]];
     [self.dropoffTimeView setTextFieldText:[self.dropoffTime simpleTimeString]];
     
-    self.driverAgeDescriptionLabel.text = CTLocalizedString(CTRentalSearchDriverAge);
-
     self.dropoffLocTopConstraint.constant = kDropoffLocationClosed;
     self.dropoffView.alpha = 0;
     
@@ -125,6 +116,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.pickupView.placeholder = CTLocalizedString(CTRentalSearchPickupLocationText);
+    self.dropoffView.placeholder = CTLocalizedString(CTRentalSearchReturnLocationText);
+    self.returnToSameLocationLabel.text = CTLocalizedString(CTRentalSearchReturnLocationButton);
+    self.pickupTimeView.placeholder = CTLocalizedString(CTRentalSearchPickupTimeText);
+    self.dropoffTimeView.placeholder = CTLocalizedString(CTRentalSearchReturnTimeText);
+    self.calendarView.placeholder = CTLocalizedString(CTRentalSearchSelectDatesHint);
+    self.driverAgeDescriptionLabel.text = CTLocalizedString(CTRentalSearchDriverAge);
+    self.ageContainer.placeholder = CTLocalizedString(CTRentalSearchDriverAgeHint);
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleSearchRental);
+    [self.nextButton setText:CTLocalizedString(CTRentalCTASearch)];
     
     [self sendEvent:NO customParams:@{@"eventName" : @"Search Step",
                                       @"stepName" : @"Step1",
@@ -170,6 +172,15 @@
     }
 
     [self.calendar reset];
+}
+
+- (IBAction)settingsTapped:(id)sender
+{
+    [self presentViewController:self.settingsVC animated:YES completion:nil];
+    __weak typeof (self) weakSelf = self;
+    self.settingsVC.changedLanguage = ^{
+        [weakSelf.cartrawlerAPI changeLanguage:[CTSDKSettings instance].languageCode];
+    };
 }
 
 - (IBAction)pickupTapped:(id)sender

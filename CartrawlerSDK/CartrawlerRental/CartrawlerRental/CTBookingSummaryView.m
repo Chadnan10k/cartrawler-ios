@@ -47,8 +47,6 @@
     self.tableView.estimatedRowHeight = 130;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    self.orSimilarLabel.text = CTLocalizedString(CTRentalVehicleOrSimilar);
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -56,6 +54,7 @@
     [super viewWillAppear:animated];
     [self.tableView reloadData];
     [self.tableView layoutIfNeeded];
+    self.orSimilarLabel.text = CTLocalizedString(CTRentalVehicleOrSimilar);
 }
 
 - (void)viewDidAppear:(BOOL)animated

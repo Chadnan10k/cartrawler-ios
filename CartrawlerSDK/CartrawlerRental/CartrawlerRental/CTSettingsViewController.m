@@ -41,6 +41,19 @@
     } else {
         self.currencyView.hidden = NO;
     }
+    
+    [self.currencyButton setTitle:[CTSDKSettings instance].currencyName forState:UIControlStateNormal];
+    [self.languageButton setTitle:[CTSDKSettings instance].languageName forState:UIControlStateNormal];
+    [self.countryButton setTitle:[CTSDKSettings instance].homeCountryName forState:UIControlStateNormal];
+    [self refreshLocalisedStrings];
+}
+
+- (void)refreshLocalisedStrings
+{
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleSettings);
+    [self.closeButton setTitle:CTLocalizedString(CTRentalCTAClose) forState:UIControlStateNormal];
+    self.countryLabel.text = CTLocalizedString(CTRentalSettingsCountryTitle);
+    self.currencyLabel.text = CTLocalizedString(CTRentalSettingsCurrencyTitle);
 }
 
 - (void)viewDidLoad
@@ -49,15 +62,6 @@
 
     NSBundle *b = [NSBundle bundleForClass:[self class]];
     _settingsStoryboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:b];
-
-    [self.currencyButton setTitle:[CTSDKSettings instance].currencyName forState:UIControlStateNormal];
-    [self.languageButton setTitle:[CTSDKSettings instance].languageName forState:UIControlStateNormal];
-    [self.countryButton setTitle:[CTSDKSettings instance].homeCountryName forState:UIControlStateNormal];
-    
-    self.titleLabel.text = CTLocalizedString(CTRentalTitleSettings);
-    [self.closeButton setTitle:CTLocalizedString(CTRentalCTAClose) forState:UIControlStateNormal];
-    self.countryLabel.text = CTLocalizedString(CTRentalSettingsCountryTitle);
-    self.currencyLabel.text = CTLocalizedString(CTRentalSettingsCurrencyTitle);
 }
 
 - (void)didReceiveMemoryWarning
@@ -98,6 +102,10 @@
         [CTSDKSettings instance].languageCode = [item.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         [CTSDKSettings instance].languageName = [item.code stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         [weakSelf.languageButton setTitle:item.code forState:UIControlStateNormal];
+        [weakSelf refreshLocalisedStrings];
+        if (weakSelf.changedLanguage) {
+            weakSelf.changedLanguage();
+        }
     };
 }
 

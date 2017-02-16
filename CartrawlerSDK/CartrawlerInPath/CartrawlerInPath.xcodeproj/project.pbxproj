@@ -40,6 +40,14 @@
 		45EC99BE1E02C96B00B76741 /* CTInPathVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99B81E02C96B00B76741 /* CTInPathVehicle.m */; };
 		45EC99BF1E02C96B00B76741 /* CTInPathView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC99B91E02C96B00B76741 /* CTInPathView.h */; };
 		45EC99C01E02C96B00B76741 /* CTInPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99BA1E02C96B00B76741 /* CTInPathView.m */; };
+		BC3361AC1E4CCDB70056E5A6 /* de.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361A51E4CCDB70056E5A6 /* de.strings */; };
+		BC3361AD1E4CCDB70056E5A6 /* el.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361A61E4CCDB70056E5A6 /* el.strings */; };
+		BC3361AE1E4CCDB70056E5A6 /* es.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361A71E4CCDB70056E5A6 /* es.strings */; };
+		BC3361AF1E4CCDB70056E5A6 /* fr.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361A81E4CCDB70056E5A6 /* fr.strings */; };
+		BC3361B01E4CCDB70056E5A6 /* it.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361A91E4CCDB70056E5A6 /* it.strings */; };
+		BC3361B11E4CCDB70056E5A6 /* nl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361AA1E4CCDB70056E5A6 /* nl.strings */; };
+		BC3361B21E4CCDB70056E5A6 /* pl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361AB1E4CCDB70056E5A6 /* pl.strings */; };
+		BC54F15C1E54983A00A7C871 /* pt.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC54F15B1E54983A00A7C871 /* pt.strings */; };
 		E7B3B49A1E40E85C0062C7AD /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7B3B4991E40E85C0062C7AD /* en.strings */; };
 		E7B3B49D1E40E8C70062C7AD /* CTInPathLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */; };
 		E7B3B49E1E40E8C70062C7AD /* CTInPathLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3B49C1E40E8C70062C7AD /* CTInPathLocalizationConstants.m */; };
@@ -79,6 +87,14 @@
 		45EC99B81E02C96B00B76741 /* CTInPathVehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathVehicle.m; sourceTree = "<group>"; };
 		45EC99B91E02C96B00B76741 /* CTInPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathView.h; sourceTree = "<group>"; };
 		45EC99BA1E02C96B00B76741 /* CTInPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathView.m; sourceTree = "<group>"; };
+		BC3361A51E4CCDB70056E5A6 /* de.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de.strings; path = Localization/de.strings; sourceTree = "<group>"; };
+		BC3361A61E4CCDB70056E5A6 /* el.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = el.strings; path = Localization/el.strings; sourceTree = "<group>"; };
+		BC3361A71E4CCDB70056E5A6 /* es.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = es.strings; path = Localization/es.strings; sourceTree = "<group>"; };
+		BC3361A81E4CCDB70056E5A6 /* fr.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = fr.strings; path = Localization/fr.strings; sourceTree = "<group>"; };
+		BC3361A91E4CCDB70056E5A6 /* it.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = it.strings; path = Localization/it.strings; sourceTree = "<group>"; };
+		BC3361AA1E4CCDB70056E5A6 /* nl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = nl.strings; path = Localization/nl.strings; sourceTree = "<group>"; };
+		BC3361AB1E4CCDB70056E5A6 /* pl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pl.strings; path = Localization/pl.strings; sourceTree = "<group>"; };
+		BC54F15B1E54983A00A7C871 /* pt.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pt.strings; path = Localization/pt.strings; sourceTree = "<group>"; };
 		E7B3B4991E40E85C0062C7AD /* en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en.strings; path = Localization/en.strings; sourceTree = "<group>"; };
 		E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTInPathLocalizationConstants.h; path = Localization/CTInPathLocalizationConstants.h; sourceTree = "<group>"; };
 		E7B3B49C1E40E8C70062C7AD /* CTInPathLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTInPathLocalizationConstants.m; path = Localization/CTInPathLocalizationConstants.m; sourceTree = "<group>"; };
@@ -186,6 +202,14 @@
 			isa = PBXGroup;
 			children = (
 				E7B3B4991E40E85C0062C7AD /* en.strings */,
+				BC3361A51E4CCDB70056E5A6 /* de.strings */,
+				BC3361A61E4CCDB70056E5A6 /* el.strings */,
+				BC3361A71E4CCDB70056E5A6 /* es.strings */,
+				BC3361A81E4CCDB70056E5A6 /* fr.strings */,
+				BC3361A91E4CCDB70056E5A6 /* it.strings */,
+				BC3361AA1E4CCDB70056E5A6 /* nl.strings */,
+				BC3361AB1E4CCDB70056E5A6 /* pl.strings */,
+				BC54F15B1E54983A00A7C871 /* pt.strings */,
 				E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */,
 				E7B3B49C1E40E8C70062C7AD /* CTInPathLocalizationConstants.m */,
 			);
@@ -299,9 +323,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC54F15C1E54983A00A7C871 /* pt.strings in Resources */,
+				BC3361AF1E4CCDB70056E5A6 /* fr.strings in Resources */,
 				E7B3B49A1E40E85C0062C7AD /* en.strings in Resources */,
 				45BA0F681E1FA27300EB26ED /* strip-frameworks.sh in Resources */,
+				BC3361AE1E4CCDB70056E5A6 /* es.strings in Resources */,
+				BC3361B21E4CCDB70056E5A6 /* pl.strings in Resources */,
+				BC3361AD1E4CCDB70056E5A6 /* el.strings in Resources */,
 				45CFD44F1E09453100A57849 /* Assets.xcassets in Resources */,
+				BC3361AC1E4CCDB70056E5A6 /* de.strings in Resources */,
+				BC3361B11E4CCDB70056E5A6 /* nl.strings in Resources */,
+				BC3361B01E4CCDB70056E5A6 /* it.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

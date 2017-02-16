@@ -34,9 +34,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
-    self.titleLabel.text = CTLocalizedString(CTRentalTitleUser);
-
     self.firstNameTextField.delegate = self;
     self.lastNameTextField.delegate = self;
     self.emailTextField.delegate = self;
@@ -55,11 +52,6 @@
     [self.flightNoTextField addDoneButton];
     [self.phoneTextField addDoneButton];
     
-    self.firstNameTextField.placeholder = CTLocalizedString(CTRentalUserFirstnameHint);
-    self.lastNameTextField.placeholder = CTLocalizedString(CTRentalUserSurnameHint);
-    self.emailTextField.placeholder = CTLocalizedString(CTRentalUserEmailHint);
-    self.phoneTextField.placeholder = CTLocalizedString(CTRentalUserPhoneHint);
-    self.flightNoTextField.placeholder = CTLocalizedString(CTRentalUserFlightHint);
 }
 
 - (void)viewWasTapped
@@ -70,6 +62,14 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleUser);
+    self.firstNameTextField.placeholder = CTLocalizedString(CTRentalUserFirstnameHint);
+    self.lastNameTextField.placeholder = CTLocalizedString(CTRentalUserSurnameHint);
+    self.emailTextField.placeholder = CTLocalizedString(CTRentalUserEmailHint);
+    self.phoneTextField.placeholder = CTLocalizedString(CTRentalUserPhoneHint);
+    self.flightNoTextField.placeholder = CTLocalizedString(CTRentalUserFlightHint);
 
     [self tagScreen];
     

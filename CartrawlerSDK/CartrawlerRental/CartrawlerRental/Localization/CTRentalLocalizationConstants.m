@@ -76,13 +76,13 @@ NSString * const CTRentalSearchReturnTimeText = @"search_return_time_text";
 
 NSString * const CTRentalSearchLocationsPlaceholder = @"search_locations_placeholder";
 
-NSString * const CTRentalSearchLocationsAirport = @"search_locations_airport";
+NSString * const CTRentalSearchLocationsAirport = @"locations_results_airports";
 
-NSString * const CTRentalSearchLocationsOther = @"search_locations_other";
+NSString * const CTRentalSearchLocationsOther = @"locations_results_others";
 
-NSString * const CTRentalBookingTableHeaderTitle = @"booking_table_header_title";
+NSString * const CTRentalBookingTableHeaderTitle = @"title_booking_manager";
 
-NSString * const CTRentalBookingReferencePrefix = @"booking_reference_prefix";
+NSString * const CTRentalBookingReferencePrefix = @"receipt_your_reference";
 
 NSString * const CTRentalSettingsCountryTitle = @"settings_country_title";
 
@@ -212,13 +212,13 @@ NSString * const CTRentalPaymentText1 = @"payment_text_1";
 
 NSString * const CTRentalPaymentText2 = @"payment_text_2";
 
-NSString * const CTRentalReceiptCongratulations = @"receipt_congratulations";
+NSString * const CTRentalReceiptCongratulations = @"receipt_title";
 
 NSString * const CTRentalReceiptSuccess = @"receipt_success";
 
 NSString * const CTRentalReceiptYourReference = @"receipt_your_reference";
 
-NSString * const CTRentalReceiptEmailText1 = @"receipt_email_text_1";
+NSString * const CTRentalReceiptEmailText = @"receipt_email_text";
 
 NSString * const CTRentalReceiptEmailText2 = @"receipt_email_text_2";
 
@@ -258,8 +258,17 @@ NSString * const CTRentalSummaryDamageRefund = @"summary_damage_refund";
 
 NSString * const CTRentalSummaryBookingFee = @"summary_booking_fee";
 
-NSString * const CTRentalInterstitialSearching1 = @"interstitial_searching_1";
+NSString * const CTRentalInterstitialSearching1 = @"interstitial_header";
 
-NSString * const CTRentalInterstitialSearching2 = @"interstitial_searching_2";
+NSString * const CTRentalInterstitialSearching2 = @"interstitial_subheader";
+
+NSString * const CTRentalBookingLoadingHeader = @"confirmation_loading_header";
+
+NSString * const CTRentalBookingLoadingSubheader = @"confirmation_loading_subheader";
+
+NSString * const CTRentalAddExtrasTitle = @"add_extras_title";
+
+NSString * const CTRentalAddressDetailsTitle = @"address_details_title";
+
 
 @end

@@ -68,10 +68,6 @@
     
     self.subheaderView.backgroundColor = [CTAppearance instance].iconTint;
     
-    
-    [self.sortButton setTitle:CTLocalizedString(CTRentalResultsSort) forState:UIControlStateNormal];
-    [self.filterButton setTitle:CTLocalizedString(CTRentalResultsFilter) forState:UIControlStateNormal];
-    
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -90,6 +86,9 @@
     [self.search addObserver:self forKeyPath:@"vehicleAvailability"
                      options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                      context:nil];
+    
+    [self.sortButton setTitle:CTLocalizedString(CTRentalResultsSort) forState:UIControlStateNormal];
+    [self.filterButton setTitle:CTLocalizedString(CTRentalResultsFilter) forState:UIControlStateNormal];
 }
 
 - (void)viewDidAppear:(BOOL)animated

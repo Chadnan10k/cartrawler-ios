@@ -435,6 +435,7 @@
                                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <outlet property="tableView" destination="W3H-UP-5Lg" id="bEI-hA-WmK"/>
+                                                    <outlet property="totalLabel" destination="pPh-de-sxY" id="3Fg-mL-74g"/>
                                                     <outlet property="totalTitleLabel" destination="OWM-iO-y1d" id="gjA-hN-Pfa"/>
                                                 </connections>
                                             </tableViewCell>

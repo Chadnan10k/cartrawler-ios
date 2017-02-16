@@ -10,4 +10,8 @@
 
 @interface CTSettingsViewController : UIViewController
 
+typedef void (^ChangedLanguage)(void);
+
+@property (nonatomic) ChangedLanguage changedLanguage;
+
 @end

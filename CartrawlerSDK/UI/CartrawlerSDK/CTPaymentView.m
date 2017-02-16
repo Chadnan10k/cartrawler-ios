@@ -214,9 +214,9 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     NSString *urlStr;
     
     if ([CTSDKSettings instance].isDebug) {
-        urlStr = [NSString stringWithFormat:@"http://external-dev.cartrawler.com/cartrawlerpay/paymentform?type=OTA_VehResRQ&hideButton=true&mobile=true&msg=%@", escapedString];
+        urlStr = [NSString stringWithFormat:@"http://external-dev.cartrawler.com/cartrawlerpay/paymentform?type=OTA_VehResRQ&hideButton=true&mobile=true&lang=%@&msg=%@", [CTSDKSettings instance].languageCode, escapedString];
     } else {
-        urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_VehResRQ&hideButton=true&mobile=true&msg=%@", escapedString];
+        urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_VehResRQ&hideButton=true&mobile=true&lang=%@&msg=%@", [CTSDKSettings instance].languageCode, escapedString];
     }
 
     NSString *htmlFile = [self.bundle pathForResource:@"CTPCI" ofType:@"html"];

@@ -398,7 +398,8 @@
 
 + (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle
 {
-    NSString *language = [CTSDKSettings instance].languageCode;
+    NSLog(@"CURRENT LANG: %@", [CTSDKSettings instance].languageCode);
+    NSString *language = [[CTSDKSettings instance].languageCode lowercaseString];
     if ([bundle pathForResource:language ofType:@"strings"]) {
         return NSLocalizedStringFromTableInBundle(key, language, bundle, nil);
     }

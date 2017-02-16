@@ -19,13 +19,14 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray<CTExtraEquipment *> *extras;
 @property (weak, nonatomic) IBOutlet CTLabel *conditionsLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *extrasTitleLabel;
+
 @end
 
 @implementation CTOptionalExtrasViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
     // Do any additional setup after loading the view.
     self.tableView.allowsSelection = NO;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -37,13 +38,17 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    self.conditionsLabel.text = CTLocalizedString(CTRentalExtrasConditions);
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    self.conditionsLabel.text = CTLocalizedString(CTRentalExtrasConditions);
+    self.extrasTitleLabel.text = CTLocalizedString(CTRentalAddExtrasTitle);
+    
     [self tagScreen];
     if ([CTRentalSearch instance].insurance) {
         self.bottomSpace.constant = 0;

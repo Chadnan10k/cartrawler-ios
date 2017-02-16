@@ -60,13 +60,13 @@ NSString * const CTSDKVehicleTypeConvertible = @"vehicle_type_convertible";
 
 NSString * const CTSDKVehicleTypeEstate = @"vehicle_type_estate";
 
-NSString * const CTSDKVehicleTypeFiveSeatCarrier = @"vehicle_type_five_seatcarrier";
+NSString * const CTSDKVehicleTypeFiveSeatCarrier = @"vehicle_type_five_seat_carrier";
 
-NSString * const CTSDKVehicleTypeSevenSeatCarrier = @"vehicle_type_seven_seatcarrier";
+NSString * const CTSDKVehicleTypeSevenSeatCarrier = @"vehicle_type_seven_seat_carrier";
 
-NSString * const CTSDKVehicleTypeNineSeatCarrier = @"vehicle_type_nine_seatcarrier";
+NSString * const CTSDKVehicleTypeNineSeatCarrier = @"vehicle_type_nine_seat_carrier";
 
-NSString * const CTSDKVehicleTypeSUV = @"vehicle_type_suv";
+NSString * const CTSDKVehicleTypeSUV = @"vehicle_type_vehicle_size_SUV";
 
 NSString * const CTSDKVehicleTypeScooter = @"vehicle_type_scooter";
 
@@ -80,7 +80,7 @@ NSString * const CTSDKVehicleTypeMovingVan = @"vehicle_type_moving_van";
 
 NSString * const CTSDKVehicleTypeFifteenPassengerVan = @"vehicle_type_fifteen_passenger_van";
 
-NSString * const CTSDKVehicleTypeCargoVan = @"vehicle_type_cargo_van";
+NSString * const CTSDKVehicleTypeCargoVan = @"vehicle_type_cargovan";
 
 NSString * const CTSDKVehicleTypeTwelveFootTruck = @"vehicle_type_twelve_foot_truck";
 

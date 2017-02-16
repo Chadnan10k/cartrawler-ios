@@ -39,10 +39,6 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 120.0;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    [self.nextButton setText:CTLocalizedString(CTRentalCTAAdd)];
-    self.titleLabel.text = CTLocalizedString(CTRentalTitleSearchRental);
-    self.tableHeaderLabel.text = CTLocalizedString(CTRentalBookingTableHeaderTitle);
 }
 
 - (IBAction)back:(id)sender {
@@ -59,6 +55,10 @@
     [super viewWillAppear:animated];
     _bookings = [CTDataStore retrieveRentalBookings];
     [self.tableView reloadData];
+    
+    [self.nextButton setText:CTLocalizedString(CTRentalCTAAdd)];
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleSearchRental);
+    self.tableHeaderLabel.text = CTLocalizedString(CTRentalBookingTableHeaderTitle);
 }
 
 #pragma MARK UITableView

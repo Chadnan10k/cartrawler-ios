@@ -59,5 +59,7 @@ NSString * const CTRentalLocationSearchViewIdentifier = @"CTLocationSearchViewCo
 
 NSString * const CTRentalSettingsSelectionViewIdentifier = @"CTSettingsSelectionViewController";
 
+NSString * const CTRentalSettingsViewIdentifier = @"CTSettingsViewController";
+
 
 @end

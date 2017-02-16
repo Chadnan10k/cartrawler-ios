@@ -220,7 +220,7 @@ extern NSString * const CTRentalReceiptSuccess;
 
 extern NSString * const CTRentalReceiptYourReference;
 
-extern NSString * const CTRentalReceiptEmailText1;
+extern NSString * const CTRentalReceiptEmailText;
 
 extern NSString * const CTRentalReceiptEmailText2;
 
@@ -263,5 +263,13 @@ extern NSString * const CTRentalSummaryBookingFee;
 extern NSString * const CTRentalInterstitialSearching1;
 
 extern NSString * const CTRentalInterstitialSearching2;
+
+extern NSString * const CTRentalBookingLoadingHeader;
+
+extern NSString * const CTRentalBookingLoadingSubheader;
+
+extern NSString * const CTRentalAddExtrasTitle;
+
+extern NSString * const CTRentalAddressDetailsTitle;
 
 @end

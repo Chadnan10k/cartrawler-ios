@@ -52,16 +52,17 @@
 {
     [super viewDidLoad];
     self.optionalExtrasView.delegate = self;
-    self.titleLabel.text = CTLocalizedString(CTRentalTitleExtrasInsurace);
-    self.extrasTitleLabel.text = CTLocalizedString(CTRentalTitleExtras);
-    self.insuranceTitleLabel.text = CTLocalizedString(CTRentalTitleInsurance);
-    [self.addInuranceButton setTitle:CTLocalizedString(CTRentalCTAWithInsurance) forState:UIControlStateNormal];
-    [self.noInsuranceButton setTitle:CTLocalizedString(CTRentalCTANoInsurance) forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleExtrasInsurace);
+    self.extrasTitleLabel.text = CTLocalizedString(CTRentalTitleExtras);
+    self.insuranceTitleLabel.text = CTLocalizedString(CTRentalTitleInsurance);
+    [self.addInuranceButton setTitle:CTLocalizedString(CTRentalCTAWithInsurance) forState:UIControlStateNormal];
+    [self.noInsuranceButton setTitle:CTLocalizedString(CTRentalCTANoInsurance) forState:UIControlStateNormal];
     
     [self tagScreen];
 
