@@ -55,6 +55,7 @@
 "vehicle_type_luxury" = "Lujo";
 "vehicle_pickup_details_VWF_2.VWF.X" = "La oficina está cómodamente situada en la zona del aeropuerto.";
 "vehicle_type_exotic_SUV" = "Todoterreno exótico";
+"CTA_cancel" = "Cancelar";
 "vehicle_pickup_location_VWF_3.VWF.X" = "Terminal del aeropuerto";
 "vehicle_fuel_policy_desc_UNKNOWN" = "Consultar los términos y condiciones";
 "vehicle_type_seven_seat_carrier" = "Vehículo de siete asientos";

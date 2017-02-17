@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet CTButton *closeButton;
 @property (weak, nonatomic) IBOutlet CTLabel *countryLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *currencyLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *languageLabel;
 
 @end
 
@@ -54,6 +55,8 @@
     [self.closeButton setTitle:CTLocalizedString(CTRentalCTAClose) forState:UIControlStateNormal];
     self.countryLabel.text = CTLocalizedString(CTRentalSettingsCountryTitle);
     self.currencyLabel.text = CTLocalizedString(CTRentalSettingsCurrencyTitle);
+    self.languageLabel.text = CTLocalizedString(CTRentalSettingsSelectLanguage);
+    NSLog(@"%@", [CTSDKSettings instance].languageName);
 }
 
 - (void)viewDidLoad

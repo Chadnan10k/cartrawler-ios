@@ -99,12 +99,12 @@
     _headerLabel = [[CTLabel alloc] initWithFrame:CGRectZero];
     self.headerLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:15];
     self.headerLabel.text = CTLocalizedString(CTInPathWidgetTitle);
-    self.headerLabel.numberOfLines = 1;
+    self.headerLabel.numberOfLines = 0;
     self.headerLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.headerLabel];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[label]-8-[cars]" options:0 metrics:nil views:@{@"label" : self.headerLabel, @"cars" : self.vehicleImageView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[banner]-8-[label(20)]" options:0 metrics:nil views:@{@"label" : self.headerLabel, @"banner" : self.scrollingBannerContainer}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[banner]-8-[label]" options:0 metrics:nil views:@{@"label" : self.headerLabel, @"banner" : self.scrollingBannerContainer}]];
 }
 
 - (void)addStarAndTextView

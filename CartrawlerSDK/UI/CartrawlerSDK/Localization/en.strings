@@ -55,6 +55,7 @@
 "vehicle_type_luxury" = "Luxury";
 "vehicle_pickup_details_VWF_2.VWF.X" = "The service desk is conveniently located within the grounds of the airport area.";
 "vehicle_type_exotic_SUV" = "Exotic SUV";
+"CTA_cancel" = "Cancel";
 "vehicle_pickup_location_VWF_3.VWF.X" = "Airport terminal";
 "vehicle_fuel_policy_desc_UNKNOWN" = "See Terms and Conditions";
 "vehicle_type_seven_seat_carrier" = "Seven Seat Carrier";

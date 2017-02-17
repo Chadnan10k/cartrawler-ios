@@ -55,6 +55,7 @@
 "vehicle_type_luxury" = "De luxe";
 "vehicle_pickup_details_VWF_2.VWF.X" = "Cette agence est située à l’intérieur même de l’aéroport.";
 "vehicle_type_exotic_SUV" = "SUV exotique";
+"CTA_cancel" = "Annuler";
 "vehicle_pickup_location_VWF_3.VWF.X" = "Terminal d’aéroport";
 "vehicle_fuel_policy_desc_UNKNOWN" = "Voir les conditions générales";
 "vehicle_type_seven_seat_carrier" = "Monospace 7 sièges";

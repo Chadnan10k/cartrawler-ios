@@ -30,7 +30,7 @@
     [super awakeFromNib];
     // Initialization code
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 40;
+    self.tableView.estimatedRowHeight = 50;
     self.tableView.dataSource = self;
     self.totalTitleLabel.text = CTLocalizedString(CTRentalSummaryTotal);
 }

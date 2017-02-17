@@ -55,6 +55,7 @@
 "vehicle_type_luxury" = "Luxo";
 "vehicle_pickup_details_VWF_2.VWF.X" = "O balcão de aluguer encontra-se convenientemente localizado na zona do aeroporto.";
 "vehicle_type_exotic_SUV" = "SUV exótico";
+"CTA_cancel" = "Cancelar";
 "vehicle_pickup_location_VWF_3.VWF.X" = "Terminal de aeroporto";
 "vehicle_fuel_policy_desc_UNKNOWN" = "Consulte os Termos e Condições";
 "vehicle_type_seven_seat_carrier" = "Transporte de 7 lugares";

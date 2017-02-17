@@ -55,6 +55,7 @@
 "vehicle_type_luxury" = "Πολυτελές";
 "vehicle_pickup_details_VWF_2.VWF.X" = "Το γραφείο εξυπηρέτησης βρίσκεται εντός του αεροδρομίου.";
 "vehicle_type_exotic_SUV" = "Ιδιαίτερο SUV";
+"CTA_cancel" = "Ακύρωση";
 "vehicle_pickup_location_VWF_3.VWF.X" = "Αεροσταθμός";
 "vehicle_fuel_policy_desc_UNKNOWN" = "Δείτε τους Όρους και τις Προϋποθέσεις";
 "vehicle_type_seven_seat_carrier" = "Μίνι βαν 7 θέσεων";

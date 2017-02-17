@@ -20,7 +20,7 @@ NSString * const CTSDKCalendarReturnDate = @"calendar_return_date";
 
 NSString * const CTSDKCalendarContinue = @"calendar_continue";
 
-NSString * const CTSDKCalendarCancel = @"calendar_cancel";
+NSString * const CTSDKCTACancel = @"CTA_cancel";
 
 NSString * const CTSDKCalendarSun = @"calendar_sun";
 

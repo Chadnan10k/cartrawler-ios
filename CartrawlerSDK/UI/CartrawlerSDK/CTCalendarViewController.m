@@ -115,7 +115,7 @@
         });
     };
     
-    [self.cancelButton setTitle:CTLocalizedString(CTSDKCalendarCancel) forState:UIControlStateNormal];
+    [self.cancelButton setTitle:CTLocalizedString(CTSDKCTACancel) forState:UIControlStateNormal];
 }
 
 - (void)showCloseButton:(BOOL)show

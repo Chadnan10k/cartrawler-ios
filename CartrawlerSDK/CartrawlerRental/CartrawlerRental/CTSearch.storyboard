@@ -29,7 +29,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G6v-Z6-vHp" id="TVa-Jq-lsn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="AJW-mo-fZa">
@@ -326,7 +326,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="61t-ct-JPK" secondAttribute="trailing" id="VHs-ev-cjW"/>
-                                    <constraint firstAttribute="bottom" secondItem="61t-ct-JPK" secondAttribute="bottom" constant="42" id="YzQ-10-Ruc"/>
+                                    <constraint firstAttribute="bottom" secondItem="61t-ct-JPK" secondAttribute="bottom" constant="28" id="YzQ-10-Ruc"/>
                                     <constraint firstItem="61t-ct-JPK" firstAttribute="top" secondItem="3ZU-KR-mPT" secondAttribute="top" id="dh9-wb-lxn"/>
                                     <constraint firstItem="61t-ct-JPK" firstAttribute="leading" secondItem="3ZU-KR-mPT" secondAttribute="leading" id="fh7-jY-MYC"/>
                                 </constraints>
@@ -377,9 +377,9 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Car Hire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Gi-qi-5Nf" customClass="CTLabel">
-                                        <rect key="frame" x="263.5" y="30.5" width="73" height="21"/>
+                                        <rect key="frame" x="264" y="23" width="73" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="kkP-z0-6Py"/>
+                                            <constraint firstAttribute="height" constant="35" id="kkP-z0-6Py"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -584,7 +584,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRl-YW-7Oc" customClass="CTDesignableView">
-                                <rect key="frame" x="9" y="206" width="358" height="61"/>
+                                <rect key="frame" x="9" y="137" width="358" height="61"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9s-7h-aaz" customClass="CTLabel">
                                         <rect key="frame" x="8" y="4" width="342" height="16"/>
@@ -637,7 +637,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7G-St-KYp" customClass="CTDesignableView">
-                                <rect key="frame" x="9" y="137" width="358" height="61"/>
+                                <rect key="frame" x="9" y="206" width="358" height="61"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjq-ai-bJw" customClass="CTLabel">
                                         <rect key="frame" x="8" y="4" width="342" height="16"/>
@@ -698,6 +698,8 @@
                             <constraint firstAttribute="trailing" secondItem="fvr-Lp-Udg" secondAttribute="trailing" id="8R9-eg-iSq"/>
                             <constraint firstAttribute="trailing" secondItem="w7G-St-KYp" secondAttribute="trailing" constant="8" id="9WS-AU-ffw"/>
                             <constraint firstItem="PbW-tC-Dsb" firstAttribute="leading" secondItem="jpb-4Q-7Es" secondAttribute="leading" constant="9" id="AAH-ne-aaX"/>
+                            <constraint firstItem="gRl-YW-7Oc" firstAttribute="top" secondItem="PbW-tC-Dsb" secondAttribute="bottom" constant="8" id="Dp7-yI-lBi"/>
+                            <constraint firstItem="w7G-St-KYp" firstAttribute="top" secondItem="gRl-YW-7Oc" secondAttribute="bottom" constant="8" id="Fhv-Y6-nSi"/>
                             <constraint firstItem="w7G-St-KYp" firstAttribute="leading" secondItem="jpb-4Q-7Es" secondAttribute="leading" constant="9" id="FrE-vr-3mz"/>
                             <constraint firstItem="w7G-St-KYp" firstAttribute="top" secondItem="PbW-tC-Dsb" secondAttribute="bottom" constant="8" id="K3t-mv-9IH"/>
                             <constraint firstItem="gRl-YW-7Oc" firstAttribute="leading" secondItem="jpb-4Q-7Es" secondAttribute="leading" constant="9" id="Ku2-ts-uKs"/>
@@ -707,6 +709,12 @@
                             <constraint firstItem="fvr-Lp-Udg" firstAttribute="leading" secondItem="jpb-4Q-7Es" secondAttribute="leading" id="q8H-DF-2iE"/>
                             <constraint firstAttribute="trailing" secondItem="PbW-tC-Dsb" secondAttribute="trailing" constant="8" id="vBI-Gc-fxj"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="MjH-5G-Gji"/>
+                                <exclude reference="K3t-mv-9IH"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="7ny-B4-ATA" id="vzt-4I-05S"/>
@@ -716,6 +724,7 @@
                         <outlet property="currencyLabel" destination="wjq-ai-bJw" id="Seo-j4-BmD"/>
                         <outlet property="currencyView" destination="w7G-St-KYp" id="aYq-sh-kmc"/>
                         <outlet property="languageButton" destination="gh1-0v-uIg" id="kRH-u2-GRn"/>
+                        <outlet property="languageLabel" destination="K9s-7h-aaz" id="4hz-p6-wcP"/>
                         <outlet property="titleLabel" destination="rRE-by-UDd" id="oHz-MY-hTF"/>
                     </connections>
                 </viewController>
@@ -799,7 +808,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="322"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JqB-8l-X2u" id="8uf-Sl-dce">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="322"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="321"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rUQ-Yj-b4C">
@@ -906,7 +915,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdK-ia-Rpr" customClass="CTLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JdK-ia-Rpr" customClass="CTLabel">
                                                 <rect key="frame" x="8" y="32" width="171" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -915,7 +924,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDV-do-69d" customClass="CTLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jDV-do-69d" customClass="CTLabel">
                                                 <rect key="frame" x="196" y="32" width="171" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1115,11 +1124,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="us5-LB-2Ra" id="6Sn-Vl-ox9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JJ0-xs-S7K">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1143,6 +1152,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="19h-a8-EoC" id="2FH-sk-6Es"/>
                         <outlet property="tableView" destination="667-kv-doW" id="nNN-nY-ev8"/>
                         <outlet property="titleLabel" destination="wbD-15-kjI" id="2GI-KP-4Ds"/>
                     </connections>
