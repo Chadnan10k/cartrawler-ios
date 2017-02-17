@@ -73,7 +73,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-AppleLocale es_ES"
+            argument = "-AppleLocale en_IE"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

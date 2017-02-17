@@ -78,7 +78,7 @@
 
 - (void)setup
 {
-    NSString * language = @"el";
+    NSString * language = @"pt";
 
     _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:language sandboxMode:!self.isProduction];
     _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];

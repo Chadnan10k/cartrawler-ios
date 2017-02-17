@@ -1152,6 +1152,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="19h-a8-EoC" id="2FH-sk-6Es"/>
                         <outlet property="tableView" destination="667-kv-doW" id="nNN-nY-ev8"/>
                         <outlet property="titleLabel" destination="wbD-15-kjI" id="2GI-KP-4Ds"/>
                     </connections>

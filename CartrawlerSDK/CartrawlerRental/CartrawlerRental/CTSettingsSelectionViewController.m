@@ -11,12 +11,14 @@
 #import <CartrawlerSDK/CTLabel.h>
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTButton.h>
 
 @interface CTSettingsSelectionViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<CTCSVItem *> *data;
 @property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
+@property (weak, nonatomic) IBOutlet CTButton *backButton;
 
 @property (nonatomic) SettingsType settingType;
 
@@ -24,12 +26,11 @@
 
 @implementation CTSettingsSelectionViewController
 
-
-
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.backButton setTitle:CTLocalizedString(CTRentalCTAClose)forState:UIControlStateNormal];
     
     _data = [[NSMutableArray alloc] init];
     
