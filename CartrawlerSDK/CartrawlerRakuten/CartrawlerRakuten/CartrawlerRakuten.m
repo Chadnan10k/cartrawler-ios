@@ -30,10 +30,10 @@
     NSDateFormatter *f = [NSDateFormatter new];
     f.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss";
     
-    NSLog(@"event name %@", event.eventName);
-    NSLog(@"event type %@", event.eventType);
-    NSLog(@"params %@", event.params);
-    NSLog(@"time %@", [f stringFromDate:[NSDate date]]);
+//    NSLog(@"event name %@", event.eventName);
+//    NSLog(@"event type %@", event.eventType);
+//    NSLog(@"params %@", event.params);
+//    NSLog(@"time %@", [f stringFromDate:[NSDate date]]);
 
     NSError* error=nil;
     DCAppEvent* e = [[DCAppEvent alloc] initWithName:event.eventName type:event.eventType andParams:event.params];
@@ -42,11 +42,11 @@
 
 - (void)didReceiveSaleEvent:(CTAnalyticsEvent *)event
 {
-    NSLog(@"SALE: %@", event.orderID);
-    NSLog(@"SALE: %@", event.saleType);
-    NSLog(@"SALE: %@", event.quantity);
-    NSLog(@"SALE: %@", event.metricItem);
-    NSLog(@"SALE: %@", event.value);
+//    NSLog(@"SALE: %@", event.orderID);
+//    NSLog(@"SALE: %@", event.saleType);
+//    NSLog(@"SALE: %@", event.quantity);
+//    NSLog(@"SALE: %@", event.metricItem);
+//    NSLog(@"SALE: %@", event.value);
 
     NSError* error=nil;
     DCSalesBasket *rentalBasket = [[DCSalesBasket alloc] initWithOrderID:event.orderID andSaleType:event.saleType];

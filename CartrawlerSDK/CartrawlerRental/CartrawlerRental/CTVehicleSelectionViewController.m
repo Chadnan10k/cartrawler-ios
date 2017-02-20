@@ -89,10 +89,6 @@
     
     [self.sortButton setTitle:CTLocalizedString(CTRentalResultsSort) forState:UIControlStateNormal];
     [self.filterButton setTitle:CTLocalizedString(CTRentalResultsFilter) forState:UIControlStateNormal];
-    
-    if (self.search.vehicleAvailability.items.count > 0) {
-        [self refresh];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -108,6 +104,8 @@
                 [self backToSearch];
             }
         });
+    } else {
+        [self refresh];
     }
 }
 
