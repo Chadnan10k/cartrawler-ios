@@ -386,8 +386,24 @@
                              clientID:(NSString *)clientID
                                target:(NSString *)target
                                locale:(NSString *)locale
+                                refID:(NSString *)refID
+                               refURL:(NSString *)refURL
+                         refTimeStamp:(NSString *)refTimeStamp
 {    //we don't know their name or the amount of passengers
-    NSString *tail = [NSString stringWithFormat:@"\"PlanForQuoteRQ\":{\"@PlanID\":\"ACME\",\"@Type\":\"Protection\",\"CoveredTravelers\":{\"CoveredTraveler\":{\"CoveredPerson\":{\"@Relation\":\"Traveler 1\",\"GivenName\":\"Test\",\"Surname\":\"Test\"},\"CitizenCountryName\":{\"@Code\":\"%@\"}}},\"InsCoverageDetail\":{\"@Type\":\"SingleTrip\",\"TotalTripCost\":{\"@CurrencyCode\":\"%@\",\"@Amount\":\"%@\"},\"CoveredTrips\":{\"CoveredTrip\":{\"@Start\": \"%@\",\"@End\":\"%@\",\"Destinations\":{\"Destination\":{\"CountryName\":\"%@\"}}}}}}", homeCountry, activeCurrency, totalCost, [pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat], [dropOffDateTime stringFromDateWithFormat:CTAvailRequestDateFormat], destinationCountryCode];
+    
+    NSString *vehicleInfo = [NSString stringWithFormat:
+    @"\"InsuranceCustomer\": { \r"
+    @"\"TPA_Extensions\": { \r"
+        @"\"Reference\": { \r"
+            @"\"@Type\": \"16\", \r"
+            @"\"@ID\": \"%@\", \r"
+            @"\"@ID_Context\": \"CARTRAWLER\", \r"
+            @"\"@DateTime\": \"%@\", \r"
+            @"\"@URL\": \"%@\" \r"
+    @"     } \r"
+    @" } \r", refID, refTimeStamp, refURL];
+    
+    NSString *tail = [NSString stringWithFormat:@"\"PlanForQuoteRQ\":{\"@PlanID\":\"ACME\",\"@Type\":\"Protection\",\"CoveredTravelers\":{\"CoveredTraveler\":{\"CoveredPerson\":{\"@Relation\":\"Traveler 1\",\"GivenName\":\"Test\",\"Surname\":\"Test\"},\"CitizenCountryName\":{\"@Code\":\"%@\"}}},\"InsCoverageDetail\":{\"@Type\":\"SingleTrip\",\"TotalTripCost\":{\"@CurrencyCode\":\"%@\",\"@Amount\":\"%@\"},\"CoveredTrips\":{\"CoveredTrip\":{\"@Start\": \"%@\",\"@End\":\"%@\",\"Destinations\":{\"Destination\":{\"CountryName\":\"%@\"}}}}},%@}}", homeCountry, activeCurrency, totalCost, [pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat], [dropOffDateTime stringFromDateWithFormat:CTAvailRequestDateFormat], destinationCountryCode, vehicleInfo];
     
     return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:activeCurrency], tail];
     
