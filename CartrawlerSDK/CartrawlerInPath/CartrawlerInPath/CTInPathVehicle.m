@@ -26,6 +26,11 @@
     _firstName = search.firstName;
     _lastName = search.surname;
     
+    _payNowPrice = @0;
+    _payAtDeskPrice = @0;
+    _payLaterPrice = @0;
+    _bookingFeePrice = @0;
+    
     NSMutableArray *tempFreeExtras = [NSMutableArray new];
     NSMutableArray *tempPayableExtras = [NSMutableArray new];
     for (CTExtraEquipment *e in search.selectedVehicle.vehicle.extraEquipment) {
@@ -35,6 +40,18 @@
             [tempPayableExtras addObject:e];
         }
     }
+    
+    for (CTFee *fee in search.selectedVehicle.vehicle.fees) {
+        if ([fee.feePurpose isEqualToString:@"22"]) {
+            _payNowPrice = fee.feeAmount;
+        } else if ([fee.feePurpose isEqualToString:@"23"]) {
+            _payAtDeskPrice = fee.feeAmount;
+        } else if ([fee.feePurpose isEqualToString:@"6"]) {
+            _bookingFeePrice = fee.feeAmount;
+        }
+    }
+        
+    _payNowPrice = [NSNumber numberWithDouble: self.payNowPrice.doubleValue + search.insurance.premiumAmount.doubleValue + self.bookingFeePrice.doubleValue];
     
     _isBuyingInsurance = search.isBuyingInsurance;
     if (search.isBuyingInsurance) {

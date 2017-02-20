@@ -78,7 +78,7 @@
 
 - (void)setup
 {
-    NSString * language = @"pt";
+    NSString * language = @"en";
 
     _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:language sandboxMode:!self.isProduction];
     _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
@@ -149,6 +149,8 @@
     NSLog(@"%@", vehicle.vehicleName);
     NSLog(@"%@", vehicle.firstName);
     NSLog(@"%@", vehicle.lastName);
+    
+    NSLog(@"*** PAYNOW: %@ ** PAYLATER: %@ ** PAYDESK: %@ ** BOOKINGFEE: %@", vehicle.payNowPrice, vehicle.payLaterPrice, vehicle.payAtDeskPrice, vehicle.bookingFeePrice);
     
 }
 
