@@ -140,12 +140,12 @@
 	
 	_needCCInfo = [dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"CC_Info"][@"@Required"] boolValue];
 	_rentalDuration = dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Duration"][@"@Days"];
-	_insuranceAvailable = [dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Insurance"][@"@avail"] boolValue];
+	_insuranceAvailable = [dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"UpSell"][@"@Insurance"] boolValue];
 	_fuelPolicyDescription = dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"FuelPolicy"][@"@Description"];
     _fuelPolicy = [self fuelPolicyFromString:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"FuelPolicy"][@"@Type"]];
 	// Fees Array
 	// ==========
-
+    
 	NSMutableArray *tempFees = dictionary[@"VehAvailCore"][@"Fees"];
     NSMutableArray *tempFeesStore = [[NSMutableArray alloc] init];
 

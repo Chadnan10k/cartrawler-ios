@@ -166,6 +166,7 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
  *  @param pickupDateTime         The pickup date and time
  *  @param returnDateTime         The return date and time
  *  @param destinationCountryCode The destination country code eg. ES
+ *  @param selectedVehicle        The selected vehicle object
  *  @param completion             Returns an Insurance object on successfull completion and ErrorResponse on fail
  */
 - (void)requestInsuranceQuoteForVehicle:(NSString *)homeCountry
@@ -174,6 +175,7 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
                          pickupDateTime:(NSDate *)pickupDateTime
                          returnDateTime:(NSDate *)returnDateTime
                  destinationCountryCode:(NSString *)destinationCountryCode
+                        selectedVehicle:(CTAvailabilityItem *)selectedVehicle
                              completion:(InsuranceQuoteCompletion)completion;
 
 #pragma mark Vehicle Services

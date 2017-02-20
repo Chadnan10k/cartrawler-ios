@@ -253,19 +253,25 @@
                          pickupDateTime:(NSDate *)pickupDateTime
                          returnDateTime:(NSDate *)returnDateTime
                  destinationCountryCode:(NSString *)destinationCountryCode
+                        selectedVehicle:(CTAvailabilityItem *)selectedVehicle
                              completion:(InsuranceQuoteCompletion)completion
 {
     
     NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.endPoint, @"OTA_InsuranceQuoteRQ"];
-    NSString *requestBody = [CTRequestBuilder OTA_InsuranceDetailsRQ: totalCost
-                                                         homeCountry: homeCountry
-                                                      activeCurrency: currency
-                                                      pickupDateTime: pickupDateTime
-                                                     dropOffDateTime: returnDateTime
-                                              destinationCountryCode: destinationCountryCode
-                                                            clientID: self.clientAPIKey
-                                                              target: self.apiTarget
-                                                              locale: self.locale];
+
+    NSString *requestBody = [CTRequestBuilder OTA_InsuranceDetailsRQ:totalCost
+                                                         homeCountry:homeCountry
+                                                      activeCurrency:currency
+                                                      pickupDateTime:pickupDateTime
+                                                     dropOffDateTime:returnDateTime
+                                              destinationCountryCode:destinationCountryCode
+                                                            clientID:self.clientAPIKey
+                                                              target:self.apiTarget
+                                                              locale:self.locale
+                                                               refID:selectedVehicle.vehicle.refID
+                                                              refURL:selectedVehicle.vehicle.refURL
+                                                        refTimeStamp:selectedVehicle.vehicle.refTimeStamp];
+    
     [self.postRequest performRequestWithData:endPoint
                                jsonBody: requestBody
                          loggingEnabled: self.loggingEnabled
