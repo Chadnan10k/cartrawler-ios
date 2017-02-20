@@ -129,7 +129,7 @@
 "filter_fuel" = "Política de combustível";
 "vehicle_type_economy_elite" = "Económico elite";
 "vehicle_vehicle_inclusion" = "Este item está incluído no preço deste veículo";
-"interstitial_header" = "Procurando pelo o seu veiculo perfeito";
+"interstitial_header" = "Procurando pelo o seu veículo perfeito";
 "vehicle_pickup_location_VWF_10.VWF.X" = "Oeste do centro da cidade";
 "vehicle_pickup_location_VWF_7.VWF.X" = "Centro da cidade/baixa";
 "settings_select_languages" = "Selecionar idioma";
@@ -171,7 +171,7 @@
 "receipt_summary_pickup" = "Levantamento";
 "vehicle_type_twenty_foot_truck" = "Caminhão de 6 metros";
 "vehicle_suppliers_address_detail" = "A morada do fornecedor é:";
-"search_return_time_text" = "Hora de devolução";
+"search_return_time_text" = "Devolução";
 "user_address_hint" = "Morada";
 "vehicle_fuel_diesel" = "Diesel";
 "vehicle_fuel_policy_desc_CHAUFFULFUL" = "As taxas de combustível não estão incluídas na tarifa. Paga pelo reabastecimento total do depósito de combustível antes de o motorista o deixar.";
@@ -181,7 +181,7 @@
 "vehicle_type_economy" = "Económico";
 "vehicle_type_other" = "Outro";
 "search_select_dates_hint" = "Selecionar datas";
-"search_pickup_time_text" = "Hora de levantamento";
+"search_pickup_time_text" = "Levantamento";
 "title_details_supplier" = "Fornecedor";
 "vehicle_type_large_SUV" = "SUV grande";
 "supplier_rating_detail" = "os clientes classificaram esta empresa de aluguer de automóveis como";
