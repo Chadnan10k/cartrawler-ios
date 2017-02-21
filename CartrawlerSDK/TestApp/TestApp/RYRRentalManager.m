@@ -56,7 +56,6 @@
     userDetails.surname = @"Maguire";
     userDetails.email = @"lee@maguire.com";
     userDetails.phone = @"+086666666";
-    userDetails.currency = @"GBP";
     userDetails.driverAge = @30;
     userDetails.flightNo = @"FR 777";
     userDetails.currency = @"EUR";

@@ -54,8 +54,20 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
                   languageCode:(NSString *)languageCode
                    sandboxMode:(BOOL)sandboxMode;
 
+/**
+ *  Enable or disable logs
+ *
+ *  @param enable Enable or disable logs
+ *
+ */
 - (void)enableLogs:(BOOL)enable;
 
+/**
+ *  Add an analyitcs provider
+ *
+ *  @param analyticsProvider Object which conforms to CTExternalAnalyticsDelegate
+ *
+ */
 - (void)addAnalyticsProvider:(NSObject<CTExternalAnalyticsDelegate> *)analyticsProvider;
 
 /**
