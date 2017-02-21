@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		BCB541341E5B630F00AE05FB /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = BCB541331E5B630F00AE05FB /* strip-frameworks.sh */; };
 		BCCF421D1E43521100D6B5F8 /* DCAppEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42131E43521100D6B5F8 /* DCAppEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCCF421E1E43521100D6B5F8 /* DCBasketItem.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42141E43521100D6B5F8 /* DCBasketItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCCF421F1E43521100D6B5F8 /* DCBasketItemParams.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCF42151E43521100D6B5F8 /* DCBasketItemParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BCB541331E5B630F00AE05FB /* strip-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = "strip-frameworks.sh"; path = "CartrawlerRakuten/strip-frameworks.sh"; sourceTree = "<group>"; };
 		BCCF42131E43521100D6B5F8 /* DCAppEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAppEvent.h; sourceTree = "<group>"; };
 		BCCF42141E43521100D6B5F8 /* DCBasketItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCBasketItem.h; sourceTree = "<group>"; };
 		BCCF42151E43521100D6B5F8 /* DCBasketItemParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCBasketItemParams.h; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		BCDB4BB81E3BBE3F008004DA = {
 			isa = PBXGroup;
 			children = (
+				BCB541331E5B630F00AE05FB /* strip-frameworks.sh */,
 				BCDB4BC41E3BBE3F008004DA /* CartrawlerRakuten */,
 				BCDB4BC31E3BBE3F008004DA /* Products */,
 				BCDB4BD61E3BC4F1008004DA /* Frameworks */,
@@ -229,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCB541341E5B630F00AE05FB /* strip-frameworks.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
