@@ -70,11 +70,11 @@
     NSNumber *bookingFeeAmount = @0;
 
     for (CTFee *fee in vehicle.fees) {
-        if ([fee.feePurpose isEqualToString:@"22"]) {
+        if (fee.feePurpose == CTFeeTypePayNow) {
             depositAmount = fee.feeAmount;
-        } else if ([fee.feePurpose isEqualToString:@"23"]) {
+        } else if (fee.feePurpose == CTFeeTypePayAtDesk) {
             payAtDeskAmount = fee.feeAmount;
-        } else if ([fee.feePurpose isEqualToString:@"6"]) {
+        } else if (fee.feePurpose == CTFeeTypeBooking) {
             bookingFeeAmount = fee.feeAmount;
         }
     }
@@ -125,7 +125,7 @@
     NSNumber *depositAmount = @0;
     
     for (CTFee *fee in vehicle.fees) {
-        if ([fee.feePurpose isEqualToString:@"22"]) {
+        if (fee.feePurpose == CTFeeTypePayNow) {
             depositAmount = fee.feeAmount;
         }
     }
