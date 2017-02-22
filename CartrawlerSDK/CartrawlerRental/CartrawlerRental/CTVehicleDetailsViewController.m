@@ -174,7 +174,7 @@
                                         @"image" : @"doors"}];
     
     [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@",
-                                        self.search.selectedVehicle.vehicle.transmissionType],
+                                        [CTLocalisedStrings transmission:self.search.selectedVehicle.vehicle.transmissionType]],
                                         @"image" : @"gears"}];
     
     if (self.search.selectedVehicle.vehicle.isAirConditioned) {

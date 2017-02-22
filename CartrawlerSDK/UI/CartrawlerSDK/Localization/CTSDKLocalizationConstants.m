@@ -214,4 +214,8 @@ NSString * const CTSDKVehiclePickupTypeAtAirport = @"vehicle_pickup_at_airport";
 
 NSString * const CTSDKVehiclePickupTypeUnknown = @"vehicle_pickup_unknown";
 
+NSString * const CTSDKVehicleTransmissionAuto = @"vehicle_transmission_auto";
+
+NSString * const CTSDKVehicleTransmissionManual = @"vehicle_transmission_manual";
+
 @end

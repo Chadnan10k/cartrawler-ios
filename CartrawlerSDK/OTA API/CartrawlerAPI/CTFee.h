@@ -69,7 +69,11 @@ typedef NS_ENUM(NSUInteger, CTFeeType) {
     /**
      *
      */
-    CTFeeTypePrepaidDepositRemainderFee
+    CTFeeTypePrepaidDepositRemainderFee,
+    /**
+     *
+     */
+    CTFeeTypeUnknown
 };
 
 

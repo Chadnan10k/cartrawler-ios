@@ -82,7 +82,7 @@
     self.vehicleNameLabel.attributedText = vehicleName;
     
     self.passengerQtyLabel.text = [NSString stringWithFormat:@"%d %@", item.vehicle.passengerQty.intValue, CTLocalizedString(CTRentalVehiclePassengers)];
-    self.transmissionLabel.text = item.vehicle.transmissionType;
+    self.transmissionLabel.text = [CTLocalisedStrings transmission:item.vehicle.transmissionType];
     self.fuelPolicyLabel.text = [CTLocalisedStrings fuelPolicy:item.vehicle.fuelPolicy];
     
     if ([CTLocalisedStrings pickupType:item]) {
