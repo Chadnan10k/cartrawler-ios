@@ -45,9 +45,7 @@
              @"amt" : [self calculatePayNowPrice:search.selectedVehicle.vehicle
                                        insurance:search.insurance
                                      isBuyingIns:search.isBuyingInsurance],
-             @"description" : [self vehicleDescription:search.selectedVehicle.vehicle
-                                             insurance:search.insurance
-                                           isBuyingIns:search.isBuyingInsurance]};
+             @"description" : @""};
 }
 
 + (NSString *)vehicleDescription:(CTVehicle *)vehicle insurance:(CTInsurance *)insurance isBuyingIns:(BOOL)isBuyingIns
