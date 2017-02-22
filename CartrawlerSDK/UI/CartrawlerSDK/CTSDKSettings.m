@@ -95,6 +95,17 @@
     [self setItem:homeCountryName key:@"CT_homeCountryName"];
 }
 
+- (NSString *)countryName:(NSString *)countryCode
+{
+    NSLocale *locale = [NSLocale currentLocale];
+    NSString *country = [locale displayNameForKey: NSLocaleCountryCode value: countryCode];
+    
+    _homeCountryName = country;
+    [self setItem:country key:@"CT_homeCountryName"];
+    
+    return country;
+}
+
 - (NSString *)languageCode_
 {
     return [self itemForKey:@"CT_languageCode"];

@@ -82,7 +82,7 @@
         [cell setText:item.vehicle.fuelPolicyDescription];
     } else if (self.filterType == FilterDataTypeTransmission) {
         CTAvailabilityItem *item = self.data[indexPath.row];
-        [cell setText:item.vehicle.transmissionType];
+        [cell setText:[CTLocalisedStrings transmission: item.vehicle.transmissionType]];
     } else if (self.filterType == FilterDataTypeLocation) {
         CTAvailabilityItem *item = self.data[indexPath.row];
         NSString *location = [CTLocalisedStrings pickupType:item] ?: CTLocalizedString(CTRentalVehiclePickupLocationUnknown);

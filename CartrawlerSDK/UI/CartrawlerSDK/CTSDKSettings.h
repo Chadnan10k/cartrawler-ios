@@ -49,4 +49,6 @@
 - (void)setCurrencyName:(NSString *)currencyName;
 - (void)setHomeCountryName:(NSString *)homeCountryName;
 
+- (NSString *)countryName:(NSString *)countryCode;
+
 @end

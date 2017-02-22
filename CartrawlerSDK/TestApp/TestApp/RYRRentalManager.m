@@ -60,7 +60,6 @@
     userDetails.flightNo = @"FR 777";
     userDetails.currency = @"EUR";
     userDetails.countryCode = @"IE";
-    userDetails.countryName = @"Ireland";
 
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:86400];
     _pickupDate = date;

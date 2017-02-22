@@ -396,6 +396,17 @@
     }
 }
 
++ (NSString *)transmission:(NSString *)transmissionStr
+{
+    if ([transmissionStr isEqualToString:@"Manual"]) {
+        return CTLocalizedString(CTSDKVehicleTransmissionManual);
+    } else if ([transmissionStr isEqualToString:@"Automatic"]) {
+        return CTLocalizedString(CTSDKVehicleTransmissionAuto);
+    }
+    
+    return transmissionStr;
+}
+
 + (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle
 {
     NSString *language = [[CTSDKSettings instance].languageCode lowercaseString];

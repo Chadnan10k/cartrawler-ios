@@ -70,7 +70,7 @@
         return CTFeeTypePrepaidDepositRemainderFee;
     }
     
-    return nil;
+    return CTFeeTypeUnknown;
 }
 
 @end

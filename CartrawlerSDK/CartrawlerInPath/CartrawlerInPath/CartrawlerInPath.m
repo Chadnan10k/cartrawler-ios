@@ -47,15 +47,16 @@
         [[CTSDKSettings instance] setCurrencyName:userDetails.currency];
     }
     
-    if (!userDetails.countryCode || !userDetails.countryName) {
+    if (!userDetails.countryCode) {
         _defaultCountryCode = [CTSDKSettings instance].homeCountryCode;
         _defaultCountryName = [CTSDKSettings instance].homeCountryName;
         [CTRentalSearch instance].country = [CTSDKSettings instance].homeCountryCode;
     } else {
+        NSString *countryName = [[CTSDKSettings instance] countryName:userDetails.countryCode];
         _defaultCountryCode = userDetails.countryCode;
-        _defaultCountryName = userDetails.countryName;
+        _defaultCountryName = countryName;
         [[CTSDKSettings instance] setHomeCountryCode:userDetails.countryCode];
-        [[CTSDKSettings instance] setHomeCountryName:userDetails.countryName];
+        [[CTSDKSettings instance] setHomeCountryName:countryName];
         [CTRentalSearch instance].country = userDetails.countryCode;
     }
     

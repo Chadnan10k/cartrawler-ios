@@ -28,6 +28,8 @@
 + (NSString *)toolTipTextForFuelPolicy:(FuelPolicy)fuelPolicy;
 + (NSString *)toolTipTextForPickupType:(CTAvailabilityItem *)item;
 
++ (NSString *)transmission:(NSString *)transmissionStr;
+
 + (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle;
 
 @end
