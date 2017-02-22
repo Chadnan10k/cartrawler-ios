@@ -49,11 +49,11 @@
     _items = [[NSMutableArray alloc] init];
     
     for (CTFee *fee in search.selectedVehicle.vehicle.fees) {
-        if ([fee.feePurpose isEqualToString:@"22"] && fee.feeAmount.doubleValue > 0.0) {//Deposit
+        if (fee.feePurpose == CTFeeTypePayNow && fee.feeAmount.doubleValue > 0.0) {//Deposit
             [self.items addObject:@{@"Normal" : @{@"Name" : CTLocalizedString(CTRentalSummaryPayNow), @"Price" : fee.feeAmount}}];
-        } else if ([fee.feePurpose isEqualToString:@"23"] && fee.feeAmount.doubleValue > 0.0) {//Pay at desk
+        } else if (fee.feePurpose == CTFeeTypePayAtDesk && fee.feeAmount.doubleValue > 0.0) {//Pay at desk
             [self.items addObject:@{@"Normal" : @{@"Name" : CTLocalizedString(CTRentalSummaryPayAtDesk), @"Price" : fee.feeAmount}}];
-        } else if ([fee.feePurpose isEqualToString:@"6"] && fee.feeAmount.doubleValue > 0.0) {//Booking fee
+        } else if (fee.feePurpose == CTFeeTypeBooking && fee.feeAmount.doubleValue > 0.0) {//Booking fee
             [self.items addObject:@{@"Normal" : @{@"Name" : CTLocalizedString(CTRentalSummaryBookingFee), @"Price" : fee.feeAmount}}];
         }
     }

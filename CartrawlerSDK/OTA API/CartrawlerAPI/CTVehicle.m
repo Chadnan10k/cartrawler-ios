@@ -22,19 +22,19 @@
 	if ((self.fees).count > 0) {
 		
 		for (CTFee *f in self.fees) {
-                        
-			if ([f.feePurpose isEqualToString:@"22"]) {
-				//Deposit
-				total = @(f.feeAmount.doubleValue + total.doubleValue);
-				
-			} else if ([f.feePurpose isEqualToString:@"23"]) {
-				// Pay on Arrival
-				total = @(f.feeAmount.doubleValue + total.doubleValue);
-				
-			} else if ([f.feePurpose isEqualToString:@"6"]) {
-				// Booking Fee amount
-				total = @(f.feeAmount.doubleValue + total.doubleValue);
-			} 
+            
+            if (f.feePurpose == CTFeeTypePayNow) {
+                //Deposit
+                total = @(f.feeAmount.doubleValue + total.doubleValue);
+                
+            } else if (f.feePurpose == CTFeeTypePayAtDesk) {
+                // Pay on Arrival
+                total = @(f.feeAmount.doubleValue + total.doubleValue);
+                
+            } else if (f.feePurpose == CTFeeTypeBooking) {
+                // Booking Fee amount
+                total = @(f.feeAmount.doubleValue + total.doubleValue);
+            }
 		}
 	}
 	

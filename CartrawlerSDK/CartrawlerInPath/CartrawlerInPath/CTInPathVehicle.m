@@ -42,11 +42,11 @@
     }
     
     for (CTFee *fee in search.selectedVehicle.vehicle.fees) {
-        if ([fee.feePurpose isEqualToString:@"22"]) {
+        if (fee.feePurpose == CTFeeTypePayNow) {
             _payNowPrice = fee.feeAmount;
-        } else if ([fee.feePurpose isEqualToString:@"23"]) {
+        } else if (fee.feePurpose == CTFeeTypePayAtDesk) {
             _payAtDeskPrice = fee.feeAmount;
-        } else if ([fee.feePurpose isEqualToString:@"6"]) {
+        } else if (fee.feePurpose == CTFeeTypeBooking) {
             _bookingFeePrice = fee.feeAmount;
         }
     }
