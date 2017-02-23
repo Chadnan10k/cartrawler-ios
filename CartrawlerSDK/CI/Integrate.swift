@@ -153,11 +153,6 @@ func shell(_ args: String...) -> String {
 //Start Integration
 print("Making sure we are building a new version of this framework..")
 
-func performUnitTests(_ scheme: String, _ buildDir: String) {
-    print("Will now perform unit tests 🔨")
-    shell("/usr/bin/xcodebuild" ,"test" ,"-workspace", "\(buildDir)/../CartrawlerSDK.xcworkspace" ,"-scheme", "\(scheme)", "-destination", "'platform=Simulator,name=iPhone,OS=9.0'")
-}
-
 func start(_ args: [String]) {
     let frameworkToCheck = args[1]
     let buildScheme: String = args[2]
@@ -167,6 +162,7 @@ func start(_ args: [String]) {
     print("WORKSPACE LOCATION: \(buildDir)")
 
     shell("mkdir", "-p", "\(artifactsDir)")
+
     shell("/usr/bin/xcodebuild" ,"build" ,"-workspace", "\(buildDir)/../CartrawlerSDK.xcworkspace" ,"-scheme", "\(buildScheme)")
 
     let versionToCheck = shell("defaults", "read", "\(artifactsDir)/\(frameworkToCheck).framework/Info", "CFBundleShortVersionString").strip()
@@ -211,7 +207,6 @@ func start(_ args: [String]) {
     }
     
     print("Finished building \(frameworkToCheck)🎉 \(buildDir)")
-    performUnitTests(buildScheme, buildDir)
 }
 
 start(CommandLine.arguments)
