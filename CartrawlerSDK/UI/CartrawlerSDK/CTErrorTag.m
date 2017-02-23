@@ -7,6 +7,7 @@
 //
 
 #import "CTErrorTag.h"
+#import "CTSDKSettings.h"
 
 @implementation CTErrorTag
 /*
@@ -41,7 +42,7 @@ https://ct-errs.cartrawler.com/
     NSString *escapedStep = [self.step stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     NSString *escapedEvent = [self.event stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     NSString *escapedMessage = [self.message stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-    NSString *url = [NSString stringWithFormat:@"%@?app=MO&ver=%@&lvl=%@&dv=iOS&action=%@&subAction=%@&desc=%@&elID=%@&clientID=%@&target=%@",
+    NSString *url = [NSString stringWithFormat:@"%@?app=MO&ver=%@&lvl=%@&dv=iOS&action=%@&subAction=%@&desc=%@&elID=%@&clientID=%@&target=%@&lang=%@&debug=%@",
                      @"https://ct-errs.cartrawler.com/v5log",
                      self.version,
                      [self levelString:self.level],
@@ -50,7 +51,9 @@ https://ct-errs.cartrawler.com/
                      escapedMessage,
                      self.engineLoadID,
                      self.clientId,
-                     self.target];
+                     self.target,
+                     [CTSDKSettings instance].languageCode,
+                     ([CTSDKSettings instance].isDebug ? @"DEBUG" : @"PRODUCTION")];
     
     return [NSURL URLWithString:url];
 }

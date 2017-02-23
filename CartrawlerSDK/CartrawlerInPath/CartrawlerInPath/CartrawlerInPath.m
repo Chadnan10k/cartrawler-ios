@@ -97,7 +97,7 @@
     [self.rental.cartrawlerSDK.cartrawlerAPI locationSearchWithAirportCode:IATACode
                                                                 completion:^(CTLocationSearch *response, CTErrorResponse *error) {
         if (error) {
-            [[CTAnalytics instance] tagError:@"inpath" event:@"no location" message:@"failed to get location"];
+            [[CTAnalytics instance] tagError:@"inpath" event:@"no location" message:[NSString stringWithFormat:@"cannot get in path location: %@", IATACode]];
             _didFailToFetchResults = YES;
             if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
