@@ -9,11 +9,8 @@
 #import <XCTest/XCTest.h>
 #import "CartrawlerAPI.h"
 #import "CTRequestBuilder.h"
-#import "Constants.h"
 #import "CTInsurance.h"
 #import "CTVendor.h"
-#import "ImageResizeURL.h"
-#import "NSDateUtils.h"
 
 @interface LocationTests : XCTestCase
 
