@@ -40,10 +40,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, nonnull, readonly) NSString *addressLine;
 /**
- *  Location address code
- */
-@property (nonatomic, nonnull, readonly) NSString *addressCode;
-/**
  *  Location state code
  */
 @property (nonatomic, nonnull, readonly) NSString *addressStateCode;

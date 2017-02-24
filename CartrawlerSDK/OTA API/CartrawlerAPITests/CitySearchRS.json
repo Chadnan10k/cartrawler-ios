@@ -1,0 +1,147 @@
+{
+    "@xmlns": "http://www.opentravel.org/OTA/2003/05",
+    "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "@xsi:schemaLocation": "http://www.opentravel.org/OTA/2003/05 OTA_VehLocSearchRS.xsd",
+    "@Version": "2.004",
+    "@Target": "Test",
+    "@PrimaryLangID": "EN",
+    "@TimeStamp": "2017-02-24T10:54:19.927Z",
+    "Success": [],
+    "VehMatchedLocs": [{
+                       "LocationDetail": {
+                       "@AtAirport": "1",
+                       "@Code": "11",
+                       "@CodeContext": "CARTRAWLER",
+                       "@Name": "Dublin - Airport",
+                       "Address": {
+                       "AddressLine": [],
+                       "CountryName": {
+                       "@Code": "IE",
+                       "@StateCode": "L"
+                       }
+                       }
+                       }
+                       }, {
+                       "LocationDetail": {
+                       "@AtAirport": "0",
+                       "@Code": "160185",
+                       "@CodeContext": "CARTRAWLER",
+                       "@Name": "Dublin - BallyBough",
+                       "Address": {
+                       "AddressLine": [],
+                       "CountryName": {
+                       "@Code": "IE",
+                       "@StateCode": "L"
+                       }
+                       }
+                       }
+                       }, {
+                       "LocationDetail": {
+                       "@AtAirport": "0",
+                       "@Code": "3374",
+                       "@CodeContext": "CARTRAWLER",
+                       "@Name": "Dublin - Central",
+                       "Address": {
+                       "AddressLine": [],
+                       "CountryName": {
+                       "@Code": "IE",
+                       "@StateCode": "L"
+                       }
+                       }
+                       }
+                       }, {
+                       "LocationDetail": {
+                       "@AtAirport": "0",
+                       "@Code": "160165",
+                       "@CodeContext": "CARTRAWLER",
+                       "@Name": "Dublin - Croke Park",
+                       "Address": {
+                       "AddressLine": [],
+                       "CountryName": {
+                       "@Code": "IE"
+                       }
+                       }
+                       }
+                       }, {
+                       "LocationDetail": {
+                       "@AtAirport": "0",
+                       "@Code": "174169",
+                       "@CodeContext": "CARTRAWLER",
+                       "@Name": "Dublin - Drumcondra",
+                       "Address": {
+                       "AddressLine": [],
+                       "CountryName": {
+                       "@Code": "IE",
+                       "@StateCode": "L"
+                       }
+                       }
+                       }
+                       }, {
+                       "LocationDetail": {
+                       "@AtAirport": "0",
+                       "@Code": "823",
+                       "@CodeContext": "CARTRAWLER",
+                       "@Name": "Dublin - Dun Laoghaire-Rathdown",
+                       "Address": {
+                       "AddressLine": [],
+                       "CountryName": {
+                       "@Code": "IE",
+                       "@StateCode": "L"
+                       }
+                       }
+                       }
+                       }, {
+                       "LocationDetail": {
+                       "@AtAirport": "0",
+                       "@Code": "174165",
+                       "@CodeContext": "CARTRAWLER",
+                       "@Name": "Dublin - Heuston Train Station",
+                       "Address": {
+                       "AddressLine": [],
+                       "CountryName": {
+                       "@Code": "IE"
+                       }
+                       }
+                       }
+                       }, {
+                       "LocationDetail": {
+                       "@AtAirport": "0",
+                       "@Code": "173525",
+                       "@CodeContext": "CARTRAWLER",
+                       "@Name": "Dublin - Kilmainham",
+                       "Address": {
+                       "AddressLine": [],
+                       "CountryName": {
+                       "@Code": "IE"
+                       }
+                       }
+                       }
+                       }, {
+                       "LocationDetail": {
+                       "@AtAirport": "0",
+                       "@Code": "51428",
+                       "@CodeContext": "CARTRAWLER",
+                       "@Name": "Dublin - West City",
+                       "Address": {
+                       "AddressLine": [],
+                       "CountryName": {
+                       "@Code": "IE",
+                       "@StateCode": "L"
+                       }
+                       }
+                       }
+                       }, {
+                       "LocationDetail": {
+                       "@AtAirport": "0",
+                       "@Code": "167597",
+                       "@CodeContext": "CARTRAWLER",
+                       "@Name": "Dublin North City",
+                       "Address": {
+                       "AddressLine": [],
+                       "CountryName": {
+                       "@Code": "IE"
+                       }
+                       }
+                       }
+                       }]
+}
