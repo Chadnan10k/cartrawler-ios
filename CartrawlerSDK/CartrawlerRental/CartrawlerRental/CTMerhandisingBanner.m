@@ -45,11 +45,15 @@
     
 - (void)setSpecialOffer:(NSString *)offerText
 {
-    self.textLabel.text = [NSString stringWithFormat:@"Special Offer - Free %@", offerText];
+    
+    NSString *specialOfferPrefix = CTLocalizedString(CTRentalIncludedTitle);
+    
+    self.textLabel.text = [NSString stringWithFormat:@"%@ %@",specialOfferPrefix, offerText];
     self.textLabel.textAlignment = NSTextAlignmentLeft;
     self.backgroundColor = [CTAppearance instance].merchandisingSpecialOffer;
     self.textLabel.textColor = [UIColor whiteColor];
-    self.textLabel.minimumScaleFactor = 0.5;
+    self.textLabel.adjustsFontSizeToFitWidth = YES;
+
     self.hidden = NO;
     
     CGSize textSize = [self.textLabel.text
