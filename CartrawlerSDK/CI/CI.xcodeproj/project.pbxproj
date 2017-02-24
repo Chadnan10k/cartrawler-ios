@@ -148,7 +148,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = xctest;
+				TEST_HOST = "";
 			};
 			name = Debug;
 		};
@@ -158,7 +158,7 @@
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
 				ENABLE_TESTABILITY = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = xctest;
+				TEST_HOST = "";
 			};
 			name = Release;
 		};
