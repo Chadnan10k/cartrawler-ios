@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0820"
-   version = "1.3">
+   version = "1.7">
    <BuildAction
-      parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES">
+      parallelizeBuildables = "NO"
+      buildImplicitDependencies = "NO">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForTesting = "YES"
+            buildForTesting = "NO"
             buildForRunning = "YES"
             buildForProfiling = "YES"
-            buildForArchiving = "YES"
+            buildForArchiving = "NO"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
@@ -18,6 +18,20 @@
                BuildableName = "CI Build All"
                BlueprintName = "CI Build All"
                ReferencedContainer = "container:CI.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BC4A3FE31E5F3DBF00EFB055"
+               BuildableName = "CartrawlerAPITests.xctest"
+               BlueprintName = "CartrawlerAPITests"
+               ReferencedContainer = "container:../OTA API/CartrawlerAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -38,6 +52,10 @@
                BlueprintName = "CartrawlerAPITests"
                ReferencedContainer = "container:../OTA API/CartrawlerAPI.xcodeproj">
             </BuildableReference>
+            <LocationScenarioReference
+               identifier = "London, England"
+               referenceType = "1">
+            </LocationScenarioReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>

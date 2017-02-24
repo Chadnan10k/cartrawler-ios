@@ -112,7 +112,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\nWORKSPACE_DIR=${SRCROOT}\nARTIFACTS_DIR=${SRCROOT}/../../../Artifacts_Latest\n\n/usr/bin/xcodebuild test -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme CartrawlerAPITests -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.2'\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildAPI\nswift Integrate.swift CartrawlerAPI BuildAPI ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildSDK\nswift Integrate.swift CartrawlerSDK BuildSDK ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildRental\nswift Integrate.swift CartrawlerRental BuildRental ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildInPath\nswift Integrate.swift CartrawlerInPath BuildInPath ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildRakuten\nswift Integrate.swift CartrawlerRakuten BuildRakuten ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n\n";
+			shellScript = "\nWORKSPACE_DIR=${SRCROOT}\nARTIFACTS_DIR=${SRCROOT}/../../../Artifacts_Latest\n\n#/usr/bin/xcodebuild test -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme CartrawlerAPITests -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.2'\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildAPI\nswift Integrate.swift CartrawlerAPI BuildAPI ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildSDK\nswift Integrate.swift CartrawlerSDK BuildSDK ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildRental\nswift Integrate.swift CartrawlerRental BuildRental ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildInPath\nswift Integrate.swift CartrawlerInPath BuildInPath ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme BuildRakuten\nswift Integrate.swift CartrawlerRakuten BuildRakuten ${ARTIFACTS_DIR} ${WORKSPACE_DIR}\n\n\n";
 		};
 		45BA0F6D1E1FA2A200EB26ED /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -148,6 +148,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = xctest;
 			};
 			name = Debug;
 		};
@@ -155,7 +156,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				ENABLE_TESTABILITY = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = xctest;
 			};
 			name = Release;
 		};
