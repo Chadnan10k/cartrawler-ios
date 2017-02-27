@@ -175,6 +175,7 @@
                             <constraint firstAttribute="bottom" secondItem="m65-KB-Qyk" secondAttribute="bottom" constant="51.5" id="B9Q-r0-Y6G"/>
                             <constraint firstAttribute="trailing" secondItem="K0n-ow-vO0" secondAttribute="trailing" constant="8" id="BYb-ic-n7X"/>
                             <constraint firstItem="5tE-lv-Bpe" firstAttribute="leading" secondItem="OcP-n9-n3b" secondAttribute="trailing" constant="8" id="EMV-Xc-ctY"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="K0n-ow-vO0" secondAttribute="bottom" constant="4" id="JOG-SV-yzq"/>
                             <constraint firstItem="Rje-wO-iNr" firstAttribute="leading" secondItem="gZl-th-Lec" secondAttribute="trailing" constant="8" id="KeQ-2Q-ibw"/>
                             <constraint firstAttribute="bottom" secondItem="OcP-n9-n3b" secondAttribute="bottom" constant="100.5" id="OMv-X9-eVA"/>
                             <constraint firstAttribute="bottom" secondItem="hBZ-Er-3Cy" secondAttribute="bottom" constant="1.5" id="Pa2-TI-Tns"/>
