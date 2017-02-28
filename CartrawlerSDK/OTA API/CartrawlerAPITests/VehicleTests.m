@@ -95,6 +95,31 @@
 
 - (void)test_vehicleAvailability_jsonInit
 {
+    
+    NSDictionary *availDict = [self dictionaryWithContentsOfJSONString:@"VehAvailJSON.json"];
+    
+    CTVehicleAvailability *avail = [[CTVehicleAvailability alloc] initFromVehAvailRSCoreDictionary:availDict];
+    
+    XCTAssertTrue([avail.puLocationCode isEqualToString:@"191"]);
+    XCTAssertTrue([avail.doLocationCode isEqualToString:@"191"]);
+    XCTAssertTrue([avail.puDate isEqualToString:@"2017-02-28T11:42:44Z"]);
+    XCTAssertTrue([avail.doDate isEqualToString:@"2017-03-03T11:42:44Z"]);
+    XCTAssertTrue([avail.puLocationName isEqualToString:@"London - Airport - Gatwick"]);
+    XCTAssertTrue([avail.doLocationName isEqualToString:@"London - Airport - Gatwick"]);
+
+    CTAvailabilityItem *item = avail.items.firstObject;
+    
+    
+    XCTAssertTrue([item.engineInfo.engineLoadID isEqualToString:@"601487947145524"]);
+    XCTAssertTrue([item.engineInfo.queryID isEqualToString:@"601487947145531"]);
+    XCTAssertTrue([item.engineInfo.uniqueID isEqualToString:@"601487947145523"]);
+
+    //XCTAssertTrue([item.vendor.uniqueID isEqualToString:@"601487947145523"]);
+
+    
+    
+    NSLog(@"%@", avail);
+    
 }
 
 

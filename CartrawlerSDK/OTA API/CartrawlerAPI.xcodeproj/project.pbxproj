@@ -113,6 +113,7 @@
 		BC758D311E60512A008EA8C1 /* PartialTextLocationResult.json in Resources */ = {isa = PBXBuildFile; fileRef = BC758D301E60512A008EA8C1 /* PartialTextLocationResult.json */; };
 		BC758D321E605C66008EA8C1 /* VehicleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B99CA1CFEF24E001D07A7 /* VehicleTests.m */; };
 		BC758D341E605FEF008EA8C1 /* CT_IPToCountry_RS.json in Resources */ = {isa = PBXBuildFile; fileRef = BC758D331E605FEF008EA8C1 /* CT_IPToCountry_RS.json */; };
+		BC758D351E644584008EA8C1 /* VehAvailJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 451B99D01CFEFD2C001D07A7 /* VehAvailJSON.json */; };
 		BC811C6D1E2946CF0049C3DF /* CT_IpToCountryRQ.h in Headers */ = {isa = PBXBuildFile; fileRef = BC811C6B1E2946CF0049C3DF /* CT_IpToCountryRQ.h */; };
 		BC811C6E1E2946CF0049C3DF /* CT_IpToCountryRQ.m in Sources */ = {isa = PBXBuildFile; fileRef = BC811C6C1E2946CF0049C3DF /* CT_IpToCountryRQ.m */; };
 		BC811C721E294C9C0049C3DF /* CT_IpToCountryRS.h in Headers */ = {isa = PBXBuildFile; fileRef = BC811C701E294C9C0049C3DF /* CT_IpToCountryRS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -662,6 +663,7 @@
 			files = (
 				BC758D311E60512A008EA8C1 /* PartialTextLocationResult.json in Resources */,
 				BC4A40001E60466700EFB055 /* PartialTextRS.json in Resources */,
+				BC758D351E644584008EA8C1 /* VehAvailJSON.json in Resources */,
 				BC758D2D1E604903008EA8C1 /* IATALocationSearchRS.json in Resources */,
 				BC758D341E605FEF008EA8C1 /* CT_IPToCountry_RS.json in Resources */,
 				BC758D2B1E604849008EA8C1 /* CitySearchRS.json in Resources */,
