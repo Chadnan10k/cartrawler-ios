@@ -75,7 +75,7 @@
     self.cityTextField.placeholder = CTLocalizedString(CTRentalUserCityHint);
     self.postCodeTextField.placeholder = CTLocalizedString(CTRentalUserPostcodeHint);
     self.countryTextField.placeholder = CTLocalizedString(CTRentalUserCountryHint);
-    self.addressDetailsTitle.text = CTLocalizedString(CTRentalUserCountryHint);
+    self.addressDetailsTitle.text = CTLocalizedString(CTRentalAddressDetailsTitle);
 
     [self tagScreen];
     
