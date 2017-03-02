@@ -112,7 +112,11 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [self.search removeObserver:self forKeyPath:@"vehicleAvailability"];
+    @try {
+        [self.search removeObserver:self forKeyPath:@"vehicleAvailability"];
+    } @catch (NSException *exception) {
+        //do nothing
+    }
 }
 
 - (void)showText:(BOOL)show
