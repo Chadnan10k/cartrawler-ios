@@ -58,4 +58,6 @@ extern NSString * const CTRentalLocationSearchViewIdentifier;
 
 extern NSString * const CTRentalSettingsSelectionViewIdentifier;
 
+extern NSString * const CTRentalSettingsViewIdentifier;
+
 @end

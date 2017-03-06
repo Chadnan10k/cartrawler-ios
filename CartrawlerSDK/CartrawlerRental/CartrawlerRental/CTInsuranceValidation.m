@@ -8,6 +8,8 @@
 
 #import "CTInsuranceValidation.h"
 #import <CartrawlerSDK/CTSDKSettings.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @implementation CTInsuranceValidation
 
@@ -51,44 +53,54 @@
         completion(NO, @"", NO);
         return;
     }
-
-//    if (search.selectedVehicle.vehicle.extraEquipment == nil) {
-//        NSLog(@"\n\n ERROR: CANNOT PUSH AS extras IS NOT SET \n\n");
-//        completion(NO, @"");
-//        return;
-//    }
     
-    [cartrawlerAPI requestInsuranceQuoteForVehicle:[CTSDKSettings instance].homeCountryCode
-                                          currency:[CTSDKSettings instance].currencyCode
-                                         totalCost:[NSString stringWithFormat:@"%.02f", search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue]
-                                    pickupDateTime:search.pickupDate
-                                    returnDateTime:search.dropoffDate
-                            destinationCountryCode:search.pickupLocation.codeContext
-                                        completion:
-     ^(CTInsurance *response, CTErrorResponse *error) {
-         if (response) {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 search.insurance = response;
-                 completion(YES, nil, NO);
-             });
-             
-         } else {
-             if (error) {
-                 [[CTAnalytics instance] tagError:@"step4" event:@"InsuranceQuoteRQ fail" message:error.errorMessage];
-             }
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 if (search.selectedVehicle.vehicle.extraEquipment.count > 0) {
-                     search.insurance = nil;
-                     search.isBuyingInsurance = NO;
-                     completion(NO, @"No Insurance Available", YES);
-                 } else {
-                     search.insurance = nil;
-                     search.isBuyingInsurance = NO;
-                     completion(NO, @"No Insurance Available", NO);
+    if (search.selectedVehicle.vehicle.insuranceAvailable) {
+        [cartrawlerAPI requestInsuranceQuoteForVehicle:[CTSDKSettings instance].homeCountryCode
+                                              currency:[CTSDKSettings instance].currencyCode
+                                             totalCost:[NSString stringWithFormat:@"%.02f", search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue]
+                                        pickupDateTime:search.pickupDate
+                                        returnDateTime:search.dropoffDate
+                                destinationCountryCode:search.pickupLocation.countryCode
+                                selectedVehicle:search.selectedVehicle
+                                            completion:
+         ^(CTInsurance *response, CTErrorResponse *error) {
+             if (response) {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     search.insurance = response;
+                     completion(YES, nil, NO);
+                 });
+                 
+             } else {
+                 if (error) {
+                     [[CTAnalytics instance] tagError:@"step4" event:@"InsuranceQuoteRQ fail" message:error.errorMessage];
                  }
-             });
-         }
-     }];
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     if (search.selectedVehicle.vehicle.extraEquipment.count > 0) {
+                         search.insurance = nil;
+                         search.isBuyingInsurance = NO;
+                         completion(NO, CTLocalizedString(CTRentalErrorNoInsuranceAvailable), YES);
+                     } else {
+                         search.insurance = nil;
+                         search.isBuyingInsurance = NO;
+                         completion(NO, CTLocalizedString(CTRentalErrorNoInsuranceAvailable), NO);
+                     }
+                 });
+             }
+         }];
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (search.selectedVehicle.vehicle.extraEquipment.count > 0) {
+                search.insurance = nil;
+                search.isBuyingInsurance = NO;
+                completion(NO, CTLocalizedString(CTRentalErrorNoInsuranceAvailable), YES);
+            } else {
+                search.insurance = nil;
+                search.isBuyingInsurance = NO;
+                completion(NO, CTLocalizedString(CTRentalErrorNoInsuranceAvailable), NO);
+            }
+        });
+    }
+    
 }
 
 @end

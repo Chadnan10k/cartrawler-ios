@@ -11,6 +11,7 @@
 #import "CTFilterTableViewCell.h"
 #import <CartrawlerAPI/CTAvailabilityItem.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import "CTRentalLocalizationConstants.h"
 
 @interface CTFilterDataSource()
 
@@ -81,40 +82,14 @@
         [cell setText:item.vehicle.fuelPolicyDescription];
     } else if (self.filterType == FilterDataTypeTransmission) {
         CTAvailabilityItem *item = self.data[indexPath.row];
-        [cell setText:item.vehicle.transmissionType];
+        [cell setText:[CTLocalisedStrings transmission: item.vehicle.transmissionType]];
     } else if (self.filterType == FilterDataTypeLocation) {
         CTAvailabilityItem *item = self.data[indexPath.row];
-        [cell setText:[self localizedPickupType:item.vendor.pickupLocation.pickupType]];
+        NSString *location = [CTLocalisedStrings pickupType:item] ?: CTLocalizedString(CTRentalVehiclePickupLocationUnknown);
+        [cell setText:location];
     }
     
     return cell;
-}
-
-- (NSString *)localizedPickupType:(PickupType)pickupType
-{
-    switch (pickupType) {
-        case PickupTypeTerminal:
-            return NSLocalizedString(@"In Terminal", @"");
-            break;
-        case PickupTypeShuttleBus:
-            return NSLocalizedString(@"Shuttle bus", @"");
-            break;
-        case PickupTypeTerminalAndShuttle:
-            return NSLocalizedString(@"Shuttle bus from terminal", @"");
-            break;
-        case PickupTypeMeetAndGreet:
-            return NSLocalizedString(@"Meet and greet", @"");
-            break;
-        case PickupTypeCarDriver:
-            return NSLocalizedString(@"Driver pickup", @"");
-            break;
-        case PickupTypeUnknown:
-            return NSLocalizedString(@"Unknown", @"");
-            break;
-        default:
-            return NSLocalizedString(@"Unknown", @"");
-            break;
-    }
 }
 
 @end

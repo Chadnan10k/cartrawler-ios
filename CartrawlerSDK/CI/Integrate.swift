@@ -162,6 +162,7 @@ func start(_ args: [String]) {
     print("WORKSPACE LOCATION: \(buildDir)")
 
     shell("mkdir", "-p", "\(artifactsDir)")
+
     shell("/usr/bin/xcodebuild" ,"build" ,"-workspace", "\(buildDir)/../CartrawlerSDK.xcworkspace" ,"-scheme", "\(buildScheme)")
 
     let versionToCheck = shell("defaults", "read", "\(artifactsDir)/\(frameworkToCheck).framework/Info", "CFBundleShortVersionString").strip()

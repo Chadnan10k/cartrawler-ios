@@ -9,11 +9,8 @@
 #import <XCTest/XCTest.h>
 #import "CartrawlerAPI.h"
 #import "CTRequestBuilder.h"
-#import "Constants.h"
 #import "CTInsurance.h"
 #import "CTVendor.h"
-#import "ImageResizeURL.h"
-#import "NSDateUtils.h"
 
 @interface LocationTests : XCTestCase
 
@@ -137,6 +134,94 @@
             NSLog(@"Timeout Error: %@", error);
         }
     }];
+}
+
+- (void)test_CTLocationSearch_jsonInit
+{
+    NSDictionary *valueDictA = [self dictionaryWithContentsOfJSONString:@"PartialTextRS.json"];
+    CTLocationSearch *partialTextSearchA = [[CTLocationSearch alloc] initWithPartialTextDictionary:valueDictA];
+    
+    XCTAssertNotNil(partialTextSearchA.matchedLocations);
+    XCTAssert(partialTextSearchA.matchedLocations.count > 0);
+    
+    NSDictionary *valueDictB = [self dictionaryWithContentsOfJSONString:@"CitySearchRS.json"];
+    CTLocationSearch *partialTextSearchB = [[CTLocationSearch alloc] initWithDictionary:valueDictB];
+    
+    XCTAssertNotNil(partialTextSearchB.matchedLocations);
+    XCTAssert(partialTextSearchB.matchedLocations.count > 0);
+    
+    NSDictionary *valueDictC = [self dictionaryWithContentsOfJSONString:@"IATALocationSearchRS.json"];
+    CTLocationSearch *partialTextSearchC = [[CTLocationSearch alloc] initWithDictionary:valueDictC];
+    
+    XCTAssertNotNil(partialTextSearchC.matchedLocations);
+    XCTAssert(partialTextSearchC.matchedLocations.count > 0);
+}
+
+- (void)test_CTMatchedLocation_jsonInit
+{
+    NSDictionary *valueDictA = [self dictionaryWithContentsOfJSONString:@"LocationResult.json"];
+
+    CTMatchedLocation *matchedLocationA = [[CTMatchedLocation alloc] initWithDictionary:valueDictA];
+    
+    XCTAssertTrue(matchedLocationA.isAtAirport);
+    XCTAssertTrue([matchedLocationA.airportCode isEqualToString:@""]);
+    XCTAssertTrue([matchedLocationA.code isEqualToString:@"338"]);
+    XCTAssertTrue([matchedLocationA.name isEqualToString:@"Orlando - Airport (Florida)"]);
+    XCTAssertTrue([matchedLocationA.countryCode isEqualToString:@"US"]);
+    XCTAssertTrue([matchedLocationA.addressLine isEqualToString:@""]);
+    XCTAssertTrue(matchedLocationA.latitude.doubleValue == 0.0);
+    XCTAssertTrue(matchedLocationA.longitude.doubleValue == 0.0);
+    XCTAssertTrue(matchedLocationA.distance.doubleValue == 0.0);
+    XCTAssertTrue([matchedLocationA.distanceUnit isEqualToString:@""]);
+    
+    NSDictionary *valueDictB = [self dictionaryWithContentsOfJSONString:@"PartialTextLocationResult.json"];
+    
+    CTMatchedLocation *matchedLocationB = [[CTMatchedLocation alloc] initWithPartialStringDictionary:valueDictB];
+    
+    XCTAssertTrue(matchedLocationB.isAtAirport);
+    XCTAssertTrue([matchedLocationB.airportCode isEqualToString:@"DUB"]);
+    XCTAssertTrue([matchedLocationB.code isEqualToString:@"11"]);
+    XCTAssertTrue([matchedLocationB.name isEqualToString:@"Dublin - Airport"]);
+    XCTAssertTrue([matchedLocationB.countryCode isEqualToString:@"IE"]);
+    XCTAssertTrue([matchedLocationB.addressLine isEqualToString:@""]);
+    XCTAssertTrue(matchedLocationB.latitude.doubleValue == 0.0);
+    XCTAssertTrue(matchedLocationB.longitude.doubleValue == 0.0);
+    XCTAssertTrue(matchedLocationB.distance.doubleValue == 0.0);
+    XCTAssertTrue([matchedLocationB.distanceUnit isEqualToString:@""]);
+    
+    XCTAssertNotNil(matchedLocationA.airportCode);
+    XCTAssertNotNil(matchedLocationA.code);
+    XCTAssertNotNil(matchedLocationA.name);
+    XCTAssertNotNil(matchedLocationA.countryCode);
+    XCTAssertNotNil(matchedLocationA.addressLine);
+    XCTAssertNotNil(matchedLocationA.addressStateCode);
+    XCTAssertNotNil(matchedLocationA.latitude);
+    XCTAssertNotNil(matchedLocationA.longitude);
+    XCTAssertNotNil(matchedLocationA.distance);
+    XCTAssertNotNil(matchedLocationA.distanceUnit);
+    
+    XCTAssertNotNil(matchedLocationB.airportCode);
+    XCTAssertNotNil(matchedLocationB.code);
+    XCTAssertNotNil(matchedLocationB.name);
+    XCTAssertNotNil(matchedLocationB.countryCode);
+    XCTAssertNotNil(matchedLocationB.addressLine);
+    XCTAssertNotNil(matchedLocationB.addressStateCode);
+    XCTAssertNotNil(matchedLocationB.latitude);
+    XCTAssertNotNil(matchedLocationB.longitude);
+    XCTAssertNotNil(matchedLocationB.distance);
+    XCTAssertNotNil(matchedLocationB.distanceUnit);
+
+}
+
+- (NSDictionary*)dictionaryWithContentsOfJSONString:(NSString*)fileName
+{
+    NSString *filePath = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:fileName];
+    NSData* data = [NSData dataWithContentsOfFile:filePath];
+    __autoreleasing NSError* error = nil;
+    id result = [NSJSONSerialization JSONObjectWithData:data
+                                                options:kNilOptions error:&error];
+    if (error != nil) return nil;
+    return result;
 }
 
 

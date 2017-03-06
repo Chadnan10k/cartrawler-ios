@@ -34,15 +34,11 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Location code context
  */
-@property (nonatomic, nonnull, readonly) NSString *codeContext;
+@property (nonatomic, nonnull, readonly) NSString *countryCode;
 /**
  *  Location address line
  */
 @property (nonatomic, nonnull, readonly) NSString *addressLine;
-/**
- *  Location address code
- */
-@property (nonatomic, nonnull, readonly) NSString *addressCode;
 /**
  *  Location state code
  */

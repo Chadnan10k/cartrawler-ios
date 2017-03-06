@@ -10,6 +10,10 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "CTLocationSearchDataSource.h"
 #import <CartrawlerSDK/CTAppearance.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTButton.h>
+
 @interface CTLocationSearchViewController () <UISearchBarDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -18,6 +22,7 @@
 @property (nonatomic, strong) CTLocationSearchDataSource *dataSource;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet CTButton *cancelButton;
 
 @end
 
@@ -38,6 +43,7 @@
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self.dataSource;
     self.searchBar.delegate = self;
+    self.searchBar.placeholder = CTLocalizedString(CTRentalSearchLocationsPlaceholder);
     self.searchBar.text = @"";
     
     (self.searchBar).backgroundImage = [UIImage new];
@@ -69,13 +75,14 @@
             }
         });
     };
+    
+    [self.cancelButton setTitle:CTLocalizedString(CTRentalCTACancel) forState:UIControlStateNormal];
 }
 
 - (IBAction)closeTapped:(id)sender {
     [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {

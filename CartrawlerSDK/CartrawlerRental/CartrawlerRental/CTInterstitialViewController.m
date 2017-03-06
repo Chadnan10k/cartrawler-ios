@@ -11,6 +11,8 @@
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
 #import "CTRentalConstants.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTInterstitialViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -19,6 +21,7 @@
 @property (nonatomic, strong) CTRentalSearch *search;
 @property (weak, nonatomic) IBOutlet CTLabel *locationLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *loadingDetailLabel;
 
 @end
 
@@ -34,6 +37,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.loadingLabel.text = CTLocalizedString(CTRentalInterstitialSearching1);
+    self.loadingDetailLabel.text = CTLocalizedString(CTRentalInterstitialSearching2);
     
     _vendorImages = @[[UIImage imageNamed:@"vendor_europcar" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil],
                       [UIImage imageNamed:@"vendor_sixt" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil],

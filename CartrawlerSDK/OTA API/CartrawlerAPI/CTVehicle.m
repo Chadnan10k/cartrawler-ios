@@ -22,19 +22,19 @@
 	if ((self.fees).count > 0) {
 		
 		for (CTFee *f in self.fees) {
-                        
-			if ([f.feePurpose isEqualToString:@"22"]) {
-				//Deposit
-				total = @(f.feeAmount.doubleValue + total.doubleValue);
-				
-			} else if ([f.feePurpose isEqualToString:@"23"]) {
-				// Pay on Arrival
-				total = @(f.feeAmount.doubleValue + total.doubleValue);
-				
-			} else if ([f.feePurpose isEqualToString:@"6"]) {
-				// Booking Fee amount
-				total = @(f.feeAmount.doubleValue + total.doubleValue);
-			} 
+            
+            if (f.feePurpose == CTFeeTypePayNow) {
+                //Deposit
+                total = @(f.feeAmount.doubleValue + total.doubleValue);
+                
+            } else if (f.feePurpose == CTFeeTypePayAtDesk) {
+                // Pay on Arrival
+                total = @(f.feeAmount.doubleValue + total.doubleValue);
+                
+            } else if (f.feePurpose == CTFeeTypeBooking) {
+                // Booking Fee amount
+                total = @(f.feeAmount.doubleValue + total.doubleValue);
+            }
 		}
 	}
 	
@@ -140,12 +140,12 @@
 	
 	_needCCInfo = [dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"CC_Info"][@"@Required"] boolValue];
 	_rentalDuration = dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Duration"][@"@Days"];
-	_insuranceAvailable = [dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Insurance"][@"@avail"] boolValue];
+	_insuranceAvailable = [dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"UpSell"][@"@Insurance"] boolValue];
 	_fuelPolicyDescription = dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"FuelPolicy"][@"@Description"];
     _fuelPolicy = [self fuelPolicyFromString:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"FuelPolicy"][@"@Type"]];
 	// Fees Array
 	// ==========
-
+    
 	NSMutableArray *tempFees = dictionary[@"VehAvailCore"][@"Fees"];
     NSMutableArray *tempFeesStore = [[NSMutableArray alloc] init];
 
@@ -360,6 +360,8 @@
         return VehicleSizeLuxuryElite;
     } else if ([vehCatStr isEqualToString:@"41"]) {
         return VehicleSizeOversize;
+    } else if ([vehCatStr isEqualToString:@"43"]) {
+        return VehicleSizeConvertible;
     } else if ([vehCatStr isEqualToString:@"44"]) {
         return VehicleSizeEstate;
     } else if ([vehCatStr isEqualToString:@"45"]) {

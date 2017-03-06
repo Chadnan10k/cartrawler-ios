@@ -23,6 +23,7 @@ git add -A
 git commit -m "${FRAMEWORK_NAME} version ${BUILD_VERSION} build ${BUILD_NUMBER}"
 git tag "${GIT_TAG}"
 git push "${GIT_REMOTE}" "${GIT_BRANCH}" --tags
+echo "PUSHING - ${GIT_REMOTE} ${GIT_BRANCH}"
 
 #we have now dumped the new binaries to the build repo, lets update cocoapods next
 echo "Creating podspec"

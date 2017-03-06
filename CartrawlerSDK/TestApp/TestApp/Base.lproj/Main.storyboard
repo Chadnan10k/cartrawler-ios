@@ -103,7 +103,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lzk-tW-vOj">
-                                <rect key="frame" x="16" y="124" width="343" height="140"/>
+                                <rect key="frame" x="16" y="72" width="343" height="140"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIh-9d-YCf">
                                         <rect key="frame" x="0.0" y="95" width="343" height="45"/>
@@ -165,39 +165,26 @@
                                     <action selector="remove:" destination="9HL-5W-v1q" eventType="touchUpInside" id="kQP-ZW-p9o"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cW3-DK-96E">
-                                <rect key="frame" x="0.0" y="482" width="375" height="55"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="q7o-JG-HBD"/>
-                                </constraints>
-                                <state key="normal" title="LOAD CARD">
-                                    <color key="titleColor" red="0.43345346169999999" green="1" blue="0.30551134320000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="loadCard:" destination="9HL-5W-v1q" eventType="touchUpInside" id="y4A-Kd-SKz"/>
-                                </connections>
-                            </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UNu-Gw-n2N">
-                                <rect key="frame" x="318" y="443" width="51" height="31"/>
+                                <rect key="frame" x="318" y="506" width="51" height="31"/>
                                 <connections>
                                     <action selector="oneWayChanged:" destination="9HL-5W-v1q" eventType="valueChanged" id="cVq-Kl-Wv8"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One way trip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5S6-2V-Ifo">
-                                <rect key="frame" x="8" y="448" width="97" height="21"/>
+                                <rect key="frame" x="8" y="511" width="97" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2f7-yJ-BcB">
-                                <rect key="frame" x="318" y="404" width="51" height="31"/>
+                                <rect key="frame" x="318" y="467" width="51" height="31"/>
                                 <connections>
                                     <action selector="changeEndpoint:" destination="9HL-5W-v1q" eventType="valueChanged" id="h14-xQ-C4j"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avail from production" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DrR-L8-9q1">
-                                <rect key="frame" x="8" y="409" width="163" height="21"/>
+                                <rect key="frame" x="8" y="472" width="163" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -214,15 +201,12 @@
                             <constraint firstAttribute="trailing" secondItem="xed-eD-UPO" secondAttribute="trailing" id="Y5V-Mv-GTH"/>
                             <constraint firstItem="UNu-Gw-n2N" firstAttribute="top" secondItem="2f7-yJ-BcB" secondAttribute="bottom" constant="8" id="aQo-G5-sWb"/>
                             <constraint firstItem="5S6-2V-Ifo" firstAttribute="centerY" secondItem="UNu-Gw-n2N" secondAttribute="centerY" id="bv6-jl-Is4"/>
-                            <constraint firstItem="cW3-DK-96E" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="bvo-CV-Rd6"/>
                             <constraint firstItem="xed-eD-UPO" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="c8H-XD-VRU"/>
                             <constraint firstAttribute="trailing" secondItem="lzk-tW-vOj" secondAttribute="trailing" constant="16" id="cCZ-5R-Y4L"/>
-                            <constraint firstItem="lzk-tW-vOj" firstAttribute="top" secondItem="Ets-M0-nR8" secondAttribute="bottom" constant="60" id="dak-WO-yKO"/>
-                            <constraint firstItem="7js-LD-TYj" firstAttribute="top" secondItem="cW3-DK-96E" secondAttribute="bottom" constant="8" id="eF6-5N-baj"/>
+                            <constraint firstItem="lzk-tW-vOj" firstAttribute="top" secondItem="Ets-M0-nR8" secondAttribute="bottom" constant="8" id="dak-WO-yKO"/>
+                            <constraint firstItem="7js-LD-TYj" firstAttribute="top" secondItem="5S6-2V-Ifo" secondAttribute="bottom" constant="13" id="dbe-ft-Lws"/>
                             <constraint firstItem="xed-eD-UPO" firstAttribute="top" secondItem="7js-LD-TYj" secondAttribute="bottom" constant="8" id="ezp-MD-b5l"/>
-                            <constraint firstAttribute="trailing" secondItem="cW3-DK-96E" secondAttribute="trailing" id="kH0-Pi-fd6"/>
                             <constraint firstItem="7js-LD-TYj" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="mIe-SP-2X9"/>
-                            <constraint firstItem="cW3-DK-96E" firstAttribute="top" secondItem="UNu-Gw-n2N" secondAttribute="bottom" constant="8" id="n33-BT-LLt"/>
                             <constraint firstAttribute="trailing" secondItem="UNu-Gw-n2N" secondAttribute="trailing" constant="8" id="sTq-op-HEz"/>
                             <constraint firstAttribute="trailing" secondItem="2f7-yJ-BcB" secondAttribute="trailing" constant="8" id="xuq-V3-NQa"/>
                             <constraint firstItem="ax6-HZ-Y0J" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="8" id="yvS-g6-FLB"/>
@@ -246,7 +230,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zsj-16-95s" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="c1K-lO-dAv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c1K-lO-dAv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

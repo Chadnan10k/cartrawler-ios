@@ -47,15 +47,16 @@
         [[CTSDKSettings instance] setCurrencyName:userDetails.currency];
     }
     
-    if (!userDetails.countryCode || !userDetails.countryName) {
+    if (!userDetails.countryCode) {
         _defaultCountryCode = [CTSDKSettings instance].homeCountryCode;
         _defaultCountryName = [CTSDKSettings instance].homeCountryName;
         [CTRentalSearch instance].country = [CTSDKSettings instance].homeCountryCode;
     } else {
+        NSString *countryName = [[CTSDKSettings instance] countryName:userDetails.countryCode];
         _defaultCountryCode = userDetails.countryCode;
-        _defaultCountryName = userDetails.countryName;
+        _defaultCountryName = countryName;
         [[CTSDKSettings instance] setHomeCountryCode:userDetails.countryCode];
-        [[CTSDKSettings instance] setHomeCountryName:userDetails.countryName];
+        [[CTSDKSettings instance] setHomeCountryName:countryName];
         [CTRentalSearch instance].country = userDetails.countryCode;
     }
     
@@ -96,7 +97,7 @@
     [self.rental.cartrawlerSDK.cartrawlerAPI locationSearchWithAirportCode:IATACode
                                                                 completion:^(CTLocationSearch *response, CTErrorResponse *error) {
         if (error) {
-            [[CTAnalytics instance] tagError:@"inpath" event:@"no location" message:@"failed to get location"];
+            [[CTAnalytics instance] tagError:@"inpath" event:@"no location" message:[NSString stringWithFormat:@"cannot get in path location: %@", IATACode]];
             _didFailToFetchResults = YES;
             if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -176,7 +177,7 @@
     [[CTRentalSearch instance] setFromCopy:self.defaultSearch];
     [self configureViews];
     [self presentRentalNavigationController:parentViewController];
-    [[CTAnalytics instance] tagScreen:@"Visit" detail:@"inflow" step:@1];
+    [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@1];
 }
 
 //Lets take what views we need for the nav stack
@@ -208,6 +209,12 @@
     }
     
     [parent presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
+    
+    CTAnalyticsEvent *event = [[CTAnalyticsEvent alloc] init];
+    event.params = @{@"smartblockName" : @"NEW *"};
+    event.eventName = @"Flight Path";
+    event.eventType = @"UserAction";
+    [self.rental.cartrawlerSDK sendAnalyticsEvent:event];
 }
 
 - (void)addCrossSellCardToView:(UIView *)view
@@ -240,6 +247,7 @@
 
 - (void)removeVehicle
 {
+    [CTDataStore deletePotentialInPathBooking];
     _cachedVehicle = nil;
     if (self.cardView) {
         [self.cardView renderDefault:YES];
@@ -247,8 +255,8 @@
     
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                        fromDate:[CTRentalSearch instance].pickupDate
-                                                          toDate:[CTRentalSearch instance].dropoffDate
+                                                        fromDate:self.defaultSearch.pickupDate
+                                                          toDate:self.defaultSearch.dropoffDate
                                                          options:0];
     
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
@@ -267,6 +275,42 @@
 - (void)didReceiveBookingConfirmationID:(NSString *)confirmationID
 {
     if (confirmationID) {
+        
+        NSString *vehName = [NSString stringWithFormat:@"%@ %@", [CTRentalSearch instance].selectedVehicle.vehicle.makeModelName,
+                             [CTRentalSearch instance].selectedVehicle.vehicle.orSimilar];
+        
+        CTAnalyticsEvent *event = [CTAnalyticsEvent new];
+        event.eventName = @"Booking";
+        event.eventType = @"Booking";
+        event.params = @{@"eventName" : @"Booking",
+                           @"reservationID" : confirmationID,
+                           @"insuranceOffered" : [CTRentalSearch instance].insurance ? @"true" : @"false",
+                           @"insurancePurchased" : [CTRentalSearch instance].isBuyingInsurance ? @"true" : @"false",
+                           @"age" : [CTRentalSearch instance].driverAge.stringValue,
+                           @"clientID" : [CTSDKSettings instance].clientId,
+                           @"residenceID" : [CTSDKSettings instance].homeCountryCode,
+                           @"pickupName" : [CTRentalSearch instance].pickupLocation.name,
+                           @"pickupDate" : [[CTRentalSearch instance].pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                           @"returnName" : [CTRentalSearch instance].dropoffLocation.name,
+                           @"returnDate" : [[CTRentalSearch instance].dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                           @"carSelected" : vehName
+                           };
+        
+        CTAnalyticsEvent *saleEvent = [CTAnalyticsEvent new];
+        saleEvent.saleType = @"InPath";
+        saleEvent.orderID = confirmationID;
+        saleEvent.quantity = @1;
+        saleEvent.metricItem = [CTRentalSearch instance].pickupLocation.name;
+        
+        if ([CTRentalSearch instance].isBuyingInsurance) {
+            saleEvent.value = @([CTRentalSearch instance].selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue +
+                                [CTRentalSearch instance].insurance.premiumAmount.doubleValue);
+        } else {
+            saleEvent.value = [CTRentalSearch instance].selectedVehicle.vehicle.totalPriceForThisVehicle;
+        }
+        
+        [self.rental.cartrawlerSDK sendAnalyticsEvent:event];
+        [self.rental.cartrawlerSDK sendAnalyticsSaleEvent:saleEvent];
         [CTDataStore didMakeInPathBooking:confirmationID];
     }
 }

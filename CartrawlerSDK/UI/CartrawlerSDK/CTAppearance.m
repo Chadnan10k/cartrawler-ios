@@ -65,7 +65,5 @@
     });
     return sharedInstance;
 }
-    
-    //RYR 32, 145, 235 bright blue
 
 @end

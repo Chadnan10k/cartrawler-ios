@@ -23,6 +23,7 @@
 #import <CartrawlerSDK/CartrawlerSDK+UIView.h>
 #import <CartrawlerSDK/CTToolTipButton.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import "CTRentalLocalizationConstants.h"
 
 @interface CTVehicleDetailsViewController ()
 
@@ -32,7 +33,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
 
 @property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *totalPriceLabel;
 @property (weak, nonatomic) IBOutlet UITableView *featuresTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *featuresTableViewHeightConstraint;
 
 @property (weak, nonatomic) IBOutlet CTLabel *includedForFreeLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *inclusionsCollectionView;
@@ -46,6 +49,10 @@
 @property (weak, nonatomic) IBOutlet CTToolTipButton *fuelPolicyButton;
 @property (weak, nonatomic) IBOutlet CTToolTipButton *pickupLocationButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpacing;
+@property (weak, nonatomic) IBOutlet CTButton *termsAndConditionsButton;
+@property (weak, nonatomic) IBOutlet CTLabel *orSimilarLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *fuelPolicyTitleLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *locationTitleLabel;
 
 @end
 
@@ -69,6 +76,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.totalPriceLabel.text = CTLocalizedString(CTRentalVehicleTotalPrice);
+    self.includedForFreeLabel.text = CTLocalizedString(CTRentalIncludedTitle);
+    [self.termsAndConditionsButton setTitle:CTLocalizedString(CTRentalIncludedTerms) forState:UIControlStateNormal];
+    self.orSimilarLabel.text = CTLocalizedString(CTRentalVehicleOrSimilar);
+    self.fuelPolicyTitleLabel.text = CTLocalizedString(CTRentalVehicleFuelPolicy);
+    self.locationTitleLabel.text = CTLocalizedString(CTRentalVehiclePickupLocation);
+
+    [self.featuresTableView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
     
     if (self.search.selectedVehicle.vendor.rating) {
         self.topSpacing.constant = 80;
@@ -94,7 +110,7 @@
     __weak typeof(self) weakSelf = self;
     
     [self.fuelPolicyButton setText:[CTLocalisedStrings fuelPolicy:self.search.selectedVehicle.vehicle.fuelPolicy] didTap:^{
-        [weakSelf presentViewController:[CTToolTip fullScreenTooltip:NSLocalizedString(@"Fuel policy", @"Fuel policy tooltip title")
+        [weakSelf presentViewController:[CTToolTip fullScreenTooltip:CTLocalizedString(CTRentalVehicleFuelPolicy)
                                                           detailText:[[NSAttributedString alloc]
                                                                       initWithString:[CTLocalisedStrings
                                                                                       toolTipTextForFuelPolicy: weakSelf.search.selectedVehicle.vehicle.fuelPolicy]
@@ -106,7 +122,7 @@
                              completion:nil];
     }];
     
-    NSString *pickupText = [CTLocalisedStrings pickupType:self.search.selectedVehicle] ?: @"Supplier address";
+    NSString *pickupText = [CTLocalisedStrings pickupType:self.search.selectedVehicle] ?: CTLocalizedString(CTRentalVehicleSupplierAddress);
     NSMutableAttributedString *toolTipText = [[NSMutableAttributedString alloc] initWithString:@""];
     
     if ([CTLocalisedStrings pickupType:self.search.selectedVehicle]) {
@@ -119,7 +135,7 @@
                                                            }]];
     } else {
         [toolTipText appendAttributedString: [[NSAttributedString alloc]
-                                              initWithString:[NSString stringWithFormat:@"The suppliers address is:\n\n%@",
+                                              initWithString:[NSString stringWithFormat:@"%@\n\n%@", CTLocalizedString(CTRentalVehicleSupplierAddressDetail),
                                                               self.search.selectedVehicle.vendor.pickupLocation.address]
                                               attributes: @{
                                                             NSForegroundColorAttributeName : [UIColor whiteColor],
@@ -128,7 +144,7 @@
     }
     
     [self.pickupLocationButton setText:pickupText didTap:^{
-        [weakSelf presentViewController:[CTToolTip fullScreenTooltip:NSLocalizedString(@"Pickup location", @"Pickup location tooltip title")
+        [weakSelf presentViewController:[CTToolTip fullScreenTooltip:CTLocalizedString(CTRentalVehiclePickupLocation)
                                                           detailText:toolTipText]
                                animated:YES
                              completion:nil];
@@ -144,40 +160,31 @@
     
     [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@ %@",
                                         self.search.selectedVehicle.vehicle.passengerQty.stringValue,
-                                        NSLocalizedString(@"passengers", @"passengers")],
+                                        CTLocalizedString(CTRentalVehiclePassengers)],
                                         @"image" : @"people"}];
     
     [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@ %@",
                                         self.search.selectedVehicle.vehicle.baggageQty.stringValue,
-                                        NSLocalizedString(@"bags", @"bags")],
+                                        CTLocalizedString(CTRentalVehicleBags)],
                                         @"image" : @"baggage"}];
     
     [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@ %@",
                                         self.search.selectedVehicle.vehicle.doorCount.stringValue,
-                                        NSLocalizedString(@"doors", @"doors")],
+                                        CTLocalizedString(CTRentalVehicleDoors)],
                                         @"image" : @"doors"}];
     
     [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@",
-                                        self.search.selectedVehicle.vehicle.transmissionType],
+                                        [CTLocalisedStrings transmission:self.search.selectedVehicle.vehicle.transmissionType]],
                                         @"image" : @"gears"}];
     
     if (self.search.selectedVehicle.vehicle.isAirConditioned) {
         [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@",
-                                            NSLocalizedString(@"Air Conditioning", @"Air Conditioning")],
+                                            CTLocalizedString(CTRentalVehicleAirConditioning)],
                                             @"image" : @"aircon"}];
     }
     
     [self.vehicleFeaturesDataSource setData:featureData];
-    
     [self.featuresTableView reloadData];
-    [self.featuresTableView layoutIfNeeded];
-
-    if ([self.featuresTableView cartrawlerConstraintForAttribute:NSLayoutAttributeHeight]) {
-        //IOS-122
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.featuresTableView cartrawlerConstraintForAttribute:NSLayoutAttributeHeight].constant = self.featuresTableView.contentSize.height;
-        });
-    }
 }
 
 - (void)setupInclusionsCollectionView
@@ -219,6 +226,18 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self presentViewController:nav animated:YES completion:nil];
     });
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(UITableView *)featuresTableView change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    self.featuresTableViewHeightConstraint.constant = featuresTableView.contentSize.height;
+    [featuresTableView layoutIfNeeded];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.featuresTableView removeObserver:self forKeyPath:@"contentSize"];
 }
 
 @end

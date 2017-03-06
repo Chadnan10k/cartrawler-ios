@@ -14,6 +14,9 @@
 #import "CTView.h"
 #import "CartrawlerSDK+UIColor.h"
 #import "CTNextButton.h"
+#import "CTSDKLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTButton.h>
 
 @interface CTCalendarViewController()
 
@@ -29,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet CTLabel *pickupTitleLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *returnTitleLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *calendarTitleLabel;
+@property (weak, nonatomic) IBOutlet CTButton *cancelButton;
 
 @property (strong, nonatomic) NSDate *pickupDate;
 @property (strong, nonatomic) NSDate *dropoffDate;
@@ -41,7 +45,7 @@
 {
     [super viewWillAppear:animated];
 
-    self.calendarTitleLabel.text = self.singleDateSelection ? @"Select date" : @"Select your dates";
+    self.calendarTitleLabel.text = self.singleDateSelection ? CTLocalizedString(CTSDKCalendarSelectDate) : CTLocalizedString(CTSDKCalendarSelectDates);
     
     if (self.singleDateSelection) {
         self.weekDayTopSpace.constant = 0;
@@ -56,14 +60,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.nextButton setText:NSLocalizedString(@"Continue", @"Calander Continue")];
+    [self.nextButton setText:CTLocalizedString(CTSDKCalendarContinue)];
 
     [self showCloseButton:NO];
     
     self.summaryContainerView.backgroundColor = [CTAppearance instance].calendarSummaryViewColor;
     self.headerTopSection.backgroundColor = [CTAppearance instance].navigationBarColor;
     self.pickupTitleLabel.textColor = [CTAppearance instance].calendarSummaryTitleLabelColor;
+    self.pickupTitleLabel.text = CTLocalizedString(CTSDKCalendarPickupDate);
     self.returnTitleLabel.textColor = [CTAppearance instance].calendarSummaryTitleLabelColor;
+    self.returnTitleLabel.text = CTLocalizedString(CTSDKCalendarReturnDate);
 
     if (self.mininumDate) {
         self.calendarView.mininumDate = self.mininumDate;
@@ -99,14 +105,17 @@
         }
     };
     
+    self.pickupDateLabel.text = CTLocalizedString(CTSDKCalendarSelectDate);
+    self.dropOffDateLabel.text = CTLocalizedString(CTSDKCalendarSelectDate);
     self.calendarView.discard = ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self animatePickupLabel:@"Select date"];
-            [self animateDropoffLabel:@"Select date"];
+            [self animatePickupLabel:CTLocalizedString(CTSDKCalendarSelectDate)];
+            [self animateDropoffLabel:CTLocalizedString(CTSDKCalendarSelectDate)];
             [self showCloseButton:NO];
         });
     };
     
+    [self.cancelButton setTitle:CTLocalizedString(CTSDKCTACancel) forState:UIControlStateNormal];
 }
 
 - (void)showCloseButton:(BOOL)show

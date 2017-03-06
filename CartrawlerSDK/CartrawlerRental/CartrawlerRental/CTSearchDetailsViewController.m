@@ -19,6 +19,8 @@
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CartrawlerSDK+UITextField.h>
 #import "CTRentalConstants.h"
+#import "CTRentalLocalizationConstants.h"
+#import "CTSettingsViewController.h"
 
 #define kDropoffLocationOpen 101.0
 #define kDropoffLocationClosed 18.0
@@ -31,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
 @property (weak, nonatomic) IBOutlet CTTextField *ageContainer;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dropoffLocTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ageTopConstraint;
@@ -43,13 +46,18 @@
 @property (strong, nonatomic) IBOutlet CTSelectView *dropoffTimeView;
 @property (strong, nonatomic) IBOutlet CTSelectView *pickupTimeView;
 
+@property (weak, nonatomic) IBOutlet CTLabel *returnToSameLocationLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *driverAgeDescriptionLabel;
+
 @property (strong, nonatomic) CTTimePickerView *pickupTimePicker;
 @property (strong, nonatomic) CTTimePickerView *dropoffTimePicker;
+@property (weak, nonatomic) IBOutlet UISwitch *ageValidationSwitch;
 
 @property (nonatomic, strong) NSDate *pickupTime;
 @property (nonatomic, strong) NSDate *dropoffTime;
 
 @property (nonatomic, strong) CTLocationSearchViewController *locSearchVC;
+@property (nonatomic, strong) CTSettingsViewController *settingsVC;
 @property (nonatomic, strong) CTCalendarViewController *calendar;
 
 @property (readwrite, nonatomic) BOOL isReturningSameLocation;
@@ -66,14 +74,14 @@
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
     
-    [self.nextButton setText:NSLocalizedString(@"Search for cars", @"Search for cars")];
-    
     [self.ageContainer addDoneButton];
     self.ageContainer.delegate = self;
     
     _locSearchVC = (CTLocationSearchViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalLocationSearchViewIdentifier];
     self.locSearchVC.cartrawlerAPI = self.cartrawlerAPI;
     self.locSearchVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    
+    _settingsVC = (CTSettingsViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalSettingsViewIdentifier];
     
     _calendar = [storyboard instantiateViewControllerWithIdentifier:@"CTCalendarViewController"];
     self.calendar.modalPresentationStyle = UIModalPresentationOverFullScreen;
@@ -93,14 +101,9 @@
     _isReturningSameLocation = YES;
     _activeView = self.pickupView;
 
-    self.pickupView.placeholder = @"Pick-up location";
-    self.dropoffView.placeholder = @"Drop-off location";
-    self.pickupTimeView.placeholder = @"Pick-up time";
-    self.dropoffTimeView.placeholder = @"Drop-off time";
-    self.calendarView.placeholder = @"Select dates";
     [self.pickupTimeView setTextFieldText:[self.pickupTime simpleTimeString]];
     [self.dropoffTimeView setTextFieldText:[self.dropoffTime simpleTimeString]];
-
+    
     self.dropoffLocTopConstraint.constant = kDropoffLocationClosed;
     self.dropoffView.alpha = 0;
     
@@ -114,7 +117,24 @@
 {
     [super viewWillAppear:animated];
     
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"searchcars" step:@1];
+    self.pickupView.placeholder = CTLocalizedString(CTRentalSearchPickupLocationText);
+    self.dropoffView.placeholder = CTLocalizedString(CTRentalSearchReturnLocationText);
+    self.returnToSameLocationLabel.text = CTLocalizedString(CTRentalSearchReturnLocationButton);
+    self.pickupTimeView.placeholder = CTLocalizedString(CTRentalSearchPickupTimeText);
+    self.dropoffTimeView.placeholder = CTLocalizedString(CTRentalSearchReturnTimeText);
+    self.calendarView.placeholder = CTLocalizedString(CTRentalSearchSelectDatesHint);
+    self.driverAgeDescriptionLabel.text = CTLocalizedString(CTRentalSearchDriverAge);
+    self.ageContainer.placeholder = CTLocalizedString(CTRentalSearchDriverAgeHint);
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleSearchRental);
+    [self.nextButton setText:CTLocalizedString(CTRentalCTASearch)];
+    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Search Step",
+                                      @"stepName" : @"Step1",
+                                      @"clientID" : [CTSDKSettings instance].clientId,
+                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode
+                                      } eventName:@"Step of search" eventType:@"Step"];
+
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"searchcars" step:@1];
     
     [self.scrollView setContentOffset:
      CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
@@ -142,14 +162,25 @@
     }
 
     if ((self.search.driverAge.intValue < 25) || (self.search.driverAge.intValue > 70)) {
-        
+        self.ageValidationSwitch.on = NO;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self openDriverAgeField:YES];
         });
         
+    } else {
+        self.ageValidationSwitch.on = YES;
     }
 
     [self.calendar reset];
+}
+
+- (IBAction)settingsTapped:(id)sender
+{
+    [self presentViewController:self.settingsVC animated:YES completion:nil];
+    __weak typeof (self) weakSelf = self;
+    self.settingsVC.changedLanguage = ^{
+        [weakSelf.cartrawlerAPI changeLanguage:[CTSDKSettings instance].languageCode];
+    };
 }
 
 - (IBAction)pickupTapped:(id)sender
@@ -353,7 +384,6 @@
 
 - (void)searchTapped
 {
-    
     if (self.navigationController) {
         if([self validate]) {
             [self combineDates];
@@ -428,7 +458,7 @@
 
 - (IBAction)cancel:(id)sender
 {
-    [[CTAnalytics instance] tagScreen:@"Exit" detail:@"1" step:@1];
+    [[CTAnalytics instance] tagScreen:@"exit" detail:@"1" step:@1];
  
     if (self.delegate) {
         [self.delegate didDismissViewController:self.restorationIdentifier];

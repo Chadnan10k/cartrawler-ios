@@ -14,6 +14,8 @@
 #import <CartrawlerSDK/CTButton.h>
 #import <CartrawlerSDK/CTNextButton.h>
 #import "CTOptionalExtrasViewController.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTVehicleDetailsPageViewController () <UIPageViewControllerDataSource>
 
@@ -24,6 +26,7 @@
 @property (nonatomic, strong) CTViewController *supplierDetails;
 @property (weak, nonatomic) IBOutlet UICollectionView *selectionCollectionView;
 @property (weak, nonatomic) IBOutlet CTView *headerView;
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet CTSegmentedControl *selectionControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 @property (weak, nonatomic) IBOutlet CTNextButton *continueButton;
@@ -36,8 +39,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-v" step:@3];
-
+    
+    [self tagScreen];
     _index = 0;
     
     if (self.search.selectedVehicle.vendor.rating) {
@@ -57,9 +60,9 @@
     self.supplierDetails.cartrawlerAPI = self.cartrawlerAPI;
     
     [self.selectionControl removeAllSegments];
-    [self.selectionControl insertSegmentWithTitle:@"Car info" atIndex:0 animated:NO];
+    [self.selectionControl insertSegmentWithTitle:CTLocalizedString(CTRentalTitleDetailsVehicle) atIndex:0 animated:NO];
     [self.selectionControl setSelectedSegmentIndex:0];
-    [self.selectionControl insertSegmentWithTitle:@"Supplier info" atIndex:1 animated:NO];
+    [self.selectionControl insertSegmentWithTitle:CTLocalizedString(CTRentalTitleDetailsSupplier) atIndex:1 animated:NO];
     _viewArray = @[self.vehicleDetails, self.supplierDetails];
 
     [self.pageViewController setViewControllers:@[self.vehicleDetails]
@@ -72,12 +75,13 @@
         [weakSelf stopAnimating];
     };
     [self stopAnimating];
+    
+    [self.continueButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleDetails);
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.continueButton setText:NSLocalizedString(@"Continue", @"Continue")];
     
     _vehicleDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"VehicleDetails"];
     _supplierDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"SupplierDetails"];
@@ -118,6 +122,33 @@
 {
     [self.activityView stopAnimating];
 }
+
+
+#pragma mark analyitics
+- (void)tagScreen
+{
+    
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:self.search.pickupDate
+                                                          toDate:self.search.dropoffDate
+                                                         options:0];
+    
+    NSNumber *pricePerDay = [NSNumber numberWithFloat:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.floatValue
+                              / ([components day] ?: 1)];
+    
+    NSString *vehName = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.makeModelName,
+                                                             self.search.selectedVehicle.vehicle.orSimilar];
+    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Vehicle Details Step",
+                                      @"stepName" : @"Step3",
+                                      @"carPrice" : self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.stringValue,
+                                      @"carPricePerDay" : pricePerDay.stringValue,
+                                      @"carSelected" : vehName,
+                                      } eventName:@"Step of search" eventType:@"Step"];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-v" step:@3];
+}
+
 
 #pragma MARK PageViewController
 

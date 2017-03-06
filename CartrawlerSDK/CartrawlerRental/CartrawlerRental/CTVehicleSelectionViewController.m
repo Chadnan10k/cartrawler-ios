@@ -15,6 +15,9 @@
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import "CTSearchDetailsViewController.h"
 #import "CTInterstitialViewController.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTButton.h>
 
 @interface CTVehicleSelectionViewController () <UIScrollViewDelegate>
 
@@ -24,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet CTLabel *carCountLabel;
 @property (weak, nonatomic) IBOutlet UIView *subheaderView;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet CTButton *sortButton;
+@property (weak, nonatomic) IBOutlet CTButton *filterButton;
 
 @property (nonatomic, strong) CTFilterViewController *filterViewController;
 @property (nonatomic, strong) NSArray<CTAvailabilityItem *> *filteredData;
@@ -76,16 +81,20 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles" step:@2];
+    [self tagScreen];
     [self produceHeaderText];
     [self.search addObserver:self forKeyPath:@"vehicleAvailability"
                      options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                      context:nil];
+    
+    [self.sortButton setTitle:CTLocalizedString(CTRentalResultsSort) forState:UIControlStateNormal];
+    [self.filterButton setTitle:CTLocalizedString(CTRentalResultsFilter) forState:UIControlStateNormal];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
     if (self.search.vehicleAvailability.items.count < 1) {
         [CTInterstitialViewController present:self search:self.search];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -95,13 +104,19 @@
                 [self backToSearch];
             }
         });
+    } else {
+        [self refresh];
     }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [self.search removeObserver:self forKeyPath:@"vehicleAvailability"];
+    @try {
+        [self.search removeObserver:self forKeyPath:@"vehicleAvailability"];
+    } @catch (NSException *exception) {
+        //do nothing
+    }
 }
 
 - (void)showText:(BOOL)show
@@ -150,7 +165,7 @@
 - (void)updateAvailableCarsLabel:(NSInteger)availableCars
 {
     self.carCountLabel.text = [NSString stringWithFormat:@"%ld %@", (unsigned long)availableCars
-                               ,NSLocalizedString(@"results", @"results")];
+                               ,CTLocalizedString(CTRentalTitleResults)];
 }
 
 - (IBAction)backTapped:(id)sender {
@@ -185,20 +200,26 @@
 }
     
 - (IBAction)sortTapped:(id)sender {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sort results"
+    NSString *sortResults = CTLocalizedString(CTRentalSortTitle);
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:sortResults
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *lowestPrice = [UIAlertAction actionWithTitle:@"Lowest Price" style:UIAlertActionStyleDefault
+    NSString *sortPrice = CTLocalizedString(CTRentalSortPrice);
+    UIAlertAction *lowestPrice = [UIAlertAction actionWithTitle:sortPrice
+                                                          style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [self sortVehicles:YES];
                                                           }];
-    UIAlertAction *recommendedVehicles = [UIAlertAction actionWithTitle:@"Recommended Vehicles" style:UIAlertActionStyleDefault
+    
+    NSString *sortRecommended = CTLocalizedString(CTRentalSortRecommended);
+    UIAlertAction *recommendedVehicles = [UIAlertAction actionWithTitle:sortRecommended
+                                                                  style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [self sortVehicles:NO];
                                                           }];
-    
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
+    NSString *cancelString = CTLocalizedString(CTRentalCTACancel);
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:cancelString style:UIAlertActionStyleCancel
                                                                 handler:nil];
     
     [alert addAction:lowestPrice];
@@ -206,6 +227,29 @@
     [alert addAction:cancel];
 
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark analyitics
+- (void)tagScreen
+{
+    [self sendEvent:NO customParams:@{@"eventName" : @"Vehicle Selection Step",
+                                      @"stepName" : @"Step2",
+                                      @"age" : self.search.driverAge.stringValue,
+                                      @"clientID" : [CTSDKSettings instance].clientId,
+                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode,
+                                      @"pickupID" : self.search.pickupLocation.code,
+                                      @"pickupName" : self.search.pickupLocation.name,
+                                      @"pickupDate" : [self.search.pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                                      @"pickupTime" : [self.search.pickupDate stringFromDateWithFormat:@"HH:mm"],
+                                      @"pickupCountry" : self.search.pickupLocation.countryCode,
+                                      @"returnID" : self.search.dropoffLocation.code,
+                                      @"returnName" : self.search.dropoffLocation.name,
+                                      @"returnDate" : [self.search.dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                                      @"returnTime" : [self.search.dropoffDate stringFromDateWithFormat:@"HH:mm"],
+                                      @"returnCountry" : self.search.dropoffLocation.countryCode,
+                                      @"currency" : [CTSDKSettings instance].homeCountryCode
+                                      } eventName:@"Step of search" eventType:@"Step"];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:@2];
 }
 
 @end

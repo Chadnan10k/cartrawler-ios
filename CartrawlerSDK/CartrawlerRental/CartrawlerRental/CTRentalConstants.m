@@ -43,7 +43,7 @@ NSString * const CTRentalVehicleDetailsViewIdentifier= @"CTVehicleDetailsViewCon
 
 NSString * const CTRentalExtrasViewIdentifier = @"CTOptionalExtrasViewController";
 
-NSString * const CTRentalInsuranceViewIdentifier = @"CTExtrasViewController";
+NSString * const CTRentalInsuranceViewIdentifier = @"CTInsuranceViewController";
 
 NSString * const CTRentalDriverDetailsViewIdentifier = @"CTDriverDetailsViewController";
 
@@ -58,6 +58,8 @@ NSString * const CTRentalBookingSummaryViewIdentifier = @"CTBookingSummaryViewCo
 NSString * const CTRentalLocationSearchViewIdentifier = @"CTLocationSearchViewController";
 
 NSString * const CTRentalSettingsSelectionViewIdentifier = @"CTSettingsSelectionViewController";
+
+NSString * const CTRentalSettingsViewIdentifier = @"CTSettingsViewController";
 
 
 @end

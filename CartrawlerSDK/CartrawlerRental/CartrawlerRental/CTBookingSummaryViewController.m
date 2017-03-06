@@ -9,26 +9,32 @@
 #import "CTBookingSummaryViewController.h"
 #import "CTBookingSummaryView.h"
 #import <CartrawlerSDK/CTNextButton.h>
+#import <CartrawlerSDK/CTLabel.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import "CTRentalLocalizationConstants.h"
 
 @interface CTBookingSummaryViewController ()
 
 @property (weak, nonatomic) IBOutlet CTNextButton *continueButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerBottomSpace;
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 
 @end
 
 @implementation CTBookingSummaryViewController
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-    [self.continueButton setText:@"Continue"];
+    [super viewWillAppear:animated];
+    [self.continueButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleSummary);
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-p" step:@7];
+    [self tagScreen];
 }
 
 - (IBAction)next:(id)sender
@@ -49,6 +55,16 @@
 {
     CTBookingSummaryView *summaryView = segue.destinationViewController;
     summaryView.search = self.search;
+}
+
+#pragma mark Analytics
+
+- (void)tagScreen
+{
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-p" step:@7];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Booking Summary Step",
+                                      @"stepName" : @"Step7",
+                                      } eventName:@"Step of search" eventType:@"Step"];
 }
 
 @end

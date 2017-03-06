@@ -12,6 +12,8 @@
 #import <CartrawlerSDK/CTFlightNumberValidation.h>
 #import <CartrawlerSDK/CTNextButton.h>
 #import <CartrawlerSDK/CartrawlerSDK+UITextField.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTDriverDetailsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet CTTextField *firstNameTextField;
@@ -21,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet CTTextField *flightNoTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 
 @property (strong, nonatomic) UIView *selectedView;
 
@@ -31,8 +34,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.nextButton setText:NSLocalizedString(@"Continue", @"")];
-
     self.firstNameTextField.delegate = self;
     self.lastNameTextField.delegate = self;
     self.emailTextField.delegate = self;
@@ -50,7 +51,7 @@
     [self.phoneTextField addDoneButton];
     [self.flightNoTextField addDoneButton];
     [self.phoneTextField addDoneButton];
-
+    
 }
 
 - (void)viewWasTapped
@@ -61,8 +62,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-d" step:@5];
+    
+    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleUser);
+    self.firstNameTextField.placeholder = CTLocalizedString(CTRentalUserFirstnameHint);
+    self.lastNameTextField.placeholder = CTLocalizedString(CTRentalUserSurnameHint);
+    self.emailTextField.placeholder = CTLocalizedString(CTRentalUserEmailHint);
+    self.phoneTextField.placeholder = CTLocalizedString(CTRentalUserPhoneHint);
+    self.flightNoTextField.placeholder = CTLocalizedString(CTRentalUserFlightHint);
 
+    [self tagScreen];
+    
     [self registerForKeyboardNotifications];
     
     _selectedView = self.firstNameTextField;
@@ -220,13 +230,19 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    NSMutableCharacterSet *characterSet = [NSMutableCharacterSet alphanumericCharacterSet];
-    [characterSet addCharactersInString:@" "];
+    
     if (textField == self.phoneTextField) {
         return [self validatePhone:[NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string]];
-    } else {
-        return YES;
     }
+    
+    if (textField == self.firstNameTextField || textField == self.lastNameTextField) {
+        NSMutableCharacterSet *characterSet = [NSMutableCharacterSet alphanumericCharacterSet];
+        [characterSet addCharactersInString:@" -'"];
+        NSCharacterSet *blockedCharacterSet = [characterSet invertedSet];
+        return ([string rangeOfCharacterFromSet:blockedCharacterSet].location == NSNotFound);
+    }
+    
+    return YES;
 }
 
 - (BOOL)validatePhone:(NSString *)phoneNumber
@@ -276,6 +292,16 @@
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark Analytics
+
+- (void)tagScreen
+{
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-d" step:@5];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Driver Details Step",
+                                      @"stepName" : @"Step5",
+                                      } eventName:@"Step of search" eventType:@"Step"];
 }
 
 @end

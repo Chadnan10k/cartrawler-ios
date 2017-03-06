@@ -11,7 +11,6 @@
 @interface CalendarLogicController()
 
 @property (nonatomic, strong) CTDateCollectionViewCell *headCell;
-@property (nonatomic, strong) NSMutableArray <CTMiddleDateCell *> *midCells;
 @property (nonatomic, strong) CTDateCollectionViewCell *tailCell;
 @property (nonatomic, strong) NSMutableArray <CTDateCollectionViewCell *> *visibleCells;
 @property (nonatomic, strong) NSIndexPath *headIndexPath;
@@ -37,7 +36,6 @@
 - (id)init
 {
     self = [super init];
-    _midCells = [[NSMutableArray alloc] init];
     _midPaths = [[NSMutableArray alloc] init];
     _midSections = [[NSMutableArray alloc] init];
     _collectionViews = [[NSMutableArray alloc] init];

@@ -63,6 +63,13 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
 - (instancetype)initWithClientKey:(NSString *)clientKey language:(NSString *)language debug:(BOOL)debug;
 
 /**
+ *  Change the request language
+ *
+ *  @param languageCode The specified language code
+ */
+- (void)changeLanguage:(NSString *)languageCode;
+
+/**
  *  Shows API requests and responses
  */
 - (void)enableLogging:(BOOL)enabled;
@@ -159,6 +166,7 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
  *  @param pickupDateTime         The pickup date and time
  *  @param returnDateTime         The return date and time
  *  @param destinationCountryCode The destination country code eg. ES
+ *  @param selectedVehicle        The selected vehicle object
  *  @param completion             Returns an Insurance object on successfull completion and ErrorResponse on fail
  */
 - (void)requestInsuranceQuoteForVehicle:(NSString *)homeCountry
@@ -167,6 +175,7 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
                          pickupDateTime:(NSDate *)pickupDateTime
                          returnDateTime:(NSDate *)returnDateTime
                  destinationCountryCode:(NSString *)destinationCountryCode
+                        selectedVehicle:(CTAvailabilityItem *)selectedVehicle
                              completion:(InsuranceQuoteCompletion)completion;
 
 #pragma mark Vehicle Services

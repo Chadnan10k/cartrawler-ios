@@ -1,0 +1,56 @@
+{
+"@xmlns": "http://www.cartrawler.com/",
+"@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+"@xsi:schemaLocation": "http://www.cartrawler.com/ CT_VehLocSearchRS.xsd",
+"@Version": "1.000",
+"@Target": "Test",
+"@PrimaryLangID": "EN",
+"@TimeStamp": "2017-02-24T10:42:06.943Z",
+"Success": [],
+"VehMatchedLocs": {
+"@Page": "1",
+"@Pages": "2",
+"LocationDetail": [{
+"@Code": "11",
+"@Name": "Dublin - Airport",
+"@CountryCode": "IE",
+"@AirportCode": "DUB"
+}, {
+"@Code": "174165",
+"@Name": "Dublin - Heuston Train Station",
+"@CountryCode": "IE"
+}, {
+"@Code": "160165",
+"@Name": "Dublin - Croke Park",
+"@CountryCode": "IE"
+}, {
+"@Code": "160185",
+"@Name": "Dublin - BallyBough",
+"@CountryCode": "IE"
+}, {
+"@Code": "167597",
+"@Name": "Dublin North City",
+"@CountryCode": "IE"
+}, {
+"@Code": "174169",
+"@Name": "Dublin - Drumcondra",
+"@CountryCode": "IE"
+}, {
+"@Code": "180229",
+"@Name": "Dublin - Grand Canal",
+"@CountryCode": "IE"
+}, {
+"@Code": "180233",
+"@Name": "Dublin South",
+"@CountryCode": "IE"
+}, {
+"@Code": "51436",
+"@Name": "Dublin - Swords",
+"@CountryCode": "IE"
+}, {
+"@Code": "823",
+"@Name": "Dublin - Dun Laoghaire-Rathdown",
+"@CountryCode": "IE"
+}]
+}
+}

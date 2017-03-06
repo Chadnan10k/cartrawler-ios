@@ -9,6 +9,8 @@
 #import "CTMerhandisingBanner.h"
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTAppearance.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTMerhandisingBanner()
 
@@ -43,11 +45,15 @@
     
 - (void)setSpecialOffer:(NSString *)offerText
 {
-    self.textLabel.text = [NSString stringWithFormat:@"Special Offer - Free %@", offerText];
+    
+    NSString *specialOfferPrefix = CTLocalizedString(CTRentalIncludedTitle);
+    
+    self.textLabel.text = [NSString stringWithFormat:@"%@ %@",specialOfferPrefix, offerText];
     self.textLabel.textAlignment = NSTextAlignmentLeft;
     self.backgroundColor = [CTAppearance instance].merchandisingSpecialOffer;
     self.textLabel.textColor = [UIColor whiteColor];
-    self.textLabel.minimumScaleFactor = 0.5;
+    self.textLabel.adjustsFontSizeToFitWidth = YES;
+
     self.hidden = NO;
     
     CGSize textSize = [self.textLabel.text
@@ -64,14 +70,14 @@
 {
     switch (bannerType) {
         case CTMerhandisingBannerTypeBestSeller:
-            self.textLabel.text = @"Best Seller";
+            self.textLabel.text = CTLocalizedString(CTRentalVehicleBestSeller);
             self.backgroundColor = [CTAppearance instance].merchandisingBestSeller;
             self.textLabel.textColor = [UIColor whiteColor];
             self.hidden = NO;
             break;
             
         case CTMerhandisingBannerTypeGreatValue:
-            self.textLabel.text = @"Great Value";
+            self.textLabel.text = CTLocalizedString(CTRentalVehicleGreatValue);
             self.backgroundColor = [CTAppearance instance].merchandisingGreatValue;
             self.textLabel.textColor = [UIColor whiteColor];
             self.hidden = NO;

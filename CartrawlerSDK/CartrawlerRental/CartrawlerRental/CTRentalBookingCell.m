@@ -7,9 +7,11 @@
 //
 
 #import "CTRentalBookingCell.h"
+#import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
 #import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTRentalBookingCell()
 
@@ -49,7 +51,7 @@
     self.dropoffTimeLabel.text = [booking.dropoffDate stringFromDateWithFormat:@"hh:mm a"];
     self.pickupDateLabel.text = [booking.pickupDate stringFromDateWithFormat:@"dd MMM YYYY"];
     self.dropoffDateLabel.text = [booking.dropoffDate stringFromDateWithFormat:@"dd MMM YYYY"];
-    self.refLabel.text = [NSString stringWithFormat:@"Booking reference: %@", booking.bookingId];
+    self.refLabel.text = [NSString stringWithFormat:@"%@ %@", CTLocalizedString(CTRentalBookingReferencePrefix), booking.bookingId];
     self.vehicleNameLabel.text = booking.vehicleName;
     
     NSAttributedString *vehicleName = [[NSAttributedString alloc] initWithString:booking.vehicleName ?: @""
@@ -57,7 +59,8 @@
                                                                                    NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].boldFontName size:17],
                                                                                    NSForegroundColorAttributeName : [CTAppearance instance].navigationBarColor
                                                                                    }];
-    NSAttributedString *orSimilar = [[NSAttributedString alloc] initWithString:@" or similar"
+    NSString *orSimilarString = [NSString stringWithFormat:@" %@", CTLocalizedString(CTRentalVehicleOrSimilar)];
+    NSAttributedString *orSimilar = [[NSAttributedString alloc] initWithString:orSimilarString
                                                                       attributes:@{
                                                                                    NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:17],
                                                                                    NSForegroundColorAttributeName : [CTAppearance instance].navigationBarColor

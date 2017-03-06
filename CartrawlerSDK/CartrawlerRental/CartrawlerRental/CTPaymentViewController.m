@@ -22,6 +22,8 @@
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 #import "CTPaymentLoadingViewController.h"
 #import "CTRentalConstants.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTPaymentViewController () <UITextViewDelegate, CTPaymentViewDelegate, UIAlertViewDelegate>
 
@@ -35,6 +37,7 @@
 @property (nonatomic) Reachability *internetReachability;
 
 @property (nonatomic, strong) UIAlertView *alertView;
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 
 @end
 
@@ -43,8 +46,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"payment" step:@8];
 
+    [self tagScreen];
+    
     double total = 0;
     
     if (self.search.isBuyingInsurance) {
@@ -53,7 +57,7 @@
     
     total += self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue;
     
-    NSString *buttonText = [NSString stringWithFormat:@"Book now for %@", [@(total) numberStringWithCurrencyCode]];
+    NSString *buttonText = [NSString stringWithFormat:@"%@ %@", CTLocalizedString(CTRentalCTABook), [@(total) numberStringWithCurrencyCode]];
     [self.confirmButton setText:buttonText];
 
     self.backButton.enabled = YES;
@@ -63,8 +67,8 @@
     switch (networkStatus) {
         case NotReachable:
             NSLog(@"no internet");
-            [self presentAlertView:@"No Internet Connection"
-                           message:@"In order to complete your booking you will need an internet connection"];
+            [self presentAlertView:CTLocalizedString(CTRentalErrorPaymentNoInternet1)
+                           message:CTLocalizedString(CTRentalErrorPaymentNoInternet2)];
             [self.navigationController popViewControllerAnimated:YES];
             break;
         case ReachableViaWiFi:
@@ -78,6 +82,18 @@
     }
     
     _loadingViewVisible = NO;
+    
+    self.titleLabel.text = CTLocalizedString(CTRentalTitlePayment);
+    NSString *link1 = [NSString stringWithFormat:@"<a href='www.cartrawler.com'><b>%@</b></a>", CTLocalizedString(CTRentalPaymentText2)];
+    NSString *termsStr = [NSString stringWithFormat:CTLocalizedString(CTRentalPaymentText1), link1];
+    
+    //seems lazy but efficient
+    
+    self.termsLabel.attributedText = [CTHTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
+                                                                  pointSize:15.0
+                                                                       text:termsStr
+                                                              boldFontColor:@"#000000"
+                                                                  fontColor:@"#000000"];
 }
 
 - (void)refresh
@@ -104,21 +120,11 @@
     self.paymentView.delegate = self;
     [self.paymentView presentInView:self.webViewContainer];
     [self.paymentView setForCarRentalPayment:self.search];//for initial load
-
+    
     _internetReachability = [Reachability reachabilityForInternetConnection];
     [self.internetReachability startNotifier];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     
-    NSString *link1 = @"<a href='www.cartrawler.com'><b>Terms and conditions</b></a>";
-    
-    NSString *termsStr = [NSString stringWithFormat:@"Tap ‘Book now’ to complete your booking and accept our %@", link1];
-    
-    //seems lazy but efficient
-    self.termsLabel.attributedText = [CTHTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
-                                                                pointSize:15.0
-                                                                     text:termsStr
-                                                            boldFontColor:@"#000000"
-                                                                fontColor:@"#000000"];
     self.termsLabel.delegate = self;
     self.paymentView.backgroundColor = [UIColor whiteColor];
 }
@@ -195,8 +201,8 @@
     [[CTAnalytics instance] tagError:@"step8" event:@"Payment webview load" message:@"failed"];
     //retry
     if (!self.loadingViewVisible) {
-        [self presentAlertView:@"Sorry"
-                       message:@"We are having trouble loading the payment screen"];
+        [self presentAlertView:CTLocalizedString(CTRentalErrorPaymentLoading1)
+                       message:CTLocalizedString(CTRentalErrorPaymentLoading2)];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -206,6 +212,7 @@
     [CTPaymentLoadingViewController dismiss];
     [self enableControls:YES];
     [self pushToDestination];
+    [self trackSale];
     if (self.delegate) {
         [self.delegate didBookVehicle:self.search.booking];
     }
@@ -224,8 +231,8 @@
             
             //also disallow the user to make payment as they are going to a dead end
             if (!self.loadingViewVisible) {
-                [self presentAlertView:@"No Internet Connection"
-                               message:@"In order to complete your booking you will need an internet connection"];
+                [self presentAlertView:CTLocalizedString(CTRentalErrorPaymentNoInternet1)
+                               message:CTLocalizedString(CTRentalErrorPaymentNoInternet2)];
                 
                 [self.navigationController popViewControllerAnimated:YES];
             }
@@ -267,7 +274,7 @@
         _alertView = [[UIAlertView alloc] initWithTitle:title
                                                 message:message
                                                delegate:self
-                                      cancelButtonTitle:@"OK"
+                                      cancelButtonTitle:CTLocalizedString(CTRentalErrorOk)
                                       otherButtonTitles:nil, nil];
     }
     [self.alertView show];
@@ -276,6 +283,16 @@
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     
+}
+
+#pragma mark Analytics
+
+- (void)tagScreen
+{
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"payment" step:@8];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Payment Step",
+                                      @"stepName" : @"Step8",
+                                      } eventName:@"Step of search" eventType:@"Step"];
 }
 
 @end

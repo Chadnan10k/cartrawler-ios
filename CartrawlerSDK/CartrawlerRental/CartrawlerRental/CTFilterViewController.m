@@ -14,10 +14,15 @@
 #import "CTFilterContainer.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import "CTRentalConstants.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTButton.h>
 
 @interface CTFilterViewController ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 
 @property (strong, nonatomic) CTFilterTableView *carSizeTableView;
 @property (strong, nonatomic) CTFilterTableView *pickupLocationTableView;
@@ -30,6 +35,8 @@
 
 @property (nonatomic, strong) CTFilterFactory *filterFactory;
 @property (nonatomic, strong) NSArray <CTFilterContainer *>*viewArray;
+@property (weak, nonatomic) IBOutlet CTButton *resetButton;
+@property (weak, nonatomic) IBOutlet CTButton *doneButton;
 
 @end
 
@@ -57,17 +64,20 @@
     self.fuelPolicyTableView.delegate   = self.filterFactory.fuelPolicyDataSource;
     self.transmissionTableView.dataSource = self.filterFactory.transmissionDataSource;
     self.transmissionTableView.delegate   = self.filterFactory.transmissionDataSource;
-    
-    self.carSizeTableView.tableViewTitle        = NSLocalizedString(@"Vehicle Size", @"Vehicle Size");
-    self.pickupLocationTableView.tableViewTitle = NSLocalizedString(@"Pick-up desk location", @"Pickup");
-    self.vendorsTableView.tableViewTitle        = NSLocalizedString(@"Car rental companies", @"Vendors");
-    self.fuelPolicyTableView.tableViewTitle     = NSLocalizedString(@"Fuel policy", @"Fuel policy");
-    self.transmissionTableView.tableViewTitle   = NSLocalizedString(@"Transmission", @"Transmission");
 
     [self setupContainers];
     
     [self.view layoutIfNeeded];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleFilters);
+    
+    [self.resetButton setTitle:CTLocalizedString(CTRentalFilterReset) forState:UIControlStateNormal];
+    [self.doneButton setTitle:CTLocalizedString(CTRentalCTADone) forState:UIControlStateNormal];
 }
 
 - (void)updateData:(CTVehicleAvailability *)data
@@ -82,6 +92,12 @@
 
 - (void)setupContainers
 {
+    
+    self.carSizeTableView.tableViewTitle        = CTLocalizedString(CTRentalFilterCarsize);
+    self.pickupLocationTableView.tableViewTitle = CTLocalizedString(CTRentalFilterPickup);
+    self.vendorsTableView.tableViewTitle        = CTLocalizedString(CTRentalFilterSupplier);
+    self.fuelPolicyTableView.tableViewTitle     = CTLocalizedString(CTRentalFilterCarFuel);
+    self.transmissionTableView.tableViewTitle   = CTLocalizedString(CTRentalFilterTransmission);
     
     CTFilterContainer *carSizeContainer = [[CTFilterContainer alloc] initWithFrame:CGRectZero];
     [carSizeContainer setTableView:self.carSizeTableView];
@@ -237,6 +253,7 @@
             [self.view updateConstraints];
         }
     }
+    
 }
 
 + (CTFilterViewController *)initInViewController:(UIViewController *)viewController withData:(CTVehicleAvailability *)data

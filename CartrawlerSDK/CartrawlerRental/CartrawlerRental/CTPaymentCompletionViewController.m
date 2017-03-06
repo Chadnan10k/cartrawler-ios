@@ -16,6 +16,9 @@
 #import <CartrawlerSDK/CTView.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIView.h>
 #import "CTBookingSummaryView.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 
 @interface CTPaymentCompletionViewController () <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet CTLabel *paymentTitleLabel;
@@ -28,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet CTView *completionView;
 @property (weak, nonatomic) IBOutlet CTView *summaryView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryHeight;
+@property (weak, nonatomic) IBOutlet CTLabel *bookingReferenceTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scrollForSummaryLabel;
 
 @end
 
@@ -36,8 +41,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.doneButton setText:@"Back to homepage"];
-    self.scrollView.backgroundColor = [CTAppearance instance].viewBackgroundColor;
 }
 
 
@@ -45,7 +48,9 @@
 {
     [super viewDidAppear:animated];
     // Disable iOS 7 back gesture
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"confirmati" step:@9];
+
+    [self tagScreen];
+    
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
         self.navigationController.interactivePopGestureRecognizer.delegate = self;
@@ -59,17 +64,24 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    // Do any additional setup after loading the view.
+
     [self.scrollView setContentOffset:CGPointZero];
 
-    self.bookingReferenceLabel.text = [NSString stringWithFormat:@"%@", self.search.booking.confID ?: @"No Booking Ref"];
-    self.emailLabel.text = [NSString stringWithFormat:@"We have sent a confirmation email to %@. This may take up to 15 minutes to arrive. Please review your voucher before picking up your car.", self.search.email];
+    self.bookingReferenceLabel.text = [NSString stringWithFormat:@"%@", self.search.booking.confID ?: CTLocalizedString(CTRentalErrorNoBookingRef)];
+    self.emailLabel.text = [NSString stringWithFormat:CTLocalizedString(CTRentalReceiptEmailText), self.search.email];
+    
+    [self.doneButton setText:CTLocalizedString(CTRentalCTAToHomepage)];
+    self.scrollView.backgroundColor = [CTAppearance instance].viewBackgroundColor;
+    self.bookingReferenceTitleLabel.text = CTLocalizedString(CTRentalReceiptYourReference);
+    self.scrollForSummaryLabel.text = CTLocalizedString(CTRentalReceiptScroll);
+    self.paymentTitleLabel.text = CTLocalizedString(CTRentalReceiptCongratulations);
+    self.paymentSubtitleLabel.text = CTLocalizedString(CTRentalReceiptSuccess);
 
 }
 
 - (IBAction)done:(id)sender
 {
-    [[CTAnalytics instance] tagScreen:@"Exit" detail:@"9" step:@9];
+    [[CTAnalytics instance] tagScreen:@"exit" detail:@"9" step:@9];
     [[CTImageCache sharedInstance] removeAllObjects];
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
@@ -90,6 +102,34 @@
         segue.destinationViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
 
     }
+}
+
+#pragma mark Analytics
+
+- (void)tagScreen
+{
+
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"confirmati" step:@9];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Booking Confirmation Step",
+                                      @"stepName" : @"Step9",
+                                      } eventName:@"Step of search" eventType:@"Step"];
+
+    NSString *vehName = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.makeModelName,
+                         self.search.selectedVehicle.vehicle.orSimilar];
+    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Booking",
+                                      @"reservationID" : self.search.booking.confID,
+                                      @"insuranceOffered" : self.search.insurance ? @"true" : @"false",
+                                      @"insurancePurchased" : self.search.isBuyingInsurance ? @"true" : @"false",
+                                      @"age" : self.search.driverAge.stringValue,
+                                      @"clientID" : [CTSDKSettings instance].clientId,
+                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode,
+                                      @"pickupName" : self.search.pickupLocation.name,
+                                      @"pickupDate" : [self.search.pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                                      @"returnName" : self.search.dropoffLocation.name,
+                                      @"returnDate" : [self.search.dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                                      @"carSelected" : vehName
+                                      } eventName:@"Booking" eventType:@"Booking"];
 }
 
 @end

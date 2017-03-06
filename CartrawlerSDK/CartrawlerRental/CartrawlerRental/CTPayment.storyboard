@@ -248,11 +248,13 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="bookingReferenceLabel" destination="TIH-jB-Mbp" id="c6M-pJ-dJL"/>
+                        <outlet property="bookingReferenceTitleLabel" destination="SEq-sw-9sl" id="BIB-9U-TeQ"/>
                         <outlet property="completionView" destination="nIz-ff-Vhb" id="xiI-3P-HwU"/>
                         <outlet property="doneButton" destination="ruw-3Z-fM6" id="9Pw-Ow-OWG"/>
                         <outlet property="emailLabel" destination="IBJ-wf-Yqa" id="lEg-eS-Tji"/>
                         <outlet property="paymentSubtitleLabel" destination="O5f-aa-QdY" id="GDn-Zx-hom"/>
                         <outlet property="paymentTitleLabel" destination="oj9-mp-CYA" id="XIc-16-R5z"/>
+                        <outlet property="scrollForSummaryLabel" destination="ucO-pd-sKI" id="i45-am-lhl"/>
                         <outlet property="scrollView" destination="oGu-gG-koo" id="rhT-vk-C27"/>
                         <outlet property="summaryHeight" destination="Q33-6R-BgH" id="NaM-OY-4Df"/>
                         <outlet property="summaryView" destination="bXo-hw-HY1" id="jBz-hr-DT8"/>
@@ -407,6 +409,7 @@
                         <outlet property="backButton" destination="med-a6-6uJ" id="3JN-fb-gDg"/>
                         <outlet property="confirmButton" destination="iE3-lT-4WK" id="GY3-zr-5v8"/>
                         <outlet property="termsLabel" destination="hWi-uf-kjB" id="nh8-O2-WN6"/>
+                        <outlet property="titleLabel" destination="DZY-vA-PvS" id="TWU-B3-Wrz"/>
                         <outlet property="webViewContainer" destination="c54-jM-Sxn" id="5T8-an-LuL"/>
                     </connections>
                 </viewController>

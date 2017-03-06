@@ -9,6 +9,8 @@
 #import "CTOptionalExtrasViewController.h"
 #import "CTOptionalExtraTableViewCell.h"
 #import <CartrawlerSDK/CTNextButton.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTOptionalExtrasViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -16,13 +18,15 @@
 @property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray<CTExtraEquipment *> *extras;
+@property (weak, nonatomic) IBOutlet CTLabel *conditionsLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *extrasTitleLabel;
+
 @end
 
 @implementation CTOptionalExtrasViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.nextButton setText:NSLocalizedString(@"Continue", @"")];
     // Do any additional setup after loading the view.
     self.tableView.allowsSelection = NO;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -34,13 +38,18 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-e" step:@4];
-
+    
+    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    self.conditionsLabel.text = CTLocalizedString(CTRentalExtrasConditions);
+    self.extrasTitleLabel.text = CTLocalizedString(CTRentalAddExtrasTitle);
+    
+    [self tagScreen];
     if ([CTRentalSearch instance].insurance) {
         self.bottomSpace.constant = 0;
     } else {
@@ -76,6 +85,21 @@
     CTOptionalExtraTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     [cell setData:self.extras[indexPath.row]];
     return cell;
+}
+
+#pragma mark Analytics
+
+- (void)tagScreen
+{
+    NSString *insOfferedA = self.search.insurance ? @"yes" : @"no";
+    NSString *insOfferedB = self.search.insurance ? @"true" : @"false";
+
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-e" step:@4];
+    [[CTAnalytics instance] tagScreen:@"ins_offer" detail:insOfferedA step:@4];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Insurance & Extras Step",
+                                      @"stepName" : @"Step4",
+                                      @"insuranceOffered" : insOfferedB
+                                      } eventName:@"Step of search" eventType:@"Step"];
 }
 
 @end

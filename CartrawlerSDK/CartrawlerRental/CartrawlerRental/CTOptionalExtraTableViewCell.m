@@ -12,6 +12,8 @@
 #import <CartrawlerSDK/CTStepper.h>
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTRentalSearch.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTOptionalExtraTableViewCell()
 
@@ -20,13 +22,11 @@
 @property (weak, nonatomic) IBOutlet CTLabel *itemPriceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
 @property (weak, nonatomic) IBOutlet UIButton *minusButton;
+@property (strong, nonatomic) CTExtraEquipment *extra;
 
 @end
 
 @implementation CTOptionalExtraTableViewCell
-{
-    CTExtraEquipment *_extra;
-}
 
 - (void)awakeFromNib
 {
@@ -37,7 +37,7 @@
 {
     self = [super initWithCoder:aDecoder];
     
-    _extra.qty = 0;
+    self.extra.qty = 0;
     
     return self;
 }
@@ -55,6 +55,7 @@
     
     [self updateAmountLabel];
     [self setPricePerDay];
+    [self updateButtons];
 }
 
 - (void)setPricePerDay
@@ -66,14 +67,17 @@
                                                          options:0];
     
     self.itemPriceLabel.text = [NSString stringWithFormat:@"%@ %@",
-                                [[NSNumber numberWithFloat:_extra.chargeAmount.floatValue / ([components day] ?: 1 )] numberStringWithCurrencyCode], NSLocalizedString(@"per day", @"")];
+                                [[NSNumber numberWithFloat:self.extra.chargeAmount.floatValue / ([components day] ?: 1 )] numberStringWithCurrencyCode], CTLocalizedString(CTRentalExtrasPerDay)];
 }
 
 - (IBAction)add:(id)sender {
-    if (_extra.qty < 4) {
-        _extra.qty++;
+    if (self.extra.qty < 4) {
+        self.extra.qty++;
         [self updateAmountLabel];
     }
+    
+    [self updateButtons];
+    
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.1 options:0 animations:^{
         self.plusButton.transform = CGAffineTransformMakeScale(1.25, 1.25);
         self.amountLabel.transform = CGAffineTransformMakeScale(1.25, 1.25);
@@ -86,10 +90,13 @@
 }
 
 - (IBAction)subtract:(id)sender {
-    if (_extra.qty > 0) {
-        _extra.qty--;
+    if (self.extra.qty > 0) {
+        self.extra.qty--;
         [self updateAmountLabel];
     }
+    
+    [self updateButtons];
+    
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:0 animations:^{
         self.minusButton.transform = CGAffineTransformMakeScale(1.25, 1.25);
         self.amountLabel.transform = CGAffineTransformMakeScale(1.25, 1.25);
@@ -101,9 +108,24 @@
     }];
 }
 
+- (void)updateButtons
+{
+    if (self.extra.qty == 0) {
+        self.minusButton.tintColor = [CTAppearance instance].subheaderTitleColor;
+    } else {
+        self.minusButton.tintColor = [CTAppearance instance].headerTitleColor;
+    }
+    
+    if (self.extra.qty == 4) {
+        self.plusButton.tintColor = [CTAppearance instance].subheaderTitleColor;
+    } else {
+        self.plusButton.tintColor = [CTAppearance instance].headerTitleColor;
+    }
+}
+
 - (void)updateAmountLabel
 {
-    self.amountLabel.text = [NSString stringWithFormat:@"%ld", (long)_extra.qty];
+    self.amountLabel.text = [NSString stringWithFormat:@"%ld", (long)self.extra.qty];
 }
 
 - (UIImage *)imageForExtra:(NSString *)extraId

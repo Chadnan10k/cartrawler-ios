@@ -22,7 +22,6 @@
 @property(nonatomic, strong) NSString *city;
 @property(nonatomic, strong) NSString *postcode;
 @property(nonatomic, strong) NSString *countryCode;
-@property(nonatomic, strong) NSString *countryName;
-@property(nonatomic, strong) NSString *currency; 
+@property(nonatomic, strong) NSString *currency;
     
 @end

@@ -13,6 +13,9 @@
 #import "CalendarLogicController.h"
 #import "CTCalendarView.h"
 #import "CTAppearance.h"
+#import "CTSDKLocalizationConstants.h"
+#import "CTLocalisedStrings.h"
+#import "CTSDKSettings.h"
 
 @interface CTCalendarView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -141,6 +144,7 @@
     headerView.alpha = 0.9;
     [headerView addSubview:customLabel];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.locale = [NSLocale localeWithLocaleIdentifier:[CTSDKSettings instance].languageCode];
     df.dateFormat = @"MMMM YYYY";
     NSString *dateStr = [df stringFromDate:self.months[section]];
     customLabel.text = dateStr;
@@ -154,13 +158,13 @@
     [self.weekDayTitle.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     CGFloat width = (CGRectGetWidth(frame) - self.padding * 2) / 7;
     
-    NSArray *titles = @[NSLocalizedString(@"Sun", @""),
-                        NSLocalizedString(@"Mon", @""),
-                        NSLocalizedString(@"Tue", @""),
-                        NSLocalizedString(@"Wed", @""),
-                        NSLocalizedString(@"Thu", @""),
-                        NSLocalizedString(@"Fri", @""),
-                        NSLocalizedString(@"Sat", @"")];
+    NSArray *titles = @[CTLocalizedString(CTSDKCalendarSun),
+                        CTLocalizedString(CTSDKCalendarMon),
+                        CTLocalizedString(CTSDKCalendarTue),
+                        CTLocalizedString(CTSDKCalendarWed),
+                        CTLocalizedString(CTSDKCalendarThu),
+                        CTLocalizedString(CTSDKCalendarFri),
+                        CTLocalizedString(CTSDKCalendarSat)];
     
     NSMutableArray<UILabel *> *labelArray = [[NSMutableArray alloc] init];
     

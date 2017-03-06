@@ -9,12 +9,16 @@
 #import "CTSettingsSelectionViewController.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTLabel.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTButton.h>
 
 @interface CTSettingsSelectionViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<CTCSVItem *> *data;
 @property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
+@property (weak, nonatomic) IBOutlet CTButton *backButton;
 
 @property (nonatomic) SettingsType settingType;
 
@@ -22,12 +26,11 @@
 
 @implementation CTSettingsSelectionViewController
 
-
-
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.backButton setTitle:CTLocalizedString(CTRentalCTAClose)forState:UIControlStateNormal];
     
     _data = [[NSMutableArray alloc] init];
     
@@ -36,15 +39,15 @@
     switch (self.settingType) {
         case SettingsTypeCountry:
             fileName = @"CTISOCountries";
-            self.titleLabel.text = NSLocalizedString(@"Select Country", @"Select Country");
+            self.titleLabel.text = CTLocalizedString(CTRentalSettingsSelectCountry);
             break;
         case SettingsTypeCurrency:
             fileName = @"CTCurrency";
-            self.titleLabel.text = NSLocalizedString(@"Select Currency", @"Select Currency");
+            self.titleLabel.text = CTLocalizedString(CTRentalSettingsSelectCurrency);
             break;
         case SettingsTypeLanguage:
             fileName = @"CTLanguages";
-            self.titleLabel.text = NSLocalizedString(@"Select Language", @"Select Language");
+            self.titleLabel.text = CTLocalizedString(CTRentalSettingsSelectLanguage);
             break;
         default:
             break;

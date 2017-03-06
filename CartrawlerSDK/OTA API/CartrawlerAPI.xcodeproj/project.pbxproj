@@ -104,6 +104,16 @@
 		455B58221DCC8D9500CA4790 /* CTGroundItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B264FF1D92A8B3000005F2 /* CTGroundItem.m */; };
 		455B58251DCC903600CA4790 /* CartrawlerAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 45916DC71CBBDAEE00389B88 /* CartrawlerAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45D386081DD62277000F02D1 /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45D386071DD62277000F02D1 /* strip-frameworks.sh */; };
+		BC4A3FE91E5F3DBF00EFB055 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455B57C91DCC8D7900CA4790 /* CartrawlerAPI.framework */; };
+		BC4A3FEF1E5F3DC800EFB055 /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B99C81CFEF184001D07A7 /* LocationTests.m */; };
+		BC4A40001E60466700EFB055 /* PartialTextRS.json in Resources */ = {isa = PBXBuildFile; fileRef = BC4A3FFF1E60466700EFB055 /* PartialTextRS.json */; };
+		BC758D2B1E604849008EA8C1 /* CitySearchRS.json in Resources */ = {isa = PBXBuildFile; fileRef = BC758D2A1E604849008EA8C1 /* CitySearchRS.json */; };
+		BC758D2D1E604903008EA8C1 /* IATALocationSearchRS.json in Resources */ = {isa = PBXBuildFile; fileRef = BC758D2C1E604903008EA8C1 /* IATALocationSearchRS.json */; };
+		BC758D2F1E605103008EA8C1 /* LocationResult.json in Resources */ = {isa = PBXBuildFile; fileRef = BC758D2E1E605103008EA8C1 /* LocationResult.json */; };
+		BC758D311E60512A008EA8C1 /* PartialTextLocationResult.json in Resources */ = {isa = PBXBuildFile; fileRef = BC758D301E60512A008EA8C1 /* PartialTextLocationResult.json */; };
+		BC758D321E605C66008EA8C1 /* VehicleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B99CA1CFEF24E001D07A7 /* VehicleTests.m */; };
+		BC758D341E605FEF008EA8C1 /* CT_IPToCountry_RS.json in Resources */ = {isa = PBXBuildFile; fileRef = BC758D331E605FEF008EA8C1 /* CT_IPToCountry_RS.json */; };
+		BC758D351E644584008EA8C1 /* VehAvailJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 451B99D01CFEFD2C001D07A7 /* VehAvailJSON.json */; };
 		BC811C6D1E2946CF0049C3DF /* CT_IpToCountryRQ.h in Headers */ = {isa = PBXBuildFile; fileRef = BC811C6B1E2946CF0049C3DF /* CT_IpToCountryRQ.h */; };
 		BC811C6E1E2946CF0049C3DF /* CT_IpToCountryRQ.m in Sources */ = {isa = PBXBuildFile; fileRef = BC811C6C1E2946CF0049C3DF /* CT_IpToCountryRQ.m */; };
 		BC811C721E294C9C0049C3DF /* CT_IpToCountryRS.h in Headers */ = {isa = PBXBuildFile; fileRef = BC811C701E294C9C0049C3DF /* CT_IpToCountryRS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -112,9 +122,19 @@
 		BC9F6E561E254289006DD990 /* CTEngineInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F6E541E254289006DD990 /* CTEngineInfo.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BC4A3FEA1E5F3DBF00EFB055 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45916DBC1CBBDAEE00389B88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 455B57C81DCC8D7900CA4790;
+			remoteInfo = CartrawlerAPI;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		451B99C81CFEF184001D07A7 /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTests.m; sourceTree = "<group>"; };
-		451B99CA1CFEF24E001D07A7 /* VehicleBookingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleBookingTests.m; sourceTree = "<group>"; };
+		451B99CA1CFEF24E001D07A7 /* VehicleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleTests.m; sourceTree = "<group>"; };
 		451B99CE1CFEF5B8001D07A7 /* InsuranceQuoteJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InsuranceQuoteJSON.json; sourceTree = "<group>"; };
 		451B99D01CFEFD2C001D07A7 /* VehAvailJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VehAvailJSON.json; sourceTree = "<group>"; };
 		451B99D21CFF2835001D07A7 /* BookVehicleJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BookVehicleJSON.json; sourceTree = "<group>"; };
@@ -211,6 +231,13 @@
 		45FCA08D1CBFDB980079AA68 /* CTVehicleAvailability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleAvailability.m; sourceTree = "<group>"; };
 		45FCA0981CBFE4890079AA68 /* CTInsurance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInsurance.h; sourceTree = "<group>"; };
 		45FCA0991CBFE4890079AA68 /* CTInsurance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsurance.m; sourceTree = "<group>"; };
+		BC4A3FE41E5F3DBF00EFB055 /* CartrawlerAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC4A3FFF1E60466700EFB055 /* PartialTextRS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PartialTextRS.json; sourceTree = "<group>"; };
+		BC758D2A1E604849008EA8C1 /* CitySearchRS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CitySearchRS.json; sourceTree = "<group>"; };
+		BC758D2C1E604903008EA8C1 /* IATALocationSearchRS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IATALocationSearchRS.json; sourceTree = "<group>"; };
+		BC758D2E1E605103008EA8C1 /* LocationResult.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocationResult.json; sourceTree = "<group>"; };
+		BC758D301E60512A008EA8C1 /* PartialTextLocationResult.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PartialTextLocationResult.json; sourceTree = "<group>"; };
+		BC758D331E605FEF008EA8C1 /* CT_IPToCountry_RS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CT_IPToCountry_RS.json; sourceTree = "<group>"; };
 		BC811C6B1E2946CF0049C3DF /* CT_IpToCountryRQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CT_IpToCountryRQ.h; sourceTree = "<group>"; };
 		BC811C6C1E2946CF0049C3DF /* CT_IpToCountryRQ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CT_IpToCountryRQ.m; sourceTree = "<group>"; };
 		BC811C701E294C9C0049C3DF /* CT_IpToCountryRS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CT_IpToCountryRS.h; sourceTree = "<group>"; };
@@ -224,6 +251,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC4A3FE11E5F3DBF00EFB055 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC4A3FE91E5F3DBF00EFB055 /* CartrawlerAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				455B57C91DCC8D7900CA4790 /* CartrawlerAPI.framework */,
+				BC4A3FE41E5F3DBF00EFB055 /* CartrawlerAPITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -324,7 +360,7 @@
 				45D53D511CBBE8E600DEDB0B /* Info.plist */,
 				45233D271CF4542100B8E2B2 /* GroundAvailRSJSON.json */,
 				451B99C81CFEF184001D07A7 /* LocationTests.m */,
-				451B99CA1CFEF24E001D07A7 /* VehicleBookingTests.m */,
+				451B99CA1CFEF24E001D07A7 /* VehicleTests.m */,
 				451B9A501D005F2B001D07A7 /* GTTests.m */,
 				451B99CE1CFEF5B8001D07A7 /* InsuranceQuoteJSON.json */,
 				451B99D01CFEFD2C001D07A7 /* VehAvailJSON.json */,
@@ -332,6 +368,12 @@
 				451B99D41CFF2A01001D07A7 /* RetRes.json */,
 				451B99F61CFF40E0001D07A7 /* TermsAndCond.json */,
 				45C69A2F1D460F310045136D /* USInsurance.json */,
+				BC4A3FFF1E60466700EFB055 /* PartialTextRS.json */,
+				BC758D2A1E604849008EA8C1 /* CitySearchRS.json */,
+				BC758D2C1E604903008EA8C1 /* IATALocationSearchRS.json */,
+				BC758D2E1E605103008EA8C1 /* LocationResult.json */,
+				BC758D301E60512A008EA8C1 /* PartialTextLocationResult.json */,
+				BC758D331E605FEF008EA8C1 /* CT_IPToCountry_RS.json */,
 			);
 			path = CartrawlerAPITests;
 			sourceTree = "<group>";
@@ -543,6 +585,24 @@
 			productReference = 455B57C91DCC8D7900CA4790 /* CartrawlerAPI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		BC4A3FE31E5F3DBF00EFB055 /* CartrawlerAPITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC4A3FEE1E5F3DBF00EFB055 /* Build configuration list for PBXNativeTarget "CartrawlerAPITests" */;
+			buildPhases = (
+				BC4A3FE01E5F3DBF00EFB055 /* Sources */,
+				BC4A3FE11E5F3DBF00EFB055 /* Frameworks */,
+				BC4A3FE21E5F3DBF00EFB055 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC4A3FEB1E5F3DBF00EFB055 /* PBXTargetDependency */,
+			);
+			name = CartrawlerAPITests;
+			productName = CartrawlerAPITests;
+			productReference = BC4A3FE41E5F3DBF00EFB055 /* CartrawlerAPITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -562,6 +622,11 @@
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
 					};
+					BC4A3FE31E5F3DBF00EFB055 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 45916DBF1CBBDAEE00389B88 /* Build configuration list for PBXProject "CartrawlerAPI" */;
@@ -578,6 +643,7 @@
 			targets = (
 				455B57C81DCC8D7900CA4790 /* CartrawlerAPI */,
 				45CB04741DEDCECF0086BEA0 /* BuildAPI */,
+				BC4A3FE31E5F3DBF00EFB055 /* CartrawlerAPITests */,
 			);
 		};
 /* End PBXProject section */
@@ -588,6 +654,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				45D386081DD62277000F02D1 /* strip-frameworks.sh in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC4A3FE21E5F3DBF00EFB055 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC758D311E60512A008EA8C1 /* PartialTextLocationResult.json in Resources */,
+				BC4A40001E60466700EFB055 /* PartialTextRS.json in Resources */,
+				BC758D351E644584008EA8C1 /* VehAvailJSON.json in Resources */,
+				BC758D2D1E604903008EA8C1 /* IATALocationSearchRS.json in Resources */,
+				BC758D341E605FEF008EA8C1 /* CT_IPToCountry_RS.json in Resources */,
+				BC758D2B1E604849008EA8C1 /* CitySearchRS.json in Resources */,
+				BC758D2F1E605103008EA8C1 /* LocationResult.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,7 +741,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BC4A3FE01E5F3DBF00EFB055 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC758D321E605C66008EA8C1 /* VehicleTests.m in Sources */,
+				BC4A3FEF1E5F3DC800EFB055 /* LocationTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BC4A3FEB1E5F3DBF00EFB055 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 455B57C81DCC8D7900CA4790 /* CartrawlerAPI */;
+			targetProxy = BC4A3FEA1E5F3DBF00EFB055 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		455B57CF1DCC8D7900CA4790 /* Debug */ = {
@@ -832,6 +929,34 @@
 			};
 			name = Release;
 		};
+		BC4A3FEC1E5F3DBF00EFB055 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				INFOPLIST_FILE = CartrawlerAPITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.qa.CartrawlerAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BC4A3FED1E5F3DBF00EFB055 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				INFOPLIST_FILE = CartrawlerAPITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.qa.CartrawlerAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -858,6 +983,15 @@
 			buildConfigurations = (
 				45CB04761DEDCECF0086BEA0 /* Debug */,
 				45CB04771DEDCECF0086BEA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC4A3FEE1E5F3DBF00EFB055 /* Build configuration list for PBXNativeTarget "CartrawlerAPITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC4A3FEC1E5F3DBF00EFB055 /* Debug */,
+				BC4A3FED1E5F3DBF00EFB055 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

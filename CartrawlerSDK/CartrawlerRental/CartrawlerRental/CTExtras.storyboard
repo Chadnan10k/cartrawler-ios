@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Extras View Controller-->
+        <!--Insurance View Controller-->
         <scene sceneID="acH-uv-lMB">
             <objects>
-                <viewController storyboardIdentifier="CTExtrasViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="svs-v7-rRf" customClass="CTExtrasViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CTInsuranceViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="svs-v7-rRf" customClass="CTInsuranceViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IbM-Bm-PZ8"/>
                         <viewControllerLayoutGuide type="bottom" id="gIN-h0-YcF"/>
@@ -276,6 +276,8 @@
                     <connections>
                         <outlet property="addInuranceButton" destination="RTg-2z-px8" id="2Ig-MK-trG"/>
                         <outlet property="continueButton" destination="pVo-BM-CmF" id="k7Y-7N-CQ3"/>
+                        <outlet property="extrasTitleLabel" destination="6HZ-Uh-H8o" id="pb8-Ih-mjp"/>
+                        <outlet property="insuranceTitleLabel" destination="vNH-7W-dg9" id="RCc-Tq-Wx4"/>
                         <outlet property="insuranceView" destination="4OM-g5-xEo" id="TKM-C5-Ja1"/>
                         <outlet property="insuranceViewHeight" destination="EOu-Ms-hCX" id="kGd-PN-3jA"/>
                         <outlet property="insuranceViewSpace" destination="ZtU-7Y-scv" id="VJJ-PE-Xjh"/>
@@ -283,6 +285,7 @@
                         <outlet property="optionalExtrasView" destination="Jzu-GV-SyL" id="XGU-3i-Deg"/>
                         <outlet property="pricePerDayLabel" destination="qlt-eA-ln3" id="vb3-Cq-UWU"/>
                         <outlet property="scrollView" destination="cqJ-fN-run" id="Nm9-Mf-HPJ"/>
+                        <outlet property="titleLabel" destination="clN-oO-7uF" id="Rpu-0D-0Z4"/>
                         <segue destination="1Ry-3F-KWj" kind="show" identifier="showOptionalExtras" id="R8j-xZ-q2d"/>
                     </connections>
                 </viewController>
@@ -405,6 +408,8 @@
                     </view>
                     <connections>
                         <outlet property="bottomSpace" destination="6vq-WF-yfc" id="2Da-RQ-Z35"/>
+                        <outlet property="conditionsLabel" destination="kPo-HB-cF1" id="zRk-TL-fw5"/>
+                        <outlet property="extrasTitleLabel" destination="iOe-Ob-dnr" id="Ixt-rs-PCe"/>
                         <outlet property="nextButton" destination="5WB-Xy-epn" id="DEC-G1-TE2"/>
                         <outlet property="tableView" destination="FUK-4R-Jb5" id="z67-Y4-fPq"/>
                     </connections>

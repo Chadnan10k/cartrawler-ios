@@ -16,9 +16,12 @@
 #import "CTRentalConstants.h"
 #import "CTSearchDetailsViewController.h"
 #import "CTVehicleSelectionViewController.h"
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTAddressDetailsViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
+@property (weak, nonatomic) IBOutlet CTLabel *addressDetailsTitle;
 @property (weak, nonatomic) IBOutlet CTTextField *addressLine1TextField;
 @property (weak, nonatomic) IBOutlet CTTextField *addressLine2TextField;
 @property (weak, nonatomic) IBOutlet CTTextField *cityTextField;
@@ -38,7 +41,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.nextButton setText:NSLocalizedString(@"Continue", @"Continue")];
     self.addressLine1TextField.delegate = self;
     self.addressLine2TextField.delegate = self;
     self.cityTextField.delegate = self;
@@ -55,7 +57,7 @@
     [self.cityTextField addDoneButton];
     [self.postCodeTextField addDoneButton];
     [self.countryTextField addDoneButton];
-
+    
 }
 
 - (void)viewWasTapped
@@ -66,11 +68,19 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[CTAnalytics instance] tagScreen:@"Step" detail:@"vehicles-a" step:@6];
+    
+    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    self.addressLine1TextField.placeholder = CTLocalizedString(CTRentalUserAddressLine1Hint);
+    self.addressLine2TextField.placeholder = CTLocalizedString(CTRentalUserAddressLine2Hint);
+    self.cityTextField.placeholder = CTLocalizedString(CTRentalUserCityHint);
+    self.postCodeTextField.placeholder = CTLocalizedString(CTRentalUserPostcodeHint);
+    self.countryTextField.placeholder = CTLocalizedString(CTRentalUserCountryHint);
+    self.addressDetailsTitle.text = CTLocalizedString(CTRentalAddressDetailsTitle);
 
+    [self tagScreen];
+    
     [self registerForKeyboardNotifications];
     
-    //[self.addressLine1TextField becomeFirstResponder];
     _selectedView = self.addressLine1TextField;
 
     if (self.search) {
@@ -305,6 +315,16 @@
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark Analytics
+
+- (void)tagScreen
+{
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-a" step:@6];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Address Details Step",
+                                      @"stepName" : @"Step6",
+                                      } eventName:@"Step of search" eventType:@"Step"];
 }
 
 @end

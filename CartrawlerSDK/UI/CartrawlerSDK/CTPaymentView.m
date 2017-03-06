@@ -143,27 +143,14 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
         } else {
             
             [self.webView evaluateJavaScript:@"resetResponses()" completionHandler:nil];
-            
-            if (self.delegate) {
-                if (self.delegate) {
-                    [self.delegate didMakeBooking];
-                }
-            }
-            
             switch (self.paymentType) {
                     
                 case CTPaymentTypeCarRental: {
                     CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:json];
                     self.carRentalSearch.booking = booking;
                     
-                    CTRentalBooking *savedBooking = [[CTRentalBooking alloc] init];
+                    CTRentalBooking *savedBooking = [[CTRentalBooking alloc] initFromSearch:self.carRentalSearch];
                     savedBooking.bookingId = booking.confID;
-                    savedBooking.pickupLocation = self.carRentalSearch.pickupLocation.name;
-                    savedBooking.dropoffLocation = self.carRentalSearch.dropoffLocation.name;
-                    savedBooking.pickupDate = self.carRentalSearch.pickupDate;
-                    savedBooking.dropoffDate = self.carRentalSearch.dropoffDate;
-                    savedBooking.vehicleImage = self.carRentalSearch.selectedVehicle.vehicle.pictureURL.absoluteString;
-                    savedBooking.vehicleName = self.carRentalSearch.selectedVehicle.vehicle.makeModelName;
                     [CTDataStore storeRentalBooking:savedBooking];
                     
                 }
@@ -171,6 +158,11 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
                 default:
                     break;
             }
+            
+            if (self.delegate) {
+                [self.delegate didMakeBooking];
+            }
+            
         }
     }
     
@@ -222,9 +214,9 @@ typedef NS_ENUM(NSUInteger, CTPaymentType) {
     NSString *urlStr;
     
     if ([CTSDKSettings instance].isDebug) {
-        urlStr = [NSString stringWithFormat:@"http://external-dev.cartrawler.com/cartrawlerpay/paymentform?type=OTA_VehResRQ&hideButton=true&mobile=true&msg=%@", escapedString];
+        urlStr = [NSString stringWithFormat:@"http://external-dev.cartrawler.com/cartrawlerpay/paymentform?type=OTA_VehResRQ&hideButton=true&mobile=true&lang=%@&msg=%@", [CTSDKSettings instance].languageCode, escapedString];
     } else {
-        urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_VehResRQ&hideButton=true&mobile=true&msg=%@", escapedString];
+        urlStr = [NSString stringWithFormat:@"https://otasecure.cartrawler.com/cartrawlerpay/paymentform?type=OTA_VehResRQ&hideButton=true&mobile=true&lang=%@&msg=%@", [CTSDKSettings instance].languageCode, escapedString];
     }
 
     NSString *htmlFile = [self.bundle pathForResource:@"CTPCI" ofType:@"html"];

@@ -35,15 +35,16 @@
         
         if (tempDict[@"Address"] != nil) {
             NSDictionary *addressDict = tempDict[@"Address"];
-            if (addressDict[@"AddressLine"] != nil) {
+            if (addressDict[@"AddressLine"] != nil && [addressDict[@"AddressLine"] isKindOfClass:[NSString class]]) {
                 _addressLine = addressDict[@"AddressLine"];
-                
-                if (addressDict[@"CountryName"] != nil) {
-                    NSDictionary *countryDict = addressDict[@"CountryName"];
-                    if (countryDict[@"@Code"] != nil) {
-                        _addressCode = countryDict[@"@Code"];
-                        _addressStateCode = countryDict[@"@StateCode"];
-                    }
+            } else {
+                _addressLine = @"";
+            }
+            if (addressDict[@"CountryName"] != nil) {
+                NSDictionary *countryDict = addressDict[@"CountryName"];
+                if (countryDict[@"@Code"] != nil) {
+                    _countryCode = countryDict[@"@Code"];
+                    _addressStateCode = countryDict[@"@StateCode"];
                 }
             }
         }
@@ -62,13 +63,22 @@
     }
     
     _airportCode = @"";
-
+    _latitude = @0.0;
+    _longitude = @0.0;
+    _distance = @0.0;
+    _distanceUnit = @"";
+    
     return self;
 }
 
 - (instancetype)initWithPartialStringDictionary:(NSDictionary *)dictionary
 {
     self = [super init];
+    
+    _addressLine = @"";
+    _distanceUnit = @"";
+    _addressStateCode = @"";
+    _distance = @0.0;
     
     _airportCode = dictionary[@"@AirportCode"] ?: @"";
     
@@ -84,10 +94,10 @@
     f.numberStyle = NSNumberFormatterDecimalStyle;
     f.maximumFractionDigits = 5;
 
-    _latitude = [f numberFromString:dictionary[@"@Lat"]];
-    _longitude = [f numberFromString:dictionary[@"@Lng"]];
+    _latitude = [f numberFromString:dictionary[@"@Lat"]] ?: @0.0;
+    _longitude = [f numberFromString:dictionary[@"@Lng"]] ?: @0.0;
 
-    _codeContext = dictionary[@"@CountryCode"];
+    _countryCode = dictionary[@"@CountryCode"];
     _code = dictionary[@"@Code"];
     _name = dictionary[@"@Name"];
     
@@ -100,7 +110,6 @@
     
     for (NSString *type in dictionary[@"types"]) {
         if ([type isEqualToString:@"airport"]) {
-            NSLog(@"AIRPORT NAME: %@", dictionary[@"formatted_address"]);
             _isAtAirport = YES;
         }
     }

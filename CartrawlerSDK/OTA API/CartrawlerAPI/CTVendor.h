@@ -47,10 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, nonnull) NSURL *logoURL;
 /**
- *  The vendor ID
- */
-@property (nonatomic, nonnull) NSString *ID;
-/**
  *  Vendor rating
  */
 @property (nonatomic, nonnull) CTVendorRating *rating;

@@ -8,7 +8,6 @@
 
 #import "RYRRentalManager.h"
 
-
 @interface RYRRentalManager()
 
 @property (strong, nonatomic) NSDate *pickupDate;
@@ -57,9 +56,10 @@
     userDetails.surname = @"Maguire";
     userDetails.email = @"lee@maguire.com";
     userDetails.phone = @"+086666666";
-    userDetails.currency = @"GBP";
-    userDetails.driverAge = @21;
+    userDetails.driverAge = @30;
     userDetails.flightNo = @"FR 777";
+    userDetails.currency = @"EUR";
+    userDetails.countryCode = @"IE";
 
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:86400];
     _pickupDate = date;
@@ -68,6 +68,7 @@
                                                       pickupDate:self.pickupDate
                                                       returnDate:self.dropoffDate
                                                      userDetails:userDetails];
+    
     self.inPath.delegate = self;
     [self.callToAction setTitle:@"Loading" forState:UIControlStateNormal];
 
@@ -75,9 +76,14 @@
 
 - (void)setup
 {
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:@"en" sandboxMode:!self.isProduction];
+    NSString * language = @"en";
+
+    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:language sandboxMode:!self.isProduction];
     _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
-    [self.sdk enableLogs:YES];
+    
+    [self.sdk addAnalyticsProvider:[CartrawlerRakuten new]];
+
+    [self.sdk enableLogs:NO];
     self.rental.delegate = self;
 }
 
@@ -141,6 +147,8 @@
     NSLog(@"%@", vehicle.vehicleName);
     NSLog(@"%@", vehicle.firstName);
     NSLog(@"%@", vehicle.lastName);
+    
+    NSLog(@"*** PAYNOW: %@ ** PAYLATER: %@ ** PAYDESK: %@ ** BOOKINGFEE: %@", vehicle.payNowPrice, vehicle.payLaterPrice, vehicle.payAtDeskPrice, vehicle.bookingFeePrice);
     
 }
 

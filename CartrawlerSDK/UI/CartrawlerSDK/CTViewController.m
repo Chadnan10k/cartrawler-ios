@@ -93,4 +93,37 @@
                                       }];
 }
 
+- (void)sendEvent:(BOOL)cartrawlerOnly customParams:(NSDictionary *)customParams eventName:(NSString *)eventName eventType:(NSString *)eventType
+{
+    if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(sendAnalyticsEvent:)] && !cartrawlerOnly) {
+        
+        CTAnalyticsEvent *event = [CTAnalyticsEvent new];
+        event.eventName = eventName;
+        event.eventType = eventType;
+        event.params = customParams;
+        [self.analyticsDelegate sendAnalyticsEvent:event];
+    }
+}
+
+- (void)trackSale
+{
+    if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(sendAnalyticsSaleEvent:)]) {
+        
+        CTAnalyticsEvent *saleEvent = [CTAnalyticsEvent new];
+        saleEvent.saleType = @"Standalone";
+        saleEvent.orderID = self.search.booking.confID;
+        saleEvent.quantity = @1;
+        saleEvent.metricItem = self.search.pickupLocation.name;
+        
+        if (self.search.isBuyingInsurance) {
+            saleEvent.value = @(self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.doubleValue +
+            self.search.insurance.premiumAmount.doubleValue);
+        } else {
+            saleEvent.value = self.search.selectedVehicle.vehicle.totalPriceForThisVehicle;
+        }
+
+        [self.analyticsDelegate sendAnalyticsSaleEvent:saleEvent];
+    }
+}
+
 @end

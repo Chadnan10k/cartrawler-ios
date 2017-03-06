@@ -12,6 +12,8 @@
 #import <CartrawlerSDK/CTAppearance.h>
 #import "CTInPathBanner.h"
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
+#import "CTInPathLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTNewBookingView ()
 
@@ -96,13 +98,13 @@
 {
     _headerLabel = [[CTLabel alloc] initWithFrame:CGRectZero];
     self.headerLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:15];
-    self.headerLabel.text = @"Add Car Rental";
-    self.headerLabel.numberOfLines = 1;
+    self.headerLabel.text = CTLocalizedString(CTInPathWidgetTitle);
+    self.headerLabel.numberOfLines = 0;
     self.headerLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.headerLabel];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[label]-8-[cars]" options:0 metrics:nil views:@{@"label" : self.headerLabel, @"cars" : self.vehicleImageView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[banner]-8-[label(20)]" options:0 metrics:nil views:@{@"label" : self.headerLabel, @"banner" : self.scrollingBannerContainer}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[banner]-8-[label]" options:0 metrics:nil views:@{@"label" : self.headerLabel, @"banner" : self.scrollingBannerContainer}]];
 }
 
 - (void)addStarAndTextView
@@ -121,9 +123,10 @@
     _infoLabel = [[UITextView alloc] initWithFrame:CGRectZero];
     self.infoLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
     self.infoLabel.textColor = [UIColor lightGrayColor];
-    self.infoLabel.text = @"The quickest and easiest way to book car hire";
+    self.infoLabel.text = CTLocalizedString(CTInPathWidgetText);
     self.infoLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.infoLabel.backgroundColor = [UIColor clearColor];
+    self.infoLabel.userInteractionEnabled = NO;
     [self addSubview:self.infoLabel];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[star]-4-[textView]-4-[cars]" options:0 metrics:nil views:@{@"textView" : self.infoLabel, @"star" : self.tickImageView, @"cars" : self.vehicleImageView}]];
@@ -136,7 +139,7 @@
 - (void)addMerchandisingBanner
 {
     CTInPathBanner *banner = [[CTInPathBanner alloc] init];
-    [banner addToSuperViewWithString:@"NEW" superview:self.scrollingBannerContainer];
+    [banner addToSuperViewWithString:CTLocalizedString(CTInPathWidgetLabel) superview:self.scrollingBannerContainer];
 }
 
 - (void)animateVehicle

@@ -29,7 +29,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G6v-Z6-vHp" id="TVa-Jq-lsn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="AJW-mo-fZa">
@@ -126,6 +126,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0Ki-K4-BT7"/>
                     <connections>
+                        <outlet property="cancelButton" destination="yJ6-k5-p9m" id="IYq-HU-NTe"/>
                         <outlet property="headerView" destination="Qz2-Yv-65u" id="mfP-ew-B4w"/>
                         <outlet property="searchBar" destination="ccV-Li-5W1" id="Uhf-2V-J9U"/>
                         <outlet property="tableView" destination="5qk-NB-HBf" id="VKD-pr-TZf"/>
@@ -325,7 +326,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="61t-ct-JPK" secondAttribute="trailing" id="VHs-ev-cjW"/>
-                                    <constraint firstAttribute="bottom" secondItem="61t-ct-JPK" secondAttribute="bottom" constant="42" id="YzQ-10-Ruc"/>
+                                    <constraint firstAttribute="bottom" secondItem="61t-ct-JPK" secondAttribute="bottom" constant="28" id="YzQ-10-Ruc"/>
                                     <constraint firstItem="61t-ct-JPK" firstAttribute="top" secondItem="3ZU-KR-mPT" secondAttribute="top" id="dh9-wb-lxn"/>
                                     <constraint firstItem="61t-ct-JPK" firstAttribute="leading" secondItem="3ZU-KR-mPT" secondAttribute="leading" id="fh7-jY-MYC"/>
                                 </constraints>
@@ -341,7 +342,7 @@
                                         </constraints>
                                         <state key="normal" title="Button" image="settings"/>
                                         <connections>
-                                            <segue destination="Ff3-Gb-K9j" kind="showDetail" id="BQa-BP-Vrj"/>
+                                            <action selector="settingsTapped:" destination="dn2-4f-MD7" eventType="touchUpInside" id="BI9-iE-IcH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qsf-Ek-vxw" customClass="CTButton">
@@ -376,9 +377,9 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Car Hire" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Gi-qi-5Nf" customClass="CTLabel">
-                                        <rect key="frame" x="263.5" y="30.5" width="73" height="21"/>
+                                        <rect key="frame" x="264" y="23" width="73" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="kkP-z0-6Py"/>
+                                            <constraint firstAttribute="height" constant="35" id="kkP-z0-6Py"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -445,14 +446,18 @@
                     <connections>
                         <outlet property="ageContainer" destination="hPB-yG-Afv" id="SEd-Sp-dcH"/>
                         <outlet property="ageTopConstraint" destination="VJL-wL-dca" id="ShC-iP-kq0"/>
+                        <outlet property="ageValidationSwitch" destination="5ou-ck-WKA" id="TNg-xI-Byv"/>
                         <outlet property="calendarView" destination="uhq-oE-HlI" id="P3s-SF-U7R"/>
+                        <outlet property="driverAgeDescriptionLabel" destination="G6C-1A-p1I" id="8eE-Su-Mja"/>
                         <outlet property="dropoffLocTopConstraint" destination="NVC-0Q-MkJ" id="iEd-gU-Ole"/>
                         <outlet property="dropoffTimeView" destination="b3i-9q-LoW" id="s4a-qo-ptn"/>
                         <outlet property="dropoffView" destination="OXn-mb-0jv" id="aPf-al-b11"/>
                         <outlet property="nextButton" destination="d1m-G3-Dck" id="PBM-ro-pk2"/>
                         <outlet property="pickupTimeView" destination="ckE-oY-mnT" id="iKn-C1-bZX"/>
                         <outlet property="pickupView" destination="uUT-Ub-urr" id="OTM-jq-NfH"/>
+                        <outlet property="returnToSameLocationLabel" destination="9xf-tF-qLx" id="qWb-0m-L5o"/>
                         <outlet property="scrollView" destination="3ZU-KR-mPT" id="K3R-CB-RU5"/>
+                        <outlet property="titleLabel" destination="7Gi-qi-5Nf" id="Imz-sp-0Kt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ToB-i9-nIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -578,8 +583,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRl-YW-7Oc" customClass="CTDesignableView">
-                                <rect key="frame" x="9" y="206" width="358" height="61"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRl-YW-7Oc" customClass="CTDesignableView">
+                                <rect key="frame" x="9" y="137" width="358" height="61"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9s-7h-aaz" customClass="CTLabel">
                                         <rect key="frame" x="8" y="4" width="342" height="16"/>
@@ -590,7 +595,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gh1-0v-uIg" customClass="CTButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gh1-0v-uIg" customClass="CTButton">
                                         <rect key="frame" x="8" y="23" width="342" height="30"/>
                                         <state key="normal" title="English">
                                             <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -632,7 +637,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7G-St-KYp" customClass="CTDesignableView">
-                                <rect key="frame" x="9" y="137" width="358" height="61"/>
+                                <rect key="frame" x="9" y="206" width="358" height="61"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjq-ai-bJw" customClass="CTLabel">
                                         <rect key="frame" x="8" y="4" width="342" height="16"/>
@@ -693,6 +698,8 @@
                             <constraint firstAttribute="trailing" secondItem="fvr-Lp-Udg" secondAttribute="trailing" id="8R9-eg-iSq"/>
                             <constraint firstAttribute="trailing" secondItem="w7G-St-KYp" secondAttribute="trailing" constant="8" id="9WS-AU-ffw"/>
                             <constraint firstItem="PbW-tC-Dsb" firstAttribute="leading" secondItem="jpb-4Q-7Es" secondAttribute="leading" constant="9" id="AAH-ne-aaX"/>
+                            <constraint firstItem="gRl-YW-7Oc" firstAttribute="top" secondItem="PbW-tC-Dsb" secondAttribute="bottom" constant="8" id="Dp7-yI-lBi"/>
+                            <constraint firstItem="w7G-St-KYp" firstAttribute="top" secondItem="gRl-YW-7Oc" secondAttribute="bottom" constant="8" id="Fhv-Y6-nSi"/>
                             <constraint firstItem="w7G-St-KYp" firstAttribute="leading" secondItem="jpb-4Q-7Es" secondAttribute="leading" constant="9" id="FrE-vr-3mz"/>
                             <constraint firstItem="w7G-St-KYp" firstAttribute="top" secondItem="PbW-tC-Dsb" secondAttribute="bottom" constant="8" id="K3t-mv-9IH"/>
                             <constraint firstItem="gRl-YW-7Oc" firstAttribute="leading" secondItem="jpb-4Q-7Es" secondAttribute="leading" constant="9" id="Ku2-ts-uKs"/>
@@ -702,12 +709,23 @@
                             <constraint firstItem="fvr-Lp-Udg" firstAttribute="leading" secondItem="jpb-4Q-7Es" secondAttribute="leading" id="q8H-DF-2iE"/>
                             <constraint firstAttribute="trailing" secondItem="PbW-tC-Dsb" secondAttribute="trailing" constant="8" id="vBI-Gc-fxj"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="MjH-5G-Gji"/>
+                                <exclude reference="K3t-mv-9IH"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="7ny-B4-ATA" id="vzt-4I-05S"/>
                         <outlet property="countryButton" destination="Bta-qX-js0" id="RdN-KU-AGh"/>
+                        <outlet property="countryLabel" destination="jDF-O1-h8S" id="bSa-Zk-s8B"/>
                         <outlet property="currencyButton" destination="Sfv-Xc-4RJ" id="si1-eG-9F8"/>
+                        <outlet property="currencyLabel" destination="wjq-ai-bJw" id="Seo-j4-BmD"/>
                         <outlet property="currencyView" destination="w7G-St-KYp" id="aYq-sh-kmc"/>
                         <outlet property="languageButton" destination="gh1-0v-uIg" id="kRH-u2-GRn"/>
+                        <outlet property="languageLabel" destination="K9s-7h-aaz" id="4hz-p6-wcP"/>
+                        <outlet property="titleLabel" destination="rRE-by-UDd" id="oHz-MY-hTF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L8v-Hc-owc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -897,7 +915,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdK-ia-Rpr" customClass="CTLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JdK-ia-Rpr" customClass="CTLabel">
                                                 <rect key="frame" x="8" y="32" width="171" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -906,7 +924,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDV-do-69d" customClass="CTLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jDV-do-69d" customClass="CTLabel">
                                                 <rect key="frame" x="196" y="32" width="171" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -996,6 +1014,7 @@
                     <connections>
                         <outlet property="calendarTitleLabel" destination="7OM-zy-kYl" id="J5c-5p-JOs"/>
                         <outlet property="calendarView" destination="rUl-G5-QHc" id="Mi0-j0-Uso"/>
+                        <outlet property="cancelButton" destination="SqW-i4-hhV" id="ujs-5T-cnX"/>
                         <outlet property="dropOffDateLabel" destination="jDV-do-69d" id="dax-KL-EZt"/>
                         <outlet property="headerTopSection" destination="lIJ-uF-TjO" id="T4o-4w-aJY"/>
                         <outlet property="nextButton" destination="Ki0-gd-zej" id="7Qs-EV-5OT"/>
@@ -1109,7 +1128,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JJ0-xs-S7K">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1133,6 +1152,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="19h-a8-EoC" id="2FH-sk-6Es"/>
                         <outlet property="tableView" destination="667-kv-doW" id="nNN-nY-ev8"/>
                         <outlet property="titleLabel" destination="wbD-15-kjI" id="2GI-KP-4Ds"/>
                     </connections>

@@ -10,6 +10,8 @@
 #import "CTInPathBanner.h"
 #import <CartrawlerSDK/CTImageCache.h>
 #import <CartrawlerSDK/CTAppearance.h>
+#import "CTInPathLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTSelectedVehicleView()
 
@@ -65,7 +67,7 @@
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     
     CTInPathBanner *banner = [[CTInPathBanner alloc] init];
-    [banner addToSuperViewWithString:@"Car added" superview:self.bannerContainer];
+    [banner addToSuperViewWithString:CTLocalizedString(CTInPathWidgetTitleAdded) superview:self.bannerContainer];
     [banner setIcon:[UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil]
     backgroundColor:[CTAppearance instance].merchandisingGreatValue
           textColor:[UIColor whiteColor]];

@@ -29,7 +29,6 @@
 		4513B6251DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4513B6231DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m */; };
 		451E763A1E04438300D58F71 /* CTRentalBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E76381E04438300D58F71 /* CTRentalBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		451E763B1E04438300D58F71 /* CTRentalBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E76391E04438300D58F71 /* CTRentalBooking.m */; };
-		4540550E1DDE10DF00FD493A /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4540550D1DDE0E3D00FD493A /* en.strings */; };
 		454D91F01DD34E24001AE96C /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D91EE1DD34E24001AE96C /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		454D91F11DD34E24001AE96C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D91EF1DD34E24001AE96C /* Reachability.m */; };
 		455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736E1D806064000CB1E5 /* GTPaymentRequest.h */; };
@@ -111,8 +110,6 @@
 		455B58C81DCC914400CA4790 /* CTDateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AA1D1301C600ACF604 /* CTDateCollectionViewCell.m */; };
 		455B58C91DCC914400CA4790 /* CalendarLogicController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942AB1D1301C600ACF604 /* CalendarLogicController.h */; };
 		455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AC1D1301C600ACF604 /* CalendarLogicController.m */; };
-		455B58CB1DCC914400CA4790 /* CTMiddleDateCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942AD1D1301C600ACF604 /* CTMiddleDateCell.h */; };
-		455B58CC1DCC914400CA4790 /* CTMiddleDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AE1D1301C600ACF604 /* CTMiddleDateCell.m */; };
 		455B58CD1DCC914400CA4790 /* CTSelectView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E9429F1D13014400ACF604 /* CTSelectView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		455B58CE1DCC914400CA4790 /* CTSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A01D13014400ACF604 /* CTSelectView.m */; };
 		455B591B1DCC914400CA4790 /* CTCSVItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D3F1D3CE9D6002C6F6B /* CTCSVItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -151,7 +148,20 @@
 		BC1379EC1E23E4E400B1F727 /* CTTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1379E71E23E4E400B1F727 /* CTTag.m */; };
 		BC1379EF1E23E8E700B1F727 /* CTErrorTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC1379F01E23E8E700B1F727 /* CTErrorTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1379EE1E23E8E700B1F727 /* CTErrorTag.m */; };
+		BC3361911E4CCC520056E5A6 /* de.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361891E4CCC520056E5A6 /* de.strings */; };
+		BC3361921E4CCC520056E5A6 /* el.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33618A1E4CCC520056E5A6 /* el.strings */; };
+		BC3361931E4CCC520056E5A6 /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33618B1E4CCC520056E5A6 /* en.strings */; };
+		BC3361941E4CCC520056E5A6 /* es.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33618C1E4CCC520056E5A6 /* es.strings */; };
+		BC3361951E4CCC520056E5A6 /* fr.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33618D1E4CCC520056E5A6 /* fr.strings */; };
+		BC3361961E4CCC520056E5A6 /* it.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33618E1E4CCC520056E5A6 /* it.strings */; };
+		BC3361971E4CCC520056E5A6 /* nl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33618F1E4CCC520056E5A6 /* nl.strings */; };
+		BC3361981E4CCC520056E5A6 /* pl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361901E4CCC520056E5A6 /* pl.strings */; };
+		BC54F1581E54980500A7C871 /* pt.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC54F1571E54980500A7C871 /* pt.strings */; };
 		BC9F6E521E24EF91006DD990 /* CTAnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */; };
+		BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCDB4BEA1E3F50C6008004DA /* CTAnalyticsEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */; };
+		E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */; };
+		E7CD21A81E38F794006BE519 /* CTSDKLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,7 +214,6 @@
 		451E76391E04438300D58F71 /* CTRentalBooking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRentalBooking.m; sourceTree = "<group>"; };
 		4530DA311D46660900CF3186 /* CTTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTextView.h; sourceTree = "<group>"; };
 		4530DA321D46660900CF3186 /* CTTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTextView.m; sourceTree = "<group>"; };
-		4540550C1DDE0E3D00FD493A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/en.strings; sourceTree = "<group>"; };
 		4544463C1D992BAA0047873F /* CTStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTStepper.h; sourceTree = "<group>"; };
 		4544463D1D992BAA0047873F /* CTStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTStepper.m; sourceTree = "<group>"; };
 		4544464A1D9A7FE80047873F /* CTNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNavigationView.h; sourceTree = "<group>"; };
@@ -267,8 +276,6 @@
 		45E942AA1D1301C600ACF604 /* CTDateCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDateCollectionViewCell.m; sourceTree = "<group>"; };
 		45E942AB1D1301C600ACF604 /* CalendarLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarLogicController.h; sourceTree = "<group>"; };
 		45E942AC1D1301C600ACF604 /* CalendarLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarLogicController.m; sourceTree = "<group>"; };
-		45E942AD1D1301C600ACF604 /* CTMiddleDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMiddleDateCell.h; sourceTree = "<group>"; };
-		45E942AE1D1301C600ACF604 /* CTMiddleDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMiddleDateCell.m; sourceTree = "<group>"; };
 		45E942C11D13022100ACF604 /* CTTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTimePickerView.h; sourceTree = "<group>"; };
 		45E942C21D13022100ACF604 /* CTTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTimePickerView.m; sourceTree = "<group>"; };
 		45E942CD1D1302A200ACF604 /* CTImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTImageCache.h; sourceTree = "<group>"; };
@@ -300,7 +307,20 @@
 		BC1379E71E23E4E400B1F727 /* CTTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTag.m; sourceTree = "<group>"; };
 		BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTErrorTag.h; sourceTree = "<group>"; };
 		BC1379EE1E23E8E700B1F727 /* CTErrorTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTErrorTag.m; sourceTree = "<group>"; };
+		BC3361891E4CCC520056E5A6 /* de.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de.strings; path = Localization/de.strings; sourceTree = "<group>"; };
+		BC33618A1E4CCC520056E5A6 /* el.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = el.strings; path = Localization/el.strings; sourceTree = "<group>"; };
+		BC33618B1E4CCC520056E5A6 /* en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en.strings; path = Localization/en.strings; sourceTree = "<group>"; };
+		BC33618C1E4CCC520056E5A6 /* es.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = es.strings; path = Localization/es.strings; sourceTree = "<group>"; };
+		BC33618D1E4CCC520056E5A6 /* fr.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = fr.strings; path = Localization/fr.strings; sourceTree = "<group>"; };
+		BC33618E1E4CCC520056E5A6 /* it.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = it.strings; path = Localization/it.strings; sourceTree = "<group>"; };
+		BC33618F1E4CCC520056E5A6 /* nl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = nl.strings; path = Localization/nl.strings; sourceTree = "<group>"; };
+		BC3361901E4CCC520056E5A6 /* pl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pl.strings; path = Localization/pl.strings; sourceTree = "<group>"; };
+		BC54F1571E54980500A7C871 /* pt.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pt.strings; path = Localization/pt.strings; sourceTree = "<group>"; };
 		BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsTests.m; sourceTree = "<group>"; };
+		BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalyticsEvent.h; sourceTree = "<group>"; };
+		BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsEvent.m; sourceTree = "<group>"; };
+		E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTSDKLocalizationConstants.h; path = Localization/CTSDKLocalizationConstants.h; sourceTree = "<group>"; };
+		E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTSDKLocalizationConstants.m; path = Localization/CTSDKLocalizationConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -427,9 +447,19 @@
 		45819FAC1D351CDF001AE0F5 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				BC3361891E4CCC520056E5A6 /* de.strings */,
+				BC33618A1E4CCC520056E5A6 /* el.strings */,
+				BC33618B1E4CCC520056E5A6 /* en.strings */,
+				BC33618C1E4CCC520056E5A6 /* es.strings */,
+				BC33618D1E4CCC520056E5A6 /* fr.strings */,
+				BC33618E1E4CCC520056E5A6 /* it.strings */,
+				BC33618F1E4CCC520056E5A6 /* nl.strings */,
+				BC3361901E4CCC520056E5A6 /* pl.strings */,
+				BC54F1571E54980500A7C871 /* pt.strings */,
 				455061891D59CD91004EAC43 /* CTLocalisedStrings.h */,
 				4550618A1D59CD91004EAC43 /* CTLocalisedStrings.m */,
-				4540550D1DDE0E3D00FD493A /* en.strings */,
+				E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */,
+				E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */,
 			);
 			name = Localization;
 			sourceTree = "<group>";
@@ -567,8 +597,6 @@
 				45E942AA1D1301C600ACF604 /* CTDateCollectionViewCell.m */,
 				45E942AB1D1301C600ACF604 /* CalendarLogicController.h */,
 				45E942AC1D1301C600ACF604 /* CalendarLogicController.m */,
-				45E942AD1D1301C600ACF604 /* CTMiddleDateCell.h */,
-				45E942AE1D1301C600ACF604 /* CTMiddleDateCell.m */,
 			);
 			name = Calender;
 			sourceTree = "<group>";
@@ -711,6 +739,8 @@
 		BC1379E21E23E4DA00B1F727 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
+				BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */,
+				BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */,
 				BC1379E31E23E4E400B1F727 /* CTAnalytics.h */,
 				BC1379E41E23E4E400B1F727 /* CTAnalytics.m */,
 				BC1379E61E23E4E400B1F727 /* CTTag.h */,
@@ -753,6 +783,7 @@
 				455B58541DCC914300CA4790 /* CTSegmentedControl.h in Headers */,
 				455B58561DCC914300CA4790 /* CTPickerView.h in Headers */,
 				455B58581DCC914300CA4790 /* CTTextView.h in Headers */,
+				E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */,
 				455B585A1DCC914300CA4790 /* CTPlaceholderView.h in Headers */,
 				455B585C1DCC914300CA4790 /* CTView.h in Headers */,
 				455B585E1DCC914300CA4790 /* CTDesignableView.h in Headers */,
@@ -778,12 +809,12 @@
 				45C980C21DCCDB95002D99AB /* CTLayoutConstraint.h in Headers */,
 				455B58641DCC914300CA4790 /* JVFloatLabeledTextField.h in Headers */,
 				457678501E08021500FE591A /* CTHeaders.h in Headers */,
+				BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */,
 				456B9E7A1E1C09E30036CD60 /* CTUserDetails.h in Headers */,
 				450725B21DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h in Headers */,
 				455B591B1DCC914400CA4790 /* CTCSVItem.h in Headers */,
 				459CB2E41DDB3FA2008522BA /* CTToolTipButton.h in Headers */,
 				455B58C71DCC914400CA4790 /* CTDateCollectionViewCell.h in Headers */,
-				455B58CB1DCC914400CA4790 /* CTMiddleDateCell.h in Headers */,
 				455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */,
 				455B58C31DCC914400CA4790 /* CTCalendarView.h in Headers */,
 				455B58C51DCC914400CA4790 /* CTCalendarTableViewCell.h in Headers */,
@@ -882,14 +913,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4540550E1DDE10DF00FD493A /* en.strings in Resources */,
 				455B59451DCC91F900CA4790 /* CTPCI.html in Resources */,
 				459CB2EB1DDB6528008522BA /* ToolTips.storyboard in Resources */,
+				BC3361951E4CCC520056E5A6 /* fr.strings in Resources */,
+				BC3361941E4CCC520056E5A6 /* es.strings in Resources */,
 				455B59511DCC91F900CA4790 /* CTCurrency.csv in Resources */,
+				BC3361921E4CCC520056E5A6 /* el.strings in Resources */,
+				BC54F1581E54980500A7C871 /* pt.strings in Resources */,
+				BC3361911E4CCC520056E5A6 /* de.strings in Resources */,
 				455B59521DCC91F900CA4790 /* CTISOCountries.csv in Resources */,
 				45D3860A1DD62281000F02D1 /* strip-frameworks.sh in Resources */,
 				45BF77501E08588900F6D7E9 /* Assets.xcassets in Resources */,
+				BC3361961E4CCC520056E5A6 /* it.strings in Resources */,
 				455B59531DCC91F900CA4790 /* CTLanguages.csv in Resources */,
+				BC3361971E4CCC520056E5A6 /* nl.strings in Resources */,
+				BC3361931E4CCC520056E5A6 /* en.strings in Resources */,
+				BC3361981E4CCC520056E5A6 /* pl.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -945,6 +984,7 @@
 				455B58631DCC914300CA4790 /* CTAppearance.m in Sources */,
 				455B58651DCC914300CA4790 /* JVFloatLabeledTextField.m in Sources */,
 				455B58671DCC914300CA4790 /* NSStringUtils.m in Sources */,
+				E7CD21A81E38F794006BE519 /* CTSDKLocalizationConstants.m in Sources */,
 				BC1379EC1E23E4E400B1F727 /* CTTag.m in Sources */,
 				455B58691DCC914300CA4790 /* CTTextField.m in Sources */,
 				455B586B1DCC914300CA4790 /* CTCheckbox.m in Sources */,
@@ -970,12 +1010,12 @@
 				455B58C61DCC914400CA4790 /* CTCalendarTableViewCell.m in Sources */,
 				455B58C81DCC914400CA4790 /* CTDateCollectionViewCell.m in Sources */,
 				455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */,
-				455B58CC1DCC914400CA4790 /* CTMiddleDateCell.m in Sources */,
 				455B58CE1DCC914400CA4790 /* CTSelectView.m in Sources */,
 				450725B81DD9C99500D56C8A /* CTImageView.m in Sources */,
 				451E763B1E04438300D58F71 /* CTRentalBooking.m in Sources */,
 				450725B31DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m in Sources */,
 				459CB2E91DDB5BF8008522BA /* CTNextButton.m in Sources */,
+				BCDB4BEA1E3F50C6008004DA /* CTAnalyticsEvent.m in Sources */,
 				455B591C1DCC914400CA4790 /* CTCSVItem.m in Sources */,
 				45C980C31DCCDB95002D99AB /* CTLayoutConstraint.m in Sources */,
 				459CB2E11DDB1D9E008522BA /* CartrawlerSDK+UIView.m in Sources */,
@@ -1003,17 +1043,6 @@
 			targetProxy = 45F5D76D1DEF00C3005AE1AD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		4540550D1DDE0E3D00FD493A /* en.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4540550C1DDE0E3D00FD493A /* en */,
-			);
-			name = en.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		455B58311DCC90D300CA4790 /* Debug */ = {

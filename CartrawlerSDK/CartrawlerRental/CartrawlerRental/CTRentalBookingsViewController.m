@@ -8,9 +8,13 @@
 
 #import "CTRentalBookingsViewController.h"
 #import "CTRentalBookingCell.h"
+#import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTDataStore.h>
 #import <CartrawlerSDK/CTNextButton.h>
 #import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 
 @interface CTRentalBookingsViewController () <UITableViewDataSource>
 
@@ -18,6 +22,8 @@
 @property (strong, nonatomic) NSArray<CTRentalBooking *> *bookings;
 @property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
 @property (weak, nonatomic) IBOutlet UIView *subHeaderView;
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *tableHeaderLabel;
 
 @end
 
@@ -33,7 +39,6 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 120.0;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.nextButton setText:@"Add a booking"];
 }
 
 - (IBAction)back:(id)sender {
@@ -50,6 +55,10 @@
     [super viewWillAppear:animated];
     _bookings = [CTDataStore retrieveRentalBookings];
     [self.tableView reloadData];
+    
+    [self.nextButton setText:CTLocalizedString(CTRentalCTAAdd)];
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleSearchRental);
+    self.tableHeaderLabel.text = CTLocalizedString(CTRentalBookingTableHeaderTitle);
 }
 
 #pragma MARK UITableView

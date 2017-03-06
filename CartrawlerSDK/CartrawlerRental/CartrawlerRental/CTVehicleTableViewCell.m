@@ -13,6 +13,7 @@
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 #import <CartrawlerSDK/CTLabel.h>
+#import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import "CTMerhandisingBanner.h"
 
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet CTLabel *pickupLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *fuelPolicyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
+@property (weak, nonatomic) IBOutlet CTLabel *totalPriceTitleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *vendorImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *airconImageView;
@@ -31,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *totalPriceBottomConstranit;
 @property (weak, nonatomic) IBOutlet CTMerhandisingBanner *specialOfferBannerView;
+@property (weak, nonatomic) IBOutlet UILabel *providedByLabel;
 
 @end
 
@@ -53,14 +56,9 @@
     } else {
         [self.merchBannerView setBannerType:CTMerhandisingBannerTypeNone];
     }
-    
-    //Do we display special offer? or any extras included in the price?
-//    for (CTSpecialOffer *so in item.vehicle.specialOffers) {
-//        NSLog(@"%@", so.shortText);
-//    }
-    
+
     [self.specialOfferBannerView setBannerType:CTMerhandisingBannerTypeNone];
-    self.totalPriceBottomConstranit.constant = 8;
+    self.totalPriceBottomConstranit.constant = 16;
     for (CTExtraEquipment *ee in item.vehicle.extraEquipment) {
         if (ee.isIncludedInRate) {
             [self.specialOfferBannerView setSpecialOffer:ee.equipDescription];
@@ -83,8 +81,8 @@
     
     self.vehicleNameLabel.attributedText = vehicleName;
     
-    self.passengerQtyLabel.text = [NSString stringWithFormat:@"%d %@", item.vehicle.passengerQty.intValue, NSLocalizedString(@"passengers", @"passengers")];
-    self.transmissionLabel.text = item.vehicle.transmissionType;
+    self.passengerQtyLabel.text = [NSString stringWithFormat:@"%d %@", item.vehicle.passengerQty.intValue, CTLocalizedString(CTRentalVehiclePassengers)];
+    self.transmissionLabel.text = [CTLocalisedStrings transmission:item.vehicle.transmissionType];
     self.fuelPolicyLabel.text = [CTLocalisedStrings fuelPolicy:item.vehicle.fuelPolicy];
     
     if ([CTLocalisedStrings pickupType:item]) {
@@ -95,11 +93,13 @@
     
     self.totalPriceLabel.text = [item.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
     self.totalPriceLabel.textColor = [CTAppearance instance].vehicleCellTint;
+    self.totalPriceTitleLabel.text = CTLocalizedString(CTRentalVehicleTotalPrice);
     
     [[CTImageCache sharedInstance] cachedImage: item.vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;
     }];
     
+    self.providedByLabel.text = CTLocalizedString(CTRentalVehicleProvided);
     [[CTImageCache sharedInstance] cachedImage: item.vendor.logoURL completion:^(UIImage *image) {
         self.vendorImageView.image = image;
     }];

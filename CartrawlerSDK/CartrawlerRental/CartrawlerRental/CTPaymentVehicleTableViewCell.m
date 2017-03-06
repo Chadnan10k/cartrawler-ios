@@ -11,6 +11,8 @@
 #import "CTVehicleFeaturesDataSource.h"
 #import <CartrawlerSDK/CTImageCache.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIView.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTPaymentVehicleTableViewCell()
 
@@ -29,7 +31,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.orSimilarLabel.text = CTLocalizedString(CTRentalVehicleOrSimilar);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -56,26 +58,26 @@
     
     [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@ %@",
                                         search.selectedVehicle.vehicle.passengerQty.stringValue,
-                                        NSLocalizedString(@"passengers", @"passengers")],
+                                        CTLocalizedString(CTRentalVehiclePassengers)],
                              @"image" : @"people"}];
     
     [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@ %@",
                                         search.selectedVehicle.vehicle.baggageQty.stringValue,
-                                        NSLocalizedString(@"bags", @"bags")],
+                                        CTLocalizedString(CTRentalVehicleBags)],
                              @"image" : @"baggage"}];
     
     [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@ %@",
                                         search.selectedVehicle.vehicle.doorCount.stringValue,
-                                        NSLocalizedString(@"doors", @"doors")],
+                                        CTLocalizedString(CTRentalVehicleDoors)],
                              @"image" : @"doors"}];
     
     [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@",
-                                        search.selectedVehicle.vehicle.transmissionType],
+                                        [CTLocalisedStrings transmission:search.selectedVehicle.vehicle.transmissionType]],
                              @"image" : @"gears"}];
     
     if (search.selectedVehicle.vehicle.isAirConditioned) {
         [featureData addObject:@{@"text" : [NSString stringWithFormat:@"%@",
-                                            NSLocalizedString(@"Air Conditioning", @"Air Conditioning")],
+                                            CTLocalizedString(CTRentalVehicleAirConditioning)],
                                  @"image" : @"aircon"}];
     }
     

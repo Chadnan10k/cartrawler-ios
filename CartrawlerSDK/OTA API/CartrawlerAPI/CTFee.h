@@ -23,6 +23,61 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
+ *  Card Type enum
+ */
+typedef NS_ENUM(NSUInteger, CTFeeType) {
+    /**
+     *  The booking fee
+     */
+    CTFeeTypeBooking = 0,
+    /**
+     *  Partial payment of the booking
+     */
+    CTFeeTypePartialPayed,
+    /**
+     *  The pay now price of the vehicle
+     */
+    CTFeeTypePayNow,
+    /**
+     *  The pay at desk price of the vehicle
+     */
+    CTFeeTypePayAtDesk,
+    /**
+     *
+     */
+    CTFeeTypePriceMinusFee,
+    /**
+     *
+     */
+    CTFeeTypePayDaily,
+    /**
+     *
+     */
+    CTFeeTypePayWeekly,
+    /**
+     *
+     */
+    CTFeeTypePayMonthly,
+    /**
+     *
+     */
+    CTFeeTypePrepaidDepositFee,
+    /**
+     *
+     */
+    CTFeeTypePrepaidDepositTotalFee,
+    /**
+     *
+     */
+    CTFeeTypePrepaidDepositRemainderFee,
+    /**
+     *
+     */
+    CTFeeTypeUnknown
+};
+
+
+/**
  *  CTFee
  */
 @interface CTFee : NSObject
@@ -37,7 +92,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Purpose of the fee
  */
-@property (nonatomic, nonnull, readonly) NSString *feePurpose;
+@property (nonatomic, readonly) CTFeeType feePurpose;
 
 - (instancetype)initFromFeeDictionary:(NSDictionary *)feeDictionary;
 

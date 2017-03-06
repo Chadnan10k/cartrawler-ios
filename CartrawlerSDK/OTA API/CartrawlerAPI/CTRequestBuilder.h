@@ -120,7 +120,10 @@
                destinationCountryCode:(NSString *)destinationCountryCode
                              clientID:(NSString *)clientID
                                target:(NSString *)target
-                               locale:(NSString *)locale;
+                               locale:(NSString *)locale
+                                refID:(NSString *)refID
+                               refURL:(NSString *)refURL
+                         refTimeStamp:(NSString *)refTimeStamp;
 
 + (NSString *) OTA_VehRetResRQ:(NSString *)bookingEmailAddress
                   bookingRefID:(NSString *)bookingRefID

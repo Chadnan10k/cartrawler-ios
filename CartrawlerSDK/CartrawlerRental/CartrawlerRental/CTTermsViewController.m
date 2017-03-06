@@ -11,6 +11,9 @@
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import <CartrawlerSDK/CTRentalSearch.h>
 #import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CTLabel.h>
+#import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTTermsViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -18,17 +21,22 @@
 @property (strong, nonatomic) CTTermsAndConditions *data;
 @property (strong, nonatomic) CartrawlerAPI *api;
 @property (strong, nonatomic) CTRentalSearch *search;
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 
 @end
 
 @implementation CTTermsViewController
 
-{}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleConditions);
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
