@@ -70,7 +70,7 @@
               countryCode:(NSString *)countryCode
                completion:(EngineDetailsCompletion)completion
 {
-    __weak typeof (self) weakSelf = self;\
+    __weak typeof (self) weakSelf = self;
     
     NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.endPoint, @"CT_IpToCountryRQ"];
 
