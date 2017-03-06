@@ -70,12 +70,16 @@
               countryCode:(NSString *)countryCode
                completion:(EngineDetailsCompletion)completion
 {
-    __weak typeof (self) weakSelf = self;
+    __weak typeof (self) weakSelf = self;\
+    
+    NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.endPoint, @"CT_IpToCountryRQ"];
+
     [CT_IpToCountryRQ performRequest:self.clientAPIKey
                             currency:currencyCode
                         languageCode:languageCode
                          countryCode:countryCode
                               target:self.apiTarget
+                            endpoint:endPoint
                           completion:^(CT_IpToCountryRS *response, CTErrorResponse *error) {
                               weakSelf.ipAddress = response.ipAddress;
                               completion(response, error);

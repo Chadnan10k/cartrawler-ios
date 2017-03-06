@@ -16,7 +16,8 @@
             languageCode:(NSString *)languageCode
              countryCode:(NSString *)countryCode
                   target:(NSString *)target
-              completion:(CT_IpToCountryRQCompletion)completion;
+                endpoint:(NSString *)endpoint
+              completion:(CT_IpToCountryRQCompletion)completion
 {
     NSString *json = [NSString stringWithFormat:
     @"{ \r"
@@ -46,7 +47,7 @@
     
     CTPostRequest *post = [CTPostRequest new];
     
-    [post performRequestWithData:@"http://external-dev.cartrawler.com/cartrawlerota/json?type=CT_IpToCountryRQ"
+    [post performRequestWithData:endpoint
                         jsonBody:json
                   loggingEnabled:NO
                       completion:^(NSDictionary *response, CTErrorResponse *error) {

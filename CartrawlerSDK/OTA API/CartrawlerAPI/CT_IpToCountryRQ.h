@@ -15,10 +15,11 @@
 typedef void (^CT_IpToCountryRQCompletion)(CT_IpToCountryRS *response, CTErrorResponse *error);
 
 + (void)performRequest:(NSString *)requestorID
-                    currency:(NSString *)currency
-                languageCode:(NSString *)languageCode
-                 countryCode:(NSString *)countryCode
-                      target:(NSString *)target
-                  completion:(CT_IpToCountryRQCompletion)completion;
+              currency:(NSString *)currency
+          languageCode:(NSString *)languageCode
+           countryCode:(NSString *)countryCode
+                target:(NSString *)target
+              endpoint:(NSString *)endpoint
+            completion:(CT_IpToCountryRQCompletion)completion;
 
 @end
