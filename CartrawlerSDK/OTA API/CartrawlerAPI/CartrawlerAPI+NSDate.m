@@ -13,6 +13,7 @@
 - (NSString *)stringFromDateWithFormat:(NSString *)format;
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
     formatter.dateFormat = format;
     return [formatter stringFromDate:self];
 }
