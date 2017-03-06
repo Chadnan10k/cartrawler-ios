@@ -106,6 +106,14 @@
 		45D386081DD62277000F02D1 /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45D386071DD62277000F02D1 /* strip-frameworks.sh */; };
 		BC4A3FE91E5F3DBF00EFB055 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455B57C91DCC8D7900CA4790 /* CartrawlerAPI.framework */; };
 		BC4A3FEF1E5F3DC800EFB055 /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B99C81CFEF184001D07A7 /* LocationTests.m */; };
+		BC4A40001E60466700EFB055 /* PartialTextRS.json in Resources */ = {isa = PBXBuildFile; fileRef = BC4A3FFF1E60466700EFB055 /* PartialTextRS.json */; };
+		BC758D2B1E604849008EA8C1 /* CitySearchRS.json in Resources */ = {isa = PBXBuildFile; fileRef = BC758D2A1E604849008EA8C1 /* CitySearchRS.json */; };
+		BC758D2D1E604903008EA8C1 /* IATALocationSearchRS.json in Resources */ = {isa = PBXBuildFile; fileRef = BC758D2C1E604903008EA8C1 /* IATALocationSearchRS.json */; };
+		BC758D2F1E605103008EA8C1 /* LocationResult.json in Resources */ = {isa = PBXBuildFile; fileRef = BC758D2E1E605103008EA8C1 /* LocationResult.json */; };
+		BC758D311E60512A008EA8C1 /* PartialTextLocationResult.json in Resources */ = {isa = PBXBuildFile; fileRef = BC758D301E60512A008EA8C1 /* PartialTextLocationResult.json */; };
+		BC758D321E605C66008EA8C1 /* VehicleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B99CA1CFEF24E001D07A7 /* VehicleTests.m */; };
+		BC758D341E605FEF008EA8C1 /* CT_IPToCountry_RS.json in Resources */ = {isa = PBXBuildFile; fileRef = BC758D331E605FEF008EA8C1 /* CT_IPToCountry_RS.json */; };
+		BC758D351E644584008EA8C1 /* VehAvailJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 451B99D01CFEFD2C001D07A7 /* VehAvailJSON.json */; };
 		BC811C6D1E2946CF0049C3DF /* CT_IpToCountryRQ.h in Headers */ = {isa = PBXBuildFile; fileRef = BC811C6B1E2946CF0049C3DF /* CT_IpToCountryRQ.h */; };
 		BC811C6E1E2946CF0049C3DF /* CT_IpToCountryRQ.m in Sources */ = {isa = PBXBuildFile; fileRef = BC811C6C1E2946CF0049C3DF /* CT_IpToCountryRQ.m */; };
 		BC811C721E294C9C0049C3DF /* CT_IpToCountryRS.h in Headers */ = {isa = PBXBuildFile; fileRef = BC811C701E294C9C0049C3DF /* CT_IpToCountryRS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -126,7 +134,7 @@
 
 /* Begin PBXFileReference section */
 		451B99C81CFEF184001D07A7 /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTests.m; sourceTree = "<group>"; };
-		451B99CA1CFEF24E001D07A7 /* VehicleBookingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleBookingTests.m; sourceTree = "<group>"; };
+		451B99CA1CFEF24E001D07A7 /* VehicleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleTests.m; sourceTree = "<group>"; };
 		451B99CE1CFEF5B8001D07A7 /* InsuranceQuoteJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InsuranceQuoteJSON.json; sourceTree = "<group>"; };
 		451B99D01CFEFD2C001D07A7 /* VehAvailJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VehAvailJSON.json; sourceTree = "<group>"; };
 		451B99D21CFF2835001D07A7 /* BookVehicleJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BookVehicleJSON.json; sourceTree = "<group>"; };
@@ -224,6 +232,12 @@
 		45FCA0981CBFE4890079AA68 /* CTInsurance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInsurance.h; sourceTree = "<group>"; };
 		45FCA0991CBFE4890079AA68 /* CTInsurance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsurance.m; sourceTree = "<group>"; };
 		BC4A3FE41E5F3DBF00EFB055 /* CartrawlerAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC4A3FFF1E60466700EFB055 /* PartialTextRS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PartialTextRS.json; sourceTree = "<group>"; };
+		BC758D2A1E604849008EA8C1 /* CitySearchRS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CitySearchRS.json; sourceTree = "<group>"; };
+		BC758D2C1E604903008EA8C1 /* IATALocationSearchRS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IATALocationSearchRS.json; sourceTree = "<group>"; };
+		BC758D2E1E605103008EA8C1 /* LocationResult.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocationResult.json; sourceTree = "<group>"; };
+		BC758D301E60512A008EA8C1 /* PartialTextLocationResult.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PartialTextLocationResult.json; sourceTree = "<group>"; };
+		BC758D331E605FEF008EA8C1 /* CT_IPToCountry_RS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CT_IPToCountry_RS.json; sourceTree = "<group>"; };
 		BC811C6B1E2946CF0049C3DF /* CT_IpToCountryRQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CT_IpToCountryRQ.h; sourceTree = "<group>"; };
 		BC811C6C1E2946CF0049C3DF /* CT_IpToCountryRQ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CT_IpToCountryRQ.m; sourceTree = "<group>"; };
 		BC811C701E294C9C0049C3DF /* CT_IpToCountryRS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CT_IpToCountryRS.h; sourceTree = "<group>"; };
@@ -346,7 +360,7 @@
 				45D53D511CBBE8E600DEDB0B /* Info.plist */,
 				45233D271CF4542100B8E2B2 /* GroundAvailRSJSON.json */,
 				451B99C81CFEF184001D07A7 /* LocationTests.m */,
-				451B99CA1CFEF24E001D07A7 /* VehicleBookingTests.m */,
+				451B99CA1CFEF24E001D07A7 /* VehicleTests.m */,
 				451B9A501D005F2B001D07A7 /* GTTests.m */,
 				451B99CE1CFEF5B8001D07A7 /* InsuranceQuoteJSON.json */,
 				451B99D01CFEFD2C001D07A7 /* VehAvailJSON.json */,
@@ -354,6 +368,12 @@
 				451B99D41CFF2A01001D07A7 /* RetRes.json */,
 				451B99F61CFF40E0001D07A7 /* TermsAndCond.json */,
 				45C69A2F1D460F310045136D /* USInsurance.json */,
+				BC4A3FFF1E60466700EFB055 /* PartialTextRS.json */,
+				BC758D2A1E604849008EA8C1 /* CitySearchRS.json */,
+				BC758D2C1E604903008EA8C1 /* IATALocationSearchRS.json */,
+				BC758D2E1E605103008EA8C1 /* LocationResult.json */,
+				BC758D301E60512A008EA8C1 /* PartialTextLocationResult.json */,
+				BC758D331E605FEF008EA8C1 /* CT_IPToCountry_RS.json */,
 			);
 			path = CartrawlerAPITests;
 			sourceTree = "<group>";
@@ -641,6 +661,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC758D311E60512A008EA8C1 /* PartialTextLocationResult.json in Resources */,
+				BC4A40001E60466700EFB055 /* PartialTextRS.json in Resources */,
+				BC758D351E644584008EA8C1 /* VehAvailJSON.json in Resources */,
+				BC758D2D1E604903008EA8C1 /* IATALocationSearchRS.json in Resources */,
+				BC758D341E605FEF008EA8C1 /* CT_IPToCountry_RS.json in Resources */,
+				BC758D2B1E604849008EA8C1 /* CitySearchRS.json in Resources */,
+				BC758D2F1E605103008EA8C1 /* LocationResult.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +745,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC758D321E605C66008EA8C1 /* VehicleTests.m in Sources */,
 				BC4A3FEF1E5F3DC800EFB055 /* LocationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -966,6 +994,7 @@
 				BC4A3FED1E5F3DBF00EFB055 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

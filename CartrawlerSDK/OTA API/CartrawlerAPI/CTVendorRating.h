@@ -16,10 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CTVendorRating : NSObject
 
 /**
- *  The vendor agent
- */
-@property (nonatomic, nonnull, readonly) NSNumber *agent;
-/**
  *  The average wait time
  */
 @property (nonatomic, nonnull, readonly) NSNumber *averageWaitTime;
