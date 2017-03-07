@@ -29,14 +29,6 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (weak, nonatomic) IBOutlet CTLabel *vehicleNameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
-
-@property (weak, nonatomic) IBOutlet CTLabel *priceLabel;
-@property (weak, nonatomic) IBOutlet CTLabel *totalPriceLabel;
-@property (weak, nonatomic) IBOutlet UITableView *featuresTableView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *featuresTableViewHeightConstraint;
-
 @property (weak, nonatomic) IBOutlet CTLabel *includedForFreeLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *inclusionsCollectionView;
 
@@ -50,7 +42,6 @@
 @property (weak, nonatomic) IBOutlet CTToolTipButton *pickupLocationButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpacing;
 @property (weak, nonatomic) IBOutlet CTButton *termsAndConditionsButton;
-@property (weak, nonatomic) IBOutlet CTLabel *orSimilarLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *fuelPolicyTitleLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *locationTitleLabel;
 
@@ -65,26 +56,20 @@
     _vehicleFeaturesDataSource = [[CTVehicleFeaturesDataSource alloc] init];
     self.inclusionsContainerView.backgroundColor = [CTAppearance instance].iconTint;
     
-    self.featuresTableView.dataSource = self.vehicleFeaturesDataSource;
     self.inclusionsCollectionView.dataSource = self.inclusionDataSource;
     self.inclusionsCollectionView.delegate = self.inclusionDataSource;
 
-    self.featuresTableView.estimatedRowHeight = 30;
-    self.featuresTableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    self.totalPriceLabel.text = CTLocalizedString(CTRentalVehicleTotalPrice);
     self.includedForFreeLabel.text = CTLocalizedString(CTRentalIncludedTitle);
     [self.termsAndConditionsButton setTitle:CTLocalizedString(CTRentalIncludedTerms) forState:UIControlStateNormal];
-    self.orSimilarLabel.text = CTLocalizedString(CTRentalVehicleOrSimilar);
     self.fuelPolicyTitleLabel.text = CTLocalizedString(CTRentalVehicleFuelPolicy);
     self.locationTitleLabel.text = CTLocalizedString(CTRentalVehiclePickupLocation);
 
-    [self.featuresTableView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
     
     if (self.search.selectedVehicle.vendor.rating) {
         self.topSpacing.constant = 80;
@@ -96,16 +81,6 @@
     CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
     
     [self.view layoutIfNeeded];
-
-    [[CTImageCache sharedInstance] cachedImage: self.search.selectedVehicle.vehicle.pictureURL completion:^(UIImage *image) {
-        self.vehicleImageView.image = image;
-    }];
-
-    self.vehicleNameLabel.text = self.search.selectedVehicle.vehicle.makeModelName;
-    
-    if (self.search.selectedVehicle.vehicle.totalPriceForThisVehicle) {
-        self.priceLabel.text = [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
-    }
     
     __weak typeof(self) weakSelf = self;
     
@@ -184,7 +159,6 @@
     }
     
     [self.vehicleFeaturesDataSource setData:featureData];
-    [self.featuresTableView reloadData];
 }
 
 - (void)setupInclusionsCollectionView
@@ -230,14 +204,13 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(UITableView *)featuresTableView change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
-    self.featuresTableViewHeightConstraint.constant = featuresTableView.contentSize.height;
+
     [featuresTableView layoutIfNeeded];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.featuresTableView removeObserver:self forKeyPath:@"contentSize"];
 }
 
 @end
