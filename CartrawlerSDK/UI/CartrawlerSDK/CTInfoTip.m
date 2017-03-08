@@ -277,7 +277,8 @@ NSString * const kInfoTipInformationImage = @"information";
     UIImageView *imageView = [UIImageView new];
     imageView.translatesAutoresizingMaskIntoConstraints = NO;
     imageView.contentMode = UIViewContentModeScaleAspectFit;
-    imageView.image = icon;
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    imageView.image = icon ?: [UIImage imageNamed:@"pencil" inBundle:bundle compatibleWithTraitCollection:nil];
     return imageView;
 }
 
