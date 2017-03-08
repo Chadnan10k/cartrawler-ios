@@ -172,6 +172,8 @@
 		BC3361A31E4CCD2F0056E5A6 /* nl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33619D1E4CCD2F0056E5A6 /* nl.strings */; };
 		BC3361A41E4CCD2F0056E5A6 /* pl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33619E1E4CCD2F0056E5A6 /* pl.strings */; };
 		BC54F15A1E54981B00A7C871 /* pt.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC54F1591E54981B00A7C871 /* pt.strings */; };
+		BC7522C21E705818005918D2 /* CTInsuranceView.h in Headers */ = {isa = PBXBuildFile; fileRef = BC7522C01E705818005918D2 /* CTInsuranceView.h */; };
+		BC7522C31E705818005918D2 /* CTInsuranceView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7522C11E705818005918D2 /* CTInsuranceView.m */; };
 		E7E8D9D51E37D9C9004B786C /* CTRentalLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7E8D9D31E37D9C9004B786C /* CTRentalLocalizationConstants.h */; };
 		E7E8D9D61E37D9C9004B786C /* CTRentalLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E8D9D41E37D9C9004B786C /* CTRentalLocalizationConstants.m */; };
 		E7E8D9D81E37DA1D004B786C /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7E8D9D71E37DA1D004B786C /* en.strings */; };
@@ -343,6 +345,8 @@
 		BC33619D1E4CCD2F0056E5A6 /* nl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = nl.strings; path = Localization/nl.strings; sourceTree = "<group>"; };
 		BC33619E1E4CCD2F0056E5A6 /* pl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pl.strings; path = Localization/pl.strings; sourceTree = "<group>"; };
 		BC54F1591E54981B00A7C871 /* pt.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pt.strings; path = Localization/pt.strings; sourceTree = "<group>"; };
+		BC7522C01E705818005918D2 /* CTInsuranceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInsuranceView.h; sourceTree = "<group>"; };
+		BC7522C11E705818005918D2 /* CTInsuranceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsuranceView.m; sourceTree = "<group>"; };
 		E7E8D9D31E37D9C9004B786C /* CTRentalLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTRentalLocalizationConstants.h; path = Localization/CTRentalLocalizationConstants.h; sourceTree = "<group>"; };
 		E7E8D9D41E37D9C9004B786C /* CTRentalLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTRentalLocalizationConstants.m; path = Localization/CTRentalLocalizationConstants.m; sourceTree = "<group>"; };
 		E7E8D9D71E37DA1D004B786C /* en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en.strings; path = Localization/en.strings; sourceTree = "<group>"; };
@@ -662,14 +666,14 @@
 			name = "Optional Extras";
 			sourceTree = "<group>";
 		};
-		451E74871E0429F200D58F71 /* Extras */ = {
+		451E74871E0429F200D58F71 /* Insurance */ = {
 			isa = PBXGroup;
 			children = (
+				BC7522BF1E705807005918D2 /* Phase 4 */,
 				451E75A21E042E9200D58F71 /* CTInsuranceViewController.h */,
 				451E75A31E042E9200D58F71 /* CTInsuranceViewController.m */,
-				451E74861E0429F200D58F71 /* Optional Extras */,
 			);
-			name = Extras;
+			name = Insurance;
 			sourceTree = "<group>";
 		};
 		451E74921E0429F200D58F71 /* TableView */ = {
@@ -744,7 +748,8 @@
 				451E743E1E0429F200D58F71 /* Search */,
 				451E74571E0429F200D58F71 /* Vehicle Selection */,
 				451E747C1E0429F200D58F71 /* Vehicle Details */,
-				451E74871E0429F200D58F71 /* Extras */,
+				451E74871E0429F200D58F71 /* Insurance */,
+				451E74861E0429F200D58F71 /* Optional Extras */,
 				451E74A31E0429F200D58F71 /* Driver Details */,
 				451E749E1E0429F200D58F71 /* Summary */,
 				451E74AA1E0429F200D58F71 /* Payment */,
@@ -794,6 +799,15 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
+		BC7522BF1E705807005918D2 /* Phase 4 */ = {
+			isa = PBXGroup;
+			children = (
+				BC7522C01E705818005918D2 /* CTInsuranceView.h */,
+				BC7522C11E705818005918D2 /* CTInsuranceView.m */,
+			);
+			name = "Phase 4";
+			sourceTree = "<group>";
+		};
 		BC9F6E571E2655E5006DD990 /* Bookings Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -831,6 +845,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				451E75C21E042F2E00D58F71 /* CTPaymentSummaryDataSource.h in Headers */,
+				BC7522C21E705818005918D2 /* CTInsuranceView.h in Headers */,
 				451E76401E044D0800D58F71 /* CTSearchDetailsViewController.h in Headers */,
 				451E752D1E042B5700D58F71 /* CTInterstitialViewController.h in Headers */,
 				451E75901E042E4B00D58F71 /* CTVehicleInclusionsDataSource.h in Headers */,
@@ -1050,6 +1065,7 @@
 				451E75DA1E042F7900D58F71 /* CTPaymentSummaryItemTableViewCell.m in Sources */,
 				451E75981E042E5D00D58F71 /* CTVehicleFeatureTableViewCell.m in Sources */,
 				451E752E1E042B5700D58F71 /* CTInterstitialCollectionViewCell.m in Sources */,
+				BC7522C31E705818005918D2 /* CTInsuranceView.m in Sources */,
 				451E75801E042DDC00D58F71 /* CTSupplierRatingTableViewCell.m in Sources */,
 				451E75751E042D6800D58F71 /* CTTermsViewController.m in Sources */,
 				451E76071E042FE800D58F71 /* CTDriverDetailsValidation.m in Sources */,

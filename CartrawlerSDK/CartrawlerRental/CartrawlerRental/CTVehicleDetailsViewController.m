@@ -10,6 +10,7 @@
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import "CTVehicleDetailsView.h"
+#import "CTInsuranceView.h"
 
 @interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate>
 
@@ -18,6 +19,7 @@
 
 //Nested views
 @property (nonatomic, strong) CTVehicleDetailsView *vehicleDetailsView;
+@property (nonatomic, strong) CTInsuranceView *insuranceView;
 
 @end
 
@@ -26,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initVehicleDetailsView];
+    [self initInsuranceView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -54,6 +57,25 @@
                                                                                options:0
                                                                                metrics:nil
                                                                                  views:@{@"vehicleDetailsView" : self.vehicleDetailsView}]];
+}
+
+// MARK: Insurance View Init
+- (void)initInsuranceView
+{
+    _insuranceView = [CTInsuranceView new];
+    self.insuranceView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.containerView addSubview:self.insuranceView];
+    //self.insuranceView.delegate = self;
+    
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-16-[insurance]"
+                                                                               options:0
+                                                                               metrics:nil
+                                                                                 views:@{@"insurance" : self.insuranceView, @"top" : self.vehicleDetailsView}]];
+    
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[insurance]-0-|"
+                                                                               options:0
+                                                                               metrics:nil
+                                                                                 views:@{@"insurance" : self.insuranceView}]];
 }
 
 - (IBAction)backTapped:(id)sender {
