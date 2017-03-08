@@ -35,17 +35,12 @@
 @property (nonatomic, weak) id <CTInfoTipDelegate> delegate;
 
 /**
- Set the info tip text
+ Designated Initialiser
 
- @param text a string
+ @param icon icon image to display in the circle
+ @param text text to display
+ @return a CTInfoTip instance
  */
-- (void)setText:(NSString *)text;
-
-/**
- Set the info tip image
-
- @param image an image
- */
-- (void)setImage:(UIImage *)image;
+- (instancetype)initWithIcon:(UIImage *)icon text:(NSString *)text;
 
 @end

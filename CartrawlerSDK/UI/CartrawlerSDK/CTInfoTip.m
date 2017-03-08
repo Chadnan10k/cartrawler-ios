@@ -19,31 +19,23 @@ NSString * const kInfoTipInformationImage = @"information";
 
 @implementation CTInfoTip
 
-- (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
+- (instancetype)initWithIcon:(UIImage *)icon text:(NSString *)text {
+    self = [super init];
     if (self) {
-        [self setupViews];
+        [self setupViewsWithIcon:icon text:text];
     }
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self setupViews];
-    }
-    return self;
-}
-
-- (void)setupViews {
+- (void)setupViewsWithIcon:(UIImage *)icon text:(NSString *)text {
     UIView *backgroundView = [self createBackgroundView];
     [self addSubview:backgroundView];
     
-    self.infoLabel = [self createLabel];
+    self.infoLabel = [self createLabelWithText:text];
     self.infoButton = [self createButton];
     UIView *alignmentView = [self createAlignmentView];
     self.circleView = [self createCircleView];
-    self.imageView = [self createImageView];
+    self.imageView = [self createImageViewWithIcon:icon];
     
     [self addSubview:self.infoLabel];
     [self addSubview:self.infoButton];
@@ -243,9 +235,10 @@ NSString * const kInfoTipInformationImage = @"information";
     return backgroundView;
 }
 
-- (UILabel *)createLabel {
+- (UILabel *)createLabelWithText:(NSString *)text {
     UILabel *infoLabel = [UILabel new];
     infoLabel.numberOfLines = 2;
+    infoLabel.text = text;
     infoLabel.textColor = [UIColor whiteColor];
     infoLabel.adjustsFontSizeToFitWidth = YES;
     infoLabel.minimumFontSize = 10.0;
@@ -280,10 +273,11 @@ NSString * const kInfoTipInformationImage = @"information";
     return circleView;
 }
 
-- (UIImageView *)createImageView {
+- (UIImageView *)createImageViewWithIcon:(UIImage *)icon {
     UIImageView *imageView = [UIImageView new];
     imageView.translatesAutoresizingMaskIntoConstraints = NO;
     imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.image = icon;
     return imageView;
 }
 
