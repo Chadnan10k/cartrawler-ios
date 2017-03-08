@@ -25,7 +25,7 @@
 @end
 
 /**
- A view for displaying a tool tip, with customisable image and text
+ A view for displaying an info tip, with customisable image and text
  */
 @interface CTInfoTip : UIView
 

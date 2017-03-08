@@ -305,5 +305,4 @@ NSString * const kInfoTipInformationImage = @"information";
     self.circleView.layer.cornerRadius = self.circleView.frame.size.width / 2;
 }
 
-
 @end
