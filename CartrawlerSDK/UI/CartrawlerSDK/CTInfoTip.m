@@ -65,7 +65,7 @@ NSString * const kInfoTipInformationImage = @"information";
                                                                                     toItem:nil
                                                                                  attribute:NSLayoutAttributeNotAnAttribute
                                                                                 multiplier:1.0
-                                                                                  constant:80];
+                                                                                  constant:70];
     NSLayoutConstraint *circleViewHeightConstraint = [NSLayoutConstraint constraintWithItem:self.circleView
                                                                                   attribute:NSLayoutAttributeHeight
                                                                                   relatedBy:NSLayoutRelationEqual
@@ -125,7 +125,7 @@ NSString * const kInfoTipInformationImage = @"information";
                                                                                       toItem:self
                                                                                    attribute:NSLayoutAttributeTop
                                                                                   multiplier:1.0
-                                                                                    constant:10];
+                                                                                    constant:5];
     NSLayoutConstraint *backgroundViewHeightConstraint = [NSLayoutConstraint constraintWithItem:backgroundView
                                                                                       attribute:NSLayoutAttributeHeight
                                                                                       relatedBy:NSLayoutRelationGreaterThanOrEqual
@@ -139,7 +139,7 @@ NSString * const kInfoTipInformationImage = @"information";
                                                                                          toItem:self
                                                                                       attribute:NSLayoutAttributeBottom
                                                                                      multiplier:1.0
-                                                                                       constant:-10];
+                                                                                       constant:-5];
     backgroundViewBottomConstraint.priority = 750;
     [self addConstraints:@[backgroundViewLeftConstraint, backgroundViewRightConstraint, backgroundViewTopConstraint, backgroundViewHeightConstraint, backgroundViewBottomConstraint]];
     
@@ -163,7 +163,7 @@ NSString * const kInfoTipInformationImage = @"information";
                                                                              toItem:self
                                                                           attribute:NSLayoutAttributeTop
                                                                          multiplier:1.0
-                                                                           constant:12];
+                                                                           constant:6];
     NSLayoutConstraint *labelHeightConstraint = [NSLayoutConstraint constraintWithItem:self.infoLabel
                                                                              attribute:NSLayoutAttributeHeight
                                                                              relatedBy:NSLayoutRelationGreaterThanOrEqual
@@ -177,7 +177,7 @@ NSString * const kInfoTipInformationImage = @"information";
                                                                                 toItem:self
                                                                              attribute:NSLayoutAttributeBottom
                                                                             multiplier:1.0
-                                                                              constant:-12];
+                                                                              constant:-6];
     labelBottomConstraint.priority = 750;
     [self addConstraints:@[labelLeftConstraint, labelRightConstraint, labelTopConstraint, labelHeightConstraint, labelBottomConstraint]];
     
