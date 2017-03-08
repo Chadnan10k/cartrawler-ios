@@ -272,4 +272,6 @@ NSString * const CTRentalAddressDetailsTitle = @"address_details_title";
 
 NSString * const CTRentalSpecialOfferPrefix = @"filter_specialoffers";
 
+NSString * const CTRentalMore = @"more";
+
 @end

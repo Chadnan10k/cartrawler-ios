@@ -9,8 +9,26 @@
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTVehicle.h>
 
+@protocol CTVehicleDetailsDelegate <NSObject>
+
+/**
+ Fires when a user taps on a info collection view cell
+ */
+- (void)didTapMoreDetailsView;
+
+@end
+
 @interface CTVehicleDetailsView : UIView
 
-- (instancetype)initWithVehicle:(CTVehicle *)vehicle;
+@property (weak, nonatomic) id<CTVehicleDetailsDelegate> delegate;
+
+/**
+ Updates the view with a selected vehicle
+
+ @param vehicle The selected vehicle
+ @param pickupDate The pickup date
+ @param dropoffDate The dropoff date
+ */
+- (void)setVehicle:(CTVehicle *)vehicle pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate;
 
 @end

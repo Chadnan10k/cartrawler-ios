@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CartrawlerAPI/CTVehicle.h>
 
 @interface CTVehicleDetailsCollectionViewCell : UICollectionViewCell
 
-- (void)setIndex:(NSInteger)index;
+- (void)setIndex:(NSInteger)index vehicle:(CTVehicle *)vehicle;
 
 @end

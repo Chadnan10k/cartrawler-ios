@@ -274,5 +274,7 @@ extern NSString * const CTRentalAddressDetailsTitle;
 
 extern NSString * const CTRentalSpecialOfferPrefix;
 
+extern NSString * const CTRentalMore;
+
 
 @end
