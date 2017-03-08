@@ -29,14 +29,13 @@ NSString * const kInfoTipInformationImage = @"information";
 
 - (void)setupViewsWithIcon:(UIImage *)icon text:(NSString *)text {
     UIView *backgroundView = [self createBackgroundView];
-    [self addSubview:backgroundView];
-    
     self.infoLabel = [self createLabelWithText:text];
     self.infoButton = [self createButton];
     UIView *alignmentView = [self createAlignmentView];
     self.circleView = [self createCircleView];
     self.imageView = [self createImageViewWithIcon:icon];
     
+    [self addSubview:backgroundView];
     [self addSubview:self.infoLabel];
     [self addSubview:self.infoButton];
     [self addSubview:alignmentView];
@@ -52,6 +51,7 @@ NSString * const kInfoTipInformationImage = @"information";
                                                                                 attribute:NSLayoutAttributeLeft
                                                                                multiplier:1.0
                                                                                  constant:0];
+    
     NSLayoutConstraint *circleViewTopConstraint = [NSLayoutConstraint constraintWithItem:self.circleView
                                                                                attribute:NSLayoutAttributeTop
                                                                                relatedBy:NSLayoutRelationEqual
@@ -59,20 +59,21 @@ NSString * const kInfoTipInformationImage = @"information";
                                                                                attribute:NSLayoutAttributeTop
                                                                               multiplier:1.0
                                                                                 constant:0];
-    NSLayoutConstraint *circleViewBottomConstraint = [NSLayoutConstraint constraintWithItem:self.circleView
-                                                                                  attribute:NSLayoutAttributeBottom
-                                                                                  relatedBy:NSLayoutRelationEqual toItem:self
-                                                                                  attribute:NSLayoutAttributeBottom
-                                                                                 multiplier:1.0
-                                                                                   constant:0];
     NSLayoutConstraint *circleViewWidthConstraint = [NSLayoutConstraint constraintWithItem:self.circleView
                                                                                  attribute:NSLayoutAttributeWidth
                                                                                  relatedBy:NSLayoutRelationEqual
-                                                                                    toItem:self
-                                                                                 attribute:NSLayoutAttributeHeight
+                                                                                    toItem:nil
+                                                                                 attribute:NSLayoutAttributeNotAnAttribute
                                                                                 multiplier:1.0
-                                                                                  constant:0];
-    [self addConstraints:@[circleViewLeftConstraint, circleViewTopConstraint, circleViewBottomConstraint, circleViewWidthConstraint]];
+                                                                                  constant:80];
+    NSLayoutConstraint *circleViewHeightConstraint = [NSLayoutConstraint constraintWithItem:self.circleView
+                                                                                  attribute:NSLayoutAttributeHeight
+                                                                                  relatedBy:NSLayoutRelationEqual
+                                                                                     toItem:self.circleView
+                                                                                  attribute:NSLayoutAttributeWidth
+                                                                                 multiplier:1.0
+                                                                                   constant:0];
+    [self addConstraints:@[circleViewLeftConstraint, circleViewTopConstraint, circleViewWidthConstraint, circleViewHeightConstraint]];
     
     NSLayoutConstraint *alignmentViewLeftConstraint = [NSLayoutConstraint constraintWithItem:alignmentView
                                                                                    attribute:NSLayoutAttributeLeft
@@ -118,21 +119,29 @@ NSString * const kInfoTipInformationImage = @"information";
                                                                                      attribute:NSLayoutAttributeRight
                                                                                     multiplier:1.0
                                                                                       constant:0];
-    NSLayoutConstraint *backgroundViewYConstraint = [NSLayoutConstraint constraintWithItem:backgroundView
-                                                                                 attribute:NSLayoutAttributeCenterY
-                                                                                 relatedBy:NSLayoutRelationEqual
-                                                                                    toItem:self
-                                                                                 attribute:NSLayoutAttributeCenterY
-                                                                                multiplier:1.0
-                                                                                  constant:0];
+    NSLayoutConstraint *backgroundViewTopConstraint = [NSLayoutConstraint constraintWithItem:backgroundView
+                                                                                   attribute:NSLayoutAttributeTop
+                                                                                   relatedBy:NSLayoutRelationEqual
+                                                                                      toItem:self
+                                                                                   attribute:NSLayoutAttributeTop
+                                                                                  multiplier:1.0
+                                                                                    constant:10];
     NSLayoutConstraint *backgroundViewHeightConstraint = [NSLayoutConstraint constraintWithItem:backgroundView
                                                                                       attribute:NSLayoutAttributeHeight
+                                                                                      relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                                         toItem:nil
+                                                                                      attribute:NSLayoutAttributeNotAnAttribute
+                                                                                     multiplier:1.0
+                                                                                       constant:60];
+    NSLayoutConstraint *backgroundViewBottomConstraint = [NSLayoutConstraint constraintWithItem:backgroundView
+                                                                                      attribute:NSLayoutAttributeBottom
                                                                                       relatedBy:NSLayoutRelationEqual
                                                                                          toItem:self
-                                                                                      attribute:NSLayoutAttributeHeight
-                                                                                     multiplier:0.8
-                                                                                       constant:0];
-    [self addConstraints:@[backgroundViewLeftConstraint, backgroundViewRightConstraint, backgroundViewYConstraint, backgroundViewHeightConstraint]];
+                                                                                      attribute:NSLayoutAttributeBottom
+                                                                                     multiplier:1.0
+                                                                                       constant:-10];
+    backgroundViewBottomConstraint.priority = 750;
+    [self addConstraints:@[backgroundViewLeftConstraint, backgroundViewRightConstraint, backgroundViewTopConstraint, backgroundViewHeightConstraint, backgroundViewBottomConstraint]];
     
     NSLayoutConstraint *labelLeftConstraint = [NSLayoutConstraint constraintWithItem:self.infoLabel
                                                                            attribute:NSLayoutAttributeLeft
@@ -140,29 +149,37 @@ NSString * const kInfoTipInformationImage = @"information";
                                                                               toItem:self.circleView
                                                                            attribute:NSLayoutAttributeRight
                                                                           multiplier:1.0
-                                                                            constant:20];
+                                                                            constant:10];
     NSLayoutConstraint *labelRightConstraint = [NSLayoutConstraint constraintWithItem:self.infoLabel
                                                                             attribute:NSLayoutAttributeRight
                                                                             relatedBy:NSLayoutRelationEqual
                                                                                toItem:self.infoButton
                                                                             attribute:NSLayoutAttributeLeft
                                                                            multiplier:1.0
-                                                                             constant:-20];
-    NSLayoutConstraint *labelYConstraint = [NSLayoutConstraint constraintWithItem:self.infoLabel
-                                                                        attribute:NSLayoutAttributeCenterY
-                                                                        relatedBy:NSLayoutRelationEqual
-                                                                           toItem:self
-                                                                        attribute:NSLayoutAttributeCenterY
-                                                                       multiplier:1.0
-                                                                         constant:0];
+                                                                             constant:-10];
+    NSLayoutConstraint *labelTopConstraint = [NSLayoutConstraint constraintWithItem:self.infoLabel
+                                                                          attribute:NSLayoutAttributeTop
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:self
+                                                                          attribute:NSLayoutAttributeTop
+                                                                         multiplier:1.0
+                                                                           constant:12];
     NSLayoutConstraint *labelHeightConstraint = [NSLayoutConstraint constraintWithItem:self.infoLabel
                                                                              attribute:NSLayoutAttributeHeight
-                                                                             relatedBy:NSLayoutRelationLessThanOrEqual
-                                                                                toItem:self
-                                                                             attribute:NSLayoutAttributeHeight
+                                                                             relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                                toItem:nil
+                                                                             attribute:NSLayoutAttributeNotAnAttribute
                                                                             multiplier:1.0
-                                                                              constant:0];
-    [self addConstraints:@[labelLeftConstraint, labelRightConstraint, labelYConstraint, labelHeightConstraint]];
+                                                                              constant:60];
+    NSLayoutConstraint *labelBottomConstraint = [NSLayoutConstraint constraintWithItem:self.infoLabel
+                                                                             attribute:NSLayoutAttributeBottom
+                                                                             relatedBy:NSLayoutRelationEqual
+                                                                                toItem:self
+                                                                             attribute:NSLayoutAttributeBottom
+                                                                            multiplier:1.0
+                                                                              constant:-12];
+    labelBottomConstraint.priority = 750;
+    [self addConstraints:@[labelLeftConstraint, labelRightConstraint, labelTopConstraint, labelHeightConstraint, labelBottomConstraint]];
     
     NSLayoutConstraint *buttonRightConstraint = [NSLayoutConstraint constraintWithItem:self.infoButton
                                                                              attribute:NSLayoutAttributeRight
@@ -170,7 +187,7 @@ NSString * const kInfoTipInformationImage = @"information";
                                                                                 toItem:self
                                                                              attribute:NSLayoutAttributeRight
                                                                             multiplier:1.0
-                                                                              constant:-20];
+                                                                              constant:-10];
     NSLayoutConstraint *buttonYConstraint = [NSLayoutConstraint constraintWithItem:self.infoButton
                                                                          attribute:NSLayoutAttributeCenterY
                                                                          relatedBy:NSLayoutRelationEqual
@@ -195,26 +212,26 @@ NSString * const kInfoTipInformationImage = @"information";
     [self addConstraints:@[buttonRightConstraint, buttonYConstraint, buttonWidthConstraint, buttonHeightConstraint]];
     
     NSLayoutConstraint *imageXConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
-                                                                           attribute:NSLayoutAttributeCenterX
-                                                                           relatedBy:NSLayoutRelationEqual
-                                                                              toItem:self.circleView
-                                                                           attribute:NSLayoutAttributeCenterX
-                                                                          multiplier:1.0
-                                                                            constant:0];
-    NSLayoutConstraint *imageYConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
-                                                                            attribute:NSLayoutAttributeCenterY
-                                                                            relatedBy:NSLayoutRelationEqual
-                                                                               toItem:self.circleView
-                                                                            attribute:NSLayoutAttributeCenterY
-                                                                           multiplier:1.0
-                                                                             constant:0];
-    NSLayoutConstraint *imageWidthConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
-                                                                        attribute:NSLayoutAttributeWidth
+                                                                        attribute:NSLayoutAttributeCenterX
                                                                         relatedBy:NSLayoutRelationEqual
                                                                            toItem:self.circleView
-                                                                        attribute:NSLayoutAttributeWidth
-                                                                       multiplier:0.5
+                                                                        attribute:NSLayoutAttributeCenterX
+                                                                       multiplier:1.0
                                                                          constant:0];
+    NSLayoutConstraint *imageYConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
+                                                                        attribute:NSLayoutAttributeCenterY
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:self.circleView
+                                                                        attribute:NSLayoutAttributeCenterY
+                                                                       multiplier:1.0
+                                                                         constant:0];
+    NSLayoutConstraint *imageWidthConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
+                                                                            attribute:NSLayoutAttributeWidth
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:self.circleView
+                                                                            attribute:NSLayoutAttributeWidth
+                                                                           multiplier:0.5
+                                                                             constant:0];
     NSLayoutConstraint *imageHeightConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
                                                                              attribute:NSLayoutAttributeHeight
                                                                              relatedBy:NSLayoutRelationEqual
@@ -237,12 +254,12 @@ NSString * const kInfoTipInformationImage = @"information";
 
 - (UILabel *)createLabelWithText:(NSString *)text {
     UILabel *infoLabel = [UILabel new];
-    infoLabel.numberOfLines = 2;
+    infoLabel.numberOfLines = 0;
     infoLabel.text = text;
     infoLabel.textColor = [UIColor whiteColor];
-    infoLabel.adjustsFontSizeToFitWidth = YES;
-    infoLabel.minimumFontSize = 10.0;
+    infoLabel.font = [UIFont systemFontOfSize:10];
     infoLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [infoLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     return infoLabel;
 }
 

@@ -25,7 +25,7 @@
 @end
 
 /**
- A view for displaying an info tip, with customisable image and text
+ A view for displaying an info tip, with customisable image and text. Default icon is a pencil if no image set
  */
 @interface CTInfoTip : UIView
 
