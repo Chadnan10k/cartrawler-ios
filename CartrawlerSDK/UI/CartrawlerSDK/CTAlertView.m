@@ -59,7 +59,7 @@
         _titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.textColor = [UIColor colorWithRed:34.0/255.0 green:76.0/255.0 blue:156.0/255.0 alpha:1.0];
-        [alertContainerView addSubview:self.titleLabel];
+        [alertContainerView addSubview:_titleLabel];
         
         _messageTextView = [[CTAlertTextView alloc] initWithFrame:CGRectZero];
         _messageTextView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -70,17 +70,17 @@
         _messageTextView.textAlignment = NSTextAlignmentCenter;
         _messageTextView.textColor = [UIColor darkGrayColor];
         _messageTextView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-        [alertContainerView addSubview:self.messageTextView];
+        [alertContainerView addSubview:_messageTextView];
         
         _contentViewContainerView = [[UIView alloc] initWithFrame:CGRectZero];
         _contentViewContainerView.translatesAutoresizingMaskIntoConstraints = NO;
         [_contentViewContainerView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-        [alertContainerView addSubview:self.contentViewContainerView];
+        [alertContainerView addSubview:_contentViewContainerView];
         
         _actionButtonContainerView = [[UIView alloc] initWithFrame:CGRectZero];
         _actionButtonContainerView.translatesAutoresizingMaskIntoConstraints = NO;
         [_actionButtonContainerView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-        [alertContainerView addSubview:self.actionButtonContainerView];
+        [alertContainerView addSubview:_actionButtonContainerView];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:alertBackgroundView
                                                          attribute:NSLayoutAttributeCenterX
