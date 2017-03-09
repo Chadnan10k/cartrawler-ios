@@ -163,6 +163,10 @@
 		4576785B1E08388100FE591A /* CTISOCountries.csv in Resources */ = {isa = PBXBuildFile; fileRef = 457678581E08388100FE591A /* CTISOCountries.csv */; };
 		4576785C1E08388100FE591A /* CTLanguages.csv in Resources */ = {isa = PBXBuildFile; fileRef = 457678591E08388100FE591A /* CTLanguages.csv */; };
 		45BA0F661E1FA25A00EB26ED /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45BA0F651E1FA25A00EB26ED /* strip-frameworks.sh */; };
+		45BEED3D1E71820400049F0C /* CTInsuranceOfferingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45BEED3B1E71820400049F0C /* CTInsuranceOfferingView.h */; };
+		45BEED3E1E71820400049F0C /* CTInsuranceOfferingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BEED3C1E71820400049F0C /* CTInsuranceOfferingView.m */; };
+		45BEED411E71824000049F0C /* CTInsuranceAddedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45BEED3F1E71824000049F0C /* CTInsuranceAddedView.h */; };
+		45BEED421E71824000049F0C /* CTInsuranceAddedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BEED401E71824000049F0C /* CTInsuranceAddedView.m */; };
 		45BF774E1E084A0E00F6D7E9 /* CTVehicleTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BF774D1E084A0E00F6D7E9 /* CTVehicleTableViewCell_iPhone.xib */; };
 		BC3361881E4CC4DC0056E5A6 /* de.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361871E4CC4DC0056E5A6 /* de.strings */; };
 		BC33619F1E4CCD2F0056E5A6 /* el.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361991E4CCD2F0056E5A6 /* el.strings */; };
@@ -336,6 +340,10 @@
 		457678581E08388100FE591A /* CTISOCountries.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTISOCountries.csv; sourceTree = "<group>"; };
 		457678591E08388100FE591A /* CTLanguages.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTLanguages.csv; sourceTree = "<group>"; };
 		45BA0F651E1FA25A00EB26ED /* strip-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = "strip-frameworks.sh"; path = "CartrawlerRental/strip-frameworks.sh"; sourceTree = "<group>"; };
+		45BEED3B1E71820400049F0C /* CTInsuranceOfferingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInsuranceOfferingView.h; sourceTree = "<group>"; };
+		45BEED3C1E71820400049F0C /* CTInsuranceOfferingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsuranceOfferingView.m; sourceTree = "<group>"; };
+		45BEED3F1E71824000049F0C /* CTInsuranceAddedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInsuranceAddedView.h; sourceTree = "<group>"; };
+		45BEED401E71824000049F0C /* CTInsuranceAddedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsuranceAddedView.m; sourceTree = "<group>"; };
 		45BF774D1E084A0E00F6D7E9 /* CTVehicleTableViewCell_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CTVehicleTableViewCell_iPhone.xib; path = CartrawlerRental/CTVehicleTableViewCell_iPhone.xib; sourceTree = SOURCE_ROOT; };
 		BC3361871E4CC4DC0056E5A6 /* de.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de.strings; path = Localization/de.strings; sourceTree = "<group>"; };
 		BC3361991E4CCD2F0056E5A6 /* el.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = el.strings; path = Localization/el.strings; sourceTree = "<group>"; };
@@ -804,6 +812,10 @@
 			children = (
 				BC7522C01E705818005918D2 /* CTInsuranceView.h */,
 				BC7522C11E705818005918D2 /* CTInsuranceView.m */,
+				45BEED3B1E71820400049F0C /* CTInsuranceOfferingView.h */,
+				45BEED3C1E71820400049F0C /* CTInsuranceOfferingView.m */,
+				45BEED3F1E71824000049F0C /* CTInsuranceAddedView.h */,
+				45BEED401E71824000049F0C /* CTInsuranceAddedView.m */,
 			);
 			name = "Phase 4";
 			sourceTree = "<group>";
@@ -853,10 +865,12 @@
 				451E75E21E042FA400D58F71 /* CTDriverDetailsViewController.h in Headers */,
 				451E75CF1E042F3F00D58F71 /* CTBookingSummaryView.h in Headers */,
 				451E75381E042B7000D58F71 /* CTLocationSearchDataSource.h in Headers */,
+				45BEED3D1E71820400049F0C /* CTInsuranceOfferingView.h in Headers */,
 				451E76041E042FE800D58F71 /* CTSearchValidation.h in Headers */,
 				451E75961E042E5D00D58F71 /* CTVehicleFeatureTableViewCell.h in Headers */,
 				451E75781E042D7900D58F71 /* CTExpandingInfoView.h in Headers */,
 				451E75EA1E042FB600D58F71 /* CTPaymentViewController.h in Headers */,
+				45BEED411E71824000049F0C /* CTInsuranceAddedView.h in Headers */,
 				451E756B1E042D4200D58F71 /* CTPageSelectionCollectionViewCell.h in Headers */,
 				451E75AF1E042EA200D58F71 /* CTOptionalExtrasView.h in Headers */,
 				451E76001E042FE800D58F71 /* CTGenericValidation.h in Headers */,
@@ -1083,6 +1097,7 @@
 				454B4D7D1E6EF07300625F03 /* CTVehicleDetailsCollectionViewCell.m in Sources */,
 				451E76321E043DFF00D58F71 /* CTRentalBookingsViewController.m in Sources */,
 				451E756D1E042D4200D58F71 /* CTVehicleDetailsPageViewController.m in Sources */,
+				45BEED3E1E71820400049F0C /* CTInsuranceOfferingView.m in Sources */,
 				451E75B21E042EA200D58F71 /* CTOptionalExtraTableViewCell.m in Sources */,
 				451E76411E044D0800D58F71 /* CTSearchDetailsViewController.m in Sources */,
 				451E75A11E042E6C00D58F71 /* CTIncludedCollectionViewLayout.m in Sources */,
@@ -1097,6 +1112,7 @@
 				451E76331E043DFF00D58F71 /* CTRentalBookingCell.m in Sources */,
 				451E76081E042FE800D58F71 /* CTInsuranceValidation.m in Sources */,
 				451E760B1E042FE800D58F71 /* CTBookingCompletionValidation.m in Sources */,
+				45BEED421E71824000049F0C /* CTInsuranceAddedView.m in Sources */,
 				451E75571E042CB000D58F71 /* CTVehicleSelectionDataSource.m in Sources */,
 				451E76061E042FE800D58F71 /* CTGenericValidation.m in Sources */,
 				457678551E082B9600FE591A /* CTRentalConstants.m in Sources */,
