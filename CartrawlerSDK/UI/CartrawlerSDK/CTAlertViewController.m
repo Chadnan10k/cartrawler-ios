@@ -26,30 +26,11 @@
 // MARK: Initialiser
 
 + (instancetype)alertControllerWithTitle:(NSString *)title message:(NSString *)message {
-    CTAlertViewController *alertController = [[CTAlertViewController alloc] initWithNibName:nil bundle:nil];
+    CTAlertViewController *alertController = [CTAlertViewController new];
+    [alertController commonInit];
     alertController.view.titleLabel.text = title;
     alertController.view.messageTextView.text = message;
     return alertController;
-}
-
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    
-    if (self) {
-        [self commonInit];
-    }
-    
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    
-    if (self) {
-        [self commonInit];
-    }
-    
-    return self;
 }
 
 - (void)commonInit {

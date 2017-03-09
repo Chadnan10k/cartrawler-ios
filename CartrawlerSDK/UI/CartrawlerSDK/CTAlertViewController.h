@@ -15,6 +15,8 @@
  Displays custom icon, title, message, custom view and buttons as necessary
  
  Add CTAlertActions to add buttons with callback behaviour
+ 
+ Create and present with [self presentViewController:animated:completion:]
  */
 @interface CTAlertViewController : UIViewController
 
@@ -42,8 +44,8 @@
 /**
  Designated initialiser
 
- @param title the title
- @param message the message
+ @param title an optional title
+ @param message an optional message
  @return an alert view controller
  */
 + (instancetype)alertControllerWithTitle:(NSString *)title message:(NSString *)message;
