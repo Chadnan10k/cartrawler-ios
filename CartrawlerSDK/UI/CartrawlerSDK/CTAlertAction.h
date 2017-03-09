@@ -18,7 +18,7 @@
 /**
  Designated initialiser
 
- @param title a title
+ @param title the title to be displayed on the button
  @param handler a handler
  @return a CTAlertAction instance
  */

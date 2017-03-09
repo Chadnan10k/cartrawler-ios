@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "CTAlertAction.h"
 
+/**
+ An alert view controller with a similar interface to UIAlertController
+ 
+ Displays custom icon, title, message, custom view and buttons as necessary
+ 
+ Add CTAlertActions to add buttons with callback behaviour
+ */
 @interface CTAlertViewController : UIViewController
 
 /**
