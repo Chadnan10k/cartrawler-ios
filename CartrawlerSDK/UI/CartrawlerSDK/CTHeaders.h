@@ -54,3 +54,4 @@
 #import "CTUserDetails.h"
 #import "CTAnalytics.h"
 #import "CTAnalyticsEvent.h"
+#import "CTInfoTip.h"
