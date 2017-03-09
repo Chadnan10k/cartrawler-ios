@@ -34,11 +34,11 @@
         [alertBackgroundView addSubview:alertContainerView];
         
         _circleView = [[UIView alloc] initWithFrame:CGRectZero];
-        [self.circleView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.circleView.backgroundColor = [UIColor colorWithRed:232.0/255.0 green:244.0/255.0 blue:253.0/255.0 alpha:1.0];
-        self.circleView.layer.masksToBounds = YES;
-        self.circleView.layer.borderColor = [UIColor colorWithRed:42.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0].CGColor;
-        self.circleView.layer.borderWidth = 2.0;
+        _circleView.translatesAutoresizingMaskIntoConstraints = NO;
+        _circleView.backgroundColor = [UIColor colorWithRed:232.0/255.0 green:244.0/255.0 blue:253.0/255.0 alpha:1.0];
+        _circleView.layer.masksToBounds = YES;
+        _circleView.layer.borderColor = [UIColor colorWithRed:42.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0].CGColor;
+        _circleView.layer.borderWidth = 2.0;
         [alertBackgroundView addSubview:_circleView];
         
         _iconView = [UIImageView new];
@@ -49,37 +49,37 @@
         [_circleView addSubview:_iconView];
         
         UIView *decorationView = [[UIView alloc] initWithFrame:CGRectZero];
-        [decorationView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        decorationView.translatesAutoresizingMaskIntoConstraints = NO;
         decorationView.backgroundColor = [UIColor colorWithRed:42.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0];
         [alertContainerView addSubview:decorationView];
         
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.titleLabel.numberOfLines = 2;
-        self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-        self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        self.titleLabel.textColor = [UIColor colorWithRed:34.0/255.0 green:76.0/255.0 blue:156.0/255.0 alpha:1.0];
+        _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _titleLabel.numberOfLines = 2;
+        _titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.textColor = [UIColor colorWithRed:34.0/255.0 green:76.0/255.0 blue:156.0/255.0 alpha:1.0];
         [alertContainerView addSubview:self.titleLabel];
         
         _messageTextView = [[CTAlertTextView alloc] initWithFrame:CGRectZero];
-        [self.messageTextView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        self.messageTextView.backgroundColor = [UIColor clearColor];
-        [self.messageTextView setContentHuggingPriority:0 forAxis:UILayoutConstraintAxisVertical];
-        [self.messageTextView setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
-        self.messageTextView.editable = NO;
-        self.messageTextView.textAlignment = NSTextAlignmentCenter;
-        self.messageTextView.textColor = [UIColor darkGrayColor];
-        self.messageTextView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+        _messageTextView.translatesAutoresizingMaskIntoConstraints = NO;
+        _messageTextView.backgroundColor = [UIColor clearColor];
+        [_messageTextView setContentHuggingPriority:0 forAxis:UILayoutConstraintAxisVertical];
+        [_messageTextView setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
+        _messageTextView.editable = NO;
+        _messageTextView.textAlignment = NSTextAlignmentCenter;
+        _messageTextView.textColor = [UIColor darkGrayColor];
+        _messageTextView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
         [alertContainerView addSubview:self.messageTextView];
         
         _contentViewContainerView = [[UIView alloc] initWithFrame:CGRectZero];
-        [self.contentViewContainerView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [self.contentView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+        _contentViewContainerView.translatesAutoresizingMaskIntoConstraints = NO;
+        [_contentViewContainerView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         [alertContainerView addSubview:self.contentViewContainerView];
         
         _actionButtonContainerView = [[UIView alloc] initWithFrame:CGRectZero];
-        [self.actionButtonContainerView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [self.actionButtonContainerView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+        _actionButtonContainerView.translatesAutoresizingMaskIntoConstraints = NO;
+        [_actionButtonContainerView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         [alertContainerView addSubview:self.actionButtonContainerView];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:alertBackgroundView
@@ -132,11 +132,11 @@
                                                                                toItem:alertBackgroundView
                                                                             attribute:NSLayoutAttributeCenterX
                                                                            multiplier:1.f constant:0.f]];
-        [self.circleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_iconView]-15-|"
+        [_circleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[_iconView]-15-|"
                                                                                         options:0
                                                                                         metrics:nil
                                                                                           views:NSDictionaryOfVariableBindings(_iconView)]];
-        [self.circleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[_iconView]-15-|"
+        [_circleView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[_iconView]-15-|"
                                                                                         options:0
                                                                                         metrics:nil
                                                                                           views:NSDictionaryOfVariableBindings(_iconView)]];
