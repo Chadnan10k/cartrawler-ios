@@ -8,10 +8,12 @@
 
 #import "CTInsuranceView.h"
 #import "CTInsuranceOfferingView.h"
+#import "CTInsuranceAddedView.h"
 
 @interface CTInsuranceView()
 
 @property (nonatomic, strong) CTInsuranceOfferingView *offeringView;
+@property (nonatomic, strong) CTInsuranceAddedView *addedView;
 
 @end
 
@@ -20,13 +22,35 @@
 - (instancetype)init
 {
     self = [super init];
-    [self renderOffering];
+    
+    [self setup];
+
     return self;
+}
+
+- (void)setup
+{
+    _offeringView = [CTInsuranceOfferingView new];
+    _addedView = [CTInsuranceAddedView new];
+    
+    __weak typeof (self) weakSelf = self;
+    
+    self.offeringView.addAction = ^{
+        [weakSelf.offeringView removeFromSuperview];
+        [weakSelf renderAdded];
+    };
+    
+    self.addedView.removeAction = ^{
+        [weakSelf.addedView removeFromSuperview];
+        [weakSelf renderOffering];
+    };
+    
+    [self renderOffering];
+
 }
 
 - (void)renderOffering
 {
-    _offeringView = [CTInsuranceOfferingView new];
     self.offeringView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.offeringView];
     
@@ -40,5 +64,24 @@
                                                                  metrics:nil
                                                                    views:@{@"view" : self.offeringView}]];
 }
+
+- (void)renderAdded
+{
+    self.addedView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.addedView];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"view" : self.addedView}]];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"view" : self.addedView}]];
+}
+
+
+
 
 @end

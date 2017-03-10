@@ -83,6 +83,7 @@
     [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[accordion]-|" options:0 metrics:nil views:@{@"accordion" : self.accordionView}]];
     
     _addNowButton = [UIButton new];
+    [self.addNowButton addTarget:self action:@selector(addInsurance:) forControlEvents:UIControlEventTouchUpInside];
     self.addNowButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.addNowButton setTitle:@"Add Test Insurance" forState:UIControlStateNormal];
     [self.backgroundView addSubview:self.addNowButton];
@@ -140,6 +141,13 @@
                                                                                   views:@{@"textView" : textView}]];
     
     return accordionBackground;
+}
+
+- (void)addInsurance:(id)sender
+{
+    if (self.addAction) {
+        self.addAction();
+    }
 }
 
 - (void)openAccordion:(id)sender

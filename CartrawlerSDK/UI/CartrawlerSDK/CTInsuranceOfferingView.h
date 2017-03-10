@@ -10,4 +10,8 @@
 
 @interface CTInsuranceOfferingView : UIView
 
+typedef void (^CTInsuranceAdd)(void);
+
+@property (nonatomic) CTInsuranceAdd addAction;
+
 @end

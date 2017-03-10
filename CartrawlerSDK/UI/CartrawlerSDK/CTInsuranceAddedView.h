@@ -10,4 +10,8 @@
 
 @interface CTInsuranceAddedView : UIView
 
+typedef void (^CTInsuranceRemove)(void);
+
+@property (nonatomic) CTInsuranceRemove removeAction;
+
 @end
