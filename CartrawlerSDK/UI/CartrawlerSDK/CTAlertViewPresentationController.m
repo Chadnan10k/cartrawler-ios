@@ -23,16 +23,17 @@
     self.backgroundDimmingView.alpha = 0.0f;
     self.backgroundDimmingView.backgroundColor = [UIColor blackColor];
     [self.containerView addSubview:self.backgroundDimmingView];
+   
     
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_backgroundDimmingView]|"
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundDimmingView]|"
                                                                                options:0
                                                                                metrics:nil
-                                                                                 views:NSDictionaryOfVariableBindings(_backgroundDimmingView)]];
+                                                                                 views:@{@"backgroundDimmingView" : self.backgroundDimmingView}]];
     
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_backgroundDimmingView]|"
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundDimmingView]|"
                                                                                options:0
                                                                                metrics:nil
-                                                                                 views:NSDictionaryOfVariableBindings(_backgroundDimmingView)]];
+                                                                                 views:@{@"backgroundDimmingView" : self.backgroundDimmingView}]];
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognized:)];
     [self.backgroundDimmingView addGestureRecognizer:tapGestureRecognizer];
