@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class CTInsurance;
+
 @interface CTInsuranceOfferingView : UIView
 
 typedef void (^CTInsuranceAdd)(void);
 
 @property (nonatomic) CTInsuranceAdd addAction;
+
+- (instancetype)init:(CTInsurance *)insurance;
 
 @end

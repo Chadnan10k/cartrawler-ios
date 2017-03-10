@@ -37,6 +37,8 @@
     [self.vehicleDetailsView setVehicle:self.search.selectedVehicle.vehicle
                              pickupDate:self.search.pickupDate
                             dropoffDate:self.search.dropoffDate];
+    
+    [self.insuranceView retrieveInsurance:self.cartrawlerAPI search:self.search];
 
 }
 

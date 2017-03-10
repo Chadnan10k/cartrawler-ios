@@ -9,6 +9,7 @@
 #import "CTInsuranceView.h"
 #import "CTInsuranceOfferingView.h"
 #import "CTInsuranceAddedView.h"
+#import <CartrawlerSDK/CTSDKSettings.h>
 
 @interface CTInsuranceView()
 
@@ -23,14 +24,33 @@
 {
     self = [super init];
     
-    [self setup];
-
     return self;
 }
 
-- (void)setup
+- (void)retrieveInsurance:(CartrawlerAPI *)api search:(CTRentalSearch *)search
 {
-    _offeringView = [CTInsuranceOfferingView new];
+    __weak typeof (self) weakSelf = self;
+    if (search.selectedVehicle.vehicle.insuranceAvailable) {
+        [api requestInsuranceQuoteForVehicle:[CTSDKSettings instance].homeCountryCode
+                                    currency:[CTSDKSettings instance].currencyCode
+                                   totalCost:search.selectedVehicle.vehicle.totalPriceForThisVehicle
+                              pickupDateTime:search.pickupDate
+                              returnDateTime:search.dropoffDate
+                      destinationCountryCode:search.dropoffLocation.countryCode
+                             selectedVehicle:search.selectedVehicle
+                                  completion:^(CTInsurance *response, CTErrorResponse *error) {
+                                      if (response) {
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              [weakSelf setupViews:response];
+                                          });
+                                      }
+                                  }];
+    }
+}
+
+- (void)setupViews:(CTInsurance *)insurance;
+{
+    _offeringView = [[CTInsuranceOfferingView alloc] init:insurance];
     _addedView = [CTInsuranceAddedView new];
     
     __weak typeof (self) weakSelf = self;
@@ -80,8 +100,5 @@
                                                                  metrics:nil
                                                                    views:@{@"view" : self.addedView}]];
 }
-
-
-
 
 @end

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <CartrawlerAPI/CartrawlerAPI.h>
+#import <CartrawlerSDK/CTRentalSearch.h>
 
 @protocol CTInsuranceDelegate <NSObject>
 
@@ -23,5 +25,7 @@
 @end
 
 @interface CTInsuranceView : UIView
+
+- (void)retrieveInsurance:(CartrawlerAPI *)api search:(CTRentalSearch *)search;
 
 @end
