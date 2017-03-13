@@ -11,8 +11,21 @@
 
 @implementation CTLabel
 
-
-
+- (instancetype)init:(CGFloat)textSize
+           textColor:(UIColor *)textColor
+       textAlignment:(nullable NSTextAlignment *)textAlignment
+            boldFont:(BOOL)boldFont
+{
+    self = [super init];
+    
+    self.font = [UIFont fontWithName:(boldFont ? [CTAppearance instance].boldFontName : [CTAppearance instance].fontName) size:textSize];
+    if (textAlignment) {
+        self.textAlignment = textAlignment;
+    }
+    self.textColor = textColor;
+    
+    return self;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {

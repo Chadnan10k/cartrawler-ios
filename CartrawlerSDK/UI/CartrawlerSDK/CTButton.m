@@ -11,6 +11,31 @@
 
 @implementation CTButton
 
+- (instancetype)init:(nullable UIColor *)backgroundColor
+           fontColor:(nullable UIColor *)fontColor
+            boldFont:(BOOL)boldFont
+         borderColor:(nullable UIColor *)borderColor
+{
+    self = [super init];
+    
+    self.backgroundColor = backgroundColor ?: [CTAppearance instance].buttonColor;;
+    [self setTitleColor:(fontColor ?: [CTAppearance instance].buttonTextColor) forState:UIControlStateNormal];
+    
+    NSString *fontName = boldFont ? [CTAppearance instance].boldFontName : [CTAppearance instance].fontName;
+    self.titleLabel.font = [UIFont fontWithName:fontName size:self.titleLabel.font.pointSize];
+    
+    self.layer.borderColor = borderColor.CGColor ?: [UIColor clearColor].CGColor;
+    self.layer.borderWidth = 0.5;
+    self.layer.cornerRadius = [CTAppearance instance].buttonCornerRadius;
+    self.layer.masksToBounds = YES;
+    
+    self.titleLabel.minimumScaleFactor = 0.5f;
+    self.titleLabel.numberOfLines = 1;
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
+    
+    return self;
+}
+
 - (id)init
 {
     self = [super init];

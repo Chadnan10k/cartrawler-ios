@@ -20,4 +20,19 @@ IB_DESIGNABLE
 
 - (void)shake;
 
+
+/**
+ Convienience Initialiser
+
+ @param backgroundColor The background color of the button, nullable -> defaults to CTAppearance value if null
+ @param fontColor The Font color of the button, nullable -> defaults to CTAppearance value if null
+ @param boldFont Is the font bold or regular?
+ @param borderColor The font border color, nullable -> defaults to CTAppearance value if null
+ @return CTButton
+ */
+- (instancetype)init:(nullable UIColor *)backgroundColor
+           fontColor:(nullable UIColor *)fontColor
+            boldFont:(BOOL)boldFont
+         borderColor:(nullable UIColor *)borderColor;
+
 @end

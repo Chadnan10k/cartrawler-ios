@@ -10,14 +10,16 @@
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import "CTVehicleDetailsView.h"
+#import "CTInsuranceView.h"
 
-@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate>
+@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInsuranceDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 
 //Nested views
 @property (nonatomic, strong) CTVehicleDetailsView *vehicleDetailsView;
+@property (nonatomic, strong) CTInsuranceView *insuranceView;
 
 @end
 
@@ -26,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initVehicleDetailsView];
+    [self initInsuranceView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -34,6 +37,8 @@
     [self.vehicleDetailsView setVehicle:self.search.selectedVehicle.vehicle
                              pickupDate:self.search.pickupDate
                             dropoffDate:self.search.dropoffDate];
+    
+    [self.insuranceView retrieveInsurance:self.cartrawlerAPI search:self.search];
 
 }
 
@@ -56,6 +61,25 @@
                                                                                  views:@{@"vehicleDetailsView" : self.vehicleDetailsView}]];
 }
 
+// MARK: Insurance View Init
+- (void)initInsuranceView
+{
+    _insuranceView = [CTInsuranceView new];
+    self.insuranceView.delegate = self;
+    self.insuranceView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.containerView addSubview:self.insuranceView];
+    
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-16-[insurance]-20-|"
+                                                                               options:0
+                                                                               metrics:nil
+                                                                                 views:@{@"insurance" : self.insuranceView, @"top" : self.vehicleDetailsView}]];
+    
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[insurance]-0-|"
+                                                                               options:0
+                                                                               metrics:nil
+                                                                                 views:@{@"insurance" : self.insuranceView}]];
+}
+
 - (IBAction)backTapped:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -64,6 +88,22 @@
 - (void)didTapMoreDetailsView
 {
     //present alert view
+}
+
+// MARK: CTInsuranceDelegate
+- (void)didAddInsurance:(CTInsurance *)insurance
+{
+    NSLog(@"INSURACNE COST: %@", insurance.premiumAmount.stringValue);
+}
+
+- (void)didRemoveInsurance
+{
+    NSLog(@"INsurance remved");
+}
+
+- (void)didTapTermsAndConditions:(NSURL *)termsURL
+{
+    NSLog(@"%@", termsURL);
 }
 
 @end
