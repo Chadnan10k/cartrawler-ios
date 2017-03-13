@@ -68,7 +68,6 @@
     self.insuranceView.delegate = self;
     self.insuranceView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.containerView addSubview:self.insuranceView];
-    //self.insuranceView.delegate = self;
     
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-16-[insurance]-20-|"
                                                                                options:0

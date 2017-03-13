@@ -26,7 +26,7 @@ IB_DESIGNABLE
 
  @param backgroundColor The background color of the button, nullable -> defaults to CTAppearance value if null
  @param fontColor The Font color of the button, nullable -> defaults to CTAppearance value if null
- @param boldFont Is the font old or regular?
+ @param boldFont Is the font bold or regular?
  @param borderColor The font border color, nullable -> defaults to CTAppearance value if null
  @return CTButton
  */
