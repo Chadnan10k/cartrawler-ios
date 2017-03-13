@@ -16,15 +16,24 @@
 /**
  Fires if the user added insurance
  */
-- (void)didAddInsurance;
+- (void)didAddInsurance:(CTInsurance *)insurance;
 /**
  Fires if the user removes insurance
  */
 - (void)didRemoveInsurance;
 
+/**
+ Fires if user taps on terms and conditions
+
+ @param termsURL The terms and conditions URL
+ */
+- (void)didTapTermsAndConditions:(NSURL *)termsURL;
+
 @end
 
 @interface CTInsuranceView : UIView
+
+@property (nonatomic, weak) id<CTInsuranceDelegate> delegate;
 
 - (void)retrieveInsurance:(CartrawlerAPI *)api search:(CTRentalSearch *)search;
 

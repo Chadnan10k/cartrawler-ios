@@ -276,5 +276,22 @@ extern NSString * const CTRentalSpecialOfferPrefix;
 
 extern NSString * const CTRentalMore;
 
+//Insurance view
+
+extern NSString * const CTRentalInsuranceOfferingHeader;
+
+extern NSString * const CTRentalInsuranceOfferingSubheader;
+
+extern NSString * const CTRentalInsuranceInfoButtonTitle;
+
+extern NSString * const CTRentalInsuranceAddButtonTitle;
+
+extern NSString * const CTRentalInsuranceTermsConditions;
+
+extern NSString * const CTRentalInsuranceAddedHeader;
+
+extern NSString * const CTRentalInsuranceAddedSubheader;
+
+extern NSString * const CTRentalInsuranceRemoveButtonTitle;
 
 @end

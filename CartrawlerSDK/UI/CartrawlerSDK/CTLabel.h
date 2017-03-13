@@ -15,4 +15,18 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable BOOL isHeaderTitle;
 @property (nonatomic) IBInspectable BOOL isSubheaderTitle;
 
+
+/**
+ Convienience Initializer
+
+ @param textSize The text size
+ @param textColor The text color
+ @param textAlignment The text alignment
+ @return CTLabel
+ */
+- (instancetype)init:(CGFloat)textSize
+           textColor:(UIColor *)textColor
+       textAlignment:(nullable NSTextAlignment *)textAlignment
+            boldFont:(BOOL)boldFont;
+
 @end

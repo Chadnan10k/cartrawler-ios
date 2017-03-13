@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) CTInsuranceOfferingView *offeringView;
 @property (nonatomic, strong) CTInsuranceAddedView *addedView;
+@property (nonatomic, strong) CTInsurance *cachedInsurance;
 
 @end
 
@@ -29,6 +30,15 @@
 
 - (void)retrieveInsurance:(CartrawlerAPI *)api search:(CTRentalSearch *)search
 {
+    
+    if (self.offeringView) {
+        [self.offeringView removeFromSuperview];
+    }
+    
+    if (self.addedView) {
+        [self.addedView removeFromSuperview];
+    }
+    
     __weak typeof (self) weakSelf = self;
     if (search.selectedVehicle.vehicle.insuranceAvailable) {
         [api requestInsuranceQuoteForVehicle:[CTSDKSettings instance].homeCountryCode
@@ -41,6 +51,7 @@
                                   completion:^(CTInsurance *response, CTErrorResponse *error) {
                                       if (response) {
                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                              weakSelf.cachedInsurance = response;
                                               [weakSelf setupViews:response];
                                           });
                                       }
@@ -50,14 +61,27 @@
 
 - (void)setupViews:(CTInsurance *)insurance;
 {
-    _offeringView = [[CTInsuranceOfferingView alloc] init:insurance];
-    _addedView = [CTInsuranceAddedView new];
+    if (!self.offeringView) {
+        _offeringView = [CTInsuranceOfferingView new];
+    }
+    
+    if (!self.addedView) {
+        _addedView = [CTInsuranceAddedView new];
+    }
+    
+    [self.offeringView updateInsurance:insurance];
     
     __weak typeof (self) weakSelf = self;
     
     self.offeringView.addAction = ^{
         [weakSelf.offeringView removeFromSuperview];
         [weakSelf renderAdded];
+    };
+    
+    self.offeringView.termsAndConditionsAction = ^{
+        if (weakSelf.delegate) {
+            [weakSelf.delegate didTapTermsAndConditions:weakSelf.cachedInsurance.termsAndConditionsURL];
+        }
     };
     
     self.addedView.removeAction = ^{
@@ -71,15 +95,19 @@
 
 - (void)renderOffering
 {
+    if (self.delegate) {
+        [self.delegate didRemoveInsurance];
+    }
+    
     self.offeringView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.offeringView];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]-|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:@{@"view" : self.offeringView}]];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:@{@"view" : self.offeringView}]];
@@ -87,15 +115,20 @@
 
 - (void)renderAdded
 {
+    
+    if (self.delegate) {
+        [self.delegate didAddInsurance:self.cachedInsurance];
+    }
+    
     self.addedView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.addedView];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[view]-|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:@{@"view" : self.addedView}]];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:@{@"view" : self.addedView}]];

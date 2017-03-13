@@ -12,10 +12,11 @@
 
 @interface CTInsuranceOfferingView : UIView
 
-typedef void (^CTInsuranceAdd)(void);
+typedef void (^CTInsuranceTap)(void);
 
-@property (nonatomic) CTInsuranceAdd addAction;
+@property (nonatomic) CTInsuranceTap addAction;
+@property (nonatomic) CTInsuranceTap termsAndConditionsAction;
 
-- (instancetype)init:(CTInsurance *)insurance;
+- (void)updateInsurance:(CTInsurance *)insurance;
 
 @end

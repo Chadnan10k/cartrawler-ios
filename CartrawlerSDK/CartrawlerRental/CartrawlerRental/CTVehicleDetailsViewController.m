@@ -12,7 +12,7 @@
 #import "CTVehicleDetailsView.h"
 #import "CTInsuranceView.h"
 
-@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate>
+@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInsuranceDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -65,11 +65,12 @@
 - (void)initInsuranceView
 {
     _insuranceView = [CTInsuranceView new];
+    self.insuranceView.delegate = self;
     self.insuranceView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.containerView addSubview:self.insuranceView];
     //self.insuranceView.delegate = self;
     
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-16-[insurance]"
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-16-[insurance]-20-|"
                                                                                options:0
                                                                                metrics:nil
                                                                                  views:@{@"insurance" : self.insuranceView, @"top" : self.vehicleDetailsView}]];
@@ -88,6 +89,22 @@
 - (void)didTapMoreDetailsView
 {
     //present alert view
+}
+
+// MARK: CTInsuranceDelegate
+- (void)didAddInsurance:(CTInsurance *)insurance
+{
+    NSLog(@"INSURACNE COST: %@", insurance.premiumAmount.stringValue);
+}
+
+- (void)didRemoveInsurance
+{
+    NSLog(@"INsurance remved");
+}
+
+- (void)didTapTermsAndConditions:(NSURL *)termsURL
+{
+    NSLog(@"%@", termsURL);
 }
 
 @end
