@@ -55,3 +55,4 @@
 #import "CTAnalytics.h"
 #import "CTAnalyticsEvent.h"
 #import "CTInfoTip.h"
+#import "CTAlertViewController.h"
