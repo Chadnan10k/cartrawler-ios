@@ -180,7 +180,7 @@
                                                                                          metrics:nil
                                                                                            views:NSDictionaryOfVariableBindings(_actionButtonContainerView)]];
         
-        [alertContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[decorationView(40)]-10-[_titleLabel]-10-[_messageTextView][_contentViewContainerView][_actionButtonContainerView(==10@500)]|"
+        [alertContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[decorationView(40)]-10-[_titleLabel]-10-[_messageTextView][_contentViewContainerView][_actionButtonContainerView(==5@500)]|"
                                                                                          options:0
                                                                                          metrics:nil
                                                                                            views:NSDictionaryOfVariableBindings(decorationView,
@@ -241,6 +241,20 @@
     
     _actionButtons = actionButtons;
     
+    UIView *topBorderLine = [UIView new];
+    topBorderLine.translatesAutoresizingMaskIntoConstraints = NO;
+    topBorderLine.backgroundColor = [UIColor colorWithRed:42.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0];
+    [self.actionButtonContainerView addSubview:topBorderLine];
+    
+    [self.actionButtonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[topBorderLine]|"
+                                                                                           options:0
+                                                                                           metrics:nil
+                                                                                             views:NSDictionaryOfVariableBindings(topBorderLine)]];
+    
+    [self.actionButtonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[topBorderLine(1)]"
+                                                                                           options:0
+                                                                                           metrics:nil
+                                                                                             views:NSDictionaryOfVariableBindings(topBorderLine)]];
     if ([actionButtons count] == 2) {
         UIButton *firstButton = actionButtons[0];
         UIButton *lastButton = actionButtons[1];
@@ -248,25 +262,10 @@
         [self.actionButtonContainerView addSubview:firstButton];
         [self.actionButtonContainerView addSubview:lastButton];
         
-        UIView *topBorderLine = [UIView new];
-        topBorderLine.translatesAutoresizingMaskIntoConstraints = NO;
-        topBorderLine.backgroundColor = [UIColor colorWithRed:42.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0];
-        [self.actionButtonContainerView addSubview:topBorderLine];
-        
         UIView *dividerLine = [UIView new];
         dividerLine.translatesAutoresizingMaskIntoConstraints = NO;
         dividerLine.backgroundColor = [UIColor colorWithRed:42.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0];
         [self.actionButtonContainerView addSubview:dividerLine];
-        
-        [self.actionButtonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[topBorderLine]|"
-                                                                                               options:0
-                                                                                               metrics:nil
-                                                                                                 views:NSDictionaryOfVariableBindings(topBorderLine)]];
-        
-        [self.actionButtonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[topBorderLine(1)]"
-                                                                                               options:0
-                                                                                               metrics:nil
-                                                                                                 views:NSDictionaryOfVariableBindings(topBorderLine)]];
         
         [self.actionButtonContainerView addConstraint:[NSLayoutConstraint constraintWithItem:firstButton
                                                                                    attribute:NSLayoutAttributeWidth
@@ -281,7 +280,7 @@
                                                                                                metrics:nil
                                                                                                  views:NSDictionaryOfVariableBindings(firstButton, lastButton)]];
         
-        [self.actionButtonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[firstButton(40)]|"
+        [self.actionButtonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[firstButton(40)]|"
                                                                                                options:0
                                                                                                metrics:nil
                                                                                                  views:NSDictionaryOfVariableBindings(_contentViewContainerView, firstButton)]];
@@ -290,7 +289,7 @@
                                                                                                options:0
                                                                                                metrics:nil
                                                                                                  views:NSDictionaryOfVariableBindings(lastButton)]];
-        [self.actionButtonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[dividerLine]|"
+        [self.actionButtonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[dividerLine]|"
                                                                                                options:0
                                                                                                metrics:nil
                                                                                                  views:NSDictionaryOfVariableBindings(dividerLine)]];
@@ -325,7 +324,7 @@
                                                                                                      views:NSDictionaryOfVariableBindings(actionButton)]];
             
             if (i == 0) {
-                [self.actionButtonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[actionButton]"
+                [self.actionButtonContainerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[actionButton]"
                                                                                                        options:0
                                                                                                        metrics:nil
                                                                                                          views:NSDictionaryOfVariableBindings(_contentViewContainerView, actionButton)]];
