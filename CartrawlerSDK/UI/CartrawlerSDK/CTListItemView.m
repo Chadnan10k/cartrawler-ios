@@ -20,7 +20,7 @@
         [titleLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         [self addSubview:titleLabel];
         
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pencil" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
         imageView.translatesAutoresizingMaskIntoConstraints = NO;
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:imageView];
