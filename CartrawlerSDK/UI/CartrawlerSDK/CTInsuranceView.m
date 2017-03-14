@@ -43,7 +43,7 @@
     if (search.selectedVehicle.vehicle.insuranceAvailable) {
         [api requestInsuranceQuoteForVehicle:[CTSDKSettings instance].homeCountryCode
                                     currency:[CTSDKSettings instance].currencyCode
-                                   totalCost:search.selectedVehicle.vehicle.totalPriceForThisVehicle
+                                   totalCost:search.selectedVehicle.vehicle.totalPriceForThisVehicle.stringValue
                               pickupDateTime:search.pickupDate
                               returnDateTime:search.dropoffDate
                       destinationCountryCode:search.dropoffLocation.countryCode

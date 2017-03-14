@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 IB_DESIGNABLE
 @interface CTLabel : UILabel
 
@@ -26,7 +28,9 @@ IB_DESIGNABLE
  */
 - (instancetype)init:(CGFloat)textSize
            textColor:(UIColor *)textColor
-       textAlignment:(nullable NSTextAlignment *)textAlignment
+       textAlignment:(NSTextAlignment)textAlignment
             boldFont:(BOOL)boldFont;
 
 @end
+
+NS_ASSUME_NONNULL_END

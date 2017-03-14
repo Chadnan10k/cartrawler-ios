@@ -110,19 +110,19 @@
     
     switch (index) {
         case 0:
-            self.detailLabel.text = [NSString stringWithFormat:[NSString stringWithFormat:@"%@ %@", vehicle.passengerQty.stringValue, CTLocalizedString(CTRentalVehiclePassengers)]];
+            self.detailLabel.text = [NSString stringWithFormat:@"%@ %@", vehicle.passengerQty.stringValue, CTLocalizedString(CTRentalVehiclePassengers)];
             self.imageView.image = [UIImage imageNamed:@"people"
                                               inBundle:[NSBundle bundleForClass:[self class]]
                          compatibleWithTraitCollection:nil];
             break;
         case 1:
-            self.detailLabel.text = [NSString stringWithFormat:[NSString stringWithFormat:@"%@ %@", vehicle.baggageQty.stringValue, CTLocalizedString(CTRentalVehicleBags)]];
+            self.detailLabel.text = [NSString stringWithFormat:@"%@ %@", vehicle.baggageQty.stringValue, CTLocalizedString(CTRentalVehicleBags)];
             self.imageView.image = [UIImage imageNamed:@"baggage"
                                               inBundle:[NSBundle bundleForClass:[self class]]
                          compatibleWithTraitCollection:nil];
             break;
         case 2:
-            self.detailLabel.text = [NSString stringWithFormat:[NSString stringWithFormat:@"%@ %@", vehicle.doorCount.stringValue, CTLocalizedString(CTRentalVehicleDoors)]];
+            self.detailLabel.text = [NSString stringWithFormat:@"%@ %@", vehicle.doorCount.stringValue, CTLocalizedString(CTRentalVehicleDoors)];
             self.imageView.image = [UIImage imageNamed:@"doors"
                                               inBundle:[NSBundle bundleForClass:[self class]]
                          compatibleWithTraitCollection:nil];
