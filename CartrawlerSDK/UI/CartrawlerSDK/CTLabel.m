@@ -13,7 +13,7 @@
 
 - (instancetype)init:(CGFloat)textSize
            textColor:(UIColor *)textColor
-       textAlignment:(nullable NSTextAlignment *)textAlignment
+       textAlignment:(NSTextAlignment)textAlignment
             boldFont:(BOOL)boldFont
 {
     self = [super init];

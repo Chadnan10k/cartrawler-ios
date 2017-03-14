@@ -79,7 +79,7 @@
 
 - (void)buildAddInsuranceState
 {
-    _headerLabel = [[CTLabel alloc] init:15 textColor:[UIColor whiteColor] textAlignment:nil boldFont:YES];
+    _headerLabel = [[CTLabel alloc] init:15 textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentCenter boldFont:YES];
     self.headerLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.headerLabel.text = CTLocalizedString(CTRentalInsuranceOfferingHeader);
     [self.backgroundView addSubview:self.headerLabel];
@@ -90,7 +90,7 @@
                                                                                 options:0 metrics:nil
                                                                                   views:@{@"label" : self.headerLabel}]];
     
-    _subheaderLabel = [[CTLabel alloc] init:12 textColor:[UIColor colorWithRed:174.0/255.0 green:210.0/255.0 blue:244.0/255.0 alpha:1] textAlignment:nil boldFont:NO];
+    _subheaderLabel = [[CTLabel alloc] init:12 textColor:[UIColor colorWithRed:174.0/255.0 green:210.0/255.0 blue:244.0/255.0 alpha:1] textAlignment:NSTextAlignmentCenter boldFont:NO];
     self.subheaderLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.subheaderLabel.text = CTLocalizedString(CTRentalInsuranceOfferingSubheader);
     [self.backgroundView addSubview:self.subheaderLabel];
@@ -143,7 +143,7 @@
     [termsText addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, [termsText length])];
     [self.termsButton setAttributedTitle:termsText forState:UIControlStateNormal];
     [self.termsButton addTarget:self action:@selector(termsTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self.termsButton setFont:[UIFont fontWithName:[CTAppearance instance].fontName size:11]];
+    self.termsButton.titleLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:11];
     self.termsButton.backgroundColor = [UIColor clearColor];
     self.termsButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.backgroundView addSubview:self.termsButton];
