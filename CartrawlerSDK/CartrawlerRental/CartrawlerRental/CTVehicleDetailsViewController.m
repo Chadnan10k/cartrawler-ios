@@ -7,17 +7,21 @@
 //
 
 #import "CTVehicleDetailsViewController.h"
+#import "CTVehicleDetailsView.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTSDKSettings.h>
-#import "CTVehicleDetailsView.h"
+#import <CartrawlerSDK/CTLayoutManager.h>
+#import <CartrawlerSDK/CTInfoTip.h>
 
 @interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (nonatomic, strong) CTLayoutManager *layoutManager;
 
 //Nested views
 @property (nonatomic, strong) CTVehicleDetailsView *vehicleDetailsView;
+@property (nonatomic, strong) CTInfoTip *vehicleInfoTip;
 
 @end
 
@@ -25,6 +29,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _layoutManager = [CTLayoutManager layoutManagerWithContainer:self.containerView];
+    
     [self initVehicleDetailsView];
 }
 
@@ -35,25 +42,15 @@
                              pickupDate:self.search.pickupDate
                             dropoffDate:self.search.dropoffDate];
 
+
 }
 
 // MARK: Vehicle Details View Init
 - (void)initVehicleDetailsView
 {
     _vehicleDetailsView = [CTVehicleDetailsView new];
-    self.vehicleDetailsView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.containerView addSubview:self.vehicleDetailsView];
     self.vehicleDetailsView.delegate = self;
-
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[vehicleDetailsView]"
-                                                                               options:0
-                                                                               metrics:nil
-                                                                                 views:@{@"vehicleDetailsView" : self.vehicleDetailsView}]];
-    
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[vehicleDetailsView]-0-|"
-                                                                               options:0
-                                                                               metrics:nil
-                                                                                 views:@{@"vehicleDetailsView" : self.vehicleDetailsView}]];
+    [self.layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.vehicleDetailsView];
 }
 
 - (IBAction)backTapped:(id)sender {

@@ -160,6 +160,8 @@
 		BC9F6E521E24EF91006DD990 /* CTAnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */; };
 		BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCDB4BEA1E3F50C6008004DA /* CTAnalyticsEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */; };
+		BCF874251E7944BB00EBC758 /* CTLayoutManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BCF874231E7944BB00EBC758 /* CTLayoutManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCF874261E7944BB00EBC758 /* CTLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF874241E7944BB00EBC758 /* CTLayoutManager.m */; };
 		E76900A81E6F065C00D729FF /* CTInfoTip.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900A61E6F065C00D729FF /* CTInfoTip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76900A91E6F065C00D729FF /* CTInfoTip.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900A71E6F065C00D729FF /* CTInfoTip.m */; };
 		E76900B71E70949500D729FF /* CTAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900B51E70949500D729FF /* CTAlertViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -335,6 +337,8 @@
 		BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsTests.m; sourceTree = "<group>"; };
 		BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalyticsEvent.h; sourceTree = "<group>"; };
 		BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsEvent.m; sourceTree = "<group>"; };
+		BCF874231E7944BB00EBC758 /* CTLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLayoutManager.h; sourceTree = "<group>"; };
+		BCF874241E7944BB00EBC758 /* CTLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLayoutManager.m; sourceTree = "<group>"; };
 		E76900A61E6F065C00D729FF /* CTInfoTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInfoTip.h; sourceTree = "<group>"; };
 		E76900A71E6F065C00D729FF /* CTInfoTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInfoTip.m; sourceTree = "<group>"; };
 		E76900B51E70949500D729FF /* CTAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertViewController.h; sourceTree = "<group>"; };
@@ -674,6 +678,8 @@
 				459CB2DF1DDB1D9E008522BA /* CartrawlerSDK+UIView.m */,
 				450F9D3F1D3CE9D6002C6F6B /* CTCSVItem.h */,
 				450F9D401D3CE9D6002C6F6B /* CTCSVItem.m */,
+				BCF874231E7944BB00EBC758 /* CTLayoutManager.h */,
+				BCF874241E7944BB00EBC758 /* CTLayoutManager.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -877,6 +883,7 @@
 				455B58CD1DCC914400CA4790 /* CTSelectView.h in Headers */,
 				45C980C21DCCDB95002D99AB /* CTLayoutConstraint.h in Headers */,
 				455B58641DCC914300CA4790 /* JVFloatLabeledTextField.h in Headers */,
+				BCF874251E7944BB00EBC758 /* CTLayoutManager.h in Headers */,
 				457678501E08021500FE591A /* CTHeaders.h in Headers */,
 				BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */,
 				E76900D11E71D95700D729FF /* CTAlertAction.h in Headers */,
@@ -1090,6 +1097,7 @@
 				455B58CE1DCC914400CA4790 /* CTSelectView.m in Sources */,
 				450725B81DD9C99500D56C8A /* CTImageView.m in Sources */,
 				451E763B1E04438300D58F71 /* CTRentalBooking.m in Sources */,
+				BCF874261E7944BB00EBC758 /* CTLayoutManager.m in Sources */,
 				450725B31DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m in Sources */,
 				459CB2E91DDB5BF8008522BA /* CTNextButton.m in Sources */,
 				BCDB4BEA1E3F50C6008004DA /* CTAnalyticsEvent.m in Sources */,
