@@ -26,7 +26,7 @@
     self = [super init];
     
     //TODO: what if array of special offers
-    
+    NSLog(@"%@", dict);
     if (dict) {
         _type = dict[@"Offer"][@"@Type"];
         _shortText = dict[@"Offer"][@"@ShortText"];
@@ -34,6 +34,8 @@
         _text = dict[@"Offer"][@"#text"];
         return self;
     } else {
+        
+        NSLog(@"DEAD %@", dict);
         return nil;
     }
 }
