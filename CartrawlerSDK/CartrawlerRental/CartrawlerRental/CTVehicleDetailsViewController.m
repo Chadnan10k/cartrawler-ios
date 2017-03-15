@@ -7,19 +7,21 @@
 //
 
 #import "CTVehicleDetailsViewController.h"
+#import "CTVehicleDetailsView.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTSDKSettings.h>
-#import "CTVehicleDetailsView.h"
-#import "CTInsuranceView.h"
+#import <CartrawlerSDK/CTLayoutManager.h>
+#import <CartrawlerSDK/CTInfoTip.h>
 
-@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInsuranceDelegate>
+@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (nonatomic, strong) CTLayoutManager *layoutManager;
 
 //Nested views
 @property (nonatomic, strong) CTVehicleDetailsView *vehicleDetailsView;
-@property (nonatomic, strong) CTInsuranceView *insuranceView;
+@property (nonatomic, strong) CTInfoTip *vehicleInfoTip;
 
 @end
 
@@ -27,8 +29,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _layoutManager = [CTLayoutManager layoutManagerWithContainer:self.containerView];
+    
     [self initVehicleDetailsView];
-    [self initInsuranceView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -37,8 +41,7 @@
     [self.vehicleDetailsView setVehicle:self.search.selectedVehicle.vehicle
                              pickupDate:self.search.pickupDate
                             dropoffDate:self.search.dropoffDate];
-    
-    [self.insuranceView retrieveInsurance:self.cartrawlerAPI search:self.search];
+
 
 }
 
@@ -46,38 +49,8 @@
 - (void)initVehicleDetailsView
 {
     _vehicleDetailsView = [CTVehicleDetailsView new];
-    self.vehicleDetailsView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.containerView addSubview:self.vehicleDetailsView];
     self.vehicleDetailsView.delegate = self;
-
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[vehicleDetailsView]"
-                                                                               options:0
-                                                                               metrics:nil
-                                                                                 views:@{@"vehicleDetailsView" : self.vehicleDetailsView}]];
-    
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[vehicleDetailsView]-0-|"
-                                                                               options:0
-                                                                               metrics:nil
-                                                                                 views:@{@"vehicleDetailsView" : self.vehicleDetailsView}]];
-}
-
-// MARK: Insurance View Init
-- (void)initInsuranceView
-{
-    _insuranceView = [CTInsuranceView new];
-    self.insuranceView.delegate = self;
-    self.insuranceView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.containerView addSubview:self.insuranceView];
-    
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-16-[insurance]-20-|"
-                                                                               options:0
-                                                                               metrics:nil
-                                                                                 views:@{@"insurance" : self.insuranceView, @"top" : self.vehicleDetailsView}]];
-    
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[insurance]-0-|"
-                                                                               options:0
-                                                                               metrics:nil
-                                                                                 views:@{@"insurance" : self.insuranceView}]];
+    [self.layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.vehicleDetailsView];
 }
 
 - (IBAction)backTapped:(id)sender {
@@ -88,22 +61,6 @@
 - (void)didTapMoreDetailsView
 {
     //present alert view
-}
-
-// MARK: CTInsuranceDelegate
-- (void)didAddInsurance:(CTInsurance *)insurance
-{
-    NSLog(@"INSURACNE COST: %@", insurance.premiumAmount.stringValue);
-}
-
-- (void)didRemoveInsurance
-{
-    NSLog(@"INsurance remved");
-}
-
-- (void)didTapTermsAndConditions:(NSURL *)termsURL
-{
-    NSLog(@"%@", termsURL);
 }
 
 @end
