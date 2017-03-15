@@ -58,7 +58,7 @@
     userDetails.phone = @"+086666666";
     userDetails.driverAge = @30;
     userDetails.flightNo = @"FR 777";
-    userDetails.currency = @"EUR";
+    userDetails.currency = @"RUB";
     userDetails.countryCode = @"IE";
 
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:86400];

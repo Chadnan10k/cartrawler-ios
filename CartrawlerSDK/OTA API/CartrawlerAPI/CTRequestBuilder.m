@@ -400,7 +400,13 @@
             @"\"@ID_Context\": \"CARTRAWLER\", \r"
             @"\"@DateTime\": \"%@\", \r"
             @"\"@URL\": \"%@\" \r"
+    @"     }, \r"
+                             
+    @"     \"Window\": { \r"
+    @"         \"@name\": \"IOS-V3\", \r"
+    @"         \"@engine\": \"IOS-V3\" \r"
     @"     } \r"
+                             
     @" } \r", refID, refTimeStamp, refURL];
     
     NSString *tail = [NSString stringWithFormat:@"\"PlanForQuoteRQ\":{\"@PlanID\":\"ACME\",\"@Type\":\"Protection\",\"CoveredTravelers\":{\"CoveredTraveler\":{\"CoveredPerson\":{\"@Relation\":\"Traveler 1\",\"GivenName\":\"Test\",\"Surname\":\"Test\"},\"CitizenCountryName\":{\"@Code\":\"%@\"}}},\"InsCoverageDetail\":{\"@Type\":\"SingleTrip\",\"TotalTripCost\":{\"@CurrencyCode\":\"%@\",\"@Amount\":\"%@\"},\"CoveredTrips\":{\"CoveredTrip\":{\"@Start\": \"%@\",\"@End\":\"%@\",\"Destinations\":{\"Destination\":{\"CountryName\":\"%@\"}}}}},%@}}", homeCountry, activeCurrency, totalCost, [pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat], [dropOffDateTime stringFromDateWithFormat:CTAvailRequestDateFormat], destinationCountryCode, vehicleInfo];

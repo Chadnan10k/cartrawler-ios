@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 IB_DESIGNABLE
 @interface CTLabel : UILabel
 
@@ -15,4 +17,20 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable BOOL isHeaderTitle;
 @property (nonatomic) IBInspectable BOOL isSubheaderTitle;
 
+
+/**
+ Convienience Initializer
+
+ @param textSize The text size
+ @param textColor The text color
+ @param textAlignment The text alignment
+ @return CTLabel
+ */
+- (instancetype)init:(CGFloat)textSize
+           textColor:(UIColor *)textColor
+       textAlignment:(NSTextAlignment)textAlignment
+            boldFont:(BOOL)boldFont;
+
 @end
+
+NS_ASSUME_NONNULL_END

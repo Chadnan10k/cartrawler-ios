@@ -274,4 +274,22 @@ NSString * const CTRentalSpecialOfferPrefix = @"filter_specialoffers";
 
 NSString * const CTRentalMore = @"more";
 
+//Insurance
+
+NSString * const CTRentalInsuranceOfferingHeader = @"insurance_offering_header";
+
+NSString * const CTRentalInsuranceOfferingSubheader = @"insurance_offering_subheader";
+
+NSString * const CTRentalInsuranceInfoButtonTitle = @"insurance_info_button";
+
+NSString * const CTRentalInsuranceAddButtonTitle = @"insurance_add_button";
+
+NSString * const CTRentalInsuranceTermsConditions = @"insurance_terms_conditions";
+
+NSString * const CTRentalInsuranceAddedHeader = @"insurance_added_header";
+
+NSString * const CTRentalInsuranceAddedSubheader = @"insurance_added_subheader";
+
+NSString * const CTRentalInsuranceRemoveButtonTitle = @"insurance_remove_button";
+
 @end

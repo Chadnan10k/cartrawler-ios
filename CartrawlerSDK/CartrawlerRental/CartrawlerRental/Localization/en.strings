@@ -268,3 +268,19 @@
 "vehicle_passenger" = "Passenger";
 "CTA_no_insurance" = "Continue without insurance";
 "vehicle_type_intermediate" = "Intermediate";
+
+"insurance_offering_header" = "Upgrade to Full Cover";
+
+"insurance_offering_subheader" = "... for total peace of mind";
+
+"insurance_info_button" = "What's covered?";
+
+"insurance_add_button" = "Add for %@";
+
+"insurance_terms_conditions" = "Insurance terms and conditions";
+
+"insurance_added_header" = "Congratulations!";
+
+"insurance_added_subheader" = "You have added Full Cover";
+
+"insurance_remove_button" = "Remove";
