@@ -97,7 +97,6 @@
     _vehicleDetailsViewController = [vehicleDetailsStoryboard instantiateViewControllerWithIdentifier:CTRentalVehicleDetailsViewIdentifier];
     
     UIStoryboard *extrasStoryboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:self.bundle];
-    _insuranceViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:CTRentalInsuranceViewIdentifier];
     _extrasViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:CTRentalExtrasViewIdentifier];
     
     UIStoryboard *summaryStoryboard = [UIStoryboard storyboardWithName:CTRentalBookingSummaryStoryboard bundle:self.bundle];
@@ -131,26 +130,10 @@
                                          target:self];
     
     [self.cartrawlerSDK configureViewController:self.vehicleDetailsViewController
-                           validationController:[[CTInsuranceValidation alloc] init]
-                                    destination:self.insuranceViewController
-                                       fallback:self.driverDetialsViewController
-                                  optionalRoute:self.extrasViewController
-                                         search:[CTRentalSearch instance]
-                                         target:self];
-    
-    [self.cartrawlerSDK configureViewController:self.insuranceViewController
                            validationController:[[CTGenericValidation alloc] init]
                                     destination:self.driverDetialsViewController
                                        fallback:nil
                                   optionalRoute:self.extrasViewController
-                                         search:[CTRentalSearch instance]
-                                         target:self];
-    
-    [self.cartrawlerSDK configureViewController:self.extrasViewController
-                           validationController:[[CTGenericValidation alloc] init]
-                                    destination:self.driverDetialsViewController
-                                       fallback:nil
-                                  optionalRoute:nil
                                          search:[CTRentalSearch instance]
                                          target:self];
     
