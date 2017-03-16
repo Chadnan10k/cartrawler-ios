@@ -9,6 +9,59 @@
 
 @class CTVendor;
 
+
+
+
+/**
+ Merchandising Tags
+ */
+typedef NS_ENUM(NSUInteger, CTMerchandisingTag) {
+    /**
+     *  Business Traveller
+     */
+    CTMerchandisingTagBusiness = 0,
+    /**
+     *  City Break
+     */
+    CTMerchandisingTagCityBreak,
+    /**
+     *  Family Size
+     */
+    CTMerchandisingTagFamilySize,
+    /**
+     *  Best Seller
+     */
+    CTMerchandisingTagBestSeller,
+    /**
+     *  Great Value
+     */
+    CTMerchandisingTagGreatValue,
+    /**
+     *  Quickest Queue
+     */
+    CTMerchandisingTagQuickestQueue,
+    /**
+     *  Recommended
+     */
+    CTMerchandisingTagRecommended,
+    /**
+     *  Upgrade to
+     */
+    CTMerchandisingTagUpgradeTo,
+    /**
+     *  On a budget
+     */
+    CTMerchandisingTagOnBudget,
+    /**
+     *  Best Reviewed
+     */
+    CTMerchandisingTagBestReviewed,
+    /**
+     *  Unknown
+     */
+    CTMerchandisingTagUnknown
+};
+
 /**
  *  Fuel Policy
  */
@@ -236,6 +289,10 @@ NS_ASSUME_NONNULL_BEGIN
  *  The vehicle category description
  */
 @property (nonatomic, readonly) VehicleSize size;
+/**
+ *  The vehicle category description
+ */
+@property (nonatomic, readonly) CTMerchandisingTag merchandisingTag;
 /**
  *  Vehicle category code
  */

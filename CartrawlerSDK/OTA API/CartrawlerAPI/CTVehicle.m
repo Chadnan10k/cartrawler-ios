@@ -10,10 +10,6 @@
 #import "CTExtraEquipment.h"
 #import "CartrawlerAPI+NSURL.h"
 
-@interface CTVehicle()
-
-@end
-
 @implementation CTVehicle
 
 - (NSNumber *)calculateTotalPriceForThisCar {
@@ -43,10 +39,11 @@
 }
 - (instancetype)initFromDictionary:(NSDictionary *)dictionary;
 {
-	
     self = [super init];
     
     _indexation = [[CTVehicleIndexation alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Indexation"]];
+    
+    _merchandisingTag = [self merchandisingTagFromString:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"MerchandisingTag"][@"@Value"] ?: @""];
     
     NSMutableArray *tempSpecialOffers = [[NSMutableArray alloc] init];
     
@@ -56,10 +53,11 @@
         }
         _specialOffers = tempSpecialOffers;
     } else {
-        
-        CTSpecialOffer *specialOffer = [[CTSpecialOffer alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"SpecialOffers"]];
-        if (specialOffer) {
+        if (dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"SpecialOffers"]) {
+            CTSpecialOffer *specialOffer = [[CTSpecialOffer alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"SpecialOffers"]];
             _specialOffers = @[specialOffer];
+        } else {
+            _specialOffers = @[];
         }
     }
 
@@ -217,6 +215,56 @@
     _currencyCode = dictionary[@"VehAvailCore"][@"TotalCharge"][@"@CurrencyCode"];
     
 	return self;
+}
+
+- (CTMerchandisingTag)merchandisingTagFromString:(NSString *)merchandisingTag
+{
+    
+    if ([merchandisingTag isEqualToString:@"1"]) {
+        return CTMerchandisingTagBusiness;
+    }
+    
+    if ([merchandisingTag isEqualToString:@"2"]) {
+        return CTMerchandisingTagCityBreak;
+    }
+    
+    if ([merchandisingTag isEqualToString:@"3"]) {
+        return CTMerchandisingTagFamilySize;
+    }
+    
+    if ([merchandisingTag isEqualToString:@"4"]) {
+        return CTMerchandisingTagBestSeller;
+    }
+    
+    if ([merchandisingTag isEqualToString:@"5"]) {
+        return CTMerchandisingTagGreatValue;
+    }
+    
+    if ([merchandisingTag isEqualToString:@"6"]) {
+        return CTMerchandisingTagQuickestQueue;
+    }
+    
+    if ([merchandisingTag isEqualToString:@"7"]) {
+        return CTMerchandisingTagRecommended;
+    }
+    
+    if ([merchandisingTag isEqualToString:@"8"]) {
+        return CTMerchandisingTagUpgradeTo;
+    }
+    
+    if ([merchandisingTag isEqualToString:@"9"]) {
+        return CTMerchandisingTagOnBudget;
+    }
+    
+    if ([merchandisingTag isEqualToString:@"10"]) {
+        return CTMerchandisingTagBestReviewed;
+    }
+    
+    if ([merchandisingTag isEqualToString:@"-1"]) {
+        return CTMerchandisingTagUnknown;
+    }
+    
+    return CTMerchandisingTagUnknown;
 }
 
 - (FuelPolicy)fuelPolicyFromString:(NSString *)fuelPolicy
