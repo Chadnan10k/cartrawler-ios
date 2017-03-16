@@ -10,10 +10,6 @@
 #import "CTExtraEquipment.h"
 #import "CartrawlerAPI+NSURL.h"
 
-@interface CTVehicle()
-
-@end
-
 @implementation CTVehicle
 
 - (NSNumber *)calculateTotalPriceForThisCar {
@@ -57,10 +53,11 @@
         }
         _specialOffers = tempSpecialOffers;
     } else {
-        
-        CTSpecialOffer *specialOffer = [[CTSpecialOffer alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"SpecialOffers"]];
-        if (specialOffer) {
+        if (dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"SpecialOffers"]) {
+            CTSpecialOffer *specialOffer = [[CTSpecialOffer alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"SpecialOffers"]];
             _specialOffers = @[specialOffer];
+        } else {
+            _specialOffers = @[];
         }
     }
 
