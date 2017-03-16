@@ -44,7 +44,8 @@
     [self initVehicleDetailsInfoTip];
     [self initInsuranceView];
     [self initExtrasInfoTip];
-
+    [self initAlertView];
+      
     [self.layoutManager layoutViews];
 }
 
