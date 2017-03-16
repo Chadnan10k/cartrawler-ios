@@ -62,7 +62,7 @@
 }
 
 - (IBAction)next:(id)sender {
-    [self pushToDestination];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

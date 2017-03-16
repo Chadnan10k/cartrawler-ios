@@ -185,6 +185,12 @@
 {
     //The sdk handles most of the routing, but for in path we only need to display up to payment summary,
     //so lets nil the summary destination so it will dismiss
+    
+    self.rental.vehicleDetailsViewController.destinationViewController = nil;
+    self.rental.vehicleDetailsViewController.fallbackViewController = self.rental.driverDetialsViewController;
+    self.rental.vehicleDetailsViewController.optionalRoute = self.rental.extrasViewController;;
+    self.rental.vehicleDetailsViewController.delegate = self;
+    
     self.rental.paymentSummaryViewController.destinationViewController = nil;
     self.rental.paymentSummaryViewController.fallbackViewController = nil;
     self.rental.paymentSummaryViewController.optionalRoute = nil;
