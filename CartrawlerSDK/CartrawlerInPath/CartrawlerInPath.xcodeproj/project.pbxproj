@@ -40,6 +40,8 @@
 		45EC99BE1E02C96B00B76741 /* CTInPathVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99B81E02C96B00B76741 /* CTInPathVehicle.m */; };
 		45EC99BF1E02C96B00B76741 /* CTInPathView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC99B91E02C96B00B76741 /* CTInPathView.h */; };
 		45EC99C01E02C96B00B76741 /* CTInPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99BA1E02C96B00B76741 /* CTInPathView.m */; };
+		BC2951DB1E80414D0053A897 /* CTInPathError.h in Headers */ = {isa = PBXBuildFile; fileRef = BC2951D91E80414D0053A897 /* CTInPathError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC2951DC1E80414D0053A897 /* CTInPathError.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2951DA1E80414D0053A897 /* CTInPathError.m */; };
 		BC3361AC1E4CCDB70056E5A6 /* de.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361A51E4CCDB70056E5A6 /* de.strings */; };
 		BC3361AD1E4CCDB70056E5A6 /* el.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361A61E4CCDB70056E5A6 /* el.strings */; };
 		BC3361AE1E4CCDB70056E5A6 /* es.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361A71E4CCDB70056E5A6 /* es.strings */; };
@@ -87,6 +89,8 @@
 		45EC99B81E02C96B00B76741 /* CTInPathVehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathVehicle.m; sourceTree = "<group>"; };
 		45EC99B91E02C96B00B76741 /* CTInPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathView.h; sourceTree = "<group>"; };
 		45EC99BA1E02C96B00B76741 /* CTInPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathView.m; sourceTree = "<group>"; };
+		BC2951D91E80414D0053A897 /* CTInPathError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathError.h; sourceTree = "<group>"; };
+		BC2951DA1E80414D0053A897 /* CTInPathError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathError.m; sourceTree = "<group>"; };
 		BC3361A51E4CCDB70056E5A6 /* de.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de.strings; path = Localization/de.strings; sourceTree = "<group>"; };
 		BC3361A61E4CCDB70056E5A6 /* el.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = el.strings; path = Localization/el.strings; sourceTree = "<group>"; };
 		BC3361A71E4CCDB70056E5A6 /* es.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = es.strings; path = Localization/es.strings; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 			children = (
 				45BA0F671E1FA27300EB26ED /* strip-frameworks.sh */,
 				45CFD44E1E09453100A57849 /* Assets.xcassets */,
+				BC2951D81E8041320053A897 /* InPath Errors */,
 				45CFD4491E09419400A57849 /* Views */,
 				45EC99AE1E02AA2100B76741 /* Public */,
 				E7B3B4981E40E83B0062C7AD /* Localization */,
@@ -198,6 +203,15 @@
 			name = Public;
 			sourceTree = "<group>";
 		};
+		BC2951D81E8041320053A897 /* InPath Errors */ = {
+			isa = PBXGroup;
+			children = (
+				BC2951D91E80414D0053A897 /* CTInPathError.h */,
+				BC2951DA1E80414D0053A897 /* CTInPathError.m */,
+			);
+			name = "InPath Errors";
+			sourceTree = "<group>";
+		};
 		E7B3B4981E40E83B0062C7AD /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +237,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC2951DB1E80414D0053A897 /* CTInPathError.h in Headers */,
 				45A47DF51E0A912300500D71 /* CTSelectedVehicleView.h in Headers */,
 				E7B3B49D1E40E8C70062C7AD /* CTInPathLocalizationConstants.h in Headers */,
 				45EC99BD1E02C96B00B76741 /* CTInPathVehicle.h in Headers */,
@@ -368,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45EC99BE1E02C96B00B76741 /* CTInPathVehicle.m in Sources */,
+				BC2951DC1E80414D0053A897 /* CTInPathError.m in Sources */,
 				45EC99B01E02B3FB00B76741 /* CartrawlerInPath.m in Sources */,
 				45CFD44D1E0941B800A57849 /* CTNewBookingView.m in Sources */,
 				45EC99BC1E02C96B00B76741 /* CTInPathPayment.m in Sources */,

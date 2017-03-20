@@ -31,33 +31,69 @@
 
 @implementation CartrawlerInPath
 
-- (instancetype)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental
-                                IATACode:(nonnull NSString *)IATACode
-                              pickupDate:(nullable NSDate *)pickupDate
-                              returnDate:(nullable NSDate *)returnDate
-                             userDetails:(nullable CTUserDetails *)userDetails
++ (CartrawlerInPath *)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental
+                                      IATACode:(nonnull NSString *)IATACode
+                                    pickupDate:(nonnull NSDate *)pickupDate
+                                    returnDate:(nullable NSDate *)returnDate
+                                  flightNumber:(nullable NSString *)flightNumber
+                                      currency:(nonnull NSString *)currency
+                                     passegers:(nonnull NSArray<CTPassenger *> *)passegers
+                                         error:(NSError * __autoreleasing *)outError
 {
-    self = [super init];
-    _rental = cartrawlerRental;
+//    self = [super init];
     
-    [[CTRentalSearch instance] reset];
+    CartrawlerInPath *inPath = [CartrawlerInPath new];
+    inPath.rental = cartrawlerRental;
     
-    if (userDetails.currency) {
-        [[CTSDKSettings instance] setCurrencyCode:userDetails.currency];
-        [[CTSDKSettings instance] setCurrencyName:userDetails.currency];
+    BOOL setSearchSuccess = [inPath setSearchDetails:currency flightNo:flightNumber passengers:passegers pickupDate:pickupDate returnDate:returnDate error:outError];
+    
+    if (!setSearchSuccess) {
+        return nil;
     }
     
-    if (!userDetails.countryCode) {
+    [inPath performLocationSearch:IATACode];
+    
+    return inPath;
+}
+
+- (BOOL)setSearchDetails:(NSString *)currency
+                flightNo:(NSString *)flightNo
+              passengers:(NSArray <CTPassenger *> *)passengers
+              pickupDate:(nonnull NSDate *)pickupDate
+              returnDate:(nullable NSDate *)returnDate
+                   error:(NSError * __autoreleasing *)outError
+
+{
+    //First, lets check if we have any passengers
+    CTPassenger *primaryPassenger;
+    
+    for (CTPassenger *p in passengers) {
+        if (p.isPrimaryDriver) {
+            primaryPassenger = p;
+        }
+    }
+    
+    if (!primaryPassenger) {
+        *outError = [CTInPathError errorWithType:CTInPathErrorTypeNoPrimaryPassenger];
+        return NO;
+    }
+    
+    [[CTRentalSearch instance] reset];
+
+    [[CTSDKSettings instance] setCurrencyCode:currency];
+    [[CTSDKSettings instance] setCurrencyName:currency];
+
+    if (!primaryPassenger.countryCode) {
         _defaultCountryCode = [CTSDKSettings instance].homeCountryCode;
         _defaultCountryName = [CTSDKSettings instance].homeCountryName;
         [CTRentalSearch instance].country = [CTSDKSettings instance].homeCountryCode;
     } else {
-        NSString *countryName = [[CTSDKSettings instance] countryName:userDetails.countryCode];
-        _defaultCountryCode = userDetails.countryCode;
+        NSString *countryName = [[CTSDKSettings instance] countryName:primaryPassenger.countryCode];
+        _defaultCountryCode = primaryPassenger.countryCode;
         _defaultCountryName = countryName;
-        [[CTSDKSettings instance] setHomeCountryCode:userDetails.countryCode];
+        [[CTSDKSettings instance] setHomeCountryCode:primaryPassenger.countryCode];
         [[CTSDKSettings instance] setHomeCountryName:countryName];
-        [CTRentalSearch instance].country = userDetails.countryCode;
+        [CTRentalSearch instance].country = primaryPassenger.countryCode;
     }
     
     if (returnDate) {
@@ -69,104 +105,108 @@
     }
     
     [CTRentalSearch instance].pickupDate = pickupDate;
-    [CTRentalSearch instance].firstName = userDetails.firstName;
-    [CTRentalSearch instance].surname = userDetails.surname;
-    [CTRentalSearch instance].passengerQty = [NSNumber numberWithInt:1 + userDetails.additionalPassengers.intValue];
-    [CTRentalSearch instance].email = userDetails.email;
-    [CTRentalSearch instance].phone = userDetails.phone;
-    [CTRentalSearch instance].flightNumber = [userDetails.flightNo stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [CTRentalSearch instance].addressLine1 = userDetails.addressLine1;
-    [CTRentalSearch instance].addressLine2 = userDetails.addressLine2;
-    [CTRentalSearch instance].city = userDetails.city;
-    [CTRentalSearch instance].postcode = userDetails.postcode;
-    
-    if (!userDetails.driverAge) {
+    [CTRentalSearch instance].firstName = primaryPassenger.firstName;
+    [CTRentalSearch instance].surname = primaryPassenger.lastName;
+    [CTRentalSearch instance].passengerQty = @(passengers.count);
+    [CTRentalSearch instance].email = primaryPassenger.email;
+    [CTRentalSearch instance].phone = primaryPassenger.phone;
+    [CTRentalSearch instance].flightNumber = [flightNo stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [CTRentalSearch instance].addressLine1 = primaryPassenger.addressLine1;
+    [CTRentalSearch instance].addressLine2 = primaryPassenger.addressLine2;
+    [CTRentalSearch instance].city = primaryPassenger.city;
+    [CTRentalSearch instance].postcode = primaryPassenger.postcode;
+
+    if (!primaryPassenger.age) {
         [CTRentalSearch instance].driverAge = @30;
     } else {
-        [CTRentalSearch instance].driverAge = userDetails.driverAge;
+        [CTRentalSearch instance].driverAge = primaryPassenger.age;
     }
     
     _defaultSearch = [[CTRentalSearch instance] copy];//copy over the user details first
     
+    return YES;
+
+}
+
+- (void)performLocationSearch:(NSString *)IATACode
+{
+    __weak typeof (self) weakSelf = self;
+    _didFailToFetchResults = YES;//set to yes until someone sends a response
+    [self.rental.cartrawlerSDK.cartrawlerAPI locationSearchWithAirportCode:IATACode
+                                                                completion:^(CTLocationSearch *response, CTErrorResponse *error)
+    {
+            if (error) {
+                [[CTAnalytics instance] tagError:@"inpath" event:@"no location" message:[NSString stringWithFormat:@"cannot get in path location: %@", IATACode]];
+                _didFailToFetchResults = YES;
+                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf.delegate didFailToReceiveBestDailyRate];
+                    });
+                }
+            } else {
+                if (response) {
+                    _didFailToFetchResults = NO;
+                    if(response.matchedLocations.count > 0) {
+                        [CTRentalSearch instance].pickupLocation = response.matchedLocations.firstObject;
+                        [CTRentalSearch instance].dropoffLocation = response.matchedLocations.firstObject;
+                        _defaultSearch = [[CTRentalSearch instance] copy];
+                        [weakSelf performVehicleSearch];
+                    }
+                }
+            }
+    }];
+
+}
+
+- (void)performVehicleSearch
+{
+    __weak typeof (self) weakSelf = self;
+     [self.rental.cartrawlerSDK.cartrawlerAPI requestVehicleAvailabilityForLocation:[CTRentalSearch instance].pickupLocation.code
+                                                                 returnLocationCode:[CTRentalSearch instance].dropoffLocation.code
+                                                                customerCountryCode:[CTSDKSettings instance].homeCountryCode
+                                                                       passengerQty:[CTRentalSearch instance].passengerQty
+                                                                          driverAge:[CTRentalSearch instance].driverAge
+                                                                     pickUpDateTime:[CTRentalSearch instance].pickupDate
+                                                                     returnDateTime:[CTRentalSearch instance].dropoffDate
+                                                                       currencyCode:[CTSDKSettings instance].currencyCode
+                                                                         completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
+     if (error) {
+         [[CTAnalytics instance] tagError:@"inpath" event:@"Avail fail" message:error.errorMessage];
+         _didFailToFetchResults = YES;
+     } else if (response.items.count > 0) {
+         [CTRentalSearch instance].vehicleAvailability = response;
+         [[CTRentalSearch instance] setEngineInfoFromAvail];
+         _defaultSearch = [[CTRentalSearch instance] copy];
+         NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
+                                                                      ascending:YES];
+         CTAvailabilityItem *cheapestvehicle = ((CTAvailabilityItem *)[response.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
+         _didFetchResults = YES;
+         if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [weakSelf.delegate didReceiveBestDailyRate:[weakSelf dailyRate:cheapestvehicle] currency:cheapestvehicle.vehicle.currencyCode];
+             });
+         }
+     } else {
+         [[CTAnalytics instance] tagError:@"inpath" event:@"no items" message:@"no vehicles available"];
+         _didFailToFetchResults = YES;
+         if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [weakSelf.delegate didFailToReceiveBestDailyRate];
+             });
+         }
+     }
+    }];
+}
+
+- (NSNumber *)dailyRate:(CTAvailabilityItem *)vehicleItem
+{
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
                                                         fromDate:[CTRentalSearch instance].pickupDate
                                                           toDate:[CTRentalSearch instance].dropoffDate
                                                          options:0];
-    _didFailToFetchResults = YES;//set to yes until someone sends a response
-    [self.rental.cartrawlerSDK.cartrawlerAPI locationSearchWithAirportCode:IATACode
-                                                                completion:^(CTLocationSearch *response, CTErrorResponse *error) {
-        if (error) {
-            [[CTAnalytics instance] tagError:@"inpath" event:@"no location" message:[NSString stringWithFormat:@"cannot get in path location: %@", IATACode]];
-            _didFailToFetchResults = YES;
-            if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.delegate didFailToReceiveBestDailyRate];
-                });
-            }
-        } else {
-            if (response) {
-                _didFailToFetchResults = NO;
-                if(response.matchedLocations.count > 0) {
-                    [CTRentalSearch instance].pickupLocation = response.matchedLocations.firstObject;
-                    [CTRentalSearch instance].dropoffLocation = response.matchedLocations.firstObject;
-                    _defaultSearch = [[CTRentalSearch instance] copy];
-
-                    [self.rental.cartrawlerSDK.cartrawlerAPI requestVehicleAvailabilityForLocation:[CTRentalSearch instance].pickupLocation.code
-                                                                                returnLocationCode:[CTRentalSearch instance].dropoffLocation.code
-                                                                               customerCountryCode:[CTSDKSettings instance].homeCountryCode
-                                                                                      passengerQty:@1
-                                                                                         driverAge:[CTRentalSearch instance].driverAge
-                                                                                    pickUpDateTime:[CTRentalSearch instance].pickupDate
-                                                                                    returnDateTime:[CTRentalSearch instance].dropoffDate
-                                                                                      currencyCode:[CTSDKSettings instance].currencyCode
-                                                                                        completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
-                    if (error) {
-                        [[CTAnalytics instance] tagError:@"inpath" event:@"Avail fail" message:error.errorMessage];
-                        _didFailToFetchResults = YES;
-                    } else if (response.items.count > 0) {
-                        [CTRentalSearch instance].vehicleAvailability = response;
-                        [[CTRentalSearch instance] setEngineInfoFromAvail];
-                        _defaultSearch = [[CTRentalSearch instance] copy];
-                        NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"vehicle.totalPriceForThisVehicle"
-                                                                                     ascending:YES];
-                        CTAvailabilityItem *cheapestvehicle =
-                        ((CTAvailabilityItem *)[response.items sortedArrayUsingDescriptors:@[descriptor]].firstObject);
-                        _didFetchResults = YES;
-                        if (self.delegate && [self.delegate respondsToSelector:@selector(didReceiveBestDailyRate:currency:)]) {
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                NSNumber *dailyRate = [NSNumber numberWithFloat:
-                                                       cheapestvehicle.vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
-                                [self.delegate didReceiveBestDailyRate:dailyRate currency:cheapestvehicle.vehicle.currencyCode];
-                            });
-                        }
-                    } else {
-                        [[CTAnalytics instance] tagError:@"inpath" event:@"no items" message:@"no vehicles available"];
-                        _didFailToFetchResults = YES;
-                        if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [self.delegate didFailToReceiveBestDailyRate];
-                            });
-                        }
-                    }
-                }];
-                    
-                } else {
-                    [[CTAnalytics instance] tagError:@"inpath"
-                                               event:@"get location"
-                                             message:[NSString stringWithFormat:@"no location for %@", IATACode]];
-                    _didFailToFetchResults = YES;
-                        if (self.delegate && [self.delegate respondsToSelector:@selector(didFailToReceiveBestDailyRate)]) {
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [self.delegate didFailToReceiveBestDailyRate];
-                            });
-                        }
-                    }
-            }
-        }
-    }];
-
-    return self;
+    return [NSNumber numberWithFloat:
+                    vehicleItem.vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
 }
 
 - (void)presentCarRentalWithFlightDetails:(nonnull UIViewController *)parentViewController
