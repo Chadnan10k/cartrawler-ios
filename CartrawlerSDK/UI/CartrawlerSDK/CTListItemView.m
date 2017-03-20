@@ -8,37 +8,51 @@
 
 #import "CTListItemView.h"
 
+@interface CTListItemView ()
+@property (nonatomic, strong) NSArray *horizontalConstraints;
+@end
+
 @implementation CTListItemView
 
-- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image {
+- (instancetype)init {
     self = [super init];
     if (self) {
-        UILabel *titleLabel = [UILabel new];
-        titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        titleLabel.text = title;
-        titleLabel.font = [UIFont systemFontOfSize:12.0];
-        [titleLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-        [self addSubview:titleLabel];
+        _titleLabel = [UILabel new];
+        _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _titleLabel.font = [UIFont systemFontOfSize:12.0];
+        [_titleLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+        [self addSubview:_titleLabel];
         
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.translatesAutoresizingMaskIntoConstraints = NO;
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self addSubview:imageView];
+        _imageView = [[UIImageView alloc] init];
+        _imageView.translatesAutoresizingMaskIntoConstraints = NO;
+        _imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:_imageView];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[titleLabel]-[imageView(24)]-10-|"
+        [self setImageAlignment:CTListItemImageAlignmentLeft];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_titleLabel]-|"
                                                                      options:0
                                                                      metrics:nil
-                                                                       views:NSDictionaryOfVariableBindings(titleLabel, imageView)]];
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[titleLabel]-|"
-                                                                            options:0
-                                                                            metrics:nil
-                                                                              views:NSDictionaryOfVariableBindings(titleLabel)]];
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[imageView(24)]-|"
+                                                                       views:NSDictionaryOfVariableBindings(_titleLabel)]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_imageView(24)]-|"
                                                                      options:0
                                                                      metrics:nil
-                                                                       views:NSDictionaryOfVariableBindings(imageView)]];
+                                                                       views:NSDictionaryOfVariableBindings(_imageView)]];
     }
     return self;
+}
+
+- (void)setImageAlignment:(CTListItemImageAlignment *)imageAlignment {
+    _imageAlignment = imageAlignment;
+    
+    [self removeConstraints:self.horizontalConstraints];
+    
+    NSString *visualFormat = imageAlignment == CTListItemImageAlignmentLeft ? @"H:|[titleLabel]-10-[imageView(24)]|" : @"H:|[imageView(24)]-10-[titleLabel]|";
+    self.horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:visualFormat
+                                                                         options:0
+                                                                         metrics:nil
+                                                                           views:@{@"titleLabel" : self.titleLabel, @"imageView" : self.imageView}];
+    [self addConstraints:self.horizontalConstraints];
 }
 
 
