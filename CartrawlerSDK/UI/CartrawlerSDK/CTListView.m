@@ -10,16 +10,14 @@
 
 @interface CTListView ()
 @property (nonatomic, strong) NSArray *rows;
-@property (nonatomic, readonly) void (^selectionHandler)(NSInteger rowIndex, UIView *row);
 @end
 
 @implementation CTListView
 
-- (instancetype)initWithRows:(NSArray *)rows selectionHandler:(void (^)(NSInteger rowIndex, UIView *row))selectionHandler {
+- (instancetype)initWithRows:(NSArray *)rows {
     self = [super init];
     if (self) {
         _rows = rows;
-        _selectionHandler = selectionHandler;
         
         [rows enumerateObjectsUsingBlock:^(UIView *row, NSUInteger idx, BOOL * _Nonnull stop) {
             row.translatesAutoresizingMaskIntoConstraints = NO;
@@ -52,10 +50,16 @@
             }
             
             if (idx == (rows.count - 1)) {
-                [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[row]|"
-                                                                             options:0
-                                                                             metrics:nil
-                                                                               views:NSDictionaryOfVariableBindings(row)]];
+                NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:row
+                                                                attribute:NSLayoutAttributeBottom
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self
+                                                                attribute:NSLayoutAttributeBottom
+                                                               multiplier:1.0
+                                                                 constant:0];
+                // This constraint may be over-ridden if the superview sets a specific height on the list view
+                constraint.priority = 750;
+                [self addConstraint:constraint];
             }
             
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSelectRow:)];
@@ -67,10 +71,9 @@
 }
 
 - (void)didSelectRow:(UIGestureRecognizer *)tap {
-    if (self.selectionHandler) {
-        self.selectionHandler([self.rows indexOfObject:tap.view], tap.view);
+    if (self.delegate) {
+        [self.delegate listView:self didSelectView:tap.view atIndex:[self.rows indexOfObject:tap.view]];
     }
 }
-
 
 @end
