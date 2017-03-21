@@ -47,7 +47,7 @@
     
     [self removeConstraints:self.horizontalConstraints];
     
-    NSString *visualFormat = imageAlignment == CTListItemImageAlignmentLeft ? @"H:|[titleLabel]-10-[imageView(24)]|" : @"H:|[imageView(24)]-10-[titleLabel]|";
+    NSString *visualFormat = imageAlignment == CTListItemImageAlignmentRight ? @"H:|[titleLabel]-10-[imageView(24)]|" : @"H:|[imageView(24)]-10-[titleLabel]|";
     self.horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:visualFormat
                                                                          options:0
                                                                          metrics:nil
