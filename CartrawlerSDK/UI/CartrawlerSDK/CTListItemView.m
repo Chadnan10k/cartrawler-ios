@@ -42,7 +42,7 @@
     return self;
 }
 
-- (void)setImageAlignment:(CTListItemImageAlignment *)imageAlignment {
+- (void)setImageAlignment:(CTListItemImageAlignment)imageAlignment {
     _imageAlignment = imageAlignment;
     
     [self removeConstraints:self.horizontalConstraints];
