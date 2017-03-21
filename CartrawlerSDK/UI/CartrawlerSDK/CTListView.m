@@ -9,19 +9,17 @@
 #import "CTListView.h"
 
 @interface CTListView ()
-@property (nonatomic, strong) NSArray *rows;
-@property (nonatomic, readonly) void (^selectionHandler)(NSInteger rowIndex, UIView *row);
+@property (nonatomic, strong) NSArray *views;
 @end
 
 @implementation CTListView
 
-- (instancetype)initWithRows:(NSArray *)rows selectionHandler:(void (^)(NSInteger rowIndex, UIView *row))selectionHandler {
+- (instancetype)initWithViews:(NSArray *)views {
     self = [super init];
     if (self) {
-        _rows = rows;
-        _selectionHandler = selectionHandler;
+        self.views = views;
         
-        [rows enumerateObjectsUsingBlock:^(UIView *row, NSUInteger idx, BOOL * _Nonnull stop) {
+        [views enumerateObjectsUsingBlock:^(UIView *row, NSUInteger idx, BOOL * _Nonnull stop) {
             row.translatesAutoresizingMaskIntoConstraints = NO;
             [self addSubview:row];
             
@@ -44,18 +42,24 @@
                                                                              options:0
                                                                              metrics:nil
                                                                                views:NSDictionaryOfVariableBindings(divider)]];
-                UIView *previousRow = rows[idx - 1];
+                UIView *previousRow = views[idx - 1];
                 [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[previousRow][divider(1)][row]"
                                                                              options:0
                                                                              metrics:nil
                                                                                views:NSDictionaryOfVariableBindings(previousRow, divider, row)]];
             }
             
-            if (idx == (rows.count - 1)) {
-                [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[row]|"
-                                                                             options:0
-                                                                             metrics:nil
-                                                                               views:NSDictionaryOfVariableBindings(row)]];
+            if (idx == (views.count - 1)) {
+                NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:row
+                                                                attribute:NSLayoutAttributeBottom
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self
+                                                                attribute:NSLayoutAttributeBottom
+                                                               multiplier:1.0
+                                                                 constant:0];
+                // This constraint may be over-ridden if the superview sets a specific height on the list view
+                constraint.priority = 750;
+                [self addConstraint:constraint];
             }
             
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSelectRow:)];
@@ -67,10 +71,9 @@
 }
 
 - (void)didSelectRow:(UIGestureRecognizer *)tap {
-    if (self.selectionHandler) {
-        self.selectionHandler([self.rows indexOfObject:tap.view], tap.view);
+    if (self.delegate) {
+        [self.delegate listView:self didSelectView:tap.view atIndex:[self.views indexOfObject:tap.view]];
     }
 }
-
 
 @end

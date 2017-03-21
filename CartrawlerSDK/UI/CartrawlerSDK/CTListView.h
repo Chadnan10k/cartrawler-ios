@@ -8,18 +8,37 @@
 
 #import <UIKit/UIKit.h>
 
+@class CTListView;
+
+/**
+ Implement this delegate to receive callbacks from the list view
+ */
+@protocol CTListViewDelegate <NSObject>
+
+/**
+ Called when a list view row is selected
+
+ @param listView the list view
+ @param view the selected view
+ @param index the index of the row
+ */
+- (void)listView:(CTListView *)listView didSelectView:(UIView *)view atIndex:(NSInteger)index;
+
+@end
+
 /**
  List view with a callback to indicate when rows are selected
  */
 @interface CTListView : UIView
 
+@property (nonatomic, weak) id <CTListViewDelegate> delegate;
+
 /**
  Initialise with views to be displayed in vertical rows
 
- @param rows the views to be added as rows
- @param handler a handler that is called when a row is selected
+ @param views the views to be added as rows
  @return a list view instance
  */
-- (instancetype)initWithRows:(NSArray *)rows selectionHandler:(void (^)(NSInteger rowIndex, UIView *row))handler;
+- (instancetype)initWithViews:(NSArray *)views;
 
 @end

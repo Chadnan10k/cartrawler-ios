@@ -9,17 +9,32 @@
 #import <UIKit/UIKit.h>
 
 /**
- View with a title and image
+ *  Image Alignment
+ */
+typedef NS_ENUM(NSUInteger, CTListItemImageAlignment) {
+    CTListItemImageAlignmentLeft,
+    CTListItemImageAlignmentRight
+};
+
+/**
+ View with a customisable label and image view
  */
 @interface CTListItemView : UIView
 
 /**
- Initialise with title and image
-
- @param title the title
- @param image an image
- @return a list item view
+ The title label
  */
-- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image;
+@property (nonatomic, strong) UILabel *titleLabel;
+
+/**
+ The image view
+ */
+@property (nonatomic, strong) UIImageView *imageView;
+
+/**
+ The image alignment
+ */
+@property (nonatomic, assign) CTListItemImageAlignment imageAlignment;
+
 
 @end

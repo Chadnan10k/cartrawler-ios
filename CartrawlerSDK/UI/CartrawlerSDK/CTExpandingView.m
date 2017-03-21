@@ -1,0 +1,134 @@
+//
+//  CTExpandingView.m
+//  CartrawlerSDK
+//
+//  Created by Alan on 14/03/2017.
+//  Copyright © 2017 Cartrawler. All rights reserved.
+//
+
+#import "CTExpandingView.h"
+
+@interface CTExpandingView ()
+@property (nonatomic, weak) UIView *animationContainerView;
+
+@property (nonatomic, strong) UIView *headerViewContainer;
+@property (nonatomic, strong) UIImageView *chevron;
+@property (nonatomic, strong) UIView *detailViewContainer;
+
+@property (nonatomic, strong) NSLayoutConstraint *detailHeightConstraint;
+@property (nonatomic, assign) BOOL expanded;
+@end
+
+@implementation CTExpandingView
+
+- (instancetype)initWithHeaderView:(UIView *)headerView animationContainerView:(UIView *)animationContainerView  {
+    self = [super init];
+    if (self) {
+        self.animationDuration = 0.3;
+        
+        self.animationContainerView = animationContainerView;
+        
+        self.headerViewContainer = [UIView new];
+        self.headerViewContainer.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:self.headerViewContainer];
+        
+        headerView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.headerViewContainer addSubview:headerView];
+        
+        self.detailViewContainer = [UIView new];
+        self.detailViewContainer.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:self.detailViewContainer];
+        
+        NSBundle *bundle = [NSBundle bundleForClass:self.class];
+        UIImage *chevronImage = [[UIImage imageNamed:@"down_arrow" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.chevron = [[UIImageView alloc] initWithImage:chevronImage];
+        self.chevron.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:self.chevron];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[headerView]|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:NSDictionaryOfVariableBindings(headerView)]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[headerView]|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:NSDictionaryOfVariableBindings(headerView)]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[headerViewContainer]-16-[chevron(20)]-20-|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:@{@"headerViewContainer" : self.headerViewContainer, @"chevron" : self.chevron}]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[detailViewContainer]-61-|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:@{@"detailViewContainer" : self.detailViewContainer}]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[headerViewContainer(40)]-10-[detailViewContainer]|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:@{@"headerViewContainer" : self.headerViewContainer, @"detailViewContainer" : self.detailViewContainer}]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[chevron(20)]-20-|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:@{@"chevron" : self.chevron}]];
+        
+        self.detailHeightConstraint = [NSLayoutConstraint constraintWithItem:self.detailViewContainer
+                                                                   attribute:NSLayoutAttributeHeight
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:nil
+                                                                   attribute:NSLayoutAttributeNotAnAttribute
+                                                                  multiplier:1.0
+                                                                    constant:0];
+        [self addConstraint:self.detailHeightConstraint];
+        
+        self.clipsToBounds = YES;
+    }
+    return self;
+}
+
+- (void)expandWithDetailView:(UIView *)detailView {
+    self.expanded = YES;
+    
+    detailView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.detailViewContainer addSubview:detailView];
+    [self.detailViewContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[detailView]|"
+                                                                                     options:0
+                                                                                     metrics:nil
+                                                                                       views:NSDictionaryOfVariableBindings(detailView)]];
+    
+    [self.detailViewContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[detailView]"
+                                                                                     options:0
+                                                                                     metrics:nil
+                                                                                       views:NSDictionaryOfVariableBindings(detailView)]];
+    [detailView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.animationContainerView layoutIfNeeded];
+    
+    CGFloat padding = 10;
+    detailView.alpha = 0;
+    [UIView animateWithDuration:self.animationDuration animations:^{
+        detailView.alpha = 1.0;
+        self.detailHeightConstraint.constant = detailView.intrinsicContentSize.height + padding;
+        self.chevron.layer.affineTransform = CGAffineTransformMakeScale(1, -1);
+        [self.animationContainerView layoutIfNeeded];
+    }];
+}
+
+- (void)contract {
+    self.expanded = NO;
+    
+    [UIView animateWithDuration:self.animationDuration
+                     animations:^{
+                         self.detailViewContainer.subviews.firstObject.alpha = 0;
+                         self.detailHeightConstraint.constant = 0;
+                         self.chevron.layer.affineTransform = CGAffineTransformMakeScale(1, 1);
+                         [self.animationContainerView layoutIfNeeded];
+                     }
+                     completion:^(BOOL finished) {
+                         [self.detailViewContainer.subviews.firstObject removeFromSuperview];
+                     }];
+}
+
+@end
