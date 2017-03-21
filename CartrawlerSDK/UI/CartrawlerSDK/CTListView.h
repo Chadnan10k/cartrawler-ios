@@ -36,9 +36,9 @@
 /**
  Initialise with views to be displayed in vertical rows
 
- @param rows the views to be added as rows
+ @param views the views to be added as rows
  @return a list view instance
  */
-- (instancetype)initWithRows:(NSArray *)rows;
+- (instancetype)initWithViews:(NSArray *)views;
 
 @end

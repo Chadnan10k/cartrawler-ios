@@ -9,17 +9,17 @@
 #import "CTListView.h"
 
 @interface CTListView ()
-@property (nonatomic, strong) NSArray *rows;
+@property (nonatomic, strong) NSArray *views;
 @end
 
 @implementation CTListView
 
-- (instancetype)initWithRows:(NSArray *)rows {
+- (instancetype)initWithViews:(NSArray *)views {
     self = [super init];
     if (self) {
-        _rows = rows;
+        _views = views;
         
-        [rows enumerateObjectsUsingBlock:^(UIView *row, NSUInteger idx, BOOL * _Nonnull stop) {
+        [views enumerateObjectsUsingBlock:^(UIView *row, NSUInteger idx, BOOL * _Nonnull stop) {
             row.translatesAutoresizingMaskIntoConstraints = NO;
             [self addSubview:row];
             
@@ -42,14 +42,14 @@
                                                                              options:0
                                                                              metrics:nil
                                                                                views:NSDictionaryOfVariableBindings(divider)]];
-                UIView *previousRow = rows[idx - 1];
+                UIView *previousRow = views[idx - 1];
                 [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[previousRow][divider(1)][row]"
                                                                              options:0
                                                                              metrics:nil
                                                                                views:NSDictionaryOfVariableBindings(previousRow, divider, row)]];
             }
             
-            if (idx == (rows.count - 1)) {
+            if (idx == (views.count - 1)) {
                 NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:row
                                                                 attribute:NSLayoutAttributeBottom
                                                                 relatedBy:NSLayoutRelationEqual
@@ -72,7 +72,7 @@
 
 - (void)didSelectRow:(UIGestureRecognizer *)tap {
     if (self.delegate) {
-        [self.delegate listView:self didSelectView:tap.view atIndex:[self.rows indexOfObject:tap.view]];
+        [self.delegate listView:self didSelectView:tap.view atIndex:[self.views indexOfObject:tap.view]];
     }
 }
 
