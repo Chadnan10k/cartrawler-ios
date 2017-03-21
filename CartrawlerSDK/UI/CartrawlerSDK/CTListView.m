@@ -17,7 +17,7 @@
 - (instancetype)initWithViews:(NSArray *)views {
     self = [super init];
     if (self) {
-        _views = views;
+        self.views = views;
         
         [views enumerateObjectsUsingBlock:^(UIView *row, NSUInteger idx, BOOL * _Nonnull stop) {
             row.translatesAutoresizingMaskIntoConstraints = NO;

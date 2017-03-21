@@ -17,27 +17,27 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _titleLabel = [UILabel new];
-        _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        _titleLabel.font = [UIFont systemFontOfSize:12.0];
-        [_titleLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-        [self addSubview:_titleLabel];
+        self.titleLabel = [UILabel new];
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        self.titleLabel.font = [UIFont systemFontOfSize:12.0];
+        [self.titleLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+        [self addSubview:self.titleLabel];
         
-        _imageView = [[UIImageView alloc] init];
-        _imageView.translatesAutoresizingMaskIntoConstraints = NO;
-        _imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self addSubview:_imageView];
+        self.imageView = [[UIImageView alloc] init];
+        self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
+        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:self.imageView];
         
-        [self setImageAlignment:CTListItemImageAlignmentLeft];
+        self.imageAlignment = CTListItemImageAlignmentLeft;
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_titleLabel]-|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[titleLabel]-|"
                                                                      options:0
                                                                      metrics:nil
-                                                                       views:NSDictionaryOfVariableBindings(_titleLabel)]];
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_imageView(24)]-|"
+                                                                       views:@{@"titleLabel": self.titleLabel}]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[imageView(24)]-|"
                                                                      options:0
                                                                      metrics:nil
-                                                                       views:NSDictionaryOfVariableBindings(_imageView)]];
+                                                                       views:@{@"imageView": self.imageView}]];
     }
     return self;
 }

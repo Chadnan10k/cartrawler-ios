@@ -24,26 +24,26 @@
 - (instancetype)initWithHeaderView:(UIView *)headerView animationContainerView:(UIView *)animationContainerView  {
     self = [super init];
     if (self) {
-        _animationDuration = 0.3;
+        self.animationDuration = 0.3;
         
-        _animationContainerView = animationContainerView;
+        self.animationContainerView = animationContainerView;
         
-        _headerViewContainer = [UIView new];
-        _headerViewContainer.translatesAutoresizingMaskIntoConstraints = NO;
-        [self addSubview:_headerViewContainer];
+        self.headerViewContainer = [UIView new];
+        self.headerViewContainer.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:self.headerViewContainer];
         
         headerView.translatesAutoresizingMaskIntoConstraints = NO;
-        [_headerViewContainer addSubview:headerView];
+        [self.headerViewContainer addSubview:headerView];
         
-        _detailViewContainer = [UIView new];
-        _detailViewContainer.translatesAutoresizingMaskIntoConstraints = NO;
-        [self addSubview:_detailViewContainer];
+        self.detailViewContainer = [UIView new];
+        self.detailViewContainer.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:self.detailViewContainer];
         
         NSBundle *bundle = [NSBundle bundleForClass:self.class];
         UIImage *chevronImage = [[UIImage imageNamed:@"down_arrow" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        _chevron = [[UIImageView alloc] initWithImage:chevronImage];
-        _chevron.translatesAutoresizingMaskIntoConstraints = NO;
-        [self addSubview:_chevron];
+        self.chevron = [[UIImageView alloc] initWithImage:chevronImage];
+        self.chevron.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:self.chevron];
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[headerView]|"
                                                                      options:0
@@ -55,34 +55,34 @@
                                                                      metrics:nil
                                                                        views:NSDictionaryOfVariableBindings(headerView)]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[_headerViewContainer]-16-[_chevron(20)]-20-|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[headerViewContainer]-16-[chevron(20)]-20-|"
                                                                      options:0
                                                                      metrics:nil
-                                                                       views:NSDictionaryOfVariableBindings(_headerViewContainer, _chevron)]];
+                                                                       views:@{@"headerViewContainer" : self.headerViewContainer, @"chevron" : self.chevron}]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[_detailViewContainer]-61-|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[detailViewContainer]-61-|"
                                                                      options:0
                                                                      metrics:nil
-                                                                       views:NSDictionaryOfVariableBindings(_detailViewContainer)]];
+                                                                       views:@{@"detailViewContainer" : self.detailViewContainer}]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[_headerViewContainer(40)]-10-[_detailViewContainer]|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[headerViewContainer(40)]-10-[detailViewContainer]|"
                                                                      options:0
                                                                      metrics:nil
-                                                                       views:NSDictionaryOfVariableBindings(_headerViewContainer, _detailViewContainer)]];
+                                                                       views:@{@"headerViewContainer" : self.headerViewContainer, @"detailViewContainer" : self.detailViewContainer}]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_chevron(20)]-20-|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[chevron(20)]-20-|"
                                                                      options:0
                                                                      metrics:nil
-                                                                       views:NSDictionaryOfVariableBindings(_chevron)]];
+                                                                       views:@{@"chevron" : self.chevron}]];
         
-        _detailHeightConstraint = [NSLayoutConstraint constraintWithItem:_detailViewContainer
-                                                               attribute:NSLayoutAttributeHeight
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:nil
-                                                               attribute:NSLayoutAttributeNotAnAttribute
-                                                              multiplier:1.0
-                                                                constant:0];
-        [self addConstraint:_detailHeightConstraint];
+        self.detailHeightConstraint = [NSLayoutConstraint constraintWithItem:self.detailViewContainer
+                                                                   attribute:NSLayoutAttributeHeight
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:nil
+                                                                   attribute:NSLayoutAttributeNotAnAttribute
+                                                                  multiplier:1.0
+                                                                    constant:0];
+        [self addConstraint:self.detailHeightConstraint];
         
         self.clipsToBounds = YES;
     }
@@ -95,14 +95,14 @@
     detailView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.detailViewContainer addSubview:detailView];
     [self.detailViewContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[detailView]|"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:NSDictionaryOfVariableBindings(detailView)]];
+                                                                                     options:0
+                                                                                     metrics:nil
+                                                                                       views:NSDictionaryOfVariableBindings(detailView)]];
     
     [self.detailViewContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[detailView]"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:NSDictionaryOfVariableBindings(detailView)]];
+                                                                                     options:0
+                                                                                     metrics:nil
+                                                                                       views:NSDictionaryOfVariableBindings(detailView)]];
     [detailView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     [self.animationContainerView layoutIfNeeded];
     
