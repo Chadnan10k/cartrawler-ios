@@ -25,6 +25,10 @@
 {
     self = [super init];
     
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[self(0@250)]"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"self" : self}]];
     return self;
 }
 

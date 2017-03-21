@@ -10,6 +10,8 @@
 #import <CartrawlerRental/CartrawlerRental.h>
 #import "CTInPathVehicle.h"
 #import "CTInPathPayment.h"
+#import <CartrawlerSDK/CTPassenger.h>
+#import "CTInPathError.h"
 
 //! Project version number for CartrawlerInPath.
 FOUNDATION_EXPORT double CartrawlerInPathVersionNumber;
@@ -34,11 +36,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id<CartrawlerInPathDelegate> delegate;
 
-- (instancetype)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental
-                                IATACode:(nonnull NSString *)IATACode
-                              pickupDate:(nullable NSDate *)pickupDate
-                              returnDate:(nullable NSDate *)returnDate
-                             userDetails:(nullable CTUserDetails *)userDetails;
++ (CartrawlerInPath *)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental
+                                      IATACode:(nonnull NSString *)IATACode
+                                    pickupDate:(nonnull NSDate *)pickupDate
+                                    returnDate:(nullable NSDate *)returnDate
+                                  flightNumber:(nullable NSString *)flightNumber
+                                      currency:(nonnull NSString *)currency
+                                     passegers:(nonnull NSArray<CTPassenger *> *)passegers
+                                         error:(NSError * __autoreleasing *)outError;
 
 - (void)presentCarRentalWithFlightDetails:(nonnull UIViewController *)parentViewController;
 

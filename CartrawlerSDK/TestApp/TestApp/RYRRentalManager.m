@@ -51,23 +51,45 @@
 
 - (void)reset
 {
-    CTUserDetails *userDetails = [CTUserDetails new];
-    userDetails.firstName = @"Lee";
-    userDetails.surname = @"Maguire";
-    userDetails.email = @"lee@maguire.com";
-    userDetails.phone = @"+086666666";
-    userDetails.driverAge = @30;
-    userDetails.flightNo = @"FR 777";
-    userDetails.currency = @"RUB";
-    userDetails.countryCode = @"IE";
-
+    
+    CTPassenger *passenger1 = [CTPassenger passengerWithFirstName:@"Lee"
+                                                         lastName:@"Maguire"
+                                                     addressLine1:@"123 Cartrawler St"
+                                                     addressLine2:nil
+                                                             city:@"Dundrum"
+                                                         postcode:@"D18"
+                                                      countryCode:@"IE"
+                                                              age:@21
+                                                            email:@"lmaguire@cartrawler.com"
+                                                            phone:@"0861111111"
+                                                  isPrimaryDriver:YES];
+    
+    CTPassenger *passenger2 = [CTPassenger passengerWithFirstName:@"John"
+                                                         lastName:@"Smith"
+                                                     addressLine1:@"123 Cartrawler St"
+                                                     addressLine2:nil
+                                                             city:@"Dundrum"
+                                                         postcode:@"D18"
+                                                      countryCode:@"IE"
+                                                              age:@30
+                                                            email:nil
+                                                            phone:nil
+                                                  isPrimaryDriver:NO];
+    
+    
+    NSError *e;
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:86400];
     _pickupDate = date;
-    _inPath = [[CartrawlerInPath alloc] initWithCartrawlerRental:self.rental
-                                                        IATACode:@"LGW"
+    _inPath = [CartrawlerInPath initWithCartrawlerRental:self.rental
+                                                        IATACode:@"ALC"
                                                       pickupDate:self.pickupDate
-                                                      returnDate:self.dropoffDate
-                                                     userDetails:userDetails];
+                                                      returnDate:[self.pickupDate dateByAddingTimeInterval:260000]
+                                                    flightNumber:@"FR 123"
+                                                        currency:@"EUR"
+                                                       passegers:@[passenger1, passenger2]
+                                                           error:&e];
+    
+    NSLog(@"CT INPATH ERROR: %@", e.description);
     
     self.inPath.delegate = self;
     [self.callToAction setTitle:@"Loading" forState:UIControlStateNormal];

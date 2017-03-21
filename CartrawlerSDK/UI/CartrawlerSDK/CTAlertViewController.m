@@ -13,9 +13,8 @@
 #import "CTAlertViewDismissalAnimationController.h"
 
 
-@interface CTAlertViewController ()
+@interface CTAlertViewController () <UIViewControllerTransitioningDelegate>
 @property (nonatomic, strong) CTAlertView *view;
-@property (nonatomic, strong) id <UIViewControllerTransitioningDelegate> transitioningDelegate;
 @property (nonatomic, readonly) NSArray *actions;
 @end
 

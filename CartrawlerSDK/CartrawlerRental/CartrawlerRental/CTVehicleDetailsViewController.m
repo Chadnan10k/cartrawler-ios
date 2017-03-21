@@ -7,18 +7,26 @@
 //
 
 #import "CTVehicleDetailsViewController.h"
+#import "CTVehicleDetailsView.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTSDKSettings.h>
-#import "CTVehicleDetailsView.h"
+#import <CartrawlerSDK/CTLayoutManager.h>
+#import <CartrawlerSDK/CTInfoTip.h>
+#import <CartrawlerSDK/CTAlertViewController.h>
 #import "CTInsuranceView.h"
 
-@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInsuranceDelegate>
+@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
+@property (strong, nonatomic) CTAlertViewController *alertView;
+@property (strong, nonatomic) CTLayoutManager *layoutManager;
 
 //Nested views
 @property (nonatomic, strong) CTVehicleDetailsView *vehicleDetailsView;
+@property (nonatomic, strong) CTInfoTip *vehicleInfoTip;
+@property (nonatomic, strong) CTInfoTip *extrasInfoTip;
 @property (nonatomic, strong) CTInsuranceView *insuranceView;
 
 @end
@@ -27,8 +35,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.nextButton setText:@"Test Next"];
+    
+    _layoutManager = [CTLayoutManager layoutManagerWithContainer:self.containerView];
+    
     [self initVehicleDetailsView];
+    [self initVehicleDetailsInfoTip];
     [self initInsuranceView];
+    [self initExtrasInfoTip];
+    [self initAlertView];
+      
+    [self.layoutManager layoutViews];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -38,72 +56,112 @@
                              pickupDate:self.search.pickupDate
                             dropoffDate:self.search.dropoffDate];
     
-    [self.insuranceView retrieveInsurance:self.cartrawlerAPI search:self.search];
+    [self.insuranceView retrieveInsurance:self.cartrawlerAPI
+                                   search:self.search];
 
 }
+
+/**
+ View Creation
+ */
+
+//MARK: Alert View Init
+
+- (void)initAlertView
+{
+    _alertView = [CTAlertViewController alertControllerWithTitle:@"Test" message:@"Test"];
+    self.alertView.backgroundTapDismissalGestureEnabled = YES;
+    
+    [self.alertView addAction:[CTAlertAction actionWithTitle:@"Test OK" handler:^(CTAlertAction *action) {
+        
+    }]];
+}
+
 
 // MARK: Vehicle Details View Init
 - (void)initVehicleDetailsView
 {
     _vehicleDetailsView = [CTVehicleDetailsView new];
-    self.vehicleDetailsView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.containerView addSubview:self.vehicleDetailsView];
     self.vehicleDetailsView.delegate = self;
-
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[vehicleDetailsView]"
-                                                                               options:0
-                                                                               metrics:nil
-                                                                                 views:@{@"vehicleDetailsView" : self.vehicleDetailsView}]];
-    
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[vehicleDetailsView]-0-|"
-                                                                               options:0
-                                                                               metrics:nil
-                                                                                 views:@{@"vehicleDetailsView" : self.vehicleDetailsView}]];
+    [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.vehicleDetailsView];
 }
 
-// MARK: Insurance View Init
+// MARK: Vehicle Info Tip
+- (void)initVehicleDetailsInfoTip
+{
+    _vehicleInfoTip = [[CTInfoTip alloc] initWithIcon:nil text:@"test test test test test"];
+    _vehicleInfoTip.delegate = self;
+    [self.layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.vehicleInfoTip];
+}
+
+// MARK: Vehicle Info Tip
+- (void)initExtrasInfoTip
+{
+    _extrasInfoTip = [[CTInfoTip alloc] initWithIcon:nil text:@"Add extras to your vehicle"];
+    _extrasInfoTip.delegate = self;
+    [self.layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.extrasInfoTip];
+}
+
+// MARK: Insurance View
 - (void)initInsuranceView
 {
     _insuranceView = [CTInsuranceView new];
     self.insuranceView.delegate = self;
-    self.insuranceView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.containerView addSubview:self.insuranceView];
-    
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-16-[insurance]-20-|"
-                                                                               options:0
-                                                                               metrics:nil
-                                                                                 views:@{@"insurance" : self.insuranceView, @"top" : self.vehicleDetailsView}]];
-    
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[insurance]-0-|"
-                                                                               options:0
-                                                                               metrics:nil
-                                                                                 views:@{@"insurance" : self.insuranceView}]];
+    [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.insuranceView];
 }
 
-- (IBAction)backTapped:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
+/**
+ View Delegates
+ */
 
 // MARK: CTVehicleDetailsDelegate
 - (void)didTapMoreDetailsView
 {
-    //present alert view
+    [self presentViewController:self.alertView animated:YES completion:nil];
 }
 
-// MARK: CTInsuranceDelegate
+// MARK: CTInfoTipDelegate
+- (void)infoTipWasTapped:(CTInfoTip *)infoTip
+{
+    if (infoTip == self.extrasInfoTip) {
+        [self.navigationController pushViewController:self.optionalRoute animated:YES];
+    }
+}
+
+// MARK: CTInsurance Delegate
 - (void)didAddInsurance:(CTInsurance *)insurance
 {
-    NSLog(@"INSURACNE COST: %@", insurance.premiumAmount.stringValue);
+    self.search.insurance = insurance;
+    self.search.isBuyingInsurance = YES;
 }
 
 - (void)didRemoveInsurance
 {
-    NSLog(@"INsurance remved");
+    self.search.insurance = nil;
+    self.search.isBuyingInsurance = NO;
 }
+
 
 - (void)didTapTermsAndConditions:(NSURL *)termsURL
 {
-    NSLog(@"%@", termsURL);
+    
 }
+
+// MARK: Actions
+- (IBAction)backTapped:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)nextTapped:(id)sender
+{
+    if (self.destinationViewController) {
+        [self pushToDestination];
+    } else {
+        [self dismiss];
+    }
+}
+
 
 @end

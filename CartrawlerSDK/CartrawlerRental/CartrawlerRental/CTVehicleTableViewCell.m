@@ -48,7 +48,7 @@
 
 - (void)initWithVehicle:(CTAvailabilityItem *)item index:(NSInteger)index;
 {
-    
+
     if (index == 0 || index == 1) {
         [self.merchBannerView setBannerType:CTMerhandisingBannerTypeBestSeller];
     } else if (index == 2 || index == 3) {

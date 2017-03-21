@@ -24,18 +24,12 @@
 - (instancetype)initFromDictionary:(NSDictionary *)dict
 {
     self = [super init];
-    
-    //TODO: what if array of special offers
-    
-    if (dict) {
-        _type = dict[@"Offer"][@"@Type"];
-        _shortText = dict[@"Offer"][@"@ShortText"];
-        _uiToken = dict[@"Offer"][@"@UIToken"];
-        _text = dict[@"Offer"][@"#text"];
-        return self;
-    } else {
-        return nil;
-    }
+    _type = dict[@"Offer"][@"@Type"];
+    _shortText = dict[@"Offer"][@"@ShortText"];
+    _uiToken = dict[@"Offer"][@"@UIToken"];
+    _text = dict[@"Offer"][@"#text"];
+    return self;
+
 }
 
 @end

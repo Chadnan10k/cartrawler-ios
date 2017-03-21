@@ -257,7 +257,7 @@ NSString * const kInfoTipInformationImage = @"information";
     infoLabel.numberOfLines = 0;
     infoLabel.text = text;
     infoLabel.textColor = [UIColor whiteColor];
-    infoLabel.font = [UIFont systemFontOfSize:10];
+    infoLabel.font = [UIFont systemFontOfSize:15];
     infoLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [infoLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     return infoLabel;

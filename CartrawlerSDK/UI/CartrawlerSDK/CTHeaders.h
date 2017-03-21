@@ -51,7 +51,6 @@
 #import "CTToolTip.h"
 #import "CTToolTipButton.h"
 #import "CTToolTipViewController.h"
-#import "CTUserDetails.h"
 #import "CTAnalytics.h"
 #import "CTAnalyticsEvent.h"
 #import "CTInfoTip.h"
@@ -59,3 +58,5 @@
 #import "CTListView.h"
 #import "CTListItemView.h"
 #import "CTExpandingView.h"
+#import "CTLayoutManager.h"
+#import "CTPassenger.h"
