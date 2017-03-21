@@ -21,6 +21,8 @@
 @property (nonatomic, strong) CTRentalSearch *defaultSearch;
 @property (nonatomic, strong) NSString *defaultCountryCode;
 @property (nonatomic, strong) NSString *defaultCountryName;
+@property (nonatomic, strong) NSString *clientID;
+
 @property (nonatomic) BOOL isReturnTrip;
 @property (nonatomic) BOOL didFailToFetchResults;
 @property (nonatomic) BOOL didFetchResults;
@@ -31,7 +33,9 @@
 
 @implementation CartrawlerInPath
 
+
 + (CartrawlerInPath *)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental
+                                      clientID:(NSString *)clientID
                                       IATACode:(nonnull NSString *)IATACode
                                     pickupDate:(nonnull NSDate *)pickupDate
                                     returnDate:(nullable NSDate *)returnDate
@@ -40,11 +44,10 @@
                                      passegers:(nonnull NSArray<CTPassenger *> *)passegers
                                          error:(NSError * __autoreleasing *)outError
 {
-//    self = [super init];
-    
     CartrawlerInPath *inPath = [CartrawlerInPath new];
+    [[CTSDKSettings instance] setClientId:clientID];
+    inPath.clientID = clientID;
     inPath.rental = cartrawlerRental;
-    
     BOOL setSearchSuccess = [inPath setSearchDetails:currency flightNo:flightNumber passengers:passegers pickupDate:pickupDate returnDate:returnDate error:outError];
     
     if (!setSearchSuccess) {
@@ -130,6 +133,8 @@
 
 - (void)performLocationSearch:(NSString *)IATACode
 {
+    [self.rental.cartrawlerSDK.cartrawlerAPI changeClientKey:self.clientID];
+
     __weak typeof (self) weakSelf = self;
     _didFailToFetchResults = YES;//set to yes until someone sends a response
     [self.rental.cartrawlerSDK.cartrawlerAPI locationSearchWithAirportCode:IATACode

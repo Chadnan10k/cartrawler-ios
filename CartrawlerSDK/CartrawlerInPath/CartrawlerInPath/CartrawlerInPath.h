@@ -37,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<CartrawlerInPathDelegate> delegate;
 
 + (CartrawlerInPath *)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental
+                                      clientID:(NSString *)clientID
                                       IATACode:(nonnull NSString *)IATACode
                                     pickupDate:(nonnull NSDate *)pickupDate
                                     returnDate:(nullable NSDate *)returnDate

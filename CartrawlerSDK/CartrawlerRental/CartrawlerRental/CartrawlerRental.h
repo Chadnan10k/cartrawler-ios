@@ -47,7 +47,15 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 //--Delegate--
 @property (nonatomic, weak) id<CartrawlerRentalDelegate> delegate;
 
-- (instancetype)initWithCartrawlerSDK:(nonnull CartrawlerSDK *)cartrawlerSDK;
+
+/**
+ Designated initialiser
+
+ @param cartrawlerSDK The Cartrawler SDK object
+ @param clientID Your Client ID
+ @return CartrawlerRental
+ */
+- (instancetype)initWithCartrawlerSDK:(nonnull CartrawlerSDK *)cartrawlerSDK clientID:(NSString *)clientID;
 
 /**
  *  Presents the car rental engine modally in the designated UIViewController

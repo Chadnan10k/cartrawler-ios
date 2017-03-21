@@ -45,14 +45,12 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 /**
  *  Initialize the CartrawlerAPI
  *
- *  @param requestorID  Your requester ID
  *  @param languageCode The initial language code eg. EN
  *  @param sandboxMode  Flag to indicate if you want to point to test or production endpoints
  *
  */
-- (instancetype)initWithRequestorID:(NSString *)requestorID
-                  languageCode:(NSString *)languageCode
-                   sandboxMode:(BOOL)sandboxMode;
+- (instancetype)initWithlanguageCode:(NSString *)languageCode
+                         sandboxMode:(BOOL)sandboxMode;
 
 /**
  *  Enable or disable logs
