@@ -35,28 +35,25 @@
 
 
 + (CartrawlerInPath *)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental
-                                      clientID:(NSString *)clientID
-                                      IATACode:(nonnull NSString *)IATACode
-                                    pickupDate:(nonnull NSDate *)pickupDate
-                                    returnDate:(nullable NSDate *)returnDate
-                                  flightNumber:(nullable NSString *)flightNumber
-                                      currency:(nonnull NSString *)currency
-                                     passegers:(nonnull NSArray<CTPassenger *> *)passegers
-                                         error:(NSError * __autoreleasing *)outError
+                                      clientID:(nonnull NSString *)clientID
 {
     CartrawlerInPath *inPath = [CartrawlerInPath new];
     [[CTSDKSettings instance] setClientId:clientID];
     inPath.clientID = clientID;
     inPath.rental = cartrawlerRental;
-    BOOL setSearchSuccess = [inPath setSearchDetails:currency flightNo:flightNumber passengers:passegers pickupDate:pickupDate returnDate:returnDate error:outError];
-    
-    if (!setSearchSuccess) {
-        return nil;
-    }
-    
-    [inPath performLocationSearch:IATACode];
-    
     return inPath;
+}
+
+- (void)performSearchWithIATACode:(nonnull NSString *)IATACode
+                       pickupDate:(nonnull NSDate *)pickupDate
+                       returnDate:(nullable NSDate *)returnDate
+                     flightNumber:(nullable NSString *)flightNumber
+                         currency:(nonnull NSString *)currency
+                        passegers:(nonnull NSArray<CTPassenger *> *)passegers
+                            error:(NSError * __autoreleasing *)outError
+{
+    [self setSearchDetails:currency flightNo:flightNumber passengers:passegers pickupDate:pickupDate returnDate:returnDate error:outError];
+    [self performLocationSearch:IATACode ?: @""];
 }
 
 - (BOOL)setSearchDetails:(NSString *)currency
@@ -77,7 +74,9 @@
     }
     
     if (!primaryPassenger) {
-        *outError = [CTInPathError errorWithType:CTInPathErrorTypeNoPrimaryPassenger];
+        if (outError != NULL) {
+            *outError = [CTInPathError errorWithType:CTInPathErrorTypeNoPrimaryPassenger];
+        }
         return NO;
     }
     
