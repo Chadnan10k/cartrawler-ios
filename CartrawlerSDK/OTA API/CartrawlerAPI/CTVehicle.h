@@ -9,9 +9,6 @@
 
 @class CTVendor;
 
-
-
-
 /**
  Merchandising Tags
  */
