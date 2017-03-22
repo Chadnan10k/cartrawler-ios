@@ -222,8 +222,6 @@
                                  currencyCode:(NSString *)currencyCode
                                    completion:(RequestAvailabilityCompletion)completion
 {
-    NSLog(@"VEH AVAIL %@", self.clientAPIKey);
-
     NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.endPoint, @"OTA_VehAvailRateRQ"];
     
     NSString *requestBody = [CTRequestBuilder OTA_VehAvailRateRQ: [pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
@@ -266,7 +264,6 @@
                         selectedVehicle:(CTAvailabilityItem *)selectedVehicle
                              completion:(InsuranceQuoteCompletion)completion
 {
-    NSLog(@"INSURANCE %@", self.clientAPIKey);
     NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.endPoint, @"OTA_InsuranceQuoteRQ"];
 
     NSString *requestBody = [CTRequestBuilder OTA_InsuranceDetailsRQ:totalCost
