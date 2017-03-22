@@ -24,7 +24,7 @@
 - (instancetype)initFromDictionary:(NSDictionary *)dict
 {
     self = [super init];
-    _type = dict[@"Offer"][@"@Type"];
+    _type = [self typeFromString:dict[@"Offer"][@"@Type"]];
     _shortText = dict[@"Offer"][@"@ShortText"];
     _uiToken = dict[@"Offer"][@"@UIToken"];
     _text = dict[@"Offer"][@"#text"];

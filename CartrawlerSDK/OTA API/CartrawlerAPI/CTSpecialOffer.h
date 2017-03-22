@@ -116,10 +116,10 @@ typedef NS_ENUM(NSUInteger, CTSpecialOfferType) {
     
 };
 
-@property (nonatomic, nonnull, readonly) NSString *type;
-@property (nonatomic, nonnull, readonly) NSString *shortText;
-@property (nonatomic, nonnull, readonly) NSString *uiToken;
-@property (nonatomic, nonnull, readonly) NSString *text;
+@property (nonatomic, readonly) CTSpecialOfferType type;
+@property (nonatomic, strong, nonnull, readonly) NSString *shortText;
+@property (nonatomic, strong, nonnull, readonly) NSString *uiToken;
+@property (nonatomic, strong, nonnull, readonly) NSString *text;
 
 - (instancetype)initFromDictionary:(NSDictionary *)dict;
 
