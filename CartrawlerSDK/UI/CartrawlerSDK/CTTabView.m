@@ -29,7 +29,7 @@
         self.titleLabel.font = [UIFont systemFontOfSize:18.0];
         self.titleLabel.numberOfLines = 1;
         self.titleLabel.adjustsFontSizeToFitWidth = YES;
-        self.titleLabel.minimumFontSize = 10;
+        self.titleLabel.minimumScaleFactor = 0.5;
 
         [self addSubview:self.titleLabel];
         

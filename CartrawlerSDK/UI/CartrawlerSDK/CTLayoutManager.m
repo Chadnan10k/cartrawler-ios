@@ -54,8 +54,6 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
         return;
     }
     
-    BOOL verticalLayout = (self.orientation == CTLayoutManagerOrientationTopToBottom);
-    
     for (int i=0; i < self.viewArray.count; i++) {
         
         UIView *currentView = [self viewForIndexInArray:i array:self.viewArray];

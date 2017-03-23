@@ -38,7 +38,7 @@
     return self;
 }
 
-- (UILabel *)tabViewWithTitle:(NSString *)title {
+- (CTTabView *)tabViewWithTitle:(NSString *)title {
     CTTabView *tabView = [CTTabView new];
     
     tabView.titleLabel.text = title;
