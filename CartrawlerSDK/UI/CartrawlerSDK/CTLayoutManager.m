@@ -47,7 +47,6 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
 
 - (void)layoutViews
 {
-    
     //we should remove any previous contraints
     
     if (self.viewArray.count < 2) {
@@ -55,56 +54,56 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
         return;
     }
     
+    BOOL verticalLayout = (self.orientation == CTLayoutManagerOrientationTopToBottom);
+    
     for (int i=0; i < self.viewArray.count; i++) {
         
         UIView *currentView = [self viewForIndexInArray:i array:self.viewArray];
         UIEdgeInsets currentPadding = [self paddingForIndexInArray:i array:self.viewArray];
         
         if (i == 0) {
-            //layout top
             UIView *nextView = [self viewForIndexInArray:i+1 array:self.viewArray];
+            
             [self layoutView:currentView
-                     topView:nil
-                  bottomView:nextView
-                    leftView:nil
-                   rightView:nil
+                previousView:nil
+                    nextView:nextView
                      padding:currentPadding
-                   container:self.containerView];
-        } else if (i == self.viewArray.count -1) {
-            //layout bottom
+                   container:self.containerView
+                 orientation:self.orientation
+                     justify:self.justify];
+        } else if (i == self.viewArray.count-1) {
             UIView *previousView = [self viewForIndexInArray:i-1 array:self.viewArray];
+            
             [self layoutView:currentView
-                     topView:previousView
-                  bottomView:nil
-                    leftView:nil
-                   rightView:nil
+                previousView:previousView
+                    nextView:nil
                      padding:currentPadding
-                   container:self.containerView];
+                   container:self.containerView
+                 orientation:self.orientation
+                     justify:self.justify];
         } else {
-            //layout middle
             UIView *previousView = [self viewForIndexInArray:i-1 array:self.viewArray];
             UIView *nextView = [self viewForIndexInArray:i+1 array:self.viewArray];
+            
             [self layoutView:currentView
-                     topView:previousView
-                  bottomView:nextView
-                    leftView:nil
-                   rightView:nil
+                previousView:previousView
+                    nextView:nextView
                      padding:currentPadding
-                   container:self.containerView];
+                   container:self.containerView
+                 orientation:self.orientation
+                     justify:self.justify];
         }
     }
 }
 
 - (void)layoutView:(UIView *)subview
-           topView:(UIView *)topView
-        bottomView:(UIView *)bottomView
-          leftView:(UIView *)leftView
-         rightView:(UIView *)rightView
+      previousView:(UIView *)previousView
+          nextView:(UIView *)nextView
            padding:(UIEdgeInsets)padding
          container:(UIView *)container
+       orientation:(CTLayoutManagerOrientation)orientation
+           justify:(BOOL)justify
 {
-    //if a view is nil we attach the view to the superview
-    
     NSDictionary *metrics = @{CTLayoutTopPaddingKey : @(padding.top),
                               CTLayoutBottomPaddingKey : @(padding.bottom),
                               CTLayoutLeftPaddingKey : @(padding.left),
@@ -113,39 +112,43 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
     NSMutableDictionary *viewDict = [NSMutableDictionary new];
     NSMutableString *viewFormatV = [NSMutableString new];
     NSMutableString *viewFormatH = [NSMutableString new];
-
+    
     [viewDict addEntriesFromDictionary:@{@"subview" : subview}];
     
     //V:
-    if (topView) {
-        [viewDict addEntriesFromDictionary:@{@"top" : topView}];
-        [viewFormatV appendString:@"V:[top]-topPadding-[subview]"];
+    if (previousView && orientation == CTLayoutManagerOrientationTopToBottom) {
+        [viewDict addEntriesFromDictionary:@{@"previousView" : previousView}];
+        NSString *justifyConstraint = justify ? @"(previousView)" : @"";
+        NSString *verticalConstraints = [NSString stringWithFormat:@"V:[previousView]-topPadding-[subview%@]", justifyConstraint];
+        [viewFormatV appendString:verticalConstraints];
     } else {
         [viewFormatV appendString:@"V:|-topPadding-[subview]"];
     }
     
-    if (bottomView) {
-        [viewDict addEntriesFromDictionary:@{@"bottom" : bottomView}];
-        [viewFormatV appendString:@"-bottomPadding-[bottom]"];
+    if (nextView && orientation == CTLayoutManagerOrientationTopToBottom) {
+        [viewDict addEntriesFromDictionary:@{@"nextView" : nextView}];
+        [viewFormatV appendString:@"-bottomPadding-[nextView]"];
     } else {
         [viewFormatV appendString:@"-bottomPadding-|"];
     }
     
     //H:
-    if (leftView) {
-        [viewDict addEntriesFromDictionary:@{@"left" : leftView}];
-        [viewFormatH appendString:@"H:[left]-leftPadding-[subview]"];
+    if (previousView && orientation == CTLayoutManagerOrientationLeftToRight) {
+        [viewDict addEntriesFromDictionary:@{@"previousView" : previousView}];
+        NSString *justifyConstraint = justify ? @"(previousView)" : @"";
+        NSString *horizontalConstraints = [NSString stringWithFormat:@"H:[previousView]-leftPadding-[subview%@]", justifyConstraint];
+        [viewFormatH appendString:horizontalConstraints];
     } else {
         [viewFormatH appendString:@"H:|-leftPadding-[subview]"];
     }
     
-    if (rightView) {
-        [viewDict addEntriesFromDictionary:@{@"right" : rightView}];
-        [viewFormatH appendString:@"-rightPadding-[right]"];
+    if (nextView && orientation == CTLayoutManagerOrientationLeftToRight) {
+        [viewDict addEntriesFromDictionary:@{@"nextView" : nextView}];
+        [viewFormatH appendString:@"-rightPadding-[nextView]"];
     } else {
         [viewFormatH appendString:@"-rightPadding-|"];
     }
-
+    
     [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:viewFormatV
                                                                       options:0
                                                                       metrics:metrics
@@ -187,6 +190,18 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
     NSDictionary *currentDict = self.viewArray[index];
     UIView *view = currentDict[CTLayoutViewKey];
     return view;
+}
+
++ (void)pinView:(UIView *)view toSuperView:(UIView *)superview {
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"view" : view}]];
+    [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"view" : view}]];
 }
 
 @end
