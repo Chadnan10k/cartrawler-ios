@@ -80,18 +80,19 @@
     NSError *e;
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:86400];
     _pickupDate = date;
-    _inPath = [CartrawlerInPath initWithCartrawlerRental:self.rental
-                                                        IATACode:@"ALC"
-                                                      pickupDate:self.pickupDate
-                                                      returnDate:[self.pickupDate dateByAddingTimeInterval:260000]
-                                                    flightNumber:@"FR 123"
-                                                        currency:@"EUR"
-                                                       passegers:@[passenger1, passenger2]
-                                                           error:&e];
+
+    
+    [self.inPath performSearchWithIATACode:@"ALC"
+                                pickupDate:self.pickupDate
+                                returnDate:[self.pickupDate dateByAddingTimeInterval:260000]
+                              flightNumber:@"FR 123"
+                                  currency:@"EUR"
+                                 passegers:@[passenger1, passenger2]
+                                     error:&e];
+
     
     NSLog(@"CT INPATH ERROR: %@", e.description);
     
-    self.inPath.delegate = self;
     [self.callToAction setTitle:@"Loading" forState:UIControlStateNormal];
 
 }
@@ -100,21 +101,21 @@
 {
     NSString * language = @"en";
 
-    _sdk = [[CartrawlerSDK alloc] initWithRequestorID:@"642619" languageCode:language sandboxMode:!self.isProduction];
-    _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
-    
+    _sdk = [[CartrawlerSDK alloc] initWithlanguageCode:language sandboxMode:!self.isProduction];
+    [self.sdk enableLogs:NO];
+    _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk clientID:@"642619"];
+    _inPath = [CartrawlerInPath initWithCartrawlerRental:self.rental
+                                                clientID:@"643826"];
+    self.inPath.delegate = self;
+
     [self.sdk addAnalyticsProvider:[CartrawlerRakuten new]];
 
-    [self.sdk enableLogs:NO];
     self.rental.delegate = self;
 }
 
 - (void)setupInPath:(UIView *)view
 {
-    if (!self.inPath) {
-        [self reset];
-    }
-    
+    [self reset];
     [self.inPath addCrossSellCardToView:view];
 }
 

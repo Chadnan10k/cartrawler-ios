@@ -23,16 +23,19 @@
 @interface CartrawlerRental() <CTViewControllerDelegate>
 
 @property (nonatomic, strong, nonnull, readonly) NSBundle *bundle;
+@property (nonatomic, strong) NSString *clientID;
 
 @end
 
 @implementation CartrawlerRental
 
-- (instancetype)initWithCartrawlerSDK:(nonnull CartrawlerSDK *)cartrawlerSDK
+- (instancetype)initWithCartrawlerSDK:(nonnull CartrawlerSDK *)cartrawlerSDK clientID:(NSString *)clientID
 {
     self = [super init];
     _bundle = [NSBundle bundleForClass:[self class]];
     _cartrawlerSDK = cartrawlerSDK;
+    _clientID = clientID;
+    [[CTSDKSettings instance] setClientId:clientID];
     [self setDefaultViews];
     [self configureViews];
     return self;
@@ -40,6 +43,7 @@
 
 - (void)presentCarRentalInViewController:(UIViewController *)viewController;
 {
+    [self.cartrawlerSDK.cartrawlerAPI changeClientKey:self.clientID];
     [CTSDKSettings instance].disableCurrencySelection = NO;
     [[CTSDKSettings instance] resetCountryToDeviceLocale];
     [[CTRentalSearch instance] reset];

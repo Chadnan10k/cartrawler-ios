@@ -63,6 +63,11 @@
     _locale = languageCode;
 }
 
+- (void)changeClientKey:(NSString *)clientKey
+{
+    _clientAPIKey = [[NSString alloc] initWithString:clientKey];
+}
+
 #pragma mark Get Engine Details
 
 - (void)requestNewSession:(NSString *)currencyCode
@@ -217,7 +222,6 @@
                                  currencyCode:(NSString *)currencyCode
                                    completion:(RequestAvailabilityCompletion)completion
 {
-    
     NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.endPoint, @"OTA_VehAvailRateRQ"];
     
     NSString *requestBody = [CTRequestBuilder OTA_VehAvailRateRQ: [pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
@@ -260,7 +264,6 @@
                         selectedVehicle:(CTAvailabilityItem *)selectedVehicle
                              completion:(InsuranceQuoteCompletion)completion
 {
-    
     NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.endPoint, @"OTA_InsuranceQuoteRQ"];
 
     NSString *requestBody = [CTRequestBuilder OTA_InsuranceDetailsRQ:totalCost

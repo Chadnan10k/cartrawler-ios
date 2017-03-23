@@ -21,6 +21,8 @@
 @property (nonatomic, strong) CTRentalSearch *defaultSearch;
 @property (nonatomic, strong) NSString *defaultCountryCode;
 @property (nonatomic, strong) NSString *defaultCountryName;
+@property (nonatomic, strong) NSString *clientID;
+
 @property (nonatomic) BOOL isReturnTrip;
 @property (nonatomic) BOOL didFailToFetchResults;
 @property (nonatomic) BOOL didFetchResults;
@@ -31,29 +33,27 @@
 
 @implementation CartrawlerInPath
 
+
 + (CartrawlerInPath *)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental
-                                      IATACode:(nonnull NSString *)IATACode
-                                    pickupDate:(nonnull NSDate *)pickupDate
-                                    returnDate:(nullable NSDate *)returnDate
-                                  flightNumber:(nullable NSString *)flightNumber
-                                      currency:(nonnull NSString *)currency
-                                     passegers:(nonnull NSArray<CTPassenger *> *)passegers
-                                         error:(NSError * __autoreleasing *)outError
+                                      clientID:(nonnull NSString *)clientID
 {
-//    self = [super init];
-    
     CartrawlerInPath *inPath = [CartrawlerInPath new];
+    [[CTSDKSettings instance] setClientId:clientID];
+    inPath.clientID = clientID;
     inPath.rental = cartrawlerRental;
-    
-    BOOL setSearchSuccess = [inPath setSearchDetails:currency flightNo:flightNumber passengers:passegers pickupDate:pickupDate returnDate:returnDate error:outError];
-    
-    if (!setSearchSuccess) {
-        return nil;
-    }
-    
-    [inPath performLocationSearch:IATACode];
-    
     return inPath;
+}
+
+- (void)performSearchWithIATACode:(nonnull NSString *)IATACode
+                       pickupDate:(nonnull NSDate *)pickupDate
+                       returnDate:(nullable NSDate *)returnDate
+                     flightNumber:(nullable NSString *)flightNumber
+                         currency:(nonnull NSString *)currency
+                        passegers:(nonnull NSArray<CTPassenger *> *)passegers
+                            error:(NSError * __autoreleasing *)outError
+{
+    [self setSearchDetails:currency flightNo:flightNumber passengers:passegers pickupDate:pickupDate returnDate:returnDate error:outError];
+    [self performLocationSearch:IATACode ?: @""];
 }
 
 - (BOOL)setSearchDetails:(NSString *)currency
@@ -74,7 +74,9 @@
     }
     
     if (!primaryPassenger) {
-        *outError = [CTInPathError errorWithType:CTInPathErrorTypeNoPrimaryPassenger];
+        if (outError != NULL) {
+            *outError = [CTInPathError errorWithType:CTInPathErrorTypeNoPrimaryPassenger];
+        }
         return NO;
     }
     
@@ -130,6 +132,8 @@
 
 - (void)performLocationSearch:(NSString *)IATACode
 {
+    [self.rental.cartrawlerSDK.cartrawlerAPI changeClientKey:self.clientID];
+
     __weak typeof (self) weakSelf = self;
     _didFailToFetchResults = YES;//set to yes until someone sends a response
     [self.rental.cartrawlerSDK.cartrawlerAPI locationSearchWithAirportCode:IATACode

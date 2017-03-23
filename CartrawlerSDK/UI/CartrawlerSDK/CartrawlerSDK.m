@@ -18,12 +18,11 @@
 
 @implementation CartrawlerSDK
 
-- (instancetype)initWithRequestorID:(NSString *)requestorID
-                       languageCode:(NSString *)languageCode
-                        sandboxMode:(BOOL)sandboxMode;
+- (instancetype)initWithlanguageCode:(NSString *)languageCode
+                         sandboxMode:(BOOL)sandboxMode
 {
     self = [super init];
-    [[CTSDKSettings instance] setClientId:requestorID languageCode:languageCode isDebug:sandboxMode];
+    [[CTSDKSettings instance] setClientId:@"" languageCode:languageCode isDebug:sandboxMode];
     
     _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
                                                      language:[CTSDKSettings instance].languageCode
