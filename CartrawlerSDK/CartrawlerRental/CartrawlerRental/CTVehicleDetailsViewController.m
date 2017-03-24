@@ -151,7 +151,11 @@
 // MARK: Actions
 - (IBAction)backTapped:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.navigationController.viewControllers.firstObject == self) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (IBAction)nextTapped:(id)sender

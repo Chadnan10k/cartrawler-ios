@@ -22,7 +22,7 @@
 @property (nonatomic, strong) NSString *defaultCountryCode;
 @property (nonatomic, strong) NSString *defaultCountryName;
 @property (nonatomic, strong) NSString *clientID;
-@property (nonatomic, strong) UIViewController *parentViewController;
+@property (nonatomic, weak) UIViewController *parentViewController;
 
 @property (nonatomic) BOOL isReturnTrip;
 @property (nonatomic) BOOL didFailToFetchResults;
@@ -196,7 +196,19 @@
     [CTSDKSettings instance].disableCurrencySelection = YES;
     [[CTRentalSearch instance] setFromCopy:self.defaultSearch];
     [self configureViews];
-    [self presentRentalNavigationController:parentViewController];
+    [self presentRentalNavigationController:parentViewController showSelection:YES];
+    [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@1];
+}
+
+- (void)presentCarRentalWithVehicle:(nonnull UIViewController *)parentViewController vehicle:(CTAvailabilityItem *)vehicle
+{
+    [[CTSDKSettings instance] setHomeCountryCode: self.defaultCountryCode];
+    [[CTSDKSettings instance] setHomeCountryName: self.defaultCountryName];
+    [CTSDKSettings instance].disableCurrencySelection = YES;
+    [[CTRentalSearch instance] setFromCopy:self.defaultSearch];
+    [CTRentalSearch instance].selectedVehicle = vehicle;
+    [self configureViews];
+    [self presentRentalNavigationController:parentViewController showSelection:NO];
     [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@1];
 }
 
@@ -217,7 +229,7 @@
     self.rental.paymentSummaryViewController.delegate = self;
 }
 
-- (void)presentRentalNavigationController:(UIViewController *)parent
+- (void)presentRentalNavigationController:(UIViewController *)parent showSelection:(BOOL)showSelection
 {
     CTNavigationController *navController = [[CTNavigationController alloc] init];
     navController.navigationBar.hidden = YES;
@@ -227,10 +239,10 @@
     if (self.didFailToFetchResults) {
         [navController setViewControllers:@[self.rental.searchDetailsViewController]];
     } else {
-        if (self.didFetchResults) {
+        if (showSelection) {
             [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
         } else {
-            [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
+            [navController setViewControllers:@[self.rental.vehicleDetailsViewController]];
         }
     }
     
@@ -367,7 +379,7 @@
 - (void)didTapVehicle:(CTAvailabilityItem *)item
 {
     NSLog(@"%@", self.parentViewController);
-    [self presentCarRentalWithFlightDetails:self.parentViewController];
+    [self presentCarRentalWithVehicle:self.parentViewController vehicle:item];
 }
 
 @end
