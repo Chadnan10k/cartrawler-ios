@@ -9,7 +9,22 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, CTLayoutManagerOrientation) {
+    CTLayoutManagerOrientationTopToBottom,
+    CTLayoutManagerOrientationLeftToRight
+};
+
 @interface CTLayoutManager : NSObject
+
+/**
+ Defines the layout orientation. Default is CTLayoutManagerOrientationTopToBottom
+ */
+@property (nonatomic, assign) CTLayoutManagerOrientation orientation;
+
+/**
+ Optional flag to specify whether views should be laid out with equal widths/heights
+ */
+@property (nonatomic, assign) BOOL justify;
 
 /**
  Designated initialiser
@@ -31,5 +46,13 @@
  Call this method when you want to apply the contraints to the inserted subviews
  */
 - (void)layoutViews;
+
+/**
+ Convenience method to pin a view to a superview
+
+ @param view a view
+ @param superview a superview
+ */
++ (void)pinView:(UIView *)view toSuperView:(UIView *)superview;
 
 @end
