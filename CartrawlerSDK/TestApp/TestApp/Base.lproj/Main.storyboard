@@ -105,23 +105,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lzk-tW-vOj">
                                 <rect key="frame" x="16" y="72" width="343" height="140"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIh-9d-YCf">
-                                        <rect key="frame" x="0.0" y="95" width="343" height="45"/>
-                                        <color key="backgroundColor" red="0.94509803920000002" green="0.78823529410000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="WGa-nb-h16"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                        <state key="normal" title="Book a car">
-                                            <color key="titleColor" red="0.14901960780000001" green="0.33725490200000002" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="bookCar:" destination="9HL-5W-v1q" eventType="touchUpInside" id="Rc3-EK-Fbs"/>
-                                            <action selector="openInPath:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Id-45-d11"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5h-mR-ZJM">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="95"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="140"/>
                                         <color key="backgroundColor" red="0.65376514880000003" green="0.78721816980000003" blue="0.51248123329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
@@ -129,12 +114,9 @@
                                 <constraints>
                                     <constraint firstItem="K5h-mR-ZJM" firstAttribute="top" secondItem="lzk-tW-vOj" secondAttribute="top" id="4gg-PB-x73"/>
                                     <constraint firstAttribute="trailing" secondItem="K5h-mR-ZJM" secondAttribute="trailing" id="7pY-bm-Ll5"/>
-                                    <constraint firstItem="iIh-9d-YCf" firstAttribute="top" secondItem="K5h-mR-ZJM" secondAttribute="bottom" id="PGh-v4-TKR"/>
+                                    <constraint firstAttribute="bottom" secondItem="K5h-mR-ZJM" secondAttribute="bottom" id="Qxc-dL-L2Y"/>
                                     <constraint firstItem="K5h-mR-ZJM" firstAttribute="leading" secondItem="lzk-tW-vOj" secondAttribute="leading" id="Siq-7x-Q3p"/>
-                                    <constraint firstAttribute="trailing" secondItem="iIh-9d-YCf" secondAttribute="trailing" id="X8D-nQ-igr"/>
                                     <constraint firstAttribute="height" priority="100" constant="140" id="ZGA-yh-0J5"/>
-                                    <constraint firstItem="iIh-9d-YCf" firstAttribute="leading" secondItem="lzk-tW-vOj" secondAttribute="leading" id="bF0-bv-ThG"/>
-                                    <constraint firstAttribute="bottom" secondItem="iIh-9d-YCf" secondAttribute="bottom" id="bGf-Ic-YwN"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
@@ -215,7 +197,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bookButton" destination="iIh-9d-YCf" id="zXh-TL-Ev0"/>
                         <outlet property="cardContainer" destination="K5h-mR-ZJM" id="uHO-gp-Edd"/>
                         <outlet property="endpointSwitch" destination="2f7-yJ-BcB" id="lRg-Vf-YCy"/>
                         <outlet property="oneWaySwitch" destination="UNu-Gw-n2N" id="fhE-Kb-zW2"/>

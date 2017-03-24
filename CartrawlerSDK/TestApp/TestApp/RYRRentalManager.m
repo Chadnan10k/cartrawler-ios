@@ -88,7 +88,7 @@
                               flightNumber:@"FR 123"
                                   currency:@"EUR"
                                  passegers:@[passenger1, passenger2]
-                                     error:&e];
+                      parentViewController:self.parent];
 
     
     NSLog(@"CT INPATH ERROR: %@", e.description);
@@ -113,7 +113,7 @@
     self.rental.delegate = self;
 }
 
-- (void)setupInPath:(UIView *)view
+- (void)setupInPath:(UIView *)view parentVC:(UIViewController *)parentVC;
 {
     [self reset];
     [self.inPath addCrossSellCardToView:view];

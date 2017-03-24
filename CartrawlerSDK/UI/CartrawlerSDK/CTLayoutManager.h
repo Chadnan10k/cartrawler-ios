@@ -32,4 +32,12 @@
  */
 - (void)layoutViews;
 
+- (void)layoutView:(UIView *)subview
+           topView:(UIView *)topView
+        bottomView:(UIView *)bottomView
+          leftView:(UIView *)leftView
+         rightView:(UIView *)rightView
+           padding:(UIEdgeInsets)padding
+         container:(UIView *)container;
+
 @end

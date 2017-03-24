@@ -8,14 +8,18 @@
 
 #import "CTInPathView.h"
 #import <CartrawlerSDK/CTLabel.h>
-#import <CartrawlerSDK/CTImageCache.h>
+#import <CartrawlerSDK/CTLayoutManager.h>
 #import "CTNewBookingView.h"
 #import "CTSelectedVehicleView.h"
+#import "CTCarouselView.h"
 
-@interface CTInPathView()
+@interface CTInPathView() <CTCarouselDelegate>
 
+@property (nonatomic, strong) CTLayoutManager *layoutManager;
 @property (nonatomic, strong) CTNewBookingView *noSelectionView;
 @property (nonatomic, strong) CTSelectedVehicleView *selectedVehicleView;
+@property (nonatomic, strong) CTCarouselView *carouselView;
+
 @end
 
 @implementation CTInPathView
@@ -38,6 +42,7 @@
 
 - (void)setup
 {
+    _layoutManager = [CTLayoutManager layoutManagerWithContainer:self];
     [self renderDefault:NO];
 }
 
@@ -100,6 +105,37 @@
         [self.noSelectionView animateVehicle];
     }
 
+}
+
+- (void)renderCarouselWithAvailability:(CTVehicleAvailability *)availability
+{
+    [self removeSubviews];
+    
+    _carouselView = [CTCarouselView carouselFromAvail:availability];
+    self.carouselView.delegate = self;
+    self.carouselView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.carouselView];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.carouselView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.carouselView}]];
+    
+}
+
+- (void)removeSubviews
+{
+    NSArray *viewsToRemove = [self subviews];
+    for (UIView *v in viewsToRemove) {
+        [v removeFromSuperview];
+    }
+}
+
+//MARK : Carousel Delegate
+
+- (void)didSelectVehicle:(CTAvailabilityItem *)item
+{
+    if (self.delegate) {
+        [self.delegate didTapVehicle:item];
+    }
 }
 
 @end

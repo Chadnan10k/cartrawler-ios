@@ -49,6 +49,10 @@
 		BC3361B01E4CCDB70056E5A6 /* it.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361A91E4CCDB70056E5A6 /* it.strings */; };
 		BC3361B11E4CCDB70056E5A6 /* nl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361AA1E4CCDB70056E5A6 /* nl.strings */; };
 		BC3361B21E4CCDB70056E5A6 /* pl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361AB1E4CCDB70056E5A6 /* pl.strings */; };
+		BC3C473E1E857503009B35B5 /* CTCarouselView.h in Headers */ = {isa = PBXBuildFile; fileRef = BC3C473C1E857503009B35B5 /* CTCarouselView.h */; };
+		BC3C473F1E857503009B35B5 /* CTCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3C473D1E857503009B35B5 /* CTCarouselView.m */; };
+		BC3C47421E857C37009B35B5 /* CTCarouselCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BC3C47401E857C37009B35B5 /* CTCarouselCollectionViewCell.h */; };
+		BC3C47431E857C37009B35B5 /* CTCarouselCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3C47411E857C37009B35B5 /* CTCarouselCollectionViewCell.m */; };
 		BC54F15C1E54983A00A7C871 /* pt.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC54F15B1E54983A00A7C871 /* pt.strings */; };
 		E7B3B49A1E40E85C0062C7AD /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7B3B4991E40E85C0062C7AD /* en.strings */; };
 		E7B3B49D1E40E8C70062C7AD /* CTInPathLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */; };
@@ -98,6 +102,10 @@
 		BC3361A91E4CCDB70056E5A6 /* it.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = it.strings; path = Localization/it.strings; sourceTree = "<group>"; };
 		BC3361AA1E4CCDB70056E5A6 /* nl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = nl.strings; path = Localization/nl.strings; sourceTree = "<group>"; };
 		BC3361AB1E4CCDB70056E5A6 /* pl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pl.strings; path = Localization/pl.strings; sourceTree = "<group>"; };
+		BC3C473C1E857503009B35B5 /* CTCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCarouselView.h; sourceTree = "<group>"; };
+		BC3C473D1E857503009B35B5 /* CTCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCarouselView.m; sourceTree = "<group>"; };
+		BC3C47401E857C37009B35B5 /* CTCarouselCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCarouselCollectionViewCell.h; sourceTree = "<group>"; };
+		BC3C47411E857C37009B35B5 /* CTCarouselCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCarouselCollectionViewCell.m; sourceTree = "<group>"; };
 		BC54F15B1E54983A00A7C871 /* pt.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pt.strings; path = Localization/pt.strings; sourceTree = "<group>"; };
 		E7B3B4991E40E85C0062C7AD /* en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en.strings; path = Localization/en.strings; sourceTree = "<group>"; };
 		E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTInPathLocalizationConstants.h; path = Localization/CTInPathLocalizationConstants.h; sourceTree = "<group>"; };
@@ -127,6 +135,9 @@
 		45CFD4491E09419400A57849 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BC3C47371E856633009B35B5 /* Fail State */,
+				BC3C47361E85662B009B35B5 /* Ready State */,
+				BC3C47351E856624009B35B5 /* Loading State */,
 				45EC99B91E02C96B00B76741 /* CTInPathView.h */,
 				45EC99BA1E02C96B00B76741 /* CTInPathView.m */,
 				45CFD4501E09863C00A57849 /* CTInPathBanner.h */,
@@ -212,6 +223,31 @@
 			name = "InPath Errors";
 			sourceTree = "<group>";
 		};
+		BC3C47351E856624009B35B5 /* Loading State */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Loading State";
+			sourceTree = "<group>";
+		};
+		BC3C47361E85662B009B35B5 /* Ready State */ = {
+			isa = PBXGroup;
+			children = (
+				BC3C473C1E857503009B35B5 /* CTCarouselView.h */,
+				BC3C473D1E857503009B35B5 /* CTCarouselView.m */,
+				BC3C47401E857C37009B35B5 /* CTCarouselCollectionViewCell.h */,
+				BC3C47411E857C37009B35B5 /* CTCarouselCollectionViewCell.m */,
+			);
+			name = "Ready State";
+			sourceTree = "<group>";
+		};
+		BC3C47371E856633009B35B5 /* Fail State */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Fail State";
+			sourceTree = "<group>";
+		};
 		E7B3B4981E40E83B0062C7AD /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC2951DB1E80414D0053A897 /* CTInPathError.h in Headers */,
+				BC3C473E1E857503009B35B5 /* CTCarouselView.h in Headers */,
 				45A47DF51E0A912300500D71 /* CTSelectedVehicleView.h in Headers */,
 				E7B3B49D1E40E8C70062C7AD /* CTInPathLocalizationConstants.h in Headers */,
 				45EC99BD1E02C96B00B76741 /* CTInPathVehicle.h in Headers */,
@@ -246,6 +283,7 @@
 				45CFD4521E09863C00A57849 /* CTInPathBanner.h in Headers */,
 				45D133A41E01997900D7816F /* CartrawlerInPath.h in Headers */,
 				45EC99BF1E02C96B00B76741 /* CTInPathView.h in Headers */,
+				BC3C47421E857C37009B35B5 /* CTCarouselCollectionViewCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,11 +423,13 @@
 				45EC99BE1E02C96B00B76741 /* CTInPathVehicle.m in Sources */,
 				BC2951DC1E80414D0053A897 /* CTInPathError.m in Sources */,
 				45EC99B01E02B3FB00B76741 /* CartrawlerInPath.m in Sources */,
+				BC3C473F1E857503009B35B5 /* CTCarouselView.m in Sources */,
 				45CFD44D1E0941B800A57849 /* CTNewBookingView.m in Sources */,
 				45EC99BC1E02C96B00B76741 /* CTInPathPayment.m in Sources */,
 				45A47DF61E0A912300500D71 /* CTSelectedVehicleView.m in Sources */,
 				45CFD4531E09863C00A57849 /* CTInPathBanner.m in Sources */,
 				E7B3B49E1E40E8C70062C7AD /* CTInPathLocalizationConstants.m in Sources */,
+				BC3C47431E857C37009B35B5 /* CTCarouselCollectionViewCell.m in Sources */,
 				45EC99C01E02C96B00B76741 /* CTInPathView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

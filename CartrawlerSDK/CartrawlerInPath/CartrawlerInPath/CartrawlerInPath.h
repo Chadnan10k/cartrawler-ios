@@ -26,10 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
 @required
 - (void)didProduceInPathRequest:(nonnull NSDictionary *)request vehicle:(nonnull CTInPathVehicle *)vehicle;
 
-@optional
-- (void)didReceiveBestDailyRate:(NSNumber *)price currency:(NSString *)currency;
-- (void)didFailToReceiveBestDailyRate;
-
 @end
 
 @interface CartrawlerInPath : NSObject
@@ -45,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
                      flightNumber:(nullable NSString *)flightNumber
                          currency:(nonnull NSString *)currency
                         passegers:(nonnull NSArray<CTPassenger *> *)passegers
-                            error:(NSError * __autoreleasing *)outError;
+             parentViewController:(nonnull UIViewController *)parentViewController;
 
 - (void)presentCarRentalWithFlightDetails:(nonnull UIViewController *)parentViewController;
 
