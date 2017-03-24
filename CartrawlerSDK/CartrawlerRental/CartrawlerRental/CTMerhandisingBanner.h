@@ -7,18 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CartrawlerAPI/CTVehicle.h>
 
 @interface CTMerhandisingBanner : UIView
 
-
-
-typedef enum CTMerhandisingBannerType : NSUInteger {
-    CTMerhandisingBannerTypeBestSeller = 0,
-    CTMerhandisingBannerTypeGreatValue,
-    CTMerhandisingBannerTypeNone
-}CTMerhandisingBannerType;
-
-- (void)setBannerType:(CTMerhandisingBannerType)bannerType;
+- (void)setBanner:(CTMerchandisingTag)merchandisingTag specialOffers:(NSArray <CTSpecialOffer *> *)specialOffers;
 - (void)setSpecialOffer:(NSString *)offerText;
 
 @end

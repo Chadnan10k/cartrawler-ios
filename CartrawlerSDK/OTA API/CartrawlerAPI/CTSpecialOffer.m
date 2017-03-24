@@ -19,15 +19,34 @@
  "#text": "We guarantee that you are going to get a 2016-registered car at the desk."
  }
  },
+ 
+ 
+ **OR**
+ 
+ "SpecialOffers": {
+ "@Type": "new_cars",
+ "@ShortText": "Guaranteed 2016 - registered car",
+ "@UIToken": "new_cars",
+ "#text": "We guarantee that you are going to get a 2016-registered car at the desk."
+ },
  */
 
 - (instancetype)initFromDictionary:(NSDictionary *)dict
 {
     self = [super init];
-    _type = [self typeFromString:dict[@"Offer"][@"@Type"]];
-    _shortText = dict[@"Offer"][@"@ShortText"];
-    _uiToken = dict[@"Offer"][@"@UIToken"];
-    _text = dict[@"Offer"][@"#text"];
+
+    if (dict[@"Offer"]) {
+        _type = [self typeFromString:dict[@"Offer"][@"@Type"]];
+        _shortText = dict[@"Offer"][@"@ShortText"];
+        _uiToken = dict[@"Offer"][@"@UIToken"];
+        _text = dict[@"Offer"][@"#text"];
+    } else {
+        _type = [self typeFromString:dict[@"@Type"]];
+        _shortText = dict[@"@ShortText"];
+        _uiToken = dict[@"@UIToken"];
+        _text = dict[@"#text"];
+    }
+
     return self;
 
 }
