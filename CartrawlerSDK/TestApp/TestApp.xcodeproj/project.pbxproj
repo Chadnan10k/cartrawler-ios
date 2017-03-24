@@ -30,6 +30,7 @@
 		BC3955D11E2FB5EF00C8636B /* RYRRentalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3955D01E2FB5EF00C8636B /* RYRRentalManager.m */; };
 		BCDB4BF11E3F560E008004DA /* CartrawlerRakuten.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */; };
 		BCDB4BF21E3F560E008004DA /* CartrawlerRakuten.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E7CCD1E91E8177050068A2F3 /* UsageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CCD1E81E8177050068A2F3 /* UsageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,8 @@
 		BC3955CF1E2FB5EF00C8636B /* RYRRentalManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYRRentalManager.h; sourceTree = "<group>"; };
 		BC3955D01E2FB5EF00C8636B /* RYRRentalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYRRentalManager.m; sourceTree = "<group>"; };
 		BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerRakuten.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7CCD1E71E8177050068A2F3 /* UsageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsageViewController.h; sourceTree = "<group>"; };
+		E7CCD1E81E8177050068A2F3 /* UsageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +149,8 @@
 				45154EFF1E07E1DF00FB32FA /* InPathViewController.m */,
 				BC3955CF1E2FB5EF00C8636B /* RYRRentalManager.h */,
 				BC3955D01E2FB5EF00C8636B /* RYRRentalManager.m */,
+				E7CCD1E71E8177050068A2F3 /* UsageViewController.h */,
+				E7CCD1E81E8177050068A2F3 /* UsageViewController.m */,
 				455B59751DCCB22500CA4790 /* Roboto-Bold.ttf */,
 				455B59761DCCB22500CA4790 /* Roboto-Regular.ttf */,
 				45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */,
@@ -303,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45295F641D78412500A09B8A /* ViewController.m in Sources */,
+				E7CCD1E91E8177050068A2F3 /* UsageViewController.m in Sources */,
 				45295F611D78412500A09B8A /* AppDelegate.m in Sources */,
 				45295F5E1D78412500A09B8A /* main.m in Sources */,
 				45154F001E07E1DF00FB32FA /* InPathViewController.m in Sources */,
