@@ -14,7 +14,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.titleLabel = [UILabel new];
+        self.titleLabel = [CTLabel new];
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:self.titleLabel];
         
@@ -24,7 +24,7 @@
         containerView.backgroundColor = [CTAppearance instance].supplierDetailSecondaryColor;
         [self addSubview:containerView];
         
-        self.ratingLabel = [UILabel new];
+        self.ratingLabel = [CTLabel new];
         self.ratingLabel.translatesAutoresizingMaskIntoConstraints = NO;
         self.ratingLabel.textColor = [UIColor whiteColor];
         [containerView addSubview:self.ratingLabel];

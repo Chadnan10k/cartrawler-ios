@@ -25,7 +25,8 @@
                      @[@"Tabbed Menu with fixed height", @"CTTabContainerView"],
                      @[@"Tabbed Menu with variable height", @"CTTabContainerView"],
                      @[@"Info Tip", @"CTInfoTip"],
-                     @[@"List with Expanding Views", @"CTListView & CTExpandingView"]
+                     @[@"List with Expanding Views", @"CTListView & CTExpandingView"],
+                     @[@"Rating View", @"CTRatingView"],
                      ];
     
     [self.tableView reloadData];
@@ -74,6 +75,10 @@
             break;
         case 6:
             [self presentExpandingView];
+            break;
+        case 7:
+            [self presentRatingView];
+            break;
         default:
             break;
     }
@@ -187,6 +192,13 @@
         label.text = @"\n\nDetail\n\nView\n\n";
         [expandingView expandWithDetailView:label];
     }
+}
+
+- (void)presentRatingView {
+    CTRatingView *ratingView = [CTRatingView new];
+    ratingView.titleLabel.text = @"Value for money";
+    ratingView.ratingLabel.text = @"8.9";
+    [self presentView:ratingView height:0];
 }
 
 // MARK: Helpers
