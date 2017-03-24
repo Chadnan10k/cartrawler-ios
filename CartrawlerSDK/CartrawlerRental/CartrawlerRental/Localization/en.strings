@@ -145,7 +145,6 @@
 "vehicle_pickup_at_airport" = "At Airport";
 "address_details_title" = "Address Details";
 "vehicle_doors" = "Doors";
-"vehicle_best_seller" = "Best seller";
 "vehicle_fuel_policy_type_CHAUFFUELINC" = "Fuel charges: Included";
 "vehicle_type_mini" = "Mini";
 "vehicle_type_mini_elite" = "Mini Elite";
@@ -222,7 +221,6 @@
 "vehicle_type_nine_seat_carrier" = "Nine Seat Carrier";
 "summary_ground" = "Travel";
 "title_calendar" = "Datepicker";
-"vehicle_great_value" = "Great value";
 "filter_carsize" = "Car Size";
 "vehicle_fuel_policy_desc_EMPTYEMPTY" = "Your car comes with sufficient fuel to get you to the closest petrol station. The car should be returned with an empty tank, as no refund will be given for any unused fuel.";
 "vehicle_fuel_policy_type_HALFEMPTY" = "Half to empty";
@@ -269,6 +267,8 @@
 "CTA_no_insurance" = "Continue without insurance";
 "vehicle_type_intermediate" = "Intermediate";
 
+//new
+
 "insurance_offering_header" = "Upgrade to Full Cover";
 
 "insurance_offering_subheader" = "... for total peace of mind";
@@ -284,3 +284,25 @@
 "insurance_added_subheader" = "You have added Full Cover";
 
 "insurance_remove_button" = "Remove";
+
+// merch
+
+"merchandising_best_seller" = "Best Seller";
+
+"merchandising_business" = "For Business";
+
+"merchandising_city_break" = "City Break";
+
+"merchandising_family_size" = "Family Size";
+
+"merchandising_great_value" = "Great Value";
+
+"merchandising_quickest_queue" = "Quickest Queue";
+
+"merchandising_recommended" = "Our Favourite";
+
+"vehicle_upgrade_to" = "Upgrade To";
+
+"vehicle_on_budget" = "On A Budget";
+
+"vehicle_best_reviewed" = "Best Reviews";

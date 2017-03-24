@@ -42,30 +42,16 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.headerView.backgroundColor = [CTAppearance instance].vehicleCellTint;
 }
 
 - (void)initWithVehicle:(CTAvailabilityItem *)item index:(NSInteger)index;
 {
-
-    if (index == 0 || index == 1) {
-        [self.merchBannerView setBannerType:CTMerhandisingBannerTypeBestSeller];
-    } else if (index == 2 || index == 3) {
-        [self.merchBannerView setBannerType:CTMerhandisingBannerTypeGreatValue];
-    } else {
-        [self.merchBannerView setBannerType:CTMerhandisingBannerTypeNone];
-    }
-
-    [self.specialOfferBannerView setBannerType:CTMerhandisingBannerTypeNone];
-    self.totalPriceBottomConstranit.constant = 16;
-    for (CTExtraEquipment *ee in item.vehicle.extraEquipment) {
-        if (ee.isIncludedInRate) {
-            [self.specialOfferBannerView setSpecialOffer:ee.equipDescription];
-            self.totalPriceBottomConstranit.constant = 44;
-            break;
-        }
-    }
+    
+    [self displaySpecialOffer:item];
+    [self displayMerchandisingBanner:item];
 
     NSMutableAttributedString *vehicleName = [[NSMutableAttributedString alloc] init];
     
@@ -103,6 +89,24 @@
     [[CTImageCache sharedInstance] cachedImage: item.vendor.logoURL completion:^(UIImage *image) {
         self.vendorImageView.image = image;
     }];
+}
+
+- (void)displayMerchandisingBanner:(CTAvailabilityItem *)item
+{
+    [self.merchBannerView setBanner:item.vehicle.merchandisingTag specialOffers:item.vehicle.specialOffers];
+}
+
+- (void)displaySpecialOffer:(CTAvailabilityItem *)item
+{
+    [self.specialOfferBannerView setSpecialOffer:@""];
+    self.totalPriceBottomConstranit.constant = 16;
+    for (CTExtraEquipment *ee in item.vehicle.extraEquipment) {
+        if (ee.isIncludedInRate) {
+            [self.specialOfferBannerView setSpecialOffer:ee.equipDescription];
+            self.totalPriceBottomConstranit.constant = 44;
+            break;
+        }
+    }
 }
 
 @end
