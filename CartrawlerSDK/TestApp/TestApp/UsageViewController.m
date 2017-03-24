@@ -9,7 +9,7 @@
 #import "UsageViewController.h"
 #import <CarTrawlerSDK/CTHeaders.h>
 
-@interface UsageViewController ()
+@interface UsageViewController () <CTListViewDelegate>
 @property (nonatomic, strong) NSArray *rowData;
 @end
 
@@ -25,6 +25,7 @@
                      @[@"Tabbed Menu with fixed height", @"CTTabContainerView"],
                      @[@"Tabbed Menu with variable height", @"CTTabContainerView"],
                      @[@"Info Tip", @"CTInfoTip"],
+                     @[@"List with Expanding Views", @"CTListView & CTExpandingView"]
                      ];
     
     [self.tableView reloadData];
@@ -71,6 +72,8 @@
         case 5:
             [self presentInfoTip];
             break;
+        case 6:
+            [self presentExpandingView];
         default:
             break;
     }
@@ -151,11 +154,50 @@
     [self presentView:infoTip height:0];
 }
 
+- (void)presentExpandingView {
+    UIViewController *controller = [UIViewController new];
+    controller.view.backgroundColor = [UIColor whiteColor];
+    
+    UIImage *icon = [UIImage imageNamed:@"calEnd"];
+    CTListItemView *itemView1 = [CTListItemView new];
+    itemView1.titleLabel.text = @"Header 1";
+    itemView1.imageView.image = icon;
+    CTListItemView *itemView2 = [CTListItemView new];
+    itemView2.titleLabel.text = @"Header 2";
+    itemView2.imageView.image = icon;
+
+    
+    CTExpandingView *expandingView1 = [[CTExpandingView alloc] initWithHeaderView:itemView1 animationContainerView:controller.view];
+    CTExpandingView *expandingView2 = [[CTExpandingView alloc] initWithHeaderView:itemView2 animationContainerView:controller.view];
+    
+    CTListView *listView = [[CTListView alloc] initWithViews:@[expandingView1, expandingView2]];
+    listView.delegate = self;
+    
+    [self presentView:listView inViewController:controller height:0];
+}
+
+- (void)listView:(CTListView *)listView didSelectView:(CTExpandingView *)expandingView atIndex:(NSInteger)index {
+    if (expandingView.expanded) {
+        [expandingView contract];
+    } else {
+        UILabel *label = [UILabel new];
+        label.numberOfLines = 0;
+        label.textAlignment = NSTextAlignmentCenter;
+        label.backgroundColor = [UIColor lightGrayColor];
+        label.text = @"\n\nDetail\n\nView\n\n";
+        [expandingView expandWithDetailView:label];
+    }
+}
+
 // MARK: Helpers
 
 - (void)presentView:(UIView *)view height:(CGFloat)height  {
     UIViewController *controller = [UIViewController new];
     controller.view.backgroundColor = [UIColor whiteColor];
+    [self presentView:view inViewController:controller height:height];
+}
+
+- (void)presentView:(UIView *)view inViewController:(UIViewController *)controller height:(CGFloat)height {
     view.translatesAutoresizingMaskIntoConstraints = NO;
     [controller.view addSubview:view];
     
