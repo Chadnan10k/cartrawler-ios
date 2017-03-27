@@ -22,11 +22,10 @@
                      @[@"Alert with Title & Message", @"CTAlertViewController"],
                      @[@"Alert with Title & Buttons", @"CTAlertViewController"],
                      @[@"Alert with Title & Custom View", @"CTAlertViewController"],
-                     @[@"Tabbed Menu with fixed height", @"CTTabContainerView"],
-                     @[@"Tabbed Menu with variable height", @"CTTabContainerView"],
+                     @[@"Tabbed Menu", @"CTTabContainerView"],
                      @[@"Info Tip", @"CTInfoTip"],
                      @[@"List with Expanding Views", @"CTListView & CTExpandingView"],
-                     @[@"Rating View", @"CTRatingView"],
+                     @[@"Rating View", @"CTRatingView"]
                      ];
     
     [self.tableView reloadData];
@@ -65,18 +64,15 @@
             [self presentAlertControllerWithCustomView];
             break;
         case 3:
-            [self presentTabbedMenuWithFixedHeight];
-            break;
-        case 4:
             [self presentTabbedMenuWithVariableHeight];
             break;
-        case 5:
+        case 4:
             [self presentInfoTip];
             break;
-        case 6:
+        case 5:
             [self presentExpandingView];
             break;
-        case 7:
+        case 6:
             [self presentRatingView];
             break;
         default:
@@ -119,23 +115,10 @@
     [self presentViewController:controller animated:YES completion:nil];
 }
 
-- (void)presentTabbedMenuWithFixedHeight {
-    NSMutableArray *titles = [NSMutableArray new];
-    NSMutableArray *views = [NSMutableArray new];
-    for (int i = 0; i < 4; i++) {
-        [titles addObject:[NSString stringWithFormat:@"Header %d", i+1]];
-        
-        UILabel *label = [UILabel new];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.text = [NSString stringWithFormat:@"Detail View %d", i+1];
-        [views addObject:label];
-    }
-    
-    CTTabContainerView *containerView = [[CTTabContainerView alloc] initWithTabTitles:titles.copy views:views.copy selectedIndex:0];
-    [self presentView:containerView height:200];
-}
-
 - (void)presentTabbedMenuWithVariableHeight {
+    UIViewController *controller = [UIViewController new];
+    controller.view.backgroundColor = [UIColor whiteColor];
+    
     NSArray *titles = @[@"Short View", @"Tall View"];
     
     UILabel *label1 = [UILabel new];
@@ -150,7 +133,8 @@
     label2.text = [NSString stringWithFormat:@"Tall View\nTall View\nTall View\nTall View\nTall View\nTall View\nTall View"];
     
     CTTabContainerView *containerView = [[CTTabContainerView alloc] initWithTabTitles:titles views:@[label1, label2] selectedIndex:0];
-    [self presentView:containerView height:0];
+    containerView.animationContainerView = controller.view;
+    [self presentView:containerView inViewController:controller height:0];
 }
 
 - (void)presentInfoTip {
@@ -175,7 +159,7 @@
     CTExpandingView *expandingView1 = [[CTExpandingView alloc] initWithHeaderView:itemView1 animationContainerView:controller.view];
     CTExpandingView *expandingView2 = [[CTExpandingView alloc] initWithHeaderView:itemView2 animationContainerView:controller.view];
     
-    CTListView *listView = [[CTListView alloc] initWithViews:@[expandingView1, expandingView2]];
+    CTListView *listView = [[CTListView alloc] initWithViews:@[expandingView1, expandingView2] separatorColor:nil];
     listView.delegate = self;
     
     [self presentView:listView inViewController:controller height:0];
