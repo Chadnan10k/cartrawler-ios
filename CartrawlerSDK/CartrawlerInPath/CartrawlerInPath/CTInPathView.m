@@ -7,6 +7,7 @@
 //
 
 #import "CTInPathView.h"
+#import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTLayoutManager.h>
 #import "CTNewBookingView.h"
@@ -44,6 +45,11 @@
 {
     _layoutManager = [CTLayoutManager layoutManagerWithContainer:self];
     [self renderDefault:NO];
+    UIView *banner = [self renderBanner];
+    [self addSubview:banner];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : banner}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view(40)]" options:0 metrics:nil views:@{@"view" : banner}]];
+    
 }
 
 - (void)awakeFromNib
@@ -55,19 +61,7 @@
 - (void)renderVehicleDetails:(CTInPathVehicle *)vehicle animated:(BOOL)animated
 {
     
-    if (self.noSelectionView) {
-        [UIView animateWithDuration:0.3 animations:^{
-            self.noSelectionView.alpha = 0;
-        }];
-        [self.noSelectionView removeFromSuperview];
-    }
-    
-    if (self.selectedVehicleView) {
-        [UIView animateWithDuration:0.3 animations:^{
-            self.noSelectionView.alpha = 0;
-        }];
-        [self.selectedVehicleView removeFromSuperview];
-    }
+    [self removeSubviews];
     
     _selectedVehicleView = [[CTSelectedVehicleView alloc] initWithFrame:CGRectZero];
 
@@ -75,7 +69,7 @@
     self.selectedVehicleView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.selectedVehicleView];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.selectedVehicleView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.selectedVehicleView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-50-[view]-50-|" options:0 metrics:nil views:@{@"view" : self.selectedVehicleView}]];
     
     [self.selectedVehicleView setVehicle:vehicle];
     if (animated) {
@@ -85,25 +79,19 @@
 
 - (void)renderDefault:(BOOL)animated
 {
-    if (self.noSelectionView) {
-        [self.noSelectionView removeFromSuperview];
-    }
-    
-    if (self.selectedVehicleView) {
-        [self.selectedVehicleView removeFromSuperview];
-    }
+    [self removeSubviews];
     
     _noSelectionView = [[CTNewBookingView alloc] initWithFrame:CGRectZero];
     
-    self.noSelectionView.backgroundColor = [UIColor whiteColor];
-    self.noSelectionView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.noSelectionView];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
-    
-    if (animated) {
-        [self.noSelectionView animateVehicle];
-    }
+//    self.noSelectionView.backgroundColor = [UIColor whiteColor];
+//    self.noSelectionView.translatesAutoresizingMaskIntoConstraints = NO;
+//    [self addSubview:self.noSelectionView];
+//    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
+//    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
+//    
+//    if (animated) {
+//        [self.noSelectionView animateVehicle];
+//    }
 
 }
 
@@ -112,21 +100,41 @@
     [self removeSubviews];
     
     _carouselView = [CTCarouselView carouselFromAvail:availability];
-    self.carouselView.delegate = self;
-    self.carouselView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.carouselView];
+//    self.carouselView.delegate = self;
+//    self.carouselView.translatesAutoresizingMaskIntoConstraints = NO;
+//    [self addSubview:self.carouselView];
+//    
+//    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.carouselView}]];
+//    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.carouselView}]];
+//    
+}
+
+- (UIView *)renderBanner
+{
+    UIView *bannerView = [UIView new];
+    bannerView.translatesAutoresizingMaskIntoConstraints = NO;
+    bannerView.backgroundColor = [CTAppearance instance].headerTitleColor;
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.carouselView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.carouselView}]];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     
+    UIImageView *bannerImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    bannerImageView.image = [UIImage imageNamed:@"vendor_logos" inBundle:bundle compatibleWithTraitCollection:nil];
+    bannerImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [bannerView addSubview: bannerImageView];
+    
+    [bannerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : bannerImageView}]];
+    [bannerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : bannerImageView}]];
+    
+    return bannerView;
 }
 
 - (void)removeSubviews
 {
-    NSArray *viewsToRemove = [self subviews];
-    for (UIView *v in viewsToRemove) {
-        [v removeFromSuperview];
-    }
+//    NSArray *viewsToRemove = [self subviews];
+//    for (UIView *v in viewsToRemove) {
+//        
+//        [v removeFromSuperview];
+//    }
 }
 
 //MARK : Carousel Delegate
@@ -135,6 +143,13 @@
 {
     if (self.delegate) {
         [self.delegate didTapVehicle:item];
+    }
+}
+
+- (void)didSelectViewAll
+{
+    if (self.delegate) {
+        [self.delegate didTapShowAll];
     }
 }
 

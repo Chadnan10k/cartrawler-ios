@@ -13,6 +13,7 @@
 
 @required
 - (void)didSelectVehicle:(CTAvailabilityItem *)item;
+- (void)didSelectViewAll;
 
 @end
 

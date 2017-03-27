@@ -14,6 +14,7 @@
 
 @required
 - (void)didTapVehicle:(CTAvailabilityItem *)item;
+- (void)didTapShowAll;
 
 @end
 

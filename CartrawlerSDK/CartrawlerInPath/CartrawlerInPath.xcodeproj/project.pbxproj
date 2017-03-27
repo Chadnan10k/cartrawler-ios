@@ -54,6 +54,8 @@
 		BC3C47421E857C37009B35B5 /* CTCarouselCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BC3C47401E857C37009B35B5 /* CTCarouselCollectionViewCell.h */; };
 		BC3C47431E857C37009B35B5 /* CTCarouselCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3C47411E857C37009B35B5 /* CTCarouselCollectionViewCell.m */; };
 		BC54F15C1E54983A00A7C871 /* pt.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC54F15B1E54983A00A7C871 /* pt.strings */; };
+		BCC78AD31E8917DD002DA87C /* CTCarouselFooterView.h in Headers */ = {isa = PBXBuildFile; fileRef = BCC78AD11E8917DD002DA87C /* CTCarouselFooterView.h */; };
+		BCC78AD41E8917DD002DA87C /* CTCarouselFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC78AD21E8917DD002DA87C /* CTCarouselFooterView.m */; };
 		E7B3B49A1E40E85C0062C7AD /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7B3B4991E40E85C0062C7AD /* en.strings */; };
 		E7B3B49D1E40E8C70062C7AD /* CTInPathLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */; };
 		E7B3B49E1E40E8C70062C7AD /* CTInPathLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3B49C1E40E8C70062C7AD /* CTInPathLocalizationConstants.m */; };
@@ -107,6 +109,8 @@
 		BC3C47401E857C37009B35B5 /* CTCarouselCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCarouselCollectionViewCell.h; sourceTree = "<group>"; };
 		BC3C47411E857C37009B35B5 /* CTCarouselCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCarouselCollectionViewCell.m; sourceTree = "<group>"; };
 		BC54F15B1E54983A00A7C871 /* pt.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pt.strings; path = Localization/pt.strings; sourceTree = "<group>"; };
+		BCC78AD11E8917DD002DA87C /* CTCarouselFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCarouselFooterView.h; sourceTree = "<group>"; };
+		BCC78AD21E8917DD002DA87C /* CTCarouselFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCarouselFooterView.m; sourceTree = "<group>"; };
 		E7B3B4991E40E85C0062C7AD /* en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en.strings; path = Localization/en.strings; sourceTree = "<group>"; };
 		E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTInPathLocalizationConstants.h; path = Localization/CTInPathLocalizationConstants.h; sourceTree = "<group>"; };
 		E7B3B49C1E40E8C70062C7AD /* CTInPathLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTInPathLocalizationConstants.m; path = Localization/CTInPathLocalizationConstants.m; sourceTree = "<group>"; };
@@ -237,6 +241,8 @@
 				BC3C473D1E857503009B35B5 /* CTCarouselView.m */,
 				BC3C47401E857C37009B35B5 /* CTCarouselCollectionViewCell.h */,
 				BC3C47411E857C37009B35B5 /* CTCarouselCollectionViewCell.m */,
+				BCC78AD11E8917DD002DA87C /* CTCarouselFooterView.h */,
+				BCC78AD21E8917DD002DA87C /* CTCarouselFooterView.m */,
 			);
 			name = "Ready State";
 			sourceTree = "<group>";
@@ -280,6 +286,7 @@
 				45EC99BD1E02C96B00B76741 /* CTInPathVehicle.h in Headers */,
 				45EC99BB1E02C96B00B76741 /* CTInPathPayment.h in Headers */,
 				45CFD44C1E0941B800A57849 /* CTNewBookingView.h in Headers */,
+				BCC78AD31E8917DD002DA87C /* CTCarouselFooterView.h in Headers */,
 				45CFD4521E09863C00A57849 /* CTInPathBanner.h in Headers */,
 				45D133A41E01997900D7816F /* CartrawlerInPath.h in Headers */,
 				45EC99BF1E02C96B00B76741 /* CTInPathView.h in Headers */,
@@ -428,6 +435,7 @@
 				45EC99BC1E02C96B00B76741 /* CTInPathPayment.m in Sources */,
 				45A47DF61E0A912300500D71 /* CTSelectedVehicleView.m in Sources */,
 				45CFD4531E09863C00A57849 /* CTInPathBanner.m in Sources */,
+				BCC78AD41E8917DD002DA87C /* CTCarouselFooterView.m in Sources */,
 				E7B3B49E1E40E8C70062C7AD /* CTInPathLocalizationConstants.m in Sources */,
 				BC3C47431E857C37009B35B5 /* CTCarouselCollectionViewCell.m in Sources */,
 				45EC99C01E02C96B00B76741 /* CTInPathView.m in Sources */,

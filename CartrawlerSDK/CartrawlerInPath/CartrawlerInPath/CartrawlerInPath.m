@@ -219,14 +219,8 @@
     //so lets nil the summary destination so it will dismiss
     
     self.rental.vehicleDetailsViewController.destinationViewController = nil;
-    self.rental.vehicleDetailsViewController.fallbackViewController = self.rental.driverDetialsViewController;
-    self.rental.vehicleDetailsViewController.optionalRoute = self.rental.extrasViewController;;
     self.rental.vehicleDetailsViewController.delegate = self;
     
-    self.rental.paymentSummaryViewController.destinationViewController = nil;
-    self.rental.paymentSummaryViewController.fallbackViewController = nil;
-    self.rental.paymentSummaryViewController.optionalRoute = nil;
-    self.rental.paymentSummaryViewController.delegate = self;
 }
 
 - (void)presentRentalNavigationController:(UIViewController *)parent showSelection:(BOOL)showSelection
@@ -378,8 +372,12 @@
 
 - (void)didTapVehicle:(CTAvailabilityItem *)item
 {
-    NSLog(@"%@", self.parentViewController);
     [self presentCarRentalWithVehicle:self.parentViewController vehicle:item];
+}
+
+- (void)didTapShowAll
+{
+    [self presentCarRentalWithFlightDetails:self.parentViewController];
 }
 
 @end
