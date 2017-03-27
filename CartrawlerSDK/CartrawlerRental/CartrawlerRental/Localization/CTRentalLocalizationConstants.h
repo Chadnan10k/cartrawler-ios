@@ -110,10 +110,6 @@ extern NSString * const CTRentalVehicleDoors;
 
 extern NSString * const CTRentalVehicleTotalPrice;
 
-extern NSString * const CTRentalVehicleBestSeller;
-
-extern NSString * const CTRentalVehicleGreatValue;
-
 extern NSString * const CTRentalVehicleProvided;
 
 extern NSString * const CTRentalVehicleAirConditioning;
@@ -293,5 +289,27 @@ extern NSString * const CTRentalInsuranceAddedHeader;
 extern NSString * const CTRentalInsuranceAddedSubheader;
 
 extern NSString * const CTRentalInsuranceRemoveButtonTitle;
+
+//Merchandising
+
+extern NSString * const CTRentalVehicleMerchandisingBestSeller;
+
+extern NSString * const CTRentalVehicleMerchandisingBusiness;
+
+extern NSString * const CTRentalVehicleMerchandisingCityBreak;
+
+extern NSString * const CTRentalVehicleMerchandisingFamilySize;
+
+extern NSString * const CTRentalVehicleMerchandisingGreatValue;
+
+extern NSString * const CTRentalVehicleMerchandisingQuickestQueue;
+
+extern NSString * const CTRentalVehicleMerchandisingRecommended;
+
+extern NSString * const CTRentalVehicleMerchandisingUpgradeTo;
+
+extern NSString * const CTRentalVehicleMerchandisingOnBudget;
+
+extern NSString * const CTRentalVehicleMerchandisingBestReviewed;
 
 @end

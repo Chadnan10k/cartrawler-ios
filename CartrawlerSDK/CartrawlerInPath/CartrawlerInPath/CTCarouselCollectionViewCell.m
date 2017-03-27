@@ -15,15 +15,15 @@
 #import "CTInPathLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
+#import <CartrawlerSDK/CTLayoutManager.h>
 
 @interface CTCarouselCollectionViewCell()
 
 @property (nonatomic, strong) UIImageView *vehicleImageView;
-@property (nonatomic, strong) UILabel *vehicleNameLabel;
+@property (nonatomic, strong) CTLabel *vehicleNameLabel;
 @property (nonatomic, strong) UIView *bannerContainer;
+@property (nonatomic, strong) UIView *featureContainer;
 @property (nonatomic, strong) CTCarouselFooterView *footerContainer;
-@property (strong, nonatomic) CTLabel *featureLabel;
-@property (strong, nonatomic) UIImageView *tickImageView;
 
 @end
 
@@ -33,13 +33,85 @@
 {
     self = [super initWithFrame:frame];
     
-    [self addBanner];
-    [self addFooter];
-    [self addVehicleImage];
-    [self addLabel];
-    [self addFeatureTextView];
+    _bannerContainer = [self renderBanner];
+    [self addSubview:self.bannerContainer];
     
+    _footerContainer = [self renderFooter];
+    [self addSubview:self.footerContainer];
+    
+    _vehicleImageView = [self renderVehicleImage];
+    [self addSubview:self.vehicleImageView];
+    
+    _featureContainer = [self renderFeatureView];
+    [self addSubview:self.featureContainer];
+    
+    _vehicleNameLabel = [self renderVehicleLabel];
+    [self addSubview:self.vehicleNameLabel];
+    
+    [self layout];
     return self;
+}
+
+- (void)layout
+{
+    
+    NSDictionary *viewDictionary = @{
+                                     @"bannerContainer" : self.bannerContainer,
+                                     @"footerContainer" : self.footerContainer,
+                                     @"imageView" : self.vehicleImageView,
+                                     @"featureContainer" : self.featureContainer,
+                                     @"vehicleNameLabel" : self.vehicleNameLabel
+                                     };
+    //Banner
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[bannerContainer(40)]"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:viewDictionary]];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[bannerContainer]-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:viewDictionary]];
+    //Footer
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[footerContainer]-0-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:viewDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[footerContainer(45)]-0-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:viewDictionary]];
+    //Image View
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[bannerContainer]-0-[imageView(100@750)]-4-[footerContainer]"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:viewDictionary]];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[imageView(100)]-8-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:viewDictionary]];
+    //Vehicle name label
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[bannerContainer]-0-[vehicleNameLabel]"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:viewDictionary]];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[vehicleNameLabel]-8-[imageView]"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:viewDictionary]];
+    //Feature container
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[vehicleNameLabel]-4-[featureContainer]"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:viewDictionary]];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[featureContainer]-8-[imageView]"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:viewDictionary]];
+    
 }
 
 - (void)setVehicle:(CTAvailabilityItem *)vehicle
@@ -56,82 +128,81 @@
     self.vehicleNameLabel.attributedText = [self attributedVehicleString:vehicle.vehicle.makeModelName orSimilar:vehicle.vehicle.orSimilar];
 }
 
-- (void)addBanner
+- (UIView *)renderBanner
 {
-    _bannerContainer = [[UIView alloc] initWithFrame:CGRectZero];
-    self.bannerContainer.translatesAutoresizingMaskIntoConstraints = NO;
-    self.bannerContainer.backgroundColor = [UIColor clearColor];
-    [self addSubview:self.bannerContainer];
+    UIView *bannerView = [UIView new];
+    bannerView.translatesAutoresizingMaskIntoConstraints = NO;
+    bannerView.backgroundColor = [UIColor clearColor];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.bannerContainer}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view(40)]" options:0 metrics:nil views:@{@"view" : self.bannerContainer}]];
+    [bannerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(40)]" options:0 metrics:nil views:@{@"view" : bannerView}]];
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     
     CTInPathBanner *banner = [[CTInPathBanner alloc] init];
-    [banner addToSuperViewWithString:@"Deal of the day" superview:self.bannerContainer];
+    [banner addToSuperViewWithString:@"Deal of the day" superview:bannerView];
     [banner setIcon:[UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil]
     backgroundColor:[UIColor colorWithRed:191.0/255.0 green:61.0/255.0 blue:43.0/255.0 alpha:1]
           textColor:[UIColor whiteColor]];
+    
+    return bannerView;
 }
 
-- (void)addFooter
+- (CTCarouselFooterView *)renderFooter
 {
-    _footerContainer = [CTCarouselFooterView new];
-    self.footerContainer.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.footerContainer];
-    
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.footerContainer}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(45)]-0-|" options:0 metrics:nil views:@{@"view" : self.footerContainer}]];
+    CTCarouselFooterView *footerView = [CTCarouselFooterView new];
+    footerView.translatesAutoresizingMaskIntoConstraints = NO;
+    return footerView;
 }
 
-- (void)addVehicleImage
+- (UIImageView *)renderVehicleImage
 {
-    _vehicleImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.vehicleImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.vehicleImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self addSubview:self.vehicleImageView];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[banner]-0-[view(100@750)]-4-[footer]" options:0 metrics:nil views:@{@"banner" : self.bannerContainer, @"view" : self.vehicleImageView, @"footer" : self.footerContainer}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(100)]-8-|" options:0 metrics:nil views:@{@"view" : self.vehicleImageView}]];
-    
+    return imageView;
 }
 
-- (void)addLabel
+- (CTLabel *)renderVehicleLabel
 {
-    _vehicleNameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.vehicleNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.vehicleNameLabel.numberOfLines = 0;
-    [self addSubview:self.vehicleNameLabel];
-    
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[label]-8-[cars]" options:0 metrics:nil views:@{@"label" : self.vehicleNameLabel, @"cars" : self.vehicleImageView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[banner]-4-[label]" options:0 metrics:nil views:@{@"label" : self.vehicleNameLabel, @"banner" : self.bannerContainer, @"footer" : self.footerContainer}]];
-    
+    CTLabel *label = [CTLabel new];
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    label.numberOfLines = 0;
+    return label;
 }
 
-- (void)addFeatureTextView
+- (UIView *)renderFeatureView
 {
+    
+    UIView *container = [UIView new];
+    container.translatesAutoresizingMaskIntoConstraints = NO;
+    
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    _tickImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.tickImageView.image = [UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil];
-    self.tickImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.tickImageView applyTintWithColor:[CTAppearance instance].buttonColor];
+    UIImageView *tickImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    tickImageView.image = [UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil];
+    tickImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [tickImageView applyTintWithColor:[CTAppearance instance].buttonColor];
     
-    [self addSubview:self.tickImageView];
+    [container addSubview:tickImageView];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[view(10)]" options:0 metrics:nil views:@{@"view" : self.tickImageView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-8-[view(10)]" options:0 metrics:nil views:@{@"view" : self.tickImageView, @"label" : self.vehicleNameLabel}]];
+    CTLabel *featureLabel = [CTLabel new];
+    featureLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
+    featureLabel.textColor = [UIColor lightGrayColor];
+    featureLabel.text = @"Free GPS";
+    featureLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [featureLabel sizeToFit];
+    [container addSubview: featureLabel];
     
-    _featureLabel = [CTLabel new];
-    self.featureLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
-    self.featureLabel.textColor = [UIColor lightGrayColor];
-    self.featureLabel.text = @"Free GPS";
-    self.featureLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.featureLabel];
+    NSDictionary *viewDictionary = @{
+                                     @"tickImageView" : tickImageView,
+                                     @"featureLabel" : featureLabel,
+                                     };
+
+    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tickImageView(10)]-[featureLabel]-0-|" options:0 metrics:nil views:viewDictionary]];
+    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tickImageView(10)]-0-|" options:0 metrics:nil views:viewDictionary]];
+    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[featureLabel]-0-|" options:0 metrics:nil views:viewDictionary]];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[star]-4-[textView]-4-[cars]" options:0 metrics:nil views:@{@"textView" : self.featureLabel, @"star" : self.tickImageView, @"cars" : self.vehicleImageView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-4-[textView]" options:0 metrics:nil views:@{@"textView" : self.featureLabel, @"label" : self.vehicleNameLabel, @"footer" : self.footerContainer}]];
-    [self.featureLabel sizeToFit];
+    return container;
 }
 
 - (NSAttributedString *)attributedVehicleString:(NSString *)vehicleName orSimilar:(NSString *)orSimilar

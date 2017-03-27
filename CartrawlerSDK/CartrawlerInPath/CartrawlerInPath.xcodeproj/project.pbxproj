@@ -139,6 +139,7 @@
 		45CFD4491E09419400A57849 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BCC78AD51E896139002DA87C /* Selected State */,
 				BC3C47371E856633009B35B5 /* Fail State */,
 				BC3C47361E85662B009B35B5 /* Ready State */,
 				BC3C47351E856624009B35B5 /* Loading State */,
@@ -146,8 +147,6 @@
 				45EC99BA1E02C96B00B76741 /* CTInPathView.m */,
 				45CFD4501E09863C00A57849 /* CTInPathBanner.h */,
 				45CFD4511E09863C00A57849 /* CTInPathBanner.m */,
-				45CFD44A1E0941B800A57849 /* CTNewBookingView.h */,
-				45CFD44B1E0941B800A57849 /* CTNewBookingView.m */,
 				45A47DF31E0A912300500D71 /* CTSelectedVehicleView.h */,
 				45A47DF41E0A912300500D71 /* CTSelectedVehicleView.m */,
 			);
@@ -230,6 +229,8 @@
 		BC3C47351E856624009B35B5 /* Loading State */ = {
 			isa = PBXGroup;
 			children = (
+				45CFD44A1E0941B800A57849 /* CTNewBookingView.h */,
+				45CFD44B1E0941B800A57849 /* CTNewBookingView.m */,
 			);
 			name = "Loading State";
 			sourceTree = "<group>";
@@ -252,6 +253,13 @@
 			children = (
 			);
 			name = "Fail State";
+			sourceTree = "<group>";
+		};
+		BCC78AD51E896139002DA87C /* Selected State */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Selected State";
 			sourceTree = "<group>";
 		};
 		E7B3B4981E40E83B0062C7AD /* Localization */ = {

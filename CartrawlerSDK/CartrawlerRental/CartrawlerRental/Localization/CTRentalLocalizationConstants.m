@@ -108,10 +108,6 @@ NSString * const CTRentalVehicleDoors = @"vehicle_doors";
 
 NSString * const CTRentalVehicleTotalPrice = @"vehicle_total_price";
 
-NSString * const CTRentalVehicleBestSeller = @"vehicle_best_seller";
-
-NSString * const CTRentalVehicleGreatValue = @"vehicle_great_value";
-
 NSString * const CTRentalVehicleProvided = @"vehicle_provided";
 
 NSString * const CTRentalVehicleAirConditioning = @"vehicle_air_conditioning";
@@ -291,5 +287,27 @@ NSString * const CTRentalInsuranceAddedHeader = @"insurance_added_header";
 NSString * const CTRentalInsuranceAddedSubheader = @"insurance_added_subheader";
 
 NSString * const CTRentalInsuranceRemoveButtonTitle = @"insurance_remove_button";
+
+//Merchandising
+
+NSString * const CTRentalVehicleMerchandisingBestSeller = @"merchandising_best_seller";
+
+NSString * const CTRentalVehicleMerchandisingBusiness = @"merchandising_business";
+
+NSString * const CTRentalVehicleMerchandisingCityBreak = @"merchandising_city_break";
+
+NSString * const CTRentalVehicleMerchandisingFamilySize = @"merchandising_family_size";
+
+NSString * const CTRentalVehicleMerchandisingGreatValue = @"merchandising_great_value";
+
+NSString * const CTRentalVehicleMerchandisingQuickestQueue = @"merchandising_quickest_queue";
+
+NSString * const CTRentalVehicleMerchandisingRecommended = @"merchandising_recommended";
+
+NSString * const CTRentalVehicleMerchandisingUpgradeTo = @"vehicle_upgrade_to";
+
+NSString * const CTRentalVehicleMerchandisingOnBudget = @"vehicle_on_budget";
+
+NSString * const CTRentalVehicleMerchandisingBestReviewed = @"vehicle_best_reviewed";
 
 @end

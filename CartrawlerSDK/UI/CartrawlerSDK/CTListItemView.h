@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTLabel.h"
 
 /**
  *  Image Alignment
@@ -24,7 +25,7 @@ typedef NS_ENUM(NSUInteger, CTListItemImageAlignment) {
 /**
  The title label
  */
-@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) CTLabel *titleLabel;
 
 /**
  The image view

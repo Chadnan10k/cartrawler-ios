@@ -83,15 +83,15 @@
     
     _noSelectionView = [[CTNewBookingView alloc] initWithFrame:CGRectZero];
     
-//    self.noSelectionView.backgroundColor = [UIColor whiteColor];
-//    self.noSelectionView.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self addSubview:self.noSelectionView];
-//    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
-//    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
-//    
-//    if (animated) {
-//        [self.noSelectionView animateVehicle];
-//    }
+    self.noSelectionView.backgroundColor = [UIColor whiteColor];
+    self.noSelectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.noSelectionView];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
+    
+    if (animated) {
+        [self.noSelectionView animateVehicle];
+    }
 
 }
 
@@ -100,13 +100,13 @@
     [self removeSubviews];
     
     _carouselView = [CTCarouselView carouselFromAvail:availability];
-//    self.carouselView.delegate = self;
-//    self.carouselView.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self addSubview:self.carouselView];
-//    
-//    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.carouselView}]];
-//    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.carouselView}]];
-//    
+    self.carouselView.delegate = self;
+    self.carouselView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.carouselView];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.carouselView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.carouselView}]];
+    
 }
 
 - (UIView *)renderBanner

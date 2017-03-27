@@ -162,6 +162,14 @@
 		BCDB4BEA1E3F50C6008004DA /* CTAnalyticsEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */; };
 		BCF874291E79604100EBC758 /* CTLayoutManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BCF874271E79604100EBC758 /* CTLayoutManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCF8742A1E79604100EBC758 /* CTLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF874281E79604100EBC758 /* CTLayoutManager.m */; };
+		E70230731E857DC2005E1BF4 /* CTRatingView.h in Headers */ = {isa = PBXBuildFile; fileRef = E70230711E857DC2005E1BF4 /* CTRatingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E70230741E857DC2005E1BF4 /* CTRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E70230721E857DC2005E1BF4 /* CTRatingView.m */; };
+		E7404A781E82F3AB009BF7DF /* CTTabContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7404A791E82F3AB009BF7DF /* CTTabContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7404A771E82F3AB009BF7DF /* CTTabContainerView.m */; };
+		E7404A801E82F90C009BF7DF /* CTTabHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A7E1E82F90C009BF7DF /* CTTabHeaderView.h */; };
+		E7404A811E82F90C009BF7DF /* CTTabHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7404A7F1E82F90C009BF7DF /* CTTabHeaderView.m */; };
+		E7404A841E82F95D009BF7DF /* CTTabView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A821E82F95D009BF7DF /* CTTabView.h */; };
+		E7404A851E82F95D009BF7DF /* CTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7404A831E82F95D009BF7DF /* CTTabView.m */; };
 		E76900A81E6F065C00D729FF /* CTInfoTip.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900A61E6F065C00D729FF /* CTInfoTip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76900A91E6F065C00D729FF /* CTInfoTip.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900A71E6F065C00D729FF /* CTInfoTip.m */; };
 		E76900B71E70949500D729FF /* CTAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900B51E70949500D729FF /* CTAlertViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -345,6 +353,14 @@
 		BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsEvent.m; sourceTree = "<group>"; };
 		BCF874271E79604100EBC758 /* CTLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLayoutManager.h; sourceTree = "<group>"; };
 		BCF874281E79604100EBC758 /* CTLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLayoutManager.m; sourceTree = "<group>"; };
+		E70230711E857DC2005E1BF4 /* CTRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRatingView.h; sourceTree = "<group>"; };
+		E70230721E857DC2005E1BF4 /* CTRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRatingView.m; sourceTree = "<group>"; };
+		E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabContainerView.h; sourceTree = "<group>"; };
+		E7404A771E82F3AB009BF7DF /* CTTabContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabContainerView.m; sourceTree = "<group>"; };
+		E7404A7E1E82F90C009BF7DF /* CTTabHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabHeaderView.h; sourceTree = "<group>"; };
+		E7404A7F1E82F90C009BF7DF /* CTTabHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabHeaderView.m; sourceTree = "<group>"; };
+		E7404A821E82F95D009BF7DF /* CTTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabView.h; sourceTree = "<group>"; };
+		E7404A831E82F95D009BF7DF /* CTTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabView.m; sourceTree = "<group>"; };
 		E76900A61E6F065C00D729FF /* CTInfoTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInfoTip.h; sourceTree = "<group>"; };
 		E76900A71E6F065C00D729FF /* CTInfoTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInfoTip.m; sourceTree = "<group>"; };
 		E76900B51E70949500D729FF /* CTAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertViewController.h; sourceTree = "<group>"; };
@@ -712,7 +728,9 @@
 				45E942D81D1302BF00ACF604 /* UILabel */,
 				E76900A51E6F061B00D729FF /* InfoTip */,
 				E76900E41E783EA200D729FF /* Expanding View */,
+				E7404A751E82F01C009BF7DF /* Tab Manager */,
 				E76900E31E776F5000D729FF /* List View */,
+				E70230701E8575E9005E1BF4 /* Rating View */,
 				E76900B41E70943000D729FF /* Alert View */,
 			);
 			name = "UI Elements";
@@ -813,6 +831,28 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		E70230701E8575E9005E1BF4 /* Rating View */ = {
+			isa = PBXGroup;
+			children = (
+				E70230711E857DC2005E1BF4 /* CTRatingView.h */,
+				E70230721E857DC2005E1BF4 /* CTRatingView.m */,
+			);
+			name = "Rating View";
+			sourceTree = "<group>";
+		};
+		E7404A751E82F01C009BF7DF /* Tab Manager */ = {
+			isa = PBXGroup;
+			children = (
+				E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */,
+				E7404A771E82F3AB009BF7DF /* CTTabContainerView.m */,
+				E7404A7E1E82F90C009BF7DF /* CTTabHeaderView.h */,
+				E7404A7F1E82F90C009BF7DF /* CTTabHeaderView.m */,
+				E7404A821E82F95D009BF7DF /* CTTabView.h */,
+				E7404A831E82F95D009BF7DF /* CTTabView.m */,
+			);
+			name = "Tab Manager";
+			sourceTree = "<group>";
+		};
 		E76900A51E6F061B00D729FF /* InfoTip */ = {
 			isa = PBXGroup;
 			children = (
@@ -872,6 +912,7 @@
 			files = (
 				BC1379E81E23E4E400B1F727 /* CTAnalytics.h in Headers */,
 				BC1379EF1E23E8E700B1F727 /* CTErrorTag.h in Headers */,
+				E7404A841E82F95D009BF7DF /* CTTabView.h in Headers */,
 				455B58741DCC914300CA4790 /* CTLabel.h in Headers */,
 				BC1379EB1E23E4E400B1F727 /* CTTag.h in Headers */,
 				451E763A1E04438300D58F71 /* CTRentalBooking.h in Headers */,
@@ -930,10 +971,13 @@
 				E76900DD1E764F9800D729FF /* CTListView.h in Headers */,
 				E76900E11E77267700D729FF /* CTListItemView.h in Headers */,
 				457678501E08021500FE591A /* CTHeaders.h in Headers */,
+				E7404A781E82F3AB009BF7DF /* CTTabContainerView.h in Headers */,
+				E70230731E857DC2005E1BF4 /* CTRatingView.h in Headers */,
 				BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */,
 				E76900E71E783EC600D729FF /* CTExpandingView.h in Headers */,
 				E76900D11E71D95700D729FF /* CTAlertAction.h in Headers */,
 				E76900A81E6F065C00D729FF /* CTInfoTip.h in Headers */,
+				E7404A801E82F90C009BF7DF /* CTTabHeaderView.h in Headers */,
 				450725B21DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h in Headers */,
 				455B591B1DCC914400CA4790 /* CTCSVItem.h in Headers */,
 				E76900B71E70949500D729FF /* CTAlertViewController.h in Headers */,
@@ -1087,6 +1131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				455B58341DCC914300CA4790 /* GTPaymentRequest.m in Sources */,
+				E7404A811E82F90C009BF7DF /* CTTabHeaderView.m in Sources */,
 				457128C21DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m in Sources */,
 				455B58361DCC914300CA4790 /* CTPaymentRequest.m in Sources */,
 				455B58381DCC914300CA4790 /* CTPaymentView.m in Sources */,
@@ -1098,12 +1143,14 @@
 				BCF8742A1E79604100EBC758 /* CTLayoutManager.m in Sources */,
 				E76900CA1E71A45800D729FF /* CTAlertViewDismissalAnimationController.m in Sources */,
 				455B584F1DCC914300CA4790 /* CTNavigationController.m in Sources */,
+				E7404A851E82F95D009BF7DF /* CTTabView.m in Sources */,
 				455B58511DCC914300CA4790 /* CTStepper.m in Sources */,
 				BC1379F01E23E8E700B1F727 /* CTErrorTag.m in Sources */,
 				455B58551DCC914300CA4790 /* CTSegmentedControl.m in Sources */,
 				455B58571DCC914300CA4790 /* CTPickerView.m in Sources */,
 				455B58591DCC914300CA4790 /* CTTextView.m in Sources */,
 				455B585B1DCC914300CA4790 /* CTPlaceholderView.m in Sources */,
+				E70230741E857DC2005E1BF4 /* CTRatingView.m in Sources */,
 				455B585D1DCC914300CA4790 /* CTView.m in Sources */,
 				455B585F1DCC914300CA4790 /* CTDesignableView.m in Sources */,
 				455B58611DCC914300CA4790 /* CTNavigationView.m in Sources */,
@@ -1118,6 +1165,7 @@
 				455B58751DCC914300CA4790 /* CTLabel.m in Sources */,
 				455B58771DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.m in Sources */,
 				455B587E1DCC914300CA4790 /* CTImageCache.m in Sources */,
+				E7404A791E82F3AB009BF7DF /* CTTabContainerView.m in Sources */,
 				E76900B81E70949500D729FF /* CTAlertViewController.m in Sources */,
 				E76900C61E71A31200D729FF /* CTAlertViewPresentationAnimationController.m in Sources */,
 				455B58821DCC914300CA4790 /* CartrawlerSDK+NSNumber.m in Sources */,

@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UIView *detailViewContainer;
 
 @property (nonatomic, strong) NSLayoutConstraint *detailHeightConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *detailBottomConstraint;
 @property (nonatomic, assign) BOOL expanded;
 @end
 
@@ -91,7 +92,12 @@
 
 - (void)expandWithDetailView:(UIView *)detailView {
     self.expanded = YES;
-    
+    [self.detailViewContainer.subviews.firstObject removeFromSuperview];
+    [self addDetailView:detailView];
+    [self animateExpansionWithDetailView:detailView];
+}
+
+- (void)addDetailView:(UIView *)detailView {
     detailView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.detailViewContainer addSubview:detailView];
     [self.detailViewContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[detailView]|"
@@ -104,14 +110,28 @@
                                                                                      metrics:nil
                                                                                        views:NSDictionaryOfVariableBindings(detailView)]];
     [detailView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-    [self.animationContainerView layoutIfNeeded];
-    
+    [self.detailViewContainer layoutIfNeeded];
+}
+
+- (void)animateExpansionWithDetailView:(UIView *)detailView {
     CGFloat padding = 10;
     detailView.alpha = 0;
+    
     [UIView animateWithDuration:self.animationDuration animations:^{
         detailView.alpha = 1.0;
-        self.detailHeightConstraint.constant = detailView.intrinsicContentSize.height + padding;
+        self.detailHeightConstraint.constant = detailView.frame.size.height + padding;
         self.chevron.layer.affineTransform = CGAffineTransformMakeScale(1, -1);
+        [self.animationContainerView layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        self.detailBottomConstraint = [NSLayoutConstraint constraintWithItem:detailView
+                                                                   attribute:NSLayoutAttributeBottom
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.detailViewContainer
+                                                                   attribute:NSLayoutAttributeBottom
+                                                                  multiplier:1.0
+                                                                    constant:-padding];
+        [self.detailViewContainer addConstraint:self.detailBottomConstraint];
+        self.detailHeightConstraint.active = NO;
         [self.animationContainerView layoutIfNeeded];
     }];
 }
@@ -119,15 +139,19 @@
 - (void)contract {
     self.expanded = NO;
     
+    UIView *detailView = self.detailViewContainer.subviews.firstObject;
+    self.detailBottomConstraint.active = NO;
+    self.detailHeightConstraint.active = YES;
+    
     [UIView animateWithDuration:self.animationDuration
                      animations:^{
-                         self.detailViewContainer.subviews.firstObject.alpha = 0;
+                         detailView.alpha = 0;
                          self.detailHeightConstraint.constant = 0;
                          self.chevron.layer.affineTransform = CGAffineTransformMakeScale(1, 1);
                          [self.animationContainerView layoutIfNeeded];
                      }
                      completion:^(BOOL finished) {
-                         [self.detailViewContainer.subviews.firstObject removeFromSuperview];
+                         [detailView removeFromSuperview];
                      }];
 }
 

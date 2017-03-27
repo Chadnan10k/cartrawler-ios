@@ -17,9 +17,8 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.titleLabel = [UILabel new];
+        self.titleLabel = [CTLabel new];
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        self.titleLabel.font = [UIFont systemFontOfSize:12.0];
         [self.titleLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         [self addSubview:self.titleLabel];
         
@@ -47,7 +46,7 @@
     
     [self removeConstraints:self.horizontalConstraints];
     
-    NSString *visualFormat = imageAlignment == CTListItemImageAlignmentRight ? @"H:|[titleLabel]-10-[imageView(24)]|" : @"H:|[imageView(24)]-10-[titleLabel]|";
+    NSString *visualFormat = imageAlignment == CTListItemImageAlignmentRight ? @"H:|[titleLabel]-16-[imageView(40)]|" : @"H:|[imageView(40)]-16-[titleLabel]|";
     self.horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:visualFormat
                                                                          options:0
                                                                          metrics:nil
