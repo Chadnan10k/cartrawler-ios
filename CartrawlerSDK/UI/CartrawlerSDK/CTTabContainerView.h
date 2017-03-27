@@ -23,4 +23,9 @@
  */
 - (instancetype)initWithTabTitles:(NSArray *)titles views:(NSArray *)views selectedIndex:(NSInteger)selectedIndex;
 
+/**
+ Use this property to define the view in which layout animations should be performed
+ */
+@property (nonatomic, weak) UIView *animationContainerView;
+
 @end

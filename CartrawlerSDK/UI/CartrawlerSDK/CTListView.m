@@ -14,7 +14,7 @@
 
 @implementation CTListView
 
-- (instancetype)initWithViews:(NSArray *)views {
+- (instancetype)initWithViews:(NSArray *)views separatorColor:(UIColor *)separatorColor {
     self = [super init];
     if (self) {
         self.views = views;
@@ -34,7 +34,7 @@
                                                                                views:NSDictionaryOfVariableBindings(row)]];
             } else {
                 UIView *divider = [UIView new];
-                divider.backgroundColor = [UIColor lightGrayColor];
+                divider.backgroundColor = separatorColor ?: [UIColor lightGrayColor];
                 divider.translatesAutoresizingMaskIntoConstraints = NO;
                 [self addSubview:divider];
                 

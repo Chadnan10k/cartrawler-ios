@@ -31,14 +31,18 @@
  */
 @interface CTListView : UIView
 
+/**
+ Set this property to receive notifications of list view selections
+ */
 @property (nonatomic, weak) id <CTListViewDelegate> delegate;
 
 /**
  Initialise with views to be displayed in vertical rows
 
  @param views the views to be added as rows
+ @param separatorColor the separatorColor
  @return a list view instance
  */
-- (instancetype)initWithViews:(NSArray *)views;
+- (instancetype)initWithViews:(NSArray *)views separatorColor:(UIColor *)separatorColor;
 
 @end
