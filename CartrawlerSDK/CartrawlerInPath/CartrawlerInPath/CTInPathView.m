@@ -10,14 +10,14 @@
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTLayoutManager.h>
-#import "CTNewBookingView.h"
+#import "CTInPathLoadingView.h"
 #import "CTSelectedVehicleView.h"
 #import "CTCarouselView.h"
 
 @interface CTInPathView() <CTCarouselDelegate>
 
 @property (nonatomic, strong) CTLayoutManager *layoutManager;
-@property (nonatomic, strong) CTNewBookingView *noSelectionView;
+@property (nonatomic, strong) CTInPathLoadingView *loadingView;
 @property (nonatomic, strong) CTSelectedVehicleView *selectedVehicleView;
 @property (nonatomic, strong) CTCarouselView *carouselView;
 
@@ -44,7 +44,7 @@
 - (void)setup
 {
     _layoutManager = [CTLayoutManager layoutManagerWithContainer:self];
-    [self renderDefault:NO];
+    [self renderLoadingView];
     UIView *banner = [self renderBanner];
     [self addSubview:banner];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : banner}]];
@@ -77,21 +77,17 @@
     }
 }
 
-- (void)renderDefault:(BOOL)animated
+- (void)renderLoadingView
 {
     [self removeSubviews];
     
-    _noSelectionView = [[CTNewBookingView alloc] initWithFrame:CGRectZero];
+    _loadingView = [CTInPathLoadingView new];
     
-    self.noSelectionView.backgroundColor = [UIColor whiteColor];
-    self.noSelectionView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.noSelectionView];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.noSelectionView}]];
-    
-    if (animated) {
-        [self.noSelectionView animateVehicle];
-    }
+    self.loadingView.backgroundColor = [UIColor whiteColor];
+    self.loadingView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview: self.loadingView];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.loadingView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.loadingView}]];
 
 }
 

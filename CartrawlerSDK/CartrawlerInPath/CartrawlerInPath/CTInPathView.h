@@ -23,7 +23,7 @@
 @property (nonatomic, weak) id<CTInPathViewDelegate> delegate;
 
 - (void)renderVehicleDetails:(CTInPathVehicle *)vehicle animated:(BOOL)animated;
-- (void)renderDefault:(BOOL)animated;
+- (void)renderLoadingView;
 
 - (void)renderCarouselWithAvailability:(CTVehicleAvailability *)availability;
 

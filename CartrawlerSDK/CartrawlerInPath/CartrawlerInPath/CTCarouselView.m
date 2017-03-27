@@ -12,9 +12,8 @@
 
 @interface CTCarouselView() <UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UICollectionView *vehicleCollectionView;
 @property (nonatomic, strong) UIButton *viewAllButton;
-@property (nonatomic, strong) UIView *bannerView;
 
 @property (nonatomic, weak) CTVehicleAvailability *availability;
 
@@ -33,59 +32,72 @@
                                                                       options:0
                                                                       metrics:nil
                                                                         views:@{@"container" : container}]];
-    container.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    [container initCollectionView];
-    [container initViewAll];
+    container.backgroundColor = [UIColor groupTableViewBackgroundColor];//remove for production
+    
+    container.vehicleCollectionView = [container renderCollectionView];
+    container.viewAllButton = [container renderViewAllButton];
+    [container layout];
     return container;
 }
 
-- (void)initCollectionView
+- (void)layout
 {
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(240, 150);
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    [self.collectionView registerClass:[CTCarouselCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-    self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.collectionView.backgroundColor = [UIColor clearColor];
-    self.collectionView.showsHorizontalScrollIndicator = NO;
     
-    [self addSubview:self.collectionView];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.collectionView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-40-[view]-40-|" options:0 metrics:nil views:@{@"view" : self.collectionView}]];
+    NSDictionary *viewDictionary = @{
+                                     @"vehicleCollectionView" : self.vehicleCollectionView,
+                                     @"viewAllButton" : self.viewAllButton
+                                     };
+    //Collection view
+    [self addSubview:self.vehicleCollectionView];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[vehicleCollectionView]-0-|" options:0 metrics:nil views:viewDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-40-[vehicleCollectionView]-40-|" options:0 metrics:nil views:viewDictionary]];
     
-    [self.collectionView reloadData];
-}
-
-- (void)initViewAll
-{
-    _viewAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.viewAllButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.viewAllButton setTitle:@"SEE ALL" forState:UIControlStateNormal];
-    [self.viewAllButton addTarget:self action:@selector(viewAllAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.viewAllButton.titleLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:17];
-    [self.viewAllButton setTitleColor:[CTAppearance instance].headerTitleColor forState:UIControlStateNormal];
-    self.viewAllButton.backgroundColor = [UIColor clearColor];
-    self.viewAllButton.layer.borderWidth = 0.5;
-    self.viewAllButton.layer.borderColor = [CTAppearance instance].headerTitleColor.CGColor;
-    self.viewAllButton.layer.cornerRadius = 5;
-    
+    //View all button
     [self addSubview:self.viewAllButton];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view]-8-|" options:0 metrics:nil views:@{@"view" : self.viewAllButton}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[view]-4-|" options:0 metrics:nil views:@{@"view" : self.viewAllButton}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[viewAllButton]-8-|" options:0 metrics:nil views:viewDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[viewAllButton]-4-|" options:0 metrics:nil views:viewDictionary]];
     
-    [self.viewAllButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[button(0)]"
-                                                                       options:0
-                                                                       metrics:nil
-                                                                         views:@{@"button" : self.viewAllButton}]];
+    [self.viewAllButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[viewAllButton(0)]"
+                                                                               options:0
+                                                                               metrics:nil
+                                                                                 views:viewDictionary]];
     
     for (NSLayoutConstraint *c in self.viewAllButton.constraints) {
         if (c.firstAttribute == NSLayoutAttributeWidth) {
             c.constant = self.viewAllButton.intrinsicContentSize.width + 24;
         }
     }
+    
+}
+
+- (UICollectionView *)renderCollectionView
+{
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.itemSize = CGSizeMake(240, 150);
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    [collectionView registerClass:[CTCarouselCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    collectionView.delegate = self;
+    collectionView.dataSource = self;
+    collectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    collectionView.backgroundColor = [UIColor clearColor];
+    collectionView.showsHorizontalScrollIndicator = NO;
+    return collectionView;
+}
+
+- (UIButton *)renderViewAllButton
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.translatesAutoresizingMaskIntoConstraints = NO;
+    [button setTitle:@"SEE ALL" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(viewAllAction:) forControlEvents:UIControlEventTouchUpInside];
+    button.titleLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:17];
+    [button setTitleColor:[CTAppearance instance].headerTitleColor forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor clearColor];
+    button.layer.borderWidth = 0.5;
+    button.layer.borderColor = [CTAppearance instance].headerTitleColor.CGColor;
+    button.layer.cornerRadius = 5;
+    return button;
 }
 
 - (void)viewAllAction:(id)sender

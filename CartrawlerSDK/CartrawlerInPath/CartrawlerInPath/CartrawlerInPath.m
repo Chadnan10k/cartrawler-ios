@@ -253,7 +253,7 @@
 
 - (void)renderDefaultState
 {
-    [self.cardView renderDefault:NO];
+    [self.cardView renderLoadingView];
 }
 
 - (void)renderReadyState
@@ -263,7 +263,7 @@
 
 - (void)renderFailState
 {
-    [self.cardView renderDefault:NO];
+    [self.cardView renderLoadingView];
 }
 
 - (void)renderSelectedState
@@ -304,7 +304,7 @@
     [CTDataStore deletePotentialInPathBooking];
     _cachedVehicle = nil;
     if (self.cardView) {
-        [self.cardView renderDefault:YES];
+        [self.cardView renderLoadingView];
     }
 }
 

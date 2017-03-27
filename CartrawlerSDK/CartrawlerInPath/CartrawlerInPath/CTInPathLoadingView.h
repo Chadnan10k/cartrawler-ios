@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CTNewBookingView : UIView
+@interface CTInPathLoadingView : UIView
 
 - (void)animateVehicle;
 

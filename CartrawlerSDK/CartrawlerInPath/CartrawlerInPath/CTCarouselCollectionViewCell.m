@@ -102,7 +102,7 @@
                                                                  metrics:nil
                                                                    views:viewDictionary]];
     //Feature container
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[vehicleNameLabel]-4-[featureContainer]"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[vehicleNameLabel]-8-[featureContainer]"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:viewDictionary]];

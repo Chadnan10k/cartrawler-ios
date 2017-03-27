@@ -25,8 +25,8 @@
 		45A47DF51E0A912300500D71 /* CTSelectedVehicleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45A47DF31E0A912300500D71 /* CTSelectedVehicleView.h */; };
 		45A47DF61E0A912300500D71 /* CTSelectedVehicleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A47DF41E0A912300500D71 /* CTSelectedVehicleView.m */; };
 		45BA0F681E1FA27300EB26ED /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45BA0F671E1FA27300EB26ED /* strip-frameworks.sh */; };
-		45CFD44C1E0941B800A57849 /* CTNewBookingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFD44A1E0941B800A57849 /* CTNewBookingView.h */; };
-		45CFD44D1E0941B800A57849 /* CTNewBookingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFD44B1E0941B800A57849 /* CTNewBookingView.m */; };
+		45CFD44C1E0941B800A57849 /* CTInPathLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFD44A1E0941B800A57849 /* CTInPathLoadingView.h */; };
+		45CFD44D1E0941B800A57849 /* CTInPathLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFD44B1E0941B800A57849 /* CTInPathLoadingView.m */; };
 		45CFD44F1E09453100A57849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CFD44E1E09453100A57849 /* Assets.xcassets */; };
 		45CFD4521E09863C00A57849 /* CTInPathBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFD4501E09863C00A57849 /* CTInPathBanner.h */; };
 		45CFD4531E09863C00A57849 /* CTInPathBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFD4511E09863C00A57849 /* CTInPathBanner.m */; };
@@ -76,8 +76,8 @@
 		45A47DF31E0A912300500D71 /* CTSelectedVehicleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSelectedVehicleView.h; sourceTree = "<group>"; };
 		45A47DF41E0A912300500D71 /* CTSelectedVehicleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSelectedVehicleView.m; sourceTree = "<group>"; };
 		45BA0F671E1FA27300EB26ED /* strip-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "strip-frameworks.sh"; sourceTree = "<group>"; };
-		45CFD44A1E0941B800A57849 /* CTNewBookingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNewBookingView.h; sourceTree = "<group>"; };
-		45CFD44B1E0941B800A57849 /* CTNewBookingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTNewBookingView.m; sourceTree = "<group>"; };
+		45CFD44A1E0941B800A57849 /* CTInPathLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathLoadingView.h; sourceTree = "<group>"; };
+		45CFD44B1E0941B800A57849 /* CTInPathLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathLoadingView.m; sourceTree = "<group>"; };
 		45CFD44E1E09453100A57849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45CFD4501E09863C00A57849 /* CTInPathBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathBanner.h; sourceTree = "<group>"; };
 		45CFD4511E09863C00A57849 /* CTInPathBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathBanner.m; sourceTree = "<group>"; };
@@ -229,8 +229,8 @@
 		BC3C47351E856624009B35B5 /* Loading State */ = {
 			isa = PBXGroup;
 			children = (
-				45CFD44A1E0941B800A57849 /* CTNewBookingView.h */,
-				45CFD44B1E0941B800A57849 /* CTNewBookingView.m */,
+				45CFD44A1E0941B800A57849 /* CTInPathLoadingView.h */,
+				45CFD44B1E0941B800A57849 /* CTInPathLoadingView.m */,
 			);
 			name = "Loading State";
 			sourceTree = "<group>";
@@ -293,7 +293,7 @@
 				E7B3B49D1E40E8C70062C7AD /* CTInPathLocalizationConstants.h in Headers */,
 				45EC99BD1E02C96B00B76741 /* CTInPathVehicle.h in Headers */,
 				45EC99BB1E02C96B00B76741 /* CTInPathPayment.h in Headers */,
-				45CFD44C1E0941B800A57849 /* CTNewBookingView.h in Headers */,
+				45CFD44C1E0941B800A57849 /* CTInPathLoadingView.h in Headers */,
 				BCC78AD31E8917DD002DA87C /* CTCarouselFooterView.h in Headers */,
 				45CFD4521E09863C00A57849 /* CTInPathBanner.h in Headers */,
 				45D133A41E01997900D7816F /* CartrawlerInPath.h in Headers */,
@@ -439,7 +439,7 @@
 				BC2951DC1E80414D0053A897 /* CTInPathError.m in Sources */,
 				45EC99B01E02B3FB00B76741 /* CartrawlerInPath.m in Sources */,
 				BC3C473F1E857503009B35B5 /* CTCarouselView.m in Sources */,
-				45CFD44D1E0941B800A57849 /* CTNewBookingView.m in Sources */,
+				45CFD44D1E0941B800A57849 /* CTInPathLoadingView.m in Sources */,
 				45EC99BC1E02C96B00B76741 /* CTInPathPayment.m in Sources */,
 				45A47DF61E0A912300500D71 /* CTSelectedVehicleView.m in Sources */,
 				45CFD4531E09863C00A57849 /* CTInPathBanner.m in Sources */,
