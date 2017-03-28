@@ -253,28 +253,30 @@
 
 - (void)renderDefaultState
 {
-    [self.cardView renderLoadingView];
+    [self.cardView showLoadingState];
 }
 
 - (void)renderReadyState
 {
-    [self.cardView renderCarouselWithAvailability:self.defaultSearch.vehicleAvailability];
+    [self.cardView showVehicleSelection:self.defaultSearch.vehicleAvailability
+                             pickupDate:self.defaultSearch.pickupDate
+                            dropoffDate:self.defaultSearch.dropoffDate];
 }
 
 - (void)renderFailState
 {
-    [self.cardView renderLoadingView];
+
 }
 
 - (void)renderSelectedState
 {
-    [self.cardView renderVehicleDetails:self.cachedVehicle animated:NO];
+    [self.cardView showVehicleDetails:self.cachedVehicle];
 }
 
 - (void)addCrossSellCardToView:(UIView *)view
 {
     if (!self.cardView) {
-        _cardView = [[CTInPathView alloc] initWithFrame:CGRectZero];
+        _cardView = [CTInPathView new];
         self.cardView.delegate = self;
     }
     
@@ -304,7 +306,7 @@
     [CTDataStore deletePotentialInPathBooking];
     _cachedVehicle = nil;
     if (self.cardView) {
-        [self.cardView renderLoadingView];
+        [self renderReadyState];
     }
 }
 
@@ -358,9 +360,9 @@
     CTRentalSearch *search = [CTRentalSearch instance];
     CTRentalBooking *booking = [[CTRentalBooking alloc] initFromSearch:search];
     CTInPathVehicle *vehicle = [[CTInPathVehicle alloc] init:search];
-    [self.cardView renderVehicleDetails:vehicle animated:YES];
     _cachedVehicle = vehicle;
-
+    [self renderSelectedState];
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(didProduceInPathRequest:vehicle:)]) {
         [CTDataStore cachePotentialInPathBooking:booking];
         [self.delegate didProduceInPathRequest:[CTInPathPayment createInPathRequest:search]

@@ -23,6 +23,7 @@
 @property (nonatomic, strong) CTLabel *vehicleNameLabel;
 @property (nonatomic, strong) UIView *bannerContainer;
 @property (nonatomic, strong) UIView *featureContainer;
+@property (nonatomic, strong) CTLabel *featureLabel;
 @property (nonatomic, strong) CTCarouselFooterView *footerContainer;
 
 @end
@@ -102,19 +103,21 @@
                                                                  metrics:nil
                                                                    views:viewDictionary]];
     //Feature container
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[vehicleNameLabel]-8-[featureContainer]"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[vehicleNameLabel]-4-[featureContainer]"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:viewDictionary]];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[featureContainer]-8-[imageView]"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[featureContainer]-4-[imageView]"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:viewDictionary]];
     
 }
 
-- (void)setVehicle:(CTAvailabilityItem *)vehicle
+- (void)setVehicle:(CTAvailabilityItem *)availabilityItem
+        pickupDate:(NSDate *)pickupDate
+       dropoffDate:(NSDate *)dropoffDate
 {
     self.backgroundColor = [UIColor whiteColor];
     self.layer.cornerRadius = 5;
@@ -122,10 +125,14 @@
     self.layer.borderWidth = 0.5;
     self.layer.masksToBounds = YES;
     
-    [[CTImageCache sharedInstance] cachedImage:vehicle.vehicle.pictureURL completion:^(UIImage *image) {
+    [[CTImageCache sharedInstance] cachedImage:availabilityItem.vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;
     }];
-    self.vehicleNameLabel.attributedText = [self attributedVehicleString:vehicle.vehicle.makeModelName orSimilar:vehicle.vehicle.orSimilar];
+    self.vehicleNameLabel.attributedText = [self attributedVehicleString:availabilityItem.vehicle.makeModelName orSimilar:availabilityItem.vehicle.orSimilar];
+    
+    [self.footerContainer setVehicle:availabilityItem.vehicle pickupDate:pickupDate dropoffDate:dropoffDate];
+    self.featureLabel.text = [self specialOfferText:availabilityItem.vehicle.specialOffers];
+
 }
 
 - (UIView *)renderBanner
@@ -185,25 +192,54 @@
     
     [container addSubview:tickImageView];
     
-    CTLabel *featureLabel = [CTLabel new];
-    featureLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
-    featureLabel.textColor = [UIColor lightGrayColor];
-    featureLabel.text = @"Free GPS";
-    featureLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [featureLabel sizeToFit];
-    [container addSubview: featureLabel];
+    _featureLabel = [CTLabel new];
+    self.featureLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
+    self.featureLabel.textColor = [UIColor lightGrayColor];
+    self.featureLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.featureLabel.numberOfLines = 0;
+    [container addSubview: self.featureLabel];
     
     NSDictionary *viewDictionary = @{
                                      @"tickImageView" : tickImageView,
-                                     @"featureLabel" : featureLabel,
+                                     @"featureLabel" : self.featureLabel,
                                      };
 
     [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tickImageView(10)]-[featureLabel]-0-|" options:0 metrics:nil views:viewDictionary]];
-    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tickImageView(10)]-0-|" options:0 metrics:nil views:viewDictionary]];
     [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[featureLabel]-0-|" options:0 metrics:nil views:viewDictionary]];
+    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[tickImageView(10)]" options:0 metrics:nil views:viewDictionary]];
+    [container addConstraint:[NSLayoutConstraint constraintWithItem:tickImageView attribute:NSLayoutAttributeCenterY relatedBy:0 toItem:self.featureLabel attribute:NSLayoutAttributeCenterY multiplier:1 constant:1]];
     
     return container;
 }
+
+- (NSString *)specialOfferText:(NSArray <CTSpecialOffer *> *)specialOffers
+{
+    
+    if (specialOffers.count == 0) {
+        return @"Great Price!";
+    }
+    
+    CTSpecialOffer *choosenOffer;
+    BOOL priorityOfferFound;
+    for (CTSpecialOffer *so in specialOffers) {
+        if (so.type == CTSpecialOfferTypeCartrawlerCash ||
+            so.type == CTSpecialOfferTypePercentageDiscount ||
+            so.type == CTSpecialOfferTypePercentageDiscountBranded ||
+            so.type == CTSpecialOfferTypeGenericDiscount ||
+            so.type == CTSpecialOfferTypeGenericDiscountBranded)
+        {
+            choosenOffer = so;
+            priorityOfferFound = YES;
+        }
+    }
+    
+    if (priorityOfferFound) {
+        return choosenOffer.shortText;
+    } else {
+        return specialOffers.firstObject.shortText;
+    }
+}
+
 
 - (NSAttributedString *)attributedVehicleString:(NSString *)vehicleName orSimilar:(NSString *)orSimilar
 {

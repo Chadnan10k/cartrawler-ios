@@ -22,9 +22,10 @@
 
 @property (nonatomic, weak) id<CTInPathViewDelegate> delegate;
 
-- (void)renderVehicleDetails:(CTInPathVehicle *)vehicle animated:(BOOL)animated;
-- (void)renderLoadingView;
-
-- (void)renderCarouselWithAvailability:(CTVehicleAvailability *)availability;
+- (void)showLoadingState;
+- (void)showVehicleDetails:(CTInPathVehicle *)vehicle;
+- (void)showVehicleSelection:(CTVehicleAvailability *)availability
+                  pickupDate:(NSDate *)pickupDate
+                 dropoffDate:(NSDate *)dropoffDate;
 
 @end

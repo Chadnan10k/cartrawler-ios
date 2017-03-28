@@ -10,6 +10,5 @@
 
 @interface CTInPathLoadingView : UIView
 
-- (void)animateVehicle;
 
 @end

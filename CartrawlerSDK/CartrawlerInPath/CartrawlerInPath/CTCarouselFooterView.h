@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CartrawlerAPI/CTVehicle.h>
 
 @interface CTCarouselFooterView : UIView
+
+- (void)setVehicle:(CTVehicle *)vehicle
+        pickupDate:(NSDate *)pickupDate
+       dropoffDate:(NSDate *)dropoffDate;
 
 @end

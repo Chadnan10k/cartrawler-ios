@@ -24,21 +24,13 @@
 
 @implementation CTSelectedVehicleView
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
+- (instancetype)init
 {
-    self = [super initWithCoder:aDecoder];
+    self = [super init];
     [self addVehicleImage];
     [self addBanner];
     [self addLabel];
-    return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    [self addVehicleImage];
-    [self addBanner];
-    [self addLabel];
+    self.translatesAutoresizingMaskIntoConstraints = NO;
     return self;
 }
 
@@ -82,7 +74,6 @@
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[label]-8-[cars]" options:0 metrics:nil views:@{@"label" : self.vehicleNameLabel, @"cars" : self.vehicleImageView}]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[banner]-8-[label]-8-|" options:0 metrics:nil views:@{@"label" : self.vehicleNameLabel, @"banner" : self.bannerContainer}]];
-    
 }
 
 - (void)setVehicle:(CTInPathVehicle *)vehicle

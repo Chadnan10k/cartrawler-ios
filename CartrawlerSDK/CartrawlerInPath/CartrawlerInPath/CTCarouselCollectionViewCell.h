@@ -11,6 +11,8 @@
 
 @interface CTCarouselCollectionViewCell : UICollectionViewCell
 
-- (void)setVehicle:(CTAvailabilityItem *)vehicle;
+- (void)setVehicle:(CTAvailabilityItem *)vehicle
+        pickupDate:(NSDate *)pickupDate
+       dropoffDate:(NSDate *)dropoffDate;
 
 @end

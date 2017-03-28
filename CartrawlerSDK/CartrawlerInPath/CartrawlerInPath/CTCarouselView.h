@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) id<CTCarouselDelegate> delegate;
 
-+ (CTCarouselView *)carouselFromAvail:(CTVehicleAvailability *)availability;
-
+- (void)reloadCollectionViewFromAvailability:(CTVehicleAvailability *)availability
+                                  pickupDate:(NSDate *)pickupDate
+                                     dropoff:(NSDate *)dropoffDate;
 @end

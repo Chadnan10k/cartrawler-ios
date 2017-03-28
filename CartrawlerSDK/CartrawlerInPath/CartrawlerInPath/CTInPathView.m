@@ -9,17 +9,17 @@
 #import "CTInPathView.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTLabel.h>
-#import <CartrawlerSDK/CTLayoutManager.h>
 #import "CTInPathLoadingView.h"
 #import "CTSelectedVehicleView.h"
 #import "CTCarouselView.h"
-
+#import <CartrawlerSDK/CTLayoutManager.h>
 @interface CTInPathView() <CTCarouselDelegate>
 
-@property (nonatomic, strong) CTLayoutManager *layoutManager;
 @property (nonatomic, strong) CTInPathLoadingView *loadingView;
-@property (nonatomic, strong) CTSelectedVehicleView *selectedVehicleView;
 @property (nonatomic, strong) CTCarouselView *carouselView;
+@property (nonatomic, strong) CTSelectedVehicleView *selectedVehicleView;
+@property (nonatomic, strong) UIView *bannerContainer;
+@property (nonatomic, strong) UIView *contentContainer;
 
 @end
 
@@ -27,82 +27,48 @@
 
 #pragma mark Render Placeholder
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
+- (instancetype)init
 {
-    self = [super initWithCoder:aDecoder];
-    [self setup];
-    return self;
-}
+    self = [super init];
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    [self setup];
-    return self;
-}
+    _bannerContainer = [self renderBanner];
+    _contentContainer = [UIView new];
+    self.contentContainer.translatesAutoresizingMaskIntoConstraints = NO;
 
-- (void)setup
-{
-    _layoutManager = [CTLayoutManager layoutManagerWithContainer:self];
-    [self renderLoadingView];
-    UIView *banner = [self renderBanner];
-    [self addSubview:banner];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : banner}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view(40)]" options:0 metrics:nil views:@{@"view" : banner}]];
-    
-}
-
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-}
-
-#pragma mark Render Vehicle
-- (void)renderVehicleDetails:(CTInPathVehicle *)vehicle animated:(BOOL)animated
-{
-    
-    [self removeSubviews];
-    
-    _selectedVehicleView = [[CTSelectedVehicleView alloc] initWithFrame:CGRectZero];
-
-    self.selectedVehicleView.backgroundColor = [UIColor whiteColor];
-    self.selectedVehicleView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.selectedVehicleView];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.selectedVehicleView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-50-[view]-50-|" options:0 metrics:nil views:@{@"view" : self.selectedVehicleView}]];
-    
-    [self.selectedVehicleView setVehicle:vehicle];
-    if (animated) {
-        [self.selectedVehicleView animateVehicle];
-    }
-}
-
-- (void)renderLoadingView
-{
-    [self removeSubviews];
-    
     _loadingView = [CTInPathLoadingView new];
+    _carouselView = [CTCarouselView new];
+    _selectedVehicleView = [CTSelectedVehicleView new];
     
-    self.loadingView.backgroundColor = [UIColor whiteColor];
-    self.loadingView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview: self.loadingView];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.loadingView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.loadingView}]];
-
+    self.carouselView.delegate = self;
+    
+    [self layout];
+    
+    return self;
 }
 
-- (void)renderCarouselWithAvailability:(CTVehicleAvailability *)availability
+- (void)layout
 {
-    [self removeSubviews];
+    NSDictionary *viewDictionary = @{
+                                     @"bannerContainer" : self.bannerContainer,
+                                     @"contentContainer" : self.contentContainer
+                                     };
     
-    _carouselView = [CTCarouselView carouselFromAvail:availability];
-    self.carouselView.delegate = self;
-    self.carouselView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.carouselView];
-    
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.carouselView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.carouselView}]];
-    
+    [self addSubview:self.bannerContainer];
+    [self addSubview:self.contentContainer];
+
+    //Banner Container
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[bannerContainer]-0-|" options:0 metrics:nil views:viewDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[bannerContainer(50)]" options:0 metrics:nil views:viewDictionary]];
+    //Content Container
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[contentContainer]-0-|" options:0 metrics:nil views:viewDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[bannerContainer]-0-[contentContainer]-0-|" options:0 metrics:nil views:viewDictionary]];
+}
+
+- (void)renderViewInContainer:(UIView *)view superview:(UIView *)superview
+{
+    [self removeSubviewsFromContentView];
+    [superview addSubview:view];
+    [CTLayoutManager pinView:view toSuperView:superview];
 }
 
 - (UIView *)renderBanner
@@ -124,13 +90,33 @@
     return bannerView;
 }
 
-- (void)removeSubviews
+- (void)removeSubviewsFromContentView
 {
-//    NSArray *viewsToRemove = [self subviews];
-//    for (UIView *v in viewsToRemove) {
-//        
-//        [v removeFromSuperview];
-//    }
+    NSArray *viewsToRemove = [self.contentContainer subviews];
+    for (UIView *v in viewsToRemove) {
+        [v removeFromSuperview];
+    }
+}
+
+- (void)showLoadingState
+{
+    [self renderViewInContainer:self.loadingView superview:self.contentContainer];
+}
+
+- (void)showVehicleDetails:(CTInPathVehicle *)vehicle
+{
+    [self renderViewInContainer:self.selectedVehicleView superview:self.contentContainer];
+    [self.selectedVehicleView setVehicle:vehicle];
+}
+
+- (void)showVehicleSelection:(CTVehicleAvailability *)availability
+                  pickupDate:(NSDate *)pickupDate
+                 dropoffDate:(NSDate *)dropoffDate
+{
+    [self renderViewInContainer:self.carouselView superview:self.contentContainer];
+    [self.carouselView reloadCollectionViewFromAvailability:availability
+                                                 pickupDate:pickupDate
+                                                    dropoff:dropoffDate];
 }
 
 //MARK : Carousel Delegate
