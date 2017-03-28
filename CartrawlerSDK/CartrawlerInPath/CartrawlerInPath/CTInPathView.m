@@ -64,11 +64,12 @@
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[bannerContainer]-0-[contentContainer]-0-|" options:0 metrics:nil views:viewDictionary]];
 }
 
-- (void)renderViewInContainer:(UIView *)view superview:(UIView *)superview
+- (void)renderViewInContainer:(UIView *)view superview:(UIView *)superview padding:(UIEdgeInsets)padding
 {
     [self removeSubviewsFromContentView];
     [superview addSubview:view];
-    [CTLayoutManager pinView:view toSuperView:superview];
+    
+    [CTLayoutManager pinView:view toSuperView:superview padding:padding];
 }
 
 - (UIView *)renderBanner
@@ -100,12 +101,12 @@
 
 - (void)showLoadingState
 {
-    [self renderViewInContainer:self.loadingView superview:self.contentContainer];
+    [self renderViewInContainer:self.loadingView superview:self.contentContainer padding:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 
-- (void)showVehicleDetails:(CTInPathVehicle *)vehicle
+- (void)showVehicleDetails:(CTAvailabilityItem *)vehicle
 {
-    [self renderViewInContainer:self.selectedVehicleView superview:self.contentContainer];
+    [self renderViewInContainer:self.selectedVehicleView superview:self.contentContainer padding:UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.selectedVehicleView setVehicle:vehicle];
 }
 
@@ -113,7 +114,7 @@
                   pickupDate:(NSDate *)pickupDate
                  dropoffDate:(NSDate *)dropoffDate
 {
-    [self renderViewInContainer:self.carouselView superview:self.contentContainer];
+    [self renderViewInContainer:self.carouselView superview:self.contentContainer padding:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.carouselView reloadCollectionViewFromAvailability:availability
                                                  pickupDate:pickupDate
                                                     dropoff:dropoffDate];

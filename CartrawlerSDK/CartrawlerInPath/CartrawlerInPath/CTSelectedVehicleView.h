@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CTInPathVehicle.h"
+#import <CartrawlerAPI/CTAvailabilityItem.h>
 
 @interface CTSelectedVehicleView : UIView
 
-- (void)setVehicle:(CTInPathVehicle *)vehicle;
+- (void)setVehicle:(CTAvailabilityItem *)vehicle;
 - (void)animateVehicle;
 
 @end

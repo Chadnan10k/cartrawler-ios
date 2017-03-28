@@ -55,12 +55,15 @@ typedef NS_ENUM(NSUInteger, CTLayoutManagerOrientation) {
  */
 + (void)pinView:(UIView *)view toSuperView:(UIView *)superview;
 
-- (void)layoutView:(UIView *)subview
-      previousView:(UIView *)previousView
-          nextView:(UIView *)nextView
-           padding:(UIEdgeInsets)padding
-         container:(UIView *)container
-       orientation:(CTLayoutManagerOrientation)orientation
-           justify:(BOOL)justify;
+/**
+ Convenience method to pin a view to a superview
+ 
+ @param view a view
+ @param superview a superview
+ @param padding padding for the view
+ */
++ (void)pinView:(UIView *)view
+    toSuperView:(UIView *)superview
+        padding:(UIEdgeInsets)padding;
 
 @end

@@ -23,7 +23,7 @@
 @property (nonatomic, weak) id<CTInPathViewDelegate> delegate;
 
 - (void)showLoadingState;
-- (void)showVehicleDetails:(CTInPathVehicle *)vehicle;
+- (void)showVehicleDetails:(CTAvailabilityItem *)vehicle;
 - (void)showVehicleSelection:(CTVehicleAvailability *)availability
                   pickupDate:(NSDate *)pickupDate
                  dropoffDate:(NSDate *)dropoffDate;

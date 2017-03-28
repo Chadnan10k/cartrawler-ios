@@ -9,9 +9,20 @@
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTVehicle.h>
 
+@protocol CTCarouselFooterDelegate <NSObject>
+
+- (void)didTapFooterButton;
+
+@end
+
 @interface CTCarouselFooterView : UIView
 
+@property (nonatomic, weak) id <CTCarouselFooterDelegate> delegate;
+
 - (void)setVehicle:(CTVehicle *)vehicle
+       buttonTitle:(NSString *)buttonTitle
+     disableButton:(BOOL)disableButton
+       perDayPrice:(BOOL)perDayPrice
         pickupDate:(NSDate *)pickupDate
        dropoffDate:(NSDate *)dropoffDate;
 

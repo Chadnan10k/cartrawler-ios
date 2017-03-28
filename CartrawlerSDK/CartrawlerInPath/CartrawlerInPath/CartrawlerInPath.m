@@ -28,7 +28,7 @@
 @property (nonatomic) BOOL didFailToFetchResults;
 @property (nonatomic) BOOL didFetchResults;
 
-@property (nonatomic, strong) CTInPathVehicle *cachedVehicle;
+@property (nonatomic, strong) CTAvailabilityItem *cachedVehicle;
 
 @end
 
@@ -360,7 +360,7 @@
     CTRentalSearch *search = [CTRentalSearch instance];
     CTRentalBooking *booking = [[CTRentalBooking alloc] initFromSearch:search];
     CTInPathVehicle *vehicle = [[CTInPathVehicle alloc] init:search];
-    _cachedVehicle = vehicle;
+    _cachedVehicle = search.selectedVehicle;
     [self renderSelectedState];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(didProduceInPathRequest:vehicle:)]) {

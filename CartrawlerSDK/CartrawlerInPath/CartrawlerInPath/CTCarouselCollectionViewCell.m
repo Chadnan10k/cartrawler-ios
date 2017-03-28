@@ -130,7 +130,12 @@
     }];
     self.vehicleNameLabel.attributedText = [self attributedVehicleString:availabilityItem.vehicle.makeModelName orSimilar:availabilityItem.vehicle.orSimilar];
     
-    [self.footerContainer setVehicle:availabilityItem.vehicle pickupDate:pickupDate dropoffDate:dropoffDate];
+    [self.footerContainer setVehicle:availabilityItem.vehicle
+                         buttonTitle:@"View"
+                       disableButton:YES
+                         perDayPrice:YES
+                          pickupDate:pickupDate
+                         dropoffDate:dropoffDate];
     self.featureLabel.text = [self specialOfferText:availabilityItem.vehicle.specialOffers];
 
 }
@@ -239,7 +244,6 @@
         return specialOffers.firstObject.shortText;
     }
 }
-
 
 - (NSAttributedString *)attributedVehicleString:(NSString *)vehicleName orSimilar:(NSString *)orSimilar
 {

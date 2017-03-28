@@ -8,14 +8,22 @@
 
 #import "CTCarouselFooterView.h"
 #import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CTButton.h>
 
 @interface CTCarouselFooterView()
 
 @property (nonatomic, strong) UILabel *priceLabel;
+@property (nonatomic, strong) UILabel *perDayLabel;
+@property (nonatomic, strong) CTButton *button;
 
 @end
 
 @implementation CTCarouselFooterView
+
+- (void)setDisableButtonInteraction:(BOOL)disableButtonInteraction
+{
+    self.button.userInteractionEnabled = !disableButtonInteraction;
+}
 
 - (instancetype)init
 {
@@ -51,70 +59,81 @@
                                                                  metrics:nil
                                                                    views:@{@"view" : self.priceLabel}]];
     
-    UILabel *perDayLabel = [UILabel new];
-    perDayLabel.text = @"per day";
-    perDayLabel.textAlignment = NSTextAlignmentLeft;
-    perDayLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    perDayLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
-    [self addSubview:perDayLabel];
+    _perDayLabel = [UILabel new];
+    self.perDayLabel.text = @"per day";
+    self.perDayLabel.textAlignment = NSTextAlignmentLeft;
+    self.perDayLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.perDayLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
+    [self addSubview:self.perDayLabel];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[view]-0-[priceLabel]"
                                                                  options:0
                                                                  metrics:nil
-                                                                   views:@{@"view" : perDayLabel, @"priceLabel" : self.priceLabel}]];
+                                                                   views:@{@"view" : self.perDayLabel, @"priceLabel" : self.priceLabel}]];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[view]-8-|"
                                                                  options:0
                                                                  metrics:nil
-                                                                   views:@{@"view" : perDayLabel}]];
+                                                                   views:@{@"view" : self.perDayLabel}]];
     
-    UILabel *fakeButton = [UILabel new];
-    fakeButton.translatesAutoresizingMaskIntoConstraints = NO;
-    fakeButton.backgroundColor = [UIColor clearColor];
-    fakeButton.layer.borderWidth = 0.5;
-    fakeButton.layer.borderColor = [CTAppearance instance].headerTitleColor.CGColor;
-    fakeButton.layer.cornerRadius = 5;
-    fakeButton.text = @"View";
-    fakeButton.textColor = [CTAppearance instance].headerTitleColor;
-    fakeButton.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:14];
-    fakeButton.userInteractionEnabled = NO;
-    fakeButton.textAlignment = NSTextAlignmentCenter;
+    _button = [[CTButton alloc] init:[UIColor clearColor]
+                                       fontColor:[CTAppearance instance].headerTitleColor
+                                        boldFont:YES
+                                     borderColor:[CTAppearance instance].headerTitleColor];
+    [self.button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self addSubview:fakeButton];
+    [self.button setTitle:@"View" forState:UIControlStateNormal];
+    
+    self.button.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.button];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[button]-4-|"
                                                                  options:0
                                                                  metrics:nil
-                                                                   views:@{@"button" : fakeButton}]];
+                                                                   views:@{@"button" : self.button}]];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[button]-8-|"
                                                                  options:0
                                                                  metrics:nil
-                                                                   views:@{@"button" : fakeButton}]];
+                                                                   views:@{@"button" : self.button}]];
     
-    [fakeButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[button(0)]"
+    [self.button addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[button(0)]"
                                                                        options:0
                                                                        metrics:nil
-                                                                         views:@{@"button" : fakeButton}]];
-    
-    for (NSLayoutConstraint *c in fakeButton.constraints) {
-        if (c.firstAttribute == NSLayoutAttributeWidth) {
-            c.constant = fakeButton.intrinsicContentSize.width + 24;
-        }
-    }
+                                                                         views:@{@"button" : self.button}]];
     
     return self;
 }
 
 - (void)setVehicle:(CTVehicle *)vehicle
+       buttonTitle:(NSString *)buttonTitle
+     disableButton:(BOOL)disableButton
+       perDayPrice:(BOOL)perDayPrice
         pickupDate:(NSDate *)pickupDate
        dropoffDate:(NSDate *)dropoffDate
+
 {
-    self.priceLabel.attributedText = [self attributedPriceString:[self pricePerDay:pickupDate
-                                                                  dropoffDate:dropoffDate
-                                                                      vehicle:vehicle
-                                                                      currencyCode:vehicle.currencyCode]
-                                                                     currency:vehicle.currencyCode];
+    [self.button setTitle:buttonTitle forState:UIControlStateNormal];
+    self.button.userInteractionEnabled = !disableButton;
+    
+    if (perDayPrice) {
+        self.perDayLabel.text = @"per day";
+        self.priceLabel.attributedText = [self attributedPriceString:[self pricePerDay:pickupDate
+                                                                           dropoffDate:dropoffDate
+                                                                               vehicle:vehicle
+                                                                          currencyCode:vehicle.currencyCode]
+                                                            currency:vehicle.currencyCode];
+    } else {
+        self.perDayLabel.text = @"total";
+        self.priceLabel.attributedText = [self attributedPriceString:vehicle.totalPriceForThisVehicle.stringValue
+                                                            currency:vehicle.currencyCode];
+    }
+    
+    for (NSLayoutConstraint *c in self.button.constraints) {
+        if (c.firstAttribute == NSLayoutAttributeWidth) {
+            c.constant = self.button.intrinsicContentSize.width + 24;
+        }
+    }
 
 }
 
@@ -159,6 +178,13 @@
     [mutString appendAttributedString:currencyStr];
     
     return mutString;
+}
+
+- (void)buttonTapped:(id)sender
+{
+    if (self.delegate) {
+        [self.delegate didTapFooterButton];
+    }
 }
 
 
