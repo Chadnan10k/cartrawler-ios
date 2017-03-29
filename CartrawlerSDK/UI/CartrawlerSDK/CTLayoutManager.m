@@ -190,16 +190,31 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
     return view;
 }
 
-+ (void)pinView:(UIView *)view toSuperView:(UIView *)superview {
-    view.translatesAutoresizingMaskIntoConstraints = NO;
-    [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:@{@"view" : view}]];
-    [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:@{@"view" : view}]];
++ (void)pinView:(UIView *)view toSuperView:(UIView *)superview
+{
+    [self pinView:view toSuperView:superview padding:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
+
++ (void)pinView:(UIView *)view
+    toSuperView:(UIView *)superview
+        padding:(UIEdgeInsets)padding
+ {
+     NSDictionary *metrics = @{CTLayoutTopPaddingKey : @(padding.top),
+                               CTLayoutBottomPaddingKey : @(padding.bottom),
+                               CTLayoutLeftPaddingKey : @(padding.left),
+                               CTLayoutRightPaddingKey : @(padding.right)};
+     
+     view.translatesAutoresizingMaskIntoConstraints = NO;
+     [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-leftPadding-[view]-rightPadding-|"
+                                                                       options:0
+                                                                       metrics:metrics
+                                                                         views:@{@"view" : view}]];
+     [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-topPadding-[view]-topPadding-|"
+                                                                       options:0
+                                                                       metrics:metrics
+                                                                         views:@{@"view" : view}]];
+}
+
+
 
 @end

@@ -18,4 +18,18 @@ NSString * const CTInPathWidgetText = @"widget_text";
 
 NSString * const CTInPathWidgetTitleAdded = @"widget_title_added";
 
+//NEW
+
+NSString * const CTInPathWidgetPerDay = @"widget_per_day";
+
+NSString * const CTInPathWidgetView = @"widget_view_button";
+
+NSString * const CTInPathWidgetSeeAll = @"widget_see_all_button";
+
+NSString * const CTInPathWidgetBannerTitle = @"widget_banner_title";
+
+NSString * const CTInPathWidgetRemove = @"widget_remove_button";
+
+NSString * const CTInPathWidgetTotal = @"widget_remove_total";
+
 @end

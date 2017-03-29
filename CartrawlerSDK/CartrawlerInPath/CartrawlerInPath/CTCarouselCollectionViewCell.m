@@ -1,22 +1,23 @@
 //
-//  CTSelectedVehicleView.m
+//  CTCarouselCollectionViewCell.m
 //  CartrawlerInPath
 //
-//  Created by Lee Maguire on 21/12/2016.
-//  Copyright © 2016 Cartrawler. All rights reserved.
+//  Created by Lee Maguire on 24/03/2017.
+//  Copyright © 2017 Cartrawler. All rights reserved.
 //
 
-#import "CTSelectedVehicleView.h"
+#import "CTCarouselCollectionViewCell.h"
 #import "CTInPathBanner.h"
 #import "CTCarouselFooterView.h"
-#import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTImageCache.h>
 #import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerSDK/CTLabel.h>
 #import "CTInPathLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
+#import <CartrawlerSDK/CTLayoutManager.h>
 
-@interface CTSelectedVehicleView() <CTCarouselFooterDelegate>
+@interface CTCarouselCollectionViewCell()
 
 @property (nonatomic, strong) UIImageView *vehicleImageView;
 @property (nonatomic, strong) CTLabel *vehicleNameLabel;
@@ -27,7 +28,7 @@
 
 @end
 
-@implementation CTSelectedVehicleView
+@implementation CTCarouselCollectionViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -49,9 +50,6 @@
     [self addSubview:self.vehicleNameLabel];
     
     [self layout];
-    
-    self.footerContainer.delegate = self;
-    
     return self;
 }
 
@@ -115,13 +113,11 @@
                                                                  metrics:nil
                                                                    views:viewDictionary]];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[self(150)]"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:@{@"self" : self}]];
 }
 
-- (void)setVehicle:(CTAvailabilityItem *)item;
+- (void)setVehicle:(CTAvailabilityItem *)availabilityItem
+        pickupDate:(NSDate *)pickupDate
+       dropoffDate:(NSDate *)dropoffDate
 {
     self.backgroundColor = [UIColor whiteColor];
     self.layer.cornerRadius = 5;
@@ -129,19 +125,19 @@
     self.layer.borderWidth = 0.5;
     self.layer.masksToBounds = YES;
     
-    [[CTImageCache sharedInstance] cachedImage:item.vehicle.pictureURL completion:^(UIImage *image) {
+    [[CTImageCache sharedInstance] cachedImage:availabilityItem.vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;
     }];
-    self.vehicleNameLabel.attributedText = [self attributedVehicleString:item.vehicle.makeModelName orSimilar:item.vehicle.orSimilar];
+    self.vehicleNameLabel.attributedText = [self attributedVehicleString:availabilityItem.vehicle.makeModelName orSimilar:availabilityItem.vehicle.orSimilar];
     
-    self.featureLabel.text = [self specialOfferText:item.vehicle.specialOffers];
-    
-    [self.footerContainer setVehicle:item.vehicle
-                         buttonTitle:CTLocalizedString(CTInPathWidgetRemove)
-                       disableButton:NO
-                         perDayPrice:NO
-                          pickupDate:nil
-                         dropoffDate:nil];
+    [self.footerContainer setVehicle:availabilityItem.vehicle
+                         buttonTitle:CTLocalizedString(CTInPathWidgetView)
+                       disableButton:YES
+                         perDayPrice:YES
+                          pickupDate:pickupDate
+                         dropoffDate:dropoffDate];
+    self.featureLabel.text = [self specialOfferText:availabilityItem.vehicle.specialOffers];
+
 }
 
 - (UIView *)renderBanner
@@ -155,9 +151,9 @@
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     
     CTInPathBanner *banner = [[CTInPathBanner alloc] init];
-    [banner addToSuperViewWithString:CTLocalizedString(CTInPathWidgetTitleAdded) superview:bannerView];
+    [banner addToSuperViewWithString:CTLocalizedString(CTInPathWidgetBannerTitle) superview:bannerView];
     [banner setIcon:[UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil]
-    backgroundColor:[CTAppearance instance].merchandisingGreatValue
+    backgroundColor:[UIColor colorWithRed:191.0/255.0 green:61.0/255.0 blue:43.0/255.0 alpha:1]
           textColor:[UIColor whiteColor]];
     
     return bannerView;
@@ -212,7 +208,7 @@
                                      @"tickImageView" : tickImageView,
                                      @"featureLabel" : self.featureLabel,
                                      };
-    
+
     [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tickImageView(10)]-[featureLabel]-0-|" options:0 metrics:nil views:viewDictionary]];
     [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[featureLabel]-0-|" options:0 metrics:nil views:viewDictionary]];
     [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[tickImageView(10)]" options:0 metrics:nil views:viewDictionary]];
@@ -270,13 +266,16 @@
     return mutString;
 }
 
-//MARK: CTFooterDelegate
-
-- (void)didTapFooterButton
+- (void)animateVehicle
 {
-    if (self.delegate) {
-        [self.delegate didTapRemoveVehicle];
-    }
+    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:0.1 options:0 animations:^{
+        self.vehicleImageView.transform = CGAffineTransformMakeScale(1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.vehicleImageView.transform = CGAffineTransformMakeScale(1, 1);
+        }];
+    }];
 }
+
 
 @end

@@ -11,5 +11,6 @@
 @interface NSNumber (CartrawlerSDK)
 
 - (NSString *)numberStringWithCurrencyCode;
+- (NSString *)twoDecimalPlaces;
 
 @end

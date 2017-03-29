@@ -7,11 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CTInPathVehicle.h"
+#import <CartrawlerAPI/CTAvailabilityItem.h>
+
+@protocol CTSelectedVehicleDelegate <NSObject>
+
+- (void)didTapRemoveVehicle;
+
+@end
 
 @interface CTSelectedVehicleView : UIView
 
-- (void)setVehicle:(CTInPathVehicle *)vehicle;
+@property (weak, nonatomic) id<CTSelectedVehicleDelegate> delegate;
+
+- (void)setVehicle:(CTAvailabilityItem *)vehicle;
 - (void)animateVehicle;
 
 @end

@@ -22,7 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[RYRRentalManager instance] setupInPath:self.cardContainer];
+    [RYRRentalManager instance].parent = self;
+
+    [[RYRRentalManager instance] setupInPath:self.cardContainer parentVC:self];
     [RYRRentalManager instance].callToAction = self.bookButton;
     self.endpointSwitch.on = [RYRRentalManager instance].currentEndpoint;
     
@@ -58,5 +60,9 @@
     [[RYRRentalManager instance] changeRoundTrip:s.isOn];
 }
 
+- (IBAction)refresh:(id)sender {
+    [[RYRRentalManager instance] reset];
+
+}
 
 @end

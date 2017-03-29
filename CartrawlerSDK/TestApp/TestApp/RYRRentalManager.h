@@ -17,6 +17,7 @@
 @property (nonatomic, strong) CartrawlerSDK *sdk;
 @property (nonatomic, strong) CartrawlerRental *rental;
 @property (nonatomic, strong) CartrawlerInPath *inPath;
+@property (nonatomic, strong) UIViewController *parent;
 
 @property (strong, nonatomic) UIButton *callToAction;//bad practice passing this obj but who cares its a test app.
 
@@ -27,12 +28,14 @@
 
 
 - (void)reset;
-- (void)setupInPath:(UIView *)view;
+- (void)setupInPath:(UIView *)view parentVC:(UIViewController *)parentVC;
 - (void)inPathOpenEngine:(UIViewController *)vc;
 - (void)removeVehicle;
 - (void)changeRoundTrip:(BOOL)isRoundTrip;
 - (void)mockPayment;
 
 - (BOOL)currentEndpoint;
+
+- (void)refreshInPath;
 
 @end

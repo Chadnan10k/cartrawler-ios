@@ -21,4 +21,13 @@
     return [f stringFromNumber:self];
 }
 
+- (NSString *)twoDecimalPlaces
+{
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.minimumFractionDigits = 2;
+    f.maximumFractionDigits = 2;
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    return [f stringFromNumber:self];
+}
+
 @end
