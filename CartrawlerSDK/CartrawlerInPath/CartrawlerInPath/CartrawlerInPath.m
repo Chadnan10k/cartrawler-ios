@@ -386,7 +386,7 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(didProduceInPathRequest:vehicle:)]) {
         [CTDataStore cachePotentialInPathBooking:booking];
         [self.delegate didProduceInPathRequest:[CTInPathPayment createInPathRequest:search]
-                                       vehicle:[[CTInPathVehicle alloc] init:search]];
+                                       vehicle:vehicle];
     }
 }
 

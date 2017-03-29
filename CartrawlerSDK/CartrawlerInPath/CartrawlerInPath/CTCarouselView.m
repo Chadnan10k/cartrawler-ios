@@ -145,7 +145,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    int count = self.availability.items.count >= 5 ? 5 : self.availability.items.count;
+    NSUInteger count = self.availability.items.count >= 5 ? 5 : self.availability.items.count;
     self.pageControl.numberOfPages = count;
     return count;
 }

@@ -225,7 +225,7 @@
     }
     
     CTSpecialOffer *choosenOffer;
-    BOOL priorityOfferFound;
+    BOOL priorityOfferFound = NO;
     for (CTSpecialOffer *so in specialOffers) {
         if (so.type == CTSpecialOfferTypeCartrawlerCash ||
             so.type == CTSpecialOfferTypePercentageDiscount ||

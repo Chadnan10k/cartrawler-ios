@@ -20,6 +20,5 @@
 @property (weak, nonatomic) id<CTSelectedVehicleDelegate> delegate;
 
 - (void)setVehicle:(CTAvailabilityItem *)vehicle;
-- (void)animateVehicle;
 
 @end
