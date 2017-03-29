@@ -12,12 +12,15 @@
 #import "CTInPathLoadingView.h"
 #import "CTSelectedVehicleView.h"
 #import "CTCarouselView.h"
+#import "CTInPathErrorView.h"
 #import <CartrawlerSDK/CTLayoutManager.h>
-@interface CTInPathView() <CTCarouselDelegate>
+@interface CTInPathView() <CTCarouselDelegate, CTSelectedVehicleDelegate>
 
 @property (nonatomic, strong) CTInPathLoadingView *loadingView;
 @property (nonatomic, strong) CTCarouselView *carouselView;
 @property (nonatomic, strong) CTSelectedVehicleView *selectedVehicleView;
+@property (nonatomic, strong) CTInPathErrorView *errorView;
+
 @property (nonatomic, strong) UIView *bannerContainer;
 @property (nonatomic, strong) UIView *contentContainer;
 
@@ -38,9 +41,11 @@
     _loadingView = [CTInPathLoadingView new];
     _carouselView = [CTCarouselView new];
     _selectedVehicleView = [CTSelectedVehicleView new];
-    
+    _errorView = [CTInPathErrorView new];
+
     self.carouselView.delegate = self;
-    
+    self.selectedVehicleView.delegate = self;
+
     [self layout];
     
     return self;
@@ -120,6 +125,11 @@
                                                     dropoff:dropoffDate];
 }
 
+- (void)showErrorState
+{
+    [self renderViewInContainer:self.errorView superview:self.contentContainer padding:UIEdgeInsetsMake(8, 8, 8, 8)];
+}
+
 //MARK : Carousel Delegate
 
 - (void)didSelectVehicle:(CTAvailabilityItem *)item
@@ -133,6 +143,15 @@
 {
     if (self.delegate) {
         [self.delegate didTapShowAll];
+    }
+}
+
+//MARK : Selected Vehicle Delegate
+
+- (void)didTapRemoveVehicle
+{
+    if (self.delegate) {
+        [self.delegate didTapRemoveVehicle];
     }
 }
 

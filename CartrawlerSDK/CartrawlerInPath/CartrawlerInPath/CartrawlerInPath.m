@@ -53,6 +53,7 @@
                         passegers:(nonnull NSArray<CTPassenger *> *)passegers
              parentViewController:(nonnull UIViewController *)parentViewController;
 {
+    [self renderDefaultState];
     _parentViewController = parentViewController;
     [self setSearchDetails:currency flightNo:flightNumber passengers:passegers pickupDate:pickupDate returnDate:returnDate];
     [self performLocationSearch:IATACode ?: @""];
@@ -133,6 +134,9 @@
             if (error) {
                 [[CTAnalytics instance] tagError:@"inpath" event:@"no location" message:[NSString stringWithFormat:@"cannot get in path location: %@", IATACode]];
                 _didFailToFetchResults = YES;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf renderFailState];
+                });
             } else {
                 if (response) {
                     _didFailToFetchResults = NO;
@@ -163,6 +167,9 @@
      if (error) {
          [[CTAnalytics instance] tagError:@"inpath" event:@"Avail fail" message:error.errorMessage];
          _didFailToFetchResults = YES;
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [weakSelf renderFailState];
+         });
      } else if (response.items.count > 0) {
          [CTRentalSearch instance].vehicleAvailability = response;
          [[CTRentalSearch instance] setEngineInfoFromAvail];
@@ -174,6 +181,9 @@
      } else {
          [[CTAnalytics instance] tagError:@"inpath" event:@"no items" message:@"no vehicles available"];
          _didFailToFetchResults = YES;
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [weakSelf renderFailState];
+         });
      }
     }];
 }
@@ -253,24 +263,32 @@
 
 - (void)renderDefaultState
 {
-    [self.cardView showLoadingState];
+    if (self.cardView) {
+        [self.cardView showLoadingState];
+    }
 }
 
 - (void)renderReadyState
 {
-    [self.cardView showVehicleSelection:self.defaultSearch.vehicleAvailability
-                             pickupDate:self.defaultSearch.pickupDate
-                            dropoffDate:self.defaultSearch.dropoffDate];
+    if (self.cardView) {
+        [self.cardView showVehicleSelection:self.defaultSearch.vehicleAvailability
+                                 pickupDate:self.defaultSearch.pickupDate
+                                dropoffDate:self.defaultSearch.dropoffDate];
+    }
 }
 
 - (void)renderFailState
 {
-
+    if (self.cardView) {
+        [self.cardView showErrorState];
+    }
 }
 
 - (void)renderSelectedState
 {
-    [self.cardView showVehicleDetails:self.cachedVehicle];
+    if (self.cardView) {
+        [self.cardView showVehicleDetails:self.cachedVehicle];
+    }
 }
 
 - (void)addCrossSellCardToView:(UIView *)view
@@ -282,6 +300,8 @@
     
     if (self.cachedVehicle) {
         [self renderSelectedState];
+    } else if (self.defaultSearch.vehicleAvailability) {
+        [self renderReadyState];
     } else {
         [self renderDefaultState];
     }
@@ -380,6 +400,11 @@
 - (void)didTapShowAll
 {
     [self presentCarRentalWithFlightDetails:self.parentViewController];
+}
+
+- (void)didTapRemoveVehicle
+{
+    [self removeVehicle];
 }
 
 @end

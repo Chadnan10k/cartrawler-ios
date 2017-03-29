@@ -18,4 +18,18 @@ extern NSString * const CTInPathWidgetText;
 
 extern NSString * const CTInPathWidgetTitleAdded;
 
+//NEW
+
+extern NSString * const CTInPathWidgetPerDay;
+
+extern NSString * const CTInPathWidgetView;
+
+extern NSString * const CTInPathWidgetSeeAll;
+
+extern NSString * const CTInPathWidgetBannerTitle;
+
+extern NSString * const CTInPathWidgetRemove;
+
+extern NSString * const CTInPathWidgetTotal;
+
 @end

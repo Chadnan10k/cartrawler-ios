@@ -60,5 +60,9 @@
     [[RYRRentalManager instance] changeRoundTrip:s.isOn];
 }
 
+- (IBAction)refresh:(id)sender {
+    [[RYRRentalManager instance] reset];
+
+}
 
 @end

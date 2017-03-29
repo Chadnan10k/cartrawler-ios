@@ -131,7 +131,7 @@
     self.vehicleNameLabel.attributedText = [self attributedVehicleString:availabilityItem.vehicle.makeModelName orSimilar:availabilityItem.vehicle.orSimilar];
     
     [self.footerContainer setVehicle:availabilityItem.vehicle
-                         buttonTitle:@"View"
+                         buttonTitle:CTLocalizedString(CTInPathWidgetView)
                        disableButton:YES
                          perDayPrice:YES
                           pickupDate:pickupDate
@@ -151,7 +151,7 @@
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     
     CTInPathBanner *banner = [[CTInPathBanner alloc] init];
-    [banner addToSuperViewWithString:@"Deal of the day" superview:bannerView];
+    [banner addToSuperViewWithString:CTLocalizedString(CTInPathWidgetBannerTitle) superview:bannerView];
     [banner setIcon:[UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil]
     backgroundColor:[UIColor colorWithRed:191.0/255.0 green:61.0/255.0 blue:43.0/255.0 alpha:1]
           textColor:[UIColor whiteColor]];

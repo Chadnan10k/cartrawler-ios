@@ -15,6 +15,7 @@
 @required
 - (void)didTapVehicle:(CTAvailabilityItem *)item;
 - (void)didTapShowAll;
+- (void)didTapRemoveVehicle;
 
 @end
 
@@ -23,6 +24,7 @@
 @property (nonatomic, weak) id<CTInPathViewDelegate> delegate;
 
 - (void)showLoadingState;
+- (void)showErrorState;
 - (void)showVehicleDetails:(CTAvailabilityItem *)vehicle;
 - (void)showVehicleSelection:(CTVehicleAvailability *)availability
                   pickupDate:(NSDate *)pickupDate

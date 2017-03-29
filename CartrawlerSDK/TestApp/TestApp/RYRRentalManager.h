@@ -36,4 +36,6 @@
 
 - (BOOL)currentEndpoint;
 
+- (void)refreshInPath;
+
 @end

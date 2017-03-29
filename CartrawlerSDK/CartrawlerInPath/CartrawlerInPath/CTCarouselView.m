@@ -9,6 +9,8 @@
 #import "CTCarouselView.h"
 #import "CTCarouselCollectionViewCell.h"
 #import <CartrawlerSDK/CTAppearance.h>
+#import "CTInPathLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTCarouselView() <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
 
@@ -73,13 +75,8 @@
     //View page control
     [self addSubview:self.pageControl];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[pageControl]-4-|" options:0 metrics:nil views:viewDictionary]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pageControl
-                                                     attribute:NSLayoutAttributeCenterX
-                                                     relatedBy:0
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeCenterX
-                                                    multiplier:1
-                                                      constant:1]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[pageControl]" options:0 metrics:nil views:viewDictionary]];
+
     
     [self.viewAllButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[viewAllButton(0)]"
                                                                                options:0
@@ -113,7 +110,7 @@
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.translatesAutoresizingMaskIntoConstraints = NO;
-    [button setTitle:@"SEE ALL" forState:UIControlStateNormal];
+    [button setTitle:CTLocalizedString(CTInPathWidgetSeeAll) forState:UIControlStateNormal];
     [button addTarget:self action:@selector(viewAllAction:) forControlEvents:UIControlEventTouchUpInside];
     button.titleLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:17];
     [button setTitleColor:[CTAppearance instance].headerTitleColor forState:UIControlStateNormal];

@@ -23,26 +23,40 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVk-QN-XbT">
                                 <rect key="frame" x="8" y="581" width="359" height="66"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="PIQ-7R-Byy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <state key="normal" title="Standalone"/>
+                                <state key="normal" title="Standalone">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="self.layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="openCarRental:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XiP-Zb-yjW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQj-ud-r0u">
-                                <rect key="frame" x="16" y="490" width="343" height="71"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="8" y="490" width="359" height="71"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="iiD-JL-99E"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="In Path">
-                                    <color key="titleColor" red="0.43345346171800436" green="1" blue="0.3055113431990254" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="self.layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="9HL-5W-v1q" kind="show" id="NFW-kQ-zLK"/>
                                 </connections>
@@ -62,12 +76,12 @@
                         <constraints>
                             <constraint firstItem="egf-cx-egN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="7Jk-uW-3c7"/>
                             <constraint firstItem="JVk-QN-XbT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="BDl-bf-omz"/>
-                            <constraint firstItem="pQj-ud-r0u" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="CYb-Ia-Ezs"/>
+                            <constraint firstItem="pQj-ud-r0u" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="CYb-Ia-Ezs"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JVk-QN-XbT" secondAttribute="bottom" constant="20" id="GIC-y8-eUT"/>
                             <constraint firstItem="JVk-QN-XbT" firstAttribute="top" secondItem="pQj-ud-r0u" secondAttribute="bottom" constant="20" id="MJB-f2-iAB"/>
                             <constraint firstAttribute="trailing" secondItem="JVk-QN-XbT" secondAttribute="trailing" constant="8" id="TtD-Xi-igI"/>
                             <constraint firstItem="egf-cx-egN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="hmL-k9-IP0"/>
-                            <constraint firstAttribute="trailing" secondItem="pQj-ud-r0u" secondAttribute="trailing" constant="16" id="uXo-QF-Xhz"/>
+                            <constraint firstAttribute="trailing" secondItem="pQj-ud-r0u" secondAttribute="trailing" constant="8" id="uXo-QF-Xhz"/>
                             <constraint firstAttribute="trailing" secondItem="egf-cx-egN" secondAttribute="trailing" constant="8" id="vpr-n4-A5Q"/>
                         </constraints>
                     </view>
@@ -99,18 +113,18 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Lb-Lq-5Dg" id="aIw-gX-HkP">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="View Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vVl-Wv-kVf">
-                                            <rect key="frame" x="15" y="5" width="129.5" height="20.5"/>
+                                            <rect key="frame" x="15" y="4" width="130" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="View Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PKi-TU-Wmj">
-                                            <rect key="frame" x="15" y="25.5" width="61.5" height="14.5"/>
+                                            <rect key="frame" x="15" y="25" width="62" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -158,7 +172,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5h-mR-ZJM">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="140"/>
-                                        <color key="backgroundColor" red="0.65376514880000003" green="0.78721816980000003" blue="0.51248123329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -247,6 +261,13 @@
                             <constraint firstItem="DrR-L8-9q1" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="8" id="zmY-gC-KfW"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Cnq-ag-KoJ">
+                        <barButtonItem key="rightBarButtonItem" title="View Library" systemItem="refresh" id="gRZ-Pl-F4e">
+                            <connections>
+                                <action selector="refresh:" destination="9HL-5W-v1q" id="iLJ-i5-GuK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cardContainer" destination="K5h-mR-ZJM" id="uHO-gp-Edd"/>
                         <outlet property="endpointSwitch" destination="2f7-yJ-BcB" id="lRg-Vf-YCy"/>
@@ -262,7 +283,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zsj-16-95s" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c1K-lO-dAv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="c1K-lO-dAv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

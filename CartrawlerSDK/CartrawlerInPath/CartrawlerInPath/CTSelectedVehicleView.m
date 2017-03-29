@@ -137,7 +137,7 @@
     self.featureLabel.text = [self specialOfferText:item.vehicle.specialOffers];
     
     [self.footerContainer setVehicle:item.vehicle
-                         buttonTitle:@"Remove"
+                         buttonTitle:CTLocalizedString(CTInPathWidgetRemove)
                        disableButton:NO
                          perDayPrice:NO
                           pickupDate:nil
@@ -155,7 +155,7 @@
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     
     CTInPathBanner *banner = [[CTInPathBanner alloc] init];
-    [banner addToSuperViewWithString:@"Car added" superview:bannerView];
+    [banner addToSuperViewWithString:CTLocalizedString(CTInPathWidgetTitleAdded) superview:bannerView];
     [banner setIcon:[UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil]
     backgroundColor:[CTAppearance instance].merchandisingGreatValue
           textColor:[UIColor whiteColor]];
@@ -274,7 +274,9 @@
 
 - (void)didTapFooterButton
 {
-    
+    if (self.delegate) {
+        [self.delegate didTapRemoveVehicle];
+    }
 }
 
 @end

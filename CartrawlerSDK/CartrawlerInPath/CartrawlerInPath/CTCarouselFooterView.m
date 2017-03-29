@@ -9,6 +9,9 @@
 #import "CTCarouselFooterView.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTButton.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
+#import "CTInPathLocalizationConstants.h"
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTCarouselFooterView()
 
@@ -60,7 +63,6 @@
                                                                    views:@{@"view" : self.priceLabel}]];
     
     _perDayLabel = [UILabel new];
-    self.perDayLabel.text = @"per day";
     self.perDayLabel.textAlignment = NSTextAlignmentLeft;
     self.perDayLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.perDayLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:12];
@@ -82,7 +84,7 @@
                                      borderColor:[CTAppearance instance].headerTitleColor];
     [self.button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.button setTitle:@"View" forState:UIControlStateNormal];
+    [self.button setTitle: CTLocalizedString(CTInPathWidgetView) forState:UIControlStateNormal];
     
     self.button.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.button];
@@ -117,15 +119,15 @@
     self.button.userInteractionEnabled = !disableButton;
     
     if (perDayPrice) {
-        self.perDayLabel.text = @"per day";
+        self.perDayLabel.text = CTLocalizedString(CTInPathWidgetPerDay);
         self.priceLabel.attributedText = [self attributedPriceString:[self pricePerDay:pickupDate
                                                                            dropoffDate:dropoffDate
                                                                                vehicle:vehicle
                                                                           currencyCode:vehicle.currencyCode]
                                                             currency:vehicle.currencyCode];
     } else {
-        self.perDayLabel.text = @"total";
-        self.priceLabel.attributedText = [self attributedPriceString:vehicle.totalPriceForThisVehicle.stringValue
+        self.perDayLabel.text = CTLocalizedString(CTInPathWidgetTotal);
+        self.priceLabel.attributedText = [self attributedPriceString:vehicle.totalPriceForThisVehicle.twoDecimalPlaces
                                                             currency:vehicle.currencyCode];
     }
     
@@ -142,11 +144,6 @@
                   vehicle:(CTVehicle *)vehicle
              currencyCode:(NSString *)currencyCode
 {
-    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-    f.minimumFractionDigits = 2;
-    f.currencyCode = currencyCode;
-    f.numberStyle = NSNumberFormatterCurrencyStyle;
-    
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
                                                         fromDate:pickupDate
@@ -155,7 +152,7 @@
     
     NSNumber *pricePerDay = [NSNumber numberWithFloat:vehicle.totalPriceForThisVehicle.floatValue
                              / ([components day] ?: 1)];
-    return [f stringFromNumber:pricePerDay];
+    return pricePerDay.twoDecimalPlaces;
 }
 
 - (NSAttributedString *)attributedPriceString:(NSString *)price currency:(NSString *)currency

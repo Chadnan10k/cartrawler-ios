@@ -2,3 +2,17 @@
 "widget_label" = "NEW";
 "widget_title" = "Add car hire";
 "widget_title_added" = "Car added";
+
+//NEW
+
+"widget_per_day" = "per day";
+
+"widget_view_button" = "View";
+
+"widget_see_all_button" = "SEE ALL";
+
+"widget_banner_title" = "Deal of the day";
+
+"widget_remove_button" = "Remove";
+
+"widget_remove_total" = "total";
