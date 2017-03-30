@@ -77,7 +77,6 @@
                                                   isPrimaryDriver:NO];
     
     
-    NSError *e;
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:86400];
     _pickupDate = date;
 
@@ -90,8 +89,6 @@
                                  passegers:@[passenger1, passenger2]
                       parentViewController:self.parent];
 
-    
-    NSLog(@"CT INPATH ERROR: %@", e.description);
     
     [self.callToAction setTitle:@"Loading" forState:UIControlStateNormal];
 

@@ -209,7 +209,7 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
                                                                        options:0
                                                                        metrics:metrics
                                                                          views:@{@"view" : view}]];
-     [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-topPadding-[view]-topPadding-|"
+     [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-topPadding-[view]-bottomPadding-|"
                                                                        options:0
                                                                        metrics:metrics
                                                                          views:@{@"view" : view}]];
