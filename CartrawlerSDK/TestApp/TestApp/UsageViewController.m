@@ -25,7 +25,8 @@
                      @[@"Tabbed Menu", @"CTTabContainerView"],
                      @[@"Info Tip", @"CTInfoTip"],
                      @[@"List with Expanding Views", @"CTListView & CTExpandingView"],
-                     @[@"Rating View", @"CTRatingView"]
+                     @[@"Rating View", @"CTRatingView"],
+                     @[@"React Native View", @"CTReactNativeView"]
                      ];
     
     [self.tableView reloadData];
@@ -74,6 +75,9 @@
             break;
         case 6:
             [self presentRatingView];
+            break;
+        case 7:
+            [self presentReactNativeView];
             break;
         default:
             break;
@@ -183,6 +187,13 @@
     ratingView.titleLabel.text = @"Value for money";
     ratingView.ratingLabel.text = @"8.9";
     [self presentView:ratingView height:0];
+}
+
+- (void)presentReactNativeView {
+    CTReactNativeView *reactNativeView = [CTReactNativeView new];
+    UIViewController *vc = [UIViewController new];
+    vc.view = reactNativeView;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 // MARK: Helpers

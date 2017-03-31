@@ -14,13 +14,13 @@
       location = "group:OTA API/CartrawlerAPI.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:UI/CartrawlerSDK.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:CartrawlerRental/CartrawlerRental.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:CartrawlerInPath/CartrawlerInPath.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UI/ios/CartrawlerSDK.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:CartrawlerGroundTransport/CartrawlerGroundTransport.xcodeproj">

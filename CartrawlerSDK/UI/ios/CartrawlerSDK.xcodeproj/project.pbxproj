@@ -1,0 +1,1858 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		45CB04781DEDCEDA0086BEA0 /* BuildSDK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 45CB04791DEDCEDA0086BEA0 /* Build configuration list for PBXAggregateTarget "BuildSDK" */;
+			buildPhases = (
+				45CB047D1DEDD10E0086BEA0 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = BuildSDK;
+			productName = BuildSDK;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		450725B21DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 450725B01DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		450725B31DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 450725B11DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m */; };
+		450725B71DD9C99500D56C8A /* CTImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 450725B51DD9C99500D56C8A /* CTImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		450725B81DD9C99500D56C8A /* CTImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 450725B61DD9C99500D56C8A /* CTImageView.m */; };
+		4513B6241DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4513B6221DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4513B6251DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4513B6231DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m */; };
+		451E763A1E04438300D58F71 /* CTRentalBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E76381E04438300D58F71 /* CTRentalBooking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		451E763B1E04438300D58F71 /* CTRentalBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E76391E04438300D58F71 /* CTRentalBooking.m */; };
+		454D91F01DD34E24001AE96C /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D91EE1DD34E24001AE96C /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		454D91F11DD34E24001AE96C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D91EF1DD34E24001AE96C /* Reachability.m */; };
+		455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736E1D806064000CB1E5 /* GTPaymentRequest.h */; };
+		455B58341DCC914300CA4790 /* GTPaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4587736F1D806064000CB1E5 /* GTPaymentRequest.m */; };
+		455B58351DCC914300CA4790 /* CTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4588E3161D538FB1008F4267 /* CTPaymentRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58361DCC914300CA4790 /* CTPaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4588E3171D538FB1008F4267 /* CTPaymentRequest.m */; };
+		455B58371DCC914300CA4790 /* CTPaymentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F161D7EFF3400B9324D /* CTPaymentView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58381DCC914300CA4790 /* CTPaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F171D7EFF3400B9324D /* CTPaymentView.m */; };
+		455B583C1DCC914300CA4790 /* CTSDKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E51C1D1450CE000ED6B0 /* CTSDKSettings.m */; };
+		455B58481DCC914300CA4790 /* CTToolTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BC88D21DC0F8460041BD74 /* CTToolTip.m */; };
+		455B58491DCC914300CA4790 /* CTToolTip.h in Headers */ = {isa = PBXBuildFile; fileRef = 45BC88D31DC0F8460041BD74 /* CTToolTip.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B584A1DCC914300CA4790 /* CTNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5301D17F6C8000ED6B0 /* CTNavigationBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B584B1DCC914300CA4790 /* CTNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5311D17F6C8000ED6B0 /* CTNavigationBar.m */; };
+		455B584C1DCC914300CA4790 /* CTNavigationItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5351D17F766000ED6B0 /* CTNavigationItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B584D1DCC914300CA4790 /* CTNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5361D17F766000ED6B0 /* CTNavigationItem.m */; };
+		455B584E1DCC914300CA4790 /* CTNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E53D1D17F999000ED6B0 /* CTNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B584F1DCC914300CA4790 /* CTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E53E1D17F999000ED6B0 /* CTNavigationController.m */; };
+		455B58501DCC914300CA4790 /* CTStepper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4544463C1D992BAA0047873F /* CTStepper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58511DCC914300CA4790 /* CTStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4544463D1D992BAA0047873F /* CTStepper.m */; };
+		455B58541DCC914300CA4790 /* CTSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC25091D48E04700A3C09D /* CTSegmentedControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58551DCC914300CA4790 /* CTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC250A1D48E04700A3C09D /* CTSegmentedControl.m */; };
+		455B58561DCC914300CA4790 /* CTPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45137C821D476AB100089928 /* CTPickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58571DCC914300CA4790 /* CTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45137C831D476AB100089928 /* CTPickerView.m */; };
+		455B58581DCC914300CA4790 /* CTTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4530DA311D46660900CF3186 /* CTTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58591DCC914300CA4790 /* CTTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4530DA321D46660900CF3186 /* CTTextView.m */; };
+		455B585A1DCC914300CA4790 /* CTPlaceholderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942CF1D1302A200ACF604 /* CTPlaceholderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B585B1DCC914300CA4790 /* CTPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942D01D1302A200ACF604 /* CTPlaceholderView.m */; };
+		455B585C1DCC914300CA4790 /* CTView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E52C1D17F4B0000ED6B0 /* CTView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B585D1DCC914300CA4790 /* CTView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E52D1D17F4B0000ED6B0 /* CTView.m */; };
+		455B585E1DCC914300CA4790 /* CTDesignableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 454AD7C51D2AB8E7005C6CFF /* CTDesignableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B585F1DCC914300CA4790 /* CTDesignableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454AD7C61D2AB8E7005C6CFF /* CTDesignableView.m */; };
+		455B58601DCC914300CA4790 /* CTNavigationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4544464A1D9A7FE80047873F /* CTNavigationView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58611DCC914300CA4790 /* CTNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4544464B1D9A7FE80047873F /* CTNavigationView.m */; };
+		455B58621DCC914300CA4790 /* CTAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5221D17DFA4000ED6B0 /* CTAppearance.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58631DCC914300CA4790 /* CTAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5231D17DFA4000ED6B0 /* CTAppearance.m */; };
+		455B58641DCC914300CA4790 /* JVFloatLabeledTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E51D1302FF00ACF604 /* JVFloatLabeledTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58651DCC914300CA4790 /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942E61D1302FF00ACF604 /* JVFloatLabeledTextField.m */; };
+		455B58661DCC914300CA4790 /* NSStringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E71D1302FF00ACF604 /* NSStringUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58671DCC914300CA4790 /* NSStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942E81D1302FF00ACF604 /* NSStringUtils.m */; };
+		455B58681DCC914300CA4790 /* CTTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E5411D181B36000ED6B0 /* CTTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58691DCC914300CA4790 /* CTTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E5421D181B36000ED6B0 /* CTTextField.m */; };
+		455B586A1DCC914300CA4790 /* CTCheckbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942E11D1302EF00ACF604 /* CTCheckbox.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B586B1DCC914300CA4790 /* CTCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942E21D1302EF00ACF604 /* CTCheckbox.m */; };
+		455B586C1DCC914300CA4790 /* CTButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942DD1D1302DA00ACF604 /* CTButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B586D1DCC914300CA4790 /* CTButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942DE1D1302DA00ACF604 /* CTButton.m */; };
+		455B58741DCC914300CA4790 /* CTLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942D91D1302CA00ACF604 /* CTLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58751DCC914300CA4790 /* CTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942DA1D1302CA00ACF604 /* CTLabel.m */; };
+		455B58761DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D20ED1D549AD10050CA9E /* CartrawlerSDK+NSDateUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58771DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D20EE1D549AD10050CA9E /* CartrawlerSDK+NSDateUtils.m */; };
+		455B587D1DCC914300CA4790 /* CTImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942CD1D1302A200ACF604 /* CTImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B587E1DCC914300CA4790 /* CTImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942CE1D1302A200ACF604 /* CTImageCache.m */; };
+		455B58811DCC914300CA4790 /* CartrawlerSDK+NSNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 45819FA31D3500E8001AE0F5 /* CartrawlerSDK+NSNumber.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58821DCC914300CA4790 /* CartrawlerSDK+NSNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 45819FA41D3500E8001AE0F5 /* CartrawlerSDK+NSNumber.m */; };
+		455B58851DCC914300CA4790 /* CTHTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 45645D891D2D4A310075A3D2 /* CTHTMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58861DCC914300CA4790 /* CTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45645D8A1D2D4A310075A3D2 /* CTHTMLParser.m */; };
+		455B58871DCC914300CA4790 /* CTRentalSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 4557FE3F1D3636400026F038 /* CTRentalSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58881DCC914300CA4790 /* CTRentalSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4557FE401D3636400026F038 /* CTRentalSearch.m */; };
+		455B588D1DCC914300CA4790 /* CTLocalisedStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 455061891D59CD91004EAC43 /* CTLocalisedStrings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B588E1DCC914300CA4790 /* CTLocalisedStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4550618A1D59CD91004EAC43 /* CTLocalisedStrings.m */; };
+		455B588F1DCC914300CA4790 /* CTFlightNumberValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D6CC8F1DA55FBB000D7A6C /* CTFlightNumberValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58901DCC914300CA4790 /* CTFlightNumberValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D6CC901DA55FBB000D7A6C /* CTFlightNumberValidation.m */; };
+		455B58911DCC914300CA4790 /* CTDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D7E7F1DBE1197001A4062 /* CTDataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58921DCC914300CA4790 /* CTDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 451D7E801DBE1197001A4062 /* CTDataStore.m */; };
+		455B58931DCC914300CA4790 /* CartrawlerSDK+UIColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 45130C931DBF674F0081582B /* CartrawlerSDK+UIColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58941DCC914300CA4790 /* CartrawlerSDK+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45130C941DBF674F0081582B /* CartrawlerSDK+UIColor.m */; };
+		455B58B41DCC914400CA4790 /* CTValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F061D7ED78100B9324D /* CTValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58B61DCC914400CA4790 /* CTValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F0B1D7EE21200B9324D /* CTValidation.m */; };
+		455B58B71DCC914400CA4790 /* CTViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC250D1D49132B00A3C09D /* CTViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58B81DCC914400CA4790 /* CTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC250E1D49132B00A3C09D /* CTViewController.m */; };
+		455B58BF1DCC914400CA4790 /* CTTimePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942C11D13022100ACF604 /* CTTimePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58C01DCC914400CA4790 /* CTTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942C21D13022100ACF604 /* CTTimePickerView.m */; };
+		455B58C11DCC914400CA4790 /* CTCalendarViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A31D1301C600ACF604 /* CTCalendarViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58C21DCC914400CA4790 /* CTCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A41D1301C600ACF604 /* CTCalendarViewController.m */; };
+		455B58C31DCC914400CA4790 /* CTCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A51D1301C600ACF604 /* CTCalendarView.h */; };
+		455B58C41DCC914400CA4790 /* CTCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A61D1301C600ACF604 /* CTCalendarView.m */; };
+		455B58C51DCC914400CA4790 /* CTCalendarTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A71D1301C600ACF604 /* CTCalendarTableViewCell.h */; };
+		455B58C61DCC914400CA4790 /* CTCalendarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A81D1301C600ACF604 /* CTCalendarTableViewCell.m */; };
+		455B58C71DCC914400CA4790 /* CTDateCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942A91D1301C600ACF604 /* CTDateCollectionViewCell.h */; };
+		455B58C81DCC914400CA4790 /* CTDateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AA1D1301C600ACF604 /* CTDateCollectionViewCell.m */; };
+		455B58C91DCC914400CA4790 /* CalendarLogicController.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942AB1D1301C600ACF604 /* CalendarLogicController.h */; };
+		455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942AC1D1301C600ACF604 /* CalendarLogicController.m */; };
+		455B58CD1DCC914400CA4790 /* CTSelectView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E9429F1D13014400ACF604 /* CTSelectView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58CE1DCC914400CA4790 /* CTSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942A01D13014400ACF604 /* CTSelectView.m */; };
+		455B591B1DCC914400CA4790 /* CTCSVItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 450F9D3F1D3CE9D6002C6F6B /* CTCSVItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B591C1DCC914400CA4790 /* CTCSVItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 450F9D401D3CE9D6002C6F6B /* CTCSVItem.m */; };
+		455B59441DCC914400CA4790 /* CartrawlerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */; };
+		455B59451DCC91F900CA4790 /* CTPCI.html in Resources */ = {isa = PBXBuildFile; fileRef = 4588E3121D538803008F4267 /* CTPCI.html */; };
+		455B59511DCC91F900CA4790 /* CTCurrency.csv in Resources */ = {isa = PBXBuildFile; fileRef = 450F9D3B1D3CE8D5002C6F6B /* CTCurrency.csv */; };
+		455B59521DCC91F900CA4790 /* CTISOCountries.csv in Resources */ = {isa = PBXBuildFile; fileRef = 450F9D3C1D3CE8D5002C6F6B /* CTISOCountries.csv */; };
+		455B59531DCC91F900CA4790 /* CTLanguages.csv in Resources */ = {isa = PBXBuildFile; fileRef = 450F9D4B1D3D14FF002C6F6B /* CTLanguages.csv */; };
+		455B59581DCC954400CA4790 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455B59571DCC954400CA4790 /* CartrawlerAPI.framework */; };
+		455B59591DCC96D500CA4790 /* CartrawlerSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		457128C11DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 457128BF1DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		457128C21DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 457128C01DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m */; };
+		457678501E08021500FE591A /* CTHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 4576784F1E08021100FE591A /* CTHeaders.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		459CB2E01DDB1D9E008522BA /* CartrawlerSDK+UIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 459CB2DE1DDB1D9E008522BA /* CartrawlerSDK+UIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		459CB2E11DDB1D9E008522BA /* CartrawlerSDK+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 459CB2DF1DDB1D9E008522BA /* CartrawlerSDK+UIView.m */; };
+		459CB2E41DDB3FA2008522BA /* CTToolTipButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 459CB2E21DDB3FA2008522BA /* CTToolTipButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		459CB2E51DDB3FA2008522BA /* CTToolTipButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 459CB2E31DDB3FA2008522BA /* CTToolTipButton.m */; };
+		459CB2E81DDB5BF8008522BA /* CTNextButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 459CB2E61DDB5BF8008522BA /* CTNextButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		459CB2E91DDB5BF8008522BA /* CTNextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 459CB2E71DDB5BF8008522BA /* CTNextButton.m */; };
+		459CB2EB1DDB6528008522BA /* ToolTips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 459CB2EA1DDB6528008522BA /* ToolTips.storyboard */; };
+		459CB2EE1DDB6638008522BA /* CTToolTipViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 459CB2EC1DDB6638008522BA /* CTToolTipViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		459CB2EF1DDB6638008522BA /* CTToolTipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 459CB2ED1DDB6638008522BA /* CTToolTipViewController.m */; };
+		45BF77501E08588900F6D7E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45BF774F1E08588900F6D7E9 /* Assets.xcassets */; };
+		45C980C21DCCDB95002D99AB /* CTLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C980C01DCCDB95002D99AB /* CTLayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45C980C31DCCDB95002D99AB /* CTLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C980C11DCCDB95002D99AB /* CTLayoutConstraint.m */; };
+		45D3860A1DD62281000F02D1 /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45D386091DD62281000F02D1 /* strip-frameworks.sh */; };
+		45EC99B11E02B51600B76741 /* CTSDKSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E51B1D1450CE000ED6B0 /* CTSDKSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45F5D76A1DEF00C3005AE1AD /* CartrawlerSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F5D7691DEF00C3005AE1AD /* CartrawlerSDKTests.m */; };
+		45F5D76C1DEF00C3005AE1AD /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455B582B1DCC90D300CA4790 /* CartrawlerSDK.framework */; };
+		BC1379E81E23E4E400B1F727 /* CTAnalytics.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1379E31E23E4E400B1F727 /* CTAnalytics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC1379E91E23E4E400B1F727 /* CTAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1379E41E23E4E400B1F727 /* CTAnalytics.m */; };
+		BC1379EB1E23E4E400B1F727 /* CTTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1379E61E23E4E400B1F727 /* CTTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC1379EC1E23E4E400B1F727 /* CTTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1379E71E23E4E400B1F727 /* CTTag.m */; };
+		BC1379EF1E23E8E700B1F727 /* CTErrorTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC1379F01E23E8E700B1F727 /* CTErrorTag.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1379EE1E23E8E700B1F727 /* CTErrorTag.m */; };
+		BC2951D61E7FF6110053A897 /* CTPassenger.h in Headers */ = {isa = PBXBuildFile; fileRef = BC2951D41E7FF6110053A897 /* CTPassenger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC2951D71E7FF6110053A897 /* CTPassenger.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2951D51E7FF6110053A897 /* CTPassenger.m */; };
+		BC3361911E4CCC520056E5A6 /* de.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361891E4CCC520056E5A6 /* de.strings */; };
+		BC3361921E4CCC520056E5A6 /* el.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33618A1E4CCC520056E5A6 /* el.strings */; };
+		BC3361931E4CCC520056E5A6 /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33618B1E4CCC520056E5A6 /* en.strings */; };
+		BC3361941E4CCC520056E5A6 /* es.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33618C1E4CCC520056E5A6 /* es.strings */; };
+		BC3361951E4CCC520056E5A6 /* fr.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33618D1E4CCC520056E5A6 /* fr.strings */; };
+		BC3361961E4CCC520056E5A6 /* it.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33618E1E4CCC520056E5A6 /* it.strings */; };
+		BC3361971E4CCC520056E5A6 /* nl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33618F1E4CCC520056E5A6 /* nl.strings */; };
+		BC3361981E4CCC520056E5A6 /* pl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361901E4CCC520056E5A6 /* pl.strings */; };
+		BC54F1581E54980500A7C871 /* pt.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC54F1571E54980500A7C871 /* pt.strings */; };
+		BC9F6E521E24EF91006DD990 /* CTAnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */; };
+		BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCDB4BEA1E3F50C6008004DA /* CTAnalyticsEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */; };
+		BCF874291E79604100EBC758 /* CTLayoutManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BCF874271E79604100EBC758 /* CTLayoutManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCF8742A1E79604100EBC758 /* CTLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF874281E79604100EBC758 /* CTLayoutManager.m */; };
+		E70230731E857DC2005E1BF4 /* CTRatingView.h in Headers */ = {isa = PBXBuildFile; fileRef = E70230711E857DC2005E1BF4 /* CTRatingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E70230741E857DC2005E1BF4 /* CTRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E70230721E857DC2005E1BF4 /* CTRatingView.m */; };
+		E7404A781E82F3AB009BF7DF /* CTTabContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7404A791E82F3AB009BF7DF /* CTTabContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7404A771E82F3AB009BF7DF /* CTTabContainerView.m */; };
+		E7404A801E82F90C009BF7DF /* CTTabHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A7E1E82F90C009BF7DF /* CTTabHeaderView.h */; };
+		E7404A811E82F90C009BF7DF /* CTTabHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7404A7F1E82F90C009BF7DF /* CTTabHeaderView.m */; };
+		E7404A841E82F95D009BF7DF /* CTTabView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A821E82F95D009BF7DF /* CTTabView.h */; };
+		E7404A851E82F95D009BF7DF /* CTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7404A831E82F95D009BF7DF /* CTTabView.m */; };
+		E76900A81E6F065C00D729FF /* CTInfoTip.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900A61E6F065C00D729FF /* CTInfoTip.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E76900A91E6F065C00D729FF /* CTInfoTip.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900A71E6F065C00D729FF /* CTInfoTip.m */; };
+		E76900B71E70949500D729FF /* CTAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900B51E70949500D729FF /* CTAlertViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E76900B81E70949500D729FF /* CTAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900B61E70949500D729FF /* CTAlertViewController.m */; };
+		E76900BD1E7199F400D729FF /* CTAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900BB1E7199F400D729FF /* CTAlertView.h */; };
+		E76900BE1E7199F400D729FF /* CTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900BC1E7199F400D729FF /* CTAlertView.m */; };
+		E76900C11E719F9A00D729FF /* CTAlertTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900BF1E719F9A00D729FF /* CTAlertTextView.h */; };
+		E76900C21E719F9A00D729FF /* CTAlertTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900C01E719F9A00D729FF /* CTAlertTextView.m */; };
+		E76900C51E71A31200D729FF /* CTAlertViewPresentationAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900C31E71A31200D729FF /* CTAlertViewPresentationAnimationController.h */; };
+		E76900C61E71A31200D729FF /* CTAlertViewPresentationAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900C41E71A31200D729FF /* CTAlertViewPresentationAnimationController.m */; };
+		E76900C91E71A45800D729FF /* CTAlertViewDismissalAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900C71E71A45800D729FF /* CTAlertViewDismissalAnimationController.h */; };
+		E76900CA1E71A45800D729FF /* CTAlertViewDismissalAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900C81E71A45800D729FF /* CTAlertViewDismissalAnimationController.m */; };
+		E76900CD1E71A55900D729FF /* CTAlertViewPresentationController.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900CB1E71A55900D729FF /* CTAlertViewPresentationController.h */; };
+		E76900CE1E71A55900D729FF /* CTAlertViewPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900CC1E71A55900D729FF /* CTAlertViewPresentationController.m */; };
+		E76900D11E71D95700D729FF /* CTAlertAction.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900CF1E71D95700D729FF /* CTAlertAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E76900D21E71D95800D729FF /* CTAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900D01E71D95700D729FF /* CTAlertAction.m */; };
+		E76900DD1E764F9800D729FF /* CTListView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900DB1E764F9800D729FF /* CTListView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E76900DE1E764F9800D729FF /* CTListView.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900DC1E764F9800D729FF /* CTListView.m */; };
+		E76900E11E77267700D729FF /* CTListItemView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900DF1E77267600D729FF /* CTListItemView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E76900E21E77267700D729FF /* CTListItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900E01E77267600D729FF /* CTListItemView.m */; };
+		E76900E71E783EC600D729FF /* CTExpandingView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900E51E783EC600D729FF /* CTExpandingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E76900E81E783EC600D729FF /* CTExpandingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900E61E783EC600D729FF /* CTExpandingView.m */; };
+		E79767921E8E048F00EA0057 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7535D4C1E8D9EC500F881EA /* libReact.a */; };
+		E79767931E8E049900EA0057 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7535D601E8D9EF800F881EA /* libRCTActionSheet.a */; };
+		E79767941E8E04A000EA0057 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7535D671E8D9F1000F881EA /* libRCTText.a */; };
+		E79767AB1E8E08A800EA0057 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E79767A81E8E07B500EA0057 /* libRCTNetwork.a */; };
+		E79767B51E8E105000EA0057 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E79767B21E8E102000EA0057 /* libRCTWebSocket.a */; };
+		E79767B91E8E141C00EA0057 /* CTReactNativeView.h in Headers */ = {isa = PBXBuildFile; fileRef = E79767B71E8E141C00EA0057 /* CTReactNativeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E79767BA1E8E141C00EA0057 /* CTReactNativeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E79767B81E8E141C00EA0057 /* CTReactNativeView.m */; };
+		E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */; };
+		E7CD21A81E38F794006BE519 /* CTSDKLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		45F5D76D1DEF00C3005AE1AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45E9423B1D12FF0F00ACF604 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 455B582A1DCC90D300CA4790;
+			remoteInfo = CartrawlerSDK;
+		};
+		E7535D4B1E8D9EC500F881EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7535D401E8D9EC500F881EA /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
+			remoteInfo = React;
+		};
+		E7535D4D1E8D9EC500F881EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7535D401E8D9EC500F881EA /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A28131D9B038B00D4039D;
+			remoteInfo = "React-tvOS";
+		};
+		E7535D4F1E8D9EC500F881EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7535D401E8D9EC500F881EA /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3C059A1DE3340900C268FA;
+			remoteInfo = yoga;
+		};
+		E7535D511E8D9EC500F881EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7535D401E8D9EC500F881EA /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3C06751DE3340C00C268FA;
+			remoteInfo = "yoga-tvOS";
+		};
+		E7535D531E8D9EC500F881EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7535D401E8D9EC500F881EA /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3CD9251DE5FBEC00167DC4;
+			remoteInfo = cxxreact;
+		};
+		E7535D551E8D9EC500F881EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7535D401E8D9EC500F881EA /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3CD9321DE5FBEE00167DC4;
+			remoteInfo = "cxxreact-tvOS";
+		};
+		E7535D571E8D9EC500F881EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7535D401E8D9EC500F881EA /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3CD90B1DE5FBD600167DC4;
+			remoteInfo = jschelpers;
+		};
+		E7535D591E8D9EC500F881EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7535D401E8D9EC500F881EA /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
+			remoteInfo = "jschelpers-tvOS";
+		};
+		E7535D5F1E8D9EF800F881EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7535D5B1E8D9EF800F881EA /* RCTActionSheet.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTActionSheet;
+		};
+		E7535D661E8D9F1000F881EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7535D611E8D9F1000F881EA /* RCTText.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
+			remoteInfo = RCTText;
+		};
+		E7535D681E8D9F1000F881EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7535D611E8D9F1000F881EA /* RCTText.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A287B1D9B048500D4039D;
+			remoteInfo = "RCTText-tvOS";
+		};
+		E79767A71E8E07B500EA0057 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E79767A21E8E07B500EA0057 /* RCTNetwork.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 58B511DB1A9E6C8500147676;
+			remoteInfo = RCTNetwork;
+		};
+		E79767A91E8E07B500EA0057 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E79767A21E8E07B500EA0057 /* RCTNetwork.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A28541D9B044C00D4039D;
+			remoteInfo = "RCTNetwork-tvOS";
+		};
+		E79767B11E8E102000EA0057 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E79767AC1E8E101F00EA0057 /* RCTWebSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3C86DF461ADF2C930047B81A;
+			remoteInfo = RCTWebSocket;
+		};
+		E79767B31E8E102000EA0057 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E79767AC1E8E101F00EA0057 /* RCTWebSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A28881D9B049200D4039D;
+			remoteInfo = "RCTWebSocket-tvOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		450725B01DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+UIImageView.h"; sourceTree = "<group>"; };
+		450725B11DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+UIImageView.m"; sourceTree = "<group>"; };
+		450725B51DD9C99500D56C8A /* CTImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTImageView.h; sourceTree = "<group>"; };
+		450725B61DD9C99500D56C8A /* CTImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTImageView.m; sourceTree = "<group>"; };
+		450F9D3B1D3CE8D5002C6F6B /* CTCurrency.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTCurrency.csv; sourceTree = "<group>"; };
+		450F9D3C1D3CE8D5002C6F6B /* CTISOCountries.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTISOCountries.csv; sourceTree = "<group>"; };
+		450F9D3F1D3CE9D6002C6F6B /* CTCSVItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCSVItem.h; sourceTree = "<group>"; };
+		450F9D401D3CE9D6002C6F6B /* CTCSVItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCSVItem.m; sourceTree = "<group>"; };
+		450F9D4B1D3D14FF002C6F6B /* CTLanguages.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTLanguages.csv; sourceTree = "<group>"; };
+		4511E51B1D1450CE000ED6B0 /* CTSDKSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSDKSettings.h; sourceTree = "<group>"; };
+		4511E51C1D1450CE000ED6B0 /* CTSDKSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSDKSettings.m; sourceTree = "<group>"; };
+		4511E5221D17DFA4000ED6B0 /* CTAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAppearance.h; sourceTree = "<group>"; };
+		4511E5231D17DFA4000ED6B0 /* CTAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAppearance.m; sourceTree = "<group>"; };
+		4511E52C1D17F4B0000ED6B0 /* CTView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTView.h; sourceTree = "<group>"; };
+		4511E52D1D17F4B0000ED6B0 /* CTView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTView.m; sourceTree = "<group>"; };
+		4511E5301D17F6C8000ED6B0 /* CTNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNavigationBar.h; sourceTree = "<group>"; };
+		4511E5311D17F6C8000ED6B0 /* CTNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTNavigationBar.m; sourceTree = "<group>"; };
+		4511E5351D17F766000ED6B0 /* CTNavigationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNavigationItem.h; sourceTree = "<group>"; };
+		4511E5361D17F766000ED6B0 /* CTNavigationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTNavigationItem.m; sourceTree = "<group>"; };
+		4511E53D1D17F999000ED6B0 /* CTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNavigationController.h; sourceTree = "<group>"; };
+		4511E53E1D17F999000ED6B0 /* CTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTNavigationController.m; sourceTree = "<group>"; };
+		4511E5411D181B36000ED6B0 /* CTTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTextField.h; sourceTree = "<group>"; };
+		4511E5421D181B36000ED6B0 /* CTTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTextField.m; sourceTree = "<group>"; };
+		45130C931DBF674F0081582B /* CartrawlerSDK+UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+UIColor.h"; sourceTree = "<group>"; };
+		45130C941DBF674F0081582B /* CartrawlerSDK+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+UIColor.m"; sourceTree = "<group>"; };
+		45137C821D476AB100089928 /* CTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPickerView.h; sourceTree = "<group>"; };
+		45137C831D476AB100089928 /* CTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPickerView.m; sourceTree = "<group>"; };
+		4513B6221DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+WKWebView.h"; sourceTree = "<group>"; };
+		4513B6231DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+WKWebView.m"; sourceTree = "<group>"; };
+		451C8F061D7ED78100B9324D /* CTValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTValidation.h; sourceTree = "<group>"; };
+		451C8F0B1D7EE21200B9324D /* CTValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTValidation.m; sourceTree = "<group>"; };
+		451C8F161D7EFF3400B9324D /* CTPaymentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPaymentView.h; sourceTree = "<group>"; };
+		451C8F171D7EFF3400B9324D /* CTPaymentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPaymentView.m; sourceTree = "<group>"; };
+		451D7E7F1DBE1197001A4062 /* CTDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDataStore.h; sourceTree = "<group>"; };
+		451D7E801DBE1197001A4062 /* CTDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDataStore.m; sourceTree = "<group>"; };
+		451E76381E04438300D58F71 /* CTRentalBooking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRentalBooking.h; sourceTree = "<group>"; };
+		451E76391E04438300D58F71 /* CTRentalBooking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRentalBooking.m; sourceTree = "<group>"; };
+		4530DA311D46660900CF3186 /* CTTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTextView.h; sourceTree = "<group>"; };
+		4530DA321D46660900CF3186 /* CTTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTextView.m; sourceTree = "<group>"; };
+		4544463C1D992BAA0047873F /* CTStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTStepper.h; sourceTree = "<group>"; };
+		4544463D1D992BAA0047873F /* CTStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTStepper.m; sourceTree = "<group>"; };
+		4544464A1D9A7FE80047873F /* CTNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNavigationView.h; sourceTree = "<group>"; };
+		4544464B1D9A7FE80047873F /* CTNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTNavigationView.m; sourceTree = "<group>"; };
+		454AD7C51D2AB8E7005C6CFF /* CTDesignableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDesignableView.h; sourceTree = "<group>"; };
+		454AD7C61D2AB8E7005C6CFF /* CTDesignableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDesignableView.m; sourceTree = "<group>"; };
+		454D20ED1D549AD10050CA9E /* CartrawlerSDK+NSDateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+NSDateUtils.h"; sourceTree = "<group>"; };
+		454D20EE1D549AD10050CA9E /* CartrawlerSDK+NSDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+NSDateUtils.m"; sourceTree = "<group>"; };
+		454D91EE1DD34E24001AE96C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		454D91EF1DD34E24001AE96C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		455061891D59CD91004EAC43 /* CTLocalisedStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLocalisedStrings.h; sourceTree = "<group>"; };
+		4550618A1D59CD91004EAC43 /* CTLocalisedStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLocalisedStrings.m; sourceTree = "<group>"; };
+		4557FE3F1D3636400026F038 /* CTRentalSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRentalSearch.h; sourceTree = "<group>"; };
+		4557FE401D3636400026F038 /* CTRentalSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRentalSearch.m; sourceTree = "<group>"; };
+		455B582B1DCC90D300CA4790 /* CartrawlerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CartrawlerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		455B582E1DCC90D300CA4790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		455B59571DCC954400CA4790 /* CartrawlerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CartrawlerAPI.framework; path = "../OTA API/build/Debug-iphoneos/CartrawlerAPI.framework"; sourceTree = "<group>"; };
+		45645D891D2D4A310075A3D2 /* CTHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHTMLParser.h; sourceTree = "<group>"; };
+		45645D8A1D2D4A310075A3D2 /* CTHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHTMLParser.m; sourceTree = "<group>"; };
+		457128BF1DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+UITextField.h"; sourceTree = "<group>"; };
+		457128C01DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+UITextField.m"; sourceTree = "<group>"; };
+		4576784F1E08021100FE591A /* CTHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTHeaders.h; sourceTree = "<group>"; };
+		45819FA31D3500E8001AE0F5 /* CartrawlerSDK+NSNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+NSNumber.h"; sourceTree = "<group>"; };
+		45819FA41D3500E8001AE0F5 /* CartrawlerSDK+NSNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+NSNumber.m"; sourceTree = "<group>"; };
+		4587736E1D806064000CB1E5 /* GTPaymentRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTPaymentRequest.h; sourceTree = "<group>"; };
+		4587736F1D806064000CB1E5 /* GTPaymentRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTPaymentRequest.m; sourceTree = "<group>"; };
+		4588E3121D538803008F4267 /* CTPCI.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CTPCI.html; sourceTree = "<group>"; };
+		4588E3161D538FB1008F4267 /* CTPaymentRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPaymentRequest.h; sourceTree = "<group>"; };
+		4588E3171D538FB1008F4267 /* CTPaymentRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPaymentRequest.m; sourceTree = "<group>"; };
+		459CB2DE1DDB1D9E008522BA /* CartrawlerSDK+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+UIView.h"; sourceTree = "<group>"; };
+		459CB2DF1DDB1D9E008522BA /* CartrawlerSDK+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+UIView.m"; sourceTree = "<group>"; };
+		459CB2E21DDB3FA2008522BA /* CTToolTipButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTToolTipButton.h; sourceTree = "<group>"; };
+		459CB2E31DDB3FA2008522BA /* CTToolTipButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTToolTipButton.m; sourceTree = "<group>"; };
+		459CB2E61DDB5BF8008522BA /* CTNextButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNextButton.h; sourceTree = "<group>"; };
+		459CB2E71DDB5BF8008522BA /* CTNextButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTNextButton.m; sourceTree = "<group>"; };
+		459CB2EA1DDB6528008522BA /* ToolTips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ToolTips.storyboard; sourceTree = "<group>"; };
+		459CB2EC1DDB6638008522BA /* CTToolTipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTToolTipViewController.h; sourceTree = "<group>"; };
+		459CB2ED1DDB6638008522BA /* CTToolTipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTToolTipViewController.m; sourceTree = "<group>"; };
+		45BC88D21DC0F8460041BD74 /* CTToolTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTToolTip.m; sourceTree = "<group>"; };
+		45BC88D31DC0F8460041BD74 /* CTToolTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTToolTip.h; sourceTree = "<group>"; };
+		45BF774F1E08588900F6D7E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		45C980C01DCCDB95002D99AB /* CTLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLayoutConstraint.h; sourceTree = "<group>"; };
+		45C980C11DCCDB95002D99AB /* CTLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLayoutConstraint.m; sourceTree = "<group>"; };
+		45D386091DD62281000F02D1 /* strip-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "strip-frameworks.sh"; sourceTree = "<group>"; };
+		45D6CC8F1DA55FBB000D7A6C /* CTFlightNumberValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFlightNumberValidation.h; sourceTree = "<group>"; };
+		45D6CC901DA55FBB000D7A6C /* CTFlightNumberValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFlightNumberValidation.m; sourceTree = "<group>"; };
+		45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartrawlerSDK.h; sourceTree = "<group>"; };
+		45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartrawlerSDK.m; sourceTree = "<group>"; };
+		45E9429F1D13014400ACF604 /* CTSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSelectView.h; sourceTree = "<group>"; };
+		45E942A01D13014400ACF604 /* CTSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSelectView.m; sourceTree = "<group>"; };
+		45E942A31D1301C600ACF604 /* CTCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCalendarViewController.h; sourceTree = "<group>"; };
+		45E942A41D1301C600ACF604 /* CTCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCalendarViewController.m; sourceTree = "<group>"; };
+		45E942A51D1301C600ACF604 /* CTCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCalendarView.h; sourceTree = "<group>"; };
+		45E942A61D1301C600ACF604 /* CTCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCalendarView.m; sourceTree = "<group>"; };
+		45E942A71D1301C600ACF604 /* CTCalendarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCalendarTableViewCell.h; sourceTree = "<group>"; };
+		45E942A81D1301C600ACF604 /* CTCalendarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCalendarTableViewCell.m; sourceTree = "<group>"; };
+		45E942A91D1301C600ACF604 /* CTDateCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDateCollectionViewCell.h; sourceTree = "<group>"; };
+		45E942AA1D1301C600ACF604 /* CTDateCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDateCollectionViewCell.m; sourceTree = "<group>"; };
+		45E942AB1D1301C600ACF604 /* CalendarLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarLogicController.h; sourceTree = "<group>"; };
+		45E942AC1D1301C600ACF604 /* CalendarLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarLogicController.m; sourceTree = "<group>"; };
+		45E942C11D13022100ACF604 /* CTTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTimePickerView.h; sourceTree = "<group>"; };
+		45E942C21D13022100ACF604 /* CTTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTimePickerView.m; sourceTree = "<group>"; };
+		45E942CD1D1302A200ACF604 /* CTImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTImageCache.h; sourceTree = "<group>"; };
+		45E942CE1D1302A200ACF604 /* CTImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTImageCache.m; sourceTree = "<group>"; };
+		45E942CF1D1302A200ACF604 /* CTPlaceholderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPlaceholderView.h; sourceTree = "<group>"; };
+		45E942D01D1302A200ACF604 /* CTPlaceholderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPlaceholderView.m; sourceTree = "<group>"; };
+		45E942D91D1302CA00ACF604 /* CTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLabel.h; sourceTree = "<group>"; };
+		45E942DA1D1302CA00ACF604 /* CTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLabel.m; sourceTree = "<group>"; };
+		45E942DD1D1302DA00ACF604 /* CTButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTButton.h; sourceTree = "<group>"; };
+		45E942DE1D1302DA00ACF604 /* CTButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTButton.m; sourceTree = "<group>"; };
+		45E942E11D1302EF00ACF604 /* CTCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCheckbox.h; sourceTree = "<group>"; };
+		45E942E21D1302EF00ACF604 /* CTCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCheckbox.m; sourceTree = "<group>"; };
+		45E942E51D1302FF00ACF604 /* JVFloatLabeledTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextField.h; sourceTree = "<group>"; };
+		45E942E61D1302FF00ACF604 /* JVFloatLabeledTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextField.m; sourceTree = "<group>"; };
+		45E942E71D1302FF00ACF604 /* NSStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringUtils.h; sourceTree = "<group>"; };
+		45E942E81D1302FF00ACF604 /* NSStringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringUtils.m; sourceTree = "<group>"; };
+		45E942EB1D1303C500ACF604 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		45E942ED1D13040800ACF604 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		45EC25091D48E04700A3C09D /* CTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSegmentedControl.h; sourceTree = "<group>"; };
+		45EC250A1D48E04700A3C09D /* CTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSegmentedControl.m; sourceTree = "<group>"; };
+		45EC250D1D49132B00A3C09D /* CTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTViewController.h; sourceTree = "<group>"; };
+		45EC250E1D49132B00A3C09D /* CTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTViewController.m; sourceTree = "<group>"; };
+		45F5D7671DEF00C3005AE1AD /* CartrawlerSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		45F5D7691DEF00C3005AE1AD /* CartrawlerSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartrawlerSDKTests.m; sourceTree = "<group>"; };
+		45F5D76B1DEF00C3005AE1AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC1379E31E23E4E400B1F727 /* CTAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalytics.h; sourceTree = "<group>"; };
+		BC1379E41E23E4E400B1F727 /* CTAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalytics.m; sourceTree = "<group>"; };
+		BC1379E61E23E4E400B1F727 /* CTTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTag.h; sourceTree = "<group>"; };
+		BC1379E71E23E4E400B1F727 /* CTTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTag.m; sourceTree = "<group>"; };
+		BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTErrorTag.h; sourceTree = "<group>"; };
+		BC1379EE1E23E8E700B1F727 /* CTErrorTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTErrorTag.m; sourceTree = "<group>"; };
+		BC2951D41E7FF6110053A897 /* CTPassenger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPassenger.h; sourceTree = "<group>"; };
+		BC2951D51E7FF6110053A897 /* CTPassenger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPassenger.m; sourceTree = "<group>"; };
+		BC3361891E4CCC520056E5A6 /* de.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de.strings; path = Localization/de.strings; sourceTree = "<group>"; };
+		BC33618A1E4CCC520056E5A6 /* el.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = el.strings; path = Localization/el.strings; sourceTree = "<group>"; };
+		BC33618B1E4CCC520056E5A6 /* en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en.strings; path = Localization/en.strings; sourceTree = "<group>"; };
+		BC33618C1E4CCC520056E5A6 /* es.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = es.strings; path = Localization/es.strings; sourceTree = "<group>"; };
+		BC33618D1E4CCC520056E5A6 /* fr.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = fr.strings; path = Localization/fr.strings; sourceTree = "<group>"; };
+		BC33618E1E4CCC520056E5A6 /* it.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = it.strings; path = Localization/it.strings; sourceTree = "<group>"; };
+		BC33618F1E4CCC520056E5A6 /* nl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = nl.strings; path = Localization/nl.strings; sourceTree = "<group>"; };
+		BC3361901E4CCC520056E5A6 /* pl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pl.strings; path = Localization/pl.strings; sourceTree = "<group>"; };
+		BC54F1571E54980500A7C871 /* pt.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pt.strings; path = Localization/pt.strings; sourceTree = "<group>"; };
+		BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsTests.m; sourceTree = "<group>"; };
+		BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalyticsEvent.h; sourceTree = "<group>"; };
+		BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsEvent.m; sourceTree = "<group>"; };
+		BCF874271E79604100EBC758 /* CTLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLayoutManager.h; sourceTree = "<group>"; };
+		BCF874281E79604100EBC758 /* CTLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLayoutManager.m; sourceTree = "<group>"; };
+		E70230711E857DC2005E1BF4 /* CTRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRatingView.h; sourceTree = "<group>"; };
+		E70230721E857DC2005E1BF4 /* CTRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRatingView.m; sourceTree = "<group>"; };
+		E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabContainerView.h; sourceTree = "<group>"; };
+		E7404A771E82F3AB009BF7DF /* CTTabContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabContainerView.m; sourceTree = "<group>"; };
+		E7404A7E1E82F90C009BF7DF /* CTTabHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabHeaderView.h; sourceTree = "<group>"; };
+		E7404A7F1E82F90C009BF7DF /* CTTabHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabHeaderView.m; sourceTree = "<group>"; };
+		E7404A821E82F95D009BF7DF /* CTTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabView.h; sourceTree = "<group>"; };
+		E7404A831E82F95D009BF7DF /* CTTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabView.m; sourceTree = "<group>"; };
+		E7535D401E8D9EC500F881EA /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		E7535D5B1E8D9EF800F881EA /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
+		E7535D611E8D9F1000F881EA /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		E76900A61E6F065C00D729FF /* CTInfoTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInfoTip.h; sourceTree = "<group>"; };
+		E76900A71E6F065C00D729FF /* CTInfoTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInfoTip.m; sourceTree = "<group>"; };
+		E76900B51E70949500D729FF /* CTAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertViewController.h; sourceTree = "<group>"; };
+		E76900B61E70949500D729FF /* CTAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAlertViewController.m; sourceTree = "<group>"; };
+		E76900BB1E7199F400D729FF /* CTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertView.h; sourceTree = "<group>"; };
+		E76900BC1E7199F400D729FF /* CTAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAlertView.m; sourceTree = "<group>"; };
+		E76900BF1E719F9A00D729FF /* CTAlertTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertTextView.h; sourceTree = "<group>"; };
+		E76900C01E719F9A00D729FF /* CTAlertTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAlertTextView.m; sourceTree = "<group>"; };
+		E76900C31E71A31200D729FF /* CTAlertViewPresentationAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertViewPresentationAnimationController.h; sourceTree = "<group>"; };
+		E76900C41E71A31200D729FF /* CTAlertViewPresentationAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAlertViewPresentationAnimationController.m; sourceTree = "<group>"; };
+		E76900C71E71A45800D729FF /* CTAlertViewDismissalAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertViewDismissalAnimationController.h; sourceTree = "<group>"; };
+		E76900C81E71A45800D729FF /* CTAlertViewDismissalAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAlertViewDismissalAnimationController.m; sourceTree = "<group>"; };
+		E76900CB1E71A55900D729FF /* CTAlertViewPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertViewPresentationController.h; sourceTree = "<group>"; };
+		E76900CC1E71A55900D729FF /* CTAlertViewPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAlertViewPresentationController.m; sourceTree = "<group>"; };
+		E76900CF1E71D95700D729FF /* CTAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertAction.h; sourceTree = "<group>"; };
+		E76900D01E71D95700D729FF /* CTAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAlertAction.m; sourceTree = "<group>"; };
+		E76900DB1E764F9800D729FF /* CTListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTListView.h; sourceTree = "<group>"; };
+		E76900DC1E764F9800D729FF /* CTListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTListView.m; sourceTree = "<group>"; };
+		E76900DF1E77267600D729FF /* CTListItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTListItemView.h; sourceTree = "<group>"; };
+		E76900E01E77267600D729FF /* CTListItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTListItemView.m; sourceTree = "<group>"; };
+		E76900E51E783EC600D729FF /* CTExpandingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTExpandingView.h; sourceTree = "<group>"; };
+		E76900E61E783EC600D729FF /* CTExpandingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTExpandingView.m; sourceTree = "<group>"; };
+		E79767A21E8E07B500EA0057 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
+		E79767AC1E8E101F00EA0057 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
+		E79767B71E8E141C00EA0057 /* CTReactNativeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTReactNativeView.h; sourceTree = "<group>"; };
+		E79767B81E8E141C00EA0057 /* CTReactNativeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTReactNativeView.m; sourceTree = "<group>"; };
+		E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTSDKLocalizationConstants.h; path = Localization/CTSDKLocalizationConstants.h; sourceTree = "<group>"; };
+		E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTSDKLocalizationConstants.m; path = Localization/CTSDKLocalizationConstants.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		455B58271DCC90D300CA4790 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				455B59581DCC954400CA4790 /* CartrawlerAPI.framework in Frameworks */,
+				E79767AB1E8E08A800EA0057 /* libRCTNetwork.a in Frameworks */,
+				E79767B51E8E105000EA0057 /* libRCTWebSocket.a in Frameworks */,
+				E79767921E8E048F00EA0057 /* libReact.a in Frameworks */,
+				E79767931E8E049900EA0057 /* libRCTActionSheet.a in Frameworks */,
+				E79767941E8E04A000EA0057 /* libRCTText.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45F5D7641DEF00C3005AE1AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45F5D76C1DEF00C3005AE1AD /* CartrawlerSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		450725B41DD9C98400D56C8A /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				450725B51DD9C99500D56C8A /* CTImageView.h */,
+				450725B61DD9C99500D56C8A /* CTImageView.m */,
+			);
+			name = UIImageView;
+			sourceTree = "<group>";
+		};
+		4511E5211D17DF8E000ED6B0 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				4511E5221D17DFA4000ED6B0 /* CTAppearance.h */,
+				4511E5231D17DFA4000ED6B0 /* CTAppearance.m */,
+			);
+			name = Theme;
+			sourceTree = "<group>";
+		};
+		4511E5261D17EE4D000ED6B0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4511E51B1D1450CE000ED6B0 /* CTSDKSettings.h */,
+				4511E51C1D1450CE000ED6B0 /* CTSDKSettings.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		4511E52B1D17F49F000ED6B0 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				45E942CF1D1302A200ACF604 /* CTPlaceholderView.h */,
+				45E942D01D1302A200ACF604 /* CTPlaceholderView.m */,
+				4511E52C1D17F4B0000ED6B0 /* CTView.h */,
+				4511E52D1D17F4B0000ED6B0 /* CTView.m */,
+				454AD7C51D2AB8E7005C6CFF /* CTDesignableView.h */,
+				454AD7C61D2AB8E7005C6CFF /* CTDesignableView.m */,
+				4544464A1D9A7FE80047873F /* CTNavigationView.h */,
+				4544464B1D9A7FE80047873F /* CTNavigationView.m */,
+			);
+			name = UIView;
+			sourceTree = "<group>";
+		};
+		4511E5341D17F6CC000ED6B0 /* UINavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				4511E5301D17F6C8000ED6B0 /* CTNavigationBar.h */,
+				4511E5311D17F6C8000ED6B0 /* CTNavigationBar.m */,
+				4511E5351D17F766000ED6B0 /* CTNavigationItem.h */,
+				4511E5361D17F766000ED6B0 /* CTNavigationItem.m */,
+				4511E53D1D17F999000ED6B0 /* CTNavigationController.h */,
+				4511E53E1D17F999000ED6B0 /* CTNavigationController.m */,
+			);
+			name = UINavigationBar;
+			sourceTree = "<group>";
+		};
+		45137C811D476A9800089928 /* UIPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				45137C821D476AB100089928 /* CTPickerView.h */,
+				45137C831D476AB100089928 /* CTPickerView.m */,
+			);
+			name = UIPickerView;
+			sourceTree = "<group>";
+		};
+		451E73A01E04010900D58F71 /* JVFloatLabeledTextField */ = {
+			isa = PBXGroup;
+			children = (
+				45E942E51D1302FF00ACF604 /* JVFloatLabeledTextField.h */,
+				45E942E61D1302FF00ACF604 /* JVFloatLabeledTextField.m */,
+				45E942E71D1302FF00ACF604 /* NSStringUtils.h */,
+				45E942E81D1302FF00ACF604 /* NSStringUtils.m */,
+			);
+			name = JVFloatLabeledTextField;
+			sourceTree = "<group>";
+		};
+		4530DA301D4665FA00CF3186 /* UITextView */ = {
+			isa = PBXGroup;
+			children = (
+				4530DA311D46660900CF3186 /* CTTextView.h */,
+				4530DA321D46660900CF3186 /* CTTextView.m */,
+			);
+			name = UITextView;
+			sourceTree = "<group>";
+		};
+		4544463B1D992B950047873F /* UIStepper */ = {
+			isa = PBXGroup;
+			children = (
+				4544463C1D992BAA0047873F /* CTStepper.h */,
+				4544463D1D992BAA0047873F /* CTStepper.m */,
+			);
+			name = UIStepper;
+			sourceTree = "<group>";
+		};
+		455B59561DCC954300CA4790 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E79767AC1E8E101F00EA0057 /* RCTWebSocket.xcodeproj */,
+				E79767A21E8E07B500EA0057 /* RCTNetwork.xcodeproj */,
+				E7535D611E8D9F1000F881EA /* RCTText.xcodeproj */,
+				E7535D5B1E8D9EF800F881EA /* RCTActionSheet.xcodeproj */,
+				E7535D401E8D9EC500F881EA /* React.xcodeproj */,
+				455B59571DCC954400CA4790 /* CartrawlerAPI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45819FAC1D351CDF001AE0F5 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				BC3361891E4CCC520056E5A6 /* de.strings */,
+				BC33618A1E4CCC520056E5A6 /* el.strings */,
+				BC33618B1E4CCC520056E5A6 /* en.strings */,
+				BC33618C1E4CCC520056E5A6 /* es.strings */,
+				BC33618D1E4CCC520056E5A6 /* fr.strings */,
+				BC33618E1E4CCC520056E5A6 /* it.strings */,
+				BC33618F1E4CCC520056E5A6 /* nl.strings */,
+				BC3361901E4CCC520056E5A6 /* pl.strings */,
+				BC54F1571E54980500A7C871 /* pt.strings */,
+				455061891D59CD91004EAC43 /* CTLocalisedStrings.h */,
+				4550618A1D59CD91004EAC43 /* CTLocalisedStrings.m */,
+				E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */,
+				E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */,
+			);
+			name = Localization;
+			sourceTree = "<group>";
+		};
+		45AC547A1D13E47200805268 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				459CB2EA1DDB6528008522BA /* ToolTips.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		45B264F41D8FDE28000005F2 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				4587736E1D806064000CB1E5 /* GTPaymentRequest.h */,
+				4587736F1D806064000CB1E5 /* GTPaymentRequest.m */,
+				4588E3161D538FB1008F4267 /* CTPaymentRequest.h */,
+				4588E3171D538FB1008F4267 /* CTPaymentRequest.m */,
+				451C8F161D7EFF3400B9324D /* CTPaymentView.h */,
+				451C8F171D7EFF3400B9324D /* CTPaymentView.m */,
+				4588E3121D538803008F4267 /* CTPCI.html */,
+			);
+			name = Payment;
+			sourceTree = "<group>";
+		};
+		45BC88D11DC0F8370041BD74 /* ToolTip */ = {
+			isa = PBXGroup;
+			children = (
+				459CB2E21DDB3FA2008522BA /* CTToolTipButton.h */,
+				459CB2E31DDB3FA2008522BA /* CTToolTipButton.m */,
+				45BC88D21DC0F8460041BD74 /* CTToolTip.m */,
+				45BC88D31DC0F8460041BD74 /* CTToolTip.h */,
+				459CB2EC1DDB6638008522BA /* CTToolTipViewController.h */,
+				459CB2ED1DDB6638008522BA /* CTToolTipViewController.m */,
+			);
+			name = ToolTip;
+			sourceTree = "<group>";
+		};
+		45C3F1CF1DFABF6100610FA0 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				45BF774F1E08588900F6D7E9 /* Assets.xcassets */,
+				4576784F1E08021100FE591A /* CTHeaders.h */,
+				45E942461D12FF0F00ACF604 /* CartrawlerSDK.h */,
+				45E942481D12FF0F00ACF604 /* CartrawlerSDK.m */,
+			);
+			name = Public;
+			sourceTree = "<group>";
+		};
+		45D7BBD51DCCDA9F008DD631 /* Constraints */ = {
+			isa = PBXGroup;
+			children = (
+				45C980C01DCCDB95002D99AB /* CTLayoutConstraint.h */,
+				45C980C11DCCDB95002D99AB /* CTLayoutConstraint.m */,
+			);
+			name = Constraints;
+			sourceTree = "<group>";
+		};
+		45E9423A1D12FF0F00ACF604 = {
+			isa = PBXGroup;
+			children = (
+				45D386091DD62281000F02D1 /* strip-frameworks.sh */,
+				45E942ED1D13040800ACF604 /* Foundation.framework */,
+				45E942EB1D1303C500ACF604 /* UIKit.framework */,
+				45E942451D12FF0F00ACF604 /* CartrawlerSDK */,
+				45F5D7681DEF00C3005AE1AD /* CartrawlerSDKTests */,
+				45E942441D12FF0F00ACF604 /* Products */,
+				455B59561DCC954300CA4790 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		45E942441D12FF0F00ACF604 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				455B582B1DCC90D300CA4790 /* CartrawlerSDK.framework */,
+				45F5D7671DEF00C3005AE1AD /* CartrawlerSDKTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		45E942451D12FF0F00ACF604 /* CartrawlerSDK */ = {
+			isa = PBXGroup;
+			children = (
+				BC2951D31E7FF6030053A897 /* Models */,
+				BC1379E21E23E4DA00B1F727 /* Analytics */,
+				45C3F1CF1DFABF6100610FA0 /* Public */,
+				455B582E1DCC90D300CA4790 /* Info.plist */,
+				45B264F41D8FDE28000005F2 /* Payment */,
+				45819FAC1D351CDF001AE0F5 /* Localization */,
+				4511E5261D17EE4D000ED6B0 /* Settings */,
+				45E942D71D1302B800ACF604 /* UI Elements */,
+				45AC547A1D13E47200805268 /* Storyboards */,
+				45E942CA1D13029600ACF604 /* Utilities */,
+				45E942891D13003D00ACF604 /* Base View Controllers */,
+				45E942C01D13021300ACF604 /* DateTime Picker */,
+				45E942A21D13015900ACF604 /* Calender */,
+				45E9429E1D13013900ACF604 /* CTSelectView */,
+			);
+			path = CartrawlerSDK;
+			sourceTree = "<group>";
+		};
+		45E942891D13003D00ACF604 /* Base View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				45FBACB61D65BD4700C75FC9 /* View Manager */,
+				45EC250D1D49132B00A3C09D /* CTViewController.h */,
+				45EC250E1D49132B00A3C09D /* CTViewController.m */,
+			);
+			name = "Base View Controllers";
+			sourceTree = "<group>";
+		};
+		45E9429E1D13013900ACF604 /* CTSelectView */ = {
+			isa = PBXGroup;
+			children = (
+				45E9429F1D13014400ACF604 /* CTSelectView.h */,
+				45E942A01D13014400ACF604 /* CTSelectView.m */,
+			);
+			name = CTSelectView;
+			sourceTree = "<group>";
+		};
+		45E942A21D13015900ACF604 /* Calender */ = {
+			isa = PBXGroup;
+			children = (
+				45E942A31D1301C600ACF604 /* CTCalendarViewController.h */,
+				45E942A41D1301C600ACF604 /* CTCalendarViewController.m */,
+				45E942A51D1301C600ACF604 /* CTCalendarView.h */,
+				45E942A61D1301C600ACF604 /* CTCalendarView.m */,
+				45E942A71D1301C600ACF604 /* CTCalendarTableViewCell.h */,
+				45E942A81D1301C600ACF604 /* CTCalendarTableViewCell.m */,
+				45E942A91D1301C600ACF604 /* CTDateCollectionViewCell.h */,
+				45E942AA1D1301C600ACF604 /* CTDateCollectionViewCell.m */,
+				45E942AB1D1301C600ACF604 /* CalendarLogicController.h */,
+				45E942AC1D1301C600ACF604 /* CalendarLogicController.m */,
+			);
+			name = Calender;
+			sourceTree = "<group>";
+		};
+		45E942C01D13021300ACF604 /* DateTime Picker */ = {
+			isa = PBXGroup;
+			children = (
+				45E942C11D13022100ACF604 /* CTTimePickerView.h */,
+				45E942C21D13022100ACF604 /* CTTimePickerView.m */,
+			);
+			name = "DateTime Picker";
+			sourceTree = "<group>";
+		};
+		45E942CA1D13029600ACF604 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				454D20ED1D549AD10050CA9E /* CartrawlerSDK+NSDateUtils.h */,
+				454D20EE1D549AD10050CA9E /* CartrawlerSDK+NSDateUtils.m */,
+				45130C931DBF674F0081582B /* CartrawlerSDK+UIColor.h */,
+				45130C941DBF674F0081582B /* CartrawlerSDK+UIColor.m */,
+				45819FA31D3500E8001AE0F5 /* CartrawlerSDK+NSNumber.h */,
+				45819FA41D3500E8001AE0F5 /* CartrawlerSDK+NSNumber.m */,
+				450F9D3B1D3CE8D5002C6F6B /* CTCurrency.csv */,
+				450F9D3C1D3CE8D5002C6F6B /* CTISOCountries.csv */,
+				450F9D4B1D3D14FF002C6F6B /* CTLanguages.csv */,
+				45E942CD1D1302A200ACF604 /* CTImageCache.h */,
+				45E942CE1D1302A200ACF604 /* CTImageCache.m */,
+				45645D891D2D4A310075A3D2 /* CTHTMLParser.h */,
+				45645D8A1D2D4A310075A3D2 /* CTHTMLParser.m */,
+				4557FE3F1D3636400026F038 /* CTRentalSearch.h */,
+				4557FE401D3636400026F038 /* CTRentalSearch.m */,
+				45D6CC8F1DA55FBB000D7A6C /* CTFlightNumberValidation.h */,
+				45D6CC901DA55FBB000D7A6C /* CTFlightNumberValidation.m */,
+				451D7E7F1DBE1197001A4062 /* CTDataStore.h */,
+				451D7E801DBE1197001A4062 /* CTDataStore.m */,
+				454D91EE1DD34E24001AE96C /* Reachability.h */,
+				454D91EF1DD34E24001AE96C /* Reachability.m */,
+				4513B6221DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h */,
+				4513B6231DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m */,
+				450725B01DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h */,
+				450725B11DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m */,
+				459CB2DE1DDB1D9E008522BA /* CartrawlerSDK+UIView.h */,
+				459CB2DF1DDB1D9E008522BA /* CartrawlerSDK+UIView.m */,
+				450F9D3F1D3CE9D6002C6F6B /* CTCSVItem.h */,
+				450F9D401D3CE9D6002C6F6B /* CTCSVItem.m */,
+				BCF874271E79604100EBC758 /* CTLayoutManager.h */,
+				BCF874281E79604100EBC758 /* CTLayoutManager.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		45E942D71D1302B800ACF604 /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				E79767B61E8E13FD00EA0057 /* ReactNativeView */,
+				450725B41DD9C98400D56C8A /* UIImageView */,
+				45D7BBD51DCCDA9F008DD631 /* Constraints */,
+				45BC88D11DC0F8370041BD74 /* ToolTip */,
+				4511E5341D17F6CC000ED6B0 /* UINavigationBar */,
+				4544463B1D992B950047873F /* UIStepper */,
+				45EC25081D48E02E00A3C09D /* UISegmentedControl */,
+				45137C811D476A9800089928 /* UIPickerView */,
+				4530DA301D4665FA00CF3186 /* UITextView */,
+				4511E52B1D17F49F000ED6B0 /* UIView */,
+				4511E5211D17DF8E000ED6B0 /* Theme */,
+				45E942E41D1302F300ACF604 /* UITextField */,
+				45E942E01D1302E500ACF604 /* Checkbox */,
+				45E942DC1D1302CF00ACF604 /* UIButton */,
+				45E942D81D1302BF00ACF604 /* UILabel */,
+				E76900A51E6F061B00D729FF /* InfoTip */,
+				E76900E41E783EA200D729FF /* Expanding View */,
+				E7404A751E82F01C009BF7DF /* Tab Manager */,
+				E76900E31E776F5000D729FF /* List View */,
+				E70230701E8575E9005E1BF4 /* Rating View */,
+				E76900B41E70943000D729FF /* Alert View */,
+			);
+			name = "UI Elements";
+			sourceTree = "<group>";
+		};
+		45E942D81D1302BF00ACF604 /* UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				45E942D91D1302CA00ACF604 /* CTLabel.h */,
+				45E942DA1D1302CA00ACF604 /* CTLabel.m */,
+			);
+			name = UILabel;
+			sourceTree = "<group>";
+		};
+		45E942DC1D1302CF00ACF604 /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				45E942DD1D1302DA00ACF604 /* CTButton.h */,
+				45E942DE1D1302DA00ACF604 /* CTButton.m */,
+				459CB2E61DDB5BF8008522BA /* CTNextButton.h */,
+				459CB2E71DDB5BF8008522BA /* CTNextButton.m */,
+			);
+			name = UIButton;
+			sourceTree = "<group>";
+		};
+		45E942E01D1302E500ACF604 /* Checkbox */ = {
+			isa = PBXGroup;
+			children = (
+				45E942E11D1302EF00ACF604 /* CTCheckbox.h */,
+				45E942E21D1302EF00ACF604 /* CTCheckbox.m */,
+			);
+			name = Checkbox;
+			sourceTree = "<group>";
+		};
+		45E942E41D1302F300ACF604 /* UITextField */ = {
+			isa = PBXGroup;
+			children = (
+				451E73A01E04010900D58F71 /* JVFloatLabeledTextField */,
+				4511E5411D181B36000ED6B0 /* CTTextField.h */,
+				4511E5421D181B36000ED6B0 /* CTTextField.m */,
+				457128BF1DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h */,
+				457128C01DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m */,
+			);
+			name = UITextField;
+			sourceTree = "<group>";
+		};
+		45EC25081D48E02E00A3C09D /* UISegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				45EC25091D48E04700A3C09D /* CTSegmentedControl.h */,
+				45EC250A1D48E04700A3C09D /* CTSegmentedControl.m */,
+			);
+			name = UISegmentedControl;
+			sourceTree = "<group>";
+		};
+		45F5D7681DEF00C3005AE1AD /* CartrawlerSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				45F5D7691DEF00C3005AE1AD /* CartrawlerSDKTests.m */,
+				45F5D76B1DEF00C3005AE1AD /* Info.plist */,
+				BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */,
+			);
+			path = CartrawlerSDKTests;
+			sourceTree = "<group>";
+		};
+		45FBACB61D65BD4700C75FC9 /* View Manager */ = {
+			isa = PBXGroup;
+			children = (
+				451C8F061D7ED78100B9324D /* CTValidation.h */,
+				451C8F0B1D7EE21200B9324D /* CTValidation.m */,
+			);
+			name = "View Manager";
+			sourceTree = "<group>";
+		};
+		BC1379E21E23E4DA00B1F727 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */,
+				BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */,
+				BC1379E31E23E4E400B1F727 /* CTAnalytics.h */,
+				BC1379E41E23E4E400B1F727 /* CTAnalytics.m */,
+				BC1379E61E23E4E400B1F727 /* CTTag.h */,
+				BC1379E71E23E4E400B1F727 /* CTTag.m */,
+				BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */,
+				BC1379EE1E23E8E700B1F727 /* CTErrorTag.m */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		BC2951D31E7FF6030053A897 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				451E76381E04438300D58F71 /* CTRentalBooking.h */,
+				451E76391E04438300D58F71 /* CTRentalBooking.m */,
+				BC2951D41E7FF6110053A897 /* CTPassenger.h */,
+				BC2951D51E7FF6110053A897 /* CTPassenger.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E70230701E8575E9005E1BF4 /* Rating View */ = {
+			isa = PBXGroup;
+			children = (
+				E70230711E857DC2005E1BF4 /* CTRatingView.h */,
+				E70230721E857DC2005E1BF4 /* CTRatingView.m */,
+			);
+			name = "Rating View";
+			sourceTree = "<group>";
+		};
+		E7404A751E82F01C009BF7DF /* Tab Manager */ = {
+			isa = PBXGroup;
+			children = (
+				E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */,
+				E7404A771E82F3AB009BF7DF /* CTTabContainerView.m */,
+				E7404A7E1E82F90C009BF7DF /* CTTabHeaderView.h */,
+				E7404A7F1E82F90C009BF7DF /* CTTabHeaderView.m */,
+				E7404A821E82F95D009BF7DF /* CTTabView.h */,
+				E7404A831E82F95D009BF7DF /* CTTabView.m */,
+			);
+			name = "Tab Manager";
+			sourceTree = "<group>";
+		};
+		E7535D411E8D9EC500F881EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E7535D4C1E8D9EC500F881EA /* libReact.a */,
+				E7535D4E1E8D9EC500F881EA /* libReact.a */,
+				E7535D501E8D9EC500F881EA /* libyoga.a */,
+				E7535D521E8D9EC500F881EA /* libyoga.a */,
+				E7535D541E8D9EC500F881EA /* libcxxreact.a */,
+				E7535D561E8D9EC500F881EA /* libcxxreact.a */,
+				E7535D581E8D9EC500F881EA /* libjschelpers.a */,
+				E7535D5A1E8D9EC500F881EA /* libjschelpers.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E7535D5C1E8D9EF800F881EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E7535D601E8D9EF800F881EA /* libRCTActionSheet.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E7535D621E8D9F1000F881EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E7535D671E8D9F1000F881EA /* libRCTText.a */,
+				E7535D691E8D9F1000F881EA /* libRCTText-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E76900A51E6F061B00D729FF /* InfoTip */ = {
+			isa = PBXGroup;
+			children = (
+				E76900A61E6F065C00D729FF /* CTInfoTip.h */,
+				E76900A71E6F065C00D729FF /* CTInfoTip.m */,
+			);
+			name = InfoTip;
+			sourceTree = "<group>";
+		};
+		E76900B41E70943000D729FF /* Alert View */ = {
+			isa = PBXGroup;
+			children = (
+				E76900B51E70949500D729FF /* CTAlertViewController.h */,
+				E76900B61E70949500D729FF /* CTAlertViewController.m */,
+				E76900BB1E7199F400D729FF /* CTAlertView.h */,
+				E76900BC1E7199F400D729FF /* CTAlertView.m */,
+				E76900CF1E71D95700D729FF /* CTAlertAction.h */,
+				E76900D01E71D95700D729FF /* CTAlertAction.m */,
+				E76900BF1E719F9A00D729FF /* CTAlertTextView.h */,
+				E76900C01E719F9A00D729FF /* CTAlertTextView.m */,
+				E76900CB1E71A55900D729FF /* CTAlertViewPresentationController.h */,
+				E76900CC1E71A55900D729FF /* CTAlertViewPresentationController.m */,
+				E76900C31E71A31200D729FF /* CTAlertViewPresentationAnimationController.h */,
+				E76900C41E71A31200D729FF /* CTAlertViewPresentationAnimationController.m */,
+				E76900C71E71A45800D729FF /* CTAlertViewDismissalAnimationController.h */,
+				E76900C81E71A45800D729FF /* CTAlertViewDismissalAnimationController.m */,
+			);
+			name = "Alert View";
+			sourceTree = "<group>";
+		};
+		E76900E31E776F5000D729FF /* List View */ = {
+			isa = PBXGroup;
+			children = (
+				E76900DB1E764F9800D729FF /* CTListView.h */,
+				E76900DC1E764F9800D729FF /* CTListView.m */,
+				E76900DF1E77267600D729FF /* CTListItemView.h */,
+				E76900E01E77267600D729FF /* CTListItemView.m */,
+			);
+			name = "List View";
+			sourceTree = "<group>";
+		};
+		E76900E41E783EA200D729FF /* Expanding View */ = {
+			isa = PBXGroup;
+			children = (
+				E76900E51E783EC600D729FF /* CTExpandingView.h */,
+				E76900E61E783EC600D729FF /* CTExpandingView.m */,
+			);
+			name = "Expanding View";
+			sourceTree = "<group>";
+		};
+		E79767A31E8E07B500EA0057 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E79767A81E8E07B500EA0057 /* libRCTNetwork.a */,
+				E79767AA1E8E07B500EA0057 /* libRCTNetwork-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E79767AD1E8E101F00EA0057 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E79767B21E8E102000EA0057 /* libRCTWebSocket.a */,
+				E79767B41E8E102000EA0057 /* libRCTWebSocket-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E79767B61E8E13FD00EA0057 /* ReactNativeView */ = {
+			isa = PBXGroup;
+			children = (
+				E79767B71E8E141C00EA0057 /* CTReactNativeView.h */,
+				E79767B81E8E141C00EA0057 /* CTReactNativeView.m */,
+			);
+			name = ReactNativeView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		455B58281DCC90D300CA4790 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC1379E81E23E4E400B1F727 /* CTAnalytics.h in Headers */,
+				BC1379EF1E23E8E700B1F727 /* CTErrorTag.h in Headers */,
+				E7404A841E82F95D009BF7DF /* CTTabView.h in Headers */,
+				455B58741DCC914300CA4790 /* CTLabel.h in Headers */,
+				BC1379EB1E23E4E400B1F727 /* CTTag.h in Headers */,
+				451E763A1E04438300D58F71 /* CTRentalBooking.h in Headers */,
+				455B58761DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.h in Headers */,
+				455B58351DCC914300CA4790 /* CTPaymentRequest.h in Headers */,
+				455B58911DCC914300CA4790 /* CTDataStore.h in Headers */,
+				455B584E1DCC914300CA4790 /* CTNavigationController.h in Headers */,
+				45EC99B11E02B51600B76741 /* CTSDKSettings.h in Headers */,
+				455B587D1DCC914300CA4790 /* CTImageCache.h in Headers */,
+				455B58621DCC914300CA4790 /* CTAppearance.h in Headers */,
+				455B58B41DCC914400CA4790 /* CTValidation.h in Headers */,
+				E76900BD1E7199F400D729FF /* CTAlertView.h in Headers */,
+				455B59591DCC96D500CA4790 /* CartrawlerSDK.h in Headers */,
+				455B58871DCC914300CA4790 /* CTRentalSearch.h in Headers */,
+				455B58B71DCC914400CA4790 /* CTViewController.h in Headers */,
+				455B58371DCC914300CA4790 /* CTPaymentView.h in Headers */,
+				455B586C1DCC914300CA4790 /* CTButton.h in Headers */,
+				455B58491DCC914300CA4790 /* CTToolTip.h in Headers */,
+				455B584A1DCC914300CA4790 /* CTNavigationBar.h in Headers */,
+				455B584C1DCC914300CA4790 /* CTNavigationItem.h in Headers */,
+				455B58501DCC914300CA4790 /* CTStepper.h in Headers */,
+				E76900CD1E71A55900D729FF /* CTAlertViewPresentationController.h in Headers */,
+				455B58541DCC914300CA4790 /* CTSegmentedControl.h in Headers */,
+				455B58561DCC914300CA4790 /* CTPickerView.h in Headers */,
+				455B58581DCC914300CA4790 /* CTTextView.h in Headers */,
+				E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */,
+				455B585A1DCC914300CA4790 /* CTPlaceholderView.h in Headers */,
+				455B585C1DCC914300CA4790 /* CTView.h in Headers */,
+				455B585E1DCC914300CA4790 /* CTDesignableView.h in Headers */,
+				455B58601DCC914300CA4790 /* CTNavigationView.h in Headers */,
+				E76900C51E71A31200D729FF /* CTAlertViewPresentationAnimationController.h in Headers */,
+				454D91F01DD34E24001AE96C /* Reachability.h in Headers */,
+				455B58661DCC914300CA4790 /* NSStringUtils.h in Headers */,
+				455B58681DCC914300CA4790 /* CTTextField.h in Headers */,
+				455B586A1DCC914300CA4790 /* CTCheckbox.h in Headers */,
+				459CB2E01DDB1D9E008522BA /* CartrawlerSDK+UIView.h in Headers */,
+				455B58811DCC914300CA4790 /* CartrawlerSDK+NSNumber.h in Headers */,
+				455B58851DCC914300CA4790 /* CTHTMLParser.h in Headers */,
+				455B588D1DCC914300CA4790 /* CTLocalisedStrings.h in Headers */,
+				455B588F1DCC914300CA4790 /* CTFlightNumberValidation.h in Headers */,
+				455B58931DCC914300CA4790 /* CartrawlerSDK+UIColor.h in Headers */,
+				450725B71DD9C99500D56C8A /* CTImageView.h in Headers */,
+				459CB2EE1DDB6638008522BA /* CTToolTipViewController.h in Headers */,
+				457128C11DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h in Headers */,
+				E76900C91E71A45800D729FF /* CTAlertViewDismissalAnimationController.h in Headers */,
+				455B58BF1DCC914400CA4790 /* CTTimePickerView.h in Headers */,
+				455B58C11DCC914400CA4790 /* CTCalendarViewController.h in Headers */,
+				459CB2E81DDB5BF8008522BA /* CTNextButton.h in Headers */,
+				4513B6241DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h in Headers */,
+				E76900C11E719F9A00D729FF /* CTAlertTextView.h in Headers */,
+				455B58CD1DCC914400CA4790 /* CTSelectView.h in Headers */,
+				45C980C21DCCDB95002D99AB /* CTLayoutConstraint.h in Headers */,
+				455B58641DCC914300CA4790 /* JVFloatLabeledTextField.h in Headers */,
+				BCF874291E79604100EBC758 /* CTLayoutManager.h in Headers */,
+				BC2951D61E7FF6110053A897 /* CTPassenger.h in Headers */,
+				E76900DD1E764F9800D729FF /* CTListView.h in Headers */,
+				E76900E11E77267700D729FF /* CTListItemView.h in Headers */,
+				457678501E08021500FE591A /* CTHeaders.h in Headers */,
+				E7404A781E82F3AB009BF7DF /* CTTabContainerView.h in Headers */,
+				E79767B91E8E141C00EA0057 /* CTReactNativeView.h in Headers */,
+				E70230731E857DC2005E1BF4 /* CTRatingView.h in Headers */,
+				BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */,
+				E76900E71E783EC600D729FF /* CTExpandingView.h in Headers */,
+				E76900D11E71D95700D729FF /* CTAlertAction.h in Headers */,
+				E76900A81E6F065C00D729FF /* CTInfoTip.h in Headers */,
+				E7404A801E82F90C009BF7DF /* CTTabHeaderView.h in Headers */,
+				450725B21DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.h in Headers */,
+				455B591B1DCC914400CA4790 /* CTCSVItem.h in Headers */,
+				E76900B71E70949500D729FF /* CTAlertViewController.h in Headers */,
+				459CB2E41DDB3FA2008522BA /* CTToolTipButton.h in Headers */,
+				455B58C71DCC914400CA4790 /* CTDateCollectionViewCell.h in Headers */,
+				455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */,
+				455B58C31DCC914400CA4790 /* CTCalendarView.h in Headers */,
+				455B58C51DCC914400CA4790 /* CTCalendarTableViewCell.h in Headers */,
+				455B58C91DCC914400CA4790 /* CalendarLogicController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		455B582A1DCC90D300CA4790 /* CartrawlerSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 455B58301DCC90D300CA4790 /* Build configuration list for PBXNativeTarget "CartrawlerSDK" */;
+			buildPhases = (
+				455B58261DCC90D300CA4790 /* Sources */,
+				455B58271DCC90D300CA4790 /* Frameworks */,
+				455B58281DCC90D300CA4790 /* Headers */,
+				455B58291DCC90D300CA4790 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CartrawlerSDK;
+			productName = CartrawlerSDK;
+			productReference = 455B582B1DCC90D300CA4790 /* CartrawlerSDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		45F5D7661DEF00C3005AE1AD /* CartrawlerSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45F5D76F1DEF00C3005AE1AD /* Build configuration list for PBXNativeTarget "CartrawlerSDKTests" */;
+			buildPhases = (
+				17C4A6EB91752FE86FFA3E67 /* [CP] Check Pods Manifest.lock */,
+				45F5D7631DEF00C3005AE1AD /* Sources */,
+				45F5D7641DEF00C3005AE1AD /* Frameworks */,
+				45F5D7651DEF00C3005AE1AD /* Resources */,
+				C26C17F9BB3AA509DEDBD307 /* [CP] Embed Pods Frameworks */,
+				EC1A8A371B7A53FDAFC78531 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				45F5D76E1DEF00C3005AE1AD /* PBXTargetDependency */,
+			);
+			name = CartrawlerSDKTests;
+			productName = CartrawlerSDKTests;
+			productReference = 45F5D7671DEF00C3005AE1AD /* CartrawlerSDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		45E9423B1D12FF0F00ACF604 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CT;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = Cartrawler;
+				TargetAttributes = {
+					455B582A1DCC90D300CA4790 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+					};
+					45CB04781DEDCEDA0086BEA0 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
+					45F5D7661DEF00C3005AE1AD = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3L8QU4R2JJ;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 45E9423E1D12FF0F00ACF604 /* Build configuration list for PBXProject "CartrawlerSDK" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 45E9423A1D12FF0F00ACF604;
+			productRefGroup = 45E942441D12FF0F00ACF604 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E7535D5C1E8D9EF800F881EA /* Products */;
+					ProjectRef = E7535D5B1E8D9EF800F881EA /* RCTActionSheet.xcodeproj */;
+				},
+				{
+					ProductGroup = E79767A31E8E07B500EA0057 /* Products */;
+					ProjectRef = E79767A21E8E07B500EA0057 /* RCTNetwork.xcodeproj */;
+				},
+				{
+					ProductGroup = E7535D621E8D9F1000F881EA /* Products */;
+					ProjectRef = E7535D611E8D9F1000F881EA /* RCTText.xcodeproj */;
+				},
+				{
+					ProductGroup = E79767AD1E8E101F00EA0057 /* Products */;
+					ProjectRef = E79767AC1E8E101F00EA0057 /* RCTWebSocket.xcodeproj */;
+				},
+				{
+					ProductGroup = E7535D411E8D9EC500F881EA /* Products */;
+					ProjectRef = E7535D401E8D9EC500F881EA /* React.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				455B582A1DCC90D300CA4790 /* CartrawlerSDK */,
+				45CB04781DEDCEDA0086BEA0 /* BuildSDK */,
+				45F5D7661DEF00C3005AE1AD /* CartrawlerSDKTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E7535D4C1E8D9EC500F881EA /* libReact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReact.a;
+			remoteRef = E7535D4B1E8D9EC500F881EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E7535D4E1E8D9EC500F881EA /* libReact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReact.a;
+			remoteRef = E7535D4D1E8D9EC500F881EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E7535D501E8D9EC500F881EA /* libyoga.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libyoga.a;
+			remoteRef = E7535D4F1E8D9EC500F881EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E7535D521E8D9EC500F881EA /* libyoga.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libyoga.a;
+			remoteRef = E7535D511E8D9EC500F881EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E7535D541E8D9EC500F881EA /* libcxxreact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libcxxreact.a;
+			remoteRef = E7535D531E8D9EC500F881EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E7535D561E8D9EC500F881EA /* libcxxreact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libcxxreact.a;
+			remoteRef = E7535D551E8D9EC500F881EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E7535D581E8D9EC500F881EA /* libjschelpers.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjschelpers.a;
+			remoteRef = E7535D571E8D9EC500F881EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E7535D5A1E8D9EC500F881EA /* libjschelpers.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjschelpers.a;
+			remoteRef = E7535D591E8D9EC500F881EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E7535D601E8D9EF800F881EA /* libRCTActionSheet.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTActionSheet.a;
+			remoteRef = E7535D5F1E8D9EF800F881EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E7535D671E8D9F1000F881EA /* libRCTText.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTText.a;
+			remoteRef = E7535D661E8D9F1000F881EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E7535D691E8D9F1000F881EA /* libRCTText-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTText-tvOS.a";
+			remoteRef = E7535D681E8D9F1000F881EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E79767A81E8E07B500EA0057 /* libRCTNetwork.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTNetwork.a;
+			remoteRef = E79767A71E8E07B500EA0057 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E79767AA1E8E07B500EA0057 /* libRCTNetwork-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTNetwork-tvOS.a";
+			remoteRef = E79767A91E8E07B500EA0057 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E79767B21E8E102000EA0057 /* libRCTWebSocket.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTWebSocket.a;
+			remoteRef = E79767B11E8E102000EA0057 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E79767B41E8E102000EA0057 /* libRCTWebSocket-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTWebSocket-tvOS.a";
+			remoteRef = E79767B31E8E102000EA0057 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		455B58291DCC90D300CA4790 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				455B59451DCC91F900CA4790 /* CTPCI.html in Resources */,
+				459CB2EB1DDB6528008522BA /* ToolTips.storyboard in Resources */,
+				BC3361951E4CCC520056E5A6 /* fr.strings in Resources */,
+				BC3361941E4CCC520056E5A6 /* es.strings in Resources */,
+				455B59511DCC91F900CA4790 /* CTCurrency.csv in Resources */,
+				BC3361921E4CCC520056E5A6 /* el.strings in Resources */,
+				BC54F1581E54980500A7C871 /* pt.strings in Resources */,
+				BC3361911E4CCC520056E5A6 /* de.strings in Resources */,
+				455B59521DCC91F900CA4790 /* CTISOCountries.csv in Resources */,
+				45D3860A1DD62281000F02D1 /* strip-frameworks.sh in Resources */,
+				45BF77501E08588900F6D7E9 /* Assets.xcassets in Resources */,
+				BC3361961E4CCC520056E5A6 /* it.strings in Resources */,
+				455B59531DCC91F900CA4790 /* CTLanguages.csv in Resources */,
+				BC3361971E4CCC520056E5A6 /* nl.strings in Resources */,
+				BC3361931E4CCC520056E5A6 /* en.strings in Resources */,
+				BC3361981E4CCC520056E5A6 /* pl.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45F5D7651DEF00C3005AE1AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		17C4A6EB91752FE86FFA3E67 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		45CB047D1DEDD10E0086BEA0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n######################\n# Options\n######################\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal-CartrawlerSDK\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\nexport VERSION= \"defaults read ${INFO_PLIST} CFBundleVersionString\"\n\n######################\n# Build Frameworks\n######################\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme ${FRAMEWORK_NAME} -configuration Debug -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk \"iphoneos\"\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme ${FRAMEWORK_NAME} -configuration Debug -arch x86_64 -arch i386 only_active_arch=no defines_module=yes -sdk \"iphonesimulator\"\n\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n\n######################\n# On Release, copy the result to release directory\n######################\nOUTPUT_DIR=\"${SRCROOT}/../../../Artifacts_Latest\"\nmkdir -p \"$OUTPUT_DIR\"\n\ncp -r \"${FRAMEWORK}\" \"$OUTPUT_DIR\"\n\n";
+		};
+		C26C17F9BB3AA509DEDBD307 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CartrawlerSDKTests/Pods-CartrawlerSDKTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC1A8A371B7A53FDAFC78531 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CartrawlerSDKTests/Pods-CartrawlerSDKTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		455B58261DCC90D300CA4790 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				455B58341DCC914300CA4790 /* GTPaymentRequest.m in Sources */,
+				E7404A811E82F90C009BF7DF /* CTTabHeaderView.m in Sources */,
+				457128C21DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m in Sources */,
+				455B58361DCC914300CA4790 /* CTPaymentRequest.m in Sources */,
+				455B58381DCC914300CA4790 /* CTPaymentView.m in Sources */,
+				455B583C1DCC914300CA4790 /* CTSDKSettings.m in Sources */,
+				BC1379E91E23E4E400B1F727 /* CTAnalytics.m in Sources */,
+				455B58481DCC914300CA4790 /* CTToolTip.m in Sources */,
+				455B584B1DCC914300CA4790 /* CTNavigationBar.m in Sources */,
+				455B584D1DCC914300CA4790 /* CTNavigationItem.m in Sources */,
+				BCF8742A1E79604100EBC758 /* CTLayoutManager.m in Sources */,
+				E76900CA1E71A45800D729FF /* CTAlertViewDismissalAnimationController.m in Sources */,
+				455B584F1DCC914300CA4790 /* CTNavigationController.m in Sources */,
+				E7404A851E82F95D009BF7DF /* CTTabView.m in Sources */,
+				455B58511DCC914300CA4790 /* CTStepper.m in Sources */,
+				BC1379F01E23E8E700B1F727 /* CTErrorTag.m in Sources */,
+				455B58551DCC914300CA4790 /* CTSegmentedControl.m in Sources */,
+				455B58571DCC914300CA4790 /* CTPickerView.m in Sources */,
+				455B58591DCC914300CA4790 /* CTTextView.m in Sources */,
+				455B585B1DCC914300CA4790 /* CTPlaceholderView.m in Sources */,
+				E70230741E857DC2005E1BF4 /* CTRatingView.m in Sources */,
+				455B585D1DCC914300CA4790 /* CTView.m in Sources */,
+				455B585F1DCC914300CA4790 /* CTDesignableView.m in Sources */,
+				455B58611DCC914300CA4790 /* CTNavigationView.m in Sources */,
+				455B58631DCC914300CA4790 /* CTAppearance.m in Sources */,
+				455B58651DCC914300CA4790 /* JVFloatLabeledTextField.m in Sources */,
+				455B58671DCC914300CA4790 /* NSStringUtils.m in Sources */,
+				E7CD21A81E38F794006BE519 /* CTSDKLocalizationConstants.m in Sources */,
+				BC1379EC1E23E4E400B1F727 /* CTTag.m in Sources */,
+				455B58691DCC914300CA4790 /* CTTextField.m in Sources */,
+				455B586B1DCC914300CA4790 /* CTCheckbox.m in Sources */,
+				455B586D1DCC914300CA4790 /* CTButton.m in Sources */,
+				455B58751DCC914300CA4790 /* CTLabel.m in Sources */,
+				455B58771DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.m in Sources */,
+				E79767BA1E8E141C00EA0057 /* CTReactNativeView.m in Sources */,
+				455B587E1DCC914300CA4790 /* CTImageCache.m in Sources */,
+				E7404A791E82F3AB009BF7DF /* CTTabContainerView.m in Sources */,
+				E76900B81E70949500D729FF /* CTAlertViewController.m in Sources */,
+				E76900C61E71A31200D729FF /* CTAlertViewPresentationAnimationController.m in Sources */,
+				455B58821DCC914300CA4790 /* CartrawlerSDK+NSNumber.m in Sources */,
+				455B58861DCC914300CA4790 /* CTHTMLParser.m in Sources */,
+				455B58881DCC914300CA4790 /* CTRentalSearch.m in Sources */,
+				455B588E1DCC914300CA4790 /* CTLocalisedStrings.m in Sources */,
+				455B58901DCC914300CA4790 /* CTFlightNumberValidation.m in Sources */,
+				455B58921DCC914300CA4790 /* CTDataStore.m in Sources */,
+				E76900BE1E7199F400D729FF /* CTAlertView.m in Sources */,
+				E76900DE1E764F9800D729FF /* CTListView.m in Sources */,
+				455B58941DCC914300CA4790 /* CartrawlerSDK+UIColor.m in Sources */,
+				4513B6251DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m in Sources */,
+				455B58B61DCC914400CA4790 /* CTValidation.m in Sources */,
+				E76900E21E77267700D729FF /* CTListItemView.m in Sources */,
+				BC2951D71E7FF6110053A897 /* CTPassenger.m in Sources */,
+				455B58B81DCC914400CA4790 /* CTViewController.m in Sources */,
+				E76900E81E783EC600D729FF /* CTExpandingView.m in Sources */,
+				459CB2E51DDB3FA2008522BA /* CTToolTipButton.m in Sources */,
+				455B58C01DCC914400CA4790 /* CTTimePickerView.m in Sources */,
+				455B58C21DCC914400CA4790 /* CTCalendarViewController.m in Sources */,
+				455B58C41DCC914400CA4790 /* CTCalendarView.m in Sources */,
+				455B58C61DCC914400CA4790 /* CTCalendarTableViewCell.m in Sources */,
+				E76900A91E6F065C00D729FF /* CTInfoTip.m in Sources */,
+				455B58C81DCC914400CA4790 /* CTDateCollectionViewCell.m in Sources */,
+				455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */,
+				455B58CE1DCC914400CA4790 /* CTSelectView.m in Sources */,
+				450725B81DD9C99500D56C8A /* CTImageView.m in Sources */,
+				451E763B1E04438300D58F71 /* CTRentalBooking.m in Sources */,
+				450725B31DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m in Sources */,
+				459CB2E91DDB5BF8008522BA /* CTNextButton.m in Sources */,
+				BCDB4BEA1E3F50C6008004DA /* CTAnalyticsEvent.m in Sources */,
+				455B591C1DCC914400CA4790 /* CTCSVItem.m in Sources */,
+				45C980C31DCCDB95002D99AB /* CTLayoutConstraint.m in Sources */,
+				E76900C21E719F9A00D729FF /* CTAlertTextView.m in Sources */,
+				459CB2E11DDB1D9E008522BA /* CartrawlerSDK+UIView.m in Sources */,
+				E76900D21E71D95800D729FF /* CTAlertAction.m in Sources */,
+				454D91F11DD34E24001AE96C /* Reachability.m in Sources */,
+				E76900CE1E71A55900D729FF /* CTAlertViewPresentationController.m in Sources */,
+				459CB2EF1DDB6638008522BA /* CTToolTipViewController.m in Sources */,
+				455B59441DCC914400CA4790 /* CartrawlerSDK.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45F5D7631DEF00C3005AE1AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45F5D76A1DEF00C3005AE1AD /* CartrawlerSDKTests.m in Sources */,
+				BC9F6E521E24EF91006DD990 /* CTAnalyticsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		45F5D76E1DEF00C3005AE1AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 455B582A1DCC90D300CA4790 /* CartrawlerSDK */;
+			targetProxy = 45F5D76D1DEF00C3005AE1AD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		455B58311DCC90D300CA4790 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../node_modules/react-native/React\"/**",
+					"\"$(SRCROOT)/../node_modules/react-native/ReactCommon\"/**",
+				);
+				INFOPLIST_FILE = CartrawlerSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.sdk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		455B58321DCC90D300CA4790 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../node_modules/react-native/React\"/**",
+					"\"$(SRCROOT)/../node_modules/react-native/ReactCommon\"/**",
+				);
+				INFOPLIST_FILE = CartrawlerSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.sdk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		45CB047A1DEDCEDA0086BEA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45CB047B1DEDCEDA0086BEA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		45E9424A1D12FF0F00ACF604 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		45E9424B1D12FF0F00ACF604 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		45F5D7701DEF00C3005AE1AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				INFOPLIST_FILE = CartrawlerSDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.qa.CartrawlerSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45F5D7711DEF00C3005AE1AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				INFOPLIST_FILE = CartrawlerSDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.qa.CartrawlerSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		455B58301DCC90D300CA4790 /* Build configuration list for PBXNativeTarget "CartrawlerSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				455B58311DCC90D300CA4790 /* Debug */,
+				455B58321DCC90D300CA4790 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45CB04791DEDCEDA0086BEA0 /* Build configuration list for PBXAggregateTarget "BuildSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45CB047A1DEDCEDA0086BEA0 /* Debug */,
+				45CB047B1DEDCEDA0086BEA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45E9423E1D12FF0F00ACF604 /* Build configuration list for PBXProject "CartrawlerSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45E9424A1D12FF0F00ACF604 /* Debug */,
+				45E9424B1D12FF0F00ACF604 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45F5D76F1DEF00C3005AE1AD /* Build configuration list for PBXNativeTarget "CartrawlerSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45F5D7701DEF00C3005AE1AD /* Debug */,
+				45F5D7711DEF00C3005AE1AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 45E9423B1D12FF0F00ACF604 /* Project object */;
+}
