@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) NSMutableArray<NSDictionary *> *viewArray;
+@property (nonatomic, strong) NSMutableArray<NSLayoutConstraint *> *constraints;
 
 @end
 
@@ -26,6 +27,7 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
 + (instancetype)layoutManagerWithContainer:(UIView *)containerView
 {
     CTLayoutManager *layoutManager = [CTLayoutManager new];
+    layoutManager.constraints = [NSMutableArray new];
     layoutManager.viewArray = [NSMutableArray new];
     layoutManager.containerView = containerView;
     return layoutManager;
@@ -43,6 +45,38 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
                                };
     
     [self.viewArray addObject:viewDict];
+}
+
+- (void)insertViewAtIndex:(NSUInteger)index padding:(UIEdgeInsets)padding view:(UIView *)view
+{
+    if (index < self.viewArray.count) {
+        view.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.containerView addSubview:view];
+        NSDictionary *viewDict = @{CTLayoutTopPaddingKey : [NSNumber numberWithDouble:padding.top ?: 0.0],
+                                   CTLayoutBottomPaddingKey : [NSNumber numberWithDouble:padding.bottom ?: 0.0],
+                                   CTLayoutLeftPaddingKey : [NSNumber numberWithFloat:padding.left ?: 0.0],
+                                   CTLayoutRightPaddingKey : [NSNumber numberWithFloat:padding.right ?: 0.0],
+                                   CTLayoutViewKey : view
+                                   };
+        
+        [self undoConstraints];
+        [self.viewArray insertObject:viewDict atIndex:index];
+        [self layoutViews];
+    } else {
+        NSLog(@"CTLayoutManager: Trying to insert at an illegal index");
+    }
+}
+
+- (void)removeAtIndex:(NSUInteger)index
+{
+    [self.viewArray removeObjectAtIndex:index];
+    [self undoConstraints];
+    [self layoutViews];
+}
+
+- (void)undoConstraints
+{
+    [self.containerView removeConstraints:self.constraints];
 }
 
 - (void)layoutViews
@@ -147,15 +181,21 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
         [viewFormatH appendString:@"-rightPadding-|"];
     }
     
-    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:viewFormatV
-                                                                      options:0
-                                                                      metrics:metrics
-                                                                        views:viewDict]];
+    NSArray<NSLayoutConstraint *> *constraintsV = [NSLayoutConstraint constraintsWithVisualFormat:viewFormatV
+                                                                                         options:0
+                                                                                         metrics:metrics
+                                                                                            views:viewDict];
     
-    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:viewFormatH
-                                                                      options:0
-                                                                      metrics:metrics
-                                                                        views:viewDict]];
+    NSArray<NSLayoutConstraint *> *constraintsH = [NSLayoutConstraint constraintsWithVisualFormat:viewFormatH
+                                                                                          options:0
+                                                                                          metrics:metrics
+                                                                                            views:viewDict];
+    
+    [self.constraints addObjectsFromArray:constraintsV];
+    [self.constraints addObjectsFromArray:constraintsH];
+
+    [container addConstraints:constraintsV];
+    [container addConstraints:constraintsH];
     
 }
 
@@ -188,6 +228,16 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
     NSDictionary *currentDict = self.viewArray[index];
     UIView *view = currentDict[CTLayoutViewKey];
     return view;
+}
+
+- (NSUInteger)indexOfObject:(id)object
+{
+    for (NSDictionary *d in self.viewArray) {
+        if (d[CTLayoutViewKey] == object) {
+            return [self.viewArray indexOfObject:d];
+        }
+    }
+    return nil;
 }
 
 + (void)pinView:(UIView *)view toSuperView:(UIView *)superview

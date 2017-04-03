@@ -43,9 +43,34 @@ typedef NS_ENUM(NSUInteger, CTLayoutManagerOrientation) {
 - (void)insertView:(UIEdgeInsets)padding view:(UIView *)view;
 
 /**
+ Insert a view into the containerView at a certain index
+ 
+ @param index The index in the view array
+ @param padding The padding for the surrounding subviews
+ @param view The view you want to insert
+ */
+- (void)insertViewAtIndex:(NSUInteger)index padding:(UIEdgeInsets)padding view:(UIView *)view;
+
+/**
+ Removes a view at a specific index
+
+ @param index The index of the view array
+ */
+- (void)removeAtIndex:(NSUInteger)index;
+
+/**
  Call this method when you want to apply the contraints to the inserted subviews
  */
 - (void)layoutViews;
+
+
+/**
+ Get the index of an object in the view array
+
+ @param object The object you want to check index for
+ @return The index of the object
+ */
+- (NSUInteger)indexOfObject:(id)object;
 
 /**
  Convenience method to pin a view to a superview
