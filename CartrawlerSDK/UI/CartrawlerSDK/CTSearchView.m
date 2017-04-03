@@ -8,14 +8,14 @@
 
 #import "CTSearchView.h"
 #import "CartrawlerSDK/CTLayoutManager.h"
-#import "CTSearchSelectionView.h"
+#import "CTSelectionView.h"
 
-@interface CTSearchView() <CTSearchSelectionViewDelegate>
+@interface CTSearchView() <CTSelectionViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *scrollViewContentView;
 
-@property (nonatomic, strong) CTSearchSelectionView *pickupLocationSearch;
+@property (nonatomic, strong) CTSelectionView *pickupLocationSearch;
 @property (nonatomic, strong) UIView *dropoffLocationSearch;
 @property (nonatomic, strong) UIView *sameLocationSwitchContainer;
 @property (nonatomic, strong) UIView *datesContainer;
@@ -64,7 +64,7 @@
     self.scrollViewContentView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.scrollView addSubview:self.scrollViewContentView];
     
-    _pickupLocationSearch = [[CTSearchSelectionView alloc] initWithPlaceholder:@"Pickup Location"];
+    _pickupLocationSearch = [[CTSelectionView alloc] initWithPlaceholder:@"Pickup Location"];
     self.pickupLocationSearch.useAsButton = YES;
     self.pickupLocationSearch.delegate = self;
     
@@ -149,7 +149,7 @@
 }
 
 //MARK: Selection view delegate
-- (void)didTapSelectionView:(CTSearchSelectionView *)selectionView
+- (void)didTapSelectionView:(CTSelectionView *)selectionView
 {
     if (selectionView == self.pickupLocationSearch) {
         [self.pickupLocationSearch setDetailText:@"It Works"];

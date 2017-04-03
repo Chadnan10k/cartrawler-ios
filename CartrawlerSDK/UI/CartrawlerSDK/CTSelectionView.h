@@ -8,17 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@class CTSearchSelectionView;
+@class CTSelectionView;
 
-@protocol CTSearchSelectionViewDelegate <NSObject>
+@protocol CTSelectionViewDelegate <NSObject>
 
-- (void)didTapSelectionView:(CTSearchSelectionView *)selectionView;
+- (void)didTapSelectionView:(CTSelectionView *)selectionView;
 
 @end
 
-@interface CTSearchSelectionView : UIView
+@interface CTSelectionView : UIView
 
-@property (nonatomic, strong) id<CTSearchSelectionViewDelegate> delegate;
+@property (nonatomic, strong) id<CTSelectionViewDelegate> delegate;
 
 
 /**

@@ -6,10 +6,10 @@
 //  Copyright © 2017 Cartrawler. All rights reserved.
 //
 
-#import "CTSearchSelectionView.h"
+#import "CTSelectionView.h"
 #import <CartrawlerSDK/CTLayoutManager.h>
 
-@interface CTSearchSelectionView () <UITextFieldDelegate>
+@interface CTSelectionView () <UITextFieldDelegate>
 
 @property (nonatomic, strong) UILabel *placeholderLabel;
 @property (nonatomic, strong) UITextField *detailTextField;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation CTSearchSelectionView
+@implementation CTSelectionView
 
 - (instancetype)initWithPlaceholder:(NSString *)placeholderText
 {
