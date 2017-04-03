@@ -22,16 +22,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     _searchView = [[CTSearchView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.searchView];
     [CTLayoutManager pinView:self.searchView toSuperView:self.view];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.searchView updateDisplayWithSearch:self.search];
 }
 
 

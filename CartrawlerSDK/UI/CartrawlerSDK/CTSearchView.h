@@ -10,4 +10,6 @@
 
 @interface CTSearchView : UIView
 
+- (void)updateDisplayWithSearch:(NSObject *)search;
+
 @end

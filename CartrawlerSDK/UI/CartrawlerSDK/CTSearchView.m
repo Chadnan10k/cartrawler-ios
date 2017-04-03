@@ -10,7 +10,7 @@
 #import "CartrawlerSDK/CTLayoutManager.h"
 #import "CTSearchSelectionView.h"
 
-@interface CTSearchView()
+@interface CTSearchView() <CTSearchSelectionViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *scrollViewContentView;
@@ -64,8 +64,9 @@
     self.scrollViewContentView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.scrollView addSubview:self.scrollViewContentView];
     
-    _pickupLocationSearch = [CTSearchSelectionView new];
-    self.pickupLocationSearch.translatesAutoresizingMaskIntoConstraints = NO;
+    _pickupLocationSearch = [[CTSearchSelectionView alloc] initWithPlaceholder:@"Pickup Location"];
+    self.pickupLocationSearch.useAsButton = YES;
+    self.pickupLocationSearch.delegate = self;
     
     _dropoffLocationSearch = [UIView new];
     self.dropoffLocationSearch.backgroundColor = [UIColor redColor];
@@ -139,6 +140,20 @@
 - (void)updateDisplayWithSearch:(NSObject *)search
 {
     
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//        [self.pickupLocationSearch setDetailText:@"xx xx"];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//            [self.pickupLocationSearch setDetailText:@""];
+//        });
+//    });
+}
+
+//MARK: Selection view delegate
+- (void)didTapSelectionView:(CTSearchSelectionView *)selectionView
+{
+    if (selectionView == self.pickupLocationSearch) {
+        [self.pickupLocationSearch setDetailText:@"It Works"];
+    }
 }
 
 @end
