@@ -18,14 +18,6 @@
     return [formatter stringFromDate:self];
 }
 
-- (NSString *)stringFromDate:(NSString *)format;
-{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = format;
-    
-    return [formatter stringFromDate:self];
-}
-
 - (NSString *)shortDescriptionFromDate
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

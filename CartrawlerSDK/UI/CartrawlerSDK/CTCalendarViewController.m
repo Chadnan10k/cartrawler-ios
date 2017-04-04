@@ -18,6 +18,9 @@
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CTButton.h>
 
+extern const NSString *CTCalendarViewIdentifier = @"CTCalendarViewController";
+extern const NSString *CTCalendarStoryboard = @"CTCalendar";
+
 @interface CTCalendarViewController()
 
 @property (weak, nonatomic) IBOutlet CTNextButton *nextButton;

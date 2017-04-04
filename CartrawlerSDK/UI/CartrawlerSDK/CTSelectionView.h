@@ -27,6 +27,11 @@
 @property (nonatomic) BOOL useAsButton;
 
 /**
+ Optional, use if you want to pass a RegEx
+ */
+@property (nonatomic, strong) NSString *regex;
+
+/**
  Designated initialiser
 
  @param placeholderText The placeholder text
@@ -50,6 +55,12 @@
  @param detailText The detail text
  */
 - (void)setDetailText:(NSString *)detailText;
+
+
+/**
+ Shake animaion
+ */
+- (void)animate;
 
 @end
 

@@ -11,9 +11,13 @@
 @protocol CTCalendarDelegate <NSObject>
 
 @required
+
 - (void)didPickDates:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate;
 
 @end
+
+extern const NSString *CTCalendarViewIdentifier;
+extern const NSString *CTCalendarStoryboard;
 
 @interface CTCalendarViewController : UIViewController
 

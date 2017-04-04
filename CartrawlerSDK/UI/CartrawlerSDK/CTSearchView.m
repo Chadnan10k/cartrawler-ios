@@ -8,10 +8,14 @@
 
 #import "CTSearchView.h"
 #import "CartrawlerSDK/CTLayoutManager.h"
+#import "CartrawlerSDK/CTCalendarViewController.h"
+#import "CartrawlerSDK/CartrawlerSDK+NSDateUtils.h"
+#import "CartrawlerSDK/CTAlertViewController.h"
 #import "CTSelectionView.h"
 #import "CTLocationSearchViewController.h"
+#import "CTRentalConstants.h"
 
-@interface CTSearchView() <CTSelectionViewDelegate>
+@interface CTSearchView() <CTSelectionViewDelegate, CTCalendarDelegate>
 
 @property (nonatomic, strong) CTLayoutManager *layoutManager;
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -44,24 +48,30 @@
 {
     self = [super init];
     
-    if (!self) {
-        [self setup];
-    }
-    
-    return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    
     [self setup];
     
     return self;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
 - (void)setup
 {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
     _locationSwitch = [UISwitch new];
     _ageSwitch = [UISwitch new];
     
@@ -99,6 +109,7 @@
     self.ageSwitchContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
     _ageContainer = [[CTSelectionView alloc] initWithPlaceholder:@"Age"];
+    self.ageContainer.regex = @"^[0-9]{0,2}$";
     self.ageContainer.useAsButton = NO;
     
     NSDictionary *viewDictionary = @{
@@ -114,7 +125,7 @@
                                      };
     
     //Scrollview
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-100-[scrollView]-0-|" options:0 metrics:nil views:viewDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[scrollView]-0-|" options:0 metrics:nil views:viewDictionary]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[scrollView]-0-|" options:0 metrics:nil views:viewDictionary]];
     
     [self.scrollViewContentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[scrollViewContainer(1@100)]" options:0 metrics:nil views:viewDictionary]];
@@ -129,7 +140,7 @@
     [self.timesContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[timesContainer(60)]" options:0 metrics:nil views:viewDictionary]];
     [self.ageSwitchContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[ageSwitchContainer(60)]" options:0 metrics:nil views:viewDictionary]];
     [self.ageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[ageContainer(60)]" options:0 metrics:nil views:viewDictionary]];
-    
+
     [self layout];
 }
 
@@ -211,12 +222,115 @@
 
 - (void)presentLocationSelection:(BOOL)isPickupView
 {
-    CTLocationSearchViewController *locationViewController = [[CTLocationSearchViewController alloc] init];
+    __weak typeof(self) weakSelf = self;
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
+    CTLocationSearchViewController *locationViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalLocationSearchViewIdentifier];
+    locationViewController.cartrawlerAPI = self.cartrawlerAPI;
+    
+    locationViewController.selectedLocation = ^(CTMatchedLocation *location) {
+        if (isPickupView) {
+            [weakSelf.pickupLocationSearch setDetailText:location.name];
+        } else {
+            [weakSelf.dropoffLocationSearch setDetailText:location.name];
+        }
+    };
+    
+    if (self.delegate) {
+        [self.delegate didTapPresentViewController:locationViewController];
+    }
+}
+
+
+- (void)presentCalendar
+{
+    __weak typeof(self) weakSelf = self;
+    NSBundle *bundle = [NSBundle bundleForClass:[CTCalendarViewController class]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTCalendarStoryboard bundle:bundle];
+    CTCalendarViewController *calendarViewController = [storyboard instantiateViewControllerWithIdentifier:CTCalendarViewIdentifier];
+    calendarViewController.delegate = self;
+    if (self.delegate) {
+        [self.delegate didTapPresentViewController:calendarViewController];
+    }
+}
+
+- (void)presentTimePicker:(BOOL)isPickupTime
+{
+    NSString *title = @"";
+    if (isPickupTime) {
+        title = @"Pickup Time";
+    } else {
+        title = @"Dropoff Time";
+    }
+    __weak typeof (self) weakSelf = self;
+    CTAlertViewController *alertController = [CTAlertViewController alertControllerWithTitle:title message:nil];
+    alertController.backgroundTapDismissalGestureEnabled = YES;
+    
+    UIDatePicker *datePicker = [UIDatePicker new];
+    datePicker.datePickerMode = UIDatePickerModeTime;
+    datePicker.minuteInterval = 15;
+    datePicker.locale = [NSLocale currentLocale];
+    
+    alertController.customView = datePicker;
+    
+    CTAlertAction *cancelAction = [CTAlertAction actionWithTitle:@"Cancel" handler:^(CTAlertAction *action) {
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    CTAlertAction *okAction = [CTAlertAction actionWithTitle:@"OK" handler:^(CTAlertAction *action) {
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+        if (isPickupTime) {
+            [weakSelf.pickupTimeContainer setDetailText: [datePicker.date simpleTimeString]];
+        } else {
+            [weakSelf.dropoffTimeContainer setDetailText: [datePicker.date simpleTimeString]];
+        }
+    }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:okAction];
+
+    if (self.delegate) {
+        [self.delegate didTapPresentViewController:alertController];
+    }
 }
 
 - (void)updateDisplayWithSearch:(NSObject *)search
 {
     
+}
+
+- (void)validateSearch
+{
+    if (!self.search.pickupLocation) {
+        [self.pickupLocationSearch animate];
+    }
+    
+    if (!self.search.dropoffLocation && !self.locationSwitch.isOn) {
+        [self.dropoffLocationSearch animate];
+    }
+
+    if (!self.search.driverAge && self.ageSwitch.isOn) {
+        [self.ageContainer animate];
+    }
+}
+
+//MARK: Keyboard Notifications
+
+- (void)keyboardWillHide:(NSNotification *)n
+{
+    NSDictionary* userInfo = [n userInfo];
+    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    [self.scrollView setContentOffset:CGPointMake(0, keyboardSize.height - self.scrollView.contentOffset.y)];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification *)n
+{
+    NSDictionary* userInfo = [n userInfo];
+    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    [self.scrollView setContentOffset:CGPointMake(0, keyboardSize.height + self.scrollView.contentOffset.y)];
 }
 
 //MARK: Age Switch
@@ -252,6 +366,25 @@
     if (selectionView == self.dropoffLocationSearch) {
         [self presentLocationSelection:NO];
     }
+    
+    if (selectionView == self.datesContainer) {
+        [self presentCalendar];
+    }
+    
+    if (selectionView == self.pickupTimeContainer) {
+        [self presentTimePicker:YES];
+    }
+    
+    if (selectionView == self.dropoffTimeContainer) {
+        [self presentTimePicker:NO];
+    }
+}
+
+//MARK: CTCalendarDelegate
+- (void)didPickDates:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
+{
+    NSString *dateStr = [NSString stringWithFormat:@"%@ - %@", [pickupDate shortDescriptionFromDate], [dropoffDate shortDescriptionFromDate]];
+    [self.datesContainer setDetailText:dateStr];
 }
 
 @end

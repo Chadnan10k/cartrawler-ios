@@ -34,7 +34,7 @@
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.headerLabel.text = location.name;
-    self.subheaderLabel.text = [date stringFromDate:@"HH:mm a, dd MMMM YYYY"];
+    self.subheaderLabel.text = [date stringFromDateWithFormat:@"HH:mm a, dd MMMM YYYY"];
 }
 
 @end

@@ -78,6 +78,7 @@
     BOOL hideDetail = [detailText isEqualToString:@""];
     [self hideDetail:hideDetail];
     self.detailTextField.text = detailText;
+    self.detailTextField.userInteractionEnabled = !self.useAsButton;
 }
 
 - (void)hideDetail:(BOOL)hideDetail
@@ -174,11 +175,24 @@
         [self hideDetail:NO];
         [self.detailTextField becomeFirstResponder];
     } else {
-        [self hideDetail:YES];
+        if ([self.detailTextField.text isEqualToString:@""]) {
+            [self hideDetail:YES];
+        } else {
+            [self hideDetail:NO];
+        }
         if (self.delegate) {
             [self.delegate didTapSelectionView:self];
         }
     }
+}
+
+- (void)animate
+{
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    animation.duration = 0.6;
+    animation.values = @[@(-20), @(20), @(-20), @(20), @(-10), @(10), @(-5), @(5), @(0)];
+    [self.layer addAnimation:animation forKey:@"shake"];
 }
 
 //MARK: UITextField Delegate
@@ -187,6 +201,33 @@
 {
     [self hideDetail:NO];
     return !self.useAsButton;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField endEditing:YES];
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (self.regex) {
+        NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:self.regex
+                                                                               options:NSRegularExpressionCaseInsensitive
+                                                                                 error:nil];
+        NSUInteger numberOfMatches = [regex numberOfMatchesInString:newString
+                                                            options:0
+                                                              range:NSMakeRange(0, [newString length])];
+        if (numberOfMatches == 0) {
+            return NO;
+        } else {
+            return YES;
+        }
+    }
+    
+    return YES;
 }
 
 @end

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CartrawlerAPI/CartrawlerAPI.h"
+#import "CartrawlerSDK/CTRentalSearch.h"
 
 @protocol CTSearchViewDelegate <NSObject>
 
-- (void)didTapPresentLocationSearch;
+- (void)didTapPresentViewController:(UIViewController *)viewController;
 
 @end
 
@@ -18,6 +20,11 @@
 
 @property (nonatomic, weak) id<CTSearchViewDelegate> delegate;
 
-- (void)updateDisplayWithSearch:(NSObject *)search;
+@property (nonatomic, weak) CartrawlerAPI *cartrawlerAPI;
+@property (nonatomic, weak) CTRentalSearch *search;
+
+- (void)updateDisplayWithSearch:(CTRentalSearch *)search;
+
+- (void)validateSearch;
 
 @end
