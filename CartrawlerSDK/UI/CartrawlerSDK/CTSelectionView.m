@@ -181,7 +181,7 @@
             [self hideDetail:NO];
         }
         if (self.delegate) {
-            [self.delegate didTapSelectionView:self];
+            [self.delegate selectionViewWasTapped:self];
         }
     }
 }
@@ -195,10 +195,33 @@
     [self.layer addAnimation:animation forKey:@"shake"];
 }
 
+- (void)setKeyboardType:(UIKeyboardType)keyboardType
+{
+    _keyboardType = keyboardType;
+    self.detailTextField.keyboardType = self.keyboardType;
+    if (self.keyboardType) {
+        UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
+        [keyboardDoneButtonView sizeToFit];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                       style:UIBarButtonItemStyleBordered target:self
+                                                                      action:@selector(doneClicked:)];
+        [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
+        self.detailTextField.inputAccessoryView = keyboardDoneButtonView;
+    }
+}
+
+- (void)doneClicked:(id)sender
+{
+    [self endEditing:YES];
+}
+
 //MARK: UITextField Delegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    if (self.delegate) {
+        [self.delegate selectionViewShouldBeginEditing:self];
+    }
     [self hideDetail:NO];
     return !self.useAsButton;
 }

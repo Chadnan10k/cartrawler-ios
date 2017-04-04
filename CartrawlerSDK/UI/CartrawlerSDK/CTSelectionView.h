@@ -12,7 +12,9 @@
 
 @protocol CTSelectionViewDelegate <NSObject>
 
-- (void)didTapSelectionView:(CTSelectionView *)selectionView;
+- (void)selectionViewWasTapped:(CTSelectionView *)selectionView;
+
+- (void)selectionViewShouldBeginEditing:(CTSelectionView *)selectionView;
 
 @end
 
@@ -30,6 +32,11 @@
  Optional, use if you want to pass a RegEx
  */
 @property (nonatomic, strong) NSString *regex;
+
+/**
+ Specify the keyboard type
+ */
+@property (nonatomic) UIKeyboardType keyboardType;
 
 /**
  Designated initialiser

@@ -61,17 +61,6 @@
 
 - (void)setup
 {
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
-    
     _locationSwitch = [UISwitch new];
     _ageSwitch = [UISwitch new];
     
@@ -109,8 +98,10 @@
     self.ageSwitchContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
     _ageContainer = [[CTSelectionView alloc] initWithPlaceholder:@"Age"];
+    self.ageContainer.keyboardType = UIKeyboardTypeNumberPad;
     self.ageContainer.regex = @"^[0-9]{0,2}$";
     self.ageContainer.useAsButton = NO;
+    self.ageContainer.delegate = self;
     
     NSDictionary *viewDictionary = @{
                                      @"pickupLocationSearch" : self.pickupLocationSearch,
@@ -142,6 +133,19 @@
     [self.ageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[ageContainer(60)]" options:0 metrics:nil views:viewDictionary]];
 
     [self layout];
+}
+
+- (void)addKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 }
 
 - (UIView *)generateSwitchView:(NSString *)text switchReference:(UISwitch *)switchReference
@@ -353,11 +357,10 @@
             [self.layoutManager insertViewAtIndex:1 padding:UIEdgeInsetsMake(8, 8, 8, 8) view:self.dropoffLocationSearch];
         }
     }
-    
 }
 
 //MARK: Selection view delegate
-- (void)didTapSelectionView:(CTSelectionView *)selectionView
+- (void)selectionViewWasTapped:(CTSelectionView *)selectionView
 {
     if (selectionView == self.pickupLocationSearch) {
         [self presentLocationSelection:YES];
@@ -378,6 +381,11 @@
     if (selectionView == self.dropoffTimeContainer) {
         [self presentTimePicker:NO];
     }
+}
+
+- (void)selectionViewShouldBeginEditing:(CTSelectionView *)selectionView
+{
+    [self addKeyboardNotifications];
 }
 
 //MARK: CTCalendarDelegate
