@@ -13,6 +13,8 @@
 #import "CartrawlerSDK/CartrawlerSDK+UIView.h"
 #import "CartrawlerSDK/CTAlertViewController.h"
 #import "CartrawlerSDK/CartrawlerSDK+NSNumber.h"
+#import "CartrawlerSDK/CTLocalisedStrings.h"
+#import "CTRentalLocalizationConstants.h"
 #import "CTSelectionView.h"
 #import "CTLocationSearchViewController.h"
 #import "CTRentalConstants.h"
@@ -84,30 +86,30 @@
     self.scrollViewContentView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.scrollView addSubview:self.scrollViewContentView];
     
-    _pickupLocationSearch = [[CTSelectionView alloc] initWithPlaceholder:@"Pickup Location"];
+    _pickupLocationSearch = [[CTSelectionView alloc] initWithPlaceholder:CTLocalizedString(CTRentalSearchPickupLocationText)];
     self.pickupLocationSearch.useAsButton = YES;
     self.pickupLocationSearch.delegate = self;
     
-    _dropoffLocationSearch = [[CTSelectionView alloc] initWithPlaceholder:@"Dropoff Location"];
+    _dropoffLocationSearch = [[CTSelectionView alloc] initWithPlaceholder:CTLocalizedString(CTRentalSearchReturnLocationText)];
     self.dropoffLocationSearch.useAsButton = YES;
     self.dropoffLocationSearch.delegate = self;
     
-    _sameLocationSwitchContainer = [self generateSwitchView:@"Dropoff to same location"
+    _sameLocationSwitchContainer = [self generateSwitchView:CTLocalizedString(CTRentalSearchReturnLocationButton)
                                             switchReference:self.locationSwitch];
     self.sameLocationSwitchContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
-    _datesContainer = [[CTSelectionView alloc] initWithPlaceholder:@"Select your dates"];
+    _datesContainer = [[CTSelectionView alloc] initWithPlaceholder:CTLocalizedString(CTRentalSearchSelectDatesHint)];
     self.datesContainer.useAsButton = YES;
     self.datesContainer.delegate = self;
     
     _timesContainer = [self generateTimeSelectionView];
     self.timesContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
-    _ageSwitchContainer = [self generateSwitchView:@"Age between 25 and 70"
+    _ageSwitchContainer = [self generateSwitchView:CTLocalizedString(CTRentalSearchDriverAge)
                                    switchReference:self.ageSwitch];
     self.ageSwitchContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
-    _ageContainer = [[CTSelectionView alloc] initWithPlaceholder:@"Age"];
+    _ageContainer = [[CTSelectionView alloc] initWithPlaceholder:CTLocalizedString(CTRentalSearchDriverAgeHint)];
     self.ageContainer.keyboardType = UIKeyboardTypeNumberPad;
     self.ageContainer.regex = @"^[0-9]{0,2}$";
     self.ageContainer.useAsButton = NO;
@@ -182,7 +184,7 @@
                                                          multiplier:1
                                                            constant:0]];
     
-    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[label]-(>=8)-[switch]-|"
+    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[label]-(>=8)-[switch]-|"
                                                                       options:0
                                                                       metrics:nil
                                                                         views:viewDict]];
@@ -194,11 +196,11 @@
     UIView *container = [UIView new];
     container.translatesAutoresizingMaskIntoConstraints = NO;
     
-    _pickupTimeContainer = [[CTSelectionView alloc] initWithPlaceholder:@"Pickup Time"];
+    _pickupTimeContainer = [[CTSelectionView alloc] initWithPlaceholder:CTLocalizedString(CTRentalSearchPickupTimeText)];
     self.pickupTimeContainer.delegate = self;
     self.pickupTimeContainer.useAsButton = YES;
     [self.pickupTimeContainer setDetailText:[self.temporaryPickupTime simpleTimeString]];
-    _dropoffTimeContainer = [[CTSelectionView alloc] initWithPlaceholder:@"Dropoff Time"];
+    _dropoffTimeContainer = [[CTSelectionView alloc] initWithPlaceholder:CTLocalizedString(CTRentalSearchReturnTimeText)];
     self.dropoffTimeContainer.delegate = self;
     self.dropoffTimeContainer.useAsButton = YES;
     [self.dropoffTimeContainer setDetailText:[self.temporaryDropoffTime simpleTimeString]];
@@ -271,9 +273,9 @@
 {
     NSString *title = @"";
     if (isPickupTime) {
-        title = @"Pickup Time";
+        title = CTLocalizedString(CTRentalSearchPickupTimeText);
     } else {
-        title = @"Dropoff Time";
+        title = CTLocalizedString(CTRentalSearchReturnTimeText);
     }
     __weak typeof (self) weakSelf = self;
     CTAlertViewController *alertController = [CTAlertViewController alertControllerWithTitle:title message:nil];
@@ -286,11 +288,13 @@
     datePicker.date = [NSDate dateWithHour:10 minute:0];
     alertController.customView = datePicker;
     
-    CTAlertAction *cancelAction = [CTAlertAction actionWithTitle:@"Cancel" handler:^(CTAlertAction *action) {
+    CTAlertAction *cancelAction = [CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTACancel)
+                                                         handler:^(CTAlertAction *action) {
         [alertController dismissViewControllerAnimated:YES completion:nil];
     }];
     
-    CTAlertAction *okAction = [CTAlertAction actionWithTitle:@"OK" handler:^(CTAlertAction *action) {
+    CTAlertAction *okAction = [CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTADone)
+                                                     handler:^(CTAlertAction *action) {
         [alertController dismissViewControllerAnimated:YES completion:nil];
         
         if ((datePicker.date.minute % 15) != 0) {
