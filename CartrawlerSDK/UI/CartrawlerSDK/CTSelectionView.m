@@ -215,6 +215,11 @@
     [self endEditing:YES];
 }
 
+- (NSString *)textFieldText
+{
+    return self.detailTextField.text;
+}
+
 //MARK: UITextField Delegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField

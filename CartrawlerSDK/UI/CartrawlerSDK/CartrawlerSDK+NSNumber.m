@@ -30,4 +30,10 @@
     return [f stringFromNumber:self];
 }
 
++ (NSNumber *)numberFromString:(NSString *)string
+{
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    return [f numberFromString:string];
+}
+
 @end

@@ -10,7 +10,9 @@
 #import "CartrawlerSDK/CTLayoutManager.h"
 #import "CartrawlerSDK/CTCalendarViewController.h"
 #import "CartrawlerSDK/CartrawlerSDK+NSDateUtils.h"
+#import "CartrawlerSDK/CartrawlerSDK+UIView.h"
 #import "CartrawlerSDK/CTAlertViewController.h"
+#import "CartrawlerSDK/CartrawlerSDK+NSNumber.h"
 #import "CTSelectionView.h"
 #import "CTLocationSearchViewController.h"
 #import "CTRentalConstants.h"
@@ -33,6 +35,11 @@
 
 @property (nonatomic, strong) UISwitch *ageSwitch;
 @property (nonatomic, strong) UISwitch *locationSwitch;
+
+@property (nonatomic, strong) NSDate *temporaryPickupTime;
+@property (nonatomic, strong) NSDate *temporaryDropoffTime;
+@property (nonatomic, strong) NSDate *temporaryPickupDate;
+@property (nonatomic, strong) NSDate *temporaryDropoffDate;
 
 @end
 
@@ -61,6 +68,9 @@
 
 - (void)setup
 {
+    _temporaryPickupTime = [NSDate dateWithHour:10 minute:0];
+    _temporaryDropoffTime = [NSDate dateWithHour:10 minute:0];
+
     _locationSwitch = [UISwitch new];
     _ageSwitch = [UISwitch new];
     
@@ -103,34 +113,26 @@
     self.ageContainer.useAsButton = NO;
     self.ageContainer.delegate = self;
     
-    NSDictionary *viewDictionary = @{
-                                     @"pickupLocationSearch" : self.pickupLocationSearch,
-                                     @"dropoffLocationSearch" : self.dropoffLocationSearch,
-                                     @"sameLocationSwitchContainer" : self.sameLocationSwitchContainer,
-                                     @"datesContainer" : self.datesContainer,
-                                     @"timesContainer" : self.timesContainer,
-                                     @"ageSwitchContainer" : self.ageSwitchContainer,
-                                     @"ageContainer" : self.ageContainer,
-                                     @"scrollView" : self.scrollView,
-                                     @"scrollViewContainer" : self.scrollViewContentView
-                                     };
-    
     //Scrollview
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[scrollView]-0-|" options:0 metrics:nil views:viewDictionary]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[scrollView]-0-|" options:0 metrics:nil views:viewDictionary]];
+    [CTLayoutManager pinView:self.scrollView toSuperView:self padding:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [CTLayoutManager pinView:self.scrollViewContentView toSuperView:self.scrollView padding:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.scrollViewContentView  setHeightConstraint:@1 priority:@100];
+
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollViewContentView
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeWidth
+                                                    multiplier:1
+                                                      constant:0]];
     
-    [self.scrollViewContentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[scrollViewContainer(1@100)]" options:0 metrics:nil views:viewDictionary]];
-    [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[scrollViewContainer]-0-|" options:0 metrics:nil views:viewDictionary]];
-    [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[scrollViewContainer]-0-|" options:0 metrics:nil views:viewDictionary]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollViewContentView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
-    
-    [self.pickupLocationSearch addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[pickupLocationSearch(60)]" options:0 metrics:nil views:viewDictionary]];
-    [self.dropoffLocationSearch addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[dropoffLocationSearch(60)]" options:0 metrics:nil views:viewDictionary]];
-    [self.sameLocationSwitchContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[sameLocationSwitchContainer(60)]" options:0 metrics:nil views:viewDictionary]];
-    [self.datesContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[datesContainer(60)]" options:0 metrics:nil views:viewDictionary]];
-    [self.timesContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[timesContainer(60)]" options:0 metrics:nil views:viewDictionary]];
-    [self.ageSwitchContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[ageSwitchContainer(60)]" options:0 metrics:nil views:viewDictionary]];
-    [self.ageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[ageContainer(60)]" options:0 metrics:nil views:viewDictionary]];
+    [self.pickupLocationSearch setHeightConstraint:@60 priority:@1000];
+    [self.dropoffLocationSearch setHeightConstraint:@60 priority:@1000];
+    [self.sameLocationSwitchContainer setHeightConstraint:@60 priority:@1000];
+    [self.datesContainer setHeightConstraint:@60 priority:@1000];
+    [self.timesContainer setHeightConstraint:@60 priority:@1000];
+    [self.ageSwitchContainer setHeightConstraint:@60 priority:@1000];
+    [self.ageContainer setHeightConstraint:@60 priority:@1000];
 
     [self layout];
 }
@@ -195,9 +197,11 @@
     _pickupTimeContainer = [[CTSelectionView alloc] initWithPlaceholder:@"Pickup Time"];
     self.pickupTimeContainer.delegate = self;
     self.pickupTimeContainer.useAsButton = YES;
+    [self.pickupTimeContainer setDetailText:[self.temporaryPickupTime simpleTimeString]];
     _dropoffTimeContainer = [[CTSelectionView alloc] initWithPlaceholder:@"Dropoff Time"];
     self.dropoffTimeContainer.delegate = self;
     self.dropoffTimeContainer.useAsButton = YES;
+    [self.dropoffTimeContainer setDetailText:[self.temporaryDropoffTime simpleTimeString]];
     
     CTLayoutManager *manager = [CTLayoutManager layoutManagerWithContainer:container];
     manager.justify = YES;
@@ -235,8 +239,13 @@
     locationViewController.selectedLocation = ^(CTMatchedLocation *location) {
         if (isPickupView) {
             [weakSelf.pickupLocationSearch setDetailText:location.name];
+            weakSelf.search.pickupLocation = location;
+            if (weakSelf.locationSwitch.isOn) {
+                weakSelf.search.dropoffLocation = location;
+            }
         } else {
             [weakSelf.dropoffLocationSearch setDetailText:location.name];
+            weakSelf.search.dropoffLocation = location;
         }
     };
     
@@ -274,7 +283,7 @@
     datePicker.datePickerMode = UIDatePickerModeTime;
     datePicker.minuteInterval = 15;
     datePicker.locale = [NSLocale currentLocale];
-    
+    datePicker.date = [NSDate dateWithHour:10 minute:0];
     alertController.customView = datePicker;
     
     CTAlertAction *cancelAction = [CTAlertAction actionWithTitle:@"Cancel" handler:^(CTAlertAction *action) {
@@ -283,9 +292,18 @@
     
     CTAlertAction *okAction = [CTAlertAction actionWithTitle:@"OK" handler:^(CTAlertAction *action) {
         [alertController dismissViewControllerAnimated:YES completion:nil];
+        
+        if ((datePicker.date.minute % 15) != 0) {
+            [weakSelf.dropoffTimeContainer setDetailText: [self.temporaryDropoffTime simpleTimeString]];
+            [weakSelf.pickupTimeContainer setDetailText: [self.temporaryPickupTime simpleTimeString]];
+            return;
+        }
+        
         if (isPickupTime) {
+            _temporaryPickupTime = datePicker.date;
             [weakSelf.pickupTimeContainer setDetailText: [datePicker.date simpleTimeString]];
         } else {
+            _temporaryDropoffTime = datePicker.date;
             [weakSelf.dropoffTimeContainer setDetailText: [datePicker.date simpleTimeString]];
         }
     }];
@@ -298,24 +316,56 @@
     }
 }
 
+- (void)combineTimes
+{
+    NSDate *pickupDate = [NSDate mergeTimeWithDateWithTime:self.temporaryPickupTime dateWithDay:self.temporaryPickupDate];
+    NSDate *dropoffDate = [NSDate mergeTimeWithDateWithTime:self.temporaryDropoffTime dateWithDay:self.temporaryDropoffDate];
+
+    self.search.pickupDate = pickupDate;
+    self.search.dropoffDate = dropoffDate;
+}
+
+- (void)setAge
+{
+    if (self.ageSwitch.isOn) {
+        self.search.driverAge = @30;
+    } else {
+        self.search.driverAge = [NSNumber numberFromString:self.ageContainer.textFieldText];
+    }
+}
+
 - (void)updateDisplayWithSearch:(NSObject *)search
 {
     
 }
 
-- (void)validateSearch
+- (BOOL)validateSearch
 {
+    BOOL valid = YES;
+    [self setAge];
+    [self combineTimes];
+    
     if (!self.search.pickupLocation) {
         [self.pickupLocationSearch animate];
+        valid = NO;
     }
     
     if (!self.search.dropoffLocation && !self.locationSwitch.isOn) {
         [self.dropoffLocationSearch animate];
+        valid = NO;
     }
 
     if (!self.search.driverAge && self.ageSwitch.isOn) {
         [self.ageContainer animate];
+        valid = NO;
     }
+    
+    if (!self.temporaryPickupDate || !self.temporaryDropoffDate) {
+        [self.datesContainer animate];
+        valid = NO;
+    }
+    
+    return valid;
 }
 
 //MARK: Keyboard Notifications
@@ -391,6 +441,8 @@
 //MARK: CTCalendarDelegate
 - (void)didPickDates:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
 {
+    _temporaryPickupDate = pickupDate;
+    _temporaryDropoffDate = dropoffDate;
     NSString *dateStr = [NSString stringWithFormat:@"%@ - %@", [pickupDate shortDescriptionFromDate], [dropoffDate shortDescriptionFromDate]];
     [self.datesContainer setDetailText:dateStr];
 }

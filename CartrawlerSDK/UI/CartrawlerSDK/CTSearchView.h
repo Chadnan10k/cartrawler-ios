@@ -25,6 +25,6 @@
 
 - (void)updateDisplayWithSearch:(CTRentalSearch *)search;
 
-- (void)validateSearch;
+- (BOOL)validateSearch;
 
 @end

@@ -47,31 +47,27 @@
         return;
     }
     
-    if (search.vehicleAvailability) {
-        completion(YES, nil, NO);
-    } else {
-        [cartrawlerAPI requestVehicleAvailabilityForLocation:search.pickupLocation.code
-                                          returnLocationCode:search.dropoffLocation.code
-                                         customerCountryCode:[CTSDKSettings instance].homeCountryCode
-                                                passengerQty:@3
-                                                   driverAge:search.driverAge
-                                              pickUpDateTime:search.pickupDate
-                                              returnDateTime:search.dropoffDate
-                                                currencyCode:[CTSDKSettings instance].currencyCode
-                                                  completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
-                                                      if (response) {
-                                                          dispatch_async(dispatch_get_main_queue(), ^{
-                                                              search.vehicleAvailability = response;
-                                                              [search setEngineInfoFromAvail];
-                                                              completion(YES, nil, NO);
-                                                          });
-                                                      } else {
-                                                          dispatch_async(dispatch_get_main_queue(), ^{
-                                                              completion(NO, error.errorMessage, NO);
-                                                              [[CTAnalytics instance] tagError:@"step1" event:@"VehAvail search" message:error.errorMessage];
-                                                          });
-                                                      }
-                                                  }];
-    }
+    [cartrawlerAPI requestVehicleAvailabilityForLocation:search.pickupLocation.code
+                                      returnLocationCode:search.dropoffLocation.code
+                                     customerCountryCode:[CTSDKSettings instance].homeCountryCode
+                                            passengerQty:@3
+                                               driverAge:search.driverAge
+                                          pickUpDateTime:search.pickupDate
+                                          returnDateTime:search.dropoffDate
+                                            currencyCode:[CTSDKSettings instance].currencyCode
+                                              completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
+                                                  if (response) {
+                                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                                          search.vehicleAvailability = response;
+                                                          [search setEngineInfoFromAvail];
+                                                          completion(YES, nil, NO);
+                                                      });
+                                                  } else {
+                                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                                          completion(NO, error.errorMessage, NO);
+                                                          [[CTAnalytics instance] tagError:@"step1" event:@"VehAvail search" message:error.errorMessage];
+                                                      });
+                                                  }
+                                              }];
 }
 @end

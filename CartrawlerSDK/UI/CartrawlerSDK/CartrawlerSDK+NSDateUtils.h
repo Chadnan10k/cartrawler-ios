@@ -10,9 +10,13 @@
 
 @interface NSDate (CartrawlerSDK)
 
+@property (nonatomic, readonly) NSInteger minute;
+
 - (NSString *)stringFromDateWithFormat:(NSString *)format;
 - (NSString *)shortDescriptionFromDate;
-+ (NSDate *)mergeTimeWithDateWithTime:(NSDate *)dateWithTime dateWithDay:(NSDate *)dateWithDay;
 - (NSString *)simpleTimeString;
+
++ (NSDate *)dateWithHour:(NSInteger)hour minute:(NSInteger)minute;
++ (NSDate *)mergeTimeWithDateWithTime:(NSDate *)dateWithTime dateWithDay:(NSDate *)dateWithDay;
 
 @end

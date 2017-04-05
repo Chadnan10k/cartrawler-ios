@@ -24,6 +24,11 @@
 
 
 /**
+ Getter for detail text field text
+ */
+@property (nonatomic, strong, readonly) NSString *textFieldText;
+
+/**
  State is you want to use the view as a button or a UITextField
  */
 @property (nonatomic) BOOL useAsButton;

@@ -57,8 +57,26 @@
     components3.minute = components2.minute;
     components3.second = 0;
     
-    // Generate a new NSDate from components3.
     return [gregorianCalendar dateFromComponents:components3];
+}
+
++ (NSDate *)dateWithHour:(NSInteger)hour minute:(NSInteger)minute
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setHour:hour];
+    [components setMinute:minute];
+    [components setSecond:0];
+    return [calendar dateFromComponents:components];
+}
+
+- (NSInteger)minute
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSCalendarUnitMinute
+                                               fromDate:self];
+    
+    return components.minute;
 }
 
 @end
