@@ -133,7 +133,7 @@
     [self.sameLocationSwitchContainer setHeightConstraint:@60 priority:@1000];
     [self.datesContainer setHeightConstraint:@60 priority:@1000];
     [self.timesContainer setHeightConstraint:@60 priority:@1000];
-    [self.ageSwitchContainer setHeightConstraint:@60 priority:@1000];
+    [self.ageSwitchContainer setHeightConstraint:@60 priority:@100];
     [self.ageContainer setHeightConstraint:@60 priority:@1000];
 
     [self layout];
@@ -161,7 +161,7 @@
     UILabel *detailLabel = [UILabel new];
     detailLabel.text = text;
     detailLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    
+    detailLabel.numberOfLines = 0;
     UIView *container = [UIView new];
     container.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -359,7 +359,7 @@
         valid = NO;
     }
 
-    if (!self.search.driverAge && self.ageSwitch.isOn) {
+    if (!self.search.driverAge && !self.ageSwitch.isOn) {
         [self.ageContainer animate];
         valid = NO;
     }
@@ -396,9 +396,11 @@
 {
     if (sender == self.ageSwitch) {
         if (sender.isOn) {
+            self.search.driverAge = @30;
             NSUInteger idx = [self.layoutManager indexOfObject:self.ageContainer];
             [self.layoutManager removeAtIndex:idx];
         } else {
+            self.search.driverAge = nil;
             NSUInteger idx = [self.layoutManager indexOfObject:self.ageSwitchContainer];
             [self.layoutManager insertViewAtIndex:idx padding:UIEdgeInsetsMake(8, 8, 8, 8) view:self.ageContainer];
         }
@@ -406,8 +408,10 @@
     
     if (sender == self.locationSwitch) {
         if (sender.isOn) {
+            self.search.dropoffLocation = self.search.pickupLocation;
             [self.layoutManager removeAtIndex:1];
         } else {
+            self.search.dropoffLocation = nil;
             [self.layoutManager insertViewAtIndex:1 padding:UIEdgeInsetsMake(8, 8, 8, 8) view:self.dropoffLocationSearch];
         }
     }
