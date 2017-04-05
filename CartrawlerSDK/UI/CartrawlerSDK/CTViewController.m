@@ -93,6 +93,11 @@
                                       }];
 }
 
+- (void)presentModalViewController:(UIViewController *)viewController
+{
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
 - (void)sendEvent:(BOOL)cartrawlerOnly customParams:(NSDictionary *)customParams eventName:(NSString *)eventName eventType:(NSString *)eventType
 {
     if (self.analyticsDelegate && [self.analyticsDelegate respondsToSelector:@selector(sendAnalyticsEvent:)] && !cartrawlerOnly) {

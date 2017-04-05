@@ -12,16 +12,24 @@
 #import "CTAnalyticsEvent.h"
 
 @protocol CTViewControllerDelegate <NSObject>
+
 @required
+
 - (void)didDismissViewController:(NSString *)identifier;
+
 @optional
+
 - (void)didBookVehicle:(CTBooking *)booking;
+
 @end
 
 @protocol CTAnalyticsDelegate <NSObject>
+
 @required
+
 - (void)sendAnalyticsEvent:(CTAnalyticsEvent *)event;
 - (void)sendAnalyticsSaleEvent:(CTAnalyticsEvent *)event;
+
 @end
 
 @interface CTViewController : UIViewController
@@ -51,7 +59,9 @@ typedef void (^RentalBookingCompletion)(id *booking);
 
 - (void)dismiss;
 
-#pragma mark Analytics
+- (void)presentModalViewController:(UIViewController *)viewController;
+
+//MARK: mark Analytics
 
 - (void)sendEvent:(BOOL)cartrawlerOnly customParams:(NSDictionary *)customParams eventName:(NSString *)eventName eventType:(NSString *)eventType;
 - (void)trackSale;

@@ -12,5 +12,5 @@
 
 - (NSString *)numberStringWithCurrencyCode;
 - (NSString *)twoDecimalPlaces;
-
++ (NSNumber *)numberFromString:(NSString *)string;
 @end

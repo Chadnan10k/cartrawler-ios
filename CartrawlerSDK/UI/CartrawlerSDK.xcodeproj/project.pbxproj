@@ -160,6 +160,7 @@
 		BC9F6E521E24EF91006DD990 /* CTAnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */; };
 		BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCDB4BEA1E3F50C6008004DA /* CTAnalyticsEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */; };
+		BCF4DA4A1E93B58A00E8C5EC /* CTCalendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF4DA491E93B58A00E8C5EC /* CTCalendar.storyboard */; };
 		BCF874291E79604100EBC758 /* CTLayoutManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BCF874271E79604100EBC758 /* CTLayoutManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCF8742A1E79604100EBC758 /* CTLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF874281E79604100EBC758 /* CTLayoutManager.m */; };
 		E70230731E857DC2005E1BF4 /* CTRatingView.h in Headers */ = {isa = PBXBuildFile; fileRef = E70230711E857DC2005E1BF4 /* CTRatingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -351,6 +352,7 @@
 		BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsTests.m; sourceTree = "<group>"; };
 		BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalyticsEvent.h; sourceTree = "<group>"; };
 		BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsEvent.m; sourceTree = "<group>"; };
+		BCF4DA491E93B58A00E8C5EC /* CTCalendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CTCalendar.storyboard; sourceTree = "<group>"; };
 		BCF874271E79604100EBC758 /* CTLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLayoutManager.h; sourceTree = "<group>"; };
 		BCF874281E79604100EBC758 /* CTLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLayoutManager.m; sourceTree = "<group>"; };
 		E70230711E857DC2005E1BF4 /* CTRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRatingView.h; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 			isa = PBXGroup;
 			children = (
 				459CB2EA1DDB6528008522BA /* ToolTips.storyboard */,
+				BCF4DA491E93B58A00E8C5EC /* CTCalendar.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1096,6 +1099,7 @@
 				455B59531DCC91F900CA4790 /* CTLanguages.csv in Resources */,
 				BC3361971E4CCC520056E5A6 /* nl.strings in Resources */,
 				BC3361931E4CCC520056E5A6 /* en.strings in Resources */,
+				BCF4DA4A1E93B58A00E8C5EC /* CTCalendar.storyboard in Resources */,
 				BC3361981E4CCC520056E5A6 /* pl.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
