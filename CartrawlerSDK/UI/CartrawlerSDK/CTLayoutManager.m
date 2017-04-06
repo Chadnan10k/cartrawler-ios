@@ -237,7 +237,7 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
             return [self.viewArray indexOfObject:d];
         }
     }
-    return nil;
+    return 0;
 }
 
 + (void)pinView:(UIView *)view toSuperView:(UIView *)superview

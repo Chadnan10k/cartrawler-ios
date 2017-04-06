@@ -259,7 +259,6 @@
 
 - (void)presentCalendar
 {
-    __weak typeof(self) weakSelf = self;
     NSBundle *bundle = [NSBundle bundleForClass:[CTCalendarViewController class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTCalendarStoryboard bundle:bundle];
     CTCalendarViewController *calendarViewController = [storyboard instantiateViewControllerWithIdentifier:CTCalendarViewIdentifier];

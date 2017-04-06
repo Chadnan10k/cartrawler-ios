@@ -98,6 +98,11 @@
     });
 }
 
+- (void)performSearch
+{
+    [self searchTapped];
+}
+
 - (IBAction)settingsTapped:(id)sender
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:[NSBundle bundleForClass:[self class]]];

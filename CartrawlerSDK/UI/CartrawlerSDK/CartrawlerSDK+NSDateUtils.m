@@ -62,7 +62,7 @@
 
 + (NSDate *)dateWithHour:(NSInteger)hour minute:(NSInteger)minute
 {
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setHour:hour];
     [components setMinute:minute];
@@ -72,7 +72,7 @@
 
 - (NSInteger)minute
 {
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [calendar components:NSCalendarUnitMinute
                                                fromDate:self];
     

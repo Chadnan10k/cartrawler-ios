@@ -55,10 +55,6 @@
 
 - (void)layout
 {
-    NSDictionary *viewDictionary = @{
-                                     @"placeholderLabel" : self.placeholderLabel,
-                                     @"detailLabel" : self.detailTextField
-                                     };
     [self addSubview:self.placeholderLabel];
     [self addSubview:self.detailTextField];
     
@@ -203,7 +199,7 @@
         UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
         [keyboardDoneButtonView sizeToFit];
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
-                                                                       style:UIBarButtonItemStyleBordered target:self
+                                                                       style:UIBarButtonItemStyleDone target:self
                                                                       action:@selector(doneClicked:)];
         [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
         self.detailTextField.inputAccessoryView = keyboardDoneButtonView;
