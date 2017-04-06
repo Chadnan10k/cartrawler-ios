@@ -8,6 +8,7 @@
 
 #import "CTVehicleSelectionView.h"
 #import "CTVehicleSelectionDataSource.h"
+#import "CTVehicleDetailTableViewCell.h"
 #import "CartrawlerSDK/CTLayoutManager.h"
 
 @interface CTVehicleSelectionView() <CTVehicleSelectionDelegate>
@@ -40,7 +41,7 @@
     tv.estimatedRowHeight = 240;
     tv.rowHeight = UITableViewAutomaticDimension;
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    [tv registerNib:[UINib nibWithNibName:@"CTVehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];
+    [tv registerClass:[CTVehicleDetailTableViewCell class] forCellReuseIdentifier:@"VehicleCell"];
     tv.backgroundColor = [UIColor groupTableViewBackgroundColor];
     tv.separatorStyle = UITableViewCellSeparatorStyleNone;
     return tv;
