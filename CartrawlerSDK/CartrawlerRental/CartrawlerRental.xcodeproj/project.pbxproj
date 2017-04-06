@@ -538,9 +538,9 @@
 			isa = PBXGroup;
 			children = (
 				451E75501E042CB000D58F71 /* CTVehicleSelectionDataSource.h */,
+				451E75531E042CB000D58F71 /* CTVehicleSelectionDataSource.m */,
 				451E75511E042CB000D58F71 /* CTVehicleSelectionView.h */,
 				451E75521E042CB000D58F71 /* CTVehicleSelectionView.m */,
-				451E75531E042CB000D58F71 /* CTVehicleSelectionDataSource.m */,
 			);
 			name = "Search Results";
 			sourceTree = "<group>";

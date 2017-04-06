@@ -8,67 +8,64 @@
 
 #import "CTVehicleSelectionView.h"
 #import "CTVehicleSelectionDataSource.h"
+#import "CartrawlerSDK/CTLayoutManager.h"
 
-@interface CTVehicleSelectionView()
+@interface CTVehicleSelectionView() <CTVehicleSelectionDelegate>
 
 @property (nonatomic, strong) CTVehicleSelectionDataSource *dataSource;
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
 @implementation CTVehicleSelectionView
 
-- (void)awakeFromNib
+- (instancetype)init
 {
-    [super awakeFromNib];
-    self.tableView.estimatedRowHeight = 240;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self = [super init];
+    
+    _dataSource = [CTVehicleSelectionDataSource new];
+    
+    _tableView = [self createTableView];
+    self.tableView.delegate = self.dataSource;
+    self.tableView.dataSource = self.dataSource;
+    self.dataSource.delegate = self;
+    [self layout];
+    
+    return self;
+}
+
+- (UITableView *)createTableView
+{
+    UITableView *tv = [UITableView new];
+    tv.estimatedRowHeight = 240;
+    tv.rowHeight = UITableViewAutomaticDimension;
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    [tv registerNib:[UINib nibWithNibName:@"CTVehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];
+    tv.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    tv.separatorStyle = UITableViewCellSeparatorStyleNone;
+    return tv;
+}
+
+- (void)layout
+{
+    [self addSubview:self.tableView];
+    [CTLayoutManager pinView:self.tableView toSuperView:self padding:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 
 - (void)showLoading
 {
-    __weak typeof (self) weakSelf = self;
     [UIView animateWithDuration:0.3 animations:^{
-        weakSelf.tableView.alpha = 0;
-        weakSelf.tableView.scrollsToTop = YES;
+        self.tableView.alpha = 0;
+        self.tableView.scrollsToTop = YES;
     }];
 }
 
 - (void)hideLoading
 {
-    __weak typeof (self) weakSelf = self;
     [UIView animateWithDuration:0.3 animations:^{
-        weakSelf.tableView.alpha = 1;
-        weakSelf.tableView.scrollsToTop = YES;
+        self.tableView.alpha = 1;
+        self.tableView.scrollsToTop = YES;
     }];
-}
-
-- (void)initWithVehicleAvailability:(NSArray <CTAvailabilityItem *> *)data
-                         completion:(VehicleSelectionCompletion)completion;
-{
-    __weak typeof (self) weakSelf = self;
-
-   // [self.tableView setContentInset:UIEdgeInsetsMake(55,0,0,0)];
-    
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    [self.tableView registerNib:[UINib nibWithNibName:@"CTVehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];
-
-    _dataSource = [[CTVehicleSelectionDataSource alloc] initWithData:data cellSelected:^(CTAvailabilityItem *vehicle) {
-        completion(vehicle);
-    }];
-    
-    self.dataSource.direction = ^(BOOL direction) {
-        if (weakSelf.direction) {
-            weakSelf.direction(direction);
-        }
-    };
-    
-    self.tableView.delegate = self.dataSource;
-    self.tableView.dataSource = self.dataSource;
-    
-    [self.tableView reloadData];
-    
-    self.tableView.scrollsToTop = YES;
 }
 
 - (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data sortByPrice:(BOOL)sortByPrice
@@ -77,6 +74,15 @@
     [self.tableView reloadData];
     NSIndexPath* top = [NSIndexPath indexPathForRow:NSNotFound inSection:0];
     [self.tableView scrollToRowAtIndexPath:top atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+//MARK: CTVehicleSelectionDelegate
+
+- (void)didSelectCellAtIndex:(NSIndexPath *)indexPath data:(CTAvailabilityItem *)data
+{
+    if (self.delegate) {
+        [self.delegate didSelectVehicle:data];
+    }
 }
 
 @end
