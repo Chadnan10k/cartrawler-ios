@@ -11,6 +11,7 @@
 #import "CartrawlerSDK/CTLayoutManager.h"
 #import "CartrawlerSDK/CartrawlerSDK+UIView.h"
 #import "CartrawlerSDK/CTImageCache.h"
+#import "CartrawlerSDK/CTUpSellBanner.h"
 
 @interface CTVehicleDetailTableViewCell()
 
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) UILabel *priceLabel;
 @property (nonatomic, strong) UIImageView *vehicleImageView;
 @property (nonatomic, strong) UIImageView *vendorImageView;
+@property (nonatomic, strong) CTLayoutManager *manager;
 
 @end
 
@@ -38,6 +40,7 @@
 
 - (void)setup
 {
+    self.backgroundColor = [UIColor clearColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     UIView *containerView = [self createContainer];
     [self addSubview:containerView];
@@ -49,10 +52,27 @@
 
 - (void)setItem:(CTAvailabilityItem *)item
 {
-    self.makeModelLabel = @"test test";
+    self.makeModelLabel.text = @"test test";
     [[CTImageCache sharedInstance] cachedImage:item.vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;
     }];
+    
+    if (item.vehicle.merchandisingTag != CTMerchandisingTagUnknown) {
+        NSNumber *indexOfView = [self.manager indexOfObject:self.bannerView];
+        if (indexOfView == nil) {
+            [self.manager insertViewAtIndex:0 padding:UIEdgeInsetsMake(8,8,8,8) view:self.bannerView];
+        } else {
+
+            NSLog(@"update");
+        }
+        
+    } else{
+        NSNumber *indexOfView = [self.manager indexOfObject:self.bannerView];
+        if (indexOfView != nil) {
+            [self.manager removeAtIndex:indexOfView.integerValue];
+        }
+    }
+    
 }
 
 - (UIView *)createContainer
@@ -65,25 +85,40 @@
     container.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     container.layer.masksToBounds = YES;
     
-    CTLayoutManager *manager = [CTLayoutManager layoutManagerWithContainer:container];
+    _bannerView = [self createBannerContainer];
     
-    [manager insertView:UIEdgeInsetsMake(8, 0, 8, 8) view:[self createBannerContainer]];
-    [manager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:[self createNameContainer]];
-    [manager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:[self createDetailsBlock]];
-    [manager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:[self createFooterContainer]];
+    _manager = [CTLayoutManager layoutManagerWithContainer:container];
 
-    [manager layoutViews];
+    [self.manager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:[self createNameContainer]];
+    [self.manager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:[self createDetailsBlock]];
+    [self.manager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:[self createFooterContainer]];
+
+    [self.manager layoutViews];
     
     return container;
 }
 
 - (UIView *)createBannerContainer
 {
-    _bannerView = [UIView new];
-    self.bannerView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.bannerView setHeightConstraint:@40 priority:@1000];
-    self.bannerView.backgroundColor = [UIColor greenColor];
-    return self.bannerView;
+    UIView *banner = [UIView new];
+    banner.translatesAutoresizingMaskIntoConstraints = NO;
+    [banner setHeightConstraint:@40 priority:@1000];
+    banner.backgroundColor = [UIColor greenColor];
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    
+    UIImage *icon = [UIImage imageNamed:@"banner"
+                               inBundle:bundle
+          compatibleWithTraitCollection:nil];
+    
+//    CTUpSellBanner *upSellBanner = [CTUpSellBanner new];
+//    [upSellBanner setIcon:icon
+//    backgroundColor:[UIColor redColor]
+//          textColor:[UIColor whiteColor]];
+//    
+//    [upSellBanner addToSuperViewWithString:@"Test" superview:banner];
+    
+    return banner;
 }
 
 - (UIView *)createNameContainer
@@ -118,7 +153,7 @@
     [manager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:detailsView];
     [manager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:self.vehicleImageView];
 
-    [container setHeightConstraint:@200 priority:@1000];
+    [container setHeightConstraint:@200 priority:@750];
     
     [manager layoutViews];
     

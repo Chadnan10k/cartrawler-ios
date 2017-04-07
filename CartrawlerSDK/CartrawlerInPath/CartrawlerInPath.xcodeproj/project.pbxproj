@@ -28,8 +28,6 @@
 		45CFD44C1E0941B800A57849 /* CTInPathLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFD44A1E0941B800A57849 /* CTInPathLoadingView.h */; };
 		45CFD44D1E0941B800A57849 /* CTInPathLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFD44B1E0941B800A57849 /* CTInPathLoadingView.m */; };
 		45CFD44F1E09453100A57849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CFD44E1E09453100A57849 /* Assets.xcassets */; };
-		45CFD4521E09863C00A57849 /* CTInPathBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 45CFD4501E09863C00A57849 /* CTInPathBanner.h */; };
-		45CFD4531E09863C00A57849 /* CTInPathBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CFD4511E09863C00A57849 /* CTInPathBanner.m */; };
 		45D1339D1E01997900D7816F /* CartrawlerInPath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45D133931E01997800D7816F /* CartrawlerInPath.framework */; };
 		45D133A21E01997900D7816F /* CartrawlerInPathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D133A11E01997900D7816F /* CartrawlerInPathTests.m */; };
 		45D133A41E01997900D7816F /* CartrawlerInPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 45D133961E01997800D7816F /* CartrawlerInPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -81,8 +79,6 @@
 		45CFD44A1E0941B800A57849 /* CTInPathLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathLoadingView.h; sourceTree = "<group>"; };
 		45CFD44B1E0941B800A57849 /* CTInPathLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathLoadingView.m; sourceTree = "<group>"; };
 		45CFD44E1E09453100A57849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		45CFD4501E09863C00A57849 /* CTInPathBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathBanner.h; sourceTree = "<group>"; };
-		45CFD4511E09863C00A57849 /* CTInPathBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathBanner.m; sourceTree = "<group>"; };
 		45D133931E01997800D7816F /* CartrawlerInPath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CartrawlerInPath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45D133961E01997800D7816F /* CartrawlerInPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartrawlerInPath.h; sourceTree = "<group>"; };
 		45D133971E01997800D7816F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -149,8 +145,6 @@
 				BC3C47351E856624009B35B5 /* Loading State */,
 				45EC99B91E02C96B00B76741 /* CTInPathView.h */,
 				45EC99BA1E02C96B00B76741 /* CTInPathView.m */,
-				45CFD4501E09863C00A57849 /* CTInPathBanner.h */,
-				45CFD4511E09863C00A57849 /* CTInPathBanner.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -302,7 +296,6 @@
 				45EC99BB1E02C96B00B76741 /* CTInPathPayment.h in Headers */,
 				45CFD44C1E0941B800A57849 /* CTInPathLoadingView.h in Headers */,
 				BCC78AD31E8917DD002DA87C /* CTCarouselFooterView.h in Headers */,
-				45CFD4521E09863C00A57849 /* CTInPathBanner.h in Headers */,
 				45D133A41E01997900D7816F /* CartrawlerInPath.h in Headers */,
 				45EC99BF1E02C96B00B76741 /* CTInPathView.h in Headers */,
 				BC3C47421E857C37009B35B5 /* CTCarouselCollectionViewCell.h in Headers */,
@@ -449,7 +442,6 @@
 				45CFD44D1E0941B800A57849 /* CTInPathLoadingView.m in Sources */,
 				45EC99BC1E02C96B00B76741 /* CTInPathPayment.m in Sources */,
 				45A47DF61E0A912300500D71 /* CTSelectedVehicleView.m in Sources */,
-				45CFD4531E09863C00A57849 /* CTInPathBanner.m in Sources */,
 				BCC78AD41E8917DD002DA87C /* CTCarouselFooterView.m in Sources */,
 				E7B3B49E1E40E8C70062C7AD /* CTInPathLocalizationConstants.m in Sources */,
 				BCC78AD91E8A6ECA002DA87C /* CTInPathErrorView.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CTInPathBanner : UIView
+@interface CTUpSellBanner : UIView
 
 - (void)addToSuperViewWithString:(NSString *)bannerString superview:(UIView *)superview;
 - (void)setIcon:(UIImage *)image backgroundColor:(UIColor *)backgroundColor textColor:(UIColor *)textColor;

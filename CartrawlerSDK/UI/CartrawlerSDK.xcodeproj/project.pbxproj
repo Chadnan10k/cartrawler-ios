@@ -163,6 +163,8 @@
 		BCF4DA4A1E93B58A00E8C5EC /* CTCalendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF4DA491E93B58A00E8C5EC /* CTCalendar.storyboard */; };
 		BCF874291E79604100EBC758 /* CTLayoutManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BCF874271E79604100EBC758 /* CTLayoutManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCF8742A1E79604100EBC758 /* CTLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF874281E79604100EBC758 /* CTLayoutManager.m */; };
+		BCFA41741E97CDF700DA1710 /* CTUpSellBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = BCFA41721E97CDF700DA1710 /* CTUpSellBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCFA41751E97CDF700DA1710 /* CTUpSellBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFA41731E97CDF700DA1710 /* CTUpSellBanner.m */; };
 		E70230731E857DC2005E1BF4 /* CTRatingView.h in Headers */ = {isa = PBXBuildFile; fileRef = E70230711E857DC2005E1BF4 /* CTRatingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E70230741E857DC2005E1BF4 /* CTRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E70230721E857DC2005E1BF4 /* CTRatingView.m */; };
 		E7404A781E82F3AB009BF7DF /* CTTabContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -355,6 +357,8 @@
 		BCF4DA491E93B58A00E8C5EC /* CTCalendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CTCalendar.storyboard; sourceTree = "<group>"; };
 		BCF874271E79604100EBC758 /* CTLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLayoutManager.h; sourceTree = "<group>"; };
 		BCF874281E79604100EBC758 /* CTLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLayoutManager.m; sourceTree = "<group>"; };
+		BCFA41721E97CDF700DA1710 /* CTUpSellBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTUpSellBanner.h; sourceTree = "<group>"; };
+		BCFA41731E97CDF700DA1710 /* CTUpSellBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTUpSellBanner.m; sourceTree = "<group>"; };
 		E70230711E857DC2005E1BF4 /* CTRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRatingView.h; sourceTree = "<group>"; };
 		E70230721E857DC2005E1BF4 /* CTRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRatingView.m; sourceTree = "<group>"; };
 		E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabContainerView.h; sourceTree = "<group>"; };
@@ -715,6 +719,7 @@
 		45E942D71D1302B800ACF604 /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
+				BCFA41761E97CDFB00DA1710 /* Up Sell Banner */,
 				450725B41DD9C98400D56C8A /* UIImageView */,
 				45D7BBD51DCCDA9F008DD631 /* Constraints */,
 				45BC88D11DC0F8370041BD74 /* ToolTip */,
@@ -832,6 +837,15 @@
 				BC2951D51E7FF6110053A897 /* CTPassenger.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		BCFA41761E97CDFB00DA1710 /* Up Sell Banner */ = {
+			isa = PBXGroup;
+			children = (
+				BCFA41721E97CDF700DA1710 /* CTUpSellBanner.h */,
+				BCFA41731E97CDF700DA1710 /* CTUpSellBanner.m */,
+			);
+			name = "Up Sell Banner";
 			sourceTree = "<group>";
 		};
 		E70230701E8575E9005E1BF4 /* Rating View */ = {
@@ -973,6 +987,7 @@
 				BC2951D61E7FF6110053A897 /* CTPassenger.h in Headers */,
 				E76900DD1E764F9800D729FF /* CTListView.h in Headers */,
 				E76900E11E77267700D729FF /* CTListItemView.h in Headers */,
+				BCFA41741E97CDF700DA1710 /* CTUpSellBanner.h in Headers */,
 				457678501E08021500FE591A /* CTHeaders.h in Headers */,
 				E7404A781E82F3AB009BF7DF /* CTTabContainerView.h in Headers */,
 				E70230731E857DC2005E1BF4 /* CTRatingView.h in Headers */,
@@ -1194,6 +1209,7 @@
 				455B58C61DCC914400CA4790 /* CTCalendarTableViewCell.m in Sources */,
 				E76900A91E6F065C00D729FF /* CTInfoTip.m in Sources */,
 				455B58C81DCC914400CA4790 /* CTDateCollectionViewCell.m in Sources */,
+				BCFA41751E97CDF700DA1710 /* CTUpSellBanner.m in Sources */,
 				455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */,
 				455B58CE1DCC914400CA4790 /* CTSelectView.m in Sources */,
 				450725B81DD9C99500D56C8A /* CTImageView.m in Sources */,

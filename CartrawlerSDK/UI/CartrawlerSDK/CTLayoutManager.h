@@ -70,7 +70,7 @@ typedef NS_ENUM(NSUInteger, CTLayoutManagerOrientation) {
  @param object The object you want to check index for
  @return The index of the object
  */
-- (NSUInteger)indexOfObject:(id)object;
+- (nullable NSNumber *)indexOfObject:(id)object;
 
 /**
  Convenience method to pin a view to a superview
