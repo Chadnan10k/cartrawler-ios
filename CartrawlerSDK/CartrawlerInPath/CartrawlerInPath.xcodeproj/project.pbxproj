@@ -58,6 +58,7 @@
 		BCC78AD41E8917DD002DA87C /* CTCarouselFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC78AD21E8917DD002DA87C /* CTCarouselFooterView.m */; };
 		BCC78AD81E8A6ECA002DA87C /* CTInPathErrorView.h in Headers */ = {isa = PBXBuildFile; fileRef = BCC78AD61E8A6ECA002DA87C /* CTInPathErrorView.h */; };
 		BCC78AD91E8A6ECA002DA87C /* CTInPathErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC78AD71E8A6ECA002DA87C /* CTInPathErrorView.m */; };
+		E70E32CC1E9582B600BFE068 /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = E70E32CB1E9582B600BFE068 /* en.json */; };
 		E7B3B49A1E40E85C0062C7AD /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7B3B4991E40E85C0062C7AD /* en.strings */; };
 		E7B3B49D1E40E8C70062C7AD /* CTInPathLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */; };
 		E7B3B49E1E40E8C70062C7AD /* CTInPathLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3B49C1E40E8C70062C7AD /* CTInPathLocalizationConstants.m */; };
@@ -115,6 +116,7 @@
 		BCC78AD21E8917DD002DA87C /* CTCarouselFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCarouselFooterView.m; sourceTree = "<group>"; };
 		BCC78AD61E8A6ECA002DA87C /* CTInPathErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathErrorView.h; sourceTree = "<group>"; };
 		BCC78AD71E8A6ECA002DA87C /* CTInPathErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathErrorView.m; sourceTree = "<group>"; };
+		E70E32CB1E9582B600BFE068 /* en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = en.json; sourceTree = "<group>"; };
 		E7B3B4991E40E85C0062C7AD /* en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en.strings; path = Localization/en.strings; sourceTree = "<group>"; };
 		E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTInPathLocalizationConstants.h; path = Localization/CTInPathLocalizationConstants.h; sourceTree = "<group>"; };
 		E7B3B49C1E40E8C70062C7AD /* CTInPathLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTInPathLocalizationConstants.m; path = Localization/CTInPathLocalizationConstants.m; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				BC54F15B1E54983A00A7C871 /* pt.strings */,
 				E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */,
 				E7B3B49C1E40E8C70062C7AD /* CTInPathLocalizationConstants.m */,
+				E70E32CB1E9582B600BFE068 /* en.json */,
 			);
 			name = Localization;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				45BA0F681E1FA27300EB26ED /* strip-frameworks.sh in Resources */,
 				BC3361AE1E4CCDB70056E5A6 /* es.strings in Resources */,
 				BC3361B21E4CCDB70056E5A6 /* pl.strings in Resources */,
+				E70E32CC1E9582B600BFE068 /* en.json in Resources */,
 				BC3361AD1E4CCDB70056E5A6 /* el.strings in Resources */,
 				45CFD44F1E09453100A57849 /* Assets.xcassets in Resources */,
 				BC3361AC1E4CCDB70056E5A6 /* de.strings in Resources */,
