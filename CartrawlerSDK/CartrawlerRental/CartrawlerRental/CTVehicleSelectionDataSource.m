@@ -12,7 +12,8 @@
 @interface CTVehicleSelectionDataSource()
 
 @property (nonatomic, strong) NSArray <CTAvailabilityItem *> *vehicles;
-
+@property (nonatomic, strong) NSDate *pickupDate;
+@property (nonatomic, strong) NSDate *dropoffDate;
 @property (nonatomic, assign) CGFloat lastContentOffset;
 
 @end
@@ -26,8 +27,10 @@
     return self;
 }
 
-- (void)updateData:(NSArray <CTAvailabilityItem *> *)data sortByPrice:(BOOL)sortByPrice
+- (void)updateData:(NSArray <CTAvailabilityItem *> *)data pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate sortByPrice:(BOOL)sortByPrice;
 {
+    _pickupDate = pickupDate;
+    _dropoffDate = dropoffDate;
     if (sortByPrice) {
         _vehicles = [self sortVehiclesByPrice:data];
     } else {
@@ -46,7 +49,7 @@
 {
     CTAvailabilityItem *vehicle = self.vehicles[indexPath.row];
     CTVehicleDetailTableViewCell *cell = (CTVehicleDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"VehicleCell"];
-    [cell setItem:vehicle];
+    [cell setItem:vehicle pickupDate:self.pickupDate dropoffDate:self.dropoffDate];
     return cell;
 }
 

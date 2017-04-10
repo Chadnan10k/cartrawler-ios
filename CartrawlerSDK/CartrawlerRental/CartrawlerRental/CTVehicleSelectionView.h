@@ -20,7 +20,7 @@
 
 @property (nonatomic, weak) id<CTVehicleSelectionViewDelegate> delegate;
 
-- (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data sortByPrice:(BOOL)sortByPrice;
+- (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate sortByPrice:(BOOL)sortByPrice;
 - (void)showLoading;
 - (void)hideLoading;
 

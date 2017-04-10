@@ -69,9 +69,9 @@
     }];
 }
 
-- (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data sortByPrice:(BOOL)sortByPrice
+- (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate sortByPrice:(BOOL)sortByPrice
 {
-    [self.dataSource updateData:data sortByPrice:sortByPrice];
+    [self.dataSource updateData:data pickupDate:pickupDate dropoffDate:dropoffDate sortByPrice:sortByPrice];
     [self.tableView reloadData];
     NSIndexPath* top = [NSIndexPath indexPathForRow:NSNotFound inSection:0];
     [self.tableView scrollToRowAtIndexPath:top atScrollPosition:UITableViewScrollPositionTop animated:YES];

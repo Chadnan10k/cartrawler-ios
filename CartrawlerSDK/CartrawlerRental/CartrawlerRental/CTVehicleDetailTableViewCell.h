@@ -11,6 +11,6 @@
 
 @interface CTVehicleDetailTableViewCell : UITableViewCell
 
-- (void)setItem:(CTAvailabilityItem *)item;
+- (void)setItem:(CTAvailabilityItem *)item pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate;
 
 @end

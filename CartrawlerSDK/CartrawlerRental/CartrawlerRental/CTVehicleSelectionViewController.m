@@ -58,7 +58,10 @@
     
     self.filterViewController.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData) {
         weakSelf.filteredData = filteredData;
-        [weakSelf.vehicleSelectionView updateSelection:filteredData sortByPrice:weakSelf.sortingByPrice];
+        [weakSelf.vehicleSelectionView updateSelection:filteredData
+                                            pickupDate:weakSelf.search.pickupDate
+                                           dropoffDate:weakSelf.search.dropoffDate
+                                           sortByPrice:weakSelf.sortingByPrice];
         [weakSelf updateAvailableCarsLabel:filteredData.count];
     };
     
@@ -161,8 +164,10 @@
     if (self.filterViewController) {
         [self.filterViewController updateData:self.search.vehicleAvailability];
     }
-    
-    [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items sortByPrice:self.sortingByPrice];
+    [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items
+                                    pickupDate:self.search.pickupDate
+                                   dropoffDate:self.search.dropoffDate
+                                   sortByPrice:self.sortingByPrice];
 
     [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
 }
@@ -197,9 +202,13 @@
     _sortingByPrice = byPrice;
     if (self.filteredData.count > 0) {
         [self.vehicleSelectionView updateSelection:self.filteredData
+                                        pickupDate:self.search.pickupDate
+                                       dropoffDate:self.search.dropoffDate
                                        sortByPrice:self.sortingByPrice];
     } else {
         [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items
+                                        pickupDate:self.search.pickupDate
+                                       dropoffDate:self.search.dropoffDate
                                        sortByPrice:self.sortingByPrice];
     }
 }
