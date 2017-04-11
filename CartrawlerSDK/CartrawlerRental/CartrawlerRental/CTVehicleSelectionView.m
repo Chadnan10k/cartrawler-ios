@@ -40,7 +40,6 @@
     UITableView *tv = [UITableView new];
     tv.estimatedRowHeight = 240;
     tv.rowHeight = UITableViewAutomaticDimension;
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     [tv registerClass:[CTVehicleDetailTableViewCell class] forCellReuseIdentifier:@"VehicleCell"];
     tv.backgroundColor = [UIColor groupTableViewBackgroundColor];
     tv.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -53,29 +52,16 @@
     [CTLayoutManager pinView:self.tableView toSuperView:self padding:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 
-- (void)showLoading
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        self.tableView.alpha = 0;
-        self.tableView.scrollsToTop = YES;
-    }];
-}
-
-- (void)hideLoading
-{
-    [UIView animateWithDuration:0.3 animations:^{
-        self.tableView.alpha = 1;
-        self.tableView.scrollsToTop = YES;
-    }];
-}
-
 - (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate sortByPrice:(BOOL)sortByPrice
 {
     [self.dataSource updateData:data pickupDate:pickupDate dropoffDate:dropoffDate sortByPrice:sortByPrice];
     [self.tableView reloadData];
-    NSIndexPath* top = [NSIndexPath indexPathForRow:NSNotFound inSection:0];
-    [self.tableView scrollToRowAtIndexPath:top atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
+
+- (void)scrollToTop
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];}
 
 //MARK: CTVehicleSelectionDelegate
 

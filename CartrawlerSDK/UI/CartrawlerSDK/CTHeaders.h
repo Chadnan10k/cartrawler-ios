@@ -62,3 +62,5 @@
 #import "CTPassenger.h"
 #import "CTTabContainerView.h"
 #import "CTRatingView.h"
+#import "CTUpSellBanner.h"
+#import "CartrawlerSDK+NSString.h"

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,7 +34,7 @@
                                                     <constraint firstAttribute="height" constant="29" id="khR-PG-vid"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.94509803921568625" green="0.78823529411764703" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
@@ -91,11 +91,11 @@
                                         <rect key="frame" x="0.0" y="78" width="375" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5p-Fg-bul" customClass="CTButton">
-                                                <rect key="frame" x="277" y="7" width="90" height="35"/>
+                                                <rect key="frame" x="8" y="6.5" width="90" height="35"/>
                                                 <color key="backgroundColor" red="0.10980392160000001" green="0.30588235289999999" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="90" id="LZH-cc-GQD"/>
-                                                    <constraint firstAttribute="height" constant="35" id="tPx-jh-dE3"/>
+                                                    <constraint firstAttribute="height" constant="35" id="BhU-Nw-qXa"/>
+                                                    <constraint firstAttribute="width" constant="90" id="C38-Q7-IKw"/>
                                                 </constraints>
                                                 <state key="normal" title="Filter">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -108,69 +108,44 @@
                                                     <action selector="filterTapped:" destination="L45-dG-eg7" eventType="touchUpInside" id="6St-dO-cTr"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOM-WV-XPW" customClass="CTButton">
-                                                <rect key="frame" x="179" y="7" width="90" height="35"/>
-                                                <color key="backgroundColor" red="0.10980392160000001" green="0.30588235289999999" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOM-WV-XPW">
+                                                <rect key="frame" x="337" y="7" width="30" height="35"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="XMd-3m-8g0"/>
-                                                    <constraint firstAttribute="width" constant="90" id="elg-9O-tMA"/>
+                                                    <constraint firstAttribute="height" constant="35" id="2cV-zP-RJ2"/>
+                                                    <constraint firstAttribute="width" constant="90" id="aYx-Gp-eTY"/>
                                                 </constraints>
                                                 <state key="normal" title="Sort">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="disableShadow" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="aYx-Gp-eTY"/>
+                                                    </mask>
+                                                </variation>
                                                 <connections>
                                                     <action selector="sortTapped:" destination="L45-dG-eg7" eventType="touchUpInside" id="6KQ-TF-hhI"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x cars available" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obb-FK-iCf" customClass="CTLabel">
-                                                <rect key="frame" x="8" y="12" width="163" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="2B5-IT-iFS"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useBoldFont" value="NO"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="2B5-IT-iFS"/>
-                                                    </mask>
-                                                </variation>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.60220938920974731" green="0.84094423055648804" blue="0.51764535903930664" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="LOM-WV-XPW" firstAttribute="centerY" secondItem="K5p-Fg-bul" secondAttribute="centerY" id="1QA-F3-xDL"/>
-                                            <constraint firstAttribute="height" constant="50" id="79A-Rz-RJg"/>
-                                            <constraint firstItem="K5p-Fg-bul" firstAttribute="centerY" secondItem="GF2-Fa-L6p" secondAttribute="centerY" id="Bx2-bk-bAk"/>
-                                            <constraint firstItem="Obb-FK-iCf" firstAttribute="leading" secondItem="GF2-Fa-L6p" secondAttribute="leading" constant="8" id="C9y-BS-Mea"/>
-                                            <constraint firstAttribute="bottom" secondItem="Obb-FK-iCf" secondAttribute="bottom" constant="12" id="Heg-d4-tAh"/>
-                                            <constraint firstItem="LOM-WV-XPW" firstAttribute="leading" secondItem="Obb-FK-iCf" secondAttribute="trailing" constant="8" id="IQJ-pw-XkR"/>
-                                            <constraint firstItem="Obb-FK-iCf" firstAttribute="top" secondItem="GF2-Fa-L6p" secondAttribute="top" constant="12" id="bAf-eG-FSt"/>
-                                            <constraint firstItem="K5p-Fg-bul" firstAttribute="leading" secondItem="LOM-WV-XPW" secondAttribute="trailing" constant="8" id="tt4-Mc-3Mm"/>
-                                            <constraint firstAttribute="trailing" secondItem="K5p-Fg-bul" secondAttribute="trailing" constant="8" id="uZl-yZ-lBH"/>
+                                            <constraint firstItem="LOM-WV-XPW" firstAttribute="centerY" secondItem="GF2-Fa-L6p" secondAttribute="centerY" id="DBT-Oq-hgg"/>
+                                            <constraint firstItem="K5p-Fg-bul" firstAttribute="centerY" secondItem="GF2-Fa-L6p" secondAttribute="centerY" id="Hqd-wh-Hdw"/>
+                                            <constraint firstItem="K5p-Fg-bul" firstAttribute="leading" secondItem="GF2-Fa-L6p" secondAttribute="leading" constant="8" id="U2g-Y8-eec"/>
+                                            <constraint firstAttribute="height" constant="48" id="mVL-XJ-ird"/>
+                                            <constraint firstAttribute="trailing" secondItem="LOM-WV-XPW" secondAttribute="trailing" constant="8" id="pi8-1k-BXt"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="79A-Rz-RJg"/>
-                                            </mask>
-                                        </variation>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="bSS-OR-ReL" secondAttribute="trailing" id="33g-HY-0Rk"/>
+                                    <constraint firstItem="GF2-Fa-L6p" firstAttribute="top" secondItem="bSS-OR-ReL" secondAttribute="bottom" id="3Pl-d3-cSF"/>
                                     <constraint firstItem="bSS-OR-ReL" firstAttribute="leading" secondItem="K77-Ev-AB4" secondAttribute="leading" id="3il-wg-34V"/>
+                                    <constraint firstItem="GF2-Fa-L6p" firstAttribute="leading" secondItem="K77-Ev-AB4" secondAttribute="leading" id="Ib2-tL-PXE"/>
                                     <constraint firstItem="bSS-OR-ReL" firstAttribute="top" secondItem="K77-Ev-AB4" secondAttribute="top" id="bkw-iy-kgH"/>
-                                    <constraint firstItem="GF2-Fa-L6p" firstAttribute="top" secondItem="bSS-OR-ReL" secondAttribute="bottom" id="hcp-WL-W15"/>
-                                    <constraint firstAttribute="trailing" secondItem="GF2-Fa-L6p" secondAttribute="trailing" id="kb7-q4-9aZ"/>
-                                    <constraint firstItem="GF2-Fa-L6p" firstAttribute="leading" secondItem="K77-Ev-AB4" secondAttribute="leading" id="x63-uw-nth"/>
+                                    <constraint firstAttribute="trailing" secondItem="GF2-Fa-L6p" secondAttribute="trailing" id="pMu-Un-YOB"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -186,7 +161,6 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="vrA-86-Eph" id="vMy-Ez-DZT"/>
-                        <outlet property="carCountLabel" destination="Obb-FK-iCf" id="UxT-eU-A08"/>
                         <outlet property="datesLabel" destination="CdZ-Gx-aUS" id="GIQ-1n-ccz"/>
                         <outlet property="filterButton" destination="K5p-Fg-bul" id="DJz-Rd-iEf"/>
                         <outlet property="locationsLabel" destination="xpG-V5-fPS" id="qY9-VD-AvE"/>

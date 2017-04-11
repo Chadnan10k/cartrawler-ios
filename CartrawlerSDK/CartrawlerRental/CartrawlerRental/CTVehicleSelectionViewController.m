@@ -10,6 +10,7 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
+#import <CartrawlerSDK/CartrawlerSDK+UIColor.h>
 #import "CTFilterViewController.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTSDKSettings.h>
@@ -19,6 +20,7 @@
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CTButton.h>
 #import <CartrawlerSDK/CTLayoutManager.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSString.h>
 
 @interface CTVehicleSelectionViewController () <CTVehicleSelectionViewDelegate>
 
@@ -67,7 +69,7 @@
     
     [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
     
-    self.subheaderView.backgroundColor = [CTAppearance instance].iconTint;
+    self.subheaderView.backgroundColor = [CTAppearance instance].navigationBarColor.darkerColorForColor;
     
 }
 
@@ -94,8 +96,7 @@
     [self.search addObserver:self forKeyPath:@"vehicleAvailability"
                      options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                      context:nil];
-    
-    [self.sortButton setTitle:CTLocalizedString(CTRentalResultsSort) forState:UIControlStateNormal];
+    [self updateSortButton];
     [self.filterButton setTitle:CTLocalizedString(CTRentalResultsFilter) forState:UIControlStateNormal];
 }
 
@@ -109,7 +110,7 @@
             //is there results?
             if (self.search.vehicleAvailability.items.count < 1) {
                 [CTInterstitialViewController dismiss];
-                [self backToSearch];
+                [self presentSearch];
             }
         });
     } else {
@@ -125,6 +126,24 @@
     } @catch (NSException *exception) {
         //do nothing
     }
+}
+
+- (void)presentSearch
+{
+    
+}
+
+- (void)updateSortButton
+{
+    NSAttributedString *sortString = [NSString attributedText:CTLocalizedString(CTRentalResultsSort)
+                                                    boldColor:[UIColor whiteColor]
+                                                     boldSize:17
+                                                  regularText:self.sortingByPrice ? CTLocalizedString(CTRentalResultsSortPrice) : CTLocalizedString(CTRentalResultsSortRecommened)
+                                                 regularColor:[UIColor whiteColor]
+                                                  regularSize:17
+                                                     useSpace:YES];
+    
+    [self.sortButton setAttributedTitle:sortString forState:UIControlStateNormal];
 }
 
 - (void)showText:(BOOL)show
@@ -170,6 +189,7 @@
                                    sortByPrice:self.sortingByPrice];
 
     [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
+    [self.vehicleSelectionView scrollToTop];
 }
 
 - (void)updateAvailableCarsLabel:(NSInteger)availableCars
@@ -180,8 +200,7 @@
 
 - (IBAction)backTapped:(id)sender {
     if (self.navigationController.viewControllers.firstObject == self) {
-        //present the search details view modally
-        [self backToSearch];
+        [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -189,12 +208,6 @@
 
 - (IBAction)filterTapped:(id)sender {
     [self.filterViewController present];
-}
-
-- (void)backToSearch
-{
-    [self.navigationController setViewControllers:[NSArray arrayWithObjects:self.optionalRoute,self,nil]];
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)sortVehicles:(BOOL)byPrice
@@ -211,6 +224,8 @@
                                        dropoffDate:self.search.dropoffDate
                                        sortByPrice:self.sortingByPrice];
     }
+    [self.vehicleSelectionView scrollToTop];
+    [self updateSortButton];
 }
     
 - (IBAction)sortTapped:(id)sender {
