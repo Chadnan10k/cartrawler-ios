@@ -21,6 +21,8 @@
 #import <CartrawlerSDK/CTButton.h>
 #import <CartrawlerSDK/CTLayoutManager.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSString.h>
+#import "CTRentalConstants.h"
+#import "CTSearchDetailsViewController.h"
 
 @interface CTVehicleSelectionViewController () <CTVehicleSelectionViewDelegate>
 
@@ -31,7 +33,8 @@
 @property (weak, nonatomic) IBOutlet UIView *subheaderView;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet CTButton *sortButton;
-@property (weak, nonatomic) IBOutlet CTButton *filterButton;
+@property (weak, nonatomic) IBOutlet UIButton *filterButton;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
 
 @property (nonatomic, strong) CTFilterViewController *filterViewController;
 @property (nonatomic, strong) NSArray<CTAvailabilityItem *> *filteredData;
@@ -130,7 +133,12 @@
 
 - (void)presentSearch
 {
-    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
+    CTSearchDetailsViewController *searchViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalSearchViewIdentifier];
+    searchViewController.cartrawlerAPI = self.cartrawlerAPI;
+    searchViewController.search = self.search;
+    [self presentViewController:searchViewController animated:YES completion:nil];
 }
 
 - (void)updateSortButton
@@ -256,6 +264,11 @@
     [alert addAction:cancel];
 
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (IBAction)searchTapped:(id)sender
+{
+    [self presentSearch];
 }
 
 //MARK: analyitics

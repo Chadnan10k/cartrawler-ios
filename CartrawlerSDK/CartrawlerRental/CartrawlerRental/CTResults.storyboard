@@ -28,7 +28,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dublin Airport - Dublin Airport" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpG-V5-fPS" customClass="CTLabel">
-                                                <rect key="frame" x="41" y="24" width="294" height="24"/>
+                                                <rect key="frame" x="41" y="24" width="293" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="XFL-yK-pWd"/>
                                                     <constraint firstAttribute="height" constant="29" id="khR-PG-vid"/>
@@ -46,7 +46,7 @@
                                                 </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu, 10 Dec - Thu, 17 Dec" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CdZ-Gx-aUS" customClass="CTLabel">
-                                                <rect key="frame" x="41" y="49" width="294" height="24"/>
+                                                <rect key="frame" x="41" y="49" width="293" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="gte-dA-exZ"/>
                                                 </constraints>
@@ -67,23 +67,43 @@
                                                     <action selector="backTapped:" destination="L45-dG-eg7" eventType="touchUpInside" id="Qqd-lr-r2n"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsi-K2-IDr">
+                                                <rect key="frame" x="342" y="34.5" width="25" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="25" id="B1r-Dp-Des"/>
+                                                    <constraint firstAttribute="height" constant="25" id="FxY-SF-pHs"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="searchTapped:" destination="L45-dG-eg7" eventType="touchUpInside" id="bty-D0-IIC"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.7074409196" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="xpG-V5-fPS" firstAttribute="leading" secondItem="vrA-86-Eph" secondAttribute="trailing" constant="8" id="3zf-Qg-qr3"/>
                                             <constraint firstItem="CdZ-Gx-aUS" firstAttribute="leading" secondItem="vrA-86-Eph" secondAttribute="trailing" constant="8" id="6Jt-2y-ePG"/>
+                                            <constraint firstAttribute="trailing" secondItem="tsi-K2-IDr" secondAttribute="trailing" constant="8" id="ATk-wZ-y9B"/>
                                             <constraint firstAttribute="trailing" secondItem="xpG-V5-fPS" secondAttribute="trailing" constant="40" id="Iia-qr-5d9"/>
                                             <constraint firstAttribute="height" constant="62" id="Ivo-Rd-6IQ"/>
                                             <constraint firstItem="xpG-V5-fPS" firstAttribute="top" secondItem="bSS-OR-ReL" secondAttribute="top" constant="24" id="PAq-gO-EUG"/>
                                             <constraint firstAttribute="bottom" secondItem="CdZ-Gx-aUS" secondAttribute="bottom" constant="5" id="Sfv-NS-yFN"/>
+                                            <constraint firstItem="tsi-K2-IDr" firstAttribute="leading" secondItem="xpG-V5-fPS" secondAttribute="trailing" constant="8" id="bac-FA-AgF"/>
                                             <constraint firstItem="vrA-86-Eph" firstAttribute="leading" secondItem="bSS-OR-ReL" secondAttribute="leading" constant="8" id="cXR-Uk-S1Z"/>
                                             <constraint firstAttribute="trailing" secondItem="CdZ-Gx-aUS" secondAttribute="trailing" constant="40" id="d9M-MU-pRQ"/>
+                                            <constraint firstItem="tsi-K2-IDr" firstAttribute="leading" secondItem="CdZ-Gx-aUS" secondAttribute="trailing" constant="8" id="fpf-pd-Ktf"/>
+                                            <constraint firstItem="tsi-K2-IDr" firstAttribute="centerY" secondItem="vrA-86-Eph" secondAttribute="centerY" id="pg6-z4-bdz"/>
                                             <constraint firstItem="CdZ-Gx-aUS" firstAttribute="top" secondItem="xpG-V5-fPS" secondAttribute="bottom" constant="1" id="ral-gB-m6V"/>
                                             <constraint firstItem="vrA-86-Eph" firstAttribute="centerY" secondItem="bSS-OR-ReL" secondAttribute="centerY" constant="7.75" id="w8A-CN-yvv"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="Ivo-Rd-6IQ"/>
+                                                <exclude reference="Iia-qr-5d9"/>
+                                                <exclude reference="d9M-MU-pRQ"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -164,6 +184,7 @@
                         <outlet property="datesLabel" destination="CdZ-Gx-aUS" id="GIQ-1n-ccz"/>
                         <outlet property="filterButton" destination="K5p-Fg-bul" id="DJz-Rd-iEf"/>
                         <outlet property="locationsLabel" destination="xpG-V5-fPS" id="qY9-VD-AvE"/>
+                        <outlet property="searchButton" destination="tsi-K2-IDr" id="Kom-4f-Y8z"/>
                         <outlet property="sortButton" destination="LOM-WV-XPW" id="kr2-gX-kHa"/>
                         <outlet property="subheaderView" destination="GF2-Fa-L6p" id="H2H-f8-lxV"/>
                         <outlet property="vehicleSelectionView" destination="K77-Ev-AB4" id="jSr-v3-L97"/>
