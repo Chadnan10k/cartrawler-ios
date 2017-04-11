@@ -20,16 +20,15 @@
 
 @implementation CTMerhandisingBanner
 
-
-
-- (void)awakeFromNib
+- (instancetype)init
 {
-    [super awakeFromNib];
+    self = [super init];
+    self.translatesAutoresizingMaskIntoConstraints = NO;
     _textLabel = [CTLabel new];
     self.textLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.textLabel.useBoldFont = YES;
     self.textLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:12];
-
+    
     self.textLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.textLabel];
     
@@ -41,6 +40,7 @@
                                                                    views:@{ @"text" : self.textLabel }]];
     
     self.layer.cornerRadius = 5;
+    return self;
 }
     
 - (void)setSpecialOffer:(NSString *)offerText

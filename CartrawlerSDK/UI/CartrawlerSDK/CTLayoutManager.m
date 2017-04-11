@@ -230,14 +230,14 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
     return view;
 }
 
-- (NSUInteger)indexOfObject:(id)object
+- (nullable NSNumber *)indexOfObject:(id)object
 {
     for (NSDictionary *d in self.viewArray) {
         if (d[CTLayoutViewKey] == object) {
-            return [self.viewArray indexOfObject:d];
+            return @([self.viewArray indexOfObject:d]);
         }
     }
-    return 0;
+    return nil;
 }
 
 + (void)pinView:(UIView *)view toSuperView:(UIView *)superview

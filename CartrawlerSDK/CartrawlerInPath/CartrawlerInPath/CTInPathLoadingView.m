@@ -10,7 +10,7 @@
 #import <CartrawlerSDK/CTTextView.h>
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTAppearance.h>
-#import "CTInPathBanner.h"
+#import <CartrawlerSDK/CTUpSellBanner.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
 #import "CTInPathLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>

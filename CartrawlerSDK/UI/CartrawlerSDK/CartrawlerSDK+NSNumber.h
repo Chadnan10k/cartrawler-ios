@@ -12,5 +12,7 @@
 
 - (NSString *)numberStringWithCurrencyCode;
 - (NSString *)twoDecimalPlaces;
+- (NSString *)pricePerDay:(NSDate *)pickup dropoff:(NSDate *)dropoff;
 + (NSNumber *)numberFromString:(NSString *)string;
+
 @end

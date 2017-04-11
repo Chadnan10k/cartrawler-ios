@@ -7,7 +7,7 @@
 //
 
 #import "CTCarouselCollectionViewCell.h"
-#import "CTInPathBanner.h"
+#import <CartrawlerSDK/CTUpSellBanner.h>
 #import "CTCarouselFooterView.h"
 #import <CartrawlerSDK/CTImageCache.h>
 #import <CartrawlerSDK/CTAppearance.h>
@@ -150,7 +150,7 @@
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     
-    CTInPathBanner *banner = [[CTInPathBanner alloc] init];
+    CTUpSellBanner *banner = [[CTUpSellBanner alloc] init];
     [banner addToSuperViewWithString:CTLocalizedString(CTInPathWidgetBannerTitle) superview:bannerView];
     [banner setIcon:[UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil]
     backgroundColor:[UIColor colorWithRed:191.0/255.0 green:61.0/255.0 blue:43.0/255.0 alpha:1]

@@ -18,10 +18,11 @@
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CTButton.h>
+#import <CartrawlerSDK/CTLayoutManager.h>
 
-@interface CTVehicleSelectionViewController () <UIScrollViewDelegate>
+@interface CTVehicleSelectionViewController () <CTVehicleSelectionViewDelegate>
 
-@property (weak, nonatomic) IBOutlet CTVehicleSelectionView *vehicleSelectionView;
+@property (strong, nonatomic) CTVehicleSelectionView *vehicleSelectionView;
 @property (weak, nonatomic) IBOutlet UILabel *locationsLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *datesLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *carCountLabel;
@@ -40,27 +41,27 @@
 
 @end
 
-@implementation CTVehicleSelectionViewController {
-    BOOL viewLoaded;
-}
+@implementation CTVehicleSelectionViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    _vehicleSelectionView = [self createVehicleSelectionView];
+    [self.view addSubview:self.vehicleSelectionView];
+    [CTLayoutManager pinView:self.vehicleSelectionView toSuperView:self.view padding:UIEdgeInsetsMake(125, 0, 0, 0)];
+    
     __weak typeof (self) weakSelf = self;
 
-    [self.vehicleSelectionView initWithVehicleAvailability:self.search.vehicleAvailability.items completion:^(CTAvailabilityItem *vehicle) {
-        self.search.selectedVehicle = vehicle;
-        [self pushToDestination];
-    }];
-    
     _filterViewController = [CTFilterViewController initInViewController:self
                                                                 withData:self.search.vehicleAvailability];
     
     self.filterViewController.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData) {
         weakSelf.filteredData = filteredData;
-        [weakSelf.vehicleSelectionView updateSelection:filteredData sortByPrice:weakSelf.sortingByPrice];
+        [weakSelf.vehicleSelectionView updateSelection:filteredData
+                                            pickupDate:weakSelf.search.pickupDate
+                                           dropoffDate:weakSelf.search.dropoffDate
+                                           sortByPrice:weakSelf.sortingByPrice];
         [weakSelf updateAvailableCarsLabel:filteredData.count];
     };
     
@@ -68,6 +69,13 @@
     
     self.subheaderView.backgroundColor = [CTAppearance instance].iconTint;
     
+}
+
+- (CTVehicleSelectionView *)createVehicleSelectionView
+{
+    CTVehicleSelectionView *selectionView = [CTVehicleSelectionView new];
+    selectionView.delegate = self;
+    return selectionView;
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -156,8 +164,10 @@
     if (self.filterViewController) {
         [self.filterViewController updateData:self.search.vehicleAvailability];
     }
-    
-    [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items sortByPrice:self.sortingByPrice];
+    [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items
+                                    pickupDate:self.search.pickupDate
+                                   dropoffDate:self.search.dropoffDate
+                                   sortByPrice:self.sortingByPrice];
 
     [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
 }
@@ -192,9 +202,13 @@
     _sortingByPrice = byPrice;
     if (self.filteredData.count > 0) {
         [self.vehicleSelectionView updateSelection:self.filteredData
+                                        pickupDate:self.search.pickupDate
+                                       dropoffDate:self.search.dropoffDate
                                        sortByPrice:self.sortingByPrice];
     } else {
         [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items
+                                        pickupDate:self.search.pickupDate
+                                       dropoffDate:self.search.dropoffDate
                                        sortByPrice:self.sortingByPrice];
     }
 }
@@ -229,7 +243,7 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-#pragma mark analyitics
+//MARK: analyitics
 - (void)tagScreen
 {
     [self sendEvent:NO customParams:@{@"eventName" : @"Vehicle Selection Step",
@@ -250,6 +264,13 @@
                                       @"currency" : [CTSDKSettings instance].homeCountryCode
                                       } eventName:@"Step of search" eventType:@"Step"];
     [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:@2];
+}
+
+//MARK: CTVehicleSelectionViewDelegate
+- (void)didSelectVehicle:(CTAvailabilityItem *)item
+{
+    self.search.selectedVehicle = item;
+    [self pushToDestination];
 }
 
 @end

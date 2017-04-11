@@ -7,30 +7,30 @@
 //
 
 #import "CTVehicleSelectionDataSource.h"
-#import "CTVehicleTableViewCell.h"
+#import "CTVehicleDetailTableViewCell.h"
 
 @interface CTVehicleSelectionDataSource()
 
 @property (nonatomic, strong) NSArray <CTAvailabilityItem *> *vehicles;
-@property (nonatomic, strong) VehicleSelectionCompletion selectedVehicle;
-
+@property (nonatomic, strong) NSDate *pickupDate;
+@property (nonatomic, strong) NSDate *dropoffDate;
 @property (nonatomic, assign) CGFloat lastContentOffset;
 
 @end
 
 @implementation CTVehicleSelectionDataSource
 
-- (id)initWithData:(NSArray <CTAvailabilityItem *> *)data cellSelected:(VehicleSelectionCompletion)cellSeleted
+- (instancetype)init
 {
     self = [super init];
-
-    _vehicles = [self sortVehiclesByRecommendedIndex:data];
-    _selectedVehicle = cellSeleted;
+    _vehicles = @[];
     return self;
 }
 
-- (void)updateData:(NSArray <CTAvailabilityItem *> *)data sortByPrice:(BOOL)sortByPrice
+- (void)updateData:(NSArray <CTAvailabilityItem *> *)data pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate sortByPrice:(BOOL)sortByPrice;
 {
+    _pickupDate = pickupDate;
+    _dropoffDate = dropoffDate;
     if (sortByPrice) {
         _vehicles = [self sortVehiclesByPrice:data];
     } else {
@@ -48,8 +48,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CTAvailabilityItem *vehicle = self.vehicles[indexPath.row];
-    CTVehicleTableViewCell *cell = (CTVehicleTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"VehicleCell" forIndexPath:indexPath];
-    [cell initWithVehicle:vehicle index:indexPath.row];
+    CTVehicleDetailTableViewCell *cell = (CTVehicleDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"VehicleCell"];
+    [cell setItem:vehicle pickupDate:self.pickupDate dropoffDate:self.dropoffDate];
     return cell;
 }
 
@@ -57,37 +57,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.selectedVehicle != nil) {
-        self.selectedVehicle(self.vehicles[indexPath.row]);
+    if (self.delegate) {
+        [self.delegate didSelectCellAtIndex:indexPath data:self.vehicles[indexPath.row]];
     }
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGPoint currentOffset = scrollView.contentOffset;
-
-    if (!(currentOffset.y < 0)) {
-        
-        if (currentOffset.y < 1000) {
-            
-            if (currentOffset.y >= self.lastContentOffset)
-            {
-                if (self.direction) {
-                    self.direction(NO);
-                }
-            } else {
-                if (self.direction) {
-                    self.direction(YES);
-                }
-            }
-        }
-        
-    } else {
-        if (self.direction) {
-            self.direction(YES);
-        }
-    }
-    self.lastContentOffset = currentOffset.y;
 }
 
 #pragma mark Sorting

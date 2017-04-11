@@ -6,11 +6,11 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "CTInPathBanner.h"
+#import "CTUpSellBanner.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
 
-@interface CTInPathBanner ()
+@interface CTUpSellBanner ()
 
 @property (nonatomic, strong) UIImageView *bannerImageView;
 @property (nonatomic, strong) UIImageView *starImageView;
@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSString *bannerString;
 @end
 
-@implementation CTInPathBanner
+@implementation CTUpSellBanner
 
 - (void)addToSuperViewWithString:(NSString *)bannerString superview:(UIView *)superview
 {
@@ -41,18 +41,6 @@
     [self addBannerImageView];
     [self addInfoLabel];
     [self applyColorsToBackground:[CTAppearance instance].buttonColor];
-}
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    return self;
 }
 
 - (void)addBannerImageView
