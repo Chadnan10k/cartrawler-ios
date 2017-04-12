@@ -14,7 +14,8 @@
 NSInteger const kMaxExtras = 4;
 NSInteger const kDefaultExtrasCountWhenIncludedInRate = 1;
 CGFloat const kInteritemSpacing = 10.0;
-CGFloat const kVerticalSectionInsets = 5.0;
+CGFloat const kVerticalSectionCarouselInsets = 5.0;
+CGFloat const kVerticalSectionListInsets = 15.0;
 CGFloat const kHorizontalSectionInsets = 15.0;
 CGFloat const kHorizontalCellWidth = 220.0;
 CGFloat const kHorizontalCellHeight = 100.0;
@@ -50,7 +51,8 @@ static NSString * const reuseIdentifier = @"Cell";
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.scrollDirection = scrollDirection;
     layout.minimumInteritemSpacing = kInteritemSpacing;
-    layout.sectionInset = UIEdgeInsetsMake(kVerticalSectionInsets, kHorizontalSectionInsets, kVerticalSectionInsets, kHorizontalSectionInsets);
+    CGFloat verticalSpacing = (scrollDirection == UICollectionViewScrollDirectionVertical) ? kVerticalSectionListInsets : kVerticalSectionCarouselInsets;
+    layout.sectionInset = UIEdgeInsetsMake(verticalSpacing, kHorizontalSectionInsets, verticalSpacing, kHorizontalSectionInsets);
     return layout;
 }
 
@@ -86,7 +88,8 @@ static NSString * const reuseIdentifier = @"Cell";
     
     CTExtraEquipment *extra = self.extras[indexPath.row];
     cell.titleLabel.text = extra.equipType;
-    cell.detailLabel.text = [NSString stringWithFormat:@"€%@ for rental", extra.chargeAmount];
+    // To be localised
+    cell.detailLabel.text = [NSString stringWithFormat:@"€%@ per rental", extra.chargeAmount];
     cell.infoTitleLabel.text = extra.equipType;
     cell.infoDetailLabel.text = extra.equipDescription;
     

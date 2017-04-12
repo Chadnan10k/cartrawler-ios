@@ -62,7 +62,7 @@
     [self.leftBackgroundView addSubview:self.leftImageView];
     
     UIColor *textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
-    self.titleLabel = [[CTLabel alloc] init:16 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:NO];
+    self.titleLabel = [[CTLabel alloc] init:17 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:NO];
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.rightBackgroundView addSubview:self.titleLabel];
     
@@ -96,7 +96,7 @@
     self.closeButton.hidden = YES;
     [self.contentView addSubview:self.closeButton];
     
-    self.infoTitleLabel = [[CTLabel alloc] init:16 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:NO];
+    self.infoTitleLabel = [[CTLabel alloc] init:17 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:NO];
     self.infoTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.infoTitleLabel.hidden = YES;
     [self.contentView addSubview:self.infoTitleLabel];
