@@ -127,7 +127,7 @@
                                                             currency:vehicle.currencyCode];
     } else {
         self.perDayLabel.text = CTLocalizedString(CTInPathWidgetTotal);
-        self.priceLabel.attributedText = [self attributedPriceString:vehicle.totalPriceForThisVehicle.twoDecimalPlaces
+        self.priceLabel.attributedText = [self attributedPriceString:[vehicle.totalPriceForThisVehicle decimalPlaces:2]
                                                             currency:vehicle.currencyCode];
     }
     
@@ -152,7 +152,7 @@
     
     NSNumber *pricePerDay = [NSNumber numberWithFloat:vehicle.totalPriceForThisVehicle.floatValue
                              / ([components day] ?: 1)];
-    return pricePerDay.twoDecimalPlaces;
+    return [pricePerDay decimalPlaces:2];
 }
 
 - (NSAttributedString *)attributedPriceString:(NSString *)price currency:(NSString *)currency

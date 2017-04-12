@@ -6,11 +6,12 @@
 //  Copyright © 2016 Cartrawler. All rights reserved.
 //
 
-#import "CTInPathBanner.h"
+#import "CTUpSellBanner.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
+#import "CartrawlerAPI/CTVehicle.h"
 
-@interface CTInPathBanner ()
+@interface CTUpSellBanner ()
 
 @property (nonatomic, strong) UIImageView *bannerImageView;
 @property (nonatomic, strong) UIImageView *starImageView;
@@ -19,16 +20,20 @@
 @property (nonatomic, strong) NSString *bannerString;
 @end
 
-@implementation CTInPathBanner
+@implementation CTUpSellBanner
 
-- (void)addToSuperViewWithString:(NSString *)bannerString superview:(UIView *)superview
-{
-    _bannerString = bannerString;
+- (void)addToSuperview:(UIView *)superview;
+{    
+    _bannerString = @"";
     self.translatesAutoresizingMaskIntoConstraints = NO;
     [superview addSubview:self];
     
     [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(30)]" options:0 metrics:nil views:@{@"view" : self}]];
-    [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]" options:0 metrics:nil views:@{@"view" : self}]];
+    if (self.alignment == CTUpSellBannerAlignmentLeft) {
+        [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]" options:0 metrics:nil views:@{@"view" : self}]];
+    } else {
+        [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view]-0-|" options:0 metrics:nil views:@{@"view" : self}]];
+    }
     
     [superview addConstraint:
      [NSLayoutConstraint constraintWithItem:self
@@ -43,18 +48,6 @@
     [self applyColorsToBackground:[CTAppearance instance].buttonColor];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    return self;
-}
-
 - (void)addBannerImageView
 {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
@@ -62,10 +55,19 @@
     _bannerImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.bannerImageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.bannerImageView.image = [UIImage imageNamed:@"banner" inBundle:bundle compatibleWithTraitCollection:nil];
+    
+    if (self.alignment == CTUpSellBannerAlignmentRight) {
+        self.bannerImageView.image = [UIImage imageWithCGImage: self.bannerImageView.image.CGImage scale: 1.0f orientation: UIImageOrientationUpMirrored];
+    }
+    
     [self addSubview:self.bannerImageView];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.bannerImageView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(15)]-0-|" options:0 metrics:nil views:@{@"view" : self.bannerImageView}]];
+    if (self.alignment == CTUpSellBannerAlignmentLeft) {
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(15)]-0-|" options:0 metrics:nil views:@{@"view" : self.bannerImageView}]];
+    } else {
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view(15)]" options:0 metrics:nil views:@{@"view" : self.bannerImageView}]];
+    }
 
     _bannerBackground = [[UIView alloc] initWithFrame:CGRectZero];
     self.bannerBackground.backgroundColor = [UIColor yellowColor];
@@ -73,7 +75,11 @@
     [self addSubview:self.bannerBackground];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.bannerBackground}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-[bannerImage]" options:0 metrics:nil views:@{@"view" : self.bannerBackground, @"bannerImage" : self.bannerImageView}]];
+    if (self.alignment == CTUpSellBannerAlignmentLeft) {
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-[bannerImage]" options:0 metrics:nil views:@{@"view" : self.bannerBackground, @"bannerImage" : self.bannerImageView}]];
+    } else {
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[bannerImage]-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.bannerBackground, @"bannerImage" : self.bannerImageView}]];
+    }
 }
 
 - (void)addInfoLabel
@@ -87,7 +93,11 @@
     [self.bannerBackground addSubview:self.starImageView];
     
     [self.bannerBackground addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[star(15)]" options:0 metrics:nil views:@{@"star" : self.starImageView, @"background" : self.bannerBackground}]];
-    [self.bannerBackground addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[star(15)]" options:0 metrics:nil views:@{@"star" : self.starImageView}]];
+    if (self.alignment == CTUpSellBannerAlignmentLeft) {
+        [self.bannerBackground addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[star(15)]" options:0 metrics:nil views:@{@"star" : self.starImageView}]];
+    } else {
+        [self.bannerBackground addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[star(15)]-8-|" options:0 metrics:nil views:@{@"star" : self.starImageView}]];
+    }
 
     [self.bannerBackground addConstraint:
      [NSLayoutConstraint constraintWithItem:self.starImageView
@@ -102,10 +112,15 @@
     self.infoLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.infoLabel.text = self.bannerString;
     self.infoLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:17];
+    self.infoLabel.textAlignment = self.alignment == CTUpSellBannerAlignmentLeft ? NSTextAlignmentLeft : NSTextAlignmentRight;
     [self.bannerBackground addSubview:self.infoLabel];
     
     [self.bannerBackground addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[label]-0-|" options:0 metrics:nil views:@{@"label" : self.infoLabel, @"background" : self.bannerBackground}]];
-    [self.bannerBackground addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[star]-8-[label]-4-|" options:0 metrics:nil views:@{@"label" : self.infoLabel, @"star" : self.starImageView}]];
+    if (self.alignment == CTUpSellBannerAlignmentLeft) {
+        [self.bannerBackground addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[star]-8-[label]-4-|" options:0 metrics:nil views:@{@"label" : self.infoLabel, @"star" : self.starImageView}]];
+    } else {
+        [self.bannerBackground addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-4-[label]-8-[star]" options:0 metrics:nil views:@{@"label" : self.infoLabel, @"star" : self.starImageView}]];
+    }
     
     [self.bannerBackground addConstraint:
      [NSLayoutConstraint constraintWithItem:self.infoLabel
@@ -145,6 +160,18 @@
 
     [self applyColorsToBackground:backgroundColor];
     self.infoLabel.textColor = textColor;
+}
+
+- (void)setIcon:(UIImage *)image backgroundColor:(UIColor *)backgroundColor textColor:(UIColor *)textColor text:(NSString *)text
+{
+    [self setIcon:image backgroundColor:backgroundColor textColor:textColor];
+    self.bannerString = text;
+    self.infoLabel.text = text;
+    for (NSLayoutConstraint *constraint in self.constraints) {
+        if (constraint.firstItem == self && constraint.firstAttribute == NSLayoutAttributeWidth) {
+            constraint.constant = [self widthOfString:self.bannerString withFont:self.infoLabel.font] + 60;
+        }
+    }
 }
 
 - (CGFloat)widthOfString:(NSString *)string withFont:(UIFont *)font
