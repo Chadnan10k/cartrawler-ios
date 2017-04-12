@@ -10,8 +10,12 @@
 #import "CTVehicleDetailsView.h"
 #import <CartrawlerSDK/CTHeaders.h>
 #import "CTInsuranceView.h"
+#import "CTExtrasCarouselView.h"
+#import "CTExtrasCollectionView.h"
+#import "CTExtrasViewController.h"
+#import "CTRentalConstants.h"
 
-@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate>
+@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTExtrasCarouselViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -24,6 +28,7 @@
 @property (nonatomic, strong) CTInfoTip *vehicleInfoTip;
 @property (nonatomic, strong) CTInfoTip *extrasInfoTip;
 @property (nonatomic, strong) CTInsuranceView *insuranceView;
+@property (nonatomic, strong) CTExtrasCarouselView *extrasView;
 
 @end
 
@@ -41,6 +46,7 @@
     [self initTabMenu];
     [self initInsuranceView];
     [self initAlertView];
+    [self initExtrasView];
       
     [self.layoutManager layoutViews];
 }
@@ -166,6 +172,35 @@
     [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.insuranceView];
 }
 
+// MARK: Extras View
+
+- (void)initExtrasView {
+    self.extrasView = [[CTExtrasCarouselView alloc] initWithExtras:[self placeholderExtras]];
+    self.extrasView.delegate = self;
+    [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.extrasView];
+}
+
+- (void)extrasViewDidTapViewAll:(CTExtrasCarouselView *)extrasView {
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:bundle];
+    CTExtrasViewController *controller = (CTExtrasViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalExtrasVerticalViewIdentifier];
+    [controller updateWithExtras:[self placeholderExtras]];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (NSArray *)placeholderExtras {
+    NSArray *amounts = @[@"12.34", @"1.99", @"10.00", @"20.50", @"19.99"];
+    NSArray *titles = @[@"Extra 1", @"Extra 2", @"Extra 3", @"Extra 4", @"Extra 5"];
+    NSArray *details = @[@"Detail 1", @"Detail 2", @"Detail 3", @"Detail 4", @"Detail 5"];
+    
+    NSMutableArray *extras = [NSMutableArray new];
+    [amounts enumerateObjectsUsingBlock:^(NSString *amount, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSDictionary *dict = @{@"Charge": @{@"@Amount": amount, @"@CurrencyCode": @"EUR"},
+                               @"Equipment": @{@"@EquipType": titles[idx], @"Description": details[idx]}};
+        [extras addObject:[[CTExtraEquipment alloc] initFromDictionary:dict]];
+    }];
+    return extras.copy;
+}
 
 /**
  View Delegates
@@ -180,9 +215,7 @@
 // MARK: CTInfoTipDelegate
 - (void)infoTipWasTapped:(CTInfoTip *)infoTip
 {
-    if (infoTip == self.extrasInfoTip) {
-        [self.navigationController pushViewController:self.optionalRoute animated:YES];
-    }
+    [self.navigationController pushViewController:self.optionalRoute animated:YES];
 }
 
 // MARK: CTInsurance Delegate
