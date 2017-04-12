@@ -60,4 +60,6 @@ extern NSString * const CTRentalSettingsSelectionViewIdentifier;
 
 extern NSString * const CTRentalSettingsViewIdentifier;
 
+extern NSString * const CTRentalExtrasVerticalViewIdentifier;
+
 @end
