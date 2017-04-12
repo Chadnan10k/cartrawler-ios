@@ -150,12 +150,8 @@
     banner.translatesAutoresizingMaskIntoConstraints = NO;
     [banner setHeightConstraint:@40 priority:@750];
 
-    _upSellBanner = [CTUpSellBanner new];
-    [self.upSellBanner setIcon:nil
-    backgroundColor:[UIColor redColor]
-          textColor:[UIColor whiteColor]];
-    
-    [self.upSellBanner addToSuperViewWithString:@"" superview:banner];
+    _upSellBanner = [CTUpSellBanner new];    
+    [self.upSellBanner addToSuperview:banner];
     return banner;
 }
 
