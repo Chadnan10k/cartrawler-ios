@@ -10,8 +10,16 @@
 
 @interface CTUpSellBanner : UIView
 
-- (void)addToSuperViewWithString:(NSString *)bannerString superview:(UIView *)superview;
-- (void)setIcon:(UIImage *)image backgroundColor:(UIColor *)backgroundColor textColor:(UIColor *)textColor;
+typedef NS_ENUM(NSUInteger, CTUpSellBannerAlignment) {
+
+    CTUpSellBannerAlignmentLeft = 0,
+
+    CTUpSellBannerAlignmentRight
+};
+
+@property (nonatomic) CTUpSellBannerAlignment alignment;
+
+- (void)addToSuperview:(UIView *)superview;
 - (void)setIcon:(UIImage *)image backgroundColor:(UIColor *)backgroundColor textColor:(UIColor *)textColor text:(NSString *)text;
 
 @end

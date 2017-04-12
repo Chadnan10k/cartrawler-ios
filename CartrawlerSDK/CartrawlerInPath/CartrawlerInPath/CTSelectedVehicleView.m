@@ -155,11 +155,12 @@
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     
     CTUpSellBanner *banner = [[CTUpSellBanner alloc] init];
-    [banner addToSuperViewWithString:CTLocalizedString(CTInPathWidgetTitleAdded) superview:bannerView];
+    [banner addToSuperview:bannerView];
+
     [banner setIcon:[UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil]
     backgroundColor:[CTAppearance instance].merchandisingGreatValue
-          textColor:[UIColor whiteColor]];
-    
+          textColor:[UIColor whiteColor]
+               text:CTLocalizedString(CTInPathWidgetTitleAdded)];
     return bannerView;
 }
 
