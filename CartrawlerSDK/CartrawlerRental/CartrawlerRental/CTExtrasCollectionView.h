@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CartrawlerAPI/CTExtraEquipment.h>
 
 /**
  A view which manages a collection view of CTExtrasCollectionViewCells
@@ -26,6 +27,6 @@
 
  @param extras an array of CTExtraEquipment objects
  */
-- (void)updateWithExtras:(NSArray *)extras;
+- (void)updateWithExtras:(NSArray<CTExtraEquipment *> *)extras;
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CTExtrasCollectionView.h"
+#import <CartrawlerAPI/CTExtraEquipment.h>
 
 @class CTExtrasCarouselView;
 
@@ -43,6 +44,6 @@
  @param extras an array of CTExtraEquipment objects
  @return a CTExtrasCarouselView instance
  */
-- (instancetype)initWithExtras:(NSArray *)extras;
+- (instancetype)initWithExtras:(NSArray<CTExtraEquipment *> *)extras;
 
 @end

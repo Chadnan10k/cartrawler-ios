@@ -47,7 +47,7 @@ static NSString * const reuseIdentifier = @"Cell";
     return self;
 }
 
-- (UICollectionViewFlowLayout *)flowLayoutWithScrollDirection:(UICollectionViewScrollDirection *)scrollDirection {
+- (UICollectionViewFlowLayout *)flowLayoutWithScrollDirection:(UICollectionViewScrollDirection)scrollDirection {
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.scrollDirection = scrollDirection;
     layout.minimumInteritemSpacing = kInteritemSpacing;

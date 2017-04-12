@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CartrawlerAPI/CTExtraEquipment.h>
 
 /**
  Container view controller for a CTExtrasCollectionView with vertical scrolling
@@ -17,8 +18,7 @@
  Pass in an array of CTExtraEquipment objects to update the CTExtrasCollectionView
 
  @param extras an array of CTExtraEquipment objects
- @return a CTExtrasViewController instance
  */
-- (instancetype)updateWithExtras:(NSArray *)extras;
+- (void)updateWithExtras:(NSArray<CTExtraEquipment *> *)extras;
 
 @end

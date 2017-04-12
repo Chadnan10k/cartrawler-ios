@@ -8,8 +8,10 @@
 
 #import "CTExtrasViewController.h"
 #import "CTExtrasCollectionView.h"
-#import "CTLayoutManager.h"
-#import "CTLabel.h"
+#import <CartrawlerSDK/CTLayoutManager.h>
+#import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import "CTRentalLocalizationConstants.h"
 
 @interface CTExtrasViewController ()
 @property (nonatomic, strong) NSArray *extras;
@@ -22,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titleLabel.text = @"Add Extras";
+    self.titleLabel.text = CTLocalizedString(CTRentalAddExtrasTitle);
     
     self.collectionView = [[CTExtrasCollectionView alloc] initWithScrollDirection:UICollectionViewScrollDirectionVertical];
     [self.collectionView updateWithExtras:self.extras];
@@ -30,7 +32,7 @@
     [CTLayoutManager pinView:self.collectionView toSuperView:self.containerView];
 }
 
-- (void)updateWithExtras:(NSArray *)extras {
+- (void)updateWithExtras:(NSArray <CTExtraEquipment *> *)extras {
     self.extras = extras;
     [self.collectionView updateWithExtras:self.extras];
 }

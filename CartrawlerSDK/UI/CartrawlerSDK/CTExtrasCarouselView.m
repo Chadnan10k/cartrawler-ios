@@ -9,6 +9,8 @@
 #import "CTExtrasCarouselView.h"
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTAlertViewController.h>
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import "CTRentalLocalizationConstants.h"
 
 @interface CTExtrasCarouselView ()
 @property (nonatomic, strong) CTLabel *titleLabel;
@@ -23,7 +25,7 @@
     if (self) {
         self.titleLabel = [[CTLabel alloc] init:20 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentCenter boldFont:YES];
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        self.titleLabel.text = @"Add Extras";
+        self.titleLabel.text = CTLocalizedString(CTRentalAddExtrasTitle);
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
         [self addSubview:self.titleLabel];
         
