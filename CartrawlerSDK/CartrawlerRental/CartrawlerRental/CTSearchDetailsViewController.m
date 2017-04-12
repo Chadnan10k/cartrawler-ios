@@ -11,6 +11,7 @@
 #import <CartrawlerSDK/CTNextButton.h>
 #import <CartrawlerSDK/CTAlertViewController.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 #import "CTRentalLocalizationConstants.h"
 #import "CTInterstitialViewController.h"
 #import "CTSearchView.h"
@@ -77,9 +78,12 @@
 - (void)searchTapped
 {
     
-    if ([self.searchView validateSearch]) {
+    if ([self.searchView validateSearch] && self.validationController) {
         [self pushToDestination];
         [CTInterstitialViewController present:self search:self.search];
+    } else if ([self.searchView validateSearch]) {
+        [CTInterstitialViewController present:self search:self.search];
+        [self requestVehicles];
     }
     
 }
@@ -112,11 +116,34 @@
 
 - (IBAction)backTapped:(id)sender
 {
-    if (self.navigationController.viewControllers.firstObject == self) {
+    if (self.navigationController.viewControllers.firstObject == self || !self.navigationController) {
         [self dismiss];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (void)requestVehicles
+{
+    __weak typeof(self) weakSelf = self;
+    [self.cartrawlerAPI requestVehicleAvailabilityForLocation:self.search.pickupLocation.code
+                                           returnLocationCode:self.search.dropoffLocation.code
+                                          customerCountryCode:[CTSDKSettings instance].homeCountryCode
+                                                 passengerQty:self.search.passengerQty
+                                                    driverAge:self.search.driverAge
+                                               pickUpDateTime:self.search.pickupDate
+                                               returnDateTime:self.search.dropoffDate
+                                                 currencyCode:[CTSDKSettings instance].currencyCode
+                                                   completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
+                                                       if (response) {
+                                                           weakSelf.search.vehicleAvailability = response;
+                                                           [CTInterstitialViewController dismiss];
+                                                           [weakSelf dismiss];
+                                                       } else {
+                                                           [CTInterstitialViewController dismiss];
+                                                           [weakSelf displayAlertWithMessage:error.errorMessage];
+                                                       }
+                                                   }];
 }
 
 //MARK: CTSearchViewDelegate

@@ -114,7 +114,9 @@
 "filter_rating" = "Rating";
 "vehicle_pickup_location_VWF_6.VWF.X" = "Car Dealer";
 "receipt_summary_car" = "Car summary";
-"results_sort" = "Sort";
+"results_sort" = "Sort by:";
+"results_sort_price" = "Price";
+"results_sort_recommended" = "Recommended";
 "vehicle_supplier_address" = "Supplier address";
 "vehicle_fuel_policy_type_QUARTEREMPTY" = "Pick up quarter full and return empty";
 "extras_placeholder" = "Provided by global insurance & asset management leader Axa.";
@@ -284,6 +286,10 @@
 "insurance_added_subheader" = "You have added Full Cover";
 
 "insurance_remove_button" = "Remove";
+
+"results_sort_recommened" = "Recommened";
+
+"results_sort_price" = "Price";
 
 // merch
 

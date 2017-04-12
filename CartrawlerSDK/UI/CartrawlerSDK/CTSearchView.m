@@ -43,6 +43,7 @@
 @property (nonatomic, strong) NSDate *temporaryPickupDate;
 @property (nonatomic, strong) NSDate *temporaryDropoffDate;
 
+
 @end
 
 @implementation CTSearchView

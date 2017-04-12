@@ -26,9 +26,9 @@
         sharedInstance.viewBackgroundColor = [UIColor colorWithRed:7.0/255.0 green:53.0/255.0 blue:144.0/255.0 alpha:1.0];
         sharedInstance.navigationBarColor = [UIColor colorWithRed:7.0/255.0 green:53.0/255.0 blue:144.0/255.0 alpha:1.0];
         sharedInstance.tabBarTint = [UIColor colorWithRed:27.0/255.0 green:78.0/255.0 blue:148.0/255.0 alpha:1.0];
-        sharedInstance.iconTint = [UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1.0];
+        sharedInstance.iconTint = [UIColor colorWithRed:7.0/255.0 green:53.0/255.0 blue:144.0/255.0 alpha:1.0];
         sharedInstance.headerTitleColor = [UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1.0];
-        sharedInstance.subheaderTitleColor = [UIColor colorWithRed:164.0/255.0 green:170.0/255.0 blue:179.0/255.0 alpha:1.0];
+        sharedInstance.subheaderTitleColor = [UIColor colorWithRed:7.0/255.0 green:53.0/255.0 blue:144.0/255.0 alpha:1.0];
         sharedInstance.tooltipBackgroundColor = [UIColor colorWithRed:31.0/255.0 green:73.0/255.0 blue:155.0/255.0 alpha:1.0];
 
         sharedInstance.containerViewCornerRadius = 5.0;

@@ -11,7 +11,7 @@
 @interface NSNumber (CartrawlerSDK)
 
 - (NSString *)numberStringWithCurrencyCode;
-- (NSString *)twoDecimalPlaces;
+- (NSString *)decimalPlaces:(int)places;
 - (NSString *)pricePerDay:(NSDate *)pickup dropoff:(NSDate *)dropoff;
 + (NSNumber *)numberFromString:(NSString *)string;
 

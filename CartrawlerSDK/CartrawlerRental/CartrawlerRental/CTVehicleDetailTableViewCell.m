@@ -11,10 +11,12 @@
 #import "CartrawlerSDK/CTLayoutManager.h"
 #import "CartrawlerSDK/CartrawlerSDK+UIView.h"
 #import "CartrawlerSDK/CartrawlerSDK+NSNumber.h"
+#import "CartrawlerSDK/CartrawlerSDK+UIImageView.h"
 #import "CartrawlerSDK/CTImageCache.h"
 #import "CartrawlerSDK/CTUpSellBanner.h"
 #import "CartrawlerSDK/CTAppearance.h"
 #import "CartrawlerSDK/CTLocalisedStrings.h"
+#import "CartrawlerSDK/CartrawlerSDK+NSString.h"
 #import "CTRentalLocalizationConstants.h"
 
 @interface CTVehicleDetailTableViewCell()
@@ -64,7 +66,7 @@
 
 - (void)setItem:(CTAvailabilityItem *)item pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate;
 {
-    self.makeModelLabel.text = [self attributedText:item.vehicle.makeModelName boldColor:[UIColor blackColor] boldSize:17 regularText:item.vehicle.orSimilar regularColor:[UIColor lightGrayColor] regularSize:15 useSpace:YES];
+    self.makeModelLabel.attributedText = [NSString attributedText:item.vehicle.makeModelName boldColor:[UIColor blackColor] boldSize:17 regularText:item.vehicle.orSimilar regularColor:[UIColor lightGrayColor] regularSize:15 useSpace:YES];
     [[CTImageCache sharedInstance] cachedImage:item.vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;
     }];
@@ -77,10 +79,11 @@
         NSNumber *indexOfView = [self.manager indexOfObject:self.bannerView];
         if (indexOfView == nil) {
             self.upSellBanner.alpha = 1;
-            [self.manager insertViewAtIndex:0 padding:UIEdgeInsetsMake(8,0,8,8) view:self.bannerView];
+            [self.manager insertViewAtIndex:0 padding:UIEdgeInsetsMake(4,0,4,0) view:self.bannerView];
+            [self setBannerText:item];
         } else {
             self.upSellBanner.alpha = 1;
-            NSLog(@"update banner text");
+            [self setBannerText:item];
         }
         
     } else {
@@ -90,13 +93,13 @@
             [self.manager removeAtIndex:indexOfView.integerValue];
         }
     }
+
+    self.passengerLabel.text = [NSString stringWithFormat:@"%@ %@", item.vehicle.passengerQty.stringValue, CTLocalizedString(CTRentalVehiclePassengers)];
+    self.bagsLabel.text = [NSString stringWithFormat:@"%@ %@", item.vehicle.baggageQty.stringValue, CTLocalizedString(CTRentalVehicleBags)];
+    self.fuelLabel.text = [CTLocalisedStrings fuelPolicy:item.vehicle.fuelPolicy];
+    self.pickupLabel.text = [CTLocalisedStrings pickupType:item];
     
-    self.passengerLabel.text = @"5 passengers";
-    self.bagsLabel.text = @"5 passengers";
-    self.fuelLabel.text = @"5 passengers";
-    self.pickupLabel.text = @"5 passengers";
-    
-    self.scoreLabel.attributedText = [self attributedText:[NSNumber numberWithFloat:item.vendor.rating.totalScore.floatValue/10].stringValue
+    self.scoreLabel.attributedText = [NSString attributedText:[@(item.vendor.rating.overallScore.doubleValue * 2) decimalPlaces:1]
                                                 boldColor:[CTAppearance instance].iconTint
                                                  boldSize:17
                                               regularText:@"/10"
@@ -104,7 +107,7 @@
                                               regularSize:17
                                                  useSpace:NO];
     
-    self.priceLabel.attributedText = [self attributedText:[item.vehicle.totalPriceForThisVehicle pricePerDay:pickupDate dropoff:dropoffDate]
+    self.priceLabel.attributedText = [NSString attributedText:[item.vehicle.totalPriceForThisVehicle pricePerDay:pickupDate dropoff:dropoffDate]
                                                 boldColor:[CTAppearance instance].iconTint
                                                  boldSize:21
                                               regularText:@""
@@ -122,19 +125,19 @@
 {
     UIView *container = [UIView new];
     container.translatesAutoresizingMaskIntoConstraints = NO;
-    container.backgroundColor = [UIColor grayColor];
+    container.backgroundColor = [UIColor whiteColor];
     container.layer.cornerRadius = 5;
     container.layer.borderWidth = 0.5;
-    container.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    container.layer.borderColor = [UIColor lightGrayColor].CGColor;
     container.layer.masksToBounds = YES;
     
     _bannerView = [self createBannerContainer];
     
     _manager = [CTLayoutManager layoutManagerWithContainer:container];
 
-    [self.manager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:[self createNameContainer]];
-    [self.manager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:[self createDetailsBlock]];
-    [self.manager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:[self createFooterContainer]];
+    [self.manager insertView:UIEdgeInsetsMake(4, 8, 4, 8) view:[self createNameContainer]];
+    [self.manager insertView:UIEdgeInsetsMake(4, 8, 0, 8) view:[self createDetailsBlock]];
+    [self.manager insertView:UIEdgeInsetsMake(0, 8, 8, 8) view:[self createFooterContainer]];
 
     [self.manager layoutViews];
     
@@ -146,20 +149,13 @@
     UIView *banner = [UIView new];
     banner.translatesAutoresizingMaskIntoConstraints = NO;
     [banner setHeightConstraint:@40 priority:@750];
-    banner.backgroundColor = [UIColor greenColor];
-    
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    
-    UIImage *icon = [UIImage imageNamed:@"banner"
-                               inBundle:bundle
-          compatibleWithTraitCollection:nil];
-    
+
     _upSellBanner = [CTUpSellBanner new];
-    [self.upSellBanner setIcon:icon
+    [self.upSellBanner setIcon:nil
     backgroundColor:[UIColor redColor]
           textColor:[UIColor whiteColor]];
     
-    [self.upSellBanner addToSuperViewWithString:@"Test" superview:banner];
+    [self.upSellBanner addToSuperViewWithString:@"" superview:banner];
     return banner;
 }
 
@@ -179,25 +175,22 @@
     
     UIView *container = [UIView new];
     container.translatesAutoresizingMaskIntoConstraints = NO;
-    container.backgroundColor = [UIColor redColor];
     
     UIView *detailsView = [UIView new];
     detailsView.translatesAutoresizingMaskIntoConstraints = NO;
-    detailsView.backgroundColor = [UIColor greenColor];
     
     CTLayoutManager *detailsViewManager = [CTLayoutManager layoutManagerWithContainer:detailsView];
     detailsViewManager.orientation = CTLayoutManagerOrientationTopToBottom;
     detailsViewManager.justify = NO;
-    [detailsViewManager insertView:UIEdgeInsetsMake(8, 0, 8, 8) view:[self createImageTextView:self.passengerLabel iconName: @"people"]];
-    [detailsViewManager insertView:UIEdgeInsetsMake(8, 0, 8, 8) view:[self createImageTextView:self.bagsLabel iconName: @"baggage"]];
-    [detailsViewManager insertView:UIEdgeInsetsMake(8, 0, 8, 8) view:[self createImageTextView:self.fuelLabel iconName: @"fuel"]];
-    [detailsViewManager insertView:UIEdgeInsetsMake(8, 0, 8, 8) view:[self createImageTextView:self.pickupLabel iconName: @"location"]];
+    [detailsViewManager insertView:UIEdgeInsetsMake(4, 0, 4, 8) view:[self createImageTextView:self.passengerLabel iconName: @"people"]];
+    [detailsViewManager insertView:UIEdgeInsetsMake(4, 0, 4, 8) view:[self createImageTextView:self.bagsLabel iconName: @"baggage"]];
+    [detailsViewManager insertView:UIEdgeInsetsMake(4, 0, 4, 8) view:[self createImageTextView:self.fuelLabel iconName: @"fuel"]];
+    [detailsViewManager insertView:UIEdgeInsetsMake(4, 0, 4, 8) view:[self createImageTextView:self.pickupLabel iconName: @"location"]];
     [detailsViewManager layoutViews];
     
     _vehicleImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.vehicleImageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.vehicleImageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.vehicleImageView.backgroundColor = [UIColor yellowColor];
     [self.vendorImageView setHeightConstraint:@100 priority:@750];
     
     CTLayoutManager *manager = [CTLayoutManager layoutManagerWithContainer:container];
@@ -225,9 +218,10 @@
     UIImageView *imageView = [UIImageView new];
     imageView.translatesAutoresizingMaskIntoConstraints = NO;
     [imageView setHeightConstraint:@20 priority:@1000];
-    imageView.backgroundColor = [UIColor redColor];
     imageView.image = icon;
+    [imageView applyTintWithColor:[CTAppearance instance].iconTint];
     
+    label.font = [UIFont fontWithName:[CTAppearance instance].fontName size:14];
     label.translatesAutoresizingMaskIntoConstraints = NO;
     label.numberOfLines = 0;
     [label sizeToFit];
@@ -244,7 +238,7 @@
     
     NSDictionary *viewDict = @{@"imageView" : imageView, @"label" : label, @"view" : view};
     [view addConstraint:imageVerticalConstraint];
-    [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[imageView(20)]-4-[label]-4-|"
+    [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[imageView(20)]-8-[label]-4-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:viewDict]];
@@ -263,7 +257,6 @@
     UIView *container = [UIView new];
     container.translatesAutoresizingMaskIntoConstraints = NO;
     [container setHeightConstraint:@50 priority:@1000];
-    container.backgroundColor = [UIColor blueColor];
     
     _scoreLabel = [UILabel new];
     self.scoreLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -276,6 +269,7 @@
 
     _priceLabel = [UILabel new];
     self.priceLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.priceLabel.textAlignment = NSTextAlignmentRight;
     [container addSubview:self.priceLabel];
     
     UILabel *perDayLabel = [UILabel new];
@@ -283,7 +277,8 @@
     [container addSubview:perDayLabel];
     perDayLabel.numberOfLines = 1;
     perDayLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:14];
-    perDayLabel.text = @"per day";
+    perDayLabel.text = CTLocalizedString(CTRentalExtrasPerDay);
+    perDayLabel.textAlignment = NSTextAlignmentRight;
     
     NSDictionary *viewsDict = @{
                                 @"scoreLabel" : self.scoreLabel,
@@ -295,7 +290,7 @@
     [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[scoreLabel]-8-[supplierImage(50)]" options:0 metrics:nil views:viewsDict]];
     [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[priceLabel]-0-|" options:0 metrics:nil views:viewsDict]];
     [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[perDayLabel]-0-|" options:0 metrics:nil views:viewsDict]];
-    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[priceLabel]-0-[perDayLabel(15)]-4-|" options:0 metrics:nil views:viewsDict]];
+    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[priceLabel]-0-[perDayLabel(20)]-4-|" options:0 metrics:nil views:viewsDict]];
     [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[supplierImage(20)]" options:0 metrics:nil views:viewsDict]];
 
     NSLayoutConstraint *scoreVerticalConstraint = [NSLayoutConstraint constraintWithItem:self.scoreLabel
@@ -333,22 +328,102 @@
     return ceil(textHeight);
 }
 
-- (NSAttributedString *)attributedText:(NSString *)boldText boldColor:(UIColor *)boldColor boldSize:(CGFloat)boldSize regularText:(NSString *)regularText regularColor:(UIColor *)regularColor regularSize:(CGFloat)regularSize useSpace:(BOOL)useSpace
+- (void)setBannerText:(CTAvailabilityItem *)item
 {
-    NSMutableAttributedString *mutableString = [NSMutableAttributedString new];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIImage *icon = [UIImage imageNamed:@"star"
+                               inBundle:bundle
+          compatibleWithTraitCollection:nil];
     
-    NSAttributedString *boldString = [[NSAttributedString alloc] initWithString:boldText attributes:@{NSForegroundColorAttributeName : boldColor, NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].boldFontName size:boldSize]}];
-    NSAttributedString *spaceString = [[NSAttributedString alloc] initWithString:@" "];
-    NSAttributedString *regString = [[NSAttributedString alloc] initWithString:regularText attributes:@{NSForegroundColorAttributeName : regularColor, NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:regularSize]}];
-
-    [mutableString appendAttributedString:boldString];
-    
-    if (useSpace)
-        [mutableString appendAttributedString:spaceString];
-    
-    [mutableString appendAttributedString:regString];
-
-    return mutableString;
+    [self.upSellBanner setIcon:icon
+               backgroundColor:[self merchandisingColor:item.vehicle.merchandisingTag]
+                     textColor:[UIColor whiteColor]
+                          text:[self merchandisingText:item.vehicle.merchandisingTag]];
 }
+
+
+- (NSString *)merchandisingText:(CTMerchandisingTag)merchandisingTag
+{
+    switch (merchandisingTag) {
+        case CTMerchandisingTagBusiness:
+            return CTLocalizedString(CTRentalVehicleMerchandisingBusiness);
+            
+        case CTMerchandisingTagCityBreak:
+            return CTLocalizedString(CTRentalVehicleMerchandisingCityBreak);
+            
+        case CTMerchandisingTagFamilySize:
+            return CTLocalizedString(CTRentalVehicleMerchandisingFamilySize);
+            
+        case CTMerchandisingTagBestSeller:
+            return CTLocalizedString(CTRentalVehicleMerchandisingBestSeller);
+            
+        case CTMerchandisingTagGreatValue:
+            return CTLocalizedString(CTRentalVehicleMerchandisingGreatValue);
+            break;
+            
+        case CTMerchandisingTagQuickestQueue:
+            return CTLocalizedString(CTRentalVehicleMerchandisingQuickestQueue);
+            break;
+            
+        case CTMerchandisingTagRecommended:
+            return CTLocalizedString(CTRentalVehicleMerchandisingRecommended);
+            break;
+            
+        case CTMerchandisingTagUpgradeTo:
+            return CTLocalizedString(CTRentalVehicleMerchandisingUpgradeTo);
+            break;
+            
+        case CTMerchandisingTagOnBudget:
+            return CTLocalizedString(CTRentalVehicleMerchandisingOnBudget);
+            break;
+            
+        case CTMerchandisingTagBestReviewed:
+            return CTLocalizedString(CTRentalVehicleMerchandisingBestReviewed);
+            break;
+            
+        case CTMerchandisingTagUnknown:
+            return @"";
+            break;
+    }
+}
+
+- (UIColor *)merchandisingColor:(CTMerchandisingTag)merchandisingTag
+{
+    switch (merchandisingTag) {
+        case CTMerchandisingTagBusiness:
+            return [UIColor colorWithRed:75.0/255.0 green:75.0/255.0 blue:75.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagCityBreak:
+            return [UIColor colorWithRed:4.0/255.0 green:119.0/255.0 blue:188.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagFamilySize:
+            return [UIColor colorWithRed:189.0/255.0 green:15.0/255.0 blue:134.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagBestSeller:
+            return [UIColor colorWithRed:22.0/255.0 green:171.0/255.0 blue:252.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagGreatValue:
+            return [UIColor colorWithRed:41.0/255.0 green:173.0/255.0 blue:79.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagQuickestQueue:
+            return [UIColor colorWithRed:255.0/255.0 green:90.0/255.0 blue:0.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagRecommended:
+            return [UIColor colorWithRed:254.0/255.0 green:67.0/255.0 blue:101.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagUpgradeTo:
+            return [UIColor colorWithRed:22.0/255.0 green:171.0/255.0 blue:252.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagOnBudget:
+            return [UIColor colorWithRed:22.0/255.0 green:171.0/255.0 blue:252.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagBestReviewed:
+            return [UIColor colorWithRed:22.0/255.0 green:171.0/255.0 blue:252.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagUnknown:
+            return [UIColor colorWithRed:22.0/255.0 green:171.0/255.0 blue:252.0/255.0 alpha:1];
+    }
+}
+
 
 @end

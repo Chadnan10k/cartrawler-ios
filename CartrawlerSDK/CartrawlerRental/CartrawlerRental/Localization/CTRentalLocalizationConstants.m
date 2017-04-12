@@ -310,4 +310,10 @@ NSString * const CTRentalVehicleMerchandisingOnBudget = @"vehicle_on_budget";
 
 NSString * const CTRentalVehicleMerchandisingBestReviewed = @"vehicle_best_reviewed";
 
+//new sort
+
+NSString * const CTRentalResultsSortPrice = @"results_sort_price";
+
+NSString * const CTRentalResultsSortRecommened = @"results_sort_recommened";
+
 @end

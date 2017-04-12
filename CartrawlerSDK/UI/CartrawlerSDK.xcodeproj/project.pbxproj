@@ -140,6 +140,8 @@
 		45EC99B11E02B51600B76741 /* CTSDKSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 4511E51B1D1450CE000ED6B0 /* CTSDKSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45F5D76A1DEF00C3005AE1AD /* CartrawlerSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F5D7691DEF00C3005AE1AD /* CartrawlerSDKTests.m */; };
 		45F5D76C1DEF00C3005AE1AD /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455B582B1DCC90D300CA4790 /* CartrawlerSDK.framework */; };
+		BC01F5921E9D2A7B003D8286 /* CartrawlerSDK+NSString.h in Headers */ = {isa = PBXBuildFile; fileRef = BC01F5901E9D2A7B003D8286 /* CartrawlerSDK+NSString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC01F5931E9D2A7B003D8286 /* CartrawlerSDK+NSString.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5911E9D2A7B003D8286 /* CartrawlerSDK+NSString.m */; };
 		BC1379E81E23E4E400B1F727 /* CTAnalytics.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1379E31E23E4E400B1F727 /* CTAnalytics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC1379E91E23E4E400B1F727 /* CTAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1379E41E23E4E400B1F727 /* CTAnalytics.m */; };
 		BC1379EB1E23E4E400B1F727 /* CTTag.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1379E61E23E4E400B1F727 /* CTTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -334,6 +336,8 @@
 		45F5D7671DEF00C3005AE1AD /* CartrawlerSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F5D7691DEF00C3005AE1AD /* CartrawlerSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartrawlerSDKTests.m; sourceTree = "<group>"; };
 		45F5D76B1DEF00C3005AE1AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC01F5901E9D2A7B003D8286 /* CartrawlerSDK+NSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+NSString.h"; sourceTree = "<group>"; };
+		BC01F5911E9D2A7B003D8286 /* CartrawlerSDK+NSString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+NSString.m"; sourceTree = "<group>"; };
 		BC1379E31E23E4E400B1F727 /* CTAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalytics.h; sourceTree = "<group>"; };
 		BC1379E41E23E4E400B1F727 /* CTAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalytics.m; sourceTree = "<group>"; };
 		BC1379E61E23E4E400B1F727 /* CTTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTag.h; sourceTree = "<group>"; };
@@ -712,6 +716,8 @@
 				450F9D401D3CE9D6002C6F6B /* CTCSVItem.m */,
 				BCF874271E79604100EBC758 /* CTLayoutManager.h */,
 				BCF874281E79604100EBC758 /* CTLayoutManager.m */,
+				BC01F5901E9D2A7B003D8286 /* CartrawlerSDK+NSString.h */,
+				BC01F5911E9D2A7B003D8286 /* CartrawlerSDK+NSString.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -988,6 +994,7 @@
 				E76900DD1E764F9800D729FF /* CTListView.h in Headers */,
 				E76900E11E77267700D729FF /* CTListItemView.h in Headers */,
 				BCFA41741E97CDF700DA1710 /* CTUpSellBanner.h in Headers */,
+				BC01F5921E9D2A7B003D8286 /* CartrawlerSDK+NSString.h in Headers */,
 				457678501E08021500FE591A /* CTHeaders.h in Headers */,
 				E7404A781E82F3AB009BF7DF /* CTTabContainerView.h in Headers */,
 				E70230731E857DC2005E1BF4 /* CTRatingView.h in Headers */,
@@ -1170,6 +1177,7 @@
 				455B58591DCC914300CA4790 /* CTTextView.m in Sources */,
 				455B585B1DCC914300CA4790 /* CTPlaceholderView.m in Sources */,
 				E70230741E857DC2005E1BF4 /* CTRatingView.m in Sources */,
+				BC01F5931E9D2A7B003D8286 /* CartrawlerSDK+NSString.m in Sources */,
 				455B585D1DCC914300CA4790 /* CTView.m in Sources */,
 				455B585F1DCC914300CA4790 /* CTDesignableView.m in Sources */,
 				455B58611DCC914300CA4790 /* CTNavigationView.m in Sources */,

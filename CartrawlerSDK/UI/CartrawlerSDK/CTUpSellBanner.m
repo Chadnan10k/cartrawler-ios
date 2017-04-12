@@ -9,6 +9,7 @@
 #import "CTUpSellBanner.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
+#import "CartrawlerAPI/CTVehicle.h"
 
 @interface CTUpSellBanner ()
 
@@ -133,6 +134,18 @@
 
     [self applyColorsToBackground:backgroundColor];
     self.infoLabel.textColor = textColor;
+}
+
+- (void)setIcon:(UIImage *)image backgroundColor:(UIColor *)backgroundColor textColor:(UIColor *)textColor text:(NSString *)text
+{
+    [self setIcon:image backgroundColor:backgroundColor textColor:textColor];
+    self.bannerString = text;
+    self.infoLabel.text = text;
+    for (NSLayoutConstraint *constraint in self.constraints) {
+        if (constraint.firstItem == self && constraint.firstAttribute == NSLayoutAttributeWidth) {
+            constraint.constant = [self widthOfString:self.bannerString withFont:self.infoLabel.font] + 60;
+        }
+    }
 }
 
 - (CGFloat)widthOfString:(NSString *)string withFont:(UIFont *)font

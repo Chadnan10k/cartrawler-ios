@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_ENUM(NSUInteger, CTLayoutManagerOrientation) {
     CTLayoutManagerOrientationTopToBottom,
     CTLayoutManagerOrientationLeftToRight
@@ -92,3 +94,5 @@ typedef NS_ENUM(NSUInteger, CTLayoutManagerOrientation) {
         padding:(UIEdgeInsets)padding;
 
 @end
+
+NS_ASSUME_NONNULL_END

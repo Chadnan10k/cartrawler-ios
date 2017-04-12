@@ -312,4 +312,10 @@ extern NSString * const CTRentalVehicleMerchandisingOnBudget;
 
 extern NSString * const CTRentalVehicleMerchandisingBestReviewed;
 
+//new sort
+
+extern NSString * const CTRentalResultsSortPrice;
+
+extern NSString * const CTRentalResultsSortRecommened;
+
 @end
