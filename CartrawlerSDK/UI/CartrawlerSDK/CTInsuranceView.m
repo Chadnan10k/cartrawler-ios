@@ -84,7 +84,7 @@
     
     self.offeringView.termsAndConditionsAction = ^{
         if (weakSelf.delegate) {
-            [weakSelf.delegate didTapTermsAndConditions:weakSelf.cachedInsurance.termsAndConditionsURL];
+            [weakSelf.delegate didTapMoreDetail];
         }
     };
     

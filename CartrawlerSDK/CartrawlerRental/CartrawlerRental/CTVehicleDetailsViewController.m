@@ -10,6 +10,8 @@
 #import "CTVehicleDetailsView.h"
 #import <CartrawlerSDK/CTHeaders.h>
 #import "CTInsuranceView.h"
+#import "CTRentalConstants.h"
+#import "CTInsuranceViewController.h"
 
 @interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate>
 
@@ -166,7 +168,6 @@
     [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.insuranceView];
 }
 
-
 /**
  View Delegates
  */
@@ -239,8 +240,10 @@
     
 }
 
-- (void)didTapTermsAndConditions:(NSURL *)termsURL
+- (void)didTapMoreDetail
 {
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:bundle];
     
 }
 

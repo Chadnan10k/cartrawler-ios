@@ -23,11 +23,10 @@
 - (void)didRemoveInsurance;
 
 /**
- Fires if user taps on terms and conditions
+ Fires if user taps on more detail
 
- @param termsURL The terms and conditions URL
  */
-- (void)didTapTermsAndConditions:(NSURL *)termsURL;
+- (void)didTapMoreDetail;
 
 @end
 
