@@ -8,19 +8,12 @@
 
 #import "CTCMSCommunicator.h"
 
+NSString * const CTCMSTestEndpoint = @"http://ajaxgeo.cartrawler.com/translations/%@.json";
+
 @implementation CTCMSCommunicator
 
-+ (void)fetchCMSIndexWithCompletionHandler:(void (^)(NSData * _Nullable data, NSError * _Nullable error))completionHandler {
-    [self fetchFile:@"http://localhost:8080/languages/version4.json" withCompletionHandler:completionHandler];
-}
-
-+ (void)fetchCMSLocalisation:(NSString *)filename withCompletionHandler:(void (^)(NSData * _Nullable data, NSError * _Nullable error))completionHandler {
-    NSString *path = [NSString stringWithFormat:@"http://localhost:8080/languages/%@", filename];
-    [self fetchFile:path withCompletionHandler:completionHandler];
-}
-
-
-+ (void)fetchFile:(NSString *)path withCompletionHandler:(void (^)(NSData * _Nullable data, NSError * _Nullable error))completionHandler {
++ (void)fetchFile:(NSString *)filename withCompletionHandler:(void (^)(NSData * _Nullable data, NSError * _Nullable error))completionHandler {
+    NSString *path = [NSString stringWithFormat:CTCMSTestEndpoint, filename];
     NSURL *url = [NSURL URLWithString:path];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {

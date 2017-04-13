@@ -10,8 +10,6 @@
 
 @interface CTCMSCommunicator : NSObject
 
-+ (void)fetchCMSIndexWithCompletionHandler:(void (^)(NSData * _Nullable data, NSError * _Nullable error))completionHandler;
-
-+ (void)fetchCMSLocalisation:(NSString *)filename withCompletionHandler:(void (^)(NSData * _Nullable data, NSError * _Nullable error))completionHandler;
++ (void)fetchFile:(NSString *)filename withCompletionHandler:(void (^)(NSData * _Nullable data, NSError * _Nullable error))completionHandler;
 
 @end

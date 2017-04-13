@@ -32,13 +32,19 @@ static NSString *CTCMSLocalizationIndex = @"versions";
 }
 
 - (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle language:(NSString *)language {
-    NSString *identifier = [bundle.bundleIdentifier stringByAppendingPathComponent:language];
+    NSString *identifier = [self identifierForBundleIdentifier:bundle.bundleIdentifier];
+    identifier = [identifier stringByAppendingPathComponent:language];
     
     if (!self.localizations[identifier]) {
         [self loadLocalizationsForIdentifier:identifier];
     }
     
     return self.localizations[identifier][key] ?: key;
+}
+
+- (NSString *)identifierForBundleIdentifier:(NSString *)bundleIdentifier {
+    bundleIdentifier = [bundleIdentifier stringByReplacingOccurrencesOfString:@"com.cartrawler" withString:@"ios"];
+    return [bundleIdentifier stringByReplacingOccurrencesOfString:@"." withString:@"_"];
 }
 
 // MARK: Versions File
@@ -54,7 +60,7 @@ static NSString *CTCMSLocalizationIndex = @"versions";
 }
 
 - (void)loadCMSIndex {
-    [CTCMSCommunicator fetchCMSIndexWithCompletionHandler:^(NSData * _Nullable data, NSError * _Nullable error) {
+    [CTCMSCommunicator fetchFile:@"versions" withCompletionHandler:^(NSData * _Nullable data, NSError * _Nullable error) {
         if (data) {
             [self cmsIndexDidLoad:data];
         }
@@ -99,12 +105,12 @@ static NSString *CTCMSLocalizationIndex = @"versions";
     NSNumber *timestamp = [self timestampForIdentifier:identifier inIndex:self.cmsIndex];
     
     BOOL newFileAvailable = timestamp && ![cachedTimestamp isEqual:timestamp];
-    BOOL cacheEmpty = [self.localizations[identifier] count] == 0;
+    BOOL cacheEmpty = timestamp && [self.localizations[identifier] count] == 0;
     
     if (newFileAvailable || cacheEmpty) {
         NSString *filename = [self filenameForIdentifier:identifier timestamp:timestamp];
         
-        [CTCMSCommunicator fetchCMSLocalisation:filename withCompletionHandler:^(NSData * _Nullable data, NSError * _Nullable error) {
+        [CTCMSCommunicator fetchFile:filename withCompletionHandler:^(NSData * _Nullable data, NSError * _Nullable error) {
             [CTFileSystemAccess saveJSONResource:data toDocumentDirectory:filename];
             self.localizations[identifier] = [CTCMSJSONParser localizationDictionaryFromLocalizationData:data];
         }];
