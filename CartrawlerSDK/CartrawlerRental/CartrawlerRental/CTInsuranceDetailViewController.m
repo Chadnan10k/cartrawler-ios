@@ -10,11 +10,14 @@
 #import "CartrawlerSDK/CTLayoutManager.h"
 #import "CartrawlerSDK/CartrawlerSDK+UIView.h"
 #import "CartrawlerSDK/CartrawlerSDK+UIImageView.h"
+#import "CartrawlerSDK/CartrawlerSDK+NSNumber.h"
 #import "CartrawlerSDK/CTAppearance.h"
 #import "CartrawlerSDK/CTLabel.h"
 #import "CartrawlerSDK/CTButton.h"
 #import "CartrawlerSDK/CTAlertViewController.h"
 #import "CartrawlerSDK/CTNextButton.h"
+#import "CartrawlerSDK/CTLocalisedStrings.h"
+#import "CTRentalLocalizationConstants.h"
 
 @interface CTInsuranceDetailViewController ()
 
@@ -139,11 +142,11 @@
     CTLabel *reduceLabel = [[CTLabel alloc] init:17 textColor:[CTAppearance instance].navigationBarColor textAlignment:NSTextAlignmentLeft boldFont:YES];
     [reduceLabel setHeightConstraint:@30 priority:@1000];
     reduceLabel.numberOfLines = 0;
-    reduceLabel.text = @"Reduce your liability from $3000 to $0";
+    reduceLabel.text = CTLocalizedString(CTRentalInsuranceDetailInfoTitle);
     
     CTLabel *infoTextView = [[CTLabel alloc] init:14 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentLeft boldFont:NO];
     infoTextView.numberOfLines = 0;
-    infoTextView.text = @"asdasdasdasda asdasdas asdasda sdasd adads asd\n\nadssa da sda dasd  ads sa dasdasdasdad asdasdasdasdadsasdasdasdsadad";
+    infoTextView.text = CTLocalizedString(CTRentalInsuranceDetailInfo);
     
     CTLayoutManager *layoutManager = [CTLayoutManager layoutManagerWithContainer:view];
     layoutManager.justify = NO;
@@ -161,14 +164,13 @@
     view.translatesAutoresizingMaskIntoConstraints = NO;
     
     CTLabel *reduceLabel = [[CTLabel alloc] init:17 textColor:[CTAppearance instance].navigationBarColor textAlignment:NSTextAlignmentLeft boldFont:YES];
-    reduceLabel.text = @"Whatz covered:";
+    reduceLabel.text = CTLocalizedString(CTRentalInsuranceDetailTipTitle);
     
-    UIView *infoOne = [self imageAndTextView:@"checkmark" text:@"Full damage insurance Full damage insurance"];
-    UIView *infoTwo = [self imageAndTextView:@"checkmark" text:@"Full damage insurance"];
-    UIView *infoThree = [self imageAndTextView:@"checkmark" text:@"Full damage insurance"];
-    UIView *infoFour = [self imageAndTextView:@"checkmark" text:@"Full damage insurance"];
-    UIView *infoFive = [self imageAndTextView:@"checkmark" text:@"Full damage insurance"];
-    UIView *infoSix = [self imageAndTextView:@"checkmark" text:@"Full damage insurance"];
+    UIView *infoOne = [self imageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceDetailTip1)];
+    UIView *infoTwo = [self imageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceDetailTip2)];
+    UIView *infoThree = [self imageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceDetailTip3)];
+    UIView *infoFour = [self imageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceDetailTip4)];
+    UIView *infoFive = [self imageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceDetailTip5)];
 
     CTLayoutManager *layoutManager = [CTLayoutManager layoutManagerWithContainer:view];
     
@@ -178,7 +180,6 @@
     [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:infoThree];
     [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:infoFour];
     [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:infoFive];
-    [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:infoSix];
 
     [layoutManager layoutViews];
     
@@ -191,7 +192,7 @@
                                     fontColor:[CTAppearance instance].navigationBarColor
                                      boldFont:NO
                                   borderColor:nil];
-    [button setTitle:@"Terms and cond" forState:UIControlStateNormal];
+    [button setTitle:CTLocalizedString(CTRentalInsuranceTermsConditions) forState:UIControlStateNormal];
     [button addTarget:self action:@selector(termsTapped:) forControlEvents:UIControlEventTouchUpInside];
     button.translatesAutoresizingMaskIntoConstraints = NO;
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;

@@ -94,17 +94,17 @@
     
     _headerLabel = [[CTLabel alloc] init:17 textColor:[CTAppearance instance].iconTint textAlignment:NSTextAlignmentCenter boldFont:YES];
     self.headerLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.headerLabel.text = @"Upgrade Your Cover";
+    self.headerLabel.text = CTLocalizedString(CTRentalInsuranceOfferingHeader);
     self.headerLabel.numberOfLines = 1;
 
     _subheaderLabel = [[CTLabel alloc] init:14 textColor:[CTAppearance instance].iconTint textAlignment:NSTextAlignmentCenter boldFont:NO];
     self.subheaderLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.subheaderLabel.text = @"Damage Refund Insurance";
+    self.subheaderLabel.text = CTLocalizedString(CTRentalInsuranceOfferingSubheader);
     self.subheaderLabel.numberOfLines = 1;
     
     _moreDetailsButton = [[CTButton alloc] init:[UIColor clearColor] fontColor:[UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1] boldFont:NO borderColor:nil];
     self.moreDetailsButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.moreDetailsButton setTitle:@"More details" forState:UIControlStateNormal];
+    [self.moreDetailsButton setTitle:CTLocalizedString(CTRentalInsuranceInfoButtonTitle) forState:UIControlStateNormal];
     [self.moreDetailsButton setHeightConstraint:@20 priority:@1000];
     [self.moreDetailsButton addTarget:self action:@selector(termsTapped:) forControlEvents:UIControlEventTouchUpInside];
     self.moreDetailsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -143,9 +143,9 @@
     layoutManager.orientation = CTLayoutManagerOrientationTopToBottom;
     layoutManager.justify = NO;
     
-    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:[self imageAndTextView:@"checkmark" text:@"Full damage & theft excess refund"]];
-    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:[self imageAndTextView:@"checkmark" text:@"Tyres, windows, mirrors & wheels"]];
-    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:[self imageAndTextView:@"checkmark" text:@"Key cover & personal posessions"]];
+    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:[self imageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceInfoTip1)]];
+    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:[self imageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceInfoTip2)]];
+    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:[self imageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceInfoTip3)]];
 
     [layoutManager layoutViews];
     

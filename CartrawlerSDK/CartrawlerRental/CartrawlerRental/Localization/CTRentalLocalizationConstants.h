@@ -282,8 +282,39 @@ extern NSString * const CTRentalInsuranceInfoButtonTitle;
 
 extern NSString * const CTRentalInsuranceAddButtonTitle;
 
+extern NSString * const CTRentalInsuranceInfoTip1;
+
+extern NSString * const CTRentalInsuranceInfoTip2;
+
+extern NSString * const CTRentalInsuranceInfoTip3;
+
+extern NSString * const CTRentalInsuranceTotal;
+
+extern NSString * const CTRentalInsurancePerDay;
+
+//Insurance details VC
+
+extern NSString * const CTRentalInsuranceDetailTitle;
+
+extern NSString * const CTRentalInsuranceDetailInfoTitle;
+
+extern NSString * const CTRentalInsuranceDetailInfo;
+
+extern NSString * const CTRentalInsuranceDetailTipTitle;
+
+extern NSString * const CTRentalInsuranceDetailTip1;
+
+extern NSString * const CTRentalInsuranceDetailTip2;
+
+extern NSString * const CTRentalInsuranceDetailTip3;
+
+extern NSString * const CTRentalInsuranceDetailTip4;
+
+extern NSString * const CTRentalInsuranceDetailTip5;
+
 extern NSString * const CTRentalInsuranceTermsConditions;
 
+//to change
 extern NSString * const CTRentalInsuranceAddedHeader;
 
 extern NSString * const CTRentalInsuranceAddedSubheader;
