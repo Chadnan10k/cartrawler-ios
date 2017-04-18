@@ -101,7 +101,8 @@
     _vehicleDetailsViewController = [vehicleDetailsStoryboard instantiateViewControllerWithIdentifier:CTRentalVehicleDetailsViewIdentifier];
     
     UIStoryboard *extrasStoryboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:self.bundle];
-    _extrasViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:CTRentalExtrasViewIdentifier];
+//    _extrasViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:CTRentalExtrasViewIdentifier];
+    _insuranceViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:CTRentalInsuranceViewIdentifier];
     
     UIStoryboard *summaryStoryboard = [UIStoryboard storyboardWithName:CTRentalBookingSummaryStoryboard bundle:self.bundle];
     _paymentSummaryViewController = [summaryStoryboard instantiateViewControllerWithIdentifier:CTRentalBookingSummaryViewIdentifier];
@@ -137,7 +138,7 @@
                            validationController:[[CTGenericValidation alloc] init]
                                     destination:self.driverDetialsViewController
                                        fallback:nil
-                                  optionalRoute:self.extrasViewController
+                                  optionalRoute:nil
                                          search:[CTRentalSearch instance]
                                          target:self];
     

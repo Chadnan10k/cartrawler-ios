@@ -77,8 +77,8 @@
 		451E75991E042E5D00D58F71 /* CTVehicleFeaturesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E75951E042E5D00D58F71 /* CTVehicleFeaturesDataSource.m */; };
 		451E759F1E042E6C00D58F71 /* CTIncludedCollectionViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E759B1E042E6C00D58F71 /* CTIncludedCollectionViewLayout.h */; };
 		451E75A11E042E6C00D58F71 /* CTIncludedCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E759D1E042E6C00D58F71 /* CTIncludedCollectionViewLayout.m */; };
-		451E75A41E042E9200D58F71 /* CTInsuranceViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75A21E042E9200D58F71 /* CTInsuranceViewController.h */; };
-		451E75A51E042E9200D58F71 /* CTInsuranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E75A31E042E9200D58F71 /* CTInsuranceViewController.m */; };
+		451E75A41E042E9200D58F71 /* CTInsuranceDetailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75A21E042E9200D58F71 /* CTInsuranceDetailViewController.h */; };
+		451E75A51E042E9200D58F71 /* CTInsuranceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E75A31E042E9200D58F71 /* CTInsuranceDetailViewController.m */; };
 		451E75AD1E042EA200D58F71 /* CTOptionalExtrasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75A61E042EA200D58F71 /* CTOptionalExtrasViewController.h */; };
 		451E75AE1E042EA200D58F71 /* CTOptionalExtraTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75A71E042EA200D58F71 /* CTOptionalExtraTableViewCell.h */; };
 		451E75AF1E042EA200D58F71 /* CTOptionalExtrasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75A81E042EA200D58F71 /* CTOptionalExtrasView.h */; };
@@ -253,8 +253,8 @@
 		451E75951E042E5D00D58F71 /* CTVehicleFeaturesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTVehicleFeaturesDataSource.m; path = CartrawlerRental/CTVehicleFeaturesDataSource.m; sourceTree = SOURCE_ROOT; };
 		451E759B1E042E6C00D58F71 /* CTIncludedCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTIncludedCollectionViewLayout.h; path = CartrawlerRental/CTIncludedCollectionViewLayout.h; sourceTree = SOURCE_ROOT; };
 		451E759D1E042E6C00D58F71 /* CTIncludedCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTIncludedCollectionViewLayout.m; path = CartrawlerRental/CTIncludedCollectionViewLayout.m; sourceTree = SOURCE_ROOT; };
-		451E75A21E042E9200D58F71 /* CTInsuranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTInsuranceViewController.h; path = CartrawlerRental/CTInsuranceViewController.h; sourceTree = SOURCE_ROOT; };
-		451E75A31E042E9200D58F71 /* CTInsuranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTInsuranceViewController.m; path = CartrawlerRental/CTInsuranceViewController.m; sourceTree = SOURCE_ROOT; };
+		451E75A21E042E9200D58F71 /* CTInsuranceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTInsuranceDetailViewController.h; path = CartrawlerRental/CTInsuranceDetailViewController.h; sourceTree = SOURCE_ROOT; };
+		451E75A31E042E9200D58F71 /* CTInsuranceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTInsuranceDetailViewController.m; path = CartrawlerRental/CTInsuranceDetailViewController.m; sourceTree = SOURCE_ROOT; };
 		451E75A61E042EA200D58F71 /* CTOptionalExtrasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTOptionalExtrasViewController.h; path = CartrawlerRental/CTOptionalExtrasViewController.h; sourceTree = SOURCE_ROOT; };
 		451E75A71E042EA200D58F71 /* CTOptionalExtraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTOptionalExtraTableViewCell.h; path = CartrawlerRental/CTOptionalExtraTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		451E75A81E042EA200D58F71 /* CTOptionalExtrasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTOptionalExtrasView.h; path = CartrawlerRental/CTOptionalExtrasView.h; sourceTree = SOURCE_ROOT; };
@@ -664,8 +664,6 @@
 			isa = PBXGroup;
 			children = (
 				BC7522BF1E705807005918D2 /* Phase 4 */,
-				451E75A21E042E9200D58F71 /* CTInsuranceViewController.h */,
-				451E75A31E042E9200D58F71 /* CTInsuranceViewController.m */,
 			);
 			name = Insurance;
 			sourceTree = "<group>";
@@ -802,6 +800,8 @@
 				45BEED3C1E71820400049F0C /* CTInsuranceOfferingView.m */,
 				45BEED3F1E71824000049F0C /* CTInsuranceAddedView.h */,
 				45BEED401E71824000049F0C /* CTInsuranceAddedView.m */,
+				451E75A21E042E9200D58F71 /* CTInsuranceDetailViewController.h */,
+				451E75A31E042E9200D58F71 /* CTInsuranceDetailViewController.m */,
 			);
 			name = "Phase 4";
 			sourceTree = "<group>";
@@ -909,7 +909,7 @@
 				451E76051E042FE800D58F71 /* CTInsuranceValidation.h in Headers */,
 				451E75881E042DFD00D58F71 /* CTVehicleDetailsViewController.h in Headers */,
 				BC10A01A1E968703009C7B9D /* CTVehicleDetailTableViewCell.h in Headers */,
-				451E75A41E042E9200D58F71 /* CTInsuranceViewController.h in Headers */,
+				451E75A41E042E9200D58F71 /* CTInsuranceDetailViewController.h in Headers */,
 				451E75371E042B7000D58F71 /* CTLocationSearchViewController.h in Headers */,
 				457678541E082B9600FE591A /* CTRentalConstants.h in Headers */,
 				451E752C1E042B5700D58F71 /* CTInterstitialCollectionViewCell.h in Headers */,
@@ -1081,7 +1081,7 @@
 				451E76071E042FE800D58F71 /* CTDriverDetailsValidation.m in Sources */,
 				451E75561E042CB000D58F71 /* CTVehicleSelectionView.m in Sources */,
 				451E75ED1E042FB600D58F71 /* CTPaymentLoadingViewController.m in Sources */,
-				451E75A51E042E9200D58F71 /* CTInsuranceViewController.m in Sources */,
+				451E75A51E042E9200D58F71 /* CTInsuranceDetailViewController.m in Sources */,
 				451E75DF1E042F9200D58F71 /* CTAddressDetailsViewController.m in Sources */,
 				451E76251E043DA000D58F71 /* CTSettingsViewController.m in Sources */,
 				451E754E1E042CA100D58F71 /* CTFilterContainer.m in Sources */,

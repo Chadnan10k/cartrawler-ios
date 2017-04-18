@@ -32,7 +32,7 @@
     return self;
 }
 
-- (void)retrieveInsurance:(CartrawlerAPI *)api search:(CTRentalSearch *)search
+- (void)retrieveInsurance:(CartrawlerAPI *)api search:(CTRentalSearch *)search completion:(CTInsuranceRetrievalCompletion)completion;
 {
     
     if (self.offeringView) {
@@ -41,6 +41,12 @@
     
     if (self.addedView) {
         [self.addedView removeFromSuperview];
+    }
+    
+    if (search.isBuyingInsurance && search.insurance) {
+        _cachedInsurance = search.insurance;
+        [self renderAdded];
+        return;
     }
     
     __weak typeof (self) weakSelf = self;
@@ -57,6 +63,7 @@
                                           dispatch_async(dispatch_get_main_queue(), ^{
                                               weakSelf.cachedInsurance = response;
                                               [weakSelf setupViews:response];
+                                              completion(response);
                                           });
                                       }
                                   }];
@@ -84,7 +91,7 @@
     
     self.offeringView.termsAndConditionsAction = ^{
         if (weakSelf.delegate) {
-            [weakSelf.delegate didTapMoreDetail];
+            [weakSelf.delegate didTapMoreInsuranceDetail];
         }
     };
     

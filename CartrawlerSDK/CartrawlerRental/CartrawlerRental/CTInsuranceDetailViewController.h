@@ -8,6 +8,6 @@
 
 #import <CartrawlerSDK/CTViewController.h>
 
-@interface CTInsuranceViewController : CTViewController
+@interface CTInsuranceDetailViewController : CTViewController
 
 @end

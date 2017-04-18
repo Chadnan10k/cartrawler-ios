@@ -26,14 +26,16 @@
  Fires if user taps on more detail
 
  */
-- (void)didTapMoreDetail;
+- (void)didTapMoreInsuranceDetail;
 
 @end
 
 @interface CTInsuranceView : UIView
 
+typedef void (^CTInsuranceRetrievalCompletion)(CTInsurance *insurance);
+
 @property (nonatomic, weak) id<CTInsuranceDelegate> delegate;
 
-- (void)retrieveInsurance:(CartrawlerAPI *)api search:(CTRentalSearch *)search;
+- (void)retrieveInsurance:(CartrawlerAPI *)api search:(CTRentalSearch *)search completion:(CTInsuranceRetrievalCompletion)completion;
 
 @end

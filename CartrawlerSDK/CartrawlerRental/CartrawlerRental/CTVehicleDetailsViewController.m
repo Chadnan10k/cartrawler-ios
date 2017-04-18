@@ -11,7 +11,7 @@
 #import <CartrawlerSDK/CTHeaders.h>
 #import "CTInsuranceView.h"
 #import "CTRentalConstants.h"
-#import "CTInsuranceViewController.h"
+#import "CTInsuranceDetailViewController.h"
 
 @interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate>
 
@@ -50,12 +50,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     [self.vehicleDetailsView setVehicle:self.search.selectedVehicle.vehicle
                              pickupDate:self.search.pickupDate
                             dropoffDate:self.search.dropoffDate];
+    __weak typeof(self) weakSelf = self;
     
     [self.insuranceView retrieveInsurance:self.cartrawlerAPI
-                                   search:self.search];
+                                   search:self.search
+                               completion:^(CTInsurance *insurance) {
+                                   weakSelf.search.insurance = insurance;
+    }];
 
 }
 
@@ -199,6 +204,16 @@
     self.search.isBuyingInsurance = NO;
 }
 
+- (void)didTapMoreInsuranceDetail
+{
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:bundle];
+    CTInsuranceDetailViewController *detailViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalInsuranceViewIdentifier];
+    detailViewController.search = self.search;
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}
+
 // MARK: CTListView Delegate
 
 - (void)listView:(CTListView *)listView didSelectView:(CTExpandingView *)expandingView atIndex:(NSInteger)index  {
@@ -240,12 +255,6 @@
     
 }
 
-- (void)didTapMoreDetail
-{
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:bundle];
-    
-}
 
 // MARK: Actions
 - (IBAction)backTapped:(id)sender

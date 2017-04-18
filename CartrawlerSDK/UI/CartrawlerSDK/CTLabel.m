@@ -17,7 +17,7 @@
             boldFont:(BOOL)boldFont
 {
     self = [super init];
-    
+    self.translatesAutoresizingMaskIntoConstraints = NO;
     self.font = [UIFont fontWithName:(boldFont ? [CTAppearance instance].boldFontName : [CTAppearance instance].fontName) size:textSize];
     if (textAlignment) {
         self.textAlignment = textAlignment;
