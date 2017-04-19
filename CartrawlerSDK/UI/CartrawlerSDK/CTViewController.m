@@ -9,6 +9,7 @@
 #import "CTViewController.h"
 #import "CTDataStore.h"
 #import "CTAnalytics.h"
+#import "CTSDKSettings.h"
 
 @interface CTViewController ()
 
@@ -129,6 +130,58 @@
 
         [self.analyticsDelegate sendAnalyticsSaleEvent:saleEvent];
     }
+}
+
+//MARK: Core functions
+
+- (void)requestVehicles:(Completion)completion
+{
+    __weak typeof (self) weakSelf = self;
+    [self.cartrawlerAPI requestVehicleAvailabilityForLocation:self.search.pickupLocation.code
+                                           returnLocationCode:self.search.dropoffLocation.code
+                                          customerCountryCode:[CTSDKSettings instance].homeCountryCode
+                                                 passengerQty:self.search.passengerQty
+                                                    driverAge:self.search.driverAge
+                                               pickUpDateTime:self.search.pickupDate
+                                               returnDateTime:self.search.dropoffDate
+                                                 currencyCode:[CTSDKSettings instance].currencyCode
+                                                   completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
+                                                       if (response) {
+                                                           weakSelf.search.vehicleAvailability = response;
+                                                           completion(YES, @"");
+                                                       } else {
+                                                           completion(NO, error.errorMessage);
+                                                       }
+                                                   }];
+}
+
+- (void)requestNewVehiclePrice:(Completion)completion
+{
+    __weak typeof (self) weakSelf = self;
+    [self.cartrawlerAPI requestVehicleAvailabilityForLocation:self.search.pickupLocation.code
+                                           returnLocationCode:self.search.dropoffLocation.code
+                                          customerCountryCode:[CTSDKSettings instance].homeCountryCode
+                                                 passengerQty:self.search.passengerQty
+                                                    driverAge:self.search.driverAge
+                                               pickUpDateTime:self.search.pickupDate
+                                               returnDateTime:self.search.dropoffDate
+                                                 currencyCode:[CTSDKSettings instance].currencyCode
+                                                   completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
+                                                       if (response) {
+                                                           weakSelf.search.vehicleAvailability = response;
+                                                           completion(YES, @"");
+                                                       } else {
+                                                           completion(NO, error.errorMessage);
+                                                       }
+                                                   }];
+    
+    
+    
+}
+
+- (void)performVehicleAvail:(Completion)completion
+{
+    
 }
 
 @end

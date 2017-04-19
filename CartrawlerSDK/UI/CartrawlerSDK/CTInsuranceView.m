@@ -62,7 +62,7 @@
                                       if (response) {
                                           dispatch_async(dispatch_get_main_queue(), ^{
                                               weakSelf.cachedInsurance = response;
-                                              [weakSelf setupViews:response];
+                                              [weakSelf setupViews:response search:search];
                                               completion(response);
                                           });
                                       }
@@ -70,7 +70,7 @@
     }
 }
 
-- (void)setupViews:(CTInsurance *)insurance;
+- (void)setupViews:(CTInsurance *)insurance search:(CTRentalSearch *)search
 {
     if (!self.offeringView) {
         _offeringView = [CTInsuranceOfferingView new];
@@ -79,14 +79,15 @@
     if (!self.addedView) {
         _addedView = [CTInsuranceAddedView new];
     }
-    
-    [self.offeringView updateInsurance:insurance];
+     
+    [self.offeringView updateInsurance:insurance pickupDate:search.pickupDate dropoffDate:search.dropoffDate];
     
     __weak typeof (self) weakSelf = self;
     
     self.offeringView.addAction = ^{
-        [weakSelf.offeringView removeFromSuperview];
-        [weakSelf renderAdded];
+        if (weakSelf.delegate) {
+            [weakSelf.delegate didAddInsurance:weakSelf.cachedInsurance];
+        }
     };
     
     self.offeringView.termsAndConditionsAction = ^{
@@ -102,6 +103,12 @@
     
     [self renderOffering];
 
+}
+
+- (void)presentSelectedState
+{
+    [self.offeringView removeFromSuperview];
+    [self renderAdded];
 }
 
 - (void)renderOffering

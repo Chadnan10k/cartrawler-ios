@@ -12,8 +12,9 @@
 #import "CTInsuranceView.h"
 #import "CTRentalConstants.h"
 #import "CTInsuranceDetailViewController.h"
+#import "CTCountryPickerView.h"
 
-@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate>
+@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTInsuranceDetailDelegate, CTCountryPickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -26,6 +27,12 @@
 @property (nonatomic, strong) CTInfoTip *vehicleInfoTip;
 @property (nonatomic, strong) CTInfoTip *extrasInfoTip;
 @property (nonatomic, strong) CTInsuranceView *insuranceView;
+
+//Alert view custom views
+@property (nonatomic, strong) CTCountryPickerView *countryPicker;
+
+//Temporary variables
+@property (nonatomic, strong) NSString *tempCountryCode;
 
 @end
 
@@ -78,6 +85,9 @@
     [self.alertView addAction:[CTAlertAction actionWithTitle:@"Test OK" handler:^(CTAlertAction *action) {
         
     }]];
+    
+    _countryPicker = [CTCountryPickerView new];
+    self.countryPicker.delegate = self;
 }
 
 
@@ -194,8 +204,7 @@
 // MARK: CTInsurance Delegate
 - (void)didAddInsurance:(CTInsurance *)insurance
 {
-    self.search.insurance = insurance;
-    self.search.isBuyingInsurance = YES;
+    [self presentInsuranceAlert];
 }
 
 - (void)didRemoveInsurance
@@ -210,8 +219,36 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:bundle];
     CTInsuranceDetailViewController *detailViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalInsuranceViewIdentifier];
     detailViewController.search = self.search;
-    
+    detailViewController.insuranceDetailDelegate = self;
     [self.navigationController pushViewController:detailViewController animated:YES];
+}
+
+- (void)didTapAddInsurance:(CTInsuranceDetailViewController *)detailViewController
+{
+    [self presentInsuranceAlert];
+}
+
+- (void)presentInsuranceAlert
+{
+    [self.alertView removeAllActions];
+    __weak typeof(self) weakSelf = self;
+    [self.alertView addAction:[CTAlertAction actionWithTitle:@"Cancel" handler:^(CTAlertAction *action) {
+        [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+        
+    }]];
+    
+    [self.alertView addAction:[CTAlertAction actionWithTitle:@"Confirm" handler:^(CTAlertAction *action) {
+        
+        [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+    }]];
+    
+    self.alertView.customView = self.countryPicker;
+    [self presentViewController:self.alertView animated:YES completion:nil];
+}
+
+- (void)didChangeCountrySelection:(NSString *)countryCode
+{
+    _tempCountryCode = [CTSDKSettings instance].homeCountryCode;
 }
 
 // MARK: CTListView Delegate
@@ -255,7 +292,6 @@
     
 }
 
-
 // MARK: Actions
 - (IBAction)backTapped:(id)sender
 {
@@ -274,6 +310,5 @@
         [self dismiss];
     }
 }
-
 
 @end

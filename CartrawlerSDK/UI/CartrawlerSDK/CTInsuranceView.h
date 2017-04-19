@@ -38,4 +38,6 @@ typedef void (^CTInsuranceRetrievalCompletion)(CTInsurance *insurance);
 
 - (void)retrieveInsurance:(CartrawlerAPI *)api search:(CTRentalSearch *)search completion:(CTInsuranceRetrievalCompletion)completion;
 
+- (void)presentSelectedState;
+
 @end

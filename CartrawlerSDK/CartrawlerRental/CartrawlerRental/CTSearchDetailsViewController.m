@@ -126,24 +126,15 @@
 - (void)requestVehicles
 {
     __weak typeof(self) weakSelf = self;
-    [self.cartrawlerAPI requestVehicleAvailabilityForLocation:self.search.pickupLocation.code
-                                           returnLocationCode:self.search.dropoffLocation.code
-                                          customerCountryCode:[CTSDKSettings instance].homeCountryCode
-                                                 passengerQty:self.search.passengerQty
-                                                    driverAge:self.search.driverAge
-                                               pickUpDateTime:self.search.pickupDate
-                                               returnDateTime:self.search.dropoffDate
-                                                 currencyCode:[CTSDKSettings instance].currencyCode
-                                                   completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
-                                                       if (response) {
-                                                           weakSelf.search.vehicleAvailability = response;
-                                                           [CTInterstitialViewController dismiss];
-                                                           [weakSelf dismiss];
-                                                       } else {
-                                                           [CTInterstitialViewController dismiss];
-                                                           [weakSelf displayAlertWithMessage:error.errorMessage];
-                                                       }
-                                                   }];
+    [self requestVehicles:^(BOOL success, NSString *errorMessage) {
+        if (success) {
+            [CTInterstitialViewController dismiss];
+            [weakSelf dismiss];
+        } else {
+            [CTInterstitialViewController dismiss];
+            [weakSelf displayAlertWithMessage:errorMessage];
+        }
+    }];
 }
 
 //MARK: CTSearchViewDelegate

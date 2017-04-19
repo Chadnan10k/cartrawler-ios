@@ -61,6 +61,8 @@ typedef void (^RentalBookingCompletion)(id *booking);
 
 - (void)presentModalViewController:(UIViewController *)viewController;
 
+- (void)requestVehicles:(Completion)completion;
+
 //MARK: mark Analytics
 
 - (void)sendEvent:(BOOL)cartrawlerOnly customParams:(NSDictionary *)customParams eventName:(NSString *)eventName eventType:(NSString *)eventType;

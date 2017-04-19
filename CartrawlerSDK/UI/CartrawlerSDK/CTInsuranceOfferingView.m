@@ -33,12 +33,16 @@
 @property (nonatomic, strong) UIView *backgroundView;
 @property (nonatomic, strong) CTLabel *headerLabel;
 @property (nonatomic, strong) CTLabel *subheaderLabel;
+@property (nonatomic, strong) CTLabel *perDayLabel;
+@property (nonatomic, strong) CTLabel *totalLabel;
 @property (nonatomic, strong) UIImageView *shieldImageView;
 @property (nonatomic, strong) CTButton *addNowButton;
 @property (nonatomic, strong) CTButton *moreDetailsButton;
 @property (nonatomic, strong) UIView *accordionView;
 @property (nonatomic, strong) CTTextView *textView;
 @property (nonatomic, strong) CTInsurance *insurance;
+@property (nonatomic, strong) NSDate *pickupDate;
+@property (nonatomic, strong) NSDate *dropoffDate;
 @property (nonatomic) BOOL isOpen;
 
 @end
@@ -53,8 +57,10 @@
     return self;
 }
 
-- (void)updateInsurance:(CTInsurance *)insurance
+- (void)updateInsurance:(CTInsurance *)insurance pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate;
 {
+    _pickupDate = pickupDate;
+    _dropoffDate = dropoffDate;
     _insurance = insurance;
     [self updateText];
 }
@@ -63,6 +69,12 @@
 {
     NSString *addNowText = [NSString stringWithFormat:CTLocalizedString(CTRentalInsuranceAddButtonTitle), self.insurance.premiumAmount.numberStringWithCurrencyCode];
     [self.addNowButton setTitle:addNowText forState:UIControlStateNormal];
+    
+    NSString *pricePerDay = [NSString stringWithFormat:@"%@ %@", [self.insurance.premiumAmount pricePerDay:self.pickupDate dropoff:self.dropoffDate], CTLocalizedString(CTRentalInsurancePerDay)];
+    self.perDayLabel.text = pricePerDay;
+    
+    NSString *total = [NSString stringWithFormat:CTLocalizedString(CTRentalInsuranceTotal), [self.insurance.premiumAmount numberStringWithCurrencyCode]];
+    self.totalLabel.text = total;
 }
 
 
@@ -208,20 +220,18 @@
     textContainer.translatesAutoresizingMaskIntoConstraints = NO;
     [textContainer setHeightConstraint:@40 priority:@1000];
 
-    CTLabel *perDayLabel = [[CTLabel alloc] init:15 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentRight boldFont:YES];
-    perDayLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    perDayLabel.text = @"$100.00 per day";
+    _perDayLabel = [[CTLabel alloc] init:15 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentRight boldFont:YES];
+    self.perDayLabel.translatesAutoresizingMaskIntoConstraints = NO;
     
-    CTLabel *totalLabel = [[CTLabel alloc] init:15 textColor:[UIColor lightGrayColor] textAlignment:NSTextAlignmentRight boldFont:NO];
-    totalLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    totalLabel.text = @"Total $30.00";
+    _totalLabel = [[CTLabel alloc] init:15 textColor:[UIColor lightGrayColor] textAlignment:NSTextAlignmentRight boldFont:NO];
+    self.totalLabel.translatesAutoresizingMaskIntoConstraints = NO;
 
     CTLayoutManager *priceManager = [CTLayoutManager layoutManagerWithContainer:textContainer];
     priceManager.orientation = CTLayoutManagerOrientationTopToBottom;
     priceManager.justify = YES;
     
-    [priceManager insertView:UIEdgeInsetsMake(0,0,0,0) view:perDayLabel];
-    [priceManager insertView:UIEdgeInsetsMake(0,0,0,0) view:totalLabel];
+    [priceManager insertView:UIEdgeInsetsMake(0,0,0,0) view:self.perDayLabel];
+    [priceManager insertView:UIEdgeInsetsMake(0,0,0,0) view:self.totalLabel];
 
     [priceManager layoutViews];
     

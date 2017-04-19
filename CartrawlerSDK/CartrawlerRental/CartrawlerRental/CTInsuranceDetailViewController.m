@@ -107,11 +107,15 @@
     
     CTLabel *perDayLabel = [[CTLabel alloc] init:15 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentRight boldFont:YES];
     perDayLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    perDayLabel.text = @"$100.00 per day";
     
     CTLabel *totalLabel = [[CTLabel alloc] init:15 textColor:[UIColor lightGrayColor] textAlignment:NSTextAlignmentRight boldFont:NO];
     totalLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    totalLabel.text = @"Total $30.00";
+    
+    NSString *pricePerDay = [NSString stringWithFormat:@"%@ %@", [self.search.insurance.premiumAmount pricePerDay:self.search.pickupDate dropoff:self.search.dropoffDate], CTLocalizedString(CTRentalInsurancePerDay)];
+    perDayLabel.text = pricePerDay;
+    
+    NSString *total = [NSString stringWithFormat:CTLocalizedString(CTRentalInsuranceTotal), [self.search.insurance.premiumAmount numberStringWithCurrencyCode]];
+    totalLabel.text = total;
     
     CTLayoutManager *priceManager = [CTLayoutManager layoutManagerWithContainer:textContainer];
     priceManager.orientation = CTLayoutManagerOrientationTopToBottom;
@@ -211,8 +215,10 @@
 
 - (IBAction)addInsurance:(id)sender
 {
-    self.search.isBuyingInsurance = YES;
     [self.navigationController popViewControllerAnimated:YES];
+    if (self.insuranceDetailDelegate) {
+        [self.insuranceDetailDelegate didTapAddInsurance:self];
+    }
 }
 
 //MARK: mark Analytics

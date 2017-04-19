@@ -57,4 +57,10 @@
  */
 - (void)addAction:(CTAlertAction *)action;
 
+
+/**
+ Removes all alert view actions
+ */
+- (void)removeAllActions;
+
 @end

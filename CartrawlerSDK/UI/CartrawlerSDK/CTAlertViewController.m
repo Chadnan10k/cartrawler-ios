@@ -80,6 +80,11 @@
     _actions = [self.actions arrayByAddingObject:action];
 }
 
+- (void)removeAllActions
+{
+    _actions = @[];
+}
+
 - (void)createActionButtons {
     NSMutableArray *buttons = [NSMutableArray array];
     
