@@ -7,21 +7,30 @@
 //
 
 #import "CTExtrasCollectionViewCell.h"
+#import <CartrawlerSDK/CTCounterView.h>
 
-@interface CTExtrasCollectionViewCell ()
-@property (nonatomic, strong) UIView *leftBackgroundView;
-@property (nonatomic, strong) UIView *separator;
-@property (nonatomic, strong) UIView *rightBackgroundView;
+@interface CTExtrasCollectionViewCell () <CTCounterViewDelegate>
 
 @property (nonatomic, strong) UIButton *infoButton;
 
-@property (nonatomic, strong) UIView *detailsView;
-@property (nonatomic, strong) UIButton *decrementButton;
-@property (nonatomic, strong) UIButton *incrementButton;
+@property (nonatomic, strong) UIView *leftBackgroundView;
+@property (nonatomic, strong) UIImageView *leftImageView;
 
+@property (nonatomic, strong) UIView *separator;
+
+@property (nonatomic, strong) UIView *rightBackgroundView;
+@property (nonatomic, strong) CTLabel *titleLabel;
+@property (nonatomic, strong) CTLabel *detailLabel;
+@property (nonatomic, strong) CTCounterView *counter;
+
+@property (nonatomic, strong) UIButton *closeButton;
+
+@property (nonatomic, strong) CTLabel *infoTitleLabel;
+@property (nonatomic, strong) CTLabel *infoDetailLabel;
 @end
 
 @implementation CTExtrasCollectionViewCell
+@synthesize delegate = _delegate;
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -70,23 +79,10 @@
     self.detailLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.rightBackgroundView addSubview:self.detailLabel];
     
-    self.decrementButton = [UIButton new];
-    UIImage *decrementImage = [[UIImage imageNamed:@"minus" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.decrementButton setImage:decrementImage forState:UIControlStateNormal];
-    self.decrementButton.tintColor = [UIColor colorWithRed:43.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0];
-    self.decrementButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.rightBackgroundView addSubview:self.decrementButton];
-    
-    self.countLabel = [CTLabel new];
-    self.countLabel.text = @"0";
-    self.countLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.rightBackgroundView addSubview:self.countLabel];
-    
-    self.incrementButton = [UIButton new];
-    UIImage *incrementImage = [[UIImage imageNamed:@"plus" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.incrementButton setImage:incrementImage forState:UIControlStateNormal];
-    self.incrementButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.rightBackgroundView addSubview:self.incrementButton];
+    self.counter = [CTCounterView new];
+    self.counter.translatesAutoresizingMaskIntoConstraints = NO;
+    self.counter.delegate = self;
+    [self.rightBackgroundView addSubview:self.counter];
     
     self.closeButton = [UIButton new];
     UIImage *closeImage = [[UIImage imageNamed:@"information" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -187,73 +183,31 @@
     [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.rightBackgroundView
                                                                          attribute:NSLayoutAttributeCenterX
                                                                          relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.decrementButton
-                                                                         attribute:NSLayoutAttributeCenterX
-                                                                        multiplier:1.0
-                                                                          constant:30]];
-    [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.rightBackgroundView
-                                                                         attribute:NSLayoutAttributeCenterY
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.decrementButton
-                                                                         attribute:NSLayoutAttributeCenterY
-                                                                        multiplier:1.0
-                                                                          constant:-23]];
-    [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.decrementButton
-                                                                         attribute:NSLayoutAttributeWidth
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:nil
-                                                                         attribute:NSLayoutAttributeNotAnAttribute
-                                                                        multiplier:1.0
-                                                                          constant:28]];
-    [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.decrementButton
-                                                                         attribute:NSLayoutAttributeHeight
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:nil
-                                                                         attribute:NSLayoutAttributeNotAnAttribute
-                                                                        multiplier:1.0
-                                                                          constant:28]];
-    [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.incrementButton
-                                                                         attribute:NSLayoutAttributeWidth
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:nil
-                                                                         attribute:NSLayoutAttributeNotAnAttribute
-                                                                        multiplier:1.0
-                                                                          constant:28]];
-    [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.incrementButton
-                                                                         attribute:NSLayoutAttributeHeight
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:nil
-                                                                         attribute:NSLayoutAttributeNotAnAttribute
-                                                                        multiplier:1.0
-                                                                          constant:28]];
-    [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.rightBackgroundView
-                                                                         attribute:NSLayoutAttributeCenterX
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.incrementButton
-                                                                         attribute:NSLayoutAttributeCenterX
-                                                                        multiplier:1.0
-                                                                          constant:-30]];
-    [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.rightBackgroundView
-                                                                         attribute:NSLayoutAttributeCenterY
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.incrementButton
-                                                                         attribute:NSLayoutAttributeCenterY
-                                                                        multiplier:1.0
-                                                                          constant:-23]];
-    [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.rightBackgroundView
-                                                                         attribute:NSLayoutAttributeCenterX
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.countLabel
+                                                                            toItem:self.counter
                                                                          attribute:NSLayoutAttributeCenterX
                                                                         multiplier:1.0
                                                                           constant:0]];
     [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.rightBackgroundView
                                                                          attribute:NSLayoutAttributeCenterY
                                                                          relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.countLabel
+                                                                            toItem:self.counter
                                                                          attribute:NSLayoutAttributeCenterY
                                                                         multiplier:1.0
-                                                                          constant:-23]];
+                                                                          constant:-20]];
+    [self.counter addConstraint:[NSLayoutConstraint constraintWithItem:self.counter
+                                                                         attribute:NSLayoutAttributeWidth
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:nil
+                                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                                        multiplier:1.0
+                                                                          constant:100]];
+    [self.counter addConstraint:[NSLayoutConstraint constraintWithItem:self.counter
+                                                                         attribute:NSLayoutAttributeHeight
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:nil
+                                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                                        multiplier:1.0
+                                                                          constant:30]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[closeButton(20)]"
                                                                              options:0
                                                                              metrics:nil
@@ -263,19 +217,19 @@
                                                                              metrics:nil
                                                                                views:views]];
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView
-                                                                         attribute:NSLayoutAttributeCenterX
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.infoTitleLabel
-                                                                         attribute:NSLayoutAttributeCenterX
-                                                                        multiplier:1.0
-                                                                          constant:0]];
+                                                                 attribute:NSLayoutAttributeCenterX
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.infoTitleLabel
+                                                                 attribute:NSLayoutAttributeCenterX
+                                                                multiplier:1.0
+                                                                  constant:0]];
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView
-                                                                         attribute:NSLayoutAttributeCenterY
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:self.infoTitleLabel
-                                                                         attribute:NSLayoutAttributeCenterY
-                                                                        multiplier:1.0
-                                                                          constant:30]];
+                                                                 attribute:NSLayoutAttributeCenterY
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.infoTitleLabel
+                                                                 attribute:NSLayoutAttributeCenterY
+                                                                multiplier:1.0
+                                                                  constant:30]];
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView
                                                                  attribute:NSLayoutAttributeCenterX
                                                                  relatedBy:NSLayoutRelationEqual
@@ -290,6 +244,7 @@
                                                                  attribute:NSLayoutAttributeCenterY
                                                                 multiplier:1.0
                                                                   constant:0]];
+    
 
 }
 
@@ -302,31 +257,50 @@
 
 - (void)addCommands {
     [self.infoButton addTarget:self action:@selector(didTapInfo:) forControlEvents:UIControlEventTouchUpInside];
-    [self.decrementButton addTarget:self action:@selector(didTapDecrement:) forControlEvents:UIControlEventTouchUpInside];
-    [self.incrementButton addTarget:self action:@selector(didTapIncrement:) forControlEvents:UIControlEventTouchUpInside];
     [self.closeButton addTarget:self action:@selector(didTapClose:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)setFlippedState:(BOOL)flipped animated:(BOOL)animated {
+- (void)setTitle:(NSString *)title {
+    self.titleLabel.text = title;
+    self.infoTitleLabel.text = title;
+}
+
+- (void)setDetail:(NSString *)detail {
+    self.infoDetailLabel.text = detail;
+}
+
+- (void)setChargeAmount:(NSNumber *)chargeAmount {
+    self.detailLabel.text = [NSString stringWithFormat:@"€%@ per extra", chargeAmount];
+}
+
+- (void)setCount:(NSInteger)count {
+    self.counter.countLabel.text = @(count).stringValue;
+}
+
+// MARK: Detail Display
+
+- (void)setDetailDisplayed:(BOOL)detailDisplayed animated:(BOOL)animated {
     [UIView transitionWithView:self.contentView
                       duration:animated ? 0.4 : 0
                        options:UIViewAnimationOptionTransitionFlipFromLeft
                     animations:^{
-                        for (UIView *view in @[self.leftBackgroundView, self.separator, self.rightBackgroundView]) {
-                            view.hidden = flipped;
+                        for (UIView *view in @[self.leftBackgroundView, self.separator, self.rightBackgroundView, self.infoButton]) {
+                            view.hidden = detailDisplayed;
                         }
                         for (UIView *view in @[self.closeButton, self.infoTitleLabel, self.infoDetailLabel]) {
-                            view.hidden = !flipped;
+                            view.hidden = !detailDisplayed;
                         }
                     } completion:nil];
 }
 
+// MARK: Counter Management
+
 - (void)setIncrementEnabled:(BOOL)incrementEnabled {
-    [self setEnabled:incrementEnabled button:self.incrementButton];
+    [self.counter setIncrementEnabled:incrementEnabled];
 }
 
 - (void)setDecrementEnabled:(BOOL)decrementEnabled {
-    [self setEnabled:decrementEnabled button:self.decrementButton];
+    [self.counter setDecrementEnabled:decrementEnabled];
 }
 
 - (void)setEnabled:(BOOL)enabled button:(UIButton *)button {
@@ -338,16 +312,16 @@
     [self.delegate cellDidTapInfo:self];
 }
 
-- (void)didTapDecrement:(UIButton *)button {
-    [self.delegate cellDidTapDecrement:self];
+- (void)didTapClose:(UIButton *)button {
+    [self.delegate cellDidTapClose:self];
 }
 
-- (void)didTapIncrement:(UIButton *)button {
+- (void)counterViewDidTapIncrement:(CTCounterView *)counterView {
     [self.delegate cellDidTapIncrement:self];
 }
 
-- (void)didTapClose:(UIButton *)button {
-    [self.delegate cellDidTapClose:self];
+- (void)counterViewDidTapDecrement:(CTCounterView *)counterView {
+    [self.delegate cellDidTapDecrement:self];
 }
 
 @end

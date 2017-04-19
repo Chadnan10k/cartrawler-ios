@@ -169,6 +169,8 @@
 		BCFA41751E97CDF700DA1710 /* CTUpSellBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFA41731E97CDF700DA1710 /* CTUpSellBanner.m */; };
 		E70230731E857DC2005E1BF4 /* CTRatingView.h in Headers */ = {isa = PBXBuildFile; fileRef = E70230711E857DC2005E1BF4 /* CTRatingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E70230741E857DC2005E1BF4 /* CTRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E70230721E857DC2005E1BF4 /* CTRatingView.m */; };
+		E726E3F51E9FDBEC004DC355 /* CTCounterView.h in Headers */ = {isa = PBXBuildFile; fileRef = E726E3F31E9FDBEC004DC355 /* CTCounterView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E726E3F61E9FDBEC004DC355 /* CTCounterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E726E3F41E9FDBEC004DC355 /* CTCounterView.m */; };
 		E7404A781E82F3AB009BF7DF /* CTTabContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7404A791E82F3AB009BF7DF /* CTTabContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7404A771E82F3AB009BF7DF /* CTTabContainerView.m */; };
 		E7404A801E82F90C009BF7DF /* CTTabHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A7E1E82F90C009BF7DF /* CTTabHeaderView.h */; };
@@ -365,6 +367,8 @@
 		BCFA41731E97CDF700DA1710 /* CTUpSellBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTUpSellBanner.m; sourceTree = "<group>"; };
 		E70230711E857DC2005E1BF4 /* CTRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRatingView.h; sourceTree = "<group>"; };
 		E70230721E857DC2005E1BF4 /* CTRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRatingView.m; sourceTree = "<group>"; };
+		E726E3F31E9FDBEC004DC355 /* CTCounterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCounterView.h; sourceTree = "<group>"; };
+		E726E3F41E9FDBEC004DC355 /* CTCounterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCounterView.m; sourceTree = "<group>"; };
 		E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabContainerView.h; sourceTree = "<group>"; };
 		E7404A771E82F3AB009BF7DF /* CTTabContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabContainerView.m; sourceTree = "<group>"; };
 		E7404A7E1E82F90C009BF7DF /* CTTabHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabHeaderView.h; sourceTree = "<group>"; };
@@ -742,6 +746,7 @@
 				45E942D81D1302BF00ACF604 /* UILabel */,
 				E76900A51E6F061B00D729FF /* InfoTip */,
 				E76900E41E783EA200D729FF /* Expanding View */,
+				E726E3F21E9FDBB8004DC355 /* Counter */,
 				E7404A751E82F01C009BF7DF /* Tab Manager */,
 				E76900E31E776F5000D729FF /* List View */,
 				E70230701E8575E9005E1BF4 /* Rating View */,
@@ -861,6 +866,15 @@
 				E70230721E857DC2005E1BF4 /* CTRatingView.m */,
 			);
 			name = "Rating View";
+			sourceTree = "<group>";
+		};
+		E726E3F21E9FDBB8004DC355 /* Counter */ = {
+			isa = PBXGroup;
+			children = (
+				E726E3F31E9FDBEC004DC355 /* CTCounterView.h */,
+				E726E3F41E9FDBEC004DC355 /* CTCounterView.m */,
+			);
+			name = Counter;
 			sourceTree = "<group>";
 		};
 		E7404A751E82F01C009BF7DF /* Tab Manager */ = {
@@ -997,6 +1011,7 @@
 				BC01F5921E9D2A7B003D8286 /* CartrawlerSDK+NSString.h in Headers */,
 				457678501E08021500FE591A /* CTHeaders.h in Headers */,
 				E7404A781E82F3AB009BF7DF /* CTTabContainerView.h in Headers */,
+				E726E3F51E9FDBEC004DC355 /* CTCounterView.h in Headers */,
 				E70230731E857DC2005E1BF4 /* CTRatingView.h in Headers */,
 				BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */,
 				E76900E71E783EC600D729FF /* CTExpandingView.h in Headers */,
@@ -1202,6 +1217,7 @@
 				455B58901DCC914300CA4790 /* CTFlightNumberValidation.m in Sources */,
 				455B58921DCC914300CA4790 /* CTDataStore.m in Sources */,
 				E76900BE1E7199F400D729FF /* CTAlertView.m in Sources */,
+				E726E3F61E9FDBEC004DC355 /* CTCounterView.m in Sources */,
 				E76900DE1E764F9800D729FF /* CTListView.m in Sources */,
 				455B58941DCC914300CA4790 /* CartrawlerSDK+UIColor.m in Sources */,
 				4513B6251DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m in Sources */,

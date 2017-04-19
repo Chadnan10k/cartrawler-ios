@@ -12,33 +12,36 @@
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import "CTRentalLocalizationConstants.h"
+#import "CTExtrasListCollectionViewCell.h"
 
 @interface CTExtrasViewController ()
 @property (nonatomic, strong) NSArray *extras;
 @property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (nonatomic, strong) CTExtrasCollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIView *extrasContainerView;
+@property (nonatomic, strong) CTExtrasCollectionView *extrasCollectionView;
 @end
 
 @implementation CTExtrasViewController
 
+static NSString * const reuseIdentifier = @"extra";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titleLabel.text = CTLocalizedString(CTRentalAddExtrasTitle);
-    
-    self.collectionView = [[CTExtrasCollectionView alloc] initWithScrollDirection:UICollectionViewScrollDirectionVertical];
-    [self.collectionView updateWithExtras:self.extras];
-    [self.containerView addSubview:self.collectionView];
-    [CTLayoutManager pinView:self.collectionView toSuperView:self.containerView];
+    self.extrasCollectionView = [[CTExtrasCollectionView alloc] initWithScrollDirection:UICollectionViewScrollDirectionVertical];
+    [self.extrasContainerView addSubview:self.extrasCollectionView];
+    [CTLayoutManager pinView:self.extrasCollectionView toSuperView:self.extrasContainerView];
+    [self.extrasCollectionView updateWithExtras:self.extras];
 }
 
 - (void)updateWithExtras:(NSArray <CTExtraEquipment *> *)extras {
     self.extras = extras;
-    [self.collectionView updateWithExtras:self.extras];
+    [self.extrasCollectionView updateWithExtras:self.extras];
 }
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 @end
