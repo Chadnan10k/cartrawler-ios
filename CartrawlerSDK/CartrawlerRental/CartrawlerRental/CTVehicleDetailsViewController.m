@@ -61,6 +61,7 @@
     [self.insuranceView retrieveInsurance:self.cartrawlerAPI
                                    search:self.search];
 
+    [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
 }
 
 /**
@@ -175,7 +176,8 @@
 // MARK: Extras View
 
 - (void)initExtrasView {
-    self.extrasView = [[CTExtrasCarouselView alloc] initWithExtras:[self placeholderExtras]];
+    self.extrasView = [CTExtrasCarouselView new];
+    [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
     self.extrasView.delegate = self;
     [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.extrasView];
 }
@@ -184,22 +186,8 @@
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:bundle];
     CTExtrasViewController *controller = (CTExtrasViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalExtrasVerticalViewIdentifier];
-    [controller updateWithExtras:[self placeholderExtras]];
+    [controller updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
     [self.navigationController pushViewController:controller animated:YES];
-}
-
-- (NSArray *)placeholderExtras {
-    NSArray *amounts = @[@"12.34", @"1.99", @"10.00", @"20.50", @"19.99"];
-    NSArray *titles = @[@"Extra 1", @"Extra 2", @"Extra 3", @"Extra 4", @"Extra 5"];
-    NSArray *details = @[@"Detail 1", @"Detail 2", @"Detail 3", @"Detail 4", @"Detail 5"];
-    
-    NSMutableArray *extras = [NSMutableArray new];
-    [amounts enumerateObjectsUsingBlock:^(NSString *amount, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSDictionary *dict = @{@"Charge": @{@"@Amount": amount, @"@CurrencyCode": @"EUR"},
-                               @"Equipment": @{@"@EquipType": titles[idx], @"Description": details[idx]}};
-        [extras addObject:[[CTExtraEquipment alloc] initFromDictionary:dict]];
-    }];
-    return extras.copy;
 }
 
 /**
