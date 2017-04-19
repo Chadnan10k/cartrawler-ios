@@ -20,7 +20,7 @@
 
 @implementation CTExtrasCarouselView
 
-- (instancetype)initWithExtras:(NSArray *)extras {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.titleLabel = [[CTLabel alloc] init:20 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentCenter boldFont:YES];
@@ -30,7 +30,6 @@
         [self addSubview:self.titleLabel];
         
         self.collectionView = [[CTExtrasCollectionView alloc] initWithScrollDirection:UICollectionViewScrollDirectionHorizontal];
-        [self.collectionView updateWithExtras:extras];
         self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:self.collectionView];
         
@@ -64,6 +63,10 @@
                                                                  options:0
                                                                  metrics:nil
                                                                    views:views]];
+}
+
+- (void)updateWithExtras:(NSArray<CTExtraEquipment *> *)extras {
+    [self.collectionView updateWithExtras:extras];
 }
 
 - (void)didTapViewAll:(UIButton *)button {

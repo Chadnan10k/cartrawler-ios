@@ -42,8 +42,7 @@
  Designated Initialiser
 
  @param extras an array of CTExtraEquipment objects
- @return a CTExtrasCarouselView instance
  */
-- (instancetype)initWithExtras:(NSArray<CTExtraEquipment *> *)extras;
+- (void)updateWithExtras:(NSArray<CTExtraEquipment *> *)extras;
 
 @end
