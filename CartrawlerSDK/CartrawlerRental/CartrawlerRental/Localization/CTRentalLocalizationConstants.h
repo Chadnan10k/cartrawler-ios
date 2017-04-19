@@ -318,4 +318,10 @@ extern NSString * const CTRentalResultsSortPrice;
 
 extern NSString * const CTRentalResultsSortRecommened;
 
+extern NSString * const CTRentalExtrasPerRental;
+
+extern NSString * const CTRentalExtrasPaidAtDesk;
+
+extern NSString * const CTRentalExtrasViewAll;
+
 @end

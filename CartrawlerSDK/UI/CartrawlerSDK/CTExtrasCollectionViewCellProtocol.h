@@ -31,7 +31,8 @@
 @protocol CTExtrasCollectionViewCellProtocol
 
 - (void)setTitle:(NSString *)title;
-- (void)setChargeAmount:(NSNumber *)chargeAmount;
+- (void)setChargeAmount:(NSString *)chargeAmount;
+- (void)setChargeAmountHighlighted:(BOOL)chargeAmountHighlighted;
 - (void)setCount:(NSInteger)count;
 - (void)setDetail:(NSString *)detail;
 - (void)setDetailDisplayed:(BOOL)detailDisplayed animated:(BOOL)animated;

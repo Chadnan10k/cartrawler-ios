@@ -316,4 +316,10 @@ NSString * const CTRentalResultsSortPrice = @"results_sort_price";
 
 NSString * const CTRentalResultsSortRecommened = @"results_sort_recommened";
 
+NSString * const CTRentalExtrasPerRental = @"per_rental";
+
+NSString * const CTRentalExtrasPaidAtDesk = @"extras_paid_at_desk";
+
+NSString * const CTRentalExtrasViewAll = @"view_all";
+
 @end

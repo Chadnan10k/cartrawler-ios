@@ -35,7 +35,7 @@
         
         self.viewAllButton = [UIButton new];
         self.viewAllButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.viewAllButton setTitle:@"View All" forState:UIControlStateNormal];
+        [self.viewAllButton setTitle:CTLocalizedString(CTRentalExtrasViewAll) forState:UIControlStateNormal];
         [self.viewAllButton setTitleColor:[UIColor colorWithRed:43.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0] forState:UIControlStateNormal];
         [self addSubview:self.viewAllButton];
         [self.viewAllButton addTarget:self action:@selector(didTapViewAll:) forControlEvents:UIControlEventTouchUpInside];
