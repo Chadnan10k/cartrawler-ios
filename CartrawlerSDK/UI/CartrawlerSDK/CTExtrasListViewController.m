@@ -1,12 +1,12 @@
 //
-//  CTExtrasViewController.m
+//  CTExtrasListViewController.m
 //  CartrawlerRental
 //
 //  Created by Alan on 11/04/2017.
 //  Copyright © 2017 Cartrawler. All rights reserved.
 //
 
-#import "CTExtrasViewController.h"
+#import "CTExtrasListViewController.h"
 #import "CTExtrasCollectionView.h"
 #import <CartrawlerSDK/CTLayoutManager.h>
 #import <CartrawlerSDK/CTLabel.h>
@@ -14,14 +14,14 @@
 #import "CTRentalLocalizationConstants.h"
 #import "CTExtrasListCollectionViewCell.h"
 
-@interface CTExtrasViewController ()
+@interface CTExtrasListViewController ()
 @property (nonatomic, strong) NSArray *extras;
 @property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIView *extrasContainerView;
 @property (nonatomic, strong) CTExtrasCollectionView *extrasCollectionView;
 @end
 
-@implementation CTExtrasViewController
+@implementation CTExtrasListViewController
 
 static NSString * const reuseIdentifier = @"extra";
 

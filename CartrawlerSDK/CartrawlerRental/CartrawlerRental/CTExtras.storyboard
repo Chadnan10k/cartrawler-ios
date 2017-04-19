@@ -294,10 +294,10 @@
             </objects>
             <point key="canvasLocation" x="24" y="461.46926536731638"/>
         </scene>
-        <!--Extras View Controller-->
+        <!--Extras List View Controller-->
         <scene sceneID="7lD-FX-3QX">
             <objects>
-                <viewController storyboardIdentifier="CTExtrasViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LII-Um-Duy" customClass="CTExtrasViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CTExtrasViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LII-Um-Duy" customClass="CTExtrasListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="As0-eb-QbK"/>
                         <viewControllerLayoutGuide type="bottom" id="KH0-Do-9rK"/>

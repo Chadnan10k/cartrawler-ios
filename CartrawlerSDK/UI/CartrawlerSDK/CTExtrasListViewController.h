@@ -1,5 +1,5 @@
 //
-//  CTExtrasViewController.h
+//  CTExtrasListViewController.h
 //  CartrawlerRental
 //
 //  Created by Alan on 11/04/2017.
@@ -12,7 +12,7 @@
 /**
  Container view controller for a CTExtrasCollectionView with vertical scrolling
  */
-@interface CTExtrasViewController : UIViewController
+@interface CTExtrasListViewController : UIViewController
 
 /**
  Pass in an array of CTExtraEquipment objects to update the CTExtrasCollectionView

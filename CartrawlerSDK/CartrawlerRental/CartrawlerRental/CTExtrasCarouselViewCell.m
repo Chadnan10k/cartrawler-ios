@@ -1,15 +1,15 @@
 //
-//  CTExtrasCollectionViewCell.m
+//  CTExtrasCarouselViewCell.m
 //  CartrawlerSDK
 //
 //  Created by Alan on 10/04/2017.
 //  Copyright © 2017 Cartrawler. All rights reserved.
 //
 
-#import "CTExtrasCollectionViewCell.h"
+#import "CTExtrasCarouselViewCell.h"
 #import <CartrawlerSDK/CTCounterView.h>
 
-@interface CTExtrasCollectionViewCell () <CTCounterViewDelegate>
+@interface CTExtrasCarouselViewCell () <CTCounterViewDelegate>
 
 @property (nonatomic, strong) UIButton *infoButton;
 
@@ -29,7 +29,7 @@
 @property (nonatomic, strong) CTLabel *infoDetailLabel;
 @end
 
-@implementation CTExtrasCollectionViewCell
+@implementation CTExtrasCarouselViewCell
 @synthesize delegate = _delegate;
 
 - (instancetype)initWithFrame:(CGRect)frame {

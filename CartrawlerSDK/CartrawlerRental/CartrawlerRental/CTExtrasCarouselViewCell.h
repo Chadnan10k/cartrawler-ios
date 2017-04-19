@@ -1,5 +1,5 @@
 //
-//  CTExtrasCollectionViewCell.h
+//  CTExtrasCarouselViewCell.h
 //  CartrawlerSDK
 //
 //  Created by Alan on 10/04/2017.
@@ -11,8 +11,8 @@
 #import "CTExtrasCollectionViewCellProtocol.h"
 
 /**
- Cell which displays extras info
+ Cell which displays extras info in a compact format for a carousel
  */
-@interface CTExtrasCollectionViewCell : UICollectionViewCell <CTExtrasCollectionViewCellProtocol>
+@interface CTExtrasCarouselViewCell : UICollectionViewCell <CTExtrasCollectionViewCellProtocol>
 
 @end

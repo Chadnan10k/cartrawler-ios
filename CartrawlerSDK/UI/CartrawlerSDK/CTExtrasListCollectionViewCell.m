@@ -185,7 +185,7 @@
 // MARK: Detail Display
 
 - (void)setDetailDisplayed:(BOOL)detailDisplayed animated:(BOOL)animated {
-    
+    // TODO: Fade in/out small triangular arrow
 }
 
 // MARK: Counter Management

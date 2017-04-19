@@ -26,7 +26,7 @@
 @end
 
 /**
- Protocol for extras cell to conform to
+ Protocol for extras cell
  */
 @protocol CTExtrasCollectionViewCellProtocol
 

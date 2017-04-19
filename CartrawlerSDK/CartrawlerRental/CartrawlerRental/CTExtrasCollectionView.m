@@ -7,7 +7,7 @@
 //
 
 #import "CTExtrasCollectionView.h"
-#import "CTExtrasCollectionViewCell.h"
+#import "CTExtrasCarouselViewCell.h"
 #import "CTExtrasListCollectionViewCell.h"
 #import <CartrawlerAPI/CTExtraEquipment.h>
 #import <CartrawlerSDK/CTLayoutManager.h>
@@ -65,7 +65,7 @@ static NSString * const reuseIdentifier = @"Cell";
     layout.sectionInset = UIEdgeInsetsMake(kCarouselVerticalSectionInsets, kCarouselHorizontalSectionInsets, kCarouselVerticalSectionInsets, kCarouselHorizontalSectionInsets);
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    [collectionView registerClass:[CTExtrasCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    [collectionView registerClass:[CTExtrasCarouselViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     collectionView.backgroundColor = [UIColor colorWithRed:43.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0];
     collectionView.showsHorizontalScrollIndicator = NO;
     
@@ -85,35 +85,6 @@ static NSString * const reuseIdentifier = @"Cell";
     
     return collectionView;
 }
-
-//- (UICollectionViewFlowLayout *)flowLayoutWithScrollDirection:(UICollectionViewScrollDirection)scrollDirection {
-//    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-//    layout.scrollDirection = scrollDirection;
-//    layout.minimumInteritemSpacing = kInteritemSpacing;
-//    layout.minimumLineSpacing = 0;
-//    CGFloat horizontalSpacing = (scrollDirection == UICollectionViewScrollDirectionVertical) ? 0 : kHorizontalSectionInsets;
-//    CGFloat verticalSpacing = (scrollDirection == UICollectionViewScrollDirectionVertical) ? 0 : kVerticalSectionCarouselInsets;
-//    layout.sectionInset = UIEdgeInsetsMake(verticalSpacing, horizontalSpacing, verticalSpacing, horizontalSpacing);
-//    return layout;
-//}
-
-
-
-//- (UICollectionView *)collectionViewWithFlowLayout:(UICollectionViewFlowLayout *)flowLayout {
-//    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
-//    if (flowLayout.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
-//        [collectionView registerClass:[CTExtrasCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-//    } else {
-//        [collectionView registerClass:[CTExtrasListCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-//    }
-//    
-//    collectionView.backgroundColor = [UIColor colorWithRed:43.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0];
-//    collectionView.delegate = self;
-//    collectionView.dataSource = self;
-//    collectionView.translatesAutoresizingMaskIntoConstraints = NO;
-//    collectionView.showsHorizontalScrollIndicator = NO;
-//    return collectionView;
-//}
 
 - (void)updateWithExtras:(NSArray *)extras {
     self.extras = extras;
@@ -157,7 +128,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 // MARK: UICollectionViewDelegate
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
         return CGSizeMake(kCarouselCellWidth, kCarouselCellHeight);
     }
@@ -182,19 +153,19 @@ static NSString * const reuseIdentifier = @"Cell";
 
 // MARK: CTExtrasCollectionViewCellDelegate
 
-- (void)cellDidTapInfo:(CTExtrasCollectionViewCell *)cell {
+- (void)cellDidTapInfo:(UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *)cell {
     NSInteger index = [self.collectionView indexPathForCell:cell].row;
     [self.indexesOfCellsWithDetailDisplayed addIndex:index];
     [cell setDetailDisplayed:YES animated:YES];
 }
 
-- (void)cellDidTapClose:(CTExtrasCollectionViewCell *)cell {
+- (void)cellDidTapClose:(UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *)cell {
     NSInteger index = [self.collectionView indexPathForCell:cell].row;
     [self.indexesOfCellsWithDetailDisplayed removeIndex:index];
     [cell setDetailDisplayed:NO animated:YES];
 }
 
-- (void)cellDidTapIncrement:(CTExtrasCollectionViewCell *)cell {
+- (void)cellDidTapIncrement:(UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *)cell {
     NSInteger index = [self.collectionView indexPathForCell:cell].row;
     CTExtraEquipment *extra = self.extras[index];
     
@@ -209,7 +180,7 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
-- (void)cellDidTapDecrement:(CTExtrasCollectionViewCell *)cell {
+- (void)cellDidTapDecrement:(UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *)cell {
     NSInteger index = [self.collectionView indexPathForCell:cell].row;
     CTExtraEquipment *extra = self.extras[index];
     

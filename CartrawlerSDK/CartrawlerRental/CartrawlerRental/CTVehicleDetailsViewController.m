@@ -12,7 +12,7 @@
 #import "CTInsuranceView.h"
 #import "CTExtrasCarouselView.h"
 #import "CTExtrasCollectionView.h"
-#import "CTExtrasViewController.h"
+#import "CTExtrasListViewController.h"
 #import "CTRentalConstants.h"
 
 @interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTExtrasCarouselViewDelegate>
@@ -185,7 +185,7 @@
 - (void)extrasViewDidTapViewAll:(CTExtrasCarouselView *)extrasView {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:bundle];
-    CTExtrasViewController *controller = (CTExtrasViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalExtrasVerticalViewIdentifier];
+    CTExtrasListViewController *controller = (CTExtrasListViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalExtrasVerticalViewIdentifier];
     [controller updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
     [self.navigationController pushViewController:controller animated:YES];
 }
