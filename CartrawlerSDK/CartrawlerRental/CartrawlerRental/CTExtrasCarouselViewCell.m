@@ -270,6 +270,7 @@
 }
 
 - (void)setChargeAmount:(NSNumber *)chargeAmount {
+    // TODO: Confirm logic and localise
     self.detailLabel.text = [NSString stringWithFormat:@"€%@ per extra", chargeAmount];
 }
 

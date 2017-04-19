@@ -81,7 +81,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     [collectionView registerClass:[CTExtrasListCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    collectionView.backgroundColor = [UIColor colorWithRed:43.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0];
+    collectionView.backgroundColor = [UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:241.0/255.0 alpha:1.0];
     
     return collectionView;
 }
