@@ -10,4 +10,6 @@
 
 @interface CTTriangleView : UIView
 
+- (instancetype)initWithColor:(UIColor *)color;
+
 @end

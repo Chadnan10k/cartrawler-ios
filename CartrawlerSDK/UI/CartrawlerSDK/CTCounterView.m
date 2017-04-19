@@ -37,7 +37,8 @@
     self.decrementButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.decrementButton];
     
-    self.countLabel = [CTLabel new];
+    UIColor *labelColor = [UIColor colorWithRed:64.0/255.0 green:92.0/255.0 blue:166.0/255.0 alpha:1.0];
+    self.countLabel = [[CTLabel alloc] init:24 textColor:labelColor textAlignment:NSTextAlignmentCenter boldFont:YES];
     self.countLabel.text = @"0";
     self.countLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.countLabel];

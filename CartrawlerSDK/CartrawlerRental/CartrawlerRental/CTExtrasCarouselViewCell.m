@@ -71,11 +71,13 @@
     [self.leftBackgroundView addSubview:self.leftImageView];
     
     UIColor *textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
-    self.titleLabel = [[CTLabel alloc] init:17 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:NO];
+    self.titleLabel = [[CTLabel alloc] init:15 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:YES];
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.titleLabel.numberOfLines = 2;
+    self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.rightBackgroundView addSubview:self.titleLabel];
     
-    self.detailLabel = [[CTLabel alloc] init:12 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:NO];
+    self.detailLabel = [[CTLabel alloc] init:13 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:NO];
     self.detailLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.rightBackgroundView addSubview:self.detailLabel];
     
@@ -92,12 +94,14 @@
     self.closeButton.hidden = YES;
     [self.contentView addSubview:self.closeButton];
     
-    self.infoTitleLabel = [[CTLabel alloc] init:17 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:NO];
+    self.infoTitleLabel = [[CTLabel alloc] init:15 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:YES];
     self.infoTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.infoTitleLabel.hidden = YES;
+    self.infoTitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.infoTitleLabel.numberOfLines = 2;
     [self.contentView addSubview:self.infoTitleLabel];
     
-    self.infoDetailLabel = [[CTLabel alloc] init:12 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:NO];
+    self.infoDetailLabel = [[CTLabel alloc] init:13 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:NO];
     self.infoDetailLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.infoDetailLabel.hidden = YES;
     [self.contentView addSubview:self.infoDetailLabel];
@@ -160,12 +164,19 @@
                                                                        multiplier:1.0
                                                                          constant:0]];
     [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.rightBackgroundView
+                                                                         attribute:NSLayoutAttributeWidth
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.titleLabel
+                                                                         attribute:NSLayoutAttributeWidth
+                                                                        multiplier:0.9
+                                                                          constant:0]];
+    [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.rightBackgroundView
                                                                         attribute:NSLayoutAttributeCenterY
                                                                         relatedBy:NSLayoutRelationEqual
                                                                            toItem:self.titleLabel
                                                                         attribute:NSLayoutAttributeCenterY
                                                                        multiplier:1.0
-                                                                         constant:30]];
+                                                                         constant:32]];
     [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.rightBackgroundView
                                                                          attribute:NSLayoutAttributeCenterX
                                                                          relatedBy:NSLayoutRelationEqual
@@ -173,13 +184,20 @@
                                                                          attribute:NSLayoutAttributeCenterX
                                                                         multiplier:1.0
                                                                           constant:0]];
-    [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.rightBackgroundView
-                                                                         attribute:NSLayoutAttributeCenterY
+    [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel
+                                                                         attribute:NSLayoutAttributeWidth
                                                                          relatedBy:NSLayoutRelationEqual
                                                                             toItem:self.detailLabel
-                                                                         attribute:NSLayoutAttributeCenterY
+                                                                         attribute:NSLayoutAttributeWidth
                                                                         multiplier:1.0
-                                                                          constant:12]];
+                                                                          constant:0]];
+    [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel
+                                                                         attribute:NSLayoutAttributeBottom
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.detailLabel
+                                                                         attribute:NSLayoutAttributeTop
+                                                                        multiplier:1.0
+                                                                          constant:-2]];
     [self.rightBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:self.rightBackgroundView
                                                                          attribute:NSLayoutAttributeCenterX
                                                                          relatedBy:NSLayoutRelationEqual
@@ -193,7 +211,7 @@
                                                                             toItem:self.counter
                                                                          attribute:NSLayoutAttributeCenterY
                                                                         multiplier:1.0
-                                                                          constant:-20]];
+                                                                          constant:-24]];
     [self.counter addConstraint:[NSLayoutConstraint constraintWithItem:self.counter
                                                                          attribute:NSLayoutAttributeWidth
                                                                          relatedBy:NSLayoutRelationEqual
@@ -207,7 +225,7 @@
                                                                             toItem:nil
                                                                          attribute:NSLayoutAttributeNotAnAttribute
                                                                         multiplier:1.0
-                                                                          constant:30]];
+                                                                          constant:28]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[closeButton(20)]"
                                                                              options:0
                                                                              metrics:nil
@@ -223,6 +241,13 @@
                                                                  attribute:NSLayoutAttributeCenterX
                                                                 multiplier:1.0
                                                                   constant:0]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.infoTitleLabel
+                                                                 attribute:NSLayoutAttributeWidth
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeWidth
+                                                                multiplier:0.7
+                                                                  constant:0]];
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView
                                                                  attribute:NSLayoutAttributeCenterY
                                                                  relatedBy:NSLayoutRelationEqual
@@ -236,6 +261,13 @@
                                                                     toItem:self.infoDetailLabel
                                                                  attribute:NSLayoutAttributeCenterX
                                                                 multiplier:1.0
+                                                                  constant:0]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.infoDetailLabel
+                                                                 attribute:NSLayoutAttributeWidth
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.contentView
+                                                                 attribute:NSLayoutAttributeWidth
+                                                                multiplier:0.9
                                                                   constant:0]];
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView
                                                                  attribute:NSLayoutAttributeCenterY
@@ -269,13 +301,15 @@
     self.infoDetailLabel.text = detail;
 }
 
-- (void)setChargeAmount:(NSNumber *)chargeAmount {
-    // TODO: Confirm logic and localise
-    self.detailLabel.text = [NSString stringWithFormat:@"€%@ per extra", chargeAmount];
+- (void)setChargeAmount:(NSString *)chargeAmount {
+    self.detailLabel.text = chargeAmount;
 }
 
 - (void)setCount:(NSInteger)count {
     self.counter.countLabel.text = @(count).stringValue;
+}
+
+- (void)setChargeAmountHighlighted:(BOOL)chargeAmountHighlighted {
 }
 
 // MARK: Detail Display

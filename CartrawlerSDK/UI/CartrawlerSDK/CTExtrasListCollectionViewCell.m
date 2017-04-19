@@ -9,6 +9,9 @@
 #import "CTExtrasListCollectionViewCell.h"
 #import <CartrawlerSDK/CTCounterView.h>
 #import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CTTriangleView.h>
+
+CGFloat const kExtrasTriangleHeight = 10.0;
 
 @interface CTExtrasListCollectionViewCell () <CTCounterViewDelegate>
 @property (nonatomic, strong) UIView *titleContainer;
@@ -18,6 +21,8 @@
 @property (nonatomic, strong) CTLabel *costLabel;
 @property (nonatomic, strong) CTLabel *detailLabel;
 @property (nonatomic, strong) CTCounterView *counter;
+@property (nonatomic, strong) CTTriangleView *triangle;
+@property (nonatomic, strong) NSLayoutConstraint *triangleBottomConstraint;
 @end
 
 @implementation CTExtrasListCollectionViewCell
@@ -44,6 +49,8 @@
     self.titleLabel = [[CTLabel alloc] init:20 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentLeft boldFont:NO];
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.titleContainer addSubview:self.titleLabel];
+    self.titleLabel.numberOfLines = 2;
+    self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
     UIColor *textColor = [UIColor colorWithRed:201.0/255.0 green:201.0/255.0 blue:207.0/255.0 alpha:1.0];
     self.costLabel = [[CTLabel alloc] init:18 textColor:textColor textAlignment:NSTextAlignmentLeft boldFont:NO];
@@ -69,12 +76,16 @@
     self.separator.backgroundColor = [UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:241.0/255.0 alpha:1.0];
     self.separator.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:self.separator];
+    
+    self.triangle = [[CTTriangleView alloc] initWithColor:backgroundColor];
+    self.triangle.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.contentView addSubview:self.triangle];
 }
 
 - (void)addConstraints {
     NSDictionary *views = @{@"titleContainer": self.titleContainer, @"detailContainer": self.detailContainer, @"titleLabel": self.titleLabel, @"costLabel": self.costLabel, @"detailLabel" : self.detailLabel, @"counter" : self.counter, @"separator": self.separator};
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[titleContainer]-[counter(140)]-30-|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[titleContainer]-[counter(100)]-30-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:views]];
@@ -161,6 +172,37 @@
                                                                                  options:0
                                                                                  metrics:nil
                                                                                    views:views]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.triangle
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0
+                                                      constant:20.0]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.triangle
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0
+                                                      constant:kExtrasTriangleHeight]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.triangle
+                                                     attribute:NSLayoutAttributeCenterX
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self.detailContainer
+                                                     attribute:NSLayoutAttributeCenterX
+                                                    multiplier:1.0
+                                                      constant:0.0]];
+    self.triangleBottomConstraint = [NSLayoutConstraint constraintWithItem:self.triangle
+                                                                 attribute:NSLayoutAttributeBottom
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:self.detailContainer
+                                                                 attribute:NSLayoutAttributeTop
+                                                                multiplier:1.0
+                                                                  constant:kExtrasTriangleHeight];
+    [self addConstraint:self.triangleBottomConstraint];
 }
 
 
@@ -170,8 +212,12 @@
     self.titleLabel.text = title;
 }
 
-- (void)setChargeAmount:(NSNumber *)chargeAmount {
-    self.costLabel.text = [NSString stringWithFormat:@"€%@ per day", chargeAmount];
+- (void)setChargeAmount:(NSString *)chargeAmount {
+    self.costLabel.text = chargeAmount;
+}
+
+- (void)setChargeAmountHighlighted:(BOOL)chargeAmountHighlighted {
+    self.costLabel.textColor = chargeAmountHighlighted ? [UIColor colorWithRed:53.0/255.0 green:179.0/255.0 blue:98.0/255.0 alpha:1.0] : [UIColor colorWithRed:201.0/255.0 green:201.0/255.0 blue:207.0/255.0 alpha:1.0];
 }
 
 - (void)setDetail:(NSString *)detail {
@@ -185,7 +231,12 @@
 // MARK: Detail Display
 
 - (void)setDetailDisplayed:(BOOL)detailDisplayed animated:(BOOL)animated {
-    // TODO: Fade in/out small triangular arrow
+    self.triangleBottomConstraint.constant = detailDisplayed ? 0 : kExtrasTriangleHeight;
+    
+    [UIView animateWithDuration:animated ? 0.3 : 0
+                     animations:^{
+                         [self layoutIfNeeded];
+                     }];
 }
 
 // MARK: Counter Management
@@ -200,7 +251,7 @@
 
 - (void)setEnabled:(BOOL)enabled button:(UIButton *)button {
     button.enabled = enabled;
-    button.tintColor = enabled ? [UIColor colorWithRed:43.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0] : [UIColor colorWithRed:227.0/255.0 green:238.0/255.0 blue:247.0/255.0 alpha:1.0];
+    button.tintColor = enabled ? [UIColor colorWithRed:25.0/255.0 green:173.0/255.0 blue:79.0/255.0 alpha:1.0] : [UIColor colorWithRed:227.0/255.0 green:238.0/255.0 blue:247.0/255.0 alpha:1.0];
 }
 
 - (void)didTapInfo:(UIButton *)button {

@@ -11,6 +11,9 @@
 #import "CTExtrasListCollectionViewCell.h"
 #import <CartrawlerAPI/CTExtraEquipment.h>
 #import <CartrawlerSDK/CTLayoutManager.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import "CTRentalLocalizationConstants.h"
 
 NSInteger const kMaxExtras = 4;
 NSInteger const kDefaultExtrasCountWhenIncludedInRate = 1;
@@ -107,9 +110,15 @@ static NSString * const reuseIdentifier = @"Cell";
     
     CTExtraEquipment *extra = self.extras[indexPath.row];
     cell.title = extra.equipDescription;
-    // To be localised
-    cell.chargeAmount = extra.chargeAmount;
-    cell.detail = @"Extras will be paid for at desk";
+    if (extra.isIncludedInRate) {
+        cell.chargeAmount = @"Included for free";
+    } else {
+        NSString *charge = [extra.chargeAmount numberStringWithCurrencyCode];
+        cell.chargeAmount = [NSString stringWithFormat:@"%@ %@", charge, CTLocalizedString(CTRentalExtrasPerRental)];
+    }
+    cell.chargeAmountHighlighted = extra.isIncludedInRate;
+    
+    cell.detail = CTLocalizedString(CTRentalExtrasPaidAtDesk);
     
     BOOL decrementEnabled = (!extra.isIncludedInRate && extra.qty != 0);
     [cell setDecrementEnabled:decrementEnabled];
@@ -142,11 +151,17 @@ static NSString * const reuseIdentifier = @"Cell";
         return;
     }
     
+    UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *cell = (UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    
     if ([self.indexesOfCellsWithDetailDisplayed containsIndex:indexPath.row]) {
         [self.indexesOfCellsWithDetailDisplayed removeIndex:indexPath.row];
+        [cell setDetailDisplayed:NO animated:YES];
     } else {
         [self.indexesOfCellsWithDetailDisplayed addIndex:indexPath.row];
+        [cell setDetailDisplayed:YES animated:YES];
     }
+    
+    
     
     [collectionView performBatchUpdates:nil completion:nil];
 }
