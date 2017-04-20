@@ -63,6 +63,8 @@ typedef void (^RentalBookingCompletion)(id *booking);
 
 - (void)requestVehicles:(Completion)completion;
 
+- (void)requestNewVehiclePrice:(Completion)completion;
+
 //MARK: mark Analytics
 
 - (void)sendEvent:(BOOL)cartrawlerOnly customParams:(NSDictionary *)customParams eventName:(NSString *)eventName eventType:(NSString *)eventType;

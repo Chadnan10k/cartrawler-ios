@@ -63,4 +63,13 @@
  */
 - (void)removeAllActions;
 
+
+/**
+ Set the title and the message
+
+ @param title The title
+ @param message The message
+ */
+- (void)setTitle:(NSString *)title message:(NSString *)message;
+
 @end

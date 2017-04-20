@@ -162,6 +162,8 @@
 		BC9F6E521E24EF91006DD990 /* CTAnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */; };
 		BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCDB4BEA1E3F50C6008004DA /* CTAnalyticsEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */; };
+		BCE193511EA8F5D00097C5CB /* CTLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = BCE1934F1EA8F5D00097C5CB /* CTLoadingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCE193521EA8F5D00097C5CB /* CTLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE193501EA8F5D00097C5CB /* CTLoadingView.m */; };
 		BCF4DA4A1E93B58A00E8C5EC /* CTCalendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF4DA491E93B58A00E8C5EC /* CTCalendar.storyboard */; };
 		BCF874291E79604100EBC758 /* CTLayoutManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BCF874271E79604100EBC758 /* CTLayoutManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCF8742A1E79604100EBC758 /* CTLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF874281E79604100EBC758 /* CTLayoutManager.m */; };
@@ -358,6 +360,8 @@
 		BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsTests.m; sourceTree = "<group>"; };
 		BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalyticsEvent.h; sourceTree = "<group>"; };
 		BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsEvent.m; sourceTree = "<group>"; };
+		BCE1934F1EA8F5D00097C5CB /* CTLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLoadingView.h; sourceTree = "<group>"; };
+		BCE193501EA8F5D00097C5CB /* CTLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLoadingView.m; sourceTree = "<group>"; };
 		BCF4DA491E93B58A00E8C5EC /* CTCalendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CTCalendar.storyboard; sourceTree = "<group>"; };
 		BCF874271E79604100EBC758 /* CTLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLayoutManager.h; sourceTree = "<group>"; };
 		BCF874281E79604100EBC758 /* CTLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLayoutManager.m; sourceTree = "<group>"; };
@@ -902,6 +906,8 @@
 				E76900C41E71A31200D729FF /* CTAlertViewPresentationAnimationController.m */,
 				E76900C71E71A45800D729FF /* CTAlertViewDismissalAnimationController.h */,
 				E76900C81E71A45800D729FF /* CTAlertViewDismissalAnimationController.m */,
+				BCE1934F1EA8F5D00097C5CB /* CTLoadingView.h */,
+				BCE193501EA8F5D00097C5CB /* CTLoadingView.m */,
 			);
 			name = "Alert View";
 			sourceTree = "<group>";
@@ -991,6 +997,7 @@
 				455B58641DCC914300CA4790 /* JVFloatLabeledTextField.h in Headers */,
 				BCF874291E79604100EBC758 /* CTLayoutManager.h in Headers */,
 				BC2951D61E7FF6110053A897 /* CTPassenger.h in Headers */,
+				BCE193511EA8F5D00097C5CB /* CTLoadingView.h in Headers */,
 				E76900DD1E764F9800D729FF /* CTListView.h in Headers */,
 				E76900E11E77267700D729FF /* CTListItemView.h in Headers */,
 				BCFA41741E97CDF700DA1710 /* CTUpSellBanner.h in Headers */,
@@ -1183,6 +1190,7 @@
 				455B58611DCC914300CA4790 /* CTNavigationView.m in Sources */,
 				455B58631DCC914300CA4790 /* CTAppearance.m in Sources */,
 				455B58651DCC914300CA4790 /* JVFloatLabeledTextField.m in Sources */,
+				BCE193521EA8F5D00097C5CB /* CTLoadingView.m in Sources */,
 				455B58671DCC914300CA4790 /* NSStringUtils.m in Sources */,
 				E7CD21A81E38F794006BE519 /* CTSDKLocalizationConstants.m in Sources */,
 				BC1379EC1E23E4E400B1F727 /* CTTag.m in Sources */,

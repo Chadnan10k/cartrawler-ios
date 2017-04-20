@@ -133,11 +133,6 @@
 
 - (void)renderAdded
 {
-    
-    if (self.delegate) {
-        [self.delegate didAddInsurance:self.cachedInsurance];
-    }
-    
     self.addedView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.addedView];
     
