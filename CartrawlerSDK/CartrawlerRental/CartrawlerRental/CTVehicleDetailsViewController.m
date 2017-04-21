@@ -10,8 +10,12 @@
 #import "CTVehicleDetailsView.h"
 #import <CartrawlerSDK/CTHeaders.h>
 #import "CTInsuranceView.h"
+#import "CTExtrasCarouselView.h"
+#import "CTExtrasCollectionView.h"
+#import "CTExtrasListViewController.h"
+#import "CTRentalConstants.h"
 
-@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate>
+@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTExtrasCarouselViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -24,6 +28,7 @@
 @property (nonatomic, strong) CTInfoTip *vehicleInfoTip;
 @property (nonatomic, strong) CTInfoTip *extrasInfoTip;
 @property (nonatomic, strong) CTInsuranceView *insuranceView;
+@property (nonatomic, strong) CTExtrasCarouselView *extrasView;
 
 @end
 
@@ -41,6 +46,7 @@
     [self initTabMenu];
     [self initInsuranceView];
     [self initAlertView];
+    [self initExtrasView];
       
     [self.layoutManager layoutViews];
 }
@@ -55,6 +61,7 @@
     [self.insuranceView retrieveInsurance:self.cartrawlerAPI
                                    search:self.search];
 
+    [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
 }
 
 /**
@@ -166,6 +173,22 @@
     [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.insuranceView];
 }
 
+// MARK: Extras View
+
+- (void)initExtrasView {
+    self.extrasView = [CTExtrasCarouselView new];
+    [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
+    self.extrasView.delegate = self;
+    [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.extrasView];
+}
+
+- (void)extrasViewDidTapViewAll:(CTExtrasCarouselView *)extrasView {
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:bundle];
+    CTExtrasListViewController *controller = (CTExtrasListViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalExtrasVerticalViewIdentifier];
+    [controller updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
+    [self.navigationController pushViewController:controller animated:YES];
+}
 
 /**
  View Delegates
@@ -180,9 +203,7 @@
 // MARK: CTInfoTipDelegate
 - (void)infoTipWasTapped:(CTInfoTip *)infoTip
 {
-    if (infoTip == self.extrasInfoTip) {
-        [self.navigationController pushViewController:self.optionalRoute animated:YES];
-    }
+    [self.navigationController pushViewController:self.optionalRoute animated:YES];
 }
 
 // MARK: CTInsurance Delegate

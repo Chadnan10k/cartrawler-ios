@@ -61,5 +61,7 @@ NSString * const CTRentalSettingsSelectionViewIdentifier = @"CTSettingsSelection
 
 NSString * const CTRentalSettingsViewIdentifier = @"CTSettingsViewController";
 
+NSString * const CTRentalExtrasVerticalViewIdentifier = @"CTExtrasViewController";
+
 
 @end

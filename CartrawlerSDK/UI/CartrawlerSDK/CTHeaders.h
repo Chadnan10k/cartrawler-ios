@@ -64,3 +64,5 @@
 #import "CTRatingView.h"
 #import "CTUpSellBanner.h"
 #import "CartrawlerSDK+NSString.h"
+#import "CTCounterView.h"
+#import "CTTriangleView.h"
