@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CartrawlerSDK/CTViewController.h"
 
-@interface CTVehiclePresenterViewController : UIViewController
+@interface CTVehiclePresenterViewController : CTViewController
 
 @end

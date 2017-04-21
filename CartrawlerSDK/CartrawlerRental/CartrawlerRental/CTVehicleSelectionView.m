@@ -23,7 +23,7 @@
 - (instancetype)init
 {
     self = [super init];
-    
+    self.translatesAutoresizingMaskIntoConstraints = NO;
     _dataSource = [CTVehicleSelectionDataSource new];
     
     _tableView = [self createTableView];

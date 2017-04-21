@@ -95,13 +95,12 @@
     _searchDetailsViewController = [searchStoryboard instantiateViewControllerWithIdentifier:CTRentalSearchViewIdentifier];
     
     UIStoryboard *searchResultsStoryboard = [UIStoryboard storyboardWithName:CTRentalResultsStoryboard bundle:self.bundle];
-    _vehicleSelectionViewController = [searchResultsStoryboard instantiateViewControllerWithIdentifier:CTRentalResultsViewIdentifier];
-    
+    _vehicleSelectionViewController = [searchResultsStoryboard instantiateViewControllerWithIdentifier:@"CTVehiclePresenterViewController"];
+
     UIStoryboard *vehicleDetailsStoryboard = [UIStoryboard storyboardWithName:CTRentalVehicleDetailsStoryboard bundle:self.bundle];
     _vehicleDetailsViewController = [vehicleDetailsStoryboard instantiateViewControllerWithIdentifier:CTRentalVehicleDetailsViewIdentifier];
     
     UIStoryboard *extrasStoryboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:self.bundle];
-//    _extrasViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:CTRentalExtrasViewIdentifier];
     _insuranceViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:CTRentalInsuranceViewIdentifier];
     
     UIStoryboard *summaryStoryboard = [UIStoryboard storyboardWithName:CTRentalBookingSummaryStoryboard bundle:self.bundle];
