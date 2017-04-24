@@ -226,10 +226,8 @@
 - (void)configureViews
 {
     //The sdk handles most of the routing, but for in path we only need to display up to payment summary,
-    //so lets nil the summary destination so it will dismiss
-    
-    self.rental.vehicleDetailsViewController.destinationViewController = nil;
-    self.rental.vehicleDetailsViewController.delegate = self;
+    self.rental.vehicleSelectionViewController.destinationViewController = nil;
+    self.rental.vehicleSelectionViewController.delegate = self;
     
 }
 
@@ -241,12 +239,12 @@
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
     
     if (self.didFailToFetchResults) {
-        [navController setViewControllers:@[self.rental.searchDetailsViewController]];
+        [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
     } else {
         if (showSelection) {
             [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
         } else {
-            [navController setViewControllers:@[self.rental.vehicleDetailsViewController]];
+            [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
         }
     }
     

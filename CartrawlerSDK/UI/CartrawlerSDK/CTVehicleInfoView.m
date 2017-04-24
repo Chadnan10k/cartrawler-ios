@@ -44,7 +44,9 @@
 {
     self = [super init];
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    [self initNextButton];
     [self initContainerView];
+
     _layoutManager = [CTLayoutManager layoutManagerWithContainer:self.containerView];
 
     [self initVehicleDetailsView];
@@ -52,8 +54,6 @@
     [self initTabMenu];
     [self initInsuranceView];
     [self initAlertView];
-    [self initNextButton];
-    [self.nextButton setText:@"Test Next"];
     
     [self.layoutManager layoutViews];
     return self;
@@ -84,8 +84,25 @@
     _scrollView = [UIScrollView new];
     self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.scrollView];
-    [CTLayoutManager pinView:self.scrollView toSuperView:self padding:UIEdgeInsetsZero];
 
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[scrollView]-0-[button(80)]-0-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"scrollView" : self.scrollView,
+                                                                           @"button" : self.nextButton}]];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[scrollView]-0-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"scrollView" : self.scrollView,
+                                                                           @"button" : self.nextButton}]];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[button]-0-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"scrollView" : self.scrollView,
+                                                                           @"button" : self.nextButton}]];
+    
     _containerView = [UIView new];
     self.containerView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.scrollView addSubview:self.containerView];
@@ -104,7 +121,11 @@
 
 - (void)initNextButton
 {
-    
+    _nextButton = [CTNextButton new];
+    self.nextButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.nextButton setText:@"Test Next"];
+    [self addSubview:self.nextButton];
+    [self.nextButton addTarget:self action:@selector(pushToDestination) forControlEvents:UIControlEventTouchUpInside];
 }
 
 //MARK: Alert View Init
@@ -333,6 +354,13 @@
     }
 }
 
+- (void)pushToDestination
+{
+    if (self.delegate) {
+        [self.delegate infoViewPushToNextStep];
+    }
+}
+
 // MARK: CTListView Delegate
 
 - (void)listView:(CTListView *)listView didSelectView:(CTExpandingView *)expandingView atIndex:(NSInteger)index  {
@@ -400,6 +428,11 @@
     if (self.delegate) {
         [self.delegate infoViewPresentVehicleSelection];
     }
+}
+
+- (void)didDismissViewController:(NSString *)identifier
+{
+    
 }
 
 @end

@@ -24,7 +24,7 @@
 #import "CTRentalConstants.h"
 #import "CTSearchDetailsViewController.h"
 
-@interface CTVehicleSelectionViewController () <CTVehicleSelectionViewDelegate>
+@interface CTVehicleSelectionViewController () <CTVehicleSelectionViewDelegate, CTFilterDelegate>
 
 @property (strong, nonatomic) CTVehicleSelectionView *vehicleSelectionView;
 @property (weak, nonatomic) IBOutlet UILabel *locationsLabel;
@@ -56,19 +56,9 @@
     [self.view addSubview:self.vehicleSelectionView];
     [CTLayoutManager pinView:self.vehicleSelectionView toSuperView:self.view padding:UIEdgeInsetsMake(125, 0, 0, 0)];
     
-    __weak typeof (self) weakSelf = self;
-
     _filterViewController = [CTFilterViewController initInViewController:self
                                                                 withData:self.search.vehicleAvailability];
-    
-    self.filterViewController.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData) {
-        weakSelf.filteredData = filteredData;
-        [weakSelf.vehicleSelectionView updateSelection:filteredData
-                                            pickupDate:weakSelf.search.pickupDate
-                                           dropoffDate:weakSelf.search.dropoffDate
-                                           sortByPrice:weakSelf.sortingByPrice];
-        [weakSelf updateAvailableCarsLabel:filteredData.count];
-    };
+    self.filterViewController.delegate = self;
     
     [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
     
@@ -292,6 +282,18 @@
 //                                      @"currency" : [CTSDKSettings instance].homeCountryCode
 //                                      } eventName:@"Step of search" eventType:@"Step"];
 //    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:@2];
+}
+
+//MARK: CTFilterDelegate
+
+- (void)filterDidUpdate:(NSArray<CTAvailabilityItem *> *)filteredData
+{
+    _filteredData = filteredData;
+    [self.vehicleSelectionView updateSelection:filteredData
+                                        pickupDate:self.search.pickupDate
+                                       dropoffDate:self.search.dropoffDate
+                                       sortByPrice:self.sortingByPrice];
+    [self updateAvailableCarsLabel:filteredData.count];
 }
 
 //MARK: CTVehicleSelectionViewDelegate

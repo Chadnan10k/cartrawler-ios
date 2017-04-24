@@ -10,10 +10,19 @@
 #import "CTVehicleSelectionView.h"
 #import "CTVehicleInfoView.h"
 #import <CartrawlerSDK/CTLayoutManager.h>
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 #import "CTSearchDetailsViewController.h"
 #import "CTRentalConstants.h"
+#import "CTRentalLocalizationConstants.h"
+#import "CTFilterViewController.h"
 
-@interface CTVehiclePresenterViewController () <CTVehicleSelectionViewDelegate, CTVehicleInfoDelegate>
+@interface CTVehiclePresenterViewController () <CTVehicleSelectionViewDelegate, CTVehicleInfoDelegate, CTFilterDelegate>
+
+typedef NS_ENUM(NSInteger, CTPresentedView) {
+    CTPresentedViewNone = 0,
+    CTPresentedViewSelection,
+    CTPresentedViewDetails
+};
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet CTLabel *locationLabel;
@@ -22,6 +31,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *leftButton;
 @property (nonatomic, strong) CTVehicleSelectionView *vehicleSelectionView;
 @property (nonatomic, strong) CTVehicleInfoView *vehicleDetailsView;
+@property (nonatomic, strong) CTFilterViewController *filterViewController;
+
+@property (nonatomic) CTPresentedView presentedView;
 
 @end
 
@@ -30,12 +42,47 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupViews];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self updateNavigationBar];
+    [self.search addObserver:self forKeyPath:@"vehicleAvailability"
+                     options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                     context:nil];
     
-    [self presentVehicleSelection];
+    if (self.search.selectedVehicle) {
+        [self presentVehicleDetails];
+    } else {
+        [self presentVehicleSelection];
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    @try {
+        [self.search removeObserver:self forKeyPath:@"vehicleAvailability"];
+    } @catch (NSException *exception) {
+        //do nothing
+    }
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.vehicleSelectionView scrollToTop];
+        [self updateNavigationBar];
+        [self presentVehicleSelection];
+    });
 }
 
 - (void)setupViews
 {
+    _filterViewController = [CTFilterViewController initInViewController:self withData:self.search.vehicleAvailability];
+    self.filterViewController.delegate = self;
+    
     _vehicleDetailsView = [CTVehicleInfoView new];
     self.vehicleDetailsView.search = self.search;
     self.vehicleDetailsView.cartrawlerAPI = self.cartrawlerAPI;
@@ -43,39 +90,66 @@
     
     _vehicleSelectionView = [CTVehicleSelectionView new];
     self.vehicleSelectionView.delegate = self;
-    
-    [self produceHeaderText];
 }
 
 - (void)presentVehicleDetails
 {
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.vehicleDetailsView.alpha = 1;
+        self.vehicleSelectionView.alpha = 0;
+    } completion:nil];
+    
+    _presentedView = CTPresentedViewDetails;
     [self.vehicleSelectionView removeFromSuperview];
     [self.containerView addSubview:self.vehicleDetailsView];
     [CTLayoutManager pinView:self.vehicleDetailsView toSuperView:self.containerView padding:UIEdgeInsetsZero];
     [self.vehicleDetailsView refreshView];
+    [self updateNavigationBar];
 }
 
 - (void)presentVehicleSelection
 {
-    [self.vehicleDetailsView removeFromSuperview];
-    [self.containerView addSubview:self.vehicleSelectionView];
-    [CTLayoutManager pinView:self.vehicleSelectionView toSuperView:self.containerView padding:UIEdgeInsetsZero];
+    if (self.presentedView != CTPresentedViewSelection) {
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            self.vehicleDetailsView.alpha = 0;
+            self.vehicleSelectionView.alpha = 1;
+        } completion:nil];
+        
+        _presentedView = CTPresentedViewSelection;
+        [self.vehicleDetailsView removeFromSuperview];
+        [self.containerView addSubview:self.vehicleSelectionView];
+        [CTLayoutManager pinView:self.vehicleSelectionView toSuperView:self.containerView padding:UIEdgeInsetsZero];
+    }
     [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items pickupDate:self.search.pickupDate dropoffDate:self.search.dropoffDate sortByPrice:YES];
+    [self updateNavigationBar];
+    
 }
 
-- (void)produceHeaderText
+- (void)updateNavigationBar
 {
+    
     if (self.search.pickupLocation == self.search.dropoffLocation) {
         self.locationLabel.text = [NSString stringWithFormat:@"%@", self.search.pickupLocation.name];
     } else {
         self.locationLabel.text = [NSString stringWithFormat:@"%@\n- to -\n%@",
-                                    self.search.pickupLocation.name, self.search.dropoffLocation.name];
+                                   self.search.pickupLocation.name, self.search.dropoffLocation.name];
     }
     
     NSString *pickupDate = [self.search.pickupDate stringFromDateWithFormat:@"dd MMM, hh:mm a"];
     NSString *dropoffDate = [self.search.dropoffDate stringFromDateWithFormat:@"dd MMM, hh:mm a"];
     
     self.dateLabel.text = [NSString stringWithFormat:@"%@ - %@", pickupDate, dropoffDate];
+
+    
+    if (self.presentedView == CTPresentedViewDetails) {
+        [self.leftButton setTitle:@"See all!!" forState:UIControlStateNormal];
+        [self.rightButton setTitle:@"Car total!!" forState:UIControlStateNormal];
+    } else {
+        [self.leftButton setTitle:@"Filterzzz" forState:UIControlStateNormal];
+        [self.rightButton setTitle:@"Sort!!" forState:UIControlStateNormal];
+    }
 }
 
 - (IBAction)dismiss:(id)sender
@@ -90,7 +164,69 @@
     CTSearchDetailsViewController *searchViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalSearchViewIdentifier];
     searchViewController.cartrawlerAPI = self.cartrawlerAPI;
     searchViewController.search = self.search;
+    searchViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     [self presentViewController:searchViewController animated:YES completion:nil];
+}
+
+- (IBAction)leftTap:(id)sender
+{
+    if (self.presentedView == CTPresentedViewSelection) {
+        [self.filterViewController present];
+    } else {
+        [self presentVehicleSelection];
+    }
+}
+
+- (IBAction)rightTap:(id)sender
+{
+    if (self.presentedView == CTPresentedViewSelection) {
+        NSString *sortResults = CTLocalizedString(CTRentalSortTitle);
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:sortResults
+                                                                       message:nil
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        NSString *sortPrice = CTLocalizedString(CTRentalSortPrice);
+        UIAlertAction *lowestPrice = [UIAlertAction actionWithTitle:sortPrice
+                                                              style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction * action) {
+                                                                dispatch_async(dispatch_get_main_queue(), ^{
+                                                                    [self.rightButton setTitle:@"Lowest"
+                                                                                      forState:UIControlStateNormal];
+                                                                    [self.vehicleSelectionView sortByPrice:YES];
+                                                                });
+                                                            }];
+        
+        NSString *sortRecommended = CTLocalizedString(CTRentalSortRecommended);
+        UIAlertAction *recommendedVehicles = [UIAlertAction actionWithTitle:sortRecommended
+                                                                      style:UIAlertActionStyleDefault
+                                                                    handler:^(UIAlertAction * action) {
+                                                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                                                            [self.rightButton setTitle:@"Recommended"
+                                                                                              forState:UIControlStateNormal];
+                                                                            [self.vehicleSelectionView sortByPrice:NO];
+                                                                        });
+                                                                    }];
+        NSString *cancelString = CTLocalizedString(CTRentalCTACancel);
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:cancelString style:UIAlertActionStyleCancel
+                                                       handler:nil];
+        
+        [alert addAction:lowestPrice];
+        [alert addAction:recommendedVehicles];
+        [alert addAction:cancel];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+
+    }
+}
+
+//MARK: CTFilterDelegate
+- (void)filterDidUpdate:(NSArray<CTAvailabilityItem *> *)filteredData
+{
+    [self.vehicleSelectionView updateSelection:filteredData
+                                    pickupDate:self.search.pickupDate
+                                   dropoffDate:self.search.dropoffDate
+                                   sortByPrice:YES];
 }
 
 //MARK: CTVehicleSelectionViewDelegate
@@ -126,6 +262,11 @@
 - (void)infoViewPresentVehicleSelection
 {
     [self presentVehicleSelection];
+}
+
+- (void)infoViewPushToNextStep
+{
+    [self dismiss];
 }
 
 @end

@@ -18,6 +18,7 @@ typedef void (^CTNewVehiclePriceCompeltion)(BOOL success, NSString *error);
 - (void)infoViewPushViewController:(UIViewController *)viewController;
 - (void)infoViewRequestNewVehiclePrice:(CTNewVehiclePriceCompeltion)completion;
 - (void)infoViewPresentVehicleSelection;
+- (void)infoViewPushToNextStep;
 
 @end
 

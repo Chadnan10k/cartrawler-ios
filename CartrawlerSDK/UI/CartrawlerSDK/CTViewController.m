@@ -35,11 +35,10 @@
 - (void)dismiss
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self dismissViewControllerAnimated:YES completion:^{
-            if (self.delegate) {
-                [self.delegate didDismissViewController:self.restorationIdentifier];
-            }
-        }];
+        if (self.delegate) {
+            [self.delegate didDismissViewController:self.restorationIdentifier];
+        }
+        [self dismissViewControllerAnimated:YES completion:nil];
     });
 }
 

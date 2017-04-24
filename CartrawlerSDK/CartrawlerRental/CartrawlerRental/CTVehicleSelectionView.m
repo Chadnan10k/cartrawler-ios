@@ -58,6 +58,13 @@
     [self.tableView reloadData];
 }
 
+- (void)sortByPrice:(BOOL)sortByPrice
+{
+    [self.dataSource sortByPrice:sortByPrice];
+    [self.tableView reloadData];
+    [self scrollToTop];
+}
+
 - (void)scrollToTop
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
