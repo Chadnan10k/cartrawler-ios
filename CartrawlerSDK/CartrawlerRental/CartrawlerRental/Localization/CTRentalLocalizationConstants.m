@@ -346,4 +346,9 @@ NSString * const CTRentalResultsSortPrice = @"results_sort_price";
 
 NSString * const CTRentalResultsSortRecommened = @"results_sort_recommened";
 
+NSString * const CTRentalResultsOtherCars = @"results_other_cars";
+
+NSString * const CTRentalVehiclePriceBreakdownTip = @"vehicle_summary_price_breakdown";
+
+
 @end

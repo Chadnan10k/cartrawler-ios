@@ -349,4 +349,9 @@ extern NSString * const CTRentalResultsSortPrice;
 
 extern NSString * const CTRentalResultsSortRecommened;
 
+extern NSString * const CTRentalResultsOtherCars;
+
+extern NSString * const CTRentalVehiclePriceBreakdownTip;
+
+
 @end

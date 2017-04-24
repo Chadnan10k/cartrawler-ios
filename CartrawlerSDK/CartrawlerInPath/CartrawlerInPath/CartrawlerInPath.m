@@ -205,6 +205,7 @@
     [[CTSDKSettings instance] setHomeCountryName: self.defaultCountryName];
     [CTSDKSettings instance].disableCurrencySelection = YES;
     [[CTRentalSearch instance] setFromCopy:self.defaultSearch];
+    [CTRentalSearch instance].selectedVehicle = nil;
     [self configureViews];
     [self presentRentalNavigationController:parentViewController showSelection:YES];
     [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@1];
@@ -375,6 +376,9 @@
 
 - (void)didDismissViewController:(NSString *)identifier
 {
+    if (![CTRentalSearch instance].selectedVehicle)
+        return;
+    
     CTRentalSearch *search = [CTRentalSearch instance];
     CTRentalBooking *booking = [[CTRentalBooking alloc] initFromSearch:search];
     CTInPathVehicle *vehicle = [[CTInPathVehicle alloc] init:search];

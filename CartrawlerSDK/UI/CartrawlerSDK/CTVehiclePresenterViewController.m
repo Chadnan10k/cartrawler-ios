@@ -11,6 +11,8 @@
 #import "CTVehicleInfoView.h"
 #import <CartrawlerSDK/CTLayoutManager.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSString.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 #import "CTSearchDetailsViewController.h"
 #import "CTRentalConstants.h"
 #import "CTRentalLocalizationConstants.h"
@@ -94,7 +96,6 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)presentVehicleDetails
 {
-    
     [UIView animateWithDuration:0.2 animations:^{
         self.vehicleDetailsView.alpha = 1;
         self.vehicleSelectionView.alpha = 0;
@@ -106,6 +107,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [CTLayoutManager pinView:self.vehicleDetailsView toSuperView:self.containerView padding:UIEdgeInsetsZero];
     [self.vehicleDetailsView refreshView];
     [self updateNavigationBar];
+    [self updatePriceSummary];
 }
 
 - (void)presentVehicleSelection
@@ -122,9 +124,9 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
         [self.containerView addSubview:self.vehicleSelectionView];
         [CTLayoutManager pinView:self.vehicleSelectionView toSuperView:self.containerView padding:UIEdgeInsetsZero];
     }
+    [self updateSortButtonByPrice:YES];
     [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items pickupDate:self.search.pickupDate dropoffDate:self.search.dropoffDate sortByPrice:YES];
     [self updateNavigationBar];
-    
 }
 
 - (void)updateNavigationBar
@@ -144,16 +146,17 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
     
     if (self.presentedView == CTPresentedViewDetails) {
-        [self.leftButton setTitle:@"See all!!" forState:UIControlStateNormal];
-        [self.rightButton setTitle:@"Car total!!" forState:UIControlStateNormal];
+        [self.leftButton setTitle:CTLocalizedString(CTRentalResultsOtherCars) forState:UIControlStateNormal];
+        [self.rightButton setTitle:CTLocalizedString(CTRentalVehiclePriceBreakdownTip) forState:UIControlStateNormal];
     } else {
-        [self.leftButton setTitle:@"Filterzzz" forState:UIControlStateNormal];
-        [self.rightButton setTitle:@"Sort!!" forState:UIControlStateNormal];
+        [self.leftButton setTitle:CTLocalizedString(CTRentalResultsFilter) forState:UIControlStateNormal];
+        [self.rightButton setTitle:CTLocalizedString(CTRentalResultsSort) forState:UIControlStateNormal];
     }
 }
 
 - (IBAction)dismiss:(id)sender
 {
+    self.search.selectedVehicle = nil;
     [self dismiss];
 }
 
@@ -190,8 +193,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * action) {
                                                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                                                    [self.rightButton setTitle:@"Lowest"
-                                                                                      forState:UIControlStateNormal];
+                                                                    [self updateSortButtonByPrice:YES];
                                                                     [self.vehicleSelectionView sortByPrice:YES];
                                                                 });
                                                             }];
@@ -201,8 +203,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
                                                                       style:UIAlertActionStyleDefault
                                                                     handler:^(UIAlertAction * action) {
                                                                         dispatch_async(dispatch_get_main_queue(), ^{
-                                                                            [self.rightButton setTitle:@"Recommended"
-                                                                                              forState:UIControlStateNormal];
+                                                                            [self updateSortButtonByPrice:NO];
                                                                             [self.vehicleSelectionView sortByPrice:NO];
                                                                         });
                                                                     }];
@@ -218,6 +219,32 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     } else {
 
     }
+}
+
+- (void)updatePriceSummary
+{
+    NSAttributedString *sortString = [NSString attributedText:CTLocalizedString(CTRentalVehiclePriceBreakdownTip)
+                                                    boldColor:[UIColor whiteColor]
+                                                     boldSize:17
+                                                  regularText:[self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode]
+                                                 regularColor:[UIColor whiteColor]
+                                                  regularSize:17
+                                                     useSpace:YES];
+    
+    [self.rightButton setAttributedTitle:sortString forState:UIControlStateNormal];
+}
+
+- (void)updateSortButtonByPrice:(BOOL)sortByPrice
+{
+    NSAttributedString *sortString = [NSString attributedText:CTLocalizedString(CTRentalResultsSort)
+                                                    boldColor:[UIColor whiteColor]
+                                                     boldSize:17
+                                                  regularText:sortByPrice ? CTLocalizedString(CTRentalResultsSortPrice) : CTLocalizedString(CTRentalResultsSortRecommened)
+                                                 regularColor:[UIColor whiteColor]
+                                                  regularSize:17
+                                                     useSpace:YES];
+    
+    [self.rightButton setAttributedTitle:sortString forState:UIControlStateNormal];
 }
 
 //MARK: CTFilterDelegate
@@ -266,7 +293,11 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)infoViewPushToNextStep
 {
-    [self dismiss];
+    if (self.navigationController.viewControllers.firstObject == self) {
+        [self dismiss];
+    } else {
+        [self pushToDestination];
+    }
 }
 
 @end

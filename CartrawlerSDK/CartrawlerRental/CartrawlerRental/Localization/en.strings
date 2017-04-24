@@ -289,6 +289,10 @@
 
 "insurance_per_day" = "per day";
 
+"results_other_cars" = "Other cars";
+
+"vehicle_summary_price_breakdown" = "Car rental total";
+
 //details vc
 
 "insurance_terms_conditions" = "Insurance terms and conditions";

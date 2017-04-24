@@ -127,7 +127,7 @@
     
     [self.cartrawlerSDK configureViewController:self.vehicleSelectionViewController
                            validationController:[[CTGenericValidation alloc] init]
-                                    destination:self.vehicleDetailsViewController
+                                    destination:self.driverDetialsViewController
                                        fallback:nil
                                   optionalRoute:self.searchDetailsViewController
                                          search:[CTRentalSearch instance]
