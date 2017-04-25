@@ -367,4 +367,6 @@ extern NSString * const CTRentalFeatureBluetooth;
 
 extern NSString * const CTRentalFeatureGPS;
 
+extern NSString * const CTRentalFeatureTitle;
+
 @end

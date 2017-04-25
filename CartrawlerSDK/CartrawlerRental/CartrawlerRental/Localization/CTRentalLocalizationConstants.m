@@ -364,4 +364,6 @@ NSString * const CTRentalFeatureBluetooth = @"feature_bluetooth";
 
 NSString * const CTRentalFeatureGPS = @"feature_gps";
 
+NSString * const CTRentalFeatureTitle = @"feature_title";
+
 @end

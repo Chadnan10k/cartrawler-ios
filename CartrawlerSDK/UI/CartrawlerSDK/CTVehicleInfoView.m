@@ -17,6 +17,7 @@
 #import <CartrawlerSDK/CartrawlerSDK+UIView.h>
 #import "CTExtrasCarouselView.h"
 #import "CTExtrasListViewController.h"
+#import "CTRentalLocalizationConstants.h"
 
 @interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTInsuranceDetailDelegate, CTCountryPickerDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate>
 
@@ -269,10 +270,10 @@
 - (void)didTapMoreDetailsView:(UIView *)view
 {
     if (self.delegate) {
-        [self.alertView setTitle:@"Features" message:nil];
+        [self.alertView setTitle:CTLocalizedString(CTRentalFeatureTitle) message:nil];
         [self.alertView removeAllActions];
         __weak typeof(self) weakSelf = self;
-        [self.alertView addAction:[CTAlertAction actionWithTitle:@"Close"
+        [self.alertView addAction:[CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTADone)
                                                          handler:^(CTAlertAction *action) {
                                                              [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
                                                          }]];
