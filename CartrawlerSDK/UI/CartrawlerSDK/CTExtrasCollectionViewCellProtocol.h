@@ -39,5 +39,8 @@
 - (void)setIncrementEnabled:(BOOL)incrementEnabled;
 - (void)setDecrementEnabled:(BOOL)decrementEnabled;
 
+@optional
+- (void)setImage:(UIImage *)image;
+
 @property (nonatomic, weak) id <CTExtrasCollectionViewCellDelegate> delegate;
 @end
