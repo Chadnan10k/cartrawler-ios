@@ -11,7 +11,6 @@
 #import <CartrawlerSDK/CTHeaders.h>
 #import "CTInsuranceView.h"
 #import "CTExtrasCarouselView.h"
-#import "CTExtrasCollectionView.h"
 #import "CTExtrasListViewController.h"
 #import "CTRentalConstants.h"
 #import "CTInsuranceDetailViewController.h"
