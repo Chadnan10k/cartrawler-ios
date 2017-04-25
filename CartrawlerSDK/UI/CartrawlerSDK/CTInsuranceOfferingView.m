@@ -24,18 +24,25 @@
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
+#import <CartrawlerSDK/CTLayoutManager.h>
+#import <CartrawlerSDK/CartrawlerSDK+UIView.h>
+#import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
 
 @interface CTInsuranceOfferingView()
 
 @property (nonatomic, strong) UIView *backgroundView;
 @property (nonatomic, strong) CTLabel *headerLabel;
 @property (nonatomic, strong) CTLabel *subheaderLabel;
+@property (nonatomic, strong) CTLabel *perDayLabel;
+@property (nonatomic, strong) CTLabel *totalLabel;
 @property (nonatomic, strong) UIImageView *shieldImageView;
 @property (nonatomic, strong) CTButton *addNowButton;
-@property (nonatomic, strong) UIButton *termsButton;
+@property (nonatomic, strong) CTButton *moreDetailsButton;
 @property (nonatomic, strong) UIView *accordionView;
 @property (nonatomic, strong) CTTextView *textView;
 @property (nonatomic, strong) CTInsurance *insurance;
+@property (nonatomic, strong) NSDate *pickupDate;
+@property (nonatomic, strong) NSDate *dropoffDate;
 @property (nonatomic) BOOL isOpen;
 
 @end
@@ -50,8 +57,10 @@
     return self;
 }
 
-- (void)updateInsurance:(CTInsurance *)insurance
+- (void)updateInsurance:(CTInsurance *)insurance pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate;
 {
+    _pickupDate = pickupDate;
+    _dropoffDate = dropoffDate;
     _insurance = insurance;
     [self updateText];
 }
@@ -60,6 +69,12 @@
 {
     NSString *addNowText = [NSString stringWithFormat:CTLocalizedString(CTRentalInsuranceAddButtonTitle), self.insurance.premiumAmount.numberStringWithCurrencyCode];
     [self.addNowButton setTitle:addNowText forState:UIControlStateNormal];
+    
+    NSString *pricePerDay = [NSString stringWithFormat:@"%@ %@", [self.insurance.premiumAmount pricePerDay:self.pickupDate dropoff:self.dropoffDate], CTLocalizedString(CTRentalInsurancePerDay)];
+    self.perDayLabel.text = pricePerDay;
+    
+    NSString *total = [NSString stringWithFormat:CTLocalizedString(CTRentalInsuranceTotal), [self.insurance.premiumAmount numberStringWithCurrencyCode]];
+    self.totalLabel.text = total;
 }
 
 
@@ -67,9 +82,11 @@
 {
     _backgroundView = [UIView new];
     self.backgroundView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.backgroundView.backgroundColor = [UIColor colorWithRed:70.0/255.0 green:144.0/255.0 blue:228.0/255.0 alpha:1];
+    self.backgroundView.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
     [self addSubview:self.backgroundView];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[backgroundView(0@100)]-0-|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[backgroundView(0@100)]-8-|"
                                                                  options:0 metrics:nil
                                                                    views:@{@"backgroundView" : self.backgroundView}]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[backgroundView]-0-|"
@@ -79,134 +96,155 @@
 
 - (void)buildAddInsuranceState
 {
-    _headerLabel = [[CTLabel alloc] init:15 textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentCenter boldFont:YES];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    _shieldImageView = [[UIImageView alloc] init];
+    self.shieldImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.shieldImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    UIImage *shieldImage = [UIImage imageNamed:@"shield_offer" inBundle:bundle compatibleWithTraitCollection:nil];
+    self.shieldImageView.image = shieldImage;
+    [self.shieldImageView setHeightConstraint:@35 priority:@1000];
+    
+    _headerLabel = [[CTLabel alloc] init:17 textColor:[CTAppearance instance].iconTint textAlignment:NSTextAlignmentCenter boldFont:YES];
     self.headerLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.headerLabel.text = CTLocalizedString(CTRentalInsuranceOfferingHeader);
-    [self.backgroundView addSubview:self.headerLabel];
-    [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[label]"
-                                                                                options:0 metrics:nil
-                                                                                  views:@{@"label" : self.headerLabel}]];
-    [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[label]-|"
-                                                                                options:0 metrics:nil
-                                                                                  views:@{@"label" : self.headerLabel}]];
-    
-    _subheaderLabel = [[CTLabel alloc] init:12 textColor:[UIColor colorWithRed:174.0/255.0 green:210.0/255.0 blue:244.0/255.0 alpha:1] textAlignment:NSTextAlignmentCenter boldFont:NO];
+    self.headerLabel.numberOfLines = 1;
+
+    _subheaderLabel = [[CTLabel alloc] init:14 textColor:[CTAppearance instance].iconTint textAlignment:NSTextAlignmentCenter boldFont:NO];
     self.subheaderLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.subheaderLabel.text = CTLocalizedString(CTRentalInsuranceOfferingSubheader);
-    [self.backgroundView addSubview:self.subheaderLabel];
-    [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[header]-[label]"
-                                                                                options:0 metrics:nil
-                                                                                  views:@{@"label" : self.subheaderLabel, @"header" : self.headerLabel}]];
-    [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[label]-|"
-                                                                                options:0
-                                                                                metrics:nil
-                                                                                  views:@{@"label" : self.subheaderLabel}]];
+    self.subheaderLabel.numberOfLines = 1;
     
-    _shieldImageView = [UIImageView new];
-    self.shieldImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.shieldImageView.contentMode = UIViewContentModeScaleAspectFit;
-    NSBundle *b = [NSBundle bundleForClass:[self class]];
-    UIImage *shield = [UIImage imageNamed:@"shield_offer" inBundle:b compatibleWithTraitCollection:nil];
-    self.shieldImageView.image = shield;
-    [self.backgroundView addSubview:self.shieldImageView];
-    [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[image(40)]"
-                                                                                options:0
-                                                                                metrics:nil
-                                                                                  views:@{@"image" : self.shieldImageView}]];
-    [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[image(40)]-|"
-                                                                                options:0 metrics:nil
-                                                                                  views:@{@"image" : self.shieldImageView}]];
-    
-    _accordionView = [self buildAccordion];
-    [self.backgroundView addSubview:self.accordionView];
-    [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-8-[accordion]"
-                                                                                options:0 metrics:nil
-                                                                                  views:@{@"label" : self.subheaderLabel, @"accordion" : self.accordionView}]];
-    [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[accordion]-|"
-                                                                                options:0 metrics:nil
-                                                                                  views:@{@"accordion" : self.accordionView}]];
-    
-    _addNowButton = [[CTButton alloc] init:nil fontColor:nil boldFont:YES borderColor:nil];
-    [self.addNowButton addTarget:self action:@selector(addInsurance:) forControlEvents:UIControlEventTouchUpInside];
+    _moreDetailsButton = [[CTButton alloc] init:[UIColor clearColor] fontColor:[UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1] boldFont:NO borderColor:nil];
+    self.moreDetailsButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.moreDetailsButton setTitle:CTLocalizedString(CTRentalInsuranceInfoButtonTitle) forState:UIControlStateNormal];
+    [self.moreDetailsButton setHeightConstraint:@20 priority:@1000];
+    [self.moreDetailsButton addTarget:self action:@selector(termsTapped:) forControlEvents:UIControlEventTouchUpInside];
+    self.moreDetailsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+
+    _addNowButton = [[CTButton alloc] init:[UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1] fontColor:[UIColor whiteColor] boldFont:YES borderColor:nil];
     self.addNowButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.backgroundView addSubview:self.addNowButton];
-    [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[accordion]-[button(50)]"
-                                                                                options:0 metrics:nil
-                                                                                  views:@{@"button" : self.addNowButton, @"accordion" : self.accordionView}]];
-    [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[button]-|"
-                                                                                options:0 metrics:nil
-                                                                                  views:@{@"button" : self.addNowButton}]];
+    [self.addNowButton setHeightConstraint:@45 priority:@1000];
+    [self.addNowButton addTarget:self action:@selector(addInsurance:) forControlEvents:UIControlEventTouchUpInside];
     
-    _termsButton = [UIButton new];
-    NSMutableAttributedString *termsText = [[NSMutableAttributedString alloc] initWithString:CTLocalizedString(CTRentalInsuranceTermsConditions)];
-    [termsText addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [termsText length])];
-    [termsText addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, [termsText length])];
-    [self.termsButton setAttributedTitle:termsText forState:UIControlStateNormal];
-    [self.termsButton addTarget:self action:@selector(termsTapped:) forControlEvents:UIControlEventTouchUpInside];
-    self.termsButton.titleLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:11];
-    self.termsButton.backgroundColor = [UIColor clearColor];
-    self.termsButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.backgroundView addSubview:self.termsButton];
-    [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[addButton]-[button(30)]-|"
-                                                                                options:0 metrics:nil
-                                                                                  views:@{@"button" : self.termsButton, @"addButton" : self.addNowButton}]];
-    [self.backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[button]-|"
-                                                                                options:0 metrics:nil
-                                                                                  views:@{@"button" : self.termsButton}]];
+    UIView *detailContainer = [self detailContainer];
+    UIView *priceContainer = [self logoAndPrice];
+
+    CTLayoutManager *layoutManager = [CTLayoutManager layoutManagerWithContainer:self.backgroundView];
+    layoutManager.orientation = CTLayoutManagerOrientationTopToBottom;
+    layoutManager.justify = NO;
+    
+    [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.shieldImageView];
+    [layoutManager insertView:UIEdgeInsetsMake(8, 8, 0, 8) view:self.headerLabel];
+    [layoutManager insertView:UIEdgeInsetsMake(0, 8, 16, 8) view:self.subheaderLabel];
+    [layoutManager insertView:UIEdgeInsetsMake(16, 8, 24, 8) view:detailContainer];
+    [layoutManager insertView:UIEdgeInsetsMake(24, 12, 32, 8) view:self.moreDetailsButton];
+    [layoutManager insertView:UIEdgeInsetsMake(32, 8, 8, 8) view:priceContainer];
+    [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.addNowButton];
+
+    [layoutManager layoutViews];
+    
 }
 
-- (UIView *)buildAccordion
+- (UIView *)detailContainer
 {
-    UIView *accordionBackground = [UIView new];
-    accordionBackground.layer.cornerRadius = [CTAppearance instance].buttonCornerRadius;
-    accordionBackground.translatesAutoresizingMaskIntoConstraints = NO;
-    accordionBackground.backgroundColor = [UIColor colorWithRed:56.0/255.0 green:127.0/255.0 blue:213.0/255.0 alpha:1];
+    UIView *view = [UIView new];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    [view setHeightConstraint:@50 priority:@100];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                          action:@selector(openAccordion:)];
-    [accordionBackground addGestureRecognizer:tap];
+    CTLayoutManager *layoutManager = [CTLayoutManager layoutManagerWithContainer:view];
+    layoutManager.orientation = CTLayoutManagerOrientationTopToBottom;
+    layoutManager.justify = NO;
     
-    [accordionBackground addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[background(50@1000)]"
-                                                                                options:0
-                                                                                metrics:nil
-                                                                                  views:@{@"background" : accordionBackground}]];
+    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:[self imageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceInfoTip1)]];
+    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:[self imageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceInfoTip2)]];
+    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:[self imageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceInfoTip3)]];
+
+    [layoutManager layoutViews];
     
-    CTLabel *accordionTitle = [[CTLabel alloc] init:17 textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentCenter boldFont:YES];
-    accordionTitle.translatesAutoresizingMaskIntoConstraints = NO;
-    accordionTitle.text = CTLocalizedString(CTRentalInsuranceSummaryTitle);
-    accordionTitle.numberOfLines = 1;
-    [accordionBackground addSubview:accordionTitle];
-    [accordionBackground addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[label]-8-|"
-                                                                                options:0
-                                                                                metrics:nil
-                                                                                  views:@{@"label" : accordionTitle}]];
-    
-    [accordionBackground addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-16-[label]"
-                                                                                options:0
-                                                                                metrics:nil
-                                                                                  views:@{@"label" : accordionTitle}]];
-    return accordionBackground;
+    return view;
 }
 
-- (void)setTextViewText:(CTInsurance *)insurance
+- (UIView *)imageAndTextView:(NSString *)imageName text:(NSString *)text
 {
-    _textView = [CTTextView new];
-    self.textView.text = @"";
-    self.textView.backgroundColor = [UIColor clearColor];
-    self.textView.scrollEnabled = NO;
-    self.textView.userInteractionEnabled = NO;
-    self.textView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.accordionView addSubview:self.textView];
-    [self.accordionView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-40-[textView(0@100)]-4-|"
-                                                                                options:0
-                                                                                metrics:nil
-                                                                                  views:@{@"textView" : self.textView}]];
-    [self.accordionView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[textView]-|"
-                                                                                options:0
-                                                                                metrics:nil
-                                                                                  views:@{@"textView" : self.textView}]];
+    UIView *view = [UIView new];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
     
-    self.textView.attributedText = [self listItems:insurance];
+    CTLayoutManager *layoutManager = [CTLayoutManager layoutManagerWithContainer:view];
+    layoutManager.orientation = CTLayoutManagerOrientationLeftToRight;
+    layoutManager.justify = NO;
+    
+    UIImageView *imageView = [UIImageView new];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIImage *icon = [UIImage imageNamed:imageName
+                               inBundle:bundle
+          compatibleWithTraitCollection:nil];
+    
+    imageView.image = icon;
+    
+    [imageView setHeightConstraint:@15 priority:@100];
+    [imageView setWidthConstraint:@15 priority:@1000];
+    [imageView applyTintWithColor:[CTAppearance instance].iconTint];
+
+    UILabel *label = [UILabel new];
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    label.text = text;
+    label.numberOfLines = 0;
+
+    [layoutManager insertView:UIEdgeInsetsMake(0,4,0,16) view:imageView];
+    [layoutManager insertView:UIEdgeInsetsMake(0,16,0,4) view:label];
+    
+    [layoutManager layoutViews];
+
+    return view;
+}
+
+- (UIView *)logoAndPrice
+{
+    UIView *view = [UIView new];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIImage *logo = [UIImage imageNamed:@"axa_logo"
+                               inBundle:bundle
+          compatibleWithTraitCollection:nil];
+    
+    UIImageView *imageView = [UIImageView new];
+    imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    imageView.image = logo;
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [imageView setHeightConstraint:@40 priority:@1000];
+    
+    UIView *textContainer = [UIView new];
+    textContainer.translatesAutoresizingMaskIntoConstraints = NO;
+    [textContainer setHeightConstraint:@40 priority:@1000];
+
+    _perDayLabel = [[CTLabel alloc] init:15 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentRight boldFont:YES];
+    self.perDayLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    _totalLabel = [[CTLabel alloc] init:15 textColor:[UIColor lightGrayColor] textAlignment:NSTextAlignmentRight boldFont:NO];
+    self.totalLabel.translatesAutoresizingMaskIntoConstraints = NO;
+
+    CTLayoutManager *priceManager = [CTLayoutManager layoutManagerWithContainer:textContainer];
+    priceManager.orientation = CTLayoutManagerOrientationTopToBottom;
+    priceManager.justify = YES;
+    
+    [priceManager insertView:UIEdgeInsetsMake(0,0,0,0) view:self.perDayLabel];
+    [priceManager insertView:UIEdgeInsetsMake(0,0,0,0) view:self.totalLabel];
+
+    [priceManager layoutViews];
+    
+    CTLayoutManager *manager = [CTLayoutManager layoutManagerWithContainer:view];
+    manager.orientation = CTLayoutManagerOrientationLeftToRight;
+    manager.justify = YES;
+    
+    [manager insertView:UIEdgeInsetsMake(0,0,0,0) view:imageView];
+    [manager insertView:UIEdgeInsetsMake(0,0,0,0) view:textContainer];
+
+    [manager layoutViews];
+    
+    return view;
 }
 
 - (void)addInsurance:(id)sender
@@ -214,93 +252,6 @@
     if (self.addAction) {
         self.addAction();
     }
-}
-
-- (void)openAccordion:(id)sender
-{
-    if (!self.isOpen) {
-        [self setTextViewText:self.insurance];
-        for (NSLayoutConstraint *c in self.accordionView.constraints) {
-            if (c.firstAttribute == NSLayoutAttributeHeight) {
-                c.constant = [self textViewHeight] + 50;
-            }
-        }
-        _isOpen = YES;
-    } else {
-        [self.textView removeFromSuperview];
-        for (NSLayoutConstraint *c in self.accordionView.constraints) {
-            if (c.firstAttribute == NSLayoutAttributeHeight) {
-                c.constant = 50;
-            }
-        }
-        _isOpen = NO;
-    }
-}
-
-- (NSAttributedString *)listItems:(CTInsurance *)response
-{
-    NSMutableAttributedString *listItems = [[NSMutableAttributedString alloc] init];
-    for (int i = 0; i < response.listItems.count; ++i) {
-        [listItems appendAttributedString:[CTHTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
-                                                                       pointSize:15
-                                                                            text:response.listItems[i]
-                                                                   boldFontColor:@"#FFFFFF"
-                                                                       fontColor:@"#FFFFFF"]];
-        
-        if (i != response.listItems.count-1) {
-            [listItems appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n\n"]];
-        }
-    }
-    
-    return [self scanForLinks:listItems response:response];
-}
-
-- (NSAttributedString *)scanForLinks:(NSAttributedString *)attrText response:(CTInsurance *)response
-{
-    for (CTInsuranceLink *link in response.links) {
-        
-        NSString *text = attrText.string;
-        NSRange range = [text rangeOfString:[NSString stringWithFormat:@"${%@}", link.code]];
-        
-        if (range.location != NSNotFound) {
-            
-            NSDictionary *linkAttr = @{ NSLinkAttributeName : link.link,
-                                        NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:15]
-                                        };
-            
-            NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:text attributes:nil];
-            
-            NSAttributedString *attrLink = [[NSAttributedString alloc]
-                                            initWithString:link.title
-                                            attributes:linkAttr];
-            
-            [attrText replaceCharactersInRange:range withAttributedString:attrLink];
-            [attrText.mutableString replaceOccurrencesOfString:@"{"
-                                                    withString:@""
-                                                       options:NSCaseInsensitiveSearch
-                                                         range:NSMakeRange(0, attrText.string.length)];
-            [attrText.mutableString replaceOccurrencesOfString:@"}"
-                                                    withString:@""
-                                                       options:NSCaseInsensitiveSearch
-                                                         range:NSMakeRange(0, attrText.string.length)];
-            
-            [attrText addAttributes:@{NSFontAttributeName : [UIFont fontWithName:[CTAppearance instance].fontName size:15]} range:NSMakeRange(0, attrText.string.length)];
-            
-            return attrText;
-        } else {
-            return attrText;
-        }
-    }
-    return attrText;
-}
-
-- (CGFloat)textViewHeight
-{
-    CGFloat fixedWidth = self.textView.frame.size.width;
-    CGSize newSize = [self.textView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
-    CGRect newFrame = self.textView.frame;
-    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-    return newFrame.size.height;
 }
 
 - (void)termsTapped:(id)sender

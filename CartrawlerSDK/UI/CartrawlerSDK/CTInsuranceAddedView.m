@@ -1,19 +1,3 @@
-//
-//  CTInsuranceOfferingView.m
-//  CartrawlerRental
-//
-//  Created by Lee Maguire on 09/03/2017.
-//  Copyright © 2017 Cartrawler. All rights reserved.
-//
-
-//
-//  CTInsuranceView.m
-//  CartrawlerRental
-//
-//  Created by Lee Maguire on 08/03/2017.
-//  Copyright © 2017 Cartrawler. All rights reserved.
-//
-
 #import "CTInsuranceAddedView.h"
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTButton.h>

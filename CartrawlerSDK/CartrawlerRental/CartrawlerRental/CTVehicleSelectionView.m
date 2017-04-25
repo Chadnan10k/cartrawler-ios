@@ -23,7 +23,7 @@
 - (instancetype)init
 {
     self = [super init];
-    
+    self.translatesAutoresizingMaskIntoConstraints = NO;
     _dataSource = [CTVehicleSelectionDataSource new];
     
     _tableView = [self createTableView];
@@ -56,6 +56,13 @@
 {
     [self.dataSource updateData:data pickupDate:pickupDate dropoffDate:dropoffDate sortByPrice:sortByPrice];
     [self.tableView reloadData];
+}
+
+- (void)sortByPrice:(BOOL)sortByPrice
+{
+    [self.dataSource sortByPrice:sortByPrice];
+    [self.tableView reloadData];
+    [self scrollToTop];
 }
 
 - (void)scrollToTop

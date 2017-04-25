@@ -9,6 +9,7 @@
 #import "CTViewController.h"
 #import "CTDataStore.h"
 #import "CTAnalytics.h"
+#import "CTSDKSettings.h"
 
 @interface CTViewController ()
 
@@ -34,11 +35,10 @@
 - (void)dismiss
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self dismissViewControllerAnimated:YES completion:^{
-            if (self.delegate) {
-                [self.delegate didDismissViewController:self.restorationIdentifier];
-            }
-        }];
+        if (self.delegate) {
+            [self.delegate didDismissViewController:self.restorationIdentifier];
+        }
+        [self dismissViewControllerAnimated:YES completion:nil];
     });
 }
 
@@ -95,7 +95,9 @@
 
 - (void)presentModalViewController:(UIViewController *)viewController
 {
-    [self presentViewController:viewController animated:YES completion:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:viewController animated:YES completion:nil];
+    });
 }
 
 - (void)sendEvent:(BOOL)cartrawlerOnly customParams:(NSDictionary *)customParams eventName:(NSString *)eventName eventType:(NSString *)eventType
@@ -129,6 +131,53 @@
 
         [self.analyticsDelegate sendAnalyticsSaleEvent:saleEvent];
     }
+}
+
+//MARK: Core functions
+
+- (void)requestVehicles:(Completion)completion
+{
+    [self performVehicleAvail:completion];
+}
+
+- (void)requestNewVehiclePrice:(Completion)completion
+{
+    __weak typeof (self) weakSelf = self;
+    [self performVehicleAvail:^(BOOL success, NSString *errorMessage) {
+        if (success) {
+            for (CTAvailabilityItem *item in weakSelf.search.vehicleAvailability.items) {
+                if ([weakSelf.search.selectedVehicle.vehicle.refID isEqualToString:item.vehicle.refID]) {
+                    weakSelf.search.selectedVehicle = item;
+                    completion(YES, @"");
+                    return;
+                }
+            }
+            completion(NO, @"No matching vehicle found");
+        } else {
+            completion(NO, @"No matching vehicle found");
+        }
+    }];
+}
+
+- (void)performVehicleAvail:(Completion)completion
+{
+    __weak typeof (self) weakSelf = self;
+    [self.cartrawlerAPI requestVehicleAvailabilityForLocation:self.search.pickupLocation.code
+                                           returnLocationCode:self.search.dropoffLocation.code
+                                          customerCountryCode:[CTSDKSettings instance].homeCountryCode
+                                                 passengerQty:self.search.passengerQty
+                                                    driverAge:self.search.driverAge
+                                               pickUpDateTime:self.search.pickupDate
+                                               returnDateTime:self.search.dropoffDate
+                                                 currencyCode:[CTSDKSettings instance].currencyCode
+                                                   completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
+                                                       if (response) {
+                                                           weakSelf.search.vehicleAvailability = response;
+                                                           completion(YES, @"");
+                                                       } else {
+                                                           completion(NO, error.errorMessage);
+                                                       }
+                                                   }];
 }
 
 @end

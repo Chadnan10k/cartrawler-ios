@@ -279,7 +279,44 @@
 
 "insurance_add_button" = "Add for %@";
 
+"axa_upgrade_reason1" = "Upgrade reason one";
+
+"axa_upgrade_reason2" = "Upgrade reason two";
+
+"axa_upgrade_reason3" = "Upgrade reason three";
+
+"insurance_total" = "Total %@";
+
+"insurance_per_day" = "per day";
+
+"results_other_cars" = "Other cars";
+
+"vehicle_summary_price_breakdown" = "Car rental total";
+
+//details vc
+
 "insurance_terms_conditions" = "Insurance terms and conditions";
+
+"insurance_detail_title" = "Damage Refund Insurance";
+
+"insurance_detail_info_title" = "Reduce your liability from $3000 to $0";
+
+"insurance_detail_info" = "blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah \n\nblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.";
+
+"insurance_tip_title" = "Whats'covered";
+
+"insurance_detail_tip_1" = "Some tip for insurance";
+
+"insurance_detail_tip_2" = "Some tip for insurance";
+
+"insurance_detail_tip_3" = "Some tip for insurance";
+
+"insurance_detail_tip_4" = "Some tip for insurance";
+
+"insurance_detail_tip_5" = "Some tip for insurance";
+
+
+
 
 "insurance_added_header" = "Congratulations!";
 

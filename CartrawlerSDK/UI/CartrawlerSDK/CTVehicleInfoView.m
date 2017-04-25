@@ -1,28 +1,28 @@
 //
-//  CTVehicleDetailsViewController.m
-//  CartrawlerSDK
+//  CTVehicleInfoView.m
+//  CartrawlerRental
 //
-//  Created by Lee Maguire on 04/07/2016.
-//  Copyright © 2016 Cartrawler. All rights reserved.
+//  Created by Lee Maguire on 21/04/2017.
+//  Copyright © 2017 Cartrawler. All rights reserved.
 //
 
-#import "CTVehicleDetailsViewController.h"
+#import "CTVehicleInfoView.h"
 #import "CTVehicleDetailsView.h"
-#import <CartrawlerSDK/CTHeaders.h>
 #import "CTInsuranceView.h"
-#import "CTExtrasCarouselView.h"
-#import "CTExtrasListViewController.h"
 #import "CTRentalConstants.h"
 #import "CTInsuranceDetailViewController.h"
 #import "CTCountryPickerView.h"
 #import "CTVehicleSelectionViewController.h"
 #import <CartrawlerSDK/CTLoadingView.h>
+#import <CartrawlerSDK/CartrawlerSDK+UIView.h>
+#import "CTExtrasCarouselView.h"
+#import "CTExtrasListViewController.h"
 
-@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTInsuranceDetailDelegate, CTCountryPickerDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate>
+@interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTInsuranceDetailDelegate, CTCountryPickerDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
+@property (strong, nonatomic) UIScrollView *scrollView;
+@property (strong, nonatomic) UIView *containerView;
+@property (strong, nonatomic) CTNextButton *nextButton;
 @property (strong, nonatomic) CTAlertViewController *alertView;
 @property (strong, nonatomic) CTLayoutManager *layoutManager;
 
@@ -41,29 +41,26 @@
 
 @end
 
-@implementation CTVehicleDetailsViewController
+@implementation CTVehicleInfoView
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self.nextButton setText:@"Test Next"];
-    
+- (instancetype)init
+{
+    self = [super init];
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    [self initNextButton];
+    [self initContainerView];
+
     _layoutManager = [CTLayoutManager layoutManagerWithContainer:self.containerView];
-    
+
     [self initVehicleDetailsView];
     [self initVehicleDetailsInfoTip];
     [self initTabMenu];
     [self initInsuranceView];
     [self initAlertView];
     [self initExtrasView];
-      
-    [self.layoutManager layoutViews];
-}
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self refreshView];
+    [self.layoutManager layoutViews];
+    return self;
 }
 
 - (void)refreshView
@@ -75,17 +72,67 @@
                              pickupDate:self.search.pickupDate
                             dropoffDate:self.search.dropoffDate];
     __weak typeof(self) weakSelf = self;
-    
     [self.insuranceView retrieveInsurance:self.cartrawlerAPI
                                    search:self.search
                                completion:^(CTInsurance *insurance) {
                                    weakSelf.search.insurance = insurance;
                                }];
+    
+    [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
 }
 
 /**
  View Creation
  */
+
+- (void)initContainerView
+{
+    _scrollView = [UIScrollView new];
+    self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.scrollView];
+
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[scrollView]-0-[button(80)]-0-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"scrollView" : self.scrollView,
+                                                                           @"button" : self.nextButton}]];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[scrollView]-0-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"scrollView" : self.scrollView,
+                                                                           @"button" : self.nextButton}]];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[button]-0-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"scrollView" : self.scrollView,
+                                                                           @"button" : self.nextButton}]];
+    
+    _containerView = [UIView new];
+    self.containerView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.scrollView addSubview:self.containerView];
+    [CTLayoutManager pinView:self.containerView toSuperView:self.scrollView padding:UIEdgeInsetsZero];
+    [self.containerView setHeightConstraint:@100 priority:@100];
+    
+    NSLayoutConstraint *equalWidth = [NSLayoutConstraint constraintWithItem:self.containerView
+                                                                  attribute:NSLayoutAttributeWidth
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:self.scrollView
+                                                                  attribute:NSLayoutAttributeWidth
+                                                                 multiplier:1
+                                                                   constant:0];
+    [self.scrollView addConstraint:equalWidth];
+}
+
+- (void)initNextButton
+{
+    _nextButton = [CTNextButton new];
+    self.nextButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.nextButton setText:@"Test Next"];
+    [self addSubview:self.nextButton];
+    [self.nextButton addTarget:self action:@selector(pushToDestination) forControlEvents:UIControlEventTouchUpInside];
+}
 
 //MARK: Alert View Init
 
@@ -128,8 +175,8 @@
     itemView2.titleLabel.attributedText = [self attributedStringWithBlackText:@"Fuel policy:  " blueText:@"Full to full"];
     itemView2.imageView.image = [UIImage imageNamed:@"fuel" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
     
-    CTExpandingView *expandingView1 = [[CTExpandingView alloc] initWithHeaderView:itemView1 animationContainerView:self.view];
-    CTExpandingView *expandingView2 = [[CTExpandingView alloc] initWithHeaderView:itemView2 animationContainerView:self.view];
+    CTExpandingView *expandingView1 = [[CTExpandingView alloc] initWithHeaderView:itemView1 animationContainerView:self];
+    CTExpandingView *expandingView2 = [[CTExpandingView alloc] initWithHeaderView:itemView2 animationContainerView:self];
     
     CTListView *listView1 = [[CTListView alloc] initWithViews:@[expandingView1, expandingView2] separatorColor:nil];
     listView1.delegate = self;
@@ -143,7 +190,7 @@
     itemView3.imageView.image = icon2;
     itemView3.imageAlignment = CTListItemImageAlignmentRight;
     
-    CTExpandingView *expandingView3 = [[CTExpandingView alloc] initWithHeaderView:itemView3 animationContainerView:self.view];
+    CTExpandingView *expandingView3 = [[CTExpandingView alloc] initWithHeaderView:itemView3 animationContainerView:self];
     
     CTRatingView *ratingView1 = [CTRatingView new];
     ratingView1.titleLabel.text = @"Overall rating";
@@ -170,7 +217,7 @@
     listView2.tag = 2;
     
     CTTabContainerView *tabContainerView = [[CTTabContainerView alloc] initWithTabTitles:@[@"INCLUDED", @"RATINGS"] views:@[listView1, listView2] selectedIndex:0];
-    tabContainerView.animationContainerView = self.view;
+    tabContainerView.animationContainerView = self;
     
     [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 0, 0) view:tabContainerView];
 }
@@ -209,7 +256,9 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:bundle];
     CTExtrasListViewController *controller = (CTExtrasListViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalExtrasVerticalViewIdentifier];
     [controller updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
-    [self.navigationController pushViewController:controller animated:YES];
+    if (self.delegate) {
+        [self.delegate infoViewPushViewController:controller];
+    }
 }
 
 /**
@@ -219,14 +268,18 @@
 // MARK: CTVehicleDetailsDelegate
 - (void)didTapMoreDetailsView
 {
-    [self presentViewController:self.alertView animated:YES completion:nil];
+    if (self.delegate) {
+        [self.delegate infoViewPresentViewController:self.alertView];
+    }
 }
 
 // MARK: CTInfoTipDelegate
 - (void)infoTipWasTapped:(CTInfoTip *)infoTip
 {
     if (infoTip == self.extrasInfoTip) {
-        [self.navigationController pushViewController:self.optionalRoute animated:YES];
+        if (self.delegate) {
+            [self.delegate infoViewPushToExtraDetail];
+        }
     }
 }
 
@@ -249,7 +302,9 @@
     CTInsuranceDetailViewController *detailViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalInsuranceViewIdentifier];
     detailViewController.search = self.search;
     detailViewController.insuranceDetailDelegate = self;
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    if (self.delegate) {
+        [self.delegate infoViewPushViewController:detailViewController];
+    }
 }
 
 - (void)didTapAddInsurance:(CTInsuranceDetailViewController *)detailViewController
@@ -275,8 +330,9 @@
     
     [self.alertView setTitle:@"Yo!" message:@"We need to confirm this is the country you were born in."];
     self.alertView.customView = self.countryPicker;
-    [self presentViewController:self.alertView animated:YES completion:nil];
-    
+    if (self.delegate) {
+        [self.delegate infoViewPresentViewController:self.alertView];
+    }
 }
 
 - (void)didChangeCountrySelection:(NSString *)countryCode
@@ -297,26 +353,36 @@
         [[CTSDKSettings instance] setHomeCountryCode:self.tempCountryCode];
         [[CTSDKSettings instance] setHomeCountryName:[[CTSDKSettings instance] countryName:self.tempCountryCode]];
         __weak typeof(self) weakSelf = self;
-        [self requestNewVehiclePrice:^(BOOL success, NSString *errorMessage) {
-            if (success) {
-                NSLog(@"refreshed");
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
-                    [weakSelf refreshView];
-                });
-            } else {
-                NSLog(@"pop view");
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
-                    [weakSelf presentVehicleSelection];
-                });
-            }
-        }];
+        
+        if (self.delegate) {
+            [self.delegate infoViewRequestNewVehiclePrice:^(BOOL success, NSString *error) {
+                if (success) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+                        [weakSelf refreshView];
+                    });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+                        [weakSelf presentVehicleSelection];
+                    });
+                }
+            }];
+        }
+        
+
     } else {
         NSLog(@"no refresh needed");
         [self.alertView dismissViewControllerAnimated:YES completion:nil];
         self.search.isBuyingInsurance = YES;
         [self.insuranceView presentSelectedState];
+    }
+}
+
+- (void)pushToDestination
+{
+    if (self.delegate) {
+        [self.delegate infoViewPushToNextStep];
     }
 }
 
@@ -364,39 +430,34 @@
 // MARK: Actions
 - (IBAction)backTapped:(id)sender
 {
-    if (self.navigationController.viewControllers.firstObject == self) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } else {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+//    if (self.navigationController.viewControllers.firstObject == self) {
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//    } else {
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
 }
 
 - (IBAction)nextTapped:(id)sender
 {
-    if (self.destinationViewController) {
-        [self pushToDestination];
-    } else {
-        [self dismiss];
-    }
+//    if (self.destinationViewController) {
+//        [self pushToDestination];
+//    } else {
+//        [self dismiss];
+//    }
 }
 
 // MARK: Presentation
 
 - (void)presentVehicleSelection
 {
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalResultsStoryboard bundle:bundle];
-    CTVehicleSelectionViewController *selectionViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalResultsViewIdentifier];
-    selectionViewController.search = self.search;
-    selectionViewController.delegate = self;
-    [self presentModalViewController:selectionViewController];
+    if (self.delegate) {
+        [self.delegate infoViewPresentVehicleSelection];
+    }
 }
 
 - (void)didDismissViewController:(NSString *)identifier
 {
-//    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
-
-// MARK: Seleciton view controller delegate
 
 @end

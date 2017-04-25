@@ -24,7 +24,7 @@
 #import "CTRentalConstants.h"
 #import "CTSearchDetailsViewController.h"
 
-@interface CTVehicleSelectionViewController () <CTVehicleSelectionViewDelegate>
+@interface CTVehicleSelectionViewController () <CTVehicleSelectionViewDelegate, CTFilterDelegate>
 
 @property (strong, nonatomic) CTVehicleSelectionView *vehicleSelectionView;
 @property (weak, nonatomic) IBOutlet UILabel *locationsLabel;
@@ -56,19 +56,9 @@
     [self.view addSubview:self.vehicleSelectionView];
     [CTLayoutManager pinView:self.vehicleSelectionView toSuperView:self.view padding:UIEdgeInsetsMake(125, 0, 0, 0)];
     
-    __weak typeof (self) weakSelf = self;
-
     _filterViewController = [CTFilterViewController initInViewController:self
                                                                 withData:self.search.vehicleAvailability];
-    
-    self.filterViewController.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData) {
-        weakSelf.filteredData = filteredData;
-        [weakSelf.vehicleSelectionView updateSelection:filteredData
-                                            pickupDate:weakSelf.search.pickupDate
-                                           dropoffDate:weakSelf.search.dropoffDate
-                                           sortByPrice:weakSelf.sortingByPrice];
-        [weakSelf updateAvailableCarsLabel:filteredData.count];
-    };
+    self.filterViewController.delegate = self;
     
     [self updateAvailableCarsLabel:self.search.vehicleAvailability.items.count];
     
@@ -207,8 +197,8 @@
 }
 
 - (IBAction)backTapped:(id)sender {
-    if (self.navigationController.viewControllers.firstObject == self) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.navigationController.viewControllers.firstObject == self || !self.navigationController) {
+        [self dismiss];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -274,31 +264,49 @@
 //MARK: analyitics
 - (void)tagScreen
 {
-    [self sendEvent:NO customParams:@{@"eventName" : @"Vehicle Selection Step",
-                                      @"stepName" : @"Step2",
-                                      @"age" : self.search.driverAge.stringValue,
-                                      @"clientID" : [CTSDKSettings instance].clientId,
-                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode,
-                                      @"pickupID" : self.search.pickupLocation.code,
-                                      @"pickupName" : self.search.pickupLocation.name,
-                                      @"pickupDate" : [self.search.pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
-                                      @"pickupTime" : [self.search.pickupDate stringFromDateWithFormat:@"HH:mm"],
-                                      @"pickupCountry" : self.search.pickupLocation.countryCode,
-                                      @"returnID" : self.search.dropoffLocation.code,
-                                      @"returnName" : self.search.dropoffLocation.name,
-                                      @"returnDate" : [self.search.dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
-                                      @"returnTime" : [self.search.dropoffDate stringFromDateWithFormat:@"HH:mm"],
-                                      @"returnCountry" : self.search.dropoffLocation.countryCode,
-                                      @"currency" : [CTSDKSettings instance].homeCountryCode
-                                      } eventName:@"Step of search" eventType:@"Step"];
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:@2];
+//    [self sendEvent:NO customParams:@{@"eventName" : @"Vehicle Selection Step",
+//                                      @"stepName" : @"Step2",
+//                                      @"age" : self.search.driverAge.stringValue,
+//                                      @"clientID" : [CTSDKSettings instance].clientId,
+//                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode,
+//                                      @"pickupID" : self.search.pickupLocation.code,
+//                                      @"pickupName" : self.search.pickupLocation.name,
+//                                      @"pickupDate" : [self.search.pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+//                                      @"pickupTime" : [self.search.pickupDate stringFromDateWithFormat:@"HH:mm"],
+//                                      @"pickupCountry" : self.search.pickupLocation.countryCode,
+//                                      @"returnID" : self.search.dropoffLocation.code,
+//                                      @"returnName" : self.search.dropoffLocation.name,
+//                                      @"returnDate" : [self.search.dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+//                                      @"returnTime" : [self.search.dropoffDate stringFromDateWithFormat:@"HH:mm"],
+//                                      @"returnCountry" : self.search.dropoffLocation.countryCode,
+//                                      @"currency" : [CTSDKSettings instance].homeCountryCode
+//                                      } eventName:@"Step of search" eventType:@"Step"];
+//    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:@2];
+}
+
+//MARK: CTFilterDelegate
+
+- (void)filterDidUpdate:(NSArray<CTAvailabilityItem *> *)filteredData
+{
+    _filteredData = filteredData;
+    [self.vehicleSelectionView updateSelection:filteredData
+                                        pickupDate:self.search.pickupDate
+                                       dropoffDate:self.search.dropoffDate
+                                       sortByPrice:self.sortingByPrice];
+    [self updateAvailableCarsLabel:filteredData.count];
 }
 
 //MARK: CTVehicleSelectionViewDelegate
 - (void)didSelectVehicle:(CTAvailabilityItem *)item
 {
     self.search.selectedVehicle = item;
-    [self pushToDestination];
+    if (!self.navigationController) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self dismissViewControllerAnimated:YES completion:nil];
+        });
+    } else {
+        [self pushToDestination];
+    }
 }
 
 @end
