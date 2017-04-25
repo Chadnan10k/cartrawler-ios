@@ -36,6 +36,7 @@
 {
     _vehicle = vehicle;
     [self addData:vehicle pickupDate:pickupDate dropoffDate:dropoffDate];
+    [self createAlertFeatureView];
 }
 
 - (instancetype)init
@@ -43,7 +44,6 @@
     self = [super init];
     [self createViews];
     [self applyConstraints];
-    [self createAlertFeatureView];
     return self;
 }
 
@@ -105,13 +105,27 @@
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     
-    UIImage *sample = [UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil];
+    if (self.vehicle.isUSBEnabled) {
+        UIImage *icon = [UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureUSB)];
+    }
     
-    [self.featureAlertView insertImage:sample withText:@"Some text"];
-    [self.featureAlertView insertImage:sample withText:@"Some text"];
-    [self.featureAlertView insertImage:sample withText:@"Some text"];
-    [self.featureAlertView insertImage:sample withText:@"Some text Some Text tttttt tttttttttttt"];
-
+    if (self.vehicle.isBluetoothEnabled) {
+        UIImage *icon = [UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureBluetooth)];
+    }
+    
+    if (self.vehicle.isAirConditioned) {
+        UIImage *icon = [UIImage imageNamed:@"aircon" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalVehicleAirConditioning)];
+    }
+    
+    if (self.vehicle.isGPSIncluded) {
+        UIImage *icon = [UIImage imageNamed:@"gps" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureGPS)];
+    }
+    UIImage *icon = [UIImage imageNamed:@"gears" inBundle:bundle compatibleWithTraitCollection:nil];
+    [self.featureAlertView insertImage:icon withText:self.vehicle.transmissionType];
 }
 
 - (void)addData:(CTVehicle *)vehicle pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate

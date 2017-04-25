@@ -9,6 +9,7 @@
 #import "CTImageTextView.h"
 #import "CTLayoutManager.h"
 #import "CartrawlerSDK+UIView.h"
+#import "CartrawlerSDK+UIImageView.h"
 #import "CTLabel.h"
 
 @interface CTImageTextView()
@@ -47,6 +48,7 @@
     UIImageView *imageView = [UIImageView new];
     imageView.translatesAutoresizingMaskIntoConstraints = NO;
     imageView.image = image;
+    [imageView applyTint];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [view addSubview:imageView];
     [imageView setHeightConstraint:@25 priority:@1000];

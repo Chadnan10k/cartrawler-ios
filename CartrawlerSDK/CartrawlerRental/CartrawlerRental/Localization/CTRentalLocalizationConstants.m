@@ -356,4 +356,12 @@ NSString * const CTRentalExtrasPaidAtDesk = @"extras_paid_at_desk";
 
 NSString * const CTRentalExtrasViewAll = @"view_all";
 
+//Features
+
+NSString * const CTRentalFeatureUSB = @"feature_usb";
+
+NSString * const CTRentalFeatureBluetooth = @"feature_bluetooth";
+
+NSString * const CTRentalFeatureGPS = @"feature_gps";
+
 @end

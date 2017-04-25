@@ -239,6 +239,18 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly) BOOL isAirConditioned;
 /**
+ Bool stating if car has bluetooth
+ */
+@property (nonatomic, readonly) BOOL isBluetoothEnabled;
+/**
+ Bool stating if car has a USB port
+ */
+@property (nonatomic, readonly) BOOL isUSBEnabled;
+/**
+ Bool stating if car has included GPS
+ */
+@property (nonatomic, readonly) BOOL isGPSIncluded;
+/**
  *  Passenger quantity vehicle can take
  */
 @property (nonatomic, nonnull, readonly) NSNumber *passengerQty;

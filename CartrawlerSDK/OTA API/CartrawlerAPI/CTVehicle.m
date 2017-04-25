@@ -73,11 +73,17 @@
 	} else {
 		_isAvailable = NO;
 	}
+
+    _isAirConditioned = [dictionary[@"VehAvailCore"][@"Vehicle"][@"@AirConditionInd"] boolValue];
     
-	_isAirConditioned = [dictionary[@"VehAvailCore"][@"Vehicle"][@"@AirConditionInd"] boolValue];
-	
-	_transmissionType = dictionary[@"VehAvailCore"][@"Vehicle"][@"@TransmissionType"];	
-	
+    _isBluetoothEnabled = [dictionary[@"TPA_Extensions"][@"Fleet"][@"FleetGroup"][@"Vehicle"][@"@BlueTooth"] boolValue];
+    
+    _isUSBEnabled = [dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Fleet"][@"FleetGroup"][@"Vehicle"][@"@USBConnection"] boolValue];
+    
+    _isGPSIncluded = [dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Fleet"][@"FleetGroup"][@"Vehicle"][@"@GPSIncluded"] boolValue];
+
+    _transmissionType = dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Fleet"][@"FleetGroup"][@"Vehicle"][@"@TransmissionType"];
+    	
 	_fuelType = dictionary[@"VehAvailCore"][@"Vehicle"][@"@FuelType"];
 	
 	_driveType = dictionary[@"VehAvailCore"][@"Vehicle"][@"@DriveType"];

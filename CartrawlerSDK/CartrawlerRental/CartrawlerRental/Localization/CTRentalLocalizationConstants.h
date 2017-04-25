@@ -359,4 +359,12 @@ extern NSString * const CTRentalExtrasPaidAtDesk;
 
 extern NSString * const CTRentalExtrasViewAll;
 
+//Features
+
+extern NSString * const CTRentalFeatureUSB;
+
+extern NSString * const CTRentalFeatureBluetooth;
+
+extern NSString * const CTRentalFeatureGPS;
+
 @end

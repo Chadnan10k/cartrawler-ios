@@ -144,6 +144,19 @@
     if (vehicle.isAirConditioned) {
         features++;
     }
+    
+    if (vehicle.isUSBEnabled) {
+        features++;
+    }
+    
+    if (vehicle.isBluetoothEnabled) {
+        features++;
+    }
+    
+    if (vehicle.isGPSIncluded) {
+        features++;
+    }
+    
     //lets ++ for transmission
     features++;
     self.moreLabel.text = [NSString stringWithFormat:@"+%d", features];

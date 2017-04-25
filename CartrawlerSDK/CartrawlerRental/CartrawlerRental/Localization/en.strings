@@ -355,3 +355,7 @@
 "extras_paid_at_desk" = "Extras will be paid for at desk";
 
 "view_all" = "View All";
+
+"feature_usb" = "USB port";
+"feature_bluetooth" = "Bluetooth";
+"feature_gps" = "GPS";
