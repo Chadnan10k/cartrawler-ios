@@ -11,12 +11,15 @@
 #import <CartrawlerSDK/CTHeaders.h>
 #import "CTInsuranceView.h"
 #import "CTExtrasCarouselView.h"
-#import "CTExtrasCollectionView.h"
 #import "CTExtrasListViewController.h"
 #import "CTRentalConstants.h"
 #import "CTPaymentSummaryContainerView.h"
+#import "CTInsuranceDetailViewController.h"
+#import "CTCountryPickerView.h"
+#import "CTVehicleSelectionViewController.h"
+#import <CartrawlerSDK/CTLoadingView.h>
 
-@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTExtrasCarouselViewDelegate, CTPaymentSummaryContainerViewDelegate>
+@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTInsuranceDetailDelegate, CTCountryPickerDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate, CTPaymentSummaryContainerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -32,6 +35,12 @@
 @property (nonatomic, strong) CTInfoTip *extrasInfoTip;
 @property (nonatomic, strong) CTInsuranceView *insuranceView;
 @property (nonatomic, strong) CTExtrasCarouselView *extrasView;
+
+//Alert view custom views
+@property (nonatomic, strong) CTCountryPickerView *countryPicker;
+
+//Temporary variables
+@property (nonatomic, strong) NSString *tempCountryCode;
 
 @end
 
@@ -58,12 +67,24 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self refreshView];
+}
+
+- (void)refreshView
+{
+    _tempCountryCode = [CTSDKSettings instance].homeCountryCode;
+    self.search.isBuyingInsurance = NO;
+    self.search.insurance = nil;
     [self.vehicleDetailsView setVehicle:self.search.selectedVehicle.vehicle
                              pickupDate:self.search.pickupDate
                             dropoffDate:self.search.dropoffDate];
+    __weak typeof(self) weakSelf = self;
     
     [self.insuranceView retrieveInsurance:self.cartrawlerAPI
-                                   search:self.search];
+                                   search:self.search
+                               completion:^(CTInsurance *insurance) {
+                                   weakSelf.search.insurance = insurance;
+                               }];
 
     [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
     
@@ -105,6 +126,9 @@
     [self.alertView addAction:[CTAlertAction actionWithTitle:@"Test OK" handler:^(CTAlertAction *action) {
         
     }]];
+    
+    _countryPicker = [CTCountryPickerView new];
+    self.countryPicker.delegate = self;
 }
 
 
@@ -177,7 +201,7 @@
     CTTabContainerView *tabContainerView = [[CTTabContainerView alloc] initWithTabTitles:@[@"INCLUDED", @"RATINGS"] views:@[listView1, listView2] selectedIndex:0];
     tabContainerView.animationContainerView = self.view;
     
-    [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:tabContainerView];
+    [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 0, 0) view:tabContainerView];
 }
 
 - (NSAttributedString *)attributedStringWithBlackText:(NSString *)blackText blueText:(NSString *)blueText {
@@ -197,7 +221,7 @@
 {
     _insuranceView = [CTInsuranceView new];
     self.insuranceView.delegate = self;
-    [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.insuranceView];
+    [self.layoutManager insertView:UIEdgeInsetsMake(0, 0, 8, 0) view:self.insuranceView];
 }
 
 // MARK: Extras View
@@ -230,20 +254,99 @@
 // MARK: CTInfoTipDelegate
 - (void)infoTipWasTapped:(CTInfoTip *)infoTip
 {
-    [self.navigationController pushViewController:self.optionalRoute animated:YES];
+    if (infoTip == self.extrasInfoTip) {
+        [self.navigationController pushViewController:self.optionalRoute animated:YES];
+    }
 }
 
 // MARK: CTInsurance Delegate
 - (void)didAddInsurance:(CTInsurance *)insurance
 {
-    self.search.insurance = insurance;
-    self.search.isBuyingInsurance = YES;
+    [self presentInsuranceAlert];
 }
 
 - (void)didRemoveInsurance
 {
     self.search.insurance = nil;
     self.search.isBuyingInsurance = NO;
+}
+
+- (void)didTapMoreInsuranceDetail
+{
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:bundle];
+    CTInsuranceDetailViewController *detailViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalInsuranceViewIdentifier];
+    detailViewController.search = self.search;
+    detailViewController.insuranceDetailDelegate = self;
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}
+
+- (void)didTapAddInsurance:(CTInsuranceDetailViewController *)detailViewController
+{
+    [self presentInsuranceAlert];
+}
+
+- (void)presentInsuranceAlert
+{
+    [self.alertView removeAllActions];
+    __weak typeof(self) weakSelf = self;
+    [self.alertView addAction:[CTAlertAction actionWithTitle:@"Cancel" handler:^(CTAlertAction *action) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.alertView dismissViewControllerAnimated:YES completion:nil];
+        });
+    }]];
+    
+    [self.alertView addAction:[CTAlertAction actionWithTitle:@"Confirm" handler:^(CTAlertAction *action) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf checkIfNeedsRefresh];
+        });
+    }]];
+    
+    [self.alertView setTitle:@"Yo!" message:@"We need to confirm this is the country you were born in."];
+    self.alertView.customView = self.countryPicker;
+    [self presentViewController:self.alertView animated:YES completion:nil];
+    
+}
+
+- (void)didChangeCountrySelection:(NSString *)countryCode
+{
+    _tempCountryCode = countryCode;
+}
+
+- (void)checkIfNeedsRefresh
+{
+    if (![self.tempCountryCode isEqualToString:[CTSDKSettings instance].homeCountryCode]) {
+        
+        //remove
+        [self.alertView setTitle:@"Loading" message:@"Finding best price"];
+        [self.alertView removeAllActions];
+        
+        self.alertView.customView = [CTLoadingView new];
+        
+        [[CTSDKSettings instance] setHomeCountryCode:self.tempCountryCode];
+        [[CTSDKSettings instance] setHomeCountryName:[[CTSDKSettings instance] countryName:self.tempCountryCode]];
+        __weak typeof(self) weakSelf = self;
+        [self requestNewVehiclePrice:^(BOOL success, NSString *errorMessage) {
+            if (success) {
+                NSLog(@"refreshed");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+                    [weakSelf refreshView];
+                });
+            } else {
+                NSLog(@"pop view");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+                    [weakSelf presentVehicleSelection];
+                });
+            }
+        }];
+    } else {
+        NSLog(@"no refresh needed");
+        [self.alertView dismissViewControllerAnimated:YES completion:nil];
+        self.search.isBuyingInsurance = YES;
+        [self.insuranceView presentSelectedState];
+    }
 }
 
 // MARK: CTListView Delegate
@@ -287,11 +390,6 @@
     
 }
 
-- (void)didTapTermsAndConditions:(NSURL *)termsURL
-{
-    
-}
-
 // MARK: Actions
 - (IBAction)backTapped:(id)sender
 {
@@ -311,5 +409,23 @@
     }
 }
 
+// MARK: Presentation
+
+- (void)presentVehicleSelection
+{
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalResultsStoryboard bundle:bundle];
+    CTVehicleSelectionViewController *selectionViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalResultsViewIdentifier];
+    selectionViewController.search = self.search;
+    selectionViewController.delegate = self;
+    [self presentModalViewController:selectionViewController];
+}
+
+- (void)didDismissViewController:(NSString *)identifier
+{
+//    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// MARK: Seleciton view controller delegate
 
 @end

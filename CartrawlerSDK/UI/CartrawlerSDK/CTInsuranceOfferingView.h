@@ -17,6 +17,6 @@ typedef void (^CTInsuranceTap)(void);
 @property (nonatomic) CTInsuranceTap addAction;
 @property (nonatomic) CTInsuranceTap termsAndConditionsAction;
 
-- (void)updateInsurance:(CTInsurance *)insurance;
+- (void)updateInsurance:(CTInsurance *)insurance pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate;
 
 @end

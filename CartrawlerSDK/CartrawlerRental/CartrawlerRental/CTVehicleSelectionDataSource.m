@@ -14,7 +14,6 @@
 @property (nonatomic, strong) NSArray <CTAvailabilityItem *> *vehicles;
 @property (nonatomic, strong) NSDate *pickupDate;
 @property (nonatomic, strong) NSDate *dropoffDate;
-@property (nonatomic, assign) CGFloat lastContentOffset;
 
 @end
 
@@ -35,6 +34,15 @@
         _vehicles = [self sortVehiclesByPrice:data];
     } else {
         _vehicles = [self sortVehiclesByRecommendedIndex:data];
+    }
+}
+
+- (void)sortByPrice:(BOOL)sortByPrice
+{
+    if (sortByPrice) {
+        _vehicles = [self sortVehiclesByPrice:self.vehicles];
+    } else {
+        _vehicles = [self sortVehiclesByRecommendedIndex:self.vehicles];
     }
 }
 

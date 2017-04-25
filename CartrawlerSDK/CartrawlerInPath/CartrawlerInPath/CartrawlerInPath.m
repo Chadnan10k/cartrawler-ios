@@ -205,6 +205,7 @@
     [[CTSDKSettings instance] setHomeCountryName: self.defaultCountryName];
     [CTSDKSettings instance].disableCurrencySelection = YES;
     [[CTRentalSearch instance] setFromCopy:self.defaultSearch];
+    [CTRentalSearch instance].selectedVehicle = nil;
     [self configureViews];
     [self presentRentalNavigationController:parentViewController showSelection:YES];
     [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@1];
@@ -226,10 +227,8 @@
 - (void)configureViews
 {
     //The sdk handles most of the routing, but for in path we only need to display up to payment summary,
-    //so lets nil the summary destination so it will dismiss
-    
-    self.rental.vehicleDetailsViewController.destinationViewController = nil;
-    self.rental.vehicleDetailsViewController.delegate = self;
+    self.rental.vehicleSelectionViewController.destinationViewController = nil;
+    self.rental.vehicleSelectionViewController.delegate = self;
     
 }
 
@@ -241,12 +240,12 @@
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
     
     if (self.didFailToFetchResults) {
-        [navController setViewControllers:@[self.rental.searchDetailsViewController]];
+        [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
     } else {
         if (showSelection) {
             [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
         } else {
-            [navController setViewControllers:@[self.rental.vehicleDetailsViewController]];
+            [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
         }
     }
     
@@ -377,6 +376,9 @@
 
 - (void)didDismissViewController:(NSString *)identifier
 {
+    if (![CTRentalSearch instance].selectedVehicle)
+        return;
+    
     CTRentalSearch *search = [CTRentalSearch instance];
     CTRentalBooking *booking = [[CTRentalBooking alloc] initFromSearch:search];
     CTInPathVehicle *vehicle = [[CTInPathVehicle alloc] init:search];

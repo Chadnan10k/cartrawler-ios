@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTVehicleAvailability.h>
 
+@protocol CTFilterDelegate <NSObject>
+
+- (void)filterDidUpdate:(NSArray<CTAvailabilityItem *> *)filteredData;
+
+@end
+
 @interface CTFilterViewController : UIViewController
 
-
-typedef void (^CTFilteredCompletion)(NSArray<CTVehicle *> *filteredData);
-@property (nonatomic, strong) CTFilteredCompletion filterCompletion;
+@property (nonatomic, weak) id<CTFilterDelegate> delegate;
 
 + (CTFilterViewController *)initInViewController:(UIViewController *)viewController withData:(CTVehicleAvailability *)data;
 - (void)updateData:(CTVehicleAvailability *)data;

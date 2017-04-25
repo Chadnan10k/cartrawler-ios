@@ -230,6 +230,14 @@
 
 // MARK: Action Buttons
 
+- (void)removeAllActionButtons
+{
+    for (UIView *subview in self.actionButtonContainerView.subviews) {
+        [subview removeFromSuperview];
+    }
+    _actionButtons = @[];
+}
+
 - (void)setActionButtons:(NSArray *)actionButtons {
     if (actionButtons.count == 0) {
         return;

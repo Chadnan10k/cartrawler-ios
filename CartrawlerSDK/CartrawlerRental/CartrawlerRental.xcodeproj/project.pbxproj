@@ -55,10 +55,6 @@
 		451E75611E042CC100D58F71 /* CTMerhandisingBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E755A1E042CC100D58F71 /* CTMerhandisingBanner.h */; };
 		451E75621E042CC100D58F71 /* CTMerhandisingBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E755B1E042CC100D58F71 /* CTMerhandisingBanner.m */; };
 		451E75641E042CC100D58F71 /* CTVehicleSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E755D1E042CC100D58F71 /* CTVehicleSelectionViewController.m */; };
-		451E756A1E042D4200D58F71 /* CTVehicleDetailsPageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75661E042D4200D58F71 /* CTVehicleDetailsPageViewController.h */; };
-		451E756B1E042D4200D58F71 /* CTPageSelectionCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75671E042D4200D58F71 /* CTPageSelectionCollectionViewCell.h */; };
-		451E756C1E042D4200D58F71 /* CTPageSelectionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E75681E042D4200D58F71 /* CTPageSelectionCollectionViewCell.m */; };
-		451E756D1E042D4200D58F71 /* CTVehicleDetailsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E75691E042D4200D58F71 /* CTVehicleDetailsPageViewController.m */; };
 		451E75721E042D6800D58F71 /* CTTermsDetailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E756E1E042D6800D58F71 /* CTTermsDetailViewController.h */; };
 		451E75731E042D6800D58F71 /* CTTermsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E756F1E042D6800D58F71 /* CTTermsViewController.h */; };
 		451E75741E042D6800D58F71 /* CTTermsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E75701E042D6800D58F71 /* CTTermsDetailViewController.m */; };
@@ -81,8 +77,6 @@
 		451E75991E042E5D00D58F71 /* CTVehicleFeaturesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E75951E042E5D00D58F71 /* CTVehicleFeaturesDataSource.m */; };
 		451E759F1E042E6C00D58F71 /* CTIncludedCollectionViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E759B1E042E6C00D58F71 /* CTIncludedCollectionViewLayout.h */; };
 		451E75A11E042E6C00D58F71 /* CTIncludedCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E759D1E042E6C00D58F71 /* CTIncludedCollectionViewLayout.m */; };
-		451E75A41E042E9200D58F71 /* CTInsuranceViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75A21E042E9200D58F71 /* CTInsuranceViewController.h */; };
-		451E75A51E042E9200D58F71 /* CTInsuranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E75A31E042E9200D58F71 /* CTInsuranceViewController.m */; };
 		451E75AD1E042EA200D58F71 /* CTOptionalExtrasViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75A61E042EA200D58F71 /* CTOptionalExtrasViewController.h */; };
 		451E75AE1E042EA200D58F71 /* CTOptionalExtraTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75A71E042EA200D58F71 /* CTOptionalExtraTableViewCell.h */; };
 		451E75AF1E042EA200D58F71 /* CTOptionalExtrasView.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75A81E042EA200D58F71 /* CTOptionalExtrasView.h */; };
@@ -155,6 +149,8 @@
 		454B4D781E6ED61400625F03 /* CTVehicleDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454B4D761E6ED61400625F03 /* CTVehicleDetailsView.m */; };
 		454B4D7C1E6EF07300625F03 /* CTVehicleDetailsCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 454B4D7A1E6EF07300625F03 /* CTVehicleDetailsCollectionViewCell.h */; };
 		454B4D7D1E6EF07300625F03 /* CTVehicleDetailsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 454B4D7B1E6EF07300625F03 /* CTVehicleDetailsCollectionViewCell.m */; };
+		4558C3621EAA7546001CAB7C /* CTVehicleInfoView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4558C3601EAA7546001CAB7C /* CTVehicleInfoView.h */; };
+		4558C3631EAA7546001CAB7C /* CTVehicleInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4558C3611EAA7546001CAB7C /* CTVehicleInfoView.m */; };
 		457678541E082B9600FE591A /* CTRentalConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 457678521E082B9600FE591A /* CTRentalConstants.h */; };
 		457678551E082B9600FE591A /* CTRentalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 457678531E082B9600FE591A /* CTRentalConstants.m */; };
 		4576785A1E08388100FE591A /* CTCurrency.csv in Resources */ = {isa = PBXBuildFile; fileRef = 457678571E08388100FE591A /* CTCurrency.csv */; };
@@ -177,15 +173,25 @@
 		BC54F15A1E54981B00A7C871 /* pt.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC54F1591E54981B00A7C871 /* pt.strings */; };
 		BC7522C21E705818005918D2 /* CTInsuranceView.h in Headers */ = {isa = PBXBuildFile; fileRef = BC7522C01E705818005918D2 /* CTInsuranceView.h */; };
 		BC7522C31E705818005918D2 /* CTInsuranceView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7522C11E705818005918D2 /* CTInsuranceView.m */; };
+		BC95464F1EAE5C120097312C /* CTExtrasCarouselViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BC95464B1EAE5C120097312C /* CTExtrasCarouselViewCell.h */; };
+		BC9546501EAE5C120097312C /* CTExtrasCarouselViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC95464C1EAE5C120097312C /* CTExtrasCarouselViewCell.m */; };
+		BC95465F1EAE5C9B0097312C /* CTExtrasCarouselView.h in Headers */ = {isa = PBXBuildFile; fileRef = BC9546541EAE5C9B0097312C /* CTExtrasCarouselView.h */; };
+		BC9546601EAE5C9B0097312C /* CTExtrasCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9546551EAE5C9B0097312C /* CTExtrasCarouselView.m */; };
+		BC9546651EAE5C9B0097312C /* CTExtrasCollectionViewCellProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = BC95465A1EAE5C9B0097312C /* CTExtrasCollectionViewCellProtocol.h */; };
+		BC9546661EAE5C9B0097312C /* CTExtrasListCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BC95465B1EAE5C9B0097312C /* CTExtrasListCollectionViewCell.h */; };
+		BC9546671EAE5C9B0097312C /* CTExtrasListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC95465C1EAE5C9B0097312C /* CTExtrasListCollectionViewCell.m */; };
+		BC9546681EAE5C9B0097312C /* CTExtrasListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BC95465D1EAE5C9B0097312C /* CTExtrasListViewController.h */; };
+		BC9546691EAE5C9B0097312C /* CTExtrasListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC95465E1EAE5C9B0097312C /* CTExtrasListViewController.m */; };
+		BC95466C1EAF50AE0097312C /* CTExtrasCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = BC95466A1EAF50AE0097312C /* CTExtrasCollectionView.h */; };
+		BC95466D1EAF50AE0097312C /* CTExtrasCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC95466B1EAF50AE0097312C /* CTExtrasCollectionView.m */; };
+		BCE1934D1EA7811D0097C5CB /* CTCountryPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = BCE1934B1EA7811D0097C5CB /* CTCountryPickerView.h */; };
+		BCE1934E1EA7811D0097C5CB /* CTCountryPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE1934C1EA7811D0097C5CB /* CTCountryPickerView.m */; };
+		BCE193561EA91D4C0097C5CB /* CTVehiclePresenterViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BCE193541EA91D4C0097C5CB /* CTVehiclePresenterViewController.h */; };
+		BCE193571EA91D4C0097C5CB /* CTVehiclePresenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE193551EA91D4C0097C5CB /* CTVehiclePresenterViewController.m */; };
 		BCF4DA3F1E8BC84A00E8C5EC /* CTSearchView.h in Headers */ = {isa = PBXBuildFile; fileRef = BCF4DA3D1E8BC84A00E8C5EC /* CTSearchView.h */; };
 		BCF4DA401E8BC84A00E8C5EC /* CTSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF4DA3E1E8BC84A00E8C5EC /* CTSearchView.m */; };
 		BCF4DA471E8C191F00E8C5EC /* CTSelectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = BCF4DA451E8C191F00E8C5EC /* CTSelectionView.h */; };
 		BCF4DA481E8C191F00E8C5EC /* CTSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF4DA461E8C191F00E8C5EC /* CTSelectionView.m */; };
-		E726E3EA1E9D726D004DC355 /* CTExtrasListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E726E3E81E9D726D004DC355 /* CTExtrasListViewController.h */; };
-		E726E3EB1E9D726D004DC355 /* CTExtrasListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E726E3E91E9D726D004DC355 /* CTExtrasListViewController.m */; };
-		E726E3EE1E9FD926004DC355 /* CTExtrasListCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E726E3EC1E9FD926004DC355 /* CTExtrasListCollectionViewCell.h */; };
-		E726E3EF1E9FD926004DC355 /* CTExtrasListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E726E3ED1E9FD926004DC355 /* CTExtrasListCollectionViewCell.m */; };
-		E726E3F11E9FDB2B004DC355 /* CTExtrasCollectionViewCellProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = E726E3F01E9FDB2B004DC355 /* CTExtrasCollectionViewCellProtocol.h */; };
 		E76FC9FE1EAF049300ABC9B1 /* CTPaymentSummaryCompactView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FC9F61EAF049300ABC9B1 /* CTPaymentSummaryCompactView.h */; };
 		E76FC9FF1EAF049300ABC9B1 /* CTPaymentSummaryCompactView.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FC9F71EAF049300ABC9B1 /* CTPaymentSummaryCompactView.m */; };
 		E76FCA001EAF049300ABC9B1 /* CTPaymentSummaryContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FC9F81EAF049300ABC9B1 /* CTPaymentSummaryContainerView.h */; };
@@ -195,11 +201,8 @@
 		E76FCA041EAF049300ABC9B1 /* CTPaymentSummaryExpandedView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FC9FC1EAF049300ABC9B1 /* CTPaymentSummaryExpandedView.h */; };
 		E76FCA051EAF049300ABC9B1 /* CTPaymentSummaryExpandedView.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FC9FD1EAF049300ABC9B1 /* CTPaymentSummaryExpandedView.m */; };
 		E7716D151E9D1D8700242966 /* CTExtrasCarouselView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7716D131E9D1D8700242966 /* CTExtrasCarouselView.h */; };
-		E7716D161E9D1D8700242966 /* CTExtrasCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7716D141E9D1D8700242966 /* CTExtrasCarouselView.m */; };
-		E7BC1F971E9D0C8E00007842 /* CTExtrasCarouselViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BC1F931E9D0C8E00007842 /* CTExtrasCarouselViewCell.h */; };
-		E7BC1F981E9D0C8E00007842 /* CTExtrasCarouselViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BC1F941E9D0C8E00007842 /* CTExtrasCarouselViewCell.m */; };
-		E7BC1F991E9D0C8E00007842 /* CTExtrasCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BC1F951E9D0C8E00007842 /* CTExtrasCollectionView.h */; };
-		E7BC1F9A1E9D0C8E00007842 /* CTExtrasCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BC1F961E9D0C8E00007842 /* CTExtrasCollectionView.m */; };
+		E78758FC1EAFA6D100FA6E32 /* CTInsuranceDetailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E78758FA1EAFA6D100FA6E32 /* CTInsuranceDetailViewController.h */; };
+		E78758FD1EAFA6D100FA6E32 /* CTInsuranceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78758FB1EAFA6D100FA6E32 /* CTInsuranceDetailViewController.m */; };
 		E7E8D9D51E37D9C9004B786C /* CTRentalLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7E8D9D31E37D9C9004B786C /* CTRentalLocalizationConstants.h */; };
 		E7E8D9D61E37D9C9004B786C /* CTRentalLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E8D9D41E37D9C9004B786C /* CTRentalLocalizationConstants.m */; };
 		E7E8D9D81E37DA1D004B786C /* en.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7E8D9D71E37DA1D004B786C /* en.strings */; };
@@ -254,10 +257,6 @@
 		451E755A1E042CC100D58F71 /* CTMerhandisingBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTMerhandisingBanner.h; path = CartrawlerRental/CTMerhandisingBanner.h; sourceTree = SOURCE_ROOT; };
 		451E755B1E042CC100D58F71 /* CTMerhandisingBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTMerhandisingBanner.m; path = CartrawlerRental/CTMerhandisingBanner.m; sourceTree = SOURCE_ROOT; };
 		451E755D1E042CC100D58F71 /* CTVehicleSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTVehicleSelectionViewController.m; path = CartrawlerRental/CTVehicleSelectionViewController.m; sourceTree = SOURCE_ROOT; };
-		451E75661E042D4200D58F71 /* CTVehicleDetailsPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTVehicleDetailsPageViewController.h; path = CartrawlerRental/CTVehicleDetailsPageViewController.h; sourceTree = SOURCE_ROOT; };
-		451E75671E042D4200D58F71 /* CTPageSelectionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTPageSelectionCollectionViewCell.h; path = CartrawlerRental/CTPageSelectionCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		451E75681E042D4200D58F71 /* CTPageSelectionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTPageSelectionCollectionViewCell.m; path = CartrawlerRental/CTPageSelectionCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		451E75691E042D4200D58F71 /* CTVehicleDetailsPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTVehicleDetailsPageViewController.m; path = CartrawlerRental/CTVehicleDetailsPageViewController.m; sourceTree = SOURCE_ROOT; };
 		451E756E1E042D6800D58F71 /* CTTermsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTTermsDetailViewController.h; path = CartrawlerRental/CTTermsDetailViewController.h; sourceTree = SOURCE_ROOT; };
 		451E756F1E042D6800D58F71 /* CTTermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTTermsViewController.h; path = CartrawlerRental/CTTermsViewController.h; sourceTree = SOURCE_ROOT; };
 		451E75701E042D6800D58F71 /* CTTermsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTTermsDetailViewController.m; path = CartrawlerRental/CTTermsDetailViewController.m; sourceTree = SOURCE_ROOT; };
@@ -280,8 +279,6 @@
 		451E75951E042E5D00D58F71 /* CTVehicleFeaturesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTVehicleFeaturesDataSource.m; path = CartrawlerRental/CTVehicleFeaturesDataSource.m; sourceTree = SOURCE_ROOT; };
 		451E759B1E042E6C00D58F71 /* CTIncludedCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTIncludedCollectionViewLayout.h; path = CartrawlerRental/CTIncludedCollectionViewLayout.h; sourceTree = SOURCE_ROOT; };
 		451E759D1E042E6C00D58F71 /* CTIncludedCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTIncludedCollectionViewLayout.m; path = CartrawlerRental/CTIncludedCollectionViewLayout.m; sourceTree = SOURCE_ROOT; };
-		451E75A21E042E9200D58F71 /* CTInsuranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTInsuranceViewController.h; path = CartrawlerRental/CTInsuranceViewController.h; sourceTree = SOURCE_ROOT; };
-		451E75A31E042E9200D58F71 /* CTInsuranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTInsuranceViewController.m; path = CartrawlerRental/CTInsuranceViewController.m; sourceTree = SOURCE_ROOT; };
 		451E75A61E042EA200D58F71 /* CTOptionalExtrasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTOptionalExtrasViewController.h; path = CartrawlerRental/CTOptionalExtrasViewController.h; sourceTree = SOURCE_ROOT; };
 		451E75A71E042EA200D58F71 /* CTOptionalExtraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTOptionalExtraTableViewCell.h; path = CartrawlerRental/CTOptionalExtraTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		451E75A81E042EA200D58F71 /* CTOptionalExtrasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTOptionalExtrasView.h; path = CartrawlerRental/CTOptionalExtrasView.h; sourceTree = SOURCE_ROOT; };
@@ -354,6 +351,8 @@
 		454B4D761E6ED61400625F03 /* CTVehicleDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleDetailsView.m; sourceTree = "<group>"; };
 		454B4D7A1E6EF07300625F03 /* CTVehicleDetailsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVehicleDetailsCollectionViewCell.h; sourceTree = "<group>"; };
 		454B4D7B1E6EF07300625F03 /* CTVehicleDetailsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleDetailsCollectionViewCell.m; sourceTree = "<group>"; };
+		4558C3601EAA7546001CAB7C /* CTVehicleInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVehicleInfoView.h; sourceTree = "<group>"; };
+		4558C3611EAA7546001CAB7C /* CTVehicleInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleInfoView.m; sourceTree = "<group>"; };
 		457678521E082B9600FE591A /* CTRentalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRentalConstants.h; sourceTree = "<group>"; };
 		457678531E082B9600FE591A /* CTRentalConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRentalConstants.m; sourceTree = "<group>"; };
 		457678571E08388100FE591A /* CTCurrency.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CTCurrency.csv; sourceTree = "<group>"; };
@@ -376,15 +375,25 @@
 		BC54F1591E54981B00A7C871 /* pt.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pt.strings; path = Localization/pt.strings; sourceTree = "<group>"; };
 		BC7522C01E705818005918D2 /* CTInsuranceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInsuranceView.h; sourceTree = "<group>"; };
 		BC7522C11E705818005918D2 /* CTInsuranceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsuranceView.m; sourceTree = "<group>"; };
+		BC95464B1EAE5C120097312C /* CTExtrasCarouselViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTExtrasCarouselViewCell.h; sourceTree = "<group>"; };
+		BC95464C1EAE5C120097312C /* CTExtrasCarouselViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTExtrasCarouselViewCell.m; sourceTree = "<group>"; };
+		BC9546541EAE5C9B0097312C /* CTExtrasCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTExtrasCarouselView.h; sourceTree = "<group>"; };
+		BC9546551EAE5C9B0097312C /* CTExtrasCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTExtrasCarouselView.m; sourceTree = "<group>"; };
+		BC95465A1EAE5C9B0097312C /* CTExtrasCollectionViewCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTExtrasCollectionViewCellProtocol.h; sourceTree = "<group>"; };
+		BC95465B1EAE5C9B0097312C /* CTExtrasListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTExtrasListCollectionViewCell.h; sourceTree = "<group>"; };
+		BC95465C1EAE5C9B0097312C /* CTExtrasListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTExtrasListCollectionViewCell.m; sourceTree = "<group>"; };
+		BC95465D1EAE5C9B0097312C /* CTExtrasListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTExtrasListViewController.h; sourceTree = "<group>"; };
+		BC95465E1EAE5C9B0097312C /* CTExtrasListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTExtrasListViewController.m; sourceTree = "<group>"; };
+		BC95466A1EAF50AE0097312C /* CTExtrasCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTExtrasCollectionView.h; sourceTree = "<group>"; };
+		BC95466B1EAF50AE0097312C /* CTExtrasCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTExtrasCollectionView.m; sourceTree = "<group>"; };
+		BCE1934B1EA7811D0097C5CB /* CTCountryPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCountryPickerView.h; sourceTree = "<group>"; };
+		BCE1934C1EA7811D0097C5CB /* CTCountryPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCountryPickerView.m; sourceTree = "<group>"; };
+		BCE193541EA91D4C0097C5CB /* CTVehiclePresenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVehiclePresenterViewController.h; sourceTree = "<group>"; };
+		BCE193551EA91D4C0097C5CB /* CTVehiclePresenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehiclePresenterViewController.m; sourceTree = "<group>"; };
 		BCF4DA3D1E8BC84A00E8C5EC /* CTSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSearchView.h; sourceTree = "<group>"; };
 		BCF4DA3E1E8BC84A00E8C5EC /* CTSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSearchView.m; sourceTree = "<group>"; };
 		BCF4DA451E8C191F00E8C5EC /* CTSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSelectionView.h; sourceTree = "<group>"; };
 		BCF4DA461E8C191F00E8C5EC /* CTSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSelectionView.m; sourceTree = "<group>"; };
-		E726E3E81E9D726D004DC355 /* CTExtrasListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTExtrasListViewController.h; sourceTree = "<group>"; };
-		E726E3E91E9D726D004DC355 /* CTExtrasListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTExtrasListViewController.m; sourceTree = "<group>"; };
-		E726E3EC1E9FD926004DC355 /* CTExtrasListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTExtrasListCollectionViewCell.h; sourceTree = "<group>"; };
-		E726E3ED1E9FD926004DC355 /* CTExtrasListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTExtrasListCollectionViewCell.m; sourceTree = "<group>"; };
-		E726E3F01E9FDB2B004DC355 /* CTExtrasCollectionViewCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTExtrasCollectionViewCellProtocol.h; sourceTree = "<group>"; };
 		E76FC9F61EAF049300ABC9B1 /* CTPaymentSummaryCompactView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTPaymentSummaryCompactView.h; path = CartrawlerRental/CTPaymentSummaryCompactView.h; sourceTree = SOURCE_ROOT; };
 		E76FC9F71EAF049300ABC9B1 /* CTPaymentSummaryCompactView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTPaymentSummaryCompactView.m; path = CartrawlerRental/CTPaymentSummaryCompactView.m; sourceTree = SOURCE_ROOT; };
 		E76FC9F81EAF049300ABC9B1 /* CTPaymentSummaryContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTPaymentSummaryContainerView.h; path = CartrawlerRental/CTPaymentSummaryContainerView.h; sourceTree = SOURCE_ROOT; };
@@ -394,11 +403,8 @@
 		E76FC9FC1EAF049300ABC9B1 /* CTPaymentSummaryExpandedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTPaymentSummaryExpandedView.h; path = CartrawlerRental/CTPaymentSummaryExpandedView.h; sourceTree = SOURCE_ROOT; };
 		E76FC9FD1EAF049300ABC9B1 /* CTPaymentSummaryExpandedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTPaymentSummaryExpandedView.m; path = CartrawlerRental/CTPaymentSummaryExpandedView.m; sourceTree = SOURCE_ROOT; };
 		E7716D131E9D1D8700242966 /* CTExtrasCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTExtrasCarouselView.h; sourceTree = "<group>"; };
-		E7716D141E9D1D8700242966 /* CTExtrasCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTExtrasCarouselView.m; sourceTree = "<group>"; };
-		E7BC1F931E9D0C8E00007842 /* CTExtrasCarouselViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTExtrasCarouselViewCell.h; path = CartrawlerRental/CTExtrasCarouselViewCell.h; sourceTree = SOURCE_ROOT; };
-		E7BC1F941E9D0C8E00007842 /* CTExtrasCarouselViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTExtrasCarouselViewCell.m; path = CartrawlerRental/CTExtrasCarouselViewCell.m; sourceTree = SOURCE_ROOT; };
-		E7BC1F951E9D0C8E00007842 /* CTExtrasCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTExtrasCollectionView.h; path = CartrawlerRental/CTExtrasCollectionView.h; sourceTree = SOURCE_ROOT; };
-		E7BC1F961E9D0C8E00007842 /* CTExtrasCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTExtrasCollectionView.m; path = CartrawlerRental/CTExtrasCollectionView.m; sourceTree = SOURCE_ROOT; };
+		E78758FA1EAFA6D100FA6E32 /* CTInsuranceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTInsuranceDetailViewController.h; path = CartrawlerRental/CTInsuranceDetailViewController.h; sourceTree = SOURCE_ROOT; };
+		E78758FB1EAFA6D100FA6E32 /* CTInsuranceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTInsuranceDetailViewController.m; path = CartrawlerRental/CTInsuranceDetailViewController.m; sourceTree = SOURCE_ROOT; };
 		E7E8D9D31E37D9C9004B786C /* CTRentalLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTRentalLocalizationConstants.h; path = Localization/CTRentalLocalizationConstants.h; sourceTree = "<group>"; };
 		E7E8D9D41E37D9C9004B786C /* CTRentalLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTRentalLocalizationConstants.m; path = Localization/CTRentalLocalizationConstants.m; sourceTree = "<group>"; };
 		E7E8D9D71E37DA1D004B786C /* en.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en.strings; path = Localization/en.strings; sourceTree = "<group>"; };
@@ -606,17 +612,6 @@
 			name = "Vehicle Selection";
 			sourceTree = "<group>";
 		};
-		451E745C1E0429F200D58F71 /* Page View Controller */ = {
-			isa = PBXGroup;
-			children = (
-				451E75661E042D4200D58F71 /* CTVehicleDetailsPageViewController.h */,
-				451E75691E042D4200D58F71 /* CTVehicleDetailsPageViewController.m */,
-				451E75671E042D4200D58F71 /* CTPageSelectionCollectionViewCell.h */,
-				451E75681E042D4200D58F71 /* CTPageSelectionCollectionViewCell.m */,
-			);
-			name = "Page View Controller";
-			sourceTree = "<group>";
-		};
 		451E74611E0429F200D58F71 /* Terms and Conditions */ = {
 			isa = PBXGroup;
 			children = (
@@ -695,7 +690,7 @@
 		451E747C1E0429F200D58F71 /* Vehicle Details */ = {
 			isa = PBXGroup;
 			children = (
-				451E745C1E0429F200D58F71 /* Page View Controller */,
+				BCE193531EA91D130097C5CB /* Presenter */,
 				451E74611E0429F200D58F71 /* Terms and Conditions */,
 				451E74641E0429F200D58F71 /* Expanding Info View */,
 				451E74691E0429F200D58F71 /* Supplier rating tab */,
@@ -707,6 +702,7 @@
 		451E74861E0429F200D58F71 /* Optional Extras */ = {
 			isa = PBXGroup;
 			children = (
+				BC95464A1EAE5BB50097312C /* Phase4 */,
 				451E75A61E042EA200D58F71 /* CTOptionalExtrasViewController.h */,
 				451E75AA1E042EA200D58F71 /* CTOptionalExtrasViewController.m */,
 				451E75A81E042EA200D58F71 /* CTOptionalExtrasView.h */,
@@ -722,8 +718,6 @@
 			isa = PBXGroup;
 			children = (
 				BC7522BF1E705807005918D2 /* Phase 4 */,
-				451E75A21E042E9200D58F71 /* CTInsuranceViewController.h */,
-				451E75A31E042E9200D58F71 /* CTInsuranceViewController.m */,
 			);
 			name = Insurance;
 			sourceTree = "<group>";
@@ -801,7 +795,6 @@
 				451E74571E0429F200D58F71 /* Vehicle Selection */,
 				451E747C1E0429F200D58F71 /* Vehicle Details */,
 				451E74871E0429F200D58F71 /* Insurance */,
-				E7BB87981EA68BDE0008CBAD /* Extras */,
 				451E74861E0429F200D58F71 /* Optional Extras */,
 				451E74A31E0429F200D58F71 /* Driver Details */,
 				451E749E1E0429F200D58F71 /* Summary */,
@@ -829,6 +822,22 @@
 				454B4D7B1E6EF07300625F03 /* CTVehicleDetailsCollectionViewCell.m */,
 			);
 			name = "Vehicle Details View";
+			sourceTree = "<group>";
+		};
+		4558C35E1EAA39E6001CAB7C /* Vehicle details */ = {
+			isa = PBXGroup;
+			children = (
+				4558C3601EAA7546001CAB7C /* CTVehicleInfoView.h */,
+				4558C3611EAA7546001CAB7C /* CTVehicleInfoView.m */,
+			);
+			name = "Vehicle details";
+			sourceTree = "<group>";
+		};
+		4558C35F1EAA39EE001CAB7C /* Vehicle selection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Vehicle selection";
 			sourceTree = "<group>";
 		};
 		457678511E082B8200FE591A /* Rental */ = {
@@ -862,8 +871,30 @@
 				45BEED3C1E71820400049F0C /* CTInsuranceOfferingView.m */,
 				45BEED3F1E71824000049F0C /* CTInsuranceAddedView.h */,
 				45BEED401E71824000049F0C /* CTInsuranceAddedView.m */,
+				E78758FA1EAFA6D100FA6E32 /* CTInsuranceDetailViewController.h */,
+				E78758FB1EAFA6D100FA6E32 /* CTInsuranceDetailViewController.m */,
+				BCE1934B1EA7811D0097C5CB /* CTCountryPickerView.h */,
+				BCE1934C1EA7811D0097C5CB /* CTCountryPickerView.m */,
 			);
 			name = "Phase 4";
+			sourceTree = "<group>";
+		};
+		BC95464A1EAE5BB50097312C /* Phase4 */ = {
+			isa = PBXGroup;
+			children = (
+				BC95466A1EAF50AE0097312C /* CTExtrasCollectionView.h */,
+				BC95466B1EAF50AE0097312C /* CTExtrasCollectionView.m */,
+				BC9546541EAE5C9B0097312C /* CTExtrasCarouselView.h */,
+				BC9546551EAE5C9B0097312C /* CTExtrasCarouselView.m */,
+				BC95465A1EAE5C9B0097312C /* CTExtrasCollectionViewCellProtocol.h */,
+				BC95465B1EAE5C9B0097312C /* CTExtrasListCollectionViewCell.h */,
+				BC95465C1EAE5C9B0097312C /* CTExtrasListCollectionViewCell.m */,
+				BC95465D1EAE5C9B0097312C /* CTExtrasListViewController.h */,
+				BC95465E1EAE5C9B0097312C /* CTExtrasListViewController.m */,
+				BC95464B1EAE5C120097312C /* CTExtrasCarouselViewCell.h */,
+				BC95464C1EAE5C120097312C /* CTExtrasCarouselViewCell.m */,
+			);
+			name = Phase4;
 			sourceTree = "<group>";
 		};
 		BC9F6E571E2655E5006DD990 /* Bookings Manager */ = {
@@ -875,6 +906,17 @@
 				451E762D1E043DFF00D58F71 /* CTRentalBookingCell.m */,
 			);
 			name = "Bookings Manager";
+			sourceTree = "<group>";
+		};
+		BCE193531EA91D130097C5CB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4558C35F1EAA39EE001CAB7C /* Vehicle selection */,
+				4558C35E1EAA39E6001CAB7C /* Vehicle details */,
+				BCE193541EA91D4C0097C5CB /* CTVehiclePresenterViewController.h */,
+				BCE193551EA91D4C0097C5CB /* CTVehiclePresenterViewController.m */,
+			);
+			name = Presenter;
 			sourceTree = "<group>";
 		};
 		BCF4DA3B1E8BC83600E8C5EC /* Phase 4 */ = {
@@ -903,48 +945,6 @@
 			name = "Payment Summary";
 			sourceTree = "<group>";
 		};
-		E7BB87981EA68BDE0008CBAD /* Extras */ = {
-			isa = PBXGroup;
-			children = (
-				E7BB879A1EA68F8F0008CBAD /* Generic */,
-				E7BB879C1EA68F9E0008CBAD /* Carousel */,
-				E7BB879B1EA68F960008CBAD /* List */,
-			);
-			name = Extras;
-			sourceTree = "<group>";
-		};
-		E7BB879A1EA68F8F0008CBAD /* Generic */ = {
-			isa = PBXGroup;
-			children = (
-				E726E3F01E9FDB2B004DC355 /* CTExtrasCollectionViewCellProtocol.h */,
-				E7BC1F951E9D0C8E00007842 /* CTExtrasCollectionView.h */,
-				E7BC1F961E9D0C8E00007842 /* CTExtrasCollectionView.m */,
-			);
-			name = Generic;
-			sourceTree = "<group>";
-		};
-		E7BB879B1EA68F960008CBAD /* List */ = {
-			isa = PBXGroup;
-			children = (
-				E726E3E81E9D726D004DC355 /* CTExtrasListViewController.h */,
-				E726E3E91E9D726D004DC355 /* CTExtrasListViewController.m */,
-				E726E3EC1E9FD926004DC355 /* CTExtrasListCollectionViewCell.h */,
-				E726E3ED1E9FD926004DC355 /* CTExtrasListCollectionViewCell.m */,
-			);
-			name = List;
-			sourceTree = "<group>";
-		};
-		E7BB879C1EA68F9E0008CBAD /* Carousel */ = {
-			isa = PBXGroup;
-			children = (
-				E7716D131E9D1D8700242966 /* CTExtrasCarouselView.h */,
-				E7716D141E9D1D8700242966 /* CTExtrasCarouselView.m */,
-				E7BC1F931E9D0C8E00007842 /* CTExtrasCarouselViewCell.h */,
-				E7BC1F941E9D0C8E00007842 /* CTExtrasCarouselViewCell.m */,
-			);
-			name = Carousel;
-			sourceTree = "<group>";
-		};
 		E7E8D9D21E37D989004B786C /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -971,8 +971,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				451E75C21E042F2E00D58F71 /* CTPaymentSummaryDataSource.h in Headers */,
-				E726E3EE1E9FD926004DC355 /* CTExtrasListCollectionViewCell.h in Headers */,
 				BC7522C21E705818005918D2 /* CTInsuranceView.h in Headers */,
+				BCE193561EA91D4C0097C5CB /* CTVehiclePresenterViewController.h in Headers */,
+				BC9546681EAE5C9B0097312C /* CTExtrasListViewController.h in Headers */,
 				451E76401E044D0800D58F71 /* CTSearchDetailsViewController.h in Headers */,
 				BCF4DA471E8C191F00E8C5EC /* CTSelectionView.h in Headers */,
 				451E752D1E042B5700D58F71 /* CTInterstitialViewController.h in Headers */,
@@ -982,14 +983,12 @@
 				451E75CF1E042F3F00D58F71 /* CTBookingSummaryView.h in Headers */,
 				451E75381E042B7000D58F71 /* CTLocationSearchDataSource.h in Headers */,
 				45BEED3D1E71820400049F0C /* CTInsuranceOfferingView.h in Headers */,
-				E726E3EA1E9D726D004DC355 /* CTExtrasListViewController.h in Headers */,
 				451E76041E042FE800D58F71 /* CTSearchValidation.h in Headers */,
-				E726E3F11E9FDB2B004DC355 /* CTExtrasCollectionViewCellProtocol.h in Headers */,
 				451E75961E042E5D00D58F71 /* CTVehicleFeatureTableViewCell.h in Headers */,
 				451E75781E042D7900D58F71 /* CTExpandingInfoView.h in Headers */,
 				451E75EA1E042FB600D58F71 /* CTPaymentViewController.h in Headers */,
 				45BEED411E71824000049F0C /* CTInsuranceAddedView.h in Headers */,
-				451E756B1E042D4200D58F71 /* CTPageSelectionCollectionViewCell.h in Headers */,
+				BC95464F1EAE5C120097312C /* CTExtrasCarouselViewCell.h in Headers */,
 				451E75AF1E042EA200D58F71 /* CTOptionalExtrasView.h in Headers */,
 				451E76001E042FE800D58F71 /* CTGenericValidation.h in Headers */,
 				451E75C11E042F2E00D58F71 /* CTPaymentLocationTableViewCell.h in Headers */,
@@ -999,8 +998,10 @@
 				451E76031E042FE800D58F71 /* CTDriverDetailsValidation.h in Headers */,
 				451E75FE1E042FE800D58F71 /* CTBookingCompletionValidation.h in Headers */,
 				451E76241E043DA000D58F71 /* CTSettingsSelectionViewController.h in Headers */,
+				BC9546651EAE5C9B0097312C /* CTExtrasCollectionViewCellProtocol.h in Headers */,
 				451E75EB1E042FB600D58F71 /* CTPaymentCompletionViewController.h in Headers */,
 				E76FC9FE1EAF049300ABC9B1 /* CTPaymentSummaryCompactView.h in Headers */,
+				BC9546661EAE5C9B0097312C /* CTExtrasListCollectionViewCell.h in Headers */,
 				451E75DE1E042F9200D58F71 /* CTAddressDetailsViewController.h in Headers */,
 				451E75BE1E042F2E00D58F71 /* CTPaymentDriverTableViewCell.h in Headers */,
 				451E762E1E043DFF00D58F71 /* CTRentalBookingCell.h in Headers */,
@@ -1008,37 +1009,38 @@
 				451E75EC1E042FB600D58F71 /* CTPaymentLoadingViewController.h in Headers */,
 				451E75BF1E042F2E00D58F71 /* CTPaymentSummaryTableViewCell.h in Headers */,
 				451E75461E042CA100D58F71 /* CTFilterContainer.h in Headers */,
+				BC95465F1EAE5C9B0097312C /* CTExtrasCarouselView.h in Headers */,
+				E78758FC1EAFA6D100FA6E32 /* CTInsuranceDetailViewController.h in Headers */,
 				451E75C01E042F2E00D58F71 /* CTPaymentVehicleTableViewCell.h in Headers */,
 				E76FCA041EAF049300ABC9B1 /* CTPaymentSummaryExpandedView.h in Headers */,
 				451E757F1E042DDC00D58F71 /* CTSupplierRatingTableViewCell.h in Headers */,
 				E76FCA021EAF049300ABC9B1 /* CTPaymentSummaryExpandedTableViewCell.h in Headers */,
 				451E757E1E042DDC00D58F71 /* CTSupplierRatingsViewController.h in Headers */,
+				BC95466C1EAF50AE0097312C /* CTExtrasCollectionView.h in Headers */,
 				451E75361E042B7000D58F71 /* CTLocationSearchTableViewCell.h in Headers */,
+				BCE1934D1EA7811D0097C5CB /* CTCountryPickerView.h in Headers */,
 				451E76221E043DA000D58F71 /* CTSettingsViewController.h in Headers */,
 				BCF4DA3F1E8BC84A00E8C5EC /* CTSearchView.h in Headers */,
 				E7716D151E9D1D8700242966 /* CTExtrasCarouselView.h in Headers */,
-				451E756A1E042D4200D58F71 /* CTVehicleDetailsPageViewController.h in Headers */,
 				E76FCA001EAF049300ABC9B1 /* CTPaymentSummaryContainerView.h in Headers */,
 				E7E8D9D51E37D9C9004B786C /* CTRentalLocalizationConstants.h in Headers */,
 				451E75971E042E5D00D58F71 /* CTVehicleFeaturesDataSource.h in Headers */,
 				454B4D771E6ED61400625F03 /* CTVehicleDetailsView.h in Headers */,
 				451E76021E042FE800D58F71 /* CTBasketValidation.h in Headers */,
-				E7BC1F971E9D0C8E00007842 /* CTExtrasCarouselViewCell.h in Headers */,
 				451E75AD1E042EA200D58F71 /* CTOptionalExtrasViewController.h in Headers */,
 				451E75721E042D6800D58F71 /* CTTermsDetailViewController.h in Headers */,
 				451E76361E0440AB00D58F71 /* CTFilterTableView.h in Headers */,
 				451E758E1E042E4B00D58F71 /* CTInclusionCollectionViewCell.h in Headers */,
 				451E75611E042CC100D58F71 /* CTMerhandisingBanner.h in Headers */,
+				4558C3621EAA7546001CAB7C /* CTVehicleInfoView.h in Headers */,
 				451E75481E042CA100D58F71 /* CTFilterViewController.h in Headers */,
 				451E762F1E043DFF00D58F71 /* CTRentalBookingsViewController.h in Headers */,
 				451E754A1E042CA100D58F71 /* CTFilterFactory.h in Headers */,
 				451E75541E042CB000D58F71 /* CTVehicleSelectionDataSource.h in Headers */,
-				E7BC1F991E9D0C8E00007842 /* CTExtrasCollectionView.h in Headers */,
 				451E759F1E042E6C00D58F71 /* CTIncludedCollectionViewLayout.h in Headers */,
 				451E76051E042FE800D58F71 /* CTInsuranceValidation.h in Headers */,
 				451E75881E042DFD00D58F71 /* CTVehicleDetailsViewController.h in Headers */,
 				BC10A01A1E968703009C7B9D /* CTVehicleDetailTableViewCell.h in Headers */,
-				451E75A41E042E9200D58F71 /* CTInsuranceViewController.h in Headers */,
 				451E75371E042B7000D58F71 /* CTLocationSearchViewController.h in Headers */,
 				457678541E082B9600FE591A /* CTRentalConstants.h in Headers */,
 				451E752C1E042B5700D58F71 /* CTInterstitialCollectionViewCell.h in Headers */,
@@ -1207,13 +1209,11 @@
 				BC7522C31E705818005918D2 /* CTInsuranceView.m in Sources */,
 				451E75801E042DDC00D58F71 /* CTSupplierRatingTableViewCell.m in Sources */,
 				451E75751E042D6800D58F71 /* CTTermsViewController.m in Sources */,
+				E78758FD1EAFA6D100FA6E32 /* CTInsuranceDetailViewController.m in Sources */,
 				451E76071E042FE800D58F71 /* CTDriverDetailsValidation.m in Sources */,
-				E7BC1F9A1E9D0C8E00007842 /* CTExtrasCollectionView.m in Sources */,
-				E726E3EF1E9FD926004DC355 /* CTExtrasListCollectionViewCell.m in Sources */,
 				451E75561E042CB000D58F71 /* CTVehicleSelectionView.m in Sources */,
 				451E75ED1E042FB600D58F71 /* CTPaymentLoadingViewController.m in Sources */,
 				E76FCA051EAF049300ABC9B1 /* CTPaymentSummaryExpandedView.m in Sources */,
-				451E75A51E042E9200D58F71 /* CTInsuranceViewController.m in Sources */,
 				451E75DF1E042F9200D58F71 /* CTAddressDetailsViewController.m in Sources */,
 				451E76251E043DA000D58F71 /* CTSettingsViewController.m in Sources */,
 				451E754E1E042CA100D58F71 /* CTFilterContainer.m in Sources */,
@@ -1224,13 +1224,11 @@
 				454B4D7D1E6EF07300625F03 /* CTVehicleDetailsCollectionViewCell.m in Sources */,
 				BCF4DA401E8BC84A00E8C5EC /* CTSearchView.m in Sources */,
 				451E76321E043DFF00D58F71 /* CTRentalBookingsViewController.m in Sources */,
-				451E756D1E042D4200D58F71 /* CTVehicleDetailsPageViewController.m in Sources */,
-				E7BC1F981E9D0C8E00007842 /* CTExtrasCarouselViewCell.m in Sources */,
 				45BEED3E1E71820400049F0C /* CTInsuranceOfferingView.m in Sources */,
 				451E75B21E042EA200D58F71 /* CTOptionalExtraTableViewCell.m in Sources */,
 				451E76411E044D0800D58F71 /* CTSearchDetailsViewController.m in Sources */,
 				451E75A11E042E6C00D58F71 /* CTIncludedCollectionViewLayout.m in Sources */,
-				E7716D161E9D1D8700242966 /* CTExtrasCarouselView.m in Sources */,
+				BCE193571EA91D4C0097C5CB /* CTVehiclePresenterViewController.m in Sources */,
 				451E75911E042E4B00D58F71 /* CTVehicleInclusionsDataSource.m in Sources */,
 				451E75891E042DFD00D58F71 /* CTVehicleDetailsViewController.m in Sources */,
 				451E76261E043DA000D58F71 /* CTSettingsSelectionViewController.m in Sources */,
@@ -1238,19 +1236,24 @@
 				451E75EE1E042FB600D58F71 /* CTPaymentCompletionViewController.m in Sources */,
 				451E75621E042CC100D58F71 /* CTMerhandisingBanner.m in Sources */,
 				451E75B11E042EA200D58F71 /* CTOptionalExtrasViewController.m in Sources */,
+				BCE1934E1EA7811D0097C5CB /* CTCountryPickerView.m in Sources */,
 				BCF4DA481E8C191F00E8C5EC /* CTSelectionView.m in Sources */,
 				E7E8D9D61E37D9C9004B786C /* CTRentalLocalizationConstants.m in Sources */,
 				E76FC9FF1EAF049300ABC9B1 /* CTPaymentSummaryCompactView.m in Sources */,
+				BC9546691EAE5C9B0097312C /* CTExtrasListViewController.m in Sources */,
 				451E76331E043DFF00D58F71 /* CTRentalBookingCell.m in Sources */,
 				451E76081E042FE800D58F71 /* CTInsuranceValidation.m in Sources */,
 				451E760B1E042FE800D58F71 /* CTBookingCompletionValidation.m in Sources */,
 				45BEED421E71824000049F0C /* CTInsuranceAddedView.m in Sources */,
+				BC9546501EAE5C120097312C /* CTExtrasCarouselViewCell.m in Sources */,
 				451E75571E042CB000D58F71 /* CTVehicleSelectionDataSource.m in Sources */,
 				BC10A01B1E968703009C7B9D /* CTVehicleDetailTableViewCell.m in Sources */,
+				BC9546671EAE5C9B0097312C /* CTExtrasListCollectionViewCell.m in Sources */,
 				451E76061E042FE800D58F71 /* CTGenericValidation.m in Sources */,
 				457678551E082B9600FE591A /* CTRentalConstants.m in Sources */,
-				E726E3EB1E9D726D004DC355 /* CTExtrasListViewController.m in Sources */,
+				BC9546601EAE5C9B0097312C /* CTExtrasCarouselView.m in Sources */,
 				451E758F1E042E4B00D58F71 /* CTInclusionCollectionViewCell.m in Sources */,
+				4558C3631EAA7546001CAB7C /* CTVehicleInfoView.m in Sources */,
 				451E75E31E042FA400D58F71 /* CTDriverDetailsViewController.m in Sources */,
 				451E754D1E042CA100D58F71 /* CTFilterFactory.m in Sources */,
 				451E75C51E042F2E00D58F71 /* CTPaymentSummaryTableViewCell.m in Sources */,
@@ -1271,10 +1274,10 @@
 				E76FCA031EAF049300ABC9B1 /* CTPaymentSummaryExpandedTableViewCell.m in Sources */,
 				451E76091E042FE800D58F71 /* CTSearchValidation.m in Sources */,
 				451E754B1E042CA100D58F71 /* CTFilterDataSource.m in Sources */,
+				BC95466D1EAF50AE0097312C /* CTExtrasCollectionView.m in Sources */,
 				451E75991E042E5D00D58F71 /* CTVehicleFeaturesDataSource.m in Sources */,
 				451E760A1E042FE800D58F71 /* CTPaymentValidation.m in Sources */,
 				451E75391E042B7000D58F71 /* CTLocationSearchTableViewCell.m in Sources */,
-				451E756C1E042D4200D58F71 /* CTPageSelectionCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -68,6 +68,7 @@
     
     self.leftImageView = [UIImageView new];
     self.leftImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.leftImageView.tintColor = [UIColor colorWithRed:202.0/255.0 green:226.0/255.0 blue:243.0/255.0 alpha:1.0];
     [self.leftBackgroundView addSubview:self.leftImageView];
     
     UIColor *textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
@@ -310,6 +311,10 @@
 }
 
 - (void)setChargeAmountHighlighted:(BOOL)chargeAmountHighlighted {
+}
+
+- (void)setImage:(UIImage *)image {
+    self.leftImageView.image = image;
 }
 
 // MARK: Detail Display

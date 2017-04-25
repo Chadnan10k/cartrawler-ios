@@ -132,7 +132,39 @@ static NSString * const reuseIdentifier = @"Cell";
     NSInteger count = extra.isIncludedInRate ? kDefaultExtrasCountWhenIncludedInRate : extra.qty;
     [cell setCount:count];
     
+    if ([cell respondsToSelector:@selector(setImage:)]) {
+        NSString *imageName = [self imageNameForExtra:extra];
+        UIImage *image = [[UIImage imageNamed:imageName inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [cell setImage:image];
+    }
+    
     return cell;
+}
+
+- (NSString *)imageNameForExtra:(CTExtraEquipment *)extra {
+    switch (extra.equipmentType) {
+        case CTExtraEquipmentTypeBoosterSeat:
+            return @"booster-seat";
+        case CTExtraEquipmentTypeGPS:
+            return @"gps";
+        case CTExtraEquipmentTypeInfantSeat:
+            return @"infant-seat";
+        case CTExtraEquipmentTypeSkiRack:
+            return @"ski-rack";
+        case CTExtraEquipmentTypeSnowChains:
+            return @"snow-chains";
+        case CTExtraEquipmentTypeSnowTires:
+            return @"snow-tires";
+        case CTExtraEquipmentTypeToddlerSeat:
+            return @"toddler-seat";
+        case CTExtraEquipmentTypeTollTag:
+            return @"toll-tag";
+        case CTExtraEquipmentTypeWifi:
+            return @"wifi";
+        default:
+            return @"booster-seat";
+            break;
+    }
 }
 
 // MARK: UICollectionViewDelegate

@@ -280,6 +280,36 @@ NSString * const CTRentalInsuranceInfoButtonTitle = @"insurance_info_button";
 
 NSString * const CTRentalInsuranceAddButtonTitle = @"insurance_add_button";
 
+NSString * const CTRentalInsuranceInfoTip1 = @"axa_upgrade_reason1";
+
+NSString * const CTRentalInsuranceInfoTip2 = @"axa_upgrade_reason2";
+
+NSString * const CTRentalInsuranceInfoTip3 = @"axa_upgrade_reason3";
+
+NSString * const CTRentalInsuranceTotal = @"insurance_total";
+
+NSString * const CTRentalInsurancePerDay = @"insurance_per_day";
+
+//Insurance detail vc
+
+NSString * const CTRentalInsuranceDetailTitle = @"insurance_detail_title";
+
+NSString * const CTRentalInsuranceDetailInfoTitle = @"insurance_detail_info_title";
+
+NSString * const CTRentalInsuranceDetailInfo = @"insurance_detail_info";
+
+NSString * const CTRentalInsuranceDetailTipTitle = @"insurance_tip_title";
+
+NSString * const CTRentalInsuranceDetailTip1 = @"insurance_detail_tip_1";
+
+NSString * const CTRentalInsuranceDetailTip2 = @"insurance_detail_tip_2";
+
+NSString * const CTRentalInsuranceDetailTip3 = @"insurance_detail_tip_3";
+
+NSString * const CTRentalInsuranceDetailTip4 = @"insurance_detail_tip_4";
+
+NSString * const CTRentalInsuranceDetailTip5 = @"insurance_detail_tip_5";
+
 NSString * const CTRentalInsuranceTermsConditions = @"insurance_terms_conditions";
 
 NSString * const CTRentalInsuranceAddedHeader = @"insurance_added_header";
@@ -315,6 +345,10 @@ NSString * const CTRentalVehicleMerchandisingBestReviewed = @"vehicle_best_revie
 NSString * const CTRentalResultsSortPrice = @"results_sort_price";
 
 NSString * const CTRentalResultsSortRecommended = @"results_sort_recommended";
+
+NSString * const CTRentalResultsOtherCars = @"results_other_cars";
+
+NSString * const CTRentalVehiclePriceBreakdownTip = @"vehicle_summary_price_breakdown";
 
 NSString * const CTRentalExtrasPerRental = @"per_rental";
 
