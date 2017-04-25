@@ -19,7 +19,11 @@
 @property (nonatomic, strong) NSLayoutConstraint *expandedViewTopConstraint;
 @end
 
+static CGFloat const kCollapsedHeight = 50.0f;
+
 @implementation CTPaymentSummaryContainerView
+
+// MARK: Create View
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -35,7 +39,6 @@
         self.expandedView = [CTPaymentSummaryExpandedView new];
         self.expandedView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:self.expandedView];
-        self.expandedView.alpha = 1;
         
         NSDictionary *views = @{@"compactView": self.compactView, @"expandedView": self.expandedView};
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[compactView]|"
@@ -75,6 +78,8 @@
     return self;
 }
 
+// MARK: Update View
+
 - (void)updateWithVehicle:(CTVehicle *)vehicle animated:(BOOL)animated {
     [self.compactView updateWithVehicle:vehicle];
     [self.expandedView updateWithVehicle:vehicle];
@@ -85,9 +90,7 @@
     [self.delegate paymentView:self needsUpdatedHeight:[self desiredHeight] animated:animated];
 }
 
-- (void)expandView {
-    [self setViewExpanded:YES];
-}
+// MARK: View Manipulation
 
 - (void)collapseView {
     [self setViewExpanded:NO];
@@ -100,7 +103,7 @@
 }
 
 - (CGFloat)desiredHeight {
-    return self.expanded ? self.expandedView.desiredHeight : 50;
+    return self.expanded ? self.expandedView.desiredHeight : kCollapsedHeight;
 }
 
 - (void)addTapGestureRecognizerToView:(UIView *)view {

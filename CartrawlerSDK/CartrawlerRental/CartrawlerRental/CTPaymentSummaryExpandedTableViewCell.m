@@ -48,9 +48,4 @@
     return self;
 }
 
-- (void)setUseBoldFont:(BOOL)useBoldFont {
-    self.titleLabel.font = useBoldFont ? [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.titleLabel.font.pointSize] : [UIFont fontWithName:[CTAppearance instance].fontName size:self.titleLabel.font.pointSize];
-    self.detailLabel.useBoldFont = useBoldFont ? [UIFont fontWithName:[CTAppearance instance].boldFontName size:self.titleLabel.font.pointSize] : [UIFont fontWithName:[CTAppearance instance].fontName size:self.titleLabel.font.pointSize];
-}
-
 @end

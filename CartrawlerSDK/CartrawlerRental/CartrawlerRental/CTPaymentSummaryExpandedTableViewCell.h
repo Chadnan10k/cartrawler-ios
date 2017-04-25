@@ -18,6 +18,4 @@
 
 @property (nonatomic, strong) CTLabel *detailLabel;
 
-@property (nonatomic, assign) BOOL useBoldFont;
-
 @end

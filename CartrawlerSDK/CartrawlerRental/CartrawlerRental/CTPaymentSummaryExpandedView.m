@@ -13,12 +13,6 @@
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import "CTRentalLocalizationConstants.h"
 
-typedef NS_ENUM(NSUInteger, CTPaymentSectionType) {
-    CTPaymentSectionTypePayNow,
-    CTPaymentSectionTypePayAtDesk,
-    CTPaymentSectionTypeIncludedInPrice
-};
-
 @interface CTPaymentSummaryExpandedView () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) CTVehicle *vehicle;
 
