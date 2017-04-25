@@ -266,9 +266,17 @@
  */
 
 // MARK: CTVehicleDetailsDelegate
-- (void)didTapMoreDetailsView
+- (void)didTapMoreDetailsView:(UIView *)view
 {
     if (self.delegate) {
+        [self.alertView setTitle:@"Features" message:nil];
+        [self.alertView removeAllActions];
+        __weak typeof(self) weakSelf = self;
+        [self.alertView addAction:[CTAlertAction actionWithTitle:@"Close"
+                                                         handler:^(CTAlertAction *action) {
+                                                             [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+                                                         }]];
+        self.alertView.customView = view;
         [self.delegate infoViewPresentViewController:self.alertView];
     }
 }

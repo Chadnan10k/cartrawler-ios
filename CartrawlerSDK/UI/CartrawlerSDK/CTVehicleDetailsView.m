@@ -15,6 +15,7 @@
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import "CTRentalLocalizationConstants.h"
 #import "CTVehicleDetailsCollectionViewCell.h"
+#import "CartrawlerSDK/CTImageTextView.h"
 
 @interface CTVehicleDetailsView() <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -25,6 +26,7 @@
 @property (nonatomic, strong) UIImageView *vehicleImageView;
 @property (nonatomic, strong) UICollectionView *infoCollectionView;
 @property (nonatomic, strong) CTVehicle *vehicle;
+@property (nonatomic, strong) CTImageTextView *featureAlertView;
 
 @end
 
@@ -41,6 +43,7 @@
     self = [super init];
     [self createViews];
     [self applyConstraints];
+    [self createAlertFeatureView];
     return self;
 }
 
@@ -94,6 +97,20 @@
     [self addSubview:self.subheaderRightLabel];
     [self addSubview:self.vehicleImageView];
     [self addSubview:self.infoCollectionView];
+}
+
+- (void)createAlertFeatureView
+{
+    _featureAlertView = [CTImageTextView new];
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    
+    UIImage *sample = [UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil];
+    
+    [self.featureAlertView insertImage:sample withText:@"Some text"];
+    [self.featureAlertView insertImage:sample withText:@"Some text"];
+    [self.featureAlertView insertImage:sample withText:@"Some text"];
+    [self.featureAlertView insertImage:sample withText:@"Some text Some Text tttttt tttttttttttt"];
 
 }
 
@@ -235,7 +252,7 @@
  - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.delegate) {
-        [self.delegate didTapMoreDetailsView];
+        [self.delegate didTapMoreDetailsView:self.featureAlertView];
     }
 }
 
