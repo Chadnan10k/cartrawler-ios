@@ -316,12 +316,24 @@ extern NSString * const CTRentalVehicleMerchandisingBestReviewed;
 
 extern NSString * const CTRentalResultsSortPrice;
 
-extern NSString * const CTRentalResultsSortRecommened;
+extern NSString * const CTRentalResultsSortRecommended;
 
 extern NSString * const CTRentalExtrasPerRental;
 
 extern NSString * const CTRentalExtrasPaidAtDesk;
 
 extern NSString * const CTRentalExtrasViewAll;
+
+extern NSString * const CTRentalCarRentalTotal;
+
+extern NSString * const CTRentalOtherCars;
+
+extern NSString * const CTRentalCarRental;
+
+extern NSString * const CTRentalPayNothingAtDesk;
+
+extern NSString * const CTRentalPayNow;
+
+extern NSString * const CTRentalPayAtDesk;
 
 @end

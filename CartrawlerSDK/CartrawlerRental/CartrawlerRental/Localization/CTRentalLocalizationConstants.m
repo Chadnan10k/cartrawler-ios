@@ -314,12 +314,24 @@ NSString * const CTRentalVehicleMerchandisingBestReviewed = @"vehicle_best_revie
 
 NSString * const CTRentalResultsSortPrice = @"results_sort_price";
 
-NSString * const CTRentalResultsSortRecommened = @"results_sort_recommened";
+NSString * const CTRentalResultsSortRecommended = @"results_sort_recommended";
 
 NSString * const CTRentalExtrasPerRental = @"per_rental";
 
 NSString * const CTRentalExtrasPaidAtDesk = @"extras_paid_at_desk";
 
 NSString * const CTRentalExtrasViewAll = @"view_all";
+
+NSString * const CTRentalCarRentalTotal = @"car_rental_total";
+
+NSString * const CTRentalOtherCars = @"other_cars";
+
+NSString * const CTRentalCarRental = @"car_rental";
+
+NSString * const CTRentalPayNothingAtDesk = @"pay_nothing_at_desk";
+
+NSString * const CTRentalPayNow = @"pay_now";
+
+NSString * const CTRentalPayAtDesk = @"pay_at_desk";
 
 @end
