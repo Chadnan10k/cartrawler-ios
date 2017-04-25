@@ -143,12 +143,22 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (NSString *)imageNameForExtra:(CTExtraEquipment *)extra {
     switch (extra.equipmentType) {
+        case CTExtraEquipmentTypeAdditionalDriver:
+            return @"additional-driver";
         case CTExtraEquipmentTypeBoosterSeat:
             return @"booster-seat";
+        case CTExtraEquipmentTypeBreathalyser:
+            return @"breathalyzer";
+        case CTExtraEquipmentTypeNavigationSystem:
+        case CTExtraEquipmentTypeNavigationalPhone:
         case CTExtraEquipmentTypeGPS:
             return @"gps";
         case CTExtraEquipmentTypeInfantSeat:
             return @"infant-seat";
+        case CTExtraEquipmentTypeLuggageRack:
+            return @"luggage-rack";
+        case CTExtraEquipmentTypeMobilePhone:
+            return @"mobile-phone";
         case CTExtraEquipmentTypeSkiRack:
             return @"ski-rack";
         case CTExtraEquipmentTypeSnowChains:
@@ -161,6 +171,8 @@ static NSString * const reuseIdentifier = @"Cell";
             return @"toll-tag";
         case CTExtraEquipmentTypeWifi:
             return @"wifi";
+        case CTExtraEquipmentTypeWinterPackage:
+            return @"winterpackage";
         default:
             return @"booster-seat";
             break;

@@ -23,19 +23,25 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM (NSUInteger, CTExtraEquipmentType) {
+    CTExtraEquipmentTypeMobilePhone,
     CTExtraEquipmentTypeLuggageRack,
     CTExtraEquipmentTypeSkiRack,
     CTExtraEquipmentTypeInfantSeat,
     CTExtraEquipmentTypeToddlerSeat,
     CTExtraEquipmentTypeBoosterSeat,
     CTExtraEquipmentTypeSnowChains,
-    CTExtraEquipmentTypeGPS,
-    CTExtraEquipmentTypeSnowTyres,
-    CTExtraEquipmentTypeAirCon,
+    CTExtraEquipmentTypeNavigationSystem,
+    CTExtraEquipmentTypeSnowTires,
+    CTExtraEquipmentTypeWinterPackage,
     CTExtraEquipmentTypeNavigationalPhone,
+    CTExtraEquipmentTypeSkiEquipped,
     CTExtraEquipmentTypeTollTag,
     CTExtraEquipmentTypeWifi,
     CTExtraEquipmentTypeAdditionalDriver,
+    CTExtraEquipmentTypeGPS,
+    CTExtraEquipmentTypeBreathalyser,
+    CTExtraEquipmentTypeSnowCover,
+    CTExtraEquipmentTypeAirCon,
     CTExtraEquipmentTypeGenericExtra
 };
 
