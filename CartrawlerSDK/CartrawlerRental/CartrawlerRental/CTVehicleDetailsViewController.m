@@ -71,16 +71,17 @@
 {
     _tempCountryCode = [CTSDKSettings instance].homeCountryCode;
     self.search.isBuyingInsurance = NO;
-    self.search.insurance = nil;    
+    self.search.insurance = nil;
     [self.vehicleDetailsView setVehicle:self.search.selectedVehicle.vehicle
                              pickupDate:self.search.pickupDate
                             dropoffDate:self.search.dropoffDate];
     __weak typeof(self) weakSelf = self;
     
     [self.insuranceView retrieveInsurance:self.cartrawlerAPI
-                                   search:self.search];
-
-    [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
+                                   search:self.search
+                               completion:^(CTInsurance *insurance) {
+                                   weakSelf.search.insurance = insurance;
+                               }];
 }
 
 /**
