@@ -350,5 +350,10 @@ NSString * const CTRentalResultsOtherCars = @"results_other_cars";
 
 NSString * const CTRentalVehiclePriceBreakdownTip = @"vehicle_summary_price_breakdown";
 
+NSString * const CTRentalExtrasPerRental = @"per_rental";
+
+NSString * const CTRentalExtrasPaidAtDesk = @"extras_paid_at_desk";
+
+NSString * const CTRentalExtrasViewAll = @"view_all";
 
 @end
