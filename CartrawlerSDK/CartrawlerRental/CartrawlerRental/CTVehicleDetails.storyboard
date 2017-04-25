@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1i-bM-q5G">
-                                <rect key="frame" x="0.0" y="60" width="600" height="660"/>
+                                <rect key="frame" x="0.0" y="110" width="600" height="610"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kJ-BG-kTB" customClass="CTDesignableView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="650"/>
@@ -48,6 +49,13 @@
                                     <constraint firstItem="8kJ-BG-kTB" firstAttribute="leading" secondItem="z1i-bM-q5G" secondAttribute="leading" id="lyF-lA-seY"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="urU-aA-7B2" userLabel="Payment Summary View" customClass="CTPaymentSummaryContainerView">
+                                <rect key="frame" x="0.0" y="60" width="600" height="50"/>
+                                <color key="backgroundColor" red="0.1647058824" green="0.57647058819999997" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="F8u-Fu-JlH"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2K-FU-SeP" customClass="CTNavigationView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <subviews>
@@ -94,12 +102,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="z1i-bM-q5G" firstAttribute="top" secondItem="m2K-FU-SeP" secondAttribute="bottom" id="2Gh-6G-24Q"/>
+                            <constraint firstItem="z1i-bM-q5G" firstAttribute="top" secondItem="m2K-FU-SeP" secondAttribute="bottom" constant="50" id="2Gh-6G-24Q"/>
                             <constraint firstItem="LJg-5J-nMM" firstAttribute="leading" secondItem="P83-YX-uHD" secondAttribute="leading" id="4p8-QY-A5f"/>
                             <constraint firstAttribute="trailing" secondItem="LJg-5J-nMM" secondAttribute="trailing" id="6GF-ul-G9a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="urU-aA-7B2" secondAttribute="trailing" constant="-20" id="Fwf-IU-iGl"/>
+                            <constraint firstItem="urU-aA-7B2" firstAttribute="leading" secondItem="P83-YX-uHD" secondAttribute="leadingMargin" constant="-20" id="Gk0-Ny-6Pu"/>
                             <constraint firstItem="m2K-FU-SeP" firstAttribute="top" secondItem="P83-YX-uHD" secondAttribute="top" id="KUS-Bw-8Vl"/>
                             <constraint firstAttribute="trailing" secondItem="m2K-FU-SeP" secondAttribute="trailing" id="Ph8-qe-Asc"/>
                             <constraint firstItem="z1i-bM-q5G" firstAttribute="leading" secondItem="P83-YX-uHD" secondAttribute="leading" id="R8e-T4-Wpr"/>
+                            <constraint firstItem="urU-aA-7B2" firstAttribute="top" secondItem="CI1-rV-9vf" secondAttribute="bottom" constant="40" id="RnR-MR-I91"/>
                             <constraint firstItem="ftz-8S-Imp" firstAttribute="top" secondItem="LJg-5J-nMM" secondAttribute="bottom" id="XFh-KJ-MVN"/>
                             <constraint firstItem="LJg-5J-nMM" firstAttribute="top" secondItem="z1i-bM-q5G" secondAttribute="bottom" id="XVO-ut-8aY"/>
                             <constraint firstAttribute="trailing" secondItem="z1i-bM-q5G" secondAttribute="trailing" id="YLA-R7-fHH"/>
@@ -112,6 +123,8 @@
                     <connections>
                         <outlet property="containerView" destination="8kJ-BG-kTB" id="hX9-Ng-IYV"/>
                         <outlet property="nextButton" destination="LJg-5J-nMM" id="tbi-lO-lhL"/>
+                        <outlet property="paymentSummaryHeightConstraint" destination="F8u-Fu-JlH" id="N3K-2a-fWS"/>
+                        <outlet property="paymentSummaryView" destination="urU-aA-7B2" id="NSI-hU-jxV"/>
                         <outlet property="scrollView" destination="z1i-bM-q5G" id="OpZ-Wv-tE0"/>
                     </connections>
                 </viewController>
