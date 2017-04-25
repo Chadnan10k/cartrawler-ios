@@ -184,6 +184,10 @@ static NSString * const reuseIdentifier = @"Cell";
     NSInteger index = [self.collectionView indexPathForCell:cell].row;
     CTExtraEquipment *extra = self.extras[index];
     
+    if (extra.isIncludedInRate) {
+        return;
+    }
+    
     if (extra.qty < kMaxExtras) {
         extra.qty++;
         [cell setDecrementEnabled:YES];
@@ -198,6 +202,10 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)cellDidTapDecrement:(UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *)cell {
     NSInteger index = [self.collectionView indexPathForCell:cell].row;
     CTExtraEquipment *extra = self.extras[index];
+    
+    if (extra.isIncludedInRate) {
+        return;
+    }
     
     if (extra.qty > 0) {
         extra.qty--;

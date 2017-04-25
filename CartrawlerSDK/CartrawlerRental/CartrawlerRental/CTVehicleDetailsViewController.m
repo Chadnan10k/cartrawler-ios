@@ -13,13 +13,12 @@
 #import "CTExtrasCarouselView.h"
 #import "CTExtrasListViewController.h"
 #import "CTRentalConstants.h"
-#import "CTPaymentSummaryContainerView.h"
 #import "CTInsuranceDetailViewController.h"
 #import "CTCountryPickerView.h"
 #import "CTVehicleSelectionViewController.h"
 #import <CartrawlerSDK/CTLoadingView.h>
 
-@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTInsuranceDetailDelegate, CTCountryPickerDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate, CTPaymentSummaryContainerViewDelegate>
+@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTInsuranceDetailDelegate, CTCountryPickerDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -28,8 +27,6 @@
 @property (strong, nonatomic) CTLayoutManager *layoutManager;
 
 //Nested views
-@property (weak, nonatomic) IBOutlet CTPaymentSummaryContainerView *paymentSummaryView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *paymentSummaryHeightConstraint;
 @property (nonatomic, strong) CTVehicleDetailsView *vehicleDetailsView;
 @property (nonatomic, strong) CTInfoTip *vehicleInfoTip;
 @property (nonatomic, strong) CTInfoTip *extrasInfoTip;
@@ -53,7 +50,6 @@
     
     _layoutManager = [CTLayoutManager layoutManagerWithContainer:self.containerView];
     
-    [self initPaymentSummaryView];
     [self initVehicleDetailsView];
     [self initVehicleDetailsInfoTip];
     [self initTabMenu];
@@ -88,33 +84,11 @@
 
     [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
     
-    [self.paymentSummaryView updateWithVehicle:self.search.selectedVehicle.vehicle animated:NO];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.paymentSummaryView collapseView];
 }
 
 /**
  View Creation
  */
-
-// MARK: Payment Summary View
-
-- (void)initPaymentSummaryView {
-    self.paymentSummaryView.delegate = self;
-    [self.paymentSummaryView updateWithVehicle:self.search.selectedVehicle.vehicle animated:NO];
-}
-
-- (void)paymentView:(CTPaymentSummaryContainerView *)paymentView needsUpdatedHeight:(CGFloat)height animated:(BOOL)animated {
-    self.paymentSummaryHeightConstraint.constant = height;
-    
-    [UIView animateWithDuration:animated ? 0.3 : 0
-                     animations:^{
-                         [self.view layoutIfNeeded];
-                     }];
-}
 
 //MARK: Alert View Init
 

@@ -17,6 +17,7 @@
 #import "CTRentalConstants.h"
 #import "CTRentalLocalizationConstants.h"
 #import "CTFilterViewController.h"
+#import "CTPaymentSummaryExpandedView.h"
 
 @interface CTVehiclePresenterViewController () <CTVehicleSelectionViewDelegate, CTVehicleInfoDelegate, CTFilterDelegate>
 
@@ -36,6 +37,11 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 @property (nonatomic, strong) CTFilterViewController *filterViewController;
 
 @property (nonatomic) CTPresentedView presentedView;
+
+@property (weak, nonatomic) IBOutlet CTPaymentSummaryExpandedView *summaryView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIView *dimmingView;
 
 @end
 
@@ -69,6 +75,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     } @catch (NSException *exception) {
         //do nothing
     }
+    [self hideDetailedPriceSummary];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -108,6 +115,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [self.vehicleDetailsView refreshView];
     [self updateNavigationBar];
     [self updatePriceSummary];
+    [self updateDetailedPriceSummary];
 }
 
 - (void)presentVehicleSelection
@@ -216,9 +224,12 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
         [alert addAction:cancel];
         
         [self presentViewController:alert animated:YES completion:nil];
-    } else {
-
     }
+    
+    if (self.presentedView == CTPresentedViewDetails) {
+            [self showDetailedPriceSummary];
+    }
+    
 }
 
 - (void)updatePriceSummary
@@ -232,6 +243,39 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
                                                      useSpace:YES];
     
     [self.rightButton setAttributedTitle:sortString forState:UIControlStateNormal];
+}
+
+- (void)updateDetailedPriceSummary
+{
+    [self.summaryView updateWithVehicle:self.search.selectedVehicle.vehicle];
+    self.summaryViewHeightConstraint.constant = self.summaryView.desiredHeight;
+    self.summaryViewTopConstraint.constant = -self.summaryView.desiredHeight;
+    [self.view layoutIfNeeded];
+}
+
+- (void)showDetailedPriceSummary
+{
+    [self updateDetailedPriceSummary];
+    self.summaryViewTopConstraint.constant = 0;
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.dimmingView.alpha = 0.3;
+                         [self.view layoutIfNeeded];
+                     }];
+}
+
+- (void)hideDetailedPriceSummary
+{
+    self.summaryViewTopConstraint.constant = -self.summaryView.desiredHeight;
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.dimmingView.alpha = 0;
+                         [self.view layoutIfNeeded];
+                     }];
+}
+
+- (IBAction)didInteractWithDetailedPriceSummary:(UIGestureRecognizer *)gestureRecognizer {
+    [self hideDetailedPriceSummary];
 }
 
 - (void)updateSortButtonByPrice:(BOOL)sortByPrice

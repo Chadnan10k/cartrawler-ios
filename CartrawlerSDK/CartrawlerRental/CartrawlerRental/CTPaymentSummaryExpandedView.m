@@ -31,9 +31,11 @@
 
 // MARK: View Creation
 
-- (instancetype)init {
-    self = [super init];
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        
         self.containerView = [self createContainerView];
         [self addSubview:self.containerView];
         
@@ -71,7 +73,7 @@
     tableView.backgroundColor = [UIColor clearColor];
     tableView.showsHorizontalScrollIndicator = NO;
     tableView.showsVerticalScrollIndicator = NO;
-    tableView.rowHeight = 20;
+    tableView.rowHeight = 30;
     [tableView registerClass:CTPaymentSummaryExpandedTableViewCell.class forCellReuseIdentifier:@"cell"];
     tableView.scrollEnabled = NO;
     
@@ -261,18 +263,31 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 0) {
+        return [self extrasForVehicle:self.vehicle includedInRate:YES].count + 1;
+    }
     return (section == 0) ? 1 : MAX(1, [self extrasForVehicle:self.vehicle includedInRate:NO].count);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CTPaymentSummaryExpandedTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor colorWithRed:3.0/255.0 green:40.0/255.0 blue:101.0/255.0 alpha:1.0];
-    return (indexPath.section == 0) ? [self formattedPayNowCell:cell] : [self formattedPayAtDeskCell:cell atIndex:indexPath.row];
+    return (indexPath.section == 0) ? [self formattedPayNowCell:cell atIndex:indexPath.row] : [self formattedPayAtDeskCell:cell atIndex:indexPath.row];
 }
 
-- (CTPaymentSummaryExpandedTableViewCell *)formattedPayNowCell:(CTPaymentSummaryExpandedTableViewCell *)cell {
-    cell.titleLabel.text = CTLocalizedString(CTRentalCarRental);
-    cell.detailLabel.text = [self.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
+- (CTPaymentSummaryExpandedTableViewCell *)formattedPayNowCell:(CTPaymentSummaryExpandedTableViewCell *)cell atIndex:(NSInteger)index {
+    if (index == 0) {
+        cell.titleLabel.text = CTLocalizedString(CTRentalCarRental);
+        cell.detailLabel.text = [self.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
+        return cell;
+    }
+    
+    NSArray *extras = [self extrasForVehicle:self.vehicle includedInRate:YES];
+    if (index <= extras.count) {
+        CTExtraEquipment *extraEquipment = extras[index - 1];
+        cell.titleLabel.text = extraEquipment.equipDescription;
+        cell.detailLabel.text = @"Free";
+    }
     return cell;
 }
 
@@ -280,6 +295,7 @@
     NSArray *extras = [self extrasForVehicle:self.vehicle includedInRate:NO];
     if (extras.count == 0) {
         cell.titleLabel.text = CTLocalizedString(CTRentalPayNothingAtDesk);
+        cell.detailLabel.text = @"";
     }
     
     if (index < extras.count) {
@@ -293,7 +309,7 @@
 // MARK: UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 40.0;
+    return 30.0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -331,7 +347,12 @@
 
 - (NSArray *)extrasForVehicle:(CTVehicle *)vehicle includedInRate:(BOOL)includedInRate {
     return [vehicle.extraEquipment filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(CTExtraEquipment *extraEquipment, NSDictionary<NSString *,id> * _Nullable bindings) {
-        return extraEquipment.qty > 0 && extraEquipment.isIncludedInRate == includedInRate;
+        if (includedInRate) {
+            return extraEquipment.isIncludedInRate == includedInRate;
+        } else {
+            return extraEquipment.qty > 0 && extraEquipment.isIncludedInRate == includedInRate;
+        }
+        
     }]];
 }
 
