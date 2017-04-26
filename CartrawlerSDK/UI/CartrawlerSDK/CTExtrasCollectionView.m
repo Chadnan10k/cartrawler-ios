@@ -132,7 +132,51 @@ static NSString * const reuseIdentifier = @"Cell";
     NSInteger count = extra.isIncludedInRate ? kDefaultExtrasCountWhenIncludedInRate : extra.qty;
     [cell setCount:count];
     
+    if ([cell respondsToSelector:@selector(setImage:)]) {
+        NSString *imageName = [self imageNameForExtra:extra];
+        UIImage *image = [[UIImage imageNamed:imageName inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [cell setImage:image];
+    }
+    
     return cell;
+}
+
+- (NSString *)imageNameForExtra:(CTExtraEquipment *)extra {
+    switch (extra.equipmentType) {
+        case CTExtraEquipmentTypeAdditionalDriver:
+            return @"additional-driver";
+        case CTExtraEquipmentTypeBoosterSeat:
+            return @"booster-seat";
+        case CTExtraEquipmentTypeBreathalyser:
+            return @"breathalyzer";
+        case CTExtraEquipmentTypeNavigationSystem:
+        case CTExtraEquipmentTypeNavigationalPhone:
+        case CTExtraEquipmentTypeGPS:
+            return @"gps";
+        case CTExtraEquipmentTypeInfantSeat:
+            return @"infant-seat";
+        case CTExtraEquipmentTypeLuggageRack:
+            return @"luggage-rack";
+        case CTExtraEquipmentTypeMobilePhone:
+            return @"mobile-phone";
+        case CTExtraEquipmentTypeSkiRack:
+            return @"ski-rack";
+        case CTExtraEquipmentTypeSnowChains:
+            return @"snow-chains";
+        case CTExtraEquipmentTypeSnowTires:
+            return @"snow-tires";
+        case CTExtraEquipmentTypeToddlerSeat:
+            return @"toddler-seat";
+        case CTExtraEquipmentTypeTollTag:
+            return @"toll-tag";
+        case CTExtraEquipmentTypeWifi:
+            return @"wifi";
+        case CTExtraEquipmentTypeWinterPackage:
+            return @"winterpackage";
+        default:
+            return @"booster-seat";
+            break;
+    }
 }
 
 // MARK: UICollectionViewDelegate
@@ -160,8 +204,6 @@ static NSString * const reuseIdentifier = @"Cell";
         [self.indexesOfCellsWithDetailDisplayed addIndex:indexPath.row];
         [cell setDetailDisplayed:YES animated:YES];
     }
-    
-    
     
     [collectionView performBatchUpdates:nil completion:nil];
 }
