@@ -314,24 +314,20 @@
 
 - (void)presentInsuranceAlert
 {
-    [self.alertView removeAllActions];
-    __weak typeof(self) weakSelf = self;
-    [self.alertView addAction:[CTAlertAction actionWithTitle:@"Cancel" handler:^(CTAlertAction *action) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.alertView dismissViewControllerAnimated:YES completion:nil];
-        });
+    CTAlertViewController *alert = [CTAlertViewController alertControllerWithTitle:@"Yo!" message:@"We need to confirm this is the country you were born in."];
+    
+    [alert addAction:[CTAlertAction actionWithTitle:@"Cancel" handler:^(CTAlertAction *action) {
+        [alert dismissViewControllerAnimated:YES completion:nil];
     }]];
     
-    [self.alertView addAction:[CTAlertAction actionWithTitle:@"Confirm" handler:^(CTAlertAction *action) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf checkIfNeedsRefresh];
-        });
+    [alert addAction:[CTAlertAction actionWithTitle:@"Confirm" handler:^(CTAlertAction *action) {
+        [self checkIfNeedsRefresh:alert];
     }]];
     
-    [self.alertView setTitle:@"Yo!" message:@"We need to confirm this is the country you were born in."];
-    self.alertView.customView = self.countryPicker;
+    alert.customView = self.countryPicker;
+    
     if (self.delegate) {
-        [self.delegate infoViewPresentViewController:self.alertView];
+        [self.delegate infoViewPresentViewController:alert];
     }
 }
 
@@ -340,15 +336,14 @@
     _tempCountryCode = countryCode;
 }
 
-- (void)checkIfNeedsRefresh
+- (void)checkIfNeedsRefresh:(CTAlertViewController *)alert
 {
     if (![self.tempCountryCode isEqualToString:[CTSDKSettings instance].homeCountryCode]) {
         
         //remove
-        [self.alertView setTitle:@"Loading" message:@"Finding best price"];
-        [self.alertView removeAllActions];
-        
-        self.alertView.customView = [CTLoadingView new];
+        [alert setTitle:@"Loading" message:@"Finding best price"];
+        [alert removeAllActions];
+        alert.customView = [CTLoadingView new];
         
         [[CTSDKSettings instance] setHomeCountryCode:self.tempCountryCode];
         [[CTSDKSettings instance] setHomeCountryName:[[CTSDKSettings instance] countryName:self.tempCountryCode]];
@@ -358,12 +353,12 @@
             [self.delegate infoViewRequestNewVehiclePrice:^(BOOL success, NSString *error) {
                 if (success) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+                        [alert dismissViewControllerAnimated:YES completion:nil];
                         [weakSelf refreshView];
                     });
                 } else {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+                        [alert dismissViewControllerAnimated:YES completion:nil];
                         [weakSelf presentVehicleSelection];
                     });
                 }
@@ -373,7 +368,7 @@
 
     } else {
         NSLog(@"no refresh needed");
-        [self.alertView dismissViewControllerAnimated:YES completion:nil];
+        [alert dismissViewControllerAnimated:YES completion:nil];
         self.search.isBuyingInsurance = YES;
         [self.insuranceView presentSelectedState];
     }
