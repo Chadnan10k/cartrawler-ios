@@ -14,7 +14,7 @@
 #import "CTRentalLocalizationConstants.h"
 
 @interface CTPaymentSummaryExpandedView () <UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong) CTVehicle *vehicle;
+@property (nonatomic, strong) CTRentalSearch *search;
 
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UITableView *tableView;
@@ -242,14 +242,18 @@
 
 // MARK: View Update
 
-- (void)updateWithVehicle:(CTVehicle *)vehicle {
-    self.vehicle = vehicle;
+- (void)updateWithSearch:(CTRentalSearch *)search {
+    self.search = search;
     
-    self.rentalTotalLabel.text = [vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
+    self.rentalTotalLabel.text = [self.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
     
     [self.tableView reloadData];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableViewHeightConstraint.constant = self.tableView.contentSize.height;
+}
+
+- (CTVehicle *)vehicle {
+    return self.search.selectedVehicle.vehicle;
 }
 
 - (CGFloat)desiredHeight {
@@ -264,7 +268,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return [self extrasForVehicle:self.vehicle includedInRate:YES].count + 1;
+        NSInteger carRentalItemCount = 1;
+        NSInteger insuranceItemCount = self.search.isBuyingInsurance ? 1 : 0;
+        NSInteger includedInRateItemsCount = [self extrasForVehicle:self.vehicle includedInRate:YES].count;
+        return carRentalItemCount + insuranceItemCount + includedInRateItemsCount;
     }
     return (section == 0) ? 1 : MAX(1, [self extrasForVehicle:self.vehicle includedInRate:NO].count);
 }
@@ -282,12 +289,18 @@
         return cell;
     }
     
-    NSArray *extras = [self extrasForVehicle:self.vehicle includedInRate:YES];
-    if (index <= extras.count) {
-        CTExtraEquipment *extraEquipment = extras[index - 1];
-        cell.titleLabel.text = extraEquipment.equipDescription;
-        cell.detailLabel.text = @"Free";
+    NSInteger insuranceItemCount = self.search.isBuyingInsurance ? 1 : 0;
+    if (index == insuranceItemCount) {
+        cell.titleLabel.text = @"Insurance";
+        cell.detailLabel.text = [self.search.insurance.costAmount numberStringWithCurrencyCode];
+        return cell;
     }
+    
+    NSArray *extras = [self extrasForVehicle:self.vehicle includedInRate:YES];
+    CTExtraEquipment *extraEquipment = extras[index - (1 + insuranceItemCount)];
+    cell.titleLabel.text = extraEquipment.equipDescription;
+    cell.detailLabel.text = @"Free";
+    
     return cell;
 }
 

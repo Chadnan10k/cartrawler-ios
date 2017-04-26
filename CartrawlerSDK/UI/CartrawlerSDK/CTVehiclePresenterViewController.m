@@ -247,7 +247,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)updateDetailedPriceSummary
 {
-    [self.summaryView updateWithVehicle:self.search.selectedVehicle.vehicle];
+    [self.summaryView updateWithSearch:self.search];
     self.summaryViewHeightConstraint.constant = self.summaryView.desiredHeight;
     self.summaryViewTopConstraint.constant = -self.summaryView.desiredHeight;
     [self.view layoutIfNeeded];

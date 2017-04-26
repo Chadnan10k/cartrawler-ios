@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CartrawlerSDK/CTLabel.h>
-#import <CartrawlerAPI/CTVehicle.h>
+#import <CartrawlerSDK/CTRentalSearch.h>
 
 /**
  A view showing all extras and total rental cost
@@ -16,11 +16,11 @@
 @interface CTPaymentSummaryExpandedView : UIView
 
 /**
- Updates the extra equipment list and cost labels
+ Updates the payment information
 
- @param vehicle a vehicle
+ @param search a search
  */
-- (void)updateWithVehicle:(CTVehicle *)vehicle;
+- (void)updateWithSearch:(CTRentalSearch *)search;
 
 /**
  Use this instead of intrinsic content size property
