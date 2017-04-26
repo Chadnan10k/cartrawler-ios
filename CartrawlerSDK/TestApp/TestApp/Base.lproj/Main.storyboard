@@ -262,7 +262,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Cnq-ag-KoJ">
-                        <barButtonItem key="rightBarButtonItem" title="View Library" systemItem="refresh" id="gRZ-Pl-F4e">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="gRZ-Pl-F4e">
                             <connections>
                                 <action selector="refresh:" destination="9HL-5W-v1q" id="iLJ-i5-GuK"/>
                             </connections>

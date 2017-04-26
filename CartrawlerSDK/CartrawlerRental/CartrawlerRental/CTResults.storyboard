@@ -548,23 +548,6 @@
             </objects>
             <point key="canvasLocation" x="1807" y="1127"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Hwq-Su-z2P">
-            <objects>
-                <viewController id="nZf-TM-Ddk" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8CW-Ae-5yf"/>
-                        <viewControllerLayoutGuide type="bottom" id="IM3-o7-nOj"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ts4-ef-hiP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Fx-DF-kSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="backArrow" width="24" height="24"/>
