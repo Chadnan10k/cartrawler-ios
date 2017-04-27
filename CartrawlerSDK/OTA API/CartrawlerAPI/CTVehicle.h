@@ -251,6 +251,22 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly) BOOL isGPSIncluded;
 /**
+ Bool stating if car has included parking sensors
+ */
+@property (nonatomic, readonly) BOOL isParkingSensorEnabled;
+/**
+ Bool stating if car is German model
+ */
+@property (nonatomic, readonly) BOOL isGermanModel;
+/**
+ Bool stating if car has good fuel economy
+ */
+@property (nonatomic, readonly) BOOL isExceptionalFuelEconomy;
+/**
+ Bool stating if car has front demister
+ */
+@property (nonatomic, readonly) BOOL isFrontDemisterEnabled;
+/**
  *  Passenger quantity vehicle can take
  */
 @property (nonatomic, nonnull, readonly) NSNumber *passengerQty;

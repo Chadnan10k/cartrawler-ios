@@ -157,6 +157,22 @@
         features++;
     }
     
+    if (vehicle.isGermanModel) {
+        features++;
+    }
+    
+    if (vehicle.isParkingSensorEnabled) {
+        features++;
+    }
+    
+    if (vehicle.isExceptionalFuelEconomy) {
+        features++;
+    }
+    
+    if (vehicle.isFrontDemisterEnabled) {
+        features++;
+    }
+    
     //lets ++ for transmission
     features++;
     self.moreLabel.text = [NSString stringWithFormat:@"+%d", features];

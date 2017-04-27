@@ -236,13 +236,14 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZQ-BW-xOd">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZQ-BW-xOd">
                                         <rect key="frame" x="8" y="34" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="9CE-vy-zg7"/>
                                             <constraint firstAttribute="width" constant="25" id="Shw-GL-TD3"/>
                                         </constraints>
-                                        <state key="normal" image="backArrow">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="down_arrow">
                                             <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -250,14 +251,14 @@
                                             <action selector="dismiss:" destination="Izj-Jy-4x3" eventType="touchUpInside" id="524-cf-TdQ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tcv-R6-cB0">
-                                        <rect key="frame" x="342" y="34.5" width="25" height="25"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tcv-R6-cB0">
+                                        <rect key="frame" x="342" y="34" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="Trx-fQ-ibb"/>
                                             <constraint firstAttribute="height" constant="25" id="UeT-cl-XFE"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal">
+                                        <state key="normal" image="search">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -366,9 +367,11 @@
                     <connections>
                         <outlet property="containerView" destination="iKE-cF-Lnt" id="bP1-XV-d2q"/>
                         <outlet property="dateLabel" destination="Nhy-2b-uoZ" id="ltw-05-3Tc"/>
+                        <outlet property="dismissButton" destination="QZQ-BW-xOd" id="7W6-bu-ceC"/>
                         <outlet property="leftButton" destination="Gv2-xd-It7" id="QRu-xv-IZw"/>
                         <outlet property="locationLabel" destination="i9l-aR-P7a" id="mX1-cJ-oyI"/>
                         <outlet property="rightButton" destination="krI-To-qgU" id="7Uv-BI-thW"/>
+                        <outlet property="searchButton" destination="Tcv-R6-cB0" id="est-7m-ERu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZg-w2-GVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -505,5 +508,7 @@
     </scenes>
     <resources>
         <image name="backArrow" width="24" height="24"/>
+        <image name="down_arrow" width="24" height="24"/>
+        <image name="search" width="24" height="24"/>
     </resources>
 </document>

@@ -81,7 +81,16 @@
     _isUSBEnabled = [dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Fleet"][@"FleetGroup"][@"Vehicle"][@"@USBConnection"] boolValue];
     
     _isGPSIncluded = [dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Fleet"][@"FleetGroup"][@"Vehicle"][@"@GPSIncluded"] boolValue];
+    
+    
+    _isParkingSensorEnabled = [dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Fleet"][@"FleetGroup"][@"Vehicle"][@"@ParkingSensor"] boolValue];
 
+    _isGermanModel = [dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Fleet"][@"FleetGroup"][@"Vehicle"][@"@GuarenteedGermanModel"] boolValue];
+
+    _isFrontDemisterEnabled = [dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Fleet"][@"FleetGroup"][@"Vehicle"][@"@FrontScreenDemister"] boolValue];
+    
+    _isExceptionalFuelEconomy = [dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Fleet"][@"FleetGroup"][@"Vehicle"][@"@ExceptionalFuelEconomy"] boolValue];
+    
     _transmissionType = dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Fleet"][@"FleetGroup"][@"Vehicle"][@"@TransmissionType"];
     	
 	_fuelType = dictionary[@"VehAvailCore"][@"Vehicle"][@"@FuelType"];

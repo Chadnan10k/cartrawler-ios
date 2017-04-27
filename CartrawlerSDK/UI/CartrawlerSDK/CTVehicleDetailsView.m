@@ -106,12 +106,12 @@
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     
     if (self.vehicle.isUSBEnabled) {
-        UIImage *icon = [UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil];
+        UIImage *icon = [UIImage imageNamed:@"usb" inBundle:bundle compatibleWithTraitCollection:nil];
         [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureUSB)];
     }
     
     if (self.vehicle.isBluetoothEnabled) {
-        UIImage *icon = [UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil];
+        UIImage *icon = [UIImage imageNamed:@"bluetooth" inBundle:bundle compatibleWithTraitCollection:nil];
         [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureBluetooth)];
     }
     
@@ -124,6 +124,27 @@
         UIImage *icon = [UIImage imageNamed:@"gps" inBundle:bundle compatibleWithTraitCollection:nil];
         [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureGPS)];
     }
+    
+    if (self.vehicle.isGermanModel) {
+        UIImage *icon = [UIImage imageNamed:@"checkbox" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureGermanModel)];
+    }
+    
+    if (self.vehicle.isParkingSensorEnabled) {
+        UIImage *icon = [UIImage imageNamed:@"checkbox" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureParkingSensors)];
+    }
+    
+    if (self.vehicle.isExceptionalFuelEconomy) {
+        UIImage *icon = [UIImage imageNamed:@"fuel" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureFuelEconomy)];
+    }
+    
+    if (self.vehicle.isFrontDemisterEnabled) {
+        UIImage *icon = [UIImage imageNamed:@"checkbox" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureFrontDemister)];
+    }
+    
     UIImage *icon = [UIImage imageNamed:@"gears" inBundle:bundle compatibleWithTraitCollection:nil];
     [self.featureAlertView insertImage:icon withText:self.vehicle.transmissionType];
 }
