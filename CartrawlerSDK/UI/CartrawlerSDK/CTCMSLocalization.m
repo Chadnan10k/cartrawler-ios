@@ -39,7 +39,7 @@ static NSString *CTCMSLocalizationIndex = @"versions";
         [self loadLocalizationsForIdentifier:identifier];
     }
     
-    return self.localizations[identifier][key] ?: key;
+    return self.localizations[identifier][key] ?: nil;
 }
 
 - (NSString *)identifierForBundleIdentifier:(NSString *)bundleIdentifier {

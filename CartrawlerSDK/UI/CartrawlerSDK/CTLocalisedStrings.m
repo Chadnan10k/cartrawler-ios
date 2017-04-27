@@ -430,9 +430,19 @@
 {
     NSString *language = [[CTSDKSettings instance].languageCode lowercaseString];
     
-    NSString *localization = [self.cmsLocalization localizedStringForKey:key bundle:bundle language:language];
+    NSString *remoteLocalization = [self.cmsLocalization localizedStringForKey:key bundle:bundle language:language];
+    
+    if (remoteLocalization) {
+        return remoteLocalization;
+    }
+    
+    NSString *cachedLocalization = [self.bundleLocalization localizedStringForKey:key bundle:bundle language:language];
+    
+    if (cachedLocalization) {
+        return cachedLocalization;
+    }
 
-    return localization ?: [self.bundleLocalization localizedStringForKey:key bundle:bundle language:language];
+    return NSLocalizedStringFromTableInBundle(key, language, bundle, @"");
 }
 
 

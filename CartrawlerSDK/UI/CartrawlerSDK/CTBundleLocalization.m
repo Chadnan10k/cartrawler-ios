@@ -31,7 +31,7 @@
         cache = [self fetchLocalizationsForLanguage:language fromBundle:bundle];
         [self.bundleDictionary setObject:cache forKey:identifier];
     }
-    return cache[key] ?: key;
+    return cache[key] ?: nil;
 }
 
 - (NSDictionary *)fetchLocalizationsForLanguage:(NSString *)language fromBundle:(NSBundle *)bundle {
