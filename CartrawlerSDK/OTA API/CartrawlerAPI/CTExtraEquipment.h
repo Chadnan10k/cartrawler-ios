@@ -22,6 +22,29 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM (NSUInteger, CTExtraEquipmentType) {
+    CTExtraEquipmentTypeMobilePhone,
+    CTExtraEquipmentTypeLuggageRack,
+    CTExtraEquipmentTypeSkiRack,
+    CTExtraEquipmentTypeInfantSeat,
+    CTExtraEquipmentTypeToddlerSeat,
+    CTExtraEquipmentTypeBoosterSeat,
+    CTExtraEquipmentTypeSnowChains,
+    CTExtraEquipmentTypeNavigationSystem,
+    CTExtraEquipmentTypeSnowTires,
+    CTExtraEquipmentTypeWinterPackage,
+    CTExtraEquipmentTypeNavigationalPhone,
+    CTExtraEquipmentTypeSkiEquipped,
+    CTExtraEquipmentTypeTollTag,
+    CTExtraEquipmentTypeWifi,
+    CTExtraEquipmentTypeAdditionalDriver,
+    CTExtraEquipmentTypeGPS,
+    CTExtraEquipmentTypeBreathalyser,
+    CTExtraEquipmentTypeSnowCover,
+    CTExtraEquipmentTypeAirCon,
+    CTExtraEquipmentTypeGenericExtra
+};
+
 /**
  *  CTExtraEquipment
  */
@@ -30,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  The quantity of the equipment
  */
-@property (nonatomic, readonly) NSInteger qty;
+@property (nonatomic, assign) NSInteger qty;
 /**
  *  Bool value if is included in rate
  */
@@ -48,20 +71,17 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, nonnull, readonly) NSString *currencyCode;
 /**
- *  The equipment type
+ *  The raw equipment type code
  */
 @property (nonatomic, nonnull, readonly) NSString *equipType;
+/**
+ The equipment type
+ */
+@property (nonatomic, readonly) CTExtraEquipmentType equipmentType;
 /**
  *  description of the equipment
  */
 @property (nonatomic, nonnull, readonly) NSString *equipDescription;
-
-/**
- *  Setter method for the equipemt quantity
- *
- *  @param qty The quantity amount
- */
-- (void)setQty:(NSInteger)qty;
 
 - (instancetype)initFromDictionary:(NSDictionary *)dict  ;
 

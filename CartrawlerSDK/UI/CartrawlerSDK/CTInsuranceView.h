@@ -23,18 +23,21 @@
 - (void)didRemoveInsurance;
 
 /**
- Fires if user taps on terms and conditions
+ Fires if user taps on more detail
 
- @param termsURL The terms and conditions URL
  */
-- (void)didTapTermsAndConditions:(NSURL *)termsURL;
+- (void)didTapMoreInsuranceDetail;
 
 @end
 
 @interface CTInsuranceView : UIView
 
+typedef void (^CTInsuranceRetrievalCompletion)(CTInsurance *insurance);
+
 @property (nonatomic, weak) id<CTInsuranceDelegate> delegate;
 
-- (void)retrieveInsurance:(CartrawlerAPI *)api search:(CTRentalSearch *)search;
+- (void)retrieveInsurance:(CartrawlerAPI *)api search:(CTRentalSearch *)search completion:(CTInsuranceRetrievalCompletion)completion;
+
+- (void)presentSelectedState;
 
 @end

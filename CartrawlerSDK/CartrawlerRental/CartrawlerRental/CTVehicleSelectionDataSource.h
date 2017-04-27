@@ -10,12 +10,17 @@
 #import "CartrawlerAPI/CTVehicleAvailability.h"
 #import <UIKit/UIKit.h>
 
+@protocol CTVehicleSelectionDelegate <NSObject>
+
+- (void)didSelectCellAtIndex:(NSIndexPath *)indexPath data:(CTAvailabilityItem *)data;
+
+@end
+
 @interface CTVehicleSelectionDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-typedef void (^VehicleSelectionCompletion)(CTAvailabilityItem *vehicle);
-typedef void (^CTScrollViewDirection)(BOOL up);
+@property (nonatomic, weak) id<CTVehicleSelectionDelegate> delegate;
 
-- (id)initWithData:(NSArray <CTAvailabilityItem *> *)data cellSelected:(VehicleSelectionCompletion)cellSeleted;
-- (void)updateData:(NSArray <CTAvailabilityItem *> *)data sortByPrice:(BOOL)sortByPrice;
-@property (nonatomic) CTScrollViewDirection direction;
+- (void)updateData:(NSArray <CTAvailabilityItem *> *)data pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate sortByPrice:(BOOL)sortByPrice;
+- (void)sortByPrice:(BOOL)sortByPrice;
+
 @end

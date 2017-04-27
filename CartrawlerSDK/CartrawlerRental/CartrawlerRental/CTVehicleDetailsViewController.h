@@ -10,6 +10,4 @@
 
 @interface CTVehicleDetailsViewController : CTViewController
 
-typedef void (^CTVehicleDetailsViewControllerCompletion)(BOOL tapped);
-
 @end

@@ -84,7 +84,7 @@ static NSString *CTCMSLocalizationIndex = @"versions";
     NSDictionary *localizations;
     
     if (self.cachedIndex) {
-        NSNumber *timestamp = [self timestampForIdentifier:identifier inIndex:self.cachedIndex];
+        NSString *timestamp = [self timestampForIdentifier:identifier inIndex:self.cachedIndex];
         NSString *filename = [self filenameForIdentifier:identifier timestamp:timestamp];
         
         NSData *data = [CTFileSystemAccess fetchJSONResourceFromDocumentDirectory:filename];
@@ -101,8 +101,8 @@ static NSString *CTCMSLocalizationIndex = @"versions";
 }
 
 - (void)checkRemoteLocalizationsForIdentifier:(NSString *)identifier {
-    NSNumber *cachedTimestamp = [self timestampForIdentifier:identifier inIndex:self.cachedIndex];
-    NSNumber *timestamp = [self timestampForIdentifier:identifier inIndex:self.cmsIndex];
+    NSString *cachedTimestamp = [self timestampForIdentifier:identifier inIndex:self.cachedIndex];
+    NSString *timestamp = [self timestampForIdentifier:identifier inIndex:self.cmsIndex];
     
     BOOL newFileAvailable = timestamp && ![cachedTimestamp isEqual:timestamp];
     BOOL cacheEmpty = timestamp && [self.localizations[identifier] count] == 0;

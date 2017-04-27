@@ -40,4 +40,10 @@
  */
 @property (nonatomic, strong) NSArray *actionButtons;
 
+
+/**
+ Removes all action buttons
+ */
+- (void)removeAllActionButtons;
+
 @end

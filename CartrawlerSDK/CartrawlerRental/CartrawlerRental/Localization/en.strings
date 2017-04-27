@@ -114,7 +114,9 @@
 "filter_rating" = "Rating";
 "vehicle_pickup_location_VWF_6.VWF.X" = "Car Dealer";
 "receipt_summary_car" = "Car summary";
-"results_sort" = "Sort";
+"results_sort" = "Sort by:";
+"results_sort_price" = "Price";
+"results_sort_recommended" = "Recommended";
 "vehicle_supplier_address" = "Supplier address";
 "vehicle_fuel_policy_type_QUARTEREMPTY" = "Pick up quarter full and return empty";
 "extras_placeholder" = "Provided by global insurance & asset management leader Axa.";
@@ -277,13 +279,54 @@
 
 "insurance_add_button" = "Add for %@";
 
+"axa_upgrade_reason1" = "Upgrade reason one";
+
+"axa_upgrade_reason2" = "Upgrade reason two";
+
+"axa_upgrade_reason3" = "Upgrade reason three";
+
+"insurance_total" = "Total %@";
+
+"insurance_per_day" = "per day";
+
+"results_other_cars" = "Other cars";
+
+"vehicle_summary_price_breakdown" = "Car rental total";
+
+//details vc
+
 "insurance_terms_conditions" = "Insurance terms and conditions";
+
+"insurance_detail_title" = "Damage Refund Insurance";
+
+"insurance_detail_info_title" = "Reduce your liability from $3000 to $0";
+
+"insurance_detail_info" = "blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah \n\nblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.";
+
+"insurance_tip_title" = "Whats'covered";
+
+"insurance_detail_tip_1" = "Some tip for insurance";
+
+"insurance_detail_tip_2" = "Some tip for insurance";
+
+"insurance_detail_tip_3" = "Some tip for insurance";
+
+"insurance_detail_tip_4" = "Some tip for insurance";
+
+"insurance_detail_tip_5" = "Some tip for insurance";
+
+
+
 
 "insurance_added_header" = "Congratulations!";
 
 "insurance_added_subheader" = "You have added Full Cover";
 
 "insurance_remove_button" = "Remove";
+
+"results_sort_recommened" = "Recommened";
+
+"results_sort_price" = "Price";
 
 // merch
 
@@ -306,3 +349,13 @@
 "vehicle_on_budget" = "On A Budget";
 
 "vehicle_best_reviewed" = "Best Reviews";
+
+"per_rental" = "per rental";
+
+"extras_paid_at_desk" = "Extras will be paid for at desk";
+
+"view_all" = "View All";
+
+"feature_usb" = "USB port";
+"feature_bluetooth" = "Bluetooth";
+"feature_gps" = "GPS";

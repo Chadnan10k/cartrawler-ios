@@ -11,6 +11,7 @@
 #import <CartrawlerSDK/CTNextButton.h>
 #import <CartrawlerSDK/CTAlertViewController.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 #import "CTRentalLocalizationConstants.h"
 #import "CTInterstitialViewController.h"
 #import "CTSearchView.h"
@@ -77,9 +78,12 @@
 - (void)searchTapped
 {
     
-    if ([self.searchView validateSearch]) {
+    if ([self.searchView validateSearch] && self.validationController) {
         [self pushToDestination];
         [CTInterstitialViewController present:self search:self.search];
+    } else if ([self.searchView validateSearch]) {
+        [CTInterstitialViewController present:self search:self.search];
+        [self requestVehicles];
     }
     
 }
@@ -98,6 +102,11 @@
     });
 }
 
+- (void)performSearch
+{
+    [self searchTapped];
+}
+
 - (IBAction)settingsTapped:(id)sender
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:[NSBundle bundleForClass:[self class]]];
@@ -107,11 +116,25 @@
 
 - (IBAction)backTapped:(id)sender
 {
-    if (self.navigationController.viewControllers.firstObject == self) {
+    if (self.navigationController.viewControllers.firstObject == self || !self.navigationController) {
         [self dismiss];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (void)requestVehicles
+{
+    __weak typeof(self) weakSelf = self;
+    [self requestVehicles:^(BOOL success, NSString *errorMessage) {
+        if (success) {
+            [CTInterstitialViewController dismiss];
+            [weakSelf dismiss];
+        } else {
+            [CTInterstitialViewController dismiss];
+            [weakSelf displayAlertWithMessage:errorMessage];
+        }
+    }];
 }
 
 //MARK: CTSearchViewDelegate

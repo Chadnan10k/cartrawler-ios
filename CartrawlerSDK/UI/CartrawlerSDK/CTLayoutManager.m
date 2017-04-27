@@ -49,7 +49,6 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
 
 - (void)insertViewAtIndex:(NSUInteger)index padding:(UIEdgeInsets)padding view:(UIView *)view
 {
-    if (index < self.viewArray.count) {
         view.translatesAutoresizingMaskIntoConstraints = NO;
         [self.containerView addSubview:view];
         NSDictionary *viewDict = @{CTLayoutTopPaddingKey : [NSNumber numberWithDouble:padding.top ?: 0.0],
@@ -60,11 +59,12 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
                                    };
         
         [self undoConstraints];
-        [self.viewArray insertObject:viewDict atIndex:index];
+        if (index < self.viewArray.count) {
+            [self.viewArray insertObject:viewDict atIndex:index];
+        } else {
+            [self.viewArray insertObject:viewDict atIndex: self.viewArray.count == 0 ? 0 : self.viewArray.count-1];
+        }
         [self layoutViews];
-    } else {
-        NSLog(@"CTLayoutManager: Trying to insert at an illegal index");
-    }
 }
 
 - (void)removeAtIndex:(NSUInteger)index
@@ -84,7 +84,6 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
     //we should remove any previous contraints
     
     if (self.viewArray.count < 2) {
-        NSLog(@"Not enough views for CTLayoutManager to layout");
         return;
     }
     
@@ -230,11 +229,11 @@ NSString *const CTLayoutRightPaddingKey = @"rightPadding";
     return view;
 }
 
-- (NSUInteger)indexOfObject:(id)object
+- (nullable NSNumber *)indexOfObject:(id)object
 {
     for (NSDictionary *d in self.viewArray) {
         if (d[CTLayoutViewKey] == object) {
-            return [self.viewArray indexOfObject:d];
+            return @([self.viewArray indexOfObject:d]);
         }
     }
     return nil;

@@ -292,8 +292,8 @@
     
     [self.filterFactory filter];
     
-    if (self.filterCompletion) {
-        self.filterCompletion(self.filterFactory.filteredData);
+    if (self.delegate) {
+        [self.delegate filterDidUpdate:self.filterFactory.filteredData];
     }
     
     for (CTFilterContainer *c in self.viewArray) {
@@ -310,8 +310,8 @@
 - (IBAction)doneTapped:(id)sender
 {
     [self.filterFactory filter];
-    if (self.filterCompletion) {
-        self.filterCompletion(self.filterFactory.filteredData);
+    if (self.delegate) {
+        [self.delegate filterDidUpdate:self.filterFactory.filteredData];
     }
     
     for (CTFilterContainer *c in self.viewArray) {

@@ -21,13 +21,32 @@
     return [f stringFromNumber:self];
 }
 
-- (NSString *)twoDecimalPlaces
+- (NSString *)decimalPlaces:(int)places;
 {
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-    f.minimumFractionDigits = 2;
-    f.maximumFractionDigits = 2;
+    f.minimumFractionDigits = places;
+    f.maximumFractionDigits = places;
     f.numberStyle = NSNumberFormatterDecimalStyle;
     return [f stringFromNumber:self];
+}
+
+- (NSString *)pricePerDay:(NSDate *)pickup dropoff:(NSDate *)dropoff
+{
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:pickup
+                                                          toDate:dropoff
+                                                         options:0];
+    
+    NSNumber *pricePerDay = [NSNumber numberWithFloat:self.floatValue
+                             / ([components day] ?: 1)];
+    
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.minimumFractionDigits = 2;
+    f.currencyCode = [CTSDKSettings instance].currencyCode;
+    f.numberStyle = NSNumberFormatterCurrencyStyle;
+    
+    return [f stringFromNumber:pricePerDay];
 }
 
 + (NSNumber *)numberFromString:(NSString *)string

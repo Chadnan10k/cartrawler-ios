@@ -14,7 +14,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];    
-    
+    self.translatesAutoresizingMaskIntoConstraints = NO;
     self.font = [UIFont fontWithName:[CTAppearance instance].fontName size:14];
     
     return self;
@@ -23,7 +23,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    
+    self.translatesAutoresizingMaskIntoConstraints = NO;
     self.font = [UIFont fontWithName:[CTAppearance instance].fontName size:14];
 
     return self;

@@ -50,7 +50,6 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    self.transitioningDelegate = nil;
     [super viewDidDisappear:animated];
 }
 
@@ -78,6 +77,18 @@
 
 - (void)addAction:(CTAlertAction *)action {
     _actions = [self.actions arrayByAddingObject:action];
+}
+
+- (void)removeAllActions
+{
+    _actions = @[];
+    [self.view removeAllActionButtons];
+}
+
+- (void)setTitle:(NSString *)title message:(NSString *)message
+{
+    self.view.titleLabel.text = title;
+    self.view.messageTextView.text = message;
 }
 
 - (void)createActionButtons {

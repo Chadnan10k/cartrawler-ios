@@ -11,6 +11,7 @@
 
 @interface UIColor (CartrawlerSDK)
 
+- (UIColor *)darkerColorForColor;
 - (UIColor *)lighterColorForColor;
 - (NSString *)hex;
 

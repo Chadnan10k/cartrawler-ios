@@ -26,4 +26,11 @@
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:formatString options:0 metrics:nil views:@{@"self" : self}]];
 }
 
+- (void)setWidthConstraint:(NSNumber *)constant priority:(NSNumber *)priority
+{
+    NSString *formatString = [NSString stringWithFormat:@"H:[self(%@@%@)]", constant.stringValue, priority.stringValue];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:formatString options:0 metrics:nil views:@{@"self" : self}]];
+}
+
+
 @end

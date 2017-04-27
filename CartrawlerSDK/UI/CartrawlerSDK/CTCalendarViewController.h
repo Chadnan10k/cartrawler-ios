@@ -16,8 +16,8 @@
 
 @end
 
-extern const NSString *CTCalendarViewIdentifier;
-extern const NSString *CTCalendarStoryboard;
+extern NSString * const CTCalendarViewIdentifier;
+extern NSString * const CTCalendarStoryboard;
 
 @interface CTCalendarViewController : UIViewController
 

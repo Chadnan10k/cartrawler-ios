@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_ENUM(NSUInteger, CTLayoutManagerOrientation) {
     CTLayoutManagerOrientationTopToBottom,
     CTLayoutManagerOrientationLeftToRight
@@ -70,7 +72,7 @@ typedef NS_ENUM(NSUInteger, CTLayoutManagerOrientation) {
  @param object The object you want to check index for
  @return The index of the object
  */
-- (NSUInteger)indexOfObject:(id)object;
+- (nullable NSNumber *)indexOfObject:(id)object;
 
 /**
  Convenience method to pin a view to a superview
@@ -92,3 +94,5 @@ typedef NS_ENUM(NSUInteger, CTLayoutManagerOrientation) {
         padding:(UIEdgeInsets)padding;
 
 @end
+
+NS_ASSUME_NONNULL_END

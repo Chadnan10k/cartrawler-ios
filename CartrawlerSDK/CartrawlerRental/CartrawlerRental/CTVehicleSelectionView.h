@@ -10,18 +10,18 @@
 #import "CartrawlerAPI/CTVehicleAvailability.h"
 #import "CartrawlerAPI/CartrawlerAPI.h"
 
+@protocol CTVehicleSelectionViewDelegate <NSObject>
+
+- (void)didSelectVehicle:(CTAvailabilityItem *)item;
+
+@end
+
 @interface CTVehicleSelectionView : UIView
 
+@property (nonatomic, weak) id<CTVehicleSelectionViewDelegate> delegate;
 
-
-typedef void (^VehicleSelectionCompletion)(CTAvailabilityItem *vehicle);
-typedef void (^CTScrollDirectionChanged)(BOOL up);
-
-@property (nonatomic) CTScrollDirectionChanged direction;
-
-- (void)initWithVehicleAvailability:(NSArray <CTAvailabilityItem *> *)data completion:(VehicleSelectionCompletion)completion;
-- (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data sortByPrice:(BOOL)sortByPrice;
-- (void)showLoading;
-- (void)hideLoading;
+- (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate sortByPrice:(BOOL)sortByPrice;
+- (void)sortByPrice:(BOOL)sortByPrice;
+- (void)scrollToTop;
 
 @end

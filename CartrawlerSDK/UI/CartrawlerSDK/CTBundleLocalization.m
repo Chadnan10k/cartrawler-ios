@@ -35,7 +35,7 @@
 }
 
 - (NSDictionary *)fetchLocalizationsForLanguage:(NSString *)language fromBundle:(NSBundle *)bundle {
-    NSString *data = [CTFileSystemAccess fetchJSONResource:language fromBundle:bundle];
+    NSData *data = [CTFileSystemAccess fetchJSONResource:language fromBundle:bundle];
     return [CTCMSJSONParser localizationDictionaryFromLocalizationData:data];
 }
 

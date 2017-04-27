@@ -13,5 +13,6 @@
 - (NSLayoutConstraint *)cartrawlerConstraintForAttribute:(NSLayoutAttribute)attribute;
 
 - (void)setHeightConstraint:(NSNumber *)constant priority:(NSNumber *)priority;
+- (void)setWidthConstraint:(NSNumber *)constant priority:(NSNumber *)priority;
 
 @end

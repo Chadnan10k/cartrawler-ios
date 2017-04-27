@@ -8,75 +8,78 @@
 
 #import "CTVehicleSelectionView.h"
 #import "CTVehicleSelectionDataSource.h"
+#import "CTVehicleDetailTableViewCell.h"
+#import "CartrawlerSDK/CTLayoutManager.h"
 
-@interface CTVehicleSelectionView()
+@interface CTVehicleSelectionView() <CTVehicleSelectionDelegate>
 
 @property (nonatomic, strong) CTVehicleSelectionDataSource *dataSource;
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
 @implementation CTVehicleSelectionView
 
-- (void)awakeFromNib
+- (instancetype)init
 {
-    [super awakeFromNib];
-    self.tableView.estimatedRowHeight = 240;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-}
-
-- (void)showLoading
-{
-    __weak typeof (self) weakSelf = self;
-    [UIView animateWithDuration:0.3 animations:^{
-        weakSelf.tableView.alpha = 0;
-        weakSelf.tableView.scrollsToTop = YES;
-    }];
-}
-
-- (void)hideLoading
-{
-    __weak typeof (self) weakSelf = self;
-    [UIView animateWithDuration:0.3 animations:^{
-        weakSelf.tableView.alpha = 1;
-        weakSelf.tableView.scrollsToTop = YES;
-    }];
-}
-
-- (void)initWithVehicleAvailability:(NSArray <CTAvailabilityItem *> *)data
-                         completion:(VehicleSelectionCompletion)completion;
-{
-    __weak typeof (self) weakSelf = self;
-
-   // [self.tableView setContentInset:UIEdgeInsetsMake(55,0,0,0)];
+    self = [super init];
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    _dataSource = [CTVehicleSelectionDataSource new];
     
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    [self.tableView registerNib:[UINib nibWithNibName:@"CTVehicleTableViewCell_iPhone" bundle:bundle] forCellReuseIdentifier:@"VehicleCell"];
-
-    _dataSource = [[CTVehicleSelectionDataSource alloc] initWithData:data cellSelected:^(CTAvailabilityItem *vehicle) {
-        completion(vehicle);
-    }];
-    
-    self.dataSource.direction = ^(BOOL direction) {
-        if (weakSelf.direction) {
-            weakSelf.direction(direction);
-        }
-    };
-    
+    _tableView = [self createTableView];
     self.tableView.delegate = self.dataSource;
     self.tableView.dataSource = self.dataSource;
+    self.dataSource.delegate = self;
+    [self layout];
     
-    [self.tableView reloadData];
-    
-    self.tableView.scrollsToTop = YES;
+    return self;
 }
 
-- (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data sortByPrice:(BOOL)sortByPrice
+- (UITableView *)createTableView
 {
-    [self.dataSource updateData:data sortByPrice:sortByPrice];
+    UITableView *tv = [UITableView new];
+    tv.estimatedRowHeight = 240;
+    tv.rowHeight = UITableViewAutomaticDimension;
+    [tv registerClass:[CTVehicleDetailTableViewCell class] forCellReuseIdentifier:@"VehicleCell"];
+    tv.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    tv.separatorStyle = UITableViewCellSeparatorStyleNone;
+    return tv;
+}
+
+- (void)layout
+{
+    [self addSubview:self.tableView];
+    [CTLayoutManager pinView:self.tableView toSuperView:self padding:UIEdgeInsetsMake(0, 0, 0, 0)];
+}
+
+- (void)updateSelection:(NSArray <CTAvailabilityItem *> *)data pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate sortByPrice:(BOOL)sortByPrice
+{
+    [self.dataSource updateData:data pickupDate:pickupDate dropoffDate:dropoffDate sortByPrice:sortByPrice];
     [self.tableView reloadData];
-    NSIndexPath* top = [NSIndexPath indexPathForRow:NSNotFound inSection:0];
-    [self.tableView scrollToRowAtIndexPath:top atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+- (void)sortByPrice:(BOOL)sortByPrice
+{
+    [self.dataSource sortByPrice:sortByPrice];
+    [self.tableView reloadData];
+    [self scrollToTop];
+}
+
+- (void)scrollToTop
+{
+    if (self.tableView.contentOffset.y > 0) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+}
+
+//MARK: CTVehicleSelectionDelegate
+
+- (void)didSelectCellAtIndex:(NSIndexPath *)indexPath data:(CTAvailabilityItem *)data
+{
+    if (self.delegate) {
+        [self.delegate didSelectVehicle:data];
+    }
 }
 
 @end

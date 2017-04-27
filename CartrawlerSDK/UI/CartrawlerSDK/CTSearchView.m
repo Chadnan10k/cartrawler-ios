@@ -43,6 +43,7 @@
 @property (nonatomic, strong) NSDate *temporaryPickupDate;
 @property (nonatomic, strong) NSDate *temporaryDropoffDate;
 
+
 @end
 
 @implementation CTSearchView
@@ -259,7 +260,6 @@
 
 - (void)presentCalendar
 {
-    __weak typeof(self) weakSelf = self;
     NSBundle *bundle = [NSBundle bundleForClass:[CTCalendarViewController class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTCalendarStoryboard bundle:bundle];
     CTCalendarViewController *calendarViewController = [storyboard instantiateViewControllerWithIdentifier:CTCalendarViewIdentifier];
@@ -397,11 +397,11 @@
     if (sender == self.ageSwitch) {
         if (sender.isOn) {
             self.search.driverAge = @30;
-            NSUInteger idx = [self.layoutManager indexOfObject:self.ageContainer];
+            NSUInteger idx = [self.layoutManager indexOfObject:self.ageContainer].integerValue;
             [self.layoutManager removeAtIndex:idx];
         } else {
             self.search.driverAge = nil;
-            NSUInteger idx = [self.layoutManager indexOfObject:self.ageSwitchContainer];
+            NSUInteger idx = [self.layoutManager indexOfObject:self.ageSwitchContainer].integerValue;
             [self.layoutManager insertViewAtIndex:idx padding:UIEdgeInsetsMake(8, 8, 8, 8) view:self.ageContainer];
         }
     }
