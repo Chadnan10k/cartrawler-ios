@@ -102,12 +102,14 @@
     [self.sdk enableLogs:NO];
     _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk clientID:@"642619"];
     _inPath = [CartrawlerInPath initWithCartrawlerRental:self.rental
-                                                clientID:@"643826"];
+                                                clientID:@"642619"];
     self.inPath.delegate = self;
 
     [self.sdk addAnalyticsProvider:[CartrawlerRakuten new]];
 
     self.rental.delegate = self;
+    
+    [self.sdk enableLogs:NO];
 }
 
 - (void)setupInPath:(UIView *)view parentVC:(UIViewController *)parentVC;

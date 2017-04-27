@@ -15,6 +15,7 @@
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import "CTRentalLocalizationConstants.h"
 #import "CTVehicleDetailsCollectionViewCell.h"
+#import "CartrawlerSDK/CTImageTextView.h"
 
 @interface CTVehicleDetailsView() <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -25,6 +26,7 @@
 @property (nonatomic, strong) UIImageView *vehicleImageView;
 @property (nonatomic, strong) UICollectionView *infoCollectionView;
 @property (nonatomic, strong) CTVehicle *vehicle;
+@property (nonatomic, strong) CTImageTextView *featureAlertView;
 
 @end
 
@@ -34,6 +36,7 @@
 {
     _vehicle = vehicle;
     [self addData:vehicle pickupDate:pickupDate dropoffDate:dropoffDate];
+    [self createAlertFeatureView];
 }
 
 - (instancetype)init
@@ -94,7 +97,56 @@
     [self addSubview:self.subheaderRightLabel];
     [self addSubview:self.vehicleImageView];
     [self addSubview:self.infoCollectionView];
+}
 
+- (void)createAlertFeatureView
+{
+    _featureAlertView = [CTImageTextView new];
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    
+    if (self.vehicle.isUSBEnabled) {
+        UIImage *icon = [UIImage imageNamed:@"usb" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureUSB)];
+    }
+    
+    if (self.vehicle.isBluetoothEnabled) {
+        UIImage *icon = [UIImage imageNamed:@"bluetooth" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureBluetooth)];
+    }
+    
+    if (self.vehicle.isAirConditioned) {
+        UIImage *icon = [UIImage imageNamed:@"aircon" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalVehicleAirConditioning)];
+    }
+    
+    if (self.vehicle.isGPSIncluded) {
+        UIImage *icon = [UIImage imageNamed:@"gps" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureGPS)];
+    }
+    
+    if (self.vehicle.isGermanModel) {
+        UIImage *icon = [UIImage imageNamed:@"checkbox" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureGermanModel)];
+    }
+    
+    if (self.vehicle.isParkingSensorEnabled) {
+        UIImage *icon = [UIImage imageNamed:@"checkbox" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureParkingSensors)];
+    }
+    
+    if (self.vehicle.isExceptionalFuelEconomy) {
+        UIImage *icon = [UIImage imageNamed:@"fuel" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureFuelEconomy)];
+    }
+    
+    if (self.vehicle.isFrontDemisterEnabled) {
+        UIImage *icon = [UIImage imageNamed:@"checkbox" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.featureAlertView insertImage:icon withText:CTLocalizedString(CTRentalFeatureFrontDemister)];
+    }
+    
+    UIImage *icon = [UIImage imageNamed:@"gears" inBundle:bundle compatibleWithTraitCollection:nil];
+    [self.featureAlertView insertImage:icon withText:self.vehicle.transmissionType];
 }
 
 - (void)addData:(CTVehicle *)vehicle pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
@@ -235,7 +287,7 @@
  - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.delegate) {
-        [self.delegate didTapMoreDetailsView];
+        [self.delegate didTapMoreDetailsView:self.featureAlertView];
     }
 }
 

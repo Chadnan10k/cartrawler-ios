@@ -14,7 +14,7 @@
 /**
  Fires when a user taps on a info collection view cell
  */
-- (void)didTapMoreDetailsView;
+- (void)didTapMoreDetailsView:(UIView *)view;
 
 @end
 
