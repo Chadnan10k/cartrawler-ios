@@ -15,7 +15,6 @@
 @interface CTCarouselView() <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UICollectionView *vehicleCollectionView;
-@property (nonatomic, strong) UIButton *viewAllButton;
 @property (nonatomic, strong) UIPageControl *pageControl;
 
 @property (nonatomic, weak) CTVehicleAvailability *availability;
@@ -37,7 +36,6 @@
     self.backgroundColor = [UIColor groupTableViewBackgroundColor];//remove for production
     
     _vehicleCollectionView = [self renderCollectionView];
-    _viewAllButton = [self renderViewAllButton];
     _pageControl = [self renderPageControl];
     
     [self layout];
@@ -59,42 +57,24 @@
     
     NSDictionary *viewDictionary = @{
                                      @"vehicleCollectionView" : self.vehicleCollectionView,
-                                     @"viewAllButton" : self.viewAllButton,
                                      @"pageControl" : self.pageControl,
                                      };
     //Collection view
     [self addSubview:self.vehicleCollectionView];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[vehicleCollectionView]-0-|" options:0 metrics:nil views:viewDictionary]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[vehicleCollectionView]-50-|" options:0 metrics:nil views:viewDictionary]];
-    
-    //View all button
-    [self addSubview:self.viewAllButton];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[viewAllButton]-8-|" options:0 metrics:nil views:viewDictionary]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[viewAllButton]-4-|" options:0 metrics:nil views:viewDictionary]];
-    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[vehicleCollectionView]" options:0 metrics:nil views:viewDictionary]];
+
     //View page control
     [self addSubview:self.pageControl];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[pageControl]-4-|" options:0 metrics:nil views:viewDictionary]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[pageControl]" options:0 metrics:nil views:viewDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[vehicleCollectionView]-4-[pageControl]-4-|" options:0 metrics:nil views:viewDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[pageControl]-8-|" options:0 metrics:nil views:viewDictionary]];
 
-    
-    [self.viewAllButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[viewAllButton(0)]"
-                                                                               options:0
-                                                                               metrics:nil
-                                                                                 views:viewDictionary]];
-    
-    for (NSLayoutConstraint *c in self.viewAllButton.constraints) {
-        if (c.firstAttribute == NSLayoutAttributeWidth) {
-            c.constant = self.viewAllButton.intrinsicContentSize.width + 24;
-        }
-    }
-    
 }
 
 - (UICollectionView *)renderCollectionView
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(240, 160);
+    layout.itemSize = CGSizeMake(240, 120);
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     [collectionView registerClass:[CTCarouselCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
@@ -106,21 +86,6 @@
     return collectionView;
 }
 
-- (UIButton *)renderViewAllButton
-{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.translatesAutoresizingMaskIntoConstraints = NO;
-    [button setTitle:CTLocalizedString(CTInPathWidgetSeeAll) forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(viewAllAction:) forControlEvents:UIControlEventTouchUpInside];
-    button.titleLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:17];
-    [button setTitleColor:[CTAppearance instance].headerTitleColor forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor clearColor];
-    button.layer.borderWidth = 0.5;
-    button.layer.borderColor = [CTAppearance instance].headerTitleColor.CGColor;
-    button.layer.cornerRadius = 5;
-    return button;
-}
-
 - (UIPageControl *)renderPageControl
 {
     UIPageControl *control = [UIPageControl new];
@@ -128,13 +93,6 @@
     control.currentPageIndicatorTintColor = [CTAppearance instance].headerTitleColor;
     control.pageIndicatorTintColor = [UIColor grayColor];
     return control;
-}
-
-- (void)viewAllAction:(id)sender
-{
-    if (self.delegate) {
-        [self.delegate didSelectViewAll];
-    }
 }
 
 //MARK: UICollectionView DataSource
@@ -163,7 +121,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.delegate) {
-        [self.delegate didSelectVehicle:self.availability.items[indexPath.row]];
+        [self.delegate didSelectVehicle:self.availability.items[indexPath.row] atIndex:indexPath.row];
     }
 }
 
@@ -172,6 +130,9 @@
     //use the cell width minus some padding
     NSInteger currentIndex = self.vehicleCollectionView.contentOffset.x / 200;
     self.pageControl.currentPage = currentIndex;
+    if (self.delegate) {
+        [self.delegate didDisplayVehicle:self.availability.items[currentIndex] atIndex:currentIndex];
+    }
 }
 
 @end

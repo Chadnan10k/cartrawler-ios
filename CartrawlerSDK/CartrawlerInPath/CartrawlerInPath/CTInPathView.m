@@ -132,27 +132,19 @@
 
 //MARK : Carousel Delegate
 
-- (void)didSelectVehicle:(CTAvailabilityItem *)item
+- (void)didSelectVehicle:(CTAvailabilityItem *)item atIndex:(NSUInteger)index
 {
     if (self.delegate) {
-        [self.delegate didTapVehicle:item];
+        [self.delegate didTapVehicle:item atIndex:index];
     }
 }
 
-- (void)didSelectViewAll
+- (void)didDisplayVehicle:(CTAvailabilityItem *)item atIndex:(NSUInteger)index
 {
     if (self.delegate) {
-        [self.delegate didTapShowAll];
+        [self.delegate didDisplayVehicle:item atIndex:index];
     }
 }
 
-//MARK : Selected Vehicle Delegate
-
-- (void)didTapRemoveVehicle
-{
-    if (self.delegate) {
-        [self.delegate didTapRemoveVehicle];
-    }
-}
 
 @end

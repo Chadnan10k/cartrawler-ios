@@ -8,7 +8,6 @@
 
 #import "CTSelectedVehicleView.h"
 #import <CartrawlerSDK/CTUpSellBanner.h>
-#import "CTCarouselFooterView.h"
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTImageCache.h>
 #import <CartrawlerSDK/CTAppearance.h>
@@ -16,14 +15,13 @@
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
 
-@interface CTSelectedVehicleView() <CTCarouselFooterDelegate>
+@interface CTSelectedVehicleView()
 
 @property (nonatomic, strong) UIImageView *vehicleImageView;
 @property (nonatomic, strong) CTLabel *vehicleNameLabel;
 @property (nonatomic, strong) UIView *bannerContainer;
 @property (nonatomic, strong) UIView *featureContainer;
 @property (nonatomic, strong) CTLabel *featureLabel;
-@property (nonatomic, strong) CTCarouselFooterView *footerContainer;
 
 @end
 
@@ -36,9 +34,6 @@
     _bannerContainer = [self renderBanner];
     [self addSubview:self.bannerContainer];
     
-    _footerContainer = [self renderFooter];
-    [self addSubview:self.footerContainer];
-    
     _vehicleImageView = [self renderVehicleImage];
     [self addSubview:self.vehicleImageView];
     
@@ -50,8 +45,6 @@
     
     [self layout];
     
-    self.footerContainer.delegate = self;
-    
     return self;
 }
 
@@ -60,7 +53,6 @@
     
     NSDictionary *viewDictionary = @{
                                      @"bannerContainer" : self.bannerContainer,
-                                     @"footerContainer" : self.footerContainer,
                                      @"imageView" : self.vehicleImageView,
                                      @"featureContainer" : self.featureContainer,
                                      @"vehicleNameLabel" : self.vehicleNameLabel
@@ -75,17 +67,9 @@
                                                                  options:0
                                                                  metrics:nil
                                                                    views:viewDictionary]];
-    //Footer
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[footerContainer]-0-|"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:viewDictionary]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[footerContainer(45)]-0-|"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:viewDictionary]];
+
     //Image View
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[bannerContainer]-0-[imageView(100@750)]-4-[footerContainer]"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[bannerContainer]-0-[imageView(100@750)]-4-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:viewDictionary]];
@@ -136,12 +120,6 @@
     
     self.featureLabel.text = [self specialOfferText:item.vehicle.specialOffers];
     
-    [self.footerContainer setVehicle:item.vehicle
-                         buttonTitle:CTLocalizedString(CTInPathWidgetRemove)
-                       disableButton:NO
-                         perDayPrice:NO
-                          pickupDate:nil
-                         dropoffDate:nil];
 }
 
 - (UIView *)renderBanner
@@ -162,13 +140,6 @@
           textColor:[UIColor whiteColor]
                text:CTLocalizedString(CTInPathWidgetTitleAdded)];
     return bannerView;
-}
-
-- (CTCarouselFooterView *)renderFooter
-{
-    CTCarouselFooterView *footerView = [CTCarouselFooterView new];
-    footerView.translatesAutoresizingMaskIntoConstraints = NO;
-    return footerView;
 }
 
 - (UIImageView *)renderVehicleImage
@@ -269,15 +240,6 @@
     [mutString appendAttributedString:orSimilarStr];
     
     return mutString;
-}
-
-//MARK: CTFooterDelegate
-
-- (void)didTapFooterButton
-{
-    if (self.delegate) {
-        [self.delegate didTapRemoveVehicle];
-    }
 }
 
 @end

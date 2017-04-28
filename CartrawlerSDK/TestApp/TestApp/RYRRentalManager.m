@@ -87,6 +87,7 @@
                               flightNumber:@"FR 123"
                                   currency:@"EUR"
                                  passegers:@[passenger1, passenger2]
+                                  clientID:@"642619"
                       parentViewController:self.parent];
 
     
@@ -100,9 +101,8 @@
 
     _sdk = [[CartrawlerSDK alloc] initWithlanguageCode:language sandboxMode:!self.isProduction];
     [self.sdk enableLogs:NO];
-    _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk clientID:@"642619"];
-    _inPath = [CartrawlerInPath initWithCartrawlerRental:self.rental
-                                                clientID:@"642619"];
+    _rental = [[CartrawlerRental alloc] initWithCartrawlerSDK:self.sdk];
+    _inPath = [CartrawlerInPath initWithCartrawlerRental:self.rental];
     self.inPath.delegate = self;
 
     [self.sdk addAnalyticsProvider:[CartrawlerRakuten new]];
@@ -115,12 +115,12 @@
 - (void)setupInPath:(UIView *)view parentVC:(UIViewController *)parentVC;
 {
     [self reset];
-    [self.inPath addCrossSellCardToView:view];
+    [self.inPath addInPathCarouselToContainer:view];
 }
 
 - (void)inPathOpenEngine:(UIViewController *)vc
 {
-    [self.inPath presentCarRentalWithFlightDetails:vc];
+    [self.inPath presentAllCars:vc];
 }
 
 - (void)removeVehicle
@@ -159,7 +159,7 @@
     [self.callToAction setTitle:[NSString stringWithFormat:@"Cars from: %@ %@", currency, price] forState:UIControlStateNormal];
 }
 
-- (void)didProduceInPathRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
+- (void)didProduceInPathPaymentRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
 {
     [self.callToAction setTitle:@"you booked a car" forState:UIControlStateNormal];
     NSLog(@"Total %@", vehicle.totalCost);
@@ -182,6 +182,18 @@
 - (void)mockPayment
 {
     [self.inPath didReceiveBookingConfirmationID:@"INPATH"];
+}
+
+- (void)didDisplayVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem
+{
+    NSLog(@"%lu", (unsigned long)index);
+}
+
+- (void)didTapVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem
+{
+    [self.inPath presentSelectedVehicle:self.parent selectedVehicleItem:vehicleItem];
+    NSLog(@"%lu", (unsigned long)index);
+
 }
 
 @end
