@@ -378,4 +378,22 @@ extern NSString * const CTRentalPaymentCarInsurance;
 
 extern NSString * const CTRentalPaymentFree;
 
+//Features
+
+extern NSString * const CTRentalFeatureUSB;
+
+extern NSString * const CTRentalFeatureBluetooth;
+
+extern NSString * const CTRentalFeatureGPS;
+
+extern NSString * const CTRentalFeatureTitle;
+
+extern NSString * const CTRentalFeatureGermanModel;
+
+extern NSString * const CTRentalFeatureFrontDemister;
+
+extern NSString * const CTRentalFeatureParkingSensors;
+
+extern NSString * const CTRentalFeatureFuelEconomy;
+
 @end

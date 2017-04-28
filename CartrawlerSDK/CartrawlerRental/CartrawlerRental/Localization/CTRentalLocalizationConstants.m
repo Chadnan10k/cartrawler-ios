@@ -374,4 +374,23 @@ NSString * const CTRentalPaymentCarInsurance = @"payment_car_insurance";
 
 NSString * const CTRentalPaymentFree = @"payment_free";
 
+//Features
+
+NSString * const CTRentalFeatureUSB = @"feature_usb";
+
+NSString * const CTRentalFeatureBluetooth = @"feature_bluetooth";
+
+NSString * const CTRentalFeatureGPS = @"feature_gps";
+
+NSString * const CTRentalFeatureTitle = @"feature_title";
+
+
+NSString * const CTRentalFeatureGermanModel = @"feature_german_model";
+
+NSString * const CTRentalFeatureFrontDemister = @"feature_front_demister";
+
+NSString * const CTRentalFeatureParkingSensors = @"feature_parking_sensors";
+
+NSString * const CTRentalFeatureFuelEconomy = @"feature_fuel_economy";
+
 @end

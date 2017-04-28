@@ -119,6 +119,7 @@
 
 - (void)updateWithString:(NSString *)string {
     self.titleLabel.text = string;
+    self.detailLabel.text = @"";
 }
 
 @end

@@ -12,8 +12,8 @@
 @protocol CTCarouselDelegate <NSObject>
 
 @required
-- (void)didSelectVehicle:(CTAvailabilityItem *)item;
-- (void)didSelectViewAll;
+- (void)didSelectVehicle:(CTAvailabilityItem *)item atIndex:(NSUInteger)index;
+- (void)didDisplayVehicle:(CTAvailabilityItem *)item atIndex:(NSUInteger)index;
 
 @end
 

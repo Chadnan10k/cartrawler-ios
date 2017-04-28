@@ -9,8 +9,27 @@
 #import "CTLocalisedStrings.h"
 #import "CTSDKLocalizationConstants.h"
 #import "CTSDKSettings.h"
+#import "CTBundleLocalization.h"
+#import "CTCMSLocalization.h"
+
+@interface CTLocalisedStrings ()
+@property CTBundleLocalization *bundleLocalization;
+@property CTCMSLocalization *cmsLocalization;
+@end
 
 @implementation CTLocalisedStrings
+
++ (instancetype)instance
+{
+    static CTLocalisedStrings *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[CTLocalisedStrings alloc] init];
+        sharedInstance.bundleLocalization = [CTBundleLocalization new];
+        sharedInstance.cmsLocalization = [CTCMSLocalization new];
+    });
+    return sharedInstance;
+}
 
 + (NSString *)pickupType:(CTAvailabilityItem *)item
 {
@@ -407,14 +426,23 @@
     return transmissionStr;
 }
 
-+ (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle
+- (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle
 {
     NSString *language = [[CTSDKSettings instance].languageCode lowercaseString];
-    if ([bundle pathForResource:language ofType:@"strings"]) {
-        return NSLocalizedStringFromTableInBundle(key, language, bundle, nil);
+    
+    NSString *remoteLocalization = [self.cmsLocalization localizedStringForKey:key bundle:bundle language:language];
+    
+    if (remoteLocalization) {
+        return remoteLocalization;
+    }
+    
+    NSString *cachedLocalization = [self.bundleLocalization localizedStringForKey:key bundle:bundle language:language];
+    
+    if (cachedLocalization) {
+        return cachedLocalization;
     }
 
-    return NSLocalizedStringFromTableInBundle(key, @"en", bundle, nil);
+    return NSLocalizedStringFromTableInBundle(key, language, bundle, @"");
 }
 
 

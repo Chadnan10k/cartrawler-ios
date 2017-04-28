@@ -37,9 +37,6 @@
     _bannerContainer = [self renderBanner];
     [self addSubview:self.bannerContainer];
     
-    _footerContainer = [self renderFooter];
-    [self addSubview:self.footerContainer];
-    
     _vehicleImageView = [self renderVehicleImage];
     [self addSubview:self.vehicleImageView];
     
@@ -58,7 +55,6 @@
     
     NSDictionary *viewDictionary = @{
                                      @"bannerContainer" : self.bannerContainer,
-                                     @"footerContainer" : self.footerContainer,
                                      @"imageView" : self.vehicleImageView,
                                      @"featureContainer" : self.featureContainer,
                                      @"vehicleNameLabel" : self.vehicleNameLabel
@@ -73,17 +69,9 @@
                                                                  options:0
                                                                  metrics:nil
                                                                    views:viewDictionary]];
-    //Footer
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[footerContainer]-0-|"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:viewDictionary]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[footerContainer(45)]-0-|"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:viewDictionary]];
+
     //Image View
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[bannerContainer]-0-[imageView(100@750)]-4-[footerContainer]"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[bannerContainer]-0-[imageView(100@750)]-4-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:viewDictionary]];

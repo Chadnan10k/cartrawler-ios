@@ -36,11 +36,8 @@
 
 
 + (CartrawlerInPath *)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental
-                                      clientID:(nonnull NSString *)clientID
 {
     CartrawlerInPath *inPath = [CartrawlerInPath new];
-    [[CTSDKSettings instance] setClientId:clientID];
-    inPath.clientID = clientID;
     inPath.rental = cartrawlerRental;
     return inPath;
 }
@@ -51,8 +48,11 @@
                      flightNumber:(nullable NSString *)flightNumber
                          currency:(nonnull NSString *)currency
                         passegers:(nonnull NSArray<CTPassenger *> *)passegers
+                         clientID:(nonnull NSString *)clientID
              parentViewController:(nonnull UIViewController *)parentViewController;
 {
+    [[CTSDKSettings instance] setClientId:clientID];
+    _clientID = clientID;
     [self renderDefaultState];
     _parentViewController = parentViewController;
     [self setSearchDetails:currency flightNo:flightNumber passengers:passegers pickupDate:pickupDate returnDate:returnDate];
@@ -199,7 +199,7 @@
                     vehicleItem.vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
 }
 
-- (void)presentCarRentalWithFlightDetails:(nonnull UIViewController *)parentViewController
+- (void)presentAllCars:(nonnull UIViewController *)parentViewController
 {
     [[CTSDKSettings instance] setHomeCountryCode: self.defaultCountryCode];
     [[CTSDKSettings instance] setHomeCountryName: self.defaultCountryName];
@@ -211,13 +211,13 @@
     [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@1];
 }
 
-- (void)presentCarRentalWithVehicle:(nonnull UIViewController *)parentViewController vehicle:(CTAvailabilityItem *)vehicle
+- (void)presentSelectedVehicle:(nonnull UIViewController *)parentViewController selectedVehicleItem:(CTAvailabilityItem *)vehicleItem;
 {
     [[CTSDKSettings instance] setHomeCountryCode: self.defaultCountryCode];
     [[CTSDKSettings instance] setHomeCountryName: self.defaultCountryName];
     [CTSDKSettings instance].disableCurrencySelection = YES;
     [[CTRentalSearch instance] setFromCopy:self.defaultSearch];
-    [CTRentalSearch instance].selectedVehicle = vehicle;
+    [CTRentalSearch instance].selectedVehicle = vehicleItem;
     [self configureViews];
     [self presentRentalNavigationController:parentViewController showSelection:NO];
     [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@1];
@@ -290,7 +290,7 @@
     }
 }
 
-- (void)addCrossSellCardToView:(UIView *)view
+- (void)addInPathCarouselToContainer:(UIView *)view
 {
     if (!self.cardView) {
         _cardView = [CTInPathView new];
@@ -385,28 +385,28 @@
     _cachedVehicle = search.selectedVehicle;
     [self renderSelectedState];
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(didProduceInPathRequest:vehicle:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didProduceInPathPaymentRequest:vehicle:)]) {
         [CTDataStore cachePotentialInPathBooking:booking];
-        [self.delegate didProduceInPathRequest:[CTInPathPayment createInPathRequest:search]
+        [self.delegate didProduceInPathPaymentRequest:[CTInPathPayment createInPathRequest:search]
                                        vehicle:vehicle];
     }
 }
 
 // MARK : CTInPathViewDelegate
 
-- (void)didTapVehicle:(CTAvailabilityItem *)item
+- (void)didTapVehicle:(CTAvailabilityItem *)item atIndex:(NSUInteger)index
 {
-    [self presentCarRentalWithVehicle:self.parentViewController vehicle:item];
+    if (self.delegate) {
+        [self.delegate didTapVehicleAtIndex:index vehicleItem:item];
+    }
 }
 
-- (void)didTapShowAll
+- (void)didDisplayVehicle:(CTAvailabilityItem *)item atIndex:(NSUInteger)index
 {
-    [self presentCarRentalWithFlightDetails:self.parentViewController];
+    if (self.delegate) {
+        [self.delegate didDisplayVehicleAtIndex:index vehicleItem:item];
+    }
 }
 
-- (void)didTapRemoveVehicle
-{
-    [self removeVehicle];
-}
 
 @end

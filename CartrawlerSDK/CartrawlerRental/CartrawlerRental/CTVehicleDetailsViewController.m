@@ -400,6 +400,10 @@
 //    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-// MARK: Seleciton view controller delegate
+// MARK: CTvehicle details delegate
+- (void)didTapMoreDetailsView:(UIView *)view
+{
+    
+}
 
 @end

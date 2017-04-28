@@ -373,3 +373,7 @@
 "payment_car_insurance" = "Insurance";
 
 "payment_free" = "Free";
+
+"feature_usb" = "USB port";
+"feature_bluetooth" = "Bluetooth";
+"feature_gps" = "GPS";

@@ -11,6 +11,7 @@
 #import "CTVehicleInfoView.h"
 #import <CartrawlerSDK/CTLayoutManager.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSString.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 #import "CTSearchDetailsViewController.h"
@@ -32,6 +33,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 @property (weak, nonatomic) IBOutlet CTLabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *rightButton;
 @property (weak, nonatomic) IBOutlet UIButton *leftButton;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
+@property (weak, nonatomic) IBOutlet UIButton *dismissButton;
 @property (nonatomic, strong) CTVehicleSelectionView *vehicleSelectionView;
 @property (nonatomic, strong) CTVehicleInfoView *vehicleDetailsView;
 @property (nonatomic, strong) CTFilterViewController *filterViewController;
@@ -81,9 +84,9 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.vehicleSelectionView scrollToTop];
         [self updateNavigationBar];
         [self presentVehicleSelection];
+        [self.vehicleSelectionView scrollToTop];
     });
 }
 
@@ -99,6 +102,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     
     _vehicleSelectionView = [CTVehicleSelectionView new];
     self.vehicleSelectionView.delegate = self;
+    
 }
 
 - (void)presentVehicleDetails

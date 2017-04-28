@@ -52,17 +52,17 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
  Designated initialiser
 
  @param cartrawlerSDK The Cartrawler SDK object
- @param clientID Your Client ID
  @return CartrawlerRental
  */
-- (instancetype)initWithCartrawlerSDK:(nonnull CartrawlerSDK *)cartrawlerSDK clientID:(NSString *)clientID;
+- (instancetype)initWithCartrawlerSDK:(nonnull CartrawlerSDK *)cartrawlerSDK;
 
 /**
  *  Presents the car rental engine modally in the designated UIViewController
  *
  *  @param viewController The parent view controller
+ *  @param clientID Your Client ID
  */
-- (void)presentCarRentalInViewController:(UIViewController *)viewController;
+- (void)presentCarRentalInViewController:(UIViewController *)viewController withClientID:(NSString *)clientID;
 
 @end
 

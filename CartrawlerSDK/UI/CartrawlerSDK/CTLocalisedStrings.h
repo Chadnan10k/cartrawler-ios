@@ -15,7 +15,7 @@
  *  Uses strings file from bundle of calling object
  */
 #define CTLocalizedString(key) \
-[CTLocalisedStrings localizedStringForKey:(key) bundle:[NSBundle bundleForClass:[self class]]]
+[[CTLocalisedStrings instance] localizedStringForKey:(key) bundle:[NSBundle bundleForClass:[self class]]]
 
 @interface CTLocalisedStrings : NSObject
 
@@ -30,6 +30,8 @@
 
 + (NSString *)transmission:(NSString *)transmissionStr;
 
-+ (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle;
++ (instancetype)instance;
+
+- (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle;
 
 @end
