@@ -161,6 +161,16 @@
 		BC54F1581E54980500A7C871 /* pt.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC54F1571E54980500A7C871 /* pt.strings */; };
 		BC9546701EAF77AD0097312C /* CTImageTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = BC95466E1EAF77AD0097312C /* CTImageTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC9546711EAF77AD0097312C /* CTImageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC95466F1EAF77AD0097312C /* CTImageTextView.m */; };
+		BC9546781EB265010097312C /* CTCMSCommunicator.h in Headers */ = {isa = PBXBuildFile; fileRef = BC9546721EB265010097312C /* CTCMSCommunicator.h */; };
+		BC9546791EB265010097312C /* CTCMSCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9546731EB265010097312C /* CTCMSCommunicator.m */; };
+		BC95467A1EB265010097312C /* CTCMSJSONParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BC9546741EB265010097312C /* CTCMSJSONParser.h */; };
+		BC95467B1EB265010097312C /* CTCMSJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9546751EB265010097312C /* CTCMSJSONParser.m */; };
+		BC95467C1EB265010097312C /* CTCMSLocalization.h in Headers */ = {isa = PBXBuildFile; fileRef = BC9546761EB265010097312C /* CTCMSLocalization.h */; };
+		BC95467D1EB265010097312C /* CTCMSLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9546771EB265010097312C /* CTCMSLocalization.m */; };
+		BC9546801EB2651C0097312C /* CTBundleLocalization.h in Headers */ = {isa = PBXBuildFile; fileRef = BC95467E1EB2651C0097312C /* CTBundleLocalization.h */; };
+		BC9546811EB2651C0097312C /* CTBundleLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = BC95467F1EB2651C0097312C /* CTBundleLocalization.m */; };
+		BC9546841EB2655C0097312C /* CTFileSystemAccess.h in Headers */ = {isa = PBXBuildFile; fileRef = BC9546821EB2655C0097312C /* CTFileSystemAccess.h */; };
+		BC9546851EB2655C0097312C /* CTFileSystemAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9546831EB2655C0097312C /* CTFileSystemAccess.m */; };
 		BC9F6E521E24EF91006DD990 /* CTAnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */; };
 		BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCDB4BEA1E3F50C6008004DA /* CTAnalyticsEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */; };
@@ -365,6 +375,16 @@
 		BC54F1571E54980500A7C871 /* pt.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pt.strings; path = Localization/pt.strings; sourceTree = "<group>"; };
 		BC95466E1EAF77AD0097312C /* CTImageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTImageTextView.h; sourceTree = "<group>"; };
 		BC95466F1EAF77AD0097312C /* CTImageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTImageTextView.m; sourceTree = "<group>"; };
+		BC9546721EB265010097312C /* CTCMSCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCMSCommunicator.h; sourceTree = "<group>"; };
+		BC9546731EB265010097312C /* CTCMSCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCMSCommunicator.m; sourceTree = "<group>"; };
+		BC9546741EB265010097312C /* CTCMSJSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCMSJSONParser.h; sourceTree = "<group>"; };
+		BC9546751EB265010097312C /* CTCMSJSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCMSJSONParser.m; sourceTree = "<group>"; };
+		BC9546761EB265010097312C /* CTCMSLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCMSLocalization.h; sourceTree = "<group>"; };
+		BC9546771EB265010097312C /* CTCMSLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCMSLocalization.m; sourceTree = "<group>"; };
+		BC95467E1EB2651C0097312C /* CTBundleLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBundleLocalization.h; sourceTree = "<group>"; };
+		BC95467F1EB2651C0097312C /* CTBundleLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBundleLocalization.m; sourceTree = "<group>"; };
+		BC9546821EB2655C0097312C /* CTFileSystemAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFileSystemAccess.h; sourceTree = "<group>"; };
+		BC9546831EB2655C0097312C /* CTFileSystemAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFileSystemAccess.m; sourceTree = "<group>"; };
 		BC9F6E511E24EF91006DD990 /* CTAnalyticsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsTests.m; sourceTree = "<group>"; };
 		BCDB4BE11E3F4D1F008004DA /* CTAnalyticsEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalyticsEvent.h; sourceTree = "<group>"; };
 		BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsEvent.m; sourceTree = "<group>"; };
@@ -550,6 +570,16 @@
 				4550618A1D59CD91004EAC43 /* CTLocalisedStrings.m */,
 				E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */,
 				E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */,
+				BC9546721EB265010097312C /* CTCMSCommunicator.h */,
+				BC9546731EB265010097312C /* CTCMSCommunicator.m */,
+				BC9546741EB265010097312C /* CTCMSJSONParser.h */,
+				BC9546751EB265010097312C /* CTCMSJSONParser.m */,
+				BC9546761EB265010097312C /* CTCMSLocalization.h */,
+				BC9546771EB265010097312C /* CTCMSLocalization.m */,
+				BC95467E1EB2651C0097312C /* CTBundleLocalization.h */,
+				BC95467F1EB2651C0097312C /* CTBundleLocalization.m */,
+				BC9546821EB2655C0097312C /* CTFileSystemAccess.h */,
+				BC9546831EB2655C0097312C /* CTFileSystemAccess.m */,
 			);
 			name = Localization;
 			sourceTree = "<group>";
@@ -981,10 +1011,12 @@
 				451E763A1E04438300D58F71 /* CTRentalBooking.h in Headers */,
 				455B58761DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.h in Headers */,
 				455B58351DCC914300CA4790 /* CTPaymentRequest.h in Headers */,
+				BC9546841EB2655C0097312C /* CTFileSystemAccess.h in Headers */,
 				455B58911DCC914300CA4790 /* CTDataStore.h in Headers */,
 				455B584E1DCC914300CA4790 /* CTNavigationController.h in Headers */,
 				45EC99B11E02B51600B76741 /* CTSDKSettings.h in Headers */,
 				455B587D1DCC914300CA4790 /* CTImageCache.h in Headers */,
+				BC9546781EB265010097312C /* CTCMSCommunicator.h in Headers */,
 				455B58621DCC914300CA4790 /* CTAppearance.h in Headers */,
 				455B58B41DCC914400CA4790 /* CTValidation.h in Headers */,
 				E76900BD1E7199F400D729FF /* CTAlertView.h in Headers */,
@@ -1024,15 +1056,18 @@
 				455B58BF1DCC914400CA4790 /* CTTimePickerView.h in Headers */,
 				455B58C11DCC914400CA4790 /* CTCalendarViewController.h in Headers */,
 				459CB2E81DDB5BF8008522BA /* CTNextButton.h in Headers */,
+				BC95467C1EB265010097312C /* CTCMSLocalization.h in Headers */,
 				4513B6241DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h in Headers */,
 				E76900C11E719F9A00D729FF /* CTAlertTextView.h in Headers */,
 				455B58CD1DCC914400CA4790 /* CTSelectView.h in Headers */,
 				45C980C21DCCDB95002D99AB /* CTLayoutConstraint.h in Headers */,
 				455B58641DCC914300CA4790 /* JVFloatLabeledTextField.h in Headers */,
 				BCF874291E79604100EBC758 /* CTLayoutManager.h in Headers */,
+				BC9546801EB2651C0097312C /* CTBundleLocalization.h in Headers */,
 				E7BB87A01EA7CE900008CBAD /* CTTriangleView.h in Headers */,
 				BC2951D61E7FF6110053A897 /* CTPassenger.h in Headers */,
 				BCE193511EA8F5D00097C5CB /* CTLoadingView.h in Headers */,
+				BC95467A1EB265010097312C /* CTCMSJSONParser.h in Headers */,
 				E76900DD1E764F9800D729FF /* CTListView.h in Headers */,
 				E76900E11E77267700D729FF /* CTListItemView.h in Headers */,
 				BCFA41741E97CDF700DA1710 /* CTUpSellBanner.h in Headers */,
@@ -1217,8 +1252,10 @@
 				455B58511DCC914300CA4790 /* CTStepper.m in Sources */,
 				BC1379F01E23E8E700B1F727 /* CTErrorTag.m in Sources */,
 				455B58551DCC914300CA4790 /* CTSegmentedControl.m in Sources */,
+				BC9546851EB2655C0097312C /* CTFileSystemAccess.m in Sources */,
 				455B58571DCC914300CA4790 /* CTPickerView.m in Sources */,
 				455B58591DCC914300CA4790 /* CTTextView.m in Sources */,
+				BC9546811EB2651C0097312C /* CTBundleLocalization.m in Sources */,
 				455B585B1DCC914300CA4790 /* CTPlaceholderView.m in Sources */,
 				E70230741E857DC2005E1BF4 /* CTRatingView.m in Sources */,
 				BC01F5931E9D2A7B003D8286 /* CartrawlerSDK+NSString.m in Sources */,
@@ -1229,6 +1266,7 @@
 				455B58651DCC914300CA4790 /* JVFloatLabeledTextField.m in Sources */,
 				BCE193521EA8F5D00097C5CB /* CTLoadingView.m in Sources */,
 				455B58671DCC914300CA4790 /* NSStringUtils.m in Sources */,
+				BC9546791EB265010097312C /* CTCMSCommunicator.m in Sources */,
 				E7CD21A81E38F794006BE519 /* CTSDKLocalizationConstants.m in Sources */,
 				BC1379EC1E23E4E400B1F727 /* CTTag.m in Sources */,
 				455B58691DCC914300CA4790 /* CTTextField.m in Sources */,
@@ -1252,6 +1290,7 @@
 				455B58941DCC914300CA4790 /* CartrawlerSDK+UIColor.m in Sources */,
 				4513B6251DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m in Sources */,
 				455B58B61DCC914400CA4790 /* CTValidation.m in Sources */,
+				BC95467B1EB265010097312C /* CTCMSJSONParser.m in Sources */,
 				E7BB87A11EA7CE900008CBAD /* CTTriangleView.m in Sources */,
 				E76900E21E77267700D729FF /* CTListItemView.m in Sources */,
 				BC2951D71E7FF6110053A897 /* CTPassenger.m in Sources */,
@@ -1281,6 +1320,7 @@
 				454D91F11DD34E24001AE96C /* Reachability.m in Sources */,
 				E76900CE1E71A55900D729FF /* CTAlertViewPresentationController.m in Sources */,
 				459CB2EF1DDB6638008522BA /* CTToolTipViewController.m in Sources */,
+				BC95467D1EB265010097312C /* CTCMSLocalization.m in Sources */,
 				455B59441DCC914400CA4790 /* CartrawlerSDK.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
