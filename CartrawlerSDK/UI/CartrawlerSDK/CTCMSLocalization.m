@@ -84,7 +84,7 @@ static NSString *CTCMSLocalizationIndex = @"versions";
     NSDictionary *localizations;
     
     if (self.cachedIndex) {
-        NSString *timestamp = [self timestampForIdentifier:identifier inIndex:self.cachedIndex];
+        NSNumber *timestamp = [self timestampForIdentifier:identifier inIndex:self.cachedIndex];
         NSString *filename = [self filenameForIdentifier:identifier timestamp:timestamp];
         
         NSData *data = [CTFileSystemAccess fetchJSONResourceFromDocumentDirectory:filename];
@@ -101,8 +101,8 @@ static NSString *CTCMSLocalizationIndex = @"versions";
 }
 
 - (void)checkRemoteLocalizationsForIdentifier:(NSString *)identifier {
-    NSString *cachedTimestamp = [self timestampForIdentifier:identifier inIndex:self.cachedIndex];
-    NSString *timestamp = [self timestampForIdentifier:identifier inIndex:self.cmsIndex];
+    NSNumber *cachedTimestamp = [self timestampForIdentifier:identifier inIndex:self.cachedIndex];
+    NSNumber *timestamp = [self timestampForIdentifier:identifier inIndex:self.cmsIndex];
     
     BOOL newFileAvailable = timestamp && ![cachedTimestamp isEqual:timestamp];
     BOOL cacheEmpty = timestamp && [self.localizations[identifier] count] == 0;
@@ -119,7 +119,7 @@ static NSString *CTCMSLocalizationIndex = @"versions";
 
 // MARK: Helpers
 
-- (NSString *)timestampForIdentifier:(NSString *)identifier inIndex:(NSDictionary *)index {
+- (NSNumber *)timestampForIdentifier:(NSString *)identifier inIndex:(NSDictionary *)index {
     NSArray *products = index[@"products"];
     
     for (NSDictionary *product in products) {
@@ -135,8 +135,8 @@ static NSString *CTCMSLocalizationIndex = @"versions";
     return nil;
 }
 
-- (NSString *)filenameForIdentifier:(NSString *)identifier timestamp:(NSString *)timestamp {
-    NSString *filename = [identifier stringByAppendingPathComponent:timestamp];
+- (NSString *)filenameForIdentifier:(NSString *)identifier timestamp:(NSNumber *)timestamp {
+    NSString *filename = [identifier stringByAppendingPathComponent:timestamp.stringValue];
     return [filename stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
 }
 
