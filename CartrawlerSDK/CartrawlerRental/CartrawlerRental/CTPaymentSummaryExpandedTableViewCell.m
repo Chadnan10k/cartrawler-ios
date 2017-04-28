@@ -8,6 +8,16 @@
 
 #import "CTPaymentSummaryExpandedTableViewCell.h"
 #import <CartrawlerSDK/CTAppearance.h>
+#import <CartrawlerAPI/CTFee.h>
+#import <CartrawlerAPI/CTExtraEquipment.h>
+#import <CartrawlerAPI/CTInsurance.h>
+#import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
+#import "CTRentalLocalizationConstants.h"
+
+@interface CTPaymentSummaryExpandedTableViewCell ()
+@property (nonatomic, strong) CTLabel *titleLabel;
+@property (nonatomic, strong) CTLabel *detailLabel;
+@end
 
 @implementation CTPaymentSummaryExpandedTableViewCell
 
@@ -46,6 +56,69 @@
         
     }
     return self;
+}
+
+- (void)updateWithModel:(id)model {
+    if ([model isKindOfClass:CTFee.class]) {
+        [self updateWithFee:model];
+    }
+    if ([model isKindOfClass:CTExtraEquipment.class]) {
+        [self updateWithExtraEquipment:model];
+    }
+    if ([model isKindOfClass:CTInsurance.class]) {
+        [self updateWithInsurance:model];
+    }
+    if ([model isKindOfClass:NSString.class]) {
+        [self updateWithString:model];
+    }
+}
+
+- (void)updateWithFee:(CTFee *)fee {
+    switch (fee.feePurpose) {
+        case CTFeeTypePayNow:
+            self.titleLabel.text = CTLocalizedString(CTRentalCarRental);
+            break;
+        case CTFeeTypePayAtDesk:
+            self.titleLabel.text = CTLocalizedString(CTRentalPayAtDesk);
+            break;
+        case CTFeeTypeBooking:
+            self.titleLabel.text = CTLocalizedString(CTRentalBookingFee);
+            break;
+        default:
+            break;
+    }
+    self.detailLabel.text = [fee.feeAmount numberStringWithCurrencyCode];
+}
+
+- (void)updateWithExtraEquipment:(CTExtraEquipment *)extra {
+    self.titleLabel.text = [self titleForExtra:extra];
+    self.detailLabel.text = [self detailForExtra:extra];
+}
+
+- (NSString *)titleForExtra:(CTExtraEquipment *)extra {
+    NSString *title = extra.equipDescription;
+    if (extra.qty > 1) {
+        NSString *quantity = [NSString stringWithFormat:@" (x%ld)", (long)extra.qty];
+        title = [title stringByAppendingString:quantity];
+    }
+    return title;
+}
+
+- (NSString *)detailForExtra:(CTExtraEquipment *)extra {
+    if (extra.isIncludedInRate) {
+        return CTLocalizedString(CTRentalPaymentFree);
+    }
+    double charge = extra.chargeAmount.doubleValue * extra.qty;
+    return [@(charge) numberStringWithCurrencyCode];
+}
+
+- (void)updateWithInsurance:(CTInsurance *)insurance {
+    self.titleLabel.text = CTLocalizedString(CTRentalPaymentCarInsurance);
+    self.detailLabel.text = [insurance.costAmount numberStringWithCurrencyCode];
+}
+
+- (void)updateWithString:(NSString *)string {
+    self.titleLabel.text = string;
 }
 
 @end

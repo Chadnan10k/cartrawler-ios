@@ -14,8 +14,14 @@
  */
 @interface CTPaymentSummaryExpandedTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) CTLabel *titleLabel;
+@property (nonatomic, readonly) CTLabel *titleLabel;
+@property (nonatomic, readonly) CTLabel *detailLabel;
 
-@property (nonatomic, strong) CTLabel *detailLabel;
+/**
+ Update the cell with a CTFee, CTInsurance, CTExtraEquipment or NSString
+
+ @param model a model
+ */
+- (void)updateWithModel:(id)model;
 
 @end

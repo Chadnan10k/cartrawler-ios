@@ -10,7 +10,6 @@
 #import <CartrawlerSDK/CTLayoutManager.h>
 #import "CTPaymentSummaryExpandedTableViewCell.h"
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
-#import <CartrawlerSDK/CTLocalisedStrings.h>
 #import "CTRentalLocalizationConstants.h"
 
 @interface CTPaymentSummaryExpandedView () <UITableViewDelegate, UITableViewDataSource>
@@ -267,56 +266,57 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        NSInteger carRentalItemCount = 1;
-        NSInteger insuranceItemCount = self.search.isBuyingInsurance ? 1 : 0;
-        NSInteger includedInRateItemsCount = [self extrasForVehicle:self.vehicle includedInRate:YES].count;
-        return carRentalItemCount + insuranceItemCount + includedInRateItemsCount;
-    }
-    return (section == 0) ? 1 : MAX(1, [self extrasForVehicle:self.vehicle includedInRate:NO].count);
+    return (section == 0) ? [self payNowCharges].count : [self payAtDeskCharges].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CTPaymentSummaryExpandedTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor colorWithRed:3.0/255.0 green:40.0/255.0 blue:101.0/255.0 alpha:1.0];
-    return (indexPath.section == 0) ? [self formattedPayNowCell:cell atIndex:indexPath.row] : [self formattedPayAtDeskCell:cell atIndex:indexPath.row];
-}
-
-- (CTPaymentSummaryExpandedTableViewCell *)formattedPayNowCell:(CTPaymentSummaryExpandedTableViewCell *)cell atIndex:(NSInteger)index {
-    if (index == 0) {
-        cell.titleLabel.text = CTLocalizedString(CTRentalCarRental);
-        cell.detailLabel.text = [self.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
-        return cell;
-    }
-    
-    NSInteger insuranceItemCount = self.search.isBuyingInsurance ? 1 : 0;
-    if (index == insuranceItemCount) {
-        cell.titleLabel.text = @"Insurance";
-        cell.detailLabel.text = [self.search.insurance.costAmount numberStringWithCurrencyCode];
-        return cell;
-    }
-    
-    NSArray *extras = [self extrasForVehicle:self.vehicle includedInRate:YES];
-    CTExtraEquipment *extraEquipment = extras[index - (1 + insuranceItemCount)];
-    cell.titleLabel.text = extraEquipment.equipDescription;
-    cell.detailLabel.text = @"Free";
-    
+    [cell updateWithModel:[self chargeAtIndexPath:indexPath]];
     return cell;
 }
 
-- (CTPaymentSummaryExpandedTableViewCell *)formattedPayAtDeskCell:(CTPaymentSummaryExpandedTableViewCell *)cell atIndex:(NSInteger)index {
-    NSArray *extras = [self extrasForVehicle:self.vehicle includedInRate:NO];
-    if (extras.count == 0) {
-        cell.titleLabel.text = CTLocalizedString(CTRentalPayNothingAtDesk);
-        cell.detailLabel.text = @"";
+- (id)chargeAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *charges = indexPath.section == 0 ? [self payNowCharges] : [self payAtDeskCharges];
+    return charges[indexPath.row];
+}
+
+- (NSArray *)payNowCharges {
+    NSMutableArray *charges = [NSMutableArray new];
+    
+    for (CTFee *fee in self.vehicle.fees) {
+        if ((fee.feePurpose == CTFeeTypePayNow || fee.feePurpose == CTFeeTypeBooking) && fee.feeAmount.integerValue > 0) {
+            [charges addObject:fee];
+        }
+    }
+
+    if (self.search.isBuyingInsurance) {
+        [charges addObject:self.search.insurance];
     }
     
-    if (index < extras.count) {
-        CTExtraEquipment *extraEquipment = extras[index];
-        cell.titleLabel.text = extraEquipment.equipDescription;
-        cell.detailLabel.text = [extraEquipment.chargeAmount numberStringWithCurrencyCode];
+    return charges.copy;
+}
+
+- (NSArray *)payAtDeskCharges {
+    NSMutableArray *charges = [NSMutableArray new];
+    
+    for (CTFee *fee in self.vehicle.fees) {
+        if (fee.feePurpose == CTFeeTypePayAtDesk && fee.feeAmount.integerValue > 0) {
+            [charges addObject:fee];
+        }
     }
-    return cell;
+    
+    for (CTExtraEquipment *extra in self.vehicle.extraEquipment) {
+        if (extra.isIncludedInRate || extra.qty > 0) {
+            [charges addObject:extra];
+        }
+    }
+    
+    if (charges.count == 0) {
+        [charges addObject:CTLocalizedString(CTRentalPayNothingAtDesk)];
+    }
+    
+    return charges.copy;
 }
 
 // MARK: UITableViewDelegate
@@ -334,16 +334,9 @@
     
     UIView *view = [UIView new];
     view.backgroundColor = [UIColor colorWithRed:3.0/255.0 green:40.0/255.0 blue:101.0/255.0 alpha:1.0];
-    [view addSubview:headerLabel];
     
-    [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[headerLabel]|"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:NSDictionaryOfVariableBindings(headerLabel)]];
-    [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[headerLabel]|"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:NSDictionaryOfVariableBindings(headerLabel)]];
+    [view addSubview:headerLabel];
+    [CTLayoutManager pinView:headerLabel toSuperView:view];
     
     return view;
 }
@@ -354,19 +347,6 @@
     [super layoutSubviews];
     [self layoutIfNeeded];
     self.chevron.layer.cornerRadius = self.chevron.frame.size.width / 2;
-}
-
-// MARK: View Model Logic
-
-- (NSArray *)extrasForVehicle:(CTVehicle *)vehicle includedInRate:(BOOL)includedInRate {
-    return [vehicle.extraEquipment filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(CTExtraEquipment *extraEquipment, NSDictionary<NSString *,id> * _Nullable bindings) {
-        if (includedInRate) {
-            return extraEquipment.isIncludedInRate == includedInRate;
-        } else {
-            return extraEquipment.qty > 0 && extraEquipment.isIncludedInRate == includedInRate;
-        }
-        
-    }]];
 }
 
 @end
