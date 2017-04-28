@@ -368,4 +368,10 @@ NSString * const CTRentalPayNow = @"pay_now";
 
 NSString * const CTRentalPayAtDesk = @"pay_at_desk";
 
+NSString * const CTRentalBookingFee = @"booking_fee";
+
+NSString * const CTRentalPaymentCarInsurance = @"payment_car_insurance";
+
+NSString * const CTRentalPaymentFree = @"payment_free";
+
 @end
