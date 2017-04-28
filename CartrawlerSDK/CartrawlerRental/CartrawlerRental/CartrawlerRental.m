@@ -29,20 +29,20 @@
 
 @implementation CartrawlerRental
 
-- (instancetype)initWithCartrawlerSDK:(nonnull CartrawlerSDK *)cartrawlerSDK clientID:(NSString *)clientID
+- (instancetype)initWithCartrawlerSDK:(nonnull CartrawlerSDK *)cartrawlerSDK;
 {
     self = [super init];
     _bundle = [NSBundle bundleForClass:[self class]];
     _cartrawlerSDK = cartrawlerSDK;
-    _clientID = clientID;
-    [[CTSDKSettings instance] setClientId:clientID];
     [self setDefaultViews];
     [self configureViews];
     return self;
 }
 
-- (void)presentCarRentalInViewController:(UIViewController *)viewController;
+- (void)presentCarRentalInViewController:(UIViewController *)viewController withClientID:(NSString *)clientID;
 {
+    _clientID = clientID;
+    [[CTSDKSettings instance] setClientId:clientID];
     [self.cartrawlerSDK.cartrawlerAPI changeClientKey:self.clientID];
     [CTSDKSettings instance].disableCurrencySelection = NO;
     [[CTSDKSettings instance] resetCountryToDeviceLocale];

@@ -13,9 +13,8 @@
 @protocol CTInPathViewDelegate <NSObject>
 
 @required
-- (void)didTapVehicle:(CTAvailabilityItem *)item;
-- (void)didTapShowAll;
-- (void)didTapRemoveVehicle;
+- (void)didTapVehicle:(CTAvailabilityItem *)item atIndex:(NSUInteger)index;
+- (void)didDisplayVehicle:(CTAvailabilityItem *)item atIndex:(NSUInteger)index;
 
 @end
 

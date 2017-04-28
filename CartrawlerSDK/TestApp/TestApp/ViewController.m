@@ -32,7 +32,7 @@
 }
 
 - (IBAction)openCarRental:(id)sender {
-    [[RYRRentalManager instance].rental presentCarRentalInViewController:self];
+    [[RYRRentalManager instance].rental presentCarRentalInViewController:self withClientID:@"642619"];
 }
 
 - (IBAction)endpointChanged:(id)sender {

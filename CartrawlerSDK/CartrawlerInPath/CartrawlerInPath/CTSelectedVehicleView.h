@@ -11,8 +11,6 @@
 
 @protocol CTSelectedVehicleDelegate <NSObject>
 
-- (void)didTapRemoveVehicle;
-
 @end
 
 @interface CTSelectedVehicleView : UIView
