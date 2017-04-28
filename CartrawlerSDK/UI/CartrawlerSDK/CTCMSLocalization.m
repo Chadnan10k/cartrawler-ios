@@ -135,8 +135,8 @@ static NSString *CTCMSLocalizationIndex = @"versions";
     return nil;
 }
 
-- (NSString *)filenameForIdentifier:(NSString *)identifier timestamp:(NSNumber *)timestamp {
-    NSString *filename = [identifier stringByAppendingPathComponent:timestamp.stringValue];
+- (NSString *)filenameForIdentifier:(NSString *)identifier timestamp:(NSString *)timestamp {
+    NSString *filename = [identifier stringByAppendingPathComponent:timestamp];
     return [filename stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
 }
 
