@@ -21,7 +21,8 @@
 @property (nonatomic, strong) UIView *divider;
 @property (nonatomic, strong) UIView *rentalTotalView;
 @property (nonatomic, strong) CTLabel *rentalTotalLabel;
-@property (nonatomic, strong) UIView *chevron;
+@property (nonatomic, strong) UIImageView *chevronImageView;
+@property (nonatomic, strong) UIView *chevronBackground;
 
 @property (nonatomic, strong) CTLayoutManager *layoutManager;
 @end
@@ -35,6 +36,9 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         
+        self.chevronBackground = [self createChevronBackground];
+        [self addSubview:self.chevronBackground];
+        
         self.containerView = [self createContainerView];
         [self addSubview:self.containerView];
         
@@ -47,8 +51,8 @@
         self.rentalTotalView = [self createRentalTotalView];
         [self.containerView addSubview:self.rentalTotalView];
         
-        self.chevron = [self createChevron];
-        [self addSubview:self.chevron];
+        self.chevronImageView = [self createChevronImageView];
+        [self addSubview:self.chevronImageView];
         
         [self applyConstraints];
     }
@@ -128,52 +132,25 @@
     return rentalTotalView;
 }
 
-- (UIView *)createChevron {
+- (UIView *)createChevronBackground {
+    UIView *chevron = [UIView new];
+    chevron.translatesAutoresizingMaskIntoConstraints = NO;
+    chevron.backgroundColor = [UIColor colorWithRed:3.0/255.0 green:40.0/255.0 blue:101.0/255.0 alpha:1.0];
+    return chevron;
+}
+
+- (UIImageView *)createChevronImageView {
     NSBundle *bundle = [NSBundle bundleForClass:self.class];
     UIImage *chevronImage = [[UIImage imageNamed:@"down_arrow" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     UIImageView *chevronImageView = [[UIImageView alloc] initWithImage:chevronImage];
     chevronImageView.tintColor = [UIColor whiteColor];
     chevronImageView.translatesAutoresizingMaskIntoConstraints = NO;
     chevronImageView.transform = CGAffineTransformMakeScale(1, -1);
-    
-    UIView *chevron = [UIView new];
-    chevron.translatesAutoresizingMaskIntoConstraints = NO;
-    chevron.backgroundColor = [UIColor colorWithRed:3.0/255.0 green:40.0/255.0 blue:101.0/255.0 alpha:1.0];
-    [chevron addSubview:chevronImageView];
-    
-    [chevron addConstraint:[NSLayoutConstraint constraintWithItem:chevronImageView
-                                                        attribute:NSLayoutAttributeWidth
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:chevron
-                                                        attribute:NSLayoutAttributeWidth
-                                                       multiplier:0.3
-                                                         constant:0.0]];
-    [chevron addConstraint:[NSLayoutConstraint constraintWithItem:chevronImageView
-                                                        attribute:NSLayoutAttributeHeight
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:chevron
-                                                        attribute:NSLayoutAttributeHeight
-                                                       multiplier:0.3
-                                                         constant:0.0]];
-    [chevron addConstraint:[NSLayoutConstraint constraintWithItem:chevron
-                                                        attribute:NSLayoutAttributeCenterX
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:chevronImageView
-                                                        attribute:NSLayoutAttributeCenterX
-                                                       multiplier:1.0
-                                                         constant:0.0]];
-    [chevron addConstraint:[NSLayoutConstraint constraintWithItem:chevron
-                                                        attribute:NSLayoutAttributeCenterY
-                                                        relatedBy:NSLayoutRelationEqual
-                                                           toItem:chevronImageView
-                                                        attribute:NSLayoutAttributeCenterY
-                                                       multiplier:1.0
-                                                         constant:-5.0]];
-    return chevron;
+    return chevronImageView;
 }
 
 - (void)applyConstraints {
-    NSDictionary *views = @{@"containerView": self.containerView, @"tableView": self.tableView, @"divider": self.divider, @"rentalTotalView": self.rentalTotalView, @"chevron": self.chevron};
+    NSDictionary *views = @{@"containerView": self.containerView, @"tableView": self.tableView, @"divider": self.divider, @"rentalTotalView": self.rentalTotalView, @"chevron": self.chevronBackground};
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[containerView]|"
                                                                  options:0
@@ -212,31 +189,60 @@
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self
                                                      attribute:NSLayoutAttributeCenterX
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.chevron
+                                                        toItem:self.chevronBackground
                                                      attribute:NSLayoutAttributeCenterX
                                                     multiplier:1.0
                                                       constant:0.0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self
                                                      attribute:NSLayoutAttributeBottom
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.chevron
+                                                        toItem:self.chevronBackground
                                                      attribute:NSLayoutAttributeBottom
                                                     multiplier:1.0
                                                       constant:0.0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.chevron
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.chevronBackground
                                                      attribute:NSLayoutAttributeWidth
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:nil
                                                      attribute:NSLayoutAttributeNotAnAttribute
                                                     multiplier:1.0
                                                       constant:40.0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.chevron
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.chevronBackground
                                                      attribute:NSLayoutAttributeWidth
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.chevron
+                                                        toItem:self.chevronBackground
                                                      attribute:NSLayoutAttributeHeight
                                                     multiplier:1.0
                                                       constant:0.0]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.chevronImageView
+                                                        attribute:NSLayoutAttributeWidth
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.chevronBackground
+                                                        attribute:NSLayoutAttributeWidth
+                                                       multiplier:0.3
+                                                         constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.chevronImageView
+                                                        attribute:NSLayoutAttributeHeight
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.chevronBackground
+                                                        attribute:NSLayoutAttributeHeight
+                                                       multiplier:0.3
+                                                         constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.chevronImageView
+                                                        attribute:NSLayoutAttributeCenterX
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.chevronBackground
+                                                        attribute:NSLayoutAttributeCenterX
+                                                       multiplier:1.0
+                                                         constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.chevronImageView
+                                                        attribute:NSLayoutAttributeCenterY
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.chevronBackground
+                                                        attribute:NSLayoutAttributeCenterY
+                                                       multiplier:1.0
+                                                         constant:5.0]];
 }
 
 // MARK: View Update
@@ -346,7 +352,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     [self layoutIfNeeded];
-    self.chevron.layer.cornerRadius = self.chevron.frame.size.width / 2;
+    self.chevronBackground.layer.cornerRadius = self.chevronBackground.frame.size.width / 2;
 }
 
 @end
