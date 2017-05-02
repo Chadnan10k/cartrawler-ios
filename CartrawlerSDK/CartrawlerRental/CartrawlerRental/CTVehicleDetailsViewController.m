@@ -81,6 +81,9 @@
                                completion:^(CTInsurance *insurance) {
                                    weakSelf.search.insurance = insurance;
                                }];
+
+    [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
+    
 }
 
 /**

@@ -324,7 +324,7 @@
 
 "insurance_remove_button" = "Remove";
 
-"results_sort_recommened" = "Recommened";
+"results_sort_recommended" = "Recommended";
 
 "results_sort_price" = "Price";
 
@@ -355,6 +355,24 @@
 "extras_paid_at_desk" = "Extras will be paid for at desk";
 
 "view_all" = "View All";
+
+"car_rental_total" = "Car rental total";
+
+"other_cars" = "Other cars";
+
+"car_rental" = "Car rental";
+
+"pay_nothing_at_desk" = "Pay nothing at desk";
+
+"pay_now" = "Pay now";
+
+"pay_at_desk" = "Pay at desk";
+
+"booking_fee" = "Booking fee";
+
+"payment_car_insurance" = "Insurance";
+
+"payment_free" = "Free";
 
 "feature_usb" = "USB port";
 "feature_bluetooth" = "Bluetooth";

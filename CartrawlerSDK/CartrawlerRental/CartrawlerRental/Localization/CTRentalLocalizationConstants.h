@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTRentalLocalizationConstants : NSObject
 
@@ -347,7 +348,7 @@ extern NSString * const CTRentalVehicleMerchandisingBestReviewed;
 
 extern NSString * const CTRentalResultsSortPrice;
 
-extern NSString * const CTRentalResultsSortRecommened;
+extern NSString * const CTRentalResultsSortRecommended;
 
 extern NSString * const CTRentalResultsOtherCars;
 
@@ -358,6 +359,24 @@ extern NSString * const CTRentalExtrasPerRental;
 extern NSString * const CTRentalExtrasPaidAtDesk;
 
 extern NSString * const CTRentalExtrasViewAll;
+
+extern NSString * const CTRentalCarRentalTotal;
+
+extern NSString * const CTRentalOtherCars;
+
+extern NSString * const CTRentalCarRental;
+
+extern NSString * const CTRentalPayNothingAtDesk;
+
+extern NSString * const CTRentalPayNow;
+
+extern NSString * const CTRentalPayAtDesk;
+
+extern NSString * const CTRentalBookingFee;
+
+extern NSString * const CTRentalPaymentCarInsurance;
+
+extern NSString * const CTRentalPaymentFree;
 
 //Features
 
@@ -376,6 +395,5 @@ extern NSString * const CTRentalFeatureFrontDemister;
 extern NSString * const CTRentalFeatureParkingSensors;
 
 extern NSString * const CTRentalFeatureFuelEconomy;
-
 
 @end

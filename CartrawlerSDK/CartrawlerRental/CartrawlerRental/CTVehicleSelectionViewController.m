@@ -136,7 +136,7 @@
     NSAttributedString *sortString = [NSString attributedText:CTLocalizedString(CTRentalResultsSort)
                                                     boldColor:[UIColor whiteColor]
                                                      boldSize:17
-                                                  regularText:self.sortingByPrice ? CTLocalizedString(CTRentalResultsSortPrice) : CTLocalizedString(CTRentalResultsSortRecommened)
+                                                  regularText:self.sortingByPrice ? CTLocalizedString(CTRentalResultsSortPrice) : CTLocalizedString(CTRentalResultsSortRecommended)
                                                  regularColor:[UIColor whiteColor]
                                                   regularSize:17
                                                      useSpace:YES];

@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1i-bM-q5G">
-                                <rect key="frame" x="0.0" y="60" width="600" height="660"/>
+                                <rect key="frame" x="0.0" y="110" width="600" height="610"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kJ-BG-kTB" customClass="CTDesignableView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="650"/>
@@ -94,7 +94,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="z1i-bM-q5G" firstAttribute="top" secondItem="m2K-FU-SeP" secondAttribute="bottom" id="2Gh-6G-24Q"/>
+                            <constraint firstItem="z1i-bM-q5G" firstAttribute="top" secondItem="m2K-FU-SeP" secondAttribute="bottom" constant="50" id="2Gh-6G-24Q"/>
                             <constraint firstItem="LJg-5J-nMM" firstAttribute="leading" secondItem="P83-YX-uHD" secondAttribute="leading" id="4p8-QY-A5f"/>
                             <constraint firstAttribute="trailing" secondItem="LJg-5J-nMM" secondAttribute="trailing" id="6GF-ul-G9a"/>
                             <constraint firstItem="m2K-FU-SeP" firstAttribute="top" secondItem="P83-YX-uHD" secondAttribute="top" id="KUS-Bw-8Vl"/>
