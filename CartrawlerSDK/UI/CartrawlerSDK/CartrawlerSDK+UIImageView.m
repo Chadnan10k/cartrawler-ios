@@ -24,13 +24,15 @@
 
 - (void)applyTintWithColor:(UIColor *)color
 {
-    UIImage *newImage = [self.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    UIGraphicsBeginImageContextWithOptions(self.image.size, NO, newImage.scale);
-    [color set];
-    [newImage drawInRect:CGRectMake(0, 0, self.image.size.width, newImage.size.height)];
-    newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.image = newImage;
+    if (self.image) {
+        UIImage *newImage = [self.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        UIGraphicsBeginImageContextWithOptions(self.image.size, NO, newImage.scale);
+        [color set];
+        [newImage drawInRect:CGRectMake(0, 0, self.image.size.width, newImage.size.height)];
+        newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.image = newImage;
+    }
 }
 
 @end
