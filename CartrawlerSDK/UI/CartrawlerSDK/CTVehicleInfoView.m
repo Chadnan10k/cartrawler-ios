@@ -80,6 +80,7 @@
                                }];
     
     [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
+    [self.scrollView setContentOffset:CGPointMake(0, 0)];
 }
 
 /**
@@ -90,6 +91,8 @@
 {
     _scrollView = [UIScrollView new];
     self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.scrollView.bounces = NO;
+    self.scrollView.showsVerticalScrollIndicator = NO;
     [self addSubview:self.scrollView];
 
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[scrollView]-0-[button(80)]-0-|"
