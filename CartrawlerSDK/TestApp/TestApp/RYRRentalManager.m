@@ -186,14 +186,12 @@
 
 - (void)didDisplayVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem
 {
-    NSLog(@"%lu", (unsigned long)index);
+
 }
 
 - (void)didTapVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem
 {
     [self.inPath presentSelectedVehicle:self.parent selectedVehicleItem:vehicleItem];
-    NSLog(@"%lu", (unsigned long)index);
-
 }
 
 @end
