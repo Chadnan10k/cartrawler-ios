@@ -34,7 +34,7 @@
            detail:(nonnull NSString *)detail
              step:(nonnull NSNumber *)step
 {
-    
+    NSLog(@"Tagging Name: %@ Detail: %@ Step: %@", name, detail, step);
     double time = [[NSDate date] timeIntervalSince1970] * 1000;
     NSNumberFormatter *nf = [NSNumberFormatter new];
     NSString *timeString = [nf stringFromNumber:[NSNumber numberWithDouble:time]];

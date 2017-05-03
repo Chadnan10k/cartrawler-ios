@@ -17,6 +17,7 @@
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CTButton.h>
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTFilterViewController ()
 
@@ -101,14 +102,29 @@
     
     CTFilterContainer *carSizeContainer = [[CTFilterContainer alloc] initWithFrame:CGRectZero];
     [carSizeContainer setTableView:self.carSizeTableView];
+    carSizeContainer.filterSelection = ^(BOOL expanded){
+        [[CTAnalytics instance] tagScreen:@"Car Size" detail:@"open" step:@-1];
+    };
     CTFilterContainer *pickupContainer = [[CTFilterContainer alloc] initWithFrame:CGRectZero];
     [pickupContainer setTableView:self.pickupLocationTableView];
+    pickupContainer.filterSelection = ^(BOOL expanded){
+        [[CTAnalytics instance] tagScreen:@"Pick-up" detail:@"open" step:@-1];
+    };
     CTFilterContainer *vendorsContainer = [[CTFilterContainer alloc] initWithFrame:CGRectZero];
     [vendorsContainer setTableView:self.vendorsTableView];
+    vendorsContainer.filterSelection = ^(BOOL expanded){
+        [[CTAnalytics instance] tagScreen:@"Supplier" detail:@"open" step:@-1];
+    };
     CTFilterContainer *fuelContainer = [[CTFilterContainer alloc] initWithFrame:CGRectZero];
     [fuelContainer setTableView:self.fuelPolicyTableView];
+    fuelContainer.filterSelection = ^(BOOL expanded){
+        [[CTAnalytics instance] tagScreen:@"Fuel Pol" detail:@"open" step:@-1];
+    };
     CTFilterContainer *transmissionContainer = [[CTFilterContainer alloc] initWithFrame:CGRectZero];
     [transmissionContainer setTableView:self.transmissionTableView];
+    transmissionContainer.filterSelection = ^(BOOL expanded){
+        [[CTAnalytics instance] tagScreen:@"Transmiss" detail:@"open" step:@-1];
+    };
 
     _viewArray = @[carSizeContainer, pickupContainer, vendorsContainer, fuelContainer, transmissionContainer];
     
@@ -309,6 +325,7 @@
 
 - (IBAction)doneTapped:(id)sender
 {
+    [[CTAnalytics instance] tagScreen:@"mdl_filter" detail:@"close" step:@0];
     [self.filterFactory filter];
     if (self.delegate) {
         [self.delegate filterDidUpdate:self.filterFactory.filteredData];

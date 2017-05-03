@@ -19,7 +19,7 @@
 #import "CTExtrasListViewController.h"
 #import "CTRentalLocalizationConstants.h"
 
-@interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTInsuranceDetailDelegate, CTCountryPickerDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate>
+@interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTInsuranceDetailDelegate, CTCountryPickerDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIView *containerView;
@@ -39,6 +39,9 @@
 
 //Temporary variables
 @property (nonatomic, strong) NSString *tempCountryCode;
+
+// Analytics
+@property (nonatomic, assign) BOOL insuranceViewDidAppear;
 
 @end
 
@@ -81,6 +84,8 @@
     
     [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
     [self.scrollView setContentOffset:CGPointMake(0, 0)];
+    
+    self.insuranceViewDidAppear = NO;
 }
 
 /**
@@ -93,6 +98,7 @@
     self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     self.scrollView.bounces = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.delegate = self;
     [self addSubview:self.scrollView];
 
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[scrollView]-0-[button(80)]-0-|"
@@ -135,7 +141,7 @@
     self.nextButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.nextButton setText:@"Test Next"];
     [self addSubview:self.nextButton];
-    [self.nextButton addTarget:self action:@selector(pushToDestination) forControlEvents:UIControlEventTouchUpInside];
+    [self.nextButton addTarget:self action:@selector(nextTapped:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 //MARK: Alert View Init
@@ -434,6 +440,21 @@
     
 }
 
+// MARK: Scroll View
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self checkInsuranceViewDidAppear:scrollView];
+}
+
+- (void)checkInsuranceViewDidAppear:(UIScrollView *)scrollView {
+    if (!self.insuranceViewDidAppear) {
+        if (self.insuranceView.frame.origin.y <= scrollView.contentOffset.y + scrollView.frame.size.height) {
+            self.insuranceViewDidAppear = YES;
+            [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-e" step:@-1];
+        }
+    }
+}
+
 // MARK: Actions
 - (IBAction)backTapped:(id)sender
 {
@@ -446,11 +467,8 @@
 
 - (IBAction)nextTapped:(id)sender
 {
-//    if (self.destinationViewController) {
-//        [self pushToDestination];
-//    } else {
-//        [self dismiss];
-//    }
+    [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"added" step:@-1];
+    [self pushToDestination];
 }
 
 // MARK: Presentation

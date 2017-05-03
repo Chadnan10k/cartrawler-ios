@@ -27,6 +27,7 @@
 @property (nonatomic) BOOL isReturnTrip;
 @property (nonatomic) BOOL didFailToFetchResults;
 @property (nonatomic) BOOL didFetchResults;
+@property (nonatomic) NSDate *fetchStartTime;
 
 @property (nonatomic, strong) CTAvailabilityItem *cachedVehicle;
 
@@ -56,6 +57,8 @@
     [self renderDefaultState];
     _parentViewController = parentViewController;
     [self setSearchDetails:currency flightNo:flightNumber passengers:passegers pickupDate:pickupDate returnDate:returnDate];
+    
+    self.fetchStartTime = [NSDate date];
     [self performLocationSearch:IATACode ?: @""];
 }
 
@@ -175,6 +178,9 @@
          [[CTRentalSearch instance] setEngineInfoFromAvail];
          _defaultSearch = [[CTRentalSearch instance] copy];
          _didFetchResults = YES;
+         
+         [[CTAnalytics instance] tagScreen:@"vehicles" detail:[NSString stringWithFormat:@"%f", -[self.fetchStartTime timeIntervalSinceNow]] step:@0];
+         
          dispatch_async(dispatch_get_main_queue(), ^{
              [weakSelf renderReadyState];
          });

@@ -14,6 +14,7 @@
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSString.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
+#import <CartrawlerSDK/CTAnalytics.h>
 #import "CTSearchDetailsViewController.h"
 #import "CTRentalConstants.h"
 #import "CTRentalLocalizationConstants.h"
@@ -120,6 +121,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [self updateNavigationBar];
     [self updatePriceSummary];
     [self updateDetailedPriceSummary];
+    
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-v" step:@-1];
 }
 
 - (void)presentVehicleSelection
@@ -139,6 +142,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [self updateSortButtonByPrice:YES];
     [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items pickupDate:self.search.pickupDate dropoffDate:self.search.dropoffDate sortByPrice:YES];
     [self updateNavigationBar];
+    
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:@-1];
 }
 
 - (void)updateNavigationBar
@@ -174,6 +179,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (IBAction)search:(id)sender
 {
+    [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"open" step:@-1];
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
     CTSearchDetailsViewController *searchViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalSearchViewIdentifier];
@@ -186,6 +192,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (IBAction)leftTap:(id)sender
 {
     if (self.presentedView == CTPresentedViewSelection) {
+        [[CTAnalytics instance] tagScreen:@"mdl_filter" detail:@"open" step:@-1];
         [self.filterViewController present];
     } else {
         [self presentVehicleSelection];
@@ -204,6 +211,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
         UIAlertAction *lowestPrice = [UIAlertAction actionWithTitle:sortPrice
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * action) {
+                                                                [[CTAnalytics instance] tagScreen:@"sort" detail:@"price" step:@-1];
                                                                 dispatch_async(dispatch_get_main_queue(), ^{
                                                                     [self updateSortButtonByPrice:YES];
                                                                     [self.vehicleSelectionView sortByPrice:YES];
@@ -215,17 +223,22 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
                                                                       style:UIAlertActionStyleDefault
                                                                     handler:^(UIAlertAction * action) {
                                                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                                                            [[CTAnalytics instance] tagScreen:@"sort" detail:@"recommended" step:@-1];
                                                                             [self updateSortButtonByPrice:NO];
                                                                             [self.vehicleSelectionView sortByPrice:NO];
                                                                         });
                                                                     }];
         NSString *cancelString = CTLocalizedString(CTRentalCTACancel);
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:cancelString style:UIAlertActionStyleCancel
-                                                       handler:nil];
+                                                       handler:^(UIAlertAction * _Nonnull action) {
+                                                           [[CTAnalytics instance] tagScreen:@"mdl_sort" detail:@"close" step:@-1];
+                                                       }];
         
         [alert addAction:lowestPrice];
         [alert addAction:recommendedVehicles];
         [alert addAction:cancel];
+        
+        [[CTAnalytics instance] tagScreen:@"mdl_sort" detail:@"open" step:@-1];
         
         [self presentViewController:alert animated:YES completion:nil];
     }
