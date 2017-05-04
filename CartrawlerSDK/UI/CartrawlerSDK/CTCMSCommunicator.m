@@ -16,6 +16,7 @@ NSString * const CTCMSTestEndpoint = @"http://ajaxgeo.cartrawler.com/translation
     NSString *path = [NSString stringWithFormat:CTCMSTestEndpoint, filename];
     NSURL *url = [NSURL URLWithString:path];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSLog(@"%@", request);
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         completionHandler(data, error);
     }];

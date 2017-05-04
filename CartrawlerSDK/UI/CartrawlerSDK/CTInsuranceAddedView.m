@@ -59,14 +59,14 @@
     
     _headerLabel = [[CTLabel alloc] init:21 textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentCenter boldFont:YES];
     self.headerLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.headerLabel.text = CTLocalizedString(CTRentalInsuranceAddedHeader);
+//    self.headerLabel.text = CTLocalizedString(CTRentalInsuranceAddedHeader);
     [self.backgroundView addSubview:self.headerLabel];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[shieldImage]-[headerLabel]" options:0 metrics:nil views:@{@"headerLabel" : self.headerLabel, @"shieldImage" : self.shieldImageView}]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[headerLabel]-|" options:0 metrics:nil views:@{@"headerLabel" : self.headerLabel}]];
     
     _subheaderLabel = [[CTLabel alloc] init:17 textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentCenter boldFont:NO];
     self.subheaderLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.subheaderLabel.text = CTLocalizedString(CTRentalInsuranceAddedSubheader);
+//    self.subheaderLabel.text = CTLocalizedString(CTRentalInsuranceAddedSubheader);
     [self.backgroundView addSubview:self.subheaderLabel];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[headerLabel]-[subheaderLabel]" options:0 metrics:nil views:@{@"subheaderLabel" : self.subheaderLabel, @"headerLabel" : self.headerLabel}]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[subheaderLabel]-|" options:0 metrics:nil views:@{@"subheaderLabel" : self.subheaderLabel}]];
@@ -74,7 +74,7 @@
     _removeButton = [[CTButton alloc] init:[UIColor clearColor] fontColor:[UIColor whiteColor] boldFont:YES borderColor:[UIColor whiteColor]];
     [self.removeButton addTarget:self action:@selector(removeInsurance:) forControlEvents:UIControlEventTouchUpInside];
     self.removeButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.removeButton setTitle:CTLocalizedString(CTRentalInsuranceRemoveButtonTitle) forState:UIControlStateNormal];
+//    [self.removeButton setTitle:CTLocalizedString(CTRentalInsuranceRemoveButtonTitle) forState:UIControlStateNormal];
     [self.backgroundView addSubview:self.removeButton];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subheaderLabel]-8@100-[removeButton(40)]-|" options:0 metrics:nil views:@{@"subheaderLabel" : self.subheaderLabel, @"removeButton" : self.removeButton}]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[removeButton]-|" options:0 metrics:nil views:@{@"removeButton" : self.removeButton}]];

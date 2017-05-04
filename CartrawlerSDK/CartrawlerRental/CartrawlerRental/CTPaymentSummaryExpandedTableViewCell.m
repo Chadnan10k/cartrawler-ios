@@ -76,13 +76,13 @@
 - (void)updateWithFee:(CTFee *)fee {
     switch (fee.feePurpose) {
         case CTFeeTypePayNow:
-            self.titleLabel.text = CTLocalizedString(CTRentalCarRental);
+            self.titleLabel.text = CTLocalizedString(CTRentalSummaryPayNow);
             break;
         case CTFeeTypePayAtDesk:
-            self.titleLabel.text = CTLocalizedString(CTRentalPayAtDesk);
+            self.titleLabel.text = CTLocalizedString(CTRentalSummaryPayAtDesk);
             break;
         case CTFeeTypeBooking:
-            self.titleLabel.text = CTLocalizedString(CTRentalBookingFee);
+            self.titleLabel.text = CTLocalizedString(CTRentalSummaryBookingFee);
             break;
         default:
             break;
@@ -113,7 +113,7 @@
 }
 
 - (void)updateWithInsurance:(CTInsurance *)insurance {
-    self.titleLabel.text = CTLocalizedString(CTRentalPaymentCarInsurance);
+    self.titleLabel.text = CTLocalizedString(CTRentalSummaryDamageRefund);
     self.detailLabel.text = [insurance.costAmount numberStringWithCurrencyCode];
 }
 

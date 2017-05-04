@@ -336,7 +336,7 @@
     headerLabel.textColor = [UIColor colorWithRed:240.0/255.0 green:200.0/255.0 blue:68.0/255.0 alpha:1.0];
     headerLabel.font = [UIFont italicSystemFontOfSize: 16.0];
     headerLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    headerLabel.text = (section == 0) ? CTLocalizedString(CTRentalPayNow) : CTLocalizedString(CTRentalPayAtDesk);
+    headerLabel.text = (section == 0) ? CTLocalizedString(CTRentalSummaryPayNow) : CTLocalizedString(CTRentalSummaryPayAtDesk);
     
     UIView *view = [UIView new];
     view.backgroundColor = [UIColor colorWithRed:3.0/255.0 green:40.0/255.0 blue:101.0/255.0 alpha:1.0];

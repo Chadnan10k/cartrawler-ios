@@ -159,7 +159,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     
     if (self.presentedView == CTPresentedViewDetails) {
         [self.leftButton setTitle:CTLocalizedString(CTRentalResultsOtherCars) forState:UIControlStateNormal];
-        [self.rightButton setTitle:CTLocalizedString(CTRentalVehiclePriceBreakdownTip) forState:UIControlStateNormal];
+        [self.rightButton setTitle:CTLocalizedString(CTRentalCarRentalTotal) forState:UIControlStateNormal];
     } else {
         [self.leftButton setTitle:CTLocalizedString(CTRentalResultsFilter) forState:UIControlStateNormal];
         [self.rightButton setTitle:CTLocalizedString(CTRentalResultsSort) forState:UIControlStateNormal];
@@ -238,7 +238,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)updatePriceSummary
 {
-    NSAttributedString *sortString = [NSString attributedText:CTLocalizedString(CTRentalVehiclePriceBreakdownTip)
+    NSAttributedString *sortString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
                                                     boldColor:[UIColor whiteColor]
                                                      boldSize:17
                                                   regularText:[self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode]
@@ -284,10 +284,10 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)updateSortButtonByPrice:(BOOL)sortByPrice
 {
-    NSAttributedString *sortString = [NSString attributedText:CTLocalizedString(CTRentalResultsSort)
+    NSAttributedString *sortString = [NSString attributedText:CTLocalizedString(CTRentalSortTitle)
                                                     boldColor:[UIColor whiteColor]
                                                      boldSize:17
-                                                  regularText:sortByPrice ? CTLocalizedString(CTRentalResultsSortPrice) : CTLocalizedString(CTRentalResultsSortRecommended)
+                                                  regularText:sortByPrice ? CTLocalizedString(CTRentalSortPrice) : CTLocalizedString(CTRentalSortRecommended)
                                                  regularColor:[UIColor whiteColor]
                                                   regularSize:17
                                                      useSpace:YES];

@@ -32,7 +32,7 @@ static NSString *CTCMSLocalizationIndex = @"versions";
 }
 
 - (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle language:(NSString *)language {
-    NSString *identifier = [self identifierForBundleIdentifier:bundle.bundleIdentifier];
+    NSString *identifier = [self identifierForBundleIdentifier:@"Mobile.Smartblock.Rentals"];
     identifier = [identifier stringByAppendingPathComponent:language];
     
     if (!self.localizations[identifier]) {
@@ -43,8 +43,7 @@ static NSString *CTCMSLocalizationIndex = @"versions";
 }
 
 - (NSString *)identifierForBundleIdentifier:(NSString *)bundleIdentifier {
-    bundleIdentifier = [bundleIdentifier stringByReplacingOccurrencesOfString:@"com.cartrawler" withString:@"ios"];
-    return [bundleIdentifier stringByReplacingOccurrencesOfString:@"." withString:@"_"];
+    return bundleIdentifier;
 }
 
 // MARK: Versions File
@@ -101,13 +100,9 @@ static NSString *CTCMSLocalizationIndex = @"versions";
 }
 
 - (void)checkRemoteLocalizationsForIdentifier:(NSString *)identifier {
-    NSNumber *cachedTimestamp = [self timestampForIdentifier:identifier inIndex:self.cachedIndex];
     NSNumber *timestamp = [self timestampForIdentifier:identifier inIndex:self.cmsIndex];
     
-    BOOL newFileAvailable = timestamp && ![cachedTimestamp isEqual:timestamp];
-    BOOL cacheEmpty = timestamp && [self.localizations[identifier] count] == 0;
-    
-    if (newFileAvailable || cacheEmpty) {
+    if (timestamp) {
         NSString *filename = [self filenameForIdentifier:identifier timestamp:timestamp];
         
         [CTCMSCommunicator fetchFile:filename withCompletionHandler:^(NSData * _Nullable data, NSError * _Nullable error) {
@@ -120,19 +115,9 @@ static NSString *CTCMSLocalizationIndex = @"versions";
 // MARK: Helpers
 
 - (NSNumber *)timestampForIdentifier:(NSString *)identifier inIndex:(NSDictionary *)index {
-    NSArray *products = index[@"products"];
-    
-    for (NSDictionary *product in products) {
-        if ([product[@"product"] isEqualToString:identifier.pathComponents.firstObject]) {
-            NSArray *index = product[@"versions"];
-            for (NSDictionary *version in index) {
-                if ([version[@"name"] isEqualToString:identifier.lastPathComponent]) {
-                    return version[@"Timestamp"];
-                }
-            }
-        }
-    }
-    return nil;
+    NSNumberFormatter *nf = [NSNumberFormatter new];
+    NSString *lastChanged = index[@"lastChanged"];
+    return [nf numberFromString:lastChanged];
 }
 
 - (NSString *)filenameForIdentifier:(NSString *)identifier timestamp:(NSNumber *)timestamp {
