@@ -6,6 +6,7 @@
 #import "CTVehicleConfig.h"
 #import "CTSpecialOffer.h"
 #import "CTVehicleIndexation.h"
+#import "CTRateDistance.h"
 
 @class CTVendor;
 
@@ -411,12 +412,22 @@ NS_ASSUME_NONNULL_BEGIN
  *  Array of priced coverages for vehicle
  */
 @property (nonatomic, nonnull, readonly) NSArray<CTPricedCoverage *> *pricedCoverages;
-
+/**
+ Index of the vehicle
+ */
 @property (nonatomic, nonnull, readonly) CTVehicleIndexation *indexation;
-
+/**
+ Vehicle special offers
+ */
 @property (nonatomic, nonnull, readonly) NSArray <CTSpecialOffer *> *specialOffers;
-
+/**
+ Vehicle config parameters
+ */
 @property (nonatomic, nonnull, readonly) CTVehicleConfig *config;
+/**
+ The mileage allowance of the vehicle
+ */
+@property (nonatomic, nonnull, readonly) CTRateDistance *rateDistance;
 
 - (instancetype)initFromDictionary:(NSDictionary *)dictionary;
 
