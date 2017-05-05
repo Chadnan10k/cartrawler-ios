@@ -8,16 +8,6 @@
 
 #import <CartrawlerSDK/CTViewController.h>
 
-@class CTInsuranceDetailViewController;
-
-@protocol CTInsuranceDetailDelegate <NSObject>
-
-- (void)didTapAddInsurance:(CTInsuranceDetailViewController *)detailViewController;
-
-@end
-
 @interface CTInsuranceDetailViewController : CTViewController
-
-@property (nonatomic, weak) id<CTInsuranceDetailDelegate> insuranceDetailDelegate;
 
 @end

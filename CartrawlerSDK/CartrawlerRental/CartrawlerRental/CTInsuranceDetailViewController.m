@@ -213,14 +213,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)addInsurance:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-    if (self.insuranceDetailDelegate) {
-        [self.insuranceDetailDelegate didTapAddInsurance:self];
-    }
-}
-
 //MARK: mark Analytics
 
 - (void)tagScreen

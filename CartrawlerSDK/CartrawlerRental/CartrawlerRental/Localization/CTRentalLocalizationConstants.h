@@ -283,6 +283,8 @@ extern NSString * const CTRentalInsuranceInfoButtonTitle;
 
 extern NSString * const CTRentalInsuranceAddButtonTitle;
 
+extern NSString * const CTRentalInsuranceAddedButtonTitle;
+
 extern NSString * const CTRentalInsuranceInfoTip1;
 
 extern NSString * const CTRentalInsuranceInfoTip2;
