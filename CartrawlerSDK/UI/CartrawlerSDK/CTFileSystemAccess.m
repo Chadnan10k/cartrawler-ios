@@ -29,7 +29,6 @@
     NSString *documentsPath = [self documentsFolderPath];
     NSString *filepath = [documentsPath stringByAppendingPathComponent:filename];
     filepath = [filepath stringByAppendingPathExtension:@"json"];
-    NSLog(@"%@", filepath);
     [resource writeToFile:filepath atomically:YES];
 }
 

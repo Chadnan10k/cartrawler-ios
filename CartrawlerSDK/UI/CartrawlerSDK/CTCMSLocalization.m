@@ -12,12 +12,13 @@
 #import "CTCMSCommunicator.h"
 
 static NSString *CTCMSLocalizationIndex = @"versions";
+static NSString *CTCMSBundleIndentifier = @"Mobile.Smartblock.Rentals";
 
 @interface CTCMSLocalization ()
 @property (nonatomic, strong) NSDictionary *cachedIndex;
 @property (nonatomic, strong) NSDictionary *cmsIndex;
-
 @property (nonatomic, strong) NSMutableDictionary *localizations;
+
 @end
 
 @implementation CTCMSLocalization
@@ -32,7 +33,7 @@ static NSString *CTCMSLocalizationIndex = @"versions";
 }
 
 - (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle language:(NSString *)language {
-    NSString *identifier = [self identifierForBundleIdentifier:@"Mobile.Smartblock.Rentals"];
+    NSString *identifier = CTCMSBundleIndentifier;
     identifier = [identifier stringByAppendingPathComponent:language];
     
     if (!self.localizations[identifier]) {
@@ -40,10 +41,6 @@ static NSString *CTCMSLocalizationIndex = @"versions";
     }
     
     return self.localizations[identifier][key] ?: nil;
-}
-
-- (NSString *)identifierForBundleIdentifier:(NSString *)bundleIdentifier {
-    return bundleIdentifier;
 }
 
 // MARK: Versions File
