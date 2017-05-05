@@ -104,6 +104,8 @@
 		455B58221DCC8D9500CA4790 /* CTGroundItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B264FF1D92A8B3000005F2 /* CTGroundItem.m */; };
 		455B58251DCC903600CA4790 /* CartrawlerAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 45916DC71CBBDAEE00389B88 /* CartrawlerAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45D386081DD62277000F02D1 /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45D386071DD62277000F02D1 /* strip-frameworks.sh */; };
+		BC0463E81EBC872D00D2E8F4 /* CTRateDistance.h in Headers */ = {isa = PBXBuildFile; fileRef = BC0463E61EBC872D00D2E8F4 /* CTRateDistance.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC0463E91EBC872D00D2E8F4 /* CTRateDistance.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0463E71EBC872D00D2E8F4 /* CTRateDistance.m */; };
 		BC4A3FE91E5F3DBF00EFB055 /* CartrawlerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455B57C91DCC8D7900CA4790 /* CartrawlerAPI.framework */; };
 		BC4A3FEF1E5F3DC800EFB055 /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 451B99C81CFEF184001D07A7 /* LocationTests.m */; };
 		BC4A40001E60466700EFB055 /* PartialTextRS.json in Resources */ = {isa = PBXBuildFile; fileRef = BC4A3FFF1E60466700EFB055 /* PartialTextRS.json */; };
@@ -231,6 +233,8 @@
 		45FCA08D1CBFDB980079AA68 /* CTVehicleAvailability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleAvailability.m; sourceTree = "<group>"; };
 		45FCA0981CBFE4890079AA68 /* CTInsurance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInsurance.h; sourceTree = "<group>"; };
 		45FCA0991CBFE4890079AA68 /* CTInsurance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsurance.m; sourceTree = "<group>"; };
+		BC0463E61EBC872D00D2E8F4 /* CTRateDistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRateDistance.h; sourceTree = "<group>"; };
+		BC0463E71EBC872D00D2E8F4 /* CTRateDistance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRateDistance.m; sourceTree = "<group>"; };
 		BC4A3FE41E5F3DBF00EFB055 /* CartrawlerAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartrawlerAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC4A3FFF1E60466700EFB055 /* PartialTextRS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PartialTextRS.json; sourceTree = "<group>"; };
 		BC758D2A1E604849008EA8C1 /* CitySearchRS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CitySearchRS.json; sourceTree = "<group>"; };
@@ -425,6 +429,8 @@
 				45FCA0851CBFDB980079AA68 /* CTVehicleCharge.m */,
 				45FCA0861CBFDB980079AA68 /* CTPricedCoverage.h */,
 				45FCA0871CBFDB980079AA68 /* CTPricedCoverage.m */,
+				BC0463E61EBC872D00D2E8F4 /* CTRateDistance.h */,
+				BC0463E71EBC872D00D2E8F4 /* CTRateDistance.m */,
 				45FCA0881CBFDB980079AA68 /* CTFee.h */,
 				45FCA0891CBFDB980079AA68 /* CTFee.m */,
 				45FCA08C1CBFDB980079AA68 /* CTVehicleAvailability.h */,
@@ -549,6 +555,7 @@
 				455B58151DCC8D9500CA4790 /* CTGroundAvailability.h in Headers */,
 				455B58171DCC8D9500CA4790 /* CTGroundCustomer.h in Headers */,
 				455B58191DCC8D9500CA4790 /* CTGroundBooking.h in Headers */,
+				BC0463E81EBC872D00D2E8F4 /* CTRateDistance.h in Headers */,
 				455B581B1DCC8D9500CA4790 /* CTGroundInclusion.h in Headers */,
 				455B581D1DCC8D9500CA4790 /* CTGroundService.h in Headers */,
 				455B581F1DCC8D9500CA4790 /* CTGroundShuttle.h in Headers */,
@@ -728,6 +735,7 @@
 				455B580A1DCC8D9500CA4790 /* CTBooking.m in Sources */,
 				455B580C1DCC8D9500CA4790 /* CTErrorResponse.m in Sources */,
 				455B580E1DCC8D9500CA4790 /* CTInsurance.m in Sources */,
+				BC0463E91EBC872D00D2E8F4 /* CTRateDistance.m in Sources */,
 				455B58101DCC8D9500CA4790 /* CTInsuranceSelectorItem.m in Sources */,
 				455B58121DCC8D9500CA4790 /* CTInsuranceLink.m in Sources */,
 				455B58141DCC8D9500CA4790 /* CTGroundLocation.m in Sources */,
