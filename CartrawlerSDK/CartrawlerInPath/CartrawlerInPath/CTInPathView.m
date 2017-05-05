@@ -9,11 +9,16 @@
 #import "CTInPathView.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CTLabel.h>
+#import <CartrawlerSDK/CartrawlerSDK+UIView.h>
 #import "CTInPathLoadingView.h"
 #import "CTSelectedVehicleView.h"
 #import "CTCarouselView.h"
 #import "CTInPathErrorView.h"
 #import <CartrawlerSDK/CTLayoutManager.h>
+#import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
+#import "CTInPathLocalizationConstants.h"
+
 @interface CTInPathView() <CTCarouselDelegate, CTSelectedVehicleDelegate>
 
 @property (nonatomic, strong) CTInPathLoadingView *loadingView;
@@ -22,6 +27,7 @@
 @property (nonatomic, strong) CTInPathErrorView *errorView;
 
 @property (nonatomic, strong) UIView *bannerContainer;
+@property (nonatomic, strong) UIView *detailsContainer;
 @property (nonatomic, strong) UIView *contentContainer;
 
 @end
@@ -35,6 +41,7 @@
     self = [super init];
 
     _bannerContainer = [self renderBanner];
+    _detailsContainer = [self renderDetails];
     _contentContainer = [UIView new];
     self.contentContainer.translatesAutoresizingMaskIntoConstraints = NO;
 
@@ -55,18 +62,22 @@
 {
     NSDictionary *viewDictionary = @{
                                      @"bannerContainer" : self.bannerContainer,
-                                     @"contentContainer" : self.contentContainer
+                                     @"contentContainer" : self.contentContainer,
+                                     @"detailsContainer" : self.detailsContainer
                                      };
     
     [self addSubview:self.bannerContainer];
     [self addSubview:self.contentContainer];
+    [self addSubview:self.detailsContainer];
 
     //Banner Container
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[bannerContainer]-0-|" options:0 metrics:nil views:viewDictionary]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[bannerContainer(50)]" options:0 metrics:nil views:viewDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[bannerContainer(40)]" options:0 metrics:nil views:viewDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[detailsContainer]-0-|" options:0 metrics:nil views:viewDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[bannerContainer]-0-[detailsContainer]" options:0 metrics:nil views:viewDictionary]];
     //Content Container
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[contentContainer]-0-|" options:0 metrics:nil views:viewDictionary]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[bannerContainer]-0-[contentContainer]-0-|" options:0 metrics:nil views:viewDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[detailsContainer]-0-[contentContainer]-0-|" options:0 metrics:nil views:viewDictionary]];
 }
 
 - (void)renderViewInContainer:(UIView *)view superview:(UIView *)superview padding:(UIEdgeInsets)padding
@@ -92,8 +103,97 @@
     
     [bannerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : bannerImageView}]];
     [bannerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : bannerImageView}]];
-    
+
     return bannerView;
+}
+
+- (UIView *)renderDetails
+{
+    UIView *containerView = [UIView new];
+    containerView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    UIImageView *vehicleImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    vehicleImageView.image = [UIImage imageNamed:@"static_cars" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+    vehicleImageView.contentMode = UIViewContentModeScaleAspectFit;
+    vehicleImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [containerView addSubview:vehicleImageView];
+
+    CTLabel *titleLabel = [[CTLabel alloc] init:15 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentLeft boldFont:YES];
+    titleLabel.text = CTLocalizedString(CTInPathWidgetTitle);
+    titleLabel.numberOfLines = 1;
+    [containerView addSubview:titleLabel];
+    
+    UIImageView *subtitleTickImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    subtitleTickImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    subtitleTickImageView.image = [UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+    [subtitleTickImageView applyTint];
+    [containerView addSubview:subtitleTickImageView];
+    
+    CTLabel *subtitleLabel = [[CTLabel alloc] init:15 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentLeft boldFont:NO];
+    subtitleLabel.text = CTLocalizedString(CTInPathWidgetText);
+    subtitleLabel.numberOfLines = 0;
+    [containerView addSubview:subtitleLabel];
+    
+    NSDictionary *viewDictionary = @{@"vehicleImageView" : vehicleImageView,
+                                     @"titleLabel" : titleLabel,
+                                     @"subtitleTickImageView" : subtitleTickImageView,
+                                     @"subtitleLabel" : subtitleLabel};
+    
+    //vehicle illustration
+    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(-65)-[vehicleImageView(125)]"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:viewDictionary]];
+    
+    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[vehicleImageView(125)]-0-|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:viewDictionary]];
+    
+    //title label
+    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[titleLabel]"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:viewDictionary]];
+    
+    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[titleLabel]-4-[vehicleImageView]"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:viewDictionary]];
+    
+    //check image
+    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subtitleTickImageView(15)]"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:viewDictionary]];
+    
+    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[subtitleTickImageView(15)]"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:viewDictionary]];
+    
+    //subtitle label
+    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[subtitleTickImageView]-4-[subtitleLabel]-|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:viewDictionary]];
+    
+    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[titleLabel]-8-[subtitleLabel]-|"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:viewDictionary]];
+    
+    [containerView addConstraint:[NSLayoutConstraint constraintWithItem:subtitleTickImageView
+                                                              attribute:NSLayoutAttributeCenterY
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:subtitleLabel
+                                                              attribute:NSLayoutAttributeCenterY
+                                                             multiplier:1
+                                                               constant:1]];
+    
+    [containerView setHeightConstraint:@1 priority:@100];
+
+    return containerView;
 }
 
 - (void)removeSubviewsFromContentView
