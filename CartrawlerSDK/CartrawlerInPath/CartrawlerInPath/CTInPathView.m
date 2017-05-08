@@ -39,7 +39,9 @@
 - (instancetype)init
 {
     self = [super init];
-
+    
+    self.backgroundColor = [UIColor whiteColor];
+    
     _bannerContainer = [self renderBanner];
     _detailsContainer = [self renderDetails];
     _contentContainer = [UIView new];
@@ -118,7 +120,7 @@
     vehicleImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [containerView addSubview:vehicleImageView];
 
-    CTLabel *titleLabel = [[CTLabel alloc] init:15 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentLeft boldFont:YES];
+    CTLabel *titleLabel = [[CTLabel alloc] init:17 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentLeft boldFont:YES];
     titleLabel.text = CTLocalizedString(CTInPathWidgetTitle);
     titleLabel.numberOfLines = 1;
     [containerView addSubview:titleLabel];
@@ -126,10 +128,10 @@
     UIImageView *subtitleTickImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     subtitleTickImageView.translatesAutoresizingMaskIntoConstraints = NO;
     subtitleTickImageView.image = [UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
-    [subtitleTickImageView applyTint];
+    [subtitleTickImageView applyTintWithColor:[CTAppearance instance].buttonColor];
     [containerView addSubview:subtitleTickImageView];
     
-    CTLabel *subtitleLabel = [[CTLabel alloc] init:15 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentLeft boldFont:NO];
+    CTLabel *subtitleLabel = [[CTLabel alloc] init:15 textColor:[UIColor lightGrayColor] textAlignment:NSTextAlignmentLeft boldFont:NO];
     subtitleLabel.text = CTLocalizedString(CTInPathWidgetText);
     subtitleLabel.numberOfLines = 0;
     [containerView addSubview:subtitleLabel];
@@ -162,12 +164,12 @@
                                                                             views:viewDictionary]];
     
     //check image
-    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subtitleTickImageView(15)]"
+    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[subtitleTickImageView(10)]"
                                                                           options:0
                                                                           metrics:nil
                                                                             views:viewDictionary]];
     
-    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[subtitleTickImageView(15)]"
+    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[subtitleTickImageView(10)]"
                                                                           options:0
                                                                           metrics:nil
                                                                             views:viewDictionary]];
