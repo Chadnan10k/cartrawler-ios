@@ -107,8 +107,9 @@
 // MARK: Ratings Tab
 
 - (CTListView *)ratingsListView:(CTAvailabilityItem *)availabilityItem containerView:(UIView *)containerView {
-    CTListItemView *itemView3 = [self supplierIconItemView:availabilityItem];
-    CTExpandingView *expandingView3 = [[CTExpandingView alloc] initWithHeaderView:itemView3 animationContainerView:containerView];
+    CTListItemView *itemView = [self supplierIconItemView:availabilityItem];
+    CTExpandingView *expandingView = [[CTExpandingView alloc] initWithHeaderView:itemView animationContainerView:containerView];
+    
     CTRatingView *overallRatingView = [self overallRatingView:availabilityItem];
     CTRatingView *valueRatingView = [self valueRatingView:availabilityItem];
     CTRatingView *cleanlinessRatingView = [self cleanlinessRatingView:availabilityItem];
@@ -116,18 +117,17 @@
     CTRatingView *pickupRatingView = [self pickupRatingView:availabilityItem];
     CTRatingView *dropoffRatingView = [self dropoffRatingView:availabilityItem];
     
-    CTListView *listView = [[CTListView alloc] initWithViews:@[expandingView3, overallRatingView, valueRatingView, cleanlinessRatingView, serviceRatingView, pickupRatingView, dropoffRatingView] separatorColor:nil];
+    CTListView *listView = [[CTListView alloc] initWithViews:@[expandingView, overallRatingView, valueRatingView, cleanlinessRatingView, serviceRatingView, pickupRatingView, dropoffRatingView] separatorColor:nil];
     listView.delegate = self;
     return listView;
 }
 
 - (CTListItemView *)supplierIconItemView:(CTAvailabilityItem *)item {
-    UIImage *icon2 = [UIImage imageNamed:@"vendor_europcar"
-                                inBundle:[NSBundle bundleForClass:self.class]
-           compatibleWithTraitCollection:nil];
     CTListItemView *itemView = [CTListItemView new];
     itemView.titleLabel.text = @"Car provided by";
-    itemView.imageView.image = icon2;
+    [[CTImageCache sharedInstance] cachedImage:item.vendor.logoURL completion:^(UIImage *image) {
+        itemView.imageView.image = image;
+    }];
     itemView.imageAlignment = CTListItemImageAlignmentRight;
     return itemView;
 }
