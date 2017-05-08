@@ -22,11 +22,15 @@
     self = [super init];
     if (self) {
         self.availabilityItem = availabilityItem;
+        
         self.includedListView = [self includedListView:availabilityItem containerView:containerView];
         self.ratingsListView = [self ratingsListView:availabilityItem containerView:containerView];
         
-        CTTabContainerView *tabContainerView = [[CTTabContainerView alloc] initWithTabTitles:@[@"INCLUDED", @"RATINGS"]
-                                                                                       views:@[self.includedListView, self.ratingsListView]
+        NSArray *titles = availabilityItem.vendor.rating ? @[@"INCLUDED", @"RATINGS"] : @[@"INCLUDED"];
+        NSArray *views = availabilityItem.vendor.rating ? @[self.includedListView, self.ratingsListView] : @[self.includedListView];
+        
+        CTTabContainerView *tabContainerView = [[CTTabContainerView alloc] initWithTabTitles:titles
+                                                                                       views:views
                                                                                selectedIndex:0];
         tabContainerView.animationContainerView = containerView;
         [self addSubview:tabContainerView];
