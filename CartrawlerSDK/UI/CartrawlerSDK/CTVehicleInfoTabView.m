@@ -48,7 +48,13 @@
     CTListItemView *fuelPolicyHeaderView = [self fuelPolicyView:availabilityItem];
     CTExpandingView *fuelPolicyExpandingView = [[CTExpandingView alloc] initWithHeaderView:fuelPolicyHeaderView animationContainerView:containerView];
     
-    CTListView *listView = [[CTListView alloc] initWithViews:@[pickUpTypeExpandingView, fuelPolicyExpandingView] separatorColor:nil];
+    CTListItemView *mileageAllowanceHeaderView = [self mileageAllowanceView:availabilityItem];
+    CTExpandingView *mileageAllowanceExpandingView = [[CTExpandingView alloc] initWithHeaderView:mileageAllowanceHeaderView animationContainerView:containerView];
+    
+    CTListItemView *insuranceHeaderView = [self insuranceView:availabilityItem];
+    CTExpandingView *insuranceExpandingView = [[CTExpandingView alloc] initWithHeaderView:insuranceHeaderView animationContainerView:containerView];
+    
+    CTListView *listView = [[CTListView alloc] initWithViews:@[pickUpTypeExpandingView, fuelPolicyExpandingView, mileageAllowanceExpandingView, insuranceExpandingView] separatorColor:nil];
     listView.delegate = self;
     
     return listView;
@@ -67,6 +73,32 @@
     CTListItemView *itemView = [CTListItemView new];
     NSString *title = @"Fuel policy:";
     NSString *detail = [CTLocalisedStrings fuelPolicy:item.vehicle.fuelPolicy];
+    itemView.titleLabel.attributedText = [self attributedStringWithBlackText:title blueText:detail];
+    itemView.imageView.image = [UIImage imageNamed:@"location_airport" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
+    return itemView;
+}
+
+- (CTListItemView *)mileageAllowanceView:(CTAvailabilityItem *)item {
+    CTListItemView *itemView = [CTListItemView new];
+    NSString *title = @"Mileage Allowance:";
+    NSString *detail = @"";
+    for (CTVehicleCharge *charge in item.vehicle.vehicleCharges) {
+        if ([charge.chargePurpose isEqualToString:@"618.VCP.X"]) {
+            detail = @"Limited mileage";
+        }
+        if ([charge.chargePurpose isEqualToString:@"609.VCP.X"]) {
+            detail = @"Unlimited";
+        }
+    }
+    itemView.titleLabel.attributedText = [self attributedStringWithBlackText:title blueText:detail];
+    itemView.imageView.image = [UIImage imageNamed:@"location_airport" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
+    return itemView;
+}
+
+- (CTListItemView *)insuranceView:(CTAvailabilityItem *)item {
+    CTListItemView *itemView = [CTListItemView new];
+    NSString *title = @"Insurance:";
+    NSString *detail = @"Basic Cover";
     itemView.titleLabel.attributedText = [self attributedStringWithBlackText:title blueText:detail];
     itemView.imageView.image = [UIImage imageNamed:@"location_airport" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
     return itemView;
