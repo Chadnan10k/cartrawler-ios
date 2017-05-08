@@ -195,6 +195,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
         [[CTAnalytics instance] tagScreen:@"mdl_filter" detail:@"open" step:@-1];
         [self.filterViewController present];
     } else {
+        [[CTAnalytics instance] tagScreen:@"other_cars" detail:@"click" step:@-1];
         [self presentVehicleSelection];
     }
 }
@@ -272,6 +273,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)showDetailedPriceSummary
 {
+    [[CTAnalytics instance] tagScreen:@"price_sum" detail:@"open" step:@-1];
+    
     [self updateDetailedPriceSummary];
     self.summaryViewTopConstraint.constant = 0;
     [UIView animateWithDuration:0.3
@@ -292,6 +295,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 }
 
 - (IBAction)didInteractWithDetailedPriceSummary:(UIGestureRecognizer *)gestureRecognizer {
+    [[CTAnalytics instance] tagScreen:@"price_sum" detail:@"close" step:@-1];
     [self hideDetailedPriceSummary];
 }
 

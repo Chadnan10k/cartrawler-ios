@@ -278,6 +278,8 @@
 // MARK: CTVehicleDetailsDelegate
 - (void)didTapMoreDetailsView:(UIView *)view
 {
+    [[CTAnalytics instance] tagScreen:@"features_i" detail:@"open" step:@-1];
+    
     if (self.delegate) {
         [self.alertView setTitle:CTLocalizedString(CTRentalFeatureTitle) message:nil];
         [self.alertView removeAllActions];
