@@ -50,7 +50,7 @@
     _pickupDate = pickupDate;
     [self.vehicleCollectionView reloadData];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.vehicleCollectionView setContentOffset:CGPointMake(-15, 0)];
+        [self.vehicleCollectionView setContentOffset:CGPointMake(-8, 0)];
     });
 }
 
@@ -75,7 +75,7 @@
 - (UICollectionView *)renderCollectionView
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(240, 120);
+    layout.itemSize = CGSizeMake(260, 120);
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     [collectionView registerClass:[CTCarouselCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
@@ -104,7 +104,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSUInteger count = self.availability.items.count >= 5 ? 5 : self.availability.items.count;
+    NSUInteger count = self.availability.items.count >= 4 ? 4 : self.availability.items.count;
     self.pageControl.numberOfPages = count;
     return count;
 }
@@ -129,7 +129,7 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     //use the cell width minus some padding
-    NSInteger currentIndex = self.vehicleCollectionView.contentOffset.x / 200;
+    NSInteger currentIndex = self.vehicleCollectionView.contentOffset.x / 220;
     self.pageControl.currentPage = currentIndex;
     if (self.delegate) {
         [self.delegate didDisplayVehicle:self.availability.items[currentIndex] atIndex:currentIndex];

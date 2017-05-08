@@ -10,6 +10,8 @@
 #import <CartrawlerSDK/CTAppearance.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
 #import "CartrawlerAPI/CTVehicle.h"
+#import "CartrawlerSDK/CTSDKLocalizationConstants.h"
+#import "CartrawlerSDK/CTLocalisedStrings.h"
 
 @interface CTUpSellBanner ()
 
@@ -174,10 +176,109 @@
     }
 }
 
+- (void)setFromMerchandisingTag:(CTMerchandisingTag)merchandisingTag
+{
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UIImage *image = [UIImage imageNamed:@"white_checkmark" inBundle:bundle compatibleWithTraitCollection:nil];
+    
+    [self setIcon:image backgroundColor:[self merchandisingColor:merchandisingTag] textColor:[UIColor whiteColor]];
+    self.infoLabel.text = [self merchandisingText:merchandisingTag];
+    self.bannerString = self.infoLabel.text;
+    for (NSLayoutConstraint *constraint in self.constraints) {
+        if (constraint.firstItem == self && constraint.firstAttribute == NSLayoutAttributeWidth) {
+            constraint.constant = [self widthOfString:self.bannerString withFont:self.infoLabel.font] + 60;
+        }
+    }
+}
+
 - (CGFloat)widthOfString:(NSString *)string withFont:(UIFont *)font
 {
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, nil];
     return [[[NSAttributedString alloc] initWithString:string attributes:attributes] size].width;
+}
+
+- (NSString *)merchandisingText:(CTMerchandisingTag)merchandisingTag
+{
+    switch (merchandisingTag) {
+        case CTMerchandisingTagBusiness:
+            return CTLocalizedString(CTSDKVehicleMerchandisingBusiness);
+            
+        case CTMerchandisingTagCityBreak:
+            return CTLocalizedString(CTSDKVehicleMerchandisingCityBreak);
+            
+        case CTMerchandisingTagFamilySize:
+            return CTLocalizedString(CTSDKVehicleMerchandisingFamilySize);
+            
+        case CTMerchandisingTagBestSeller:
+            return CTLocalizedString(CTSDKVehicleMerchandisingBestSeller);
+            
+        case CTMerchandisingTagGreatValue:
+            return CTLocalizedString(CTSDKVehicleMerchandisingGreatValue);
+            break;
+            
+        case CTMerchandisingTagQuickestQueue:
+            return CTLocalizedString(CTSDKVehicleMerchandisingQuickestQueue);
+            break;
+            
+        case CTMerchandisingTagRecommended:
+            return CTLocalizedString(CTSDKVehicleMerchandisingRecommended);
+            break;
+            
+        case CTMerchandisingTagUpgradeTo:
+            return CTLocalizedString(CTSDKVehicleMerchandisingUpgradeTo);
+            break;
+            
+        case CTMerchandisingTagOnBudget:
+            return CTLocalizedString(CTSDKVehicleMerchandisingOnBudget);
+            break;
+            
+        case CTMerchandisingTagBestReviewed:
+            return CTLocalizedString(CTSDKVehicleMerchandisingBestReviewed);
+            break;
+            
+        case CTMerchandisingTagUnknown:
+            //return CTLocalizedString(CTSDKVehicleMerchandisingBestSeller);
+            return @"Great Value";
+            break;
+    }
+}
+
+- (UIColor *)merchandisingColor:(CTMerchandisingTag)merchandisingTag
+{
+    switch (merchandisingTag) {
+        case CTMerchandisingTagBusiness:
+            return [UIColor colorWithRed:75.0/255.0 green:75.0/255.0 blue:75.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagCityBreak:
+            return [UIColor colorWithRed:4.0/255.0 green:119.0/255.0 blue:188.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagFamilySize:
+            return [UIColor colorWithRed:189.0/255.0 green:15.0/255.0 blue:134.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagBestSeller:
+            return [UIColor colorWithRed:22.0/255.0 green:171.0/255.0 blue:252.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagGreatValue:
+            return [UIColor colorWithRed:41.0/255.0 green:173.0/255.0 blue:79.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagQuickestQueue:
+            return [UIColor colorWithRed:255.0/255.0 green:90.0/255.0 blue:0.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagRecommended:
+            return [UIColor colorWithRed:254.0/255.0 green:67.0/255.0 blue:101.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagUpgradeTo:
+            return [UIColor colorWithRed:22.0/255.0 green:171.0/255.0 blue:252.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagOnBudget:
+            return [UIColor colorWithRed:22.0/255.0 green:171.0/255.0 blue:252.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagBestReviewed:
+            return [UIColor colorWithRed:22.0/255.0 green:171.0/255.0 blue:252.0/255.0 alpha:1];
+            
+        case CTMerchandisingTagUnknown:
+            return [UIColor colorWithRed:22.0/255.0 green:171.0/255.0 blue:252.0/255.0 alpha:1];
+    }
 }
 
 @end

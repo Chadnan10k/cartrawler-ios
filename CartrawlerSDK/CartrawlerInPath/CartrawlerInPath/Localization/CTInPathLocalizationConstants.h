@@ -32,4 +32,7 @@ extern NSString * const CTInPathWidgetRemove;
 
 extern NSString * const CTInPathWidgetTotal;
 
+extern NSString * const CTInPathWidgetFreeCancelation;
+
+
 @end
