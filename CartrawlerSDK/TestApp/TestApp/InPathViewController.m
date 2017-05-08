@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *bookButton;
 @property (weak, nonatomic) IBOutlet UISwitch *oneWaySwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *endpointSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 
 @end
 
@@ -23,11 +24,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [RYRRentalManager instance].parent = self;
+    [RYRRentalManager instance].priceLabel = self.priceLabel;
 
     [[RYRRentalManager instance] setupInPath:self.cardContainer parentVC:self];
     [RYRRentalManager instance].callToAction = self.bookButton;
     self.endpointSwitch.on = [RYRRentalManager instance].currentEndpoint;
-    
     
 }
 

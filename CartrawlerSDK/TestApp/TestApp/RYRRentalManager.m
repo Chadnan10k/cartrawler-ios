@@ -186,7 +186,7 @@
 
 - (void)didDisplayVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem
 {
-
+    self.priceLabel.text = [NSString stringWithFormat:@"Price %@ %@", vehicleItem.vehicle.totalPriceForThisVehicle.stringValue, vehicleItem.vehicle.currencyCode];
 }
 
 - (void)didTapVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem

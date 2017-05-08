@@ -29,18 +29,18 @@
 - (instancetype)init
 {
     self = [super init];
+    
     self.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[container(220)]"
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[container(185@100)]"
                                                                       options:0
                                                                       metrics:nil
                                                                         views:@{@"container" : self}]];
-    self.backgroundColor = [UIColor groupTableViewBackgroundColor];//remove for production
-    
     _vehicleCollectionView = [self renderCollectionView];
     _pageControl = [self renderPageControl];
     
     [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"displayed" step:@-1];
-    
+
     [self layout];
     return self;
 }
@@ -53,6 +53,9 @@
     _dropoffDate = dropoffDate;
     _pickupDate = pickupDate;
     [self.vehicleCollectionView reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.vehicleCollectionView setContentOffset:CGPointMake(-15, 0)];
+    });
 }
 
 - (void)layout
@@ -65,13 +68,12 @@
     //Collection view
     [self addSubview:self.vehicleCollectionView];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[vehicleCollectionView]-0-|" options:0 metrics:nil views:viewDictionary]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[vehicleCollectionView]" options:0 metrics:nil views:viewDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[vehicleCollectionView]" options:0 metrics:nil views:viewDictionary]];
 
     //View page control
     [self addSubview:self.pageControl];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[vehicleCollectionView]-4-[pageControl]-4-|" options:0 metrics:nil views:viewDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[vehicleCollectionView(140)]-2-[pageControl(10)]-2-|" options:0 metrics:nil views:viewDictionary]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[pageControl]-8-|" options:0 metrics:nil views:viewDictionary]];
-
 }
 
 - (UICollectionView *)renderCollectionView

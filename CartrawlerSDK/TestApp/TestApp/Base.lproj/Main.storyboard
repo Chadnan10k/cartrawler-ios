@@ -236,12 +236,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWR-jY-Sk2">
+                                <rect key="frame" x="8" y="443" width="39" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Ra1-YD-qXo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5S6-2V-Ifo" firstAttribute="top" secondItem="DrR-L8-9q1" secondAttribute="bottom" constant="18" id="94V-ah-2nr"/>
                             <constraint firstAttribute="trailing" secondItem="ax6-HZ-Y0J" secondAttribute="trailing" constant="8" id="FT8-ry-sNs"/>
                             <constraint firstItem="lzk-tW-vOj" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="16" id="JuW-Cq-FDt"/>
+                            <constraint firstItem="DrR-L8-9q1" firstAttribute="top" secondItem="uWR-jY-Sk2" secondAttribute="bottom" constant="8" id="JxS-34-sQH"/>
                             <constraint firstItem="5S6-2V-Ifo" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="8" id="VSm-gV-yKE"/>
                             <constraint firstItem="7vh-Hy-L1z" firstAttribute="top" secondItem="ax6-HZ-Y0J" secondAttribute="bottom" constant="8" id="XyJ-le-fNy"/>
                             <constraint firstItem="7vh-Hy-L1z" firstAttribute="top" secondItem="xed-eD-UPO" secondAttribute="bottom" id="Y43-r6-4oT"/>
@@ -249,6 +259,7 @@
                             <constraint firstItem="UNu-Gw-n2N" firstAttribute="top" secondItem="2f7-yJ-BcB" secondAttribute="bottom" constant="8" id="aQo-G5-sWb"/>
                             <constraint firstItem="5S6-2V-Ifo" firstAttribute="centerY" secondItem="UNu-Gw-n2N" secondAttribute="centerY" id="bv6-jl-Is4"/>
                             <constraint firstItem="xed-eD-UPO" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" id="c8H-XD-VRU"/>
+                            <constraint firstItem="uWR-jY-Sk2" firstAttribute="leading" secondItem="BDW-7a-xVM" secondAttribute="leading" constant="8" id="cAG-k9-dBW"/>
                             <constraint firstAttribute="trailing" secondItem="lzk-tW-vOj" secondAttribute="trailing" constant="16" id="cCZ-5R-Y4L"/>
                             <constraint firstItem="lzk-tW-vOj" firstAttribute="top" secondItem="Ets-M0-nR8" secondAttribute="bottom" constant="8" id="dak-WO-yKO"/>
                             <constraint firstItem="7js-LD-TYj" firstAttribute="top" secondItem="5S6-2V-Ifo" secondAttribute="bottom" constant="13" id="dbe-ft-Lws"/>
@@ -272,6 +283,7 @@
                         <outlet property="cardContainer" destination="K5h-mR-ZJM" id="uHO-gp-Edd"/>
                         <outlet property="endpointSwitch" destination="2f7-yJ-BcB" id="lRg-Vf-YCy"/>
                         <outlet property="oneWaySwitch" destination="UNu-Gw-n2N" id="fhE-Kb-zW2"/>
+                        <outlet property="priceLabel" destination="uWR-jY-Sk2" id="zkR-RO-GEs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2MH-hR-edb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -283,7 +295,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zsj-16-95s" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c1K-lO-dAv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="c1K-lO-dAv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

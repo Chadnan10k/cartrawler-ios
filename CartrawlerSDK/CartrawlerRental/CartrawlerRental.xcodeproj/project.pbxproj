@@ -159,8 +159,6 @@
 		45BA0F661E1FA25A00EB26ED /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 45BA0F651E1FA25A00EB26ED /* strip-frameworks.sh */; };
 		45BEED3D1E71820400049F0C /* CTInsuranceOfferingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45BEED3B1E71820400049F0C /* CTInsuranceOfferingView.h */; };
 		45BEED3E1E71820400049F0C /* CTInsuranceOfferingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BEED3C1E71820400049F0C /* CTInsuranceOfferingView.m */; };
-		45BEED411E71824000049F0C /* CTInsuranceAddedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45BEED3F1E71824000049F0C /* CTInsuranceAddedView.h */; };
-		45BEED421E71824000049F0C /* CTInsuranceAddedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BEED401E71824000049F0C /* CTInsuranceAddedView.m */; };
 		BC10A01A1E968703009C7B9D /* CTVehicleDetailTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BC10A0181E968703009C7B9D /* CTVehicleDetailTableViewCell.h */; };
 		BC10A01B1E968703009C7B9D /* CTVehicleDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10A0191E968703009C7B9D /* CTVehicleDetailTableViewCell.m */; };
 		BC3361881E4CC4DC0056E5A6 /* de.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC3361871E4CC4DC0056E5A6 /* de.strings */; };
@@ -357,8 +355,6 @@
 		45BA0F651E1FA25A00EB26ED /* strip-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = "strip-frameworks.sh"; path = "CartrawlerRental/strip-frameworks.sh"; sourceTree = "<group>"; };
 		45BEED3B1E71820400049F0C /* CTInsuranceOfferingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInsuranceOfferingView.h; sourceTree = "<group>"; };
 		45BEED3C1E71820400049F0C /* CTInsuranceOfferingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsuranceOfferingView.m; sourceTree = "<group>"; };
-		45BEED3F1E71824000049F0C /* CTInsuranceAddedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInsuranceAddedView.h; sourceTree = "<group>"; };
-		45BEED401E71824000049F0C /* CTInsuranceAddedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsuranceAddedView.m; sourceTree = "<group>"; };
 		BC10A0181E968703009C7B9D /* CTVehicleDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTVehicleDetailTableViewCell.h; path = CartrawlerRental/CTVehicleDetailTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		BC10A0191E968703009C7B9D /* CTVehicleDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTVehicleDetailTableViewCell.m; path = CartrawlerRental/CTVehicleDetailTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		BC3361871E4CC4DC0056E5A6 /* de.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de.strings; path = Localization/de.strings; sourceTree = "<group>"; };
@@ -861,8 +857,6 @@
 				BC7522C11E705818005918D2 /* CTInsuranceView.m */,
 				45BEED3B1E71820400049F0C /* CTInsuranceOfferingView.h */,
 				45BEED3C1E71820400049F0C /* CTInsuranceOfferingView.m */,
-				45BEED3F1E71824000049F0C /* CTInsuranceAddedView.h */,
-				45BEED401E71824000049F0C /* CTInsuranceAddedView.m */,
 				E78758FA1EAFA6D100FA6E32 /* CTInsuranceDetailViewController.h */,
 				E78758FB1EAFA6D100FA6E32 /* CTInsuranceDetailViewController.m */,
 				BCE1934B1EA7811D0097C5CB /* CTCountryPickerView.h */,
@@ -975,7 +969,6 @@
 				451E75961E042E5D00D58F71 /* CTVehicleFeatureTableViewCell.h in Headers */,
 				451E75781E042D7900D58F71 /* CTExpandingInfoView.h in Headers */,
 				451E75EA1E042FB600D58F71 /* CTPaymentViewController.h in Headers */,
-				45BEED411E71824000049F0C /* CTInsuranceAddedView.h in Headers */,
 				BC95464F1EAE5C120097312C /* CTExtrasCarouselViewCell.h in Headers */,
 				451E75AF1E042EA200D58F71 /* CTOptionalExtrasView.h in Headers */,
 				451E76001E042FE800D58F71 /* CTGenericValidation.h in Headers */,
@@ -1229,7 +1222,6 @@
 				451E76331E043DFF00D58F71 /* CTRentalBookingCell.m in Sources */,
 				451E76081E042FE800D58F71 /* CTInsuranceValidation.m in Sources */,
 				451E760B1E042FE800D58F71 /* CTBookingCompletionValidation.m in Sources */,
-				45BEED421E71824000049F0C /* CTInsuranceAddedView.m in Sources */,
 				BC9546501EAE5C120097312C /* CTExtrasCarouselViewCell.m in Sources */,
 				451E75571E042CB000D58F71 /* CTVehicleSelectionDataSource.m in Sources */,
 				BC10A01B1E968703009C7B9D /* CTVehicleDetailTableViewCell.m in Sources */,

@@ -18,6 +18,7 @@
 @property (nonatomic, strong) CartrawlerRental *rental;
 @property (nonatomic, strong) CartrawlerInPath *inPath;
 @property (nonatomic, strong) UIViewController *parent;
+@property (nonatomic, strong) UILabel *priceLabel;
 
 @property (strong, nonatomic) UIButton *callToAction;//bad practice passing this obj but who cares its a test app.
 

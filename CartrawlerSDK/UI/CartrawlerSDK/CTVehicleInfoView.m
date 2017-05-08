@@ -19,7 +19,7 @@
 #import "CTExtrasListViewController.h"
 #import "CTRentalLocalizationConstants.h"
 
-@interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTInsuranceDetailDelegate, CTCountryPickerDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate, UIScrollViewDelegate>
+@interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIView *containerView;
@@ -148,15 +148,8 @@
 
 - (void)initAlertView
 {
-    _alertView = [CTAlertViewController alertControllerWithTitle:@"Test" message:@"Test"];
+    _alertView = [CTAlertViewController alertControllerWithTitle:@"" message:@""];
     self.alertView.backgroundTapDismissalGestureEnabled = YES;
-    
-    [self.alertView addAction:[CTAlertAction actionWithTitle:@"Test OK" handler:^(CTAlertAction *action) {
-        
-    }]];
-    
-    _countryPicker = [CTCountryPickerView new];
-    self.countryPicker.delegate = self;
 }
 
 
@@ -306,12 +299,11 @@
 // MARK: CTInsurance Delegate
 - (void)didAddInsurance:(CTInsurance *)insurance
 {
-    [self presentInsuranceAlert];
+    self.search.isBuyingInsurance = YES;
 }
 
 - (void)didRemoveInsurance
 {
-    self.search.insurance = nil;
     self.search.isBuyingInsurance = NO;
 }
 
@@ -321,76 +313,8 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:bundle];
     CTInsuranceDetailViewController *detailViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalInsuranceViewIdentifier];
     detailViewController.search = self.search;
-    detailViewController.insuranceDetailDelegate = self;
     if (self.delegate) {
         [self.delegate infoViewPushViewController:detailViewController];
-    }
-}
-
-- (void)didTapAddInsurance:(CTInsuranceDetailViewController *)detailViewController
-{
-    [self presentInsuranceAlert];
-}
-
-- (void)presentInsuranceAlert
-{
-    CTAlertViewController *alert = [CTAlertViewController alertControllerWithTitle:@"Yo!" message:@"We need to confirm this is the country you were born in."];
-    
-    [alert addAction:[CTAlertAction actionWithTitle:@"Cancel" handler:^(CTAlertAction *action) {
-        [alert dismissViewControllerAnimated:YES completion:nil];
-    }]];
-    
-    [alert addAction:[CTAlertAction actionWithTitle:@"Confirm" handler:^(CTAlertAction *action) {
-        [self checkIfNeedsRefresh:alert];
-    }]];
-    
-    alert.customView = self.countryPicker;
-    
-    if (self.delegate) {
-        [self.delegate infoViewPresentViewController:alert];
-    }
-}
-
-- (void)didChangeCountrySelection:(NSString *)countryCode
-{
-    _tempCountryCode = countryCode;
-}
-
-- (void)checkIfNeedsRefresh:(CTAlertViewController *)alert
-{
-    if (![self.tempCountryCode isEqualToString:[CTSDKSettings instance].homeCountryCode]) {
-        
-        //remove
-        [alert setTitle:@"Loading" message:@"Finding best price"];
-        [alert removeAllActions];
-        alert.customView = [CTLoadingView new];
-        
-        [[CTSDKSettings instance] setHomeCountryCode:self.tempCountryCode];
-        [[CTSDKSettings instance] setHomeCountryName:[[CTSDKSettings instance] countryName:self.tempCountryCode]];
-        __weak typeof(self) weakSelf = self;
-        
-        if (self.delegate) {
-            [self.delegate infoViewRequestNewVehiclePrice:^(BOOL success, NSString *error) {
-                if (success) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [alert dismissViewControllerAnimated:YES completion:nil];
-                        [weakSelf refreshView];
-                    });
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [alert dismissViewControllerAnimated:YES completion:nil];
-                        [weakSelf presentVehicleSelection];
-                    });
-                }
-            }];
-        }
-        
-
-    } else {
-        NSLog(@"no refresh needed");
-        [alert dismissViewControllerAnimated:YES completion:nil];
-        self.search.isBuyingInsurance = YES;
-        [self.insuranceView presentSelectedState];
     }
 }
 

@@ -283,6 +283,8 @@ extern NSString * const CTRentalInsuranceInfoButtonTitle;
 
 extern NSString * const CTRentalInsuranceAddButtonTitle;
 
+extern NSString * const CTRentalInsuranceAddedButtonTitle;
+
 extern NSString * const CTRentalInsuranceInfoTip1;
 
 extern NSString * const CTRentalInsuranceInfoTip2;
@@ -315,9 +317,6 @@ extern NSString * const CTRentalInsuranceDetailTip5;
 
 extern NSString * const CTRentalInsuranceTermsConditions;
 
-//to change
-extern NSString * const CTRentalInsuranceAddedHeader;
-
 extern NSString * const CTRentalInsuranceAddedSubheader;
 
 extern NSString * const CTRentalInsuranceRemoveButtonTitle;
@@ -344,15 +343,7 @@ extern NSString * const CTRentalVehicleMerchandisingOnBudget;
 
 extern NSString * const CTRentalVehicleMerchandisingBestReviewed;
 
-//new sort
-
-extern NSString * const CTRentalResultsSortPrice;
-
-extern NSString * const CTRentalResultsSortRecommended;
-
 extern NSString * const CTRentalResultsOtherCars;
-
-extern NSString * const CTRentalVehiclePriceBreakdownTip;
 
 extern NSString * const CTRentalExtrasPerRental;
 
@@ -367,14 +358,6 @@ extern NSString * const CTRentalOtherCars;
 extern NSString * const CTRentalCarRental;
 
 extern NSString * const CTRentalPayNothingAtDesk;
-
-extern NSString * const CTRentalPayNow;
-
-extern NSString * const CTRentalPayAtDesk;
-
-extern NSString * const CTRentalBookingFee;
-
-extern NSString * const CTRentalPaymentCarInsurance;
 
 extern NSString * const CTRentalPaymentFree;
 
