@@ -43,8 +43,7 @@
 @property (nonatomic, strong) CTInsurance *insurance;
 @property (nonatomic, strong) NSDate *pickupDate;
 @property (nonatomic, strong) NSDate *dropoffDate;
-@property (nonatomic) BOOL isOpen;
-
+@property (nonatomic) BOOL isAdded;
 @end
 
 @implementation CTInsuranceOfferingView
@@ -114,12 +113,11 @@
     self.subheaderLabel.text = CTLocalizedString(CTRentalInsuranceOfferingSubheader);
     self.subheaderLabel.numberOfLines = 1;
     
-    _moreDetailsButton = [[CTButton alloc] init:[UIColor clearColor] fontColor:[UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1] boldFont:NO borderColor:nil];
+    _moreDetailsButton = [[CTButton alloc] init:[UIColor clearColor] fontColor:[UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1] boldFont:YES borderColor:nil];
     self.moreDetailsButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.moreDetailsButton setTitle:CTLocalizedString(CTRentalInsuranceInfoButtonTitle) forState:UIControlStateNormal];
     [self.moreDetailsButton setHeightConstraint:@20 priority:@1000];
     [self.moreDetailsButton addTarget:self action:@selector(termsTapped:) forControlEvents:UIControlEventTouchUpInside];
-    self.moreDetailsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
 
     _addNowButton = [[CTButton alloc] init:[UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1] fontColor:[UIColor whiteColor] boldFont:YES borderColor:nil];
     self.addNowButton.translatesAutoresizingMaskIntoConstraints = NO;
@@ -249,8 +247,20 @@
 
 - (void)addInsurance:(id)sender
 {
-    if (self.addAction) {
-        self.addAction();
+    if (self.isAdded) {
+        self.addNowButton.backgroundColor = [UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1];
+        [self.addNowButton setTitle:CTLocalizedString(CTRentalInsuranceAddButtonTitle) forState:UIControlStateNormal];
+        if (self.removeAction) {
+            self.removeAction();
+            _isAdded = NO;
+        }
+    } else {
+        self.addNowButton.backgroundColor = [UIColor colorWithRed:76.0/255.0 green:178.0/255.0 blue:76.0/255.0 alpha:1];
+        [self.addNowButton setTitle:CTLocalizedString(CTRentalInsuranceAddedButtonTitle) forState:UIControlStateNormal];
+        if (self.addAction) {
+            self.addAction();
+            _isAdded = YES;
+        }
     }
 }
 

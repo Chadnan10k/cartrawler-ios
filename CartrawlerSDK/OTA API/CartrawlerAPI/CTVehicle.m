@@ -135,10 +135,12 @@
 	for (int i = 0; i < thisCarsCharges.count; i++) {
 		CTVehicleCharge *vc = [[CTVehicleCharge alloc] initFromVehicleChargesDictionary:thisCarsCharges[i]];
 		[tempCarsCharges addObject:vc];
-	}
+    }
     _vehicleCharges = tempCarsCharges;
 	_rateQualifier = dictionary[@"VehAvailCore"][@"RentalRate"][@"RateQualifier"][@"@RateQualifier"];
-	
+    
+    _rateDistance = [[CTRateDistance alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"RentalRate"][@"RateDistance"]];
+    
 	// Reference Data
 	// ==============
 	

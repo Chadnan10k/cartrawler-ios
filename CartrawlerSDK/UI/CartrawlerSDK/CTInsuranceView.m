@@ -8,13 +8,11 @@
 
 #import "CTInsuranceView.h"
 #import "CTInsuranceOfferingView.h"
-#import "CTInsuranceAddedView.h"
 #import <CartrawlerSDK/CTSDKSettings.h>
 
 @interface CTInsuranceView()
 
 @property (nonatomic, strong) CTInsuranceOfferingView *offeringView;
-@property (nonatomic, strong) CTInsuranceAddedView *addedView;
 @property (nonatomic, strong) CTInsurance *cachedInsurance;
 
 @end
@@ -39,13 +37,9 @@
         [self.offeringView removeFromSuperview];
     }
     
-    if (self.addedView) {
-        [self.addedView removeFromSuperview];
-    }
-    
     if (search.isBuyingInsurance && search.insurance) {
         _cachedInsurance = search.insurance;
-        [self renderAdded];
+        //set button to added
         return;
     }
     
@@ -75,10 +69,6 @@
     if (!self.offeringView) {
         _offeringView = [CTInsuranceOfferingView new];
     }
-    
-    if (!self.addedView) {
-        _addedView = [CTInsuranceAddedView new];
-    }
      
     [self.offeringView updateInsurance:insurance pickupDate:search.pickupDate dropoffDate:search.dropoffDate];
     
@@ -90,15 +80,16 @@
         }
     };
     
+    self.offeringView.removeAction = ^{
+        if (weakSelf.delegate) {
+            [weakSelf.delegate didRemoveInsurance];
+        }
+    };
+    
     self.offeringView.termsAndConditionsAction = ^{
         if (weakSelf.delegate) {
             [weakSelf.delegate didTapMoreInsuranceDetail];
         }
-    };
-    
-    self.addedView.removeAction = ^{
-        [weakSelf.addedView removeFromSuperview];
-        [weakSelf renderOffering];
     };
     
     [self renderOffering];
@@ -107,8 +98,7 @@
 
 - (void)presentSelectedState
 {
-    [self.offeringView removeFromSuperview];
-    [self renderAdded];
+    //show added button
 }
 
 - (void)renderOffering
@@ -129,22 +119,6 @@
                                                                  options:0
                                                                  metrics:nil
                                                                    views:@{@"view" : self.offeringView}]];
-}
-
-- (void)renderAdded
-{
-    self.addedView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.addedView];
-    
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:@{@"view" : self.addedView}]];
-    
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|"
-                                                                 options:0
-                                                                 metrics:nil
-                                                                   views:@{@"view" : self.addedView}]];
 }
 
 @end
