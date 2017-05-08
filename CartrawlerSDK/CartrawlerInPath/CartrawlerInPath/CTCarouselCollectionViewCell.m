@@ -16,6 +16,7 @@
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
 #import <CartrawlerSDK/CTLayoutManager.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface CTCarouselCollectionViewCell()
 
@@ -24,7 +25,6 @@
 @property (nonatomic, strong) UIView *bannerContainer;
 @property (nonatomic, strong) UIView *featureContainer;
 @property (nonatomic, strong) CTLabel *featureLabel;
-@property (nonatomic, strong) CTCarouselFooterView *footerContainer;
 
 @end
 
@@ -100,7 +100,6 @@
                                                                  options:0
                                                                  metrics:nil
                                                                    views:viewDictionary]];
-    
 }
 
 - (void)setVehicle:(CTAvailabilityItem *)availabilityItem
@@ -108,24 +107,18 @@
        dropoffDate:(NSDate *)dropoffDate
 {
     self.backgroundColor = [UIColor whiteColor];
-    self.layer.cornerRadius = 5;
-    self.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    self.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.layer.shadowOffset = CGSizeMake(1,1);
+    self.layer.shadowOpacity = 0.3;
+    self.layer.shadowRadius = 3.0;
     self.layer.borderWidth = 0.5;
-    self.layer.masksToBounds = YES;
-    
+    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
+
     [[CTImageCache sharedInstance] cachedImage:availabilityItem.vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;
     }];
     self.vehicleNameLabel.attributedText = [self attributedVehicleString:availabilityItem.vehicle.makeModelName orSimilar:availabilityItem.vehicle.orSimilar];
-    
-    [self.footerContainer setVehicle:availabilityItem.vehicle
-                         buttonTitle:CTLocalizedString(CTInPathWidgetView)
-                       disableButton:YES
-                         perDayPrice:YES
-                          pickupDate:pickupDate
-                         dropoffDate:dropoffDate];
     self.featureLabel.text = [self specialOfferText:availabilityItem.vehicle.specialOffers];
-
 }
 
 - (UIView *)renderBanner
