@@ -215,7 +215,7 @@
 		E76900E81E783EC600D729FF /* CTExpandingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900E61E783EC600D729FF /* CTExpandingView.m */; };
 		E7BB87A01EA7CE900008CBAD /* CTTriangleView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BB879E1EA7CE900008CBAD /* CTTriangleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7BB87A11EA7CE900008CBAD /* CTTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */; };
-		E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */; };
+		E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7CD21A81E38F794006BE519 /* CTSDKLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */; };
 /* End PBXBuildFile section */
 
@@ -1033,7 +1033,6 @@
 				455B58541DCC914300CA4790 /* CTSegmentedControl.h in Headers */,
 				455B58561DCC914300CA4790 /* CTPickerView.h in Headers */,
 				455B58581DCC914300CA4790 /* CTTextView.h in Headers */,
-				E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */,
 				455B585A1DCC914300CA4790 /* CTPlaceholderView.h in Headers */,
 				455B585C1DCC914300CA4790 /* CTView.h in Headers */,
 				455B585E1DCC914300CA4790 /* CTDesignableView.h in Headers */,
@@ -1071,6 +1070,7 @@
 				E76900DD1E764F9800D729FF /* CTListView.h in Headers */,
 				E76900E11E77267700D729FF /* CTListItemView.h in Headers */,
 				BCFA41741E97CDF700DA1710 /* CTUpSellBanner.h in Headers */,
+				E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */,
 				BC01F5921E9D2A7B003D8286 /* CartrawlerSDK+NSString.h in Headers */,
 				BC9546701EAF77AD0097312C /* CTImageTextView.h in Headers */,
 				457678501E08021500FE591A /* CTHeaders.h in Headers */,

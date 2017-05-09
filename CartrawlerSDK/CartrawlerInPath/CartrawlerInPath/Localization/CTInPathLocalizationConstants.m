@@ -32,4 +32,6 @@ NSString * const CTInPathWidgetRemove = @"widget_remove_button";
 
 NSString * const CTInPathWidgetTotal = @"widget_remove_total";
 
+NSString * const CTInPathWidgetFreeCancelation = @"widget_free_cancelation";
+
 @end

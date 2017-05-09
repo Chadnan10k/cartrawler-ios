@@ -15,16 +15,19 @@
 #import "CTInPathLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
+#import <CartrawlerSDK/CartrawlerSDK+UIView.h>
 #import <CartrawlerSDK/CTLayoutManager.h>
 #import <QuartzCore/QuartzCore.h>
 
 @interface CTCarouselCollectionViewCell()
 
 @property (nonatomic, strong) UIImageView *vehicleImageView;
+@property (nonatomic, strong) UIImageView *vendorImageView;
 @property (nonatomic, strong) CTLabel *vehicleNameLabel;
 @property (nonatomic, strong) UIView *bannerContainer;
 @property (nonatomic, strong) UIView *featureContainer;
 @property (nonatomic, strong) CTLabel *featureLabel;
+@property (nonatomic, strong) CTUpSellBanner *banner;
 
 @end
 
@@ -117,8 +120,14 @@
     [[CTImageCache sharedInstance] cachedImage:availabilityItem.vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;
     }];
+    
+    [[CTImageCache sharedInstance] cachedImage:availabilityItem.vendor.logoURL completion:^(UIImage *image) {
+        self.vendorImageView.image = image;
+    }];
+    
     self.vehicleNameLabel.attributedText = [self attributedVehicleString:availabilityItem.vehicle.makeModelName orSimilar:availabilityItem.vehicle.orSimilar];
     self.featureLabel.text = [self specialOfferText:availabilityItem.vehicle.specialOffers];
+    [self.banner setFromMerchandisingTag:availabilityItem.vehicle.merchandisingTag];
 }
 
 - (UIView *)renderBanner
@@ -129,14 +138,20 @@
     
     [bannerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(40)]" options:0 metrics:nil views:@{@"view" : bannerView}]];
     
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    _banner = [[CTUpSellBanner alloc] init];
+    [self.banner addToSuperview:bannerView];
     
-    CTUpSellBanner *banner = [[CTUpSellBanner alloc] init];
-    [banner addToSuperview:bannerView];
-    [banner setIcon:[UIImage imageNamed:@"checkmark" inBundle:bundle compatibleWithTraitCollection:nil]
-    backgroundColor:[UIColor colorWithRed:191.0/255.0 green:61.0/255.0 blue:43.0/255.0 alpha:1]
-          textColor:[UIColor whiteColor]
-               text:CTLocalizedString(CTInPathWidgetBannerTitle)];
+    _vendorImageView = [UIImageView new];
+    self.vendorImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.vendorImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [bannerView addSubview:self.vendorImageView];
+    [self.vendorImageView setHeightConstraint:@40 priority:@1000];
+    [self.vendorImageView setWidthConstraint:@40 priority:@1000];
+    
+    [bannerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[vendorImageView]-0-|" options:0 metrics:nil views:@{@"vendorImageView" : self.vendorImageView}]];
+    [bannerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[vendorImageView]-0-|" options:0 metrics:nil views:@{@"vendorImageView" : self.vendorImageView}]];
+
+    
     return bannerView;
 }
 
@@ -202,7 +217,7 @@
 {
     
     if (specialOffers.count == 0) {
-        return @"Great Price!";
+        return CTLocalizedString(CTInPathWidgetFreeCancelation);
     }
     
     CTSpecialOffer *choosenOffer;

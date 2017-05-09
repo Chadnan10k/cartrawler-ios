@@ -218,4 +218,26 @@ extern NSString * const CTSDKVehicleTransmissionAuto;
 
 extern NSString * const CTSDKVehicleTransmissionManual;
 
+
+extern NSString * const CTSDKVehicleMerchandisingBestSeller;
+
+extern NSString * const CTSDKVehicleMerchandisingBusiness;
+
+extern NSString * const CTSDKVehicleMerchandisingCityBreak;
+
+extern NSString * const CTSDKVehicleMerchandisingFamilySize;
+
+extern NSString * const CTSDKVehicleMerchandisingGreatValue;
+
+extern NSString * const CTSDKVehicleMerchandisingQuickestQueue;
+
+extern NSString * const CTSDKVehicleMerchandisingRecommended;
+
+extern NSString * const CTSDKVehicleMerchandisingUpgradeTo;
+
+extern NSString * const CTSDKVehicleMerchandisingOnBudget;
+
+extern NSString * const CTSDKVehicleMerchandisingBestReviewed;
+
+
 @end

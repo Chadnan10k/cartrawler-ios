@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CartrawlerAPI/CTVehicle.h>
 
 @interface CTUpSellBanner : UIView
 
@@ -21,5 +22,6 @@ typedef NS_ENUM(NSUInteger, CTUpSellBannerAlignment) {
 
 - (void)addToSuperview:(UIView *)superview;
 - (void)setIcon:(UIImage *)image backgroundColor:(UIColor *)backgroundColor textColor:(UIColor *)textColor text:(NSString *)text;
+- (void)setFromMerchandisingTag:(CTMerchandisingTag)merchandisingTag;
 
 @end
