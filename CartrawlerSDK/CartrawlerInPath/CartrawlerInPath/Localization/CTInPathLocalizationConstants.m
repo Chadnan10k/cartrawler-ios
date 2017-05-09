@@ -36,4 +36,6 @@ NSString * const CTInPathWidgetFreeCancelation = @"widget_free_cancelation";
 
 NSString * const CTInPathWidgetLoading = @"widget_loading";
 
+NSString * const CTInPathWidgetLoadError = @"widget_load_error";
+
 @end
