@@ -117,19 +117,19 @@
     NSString *vehName = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.makeModelName,
                          self.search.selectedVehicle.vehicle.orSimilar];
     
-    [self sendEvent:NO customParams:@{@"eventName" : @"Booking",
-                                      @"reservationID" : self.search.booking.confID,
-                                      @"insuranceOffered" : self.search.insurance ? @"true" : @"false",
-                                      @"insurancePurchased" : self.search.isBuyingInsurance ? @"true" : @"false",
-                                      @"age" : self.search.driverAge.stringValue,
-                                      @"clientID" : [CTSDKSettings instance].clientId,
-                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode,
-                                      @"pickupName" : self.search.pickupLocation.name,
-                                      @"pickupDate" : [self.search.pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
-                                      @"returnName" : self.search.dropoffLocation.name,
-                                      @"returnDate" : [self.search.dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
-                                      @"carSelected" : vehName
-                                      } eventName:@"Booking" eventType:@"Booking"];
+//    [self sendEvent:NO customParams:@{@"eventName" : @"Booking",
+//                                      @"reservationID" : self.search.booking.confID,
+//                                      @"insuranceOffered" : self.search.insurance ? @"true" : @"false",
+//                                      @"insurancePurchased" : self.search.isBuyingInsurance ? @"true" : @"false",
+//                                      @"age" : self.search.driverAge.stringValue,
+//                                      @"clientID" : [CTSDKSettings instance].clientId,
+//                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode,
+//                                      @"pickupName" : self.search.pickupLocation.name,
+//                                      @"pickupDate" : [self.search.pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+//                                      @"returnName" : self.search.dropoffLocation.name,
+//                                      @"returnDate" : [self.search.dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+//                                      @"carSelected" : vehName
+//                                      } eventName:@"Booking" eventType:@"Booking"];
 }
 
 @end

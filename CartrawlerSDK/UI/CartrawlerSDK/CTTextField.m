@@ -34,10 +34,22 @@
     self.floatingLabelActiveTextColor = [CTAppearance instance].navigationBarColor;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    [self setup];
+    return self;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    
+    [self setup];
+    return self;
+}
+
+- (void)setup
+{
     self.backgroundColor = [CTAppearance instance].textFieldBackgroundColor;
     self.layer.cornerRadius = [CTAppearance instance].textFieldCornerRadius;
     self.layer.masksToBounds = YES;
@@ -45,8 +57,12 @@
     self.font = [UIFont fontWithName:[CTAppearance instance].fontName size:self.font.pointSize];
     self.delegate = self;
     self.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
-
-    return self;
+    
+    self.layer.borderWidth = 0.5;
+    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.floatingLabelYPadding = 8;
+    self.floatingLabelTextColor = [UIColor lightGrayColor];
+    self.floatingLabelActiveTextColor = [CTAppearance instance].navigationBarColor;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
