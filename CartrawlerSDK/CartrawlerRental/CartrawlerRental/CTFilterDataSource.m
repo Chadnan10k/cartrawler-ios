@@ -12,6 +12,7 @@
 #import <CartrawlerAPI/CTAvailabilityItem.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTFilterDataSource()
 
@@ -38,14 +39,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{    
-    if ([self.selectedData containsObject:self.data[indexPath.row]]) {
-        [self.selectedData removeObject:self.data[indexPath.row]];
+{
+    CTAvailabilityItem *item = self.data[indexPath.row];
+    if ([self.selectedData containsObject:item]) {
+        [self.selectedData removeObject:item];
     } else {
-        [self.selectedData addObject:self.data[indexPath.row]];
+        [self.selectedData addObject:item];
     }
     CTFilterTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [cell cellTapped];
+    [[CTAnalytics instance] tagScreen:@"carousel" detail:cell.label.text step:@-1];
     
     if (self.filterCompletion) {
         self.filterCompletion(self.selectedData);

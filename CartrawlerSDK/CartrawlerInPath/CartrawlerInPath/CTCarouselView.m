@@ -126,6 +126,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [[CTAnalytics instance] tagScreen:@"click_WI" detail:@(indexPath.row + 1).stringValue step:@-1];
+    [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"clicked" step:@-1];
     if (self.delegate) {
         [self.delegate didSelectVehicle:self.availability.items[indexPath.row] atIndex:indexPath.row];
     }

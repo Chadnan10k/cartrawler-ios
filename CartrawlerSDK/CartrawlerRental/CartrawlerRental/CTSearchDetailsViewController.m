@@ -23,6 +23,8 @@
 @property (nonatomic, strong) CTSearchView *searchView;
 @property (nonatomic, strong) CTNextButton *nextButton;
 
+@property (nonatomic, strong) CTRentalSearch *previousSearch;
+
 @end
 
 @implementation CTSearchDetailsViewController
@@ -54,7 +56,9 @@
 {
     [super viewWillAppear:animated];
     
+    // TODO: This is calling an empty method
     [self.searchView updateDisplayWithSearch:self.search];
+    self.previousSearch = self.search;
 }
 
 - (CTSearchView *)setupSearchView
@@ -77,7 +81,6 @@
 
 - (void)searchTapped
 {
-    
     if ([self.searchView validateSearch] && self.validationController) {
         [self pushToDestination];
         [CTInterstitialViewController present:self search:self.search];
@@ -117,6 +120,7 @@
 - (IBAction)backTapped:(id)sender
 {
     if (self.navigationController.viewControllers.firstObject == self || !self.navigationController) {
+        [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"exit_X" step:@-1];
         [self dismiss];
     } else {
         [self.navigationController popViewControllerAnimated:YES];

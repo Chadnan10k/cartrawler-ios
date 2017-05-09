@@ -14,6 +14,7 @@
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTAnalytics.h>
 
 NSInteger const kMaxExtras = 4;
 NSInteger const kDefaultExtrasCountWhenIncludedInRate = 1;
@@ -190,10 +191,20 @@ static NSString * const reuseIdentifier = @"Cell";
     return CGSizeMake(self.collectionView.frame.size.width, height);
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        [[CTAnalytics instance] tagScreen:@"extras" detail:@"scroll" step:@-1];
+    }
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        [[CTAnalytics instance] tagScreen:@"extras" detail:@"scroll_clk" step:@-1];
+        
         return;
     }
+    
+    [[CTAnalytics instance] tagScreen:@"extras" detail:@"all_clk" step:@-1];
     
     UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *cell = (UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *)[self.collectionView cellForItemAtIndexPath:indexPath];
     

@@ -29,5 +29,7 @@ typedef void (^CTNewVehiclePriceCompeltion)(BOOL success, NSString *error);
 
 @property (nonatomic, weak) id<CTVehicleInfoDelegate> delegate;
 
+@property (nonatomic, readonly) BOOL insuranceViewDidAppear;
+
 - (void)refreshView;
 @end

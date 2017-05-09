@@ -214,7 +214,8 @@
     [CTRentalSearch instance].selectedVehicle = nil;
     [self configureViews];
     [self presentRentalNavigationController:parentViewController showSelection:YES];
-    [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@1];
+    [[CTAnalytics instance] tagScreen:@"click_WI" detail:@"see_all" step:@-1];
+    [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@-1];
 }
 
 - (void)presentSelectedVehicle:(nonnull UIViewController *)parentViewController selectedVehicleItem:(CTAvailabilityItem *)vehicleItem;
@@ -226,7 +227,6 @@
     [CTRentalSearch instance].selectedVehicle = vehicleItem;
     [self configureViews];
     [self presentRentalNavigationController:parentViewController showSelection:NO];
-    [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@1];
 }
 
 //Lets take what views we need for the nav stack
@@ -245,6 +245,7 @@
     navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
     
+    // TODO: This if/else logic all resolves to same method call??
     if (self.didFailToFetchResults) {
         [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
     } else {
@@ -253,6 +254,7 @@
         } else {
             [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
         }
+        [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@-1];
     }
     
     [parent presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];

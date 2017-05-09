@@ -122,7 +122,10 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [self updatePriceSummary];
     [self updateDetailedPriceSummary];
     
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-v" step:@-1];
+    static dispatch_once_t vehicleDetailsToken;
+    dispatch_once(&vehicleDetailsToken, ^{
+        [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-v" step:@-1];
+    });
 }
 
 - (void)presentVehicleSelection
@@ -143,7 +146,10 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items pickupDate:self.search.pickupDate dropoffDate:self.search.dropoffDate sortByPrice:YES];
     [self updateNavigationBar];
     
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:@-1];
+    static dispatch_once_t vehicleSelectionToken;
+    dispatch_once(&vehicleSelectionToken, ^{
+        [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:@-1];
+    });
 }
 
 - (void)updateNavigationBar
@@ -173,6 +179,16 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (IBAction)dismiss:(id)sender
 {
+    if (self.search.selectedVehicle) {
+        if (self.vehicleDetailsView.insuranceViewDidAppear) {
+            [[CTAnalytics instance] tagScreen:@"exit" detail:@"vehicles-v" step:@-1];
+        } else {
+            [[CTAnalytics instance] tagScreen:@"exit" detail:@"vehicle-e" step:@-1];
+        }
+    } else {
+        [[CTAnalytics instance] tagScreen:@"exit" detail:@"vehicles" step:@-1];
+    }
+    
     self.search.selectedVehicle = nil;
     [self dismiss];
 }
