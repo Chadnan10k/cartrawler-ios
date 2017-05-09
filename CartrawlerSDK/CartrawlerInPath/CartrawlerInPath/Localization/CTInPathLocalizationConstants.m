@@ -34,4 +34,6 @@ NSString * const CTInPathWidgetTotal = @"widget_remove_total";
 
 NSString * const CTInPathWidgetFreeCancelation = @"widget_free_cancelation";
 
+NSString * const CTInPathWidgetLoading = @"widget_loading";
+
 @end
