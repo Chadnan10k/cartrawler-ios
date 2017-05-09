@@ -229,7 +229,7 @@
 
 - (void)showErrorState
 {
-    [self renderViewInContainer:self.errorView superview:self.contentContainer padding:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [self renderViewInContainer:self.errorView superview:self.contentContainer padding:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 
 //MARK : Carousel Delegate

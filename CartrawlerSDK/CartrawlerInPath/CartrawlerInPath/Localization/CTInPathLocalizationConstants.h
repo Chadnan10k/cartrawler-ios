@@ -36,4 +36,7 @@ extern NSString * const CTInPathWidgetFreeCancelation;
 
 extern NSString * const CTInPathWidgetLoading;
 
+extern NSString * const CTInPathWidgetLoadError;
+
+
 @end
