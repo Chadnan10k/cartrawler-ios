@@ -18,6 +18,7 @@
 #import "CTSelectionView.h"
 #import "CTLocationSearchViewController.h"
 #import "CTRentalConstants.h"
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTSearchView() <CTSelectionViewDelegate, CTCalendarDelegate>
 
@@ -233,6 +234,8 @@
 
 - (void)presentLocationSelection:(BOOL)isPickupView
 {
+    [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"click" step:@-1];
+    
     __weak typeof(self) weakSelf = self;
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
@@ -408,9 +411,11 @@
     
     if (sender == self.locationSwitch) {
         if (sender.isOn) {
+            [[CTAnalytics instance] tagScreen:@"returnLoca" detail:@"1" step:@-1];
             self.search.dropoffLocation = self.search.pickupLocation;
             [self.layoutManager removeAtIndex:1];
         } else {
+            [[CTAnalytics instance] tagScreen:@"returnLoca" detail:@"0" step:@-1];
             self.search.dropoffLocation = nil;
             [self.layoutManager insertViewAtIndex:1 padding:UIEdgeInsetsMake(8, 8, 8, 8) view:self.dropoffLocationSearch];
         }
@@ -421,10 +426,12 @@
 - (void)selectionViewWasTapped:(CTSelectionView *)selectionView
 {
     if (selectionView == self.pickupLocationSearch) {
+        [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"click" step:@-1];
         [self presentLocationSelection:YES];
     }
     
     if (selectionView == self.dropoffLocationSearch) {
+        [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"click" step:@-1];
         [self presentLocationSelection:NO];
     }
     

@@ -10,15 +10,23 @@
 #import "CTTag.h"
 #import "CTErrorTag.h"
 
+typedef NS_ENUM(NSUInteger, CTAnalyticsStep) {
+    CTAnalyticsStepInPathVehicleSearch,
+    CTAnalyticsStepInPathVehicleList,
+    CTAnalyticsStepInPathVehicleDetails
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CTAnalytics : NSObject
+
+@property (nonatomic, assign) CTAnalyticsStep analyticsStep;
 
 + (instancetype)instance;
 
 - (void)tagScreen:(nonnull NSString *)name
            detail:(nonnull NSString *)detail
-             step:(nonnull NSNumber *)step;
+             step:(nullable NSNumber *)step;
 
 - (void)tagError:(nonnull NSString *)step
            event:(nonnull NSString *)event

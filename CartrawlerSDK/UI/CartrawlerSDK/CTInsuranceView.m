@@ -78,6 +78,7 @@
     self.offeringView.addAction = ^{
         if (weakSelf.delegate) {
             [[CTAnalytics instance] tagScreen:@"ins_add3_m" detail:@"add" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"ins_click" detail:@"1" step:@-1];
             [weakSelf.delegate didAddInsurance:weakSelf.cachedInsurance];
         }
     };
@@ -85,6 +86,7 @@
     self.offeringView.removeAction = ^{
         if (weakSelf.delegate) {
             [[CTAnalytics instance] tagScreen:@"ins_add3_m" detail:@"remove" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"ins_click" detail:@"0" step:@-1];
             [weakSelf.delegate didRemoveInsurance];
         }
     };

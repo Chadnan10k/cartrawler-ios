@@ -13,6 +13,7 @@
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CTButton.h>
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTLocationSearchViewController () <UISearchBarDelegate>
 
@@ -71,6 +72,7 @@
             if (weakSelf.selectedLocation != nil) {
                 weakSelf.selectedLocation(selectedLocation);
                 [weakSelf.view endEditing:YES];
+                [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"leave" step:@-1];
                 [weakSelf dismissViewControllerAnimated:YES completion:nil];
             }
         });
@@ -86,6 +88,9 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
+    [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"type" step:@-1];
+    [[CTAnalytics instance] tagScreen:@"v_ML_Picku" detail:searchText step:@-1];
+    
     if (searchText.length > 2) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
         [self.dataSource updateData:searchText completion:^(BOOL didSucceed) {
@@ -110,11 +115,13 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    [[CTAnalytics instance] tagScreen:@"l_ML_Picku" detail:@(searchBar.text.length).stringValue step:@-1];
     [self.view endEditing:YES];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
+    [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"leave" step:@-1];
     [self.view endEditing:YES];
 }
 

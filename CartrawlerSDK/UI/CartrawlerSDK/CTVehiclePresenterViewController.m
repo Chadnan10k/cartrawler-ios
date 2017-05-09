@@ -195,6 +195,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (IBAction)search:(id)sender
 {
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"searchcars" step:@-1];
     [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"open" step:@-1];
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
@@ -240,7 +241,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
                                                                       style:UIAlertActionStyleDefault
                                                                     handler:^(UIAlertAction * action) {
                                                                         dispatch_async(dispatch_get_main_queue(), ^{
-                                                                            [[CTAnalytics instance] tagScreen:@"sort" detail:@"recommended" step:@-1];
+                                                                            [[CTAnalytics instance] tagScreen:@"sort" detail:@"relevance" step:@-1];
                                                                             [self updateSortButtonByPrice:NO];
                                                                             [self.vehicleSelectionView sortByPrice:NO];
                                                                         });

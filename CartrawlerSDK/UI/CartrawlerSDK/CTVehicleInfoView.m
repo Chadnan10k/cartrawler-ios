@@ -397,7 +397,6 @@
 
 - (IBAction)nextTapped:(id)sender
 {
-    [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"added" step:@-1];
     [self pushToDestination];
 }
 

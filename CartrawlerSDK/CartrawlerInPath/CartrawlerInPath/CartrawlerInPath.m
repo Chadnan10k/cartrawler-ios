@@ -215,7 +215,6 @@
     [self configureViews];
     [self presentRentalNavigationController:parentViewController showSelection:YES];
     [[CTAnalytics instance] tagScreen:@"click_WI" detail:@"see_all" step:@-1];
-    [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@-1];
 }
 
 - (void)presentSelectedVehicle:(nonnull UIViewController *)parentViewController selectedVehicleItem:(CTAvailabilityItem *)vehicleItem;
@@ -254,7 +253,6 @@
         } else {
             [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
         }
-        [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@-1];
     }
     
     [parent presentViewController:navController animated:[CTAppearance instance].presentAnimated completion:nil];
@@ -278,6 +276,8 @@
 - (void)renderReadyState
 {
     if (self.cardView) {
+        [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@-1];
+        
         [self.cardView showVehicleSelection:self.defaultSearch.vehicleAvailability
                                  pickupDate:self.defaultSearch.pickupDate
                                 dropoffDate:self.defaultSearch.dropoffDate];
@@ -330,6 +330,7 @@
 
 - (void)removeVehicle
 {
+    [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"removed" step:@-1];
     [CTDataStore deletePotentialInPathBooking];
     _cachedVehicle = nil;
     if (self.cardView) {
@@ -377,6 +378,8 @@
         [self.rental.cartrawlerSDK sendAnalyticsEvent:event];
         [self.rental.cartrawlerSDK sendAnalyticsSaleEvent:saleEvent];
         [CTDataStore didMakeInPathBooking:confirmationID];
+        
+        [[CTAnalytics instance] tagScreen:@"step" detail:@"confirmati" step:@-1];
     }
 }
 
@@ -394,6 +397,7 @@
     [self renderSelectedState];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(didProduceInPathPaymentRequest:vehicle:)]) {
+        [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"added" step:@-1];
         [CTDataStore cachePotentialInPathBooking:booking];
         [self.delegate didProduceInPathPaymentRequest:[CTInPathPayment createInPathRequest:search]
                                        vehicle:vehicle];

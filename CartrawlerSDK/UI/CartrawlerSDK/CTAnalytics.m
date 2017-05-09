@@ -32,8 +32,11 @@
 
 - (void)tagScreen:(nonnull NSString *)name
            detail:(nonnull NSString *)detail
-             step:(nonnull NSNumber *)step
+             step:(nullable NSNumber *)step
 {
+    if (!step) {
+        step = @(self.analyticsStep);
+    }
     NSLog(@"Tagging Name: %@ Detail: %@ Step: %@", name, detail, step);
     double time = [[NSDate date] timeIntervalSince1970] * 1000;
     NSNumberFormatter *nf = [NSNumberFormatter new];

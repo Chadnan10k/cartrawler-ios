@@ -8,6 +8,7 @@
 
 #import "CTExtrasCarouselViewCell.h"
 #import <CartrawlerSDK/CTCounterView.h>
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTExtrasCarouselViewCell () <CTCounterViewDelegate>
 
@@ -357,10 +358,12 @@
 }
 
 - (void)counterViewDidTapIncrement:(CTCounterView *)counterView {
+    [[CTAnalytics instance] tagScreen:@"extras" detail:@"scroll_clk" step:@-1];
     [self.delegate cellDidTapIncrement:self];
 }
 
 - (void)counterViewDidTapDecrement:(CTCounterView *)counterView {
+    [[CTAnalytics instance] tagScreen:@"extras" detail:@"scroll_clk" step:@-1];
     [self.delegate cellDidTapDecrement:self];
 }
 
