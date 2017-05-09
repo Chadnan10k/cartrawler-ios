@@ -34,5 +34,6 @@ extern NSString * const CTInPathWidgetTotal;
 
 extern NSString * const CTInPathWidgetFreeCancelation;
 
+extern NSString * const CTInPathWidgetLoading;
 
 @end
