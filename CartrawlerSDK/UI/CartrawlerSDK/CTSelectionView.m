@@ -233,6 +233,12 @@
     return YES;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if ([self.delegate respondsToSelector:@selector(selectionViewDidEndEditing:)]) {
+        [self.delegate selectionViewDidEndEditing:self];
+    }
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     if (self.regex) {
@@ -247,6 +253,9 @@
         if (numberOfMatches == 0) {
             return NO;
         } else {
+            if ([self.delegate respondsToSelector:@selector(selectionViewChangedCharacters:)]) {
+                [self.delegate selectionViewChangedCharacters:self];
+            }
             return YES;
         }
     }

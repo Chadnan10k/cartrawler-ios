@@ -10,6 +10,12 @@
 #import <CartrawlerAPI/CTMatchedLocation.h>
 #import <CartrawlerAPI/CartrawlerAPI.h>
 
+typedef NS_ENUM(NSUInteger, CTLocationSearchContext) {
+    CTLocationSearchContextUndefined,
+    CTLocationSearchContextPickup,
+    CTLocationSearchContextDropoff
+};
+
 @interface CTLocationSearchViewController : UIViewController
 
 typedef void (^SelectedLocationCompletion)(CTMatchedLocation *location);
@@ -19,5 +25,7 @@ typedef void (^SelectedLocationCompletion)(CTMatchedLocation *location);
 
 @property (nonatomic) BOOL enableGroundTransportLocations;
 @property (nonatomic) BOOL invertData;
+
+@property (nonatomic, assign) CTLocationSearchContext searchContext;
 
 @end

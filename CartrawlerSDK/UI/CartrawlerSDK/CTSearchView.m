@@ -19,6 +19,7 @@
 #import "CTLocationSearchViewController.h"
 #import "CTRentalConstants.h"
 #import <CartrawlerSDK/CTAnalytics.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 
 @interface CTSearchView() <CTSelectionViewDelegate, CTCalendarDelegate>
 
@@ -234,7 +235,17 @@
 
 - (void)presentLocationSelection:(BOOL)isPickupView
 {
-    [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"click" step:@-1];
+    if (isPickupView) {
+        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
+            [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"click" step:@-1];
+        }
+        [[CTAnalytics instance] tagScreen:@"E_Pickup" detail:@"click" step:@-1];
+    } else {
+        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
+            [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"click" step:@-1];
+        }
+        [[CTAnalytics instance] tagScreen:@"E_Dropoff" detail:@"click" step:@-1];
+    }
     
     __weak typeof(self) weakSelf = self;
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
@@ -399,10 +410,18 @@
 {
     if (sender == self.ageSwitch) {
         if (sender.isOn) {
+            if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
+                [[CTAnalytics instance] tagScreen:@"ageCheckbo" detail:@"1" step:@-1];
+            }
+            [[CTAnalytics instance] tagScreen:@"E_ageCheck" detail:@"1" step:@-1];
             self.search.driverAge = @30;
             NSUInteger idx = [self.layoutManager indexOfObject:self.ageContainer].integerValue;
             [self.layoutManager removeAtIndex:idx];
         } else {
+            if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
+                [[CTAnalytics instance] tagScreen:@"ageCheckbo" detail:@"0" step:@-1];
+            }
+            [[CTAnalytics instance] tagScreen:@"E_ageCheck" detail:@"0" step:@-1];
             self.search.driverAge = nil;
             NSUInteger idx = [self.layoutManager indexOfObject:self.ageSwitchContainer].integerValue;
             [self.layoutManager insertViewAtIndex:idx padding:UIEdgeInsetsMake(8, 8, 8, 8) view:self.ageContainer];
@@ -411,11 +430,17 @@
     
     if (sender == self.locationSwitch) {
         if (sender.isOn) {
-            [[CTAnalytics instance] tagScreen:@"returnLoca" detail:@"1" step:@-1];
+            if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
+                [[CTAnalytics instance] tagScreen:@"returnLoca" detail:@"1" step:@-1];
+            }
+            [[CTAnalytics instance] tagScreen:@"E_returnL" detail:@"1" step:@-1];
             self.search.dropoffLocation = self.search.pickupLocation;
             [self.layoutManager removeAtIndex:1];
         } else {
-            [[CTAnalytics instance] tagScreen:@"returnLoca" detail:@"0" step:@-1];
+            if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
+                [[CTAnalytics instance] tagScreen:@"returnLoca" detail:@"0" step:@-1];
+            }
+            [[CTAnalytics instance] tagScreen:@"E_returnL" detail:@"0" step:@-1];
             self.search.dropoffLocation = nil;
             [self.layoutManager insertViewAtIndex:1 padding:UIEdgeInsetsMake(8, 8, 8, 8) view:self.dropoffLocationSearch];
         }
@@ -426,20 +451,34 @@
 - (void)selectionViewWasTapped:(CTSelectionView *)selectionView
 {
     if (selectionView == self.pickupLocationSearch) {
-        [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"click" step:@-1];
+        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
+            [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"click" step:@-1];
+        }
+        [[CTAnalytics instance] tagScreen:@"E_Pickup" detail:@"click" step:@-1];
         [self presentLocationSelection:YES];
     }
     
     if (selectionView == self.dropoffLocationSearch) {
-        [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"click" step:@-1];
+        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
+            [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"click" step:@-1];
+        }
+        [[CTAnalytics instance] tagScreen:@"E_Dropoff" detail:@"click" step:@-1];
         [self presentLocationSelection:NO];
     }
     
     if (selectionView == self.datesContainer) {
+        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
+            [[CTAnalytics instance] tagScreen:@"calendar_d" detail:@"click" step:@-1];
+        }
+        [[CTAnalytics instance] tagScreen:@"E_calend_d" detail:@"click" step:@-1];
         [self presentCalendar];
     }
     
     if (selectionView == self.pickupTimeContainer) {
+        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
+            [[CTAnalytics instance] tagScreen:@"calendar_t" detail:@"click" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"E_calend_t" detail:@"click" step:@-1];
+        }
         [self presentTimePicker:YES];
     }
     
@@ -450,7 +489,32 @@
 
 - (void)selectionViewShouldBeginEditing:(CTSelectionView *)selectionView
 {
+    if (selectionView == self.ageContainer) {
+        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
+            [[CTAnalytics instance] tagScreen:@"driverAgeC" detail:@"enter" step:@-1];
+        }
+        [[CTAnalytics instance] tagScreen:@"E_driverAgeC" detail:@"enter" step:@-1];
+    }
+    
     [self addKeyboardNotifications];
+}
+
+- (void)selectionViewChangedCharacters:(CTSelectionView *)selectionView {
+    if (selectionView == self.ageContainer) {
+        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
+            [[CTAnalytics instance] tagScreen:@"driverAgeC" detail:@"type" step:@-1];
+        }
+        [[CTAnalytics instance] tagScreen:@"E_driverAgeC" detail:@"type" step:@-1];
+    }
+}
+
+- (void)selectionViewDidEndEditing:(CTSelectionView *)selectionView {
+    if (selectionView == self.ageContainer) {
+        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
+            [[CTAnalytics instance] tagScreen:@"driverAgeC" detail:@"leave" step:@-1];
+        }
+        [[CTAnalytics instance] tagScreen:@"E_driverAgeC" detail:@"leave" step:@-1];
+    }
 }
 
 //MARK: CTCalendarDelegate

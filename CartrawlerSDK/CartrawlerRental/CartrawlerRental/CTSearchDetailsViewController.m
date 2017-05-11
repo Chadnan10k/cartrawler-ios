@@ -17,6 +17,7 @@
 #import "CTSearchView.h"
 #import "CTRentalConstants.h"
 #import "CTSettingsViewController.h"
+#import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
 
 @interface CTSearchDetailsViewController () <CTSearchViewDelegate>
 
@@ -82,13 +83,55 @@
 - (void)searchTapped
 {
     if ([self.searchView validateSearch] && self.validationController) {
+        [self tagSearchUpdates];
         [self pushToDestination];
         [CTInterstitialViewController present:self search:self.search];
     } else if ([self.searchView validateSearch]) {
         [CTInterstitialViewController present:self search:self.search];
         [self requestVehicles];
     }
+    if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
+        [[CTAnalytics instance] tagScreen:@"SearchCars" detail:@"search" step:@-1];
+    }
+}
+
+- (void)tagSearchUpdates {
+    BOOL updated = NO;
     
+    BOOL differentPickUpLocation = ![self.previousSearch.pickupLocation.code isEqualToString:self.search.pickupLocation.code];
+    BOOL differentDropOffLocation = ![self.previousSearch.dropoffLocation.code isEqualToString:self.search.dropoffLocation.code];
+    
+    if (differentPickUpLocation || differentDropOffLocation) {
+        [[CTAnalytics instance] tagScreen:@"Update_loc" detail:@"updated" step:@-1];
+        updated = YES;
+    }
+    
+    BOOL differentPickUpDay = ![NSDate isDate:self.previousSearch.pickupDate inSameDayAsDate:self.previousSearch.pickupDate];
+    BOOL differentDropOffDay = ![NSDate isDate:self.previousSearch.dropoffDate inSameDayAsDate:self.previousSearch.dropoffDate];
+    
+    if (differentPickUpDay || differentDropOffDay) {
+        [[CTAnalytics instance] tagScreen:@"Update_dat" detail:@"updated" step:@-1];
+        updated = YES;
+    }
+    
+    BOOL differentPickUpTime = ![NSDate isDate:self.previousSearch.pickupDate atSameTimeAsDate:self.search.pickupDate];
+    BOOL differentDropOffTime = ![NSDate isDate:self.previousSearch.dropoffDate atSameTimeAsDate:self.previousSearch.dropoffDate];
+    
+    if (differentPickUpTime || differentDropOffTime) {
+        [[CTAnalytics instance] tagScreen:@"Update_tim" detail:@"updated" step:@-1];
+        updated = YES;
+    }
+    
+    if (![self.previousSearch.driverAge isEqualToNumber:self.search.driverAge]) {
+        [[CTAnalytics instance] tagScreen:@"Update_age" detail:@"updated" step:@-1];
+        updated = YES;
+    }
+    
+    if (updated) {
+        [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"update" step:@-1];
+    } else {
+        [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"exit_U" step:@-1];
+    }
 }
 
 - (void)displayAlertWithMessage:(NSString *)message

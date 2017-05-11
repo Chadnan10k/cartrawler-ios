@@ -16,6 +16,10 @@
 
 - (void)selectionViewShouldBeginEditing:(CTSelectionView *)selectionView;
 
+- (void)selectionViewDidEndEditing:(CTSelectionView *)selectionView;
+
+- (void)selectionViewChangedCharacters:(CTSelectionView *)selectionView;
+
 @end
 
 @interface CTSelectionView : UIView

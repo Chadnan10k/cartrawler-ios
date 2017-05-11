@@ -53,6 +53,7 @@
              parentViewController:(nonnull UIViewController *)parentViewController;
 {
     [[CTSDKSettings instance] setClientId:clientID];
+    [CTSDKSettings instance].journey = CTSDKJourneyInPath;
     _clientID = clientID;
     [self renderDefaultState];
     _parentViewController = parentViewController;
