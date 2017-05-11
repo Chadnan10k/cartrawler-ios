@@ -18,6 +18,8 @@
 #import <CTPayment/CTPayment.h>
 #import "CartrawlerSDK/CTPaymentRequestGenerator.h"
 #import "CartrawlerSDK/CTLayoutManager.h"
+#import "CartrawlerSDK/CTAlertViewController.h"
+#import "CTPaymentLoadingViewController.h"
 
 @interface CTDriverDetailsViewController () <UITextFieldDelegate, CTPaymentDelegate>
 
@@ -25,7 +27,7 @@
 @property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
 @property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (strong, nonatomic) IBOutlet UIView *paymentContainer;
+@property (strong, nonatomic) UIView *paymentContainer;
 @property (strong, nonatomic) CTPayment *paymentView;
 @property (strong, nonatomic) UIView *selectedView;
 
@@ -36,6 +38,7 @@
 @property (strong, nonatomic) CTTextField *flightNoTextField;
 
 @property (strong, nonatomic) CTTextField *addressTextField;
+@property (strong, nonatomic) CTTextField *address2TextField;
 @property (strong, nonatomic) CTTextField *cityTextField;
 @property (strong, nonatomic) CTTextField *postcodeTextField;
 
@@ -49,11 +52,11 @@
     
     UITapGestureRecognizer *viewTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewWasTapped)];
     [self.view addGestureRecognizer:viewTapped];
-    [self setupTextFields];
-    [self setupPaymentView];
+    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    [self createViews];
 }
 
-- (void)setupTextFields
+- (void)createViews
 {
     _firstNameTextField = [CTTextField new];
     _lastNameTextField = [CTTextField new];
@@ -63,10 +66,15 @@
     _phoneTextField = [CTTextField new];
     
     _addressTextField = [CTTextField new];
+    _address2TextField = [CTTextField new];
     _cityTextField = [CTTextField new];
     _postcodeTextField = [CTTextField new];
-
     _paymentContainer = [UIView new];
+}
+
+- (void)setupTextFields
+{
+
     
     self.firstNameTextField.placeholder = CTLocalizedString(CTRentalUserFirstnameHint);
     self.lastNameTextField.placeholder = CTLocalizedString(CTRentalUserSurnameHint);
@@ -75,6 +83,7 @@
     self.flightNoTextField.placeholder = CTLocalizedString(CTRentalUserFlightHint);
     
     self.addressTextField.placeholder = CTLocalizedString(CTRentalUserAddressLine1Hint);
+    self.address2TextField.placeholder = CTLocalizedString(CTRentalUserAddressLine2Hint);
     self.cityTextField.placeholder = CTLocalizedString(CTRentalUserCityHint);
     self.postcodeTextField.placeholder = CTLocalizedString(CTRentalUserPostcodeHint);
     
@@ -84,12 +93,22 @@
     self.phoneTextField.delegate = self;
     self.flightNoTextField.delegate = self;
     
+    self.addressTextField.delegate = self;
+    self.address2TextField.delegate = self;
+    self.cityTextField.delegate = self;
+    self.postcodeTextField.delegate = self;
+
     [self.firstNameTextField addDoneButton];
     [self.lastNameTextField addDoneButton];
     [self.emailTextField addDoneButton];
     [self.phoneTextField addDoneButton];
     [self.flightNoTextField addDoneButton];
     [self.phoneTextField addDoneButton];
+    
+    [self.addressTextField addDoneButton];
+    [self.address2TextField addDoneButton];
+    [self.cityTextField addDoneButton];
+    [self.postcodeTextField addDoneButton];
     
     _selectedView = self.firstNameTextField;
     
@@ -120,9 +139,10 @@
     [self.flightNoTextField setHeightConstraint:@60 priority:@1000];
 
     [self.addressTextField setHeightConstraint:@60 priority:@1000];
+    [self.address2TextField setHeightConstraint:@60 priority:@1000];
     [self.cityTextField setHeightConstraint:@60 priority:@1000];
     [self.postcodeTextField setHeightConstraint:@60 priority:@1000];
-
+    [self.paymentContainer setHeightConstraint:@220 priority:@1000];
 
     CTLayoutManager *layoutManager = [CTLayoutManager layoutManagerWithContainer:self.containerView];
     
@@ -133,14 +153,16 @@
     [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.phoneTextField];
     [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.flightNoTextField];
 
-    [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:addressDetailsTitle];
-    [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.addressTextField];
-    [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.cityTextField];
-    [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.postcodeTextField];
-
+    if (self.search.isBuyingInsurance) {
+        [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:addressDetailsTitle];
+        [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.addressTextField];
+        [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.address2TextField];
+        [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.cityTextField];
+        [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.postcodeTextField];
+    }
     
-    [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:paymentDetailsTitle];
-
+    [layoutManager insertView:UIEdgeInsetsMake(8, 8, 0, 8) view:paymentDetailsTitle];
+    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:self.paymentContainer];
     
     [layoutManager layoutViews];
 }
@@ -148,8 +170,6 @@
 - (void)setupPaymentView
 {
     CTPaymentAppearance *paymentAppearance = [CTPaymentAppearance new];
-    
-    
     _paymentView = [[CTPayment alloc] initWithContainerView:self.paymentContainer
                                                  language:[CTSDKSettings instance].languageCode
                                                appearance:paymentAppearance
@@ -167,49 +187,31 @@
 {
     [super viewWillAppear:animated];
     
-    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
-    self.titleLabel.text = CTLocalizedString(CTRentalTitleUser);
-    self.firstNameTextField.placeholder = CTLocalizedString(CTRentalUserFirstnameHint);
-    self.lastNameTextField.placeholder = CTLocalizedString(CTRentalUserSurnameHint);
-    self.emailTextField.placeholder = CTLocalizedString(CTRentalUserEmailHint);
-    self.phoneTextField.placeholder = CTLocalizedString(CTRentalUserPhoneHint);
-    self.flightNoTextField.placeholder = CTLocalizedString(CTRentalUserFlightHint);
-//
-//    [self tagScreen];
-//    
-//    [self registerForKeyboardNotifications];
-//    
-//    _selectedView = self.firstNameTextField;
-//    
-//    if (!self.search.firstName) {
-//        self.firstNameTextField.text = @"";
-//    } else {
-//        self.firstNameTextField.text = self.search.firstName;
-//    }
-//    
-//    if (!self.search.surname) {
-//        self.lastNameTextField.text = @"";
-//    } else {
-//        self.lastNameTextField.text = self.search.surname;
-//    }
-//    
-//    if (!self.search.email) {
-//        self.emailTextField.text = @"";
-//    } else {
-//        self.emailTextField.text = self.search.email;
-//    }
-//    
-//    if (!self.search.phone) {
-//        self.phoneTextField.text = @"";
-//    } else {
-//        self.phoneTextField.text = self.search.phone;
-//    }
-//    
-//    if (!self.search.flightNumber) {
-//        self.flightNoTextField.text = @"";
-//    } else {
-//        self.flightNoTextField.text = self.search.flightNumber;
-//    }
+    for (UIView *v in self.containerView.subviews) {
+        [v removeFromSuperview];
+    }
+    
+    [self setupTextFields];
+    [self setupPaymentView];
+
+
+    [self tagScreen];
+    
+    [self registerForKeyboardNotifications];
+    
+    _selectedView = self.firstNameTextField;
+    
+    self.firstNameTextField.text = self.search.firstName == nil ? @"" : self.search.firstName;
+    self.lastNameTextField.text = self.search.surname == nil ? @"" : self.search.surname;
+    self.emailTextField.text = self.search.email == nil ? @"" : self.search.email;
+    self.phoneTextField.text = self.search.phone == nil ? @"" : self.search.phone;
+    self.flightNoTextField.text = self.search.flightNumber == nil ? @"" : self.search.flightNumber;
+    
+    self.addressTextField.text = self.search.addressLine1 == nil ? @"" : self.search.addressLine1;
+    self.address2TextField.text = self.search.addressLine2 == nil ? @"" : self.search.addressLine2;
+    self.cityTextField.text = self.search.city == nil ? @"" : self.search.city;
+    self.postcodeTextField.text = self.search.postcode == nil ? @"" : self.search.postcode;
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -265,20 +267,40 @@
         validated = NO;
     }
     
+    if (!self.search.isBuyingInsurance) {
+        return validated;
+    }
+    
+    if ([self.addressTextField.text isEqualToString: @""] || [self.addressTextField containsOnlyWhitespace]) {
+        [self.addressTextField shakeAnimation];
+        validated = NO;
+    }
+    
+    if ([self.address2TextField.text isEqualToString: @""] || [self.address2TextField containsOnlyWhitespace]) {
+        [self.address2TextField shakeAnimation];
+        validated = NO;
+    }
+    
+    if ([self.cityTextField.text isEqualToString: @""] || [self.cityTextField containsOnlyWhitespace]) {
+        [self.cityTextField shakeAnimation];
+        validated = NO;
+    }
+    
+    if ([self.postcodeTextField.text isEqualToString: @""] || [self.postcodeTextField containsOnlyWhitespace]) {
+        [self.postcodeTextField shakeAnimation];
+        validated = NO;
+    }
     return validated;
+
 }
 
 - (IBAction)confirmDetails:(id)sender
 {
     BOOL validated = [self validate];
-    
     if (validated) {
-        
         NSString *req = [CTPaymentRequestGenerator requestFromSearch:self.search];
-        NSLog(@"%@", req);
         [self.paymentView makePaymentWithJSON:req];
-        
-//        [self pushToDestination];
+        [CTPaymentLoadingViewController present:self];
     }
 }
 
@@ -422,12 +444,18 @@
 
 - (void)payment:(CTPayment *)payment didFailWithError:(NSError *)error
 {
-    NSLog(@"ERROR %@", error);
+    [CTPaymentLoadingViewController dismiss];
+    CTAlertViewController *alertView = [CTAlertViewController alertControllerWithTitle:CTLocalizedString(CTRentalErrorPaymentLoading1) message:error.localizedDescription];
+    CTAlertAction *okAction = [CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTAClose) handler:^(CTAlertAction *action) {
+        [alertView dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertView addAction:okAction];
+    [self presentModalViewController:alertView];
 }
 
 - (void)payment:(CTPayment *)payment didSucceedWithResponse:(NSDictionary *)response
 {
-    NSLog(@"SUCCESS %@", response);
+    [CTPaymentLoadingViewController dismiss];
     [self pushToDestination];
 }
 
