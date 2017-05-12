@@ -238,7 +238,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)updatePriceSummary
 {
-    NSAttributedString *sortString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
+    NSAttributedString *priceString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
                                                     boldColor:[UIColor whiteColor]
                                                      boldSize:17
                                                   regularText:[self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode]
@@ -246,7 +246,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
                                                   regularSize:17
                                                      useSpace:YES];
     
-    [self.rightButton setAttributedTitle:sortString forState:UIControlStateNormal];
+    [self.rightButton setAttributedTitle:priceString forState:UIControlStateNormal];
 }
 
 - (void)updateDetailedPriceSummary

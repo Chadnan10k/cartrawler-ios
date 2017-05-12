@@ -8,6 +8,7 @@
 
 #import "CTDriverDetailsViewController.h"
 #import <CartrawlerSDK/CTTextField.h>
+#import <CartrawlerSDK/CTButton.h>
 #import "CTAddressDetailsViewController.h"
 #import <CartrawlerSDK/CTFlightNumberValidation.h>
 #import <CartrawlerSDK/CTNextButton.h>
@@ -20,13 +21,17 @@
 #import "CartrawlerSDK/CTLayoutManager.h"
 #import "CartrawlerSDK/CTAlertViewController.h"
 #import "CTPaymentLoadingViewController.h"
+#import "CTPaymentSummaryExpandedView.h"
+#import "CTRentalConstants.h"
+#import "CTTermsViewController.h"
 
-@interface CTDriverDetailsViewController () <UITextFieldDelegate, CTPaymentDelegate>
+@interface CTDriverDetailsViewController () <UITextFieldDelegate, CTPaymentDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet CTNextButton *nextButton;
 @property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet CTPaymentSummaryExpandedView *summaryView;
 @property (strong, nonatomic) UIView *paymentContainer;
 @property (strong, nonatomic) CTPayment *paymentView;
 @property (strong, nonatomic) UIView *selectedView;
@@ -42,6 +47,10 @@
 @property (strong, nonatomic) CTTextField *cityTextField;
 @property (strong, nonatomic) CTTextField *postcodeTextField;
 
+@property (weak, nonatomic) IBOutlet CTButton *summaryButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIView *dimmingView;
 
 @end
 
@@ -52,6 +61,8 @@
     
     UITapGestureRecognizer *viewTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewWasTapped)];
     [self.view addGestureRecognizer:viewTapped];
+    
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleUser);
     [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
     [self createViews];
 }
@@ -75,7 +86,6 @@
 - (void)setupTextFields
 {
 
-    
     self.firstNameTextField.placeholder = CTLocalizedString(CTRentalUserFirstnameHint);
     self.lastNameTextField.placeholder = CTLocalizedString(CTRentalUserSurnameHint);
     self.emailTextField.placeholder = CTLocalizedString(CTRentalUserEmailHint);
@@ -117,20 +127,20 @@
                                               textColor:[CTAppearance instance].buttonTextColor
                                           textAlignment:NSTextAlignmentLeft
                                                boldFont:YES];
-    driverDetailsTitle.text = @"driver details test";
+    driverDetailsTitle.text = CTLocalizedString(CTRentalTitleUser);
     
     
     CTLabel *addressDetailsTitle = [[CTLabel alloc] init:17
                                               textColor:[CTAppearance instance].buttonTextColor
                                           textAlignment:NSTextAlignmentLeft
                                                boldFont:YES];
-    addressDetailsTitle.text = @"address details test";
+    addressDetailsTitle.text = CTLocalizedString(CTRentalAddressDetailsTitle);
     
     CTLabel *paymentDetailsTitle = [[CTLabel alloc] init:17
                                                textColor:[CTAppearance instance].buttonTextColor
                                            textAlignment:NSTextAlignmentLeft
                                                 boldFont:YES];
-    paymentDetailsTitle.text = @"payment details test";
+    paymentDetailsTitle.text = CTLocalizedString(CTRentalTitlePayment);
     
     [self.firstNameTextField setHeightConstraint:@60 priority:@1000];
     [self.lastNameTextField setHeightConstraint:@60 priority:@1000];
@@ -163,7 +173,8 @@
     
     [layoutManager insertView:UIEdgeInsetsMake(8, 8, 0, 8) view:paymentDetailsTitle];
     [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:self.paymentContainer];
-    
+    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:[self termsAndConditionsView]];
+
     [layoutManager layoutViews];
 }
 
@@ -193,10 +204,8 @@
     
     [self setupTextFields];
     [self setupPaymentView];
-
-
-    [self tagScreen];
     
+    [self tagScreen];
     [self registerForKeyboardNotifications];
     
     _selectedView = self.firstNameTextField;
@@ -211,6 +220,18 @@
     self.address2TextField.text = self.search.addressLine2 == nil ? @"" : self.search.addressLine2;
     self.cityTextField.text = self.search.city == nil ? @"" : self.search.city;
     self.postcodeTextField.text = self.search.postcode == nil ? @"" : self.search.postcode;
+    
+    [self updateDetailedPriceSummary];
+    
+    NSAttributedString *priceString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
+                                                     boldColor:[UIColor whiteColor]
+                                                      boldSize:17
+                                                   regularText:[self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode]
+                                                  regularColor:[UIColor whiteColor]
+                                                   regularSize:17
+                                                      useSpace:YES];
+    
+    [self.summaryButton setAttributedTitle:priceString forState:UIControlStateNormal];
     
 }
 
@@ -302,6 +323,11 @@
         [self.paymentView makePaymentWithJSON:req];
         [CTPaymentLoadingViewController present:self];
     }
+}
+
+- (IBAction)openTotal:(id)sender
+{
+    [self showDetailedPriceSummary];
 }
 
 - (void)done
@@ -430,7 +456,93 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark Analytics
+//MARK: Payment Summary
+
+- (void)updateDetailedPriceSummary
+{
+    [self.summaryView updateWithSearch:self.search];
+    self.summaryViewHeightConstraint.constant = self.summaryView.desiredHeight;
+    self.summaryViewTopConstraint.constant = -self.summaryView.desiredHeight;
+    [self.view layoutIfNeeded];
+}
+
+- (void)showDetailedPriceSummary
+{
+    [self updateDetailedPriceSummary];
+    self.summaryViewTopConstraint.constant = 0;
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.dimmingView.alpha = 0.3;
+                         [self.view layoutIfNeeded];
+                     }];
+}
+
+- (void)hideDetailedPriceSummary
+{
+    self.summaryViewTopConstraint.constant = -self.summaryView.desiredHeight;
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.dimmingView.alpha = 0;
+                         [self.view layoutIfNeeded];
+                     }];
+}
+
+- (IBAction)didInteractWithDetailedPriceSummary:(UIGestureRecognizer *)gestureRecognizer {
+    [self hideDetailedPriceSummary];
+}
+
+//MARK: Terms and conditions
+
+- (UIView *)termsAndConditionsView
+{
+    UIView *view = [UIView new];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    UITextView *textView = [UITextView new];
+    textView.translatesAutoresizingMaskIntoConstraints = NO;
+    textView.scrollEnabled = NO;
+    textView.backgroundColor = [UIColor clearColor];
+    textView.font = [UIFont fontWithName:[CTAppearance instance].fontName size:15];
+    textView.editable = NO;
+    textView.selectable = YES;
+    textView.delegate = self;
+    
+    CTLabel *secureLabel = [[CTLabel alloc] init:17 textColor:[UIColor darkGrayColor] textAlignment:NSTextAlignmentCenter boldFont:YES];
+    secureLabel.text = CTLocalizedString(CTRentalPaymentSecure);
+    [secureLabel setHeightConstraint:@25 priority:@1000];
+    
+    CTLayoutManager *manager = [CTLayoutManager layoutManagerWithContainer:view];
+    [manager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:textView];
+    [manager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:secureLabel];
+    [manager layoutViews];
+
+    NSString *link1 = [NSString stringWithFormat:@"<a href='www.cartrawler.com'><b>%@</b></a>", CTLocalizedString(CTRentalPaymentText2)];
+    NSString *termsStr = [NSString stringWithFormat:CTLocalizedString(CTRentalPaymentText1), link1];
+    
+    textView.attributedText = [CTHTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
+                                                                  pointSize:15.0
+                                                                       text:termsStr
+                                                              boldFontColor:@"#000000"
+                                                                  fontColor:@"#000000"];
+    [view setHeightConstraint:@100 priority:@100];
+    
+    return view;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
+{
+    NSBundle* bundle = [NSBundle bundleForClass:[self class]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalVehicleDetailsStoryboard bundle:bundle];
+    UINavigationController *nav = [storyboard instantiateViewControllerWithIdentifier:@"CTTermsViewControllerNav"];
+    CTTermsViewController *vc = (CTTermsViewController *)nav.topViewController;
+    [vc setData:self.search cartrawlerAPI:self.cartrawlerAPI];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:nav animated:YES completion:nil];
+    });
+    return NO;
+}
+
+//MARK: Analytics
 
 - (void)tagScreen
 {

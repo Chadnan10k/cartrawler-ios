@@ -389,4 +389,8 @@ NSString * const CTRentalFeatureParkingSensors = @"feature_parking_sensors";
 
 NSString * const CTRentalFeatureFuelEconomy = @"feature_fuel_economy";
 
+//payment
+
+NSString * const CTRentalPaymentSecure = @"payment_secure_text";
+
 @end

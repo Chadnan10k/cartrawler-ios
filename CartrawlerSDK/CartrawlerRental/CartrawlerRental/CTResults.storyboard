@@ -249,7 +249,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.6022093892" green="0.84094423060000001" blue="0.51764535899999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.062745098039215685" green="0.1764705882352941" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="krI-To-qgU" secondAttribute="trailing" constant="8" id="ED6-fy-dno"/>
                                     <constraint firstItem="Gv2-xd-It7" firstAttribute="leading" secondItem="I5c-IA-eYg" secondAttribute="leading" constant="8" id="QCF-Ur-JXf"/>
@@ -395,14 +395,14 @@
                         <outlet property="containerView" destination="iKE-cF-Lnt" id="bP1-XV-d2q"/>
                         <outlet property="dateLabel" destination="Nhy-2b-uoZ" id="ltw-05-3Tc"/>
                         <outlet property="dimmingView" destination="Bic-sS-eCM" id="Ylu-hW-RFx"/>
+                        <outlet property="dismissButton" destination="QZQ-BW-xOd" id="7W6-bu-ceC"/>
                         <outlet property="leftButton" destination="Gv2-xd-It7" id="QRu-xv-IZw"/>
                         <outlet property="locationLabel" destination="i9l-aR-P7a" id="mX1-cJ-oyI"/>
                         <outlet property="rightButton" destination="krI-To-qgU" id="7Uv-BI-thW"/>
+                        <outlet property="searchButton" destination="Tcv-R6-cB0" id="est-7m-ERu"/>
                         <outlet property="summaryView" destination="VRh-gr-1Of" id="AMR-CW-VV6"/>
                         <outlet property="summaryViewHeightConstraint" destination="cFK-Dh-ZeM" id="qEL-DU-pan"/>
                         <outlet property="summaryViewTopConstraint" destination="2JI-r2-Hxi" id="oSV-AU-rmK"/>
-                        <outlet property="dismissButton" destination="QZQ-BW-xOd" id="7W6-bu-ceC"/>
-                        <outlet property="searchButton" destination="Tcv-R6-cB0" id="est-7m-ERu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZg-w2-GVI" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -379,4 +379,6 @@ extern NSString * const CTRentalFeatureParkingSensors;
 
 extern NSString * const CTRentalFeatureFuelEconomy;
 
+extern NSString * const CTRentalPaymentSecure;
+
 @end
