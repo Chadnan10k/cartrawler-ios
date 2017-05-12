@@ -61,46 +61,34 @@
 }
 
 - (CTListItemView *)pickUpTypeView:(CTAvailabilityItem *)item {
-    CTListItemView *itemView = [CTListItemView new];
-    NSString *title = @"Pick-up location:";
+    NSString *title = @"Pick-up location";
     NSString *detail = [CTLocalisedStrings pickupType:item];
-    itemView.titleLabel.attributedText = [self attributedStringWithBlackText:title blueText:detail];
-    itemView.imageView.image = [UIImage imageNamed:@"location_airport" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
-    return itemView;
+    return [self itemViewWithTitle:title detail:detail imageName:@"location_airport"];
 }
 
 - (CTListItemView *)fuelPolicyView:(CTAvailabilityItem *)item {
-    CTListItemView *itemView = [CTListItemView new];
-    NSString *title = @"Fuel policy:";
+    NSString *title = @"Fuel policy";
     NSString *detail = [CTLocalisedStrings fuelPolicy:item.vehicle.fuelPolicy];
-    itemView.titleLabel.attributedText = [self attributedStringWithBlackText:title blueText:detail];
-    itemView.imageView.image = [UIImage imageNamed:@"location_airport" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
-    return itemView;
+    return [self itemViewWithTitle:title detail:detail imageName:@"vehicle_mileage"];
 }
 
 - (CTListItemView *)mileageAllowanceView:(CTAvailabilityItem *)item {
-    CTListItemView *itemView = [CTListItemView new];
-    NSString *title = @"Mileage Allowance:";
-    NSString *detail = @"";
-    for (CTVehicleCharge *charge in item.vehicle.vehicleCharges) {
-        if ([charge.chargePurpose isEqualToString:@"618.VCP.X"]) {
-            detail = @"Limited mileage";
-        }
-        if ([charge.chargePurpose isEqualToString:@"609.VCP.X"]) {
-            detail = @"Unlimited";
-        }
-    }
-    itemView.titleLabel.attributedText = [self attributedStringWithBlackText:title blueText:detail];
-    itemView.imageView.image = [UIImage imageNamed:@"location_airport" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
-    return itemView;
+    NSString *title = @"Mileage allowance";
+    NSString *detail = item.vehicle.rateDistance.isUnlimited ? @"Unlimited" : @"Limited mileage";
+    return [self itemViewWithTitle:title detail:detail imageName:@"vehicle_mileage"];
 }
 
 - (CTListItemView *)insuranceView:(CTAvailabilityItem *)item {
+    NSString *title = @"Insurance";
+    NSString *detail = @"Basic cover";
+    return [self itemViewWithTitle:title detail:detail imageName:@"ins_shield"];
+}
+
+- (CTListItemView *)itemViewWithTitle:(NSString *)title detail:(NSString *)detail imageName:(NSString *)imageName {
     CTListItemView *itemView = [CTListItemView new];
-    NSString *title = @"Insurance:";
-    NSString *detail = @"Basic Cover";
     itemView.titleLabel.attributedText = [self attributedStringWithBlackText:title blueText:detail];
-    itemView.imageView.image = [UIImage imageNamed:@"location_airport" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
+    itemView.imageView.image = [[UIImage imageNamed:imageName inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    itemView.imageView.tintColor = [UIColor colorWithRed:6.0/255.0 green:48.0/255.0 blue:133./255.0 alpha:1.0];
     return itemView;
 }
 
@@ -203,27 +191,60 @@
     }
     
     if ([listView isEqual:self.includedListView]) {
-        NSMutableArray *items = [NSMutableArray new];
-        for (CTPricedCoverage *coverage in self.availabilityItem.vehicle.pricedCoverages) {
-            CTListItemView *listItemView = [CTListItemView new];
-            listItemView.titleLabel.text = coverage.chargeDescription;
-            listItemView.imageView.image = [[UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-            [items addObject:listItemView];
+        switch (index) {
+            case 0:
+                [self expandView:expandingView withText:[CTLocalisedStrings toolTipTextForPickupType:self.availabilityItem]];
+                break;
+            case 1:
+                [self expandView:expandingView withText:[CTLocalisedStrings toolTipTextForFuelPolicy:self.availabilityItem.vehicle.fuelPolicy]];
+                break;
+            case 2:
+                [self expandView:expandingView withRateDistance:self.availabilityItem.vehicle.rateDistance];
+                break;
+            case 3:
+                [self expandView:expandingView withCoverages:self.availabilityItem.vehicle.pricedCoverages];
+                break;
+            default:
+                break;
         }
-        
-        CTListView *listView = [[CTListView alloc] initWithViews:items.copy separatorColor:[UIColor clearColor]];
-        [expandingView expandWithDetailView:listView];
+    }
+}
+
+- (void)expandView:(CTExpandingView *)expandingView withText:(NSString *)text {
+    CTLabel *label = [[CTLabel alloc] init:16
+                                 textColor:[UIColor blackColor]
+                             textAlignment:NSTextAlignmentLeft
+                                  boldFont:NO];
+    label.numberOfLines = 0;
+    label.text = text;
+    [expandingView expandWithDetailView:label];
+}
+
+- (void)expandView:(CTExpandingView *)expandingView withRateDistance:(CTRateDistance *)rateDistance {
+    if (rateDistance.isUnlimited) {
+        [self expandView:expandingView withText:[self textForRateDistance:rateDistance]];
+        return;
+    }
+}
+
+- (NSString *)textForRateDistance:(CTRateDistance *)rateDistance {
+    if (rateDistance.isUnlimited) {
+        return @"Unlimited mileage";
+    }
+    return [NSString stringWithFormat:@"An average driving distance of %@ %@ per %@ is included in this price. Additional charges may incur for extra distance travelled", rateDistance.quantity, rateDistance.distanceUnitName, rateDistance.vehiclePeriodUnitName];
+}
+
+- (void)expandView:(CTExpandingView *)expandingView withCoverages:(NSArray *)coverages {
+    NSMutableArray *items = [NSMutableArray new];
+    for (CTPricedCoverage *coverage in coverages) {
+        CTListItemView *listItemView = [CTListItemView new];
+        listItemView.titleLabel.text = coverage.chargeDescription;
+        listItemView.imageView.image = [[UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [items addObject:listItemView];
     }
     
-    if ([listView isEqual:self.ratingsListView]) {
-        CTLabel *label = [[CTLabel alloc] init:16
-                                     textColor:[UIColor blackColor]
-                                 textAlignment:NSTextAlignmentLeft
-                                      boldFont:NO];
-        label.numberOfLines = 0;
-        label.text = @"Europcar is one of the worlds leading car rental companies that offer innovative services and quality in a simple and transparent way.";
-        [expandingView expandWithDetailView:label];
-    }
+    CTListView *listView = [[CTListView alloc] initWithViews:items.copy separatorColor:[UIColor clearColor]];
+    [expandingView expandWithDetailView:listView];
 }
 
 
@@ -234,7 +255,7 @@
                                      NSForegroundColorAttributeName : [UIColor colorWithRed:42.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0]};
     
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:blackText attributes:blackAttributes];
-    [string appendAttributedString:[[NSAttributedString alloc] initWithString:@"  "]];
+    [string appendAttributedString:[[NSAttributedString alloc] initWithString:@":  "]];
     [string appendAttributedString:[[NSAttributedString alloc] initWithString:blueText attributes:blueAttributes]];
     
     return string.copy;
