@@ -363,6 +363,12 @@ extern NSString * const CTRentalPayNothingAtDesk;
 
 extern NSString * const CTRentalPaymentFree;
 
+extern NSString * const CTRentalFreeCancelationPoint1;
+
+extern NSString * const CTRentalFreeCancelationPoint2;
+
+extern NSString * const CTRentalFreeCancelationTitle;
+
 extern NSString * const CTRentalFreeCancelationDetail;
 
 //Features

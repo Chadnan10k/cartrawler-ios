@@ -171,6 +171,8 @@
 		BC3361A31E4CCD2F0056E5A6 /* nl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33619D1E4CCD2F0056E5A6 /* nl.strings */; };
 		BC3361A41E4CCD2F0056E5A6 /* pl.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC33619E1E4CCD2F0056E5A6 /* pl.strings */; };
 		BC54F15A1E54981B00A7C871 /* pt.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC54F1591E54981B00A7C871 /* pt.strings */; };
+		BC6F16C51ECA129400285D88 /* CTFreeCancelationAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = BC6F16C31ECA129400285D88 /* CTFreeCancelationAlertView.h */; };
+		BC6F16C61ECA129400285D88 /* CTFreeCancelationAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6F16C41ECA129400285D88 /* CTFreeCancelationAlertView.m */; };
 		BC7522C21E705818005918D2 /* CTInsuranceView.h in Headers */ = {isa = PBXBuildFile; fileRef = BC7522C01E705818005918D2 /* CTInsuranceView.h */; };
 		BC7522C31E705818005918D2 /* CTInsuranceView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7522C11E705818005918D2 /* CTInsuranceView.m */; };
 		BC95464F1EAE5C120097312C /* CTExtrasCarouselViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BC95464B1EAE5C120097312C /* CTExtrasCarouselViewCell.h */; };
@@ -370,6 +372,8 @@
 		BC33619D1E4CCD2F0056E5A6 /* nl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = nl.strings; path = Localization/nl.strings; sourceTree = "<group>"; };
 		BC33619E1E4CCD2F0056E5A6 /* pl.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pl.strings; path = Localization/pl.strings; sourceTree = "<group>"; };
 		BC54F1591E54981B00A7C871 /* pt.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pt.strings; path = Localization/pt.strings; sourceTree = "<group>"; };
+		BC6F16C31ECA129400285D88 /* CTFreeCancelationAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFreeCancelationAlertView.h; sourceTree = "<group>"; };
+		BC6F16C41ECA129400285D88 /* CTFreeCancelationAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFreeCancelationAlertView.m; sourceTree = "<group>"; };
 		BC7522C01E705818005918D2 /* CTInsuranceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInsuranceView.h; sourceTree = "<group>"; };
 		BC7522C11E705818005918D2 /* CTInsuranceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsuranceView.m; sourceTree = "<group>"; };
 		BC95464B1EAE5C120097312C /* CTExtrasCarouselViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTExtrasCarouselViewCell.h; sourceTree = "<group>"; };
@@ -830,6 +834,8 @@
 				4558C3611EAA7546001CAB7C /* CTVehicleInfoView.m */,
 				E7BBA45F1EBBA49300953907 /* CTVehicleInfoTabView.h */,
 				E7BBA4601EBBA49300953907 /* CTVehicleInfoTabView.m */,
+				BC6F16C31ECA129400285D88 /* CTFreeCancelationAlertView.h */,
+				BC6F16C41ECA129400285D88 /* CTFreeCancelationAlertView.m */,
 			);
 			name = "Vehicle details";
 			sourceTree = "<group>";
@@ -997,6 +1003,7 @@
 				451E75DE1E042F9200D58F71 /* CTAddressDetailsViewController.h in Headers */,
 				451E75BE1E042F2E00D58F71 /* CTPaymentDriverTableViewCell.h in Headers */,
 				451E762E1E043DFF00D58F71 /* CTRentalBookingCell.h in Headers */,
+				BC6F16C51ECA129400285D88 /* CTFreeCancelationAlertView.h in Headers */,
 				451E75D91E042F7900D58F71 /* CTPaymentSummaryItemTableViewCell.h in Headers */,
 				451E75EC1E042FB600D58F71 /* CTPaymentLoadingViewController.h in Headers */,
 				451E75BF1E042F2E00D58F71 /* CTPaymentSummaryTableViewCell.h in Headers */,
@@ -1257,6 +1264,7 @@
 				451E75791E042D7900D58F71 /* CTExpandingInfoView.m in Sources */,
 				451E754F1E042CA100D58F71 /* CTFilterViewController.m in Sources */,
 				451E75C61E042F2E00D58F71 /* CTPaymentVehicleTableViewCell.m in Sources */,
+				BC6F16C61ECA129400285D88 /* CTFreeCancelationAlertView.m in Sources */,
 				451E75FF1E042FE800D58F71 /* CTBasketValidation.m in Sources */,
 				451E75741E042D6800D58F71 /* CTTermsDetailViewController.m in Sources */,
 				451E75EF1E042FB600D58F71 /* CTPaymentViewController.m in Sources */,

@@ -348,6 +348,12 @@ NSString * const CTRentalResultsOtherCars = @"vehicle_other";
 
 NSString * const CTRentalExtrasPerRental = @"extra_per_rental";
 
+NSString * const CTRentalFreeCancelationPoint1 = @"free_cancellation_point1";
+
+NSString * const CTRentalFreeCancelationPoint2 = @"free_cancellation_point2";
+
+NSString * const CTRentalFreeCancelationTitle = @"free_cancellation_title";
+
 NSString * const CTRentalFreeCancelationDetail = @"free_cancellation_detail";
 
 //delete

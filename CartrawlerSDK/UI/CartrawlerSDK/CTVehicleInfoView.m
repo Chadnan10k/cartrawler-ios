@@ -20,6 +20,7 @@
 #import "CTRentalLocalizationConstants.h"
 #import "CTVehicleInfoTabView.h"
 #import "CTTermsViewController.h"
+#import "CTFreeCancelationAlertView.h"
 
 @interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate>
 
@@ -32,7 +33,6 @@
 //Nested views
 @property (nonatomic, strong) CTVehicleDetailsView *vehicleDetailsView;
 @property (nonatomic, strong) CTInfoTip *vehicleInfoTip;
-@property (nonatomic, strong) CTInfoTip *extrasInfoTip;
 @property (nonatomic, strong) CTInsuranceView *insuranceView;
 @property (nonatomic, strong) CTExtrasCarouselView *extrasView;
 @property (nonatomic, strong) CTVehicleInfoTabView *tabView;
@@ -276,10 +276,16 @@
 // MARK: CTInfoTipDelegate
 - (void)infoTipWasTapped:(CTInfoTip *)infoTip
 {
-    if (infoTip == self.extrasInfoTip) {
-        if (self.delegate) {
-            [self.delegate infoViewPushToExtraDetail];
-        }
+    if (infoTip == self.vehicleInfoTip) {
+        self.alertView.customView = [CTFreeCancelationAlertView new];
+        [self.alertView setTitle:CTLocalizedString(CTRentalFreeCancelationTitle) message:nil];
+        [self.alertView removeAllActions];
+        __weak typeof(self) weakSelf = self;
+        [self.alertView addAction:[CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTADone)
+                                                         handler:^(CTAlertAction *action) {
+                                                             [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+                                                         }]];
+        [self.delegate infoViewPresentViewController:self.alertView];
     }
 }
 
