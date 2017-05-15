@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTVehicle.h>
+#import <CartrawlerAPI/CTAvailabilityItem.h>
 
 @protocol CTVehicleDetailsDelegate <NSObject>
 
@@ -25,10 +25,10 @@
 /**
  Updates the view with a selected vehicle
 
- @param vehicle The selected vehicle
+ @param item The selected vehicle
  @param pickupDate The pickup date
  @param dropoffDate The dropoff date
  */
-- (void)setVehicle:(CTVehicle *)vehicle pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate;
+- (void)setItem:(CTAvailabilityItem *)item pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate;
 
 @end

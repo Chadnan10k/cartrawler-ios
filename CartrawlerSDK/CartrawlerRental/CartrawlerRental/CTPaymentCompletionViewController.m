@@ -114,8 +114,8 @@
                                       @"stepName" : @"Step9",
                                       } eventName:@"Step of search" eventType:@"Step"];
 
-    NSString *vehName = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.makeModelName,
-                         self.search.selectedVehicle.vehicle.orSimilar];
+//    NSString *vehName = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.makeModelName,
+//                         self.search.selectedVehicle.vehicle.orSimilar];
     
 //    [self sendEvent:NO customParams:@{@"eventName" : @"Booking",
 //                                      @"reservationID" : self.search.booking.confID,

@@ -133,7 +133,7 @@
         default:
             break;
     }
-    [self.imageView applyTintWithColor:[UIColor blackColor]];
+    [self.imageView applyTintWithColor:[CTAppearance instance].buttonTextColor];
 }
 
 - (void)setupMoreCell:(CTVehicle *)vehicle

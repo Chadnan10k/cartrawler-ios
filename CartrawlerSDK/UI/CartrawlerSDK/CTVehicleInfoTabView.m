@@ -27,7 +27,7 @@
         self.includedListView = [self includedListView:availabilityItem containerView:containerView];
         self.ratingsListView = [self ratingsListView:availabilityItem containerView:containerView];
         
-        NSArray *titles = availabilityItem.vendor.rating ? @[CTLocalizedString(CTRentalIncludedTitle), CTLocalizedString(CTRentalTitleDetailsSupplier)] : @[CTLocalizedString(CTRentalIncludedTitle)];
+        NSArray *titles = availabilityItem.vendor.rating ? @[CTLocalizedString(CTRentalTitleDetailsVehicle), CTLocalizedString(CTRentalTitleDetailsSupplier)] : @[CTLocalizedString(CTRentalTitleDetailsVehicle)];
         NSArray *views = availabilityItem.vendor.rating ? @[self.includedListView, self.ratingsListView] : @[self.includedListView];
         
         CTTabContainerView *tabContainerView = [[CTTabContainerView alloc] initWithTabTitles:titles
@@ -96,8 +96,10 @@
 // MARK: Ratings Tab
 
 - (CTListView *)ratingsListView:(CTAvailabilityItem *)availabilityItem containerView:(UIView *)containerView {
-    CTListItemView *itemView = [self supplierIconItemView:availabilityItem];
-    CTExpandingView *expandingView = [[CTExpandingView alloc] initWithHeaderView:itemView animationContainerView:containerView];
+    
+//    CTListItemView *itemView = [self supplierIconItemView:availabilityItem];
+    
+//    CTExpandingView *expandingView = [[CTExpandingView alloc] initWithHeaderView:itemView animationContainerView:containerView];
     
     CTRatingView *overallRatingView = [self overallRatingView:availabilityItem];
     CTRatingView *valueRatingView = [self valueRatingView:availabilityItem];
@@ -106,7 +108,7 @@
     CTRatingView *pickupRatingView = [self pickupRatingView:availabilityItem];
     CTRatingView *dropoffRatingView = [self dropoffRatingView:availabilityItem];
     
-    CTListView *listView = [[CTListView alloc] initWithViews:@[expandingView, overallRatingView, valueRatingView, cleanlinessRatingView, serviceRatingView, pickupRatingView, dropoffRatingView] separatorColor:nil];
+    CTListView *listView = [[CTListView alloc] initWithViews:@[overallRatingView, valueRatingView, cleanlinessRatingView, serviceRatingView, pickupRatingView, dropoffRatingView] separatorColor:nil];
     listView.delegate = self;
     return listView;
 }
