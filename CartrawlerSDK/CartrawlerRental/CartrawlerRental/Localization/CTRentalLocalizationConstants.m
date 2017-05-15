@@ -389,4 +389,25 @@ NSString * const CTRentalFeatureFuelEconomy = @"feature_fuel_economy";
 
 NSString * const CTRentalPaymentSecure = @"payment_secure_text";
 
+//mileage
+
+NSString * const CTRentalMileageAllowance = @"mileage_allowance";
+
+NSString * const CTRentalMileageUnlimited = @"mileage_unlimited";
+
+NSString * const CTRentalMileageLimited = @"mileage_limited";
+
+NSString * const CTRentalMileageUnlimitedDetail = @"mileage_unlimited_detail";
+
+NSString * const CTRentalMileageLimitedDetail = @"vehicle_mileage_618_VCP_X_desc";
+
+NSString * const CTRentalInsuranceBasic = @"insurance_basic";
+
+NSString * const CTRentalInsuranceBasicDetail = @"insurance_basic_detail";
+
+//ratings
+
+NSString * const CTRentalRatingOverall = @"overall_rating";
+
+
 @end

@@ -27,7 +27,7 @@
         self.includedListView = [self includedListView:availabilityItem containerView:containerView];
         self.ratingsListView = [self ratingsListView:availabilityItem containerView:containerView];
         
-        NSArray *titles = availabilityItem.vendor.rating ? @[@"INCLUDED", @"RATINGS"] : @[@"INCLUDED"];
+        NSArray *titles = availabilityItem.vendor.rating ? @[CTLocalizedString(CTRentalIncludedTitle), CTLocalizedString(CTRentalTitleDetailsSupplier)] : @[CTLocalizedString(CTRentalIncludedTitle)];
         NSArray *views = availabilityItem.vendor.rating ? @[self.includedListView, self.ratingsListView] : @[self.includedListView];
         
         CTTabContainerView *tabContainerView = [[CTTabContainerView alloc] initWithTabTitles:titles
@@ -62,26 +62,26 @@
 }
 
 - (CTListItemView *)pickUpTypeView:(CTAvailabilityItem *)item {
-    NSString *title = @"Pick-up location";
+    NSString *title = CTLocalizedString(CTRentalVehiclePickupLocation);
     NSString *detail = [CTLocalisedStrings pickupType:item];
     return [self itemViewWithTitle:title detail:detail imageName:@"location_airport"];
 }
 
 - (CTListItemView *)fuelPolicyView:(CTAvailabilityItem *)item {
-    NSString *title = @"Fuel policy";
+    NSString *title = CTLocalizedString(CTRentalVehicleFuelPolicy);
     NSString *detail = [CTLocalisedStrings fuelPolicy:item.vehicle.fuelPolicy];
     return [self itemViewWithTitle:title detail:detail imageName:@"vehicle_mileage"];
 }
 
 - (CTListItemView *)mileageAllowanceView:(CTAvailabilityItem *)item {
-    NSString *title = @"Mileage allowance";
-    NSString *detail = item.vehicle.rateDistance.isUnlimited ? @"Unlimited" : @"Limited mileage";
+    NSString *title = CTLocalizedString(CTRentalMileageAllowance);
+    NSString *detail = item.vehicle.rateDistance.isUnlimited ? CTLocalizedString(CTRentalMileageUnlimited) : CTLocalizedString(CTRentalMileageLimited);
     return [self itemViewWithTitle:title detail:detail imageName:@"vehicle_mileage"];
 }
 
 - (CTListItemView *)insuranceView:(CTAvailabilityItem *)item {
-    NSString *title = @"Insurance";
-    NSString *detail = @"Basic cover";
+    NSString *title = CTLocalizedString(CTRentalInsuranceBasic);
+    NSString *detail = CTLocalizedString(CTRentalInsuranceBasicDetail);
     return [self itemViewWithTitle:title detail:detail imageName:@"ins_shield"];
 }
 
@@ -113,7 +113,7 @@
 
 - (CTListItemView *)supplierIconItemView:(CTAvailabilityItem *)item {
     CTListItemView *itemView = [CTListItemView new];
-    itemView.titleLabel.text = @"Car provided by";
+    itemView.titleLabel.text = CTLocalizedString(CTRentalVehicleProvided);
     [[CTImageCache sharedInstance] cachedImage:item.vendor.logoURL completion:^(UIImage *image) {
         itemView.imageView.image = image;
     }];
@@ -123,7 +123,7 @@
 
 - (CTRatingView *)overallRatingView:(CTAvailabilityItem *)item {
     CTRatingView *ratingView = [CTRatingView new];
-    ratingView.titleLabel.text = @"Overall rating";
+    ratingView.titleLabel.text = CTLocalizedString(CTRentalRatingOverall);
     
     double adjustedRating = item.vendor.rating.overallScore.floatValue * 2;
     NSString *ratingType;
@@ -222,17 +222,17 @@
 }
 
 - (void)expandView:(CTExpandingView *)expandingView withRateDistance:(CTRateDistance *)rateDistance {
-    if (rateDistance.isUnlimited) {
-        [self expandView:expandingView withText:[self textForRateDistance:rateDistance]];
-        return;
-    }
+    [self expandView:expandingView withText:[self textForRateDistance:rateDistance]];
 }
 
 - (NSString *)textForRateDistance:(CTRateDistance *)rateDistance {
     if (rateDistance.isUnlimited) {
-        return @"Unlimited mileage";
+        return CTLocalizedString(CTRentalMileageUnlimitedDetail);
     }
-    return [NSString stringWithFormat:@"An average driving distance of %@ %@ per %@ is included in this price. Additional charges may incur for extra distance travelled", rateDistance.quantity, rateDistance.distanceUnitName, rateDistance.vehiclePeriodUnitName];
+    
+    NSString *mileageAmount = [NSString stringWithFormat:@"%@ %@ %@", rateDistance.quantity, rateDistance.distanceUnitName, rateDistance.vehiclePeriodUnitName];
+        
+    return [NSString stringWithFormat:CTLocalizedString(CTRentalMileageLimitedDetail), mileageAmount];
 }
 
 - (void)expandView:(CTExpandingView *)expandingView withCoverages:(NSArray *)coverages {

@@ -385,4 +385,25 @@ extern NSString * const CTRentalFeatureFuelEconomy;
 
 extern NSString * const CTRentalPaymentSecure;
 
+//milage allowance
+
+extern NSString * const CTRentalMileageAllowance;
+
+extern NSString * const CTRentalMileageUnlimited;
+
+extern NSString * const CTRentalMileageLimited;
+
+extern NSString * const CTRentalMileageUnlimitedDetail;
+
+extern NSString * const CTRentalMileageLimitedDetail;
+
+extern NSString * const CTRentalInsuranceBasic;
+
+extern NSString * const CTRentalInsuranceBasicDetail;
+
+//rating
+
+extern NSString * const CTRentalRatingOverall;
+
+
 @end
