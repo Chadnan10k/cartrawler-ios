@@ -118,7 +118,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [CTLayoutManager pinView:self.vehicleDetailsView toSuperView:self.containerView padding:UIEdgeInsetsZero];
     [self.vehicleDetailsView refreshView];
     [self updateNavigationBar];
-    [self updatePriceSummary];
+    [self updatePriceSummary:NO];
     [self updateDetailedPriceSummary];
 }
 
@@ -236,12 +236,21 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     
 }
 
-- (void)updatePriceSummary
+- (void)updatePriceSummary:(BOOL)isBuyingInsurance
 {
+    NSString *price = @"";
+    
+    if (isBuyingInsurance) {
+        price = [[NSNumber numberWithFloat:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.floatValue + self.search.insurance.premiumAmount.floatValue] numberStringWithCurrencyCode];
+    } else {
+        price = [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
+    }
+    
+    
     NSAttributedString *priceString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
                                                     boldColor:[UIColor whiteColor]
                                                      boldSize:17
-                                                  regularText:[self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode]
+                                                  regularText:price
                                                  regularColor:[UIColor whiteColor]
                                                   regularSize:17
                                                      useSpace:YES];
@@ -337,6 +346,11 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (void)infoViewPresentVehicleSelection
 {
     [self presentVehicleSelection];
+}
+
+- (void)infoViewAddInsuranceTapped:(BOOL)didAddInsurance
+{
+    [self updatePriceSummary:didAddInsurance];
 }
 
 - (void)infoViewPushToNextStep

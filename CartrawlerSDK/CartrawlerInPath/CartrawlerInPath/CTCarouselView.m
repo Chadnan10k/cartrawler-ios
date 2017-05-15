@@ -131,7 +131,7 @@
     //use the cell width minus some padding
     NSInteger currentIndex = self.vehicleCollectionView.contentOffset.x / 220;
     self.pageControl.currentPage = currentIndex;
-    if (self.delegate) {
+    if (self.delegate && currentIndex >= 0) {
         [self.delegate didDisplayVehicle:self.availability.items[currentIndex] atIndex:currentIndex];
     }
 }

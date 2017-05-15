@@ -252,11 +252,17 @@
 - (void)didAddInsurance:(CTInsurance *)insurance
 {
     self.search.isBuyingInsurance = YES;
+    if (self.delegate) {
+        [self.delegate infoViewAddInsuranceTapped:YES];
+    }
 }
 
 - (void)didRemoveInsurance
 {
     self.search.isBuyingInsurance = NO;
+    if (self.delegate) {
+        [self.delegate infoViewAddInsuranceTapped:NO];
+    }
 }
 
 - (void)didTapMoreInsuranceDetail

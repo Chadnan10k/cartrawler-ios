@@ -250,7 +250,15 @@
 - (void)updateWithSearch:(CTRentalSearch *)search {
     self.search = search;
     
-    self.rentalTotalLabel.text = [self.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
+    NSString *price = @"";
+    
+    if (search.isBuyingInsurance) {
+        price = [[NSNumber numberWithFloat:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.floatValue + self.search.insurance.premiumAmount.floatValue] numberStringWithCurrencyCode];
+    } else {
+        price = [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
+    }
+    
+    self.rentalTotalLabel.text = price;
     
     [self.tableView reloadData];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
