@@ -24,6 +24,7 @@
 #import "CTPaymentSummaryExpandedView.h"
 #import "CTRentalConstants.h"
 #import "CTTermsViewController.h"
+#import "CartrawlerAPI/CTBooking.h"
 
 @interface CTDriverDetailsViewController () <UITextFieldDelegate, CTPaymentDelegate, UITextViewDelegate>
 
@@ -568,7 +569,21 @@
 - (void)payment:(CTPayment *)payment didSucceedWithResponse:(NSDictionary *)response
 {
     [CTPaymentLoadingViewController dismiss];
+    
+    CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:response];
+    self.search.booking = booking;
+    
+    CTRentalBooking *savedBooking = [[CTRentalBooking alloc] initFromSearch:self.search];
+    savedBooking.bookingId = booking.confID;
+    [CTDataStore storeRentalBooking:savedBooking];
+    
+    [self trackSale];
+    if (self.delegate) {
+        [self.delegate didBookVehicle:self.search.booking];
+    }
+    
     [self pushToDestination];
 }
+
 
 @end
