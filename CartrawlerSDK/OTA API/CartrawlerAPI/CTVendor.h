@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Vendor rating
  */
-@property (nonatomic, nonnull) CTVendorRating *rating;
+@property (nonatomic, nullable) CTVendorRating *rating;
 /**
  *  Drop off location for vendor
  */
