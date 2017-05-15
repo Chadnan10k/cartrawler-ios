@@ -19,6 +19,7 @@
 #import "CTExtrasListViewController.h"
 #import "CTRentalLocalizationConstants.h"
 #import "CTVehicleInfoTabView.h"
+#import "CTTermsViewController.h"
 
 @interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate>
 
@@ -35,6 +36,7 @@
 @property (nonatomic, strong) CTInsuranceView *insuranceView;
 @property (nonatomic, strong) CTExtrasCarouselView *extrasView;
 @property (nonatomic, strong) CTVehicleInfoTabView *tabView;
+@property (nonatomic, strong) CTButton *termsButton;
 
 //Alert view custom views
 @property (nonatomic, strong) CTCountryPickerView *countryPicker;
@@ -60,6 +62,7 @@
     [self initInsuranceView];
     [self initAlertView];
     [self initExtrasView];
+    [self initTermsAndConditionsView];
 
     [self.layoutManager layoutViews];
     return self;
@@ -81,6 +84,16 @@
                                }];
     
     [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
+    
+    NSNumber *extrasIndex = [self.layoutManager indexOfObject:self.extrasView];
+    NSNumber *termsIndex = [self.layoutManager indexOfObject:self.termsButton];
+
+    if (self.search.selectedVehicle.vehicle.extraEquipment.count > 0 && termsIndex && !extrasIndex) {
+        [self.layoutManager insertViewAtIndex:termsIndex.intValue padding:UIEdgeInsetsMake(8, 0, 8, 0) view:self.extrasView];
+    } else if (extrasIndex) {
+        [self.layoutManager removeAtIndex:extrasIndex.intValue];
+    }
+    
     [self.scrollView setContentOffset:CGPointMake(0, 0)];
     
     if (self.tabView) {
@@ -205,7 +218,6 @@
     self.extrasView = [CTExtrasCarouselView new];
     [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
     self.extrasView.delegate = self;
-    [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.extrasView];
 }
 
 - (void)extrasViewDidTapViewAll:(CTExtrasCarouselView *)extrasView {
@@ -215,6 +227,29 @@
     [controller updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
     if (self.delegate) {
         [self.delegate infoViewPushViewController:controller];
+    }
+}
+
+//MARK: terms and conditions
+
+- (void)initTermsAndConditionsView
+{
+    _termsButton = [[CTButton alloc] init:[UIColor clearColor] fontColor:[CTAppearance instance].buttonTextColor boldFont:YES borderColor:nil];
+    [self.termsButton setTitle:CTLocalizedString(CTRentalIncludedTerms) forState:UIControlStateNormal];
+    [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.termsButton];
+    [self.termsButton addTarget:self action:@selector(openTermsAndConditons) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)openTermsAndConditons
+{
+    NSBundle* bundle = [NSBundle bundleForClass:[self class]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalVehicleDetailsStoryboard bundle:bundle];
+    UINavigationController *nav = [storyboard instantiateViewControllerWithIdentifier:@"CTTermsViewControllerNav"];
+    CTTermsViewController *vc = (CTTermsViewController *)nav.topViewController;
+    [vc setData:self.search cartrawlerAPI:self.cartrawlerAPI];
+    
+    if (self.delegate) {
+        [self.delegate infoViewPresentViewController:nav];
     }
 }
 
