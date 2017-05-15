@@ -39,6 +39,8 @@ extern NSString * const CTRentalTitleUser;
 
 extern NSString * const CTRentalTitlePayment;
 
+extern NSString * const CTRentalCTAAddVehicleToBasket;
+
 extern NSString * const CTRentalCTAAdd;
 
 extern NSString * const CTRentalCTASearch;
@@ -360,6 +362,8 @@ extern NSString * const CTRentalCarRental;
 extern NSString * const CTRentalPayNothingAtDesk;
 
 extern NSString * const CTRentalPaymentFree;
+
+extern NSString * const CTRentalFreeCancelationDetail;
 
 //Features
 

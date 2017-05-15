@@ -38,6 +38,8 @@ NSString * const CTRentalTitleUser = @"title_user";
 
 NSString * const CTRentalTitlePayment = @"title_payment";
 
+NSString * const CTRentalCTAAddVehicleToBasket = @"CTA_add_vehicle_basket";
+
 NSString * const CTRentalCTAAdd = @"CTA_add";
 
 NSString * const CTRentalCTASearch = @"CTA_search";
@@ -320,8 +322,6 @@ NSString * const CTRentalInsuranceDetailPolicy = @"insurance_policy";
 
 NSString * const CTRentalInsuranceTermsConditions = @"insurance_terms_conditions";
 
-
-
 //Merchandising
 
 NSString * const CTRentalVehicleMerchandisingBestSeller = @"merchandising_best_seller";
@@ -344,15 +344,12 @@ NSString * const CTRentalVehicleMerchandisingOnBudget = @"merchandising_on_budge
 
 NSString * const CTRentalVehicleMerchandisingBestReviewed = @"merchandising_best_reviewed";
 
-//new sort
-
-
-
-
-
 NSString * const CTRentalResultsOtherCars = @"vehicle_other";
 
 NSString * const CTRentalExtrasPerRental = @"extra_per_rental";
+
+NSString * const CTRentalFreeCancelationDetail = @"free_cancellation_detail";
+
 //delete
 
 NSString * const CTRentalExtrasPaidAtDesk = @"payment_summary_pay_nothing_desk";
@@ -366,7 +363,6 @@ NSString * const CTRentalOtherCars = @"other_cars";
 NSString * const CTRentalCarRental = @"car_rental";
 
 NSString * const CTRentalPayNothingAtDesk = @"pay_nothing_at_desk";
-
 
 NSString * const CTRentalPaymentFree = @"payment_free";
 

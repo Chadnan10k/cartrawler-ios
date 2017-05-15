@@ -18,8 +18,9 @@
 #import "CTExtrasCarouselView.h"
 #import "CTExtrasListViewController.h"
 #import "CTRentalLocalizationConstants.h"
+#import "CTVehicleInfoTabView.h"
 
-@interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate>
+@interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIView *containerView;
@@ -33,6 +34,7 @@
 @property (nonatomic, strong) CTInfoTip *extrasInfoTip;
 @property (nonatomic, strong) CTInsuranceView *insuranceView;
 @property (nonatomic, strong) CTExtrasCarouselView *extrasView;
+@property (nonatomic, strong) CTVehicleInfoTabView *tabView;
 
 //Alert view custom views
 @property (nonatomic, strong) CTCountryPickerView *countryPicker;
@@ -55,7 +57,6 @@
 
     [self initVehicleDetailsView];
     [self initVehicleDetailsInfoTip];
-    [self initTabMenu];
     [self initInsuranceView];
     [self initAlertView];
     [self initExtrasView];
@@ -81,6 +82,15 @@
     
     [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
     [self.scrollView setContentOffset:CGPointMake(0, 0)];
+    
+    if (self.tabView) {
+        NSInteger index = [self.layoutManager indexOfObject:self.tabView].integerValue;
+        [self.layoutManager removeAtIndex:index];
+        [self.tabView removeFromSuperview];
+    }
+    self.tabView = [[CTVehicleInfoTabView alloc] initWithAvailabilityItem:self.search.selectedVehicle containerView:self];
+    [self.layoutManager insertViewAtIndex:2 padding:UIEdgeInsetsMake(8, 0, 8, 0) view:self.tabView];
+    [self.layoutManager layoutViews];
 }
 
 /**
@@ -133,7 +143,13 @@
 {
     _nextButton = [CTNextButton new];
     self.nextButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.nextButton setText:@"Test Next"];
+    
+    if (self.isStandalone) {
+        [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    } else {
+        [self.nextButton setText:CTLocalizedString(CTRentalCTAAddVehicleToBasket)];
+    }
+    
     [self addSubview:self.nextButton];
     [self.nextButton addTarget:self action:@selector(pushToDestination) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -158,65 +174,9 @@
 // MARK: Vehicle Info Tip
 - (void)initVehicleDetailsInfoTip
 {
-    _vehicleInfoTip = [[CTInfoTip alloc] initWithIcon:nil text:@"Good news. Free cancellation and amendments with your booking."];
+    _vehicleInfoTip = [[CTInfoTip alloc] initWithIcon:nil text:CTLocalizedString(CTRentalFreeCancelationDetail)];
     _vehicleInfoTip.delegate = self;
     [self.layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.vehicleInfoTip];
-}
-
-// MARK: Tab Menu
-- (void)initTabMenu {
-    CTListItemView *itemView1 = [CTListItemView new];
-    itemView1.titleLabel.attributedText = [self attributedStringWithBlackText:@"Pick-up location:  " blueText:@"In terminal"];
-    itemView1.imageView.image = [UIImage imageNamed:@"location_airport" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
-    CTListItemView *itemView2 = [CTListItemView new];
-    itemView2.titleLabel.attributedText = [self attributedStringWithBlackText:@"Fuel policy:  " blueText:@"Full to full"];
-    itemView2.imageView.image = [UIImage imageNamed:@"fuel" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
-    
-    CTExpandingView *expandingView1 = [[CTExpandingView alloc] initWithHeaderView:itemView1 animationContainerView:self];
-    CTExpandingView *expandingView2 = [[CTExpandingView alloc] initWithHeaderView:itemView2 animationContainerView:self];
-    
-    CTListView *listView1 = [[CTListView alloc] initWithViews:@[expandingView1, expandingView2] separatorColor:nil];
-    listView1.delegate = self;
-    listView1.tag = 1;
-    
-    UIImage *icon2 = [UIImage imageNamed:@"vendor_europcar"
-                                inBundle:[NSBundle bundleForClass:self.class]
-           compatibleWithTraitCollection:nil];
-    CTListItemView *itemView3 = [CTListItemView new];
-    itemView3.titleLabel.text = @"Car provided by";
-    itemView3.imageView.image = icon2;
-    itemView3.imageAlignment = CTListItemImageAlignmentRight;
-    
-    CTExpandingView *expandingView3 = [[CTExpandingView alloc] initWithHeaderView:itemView3 animationContainerView:self];
-    
-    CTRatingView *ratingView1 = [CTRatingView new];
-    ratingView1.titleLabel.text = @"Overall rating";
-    ratingView1.ratingLabel.text = @"Excellent 8.0";
-    
-    CTRatingView *ratingView2 = [CTRatingView new];
-    ratingView2.titleLabel.text = @"Value for money rating";
-    ratingView2.ratingLabel.text = @"7.8";
-    
-    CTRatingView *ratingView3 = [CTRatingView new];
-    ratingView3.titleLabel.text = @"Cleanliness of car";
-    ratingView3.ratingLabel.text = @"9.0";
-    
-    CTRatingView *ratingView4 = [CTRatingView new];
-    ratingView4.titleLabel.text = @"Service at desk";
-    ratingView4.ratingLabel.text = @"7.7";
-    
-    CTRatingView *ratingView5 = [CTRatingView new];
-    ratingView5.titleLabel.text = @"Pick-up process";
-    ratingView5.ratingLabel.text = @"6.9";
-    
-    CTListView *listView2 = [[CTListView alloc] initWithViews:@[expandingView3, ratingView1, ratingView2, ratingView3, ratingView4, ratingView5] separatorColor:nil];
-    listView2.delegate = self;
-    listView2.tag = 2;
-    
-    CTTabContainerView *tabContainerView = [[CTTabContainerView alloc] initWithTabTitles:@[@"INCLUDED", @"RATINGS"] views:@[listView1, listView2] selectedIndex:0];
-    tabContainerView.animationContainerView = self;
-    
-    [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 0, 0) view:tabContainerView];
 }
 
 - (NSAttributedString *)attributedStringWithBlackText:(NSString *)blackText blueText:(NSString *)blueText {
@@ -236,7 +196,7 @@
 {
     _insuranceView = [CTInsuranceView new];
     self.insuranceView.delegate = self;
-    [self.layoutManager insertView:UIEdgeInsetsMake(0, 0, 8, 0) view:self.insuranceView];
+    [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.insuranceView];
 }
 
 // MARK: Extras View
@@ -315,47 +275,6 @@
     if (self.delegate) {
         [self.delegate infoViewPushToNextStep];
     }
-}
-
-// MARK: CTListView Delegate
-
-- (void)listView:(CTListView *)listView didSelectView:(CTExpandingView *)expandingView atIndex:(NSInteger)index  {
-    if (![expandingView isKindOfClass:CTExpandingView.class]) {
-        return;
-    }
-    
-    if (expandingView.expanded) {
-        [expandingView contract];
-        return;
-    }
-    
-    if (listView.tag == 1) {
-        CTListItemView *listItemView1 = [CTListItemView new];
-        listItemView1.titleLabel.text = @"Third party liability";
-        listItemView1.imageView.image = [[UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        
-        CTListItemView *listItemView2 = [CTListItemView new];
-        listItemView2.titleLabel.text = @"Theft protection";
-        listItemView2.imageView.image = [[UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        
-        CTListItemView *listItemView3 = [CTListItemView new];
-        listItemView3.titleLabel.text = @"Collision damage waiver";
-        listItemView3.imageView.image = [[UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        
-        CTListView *listView = [[CTListView alloc] initWithViews:@[listItemView1, listItemView2, listItemView3] separatorColor:[UIColor clearColor]];
-        [expandingView expandWithDetailView:listView];
-    }
-    
-    if (listView.tag == 2) {
-        CTLabel *label = [[CTLabel alloc] init:16
-                                     textColor:[UIColor blackColor]
-                                 textAlignment:NSTextAlignmentLeft
-                                      boldFont:NO];
-        label.numberOfLines = 0;
-        label.text = @"Europcar is one of the worlds leading car rental companies that offer innovative services and quality in a simple and transparent way.";
-        [expandingView expandWithDetailView:label];
-    }
-    
 }
 
 // MARK: Actions

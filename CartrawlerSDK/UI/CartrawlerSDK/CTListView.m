@@ -23,7 +23,7 @@
             row.translatesAutoresizingMaskIntoConstraints = NO;
             [self addSubview:row];
             
-            [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[row]|"
+            [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[row]-0-|"
                                                                          options:0
                                                                          metrics:nil
                                                                            views:NSDictionaryOfVariableBindings(row)]];
