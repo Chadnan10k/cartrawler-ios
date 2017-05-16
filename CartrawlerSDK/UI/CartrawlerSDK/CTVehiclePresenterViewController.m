@@ -113,6 +113,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     } completion:nil];
     
     _presentedView = CTPresentedViewDetails;
+    self.summaryView.alpha = 1;
     [self.vehicleSelectionView removeFromSuperview];
     [self.containerView addSubview:self.vehicleDetailsView];
     [CTLayoutManager pinView:self.vehicleDetailsView toSuperView:self.containerView padding:UIEdgeInsetsZero];
@@ -125,7 +126,6 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (void)presentVehicleSelection
 {
     if (self.presentedView != CTPresentedViewSelection) {
-        
         [UIView animateWithDuration:0.2 animations:^{
             self.vehicleDetailsView.alpha = 0;
             self.vehicleSelectionView.alpha = 1;
@@ -136,8 +136,12 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
         [self.containerView addSubview:self.vehicleSelectionView];
         [CTLayoutManager pinView:self.vehicleSelectionView toSuperView:self.containerView padding:UIEdgeInsetsZero];
     }
+    self.summaryView.alpha = 0;
     [self updateSortButtonByPrice:YES];
-    [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items pickupDate:self.search.pickupDate dropoffDate:self.search.dropoffDate sortByPrice:YES];
+    [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items
+                                    pickupDate:self.search.pickupDate
+                                   dropoffDate:self.search.dropoffDate
+                                   sortByPrice:YES];
     [self updateNavigationBar];
 }
 

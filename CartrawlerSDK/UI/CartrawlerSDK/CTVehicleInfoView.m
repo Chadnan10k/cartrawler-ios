@@ -90,7 +90,7 @@
 
     if (self.search.selectedVehicle.vehicle.extraEquipment.count > 0 && termsIndex && !extrasIndex) {
         [self.layoutManager insertViewAtIndex:termsIndex.intValue padding:UIEdgeInsetsMake(8, 0, 8, 0) view:self.extrasView];
-    } else if (extrasIndex) {
+    } else if (extrasIndex && self.search.selectedVehicle.vehicle.extraEquipment.count == 0) {
         [self.layoutManager removeAtIndex:extrasIndex.intValue];
     }
     

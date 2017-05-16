@@ -157,8 +157,8 @@
 
     CTLayoutManager *layoutManager = [CTLayoutManager layoutManagerWithContainer:self.containerView];
     
-    [layoutManager insertView:UIEdgeInsetsMake(8, 8, 0, 8) view:driverDetailsTitle];
-    [layoutManager insertView:UIEdgeInsetsMake(0, 8, 8, 8) view:self.firstNameTextField];
+    [layoutManager insertView:UIEdgeInsetsMake(0, 8, 8, 8) view:driverDetailsTitle];
+    [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.firstNameTextField];
     [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.lastNameTextField];
     [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.emailTextField];
     [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.phoneTextField];
