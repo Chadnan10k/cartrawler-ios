@@ -20,7 +20,7 @@
 #import "CTRentalBooking.h"
 #import "CTCalendarViewController.h"
 #import "Reachability.h"
-#import "CTPaymentRequest.h"
+#import "CTPaymentRequestGenerator.h"
 #import "CTTextField.h"
 #import "NSStringUtils.h"
 #import "CartrawlerSDK+NSDateUtils.h"

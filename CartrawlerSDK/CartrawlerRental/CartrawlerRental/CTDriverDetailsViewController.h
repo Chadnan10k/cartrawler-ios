@@ -10,6 +10,4 @@
 
 @interface CTDriverDetailsViewController : CTViewController
 
-
-
 @end

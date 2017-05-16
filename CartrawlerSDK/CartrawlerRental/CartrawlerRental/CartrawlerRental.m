@@ -142,9 +142,9 @@
                                          target:self];
     
     [self.cartrawlerSDK configureViewController:self.driverDetialsViewController
-                           validationController:[[CTDriverDetailsValidation alloc] init]
-                                    destination:self.addressDetialsViewController
-                                       fallback:self.paymentSummaryViewController
+                           validationController:[[CTGenericValidation alloc] init]
+                                    destination:self.paymentCompletionViewController
+                                       fallback:nil
                                   optionalRoute:nil
                                          search:[CTRentalSearch instance]
                                          target:self];

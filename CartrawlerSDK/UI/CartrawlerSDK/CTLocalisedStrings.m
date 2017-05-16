@@ -435,16 +435,26 @@
     NSString *remoteLocalization = [self.cmsLocalization localizedStringForKey:key bundle:sdkBundle language:language];
     
     if (remoteLocalization) {
-        return remoteLocalization;
+        return [self sanitizeFormatters: remoteLocalization];
     }
     
     NSString *cachedLocalization = [self.bundleLocalization localizedStringForKey:key bundle:sdkBundle language:language];
     
     if (cachedLocalization) {
-        return cachedLocalization;
+        return [self sanitizeFormatters: cachedLocalization];
     }
 
-    return NSLocalizedStringFromTableInBundle(key, language, sdkBundle, @"");
+    return [self sanitizeFormatters:NSLocalizedStringFromTableInBundle(key, language, sdkBundle, @"")];
+}
+
+- (NSString *)sanitizeFormatters:(NSString *)text
+{
+    NSString *sanitized = text;
+    sanitized = [sanitized stringByReplacingOccurrencesOfString:@"${x}" withString:@"%@"];
+    sanitized = [sanitized stringByReplacingOccurrencesOfString:@"${y}" withString:@"%@"];
+    sanitized = [sanitized stringByReplacingOccurrencesOfString:@"${z}" withString:@"%@"];
+    sanitized = [sanitized stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+    return sanitized;
 }
 
 

@@ -17,9 +17,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.titleLabel = [CTLabel new];
-        self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        [self.titleLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+        self.titleLabel = [[CTLabel alloc] init:14 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentLeft boldFont:NO];
         [self addSubview:self.titleLabel];
         
         self.imageView = [[UIImageView alloc] init];
@@ -33,7 +31,7 @@
                                                                      options:0
                                                                      metrics:nil
                                                                        views:@{@"titleLabel": self.titleLabel}]];
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[imageView(24)]-|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[imageView]-|"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:@{@"imageView": self.imageView}]];
@@ -46,7 +44,7 @@
     
     [self removeConstraints:self.horizontalConstraints];
     
-    NSString *visualFormat = imageAlignment == CTListItemImageAlignmentRight ? @"H:|[titleLabel]-16-[imageView(40)]|" : @"H:|[imageView(40)]-16-[titleLabel]|";
+    NSString *visualFormat = imageAlignment == CTListItemImageAlignmentRight ? @"H:|-0-[titleLabel]-8-[imageView(20)]-8-|" : @"H:|-8-[imageView(20)]-8-[titleLabel]-4-|";
     self.horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:visualFormat
                                                                          options:0
                                                                          metrics:nil

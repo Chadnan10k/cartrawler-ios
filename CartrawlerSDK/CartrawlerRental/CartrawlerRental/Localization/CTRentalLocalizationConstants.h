@@ -39,6 +39,8 @@ extern NSString * const CTRentalTitleUser;
 
 extern NSString * const CTRentalTitlePayment;
 
+extern NSString * const CTRentalCTAAddVehicleToBasket;
+
 extern NSString * const CTRentalCTAAdd;
 
 extern NSString * const CTRentalCTASearch;
@@ -361,6 +363,14 @@ extern NSString * const CTRentalPayNothingAtDesk;
 
 extern NSString * const CTRentalPaymentFree;
 
+extern NSString * const CTRentalFreeCancelationPoint1;
+
+extern NSString * const CTRentalFreeCancelationPoint2;
+
+extern NSString * const CTRentalFreeCancelationTitle;
+
+extern NSString * const CTRentalFreeCancelationDetail;
+
 //Features
 
 extern NSString * const CTRentalFeatureUSB;
@@ -378,5 +388,28 @@ extern NSString * const CTRentalFeatureFrontDemister;
 extern NSString * const CTRentalFeatureParkingSensors;
 
 extern NSString * const CTRentalFeatureFuelEconomy;
+
+extern NSString * const CTRentalPaymentSecure;
+
+//milage allowance
+
+extern NSString * const CTRentalMileageAllowance;
+
+extern NSString * const CTRentalMileageUnlimited;
+
+extern NSString * const CTRentalMileageLimited;
+
+extern NSString * const CTRentalMileageUnlimitedDetail;
+
+extern NSString * const CTRentalMileageLimitedDetail;
+
+extern NSString * const CTRentalInsuranceBasic;
+
+extern NSString * const CTRentalInsuranceBasicDetail;
+
+//rating
+
+extern NSString * const CTRentalRatingOverall;
+
 
 @end

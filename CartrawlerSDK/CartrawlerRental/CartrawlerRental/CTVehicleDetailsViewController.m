@@ -71,7 +71,7 @@
     _tempCountryCode = [CTSDKSettings instance].homeCountryCode;
     self.search.isBuyingInsurance = NO;
     self.search.insurance = nil;
-    [self.vehicleDetailsView setVehicle:self.search.selectedVehicle.vehicle
+    [self.vehicleDetailsView setItem:self.search.selectedVehicle
                              pickupDate:self.search.pickupDate
                             dropoffDate:self.search.dropoffDate];
     __weak typeof(self) weakSelf = self;

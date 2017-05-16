@@ -38,6 +38,8 @@ NSString * const CTRentalTitleUser = @"title_user";
 
 NSString * const CTRentalTitlePayment = @"title_payment";
 
+NSString * const CTRentalCTAAddVehicleToBasket = @"CTA_add_vehicle_basket";
+
 NSString * const CTRentalCTAAdd = @"CTA_add";
 
 NSString * const CTRentalCTASearch = @"CTA_search";
@@ -320,8 +322,6 @@ NSString * const CTRentalInsuranceDetailPolicy = @"insurance_policy";
 
 NSString * const CTRentalInsuranceTermsConditions = @"insurance_terms_conditions";
 
-
-
 //Merchandising
 
 NSString * const CTRentalVehicleMerchandisingBestSeller = @"merchandising_best_seller";
@@ -344,15 +344,18 @@ NSString * const CTRentalVehicleMerchandisingOnBudget = @"merchandising_on_budge
 
 NSString * const CTRentalVehicleMerchandisingBestReviewed = @"merchandising_best_reviewed";
 
-//new sort
-
-
-
-
-
 NSString * const CTRentalResultsOtherCars = @"vehicle_other";
 
 NSString * const CTRentalExtrasPerRental = @"extra_per_rental";
+
+NSString * const CTRentalFreeCancelationPoint1 = @"free_cancellation_point1";
+
+NSString * const CTRentalFreeCancelationPoint2 = @"free_cancellation_point2";
+
+NSString * const CTRentalFreeCancelationTitle = @"free_cancellation_title";
+
+NSString * const CTRentalFreeCancelationDetail = @"free_cancellation_detail";
+
 //delete
 
 NSString * const CTRentalExtrasPaidAtDesk = @"payment_summary_pay_nothing_desk";
@@ -366,7 +369,6 @@ NSString * const CTRentalOtherCars = @"other_cars";
 NSString * const CTRentalCarRental = @"car_rental";
 
 NSString * const CTRentalPayNothingAtDesk = @"pay_nothing_at_desk";
-
 
 NSString * const CTRentalPaymentFree = @"payment_free";
 
@@ -388,5 +390,30 @@ NSString * const CTRentalFeatureFrontDemister = @"feature_front_demister";
 NSString * const CTRentalFeatureParkingSensors = @"feature_parking_sensors";
 
 NSString * const CTRentalFeatureFuelEconomy = @"feature_fuel_economy";
+
+//payment
+
+NSString * const CTRentalPaymentSecure = @"payment_secure_text";
+
+//mileage
+
+NSString * const CTRentalMileageAllowance = @"mileage_allowance";
+
+NSString * const CTRentalMileageUnlimited = @"mileage_unlimited";
+
+NSString * const CTRentalMileageLimited = @"mileage_limited";
+
+NSString * const CTRentalMileageUnlimitedDetail = @"mileage_unlimited_detail";
+
+NSString * const CTRentalMileageLimitedDetail = @"vehicle_mileage_618_VCP_X_desc";
+
+NSString * const CTRentalInsuranceBasic = @"insurance_basic";
+
+NSString * const CTRentalInsuranceBasicDetail = @"insurance_basic_detail";
+
+//ratings
+
+NSString * const CTRentalRatingOverall = @"overall_rating";
+
 
 @end

@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CartrawlerAPI/CartrawlerAPI.h>
+#import "CTRentalSearch.h"
 
-@interface CTPaymentRequest : NSObject
+@interface CTPaymentRequestGenerator : NSObject
+
++ (NSString *)requestFromSearch:(CTRentalSearch *)search;
 
 + (NSString *) OTA_VehResRQ:(NSString *)pickupDateTime
              returnDateTime:(NSString *)returnDateTime

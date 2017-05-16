@@ -9,6 +9,7 @@
 #import "CTVehicleInfoTabView.h"
 #import <CartrawlerSDK/CTHeaders.h>
 #import "CTRentalLocalizationConstants.h"
+#import "CartrawlerSDK/CartrawlerSDK+UIImageView.h"
 
 @interface CTVehicleInfoTabView () <CTListViewDelegate>
 @property (nonatomic, strong) CTAvailabilityItem *availabilityItem;
@@ -26,7 +27,7 @@
         self.includedListView = [self includedListView:availabilityItem containerView:containerView];
         self.ratingsListView = [self ratingsListView:availabilityItem containerView:containerView];
         
-        NSArray *titles = availabilityItem.vendor.rating ? @[@"INCLUDED", @"RATINGS"] : @[@"INCLUDED"];
+        NSArray *titles = availabilityItem.vendor.rating ? @[CTLocalizedString(CTRentalTitleDetailsVehicle), CTLocalizedString(CTRentalTitleDetailsSupplier)] : @[CTLocalizedString(CTRentalTitleDetailsVehicle)];
         NSArray *views = availabilityItem.vendor.rating ? @[self.includedListView, self.ratingsListView] : @[self.includedListView];
         
         CTTabContainerView *tabContainerView = [[CTTabContainerView alloc] initWithTabTitles:titles
@@ -61,26 +62,26 @@
 }
 
 - (CTListItemView *)pickUpTypeView:(CTAvailabilityItem *)item {
-    NSString *title = @"Pick-up location";
+    NSString *title = CTLocalizedString(CTRentalVehiclePickupLocation);
     NSString *detail = [CTLocalisedStrings pickupType:item];
     return [self itemViewWithTitle:title detail:detail imageName:@"location_airport"];
 }
 
 - (CTListItemView *)fuelPolicyView:(CTAvailabilityItem *)item {
-    NSString *title = @"Fuel policy";
+    NSString *title = CTLocalizedString(CTRentalVehicleFuelPolicy);
     NSString *detail = [CTLocalisedStrings fuelPolicy:item.vehicle.fuelPolicy];
     return [self itemViewWithTitle:title detail:detail imageName:@"vehicle_mileage"];
 }
 
 - (CTListItemView *)mileageAllowanceView:(CTAvailabilityItem *)item {
-    NSString *title = @"Mileage allowance";
-    NSString *detail = item.vehicle.rateDistance.isUnlimited ? @"Unlimited" : @"Limited mileage";
+    NSString *title = CTLocalizedString(CTRentalMileageAllowance);
+    NSString *detail = item.vehicle.rateDistance.isUnlimited ? CTLocalizedString(CTRentalMileageUnlimited) : CTLocalizedString(CTRentalMileageLimited);
     return [self itemViewWithTitle:title detail:detail imageName:@"vehicle_mileage"];
 }
 
 - (CTListItemView *)insuranceView:(CTAvailabilityItem *)item {
-    NSString *title = @"Insurance";
-    NSString *detail = @"Basic cover";
+    NSString *title = CTLocalizedString(CTRentalInsuranceBasic);
+    NSString *detail = CTLocalizedString(CTRentalInsuranceBasicDetail);
     return [self itemViewWithTitle:title detail:detail imageName:@"ins_shield"];
 }
 
@@ -95,8 +96,10 @@
 // MARK: Ratings Tab
 
 - (CTListView *)ratingsListView:(CTAvailabilityItem *)availabilityItem containerView:(UIView *)containerView {
-    CTListItemView *itemView = [self supplierIconItemView:availabilityItem];
-    CTExpandingView *expandingView = [[CTExpandingView alloc] initWithHeaderView:itemView animationContainerView:containerView];
+    
+//    CTListItemView *itemView = [self supplierIconItemView:availabilityItem];
+    
+//    CTExpandingView *expandingView = [[CTExpandingView alloc] initWithHeaderView:itemView animationContainerView:containerView];
     
     CTRatingView *overallRatingView = [self overallRatingView:availabilityItem];
     CTRatingView *valueRatingView = [self valueRatingView:availabilityItem];
@@ -105,14 +108,14 @@
     CTRatingView *pickupRatingView = [self pickupRatingView:availabilityItem];
     CTRatingView *dropoffRatingView = [self dropoffRatingView:availabilityItem];
     
-    CTListView *listView = [[CTListView alloc] initWithViews:@[expandingView, overallRatingView, valueRatingView, cleanlinessRatingView, serviceRatingView, pickupRatingView, dropoffRatingView] separatorColor:nil];
+    CTListView *listView = [[CTListView alloc] initWithViews:@[overallRatingView, valueRatingView, cleanlinessRatingView, serviceRatingView, pickupRatingView, dropoffRatingView] separatorColor:nil];
     listView.delegate = self;
     return listView;
 }
 
 - (CTListItemView *)supplierIconItemView:(CTAvailabilityItem *)item {
     CTListItemView *itemView = [CTListItemView new];
-    itemView.titleLabel.text = @"Car provided by";
+    itemView.titleLabel.text = CTLocalizedString(CTRentalVehicleProvided);
     [[CTImageCache sharedInstance] cachedImage:item.vendor.logoURL completion:^(UIImage *image) {
         itemView.imageView.image = image;
     }];
@@ -122,7 +125,7 @@
 
 - (CTRatingView *)overallRatingView:(CTAvailabilityItem *)item {
     CTRatingView *ratingView = [CTRatingView new];
-    ratingView.titleLabel.text = @"Overall rating";
+    ratingView.titleLabel.text = CTLocalizedString(CTRentalRatingOverall);
     
     double adjustedRating = item.vendor.rating.overallScore.floatValue * 2;
     NSString *ratingType;
@@ -221,17 +224,17 @@
 }
 
 - (void)expandView:(CTExpandingView *)expandingView withRateDistance:(CTRateDistance *)rateDistance {
-    if (rateDistance.isUnlimited) {
-        [self expandView:expandingView withText:[self textForRateDistance:rateDistance]];
-        return;
-    }
+    [self expandView:expandingView withText:[self textForRateDistance:rateDistance]];
 }
 
 - (NSString *)textForRateDistance:(CTRateDistance *)rateDistance {
     if (rateDistance.isUnlimited) {
-        return @"Unlimited mileage";
+        return CTLocalizedString(CTRentalMileageUnlimitedDetail);
     }
-    return [NSString stringWithFormat:@"An average driving distance of %@ %@ per %@ is included in this price. Additional charges may incur for extra distance travelled", rateDistance.quantity, rateDistance.distanceUnitName, rateDistance.vehiclePeriodUnitName];
+    
+    NSString *mileageAmount = [NSString stringWithFormat:@"%@ %@ %@", rateDistance.quantity, rateDistance.distanceUnitName, rateDistance.vehiclePeriodUnitName];
+        
+    return [NSString stringWithFormat:CTLocalizedString(CTRentalMileageLimitedDetail), mileageAmount];
 }
 
 - (void)expandView:(CTExpandingView *)expandingView withCoverages:(NSArray *)coverages {
@@ -240,6 +243,7 @@
         CTListItemView *listItemView = [CTListItemView new];
         listItemView.titleLabel.text = coverage.chargeDescription;
         listItemView.imageView.image = [[UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [listItemView.imageView applyTintWithColor:[CTAppearance instance].buttonColor];
         [items addObject:listItemView];
     }
     
@@ -249,9 +253,9 @@
 
 
 - (NSAttributedString *)attributedStringWithBlackText:(NSString *)blackText blueText:(NSString *)blueText {
-    NSDictionary *blackAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:18.0],
+    NSDictionary *blackAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:14.0],
                                       NSForegroundColorAttributeName : [UIColor blackColor]};
-    NSDictionary *blueAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:18.0],
+    NSDictionary *blueAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:14.0],
                                      NSForegroundColorAttributeName : [UIColor colorWithRed:42.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0]};
     
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:blackText attributes:blackAttributes];

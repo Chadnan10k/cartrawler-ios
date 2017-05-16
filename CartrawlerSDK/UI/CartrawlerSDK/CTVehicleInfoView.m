@@ -19,6 +19,8 @@
 #import "CTExtrasListViewController.h"
 #import "CTRentalLocalizationConstants.h"
 #import "CTVehicleInfoTabView.h"
+#import "CTTermsViewController.h"
+#import "CTFreeCancelationAlertView.h"
 
 @interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate>
 
@@ -31,10 +33,10 @@
 //Nested views
 @property (nonatomic, strong) CTVehicleDetailsView *vehicleDetailsView;
 @property (nonatomic, strong) CTInfoTip *vehicleInfoTip;
-@property (nonatomic, strong) CTInfoTip *extrasInfoTip;
 @property (nonatomic, strong) CTInsuranceView *insuranceView;
 @property (nonatomic, strong) CTExtrasCarouselView *extrasView;
 @property (nonatomic, strong) CTVehicleInfoTabView *tabView;
+@property (nonatomic, strong) CTButton *termsButton;
 
 //Alert view custom views
 @property (nonatomic, strong) CTCountryPickerView *countryPicker;
@@ -60,6 +62,7 @@
     [self initInsuranceView];
     [self initAlertView];
     [self initExtrasView];
+    [self initTermsAndConditionsView];
 
     [self.layoutManager layoutViews];
     return self;
@@ -70,7 +73,7 @@
     _tempCountryCode = [CTSDKSettings instance].homeCountryCode;
     self.search.isBuyingInsurance = NO;
     self.search.insurance = nil;
-    [self.vehicleDetailsView setVehicle:self.search.selectedVehicle.vehicle
+    [self.vehicleDetailsView setItem:self.search.selectedVehicle
                              pickupDate:self.search.pickupDate
                             dropoffDate:self.search.dropoffDate];
     __weak typeof(self) weakSelf = self;
@@ -81,6 +84,16 @@
                                }];
     
     [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
+    
+    NSNumber *extrasIndex = [self.layoutManager indexOfObject:self.extrasView];
+    NSNumber *termsIndex = [self.layoutManager indexOfObject:self.termsButton];
+
+    if (self.search.selectedVehicle.vehicle.extraEquipment.count > 0 && termsIndex && !extrasIndex) {
+        [self.layoutManager insertViewAtIndex:termsIndex.intValue padding:UIEdgeInsetsMake(8, 0, 8, 0) view:self.extrasView];
+    } else if (extrasIndex && self.search.selectedVehicle.vehicle.extraEquipment.count == 0) {
+        [self.layoutManager removeAtIndex:extrasIndex.intValue];
+    }
+    
     [self.scrollView setContentOffset:CGPointMake(0, 0)];
     
     if (self.tabView) {
@@ -143,7 +156,13 @@
 {
     _nextButton = [CTNextButton new];
     self.nextButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.nextButton setText:@"Test Next"];
+    
+    if (self.isStandalone) {
+        [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    } else {
+        [self.nextButton setText:CTLocalizedString(CTRentalCTAAddVehicleToBasket)];
+    }
+    
     [self addSubview:self.nextButton];
     [self.nextButton addTarget:self action:@selector(pushToDestination) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -168,11 +187,10 @@
 // MARK: Vehicle Info Tip
 - (void)initVehicleDetailsInfoTip
 {
-    _vehicleInfoTip = [[CTInfoTip alloc] initWithIcon:nil text:@"Good news. Free cancellation and amendments with your booking."];
+    _vehicleInfoTip = [[CTInfoTip alloc] initWithIcon:nil text:CTLocalizedString(CTRentalFreeCancelationDetail)];
     _vehicleInfoTip.delegate = self;
     [self.layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.vehicleInfoTip];
 }
-
 
 - (NSAttributedString *)attributedStringWithBlackText:(NSString *)blackText blueText:(NSString *)blueText {
     NSDictionary *blackAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:18.0],
@@ -200,7 +218,6 @@
     self.extrasView = [CTExtrasCarouselView new];
     [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
     self.extrasView.delegate = self;
-    [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.extrasView];
 }
 
 - (void)extrasViewDidTapViewAll:(CTExtrasCarouselView *)extrasView {
@@ -210,6 +227,29 @@
     [controller updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
     if (self.delegate) {
         [self.delegate infoViewPushViewController:controller];
+    }
+}
+
+//MARK: terms and conditions
+
+- (void)initTermsAndConditionsView
+{
+    _termsButton = [[CTButton alloc] init:[UIColor clearColor] fontColor:[CTAppearance instance].buttonTextColor boldFont:YES borderColor:nil];
+    [self.termsButton setTitle:CTLocalizedString(CTRentalIncludedTerms) forState:UIControlStateNormal];
+    [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.termsButton];
+    [self.termsButton addTarget:self action:@selector(openTermsAndConditons) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)openTermsAndConditons
+{
+    NSBundle* bundle = [NSBundle bundleForClass:[self class]];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalVehicleDetailsStoryboard bundle:bundle];
+    UINavigationController *nav = [storyboard instantiateViewControllerWithIdentifier:@"CTTermsViewControllerNav"];
+    CTTermsViewController *vc = (CTTermsViewController *)nav.topViewController;
+    [vc setData:self.search cartrawlerAPI:self.cartrawlerAPI];
+    
+    if (self.delegate) {
+        [self.delegate infoViewPresentViewController:nav];
     }
 }
 
@@ -236,10 +276,16 @@
 // MARK: CTInfoTipDelegate
 - (void)infoTipWasTapped:(CTInfoTip *)infoTip
 {
-    if (infoTip == self.extrasInfoTip) {
-        if (self.delegate) {
-            [self.delegate infoViewPushToExtraDetail];
-        }
+    if (infoTip == self.vehicleInfoTip) {
+        self.alertView.customView = [CTFreeCancelationAlertView new];
+        [self.alertView setTitle:CTLocalizedString(CTRentalFreeCancelationTitle) message:nil];
+        [self.alertView removeAllActions];
+        __weak typeof(self) weakSelf = self;
+        [self.alertView addAction:[CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTADone)
+                                                         handler:^(CTAlertAction *action) {
+                                                             [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+                                                         }]];
+        [self.delegate infoViewPresentViewController:self.alertView];
     }
 }
 
@@ -247,11 +293,17 @@
 - (void)didAddInsurance:(CTInsurance *)insurance
 {
     self.search.isBuyingInsurance = YES;
+    if (self.delegate) {
+        [self.delegate infoViewAddInsuranceTapped:YES];
+    }
 }
 
 - (void)didRemoveInsurance
 {
     self.search.isBuyingInsurance = NO;
+    if (self.delegate) {
+        [self.delegate infoViewAddInsuranceTapped:NO];
+    }
 }
 
 - (void)didTapMoreInsuranceDetail

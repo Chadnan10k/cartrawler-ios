@@ -40,7 +40,7 @@
 - (instancetype)initFromDictionary:(NSDictionary *)dictionary;
 {
     self = [super init];
-    
+        
     _indexation = [[CTVehicleIndexation alloc] initFromDictionary:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"Indexation"]];
     
     _merchandisingTag = [self merchandisingTagFromString:dictionary[@"VehAvailCore"][@"TPA_Extensions"][@"MerchandisingTag"][@"@Value"] ?: @""];
