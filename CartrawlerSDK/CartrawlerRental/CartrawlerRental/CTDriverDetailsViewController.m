@@ -98,28 +98,12 @@
     self.cityTextField.placeholder = CTLocalizedString(CTRentalUserCityHint);
     self.postcodeTextField.placeholder = CTLocalizedString(CTRentalUserPostcodeHint);
     
-    self.firstNameTextField.delegate = self;
-    self.lastNameTextField.delegate = self;
-    self.emailTextField.delegate = self;
-    self.phoneTextField.delegate = self;
-    self.flightNoTextField.delegate = self;
+    NSArray *textFields = @[self.firstNameTextField, self.lastNameTextField, self.emailTextField, self.phoneTextField, self.flightNoTextField, self.addressTextField, self.address2TextField, self.cityTextField, self.postcodeTextField];
     
-    self.addressTextField.delegate = self;
-    self.address2TextField.delegate = self;
-    self.cityTextField.delegate = self;
-    self.postcodeTextField.delegate = self;
-
-    [self.firstNameTextField addDoneButton];
-    [self.lastNameTextField addDoneButton];
-    [self.emailTextField addDoneButton];
-    [self.phoneTextField addDoneButton];
-    [self.flightNoTextField addDoneButton];
-    [self.phoneTextField addDoneButton];
-    
-    [self.addressTextField addDoneButton];
-    [self.address2TextField addDoneButton];
-    [self.cityTextField addDoneButton];
-    [self.postcodeTextField addDoneButton];
+    for (CTTextField *textField in textFields) {
+        textField.delegate = self;
+        [textField addDoneButton];
+    }
     
     _selectedView = self.firstNameTextField;
     
@@ -333,6 +317,34 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    if (textField == self.firstNameTextField) {
+        [[CTAnalytics instance] tagScreen:@"firstname" detail:@"enter" step:@-1];
+    }
+    if (textField == self.lastNameTextField) {
+        [[CTAnalytics instance] tagScreen:@"surname" detail:@"enter" step:@-1];
+    }
+    if (textField == self.emailTextField) {
+        [[CTAnalytics instance] tagScreen:@"email1" detail:@"enter" step:@-1];
+    }
+    if (textField == self.phoneTextField) {
+        [[CTAnalytics instance] tagScreen:@"phone" detail:@"enter" step:@-1];
+    }
+    if (textField == self.flightNoTextField) {
+        [[CTAnalytics instance] tagScreen:@"flightNum" detail:@"enter" step:@-1];
+    }
+    if (textField == self.addressTextField) {
+        [[CTAnalytics instance] tagScreen:@"address1" detail:@"enter" step:@-1];
+    }
+    if (textField == self.address2TextField) {
+        [[CTAnalytics instance] tagScreen:@"address2" detail:@"enter" step:@-1];
+    }
+    if (textField == self.cityTextField) {
+        [[CTAnalytics instance] tagScreen:@"city" detail:@"enter" step:@-1];
+    }
+    if (textField == self.postcodeTextField) {
+        [[CTAnalytics instance] tagScreen:@"postcode" detail:@"enter" step:@-1];
+    }
+    
     _selectedView = textField;
     return YES;
 }
@@ -389,6 +401,34 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     
+    if (textField == self.firstNameTextField) {
+        [[CTAnalytics instance] tagScreen:@"firstname" detail:@"type" step:@-1];
+    }
+    if (textField == self.lastNameTextField) {
+        [[CTAnalytics instance] tagScreen:@"surname" detail:@"type" step:@-1];
+    }
+    if (textField == self.emailTextField) {
+        [[CTAnalytics instance] tagScreen:@"email1" detail:@"type" step:@-1];
+    }
+    if (textField == self.phoneTextField) {
+        [[CTAnalytics instance] tagScreen:@"phone" detail:@"type" step:@-1];
+    }
+    if (textField == self.flightNoTextField) {
+        [[CTAnalytics instance] tagScreen:@"flightNum" detail:@"type" step:@-1];
+    }
+    if (textField == self.addressTextField) {
+        [[CTAnalytics instance] tagScreen:@"address1" detail:@"type" step:@-1];
+    }
+    if (textField == self.address2TextField) {
+        [[CTAnalytics instance] tagScreen:@"address2" detail:@"type" step:@-1];
+    }
+    if (textField == self.cityTextField) {
+        [[CTAnalytics instance] tagScreen:@"city" detail:@"type" step:@-1];
+    }
+    if (textField == self.postcodeTextField) {
+        [[CTAnalytics instance] tagScreen:@"postcode" detail:@"type" step:@-1];
+    }
+    
     if (textField == self.phoneTextField) {
         return [self validatePhone:[NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string]];
     }
@@ -400,7 +440,43 @@
         return ([string rangeOfCharacterFromSet:blockedCharacterSet].location == NSNotFound);
     }
     
+    if (textField == self.flightNoTextField) {
+        if (string.length <= 10) {
+            [[CTAnalytics instance] tagScreen:@"v_flightNu" detail:string step:@-1];
+        }
+    }
+    
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
+    if (textField == self.firstNameTextField) {
+        [[CTAnalytics instance] tagScreen:@"firstname" detail:@"leave" step:@-1];
+    }
+    if (textField == self.lastNameTextField) {
+        [[CTAnalytics instance] tagScreen:@"surname" detail:@"leave" step:@-1];
+    }
+    if (textField == self.emailTextField) {
+        [[CTAnalytics instance] tagScreen:@"email1" detail:@"leave" step:@-1];
+    }
+    if (textField == self.phoneTextField) {
+        [[CTAnalytics instance] tagScreen:@"phone" detail:@"leave" step:@-1];
+    }
+    if (textField == self.flightNoTextField) {
+        [[CTAnalytics instance] tagScreen:@"flightNum" detail:@"leave" step:@-1];
+    }
+    if (textField == self.addressTextField) {
+        [[CTAnalytics instance] tagScreen:@"address1" detail:@"leave" step:@-1];
+    }
+    if (textField == self.address2TextField) {
+        [[CTAnalytics instance] tagScreen:@"address2" detail:@"leave" step:@-1];
+    }
+    if (textField == self.cityTextField) {
+        [[CTAnalytics instance] tagScreen:@"city" detail:@"leave" step:@-1];
+    }
+    if (textField == self.postcodeTextField) {
+        [[CTAnalytics instance] tagScreen:@"postcode" detail:@"leave" step:@-1];
+    }
 }
 
 - (BOOL)validatePhone:(NSString *)phoneNumber

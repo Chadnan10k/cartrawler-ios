@@ -255,6 +255,7 @@
     UINavigationController *nav = [storyboard instantiateViewControllerWithIdentifier:@"CTTermsViewControllerNav"];
     CTTermsViewController *vc = (CTTermsViewController *)nav.topViewController;
     [vc setData:self.search cartrawlerAPI:self.cartrawlerAPI];
+    [[CTAnalytics instance] tagScreen:@"rc_lnk" detail:@"open" step:@-1];
     
     if (self.delegate) {
         [self.delegate infoViewPresentViewController:nav];
