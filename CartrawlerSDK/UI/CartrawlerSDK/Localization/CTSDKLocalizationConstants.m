@@ -218,4 +218,25 @@ NSString * const CTSDKVehicleTransmissionAuto = @"vehicle_transmission_auto";
 
 NSString * const CTSDKVehicleTransmissionManual = @"vehicle_transmission_manual";
 
+
+NSString * const CTSDKVehicleMerchandisingBestSeller = @"merchandising_best_seller";
+
+NSString * const CTSDKVehicleMerchandisingBusiness = @"merchandising_business";
+
+NSString * const CTSDKVehicleMerchandisingCityBreak = @"merchandising_city_break";
+
+NSString * const CTSDKVehicleMerchandisingFamilySize = @"merchandising_family_size";
+
+NSString * const CTSDKVehicleMerchandisingGreatValue = @"merchandising_great_value";
+
+NSString * const CTSDKVehicleMerchandisingQuickestQueue = @"merchandising_quickest_queue";
+
+NSString * const CTSDKVehicleMerchandisingRecommended = @"merchandising_recommended";
+
+NSString * const CTSDKVehicleMerchandisingUpgradeTo = @"merchandising_upgrade_to";
+
+NSString * const CTSDKVehicleMerchandisingOnBudget = @"merchandising_on_budget";
+
+NSString * const CTSDKVehicleMerchandisingBestReviewed = @"merchandising_best_reviewed";
+
 @end

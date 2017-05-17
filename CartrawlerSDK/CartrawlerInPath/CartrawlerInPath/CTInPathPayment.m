@@ -9,7 +9,7 @@
 #import "CTInPathPayment.h"
 #import "CartrawlerSDK/CTSDKSettings.h"
 #import "CartrawlerSDK/CartrawlerSDK+NSDateUtils.h"
-#import "CartrawlerSDK/CTPaymentRequest.h"
+#import "CartrawlerSDK/CTPaymentRequestGenerator.h"
 #import "CTInPathVehicle.h"
 
 @implementation CTInPathPayment
@@ -17,7 +17,7 @@
 + (NSDictionary *)createInPathRequest:(CTRentalSearch *)search
 {
     
-    NSString *json = [CTPaymentRequest OTA_VehResRQ:[search.pickupDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
+    NSString *json = [CTPaymentRequestGenerator OTA_VehResRQ:[search.pickupDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
                                 returnDateTime:[search.dropoffDate stringFromDateWithFormat:@"yyyy-MM-dd'T'HH:mm:ss"]
                             pickupLocationCode:search.pickupLocation.code
                            dropoffLocationCode:search.dropoffLocation.code

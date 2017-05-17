@@ -49,11 +49,8 @@
     UIView *container = [UIView new];
     container.backgroundColor = [UIColor whiteColor];
     container.translatesAutoresizingMaskIntoConstraints = NO;
-    container.layer.cornerRadius = 5;
-    container.layer.borderWidth = 0.5;
-    container.layer.borderColor = [UIColor grayColor].CGColor;
     
-    UILabel *loadingLabel = [self loadingLabel];
+    CTLabel *loadingLabel = [self loadingLabel];
     loadingLabel.textAlignment = NSTextAlignmentCenter;
     UIActivityIndicatorView *activityIndicator = [self activityIndicator];
     
@@ -75,13 +72,10 @@
     return container;
 }
 
-- (UILabel *)loadingLabel
+- (CTLabel *)loadingLabel
 {
-    UILabel *label = [UILabel new];
-    
-    label.translatesAutoresizingMaskIntoConstraints = NO;
-    label.text = @"Loading...";
-    
+    CTLabel *label = [[CTLabel alloc] init:17 textColor:[CTAppearance instance].buttonTextColor textAlignment:NSTextAlignmentCenter boldFont:YES];
+    label.text = CTLocalizedString(CTInPathWidgetLoading);
     return label;
 }
 
@@ -90,6 +84,7 @@
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [indicator startAnimating];
     indicator.translatesAutoresizingMaskIntoConstraints = NO;
+    indicator.color = [CTAppearance instance].buttonTextColor;
     return indicator;
 }
 

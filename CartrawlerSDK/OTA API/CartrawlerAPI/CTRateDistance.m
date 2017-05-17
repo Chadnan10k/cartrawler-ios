@@ -18,7 +18,7 @@
     NSInteger quantityInt = [dictionary[@"@Quantity"] integerValue] ?: 0;
     _quantity = [NSNumber numberWithInteger:quantityInt];
     _isUnlimited = [dictionary[@"@Unlimited"] boolValue];
-    _vehiclePeriodUnitName = dictionary[@"@@VehiclePeriodUnitName"] ?: @"";
+    _vehiclePeriodUnitName = dictionary[@"@VehiclePeriodUnitName"] ?: @"";
     
     return self;
 }

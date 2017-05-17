@@ -27,6 +27,9 @@
 		45709A681DF1C51300E6CA4E /* QAUITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 45709A671DF1C51300E6CA4E /* QAUITest.m */; };
 		45A7B7561D9BE003006611EB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */; };
 		45A7B7571D9BE007006611EB /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */; };
+		BC2D2D341EC1D7500007DAF3 /* CTPayment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D2D331EC1D7500007DAF3 /* CTPayment.framework */; };
+		BC2D2D351EC1D7650007DAF3 /* CTPayment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D2D331EC1D7500007DAF3 /* CTPayment.framework */; };
+		BC2D2D361EC1D7650007DAF3 /* CTPayment.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D2D331EC1D7500007DAF3 /* CTPayment.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC3955D11E2FB5EF00C8636B /* RYRRentalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3955D01E2FB5EF00C8636B /* RYRRentalManager.m */; };
 		BCDB4BF11E3F560E008004DA /* CartrawlerRakuten.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */; };
 		BCDB4BF21E3F560E008004DA /* CartrawlerRakuten.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -50,6 +53,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				BC2D2D361EC1D7650007DAF3 /* CTPayment.framework in Embed Frameworks */,
 				450725BE1DDA0C2000D56C8A /* CartrawlerSDK.framework in Embed Frameworks */,
 				45154EFD1E07E15D00FB32FA /* CartrawlerInPath.framework in Embed Frameworks */,
 				450725BB1DDA0C2000D56C8A /* CartrawlerAPI.framework in Embed Frameworks */,
@@ -85,6 +89,7 @@
 		45709A691DF1C51300E6CA4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		BC2D2D331EC1D7500007DAF3 /* CTPayment.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CTPayment.framework; sourceTree = "<group>"; };
 		BC3955CF1E2FB5EF00C8636B /* RYRRentalManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYRRentalManager.h; sourceTree = "<group>"; };
 		BC3955D01E2FB5EF00C8636B /* RYRRentalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYRRentalManager.m; sourceTree = "<group>"; };
 		BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerRakuten.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC2D2D351EC1D7650007DAF3 /* CTPayment.framework in Frameworks */,
+				BC2D2D341EC1D7500007DAF3 /* CTPayment.framework in Frameworks */,
 				450725BD1DDA0C2000D56C8A /* CartrawlerSDK.framework in Frameworks */,
 				45154EFC1E07E15D00FB32FA /* CartrawlerInPath.framework in Frameworks */,
 				450725BA1DDA0C2000D56C8A /* CartrawlerAPI.framework in Frameworks */,
@@ -123,6 +130,7 @@
 				45154EF01E07DE3800FB32FA /* CartrawlerRental.framework */,
 				450725BC1DDA0C2000D56C8A /* CartrawlerSDK.framework */,
 				450725B91DDA0C2000D56C8A /* CartrawlerAPI.framework */,
+				BC2D2D331EC1D7500007DAF3 /* CTPayment.framework */,
 				45295F5B1D78412500A09B8A /* TestApp */,
 				45709A661DF1C51300E6CA4E /* QAUITest */,
 				45295F5A1D78412500A09B8A /* Products */,

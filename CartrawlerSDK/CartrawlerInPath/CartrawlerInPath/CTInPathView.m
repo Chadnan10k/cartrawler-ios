@@ -19,7 +19,7 @@
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
 #import "CTInPathLocalizationConstants.h"
 
-@interface CTInPathView() <CTCarouselDelegate, CTSelectedVehicleDelegate>
+@interface CTInPathView() <CTCarouselDelegate>
 
 @property (nonatomic, strong) CTInPathLoadingView *loadingView;
 @property (nonatomic, strong) CTCarouselView *carouselView;
@@ -53,7 +53,6 @@
     _errorView = [CTInPathErrorView new];
 
     self.carouselView.delegate = self;
-    self.selectedVehicleView.delegate = self;
 
     [self layout];
     
@@ -62,6 +61,9 @@
 
 - (void)layout
 {
+    [self.selectedVehicleView removeFromSuperview];
+    [self removeConstraints:self.constraints];
+    
     NSDictionary *viewDictionary = @{
                                      @"bannerContainer" : self.bannerContainer,
                                      @"contentContainer" : self.contentContainer,
@@ -208,19 +210,24 @@
 
 - (void)showLoadingState
 {
+    [self layout];
     [self renderViewInContainer:self.loadingView superview:self.contentContainer padding:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 
 - (void)showVehicleDetails:(CTAvailabilityItem *)vehicle
 {
-    [self renderViewInContainer:self.selectedVehicleView superview:self.contentContainer padding:UIEdgeInsetsMake(8, 8, 8, 8)];
-    [self.selectedVehicleView setVehicle:vehicle];
+    [self.bannerContainer removeFromSuperview];
+    [self.detailsContainer removeFromSuperview];
+    [self.selectedVehicleView removeFromSuperview];
+
+    [self renderViewInContainer:self.selectedVehicleView superview:self padding:UIEdgeInsetsMake(8, 0, 0, 0)];
 }
 
 - (void)showVehicleSelection:(CTVehicleAvailability *)availability
                   pickupDate:(NSDate *)pickupDate
                  dropoffDate:(NSDate *)dropoffDate
 {
+    [self layout];
     [self renderViewInContainer:self.carouselView superview:self.contentContainer padding:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.carouselView reloadCollectionViewFromAvailability:availability
                                                  pickupDate:pickupDate
@@ -229,7 +236,7 @@
 
 - (void)showErrorState
 {
-    [self renderViewInContainer:self.errorView superview:self.contentContainer padding:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [self renderViewInContainer:self.errorView superview:self.contentContainer padding:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 
 //MARK : Carousel Delegate

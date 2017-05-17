@@ -114,12 +114,13 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     } completion:nil];
     
     _presentedView = CTPresentedViewDetails;
+    self.summaryView.alpha = 1;
     [self.vehicleSelectionView removeFromSuperview];
     [self.containerView addSubview:self.vehicleDetailsView];
     [CTLayoutManager pinView:self.vehicleDetailsView toSuperView:self.containerView padding:UIEdgeInsetsZero];
     [self.vehicleDetailsView refreshView];
     [self updateNavigationBar];
-    [self updatePriceSummary];
+    [self updatePriceSummary:NO];
     [self updateDetailedPriceSummary];
     
     static dispatch_once_t vehicleDetailsToken;
@@ -131,7 +132,6 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (void)presentVehicleSelection
 {
     if (self.presentedView != CTPresentedViewSelection) {
-        
         [UIView animateWithDuration:0.2 animations:^{
             self.vehicleDetailsView.alpha = 0;
             self.vehicleSelectionView.alpha = 1;
@@ -142,8 +142,12 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
         [self.containerView addSubview:self.vehicleSelectionView];
         [CTLayoutManager pinView:self.vehicleSelectionView toSuperView:self.containerView padding:UIEdgeInsetsZero];
     }
+    self.summaryView.alpha = 0;
     [self updateSortButtonByPrice:YES];
-    [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items pickupDate:self.search.pickupDate dropoffDate:self.search.dropoffDate sortByPrice:YES];
+    [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items
+                                    pickupDate:self.search.pickupDate
+                                   dropoffDate:self.search.dropoffDate
+                                   sortByPrice:YES];
     [self updateNavigationBar];
     
     static dispatch_once_t vehicleSelectionToken;
@@ -267,17 +271,26 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     
 }
 
-- (void)updatePriceSummary
+- (void)updatePriceSummary:(BOOL)isBuyingInsurance
 {
-    NSAttributedString *sortString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
+    NSString *price = @"";
+    
+    if (isBuyingInsurance) {
+        price = [[NSNumber numberWithFloat:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.floatValue + self.search.insurance.premiumAmount.floatValue] numberStringWithCurrencyCode];
+    } else {
+        price = [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
+    }
+    
+    
+    NSAttributedString *priceString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
                                                     boldColor:[UIColor whiteColor]
                                                      boldSize:17
-                                                  regularText:[self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode]
+                                                  regularText:price
                                                  regularColor:[UIColor whiteColor]
                                                   regularSize:17
                                                      useSpace:YES];
     
-    [self.rightButton setAttributedTitle:sortString forState:UIControlStateNormal];
+    [self.rightButton setAttributedTitle:priceString forState:UIControlStateNormal];
 }
 
 - (void)updateDetailedPriceSummary
@@ -371,6 +384,11 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (void)infoViewPresentVehicleSelection
 {
     [self presentVehicleSelection];
+}
+
+- (void)infoViewAddInsuranceTapped:(BOOL)didAddInsurance
+{
+    [self updatePriceSummary:didAddInsurance];
 }
 
 - (void)infoViewPushToNextStep

@@ -56,12 +56,12 @@
                                                                      metrics:nil
                                                                        views:NSDictionaryOfVariableBindings(headerView)]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[headerViewContainer]-16-[chevron(20)]-20-|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-4-[headerViewContainer]-8-[chevron(20)]-16-|"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:@{@"headerViewContainer" : self.headerViewContainer, @"chevron" : self.chevron}]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[detailViewContainer]-61-|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[detailViewContainer]-40-|"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:@{@"detailViewContainer" : self.detailViewContainer}]];
@@ -100,7 +100,7 @@
 - (void)addDetailView:(UIView *)detailView {
     detailView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.detailViewContainer addSubview:detailView];
-    [self.detailViewContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[detailView]|"
+    [self.detailViewContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[detailView]-0-|"
                                                                                      options:0
                                                                                      metrics:nil
                                                                                        views:NSDictionaryOfVariableBindings(detailView)]];

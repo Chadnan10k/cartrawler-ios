@@ -22,7 +22,7 @@
 @property (nonatomic, strong) CTLabel *headerLeftLabel;
 @property (nonatomic, strong) CTLabel *headerRightLabel;
 @property (nonatomic, strong) CTLabel *subheaderLeftLabel;
-@property (nonatomic, strong) CTLabel *subheaderRightLabel;
+@property (nonatomic, strong) UIImageView *supplierImageView;
 @property (nonatomic, strong) UIImageView *vehicleImageView;
 @property (nonatomic, strong) UICollectionView *infoCollectionView;
 @property (nonatomic, strong) CTVehicle *vehicle;
@@ -32,10 +32,10 @@
 
 @implementation CTVehicleDetailsView
 
-- (void)setVehicle:(CTVehicle *)vehicle pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate;
+- (void)setItem:(CTAvailabilityItem *)item pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
 {
-    _vehicle = vehicle;
-    [self addData:vehicle pickupDate:pickupDate dropoffDate:dropoffDate];
+    _vehicle = item.vehicle;
+    [self addData:item pickupDate:pickupDate dropoffDate:dropoffDate];
     [self createAlertFeatureView];
 }
 
@@ -66,11 +66,9 @@
     self.subheaderLeftLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:15];
     self.subheaderLeftLabel.textColor = [CTAppearance instance].subheaderTitleColor;
 
-    _subheaderRightLabel = [CTLabel new];
-    self.subheaderRightLabel.textAlignment = NSTextAlignmentRight;
-    self.subheaderRightLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.subheaderRightLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:15];
-    self.subheaderRightLabel.textColor = [CTAppearance instance].subheaderTitleColor;
+    _supplierImageView = [UIImageView new];
+    self.supplierImageView.translatesAutoresizingMaskIntoConstraints = NO;
+
     
     _vehicleImageView = [UIImageView new];
     self.vehicleImageView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -94,7 +92,7 @@
     [self addSubview:self.headerLeftLabel];
     [self addSubview:self.headerRightLabel];
     [self addSubview:self.subheaderLeftLabel];
-    [self addSubview:self.subheaderRightLabel];
+    [self addSubview:self.supplierImageView];
     [self addSubview:self.vehicleImageView];
     [self addSubview:self.infoCollectionView];
 }
@@ -149,12 +147,12 @@
     [self.featureAlertView insertImage:icon withText:self.vehicle.transmissionType];
 }
 
-- (void)addData:(CTVehicle *)vehicle pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
+- (void)addData:(CTAvailabilityItem *)item pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
 {
     //header label
-    self.headerLeftLabel.text = vehicle.makeModelName;
+    self.headerLeftLabel.text = item.vehicle.makeModelName;
     
-    NSNumber *pricePerDay = [self pricePerDay:vehicle
+    NSNumber *pricePerDay = [self pricePerDay:item.vehicle
                                    pickupDate:pickupDate
                                   dropoffDate:dropoffDate];
     
@@ -177,11 +175,13 @@
     self.headerRightLabel.attributedText = priceCompoundString;
     
     //subheader label
-    self.subheaderLeftLabel.text = vehicle.orSimilar;
-    self.subheaderRightLabel.text = [NSString stringWithFormat:@"%@ %@", CTLocalizedString(CTRentalSummaryTotal), [vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode]];
+    self.subheaderLeftLabel.text = item.vehicle.orSimilar;
 
+    [[CTImageCache sharedInstance] cachedImage:item.vendor.logoURL completion:^(UIImage *image) {
+        self.supplierImageView.image = image;
+    }];
     
-    [[CTImageCache sharedInstance] cachedImage:vehicle.pictureURL completion:^(UIImage *image) {
+    [[CTImageCache sharedInstance] cachedImage:item.vehicle.pictureURL completion:^(UIImage *image) {
         self.vehicleImageView.image = image;
     }];
 
@@ -198,11 +198,11 @@
                                                                    views:@{@"header" : self.headerLeftLabel,
                                                                            @"view" : self.subheaderLeftLabel}]];
     //subheader right detail
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[header]-0-[view]"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[header]-4-[view(35)]"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:@{@"header" : self.headerRightLabel,
-                                                                           @"view" : self.subheaderRightLabel}]];
+                                                                           @"view" : self.supplierImageView}]];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[leftDetail]-8-[rightDetail]-8-|"
                                                                  options:0
@@ -211,11 +211,11 @@
                                                                            @"rightDetail" : self.headerRightLabel}]];
 
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[leftDetail]-8-[rightDetail]-8-|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[leftDetail]-8@100-[rightDetail(80)]-8-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:@{@"leftDetail" : self.subheaderLeftLabel,
-                                                                           @"rightDetail" : self.subheaderRightLabel}]];
+                                                                           @"rightDetail" : self.supplierImageView}]];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[imageView]-8-|"
                                                                  options:0
@@ -238,6 +238,8 @@
                                                                  metrics:nil
                                                                    views:@{@"imageView" : self.vehicleImageView,
                                                                            @"collectionView" : self.infoCollectionView}]];
+    
+    [self bringSubviewToFront:self.supplierImageView];
 }
 
 // MARK: Price Per Day

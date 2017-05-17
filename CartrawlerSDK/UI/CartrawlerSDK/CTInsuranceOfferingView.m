@@ -68,6 +68,8 @@
 {
     NSString *addNowText = [NSString stringWithFormat:CTLocalizedString(CTRentalInsuranceAddButtonTitle), self.insurance.premiumAmount.numberStringWithCurrencyCode];
     [self.addNowButton setTitle:addNowText forState:UIControlStateNormal];
+    self.addNowButton.backgroundColor = [UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1];
+    _isAdded = NO;
     
     NSString *pricePerDay = [NSString stringWithFormat:@"%@ %@", [self.insurance.premiumAmount pricePerDay:self.pickupDate dropoff:self.dropoffDate], CTLocalizedString(CTRentalInsurancePerDay)];
     self.perDayLabel.text = pricePerDay;

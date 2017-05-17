@@ -7,16 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTAvailabilityItem.h>
-
-@protocol CTSelectedVehicleDelegate <NSObject>
-
-@end
 
 @interface CTSelectedVehicleView : UIView
-
-@property (weak, nonatomic) id<CTSelectedVehicleDelegate> delegate;
-
-- (void)setVehicle:(CTAvailabilityItem *)vehicle;
 
 @end

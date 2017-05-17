@@ -33,10 +33,8 @@
 		454D91F11DD34E24001AE96C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 454D91EF1DD34E24001AE96C /* Reachability.m */; };
 		455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4587736E1D806064000CB1E5 /* GTPaymentRequest.h */; };
 		455B58341DCC914300CA4790 /* GTPaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4587736F1D806064000CB1E5 /* GTPaymentRequest.m */; };
-		455B58351DCC914300CA4790 /* CTPaymentRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4588E3161D538FB1008F4267 /* CTPaymentRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		455B58361DCC914300CA4790 /* CTPaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4588E3171D538FB1008F4267 /* CTPaymentRequest.m */; };
-		455B58371DCC914300CA4790 /* CTPaymentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F161D7EFF3400B9324D /* CTPaymentView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		455B58381DCC914300CA4790 /* CTPaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F171D7EFF3400B9324D /* CTPaymentView.m */; };
+		455B58351DCC914300CA4790 /* CTPaymentRequestGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4588E3161D538FB1008F4267 /* CTPaymentRequestGenerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		455B58361DCC914300CA4790 /* CTPaymentRequestGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4588E3171D538FB1008F4267 /* CTPaymentRequestGenerator.m */; };
 		455B583C1DCC914300CA4790 /* CTSDKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E51C1D1450CE000ED6B0 /* CTSDKSettings.m */; };
 		455B58481DCC914300CA4790 /* CTToolTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BC88D21DC0F8460041BD74 /* CTToolTip.m */; };
 		455B58491DCC914300CA4790 /* CTToolTip.h in Headers */ = {isa = PBXBuildFile; fileRef = 45BC88D31DC0F8460041BD74 /* CTToolTip.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -261,8 +259,6 @@
 		4513B6231DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+WKWebView.m"; sourceTree = "<group>"; };
 		451C8F061D7ED78100B9324D /* CTValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTValidation.h; sourceTree = "<group>"; };
 		451C8F0B1D7EE21200B9324D /* CTValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTValidation.m; sourceTree = "<group>"; };
-		451C8F161D7EFF3400B9324D /* CTPaymentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPaymentView.h; sourceTree = "<group>"; };
-		451C8F171D7EFF3400B9324D /* CTPaymentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPaymentView.m; sourceTree = "<group>"; };
 		451D7E7F1DBE1197001A4062 /* CTDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDataStore.h; sourceTree = "<group>"; };
 		451D7E801DBE1197001A4062 /* CTDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDataStore.m; sourceTree = "<group>"; };
 		451E76381E04438300D58F71 /* CTRentalBooking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRentalBooking.h; sourceTree = "<group>"; };
@@ -296,8 +292,8 @@
 		4587736E1D806064000CB1E5 /* GTPaymentRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTPaymentRequest.h; sourceTree = "<group>"; };
 		4587736F1D806064000CB1E5 /* GTPaymentRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTPaymentRequest.m; sourceTree = "<group>"; };
 		4588E3121D538803008F4267 /* CTPCI.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CTPCI.html; sourceTree = "<group>"; };
-		4588E3161D538FB1008F4267 /* CTPaymentRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPaymentRequest.h; sourceTree = "<group>"; };
-		4588E3171D538FB1008F4267 /* CTPaymentRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPaymentRequest.m; sourceTree = "<group>"; };
+		4588E3161D538FB1008F4267 /* CTPaymentRequestGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPaymentRequestGenerator.h; sourceTree = "<group>"; };
+		4588E3171D538FB1008F4267 /* CTPaymentRequestGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPaymentRequestGenerator.m; sourceTree = "<group>"; };
 		459CB2DE1DDB1D9E008522BA /* CartrawlerSDK+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CartrawlerSDK+UIView.h"; sourceTree = "<group>"; };
 		459CB2DF1DDB1D9E008522BA /* CartrawlerSDK+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+UIView.m"; sourceTree = "<group>"; };
 		459CB2E21DDB3FA2008522BA /* CTToolTipButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTToolTipButton.h; sourceTree = "<group>"; };
@@ -598,10 +594,8 @@
 			children = (
 				4587736E1D806064000CB1E5 /* GTPaymentRequest.h */,
 				4587736F1D806064000CB1E5 /* GTPaymentRequest.m */,
-				4588E3161D538FB1008F4267 /* CTPaymentRequest.h */,
-				4588E3171D538FB1008F4267 /* CTPaymentRequest.m */,
-				451C8F161D7EFF3400B9324D /* CTPaymentView.h */,
-				451C8F171D7EFF3400B9324D /* CTPaymentView.m */,
+				4588E3161D538FB1008F4267 /* CTPaymentRequestGenerator.h */,
+				4588E3171D538FB1008F4267 /* CTPaymentRequestGenerator.m */,
 				4588E3121D538803008F4267 /* CTPCI.html */,
 			);
 			name = Payment;
@@ -1010,7 +1004,7 @@
 				BC1379EB1E23E4E400B1F727 /* CTTag.h in Headers */,
 				451E763A1E04438300D58F71 /* CTRentalBooking.h in Headers */,
 				455B58761DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.h in Headers */,
-				455B58351DCC914300CA4790 /* CTPaymentRequest.h in Headers */,
+				455B58351DCC914300CA4790 /* CTPaymentRequestGenerator.h in Headers */,
 				BC9546841EB2655C0097312C /* CTFileSystemAccess.h in Headers */,
 				455B58911DCC914300CA4790 /* CTDataStore.h in Headers */,
 				455B584E1DCC914300CA4790 /* CTNavigationController.h in Headers */,
@@ -1023,7 +1017,6 @@
 				455B59591DCC96D500CA4790 /* CartrawlerSDK.h in Headers */,
 				455B58871DCC914300CA4790 /* CTRentalSearch.h in Headers */,
 				455B58B71DCC914400CA4790 /* CTViewController.h in Headers */,
-				455B58371DCC914300CA4790 /* CTPaymentView.h in Headers */,
 				455B586C1DCC914300CA4790 /* CTButton.h in Headers */,
 				455B58491DCC914300CA4790 /* CTToolTip.h in Headers */,
 				455B584A1DCC914300CA4790 /* CTNavigationBar.h in Headers */,
@@ -1033,7 +1026,6 @@
 				455B58541DCC914300CA4790 /* CTSegmentedControl.h in Headers */,
 				455B58561DCC914300CA4790 /* CTPickerView.h in Headers */,
 				455B58581DCC914300CA4790 /* CTTextView.h in Headers */,
-				E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */,
 				455B585A1DCC914300CA4790 /* CTPlaceholderView.h in Headers */,
 				455B585C1DCC914300CA4790 /* CTView.h in Headers */,
 				455B585E1DCC914300CA4790 /* CTDesignableView.h in Headers */,
@@ -1074,6 +1066,7 @@
 				BC01F5921E9D2A7B003D8286 /* CartrawlerSDK+NSString.h in Headers */,
 				BC9546701EAF77AD0097312C /* CTImageTextView.h in Headers */,
 				457678501E08021500FE591A /* CTHeaders.h in Headers */,
+				E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */,
 				E7404A781E82F3AB009BF7DF /* CTTabContainerView.h in Headers */,
 				E726E3F51E9FDBEC004DC355 /* CTCounterView.h in Headers */,
 				E70230731E857DC2005E1BF4 /* CTRatingView.h in Headers */,
@@ -1238,8 +1231,7 @@
 				455B58341DCC914300CA4790 /* GTPaymentRequest.m in Sources */,
 				E7404A811E82F90C009BF7DF /* CTTabHeaderView.m in Sources */,
 				457128C21DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m in Sources */,
-				455B58361DCC914300CA4790 /* CTPaymentRequest.m in Sources */,
-				455B58381DCC914300CA4790 /* CTPaymentView.m in Sources */,
+				455B58361DCC914300CA4790 /* CTPaymentRequestGenerator.m in Sources */,
 				455B583C1DCC914300CA4790 /* CTSDKSettings.m in Sources */,
 				BC1379E91E23E4E400B1F727 /* CTAnalytics.m in Sources */,
 				455B58481DCC914300CA4790 /* CTToolTip.m in Sources */,
