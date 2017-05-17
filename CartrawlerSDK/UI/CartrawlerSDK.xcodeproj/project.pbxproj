@@ -35,8 +35,6 @@
 		455B58341DCC914300CA4790 /* GTPaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4587736F1D806064000CB1E5 /* GTPaymentRequest.m */; };
 		455B58351DCC914300CA4790 /* CTPaymentRequestGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4588E3161D538FB1008F4267 /* CTPaymentRequestGenerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		455B58361DCC914300CA4790 /* CTPaymentRequestGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4588E3171D538FB1008F4267 /* CTPaymentRequestGenerator.m */; };
-		455B58371DCC914300CA4790 /* CTPaymentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 451C8F161D7EFF3400B9324D /* CTPaymentView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		455B58381DCC914300CA4790 /* CTPaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 451C8F171D7EFF3400B9324D /* CTPaymentView.m */; };
 		455B583C1DCC914300CA4790 /* CTSDKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4511E51C1D1450CE000ED6B0 /* CTSDKSettings.m */; };
 		455B58481DCC914300CA4790 /* CTToolTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BC88D21DC0F8460041BD74 /* CTToolTip.m */; };
 		455B58491DCC914300CA4790 /* CTToolTip.h in Headers */ = {isa = PBXBuildFile; fileRef = 45BC88D31DC0F8460041BD74 /* CTToolTip.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -261,8 +259,6 @@
 		4513B6231DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CartrawlerSDK+WKWebView.m"; sourceTree = "<group>"; };
 		451C8F061D7ED78100B9324D /* CTValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTValidation.h; sourceTree = "<group>"; };
 		451C8F0B1D7EE21200B9324D /* CTValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTValidation.m; sourceTree = "<group>"; };
-		451C8F161D7EFF3400B9324D /* CTPaymentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPaymentView.h; sourceTree = "<group>"; };
-		451C8F171D7EFF3400B9324D /* CTPaymentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPaymentView.m; sourceTree = "<group>"; };
 		451D7E7F1DBE1197001A4062 /* CTDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDataStore.h; sourceTree = "<group>"; };
 		451D7E801DBE1197001A4062 /* CTDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDataStore.m; sourceTree = "<group>"; };
 		451E76381E04438300D58F71 /* CTRentalBooking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRentalBooking.h; sourceTree = "<group>"; };
@@ -600,8 +596,6 @@
 				4587736F1D806064000CB1E5 /* GTPaymentRequest.m */,
 				4588E3161D538FB1008F4267 /* CTPaymentRequestGenerator.h */,
 				4588E3171D538FB1008F4267 /* CTPaymentRequestGenerator.m */,
-				451C8F161D7EFF3400B9324D /* CTPaymentView.h */,
-				451C8F171D7EFF3400B9324D /* CTPaymentView.m */,
 				4588E3121D538803008F4267 /* CTPCI.html */,
 			);
 			name = Payment;
@@ -1023,7 +1017,6 @@
 				455B59591DCC96D500CA4790 /* CartrawlerSDK.h in Headers */,
 				455B58871DCC914300CA4790 /* CTRentalSearch.h in Headers */,
 				455B58B71DCC914400CA4790 /* CTViewController.h in Headers */,
-				455B58371DCC914300CA4790 /* CTPaymentView.h in Headers */,
 				455B586C1DCC914300CA4790 /* CTButton.h in Headers */,
 				455B58491DCC914300CA4790 /* CTToolTip.h in Headers */,
 				455B584A1DCC914300CA4790 /* CTNavigationBar.h in Headers */,
@@ -1239,7 +1232,6 @@
 				E7404A811E82F90C009BF7DF /* CTTabHeaderView.m in Sources */,
 				457128C21DDF0F0A008FF204 /* CartrawlerSDK+UITextField.m in Sources */,
 				455B58361DCC914300CA4790 /* CTPaymentRequestGenerator.m in Sources */,
-				455B58381DCC914300CA4790 /* CTPaymentView.m in Sources */,
 				455B583C1DCC914300CA4790 /* CTSDKSettings.m in Sources */,
 				BC1379E91E23E4E400B1F727 /* CTAnalytics.m in Sources */,
 				455B58481DCC914300CA4790 /* CTToolTip.m in Sources */,

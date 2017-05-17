@@ -40,7 +40,6 @@
 #import "CTNavigationView.h"
 #import "CTView.h"
 #import "CTNavigationController.h"
-#import "CTPaymentView.h"
 #import "CTPlaceholderView.h"
 #import "CTSegmentedControl.h"
 #import "CTSelectView.h"
