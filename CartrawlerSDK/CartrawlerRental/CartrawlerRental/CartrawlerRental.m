@@ -111,7 +111,6 @@
     _addressDetialsViewController = [detailsStoryboard instantiateViewControllerWithIdentifier:CTRentalDriverAddressViewIdentifier];
     
     UIStoryboard *paymentStoryboard = [UIStoryboard storyboardWithName:CTRentalPaymentStoryboard bundle:self.bundle];
-    _paymentViewController = [paymentStoryboard instantiateViewControllerWithIdentifier:CTRentalPaymentViewIdentifier];
     _paymentCompletionViewController = [paymentStoryboard instantiateViewControllerWithIdentifier:CTRentalPaymentCompletionViewIdentifier];
 }
 
@@ -152,22 +151,6 @@
     [self.cartrawlerSDK configureViewController:self.addressDetialsViewController
                            validationController:[[CTPaymentValidation alloc] init]
                                     destination:self.paymentSummaryViewController
-                                       fallback:nil
-                                  optionalRoute:nil
-                                         search:[CTRentalSearch instance]
-                                         target:self];
-    
-    [self.cartrawlerSDK configureViewController:self.paymentSummaryViewController
-                           validationController:[[CTGenericValidation alloc] init]
-                                    destination:self.paymentViewController
-                                       fallback:nil
-                                  optionalRoute:nil
-                                         search:[CTRentalSearch instance]
-                                         target:self];
-    
-    [self.cartrawlerSDK configureViewController:self.paymentViewController
-                           validationController:[[CTBookingCompletionValidation alloc] init]
-                                    destination:self.paymentCompletionViewController
                                        fallback:nil
                                   optionalRoute:nil
                                          search:[CTRentalSearch instance]
