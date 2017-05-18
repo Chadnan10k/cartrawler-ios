@@ -208,6 +208,15 @@ static NSString * const reuseIdentifier = @"Cell";
     [collectionView performBatchUpdates:nil completion:nil];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.delegate) {
+        double percentage = scrollView.contentOffset.x / (scrollView.contentSize.width - scrollView.frame.size.width);
+        NSInteger index = percentage * self.extras.count;
+        [self.delegate collectionViewDidScrollToIndex:index];
+    }
+}
+
 // MARK: CTExtrasCollectionViewCellDelegate
 
 - (void)cellDidTapInfo:(UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *)cell {

@@ -9,6 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTExtraEquipment.h>
 
+@protocol CTExtrasCollectionViewDelegate
+/**
+ Delegate which informs which cell index has been scrolled to
+
+ @param index the index that has been scrolled to
+ */
+- (void)collectionViewDidScrollToIndex:(NSInteger)index;
+@end
+
 /**
  A view which manages a collection view of CTExtrasCollectionViewCells
  */
@@ -28,5 +37,7 @@
  @param extras an array of CTExtraEquipment objects
  */
 - (void)updateWithExtras:(NSArray<CTExtraEquipment *> *)extras;
+
+@property (nonatomic, weak) id <CTExtrasCollectionViewDelegate> delegate;
 
 @end

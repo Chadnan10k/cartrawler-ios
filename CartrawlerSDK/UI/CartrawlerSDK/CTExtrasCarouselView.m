@@ -11,11 +11,13 @@
 #import <CartrawlerSDK/CTAlertViewController.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTAppearance.h>
 
-@interface CTExtrasCarouselView ()
+@interface CTExtrasCarouselView () <CTExtrasCollectionViewDelegate>
 @property (nonatomic, strong) CTLabel *titleLabel;
 @property (nonatomic, strong) UIButton *viewAllButton;
 @property (nonatomic, strong) CTExtrasCollectionView *collectionView;
+@property (nonatomic, strong) UIPageControl *pageControl;
 @end
 
 @implementation CTExtrasCarouselView
@@ -30,6 +32,7 @@
         [self addSubview:self.titleLabel];
         
         self.collectionView = [[CTExtrasCollectionView alloc] initWithScrollDirection:UICollectionViewScrollDirectionHorizontal];
+        self.collectionView.delegate = self;
         self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:self.collectionView];
         
@@ -40,13 +43,25 @@
         [self addSubview:self.viewAllButton];
         [self.viewAllButton addTarget:self action:@selector(didTapViewAll:) forControlEvents:UIControlEventTouchUpInside];
         
+        self.pageControl = [self renderPageControl];
+        [self addSubview:self.pageControl];
+        
         [self addConstraints];
     }
     return self;
 }
 
+- (UIPageControl *)renderPageControl
+{
+    UIPageControl *control = [UIPageControl new];
+    control.translatesAutoresizingMaskIntoConstraints = NO;
+    control.currentPageIndicatorTintColor = [CTAppearance instance].headerTitleColor;
+    control.pageIndicatorTintColor = [UIColor grayColor];
+    return control;
+}
+
 - (void)addConstraints {
-    NSDictionary *views = @{@"titleLabel": self.titleLabel, @"collectionView": self.collectionView, @"viewAllButton": self.viewAllButton};
+    NSDictionary *views = @{@"titleLabel": self.titleLabel, @"collectionView": self.collectionView, @"viewAllButton": self.viewAllButton, @"pageControl" : self.pageControl};
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[titleLabel]-[viewAllButton(80)]-|"
                                                                  options:0
                                                                  metrics:nil
@@ -55,7 +70,11 @@
                                                                  options:0
                                                                  metrics:nil
                                                                    views:views]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(10)-[titleLabel(34)]-(10)-[collectionView(180)]|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[pageControl]|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(10)-[titleLabel(34)]-(10)-[collectionView(180)]-[pageControl(20)]-|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:views]];
@@ -66,11 +85,19 @@
 }
 
 - (void)updateWithExtras:(NSArray<CTExtraEquipment *> *)extras {
+    self.pageControl.numberOfPages = extras.count;
     [self.collectionView updateWithExtras:extras];
 }
 
 - (void)didTapViewAll:(UIButton *)button {
     [self.delegate extrasViewDidTapViewAll:self];
+}
+
+// MARK: Collection View Delegate
+
+- (void)collectionViewDidScrollToIndex:(NSInteger)index
+{
+    self.pageControl.currentPage = index;
 }
 
 @end
