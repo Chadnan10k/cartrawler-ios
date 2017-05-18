@@ -22,7 +22,7 @@
 #import "CTTermsViewController.h"
 #import "CTFreeCancelationAlertView.h"
 
-@interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate>
+@interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIView *containerView;
@@ -48,12 +48,12 @@
 
 @implementation CTVehicleInfoView
 
-- (instancetype)init
+- (instancetype)initWithVerticalOffset:(CGFloat)verticalOffset
 {
     self = [super init];
     self.translatesAutoresizingMaskIntoConstraints = NO;
     [self initNextButton];
-    [self initContainerView];
+    [self initContainerViewWithVerticalOffset:verticalOffset];
 
     _layoutManager = [CTLayoutManager layoutManagerWithContainer:self.containerView];
 
@@ -110,12 +110,13 @@
  View Creation
  */
 
-- (void)initContainerView
+- (void)initContainerViewWithVerticalOffset:(CGFloat)verticalOffset
 {
     _scrollView = [UIScrollView new];
     self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     self.scrollView.bounces = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.delegate = self;
     [self addSubview:self.scrollView];
 
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[scrollView]-0-[button(80)]-0-|"
@@ -139,7 +140,7 @@
     _containerView = [UIView new];
     self.containerView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.scrollView addSubview:self.containerView];
-    [CTLayoutManager pinView:self.containerView toSuperView:self.scrollView padding:UIEdgeInsetsZero];
+    [CTLayoutManager pinView:self.containerView toSuperView:self.scrollView padding:UIEdgeInsetsMake(verticalOffset, 0, 0, 0)];
     [self.containerView setHeightConstraint:@100 priority:@100];
     
     NSLayoutConstraint *equalWidth = [NSLayoutConstraint constraintWithItem:self.containerView
@@ -322,6 +323,12 @@
     if (self.delegate) {
         [self.delegate infoViewPushToNextStep];
     }
+}
+
+// MARK: Scroll View
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.delegate infoViewDidScroll:scrollView.contentOffset.y];
 }
 
 // MARK: Actions
