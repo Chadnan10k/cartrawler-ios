@@ -227,7 +227,7 @@
 }
 
 - (void)extrasViewDidTapViewAll:(CTExtrasCarouselView *)extrasView {
-    [[CTAnalytics instance] tagScreen:@"extras" detail:@"view_all" step:@-1];
+    [[CTAnalytics instance] tagScreen:@"extras" detail:@"view_all" step:nil];
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:bundle];
@@ -255,7 +255,7 @@
     UINavigationController *nav = [storyboard instantiateViewControllerWithIdentifier:@"CTTermsViewControllerNav"];
     CTTermsViewController *vc = (CTTermsViewController *)nav.topViewController;
     [vc setData:self.search cartrawlerAPI:self.cartrawlerAPI];
-    [[CTAnalytics instance] tagScreen:@"rc_lnk" detail:@"open" step:@-1];
+    [[CTAnalytics instance] tagScreen:@"rc_lnk" detail:@"open" step:nil];
     
     if (self.delegate) {
         [self.delegate infoViewPresentViewController:nav];
@@ -269,7 +269,7 @@
 // MARK: CTVehicleDetailsDelegate
 - (void)didTapMoreDetailsView:(UIView *)view
 {
-    [[CTAnalytics instance] tagScreen:@"features_i" detail:@"open" step:@-1];
+    [[CTAnalytics instance] tagScreen:@"features_i" detail:@"open" step:nil];
     
     if (self.delegate) {
         [self.alertView setTitle:CTLocalizedString(CTRentalFeatureTitle) message:nil];
@@ -387,8 +387,8 @@
         if (self.insuranceView.frame.origin.y <= scrollView.contentOffset.y + scrollView.frame.size.height) {
             self.insuranceViewDidAppear = YES;
             
-            [[CTAnalytics instance] tagScreen:@"Ins_offer" detail:@"yes" step:@-1];
-            [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-e" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"Ins_offer" detail:@"yes" step:nil];
+            [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-e" step:nil];
         }
     }
 }

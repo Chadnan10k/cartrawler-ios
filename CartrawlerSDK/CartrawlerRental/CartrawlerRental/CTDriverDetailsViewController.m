@@ -182,6 +182,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[CTAnalytics instance] setAnalyticsStep:CTAnalyticsStepPayment];
     
     for (UIView *v in self.containerView.subviews) {
         [v removeFromSuperview];
@@ -318,31 +319,31 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     if (textField == self.firstNameTextField) {
-        [[CTAnalytics instance] tagScreen:@"firstname" detail:@"enter" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"firstname" detail:@"enter" step:nil];
     }
     if (textField == self.lastNameTextField) {
-        [[CTAnalytics instance] tagScreen:@"surname" detail:@"enter" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"surname" detail:@"enter" step:nil];
     }
     if (textField == self.emailTextField) {
-        [[CTAnalytics instance] tagScreen:@"email1" detail:@"enter" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"email1" detail:@"enter" step:nil];
     }
     if (textField == self.phoneTextField) {
-        [[CTAnalytics instance] tagScreen:@"phone" detail:@"enter" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"phone" detail:@"enter" step:nil];
     }
     if (textField == self.flightNoTextField) {
-        [[CTAnalytics instance] tagScreen:@"flightNum" detail:@"enter" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"flightNum" detail:@"enter" step:nil];
     }
     if (textField == self.addressTextField) {
-        [[CTAnalytics instance] tagScreen:@"address1" detail:@"enter" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"address1" detail:@"enter" step:nil];
     }
     if (textField == self.address2TextField) {
-        [[CTAnalytics instance] tagScreen:@"address2" detail:@"enter" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"address2" detail:@"enter" step:nil];
     }
     if (textField == self.cityTextField) {
-        [[CTAnalytics instance] tagScreen:@"city" detail:@"enter" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"city" detail:@"enter" step:nil];
     }
     if (textField == self.postcodeTextField) {
-        [[CTAnalytics instance] tagScreen:@"postcode" detail:@"enter" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"postcode" detail:@"enter" step:nil];
     }
     
     _selectedView = textField;
@@ -402,31 +403,31 @@
 {
     
     if (textField == self.firstNameTextField) {
-        [[CTAnalytics instance] tagScreen:@"firstname" detail:@"type" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"firstname" detail:@"type" step:nil];
     }
     if (textField == self.lastNameTextField) {
-        [[CTAnalytics instance] tagScreen:@"surname" detail:@"type" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"surname" detail:@"type" step:nil];
     }
     if (textField == self.emailTextField) {
-        [[CTAnalytics instance] tagScreen:@"email1" detail:@"type" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"email1" detail:@"type" step:nil];
     }
     if (textField == self.phoneTextField) {
-        [[CTAnalytics instance] tagScreen:@"phone" detail:@"type" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"phone" detail:@"type" step:nil];
     }
     if (textField == self.flightNoTextField) {
-        [[CTAnalytics instance] tagScreen:@"flightNum" detail:@"type" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"flightNum" detail:@"type" step:nil];
     }
     if (textField == self.addressTextField) {
-        [[CTAnalytics instance] tagScreen:@"address1" detail:@"type" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"address1" detail:@"type" step:nil];
     }
     if (textField == self.address2TextField) {
-        [[CTAnalytics instance] tagScreen:@"address2" detail:@"type" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"address2" detail:@"type" step:nil];
     }
     if (textField == self.cityTextField) {
-        [[CTAnalytics instance] tagScreen:@"city" detail:@"type" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"city" detail:@"type" step:nil];
     }
     if (textField == self.postcodeTextField) {
-        [[CTAnalytics instance] tagScreen:@"postcode" detail:@"type" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"postcode" detail:@"type" step:nil];
     }
     
     if (textField == self.phoneTextField) {
@@ -442,7 +443,7 @@
     
     if (textField == self.flightNoTextField) {
         if (string.length <= 10) {
-            [[CTAnalytics instance] tagScreen:@"v_flightNu" detail:string step:@-1];
+            [[CTAnalytics instance] tagScreen:@"v_flightNu" detail:string step:nil];
         }
     }
     
@@ -451,31 +452,31 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
     if (textField == self.firstNameTextField) {
-        [[CTAnalytics instance] tagScreen:@"firstname" detail:@"leave" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"firstname" detail:@"leave" step:nil];
     }
     if (textField == self.lastNameTextField) {
-        [[CTAnalytics instance] tagScreen:@"surname" detail:@"leave" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"surname" detail:@"leave" step:nil];
     }
     if (textField == self.emailTextField) {
-        [[CTAnalytics instance] tagScreen:@"email1" detail:@"leave" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"email1" detail:@"leave" step:nil];
     }
     if (textField == self.phoneTextField) {
-        [[CTAnalytics instance] tagScreen:@"phone" detail:@"leave" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"phone" detail:@"leave" step:nil];
     }
     if (textField == self.flightNoTextField) {
-        [[CTAnalytics instance] tagScreen:@"flightNum" detail:@"leave" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"flightNum" detail:@"leave" step:nil];
     }
     if (textField == self.addressTextField) {
-        [[CTAnalytics instance] tagScreen:@"address1" detail:@"leave" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"address1" detail:@"leave" step:nil];
     }
     if (textField == self.address2TextField) {
-        [[CTAnalytics instance] tagScreen:@"address2" detail:@"leave" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"address2" detail:@"leave" step:nil];
     }
     if (textField == self.cityTextField) {
-        [[CTAnalytics instance] tagScreen:@"city" detail:@"leave" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"city" detail:@"leave" step:nil];
     }
     if (textField == self.postcodeTextField) {
-        [[CTAnalytics instance] tagScreen:@"postcode" detail:@"leave" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"postcode" detail:@"leave" step:nil];
     }
 }
 
@@ -618,7 +619,7 @@
 
 - (void)tagScreen
 {
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-d" step:@5];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-d" step:nil];
     [self sendEvent:NO customParams:@{@"eventName" : @"Driver Details Step",
                                       @"stepName" : @"Step5",
                                       } eventName:@"Step of search" eventType:@"Step"];

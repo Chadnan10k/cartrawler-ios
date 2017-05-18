@@ -78,7 +78,7 @@
 
 - (void)didSelectCellAtIndex:(NSIndexPath *)indexPath data:(CTAvailabilityItem *)data
 {
-    [[CTAnalytics instance] tagScreen:@"select_car" detail:@(indexPath.row+1).stringValue step:@0];
+    [[CTAnalytics instance] tagScreen:@"select_car" detail:@(indexPath.row+1).stringValue step:nil];
     if (self.delegate) {
         [self.delegate didSelectVehicle:data];
     }

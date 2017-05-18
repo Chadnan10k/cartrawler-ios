@@ -104,35 +104,35 @@
     [carSizeContainer setTableView:self.carSizeTableView];
     carSizeContainer.filterSelection = ^(BOOL expanded){
         if (!expanded) {
-            [[CTAnalytics instance] tagScreen:@"Car Size" detail:@"open" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"Car Size" detail:@"open" step:nil];
         }
     };
     CTFilterContainer *pickupContainer = [[CTFilterContainer alloc] initWithFrame:CGRectZero];
     [pickupContainer setTableView:self.pickupLocationTableView];
     pickupContainer.filterSelection = ^(BOOL expanded){
         if (!expanded) {
-            [[CTAnalytics instance] tagScreen:@"Pick-up" detail:@"open" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"Pick-up" detail:@"open" step:nil];
         }
     };
     CTFilterContainer *vendorsContainer = [[CTFilterContainer alloc] initWithFrame:CGRectZero];
     [vendorsContainer setTableView:self.vendorsTableView];
     vendorsContainer.filterSelection = ^(BOOL expanded){
         if (!expanded) {
-            [[CTAnalytics instance] tagScreen:@"Supplier" detail:@"open" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"Supplier" detail:@"open" step:nil];
         }
     };
     CTFilterContainer *fuelContainer = [[CTFilterContainer alloc] initWithFrame:CGRectZero];
     [fuelContainer setTableView:self.fuelPolicyTableView];
     fuelContainer.filterSelection = ^(BOOL expanded){
         if (!expanded) {
-            [[CTAnalytics instance] tagScreen:@"Fuel Pol" detail:@"open" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"Fuel Pol" detail:@"open" step:nil];
         }
     };
     CTFilterContainer *transmissionContainer = [[CTFilterContainer alloc] initWithFrame:CGRectZero];
     [transmissionContainer setTableView:self.transmissionTableView];
     transmissionContainer.filterSelection = ^(BOOL expanded){
         if (!expanded) {
-            [[CTAnalytics instance] tagScreen:@"Transmiss" detail:@"open" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"Transmiss" detail:@"open" step:nil];
         }
     };
 
@@ -335,10 +335,10 @@
 
 - (IBAction)doneTapped:(id)sender
 {
-    [[CTAnalytics instance] tagScreen:@"mdl_filter" detail:@"close" step:@-1];
+    [[CTAnalytics instance] tagScreen:@"mdl_filter" detail:@"close" step:nil];
     
     NSNumber *proportion = @(self.filterFactory.filteredData.count / self.filterFactory.data.items.count);
-    [[CTAnalytics instance] tagScreen:@"filtered" detail:proportion.stringValue step:@-1];
+    [[CTAnalytics instance] tagScreen:@"filtered" detail:proportion.stringValue step:nil];
     
     [self.filterFactory filter];
     if (self.delegate) {

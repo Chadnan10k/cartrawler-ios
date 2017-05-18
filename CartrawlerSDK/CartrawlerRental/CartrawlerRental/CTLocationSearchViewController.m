@@ -75,15 +75,15 @@
                 [weakSelf.view endEditing:YES];
                 if (self.searchContext == CTLocationSearchContextPickup) {
                     if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-                        [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"leave" step:@-1];
+                        [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"leave" step:nil];
                     }
-                    [[CTAnalytics instance] tagScreen:@"E_Pickup" detail:@"leave" step:@-1];
+                    [[CTAnalytics instance] tagScreen:@"E_Pickup" detail:@"leave" step:nil];
                 }
                 if (self.searchContext == CTLocationSearchContextDropoff) {
                     if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-                        [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"leave" step:@-1];
+                        [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"leave" step:nil];
                     }
-                    [[CTAnalytics instance] tagScreen:@"E_Dropoff" detail:@"leave" step:@-1];
+                    [[CTAnalytics instance] tagScreen:@"E_Dropoff" detail:@"leave" step:nil];
                 }
                 
                 [weakSelf dismissViewControllerAnimated:YES completion:nil];
@@ -103,20 +103,20 @@
 {
     if (self.searchContext == CTLocationSearchContextPickup) {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"type" step:@-1];
-            [[CTAnalytics instance] tagScreen:@"v_ML_Picku" detail:searchText step:@-1];
+            [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"type" step:nil];
+            [[CTAnalytics instance] tagScreen:@"v_ML_Picku" detail:searchText step:nil];
         }
-        [[CTAnalytics instance] tagScreen:@"E_Pickup" detail:@"type" step:@-1];
-        [[CTAnalytics instance] tagScreen:@"v_E_Picku" detail:searchText step:@-1];
+        [[CTAnalytics instance] tagScreen:@"E_Pickup" detail:@"type" step:nil];
+        [[CTAnalytics instance] tagScreen:@"v_E_Picku" detail:searchText step:nil];
     }
     
     if (self.searchContext == CTLocationSearchContextDropoff) {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"type" step:@-1];
-            [[CTAnalytics instance] tagScreen:@"v_ML_Dropo" detail:searchText step:@-1];
+            [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"type" step:nil];
+            [[CTAnalytics instance] tagScreen:@"v_ML_Dropo" detail:searchText step:nil];
         }
-        [[CTAnalytics instance] tagScreen:@"E_Dropoff" detail:@"type" step:@-1];
-        [[CTAnalytics instance] tagScreen:@"v_E_Dropo" detail:searchText step:@-1];
+        [[CTAnalytics instance] tagScreen:@"E_Dropoff" detail:@"type" step:nil];
+        [[CTAnalytics instance] tagScreen:@"v_E_Dropo" detail:searchText step:nil];
         
     }
     
@@ -146,15 +146,15 @@
 {
     if (self.searchContext == CTLocationSearchContextPickup) {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"l_ML_Picku" detail:@(searchBar.text.length).stringValue step:@-1];
+            [[CTAnalytics instance] tagScreen:@"l_ML_Picku" detail:@(searchBar.text.length).stringValue step:nil];
         }
-        [[CTAnalytics instance] tagScreen:@"I_E_Picku" detail:@(searchBar.text.length).stringValue step:@-1];
+        [[CTAnalytics instance] tagScreen:@"I_E_Picku" detail:@(searchBar.text.length).stringValue step:nil];
     }
     if (self.searchContext == CTLocationSearchContextDropoff) {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"l_ML_Dropo" detail:@(searchBar.text.length).stringValue step:@-1];
+            [[CTAnalytics instance] tagScreen:@"l_ML_Dropo" detail:@(searchBar.text.length).stringValue step:nil];
         }
-        [[CTAnalytics instance] tagScreen:@"I_E_Dropo" detail:@(searchBar.text.length).stringValue step:@-1];
+        [[CTAnalytics instance] tagScreen:@"I_E_Dropo" detail:@(searchBar.text.length).stringValue step:nil];
     }
     
     [self.view endEditing:YES];
@@ -164,15 +164,15 @@
 {
     if (self.searchContext == CTLocationSearchContextPickup) {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"leave" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"leave" step:nil];
         }
-        [[CTAnalytics instance] tagScreen:@"E_Pickup" detail:@"leave" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"E_Pickup" detail:@"leave" step:nil];
     }
     if (self.searchContext == CTLocationSearchContextDropoff) {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"leave" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"leave" step:nil];
         }
-        [[CTAnalytics instance] tagScreen:@"E_Dropoff" detail:@"leave" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"E_Dropoff" detail:@"leave" step:nil];
     }
     [self.view endEditing:YES];
 }

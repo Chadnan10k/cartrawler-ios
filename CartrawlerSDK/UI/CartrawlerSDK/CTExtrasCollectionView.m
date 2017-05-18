@@ -196,7 +196,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal && !self.scrollViewDidBeginDragging) {
         self.scrollViewDidBeginDragging = YES;
-        [[CTAnalytics instance] tagScreen:@"extras" detail:@"scroll" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"extras" detail:@"scroll" step:nil];
     }
 }
 
@@ -205,7 +205,7 @@ static NSString * const reuseIdentifier = @"Cell";
         return;
     }
     
-    [[CTAnalytics instance] tagScreen:@"extras" detail:@"all_clk" step:@-1];
+    [[CTAnalytics instance] tagScreen:@"extras" detail:@"all_clk" step:nil];
     
     UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *cell = (UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *)[self.collectionView cellForItemAtIndexPath:indexPath];
     

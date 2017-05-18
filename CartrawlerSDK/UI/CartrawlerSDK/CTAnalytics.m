@@ -54,6 +54,10 @@
     [self fireTag:tag.produceURL];
 }
 
+- (void)setAnalyticsStep:(CTAnalyticsStep)analyticsStep {
+    _analyticsStep = analyticsStep;
+}
+
 - (void)tagError:(nonnull NSString *)step
            event:(nonnull NSString *)event
          message:(nonnull NSString *)message

@@ -237,14 +237,14 @@
 {
     if (isPickupView) {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"click" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"click" step:nil];
         }
-        [[CTAnalytics instance] tagScreen:@"E_Pickup" detail:@"click" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"E_Pickup" detail:@"click" step:nil];
     } else {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"click" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"click" step:nil];
         }
-        [[CTAnalytics instance] tagScreen:@"E_Dropoff" detail:@"click" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"E_Dropoff" detail:@"click" step:nil];
     }
     
     __weak typeof(self) weakSelf = self;
@@ -411,17 +411,17 @@
     if (sender == self.ageSwitch) {
         if (sender.isOn) {
             if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-                [[CTAnalytics instance] tagScreen:@"ageCheckbo" detail:@"1" step:@-1];
+                [[CTAnalytics instance] tagScreen:@"ageCheckbo" detail:@"1" step:nil];
             }
-            [[CTAnalytics instance] tagScreen:@"E_ageCheck" detail:@"1" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"E_ageCheck" detail:@"1" step:nil];
             self.search.driverAge = @30;
             NSUInteger idx = [self.layoutManager indexOfObject:self.ageContainer].integerValue;
             [self.layoutManager removeAtIndex:idx];
         } else {
             if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-                [[CTAnalytics instance] tagScreen:@"ageCheckbo" detail:@"0" step:@-1];
+                [[CTAnalytics instance] tagScreen:@"ageCheckbo" detail:@"0" step:nil];
             }
-            [[CTAnalytics instance] tagScreen:@"E_ageCheck" detail:@"0" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"E_ageCheck" detail:@"0" step:nil];
             self.search.driverAge = nil;
             NSUInteger idx = [self.layoutManager indexOfObject:self.ageSwitchContainer].integerValue;
             [self.layoutManager insertViewAtIndex:idx padding:UIEdgeInsetsMake(8, 8, 8, 8) view:self.ageContainer];
@@ -431,16 +431,16 @@
     if (sender == self.locationSwitch) {
         if (sender.isOn) {
             if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-                [[CTAnalytics instance] tagScreen:@"returnLoca" detail:@"1" step:@-1];
+                [[CTAnalytics instance] tagScreen:@"returnLoca" detail:@"1" step:nil];
             }
-            [[CTAnalytics instance] tagScreen:@"E_returnL" detail:@"1" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"E_returnL" detail:@"1" step:nil];
             self.search.dropoffLocation = self.search.pickupLocation;
             [self.layoutManager removeAtIndex:1];
         } else {
             if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-                [[CTAnalytics instance] tagScreen:@"returnLoca" detail:@"0" step:@-1];
+                [[CTAnalytics instance] tagScreen:@"returnLoca" detail:@"0" step:nil];
             }
-            [[CTAnalytics instance] tagScreen:@"E_returnL" detail:@"0" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"E_returnL" detail:@"0" step:nil];
             self.search.dropoffLocation = nil;
             [self.layoutManager insertViewAtIndex:1 padding:UIEdgeInsetsMake(8, 8, 8, 8) view:self.dropoffLocationSearch];
         }
@@ -452,32 +452,32 @@
 {
     if (selectionView == self.pickupLocationSearch) {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"click" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"click" step:nil];
         }
-        [[CTAnalytics instance] tagScreen:@"E_Pickup" detail:@"click" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"E_Pickup" detail:@"click" step:nil];
         [self presentLocationSelection:YES];
     }
     
     if (selectionView == self.dropoffLocationSearch) {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"click" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"click" step:nil];
         }
-        [[CTAnalytics instance] tagScreen:@"E_Dropoff" detail:@"click" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"E_Dropoff" detail:@"click" step:nil];
         [self presentLocationSelection:NO];
     }
     
     if (selectionView == self.datesContainer) {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"calendar_d" detail:@"click" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"calendar_d" detail:@"click" step:nil];
         }
-        [[CTAnalytics instance] tagScreen:@"E_calend_d" detail:@"click" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"E_calend_d" detail:@"click" step:nil];
         [self presentCalendar];
     }
     
     if (selectionView == self.pickupTimeContainer) {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"calendar_t" detail:@"click" step:@-1];
-            [[CTAnalytics instance] tagScreen:@"E_calend_t" detail:@"click" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"calendar_t" detail:@"click" step:nil];
+            [[CTAnalytics instance] tagScreen:@"E_calend_t" detail:@"click" step:nil];
         }
         [self presentTimePicker:YES];
     }
@@ -491,9 +491,9 @@
 {
     if (selectionView == self.ageContainer) {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"driverAgeC" detail:@"enter" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"driverAgeC" detail:@"enter" step:nil];
         }
-        [[CTAnalytics instance] tagScreen:@"E_driverAgeC" detail:@"enter" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"E_driverAgeC" detail:@"enter" step:nil];
     }
     
     [self addKeyboardNotifications];
@@ -502,18 +502,18 @@
 - (void)selectionViewChangedCharacters:(CTSelectionView *)selectionView {
     if (selectionView == self.ageContainer) {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"driverAgeC" detail:@"type" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"driverAgeC" detail:@"type" step:nil];
         }
-        [[CTAnalytics instance] tagScreen:@"E_driverAgeC" detail:@"type" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"E_driverAgeC" detail:@"type" step:nil];
     }
 }
 
 - (void)selectionViewDidEndEditing:(CTSelectionView *)selectionView {
     if (selectionView == self.ageContainer) {
         if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"driverAgeC" detail:@"leave" step:@-1];
+            [[CTAnalytics instance] tagScreen:@"driverAgeC" detail:@"leave" step:nil];
         }
-        [[CTAnalytics instance] tagScreen:@"E_driverAgeC" detail:@"leave" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"E_driverAgeC" detail:@"leave" step:nil];
     }
 }
 

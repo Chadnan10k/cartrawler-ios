@@ -50,7 +50,7 @@
     [[CTRentalSearch instance] reset];
     [self configureViews];
     [self presentRentalNavigationController:viewController];
-    [[CTAnalytics instance] tagScreen:@"visit" detail:@"stand" step:@1];
+    [[CTAnalytics instance] tagScreen:@"visit" detail:@"stand" step:nil];
     
     CTAnalyticsEvent *event = [[CTAnalyticsEvent alloc] init];
     event.params = @{@"buttonName" : @"Cars"};

@@ -11,9 +11,11 @@
 #import "CTErrorTag.h"
 
 typedef NS_ENUM(NSUInteger, CTAnalyticsStep) {
-    CTAnalyticsStepInPathVehicleSearch,
-    CTAnalyticsStepInPathVehicleList,
-    CTAnalyticsStepInPathVehicleDetails
+    CTAnalyticsStepSearch = 1,
+    CTAnalyticsStepVehicleSelection,
+    CTAnalyticsStepVehicleDetails,
+    CTAnalyticsStepPayment,
+    CTAnalyticsStepConfirmation
 };
 
 NS_ASSUME_NONNULL_BEGIN

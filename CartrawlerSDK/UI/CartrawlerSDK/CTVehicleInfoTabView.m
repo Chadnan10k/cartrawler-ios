@@ -178,19 +178,19 @@
     if ([listView isEqual:self.includedListView]) {
         switch (index) {
             case 0:
-                [[CTAnalytics instance] tagScreen:@"pickup_i" detail:@"open" step:@-1];
+                [[CTAnalytics instance] tagScreen:@"pickup_i" detail:@"open" step:nil];
                 [self expandView:expandingView withText:[CTLocalisedStrings toolTipTextForPickupType:self.availabilityItem]];
                 break;
             case 1:
-                [[CTAnalytics instance] tagScreen:@"fuelpol_i" detail:@"open" step:@-1];
+                [[CTAnalytics instance] tagScreen:@"fuelpol_i" detail:@"open" step:nil];
                 [self expandView:expandingView withText:[CTLocalisedStrings toolTipTextForFuelPolicy:self.availabilityItem.vehicle.fuelPolicy]];
                 break;
             case 2:
-                [[CTAnalytics instance] tagScreen:@"mileage_i" detail:@"open" step:@-1];
+                [[CTAnalytics instance] tagScreen:@"mileage_i" detail:@"open" step:nil];
                 [self expandView:expandingView withRateDistance:self.availabilityItem.vehicle.rateDistance];
                 break;
             case 3:
-                [[CTAnalytics instance] tagScreen:@"basicins_i" detail:@"open" step:@-1];
+                [[CTAnalytics instance] tagScreen:@"basicins_i" detail:@"open" step:nil];
                 [self expandView:expandingView withCoverages:self.availabilityItem.vehicle.pricedCoverages];
                 break;
             default:

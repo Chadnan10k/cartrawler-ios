@@ -48,7 +48,7 @@
     }
     CTFilterTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [cell cellTapped];
-    [[CTAnalytics instance] tagScreen:@"carousel" detail:cell.label.text step:@-1];
+    [[CTAnalytics instance] tagScreen:@"carousel" detail:cell.label.text step:nil];
     
     if (self.filterCompletion) {
         self.filterCompletion(self.selectedData);

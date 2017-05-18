@@ -53,7 +53,6 @@
              parentViewController:(nonnull UIViewController *)parentViewController;
 {
     [[CTSDKSettings instance] setClientId:clientID];
-    [CTSDKSettings instance].journey = CTSDKJourneyInPath;
     _clientID = clientID;
     [self renderDefaultState];
     _parentViewController = parentViewController;
@@ -215,7 +214,7 @@
     [CTRentalSearch instance].selectedVehicle = nil;
     [self configureViews];
     [self presentRentalNavigationController:parentViewController showSelection:YES];
-    [[CTAnalytics instance] tagScreen:@"click_WI" detail:@"see_all" step:@-1];
+    [[CTAnalytics instance] tagScreen:@"click_WI" detail:@"see_all" step:nil];
 }
 
 - (void)presentSelectedVehicle:(nonnull UIViewController *)parentViewController selectedVehicleItem:(CTAvailabilityItem *)vehicleItem;
@@ -277,7 +276,7 @@
 - (void)renderReadyState
 {
     if (self.cardView) {
-        [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:nil];
         
         [self.cardView showVehicleSelection:self.defaultSearch.vehicleAvailability
                                  pickupDate:self.defaultSearch.pickupDate
@@ -301,6 +300,8 @@
 
 - (void)addInPathCarouselToContainer:(UIView *)view
 {
+    [[CTAnalytics instance] setAnalyticsStep:CTAnalyticsStepSearch];
+    
     if (!self.cardView) {
         _cardView = [CTInPathView new];
         self.cardView.delegate = self;
@@ -326,12 +327,11 @@
                                                                  options:0
                                                                  metrics:nil
                                                                    views:@{@"view" : self.cardView}]];
-    
 }
 
 - (void)removeVehicle
 {
-    [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"removed" step:@-1];
+    [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"removed" step:nil];
     [CTDataStore deletePotentialInPathBooking];
     _cachedVehicle = nil;
     if (self.cardView) {
@@ -380,7 +380,7 @@
         [self.rental.cartrawlerSDK sendAnalyticsSaleEvent:saleEvent];
         [CTDataStore didMakeInPathBooking:confirmationID];
         
-        [[CTAnalytics instance] tagScreen:@"step" detail:@"confirmati" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"step" detail:@"confirmati" step:nil];
     }
 }
 
@@ -398,7 +398,7 @@
     [self renderSelectedState];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(didProduceInPathPaymentRequest:vehicle:)]) {
-        [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"added" step:@-1];
+        [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"added" step:nil];
         [CTDataStore cachePotentialInPathBooking:booking];
         [self.delegate didProduceInPathPaymentRequest:[CTInPathPayment createInPathRequest:search]
                                        vehicle:vehicle];
