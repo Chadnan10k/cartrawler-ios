@@ -55,7 +55,7 @@
                                                                  options:0
                                                                  metrics:nil
                                                                    views:views]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(10)-[titleLabel(34)]-(10)-[collectionView(120)]|"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(10)-[titleLabel(34)]-(10)-[collectionView(180)]|"
                                                                  options:0
                                                                  metrics:nil
                                                                    views:views]];

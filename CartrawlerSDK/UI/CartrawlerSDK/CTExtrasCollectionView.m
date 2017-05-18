@@ -21,8 +21,8 @@ NSInteger const kDefaultExtrasCountWhenIncludedInRate = 1;
 CGFloat const kCarouselInteritemSpacing = 10.0;
 CGFloat const kCarouselVerticalSectionInsets = 0;
 CGFloat const kCarouselHorizontalSectionInsets = 15.0;
-CGFloat const kCarouselCellWidth = 220.0;
-CGFloat const kCarouselCellHeight = 100.0;
+CGFloat const kCarouselCellWidth = 170.0;
+CGFloat const kCarouselCellHeight = 170.0;
 
 CGFloat const kListCellHeight = 80.0;
 CGFloat const kListCellHeightExpanded = 160.0;
@@ -69,7 +69,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     [collectionView registerClass:[CTExtrasCarouselViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    collectionView.backgroundColor = [UIColor colorWithRed:43.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0];
+    collectionView.backgroundColor = [UIColor whiteColor];
     collectionView.showsHorizontalScrollIndicator = NO;
     
     return collectionView;
