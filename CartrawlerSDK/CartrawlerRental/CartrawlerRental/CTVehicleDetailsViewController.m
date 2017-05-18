@@ -18,7 +18,7 @@
 #import "CTVehicleSelectionViewController.h"
 #import <CartrawlerSDK/CTLoadingView.h>
 
-@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTCountryPickerDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate>
+@interface CTVehicleDetailsViewController () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTListViewDelegate, CTCountryPickerDelegate, CTViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -203,7 +203,6 @@
 - (void)initExtrasView {
     self.extrasView = [CTExtrasCarouselView new];
     [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
-    self.extrasView.delegate = self;
     [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.extrasView];
 }
 

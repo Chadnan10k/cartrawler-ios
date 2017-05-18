@@ -415,5 +415,6 @@ NSString * const CTRentalInsuranceBasicDetail = @"insurance_basic_detail";
 
 NSString * const CTRentalRatingOverall = @"overall_rating";
 
+NSString * const CTRentalAllExtrasPaid = @"all_extras_paid";
 
 @end

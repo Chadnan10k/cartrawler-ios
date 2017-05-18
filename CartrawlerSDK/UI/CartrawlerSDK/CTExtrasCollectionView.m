@@ -213,7 +213,7 @@ static NSString * const reuseIdentifier = @"Cell";
     if (self.delegate) {
         double percentage = scrollView.contentOffset.x / (scrollView.contentSize.width - scrollView.frame.size.width);
         NSInteger index = percentage * self.extras.count;
-        [self.delegate collectionViewDidScrollToIndex:index];
+        [self.delegate collectionView:self didScrollToIndex:index];
     }
 }
 
@@ -248,6 +248,7 @@ static NSString * const reuseIdentifier = @"Cell";
     if (extra.qty == kMaxExtras) {
         [cell setIncrementEnabled:NO];
     }
+    [self.delegate collectionViewDidAddExtra:self];
 }
 
 - (void)cellDidTapDecrement:(UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *)cell {

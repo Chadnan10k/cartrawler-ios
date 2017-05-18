@@ -95,9 +95,13 @@
 
 // MARK: Collection View Delegate
 
-- (void)collectionViewDidScrollToIndex:(NSInteger)index
+- (void)collectionView:(CTExtrasCollectionView *)collectionView didScrollToIndex:(NSInteger)index
 {
     self.pageControl.currentPage = index;
+}
+
+- (void)collectionViewDidAddExtra:(CTExtrasCollectionView *)collectionView {
+    [self.delegate extrasViewDidAddExtra:self];
 }
 
 @end

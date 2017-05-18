@@ -411,5 +411,7 @@ extern NSString * const CTRentalInsuranceBasicDetail;
 
 extern NSString * const CTRentalRatingOverall;
 
+extern NSString * const CTRentalAllExtrasPaid;
+
 
 @end
