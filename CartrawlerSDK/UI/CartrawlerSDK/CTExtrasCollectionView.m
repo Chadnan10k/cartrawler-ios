@@ -118,7 +118,7 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     cell.chargeAmountHighlighted = extra.isIncludedInRate;
     
-    cell.detail = CTLocalizedString(CTRentalExtrasPaidAtDesk);
+    cell.detail = [self detailForExtra:extra];
     
     BOOL decrementEnabled = (!extra.isIncludedInRate && extra.qty != 0);
     [cell setDecrementEnabled:decrementEnabled];
@@ -178,6 +178,47 @@ static NSString * const reuseIdentifier = @"Cell";
             break;
     }
 }
+
+- (NSString *)detailForExtra:(CTExtraEquipment *)extra {
+    switch (extra.equipmentType) {
+        case CTExtraEquipmentTypeAdditionalDriver:
+            return CTLocalizedString(CTRentalDetailAdditionalDriver);
+        case CTExtraEquipmentTypeBoosterSeat:
+            return CTLocalizedString(CTRentalDetailBoosterSeat);
+        case CTExtraEquipmentTypeBreathalyser:
+            return CTLocalizedString(CTRentalDetailBreathalyser);
+        case CTExtraEquipmentTypeNavigationSystem:
+            return CTLocalizedString(CTRentalDetailNavigationSystem);
+        case CTExtraEquipmentTypeNavigationalPhone:
+            return CTLocalizedString(CTRentalDetailNavigationalPhone);
+        case CTExtraEquipmentTypeGPS:
+            return CTLocalizedString(CTRentalDetailGPS);
+        case CTExtraEquipmentTypeInfantSeat:
+            return CTLocalizedString(CTRentalDetailInfantSeat);
+        case CTExtraEquipmentTypeLuggageRack:
+            return CTLocalizedString(CTRentalDetailLuggageRack);
+        case CTExtraEquipmentTypeMobilePhone:
+            return CTLocalizedString(CTRentalDetailMobilePhone);
+        case CTExtraEquipmentTypeSkiRack:
+            return CTLocalizedString(CTRentalDetailSkiRack);
+        case CTExtraEquipmentTypeSnowChains:
+            return CTLocalizedString(CTRentalDetailSnowChains);
+        case CTExtraEquipmentTypeSnowTires:
+            return CTLocalizedString(CTRentalDetailSnowTires);
+        case CTExtraEquipmentTypeToddlerSeat:
+            return CTLocalizedString(CTRentalDetailToddlerSeat);
+        case CTExtraEquipmentTypeTollTag:
+            return CTLocalizedString(CTRentalDetailTollTag);
+        case CTExtraEquipmentTypeWifi:
+            return CTLocalizedString(CTRentalDetailWifi);
+        case CTExtraEquipmentTypeWinterPackage:
+            return CTLocalizedString(CTRentalDetailWinterPackage);
+        default:
+            return CTLocalizedString(CTRentalExtrasPaidAtDesk);
+            break;
+    }
+}
+
 
 // MARK: UICollectionViewDelegate
 

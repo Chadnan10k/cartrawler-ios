@@ -88,10 +88,7 @@
     self.counter.delegate = self;
     [self.contentView addSubview:self.counter];
     
-    self.closeButton = [UIButton new];
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    UIImage *closeImage = [[UIImage imageNamed:@"information" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.closeButton setImage:closeImage forState:UIControlStateNormal];
+    self.closeButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
     self.closeButton.tintColor = [UIColor colorWithRed:43.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0];
     self.closeButton.translatesAutoresizingMaskIntoConstraints = NO;
     self.closeButton.hidden = YES;
@@ -105,15 +102,18 @@
     [self.contentView addSubview:self.infoTitleLabel];
     
     self.infoDetailLabel = [[CTLabel alloc] init:13 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:NO];
+    self.infoDetailLabel.numberOfLines = 0;
+    self.infoDetailLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.infoDetailLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.infoDetailLabel.hidden = YES;
+    self.infoDetailLabel.allowsDefaultTighteningForTruncation = YES;
     [self.contentView addSubview:self.infoDetailLabel];
 }
 
 - (void)addConstraints {
-    NSDictionary *views = @{@"imageBackgroundView": self.imageBackgroundView, @"imageView" : self.imageView, @"infoButton" : self.infoButton, @"closeButton" : self.closeButton, @"titleLabel" : self.titleLabel, @"detailLabel" : self.detailLabel, @"counter" : self.counter};
+    NSDictionary *views = @{@"imageBackgroundView": self.imageBackgroundView, @"imageView" : self.imageView, @"infoButton" : self.infoButton, @"closeButton" : self.closeButton, @"titleLabel" : self.titleLabel, @"detailLabel" : self.detailLabel, @"counter" : self.counter, @"infoTitleLabel": self.infoTitleLabel, @"infoDetailLabel": self.infoDetailLabel};
     
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-5-[imageBackgroundView(40)]-15-[titleLabel][detailLabel(==titleLabel)]-[counter(30)]-|"
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[imageBackgroundView(40)]-15-[titleLabel][detailLabel(==titleLabel)]-15-[counter(30)]-10-|"
                                                                              options:0
                                                                              metrics:nil
                                                                                views:views]];
@@ -177,8 +177,20 @@
                                                                              metrics:nil
                                                                                views:views]];
     
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-25-[infoTitleLabel(20)]-5-[infoDetailLabel]-5-[counter(30)]-10-|"
+                                                                             options:0
+                                                                             metrics:nil
+                                                                               views:views]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.imageBackgroundView
+                                                     attribute:NSLayoutAttributeCenterX
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeCenterX
+                                                    multiplier:1.0
+                                                      constant:0]];
     
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[closeButton(20)]"
+    
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[closeButton(20)]-(10)-|"
                                                                              options:0
                                                                              metrics:nil
                                                                                views:views]];
@@ -201,13 +213,6 @@
                                                                 multiplier:0.7
                                                                   constant:0]];
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView
-                                                                 attribute:NSLayoutAttributeCenterY
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.infoTitleLabel
-                                                                 attribute:NSLayoutAttributeCenterY
-                                                                multiplier:1.0
-                                                                  constant:30]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView
                                                                  attribute:NSLayoutAttributeCenterX
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.infoDetailLabel
@@ -220,13 +225,6 @@
                                                                     toItem:self.contentView
                                                                  attribute:NSLayoutAttributeWidth
                                                                 multiplier:0.9
-                                                                  constant:0]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView
-                                                                 attribute:NSLayoutAttributeCenterY
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.infoDetailLabel
-                                                                 attribute:NSLayoutAttributeCenterY
-                                                                multiplier:1.0
                                                                   constant:0]];
 }
 

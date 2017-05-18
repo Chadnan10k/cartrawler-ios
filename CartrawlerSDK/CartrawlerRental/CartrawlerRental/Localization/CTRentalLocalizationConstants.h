@@ -411,7 +411,40 @@ extern NSString * const CTRentalInsuranceBasicDetail;
 
 extern NSString * const CTRentalRatingOverall;
 
+// Extras
+
 extern NSString * const CTRentalAllExtrasPaid;
 
+extern NSString * const CTRentalDetailAdditionalDriver;
+
+extern NSString * const CTRentalDetailBoosterSeat;
+
+extern NSString * const CTRentalDetailBreathalyser;
+
+extern NSString * const CTRentalDetailNavigationSystem;
+
+extern NSString * const CTRentalDetailNavigationalPhone;
+
+extern NSString * const CTRentalDetailGPS;
+
+extern NSString * const CTRentalDetailInfantSeat;
+
+extern NSString * const CTRentalDetailLuggageRack;
+
+extern NSString * const CTRentalDetailMobilePhone;
+
+extern NSString * const CTRentalDetailSkiRack;
+
+extern NSString * const CTRentalDetailSnowChains;
+
+extern NSString * const CTRentalDetailSnowTires;
+
+extern NSString * const CTRentalDetailToddlerSeat;
+
+extern NSString * const CTRentalDetailTollTag;
+
+extern NSString * const CTRentalDetailWifi;
+
+extern NSString * const CTRentalDetailWinterPackage;
 
 @end
