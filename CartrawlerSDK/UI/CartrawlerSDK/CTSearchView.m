@@ -163,6 +163,7 @@
     detailLabel.text = text;
     detailLabel.translatesAutoresizingMaskIntoConstraints = NO;
     detailLabel.numberOfLines = 0;
+    detailLabel.textColor = [UIColor whiteColor];
     UIView *container = [UIView new];
     container.translatesAutoresizingMaskIntoConstraints = NO;
     
