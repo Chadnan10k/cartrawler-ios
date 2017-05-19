@@ -58,12 +58,14 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self configureBackButton];
     [self updateNavigationBar];
     [self.search addObserver:self forKeyPath:@"vehicleAvailability"
                      options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                      context:nil];
     
-    if (self.search.selectedVehicle) {
+    if (self.search.selectedVehicle && self.navigationController.viewControllers.firstObject == self) {
         [self presentVehicleDetails];
     } else {
         [self presentVehicleSelection];
@@ -88,6 +90,18 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
         [self presentVehicleSelection];
         [self.vehicleSelectionView scrollToTop];
     });
+}
+
+- (void)configureBackButton
+{
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    if (self.navigationController.viewControllers.firstObject == self) {
+        UIImage *buttonImage = [UIImage imageNamed:@"down_arrow" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.dismissButton setImage:buttonImage forState:UIControlStateNormal];
+    } else {
+        UIImage *buttonImage = [UIImage imageNamed:@"backArrow" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.dismissButton setImage:buttonImage forState:UIControlStateNormal];
+    }
 }
 
 - (void)setupViews
@@ -172,8 +186,12 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (IBAction)dismiss:(id)sender
 {
-    self.search.selectedVehicle = nil;
-    [self dismiss];
+    if (self.navigationController.viewControllers.firstObject == self) {
+        self.search.selectedVehicle = nil;
+        [self dismiss];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (IBAction)search:(id)sender
@@ -237,7 +255,6 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     if (self.presentedView == CTPresentedViewDetails) {
             [self showDetailedPriceSummary];
     }
-    
 }
 
 - (void)updatePriceSummary:(BOOL)isBuyingInsurance
@@ -249,7 +266,6 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     } else {
         price = [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
     }
-    
     
     NSAttributedString *priceString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
                                                     boldColor:[UIColor whiteColor]
@@ -322,7 +338,11 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (void)didSelectVehicle:(CTAvailabilityItem *)item
 {
     self.search.selectedVehicle = item;
-    [self presentVehicleDetails];
+    if (self.navigationController.viewControllers.firstObject == self) {
+        [self presentVehicleDetails];
+    } else {
+        [self pushToDestination];
+    }
 }
 
 //MARK: CTVehicleInfoDelegate
