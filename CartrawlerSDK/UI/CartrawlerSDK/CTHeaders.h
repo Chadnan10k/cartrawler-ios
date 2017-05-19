@@ -67,3 +67,4 @@
 #import "CTTriangleView.h"
 #import "CTLoadingView.h"
 #import "CTImageTextView.h"
+#import "CTToastView.h"

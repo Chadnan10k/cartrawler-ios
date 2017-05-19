@@ -63,8 +63,10 @@ CGFloat const kExtrasTriangleHeight = 10.0;
     self.detailContainer.backgroundColor = backgroundColor;
     [self.contentView addSubview:self.detailContainer];
     
-    self.detailLabel = [[CTLabel alloc] init:18 textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentCenter boldFont:NO];
+    self.detailLabel = [[CTLabel alloc] init:16 textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentCenter boldFont:NO];
     self.detailLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.detailLabel.numberOfLines = 0;
+    self.detailLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.detailContainer addSubview:self.detailLabel];
     
     self.counter = [CTCounterView new];

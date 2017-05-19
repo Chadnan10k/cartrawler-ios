@@ -21,8 +21,8 @@ NSInteger const kDefaultExtrasCountWhenIncludedInRate = 1;
 CGFloat const kCarouselInteritemSpacing = 10.0;
 CGFloat const kCarouselVerticalSectionInsets = 0;
 CGFloat const kCarouselHorizontalSectionInsets = 15.0;
-CGFloat const kCarouselCellWidth = 220.0;
-CGFloat const kCarouselCellHeight = 100.0;
+CGFloat const kCarouselCellWidth = 170.0;
+CGFloat const kCarouselCellHeight = 170.0;
 
 CGFloat const kListCellHeight = 80.0;
 CGFloat const kListCellHeightExpanded = 160.0;
@@ -69,7 +69,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     [collectionView registerClass:[CTExtrasCarouselViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    collectionView.backgroundColor = [UIColor colorWithRed:43.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0];
+    collectionView.backgroundColor = [UIColor whiteColor];
     collectionView.showsHorizontalScrollIndicator = NO;
     
     return collectionView;
@@ -118,7 +118,7 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     cell.chargeAmountHighlighted = extra.isIncludedInRate;
     
-    cell.detail = CTLocalizedString(CTRentalExtrasPaidAtDesk);
+    cell.detail = [self detailForExtra:extra];
     
     BOOL decrementEnabled = (!extra.isIncludedInRate && extra.qty != 0);
     [cell setDecrementEnabled:decrementEnabled];
@@ -179,6 +179,47 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
+- (NSString *)detailForExtra:(CTExtraEquipment *)extra {
+    switch (extra.equipmentType) {
+        case CTExtraEquipmentTypeAdditionalDriver:
+            return CTLocalizedString(CTRentalDetailAdditionalDriver);
+        case CTExtraEquipmentTypeBoosterSeat:
+            return CTLocalizedString(CTRentalDetailBoosterSeat);
+        case CTExtraEquipmentTypeBreathalyser:
+            return CTLocalizedString(CTRentalDetailBreathalyser);
+        case CTExtraEquipmentTypeNavigationSystem:
+            return CTLocalizedString(CTRentalDetailNavigationSystem);
+        case CTExtraEquipmentTypeNavigationalPhone:
+            return CTLocalizedString(CTRentalDetailNavigationalPhone);
+        case CTExtraEquipmentTypeGPS:
+            return CTLocalizedString(CTRentalDetailGPS);
+        case CTExtraEquipmentTypeInfantSeat:
+            return CTLocalizedString(CTRentalDetailInfantSeat);
+        case CTExtraEquipmentTypeLuggageRack:
+            return CTLocalizedString(CTRentalDetailLuggageRack);
+        case CTExtraEquipmentTypeMobilePhone:
+            return CTLocalizedString(CTRentalDetailMobilePhone);
+        case CTExtraEquipmentTypeSkiRack:
+            return CTLocalizedString(CTRentalDetailSkiRack);
+        case CTExtraEquipmentTypeSnowChains:
+            return CTLocalizedString(CTRentalDetailSnowChains);
+        case CTExtraEquipmentTypeSnowTires:
+            return CTLocalizedString(CTRentalDetailSnowTires);
+        case CTExtraEquipmentTypeToddlerSeat:
+            return CTLocalizedString(CTRentalDetailToddlerSeat);
+        case CTExtraEquipmentTypeTollTag:
+            return CTLocalizedString(CTRentalDetailTollTag);
+        case CTExtraEquipmentTypeWifi:
+            return CTLocalizedString(CTRentalDetailWifi);
+        case CTExtraEquipmentTypeWinterPackage:
+            return CTLocalizedString(CTRentalDetailWinterPackage);
+        default:
+            return CTLocalizedString(CTRentalExtrasPaidAtDesk);
+            break;
+    }
+}
+
+
 // MARK: UICollectionViewDelegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -206,6 +247,15 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     
     [collectionView performBatchUpdates:nil completion:nil];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (self.delegate) {
+        double percentage = scrollView.contentOffset.x / (scrollView.contentSize.width - scrollView.frame.size.width);
+        NSInteger index = percentage * self.extras.count;
+        [self.delegate collectionView:self didScrollToIndex:index];
+    }
 }
 
 // MARK: CTExtrasCollectionViewCellDelegate
@@ -239,6 +289,7 @@ static NSString * const reuseIdentifier = @"Cell";
     if (extra.qty == kMaxExtras) {
         [cell setIncrementEnabled:NO];
     }
+    [self.delegate collectionViewDidAddExtra:self];
 }
 
 - (void)cellDidTapDecrement:(UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *)cell {

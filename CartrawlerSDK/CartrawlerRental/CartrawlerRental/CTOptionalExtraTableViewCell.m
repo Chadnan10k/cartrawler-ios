@@ -130,7 +130,6 @@
 
 - (UIImage *)imageForExtra:(NSString *)extraId
 {
-    
     NSBundle* bundle = [NSBundle bundleForClass:[self class]];
     if ([extraId isEqualToString:@"3"]) {
         //luggage rack
