@@ -206,8 +206,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (IBAction)search:(id)sender
 {
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"searchcars" step:nil];
     [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"open" step:nil];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"searchcars" step:nil];
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
     CTSearchDetailsViewController *searchViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalSearchViewIdentifier];

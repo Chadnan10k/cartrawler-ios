@@ -60,7 +60,6 @@
     // TODO: This is calling an empty method
     [self.searchView updateDisplayWithSearch:self.search];
     self.previousSearch = self.search;
-    [[CTAnalytics instance] setAnalyticsStep:CTAnalyticsStepSearch];
 }
 
 - (CTSearchView *)setupSearchView
