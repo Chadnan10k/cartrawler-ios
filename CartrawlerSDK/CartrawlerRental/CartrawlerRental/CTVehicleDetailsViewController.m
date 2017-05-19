@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet CTPaymentSummaryExpandedView *paymentSummaryView;
 @property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint  *summaryViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewTopConstraint;
 @property (weak, nonatomic) IBOutlet UIView *dimmingView;
 
