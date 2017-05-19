@@ -45,7 +45,7 @@
     }
     
     if (search.selectedVehicle == nil) {
-        NSLog(@"\n\n ERROR: CANNOT PUSH AS self.vehicleAvailability IS NOT SET \n\n");
+        NSLog(@"\n\n ERROR: CANNOT PUSH AS self.selectedVehicle IS NOT SET \n\n");
         completion(NO, @"ERROR: CANNOT PUSH TO DESTINATION VIEW CONTROLLER", NO);
         return;
     }
