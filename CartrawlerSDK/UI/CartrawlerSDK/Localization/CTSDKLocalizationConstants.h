@@ -239,5 +239,4 @@ extern NSString * const CTSDKVehicleMerchandisingOnBudget;
 
 extern NSString * const CTSDKVehicleMerchandisingBestReviewed;
 
-
 @end
