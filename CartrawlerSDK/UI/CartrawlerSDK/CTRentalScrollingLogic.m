@@ -33,15 +33,4 @@
     return newOffset;
 }
 
-//- (CGFloat)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    CGFloat verticalOffset = scrollView.contentOffset.y;
-//    CGFloat delta = self.offset - verticalOffset;
-//    CGFloat newOffset = self.totalViewTopConstraint.constant + delta;
-//    newOffset = MIN(0, newOffset);
-//    newOffset = MAX(-self.totalViewHeightConstraint.constant, newOffset);
-//    
-//    self.totalViewTopConstraint.constant = newOffset;
-//    self.detailsViewOffset = verticalOffset;
-//}
-
 @end
