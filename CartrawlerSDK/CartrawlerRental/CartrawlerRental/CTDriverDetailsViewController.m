@@ -627,7 +627,6 @@
 }
 
 //MARK: Payment
-
 - (void)payment:(CTPayment *)payment didFailWithError:(NSError *)error
 {
     [CTPaymentLoadingViewController dismiss];

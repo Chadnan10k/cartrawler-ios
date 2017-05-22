@@ -14,6 +14,7 @@
 #import "CTCountryPickerView.h"
 #import "CTVehicleSelectionViewController.h"
 #import <CartrawlerSDK/CTLoadingView.h>
+#import <CartrawlerSDK/CTToastView.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIView.h>
 #import "CTExtrasCarouselView.h"
 #import "CTExtrasListViewController.h"
@@ -37,6 +38,10 @@
 @property (nonatomic, strong) CTExtrasCarouselView *extrasView;
 @property (nonatomic, strong) CTVehicleInfoTabView *tabView;
 @property (nonatomic, strong) CTButton *termsButton;
+@property (nonatomic, strong) CTToastView *toastView;
+@property (nonatomic, strong) NSLayoutConstraint *toastHeightConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *toastTopConstraint;
+@property (nonatomic, assign) BOOL hasShownToastView;
 
 //Alert view custom views
 @property (nonatomic, strong) CTCountryPickerView *countryPicker;
@@ -55,8 +60,10 @@
 {
     self = [super init];
     self.translatesAutoresizingMaskIntoConstraints = NO;
-    [self initNextButton];
     [self initContainerView];
+    [self initToastView];
+    [self initNextButton];
+    [self addLayoutConstraints];
 
     _layoutManager = [CTLayoutManager layoutManagerWithContainer:self.containerView];
 
@@ -66,6 +73,7 @@
     [self initAlertView];
     [self initExtrasView];
     [self initTermsAndConditionsView];
+    
 
     [self.layoutManager layoutViews];
     return self;
@@ -125,6 +133,34 @@
     self.scrollView.delegate = self;
     [self addSubview:self.scrollView];
 
+    _containerView = [UIView new];
+    self.containerView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.scrollView addSubview:self.containerView];
+}
+
+- (void)initNextButton
+{
+    _nextButton = [CTNextButton new];
+    self.nextButton.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    if (self.isStandalone) {
+        [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    } else {
+        [self.nextButton setText:CTLocalizedString(CTRentalCTAAddVehicleToBasket)];
+    }
+    
+    [self addSubview:self.nextButton];
+    [self.nextButton addTarget:self action:@selector(pushToDestination) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)initToastView {
+    self.toastView = [CTToastView new];
+    self.toastView.titleLabel.text = CTLocalizedString(CTRentalAllExtrasPaid);
+    self.toastView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.toastView];
+}
+
+- (void)addLayoutConstraints {
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[scrollView]-0-[button(80)]-0-|"
                                                                  options:0
                                                                  metrics:nil
@@ -142,10 +178,6 @@
                                                                  metrics:nil
                                                                    views:@{@"scrollView" : self.scrollView,
                                                                            @"button" : self.nextButton}]];
-    
-    _containerView = [UIView new];
-    self.containerView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.scrollView addSubview:self.containerView];
     [CTLayoutManager pinView:self.containerView toSuperView:self.scrollView padding:UIEdgeInsetsZero];
     [self.containerView setHeightConstraint:@100 priority:@100];
     
@@ -157,21 +189,33 @@
                                                                  multiplier:1
                                                                    constant:0];
     [self.scrollView addConstraint:equalWidth];
-}
+    
+    
 
-- (void)initNextButton
-{
-    _nextButton = [CTNextButton new];
-    self.nextButton.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    if (self.isStandalone) {
-        [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
-    } else {
-        [self.nextButton setText:CTLocalizedString(CTRentalCTAAddVehicleToBasket)];
-    }
-    
     [self addSubview:self.nextButton];
     [self.nextButton addTarget:self action:@selector(nextTapped:) forControlEvents:UIControlEventTouchUpInside];
+
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[toastView]-0-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"toastView" : self.toastView}]];
+    self.toastHeightConstraint = [NSLayoutConstraint constraintWithItem:self.toastView
+                                                              attribute:NSLayoutAttributeHeight
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:nil
+                                                              attribute:NSLayoutAttributeNotAnAttribute
+                                                             multiplier:1.0
+                                                               constant:50];
+    [self addConstraint:self.toastHeightConstraint];
+    
+    self.toastTopConstraint = [NSLayoutConstraint constraintWithItem:self.toastView
+                                                           attribute:NSLayoutAttributeTop
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:self.nextButton
+                                                           attribute:NSLayoutAttributeTop
+                                                          multiplier:1.0
+                                                            constant:0];
+    [self addConstraint:self.toastTopConstraint];
 }
 
 //MARK: Alert View Init
@@ -237,6 +281,38 @@
     if (self.delegate) {
         [self.delegate infoViewPushViewController:controller];
     }
+}
+
+- (void)extrasViewDidAddExtra:(CTExtrasCarouselView *)extrasView {
+    [self showToastView];
+}
+
+// MARK: Toast View
+
+- (void)showToastView {
+    if (self.hasShownToastView) {
+        return;
+    }
+    self.hasShownToastView = YES;
+    
+    self.toastTopConstraint.constant = -self.toastHeightConstraint.constant;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        [self layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        [self hideToastView];
+    }];
+}
+
+- (void)hideToastView {
+    self.toastTopConstraint.constant = 0;
+    
+    [UIView animateWithDuration:0.3
+                          delay:3.0
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         [self layoutIfNeeded];
+                     } completion:nil];
 }
 
 //MARK: terms and conditions

@@ -24,6 +24,13 @@
  */
 - (void)extrasViewDidTapViewAll:(CTExtrasCarouselView *)extrasView;
 
+/**
+ Implement this to be notified when extras are added
+
+ @param extrasView the extras view
+ */
+- (void)extrasViewDidAddExtra:(CTExtrasCarouselView *)extrasView;
+
 @end
 
 /**
@@ -39,7 +46,7 @@
 @property (nonatomic, weak) id <CTExtrasCarouselViewDelegate> delegate;
 
 /**
- Designated Initialiser
+ Use this to update the extras
 
  @param extras an array of CTExtraEquipment objects
  */

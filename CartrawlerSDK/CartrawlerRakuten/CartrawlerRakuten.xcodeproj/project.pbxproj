@@ -382,7 +382,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/CartrawlerRakuten",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.dcstorm.CartrawlerRakuten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -409,7 +409,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/CartrawlerRakuten",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.dcstorm.CartrawlerRakuten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
