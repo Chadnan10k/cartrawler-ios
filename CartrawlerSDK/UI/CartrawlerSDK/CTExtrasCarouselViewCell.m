@@ -106,7 +106,6 @@
     self.infoDetailLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.infoDetailLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.infoDetailLabel.hidden = YES;
-    self.infoDetailLabel.allowsDefaultTighteningForTruncation = YES;
     [self.contentView addSubview:self.infoDetailLabel];
 }
 
