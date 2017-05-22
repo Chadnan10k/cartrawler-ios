@@ -14,5 +14,6 @@
 - (NSString *)decimalPlaces:(int)places;
 - (NSString *)pricePerDay:(NSDate *)pickup dropoff:(NSDate *)dropoff;
 + (NSNumber *)numberFromString:(NSString *)string;
+- (NSNumber *)pricePerDayValue:(NSDate *)pickup dropoff:(NSDate *)dropoff;
 
 @end

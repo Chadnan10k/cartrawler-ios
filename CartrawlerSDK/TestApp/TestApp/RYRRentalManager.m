@@ -184,9 +184,9 @@
     [self.inPath didReceiveBookingConfirmationID:@"INPATH"];
 }
 
-- (void)didDisplayVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem
+- (void)didDisplayVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem pricePerDay:(NSNumber *)pricePerDay
 {
-    self.priceLabel.text = [NSString stringWithFormat:@"Price %@ %@", vehicleItem.vehicle.totalPriceForThisVehicle.stringValue, vehicleItem.vehicle.currencyCode];
+    self.priceLabel.text = pricePerDay.stringValue;
 }
 
 - (void)didTapVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem

@@ -21,13 +21,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewTopConstraint;
 @property (weak, nonatomic) IBOutlet UIView *dimmingView;
+@property (weak, nonatomic) IBOutlet CTButton *carTotalButton;
 
 @property (strong, nonatomic) CTVehicleInfoView *vehicleInfoView;
-
-
-
-//Temporary variables
-@property (nonatomic, strong) NSString *tempCountryCode;
 
 @end
 
@@ -57,6 +53,7 @@
     [self.vehicleInfoView refreshView];
     
     [self updateDetailedPriceSummary];
+    [self updatePriceSummary:self.search.isBuyingInsurance];
 }
 
 //MARK: CTVehicleInfoDelegate
@@ -88,7 +85,7 @@
 
 - (void)infoViewAddInsuranceTapped:(BOOL)didAddInsurance
 {
-//    [self updatePriceSummary:didAddInsurance];
+    [self updatePriceSummary:didAddInsurance];
 }
 
 - (void)infoViewPushToNextStep
@@ -130,10 +127,30 @@
                      }];
 }
 
+- (void)updatePriceSummary:(BOOL)isBuyingInsurance
+{
+    NSString *price = @"";
+    
+    if (isBuyingInsurance) {
+        price = [[NSNumber numberWithFloat:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.floatValue + self.search.insurance.premiumAmount.floatValue] numberStringWithCurrencyCode];
+    } else {
+        price = [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
+    }
+    
+    NSAttributedString *priceString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
+                                                     boldColor:[UIColor whiteColor]
+                                                      boldSize:17
+                                                   regularText:price
+                                                  regularColor:[UIColor whiteColor]
+                                                   regularSize:17
+                                                      useSpace:YES];
+    
+    [self.carTotalButton setAttributedTitle:priceString forState:UIControlStateNormal];
+}
+
 - (IBAction)didInteractWithDetailedPriceSummary:(UIGestureRecognizer *)gestureRecognizer {
     [self hideDetailedPriceSummary];
 }
-
 
 // MARK: Actions
 

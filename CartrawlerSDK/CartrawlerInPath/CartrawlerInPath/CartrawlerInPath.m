@@ -13,6 +13,7 @@
 #import <CartrawlerSDK/CTDataStore.h>
 #import "CTInPathPayment.h"
 #import "CTInPathView.h"
+#import "CartrawlerSDK/CartrawlerSDK+NSNumber.h"
 
 @interface CartrawlerInPath() <CTViewControllerDelegate, CTInPathViewDelegate>
 
@@ -404,7 +405,9 @@
 - (void)didDisplayVehicle:(CTAvailabilityItem *)item atIndex:(NSUInteger)index
 {
     if (self.delegate) {
-        [self.delegate didDisplayVehicleAtIndex:index vehicleItem:item];
+        NSNumber *pricePerDay = [item.vehicle.totalPriceForThisVehicle pricePerDayValue:self.defaultSearch.pickupDate
+                                                                                dropoff:self.defaultSearch.dropoffDate];
+        [self.delegate didDisplayVehicleAtIndex:index vehicleItem:item pricePerDay:pricePerDay];
     }
 }
 
