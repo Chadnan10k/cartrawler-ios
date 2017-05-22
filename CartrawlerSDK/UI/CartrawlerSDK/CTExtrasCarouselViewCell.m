@@ -75,7 +75,6 @@
     self.titleLabel = [[CTLabel alloc] init:18 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:YES];
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.titleLabel.numberOfLines = 2;
-    self.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self.contentView addSubview:self.titleLabel];
     
