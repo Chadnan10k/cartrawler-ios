@@ -184,6 +184,7 @@
 {
     if (self.navigationController.viewControllers.firstObject == self || !self.navigationController) {
         [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"exit_X" step:nil];
+        [[CTAnalytics instance] tagScreen:@"back_btn" detail:@"searchcars" step:nil];
         [self dismiss];
     } else {
         [self.navigationController popViewControllerAnimated:YES];

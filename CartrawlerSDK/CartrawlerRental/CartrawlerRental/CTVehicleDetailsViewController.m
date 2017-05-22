@@ -145,6 +145,12 @@
 - (IBAction)backTapped:(id)sender
 {
     if (self.navigationController.viewControllers.firstObject == self) {
+        if (self.vehicleInfoView.insuranceViewDidAppear) {
+            [[CTAnalytics instance] tagScreen:@"back_btn" detail:@"vehicle-e" step:nil];
+        } else {
+            [[CTAnalytics instance] tagScreen:@"back_btn" detail:@"vehicle-v" step:nil];
+        }
+        
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         [self.navigationController popViewControllerAnimated:YES];

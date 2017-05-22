@@ -214,6 +214,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
     if (self.navigationController.viewControllers.firstObject == self) {
         self.search.selectedVehicle = nil;
+        [[CTAnalytics instance] tagScreen:@"back_btn" detail:@"vehicles" step:nil];
         [self dismiss];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
