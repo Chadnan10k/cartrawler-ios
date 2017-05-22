@@ -19,6 +19,7 @@
 #import "CTRentalLocalizationConstants.h"
 #import "CTFilterViewController.h"
 #import "CTPaymentSummaryExpandedView.h"
+#import "CTRentalScrollingLogic.h"
 
 @interface CTVehiclePresenterViewController () <CTVehicleSelectionViewDelegate, CTVehicleInfoDelegate, CTFilterDelegate>
 
@@ -43,7 +44,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarHeightConstraint;
-@property (nonatomic, assign) CGFloat detailsViewOffset;
+@property (nonatomic, strong) CTRentalScrollingLogic *scrollingLogic;
 
 @property (weak, nonatomic) IBOutlet CTPaymentSummaryExpandedView *summaryView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewTopConstraint;
@@ -110,6 +111,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)setupViews
 {
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     _filterViewController = [CTFilterViewController initInViewController:self withData:self.search.vehicleAvailability];
     self.filterViewController.delegate = self;
     
@@ -122,6 +125,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     self.vehicleSelectionView.verticalOffset = self.toolbarHeightConstraint.constant;
     self.vehicleSelectionView.delegate = self;
     
+    self.scrollingLogic = [[CTRentalScrollingLogic alloc] initWithTopViewHeight:self.toolbarHeightConstraint.constant];
 }
 
 - (void)presentVehicleDetails
@@ -394,13 +398,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 }
 
 - (void)infoViewDidScroll:(CGFloat)verticalOffset {
-    CGFloat delta = self.detailsViewOffset - verticalOffset;
-    CGFloat newOffset = self.toolbarTopConstraint.constant + delta;
-    newOffset = MIN(0, newOffset);
-    newOffset = MAX(-self.toolbarHeightConstraint.constant, newOffset);
-    
-    self.toolbarTopConstraint.constant = newOffset;
-    self.detailsViewOffset = verticalOffset;
+    self.toolbarTopConstraint.constant = [self.scrollingLogic offsetForDesiredOffset:verticalOffset
+                                                                         currentOffset:self.toolbarTopConstraint.constant];
 }
 
 @end

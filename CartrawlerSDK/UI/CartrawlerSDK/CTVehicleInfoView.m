@@ -57,10 +57,10 @@
 {
     self = [super init];
     self.translatesAutoresizingMaskIntoConstraints = NO;
-    [self initContainerViewWithVerticalOffset:verticalOffset];
+    [self initContainerView];
     [self initToastView];
     [self initNextButton];
-    [self addLayoutConstraints];
+    [self addLayoutConstraintsWithVerticalOffset:verticalOffset];
 
     _layoutManager = [CTLayoutManager layoutManagerWithContainer:self.containerView];
 
@@ -118,7 +118,7 @@
  View Creation
  */
 
-- (void)initContainerViewWithVerticalOffset:(CGFloat)verticalOffset
+- (void)initContainerView
 {
     _scrollView = [UIScrollView new];
     self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -154,7 +154,7 @@
     [self addSubview:self.toastView];
 }
 
-- (void)addLayoutConstraints {
+- (void)addLayoutConstraintsWithVerticalOffset:(CGFloat)verticalOffset {
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[scrollView]-0-[button(80)]-0-|"
                                                                  options:0
                                                                  metrics:nil
@@ -172,7 +172,7 @@
                                                                  metrics:nil
                                                                    views:@{@"scrollView" : self.scrollView,
                                                                            @"button" : self.nextButton}]];
-    [CTLayoutManager pinView:self.containerView toSuperView:self.scrollView padding:UIEdgeInsetsZero];
+    [CTLayoutManager pinView:self.containerView toSuperView:self.scrollView padding:UIEdgeInsetsMake(verticalOffset, 0, 0, 0)];
     [self.containerView setHeightConstraint:@100 priority:@100];
     
     NSLayoutConstraint *equalWidth = [NSLayoutConstraint constraintWithItem:self.containerView
