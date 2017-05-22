@@ -25,6 +25,7 @@
 #import "CTRentalConstants.h"
 #import "CTTermsViewController.h"
 #import "CartrawlerAPI/CTBooking.h"
+#import "CTSettingsSelectionViewController.h"
 
 @interface CTDriverDetailsViewController () <UITextFieldDelegate, CTPaymentDelegate, UITextViewDelegate>
 
@@ -47,6 +48,7 @@
 @property (strong, nonatomic) CTTextField *address2TextField;
 @property (strong, nonatomic) CTTextField *cityTextField;
 @property (strong, nonatomic) CTTextField *postcodeTextField;
+@property (nonatomic, strong) CTTextField *locationSelection;
 
 @property (weak, nonatomic) IBOutlet CTButton *summaryButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewTopConstraint;
@@ -81,6 +83,8 @@
     _address2TextField = [CTTextField new];
     _cityTextField = [CTTextField new];
     _postcodeTextField = [CTTextField new];
+    _locationSelection = [CTTextField new];
+    
     _paymentContainer = [UIView new];
 }
 
@@ -97,7 +101,8 @@
     self.address2TextField.placeholder = CTLocalizedString(CTRentalUserAddressLine2Hint);
     self.cityTextField.placeholder = CTLocalizedString(CTRentalUserCityHint);
     self.postcodeTextField.placeholder = CTLocalizedString(CTRentalUserPostcodeHint);
-    
+    self.locationSelection.placeholder = CTLocalizedString(CTRentalUserCountryHint);
+
     self.firstNameTextField.delegate = self;
     self.lastNameTextField.delegate = self;
     self.emailTextField.delegate = self;
@@ -108,6 +113,7 @@
     self.address2TextField.delegate = self;
     self.cityTextField.delegate = self;
     self.postcodeTextField.delegate = self;
+    self.locationSelection.delegate = self;
 
     [self.firstNameTextField addDoneButton];
     [self.lastNameTextField addDoneButton];
@@ -153,6 +159,7 @@
     [self.address2TextField setHeightConstraint:@60 priority:@1000];
     [self.cityTextField setHeightConstraint:@60 priority:@1000];
     [self.postcodeTextField setHeightConstraint:@60 priority:@1000];
+    [self.locationSelection setHeightConstraint:@60 priority:@1000];
     [self.paymentContainer setHeightConstraint:@220 priority:@1000];
 
     CTLayoutManager *layoutManager = [CTLayoutManager layoutManagerWithContainer:self.containerView];
@@ -170,6 +177,7 @@
         [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.address2TextField];
         [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.cityTextField];
         [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.postcodeTextField];
+        [layoutManager insertView:UIEdgeInsetsMake(8, 8, 8, 8) view:self.locationSelection];
     }
     
     [layoutManager insertView:UIEdgeInsetsMake(8, 8, 0, 8) view:paymentDetailsTitle];
@@ -221,7 +229,8 @@
     self.address2TextField.text = self.search.addressLine2 == nil ? @"" : self.search.addressLine2;
     self.cityTextField.text = self.search.city == nil ? @"" : self.search.city;
     self.postcodeTextField.text = self.search.postcode == nil ? @"" : self.search.postcode;
-    
+    self.locationSelection.text = self.search.country == nil ? @"" : self.search.country;
+
     [self updateDetailedPriceSummary];
     
     NSAttributedString *priceString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
@@ -252,6 +261,24 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)openCountrySelection
+{
+    [self.view endEditing:YES];
+    
+    UIStoryboard *settingsStoryboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:[NSBundle bundleForClass:self.class]];
+    CTSettingsSelectionViewController *vc = [settingsStoryboard instantiateViewControllerWithIdentifier:CTRentalSettingsSelectionViewIdentifier];
+    [vc setSettingsType:SettingsTypeCountry];
+    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:vc animated:YES completion:nil];
+    
+    __weak typeof (self) weakSelf = self;
+    
+    vc.settingsCompletion = ^(CTCSVItem *item) {
+        weakSelf.search.country = item.code;
+        weakSelf.locationSelection.text = item.name;
+    };
 }
 
 - (BOOL)validate
@@ -302,13 +329,8 @@
         [self.cityTextField shakeAnimation];
         validated = NO;
     }
-    
-    if ([self.postcodeTextField.text isEqualToString: @""] || [self.postcodeTextField containsOnlyWhitespace]) {
-        [self.postcodeTextField shakeAnimation];
-        validated = NO;
-    }
-    return validated;
 
+    return validated;
 }
 
 - (IBAction)confirmDetails:(id)sender
@@ -334,6 +356,11 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     _selectedView = textField;
+    
+    if (self.selectedView == self.locationSelection) {
+        [self openCountrySelection];
+        return NO;
+    }
     return YES;
 }
 
