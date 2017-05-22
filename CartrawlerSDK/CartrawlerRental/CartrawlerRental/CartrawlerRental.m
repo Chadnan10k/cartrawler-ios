@@ -43,7 +43,6 @@
 {
     _clientID = clientID;
     [[CTSDKSettings instance] setClientId:clientID];
-    [CTSDKSettings instance].journey = CTSDKJourneyStandalone;
     [self.cartrawlerSDK.cartrawlerAPI changeClientKey:self.clientID];
     [CTSDKSettings instance].disableCurrencySelection = NO;
     [[CTSDKSettings instance] resetCountryToDeviceLocale];

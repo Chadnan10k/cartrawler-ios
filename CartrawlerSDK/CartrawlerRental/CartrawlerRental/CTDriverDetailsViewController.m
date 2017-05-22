@@ -403,7 +403,7 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (string.length == 1)) {
+    if (string.length == 1) {
         if (textField == self.firstNameTextField) {
             [[CTAnalytics instance] tagScreen:@"firstname" detail:@"type" step:nil];
         }

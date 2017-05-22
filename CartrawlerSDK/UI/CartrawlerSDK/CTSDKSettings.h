@@ -8,12 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM (NSUInteger, CTSDKJourney) {
-    CTSDKJourneyUndefined,
-    CTSDKJourneyInPath,
-    CTSDKJourneyStandalone
-};
-
 @interface CTSDKSettings : NSObject
 
 @property (nonatomic, strong) NSString *clientId;
@@ -38,8 +32,6 @@ typedef NS_ENUM (NSUInteger, CTSDKJourney) {
 @property (nonatomic) BOOL disableCurrencySelection;
 
 @property (nonatomic) BOOL isDebug;
-
-@property (nonatomic) CTSDKJourney journey;
 
 + (instancetype)instance;
 

@@ -7,13 +7,15 @@
 //
 
 #import "CTAnalytics.h"
+#import "CTAnalyticsCache.h"
 #import "CTSDKSettings.h"
 
-@interface CTAnalytics()
+@interface CTAnalytics() <CTAnalyticsCacheDelegate>
 
 @property (nonatomic, strong) NSURLSessionConfiguration *config;
 @property (nonatomic, strong) NSMutableURLRequest *request;
 @property (nonatomic, strong) NSURLSessionDataTask *task;
+@property (nonatomic, strong) CTAnalyticsCache *cache;
 @end
 
 @implementation CTAnalytics
@@ -26,6 +28,8 @@
         sharedInstance = [[CTAnalytics alloc] init];
         sharedInstance.config = [NSURLSessionConfiguration defaultSessionConfiguration];
         sharedInstance.request = [[NSMutableURLRequest alloc] init];
+        sharedInstance.cache = [CTAnalyticsCache new];
+        sharedInstance.cache.delegate = sharedInstance;
     });
     return sharedInstance;
 }
@@ -37,7 +41,7 @@
     if (!step) {
         step = @(self.analyticsStep);
     }
-    NSLog(@"Tagging Name: %@ Detail: %@ Step: %@", name, detail, step);
+
     double time = [[NSDate date] timeIntervalSince1970] * 1000;
     NSNumberFormatter *nf = [NSNumberFormatter new];
     NSString *timeString = [nf stringFromNumber:[NSNumber numberWithDouble:time]];
@@ -50,8 +54,7 @@
                           customerID:[CTSDKSettings instance].customerID ?: @""
                              queryID:[CTSDKSettings instance].queryID ?: @""
                                 step:step];
-    
-    [self fireTag:tag.produceURL];
+    [self.cache addTag:tag];
 }
 
 - (void)setAnalyticsStep:(CTAnalyticsStep)analyticsStep {
@@ -84,5 +87,13 @@
     [task resume];
     [session finishTasksAndInvalidate];
 }
+
+// MARK: CTAnalyticsCacheDelegate
+
+- (void)analyticsCache:(CTAnalyticsCache *)cache flushTags:(NSArray *)tags {
+    [self fireTag:[CTTag produceURLForTags:tags]];
+}
+
+
 
 @end

@@ -109,9 +109,7 @@
         [CTInterstitialViewController present:self search:self.search];
         [self requestVehicles];
     }
-    if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-        [[CTAnalytics instance] tagScreen:@"SearchCars" detail:@"search" step:nil];
-    }
+    [[CTAnalytics instance] tagScreen:@"SearchCars" detail:@"search" step:nil];
 }
 
 - (void)tagSearchUpdates {

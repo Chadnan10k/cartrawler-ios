@@ -31,9 +31,9 @@
     return self;
 }
 
-- (NSArray *)toArray
+- (NSDictionary *)toDictionary
 {
-    return @[@{
+    return @{
              @"tag" : self.name,
              @"detail" : self.detail,
              @"container" : self.container,
@@ -42,19 +42,29 @@
              @"cid" : self.customerID,
              @"qid" : self.queryID,
              @"step" : self.step
-             }];
+             };
+}
+
+- (NSArray *)toArray
+{
+    return @[[self toDictionary]];
 }
 
 - (NSURL *)produceURL
 {
-    NSError *error = nil;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[self toArray] options:NSJSONWritingPrettyPrinted error:&error];
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
-    NSString *escapedString = [jsonString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    return [CTTag produceURLForTags:@[self]];
+}
 
++ (NSURL *)produceURLForTags:(NSArray *)tags {
+    NSMutableArray *tagDictionaries = [NSMutableArray new];
+    for (CTTag *tag in tags) {
+        [tagDictionaries addObject:tag.toDictionary];
+    }
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:tagDictionaries options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSString *escapedString = [jsonString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://tag.cartrawler.com/?json=1&t=%@", escapedString]];
-    
     return url;
 }
 
