@@ -33,6 +33,7 @@
         CTTabContainerView *tabContainerView = [[CTTabContainerView alloc] initWithTabTitles:titles
                                                                                        views:views
                                                                                selectedIndex:0];
+        tabContainerView.tags = @[@"car_info", @"supplier_info"];
         tabContainerView.animationContainerView = containerView;
         [self addSubview:tabContainerView];
         [CTLayoutManager pinView:tabContainerView toSuperView:self];

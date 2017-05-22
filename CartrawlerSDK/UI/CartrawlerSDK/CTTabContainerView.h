@@ -14,6 +14,11 @@
 @interface CTTabContainerView : UIView
 
 /**
+ Tags which will be fired on tab selection
+ */
+@property (nonatomic, strong) NSArray *tags;
+
+/**
  Designated initialiser
 
  @param titles the titles to be displayed as tabs
