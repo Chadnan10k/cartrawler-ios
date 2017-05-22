@@ -125,11 +125,6 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [self updateNavigationBar];
     [self updatePriceSummary:NO];
     [self updateDetailedPriceSummary];
-    
-    static dispatch_once_t vehicleDetailsToken;
-    dispatch_once(&vehicleDetailsToken, ^{
-        [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-v" step:nil];
-    });
 }
 
 - (void)presentVehicleSelection

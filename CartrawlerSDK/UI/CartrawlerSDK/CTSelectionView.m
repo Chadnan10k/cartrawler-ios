@@ -254,7 +254,9 @@
             return NO;
         } else {
             if ([self.delegate respondsToSelector:@selector(selectionViewChangedCharacters:)]) {
-                [self.delegate selectionViewChangedCharacters:self];
+                if (newString.length == 1) {
+                    [self.delegate selectionViewChangedCharacters:self];
+                }
             }
             return YES;
         }

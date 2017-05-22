@@ -179,7 +179,7 @@
          _defaultSearch = [[CTRentalSearch instance] copy];
          _didFetchResults = YES;
          
-         [[CTAnalytics instance] tagScreen:@"vehicles" detail:[NSString stringWithFormat:@"%f", -[self.fetchStartTime timeIntervalSinceNow]] step:@0];
+         [[CTAnalytics instance] tagScreen:@"vehicles" detail:[NSString stringWithFormat:@"%.01f", -[self.fetchStartTime timeIntervalSinceNow]] step:@0];
          
          dispatch_async(dispatch_get_main_queue(), ^{
              [weakSelf renderReadyState];

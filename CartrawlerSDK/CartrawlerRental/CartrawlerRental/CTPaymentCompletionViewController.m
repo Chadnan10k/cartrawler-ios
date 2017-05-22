@@ -111,7 +111,7 @@
 - (void)tagScreen
 {
 
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"confirmati" step:@9];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"confirmati" step:nil];
     [self sendEvent:NO customParams:@{@"eventName" : @"Booking Confirmation Step",
                                       @"stepName" : @"Step9",
                                       } eventName:@"Step of search" eventType:@"Step"];

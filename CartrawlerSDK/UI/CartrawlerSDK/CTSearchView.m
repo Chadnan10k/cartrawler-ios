@@ -235,23 +235,13 @@
 
 - (void)presentLocationSelection:(BOOL)isPickupView
 {
-    if (isPickupView) {
-        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"click" step:nil];
-        }
-        [[CTAnalytics instance] tagScreen:@"E_Pickup" detail:@"click" step:nil];
-    } else {
-        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"click" step:nil];
-        }
-        [[CTAnalytics instance] tagScreen:@"E_Dropoff" detail:@"click" step:nil];
-    }
-    
     __weak typeof(self) weakSelf = self;
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
     CTLocationSearchViewController *locationViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalLocationSearchViewIdentifier];
     locationViewController.cartrawlerAPI = self.cartrawlerAPI;
+    locationViewController.searchContext = (isPickupView) ? CTLocationSearchContextPickup : CTLocationSearchContextDropoff;
+    locationViewController.editMode = self.editMode;
     
     locationViewController.selectedLocation = ^(CTMatchedLocation *location) {
         if (isPickupView) {
@@ -336,11 +326,16 @@
 
 - (void)combineTimes
 {
-    NSDate *pickupDate = [NSDate mergeTimeWithDateWithTime:self.temporaryPickupTime dateWithDay:self.temporaryPickupDate];
-    NSDate *dropoffDate = [NSDate mergeTimeWithDateWithTime:self.temporaryDropoffTime dateWithDay:self.temporaryDropoffDate];
+    NSDate *pickUpDate = [NSDate mergeTimeWithDateWithTime:self.temporaryPickupTime dateWithDay:self.temporaryPickupDate];
+    NSString *pickupTime = [pickUpDate stringFromDateWithFormat:@"yyyy-MM-dd-HH:mm"];
+    [self didSelectPickUpTime:pickupTime];
+    
+    NSDate *dropOffDate = [NSDate mergeTimeWithDateWithTime:self.temporaryDropoffTime dateWithDay:self.temporaryDropoffDate];
+    NSString *dropoffTime = [dropOffDate stringFromDateWithFormat:@"yyyy-MM-dd-HH:mm"];
+    [self didSelectDropOffTime:dropoffTime];
 
-    self.search.pickupDate = pickupDate;
-    self.search.dropoffDate = dropoffDate;
+    self.search.pickupDate = pickUpDate;
+    self.search.dropoffDate = dropOffDate;
 }
 
 - (void)setAge
@@ -409,19 +404,12 @@
 - (void)ageSwitchChanged:(UISwitch *)sender
 {
     if (sender == self.ageSwitch) {
+        [self didToggleAgeSwitch:sender.isOn];
         if (sender.isOn) {
-            if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-                [[CTAnalytics instance] tagScreen:@"ageCheckbo" detail:@"1" step:nil];
-            }
-            [[CTAnalytics instance] tagScreen:@"E_ageCheck" detail:@"1" step:nil];
             self.search.driverAge = @30;
             NSUInteger idx = [self.layoutManager indexOfObject:self.ageContainer].integerValue;
             [self.layoutManager removeAtIndex:idx];
         } else {
-            if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-                [[CTAnalytics instance] tagScreen:@"ageCheckbo" detail:@"0" step:nil];
-            }
-            [[CTAnalytics instance] tagScreen:@"E_ageCheck" detail:@"0" step:nil];
             self.search.driverAge = nil;
             NSUInteger idx = [self.layoutManager indexOfObject:self.ageSwitchContainer].integerValue;
             [self.layoutManager insertViewAtIndex:idx padding:UIEdgeInsetsMake(8, 8, 8, 8) view:self.ageContainer];
@@ -429,18 +417,11 @@
     }
     
     if (sender == self.locationSwitch) {
+        [self didToggleLocationSwitch:sender.isOn];
         if (sender.isOn) {
-            if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-                [[CTAnalytics instance] tagScreen:@"returnLoca" detail:@"1" step:nil];
-            }
-            [[CTAnalytics instance] tagScreen:@"E_returnL" detail:@"1" step:nil];
             self.search.dropoffLocation = self.search.pickupLocation;
             [self.layoutManager removeAtIndex:1];
         } else {
-            if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-                [[CTAnalytics instance] tagScreen:@"returnLoca" detail:@"0" step:nil];
-            }
-            [[CTAnalytics instance] tagScreen:@"E_returnL" detail:@"0" step:nil];
             self.search.dropoffLocation = nil;
             [self.layoutManager insertViewAtIndex:1 padding:UIEdgeInsetsMake(8, 8, 8, 8) view:self.dropoffLocationSearch];
         }
@@ -451,34 +432,22 @@
 - (void)selectionViewWasTapped:(CTSelectionView *)selectionView
 {
     if (selectionView == self.pickupLocationSearch) {
-        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"ML_Pickup" detail:@"click" step:nil];
-        }
-        [[CTAnalytics instance] tagScreen:@"E_Pickup" detail:@"click" step:nil];
+        [self didSelectPickUpSelectionView];
         [self presentLocationSelection:YES];
     }
     
     if (selectionView == self.dropoffLocationSearch) {
-        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"ML_Dropoff" detail:@"click" step:nil];
-        }
-        [[CTAnalytics instance] tagScreen:@"E_Dropoff" detail:@"click" step:nil];
+        [self didSelectDropOffSelectionView];
         [self presentLocationSelection:NO];
     }
     
     if (selectionView == self.datesContainer) {
-        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"calendar_d" detail:@"click" step:nil];
-        }
-        [[CTAnalytics instance] tagScreen:@"E_calend_d" detail:@"click" step:nil];
+        [self didSelectDatesSelectionView];
         [self presentCalendar];
     }
     
     if (selectionView == self.pickupTimeContainer) {
-        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"calendar_t" detail:@"click" step:nil];
-            [[CTAnalytics instance] tagScreen:@"E_calend_t" detail:@"click" step:nil];
-        }
+        [self didSelectTimeSelectionView];
         [self presentTimePicker:YES];
     }
     
@@ -490,10 +459,7 @@
 - (void)selectionViewShouldBeginEditing:(CTSelectionView *)selectionView
 {
     if (selectionView == self.ageContainer) {
-        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"driverAgeC" detail:@"enter" step:nil];
-        }
-        [[CTAnalytics instance] tagScreen:@"E_driverAgeC" detail:@"enter" step:nil];
+        [self didEnterAgeSelectionView];
     }
     
     [self addKeyboardNotifications];
@@ -501,19 +467,14 @@
 
 - (void)selectionViewChangedCharacters:(CTSelectionView *)selectionView {
     if (selectionView == self.ageContainer) {
-        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"driverAgeC" detail:@"type" step:nil];
-        }
-        [[CTAnalytics instance] tagScreen:@"E_driverAgeC" detail:@"type" step:nil];
+        [self didStartTypingInAgeView];
     }
 }
 
 - (void)selectionViewDidEndEditing:(CTSelectionView *)selectionView {
     if (selectionView == self.ageContainer) {
-        if ([CTSDKSettings instance].journey == CTSDKJourneyStandalone) {
-            [[CTAnalytics instance] tagScreen:@"driverAgeC" detail:@"leave" step:nil];
-        }
-        [[CTAnalytics instance] tagScreen:@"E_driverAgeC" detail:@"leave" step:nil];
+        [self didLeaveAgeView];
+        [self didEnterDriversAge:selectionView.textFieldText];
     }
 }
 
@@ -524,6 +485,69 @@
     _temporaryDropoffDate = dropoffDate;
     NSString *dateStr = [NSString stringWithFormat:@"%@ - %@", [pickupDate shortDescriptionFromDate], [dropoffDate shortDescriptionFromDate]];
     [self.datesContainer setDetailText:dateStr];
+}
+
+// MARK: Analytics
+
+- (void)didSelectPickUpTime:(NSString *)pickUpTime {
+    NSString *tag = self.editMode ? @"E_v_cale_p" : @"v_calend_p";
+    [[CTAnalytics instance] tagScreen:tag detail:pickUpTime step:nil];
+}
+
+- (void)didSelectDropOffTime:(NSString *)dropOffTime {
+    NSString *tag = self.editMode ? @"E_v_cale_d" : @"v_calend_d";
+    [[CTAnalytics instance] tagScreen:tag detail:dropOffTime step:nil];
+}
+
+- (void)didToggleAgeSwitch:(BOOL)isOn {
+    NSString *tag = self.editMode ? @"E_ageCheck" : @"ageCheckbo";
+    NSString *detail = isOn ? @"1" : @"0";
+    [[CTAnalytics instance] tagScreen:tag detail:detail step:nil];
+}
+
+- (void)didToggleLocationSwitch:(BOOL)isOn {
+    NSString *tag = self.editMode ? @"E_returnL" : @"returnLoca";
+    NSString *detail = isOn ? @"1" : @"0";
+    [[CTAnalytics instance] tagScreen:tag detail:detail step:nil];
+}
+
+- (void)didSelectPickUpSelectionView {
+    NSString *tag = self.editMode ? @"E_Pickup" : @"ML_Pickup";
+    [[CTAnalytics instance] tagScreen:tag detail:@"click" step:nil];
+}
+
+- (void)didSelectDropOffSelectionView {
+    NSString *tag = self.editMode ? @"E_Dropoff" : @"ML_Dropoff";
+    [[CTAnalytics instance] tagScreen:tag detail:@"click" step:nil];
+}
+
+- (void)didSelectDatesSelectionView {
+    NSString *tag = self.editMode ? @"E_calend_d" : @"calendar_d";
+    [[CTAnalytics instance] tagScreen:tag detail:@"click" step:nil];
+}
+
+- (void)didSelectTimeSelectionView {
+    NSString *tag = self.editMode ? @"E_calend_t" : @"calendar_t";
+    [[CTAnalytics instance] tagScreen:tag detail:@"click" step:nil];
+}
+
+- (void)didEnterAgeSelectionView {
+    NSString *tag = self.editMode ? @"E_driverAgeC" : @"driverAgeC";
+    [[CTAnalytics instance] tagScreen:tag detail:@"click" step:nil];
+}
+
+- (void)didStartTypingInAgeView {
+    NSString *tag = self.editMode ? @"E_driverAgeC" : @"driverAgeC";
+    [[CTAnalytics instance] tagScreen:tag detail:@"type" step:nil];
+}
+
+- (void)didLeaveAgeView {
+    NSString *tag = self.editMode ? @"E_driverAgeC" : @"driverAgeC";
+    [[CTAnalytics instance] tagScreen:tag detail:@"leave" step:nil];
+}
+
+- (void)didEnterDriversAge:(NSString *)age {
+    [[CTAnalytics instance] tagScreen:@"v_driverAg" detail:age step:nil];
 }
 
 @end

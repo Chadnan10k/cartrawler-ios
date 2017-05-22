@@ -73,6 +73,7 @@
 
 - (void)refreshView
 {
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-v" step:nil];
     _tempCountryCode = [CTSDKSettings instance].homeCountryCode;
     self.search.isBuyingInsurance = NO;
     self.search.insurance = nil;
@@ -295,6 +296,7 @@
         [self.alertView addAction:[CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTADone)
                                                          handler:^(CTAlertAction *action) {
                                                              [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+                                                             [[CTAnalytics instance] tagScreen:@"canc_amd_i" detail:@"open" step:nil];
                                                          }]];
         [self.delegate infoViewPresentViewController:self.alertView];
     }

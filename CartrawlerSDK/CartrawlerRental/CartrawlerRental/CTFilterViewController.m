@@ -337,13 +337,13 @@
 {
     [[CTAnalytics instance] tagScreen:@"mdl_filter" detail:@"close" step:nil];
     
-    NSNumber *proportion = @(self.filterFactory.filteredData.count / self.filterFactory.data.items.count);
-    [[CTAnalytics instance] tagScreen:@"filtered" detail:proportion.stringValue step:nil];
-    
     [self.filterFactory filter];
     if (self.delegate) {
         [self.delegate filterDidUpdate:self.filterFactory.filteredData];
     }
+    
+    double proportion = (double)self.filterFactory.filteredData.count / (double)self.filterFactory.data.items.count;
+    [[CTAnalytics instance] tagScreen:@"filtered" detail:[NSString stringWithFormat:@"%.02f", proportion] step:nil];
     
     for (CTFilterContainer *c in self.viewArray) {
         [c close];

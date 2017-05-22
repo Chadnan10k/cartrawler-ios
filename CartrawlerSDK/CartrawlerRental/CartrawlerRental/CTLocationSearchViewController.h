@@ -26,6 +26,11 @@ typedef void (^SelectedLocationCompletion)(CTMatchedLocation *location);
 @property (nonatomic) BOOL enableGroundTransportLocations;
 @property (nonatomic) BOOL invertData;
 
+/**
+ For analytics tagging, the view needs to know if it editing a previous search
+ */
+@property (nonatomic) BOOL editMode;
+
 @property (nonatomic, assign) CTLocationSearchContext searchContext;
 
 @end

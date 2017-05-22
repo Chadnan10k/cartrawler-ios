@@ -24,6 +24,10 @@
 @property (nonatomic, strong) CTSearchView *searchView;
 @property (nonatomic, strong) CTNextButton *nextButton;
 
+/**
+ For analytics tagging, the view needs to know if it is editing a previous search
+ */
+@property (nonatomic, assign) BOOL editMode;
 @property (nonatomic, strong) CTRentalSearch *previousSearch;
 
 @end
@@ -53,13 +57,23 @@
     };
 }
 
+- (void)setSearch:(CTRentalSearch *)search {
+    [super setSearch:search];
+    self.previousSearch = [search copy];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
     // TODO: This is calling an empty method
     [self.searchView updateDisplayWithSearch:self.search];
-    self.previousSearch = self.search;
+    self.searchView.editMode = self.editMode;
+}
+
+- (BOOL)editMode {
+    // Check if date has been set on search to see if previous search has been completed. If so, the search is now being edited
+    return (self.search.pickupDate != nil);
 }
 
 - (CTSearchView *)setupSearchView
@@ -83,10 +97,15 @@
 - (void)searchTapped
 {
     if ([self.searchView validateSearch] && self.validationController) {
-        [self tagSearchUpdates];
+        if (self.previousSearch) {
+            [self tagSearchUpdates];
+        }
         [self pushToDestination];
         [CTInterstitialViewController present:self search:self.search];
     } else if ([self.searchView validateSearch]) {
+        if (self.editMode) {
+            [self tagSearchUpdates];
+        }
         [CTInterstitialViewController present:self search:self.search];
         [self requestVehicles];
     }
@@ -131,6 +150,7 @@
         [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"update" step:nil];
     } else {
         [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"exit_U" step:nil];
+        [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"exit" step:nil];
     }
 }
 

@@ -127,6 +127,7 @@
 {
     [[CTAnalytics instance] tagScreen:@"click_WI" detail:@(indexPath.row + 1).stringValue step:nil];
     [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"clicked" step:nil];
+    
     if (self.delegate) {
         [self.delegate didSelectVehicle:self.availability.items[indexPath.row] atIndex:indexPath.row];
     }
