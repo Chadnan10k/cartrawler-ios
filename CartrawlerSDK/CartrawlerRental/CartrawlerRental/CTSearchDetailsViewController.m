@@ -22,6 +22,8 @@
 
 @property (nonatomic, strong) CTSearchView *searchView;
 @property (nonatomic, strong) CTNextButton *nextButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
+@property (weak, nonatomic) IBOutlet UIButton *chevron;
 
 @end
 
@@ -56,6 +58,20 @@
     [super viewWillAppear:animated];
     
     [self.searchView updateDisplayWithSearch:self.search];
+    
+    [self configureSettingsButton];
+    [self configureBackButton];
+}
+
+- (void)configureSettingsButton {
+    self.settingsButton.hidden = [self isBeingPresented] ? YES : NO;
+}
+
+- (void)configureBackButton {
+    NSString *imageName = [self isBeingPresented] ? @"down_arrow" : @"backArrow";
+    UIImage *image = [[UIImage imageNamed:imageName inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.chevron.tintColor = [UIColor whiteColor];
+    [self.chevron setImage:image forState:UIControlStateNormal];
 }
 
 - (CTSearchView *)setupSearchView
