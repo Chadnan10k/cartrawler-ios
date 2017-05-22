@@ -94,6 +94,9 @@
                                             <constraint firstAttribute="height" constant="25" id="wJ9-TG-LTV"/>
                                         </constraints>
                                         <state key="normal" image="backArrow"/>
+                                        <connections>
+                                            <action selector="backTapped:" destination="3HX-7a-ja0" eventType="touchUpInside" id="q5a-4e-796"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fFH-Wy-c5q" customClass="CTLabel">
                                         <rect key="frame" x="41" y="27" width="517" height="23"/>
@@ -138,14 +141,15 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="sUJ-Le-v7R"/>
                                 <exclude reference="cKo-Hh-eAY"/>
+                                <exclude reference="sUJ-Le-v7R"/>
                             </mask>
                         </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
+                        <outlet property="carTotalButton" destination="tS7-cQ-zxN" id="IJT-is-gnR"/>
                         <outlet property="containerView" destination="8kJ-BG-kTB" id="hX9-Ng-IYV"/>
                         <outlet property="dimmingView" destination="A1N-gW-ezV" id="Coj-tG-isZ"/>
                         <outlet property="paymentSummaryView" destination="bDU-Sw-ipS" id="Le2-oP-Nmo"/>

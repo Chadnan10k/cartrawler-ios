@@ -358,7 +358,7 @@ NSString * const CTRentalFreeCancelationDetail = @"free_cancellation_detail";
 
 //delete
 
-NSString * const CTRentalExtrasPaidAtDesk = @"payment_summary_pay_nothing_desk";
+NSString * const CTRentalExtrasPaidAtDesk = @"all_extras_paid";
 
 NSString * const CTRentalExtrasViewAll = @"extras_all";
 
@@ -368,7 +368,7 @@ NSString * const CTRentalOtherCars = @"other_cars";
 
 NSString * const CTRentalCarRental = @"car_rental";
 
-NSString * const CTRentalPayNothingAtDesk = @"pay_nothing_at_desk";
+NSString * const CTRentalPayNothingAtDesk = @"payment_summary_pay_nothing_desk";
 
 NSString * const CTRentalPaymentFree = @"payment_free";
 

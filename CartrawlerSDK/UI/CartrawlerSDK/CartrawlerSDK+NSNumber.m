@@ -49,6 +49,19 @@
     return [f stringFromNumber:pricePerDay];
 }
 
+- (NSNumber *)pricePerDayValue:(NSDate *)pickup dropoff:(NSDate *)dropoff
+{
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:pickup
+                                                          toDate:dropoff
+                                                         options:0];
+    
+    NSNumber *pricePerDay = [NSNumber numberWithFloat:self.floatValue
+                             / ([components day] ?: 1)];
+    return pricePerDay;
+}
+
 + (NSNumber *)numberFromString:(NSString *)string
 {
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
