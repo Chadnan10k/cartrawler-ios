@@ -126,7 +126,7 @@
     
     [self.cartrawlerSDK configureViewController:self.vehicleSelectionViewController
                            validationController:[[CTGenericValidation alloc] init]
-                                    destination:self.driverDetialsViewController
+                                    destination:self.vehicleDetailsViewController
                                        fallback:nil
                                   optionalRoute:self.searchDetailsViewController
                                          search:[CTRentalSearch instance]
@@ -148,14 +148,6 @@
                                          search:[CTRentalSearch instance]
                                          target:self];
     
-    [self.cartrawlerSDK configureViewController:self.addressDetialsViewController
-                           validationController:[[CTPaymentValidation alloc] init]
-                                    destination:self.paymentSummaryViewController
-                                       fallback:nil
-                                  optionalRoute:nil
-                                         search:[CTRentalSearch instance]
-                                         target:self];
-    
     [self.cartrawlerSDK configureViewController:self.paymentCompletionViewController
                            validationController:[[CTGenericValidation alloc] init]
                                     destination:nil
@@ -163,8 +155,6 @@
                                   optionalRoute:nil
                                          search:[CTRentalSearch instance]
                                          target:self];
-    
-    
 }
 
 #pragma CTViewControllerDelegate

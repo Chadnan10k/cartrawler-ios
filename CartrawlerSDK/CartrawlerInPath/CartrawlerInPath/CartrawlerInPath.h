@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param index The index of the displayed vehicle
  @param vehicleItem The vehicle item object
  */
-- (void)didDisplayVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem;
+- (void)didDisplayVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem pricePerDay:(NSNumber *)pricePerDay;
 
 /**
  Called when the user taps on a vehicle

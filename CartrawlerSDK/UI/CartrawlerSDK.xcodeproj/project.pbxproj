@@ -183,6 +183,8 @@
 		E70230741E857DC2005E1BF4 /* CTRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E70230721E857DC2005E1BF4 /* CTRatingView.m */; };
 		E726E3F51E9FDBEC004DC355 /* CTCounterView.h in Headers */ = {isa = PBXBuildFile; fileRef = E726E3F31E9FDBEC004DC355 /* CTCounterView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E726E3F61E9FDBEC004DC355 /* CTCounterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E726E3F41E9FDBEC004DC355 /* CTCounterView.m */; };
+		E727622B1ECE3B240040C096 /* CTToastView.h in Headers */ = {isa = PBXBuildFile; fileRef = E72762291ECE3B240040C096 /* CTToastView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E727622C1ECE3B240040C096 /* CTToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = E727622A1ECE3B240040C096 /* CTToastView.m */; };
 		E7404A781E82F3AB009BF7DF /* CTTabContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7404A791E82F3AB009BF7DF /* CTTabContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7404A771E82F3AB009BF7DF /* CTTabContainerView.m */; };
 		E7404A801E82F90C009BF7DF /* CTTabHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A7E1E82F90C009BF7DF /* CTTabHeaderView.h */; };
@@ -395,6 +397,8 @@
 		E70230721E857DC2005E1BF4 /* CTRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRatingView.m; sourceTree = "<group>"; };
 		E726E3F31E9FDBEC004DC355 /* CTCounterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCounterView.h; sourceTree = "<group>"; };
 		E726E3F41E9FDBEC004DC355 /* CTCounterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCounterView.m; sourceTree = "<group>"; };
+		E72762291ECE3B240040C096 /* CTToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTToastView.h; sourceTree = "<group>"; };
+		E727622A1ECE3B240040C096 /* CTToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTToastView.m; sourceTree = "<group>"; };
 		E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabContainerView.h; sourceTree = "<group>"; };
 		E7404A771E82F3AB009BF7DF /* CTTabContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabContainerView.m; sourceTree = "<group>"; };
 		E7404A7E1E82F90C009BF7DF /* CTTabHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabHeaderView.h; sourceTree = "<group>"; };
@@ -784,6 +788,7 @@
 				E76900E41E783EA200D729FF /* Expanding View */,
 				E726E3F21E9FDBB8004DC355 /* Counter */,
 				E7404A751E82F01C009BF7DF /* Tab Manager */,
+				E72762281ECE3B080040C096 /* Toast View */,
 				E76900E31E776F5000D729FF /* List View */,
 				E70230701E8575E9005E1BF4 /* Rating View */,
 				E76900B41E70943000D729FF /* Alert View */,
@@ -912,6 +917,15 @@
 				E726E3F41E9FDBEC004DC355 /* CTCounterView.m */,
 			);
 			name = Counter;
+			sourceTree = "<group>";
+		};
+		E72762281ECE3B080040C096 /* Toast View */ = {
+			isa = PBXGroup;
+			children = (
+				E72762291ECE3B240040C096 /* CTToastView.h */,
+				E727622A1ECE3B240040C096 /* CTToastView.m */,
+			);
+			name = "Toast View";
 			sourceTree = "<group>";
 		};
 		E7404A751E82F01C009BF7DF /* Tab Manager */ = {
@@ -1062,6 +1076,7 @@
 				BC95467A1EB265010097312C /* CTCMSJSONParser.h in Headers */,
 				E76900DD1E764F9800D729FF /* CTListView.h in Headers */,
 				E76900E11E77267700D729FF /* CTListItemView.h in Headers */,
+				E727622B1ECE3B240040C096 /* CTToastView.h in Headers */,
 				BCFA41741E97CDF700DA1710 /* CTUpSellBanner.h in Headers */,
 				BC01F5921E9D2A7B003D8286 /* CartrawlerSDK+NSString.h in Headers */,
 				BC9546701EAF77AD0097312C /* CTImageTextView.h in Headers */,
@@ -1279,6 +1294,7 @@
 				E76900BE1E7199F400D729FF /* CTAlertView.m in Sources */,
 				E726E3F61E9FDBEC004DC355 /* CTCounterView.m in Sources */,
 				E76900DE1E764F9800D729FF /* CTListView.m in Sources */,
+				E727622C1ECE3B240040C096 /* CTToastView.m in Sources */,
 				455B58941DCC914300CA4790 /* CartrawlerSDK+UIColor.m in Sources */,
 				4513B6251DD4C77C00185FEF /* CartrawlerSDK+WKWebView.m in Sources */,
 				455B58B61DCC914400CA4790 /* CTValidation.m in Sources */,
