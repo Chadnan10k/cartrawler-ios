@@ -125,8 +125,8 @@
         updated = YES;
     }
     
-    BOOL differentPickUpDay = ![NSDate isDate:self.previousSearch.pickupDate inSameDayAsDate:self.previousSearch.pickupDate];
-    BOOL differentDropOffDay = ![NSDate isDate:self.previousSearch.dropoffDate inSameDayAsDate:self.previousSearch.dropoffDate];
+    BOOL differentPickUpDay = ![NSDate isDate:self.previousSearch.pickupDate inSameDayAsDate:self.search.pickupDate];
+    BOOL differentDropOffDay = ![NSDate isDate:self.previousSearch.dropoffDate inSameDayAsDate:self.search.dropoffDate];
     
     if (differentPickUpDay || differentDropOffDay) {
         [[CTAnalytics instance] tagScreen:@"Update_dat" detail:@"updated" step:nil];
@@ -134,7 +134,7 @@
     }
     
     BOOL differentPickUpTime = ![NSDate isDate:self.previousSearch.pickupDate atSameTimeAsDate:self.search.pickupDate];
-    BOOL differentDropOffTime = ![NSDate isDate:self.previousSearch.dropoffDate atSameTimeAsDate:self.previousSearch.dropoffDate];
+    BOOL differentDropOffTime = ![NSDate isDate:self.previousSearch.dropoffDate atSameTimeAsDate:self.search.dropoffDate];
     
     if (differentPickUpTime || differentDropOffTime) {
         [[CTAnalytics instance] tagScreen:@"Update_tim" detail:@"updated" step:nil];

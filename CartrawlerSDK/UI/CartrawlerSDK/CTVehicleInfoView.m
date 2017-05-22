@@ -193,7 +193,6 @@
     
 
     [self addSubview:self.nextButton];
-    [self.nextButton addTarget:self action:@selector(nextTapped:) forControlEvents:UIControlEventTouchUpInside];
 
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[toastView]-0-|"
                                                                  options:0

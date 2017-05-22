@@ -25,6 +25,7 @@
 #import "CTRentalConstants.h"
 #import "CTTermsViewController.h"
 #import "CartrawlerAPI/CTBooking.h"
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTDriverDetailsViewController () <UITextFieldDelegate, CTPaymentDelegate, UITextViewDelegate>
 
@@ -402,33 +403,34 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    
-    if (textField == self.firstNameTextField) {
-        [[CTAnalytics instance] tagScreen:@"firstname" detail:@"type" step:nil];
-    }
-    if (textField == self.lastNameTextField) {
-        [[CTAnalytics instance] tagScreen:@"surname" detail:@"type" step:nil];
-    }
-    if (textField == self.emailTextField) {
-        [[CTAnalytics instance] tagScreen:@"email1" detail:@"type" step:nil];
-    }
-    if (textField == self.phoneTextField) {
-        [[CTAnalytics instance] tagScreen:@"phone" detail:@"type" step:nil];
-    }
-    if (textField == self.flightNoTextField) {
-        [[CTAnalytics instance] tagScreen:@"flightNum" detail:@"type" step:nil];
-    }
-    if (textField == self.addressTextField) {
-        [[CTAnalytics instance] tagScreen:@"address1" detail:@"type" step:nil];
-    }
-    if (textField == self.address2TextField) {
-        [[CTAnalytics instance] tagScreen:@"address2" detail:@"type" step:nil];
-    }
-    if (textField == self.cityTextField) {
-        [[CTAnalytics instance] tagScreen:@"city" detail:@"type" step:nil];
-    }
-    if (textField == self.postcodeTextField) {
-        [[CTAnalytics instance] tagScreen:@"postcode" detail:@"type" step:nil];
+    if (string.length == 1)) {
+        if (textField == self.firstNameTextField) {
+            [[CTAnalytics instance] tagScreen:@"firstname" detail:@"type" step:nil];
+        }
+        if (textField == self.lastNameTextField) {
+            [[CTAnalytics instance] tagScreen:@"surname" detail:@"type" step:nil];
+        }
+        if (textField == self.emailTextField) {
+            [[CTAnalytics instance] tagScreen:@"email1" detail:@"type" step:nil];
+        }
+        if (textField == self.phoneTextField) {
+            [[CTAnalytics instance] tagScreen:@"phone" detail:@"type" step:nil];
+        }
+        if (textField == self.flightNoTextField) {
+            [[CTAnalytics instance] tagScreen:@"flightNum" detail:@"type" step:nil];
+        }
+        if (textField == self.addressTextField) {
+            [[CTAnalytics instance] tagScreen:@"address1" detail:@"type" step:nil];
+        }
+        if (textField == self.address2TextField) {
+            [[CTAnalytics instance] tagScreen:@"address2" detail:@"type" step:nil];
+        }
+        if (textField == self.cityTextField) {
+            [[CTAnalytics instance] tagScreen:@"city" detail:@"type" step:nil];
+        }
+        if (textField == self.postcodeTextField) {
+            [[CTAnalytics instance] tagScreen:@"postcode" detail:@"type" step:nil];
+        }
     }
     
     if (textField == self.phoneTextField) {
@@ -527,6 +529,7 @@
 }
 
 - (IBAction)back:(id)sender {
+    [[CTAnalytics instance] tagScreen:@"back_btn" detail:@"details" step:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
