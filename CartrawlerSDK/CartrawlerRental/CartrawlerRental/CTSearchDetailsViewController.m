@@ -23,6 +23,8 @@
 
 @property (nonatomic, strong) CTSearchView *searchView;
 @property (nonatomic, strong) CTNextButton *nextButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
+@property (weak, nonatomic) IBOutlet UIButton *chevron;
 
 /**
  For analytics tagging, the view needs to know if it is editing a previous search
@@ -37,6 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithRed:10.0/255.0 green:50.0/255.0 blue:127.0/255.0 alpha:1.0];
     
     _nextButton = [self setupNextButton];
     _searchView = [self setupSearchView];
@@ -66,14 +69,26 @@
 {
     [super viewWillAppear:animated];
     
-    // TODO: This is calling an empty method
     [self.searchView updateDisplayWithSearch:self.search];
-    self.searchView.editMode = self.editMode;
+    
+    [self configureSettingsButton];
+    [self configureBackButton];
 }
 
 - (BOOL)editMode {
     // Check if date has been set on search to see if previous search has been completed. If so, the search is now being edited
     return (self.search.pickupDate != nil);
+}
+
+- (void)configureSettingsButton {
+    self.settingsButton.hidden = [self isBeingPresented] ? YES : NO;
+}
+
+- (void)configureBackButton {
+    NSString *imageName = [self isBeingPresented] ? @"down_arrow" : @"backArrow";
+    UIImage *image = [[UIImage imageNamed:imageName inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.chevron.tintColor = [UIColor whiteColor];
+    [self.chevron setImage:image forState:UIControlStateNormal];
 }
 
 - (CTSearchView *)setupSearchView

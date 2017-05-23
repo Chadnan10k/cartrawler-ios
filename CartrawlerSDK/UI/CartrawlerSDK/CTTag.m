@@ -65,7 +65,6 @@
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     NSString *escapedString = [jsonString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://tag.cartrawler.com/?json=1&t=%@", escapedString]];
-    NSLog(@"%@", url.absoluteString);
     return url;
 }
 
