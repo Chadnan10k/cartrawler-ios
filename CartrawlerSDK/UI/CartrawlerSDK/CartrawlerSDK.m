@@ -27,8 +27,6 @@
     _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
                                                      language:[CTSDKSettings instance].languageCode
                                                         debug:[CTSDKSettings instance].isDebug];
-    [self setNewSession];
-
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     return self;
 }

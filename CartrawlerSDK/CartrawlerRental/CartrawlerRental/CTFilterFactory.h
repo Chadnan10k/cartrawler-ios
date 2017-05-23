@@ -18,6 +18,7 @@
 @property (strong, nonatomic) CTFilterDataSource *fuelPolicyDataSource;
 @property (strong, nonatomic) CTFilterDataSource *transmissionDataSource;
 
+@property (readonly, nonatomic) CTVehicleAvailability *data;
 @property (strong, nonatomic) NSMutableArray<CTAvailabilityItem *> *filteredData;
 
 - (void)setDataSources;

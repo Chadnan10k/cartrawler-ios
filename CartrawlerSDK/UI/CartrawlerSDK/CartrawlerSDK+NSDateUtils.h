@@ -19,4 +19,7 @@
 + (NSDate *)dateWithHour:(NSInteger)hour minute:(NSInteger)minute;
 + (NSDate *)mergeTimeWithDateWithTime:(NSDate *)dateWithTime dateWithDay:(NSDate *)dateWithDay;
 
++ (BOOL)isDate:(NSDate *)date1 inSameDayAsDate:(NSDate *)date2;
++ (BOOL)isDate:(NSDate *)date1 atSameTimeAsDate:(NSDate *)date2;
+
 @end

@@ -11,6 +11,7 @@
 #import <CartrawlerSDK/CTAppearance.h>
 #import "CTInPathLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTCarouselView() <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
 
@@ -37,6 +38,9 @@
                                                                         views:@{@"container" : self}]];
     _vehicleCollectionView = [self renderCollectionView];
     _pageControl = [self renderPageControl];
+    
+    [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"displayed" step:nil];
+
     [self layout];
     return self;
 }
@@ -121,6 +125,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [[CTAnalytics instance] tagScreen:@"click_WI" detail:@(indexPath.row + 1).stringValue step:nil];
+    [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"clicked" step:nil];
+    
     if (self.delegate) {
         [self.delegate didSelectVehicle:self.availability.items[indexPath.row] atIndex:indexPath.row];
     }
@@ -133,6 +140,23 @@
     self.pageControl.currentPage = currentIndex;
     if (self.delegate && currentIndex >= 0) {
         [self.delegate didDisplayVehicle:self.availability.items[currentIndex] atIndex:currentIndex];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self tagScrollViewOffset:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!decelerate) {
+        [self tagScrollViewOffset:scrollView];
+    }
+}
+
+- (void)tagScrollViewOffset:(UIScrollView *)scrollView {
+    if (scrollView.contentSize.width > 0) {
+        int percentageOffset = 100 * scrollView.contentOffset.x / (scrollView.contentSize.width - scrollView.frame.size.width);
+        [[CTAnalytics instance] tagScreen:@"scroll_WI" detail:@(percentageOffset).stringValue step:nil];
     }
 }
 

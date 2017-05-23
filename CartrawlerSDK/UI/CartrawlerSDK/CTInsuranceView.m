@@ -9,6 +9,7 @@
 #import "CTInsuranceView.h"
 #import "CTInsuranceOfferingView.h"
 #import <CartrawlerSDK/CTSDKSettings.h>
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTInsuranceView()
 
@@ -76,18 +77,23 @@
     
     self.offeringView.addAction = ^{
         if (weakSelf.delegate) {
+            [[CTAnalytics instance] tagScreen:@"ins_add3_m" detail:@"add" step:nil];
+            [[CTAnalytics instance] tagScreen:@"ins_click" detail:@"1" step:nil];
             [weakSelf.delegate didAddInsurance:weakSelf.cachedInsurance];
         }
     };
     
     self.offeringView.removeAction = ^{
         if (weakSelf.delegate) {
+            [[CTAnalytics instance] tagScreen:@"ins_add3_m" detail:@"remove" step:nil];
+            [[CTAnalytics instance] tagScreen:@"ins_click" detail:@"0" step:nil];
             [weakSelf.delegate didRemoveInsurance];
         }
     };
     
     self.offeringView.termsAndConditionsAction = ^{
         if (weakSelf.delegate) {
+            [[CTAnalytics instance] tagScreen:@"ins_lnk3" detail:@"click" step:nil];
             [weakSelf.delegate didTapMoreInsuranceDetail];
         }
     };

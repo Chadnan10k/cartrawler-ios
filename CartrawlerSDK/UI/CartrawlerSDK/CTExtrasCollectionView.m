@@ -14,6 +14,7 @@
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTAnalytics.h>
 
 NSInteger const kMaxExtras = 4;
 NSInteger const kDefaultExtrasCountWhenIncludedInRate = 1;
@@ -32,6 +33,7 @@ CGFloat const kListCellHeightExpanded = 160.0;
 @property (nonatomic, strong) NSArray *extras;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableIndexSet *indexesOfCellsWithDetailDisplayed;
+@property (nonatomic, assign) BOOL scrollViewDidBeginDragging;
 @end
 
 @implementation CTExtrasCollectionView
@@ -92,6 +94,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)updateWithExtras:(NSArray *)extras {
     self.extras = extras;
     [self.collectionView reloadData];
+    self.scrollViewDidBeginDragging = NO;
 }
 
 // MARK: <UICollectionViewDataSource>
@@ -231,10 +234,19 @@ static NSString * const reuseIdentifier = @"Cell";
     return CGSizeMake(self.collectionView.frame.size.width, height);
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal && !self.scrollViewDidBeginDragging) {
+        self.scrollViewDidBeginDragging = YES;
+        [[CTAnalytics instance] tagScreen:@"extras" detail:@"scroll" step:nil];
+    }
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
         return;
     }
+    
+    [[CTAnalytics instance] tagScreen:@"extras" detail:@"all_clk" step:nil];
     
     UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *cell = (UICollectionViewCell <CTExtrasCollectionViewCellProtocol> *)[self.collectionView cellForItemAtIndexPath:indexPath];
     
