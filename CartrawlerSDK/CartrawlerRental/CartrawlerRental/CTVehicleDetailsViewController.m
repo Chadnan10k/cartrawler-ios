@@ -110,6 +110,17 @@
     }
 }
 
+- (void)infoViewDidScrollToInsuranceView {
+    NSString *insOffered = self.search.insurance ? @"true" : @"false";
+    
+    [[CTAnalytics instance] tagScreen:@"ins_offer" detail:insOffered step:nil];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-e" step:nil];
+    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Insurance & Extras Step",
+                                      @"stepName" : @"Step4",
+                                      @"insuranceOffered" : insOffered
+                                      } eventName:@"Step of search" eventType:@"Step"];
+}
 
 - (void)updateDetailedPriceSummary
 {
@@ -200,7 +211,5 @@
 {
 //    [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-// MARK: CTvehicle details delegate
 
 @end

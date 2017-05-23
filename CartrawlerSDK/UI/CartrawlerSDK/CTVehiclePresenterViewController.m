@@ -145,6 +145,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [self.containerView addSubview:self.vehicleDetailsView];
     [CTLayoutManager pinView:self.vehicleDetailsView toSuperView:self.containerView padding:UIEdgeInsetsZero];
     [self.vehicleDetailsView refreshView];
+    [self tagVehicleStep];
     [self updateNavigationBar];
     [self updatePriceSummary:NO];
     [self updateDetailedPriceSummary];
@@ -211,7 +212,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 {
     if (self.search.selectedVehicle) {
         if (self.vehicleDetailsView.insuranceViewDidAppear) {
-            [[CTAnalytics instance] tagScreen:@"exit" detail:@"vehicles-v" step:nil];
+            [[CTAnalytics instance] tagScreen:@"exit" detail:@"vehicle-v" step:nil];
         } else {
             [[CTAnalytics instance] tagScreen:@"exit" detail:@"vehicle-e" step:nil];
         }
@@ -235,7 +236,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (IBAction)search:(id)sender
 {
     [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"open" step:nil];
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"searchcars" step:nil];
+    [self tagSearchStep];
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
     CTSearchDetailsViewController *searchViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalSearchViewIdentifier];
@@ -387,6 +388,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)didSelectVehicle:(CTAvailabilityItem *)item
 {
+    [self tagVehicleDetailsStep];
     self.search.selectedVehicle = item;
     if (![CTSDKSettings instance].isStandalone) {
         [self presentVehicleDetails];
@@ -439,6 +441,77 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (void)infoViewDidScroll:(CGFloat)verticalOffset {
     self.toolbarTopConstraint.constant = [self.scrollingLogic offsetForDesiredOffset:verticalOffset
                                                                          currentOffset:self.toolbarTopConstraint.constant];
+}
+
+- (void)infoViewDidScrollToInsuranceView {
+    [self tagInsuranceStep];
+}
+
+// MARK: Analytics
+
+- (void)tagSearchStep {
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"searchcars" step:nil];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Search Step",
+                                      @"stepName" : @"Step1",
+                                      @"clientID" : [CTSDKSettings instance].clientId,
+                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode
+                                      } eventName:@"Step of search" eventType:@"Step"];
+}
+
+- (void)tagVehicleStep {
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-v" step:nil];
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:self.search.pickupDate
+                                                          toDate:self.search.dropoffDate
+                                                         options:0];
+    
+    NSNumber *pricePerDay = [NSNumber numberWithFloat:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.floatValue
+                             / ([components day] ?: 1)];
+    
+    NSString *vehName = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.makeModelName,
+                         self.search.selectedVehicle.vehicle.orSimilar];
+    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Vehicle Details Step",
+                                      @"stepName" : @"Step3",
+                                      @"carPrice" : self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.stringValue,
+                                      @"carPricePerDay" : pricePerDay.stringValue,
+                                      @"carSelected" : vehName,
+                                      } eventName:@"Step of search" eventType:@"Step"];
+}
+
+- (void)tagInsuranceStep {
+    NSString *insOffered = self.search.insurance ? @"true" : @"false";
+    
+    [[CTAnalytics instance] tagScreen:@"ins_offer" detail:insOffered step:nil];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-e" step:nil];
+    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Insurance & Extras Step",
+                                      @"stepName" : @"Step4",
+                                      @"insuranceOffered" : insOffered
+                                      } eventName:@"Step of search" eventType:@"Step"];
+}
+
+- (void)tagVehicleDetailsStep {
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-v" step:nil];
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:self.search.pickupDate
+                                                          toDate:self.search.dropoffDate
+                                                         options:0];
+    
+    NSNumber *pricePerDay = [NSNumber numberWithFloat:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.floatValue
+                             / ([components day] ?: 1)];
+    
+    NSString *vehName = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.makeModelName,
+                         self.search.selectedVehicle.vehicle.orSimilar];
+    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Vehicle Details Step",
+                                      @"stepName" : @"Step3",
+                                      @"carPrice" : self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.stringValue,
+                                      @"carPricePerDay" : pricePerDay.stringValue,
+                                      @"carSelected" : vehName,
+                                      } eventName:@"Step of search" eventType:@"Step"];
 }
 
 @end

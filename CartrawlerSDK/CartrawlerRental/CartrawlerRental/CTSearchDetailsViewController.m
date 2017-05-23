@@ -127,6 +127,8 @@
     [[CTAnalytics instance] tagScreen:@"SearchCars" detail:@"search" step:nil];
 }
 
+// MARK: Analytics
+
 - (void)tagSearchUpdates {
     BOOL updated = NO;
     
@@ -165,6 +167,24 @@
         [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"exit_U" step:nil];
         [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"exit" step:nil];
     }
+    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Vehicle Selection Step",
+                                      @"stepName" : @"Step2",
+                                      @"age" : self.search.driverAge.stringValue,
+                                      @"clientID" : [CTSDKSettings instance].clientId,
+                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode,
+                                      @"pickupID" : self.search.pickupLocation.code,
+                                      @"pickupName" : self.search.pickupLocation.name,
+                                      @"pickupDate" : [self.search.pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                                      @"pickupTime" : [self.search.pickupDate stringFromDateWithFormat:@"HH:mm"],
+                                      @"pickupCountry" : self.search.pickupLocation.countryCode,
+                                      @"returnID" : self.search.dropoffLocation.code,
+                                      @"returnName" : self.search.dropoffLocation.name,
+                                      @"returnDate" : [self.search.dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                                      @"returnTime" : [self.search.dropoffDate stringFromDateWithFormat:@"HH:mm"],
+                                      @"returnCountry" : self.search.dropoffLocation.countryCode,
+                                      @"currency" : [CTSDKSettings instance].homeCountryCode
+                                      } eventName:@"Step of search" eventType:@"Step"];
 }
 
 - (void)displayAlertWithMessage:(NSString *)message
@@ -225,5 +245,14 @@
     [self presentModalViewController:viewController];
 }
 
+// MARK: Analytics
+
+- (void)tagScreen {
+    [self sendEvent:NO customParams:@{@"eventName" : @"Search Step",
+                                      @"stepName" : @"Step1",
+                                      @"clientID" : [CTSDKSettings instance].clientId,
+                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode
+                                      } eventName:@"Step of search" eventType:@"Step"];
+}
 
 @end

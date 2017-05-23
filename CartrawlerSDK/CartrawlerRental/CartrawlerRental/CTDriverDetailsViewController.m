@@ -668,8 +668,19 @@
 - (void)tagScreen
 {
     [[CTAnalytics instance] tagScreen:@"step" detail:@"details" step:nil];
+    
     [self sendEvent:NO customParams:@{@"eventName" : @"Driver Details Step",
                                       @"stepName" : @"Step5",
+                                      } eventName:@"Step of search" eventType:@"Step"];
+    
+    if (self.search.isBuyingInsurance) {
+        [self sendEvent:NO customParams:@{@"eventName" : @"Address Details Step",
+                                          @"stepName" : @"Step6",
+                                          } eventName:@"Step of search" eventType:@"Step"];
+    }
+    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Payment Step",
+                                      @"stepName" : @"Step8",
                                       } eventName:@"Step of search" eventType:@"Step"];
 }
 

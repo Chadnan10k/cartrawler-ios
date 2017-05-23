@@ -84,7 +84,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self tagScreen];
     [self produceHeaderText];
     [self.search addObserver:self forKeyPath:@"vehicleAvailability"
                      options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
@@ -259,29 +258,6 @@
 - (IBAction)searchTapped:(id)sender
 {
     [self presentSearch];
-}
-
-//MARK: analyitics
-- (void)tagScreen
-{
-//    [self sendEvent:NO customParams:@{@"eventName" : @"Vehicle Selection Step",
-//                                      @"stepName" : @"Step2",
-//                                      @"age" : self.search.driverAge.stringValue,
-//                                      @"clientID" : [CTSDKSettings instance].clientId,
-//                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode,
-//                                      @"pickupID" : self.search.pickupLocation.code,
-//                                      @"pickupName" : self.search.pickupLocation.name,
-//                                      @"pickupDate" : [self.search.pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
-//                                      @"pickupTime" : [self.search.pickupDate stringFromDateWithFormat:@"HH:mm"],
-//                                      @"pickupCountry" : self.search.pickupLocation.countryCode,
-//                                      @"returnID" : self.search.dropoffLocation.code,
-//                                      @"returnName" : self.search.dropoffLocation.name,
-//                                      @"returnDate" : [self.search.dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
-//                                      @"returnTime" : [self.search.dropoffDate stringFromDateWithFormat:@"HH:mm"],
-//                                      @"returnCountry" : self.search.dropoffLocation.countryCode,
-//                                      @"currency" : [CTSDKSettings instance].homeCountryCode
-//                                      } eventName:@"Step of search" eventType:@"Step"];
-//    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:@2];
 }
 
 //MARK: CTFilterDelegate

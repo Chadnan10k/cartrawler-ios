@@ -48,7 +48,7 @@
 
 - (IBAction)newBooking:(id)sender {
     [[CTAnalytics instance] setAnalyticsStep:CTAnalyticsStepSearch];
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"searchcars" step:nil];
+    [self tagSearchStep];
     [self pushToDestination];
 }
 
@@ -81,6 +81,17 @@
     CTRentalBookingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     [cell setData:self.bookings[indexPath.row]];
     return cell;
+}
+
+// MARK: Analytics
+
+- (void)tagSearchStep {
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"searchcars" step:nil];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Search Step",
+                                      @"stepName" : @"Step1",
+                                      @"clientID" : [CTSDKSettings instance].clientId,
+                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode
+                                      } eventName:@"Step of search" eventType:@"Step"];
 }
 
 @end
