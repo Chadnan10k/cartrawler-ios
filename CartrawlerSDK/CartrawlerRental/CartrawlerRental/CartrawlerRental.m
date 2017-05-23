@@ -65,6 +65,7 @@
     navController.navigationBar.hidden = YES;
     navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
+    [CTSDKSettings instance].isStandalone = YES;
     
     if ([CTDataStore checkHasUpcomingBookings]) {
         UIStoryboard *landingStoryboard = [UIStoryboard storyboardWithName:CTRentalBookingManagerStoryboard bundle:self.bundle];

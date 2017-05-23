@@ -32,6 +32,7 @@
 @property (nonatomic) BOOL disableCurrencySelection;
 
 @property (nonatomic) BOOL isDebug;
+@property (nonatomic) BOOL isStandalone;
 
 + (instancetype)instance;
 

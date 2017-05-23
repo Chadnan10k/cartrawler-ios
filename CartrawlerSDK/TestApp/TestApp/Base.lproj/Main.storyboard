@@ -196,7 +196,7 @@
                                     <constraint firstAttribute="height" constant="55" id="6Um-x9-JGE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="Make Payment"/>
+                                <state key="normal" title="View all"/>
                                 <connections>
                                     <action selector="mockPayment:" destination="9HL-5W-v1q" eventType="touchUpInside" id="UPq-TY-SYx"/>
                                 </connections>
@@ -295,7 +295,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zsj-16-95s" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="c1K-lO-dAv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c1K-lO-dAv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -245,10 +245,11 @@
     navController.navigationBar.hidden = YES;
     navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
+    [CTSDKSettings instance].isStandalone = NO;
     
     // TODO: This if/else logic all resolves to same method call??
     if (self.didFailToFetchResults) {
-        [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
+        [navController setViewControllers:@[self.rental.searchDetailsViewController]];
     } else {
         if (showSelection) {
             [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
