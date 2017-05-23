@@ -20,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
  *  Body text of a section
  */
 @property (nonatomic, nonnull, readonly) NSString *bodyText;
+/**
+ *  ID of a section
+ */
+@property (nonatomic, nonnull, readonly) NSString *titleNameId;
 
 - (instancetype)initFromDictionary:(NSDictionary *)dict;
 

@@ -28,6 +28,7 @@
 @property (nonatomic) BOOL isReturnTrip;
 @property (nonatomic) BOOL didFailToFetchResults;
 @property (nonatomic) BOOL didFetchResults;
+@property (nonatomic) NSDate *fetchStartTime;
 
 @property (nonatomic, strong) CTAvailabilityItem *cachedVehicle;
 
@@ -54,9 +55,12 @@
 {
     [[CTSDKSettings instance] setClientId:clientID];
     _clientID = clientID;
+    [self.rental.cartrawlerSDK setNewSession];
     [self renderDefaultState];
     _parentViewController = parentViewController;
     [self setSearchDetails:currency flightNo:flightNumber passengers:passegers pickupDate:pickupDate returnDate:returnDate];
+    
+    self.fetchStartTime = [NSDate date];
     [self performLocationSearch:IATACode ?: @""];
 }
 
@@ -176,6 +180,9 @@
          [[CTRentalSearch instance] setEngineInfoFromAvail];
          _defaultSearch = [[CTRentalSearch instance] copy];
          _didFetchResults = YES;
+         
+         [[CTAnalytics instance] tagScreen:@"vehicles" detail:[NSString stringWithFormat:@"%.01f", -[self.fetchStartTime timeIntervalSinceNow]] step:@0];
+         
          dispatch_async(dispatch_get_main_queue(), ^{
              [weakSelf renderReadyState];
          });
@@ -209,7 +216,7 @@
     [CTRentalSearch instance].selectedVehicle = nil;
     [self configureViews];
     [self presentRentalNavigationController:parentViewController showSelection:YES];
-    [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@1];
+    [[CTAnalytics instance] tagScreen:@"click_WI" detail:@"see_all" step:nil];
 }
 
 - (void)presentSelectedVehicle:(nonnull UIViewController *)parentViewController selectedVehicleItem:(CTAvailabilityItem *)vehicleItem;
@@ -221,7 +228,6 @@
     [CTRentalSearch instance].selectedVehicle = vehicleItem;
     [self configureViews];
     [self presentRentalNavigationController:parentViewController showSelection:NO];
-    [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:@1];
 }
 
 //Lets take what views we need for the nav stack
@@ -240,6 +246,7 @@
     navController.modalPresentationStyle = [CTAppearance instance].modalPresentationStyle;
     navController.modalTransitionStyle = [CTAppearance instance].modalTransitionStyle;
     
+    // TODO: This if/else logic all resolves to same method call??
     if (self.didFailToFetchResults) {
         [navController setViewControllers:@[self.rental.vehicleSelectionViewController]];
     } else {
@@ -271,6 +278,8 @@
 - (void)renderReadyState
 {
     if (self.cardView) {
+        [[CTAnalytics instance] tagScreen:@"visit" detail:@"inflow" step:nil];
+        
         [self.cardView showVehicleSelection:self.defaultSearch.vehicleAvailability
                                  pickupDate:self.defaultSearch.pickupDate
                                 dropoffDate:self.defaultSearch.dropoffDate];
@@ -293,6 +302,8 @@
 
 - (void)addInPathCarouselToContainer:(UIView *)view
 {
+    [[CTAnalytics instance] setAnalyticsStep:CTAnalyticsStepSearch];
+    
     if (!self.cardView) {
         _cardView = [CTInPathView new];
         self.cardView.delegate = self;
@@ -318,11 +329,11 @@
                                                                  options:0
                                                                  metrics:nil
                                                                    views:@{@"view" : self.cardView}]];
-    
 }
 
 - (void)removeVehicle
 {
+    [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"removed" step:nil];
     [CTDataStore deletePotentialInPathBooking];
     _cachedVehicle = nil;
     if (self.cardView) {
@@ -370,6 +381,8 @@
         [self.rental.cartrawlerSDK sendAnalyticsEvent:event];
         [self.rental.cartrawlerSDK sendAnalyticsSaleEvent:saleEvent];
         [CTDataStore didMakeInPathBooking:confirmationID];
+        
+        [[CTAnalytics instance] tagScreen:@"step" detail:@"confirmati" step:nil];
     }
 }
 
@@ -387,6 +400,7 @@
     [self renderSelectedState];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(didProduceInPathPaymentRequest:vehicle:)]) {
+        [[CTAnalytics instance] tagScreen:@"display_WI" detail:@"added" step:nil];
         [CTDataStore cachePotentialInPathBooking:booking];
         [self.delegate didProduceInPathPaymentRequest:[CTInPathPayment createInPathRequest:search]
                                        vehicle:vehicle];

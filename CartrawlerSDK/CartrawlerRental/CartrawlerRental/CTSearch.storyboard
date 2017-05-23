@@ -234,6 +234,10 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="698"/>
+                    <connections>
+                        <outlet property="chevron" destination="Qsf-Ek-vxw" id="I5f-BN-ofY"/>
+                        <outlet property="settingsButton" destination="n5L-L6-l2M" id="dtC-uI-5Dq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ToB-i9-nIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -513,7 +517,7 @@
                 <navigationController storyboardIdentifier="InitialNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sui-XM-uDt" customClass="CTNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="pxI-o6-pEv" customClass="CTNavigationBar">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="pxI-o6-pEv" customClass="CTNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kJ-BG-kTB" customClass="CTDesignableView">
-                                <rect key="frame" x="0.0" y="108" width="600" height="692"/>
+                                <rect key="frame" x="0.0" y="60" width="600" height="740"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -119,13 +119,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="A1N-gW-ezV" secondAttribute="trailing" id="5yv-po-x9H"/>
-                            <constraint firstItem="8kJ-BG-kTB" firstAttribute="top" secondItem="hQh-te-HMH" secondAttribute="bottom" id="6Rh-hm-wdL"/>
                             <constraint firstItem="ftz-8S-Imp" firstAttribute="top" secondItem="A1N-gW-ezV" secondAttribute="bottom" id="ClN-ZR-bic"/>
                             <constraint firstItem="hQh-te-HMH" firstAttribute="leading" secondItem="P83-YX-uHD" secondAttribute="leading" id="E4H-DI-6Kr"/>
                             <constraint firstItem="bDU-Sw-ipS" firstAttribute="top" secondItem="hQh-te-HMH" secondAttribute="top" id="HMZ-cO-ZW4"/>
                             <constraint firstItem="A1N-gW-ezV" firstAttribute="top" secondItem="0gZ-D7-Ply" secondAttribute="bottom" id="PcX-M0-Tff"/>
+                            <constraint firstItem="8kJ-BG-kTB" firstAttribute="top" secondItem="0gZ-D7-Ply" secondAttribute="bottom" id="WcL-gt-el0"/>
                             <constraint firstAttribute="trailing" secondItem="8kJ-BG-kTB" secondAttribute="trailing" id="WvY-FF-pct"/>
-                            <constraint firstItem="bDU-Sw-ipS" firstAttribute="top" secondItem="0gZ-D7-Ply" secondAttribute="bottom" id="cKo-Hh-eAY"/>
                             <constraint firstAttribute="trailing" secondItem="bDU-Sw-ipS" secondAttribute="trailing" id="eHX-ZP-ons"/>
                             <constraint firstItem="ftz-8S-Imp" firstAttribute="top" secondItem="8kJ-BG-kTB" secondAttribute="bottom" id="gMZ-BQ-zmw"/>
                             <constraint firstItem="0gZ-D7-Ply" firstAttribute="leading" secondItem="P83-YX-uHD" secondAttribute="leading" id="hbl-YX-Lui"/>
@@ -137,14 +136,7 @@
                             <constraint firstItem="bDU-Sw-ipS" firstAttribute="leading" secondItem="P83-YX-uHD" secondAttribute="leading" id="qCV-Ku-2lN"/>
                             <constraint firstAttribute="trailing" secondItem="hQh-te-HMH" secondAttribute="trailing" id="qQy-6J-QBE"/>
                             <constraint firstItem="0gZ-D7-Ply" firstAttribute="top" secondItem="P83-YX-uHD" secondAttribute="top" id="rxe-pW-boE"/>
-                            <constraint firstItem="8kJ-BG-kTB" firstAttribute="top" secondItem="bDU-Sw-ipS" secondAttribute="bottom" id="sUJ-Le-v7R"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="cKo-Hh-eAY"/>
-                                <exclude reference="sUJ-Le-v7R"/>
-                            </mask>
-                        </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
@@ -156,6 +148,9 @@
                         <outlet property="summaryViewHeightConstraint" destination="qnQ-gG-h62" id="mfa-G7-ieD"/>
                         <outlet property="summaryViewTopConstraint" destination="HMZ-cO-ZW4" id="9Cq-bd-hkg"/>
                         <outlet property="titleLabel" destination="fFH-Wy-c5q" id="6rN-R2-ioT"/>
+                        <outlet property="totalView" destination="hQh-te-HMH" id="Rwd-rP-ILa"/>
+                        <outlet property="totalViewHeightConstraint" destination="I8Y-qh-xeg" id="AKf-NA-9kF"/>
+                        <outlet property="totalViewTopConstraint" destination="ja5-K9-xzc" id="fln-aw-bvt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lEn-I3-ugR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -254,7 +249,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YmH-Hp-GAa" id="Ktw-NK-0QE">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="stV-yQ-lyC">
@@ -383,7 +378,7 @@
             <objects>
                 <navigationController storyboardIdentifier="CTTermsViewControllerNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="zaw-2W-wIV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LTW-fF-QCn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LTW-fF-QCn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

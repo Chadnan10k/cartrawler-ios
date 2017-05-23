@@ -20,7 +20,7 @@ typedef void (^CTNewVehiclePriceCompeltion)(BOOL success, NSString *error);
 - (void)infoViewPresentVehicleSelection;
 - (void)infoViewPushToNextStep;
 - (void)infoViewAddInsuranceTapped:(BOOL)didAddInsurance;
-
+- (void)infoViewDidScroll:(CGFloat)verticalOffset;
 
 @end
 
@@ -32,6 +32,17 @@ typedef void (^CTNewVehiclePriceCompeltion)(BOOL success, NSString *error);
 @property (nonatomic) BOOL isStandalone;
 
 @property (nonatomic, weak) id<CTVehicleInfoDelegate> delegate;
+
+@property (nonatomic, readonly) BOOL insuranceViewDidAppear;
+
+/**
+ Sets the vertical offset of the content view to avoid any overlaying toolbars at the top
+ 
+ @param verticalOffset a vertical offset
+ @return CTVehicleInfoView
+ */
+- (instancetype)initWithVerticalOffset:(CGFloat)verticalOffset;
+
 
 - (void)refreshView;
 @end

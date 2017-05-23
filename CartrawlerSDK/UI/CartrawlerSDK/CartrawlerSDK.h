@@ -52,6 +52,12 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 - (instancetype)initWithlanguageCode:(NSString *)languageCode
                          sandboxMode:(BOOL)sandboxMode;
 
+
+/**
+ Gets a new session ID
+ */
+- (void)setNewSession;
+
 /**
  *  Enable or disable logs
  *

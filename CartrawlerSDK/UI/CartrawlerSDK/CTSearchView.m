@@ -18,6 +18,8 @@
 #import "CTSelectionView.h"
 #import "CTLocationSearchViewController.h"
 #import "CTRentalConstants.h"
+#import <CartrawlerSDK/CTAnalytics.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 
 @interface CTSearchView() <CTSelectionViewDelegate, CTCalendarDelegate>
 
@@ -163,6 +165,7 @@
     detailLabel.text = text;
     detailLabel.translatesAutoresizingMaskIntoConstraints = NO;
     detailLabel.numberOfLines = 0;
+    detailLabel.textColor = [UIColor whiteColor];
     UIView *container = [UIView new];
     container.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -238,6 +241,8 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
     CTLocationSearchViewController *locationViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalLocationSearchViewIdentifier];
     locationViewController.cartrawlerAPI = self.cartrawlerAPI;
+    locationViewController.searchContext = (isPickupView) ? CTLocationSearchContextPickup : CTLocationSearchContextDropoff;
+    locationViewController.editMode = self.editMode;
     
     locationViewController.selectedLocation = ^(CTMatchedLocation *location) {
         if (isPickupView) {
@@ -322,11 +327,16 @@
 
 - (void)combineTimes
 {
-    NSDate *pickupDate = [NSDate mergeTimeWithDateWithTime:self.temporaryPickupTime dateWithDay:self.temporaryPickupDate];
-    NSDate *dropoffDate = [NSDate mergeTimeWithDateWithTime:self.temporaryDropoffTime dateWithDay:self.temporaryDropoffDate];
+    NSDate *pickUpDate = [NSDate mergeTimeWithDateWithTime:self.temporaryPickupTime dateWithDay:self.temporaryPickupDate];
+    NSString *pickupTime = [pickUpDate stringFromDateWithFormat:@"yyyy-MM-dd-HH:mm"];
+    [self didSelectPickUpTime:pickupTime];
+    
+    NSDate *dropOffDate = [NSDate mergeTimeWithDateWithTime:self.temporaryDropoffTime dateWithDay:self.temporaryDropoffDate];
+    NSString *dropoffTime = [dropOffDate stringFromDateWithFormat:@"yyyy-MM-dd-HH:mm"];
+    [self didSelectDropOffTime:dropoffTime];
 
-    self.search.pickupDate = pickupDate;
-    self.search.dropoffDate = dropoffDate;
+    self.search.pickupDate = pickUpDate;
+    self.search.dropoffDate = dropOffDate;
 }
 
 - (void)setAge
@@ -395,6 +405,7 @@
 - (void)ageSwitchChanged:(UISwitch *)sender
 {
     if (sender == self.ageSwitch) {
+        [self didToggleAgeSwitch:sender.isOn];
         if (sender.isOn) {
             self.search.driverAge = @30;
             NSUInteger idx = [self.layoutManager indexOfObject:self.ageContainer].integerValue;
@@ -407,6 +418,7 @@
     }
     
     if (sender == self.locationSwitch) {
+        [self didToggleLocationSwitch:sender.isOn];
         if (sender.isOn) {
             self.search.dropoffLocation = self.search.pickupLocation;
             [self.layoutManager removeAtIndex:1];
@@ -421,18 +433,22 @@
 - (void)selectionViewWasTapped:(CTSelectionView *)selectionView
 {
     if (selectionView == self.pickupLocationSearch) {
+        [self didSelectPickUpSelectionView];
         [self presentLocationSelection:YES];
     }
     
     if (selectionView == self.dropoffLocationSearch) {
+        [self didSelectDropOffSelectionView];
         [self presentLocationSelection:NO];
     }
     
     if (selectionView == self.datesContainer) {
+        [self didSelectDatesSelectionView];
         [self presentCalendar];
     }
     
     if (selectionView == self.pickupTimeContainer) {
+        [self didSelectTimeSelectionView];
         [self presentTimePicker:YES];
     }
     
@@ -443,7 +459,24 @@
 
 - (void)selectionViewShouldBeginEditing:(CTSelectionView *)selectionView
 {
+    if (selectionView == self.ageContainer) {
+        [self didEnterAgeSelectionView];
+    }
+    
     [self addKeyboardNotifications];
+}
+
+- (void)selectionViewChangedCharacters:(CTSelectionView *)selectionView {
+    if (selectionView == self.ageContainer) {
+        [self didStartTypingInAgeView];
+    }
+}
+
+- (void)selectionViewDidEndEditing:(CTSelectionView *)selectionView {
+    if (selectionView == self.ageContainer) {
+        [self didLeaveAgeView];
+        [self didEnterDriversAge:selectionView.textFieldText];
+    }
 }
 
 //MARK: CTCalendarDelegate
@@ -453,6 +486,69 @@
     _temporaryDropoffDate = dropoffDate;
     NSString *dateStr = [NSString stringWithFormat:@"%@ - %@", [pickupDate shortDescriptionFromDate], [dropoffDate shortDescriptionFromDate]];
     [self.datesContainer setDetailText:dateStr];
+}
+
+// MARK: Analytics
+
+- (void)didSelectPickUpTime:(NSString *)pickUpTime {
+    NSString *tag = self.editMode ? @"E_v_cale_p" : @"v_calend_p";
+    [[CTAnalytics instance] tagScreen:tag detail:pickUpTime step:nil];
+}
+
+- (void)didSelectDropOffTime:(NSString *)dropOffTime {
+    NSString *tag = self.editMode ? @"E_v_cale_d" : @"v_calend_d";
+    [[CTAnalytics instance] tagScreen:tag detail:dropOffTime step:nil];
+}
+
+- (void)didToggleAgeSwitch:(BOOL)isOn {
+    NSString *tag = self.editMode ? @"E_ageCheck" : @"ageCheckbo";
+    NSString *detail = isOn ? @"1" : @"0";
+    [[CTAnalytics instance] tagScreen:tag detail:detail step:nil];
+}
+
+- (void)didToggleLocationSwitch:(BOOL)isOn {
+    NSString *tag = self.editMode ? @"E_returnL" : @"returnLoca";
+    NSString *detail = isOn ? @"1" : @"0";
+    [[CTAnalytics instance] tagScreen:tag detail:detail step:nil];
+}
+
+- (void)didSelectPickUpSelectionView {
+    NSString *tag = self.editMode ? @"E_Pickup" : @"ML_Pickup";
+    [[CTAnalytics instance] tagScreen:tag detail:@"click" step:nil];
+}
+
+- (void)didSelectDropOffSelectionView {
+    NSString *tag = self.editMode ? @"E_Dropoff" : @"ML_Dropoff";
+    [[CTAnalytics instance] tagScreen:tag detail:@"click" step:nil];
+}
+
+- (void)didSelectDatesSelectionView {
+    NSString *tag = self.editMode ? @"E_calend_d" : @"calendar_d";
+    [[CTAnalytics instance] tagScreen:tag detail:@"click" step:nil];
+}
+
+- (void)didSelectTimeSelectionView {
+    NSString *tag = self.editMode ? @"E_calend_t" : @"calendar_t";
+    [[CTAnalytics instance] tagScreen:tag detail:@"click" step:nil];
+}
+
+- (void)didEnterAgeSelectionView {
+    NSString *tag = self.editMode ? @"E_driverAgeC" : @"driverAgeC";
+    [[CTAnalytics instance] tagScreen:tag detail:@"click" step:nil];
+}
+
+- (void)didStartTypingInAgeView {
+    NSString *tag = self.editMode ? @"E_driverAgeC" : @"driverAgeC";
+    [[CTAnalytics instance] tagScreen:tag detail:@"type" step:nil];
+}
+
+- (void)didLeaveAgeView {
+    NSString *tag = self.editMode ? @"E_driverAgeC" : @"driverAgeC";
+    [[CTAnalytics instance] tagScreen:tag detail:@"leave" step:nil];
+}
+
+- (void)didEnterDriversAge:(NSString *)age {
+    [[CTAnalytics instance] tagScreen:@"v_driverAg" detail:age step:nil];
 }
 
 @end

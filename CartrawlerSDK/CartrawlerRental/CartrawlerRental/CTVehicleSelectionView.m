@@ -10,6 +10,7 @@
 #import "CTVehicleSelectionDataSource.h"
 #import "CTVehicleDetailTableViewCell.h"
 #import "CartrawlerSDK/CTLayoutManager.h"
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTVehicleSelectionView() <CTVehicleSelectionDelegate>
 
@@ -46,6 +47,12 @@
     return tv;
 }
 
+- (void)setVerticalOffset:(CGFloat)verticalOffset {
+    [self.tableView setContentInset:UIEdgeInsetsMake(verticalOffset, 0, 0, 0)];
+    [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(verticalOffset, 0, 0, 0)];
+    [self.tableView setContentOffset:CGPointMake(0, -verticalOffset)];
+}
+
 - (void)layout
 {
     [self addSubview:self.tableView];
@@ -77,6 +84,7 @@
 
 - (void)didSelectCellAtIndex:(NSIndexPath *)indexPath data:(CTAvailabilityItem *)data
 {
+    [[CTAnalytics instance] tagScreen:@"select_car" detail:@(indexPath.row+1).stringValue step:nil];
     if (self.delegate) {
         [self.delegate didSelectVehicle:data];
     }

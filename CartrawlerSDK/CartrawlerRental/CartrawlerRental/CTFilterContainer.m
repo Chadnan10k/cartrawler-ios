@@ -41,6 +41,9 @@
 
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
 {
+    if (self.filterSelection) {
+        self.filterSelection(self.isExpanded);
+    }
     [self expand];
 }
 

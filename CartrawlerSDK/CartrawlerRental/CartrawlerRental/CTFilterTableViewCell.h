@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CartrawlerSDK/CTLabel.h>
 
 @interface CTFilterTableViewCell : UITableViewCell
 
-
+@property (nonatomic, readonly) CTLabel *label;
 
 - (void)setText:(NSString *)text;
 

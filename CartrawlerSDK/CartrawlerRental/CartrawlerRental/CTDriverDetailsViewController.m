@@ -25,6 +25,10 @@
 #import "CTRentalConstants.h"
 #import "CTTermsViewController.h"
 #import "CartrawlerAPI/CTBooking.h"
+#import <CartrawlerSDK/CTAnalytics.h>
+#import "CTRentalScrollingLogic.h"
+#import <CartrawlerSDK/CTAnalytics.h>
+#import "CTRentalScrollingLogic.h"
 #import "CTSettingsSelectionViewController.h"
 
 @interface CTDriverDetailsViewController () <UITextFieldDelegate, CTPaymentDelegate, UITextViewDelegate>
@@ -55,6 +59,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *dimmingView;
 
+@property (weak, nonatomic) IBOutlet UIView *totalView;
+@property (nonatomic, strong) CTRentalScrollingLogic *scrollingLogic;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *totalViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *totalViewTopConstraint;
+
 @end
 
 @implementation CTDriverDetailsViewController
@@ -68,6 +77,9 @@
     self.titleLabel.text = CTLocalizedString(CTRentalTitleUser);
     [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
     [self createViews];
+    
+    self.scrollView.bounces = NO;
+    self.scrollingLogic = [[CTRentalScrollingLogic alloc] initWithTopViewHeight:self.totalViewHeightConstraint.constant];
 }
 
 - (void)createViews
@@ -103,29 +115,12 @@
     self.postcodeTextField.placeholder = CTLocalizedString(CTRentalUserPostcodeHint);
     self.locationSelection.placeholder = CTLocalizedString(CTRentalUserCountryHint);
 
-    self.firstNameTextField.delegate = self;
-    self.lastNameTextField.delegate = self;
-    self.emailTextField.delegate = self;
-    self.phoneTextField.delegate = self;
-    self.flightNoTextField.delegate = self;
+    NSArray *textFields = @[self.firstNameTextField, self.lastNameTextField, self.emailTextField, self.phoneTextField, self.flightNoTextField, self.addressTextField, self.address2TextField, self.cityTextField, self.postcodeTextField, self.locationSelection];
     
-    self.addressTextField.delegate = self;
-    self.address2TextField.delegate = self;
-    self.cityTextField.delegate = self;
-    self.postcodeTextField.delegate = self;
-    self.locationSelection.delegate = self;
-
-    [self.firstNameTextField addDoneButton];
-    [self.lastNameTextField addDoneButton];
-    [self.emailTextField addDoneButton];
-    [self.phoneTextField addDoneButton];
-    [self.flightNoTextField addDoneButton];
-    [self.phoneTextField addDoneButton];
-    
-    [self.addressTextField addDoneButton];
-    [self.address2TextField addDoneButton];
-    [self.cityTextField addDoneButton];
-    [self.postcodeTextField addDoneButton];
+    for (CTTextField *textField in textFields) {
+        textField.delegate = self;
+        [textField addDoneButton];
+    }
     
     _selectedView = self.firstNameTextField;
     
@@ -206,6 +201,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[CTAnalytics instance] setAnalyticsStep:CTAnalyticsStepPayment];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"details" step:nil];
     
     for (UIView *v in self.containerView.subviews) {
         [v removeFromSuperview];
@@ -289,6 +286,12 @@
     self.search.phone = self.phoneTextField.text;
     self.search.flightNumber = self.flightNoTextField.text;
     
+    self.search.addressLine1 = self.addressTextField.text;
+    self.search.addressLine2 = self.address2TextField.text;
+    self.search.city = self.cityTextField.text;
+    self.search.postcode = self.postcodeTextField.text;
+    self.search.country = self.locationSelection.text;
+
     BOOL validated = YES;
     
     if ([self.firstNameTextField.text isEqualToString: @""] || [self.firstNameTextField containsOnlyWhitespace]) {
@@ -357,7 +360,36 @@
 {
     _selectedView = textField;
     
+    if (textField == self.firstNameTextField) {
+        [[CTAnalytics instance] tagScreen:@"firstname" detail:@"enter" step:nil];
+    }
+    if (textField == self.lastNameTextField) {
+        [[CTAnalytics instance] tagScreen:@"surname" detail:@"enter" step:nil];
+    }
+    if (textField == self.emailTextField) {
+        [[CTAnalytics instance] tagScreen:@"email1" detail:@"enter" step:nil];
+    }
+    if (textField == self.phoneTextField) {
+        [[CTAnalytics instance] tagScreen:@"phone" detail:@"enter" step:nil];
+    }
+    if (textField == self.flightNoTextField) {
+        [[CTAnalytics instance] tagScreen:@"flightNum" detail:@"enter" step:nil];
+    }
+    if (textField == self.addressTextField) {
+        [[CTAnalytics instance] tagScreen:@"address1" detail:@"enter" step:nil];
+    }
+    if (textField == self.address2TextField) {
+        [[CTAnalytics instance] tagScreen:@"address2" detail:@"enter" step:nil];
+    }
+    if (textField == self.cityTextField) {
+        [[CTAnalytics instance] tagScreen:@"city" detail:@"enter" step:nil];
+    }
+    if (textField == self.postcodeTextField) {
+        [[CTAnalytics instance] tagScreen:@"postcode" detail:@"enter" step:nil];
+    }
+    
     if (self.selectedView == self.locationSelection) {
+        [[CTAnalytics instance] tagScreen:@"country" detail:@"enter" step:nil];
         [self openCountrySelection];
         return NO;
     }
@@ -415,6 +447,35 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    if (string.length == 1) {
+        if (textField == self.firstNameTextField) {
+            [[CTAnalytics instance] tagScreen:@"firstname" detail:@"type" step:nil];
+        }
+        if (textField == self.lastNameTextField) {
+            [[CTAnalytics instance] tagScreen:@"surname" detail:@"type" step:nil];
+        }
+        if (textField == self.emailTextField) {
+            [[CTAnalytics instance] tagScreen:@"email1" detail:@"type" step:nil];
+        }
+        if (textField == self.phoneTextField) {
+            [[CTAnalytics instance] tagScreen:@"phone" detail:@"type" step:nil];
+        }
+        if (textField == self.flightNoTextField) {
+            [[CTAnalytics instance] tagScreen:@"flightNum" detail:@"type" step:nil];
+        }
+        if (textField == self.addressTextField) {
+            [[CTAnalytics instance] tagScreen:@"address1" detail:@"type" step:nil];
+        }
+        if (textField == self.address2TextField) {
+            [[CTAnalytics instance] tagScreen:@"address2" detail:@"type" step:nil];
+        }
+        if (textField == self.cityTextField) {
+            [[CTAnalytics instance] tagScreen:@"city" detail:@"type" step:nil];
+        }
+        if (textField == self.postcodeTextField) {
+            [[CTAnalytics instance] tagScreen:@"postcode" detail:@"type" step:nil];
+        }
+    }
     
     if (textField == self.phoneTextField) {
         return [self validatePhone:[NSString stringWithFormat:@"%@%@", self.phoneTextField.text, string]];
@@ -427,7 +488,43 @@
         return ([string rangeOfCharacterFromSet:blockedCharacterSet].location == NSNotFound);
     }
     
+    if (textField == self.flightNoTextField) {
+        if (string.length <= 10) {
+            [[CTAnalytics instance] tagScreen:@"v_flightNu" detail:string step:nil];
+        }
+    }
+    
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
+    if (textField == self.firstNameTextField) {
+        [[CTAnalytics instance] tagScreen:@"firstname" detail:@"leave" step:nil];
+    }
+    if (textField == self.lastNameTextField) {
+        [[CTAnalytics instance] tagScreen:@"surname" detail:@"leave" step:nil];
+    }
+    if (textField == self.emailTextField) {
+        [[CTAnalytics instance] tagScreen:@"email1" detail:@"leave" step:nil];
+    }
+    if (textField == self.phoneTextField) {
+        [[CTAnalytics instance] tagScreen:@"phone" detail:@"leave" step:nil];
+    }
+    if (textField == self.flightNoTextField) {
+        [[CTAnalytics instance] tagScreen:@"flightNum" detail:@"leave" step:nil];
+    }
+    if (textField == self.addressTextField) {
+        [[CTAnalytics instance] tagScreen:@"address1" detail:@"leave" step:nil];
+    }
+    if (textField == self.address2TextField) {
+        [[CTAnalytics instance] tagScreen:@"address2" detail:@"leave" step:nil];
+    }
+    if (textField == self.cityTextField) {
+        [[CTAnalytics instance] tagScreen:@"city" detail:@"leave" step:nil];
+    }
+    if (textField == self.postcodeTextField) {
+        [[CTAnalytics instance] tagScreen:@"postcode" detail:@"leave" step:nil];
+    }
 }
 
 - (BOOL)validatePhone:(NSString *)phoneNumber
@@ -476,6 +573,7 @@
 }
 
 - (IBAction)back:(id)sender {
+    [[CTAnalytics instance] tagScreen:@"back_btn" detail:@"details" step:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -569,7 +667,7 @@
 
 - (void)tagScreen
 {
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles-d" step:@5];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"details" step:nil];
     [self sendEvent:NO customParams:@{@"eventName" : @"Driver Details Step",
                                       @"stepName" : @"Step5",
                                       } eventName:@"Step of search" eventType:@"Step"];
@@ -604,6 +702,13 @@
     }
     
     [self pushToDestination];
+}
+
+// MARK: <UIScrollViewDelegate>
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    self.totalViewTopConstraint.constant = [self.scrollingLogic offsetForDesiredOffset:scrollView.contentOffset.y
+                                                                         currentOffset:self.totalViewTopConstraint.constant];
 }
 
 

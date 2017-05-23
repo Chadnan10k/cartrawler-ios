@@ -13,6 +13,8 @@
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CTButton.h>
+#import <CartrawlerSDK/CTAnalytics.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 
 @interface CTLocationSearchViewController () <UISearchBarDelegate>
 
@@ -68,15 +70,31 @@
     
     self.dataSource.selectedLocation = ^(CTMatchedLocation *selectedLocation) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (weakSelf.selectedLocation != nil) {
-                weakSelf.selectedLocation(selectedLocation);
-                [weakSelf.view endEditing:YES];
-                [weakSelf dismissViewControllerAnimated:YES completion:nil];
-            }
+            [weakSelf onLocationSelection:selectedLocation];
         });
     };
     
     [self.cancelButton setTitle:CTLocalizedString(CTRentalCTACancel) forState:UIControlStateNormal];
+}
+
+- (void)onLocationSelection:(CTMatchedLocation *)selectedLocation {
+    if (self.selectedLocation != nil) {
+        self.selectedLocation(selectedLocation);
+        [self.view endEditing:YES];
+        if (self.searchContext == CTLocationSearchContextPickup) {
+            [self didLeavePickupField];
+            [self didEnterPickupFieldText:self.searchBar.text];
+            [self didEnterPickupFieldTextLength:self.searchBar.text.length];
+        }
+        if (self.searchContext == CTLocationSearchContextDropoff) {
+            [self didLeaveDropOffField];
+            [self didEnterDropOffFieldText:self.searchBar.text];
+            [self didEnterDropOffFieldTextLength:self.searchBar.text.length];
+        }
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+
 }
 
 - (IBAction)closeTapped:(id)sender {
@@ -86,6 +104,18 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
+    if (self.searchContext == CTLocationSearchContextPickup) {
+        if (searchText.length == 1) {
+            [self didTypeInPickUpSearchBar];
+        }
+    }
+    
+    if (self.searchContext == CTLocationSearchContextDropoff) {
+        if (searchText.length == 1) {
+            [self didTypeInDropOffSearchBar];
+        }
+    }
+    
     if (searchText.length > 2) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
         [self.dataSource updateData:searchText completion:^(BOOL didSucceed) {
@@ -110,12 +140,80 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    if (self.searchContext == CTLocationSearchContextPickup && self.editMode) {
+        [self didLeavePickUpSearchBar];
+    }
+    if (self.searchContext == CTLocationSearchContextDropoff && self.editMode) {
+        [self didLeaveDropOffSearchBar];
+    }
+    
     [self.view endEditing:YES];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
+    if (self.searchContext == CTLocationSearchContextPickup) {
+        [self didLeavePickUpSearchBar];
+    }
+    if (self.searchContext == CTLocationSearchContextDropoff) {
+        [self didLeaveDropOffSearchBar];
+    }
     [self.view endEditing:YES];
+}
+
+// MARK: Analytics
+
+- (void)didLeavePickupField {
+    NSString *tag = self.editMode ? @"E_Pickup" : @"ML_Pickup";
+    [[CTAnalytics instance] tagScreen:tag detail:@"leave" step:nil];
+}
+
+- (void)didLeaveDropOffField {
+    NSString *tag = self.editMode ? @"E_Dropoff" : @"ML_Dropoff";
+    [[CTAnalytics instance] tagScreen:tag detail:@"leave" step:nil];
+}
+
+- (void)didEnterPickupFieldText:(NSString *)text {
+    NSString *tag = self.editMode ? @"v_E_Picku" : @"v_ML_Picku";
+    [[CTAnalytics instance] tagScreen:tag detail:text step:nil];
+}
+
+- (void)didEnterPickupFieldTextLength:(NSInteger)length {
+    NSString *tag = self.editMode ? @"l_E_Picku" : @"l_ML_Picku";
+    [[CTAnalytics instance] tagScreen:tag detail:@(length).stringValue step:nil];
+}
+
+- (void)didEnterDropOffFieldText:(NSString *)text {
+    NSString *tag = self.editMode ? @"v_E_Dropo" : @"v_ML_Dropo";
+    [[CTAnalytics instance] tagScreen:tag detail:text step:nil];
+}
+
+- (void)didEnterDropOffFieldTextLength:(NSInteger)length {
+    NSString *tag = self.editMode ? @"l_E_Dropo" : @"l_ML_Dropo";
+    [[CTAnalytics instance] tagScreen:tag detail:@(length).stringValue step:nil];
+}
+
+- (void)didTypeInPickUpSearchBar {
+    NSString *tag = self.editMode ? @"E_Pickup" : @"ML_Pickup";
+    [[CTAnalytics instance] tagScreen:tag detail:@"type" step:nil];
+}
+
+- (void)didTypeInDropOffSearchBar {
+    NSString *tag = self.editMode ? @"E_Dropoff" : @"ML_Dropoff";
+    [[CTAnalytics instance] tagScreen:tag detail:@"type" step:nil];
+}
+
+- (void)didEnterSearchInPickupSearchBar {
+    NSString *tag = self.editMode ? @"E_Pickup" : @"ML_Pickup";
+    [[CTAnalytics instance] tagScreen:tag detail:@"leave" step:nil];
+}
+
+- (void)didLeavePickUpSearchBar {
+    [[CTAnalytics instance] tagScreen:@"I_E_Picku" detail:@"leave" step:nil];
+}
+
+- (void)didLeaveDropOffSearchBar {
+    [[CTAnalytics instance] tagScreen:@"I_E_Dropo" detail:@"leave" step:nil];
 }
 
 @end

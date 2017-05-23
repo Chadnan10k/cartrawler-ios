@@ -195,6 +195,8 @@
 		E7BBA4621EBBA49300953907 /* CTVehicleInfoTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BBA4601EBBA49300953907 /* CTVehicleInfoTabView.m */; };
 		E7E8D9D51E37D9C9004B786C /* CTRentalLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7E8D9D31E37D9C9004B786C /* CTRentalLocalizationConstants.h */; };
 		E7E8D9D61E37D9C9004B786C /* CTRentalLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E8D9D41E37D9C9004B786C /* CTRentalLocalizationConstants.m */; };
+		E7F1066B1ED33E3F0012CE16 /* CTRentalScrollingLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F106691ED33E3F0012CE16 /* CTRentalScrollingLogic.h */; };
+		E7F1066C1ED33E3F0012CE16 /* CTRentalScrollingLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F1066A1ED33E3F0012CE16 /* CTRentalScrollingLogic.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -385,6 +387,8 @@
 		E7BBA4601EBBA49300953907 /* CTVehicleInfoTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleInfoTabView.m; sourceTree = "<group>"; };
 		E7E8D9D31E37D9C9004B786C /* CTRentalLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTRentalLocalizationConstants.h; path = Localization/CTRentalLocalizationConstants.h; sourceTree = "<group>"; };
 		E7E8D9D41E37D9C9004B786C /* CTRentalLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTRentalLocalizationConstants.m; path = Localization/CTRentalLocalizationConstants.m; sourceTree = "<group>"; };
+		E7F106691ED33E3F0012CE16 /* CTRentalScrollingLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRentalScrollingLogic.h; sourceTree = "<group>"; };
+		E7F1066A1ED33E3F0012CE16 /* CTRentalScrollingLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRentalScrollingLogic.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -778,6 +782,7 @@
 				451E74A31E0429F200D58F71 /* Driver Details */,
 				451E749E1E0429F200D58F71 /* Summary */,
 				451E74AA1E0429F200D58F71 /* Payment */,
+				E7F106681ED33E170012CE16 /* Scrolling Logic */,
 				E76FC9F51EAF03F100ABC9B1 /* Payment Summary */,
 			);
 			name = "Rental Views";
@@ -930,6 +935,15 @@
 			name = Localization;
 			sourceTree = "<group>";
 		};
+		E7F106681ED33E170012CE16 /* Scrolling Logic */ = {
+			isa = PBXGroup;
+			children = (
+				E7F106691ED33E3F0012CE16 /* CTRentalScrollingLogic.h */,
+				E7F1066A1ED33E3F0012CE16 /* CTRentalScrollingLogic.m */,
+			);
+			name = "Scrolling Logic";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -973,6 +987,7 @@
 				451E75D91E042F7900D58F71 /* CTPaymentSummaryItemTableViewCell.h in Headers */,
 				451E75EC1E042FB600D58F71 /* CTPaymentLoadingViewController.h in Headers */,
 				451E75BF1E042F2E00D58F71 /* CTPaymentSummaryTableViewCell.h in Headers */,
+				E7F1066B1ED33E3F0012CE16 /* CTRentalScrollingLogic.h in Headers */,
 				451E75461E042CA100D58F71 /* CTFilterContainer.h in Headers */,
 				BC95465F1EAE5C9B0097312C /* CTExtrasCarouselView.h in Headers */,
 				E78758FC1EAFA6D100FA6E32 /* CTInsuranceDetailViewController.h in Headers */,
@@ -1191,6 +1206,7 @@
 				451E75D21E042F3F00D58F71 /* CTBookingSummaryView.m in Sources */,
 				451E75EE1E042FB600D58F71 /* CTPaymentCompletionViewController.m in Sources */,
 				451E75621E042CC100D58F71 /* CTMerhandisingBanner.m in Sources */,
+				E7F1066C1ED33E3F0012CE16 /* CTRentalScrollingLogic.m in Sources */,
 				451E75B11E042EA200D58F71 /* CTOptionalExtrasViewController.m in Sources */,
 				BCE1934E1EA7811D0097C5CB /* CTCountryPickerView.m in Sources */,
 				BCF4DA481E8C191F00E8C5EC /* CTSelectionView.m in Sources */,
