@@ -21,6 +21,7 @@
 #import "CTFilterViewController.h"
 #import "CTPaymentSummaryExpandedView.h"
 #import <CartrawlerSDK/CTAnalytics.h>
+#import "CTRentalScrollingLogic.h"
 
 @interface CTVehiclePresenterViewController () <CTVehicleSelectionViewDelegate, CTVehicleInfoDelegate, CTFilterDelegate>
 
@@ -42,6 +43,10 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 @property (nonatomic, strong) CTFilterViewController *filterViewController;
 
 @property (nonatomic) CTPresentedView presentedView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarHeightConstraint;
+@property (nonatomic, strong) CTRentalScrollingLogic *scrollingLogic;
 
 @property (weak, nonatomic) IBOutlet CTPaymentSummaryExpandedView *summaryView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewTopConstraint;
@@ -108,17 +113,21 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)setupViews
 {
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     _filterViewController = [CTFilterViewController initInViewController:self withData:self.search.vehicleAvailability];
     self.filterViewController.delegate = self;
     
-    _vehicleDetailsView = [CTVehicleInfoView new];
+    _vehicleDetailsView = [[CTVehicleInfoView alloc] initWithVerticalOffset:self.toolbarHeightConstraint.constant];
     self.vehicleDetailsView.search = self.search;
     self.vehicleDetailsView.cartrawlerAPI = self.cartrawlerAPI;
     self.vehicleDetailsView.delegate = self;
     
     _vehicleSelectionView = [CTVehicleSelectionView new];
+    self.vehicleSelectionView.verticalOffset = self.toolbarHeightConstraint.constant;
     self.vehicleSelectionView.delegate = self;
     
+    self.scrollingLogic = [[CTRentalScrollingLogic alloc] initWithTopViewHeight:self.toolbarHeightConstraint.constant];
 }
 
 - (void)presentVehicleDetails
@@ -149,6 +158,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
         [UIView animateWithDuration:0.2 animations:^{
             self.vehicleDetailsView.alpha = 0;
             self.vehicleSelectionView.alpha = 1;
+            self.toolbarTopConstraint.constant = 0;
+            [self.view layoutIfNeeded];
         } completion:nil];
         
         _presentedView = CTPresentedViewSelection;
@@ -423,6 +434,11 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     } else {
         [self pushToDestination];
     }
+}
+
+- (void)infoViewDidScroll:(CGFloat)verticalOffset {
+    self.toolbarTopConstraint.constant = [self.scrollingLogic offsetForDesiredOffset:verticalOffset
+                                                                         currentOffset:self.toolbarTopConstraint.constant];
 }
 
 @end

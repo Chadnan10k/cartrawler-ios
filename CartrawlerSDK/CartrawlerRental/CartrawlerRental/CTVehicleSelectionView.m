@@ -47,6 +47,12 @@
     return tv;
 }
 
+- (void)setVerticalOffset:(CGFloat)verticalOffset {
+    [self.tableView setContentInset:UIEdgeInsetsMake(verticalOffset, 0, 0, 0)];
+    [self.tableView setScrollIndicatorInsets:UIEdgeInsetsMake(verticalOffset, 0, 0, 0)];
+    [self.tableView setContentOffset:CGPointMake(0, -verticalOffset)];
+}
+
 - (void)layout
 {
     [self addSubview:self.tableView];

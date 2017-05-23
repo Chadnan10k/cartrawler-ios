@@ -56,14 +56,14 @@
 
 @implementation CTVehicleInfoView
 
-- (instancetype)init
+- (instancetype)initWithVerticalOffset:(CGFloat)verticalOffset
 {
     self = [super init];
     self.translatesAutoresizingMaskIntoConstraints = NO;
     [self initContainerView];
     [self initToastView];
     [self initNextButton];
-    [self addLayoutConstraints];
+    [self addLayoutConstraintsWithVerticalOffset:verticalOffset];
 
     _layoutManager = [CTLayoutManager layoutManagerWithContainer:self.containerView];
 
@@ -160,7 +160,7 @@
     [self addSubview:self.toastView];
 }
 
-- (void)addLayoutConstraints {
+- (void)addLayoutConstraintsWithVerticalOffset:(CGFloat)verticalOffset {
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[scrollView]-0-[button(80)]-0-|"
                                                                  options:0
                                                                  metrics:nil
@@ -178,7 +178,7 @@
                                                                  metrics:nil
                                                                    views:@{@"scrollView" : self.scrollView,
                                                                            @"button" : self.nextButton}]];
-    [CTLayoutManager pinView:self.containerView toSuperView:self.scrollView padding:UIEdgeInsetsZero];
+    [CTLayoutManager pinView:self.containerView toSuperView:self.scrollView padding:UIEdgeInsetsMake(verticalOffset, 0, 0, 0)];
     [self.containerView setHeightConstraint:@100 priority:@100];
     
     NSLayoutConstraint *equalWidth = [NSLayoutConstraint constraintWithItem:self.containerView
@@ -412,50 +412,10 @@
     }
 }
 
-// MARK: CTListView Delegate
-
-- (void)listView:(CTListView *)listView didSelectView:(CTExpandingView *)expandingView atIndex:(NSInteger)index  {
-    if (![expandingView isKindOfClass:CTExpandingView.class]) {
-        return;
-    }
-    
-    if (expandingView.expanded) {
-        [expandingView contract];
-        return;
-    }
-    
-    if (listView.tag == 1) {
-        CTListItemView *listItemView1 = [CTListItemView new];
-        listItemView1.titleLabel.text = @"Third party liability";
-        listItemView1.imageView.image = [[UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        
-        CTListItemView *listItemView2 = [CTListItemView new];
-        listItemView2.titleLabel.text = @"Theft protection";
-        listItemView2.imageView.image = [[UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        
-        CTListItemView *listItemView3 = [CTListItemView new];
-        listItemView3.titleLabel.text = @"Collision damage waiver";
-        listItemView3.imageView.image = [[UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        
-        CTListView *listView = [[CTListView alloc] initWithViews:@[listItemView1, listItemView2, listItemView3] separatorColor:[UIColor clearColor]];
-        [expandingView expandWithDetailView:listView];
-    }
-    
-    if (listView.tag == 2) {
-        CTLabel *label = [[CTLabel alloc] init:16
-                                     textColor:[UIColor blackColor]
-                                 textAlignment:NSTextAlignmentLeft
-                                      boldFont:NO];
-        label.numberOfLines = 0;
-        label.text = @"Europcar is one of the worlds leading car rental companies that offer innovative services and quality in a simple and transparent way.";
-        [expandingView expandWithDetailView:label];
-    }
-    
-}
-
 // MARK: Scroll View
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.delegate infoViewDidScroll:scrollView.contentOffset.y];
     [self checkInsuranceViewDidAppear:scrollView];
 }
 
@@ -469,6 +429,7 @@
         }
     }
 }
+
 
 // MARK: Actions
 - (IBAction)backTapped:(id)sender

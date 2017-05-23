@@ -26,6 +26,7 @@
 #import "CTTermsViewController.h"
 #import "CartrawlerAPI/CTBooking.h"
 #import <CartrawlerSDK/CTAnalytics.h>
+#import "CTRentalScrollingLogic.h"
 
 @interface CTDriverDetailsViewController () <UITextFieldDelegate, CTPaymentDelegate, UITextViewDelegate>
 
@@ -54,6 +55,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *dimmingView;
 
+@property (weak, nonatomic) IBOutlet UIView *totalView;
+@property (nonatomic, strong) CTRentalScrollingLogic *scrollingLogic;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *totalViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *totalViewTopConstraint;
+
 @end
 
 @implementation CTDriverDetailsViewController
@@ -67,6 +73,9 @@
     self.titleLabel.text = CTLocalizedString(CTRentalTitleUser);
     [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
     [self createViews];
+    
+    self.scrollView.bounces = NO;
+    self.scrollingLogic = [[CTRentalScrollingLogic alloc] initWithTopViewHeight:self.totalViewHeightConstraint.constant];
 }
 
 - (void)createViews
@@ -658,6 +667,13 @@
     }
     
     [self pushToDestination];
+}
+
+// MARK: <UIScrollViewDelegate>
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    self.totalViewTopConstraint.constant = [self.scrollingLogic offsetForDesiredOffset:scrollView.contentOffset.y
+                                                                         currentOffset:self.totalViewTopConstraint.constant];
 }
 
 

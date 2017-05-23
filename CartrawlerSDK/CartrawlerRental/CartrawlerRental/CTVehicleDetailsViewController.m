@@ -12,10 +12,15 @@
 #import "CTVehicleInfoView.h"
 #import "CTPaymentSummaryExpandedView.h"
 #import "CTRentalLocalizationConstants.h"
+#import "CTRentalScrollingLogic.h"
 
 @interface CTVehicleDetailsViewController () <CTVehicleInfoDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIView *totalView;
+@property (nonatomic, strong) CTRentalScrollingLogic *scrollingLogic;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *totalViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *totalViewTopConstraint;
 @property (weak, nonatomic) IBOutlet CTPaymentSummaryExpandedView *paymentSummaryView;
 @property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryViewHeightConstraint;
@@ -34,7 +39,7 @@
     
     self.titleLabel.text = CTLocalizedString(CTRentalTitleDetails);
     
-    _vehicleInfoView = [CTVehicleInfoView new];
+    _vehicleInfoView = [[CTVehicleInfoView alloc] initWithVerticalOffset:self.totalViewHeightConstraint.constant];
     self.vehicleInfoView.search = self.search;
     self.vehicleInfoView.cartrawlerAPI = self.cartrawlerAPI;
     self.vehicleInfoView.isStandalone = YES;
@@ -45,6 +50,8 @@
     [CTLayoutManager pinView:self.vehicleInfoView
                  toSuperView:self.containerView
                      padding:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    self.scrollingLogic = [[CTRentalScrollingLogic alloc] initWithTopViewHeight:self.totalViewHeightConstraint.constant];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -86,6 +93,12 @@
 - (void)infoViewAddInsuranceTapped:(BOOL)didAddInsurance
 {
     [self updatePriceSummary:didAddInsurance];
+}
+
+- (void)infoViewDidScroll:(CGFloat)verticalOffset
+{
+    self.totalViewTopConstraint.constant = [self.scrollingLogic offsetForDesiredOffset:verticalOffset
+                                                                         currentOffset:self.totalViewTopConstraint.constant];
 }
 
 - (void)infoViewPushToNextStep
