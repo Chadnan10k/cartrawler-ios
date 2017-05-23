@@ -10,6 +10,7 @@
 #import "CTVehicleSelectionDataSource.h"
 #import "CTVehicleDetailTableViewCell.h"
 #import "CartrawlerSDK/CTLayoutManager.h"
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTVehicleSelectionView() <CTVehicleSelectionDelegate>
 
@@ -77,6 +78,7 @@
 
 - (void)didSelectCellAtIndex:(NSIndexPath *)indexPath data:(CTAvailabilityItem *)data
 {
+    [[CTAnalytics instance] tagScreen:@"select_car" detail:@(indexPath.row+1).stringValue step:nil];
     if (self.delegate) {
         [self.delegate didSelectVehicle:data];
     }

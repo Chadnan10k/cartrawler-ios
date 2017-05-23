@@ -217,6 +217,8 @@
 		E7BB87A11EA7CE900008CBAD /* CTTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */; };
 		E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */; };
 		E7CD21A81E38F794006BE519 /* CTSDKLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */; };
+		E7F1066F1ED37C530012CE16 /* CTAnalyticsCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F1066D1ED37C530012CE16 /* CTAnalyticsCache.h */; };
+		E7F106701ED37C530012CE16 /* CTAnalyticsCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F1066E1ED37C530012CE16 /* CTAnalyticsCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -431,6 +433,8 @@
 		E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTriangleView.m; sourceTree = "<group>"; };
 		E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTSDKLocalizationConstants.h; path = Localization/CTSDKLocalizationConstants.h; sourceTree = "<group>"; };
 		E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTSDKLocalizationConstants.m; path = Localization/CTSDKLocalizationConstants.m; sourceTree = "<group>"; };
+		E7F1066D1ED37C530012CE16 /* CTAnalyticsCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalyticsCache.h; sourceTree = "<group>"; };
+		E7F1066E1ED37C530012CE16 /* CTAnalyticsCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -873,6 +877,8 @@
 				BCDB4BE91E3F50C6008004DA /* CTAnalyticsEvent.m */,
 				BC1379E31E23E4E400B1F727 /* CTAnalytics.h */,
 				BC1379E41E23E4E400B1F727 /* CTAnalytics.m */,
+				E7F1066D1ED37C530012CE16 /* CTAnalyticsCache.h */,
+				E7F1066E1ED37C530012CE16 /* CTAnalyticsCache.m */,
 				BC1379E61E23E4E400B1F727 /* CTTag.h */,
 				BC1379E71E23E4E400B1F727 /* CTTag.m */,
 				BC1379ED1E23E8E700B1F727 /* CTErrorTag.h */,
@@ -1076,6 +1082,7 @@
 				BC95467A1EB265010097312C /* CTCMSJSONParser.h in Headers */,
 				E76900DD1E764F9800D729FF /* CTListView.h in Headers */,
 				E76900E11E77267700D729FF /* CTListItemView.h in Headers */,
+				E7F1066F1ED37C530012CE16 /* CTAnalyticsCache.h in Headers */,
 				E727622B1ECE3B240040C096 /* CTToastView.h in Headers */,
 				BCFA41741E97CDF700DA1710 /* CTUpSellBanner.h in Headers */,
 				BC01F5921E9D2A7B003D8286 /* CartrawlerSDK+NSString.h in Headers */,
@@ -1267,6 +1274,7 @@
 				E70230741E857DC2005E1BF4 /* CTRatingView.m in Sources */,
 				BC01F5931E9D2A7B003D8286 /* CartrawlerSDK+NSString.m in Sources */,
 				455B585D1DCC914300CA4790 /* CTView.m in Sources */,
+				E7F106701ED37C530012CE16 /* CTAnalyticsCache.m in Sources */,
 				455B585F1DCC914300CA4790 /* CTDesignableView.m in Sources */,
 				455B58611DCC914300CA4790 /* CTNavigationView.m in Sources */,
 				455B58631DCC914300CA4790 /* CTAppearance.m in Sources */,

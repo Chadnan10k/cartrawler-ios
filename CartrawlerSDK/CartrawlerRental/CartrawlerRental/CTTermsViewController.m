@@ -14,6 +14,7 @@
 #import <CartrawlerSDK/CTLabel.h>
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTTermsViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -93,6 +94,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    CTTermAndCondition *item = self.data.termsAndConditions[indexPath.row];
+    [[CTAnalytics instance] tagScreen:item.titleNameId detail:@"open" step:nil];
     [self performSegueWithIdentifier:@"showTermsDetail" sender:self.data.termsAndConditions[indexPath.row]];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 

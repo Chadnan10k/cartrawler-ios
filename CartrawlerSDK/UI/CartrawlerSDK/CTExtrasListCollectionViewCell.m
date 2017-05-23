@@ -10,6 +10,7 @@
 #import <CartrawlerSDK/CTCounterView.h>
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTTriangleView.h>
+#import <CartrawlerSDK/CTAnalytics.h>
 
 CGFloat const kExtrasTriangleHeight = 10.0;
 
@@ -265,10 +266,12 @@ CGFloat const kExtrasTriangleHeight = 10.0;
 }
 
 - (void)counterViewDidTapIncrement:(CTCounterView *)counterView {
+    [[CTAnalytics instance] tagScreen:@"extras" detail:@"all_clk" step:nil];
     [self.delegate cellDidTapIncrement:self];
 }
 
 - (void)counterViewDidTapDecrement:(CTCounterView *)counterView {
+    [[CTAnalytics instance] tagScreen:@"extras" detail:@"all_clk" step:nil];
     [self.delegate cellDidTapDecrement:self];
 }
 

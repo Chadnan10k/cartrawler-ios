@@ -47,6 +47,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [[CTAnalytics instance] setAnalyticsStep:CTAnalyticsStepConfirmation];
+    
     // Disable iOS 7 back gesture
 
     [self tagScreen];
@@ -81,7 +83,7 @@
 
 - (IBAction)done:(id)sender
 {
-    [[CTAnalytics instance] tagScreen:@"exit" detail:@"9" step:@9];
+    [[CTAnalytics instance] tagScreen:@"exit" detail:@"confirmati" step:nil];
     [[CTImageCache sharedInstance] removeAllObjects];
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
@@ -109,7 +111,7 @@
 - (void)tagScreen
 {
 
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"confirmati" step:@9];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"confirmati" step:nil];
     [self sendEvent:NO customParams:@{@"eventName" : @"Booking Confirmation Step",
                                       @"stepName" : @"Step9",
                                       } eventName:@"Step of search" eventType:@"Step"];

@@ -47,9 +47,10 @@
     [CTSDKSettings instance].disableCurrencySelection = NO;
     [[CTSDKSettings instance] resetCountryToDeviceLocale];
     [[CTRentalSearch instance] reset];
+    [self.cartrawlerSDK setNewSession];
     [self configureViews];
     [self presentRentalNavigationController:viewController];
-    [[CTAnalytics instance] tagScreen:@"visit" detail:@"stand" step:@1];
+    [[CTAnalytics instance] tagScreen:@"visit" detail:@"stand" step:nil];
     
     CTAnalyticsEvent *event = [[CTAnalyticsEvent alloc] init];
     event.params = @{@"buttonName" : @"Cars"};

@@ -14,11 +14,13 @@
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSString.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
+#import <CartrawlerSDK/CTAnalytics.h>
 #import "CTSearchDetailsViewController.h"
 #import "CTRentalConstants.h"
 #import "CTRentalLocalizationConstants.h"
 #import "CTFilterViewController.h"
 #import "CTPaymentSummaryExpandedView.h"
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTVehiclePresenterViewController () <CTVehicleSelectionViewDelegate, CTVehicleInfoDelegate, CTFilterDelegate>
 
@@ -121,6 +123,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)presentVehicleDetails
 {
+    [[CTAnalytics instance] setAnalyticsStep:CTAnalyticsStepVehicleDetails];
+    
     [UIView animateWithDuration:0.2 animations:^{
         self.vehicleDetailsView.alpha = 1;
         self.vehicleSelectionView.alpha = 0;
@@ -139,6 +143,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)presentVehicleSelection
 {
+    [[CTAnalytics instance] setAnalyticsStep:CTAnalyticsStepVehicleSelection];
+    
     if (self.presentedView != CTPresentedViewSelection) {
         [UIView animateWithDuration:0.2 animations:^{
             self.vehicleDetailsView.alpha = 0;
@@ -149,6 +155,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
         [self.vehicleDetailsView removeFromSuperview];
         [self.containerView addSubview:self.vehicleSelectionView];
         [CTLayoutManager pinView:self.vehicleSelectionView toSuperView:self.containerView padding:UIEdgeInsetsZero];
+        [[CTAnalytics instance] tagScreen:@"other_cars" detail:@"click" step:nil];
     }
     self.summaryView.alpha = 0;
     [self updateSortButtonByPrice:YES];
@@ -157,6 +164,11 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
                                    dropoffDate:self.search.dropoffDate
                                    sortByPrice:YES];
     [self updateNavigationBar];
+    
+    static dispatch_once_t vehicleSelectionToken;
+    dispatch_once(&vehicleSelectionToken, ^{
+        [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:nil];
+    });
 }
 
 - (void)updateNavigationBar
@@ -186,8 +198,23 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (IBAction)dismiss:(id)sender
 {
+    if (self.search.selectedVehicle) {
+        if (self.vehicleDetailsView.insuranceViewDidAppear) {
+            [[CTAnalytics instance] tagScreen:@"exit" detail:@"vehicles-v" step:nil];
+        } else {
+            [[CTAnalytics instance] tagScreen:@"exit" detail:@"vehicle-e" step:nil];
+        }
+    } else {
+        [[CTAnalytics instance] tagScreen:@"exit" detail:@"vehicles" step:nil];
+    }
+    
+    self.search.selectedVehicle = nil;
+    [self dismiss];
+    [[CTAnalytics instance] setAnalyticsStep:CTAnalyticsStepSearch];
+
     if (self.navigationController.viewControllers.firstObject == self) {
         self.search.selectedVehicle = nil;
+        [[CTAnalytics instance] tagScreen:@"back_btn" detail:@"vehicles" step:nil];
         [self dismiss];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
@@ -196,6 +223,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (IBAction)search:(id)sender
 {
+    [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"open" step:nil];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"searchcars" step:nil];
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalSearchStoryboard bundle:bundle];
     CTSearchDetailsViewController *searchViewController = [storyboard instantiateViewControllerWithIdentifier:CTRentalSearchViewIdentifier];
@@ -208,6 +237,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (IBAction)leftTap:(id)sender
 {
     if (self.presentedView == CTPresentedViewSelection) {
+        [[CTAnalytics instance] tagScreen:@"mdl_filter" detail:@"open" step:nil];
         [self.filterViewController present];
     } else {
         [self presentVehicleSelection];
@@ -226,6 +256,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
         UIAlertAction *lowestPrice = [UIAlertAction actionWithTitle:sortPrice
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction * action) {
+                                                                [[CTAnalytics instance] tagScreen:@"sort" detail:@"price" step:nil];
                                                                 dispatch_async(dispatch_get_main_queue(), ^{
                                                                     [self updateSortButtonByPrice:YES];
                                                                     [self.vehicleSelectionView sortByPrice:YES];
@@ -237,17 +268,22 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
                                                                       style:UIAlertActionStyleDefault
                                                                     handler:^(UIAlertAction * action) {
                                                                         dispatch_async(dispatch_get_main_queue(), ^{
+                                                                            [[CTAnalytics instance] tagScreen:@"sort" detail:@"relevance" step:nil];
                                                                             [self updateSortButtonByPrice:NO];
                                                                             [self.vehicleSelectionView sortByPrice:NO];
                                                                         });
                                                                     }];
         NSString *cancelString = CTLocalizedString(CTRentalCTACancel);
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:cancelString style:UIAlertActionStyleCancel
-                                                       handler:nil];
+                                                       handler:^(UIAlertAction * _Nonnull action) {
+                                                           [[CTAnalytics instance] tagScreen:@"mdl_sort" detail:@"close" step:nil];
+                                                       }];
         
         [alert addAction:lowestPrice];
         [alert addAction:recommendedVehicles];
         [alert addAction:cancel];
+        
+        [[CTAnalytics instance] tagScreen:@"mdl_sort" detail:@"open" step:nil];
         
         [self presentViewController:alert animated:YES completion:nil];
     }
@@ -288,6 +324,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)showDetailedPriceSummary
 {
+    [[CTAnalytics instance] tagScreen:@"price_sum" detail:@"open" step:nil];
+    
     [self updateDetailedPriceSummary];
     self.summaryViewTopConstraint.constant = 0;
     [UIView animateWithDuration:0.3
@@ -308,6 +346,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 }
 
 - (IBAction)didInteractWithDetailedPriceSummary:(UIGestureRecognizer *)gestureRecognizer {
+    [[CTAnalytics instance] tagScreen:@"price_sum" detail:@"close" step:nil];
     [self hideDetailedPriceSummary];
 }
 

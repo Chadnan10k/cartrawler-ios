@@ -11,6 +11,10 @@
 
 @interface CTFilterContainer : UIView
 
+typedef void (^CTFilterSelection)(BOOL expanded);
+
+@property (nonatomic, strong) CTFilterSelection filterSelection;
+
 - (void)setTableView:(CTFilterTableView *)tableView;
 - (void)close;
 
