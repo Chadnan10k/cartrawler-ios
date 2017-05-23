@@ -81,11 +81,11 @@
 }
 
 - (void)configureSettingsButton {
-    self.settingsButton.hidden = [self isBeingPresented] ? YES : NO;
+    self.settingsButton.hidden = [self isBeingPresented] || ![CTSDKSettings instance].isStandalone ? YES : NO;
 }
 
 - (void)configureBackButton {
-    NSString *imageName = [self isBeingPresented] ? @"down_arrow" : @"backArrow";
+    NSString *imageName = [self isBeingPresented] || ![CTSDKSettings instance].isStandalone ? @"down_arrow" : @"backArrow";
     UIImage *image = [[UIImage imageNamed:imageName inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     self.chevron.tintColor = [UIColor whiteColor];
     [self.chevron setImage:image forState:UIControlStateNormal];

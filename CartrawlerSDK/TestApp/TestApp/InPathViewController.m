@@ -37,7 +37,7 @@
 }
 
 - (IBAction)mockPayment:(id)sender {
-    [[RYRRentalManager instance] mockPayment];
+    [[RYRRentalManager instance].inPath presentAllCars:self];
 
 }
 

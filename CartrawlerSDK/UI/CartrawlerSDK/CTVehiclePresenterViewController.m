@@ -388,7 +388,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (void)didSelectVehicle:(CTAvailabilityItem *)item
 {
     self.search.selectedVehicle = item;
-    if (self.navigationController.viewControllers.firstObject == self) {
+    if (![CTSDKSettings instance].isStandalone) {
         [self presentVehicleDetails];
     } else {
         [self pushToDestination];
@@ -429,7 +429,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)infoViewPushToNextStep
 {
-    if (self.navigationController.viewControllers.firstObject == self) {
+    if (![CTSDKSettings instance].isStandalone) {
         [self dismiss];
     } else {
         [self pushToDestination];
