@@ -47,6 +47,7 @@
     [CTSDKSettings instance].disableCurrencySelection = NO;
     [[CTSDKSettings instance] resetCountryToDeviceLocale];
     [[CTRentalSearch instance] reset];
+    [self.cartrawlerSDK setNewSession];
     [self configureViews];
     [self presentRentalNavigationController:viewController];
     [[CTAnalytics instance] tagScreen:@"visit" detail:@"stand" step:nil];

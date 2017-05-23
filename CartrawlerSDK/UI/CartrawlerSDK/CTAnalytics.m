@@ -50,9 +50,9 @@
                               detail:detail
                            container:@3
                            timestamp:timeString
-                        engineLoadID:[CTSDKSettings instance].engineLoadID ?: @""
-                          customerID:[CTSDKSettings instance].customerID ?: @""
-                             queryID:[CTSDKSettings instance].queryID ?: @""
+                        engineLoadID:[CTSDKSettings instance].engineLoadID ?: @"1"
+                          customerID:[CTSDKSettings instance].customerID ?: @"1"
+                             queryID:[CTSDKSettings instance].queryID ?: @"1"
                                 step:step];
     [self.cache addTag:tag];
 }

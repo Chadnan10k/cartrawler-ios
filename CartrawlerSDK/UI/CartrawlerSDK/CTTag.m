@@ -61,10 +61,11 @@
         [tagDictionaries addObject:tag.toDictionary];
     }
     NSError *error = nil;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:tagDictionaries options:NSJSONWritingPrettyPrinted error:&error];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:tagDictionaries options:0 error:&error];
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    NSString *escapedString = [jsonString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    NSString *escapedString = [jsonString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://tag.cartrawler.com/?json=1&t=%@", escapedString]];
+    NSLog(@"%@", url.absoluteString);
     return url;
 }
 

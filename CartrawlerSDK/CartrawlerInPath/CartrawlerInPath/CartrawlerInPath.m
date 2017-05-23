@@ -55,6 +55,7 @@
 {
     [[CTSDKSettings instance] setClientId:clientID];
     _clientID = clientID;
+    [self.rental.cartrawlerSDK setNewSession];
     [self renderDefaultState];
     _parentViewController = parentViewController;
     [self setSearchDetails:currency flightNo:flightNumber passengers:passegers pickupDate:pickupDate returnDate:returnDate];
