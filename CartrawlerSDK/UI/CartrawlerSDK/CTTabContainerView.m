@@ -9,6 +9,7 @@
 #import "CTTabContainerView.h"
 #import "CTLayoutManager.h"
 #import "CTTabHeaderView.h"
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTTabContainerView () <CTTabHeaderViewDelegate>
 @property (nonatomic, strong) CTLayoutManager *layoutManager;
@@ -63,6 +64,9 @@
 }
 
 - (void)tabHeaderView:(CTTabHeaderView *)tabHeaderView didSelectTabAtIndex:(NSInteger)index {
+    if (self.tags.count > index) {
+        [[CTAnalytics instance] tagScreen:@"detail_tab" detail:self.tags[index] step:nil];
+    }
     [self updateContentViewWithViewAtIndex:index];
 }
 

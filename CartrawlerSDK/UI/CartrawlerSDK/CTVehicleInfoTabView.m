@@ -33,6 +33,7 @@
         CTTabContainerView *tabContainerView = [[CTTabContainerView alloc] initWithTabTitles:titles
                                                                                        views:views
                                                                                selectedIndex:0];
+        tabContainerView.tags = @[@"car_info", @"supplier_info"];
         tabContainerView.animationContainerView = containerView;
         [self addSubview:tabContainerView];
         [CTLayoutManager pinView:tabContainerView toSuperView:self];
@@ -96,11 +97,6 @@
 // MARK: Ratings Tab
 
 - (CTListView *)ratingsListView:(CTAvailabilityItem *)availabilityItem containerView:(UIView *)containerView {
-    
-//    CTListItemView *itemView = [self supplierIconItemView:availabilityItem];
-    
-//    CTExpandingView *expandingView = [[CTExpandingView alloc] initWithHeaderView:itemView animationContainerView:containerView];
-    
     CTRatingView *overallRatingView = [self overallRatingView:availabilityItem];
     CTRatingView *valueRatingView = [self valueRatingView:availabilityItem];
     CTRatingView *cleanlinessRatingView = [self cleanlinessRatingView:availabilityItem];
@@ -142,43 +138,30 @@
 }
 
 - (CTRatingView *)valueRatingView:(CTAvailabilityItem *)item {
-    CTRatingView *ratingView = [CTRatingView new];
-    ratingView.titleLabel.text = CTLocalizedString(CTRentalSupplierPrice);
-    ratingView.ratingLabel.text = [NSString stringWithFormat:@"%.1f",
-                                   item.vendor.rating.priceScore.doubleValue/10];
-    return ratingView;
+    return [self ratingViewWithTitle:CTLocalizedString(CTRentalSupplierPrice) rating:item.vendor.rating.priceScore];
 }
 
 - (CTRatingView *)cleanlinessRatingView:(CTAvailabilityItem *)item {
-    CTRatingView *ratingView = [CTRatingView new];
-    ratingView.titleLabel.text = CTLocalizedString(CTRentalSupplierCar);
-    ratingView.ratingLabel.text = [NSString stringWithFormat:@"%.1f",
-                                   item.vendor.rating.carReview.doubleValue/10];
-    return ratingView;
+    return [self ratingViewWithTitle:CTLocalizedString(CTRentalSupplierCar) rating:item.vendor.rating.carReview];
 }
 
 - (CTRatingView *)serviceRatingView:(CTAvailabilityItem *)item {
-    CTRatingView *ratingView = [CTRatingView new];
-    ratingView.titleLabel.text = CTLocalizedString(CTRentalSupplierDesk);
-    ratingView.ratingLabel.text = [NSString stringWithFormat:@"%.1f",
-                                   item.vendor.rating.deskReview.doubleValue/10];
-    return ratingView;
+    return [self ratingViewWithTitle:CTLocalizedString(CTRentalSupplierDesk) rating:item.vendor.rating.deskReview];
 }
 
 - (CTRatingView *)pickupRatingView:(CTAvailabilityItem *)item {
-    CTRatingView *ratingView = [CTRatingView new];
-    ratingView.titleLabel.text = CTLocalizedString(CTRentalSupplierPickup);
-    ratingView.ratingLabel.text = [NSString stringWithFormat:@"%.1f",
-                                   item.vendor.rating.pickupScore.doubleValue/10];
-    return ratingView;
+    return [self ratingViewWithTitle:CTLocalizedString(CTRentalSupplierPickup) rating:item.vendor.rating.pickupScore];
 }
 
 - (CTRatingView *)dropoffRatingView:(CTAvailabilityItem *)item {
-    CTRatingView *ratingView = [CTRatingView new];
-    ratingView.titleLabel.text = CTLocalizedString(CTRentalSupplierDropoff);
-    ratingView.ratingLabel.text = [NSString stringWithFormat:@"%.1f",
-                                   item.vendor.rating.dropoffReview.doubleValue/10];
-    return ratingView;
+    return [self ratingViewWithTitle:CTLocalizedString(CTRentalSupplierDropoff) rating:item.vendor.rating.dropoffReview];
+}
+
+- (CTRatingView *)ratingViewWithTitle:(NSString *)title rating:(NSNumber *)rating {
+    CTRatingView *view = [CTRatingView new];
+    view.titleLabel.text = title;
+    view.ratingLabel.text = [NSString stringWithFormat:@"%.1f", rating.doubleValue/10];
+    return view;
 }
 
 // MARK: CTListView Delegate
@@ -196,15 +179,19 @@
     if ([listView isEqual:self.includedListView]) {
         switch (index) {
             case 0:
+                [[CTAnalytics instance] tagScreen:@"pickup_i" detail:@"open" step:nil];
                 [self expandView:expandingView withText:[CTLocalisedStrings toolTipTextForPickupType:self.availabilityItem]];
                 break;
             case 1:
+                [[CTAnalytics instance] tagScreen:@"fuelpol_i" detail:@"open" step:nil];
                 [self expandView:expandingView withText:[CTLocalisedStrings toolTipTextForFuelPolicy:self.availabilityItem.vehicle.fuelPolicy]];
                 break;
             case 2:
+                [[CTAnalytics instance] tagScreen:@"mileage_i" detail:@"open" step:nil];
                 [self expandView:expandingView withRateDistance:self.availabilityItem.vehicle.rateDistance];
                 break;
             case 3:
+                [[CTAnalytics instance] tagScreen:@"basicins_i" detail:@"open" step:nil];
                 [self expandView:expandingView withCoverages:self.availabilityItem.vehicle.pricedCoverages];
                 break;
             default:

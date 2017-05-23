@@ -17,6 +17,7 @@
     NSMutableString *tempBodyText = [[NSMutableString alloc] init];
     
     tempTitleText = dict[@"@Title"];
+    _titleNameId = dict[@"@TitleNameId"];
     
     if ([dict[@"Paragraph"] isKindOfClass:[NSArray class]])
     {

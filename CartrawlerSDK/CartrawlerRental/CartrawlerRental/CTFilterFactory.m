@@ -7,6 +7,7 @@
 //
 
 #import "CTFilterFactory.h"
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTFilterFactory()
 
@@ -53,22 +54,27 @@
     
     //possible memory leak referencing self in block
     self.carSizeDataSource.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData){
+        [[CTAnalytics instance] tagScreen:@"Car Size" detail:@"click" step:nil];
         _selectedSizeData = filteredData;
     };
     
     self.locationDataSource.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData){
+        [[CTAnalytics instance] tagScreen:@"Pick-up" detail:@"click" step:nil];
         _selectedLocationData = filteredData;
     };
     
     self.vendorsDataSource.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData){
+        [[CTAnalytics instance] tagScreen:@"Supplier" detail:@"click" step:nil];
         _selectedVendorsData = filteredData;
     };
     
     self.fuelPolicyDataSource.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData){
+        [[CTAnalytics instance] tagScreen:@"Fuel Pol" detail:@"click" step:nil];
         _selectedFuelPolicyData = filteredData;
     };
     
     self.transmissionDataSource.filterCompletion = ^(NSArray<CTAvailabilityItem *> *filteredData){
+        [[CTAnalytics instance] tagScreen:@"Transmiss" detail:@"click" step:nil];
         _selectedTransmissionData = filteredData;
     };
 }

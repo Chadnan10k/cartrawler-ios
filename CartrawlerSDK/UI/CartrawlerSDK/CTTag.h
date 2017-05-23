@@ -28,7 +28,8 @@
              queryID:(NSString *)queryID
                 step:(NSNumber *)step;
 
-
 - (NSURL *)produceURL;
+
++ (NSURL *)produceURLForTags:(NSArray *)tags;
 
 @end

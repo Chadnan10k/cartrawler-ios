@@ -15,6 +15,7 @@
 #import <CartrawlerSDK/CTLabel.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CTSDKSettings.h>
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTRentalBookingsViewController () <UITableViewDataSource>
 
@@ -46,6 +47,8 @@
 }
 
 - (IBAction)newBooking:(id)sender {
+    [[CTAnalytics instance] setAnalyticsStep:CTAnalyticsStepSearch];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"searchcars" step:nil];
     [self pushToDestination];
 }
 

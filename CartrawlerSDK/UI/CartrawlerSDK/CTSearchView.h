@@ -23,6 +23,11 @@
 @property (nonatomic, weak) CartrawlerAPI *cartrawlerAPI;
 @property (nonatomic, weak) CTRentalSearch *search;
 
+/**
+ For analytics tagging, the view needs to know if it is editing a previous search
+ */
+@property (nonatomic, assign) BOOL editMode;
+
 - (void)updateDisplayWithSearch:(CTRentalSearch *)search;
 
 - (BOOL)validateSearch;

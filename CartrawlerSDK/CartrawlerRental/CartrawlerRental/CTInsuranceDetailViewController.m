@@ -18,6 +18,7 @@
 #import "CartrawlerSDK/CTNextButton.h"
 #import "CartrawlerSDK/CTLocalisedStrings.h"
 #import "CTRentalLocalizationConstants.h"
+#import <CartrawlerSDK/CTAnalytics.h>
 
 @interface CTInsuranceDetailViewController ()
 
@@ -207,6 +208,7 @@
 - (void)termsTapped:(id)sender
 {
     [[UIApplication sharedApplication] openURL:self.search.insurance.termsAndConditionsURL];
+    [[CTAnalytics instance] tagScreen:@"ins_tc3" detail:@"click" step:nil];
 }
 
 - (IBAction)back:(id)sender {

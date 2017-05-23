@@ -23,7 +23,7 @@
 #import "CTTermsViewController.h"
 #import "CTFreeCancelationAlertView.h"
 
-@interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate>
+@interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIView *containerView;
@@ -48,6 +48,9 @@
 
 //Temporary variables
 @property (nonatomic, strong) NSString *tempCountryCode;
+
+// Analytics
+@property (nonatomic, assign) BOOL insuranceViewDidAppear;
 
 @end
 
@@ -78,6 +81,7 @@
 
 - (void)refreshView
 {
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-v" step:nil];
     _tempCountryCode = [CTSDKSettings instance].homeCountryCode;
     self.search.isBuyingInsurance = NO;
     self.search.insurance = nil;
@@ -104,6 +108,8 @@
     
     [self.scrollView setContentOffset:CGPointMake(0, 0)];
     
+    self.insuranceViewDidAppear = NO;
+    
     if (self.tabView) {
         NSInteger index = [self.layoutManager indexOfObject:self.tabView].integerValue;
         [self.layoutManager removeAtIndex:index];
@@ -124,6 +130,7 @@
     self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     self.scrollView.bounces = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.delegate = self;
     [self addSubview:self.scrollView];
 
     _containerView = [UIView new];
@@ -184,6 +191,9 @@
     [self.scrollView addConstraint:equalWidth];
     
     
+
+    [self addSubview:self.nextButton];
+
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[toastView]-0-|"
                                                                  options:0
                                                                  metrics:nil
@@ -261,6 +271,8 @@
 }
 
 - (void)extrasViewDidTapViewAll:(CTExtrasCarouselView *)extrasView {
+    [[CTAnalytics instance] tagScreen:@"extras" detail:@"view_all" step:nil];
+    
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:bundle];
     CTExtrasListViewController *controller = (CTExtrasListViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalExtrasVerticalViewIdentifier];
@@ -319,6 +331,7 @@
     UINavigationController *nav = [storyboard instantiateViewControllerWithIdentifier:@"CTTermsViewControllerNav"];
     CTTermsViewController *vc = (CTTermsViewController *)nav.topViewController;
     [vc setData:self.search cartrawlerAPI:self.cartrawlerAPI];
+    [[CTAnalytics instance] tagScreen:@"rc_lnk" detail:@"open" step:nil];
     
     if (self.delegate) {
         [self.delegate infoViewPresentViewController:nav];
@@ -332,6 +345,8 @@
 // MARK: CTVehicleDetailsDelegate
 - (void)didTapMoreDetailsView:(UIView *)view
 {
+    [[CTAnalytics instance] tagScreen:@"features_i" detail:@"open" step:nil];
+    
     if (self.delegate) {
         [self.alertView setTitle:CTLocalizedString(CTRentalFeatureTitle) message:nil];
         [self.alertView removeAllActions];
@@ -356,6 +371,7 @@
         [self.alertView addAction:[CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTADone)
                                                          handler:^(CTAlertAction *action) {
                                                              [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+                                                             [[CTAnalytics instance] tagScreen:@"canc_amd_i" detail:@"open" step:nil];
                                                          }]];
         [self.delegate infoViewPresentViewController:self.alertView];
     }
@@ -396,6 +412,64 @@
     }
 }
 
+// MARK: CTListView Delegate
+
+- (void)listView:(CTListView *)listView didSelectView:(CTExpandingView *)expandingView atIndex:(NSInteger)index  {
+    if (![expandingView isKindOfClass:CTExpandingView.class]) {
+        return;
+    }
+    
+    if (expandingView.expanded) {
+        [expandingView contract];
+        return;
+    }
+    
+    if (listView.tag == 1) {
+        CTListItemView *listItemView1 = [CTListItemView new];
+        listItemView1.titleLabel.text = @"Third party liability";
+        listItemView1.imageView.image = [[UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        
+        CTListItemView *listItemView2 = [CTListItemView new];
+        listItemView2.titleLabel.text = @"Theft protection";
+        listItemView2.imageView.image = [[UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        
+        CTListItemView *listItemView3 = [CTListItemView new];
+        listItemView3.titleLabel.text = @"Collision damage waiver";
+        listItemView3.imageView.image = [[UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        
+        CTListView *listView = [[CTListView alloc] initWithViews:@[listItemView1, listItemView2, listItemView3] separatorColor:[UIColor clearColor]];
+        [expandingView expandWithDetailView:listView];
+    }
+    
+    if (listView.tag == 2) {
+        CTLabel *label = [[CTLabel alloc] init:16
+                                     textColor:[UIColor blackColor]
+                                 textAlignment:NSTextAlignmentLeft
+                                      boldFont:NO];
+        label.numberOfLines = 0;
+        label.text = @"Europcar is one of the worlds leading car rental companies that offer innovative services and quality in a simple and transparent way.";
+        [expandingView expandWithDetailView:label];
+    }
+    
+}
+
+// MARK: Scroll View
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self checkInsuranceViewDidAppear:scrollView];
+}
+
+- (void)checkInsuranceViewDidAppear:(UIScrollView *)scrollView {
+    if (!self.insuranceViewDidAppear) {
+        if (self.insuranceView.frame.origin.y <= scrollView.contentOffset.y + scrollView.frame.size.height) {
+            self.insuranceViewDidAppear = YES;
+            
+            [[CTAnalytics instance] tagScreen:@"Ins_offer" detail:@"yes" step:nil];
+            [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-e" step:nil];
+        }
+    }
+}
+
 // MARK: Actions
 - (IBAction)backTapped:(id)sender
 {
@@ -408,11 +482,7 @@
 
 - (IBAction)nextTapped:(id)sender
 {
-//    if (self.destinationViewController) {
-//        [self pushToDestination];
-//    } else {
-//        [self dismiss];
-//    }
+    [self pushToDestination];
 }
 
 // MARK: Presentation

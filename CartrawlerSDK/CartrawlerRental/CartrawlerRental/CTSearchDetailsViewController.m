@@ -17,6 +17,7 @@
 #import "CTSearchView.h"
 #import "CTRentalConstants.h"
 #import "CTSettingsViewController.h"
+#import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
 
 @interface CTSearchDetailsViewController () <CTSearchViewDelegate>
 
@@ -24,6 +25,12 @@
 @property (nonatomic, strong) CTNextButton *nextButton;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet UIButton *chevron;
+
+/**
+ For analytics tagging, the view needs to know if it is editing a previous search
+ */
+@property (nonatomic, assign) BOOL editMode;
+@property (nonatomic, strong) CTRentalSearch *previousSearch;
 
 @end
 
@@ -53,6 +60,11 @@
     };
 }
 
+- (void)setSearch:(CTRentalSearch *)search {
+    [super setSearch:search];
+    self.previousSearch = [search copy];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -61,6 +73,11 @@
     
     [self configureSettingsButton];
     [self configureBackButton];
+}
+
+- (BOOL)editMode {
+    // Check if date has been set on search to see if previous search has been completed. If so, the search is now being edited
+    return (self.search.pickupDate != nil);
 }
 
 - (void)configureSettingsButton {
@@ -94,15 +111,60 @@
 
 - (void)searchTapped
 {
-    
     if ([self.searchView validateSearch] && self.validationController) {
+        if (self.previousSearch) {
+            [self tagSearchUpdates];
+        }
         [self pushToDestination];
         [CTInterstitialViewController present:self search:self.search];
     } else if ([self.searchView validateSearch]) {
+        if (self.editMode) {
+            [self tagSearchUpdates];
+        }
         [CTInterstitialViewController present:self search:self.search];
         [self requestVehicles];
     }
+    [[CTAnalytics instance] tagScreen:@"SearchCars" detail:@"search" step:nil];
+}
+
+- (void)tagSearchUpdates {
+    BOOL updated = NO;
     
+    BOOL differentPickUpLocation = ![self.previousSearch.pickupLocation.code isEqualToString:self.search.pickupLocation.code];
+    BOOL differentDropOffLocation = ![self.previousSearch.dropoffLocation.code isEqualToString:self.search.dropoffLocation.code];
+    
+    if (differentPickUpLocation || differentDropOffLocation) {
+        [[CTAnalytics instance] tagScreen:@"Update_loc" detail:@"updated" step:nil];
+        updated = YES;
+    }
+    
+    BOOL differentPickUpDay = ![NSDate isDate:self.previousSearch.pickupDate inSameDayAsDate:self.search.pickupDate];
+    BOOL differentDropOffDay = ![NSDate isDate:self.previousSearch.dropoffDate inSameDayAsDate:self.search.dropoffDate];
+    
+    if (differentPickUpDay || differentDropOffDay) {
+        [[CTAnalytics instance] tagScreen:@"Update_dat" detail:@"updated" step:nil];
+        updated = YES;
+    }
+    
+    BOOL differentPickUpTime = ![NSDate isDate:self.previousSearch.pickupDate atSameTimeAsDate:self.search.pickupDate];
+    BOOL differentDropOffTime = ![NSDate isDate:self.previousSearch.dropoffDate atSameTimeAsDate:self.search.dropoffDate];
+    
+    if (differentPickUpTime || differentDropOffTime) {
+        [[CTAnalytics instance] tagScreen:@"Update_tim" detail:@"updated" step:nil];
+        updated = YES;
+    }
+    
+    if (![self.previousSearch.driverAge isEqualToNumber:self.search.driverAge]) {
+        [[CTAnalytics instance] tagScreen:@"Update_age" detail:@"updated" step:nil];
+        updated = YES;
+    }
+    
+    if (updated) {
+        [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"update" step:nil];
+    } else {
+        [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"exit_U" step:nil];
+        [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"exit" step:nil];
+    }
 }
 
 - (void)displayAlertWithMessage:(NSString *)message
@@ -134,6 +196,8 @@
 - (IBAction)backTapped:(id)sender
 {
     if (self.navigationController.viewControllers.firstObject == self || !self.navigationController) {
+        [[CTAnalytics instance] tagScreen:@"editSearch" detail:@"exit_X" step:nil];
+        [[CTAnalytics instance] tagScreen:@"back_btn" detail:@"searchcars" step:nil];
         [self dismiss];
     } else {
         [self.navigationController popViewControllerAnimated:YES];

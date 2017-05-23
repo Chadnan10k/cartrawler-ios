@@ -46,7 +46,7 @@
     @"}", target, languageCode, currency, requestorID, countryCode];
     
     CTPostRequest *post = [CTPostRequest new];
-    
+
     [post performRequestWithData:endpoint
                         jsonBody:json
                   loggingEnabled:NO

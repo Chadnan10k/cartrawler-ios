@@ -7,13 +7,15 @@
 //
 
 #import "CTAnalytics.h"
+#import "CTAnalyticsCache.h"
 #import "CTSDKSettings.h"
 
-@interface CTAnalytics()
+@interface CTAnalytics() <CTAnalyticsCacheDelegate>
 
 @property (nonatomic, strong) NSURLSessionConfiguration *config;
 @property (nonatomic, strong) NSMutableURLRequest *request;
 @property (nonatomic, strong) NSURLSessionDataTask *task;
+@property (nonatomic, strong) CTAnalyticsCache *cache;
 @end
 
 @implementation CTAnalytics
@@ -26,15 +28,20 @@
         sharedInstance = [[CTAnalytics alloc] init];
         sharedInstance.config = [NSURLSessionConfiguration defaultSessionConfiguration];
         sharedInstance.request = [[NSMutableURLRequest alloc] init];
+        sharedInstance.cache = [CTAnalyticsCache new];
+        sharedInstance.cache.delegate = sharedInstance;
     });
     return sharedInstance;
 }
 
 - (void)tagScreen:(nonnull NSString *)name
            detail:(nonnull NSString *)detail
-             step:(nonnull NSNumber *)step
+             step:(nullable NSNumber *)step
 {
-    
+    if (!step) {
+        step = @(self.analyticsStep);
+    }
+
     double time = [[NSDate date] timeIntervalSince1970] * 1000;
     NSNumberFormatter *nf = [NSNumberFormatter new];
     NSString *timeString = [nf stringFromNumber:[NSNumber numberWithDouble:time]];
@@ -43,12 +50,15 @@
                               detail:detail
                            container:@3
                            timestamp:timeString
-                        engineLoadID:[CTSDKSettings instance].engineLoadID ?: @""
-                          customerID:[CTSDKSettings instance].customerID ?: @""
-                             queryID:[CTSDKSettings instance].queryID ?: @""
+                        engineLoadID:[CTSDKSettings instance].engineLoadID ?: @"1"
+                          customerID:[CTSDKSettings instance].customerID ?: @"1"
+                             queryID:[CTSDKSettings instance].queryID ?: @"1"
                                 step:step];
-    
-    [self fireTag:tag.produceURL];
+    [self.cache addTag:tag];
+}
+
+- (void)setAnalyticsStep:(CTAnalyticsStep)analyticsStep {
+    _analyticsStep = analyticsStep;
 }
 
 - (void)tagError:(nonnull NSString *)step
@@ -77,5 +87,13 @@
     [task resume];
     [session finishTasksAndInvalidate];
 }
+
+// MARK: CTAnalyticsCacheDelegate
+
+- (void)analyticsCache:(CTAnalyticsCache *)cache flushTags:(NSArray *)tags {
+    [self fireTag:[CTTag produceURLForTags:tags]];
+}
+
+
 
 @end

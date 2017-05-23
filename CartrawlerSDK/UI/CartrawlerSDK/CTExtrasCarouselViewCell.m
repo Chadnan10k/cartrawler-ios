@@ -8,6 +8,7 @@
 
 #import "CTExtrasCarouselViewCell.h"
 #import <CartrawlerSDK/CTCounterView.h>
+#import <CartrawlerSDK/CTAnalytics.h>
 #import <CartrawlerSDK/CTLayoutManager.h>
 
 @interface CTExtrasCarouselViewCell () <CTCounterViewDelegate>
@@ -94,14 +95,14 @@
     self.closeButton.hidden = YES;
     [self.contentView addSubview:self.closeButton];
     
-    self.infoTitleLabel = [[CTLabel alloc] init:15 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:YES];
+    self.infoTitleLabel = [[CTLabel alloc] init:14 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:YES];
     self.infoTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.infoTitleLabel.hidden = YES;
     self.infoTitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.infoTitleLabel.numberOfLines = 2;
     [self.contentView addSubview:self.infoTitleLabel];
     
-    self.infoDetailLabel = [[CTLabel alloc] init:13 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:NO];
+    self.infoDetailLabel = [[CTLabel alloc] init:12 textColor:textColor textAlignment:NSTextAlignmentCenter boldFont:NO];
     self.infoDetailLabel.numberOfLines = 0;
     self.infoDetailLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.infoDetailLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -112,7 +113,7 @@
 - (void)addConstraints {
     NSDictionary *views = @{@"imageBackgroundView": self.imageBackgroundView, @"imageView" : self.imageView, @"infoButton" : self.infoButton, @"closeButton" : self.closeButton, @"titleLabel" : self.titleLabel, @"detailLabel" : self.detailLabel, @"counter" : self.counter, @"infoTitleLabel": self.infoTitleLabel, @"infoDetailLabel": self.infoDetailLabel};
     
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[imageBackgroundView(40)]-15-[titleLabel][detailLabel(==titleLabel)]-15-[counter(30)]-10-|"
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[imageBackgroundView(35)]-5-[titleLabel][detailLabel(15)]-15-[counter(30)]-10-|"
                                                                              options:0
                                                                              metrics:nil
                                                                                views:views]];
@@ -126,10 +127,10 @@
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.imageBackgroundView
                                                      attribute:NSLayoutAttributeWidth
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                        toItem:self.imageBackgroundView
+                                                     attribute:NSLayoutAttributeHeight
                                                     multiplier:1.0
-                                                      constant:40]];
+                                                      constant:0]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-5-[imageView]-5-|"
                                                                  options:0
                                                                  metrics:nil
@@ -145,12 +146,28 @@
                                                      attribute:NSLayoutAttributeCenterX
                                                     multiplier:1.0
                                                       constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeWidth
+                                                    multiplier:0.9
+                                                      constant:0]];
+    [self.titleLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.detailLabel
                                                      attribute:NSLayoutAttributeCenterX
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
                                                      attribute:NSLayoutAttributeCenterX
                                                     multiplier:1.0
+                                                      constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.detailLabel
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeWidth
+                                                    multiplier:0.9
                                                       constant:0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.counter
                                                      attribute:NSLayoutAttributeCenterX
@@ -296,10 +313,12 @@
 }
 
 - (void)counterViewDidTapIncrement:(CTCounterView *)counterView {
+    [[CTAnalytics instance] tagScreen:@"extras" detail:@"scroll_clk" step:nil];
     [self.delegate cellDidTapIncrement:self];
 }
 
 - (void)counterViewDidTapDecrement:(CTCounterView *)counterView {
+    [[CTAnalytics instance] tagScreen:@"extras" detail:@"scroll_clk" step:nil];
     [self.delegate cellDidTapDecrement:self];
 }
 
