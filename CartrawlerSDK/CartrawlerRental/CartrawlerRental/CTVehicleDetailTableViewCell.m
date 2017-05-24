@@ -75,7 +75,7 @@
         self.vendorImageView.image = image;
     }];
     
-    if (item.vehicle.merchandisingTag != CTMerchandisingTagUnknown) {
+    if (item.vehicle.merchandisingTag != CTMerchandisingTagUnknown || [self specialOfferText:item.vehicle.specialOffers]) {
         NSNumber *indexOfView = [self.manager indexOfObject:self.bannerView];
         if (indexOfView == nil) {
             self.upSellBanner.alpha = 1;
@@ -87,6 +87,7 @@
         }
         
     } else {
+        
         NSNumber *indexOfView = [self.manager indexOfObject:self.bannerView];
         if (indexOfView != nil) {
             self.upSellBanner.alpha = 0;
@@ -326,15 +327,53 @@
 
 - (void)setBannerText:(CTAvailabilityItem *)item
 {
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    UIImage *icon = [UIImage imageNamed:@"star"
-                               inBundle:bundle
-          compatibleWithTraitCollection:nil];
+    if ([self specialOfferText:item.vehicle.specialOffers]) {
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        UIImage *icon = [UIImage imageNamed:@"bolt"
+                                   inBundle:bundle
+              compatibleWithTraitCollection:nil];
+        [self.upSellBanner setIcon:icon
+                   backgroundColor:[UIColor colorWithRed:207.0/255.0 green:46.0/255.0 blue:29.0/255.0 alpha:1]
+                         textColor:[UIColor whiteColor]
+                              text:[self specialOfferText:item.vehicle.specialOffers]];
+    } else {
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        UIImage *icon = [UIImage imageNamed:@"star"
+                                   inBundle:bundle
+              compatibleWithTraitCollection:nil];
+        [self.upSellBanner setIcon:icon
+                   backgroundColor:[self merchandisingColor:item.vehicle.merchandisingTag]
+                         textColor:[UIColor whiteColor]
+                              text:[self merchandisingText:item.vehicle.merchandisingTag]];
+    }
+}
+
+- (NSString *)specialOfferText:(NSArray <CTSpecialOffer *> *)specialOffers
+{
     
-    [self.upSellBanner setIcon:icon
-               backgroundColor:[self merchandisingColor:item.vehicle.merchandisingTag]
-                     textColor:[UIColor whiteColor]
-                          text:[self merchandisingText:item.vehicle.merchandisingTag]];
+    if (specialOffers.count == 0) {
+        return nil;
+    }
+    
+    CTSpecialOffer *choosenOffer;
+    BOOL priorityOfferFound = NO;
+    for (CTSpecialOffer *so in specialOffers) {
+        if (so.type == CTSpecialOfferTypeCartrawlerCash ||
+            so.type == CTSpecialOfferTypePercentageDiscount ||
+            so.type == CTSpecialOfferTypePercentageDiscountBranded ||
+            so.type == CTSpecialOfferTypeGenericDiscount ||
+            so.type == CTSpecialOfferTypeGenericDiscountBranded)
+        {
+            choosenOffer = so;
+            priorityOfferFound = YES;
+        }
+    }
+    
+    if (priorityOfferFound) {
+        return choosenOffer.shortText;
+    } else {
+        return nil;
+    }
 }
 
 
