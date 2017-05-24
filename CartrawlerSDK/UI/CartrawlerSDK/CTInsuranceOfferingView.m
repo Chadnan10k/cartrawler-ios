@@ -185,7 +185,7 @@
     
     [imageView setHeightConstraint:@15 priority:@100];
     [imageView setWidthConstraint:@15 priority:@1000];
-    [imageView applyTintWithColor:[CTAppearance instance].iconTint];
+    [imageView applyTintWithColor:[CTAppearance instance].buttonColor];
 
     UILabel *label = [UILabel new];
     label.translatesAutoresizingMaskIntoConstraints = NO;

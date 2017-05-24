@@ -7,6 +7,8 @@
 //
 
 #import "CTExpandingView.h"
+#import "CartrawlerSDK/CartrawlerSDK+UIImageView.h"
+#import "CartrawlerSDK/CTAppearance.h"
 
 @interface CTExpandingView ()
 @property (nonatomic, weak) UIView *animationContainerView;
@@ -43,6 +45,7 @@
         NSBundle *bundle = [NSBundle bundleForClass:self.class];
         UIImage *chevronImage = [[UIImage imageNamed:@"down_arrow" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         self.chevron = [[UIImageView alloc] initWithImage:chevronImage];
+        [self.chevron  applyTintWithColor:[UIColor colorWithRed:42.0/255.0 green:147.0/255.0 blue:232.0/255.0 alpha:1.0]];
         self.chevron.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:self.chevron];
         

@@ -71,7 +71,7 @@
 - (CTListItemView *)fuelPolicyView:(CTAvailabilityItem *)item {
     NSString *title = CTLocalizedString(CTRentalVehicleFuelPolicy);
     NSString *detail = [CTLocalisedStrings fuelPolicy:item.vehicle.fuelPolicy];
-    return [self itemViewWithTitle:title detail:detail imageName:@"vehicle_mileage"];
+    return [self itemViewWithTitle:title detail:detail imageName:@"fuel"];
 }
 
 - (CTListItemView *)mileageAllowanceView:(CTAvailabilityItem *)item {
