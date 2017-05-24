@@ -388,8 +388,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)didSelectVehicle:(CTAvailabilityItem *)item
 {
-    [self tagVehicleDetailsStep];
     self.search.selectedVehicle = item;
+    [self tagVehicleDetailsStep];
     if (![CTSDKSettings instance].isStandalone) {
         [self presentVehicleDetails];
     } else {
