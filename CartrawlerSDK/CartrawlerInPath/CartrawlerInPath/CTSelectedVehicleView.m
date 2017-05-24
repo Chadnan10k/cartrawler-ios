@@ -49,13 +49,12 @@
     container.backgroundColor = [UIColor whiteColor];
     container.translatesAutoresizingMaskIntoConstraints = NO;
     
-    CTLabel *loadingLabel = [self loadingLabel];
+    CTLabel *loadingLabel = [self addedLabel];
     [container addSubview:loadingLabel];
     
     UIImageView *tickImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     tickImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    tickImageView.image = [UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
-    [tickImageView applyTintWithColor:[CTAppearance instance].buttonColor];
+    tickImageView.image = [UIImage imageNamed:@"added_checkmark" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
     [container addSubview:tickImageView];
     
     NSDictionary *viewDictionary = @{
@@ -64,8 +63,8 @@
                                      };
     
     //Label
-    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[tick(10)]-4-[label]-0-|" options:0 metrics:nil views:viewDictionary]];
-    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[tick(10)]" options:0 metrics:nil views:viewDictionary]];
+    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[tick(15)]-8-[label]-0-|" options:0 metrics:nil views:viewDictionary]];
+    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[tick(15)]" options:0 metrics:nil views:viewDictionary]];
     [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[label]-0-|" options:0 metrics:nil views:viewDictionary]];
     
     [container addConstraint:[NSLayoutConstraint constraintWithItem:tickImageView
@@ -87,9 +86,9 @@
     return container;
 }
 
-- (CTLabel *)loadingLabel
+- (CTLabel *)addedLabel
 {
-    CTLabel *label = [[CTLabel alloc] init:15 textColor:[UIColor lightGrayColor] textAlignment:NSTextAlignmentLeft boldFont:NO];
+    CTLabel *label = [[CTLabel alloc] init:16 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentLeft boldFont:YES];
     label.numberOfLines = 0;
     label.text = CTLocalizedString(CTInPathWidgetTitleAdded);
     return label;
