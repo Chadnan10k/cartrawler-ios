@@ -51,7 +51,7 @@
     
     // Disable iOS 7 back gesture
 
-    [self tagScreen];
+    [self tagBookingStep];
     
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
@@ -83,7 +83,7 @@
 
 - (IBAction)done:(id)sender
 {
-    [[CTAnalytics instance] tagScreen:@"exit" detail:@"confirmati" step:nil];
+    [self tagConfirmationStep];
     [[CTImageCache sharedInstance] removeAllObjects];
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
@@ -108,30 +108,33 @@
 
 #pragma mark Analytics
 
-- (void)tagScreen
+- (void)tagBookingStep
 {
-
     [[CTAnalytics instance] tagScreen:@"step" detail:@"confirmati" step:nil];
-    [self sendEvent:NO customParams:@{@"eventName" : @"Booking Confirmation Step",
-                                      @"stepName" : @"Step9",
+    [self sendEvent:NO customParams:@{@"eventName" : @"Booking Summary Step",
+                                      @"stepName" : @"Step7",
                                       } eventName:@"Step of search" eventType:@"Step"];
+}
 
-//    NSString *vehName = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.makeModelName,
-//                         self.search.selectedVehicle.vehicle.orSimilar];
+- (void)tagConfirmationStep {
+    [[CTAnalytics instance] tagScreen:@"exit" detail:@"confirmati" step:nil];
     
-//    [self sendEvent:NO customParams:@{@"eventName" : @"Booking",
-//                                      @"reservationID" : self.search.booking.confID,
-//                                      @"insuranceOffered" : self.search.insurance ? @"true" : @"false",
-//                                      @"insurancePurchased" : self.search.isBuyingInsurance ? @"true" : @"false",
-//                                      @"age" : self.search.driverAge.stringValue,
-//                                      @"clientID" : [CTSDKSettings instance].clientId,
-//                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode,
-//                                      @"pickupName" : self.search.pickupLocation.name,
-//                                      @"pickupDate" : [self.search.pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
-//                                      @"returnName" : self.search.dropoffLocation.name,
-//                                      @"returnDate" : [self.search.dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
-//                                      @"carSelected" : vehName
-//                                      } eventName:@"Booking" eventType:@"Booking"];
+    NSString *vehName = [NSString stringWithFormat:@"%@ %@", [CTRentalSearch instance].selectedVehicle.vehicle.makeModelName,
+                         [CTRentalSearch instance].selectedVehicle.vehicle.orSimilar];
+    [self sendEvent:NO customParams:@{@"eventName" : @"Booking",
+                                      @"reservationID" : self.search.booking.confID,
+                                      @"insuranceOffered" : [CTRentalSearch instance].insurance ? @"true" : @"false",
+                                      @"insurancePurchased" : [CTRentalSearch instance].isBuyingInsurance ? @"true" : @"false",
+                                      @"age" : [CTRentalSearch instance].driverAge.stringValue,
+                                      @"clientID" : [CTSDKSettings instance].clientId,
+                                      @"residenceID" : [CTSDKSettings instance].homeCountryCode,
+                                      @"pickupName" : [CTRentalSearch instance].pickupLocation.name,
+                                      @"pickupDate" : [[CTRentalSearch instance].pickupDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                                      @"returnName" : [CTRentalSearch instance].dropoffLocation.name,
+                                      @"returnDate" : [[CTRentalSearch instance].dropoffDate stringFromDateWithFormat:@"dd/MM/yyyy"],
+                                      @"carSelected" : vehName
+                                      } eventName:@"Booking" eventType:@"Booking"];
+    [self trackSale];
 }
 
 @end

@@ -81,7 +81,6 @@
 
 - (void)refreshView
 {
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-v" step:nil];
     _tempCountryCode = [CTSDKSettings instance].homeCountryCode;
     self.search.isBuyingInsurance = NO;
     self.search.insurance = nil;
@@ -423,13 +422,10 @@
     if (!self.insuranceViewDidAppear) {
         if (self.insuranceView.frame.origin.y <= scrollView.contentOffset.y + scrollView.frame.size.height) {
             self.insuranceViewDidAppear = YES;
-            
-            [[CTAnalytics instance] tagScreen:@"Ins_offer" detail:@"yes" step:nil];
-            [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-e" step:nil];
+            [self.delegate infoViewDidScrollToInsuranceView];
         }
     }
 }
-
 
 // MARK: Actions
 - (IBAction)backTapped:(id)sender

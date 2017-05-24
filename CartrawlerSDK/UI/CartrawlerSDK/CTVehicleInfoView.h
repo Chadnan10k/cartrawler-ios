@@ -21,6 +21,7 @@ typedef void (^CTNewVehiclePriceCompeltion)(BOOL success, NSString *error);
 - (void)infoViewPushToNextStep;
 - (void)infoViewAddInsuranceTapped:(BOOL)didAddInsurance;
 - (void)infoViewDidScroll:(CGFloat)verticalOffset;
+- (void)infoViewDidScrollToInsuranceView;
 
 @end
 
