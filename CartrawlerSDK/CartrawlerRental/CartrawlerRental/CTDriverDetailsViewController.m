@@ -657,6 +657,7 @@
     UINavigationController *nav = [storyboard instantiateViewControllerWithIdentifier:@"CTTermsViewControllerNav"];
     CTTermsViewController *vc = (CTTermsViewController *)nav.topViewController;
     [vc setData:self.search cartrawlerAPI:self.cartrawlerAPI];
+    nav.modalPresentationStyle = UIModalPresentationOverFullScreen;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self presentViewController:nav animated:YES completion:nil];
     });

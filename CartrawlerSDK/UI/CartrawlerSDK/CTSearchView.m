@@ -243,6 +243,7 @@
     locationViewController.cartrawlerAPI = self.cartrawlerAPI;
     locationViewController.searchContext = (isPickupView) ? CTLocationSearchContextPickup : CTLocationSearchContextDropoff;
     locationViewController.editMode = self.editMode;
+    locationViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     
     locationViewController.selectedLocation = ^(CTMatchedLocation *location) {
         if (isPickupView) {
@@ -269,6 +270,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTCalendarStoryboard bundle:bundle];
     CTCalendarViewController *calendarViewController = [storyboard instantiateViewControllerWithIdentifier:CTCalendarViewIdentifier];
     calendarViewController.delegate = self;
+    calendarViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     if (self.delegate) {
         [self.delegate didTapPresentViewController:calendarViewController];
     }
@@ -348,9 +350,29 @@
     }
 }
 
-- (void)updateDisplayWithSearch:(NSObject *)search
+- (void)updateDisplayWithSearch:(CTRentalSearch *)search
 {
+    [self.pickupLocationSearch setDetailText:search.pickupLocation ? search.pickupLocation.name : @""];
+    [self.dropoffLocationSearch setDetailText:search.dropoffLocation ? search.dropoffLocation.name : @""];
     
+    if (search.pickupDate && search.dropoffDate) {
+        NSString *pickupTime = [search.pickupDate stringFromDateWithFormat:@"HH:mm"];
+        NSString *dropoffTime = [search.dropoffDate stringFromDateWithFormat:@"HH:mm"];
+        [self.pickupTimeContainer setDetailText:pickupTime];
+        [self.dropoffTimeContainer setDetailText:dropoffTime];
+        [self didPickDates:search.pickupDate dropoffDate:search.dropoffDate];
+    } else {
+        [self.datesContainer setDetailText:@""];
+    }
+        
+    if (search.driverAge) {
+        [self.ageContainer setDetailText:search.driverAge.stringValue];
+        if (search.driverAge.intValue < 25 || search.driverAge.intValue > 70) {
+            self.ageSwitch.on = NO;
+            NSUInteger idx = [self.layoutManager indexOfObject:self.ageSwitchContainer].integerValue;
+            [self.layoutManager insertViewAtIndex:idx padding:UIEdgeInsetsMake(8, 8, 8, 8) view:self.ageContainer];
+        }
+    }
 }
 
 - (BOOL)validateSearch
