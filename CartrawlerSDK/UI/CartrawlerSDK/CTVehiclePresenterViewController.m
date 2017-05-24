@@ -313,14 +313,13 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     } else {
         price = [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
     }
-    
-    NSAttributedString *priceString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
-                                                    boldColor:[UIColor whiteColor]
-                                                     boldSize:17
-                                                  regularText:price
-                                                 regularColor:[UIColor whiteColor]
-                                                  regularSize:17
-                                                     useSpace:YES];
+    NSAttributedString *priceString = [NSString regularText:CTLocalizedString(CTRentalCarRentalTotal)
+                                               regularColor:[UIColor whiteColor]
+                                                regularSize:17
+                                             attributedText:price
+                                                  boldColor:[UIColor whiteColor]
+                                                   boldSize:17
+                                                   useSpace:YES];
     
     [self.rightButton setAttributedTitle:priceString forState:UIControlStateNormal];
 }
@@ -363,13 +362,19 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)updateSortButtonByPrice:(BOOL)sortByPrice
 {
-    NSAttributedString *sortString = [NSString attributedText:CTLocalizedString(CTRentalSortTitle)
-                                                    boldColor:[UIColor whiteColor]
-                                                     boldSize:17
-                                                  regularText:sortByPrice ? CTLocalizedString(CTRentalSortPrice) : CTLocalizedString(CTRentalSortRecommended)
-                                                 regularColor:[UIColor whiteColor]
-                                                  regularSize:17
-                                                     useSpace:YES];
+    NSString *boldText = sortByPrice ? CTLocalizedString(CTRentalSortPrice) : CTLocalizedString(CTRentalSortRecommended);
+    
+    NSAttributedString *sortString = [NSString regularText:CTLocalizedString(CTRentalSortTitle)
+                                              regularColor:[UIColor whiteColor]
+                                               regularSize:17
+                                            attributedText:boldText
+                                                 boldColor:[UIColor whiteColor]
+                                                  boldSize:17
+                                                  useSpace:YES];
+    
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    UIImage *image = [[UIImage imageNamed:@"down_arrow" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    sortString = [NSString string:sortString withInlineImage:image inlineImageScale:0.65];
     
     [self.rightButton setAttributedTitle:sortString forState:UIControlStateNormal];
 }

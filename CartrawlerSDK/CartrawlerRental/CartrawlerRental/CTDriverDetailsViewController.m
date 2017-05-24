@@ -230,13 +230,13 @@
 
     [self updateDetailedPriceSummary];
     
-    NSAttributedString *priceString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
-                                                     boldColor:[UIColor whiteColor]
-                                                      boldSize:17
-                                                   regularText:[self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode]
-                                                  regularColor:[UIColor whiteColor]
-                                                   regularSize:17
-                                                      useSpace:YES];
+    NSAttributedString *priceString = [NSString regularText:CTLocalizedString(CTRentalCarRentalTotal)
+                                               regularColor:[UIColor whiteColor]
+                                                regularSize:17
+                                             attributedText:[self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode]
+                                                  boldColor:[UIColor whiteColor]
+                                                   boldSize:17
+                                                   useSpace:YES];
     
     [self.summaryButton setAttributedTitle:priceString forState:UIControlStateNormal];
     
