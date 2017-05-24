@@ -46,9 +46,6 @@
 //Alert view custom views
 @property (nonatomic, strong) CTCountryPickerView *countryPicker;
 
-//Temporary variables
-@property (nonatomic, strong) NSString *tempCountryCode;
-
 // Analytics
 @property (nonatomic, assign) BOOL insuranceViewDidAppear;
 
@@ -81,7 +78,6 @@
 
 - (void)refreshView
 {
-    _tempCountryCode = [CTSDKSettings instance].homeCountryCode;
     self.search.isBuyingInsurance = NO;
     self.search.insurance = nil;
     [self.vehicleDetailsView setItem:self.search.selectedVehicle
@@ -142,7 +138,7 @@
     _nextButton = [CTNextButton new];
     self.nextButton.translatesAutoresizingMaskIntoConstraints = NO;
     
-    if (self.isStandalone) {
+    if ([CTSDKSettings instance].isStandalone) {
         [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
     } else {
         [self.nextButton setText:CTLocalizedString(CTRentalCTAAddVehicleToBasket)];

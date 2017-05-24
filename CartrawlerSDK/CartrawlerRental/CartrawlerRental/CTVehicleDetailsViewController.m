@@ -42,7 +42,6 @@
     _vehicleInfoView = [[CTVehicleInfoView alloc] initWithVerticalOffset:self.totalViewHeightConstraint.constant];
     self.vehicleInfoView.search = self.search;
     self.vehicleInfoView.cartrawlerAPI = self.cartrawlerAPI;
-    self.vehicleInfoView.isStandalone = YES;
     self.vehicleInfoView.delegate = self;
     
     [self.containerView addSubview:self.vehicleInfoView];

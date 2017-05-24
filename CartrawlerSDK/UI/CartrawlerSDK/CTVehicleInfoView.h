@@ -30,8 +30,6 @@ typedef void (^CTNewVehiclePriceCompeltion)(BOOL success, NSString *error);
 @property (nonatomic, strong) CTRentalSearch *search;
 @property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
-@property (nonatomic) BOOL isStandalone;
-
 @property (nonatomic, weak) id<CTVehicleInfoDelegate> delegate;
 
 @property (nonatomic, readonly) BOOL insuranceViewDidAppear;
