@@ -94,6 +94,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)updateWithExtras:(NSArray *)extras {
     self.extras = extras;
     [self.collectionView reloadData];
+    [self.collectionView setContentOffset:CGPointZero];
     self.scrollViewDidBeginDragging = NO;
 }
 
