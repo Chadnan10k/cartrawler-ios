@@ -160,13 +160,17 @@
         price = [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
     }
     
-    NSAttributedString *priceString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
-                                                     boldColor:[UIColor whiteColor]
-                                                      boldSize:17
-                                                   regularText:price
-                                                  regularColor:[UIColor whiteColor]
-                                                   regularSize:17
-                                                      useSpace:YES];
+    NSAttributedString *priceString = [NSString regularText:CTLocalizedString(CTRentalCarRentalTotal)
+                                               regularColor:[UIColor whiteColor]
+                                                regularSize:17
+                                             attributedText:price
+                                                  boldColor:[UIColor whiteColor]
+                                                   boldSize:17
+                                                   useSpace:YES];
+    
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    UIImage *image = [[UIImage imageNamed:@"down_arrow" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    priceString = [NSString string:priceString withInlineImage:image inlineImageScale:0.65];
     
     [self.carTotalButton setAttributedTitle:priceString forState:UIControlStateNormal];
 }
