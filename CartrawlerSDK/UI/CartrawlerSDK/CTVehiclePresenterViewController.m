@@ -320,6 +320,9 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
                                                   boldColor:[UIColor whiteColor]
                                                    boldSize:17
                                                    useSpace:YES];
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    UIImage *image = [[UIImage imageNamed:@"down_arrow" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    priceString = [NSString string:priceString withInlineImage:image inlineImageScale:0.65];
     
     [self.rightButton setAttributedTitle:priceString forState:UIControlStateNormal];
 }
