@@ -57,7 +57,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.vehicleInfoView refreshView];
+    [self.vehicleInfoView refreshViewWithVehicle:self.search.selectedVehicle];
     
     [self updateDetailedPriceSummary];
     [self updatePriceSummary:self.search.isBuyingInsurance];
@@ -174,6 +174,8 @@
 
 - (IBAction)backTapped:(id)sender
 {
+    [self.vehicleInfoView refreshViewWithVehicle:nil];
+    
     if (self.navigationController.viewControllers.firstObject == self) {
         if (self.vehicleInfoView.insuranceViewDidAppear) {
             [[CTAnalytics instance] tagScreen:@"back_btn" detail:@"vehicle-e" step:nil];

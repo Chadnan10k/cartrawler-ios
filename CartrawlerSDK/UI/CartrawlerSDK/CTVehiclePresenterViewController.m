@@ -144,7 +144,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [self.vehicleSelectionView removeFromSuperview];
     [self.containerView addSubview:self.vehicleDetailsView];
     [CTLayoutManager pinView:self.vehicleDetailsView toSuperView:self.containerView padding:UIEdgeInsetsZero];
-    [self.vehicleDetailsView refreshView];
+    [self.vehicleDetailsView refreshViewWithVehicle:self.search.selectedVehicle];
     [self updateNavigationBar];
     [self updatePriceSummary:NO];
     [self updateDetailedPriceSummary];
@@ -251,6 +251,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
         [[CTAnalytics instance] tagScreen:@"mdl_filter" detail:@"open" step:nil];
         [self.filterViewController present];
     } else {
+        [self.vehicleDetailsView refreshViewWithVehicle:nil];
         [self presentVehicleSelection];
     }
 }

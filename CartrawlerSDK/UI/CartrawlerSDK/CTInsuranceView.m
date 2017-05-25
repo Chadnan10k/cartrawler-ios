@@ -108,11 +108,7 @@
 }
 
 - (void)renderOffering
-{
-    if (self.delegate) {
-        [self.delegate didRemoveInsurance];
-    }
-    
+{    
     self.offeringView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.offeringView];
     
