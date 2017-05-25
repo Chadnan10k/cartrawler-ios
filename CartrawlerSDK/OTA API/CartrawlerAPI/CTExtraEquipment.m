@@ -33,7 +33,7 @@
 	_equipType = dict[@"Equipment"][@"@EquipType"];
     _equipmentType = [self equipmentTypeForEquipmentTypeCode:_equipType];
 	_equipDescription = dict[@"Equipment"][@"Description"];
-	_qty = 0;
+    _qty = _isIncludedInRate ? 1 : 0;
 	return self;
 }
 
