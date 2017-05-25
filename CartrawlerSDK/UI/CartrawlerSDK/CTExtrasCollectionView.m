@@ -123,17 +123,17 @@ static NSString * const reuseIdentifier = @"Cell";
     
     cell.detail = [self detailForExtra:extra];
     
-    BOOL decrementEnabled = (!extra.isIncludedInRate && extra.qty != 0);
+    NSInteger min = [self minimumForExtra:extra];
+    BOOL decrementEnabled = extra.qty > min;
     [cell setDecrementEnabled:decrementEnabled];
     
-    BOOL incrementEnabled = (!extra.isIncludedInRate && extra.qty != kMaxExtras);
+    BOOL incrementEnabled = (extra.qty < kMaxExtras);
     [cell setIncrementEnabled:incrementEnabled];
     
     BOOL detailDisplayed = [self.indexesOfCellsWithDetailDisplayed containsIndex:indexPath.row];
     [cell setDetailDisplayed:detailDisplayed animated:NO];
     
-    NSInteger count = extra.isIncludedInRate ? kDefaultExtrasCountWhenIncludedInRate : extra.qty;
-    [cell setCount:count];
+    [cell setCount:extra.qty];
     
     if ([cell respondsToSelector:@selector(setImage:)]) {
         NSString *imageName = [self imageNameForExtra:extra];
@@ -288,10 +288,6 @@ static NSString * const reuseIdentifier = @"Cell";
     NSInteger index = [self.collectionView indexPathForCell:cell].row;
     CTExtraEquipment *extra = self.extras[index];
     
-    if (extra.isIncludedInRate) {
-        return;
-    }
-    
     if (extra.qty < kMaxExtras) {
         extra.qty++;
         [cell setDecrementEnabled:YES];
@@ -308,19 +304,21 @@ static NSString * const reuseIdentifier = @"Cell";
     NSInteger index = [self.collectionView indexPathForCell:cell].row;
     CTExtraEquipment *extra = self.extras[index];
     
-    if (extra.isIncludedInRate) {
-        return;
-    }
+    NSInteger min = [self minimumForExtra:extra];
     
-    if (extra.qty > 0) {
+    if (extra.qty > min) {
         extra.qty--;
         [cell setIncrementEnabled:YES];
         cell.count = extra.qty;
     }
     
-    if (extra.qty == 0) {
+    if (extra.qty == min) {
         [cell setDecrementEnabled:NO];
     }
+}
+
+- (NSInteger)minimumForExtra:(CTExtraEquipment *)extra {
+    return extra.isIncludedInRate ? kDefaultExtrasCountWhenIncludedInRate : 0;
 }
 
 @end
