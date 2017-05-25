@@ -128,6 +128,9 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     self.vehicleSelectionView.delegate = self;
     
     self.scrollingLogic = [[CTRentalScrollingLogic alloc] initWithTopViewHeight:self.toolbarHeightConstraint.constant];
+    
+    self.rightButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.rightButton.titleLabel.minimumScaleFactor = 0.6;
 }
 
 - (void)presentVehicleDetails
