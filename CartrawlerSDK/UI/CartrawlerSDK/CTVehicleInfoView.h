@@ -21,6 +21,7 @@ typedef void (^CTNewVehiclePriceCompeltion)(BOOL success, NSString *error);
 - (void)infoViewPushToNextStep;
 - (void)infoViewAddInsuranceTapped:(BOOL)didAddInsurance;
 - (void)infoViewDidScroll:(CGFloat)verticalOffset;
+- (void)infoViewDidScrollToInsuranceView;
 
 @end
 
@@ -28,8 +29,6 @@ typedef void (^CTNewVehiclePriceCompeltion)(BOOL success, NSString *error);
 
 @property (nonatomic, strong) CTRentalSearch *search;
 @property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
-
-@property (nonatomic) BOOL isStandalone;
 
 @property (nonatomic, weak) id<CTVehicleInfoDelegate> delegate;
 

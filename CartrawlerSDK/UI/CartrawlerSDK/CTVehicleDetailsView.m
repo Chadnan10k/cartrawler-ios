@@ -53,18 +53,18 @@
     self.headerLeftLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.headerLeftLabel.font = [UIFont fontWithName:[CTAppearance instance].boldFontName size:18];
     self.headerLeftLabel.adjustsFontSizeToFitWidth = YES;
-    self.headerLeftLabel.textColor = [CTAppearance instance].headerTitleColor;
+    self.headerLeftLabel.textColor = [UIColor colorWithRed:46.0/255.0 green:46.0/255.0 blue:46.0/255.0 alpha:1];
 
     _headerRightLabel = [CTLabel new];
     self.headerRightLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.headerRightLabel.textAlignment = NSTextAlignmentRight;
     self.headerRightLabel.adjustsFontSizeToFitWidth = YES;
-    self.headerRightLabel.textColor = [CTAppearance instance].headerTitleColor;
+    self.headerRightLabel.textColor = [UIColor colorWithRed:46.0/255.0 green:46.0/255.0 blue:46.0/255.0 alpha:1];
 
     _subheaderLeftLabel = [CTLabel new];
     self.subheaderLeftLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.subheaderLeftLabel.font = [UIFont fontWithName:[CTAppearance instance].fontName size:15];
-    self.subheaderLeftLabel.textColor = [CTAppearance instance].subheaderTitleColor;
+    self.subheaderLeftLabel.textColor = [UIColor colorWithRed:130.0/255.0 green:135.0/255.0 blue:144.0/255.0 alpha:1];
 
     _supplierImageView = [UIImageView new];
     self.supplierImageView.translatesAutoresizingMaskIntoConstraints = NO;

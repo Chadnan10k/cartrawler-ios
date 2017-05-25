@@ -30,7 +30,7 @@
     passeger.city = city;
     passeger.postcode = postcode;
     passeger.countryCode = countryCode;
-    passeger.age = age;
+    passeger.age = !age || age.intValue == 0 ? @30 : age;
     passeger.isPrimaryDriver = isPrimaryDriver;
     passeger.email = email ?: @"";
     passeger.phone = phone ?: @"";

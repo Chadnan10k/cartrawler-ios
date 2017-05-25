@@ -21,12 +21,10 @@
         UIView *containerView = [UIView new];
         containerView.translatesAutoresizingMaskIntoConstraints = NO;
         containerView.layer.cornerRadius = [CTAppearance instance].buttonCornerRadius;
-        containerView.backgroundColor = [CTAppearance instance].supplierDetailSecondaryColor;
+        containerView.backgroundColor = [UIColor clearColor];
         [self addSubview:containerView];
         
-        self.ratingLabel = [CTLabel new];
-        self.ratingLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        self.ratingLabel.textColor = [UIColor whiteColor];
+        self.ratingLabel = [[CTLabel alloc] init:15 textColor:[CTAppearance instance].navigationBarColor textAlignment:NSTextAlignmentRight boldFont:YES];
         [containerView addSubview:self.ratingLabel];
         
         NSDictionary *viewDictionary = @{@"titleLabel" : self.titleLabel, @"containerView" : containerView, @"ratingLabel" : self.ratingLabel};

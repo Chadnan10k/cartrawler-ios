@@ -49,9 +49,6 @@
 //Alert view custom views
 @property (nonatomic, strong) CTCountryPickerView *countryPicker;
 
-//Temporary variables
-@property (nonatomic, strong) NSString *tempCountryCode;
-
 // Analytics
 @property (nonatomic, assign) BOOL insuranceViewDidAppear;
 
@@ -90,7 +87,6 @@
     self.vehicle = vehicle;
     
     [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-v" step:nil];
-    _tempCountryCode = [CTSDKSettings instance].homeCountryCode;
     self.search.isBuyingInsurance = NO;
     self.search.insurance = nil;
     [self.vehicleDetailsView setItem:self.search.selectedVehicle
@@ -151,7 +147,7 @@
     _nextButton = [CTNextButton new];
     self.nextButton.translatesAutoresizingMaskIntoConstraints = NO;
     
-    if (self.isStandalone) {
+    if ([CTSDKSettings instance].isStandalone) {
         [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
     } else {
         [self.nextButton setText:CTLocalizedString(CTRentalCTAAddVehicleToBasket)];
@@ -326,7 +322,7 @@
 
 - (void)initTermsAndConditionsView
 {
-    _termsButton = [[CTButton alloc] init:[UIColor clearColor] fontColor:[CTAppearance instance].buttonTextColor boldFont:YES borderColor:nil];
+    _termsButton = [[CTButton alloc] init:[UIColor clearColor] fontColor:[UIColor colorWithRed:32.0/255.0 green:145.0/255.0 blue:235.0/255.0 alpha:1] boldFont:YES borderColor:nil];
     [self.termsButton setTitle:CTLocalizedString(CTRentalIncludedTerms) forState:UIControlStateNormal];
     [self.layoutManager insertView:UIEdgeInsetsMake(8, 0, 8, 0) view:self.termsButton];
     [self.termsButton addTarget:self action:@selector(openTermsAndConditons) forControlEvents:UIControlEventTouchUpInside];
@@ -431,13 +427,10 @@
     if (!self.insuranceViewDidAppear) {
         if (self.insuranceView.frame.origin.y <= scrollView.contentOffset.y + scrollView.frame.size.height) {
             self.insuranceViewDidAppear = YES;
-            
-            [[CTAnalytics instance] tagScreen:@"Ins_offer" detail:@"yes" step:nil];
-            [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-e" step:nil];
+            [self.delegate infoViewDidScrollToInsuranceView];
         }
     }
 }
-
 
 // MARK: Actions
 - (IBAction)backTapped:(id)sender

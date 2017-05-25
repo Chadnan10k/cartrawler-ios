@@ -163,7 +163,7 @@ NSString * const kInfoTipInformationImage = @"information";
                                                                              toItem:self
                                                                           attribute:NSLayoutAttributeTop
                                                                          multiplier:1.0
-                                                                           constant:6];
+                                                                           constant:12];
     NSLayoutConstraint *labelHeightConstraint = [NSLayoutConstraint constraintWithItem:self.infoLabel
                                                                              attribute:NSLayoutAttributeHeight
                                                                              relatedBy:NSLayoutRelationGreaterThanOrEqual
@@ -177,7 +177,7 @@ NSString * const kInfoTipInformationImage = @"information";
                                                                                 toItem:self
                                                                              attribute:NSLayoutAttributeBottom
                                                                             multiplier:1.0
-                                                                              constant:-6];
+                                                                              constant:-12];
     labelBottomConstraint.priority = 750;
     [self addConstraints:@[labelLeftConstraint, labelRightConstraint, labelTopConstraint, labelHeightConstraint, labelBottomConstraint]];
     
@@ -230,14 +230,14 @@ NSString * const kInfoTipInformationImage = @"information";
                                                                             relatedBy:NSLayoutRelationEqual
                                                                                toItem:self.circleView
                                                                             attribute:NSLayoutAttributeWidth
-                                                                           multiplier:0.5
+                                                                           multiplier:1.0
                                                                              constant:0];
     NSLayoutConstraint *imageHeightConstraint = [NSLayoutConstraint constraintWithItem:self.imageView
                                                                              attribute:NSLayoutAttributeHeight
                                                                              relatedBy:NSLayoutRelationEqual
                                                                                 toItem:self.circleView
                                                                              attribute:NSLayoutAttributeHeight
-                                                                            multiplier:0.5
+                                                                            multiplier:1.0
                                                                               constant:0];
     [self addConstraints:@[imageXConstraint, imageYConstraint, imageWidthConstraint, imageHeightConstraint]];
 }
@@ -295,7 +295,7 @@ NSString * const kInfoTipInformationImage = @"information";
     imageView.translatesAutoresizingMaskIntoConstraints = NO;
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     NSBundle *bundle = [NSBundle bundleForClass:self.class];
-    imageView.image = icon ?: [UIImage imageNamed:@"pencil" inBundle:bundle compatibleWithTraitCollection:nil];
+    imageView.image = icon ?: [UIImage imageNamed:@"car_tick" inBundle:bundle compatibleWithTraitCollection:nil];
     return imageView;
 }
 

@@ -133,7 +133,7 @@
     [subtitleTickImageView applyTintWithColor:[CTAppearance instance].buttonColor];
     [containerView addSubview:subtitleTickImageView];
     
-    CTLabel *subtitleLabel = [[CTLabel alloc] init:15 textColor:[UIColor lightGrayColor] textAlignment:NSTextAlignmentLeft boldFont:NO];
+    CTLabel *subtitleLabel = [[CTLabel alloc] init:14 textColor:[UIColor lightGrayColor] textAlignment:NSTextAlignmentLeft boldFont:NO];
     subtitleLabel.text = CTLocalizedString(CTInPathWidgetText);
     subtitleLabel.numberOfLines = 0;
     [containerView addSubview:subtitleLabel];

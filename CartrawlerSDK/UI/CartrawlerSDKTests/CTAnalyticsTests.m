@@ -30,10 +30,4 @@
     XCTAssertTrue([errorTag.produceURL.absoluteString isEqualToString:@"https://ct-errs.cartrawler.com/v5log?app=MO&ver=2.0.3&lvl=Info&dv=iOS&action=step1&subAction=search&desc=no%20results&elID=1234567890&clientID=123456&target=Test"]);
 }
 
-- (void)testTag_returnsDict
-{
-  //  CTTag *tag = [[CTTag alloc] init:@"searchcars" detail:@"0.123" container:@0timestamp:<#(NSString *)#> engineLoadID:<#(NSString *)#> customerID:<#(NSString *)#> queryID:<#(NSString *)#> step:<#(NSNumber *)#>]
-}
-
-
 @end

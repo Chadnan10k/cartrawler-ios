@@ -42,7 +42,6 @@
     _vehicleInfoView = [[CTVehicleInfoView alloc] initWithVerticalOffset:self.totalViewHeightConstraint.constant];
     self.vehicleInfoView.search = self.search;
     self.vehicleInfoView.cartrawlerAPI = self.cartrawlerAPI;
-    self.vehicleInfoView.isStandalone = YES;
     self.vehicleInfoView.delegate = self;
     
     [self.containerView addSubview:self.vehicleInfoView];
@@ -110,6 +109,17 @@
     }
 }
 
+- (void)infoViewDidScrollToInsuranceView {
+    NSString *insOffered = self.search.insurance ? @"true" : @"false";
+    
+    [[CTAnalytics instance] tagScreen:@"ins_offer" detail:insOffered step:nil];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-e" step:nil];
+    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Insurance & Extras Step",
+                                      @"stepName" : @"Step4",
+                                      @"insuranceOffered" : insOffered
+                                      } eventName:@"Step of search" eventType:@"Step"];
+}
 
 - (void)updateDetailedPriceSummary
 {
@@ -150,13 +160,17 @@
         price = [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
     }
     
-    NSAttributedString *priceString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
-                                                     boldColor:[UIColor whiteColor]
-                                                      boldSize:17
-                                                   regularText:price
-                                                  regularColor:[UIColor whiteColor]
-                                                   regularSize:17
-                                                      useSpace:YES];
+    NSAttributedString *priceString = [NSString regularText:CTLocalizedString(CTRentalCarRentalTotal)
+                                               regularColor:[UIColor whiteColor]
+                                                regularSize:17
+                                             attributedText:price
+                                                  boldColor:[UIColor whiteColor]
+                                                   boldSize:17
+                                                   useSpace:YES];
+    
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    UIImage *image = [[UIImage imageNamed:@"down_arrow" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    priceString = [NSString string:priceString withInlineImage:image inlineImageScale:0.65];
     
     [self.carTotalButton setAttributedTitle:priceString forState:UIControlStateNormal];
 }
@@ -202,7 +216,5 @@
 {
 //    [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-// MARK: CTvehicle details delegate
 
 @end

@@ -53,9 +53,6 @@
     _dropoffDate = dropoffDate;
     _pickupDate = pickupDate;
     [self.vehicleCollectionView reloadData];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.vehicleCollectionView setContentOffset:CGPointMake(-8, 0)];
-    });
 }
 
 - (void)layout
@@ -81,6 +78,8 @@
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.itemSize = CGSizeMake(260, 120);
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layout.sectionInset = UIEdgeInsetsMake(0,8,0,8);
+    
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     [collectionView registerClass:[CTCarouselCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     collectionView.delegate = self;

@@ -232,13 +232,17 @@
     
     NSString *price = [self priceForSearch:self.search];
     
-    NSAttributedString *priceString = [NSString attributedText:CTLocalizedString(CTRentalCarRentalTotal)
-                                                     boldColor:[UIColor whiteColor]
-                                                      boldSize:17
-                                                   regularText:price
-                                                  regularColor:[UIColor whiteColor]
-                                                   regularSize:17
-                                                      useSpace:YES];
+    NSAttributedString *priceString = [NSString regularText:CTLocalizedString(CTRentalCarRentalTotal)
+                                               regularColor:[UIColor whiteColor]
+                                                regularSize:17
+                                             attributedText:price
+                                                  boldColor:[UIColor whiteColor]
+                                                   boldSize:17
+                                                   useSpace:YES];
+    
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    UIImage *image = [[UIImage imageNamed:@"down_arrow" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    priceString = [NSString string:priceString withInlineImage:image inlineImageScale:0.65];
     
     [self.summaryButton setAttributedTitle:priceString forState:UIControlStateNormal];
 }
@@ -665,6 +669,7 @@
     UINavigationController *nav = [storyboard instantiateViewControllerWithIdentifier:@"CTTermsViewControllerNav"];
     CTTermsViewController *vc = (CTTermsViewController *)nav.topViewController;
     [vc setData:self.search cartrawlerAPI:self.cartrawlerAPI];
+    nav.modalPresentationStyle = UIModalPresentationOverFullScreen;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self presentViewController:nav animated:YES completion:nil];
     });
@@ -676,8 +681,19 @@
 - (void)tagScreen
 {
     [[CTAnalytics instance] tagScreen:@"step" detail:@"details" step:nil];
+    
     [self sendEvent:NO customParams:@{@"eventName" : @"Driver Details Step",
                                       @"stepName" : @"Step5",
+                                      } eventName:@"Step of search" eventType:@"Step"];
+    
+    if (self.search.isBuyingInsurance) {
+        [self sendEvent:NO customParams:@{@"eventName" : @"Address Details Step",
+                                          @"stepName" : @"Step6",
+                                          } eventName:@"Step of search" eventType:@"Step"];
+    }
+    
+    [self sendEvent:NO customParams:@{@"eventName" : @"Payment Step",
+                                      @"stepName" : @"Step8",
                                       } eventName:@"Step of search" eventType:@"Step"];
 }
 
