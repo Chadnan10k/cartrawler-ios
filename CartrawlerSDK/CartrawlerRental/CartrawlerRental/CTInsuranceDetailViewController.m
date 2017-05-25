@@ -145,7 +145,7 @@
     view.translatesAutoresizingMaskIntoConstraints = NO;
     
     CTLabel *reduceLabel = [[CTLabel alloc] init:17 textColor:[CTAppearance instance].navigationBarColor textAlignment:NSTextAlignmentLeft boldFont:YES];
-    [reduceLabel setHeightConstraint:@30 priority:@1000];
+    [reduceLabel setHeightConstraint:@30 priority:@100];
     reduceLabel.numberOfLines = 0;
     reduceLabel.text = CTLocalizedString(CTRentalInsuranceDetailInfoTitle);
     

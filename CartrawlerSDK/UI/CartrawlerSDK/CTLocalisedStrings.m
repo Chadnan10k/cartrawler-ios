@@ -454,6 +454,7 @@
     sanitized = [sanitized stringByReplacingOccurrencesOfString:@"${y}" withString:@"%@"];
     sanitized = [sanitized stringByReplacingOccurrencesOfString:@"${z}" withString:@"%@"];
     sanitized = [sanitized stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+    sanitized = [sanitized stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
     return sanitized;
 }
 
