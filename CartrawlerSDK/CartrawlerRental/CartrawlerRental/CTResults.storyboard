@@ -236,17 +236,11 @@
                                         <rect key="frame" x="337" y="7" width="30" height="35"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="90" id="fY1-le-z1e"/>
                                             <constraint firstAttribute="height" constant="35" id="jhn-tt-tWx"/>
                                         </constraints>
                                         <state key="normal" title="Sort">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="fY1-le-z1e"/>
-                                            </mask>
-                                        </variation>
                                         <connections>
                                             <action selector="rightTap:" destination="Izj-Jy-4x3" eventType="touchUpInside" id="H52-HX-ZGn"/>
                                             <action selector="sortTapped:" destination="L45-dG-eg7" eventType="touchUpInside" id="1nx-Wd-eWv"/>
@@ -260,6 +254,7 @@
                                     <constraint firstAttribute="height" constant="48" id="QZS-zI-73A"/>
                                     <constraint firstItem="Gv2-xd-It7" firstAttribute="centerY" secondItem="I5c-IA-eYg" secondAttribute="centerY" id="hyC-CB-kch"/>
                                     <constraint firstItem="krI-To-qgU" firstAttribute="centerY" secondItem="I5c-IA-eYg" secondAttribute="centerY" id="wA3-Bb-Shs"/>
+                                    <constraint firstItem="krI-To-qgU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Gv2-xd-It7" secondAttribute="trailing" constant="5" id="wby-x3-ici"/>
                                 </constraints>
                             </view>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bic-sS-eCM" userLabel="Dimming View">
