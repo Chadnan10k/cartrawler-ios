@@ -238,6 +238,10 @@
                                                    boldSize:17
                                                    useSpace:YES];
     
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    UIImage *image = [[UIImage imageNamed:@"down_arrow" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    priceString = [NSString string:priceString withInlineImage:image inlineImageScale:0.65];
+    
     [self.summaryButton setAttributedTitle:priceString forState:UIControlStateNormal];
     
 }
