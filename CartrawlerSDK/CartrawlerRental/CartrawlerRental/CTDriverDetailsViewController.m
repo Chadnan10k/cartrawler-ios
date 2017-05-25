@@ -230,10 +230,12 @@
 
     [self updateDetailedPriceSummary];
     
+    NSString *price = [self priceForSearch:self.search];
+    
     NSAttributedString *priceString = [NSString regularText:CTLocalizedString(CTRentalCarRentalTotal)
                                                regularColor:[UIColor whiteColor]
                                                 regularSize:17
-                                             attributedText:[self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode]
+                                             attributedText:price
                                                   boldColor:[UIColor whiteColor]
                                                    boldSize:17
                                                    useSpace:YES];
@@ -243,13 +245,19 @@
     priceString = [NSString string:priceString withInlineImage:image inlineImageScale:0.65];
     
     [self.summaryButton setAttributedTitle:priceString forState:UIControlStateNormal];
+}
+
+- (NSString *)priceForSearch:(CTRentalSearch *)search {
+    if (search.isBuyingInsurance) {
+        return [[NSNumber numberWithFloat:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.floatValue + self.search.insurance.premiumAmount.floatValue] numberStringWithCurrencyCode];
+    }
     
+    return [self.search.selectedVehicle.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    //[self.firstNameTextField becomeFirstResponder];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

@@ -42,6 +42,11 @@ typedef void (^CTNewVehiclePriceCompeltion)(BOOL success, NSString *error);
  */
 - (instancetype)initWithVerticalOffset:(CGFloat)verticalOffset;
 
+/**
+ Updates the view with the provided vehicle
+ If the vehicle is the same as existing, no updates will be made
 
-- (void)refreshView;
+ @param vehicle the vehicle
+ */
+- (void)refreshViewWithVehicle:(CTAvailabilityItem *)vehicle;
 @end

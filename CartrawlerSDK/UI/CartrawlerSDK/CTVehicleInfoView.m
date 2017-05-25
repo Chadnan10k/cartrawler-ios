@@ -31,6 +31,9 @@
 @property (strong, nonatomic) CTAlertViewController *alertView;
 @property (strong, nonatomic) CTLayoutManager *layoutManager;
 
+// Model
+@property (nonatomic, strong) CTAvailabilityItem *vehicle;
+
 //Nested views
 @property (nonatomic, strong) CTVehicleDetailsView *vehicleDetailsView;
 @property (nonatomic, strong) CTInfoTip *vehicleInfoTip;
@@ -76,8 +79,14 @@
     return self;
 }
 
-- (void)refreshView
+- (void)refreshViewWithVehicle:(CTAvailabilityItem *)vehicle
 {
+    if ([vehicle isEqual:self.vehicle]) {
+        return;
+    }
+    self.vehicle = vehicle;
+    
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-v" step:nil];
     self.search.isBuyingInsurance = NO;
     self.search.insurance = nil;
     [self.vehicleDetailsView setItem:self.search.selectedVehicle
