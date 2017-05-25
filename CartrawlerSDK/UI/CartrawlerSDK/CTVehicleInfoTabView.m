@@ -240,6 +240,8 @@
 
 
 - (NSAttributedString *)attributedStringWithBlackText:(NSString *)blackText blueText:(NSString *)blueText {
+    blackText = [blackText stringByReplacingOccurrencesOfString:@":" withString:@""];
+    blueText = [blueText stringByReplacingOccurrencesOfString:@":" withString:@""];
     NSDictionary *blackAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:14.0],
                                       NSForegroundColorAttributeName : [UIColor blackColor]};
     NSDictionary *blueAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:14.0],

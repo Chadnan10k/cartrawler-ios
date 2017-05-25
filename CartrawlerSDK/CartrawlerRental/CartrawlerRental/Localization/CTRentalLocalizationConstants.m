@@ -403,7 +403,7 @@ NSString * const CTRentalMileageUnlimited = @"mileage_unlimited";
 
 NSString * const CTRentalMileageLimited = @"mileage_limited";
 
-NSString * const CTRentalMileageUnlimitedDetail = @"mileage_unlimited_detail";
+NSString * const CTRentalMileageUnlimitedDetail = @"vehicle_mileage_609_VCP_X_desc";
 
 NSString * const CTRentalMileageLimitedDetail = @"vehicle_mileage_618_VCP_X_desc";
 
@@ -419,36 +419,36 @@ NSString * const CTRentalRatingOverall = @"overall_rating";
 
 NSString * const CTRentalAllExtrasPaid = @"all_extras_paid";
 
-NSString * const CTRentalDetailAdditionalDriver = @"rental_detail_additionalDriver";
+NSString * const CTRentalDetailAdditionalDriver = @"extras_101.EQP";
 
-NSString * const CTRentalDetailBoosterSeat = @"rental_detail_boosterSeat";
+NSString * const CTRentalDetailBoosterSeat = @"extras_9";
 
 NSString * const CTRentalDetailBreathalyser = @"rental_detail_breathalyser";
 
-NSString * const CTRentalDetailNavigationSystem = @"rental_detail_navigationSystem";
+NSString * const CTRentalDetailNavigationSystem = @"extras_13";
 
-NSString * const CTRentalDetailNavigationalPhone = @"rental_detail_navigationalPhone";
+NSString * const CTRentalDetailNavigationalPhone = @"extras_34";
 
-NSString * const CTRentalDetailGPS = @"rental_detail_gps";
+NSString * const CTRentalDetailGPS = @"extras_13";
 
-NSString * const CTRentalDetailInfantSeat = @"rental_detail_infantSeat";
+NSString * const CTRentalDetailInfantSeat = @"extras_7";
 
-NSString * const CTRentalDetailLuggageRack = @"rental_detail_luggageRack";
+NSString * const CTRentalDetailLuggageRack = @"extras_4";
 
-NSString * const CTRentalDetailMobilePhone = @"rental_detail_mobilePhone";
+NSString * const CTRentalDetailMobilePhone = @"extras_34";
 
-NSString * const CTRentalDetailSkiRack = @"rental_detail_skiRack";
+NSString * const CTRentalDetailSkiRack = @"extras_4";
 
-NSString * const CTRentalDetailSnowChains = @"rental_detail_snowChains";
+NSString * const CTRentalDetailSnowChains = @"extras_10";
 
-NSString * const CTRentalDetailSnowTires = @"rental_detail_snowTires";
+NSString * const CTRentalDetailSnowTires = @"extras_10";
 
-NSString * const CTRentalDetailToddlerSeat = @"rental_detail_toddlerSeat";
+NSString * const CTRentalDetailToddlerSeat = @"extras_8";
 
-NSString * const CTRentalDetailTollTag = @"rental_detail_tollTag";
+NSString * const CTRentalDetailTollTag = @"extras_52";
 
-NSString * const CTRentalDetailWifi = @"rental_detail_wifi";
+NSString * const CTRentalDetailWifi = @"extras_55";
 
-NSString * const CTRentalDetailWinterPackage = @"rental_detail_winterPackage";
+NSString * const CTRentalDetailWinterPackage = @"extra_10";
 
 @end
