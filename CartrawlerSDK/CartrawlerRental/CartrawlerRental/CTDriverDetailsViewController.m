@@ -75,7 +75,7 @@
     [self.view addGestureRecognizer:viewTapped];
     
     self.titleLabel.text = CTLocalizedString(CTRentalTitleUser);
-    [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    [self.nextButton setText:CTLocalizedString(CTRentalSummaryPayNow)];
     [self createViews];
     
     self.scrollView.bounces = NO;
