@@ -23,7 +23,7 @@
 #import "CTTermsViewController.h"
 #import "CTFreeCancelationAlertView.h"
 
-@interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate, UIScrollViewDelegate>
+@interface CTVehicleInfoView () <CTVehicleDetailsDelegate, CTInfoTipDelegate, CTInsuranceDelegate, CTViewControllerDelegate, CTExtrasCarouselViewDelegate, UIScrollViewDelegate, CTExtrasListDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIView *containerView;
@@ -270,7 +270,6 @@
 
 - (void)initExtrasView {
     self.extrasView = [CTExtrasCarouselView new];
-    [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
     self.extrasView.delegate = self;
 }
 
@@ -280,6 +279,7 @@
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:bundle];
     CTExtrasListViewController *controller = (CTExtrasListViewController *)[storyboard instantiateViewControllerWithIdentifier:CTRentalExtrasVerticalViewIdentifier];
+    controller.delegate = self;
     [controller updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
     if (self.delegate) {
         [self.delegate infoViewPushViewController:controller];
@@ -345,6 +345,12 @@
 /**
  View Delegates
  */
+
+// MARK: CTExtrasListDelegate
+- (void)extrasDetailViewDidAddExtra
+{
+    [self.extrasView updateWithExtras:self.search.selectedVehicle.vehicle.extraEquipment];
+}
 
 // MARK: CTVehicleDetailsDelegate
 - (void)didTapMoreDetailsView:(UIView *)view
