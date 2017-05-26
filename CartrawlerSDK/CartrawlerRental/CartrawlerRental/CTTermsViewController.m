@@ -95,7 +95,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CTTermAndCondition *item = self.data.termsAndConditions[indexPath.row];
-    [[CTAnalytics instance] tagScreen:item.titleNameId detail:@"open" step:nil];
+//    [[CTAnalytics instance] tagScreen:item.titleNameId detail:@"open" step:nil]; removed as it was causing crash in RYR app
     [self performSegueWithIdentifier:@"showTermsDetail" sender:self.data.termsAndConditions[indexPath.row]];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
