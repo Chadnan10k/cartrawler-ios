@@ -93,6 +93,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)updateWithExtras:(NSArray *)extras {
     self.extras = extras;
+    [self.indexesOfCellsWithDetailDisplayed removeAllIndexes];
     [self.collectionView reloadData];
     [self.collectionView setContentOffset:CGPointZero];
     self.scrollViewDidBeginDragging = NO;
@@ -316,6 +317,7 @@ static NSString * const reuseIdentifier = @"Cell";
     if (extra.qty == min) {
         [cell setDecrementEnabled:NO];
     }
+    [self.delegate collectionViewDidAddExtra:self];
 }
 
 - (NSInteger)minimumForExtra:(CTExtraEquipment *)extra {

@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <CartrawlerAPI/CTExtraEquipment.h>
 
+@protocol CTExtrasListDelegate <NSObject>
+
+- (void)extrasDetailViewDidAddExtra;
+
+@end
 /**
  Container view controller for a CTExtrasCollectionView with vertical scrolling
  */
@@ -20,5 +25,7 @@
  @param extras an array of CTExtraEquipment objects
  */
 - (void)updateWithExtras:(NSArray<CTExtraEquipment *> *)extras;
+
+@property (weak, nonatomic) id<CTExtrasListDelegate> delegate;
 
 @end
