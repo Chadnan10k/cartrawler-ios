@@ -114,6 +114,9 @@
     self.cityTextField.placeholder = CTLocalizedString(CTRentalUserCityHint);
     self.postcodeTextField.placeholder = CTLocalizedString(CTRentalUserPostcodeHint);
     self.locationSelection.placeholder = CTLocalizedString(CTRentalUserCountryHint);
+    
+    self.emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    self.phoneTextField.keyboardType = UIKeyboardTypePhonePad;
 
     NSArray *textFields = @[self.firstNameTextField, self.lastNameTextField, self.emailTextField, self.phoneTextField, self.flightNoTextField, self.addressTextField, self.address2TextField, self.cityTextField, self.postcodeTextField, self.locationSelection];
     
