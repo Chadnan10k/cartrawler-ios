@@ -654,11 +654,14 @@
     NSString *link1 = [NSString stringWithFormat:@"<a href='www.cartrawler.com'><b>%@</b></a>", CTLocalizedString(CTRentalPaymentText2)];
     NSString *termsStr = [NSString stringWithFormat:CTLocalizedString(CTRentalPaymentText1), link1];
     
-    textView.attributedText = [CTHTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
-                                                                  pointSize:15.0
-                                                                       text:termsStr
-                                                              boldFontColor:@"#000000"
-                                                                  fontColor:@"#000000"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        textView.attributedText = [CTHTMLParser htmlStringWithFontFamily:[CTAppearance instance].fontName
+                                                               pointSize:15.0
+                                                                    text:termsStr
+                                                           boldFontColor:@"#000000"
+                                                               fontColor:@"#000000"];
+    });
+
     [view setHeightConstraint:@100 priority:@100];
     
     return view;
