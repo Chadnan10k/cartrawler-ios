@@ -63,8 +63,8 @@
                                      };
     
     //Label
-    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[tick(15)]-8-[label]-0-|" options:0 metrics:nil views:viewDictionary]];
-    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[tick(15)]" options:0 metrics:nil views:viewDictionary]];
+    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[tick(18)]-2-[label]-0-|" options:0 metrics:nil views:viewDictionary]];
+    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[tick(18)]" options:0 metrics:nil views:viewDictionary]];
     [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[label]-0-|" options:0 metrics:nil views:viewDictionary]];
     
     [container addConstraint:[NSLayoutConstraint constraintWithItem:tickImageView

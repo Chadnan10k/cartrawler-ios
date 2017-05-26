@@ -53,6 +53,10 @@
     _dropoffDate = dropoffDate;
     _pickupDate = pickupDate;
     [self.vehicleCollectionView reloadData];
+    
+    if (self.delegate && availability.items.count > 0) {
+        [self.delegate didDisplayVehicle:availability.items.firstObject atIndex:0];
+    }
 }
 
 - (void)layout
