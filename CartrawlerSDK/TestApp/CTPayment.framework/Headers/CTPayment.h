@@ -17,7 +17,7 @@
  Implement this protocol to receive delegate updates from the library
  */
 @protocol CTPaymentDelegate <NSObject>
-
+@required
 /**
  Callback for makePaymentWithJSON indicating success
 
@@ -33,6 +33,13 @@
  @param error the error, see CTPaymentErrorCodes to interpret error code
  */
 - (void)payment:(CTPayment *)payment didFailWithError:(NSError *)error;
+
+
+/**
+ Callback for when there is invalid data in the text inputs
+ @param successfulValidation indicates successful validation
+ */
+- (void)payment:(CTPayment *)payment didSucceedValidation:(BOOL)successfulValidation;
 
 @end
 

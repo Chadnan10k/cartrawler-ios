@@ -354,7 +354,6 @@
     if (validated) {
         NSString *req = [CTPaymentRequestGenerator requestFromSearch:self.search];
         [self.paymentView makePaymentWithJSON:req];
-        [CTPaymentLoadingViewController present:self];
     }
 }
 
@@ -726,6 +725,13 @@
     }
     
     [self pushToDestination];
+}
+
+- (void)payment:(CTPayment *)payment didSucceedValidation:(BOOL)successfulValidation
+{
+    if (successfulValidation) {
+        [CTPaymentLoadingViewController present:self];
+    }
 }
 
 // MARK: <UIScrollViewDelegate>
