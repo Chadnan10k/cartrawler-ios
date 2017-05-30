@@ -142,6 +142,15 @@
     [self layout];
 }
 
+- (void)updateLocalisedStrings
+{
+    
+    [self.pickupLocationSearch setPlaceholder:CTLocalizedString(CTRentalSearchPickupLocationText)];
+    [self.dropoffLocationSearch setPlaceholder:CTLocalizedString(CTRentalSearchReturnLocationText)];
+    [self.datesContainer setPlaceholder:CTLocalizedString(CTRentalSearchSelectDatesHint)];
+
+}
+
 - (void)addKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
