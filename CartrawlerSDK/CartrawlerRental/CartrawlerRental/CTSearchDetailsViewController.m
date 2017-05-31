@@ -25,6 +25,7 @@
 @property (nonatomic, strong) CTNextButton *nextButton;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet UIButton *chevron;
+@property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 
 /**
  For analytics tagging, the view needs to know if it is editing a previous search
@@ -68,6 +69,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleSearchRental);
     
     [self.searchView updateDisplayWithSearch:self.search];
     
