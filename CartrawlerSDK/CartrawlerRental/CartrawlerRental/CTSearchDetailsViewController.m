@@ -71,7 +71,8 @@
     [super viewWillAppear:animated];
     
     self.titleLabel.text = CTLocalizedString(CTRentalTitleSearchRental);
-    
+    [self.nextButton setText:CTLocalizedString(CTRentalCTASearch)];
+
     [self.searchView updateDisplayWithSearch:self.search];
     
     [self configureSettingsButton];
