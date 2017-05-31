@@ -242,6 +242,7 @@
 "user_firstname_hint" = "Όνομα";
 "filter_carspec" = "Προδιαγραφές αυτοκινήτου";
 "insurance_conditions" = "Επισκεφθείτε τον ιστότοπο %@ για όλες τις πληροφορίες.";
+"overall_rating" = "Αξιολόγηση";
 "user_address_line1_hint" = "Γραμμή διεύθυνσης 1";
 "calendar_tue" = "Τρ";
 "results_filter" = "φίλτρο";

@@ -237,6 +237,7 @@
                     <connections>
                         <outlet property="chevron" destination="Qsf-Ek-vxw" id="I5f-BN-ofY"/>
                         <outlet property="settingsButton" destination="n5L-L6-l2M" id="dtC-uI-5Dq"/>
+                        <outlet property="titleLabel" destination="7Gi-qi-5Nf" id="8QC-VR-V4C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ToB-i9-nIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -517,7 +518,7 @@
                 <navigationController storyboardIdentifier="InitialNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sui-XM-uDt" customClass="CTNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="pxI-o6-pEv" customClass="CTNavigationBar">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="pxI-o6-pEv" customClass="CTNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

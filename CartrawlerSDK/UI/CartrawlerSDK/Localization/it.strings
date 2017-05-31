@@ -242,6 +242,7 @@
 "user_firstname_hint" = "Nome";
 "filter_carspec" = "Specifiche dell’auto";
 "insurance_conditions" = "Consulta i %@ per i dettagli completi.";
+"overall_rating" = "Valutazione";
 "user_address_line1_hint" = "Indirizzo riga 1";
 "calendar_tue" = "Mar";
 "results_filter" = "Filtra";

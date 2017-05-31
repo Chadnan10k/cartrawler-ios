@@ -74,7 +74,6 @@
     [self initExtrasView];
     [self initTermsAndConditionsView];
     
-
     [self.layoutManager layoutViews];
     return self;
 }
@@ -122,6 +121,9 @@
     self.tabView = [[CTVehicleInfoTabView alloc] initWithAvailabilityItem:self.search.selectedVehicle containerView:self];
     [self.layoutManager insertViewAtIndex:2 padding:UIEdgeInsetsMake(8, 0, 8, 0) view:self.tabView];
     [self.layoutManager layoutViews];
+    
+    [self.vehicleInfoTip setText:CTLocalizedString(CTRentalFreeCancelationDetail)];
+    [self.termsButton setTitle:CTLocalizedString(CTRentalIncludedTerms) forState:UIControlStateNormal];
 }
 
 /**

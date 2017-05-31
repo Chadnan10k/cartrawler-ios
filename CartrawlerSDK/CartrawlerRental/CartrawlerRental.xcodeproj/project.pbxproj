@@ -159,6 +159,8 @@
 		45BEED3E1E71820400049F0C /* CTInsuranceOfferingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BEED3C1E71820400049F0C /* CTInsuranceOfferingView.m */; };
 		BC10A01A1E968703009C7B9D /* CTVehicleDetailTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = BC10A0181E968703009C7B9D /* CTVehicleDetailTableViewCell.h */; };
 		BC10A01B1E968703009C7B9D /* CTVehicleDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10A0191E968703009C7B9D /* CTVehicleDetailTableViewCell.m */; };
+		BC244BC01EDED7B000C56D55 /* CTInsuranceTipView.h in Headers */ = {isa = PBXBuildFile; fileRef = BC244BBE1EDED7B000C56D55 /* CTInsuranceTipView.h */; };
+		BC244BC11EDED7B000C56D55 /* CTInsuranceTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC244BBF1EDED7B000C56D55 /* CTInsuranceTipView.m */; };
 		BC2D2D3D1EC1DE400007DAF3 /* CTPayment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D2D3C1EC1DE400007DAF3 /* CTPayment.framework */; };
 		BC2D2D3E1EC1DE400007DAF3 /* CTPayment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D2D3C1EC1DE400007DAF3 /* CTPayment.framework */; };
 		BC6F16C51ECA129400285D88 /* CTFreeCancelationAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = BC6F16C31ECA129400285D88 /* CTFreeCancelationAlertView.h */; };
@@ -352,6 +354,8 @@
 		45BEED3C1E71820400049F0C /* CTInsuranceOfferingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsuranceOfferingView.m; sourceTree = "<group>"; };
 		BC10A0181E968703009C7B9D /* CTVehicleDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTVehicleDetailTableViewCell.h; path = CartrawlerRental/CTVehicleDetailTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		BC10A0191E968703009C7B9D /* CTVehicleDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTVehicleDetailTableViewCell.m; path = CartrawlerRental/CTVehicleDetailTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		BC244BBE1EDED7B000C56D55 /* CTInsuranceTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInsuranceTipView.h; sourceTree = "<group>"; };
+		BC244BBF1EDED7B000C56D55 /* CTInsuranceTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInsuranceTipView.m; sourceTree = "<group>"; };
 		BC2D2D3C1EC1DE400007DAF3 /* CTPayment.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CTPayment.framework; sourceTree = "<group>"; };
 		BC6F16C31ECA129400285D88 /* CTFreeCancelationAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFreeCancelationAlertView.h; sourceTree = "<group>"; };
 		BC6F16C41ECA129400285D88 /* CTFreeCancelationAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFreeCancelationAlertView.m; sourceTree = "<group>"; };
@@ -861,6 +865,8 @@
 				E78758FB1EAFA6D100FA6E32 /* CTInsuranceDetailViewController.m */,
 				BCE1934B1EA7811D0097C5CB /* CTCountryPickerView.h */,
 				BCE1934C1EA7811D0097C5CB /* CTCountryPickerView.m */,
+				BC244BBE1EDED7B000C56D55 /* CTInsuranceTipView.h */,
+				BC244BBF1EDED7B000C56D55 /* CTInsuranceTipView.m */,
 			);
 			name = "Phase 4";
 			sourceTree = "<group>";
@@ -984,6 +990,7 @@
 				451E75BE1E042F2E00D58F71 /* CTPaymentDriverTableViewCell.h in Headers */,
 				451E762E1E043DFF00D58F71 /* CTRentalBookingCell.h in Headers */,
 				BC6F16C51ECA129400285D88 /* CTFreeCancelationAlertView.h in Headers */,
+				BC244BC01EDED7B000C56D55 /* CTInsuranceTipView.h in Headers */,
 				451E75D91E042F7900D58F71 /* CTPaymentSummaryItemTableViewCell.h in Headers */,
 				451E75EC1E042FB600D58F71 /* CTPaymentLoadingViewController.h in Headers */,
 				451E75BF1E042F2E00D58F71 /* CTPaymentSummaryTableViewCell.h in Headers */,
@@ -1175,6 +1182,7 @@
 				454B4D781E6ED61400625F03 /* CTVehicleDetailsView.m in Sources */,
 				451E75D11E042F3F00D58F71 /* CTBookingSummaryViewController.m in Sources */,
 				451E75DA1E042F7900D58F71 /* CTPaymentSummaryItemTableViewCell.m in Sources */,
+				BC244BC11EDED7B000C56D55 /* CTInsuranceTipView.m in Sources */,
 				451E75981E042E5D00D58F71 /* CTVehicleFeatureTableViewCell.m in Sources */,
 				451E752E1E042B5700D58F71 /* CTInterstitialCollectionViewCell.m in Sources */,
 				BC7522C31E705818005918D2 /* CTInsuranceView.m in Sources */,

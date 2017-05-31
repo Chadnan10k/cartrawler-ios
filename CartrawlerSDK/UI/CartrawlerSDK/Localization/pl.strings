@@ -242,6 +242,7 @@
 "user_firstname_hint" = "Imię";
 "filter_carspec" = "Specyfikacje samochodu";
 "insurance_conditions" = "Przeczytaj %@, aby uzyskać bardziej szczegółowe informacje.";
+"overall_rating" = "Ocena";
 "user_address_line1_hint" = "Adres";
 "calendar_tue" = "wt.";
 "results_filter" = "Filtr";
@@ -282,7 +283,7 @@
 "extras_placeholder" = "Zapewnione przez globalnego lidera w zakresie ubezpieczeń i zarządzania aktywami, Axa.";
 "search_pickup_location_hint" = "Wpisz nazwę lotniska, miasta lub stacji";
 "filter_package" = "Pakiet";
-"widget_title" = "Dodaj wynajem auto";
+"widget_title" = "Zarezerwuj samochód";
 "vehicle_vehicle_inclusion" = "Ten element jest zawarty w cenie tego pojazdu";
 "insurance_more_details_insurance_main_text" = "Wypożyczalnia może poprosić Cię o wykupienie ubezpieczenia depozytu lub wkładu własnego na Twoją podróż. Niniejsze ubezpieczenie zwrotu za szkody powinno pokrywać roszczenia związane z Twoim wkładem własnym, dlatego prosimy o sprawdzenie regulaminu przed zakupem kolejnej polisy ubezpieczeniowej. Jeśli samochód zostanie uszkodzony lub skradziony, wypożyczalnia zachowa Twój wkład własny na pokrycie kosztów, Ty zaś możesz potem odzyskać pełną sumę dzięki ubezpieczeniu zwrotu za szkody.";
 "interstitial_header" = "Wyszukaj idealny samochod";

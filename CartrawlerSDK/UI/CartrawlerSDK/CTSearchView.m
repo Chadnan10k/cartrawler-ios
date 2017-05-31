@@ -14,6 +14,7 @@
 #import "CartrawlerSDK/CTAlertViewController.h"
 #import "CartrawlerSDK/CartrawlerSDK+NSNumber.h"
 #import "CartrawlerSDK/CTLocalisedStrings.h"
+#import "CartrawlerSDK/CTLabel.h"
 #import "CTRentalLocalizationConstants.h"
 #import "CTSelectionView.h"
 #import "CTLocationSearchViewController.h"
@@ -30,6 +31,10 @@
 @property (nonatomic, strong) CTSelectionView *pickupLocationSearch;
 @property (nonatomic, strong) CTSelectionView *dropoffLocationSearch;
 @property (nonatomic, strong) UIView *sameLocationSwitchContainer;
+
+@property (nonatomic, strong) CTLabel *sameLocationLabel;
+@property (nonatomic, strong) CTLabel *ageLabel;
+
 @property (nonatomic, strong) CTSelectionView *datesContainer;
 @property (nonatomic, strong) UIView *timesContainer;
 @property (nonatomic, strong) UIView *ageSwitchContainer;
@@ -97,8 +102,10 @@
     self.dropoffLocationSearch.useAsButton = YES;
     self.dropoffLocationSearch.delegate = self;
     
+    _sameLocationLabel = [[CTLabel alloc] init:17 textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentLeft boldFont:NO];
     _sameLocationSwitchContainer = [self generateSwitchView:CTLocalizedString(CTRentalSearchReturnLocationButton)
-                                            switchReference:self.locationSwitch];
+                                            switchReference:self.locationSwitch
+                                             labelReference:self.sameLocationLabel];
     self.sameLocationSwitchContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
     _datesContainer = [[CTSelectionView alloc] initWithPlaceholder:CTLocalizedString(CTRentalSearchSelectDatesHint)];
@@ -108,8 +115,11 @@
     _timesContainer = [self generateTimeSelectionView];
     self.timesContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
+    _ageLabel = [[CTLabel alloc] init:17 textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentLeft boldFont:NO];
     _ageSwitchContainer = [self generateSwitchView:CTLocalizedString(CTRentalSearchDriverAge)
-                                   switchReference:self.ageSwitch];
+                                   switchReference:self.ageSwitch
+                                    labelReference:self.ageLabel];
+    
     self.ageSwitchContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
     _ageContainer = [[CTSelectionView alloc] initWithPlaceholder:CTLocalizedString(CTRentalSearchDriverAgeHint)];
@@ -133,13 +143,28 @@
     
     [self.pickupLocationSearch setHeightConstraint:@60 priority:@1000];
     [self.dropoffLocationSearch setHeightConstraint:@60 priority:@1000];
-    [self.sameLocationSwitchContainer setHeightConstraint:@60 priority:@1000];
+    [self.sameLocationSwitchContainer setHeightConstraint:@60 priority:@100];
     [self.datesContainer setHeightConstraint:@60 priority:@1000];
     [self.timesContainer setHeightConstraint:@60 priority:@1000];
     [self.ageSwitchContainer setHeightConstraint:@60 priority:@100];
     [self.ageContainer setHeightConstraint:@60 priority:@1000];
 
     [self layout];
+}
+
+- (void)updateLocalisedStrings
+{
+    
+    [self.pickupLocationSearch setPlaceholder:CTLocalizedString(CTRentalSearchPickupLocationText)];
+    [self.dropoffLocationSearch setPlaceholder:CTLocalizedString(CTRentalSearchReturnLocationText)];
+    [self.datesContainer setPlaceholder:CTLocalizedString(CTRentalSearchSelectDatesHint)];
+    
+    [self.pickupTimeContainer setPlaceholder:CTLocalizedString(CTRentalSearchPickupTimeText)];
+    [self.dropoffTimeContainer setPlaceholder:CTLocalizedString(CTRentalSearchReturnTimeText)];
+    
+    self.sameLocationLabel.text = CTLocalizedString(CTRentalSearchReturnLocationButton);
+    self.ageLabel.text = CTLocalizedString(CTRentalSearchDriverAge);
+
 }
 
 - (void)addKeyboardNotifications
@@ -155,24 +180,21 @@
                                                object:nil];
 }
 
-- (UIView *)generateSwitchView:(NSString *)text switchReference:(UISwitch *)switchReference
+- (UIView *)generateSwitchView:(NSString *)text switchReference:(UISwitch *)switchReference labelReference:(CTLabel *)labelReference
 {
     switchReference.on = YES;
     [switchReference addTarget:self action:@selector(ageSwitchChanged:) forControlEvents:UIControlEventValueChanged];
     switchReference.translatesAutoresizingMaskIntoConstraints = NO;
     
-    UILabel *detailLabel = [UILabel new];
-    detailLabel.text = text;
-    detailLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    detailLabel.numberOfLines = 0;
-    detailLabel.textColor = [UIColor whiteColor];
+    labelReference.text = text;
+    labelReference.numberOfLines = 0;
     UIView *container = [UIView new];
     container.translatesAutoresizingMaskIntoConstraints = NO;
     
-    NSDictionary *viewDict = @{@"label" : detailLabel,
+    NSDictionary *viewDict = @{@"label" : labelReference,
                                @"switch" : switchReference};
     
-    [container addSubview:detailLabel];
+    [container addSubview:labelReference];
     [container addSubview:switchReference];
     
     [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[label]-|"
@@ -188,7 +210,7 @@
                                                          multiplier:1
                                                            constant:0]];
     
-    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[label]-(>=8)-[switch]-|"
+    [container addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[label]-[switch(50@1000)]-0-|"
                                                                       options:0
                                                                       metrics:nil
                                                                         views:viewDict]];
@@ -352,6 +374,7 @@
 
 - (void)updateDisplayWithSearch:(CTRentalSearch *)search
 {
+    [self updateLocalisedStrings];
     [self.pickupLocationSearch setDetailText:search.pickupLocation ? search.pickupLocation.name : @""];
     [self.dropoffLocationSearch setDetailText:search.dropoffLocation ? search.dropoffLocation.name : @""];
     

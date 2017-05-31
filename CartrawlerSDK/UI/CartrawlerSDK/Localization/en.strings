@@ -10,7 +10,7 @@
 "CTA_book" = "Book now for";
 "vehicle_type_moped" = "Moped";
 "summary_lead_driver" = "Lead driver details";
-"widget_title_added" = "Car added";
+"widget_title_added" = "Your car has been added";
 "included_title" = "Included for Free:";
 "filter_transfertime" = "Journey Time";
 "vehicle_pickup_unknown" = "Unknown";
@@ -242,6 +242,7 @@
 "user_firstname_hint" = "First name";
 "filter_carspec" = "Car Specifications";
 "insurance_conditions" = "Please see the %@ for full details.";
+"overall_rating" = "Rating";
 "user_address_line1_hint" = "Address line 1";
 "calendar_tue" = "Tue";
 "results_filter" = "Filter";

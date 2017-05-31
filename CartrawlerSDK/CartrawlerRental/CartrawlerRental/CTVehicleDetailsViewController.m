@@ -37,8 +37,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.titleLabel.text = CTLocalizedString(CTRentalTitleDetails);
-    
     _vehicleInfoView = [[CTVehicleInfoView alloc] initWithVerticalOffset:self.totalViewHeightConstraint.constant];
     self.vehicleInfoView.search = self.search;
     self.vehicleInfoView.cartrawlerAPI = self.cartrawlerAPI;
@@ -56,8 +54,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.vehicleInfoView refreshViewWithVehicle:self.search.selectedVehicle];
     
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleDetails);
+
+    [self.vehicleInfoView refreshViewWithVehicle:self.search.selectedVehicle];
     [self updateDetailedPriceSummary];
     [self updatePriceSummary:self.search.isBuyingInsurance];
 }

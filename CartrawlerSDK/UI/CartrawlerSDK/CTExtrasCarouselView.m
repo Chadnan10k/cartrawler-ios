@@ -90,6 +90,8 @@
 - (void)updateWithExtras:(NSArray<CTExtraEquipment *> *)extras {
     self.pageControl.numberOfPages = extras.count;
     [self.collectionView updateWithExtras:extras];
+    self.titleLabel.text = CTLocalizedString(CTRentalAddExtrasTitle);
+    [self.viewAllButton setTitle:CTLocalizedString(CTRentalExtrasViewAll) forState:UIControlStateNormal];
 }
 
 - (void)didTapViewAll:(UIButton *)button {
