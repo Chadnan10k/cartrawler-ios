@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIView *divider;
 @property (nonatomic, strong) UIView *rentalTotalView;
 @property (nonatomic, strong) CTLabel *rentalTotalLabel;
+@property (nonatomic, strong) CTLabel *titleLabel;
 @property (nonatomic, strong) UIImageView *chevronImageView;
 @property (nonatomic, strong) UIView *chevronBackground;
 
@@ -94,13 +95,13 @@
     UIView *rentalTotalView = [UIView new];
     rentalTotalView.translatesAutoresizingMaskIntoConstraints = NO;
     
-    CTLabel *titleLabel = [[CTLabel alloc] init:20.0
+    _titleLabel = [[CTLabel alloc] init:20.0
                                       textColor:[UIColor whiteColor]
                                   textAlignment:NSTextAlignmentLeft
                                        boldFont:YES];
-    titleLabel.text = CTLocalizedString(CTRentalCarRentalTotal);
-    titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [rentalTotalView addSubview:titleLabel];
+    self.titleLabel.text = CTLocalizedString(CTRentalCarRentalTotal);
+    self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [rentalTotalView addSubview:self.titleLabel];
     
     CTLabel *rentalTotalLabel = [[CTLabel alloc] init:20.0
                                             textColor:[UIColor whiteColor]
@@ -110,7 +111,7 @@
     [rentalTotalView addSubview:rentalTotalLabel];
     self.rentalTotalLabel = rentalTotalLabel;
     
-    NSDictionary *views = NSDictionaryOfVariableBindings(titleLabel, rentalTotalLabel);
+    NSDictionary *views = @{ @"titleLabel" : self.titleLabel, @"rentalTotalLabel" : rentalTotalLabel};
     [rentalTotalView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[titleLabel]-[rentalTotalLabel]|"
                                                                             options:0
                                                                             metrics:nil
@@ -121,7 +122,7 @@
                                                                             options:0
                                                                             metrics:nil
                                                                               views:views]];
-    [rentalTotalView addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel
+    [rentalTotalView addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel
                                                                 attribute:NSLayoutAttributeCenterY
                                                                 relatedBy:NSLayoutRelationEqual
                                                                    toItem:rentalTotalLabel
@@ -263,6 +264,7 @@
     [self.tableView reloadData];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableViewHeightConstraint.constant = self.tableView.contentSize.height;
+    self.titleLabel.text = CTLocalizedString(CTRentalCarRentalTotal);
 }
 
 - (CTVehicle *)vehicle {
