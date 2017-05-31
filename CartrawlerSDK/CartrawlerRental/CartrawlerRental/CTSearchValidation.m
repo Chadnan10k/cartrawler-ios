@@ -46,7 +46,7 @@
         completion(NO, @"search.driverAge is not set", NO);
         return;
     }
-    
+    [cartrawlerAPI changeLanguage:[CTSDKSettings instance].languageCode];
     [cartrawlerAPI requestVehicleAvailabilityForLocation:search.pickupLocation.code
                                       returnLocationCode:search.dropoffLocation.code
                                      customerCountryCode:[CTSDKSettings instance].homeCountryCode

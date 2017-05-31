@@ -33,7 +33,6 @@
 
 - (void)retrieveInsurance:(CartrawlerAPI *)api search:(CTRentalSearch *)search completion:(CTInsuranceRetrievalCompletion)completion;
 {
-    
     if (self.offeringView) {
         [self.offeringView removeFromSuperview];
     }

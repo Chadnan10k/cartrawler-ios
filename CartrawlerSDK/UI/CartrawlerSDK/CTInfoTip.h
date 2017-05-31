@@ -43,4 +43,11 @@
  */
 - (instancetype)initWithIcon:(UIImage *)icon text:(NSString *)text;
 
+/**
+ Sets the text within the view
+
+ @param text Some text
+ */
+- (void)setText:(NSString *)text;
+
 @end

@@ -242,6 +242,7 @@
 "user_firstname_hint" = "Voornaam";
 "filter_carspec" = "Specificaties van de auto";
 "insurance_conditions" = "Bekijk de %@ voor meer informatie.";
+"overall_rating" = "Waarderingscijfer";
 "user_address_line1_hint" = "Adresregel 1";
 "calendar_tue" = "di";
 "results_filter" = "Filteren";

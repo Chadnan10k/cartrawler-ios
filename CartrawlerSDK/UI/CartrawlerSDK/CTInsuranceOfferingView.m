@@ -27,6 +27,7 @@
 #import <CartrawlerSDK/CTLayoutManager.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIView.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIImageView.h>
+#import <CartrawlerRental/CTInsuranceTipView.h>
 
 @interface CTInsuranceOfferingView()
 
@@ -43,6 +44,10 @@
 @property (nonatomic, strong) CTInsurance *insurance;
 @property (nonatomic, strong) NSDate *pickupDate;
 @property (nonatomic, strong) NSDate *dropoffDate;
+@property (nonatomic, strong) CTInsuranceTipView *imageAndTextView1;
+@property (nonatomic, strong) CTInsuranceTipView *imageAndTextView2;
+@property (nonatomic, strong) CTInsuranceTipView *imageAndTextView3;
+
 @property (nonatomic) BOOL isAdded;
 @end
 
@@ -76,6 +81,14 @@
     
     NSString *total = [NSString stringWithFormat:CTLocalizedString(CTRentalInsuranceTotal), [self.insurance.premiumAmount numberStringWithCurrencyCode]];
     self.totalLabel.text = total;
+    
+    [self.imageAndTextView1 setText:CTLocalizedString(CTRentalInsuranceInfoTip1)];
+    [self.imageAndTextView2 setText:CTLocalizedString(CTRentalInsuranceInfoTip2)];
+    [self.imageAndTextView3 setText:CTLocalizedString(CTRentalInsuranceInfoTip3)];
+    
+    self.headerLabel.text = CTLocalizedString(CTRentalInsuranceOfferingHeader);
+    self.subheaderLabel.text = CTLocalizedString(CTRentalInsuranceOfferingSubheader);
+    [self.moreDetailsButton setTitle:CTLocalizedString(CTRentalInsuranceInfoButtonTitle) forState:UIControlStateNormal];
 }
 
 
@@ -93,6 +106,11 @@
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[backgroundView]-0-|"
                                                                  options:0 metrics:nil
                                                                    views:@{@"backgroundView" : self.backgroundView}]];
+    
+    self.headerLabel.text = CTLocalizedString(CTRentalInsuranceOfferingHeader);
+    self.subheaderLabel.text = CTLocalizedString(CTRentalInsuranceOfferingSubheader);
+    [self.moreDetailsButton setTitle:CTLocalizedString(CTRentalInsuranceInfoButtonTitle) forState:UIControlStateNormal];
+
 }
 
 - (void)buildAddInsuranceState
@@ -155,48 +173,15 @@
     layoutManager.orientation = CTLayoutManagerOrientationTopToBottom;
     layoutManager.justify = NO;
     
-    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:[self imageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceInfoTip1)]];
-    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:[self imageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceInfoTip2)]];
-    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:[self imageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceInfoTip3)]];
-
+    _imageAndTextView1 = [[CTInsuranceTipView alloc] initWithImageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceInfoTip1)];
+    _imageAndTextView2 = [[CTInsuranceTipView alloc] initWithImageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceInfoTip2)];
+    _imageAndTextView3 = [[CTInsuranceTipView alloc] initWithImageAndTextView:@"checkmark" text:CTLocalizedString(CTRentalInsuranceInfoTip3)];
+    
+    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:self.imageAndTextView1];
+    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:self.imageAndTextView2];
+    [layoutManager insertView:UIEdgeInsetsMake(0, 0, 0, 0) view:self.imageAndTextView3];
     [layoutManager layoutViews];
     
-    return view;
-}
-
-- (UIView *)imageAndTextView:(NSString *)imageName text:(NSString *)text
-{
-    UIView *view = [UIView new];
-    view.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    CTLayoutManager *layoutManager = [CTLayoutManager layoutManagerWithContainer:view];
-    layoutManager.orientation = CTLayoutManagerOrientationLeftToRight;
-    layoutManager.justify = NO;
-    
-    UIImageView *imageView = [UIImageView new];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    imageView.translatesAutoresizingMaskIntoConstraints = NO;
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    UIImage *icon = [UIImage imageNamed:imageName
-                               inBundle:bundle
-          compatibleWithTraitCollection:nil];
-    
-    imageView.image = icon;
-    
-    [imageView setHeightConstraint:@15 priority:@100];
-    [imageView setWidthConstraint:@15 priority:@1000];
-    [imageView applyTintWithColor:[CTAppearance instance].buttonColor];
-
-    UILabel *label = [UILabel new];
-    label.translatesAutoresizingMaskIntoConstraints = NO;
-    label.text = text;
-    label.numberOfLines = 0;
-
-    [layoutManager insertView:UIEdgeInsetsMake(0,4,0,16) view:imageView];
-    [layoutManager insertView:UIEdgeInsetsMake(0,16,0,4) view:label];
-    
-    [layoutManager layoutViews];
-
     return view;
 }
 
