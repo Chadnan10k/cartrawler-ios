@@ -124,6 +124,12 @@
     
     [self.vehicleInfoTip setText:CTLocalizedString(CTRentalFreeCancelationDetail)];
     [self.termsButton setTitle:CTLocalizedString(CTRentalIncludedTerms) forState:UIControlStateNormal];
+    
+    if ([CTSDKSettings instance].isStandalone) {
+        [self.nextButton setText:CTLocalizedString(CTRentalCTAContinue)];
+    } else {
+        [self.nextButton setText:CTLocalizedString(CTRentalCTAAddVehicleToBasket)];
+    }
 }
 
 /**

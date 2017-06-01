@@ -74,8 +74,6 @@
     UITapGestureRecognizer *viewTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewWasTapped)];
     [self.view addGestureRecognizer:viewTapped];
     
-    self.titleLabel.text = CTLocalizedString(CTRentalTitleUser);
-    [self.nextButton setText:CTLocalizedString(CTRentalSummaryPayNow)];
     [self createViews];
     
     self.scrollView.bounces = NO;
@@ -248,6 +246,8 @@
     priceString = [NSString string:priceString withInlineImage:image inlineImageScale:0.65];
     
     [self.summaryButton setAttributedTitle:priceString forState:UIControlStateNormal];
+    self.titleLabel.text = CTLocalizedString(CTRentalTitleUser);
+    [self.nextButton setText:CTLocalizedString(CTRentalSummaryPayNow)];
 }
 
 - (NSString *)priceForSearch:(CTRentalSearch *)search {
