@@ -38,7 +38,7 @@ NSString * const CTRentalTitleUser = @"title_user";
 
 NSString * const CTRentalTitlePayment = @"title_payment";
 
-NSString * const CTRentalCTAAddVehicleToBasket = @"CTA_add_vehicle_basket";
+NSString * const CTRentalCTAAddVehicleToBasket = @"CTA_add_to_flight";
 
 NSString * const CTRentalCTAAdd = @"CTA_add";
 

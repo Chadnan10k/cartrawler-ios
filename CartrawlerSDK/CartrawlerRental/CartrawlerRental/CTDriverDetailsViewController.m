@@ -189,9 +189,9 @@
 {
     CTPaymentAppearance *paymentAppearance = [CTPaymentAppearance new];
     _paymentView = [[CTPayment alloc] initWithContainerView:self.paymentContainer
-                                                 language:[CTSDKSettings instance].languageCode
+                                                 language:[[CTSDKSettings instance].languageCode lowercaseString]
                                                appearance:paymentAppearance
-                                                    debug:YES
+                                                    debug:[CTSDKSettings instance].isDebug
                                                    active:NO];
     self.paymentView.delegate = self;
 }
