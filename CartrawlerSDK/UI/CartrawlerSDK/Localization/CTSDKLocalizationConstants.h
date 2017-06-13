@@ -212,6 +212,8 @@ extern NSString * const CTSDKVehiclePickupTypeVLI6VLIX;
 
 extern NSString * const CTSDKVehiclePickupTypeAtAirport;
 
+extern NSString * const CTSDKVehiclePickupSupplierAddress;
+
 extern NSString * const CTSDKVehiclePickupTypeUnknown;
 
 extern NSString * const CTSDKVehicleTransmissionAuto;
