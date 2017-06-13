@@ -49,14 +49,14 @@
             if (item.vendor.pickupLocation.atAirport) {
                 return CTLocalizedString(CTSDKVehiclePickupTypeAtAirport);
             } else {
-                return nil;
+                return CTLocalizedString(CTSDKVehiclePickupSupplierAddress);
             }
             
         default:
             if (item.vendor.pickupLocation.atAirport) {
                 return CTLocalizedString(CTSDKVehiclePickupTypeAtAirport);
             } else {
-                return nil;
+                return CTLocalizedString(CTSDKVehiclePickupSupplierAddress);
             }
     }
 }
@@ -404,13 +404,13 @@
             if (item.vendor.pickupLocation.atAirport) {
                 return CTLocalizedString(CTSDKVehiclePickupDetailsVWF1VWFX);
             } else {
-                return @"";
+                return item.vendor.pickupLocation.address ?: @"";
             }
         default:
             if (item.vendor.pickupLocation.atAirport) {
                 return CTLocalizedString(CTSDKVehiclePickupDetailsVWF1VWFX);
             } else {
-                return @"";
+                return item.vendor.pickupLocation.address ?: @"";
             }
     }
 }
