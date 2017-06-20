@@ -175,11 +175,11 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
         [[CTAnalytics instance] tagScreen:@"other_cars" detail:@"click" step:nil];
     }
     self.summaryView.alpha = 0;
-    [self updateSortButtonByPrice:YES];
+    [self updateSortButtonByPrice:NO];
     [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items
                                     pickupDate:self.search.pickupDate
                                    dropoffDate:self.search.dropoffDate
-                                   sortByPrice:YES];
+                                   sortByPrice:NO];
     [self updateNavigationBar];
     
     static dispatch_once_t vehicleSelectionToken;
