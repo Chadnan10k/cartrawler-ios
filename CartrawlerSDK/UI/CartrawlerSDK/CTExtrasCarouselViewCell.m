@@ -59,7 +59,7 @@
     self.imageBackgroundView.layer.borderWidth = 2.0;
     self.imageBackgroundView.layer.borderColor = [UIColor colorWithRed:240.0/255.0 green:199.0/255.0 blue:69.0/255.0 alpha:1.0].CGColor;
     self.imageBackgroundView.layer.masksToBounds = YES;
-    self.imageBackgroundView.layer.cornerRadius = 20;
+    self.imageBackgroundView.layer.cornerRadius = 18;
     self.imageBackgroundView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:self.imageBackgroundView];
     
@@ -82,6 +82,7 @@
     UIColor *detailColor = [UIColor colorWithRed:130.0/255.0 green:135.0/255.0 blue:143.0/255.0 alpha:1.0];
     self.detailLabel = [[CTLabel alloc] init:15 textColor:detailColor textAlignment:NSTextAlignmentCenter boldFont:NO];
     self.detailLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.detailLabel.adjustsFontSizeToFitWidth = YES;
     [self.contentView addSubview:self.detailLabel];
     
     self.counter = [CTCounterView new];
@@ -113,7 +114,7 @@
 - (void)addConstraints {
     NSDictionary *views = @{@"imageBackgroundView": self.imageBackgroundView, @"imageView" : self.imageView, @"infoButton" : self.infoButton, @"closeButton" : self.closeButton, @"titleLabel" : self.titleLabel, @"detailLabel" : self.detailLabel, @"counter" : self.counter, @"infoTitleLabel": self.infoTitleLabel, @"infoDetailLabel": self.infoDetailLabel};
     
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[imageBackgroundView(35)]-5-[titleLabel][detailLabel(15)]-15-[counter(30)]-10-|"
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[imageBackgroundView(35)]-5-[titleLabel][detailLabel]-15-[counter(30)]-10-|"
                                                                              options:0
                                                                              metrics:nil
                                                                                views:views]];

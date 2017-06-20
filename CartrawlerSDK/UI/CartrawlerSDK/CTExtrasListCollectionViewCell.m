@@ -56,6 +56,8 @@ CGFloat const kExtrasTriangleHeight = 10.0;
     UIColor *textColor = [UIColor colorWithRed:201.0/255.0 green:201.0/255.0 blue:207.0/255.0 alpha:1.0];
     self.costLabel = [[CTLabel alloc] init:18 textColor:textColor textAlignment:NSTextAlignmentLeft boldFont:NO];
     self.costLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.costLabel.numberOfLines = 1;
+    self.costLabel.adjustsFontSizeToFitWidth = YES;
     [self.titleContainer addSubview:self.costLabel];
     
     UIColor *backgroundColor = [UIColor colorWithRed:33.0/255.0 green:74.0/255.0 blue:150.0/255.0 alpha:1.0];

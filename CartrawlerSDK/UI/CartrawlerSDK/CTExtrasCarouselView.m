@@ -30,6 +30,7 @@
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
         self.titleLabel.text = CTLocalizedString(CTRentalAddExtrasTitle);
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
+        self.titleLabel.adjustsFontSizeToFitWidth = YES;
         [self addSubview:self.titleLabel];
         
         self.collectionView = [[CTExtrasCollectionView alloc] initWithScrollDirection:UICollectionViewScrollDirectionHorizontal];
@@ -43,6 +44,7 @@
                                         borderColor:[UIColor clearColor]];
         self.viewAllButton.translatesAutoresizingMaskIntoConstraints = NO;
         [self.viewAllButton setTitle:CTLocalizedString(CTRentalExtrasViewAll) forState:UIControlStateNormal];
+
         [self addSubview:self.viewAllButton];
         [self.viewAllButton addTarget:self action:@selector(didTapViewAll:) forControlEvents:UIControlEventTouchUpInside];
         

@@ -69,7 +69,7 @@
                                                                      metrics:nil
                                                                        views:@{@"detailViewContainer" : self.detailViewContainer}]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[headerViewContainer(40)]-10-[detailViewContainer]|"
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[headerViewContainer(40@100)]-10-[detailViewContainer]|"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:@{@"headerViewContainer" : self.headerViewContainer, @"detailViewContainer" : self.detailViewContainer}]];

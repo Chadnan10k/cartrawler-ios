@@ -18,6 +18,7 @@
     self = [super init];
     if (self) {
         self.titleLabel = [[CTLabel alloc] init:14 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentLeft boldFont:NO];
+        
         [self addSubview:self.titleLabel];
         
         self.imageView = [[UIImageView alloc] init];
