@@ -125,6 +125,7 @@
     CTLabel *titleLabel = [[CTLabel alloc] init:17 textColor:[UIColor blackColor] textAlignment:NSTextAlignmentLeft boldFont:YES];
     titleLabel.text = CTLocalizedString(CTInPathWidgetTitle);
     titleLabel.numberOfLines = 1;
+    titleLabel.adjustsFontSizeToFitWidth = YES;
     [containerView addSubview:titleLabel];
     
     UIImageView *subtitleTickImageView = [[UIImageView alloc] initWithFrame:CGRectZero];

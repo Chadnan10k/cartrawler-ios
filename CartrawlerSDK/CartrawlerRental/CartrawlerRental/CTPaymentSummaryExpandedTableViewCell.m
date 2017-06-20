@@ -34,6 +34,7 @@
         self.detailLabel = [[CTLabel alloc] init:16.0 textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentRight boldFont:NO];
         self.detailLabel.translatesAutoresizingMaskIntoConstraints = NO;
         self.detailLabel.textColor = [UIColor whiteColor];
+        self.detailLabel.adjustsFontSizeToFitWidth = YES;
         [self addSubview:self.detailLabel];
         
         NSDictionary *viewDictionary = @{@"titleLabel" : self.titleLabel, @"detailLabel" : self.detailLabel};

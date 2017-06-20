@@ -89,6 +89,7 @@
 - (CTListItemView *)itemViewWithTitle:(NSString *)title detail:(NSString *)detail imageName:(NSString *)imageName {
     CTListItemView *itemView = [CTListItemView new];
     itemView.titleLabel.attributedText = [self attributedStringWithBlackText:title blueText:detail];
+    itemView.titleLabel.numberOfLines = 0;
     itemView.imageView.image = [[UIImage imageNamed:imageName inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     itemView.imageView.tintColor = [UIColor colorWithRed:6.0/255.0 green:48.0/255.0 blue:133./255.0 alpha:1.0];
     return itemView;
@@ -229,6 +230,7 @@
     for (CTPricedCoverage *coverage in coverages) {
         CTListItemView *listItemView = [CTListItemView new];
         listItemView.titleLabel.text = coverage.chargeDescription;
+        listItemView.titleLabel.numberOfLines = 0;
         listItemView.imageView.image = [[UIImage imageNamed:@"checkmark" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [listItemView.imageView applyTintWithColor:[CTAppearance instance].buttonColor];
         [items addObject:listItemView];

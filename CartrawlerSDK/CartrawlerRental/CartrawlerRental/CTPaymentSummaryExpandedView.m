@@ -101,6 +101,7 @@
                                        boldFont:YES];
     self.titleLabel.text = CTLocalizedString(CTRentalCarRentalTotal);
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
     [rentalTotalView addSubview:self.titleLabel];
     
     CTLabel *rentalTotalLabel = [[CTLabel alloc] init:20.0
@@ -112,7 +113,7 @@
     self.rentalTotalLabel = rentalTotalLabel;
     
     NSDictionary *views = @{ @"titleLabel" : self.titleLabel, @"rentalTotalLabel" : rentalTotalLabel};
-    [rentalTotalView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[titleLabel]-[rentalTotalLabel]|"
+    [rentalTotalView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[titleLabel]-[rentalTotalLabel(65)]|"
                                                                             options:0
                                                                             metrics:nil
                                                                               views:views]];
