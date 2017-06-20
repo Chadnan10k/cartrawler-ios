@@ -11,7 +11,6 @@
 #import "CTInsuranceView.h"
 #import "CTRentalConstants.h"
 #import "CTInsuranceDetailViewController.h"
-#import "CTCountryPickerView.h"
 #import <CartrawlerSDK/CTLoadingView.h>
 #import <CartrawlerSDK/CTToastView.h>
 #import <CartrawlerSDK/CartrawlerSDK+UIView.h>
@@ -44,9 +43,6 @@
 @property (nonatomic, strong) NSLayoutConstraint *toastHeightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *toastTopConstraint;
 @property (nonatomic, assign) BOOL hasShownToastView;
-
-//Alert view custom views
-@property (nonatomic, strong) CTCountryPickerView *countryPicker;
 
 // Analytics
 @property (nonatomic, assign) BOOL insuranceViewDidAppear;
