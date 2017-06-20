@@ -7,7 +7,6 @@
 //
 
 #import "CTVehicleDetailTableViewCell.h"
-#import "CTMerhandisingBanner.h"
 #import "CartrawlerSDK/CTLayoutManager.h"
 #import "CartrawlerSDK/CartrawlerSDK+UIView.h"
 #import "CartrawlerSDK/CartrawlerSDK+NSNumber.h"
