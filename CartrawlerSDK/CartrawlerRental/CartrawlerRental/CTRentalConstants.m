@@ -47,8 +47,6 @@ NSString * const CTRentalPaymentViewIdentifier = @"CTPaymentViewController";
 
 NSString * const CTRentalPaymentCompletionViewIdentifier = @"CTPaymentCompletionViewController";
 
-NSString * const CTRentalBookingSummaryViewIdentifier = @"CTBookingSummaryViewController";
-
 NSString * const CTRentalLocationSearchViewIdentifier = @"CTLocationSearchViewController";
 
 NSString * const CTRentalSettingsSelectionViewIdentifier = @"CTSettingsSelectionViewController";

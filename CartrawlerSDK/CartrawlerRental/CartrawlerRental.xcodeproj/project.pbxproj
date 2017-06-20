@@ -71,9 +71,7 @@
 		451E75C51E042F2E00D58F71 /* CTPaymentSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E75BB1E042F2E00D58F71 /* CTPaymentSummaryTableViewCell.m */; };
 		451E75C61E042F2E00D58F71 /* CTPaymentVehicleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E75BC1E042F2E00D58F71 /* CTPaymentVehicleTableViewCell.m */; };
 		451E75C71E042F2E00D58F71 /* CTPaymentSummaryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E75BD1E042F2E00D58F71 /* CTPaymentSummaryDataSource.m */; };
-		451E75CE1E042F3F00D58F71 /* CTBookingSummaryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75C81E042F3F00D58F71 /* CTBookingSummaryViewController.h */; };
 		451E75CF1E042F3F00D58F71 /* CTBookingSummaryView.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75C91E042F3F00D58F71 /* CTBookingSummaryView.h */; };
-		451E75D11E042F3F00D58F71 /* CTBookingSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E75CB1E042F3F00D58F71 /* CTBookingSummaryViewController.m */; };
 		451E75D21E042F3F00D58F71 /* CTBookingSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E75CC1E042F3F00D58F71 /* CTBookingSummaryView.m */; };
 		451E75D91E042F7900D58F71 /* CTPaymentSummaryItemTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 451E75D51E042F7900D58F71 /* CTPaymentSummaryItemTableViewCell.h */; };
 		451E75DA1E042F7900D58F71 /* CTPaymentSummaryItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 451E75D61E042F7900D58F71 /* CTPaymentSummaryItemTableViewCell.m */; };
@@ -239,9 +237,7 @@
 		451E75BB1E042F2E00D58F71 /* CTPaymentSummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTPaymentSummaryTableViewCell.m; path = CartrawlerRental/CTPaymentSummaryTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		451E75BC1E042F2E00D58F71 /* CTPaymentVehicleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTPaymentVehicleTableViewCell.m; path = CartrawlerRental/CTPaymentVehicleTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		451E75BD1E042F2E00D58F71 /* CTPaymentSummaryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTPaymentSummaryDataSource.m; path = CartrawlerRental/CTPaymentSummaryDataSource.m; sourceTree = SOURCE_ROOT; };
-		451E75C81E042F3F00D58F71 /* CTBookingSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTBookingSummaryViewController.h; path = CartrawlerRental/CTBookingSummaryViewController.h; sourceTree = SOURCE_ROOT; };
 		451E75C91E042F3F00D58F71 /* CTBookingSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTBookingSummaryView.h; path = CartrawlerRental/CTBookingSummaryView.h; sourceTree = SOURCE_ROOT; };
-		451E75CB1E042F3F00D58F71 /* CTBookingSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTBookingSummaryViewController.m; path = CartrawlerRental/CTBookingSummaryViewController.m; sourceTree = SOURCE_ROOT; };
 		451E75CC1E042F3F00D58F71 /* CTBookingSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTBookingSummaryView.m; path = CartrawlerRental/CTBookingSummaryView.m; sourceTree = SOURCE_ROOT; };
 		451E75D51E042F7900D58F71 /* CTPaymentSummaryItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTPaymentSummaryItemTableViewCell.h; path = CartrawlerRental/CTPaymentSummaryItemTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		451E75D61E042F7900D58F71 /* CTPaymentSummaryItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTPaymentSummaryItemTableViewCell.m; path = CartrawlerRental/CTPaymentSummaryItemTableViewCell.m; sourceTree = SOURCE_ROOT; };
@@ -623,8 +619,6 @@
 		451E74991E0429F200D58F71 /* Booking Summary */ = {
 			isa = PBXGroup;
 			children = (
-				451E75C81E042F3F00D58F71 /* CTBookingSummaryViewController.h */,
-				451E75CB1E042F3F00D58F71 /* CTBookingSummaryViewController.m */,
 				451E75C91E042F3F00D58F71 /* CTBookingSummaryView.h */,
 				451E75CC1E042F3F00D58F71 /* CTBookingSummaryView.m */,
 			);
@@ -906,7 +900,6 @@
 				457678541E082B9600FE591A /* CTRentalConstants.h in Headers */,
 				451E752C1E042B5700D58F71 /* CTInterstitialCollectionViewCell.h in Headers */,
 				E7BBA4611EBBA49300953907 /* CTVehicleInfoTabView.h in Headers */,
-				451E75CE1E042F3F00D58F71 /* CTBookingSummaryViewController.h in Headers */,
 				451E75731E042D6800D58F71 /* CTTermsViewController.h in Headers */,
 				451E75551E042CB000D58F71 /* CTVehicleSelectionView.h in Headers */,
 				454B4D7C1E6EF07300625F03 /* CTVehicleDetailsCollectionViewCell.h in Headers */,
@@ -1053,7 +1046,6 @@
 			files = (
 				451E754C1E042CA100D58F71 /* CTFilterTableViewCell.m in Sources */,
 				454B4D781E6ED61400625F03 /* CTVehicleDetailsView.m in Sources */,
-				451E75D11E042F3F00D58F71 /* CTBookingSummaryViewController.m in Sources */,
 				451E75DA1E042F7900D58F71 /* CTPaymentSummaryItemTableViewCell.m in Sources */,
 				BC244BC11EDED7B000C56D55 /* CTInsuranceTipView.m in Sources */,
 				451E75981E042E5D00D58F71 /* CTVehicleFeatureTableViewCell.m in Sources */,
