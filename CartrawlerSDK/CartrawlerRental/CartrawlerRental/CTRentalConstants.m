@@ -39,8 +39,6 @@ NSString * const CTRentalSearchViewIdentifier = @"CTSearchDetailsViewController"
 
 NSString * const CTRentalVehicleDetailsViewIdentifier= @"CTVehicleDetailsViewController";
 
-NSString * const CTRentalExtrasViewIdentifier = @"CTOptionalExtrasViewController";
-
 NSString * const CTRentalInsuranceViewIdentifier = @"CTInsuranceDetailViewController";
 
 NSString * const CTRentalDriverDetailsViewIdentifier = @"CTDriverDetailsViewController";

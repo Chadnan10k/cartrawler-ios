@@ -38,8 +38,6 @@ extern NSString * const CTRentalSearchViewIdentifier;
 
 extern NSString * const CTRentalVehicleDetailsViewIdentifier;
 
-extern NSString * const CTRentalExtrasViewIdentifier;
-
 extern NSString * const CTRentalInsuranceViewIdentifier;
 
 extern NSString * const CTRentalDriverDetailsViewIdentifier;
