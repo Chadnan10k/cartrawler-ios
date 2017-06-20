@@ -42,8 +42,6 @@ extern NSString * const CTRentalInsuranceViewIdentifier;
 
 extern NSString * const CTRentalDriverDetailsViewIdentifier;
 
-extern NSString * const CTRentalDriverAddressViewIdentifier;
-
 extern NSString * const CTRentalPaymentViewIdentifier;
 
 extern NSString * const CTRentalBookingSummaryViewIdentifier;

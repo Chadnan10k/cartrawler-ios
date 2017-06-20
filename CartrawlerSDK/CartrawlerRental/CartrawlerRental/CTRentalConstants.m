@@ -43,8 +43,6 @@ NSString * const CTRentalInsuranceViewIdentifier = @"CTInsuranceDetailViewContro
 
 NSString * const CTRentalDriverDetailsViewIdentifier = @"CTDriverDetailsViewController";
 
-NSString * const CTRentalDriverAddressViewIdentifier = @"CTAddressDetailsViewController";
-
 NSString * const CTRentalPaymentViewIdentifier = @"CTPaymentViewController";
 
 NSString * const CTRentalPaymentCompletionViewIdentifier = @"CTPaymentCompletionViewController";

@@ -110,7 +110,6 @@
     
     UIStoryboard *detailsStoryboard = [UIStoryboard storyboardWithName:CTRentalDriverDetailsStoryboard bundle:self.bundle];
     _driverDetialsViewController = [detailsStoryboard instantiateViewControllerWithIdentifier:CTRentalDriverDetailsViewIdentifier];
-    _addressDetialsViewController = [detailsStoryboard instantiateViewControllerWithIdentifier:CTRentalDriverAddressViewIdentifier];
     
     UIStoryboard *paymentStoryboard = [UIStoryboard storyboardWithName:CTRentalPaymentStoryboard bundle:self.bundle];
     _paymentCompletionViewController = [paymentStoryboard instantiateViewControllerWithIdentifier:CTRentalPaymentCompletionViewIdentifier];

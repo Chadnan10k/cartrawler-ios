@@ -33,7 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nonnull, readonly) CTViewController *insuranceViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *extrasViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *driverDetialsViewController;
-@property (nonatomic, strong, nonnull, readonly) CTViewController *addressDetialsViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *paymentSummaryViewController;
 @property (nonatomic, strong, nonnull, readonly) CTViewController *paymentCompletionViewController;
 //----------------------------------
