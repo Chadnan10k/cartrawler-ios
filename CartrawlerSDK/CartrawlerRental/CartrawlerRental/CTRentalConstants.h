@@ -36,8 +36,6 @@ extern NSString * const CTRentalBookingManagerViewIdentifier;
 
 extern NSString * const CTRentalSearchViewIdentifier;
 
-extern NSString * const CTRentalResultsViewIdentifier;
-
 extern NSString * const CTRentalVehicleDetailsViewIdentifier;
 
 extern NSString * const CTRentalExtrasViewIdentifier;

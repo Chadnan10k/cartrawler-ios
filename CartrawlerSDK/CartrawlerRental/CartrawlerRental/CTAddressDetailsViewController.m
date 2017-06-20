@@ -15,7 +15,6 @@
 #import <CartrawlerSDK/CTSDKSettings.h>
 #import "CTRentalConstants.h"
 #import "CTSearchDetailsViewController.h"
-#import "CTVehicleSelectionViewController.h"
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 

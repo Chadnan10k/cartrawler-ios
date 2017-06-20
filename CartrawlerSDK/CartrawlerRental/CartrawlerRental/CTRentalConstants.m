@@ -37,8 +37,6 @@ NSString * const CTRentalBookingManagerViewIdentifier= @"CTRentalBookingsViewCon
 
 NSString * const CTRentalSearchViewIdentifier = @"CTSearchDetailsViewController";
 
-NSString * const CTRentalResultsViewIdentifier = @"CTSearchResultsViewController";
-
 NSString * const CTRentalVehicleDetailsViewIdentifier= @"CTVehicleDetailsViewController";
 
 NSString * const CTRentalExtrasViewIdentifier = @"CTOptionalExtrasViewController";
