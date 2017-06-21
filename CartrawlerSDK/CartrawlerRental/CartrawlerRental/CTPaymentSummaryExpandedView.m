@@ -109,6 +109,7 @@
                                         textAlignment:NSTextAlignmentRight
                                              boldFont:YES];
     rentalTotalLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    rentalTotalLabel.adjustsFontSizeToFitWidth = YES;
     [rentalTotalView addSubview:rentalTotalLabel];
     self.rentalTotalLabel = rentalTotalLabel;
     
