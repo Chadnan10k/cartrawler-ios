@@ -105,12 +105,8 @@
     UIStoryboard *extrasStoryboard = [UIStoryboard storyboardWithName:CTRentalExtrasStoryboard bundle:self.bundle];
     _insuranceViewController = [extrasStoryboard instantiateViewControllerWithIdentifier:CTRentalInsuranceViewIdentifier];
     
-    UIStoryboard *summaryStoryboard = [UIStoryboard storyboardWithName:CTRentalBookingSummaryStoryboard bundle:self.bundle];
-    _paymentSummaryViewController = [summaryStoryboard instantiateViewControllerWithIdentifier:CTRentalBookingSummaryViewIdentifier];
-    
     UIStoryboard *detailsStoryboard = [UIStoryboard storyboardWithName:CTRentalDriverDetailsStoryboard bundle:self.bundle];
     _driverDetialsViewController = [detailsStoryboard instantiateViewControllerWithIdentifier:CTRentalDriverDetailsViewIdentifier];
-    _addressDetialsViewController = [detailsStoryboard instantiateViewControllerWithIdentifier:CTRentalDriverAddressViewIdentifier];
     
     UIStoryboard *paymentStoryboard = [UIStoryboard storyboardWithName:CTRentalPaymentStoryboard bundle:self.bundle];
     _paymentCompletionViewController = [paymentStoryboard instantiateViewControllerWithIdentifier:CTRentalPaymentCompletionViewIdentifier];

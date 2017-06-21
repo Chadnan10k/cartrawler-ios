@@ -37,23 +37,15 @@ NSString * const CTRentalBookingManagerViewIdentifier= @"CTRentalBookingsViewCon
 
 NSString * const CTRentalSearchViewIdentifier = @"CTSearchDetailsViewController";
 
-NSString * const CTRentalResultsViewIdentifier = @"CTSearchResultsViewController";
-
 NSString * const CTRentalVehicleDetailsViewIdentifier= @"CTVehicleDetailsViewController";
-
-NSString * const CTRentalExtrasViewIdentifier = @"CTOptionalExtrasViewController";
 
 NSString * const CTRentalInsuranceViewIdentifier = @"CTInsuranceDetailViewController";
 
 NSString * const CTRentalDriverDetailsViewIdentifier = @"CTDriverDetailsViewController";
 
-NSString * const CTRentalDriverAddressViewIdentifier = @"CTAddressDetailsViewController";
-
 NSString * const CTRentalPaymentViewIdentifier = @"CTPaymentViewController";
 
 NSString * const CTRentalPaymentCompletionViewIdentifier = @"CTPaymentCompletionViewController";
-
-NSString * const CTRentalBookingSummaryViewIdentifier = @"CTBookingSummaryViewController";
 
 NSString * const CTRentalLocationSearchViewIdentifier = @"CTLocationSearchViewController";
 
