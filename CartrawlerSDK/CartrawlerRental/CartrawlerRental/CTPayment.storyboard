@@ -67,13 +67,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success_car" translatesAutoresizingMaskIntoConstraints="NO" id="qFa-hd-wum">
-                                                <rect key="frame" x="8" y="86" width="359" height="80"/>
+                                                <rect key="frame" x="8" y="86" width="359" height="120"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="80" id="mzd-XR-j15"/>
+                                                    <constraint firstAttribute="height" constant="120" id="mzd-XR-j15"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your booking reference:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEq-sw-9sl" customClass="CTLabel">
-                                                <rect key="frame" x="8" y="182" width="359" height="29"/>
+                                                <rect key="frame" x="8" y="222" width="359" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -82,7 +82,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CTTEST12335" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIH-jB-Mbp" customClass="CTLabel">
-                                                <rect key="frame" x="8" y="215" width="359" height="29"/>
+                                                <rect key="frame" x="8" y="255" width="359" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <color key="textColor" red="0.95884972810745239" green="0.81930959224700928" blue="0.25484684109687805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -91,7 +91,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IBJ-wf-Yqa" customClass="CTLabel">
-                                                <rect key="frame" x="8" y="252" width="359" height="81.5"/>
+                                                <rect key="frame" x="8" y="292" width="359" height="81.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="x40-It-yic"/>
                                                 </constraints>
