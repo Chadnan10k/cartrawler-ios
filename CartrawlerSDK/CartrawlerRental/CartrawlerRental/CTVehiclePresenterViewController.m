@@ -27,7 +27,7 @@
 
 typedef NS_ENUM(NSInteger, CTPresentedView) {
     CTPresentedViewNone = 0,
-    CTPresentedViewSelection,
+    CTPresentedViewList,
     CTPresentedViewDetails
 };
 
@@ -62,55 +62,6 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [self setupViews];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self configureBackButton];
-    [self updateNavigationBar];
-    [self.search addObserver:self forKeyPath:@"vehicleAvailability"
-                     options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                     context:nil];
-    
-    if (self.search.selectedVehicle && self.navigationController.viewControllers.firstObject == self) {
-        [self presentVehicleDetails];
-    } else {
-        [self presentVehicleSelection];
-    }
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    @try {
-        [self.search removeObserver:self forKeyPath:@"vehicleAvailability"];
-    } @catch (NSException *exception) {
-        //do nothing
-    }
-    [self hideDetailedPriceSummary];
-}
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self updateNavigationBar];
-        [self presentVehicleSelection];
-        [self.vehicleSelectionView scrollToTop];
-    });
-}
-
-- (void)configureBackButton
-{
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    if (self.navigationController.viewControllers.firstObject == self) {
-        UIImage *buttonImage = [UIImage imageNamed:@"down_arrow" inBundle:bundle compatibleWithTraitCollection:nil];
-        [self.dismissButton setImage:buttonImage forState:UIControlStateNormal];
-    } else {
-        UIImage *buttonImage = [UIImage imageNamed:@"backArrow" inBundle:bundle compatibleWithTraitCollection:nil];
-        [self.dismissButton setImage:buttonImage forState:UIControlStateNormal];
-    }
-}
-
 - (void)setupViews
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -133,6 +84,53 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     self.rightButton.titleLabel.minimumScaleFactor = 0.6;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [self.search addObserver:self forKeyPath:@"vehicleAvailability"
+                     options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                     context:nil];
+    
+    [self presentVehicles];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    @try {
+        [self.search removeObserver:self forKeyPath:@"vehicleAvailability"];
+    } @catch (NSException *exception) {
+    }
+    [self hideDetailedPriceSummary];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.filterViewController updateData:self.search.vehicleAvailability];
+        [self presentVehicles];
+        [self.vehicleSelectionView scrollToTop];
+    });
+}
+
+- (void)presentVehicles {
+    [self configureBackButton];
+    [self updateNavigationBar];
+    [self presentVehicleList];
+}
+
+- (void)configureBackButton
+{
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    if (self.navigationController.viewControllers.firstObject == self) {
+        UIImage *buttonImage = [UIImage imageNamed:@"down_arrow" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.dismissButton setImage:buttonImage forState:UIControlStateNormal];
+    } else {
+        UIImage *buttonImage = [UIImage imageNamed:@"backArrow" inBundle:bundle compatibleWithTraitCollection:nil];
+        [self.dismissButton setImage:buttonImage forState:UIControlStateNormal];
+    }
+}
+
 - (void)presentVehicleDetails
 {
     [[CTAnalytics instance] setAnalyticsStep:CTAnalyticsStepVehicleDetails];
@@ -149,18 +147,18 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [CTLayoutManager pinView:self.vehicleDetailsView toSuperView:self.containerView padding:UIEdgeInsetsZero];
 
     [self.vehicleDetailsView refreshViewWithVehicle:self.search.selectedVehicle];
-    [self tagVehicleStep];
-
+    
     [self updateNavigationBar];
     [self updatePriceSummary:NO];
     [self updateDetailedPriceSummary];
 }
 
-- (void)presentVehicleSelection
+- (void)presentVehicleList
 {
     [[CTAnalytics instance] setAnalyticsStep:CTAnalyticsStepVehicleSelection];
+    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:nil];
     
-    if (self.presentedView != CTPresentedViewSelection) {
+    if (self.presentedView != CTPresentedViewList) {
         [UIView animateWithDuration:0.2 animations:^{
             self.vehicleDetailsView.alpha = 0;
             self.vehicleSelectionView.alpha = 1;
@@ -168,7 +166,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
             [self.view layoutIfNeeded];
         } completion:nil];
         
-        _presentedView = CTPresentedViewSelection;
+        _presentedView = CTPresentedViewList;
         [self.vehicleDetailsView removeFromSuperview];
         [self.containerView addSubview:self.vehicleSelectionView];
         [CTLayoutManager pinView:self.vehicleSelectionView toSuperView:self.containerView padding:UIEdgeInsetsZero];
@@ -181,16 +179,10 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
                                    dropoffDate:self.search.dropoffDate
                                    sortByPrice:NO];
     [self updateNavigationBar];
-    
-    static dispatch_once_t vehicleSelectionToken;
-    dispatch_once(&vehicleSelectionToken, ^{
-        [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicles" step:nil];
-    });
 }
 
 - (void)updateNavigationBar
 {
-    
     if (self.search.pickupLocation == self.search.dropoffLocation) {
         self.locationLabel.text = [NSString stringWithFormat:@"%@", self.search.pickupLocation.name];
     } else {
@@ -203,7 +195,6 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     
     self.dateLabel.text = [NSString stringWithFormat:@"%@ - %@", pickupDate, dropoffDate];
 
-    
     if (self.presentedView == CTPresentedViewDetails) {
         [self.leftButton setTitle:CTLocalizedString(CTRentalResultsOtherCars) forState:UIControlStateNormal];
         [self.rightButton setTitle:CTLocalizedString(CTRentalCarRentalTotal) forState:UIControlStateNormal];
@@ -253,18 +244,18 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (IBAction)leftTap:(id)sender
 {
-    if (self.presentedView == CTPresentedViewSelection) {
+    if (self.presentedView == CTPresentedViewList) {
         [[CTAnalytics instance] tagScreen:@"mdl_filter" detail:@"open" step:nil];
         [self.filterViewController present];
     } else {
         [self.vehicleDetailsView refreshViewWithVehicle:nil];
-        [self presentVehicleSelection];
+        [self presentVehicleList];
     }
 }
 
 - (IBAction)rightTap:(id)sender
 {
-    if (self.presentedView == CTPresentedViewSelection) {
+    if (self.presentedView == CTPresentedViewList) {
         NSString *sortResults = CTLocalizedString(CTRentalSortTitle);
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:sortResults
                                                                        message:nil
@@ -403,11 +394,13 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (void)didSelectVehicle:(CTAvailabilityItem *)item
 {
     self.search.selectedVehicle = item;
-    [self tagVehicleDetailsStep];
-    if (![CTSDKSettings instance].isStandalone) {
-        [self presentVehicleDetails];
-    } else {
+    
+    [self tagVehicleStep];
+    
+    if ([CTSDKSettings instance].isStandalone) {
         [self pushToDestination];
+    } else {
+        [self presentVehicleDetails];
     }
 }
 
@@ -435,7 +428,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)infoViewPresentVehicleSelection
 {
-    [self presentVehicleSelection];
+    [self presentVehicleList];
 }
 
 - (void)infoViewAddInsuranceTapped:(BOOL)didAddInsurance
@@ -503,28 +496,6 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [self sendEvent:NO customParams:@{@"eventName" : @"Insurance & Extras Step",
                                       @"stepName" : @"Step4",
                                       @"insuranceOffered" : insOffered
-                                      } eventName:@"Step of search" eventType:@"Step"];
-}
-
-- (void)tagVehicleDetailsStep {
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-v" step:nil];
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                        fromDate:self.search.pickupDate
-                                                          toDate:self.search.dropoffDate
-                                                         options:0];
-    
-    NSNumber *pricePerDay = [NSNumber numberWithFloat:self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.floatValue
-                             / ([components day] ?: 1)];
-    
-    NSString *vehName = [NSString stringWithFormat:@"%@ %@", self.search.selectedVehicle.vehicle.makeModelName,
-                         self.search.selectedVehicle.vehicle.orSimilar];
-    
-    [self sendEvent:NO customParams:@{@"eventName" : @"Vehicle Details Step",
-                                      @"stepName" : @"Step3",
-                                      @"carPrice" : self.search.selectedVehicle.vehicle.totalPriceForThisVehicle.stringValue,
-                                      @"carPricePerDay" : pricePerDay.stringValue,
-                                      @"carSelected" : vehName,
                                       } eventName:@"Step of search" eventType:@"Step"];
 }
 

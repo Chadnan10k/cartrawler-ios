@@ -37,7 +37,6 @@
 		45EC99BD1E02C96B00B76741 /* CTInPathVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC99B71E02C96B00B76741 /* CTInPathVehicle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45EC99BE1E02C96B00B76741 /* CTInPathVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99B81E02C96B00B76741 /* CTInPathVehicle.m */; };
 		45EC99BF1E02C96B00B76741 /* CTInPathView.h in Headers */ = {isa = PBXBuildFile; fileRef = 45EC99B91E02C96B00B76741 /* CTInPathView.h */; };
-		45EC99C01E02C96B00B76741 /* CTInPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EC99BA1E02C96B00B76741 /* CTInPathView.m */; };
 		BC2951DB1E80414D0053A897 /* CTInPathError.h in Headers */ = {isa = PBXBuildFile; fileRef = BC2951D91E80414D0053A897 /* CTInPathError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC2951DC1E80414D0053A897 /* CTInPathError.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2951DA1E80414D0053A897 /* CTInPathError.m */; };
 		BC3C473E1E857503009B35B5 /* CTCarouselView.h in Headers */ = {isa = PBXBuildFile; fileRef = BC3C473C1E857503009B35B5 /* CTCarouselView.h */; };
@@ -48,6 +47,11 @@
 		BCC78AD41E8917DD002DA87C /* CTCarouselFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC78AD21E8917DD002DA87C /* CTCarouselFooterView.m */; };
 		BCC78AD81E8A6ECA002DA87C /* CTInPathErrorView.h in Headers */ = {isa = PBXBuildFile; fileRef = BCC78AD61E8A6ECA002DA87C /* CTInPathErrorView.h */; };
 		BCC78AD91E8A6ECA002DA87C /* CTInPathErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC78AD71E8A6ECA002DA87C /* CTInPathErrorView.m */; };
+		E72D4D6C1F0B54A7007130A2 /* CTInPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D4D6B1F0B54A7007130A2 /* CTInPathView.m */; };
+		E75C3B601F0ABBB5003E97A5 /* CTNewBookingView.h in Headers */ = {isa = PBXBuildFile; fileRef = E75C3B5E1F0ABBB5003E97A5 /* CTNewBookingView.h */; };
+		E75C3B611F0ABBB5003E97A5 /* CTNewBookingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E75C3B5F1F0ABBB5003E97A5 /* CTNewBookingView.m */; };
+		E75C3B641F0ABC3D003E97A5 /* CTInPathBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = E75C3B621F0ABC3D003E97A5 /* CTInPathBanner.h */; };
+		E75C3B651F0ABC3D003E97A5 /* CTInPathBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = E75C3B631F0ABC3D003E97A5 /* CTInPathBanner.m */; };
 		E7B3B49D1E40E8C70062C7AD /* CTInPathLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */; };
 		E7B3B49E1E40E8C70062C7AD /* CTInPathLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3B49C1E40E8C70062C7AD /* CTInPathLocalizationConstants.m */; };
 /* End PBXBuildFile section */
@@ -83,7 +87,6 @@
 		45EC99B71E02C96B00B76741 /* CTInPathVehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathVehicle.h; sourceTree = "<group>"; };
 		45EC99B81E02C96B00B76741 /* CTInPathVehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathVehicle.m; sourceTree = "<group>"; };
 		45EC99B91E02C96B00B76741 /* CTInPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathView.h; sourceTree = "<group>"; };
-		45EC99BA1E02C96B00B76741 /* CTInPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathView.m; sourceTree = "<group>"; };
 		BC2951D91E80414D0053A897 /* CTInPathError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathError.h; sourceTree = "<group>"; };
 		BC2951DA1E80414D0053A897 /* CTInPathError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathError.m; sourceTree = "<group>"; };
 		BC3C473C1E857503009B35B5 /* CTCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCarouselView.h; sourceTree = "<group>"; };
@@ -94,6 +97,11 @@
 		BCC78AD21E8917DD002DA87C /* CTCarouselFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCarouselFooterView.m; sourceTree = "<group>"; };
 		BCC78AD61E8A6ECA002DA87C /* CTInPathErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathErrorView.h; sourceTree = "<group>"; };
 		BCC78AD71E8A6ECA002DA87C /* CTInPathErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathErrorView.m; sourceTree = "<group>"; };
+		E72D4D6B1F0B54A7007130A2 /* CTInPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathView.m; sourceTree = "<group>"; };
+		E75C3B5E1F0ABBB5003E97A5 /* CTNewBookingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNewBookingView.h; sourceTree = "<group>"; };
+		E75C3B5F1F0ABBB5003E97A5 /* CTNewBookingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTNewBookingView.m; sourceTree = "<group>"; };
+		E75C3B621F0ABC3D003E97A5 /* CTInPathBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInPathBanner.h; sourceTree = "<group>"; };
+		E75C3B631F0ABC3D003E97A5 /* CTInPathBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInPathBanner.m; sourceTree = "<group>"; };
 		E7B3B49B1E40E8C70062C7AD /* CTInPathLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTInPathLocalizationConstants.h; path = Localization/CTInPathLocalizationConstants.h; sourceTree = "<group>"; };
 		E7B3B49C1E40E8C70062C7AD /* CTInPathLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTInPathLocalizationConstants.m; path = Localization/CTInPathLocalizationConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,7 +134,7 @@
 				BC3C47361E85662B009B35B5 /* Ready State */,
 				BC3C47351E856624009B35B5 /* Loading State */,
 				45EC99B91E02C96B00B76741 /* CTInPathView.h */,
-				45EC99BA1E02C96B00B76741 /* CTInPathView.m */,
+				E72D4D6B1F0B54A7007130A2 /* CTInPathView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -216,6 +224,10 @@
 		BC3C47361E85662B009B35B5 /* Ready State */ = {
 			isa = PBXGroup;
 			children = (
+				E75C3B5E1F0ABBB5003E97A5 /* CTNewBookingView.h */,
+				E75C3B5F1F0ABBB5003E97A5 /* CTNewBookingView.m */,
+				E75C3B621F0ABC3D003E97A5 /* CTInPathBanner.h */,
+				E75C3B631F0ABC3D003E97A5 /* CTInPathBanner.m */,
 				BC3C473C1E857503009B35B5 /* CTCarouselView.h */,
 				BC3C473D1E857503009B35B5 /* CTCarouselView.m */,
 				BC3C47401E857C37009B35B5 /* CTCarouselCollectionViewCell.h */,
@@ -264,8 +276,10 @@
 				BC3C473E1E857503009B35B5 /* CTCarouselView.h in Headers */,
 				BCC78AD81E8A6ECA002DA87C /* CTInPathErrorView.h in Headers */,
 				45A47DF51E0A912300500D71 /* CTSelectedVehicleView.h in Headers */,
+				E75C3B601F0ABBB5003E97A5 /* CTNewBookingView.h in Headers */,
 				E7B3B49D1E40E8C70062C7AD /* CTInPathLocalizationConstants.h in Headers */,
 				45EC99BD1E02C96B00B76741 /* CTInPathVehicle.h in Headers */,
+				E75C3B641F0ABC3D003E97A5 /* CTInPathBanner.h in Headers */,
 				45EC99BB1E02C96B00B76741 /* CTInPathPayment.h in Headers */,
 				45CFD44C1E0941B800A57849 /* CTInPathLoadingView.h in Headers */,
 				BCC78AD31E8917DD002DA87C /* CTCarouselFooterView.h in Headers */,
@@ -403,14 +417,16 @@
 				BC2951DC1E80414D0053A897 /* CTInPathError.m in Sources */,
 				45EC99B01E02B3FB00B76741 /* CartrawlerInPath.m in Sources */,
 				BC3C473F1E857503009B35B5 /* CTCarouselView.m in Sources */,
+				E75C3B611F0ABBB5003E97A5 /* CTNewBookingView.m in Sources */,
 				45CFD44D1E0941B800A57849 /* CTInPathLoadingView.m in Sources */,
 				45EC99BC1E02C96B00B76741 /* CTInPathPayment.m in Sources */,
 				45A47DF61E0A912300500D71 /* CTSelectedVehicleView.m in Sources */,
+				E75C3B651F0ABC3D003E97A5 /* CTInPathBanner.m in Sources */,
 				BCC78AD41E8917DD002DA87C /* CTCarouselFooterView.m in Sources */,
 				E7B3B49E1E40E8C70062C7AD /* CTInPathLocalizationConstants.m in Sources */,
+				E72D4D6C1F0B54A7007130A2 /* CTInPathView.m in Sources */,
 				BCC78AD91E8A6ECA002DA87C /* CTInPathErrorView.m in Sources */,
 				BC3C47431E857C37009B35B5 /* CTCarouselCollectionViewCell.m in Sources */,
-				45EC99C01E02C96B00B76741 /* CTInPathView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -79,7 +79,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VRh-gr-1Of" userLabel="Summary View" customClass="CTPaymentSummaryExpandedView">
-                                <rect key="frame" x="0.0" y="30" width="375" height="48"/>
+                                <rect key="frame" x="0.0" y="10" width="375" height="48"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -177,7 +177,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VRh-gr-1Of" firstAttribute="top" secondItem="7tg-QR-CVm" secondAttribute="bottom" constant="-48" id="2JI-r2-Hxi"/>
+                            <constraint firstItem="VRh-gr-1Of" firstAttribute="top" secondItem="7tg-QR-CVm" secondAttribute="bottom" constant="-68" id="2JI-r2-Hxi"/>
                             <constraint firstItem="iKE-cF-Lnt" firstAttribute="leading" secondItem="cG5-ER-wGe" secondAttribute="leading" id="6g3-98-GYU"/>
                             <constraint firstAttribute="trailing" secondItem="7tg-QR-CVm" secondAttribute="trailing" id="6ow-kB-nVN"/>
                             <constraint firstItem="4IH-cY-NUT" firstAttribute="top" secondItem="iKE-cF-Lnt" secondAttribute="bottom" id="9eg-vW-sJz"/>

@@ -26,8 +26,9 @@
     [RYRRentalManager instance].parent = self;
     [RYRRentalManager instance].priceLabel = self.priceLabel;
 
-    [[RYRRentalManager instance] setupInPath:self.cardContainer parentVC:self];
     [RYRRentalManager instance].callToAction = self.bookButton;
+    [[RYRRentalManager instance] setupInPath:self.cardContainer parentVC:self];
+    
     self.endpointSwitch.on = [RYRRentalManager instance].currentEndpoint;
     
 }
