@@ -33,28 +33,26 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)didProduceInPathPaymentRequest:(nonnull NSDictionary *)request vehicle:(nonnull CTInPathVehicle *)vehicle;
 
-/**
- Called when the In Path Carousel displays a vehicle
-
- @param index The index of the displayed vehicle
- @param vehicleItem The vehicle item object
- */
-- (void)didDisplayVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem pricePerDay:(NSNumber *)pricePerDay;
+@optional
 
 /**
- Called when the user taps on a vehicle
+ Called when the vehicles have been fetched and the best daily rate has been calculated
 
- @param index The index of the tapped vehicle
- @param vehicleItem The vehicle item object that was tapped
+ @param price price
+ @param currency currency
  */
-- (void)didTapVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem;
+- (void)didReceiveBestDailyRate:(NSNumber *)price currency:(NSString *)currency;
+
+/**
+ Called when the call to fetch vehicles fails and the best daily rate cannot be calculated
+ */
+- (void)didFailToReceiveBestDailyRate;
 
 @end
 
 @interface CartrawlerInPath : NSObject
 
 @property (nonatomic, weak) id<CartrawlerInPathDelegate> delegate;
-
 
 /**
  Convienience initialiser
@@ -65,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (CartrawlerInPath *)initWithCartrawlerRental:(nonnull CartrawlerRental *)cartrawlerRental;
 
 /**
- Performs
+ Performs a search for cars with the provided details
 
  @param IATACode The pickup airport IATA code
  @param pickupDate The pickup date
@@ -86,11 +84,11 @@ NS_ASSUME_NONNULL_BEGIN
              parentViewController:(nonnull UIViewController *)parentViewController;
 
 /**
- Adds the Cartrawler Carousel as a subview to a UIView
- 
- @param view The UIView you want to pass the Cartrawler Carousel too
+ Adds the cross sell card to the view
+
+ @param view a card view
  */
-- (void)addInPathCarouselToContainer:(UIView *)view;
+- (void)addCrossSellCardToView:(UIView *)view;
 
 /**
  Presents a modal view controller containing a list of all vehicles available for a search request
@@ -105,7 +103,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param parentViewController The view controller you want to display the Cartrawler Engine over
  @param vehicleItem The selected CTAvailabilityItem
  */
-- (void)presentSelectedVehicle:(nonnull UIViewController *)parentViewController selectedVehicleItem:(CTAvailabilityItem *)vehicleItem;
+//- (void)presentSelectedVehicle:(nonnull UIViewController *)parentViewController selectedVehicleItem:(CTAvailabilityItem *)vehicleItem;
 
 /**
  Removes a vehicle if selected

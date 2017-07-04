@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTInPathVehicle.h"
 
 @interface CTSelectedVehicleView : UIView
+
+- (void)setVehicle:(CTInPathVehicle *)vehicle;
+- (void)animateVehicle;
 
 @end
