@@ -115,7 +115,7 @@
 - (void)setupInPath:(UIView *)view parentVC:(UIViewController *)parentVC;
 {
     [self reset];
-    [self.inPath addInPathCarouselToContainer:view];
+    [self.inPath addCrossSellCardToView:view];
 }
 
 - (void)inPathOpenEngine:(UIViewController *)vc
@@ -182,16 +182,6 @@
 - (void)mockPayment
 {
     [self.inPath didReceiveBookingConfirmationID:@"INPATH"];
-}
-
-- (void)didDisplayVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem pricePerDay:(NSNumber *)pricePerDay
-{
-    self.priceLabel.text = pricePerDay.stringValue;
-}
-
-- (void)didTapVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem
-{
-    [self.inPath presentSelectedVehicle:self.parent selectedVehicleItem:vehicleItem];
 }
 
 @end
