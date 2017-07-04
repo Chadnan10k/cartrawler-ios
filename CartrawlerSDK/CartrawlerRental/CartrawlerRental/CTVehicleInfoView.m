@@ -80,7 +80,6 @@
     }
     self.vehicle = vehicle;
     
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"vehicle-v" step:nil];
     self.search.isBuyingInsurance = NO;
     self.search.insurance = nil;
     [self.vehicleDetailsView setItem:self.search.selectedVehicle

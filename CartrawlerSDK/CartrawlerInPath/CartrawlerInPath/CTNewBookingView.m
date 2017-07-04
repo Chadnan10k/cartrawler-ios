@@ -30,13 +30,6 @@
 
 @implementation CTNewBookingView
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    //NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    //self.vehicleImageView.image = [UIImage imageNamed:@"static_cars" inBundle:bundle compatibleWithTraitCollection:nil];
-}
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

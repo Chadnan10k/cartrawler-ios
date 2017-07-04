@@ -109,6 +109,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.filterViewController updateData:self.search.vehicleAvailability];
         [self presentVehicles];
+        [self.vehicleSelectionView scrollToTop];
     });
 }
 

@@ -38,6 +38,8 @@
 
 - (void)setNewSession
 {
+    [self.cartrawlerAPI changeClientKey:[CTSDKSettings instance].clientId];
+    
     static int trys;
     [self.cartrawlerAPI requestNewSession:[CTSDKSettings instance].currencyCode
                              languageCode:[CTSDKSettings instance].languageCode
