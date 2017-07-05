@@ -36,6 +36,11 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 
 /**
+ Called when the user taps on the cross sell card
+ */
+- (void)didTapCrossSellCard;
+
+/**
  Called when the vehicles have been fetched and the best daily rate has been calculated
 
  @param price price
@@ -96,14 +101,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param parentViewController The view controller you want to display the Cartrawler Engine over
  */
 - (void)presentAllCars:(nonnull UIViewController *)parentViewController;
-
-/**
- Presents a modal view controller display the details for a selected vehicle item
-
- @param parentViewController The view controller you want to display the Cartrawler Engine over
- @param vehicleItem The selected CTAvailabilityItem
- */
-//- (void)presentSelectedVehicle:(nonnull UIViewController *)parentViewController selectedVehicleItem:(CTAvailabilityItem *)vehicleItem;
 
 /**
  Removes a vehicle if selected
