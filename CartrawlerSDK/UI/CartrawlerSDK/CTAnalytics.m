@@ -38,9 +38,6 @@
            detail:(nonnull NSString *)detail
              step:(nullable NSNumber *)step
 {
-    if ([name isEqualToString:@"step"]) {
-        NSLog(@"Detail: %@", detail);
-    }
     if (!step) {
         step = @(self.analyticsStep);
     }
