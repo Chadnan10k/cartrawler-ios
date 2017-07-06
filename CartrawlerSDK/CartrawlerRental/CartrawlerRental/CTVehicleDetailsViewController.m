@@ -36,18 +36,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    _vehicleInfoView = [[CTVehicleInfoView alloc] initWithVerticalOffset:self.totalViewHeightConstraint.constant];
-    self.vehicleInfoView.search = self.search;
-    self.vehicleInfoView.cartrawlerAPI = self.cartrawlerAPI;
-    self.vehicleInfoView.delegate = self;
-    
-    [self.containerView addSubview:self.vehicleInfoView];
-    
-    [CTLayoutManager pinView:self.vehicleInfoView
-                 toSuperView:self.containerView
-                     padding:UIEdgeInsetsMake(0, 0, 0, 0)];
-    
     self.scrollingLogic = [[CTRentalScrollingLogic alloc] initWithTopViewHeight:self.totalViewHeightConstraint.constant];
 }
 
@@ -55,11 +43,28 @@
 {
     [super viewWillAppear:animated];
     
+    if (!self.vehicleInfoView) {
+        [self addVehicleInfoView];
+        self.totalViewTopConstraint.constant = [self.scrollingLogic offsetForDesiredOffset:0
+                                                                             currentOffset:self.totalViewTopConstraint.constant];
+        [self.vehicleInfoView refreshViewWithVehicle:self.search.selectedVehicle];
+    }
+    
     self.titleLabel.text = CTLocalizedString(CTRentalTitleDetails);
-
-    [self.vehicleInfoView refreshViewWithVehicle:self.search.selectedVehicle];
     [self updateDetailedPriceSummary];
     [self updatePriceSummary:self.search.isBuyingInsurance];
+}
+
+- (void)addVehicleInfoView {
+    self.vehicleInfoView = [[CTVehicleInfoView alloc] initWithVerticalOffset:self.totalViewHeightConstraint.constant];
+    self.vehicleInfoView.search = self.search;
+    self.vehicleInfoView.cartrawlerAPI = self.cartrawlerAPI;
+    self.vehicleInfoView.delegate = self;
+    [self.containerView addSubview:self.vehicleInfoView];
+    
+    [CTLayoutManager pinView:self.vehicleInfoView
+                 toSuperView:self.containerView
+                     padding:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 
 //MARK: CTVehicleInfoDelegate
@@ -188,7 +193,9 @@
 
 - (IBAction)backTapped:(id)sender
 {
-    [self.vehicleInfoView refreshViewWithVehicle:nil];
+    [self.vehicleInfoView removeFromSuperview];
+    self.vehicleInfoView = nil;
+    [self.search resetUserSelections];
     
     if (self.navigationController.viewControllers.firstObject == self) {
         if (self.vehicleInfoView.insuranceViewDidAppear) {

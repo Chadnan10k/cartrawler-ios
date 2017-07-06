@@ -285,6 +285,8 @@
     //check what state we are in first
     if (!self.cardView) {
         _cardView = [[CTInPathView alloc] initWithFrame:CGRectZero];
+        UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapCardView:)];
+        [_cardView addGestureRecognizer:recognizer];
     }
     
     if (self.cachedVehicle) {
@@ -306,6 +308,12 @@
                                                                  metrics:nil
                                                                    views:@{@"view" : self.cardView}]];
     
+}
+
+- (void)didTapCardView:(UIGestureRecognizer *)gestureRecognizer {
+    if ([self.delegate respondsToSelector:@selector(didTapCrossSellCard)]) {
+        [self.delegate didTapCrossSellCard];
+    }
 }
 
 - (void)removeVehicle
@@ -400,6 +408,7 @@
         [self.delegate didProduceInPathPaymentRequest:[CTInPathPayment createInPathRequest:search]
                                        vehicle:vehicle];
     }
+    [search resetUserSelections];
 }
 
 @end

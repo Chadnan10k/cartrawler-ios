@@ -202,7 +202,6 @@
 {
     [super viewWillAppear:animated];
     [[CTAnalytics instance] setAnalyticsStep:CTAnalyticsStepPayment];
-    [[CTAnalytics instance] tagScreen:@"step" detail:@"details" step:nil];
     
     for (UIView *v in self.containerView.subviews) {
         [v removeFromSuperview];

@@ -80,6 +80,9 @@
 }
 
 + (BOOL)isDate:(NSDate *)date1 inSameDayAsDate:(NSDate *)date2 {
+    if (!(date1 && date2)) {
+        return NO;
+    }
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
     unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
@@ -93,6 +96,9 @@
 }
 
 + (BOOL)isDate:(NSDate *)date1 atSameTimeAsDate:(NSDate *)date2 {
+    if (!(date1 && date2)) {
+        return NO;
+    }
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
     unsigned unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute;

@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) NSDate *pickupDate;
 @property (strong, nonatomic) NSDate *dropoffDate;
-
+@property (weak, nonatomic) UIViewController *inPathViewController;
 @property (nonatomic) BOOL isProduction;
 
 @end
@@ -115,6 +115,7 @@
 - (void)setupInPath:(UIView *)view parentVC:(UIViewController *)parentVC;
 {
     [self reset];
+    self.inPathViewController = parentVC;
     [self.inPath addCrossSellCardToView:view];
 }
 
@@ -177,6 +178,10 @@
 - (void)didFailToReceiveBestDailyRate
 {
     [self.callToAction setTitle:@"Book a car" forState:UIControlStateNormal];
+}
+
+- (void)didTapCrossSellCard {
+    [self.inPath presentAllCars:self.inPathViewController];
 }
 
 - (void)mockPayment

@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="78" width="375" height="589"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5c-IA-eYg">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5c-IA-eYg" userLabel="Secondary Navigation Bar">
                                 <rect key="frame" x="0.0" y="78" width="375" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gv2-xd-It7" customClass="CTButton">
@@ -205,6 +205,7 @@
                         <outlet property="locationLabel" destination="i9l-aR-P7a" id="mX1-cJ-oyI"/>
                         <outlet property="rightButton" destination="krI-To-qgU" id="7Uv-BI-thW"/>
                         <outlet property="searchButton" destination="Tcv-R6-cB0" id="est-7m-ERu"/>
+                        <outlet property="secondaryNavigationBar" destination="I5c-IA-eYg" id="9bl-ZR-q1w"/>
                         <outlet property="summaryView" destination="VRh-gr-1Of" id="AMR-CW-VV6"/>
                         <outlet property="summaryViewHeightConstraint" destination="cFK-Dh-ZeM" id="qEL-DU-pan"/>
                         <outlet property="summaryViewTopConstraint" destination="2JI-r2-Hxi" id="oSV-AU-rmK"/>

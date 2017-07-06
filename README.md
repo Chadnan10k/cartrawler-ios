@@ -123,32 +123,27 @@ CTPassenger *passenger1 = [CTPassenger passengerWithFirstName:@"Lee"
 
 ```
 
-- So by this stage you should have something like this:
-
-![Cross sell widget example](https://raw.githubusercontent.com/cartrawler/cartrawler-ios/phase-4/docs/cross-sell-1.png)
-
 - Now, let's make this cross sell widget interactive
   By implementing the CartrawlerInPath delegate you can subscribe to the following methods:
 
 ```
-//MARK: CartrawlerInPath Delegate
-- (void)didDisplayVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem
-{
-  //This method is used to notify your app about the current presented vehicle in the carousel.
-  //the CTAvailabilityItem object contains all information about a vehicle and it's vendor.
-}
+/**
+Called when the user taps on the cross sell card
+*/
+- (void)didTapCrossSellCard;
 
-- (void)didTapVehicleAtIndex:(NSUInteger)index vehicleItem:(CTAvailabilityItem *)vehicleItem
-{
-    //use the
-    //- (void)presentSelectedVehicle:(nonnull UIViewController *)parentViewController selectedVehicleItem:(CTAvailabilityItem *)vehicleItem;
-    //method here
-}
+/**
+Called when the vehicles have been fetched and the best daily rate has been calculated
 
-- (void)didProduceInPathPaymentRequest:(NSDictionary *)request vehicle:(CTInPathVehicle *)vehicle
-{
-    //This is where we pass you a NSDictionary connntaining a json payload with the Cartrawler payment request json body
-}
+@param price the best daily rate
+@param currency the currency
+*/
+- (void)didReceiveBestDailyRate:(NSNumber *)price currency:(NSString *)currency;
+
+/**
+Called when the call to fetch vehicles fails and the best daily rate cannot be calculated
+*/
+- (void)didFailToReceiveBestDailyRate;
 ```
 
 ### So I have made a payment with the cross sell widget on my server, what's left?
