@@ -43,6 +43,8 @@
 
 - (void)reset;
 
+- (void)resetUserSelections;
+
 - (void)setEngineInfoFromAvail;
 
 @end

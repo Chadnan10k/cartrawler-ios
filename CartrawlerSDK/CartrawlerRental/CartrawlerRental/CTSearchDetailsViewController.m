@@ -134,6 +134,9 @@
 // MARK: Analytics
 
 - (void)tagSearchUpdates {
+    if (!self.previousSearch.vehicleAvailability) {
+        return;
+    }
     BOOL updated = NO;
     
     BOOL differentPickUpLocation = ![self.previousSearch.pickupLocation.code isEqualToString:self.search.pickupLocation.code];

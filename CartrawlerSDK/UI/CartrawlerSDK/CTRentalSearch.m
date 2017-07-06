@@ -47,6 +47,15 @@
     [CTSDKSettings instance].queryID = @"";
 }
 
+- (void)resetUserSelections {
+    for (CTExtraEquipment *extra in self.selectedVehicle.vehicle.extraEquipment) {
+        extra.qty = extra.isIncludedInRate ? 1 : 0;
+    }
+    self.selectedVehicle = nil;
+    self.isBuyingInsurance = NO;
+    self.insurance = nil;
+}
+
 - (void)setEngineInfoFromAvail
 {
     if (self.vehicleAvailability) {

@@ -75,13 +75,8 @@
 
 - (void)refreshViewWithVehicle:(CTAvailabilityItem *)vehicle
 {
-    if ([vehicle isEqual:self.vehicle]) {
-        return;
-    }
     self.vehicle = vehicle;
     
-    self.search.isBuyingInsurance = NO;
-    self.search.insurance = nil;
     [self.vehicleDetailsView setItem:self.search.selectedVehicle
                              pickupDate:self.search.pickupDate
                             dropoffDate:self.search.dropoffDate];

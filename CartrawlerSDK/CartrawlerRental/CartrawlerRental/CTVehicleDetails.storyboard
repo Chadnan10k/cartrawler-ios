@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -82,6 +82,7 @@
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="HEH-RF-0zq" appends="YES" id="6Ka-51-sYh"/>
+                                    <outletCollection property="gestureRecognizers" destination="GF4-OQ-FM6" appends="YES" id="1Rt-3d-Yzr"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gZ-D7-Ply" customClass="CTNavigationView">
@@ -164,9 +165,14 @@
                         <action selector="didInteractWithDetailedPriceSummary:" destination="3HX-7a-ja0" id="cYw-hc-3RJ"/>
                     </connections>
                 </tapGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="Vj6-jk-7Q4">
+                <swipeGestureRecognizer direction="up" id="Vj6-jk-7Q4">
                     <connections>
                         <action selector="didInteractWithDetailedPriceSummary:" destination="3HX-7a-ja0" id="Hu4-A3-5Dh"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="up" id="GF4-OQ-FM6">
+                    <connections>
+                        <action selector="didInteractWithDetailedPriceSummary:" destination="3HX-7a-ja0" id="n1s-pS-9cf"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -378,7 +384,7 @@
             <objects>
                 <navigationController storyboardIdentifier="CTTermsViewControllerNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="zaw-2W-wIV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LTW-fF-QCn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LTW-fF-QCn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
