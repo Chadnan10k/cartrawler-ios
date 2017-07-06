@@ -43,8 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Called when the vehicles have been fetched and the best daily rate has been calculated
 
- @param price price
- @param currency currency
+ @param price the best daily rate
+ @param currency the currency
  */
 - (void)didReceiveBestDailyRate:(NSNumber *)price currency:(NSString *)currency;
 
