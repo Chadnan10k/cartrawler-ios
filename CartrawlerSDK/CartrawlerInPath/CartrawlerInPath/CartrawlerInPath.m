@@ -411,8 +411,4 @@
     [search resetUserSelections];
 }
 
-- (void)didBookVehicle:(CTBooking *)booking {
-    
-}
-
 @end

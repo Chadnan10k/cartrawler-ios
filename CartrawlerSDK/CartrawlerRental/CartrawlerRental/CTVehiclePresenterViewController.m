@@ -46,6 +46,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 @property (nonatomic) CTPresentedView presentedView;
 
+@property (nonatomic, assign) BOOL sortByPrice;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarHeightConstraint;
 @property (nonatomic, strong) CTRentalScrollingLogic *scrollingLogic;
@@ -61,6 +63,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.sortByPrice = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.rightButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.rightButton.titleLabel.minimumScaleFactor = 0.6;
@@ -117,7 +121,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
         [self.vehicleSelectionView updateSelection:self.search.vehicleAvailability.items
                                         pickupDate:self.search.pickupDate
                                        dropoffDate:self.search.dropoffDate
-                                       sortByPrice:NO];
+                                       sortByPrice:self.sortByPrice];
         [self.vehicleSelectionView scrollToTop];
         self.presentedView = CTPresentedViewList;
     }
@@ -229,7 +233,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
             break;
         case CTPresentedViewList:
             [self.leftButton setTitle:CTLocalizedString(CTRentalResultsFilter) forState:UIControlStateNormal];
-            [self.rightButton setAttributedTitle:[self sortDropdownTitle:YES] forState:UIControlStateNormal];
+            [self.rightButton setAttributedTitle:[self sortDropdownTitle:self.sortByPrice] forState:UIControlStateNormal];
             break;
         case CTPresentedViewDetails:
             [self.leftButton setTitle:CTLocalizedString(CTRentalResultsOtherCars) forState:UIControlStateNormal];
@@ -337,7 +341,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [self.vehicleSelectionView updateSelection:filteredData
                                     pickupDate:self.search.pickupDate
                                    dropoffDate:self.search.dropoffDate
-                                   sortByPrice:YES];
+                                   sortByPrice:self.sortByPrice];
 }
 
 // MARK: Sort
@@ -378,13 +382,14 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 }
 
 - (void)sortVehicleListByPrice:(BOOL)sortByPrice {
+    self.sortByPrice = sortByPrice;
     if (sortByPrice) {
         [[CTAnalytics instance] tagScreen:@"sort" detail:@"price" step:nil];
     } else {
         [[CTAnalytics instance] tagScreen:@"sort" detail:@"relevance" step:nil];
     }
     
-    [self updateSortButtonByPrice:sortByPrice];
+    [self updateButtonTitlesForPresentedView:self.presentedView];
     [self.vehicleSelectionView sortByPrice:sortByPrice];
 }
 
@@ -484,26 +489,6 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
-
-- (void)updateSortButtonByPrice:(BOOL)sortByPrice
-{
-    NSString *boldText = sortByPrice ? CTLocalizedString(CTRentalSortPrice) : CTLocalizedString(CTRentalSortRecommended);
-    
-    NSAttributedString *sortString = [NSString regularText:CTLocalizedString(CTRentalSortTitle)
-                                              regularColor:[UIColor whiteColor]
-                                               regularSize:17
-                                            attributedText:boldText
-                                                 boldColor:[UIColor whiteColor]
-                                                  boldSize:17
-                                                  useSpace:YES];
-    
-    NSBundle *bundle = [NSBundle bundleForClass:self.class];
-    UIImage *image = [[UIImage imageNamed:@"down_arrow" inBundle:bundle compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    sortString = [NSString string:sortString withInlineImage:image inlineImageScale:0.65];
-    
-    [self.rightButton setAttributedTitle:sortString forState:UIControlStateNormal];
-}
-
 
 // MARK: CTVehicleInfoDelegate
 
