@@ -152,13 +152,11 @@
     //header label
     self.headerLeftLabel.text = item.vehicle.makeModelName;
     
-    NSNumber *pricePerDay = [self pricePerDay:item.vehicle
-                                   pickupDate:pickupDate
-                                  dropoffDate:dropoffDate];
+    NSString *pricePerDay = [item.vehicle.totalPriceForThisVehicle pricePerDay:pickupDate dropoff:dropoffDate];
     
     NSMutableAttributedString *priceCompoundString = [NSMutableAttributedString new];
     
-    NSAttributedString *priceString = [[NSAttributedString alloc] initWithString:[pricePerDay numberStringWithCurrencyCode]
+    NSAttributedString *priceString = [[NSAttributedString alloc] initWithString:pricePerDay
                                                                       attributes:@{NSFontAttributeName :
                                                                                        [UIFont fontWithName:[CTAppearance instance].boldFontName
                                                                                                        size:18]
@@ -240,18 +238,6 @@
                                                                            @"collectionView" : self.infoCollectionView}]];
     
     [self bringSubviewToFront:self.supplierImageView];
-}
-
-// MARK: Price Per Day
-
-- (NSNumber *)pricePerDay:(CTVehicle *)vehicle pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
-{
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
-                                                        fromDate:pickupDate
-                                                          toDate:dropoffDate
-                                                         options:0];
-    return [NSNumber numberWithFloat: vehicle.totalPriceForThisVehicle.floatValue / ([components day] ?: 1)];
 }
 
 - (void)prepareForInterfaceBuilder
