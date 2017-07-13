@@ -165,6 +165,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self hideVehicleDetailsView];
         [self animateNavigationBarToOriginalPosition];
+        [self setNavigationBarLocationLabel];
+        [self setNavigationBarDateLabel];
         [self updateVehicleListView];
         [self updateButtonTitlesForPresentedView:self.presentedView];
         self.secondaryNavigationBar.alpha = 1;
@@ -477,6 +479,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     [self tagExit];
     
     [self.search resetUserSelections];
+    
+    [self hideDetailedPriceSummary];
     
     self.presentedView = CTPresentedViewNone;
     

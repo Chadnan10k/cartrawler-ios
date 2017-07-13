@@ -196,15 +196,17 @@
 
 - (void)displayAlertWithMessage:(NSString *)message
 {
-    CTAlertViewController *viewController = [CTAlertViewController alertControllerWithTitle:@"Error" message:message];
-    viewController.backgroundTapDismissalGestureEnabled = YES;
-    CTAlertAction *okAction = [CTAlertAction actionWithTitle:CTLocalizedString(CTRentalErrorOk)
-                                                     handler:^(CTAlertAction *action) {
-                                                         [viewController dismissViewControllerAnimated:YES completion:nil];
-                                                     }];
-    [viewController addAction:okAction];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self presentModalViewController:viewController];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CTAlertViewController *viewController = [CTAlertViewController alertControllerWithTitle:@"Error" message:message];
+        viewController.backgroundTapDismissalGestureEnabled = YES;
+        CTAlertAction *okAction = [CTAlertAction actionWithTitle:CTLocalizedString(CTRentalErrorOk)
+                                                         handler:^(CTAlertAction *action) {
+                                                             [viewController dismissViewControllerAnimated:YES completion:nil];
+                                                         }];
+        [viewController addAction:okAction];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self presentModalViewController:viewController];
+        });
     });
 }
 
