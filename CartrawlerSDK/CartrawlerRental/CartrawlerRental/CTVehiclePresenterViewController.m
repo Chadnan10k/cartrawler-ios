@@ -480,6 +480,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     
     [self.search resetUserSelections];
     
+    [self hideDetailedPriceSummary];
+    
     self.presentedView = CTPresentedViewNone;
     
     BOOL isInPath = self.navigationController.viewControllers.firstObject == self;

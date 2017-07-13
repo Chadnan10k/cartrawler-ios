@@ -196,6 +196,7 @@
     [self.vehicleInfoView removeFromSuperview];
     self.vehicleInfoView = nil;
     [self.search resetUserSelections];
+    [self hideDetailedPriceSummary];
     
     if (self.navigationController.viewControllers.firstObject == self) {
         if (self.vehicleInfoView.insuranceViewDidAppear) {
