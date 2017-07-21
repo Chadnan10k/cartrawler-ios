@@ -361,6 +361,7 @@
 		45D53D4E1CBBE8E600DEDB0B /* CartrawlerAPITests */ = {
 			isa = PBXGroup;
 			children = (
+				6AB778A71F210F9E0040CFBC /* Models */,
 				45D53D511CBBE8E600DEDB0B /* Info.plist */,
 				45233D271CF4542100B8E2B2 /* GroundAvailRSJSON.json */,
 				451B99C81CFEF184001D07A7 /* LocationTests.m */,
@@ -503,6 +504,13 @@
 				451B9A571D006B08001D07A7 /* CTNetworkUtils.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		6AB778A71F210F9E0040CFBC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		BC811C6F1E294C820049C3DF /* Init */ = {
