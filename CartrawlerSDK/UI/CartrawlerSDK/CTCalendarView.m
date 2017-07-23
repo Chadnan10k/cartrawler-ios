@@ -29,9 +29,6 @@
 
 @implementation CTCalendarView
 
-
-
-
 - (void)reset
 {
     [self.tableView setContentOffset:CGPointZero animated:YES];

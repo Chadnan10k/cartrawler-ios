@@ -31,6 +31,14 @@
 
 @implementation CartrawlerAPI
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _postRequest = [[CTPostRequest alloc] init];
+    }
+    return self;
+}
+
 - (instancetype)initWithClientKey:(NSString *)clientKey language:(NSString *)language debug:(BOOL)debug
 {
     self = [super init];
@@ -63,6 +71,18 @@
     _locale = languageCode;
 }
 
+- (void)changeDebug:(BOOL)debug {
+    if (debug) {
+        _endPoint = CTTestAPI;
+        _secureEndPoint = CTTestAPISecure;
+        _apiTarget = CTTestTarget;
+    } else {
+        _endPoint = CTProductionAPI;
+        _secureEndPoint = CTProductionAPISecure;
+        _apiTarget = CTProductionTarget;
+    }
+}
+
 - (void)changeClientKey:(NSString *)clientKey
 {
     _clientAPIKey = [[NSString alloc] initWithString:clientKey];
@@ -91,6 +111,27 @@
                           }];
 }
 
++ (void)requestNewSessionWithClientID:(NSString *)clientID
+                         currencyCode:(NSString *)currencyCode
+                         languageCode:(NSString *)languageCode
+                          countryCode:(NSString *)countryCode
+                            debugMode:(BOOL)debugMode
+                           completion:(EngineDetailsCompletion)completion
+{
+    NSString *target = debugMode ? CTTestTarget : CTProductionTarget;
+    NSString *endPoint = [NSString stringWithFormat:@"%@%@", debugMode ? CTTestAPI : CTProductionAPI, @"CT_IpToCountryRQ"];
+    
+    [CT_IpToCountryRQ performRequest:clientID
+                            currency:currencyCode
+                        languageCode:languageCode
+                         countryCode:countryCode
+                              target:target
+                            endpoint:endPoint
+                          completion:^(CT_IpToCountryRS *response, CTErrorResponse *error) {
+                              completion(response, error);
+                          }];
+}
+
 #pragma mark Location Search
 
 - (void)locationSearchWithPartialString:(NSString *)partialString
@@ -105,18 +146,52 @@
                                                       needsCoordinates: needsCoordinates];
     
     [self.postRequest performRequestWithData:endPoint
-                               jsonBody: requestBody
-                         loggingEnabled: self.loggingEnabled
+                                    jsonBody: requestBody
+                              loggingEnabled: self.loggingEnabled
+                                  completion:^(NSDictionary *response,
+                                               CTErrorResponse *error)
+     {
+         if (error == nil) {
+             CTLocationSearch *searchResponse = [[CTLocationSearch alloc] initWithPartialTextDictionary: response];
+             completion(searchResponse, nil);
+         } else {
+             completion(nil, error);
+         }
+     }];
+}
+
++ (void)locationSearchPerformRequestWithClientID:(NSString *)clientID
+                                  locationString:(NSString *)locationString
+                                       debugMode:(BOOL)debugMode
+                                  loggingEnabled:(BOOL)loggingEnabled
+                                      completion:(LocationSearchCompletion)completion
+{
+    // TODO: Extract
+    NSString *target = debugMode ? CTTestTarget : CTProductionTarget;
+    NSString *endPoint = [NSString stringWithFormat:@"%@%@", debugMode ? CTTestAPI : CTProductionAPI, @"CT_VehLocSearchRQ"];
+    
+    NSString *requestBody = [CTRequestBuilder CT_VehLocSearchRQPartial:locationString
+                                                              clientID:clientID
+                                                                target:target
+                                                                locale:@"IE"
+                                                      needsCoordinates:NO];
+    // TODO: Fix locale to self.locale
+    
+    CTPostRequest *request = [CTPostRequest new];
+    
+    [request performRequestWithData:endPoint
+                               jsonBody:requestBody
+                         loggingEnabled:loggingEnabled
                              completion:^(NSDictionary *response,
                                           CTErrorResponse *error)
-    {
-        if (error == nil) {
-            CTLocationSearch *searchResponse = [[CTLocationSearch alloc] initWithPartialTextDictionary: response];
-            completion(searchResponse, nil);
-        } else {
-            completion(nil, error);
-        }
-    }];
+     {
+         if (error == nil) {
+             CTLocationSearch *searchResponse = [[CTLocationSearch alloc] initWithPartialTextDictionary: response];
+             completion(searchResponse, nil);
+         } else {
+             completion(nil, error);
+         }
+     }];
 }
 
 - (void)enableLogging:(BOOL)enabled
@@ -251,6 +326,52 @@
         }
     }];
 
+}
+
++ (void)requestVehicleAvailabilityForLocation:(NSString *)pickupLocationCode
+                           returnLocationCode:(NSString *)returnLocationCode
+                          customerCountryCode:(NSString *)customerCountryCode
+                                 passengerQty:(NSNumber *)passengerQty
+                                    driverAge:(NSNumber *)driverAge
+                               pickUpDateTime:(NSDate *)pickupDateTime
+                               returnDateTime:(NSDate *)returnDateTime
+                                 currencyCode:(NSString *)currencyCode
+                                     clientID:(NSString *)clientID
+                                    debugMode:(BOOL)debugMode
+                               loggingEnabled:(BOOL)loggingEnabled
+                                   completion:(RequestAvailabilityCompletion)completion {
+    //NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.endPoint, @"OTA_VehAvailRateRQ"];
+    
+    // TODO: Extract
+    NSString *target = debugMode ? CTTestTarget : CTProductionTarget;
+    NSString *endPoint = [NSString stringWithFormat:@"%@%@", debugMode ? CTTestAPI : CTProductionAPI, @"OTA_VehAvailRateRQ"];
+    
+    NSString *requestBody = [CTRequestBuilder OTA_VehAvailRateRQ: [pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
+                                                  returnDateTime: [returnDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
+                                              pickUpLocationCode: pickupLocationCode
+                                              returnLocationCode: returnLocationCode
+                                                       driverAge: driverAge.stringValue
+                                                    passengerQty: passengerQty.stringValue
+                                                 homeCountryCode: customerCountryCode
+                                                        clientID: clientID
+                                                          target: target
+                                                          locale: @"IE"
+                                                        currency: currencyCode];
+    
+    [[CTPostRequest new] performRequestWithData:endPoint
+                                    jsonBody:requestBody
+                              loggingEnabled:loggingEnabled
+                                  completion:^(NSDictionary *response,
+                                               CTErrorResponse *error)
+     {
+         if (error == nil) {
+             CTVehicleAvailability *vehAvailRSCore = [[CTVehicleAvailability alloc] initFromVehAvailRSCoreDictionary: response];
+             completion(vehAvailRSCore, nil);
+         } else {
+             completion(nil, error);
+         }
+     }];
+    
 }
 
 #pragma mark Insurance quote

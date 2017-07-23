@@ -7,11 +7,15 @@
 //
 
 #import "ViewController.h"
+#import "StandaloneViewController.h"
+#import <CartrawlerSDK/CartrawlerSDK.h>
+
+
 #import "RYRRentalManager.h"
 #import "InPathViewController.h"
 
 @interface ViewController ()
-
+@property (nonatomic) CartrawlerSDK *sdk;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *endpointControl;
 
 @property (nonatomic) BOOL isDebug;
@@ -32,7 +36,11 @@
 }
 
 - (IBAction)openCarRental:(id)sender {
-    [[RYRRentalManager instance].rental presentCarRentalInViewController:self withClientID:@"642619"];
+    self.sdk = [[CartrawlerSDK alloc] initWithlanguageCode:@"en" sandboxMode:YES];
+    [self.sdk setNewSession];
+    [self.sdk presentInParentViewController:self];
+    
+//    [[RYRRentalManager instance].rental presentCarRentalInViewController:self withClientID:@"642619"];
 }
 
 - (IBAction)endpointChanged:(id)sender {

@@ -52,6 +52,7 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 - (instancetype)initWithlanguageCode:(NSString *)languageCode
                          sandboxMode:(BOOL)sandboxMode;
 
+- (void)presentInParentViewController:(UIViewController *)viewController;
 
 /**
  Gets a new session ID

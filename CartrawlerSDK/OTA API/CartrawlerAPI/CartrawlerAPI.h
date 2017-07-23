@@ -76,6 +76,9 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
  */
 - (void)changeClientKey:(NSString *)clientKey;
 
+
+- (void)changeDebug:(BOOL)debug;
+
 /**
  *  Shows API requests and responses
  */
@@ -94,6 +97,13 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
               countryCode:(NSString *)countryCode
                completion:(EngineDetailsCompletion)completion;
 
++ (void)requestNewSessionWithClientID:(NSString *)clientID
+                         currencyCode:(NSString *)currencyCode
+                         languageCode:(NSString *)languageCode
+                          countryCode:(NSString *)countryCode
+                            debugMode:(BOOL)debugMode
+                           completion:(EngineDetailsCompletion)completion;
+
 #pragma mark Location Search
 
 /**
@@ -105,6 +115,12 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
 - (void)locationSearchWithPartialString:(NSString *)partialString
                        needsCoordinates:(BOOL)needsCoordinates
                              completion:(LocationSearchCompletion)completion;
+
++ (void)locationSearchPerformRequestWithClientID:(NSString *)clientID
+                                  locationString:(NSString *)locationString
+                                       debugMode:(BOOL)debugMode
+                                  loggingEnabled:(BOOL)loggingEnabled
+                                      completion:(LocationSearchCompletion)completion;
 /**
  *  Search for supplier location by city / country
  *
@@ -162,6 +178,19 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
                                pickUpDateTime:(NSDate *)pickupDateTime
                                returnDateTime:(NSDate *)returnDateTime
                                  currencyCode:(NSString *)currencyCode
+                                   completion:(RequestAvailabilityCompletion)completion;
+
++ (void)requestVehicleAvailabilityForLocation:(NSString *)pickupLocationCode
+                           returnLocationCode:(NSString *)returnLocationCode
+                          customerCountryCode:(NSString *)customerCountryCode
+                                 passengerQty:(NSNumber *)passengerQty
+                                    driverAge:(NSNumber *)driverAge
+                               pickUpDateTime:(NSDate *)pickupDateTime
+                               returnDateTime:(NSDate *)returnDateTime
+                                 currencyCode:(NSString *)currencyCode
+                                     clientID:(NSString *)clientID
+                                    debugMode:(BOOL)debugMode
+                               loggingEnabled:(BOOL)loggingEnabled
                                    completion:(RequestAvailabilityCompletion)completion;
 
 /**

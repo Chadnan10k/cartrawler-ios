@@ -428,7 +428,7 @@
 
 - (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle
 {
-    NSString *language = [[CTSDKSettings instance].languageCode lowercaseString];
+    NSString *language = @"en";// [[CTSDKSettings instance].languageCode lowercaseString];
     
     NSBundle *sdkBundle = [NSBundle bundleForClass:[self class]];
     

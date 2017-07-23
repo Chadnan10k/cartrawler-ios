@@ -8,6 +8,7 @@
 
 
 #import "CartrawlerSDK.h"
+#import "CTAppController.h"
 #import "CTSDKSettings.h"
 
 @interface CartrawlerSDK() <CTAnalyticsDelegate>
@@ -22,13 +23,32 @@
                          sandboxMode:(BOOL)sandboxMode
 {
     self = [super init];
-    [[CTSDKSettings instance] setClientId:@"" languageCode:languageCode isDebug:sandboxMode];
+    //[[CTSDKSettings instance] setClientId:@"" languageCode:languageCode isDebug:sandboxMode];
     
-    _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
-                                                     language:[CTSDKSettings instance].languageCode
-                                                        debug:[CTSDKSettings instance].isDebug];
+    // TODO: Extract to Client
+    [CTAppController dispatchAction:CTActionUserSettingsSetClientID payload:@"642619"];
+    
+    [CTAppController dispatchAction:CTActionUserSettingsSetLanguageCode payload:languageCode];
+    [CTAppController dispatchAction:CTActionUserSettingsSetDebugMode payload:@(sandboxMode)];
+    
+    NSLocale *locale = [NSLocale currentLocale];
+    NSString *countryCode = [locale objectForKey: NSLocaleCountryCode];
+    [CTAppController dispatchAction:CTActionUserSettingsSetCountryCode payload:countryCode];
+    
+    NSString *currencyCode = [locale objectForKey:NSLocaleCurrencyCode];
+    [CTAppController dispatchAction:CTActionUserSettingsSetCurrencyCode payload:currencyCode];
+
+    
+//    _cartrawlerAPI = [[CartrawlerAPI alloc] initWithClientKey:[CTSDKSettings instance].clientId
+//                                                     language:[CTSDKSettings instance].languageCode
+//                                                        debug:[CTSDKSettings instance].isDebug];
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     return self;
+}
+
+- (void)presentInParentViewController:(UIViewController *)viewController {
+    [CTAppController dispatchAction:CTActionNavigationSetParentViewController payload:viewController];
+    [CTAppController dispatchAction:CTActionNavigationPresentSearchStep payload:@(YES)];
 }
 
 - (void)enableLogs:(BOOL)enable
@@ -38,25 +58,27 @@
 
 - (void)setNewSession
 {
-    [self.cartrawlerAPI changeClientKey:[CTSDKSettings instance].clientId];
+    [CTAppController dispatchAction:CTActionUserSettingsSetNewSession payload:nil];
     
-    static int trys;
-    [self.cartrawlerAPI requestNewSession:[CTSDKSettings instance].currencyCode
-                             languageCode:[CTSDKSettings instance].languageCode
-                              countryCode:[CTSDKSettings instance].homeCountryCode
-                               completion:^(CT_IpToCountryRS *response, CTErrorResponse *error) {
-                                   if (response) {
-                                       [CTSDKSettings instance].engineLoadID = response.engineLoadID;
-                                       [CTSDKSettings instance].customerID = response.customerID;
-                                   } else {
-                                       //retry
-                                       if (trys < 3) {
-                                           [self setNewSession];
-                                           ++trys;
-                                       }
-                                       [[CTAnalytics instance] tagError:@"sdk init" event:@"requestNewSession" message:error.errorMessage];
-                                   }
-                               }];
+//    [self.cartrawlerAPI changeClientKey:[CTSDKSettings instance].clientId];
+//    
+//    static int trys;
+//    [self.cartrawlerAPI requestNewSession:[CTSDKSettings instance].currencyCode
+//                             languageCode:[CTSDKSettings instance].languageCode
+//                              countryCode:[CTSDKSettings instance].homeCountryCode
+//                               completion:^(CT_IpToCountryRS *response, CTErrorResponse *error) {
+//                                   if (response) {
+//                                       [CTSDKSettings instance].engineLoadID = response.engineLoadID;
+//                                       [CTSDKSettings instance].customerID = response.customerID;
+//                                   } else {
+//                                       //retry
+//                                       if (trys < 3) {
+//                                           [self setNewSession];
+//                                           ++trys;
+//                                       }
+//                                       [[CTAnalytics instance] tagError:@"sdk init" event:@"requestNewSession" message:error.errorMessage];
+//                                   }
+//                               }];
 }
 
 + (CTAppearance *)appearance
