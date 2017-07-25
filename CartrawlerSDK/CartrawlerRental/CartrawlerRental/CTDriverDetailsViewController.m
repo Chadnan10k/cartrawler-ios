@@ -745,5 +745,4 @@
                                                                          currentOffset:self.totalViewTopConstraint.constant];
 }
 
-
 @end

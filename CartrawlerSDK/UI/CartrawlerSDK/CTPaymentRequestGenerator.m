@@ -30,6 +30,9 @@
                                          surName:search.surname
                                     emailAddress:search.email
                                          address:search.concatinatedAddress
+										cityName:search.city
+										postCode:search.postcode
+									 countryName:[CTSDKSettings instance].homeCountryCode
                                      phoneNumber:search.phone
                                  insuranceObject:search.insurance
                                isBuyingInsurance:search.isBuyingInsurance
@@ -57,7 +60,10 @@
                     surName:(NSString *)surName
                emailAddress:(NSString *)emailAddress
                     address:(NSString *)address
-                phoneNumber:(NSString *)phoneNumber
+				   cityName:(NSString *)cityName
+				   postCode:(NSString *)postCode
+				countryName:(NSString *)countryName
+				phoneNumber:(NSString *)phoneNumber
             insuranceObject:(CTInsurance *)ins
           isBuyingInsurance:(BOOL)isBuyingInsurance
                    clientID:(NSString *)clientID
@@ -111,7 +117,16 @@
         NSString *flightNumberString = [flightNumber substringFromIndex:2];
         flightDetails = [NSString stringWithFormat:@"\"ArrivalDetails\":{\"@TransportationCode\":\"14\",\"@Number\":\"%@\",\"OperatingCompany\":\"%@\"}, \r", flightNumberString, flightNumberPrefixString];
     }
-    
+	
+	givenName = [CTSDKSettings instance].isStandalone  ? givenName : @"[FIRSTNAME]";
+	surName = [CTSDKSettings instance].isStandalone  ? surName : @"[SURNAME]";
+	phoneNumber = [CTSDKSettings instance].isStandalone  ? phoneNumber : @"[TELEPHONE]";
+	emailAddress = [CTSDKSettings instance].isStandalone  ? emailAddress : @"[EMAIL]";
+	addressLine = [CTSDKSettings instance].isStandalone && !isBuyingInsurance ? addressLine : @"[ADDRESSLINE1]";
+	cityName = [CTSDKSettings instance].isStandalone ? cityName : @"[CITY]";
+	postCode = [CTSDKSettings instance].isStandalone ? postCode : @"[POSTCODE]" ;
+	countryName = [CTSDKSettings instance].isStandalone ? countryName : @"[COUNTRYNAMECODE]";
+	
     NSString *json = [NSString stringWithFormat:
     @"{ \r"
     @"    \"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\", \r"
@@ -158,13 +173,15 @@
     @"                }, \r"
     @"                \"Address\":{ \r"
     @"                    \"@Type\":\"2\", \r"
-    @"                    %@               \r"
+    @"                    \"AddressLine\":\"%@\", \r"
+    @"                    \"CityName\":\"%@\",  \r"
+	@"                    \"PostalCode\":\"%@\",  \r"
     @"                    \"CountryName\":{ \r"
     @"                        \"@Code\":\"%@\" \r"
     @"                    } \r"
     @"                }, \r"
-    @"                \"CitizenCountryName\":{ \r"
-    @"                    \"@Code\":\"%@\" \r"
+    @"			\"CitizenCountryName\":{ \r"
+    @"			\"@Code\":\"%@\" \r"
     @"                } \r"
     @"            } \r"
     @"        }, \r"
@@ -201,9 +218,9 @@
     @"            } \r"
     @"        } \r"
     @"    } \r"
-    @" }", target, locale, currency, clientID, pickupDateTime, returnDateTime, pickupLocationCode, dropoffLocationCode, givenName, surName, phoneNumber, emailAddress, addressLine, homeCountry, homeCountry, driverAge, extrasString, flightDetails, refID, refTimeStamp, refURL, insuranceJson];
-        
-    return json;
+    @" }", target, locale, currency, clientID, pickupDateTime, returnDateTime, pickupLocationCode, dropoffLocationCode, givenName, surName, phoneNumber, emailAddress, addressLine, cityName, postCode, countryName, homeCountry, driverAge, extrasString, flightDetails, refID, refTimeStamp, refURL, insuranceJson];
+	
+	return json;
 }
 
 @end
