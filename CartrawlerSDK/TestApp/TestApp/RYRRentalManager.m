@@ -52,35 +52,35 @@
 - (void)reset
 {
     
-    CTPassenger *passenger1 = [CTPassenger passengerWithFirstName:@"Lee"
-                                                         lastName:@"Maguire"
-                                                     addressLine1:@"123 Cartrawler St"
-                                                     addressLine2:nil
-                                                             city:@"Dundrum"
-                                                         postcode:@"D18"
-                                                      countryCode:@"IE"
-                                                              age:@22
-                                                            email:@"lmaguire@cartrawler.com"
-                                                            phone:@"0861111111"
-                                                  isPrimaryDriver:YES];
-    
-    CTPassenger *passenger2 = [CTPassenger passengerWithFirstName:@"John"
-                                                         lastName:@"Smith"
-                                                     addressLine1:@"123 Cartrawler St"
-                                                     addressLine2:nil
-                                                             city:@"Dundrum"
-                                                         postcode:@"D18"
-                                                      countryCode:@"IE"
-                                                              age:@30
-                                                            email:nil
-                                                            phone:nil
-                                                  isPrimaryDriver:NO];
-    
-    
+	CTPassenger *passenger1 = [CTPassenger passengerWithFirstName:@"Lee"
+														 lastName:@"Maguire"
+													 addressLine1:@"123 Cartrawler St"
+													 addressLine2:nil
+															 city:@"Dundrum"
+														 postcode:@"D18"
+													  countryCode:@"IE"
+															  age:@22
+															email:@"lmaguire@cartrawler.com"
+															phone:@"0861111111"
+												  isPrimaryDriver:YES];
+	
+	CTPassenger *passenger2 = [CTPassenger passengerWithFirstName:@"John"
+														 lastName:@"Smith"
+													 addressLine1:@"123 Cartrawler St"
+													 addressLine2:nil
+															 city:@"Dundrum"
+														 postcode:@"D18"
+													  countryCode:@"IE"
+															  age:@30
+															email:nil
+															phone:nil
+												  isPrimaryDriver:NO];
+	
+	
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:86400];
     _pickupDate = date;
 
-    
+	
     [self.inPath performSearchWithIATACode:@"ALC"
                                 pickupDate:self.pickupDate
                                 returnDate:[self.pickupDate dateByAddingTimeInterval:260000]
@@ -90,7 +90,7 @@
                                   clientID:@"642619"
                       parentViewController:self.parent];
 
-    
+	
     [self.callToAction setTitle:@"Loading" forState:UIControlStateNormal];
 
 }
