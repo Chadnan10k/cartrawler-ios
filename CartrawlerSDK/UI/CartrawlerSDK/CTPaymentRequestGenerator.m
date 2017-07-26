@@ -79,7 +79,7 @@
     if (isBuyingInsurance) {
         insuranceJson =     [NSString stringWithFormat:@"\"Reference\":{\"@Type\":\"16\"\r,\"@ID\":\"%@\"\r,\"@ID_Context\":\"INSURANCE\"\r,\"@Amount\":\"%@\"\r,\"@CurrencyCode\":\"%@\"\r,\"@URL\":\"%@\"},", ins.planID, ins.premiumAmount, ins.premiumCurrencyCode, ins.termsAndConditionsURL];
     
-        addressLine = [NSString stringWithFormat:@"\"AddressLine\":\"%@\", \r", address];
+        addressLine = [NSString stringWithFormat:@"%@", address];
     }
     
     NSString *extrasString = @"";
@@ -122,7 +122,7 @@
 	surName = [CTSDKSettings instance].isStandalone  ? surName : @"[SURNAME]";
 	phoneNumber = [CTSDKSettings instance].isStandalone  ? phoneNumber : @"[TELEPHONE]";
 	emailAddress = [CTSDKSettings instance].isStandalone  ? emailAddress : @"[EMAIL]";
-	addressLine = [CTSDKSettings instance].isStandalone && !isBuyingInsurance ? addressLine : @"[ADDRESSLINE1]";
+	addressLine = [CTSDKSettings instance].isStandalone ? addressLine : @"[ADDRESSLINE1]";
 	cityName = [CTSDKSettings instance].isStandalone ? cityName : @"[CITY]";
 	postCode = [CTSDKSettings instance].isStandalone ? postCode : @"[POSTCODE]" ;
 	countryName = [CTSDKSettings instance].isStandalone ? countryName : @"[COUNTRYNAMECODE]";
