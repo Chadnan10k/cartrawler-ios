@@ -53,23 +53,27 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // TODO: Extract String
-    static NSString *CellIdentifier = @"vehicleInfoCell";
+    static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                            reuseIdentifier:CellIdentifier] ;
     }
     
     CTMatchedLocation *location = self.viewModel.rows[indexPath.section][indexPath.row];
     cell.textLabel.text = location.name;
-    if (location.isAtAirport) {
-        cell.imageView.image = [UIImage imageNamed:@"location_airport" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
-    } else {
-        cell.imageView.image = [UIImage imageNamed:@"location" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
-    }
+    // TODO: Extract logic to view model and localise
+    cell.detailTextLabel.text = location.isAtAirport ? @"Airport" : @"City Location";
+    
+    CGRect frame = CGRectMake(0, 0, 15, 15);
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont fontWithName:@"V5-Mobile" size:16];
+    label.text = location.isAtAirport ? @"" : @"";
+    cell.accessoryView = label;
+    [cell.accessoryView setFrame:frame];
     
     return cell;
 }

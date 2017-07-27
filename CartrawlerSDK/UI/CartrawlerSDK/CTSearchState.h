@@ -11,23 +11,35 @@
 
 typedef NS_ENUM(NSUInteger, CTSearchFormTextField) {
     CTSearchFormTextFieldNone,
+    CTSearchFormSettingsButton,
     CTSearchFormTextFieldPickupLocation,
     CTSearchFormTextFieldDropoffLocation,
     CTSearchFormTextFieldSelectDates,
     CTSearchFormTextFieldPickupTime,
     CTSearchFormTextFieldDropoffTime,
-    CTSearchFormTextFieldAge,
+    CTSearchFormTextFieldDriverAge,
+};
+
+typedef NS_ENUM(NSUInteger, CTSearchSearchSettings) {
+    CTSearchSearchSettingsNone,
+    CTSearchSearchSettingsCountry,
+    CTSearchSearchSettingsLanguage,
+    CTSearchSearchSettingsCurrency,
 };
 
 @interface CTSearchState : NSObject
 
 @property (nonatomic) CTSearchFormTextField selectedTextField;
 
+@property (nonatomic) CTSearchSearchSettings selectedSettings;
+
 @property (nonatomic) NSString *searchBarText;
 
 @property (nonatomic) CTMatchedLocation *selectedPickupLocation;
 
 @property (nonatomic) CTMatchedLocation *selectedDropoffLocation;
+
+@property (nonatomic) BOOL dropoffLocationRequired;
 
 @property (nonatomic) NSDate *displayedPickupDate;
 
@@ -40,5 +52,9 @@ typedef NS_ENUM(NSUInteger, CTSearchFormTextField) {
 @property (nonatomic) NSDate *selectedPickupTime;
 
 @property (nonatomic) NSDate *selectedDropoffTime;
+
+@property (nonatomic) BOOL driverAgeRequired;
+
+@property (nonatomic) NSString *displayedDriverAge;
 
 @end

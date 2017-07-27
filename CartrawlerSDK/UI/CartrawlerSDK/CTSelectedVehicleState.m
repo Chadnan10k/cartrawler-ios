@@ -1,0 +1,13 @@
+//
+//  CTSelectedVehicleState.m
+//  CartrawlerSDK
+//
+//  Created by Alan Pearson Mathews on 7/26/17.
+//  Copyright © 2017 Cartrawler. All rights reserved.
+//
+
+#import "CTSelectedVehicleState.h"
+
+@implementation CTSelectedVehicleState
+
+@end

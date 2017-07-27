@@ -10,8 +10,10 @@
 
 @interface CTCSVItem : NSObject
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *code;
+@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *code;
+// TODO: Make immutable
+@property (nonatomic) NSString *displayName;
 
 - (id)initWithName:(NSString *)name code:(NSString *)code;
 

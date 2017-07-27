@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTLocalisedStrings.h"
+#import "CTSDKLocalizationConstants.h"
 
 @protocol CTViewModelProtocol <NSObject>
-
+@optional
 + (instancetype)viewModelForState:(id)state;
 
 @end

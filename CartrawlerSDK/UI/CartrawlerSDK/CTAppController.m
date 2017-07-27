@@ -7,11 +7,13 @@
 //
 
 #import "CTAppController.h"
-
 #import "CTAppState.h"
-
 #import "CTAPIController.h"
 #import "CTUserInterfaceController.h"
+#import "CTValidationSearch.h"
+
+#import "CartrawlerSDK+NSDateUtils.h"
+#import "CTCSVItem.h"
 
 @interface CTAppController ()
 @property (nonatomic) CTAppState *appState;
@@ -26,8 +28,7 @@
     [[CTAppController instance] dispatchAction:action payload:payload];
 }
 
-+ (instancetype)instance
-{
++ (instancetype)instance {
     static CTAppController *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -38,6 +39,8 @@
         sharedInstance.appState.APIState = [CTAPIState new];
         sharedInstance.appState.navigationState = [CTNavigationState new];
         sharedInstance.appState.searchState = [CTSearchState new];
+        sharedInstance.appState.vehicleListState = [CTVehicleListState new];
+        sharedInstance.appState.selectedVehicleState = [CTSelectedVehicleState new];
         
         sharedInstance.apiController = [CTAPIController new];
         sharedInstance.userInterfaceController = [CTUserInterfaceController new];
@@ -51,9 +54,11 @@
     CTAPIState *APIState = appState.APIState;
     CTNavigationState *navigationState = appState.navigationState;
     CTSearchState *searchState = appState.searchState;
+    CTVehicleListState *vehicleListState = appState.vehicleListState;
+    CTSelectedVehicleState *selectedVehicleState = appState.selectedVehicleState;
     
     switch (action) {
-        // USER SETTINGS ACTIONS
+        // User Settings Actions
         case CTActionUserSettingsSetClientID:
             userSettingsState.clientID = payload;
             break;
@@ -87,23 +92,36 @@
             [APIState.matchedLocations setValue:payload forKey:searchState.searchBarText];
             break;
         case CTActionAPIDidReturnVehicles:
-            
+            APIState.matchedAvailabilityItems = payload;
             break;
             
-        // NAVIGATION ACTIONS
+        // Navigation Actions
         case CTActionNavigationSetParentViewController:
             navigationState.parentViewController = payload;
             break;
         case CTActionNavigationPresentSearchStep:
             navigationState.desiredStep++;
+            
+            // Initialise search state
+            searchState.selectedPickupTime = [NSDate dateWithHour:10 minute:0];
+            searchState.selectedDropoffTime = [NSDate dateWithHour:10 minute:0];
+            break;
+        case CTActionSearchUserDidTapBack:
+            navigationState.desiredStep--;
             break;
         
-        // SEARCH ACTIONS
+        // Search Actions
+        case CTActionSearchUserDidTapSettingsButton:
+            searchState.selectedTextField = CTSearchFormSettingsButton;
+            break;
         case CTActionSearchUserDidTapPickupTextField:
             searchState.selectedTextField = CTSearchFormTextFieldPickupLocation;
             break;
         case CTActionSearchUserDidTapDropoffTextField:
             searchState.selectedTextField = CTSearchFormTextFieldDropoffLocation;
+            break;
+        case CTActionSearchUserDidToggleReturnToSameLocation:
+            searchState.dropoffLocationRequired = ![(NSNumber *)payload boolValue];
             break;
         case CTActionSearchUserDidTapDatesTextField:
             searchState.selectedTextField = CTSearchFormTextFieldSelectDates;
@@ -116,9 +134,56 @@
         case CTActionSearchUserDidTapDropoffTimeTextField:
             searchState.selectedTextField = CTSearchFormTextFieldDropoffTime;
             break;
+        case CTActionSearchUserDidTapAgeTextField:
+            searchState.selectedTextField = CTSearchFormTextFieldDriverAge;
+            break;
+        case CTActionSearchUserDidToggleDriverAge:
+            searchState.driverAgeRequired = ![(NSNumber *)payload boolValue];
+            searchState.selectedTextField = searchState.driverAgeRequired ? CTSearchFormTextFieldDriverAge : CTSearchFormTextFieldNone;
+            if ([CTValidationSearch validateSearchStep:searchState]) {
+                APIState.matchedAvailabilityItems = nil;
+                [self.apiController requestVehicleAvailabilityWithState:appState];
+            }
+            break;
         case CTActionSearchUserDidTapNext:
-            //navigationState.desiredStep++;
-            [self.apiController requestVehicleAvailabilityWithState:appState];
+            searchState.selectedTextField = CTSearchFormTextFieldNone;
+            navigationState.desiredStep++;
+            break;
+        case CTActionSearchSettingsUserDidTapCloseButton:
+            searchState.selectedTextField = CTSearchSearchSettingsNone;
+            break;
+        case CTActionSearchSettingsUserDidTapCountryButton:
+            searchState.selectedSettings = CTSearchSearchSettingsCountry;
+            break;
+        case CTActionSearchSettingsUserDidTapLanguageButton:
+            searchState.selectedSettings = CTSearchSearchSettingsLanguage;
+            break;
+        case CTActionSearchSettingsUserDidTapCurrencyButton:
+            searchState.selectedSettings = CTSearchSearchSettingsCurrency;
+            break;
+        case CTActionSearchSettingsDetailsUserDidTapCancelButton:
+            searchState.selectedSettings = CTSearchSearchSettingsNone;
+            break;
+        case CTActionSearchSettingsDetailsUserDidSelectItem:
+            switch (searchState.selectedSettings) {
+                case CTSearchSearchSettingsCountry:
+                    userSettingsState.countryCode = [[(CTCSVItem *)payload code] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    break;
+                case CTSearchSearchSettingsLanguage:
+                    // TODO: Fix the inversion of code and name in the language CSV
+                    userSettingsState.languageCode = [[(CTCSVItem *)payload name] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    break;
+                case CTSearchSearchSettingsCurrency:
+                    userSettingsState.currencyCode = [[(CTCSVItem *)payload code] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    break;
+                default:
+                    break;
+            }
+            if ([CTValidationSearch validateSearchStep:searchState]) {
+                APIState.matchedAvailabilityItems = nil;
+                [self.apiController requestVehicleAvailabilityWithState:appState];
+            }
+            searchState.selectedSettings = CTSearchSearchSettingsNone;
             break;
         case CTActionSearchLocationsUserDidEnterCharacters:
             searchState.searchBarText = payload;
@@ -139,6 +204,11 @@
             }
             searchState.searchBarText = @"";
             searchState.selectedTextField = CTSearchFormTextFieldNone;
+            
+            if ([CTValidationSearch validateSearchStep:searchState]) {
+                APIState.matchedAvailabilityItems = nil;
+                [self.apiController requestVehicleAvailabilityWithState:appState];
+            }
             break;
         case CTActionSearchCalendarUserDidTapDate:
             if (!searchState.displayedPickupDate) {
@@ -157,6 +227,12 @@
             searchState.selectedPickupDate = searchState.displayedPickupDate;
             searchState.selectedDropoffDate = searchState.displayedDropoffDate;
             searchState.selectedTextField = CTSearchFormTextFieldNone;
+            
+            if ([CTValidationSearch validateSearchStep:searchState]) {
+                APIState.vehicleRequestID++;
+                APIState.matchedAvailabilityItems = nil;
+                [self.apiController requestVehicleAvailabilityWithState:appState];
+            }
             break;
         case CTActionSearchCalendarUserDidTapCancel:
             searchState.selectedTextField = CTSearchFormTextFieldNone;
@@ -168,10 +244,61 @@
             if (searchState.selectedTextField == CTSearchFormTextFieldDropoffTime) {
                 searchState.selectedDropoffTime = payload;
             }
+            
+            if ([CTValidationSearch validateSearchStep:searchState]) {
+                APIState.matchedAvailabilityItems = nil;
+                [self.apiController requestVehicleAvailabilityWithState:appState];
+            }
+            break;
+        case CTActionSearchDriverAgeUserDidEnterCharacters:
+            if ([(NSString *)payload length] <= 2) {
+                searchState.displayedDriverAge = payload;
+            }
+            
+            if ([CTValidationSearch validateSearchStep:searchState]) {
+                APIState.matchedAvailabilityItems = nil;
+                [self.apiController requestVehicleAvailabilityWithState:appState];
+            }
+            break;
+        case CTActionSearchInputViewUserDidSelectDone:
             searchState.selectedTextField = CTSearchFormTextFieldNone;
             break;
-        case CTActionSearchTimePickerUserDidSelectCancel:
-            searchState.selectedTextField = CTSearchFormTextFieldNone;
+        
+        // Vehicle List Actions
+        case CTActionVehicleListUserDidTapVehicle:
+            selectedVehicleState.selectedAvailabilityItem = payload;
+            break;
+        case CTActionVehicleListUserDidTapSort:
+            vehicleListState.selectedView = CTVehicleListSelectedViewSort;
+            break;
+        case CTActionVehicleListUserDidTapFilter:
+            vehicleListState.selectedView = CTActionVehicleListUserDidTapFilter;
+            break;
+        case CTActionVehicleListUserDidTapSortOption:
+            vehicleListState.selectedView = CTVehicleListSelectedViewNone;
+            if (vehicleListState.selectedSort != [payload integerValue]) {
+                vehicleListState.selectedSort = [payload integerValue];
+                vehicleListState.scrollToTop = YES;
+            }
+            break;
+        case CTActionVehicleListScreenDidScrollToTop:
+            vehicleListState.scrollToTop = NO;
+            return;
+        case CTActionVehicleListUserDidTapCancelSort:
+            vehicleListState.selectedView = CTVehicleListSelectedViewNone;
+            break;
+        case CTActionVehicleListUserDidTapCancelFilter:
+            vehicleListState.selectedView = CTVehicleListSelectedViewNone;
+            break;
+        case CTActionVehicleListUserDidTapApplyFilter:
+            vehicleListState.selectedView = CTVehicleListSelectedViewNone;
+            break;
+        case CTActionVehicleListUserDidTapFilterOption:
+            if ([vehicleListState.selectedFilters containsObject:payload]) {
+                [vehicleListState.selectedFilters removeObject:payload];
+            } else {
+                [vehicleListState.selectedFilters addObject:payload];
+            }
             break;
         default:
             break;

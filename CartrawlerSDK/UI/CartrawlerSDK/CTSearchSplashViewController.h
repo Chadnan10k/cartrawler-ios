@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CTViewControllerProtocol.h>
 
-@interface CTSearchSplashViewController : UIViewController
+@interface CTSearchSplashViewController : UIViewController <CTViewControllerProtocol>
 
 @end

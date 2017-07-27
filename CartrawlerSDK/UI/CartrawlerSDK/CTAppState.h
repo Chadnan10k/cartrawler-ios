@@ -11,10 +11,14 @@
 #import "CTAPIState.h"
 #import "CTNavigationState.h"
 #import "CTSearchState.h"
+#import "CTVehicleListState.h"
+#import "CTSelectedVehicleState.h"
 
 @interface CTAppState : NSObject
 @property (nonatomic) CTUserSettingsState *userSettingsState;
 @property (nonatomic) CTAPIState *APIState;
 @property (nonatomic) CTNavigationState *navigationState;
 @property (nonatomic) CTSearchState *searchState;
+@property (nonatomic) CTVehicleListState *vehicleListState;
+@property (nonatomic) CTSelectedVehicleState *selectedVehicleState;
 @end

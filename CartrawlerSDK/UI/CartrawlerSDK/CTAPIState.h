@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CartrawlerAPI/CTAvailabilityItem.h>
 
 @interface CTAPIState : NSObject
 
@@ -15,5 +16,8 @@
 @property (nonatomic) NSString *customerID;
 
 @property (nonatomic) NSMutableDictionary *matchedLocations;
+@property (nonatomic) NSArray <CTAvailabilityItem *> *matchedAvailabilityItems;
+
+@property (nonatomic) NSInteger vehicleRequestID;
 
 @end

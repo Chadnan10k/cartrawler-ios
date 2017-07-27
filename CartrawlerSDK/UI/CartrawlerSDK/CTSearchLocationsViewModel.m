@@ -56,7 +56,7 @@
         [rowTitles addObject:airportLocations];
     }
     if (otherLocations.count > 0) {
-        [sectionTitles addObject:@"Other"];
+        [sectionTitles addObject:@"City Locations"];
         [rowTitles addObject:otherLocations];
     }
     

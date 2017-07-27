@@ -10,6 +10,7 @@
 #import <CartrawlerAPI/CartrawlerAPI.h>
 #import "CTAppController.h"
 #import "CartrawlerSDK+NSDateUtils.h"
+#import "CartrawlerSDK+NSNumber.h"
 
 @implementation CTAPIController
 
@@ -51,27 +52,37 @@
 }
 
 - (void)requestVehicleAvailabilityWithState:(CTAppState *)appState {
-    NSDate *pickupDate = [NSDate mergeTimeWithDateWithTime:appState.searchState.selectedPickupTime
-                                               dateWithDay:appState.searchState.selectedPickupDate];
-    NSDate *dropoffDate = [NSDate mergeTimeWithDateWithTime:appState.searchState.selectedDropoffTime
-                                               dateWithDay:appState.searchState.selectedDropoffDate];
+    CTSearchState *searchState = appState.searchState;
+    CTUserSettingsState *userSettingsState = appState.userSettingsState;
     
-    [CartrawlerAPI requestVehicleAvailabilityForLocation:appState.searchState.selectedPickupLocation.code
-                                      returnLocationCode:appState.searchState.selectedDropoffLocation.code
+    NSDate *pickupDate = [NSDate mergeTimeWithDateWithTime:searchState.selectedPickupTime
+                                               dateWithDay:searchState.selectedPickupDate];
+    NSDate *dropoffDate = [NSDate mergeTimeWithDateWithTime:searchState.selectedDropoffTime
+                                               dateWithDay:searchState.selectedDropoffDate];
+    
+    CTMatchedLocation *dropoffLocation = searchState.dropoffLocationRequired ? searchState.selectedDropoffLocation : searchState.selectedPickupLocation;
+    
+    NSNumber *age = searchState.driverAgeRequired ? [NSNumber numberFromString:searchState.displayedDriverAge ] : @30;
+    
+    [CartrawlerAPI requestVehicleAvailabilityForLocation:searchState.selectedPickupLocation.code
+                                      returnLocationCode:dropoffLocation.code
                                      customerCountryCode:appState.userSettingsState.countryCode
                                             passengerQty:@1
-                                               driverAge:@30
+                                               driverAge:age
                                           pickUpDateTime:pickupDate
                                           returnDateTime:dropoffDate
-                                            currencyCode:appState.userSettingsState.currencyCode
-                                                clientID:appState.userSettingsState.clientID
-                                               debugMode:appState.userSettingsState.debugMode
-                                          loggingEnabled:appState.userSettingsState.loggingEnabled
+                                            currencyCode:userSettingsState.currencyCode
+                                                clientID:userSettingsState.clientID
+                                               debugMode:userSettingsState.debugMode
+                                          loggingEnabled:userSettingsState.loggingEnabled
                                               completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
-                                                  if (response) {
-                                                      [CTAppController dispatchAction:CTActionAPIDidReturnVehicles payload:response];
-                                                  }
-                                                  // TODO: Handle Error
+                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                      if (response && !error) {
+                                                          [CTAppController dispatchAction:CTActionAPIDidReturnVehicles payload:response.items];
+                                                      } else {
+                                                          // TODO: Dispatch error action
+                                                      }
+                                                  });
                                               }];
 }
 

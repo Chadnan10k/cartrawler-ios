@@ -14,10 +14,13 @@
 
 @property (nonatomic, readonly) NSString *pickupLocationName;
 @property (nonatomic, readonly) NSString *dropoffLocationName;
-
 @property (nonatomic, readonly) NSString *rentalDates;
-
 @property (nonatomic, readonly) NSString *pickupTime;
 @property (nonatomic, readonly) NSString *dropoffTime;
-
+@property (nonatomic, readonly) NSDate *defaultPickerTime;
+@property (nonatomic, readonly) CTSearchFormTextField selectedTextField;
+@property (nonatomic, readonly) BOOL dropoffLocationTextfieldDisplayed;
+@property (nonatomic, readonly) BOOL driverAgeTextfieldDisplayed;
+@property (nonatomic, readonly) BOOL textfieldInputViewDisplayed;
+@property (nonatomic, readonly) NSString *displayedDriverAge;
 @end

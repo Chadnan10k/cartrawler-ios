@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "CTViewModelProtocol.h"
 #import "CTAppState.h"
+#import "CTSearchSplashViewModel.h"
 #import "CTSearchFormViewModel.h"
 #import "CTSearchLocationsViewModel.h"
 #import "CTSearchCalendarViewModel.h"
+#import "CTSearchSettingsViewModel.h"
 
 typedef NS_ENUM(NSUInteger, CTSearchContentView) {
     CTSearchContentViewNone,
@@ -23,15 +25,15 @@ typedef NS_ENUM(NSUInteger, CTSearchSupplementaryView) {
     CTSearchSupplementaryViewNone,
     CTSearchSupplementaryViewSearchLocations,
     CTSearchSupplementaryViewCalendar,
-    CTSearchSupplementaryViewTimePicker,
+    CTSearchSupplementaryViewSettings,
 };
 
 @interface CTSearchViewModel : NSObject <CTViewModelProtocol>
 @property (nonatomic, readonly) CTSearchContentView contentView;
 @property (nonatomic, readonly) CTSearchSupplementaryView supplementaryView;
+@property (nonatomic, readonly)CTSearchSplashViewModel *searchSplashViewModel;
 @property (nonatomic, readonly) CTSearchFormViewModel *searchFormViewModel;
 @property (nonatomic, readonly) CTSearchLocationsViewModel *searchLocationsViewModel;
 @property (nonatomic, readonly) CTSearchCalendarViewModel *searchCalendarViewModel;
-@property (nonatomic, readonly) NSDate *defaultPickerTime;
-
+@property (nonatomic, readonly) CTSearchSettingsViewModel *searchSettingsViewModel;
 @end

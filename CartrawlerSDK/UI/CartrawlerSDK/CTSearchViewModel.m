@@ -12,10 +12,11 @@
 @interface CTSearchViewModel ()
 @property (nonatomic, readwrite) CTSearchContentView contentView;
 @property (nonatomic, readwrite) CTSearchSupplementaryView supplementaryView;
+@property (nonatomic, readwrite)CTSearchSplashViewModel *searchSplashViewModel;
 @property (nonatomic, readwrite) CTSearchFormViewModel *searchFormViewModel;
 @property (nonatomic, readwrite) CTSearchLocationsViewModel *searchLocationsViewModel;
 @property (nonatomic, readwrite) CTSearchCalendarViewModel *searchCalendarViewModel;
-@property (nonatomic, readwrite) NSDate *defaultPickerTime;
+@property (nonatomic, readwrite) CTSearchSettingsViewModel *searchSettingsViewModel;
 @end
 
 @implementation CTSearchViewModel
@@ -30,6 +31,9 @@
         case CTSearchFormTextFieldNone:
             viewModel.supplementaryView = CTSearchSupplementaryViewNone;
             break;
+        case CTSearchFormSettingsButton:
+            viewModel.supplementaryView = CTSearchSupplementaryViewSettings;
+            break;
         case CTSearchFormTextFieldPickupLocation:
             viewModel.supplementaryView = CTSearchSupplementaryViewSearchLocations;
             break;
@@ -39,30 +43,19 @@
         case CTSearchFormTextFieldSelectDates:
             viewModel.supplementaryView = CTSearchSupplementaryViewCalendar;
             break;
-        case CTSearchFormTextFieldPickupTime:
-            viewModel.supplementaryView = CTSearchSupplementaryViewTimePicker;
-            break;
-        case CTSearchFormTextFieldDropoffTime:
-            viewModel.supplementaryView = CTSearchSupplementaryViewTimePicker;
-            break;
-        case CTSearchFormTextFieldAge:
+        case CTSearchFormTextFieldDriverAge:
             viewModel.supplementaryView = CTSearchSupplementaryViewNone;
             break;
         default:
             break;
     }
-
+    
+    // TODO: Rationalise when view models are created, only when necessary
+    viewModel.searchSplashViewModel = [CTSearchSplashViewModel viewModelForState:appState];
     viewModel.searchFormViewModel = [CTSearchFormViewModel viewModelForState:appState];
     viewModel.searchLocationsViewModel = [CTSearchLocationsViewModel viewModelForState:appState];
     viewModel.searchCalendarViewModel = [CTSearchCalendarViewModel viewModelForState:searchState];
-    
-    if (searchState.selectedTextField == CTSearchFormTextFieldPickupTime) {
-        viewModel.defaultPickerTime = searchState.selectedPickupTime ?: [NSDate dateWithHour:10 minute:0];
-    }
-    
-    if (searchState.selectedTextField == CTSearchFormTextFieldDropoffTime) {
-        viewModel.defaultPickerTime = searchState.selectedDropoffTime ?: [NSDate dateWithHour:10 minute:0];
-    }
+    viewModel.searchSettingsViewModel = [CTSearchSettingsViewModel viewModelForState:appState];
     
     return viewModel;
 }
