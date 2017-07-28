@@ -50,5 +50,4 @@
                       target:(NSString *)target
                       locale:(NSString *)locale
                    ipaddress:(NSString *)ipaddress;
-
 @end
