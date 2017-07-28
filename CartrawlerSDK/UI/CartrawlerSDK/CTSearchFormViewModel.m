@@ -12,7 +12,12 @@
 #import "CartrawlerSDK+NSDateUtils.h"
 
 @interface CTSearchFormViewModel ()
+@property (nonatomic, readwrite) UIColor *backgroundColor;
+@property (nonatomic, readwrite) UIColor *driverAgeCursorColor;
+@property (nonatomic, readwrite) UIColor *nextButtonColor;
+@property (nonatomic, readwrite) UIColor *doneButtonColor;
 @property (nonatomic, readwrite) NSString *pickupLocationName;
+@property (nonatomic, readwrite) NSString *returnToSameLocationCheckboxText;
 @property (nonatomic, readwrite) NSString *dropoffLocationName;
 @property (nonatomic, readwrite) NSString *rentalDates;
 @property (nonatomic, readwrite) NSString *pickupTime;
@@ -22,6 +27,7 @@
 @property (nonatomic, readwrite) BOOL dropoffLocationTextfieldDisplayed;
 @property (nonatomic, readwrite) BOOL driverAgeTextfieldDisplayed;
 @property (nonatomic, readwrite) BOOL textfieldInputViewDisplayed;
+@property (nonatomic, readwrite) NSString *driverAgeCheckboxText;
 @property (nonatomic, readwrite) NSString *displayedDriverAge;
 @end
 
@@ -30,6 +36,11 @@
 + (instancetype)viewModelForState:(CTAppState *)appState {
     CTSearchState *searchState = appState.searchState;
     CTSearchFormViewModel *viewModel = [CTSearchFormViewModel new];
+    
+    viewModel.backgroundColor = appState.userSettingsState.primaryColor;
+    viewModel.driverAgeCursorColor = appState.userSettingsState.primaryColor;
+    viewModel.nextButtonColor = appState.userSettingsState.secondaryColor;
+    viewModel.doneButtonColor = appState.userSettingsState.primaryColor;
     
     viewModel.pickupLocationName = searchState.selectedPickupLocation.name;
     viewModel.dropoffLocationName = searchState.selectedDropoffLocation.name;
@@ -49,7 +60,9 @@
         viewModel.defaultPickerTime = searchState.selectedPickupTime;
     }
     
+    viewModel.returnToSameLocationCheckboxText = searchState.dropoffLocationRequired ? @"" : @""; // Checkmark
     viewModel.dropoffLocationTextfieldDisplayed = searchState.dropoffLocationRequired;
+    viewModel.driverAgeCheckboxText = searchState.driverAgeRequired ? @"" : @""; // Checkmark
     viewModel.driverAgeTextfieldDisplayed = searchState.driverAgeRequired;
     
     viewModel.textfieldInputViewDisplayed =

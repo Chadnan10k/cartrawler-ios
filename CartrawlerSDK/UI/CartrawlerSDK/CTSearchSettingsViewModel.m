@@ -9,6 +9,9 @@
 #import "CTSearchSettingsViewModel.h"
 
 @interface CTSearchSettingsViewModel ()
+
+@property (nonatomic, readwrite) UIColor *navigationBarColor;
+
 @property (nonatomic, readwrite) NSString *title;
 @property (nonatomic, readwrite) NSString *closeButtonTitle;
 
@@ -33,11 +36,13 @@
     CTSearchState *searchState = appState.searchState;
     CTSearchSettingsViewModel *viewModel = [CTSearchSettingsViewModel new];
     
-    viewModel.title = @"Settings";//CTLocalizedString(CTRentalTitleSettings);
-    viewModel.closeButtonTitle = @"Close";//CTLocalizedString(CTRentalCTAClose);
-    viewModel.countryLabelText = @"Country";//CTLocalizedString(CTRentalSettingsCountryTitle);
-    viewModel.currencyLabelText = @"Currency";//CTLocalizedString(CTRentalSettingsCurrencyTitle);
-    viewModel.languageLabelText = @"Select Language";//CTLocalizedString(CTRentalSettingsSelectLanguage);
+    viewModel.navigationBarColor = userSettingsState.primaryColor;
+    
+    viewModel.title = CTLocalizedString(CTRentalTitleSettings);
+    viewModel.closeButtonTitle = CTLocalizedString(CTRentalCTAClose);
+    viewModel.countryLabelText = CTLocalizedString(CTRentalSettingsCountryTitle);
+    viewModel.currencyLabelText = CTLocalizedString(CTRentalSettingsCurrencyTitle);
+    viewModel.languageLabelText = CTLocalizedString(CTRentalSettingsSelectLanguage);
     
     NSLocale *locale = [NSLocale currentLocale];
     viewModel.country = [locale displayNameForKey:NSLocaleCountryCode value:userSettingsState.countryCode];
@@ -47,7 +52,7 @@
     viewModel.selectedSettings = searchState.selectedSettings;
     
     if (viewModel.selectedSettings != CTSearchSearchSettingsNone) {
-        viewModel.selectedSettingsViewModel = [CTSearchSettingsSelectionViewModel viewModelForState:searchState];
+        viewModel.selectedSettingsViewModel = [CTSearchSettingsSelectionViewModel viewModelForState:appState];
     }
     
     return viewModel;

@@ -7,12 +7,12 @@
 //
 
 #import "CTSearchCalendarViewModel.h"
-#import "CTSearchState.h"
+#import "CTAppState.h"
 #import "CartrawlerSDK+NSDateUtils.h"
-#import "CTSDKLocalizationConstants.h"
-#import <CartrawlerSDK/CTLocalisedStrings.h>
 
 @interface CTSearchCalendarViewModel ()
+@property (nonatomic, readwrite) UIColor *navigationBarColor;
+@property (nonatomic, readwrite) UIColor *buttonColor;
 @property (nonatomic, readwrite) NSString *displayedPickupDate;
 @property (nonatomic, readwrite) NSString *displayedDropoffDate;
 @property (nonatomic, readwrite) BOOL enableNextButton;
@@ -20,8 +20,14 @@
 
 @implementation CTSearchCalendarViewModel
 
-+ (instancetype)viewModelForState:(CTSearchState *)searchState {
++ (instancetype)viewModelForState:(CTAppState *)appState {
     CTSearchCalendarViewModel *viewModel = [CTSearchCalendarViewModel new];
+    CTUserSettingsState *userSettingsState = appState.userSettingsState;
+    CTSearchState *searchState = appState.searchState;
+    
+    viewModel.navigationBarColor = userSettingsState.primaryColor;
+    viewModel.buttonColor = userSettingsState.secondaryColor;
+    
     viewModel.displayedPickupDate = searchState.displayedPickupDate ? [searchState.displayedPickupDate shortDescriptionFromDate] : CTLocalizedString(CTSDKCalendarSelectDate);
     if (searchState.displayedPickupDate) {
         viewModel.displayedDropoffDate = searchState.displayedDropoffDate ? [searchState.displayedDropoffDate shortDescriptionFromDate] : CTLocalizedString(CTSDKCalendarSelectDate);

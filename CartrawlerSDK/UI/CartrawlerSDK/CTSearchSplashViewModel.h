@@ -11,7 +11,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CTSearchSplashViewModel : NSObject <CTViewModelProtocol>
-@property (nonatomic, readonly) UIColor *primaryColor;
+@property (nonatomic, readonly) UIColor *splashColor;
+@property (nonatomic, readonly) UIColor *illustrationColor;
 @property (nonatomic, readonly) NSString *splashText;
 @property (nonatomic, readonly) NSString *searchBoxText;
 @end

@@ -57,4 +57,6 @@ typedef NS_ENUM(NSUInteger, CTSearchSearchSettings) {
 
 @property (nonatomic) NSString *displayedDriverAge;
 
+@property (nonatomic) BOOL validationFailed;
+
 @end

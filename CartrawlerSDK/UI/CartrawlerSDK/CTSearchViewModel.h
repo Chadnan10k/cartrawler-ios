@@ -36,4 +36,5 @@ typedef NS_ENUM(NSUInteger, CTSearchSupplementaryView) {
 @property (nonatomic, readonly) CTSearchLocationsViewModel *searchLocationsViewModel;
 @property (nonatomic, readonly) CTSearchCalendarViewModel *searchCalendarViewModel;
 @property (nonatomic, readonly) CTSearchSettingsViewModel *searchSettingsViewModel;
+@property (nonatomic, readonly) UIColor *navigationBarColor;
 @end

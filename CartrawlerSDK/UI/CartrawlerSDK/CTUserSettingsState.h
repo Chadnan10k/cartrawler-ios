@@ -7,6 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+typedef NS_ENUM(NSUInteger, CTUserSettingsStyle) {
+    CTUserSettingsStyleNoStyle,
+    CTUserSettingsStyleGeneric,
+    CTUserSettingsStyleRyanair
+};
 
 @interface CTUserSettingsState : NSObject
 
@@ -18,5 +25,10 @@
 
 @property (nonatomic) BOOL debugMode;
 @property (nonatomic) BOOL loggingEnabled;
+
+@property (nonatomic) CTUserSettingsStyle selectedStyle;
+@property (nonatomic) UIColor *primaryColor;
+@property (nonatomic) UIColor *secondaryColor;
+@property (nonatomic) UIColor *illustrationColor;
 
 @end

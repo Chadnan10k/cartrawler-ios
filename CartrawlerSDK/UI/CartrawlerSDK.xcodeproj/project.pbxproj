@@ -286,6 +286,8 @@
 		E78299651F2944A300C20525 /* CTVehicleListState.m in Sources */ = {isa = PBXBuildFile; fileRef = E78299631F2944A300C20525 /* CTVehicleListState.m */; };
 		E78299691F2945C800C20525 /* CTSelectedVehicleState.h in Headers */ = {isa = PBXBuildFile; fileRef = E78299671F2945C800C20525 /* CTSelectedVehicleState.h */; };
 		E782996A1F2945C800C20525 /* CTSelectedVehicleState.m in Sources */ = {isa = PBXBuildFile; fileRef = E78299681F2945C800C20525 /* CTSelectedVehicleState.m */; };
+		E78299701F2A7CF600C20525 /* CTNotificationsController.h in Headers */ = {isa = PBXBuildFile; fileRef = E782996E1F2A7CF600C20525 /* CTNotificationsController.h */; };
+		E78299711F2A7CF600C20525 /* CTNotificationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E782996F1F2A7CF600C20525 /* CTNotificationsController.m */; };
 		E7BB87A01EA7CE900008CBAD /* CTTriangleView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BB879E1EA7CE900008CBAD /* CTTriangleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7BB87A11EA7CE900008CBAD /* CTTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */; };
 		E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */; };
@@ -576,6 +578,8 @@
 		E78299631F2944A300C20525 /* CTVehicleListState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleListState.m; sourceTree = "<group>"; };
 		E78299671F2945C800C20525 /* CTSelectedVehicleState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSelectedVehicleState.h; sourceTree = "<group>"; };
 		E78299681F2945C800C20525 /* CTSelectedVehicleState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSelectedVehicleState.m; sourceTree = "<group>"; };
+		E782996E1F2A7CF600C20525 /* CTNotificationsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTNotificationsController.h; sourceTree = "<group>"; };
+		E782996F1F2A7CF600C20525 /* CTNotificationsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTNotificationsController.m; sourceTree = "<group>"; };
 		E7BB879E1EA7CE900008CBAD /* CTTriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTriangleView.h; sourceTree = "<group>"; };
 		E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTriangleView.m; sourceTree = "<group>"; };
 		E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTSDKLocalizationConstants.h; path = Localization/CTSDKLocalizationConstants.h; sourceTree = "<group>"; };
@@ -1094,6 +1098,7 @@
 				E72D4D711F1E7503007130A2 /* CTAppController.m */,
 				E78298D41F20409F00C20525 /* API */,
 				E78298D31F20409600C20525 /* User Interface */,
+				E782996D1F2A7CDB00C20525 /* Notifications */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1181,6 +1186,7 @@
 				E78298F01F22D4B900C20525 /* User Settings */,
 				E78298EF1F22D4B100C20525 /* API */,
 				E78298EE1F22D4A900C20525 /* Navigation */,
+				E782996C1F2A542200C20525 /* Style Settings */,
 				E78298ED1F22D4A000C20525 /* Search */,
 				E78299611F29446B00C20525 /* Vehicle List */,
 				E78299661F2945B200C20525 /* Selected Vehicle */,
@@ -1427,6 +1433,7 @@
 		E78299571F291A8D00C20525 /* Coded Images */ = {
 			isa = PBXGroup;
 			children = (
+				E78299721F2A8F9C00C20525 /* Master File */,
 				E78299581F291A9800C20525 /* Banner Edge */,
 				E78299141F27B1F700C20525 /* Splash Car */,
 			);
@@ -1462,6 +1469,29 @@
 			name = "Selected Vehicle";
 			sourceTree = "<group>";
 		};
+		E782996C1F2A542200C20525 /* Style Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Style Settings";
+			sourceTree = "<group>";
+		};
+		E782996D1F2A7CDB00C20525 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				E782996E1F2A7CF600C20525 /* CTNotificationsController.h */,
+				E782996F1F2A7CF600C20525 /* CTNotificationsController.m */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
+		E78299721F2A8F9C00C20525 /* Master File */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Master File";
+			sourceTree = "<group>";
+		};
 		E7BB879D1EA7CE6F0008CBAD /* TriangleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1480,6 +1510,7 @@
 			files = (
 				BC1379E81E23E4E400B1F727 /* CTAnalytics.h in Headers */,
 				BC1379EF1E23E8E700B1F727 /* CTErrorTag.h in Headers */,
+				E78299701F2A7CF600C20525 /* CTNotificationsController.h in Headers */,
 				E78299331F27B9CB00C20525 /* CTSplashCar.h in Headers */,
 				E7404A841E82F95D009BF7DF /* CTTabView.h in Headers */,
 				455B58741DCC914300CA4790 /* CTLabel.h in Headers */,
@@ -1773,6 +1804,7 @@
 				BC9546811EB2651C0097312C /* CTBundleLocalization.m in Sources */,
 				455B585B1DCC914300CA4790 /* CTPlaceholderView.m in Sources */,
 				E70230741E857DC2005E1BF4 /* CTRatingView.m in Sources */,
+				E78299711F2A7CF600C20525 /* CTNotificationsController.m in Sources */,
 				E78298F51F24083400C20525 /* CTSearchCalendarViewModel.m in Sources */,
 				BC01F5931E9D2A7B003D8286 /* CartrawlerSDK+NSString.m in Sources */,
 				455B585D1DCC914300CA4790 /* CTView.m in Sources */,

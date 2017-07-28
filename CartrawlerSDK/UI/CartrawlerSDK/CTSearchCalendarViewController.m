@@ -29,14 +29,13 @@
 @property (weak, nonatomic) IBOutlet CTCalendarView *calendarView;
 @property (weak, nonatomic) IBOutlet UIView *headerTopSection;
 
+@property (weak, nonatomic) IBOutlet UIView *summaryView;
 @property (weak, nonatomic) IBOutlet CTLabel *pickupTitleLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *returnTitleLabel;
 @property (weak, nonatomic) IBOutlet CTLabel *calendarTitleLabel;
 @property (weak, nonatomic) IBOutlet CTButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
-//
-//@property (strong, nonatomic) NSDate *pickupDate;
-//@property (strong, nonatomic) NSDate *dropoffDate;
+
 @end
 
 @implementation CTSearchCalendarViewController
@@ -61,6 +60,10 @@
 }
 
 - (void)updateWithViewModel:(CTSearchCalendarViewModel *)viewModel {
+    self.headerTopSection.backgroundColor = viewModel.navigationBarColor;
+    self.summaryView.backgroundColor = viewModel.navigationBarColor;
+    self.nextButton.backgroundColor = viewModel.buttonColor;
+    
     if (![self.pickupDateLabel.text isEqualToString:viewModel.displayedPickupDate]) {
         [self animateLabel:self.pickupDateLabel withText:viewModel.displayedPickupDate];
     }

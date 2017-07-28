@@ -199,7 +199,7 @@
 "insurance_detail_title" = "Damage Refund Insurance";
 "title_summary" = "Payment Summary";
 "vehicle_pickup_details_VWF_5.VWF.X" = "Your car will be available to pick-up from the front desk of your hotel.";
-"rental_sort_title" = "Sort results by";
+"rental_sort_title" = "Sort by";
 "search_locations_placeholder" = "Type in location";
 "vehicle_pickup_location_VWF_4.VWF.X" = "Railway Station";
 "user_city_hint" = "City";

@@ -12,9 +12,8 @@
 #import "CTCSVItem.h"
 
 @interface CTSearchSettingsSelectionViewModel : NSObject <CTViewModelProtocol>
-
+@property (nonatomic, readonly) UIColor *navigationBarColor;
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSString *closeButtonTitle;
 @property (nonatomic, readonly) NSArray <CTCSVItem *> *rowViewModels;
-
 @end

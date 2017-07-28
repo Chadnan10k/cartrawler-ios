@@ -56,29 +56,8 @@
     [self.cartrawlerAPI enableLogging:enable];
 }
 
-- (void)setNewSession
-{
+- (void)setNewSession {
     [CTAppController dispatchAction:CTActionUserSettingsSetNewSession payload:nil];
-    
-//    [self.cartrawlerAPI changeClientKey:[CTSDKSettings instance].clientId];
-//    
-//    static int trys;
-//    [self.cartrawlerAPI requestNewSession:[CTSDKSettings instance].currencyCode
-//                             languageCode:[CTSDKSettings instance].languageCode
-//                              countryCode:[CTSDKSettings instance].homeCountryCode
-//                               completion:^(CT_IpToCountryRS *response, CTErrorResponse *error) {
-//                                   if (response) {
-//                                       [CTSDKSettings instance].engineLoadID = response.engineLoadID;
-//                                       [CTSDKSettings instance].customerID = response.customerID;
-//                                   } else {
-//                                       //retry
-//                                       if (trys < 3) {
-//                                           [self setNewSession];
-//                                           ++trys;
-//                                       }
-//                                       [[CTAnalytics instance] tagError:@"sdk init" event:@"requestNewSession" message:error.errorMessage];
-//                                   }
-//                               }];
 }
 
 + (CTAppearance *)appearance

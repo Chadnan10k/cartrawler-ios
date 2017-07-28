@@ -9,10 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, CTNavigationStep) {
+    CTNavigationStepNone,
+    CTNavigationStepSearch,
+    CTNavigationStepVehicleList,
+    CTNavigationStepSelectedVehicle,
+    CTNavigationStepBooking
+};
+
 @interface CTNavigationState : NSObject
 
 @property (nonatomic) UIViewController *parentViewController;
 
-@property (nonatomic) NSUInteger desiredStep;
+@property (nonatomic) NSUInteger currentNavigationStep;
 
 @end

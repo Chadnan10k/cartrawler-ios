@@ -10,7 +10,8 @@
 #import "CTAppState.h"
 
 @interface CTSearchSplashViewModel ()
-@property (nonatomic, readwrite) UIColor *primaryColor;
+@property (nonatomic, readwrite) UIColor *splashColor;
+@property (nonatomic, readwrite) UIColor *illustrationColor;
 @property (nonatomic, readwrite) NSString *splashText;
 @property (nonatomic, readwrite) NSString *searchBoxText;
 @end
@@ -19,7 +20,8 @@
 
 + (instancetype)viewModelForState:(CTAppState *)appState {
     CTSearchSplashViewModel *viewModel = [CTSearchSplashViewModel new];
-    viewModel.primaryColor = [UIColor redColor];
+    viewModel.splashColor = appState.userSettingsState.primaryColor;
+    viewModel.illustrationColor = appState.userSettingsState.illustrationColor;
     viewModel.splashText = @"Compare and find the best value car hire deals";
     viewModel.searchBoxText = @"What's your pick up location?";
     return viewModel;

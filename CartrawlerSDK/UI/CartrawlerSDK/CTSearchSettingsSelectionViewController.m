@@ -18,7 +18,7 @@
 
 @interface CTSearchSettingsSelectionViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic) CTSearchSettingsSelectionViewModel *viewModel;
-@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet CTLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet CTButton *backButton;
@@ -28,7 +28,8 @@
 
 - (void)updateWithViewModel:(CTSearchSettingsSelectionViewModel *)viewModel {
     self.viewModel = viewModel;
-    self.navigationItem.title = viewModel.title;
+    self.navigationBar.barTintColor = viewModel.navigationBarColor;
+    self.navigationBar.topItem.title = viewModel.title;
     [self.tableView reloadData];
 }
 

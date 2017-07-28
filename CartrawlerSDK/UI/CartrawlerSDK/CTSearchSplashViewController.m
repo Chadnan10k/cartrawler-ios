@@ -14,6 +14,7 @@
 @interface CTSearchSplashViewController ()
 @property (nonatomic, strong) CTSearchSplashViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIView *patternView;
 @property (weak, nonatomic) IBOutlet CTSplashCarView *splashCarView;
 @property (weak, nonatomic) IBOutlet UILabel *splashLabel;
 @property (weak, nonatomic) IBOutlet UILabel *searchBoxLabel;
@@ -30,9 +31,9 @@
 
 - (void)updateWithViewModel:(CTSearchSplashViewModel *)viewModel {
     self.viewModel = viewModel;
-    self.containerView.backgroundColor = viewModel.primaryColor;
-    self.splashCarView.backgroundColor = viewModel.primaryColor;
-    self.splashCarView.primaryColor = viewModel.primaryColor;
+    self.containerView.backgroundColor = viewModel.splashColor;
+    self.splashCarView.backgroundColor = viewModel.splashColor;
+    self.splashCarView.primaryColor = viewModel.illustrationColor;
     self.splashLabel.text = viewModel.splashText;
     self.searchBoxLabel.text = viewModel.searchBoxText;
 }

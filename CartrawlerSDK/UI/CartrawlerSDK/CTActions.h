@@ -39,6 +39,10 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      *  Sets logging to the console
      */
     CTActionUserSettingsSetNewSession,
+    /**
+     *  The user shook their phone
+     */
+    CTActionUserSettingsUserDidShake,
     
     // API Actions
     /**

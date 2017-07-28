@@ -82,8 +82,8 @@
 }
 
 + (NSAttributedString *)chevronString {
-    NSMutableAttributedString *chevronString = [[NSMutableAttributedString alloc] initWithString:@" "];
-    [chevronString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"V5-Mobile" size:12] range:NSMakeRange(0, chevronString.length)];
+    NSMutableAttributedString *chevronString = [[NSMutableAttributedString alloc] initWithString:@"  "];
+    [chevronString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"V5-Mobile" size:8] range:NSMakeRange(0, chevronString.length)];
     [chevronString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, chevronString.length)];
     return chevronString.copy;
 }

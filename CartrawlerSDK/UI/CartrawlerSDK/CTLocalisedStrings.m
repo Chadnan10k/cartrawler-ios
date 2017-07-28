@@ -447,6 +447,24 @@
     return [self sanitizeFormatters:NSLocalizedStringFromTableInBundle(key, language, sdkBundle, @"")];
 }
 
+- (NSString *)localizedStringForKey:(NSString *)key language:(NSString *)language {    
+    NSBundle *sdkBundle = [NSBundle bundleForClass:[self class]];
+    
+    NSString *remoteLocalization = [self.cmsLocalization localizedStringForKey:key bundle:sdkBundle language:language];
+    
+    if (remoteLocalization) {
+        return [self sanitizeFormatters: remoteLocalization];
+    }
+    
+    NSString *cachedLocalization = [self.bundleLocalization localizedStringForKey:key bundle:sdkBundle language:language];
+    
+    if (cachedLocalization) {
+        return [self sanitizeFormatters: cachedLocalization];
+    }
+    
+    return [self sanitizeFormatters:NSLocalizedStringFromTableInBundle(key, language, sdkBundle, @"")];
+}
+
 - (NSString *)sanitizeFormatters:(NSString *)text
 {
     NSString *sanitized = text;

@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CTViewModelProtocol.h>
 
 @protocol CTViewControllerProtocol <NSObject>
 
 - (void)updateWithViewModel:(id)viewModel;
+
++ (Class)viewModelClass;
 
 @end

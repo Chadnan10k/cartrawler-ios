@@ -15,11 +15,17 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *pickupLocationTextField;
+@property (weak, nonatomic) IBOutlet UIButton *returnToSameLocationCheckbox;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *dropoffLocationTextField;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *selectDatesTextField;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *pickupTimeTextField;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *dropOffTimeTextField;
+@property (weak, nonatomic) IBOutlet UIButton *driverAgeCheckbox;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *driverAgeTextField;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
+
+@property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, strong) UIBarButtonItem *doneButton;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dropoffLocationMargin;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dropoffLocationHeight;
@@ -66,21 +72,20 @@
     
     self.driverAgeTextField.keyboardType = UIKeyboardTypeNumberPad;
     
-    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-    [toolBar setTintColor:[UIColor grayColor]];
-    
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    self.toolbar.barTintColor = [UIColor lightGrayColor];
+    self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
                                                                    style:UIBarButtonItemStylePlain
                                                                   target:self
                                                                   action:@selector(didTapDone:)];
     UIBarButtonItem *space= [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                           target:nil
                                                                           action:nil];
-    [toolBar setItems:@[space, doneButton]];
+    [self.toolbar setItems:@[space, self.doneButton]];
     
-    self.pickupTimeTextField.inputAccessoryView = toolBar;
-    self.dropOffTimeTextField.inputAccessoryView = toolBar;
-    self.driverAgeTextField.inputAccessoryView = toolBar;
+    self.pickupTimeTextField.inputAccessoryView = self.toolbar;
+    self.dropOffTimeTextField.inputAccessoryView = self.toolbar;
+    self.driverAgeTextField.inputAccessoryView = self.toolbar;
     
     // Hides the cursor
     self.pickupTimeTextField.tintColor = [UIColor clearColor];
@@ -92,15 +97,21 @@
 - (void)updateWithViewModel:(CTSearchFormViewModel *)viewModel {
     self.viewModel = viewModel;
     
+    self.view.backgroundColor = viewModel.backgroundColor;
+    self.driverAgeTextField.tintColor = viewModel.driverAgeCursorColor;
+    self.nextButton.backgroundColor = viewModel.nextButtonColor;
+    [self.doneButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:viewModel.doneButtonColor, NSForegroundColorAttributeName,nil]
+                                   forState:UIControlStateNormal];
+    
     self.pickupLocationTextField.text = viewModel.pickupLocationName;
     self.dropoffLocationTextField.text = viewModel.dropoffLocationName;
-    
     self.selectDatesTextField.text = viewModel.rentalDates;
-    
     self.pickupTimeTextField.text = viewModel.pickupTime;
     self.dropOffTimeTextField.text = viewModel.dropoffTime;
     self.timePicker.date = viewModel.defaultPickerTime;
     self.driverAgeTextField.text = viewModel.displayedDriverAge;
+    [self.returnToSameLocationCheckbox setTitle:viewModel.returnToSameLocationCheckboxText forState:UIControlStateNormal];
+    [self.driverAgeCheckbox setTitle:viewModel.driverAgeCheckboxText forState:UIControlStateNormal];
     
     switch (viewModel.selectedTextField) {
         case CTSearchFormTextFieldNone:
@@ -129,7 +140,7 @@
     }
     
     self.dropoffLocationHeight.constant = viewModel.dropoffLocationTextfieldDisplayed ? 64 : 0;
-    self.dropoffLocationMargin.constant = viewModel.dropoffLocationTextfieldDisplayed ? 16 : 8;
+    self.dropoffLocationMargin.constant = viewModel.dropoffLocationTextfieldDisplayed ? 16 : 0;
     
     self.driverAgeHeight.constant = viewModel.driverAgeTextfieldDisplayed ? 64 : 0;
     self.driverAgeMargin.constant = viewModel.driverAgeTextfieldDisplayed ? 16 : 0;
@@ -183,9 +194,8 @@
     [CTAppController dispatchAction:CTActionSearchDriverAgeUserDidEnterCharacters payload:newCharacters];
     return NO;
 }
-
-- (IBAction)didToggleReturnToSameLocation:(UISwitch *)sender {
-    [CTAppController dispatchAction:CTActionSearchUserDidToggleReturnToSameLocation payload:@(sender.isOn)];
+- (IBAction)didToggleReturnToSameLocation:(UIButton *)sender {
+    [CTAppController dispatchAction:CTActionSearchUserDidToggleReturnToSameLocation payload:nil];
 }
 
 - (void)didChangeTime:(UIDatePicker *)picker {
@@ -196,8 +206,8 @@
     [CTAppController dispatchAction:CTActionSearchInputViewUserDidSelectDone payload:nil];
 }
 
-- (IBAction)didToggleDriverAge:(UISwitch *)sender {
-    [CTAppController dispatchAction:CTActionSearchUserDidToggleDriverAge payload:@(sender.isOn)];
+- (IBAction)didToggleDriverAge:(UIButton *)sender {
+    [CTAppController dispatchAction:CTActionSearchUserDidToggleDriverAge payload:nil];
 }
 
 - (IBAction)searchButtonTapped:(id)sender {

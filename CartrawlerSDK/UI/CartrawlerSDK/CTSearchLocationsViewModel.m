@@ -10,6 +10,8 @@
 #import "CTAppState.h"
 
 @interface CTSearchLocationsViewModel ()
+@property (nonatomic, readwrite) UIColor *navigationBarColor;
+@property (nonatomic, readwrite) UIColor *cursorColor;
 @property (nonatomic, readwrite) NSString *searchBarPlaceholder;
 @property (nonatomic, readwrite) NSArray <NSString *> *sectionTitles;
 @property (nonatomic, readwrite) NSArray <NSArray <CTMatchedLocation *> *> *rows;
@@ -19,9 +21,12 @@
 
 + (instancetype)viewModelForState:(CTAppState *)appState {
     CTSearchLocationsViewModel *viewModel = [CTSearchLocationsViewModel new];
-    
+    CTUserSettingsState *userSettingsState = appState.userSettingsState;
     CTAPIState *APIState = appState.APIState;
     CTSearchState *searchState = appState.searchState;
+    
+    viewModel.navigationBarColor = userSettingsState.primaryColor;
+    viewModel.cursorColor = userSettingsState.primaryColor;
     
     NSString *location;
     switch (searchState.selectedTextField) {

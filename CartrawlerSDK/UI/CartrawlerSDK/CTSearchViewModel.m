@@ -17,11 +17,13 @@
 @property (nonatomic, readwrite) CTSearchLocationsViewModel *searchLocationsViewModel;
 @property (nonatomic, readwrite) CTSearchCalendarViewModel *searchCalendarViewModel;
 @property (nonatomic, readwrite) CTSearchSettingsViewModel *searchSettingsViewModel;
+@property (nonatomic, readwrite) UIColor *navigationBarColor;
 @end
 
 @implementation CTSearchViewModel
 
 + (instancetype)viewModelForState:(CTAppState *)appState {
+    CTUserSettingsState *userSettingsState = appState.userSettingsState;
     CTSearchState *searchState = appState.searchState;
     CTSearchViewModel *viewModel = [CTSearchViewModel new];
     
@@ -54,8 +56,10 @@
     viewModel.searchSplashViewModel = [CTSearchSplashViewModel viewModelForState:appState];
     viewModel.searchFormViewModel = [CTSearchFormViewModel viewModelForState:appState];
     viewModel.searchLocationsViewModel = [CTSearchLocationsViewModel viewModelForState:appState];
-    viewModel.searchCalendarViewModel = [CTSearchCalendarViewModel viewModelForState:searchState];
+    viewModel.searchCalendarViewModel = [CTSearchCalendarViewModel viewModelForState:appState];
     viewModel.searchSettingsViewModel = [CTSearchSettingsViewModel viewModelForState:appState];
+    
+    viewModel.navigationBarColor = userSettingsState.primaryColor;
     
     return viewModel;
 }

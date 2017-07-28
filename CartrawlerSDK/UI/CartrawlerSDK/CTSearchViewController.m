@@ -28,8 +28,14 @@
 
 @implementation CTSearchViewController
 
++ (Class)viewModelClass {
+    return CTSearchViewModel.class;
+}
+
 - (void)updateWithViewModel:(CTSearchViewModel *)viewModel {
     self.viewModel = viewModel;
+    
+    self.navigationController.navigationBar.barTintColor = viewModel.navigationBarColor;
     
     switch (viewModel.contentView) {
         case CTSearchContentViewSplash:
@@ -97,6 +103,12 @@
 
 - (IBAction)settingsButtonTapped:(UIButton *)sender {
     [CTAppController dispatchAction:CTActionSearchUserDidTapSettingsButton payload:nil];
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake) {
+        [CTAppController dispatchAction:CTActionUserSettingsUserDidShake payload:nil];
+    }
 }
 
 @end

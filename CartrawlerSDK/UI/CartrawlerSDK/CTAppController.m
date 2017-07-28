@@ -10,6 +10,7 @@
 #import "CTAppState.h"
 #import "CTAPIController.h"
 #import "CTUserInterfaceController.h"
+#import "CTNotificationsController.h"
 #import "CTValidationSearch.h"
 
 #import "CartrawlerSDK+NSDateUtils.h"
@@ -20,6 +21,7 @@
 
 @property (nonatomic) CTAPIController *apiController;
 @property (nonatomic) CTUserInterfaceController *userInterfaceController;
+@property (nonatomic) CTNotificationsController *notificationsController;
 @end
 
 @implementation CTAppController
@@ -44,6 +46,7 @@
         
         sharedInstance.apiController = [CTAPIController new];
         sharedInstance.userInterfaceController = [CTUserInterfaceController new];
+        sharedInstance.notificationsController = [CTNotificationsController new];
     });
     return sharedInstance;
 }
@@ -80,6 +83,30 @@
         case CTActionUserSettingsSetNewSession:
             [self.apiController setNewSessionWithState:userSettingsState];
             break;
+        case CTActionUserSettingsUserDidShake:
+            switch (userSettingsState.selectedStyle) {
+                case CTUserSettingsStyleNoStyle:
+                    userSettingsState.selectedStyle = CTUserSettingsStyleGeneric;
+                    userSettingsState.primaryColor = [UIColor colorWithRed:0 green:0.51 blue:0.5 alpha:1.0];
+                    userSettingsState.secondaryColor = [UIColor colorWithRed:0 green:0.24 blue:0.44 alpha:1.0];
+                    userSettingsState.illustrationColor = [UIColor colorWithRed:0 green:0.51 blue:0.5 alpha:1.0];
+                    break;
+                case CTUserSettingsStyleGeneric:
+                    userSettingsState.selectedStyle = CTUserSettingsStyleRyanair;
+                    userSettingsState.primaryColor = [UIColor colorWithRed:0.05 green:0.22 blue:0.57 alpha:1.0];
+                    userSettingsState.secondaryColor = [UIColor colorWithRed:0.94 green:0.78 blue:0.27 alpha:1.0];
+                    userSettingsState.illustrationColor = [UIColor colorWithRed:0.94 green:0.78 blue:0.27 alpha:1.0];
+                    break;
+                case CTUserSettingsStyleRyanair:
+                    userSettingsState.selectedStyle = CTUserSettingsStyleNoStyle;
+                    userSettingsState.primaryColor = [UIColor lightGrayColor];
+                    userSettingsState.secondaryColor = [UIColor lightGrayColor];
+                    userSettingsState.illustrationColor = [UIColor lightGrayColor];
+                    break;
+                default:
+                    break;
+            }
+            break;
             
         // API Actions
         case CTActionAPIDidReturnEngineLoadID:
@@ -100,14 +127,19 @@
             navigationState.parentViewController = payload;
             break;
         case CTActionNavigationPresentSearchStep:
-            navigationState.desiredStep++;
+            navigationState.currentNavigationStep = CTNavigationStepSearch;
+            
+            // Initialise user settings state
+            userSettingsState.primaryColor = [UIColor lightGrayColor];
+            userSettingsState.secondaryColor = [UIColor lightGrayColor];
+            userSettingsState.illustrationColor = [UIColor lightGrayColor];
             
             // Initialise search state
             searchState.selectedPickupTime = [NSDate dateWithHour:10 minute:0];
             searchState.selectedDropoffTime = [NSDate dateWithHour:10 minute:0];
             break;
         case CTActionSearchUserDidTapBack:
-            navigationState.desiredStep--;
+            navigationState.currentNavigationStep = CTNavigationStepNone;
             break;
         
         // Search Actions
@@ -115,30 +147,38 @@
             searchState.selectedTextField = CTSearchFormSettingsButton;
             break;
         case CTActionSearchUserDidTapPickupTextField:
+            searchState.validationFailed = NO;
             searchState.selectedTextField = CTSearchFormTextFieldPickupLocation;
             break;
         case CTActionSearchUserDidTapDropoffTextField:
+            searchState.validationFailed = NO;
             searchState.selectedTextField = CTSearchFormTextFieldDropoffLocation;
             break;
         case CTActionSearchUserDidToggleReturnToSameLocation:
-            searchState.dropoffLocationRequired = ![(NSNumber *)payload boolValue];
+            searchState.validationFailed = NO;
+            searchState.dropoffLocationRequired = !searchState.dropoffLocationRequired;
             break;
         case CTActionSearchUserDidTapDatesTextField:
+            searchState.validationFailed = NO;
             searchState.selectedTextField = CTSearchFormTextFieldSelectDates;
             searchState.displayedPickupDate = nil;
             searchState.displayedDropoffDate = nil;
             break;
         case CTActionSearchUserDidTapPickupTimeTextField:
+            searchState.validationFailed = NO;
             searchState.selectedTextField = CTSearchFormTextFieldPickupTime;
             break;
         case CTActionSearchUserDidTapDropoffTimeTextField:
+            searchState.validationFailed = NO;
             searchState.selectedTextField = CTSearchFormTextFieldDropoffTime;
             break;
         case CTActionSearchUserDidTapAgeTextField:
+            searchState.validationFailed = NO;
             searchState.selectedTextField = CTSearchFormTextFieldDriverAge;
             break;
         case CTActionSearchUserDidToggleDriverAge:
-            searchState.driverAgeRequired = ![(NSNumber *)payload boolValue];
+            searchState.validationFailed = NO;
+            searchState.driverAgeRequired = !searchState.driverAgeRequired;
             searchState.selectedTextField = searchState.driverAgeRequired ? CTSearchFormTextFieldDriverAge : CTSearchFormTextFieldNone;
             if ([CTValidationSearch validateSearchStep:searchState]) {
                 APIState.matchedAvailabilityItems = nil;
@@ -147,7 +187,11 @@
             break;
         case CTActionSearchUserDidTapNext:
             searchState.selectedTextField = CTSearchFormTextFieldNone;
-            navigationState.desiredStep++;
+            if ([CTValidationSearch validateSearchStep:searchState]) {
+                navigationState.currentNavigationStep = CTNavigationStepVehicleList;
+            } else {
+                searchState.validationFailed = YES;
+            }
             break;
         case CTActionSearchSettingsUserDidTapCloseButton:
             searchState.selectedTextField = CTSearchSearchSettingsNone;

@@ -13,6 +13,8 @@
 
 @interface CTSearchSettingsViewModel : NSObject <CTViewModelProtocol>
 
+@property (nonatomic, readonly) UIColor *navigationBarColor;
+
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSString *closeButtonTitle;
 

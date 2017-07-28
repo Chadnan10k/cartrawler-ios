@@ -34,4 +34,6 @@
 
 - (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle;
 
+- (NSString *)localizedStringForKey:(NSString *)key language:(NSString *)language;
+
 @end

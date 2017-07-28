@@ -22,9 +22,13 @@
 
 @implementation CTVehicleListViewController
 
++ (Class)viewModelClass {
+    return CTVehicleListViewModel.class;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tableView setContentInset:UIEdgeInsetsMake(5.0, 0, 30, 0)];
+    [self.tableView setContentInset:UIEdgeInsetsMake(5.0, 0, 50, 0)];
     [self updateWithViewModel:self.viewModel];
 }
 

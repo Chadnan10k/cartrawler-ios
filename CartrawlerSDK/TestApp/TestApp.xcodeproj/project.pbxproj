@@ -201,6 +201,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 45295F701D78412600A09B8A /* Build configuration list for PBXNativeTarget "TestApp" */;
 			buildPhases = (
+				E782996B1F2A4B7900C20525 /* ShellScript */,
 				45295F551D78412500A09B8A /* Sources */,
 				45295F561D78412500A09B8A /* Frameworks */,
 				45295F571D78412500A09B8A /* Resources */,
@@ -245,7 +246,7 @@
 				TargetAttributes = {
 					45295F581D78412500A09B8A = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 3L8QU4R2JJ;
+						DevelopmentTeam = HAMLHKZJ2K;
 						ProvisioningStyle = Automatic;
 					};
 					45709A641DF1C51300E6CA4E = {
@@ -312,6 +313,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/CartrawlerSDK.framework/strip-frameworks.sh\"\n#bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/CartrawlerAPI.framework/strip-frameworks.sh\"\n";
+		};
+		E782996B1F2A4B7900C20525 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -464,7 +478,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				DEVELOPMENT_TEAM = HAMLHKZJ2K;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -474,7 +488,7 @@
 				INFOPLIST_FILE = TestApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.qa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -483,7 +497,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
+				DEVELOPMENT_TEAM = HAMLHKZJ2K;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -493,7 +507,7 @@
 				INFOPLIST_FILE = TestApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.qa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

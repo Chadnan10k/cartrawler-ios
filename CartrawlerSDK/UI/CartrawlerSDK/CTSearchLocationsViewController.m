@@ -12,6 +12,8 @@
 
 @interface CTSearchLocationsViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIView *topView;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) CTSearchLocationsViewModel *viewModel;
@@ -21,11 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.searchBar setBackgroundImage:[UIImage new]];
     [self.searchBar becomeFirstResponder];
 }
 
 - (void)updateWithViewModel:(CTSearchLocationsViewModel *)viewModel {
     self.viewModel = viewModel;
+    self.topView.backgroundColor = viewModel.navigationBarColor;
+    self.searchBar.barTintColor = viewModel.navigationBarColor;
+    self.searchBar.tintColor = viewModel.cursorColor;
     self.searchBar.placeholder = viewModel.searchBarPlaceholder;
     [self.tableView reloadData];
 }
@@ -34,7 +40,7 @@
     [CTAppController dispatchAction:CTActionSearchLocationsUserDidEnterCharacters payload:searchText];
 }
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+- (IBAction)cancelButtonTapped:(id)sender {
     [CTAppController dispatchAction:CTActionSearchLocationsUserDidTapCancel payload:nil];
 }
 
@@ -67,10 +73,10 @@
     // TODO: Extract logic to view model and localise
     cell.detailTextLabel.text = location.isAtAirport ? @"Airport" : @"City Location";
     
-    CGRect frame = CGRectMake(0, 0, 15, 15);
+    CGRect frame = CGRectMake(0, 0, 25, 25);
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:@"V5-Mobile" size:16];
+    label.font = [UIFont fontWithName:@"V5-Mobile" size:20];
     label.text = location.isAtAirport ? @"" : @"";
     cell.accessoryView = label;
     [cell.accessoryView setFrame:frame];

@@ -7,9 +7,10 @@
 //
 
 #import "CTSearchSettingsSelectionViewModel.h"
-#import "CTSearchState.h"
+#import "CTAppState.h"
 
 @interface CTSearchSettingsSelectionViewModel ()
+@property (nonatomic, readwrite) UIColor *navigationBarColor;
 @property (nonatomic, readwrite) NSString *title;
 @property (nonatomic, readwrite) NSString *closeButtonTitle;
 @property (nonatomic, readwrite) NSArray *rowViewModels;
@@ -17,8 +18,11 @@
 
 @implementation CTSearchSettingsSelectionViewModel
 
-+ (instancetype)viewModelForState:(CTSearchState *)searchState {
++ (instancetype)viewModelForState:(CTAppState *)appState {
     CTSearchSettingsSelectionViewModel *viewModel = [CTSearchSettingsSelectionViewModel new];
+    CTSearchState *searchState = appState.searchState;
+    
+    viewModel.navigationBarColor = appState.userSettingsState.primaryColor;
     
     NSString *fileName;
     

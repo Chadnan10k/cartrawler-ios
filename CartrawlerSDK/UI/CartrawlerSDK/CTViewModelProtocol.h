@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CTLocalisedStrings.h"
 #import "CTSDKLocalizationConstants.h"
+#import <UIKit/UIKit.h>
 
 @protocol CTViewModelProtocol <NSObject>
 @optional

@@ -12,6 +12,7 @@
 #import "CTSearchViewModel.h"
 #import "CTVehicleListViewModel.h"
 #import <CoreText/CoreText.h>
+#import "CTValidationSearch.h"
 
 @interface CTUserInterfaceController ()
 @property (nonatomic) UINavigationController *navigationController;
@@ -23,6 +24,11 @@
 - (instancetype)init {
     self = [super init];
     self.navigationController = [UINavigationController new];
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
+    // Set all navigation bar default tint colors
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     // Initialise custom font
     NSString *fontPath = [[NSBundle bundleForClass:self.class] pathForResource:@"V5-Mobile" ofType:@"ttf"];
@@ -44,16 +50,19 @@
         return;
     }
     
-    if (self.navigationController.viewControllers.count > navigationState.desiredStep) {
-        [self.navigationController popToViewController:self.navigationController.viewControllers[navigationState.desiredStep] animated:YES];
+    if (self.navigationController.viewControllers.count > navigationState.currentNavigationStep) {
+        if (navigationState.currentNavigationStep == CTNavigationStepNone) {
+            [navigationState.parentViewController dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            [self.navigationController popToViewController:self.navigationController.viewControllers[navigationState.currentNavigationStep - 1] animated:YES];
+        }
     }
     
     UIViewController <CTViewControllerProtocol> *vc;
     
-    if (self.navigationController.viewControllers.count < navigationState.desiredStep) {
-        // TODO: Check current view controller valid, if not break
+    if (self.navigationController.viewControllers.count < navigationState.currentNavigationStep) {
         
-        vc = [CTUserInterfaceController viewControllerForStep:navigationState.desiredStep];
+        vc = [CTUserInterfaceController viewControllerForStep:navigationState.currentNavigationStep];
         
         if (self.navigationController.viewControllers.count == 0) {
             self.navigationController.viewControllers = @[vc];
@@ -65,13 +74,13 @@
         vc = (UIViewController <CTViewControllerProtocol> *)self.navigationController.topViewController;
     }
     
-    // Get view model for current view controller
-    // Update view controller
-    id viewModel = [CTUserInterfaceController viewModelForStep:navigationState.desiredStep state:appState];
+    
+    Class viewModelClass = [vc.class viewModelClass];
+    id <CTViewModelProtocol> viewModel = [viewModelClass viewModelForState:appState];
     [vc updateWithViewModel:viewModel];
 }
 
-+ (UIViewController <CTViewControllerProtocol> *)viewControllerForStep:(NSUInteger)step {
++ (UIViewController <CTViewControllerProtocol> *)viewControllerForStep:(CTNavigationStep)step {
     UIStoryboard *storyboard;
     NSBundle *bundle = [NSBundle bundleForClass:self.class];
     
