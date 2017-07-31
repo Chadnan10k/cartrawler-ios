@@ -294,6 +294,7 @@
 		E7CD21A81E38F794006BE519 /* CTSDKLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */; };
 		E7F1066F1ED37C530012CE16 /* CTAnalyticsCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F1066D1ED37C530012CE16 /* CTAnalyticsCache.h */; };
 		E7F106701ED37C530012CE16 /* CTAnalyticsCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F1066E1ED37C530012CE16 /* CTAnalyticsCache.m */; };
+		E7F83F791F2D178F00232635 /* CTSelectedVehicle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7F83F781F2D178F00232635 /* CTSelectedVehicle.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -586,6 +587,7 @@
 		E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTSDKLocalizationConstants.m; path = Localization/CTSDKLocalizationConstants.m; sourceTree = "<group>"; };
 		E7F1066D1ED37C530012CE16 /* CTAnalyticsCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalyticsCache.h; sourceTree = "<group>"; };
 		E7F1066E1ED37C530012CE16 /* CTAnalyticsCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsCache.m; sourceTree = "<group>"; };
+		E7F83F781F2D178F00232635 /* CTSelectedVehicle.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CTSelectedVehicle.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1200,6 +1202,7 @@
 				E78299531F2824CC00C20525 /* Protocols */,
 				E78298AA1F1F0B2F00C20525 /* Search */,
 				E782993D1F2813A400C20525 /* Vehicle List */,
+				E7F83F771F2D177000232635 /* Selected Vehicle */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";
@@ -1501,6 +1504,14 @@
 			name = TriangleView;
 			sourceTree = "<group>";
 		};
+		E7F83F771F2D177000232635 /* Selected Vehicle */ = {
+			isa = PBXGroup;
+			children = (
+				E7F83F781F2D178F00232635 /* CTSelectedVehicle.storyboard */,
+			);
+			name = "Selected Vehicle";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1747,6 +1758,7 @@
 				BC3361971E4CCC520056E5A6 /* nl.strings in Resources */,
 				BC3361931E4CCC520056E5A6 /* en.strings in Resources */,
 				BCF4DA4A1E93B58A00E8C5EC /* CTCalendar.storyboard in Resources */,
+				E7F83F791F2D178F00232635 /* CTSelectedVehicle.storyboard in Resources */,
 				BC3361981E4CCC520056E5A6 /* pl.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

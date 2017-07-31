@@ -12,7 +12,7 @@
 @interface CTSearchViewModel ()
 @property (nonatomic, readwrite) CTSearchContentView contentView;
 @property (nonatomic, readwrite) CTSearchSupplementaryView supplementaryView;
-@property (nonatomic, readwrite)CTSearchSplashViewModel *searchSplashViewModel;
+@property (nonatomic, readwrite) CTSearchSplashViewModel *searchSplashViewModel;
 @property (nonatomic, readwrite) CTSearchFormViewModel *searchFormViewModel;
 @property (nonatomic, readwrite) CTSearchLocationsViewModel *searchLocationsViewModel;
 @property (nonatomic, readwrite) CTSearchCalendarViewModel *searchCalendarViewModel;
