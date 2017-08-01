@@ -10,6 +10,10 @@
  *  Actions
  */
 typedef NS_ENUM(NSUInteger, CTAction) {
+    /**
+     *  Initialise the state object
+     */
+    CTActionInitialiseState,
     // User Actions
     /**
      *  Sets the Client ID
@@ -73,6 +77,10 @@ typedef NS_ENUM(NSUInteger, CTAction) {
     CTActionNavigationPresentSearchStep,
     
     // Search Actions
+    /**
+     *  The user tapped the close button
+     */
+    CTActionSearchUserDidTapCloseButton,
     /**
      *  The user tapped the settings button
      */
@@ -183,6 +191,10 @@ typedef NS_ENUM(NSUInteger, CTAction) {
     CTActionSearchInputViewUserDidSelectDone,
     
     // Vehicle List
+    /**
+     *  The user tapped the back button
+     */
+    CTActionVehicleListUserDidTapBack,
     /**
      *  The user tapped a vehicle
      */

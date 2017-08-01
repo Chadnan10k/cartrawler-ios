@@ -92,5 +92,11 @@
     }];
 }
 
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake) {
+        [CTAppController dispatchAction:CTActionUserSettingsUserDidShake payload:nil];
+    }
+}
+
 @end
 

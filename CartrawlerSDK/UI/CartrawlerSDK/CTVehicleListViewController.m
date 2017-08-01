@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *headerLeftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *headerRightLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) UIAlertController *alertController;
+@property (strong, nonatomic) UIAlertController *alertController;
 @end
 
 @implementation CTVehicleListViewController
@@ -45,7 +45,7 @@
             }
             break;
         case CTVehicleListSelectedViewSort:
-            if (!self.alertController) {
+            if (!self.presentedViewController) {
                 [self presentSortViewControllerWithViewModel:viewModel];
             }
             break;
@@ -135,7 +135,13 @@
     [super viewWillDisappear:animated];
     
     if (self.isMovingFromParentViewController || self.isBeingDismissed) {
-        [CTAppController dispatchAction:CTActionSearchUserDidTapBack payload:nil];
+        [CTAppController dispatchAction:CTActionVehicleListUserDidTapBack payload:nil];
+    }
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake) {
+        [CTAppController dispatchAction:CTActionUserSettingsUserDidShake payload:nil];
     }
 }
 

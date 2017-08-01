@@ -12,6 +12,7 @@
 @interface CTSearchLocationsViewModel ()
 @property (nonatomic, readwrite) UIColor *navigationBarColor;
 @property (nonatomic, readwrite) UIColor *cursorColor;
+@property (nonatomic, readwrite) UIColor *iconColor;
 @property (nonatomic, readwrite) NSString *searchBarPlaceholder;
 @property (nonatomic, readwrite) NSArray <NSString *> *sectionTitles;
 @property (nonatomic, readwrite) NSArray <NSArray <CTMatchedLocation *> *> *rows;
@@ -27,6 +28,7 @@
     
     viewModel.navigationBarColor = userSettingsState.primaryColor;
     viewModel.cursorColor = userSettingsState.primaryColor;
+    viewModel.iconColor = userSettingsState.primaryColor;
     
     NSString *location;
     switch (searchState.selectedTextField) {

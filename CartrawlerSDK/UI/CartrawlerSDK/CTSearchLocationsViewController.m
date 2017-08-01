@@ -78,6 +78,7 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont fontWithName:@"V5-Mobile" size:20];
     label.text = location.isAtAirport ? @"" : @"";
+    label.textColor = self.viewModel.iconColor;
     cell.accessoryView = label;
     [cell.accessoryView setFrame:frame];
     
@@ -86,6 +87,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [CTAppController dispatchAction:CTActionSearchLocationsUserDidTapLocation payload:self.viewModel.rows[indexPath.section][indexPath.row]];
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake) {
+        [CTAppController dispatchAction:CTActionUserSettingsUserDidShake payload:nil];
+    }
 }
 
 @end

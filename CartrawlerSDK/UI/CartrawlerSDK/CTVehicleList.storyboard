@@ -348,15 +348,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cC3-xR-j92" firstAttribute="leading" secondItem="oLu-rS-til" secondAttribute="leadingMargin" constant="-16" id="6Xh-4j-dSH"/>
+                            <constraint firstItem="9U8-U9-dEv" firstAttribute="centerX" secondItem="oLu-rS-til" secondAttribute="centerX" id="32W-pB-fWv"/>
+                            <constraint firstItem="9U8-U9-dEv" firstAttribute="width" secondItem="oLu-rS-til" secondAttribute="width" id="4aU-gZ-Rjq"/>
                             <constraint firstItem="986-PY-fl4" firstAttribute="centerX" secondItem="oLu-rS-til" secondAttribute="centerX" id="6y1-KH-mCu"/>
                             <constraint firstItem="zzv-bd-9nB" firstAttribute="top" secondItem="986-PY-fl4" secondAttribute="bottom" constant="16" id="EMJ-FH-8xe"/>
                             <constraint firstItem="cC3-xR-j92" firstAttribute="top" secondItem="blI-ne-a7S" secondAttribute="bottom" id="ZcI-Wv-hj4"/>
+                            <constraint firstItem="cC3-xR-j92" firstAttribute="width" secondItem="oLu-rS-til" secondAttribute="width" id="lLl-lI-ZtC"/>
                             <constraint firstItem="zzv-bd-9nB" firstAttribute="top" secondItem="9U8-U9-dEv" secondAttribute="bottom" id="mI4-M1-F4O"/>
-                            <constraint firstItem="9U8-U9-dEv" firstAttribute="leading" secondItem="oLu-rS-til" secondAttribute="leadingMargin" constant="-16" id="qtT-cb-ozh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cC3-xR-j92" secondAttribute="trailing" constant="-16" id="tPW-5w-1oU"/>
+                            <constraint firstItem="cC3-xR-j92" firstAttribute="centerX" secondItem="oLu-rS-til" secondAttribute="centerX" id="rsc-nF-hIP"/>
                             <constraint firstItem="9U8-U9-dEv" firstAttribute="top" secondItem="cC3-xR-j92" secondAttribute="bottom" id="vjn-MK-Kl0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9U8-U9-dEv" secondAttribute="trailing" constant="-16" id="w8r-bN-RUO"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

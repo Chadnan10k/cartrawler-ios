@@ -49,7 +49,7 @@
     if (!navigationState.parentViewController) {
         return;
     }
-    
+
     if (self.navigationController.viewControllers.count > navigationState.currentNavigationStep) {
         if (navigationState.currentNavigationStep == CTNavigationStepNone) {
             [navigationState.parentViewController dismissViewControllerAnimated:YES completion:nil];

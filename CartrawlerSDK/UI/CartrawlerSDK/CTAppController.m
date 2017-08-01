@@ -35,18 +35,6 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[CTAppController alloc] init];
-        
-        sharedInstance.appState = [CTAppState new];
-        sharedInstance.appState.userSettingsState = [CTUserSettingsState new];
-        sharedInstance.appState.APIState = [CTAPIState new];
-        sharedInstance.appState.navigationState = [CTNavigationState new];
-        sharedInstance.appState.searchState = [CTSearchState new];
-        sharedInstance.appState.vehicleListState = [CTVehicleListState new];
-        sharedInstance.appState.selectedVehicleState = [CTSelectedVehicleState new];
-        
-        sharedInstance.apiController = [CTAPIController new];
-        sharedInstance.userInterfaceController = [CTUserInterfaceController new];
-        sharedInstance.notificationsController = [CTNotificationsController new];
     });
     return sharedInstance;
 }
@@ -61,6 +49,19 @@
     CTSelectedVehicleState *selectedVehicleState = appState.selectedVehicleState;
     
     switch (action) {
+        case CTActionInitialiseState:
+            self.appState = [CTAppState new];
+            self.appState.userSettingsState = [CTUserSettingsState new];
+            self.appState.APIState = [CTAPIState new];
+            self.appState.navigationState = [CTNavigationState new];
+            self.appState.searchState = [CTSearchState new];
+            self.appState.vehicleListState = [CTVehicleListState new];
+            self.appState.selectedVehicleState = [CTSelectedVehicleState new];
+            
+            self.apiController = [CTAPIController new];
+            self.userInterfaceController = [CTUserInterfaceController new];
+            self.notificationsController = [CTNotificationsController new];
+            
         // User Settings Actions
         case CTActionUserSettingsSetClientID:
             userSettingsState.clientID = payload;
@@ -89,19 +90,19 @@
                     userSettingsState.selectedStyle = CTUserSettingsStyleGeneric;
                     userSettingsState.primaryColor = [UIColor colorWithRed:0 green:0.51 blue:0.5 alpha:1.0];
                     userSettingsState.secondaryColor = [UIColor colorWithRed:0 green:0.24 blue:0.44 alpha:1.0];
-                    userSettingsState.illustrationColor = [UIColor colorWithRed:0 green:0.51 blue:0.5 alpha:1.0];
+                    userSettingsState.illustrationColor = userSettingsState.primaryColor;
                     break;
                 case CTUserSettingsStyleGeneric:
                     userSettingsState.selectedStyle = CTUserSettingsStyleRyanair;
                     userSettingsState.primaryColor = [UIColor colorWithRed:0.05 green:0.22 blue:0.57 alpha:1.0];
                     userSettingsState.secondaryColor = [UIColor colorWithRed:0.94 green:0.78 blue:0.27 alpha:1.0];
-                    userSettingsState.illustrationColor = [UIColor colorWithRed:0.94 green:0.78 blue:0.27 alpha:1.0];
+                    userSettingsState.illustrationColor = userSettingsState.secondaryColor;
                     break;
                 case CTUserSettingsStyleRyanair:
                     userSettingsState.selectedStyle = CTUserSettingsStyleNoStyle;
                     userSettingsState.primaryColor = [UIColor lightGrayColor];
-                    userSettingsState.secondaryColor = [UIColor lightGrayColor];
-                    userSettingsState.illustrationColor = [UIColor lightGrayColor];
+                    userSettingsState.secondaryColor = [UIColor darkGrayColor];
+                    userSettingsState.illustrationColor = userSettingsState.primaryColor;
                     break;
                 default:
                     break;
@@ -130,9 +131,10 @@
             navigationState.currentNavigationStep = CTNavigationStepSearch;
             
             // Initialise user settings state
+            // TODO: Extract, this is redundant
             userSettingsState.primaryColor = [UIColor lightGrayColor];
-            userSettingsState.secondaryColor = [UIColor lightGrayColor];
-            userSettingsState.illustrationColor = [UIColor lightGrayColor];
+            userSettingsState.secondaryColor = [UIColor darkGrayColor];
+            userSettingsState.illustrationColor = userSettingsState.primaryColor;
             
             // Initialise search state
             searchState.selectedPickupTime = [NSDate dateWithHour:10 minute:0];
@@ -143,6 +145,9 @@
             break;
         
         // Search Actions
+        case CTActionSearchUserDidTapCloseButton:
+            navigationState.currentNavigationStep = CTNavigationStepNone;
+            break;
         case CTActionSearchUserDidTapSettingsButton:
             searchState.selectedTextField = CTSearchFormSettingsButton;
             break;
@@ -309,6 +314,10 @@
             break;
         
         // Vehicle List Actions
+        case CTActionVehicleListUserDidTapBack:
+            navigationState.currentNavigationStep = CTNavigationStepSearch;
+            appState.vehicleListState = [CTVehicleListState new];
+            break;
         case CTActionVehicleListUserDidTapVehicle:
             selectedVehicleState.selectedAvailabilityItem = payload;
             break;

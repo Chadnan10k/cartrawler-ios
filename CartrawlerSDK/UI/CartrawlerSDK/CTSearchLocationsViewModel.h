@@ -13,6 +13,7 @@
 @interface CTSearchLocationsViewModel : NSObject <CTViewModelProtocol>
 @property (nonatomic, readonly) UIColor *navigationBarColor;
 @property (nonatomic, readonly) UIColor *cursorColor;
+@property (nonatomic, readonly) UIColor *iconColor;
 @property (nonatomic, readonly) NSString *searchBarPlaceholder;
 @property (nonatomic, readonly) NSArray <NSString *> *sectionTitles;
 @property (nonatomic, readonly) NSArray <NSArray <CTMatchedLocation *> *> *rows;

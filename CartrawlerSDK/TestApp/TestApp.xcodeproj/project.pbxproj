@@ -34,6 +34,7 @@
 		BCDB4BF11E3F560E008004DA /* CartrawlerRakuten.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */; };
 		BCDB4BF21E3F560E008004DA /* CartrawlerRakuten.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E78298A01F1EEB6200C20525 /* StandaloneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E782989F1F1EEB6100C20525 /* StandaloneViewController.m */; };
+		E796395B1F2FCD69009EA682 /* car+start3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E796395A1F2FCD69009EA682 /* car+start3.mp3 */; };
 		E7CCD1E91E8177050068A2F3 /* UsageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CCD1E81E8177050068A2F3 /* UsageViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerRakuten.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E782989E1F1EEB6100C20525 /* StandaloneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandaloneViewController.h; sourceTree = "<group>"; };
 		E782989F1F1EEB6100C20525 /* StandaloneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandaloneViewController.m; sourceTree = "<group>"; };
+		E796395A1F2FCD69009EA682 /* car+start3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "car+start3.mp3"; sourceTree = "<group>"; };
 		E7CCD1E71E8177050068A2F3 /* UsageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsageViewController.h; sourceTree = "<group>"; };
 		E7CCD1E81E8177050068A2F3 /* UsageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,6 +172,7 @@
 				45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */,
 				45295F651D78412600A09B8A /* Main.storyboard */,
 				45295F681D78412600A09B8A /* Assets.xcassets */,
+				E796395A1F2FCD69009EA682 /* car+start3.mp3 */,
 				45295F6A1D78412600A09B8A /* LaunchScreen.storyboard */,
 				45295F6D1D78412600A09B8A /* Info.plist */,
 				45295F5C1D78412500A09B8A /* Supporting Files */,
@@ -246,7 +249,7 @@
 				TargetAttributes = {
 					45295F581D78412500A09B8A = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = HAMLHKZJ2K;
+						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
 					};
 					45709A641DF1C51300E6CA4E = {
@@ -287,6 +290,7 @@
 				455B59771DCCB22A00CA4790 /* Roboto-Bold.ttf in Resources */,
 				45295F691D78412600A09B8A /* Assets.xcassets in Resources */,
 				45A7B7561D9BE003006611EB /* OpenSans-Light.ttf in Resources */,
+				E796395B1F2FCD69009EA682 /* car+start3.mp3 in Resources */,
 				45295F671D78412600A09B8A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,7 +482,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HAMLHKZJ2K;
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -497,7 +501,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HAMLHKZJ2K;
+				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

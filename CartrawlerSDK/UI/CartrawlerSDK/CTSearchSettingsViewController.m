@@ -56,7 +56,7 @@
     switch (viewModel.selectedSettings) {
         case CTSearchSearchSettingsNone:
             if (self.presentedViewController) {
-                [self dismissViewControllerAnimated:YES completion:nil];
+                [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
             }
             break;
         case CTSearchSearchSettingsCountry:
@@ -93,6 +93,12 @@
 
 - (IBAction)currency:(id)sender {
     [CTAppController dispatchAction:CTActionSearchSettingsUserDidTapCurrencyButton payload:nil];
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake) {
+        [CTAppController dispatchAction:CTActionUserSettingsUserDidShake payload:nil];
+    }
 }
 
 @end

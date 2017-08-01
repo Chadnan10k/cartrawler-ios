@@ -23,11 +23,10 @@
                          sandboxMode:(BOOL)sandboxMode
 {
     self = [super init];
-    //[[CTSDKSettings instance] setClientId:@"" languageCode:languageCode isDebug:sandboxMode];
     
     // TODO: Extract to Client
+    [CTAppController dispatchAction:CTActionInitialiseState payload:nil];
     [CTAppController dispatchAction:CTActionUserSettingsSetClientID payload:@"642619"];
-    
     [CTAppController dispatchAction:CTActionUserSettingsSetLanguageCode payload:languageCode];
     [CTAppController dispatchAction:CTActionUserSettingsSetDebugMode payload:@(sandboxMode)];
     

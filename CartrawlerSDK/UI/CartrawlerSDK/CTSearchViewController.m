@@ -105,6 +105,10 @@
     [CTAppController dispatchAction:CTActionSearchUserDidTapSettingsButton payload:nil];
 }
 
+- (IBAction)closeButtonTapped:(id)sender {
+    [CTAppController dispatchAction:CTActionSearchUserDidTapCloseButton payload:nil];
+}
+
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
     if (motion == UIEventSubtypeMotionShake) {
         [CTAppController dispatchAction:CTActionUserSettingsUserDidShake payload:nil];
