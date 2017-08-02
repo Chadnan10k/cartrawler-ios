@@ -19,11 +19,15 @@
 @property (nonatomic, strong) CTSearchViewModel *viewModel;
 @property (nonatomic, weak) CTSearchSplashViewController *searchSplashVC;
 @property (weak, nonatomic) IBOutlet UIView *searchSplashContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchSplashBottomConstraint;
 @property (nonatomic, weak) CTSearchFormViewController *searchFormVC;
 @property (weak, nonatomic) IBOutlet UIView *searchFormContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchFormHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchFormBottomConstraint;
 @property (nonatomic, weak) CTSearchLocationsViewController *searchLocationsVC;
 @property (nonatomic, weak) CTSearchCalendarViewController *searchCalendarVC;
 @property (nonatomic, weak) CTSearchSettingsViewController *searchSettingsVC;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraintUSP;
 @end
 
 @implementation CTSearchViewController
@@ -36,19 +40,6 @@
     self.viewModel = viewModel;
     
     self.navigationController.navigationBar.barTintColor = viewModel.navigationBarColor;
-    
-    switch (viewModel.contentView) {
-        case CTSearchContentViewSplash:
-            self.searchSplashContainerView.hidden = NO;
-            self.searchFormContainerView.hidden = YES;
-            break;
-        case CTSearchContentViewForm:
-            self.searchSplashContainerView.hidden = YES;
-            self.searchFormContainerView.hidden = NO;
-            break;
-        default:
-            break;
-    }
     
     switch (viewModel.supplementaryView) {
         case CTSearchSupplementaryViewNone:
@@ -80,6 +71,30 @@
     [self.searchLocationsVC updateWithViewModel:viewModel.searchLocationsViewModel];
     [self.searchCalendarVC updateWithViewModel:viewModel.searchCalendarViewModel];
     [self.searchSettingsVC updateWithViewModel:viewModel.searchSettingsViewModel];
+    
+    switch (viewModel.contentView) {
+        case CTSearchContentViewSplash:
+            self.searchSplashContainerView.hidden = NO;
+            self.searchFormContainerView.hidden = YES;
+            //self.searchSplashBottomConstraint.priority = 1000;
+            //self.searchFormBottomConstraint.priority = 250;
+            self.topConstraintUSP.constant = [self.searchSplashContainerView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+            break;
+        case CTSearchContentViewForm:
+            self.searchSplashContainerView.hidden = YES;
+            self.searchFormContainerView.hidden = NO;
+            //self.searchFormBottomConstraint.priority = 1000;
+            //self.searchSplashBottomConstraint.priority = 250;
+            self.searchFormHeightConstraint.constant = [self.searchFormVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+            self.topConstraintUSP.constant = [self.searchFormVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+            break;
+        default:
+            break;
+    }
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.view layoutIfNeeded];
+    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -91,7 +91,7 @@
     self.pickupTimeTextField.tintColor = [UIColor clearColor];
     self.dropOffTimeTextField.tintColor = [UIColor clearColor];
     
-    [self addKeyboardNotifications];
+    //[self addKeyboardNotifications];
 }
 
 - (void)updateWithViewModel:(CTSearchFormViewModel *)viewModel {
