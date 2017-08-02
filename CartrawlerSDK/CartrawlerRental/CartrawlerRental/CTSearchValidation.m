@@ -55,6 +55,9 @@
                                           pickUpDateTime:search.pickupDate
                                           returnDateTime:search.dropoffDate
                                             currencyCode:[CTSDKSettings instance].currencyCode
+											   accountId:[CTSDKSettings instance].clientId
+											   visitorId:[CTSDKSettings instance].customerID
+									   isStandAlone:[CTSDKSettings instance].isStandalone
                                               completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
                                                   if (response) {
                                                       dispatch_async(dispatch_get_main_queue(), ^{

@@ -170,6 +170,9 @@
                                                pickUpDateTime:self.search.pickupDate
                                                returnDateTime:self.search.dropoffDate
                                                  currencyCode:[CTSDKSettings instance].currencyCode
+													accountId:@""
+													visitorId:@""
+												 isStandAlone:[CTSDKSettings instance].isStandalone
                                                    completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
                                                        if (response) {
                                                            weakSelf.search.vehicleAvailability = response;

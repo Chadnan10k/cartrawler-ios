@@ -165,6 +165,9 @@
                                                                     pickUpDateTime:[CTRentalSearch instance].pickupDate
                                                                     returnDateTime:[CTRentalSearch instance].dropoffDate
                                                                       currencyCode:[CTSDKSettings instance].currencyCode
+																		 accountId:[CTSDKSettings instance].clientId
+																		 visitorId:[CTSDKSettings instance].customerID
+																	  isStandAlone:[CTSDKSettings instance].isStandalone
                                                                         completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
                                                                             [weakSelf processVehicleAvailability:response error:error];
                                                                         }];

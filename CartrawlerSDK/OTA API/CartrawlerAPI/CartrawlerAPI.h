@@ -154,15 +154,28 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
  *  @param currencyCode        The currency code eg EUR
  *  @param completion          If successful you get a VehicleAvailabilityResponse, If failure an ErrorResponse will be returned
  */
+//- (void)requestVehicleAvailabilityForLocation:(NSString *)pickupLocationCode
+//                           returnLocationCode:(NSString *)returnLocationCode
+//                          customerCountryCode:(NSString *)customerCountryCode
+//                                 passengerQty:(NSNumber *)passengerQty
+//                                    driverAge:(NSNumber *)driverAge
+//                               pickUpDateTime:(NSDate *)pickupDateTime
+//                               returnDateTime:(NSDate *)returnDateTime
+//                                 currencyCode:(NSString *)currencyCode
+//                                   completion:(RequestAvailabilityCompletion)completion;
+
 - (void)requestVehicleAvailabilityForLocation:(NSString *)pickupLocationCode
-                           returnLocationCode:(NSString *)returnLocationCode
-                          customerCountryCode:(NSString *)customerCountryCode
-                                 passengerQty:(NSNumber *)passengerQty
-                                    driverAge:(NSNumber *)driverAge
-                               pickUpDateTime:(NSDate *)pickupDateTime
-                               returnDateTime:(NSDate *)returnDateTime
-                                 currencyCode:(NSString *)currencyCode
-                                   completion:(RequestAvailabilityCompletion)completion;
+						   returnLocationCode:(NSString *)returnLocationCode
+						  customerCountryCode:(NSString *)customerCountryCode
+								 passengerQty:(NSNumber *)passengerQty
+									driverAge:(NSNumber *)driverAge
+							   pickUpDateTime:(NSDate *)pickupDateTime
+							   returnDateTime:(NSDate *)returnDateTime
+								 currencyCode:(NSString *)currencyCode
+									accountId:(NSString *)accountId
+									visitorId:(NSString *)visitorId
+								 isStandAlone:(BOOL)isStandAlone
+								   completion:(RequestAvailabilityCompletion)completion;
 
 /**
  *  Requests an insurance quote or a vehicle
