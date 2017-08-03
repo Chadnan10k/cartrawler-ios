@@ -96,10 +96,6 @@
     [self setItem:homeCountryName key:@"CT_homeCountryName"];
 }
 
-- (void)setCustomAttributes:(NSMutableDictionary *)customAttributes {
-	_customAttributes = customAttributes;
-}
-
 - (NSString *)countryName:(NSString *)countryCode
 {
     NSLocale *locale = [NSLocale currentLocale];
