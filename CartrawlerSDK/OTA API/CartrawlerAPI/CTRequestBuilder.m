@@ -114,22 +114,6 @@
     return [NSString stringWithFormat:@"\"TPA_Extensions\": {\"ConsumerSignature\":{\"@ID\": \"%@\",\"@Hash\": \"%@\",\"@Stamp\": \"%@\"}}}", [self stringToSha1:[UIDevice currentDevice].identifierForVendor.UUIDString], [self stringToSha1:stringTwo], dateString];
 }
 
-//+ (NSString *)tpaExtensionForAvail
-//{
-//    NSString *tpa =
-//    @" \"TPA_Extensions\": { \r"
-//    @"     \"showBaseCost\": true, \r"
-//    @"     \"GeoRadius\": 5, \r"
-//    @"     \"Window\": { \r"
-//    @"         \"@name\": \"IOS-V3\", \r"
-//    @"         \"@engine\": \"IOS-V3\" \r"
-//    @"      },\"RefID\": [] \r"
-//    @" }} \r";
-//    
-//    return tpa;
-//    
-//}
-
 + (NSString *)tpaExtensionForAvailPath:(BOOL) isStandAlone accountId:(NSString *) accountId visitorId:(NSString *) visitorId
 {
 	NSString *tpa =
@@ -269,27 +253,6 @@
         return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder buildHeader:CTLocationSearchHeader clientID:clientID target:target locale:locale], tail];
     }
 }
-
-//+ (NSString *) OTA_VehAvailRateRQ:(NSString *)pickUpDateTime
-//                   returnDateTime:(NSString *)returnDateTime
-//               pickUpLocationCode:(NSString *)pickUpLoactionCode
-//               returnLocationCode:(NSString *)returnLocationCode
-//                        driverAge:(NSString *)driverAge
-//                     passengerQty:(NSString *)passengerQty
-//                  homeCountryCode:(NSString *)homeCountryCode
-//                         clientID:(NSString *)clientID
-//                           target:(NSString *)target
-//                           locale:(NSString *)locale
-//                         currency:(NSString *)currency
-//{
-//    
-//    NSString *tail = [NSString stringWithFormat:@"\"VehAvailRQCore\":{\"@Status\":\"Available\",\"VehRentalCore\":{\"@PickUpDateTime\":\"%@\",\"@ReturnDateTime\":\"%@\",\"PickUpLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"},\"ReturnLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"}},\"DriverType\":{\"@Age\":\"%@\"}},\"VehAvailRQInfo\":{\"Customer\":{\"Primary\":{\"CitizenCountryName\":{\"@Code\":\"%@\"}}},%@", pickUpDateTime, returnDateTime, pickUpLoactionCode, returnLocationCode, driverAge, homeCountryCode, [CTRequestBuilder tpaExtensionForAvail]];
-//	
-//	//aquiaquiaqui
-//	NSLog(@"%@", [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:currency], tail]);
-//    
-//    return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:currency], tail];
-//}
 
 + (NSString *) OTA_VehAvailRateRQ:(NSString *)pickUpDateTime
 				   returnDateTime:(NSString *)returnDateTime

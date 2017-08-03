@@ -212,47 +212,6 @@
 
 #pragma mark Request car availability
 
-//- (void)requestVehicleAvailabilityForLocation:(NSString *)pickupLocationCode
-//                           returnLocationCode:(NSString *)returnLocationCode
-//                          customerCountryCode:(NSString *)customerCountryCode
-//                                 passengerQty:(NSNumber *)passengerQty
-//                                    driverAge:(NSNumber *)driverAge
-//                               pickUpDateTime:(NSDate *)pickupDateTime
-//                               returnDateTime:(NSDate *)returnDateTime
-//                                 currencyCode:(NSString *)currencyCode
-//                                   completion:(RequestAvailabilityCompletion)completion
-//{
-//    NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.endPoint, @"OTA_VehAvailRateRQ"];
-//    //aquiaquiaqui
-//    NSString *requestBody = [CTRequestBuilder OTA_VehAvailRateRQ: [pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
-//                                        returnDateTime: [returnDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
-//                                    pickUpLocationCode: pickupLocationCode
-//                                    returnLocationCode: returnLocationCode
-//                                             driverAge: driverAge.stringValue
-//                                          passengerQty: passengerQty.stringValue
-//                                       homeCountryCode: customerCountryCode
-//                                              clientID: self.clientAPIKey
-//                                                target: self.apiTarget
-//                                                locale: self.locale
-//                                              currency: currencyCode];
-//    
-//    
-//    [self.postRequest performRequestWithData:endPoint
-//                               jsonBody: requestBody
-//                         loggingEnabled: self.loggingEnabled
-//                             completion:^(NSDictionary *response,
-//                                          CTErrorResponse *error)
-//    {
-//        if (error == nil) {
-//            CTVehicleAvailability *vehAvailRSCore = [[CTVehicleAvailability alloc] initFromVehAvailRSCoreDictionary: response];
-//            completion(vehAvailRSCore, nil);
-//        } else {
-//            completion(nil, error);
-//        }
-//    }];
-//
-//}
-
 - (void)requestVehicleAvailabilityForLocation:(NSString *)pickupLocationCode
 							 returnLocationCode:(NSString *)returnLocationCode
 							customerCountryCode:(NSString *)customerCountryCode
