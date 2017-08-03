@@ -29,6 +29,9 @@
 {
     [super viewWillAppear:animated];
     self.endpointControl.selectedSegmentIndex = [RYRRentalManager instance].currentEndpoint;
+	
+//	NSDictionary *attributes = @{@"myAppId":@"er89952d1334", @"orderId":@"T26RJX", @"visitorId":@"89952133413890617305233409049160176604"};
+//	[[CTSDKSettings instance] setCustomAttributes:attributes];
 }
 
 - (IBAction)openCarRental:(id)sender {

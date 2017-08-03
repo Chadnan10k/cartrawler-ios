@@ -13,6 +13,7 @@
 #import "CTExtraEquipment.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <UIKit/UIKit.h>
+#import <CartrawlerSDK/CTSDKSettings.h>
 
 @implementation CTRequestBuilder
 
@@ -55,34 +56,37 @@
 
 + (NSString *)currencyHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency
 {
-	//aqui vehicle search
+	NSString *orderId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] : @"";
+	NSString *pathOne = [NSString stringWithFormat:
+						 @"    \"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\", \r"
+						 @"    \"@Version\":\"1.002\", \r"
+						 @"    \"@Target\":\"%@\", \r"
+						 @"    \"@PrimaryLangID\":\"%@\", \r"
+						 @"    \"POS\":{ \r"
+						 @"        \"Source\":[ \r"
+						 @"         { \r"
+						 @"            \"@ERSP_UserID\":\"MO\", \r"
+						 @"            \"@ISOCurrency\":\"%@\", \r"
+						 @"            \"RequestorID\":{ \r"
+						 @"                \"@Type\":\"16\", \r"
+						 @"                \"@ID\":\"%@\", \r"
+						 @"                \"@ID_Context\":\"CARTRAWLER\" \r"
+						 @"            } \r" , target, locale, currency, clientID];
 	
-//    return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.005\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"@ERSP_UserID\": \"MO\", \"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
-	NSString *orderId = @"T26RJX";
-	return [NSString stringWithFormat:
-							@"    \"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\", \r"
-							@"    \"@Version\":\"1.002\", \r"
-							@"    \"@Target\":\"%@\", \r"
-							@"    \"@PrimaryLangID\":\"%@\", \r"
-							@"    \"POS\":{ \r"
-							@"        \"Source\":[ \r"
-							@"         { \r"
-							@"            \"@ERSP_UserID\":\"MO\", \r"
-							@"            \"@ISOCurrency\":\"%@\", \r"
-							@"            \"RequestorID\":{ \r"
-							@"                \"@Type\":\"16\", \r"
-							@"                \"@ID\":\"%@\", \r"
-							@"                \"@ID_Context\":\"CARTRAWLER\" \r"
-							@"            } \r"
-							@"        }, \r"
-							@"        { \r"
-							@"            \"RequestorID\":{ \r"
-							@"                \"@Type\":\"16\", \r"
-							@"                \"@ID\":\"%@\", \r"
-							@"                \"@ID_Context\":\"ORDERID\" \r"
-							@"            } \r"
-							@"        } \r"
-							@"    ]}, \r", target, locale, currency, clientID, orderId];
+	NSString *pathTwo = [NSString stringWithFormat:
+						 @"        } \r"
+						 @"        ,{ \r"
+						 @"            \"RequestorID\":{ \r"
+						 @"                \"@Type\":\"16\", \r"
+						 @"                \"@ID\":\"%@\", \r"
+						 @"                \"@ID_Context\":\"ORDERID\" \r"
+						 @"            } \r"
+						 @"        } \r", orderId];
+			
+	NSString *pathThree = @"    }]}, \r";
+	NSString *pathFour = @"    ]}, \r";
+	
+	return ![orderId isEqualToString:@""] ? [[pathOne stringByAppendingString:pathTwo] stringByAppendingString:pathFour] : [pathOne stringByAppendingString:pathThree];
 }
 
 + (NSString *)groundTransportHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency country:(NSString *)country
@@ -141,28 +145,32 @@
 	NSString *persona;
 
 	if (isStandAlone) {
-		NSString *appId = accountId;
 		persona = [NSString stringWithFormat:
 				   @"     ,\r "
 				   @"     \"Persona\":{ \r"
-				   @"           \"Characteristic\" :{ \r"
+				   @"           \"Characteristic\" :[{ \r"
 				   @"			  \"@name\":\"MyAccountId\", \r"
 				   @"               \"@Value\":\"%@\" \r"
 				   @"            } \r"
-				   @"       }", appId];
+				   @"       ]}", accountId];
 	} else {
-		NSString *appId = accountId;
-		NSString *pnr = visitorId;
-		persona = [NSString stringWithFormat:
+		NSString *caracteristcs = [NSString stringWithFormat:
 				   @"     ,\r "
 				   @"     \"Persona\":{ \r"
-				   @"           \"Characteristic\" :{ \r"
+				   @"           \"Characteristic\" :[ \n"
+				   @"			{  \r"
 				   @"			  \"@name\":\"MyAccountId\", \r"
-				   @"                 \"@Value\":\"%@\", \r"
+				   @"                 \"@Value\":\"%@\" \r"
+								   @"               } \r",accountId];
+		NSString *pnr = [NSString stringWithFormat:
+				   @"			,{ \r"
 				   @"			  \"@name\":\"VisitorId\", \r"
 				   @"                 \"@Value\":\"%@\" \r"
-				   @"            } \r"
-				   @"       }", appId, pnr];
+				   @"			} \r"
+				   @"		]"
+				   @"       }", visitorId];
+		
+		persona = ![visitorId isEqualToString:@""] ? [caracteristcs stringByAppendingString:pnr] : [caracteristcs stringByAppendingString:@"]}"];
 	}
 	
 	

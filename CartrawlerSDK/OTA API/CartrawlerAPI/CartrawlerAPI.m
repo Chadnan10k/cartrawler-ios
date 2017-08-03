@@ -283,6 +283,18 @@
 													 isStandAlone:isStandAlone
 														currency: currencyCode];
 	
+	//DEBUG
+	NSData *data = [requestBody dataUsingEncoding:NSUTF8StringEncoding];
+	NSError *error;
+	id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+	if (error) {
+		NSLog(@"%@", error);
+	} else {
+		NSLog(@"%@", json);
+	}
+	//DEBUG
+
+	
 	[self.postRequest performRequestWithData:endPoint
 									jsonBody: requestBody
 							  loggingEnabled: self.loggingEnabled

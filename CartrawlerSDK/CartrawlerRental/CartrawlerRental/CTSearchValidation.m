@@ -46,6 +46,9 @@
         completion(NO, @"search.driverAge is not set", NO);
         return;
     }
+	NSString *myAppId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"MISSING_PLACEHOLDER";
+	NSString *visitorId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] : @"";
+	
     [cartrawlerAPI changeLanguage:[CTSDKSettings instance].languageCode];
     [cartrawlerAPI requestVehicleAvailabilityForLocation:search.pickupLocation.code
                                       returnLocationCode:search.dropoffLocation.code
@@ -55,8 +58,8 @@
                                           pickUpDateTime:search.pickupDate
                                           returnDateTime:search.dropoffDate
                                             currencyCode:[CTSDKSettings instance].currencyCode
-											   accountId:[CTSDKSettings instance].clientId
-											   visitorId:[CTSDKSettings instance].customerID
+											   accountId:myAppId
+											   visitorId:visitorId
 									   isStandAlone:[CTSDKSettings instance].isStandalone
                                               completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
                                                   if (response) {

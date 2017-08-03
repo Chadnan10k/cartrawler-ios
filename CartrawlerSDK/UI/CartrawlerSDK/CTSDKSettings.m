@@ -95,6 +95,13 @@
     [self setItem:homeCountryName key:@"CT_homeCountryName"];
 }
 
+- (void) setCustomAttributes:(NSDictionary *)customAttributes
+{
+	[self setItem:customAttributes[@"myAppId"] key:@"CT_myAppId"];
+	[self setItem:customAttributes[@"orderId"] key:@"CT_orderId"];
+	[self setItem:customAttributes[@"visitorId"] key:@"CT_visitorId"];
+}
+
 - (NSString *)countryName:(NSString *)countryCode
 {
     NSLocale *locale = [NSLocale currentLocale];
@@ -136,6 +143,17 @@
     return [self itemForKey:@"CT_homeCountryName"];
 }
 
+- (NSDictionary *)customAttributes {
+	
+	NSString *myAppId = [self itemForKey:@"CT_myAppId"] != nil ? [self itemForKey:@"CT_myAppId"] : @"";
+	NSString *orderId = [self itemForKey:@"CT_orderId"] != nil ? [self itemForKey:@"CT_orderId"] : @"";
+	NSString *visitorId = [self itemForKey:@"CT_visitorId"] != nil ? [self itemForKey:@"CT_visitorId"] : @"";
+	
+	return @{@"myAppId":myAppId,
+		    @"orderId":orderId,
+			 @"visitorId":visitorId};
+}
+
 - (void)setItem:(NSString *)item key:(NSString *)key
 {
     NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
@@ -155,5 +173,6 @@
     NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
     return version;
 }
+
 
 @end

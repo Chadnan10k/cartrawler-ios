@@ -126,8 +126,9 @@
 	cityName = [CTSDKSettings instance].isStandalone ? cityName : @"[CITY]";
 	postCode = [CTSDKSettings instance].isStandalone ? postCode : @"[POSTCODE]" ;
 	countryName = [CTSDKSettings instance].isStandalone ? countryName : @"[COUNTRYNAMECODE]";
+	NSString *orderId = [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] != nil ? [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] : @"";
 	
-	NSString *jsonPthOne = [NSString stringWithFormat:
+	NSString *jsonOne = [NSString stringWithFormat:
 							@"{ \r"
 							@"    \"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\", \r"
 							@"    \"@Version\":\"1.002\", \r"
@@ -143,14 +144,19 @@
 							@"                \"@ID\":\"%@\", \r"
 							@"                \"@ID_Context\":\"CARTRAWLER\" \r"
 							@"            } \r"
-							@"        }, \r"
-							@"        { \r"
+							@"        } \r", target, locale, currency, clientID];
+	
+	NSString *orderIdPth = [NSString stringWithFormat:
+							@"        ,{ \r"
 							@"            \"RequestorID\":{ \r"
 							@"                \"@Type\":\"16\", \r"
 							@"                \"@ID\":\"%@\", \r"
 							@"                \"@ID_Context\":\"ORDERID\" \r"
 							@"            } \r"
-							@"        } \r"
+							@"        } \r", orderId ];
+	
+	
+	NSString *jsonPthOneAppend = [NSString stringWithFormat:
 							@"    ]}, \r"
 							@"    \"VehResRQCore\":{ \r"
 							@"        \"@Status\":\"All\", \r"
@@ -181,7 +187,9 @@
 							@"                    \"#text\":\"%@\" \r"
 							@"                }, \r"
 							@"                \"Address\":{ \r"
-							@"                    \"@Type\":\"2\", \r", target, locale, currency, clientID, [CTSDKSettings instance].clientId, pickupDateTime, returnDateTime, pickupLocationCode, dropoffLocationCode, givenName, surName, phoneNumber, emailAddress];
+							@"                    \"@Type\":\"2\", \r", pickupDateTime, returnDateTime, pickupLocationCode, dropoffLocationCode, givenName, surName, phoneNumber, emailAddress];
+	
+	NSString *jsonPthOne = ![orderId isEqualToString:@""] ? [[jsonOne stringByAppendingString:orderIdPth] stringByAppendingString:jsonPthOneAppend] : [jsonOne stringByAppendingString:jsonPthOneAppend];
 	
 	NSString *jsonPthTwo = [NSString stringWithFormat:
 							@"                    \"AddressLine\":\"%@\", \r"
@@ -231,30 +239,34 @@
 							  @" }",countryName, homeCountry, driverAge, extrasString, flightDetails, refID, refTimeStamp, refURL, insuranceJson];
 	
 	NSString *persona;
-	
+	NSString *myAppId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"MISSING_PLACEHOLDER";
+	NSString *visitorId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] : @"";
+
 	if ([CTSDKSettings instance].isStandalone) {
-		NSString *appId = [CTSDKSettings instance].clientId;
 		persona = [NSString stringWithFormat:
 				   @"     ,\r "
 				   @"     \"Persona\":{ \r"
-				   @"           \"Characteristic\" :{ \r"
+				   @"           \"Characteristic\" :[{ \r"
 				   @"			  \"@name\":\"MyAccountId\", \r"
-				   @"               \"@Value\":\"%@\", \r"
-				   @"            } \r"
-				   @"       }", appId];
+				   @"               \"@Value\":\"%@\" \r"
+				   @"			} \r"
+				   @"       ]}", myAppId];
 	} else {
-		NSString *appId = [CTSDKSettings instance].clientId;
-		NSString *pnr = [CTSDKSettings instance].customerID;
-		persona = [NSString stringWithFormat:
+		NSString *caracteristcs = [NSString stringWithFormat:
 				   @"     ,\r "
 				   @"     \"Persona\":{ \r"
-				   @"           \"Characteristic\" :{ \r"
+				   @"           \"Characteristic\" :[{ \r"
 				   @"			  \"@name\":\"MyAccountId\", \r"
-				   @"                 \"@Value\":\"%@\", \r"
+				   @"                 \"@Value\":\"%@\" \r"
+				   @"			}, \r", myAppId];
+		NSString *orderPth = [NSString stringWithFormat:
+				   @"			{ \r"
 				   @"			  \"@name\":\"VisitorId\", \r"
-				   @"                 \"@Value\":\"%@\", \r"
-				   @"            } \r"
-				   @"       }", appId, pnr];
+				   @"                 \"@Value\":\"%@\" \r"
+				   @"			} \r"
+				   @"       ]}", visitorId];
+		
+		persona = ![orderId isEqualToString:@""] ? [caracteristcs stringByAppendingString:orderPth] : [caracteristcs stringByAppendingString:@"]}"];
 	}
 	
 	NSString *jsonPthFour = [NSString stringWithFormat:
