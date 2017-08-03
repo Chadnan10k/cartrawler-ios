@@ -252,7 +252,7 @@
 				   @"			} \r"
 				   @"       ]}", myAppId];
 	} else {
-		NSString *caracteristcs = [NSString stringWithFormat:
+		NSString *characteristics = [NSString stringWithFormat:
 				   @"     ,\r "
 				   @"     \"Persona\":{ \r"
 				   @"           \"Characteristic\" :[{ \r"
@@ -266,7 +266,7 @@
 				   @"			} \r"
 				   @"       ]}", visitorId];
 		
-		persona = ![orderId isEqualToString:@""] ? [caracteristcs stringByAppendingString:orderPth] : [caracteristcs stringByAppendingString:@"]}"];
+		persona = ![orderId isEqualToString:@""] ? [characteristics stringByAppendingString:orderPth] : [characteristics stringByAppendingString:@"]}"];
 	}
 	
 	NSString *jsonPthFour = [NSString stringWithFormat:

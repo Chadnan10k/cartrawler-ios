@@ -220,6 +220,7 @@
 								 pickUpDateTime:(NSDate *)pickupDateTime
 								 returnDateTime:(NSDate *)returnDateTime
 								   currencyCode:(NSString *)currencyCode
+									  orderId:(NSString *)orderId
 									accountId:(NSString *)accountId
 									visitorId:(NSString *)visitorId
 								   isStandAlone:(BOOL)isStandAlone
@@ -237,6 +238,7 @@
 														clientID: self.clientAPIKey
 														  target: self.apiTarget
 														  locale: self.locale
+														 orderId:orderId
 													   accountId:accountId
 													   visitorId:visitorId
 													 isStandAlone:isStandAlone

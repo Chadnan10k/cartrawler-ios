@@ -161,6 +161,10 @@
 
 - (void)performVehicleAvail:(Completion)completion
 {
+	
+	NSString *myAppId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"MISSING_PLACEHOLDER";
+	NSString *visitorId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] : @"";
+	NSString *orderId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] : @"";
     __weak typeof (self) weakSelf = self;
     [self.cartrawlerAPI requestVehicleAvailabilityForLocation:self.search.pickupLocation.code
                                            returnLocationCode:self.search.dropoffLocation.code
@@ -170,8 +174,9 @@
                                                pickUpDateTime:self.search.pickupDate
                                                returnDateTime:self.search.dropoffDate
                                                  currencyCode:[CTSDKSettings instance].currencyCode
-													accountId:@""
-													visitorId:@""
+													  orderId:orderId
+													accountId:myAppId
+													visitorId:visitorId
 												 isStandAlone:[CTSDKSettings instance].isStandalone
                                                    completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
                                                        if (response) {

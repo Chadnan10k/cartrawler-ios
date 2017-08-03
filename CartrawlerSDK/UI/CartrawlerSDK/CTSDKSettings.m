@@ -96,12 +96,8 @@
     [self setItem:homeCountryName key:@"CT_homeCountryName"];
 }
 
-- (NSMutableDictionary *) customizeAttributes
-{
-	if (!_customAttributes) {
-		_customAttributes = [[NSMutableDictionary alloc] init];
-	}
-	return _customAttributes;
+- (void)setCustomAttributes:(NSMutableDictionary *)customAttributes {
+	_customAttributes = customAttributes;
 }
 
 - (NSString *)countryName:(NSString *)countryCode

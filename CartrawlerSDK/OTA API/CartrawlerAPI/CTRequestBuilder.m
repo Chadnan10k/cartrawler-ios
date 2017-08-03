@@ -13,14 +13,13 @@
 #import "CTExtraEquipment.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <UIKit/UIKit.h>
-#import <CartrawlerSDK/CTSDKSettings.h>
 
 @implementation CTRequestBuilder
 
 + (NSString *)buildHeader:(NSString *)callType clientID:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale {
     
     if ([callType isEqualToString:CTHeader]) {
-        //aqui
+		
         return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@xmlns:xsi\": \"http://www.w3.org/2001/XMLSchema-instance\",\"@Version\": \"1.005\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": {\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, clientID];
         
     } else if ([callType isEqualToString:CTMobileHeader]) {
@@ -56,7 +55,11 @@
 
 + (NSString *)currencyHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency
 {
-	NSString *orderId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] : @"";
+	return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.005\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"@ERSP_UserID\": \"MO\", \"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
+}
+
++ (NSString *)currencyHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency orderId:(NSString *)orderId
+{
 	NSString *pathOne = [NSString stringWithFormat:
 						 @"    \"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\", \r"
 						 @"    \"@Version\":\"1.002\", \r"
@@ -137,7 +140,7 @@
 				   @"            } \r"
 				   @"       ]}", accountId];
 	} else {
-		NSString *caracteristcs = [NSString stringWithFormat:
+		NSString *characteristics = [NSString stringWithFormat:
 				   @"     ,\r "
 				   @"     \"Persona\":{ \r"
 				   @"           \"Characteristic\" :[ \n"
@@ -153,7 +156,7 @@
 				   @"		]"
 				   @"       }", visitorId];
 		
-		persona = ![visitorId isEqualToString:@""] ? [caracteristcs stringByAppendingString:pnr] : [caracteristcs stringByAppendingString:@"]}"];
+		persona = ![visitorId isEqualToString:@""] ? [characteristics stringByAppendingString:pnr] : [characteristics stringByAppendingString:@"]}"];
 	}
 	
 	
@@ -264,13 +267,14 @@
 						 clientID:(NSString *)clientID
 						   target:(NSString *)target
 						   locale:(NSString *)locale
+						  orderId:(NSString *)orderId
 						accountId:(NSString *)accountId
 						visitorId:(NSString *)visitorId
 					 isStandAlone:(BOOL)isStandAlone
 						 currency:(NSString *)currency
 {
 	NSString *tail = [NSString stringWithFormat:@"\"VehAvailRQCore\":{\"@Status\":\"Available\",\"VehRentalCore\":{\"@PickUpDateTime\":\"%@\",\"@ReturnDateTime\":\"%@\",\"PickUpLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"},\"ReturnLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"}},\"DriverType\":{\"@Age\":\"%@\"}},\"VehAvailRQInfo\":{\"Customer\":{\"Primary\":{\"CitizenCountryName\":{\"@Code\":\"%@\"}}},%@", pickUpDateTime, returnDateTime, pickUpLoactionCode, returnLocationCode, driverAge, homeCountryCode, [CTRequestBuilder tpaExtensionForAvailPath:isStandAlone accountId:accountId visitorId:visitorId]];
-	return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:currency], tail];
+	return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:currency orderId:orderId], tail];
 }
 
 + (NSString *) OTA_VehResRQ:(NSString *)pickupDateTime

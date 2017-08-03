@@ -162,6 +162,7 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
 							   pickUpDateTime:(NSDate *)pickupDateTime
 							   returnDateTime:(NSDate *)returnDateTime
 								 currencyCode:(NSString *)currencyCode
+									  orderId:(NSString *)orderId
 									accountId:(NSString *)accountId
 									visitorId:(NSString *)visitorId
 								 isStandAlone:(BOOL)isStandAlone

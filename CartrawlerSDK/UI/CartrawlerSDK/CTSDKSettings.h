@@ -51,7 +51,6 @@
 - (void)setLanguageName:(NSString *)languageName;
 - (void)setCurrencyName:(NSString *)currencyName;
 - (void)setHomeCountryName:(NSString *)homeCountryName;
-- (NSMutableDictionary *)customizeAttributes;
 - (NSString *)countryName:(NSString *)countryCode;
 
 @end

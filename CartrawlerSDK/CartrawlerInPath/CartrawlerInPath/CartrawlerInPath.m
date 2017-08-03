@@ -159,6 +159,7 @@
 	
 	NSString *myAppId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"MISSING_PLACEHOLDER";
 	NSString *visitorId = [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] != nil ? [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] : @"";
+	NSString *orderId = [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] != nil ? [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] : @"";
 	
     __weak typeof (self) weakSelf = self;
     [self.rental.cartrawlerSDK.cartrawlerAPI requestVehicleAvailabilityForLocation:[CTRentalSearch instance].pickupLocation.code
@@ -169,6 +170,7 @@
                                                                     pickUpDateTime:[CTRentalSearch instance].pickupDate
                                                                     returnDateTime:[CTRentalSearch instance].dropoffDate
                                                                       currencyCode:[CTSDKSettings instance].currencyCode
+																		   orderId:orderId
 																		 accountId:myAppId
 																		 visitorId:visitorId
 																	  isStandAlone:[CTSDKSettings instance].isStandalone
