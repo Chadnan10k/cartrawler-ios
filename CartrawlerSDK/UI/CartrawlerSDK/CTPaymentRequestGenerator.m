@@ -276,18 +276,6 @@
 	
 	jsonPthThree = [[jsonPthThree stringByAppendingString:persona] stringByAppendingString:jsonPthFour];
 	
-	//DEBUG
-	NSString * t = [CTSDKSettings instance].isStandalone ? [jsonPthOne stringByAppendingString: jsonPthThree] : [[jsonPthOne stringByAppendingString:jsonPthTwo] stringByAppendingString:jsonPthThree];
-	NSData *data = [t dataUsingEncoding:NSUTF8StringEncoding];
-	NSError *error;
-	id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-	if (error) {
-		NSLog(@"%@", error);
-	} else {
-		NSLog(@"%@", json);
-	}
-	//DEBUG
-	
 	return [CTSDKSettings instance].isStandalone ? [jsonPthOne stringByAppendingString: jsonPthThree] : [[jsonPthOne stringByAppendingString:jsonPthTwo] stringByAppendingString:jsonPthThree];
 }
 

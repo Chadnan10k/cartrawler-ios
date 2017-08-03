@@ -71,10 +71,10 @@
 						 @"                \"@Type\":\"16\", \r"
 						 @"                \"@ID\":\"%@\", \r"
 						 @"                \"@ID_Context\":\"CARTRAWLER\" \r"
-						 @"            } \r" , target, locale, currency, clientID];
+						 @"            } \r"
+						 @"        } \r", target, locale, currency, clientID];
 	
 	NSString *pathTwo = [NSString stringWithFormat:
-						 @"        } \r"
 						 @"        ,{ \r"
 						 @"            \"RequestorID\":{ \r"
 						 @"                \"@Type\":\"16\", \r"
@@ -82,11 +82,10 @@
 						 @"                \"@ID_Context\":\"ORDERID\" \r"
 						 @"            } \r"
 						 @"        } \r", orderId];
-			
-	NSString *pathThree = @"    }]}, \r";
-	NSString *pathFour = @"    ]}, \r";
 	
-	return ![orderId isEqualToString:@""] ? [[pathOne stringByAppendingString:pathTwo] stringByAppendingString:pathFour] : [pathOne stringByAppendingString:pathThree];
+	NSString *pathThree = @"    ]}, \r";
+	
+	return ![orderId isEqualToString:@""] ? [[pathOne stringByAppendingString:pathTwo] stringByAppendingString:pathThree] : [pathOne stringByAppendingString:pathThree];
 }
 
 + (NSString *)groundTransportHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency country:(NSString *)country
