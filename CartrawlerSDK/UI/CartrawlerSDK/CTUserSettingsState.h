@@ -31,4 +31,8 @@ typedef NS_ENUM(NSUInteger, CTUserSettingsStyle) {
 @property (nonatomic) UIColor *secondaryColor;
 @property (nonatomic) UIColor *illustrationColor;
 
+@property (nonatomic) BOOL scrollAboveKeyboard;
+@property (nonatomic) BOOL keyboardShowing;
+@property (nonatomic) NSNumber *keyboardHeight;
+
 @end

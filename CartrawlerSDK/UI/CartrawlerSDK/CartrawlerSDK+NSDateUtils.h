@@ -16,6 +16,7 @@
 - (NSString *)shortDescriptionFromDate;
 - (NSString *)simpleTimeString;
 
++ (NSString *)currentTimestamp;
 + (NSDate *)dateWithHour:(NSInteger)hour minute:(NSInteger)minute;
 + (NSDate *)mergeTimeWithDateWithTime:(NSDate *)dateWithTime dateWithDay:(NSDate *)dateWithDay;
 

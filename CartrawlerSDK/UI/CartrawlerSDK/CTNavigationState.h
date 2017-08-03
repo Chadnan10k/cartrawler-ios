@@ -23,4 +23,7 @@ typedef NS_ENUM(NSUInteger, CTNavigationStep) {
 
 @property (nonatomic) NSUInteger currentNavigationStep;
 
+@property (nonatomic) NSMutableArray *ViewControllers;
+@property (nonatomic) NSMutableArray *modalViewControllers;
+
 @end

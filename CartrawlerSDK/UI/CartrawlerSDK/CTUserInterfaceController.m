@@ -91,6 +91,9 @@
         case 2:
             storyboard = [UIStoryboard storyboardWithName:@"CTVehicleList" bundle:bundle];
             return [storyboard instantiateViewControllerWithIdentifier:@"CTVehicleListViewController"];
+        case 3:
+            storyboard = [UIStoryboard storyboardWithName:@"CTSelectedVehicle" bundle:bundle];
+            return [storyboard instantiateViewControllerWithIdentifier:@"CTSelectedVehicleViewController"];
         default:
             return nil;
             break;

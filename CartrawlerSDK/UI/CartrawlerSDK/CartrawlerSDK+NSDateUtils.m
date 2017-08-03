@@ -35,6 +35,10 @@
     return [formatter stringFromDate:self];
 }
 
++ (NSString *)currentTimestamp {
+    return [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]];
+}
+
 + (NSDate *)mergeTimeWithDateWithTime:(NSDate *)dateWithTime dateWithDay:(NSDate *)dateWithDay
 {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];

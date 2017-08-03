@@ -23,9 +23,9 @@
 @implementation ViewController
 
 - (IBAction)startButtonTapped:(id)sender {
-    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"car+start3" ofType:@"mp3"]];
-    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
-    [self.audioPlayer play];
+//    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"car+start3" ofType:@"mp3"]];
+//    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+//    [self.audioPlayer play];
     
     self.sdk = [[CartrawlerSDK alloc] initWithlanguageCode:@"en" sandboxMode:YES];
     [self.sdk setNewSession];

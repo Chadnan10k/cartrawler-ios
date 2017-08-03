@@ -39,7 +39,6 @@
 
 @property (nonatomic, strong) CTSearchFormViewModel *viewModel;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardSpacerViewHeight;
 @end
 
 @implementation CTSearchFormViewController
@@ -90,8 +89,6 @@
     // Hides the cursor
     self.pickupTimeTextField.tintColor = [UIColor clearColor];
     self.dropOffTimeTextField.tintColor = [UIColor clearColor];
-    
-    //[self addKeyboardNotifications];
 }
 
 - (void)updateWithViewModel:(CTSearchFormViewModel *)viewModel {
@@ -176,13 +173,14 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     switch (textField.tag) {
         case CTSearchFormTextFieldPickupTime:
-            [CTAppController dispatchAction:CTActionSearchUserDidTapPickupTimeTextField payload:nil];
+            [CTAppController dispatchAction:CTActionSearchUserDidTapPickupTimeTextField payload:@(self.pickupTimeTextField.frame.origin.y + self.pickupTimeTextField.frame.size.height)];
             break;
         case CTSearchFormTextFieldDropoffTime:
-            [CTAppController dispatchAction:CTActionSearchUserDidTapDropoffTimeTextField payload:nil];
+            [CTAppController dispatchAction:CTActionSearchUserDidTapDropoffTimeTextField payload:@(self.dropOffTimeTextField.frame.origin.y + self.dropOffTimeTextField.frame.size.height)];
             break;
         case CTSearchFormTextFieldDriverAge:
-            [CTAppController dispatchAction:CTActionSearchUserDidTapAgeTextField payload:nil];
+            [CTAppController dispatchAction:CTActionSearchUserDidTapAgeTextField payload:@(self.driverAgeView.frame.origin.y + self.driverAgeView.frame.size.height)];
+            
             break;
         default:
             break;
@@ -212,51 +210,6 @@
 
 - (IBAction)searchButtonTapped:(id)sender {
     [CTAppController dispatchAction:CTActionSearchUserDidTapNext payload:nil];
-}
-
-// MARK: Keyboard Notifications
-
-- (void)addKeyboardNotifications {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    self.keyboardSpacerViewHeight.constant = 0;
-    [UIView animateWithDuration:0.1 animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
-
-- (void)keyboardWillShow:(NSNotification *)notification {
-    NSDictionary *userInfo = [notification userInfo];
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    switch (self.viewModel.selectedTextField) {
-        case CTSearchFormTextFieldPickupTime:
-        case CTSearchFormTextFieldDropoffTime:
-        case CTSearchFormTextFieldDriverAge: {
-            self.keyboardSpacerViewHeight.constant = keyboardSize.height + 8;
-            [self.view layoutIfNeeded];
-            CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height);
-            [self.scrollView setContentOffset:bottomOffset animated:YES];
-            break;
-        }
-        default:
-            break;
-    }
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 @end

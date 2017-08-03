@@ -48,6 +48,16 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      */
     CTActionUserSettingsUserDidShake,
     
+    // Notification Actions
+    /**
+     *  System user input did appear
+     */
+    CTActionNotificationUserInputDidShow,
+    /**
+     *  System user input did hide
+     */
+    CTActionNotificationUserInputDidHide,
+    
     // API Actions
     /**
      *  Sets engine 
@@ -77,6 +87,10 @@ typedef NS_ENUM(NSUInteger, CTAction) {
     CTActionNavigationPresentSearchStep,
     
     // Search Actions
+    /**
+     *  The user swiped the USP carousel
+     */
+    CTActionSearchUserDidSwipeUSPCarousel,
     /**
      *  The user tapped the close button
      */

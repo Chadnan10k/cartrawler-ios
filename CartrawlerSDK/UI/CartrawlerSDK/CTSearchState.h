@@ -29,6 +29,8 @@ typedef NS_ENUM(NSUInteger, CTSearchSearchSettings) {
 
 @interface CTSearchState : NSObject
 
+@property (nonatomic) NSInteger uspPageIndex;
+
 @property (nonatomic) CTSearchFormTextField selectedTextField;
 
 @property (nonatomic) CTSearchSearchSettings selectedSettings;
@@ -57,6 +59,10 @@ typedef NS_ENUM(NSUInteger, CTSearchSearchSettings) {
 
 @property (nonatomic) NSString *displayedDriverAge;
 
-@property (nonatomic) BOOL validationFailed;
+@property (nonatomic) BOOL wantsNextStep;
+
+//@property (nonatomic) BOOL validationFailed;
+
+@property (nonatomic) BOOL scrollAboveUserInput;
 
 @end

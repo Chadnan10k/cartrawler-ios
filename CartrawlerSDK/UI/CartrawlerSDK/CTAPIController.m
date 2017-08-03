@@ -54,6 +54,8 @@
 - (void)requestVehicleAvailabilityWithState:(CTAppState *)appState {
     CTSearchState *searchState = appState.searchState;
     CTUserSettingsState *userSettingsState = appState.userSettingsState;
+    CTAPIState *apiState = appState.APIState;
+    NSString *requestTimestamp = apiState.availabilityRequestTimestamp;
     
     NSDate *pickupDate = [NSDate mergeTimeWithDateWithTime:searchState.selectedPickupTime
                                                dateWithDay:searchState.selectedPickupDate];
@@ -78,7 +80,7 @@
                                               completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {
                                                   dispatch_async(dispatch_get_main_queue(), ^{
                                                       if (response && !error) {
-                                                          [CTAppController dispatchAction:CTActionAPIDidReturnVehicles payload:response.items];
+                                                          [CTAppController dispatchAction:CTActionAPIDidReturnVehicles payload:@{requestTimestamp : response.items}];
                                                       } else {
                                                           // TODO: Dispatch error action
                                                       }

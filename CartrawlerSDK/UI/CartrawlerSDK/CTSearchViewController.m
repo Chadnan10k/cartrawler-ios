@@ -13,20 +13,24 @@
 #import "CTSearchLocationsViewController.h"
 #import "CTSearchCalendarViewController.h"
 #import "CTSearchSettingsViewController.h"
+#import "CTSearchUSPViewController.h"
+#import "CTSearchInterstitialViewController.h"
 #import "CTAppController.h"
 
 @interface CTSearchViewController ()
 @property (nonatomic, strong) CTSearchViewModel *viewModel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) CTSearchSplashViewController *searchSplashVC;
 @property (weak, nonatomic) IBOutlet UIView *searchSplashContainerView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchSplashBottomConstraint;
 @property (nonatomic, weak) CTSearchFormViewController *searchFormVC;
 @property (weak, nonatomic) IBOutlet UIView *searchFormContainerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchFormHeightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchFormBottomConstraint;
 @property (nonatomic, weak) CTSearchLocationsViewController *searchLocationsVC;
 @property (nonatomic, weak) CTSearchCalendarViewController *searchCalendarVC;
 @property (nonatomic, weak) CTSearchSettingsViewController *searchSettingsVC;
+@property (nonatomic, weak) CTSearchUSPViewController *searchUSPVC;
+@property (weak, nonatomic) IBOutlet UIView *searchInterstitialContainerView;
+@property (nonatomic, weak) CTSearchInterstitialViewController *searchInterstitialVC;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraintUSP;
 @end
 
@@ -36,7 +40,15 @@
     return CTSearchViewModel.class;
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    self.searchInterstitialContainerView.alpha = 0;
+}
+
 - (void)updateWithViewModel:(CTSearchViewModel *)viewModel {
+    // Force embedded views to load first time around
+    self.view = self.view;
+    
     self.viewModel = viewModel;
     
     self.navigationController.navigationBar.barTintColor = viewModel.navigationBarColor;
@@ -71,28 +83,36 @@
     [self.searchLocationsVC updateWithViewModel:viewModel.searchLocationsViewModel];
     [self.searchCalendarVC updateWithViewModel:viewModel.searchCalendarViewModel];
     [self.searchSettingsVC updateWithViewModel:viewModel.searchSettingsViewModel];
+    [self.searchUSPVC updateWithViewModel:viewModel.searchUSPViewModel];
     
     switch (viewModel.contentView) {
+        case CTSearchContentViewNone:
+            break;
         case CTSearchContentViewSplash:
-            self.searchSplashContainerView.hidden = NO;
-            self.searchFormContainerView.hidden = YES;
-            //self.searchSplashBottomConstraint.priority = 1000;
-            //self.searchFormBottomConstraint.priority = 250;
             self.topConstraintUSP.constant = [self.searchSplashContainerView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
             break;
         case CTSearchContentViewForm:
-            self.searchSplashContainerView.hidden = YES;
-            self.searchFormContainerView.hidden = NO;
-            //self.searchFormBottomConstraint.priority = 1000;
-            //self.searchSplashBottomConstraint.priority = 250;
             self.searchFormHeightConstraint.constant = [self.searchFormVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
             self.topConstraintUSP.constant = [self.searchFormVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+            break;
+        case CTSearchContentViewInterstitial:
             break;
         default:
             break;
     }
     
+//    if (viewModel.scrollAboveKeyboard && viewModel.keyboardHeight > 0) {
+//        CGFloat formHeight = [self.searchFormVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+//        CGRect screenRect = [[UIScreen mainScreen] bounds];
+//        CGFloat screenHeight = screenRect.size.height;
+//        CGFloat offset = formHeight - (screenHeight - viewModel.keyboardHeight);
+//        [self.scrollView setContentOffset:CGPointMake(0, offset) animated:YES];
+//    }
+    
     [UIView animateWithDuration:0.2 animations:^{
+        self.searchSplashContainerView.alpha = viewModel.contentView == CTSearchContentViewSplash;
+        self.searchFormContainerView.alpha = viewModel.contentView == CTSearchContentViewForm;
+        self.searchInterstitialContainerView.alpha = viewModel.contentView == CTSearchContentViewInterstitial;
         [self.view layoutIfNeeded];
     }];
 }
@@ -113,6 +133,12 @@
     }
     if ([segue.identifier isEqualToString:@"SearchSettings"]) {
         self.searchSettingsVC = segue.destinationViewController;
+    }
+    if ([segue.identifier isEqualToString:@"SearchUSP"]) {
+        self.searchUSPVC = segue.destinationViewController;
+    }
+    if ([segue.identifier isEqualToString:@"SearchInterstitial"]) {
+        self.searchInterstitialVC = segue.destinationViewController;
     }
 }
 

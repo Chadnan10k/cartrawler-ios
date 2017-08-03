@@ -13,6 +13,7 @@
 
 - (void)updateWithViewModel:(id)viewModel;
 
+@optional
 + (Class)viewModelClass;
 
 @end

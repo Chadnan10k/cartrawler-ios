@@ -8,6 +8,7 @@
 
 #import "CTSearchViewModel.h"
 #import "CartrawlerSDK+NSDateUtils.h"
+#import "CTValidationSearch.h"
 
 @interface CTSearchViewModel ()
 @property (nonatomic, readwrite) CTSearchContentView contentView;
@@ -17,7 +18,11 @@
 @property (nonatomic, readwrite) CTSearchLocationsViewModel *searchLocationsViewModel;
 @property (nonatomic, readwrite) CTSearchCalendarViewModel *searchCalendarViewModel;
 @property (nonatomic, readwrite) CTSearchSettingsViewModel *searchSettingsViewModel;
+@property (nonatomic, readwrite) CTSearchUSPViewModel *searchUSPViewModel;
 @property (nonatomic, readwrite) UIColor *navigationBarColor;
+@property (nonatomic, readwrite) BOOL scrollAboveKeyboard;
+@property (nonatomic, readwrite) CGFloat keyboardHeight;
+
 @end
 
 @implementation CTSearchViewModel
@@ -27,7 +32,11 @@
     CTSearchState *searchState = appState.searchState;
     CTSearchViewModel *viewModel = [CTSearchViewModel new];
     
-    viewModel.contentView = searchState.selectedPickupLocation ? CTSearchContentViewForm : CTSearchContentViewSplash;
+    if (searchState.wantsNextStep && [CTValidationSearch validateSearchStep:searchState]) {
+        viewModel.contentView = CTSearchContentViewInterstitial;
+    } else {
+       viewModel.contentView = searchState.selectedPickupLocation ? CTSearchContentViewForm : CTSearchContentViewSplash; 
+    }
     
     switch (searchState.selectedTextField) {
         case CTSearchFormTextFieldNone:
@@ -58,8 +67,11 @@
     viewModel.searchLocationsViewModel = [CTSearchLocationsViewModel viewModelForState:appState];
     viewModel.searchCalendarViewModel = [CTSearchCalendarViewModel viewModelForState:appState];
     viewModel.searchSettingsViewModel = [CTSearchSettingsViewModel viewModelForState:appState];
+    viewModel.searchUSPViewModel = [CTSearchUSPViewModel viewModelForState:appState];
     
     viewModel.navigationBarColor = userSettingsState.primaryColor;
+    
+    viewModel.keyboardHeight = appState.userSettingsState.keyboardShowing ? appState.userSettingsState.keyboardHeight.floatValue : 0;
     
     return viewModel;
 }

@@ -109,6 +109,15 @@
             }
             break;
             
+        // Notification Actions
+        case CTActionNotificationUserInputDidShow:
+            userSettingsState.keyboardShowing = YES;
+            userSettingsState.keyboardHeight = payload;
+            break;
+        case CTActionNotificationUserInputDidHide:
+            userSettingsState.keyboardShowing = NO;
+            break;
+            
         // API Actions
         case CTActionAPIDidReturnEngineLoadID:
             APIState.engineLoadID = payload;
@@ -121,6 +130,14 @@
             break;
         case CTActionAPIDidReturnVehicles:
             APIState.matchedAvailabilityItems = payload;
+            
+            BOOL userWantsNextStep = searchState.wantsNextStep;
+            BOOL isLatestRequest = [payload objectForKey:APIState.availabilityRequestTimestamp] != nil;
+            
+            if (userWantsNextStep && isLatestRequest) {
+                navigationState.currentNavigationStep = CTNavigationStepVehicleList;
+                searchState.wantsNextStep = NO;
+            }
             break;
             
         // Navigation Actions
@@ -145,6 +162,9 @@
             break;
         
         // Search Actions
+        case CTActionSearchUserDidSwipeUSPCarousel:
+            searchState.uspPageIndex = [payload integerValue];
+            break;
         case CTActionSearchUserDidTapCloseButton:
             navigationState.currentNavigationStep = CTNavigationStepNone;
             break;
@@ -152,50 +172,57 @@
             searchState.selectedTextField = CTSearchFormSettingsButton;
             break;
         case CTActionSearchUserDidTapPickupTextField:
-            searchState.validationFailed = NO;
+            NSLog(@"Tap Pickup Payload: %@", payload);
+            searchState.wantsNextStep = NO;
             searchState.selectedTextField = CTSearchFormTextFieldPickupLocation;
             break;
         case CTActionSearchUserDidTapDropoffTextField:
-            searchState.validationFailed = NO;
+            NSLog(@"Tap Dropoff Payload: %@", payload);
+            searchState.wantsNextStep = NO;
             searchState.selectedTextField = CTSearchFormTextFieldDropoffLocation;
             break;
         case CTActionSearchUserDidToggleReturnToSameLocation:
-            searchState.validationFailed = NO;
+            searchState.wantsNextStep = NO;
             searchState.dropoffLocationRequired = !searchState.dropoffLocationRequired;
             break;
         case CTActionSearchUserDidTapDatesTextField:
-            searchState.validationFailed = NO;
+            searchState.wantsNextStep = NO;
             searchState.selectedTextField = CTSearchFormTextFieldSelectDates;
             searchState.displayedPickupDate = nil;
             searchState.displayedDropoffDate = nil;
             break;
         case CTActionSearchUserDidTapPickupTimeTextField:
-            searchState.validationFailed = NO;
+            NSLog(@"Tap Pickup Time Payload: %@", payload);
+            searchState.wantsNextStep = NO;
             searchState.selectedTextField = CTSearchFormTextFieldPickupTime;
             break;
         case CTActionSearchUserDidTapDropoffTimeTextField:
-            searchState.validationFailed = NO;
+            NSLog(@"Tap Dropoff Time Payload: %@", payload);
+            searchState.wantsNextStep = NO;
             searchState.selectedTextField = CTSearchFormTextFieldDropoffTime;
             break;
         case CTActionSearchUserDidTapAgeTextField:
-            searchState.validationFailed = NO;
+            searchState.wantsNextStep = NO;
             searchState.selectedTextField = CTSearchFormTextFieldDriverAge;
             break;
         case CTActionSearchUserDidToggleDriverAge:
-            searchState.validationFailed = NO;
+            searchState.wantsNextStep = NO;
             searchState.driverAgeRequired = !searchState.driverAgeRequired;
             searchState.selectedTextField = searchState.driverAgeRequired ? CTSearchFormTextFieldDriverAge : CTSearchFormTextFieldNone;
             if ([CTValidationSearch validateSearchStep:searchState]) {
-                APIState.matchedAvailabilityItems = nil;
+                APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
                 [self.apiController requestVehicleAvailabilityWithState:appState];
+            } else {
+                APIState.availabilityRequestTimestamp = nil;
             }
             break;
         case CTActionSearchUserDidTapNext:
             searchState.selectedTextField = CTSearchFormTextFieldNone;
-            if ([CTValidationSearch validateSearchStep:searchState]) {
+            searchState.wantsNextStep = YES;
+            
+            if ([CTValidationSearch validateSearchStep:searchState] && [APIState.matchedAvailabilityItems objectForKey:APIState.availabilityRequestTimestamp]) {
                 navigationState.currentNavigationStep = CTNavigationStepVehicleList;
-            } else {
-                searchState.validationFailed = YES;
+                searchState.wantsNextStep = NO;
             }
             break;
         case CTActionSearchSettingsUserDidTapCloseButton:
@@ -229,8 +256,10 @@
                     break;
             }
             if ([CTValidationSearch validateSearchStep:searchState]) {
-                APIState.matchedAvailabilityItems = nil;
+                APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
                 [self.apiController requestVehicleAvailabilityWithState:appState];
+            } else {
+                APIState.availabilityRequestTimestamp = nil;
             }
             searchState.selectedSettings = CTSearchSearchSettingsNone;
             break;
@@ -255,8 +284,10 @@
             searchState.selectedTextField = CTSearchFormTextFieldNone;
             
             if ([CTValidationSearch validateSearchStep:searchState]) {
-                APIState.matchedAvailabilityItems = nil;
+                APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
                 [self.apiController requestVehicleAvailabilityWithState:appState];
+            } else {
+                APIState.availabilityRequestTimestamp = nil;
             }
             break;
         case CTActionSearchCalendarUserDidTapDate:
@@ -278,9 +309,10 @@
             searchState.selectedTextField = CTSearchFormTextFieldNone;
             
             if ([CTValidationSearch validateSearchStep:searchState]) {
-                APIState.vehicleRequestID++;
-                APIState.matchedAvailabilityItems = nil;
+                APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
                 [self.apiController requestVehicleAvailabilityWithState:appState];
+            } else {
+                APIState.availabilityRequestTimestamp = nil;
             }
             break;
         case CTActionSearchCalendarUserDidTapCancel:
@@ -295,8 +327,10 @@
             }
             
             if ([CTValidationSearch validateSearchStep:searchState]) {
-                APIState.matchedAvailabilityItems = nil;
+                APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
                 [self.apiController requestVehicleAvailabilityWithState:appState];
+            } else {
+                APIState.availabilityRequestTimestamp = nil;
             }
             break;
         case CTActionSearchDriverAgeUserDidEnterCharacters:
@@ -305,8 +339,10 @@
             }
             
             if ([CTValidationSearch validateSearchStep:searchState]) {
-                APIState.matchedAvailabilityItems = nil;
+                APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
                 [self.apiController requestVehicleAvailabilityWithState:appState];
+            } else {
+                APIState.availabilityRequestTimestamp = nil;
             }
             break;
         case CTActionSearchInputViewUserDidSelectDone:
@@ -320,6 +356,7 @@
             break;
         case CTActionVehicleListUserDidTapVehicle:
             selectedVehicleState.selectedAvailabilityItem = payload;
+            navigationState.currentNavigationStep = CTNavigationStepSelectedVehicle;
             break;
         case CTActionVehicleListUserDidTapSort:
             vehicleListState.selectedView = CTVehicleListSelectedViewSort;

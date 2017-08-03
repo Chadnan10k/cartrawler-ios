@@ -31,7 +31,9 @@
     CTAPIState *APIState = appState.APIState;
     CTVehicleListState *vehicleListState = appState.vehicleListState;
     
-    if (APIState.matchedAvailabilityItems.count > 0) {
+    NSArray *matchedAvailabilityItems = [APIState.matchedAvailabilityItems objectForKey:APIState.availabilityRequestTimestamp];
+    
+    if (matchedAvailabilityItems.count > 0) {
         viewModel.leftLabelText = [self leftLabelTextForState:APIState];
         viewModel.rightLabelText = [self rightLabelAttributedTextForState:vehicleListState];
         viewModel.rowViewModels = [self rowViewModelsForState:appState];
@@ -49,7 +51,8 @@
 }
 
 + (NSString *)leftLabelTextForState:(CTAPIState *)APIState {
-    return [NSString stringWithFormat:@"%lu vehicles", (unsigned long)APIState.matchedAvailabilityItems.count];
+    NSArray *matchedAvailabilityItems = [APIState.matchedAvailabilityItems objectForKey:APIState.availabilityRequestTimestamp];
+    return [NSString stringWithFormat:@"%lu vehicles", (unsigned long)matchedAvailabilityItems.count];
 }
 
 + (NSAttributedString *)rightLabelAttributedTextForState:(CTVehicleListState *)vehicleListState {
@@ -90,8 +93,11 @@
 
 + (NSArray *)rowViewModelsForState:(CTAppState *)appState {
     NSMutableArray *rowViewModels = [NSMutableArray new];
+    CTAPIState *apiState = appState.APIState;
     
-    NSArray *sortedAvailabilityItems = [self availabilityItems:appState.APIState.matchedAvailabilityItems
+    NSArray *matchedAvailabilityItems = [apiState.matchedAvailabilityItems objectForKey:apiState.availabilityRequestTimestamp];
+    
+    NSArray *sortedAvailabilityItems = [self availabilityItems:matchedAvailabilityItems
                                                           sort:appState.vehicleListState.selectedSort];
     
     for (CTAvailabilityItem *availabilityItem in sortedAvailabilityItems) {
