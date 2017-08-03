@@ -41,6 +41,7 @@
     _homeCountryName = country;
     _currencyName = currency;
     _languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:self.languageCode];
+	
 
     if (isDebug) {
         _target = @"Test";
@@ -155,5 +156,6 @@
     NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
     return version;
 }
+
 
 @end

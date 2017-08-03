@@ -213,44 +213,50 @@
 #pragma mark Request car availability
 
 - (void)requestVehicleAvailabilityForLocation:(NSString *)pickupLocationCode
-                           returnLocationCode:(NSString *)returnLocationCode
-                          customerCountryCode:(NSString *)customerCountryCode
-                                 passengerQty:(NSNumber *)passengerQty
-                                    driverAge:(NSNumber *)driverAge
-                               pickUpDateTime:(NSDate *)pickupDateTime
-                               returnDateTime:(NSDate *)returnDateTime
-                                 currencyCode:(NSString *)currencyCode
-                                   completion:(RequestAvailabilityCompletion)completion
+							 returnLocationCode:(NSString *)returnLocationCode
+							customerCountryCode:(NSString *)customerCountryCode
+								   passengerQty:(NSNumber *)passengerQty
+									  driverAge:(NSNumber *)driverAge
+								 pickUpDateTime:(NSDate *)pickupDateTime
+								 returnDateTime:(NSDate *)returnDateTime
+								   currencyCode:(NSString *)currencyCode
+									  orderId:(NSString *)orderId
+									accountId:(NSString *)accountId
+									visitorId:(NSString *)visitorId
+								   isStandAlone:(BOOL)isStandAlone
+									 completion:(RequestAvailabilityCompletion)completion
 {
-    NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.endPoint, @"OTA_VehAvailRateRQ"];
-    
-    NSString *requestBody = [CTRequestBuilder OTA_VehAvailRateRQ: [pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
-                                        returnDateTime: [returnDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
-                                    pickUpLocationCode: pickupLocationCode
-                                    returnLocationCode: returnLocationCode
-                                             driverAge: driverAge.stringValue
-                                          passengerQty: passengerQty.stringValue
-                                       homeCountryCode: customerCountryCode
-                                              clientID: self.clientAPIKey
-                                                target: self.apiTarget
-                                                locale: self.locale
-                                              currency: currencyCode];
-    
-    
-    [self.postRequest performRequestWithData:endPoint
-                               jsonBody: requestBody
-                         loggingEnabled: self.loggingEnabled
-                             completion:^(NSDictionary *response,
-                                          CTErrorResponse *error)
-    {
-        if (error == nil) {
-            CTVehicleAvailability *vehAvailRSCore = [[CTVehicleAvailability alloc] initFromVehAvailRSCoreDictionary: response];
-            completion(vehAvailRSCore, nil);
-        } else {
-            completion(nil, error);
-        }
-    }];
-
+	NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.endPoint, @"OTA_VehAvailRateRQ"];
+	
+	NSString *requestBody = [CTRequestBuilder OTA_VehAvailRateRQ: [pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
+												  returnDateTime: [returnDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
+											  pickUpLocationCode: pickupLocationCode
+											  returnLocationCode: returnLocationCode
+													   driverAge: driverAge.stringValue
+													passengerQty: passengerQty.stringValue
+												 homeCountryCode: customerCountryCode
+														clientID: self.clientAPIKey
+														  target: self.apiTarget
+														  locale: self.locale
+														 orderId:orderId
+													   accountId:accountId
+													   visitorId:visitorId
+													 isStandAlone:isStandAlone
+														currency: currencyCode];
+	
+	[self.postRequest performRequestWithData:endPoint
+									jsonBody: requestBody
+							  loggingEnabled: self.loggingEnabled
+								  completion:^(NSDictionary *response,
+											   CTErrorResponse *error)
+	 {
+		 if (error == nil) {
+			 CTVehicleAvailability *vehAvailRSCore = [[CTVehicleAvailability alloc] initFromVehAvailRSCoreDictionary: response];
+			 completion(vehAvailRSCore, nil);
+		 } else {
+			 completion(nil, error);
+		 }
+	 }];
 }
 
 #pragma mark Insurance quote
@@ -551,7 +557,6 @@
              completion(nil, error);
          }
      }];
-
 }
 
 - (void)groundTransportationBooking:(CTAirport *)airport

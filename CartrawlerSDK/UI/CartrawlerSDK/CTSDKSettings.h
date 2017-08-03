@@ -34,6 +34,8 @@
 @property (nonatomic) BOOL isDebug;
 @property (nonatomic) BOOL isStandalone;
 
+@property (nonatomic, strong) NSMutableDictionary *customAttributes;
+
 + (instancetype)instance;
 
 - (void)setClientId:(NSString *)clientId
@@ -49,7 +51,6 @@
 - (void)setLanguageName:(NSString *)languageName;
 - (void)setCurrencyName:(NSString *)currencyName;
 - (void)setHomeCountryName:(NSString *)homeCountryName;
-
 - (NSString *)countryName:(NSString *)countryCode;
 
 @end

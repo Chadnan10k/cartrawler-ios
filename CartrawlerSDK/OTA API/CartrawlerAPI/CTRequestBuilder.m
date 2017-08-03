@@ -19,7 +19,7 @@
 + (NSString *)buildHeader:(NSString *)callType clientID:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale {
     
     if ([callType isEqualToString:CTHeader]) {
-        
+		
         return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@xmlns:xsi\": \"http://www.w3.org/2001/XMLSchema-instance\",\"@Version\": \"1.005\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": {\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, clientID];
         
     } else if ([callType isEqualToString:CTMobileHeader]) {
@@ -55,7 +55,40 @@
 
 + (NSString *)currencyHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency
 {
-    return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.005\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"@ERSP_UserID\": \"MO\", \"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
+	return [NSString stringWithFormat:@"\"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\",\"@Version\": \"1.005\",\"@Target\": \"%@\",\"@PrimaryLangID\": \"%@\",\"POS\": {\"Source\": { \"@ERSP_UserID\": \"MO\", \"@ISOCurrency\": \"%@\",\"RequestorID\": {\"@Type\": \"16\",\"@ID\": \"%@\",\"@ID_Context\": \"CARTRAWLER\"}}},", target, locale, currency, clientID];
+}
+
++ (NSString *)currencyHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency orderId:(NSString *)orderId
+{
+	NSString *pathOne = [NSString stringWithFormat:
+						 @"    \"@xmlns\":\"http://www.opentravel.org/OTA/2003/05\", \r"
+						 @"    \"@Version\":\"1.002\", \r"
+						 @"    \"@Target\":\"%@\", \r"
+						 @"    \"@PrimaryLangID\":\"%@\", \r"
+						 @"    \"POS\":{ \r"
+						 @"        \"Source\":[ \r"
+						 @"         { \r"
+						 @"            \"@ERSP_UserID\":\"MO\", \r"
+						 @"            \"@ISOCurrency\":\"%@\", \r"
+						 @"            \"RequestorID\":{ \r"
+						 @"                \"@Type\":\"16\", \r"
+						 @"                \"@ID\":\"%@\", \r"
+						 @"                \"@ID_Context\":\"CARTRAWLER\" \r"
+						 @"            } \r"
+						 @"        } \r", target, locale, currency, clientID];
+	
+	NSString *pathTwo = [NSString stringWithFormat:
+						 @"        ,{ \r"
+						 @"            \"RequestorID\":{ \r"
+						 @"                \"@Type\":\"16\", \r"
+						 @"                \"@ID\":\"%@\", \r"
+						 @"                \"@ID_Context\":\"ORDERID\" \r"
+						 @"            } \r"
+						 @"        } \r", orderId];
+	
+	NSString *pathThree = @"    ]}, \r";
+	
+	return ![orderId isEqualToString:@""] ? [[pathOne stringByAppendingString:pathTwo] stringByAppendingString:pathThree] : [pathOne stringByAppendingString:pathThree];
 }
 
 + (NSString *)groundTransportHeader:(NSString *)clientID target:(NSString *)target locale:(NSString *)locale currency:(NSString *)currency country:(NSString *)country
@@ -84,20 +117,53 @@
     return [NSString stringWithFormat:@"\"TPA_Extensions\": {\"ConsumerSignature\":{\"@ID\": \"%@\",\"@Hash\": \"%@\",\"@Stamp\": \"%@\"}}}", [self stringToSha1:[UIDevice currentDevice].identifierForVendor.UUIDString], [self stringToSha1:stringTwo], dateString];
 }
 
-+ (NSString *)tpaExtensionForAvail
++ (NSString *)tpaExtensionForAvailPath:(BOOL) isStandAlone accountId:(NSString *) accountId visitorId:(NSString *) visitorId
 {
-    NSString *tpa =
-    @" \"TPA_Extensions\": { \r"
-    @"     \"showBaseCost\": true, \r"
-    @"     \"GeoRadius\": 5, \r"
-    @"     \"Window\": { \r"
-    @"         \"@name\": \"IOS-V3\", \r"
-    @"         \"@engine\": \"IOS-V3\" \r"
-    @"      },\"RefID\": [] \r"
-    @" }} \r";
-    
-    return tpa;
-    
+	NSString *tpa =
+	@" \"TPA_Extensions\": { \r"
+	@"     \"showBaseCost\": true, \r"
+	@"     \"GeoRadius\": 5, \r"
+	@"     \"Window\": { \r"
+	@"         \"@name\": \"IOS-V3\", \r"
+	@"         \"@engine\": \"IOS-V3\" \r"
+	@"      },\"RefID\": [] \r";
+	
+	NSString *persona;
+
+	if (isStandAlone) {
+		persona = [NSString stringWithFormat:
+				   @"     ,\r "
+				   @"     \"Persona\":{ \r"
+				   @"           \"Characteristic\" :[{ \r"
+				   @"			  \"@name\":\"MyAccountId\", \r"
+				   @"               \"@Value\":\"%@\" \r"
+				   @"            } \r"
+				   @"       ]}", accountId];
+	} else {
+		NSString *characteristics = [NSString stringWithFormat:
+				   @"     ,\r "
+				   @"     \"Persona\":{ \r"
+				   @"           \"Characteristic\" :[ \n"
+				   @"			{  \r"
+				   @"			  \"@name\":\"MyAccountId\", \r"
+				   @"                 \"@Value\":\"%@\" \r"
+								   @"               } \r",accountId];
+		NSString *pnr = [NSString stringWithFormat:
+				   @"			,{ \r"
+				   @"			  \"@name\":\"VisitorId\", \r"
+				   @"                 \"@Value\":\"%@\" \r"
+				   @"			} \r"
+				   @"		]"
+				   @"       }", visitorId];
+		
+		persona = ![visitorId isEqualToString:@""] ? [characteristics stringByAppendingString:pnr] : [characteristics stringByAppendingString:@"]}"];
+	}
+	
+	
+	NSString *tpa2 = @" }} \r";
+	
+	return [[tpa stringByAppendingString:persona] stringByAppendingString:tpa2];
+	
 }
 
 + (NSString *)OTA_VehLocSearchRQCity:(NSString *)cityName
@@ -192,21 +258,23 @@
 }
 
 + (NSString *) OTA_VehAvailRateRQ:(NSString *)pickUpDateTime
-                   returnDateTime:(NSString *)returnDateTime
-               pickUpLocationCode:(NSString *)pickUpLoactionCode
-               returnLocationCode:(NSString *)returnLocationCode
-                        driverAge:(NSString *)driverAge
-                     passengerQty:(NSString *)passengerQty
-                  homeCountryCode:(NSString *)homeCountryCode
-                         clientID:(NSString *)clientID
-                           target:(NSString *)target
-                           locale:(NSString *)locale
-                         currency:(NSString *)currency
+				   returnDateTime:(NSString *)returnDateTime
+			   pickUpLocationCode:(NSString *)pickUpLoactionCode
+			   returnLocationCode:(NSString *)returnLocationCode
+						driverAge:(NSString *)driverAge
+					 passengerQty:(NSString *)passengerQty
+				  homeCountryCode:(NSString *)homeCountryCode
+						 clientID:(NSString *)clientID
+						   target:(NSString *)target
+						   locale:(NSString *)locale
+						  orderId:(NSString *)orderId
+						accountId:(NSString *)accountId
+						visitorId:(NSString *)visitorId
+					 isStandAlone:(BOOL)isStandAlone
+						 currency:(NSString *)currency
 {
-    
-    NSString *tail = [NSString stringWithFormat:@"\"VehAvailRQCore\":{\"@Status\":\"Available\",\"VehRentalCore\":{\"@PickUpDateTime\":\"%@\",\"@ReturnDateTime\":\"%@\",\"PickUpLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"},\"ReturnLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"}},\"DriverType\":{\"@Age\":\"%@\"}},\"VehAvailRQInfo\":{\"Customer\":{\"Primary\":{\"CitizenCountryName\":{\"@Code\":\"%@\"}}},%@", pickUpDateTime, returnDateTime, pickUpLoactionCode, returnLocationCode, driverAge, homeCountryCode, [CTRequestBuilder tpaExtensionForAvail]];
-    
-    return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:currency], tail];
+	NSString *tail = [NSString stringWithFormat:@"\"VehAvailRQCore\":{\"@Status\":\"Available\",\"VehRentalCore\":{\"@PickUpDateTime\":\"%@\",\"@ReturnDateTime\":\"%@\",\"PickUpLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"},\"ReturnLocation\":{\"@CodeContext\":\"CARTRAWLER\",\"@LocationCode\":\"%@\"}},\"DriverType\":{\"@Age\":\"%@\"}},\"VehAvailRQInfo\":{\"Customer\":{\"Primary\":{\"CitizenCountryName\":{\"@Code\":\"%@\"}}},%@", pickUpDateTime, returnDateTime, pickUpLoactionCode, returnLocationCode, driverAge, homeCountryCode, [CTRequestBuilder tpaExtensionForAvailPath:isStandAlone accountId:accountId visitorId:visitorId]];
+	return [NSString stringWithFormat:@"{%@%@}", [CTRequestBuilder currencyHeader:clientID target:target locale:locale currency:currency orderId:orderId], tail];
 }
 
 + (NSString *) OTA_VehResRQ:(NSString *)pickupDateTime
