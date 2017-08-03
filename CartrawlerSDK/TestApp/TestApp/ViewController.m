@@ -30,8 +30,10 @@
     [super viewWillAppear:animated];
     self.endpointControl.selectedSegmentIndex = [RYRRentalManager instance].currentEndpoint;
 	
-	NSDictionary *attributes = @{@"myAppId":@"er89952d1334", @"orderId":@"T26RJX", @"visitorId":@"89952133413890617305233409049160176604"};
-	[[CTSDKSettings instance] setCustomAttributes:attributes];
+	NSMutableDictionary *customAttributes = [[CTSDKSettings instance] customizeAttributes];
+	[customAttributes setObject:@"er89952d1334" forKey:@"myAppId"];
+	[customAttributes setObject:@"T26RJX" forKey:@"orderId"];
+	[customAttributes setObject:@"89952133413890617305233409049160176604" forKey:@"visitorId"];
 }
 
 - (IBAction)openCarRental:(id)sender {
@@ -46,7 +48,5 @@
     }
     [[RYRRentalManager instance] changeEndpoint:!self.isDebug];
 }
-
-
 
 @end

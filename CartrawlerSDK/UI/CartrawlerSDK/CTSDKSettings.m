@@ -41,6 +41,7 @@
     _homeCountryName = country;
     _currencyName = currency;
     _languageName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:self.languageCode];
+	
 
     if (isDebug) {
         _target = @"Test";
@@ -95,11 +96,12 @@
     [self setItem:homeCountryName key:@"CT_homeCountryName"];
 }
 
-- (void) setCustomAttributes:(NSDictionary *)customAttributes
+- (NSMutableDictionary *) customizeAttributes
 {
-	[self setItem:customAttributes[@"myAppId"] key:@"CT_myAppId"];
-	[self setItem:customAttributes[@"orderId"] key:@"CT_orderId"];
-	[self setItem:customAttributes[@"visitorId"] key:@"CT_visitorId"];
+	if (!_customAttributes) {
+		_customAttributes = [[NSMutableDictionary alloc] init];
+	}
+	return _customAttributes;
 }
 
 - (NSString *)countryName:(NSString *)countryCode
@@ -141,17 +143,6 @@
 - (NSString *)homeCountryName_
 {
     return [self itemForKey:@"CT_homeCountryName"];
-}
-
-- (NSDictionary *)customAttributes {
-	
-	NSString *myAppId = [self itemForKey:@"CT_myAppId"] != nil ? [self itemForKey:@"CT_myAppId"] : @"";
-	NSString *orderId = [self itemForKey:@"CT_orderId"] != nil ? [self itemForKey:@"CT_orderId"] : @"";
-	NSString *visitorId = [self itemForKey:@"CT_visitorId"] != nil ? [self itemForKey:@"CT_visitorId"] : @"";
-	
-	return @{@"myAppId":myAppId,
-		    @"orderId":orderId,
-			 @"visitorId":visitorId};
 }
 
 - (void)setItem:(NSString *)item key:(NSString *)key
