@@ -18,6 +18,17 @@
 			name = BuildSDK;
 			productName = BuildSDK;
 		};
+		6A8C5C361F34CEF1005CD6A9 /* CartrawlerSDKLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 6A8C5C391F34CEF1005CD6A9 /* Build configuration list for PBXAggregateTarget "CartrawlerSDKLint" */;
+			buildPhases = (
+				6A8C5C3F1F34CF42005CD6A9 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = CartrawlerSDKLint;
+			productName = CartrawlerSDKLint;
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -1185,6 +1196,10 @@
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
 					};
+					6A8C5C361F34CEF1005CD6A9 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 45E9423E1D12FF0F00ACF604 /* Build configuration list for PBXProject "CartrawlerSDK" */;
@@ -1202,6 +1217,7 @@
 				455B582A1DCC90D300CA4790 /* CartrawlerSDK */,
 				45CB04781DEDCEDA0086BEA0 /* BuildSDK */,
 				45F5D7661DEF00C3005AE1AD /* CartrawlerSDKTests */,
+				6A8C5C361F34CEF1005CD6A9 /* CartrawlerSDKLint */,
 			);
 		};
 /* End PBXProject section */
@@ -1253,6 +1269,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\n######################\n# Options\n######################\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal-CartrawlerSDK\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\nexport VERSION= \"defaults read ${INFO_PLIST} CFBundleVersionString\"\n\n######################\n# Build Frameworks\n######################\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme ${FRAMEWORK_NAME} -configuration Debug -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk \"iphoneos\"\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme ${FRAMEWORK_NAME} -configuration Debug -arch x86_64 -arch i386 only_active_arch=no defines_module=yes -sdk \"iphonesimulator\"\n\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n\n######################\n# On Release, copy the result to release directory\n######################\nOUTPUT_DIR=\"${SRCROOT}/../../../Artifacts_Latest\"\nmkdir -p \"$OUTPUT_DIR\"\n\ncp -r \"${FRAMEWORK}\" \"$OUTPUT_DIR\"\n\n";
+		};
+		6A8C5C3F1F34CF42005CD6A9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source ~/.bash_profile\n\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\ncd ${TARGET_TEMP_DIR}\n\nif [ ! -f compile_commands.json ]; then\necho \"[*] compile_commands.json not found, possibly clean was performed\"\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd ${SRCROOT}\n\nxcodebuild clean\n\n#build xcodebuild.log\nxcodebuild | tee ${TARGET_TEMP_DIR}/xcodebuild.log\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\ncd ${TARGET_TEMP_DIR}\n#transform it into compile_commands.json\noclint-xcodebuild\n\nfi\n\n#if [-d report.html]; then\n#rm report.html\n#fi\n\n\n#run static analyzer\n#oclint-json-compilation-database -- -o=./report.html -html\n\necho \"[*] starting analyzing\"\ncd ${TARGET_TEMP_DIR}\noclint-json-compilation-database | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1570,6 +1599,20 @@
 			};
 			name = Release;
 		};
+		6A8C5C371F34CEF1005CD6A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6A8C5C381F34CEF1005CD6A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1608,6 +1651,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		6A8C5C391F34CEF1005CD6A9 /* Build configuration list for PBXAggregateTarget "CartrawlerSDKLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A8C5C371F34CEF1005CD6A9 /* Debug */,
+				6A8C5C381F34CEF1005CD6A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
