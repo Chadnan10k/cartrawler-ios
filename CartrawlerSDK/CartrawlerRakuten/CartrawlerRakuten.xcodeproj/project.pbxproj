@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		6A8C5C431F34D335005CD6A9 /* CartrawlerRakutenLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 6A8C5C461F34D335005CD6A9 /* Build configuration list for PBXAggregateTarget "CartrawlerRakutenLint" */;
+			buildPhases = (
+				6A8C5C471F34D33C005CD6A9 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = CartrawlerRakutenLint;
+			productName = CartrawlerRakutenLint;
+		};
 		BCDB4BF51E3F5BC5008004DA /* BuildRakuten */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = BCDB4BF61E3F5BC5008004DA /* Build configuration list for PBXAggregateTarget "BuildRakuten" */;
@@ -197,6 +208,10 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Lee Maguire";
 				TargetAttributes = {
+					6A8C5C431F34D335005CD6A9 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
 					BCDB4BC11E3BBE3F008004DA = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 3L8QU4R2JJ;
@@ -223,6 +238,7 @@
 			targets = (
 				BCDB4BC11E3BBE3F008004DA /* CartrawlerRakuten */,
 				BCDB4BF51E3F5BC5008004DA /* BuildRakuten */,
+				6A8C5C431F34D335005CD6A9 /* CartrawlerRakutenLint */,
 			);
 		};
 /* End PBXProject section */
@@ -239,6 +255,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6A8C5C471F34D33C005CD6A9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source ~/.bash_profile\n\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\ncd ${TARGET_TEMP_DIR}\n\nif [ ! -f compile_commands.json ]; then\necho \"[*] compile_commands.json not found, possibly clean was performed\"\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd ${SRCROOT}\n\nxcodebuild clean\n\n#build xcodebuild.log\nxcodebuild | tee ${TARGET_TEMP_DIR}/xcodebuild.log\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\ncd ${TARGET_TEMP_DIR}\n#transform it into compile_commands.json\noclint-xcodebuild\n\nfi\n\n#if [-d report.html]; then\n#rm report.html\n#fi\n\n\n#run static analyzer\n#oclint-json-compilation-database -- -o=./report.html -html\n\necho \"[*] starting analyzing\"\ncd ${TARGET_TEMP_DIR}\noclint-json-compilation-database | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
+		};
 		BCDB4BF91E3F5BC8008004DA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -266,6 +295,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		6A8C5C441F34D335005CD6A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6A8C5C451F34D335005CD6A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		BCDB4BC81E3BBE3F008004DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -439,6 +482,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6A8C5C461F34D335005CD6A9 /* Build configuration list for PBXAggregateTarget "CartrawlerRakutenLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A8C5C441F34D335005CD6A9 /* Debug */,
+				6A8C5C451F34D335005CD6A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		BCDB4BBC1E3BBE3F008004DA /* Build configuration list for PBXProject "CartrawlerRakuten" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
