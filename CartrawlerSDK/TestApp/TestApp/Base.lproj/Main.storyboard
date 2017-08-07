@@ -36,7 +36,7 @@
                                             <constraint firstAttribute="width" secondItem="ylg-z9-AUE" secondAttribute="height" multiplier="343:151" constant="37.960264900662253" id="H8g-UR-GPa"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIE-Qd-nYM">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIE-Qd-nYM">
                                         <rect key="frame" x="8" y="350" width="398" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -51,9 +51,25 @@
                                             <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TAQ-6Z-NA5"/>
                                         </connections>
                                     </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4sr-mH-0oe">
+                                        <rect key="frame" x="126" y="354" width="163" height="29"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="zN7-gC-jd6"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Test"/>
+                                            <segment title="Production"/>
+                                        </segments>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="segmentedControlWasTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="OGx-JK-z5P"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="4sr-mH-0oe" firstAttribute="centerX" secondItem="cIE-Qd-nYM" secondAttribute="centerX" id="8WV-YT-NUU"/>
                                     <constraint firstItem="O2c-tF-pam" firstAttribute="centerX" secondItem="AOS-aQ-kT0" secondAttribute="centerX" id="Hyw-JQ-W7W"/>
                                     <constraint firstAttribute="leadingMargin" secondItem="cIE-Qd-nYM" secondAttribute="leading" id="Idd-q9-z8F"/>
                                     <constraint firstItem="O2c-tF-pam" firstAttribute="width" secondItem="AOS-aQ-kT0" secondAttribute="width" multiplier="0.5" id="Iqf-sh-xDp"/>
@@ -67,6 +83,7 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="AOS-aQ-kT0" secondAttribute="trailing" constant="50" id="ono-50-Tv0"/>
                                     <constraint firstItem="NA9-Ta-4WI" firstAttribute="width" secondItem="y6o-oG-u2i" secondAttribute="width" id="rKl-lp-0EQ"/>
                                     <constraint firstItem="O2c-tF-pam" firstAttribute="centerY" secondItem="AOS-aQ-kT0" secondAttribute="centerY" id="uiv-2u-Mbn"/>
+                                    <constraint firstItem="4sr-mH-0oe" firstAttribute="centerY" secondItem="cIE-Qd-nYM" secondAttribute="centerY" id="uqP-qM-18O"/>
                                     <constraint firstItem="AOS-aQ-kT0" firstAttribute="top" secondItem="cIE-Qd-nYM" secondAttribute="bottom" constant="25" id="wi7-1S-xb0"/>
                                     <constraint firstItem="cIE-Qd-nYM" firstAttribute="centerY" secondItem="y6o-oG-u2i" secondAttribute="centerY" id="z9b-Ie-z6q"/>
                                 </constraints>
@@ -87,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1096.8" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1095.6521739130435" y="138.58695652173915"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iEA-L5-dss">

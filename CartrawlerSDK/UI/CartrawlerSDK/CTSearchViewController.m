@@ -101,13 +101,18 @@
             break;
     }
     
-//    if (viewModel.scrollAboveKeyboard && viewModel.keyboardHeight > 0) {
-//        CGFloat formHeight = [self.searchFormVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-//        CGRect screenRect = [[UIScreen mainScreen] bounds];
-//        CGFloat screenHeight = screenRect.size.height;
-//        CGFloat offset = formHeight - (screenHeight - viewModel.keyboardHeight);
-//        [self.scrollView setContentOffset:CGPointMake(0, offset) animated:YES];
-//    }
+    // TODO: Tidy up Keyboard Scrolling Logic, may be state redundancy
+    // TODO: Convert once-offs to wantsScrollAboveKeyboard
+    if (viewModel.scrollAboveUserInput > 0) {
+        CGFloat formHeight = [self.searchFormVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenHeight = screenRect.size.height;
+        CGFloat offset = formHeight - screenHeight + viewModel.scrollAboveUserInput;
+        if (offset > self.scrollView.contentOffset.y) {
+            [self.scrollView setContentOffset:CGPointMake(0, offset) animated:YES];
+        }
+        [CTAppController dispatchAction:CTActionSearchViewDidScrollAboveUserInput payload:nil];
+    }
     
     [UIView animateWithDuration:0.2 animations:^{
         self.searchSplashContainerView.alpha = viewModel.contentView == CTSearchContentViewSplash;

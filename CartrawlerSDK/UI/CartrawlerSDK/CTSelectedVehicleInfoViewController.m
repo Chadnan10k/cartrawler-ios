@@ -7,31 +7,39 @@
 //
 
 #import "CTSelectedVehicleInfoViewController.h"
+#import "CTSelectedVehicleInfoViewModel.h"
+#import "CTBannerEdgeView.h"
+#import "CTImageCache.h"
 
 @interface CTSelectedVehicleInfoViewController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *orSimilarLabel;
+@property (weak, nonatomic) IBOutlet CTBannerEdgeView *bannerEdgeView;
+@property (weak, nonatomic) IBOutlet UIView *bannerView;
+@property (weak, nonatomic) IBOutlet UILabel *bannerLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
+@property (weak, nonatomic) IBOutlet UILabel *passengersLabel;
+@property (weak, nonatomic) IBOutlet UILabel *bagsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fuelLabel;
+@property (weak, nonatomic) IBOutlet UILabel *featuresCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *featuresLabel;
 @end
 
 @implementation CTSelectedVehicleInfoViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+- (void)updateWithViewModel:(CTSelectedVehicleInfoViewModel *)viewModel {
+    self.titleLabel.text = viewModel.vehicleName;
+    self.bannerView.backgroundColor = viewModel.merchandisingColor;
+    self.bannerEdgeView.primaryColor = viewModel.merchandisingColor ? viewModel.merchandisingColor : [UIColor whiteColor];
+    self.bannerLabel.text = viewModel.merchandisingText;
+    
+    [[CTImageCache sharedInstance] cachedImage:viewModel.vehicleURL completion:^(UIImage *image) {
+        self.vehicleImageView.image = image;
+    }];
+    
+    self.passengersLabel.text = viewModel.passengers;
+    self.bagsLabel.text = viewModel.bags;
+    self.fuelLabel.text = viewModel.fuel;
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

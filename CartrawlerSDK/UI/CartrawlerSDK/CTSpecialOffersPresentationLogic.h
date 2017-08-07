@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "CTLocalisedStrings.h"
+#import "CTSDKLocalizationConstants.h"
 
 @interface CTSpecialOffersPresentationLogic : NSObject
+
++ (NSString *)specialOfferText:(NSArray <CTSpecialOffer *> *)specialOffers;
+
++ (NSString *)merchandisingText:(CTMerchandisingTag)merchandisingTag;
+
++ (UIColor *)merchandisingColor:(CTMerchandisingTag)merchandisingTag;
 
 @end

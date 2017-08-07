@@ -44,6 +44,7 @@
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     f.minimumFractionDigits = 2;
     f.currencyCode = [CTSDKSettings instance].currencyCode;
+    f.roundingMode = NSNumberFormatterRoundUp;
     f.numberStyle = NSNumberFormatterCurrencyStyle;
     
     return [f stringFromNumber:pricePerDay];

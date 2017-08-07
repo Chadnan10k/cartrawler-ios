@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTViewControllerProtocol.h"
 
-@interface CTSelectedVehicleInsuranceViewController : UIViewController
+@interface CTSelectedVehicleInsuranceViewController : UIViewController <CTViewControllerProtocol>
 
 @end

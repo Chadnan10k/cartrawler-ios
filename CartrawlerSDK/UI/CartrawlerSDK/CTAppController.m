@@ -157,9 +157,6 @@
             searchState.selectedPickupTime = [NSDate dateWithHour:10 minute:0];
             searchState.selectedDropoffTime = [NSDate dateWithHour:10 minute:0];
             break;
-        case CTActionSearchUserDidTapBack:
-            navigationState.currentNavigationStep = CTNavigationStepNone;
-            break;
         
         // Search Actions
         case CTActionSearchUserDidSwipeUSPCarousel:
@@ -172,12 +169,10 @@
             searchState.selectedTextField = CTSearchFormSettingsButton;
             break;
         case CTActionSearchUserDidTapPickupTextField:
-            NSLog(@"Tap Pickup Payload: %@", payload);
             searchState.wantsNextStep = NO;
             searchState.selectedTextField = CTSearchFormTextFieldPickupLocation;
             break;
         case CTActionSearchUserDidTapDropoffTextField:
-            NSLog(@"Tap Dropoff Payload: %@", payload);
             searchState.wantsNextStep = NO;
             searchState.selectedTextField = CTSearchFormTextFieldDropoffLocation;
             break;
@@ -192,13 +187,13 @@
             searchState.displayedDropoffDate = nil;
             break;
         case CTActionSearchUserDidTapPickupTimeTextField:
-            NSLog(@"Tap Pickup Time Payload: %@", payload);
             searchState.wantsNextStep = NO;
+            searchState.scrollAboveUserInput = YES;
             searchState.selectedTextField = CTSearchFormTextFieldPickupTime;
             break;
         case CTActionSearchUserDidTapDropoffTimeTextField:
-            NSLog(@"Tap Dropoff Time Payload: %@", payload);
             searchState.wantsNextStep = NO;
+            searchState.scrollAboveUserInput = YES;
             searchState.selectedTextField = CTSearchFormTextFieldDropoffTime;
             break;
         case CTActionSearchUserDidTapAgeTextField:
@@ -209,6 +204,8 @@
             searchState.wantsNextStep = NO;
             searchState.driverAgeRequired = !searchState.driverAgeRequired;
             searchState.selectedTextField = searchState.driverAgeRequired ? CTSearchFormTextFieldDriverAge : CTSearchFormTextFieldNone;
+            searchState.scrollAboveUserInput = searchState.driverAgeRequired;
+            
             if ([CTValidationSearch validateSearchStep:searchState]) {
                 APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
                 [self.apiController requestVehicleAvailabilityWithState:appState];
@@ -225,6 +222,12 @@
                 searchState.wantsNextStep = NO;
             }
             break;
+        case CTActionSearchUserDidTapBack:
+            navigationState.currentNavigationStep = CTNavigationStepNone;
+            break;
+        case CTActionSearchViewDidScrollAboveUserInput:
+            searchState.scrollAboveUserInput = NO;
+            return;
         case CTActionSearchSettingsUserDidTapCloseButton:
             searchState.selectedTextField = CTSearchSearchSettingsNone;
             break;
@@ -354,9 +357,17 @@
             navigationState.currentNavigationStep = CTNavigationStepSearch;
             appState.vehicleListState = [CTVehicleListState new];
             break;
-        case CTActionVehicleListUserDidTapVehicle:
+        case CTActionVehicleListUserDidTapVehicle: {
             selectedVehicleState.selectedAvailabilityItem = payload;
+            selectedVehicleState.addedExtras = [NSMutableArray new];
+            selectedVehicleState.flippedExtras = [NSMutableArray new];
+            [selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment enumerateObjectsUsingBlock:^(CTExtraEquipment * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                selectedVehicleState.addedExtras[idx] = @0;
+                selectedVehicleState.flippedExtras[idx] = @0;
+            }];
             navigationState.currentNavigationStep = CTNavigationStepSelectedVehicle;
+            [self.apiController requestInsuranceForSelectedVehicleWithState:appState];
+        }
             break;
         case CTActionVehicleListUserDidTapSort:
             vehicleListState.selectedView = CTVehicleListSelectedViewSort;
@@ -390,6 +401,41 @@
                 [vehicleListState.selectedFilters addObject:payload];
             }
             break;
+            
+        // Selected Vehicle Actions
+        case CTActionSelectedVehicleUserDidTapBack:
+            navigationState.currentNavigationStep = CTNavigationStepVehicleList;
+            break;
+        case CTActionSelectedVehicleUserDidTapTab:
+            selectedVehicleState.selectedTab = [payload integerValue];
+            break;
+        case CTActionSelectedVehicleUserDidTapIncludedItem:
+            break;
+        case CTActionSelectedVehicleUserDidTapInsuranceDetails:
+            break;
+        case CTActionSelectedVehicleUserDidTapAddInsurance:
+            break;
+        case CTActionSelectedVehicleUserDidTapViewAllExtras:
+            break;
+        case CTActionSelectedVehicleUserDidTapIncrementExtra: {
+            NSInteger index = [selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment indexOfObject:payload];
+            NSNumber *count = selectedVehicleState.addedExtras[index];
+            if (count.integerValue < 4) {
+                selectedVehicleState.addedExtras[index] = @(count.integerValue + 1);
+            }
+        }
+            break;
+        case CTActionSelectedVehicleUserDidTapDecrementExtra: {
+            NSInteger index = [selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment indexOfObject:payload];
+            NSNumber *count = selectedVehicleState.addedExtras[index];
+            if (count.integerValue > 0) {
+                selectedVehicleState.addedExtras[index] = @(count.integerValue - 1);
+            }
+        }
+            break;
+        case CTActionSelectedVehicleUserDidTapExtraInfo:
+            break;
+
         default:
             break;
     }

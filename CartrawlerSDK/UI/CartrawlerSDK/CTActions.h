@@ -14,6 +14,7 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      *  Initialise the state object
      */
     CTActionInitialiseState,
+    
     // User Actions
     /**
      *  Sets the Client ID
@@ -140,6 +141,10 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      */
     CTActionSearchUserDidTapBack,
     /**
+     *  The view scrolled in response to a user input showing
+     */
+    CTActionSearchViewDidScrollAboveUserInput,
+    /**
      *  The user tapped the close settings button
      */
     CTActionSearchSettingsUserDidTapCloseButton,
@@ -245,4 +250,51 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      *  The user tapped a filter option
      */
     CTActionVehicleListUserDidTapFilterOption,
+    
+    // Selected Vehicle
+    /**
+     *  The user tapped the back button
+     *  Payload: nil
+     */
+    CTActionSelectedVehicleUserDidTapBack,
+    /**
+     *  The user tapped a tab item
+     *  Payload(NSNumber *): Tab index
+     */
+    CTActionSelectedVehicleUserDidTapTab,
+    /**
+     *  The user tapped an included item
+     *  Payload(NSNumber *): Item index
+     */
+    CTActionSelectedVehicleUserDidTapIncludedItem,
+    /**
+     *  The user tapped insurance details
+     *  Payload: nil
+     */
+    CTActionSelectedVehicleUserDidTapInsuranceDetails,
+    /**
+     *  The user tapped add insurance button
+     *  Payload: nil
+     */
+    CTActionSelectedVehicleUserDidTapAddInsurance,
+    /**
+     *  The user tapped view all extras
+     */
+    CTActionSelectedVehicleUserDidTapViewAllExtras,
+    /**
+     *  The user tapped increment button on an extra
+     *  Payload(CTExtraEquipment *): Extra
+     */
+    CTActionSelectedVehicleUserDidTapIncrementExtra,
+    /**
+     *  The user tapped decrement extra
+     *  Payload(CTExtraEquipment *): Extra
+     */
+    CTActionSelectedVehicleUserDidTapDecrementExtra,
+    /**
+     *  The user tapped the extra info button
+     *  Payload: nil
+     */
+    CTActionSelectedVehicleUserDidTapExtraInfo,
+    
 };

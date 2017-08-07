@@ -40,6 +40,5 @@ typedef NS_ENUM(NSUInteger, CTSearchSupplementaryView) {
 @property (nonatomic, readonly) CTSearchSettingsViewModel *searchSettingsViewModel;
 @property (nonatomic, readonly) CTSearchUSPViewModel *searchUSPViewModel;
 @property (nonatomic, readonly) UIColor *navigationBarColor;
-@property (nonatomic, readonly) BOOL scrollAboveKeyboard;
-@property (nonatomic, readonly) CGFloat keyboardHeight;
+@property (nonatomic, readonly) CGFloat scrollAboveUserInput;
 @end

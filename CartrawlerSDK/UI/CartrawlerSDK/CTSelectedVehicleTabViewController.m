@@ -7,31 +7,51 @@
 //
 
 #import "CTSelectedVehicleTabViewController.h"
+#import "CTSelectedVehicleIncludedViewController.h"
+#import "CTSelectedVehicleRatingsViewController.h"
+#import "CTSelectedVehicleTabViewModel.h"
+#import "CTAppController.h"
 
 @interface CTSelectedVehicleTabViewController ()
-
+@property (weak, nonatomic) IBOutlet UIButton *includedButton;
+@property (weak, nonatomic) IBOutlet UIView *includedIndicator;
+@property (weak, nonatomic) IBOutlet UIButton *ratingsButton;
+@property (weak, nonatomic) IBOutlet UIView *ratingsIndicator;
+@property (nonatomic, weak) CTSelectedVehicleIncludedViewController *selectedVehicleIncludedViewController;
+@property (nonatomic, weak) CTSelectedVehicleRatingsViewController *selectedVehicleRatingsViewController;
 @end
 
 @implementation CTSelectedVehicleTabViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+- (void)updateWithViewModel:(CTSelectedVehicleTabViewModel *)viewModel {
+    [self.includedButton setTitle:viewModel.included forState:UIControlStateNormal];
+    [self.ratingsButton setTitle:viewModel.ratings forState:UIControlStateNormal];
+    
+    
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         [self.includedButton setTitleColor:viewModel.includedColor forState:UIControlStateNormal];
+                         self.includedIndicator.backgroundColor = viewModel.includedColor;
+                         [self.ratingsButton setTitleColor:viewModel.ratingsColor forState:UIControlStateNormal];
+                         self.ratingsIndicator.backgroundColor = viewModel.ratingsColor;
+                     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"SelectedVehicleIncluded"]) {
+        self.selectedVehicleIncludedViewController = segue.destinationViewController;
+    }
+    if ([segue.identifier isEqualToString:@"SelectedVehicleRatings"]) {
+        self.selectedVehicleRatingsViewController = segue.destinationViewController;
+    }
 }
-*/
+
+- (IBAction)includedButtonTapped:(UIButton *)sender {
+    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapTab payload:@(0)];
+}
+
+- (IBAction)ratingsButtonTapped:(id)sender {
+    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapTab payload:@(1)];
+}
 
 @end

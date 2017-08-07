@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTViewControllerProtocol.h"
 
-@interface CTSelectedVehicleExtrasCell : UICollectionViewCell
+@interface CTSelectedVehicleExtrasCell : UICollectionViewCell <CTViewControllerProtocol>
 
 @end

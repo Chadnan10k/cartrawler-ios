@@ -88,4 +88,27 @@
                                               }];
 }
 
+- (void)requestInsuranceForSelectedVehicleWithState:(CTAppState *)appState {
+    CTSearchState *searchState = appState.searchState;
+    CTUserSettingsState *userSettingsState = appState.userSettingsState;
+    CTSelectedVehicleState *selectedVehicleState = appState.selectedVehicleState;
+    
+    [CartrawlerAPI requestInsuranceQuoteForVehicle:selectedVehicleState.selectedAvailabilityItem
+                                   homeCountryCode:userSettingsState.countryCode
+                            destinationCountryCode:searchState.selectedPickupLocation.countryCode
+                                          currency:userSettingsState.currencyCode
+                                         totalCost:selectedVehicleState.selectedAvailabilityItem.vehicle.totalPriceForThisVehicle.stringValue
+                                    pickupDateTime:searchState.selectedPickupDate
+                                    returnDateTime:searchState.selectedDropoffDate
+                                          clientID:userSettingsState.clientID
+                                         debugMode:userSettingsState.debugMode
+                                    loggingEnabled:userSettingsState.loggingEnabled
+                                        completion:^(CTInsurance *response, CTErrorResponse *error) {
+                                            if (response && !error) {
+                                                
+                                            }
+                                        }];
+    
+}
+
 @end

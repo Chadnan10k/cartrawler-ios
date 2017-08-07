@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "CTAppState.h"
 #import "CTLocalisedStrings.h"
 #import "CTSDKLocalizationConstants.h"
-#import <UIKit/UIKit.h>
 
 @protocol CTViewModelProtocol <NSObject>
 @optional

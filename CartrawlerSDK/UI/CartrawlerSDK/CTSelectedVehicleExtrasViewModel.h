@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTViewModelProtocol.h"
+#import "CTSelectedVehicleExtrasCellModel.h"
 
-@interface CTSelectedVehicleExtrasViewModel : NSObject
+@interface CTSelectedVehicleExtrasViewModel : NSObject <CTViewModelProtocol>
+
+@property (nonatomic, readonly) NSArray <CTSelectedVehicleExtrasCellModel *> *cellModels;
+@property (nonatomic, readonly) NSArray <NSNumber *> *addedExtras;
+@property (nonatomic, readonly) NSArray <NSNumber *> *flippedExtras;
 
 @end

@@ -21,8 +21,7 @@
 @property (nonatomic, readwrite) CTSearchUSPViewModel *searchUSPViewModel;
 @property (nonatomic, readwrite) UIColor *navigationBarColor;
 @property (nonatomic, readwrite) BOOL scrollAboveKeyboard;
-@property (nonatomic, readwrite) CGFloat keyboardHeight;
-
+@property (nonatomic, readwrite) CGFloat scrollAboveUserInput;
 @end
 
 @implementation CTSearchViewModel
@@ -71,7 +70,9 @@
     
     viewModel.navigationBarColor = userSettingsState.primaryColor;
     
-    viewModel.keyboardHeight = appState.userSettingsState.keyboardShowing ? appState.userSettingsState.keyboardHeight.floatValue : 0;
+    if (searchState.scrollAboveUserInput) {
+        viewModel.scrollAboveUserInput = appState.userSettingsState.keyboardHeight.floatValue;
+    }
     
     return viewModel;
 }

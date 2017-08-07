@@ -17,6 +17,7 @@
 
 @interface ViewController ()
 @property (nonatomic) CartrawlerSDK *sdk;
+@property (nonatomic) BOOL productionEnvironment;
 @property (nonatomic) AVAudioPlayer *audioPlayer;
 @end
 
@@ -27,9 +28,12 @@
 //    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
 //    [self.audioPlayer play];
     
-    self.sdk = [[CartrawlerSDK alloc] initWithlanguageCode:@"en" sandboxMode:YES];
+    self.sdk = [[CartrawlerSDK alloc] initWithlanguageCode:@"en" sandboxMode:!self.productionEnvironment];
     [self.sdk setNewSession];
     [self.sdk presentInParentViewController:self];
+}
+- (IBAction)segmentedControlWasTapped:(UISegmentedControl *)sender {
+    self.productionEnvironment = sender.selectedSegmentIndex;
 }
 
 @end

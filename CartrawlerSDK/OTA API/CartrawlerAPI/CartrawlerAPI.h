@@ -214,6 +214,18 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
                         selectedVehicle:(CTAvailabilityItem *)selectedVehicle
                              completion:(InsuranceQuoteCompletion)completion;
 
++ (void)requestInsuranceQuoteForVehicle:(CTAvailabilityItem *)selectedVehicle
+                        homeCountryCode:(NSString *)homeCountryCode
+                 destinationCountryCode:(NSString *)destinationCountryCode
+                               currency:(NSString *)currency
+                              totalCost:(NSString *)totalCost
+                         pickupDateTime:(NSDate *)pickupDateTime
+                         returnDateTime:(NSDate *)returnDateTime
+                               clientID:(NSString *)clientID
+                              debugMode:(BOOL)debugMode
+                         loggingEnabled:(BOOL)loggingEnabled
+                             completion:(InsuranceQuoteCompletion)completion;
+
 #pragma mark Vehicle Services
 /**
  *  Requests the details for a booking

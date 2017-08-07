@@ -7,7 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTViewModelProtocol.h"
 
-@interface CTSelectedVehicleInsuranceViewModel : NSObject
+@interface CTSelectedVehicleInsuranceViewModel : NSObject <CTViewModelProtocol>
+
+@property (nonatomic, readonly) UIColor *primaryColor;
+@property (nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly) NSString *infoTip1;
+@property (nonatomic, readonly) NSString *infoTip2;
+@property (nonatomic, readonly) NSString *infoTip3;
+@property (nonatomic, readonly) NSString *detailsTitle;
+@property (nonatomic, readonly) NSString *imageTitle;
+@property (nonatomic, readonly) NSString *pricePerDay;
+@property (nonatomic, readonly) NSString *total;
+@property (nonatomic, readonly) NSString *addInsurance;
 
 @end

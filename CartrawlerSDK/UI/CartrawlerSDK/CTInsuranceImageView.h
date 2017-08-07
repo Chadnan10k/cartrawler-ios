@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+IB_DESIGNABLE
 @interface CTInsuranceImageView : UIView
+
+@property (nonatomic, strong) IBInspectable UIColor *primaryColor;
 
 @end

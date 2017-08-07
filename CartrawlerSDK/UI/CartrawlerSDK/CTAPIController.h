@@ -15,5 +15,6 @@
 - (void)setNewSessionWithState:(CTUserSettingsState *)userSettingsState;
 - (void)fetchSearchLocationsWithState:(CTAppState *)appState;
 - (void)requestVehicleAvailabilityWithState:(CTAppState *)appState;
+- (void)requestInsuranceForSelectedVehicleWithState:(CTAppState *)appState;
 
 @end

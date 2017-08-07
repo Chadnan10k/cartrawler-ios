@@ -419,6 +419,52 @@
     }];
 }
 
++ (void)requestInsuranceQuoteForVehicle:(CTAvailabilityItem *)selectedVehicle
+                        homeCountryCode:(NSString *)homeCountryCode
+                 destinationCountryCode:(NSString *)destinationCountryCode
+                               currency:(NSString *)currency
+                              totalCost:(NSString *)totalCost
+                         pickupDateTime:(NSDate *)pickupDateTime
+                         returnDateTime:(NSDate *)returnDateTime
+                               clientID:(NSString *)clientID
+                              debugMode:(BOOL)debugMode
+                         loggingEnabled:(BOOL)loggingEnabled
+                             completion:(InsuranceQuoteCompletion)completion
+{
+    NSString *target = [self targetForDebugMode:debugMode];
+    NSString *endPoint = [self endPointForDebugMode:debugMode address:@"OTA_InsuranceQuoteRQ"];
+    NSString *requestBody = [CTRequestBuilder OTA_InsuranceDetailsRQ:totalCost
+                                                         homeCountry:homeCountryCode
+                                                      activeCurrency:currency
+                                                      pickupDateTime:pickupDateTime
+                                                     dropOffDateTime:returnDateTime
+                                              destinationCountryCode:destinationCountryCode
+                                                            clientID:clientID
+                                                              target:target
+                                                              locale:@"IE" /*TODO: Sort*/
+                                                               refID:selectedVehicle.vehicle.refID
+                                                              refURL:selectedVehicle.vehicle.refURL
+                                                        refTimeStamp:selectedVehicle.vehicle.refTimeStamp];
+    
+    [[CTPostRequest new] performRequestWithData:endPoint
+                                    jsonBody: requestBody
+                              loggingEnabled: loggingEnabled
+                                  completion:^(NSDictionary *response,
+                                               CTErrorResponse *error)
+     {
+         if (error == nil) {
+             if (response[@"Success"]) {
+                 CTInsurance *insurance = [[CTInsurance alloc] initFromDict:response];
+                 completion(insurance, nil);
+             } else {
+                 completion(nil, [CTErrorResponse new]);
+             }
+         } else {
+             completion(nil, error);
+         }
+     }];
+}
+
 #pragma mark Reserve Vehicle
 
 - (void)reserveVehicle:(NSDate *)pickupDateTime
@@ -756,6 +802,16 @@
 
     
     NSLog(@"%@", requestBody);
+}
+
+// MARK:
+
++ (NSString *)targetForDebugMode:(BOOL)debugMode {
+    return debugMode ? CTTestTarget : CTProductionTarget;
+}
+
++ (NSString *)endPointForDebugMode:(BOOL)debugMode address:(NSString *)address {
+    return [NSString stringWithFormat:@"%@%@", debugMode ? CTTestAPI : CTProductionAPI, address];
 }
 
 
