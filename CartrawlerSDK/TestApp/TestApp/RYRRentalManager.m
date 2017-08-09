@@ -79,7 +79,6 @@
     
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:86400];
     _pickupDate = date;
-
     
     [self.inPath performSearchWithIATACode:@"ALC"
                                 pickupDate:self.pickupDate
@@ -90,7 +89,6 @@
                                   clientID:@"642619"
                       parentViewController:self.parent];
 
-    
     [self.callToAction setTitle:@"Loading" forState:UIControlStateNormal];
 
 }

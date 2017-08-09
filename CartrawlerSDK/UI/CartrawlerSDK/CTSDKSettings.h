@@ -34,6 +34,8 @@
 @property (nonatomic) BOOL isDebug;
 @property (nonatomic) BOOL isStandalone;
 
+@property (nonatomic, strong) NSMutableDictionary *customAttributes;
+
 + (instancetype)instance;
 
 - (void)setClientId:(NSString *)clientId

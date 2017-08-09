@@ -30,6 +30,9 @@
                     surName:(NSString *)surName
                emailAddress:(NSString *)emailAddress
                     address:(NSString *)address
+				   cityName:(NSString *)cityName
+				   postCode:(NSString *)postCode
+				countryName:(NSString *)countryName
                 phoneNumber:(NSString *)phoneNumber
             insuranceObject:(CTInsurance *)ins
           isBuyingInsurance:(BOOL)isBuyingInsurance
