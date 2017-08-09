@@ -7,6 +7,7 @@
 //
 
 #import "CTVehicleListViewController.h"
+#import "CTVehicleListFilterViewController.h"
 #import "CTVehicleListViewModel.h"
 #import "CTVehicleListTableViewCell.h"
 #import "CTAppController.h"
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *headerRightLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIAlertController *alertController;
+@property (nonatomic, strong) CTVehicleListFilterViewController *filterVC;
 @end
 
 @implementation CTVehicleListViewController
@@ -28,7 +30,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tableView setContentInset:UIEdgeInsetsMake(5.0, 0, 50, 0)];
+    [self.navigationItem.backBarButtonItem setTitle:@""];
+    
+    // Allow space to scroll above filter button
+    [self.tableView setContentInset:UIEdgeInsetsMake(5.0, 0, 62, 0)];
+    
     [self updateWithViewModel:self.viewModel];
 }
 
@@ -41,13 +47,18 @@
     switch (viewModel.selectedView) {
         case CTVehicleListSelectedViewNone:
             if (self.presentedViewController) {
-                [self dismissViewControllerAnimated:YES completion:nil];
+                [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
             }
             break;
         case CTVehicleListSelectedViewSort:
             if (!self.presentedViewController) {
                 [self presentSortViewControllerWithViewModel:viewModel];
             }
+            break;
+//        case CTVehicleListSelectedViewFilter:
+//            if (!self.presentedViewController) {
+//                [self presentFilterViewController];
+//            }
             break;
         default:
             break;
@@ -58,6 +69,8 @@
         [self.tableView setContentOffset:CGPointMake(0, -5.0) animated:YES];
         [CTAppController dispatchAction:CTActionVehicleListScreenDidScrollToTop payload:nil];
     }
+    
+    [self.filterVC updateWithViewModel:viewModel.filterViewModel];
 }
 
 // MARK: Sort
@@ -96,12 +109,21 @@
     [self presentViewController:self.alertController animated:YES completion:nil];
 }
 
+- (void)presentFilterViewController {
+    [self performSegueWithIdentifier:@"VehicleListFilter" sender:self];
+}
+
 // MARK: Filter Button
 
 - (IBAction)filterButtonTapped:(UITapGestureRecognizer *)sender {
     [CTAppController dispatchAction:CTActionVehicleListUserDidTapFilter payload:nil];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"VehicleListFilter"]) {
+        self.filterVC = segue.destinationViewController;
+    }
+}
 
 // MARK: Table View
 

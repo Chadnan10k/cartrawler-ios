@@ -17,6 +17,8 @@
 @property (nonatomic, readwrite) NSAttributedString *rightLabelText;
 @property (nonatomic, readwrite) NSArray <CTVehicleListTableViewModel *> *rowViewModels;
 
+@property (nonatomic, readwrite) CTVehicleListFilterViewModel *filterViewModel;
+
 @property (nonatomic, readwrite) NSString *sortTitle;
 @property (nonatomic, readwrite) NSArray *sortOptions;
 @property (nonatomic, readwrite) NSString *cancelTitle;
@@ -34,9 +36,9 @@
     NSArray *matchedAvailabilityItems = [APIState.matchedAvailabilityItems objectForKey:APIState.availabilityRequestTimestamp];
     
     if (matchedAvailabilityItems.count > 0) {
-        viewModel.leftLabelText = [self leftLabelTextForState:APIState];
-        viewModel.rightLabelText = [self rightLabelAttributedTextForState:vehicleListState];
         viewModel.rowViewModels = [self rowViewModelsForState:appState];
+        viewModel.leftLabelText = [self leftLabelTextForVehicleCount:viewModel.rowViewModels.count];
+        viewModel.rightLabelText = [self rightLabelAttributedTextForState:vehicleListState];
         
         viewModel.selectedSort = vehicleListState.selectedSort;
         viewModel.selectedView = vehicleListState.selectedView;
@@ -45,14 +47,15 @@
         viewModel.sortTitle = CTLocalizedString(CTRentalSortTitle);
         viewModel.sortOptions = @[CTLocalizedString(CTRentalSortPrice), CTLocalizedString(CTRentalSortRecommended)];
         viewModel.cancelTitle = CTLocalizedString(CTRentalCTACancel);
+        
+        viewModel.filterViewModel = [CTVehicleListFilterViewModel viewModelForState:appState];
     }
     
     return viewModel;
 }
 
-+ (NSString *)leftLabelTextForState:(CTAPIState *)APIState {
-    NSArray *matchedAvailabilityItems = [APIState.matchedAvailabilityItems objectForKey:APIState.availabilityRequestTimestamp];
-    return [NSString stringWithFormat:@"%lu vehicles", (unsigned long)matchedAvailabilityItems.count];
++ (NSString *)leftLabelTextForVehicleCount:(NSInteger)count {
+    return [NSString stringWithFormat:@"%lu vehicles", (long)count];
 }
 
 + (NSAttributedString *)rightLabelAttributedTextForState:(CTVehicleListState *)vehicleListState {
@@ -93,11 +96,9 @@
 
 + (NSArray *)rowViewModelsForState:(CTAppState *)appState {
     NSMutableArray *rowViewModels = [NSMutableArray new];
-    CTAPIState *apiState = appState.APIState;
     
-    NSArray *matchedAvailabilityItems = [apiState.matchedAvailabilityItems objectForKey:apiState.availabilityRequestTimestamp];
-    
-    NSArray *sortedAvailabilityItems = [self availabilityItems:matchedAvailabilityItems
+    NSArray *filteredAvailabilityItems = [self filteredVehiclesForState:appState];
+    NSArray *sortedAvailabilityItems = [self availabilityItems:filteredAvailabilityItems
                                                           sort:appState.vehicleListState.selectedSort];
     
     for (CTAvailabilityItem *availabilityItem in sortedAvailabilityItems) {
@@ -107,6 +108,64 @@
         [rowViewModels addObject:rowViewModel];
     }
     return rowViewModels.copy;
+}
+
++ (NSArray *)filteredVehiclesForState:(CTAppState *)appState {
+    CTVehicleListState *vehicleListState = appState.vehicleListState;
+    NSArray *availabilityItems = [appState.APIState.matchedAvailabilityItems objectForKey:appState.APIState.availabilityRequestTimestamp];
+    NSArray *selectedFilters = vehicleListState.selectedFilters;
+    
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(CTVehicleListFilterModel *item, NSDictionary<NSString *,id> * _Nullable bindings) {
+        return item.filterType == CTVehicleListFilterTypeSize;
+    }];
+    NSArray *sizeFilters = [selectedFilters filteredArrayUsingPredicate:predicate];
+    
+    predicate = [NSPredicate predicateWithBlock:^BOOL(CTVehicleListFilterModel *item, NSDictionary<NSString *,id> * _Nullable bindings) {
+        return item.filterType == CTVehicleListFilterTypeVendor;
+    }];
+    NSArray *vendorFilters = [selectedFilters filteredArrayUsingPredicate:predicate];
+    
+    predicate = [NSPredicate predicateWithBlock:^BOOL(CTVehicleListFilterModel *item, NSDictionary<NSString *,id> * _Nullable bindings) {
+        return item.filterType == CTVehicleListFilterTypeLocation;
+    }];
+    NSArray *locationFilters = [selectedFilters filteredArrayUsingPredicate:predicate];
+    
+    predicate = [NSPredicate predicateWithBlock:^BOOL(CTVehicleListFilterModel *item, NSDictionary<NSString *,id> * _Nullable bindings) {
+        return item.filterType == CTVehicleListFilterTypeFuelPolicy;
+    }];
+    NSArray *fuelPolicyFilters = [selectedFilters filteredArrayUsingPredicate:predicate];
+    
+    predicate = [NSPredicate predicateWithBlock:^BOOL(CTVehicleListFilterModel *item, NSDictionary<NSString *,id> * _Nullable bindings) {
+        return item.filterType == CTVehicleListFilterTypeTransmission;
+    }];
+    NSArray *transmissionFilters = [selectedFilters filteredArrayUsingPredicate:predicate];
+    
+    predicate = [NSPredicate predicateWithBlock:^BOOL(CTAvailabilityItem *item, NSDictionary<NSString *,id> * _Nullable bindings) {
+        NSSet *uniqueFilters = [NSSet setWithArray:[sizeFilters valueForKey:@"code"]];
+        if (uniqueFilters.count > 0 && ![uniqueFilters containsObject:@(item.vehicle.size)]) {
+            return NO;
+        }
+        uniqueFilters = [NSSet setWithArray:[vendorFilters valueForKey:@"code"]];
+        if (uniqueFilters.count > 0 && ![uniqueFilters containsObject:item.vendor.name]) {
+            return NO;
+        }
+        uniqueFilters = [NSSet setWithArray:[locationFilters valueForKey:@"code"]];
+        if (uniqueFilters.count > 0 && ![uniqueFilters containsObject:@(item.vendor.pickupLocation.pickupType)]) {
+            return NO;
+        }
+        uniqueFilters = [NSSet setWithArray:[fuelPolicyFilters valueForKey:@"code"]];
+        if (uniqueFilters.count > 0 && ![uniqueFilters containsObject:@(item.vehicle.fuelPolicy)]) {
+            return NO;
+        }
+        uniqueFilters = [NSSet setWithArray:[transmissionFilters valueForKey:@"code"]];
+        if (uniqueFilters.count > 0 && ![uniqueFilters containsObject:item.vehicle.transmissionType]) {
+            return NO;
+        }
+        return YES;
+    }];
+    
+    NSArray *filteredItems = [availabilityItems filteredArrayUsingPredicate:predicate];
+    return filteredItems;
 }
 
 + (NSArray <CTAvailabilityItem *> *)availabilityItems:(NSArray <CTAvailabilityItem *> *)availabilityItems sort:(CTVehicleListSort)sort {
@@ -128,5 +187,6 @@
     
     return [availabilityItems sortedArrayUsingDescriptors: [NSArray arrayWithObject:sortDescriptor]];
 }
+
 
 @end

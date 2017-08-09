@@ -10,11 +10,14 @@
 #import "CTViewModelProtocol.h"
 #import "CTVehicleListTableViewModel.h"
 #import "CTVehicleListState.h"
+#import "CTVehicleListFilterViewModel.h"
 
 @interface CTVehicleListViewModel : NSObject <CTViewModelProtocol>
 @property (nonatomic, readonly) NSString *leftLabelText;
 @property (nonatomic, readonly) NSAttributedString *rightLabelText;
 @property (nonatomic, readonly) NSArray <CTVehicleListTableViewModel *> *rowViewModels;
+
+@property (nonatomic, readonly) CTVehicleListFilterViewModel *filterViewModel;
 
 @property (nonatomic) CTVehicleListSelectedView selectedView;
 

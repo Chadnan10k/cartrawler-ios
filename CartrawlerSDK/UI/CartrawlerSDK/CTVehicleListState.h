@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTVehicleListFilterModel.h"
 
 typedef NS_ENUM(NSUInteger, CTVehicleListSelectedView) {
     CTVehicleListSelectedViewNone,
@@ -23,7 +24,7 @@ typedef NS_ENUM(NSUInteger, CTVehicleListSort) {
 
 @property (nonatomic) CTVehicleListSelectedView selectedView;
 @property (nonatomic) CTVehicleListSort selectedSort;
-@property (nonatomic) NSMutableArray *selectedFilters;
+@property (nonatomic) NSMutableArray <CTVehicleListFilterModel *> *selectedFilters;
 @property (nonatomic) BOOL scrollToTop;
 
 @end

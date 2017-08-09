@@ -70,7 +70,7 @@
         case VehicleSizeEconomy:
             return CTLocalizedString(CTSDKVehicleTypeEconomy);
         case VehicleSizeCompact:
-            return CTLocalizedString(CTSDKVehicleTypeEconomy);
+            return CTLocalizedString(CTSDKVehicleTypeCompact);
         case VehicleSizeMidsize:
             return CTLocalizedString(CTSDKVehicleTypeMidsize);
         case VehicleSizeIntermediate:

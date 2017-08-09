@@ -40,6 +40,10 @@
 
 @implementation CTSearchCalendarViewController
 
++ (Class)viewModelClass {
+    return CTSearchCalendarViewModel.class;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

@@ -11,6 +11,7 @@
 #import "CTViewControllerProtocol.h"
 #import "CTSearchViewModel.h"
 #import "CTVehicleListViewModel.h"
+#import "CTSelectedVehicleViewModel.h"
 #import <CoreText/CoreText.h>
 #import "CTValidationSearch.h"
 
@@ -49,7 +50,8 @@
     if (!navigationState.parentViewController) {
         return;
     }
-
+    
+    // Popping children view controllers from the navigation stack
     if (self.navigationController.viewControllers.count > navigationState.currentNavigationStep) {
         if (navigationState.currentNavigationStep == CTNavigationStepNone) {
             [navigationState.parentViewController dismissViewControllerAnimated:YES completion:nil];
@@ -58,10 +60,9 @@
         }
     }
     
-    UIViewController <CTViewControllerProtocol> *vc;
-    
+    // Pushing children view controllers to the navigation stack
+    __block UIViewController <CTViewControllerProtocol> *vc;
     if (self.navigationController.viewControllers.count < navigationState.currentNavigationStep) {
-        
         vc = [CTUserInterfaceController viewControllerForStep:navigationState.currentNavigationStep];
         
         if (self.navigationController.viewControllers.count == 0) {
@@ -74,7 +75,40 @@
         vc = (UIViewController <CTViewControllerProtocol> *)self.navigationController.topViewController;
     }
     
+    // Dismissing modal view controllers if none on stack
+    if (vc.presentedViewController && navigationState.modalViewControllers.count == 0) {
+        [vc.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+    }
     
+    
+    [navigationState.modalViewControllers enumerateObjectsUsingBlock:^(NSNumber *modalNumber, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        // Dismissing no longer needed modal view controllers on stack
+        BOOL isLastIteration = (idx == navigationState.modalViewControllers.count - 1);
+        if (isLastIteration) {
+            [vc.presentedViewController.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+        }
+        
+        // Presenting
+        CTNavigationModal modal = modalNumber.integerValue;
+        UIViewController <CTViewControllerProtocol> *modalVC = (UIViewController <CTViewControllerProtocol> *)vc.presentedViewController;
+        if (!modalVC) {
+            modalVC = [CTUserInterfaceController viewControllerForModal:modal];
+            [vc presentViewController:modalVC animated:YES completion:nil];
+        }
+        vc = modalVC;
+    }];
+//    for (NSNumber *modalNumber in navigationState.modalViewControllers) {
+//        CTNavigationModal modal = modalNumber.integerValue;
+//        UIViewController <CTViewControllerProtocol> *modalVC = (UIViewController <CTViewControllerProtocol> *)vc.presentedViewController;
+//        if (!modalVC) {
+//            modalVC = [CTUserInterfaceController viewControllerForModal:modal];
+//            [vc presentViewController:modalVC animated:YES completion:nil];
+//        }
+//        vc = modalVC;
+//    }
+    
+    // Updating current view
     Class viewModelClass = [vc.class viewModelClass];
     id <CTViewModelProtocol> viewModel = [viewModelClass viewModelForState:appState];
     [vc updateWithViewModel:viewModel];
@@ -100,17 +134,35 @@
     }
 }
 
-+ (id <CTViewModelProtocol>)viewModelForStep:(NSUInteger)step state:(CTAppState *)state {
-    switch (step) {
-        case 1:
-            return [CTSearchViewModel viewModelForState:state];
-        case 2:
-            return [CTVehicleListViewModel viewModelForState:state];
++ (UIViewController <CTViewControllerProtocol> *)viewControllerForModal:(CTNavigationModal)modal {
+    UIStoryboard *storyboard;
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    
+    switch (modal) {
+        case CTNavigationModalAlert:
+            return nil;
+        case CTNavigationModalSearchLocations:
+            storyboard = [UIStoryboard storyboardWithName:@"CTSearch" bundle:bundle];
+            return [storyboard instantiateViewControllerWithIdentifier:@"CTSearchLocationsViewController"];
+        case CTNavigationModalSearchSettings:
+            storyboard = [UIStoryboard storyboardWithName:@"CTSearch" bundle:bundle];
+            return [storyboard instantiateViewControllerWithIdentifier:@"CTSearchSettingsViewController"];
+        case CTNavigationModalSearchSettingsSelection:
+            storyboard = [UIStoryboard storyboardWithName:@"CTSearch" bundle:bundle];
+            return [storyboard instantiateViewControllerWithIdentifier:@"CTSearchSettingsSelectionViewController"];
+        case CTNavigationModalSearchCalendar:
+            storyboard = [UIStoryboard storyboardWithName:@"CTSearch" bundle:bundle];
+            return [storyboard instantiateViewControllerWithIdentifier:@"CTSearchCalendarViewController"];
+        case CTNavigationModalSearchInterstitial:
+            storyboard = [UIStoryboard storyboardWithName:@"CTSearch" bundle:bundle];
+            return [storyboard instantiateViewControllerWithIdentifier:@"CTSearchInterstitialViewController"];
+        case CTNavigationModalVehicleListFilter:
+            storyboard = [UIStoryboard storyboardWithName:@"CTVehicleList" bundle:bundle];
+            return [storyboard instantiateViewControllerWithIdentifier:@"CTVehicleListFilterViewController"];
         default:
             return nil;
             break;
     }
-    return [CTSearchViewModel viewModelForState:state];
 }
 
 @end

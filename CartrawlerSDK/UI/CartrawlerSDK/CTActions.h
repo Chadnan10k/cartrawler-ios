@@ -247,7 +247,12 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      */
     CTActionVehicleListUserDidTapCancelFilter,
     /**
+     *  The user tapped select all for a filter
+     */
+    CTActionVehicleListUserDidTapFilterSelectAll,
+    /**
      *  The user tapped a filter option
+     *  Payload: (CTVehicleListFilterModel *) a filter model
      */
     CTActionVehicleListUserDidTapFilterOption,
     

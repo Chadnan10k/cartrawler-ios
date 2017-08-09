@@ -26,9 +26,9 @@
     
     // TODO: Extract to Client
     [CTAppController dispatchAction:CTActionInitialiseState payload:nil];
+    [CTAppController dispatchAction:CTActionUserSettingsSetDebugMode payload:@(sandboxMode)];
     [CTAppController dispatchAction:CTActionUserSettingsSetClientID payload:@"642619"];
     [CTAppController dispatchAction:CTActionUserSettingsSetLanguageCode payload:languageCode];
-    [CTAppController dispatchAction:CTActionUserSettingsSetDebugMode payload:@(sandboxMode)];
     
     NSLocale *locale = [NSLocale currentLocale];
     NSString *countryCode = [locale objectForKey: NSLocaleCountryCode];

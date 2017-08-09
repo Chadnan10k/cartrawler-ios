@@ -37,7 +37,7 @@
     CTSelectedVehicleState *selectedVehicleState = appState.selectedVehicleState;
     CTAvailabilityItem *availabilityItem = selectedVehicleState.selectedAvailabilityItem;
     
-    viewModel.displayInsuranceView = selectedVehicleState.insurance;
+    //viewModel.displayInsuranceView = selectedVehicleState.insurance;
     
     viewModel.pickupLocation = CTLocalizedString(CTRentalVehiclePickupLocation);
     viewModel.pickupLocationDetail = [CTLocalisedStrings pickupType:availabilityItem];

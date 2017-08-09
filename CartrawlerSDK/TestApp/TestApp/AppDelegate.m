@@ -32,6 +32,9 @@
     
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"4fb4228bdbf94d7e87649f60c1fba056"];
     // Do some additional configuration if needed here
+    if ([[BITHockeyManager sharedHockeyManager].crashManager isDebuggerAttached]) {
+        [[BITHockeyManager sharedHockeyManager] setDisableCrashManager: YES];
+    }
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
     

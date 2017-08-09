@@ -10,5 +10,7 @@
 #import "CTViewModelProtocol.h"
 
 @interface CTSearchInterstitialViewModel : NSObject <CTViewModelProtocol>
-
+@property (nonatomic, readonly) UIColor *navigationBarColor;
+@property (nonatomic, readonly) NSString *navigationBarTitle;
+@property (nonatomic, readonly) NSString *navigationBarDetail;
 @end

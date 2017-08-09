@@ -21,6 +21,10 @@
 
 @implementation CTSearchLocationsViewController
 
++ (Class)viewModelClass {
+    return CTSearchLocationsViewModel.class;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.searchBar setBackgroundImage:[UIImage new]];

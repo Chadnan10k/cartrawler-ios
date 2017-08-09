@@ -34,6 +34,10 @@
 
 @implementation CTSearchSettingsViewController
 
++ (Class)viewModelClass {
+    return CTSearchSettingsViewModel.class;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationBar.topItem.leftBarButtonItem setAction:@selector(close:)];
@@ -53,31 +57,31 @@
     [self.currencyButton setTitle:viewModel.currency forState:UIControlStateNormal];
     [self.languageButton setTitle:viewModel.language forState:UIControlStateNormal];
     
-    switch (viewModel.selectedSettings) {
-        case CTSearchSearchSettingsNone:
-            if (self.presentedViewController) {
-                [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
-            }
-            break;
-        case CTSearchSearchSettingsCountry:
-        case CTSearchSearchSettingsLanguage:
-        case CTSearchSearchSettingsCurrency:
-            if (!self.settingsDetailsVC) {
-                [self performSegueWithIdentifier:@"SearchDetails" sender:self];
-            }
-            break;
-            
-        default:
-            break;
-    }
-    if (viewModel.selectedSettingsViewModel) {
-        [self.settingsDetailsVC updateWithViewModel:viewModel.selectedSettingsViewModel];
-    }
+//    switch (viewModel.selectedSettings) {
+//        case CTSearchSearchSettingsNone:
+//            if (self.presentedViewController) {
+//                [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+//            }
+//            break;
+//        case CTSearchSearchSettingsCountry:
+//        case CTSearchSearchSettingsLanguage:
+//        case CTSearchSearchSettingsCurrency:
+//            if (!self.settingsDetailsVC) {
+//                [self performSegueWithIdentifier:@"SearchDetails" sender:self];
+//            }
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    if (viewModel.selectedSettingsViewModel) {
+//        [self.settingsDetailsVC updateWithViewModel:viewModel.selectedSettingsViewModel];
+//    }
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    self.settingsDetailsVC = segue.destinationViewController;
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    self.settingsDetailsVC = segue.destinationViewController;
+//}
 
 - (void)close:(UIBarButtonItem *)sender {
     [CTAppController dispatchAction:CTActionSearchSettingsUserDidTapCloseButton payload:nil];

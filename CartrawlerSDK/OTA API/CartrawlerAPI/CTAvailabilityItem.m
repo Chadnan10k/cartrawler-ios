@@ -24,4 +24,8 @@
     return self;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ - %@", self.vendor.name, self.vehicle.makeModelName];
+}
+
 @end

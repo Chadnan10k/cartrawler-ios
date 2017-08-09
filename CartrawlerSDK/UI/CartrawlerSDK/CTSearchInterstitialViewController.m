@@ -7,31 +7,24 @@
 //
 
 #import "CTSearchInterstitialViewController.h"
+#import "CTSearchInterstitialViewModel.h"
 
 @interface CTSearchInterstitialViewController ()
-
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 @end
 
 @implementation CTSearchInterstitialViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
++ (Class)viewModelClass {
+    return CTSearchInterstitialViewModel.class;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)updateWithViewModel:(CTSearchInterstitialViewModel *)viewModel {
+    self.navigationBar.barTintColor = viewModel.navigationBarColor;
+    self.titleLabel.text = viewModel.navigationBarTitle;
+    self.detailLabel.text = viewModel.navigationBarDetail;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -25,12 +25,7 @@
 @property (nonatomic, weak) CTSearchFormViewController *searchFormVC;
 @property (weak, nonatomic) IBOutlet UIView *searchFormContainerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchFormHeightConstraint;
-@property (nonatomic, weak) CTSearchLocationsViewController *searchLocationsVC;
-@property (nonatomic, weak) CTSearchCalendarViewController *searchCalendarVC;
-@property (nonatomic, weak) CTSearchSettingsViewController *searchSettingsVC;
 @property (nonatomic, weak) CTSearchUSPViewController *searchUSPVC;
-@property (weak, nonatomic) IBOutlet UIView *searchInterstitialContainerView;
-@property (nonatomic, weak) CTSearchInterstitialViewController *searchInterstitialVC;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraintUSP;
 @end
 
@@ -40,9 +35,9 @@
     return CTSearchViewModel.class;
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    self.searchInterstitialContainerView.alpha = 0;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.navigationController.navigationItem.backBarButtonItem setTitle:@" "];
 }
 
 - (void)updateWithViewModel:(CTSearchViewModel *)viewModel {
@@ -53,36 +48,8 @@
     
     self.navigationController.navigationBar.barTintColor = viewModel.navigationBarColor;
     
-    switch (viewModel.supplementaryView) {
-        case CTSearchSupplementaryViewNone:
-            if (self.presentedViewController) {
-                [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
-            }
-            break;
-        case CTSearchSupplementaryViewSettings:
-            if (!self.searchSettingsVC) {
-                [self performSegueWithIdentifier:@"SearchSettings" sender:self];
-            }
-            break;
-        case CTSearchSupplementaryViewSearchLocations:
-            if (!self.searchLocationsVC) {
-                [self performSegueWithIdentifier:@"SearchLocations" sender:self];
-            }
-            break;
-        case CTSearchSupplementaryViewCalendar:
-            if (!self.searchCalendarVC) {
-                [self performSegueWithIdentifier:@"Calendar" sender:self];
-            }
-            break;
-        default:
-            break;
-    }
-    
     [self.searchSplashVC updateWithViewModel:viewModel.searchSplashViewModel];
     [self.searchFormVC updateWithViewModel:viewModel.searchFormViewModel];
-    [self.searchLocationsVC updateWithViewModel:viewModel.searchLocationsViewModel];
-    [self.searchCalendarVC updateWithViewModel:viewModel.searchCalendarViewModel];
-    [self.searchSettingsVC updateWithViewModel:viewModel.searchSettingsViewModel];
     [self.searchUSPVC updateWithViewModel:viewModel.searchUSPViewModel];
     
     switch (viewModel.contentView) {
@@ -94,8 +61,6 @@
         case CTSearchContentViewForm:
             self.searchFormHeightConstraint.constant = [self.searchFormVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
             self.topConstraintUSP.constant = [self.searchFormVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-            break;
-        case CTSearchContentViewInterstitial:
             break;
         default:
             break;
@@ -117,7 +82,6 @@
     [UIView animateWithDuration:0.2 animations:^{
         self.searchSplashContainerView.alpha = viewModel.contentView == CTSearchContentViewSplash;
         self.searchFormContainerView.alpha = viewModel.contentView == CTSearchContentViewForm;
-        self.searchInterstitialContainerView.alpha = viewModel.contentView == CTSearchContentViewInterstitial;
         [self.view layoutIfNeeded];
     }];
 }
@@ -125,25 +89,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"SearchSplash"]) {
         self.searchSplashVC = segue.destinationViewController;
-        [self.searchSplashVC updateWithViewModel:self.viewModel.searchSplashViewModel];
     }
     if ([segue.identifier isEqualToString:@"SearchForm"]) {
         self.searchFormVC = segue.destinationViewController;
     }
-    if ([segue.identifier isEqualToString:@"SearchLocations"]) {
-        self.searchLocationsVC = segue.destinationViewController;
-    }
-    if ([segue.identifier isEqualToString:@"Calendar"]) {
-        self.searchCalendarVC = segue.destinationViewController;
-    }
-    if ([segue.identifier isEqualToString:@"SearchSettings"]) {
-        self.searchSettingsVC = segue.destinationViewController;
-    }
     if ([segue.identifier isEqualToString:@"SearchUSP"]) {
         self.searchUSPVC = segue.destinationViewController;
-    }
-    if ([segue.identifier isEqualToString:@"SearchInterstitial"]) {
-        self.searchInterstitialVC = segue.destinationViewController;
     }
 }
 

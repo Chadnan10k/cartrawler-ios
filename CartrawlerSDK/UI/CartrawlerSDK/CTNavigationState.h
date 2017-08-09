@@ -17,13 +17,25 @@ typedef NS_ENUM(NSUInteger, CTNavigationStep) {
     CTNavigationStepBooking
 };
 
+typedef NS_ENUM(NSUInteger, CTNavigationModal) {
+    CTNavigationModalNone,
+    CTNavigationModalAlert,
+    CTNavigationModalSearchLocations,
+    CTNavigationModalSearchSettings,
+    CTNavigationModalSearchSettingsSelection,
+    CTNavigationModalSearchCalendar,
+    CTNavigationModalSearchInterstitial,
+    CTNavigationModalVehicleListFilter,
+};
+
 @interface CTNavigationState : NSObject
 
 @property (nonatomic) UIViewController *parentViewController;
 
-@property (nonatomic) NSUInteger currentNavigationStep;
+@property (nonatomic) CTNavigationStep currentNavigationStep;
+@property (nonatomic) NSMutableArray <NSNumber *> *currentNavigationModals;
 
-@property (nonatomic) NSMutableArray *ViewControllers;
-@property (nonatomic) NSMutableArray *modalViewControllers;
+@property (nonatomic) NSMutableArray *viewControllers;
+@property (nonatomic) NSArray *modalViewControllers;
 
 @end

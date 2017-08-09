@@ -11,6 +11,7 @@
 #import "CTAPIController.h"
 #import "CTUserInterfaceController.h"
 #import "CTNotificationsController.h"
+#import "CTLoggingController.h"
 #import "CTValidationSearch.h"
 
 #import "CartrawlerSDK+NSDateUtils.h"
@@ -22,6 +23,7 @@
 @property (nonatomic) CTAPIController *apiController;
 @property (nonatomic) CTUserInterfaceController *userInterfaceController;
 @property (nonatomic) CTNotificationsController *notificationsController;
+@property (nonatomic) CTLoggingController *loggingController;
 @end
 
 @implementation CTAppController
@@ -48,6 +50,8 @@
     CTVehicleListState *vehicleListState = appState.vehicleListState;
     CTSelectedVehicleState *selectedVehicleState = appState.selectedVehicleState;
     
+    [self.loggingController logAction:action payload:payload];
+    
     switch (action) {
         case CTActionInitialiseState:
             self.appState = [CTAppState new];
@@ -61,6 +65,7 @@
             self.apiController = [CTAPIController new];
             self.userInterfaceController = [CTUserInterfaceController new];
             self.notificationsController = [CTNotificationsController new];
+            self.loggingController = [CTLoggingController new];
             
         // User Settings Actions
         case CTActionUserSettingsSetClientID:
@@ -135,6 +140,7 @@
             BOOL isLatestRequest = [payload objectForKey:APIState.availabilityRequestTimestamp] != nil;
             
             if (userWantsNextStep && isLatestRequest) {
+                navigationState.modalViewControllers = @[];
                 navigationState.currentNavigationStep = CTNavigationStepVehicleList;
                 searchState.wantsNextStep = NO;
             }
@@ -166,10 +172,11 @@
             navigationState.currentNavigationStep = CTNavigationStepNone;
             break;
         case CTActionSearchUserDidTapSettingsButton:
-            searchState.selectedTextField = CTSearchFormSettingsButton;
+            navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings)];
             break;
         case CTActionSearchUserDidTapPickupTextField:
             searchState.wantsNextStep = NO;
+            navigationState.modalViewControllers = @[@(CTNavigationModalSearchLocations)];
             searchState.selectedTextField = CTSearchFormTextFieldPickupLocation;
             break;
         case CTActionSearchUserDidTapDropoffTextField:
@@ -182,7 +189,7 @@
             break;
         case CTActionSearchUserDidTapDatesTextField:
             searchState.wantsNextStep = NO;
-            searchState.selectedTextField = CTSearchFormTextFieldSelectDates;
+            navigationState.modalViewControllers = @[@(CTNavigationModalSearchCalendar)];
             searchState.displayedPickupDate = nil;
             searchState.displayedDropoffDate = nil;
             break;
@@ -217,9 +224,13 @@
             searchState.selectedTextField = CTSearchFormTextFieldNone;
             searchState.wantsNextStep = YES;
             
-            if ([CTValidationSearch validateSearchStep:searchState] && [APIState.matchedAvailabilityItems objectForKey:APIState.availabilityRequestTimestamp]) {
-                navigationState.currentNavigationStep = CTNavigationStepVehicleList;
-                searchState.wantsNextStep = NO;
+            if ([CTValidationSearch validateSearchStep:searchState]) {
+                if ([APIState.matchedAvailabilityItems objectForKey:APIState.availabilityRequestTimestamp]) {
+                    navigationState.currentNavigationStep = CTNavigationStepVehicleList;
+                    searchState.wantsNextStep = NO;
+                } else {
+                    navigationState.modalViewControllers = @[@(CTNavigationModalSearchInterstitial)];
+                }
             }
             break;
         case CTActionSearchUserDidTapBack:
@@ -229,19 +240,22 @@
             searchState.scrollAboveUserInput = NO;
             return;
         case CTActionSearchSettingsUserDidTapCloseButton:
-            searchState.selectedTextField = CTSearchSearchSettingsNone;
+            navigationState.modalViewControllers = @[];
             break;
         case CTActionSearchSettingsUserDidTapCountryButton:
             searchState.selectedSettings = CTSearchSearchSettingsCountry;
+            navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings), @(CTNavigationModalSearchSettingsSelection)];
             break;
         case CTActionSearchSettingsUserDidTapLanguageButton:
             searchState.selectedSettings = CTSearchSearchSettingsLanguage;
+            navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings), @(CTNavigationModalSearchSettingsSelection)];
             break;
         case CTActionSearchSettingsUserDidTapCurrencyButton:
             searchState.selectedSettings = CTSearchSearchSettingsCurrency;
+            navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings), @(CTNavigationModalSearchSettingsSelection)];
             break;
         case CTActionSearchSettingsDetailsUserDidTapCancelButton:
-            searchState.selectedSettings = CTSearchSearchSettingsNone;
+            navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings)];
             break;
         case CTActionSearchSettingsDetailsUserDidSelectItem:
             switch (searchState.selectedSettings) {
@@ -264,7 +278,8 @@
             } else {
                 APIState.availabilityRequestTimestamp = nil;
             }
-            searchState.selectedSettings = CTSearchSearchSettingsNone;
+            //searchState.selectedSettings = CTSearchSearchSettingsNone;
+            navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings)];
             break;
         case CTActionSearchLocationsUserDidEnterCharacters:
             searchState.searchBarText = payload;
@@ -274,7 +289,8 @@
             break;
         case CTActionSearchLocationsUserDidTapCancel:
             searchState.searchBarText = @"";
-            searchState.selectedTextField = CTSearchFormTextFieldNone;
+            //searchState.selectedTextField = CTSearchFormTextFieldNone;
+            navigationState.modalViewControllers = @[];
             break;
         case CTActionSearchLocationsUserDidTapLocation:
             if (searchState.selectedTextField == CTSearchFormTextFieldPickupLocation) {
@@ -284,7 +300,8 @@
                 searchState.selectedDropoffLocation = payload;
             }
             searchState.searchBarText = @"";
-            searchState.selectedTextField = CTSearchFormTextFieldNone;
+            navigationState.modalViewControllers = @[];
+            //searchState.selectedTextField = CTSearchFormTextFieldNone;
             
             if ([CTValidationSearch validateSearchStep:searchState]) {
                 APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
@@ -309,7 +326,8 @@
         case CTActionSearchCalendarUserDidTapNext:
             searchState.selectedPickupDate = searchState.displayedPickupDate;
             searchState.selectedDropoffDate = searchState.displayedDropoffDate;
-            searchState.selectedTextField = CTSearchFormTextFieldNone;
+            //searchState.selectedTextField = CTSearchFormTextFieldNone;
+            navigationState.modalViewControllers = @[];
             
             if ([CTValidationSearch validateSearchStep:searchState]) {
                 APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
@@ -319,7 +337,8 @@
             }
             break;
         case CTActionSearchCalendarUserDidTapCancel:
-            searchState.selectedTextField = CTSearchFormTextFieldNone;
+            //searchState.selectedTextField = CTSearchFormTextFieldNone;
+            navigationState.modalViewControllers = @[];
             break;
         case CTActionSearchTimePickerUserDidSelectTime:
             if (searchState.selectedTextField == CTSearchFormTextFieldPickupTime) {
@@ -373,7 +392,8 @@
             vehicleListState.selectedView = CTVehicleListSelectedViewSort;
             break;
         case CTActionVehicleListUserDidTapFilter:
-            vehicleListState.selectedView = CTActionVehicleListUserDidTapFilter;
+            //vehicleListState.selectedView = CTVehicleListSelectedViewFilter;
+            navigationState.modalViewControllers = @[@(CTNavigationModalVehicleListFilter)];
             break;
         case CTActionVehicleListUserDidTapSortOption:
             vehicleListState.selectedView = CTVehicleListSelectedViewNone;
@@ -389,10 +409,13 @@
             vehicleListState.selectedView = CTVehicleListSelectedViewNone;
             break;
         case CTActionVehicleListUserDidTapCancelFilter:
-            vehicleListState.selectedView = CTVehicleListSelectedViewNone;
+            //vehicleListState.selectedView = CTVehicleListSelectedViewNone;
+            navigationState.modalViewControllers = @[];
             break;
         case CTActionVehicleListUserDidTapApplyFilter:
-            vehicleListState.selectedView = CTVehicleListSelectedViewNone;
+            //vehicleListState.selectedView = CTVehicleListSelectedViewNone;
+            navigationState.modalViewControllers = @[];
+            vehicleListState.scrollToTop = YES;
             break;
         case CTActionVehicleListUserDidTapFilterOption:
             if ([vehicleListState.selectedFilters containsObject:payload]) {

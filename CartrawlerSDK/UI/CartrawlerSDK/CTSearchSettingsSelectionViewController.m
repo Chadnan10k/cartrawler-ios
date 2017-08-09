@@ -26,6 +26,10 @@
 
 @implementation CTSearchSettingsSelectionViewController
 
++ (Class)viewModelClass {
+    return CTSearchSettingsSelectionViewModel.class;
+}
+
 - (void)updateWithViewModel:(CTSearchSettingsSelectionViewModel *)viewModel {
     self.viewModel = viewModel;
     self.navigationBar.barTintColor = viewModel.navigationBarColor;
