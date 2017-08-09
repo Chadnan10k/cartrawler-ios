@@ -44,16 +44,20 @@
                           locale:(NSString *)locale;
 
 + (NSString *) OTA_VehAvailRateRQ:(NSString *)pickUpDateTime
-                   returnDateTime:(NSString *)returnDateTime
-               pickUpLocationCode:(NSString *)pickUpLoactionCode
-               returnLocationCode:(NSString *)returnLocationCode
-                        driverAge:(NSString *)driverAge
-                     passengerQty:(NSString *)passengerQty
-                  homeCountryCode:(NSString *)homeCountryCode
-                         clientID:(NSString *)clientID
-                           target:(NSString *)target
-                           locale:(NSString *)locale
-                         currency:(NSString *)currency;
+				   returnDateTime:(NSString *)returnDateTime
+			   pickUpLocationCode:(NSString *)pickUpLoactionCode
+			   returnLocationCode:(NSString *)returnLocationCode
+						driverAge:(NSString *)driverAge
+					 passengerQty:(NSString *)passengerQty
+				  homeCountryCode:(NSString *)homeCountryCode
+						 clientID:(NSString *)clientID
+						   target:(NSString *)target
+						   locale:(NSString *)locale
+						  orderId:(NSString *)orderId
+						accountId:(NSString *)accountId
+						visitorId:(NSString *)visitorId
+					 isStandAlone:(BOOL)isStandAlone
+						 currency:(NSString *)currency;
 
 + (NSString *) OTA_VehResRQNoPayment:(NSString *)pickupDateTime
                       returnDateTime:(NSString *)returnDateTime
