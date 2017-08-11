@@ -165,7 +165,7 @@
 "insurance_upgrade_subtitle" = "Ubezpieczenie zwrotu za szkody";
 "title_payment" = "Szczegóły płatności";
 "insurance_per_day" = "na dzień";
-"payment_cardnumber" = "Numer samochodu";
+"payment_cardnumber" = "Numer karty";
 "title_conditions" = "Regulamin";
 "insurance_added" = "Dodano";
 "supplier_waiting" = "Czas oczekiwania";
