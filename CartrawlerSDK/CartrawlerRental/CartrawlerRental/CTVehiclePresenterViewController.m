@@ -63,8 +63,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.sortByPrice = NO;
+
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.rightButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.rightButton.titleLabel.minimumScaleFactor = 0.6;
@@ -81,6 +80,8 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	
+	self.sortByPrice = NO;
     
     if (self.presentedView == CTPresentedViewNone) {
         if (self.search.vehicleAvailability.items.count == 0) {
