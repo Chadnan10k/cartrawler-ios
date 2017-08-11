@@ -145,6 +145,8 @@
     
     UIImage *icon = [UIImage imageNamed:@"gears" inBundle:bundle compatibleWithTraitCollection:nil];
     [self.featureAlertView insertImage:icon withText:self.vehicle.transmissionType];
+	
+	[self.featureAlertView insertImage:nil withText:@""];
 }
 
 - (void)addData:(CTAvailabilityItem *)item pickupDate:(NSDate *)pickupDate dropoffDate:(NSDate *)dropoffDate
