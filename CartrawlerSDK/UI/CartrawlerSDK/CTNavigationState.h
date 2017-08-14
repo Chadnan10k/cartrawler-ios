@@ -24,6 +24,7 @@ typedef NS_ENUM(NSUInteger, CTNavigationModal) {
     CTNavigationModalSearchSettings,
     CTNavigationModalSearchSettingsSelection,
     CTNavigationModalSearchCalendar,
+    CTNavigationModalSearchVehicleFetchError,
     CTNavigationModalSearchInterstitial,
     CTNavigationModalVehicleListFilter,
 };

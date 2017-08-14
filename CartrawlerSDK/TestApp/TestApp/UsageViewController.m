@@ -82,37 +82,37 @@
 
 
 - (void)presentAlertControllerWithTitleAndMessage {
-    CTAlertViewController *controller = [CTAlertViewController alertControllerWithTitle:@"Alert with Title and Message" message:@"Tap background to dismiss has been enabled"];
-    controller.backgroundTapDismissalGestureEnabled = YES;
-    [self presentViewController:controller animated:YES completion:nil];
+//    CTAlertViewController *controller = [CTAlertViewController alertControllerWithTitle:@"Alert with Title and Message" message:@"Tap background to dismiss has been enabled"];
+//    controller.backgroundTapDismissalGestureEnabled = YES;
+//    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (void)presentAlertControllerWithTitleAndButtons {
-    CTAlertViewController *controller = [CTAlertViewController alertControllerWithTitle:@"Alert with Title and Buttons" message:@"Tap background to dismiss has not been enabled"];
-    
-    CTAlertAction *action1 = [CTAlertAction actionWithTitle:@"OK" handler:^(CTAlertAction *action) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [controller addAction:action1];
-    
-    CTAlertAction *action2 = [CTAlertAction actionWithTitle:@"Cancel" handler:^(CTAlertAction *action) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [controller addAction:action2];
-    
-    [self presentViewController:controller animated:YES completion:nil];
+//    CTAlertViewController *controller = [CTAlertViewController alertControllerWithTitle:@"Alert with Title and Buttons" message:@"Tap background to dismiss has not been enabled"];
+//    
+//    CTAlertAction *action1 = [CTAlertAction actionWithTitle:@"OK" handler:^(CTAlertAction *action) {
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//    }];
+//    [controller addAction:action1];
+//    
+//    CTAlertAction *action2 = [CTAlertAction actionWithTitle:@"Cancel" handler:^(CTAlertAction *action) {
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//    }];
+//    [controller addAction:action2];
+//    
+//    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (void)presentAlertControllerWithCustomView {
-    CTAlertViewController *controller = [CTAlertViewController alertControllerWithTitle:@"Alert with Title and Custom View" message:@""];
-    controller.backgroundTapDismissalGestureEnabled = YES;
-    
-    UIImage *appIcon = [UIImage imageNamed:@"AppIcon40x40"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:appIcon];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    controller.customView = imageView;
-    
-    [self presentViewController:controller animated:YES completion:nil];
+//    CTAlertViewController *controller = [CTAlertViewController alertControllerWithTitle:@"Alert with Title and Custom View" message:@""];
+//    controller.backgroundTapDismissalGestureEnabled = YES;
+//    
+//    UIImage *appIcon = [UIImage imageNamed:@"AppIcon40x40"];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:appIcon];
+//    imageView.contentMode = UIViewContentModeScaleAspectFit;
+//    controller.customView = imageView;
+//    
+//    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (void)presentTabbedMenuWithVariableHeight {

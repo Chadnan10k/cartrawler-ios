@@ -105,8 +105,8 @@
                     break;
                 case CTUserSettingsStyleRyanair:
                     userSettingsState.selectedStyle = CTUserSettingsStyleNoStyle;
-                    userSettingsState.primaryColor = [UIColor lightGrayColor];
-                    userSettingsState.secondaryColor = [UIColor darkGrayColor];
+                    userSettingsState.primaryColor = [UIColor colorWithRed:0.16 green:0.66 blue:0.88 alpha:1.0];
+                    userSettingsState.secondaryColor = [UIColor colorWithRed:0.13 green:0.27 blue:0.43 alpha:1.0];
                     userSettingsState.illustrationColor = userSettingsState.primaryColor;
                     break;
                 default:
@@ -140,10 +140,25 @@
             BOOL isLatestRequest = [payload objectForKey:APIState.availabilityRequestTimestamp] != nil;
             
             if (userWantsNextStep && isLatestRequest) {
+                NSLog(@"Got here");
                 navigationState.modalViewControllers = @[];
                 navigationState.currentNavigationStep = CTNavigationStepVehicleList;
                 searchState.wantsNextStep = NO;
+            } else {
+                NSLog(@"Here");
             }
+            break;
+        case CTActionAPIDidReturnVehiclesError:
+            searchState.vehicleSearchError = payload;
+            if (searchState.wantsNextStep) {
+                navigationState.modalViewControllers = @[];
+            }
+            break;
+        case CTActionAPIDidReturnInsurance:
+            selectedVehicleState.insurance = payload;
+            break;
+        case CTActionAPIDidReturnInsuranceError:
+            
             break;
             
         // Navigation Actions
@@ -155,13 +170,21 @@
             
             // Initialise user settings state
             // TODO: Extract, this is redundant
-            userSettingsState.primaryColor = [UIColor lightGrayColor];
-            userSettingsState.secondaryColor = [UIColor darkGrayColor];
+            userSettingsState.primaryColor = [UIColor colorWithRed:0.16 green:0.66 blue:0.88 alpha:1.0];
+            userSettingsState.secondaryColor = [UIColor colorWithRed:0.13 green:0.27 blue:0.43 alpha:1.0];
             userSettingsState.illustrationColor = userSettingsState.primaryColor;
             
             // Initialise search state
             searchState.selectedPickupTime = [NSDate dateWithHour:10 minute:0];
             searchState.selectedDropoffTime = [NSDate dateWithHour:10 minute:0];
+            break;
+        case CTActionNavigationModalDidPresent:
+            NSLog(@"%@", navigationState.modalViewControllers);
+            break;
+        case CTActionNavigationModalDidDismiss:
+            if (searchState.wantsNextStep && searchState.vehicleSearchError) {
+                navigationState.modalViewControllers = @[@(CTNavigationModalSearchVehicleFetchError)];
+            }
             break;
         
         // Search Actions
@@ -213,12 +236,7 @@
             searchState.selectedTextField = searchState.driverAgeRequired ? CTSearchFormTextFieldDriverAge : CTSearchFormTextFieldNone;
             searchState.scrollAboveUserInput = searchState.driverAgeRequired;
             
-            if ([CTValidationSearch validateSearchStep:searchState]) {
-                APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
-                [self.apiController requestVehicleAvailabilityWithState:appState];
-            } else {
-                APIState.availabilityRequestTimestamp = nil;
-            }
+            [self requestVehicleAvailability:appState];
             break;
         case CTActionSearchUserDidTapNext:
             searchState.selectedTextField = CTSearchFormTextFieldNone;
@@ -228,6 +246,8 @@
                 if ([APIState.matchedAvailabilityItems objectForKey:APIState.availabilityRequestTimestamp]) {
                     navigationState.currentNavigationStep = CTNavigationStepVehicleList;
                     searchState.wantsNextStep = NO;
+                } else if (searchState.vehicleSearchError) {
+                    navigationState.modalViewControllers = @[@(CTNavigationModalSearchVehicleFetchError)];
                 } else {
                     navigationState.modalViewControllers = @[@(CTNavigationModalSearchInterstitial)];
                 }
@@ -272,13 +292,7 @@
                 default:
                     break;
             }
-            if ([CTValidationSearch validateSearchStep:searchState]) {
-                APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
-                [self.apiController requestVehicleAvailabilityWithState:appState];
-            } else {
-                APIState.availabilityRequestTimestamp = nil;
-            }
-            //searchState.selectedSettings = CTSearchSearchSettingsNone;
+            [self requestVehicleAvailability:appState];
             navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings)];
             break;
         case CTActionSearchLocationsUserDidEnterCharacters:
@@ -289,7 +303,7 @@
             break;
         case CTActionSearchLocationsUserDidTapCancel:
             searchState.searchBarText = @"";
-            //searchState.selectedTextField = CTSearchFormTextFieldNone;
+            searchState.selectedTextField = CTSearchFormTextFieldNone;
             navigationState.modalViewControllers = @[];
             break;
         case CTActionSearchLocationsUserDidTapLocation:
@@ -301,14 +315,9 @@
             }
             searchState.searchBarText = @"";
             navigationState.modalViewControllers = @[];
-            //searchState.selectedTextField = CTSearchFormTextFieldNone;
+            searchState.selectedTextField = CTSearchFormTextFieldNone;
             
-            if ([CTValidationSearch validateSearchStep:searchState]) {
-                APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
-                [self.apiController requestVehicleAvailabilityWithState:appState];
-            } else {
-                APIState.availabilityRequestTimestamp = nil;
-            }
+            [self requestVehicleAvailability:appState];
             break;
         case CTActionSearchCalendarUserDidTapDate:
             if (!searchState.displayedPickupDate) {
@@ -326,18 +335,13 @@
         case CTActionSearchCalendarUserDidTapNext:
             searchState.selectedPickupDate = searchState.displayedPickupDate;
             searchState.selectedDropoffDate = searchState.displayedDropoffDate;
-            //searchState.selectedTextField = CTSearchFormTextFieldNone;
+            searchState.selectedTextField = CTSearchFormTextFieldNone;
             navigationState.modalViewControllers = @[];
             
-            if ([CTValidationSearch validateSearchStep:searchState]) {
-                APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
-                [self.apiController requestVehicleAvailabilityWithState:appState];
-            } else {
-                APIState.availabilityRequestTimestamp = nil;
-            }
+            [self requestVehicleAvailability:appState];
             break;
         case CTActionSearchCalendarUserDidTapCancel:
-            //searchState.selectedTextField = CTSearchFormTextFieldNone;
+            searchState.selectedTextField = CTSearchFormTextFieldNone;
             navigationState.modalViewControllers = @[];
             break;
         case CTActionSearchTimePickerUserDidSelectTime:
@@ -348,27 +352,20 @@
                 searchState.selectedDropoffTime = payload;
             }
             
-            if ([CTValidationSearch validateSearchStep:searchState]) {
-                APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
-                [self.apiController requestVehicleAvailabilityWithState:appState];
-            } else {
-                APIState.availabilityRequestTimestamp = nil;
-            }
+            [self requestVehicleAvailability:appState];
             break;
         case CTActionSearchDriverAgeUserDidEnterCharacters:
             if ([(NSString *)payload length] <= 2) {
                 searchState.displayedDriverAge = payload;
             }
-            
-            if ([CTValidationSearch validateSearchStep:searchState]) {
-                APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
-                [self.apiController requestVehicleAvailabilityWithState:appState];
-            } else {
-                APIState.availabilityRequestTimestamp = nil;
-            }
+            [self requestVehicleAvailability:appState];
             break;
         case CTActionSearchInputViewUserDidSelectDone:
             searchState.selectedTextField = CTSearchFormTextFieldNone;
+            break;
+        case CTActionSearchUserDidDismissVehicleFetchError:
+            searchState.wantsNextStep = NO;
+            navigationState.modalViewControllers = @[];
             break;
         
         // Vehicle List Actions
@@ -380,8 +377,8 @@
             selectedVehicleState.selectedAvailabilityItem = payload;
             selectedVehicleState.addedExtras = [NSMutableArray new];
             selectedVehicleState.flippedExtras = [NSMutableArray new];
-            [selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment enumerateObjectsUsingBlock:^(CTExtraEquipment * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                selectedVehicleState.addedExtras[idx] = @0;
+            [selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment enumerateObjectsUsingBlock:^(CTExtraEquipment * _Nonnull extra, NSUInteger idx, BOOL * _Nonnull stop) {
+                selectedVehicleState.addedExtras[idx] = extra.isIncludedInRate ? @1 : @0;
                 selectedVehicleState.flippedExtras[idx] = @0;
             }];
             navigationState.currentNavigationStep = CTNavigationStepSelectedVehicle;
@@ -392,7 +389,6 @@
             vehicleListState.selectedView = CTVehicleListSelectedViewSort;
             break;
         case CTActionVehicleListUserDidTapFilter:
-            //vehicleListState.selectedView = CTVehicleListSelectedViewFilter;
             navigationState.modalViewControllers = @[@(CTNavigationModalVehicleListFilter)];
             break;
         case CTActionVehicleListUserDidTapSortOption:
@@ -409,11 +405,9 @@
             vehicleListState.selectedView = CTVehicleListSelectedViewNone;
             break;
         case CTActionVehicleListUserDidTapCancelFilter:
-            //vehicleListState.selectedView = CTVehicleListSelectedViewNone;
             navigationState.modalViewControllers = @[];
             break;
         case CTActionVehicleListUserDidTapApplyFilter:
-            //vehicleListState.selectedView = CTVehicleListSelectedViewNone;
             navigationState.modalViewControllers = @[];
             vehicleListState.scrollToTop = YES;
             break;
@@ -428,15 +422,33 @@
         // Selected Vehicle Actions
         case CTActionSelectedVehicleUserDidTapBack:
             navigationState.currentNavigationStep = CTNavigationStepVehicleList;
+            appState.selectedVehicleState = [CTSelectedVehicleState new];
             break;
         case CTActionSelectedVehicleUserDidTapTab:
             selectedVehicleState.selectedTab = [payload integerValue];
             break;
         case CTActionSelectedVehicleUserDidTapIncludedItem:
+            switch ([payload integerValue]) {
+                case CTSelectedVehicleExpandedPickupLocation:
+                    selectedVehicleState.pickupLocationExpanded = !selectedVehicleState.pickupLocationExpanded;
+                    break;
+                case CTSelectedVehicleExpandedFuelPolicy:
+                    selectedVehicleState.fuelPolicyExpanded = !selectedVehicleState.fuelPolicyExpanded;
+                    break;
+                case CTSelectedVehicleExpandedMileageAllowance:
+                    selectedVehicleState.mileageAllowanceExpanded = !selectedVehicleState.mileageAllowanceExpanded;
+                    break;
+                case CTSelectedVehicleExpandedInsurance:
+                    selectedVehicleState.insuranceExpanded = !selectedVehicleState.insuranceExpanded;
+                    break;
+                default:
+                    break;
+            }
             break;
         case CTActionSelectedVehicleUserDidTapInsuranceDetails:
             break;
         case CTActionSelectedVehicleUserDidTapAddInsurance:
+            selectedVehicleState.insuranceAdded = !selectedVehicleState.insuranceAdded;
             break;
         case CTActionSelectedVehicleUserDidTapViewAllExtras:
             break;
@@ -451,18 +463,34 @@
         case CTActionSelectedVehicleUserDidTapDecrementExtra: {
             NSInteger index = [selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment indexOfObject:payload];
             NSNumber *count = selectedVehicleState.addedExtras[index];
-            if (count.integerValue > 0) {
+            NSInteger minimumQuantity = [(CTExtraEquipment *)payload isIncludedInRate] ? 1 : 0;
+            if (count.integerValue > minimumQuantity) {
                 selectedVehicleState.addedExtras[index] = @(count.integerValue - 1);
             }
         }
             break;
-        case CTActionSelectedVehicleUserDidTapExtraInfo:
+        case CTActionSelectedVehicleUserDidTapExtraInfo: {
+            NSInteger index = [selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment indexOfObject:payload];
+            BOOL flipped = selectedVehicleState.flippedExtras[index].integerValue;
+            selectedVehicleState.flippedExtras[index] =  @(!flipped);
             break;
-
+        }
         default:
             break;
     }
     [self.userInterfaceController updateWithAppState:appState];
+}
+
+- (void)requestVehicleAvailability:(CTAppState *)appState {
+    CTSearchState *searchState = appState.searchState;
+    CTAPIState *APIState = appState.APIState;
+    if ([CTValidationSearch validateSearchStep:searchState]) {
+        searchState.vehicleSearchError = nil;
+        APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
+        [self.apiController requestVehicleAvailabilityWithState:appState];
+    } else {
+        APIState.availabilityRequestTimestamp = nil;
+    }
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CartrawlerAPI/CTMatchedLocation.h>
+#import<CartrawlerAPI/CTErrorResponse.h>
 
 typedef NS_ENUM(NSUInteger, CTSearchFormTextField) {
     CTSearchFormTextFieldNone,
@@ -61,8 +62,8 @@ typedef NS_ENUM(NSUInteger, CTSearchSearchSettings) {
 
 @property (nonatomic) BOOL wantsNextStep;
 
-//@property (nonatomic) BOOL validationFailed;
-
 @property (nonatomic) BOOL scrollAboveUserInput;
+
+@property (nonatomic) CTErrorResponse *vehicleSearchError;
 
 @end

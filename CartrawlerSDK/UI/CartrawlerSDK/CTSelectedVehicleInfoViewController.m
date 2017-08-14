@@ -40,6 +40,9 @@
     self.passengersLabel.text = viewModel.passengers;
     self.bagsLabel.text = viewModel.bags;
     self.fuelLabel.text = viewModel.fuel;
+    
+    self.featuresCountLabel.textColor = viewModel.primaryColor;
+    self.featuresLabel.textColor = viewModel.primaryColor;
 }
 
 @end

@@ -222,8 +222,8 @@
 
 - (void)initAlertView
 {
-    _alertView = [CTAlertViewController alertControllerWithTitle:@"" message:@""];
-    self.alertView.backgroundTapDismissalGestureEnabled = YES;
+//    _alertView = [CTAlertViewController alertControllerWithTitle:@"" message:@""];
+//    self.alertView.backgroundTapDismissalGestureEnabled = YES;
 }
 
 
@@ -352,36 +352,36 @@
 // MARK: CTVehicleDetailsDelegate
 - (void)didTapMoreDetailsView:(UIView *)view
 {
-    [[CTAnalytics instance] tagScreen:@"features_i" detail:@"open" step:nil];
-    
-    if (self.delegate) {
-        [self.alertView setTitle:CTLocalizedString(CTRentalFeatureTitle) message:nil];
-        [self.alertView removeAllActions];
-        __weak typeof(self) weakSelf = self;
-        [self.alertView addAction:[CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTADone)
-                                                         handler:^(CTAlertAction *action) {
-                                                             [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
-                                                         }]];
-        self.alertView.customView = view;
-        [self.delegate infoViewPresentViewController:self.alertView];
-    }
+//    [[CTAnalytics instance] tagScreen:@"features_i" detail:@"open" step:nil];
+//    
+//    if (self.delegate) {
+//        [self.alertView setTitle:CTLocalizedString(CTRentalFeatureTitle) message:nil];
+//        [self.alertView removeAllActions];
+//        __weak typeof(self) weakSelf = self;
+//        [self.alertView addAction:[CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTADone)
+//                                                         handler:^(CTAlertAction *action) {
+//                                                             [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+//                                                         }]];
+//        self.alertView.customView = view;
+//        [self.delegate infoViewPresentViewController:self.alertView];
+//    }
 }
 
 // MARK: CTInfoTipDelegate
 - (void)infoTipWasTapped:(CTInfoTip *)infoTip
 {
-    if (infoTip == self.vehicleInfoTip) {
-        self.alertView.customView = [CTFreeCancelationAlertView new];
-        [self.alertView setTitle:CTLocalizedString(CTRentalFreeCancelationTitle) message:nil];
-        [self.alertView removeAllActions];
-        __weak typeof(self) weakSelf = self;
-        [self.alertView addAction:[CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTADone)
-                                                         handler:^(CTAlertAction *action) {
-                                                             [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
-                                                             [[CTAnalytics instance] tagScreen:@"canc_amd_i" detail:@"open" step:nil];
-                                                         }]];
-        [self.delegate infoViewPresentViewController:self.alertView];
-    }
+//    if (infoTip == self.vehicleInfoTip) {
+//        self.alertView.customView = [CTFreeCancelationAlertView new];
+//        [self.alertView setTitle:CTLocalizedString(CTRentalFreeCancelationTitle) message:nil];
+//        [self.alertView removeAllActions];
+//        __weak typeof(self) weakSelf = self;
+//        [self.alertView addAction:[CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTADone)
+//                                                         handler:^(CTAlertAction *action) {
+//                                                             [weakSelf.alertView dismissViewControllerAnimated:YES completion:nil];
+//                                                             [[CTAnalytics instance] tagScreen:@"canc_amd_i" detail:@"open" step:nil];
+//                                                         }]];
+//        [self.delegate infoViewPresentViewController:self.alertView];
+//    }
 }
 
 // MARK: CTInsurance Delegate

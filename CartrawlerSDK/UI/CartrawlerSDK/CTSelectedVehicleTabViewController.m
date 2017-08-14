@@ -18,7 +18,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *ratingsButton;
 @property (weak, nonatomic) IBOutlet UIView *ratingsIndicator;
 @property (nonatomic, weak) CTSelectedVehicleIncludedViewController *selectedVehicleIncludedViewController;
+@property (weak, nonatomic) IBOutlet UIView *includedContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *includedContainerViewHeight;
+@property (weak, nonatomic) IBOutlet UIView *ratingsContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ratingsContainerViewHeight;
 @property (nonatomic, weak) CTSelectedVehicleRatingsViewController *selectedVehicleRatingsViewController;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutViewHeightConstraint;
 @end
 
 @implementation CTSelectedVehicleTabViewController
@@ -27,14 +32,23 @@
     [self.includedButton setTitle:viewModel.included forState:UIControlStateNormal];
     [self.ratingsButton setTitle:viewModel.ratings forState:UIControlStateNormal];
     
-    
     [UIView animateWithDuration:0.2
                      animations:^{
                          [self.includedButton setTitleColor:viewModel.includedColor forState:UIControlStateNormal];
                          self.includedIndicator.backgroundColor = viewModel.includedColor;
                          [self.ratingsButton setTitleColor:viewModel.ratingsColor forState:UIControlStateNormal];
                          self.ratingsIndicator.backgroundColor = viewModel.ratingsColor;
+                         self.includedContainerView.alpha = viewModel.selectedTab == CTSelectedVehicleTabIncluded;
+                         self.ratingsContainerView.alpha = viewModel.selectedTab == CTSelectedVehicleTabRatings;
                      }];
+    
+    [self.selectedVehicleIncludedViewController updateWithViewModel:viewModel.selectedVehicleIncludedViewModel];
+    self.includedContainerViewHeight.constant = [self.selectedVehicleIncludedViewController.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    
+    [self.selectedVehicleRatingsViewController updateWithViewModel:viewModel.selectedVehicleRatingsViewModel];
+    self.ratingsContainerViewHeight.constant = [self.selectedVehicleRatingsViewController.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    
+    self.layoutViewHeightConstraint.constant = viewModel.selectedTab == CTSelectedVehicleTabIncluded ? self.includedContainerViewHeight.constant : self.ratingsContainerViewHeight.constant;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

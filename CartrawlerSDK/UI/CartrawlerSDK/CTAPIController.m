@@ -82,7 +82,7 @@
                                                       if (response && !error) {
                                                           [CTAppController dispatchAction:CTActionAPIDidReturnVehicles payload:@{requestTimestamp : response.items}];
                                                       } else {
-                                                          // TODO: Dispatch error action
+                                                          [CTAppController dispatchAction:CTActionAPIDidReturnVehiclesError payload:error];
                                                       }
                                                   });
                                               }];
@@ -93,22 +93,31 @@
     CTUserSettingsState *userSettingsState = appState.userSettingsState;
     CTSelectedVehicleState *selectedVehicleState = appState.selectedVehicleState;
     
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setMaximumFractionDigits:2];
+    [formatter setMinimumFractionDigits:2];
+    NSString *price = [formatter stringFromNumber:selectedVehicleState.selectedAvailabilityItem.vehicle.totalPriceForThisVehicle];
+    
     [CartrawlerAPI requestInsuranceQuoteForVehicle:selectedVehicleState.selectedAvailabilityItem
                                    homeCountryCode:userSettingsState.countryCode
                             destinationCountryCode:searchState.selectedPickupLocation.countryCode
                                           currency:userSettingsState.currencyCode
-                                         totalCost:selectedVehicleState.selectedAvailabilityItem.vehicle.totalPriceForThisVehicle.stringValue
+                                         totalCost:price
                                     pickupDateTime:searchState.selectedPickupDate
                                     returnDateTime:searchState.selectedDropoffDate
                                           clientID:userSettingsState.clientID
                                          debugMode:userSettingsState.debugMode
                                     loggingEnabled:userSettingsState.loggingEnabled
                                         completion:^(CTInsurance *response, CTErrorResponse *error) {
-                                            if (response && !error) {
-                                                
-                                            }
+                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                                if (response && !error) {
+                                                    [CTAppController dispatchAction:CTActionAPIDidReturnInsurance payload:response];
+                                                } else {
+                                                    [CTAppController dispatchAction:CTActionAPIDidReturnInsuranceError payload:error];
+                                                }
+                                            });
                                         }];
-    
 }
 
 @end

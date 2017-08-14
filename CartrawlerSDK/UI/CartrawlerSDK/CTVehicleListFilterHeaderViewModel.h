@@ -15,10 +15,12 @@
 @property (nonatomic, readonly) CTVehicleListFilterType filterType;
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSString *detail;
+@property (nonatomic, readonly) UIColor *primaryColor;
 @property (nonatomic, readonly) NSArray <CTVehicleListFilterCellTableViewModel *> *rowViewModels;
 
 - (instancetype)initWithFilterType:(CTVehicleListFilterType)filterType
                              title:(NSString *)title
-                     rowViewModels:(NSArray <CTVehicleListFilterCellTableViewModel *> *)rowViewModels;
+                     rowViewModels:(NSArray <CTVehicleListFilterCellTableViewModel *> *)rowViewModels
+                      primaryColor:(UIColor *)primaryColor;
 
 @end

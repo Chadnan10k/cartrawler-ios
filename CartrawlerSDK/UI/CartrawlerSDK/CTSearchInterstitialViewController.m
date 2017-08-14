@@ -8,6 +8,7 @@
 
 #import "CTSearchInterstitialViewController.h"
 #import "CTSearchInterstitialViewModel.h"
+#import "CTAppController.h"
 
 @interface CTSearchInterstitialViewController ()
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
@@ -25,6 +26,12 @@
     self.navigationBar.barTintColor = viewModel.navigationBarColor;
     self.titleLabel.text = viewModel.navigationBarTitle;
     self.detailLabel.text = viewModel.navigationBarDetail;
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake) {
+        [CTAppController dispatchAction:CTActionUserSettingsUserDidShake payload:nil];
+    }
 }
 
 @end

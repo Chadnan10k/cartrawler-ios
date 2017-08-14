@@ -11,7 +11,7 @@
 // TODO: Remove all app state imports from view model, moving to protocol
 
 @interface CTSelectedVehicleInsuranceViewModel ()
-@property (nonatomic, readwrite) BOOL insuranceAdded;
+@property (nonatomic, readwrite) UIColor *primaryColor;
 @property (nonatomic, readwrite) NSString *title;
 @property (nonatomic, readwrite) NSString *infoTip1;
 @property (nonatomic, readwrite) NSString *infoTip2;
@@ -28,13 +28,13 @@
 + (instancetype)viewModelForState:(CTAppState *)appState {
     CTSelectedVehicleInsuranceViewModel *viewModel = [CTSelectedVehicleInsuranceViewModel new];
     CTSearchState *searchState = appState.searchState;
-    CTSelectedVehicleState *state = appState.selectedVehicleState;
-    CTInsurance *insurance = state.insurance;
+    CTSelectedVehicleState *selectedVehicleState = appState.selectedVehicleState;
+    CTInsurance *insurance = selectedVehicleState.insurance;
     
     if (!insurance) {
-        return viewModel;
+        return nil;
     }
-    viewModel.insuranceAdded = YES;
+    viewModel.primaryColor = appState.userSettingsState.primaryColor;
     viewModel.title = CTLocalizedString(CTRentalInsuranceOfferingHeader);
     viewModel.infoTip1 = CTLocalizedString(CTRentalInsuranceInfoTip1);
     viewModel.infoTip2 = CTLocalizedString(CTRentalInsuranceInfoTip2);
@@ -43,7 +43,7 @@
     viewModel.imageTitle = @"axa";
     viewModel.pricePerDay = [self pricePerDay:insurance state:searchState];
     viewModel.total = [self total:insurance];
-    viewModel.addInsurance = CTLocalizedString(CTRentalInsuranceAddButtonTitle);
+    viewModel.addInsurance = selectedVehicleState.insuranceAdded ? CTLocalizedString(CTRentalInsuranceAddedButtonTitle) : CTLocalizedString(CTRentalInsuranceAddButtonTitle);
     
     return viewModel;
 }
@@ -53,7 +53,7 @@
 }
 
 + (NSString *)total:(CTInsurance *)insurance {
-    return [NSString stringWithFormat:CTLocalizedString(CTRentalInsuranceTotal), [insurance.premiumAmount numberStringWithCurrencyCode]];
+    return [NSString stringWithFormat:@"%@ %@", CTLocalizedString(CTRentalInsuranceTotal), [insurance.premiumAmount numberStringWithCurrencyCode]];
 }
 
 @end

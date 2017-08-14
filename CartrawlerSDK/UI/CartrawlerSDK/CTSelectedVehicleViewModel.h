@@ -14,6 +14,7 @@
 #import "CTSelectedVehicleExtrasViewModel.h"
 
 @interface CTSelectedVehicleViewModel : NSObject <CTViewModelProtocol>
+@property (nonatomic, readonly) UIColor *navigationBarColor;
 @property (nonatomic, readonly) CTSelectedVehicleInfoViewModel *selectedVehicleInfoViewModel;
 @property (nonatomic, readonly) CTSelectedVehicleTabViewModel *selectedVehicleTabViewModel;
 @property (nonatomic, readonly) CTSelectedVehicleInsuranceViewModel *selectedVehicleInsuranceViewModel;

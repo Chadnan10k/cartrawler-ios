@@ -703,13 +703,13 @@
 //MARK: Payment
 - (void)payment:(CTPayment *)payment didFailWithError:(NSError *)error
 {
-    [CTPaymentLoadingViewController dismiss];
-    CTAlertViewController *alertView = [CTAlertViewController alertControllerWithTitle:CTLocalizedString(CTRentalErrorPaymentLoading1) message:error.localizedDescription];
-    CTAlertAction *okAction = [CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTAClose) handler:^(CTAlertAction *action) {
-        [alertView dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [alertView addAction:okAction];
-    [self presentModalViewController:alertView];
+//    [CTPaymentLoadingViewController dismiss];
+//    CTAlertViewController *alertView = [CTAlertViewController alertControllerWithTitle:CTLocalizedString(CTRentalErrorPaymentLoading1) message:error.localizedDescription];
+//    CTAlertAction *okAction = [CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTAClose) handler:^(CTAlertAction *action) {
+//        [alertView dismissViewControllerAnimated:YES completion:nil];
+//    }];
+//    [alertView addAction:okAction];
+//    [self presentModalViewController:alertView];
 }
 
 - (void)payment:(CTPayment *)payment didSucceedWithResponse:(NSDictionary *)response

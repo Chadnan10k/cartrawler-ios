@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "CTViewControllerProtocol.h"
+#import "CTSelectedVehicleExtrasCellModel.h"
 
 @interface CTSelectedVehicleExtrasCell : UICollectionViewCell <CTViewControllerProtocol>
+
+- (void)updateWithViewModel:(CTSelectedVehicleExtrasCellModel *)viewModel animated:(BOOL)animated;
 
 @end

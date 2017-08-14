@@ -300,53 +300,53 @@
 
 - (void)presentTimePicker:(BOOL)isPickupTime
 {
-    NSString *title = @"";
-    if (isPickupTime) {
-        title = CTLocalizedString(CTRentalSearchPickupTimeText);
-    } else {
-        title = CTLocalizedString(CTRentalSearchReturnTimeText);
-    }
-    __weak typeof (self) weakSelf = self;
-    CTAlertViewController *alertController = [CTAlertViewController alertControllerWithTitle:title message:nil];
-    alertController.backgroundTapDismissalGestureEnabled = YES;
-    
-    UIDatePicker *datePicker = [UIDatePicker new];
-    datePicker.datePickerMode = UIDatePickerModeTime;
-    datePicker.minuteInterval = 15;
-    datePicker.locale = [NSLocale currentLocale];
-    datePicker.date = [NSDate dateWithHour:10 minute:0];
-    alertController.customView = datePicker;
-    
-    CTAlertAction *cancelAction = [CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTACancel)
-                                                         handler:^(CTAlertAction *action) {
-        [alertController dismissViewControllerAnimated:YES completion:nil];
-    }];
-    
-    CTAlertAction *okAction = [CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTADone)
-                                                     handler:^(CTAlertAction *action) {
-        [alertController dismissViewControllerAnimated:YES completion:nil];
-        
-        if ((datePicker.date.minute % 15) != 0) {
-            [weakSelf.dropoffTimeContainer setDetailText: [self.temporaryDropoffTime simpleTimeString]];
-            [weakSelf.pickupTimeContainer setDetailText: [self.temporaryPickupTime simpleTimeString]];
-            return;
-        }
-        
-        if (isPickupTime) {
-            _temporaryPickupTime = datePicker.date;
-            [weakSelf.pickupTimeContainer setDetailText: [datePicker.date simpleTimeString]];
-        } else {
-            _temporaryDropoffTime = datePicker.date;
-            [weakSelf.dropoffTimeContainer setDetailText: [datePicker.date simpleTimeString]];
-        }
-    }];
-    
-    [alertController addAction:cancelAction];
-    [alertController addAction:okAction];
-
-    if (self.delegate) {
-        [self.delegate didTapPresentViewController:alertController];
-    }
+//    NSString *title = @"";
+//    if (isPickupTime) {
+//        title = CTLocalizedString(CTRentalSearchPickupTimeText);
+//    } else {
+//        title = CTLocalizedString(CTRentalSearchReturnTimeText);
+//    }
+//    __weak typeof (self) weakSelf = self;
+//    CTAlertViewController *alertController = [CTAlertViewController alertControllerWithTitle:title message:nil];
+//    alertController.backgroundTapDismissalGestureEnabled = YES;
+//    
+//    UIDatePicker *datePicker = [UIDatePicker new];
+//    datePicker.datePickerMode = UIDatePickerModeTime;
+//    datePicker.minuteInterval = 15;
+//    datePicker.locale = [NSLocale currentLocale];
+//    datePicker.date = [NSDate dateWithHour:10 minute:0];
+//    alertController.customView = datePicker;
+//    
+//    CTAlertAction *cancelAction = [CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTACancel)
+//                                                         handler:^(CTAlertAction *action) {
+//        [alertController dismissViewControllerAnimated:YES completion:nil];
+//    }];
+//    
+//    CTAlertAction *okAction = [CTAlertAction actionWithTitle:CTLocalizedString(CTRentalCTADone)
+//                                                     handler:^(CTAlertAction *action) {
+//        [alertController dismissViewControllerAnimated:YES completion:nil];
+//        
+//        if ((datePicker.date.minute % 15) != 0) {
+//            [weakSelf.dropoffTimeContainer setDetailText: [self.temporaryDropoffTime simpleTimeString]];
+//            [weakSelf.pickupTimeContainer setDetailText: [self.temporaryPickupTime simpleTimeString]];
+//            return;
+//        }
+//        
+//        if (isPickupTime) {
+//            _temporaryPickupTime = datePicker.date;
+//            [weakSelf.pickupTimeContainer setDetailText: [datePicker.date simpleTimeString]];
+//        } else {
+//            _temporaryDropoffTime = datePicker.date;
+//            [weakSelf.dropoffTimeContainer setDetailText: [datePicker.date simpleTimeString]];
+//        }
+//    }];
+//    
+//    [alertController addAction:cancelAction];
+//    [alertController addAction:okAction];
+//
+//    if (self.delegate) {
+//        [self.delegate didTapPresentViewController:alertController];
+//    }
 }
 
 - (void)combineTimes

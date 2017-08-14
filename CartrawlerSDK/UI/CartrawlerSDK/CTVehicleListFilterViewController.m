@@ -13,6 +13,7 @@
 #import "CTAppController.h"
 
 @interface CTVehicleListFilterViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (nonatomic) CTVehicleListFilterViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
@@ -28,6 +29,7 @@
 
 - (void)updateWithViewModel:(CTVehicleListFilterViewModel *)viewModel {
     self.viewModel = viewModel;
+    self.navigationBar.barTintColor = viewModel.navigationBarColor;
     [self.tableView reloadData];
 }
 
@@ -81,6 +83,12 @@
     CTVehicleListFilterCellTableViewModel *cellViewModel = headerViewModel.rowViewModels[indexPath.row];
     CTVehicleListFilterModel *filterModel = cellViewModel.filterModel;
     [CTAppController dispatchAction:CTActionVehicleListUserDidTapFilterOption payload:filterModel];
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake) {
+        [CTAppController dispatchAction:CTActionUserSettingsUserDidShake payload:nil];
+    }
 }
 
 @end

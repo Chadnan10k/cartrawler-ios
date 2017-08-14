@@ -25,21 +25,14 @@
     
     if (collectionViewReload) {
         [self.collectionView reloadData];
+    } else {
+        for (CTSelectedVehicleExtrasCell *cell in self.collectionView.visibleCells) {
+            NSInteger index = [self.collectionView indexPathForCell:cell].row;
+            [cell updateWithViewModel:viewModel.cellModels[index] animated:YES];
+        }
     }
 }
 
-// MARK: Collection View Cell Size
-
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-//    layout.itemSize = CGSizeMake(self.collectionView.frame.size.width, self.collectionView.frame.size.height);
-//    [self.collectionView reloadData];
-//}
-
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    return CGSizeMake(CGRectGetWidth(collectionView.frame), (CGRectGetHeight(collectionView.frame)));
-//}
 // MARK: Collection View Datasource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -48,13 +41,13 @@
 
 - (__kindof CTSelectedVehicleExtrasCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CTSelectedVehicleExtrasCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"SelectedVehicleExtras" forIndexPath:indexPath];
-    [cell updateWithViewModel:self.viewModel.cellModels[indexPath.row]];
+    [cell updateWithViewModel:self.viewModel.cellModels[indexPath.row] animated:NO];
     
     cell.contentView.layer.cornerRadius = 2.0f;
     cell.contentView.layer.borderWidth = 1.0f;
     cell.contentView.layer.borderColor = [UIColor clearColor].CGColor;
     cell.contentView.layer.masksToBounds = YES;
-    
+
     cell.layer.shadowColor = [UIColor lightGrayColor].CGColor;
     cell.layer.shadowOffset = CGSizeMake(0, 1.0f);
     cell.layer.shadowRadius = 1.0f;

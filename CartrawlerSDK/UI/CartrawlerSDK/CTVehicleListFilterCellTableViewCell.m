@@ -20,6 +20,8 @@
 
 - (void)updateWithViewModel:(CTVehicleListFilterCellTableViewModel *)viewModel {
     self.titleLabel.text = viewModel.title;
+    self.checkmarkContainer.backgroundColor = viewModel.primaryColor;
+    self.checkmark.backgroundColor = viewModel.primaryColor;
     self.checkmark.alpha = viewModel.selected;
     self.filler.alpha = !viewModel.selected;
 }

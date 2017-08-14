@@ -195,8 +195,6 @@
 		E7404A851E82F95D009BF7DF /* CTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7404A831E82F95D009BF7DF /* CTTabView.m */; };
 		E76900A81E6F065C00D729FF /* CTInfoTip.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900A61E6F065C00D729FF /* CTInfoTip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76900A91E6F065C00D729FF /* CTInfoTip.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900A71E6F065C00D729FF /* CTInfoTip.m */; };
-		E76900B71E70949500D729FF /* CTAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900B51E70949500D729FF /* CTAlertViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E76900B81E70949500D729FF /* CTAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900B61E70949500D729FF /* CTAlertViewController.m */; };
 		E76900BD1E7199F400D729FF /* CTAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900BB1E7199F400D729FF /* CTAlertView.h */; };
 		E76900BE1E7199F400D729FF /* CTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900BC1E7199F400D729FF /* CTAlertView.m */; };
 		E76900C11E719F9A00D729FF /* CTAlertTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900BF1E719F9A00D729FF /* CTAlertTextView.h */; };
@@ -348,6 +346,15 @@
 		E7B19D021F33FB46000738CB /* CTSelectedVehicleExtrasCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B19D001F33FB46000738CB /* CTSelectedVehicleExtrasCell.m */; };
 		E7B19D051F33FB5B000738CB /* CTSelectedVehicleExtrasCellModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B19D031F33FB5B000738CB /* CTSelectedVehicleExtrasCellModel.h */; };
 		E7B19D061F33FB5B000738CB /* CTSelectedVehicleExtrasCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B19D041F33FB5B000738CB /* CTSelectedVehicleExtrasCellModel.m */; };
+		E7B8EDBA1F3BAF1500638D6F /* CTAlertViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8EDB81F3BAF1500638D6F /* CTAlertViewModel.h */; };
+		E7B8EDBB1F3BAF1500638D6F /* CTAlertViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8EDB91F3BAF1500638D6F /* CTAlertViewModel.m */; };
+		E7B8EDC21F3BB87900638D6F /* CTAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8EDBF1F3BB87900638D6F /* CTAlertViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7B8EDC31F3BB87900638D6F /* CTAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8EDC01F3BB87900638D6F /* CTAlertViewController.m */; };
+		E7B8EDC41F3BB87900638D6F /* CTAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7B8EDC11F3BB87900638D6F /* CTAlertViewController.xib */; };
+		E7B8EDC71F3BBAA600638D6F /* CTSearchErrorViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8EDC51F3BBAA600638D6F /* CTSearchErrorViewController.h */; };
+		E7B8EDC81F3BBAA600638D6F /* CTSearchErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8EDC61F3BBAA600638D6F /* CTSearchErrorViewController.m */; };
+		E7B8EDCB1F3BBADF00638D6F /* CTSearchErrorViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8EDC91F3BBADF00638D6F /* CTSearchErrorViewModel.h */; };
+		E7B8EDCC1F3BBADF00638D6F /* CTSearchErrorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8EDCA1F3BBADF00638D6F /* CTSearchErrorViewModel.m */; };
 		E7BB87A01EA7CE900008CBAD /* CTTriangleView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BB879E1EA7CE900008CBAD /* CTTriangleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7BB87A11EA7CE900008CBAD /* CTTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */; };
 		E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */; };
@@ -565,8 +572,6 @@
 		E7404A831E82F95D009BF7DF /* CTTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabView.m; sourceTree = "<group>"; };
 		E76900A61E6F065C00D729FF /* CTInfoTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInfoTip.h; sourceTree = "<group>"; };
 		E76900A71E6F065C00D729FF /* CTInfoTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInfoTip.m; sourceTree = "<group>"; };
-		E76900B51E70949500D729FF /* CTAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertViewController.h; sourceTree = "<group>"; };
-		E76900B61E70949500D729FF /* CTAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAlertViewController.m; sourceTree = "<group>"; };
 		E76900BB1E7199F400D729FF /* CTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertView.h; sourceTree = "<group>"; };
 		E76900BC1E7199F400D729FF /* CTAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAlertView.m; sourceTree = "<group>"; };
 		E76900BF1E719F9A00D729FF /* CTAlertTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertTextView.h; sourceTree = "<group>"; };
@@ -718,6 +723,15 @@
 		E7B19D001F33FB46000738CB /* CTSelectedVehicleExtrasCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSelectedVehicleExtrasCell.m; sourceTree = "<group>"; };
 		E7B19D031F33FB5B000738CB /* CTSelectedVehicleExtrasCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSelectedVehicleExtrasCellModel.h; sourceTree = "<group>"; };
 		E7B19D041F33FB5B000738CB /* CTSelectedVehicleExtrasCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSelectedVehicleExtrasCellModel.m; sourceTree = "<group>"; };
+		E7B8EDB81F3BAF1500638D6F /* CTAlertViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertViewModel.h; sourceTree = "<group>"; };
+		E7B8EDB91F3BAF1500638D6F /* CTAlertViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAlertViewModel.m; sourceTree = "<group>"; };
+		E7B8EDBF1F3BB87900638D6F /* CTAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertViewController.h; sourceTree = "<group>"; };
+		E7B8EDC01F3BB87900638D6F /* CTAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAlertViewController.m; sourceTree = "<group>"; };
+		E7B8EDC11F3BB87900638D6F /* CTAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CTAlertViewController.xib; sourceTree = "<group>"; };
+		E7B8EDC51F3BBAA600638D6F /* CTSearchErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSearchErrorViewController.h; sourceTree = "<group>"; };
+		E7B8EDC61F3BBAA600638D6F /* CTSearchErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSearchErrorViewController.m; sourceTree = "<group>"; };
+		E7B8EDC91F3BBADF00638D6F /* CTSearchErrorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSearchErrorViewModel.h; sourceTree = "<group>"; };
+		E7B8EDCA1F3BBADF00638D6F /* CTSearchErrorViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSearchErrorViewModel.m; sourceTree = "<group>"; };
 		E7BB879E1EA7CE900008CBAD /* CTTriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTriangleView.h; sourceTree = "<group>"; };
 		E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTriangleView.m; sourceTree = "<group>"; };
 		E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTSDKLocalizationConstants.h; path = Localization/CTSDKLocalizationConstants.h; sourceTree = "<group>"; };
@@ -1295,12 +1309,8 @@
 		E76900B41E70943000D729FF /* Alert View */ = {
 			isa = PBXGroup;
 			children = (
-				E76900B51E70949500D729FF /* CTAlertViewController.h */,
-				E76900B61E70949500D729FF /* CTAlertViewController.m */,
 				E76900BB1E7199F400D729FF /* CTAlertView.h */,
 				E76900BC1E7199F400D729FF /* CTAlertView.m */,
-				E76900CF1E71D95700D729FF /* CTAlertAction.h */,
-				E76900D01E71D95700D729FF /* CTAlertAction.m */,
 				E76900BF1E719F9A00D729FF /* CTAlertTextView.h */,
 				E76900C01E719F9A00D729FF /* CTAlertTextView.m */,
 				E76900CB1E71A55900D729FF /* CTAlertViewPresentationController.h */,
@@ -1426,8 +1436,8 @@
 				E78298AA1F1F0B2F00C20525 /* Search */,
 				E782993D1F2813A400C20525 /* Vehicle List */,
 				E7F83F771F2D177000232635 /* Selected Vehicle */,
+				E7B8EDB51F3BADA400638D6F /* Alert View */,
 				E78299531F2824CC00C20525 /* Protocols */,
-				E7B19CB91F33C6C6000738CB /* Animations */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";
@@ -1446,6 +1456,7 @@
 				E775DBD31F32731D009039D8 /* Search USP */,
 				E775DBD21F32730B009039D8 /* Search USP Detail */,
 				E7B19CA71F33A051000738CB /* Search Interstitial */,
+				E7B8EDBC1F3BB67000638D6F /* Search Error */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -1757,13 +1768,6 @@
 			name = Container;
 			sourceTree = "<group>";
 		};
-		E7B19CB91F33C6C6000738CB /* Animations */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Animations;
-			sourceTree = "<group>";
-		};
 		E7B19CBA1F33E741000738CB /* Vehicle Info */ = {
 			isa = PBXGroup;
 			children = (
@@ -1859,6 +1863,31 @@
 			name = "Extras Cells";
 			sourceTree = "<group>";
 		};
+		E7B8EDB51F3BADA400638D6F /* Alert View */ = {
+			isa = PBXGroup;
+			children = (
+				E7B8EDBF1F3BB87900638D6F /* CTAlertViewController.h */,
+				E7B8EDC01F3BB87900638D6F /* CTAlertViewController.m */,
+				E7B8EDC11F3BB87900638D6F /* CTAlertViewController.xib */,
+				E7B8EDB81F3BAF1500638D6F /* CTAlertViewModel.h */,
+				E7B8EDB91F3BAF1500638D6F /* CTAlertViewModel.m */,
+				E76900CF1E71D95700D729FF /* CTAlertAction.h */,
+				E76900D01E71D95700D729FF /* CTAlertAction.m */,
+			);
+			name = "Alert View";
+			sourceTree = "<group>";
+		};
+		E7B8EDBC1F3BB67000638D6F /* Search Error */ = {
+			isa = PBXGroup;
+			children = (
+				E7B8EDC51F3BBAA600638D6F /* CTSearchErrorViewController.h */,
+				E7B8EDC61F3BBAA600638D6F /* CTSearchErrorViewController.m */,
+				E7B8EDC91F3BBADF00638D6F /* CTSearchErrorViewModel.h */,
+				E7B8EDCA1F3BBADF00638D6F /* CTSearchErrorViewModel.m */,
+			);
+			name = "Search Error";
+			sourceTree = "<group>";
+		};
 		E7BB879D1EA7CE6F0008CBAD /* TriangleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1950,6 +1979,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7B8EDC21F3BB87900638D6F /* CTAlertViewController.h in Headers */,
 				BC1379E81E23E4E400B1F727 /* CTAnalytics.h in Headers */,
 				BC1379EF1E23E8E700B1F727 /* CTErrorTag.h in Headers */,
 				E78299701F2A7CF600C20525 /* CTNotificationsController.h in Headers */,
@@ -1983,6 +2013,7 @@
 				E78298BF1F1FC7AF00C20525 /* CTSearchSplashViewController.h in Headers */,
 				455B586C1DCC914300CA4790 /* CTButton.h in Headers */,
 				455B58491DCC914300CA4790 /* CTToolTip.h in Headers */,
+				E7B8EDCB1F3BBADF00638D6F /* CTSearchErrorViewModel.h in Headers */,
 				E78298941F1E800E00C20525 /* CTUserSettingsState.h in Headers */,
 				E775DBE61F3273A8009039D8 /* CTSearchUSPDetailViewModel.h in Headers */,
 				E782989C1F1EA35F00C20525 /* CTAPIController.h in Headers */,
@@ -2046,6 +2077,7 @@
 				E76900C91E71A45800D729FF /* CTAlertViewDismissalAnimationController.h in Headers */,
 				455B58BF1DCC914400CA4790 /* CTTimePickerView.h in Headers */,
 				E7B19CCA1F33E905000738CB /* CTSelectedVehicleTabViewController.h in Headers */,
+				E7B8EDBA1F3BAF1500638D6F /* CTAlertViewModel.h in Headers */,
 				455B58C11DCC914400CA4790 /* CTCalendarViewController.h in Headers */,
 				459CB2E81DDB5BF8008522BA /* CTNextButton.h in Headers */,
 				E7B19D011F33FB46000738CB /* CTSelectedVehicleExtrasCell.h in Headers */,
@@ -2103,13 +2135,13 @@
 				455B591B1DCC914400CA4790 /* CTCSVItem.h in Headers */,
 				E775DBDE1F32737E009039D8 /* CTSearchUSPViewController.h in Headers */,
 				E7B19CCF1F33E92E000738CB /* CTSelectedVehicleIncludedViewController.h in Headers */,
-				E76900B71E70949500D729FF /* CTAlertViewController.h in Headers */,
 				459CB2E41DDB3FA2008522BA /* CTToolTipButton.h in Headers */,
 				E7B19CF21F33EA50000738CB /* CTSelectedVehicleExtrasViewModel.h in Headers */,
 				455B58C71DCC914400CA4790 /* CTDateCollectionViewCell.h in Headers */,
 				455B58331DCC914300CA4790 /* GTPaymentRequest.h in Headers */,
 				455B58C31DCC914400CA4790 /* CTCalendarView.h in Headers */,
 				455B58C51DCC914400CA4790 /* CTCalendarTableViewCell.h in Headers */,
+				E7B8EDC71F3BBAA600638D6F /* CTSearchErrorViewController.h in Headers */,
 				E782995F1F291B2300C20525 /* CTBannerEdgeView.h in Headers */,
 				455B58C91DCC914400CA4790 /* CalendarLogicController.h in Headers */,
 				E7B19CD41F33E955000738CB /* CTSelectedVehicleRatingsViewController.h in Headers */,
@@ -2223,6 +2255,7 @@
 				E782993F1F2813CF00C20525 /* CTVehicleList.storyboard in Resources */,
 				E78298AC1F1FA3E800C20525 /* CTSearch.storyboard in Resources */,
 				BC3361961E4CCC520056E5A6 /* it.strings in Resources */,
+				E7B8EDC41F3BB87900638D6F /* CTAlertViewController.xib in Resources */,
 				E7F6D16E1F38D81D0002338C /* CTVehicleListFilterHeaderView.xib in Resources */,
 				455B59531DCC91F900CA4790 /* CTLanguages.csv in Resources */,
 				BC3361971E4CCC520056E5A6 /* nl.strings in Resources */,
@@ -2275,6 +2308,7 @@
 				455B584D1DCC914300CA4790 /* CTNavigationItem.m in Sources */,
 				BCF8742A1E79604100EBC758 /* CTLayoutManager.m in Sources */,
 				E76900CA1E71A45800D729FF /* CTAlertViewDismissalAnimationController.m in Sources */,
+				E7B8EDC31F3BB87900638D6F /* CTAlertViewController.m in Sources */,
 				455B584F1DCC914300CA4790 /* CTNavigationController.m in Sources */,
 				E7404A851E82F95D009BF7DF /* CTTabView.m in Sources */,
 				455B58511DCC914300CA4790 /* CTStepper.m in Sources */,
@@ -2326,10 +2360,10 @@
 				455B58751DCC914300CA4790 /* CTLabel.m in Sources */,
 				455B58771DCC914300CA4790 /* CartrawlerSDK+NSDateUtils.m in Sources */,
 				455B587E1DCC914300CA4790 /* CTImageCache.m in Sources */,
+				E7B8EDCC1F3BBADF00638D6F /* CTSearchErrorViewModel.m in Sources */,
 				E78298C71F1FCB8600C20525 /* CTSearchLocationsViewController.m in Sources */,
 				E7404A791E82F3AB009BF7DF /* CTTabContainerView.m in Sources */,
 				E7B19CB41F33BA72000738CB /* CTSelectedVehicleViewController.m in Sources */,
-				E76900B81E70949500D729FF /* CTAlertViewController.m in Sources */,
 				E76900C61E71A31200D729FF /* CTAlertViewPresentationAnimationController.m in Sources */,
 				E78298B81F1FA68B00C20525 /* CTSearchViewController.m in Sources */,
 				455B58821DCC914300CA4790 /* CartrawlerSDK+NSNumber.m in Sources */,
@@ -2348,6 +2382,7 @@
 				E7B19D021F33FB46000738CB /* CTSelectedVehicleExtrasCell.m in Sources */,
 				E726E3F61E9FDBEC004DC355 /* CTCounterView.m in Sources */,
 				E76900DE1E764F9800D729FF /* CTListView.m in Sources */,
+				E7B8EDC81F3BBAA600638D6F /* CTSearchErrorViewController.m in Sources */,
 				E727622C1ECE3B240040C096 /* CTToastView.m in Sources */,
 				455B58941DCC914300CA4790 /* CartrawlerSDK+UIColor.m in Sources */,
 				E7F6D15F1F38B32A0002338C /* CTVehicleListFilterCellTableViewCell.m in Sources */,
@@ -2393,6 +2428,7 @@
 				450725B81DD9C99500D56C8A /* CTImageView.m in Sources */,
 				E7F6D1781F3A753B0002338C /* CTLoggingController.m in Sources */,
 				451E763B1E04438300D58F71 /* CTRentalBooking.m in Sources */,
+				E7B8EDBB1F3BAF1500638D6F /* CTAlertViewModel.m in Sources */,
 				450725B31DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m in Sources */,
 				E782990D1F27A3F600C20525 /* CTSearchSettingsViewController.m in Sources */,
 				E775DBE71F3273A8009039D8 /* CTSearchUSPDetailViewModel.m in Sources */,

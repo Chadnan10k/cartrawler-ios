@@ -404,6 +404,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="9Hd-OR-SeM"/>
                                 </constraints>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Filter" id="F8x-Vf-p5s">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="SaV-zk-CNN">
@@ -440,22 +443,22 @@
                                                     <rect key="frame" x="314" y="6" width="36" height="36"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bab-Yy-xD4" userLabel="checkmark">
-                                                            <rect key="frame" x="4" y="3.5" width="28" height="28"/>
+                                                            <rect key="frame" x="4.5" y="3.5" width="28" height="28"/>
                                                             <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="28"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWU-fP-M5K" userLabel="filler">
-                                                            <rect key="frame" x="1.5" y="1.5" width="33" height="33"/>
+                                                            <rect key="frame" x="1" y="1" width="34" height="34"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="33" id="Prr-KK-hBb"/>
-                                                                <constraint firstAttribute="width" constant="33" id="WiE-t8-RIs"/>
+                                                                <constraint firstAttribute="height" constant="34" id="Prr-KK-hBb"/>
+                                                                <constraint firstAttribute="width" constant="34" id="WiE-t8-RIs"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="5"/>
+                                                                    <integer key="value" value="4"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
@@ -472,7 +475,7 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="5"/>
+                                                            <integer key="value" value="4"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -524,6 +527,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="navigationBar" destination="wRL-IC-O9i" id="5VP-Ge-vv3"/>
                         <outlet property="tableView" destination="0Wy-sn-eAg" id="1or-Ln-0wk"/>
                     </connections>
                 </viewController>

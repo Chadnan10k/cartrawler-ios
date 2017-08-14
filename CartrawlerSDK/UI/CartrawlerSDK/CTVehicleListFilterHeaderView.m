@@ -19,6 +19,7 @@
 - (void)updateWithViewModel:(CTVehicleListFilterHeaderViewModel *)viewModel {
     self.title.text = viewModel.title;
     self.selectAll.text = viewModel.detail;
+    self.selectAll.textColor = viewModel.primaryColor;
 }
 
 @end

@@ -9,14 +9,17 @@
 #import "CTUserInterfaceController.h"
 
 #import "CTViewControllerProtocol.h"
+#import "CTSearchErrorViewController.h"
 #import "CTSearchViewModel.h"
 #import "CTVehicleListViewModel.h"
 #import "CTSelectedVehicleViewModel.h"
 #import <CoreText/CoreText.h>
 #import "CTValidationSearch.h"
+#import "CTAppController.h"
 
 @interface CTUserInterfaceController ()
 @property (nonatomic) UINavigationController *navigationController;
+@property (nonatomic) NSMutableArray *modalViewControllers;
 @property (nonatomic) NSData *customFont;
 @end
 
@@ -27,6 +30,7 @@
     self.navigationController = [UINavigationController new];
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    self.modalViewControllers = [NSMutableArray new];
     
     // Set all navigation bar default tint colors
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
@@ -51,7 +55,9 @@
         return;
     }
     
-    // Popping children view controllers from the navigation stack
+    __block UIViewController <CTViewControllerProtocol> *topViewController = (UIViewController <CTViewControllerProtocol> *)self.navigationController.topViewController;
+    
+    // Popping children view controllers
     if (self.navigationController.viewControllers.count > navigationState.currentNavigationStep) {
         if (navigationState.currentNavigationStep == CTNavigationStepNone) {
             [navigationState.parentViewController dismissViewControllerAnimated:YES completion:nil];
@@ -60,58 +66,44 @@
         }
     }
     
-    // Pushing children view controllers to the navigation stack
-    __block UIViewController <CTViewControllerProtocol> *vc;
+    // Pushing children view controllers
     if (self.navigationController.viewControllers.count < navigationState.currentNavigationStep) {
-        vc = [CTUserInterfaceController viewControllerForStep:navigationState.currentNavigationStep];
+        topViewController = [CTUserInterfaceController viewControllerForStep:navigationState.currentNavigationStep];
         
         if (self.navigationController.viewControllers.count == 0) {
-            self.navigationController.viewControllers = @[vc];
+            self.navigationController.viewControllers = @[topViewController];
             [navigationState.parentViewController presentViewController:self.navigationController animated:YES completion:nil];
         } else {
-            [self.navigationController pushViewController:vc animated:YES];
+            [self.navigationController pushViewController:topViewController animated:YES];
         }
-    } else {
-        vc = (UIViewController <CTViewControllerProtocol> *)self.navigationController.topViewController;
     }
     
-    // Dismissing modal view controllers if none on stack
-    if (vc.presentedViewController && navigationState.modalViewControllers.count == 0) {
-        [vc.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+    // Popping modal view controllers
+    for (NSUInteger i = self.modalViewControllers.count; i > navigationState.modalViewControllers.count; i--) {
+        [self.modalViewControllers[i-1] dismissViewControllerAnimated:YES completion:nil];
+        [self.modalViewControllers removeObjectAtIndex:i-1];
     }
     
-    
+    // Presenting modal view controllers
     [navigationState.modalViewControllers enumerateObjectsUsingBlock:^(NSNumber *modalNumber, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        // Dismissing no longer needed modal view controllers on stack
-        BOOL isLastIteration = (idx == navigationState.modalViewControllers.count - 1);
-        if (isLastIteration) {
-            [vc.presentedViewController.presentedViewController dismissViewControllerAnimated:YES completion:nil];
-        }
-        
-        // Presenting
         CTNavigationModal modal = modalNumber.integerValue;
-        UIViewController <CTViewControllerProtocol> *modalVC = (UIViewController <CTViewControllerProtocol> *)vc.presentedViewController;
-        if (!modalVC) {
+        UIViewController <CTViewControllerProtocol> *modalVC;
+        
+        if (self.modalViewControllers.count <= idx) {
             modalVC = [CTUserInterfaceController viewControllerForModal:modal];
-            [vc presentViewController:modalVC animated:YES completion:nil];
+            [topViewController presentViewController:modalVC animated:YES completion:nil];
+            [self.modalViewControllers addObject:modalVC];
+        } else {
+            modalVC = self.modalViewControllers[idx];
         }
-        vc = modalVC;
+        
+        topViewController = modalVC;
     }];
-//    for (NSNumber *modalNumber in navigationState.modalViewControllers) {
-//        CTNavigationModal modal = modalNumber.integerValue;
-//        UIViewController <CTViewControllerProtocol> *modalVC = (UIViewController <CTViewControllerProtocol> *)vc.presentedViewController;
-//        if (!modalVC) {
-//            modalVC = [CTUserInterfaceController viewControllerForModal:modal];
-//            [vc presentViewController:modalVC animated:YES completion:nil];
-//        }
-//        vc = modalVC;
-//    }
     
     // Updating current view
-    Class viewModelClass = [vc.class viewModelClass];
+    Class viewModelClass = [topViewController.class viewModelClass];
     id <CTViewModelProtocol> viewModel = [viewModelClass viewModelForState:appState];
-    [vc updateWithViewModel:viewModel];
+    [topViewController updateWithViewModel:viewModel];
 }
 
 + (UIViewController <CTViewControllerProtocol> *)viewControllerForStep:(CTNavigationStep)step {
@@ -119,13 +111,13 @@
     NSBundle *bundle = [NSBundle bundleForClass:self.class];
     
     switch (step) {
-        case 1:
+        case CTNavigationStepSearch:
             storyboard = [UIStoryboard storyboardWithName:@"CTSearch" bundle:bundle];
             return [storyboard instantiateViewControllerWithIdentifier:@"CTSearchViewController"];
-        case 2:
+        case CTNavigationStepVehicleList:
             storyboard = [UIStoryboard storyboardWithName:@"CTVehicleList" bundle:bundle];
             return [storyboard instantiateViewControllerWithIdentifier:@"CTVehicleListViewController"];
-        case 3:
+        case CTNavigationStepSelectedVehicle:
             storyboard = [UIStoryboard storyboardWithName:@"CTSelectedVehicle" bundle:bundle];
             return [storyboard instantiateViewControllerWithIdentifier:@"CTSelectedVehicleViewController"];
         default:
@@ -156,6 +148,9 @@
         case CTNavigationModalSearchInterstitial:
             storyboard = [UIStoryboard storyboardWithName:@"CTSearch" bundle:bundle];
             return [storyboard instantiateViewControllerWithIdentifier:@"CTSearchInterstitialViewController"];
+        case CTNavigationModalSearchVehicleFetchError:
+            return [[CTSearchErrorViewController alloc] initWithNibName:@"CTAlertViewController" bundle:bundle];
+            break;
         case CTNavigationModalVehicleListFilter:
             storyboard = [UIStoryboard storyboardWithName:@"CTVehicleList" bundle:bundle];
             return [storyboard instantiateViewControllerWithIdentifier:@"CTVehicleListFilterViewController"];

@@ -10,7 +10,10 @@
 
 @implementation CTVehicleListFilterCellTableViewModel
 
-- (instancetype)initWithFilterModel:(CTVehicleListFilterModel *)filterModel title:(NSString *)title selected:(BOOL)selected {
+- (instancetype)initWithFilterModel:(CTVehicleListFilterModel *)filterModel
+                              title:(NSString *)title
+                           selected:(BOOL)selected
+                       primaryColor:(UIColor *)primaryColor {
     self = [super init];
     if (self) {
         _filterModel = filterModel;
@@ -19,6 +22,7 @@
         _title = (filterModel.filterType == CTVehicleListFilterTypeVendor) ? [title capitalizedString] : title;
         
         _selected = selected;
+        _primaryColor = primaryColor;
     }
     return self;
 }

@@ -12,9 +12,13 @@
 
 @interface CTVehicleListFilterCellTableViewModel : NSObject <CTViewModelProtocol>
 @property (nonatomic, readonly) CTVehicleListFilterModel *filterModel;
+@property (nonatomic, readonly) UIColor *primaryColor;
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) BOOL selected;
 
-- (instancetype)initWithFilterModel:(CTVehicleListFilterModel *)filterModel title:(NSString *)title selected:(BOOL)selected;
+- (instancetype)initWithFilterModel:(CTVehicleListFilterModel *)filterModel
+                              title:(NSString *)title
+                           selected:(BOOL)selected
+                       primaryColor:(UIColor *)primaryColor;
 
 @end

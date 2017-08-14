@@ -25,6 +25,6 @@
 @property (nonatomic, readonly) NSArray *sortOptions;
 @property (nonatomic, readonly) NSString *cancelTitle;
 @property (nonatomic, readonly) CTVehicleListSort selectedSort;
-@property (nonatomic) BOOL scrollToTop;
-
+@property (nonatomic, readonly) BOOL scrollToTop;
+@property (nonatomic, readonly) UIColor *navigationBarColor;
 @end

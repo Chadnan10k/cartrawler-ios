@@ -69,6 +69,10 @@
         case CTActionNavigationPresentSearchStep:
             message = @"Search step presented";
             break;
+        case CTActionNavigationModalDidPresent:
+            message = @"Modal view finished presenting";
+            break;
+            
         case CTActionSearchUserDidSwipeUSPCarousel:
             message = @"USP carousel swiped to index";
             break;

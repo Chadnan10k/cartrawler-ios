@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) NSString *fuel;
 @property (nonatomic, readonly) NSString *location;
 @property (nonatomic, readonly) NSURL *vehicleURL;
+@property (nonatomic, readonly) UIColor *primaryColor;
 @property (nonatomic, readonly) BOOL displayMerchandising;
 @property (nonatomic, readonly) NSString *merchandisingText;
 @property (nonatomic, readonly) UIColor *merchandisingColor;

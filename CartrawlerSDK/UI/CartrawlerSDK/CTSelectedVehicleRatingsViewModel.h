@@ -11,6 +11,7 @@
 
 @interface CTSelectedVehicleRatingsViewModel : NSObject <CTViewModelProtocol>
 
+@property (nonatomic, readonly) NSString *providedBy;
 @property (nonatomic, readonly) NSString *overall;
 @property (nonatomic, readonly) NSString *valueForMoney;
 @property (nonatomic, readonly) NSString *cleanliness;
@@ -20,6 +21,7 @@
 @property (nonatomic, readonly) NSString *averageWaitingTime;
 @property (nonatomic, readonly) NSString *customerRatings;
 
+@property (nonatomic, readonly) NSURL *providedByImage;
 @property (nonatomic, readonly) NSString *overallRating;
 @property (nonatomic, readonly) NSString *valueForMoneyRating;
 @property (nonatomic, readonly) NSString *cleanlinessRating;

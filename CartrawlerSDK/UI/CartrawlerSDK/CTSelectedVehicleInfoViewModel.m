@@ -17,6 +17,7 @@
 @property (nonatomic, readwrite) NSString *fuel;
 @property (nonatomic, readwrite) NSString *location;
 @property (nonatomic, readwrite) NSURL *vehicleURL;
+@property (nonatomic, readwrite) UIColor *primaryColor;
 @property (nonatomic, readwrite) BOOL displayMerchandising;
 @property (nonatomic, readwrite) NSString *merchandisingText;
 @property (nonatomic, readwrite) UIColor *merchandisingColor;
@@ -46,6 +47,8 @@
     viewModel.location = [CTLocalisedStrings pickupType:availabilityItem];
     
     viewModel.vehicleURL = vehicle.pictureURL;
+    
+    viewModel.primaryColor = appState.userSettingsState.primaryColor;
         
     if (vehicle.merchandisingTag != CTMerchandisingTagUnknown) {
         viewModel.displayMerchandising = YES;

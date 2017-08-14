@@ -40,6 +40,9 @@
 
 - (void)updateWithViewModel:(CTVehicleListViewModel *)viewModel {
     self.viewModel = viewModel;
+    
+    self.navigationController.navigationBar.barTintColor = viewModel.navigationBarColor;
+    
     self.headerLeftLabel.text = viewModel.leftLabelText;
     self.headerRightLabel.attributedText = viewModel.rightLabelText;
     [self.tableView reloadData];
@@ -54,11 +57,6 @@
             if (!self.presentedViewController) {
                 [self presentSortViewControllerWithViewModel:viewModel];
             }
-            break;
-//        case CTVehicleListSelectedViewFilter:
-//            if (!self.presentedViewController) {
-//                [self presentFilterViewController];
-//            }
             break;
         default:
             break;

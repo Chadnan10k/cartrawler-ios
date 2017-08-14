@@ -23,7 +23,8 @@
 @property (nonatomic, readwrite) NSArray *sortOptions;
 @property (nonatomic, readwrite) NSString *cancelTitle;
 @property (nonatomic, readwrite) CTVehicleListSort selectedSort;
-
+@property (nonatomic, readwrite) BOOL scrollToTop;
+@property (nonatomic, readwrite) UIColor *navigationBarColor;
 @end
 
 @implementation CTVehicleListViewModel
@@ -32,6 +33,8 @@
     CTVehicleListViewModel *viewModel = [CTVehicleListViewModel new];
     CTAPIState *APIState = appState.APIState;
     CTVehicleListState *vehicleListState = appState.vehicleListState;
+    
+    viewModel.navigationBarColor = appState.userSettingsState.primaryColor;
     
     NSArray *matchedAvailabilityItems = [APIState.matchedAvailabilityItems objectForKey:APIState.availabilityRequestTimestamp];
     

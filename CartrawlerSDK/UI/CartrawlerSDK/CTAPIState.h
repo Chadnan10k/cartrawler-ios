@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CartrawlerAPI/CTAvailabilityItem.h>
 
+// TODO: Move API state to step states
 @interface CTAPIState : NSObject
 
 @property (nonatomic) NSString *engineLoadID;

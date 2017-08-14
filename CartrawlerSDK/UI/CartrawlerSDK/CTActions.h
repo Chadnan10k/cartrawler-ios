@@ -76,6 +76,18 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      *  API returned vehicles
      */
     CTActionAPIDidReturnVehicles,
+    /**
+     *  API returned vehicle fetch error
+     */
+    CTActionAPIDidReturnVehiclesError,
+    /**
+     *  API returned vehicle insurance
+     */
+    CTActionAPIDidReturnInsurance,
+    /**
+     *  API returned vehicle insurance error
+     */
+    CTActionAPIDidReturnInsuranceError,
     
     // NAVIGATION ACTIONS
     /**
@@ -86,6 +98,14 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      *  Requests the search step
      */
     CTActionNavigationPresentSearchStep,
+    /**
+     *  Modal view completed presentation
+     */
+    CTActionNavigationModalDidPresent,
+    /**
+     *  Modal view dismissed
+     */
+    CTActionNavigationModalDidDismiss,
     
     // Search Actions
     /**
@@ -208,6 +228,10 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      *  The user tapped the done button on the input view
      */
     CTActionSearchInputViewUserDidSelectDone,
+    /**
+     *  User dismissed error alert
+     */
+    CTActionSearchUserDidDismissVehicleFetchError,
     
     // Vehicle List
     /**

@@ -9,6 +9,7 @@
 #import "CTSelectedVehicleViewModel.h"
 
 @interface CTSelectedVehicleViewModel ()
+@property (nonatomic, readwrite) UIColor *navigationBarColor;
 @property (nonatomic, readwrite) CTSelectedVehicleInfoViewModel *selectedVehicleInfoViewModel;
 @property (nonatomic, readwrite) CTSelectedVehicleTabViewModel *selectedVehicleTabViewModel;
 @property (nonatomic, readwrite) CTSelectedVehicleInsuranceViewModel *selectedVehicleInsuranceViewModel;
@@ -16,12 +17,13 @@
 @end
 @implementation CTSelectedVehicleViewModel
 
-+ (instancetype)viewModelForState:(id)state {
++ (instancetype)viewModelForState:(CTAppState *)appState {
     CTSelectedVehicleViewModel *viewModel = [CTSelectedVehicleViewModel new];
-    viewModel.selectedVehicleInfoViewModel = [CTSelectedVehicleInfoViewModel viewModelForState:state];
-    viewModel.selectedVehicleTabViewModel = [CTSelectedVehicleTabViewModel viewModelForState:state];
-    viewModel.selectedVehicleInsuranceViewModel = [CTSelectedVehicleInsuranceViewModel viewModelForState:state];
-    viewModel.selectedVehicleExtrasViewModel = [CTSelectedVehicleExtrasViewModel viewModelForState:state];
+    viewModel.navigationBarColor = appState.userSettingsState.primaryColor;
+    viewModel.selectedVehicleInfoViewModel = [CTSelectedVehicleInfoViewModel viewModelForState:appState];
+    viewModel.selectedVehicleTabViewModel = [CTSelectedVehicleTabViewModel viewModelForState:appState];
+    viewModel.selectedVehicleInsuranceViewModel = [CTSelectedVehicleInsuranceViewModel viewModelForState:appState];
+    viewModel.selectedVehicleExtrasViewModel = [CTSelectedVehicleExtrasViewModel viewModelForState:appState];
     return viewModel;
 }
 

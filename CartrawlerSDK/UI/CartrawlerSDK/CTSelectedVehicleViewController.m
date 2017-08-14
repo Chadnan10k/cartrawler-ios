@@ -18,8 +18,11 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *vehicleDetailsContainerView;
 @property (nonatomic, weak) CTSelectedVehicleInfoViewController *selectedVehicleInfoViewController;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectedVehicleInfoViewHeight;
 @property (nonatomic, weak) CTSelectedVehicleTabViewController *selectedVehicleTabViewController;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectedVehicleTabViewHeight;
 @property (nonatomic, weak) CTSelectedVehicleInsuranceViewController *selectedVehicleInsuranceViewController;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectedVehicleInsuranceViewHeight;
 @property (nonatomic, weak) CTSelectedVehicleExtrasViewController *selectedVehicleExtrasViewController;
 @end
 
@@ -31,26 +34,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Caution" message:@"This area is under construction" preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
-    }];
-    
-    [alertController addAction:action];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
+    [self.view layoutIfNeeded];
 }
 
 - (void)updateWithViewModel:(CTSelectedVehicleViewModel *)viewModel {
     // Force segued views to load
     self.view = self.view;
     
+    self.navigationController.navigationBar.barTintColor = viewModel.navigationBarColor;
+    
     [self.selectedVehicleInfoViewController updateWithViewModel:viewModel.selectedVehicleInfoViewModel];
     [self.selectedVehicleTabViewController updateWithViewModel:viewModel.selectedVehicleTabViewModel];
     [self.selectedVehicleInsuranceViewController updateWithViewModel:viewModel.selectedVehicleInsuranceViewModel];
     [self.selectedVehicleExtrasViewController updateWithViewModel:viewModel.selectedVehicleExtrasViewModel];
+    
+//    self.selectedVehicleInfoViewHeight.constant = [self.selectedVehicleInfoViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
+    self.selectedVehicleTabViewHeight.constant = [self.selectedVehicleTabViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
+    self.selectedVehicleInsuranceViewHeight.constant = viewModel.selectedVehicleInsuranceViewModel ? [self.selectedVehicleInsuranceViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height : 0;
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.view layoutIfNeeded];
+    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
