@@ -51,6 +51,7 @@
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXO-2c-JUP" userLabel="Vehicle Insurance View">
                                         <rect key="frame" x="0.0" y="633" width="320" height="400"/>
+                                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="400" id="kbc-Mp-in5"/>
                                         </constraints>
@@ -67,6 +68,18 @@
                                             <segue destination="bVc-hV-8dM" kind="embed" identifier="SelectedVehicleExtras" id="UzW-5X-eBb"/>
                                         </connections>
                                     </containerView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wFF-5a-xzJ">
+                                        <rect key="frame" x="0.0" y="1229" width="320" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tcn-K4-I0g">
+                                                <rect key="frame" x="8" y="9" width="304" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="mXO-2c-JUP" firstAttribute="leading" secondItem="BlZ-ax-MjC" secondAttribute="leading" id="1Jn-MC-LQM"/>
@@ -75,21 +88,21 @@
                                     <constraint firstAttribute="trailing" secondItem="Vlo-v7-hTW" secondAttribute="trailing" id="DMc-2K-TzC"/>
                                     <constraint firstAttribute="trailing" secondItem="ZGr-zP-4jm" secondAttribute="trailing" id="E9w-0Z-aUH"/>
                                     <constraint firstItem="ZGr-zP-4jm" firstAttribute="top" secondItem="BlZ-ax-MjC" secondAttribute="top" id="HU2-DN-aIW"/>
-                                    <constraint firstItem="mXO-2c-JUP" firstAttribute="width" secondItem="ZGr-zP-4jm" secondAttribute="width" id="Hb0-IX-ecr"/>
+                                    <constraint firstItem="ZGr-zP-4jm" firstAttribute="leading" secondItem="BlZ-ax-MjC" secondAttribute="leading" id="JsV-hZ-8Pj"/>
                                     <constraint firstItem="mXO-2c-JUP" firstAttribute="top" secondItem="Vlo-v7-hTW" secondAttribute="bottom" constant="8" id="NN4-B0-hyu"/>
                                     <constraint firstItem="TJr-vV-16b" firstAttribute="top" secondItem="mXO-2c-JUP" secondAttribute="bottom" constant="8" id="OTo-G9-H8g"/>
                                     <constraint firstItem="Vlo-v7-hTW" firstAttribute="top" secondItem="ZGr-zP-4jm" secondAttribute="bottom" id="T4J-Ro-eQF"/>
-                                    <constraint firstItem="ZGr-zP-4jm" firstAttribute="width" secondItem="BlZ-ax-MjC" secondAttribute="width" id="b8O-XH-v07"/>
-                                    <constraint firstItem="ZGr-zP-4jm" firstAttribute="leading" secondItem="BlZ-ax-MjC" secondAttribute="leading" id="q5e-yW-qfW"/>
-                                    <constraint firstItem="TJr-vV-16b" firstAttribute="width" secondItem="ZGr-zP-4jm" secondAttribute="width" id="vW0-aG-uxL"/>
-                                    <constraint firstItem="Vlo-v7-hTW" firstAttribute="width" secondItem="ZGr-zP-4jm" secondAttribute="width" id="wD6-f3-jUy"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="mXO-2c-JUP" firstAttribute="width" secondItem="8lc-ju-aes" secondAttribute="width" id="6um-if-lFP"/>
+                            <constraint firstItem="ZGr-zP-4jm" firstAttribute="width" secondItem="8lc-ju-aes" secondAttribute="width" id="OBw-2L-uuk"/>
                             <constraint firstItem="BlZ-ax-MjC" firstAttribute="leading" secondItem="8lc-ju-aes" secondAttribute="leading" id="R7z-Ch-hC8"/>
+                            <constraint firstItem="Vlo-v7-hTW" firstAttribute="width" secondItem="8lc-ju-aes" secondAttribute="width" id="RIS-HJ-E7f"/>
                             <constraint firstAttribute="trailing" secondItem="BlZ-ax-MjC" secondAttribute="trailing" id="gyO-Bk-Qgh"/>
+                            <constraint firstItem="TJr-vV-16b" firstAttribute="width" secondItem="8lc-ju-aes" secondAttribute="width" id="qBw-S1-2Dz"/>
                             <constraint firstItem="b1Q-r8-tXH" firstAttribute="top" secondItem="BlZ-ax-MjC" secondAttribute="bottom" id="x33-zU-gz5"/>
                             <constraint firstItem="BlZ-ax-MjC" firstAttribute="top" secondItem="uOv-Bk-Xai" secondAttribute="bottom" id="xnJ-oX-biN"/>
                         </constraints>
@@ -105,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="et8-2Y-PC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-395.625" y="76.056338028169009"/>
+            <point key="canvasLocation" x="-395.625" y="75.528169014084511"/>
         </scene>
         <!--Selected Vehicle Info View Controller-->
         <scene sceneID="kZs-6a-aZd">
@@ -537,7 +550,7 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="83g-RR-v5Y" firstAttribute="leading" secondItem="Jef-tm-PqD" secondAttribute="trailing" constant="8" id="12H-u4-h0z"/>
                             <constraint firstItem="QyP-Xi-x4f" firstAttribute="centerY" secondItem="S9n-Ws-yYl" secondAttribute="centerY" id="2Rg-UX-wXe"/>

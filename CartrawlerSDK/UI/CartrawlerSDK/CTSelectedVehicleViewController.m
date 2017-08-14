@@ -32,11 +32,6 @@
     return CTSelectedVehicleViewModel.class;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self.view layoutIfNeeded];
-}
-
 - (void)updateWithViewModel:(CTSelectedVehicleViewModel *)viewModel {
     // Force segued views to load
     self.view = self.view;
@@ -48,7 +43,7 @@
     [self.selectedVehicleInsuranceViewController updateWithViewModel:viewModel.selectedVehicleInsuranceViewModel];
     [self.selectedVehicleExtrasViewController updateWithViewModel:viewModel.selectedVehicleExtrasViewModel];
     
-//    self.selectedVehicleInfoViewHeight.constant = [self.selectedVehicleInfoViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
+    self.selectedVehicleInfoViewHeight.constant = [self.selectedVehicleInfoViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
     self.selectedVehicleTabViewHeight.constant = [self.selectedVehicleTabViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
     self.selectedVehicleInsuranceViewHeight.constant = viewModel.selectedVehicleInsuranceViewModel ? [self.selectedVehicleInsuranceViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height : 0;
     [UIView animateWithDuration:0.2 animations:^{

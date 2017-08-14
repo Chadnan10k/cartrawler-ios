@@ -355,6 +355,9 @@
 		E7B8EDC81F3BBAA600638D6F /* CTSearchErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8EDC61F3BBAA600638D6F /* CTSearchErrorViewController.m */; };
 		E7B8EDCB1F3BBADF00638D6F /* CTSearchErrorViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8EDC91F3BBADF00638D6F /* CTSearchErrorViewModel.h */; };
 		E7B8EDCC1F3BBADF00638D6F /* CTSearchErrorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8EDCA1F3BBADF00638D6F /* CTSearchErrorViewModel.m */; };
+		E7B8EDD11F4203EA00638D6F /* CTBooking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B8EDD01F4203EA00638D6F /* CTBooking.storyboard */; };
+		E7B8EDD41F42041000638D6F /* CTBookingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8EDD21F42041000638D6F /* CTBookingViewController.h */; };
+		E7B8EDD51F42041000638D6F /* CTBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8EDD31F42041000638D6F /* CTBookingViewController.m */; };
 		E7BB87A01EA7CE900008CBAD /* CTTriangleView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BB879E1EA7CE900008CBAD /* CTTriangleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7BB87A11EA7CE900008CBAD /* CTTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */; };
 		E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */; };
@@ -732,6 +735,9 @@
 		E7B8EDC61F3BBAA600638D6F /* CTSearchErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSearchErrorViewController.m; sourceTree = "<group>"; };
 		E7B8EDC91F3BBADF00638D6F /* CTSearchErrorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSearchErrorViewModel.h; sourceTree = "<group>"; };
 		E7B8EDCA1F3BBADF00638D6F /* CTSearchErrorViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSearchErrorViewModel.m; sourceTree = "<group>"; };
+		E7B8EDD01F4203EA00638D6F /* CTBooking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CTBooking.storyboard; sourceTree = "<group>"; };
+		E7B8EDD21F42041000638D6F /* CTBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingViewController.h; sourceTree = "<group>"; };
+		E7B8EDD31F42041000638D6F /* CTBookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingViewController.m; sourceTree = "<group>"; };
 		E7BB879E1EA7CE900008CBAD /* CTTriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTriangleView.h; sourceTree = "<group>"; };
 		E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTriangleView.m; sourceTree = "<group>"; };
 		E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTSDKLocalizationConstants.h; path = Localization/CTSDKLocalizationConstants.h; sourceTree = "<group>"; };
@@ -1436,6 +1442,7 @@
 				E78298AA1F1F0B2F00C20525 /* Search */,
 				E782993D1F2813A400C20525 /* Vehicle List */,
 				E7F83F771F2D177000232635 /* Selected Vehicle */,
+				E7B8EDCE1F4201D100638D6F /* Booking */,
 				E7B8EDB51F3BADA400638D6F /* Alert View */,
 				E78299531F2824CC00C20525 /* Protocols */,
 			);
@@ -1757,7 +1764,7 @@
 			name = "Search Interstitial";
 			sourceTree = "<group>";
 		};
-		E7B19CB01F33BA21000738CB /* Container */ = {
+		E7B19CB01F33BA21000738CB /* Vehicle Container */ = {
 			isa = PBXGroup;
 			children = (
 				E7B19CB11F33BA72000738CB /* CTSelectedVehicleViewController.h */,
@@ -1765,7 +1772,7 @@
 				E7B19CB51F33BA89000738CB /* CTSelectedVehicleViewModel.h */,
 				E7B19CB61F33BA89000738CB /* CTSelectedVehicleViewModel.m */,
 			);
-			name = Container;
+			name = "Vehicle Container";
 			sourceTree = "<group>";
 		};
 		E7B19CBA1F33E741000738CB /* Vehicle Info */ = {
@@ -1888,6 +1895,24 @@
 			name = "Search Error";
 			sourceTree = "<group>";
 		};
+		E7B8EDCE1F4201D100638D6F /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				E7B8EDD01F4203EA00638D6F /* CTBooking.storyboard */,
+				E7B8EDCF1F4201E200638D6F /* Container */,
+			);
+			name = Booking;
+			sourceTree = "<group>";
+		};
+		E7B8EDCF1F4201E200638D6F /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				E7B8EDD21F42041000638D6F /* CTBookingViewController.h */,
+				E7B8EDD31F42041000638D6F /* CTBookingViewController.m */,
+			);
+			name = Container;
+			sourceTree = "<group>";
+		};
 		E7BB879D1EA7CE6F0008CBAD /* TriangleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1960,7 +1985,7 @@
 			isa = PBXGroup;
 			children = (
 				E7F83F781F2D178F00232635 /* CTSelectedVehicle.storyboard */,
-				E7B19CB01F33BA21000738CB /* Container */,
+				E7B19CB01F33BA21000738CB /* Vehicle Container */,
 				E7B19CBA1F33E741000738CB /* Vehicle Info */,
 				E7B19CC71F33E8EB000738CB /* Tab */,
 				E7B19CCC1F33E90C000738CB /* Included */,
@@ -2057,6 +2082,7 @@
 				E78298A71F1EEF6600C20525 /* CTNavigationState.h in Headers */,
 				459CB2E01DDB1D9E008522BA /* CartrawlerSDK+UIView.h in Headers */,
 				455B58811DCC914300CA4790 /* CartrawlerSDK+NSNumber.h in Headers */,
+				E7B8EDD41F42041000638D6F /* CTBookingViewController.h in Headers */,
 				455B58851DCC914300CA4790 /* CTHTMLParser.h in Headers */,
 				E78299031F26EE4900C20525 /* CTAPIResponse.h in Headers */,
 				455B588D1DCC914300CA4790 /* CTLocalisedStrings.h in Headers */,
@@ -2259,6 +2285,7 @@
 				E7F6D16E1F38D81D0002338C /* CTVehicleListFilterHeaderView.xib in Resources */,
 				455B59531DCC91F900CA4790 /* CTLanguages.csv in Resources */,
 				BC3361971E4CCC520056E5A6 /* nl.strings in Resources */,
+				E7B8EDD11F4203EA00638D6F /* CTBooking.storyboard in Resources */,
 				BC3361931E4CCC520056E5A6 /* en.strings in Resources */,
 				BCF4DA4A1E93B58A00E8C5EC /* CTCalendar.storyboard in Resources */,
 				E7F83F791F2D178F00232635 /* CTSelectedVehicle.storyboard in Resources */,
@@ -2458,6 +2485,7 @@
 				E7F6D15A1F38B2350002338C /* CTVehicleListFilterViewModel.m in Sources */,
 				BC95467D1EB265010097312C /* CTCMSLocalization.m in Sources */,
 				E7F6D16C1F38D80D0002338C /* CTVehicleListFilterHeaderViewModel.m in Sources */,
+				E7B8EDD51F42041000638D6F /* CTBookingViewController.m in Sources */,
 				455B59441DCC914400CA4790 /* CartrawlerSDK.m in Sources */,
 				E7B19CB81F33BA89000738CB /* CTSelectedVehicleViewModel.m in Sources */,
 			);

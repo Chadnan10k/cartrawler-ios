@@ -120,6 +120,10 @@
         case CTNavigationStepSelectedVehicle:
             storyboard = [UIStoryboard storyboardWithName:@"CTSelectedVehicle" bundle:bundle];
             return [storyboard instantiateViewControllerWithIdentifier:@"CTSelectedVehicleViewController"];
+        case CTNavigationStepBooking:
+            storyboard = [UIStoryboard storyboardWithName:@"CTBooking" bundle:bundle];
+            return [storyboard instantiateViewControllerWithIdentifier:@"CTBookingViewController"];
+            break;
         default:
             return nil;
             break;
