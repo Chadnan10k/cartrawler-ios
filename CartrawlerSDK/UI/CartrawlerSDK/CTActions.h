@@ -325,5 +325,10 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      *  Payload: nil
      */
     CTActionSelectedVehicleUserDidTapExtraInfo,
+    /**
+     *  The user tapped the next button
+     *  Payload: nil
+     */
+    CTActionSelectedVehicleUserDidTapNext,
     
 };

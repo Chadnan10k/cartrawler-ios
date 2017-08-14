@@ -32,6 +32,16 @@
     return CTSelectedVehicleViewModel.class;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.view layoutIfNeeded];
+}
+
 - (void)updateWithViewModel:(CTSelectedVehicleViewModel *)viewModel {
     // Force segued views to load
     self.view = self.view;
@@ -43,9 +53,9 @@
     [self.selectedVehicleInsuranceViewController updateWithViewModel:viewModel.selectedVehicleInsuranceViewModel];
     [self.selectedVehicleExtrasViewController updateWithViewModel:viewModel.selectedVehicleExtrasViewModel];
     
-    self.selectedVehicleInfoViewHeight.constant = [self.selectedVehicleInfoViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
-    self.selectedVehicleTabViewHeight.constant = [self.selectedVehicleTabViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
-    self.selectedVehicleInsuranceViewHeight.constant = viewModel.selectedVehicleInsuranceViewModel ? [self.selectedVehicleInsuranceViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height : 0;
+//    self.selectedVehicleInfoViewHeight.constant = [self.selectedVehicleInfoViewController.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    self.selectedVehicleTabViewHeight.constant = [self.selectedVehicleTabViewController.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+//    self.selectedVehicleInsuranceViewHeight.constant = viewModel.selectedVehicleInsuranceViewModel ? [self.selectedVehicleInsuranceViewController.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height : 0;
     [UIView animateWithDuration:0.2 animations:^{
         [self.view layoutIfNeeded];
     }];
@@ -64,6 +74,9 @@
     if ([segue.identifier isEqualToString:@"SelectedVehicleExtras"]) {
         self.selectedVehicleExtrasViewController = segue.destinationViewController;
     }
+}
+- (IBAction)nextButtonTapped:(UIButton *)sender {
+    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapNext payload:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

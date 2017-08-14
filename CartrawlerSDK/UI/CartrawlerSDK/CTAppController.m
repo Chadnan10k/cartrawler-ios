@@ -475,6 +475,9 @@
             selectedVehicleState.flippedExtras[index] =  @(!flipped);
             break;
         }
+        case CTActionSelectedVehicleUserDidTapNext:
+            navigationState.currentNavigationStep = CTNavigationStepBooking;
+            break;
         default:
             break;
     }

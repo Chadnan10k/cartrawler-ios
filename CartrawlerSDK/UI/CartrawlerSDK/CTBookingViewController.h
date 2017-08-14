@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTViewControllerProtocol.h"
 
-@interface CTBookingViewController : UIViewController
+@interface CTBookingViewController : UIViewController <CTViewControllerProtocol>
 
 @end

@@ -358,6 +358,8 @@
 		E7B8EDD11F4203EA00638D6F /* CTBooking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B8EDD01F4203EA00638D6F /* CTBooking.storyboard */; };
 		E7B8EDD41F42041000638D6F /* CTBookingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8EDD21F42041000638D6F /* CTBookingViewController.h */; };
 		E7B8EDD51F42041000638D6F /* CTBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8EDD31F42041000638D6F /* CTBookingViewController.m */; };
+		E7B8EDD81F4220F200638D6F /* CTBookingViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8EDD61F4220F200638D6F /* CTBookingViewModel.h */; };
+		E7B8EDD91F4220F200638D6F /* CTBookingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8EDD71F4220F200638D6F /* CTBookingViewModel.m */; };
 		E7BB87A01EA7CE900008CBAD /* CTTriangleView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BB879E1EA7CE900008CBAD /* CTTriangleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7BB87A11EA7CE900008CBAD /* CTTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */; };
 		E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */; };
@@ -738,6 +740,8 @@
 		E7B8EDD01F4203EA00638D6F /* CTBooking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CTBooking.storyboard; sourceTree = "<group>"; };
 		E7B8EDD21F42041000638D6F /* CTBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingViewController.h; sourceTree = "<group>"; };
 		E7B8EDD31F42041000638D6F /* CTBookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingViewController.m; sourceTree = "<group>"; };
+		E7B8EDD61F4220F200638D6F /* CTBookingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingViewModel.h; sourceTree = "<group>"; };
+		E7B8EDD71F4220F200638D6F /* CTBookingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingViewModel.m; sourceTree = "<group>"; };
 		E7BB879E1EA7CE900008CBAD /* CTTriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTriangleView.h; sourceTree = "<group>"; };
 		E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTriangleView.m; sourceTree = "<group>"; };
 		E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTSDKLocalizationConstants.h; path = Localization/CTSDKLocalizationConstants.h; sourceTree = "<group>"; };
@@ -1909,6 +1913,8 @@
 			children = (
 				E7B8EDD21F42041000638D6F /* CTBookingViewController.h */,
 				E7B8EDD31F42041000638D6F /* CTBookingViewController.m */,
+				E7B8EDD61F4220F200638D6F /* CTBookingViewModel.h */,
+				E7B8EDD71F4220F200638D6F /* CTBookingViewModel.m */,
 			);
 			name = Container;
 			sourceTree = "<group>";
@@ -2073,6 +2079,7 @@
 				455B585E1DCC914300CA4790 /* CTDesignableView.h in Headers */,
 				455B58601DCC914300CA4790 /* CTNavigationView.h in Headers */,
 				E76900C51E71A31200D729FF /* CTAlertViewPresentationAnimationController.h in Headers */,
+				E7B8EDD81F4220F200638D6F /* CTBookingViewModel.h in Headers */,
 				E78299641F2944A300C20525 /* CTVehicleListState.h in Headers */,
 				454D91F01DD34E24001AE96C /* Reachability.h in Headers */,
 				455B58661DCC914300CA4790 /* NSStringUtils.h in Headers */,
@@ -2462,6 +2469,7 @@
 				E7B19CDF1F33E9A6000738CB /* CTSelectedVehicleExtrasViewController.m in Sources */,
 				E775DBF41F327C39009039D8 /* CTLockImageView.m in Sources */,
 				459CB2E91DDB5BF8008522BA /* CTNextButton.m in Sources */,
+				E7B8EDD91F4220F200638D6F /* CTBookingViewModel.m in Sources */,
 				E782992C1F27B63200C20525 /* CTSplashCarView.m in Sources */,
 				E78298DD1F204BA700C20525 /* CTSearchLocationsViewModel.m in Sources */,
 				BCDB4BEA1E3F50C6008004DA /* CTAnalyticsEvent.m in Sources */,
