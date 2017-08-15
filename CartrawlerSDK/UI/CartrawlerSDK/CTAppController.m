@@ -12,6 +12,7 @@
 #import "CTUserInterfaceController.h"
 #import "CTNotificationsController.h"
 #import "CTLoggingController.h"
+#import "CTPaymentController.h"
 #import "CTValidationSearch.h"
 
 #import "CartrawlerSDK+NSDateUtils.h"
@@ -24,6 +25,7 @@
 @property (nonatomic) CTUserInterfaceController *userInterfaceController;
 @property (nonatomic) CTNotificationsController *notificationsController;
 @property (nonatomic) CTLoggingController *loggingController;
+@property (nonatomic) CTPaymentController *paymentController;
 @end
 
 @implementation CTAppController
@@ -61,7 +63,6 @@
             self.appState.navigationState = [CTNavigationState new];
             self.appState.searchState = [CTSearchState new];
             self.appState.vehicleListState = [CTVehicleListState new];
-            //self.appState.selectedVehicleState = [CTSelectedVehicleState new];
             // TODO: Only create states when needed above
             
             self.apiController = [CTAPIController new];
@@ -277,25 +278,43 @@
             navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings), @(CTNavigationModalSearchSettingsSelection)];
             break;
         case CTActionSearchSettingsDetailsUserDidTapCancelButton:
-            navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings)];
+            if (navigationState.currentNavigationStep == CTNavigationStepSearch) {
+                navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings)];
+            }
+            if (navigationState.currentNavigationStep == CTNavigationStepBooking) {
+                navigationState.modalViewControllers = @[];
+                bookingState.selectedTextfield = CTBookingTextfieldNone;
+            }
+            
             break;
         case CTActionSearchSettingsDetailsUserDidSelectItem:
             switch (searchState.selectedSettings) {
                 case CTSearchSearchSettingsCountry:
-                    userSettingsState.countryCode = [[(CTCSVItem *)payload code] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    if (navigationState.currentNavigationStep == CTNavigationStepSearch) {
+                        userSettingsState.countryCode = [[(CTCSVItem *)payload code] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                        [self requestVehicleAvailability:appState];
+                        navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings)];
+                    }
+                    if (navigationState.currentNavigationStep == CTNavigationStepBooking) {
+                        bookingState.country = payload;
+                        navigationState.modalViewControllers = @[];
+                        bookingState.selectedTextfield = CTBookingTextfieldFlightNumber;
+                    }
                     break;
                 case CTSearchSearchSettingsLanguage:
                     // TODO: Fix the inversion of code and name in the language CSV
                     userSettingsState.languageCode = [[(CTCSVItem *)payload name] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    [self requestVehicleAvailability:appState];
+                    navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings)];
                     break;
                 case CTSearchSearchSettingsCurrency:
                     userSettingsState.currencyCode = [[(CTCSVItem *)payload code] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    [self requestVehicleAvailability:appState];
+                    navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings)];
                     break;
                 default:
                     break;
             }
-            [self requestVehicleAvailability:appState];
-            navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings)];
             break;
         case CTActionSearchLocationsUserDidEnterCharacters:
             searchState.searchBarText = payload;
@@ -376,12 +395,13 @@
             appState.vehicleListState = [CTVehicleListState new];
             break;
         case CTActionVehicleListUserDidTapVehicle: {
-            selectedVehicleState.selectedAvailabilityItem = payload;
-            selectedVehicleState.addedExtras = [NSMutableArray new];
-            selectedVehicleState.flippedExtras = [NSMutableArray new];
-            [selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment enumerateObjectsUsingBlock:^(CTExtraEquipment * _Nonnull extra, NSUInteger idx, BOOL * _Nonnull stop) {
-                selectedVehicleState.addedExtras[idx] = extra.isIncludedInRate ? @1 : @0;
-                selectedVehicleState.flippedExtras[idx] = @0;
+            appState.selectedVehicleState = [CTSelectedVehicleState new];
+            appState.selectedVehicleState.selectedAvailabilityItem = payload;
+            appState.selectedVehicleState.addedExtras = [NSMutableArray new];
+            appState.selectedVehicleState.flippedExtras = [NSMutableArray new];
+            [appState.selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment enumerateObjectsUsingBlock:^(CTExtraEquipment * _Nonnull extra, NSUInteger idx, BOOL * _Nonnull stop) {
+                appState.selectedVehicleState.addedExtras[idx] = extra.isIncludedInRate ? @1 : @0;
+                appState.selectedVehicleState.flippedExtras[idx] = @0;
             }];
             navigationState.currentNavigationStep = CTNavigationStepSelectedVehicle;
             [self.apiController requestInsuranceForSelectedVehicleWithState:appState];
@@ -424,7 +444,7 @@
         // Selected Vehicle Actions
         case CTActionSelectedVehicleUserDidTapBack:
             navigationState.currentNavigationStep = CTNavigationStepVehicleList;
-            appState.selectedVehicleState = [CTSelectedVehicleState new];
+            appState.selectedVehicleState = nil;
             break;
         case CTActionSelectedVehicleUserDidTapTab:
             selectedVehicleState.selectedTab = [payload integerValue];
@@ -484,30 +504,81 @@
             
         // Booking
         
-        case CTActionBookingPaymentViewCreated:
+        case CTActionBookingPaymentContainerViewDidLoad:
+            self.paymentController = [[CTPaymentController alloc] initWithContainerView:payload];
             break;
         case CTActionBookingUserDidTapFirstName:
-            
+            bookingState.selectedTextfield = CTBookingTextfieldFirstName;
+            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapLastName:
+            bookingState.selectedTextfield = CTBookingTextfieldLastName;
+            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapEmailAddress:
+            bookingState.selectedTextfield = CTBookingTextfieldEmailAddress;
+            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapPrefix:
+            bookingState.selectedTextfield = CTBookingTextfieldPrefix;
+            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapPhoneNumber:
+            bookingState.selectedTextfield = CTBookingTextfieldPhoneNumber;
+            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapCountry:
+            bookingState.selectedTextfield = CTBookingTextfieldCountry;
+            navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettingsSelection)];
+            userSettingsState.keyboardHeight = nil;
+            // TODO: Extract to shared state
+            searchState.selectedSettings = CTSearchSearchSettingsCountry;
             break;
         case CTActionBookingUserDidTapFlightNumber:
+            bookingState.selectedTextfield = CTBookingTextfieldFlightNumber;
+            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapRentalConditions:
             break;
         case CTActionBookingUserDidTapTermsAndConditions:
             break;
         case CTActionBookingUserDidEnterCharacters:
+            switch (bookingState.selectedTextfield) {
+                case CTBookingTextfieldFirstName:
+                    bookingState.firstName = payload;
+                    break;
+                case CTBookingTextfieldLastName:
+                    bookingState.lastName = payload;
+                    break;
+                case CTBookingTextfieldEmailAddress:
+                    bookingState.emailAddress = payload;
+                    break;
+                case CTBookingTextfieldPrefix:
+                    bookingState.prefix = [payload stringByReplacingOccurrencesOfString:@"+" withString:@""];
+                    break;
+                case CTBookingTextfieldPhoneNumber:
+                    bookingState.phoneNumber = payload;
+                    break;
+                case CTBookingTextfieldFlightNumber:
+                    bookingState.flightNumber = payload;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case CTActionBookingInputViewUserDidSelectCancel:
+            bookingState.selectedTextfield = CTBookingTextfieldNone;
+            break;
+        case CTActionBookingInputViewUserDidSelectDone:
+            bookingState.selectedTextfield++;
+            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapNext:
+              [self.paymentController makePaymentWithState:appState];
+            break;
+        case CTActionBookingUserDidTapBack:
+            navigationState.currentNavigationStep = CTNavigationStepSelectedVehicle;
+            appState.bookingState = nil;
             break;
         default:
             break;

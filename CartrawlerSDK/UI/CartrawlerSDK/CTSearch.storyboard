@@ -244,7 +244,7 @@
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="3wO-CS-Ylz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="549"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Pick-up Location" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z8R-LJ-6TG" customClass="JVFloatLabeledTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Pick-up Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z8R-LJ-6TG" customClass="JVFloatLabeledTextField">
                                         <rect key="frame" x="24" y="40" width="327" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="eHJ-LM-jcG"/>
@@ -325,7 +325,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYr-8N-g2T" userLabel="Dropoff Location View">
                                         <rect key="frame" x="24" y="168" width="327" height="64"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Drop-off Location" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rX4-kj-8iQ" customClass="JVFloatLabeledTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Drop-off Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rX4-kj-8iQ" customClass="JVFloatLabeledTextField">
                                                 <rect key="frame" x="0.0" y="0.0" width="327" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="UYW-j3-C8M"/>
@@ -362,7 +362,7 @@
                                             <constraint firstAttribute="height" constant="64" id="sD3-8h-EyA"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Select Dates" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LEe-EA-THo" customClass="JVFloatLabeledTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Select Dates" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LEe-EA-THo" customClass="JVFloatLabeledTextField">
                                         <rect key="frame" x="24" y="248" width="327" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="1gd-mc-PNp"/>
@@ -391,7 +391,7 @@
                                             <outlet property="delegate" destination="qN4-qG-eMz" id="cWL-Gi-84M"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Pick-up Time" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E14-FB-mrq" customClass="JVFloatLabeledTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Pick-up Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E14-FB-mrq" customClass="JVFloatLabeledTextField">
                                         <rect key="frame" x="24" y="328" width="148" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="pxR-yG-kke"/>
@@ -420,7 +420,7 @@
                                             <outlet property="delegate" destination="qN4-qG-eMz" id="xP6-Kc-vlt"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Drop-off Time" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fiu-aQ-qxZ" customClass="JVFloatLabeledTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Drop-off Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fiu-aQ-qxZ" customClass="JVFloatLabeledTextField">
                                         <rect key="frame" x="203" y="328" width="148" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="i9K-eO-E9u"/>
@@ -507,7 +507,7 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kh5-7u-LzP" userLabel="Driver Age View">
                                         <rect key="frame" x="24" y="456" width="327" height="0.0"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Driver Age" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="839-56-wdl" customClass="JVFloatLabeledTextField">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Driver Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="839-56-wdl" customClass="JVFloatLabeledTextField">
                                                 <rect key="frame" x="0.0" y="0.0" width="327" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="FRe-Tf-8Mf"/>
@@ -868,7 +868,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="414" height="322"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qL4-5A-qZf" id="q2e-b7-D5U">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="321.66666666666669"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="321"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0ag-qi-ULF">
@@ -1210,7 +1210,7 @@
                                     <navigationItem id="KWO-3e-beH">
                                         <nil key="title"/>
                                         <view key="titleView" contentMode="scaleToFill" id="cQn-dZ-fAb">
-                                            <rect key="frame" x="112.66666666666669" y="25.666666666666671" width="150" height="33"/>
+                                            <rect key="frame" x="113" y="26" width="150" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frankfurt Airport (HHN)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JY5-Nj-eku">
@@ -1220,7 +1220,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24 Jul, 10:00am - 31 Jul 10:00am " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c23-gK-7n5">
-                                                    <rect key="frame" x="-20.333333333333329" y="17" width="191.66666666666669" height="15"/>
+                                                    <rect key="frame" x="-21" y="17" width="193" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1246,16 +1246,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pu9-gK-CGf" userLabel="Logo Row 1">
-                                <rect key="frame" x="16" y="214.33333333333331" width="343" height="74.999999999999943"/>
+                                <rect key="frame" x="16" y="214" width="343" height="75"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srJ-w7-LKY" userLabel="Left Logo">
-                                        <rect key="frame" x="6" y="7" width="105" height="61.999999999999972"/>
+                                        <rect key="frame" x="6" y="7" width="105" height="62"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="0oy-XB-ygj">
-                                                <rect key="frame" x="0.0" y="0.0" width="105" height="61.999999999999972"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="105" height="62"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avis" translatesAutoresizingMaskIntoConstraints="NO" id="pPh-T8-qub">
-                                                <rect key="frame" x="7" y="6" width="91" height="33.666666666666657"/>
+                                                <rect key="frame" x="7" y="6" width="91" height="34"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1264,7 +1264,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af0-UY-J4Q" userLabel="Tick">
-                                                <rect key="frame" x="42.666666666666671" y="39.666666666666657" width="19.666666666666657" height="22.333333333333314"/>
+                                                <rect key="frame" x="45" y="40" width="17" height="22"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1284,13 +1284,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xpy-Jf-jNV" userLabel="Middle Logo">
-                                        <rect key="frame" x="119" y="7" width="105" height="61.999999999999972"/>
+                                        <rect key="frame" x="119" y="7" width="105" height="62"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="yel-8r-UR5">
-                                                <rect key="frame" x="0.0" y="0.0" width="105" height="61.999999999999972"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="105" height="62"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alamo" translatesAutoresizingMaskIntoConstraints="NO" id="XX7-uf-TyX">
-                                                <rect key="frame" x="7" y="6" width="91" height="33.666666666666657"/>
+                                                <rect key="frame" x="7" y="6" width="91" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="XX7-uf-TyX" secondAttribute="height" multiplier="19:7" id="WvP-GL-8Ra"/>
                                                 </constraints>
@@ -1302,7 +1302,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6d-2F-S4e" userLabel="Tick">
-                                                <rect key="frame" x="42.666666666666657" y="39.666666666666657" width="19.666666666666686" height="22.333333333333314"/>
+                                                <rect key="frame" x="45" y="40" width="17" height="22"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1323,13 +1323,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zf5-7V-3Dy" userLabel="Right Logo">
-                                        <rect key="frame" x="232" y="7" width="105" height="61.999999999999972"/>
+                                        <rect key="frame" x="232" y="7" width="105" height="62"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="I7x-Iv-9d8">
-                                                <rect key="frame" x="0.0" y="0.0" width="105" height="61.999999999999972"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="105" height="62"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hertz" translatesAutoresizingMaskIntoConstraints="NO" id="hDN-gL-f5L">
-                                                <rect key="frame" x="7" y="6" width="91" height="33.666666666666657"/>
+                                                <rect key="frame" x="7" y="6" width="91" height="34"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1338,7 +1338,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2KD-RP-bD9" userLabel="Tick">
-                                                <rect key="frame" x="42.666666666666686" y="39.666666666666657" width="19.666666666666629" height="22.333333333333314"/>
+                                                <rect key="frame" x="45" y="40" width="17" height="22"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1375,16 +1375,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kp8-KX-oWJ" userLabel="Logo Row 2">
-                                <rect key="frame" x="16" y="289.33333333333331" width="343" height="75.333333333333371"/>
+                                <rect key="frame" x="16" y="289" width="343" height="76"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUg-Ay-jvS" userLabel="Left Logo">
-                                        <rect key="frame" x="6" y="6.6666666666666856" width="105" height="62"/>
+                                        <rect key="frame" x="6" y="7" width="105" height="62"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="a9I-R2-H7d">
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="62"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keddy" translatesAutoresizingMaskIntoConstraints="NO" id="T2k-MN-zpe">
-                                                <rect key="frame" x="7" y="6" width="91" height="33.333333333333314"/>
+                                                <rect key="frame" x="7" y="6" width="91" height="33"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1393,7 +1393,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbM-PV-ijD" userLabel="Tick">
-                                                <rect key="frame" x="42.666666666666671" y="39.333333333333314" width="19.666666666666657" height="22.666666666666686"/>
+                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1413,13 +1413,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5MF-rV-dxu" userLabel="Middle Logo">
-                                        <rect key="frame" x="119" y="6.6666666666666856" width="105" height="62"/>
+                                        <rect key="frame" x="119" y="7" width="105" height="62"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="owX-kC-uUq">
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="62"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sixt" translatesAutoresizingMaskIntoConstraints="NO" id="gYe-KD-v1k">
-                                                <rect key="frame" x="7" y="6" width="91" height="33.333333333333314"/>
+                                                <rect key="frame" x="7" y="6" width="91" height="33"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1428,7 +1428,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAH-rN-CpQ" userLabel="Tick">
-                                                <rect key="frame" x="42.666666666666657" y="39.333333333333314" width="19.666666666666686" height="22.666666666666686"/>
+                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1448,13 +1448,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPZ-7H-1cR" userLabel="Right Logo">
-                                        <rect key="frame" x="232" y="6.6666666666666856" width="105" height="62"/>
+                                        <rect key="frame" x="232" y="7" width="105" height="62"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoBackground" translatesAutoresizingMaskIntoConstraints="NO" id="77J-76-NmO">
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="62"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noleggiare" translatesAutoresizingMaskIntoConstraints="NO" id="wq7-PI-DXc">
-                                                <rect key="frame" x="7" y="6" width="91" height="33.333333333333314"/>
+                                                <rect key="frame" x="7" y="6" width="91" height="33"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1463,7 +1463,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xi4-mu-yF6" userLabel="Tick">
-                                                <rect key="frame" x="42.666666666666686" y="39.333333333333314" width="19.666666666666629" height="22.666666666666686"/>
+                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1500,7 +1500,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ruf-4b-LXs" userLabel="Logo Row 3">
-                                <rect key="frame" x="16" y="364.66666666666669" width="343" height="75"/>
+                                <rect key="frame" x="16" y="365" width="343" height="75"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLC-j7-Rfh" userLabel="Left Logo">
                                         <rect key="frame" x="6" y="6" width="105" height="62"/>
@@ -1509,7 +1509,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="62"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zoomcar" translatesAutoresizingMaskIntoConstraints="NO" id="FOE-tA-QSx">
-                                                <rect key="frame" x="7" y="6" width="91" height="33.333333333333314"/>
+                                                <rect key="frame" x="7" y="6" width="91" height="33"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1518,7 +1518,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHd-cU-vJa" userLabel="Tick">
-                                                <rect key="frame" x="42.666666666666671" y="39.333333333333314" width="19.666666666666657" height="22.666666666666686"/>
+                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1544,7 +1544,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="62"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locauto" translatesAutoresizingMaskIntoConstraints="NO" id="mV8-HA-DmB">
-                                                <rect key="frame" x="7" y="6" width="91" height="33.333333333333314"/>
+                                                <rect key="frame" x="7" y="6" width="91" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="mV8-HA-DmB" secondAttribute="height" multiplier="19:7" id="O1D-hH-t4B"/>
                                                 </constraints>
@@ -1556,7 +1556,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYS-rY-BHL" userLabel="Tick">
-                                                <rect key="frame" x="42.666666666666657" y="39.333333333333314" width="19.666666666666686" height="22.666666666666686"/>
+                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1583,7 +1583,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="62"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redspot" translatesAutoresizingMaskIntoConstraints="NO" id="iVh-bk-3jw">
-                                                <rect key="frame" x="7" y="6" width="91" height="33.333333333333314"/>
+                                                <rect key="frame" x="7" y="6" width="91" height="33"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1592,7 +1592,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYB-9V-8LZ" userLabel="Tick">
-                                                <rect key="frame" x="42.666666666666686" y="39.333333333333314" width="19.666666666666629" height="22.666666666666686"/>
+                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1629,7 +1629,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJC-I9-lcg" userLabel="Logo Row 4">
-                                <rect key="frame" x="16" y="439.66666666666663" width="343" height="74.999999999999886"/>
+                                <rect key="frame" x="16" y="440" width="343" height="75"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAl-Sn-TW4" userLabel="Left Logo">
                                         <rect key="frame" x="6" y="6" width="105" height="62"/>
@@ -1638,7 +1638,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="62"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alamo" translatesAutoresizingMaskIntoConstraints="NO" id="EwJ-a7-dg3">
-                                                <rect key="frame" x="7" y="6" width="91" height="33.666666666666629"/>
+                                                <rect key="frame" x="7" y="6" width="91" height="33"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1647,7 +1647,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RB-dB-oXl" userLabel="Tick">
-                                                <rect key="frame" x="42.666666666666671" y="39.666666666666629" width="19.666666666666657" height="22.333333333333371"/>
+                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1673,7 +1673,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="62"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thrifty" translatesAutoresizingMaskIntoConstraints="NO" id="GSA-iS-bLP">
-                                                <rect key="frame" x="7" y="6" width="91" height="33.666666666666629"/>
+                                                <rect key="frame" x="7" y="6" width="91" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="GSA-iS-bLP" secondAttribute="height" multiplier="19:7" id="pXB-dz-ME6"/>
                                                 </constraints>
@@ -1685,7 +1685,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9a-W3-54q" userLabel="Tick">
-                                                <rect key="frame" x="42.666666666666657" y="39.666666666666629" width="19.666666666666686" height="22.333333333333371"/>
+                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1711,7 +1711,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="62"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firefly" translatesAutoresizingMaskIntoConstraints="NO" id="Jn6-xI-9Gj">
-                                                <rect key="frame" x="7" y="6" width="91" height="33.666666666666629"/>
+                                                <rect key="frame" x="7" y="6" width="91" height="33"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1720,7 +1720,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yn4-09-atu" userLabel="Tick">
-                                                <rect key="frame" x="42.666666666666686" y="39.666666666666629" width="19.666666666666629" height="22.333333333333371"/>
+                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1757,13 +1757,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eex-oI-gHm" userLabel="Spacer View 3">
-                                <rect key="frame" x="0.0" y="514.66666666666652" width="375" height="75.333333333333371"/>
+                                <rect key="frame" x="0.0" y="515" width="375" height="75"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vc-DZ-DrS" userLabel="Spacer View 4">
                                 <rect key="frame" x="0.0" y="590" width="375" height="75"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYu-F3-YB6" userLabel="Spacer View 2">
-                                <rect key="frame" x="0.0" y="139" width="375" height="75.333333333333343"/>
+                                <rect key="frame" x="0.0" y="139" width="375" height="75"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
@@ -2038,7 +2038,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="04o-KZ-O9v" id="JTy-Lz-t9y">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

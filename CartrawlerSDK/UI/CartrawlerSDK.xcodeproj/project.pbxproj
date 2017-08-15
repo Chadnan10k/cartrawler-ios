@@ -187,6 +187,9 @@
 		E727622C1ECE3B240040C096 /* CTToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = E727622A1ECE3B240040C096 /* CTToastView.m */; };
 		E72D4D721F1E7503007130A2 /* CTAppController.h in Headers */ = {isa = PBXBuildFile; fileRef = E72D4D701F1E7503007130A2 /* CTAppController.h */; };
 		E72D4D731F1E7503007130A2 /* CTAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D4D711F1E7503007130A2 /* CTAppController.m */; };
+		E733BA5B1F4355C500076516 /* CTPayment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E733BA5A1F4355C500076516 /* CTPayment.framework */; };
+		E733BA5F1F43807700076516 /* CTPaymentController.h in Headers */ = {isa = PBXBuildFile; fileRef = E733BA5D1F43807700076516 /* CTPaymentController.h */; };
+		E733BA601F43807700076516 /* CTPaymentController.m in Sources */ = {isa = PBXBuildFile; fileRef = E733BA5E1F43807700076516 /* CTPaymentController.m */; };
 		E7404A781E82F3AB009BF7DF /* CTTabContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7404A791E82F3AB009BF7DF /* CTTabContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7404A771E82F3AB009BF7DF /* CTTabContainerView.m */; };
 		E7404A801E82F90C009BF7DF /* CTTabHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A7E1E82F90C009BF7DF /* CTTabHeaderView.h */; };
@@ -571,6 +574,9 @@
 		E72D4D701F1E7503007130A2 /* CTAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAppController.h; sourceTree = "<group>"; };
 		E72D4D711F1E7503007130A2 /* CTAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAppController.m; sourceTree = "<group>"; };
 		E72D4D751F1E755D007130A2 /* CTActions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTActions.h; sourceTree = "<group>"; };
+		E733BA5A1F4355C500076516 /* CTPayment.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CTPayment.framework; sourceTree = "<group>"; };
+		E733BA5D1F43807700076516 /* CTPaymentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPaymentController.h; sourceTree = "<group>"; };
+		E733BA5E1F43807700076516 /* CTPaymentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPaymentController.m; sourceTree = "<group>"; };
 		E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabContainerView.h; sourceTree = "<group>"; };
 		E7404A771E82F3AB009BF7DF /* CTTabContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabContainerView.m; sourceTree = "<group>"; };
 		E7404A7E1E82F90C009BF7DF /* CTTabHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabHeaderView.h; sourceTree = "<group>"; };
@@ -778,6 +784,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				455B59581DCC954400CA4790 /* CartrawlerAPI.framework in Frameworks */,
+				E733BA5B1F4355C500076516 /* CTPayment.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -888,6 +895,7 @@
 		455B59561DCC954300CA4790 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E733BA5A1F4355C500076516 /* CTPayment.framework */,
 				455B59571DCC954400CA4790 /* CartrawlerAPI.framework */,
 			);
 			name = Frameworks;
@@ -1282,8 +1290,9 @@
 			children = (
 				E72D4D701F1E7503007130A2 /* CTAppController.h */,
 				E72D4D711F1E7503007130A2 /* CTAppController.m */,
-				E78298D41F20409F00C20525 /* API */,
 				E78298D31F20409600C20525 /* User Interface */,
+				E78298D41F20409F00C20525 /* Vehicle API */,
+				E733BA5C1F43804A00076516 /* Payment API */,
 				E782996D1F2A7CDB00C20525 /* Notifications */,
 				E7F6D1741F3A75140002338C /* Logging */,
 			);
@@ -1296,6 +1305,15 @@
 				E72D4D751F1E755D007130A2 /* CTActions.h */,
 			);
 			name = Actions;
+			sourceTree = "<group>";
+		};
+		E733BA5C1F43804A00076516 /* Payment API */ = {
+			isa = PBXGroup;
+			children = (
+				E733BA5D1F43807700076516 /* CTPaymentController.h */,
+				E733BA5E1F43807700076516 /* CTPaymentController.m */,
+			);
+			name = "Payment API";
 			sourceTree = "<group>";
 		};
 		E7404A751E82F01C009BF7DF /* Tab Manager */ = {
@@ -1530,7 +1548,7 @@
 			name = "User Interface";
 			sourceTree = "<group>";
 		};
-		E78298D41F20409F00C20525 /* API */ = {
+		E78298D41F20409F00C20525 /* Vehicle API */ = {
 			isa = PBXGroup;
 			children = (
 				E782989A1F1EA35F00C20525 /* CTAPIController.h */,
@@ -1538,7 +1556,7 @@
 				E78299011F26EE4900C20525 /* CTAPIResponse.h */,
 				E78299021F26EE4900C20525 /* CTAPIResponse.m */,
 			);
-			name = API;
+			name = "Vehicle API";
 			sourceTree = "<group>";
 		};
 		E78298E41F21866B00C20525 /* Search Calendar */ = {
@@ -2122,6 +2140,7 @@
 				E7B19CB71F33BA89000738CB /* CTSelectedVehicleViewModel.h in Headers */,
 				E78298DC1F204BA700C20525 /* CTSearchLocationsViewModel.h in Headers */,
 				E775DBEE1F327BB4009039D8 /* CTCreditCardImageView.h in Headers */,
+				E733BA5F1F43807700076516 /* CTPaymentController.h in Headers */,
 				E76900C91E71A45800D729FF /* CTAlertViewDismissalAnimationController.h in Headers */,
 				455B58BF1DCC914400CA4790 /* CTTimePickerView.h in Headers */,
 				E7B19CCA1F33E905000738CB /* CTSelectedVehicleTabViewController.h in Headers */,
@@ -2482,6 +2501,7 @@
 				450725B31DD9C86F00D56C8A /* CartrawlerSDK+UIImageView.m in Sources */,
 				E782990D1F27A3F600C20525 /* CTSearchSettingsViewController.m in Sources */,
 				E775DBE71F3273A8009039D8 /* CTSearchUSPDetailViewModel.m in Sources */,
+				E733BA601F43807700076516 /* CTPaymentController.m in Sources */,
 				E7B19CDF1F33E9A6000738CB /* CTSelectedVehicleExtrasViewController.m in Sources */,
 				E775DBF41F327C39009039D8 /* CTLockImageView.m in Sources */,
 				459CB2E91DDB5BF8008522BA /* CTNextButton.m in Sources */,
@@ -2549,6 +2569,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CartrawlerSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2580,6 +2604,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CartrawlerSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

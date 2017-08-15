@@ -29,15 +29,15 @@
     switch (searchState.selectedSettings) {
         case CTSearchSearchSettingsCountry:
             fileName = @"CTISOCountries";
-            viewModel.title = @"Select Country";// CTLocalizedString(CTRentalSettingsSelectCountry);
+            viewModel.title = CTLocalizedString(CTRentalSettingsSelectCountry);
             break;
         case CTSearchSearchSettingsLanguage:
             fileName = @"CTLanguages";
-            viewModel.title = @"Select Language";//CTLocalizedString(CTRentalSettingsSelectLanguage);
+            viewModel.title = CTLocalizedString(CTRentalSettingsSelectLanguage);
             break;
         case CTSearchSearchSettingsCurrency:
             fileName = @"CTCurrency";
-            viewModel.title = @"Select Currency";//CTLocalizedString(CTRentalSettingsSelectCurrency);
+            viewModel.title = CTLocalizedString(CTRentalSettingsSelectCurrency);
             break;
         default:
             break;

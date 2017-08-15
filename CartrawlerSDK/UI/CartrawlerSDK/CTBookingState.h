@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTCSVItem.h"
 
 typedef NS_ENUM(NSInteger, CTBookingTextfield) {
     CTBookingTextfieldNone,
     CTBookingTextfieldFirstName,
     CTBookingTextfieldLastName,
+    CTBookingTextfieldEmailAddress,
     CTBookingTextfieldPrefix,
     CTBookingTextfieldPhoneNumber,
     CTBookingTextfieldCountry,
@@ -24,8 +26,9 @@ typedef NS_ENUM(NSInteger, CTBookingTextfield) {
 @property (nonatomic) CTBookingTextfield selectedTextfield;
 @property (nonatomic) NSString *firstName;
 @property (nonatomic) NSString *lastName;
+@property (nonatomic) NSString *emailAddress;
 @property (nonatomic) NSString *prefix;
 @property (nonatomic) NSString *phoneNumber;
-@property (nonatomic) NSString *country;
+@property (nonatomic) CTCSVItem *country;
 @property (nonatomic) NSString *flightNumber;
 @end

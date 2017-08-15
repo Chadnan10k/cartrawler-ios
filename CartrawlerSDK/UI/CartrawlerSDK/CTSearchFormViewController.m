@@ -150,6 +150,7 @@
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    // TODO: fix tab problem
     switch (textField.tag) {
         case CTSearchFormTextFieldPickupLocation:
             [CTAppController dispatchAction:CTActionSearchUserDidTapPickupTextField payload:nil];

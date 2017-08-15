@@ -333,10 +333,10 @@ typedef NS_ENUM(NSUInteger, CTAction) {
     
     // Booking
     /**
-     *  The system created a payment view
-     *  Payload: a payment view
+     *  The system created a payment container view
+     *  Payload: a payment container view
      */
-    CTActionBookingPaymentViewCreated,
+    CTActionBookingPaymentContainerViewDidLoad,
     /**
      *  The user tapped the first name textfield
      *  Payload: nil
@@ -388,9 +388,24 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      */
     CTActionBookingUserDidEnterCharacters,
     /**
+     *  The user selected cancel on the input view
+     *  Payload: nil
+     */
+    CTActionBookingInputViewUserDidSelectCancel,
+    /**
+     *  The user selected done on the input view
+     *  Payload: nil
+     */
+    CTActionBookingInputViewUserDidSelectDone,
+    /**
      *  The user tapped the next button
      *  Payload: nil
      */
     CTActionBookingUserDidTapNext,
+    /**
+     *  The user tapped the back button
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapBack,
     
 };
