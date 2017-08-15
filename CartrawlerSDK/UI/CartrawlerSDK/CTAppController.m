@@ -49,6 +49,7 @@
     CTSearchState *searchState = appState.searchState;
     CTVehicleListState *vehicleListState = appState.vehicleListState;
     CTSelectedVehicleState *selectedVehicleState = appState.selectedVehicleState;
+    CTBookingState *bookingState = appState.bookingState;
     
     [self.loggingController logAction:action payload:payload];
     
@@ -60,7 +61,8 @@
             self.appState.navigationState = [CTNavigationState new];
             self.appState.searchState = [CTSearchState new];
             self.appState.vehicleListState = [CTVehicleListState new];
-            self.appState.selectedVehicleState = [CTSelectedVehicleState new];
+            //self.appState.selectedVehicleState = [CTSelectedVehicleState new];
+            // TODO: Only create states when needed above
             
             self.apiController = [CTAPIController new];
             self.userInterfaceController = [CTUserInterfaceController new];
@@ -477,6 +479,35 @@
         }
         case CTActionSelectedVehicleUserDidTapNext:
             navigationState.currentNavigationStep = CTNavigationStepBooking;
+            appState.bookingState = [CTBookingState new];
+            break;
+            
+        // Booking
+        
+        case CTActionBookingPaymentViewCreated:
+            break;
+        case CTActionBookingUserDidTapFirstName:
+            
+            break;
+        case CTActionBookingUserDidTapLastName:
+            break;
+        case CTActionBookingUserDidTapEmailAddress:
+            break;
+        case CTActionBookingUserDidTapPrefix:
+            break;
+        case CTActionBookingUserDidTapPhoneNumber:
+            break;
+        case CTActionBookingUserDidTapCountry:
+            break;
+        case CTActionBookingUserDidTapFlightNumber:
+            break;
+        case CTActionBookingUserDidTapRentalConditions:
+            break;
+        case CTActionBookingUserDidTapTermsAndConditions:
+            break;
+        case CTActionBookingUserDidEnterCharacters:
+            break;
+        case CTActionBookingUserDidTapNext:
             break;
         default:
             break;

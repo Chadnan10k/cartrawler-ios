@@ -360,6 +360,8 @@
 		E7B8EDD51F42041000638D6F /* CTBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8EDD31F42041000638D6F /* CTBookingViewController.m */; };
 		E7B8EDD81F4220F200638D6F /* CTBookingViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8EDD61F4220F200638D6F /* CTBookingViewModel.h */; };
 		E7B8EDD91F4220F200638D6F /* CTBookingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8EDD71F4220F200638D6F /* CTBookingViewModel.m */; };
+		E7B8EE251F43315A00638D6F /* CTBookingState.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8EE231F43315A00638D6F /* CTBookingState.h */; };
+		E7B8EE261F43315A00638D6F /* CTBookingState.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8EE241F43315A00638D6F /* CTBookingState.m */; };
 		E7BB87A01EA7CE900008CBAD /* CTTriangleView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BB879E1EA7CE900008CBAD /* CTTriangleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7BB87A11EA7CE900008CBAD /* CTTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */; };
 		E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */; };
@@ -742,6 +744,8 @@
 		E7B8EDD31F42041000638D6F /* CTBookingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingViewController.m; sourceTree = "<group>"; };
 		E7B8EDD61F4220F200638D6F /* CTBookingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingViewModel.h; sourceTree = "<group>"; };
 		E7B8EDD71F4220F200638D6F /* CTBookingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingViewModel.m; sourceTree = "<group>"; };
+		E7B8EE231F43315A00638D6F /* CTBookingState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingState.h; sourceTree = "<group>"; };
+		E7B8EE241F43315A00638D6F /* CTBookingState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingState.m; sourceTree = "<group>"; };
 		E7BB879E1EA7CE900008CBAD /* CTTriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTriangleView.h; sourceTree = "<group>"; };
 		E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTriangleView.m; sourceTree = "<group>"; };
 		E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTSDKLocalizationConstants.h; path = Localization/CTSDKLocalizationConstants.h; sourceTree = "<group>"; };
@@ -1436,6 +1440,7 @@
 				E78298ED1F22D4A000C20525 /* Search */,
 				E78299611F29446B00C20525 /* Vehicle List */,
 				E78299661F2945B200C20525 /* Selected Vehicle */,
+				E7B8EE221F43313F00638D6F /* Booking */,
 			);
 			name = State;
 			sourceTree = "<group>";
@@ -1919,6 +1924,15 @@
 			name = Container;
 			sourceTree = "<group>";
 		};
+		E7B8EE221F43313F00638D6F /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				E7B8EE231F43315A00638D6F /* CTBookingState.h */,
+				E7B8EE241F43315A00638D6F /* CTBookingState.m */,
+			);
+			name = Booking;
+			sourceTree = "<group>";
+		};
 		E7BB879D1EA7CE6F0008CBAD /* TriangleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2095,6 +2109,7 @@
 				455B588D1DCC914300CA4790 /* CTLocalisedStrings.h in Headers */,
 				E775DBCF1F326CDC009039D8 /* CTSearchImageView.h in Headers */,
 				455B588F1DCC914300CA4790 /* CTFlightNumberValidation.h in Headers */,
+				E7B8EE251F43315A00638D6F /* CTBookingState.h in Headers */,
 				E7F6D1671F38D7ED0002338C /* CTVehicleListFilterHeaderView.h in Headers */,
 				455B58931DCC914300CA4790 /* CartrawlerSDK+UIColor.h in Headers */,
 				E78298E21F2146F600C20525 /* CTSearchFormViewModel.h in Headers */,
@@ -2351,6 +2366,7 @@
 				BC9546851EB2655C0097312C /* CTFileSystemAccess.m in Sources */,
 				E775DBB81F326BAB009039D8 /* CTCodedImages.m in Sources */,
 				E7F6D1681F38D7ED0002338C /* CTVehicleListFilterHeaderView.m in Sources */,
+				E7B8EE261F43315A00638D6F /* CTBookingState.m in Sources */,
 				455B58571DCC914300CA4790 /* CTPickerView.m in Sources */,
 				455B58591DCC914300CA4790 /* CTTextView.m in Sources */,
 				E7B19CAB1F33A080000738CB /* CTSearchInterstitialViewController.m in Sources */,

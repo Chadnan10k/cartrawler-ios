@@ -13,6 +13,7 @@
 #import "CTSearchState.h"
 #import "CTVehicleListState.h"
 #import "CTSelectedVehicleState.h"
+#import "CTBookingState.h"
 
 @interface CTAppState : NSObject
 @property (nonatomic) CTUserSettingsState *userSettingsState;
@@ -21,4 +22,5 @@
 @property (nonatomic) CTSearchState *searchState;
 @property (nonatomic) CTVehicleListState *vehicleListState;
 @property (nonatomic) CTSelectedVehicleState *selectedVehicleState;
+@property (nonatomic) CTBookingState *bookingState;
 @end

@@ -331,4 +331,66 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      */
     CTActionSelectedVehicleUserDidTapNext,
     
+    // Booking
+    /**
+     *  The system created a payment view
+     *  Payload: a payment view
+     */
+    CTActionBookingPaymentViewCreated,
+    /**
+     *  The user tapped the first name textfield
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapFirstName,
+    /**
+     *  The user tapped the last name textfield
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapLastName,
+    /**
+     *  The user tapped the email address textfield
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapEmailAddress,
+    /**
+     *  The user tapped the prefix textfield
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapPrefix,
+    /**
+     *  The user tapped the phone number textfield
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapPhoneNumber,
+    /**
+     *  The user tapped the country textfield
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapCountry,
+    /**
+     *  The user tapped the flight number textfield
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapFlightNumber,
+    /**
+     *  The user tapped rental conditions
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapRentalConditions,
+    /**
+     *  The user tapped terms and conditions
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapTermsAndConditions,
+    /**
+     *  The user entered characters
+     *  Payload(NSString *): textfield input
+     */
+    CTActionBookingUserDidEnterCharacters,
+    /**
+     *  The user tapped the next button
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapNext,
+    
 };
