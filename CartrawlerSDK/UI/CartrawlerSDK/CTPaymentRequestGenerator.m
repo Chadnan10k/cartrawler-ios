@@ -239,7 +239,8 @@
 							  @" }",countryName, homeCountry, driverAge, extrasString, flightDetails, refID, refTimeStamp, refURL, insuranceJson];
 	
 	NSString *persona;
-	NSString *myAppId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"MISSING_PLACEHOLDER";
+	NSString *myAppId = [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] != nil || [[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"ACCOUNTID";
+
 	NSString *visitorId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] : @"";
 
 	if ([CTSDKSettings instance].isStandalone) {
@@ -258,9 +259,9 @@
 				   @"           \"Characteristic\" :[{ \r"
 				   @"			  \"@name\":\"MyAccountId\", \r"
 				   @"                 \"@Value\":\"%@\" \r"
-				   @"			}, \r", myAppId];
+				   @"			} \r", myAppId];
 		NSString *orderPth = [NSString stringWithFormat:
-				   @"			{ \r"
+				   @"			,{ \r"
 				   @"			  \"@name\":\"VisitorId\", \r"
 				   @"                 \"@Value\":\"%@\" \r"
 				   @"			} \r"

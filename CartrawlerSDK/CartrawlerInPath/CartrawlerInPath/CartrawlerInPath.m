@@ -157,7 +157,7 @@
 - (void)performVehicleSearch
 {
 	
-	NSString *myAppId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"MISSING_PLACEHOLDER";
+	NSString *myAppId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"ACCOUNTID";
 	NSString *visitorId = [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] != nil ? [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] : @"";
 	NSString *orderId = [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] != nil ? [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] : @"";
 	
