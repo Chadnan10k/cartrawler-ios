@@ -28,11 +28,14 @@
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *addressLine2;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *city;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *postcode;
+@property (weak, nonatomic) IBOutlet UIView *addressDetailsContainer;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *country;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *addressDetailsHeight;
 
 @property (weak, nonatomic) IBOutlet UIView *paymentDetailsContainerView;
 @property (weak, nonatomic) IBOutlet UILabel *securePayment;
+@property (weak, nonatomic) IBOutlet UIView *paymentContainer;
 @property (weak, nonatomic) IBOutlet UILabel *conditions;
 @property (weak, nonatomic) IBOutlet UILabel *extrasReminder;
 @property (nonatomic, strong) UIToolbar *toolbar;
@@ -42,6 +45,7 @@
 @property (nonatomic, weak) CTPaymentSummaryViewController  *paymentSummaryVC;
 @property (weak, nonatomic) IBOutlet UIView *paymentSummaryContainerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *paymentSummaryHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardSpacer;
 @end
 
 @implementation CTBookingViewController
@@ -68,6 +72,7 @@
     self.country.borderStyle = UITextBorderStyleRoundedRect;
     
     self.addressDetailsHeight.constant = 0;
+    self.keyboardSpacer.constant = 0;
     [self.view layoutIfNeeded];
     
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
@@ -107,7 +112,7 @@
     
     [self.paymentSummaryVC didMoveToParentViewController:self];
     
-    [CTAppController dispatchAction:CTActionBookingPaymentContainerViewDidLoad payload:self.paymentDetailsContainerView];
+    [CTAppController dispatchAction:CTActionBookingPaymentContainerViewDidLoad payload:self.paymentContainer];
 }
 
 - (void)updateWithViewModel:(CTBookingViewModel *)viewModel {
@@ -135,66 +140,108 @@
         self.addressDetailsHeight.constant = 377;
     }
     
+//    if (viewModel.keyboardHeight) {
+//        UIView *selectedView;
+//        NSArray *textfields = @[self.firstName, self.lastName, self.emailAddress, self.prefix, self.phoneNumber, self.flightNumber, self.addressLine1, self.addressLine2, self.city, self.postcode, self.country];
+//        for (UITextField *textfield in textfields) {
+//            selectedView = textfield;
+//        }
+//        if (!selectedView) {
+//            selectedView = self.paymentDetailsContainerView;
+//        }
+//        
+//        self.keyboardSpacer.constant = viewModel.keyboardHeight ? viewModel.keyboardHeight.floatValue : 0;
+//        [self.view layoutIfNeeded];
+//        
+//        CGFloat padding = 8;
+//        CGPoint scrollPoint = CGPointMake(0, selectedView.frame.origin.y - padding);
+//        [self.scrollView setContentOffset:scrollPoint animated:YES];
+//    } else if (viewModel.selectedTextfield == CTBookingTextfieldNone) {
+//        [self.view endEditing:YES];
+//    }
+    
+    UIView *selectedView;
     switch (viewModel.selectedTextfield) {
         case CTBookingTextfieldNone:
-            for (JVFloatLabeledTextField *textfield in @[self.firstName, self.lastName, self.emailAddress, self.prefix, self.phoneNumber, self.country, self.flightNumber]) {
-                [textfield resignFirstResponder];
-            }
+            [self.view endEditing:YES];
             break;
         case CTBookingTextfieldFirstName:
-            if (![self.firstName isFirstResponder]) {
-                [self.firstName becomeFirstResponder];
-            }
+            selectedView = self.firstName;
             break;
         case CTBookingTextfieldLastName:
-            if (![self.lastName isFirstResponder]) {
-                [self.lastName becomeFirstResponder];
-            }
+            selectedView = self.lastName;
             break;
         case CTBookingTextfieldEmailAddress:
-            if (![self.emailAddress isFirstResponder]) {
-                [self.emailAddress becomeFirstResponder];
-            }
+            selectedView = self.emailAddress;
             break;
         case CTBookingTextfieldPrefix:
-            if (![self.prefix isFirstResponder]) {
-                [self.prefix becomeFirstResponder];
-            }
+            selectedView = self.prefix;
             break;
         case CTBookingTextfieldPhoneNumber:
-            if (![self.phoneNumber isFirstResponder]) {
-                [self.phoneNumber becomeFirstResponder];
-            }
-            break;
-        case CTBookingTextfieldCountry:
-            if (![self.country isFirstResponder]) {
-                [self.country becomeFirstResponder];
-            } else {
-                [self.view endEditing:YES];
-            }
+            selectedView = self.phoneNumber;
             break;
         case CTBookingTextfieldFlightNumber:
-            if (![self.flightNumber isFirstResponder]) {
-                [self.flightNumber becomeFirstResponder];
-            }
+            selectedView = self.flightNumber;
+            break;
+        case CTBookingTextfieldAddressLine1:
+            selectedView = self.addressLine1;
+            break;
+        case CTBookingTextfieldAddressLine2:
+            selectedView = self.addressLine2;
+            break;
+        case CTBookingTextfieldCity:
+            selectedView = self.city;
+            break;
+        case CTBookingTextfieldPostcode:
+            selectedView = self.postcode;
+            break;
+        case CTBookingTextfieldCountry:
+            selectedView = self.country;
+            [self.view endEditing:YES];
             break;
         case CTBookingTextfieldPayment:
-            [self.scrollView setContentOffset:CGPointMake(0, self.securePayment.frame.origin.y - 24) animated:YES];
+            selectedView = self.paymentDetailsContainerView;
             break;
         default:
             break;
     }
-    if (viewModel.keyboardHeight) {
-        [self keyboardWasShown:viewModel.keyboardHeight.floatValue];
+    
+    // If keyboard update, but there are no first responders, must be payment
+    BOOL textfieldSelected = NO;
+    CGFloat scrollAdjustment = 0.0;
+    NSArray *driverDetailsTextfields = @[self.firstName, self.lastName, self.emailAddress, self.prefix, self.phoneNumber, self.flightNumber];
+    for (UITextField *textfield in driverDetailsTextfields) {
+        if ([textfield isFirstResponder]) {
+            textfieldSelected = YES;
+            scrollAdjustment = 0;
+        }
     }
+    NSArray *addressDetailsTextfields = @[self.addressLine1, self.addressLine2, self.city, self.postcode, self.country];
+    for (UITextField *textfield in addressDetailsTextfields) {
+        if ([textfield isFirstResponder]) {
+            textfieldSelected = YES;
+            scrollAdjustment = self.addressDetailsContainer.frame.origin.y;
+        }
+    }
+
+    if (viewModel.keyboardHeight && !textfieldSelected) {
+        selectedView = self.paymentDetailsContainerView;
+    }
+   
+    self.keyboardSpacer.constant = viewModel.keyboardHeight ? viewModel.keyboardHeight.floatValue : 0;
+    [self.view layoutIfNeeded];
+
+    if (selectedView) {
+        CGFloat padding = 8;
+        CGFloat adjustedHeight = selectedView.frame.origin.y + scrollAdjustment - padding;
+        CGPoint scrollPoint = CGPointMake(0, adjustedHeight);
+        [self.scrollView setContentOffset:scrollPoint animated:YES];
+    }
+    
+    self.payButton.backgroundColor = viewModel.buttonColor;
     
     [self.paymentSummaryVC updateWithViewModel:viewModel.paymentSummaryViewModel];
     self.paymentSummaryHeight.constant = [self.paymentSummaryVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-}
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    
-    return YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -233,9 +280,9 @@
     }
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
-    [CTAppController dispatchAction:CTActionBookingUserDidEndEditingTextfield payload:nil];
-}
+//- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
+//    [CTAppController dispatchAction:CTActionBookingUserDidEndEditingTextfield payload:nil];
+//}
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
@@ -251,35 +298,35 @@
     [CTAppController dispatchAction:CTActionBookingInputViewUserDidSelectDone payload:nil];
 }
 
-- (void)keyboardWasShown:(CGFloat)keyboardHeight {
-    CGFloat buffer = 41;
-    CGFloat inputViewHeight = keyboardHeight + self.toolbar.frame.size.height + buffer;
-    
-    for (UIView *view in self.contentView.subviews) {
-        if (view.isFirstResponder) {
-            CGRect screenRect = [[UIScreen mainScreen] bounds];
-            CGFloat screenHeight = screenRect.size.height;
-            CGFloat visibleY = screenHeight - inputViewHeight;
-                        
-            if (view.frame.origin.y + view.frame.size.height > visibleY) {
-                CGPoint scrollPoint = CGPointMake(0, view.frame.origin.y + view.frame.size.height - visibleY);
-                [self.scrollView setContentOffset:scrollPoint animated:YES];
-                return;
-            }
-        }
-    }
-}
+//- (void)keyboardWasShown:(CGFloat)keyboardHeight {
+//    CGFloat buffer = 41;
+//    CGFloat inputViewHeight = keyboardHeight + self.toolbar.frame.size.height + buffer;
+//    
+//    for (UIView *view in self.contentView.subviews) {
+//        if (view.isFirstResponder) {
+//            CGRect screenRect = [[UIScreen mainScreen] bounds];
+//            CGFloat screenHeight = screenRect.size.height;
+//            CGFloat visibleY = screenHeight - inputViewHeight;
+//                        
+//            if (view.frame.origin.y + view.frame.size.height > visibleY) {
+//                CGPoint scrollPoint = CGPointMake(0, view.frame.origin.y + view.frame.size.height - visibleY);
+//                [self.scrollView setContentOffset:scrollPoint animated:YES];
+//                return;
+//            }
+//        }
+//    }
+//}
 
-- (NSArray *)paymentSubviews:(UIView *)view {
-    if (view.subviews.count == 0) {
-        return @[view];
-    }
-    NSMutableArray *views = [NSMutableArray new];
-    for (UIView *subview in view.subviews) {
-        [views addObjectsFromArray:[self paymentSubviews:subview]];
-    }
-    return views.copy;
-}
+//- (NSArray *)paymentSubviews:(UIView *)view {
+//    if (view.subviews.count == 0) {
+//        return @[view];
+//    }
+//    NSMutableArray *views = [NSMutableArray new];
+//    for (UIView *subview in view.subviews) {
+//        [views addObjectsFromArray:[self paymentSubviews:subview]];
+//    }
+//    return views.copy;
+//}
 
 - (IBAction)payButtonTapped:(UIButton *)sender {
     [CTAppController dispatchAction:CTActionBookingUserDidTapNext payload:nil];

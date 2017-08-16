@@ -298,7 +298,7 @@
                     if (navigationState.currentNavigationStep == CTNavigationStepBooking) {
                         bookingState.country = payload;
                         navigationState.modalViewControllers = @[];
-                        bookingState.selectedTextfield = CTBookingTextfieldFlightNumber;
+                        bookingState.selectedTextfield = CTBookingTextfieldPayment;
                     }
                     break;
                 case CTSearchSearchSettingsLanguage:
@@ -509,48 +509,37 @@
             break;
         case CTActionBookingUserDidTapFirstName:
             bookingState.selectedTextfield = CTBookingTextfieldFirstName;
-            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapLastName:
             bookingState.selectedTextfield = CTBookingTextfieldLastName;
-            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapEmailAddress:
             bookingState.selectedTextfield = CTBookingTextfieldEmailAddress;
-            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapPrefix:
             bookingState.selectedTextfield = CTBookingTextfieldPrefix;
-            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapPhoneNumber:
             bookingState.selectedTextfield = CTBookingTextfieldPhoneNumber;
-            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapFlightNumber:
             bookingState.selectedTextfield = CTBookingTextfieldFlightNumber;
-            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapAddressLine1:
             bookingState.selectedTextfield = CTBookingTextfieldAddressLine1;
-            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapAddressLine2:
             bookingState.selectedTextfield = CTBookingTextfieldAddressLine2;
-            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapCity:
             bookingState.selectedTextfield = CTBookingTextfieldCity;
-            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapPostcode:
             bookingState.selectedTextfield = CTBookingTextfieldPostcode;
-            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapCountry:
             bookingState.selectedTextfield = CTBookingTextfieldCountry;
             navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettingsSelection)];
-            userSettingsState.keyboardHeight = nil;
             // TODO: Extract to shared state
             searchState.selectedSettings = CTSearchSearchSettingsCountry;
             break;
@@ -601,8 +590,11 @@
             bookingState.selectedTextfield = CTBookingTextfieldNone;
             break;
         case CTActionBookingInputViewUserDidSelectDone:
+            if (bookingState.selectedTextfield == CTBookingTextfieldFlightNumber) {
+                bookingState.selectedTextfield = selectedVehicleState.insuranceAdded ? CTBookingTextfieldAddressLine1 : CTBookingTextfieldPayment;
+                break;
+            }
             bookingState.selectedTextfield++;
-            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapNext:
               [self.paymentController makePaymentWithState:appState];

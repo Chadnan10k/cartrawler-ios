@@ -76,8 +76,7 @@
     viewModel.flightNumber = bookingState.flightNumber;
     viewModel.showAddressDetails = appState.selectedVehicleState.insuranceAdded;
     
-    // Don't adjust keyboard height when user interacting with payment as we don't have access to textfield events
-    if (bookingState.selectedTextfield != CTBookingTextfieldPayment) {
+    if (bookingState.selectedTextfield != CTBookingTextfieldNone && appState.userSettingsState.keyboardShowing) {
         viewModel.keyboardHeight = appState.userSettingsState.keyboardHeight;
     }
     
