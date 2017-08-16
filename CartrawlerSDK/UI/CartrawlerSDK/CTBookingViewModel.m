@@ -18,17 +18,26 @@
 @property (nonatomic, readwrite) NSString *emailAddressPlaceholder;
 @property (nonatomic, readwrite) NSString *prefixPlaceholder;
 @property (nonatomic, readwrite) NSString *phoneNumberPlaceholder;
-@property (nonatomic, readwrite) NSString *countryPlaceholder;
 @property (nonatomic, readwrite) NSString *flightNumberPlaceholder;
+@property (nonatomic, readwrite) NSString *addressLine1Placeholder;
+@property (nonatomic, readwrite) NSString *addressLine2Placeholder;
+@property (nonatomic, readwrite) NSString *cityPlaceholder;
+@property (nonatomic, readwrite) NSString *postcodePlaceholder;
+@property (nonatomic, readwrite) NSString *countryPlaceholder;
 
 @property (nonatomic, readwrite) NSString *firstName;
 @property (nonatomic, readwrite) NSString *lastName;
 @property (nonatomic, readwrite) NSString *emailAddress;
 @property (nonatomic, readwrite) NSString *prefix;
 @property (nonatomic, readwrite) NSString *phoneNumber;
-@property (nonatomic, readwrite) NSString *country;
 @property (nonatomic, readwrite) NSString *flightNumber;
+@property (nonatomic, readwrite) NSString *addressLine1;
+@property (nonatomic, readwrite) NSString *addressLine2;
+@property (nonatomic, readwrite) NSString *city;
+@property (nonatomic, readwrite) NSString *postcode;
+@property (nonatomic, readwrite) NSString *country;
 
+@property (nonatomic, readwrite) BOOL showAddressDetails;
 @property (nonatomic, readwrite) NSNumber *keyboardHeight;
 @property (nonatomic, readwrite) UIColor *buttonColor;
 @end
@@ -48,13 +57,12 @@
     viewModel.emailAddressPlaceholder = CTLocalizedString(CTRentalUserEmailHint);
     viewModel.prefixPlaceholder = @"*Prefix";
     viewModel.phoneNumberPlaceholder = CTLocalizedString(CTRentalUserPhoneHint);
-    viewModel.countryPlaceholder = CTLocalizedString(CTRentalUserCountryHint);
     viewModel.flightNumberPlaceholder = CTLocalizedString(CTRentalUserFlightHint);
-    
-//    self.addressTextField.placeholder = CTLocalizedString(CTRentalUserAddressLine1Hint);
-//    self.address2TextField.placeholder = CTLocalizedString(CTRentalUserAddressLine2Hint);
-//    self.cityTextField.placeholder = CTLocalizedString(CTRentalUserCityHint);
-//    self.postcodeTextField.placeholder = CTLocalizedString(CTRentalUserPostcodeHint);
+    viewModel.addressLine1Placeholder = CTLocalizedString(CTRentalUserAddressLine1Hint);
+    viewModel.addressLine2Placeholder = CTLocalizedString(CTRentalUserAddressLine2Hint);
+    viewModel.cityPlaceholder = CTLocalizedString(CTRentalUserCityHint);
+    viewModel.postcodePlaceholder = CTLocalizedString(CTRentalUserPostcodeHint);
+    viewModel.countryPlaceholder = CTLocalizedString(CTRentalUserCountryHint);
 
     
     viewModel.firstName = bookingState.firstName;
@@ -66,6 +74,7 @@
     viewModel.phoneNumber = bookingState.phoneNumber;
     viewModel.country = bookingState.country.name;
     viewModel.flightNumber = bookingState.flightNumber;
+    viewModel.showAddressDetails = appState.selectedVehicleState.insuranceAdded;
     
     // Don't adjust keyboard height when user interacting with payment as we don't have access to textfield events
     if (bookingState.selectedTextfield != CTBookingTextfieldPayment) {

@@ -195,7 +195,6 @@
 		E727622C1ECE3B240040C096 /* CTToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = E727622A1ECE3B240040C096 /* CTToastView.m */; };
 		E72D4D721F1E7503007130A2 /* CTAppController.h in Headers */ = {isa = PBXBuildFile; fileRef = E72D4D701F1E7503007130A2 /* CTAppController.h */; };
 		E72D4D731F1E7503007130A2 /* CTAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = E72D4D711F1E7503007130A2 /* CTAppController.m */; };
-		E733BA5B1F4355C500076516 /* CTPayment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E733BA5A1F4355C500076516 /* CTPayment.framework */; };
 		E733BA5F1F43807700076516 /* CTPaymentController.h in Headers */ = {isa = PBXBuildFile; fileRef = E733BA5D1F43807700076516 /* CTPaymentController.h */; };
 		E733BA601F43807700076516 /* CTPaymentController.m in Sources */ = {isa = PBXBuildFile; fileRef = E733BA5E1F43807700076516 /* CTPaymentController.m */; };
 		E7404A781E82F3AB009BF7DF /* CTTabContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -641,6 +640,7 @@
 		E775DBF11F327C39009039D8 /* CTLockImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLockImageView.h; sourceTree = "<group>"; };
 		E775DBF21F327C39009039D8 /* CTLockImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLockImageView.m; sourceTree = "<group>"; };
 		E77D75581F439CB300BD7FF4 /* PaymentSummary.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PaymentSummary.storyboard; sourceTree = "<group>"; };
+		E77F1E091F44996900693587 /* CTPayment.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CTPayment.framework; path = ../TestApp/CTPayment.framework; sourceTree = "<group>"; };
 		E78298921F1E800E00C20525 /* CTUserSettingsState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTUserSettingsState.h; sourceTree = "<group>"; };
 		E78298931F1E800E00C20525 /* CTUserSettingsState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTUserSettingsState.m; sourceTree = "<group>"; };
 		E78298961F1E807A00C20525 /* CTAppState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAppState.h; sourceTree = "<group>"; };
@@ -802,7 +802,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				455B59581DCC954400CA4790 /* CartrawlerAPI.framework in Frameworks */,
-				E733BA5B1F4355C500076516 /* CTPayment.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -913,6 +912,7 @@
 		455B59561DCC954300CA4790 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E77F1E091F44996900693587 /* CTPayment.framework */,
 				E733BA5A1F4355C500076516 /* CTPayment.framework */,
 				455B59571DCC954400CA4790 /* CartrawlerAPI.framework */,
 			);

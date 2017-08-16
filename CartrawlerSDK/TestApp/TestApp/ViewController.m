@@ -7,13 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "StandaloneViewController.h"
 #import <CartrawlerSDK/CartrawlerSDK.h>
 #import <AVFoundation/AVFoundation.h>
-
-
-#import "RYRRentalManager.h"
-#import "InPathViewController.h"
 
 @interface ViewController ()
 @property (nonatomic) CartrawlerSDK *sdk;

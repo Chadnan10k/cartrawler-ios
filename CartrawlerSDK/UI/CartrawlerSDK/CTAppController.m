@@ -527,16 +527,32 @@
             bookingState.selectedTextfield = CTBookingTextfieldPhoneNumber;
             userSettingsState.keyboardHeight = nil;
             break;
+        case CTActionBookingUserDidTapFlightNumber:
+            bookingState.selectedTextfield = CTBookingTextfieldFlightNumber;
+            userSettingsState.keyboardHeight = nil;
+            break;
+        case CTActionBookingUserDidTapAddressLine1:
+            bookingState.selectedTextfield = CTBookingTextfieldAddressLine1;
+            userSettingsState.keyboardHeight = nil;
+            break;
+        case CTActionBookingUserDidTapAddressLine2:
+            bookingState.selectedTextfield = CTBookingTextfieldAddressLine2;
+            userSettingsState.keyboardHeight = nil;
+            break;
+        case CTActionBookingUserDidTapCity:
+            bookingState.selectedTextfield = CTBookingTextfieldCity;
+            userSettingsState.keyboardHeight = nil;
+            break;
+        case CTActionBookingUserDidTapPostcode:
+            bookingState.selectedTextfield = CTBookingTextfieldPostcode;
+            userSettingsState.keyboardHeight = nil;
+            break;
         case CTActionBookingUserDidTapCountry:
             bookingState.selectedTextfield = CTBookingTextfieldCountry;
             navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettingsSelection)];
             userSettingsState.keyboardHeight = nil;
             // TODO: Extract to shared state
             searchState.selectedSettings = CTSearchSearchSettingsCountry;
-            break;
-        case CTActionBookingUserDidTapFlightNumber:
-            bookingState.selectedTextfield = CTBookingTextfieldFlightNumber;
-            userSettingsState.keyboardHeight = nil;
             break;
         case CTActionBookingUserDidTapRentalConditions:
             break;
@@ -561,6 +577,18 @@
                     break;
                 case CTBookingTextfieldFlightNumber:
                     bookingState.flightNumber = payload;
+                    break;
+                case CTBookingTextfieldAddressLine1:
+                    bookingState.addressLine1 = payload;
+                    break;
+                case CTBookingTextfieldAddressLine2:
+                    bookingState.addressLine2 = payload;
+                    break;
+                case CTBookingTextfieldCity:
+                    bookingState.city = payload;
+                    break;
+                case CTBookingTextfieldPostcode:
+                    bookingState.postcode = payload;
                     break;
                 default:
                     break;

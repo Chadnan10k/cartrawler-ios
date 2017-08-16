@@ -22,8 +22,15 @@
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *emailAddress;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *prefix;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *phoneNumber;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *country;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *flightNumber;
+@property (weak, nonatomic) IBOutlet UILabel *addressDetails;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *addressLine1;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *addressLine2;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *city;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *postcode;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *country;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *addressDetailsHeight;
+
 @property (weak, nonatomic) IBOutlet UIView *paymentDetailsContainerView;
 @property (weak, nonatomic) IBOutlet UILabel *securePayment;
 @property (weak, nonatomic) IBOutlet UILabel *conditions;
@@ -53,8 +60,15 @@
     self.emailAddress.borderStyle = UITextBorderStyleRoundedRect;
     self.prefix.borderStyle = UITextBorderStyleRoundedRect;
     self.phoneNumber.borderStyle = UITextBorderStyleRoundedRect;
-    self.country.borderStyle = UITextBorderStyleRoundedRect;
     self.flightNumber.borderStyle = UITextBorderStyleRoundedRect;
+    self.addressLine1.borderStyle = UITextBorderStyleRoundedRect;
+    self.addressLine2.borderStyle = UITextBorderStyleRoundedRect;
+    self.city.borderStyle = UITextBorderStyleRoundedRect;
+    self.postcode.borderStyle = UITextBorderStyleRoundedRect;
+    self.country.borderStyle = UITextBorderStyleRoundedRect;
+    
+    self.addressDetailsHeight.constant = 0;
+    [self.view layoutIfNeeded];
     
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
     self.toolbar.barTintColor = [UIColor lightGrayColor];
@@ -116,6 +130,11 @@
     self.country.text = viewModel.country;
     self.flightNumber.text = viewModel.flightNumber;
     
+    if (viewModel.showAddressDetails) {
+        // TODO: Extract constant
+        self.addressDetailsHeight.constant = 377;
+    }
+    
     switch (viewModel.selectedTextfield) {
         case CTBookingTextfieldNone:
             for (JVFloatLabeledTextField *textfield in @[self.firstName, self.lastName, self.emailAddress, self.prefix, self.phoneNumber, self.country, self.flightNumber]) {
@@ -173,6 +192,11 @@
     self.paymentSummaryHeight.constant = [self.paymentSummaryVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    return YES;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField == self.firstName) {
         [CTAppController dispatchAction:CTActionBookingUserDidTapFirstName payload:nil];
@@ -189,11 +213,23 @@
     if (textField == self.phoneNumber) {
         [CTAppController dispatchAction:CTActionBookingUserDidTapPhoneNumber payload:nil];
     }
-    if (textField == self.country) {
-        [CTAppController dispatchAction:CTActionBookingUserDidTapCountry payload:nil];
-    }
     if (textField == self.flightNumber) {
         [CTAppController dispatchAction:CTActionBookingUserDidTapFlightNumber payload:nil];
+    }
+    if (textField == self.addressLine1) {
+        [CTAppController dispatchAction:CTActionBookingUserDidTapAddressLine1 payload:nil];
+    }
+    if (textField == self.addressLine2) {
+        [CTAppController dispatchAction:CTActionBookingUserDidTapAddressLine2 payload:nil];
+    }
+    if (textField == self.city) {
+        [CTAppController dispatchAction:CTActionBookingUserDidTapCity payload:nil];
+    }
+    if (textField == self.postcode) {
+        [CTAppController dispatchAction:CTActionBookingUserDidTapPostcode payload:nil];
+    }
+    if (textField == self.country) {
+        [CTAppController dispatchAction:CTActionBookingUserDidTapCountry payload:nil];
     }
 }
 

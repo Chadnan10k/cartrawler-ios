@@ -12,7 +12,7 @@
 #import "CartrawlerSDK+NSDateUtils.h"
 #import "CartrawlerSDK+NSNumber.h"
 
-@interface CTPaymentController () <CTPaymentDelegate>
+@interface CTPaymentController () <CTPaymentDelegate, UITextFieldDelegate>
 @property (nonatomic, strong) CTPayment *payment;
 @end
 
@@ -97,6 +97,10 @@
  */
 - (void)payment:(CTPayment *)payment didSucceedValidation:(BOOL)successfulValidation {
     
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    return YES;
 }
 
 @end

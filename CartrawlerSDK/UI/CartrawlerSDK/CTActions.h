@@ -363,15 +363,35 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      */
     CTActionBookingUserDidTapPhoneNumber,
     /**
-     *  The user tapped the country textfield
-     *  Payload: nil
-     */
-    CTActionBookingUserDidTapCountry,
-    /**
      *  The user tapped the flight number textfield
      *  Payload: nil
      */
     CTActionBookingUserDidTapFlightNumber,
+    /**
+     *  The user tapped the address line 1 textfield
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapAddressLine1,
+    /**
+     *  The user tapped the address line 2 textfield
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapAddressLine2,
+    /**
+     *  The user tapped the city textfield
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapCity,
+    /**
+     *  The user tapped the postcode textfield
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapPostcode,
+    /**
+     *  The user tapped the country textfield
+     *  Payload: nil
+     */
+    CTActionBookingUserDidTapCountry,
     /**
      *  The user tapped rental conditions
      *  Payload: nil

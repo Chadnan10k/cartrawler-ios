@@ -11,11 +11,6 @@
 		450725BB1DDA0C2000D56C8A /* CartrawlerAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 450725B91DDA0C2000D56C8A /* CartrawlerAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		450725BD1DDA0C2000D56C8A /* CartrawlerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 450725BC1DDA0C2000D56C8A /* CartrawlerSDK.framework */; };
 		450725BE1DDA0C2000D56C8A /* CartrawlerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 450725BC1DDA0C2000D56C8A /* CartrawlerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		45154EF11E07DE3800FB32FA /* CartrawlerRental.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45154EF01E07DE3800FB32FA /* CartrawlerRental.framework */; };
-		45154EF21E07DE3800FB32FA /* CartrawlerRental.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 45154EF01E07DE3800FB32FA /* CartrawlerRental.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		45154EFC1E07E15D00FB32FA /* CartrawlerInPath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45154EFB1E07E15D00FB32FA /* CartrawlerInPath.framework */; };
-		45154EFD1E07E15D00FB32FA /* CartrawlerInPath.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 45154EFB1E07E15D00FB32FA /* CartrawlerInPath.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		45154F001E07E1DF00FB32FA /* InPathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45154EFF1E07E1DF00FB32FA /* InPathViewController.m */; };
 		45295F5E1D78412500A09B8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45295F5D1D78412500A09B8A /* main.m */; };
 		45295F611D78412500A09B8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45295F601D78412500A09B8A /* AppDelegate.m */; };
 		45295F641D78412500A09B8A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45295F631D78412500A09B8A /* ViewController.m */; };
@@ -27,15 +22,9 @@
 		45709A681DF1C51300E6CA4E /* QAUITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 45709A671DF1C51300E6CA4E /* QAUITest.m */; };
 		45A7B7561D9BE003006611EB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */; };
 		45A7B7571D9BE007006611EB /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */; };
-		BC2D2D341EC1D7500007DAF3 /* CTPayment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D2D331EC1D7500007DAF3 /* CTPayment.framework */; };
-		BC2D2D351EC1D7650007DAF3 /* CTPayment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D2D331EC1D7500007DAF3 /* CTPayment.framework */; };
-		BC2D2D361EC1D7650007DAF3 /* CTPayment.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D2D331EC1D7500007DAF3 /* CTPayment.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BC3955D11E2FB5EF00C8636B /* RYRRentalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3955D01E2FB5EF00C8636B /* RYRRentalManager.m */; };
-		BCDB4BF11E3F560E008004DA /* CartrawlerRakuten.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */; };
-		BCDB4BF21E3F560E008004DA /* CartrawlerRakuten.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E78298A01F1EEB6200C20525 /* StandaloneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E782989F1F1EEB6100C20525 /* StandaloneViewController.m */; };
+		E70429031F44A89F00AF3567 /* CTPayment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D2D331EC1D7500007DAF3 /* CTPayment.framework */; };
+		E70429041F44A89F00AF3567 /* CTPayment.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC2D2D331EC1D7500007DAF3 /* CTPayment.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E796395B1F2FCD69009EA682 /* car+start3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E796395A1F2FCD69009EA682 /* car+start3.mp3 */; };
-		E7CCD1E91E8177050068A2F3 /* UsageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CCD1E81E8177050068A2F3 /* UsageViewController.m */; };
 		E7F6D1451F34D27C0002338C /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E7F6D1431F34D27C0002338C /* HockeySDKResources.bundle */; };
 		E7F6D14A1F34D4920002338C /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F6D1421F34D27C0002338C /* HockeySDK.framework */; };
 /* End PBXBuildFile section */
@@ -57,12 +46,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BC2D2D361EC1D7650007DAF3 /* CTPayment.framework in Embed Frameworks */,
+				E70429041F44A89F00AF3567 /* CTPayment.framework in Embed Frameworks */,
 				450725BE1DDA0C2000D56C8A /* CartrawlerSDK.framework in Embed Frameworks */,
-				45154EFD1E07E15D00FB32FA /* CartrawlerInPath.framework in Embed Frameworks */,
 				450725BB1DDA0C2000D56C8A /* CartrawlerAPI.framework in Embed Frameworks */,
-				BCDB4BF21E3F560E008004DA /* CartrawlerRakuten.framework in Embed Frameworks */,
-				45154EF21E07DE3800FB32FA /* CartrawlerRental.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,8 +60,6 @@
 		450725BC1DDA0C2000D56C8A /* CartrawlerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45154EF01E07DE3800FB32FA /* CartrawlerRental.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerRental.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45154EFB1E07E15D00FB32FA /* CartrawlerInPath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerInPath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		45154EFE1E07E1DF00FB32FA /* InPathViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InPathViewController.h; sourceTree = "<group>"; };
-		45154EFF1E07E1DF00FB32FA /* InPathViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InPathViewController.m; sourceTree = "<group>"; };
 		45295F591D78412500A09B8A /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45295F5D1D78412500A09B8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		45295F5F1D78412500A09B8A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -94,14 +78,8 @@
 		45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		BC2D2D331EC1D7500007DAF3 /* CTPayment.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CTPayment.framework; sourceTree = "<group>"; };
-		BC3955CF1E2FB5EF00C8636B /* RYRRentalManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RYRRentalManager.h; sourceTree = "<group>"; };
-		BC3955D01E2FB5EF00C8636B /* RYRRentalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RYRRentalManager.m; sourceTree = "<group>"; };
 		BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerRakuten.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E782989E1F1EEB6100C20525 /* StandaloneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandaloneViewController.h; sourceTree = "<group>"; };
-		E782989F1F1EEB6100C20525 /* StandaloneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandaloneViewController.m; sourceTree = "<group>"; };
 		E796395A1F2FCD69009EA682 /* car+start3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "car+start3.mp3"; sourceTree = "<group>"; };
-		E7CCD1E71E8177050068A2F3 /* UsageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsageViewController.h; sourceTree = "<group>"; };
-		E7CCD1E81E8177050068A2F3 /* UsageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsageViewController.m; sourceTree = "<group>"; };
 		E7F6D1421F34D27C0002338C /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		E7F6D1431F34D27C0002338C /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,14 +89,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC2D2D351EC1D7650007DAF3 /* CTPayment.framework in Frameworks */,
-				BC2D2D341EC1D7500007DAF3 /* CTPayment.framework in Frameworks */,
+				E70429031F44A89F00AF3567 /* CTPayment.framework in Frameworks */,
 				450725BD1DDA0C2000D56C8A /* CartrawlerSDK.framework in Frameworks */,
-				45154EFC1E07E15D00FB32FA /* CartrawlerInPath.framework in Frameworks */,
 				E7F6D14A1F34D4920002338C /* HockeySDK.framework in Frameworks */,
 				450725BA1DDA0C2000D56C8A /* CartrawlerAPI.framework in Frameworks */,
-				BCDB4BF11E3F560E008004DA /* CartrawlerRakuten.framework in Frameworks */,
-				45154EF11E07DE3800FB32FA /* CartrawlerRental.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,16 +136,8 @@
 			children = (
 				45295F5F1D78412500A09B8A /* AppDelegate.h */,
 				45295F601D78412500A09B8A /* AppDelegate.m */,
-				E782989E1F1EEB6100C20525 /* StandaloneViewController.h */,
-				E782989F1F1EEB6100C20525 /* StandaloneViewController.m */,
 				45295F621D78412500A09B8A /* ViewController.h */,
 				45295F631D78412500A09B8A /* ViewController.m */,
-				45154EFE1E07E1DF00FB32FA /* InPathViewController.h */,
-				45154EFF1E07E1DF00FB32FA /* InPathViewController.m */,
-				BC3955CF1E2FB5EF00C8636B /* RYRRentalManager.h */,
-				BC3955D01E2FB5EF00C8636B /* RYRRentalManager.m */,
-				E7CCD1E71E8177050068A2F3 /* UsageViewController.h */,
-				E7CCD1E81E8177050068A2F3 /* UsageViewController.m */,
 				455B59751DCCB22500CA4790 /* Roboto-Bold.ttf */,
 				455B59761DCCB22500CA4790 /* Roboto-Regular.ttf */,
 				45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */,
@@ -355,12 +321,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				45295F641D78412500A09B8A /* ViewController.m in Sources */,
-				E7CCD1E91E8177050068A2F3 /* UsageViewController.m in Sources */,
 				45295F611D78412500A09B8A /* AppDelegate.m in Sources */,
 				45295F5E1D78412500A09B8A /* main.m in Sources */,
-				45154F001E07E1DF00FB32FA /* InPathViewController.m in Sources */,
-				BC3955D11E2FB5EF00C8636B /* RYRRentalManager.m in Sources */,
-				E78298A01F1EEB6200C20525 /* StandaloneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,7 +472,7 @@
 				);
 				INFOPLIST_FILE = TestApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

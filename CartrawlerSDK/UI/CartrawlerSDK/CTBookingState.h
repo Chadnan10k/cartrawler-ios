@@ -16,8 +16,12 @@ typedef NS_ENUM(NSInteger, CTBookingTextfield) {
     CTBookingTextfieldEmailAddress,
     CTBookingTextfieldPrefix,
     CTBookingTextfieldPhoneNumber,
-    CTBookingTextfieldCountry,
     CTBookingTextfieldFlightNumber,
+    CTBookingTextfieldAddressLine1,
+    CTBookingTextfieldAddressLine2,
+    CTBookingTextfieldCity,
+    CTBookingTextfieldPostcode,
+    CTBookingTextfieldCountry,
     CTBookingTextfieldPayment,
 };
 
@@ -29,6 +33,11 @@ typedef NS_ENUM(NSInteger, CTBookingTextfield) {
 @property (nonatomic) NSString *emailAddress;
 @property (nonatomic) NSString *prefix;
 @property (nonatomic) NSString *phoneNumber;
-@property (nonatomic) CTCSVItem *country;
 @property (nonatomic) NSString *flightNumber;
+@property (nonatomic) NSString *addressLine1;
+@property (nonatomic) NSString *addressLine2;
+@property (nonatomic) NSString *city;
+@property (nonatomic) NSString *postcode;
+@property (nonatomic) CTCSVItem *country;
+
 @end
