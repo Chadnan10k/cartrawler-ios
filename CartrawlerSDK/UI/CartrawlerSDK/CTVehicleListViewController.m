@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *headerRightLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIAlertController *alertController;
-@property (nonatomic, strong) CTVehicleListFilterViewController *filterVC;
+//@property (nonatomic, strong) CTVehicleListFilterViewController *filterVC;
 @end
 
 @implementation CTVehicleListViewController
@@ -68,7 +68,7 @@
         [CTAppController dispatchAction:CTActionVehicleListScreenDidScrollToTop payload:nil];
     }
     
-    [self.filterVC updateWithViewModel:viewModel.filterViewModel];
+    //[self.filterVC updateWithViewModel:viewModel.filterViewModel];
 }
 
 // MARK: Sort
@@ -115,12 +115,6 @@
 
 - (IBAction)filterButtonTapped:(UITapGestureRecognizer *)sender {
     [CTAppController dispatchAction:CTActionVehicleListUserDidTapFilter payload:nil];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"VehicleListFilter"]) {
-        self.filterVC = segue.destinationViewController;
-    }
 }
 
 // MARK: Table View

@@ -34,7 +34,6 @@
 @property (nonatomic, readwrite) BOOL fuelPolicyExpanded;
 @property (nonatomic, readwrite) BOOL mileageAllowanceExpanded;
 @property (nonatomic, readwrite) BOOL insuranceExpanded;
-@property (nonatomic, readwrite) BOOL insuranceAdded;
 @end
 
 @implementation CTSelectedVehicleIncludedViewModel
@@ -69,7 +68,6 @@
     viewModel.fuelPolicyExpanded = selectedVehicleState.fuelPolicyExpanded;
     viewModel.mileageAllowanceExpanded = selectedVehicleState.mileageAllowanceExpanded;
     viewModel.insuranceExpanded = selectedVehicleState.insuranceExpanded;
-    viewModel.insuranceAdded = selectedVehicleState.insuranceAdded;
     
     return viewModel;
 }

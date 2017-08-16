@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -24,23 +23,21 @@
                         <viewControllerLayoutGuide type="bottom" id="7XG-rA-KWB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ibc-8r-Brg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="1136"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6z5-kc-0KX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6z5-kc-0KX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1136"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWZ-5A-FUN" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELE-6w-yLi" userLabel="Payment Summary Container">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="224"/>
+                                                <color key="backgroundColor" red="0.039215686274509803" green="0.23921568627450979" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="224" id="zMb-n5-PvG"/>
                                                 </constraints>
-                                                <connections>
-                                                    <segue destination="EDp-HJ-sL0" kind="embed" id="aSA-Cl-0cP"/>
-                                                </connections>
                                             </containerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driver Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23m-0R-9GA">
                                                 <rect key="frame" x="16" y="232" width="343" height="21"/>
@@ -56,9 +53,20 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="yC4-Vf-Q8h"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="textColor" red="0.0" green="0.23921568627450979" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelTextColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="X6X-pH-Dxy" id="V8H-qu-onK"/>
                                                 </connections>
@@ -68,9 +76,20 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="run-6C-Vz0"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="textColor" red="0.0" green="0.23921568627450979" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelTextColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="X6X-pH-Dxy" id="hYa-Py-Pfs"/>
                                                 </connections>
@@ -80,9 +99,20 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="IAT-rb-wRG"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="textColor" red="0.0" green="0.23921568627450979" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelTextColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="X6X-pH-Dxy" id="U21-kP-o4z"/>
                                                 </connections>
@@ -93,9 +123,20 @@
                                                     <constraint firstAttribute="height" constant="60" id="6l4-Od-cJU"/>
                                                     <constraint firstAttribute="width" constant="85" id="bch-0q-Blx"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="textColor" red="0.0" green="0.23921568627450979" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelTextColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="X6X-pH-Dxy" id="6j6-ep-RaU"/>
                                                 </connections>
@@ -105,9 +146,20 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="81d-4a-P2C"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="textColor" red="0.0" green="0.23921568627450979" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelTextColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="X6X-pH-Dxy" id="4GH-Ox-HzV"/>
                                                 </connections>
@@ -118,21 +170,53 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="vSo-cf-cyq"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="textColor" red="0.0" green="0.23921568627450979" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelTextColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="X6X-pH-Dxy" id="rjQ-P8-tuJ"/>
                                                 </connections>
                                             </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCc-Hg-gl0">
+                                                <rect key="frame" x="321" y="480.5" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="JDU-0L-vpt"/>
+                                                    <constraint firstAttribute="width" constant="30" id="med-zt-oPi"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
+                                                <color key="textColor" red="0.63921568627450975" green="0.63921568627450975" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Flight number (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OvV-Ef-n4D" customClass="JVFloatLabeledTextField">
                                                 <rect key="frame" x="16" y="533" width="343" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="mEI-KB-Mqh"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="textColor" red="0.0" green="0.23921568627450979" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelTextColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="delegate" destination="X6X-pH-Dxy" id="gUx-hU-GF6"/>
                                                 </connections>
@@ -154,14 +238,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJJ-j2-yQk" userLabel="Payment Details">
-                                                <rect key="frame" x="0.0" y="645" width="375" height="200"/>
+                                                <rect key="frame" x="4" y="645" width="367" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="T8P-3i-xes"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap ‘Pay’ to complete your booking and accept our rental conditions and terms and conditions" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waQ-9D-yWg">
                                                 <rect key="frame" x="16" y="891" width="343" height="61"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -180,7 +264,7 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don’t forget the remaining €70.00 will be paid at the rental desk at pick-up." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyQ-T4-i2r">
                                                         <rect key="frame" x="47" y="8" width="280" height="61"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -229,6 +313,7 @@
                                             <constraint firstItem="BDo-gB-16U" firstAttribute="width" secondItem="v9P-aX-oOR" secondAttribute="width" id="F0S-tW-5Qx"/>
                                             <constraint firstItem="23m-0R-9GA" firstAttribute="leading" secondItem="dWZ-5A-FUN" secondAttribute="leading" constant="16" id="FNO-gk-uYJ"/>
                                             <constraint firstAttribute="bottom" secondItem="42c-sd-YS5" secondAttribute="bottom" constant="72" id="FVZ-fL-PCW"/>
+                                            <constraint firstItem="dCc-Hg-gl0" firstAttribute="centerY" secondItem="Oel-zB-Jog" secondAttribute="centerY" id="GMf-bd-VHG"/>
                                             <constraint firstItem="Vgm-lN-TdV" firstAttribute="leading" secondItem="TQZ-6Z-gxe" secondAttribute="trailing" constant="8" id="IFr-dx-AsS"/>
                                             <constraint firstAttribute="trailing" secondItem="Oel-zB-Jog" secondAttribute="trailing" constant="16" id="Irx-7y-FA8"/>
                                             <constraint firstItem="kcg-zv-tcd" firstAttribute="leading" secondItem="dWZ-5A-FUN" secondAttribute="leading" constant="16" id="JZi-QK-sWN"/>
@@ -246,6 +331,7 @@
                                             <constraint firstAttribute="trailing" secondItem="waQ-9D-yWg" secondAttribute="trailing" constant="16" id="bWk-ZK-zYF"/>
                                             <constraint firstItem="kcg-zv-tcd" firstAttribute="top" secondItem="waQ-9D-yWg" secondAttribute="bottom" constant="16" id="bhL-O0-Ft3"/>
                                             <constraint firstItem="v9P-aX-oOR" firstAttribute="leading" secondItem="dWZ-5A-FUN" secondAttribute="leading" constant="16" id="bue-Mo-xDN"/>
+                                            <constraint firstItem="dCc-Hg-gl0" firstAttribute="trailing" secondItem="Oel-zB-Jog" secondAttribute="trailing" constant="-16" id="c81-mr-qH8"/>
                                             <constraint firstItem="tHQ-DI-mqP" firstAttribute="top" secondItem="OvV-Ef-n4D" secondAttribute="bottom" constant="16" id="cvJ-dc-zSw"/>
                                             <constraint firstItem="waQ-9D-yWg" firstAttribute="top" secondItem="VJJ-j2-yQk" secondAttribute="bottom" constant="16" id="dII-J2-BTe"/>
                                             <constraint firstItem="OvV-Ef-n4D" firstAttribute="top" secondItem="Oel-zB-Jog" secondAttribute="bottom" constant="8" id="euz-Xj-urE"/>
@@ -275,14 +361,15 @@
                         <constraints>
                             <constraint firstItem="6z5-kc-0KX" firstAttribute="centerX" secondItem="ibc-8r-Brg" secondAttribute="centerX" id="6sR-qQ-GXE"/>
                             <constraint firstItem="6z5-kc-0KX" firstAttribute="height" secondItem="ibc-8r-Brg" secondAttribute="height" id="GQT-Sw-Y0A"/>
-                            <constraint firstItem="6z5-kc-0KX" firstAttribute="top" secondItem="vYq-SX-scl" secondAttribute="bottom" constant="-20" id="QHA-1H-16i"/>
+                            <constraint firstItem="6z5-kc-0KX" firstAttribute="top" secondItem="vYq-SX-scl" secondAttribute="bottom" id="QHA-1H-16i"/>
                             <constraint firstItem="7XG-rA-KWB" firstAttribute="top" secondItem="6z5-kc-0KX" secondAttribute="bottom" id="dLF-R4-yNH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6z5-kc-0KX" secondAttribute="trailing" constant="-16" id="gVt-sW-ut5"/>
-                            <constraint firstItem="6z5-kc-0KX" firstAttribute="leading" secondItem="ibc-8r-Brg" secondAttribute="leadingMargin" constant="-16" id="hVh-Pk-tIw"/>
+                            <constraint firstAttribute="trailing" secondItem="6z5-kc-0KX" secondAttribute="trailing" id="gVt-sW-ut5"/>
+                            <constraint firstItem="6z5-kc-0KX" firstAttribute="leading" secondItem="ibc-8r-Brg" secondAttribute="leading" id="hVh-Pk-tIw"/>
                             <constraint firstItem="dWZ-5A-FUN" firstAttribute="width" secondItem="ibc-8r-Brg" secondAttribute="width" id="uZR-8c-SQM"/>
                             <constraint firstItem="6z5-kc-0KX" firstAttribute="width" secondItem="ibc-8r-Brg" secondAttribute="width" id="ytX-p0-usV"/>
                         </constraints>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
@@ -298,6 +385,8 @@
                         <outlet property="payButton" destination="TYP-5V-YGi" id="Nmy-2E-A9t"/>
                         <outlet property="paymentDetailsContainerView" destination="VJJ-j2-yQk" id="cos-CK-fiv"/>
                         <outlet property="paymentSummaryContainer" destination="ELE-6w-yLi" id="4g3-wV-j94"/>
+                        <outlet property="paymentSummaryContainerView" destination="ELE-6w-yLi" id="sJW-bu-7u2"/>
+                        <outlet property="paymentSummaryHeight" destination="zMb-n5-PvG" id="dUs-Zd-mue"/>
                         <outlet property="phoneNumber" destination="Vgm-lN-TdV" id="KOc-pf-dk8"/>
                         <outlet property="prefix" destination="TQZ-6Z-gxe" id="Hid-zc-aWd"/>
                         <outlet property="scrollView" destination="6z5-kc-0KX" id="Dun-RE-RJb"/>
@@ -307,24 +396,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WpX-ey-hVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-159.19999999999999" y="131.33433283358323"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ohH-6B-A24">
-            <objects>
-                <viewController id="EDp-HJ-sL0" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zMs-rI-juD"/>
-                        <viewControllerLayoutGuide type="bottom" id="x1i-Zc-sgp"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tZi-ml-1Uq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="224"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lkY-nD-u5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="658" y="-288"/>
         </scene>
     </scenes>
 </document>

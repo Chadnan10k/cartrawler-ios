@@ -10,6 +10,7 @@
 #import "CTBookingViewModel.h"
 #import "JVFloatLabeledTextField.h"
 #import "CTAppController.h"
+#import "CTPaymentSummaryViewController.h"
 
 @interface CTBookingViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -31,6 +32,9 @@
 @property (nonatomic, strong) UIBarButtonItem *cancelButton;
 @property (nonatomic, strong) UIBarButtonItem *doneButton;
 @property (weak, nonatomic) IBOutlet UIButton *payButton;
+@property (nonatomic, weak) CTPaymentSummaryViewController  *paymentSummaryVC;
+@property (weak, nonatomic) IBOutlet UIView *paymentSummaryContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *paymentSummaryHeight;
 @end
 
 @implementation CTBookingViewController
@@ -41,6 +45,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     // Interface Builder won't allow adjusting of height with rounded rect selected
     self.firstName.borderStyle = UITextBorderStyleRoundedRect;
     self.lastName.borderStyle = UITextBorderStyleRoundedRect;
@@ -70,6 +76,22 @@
     self.prefix.inputAccessoryView = self.toolbar;
     self.phoneNumber.inputAccessoryView = self.toolbar;
     self.flightNumber.inputAccessoryView = self.toolbar;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PaymentSummary" bundle:[NSBundle bundleForClass:self.class]];
+    self.paymentSummaryVC = [storyboard instantiateViewControllerWithIdentifier:@"CTPaymentSummaryViewController"];
+    [self addChildViewController:self.paymentSummaryVC];
+    self.paymentSummaryVC.view.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.paymentSummaryContainer addSubview:self.paymentSummaryVC.view];
+    
+    [NSLayoutConstraint activateConstraints:@[
+                                              [self.paymentSummaryVC.view.leadingAnchor constraintEqualToAnchor:self.paymentSummaryContainer.leadingAnchor],
+                                              [self.paymentSummaryVC.view.trailingAnchor constraintEqualToAnchor:self.paymentSummaryContainer.trailingAnchor],
+                                              [self.paymentSummaryVC.view.topAnchor constraintEqualToAnchor:self.paymentSummaryContainer.topAnchor],
+                                              [self.paymentSummaryVC.view.bottomAnchor constraintEqualToAnchor:self.paymentSummaryContainer.bottomAnchor]
+                                              ]
+     ];
+    
+    [self.paymentSummaryVC didMoveToParentViewController:self];
     
     [CTAppController dispatchAction:CTActionBookingPaymentContainerViewDidLoad payload:self.paymentDetailsContainerView];
 }
@@ -146,6 +168,9 @@
     if (viewModel.keyboardHeight) {
         [self keyboardWasShown:viewModel.keyboardHeight.floatValue];
     }
+    
+    [self.paymentSummaryVC updateWithViewModel:viewModel.paymentSummaryViewModel];
+    self.paymentSummaryHeight.constant = [self.paymentSummaryVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -170,6 +195,10 @@
     if (textField == self.flightNumber) {
         [CTAppController dispatchAction:CTActionBookingUserDidTapFlightNumber payload:nil];
     }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
+    [CTAppController dispatchAction:CTActionBookingUserDidEndEditingTextfield payload:nil];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {

@@ -14,6 +14,7 @@
 @property (nonatomic, readwrite) CTSelectedVehicleTabViewModel *selectedVehicleTabViewModel;
 @property (nonatomic, readwrite) CTSelectedVehicleInsuranceViewModel *selectedVehicleInsuranceViewModel;
 @property (nonatomic, readwrite) CTSelectedVehicleExtrasViewModel *selectedVehicleExtrasViewModel;
+@property (nonatomic, readwrite) UIColor *buttonColor;
 @end
 @implementation CTSelectedVehicleViewModel
 
@@ -24,6 +25,7 @@
     viewModel.selectedVehicleTabViewModel = [CTSelectedVehicleTabViewModel viewModelForState:appState];
     viewModel.selectedVehicleInsuranceViewModel = [CTSelectedVehicleInsuranceViewModel viewModelForState:appState];
     viewModel.selectedVehicleExtrasViewModel = [CTSelectedVehicleExtrasViewModel viewModelForState:appState];
+    viewModel.buttonColor = appState.userSettingsState.secondaryColor;
     return viewModel;
 }
 

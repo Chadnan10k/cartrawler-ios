@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "CTViewModelProtocol.h"
+#import "CTPaymentSummaryViewModel.h"
 
 @interface CTBookingViewModel : NSObject <CTViewModelProtocol>
+@property (nonatomic, readonly) CTPaymentSummaryViewModel *paymentSummaryViewModel;
+
 @property (nonatomic, readonly) CTBookingTextfield selectedTextfield;
 
 @property (nonatomic, readonly) NSString *firstNamePlaceholder;
@@ -29,5 +32,6 @@
 @property (nonatomic, readonly) NSString *flightNumber;
 
 @property (nonatomic, readonly) NSNumber *keyboardHeight;
+@property (nonatomic, readonly) UIColor *buttonColor;
 
 @end

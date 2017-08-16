@@ -9,6 +9,8 @@
 #import "CTBookingViewModel.h"
 
 @interface CTBookingViewModel ()
+@property (nonatomic, readwrite) CTPaymentSummaryViewModel *paymentSummaryViewModel;
+
 @property (nonatomic, readwrite) CTBookingTextfield selectedTextfield;
 
 @property (nonatomic, readwrite) NSString *firstNamePlaceholder;
@@ -28,6 +30,7 @@
 @property (nonatomic, readwrite) NSString *flightNumber;
 
 @property (nonatomic, readwrite) NSNumber *keyboardHeight;
+@property (nonatomic, readwrite) UIColor *buttonColor;
 @end
 
 @implementation CTBookingViewModel
@@ -35,6 +38,8 @@
 + (instancetype)viewModelForState:(CTAppState *)appState {
     CTBookingViewModel *viewModel =  [CTBookingViewModel new];
     CTBookingState *bookingState = appState.bookingState;
+    
+    viewModel.paymentSummaryViewModel = [CTPaymentSummaryViewModel viewModelForState:appState];
     
     viewModel.selectedTextfield = bookingState.selectedTextfield;
     
@@ -66,6 +71,8 @@
     if (bookingState.selectedTextfield != CTBookingTextfieldPayment) {
         viewModel.keyboardHeight = appState.userSettingsState.keyboardHeight;
     }
+    
+    viewModel.buttonColor = appState.userSettingsState.secondaryColor;
     
     return viewModel;
 }

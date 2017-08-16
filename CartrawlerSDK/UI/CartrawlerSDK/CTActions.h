@@ -393,6 +393,11 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      */
     CTActionBookingInputViewUserDidSelectCancel,
     /**
+     *  The user ended editing a textfield
+     *  Payload: nil
+     */
+    CTActionBookingUserDidEndEditingTextfield,
+    /**
      *  The user selected done on the input view
      *  Payload: nil
      */

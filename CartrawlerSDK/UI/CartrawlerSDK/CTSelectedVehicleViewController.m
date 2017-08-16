@@ -24,6 +24,7 @@
 @property (nonatomic, weak) CTSelectedVehicleInsuranceViewController *selectedVehicleInsuranceViewController;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectedVehicleInsuranceViewHeight;
 @property (nonatomic, weak) CTSelectedVehicleExtrasViewController *selectedVehicleExtrasViewController;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @end
 
 @implementation CTSelectedVehicleViewController
@@ -34,6 +35,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.selectedVehicleInsuranceViewHeight.constant = 0;
+    [self.view layoutIfNeeded];
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
@@ -53,9 +56,12 @@
     [self.selectedVehicleInsuranceViewController updateWithViewModel:viewModel.selectedVehicleInsuranceViewModel];
     [self.selectedVehicleExtrasViewController updateWithViewModel:viewModel.selectedVehicleExtrasViewModel];
     
-//    self.selectedVehicleInfoViewHeight.constant = [self.selectedVehicleInfoViewController.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-    self.selectedVehicleTabViewHeight.constant = [self.selectedVehicleTabViewController.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-//    self.selectedVehicleInsuranceViewHeight.constant = viewModel.selectedVehicleInsuranceViewModel ? [self.selectedVehicleInsuranceViewController.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height : 0;
+    self.selectedVehicleInfoViewHeight.constant = [self.selectedVehicleInfoViewController.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    self.selectedVehicleTabViewHeight.constant = [self.selectedVehicleTabViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
+    if (viewModel.selectedVehicleTabViewModel) {
+        self.selectedVehicleInsuranceViewHeight.constant = [self.selectedVehicleInsuranceViewController.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    }
+    self.nextButton.backgroundColor = viewModel.buttonColor;
     [UIView animateWithDuration:0.2 animations:^{
         [self.view layoutIfNeeded];
     }];

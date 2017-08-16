@@ -569,6 +569,9 @@
         case CTActionBookingInputViewUserDidSelectCancel:
             bookingState.selectedTextfield = CTBookingTextfieldNone;
             break;
+        case CTActionBookingUserDidEndEditingTextfield:
+            bookingState.selectedTextfield = CTBookingTextfieldNone;
+            break;
         case CTActionBookingInputViewUserDidSelectDone:
             bookingState.selectedTextfield++;
             userSettingsState.keyboardHeight = nil;

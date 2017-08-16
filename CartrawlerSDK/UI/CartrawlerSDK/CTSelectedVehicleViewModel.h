@@ -19,4 +19,5 @@
 @property (nonatomic, readonly) CTSelectedVehicleTabViewModel *selectedVehicleTabViewModel;
 @property (nonatomic, readonly) CTSelectedVehicleInsuranceViewModel *selectedVehicleInsuranceViewModel;
 @property (nonatomic, readonly) CTSelectedVehicleExtrasViewModel *selectedVehicleExtrasViewModel;
+@property (nonatomic, readonly) UIColor *buttonColor;
 @end
