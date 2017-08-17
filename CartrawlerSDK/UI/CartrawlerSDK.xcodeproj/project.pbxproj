@@ -203,6 +203,10 @@
 		E7404A811E82F90C009BF7DF /* CTTabHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7404A7F1E82F90C009BF7DF /* CTTabHeaderView.m */; };
 		E7404A841E82F95D009BF7DF /* CTTabView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A821E82F95D009BF7DF /* CTTabView.h */; };
 		E7404A851E82F95D009BF7DF /* CTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7404A831E82F95D009BF7DF /* CTTabView.m */; };
+		E750BA401F462F26003FEE0B /* CTBookingErrorViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E750BA3E1F462F26003FEE0B /* CTBookingErrorViewController.h */; };
+		E750BA411F462F26003FEE0B /* CTBookingErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E750BA3F1F462F26003FEE0B /* CTBookingErrorViewController.m */; };
+		E750BA441F462F39003FEE0B /* CTBookingErrorViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E750BA421F462F39003FEE0B /* CTBookingErrorViewModel.h */; };
+		E750BA451F462F39003FEE0B /* CTBookingErrorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E750BA431F462F39003FEE0B /* CTBookingErrorViewModel.m */; };
 		E76900A81E6F065C00D729FF /* CTInfoTip.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900A61E6F065C00D729FF /* CTInfoTip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76900A91E6F065C00D729FF /* CTInfoTip.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900A71E6F065C00D729FF /* CTInfoTip.m */; };
 		E76900BD1E7199F400D729FF /* CTAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900BB1E7199F400D729FF /* CTAlertView.h */; };
@@ -599,6 +603,10 @@
 		E7404A7F1E82F90C009BF7DF /* CTTabHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabHeaderView.m; sourceTree = "<group>"; };
 		E7404A821E82F95D009BF7DF /* CTTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabView.h; sourceTree = "<group>"; };
 		E7404A831E82F95D009BF7DF /* CTTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabView.m; sourceTree = "<group>"; };
+		E750BA3E1F462F26003FEE0B /* CTBookingErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingErrorViewController.h; sourceTree = "<group>"; };
+		E750BA3F1F462F26003FEE0B /* CTBookingErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingErrorViewController.m; sourceTree = "<group>"; };
+		E750BA421F462F39003FEE0B /* CTBookingErrorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingErrorViewModel.h; sourceTree = "<group>"; };
+		E750BA431F462F39003FEE0B /* CTBookingErrorViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingErrorViewModel.m; sourceTree = "<group>"; };
 		E76900A61E6F065C00D729FF /* CTInfoTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInfoTip.h; sourceTree = "<group>"; };
 		E76900A71E6F065C00D729FF /* CTInfoTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInfoTip.m; sourceTree = "<group>"; };
 		E76900BB1E7199F400D729FF /* CTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertView.h; sourceTree = "<group>"; };
@@ -1369,6 +1377,17 @@
 			name = "Tab Manager";
 			sourceTree = "<group>";
 		};
+		E750BA3D1F462EE6003FEE0B /* Booking Alert */ = {
+			isa = PBXGroup;
+			children = (
+				E750BA3E1F462F26003FEE0B /* CTBookingErrorViewController.h */,
+				E750BA3F1F462F26003FEE0B /* CTBookingErrorViewController.m */,
+				E750BA421F462F39003FEE0B /* CTBookingErrorViewModel.h */,
+				E750BA431F462F39003FEE0B /* CTBookingErrorViewModel.m */,
+			);
+			name = "Booking Alert";
+			sourceTree = "<group>";
+		};
 		E76900A51E6F061B00D729FF /* InfoTip */ = {
 			isa = PBXGroup;
 			children = (
@@ -1978,6 +1997,7 @@
 			children = (
 				E7B8EDD01F4203EA00638D6F /* CTBooking.storyboard */,
 				E7B8EDCF1F4201E200638D6F /* Container */,
+				E750BA3D1F462EE6003FEE0B /* Booking Alert */,
 			);
 			name = Booking;
 			sourceTree = "<group>";
@@ -2138,6 +2158,7 @@
 				E78299471F28152900C20525 /* CTVehicleListTableViewCell.h in Headers */,
 				E7B19D051F33FB5B000738CB /* CTSelectedVehicleExtrasCellModel.h in Headers */,
 				E78298B71F1FA68B00C20525 /* CTSearchViewController.h in Headers */,
+				E750BA401F462F26003FEE0B /* CTBookingErrorViewController.h in Headers */,
 				E7F6D1621F38B33F0002338C /* CTVehicleListFilterCellTableViewModel.h in Headers */,
 				455B58501DCC914300CA4790 /* CTStepper.h in Headers */,
 				E782995B1F291AB000C20525 /* CTBannerEdge.h in Headers */,
@@ -2153,6 +2174,7 @@
 				E7B19CFC1F33F92D000738CB /* CTInsuranceImageView.h in Headers */,
 				E775DBDA1F327364009039D8 /* CTSearchUSPViewModel.h in Headers */,
 				455B585A1DCC914300CA4790 /* CTPlaceholderView.h in Headers */,
+				E750BA441F462F39003FEE0B /* CTBookingErrorViewModel.h in Headers */,
 				E782990C1F27A3F600C20525 /* CTSearchSettingsViewController.h in Headers */,
 				E78298E71F21869A00C20525 /* CTSearchCalendarViewController.h in Headers */,
 				455B585C1DCC914300CA4790 /* CTView.h in Headers */,
@@ -2466,6 +2488,7 @@
 				E7B19CAF1F33A096000738CB /* CTSearchInterstitialViewModel.m in Sources */,
 				455B58631DCC914300CA4790 /* CTAppearance.m in Sources */,
 				455B58651DCC914300CA4790 /* JVFloatLabeledTextField.m in Sources */,
+				E750BA451F462F39003FEE0B /* CTBookingErrorViewModel.m in Sources */,
 				BCE193521EA8F5D00097C5CB /* CTLoadingView.m in Sources */,
 				E782994C1F28164200C20525 /* CTVehicleListViewModel.m in Sources */,
 				455B58671DCC914300CA4790 /* NSStringUtils.m in Sources */,
@@ -2550,6 +2573,7 @@
 				E76900A91E6F065C00D729FF /* CTInfoTip.m in Sources */,
 				E775DBEB1F327B0F009039D8 /* CTSearchUSPDetailViewCell.m in Sources */,
 				455B58C81DCC914400CA4790 /* CTDateCollectionViewCell.m in Sources */,
+				E750BA411F462F26003FEE0B /* CTBookingErrorViewController.m in Sources */,
 				BCFA41751E97CDF700DA1710 /* CTUpSellBanner.m in Sources */,
 				455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */,
 				BC9546711EAF77AD0097312C /* CTImageTextView.m in Sources */,

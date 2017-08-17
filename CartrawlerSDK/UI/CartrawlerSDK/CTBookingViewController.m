@@ -73,7 +73,6 @@
     
     self.addressDetailsHeight.constant = 0;
     self.keyboardSpacer.constant = 0;
-    [self.view layoutIfNeeded];
     
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
     self.toolbar.barTintColor = [UIColor lightGrayColor];
@@ -139,31 +138,35 @@
         // TODO: Extract constant
         self.addressDetailsHeight.constant = 377;
     }
-    
-//    if (viewModel.keyboardHeight) {
-//        UIView *selectedView;
-//        NSArray *textfields = @[self.firstName, self.lastName, self.emailAddress, self.prefix, self.phoneNumber, self.flightNumber, self.addressLine1, self.addressLine2, self.city, self.postcode, self.country];
-//        for (UITextField *textfield in textfields) {
-//            selectedView = textfield;
-//        }
-//        if (!selectedView) {
-//            selectedView = self.paymentDetailsContainerView;
-//        }
-//        
-//        self.keyboardSpacer.constant = viewModel.keyboardHeight ? viewModel.keyboardHeight.floatValue : 0;
-//        [self.view layoutIfNeeded];
-//        
-//        CGFloat padding = 8;
-//        CGPoint scrollPoint = CGPointMake(0, selectedView.frame.origin.y - padding);
-//        [self.scrollView setContentOffset:scrollPoint animated:YES];
-//    } else if (viewModel.selectedTextfield == CTBookingTextfieldNone) {
-//        [self.view endEditing:YES];
-//    }
-    
     UIView *selectedView;
-    switch (viewModel.selectedTextfield) {
+    
+    // If keyboard update, but there are no first responders, must be payment
+    BOOL textfieldSelected = NO;
+    CGFloat scrollAdjustment = 0.0;
+    NSArray *driverDetailsTextfields = @[self.firstName, self.lastName, self.emailAddress, self.prefix, self.phoneNumber, self.flightNumber];
+    for (UITextField *textfield in driverDetailsTextfields) {
+        if ([textfield isFirstResponder]) {
+            textfieldSelected = YES;
+            scrollAdjustment = 0;
+        }
+    }
+    NSArray *addressDetailsTextfields = @[self.addressLine1, self.addressLine2, self.city, self.postcode, self.country];
+    for (UITextField *textfield in addressDetailsTextfields) {
+        if ([textfield isFirstResponder]) {
+            textfieldSelected = YES;
+            scrollAdjustment = self.addressDetailsContainer.frame.origin.y;
+        }
+    }
+    CTBookingTextfield selectedTextfield = viewModel.selectedTextfield;
+    if (viewModel.keyboardHeight && !textfieldSelected) {
+        selectedTextfield = CTBookingTextfieldPayment;
+    }
+    
+    switch (selectedTextfield) {
         case CTBookingTextfieldNone:
-            [self.view endEditing:YES];
+            if (selectedView != self.paymentDetailsContainerView) {
+                [self.view endEditing:YES];
+            }
             break;
         case CTBookingTextfieldFirstName:
             selectedView = self.firstName;
@@ -205,31 +208,14 @@
         default:
             break;
     }
-    
-    // If keyboard update, but there are no first responders, must be payment
-    BOOL textfieldSelected = NO;
-    CGFloat scrollAdjustment = 0.0;
-    NSArray *driverDetailsTextfields = @[self.firstName, self.lastName, self.emailAddress, self.prefix, self.phoneNumber, self.flightNumber];
-    for (UITextField *textfield in driverDetailsTextfields) {
-        if ([textfield isFirstResponder]) {
-            textfieldSelected = YES;
-            scrollAdjustment = 0;
-        }
-    }
-    NSArray *addressDetailsTextfields = @[self.addressLine1, self.addressLine2, self.city, self.postcode, self.country];
-    for (UITextField *textfield in addressDetailsTextfields) {
-        if ([textfield isFirstResponder]) {
-            textfieldSelected = YES;
-            scrollAdjustment = self.addressDetailsContainer.frame.origin.y;
-        }
-    }
-
-    if (viewModel.keyboardHeight && !textfieldSelected) {
-        selectedView = self.paymentDetailsContainerView;
-    }
    
     self.keyboardSpacer.constant = viewModel.keyboardHeight ? viewModel.keyboardHeight.floatValue : 0;
-    [self.view layoutIfNeeded];
+
+//    if (selectedTextfield != CTBookingTextfieldNone && selectedTextfield != CTBookingTextfieldPayment) {
+//        if (![selectedView isFirstResponder]) {
+//            [selectedView becomeFirstResponder];
+//        }
+//    }
 
     if (selectedView) {
         CGFloat padding = 8;
@@ -298,46 +284,12 @@
     [CTAppController dispatchAction:CTActionBookingInputViewUserDidSelectDone payload:nil];
 }
 
-//- (void)keyboardWasShown:(CGFloat)keyboardHeight {
-//    CGFloat buffer = 41;
-//    CGFloat inputViewHeight = keyboardHeight + self.toolbar.frame.size.height + buffer;
-//    
-//    for (UIView *view in self.contentView.subviews) {
-//        if (view.isFirstResponder) {
-//            CGRect screenRect = [[UIScreen mainScreen] bounds];
-//            CGFloat screenHeight = screenRect.size.height;
-//            CGFloat visibleY = screenHeight - inputViewHeight;
-//                        
-//            if (view.frame.origin.y + view.frame.size.height > visibleY) {
-//                CGPoint scrollPoint = CGPointMake(0, view.frame.origin.y + view.frame.size.height - visibleY);
-//                [self.scrollView setContentOffset:scrollPoint animated:YES];
-//                return;
-//            }
-//        }
-//    }
-//}
-
-//- (NSArray *)paymentSubviews:(UIView *)view {
-//    if (view.subviews.count == 0) {
-//        return @[view];
-//    }
-//    NSMutableArray *views = [NSMutableArray new];
-//    for (UIView *subview in view.subviews) {
-//        [views addObjectsFromArray:[self paymentSubviews:subview]];
-//    }
-//    return views.copy;
-//}
+- (IBAction)backButtonTapped:(UIButton *)sender {
+    [CTAppController dispatchAction:CTActionBookingUserDidTapBack payload:nil];
+}
 
 - (IBAction)payButtonTapped:(UIButton *)sender {
     [CTAppController dispatchAction:CTActionBookingUserDidTapNext payload:nil];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    if (self.isMovingFromParentViewController || self.isBeingDismissed) {
-        [CTAppController dispatchAction:CTActionBookingUserDidTapBack payload:nil];
-    }
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {

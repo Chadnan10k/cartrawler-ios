@@ -599,11 +599,22 @@
             bookingState.selectedTextfield++;
             break;
         case CTActionBookingUserDidTapNext:
-              [self.paymentController makePaymentWithState:appState];
+            bookingState.wantsBooking = YES;
+            bookingState.bookingConfirmation = nil;
+            bookingState.bookingConfirmationError = nil;
+            [self.paymentController makePaymentWithState:appState];
             break;
         case CTActionBookingUserDidTapBack:
             navigationState.currentNavigationStep = CTNavigationStepSelectedVehicle;
             appState.bookingState = nil;
+            break;
+        case CTActionBookingAPIReturnedSuccess:
+            bookingState.bookingConfirmation = payload;
+            navigationState.modalViewControllers = @[@(CTNavigationModalBookingError)];
+            break;
+        case CTActionBookingAPIReturnedError:
+            bookingState.bookingConfirmationError = payload;
+            navigationState.modalViewControllers = @[@(CTNavigationModalBookingError)];
             break;
         default:
             break;

@@ -11,6 +11,7 @@
 #import "CTPaymentRequestGenerator.h"
 #import "CartrawlerSDK+NSDateUtils.h"
 #import "CartrawlerSDK+NSNumber.h"
+#import "CTAppController.h"
 
 @interface CTPaymentController () <CTPaymentDelegate, UITextFieldDelegate>
 @property (nonatomic, strong) CTPayment *payment;
@@ -77,7 +78,8 @@
 }
 
 - (void)payment:(CTPayment *)payment didSucceedWithResponse:(NSDictionary *)response {
-    
+    CTBooking *booking = [[CTBooking alloc] initFromVehReservationDictionary:response];
+    [CTAppController dispatchAction:CTActionBookingAPIReturnedSuccess payload:booking];
 }
 
 /**
@@ -87,7 +89,7 @@
  @param error the error, see CTPaymentErrorCodes to interpret error code
  */
 - (void)payment:(CTPayment *)payment didFailWithError:(NSError *)error {
-    
+    [CTAppController dispatchAction:CTActionBookingAPIReturnedError payload:error];
 }
 
 

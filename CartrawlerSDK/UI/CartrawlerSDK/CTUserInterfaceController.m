@@ -10,6 +10,7 @@
 
 #import "CTViewControllerProtocol.h"
 #import "CTSearchErrorViewController.h"
+#import "CTBookingErrorViewController.h"
 #import "CTSearchViewModel.h"
 #import "CTVehicleListViewModel.h"
 #import "CTSelectedVehicleViewModel.h"
@@ -158,6 +159,9 @@
         case CTNavigationModalVehicleListFilter:
             storyboard = [UIStoryboard storyboardWithName:@"CTVehicleList" bundle:bundle];
             return [storyboard instantiateViewControllerWithIdentifier:@"CTVehicleListFilterViewController"];
+        case CTNavigationModalBookingError:
+            return [[CTBookingErrorViewController alloc] initWithNibName:@"CTAlertViewController" bundle:bundle];
+            break;
         default:
             return nil;
             break;

@@ -16,16 +16,22 @@
 
 @interface CTSelectedVehicleViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *navigationBar;
 @property (weak, nonatomic) IBOutlet UIView *vehicleDetailsContainerView;
+
 @property (nonatomic, weak) CTSelectedVehicleInfoViewController *selectedVehicleInfoViewController;
+@property (weak, nonatomic) IBOutlet UILabel *total;
+@property (weak, nonatomic) IBOutlet UILabel *totalAmount;
+@property (weak, nonatomic) IBOutlet UILabel *chevron;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectedVehicleInfoViewHeight;
 @property (nonatomic, weak) CTSelectedVehicleTabViewController *selectedVehicleTabViewController;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectedVehicleTabViewHeight;
 @property (nonatomic, weak) CTSelectedVehicleInsuranceViewController *selectedVehicleInsuranceViewController;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectedVehicleInsuranceViewHeight;
 @property (nonatomic, weak) CTSelectedVehicleExtrasViewController *selectedVehicleExtrasViewController;
-@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
+
+@property (nonatomic, assign) BOOL viewHasAppeared;
 @end
 
 @implementation CTSelectedVehicleViewController
@@ -36,21 +42,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.selectedVehicleInsuranceViewHeight.constant = 0;
-    //[self.view layoutIfNeeded];
-    //self.automaticallyAdjustsScrollViewInsets = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    //[self.view layoutIfNeeded];
+    self.viewHasAppeared = YES;
 }
 
 - (void)updateWithViewModel:(CTSelectedVehicleViewModel *)viewModel {
-    // Force segued views to load
+    // Force load views
     self.view = self.view;
     
-    self.navigationBar.barTintColor = viewModel.navigationBarColor;
+    self.navigationBar.backgroundColor = viewModel.navigationBarColor;
+    
+    if (![self.totalAmount.text isEqualToString:viewModel.totalAmount]) {
+        [UIView transitionWithView:self.totalAmount
+                          duration:.5f
+                           options:UIViewAnimationOptionCurveEaseInOut |
+         UIViewAnimationOptionTransitionFlipFromTop
+                        animations:^{
+                            self.totalAmount.text = viewModel.totalAmount;
+                        } completion:nil];
+    }
     
     [self.selectedVehicleInfoViewController updateWithViewModel:viewModel.selectedVehicleInfoViewModel];
     [self.selectedVehicleTabViewController updateWithViewModel:viewModel.selectedVehicleTabViewModel];
@@ -63,9 +77,12 @@
         self.selectedVehicleInsuranceViewHeight.constant = [self.selectedVehicleInsuranceViewController.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     }
     self.nextButton.backgroundColor = viewModel.buttonColor;
-//    [UIView animateWithDuration:0.2 animations:^{
-//        [self.view layoutIfNeeded];
-//    }];
+    if (self.viewHasAppeared) {
+        [UIView animateWithDuration:self.viewHasAppeared ? 0.2 : 0
+                         animations:^{
+                             [self.view layoutIfNeeded];
+                         }];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -82,11 +99,13 @@
         self.selectedVehicleExtrasViewController = segue.destinationViewController;
     }
 }
+- (IBAction)backButtonTapped:(UIButton *)sender {
+    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapBack payload:nil];
+}
+- (IBAction)totalButtonTapped:(id)sender {
+}
 - (IBAction)nextButtonTapped:(UIButton *)sender {
     [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapNext payload:nil];
-}
-- (IBAction)backButtonTapped:(id)sender {
-    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapBack payload:nil];
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {

@@ -15,6 +15,8 @@
 
 @interface CTSelectedVehicleViewModel : NSObject <CTViewModelProtocol>
 @property (nonatomic, readonly) UIColor *navigationBarColor;
+@property (nonatomic, readonly) NSString *total;
+@property (nonatomic, readonly) NSString *totalAmount;
 @property (nonatomic, readonly) CTSelectedVehicleInfoViewModel *selectedVehicleInfoViewModel;
 @property (nonatomic, readonly) CTSelectedVehicleTabViewModel *selectedVehicleTabViewModel;
 @property (nonatomic, readonly) CTSelectedVehicleInsuranceViewModel *selectedVehicleInsuranceViewModel;

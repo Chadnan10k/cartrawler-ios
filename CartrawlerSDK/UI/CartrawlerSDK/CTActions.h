@@ -432,5 +432,15 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      *  Payload: nil
      */
     CTActionBookingUserDidTapBack,
+    /**
+     *  The payment API returned success
+     *  Payload: nil
+     */
+    CTActionBookingAPIReturnedSuccess,
+    /**
+     *  The payment API returned an error
+     *  Payload: the error
+     */
+    CTActionBookingAPIReturnedError,
     
 };

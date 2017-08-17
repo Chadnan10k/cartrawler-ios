@@ -15,17 +15,4 @@
     return CTSearchErrorViewModel.class;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.backgroundColor = [UIColor clearColor];
-}
-
-- (UIModalPresentationStyle)modalPresentationStyle {
-    return UIModalPresentationOverCurrentContext;
-}
-
-- (UIModalTransitionStyle)modalTransitionStyle {
-    return UIModalTransitionStyleCrossDissolve;
-}
-
 @end

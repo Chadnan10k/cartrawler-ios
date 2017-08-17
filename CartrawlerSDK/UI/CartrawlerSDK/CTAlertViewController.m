@@ -19,6 +19,11 @@
 
 @implementation CTAlertViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor clearColor];
+}
+
 - (void)updateWithViewModel:(CTAlertViewModel *)viewModel {
     self.titleLabel.text = viewModel.title;
     self.messageLabel.attributedText = viewModel.message;
@@ -29,6 +34,14 @@
 - (IBAction)okButtonTapped:(id)sender {
     //TODO: Check memory leak possibility
     self.alertAction.handler(self.alertAction);
+}
+
+- (UIModalPresentationStyle)modalPresentationStyle {
+    return UIModalPresentationOverCurrentContext;
+}
+
+- (UIModalTransitionStyle)modalTransitionStyle {
+    return UIModalTransitionStyleCrossDissolve;
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CTCSVItem.h"
+#import <CartrawlerAPI/CTBooking.h>
 
 typedef NS_ENUM(NSInteger, CTBookingTextfield) {
     CTBookingTextfieldNone,
@@ -39,5 +40,7 @@ typedef NS_ENUM(NSInteger, CTBookingTextfield) {
 @property (nonatomic) NSString *city;
 @property (nonatomic) NSString *postcode;
 @property (nonatomic) CTCSVItem *country;
-
+@property (nonatomic) BOOL wantsBooking;
+@property (nonatomic) CTBooking *bookingConfirmation;
+@property (nonatomic) NSError *bookingConfirmationError;
 @end

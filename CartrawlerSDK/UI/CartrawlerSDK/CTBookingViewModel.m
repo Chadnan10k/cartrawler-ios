@@ -76,7 +76,7 @@
     viewModel.flightNumber = bookingState.flightNumber;
     viewModel.showAddressDetails = appState.selectedVehicleState.insuranceAdded;
     
-    if (bookingState.selectedTextfield != CTBookingTextfieldNone && appState.userSettingsState.keyboardShowing) {
+    if (appState.userSettingsState.keyboardShowing) {
         viewModel.keyboardHeight = appState.userSettingsState.keyboardHeight;
     }
     
