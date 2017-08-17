@@ -207,6 +207,8 @@
 		E750BA411F462F26003FEE0B /* CTBookingErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E750BA3F1F462F26003FEE0B /* CTBookingErrorViewController.m */; };
 		E750BA441F462F39003FEE0B /* CTBookingErrorViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E750BA421F462F39003FEE0B /* CTBookingErrorViewModel.h */; };
 		E750BA451F462F39003FEE0B /* CTBookingErrorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E750BA431F462F39003FEE0B /* CTBookingErrorViewModel.m */; };
+		E750BA481F463B79003FEE0B /* CTValidationBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = E750BA461F463B79003FEE0B /* CTValidationBooking.h */; };
+		E750BA491F463B79003FEE0B /* CTValidationBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = E750BA471F463B79003FEE0B /* CTValidationBooking.m */; };
 		E76900A81E6F065C00D729FF /* CTInfoTip.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900A61E6F065C00D729FF /* CTInfoTip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76900A91E6F065C00D729FF /* CTInfoTip.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900A71E6F065C00D729FF /* CTInfoTip.m */; };
 		E76900BD1E7199F400D729FF /* CTAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900BB1E7199F400D729FF /* CTAlertView.h */; };
@@ -607,6 +609,8 @@
 		E750BA3F1F462F26003FEE0B /* CTBookingErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingErrorViewController.m; sourceTree = "<group>"; };
 		E750BA421F462F39003FEE0B /* CTBookingErrorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingErrorViewModel.h; sourceTree = "<group>"; };
 		E750BA431F462F39003FEE0B /* CTBookingErrorViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingErrorViewModel.m; sourceTree = "<group>"; };
+		E750BA461F463B79003FEE0B /* CTValidationBooking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTValidationBooking.h; sourceTree = "<group>"; };
+		E750BA471F463B79003FEE0B /* CTValidationBooking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTValidationBooking.m; sourceTree = "<group>"; };
 		E76900A61E6F065C00D729FF /* CTInfoTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInfoTip.h; sourceTree = "<group>"; };
 		E76900A71E6F065C00D729FF /* CTInfoTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInfoTip.m; sourceTree = "<group>"; };
 		E76900BB1E7199F400D729FF /* CTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertView.h; sourceTree = "<group>"; };
@@ -1681,6 +1685,8 @@
 			children = (
 				E78298FD1F26E0D900C20525 /* CTValidationSearch.h */,
 				E78298FE1F26E0D900C20525 /* CTValidationSearch.m */,
+				E750BA461F463B79003FEE0B /* CTValidationBooking.h */,
+				E750BA471F463B79003FEE0B /* CTValidationBooking.m */,
 			);
 			name = "Validation Logic";
 			sourceTree = "<group>";
@@ -2187,6 +2193,7 @@
 				E7B8EDD81F4220F200638D6F /* CTBookingViewModel.h in Headers */,
 				E78299641F2944A300C20525 /* CTVehicleListState.h in Headers */,
 				454D91F01DD34E24001AE96C /* Reachability.h in Headers */,
+				E750BA481F463B79003FEE0B /* CTValidationBooking.h in Headers */,
 				455B58661DCC914300CA4790 /* NSStringUtils.h in Headers */,
 				455B58681DCC914300CA4790 /* CTTextField.h in Headers */,
 				E7B19CF71F33F564000738CB /* CTSpecialOffersPresentationLogic.h in Headers */,
@@ -2573,6 +2580,7 @@
 				E76900A91E6F065C00D729FF /* CTInfoTip.m in Sources */,
 				E775DBEB1F327B0F009039D8 /* CTSearchUSPDetailViewCell.m in Sources */,
 				455B58C81DCC914400CA4790 /* CTDateCollectionViewCell.m in Sources */,
+				E750BA491F463B79003FEE0B /* CTValidationBooking.m in Sources */,
 				E750BA411F462F26003FEE0B /* CTBookingErrorViewController.m in Sources */,
 				BCFA41751E97CDF700DA1710 /* CTUpSellBanner.m in Sources */,
 				455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */,

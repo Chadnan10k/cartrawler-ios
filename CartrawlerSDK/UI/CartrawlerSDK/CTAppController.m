@@ -14,6 +14,7 @@
 #import "CTLoggingController.h"
 #import "CTPaymentController.h"
 #import "CTValidationSearch.h"
+#import "CTValidationBooking.h"
 
 #import "CartrawlerSDK+NSDateUtils.h"
 #import "CTCSVItem.h"
@@ -602,12 +603,19 @@
             bookingState.wantsBooking = YES;
             bookingState.bookingConfirmation = nil;
             bookingState.bookingConfirmationError = nil;
-            [self.paymentController makePaymentWithState:appState];
+            if ([CTValidationBooking validateBookingStep:appState].count == 0) {
+                [self.paymentController makePaymentWithState:appState];
+            } else {
+                bookingState.animateValidationFailed = YES;
+            }
             break;
         case CTActionBookingUserDidTapBack:
             navigationState.currentNavigationStep = CTNavigationStepSelectedVehicle;
             appState.bookingState = nil;
             break;
+        case CTActionBookingValidationAnimationFinished:
+            bookingState.animateValidationFailed = NO;
+            return;
         case CTActionBookingAPIReturnedSuccess:
             bookingState.bookingConfirmation = payload;
             navigationState.modalViewControllers = @[@(CTNavigationModalBookingError)];

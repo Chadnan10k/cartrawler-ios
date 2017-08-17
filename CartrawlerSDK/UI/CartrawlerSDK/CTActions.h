@@ -433,6 +433,11 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      */
     CTActionBookingUserDidTapBack,
     /**
+     *  The user tapped the back button
+     *  Payload: nil
+     */
+    CTActionBookingValidationAnimationFinished,
+    /**
      *  The payment API returned success
      *  Payload: nil
      */

@@ -41,6 +41,7 @@ typedef NS_ENUM(NSInteger, CTBookingTextfield) {
 @property (nonatomic) NSString *postcode;
 @property (nonatomic) CTCSVItem *country;
 @property (nonatomic) BOOL wantsBooking;
+@property (nonatomic) BOOL animateValidationFailed;
 @property (nonatomic) CTBooking *bookingConfirmation;
 @property (nonatomic) NSError *bookingConfirmationError;
 @end

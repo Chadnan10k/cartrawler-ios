@@ -7,6 +7,7 @@
 //
 
 #import "CTBookingViewModel.h"
+#import "CTValidationBooking.h"
 
 @interface CTBookingViewModel ()
 @property (nonatomic, readwrite) CTPaymentSummaryViewModel *paymentSummaryViewModel;
@@ -36,6 +37,19 @@
 @property (nonatomic, readwrite) NSString *city;
 @property (nonatomic, readwrite) NSString *postcode;
 @property (nonatomic, readwrite) NSString *country;
+
+@property (nonatomic, readwrite) BOOL shakeAnimations;
+@property (nonatomic, readwrite) BOOL shakeFirstName;
+@property (nonatomic, readwrite) BOOL shakeLastName;
+@property (nonatomic, readwrite) BOOL shakeEmailAddress;
+@property (nonatomic, readwrite) BOOL shakePrefix;
+@property (nonatomic, readwrite) BOOL shakePhoneNumber;
+@property (nonatomic, readwrite) BOOL shakeFlightNumber;
+@property (nonatomic, readwrite) BOOL shakeAddressLine1;
+@property (nonatomic, readwrite) BOOL shakeAddressLine2;
+@property (nonatomic, readwrite) BOOL shakeCity;
+@property (nonatomic, readwrite) BOOL shakePostcode;
+@property (nonatomic, readwrite) BOOL shakeCountry;
 
 @property (nonatomic, readwrite) BOOL showAddressDetails;
 @property (nonatomic, readwrite) NSNumber *keyboardHeight;
@@ -75,9 +89,58 @@
     viewModel.country = bookingState.country.name;
     viewModel.flightNumber = bookingState.flightNumber;
     viewModel.showAddressDetails = appState.selectedVehicleState.insuranceAdded;
+    viewModel.addressLine1 = bookingState.addressLine1;
+    viewModel.addressLine2 = bookingState.addressLine2;
+    viewModel.city = bookingState.city;
+    viewModel.postcode = bookingState.postcode;
+    viewModel.country = bookingState.country.name;
     
     if (appState.userSettingsState.keyboardShowing) {
         viewModel.keyboardHeight = appState.userSettingsState.keyboardHeight;
+    }
+    
+    if (bookingState.wantsBooking && bookingState.animateValidationFailed) {
+        viewModel.shakeAnimations = YES;
+        for (NSNumber *failureNumber in [CTValidationBooking validateBookingStep:appState]) {
+            CTValidationBookingFailed failure = failureNumber.integerValue;
+            switch (failure) {
+                case CTValidationBookingFailedFirstName:
+                    viewModel.shakeFirstName = YES;
+                    break;
+                case CTValidationBookingFailedLastName:
+                    viewModel.shakeLastName = YES;
+                    break;
+                case CTValidationBookingFailedEmailAddress:
+                    viewModel.shakeEmailAddress = YES;
+                    break;
+                case CTValidationBookingFailedPrefix:
+                    viewModel.shakePrefix = YES;
+                    break;
+                case CTValidationBookingFailedPhoneNumber:
+                    viewModel.shakePhoneNumber = YES;
+                    break;
+                case CTValidationBookingFailedFlightNumber:
+                    viewModel.shakeFlightNumber = YES;
+                    break;
+                case CTValidationBookingFailedAddressLine1:
+                    viewModel.shakeAddressLine1 = YES;
+                    break;
+                case CTValidationBookingFailedAddressLine2:
+                    viewModel.shakeAddressLine2 = YES;
+                    break;
+                case CTValidationBookingFailedCity:
+                    viewModel.shakeCity = YES;
+                    break;
+                case CTValidationBookingFailedPostcode:
+                    viewModel.shakePostcode = YES;
+                    break;
+                case CTValidationBookingFailedCountry:
+                    viewModel.shakeCountry = YES;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
     
     viewModel.buttonColor = appState.userSettingsState.secondaryColor;

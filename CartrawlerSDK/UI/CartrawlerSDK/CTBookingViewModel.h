@@ -39,6 +39,19 @@
 @property (nonatomic, readonly) NSString *postcode;
 @property (nonatomic, readonly) NSString *country;
 
+@property (nonatomic, readonly) BOOL shakeAnimations;
+@property (nonatomic, readonly) BOOL shakeFirstName;
+@property (nonatomic, readonly) BOOL shakeLastName;
+@property (nonatomic, readonly) BOOL shakeEmailAddress;
+@property (nonatomic, readonly) BOOL shakePrefix;
+@property (nonatomic, readonly) BOOL shakePhoneNumber;
+@property (nonatomic, readonly) BOOL shakeFlightNumber;
+@property (nonatomic, readonly) BOOL shakeAddressLine1;
+@property (nonatomic, readonly) BOOL shakeAddressLine2;
+@property (nonatomic, readonly) BOOL shakeCity;
+@property (nonatomic, readonly) BOOL shakePostcode;
+@property (nonatomic, readonly) BOOL shakeCountry;
+
 
 @property (nonatomic, readonly) BOOL showAddressDetails;
 @property (nonatomic, readonly) NSNumber *keyboardHeight;

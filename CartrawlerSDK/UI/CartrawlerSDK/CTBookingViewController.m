@@ -131,8 +131,12 @@
     self.emailAddress.text = viewModel.emailAddress;
     self.prefix.text = viewModel.prefix;
     self.phoneNumber.text = viewModel.phoneNumber;
-    self.country.text = viewModel.country;
     self.flightNumber.text = viewModel.flightNumber;
+    self.addressLine1.text = viewModel.addressLine1;
+    self.addressLine2.text = viewModel.addressLine2;
+    self.city.text = viewModel.city;
+    self.postcode.text = viewModel.postcode;
+    self.country.text = viewModel.country;
     
     if (viewModel.showAddressDetails) {
         // TODO: Extract constant
@@ -224,10 +228,51 @@
         [self.scrollView setContentOffset:scrollPoint animated:YES];
     }
     
+    if (viewModel.shakeAnimations) {
+        [self shakeAnimations:viewModel];
+        [CTAppController dispatchAction:CTActionBookingValidationAnimationFinished payload:nil];
+    }
+    
     self.payButton.backgroundColor = viewModel.buttonColor;
     
     [self.paymentSummaryVC updateWithViewModel:viewModel.paymentSummaryViewModel];
     self.paymentSummaryHeight.constant = [self.paymentSummaryVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+}
+
+- (void)shakeAnimations:(CTBookingViewModel *)viewModel {
+    if (viewModel.shakeFirstName) {
+        [self.firstName shakeAnimation];
+    }
+    if (viewModel.shakeLastName) {
+        [self.lastName shakeAnimation];
+    }
+    if (viewModel.shakeEmailAddress) {
+        [self.emailAddress shakeAnimation];
+    }
+    if (viewModel.shakePrefix) {
+        [self.prefix shakeAnimation];
+    }
+    if (viewModel.shakePhoneNumber) {
+        [self.phoneNumber shakeAnimation];
+    }
+    if (viewModel.shakeFlightNumber) {
+        [self.flightNumber shakeAnimation];
+    }
+    if (viewModel.shakeAddressLine1) {
+        [self.addressLine1 shakeAnimation];
+    }
+    if (viewModel.shakeAddressLine2) {
+        [self.addressLine2 shakeAnimation];
+    }
+    if (viewModel.shakeCity) {
+        [self.city shakeAnimation];
+    }
+    if (viewModel.shakePostcode) {
+        [self.postcode shakeAnimation];
+    }
+    if (viewModel.shakeCountry) {
+        [self.country shakeAnimation];
+    }
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
