@@ -24,6 +24,7 @@
 @property (nonatomic, weak) CTSelectedVehicleInsuranceViewController *selectedVehicleInsuranceViewController;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectedVehicleInsuranceViewHeight;
 @property (nonatomic, weak) CTSelectedVehicleExtrasViewController *selectedVehicleExtrasViewController;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @end
 
@@ -35,21 +36,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.selectedVehicleInsuranceViewHeight.constant = 0;
-    [self.view layoutIfNeeded];
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    //self.selectedVehicleInsuranceViewHeight.constant = 0;
+    //[self.view layoutIfNeeded];
+    //self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.view layoutIfNeeded];
+    //[self.view layoutIfNeeded];
 }
 
 - (void)updateWithViewModel:(CTSelectedVehicleViewModel *)viewModel {
     // Force segued views to load
     self.view = self.view;
     
-    self.navigationController.navigationBar.barTintColor = viewModel.navigationBarColor;
+    self.navigationBar.barTintColor = viewModel.navigationBarColor;
     
     [self.selectedVehicleInfoViewController updateWithViewModel:viewModel.selectedVehicleInfoViewModel];
     [self.selectedVehicleTabViewController updateWithViewModel:viewModel.selectedVehicleTabViewModel];
@@ -62,9 +63,9 @@
         self.selectedVehicleInsuranceViewHeight.constant = [self.selectedVehicleInsuranceViewController.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     }
     self.nextButton.backgroundColor = viewModel.buttonColor;
-    [UIView animateWithDuration:0.2 animations:^{
-        [self.view layoutIfNeeded];
-    }];
+//    [UIView animateWithDuration:0.2 animations:^{
+//        [self.view layoutIfNeeded];
+//    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -84,13 +85,8 @@
 - (IBAction)nextButtonTapped:(UIButton *)sender {
     [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapNext payload:nil];
 }
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    if (self.isMovingFromParentViewController || self.isBeingDismissed) {
-        [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapBack payload:nil];
-    }
+- (IBAction)backButtonTapped:(id)sender {
+    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapBack payload:nil];
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {

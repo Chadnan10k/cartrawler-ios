@@ -41,10 +41,10 @@
     
     NSInteger index = [selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment indexOfObject:extra];
     
-    viewModel.quantity = selectedVehicleState.addedExtras[index].stringValue;
-    viewModel.incrementEnabled = selectedVehicleState.addedExtras[index].integerValue < 4;
+    viewModel.quantity = [selectedVehicleState.addedExtras objectForKey:extra].stringValue;
+    viewModel.incrementEnabled = [selectedVehicleState.addedExtras objectForKey:extra].integerValue < 4;
     NSInteger minimumQuantity = extra.isIncludedInRate ? 1 : 0;
-    viewModel.decrementEnabled = selectedVehicleState.addedExtras[index].integerValue > minimumQuantity;
+    viewModel.decrementEnabled = [selectedVehicleState.addedExtras objectForKey:extra].integerValue > minimumQuantity;
     viewModel.incrementButtonColor = viewModel.incrementEnabled ? appState.userSettingsState.primaryColor : [UIColor lightGrayColor];
     viewModel.decrementButtonColor = viewModel.decrementEnabled ? appState.userSettingsState.primaryColor : [UIColor lightGrayColor];
     

@@ -397,10 +397,10 @@
         case CTActionVehicleListUserDidTapVehicle: {
             appState.selectedVehicleState = [CTSelectedVehicleState new];
             appState.selectedVehicleState.selectedAvailabilityItem = payload;
-            appState.selectedVehicleState.addedExtras = [NSMutableArray new];
+            appState.selectedVehicleState.addedExtras = [NSMapTable strongToStrongObjectsMapTable];
             appState.selectedVehicleState.flippedExtras = [NSMutableArray new];
             [appState.selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment enumerateObjectsUsingBlock:^(CTExtraEquipment * _Nonnull extra, NSUInteger idx, BOOL * _Nonnull stop) {
-                appState.selectedVehicleState.addedExtras[idx] = extra.isIncludedInRate ? @1 : @0;
+                [appState.selectedVehicleState.addedExtras setObject:@(extra.isIncludedInRate) forKey:extra];
                 appState.selectedVehicleState.flippedExtras[idx] = @0;
             }];
             navigationState.currentNavigationStep = CTNavigationStepSelectedVehicle;
@@ -475,20 +475,22 @@
         case CTActionSelectedVehicleUserDidTapViewAllExtras:
             break;
         case CTActionSelectedVehicleUserDidTapIncrementExtra: {
-            NSInteger index = [selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment indexOfObject:payload];
-            NSNumber *count = selectedVehicleState.addedExtras[index];
-            if (count.integerValue < 4) {
-                selectedVehicleState.addedExtras[index] = @(count.integerValue + 1);
+            NSMapTable *addedExtras = selectedVehicleState.addedExtras;
+            NSInteger count = [[addedExtras objectForKey:payload] integerValue];
+            if (count < 4) {
+                count++;
             }
+            [addedExtras setObject:@(count) forKey:payload];
         }
             break;
         case CTActionSelectedVehicleUserDidTapDecrementExtra: {
-            NSInteger index = [selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment indexOfObject:payload];
-            NSNumber *count = selectedVehicleState.addedExtras[index];
-            NSInteger minimumQuantity = [(CTExtraEquipment *)payload isIncludedInRate] ? 1 : 0;
-            if (count.integerValue > minimumQuantity) {
-                selectedVehicleState.addedExtras[index] = @(count.integerValue - 1);
+            CTExtraEquipment *extra = (CTExtraEquipment *)payload;
+            NSMapTable *addedExtras = selectedVehicleState.addedExtras;
+            NSInteger count = [[addedExtras objectForKey:payload] integerValue];
+            if (count > @(extra.isIncludedInRate).integerValue) {
+                count--;
             }
+            [addedExtras setObject:@(count) forKey:payload];
         }
             break;
         case CTActionSelectedVehicleUserDidTapExtraInfo: {

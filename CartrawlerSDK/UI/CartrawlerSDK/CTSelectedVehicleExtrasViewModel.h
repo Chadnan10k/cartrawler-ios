@@ -13,7 +13,6 @@
 @interface CTSelectedVehicleExtrasViewModel : NSObject <CTViewModelProtocol>
 
 @property (nonatomic, readonly) NSArray <CTSelectedVehicleExtrasCellModel *> *cellModels;
-@property (nonatomic, readonly) NSArray <NSNumber *> *addedExtras;
 @property (nonatomic, readonly) NSArray <NSNumber *> *flippedExtras;
 
 @end

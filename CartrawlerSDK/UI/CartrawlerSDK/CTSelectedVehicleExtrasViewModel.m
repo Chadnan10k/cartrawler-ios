@@ -11,7 +11,6 @@
 
 @interface CTSelectedVehicleExtrasViewModel ()
 @property (nonatomic, readwrite) NSArray <CTSelectedVehicleExtrasCellModel *> *cellModels;
-@property (nonatomic, readwrite) NSArray <NSNumber *> *addedExtras;
 @property (nonatomic, readwrite) NSArray <NSNumber *> *flippedExtras;
 @end
 
@@ -31,7 +30,6 @@
     
     viewModel.cellModels = cellModels.copy;
     
-    viewModel.addedExtras = selectedVehicleState.addedExtras;
     viewModel.flippedExtras = selectedVehicleState.flippedExtras;
     
     return viewModel;

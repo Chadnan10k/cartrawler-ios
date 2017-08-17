@@ -57,7 +57,7 @@
     return charges.copy;
 }
 
-+ (NSArray *)payAtDeskCharges:(CTVehicle *)vehicle addedExtras:(NSArray *)addedExtras {
++ (NSArray *)payAtDeskCharges:(CTVehicle *)vehicle addedExtras:(NSMapTable *)addedExtras {
     NSMutableArray *charges = [NSMutableArray new];
     
     for (CTFee *fee in vehicle.fees) {
@@ -69,11 +69,12 @@
         }
     }
     
-    for (CTExtraEquipment *extra in vehicle.extraEquipment) {
-        if (extra.isIncludedInRate || extra.qty > 0) {
-            [charges addObject:extra];
-            NSString *title = [self titleForExtra:extra];
-            NSString *detail = [self detailForExtra:extra];
+    NSEnumerator *enumerator = addedExtras.keyEnumerator;
+    for (CTExtraEquipment *extra in enumerator) {
+        if (extra.isIncludedInRate || [[addedExtras objectForKey:extra] integerValue] > 0) {
+            NSInteger quantity = [[addedExtras objectForKey:extra] integerValue];
+            NSString *title = [self titleForExtra:extra quantity:quantity];
+            NSString *detail = [self detailForExtra:extra quantity:quantity];
             CTPaymentSummaryCellModel *cellModel = [[CTPaymentSummaryCellModel alloc] initWithTitle:title detail:detail];
             [charges addObject:cellModel];
         }
@@ -105,20 +106,20 @@
 }
 
 
-+ (NSString *)titleForExtra:(CTExtraEquipment *)extra {
++ (NSString *)titleForExtra:(CTExtraEquipment *)extra quantity:(NSInteger)quantity {
     NSString *title = extra.equipDescription;
-    if (extra.qty > 1) {
-        NSString *quantity = [NSString stringWithFormat:@" (x%ld)", (long)extra.qty];
-        title = [title stringByAppendingString:quantity];
+    if (quantity > 1) {
+        NSString *detail = [NSString stringWithFormat:@" (x%ld)", (long)quantity];
+        title = [title stringByAppendingString:detail];
     }
     return title;
 }
 
-+ (NSString *)detailForExtra:(CTExtraEquipment *)extra {
++ (NSString *)detailForExtra:(CTExtraEquipment *)extra quantity:(NSInteger)quantity {
     if (extra.isIncludedInRate) {
         return CTLocalizedString(CTRentalPaymentFree);
     }
-    double charge = extra.chargeAmount.doubleValue * extra.qty;
+    double charge = extra.chargeAmount.doubleValue * quantity;
     return [@(charge) numberStringWithCurrencyCode];
 }
 

@@ -35,6 +35,6 @@ typedef NS_ENUM(NSInteger, CTSelectedVehicleExpanded) {
 @property (nonatomic) CTInsurance *insurance;
 @property (nonatomic) BOOL insuranceAdded;
 
-@property (nonatomic) NSMutableArray <NSNumber *> *addedExtras;
+@property (nonatomic) NSMapTable <CTExtraEquipment *, NSNumber *> *addedExtras;
 @property (nonatomic) NSMutableArray <NSNumber *> *flippedExtras;
 @end

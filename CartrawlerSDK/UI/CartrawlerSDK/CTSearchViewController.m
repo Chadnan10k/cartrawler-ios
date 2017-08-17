@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchFormHeightConstraint;
 @property (nonatomic, weak) CTSearchUSPViewController *searchUSPVC;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraintUSP;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @end
 
 @implementation CTSearchViewController
@@ -37,7 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController.navigationItem.backBarButtonItem setTitle:@" "];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 - (void)updateWithViewModel:(CTSearchViewModel *)viewModel {
@@ -46,7 +48,7 @@
     
     self.viewModel = viewModel;
     
-    self.navigationController.navigationBar.barTintColor = viewModel.navigationBarColor;
+    self.navigationBar.barTintColor = viewModel.navigationBarColor;
     
     [self.searchSplashVC updateWithViewModel:viewModel.searchSplashViewModel];
     [self.searchFormVC updateWithViewModel:viewModel.searchFormViewModel];
@@ -98,7 +100,7 @@
     }
 }
 
-- (IBAction)settingsButtonTapped:(UIButton *)sender {
+- (IBAction)settingsButtonTapped:(id)sender {
     [CTAppController dispatchAction:CTActionSearchUserDidTapSettingsButton payload:nil];
 }
 

@@ -14,12 +14,14 @@
 
 @interface CTVehicleListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) CTVehicleListViewModel *viewModel;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UILabel *headerLeftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *headerRightLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIAlertController *alertController;
-//@property (nonatomic, strong) CTVehicleListFilterViewController *filterVC;
 @end
 
 @implementation CTVehicleListViewController
@@ -30,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem.backBarButtonItem setTitle:@""];
+    self.navigationBar.topItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Buzz" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     // Allow space to scroll above filter button
     [self.tableView setContentInset:UIEdgeInsetsMake(5.0, 0, 62, 0)];
@@ -41,7 +43,9 @@
 - (void)updateWithViewModel:(CTVehicleListViewModel *)viewModel {
     self.viewModel = viewModel;
     
-    self.navigationController.navigationBar.barTintColor = viewModel.navigationBarColor;
+    self.navigationBar.barTintColor = viewModel.navigationBarColor;
+    self.titleLabel.text = viewModel.navigationBarTitle;
+    self.detailLabel.text = viewModel.navigationBarDetail;
     
     self.headerLeftLabel.text = viewModel.leftLabelText;
     self.headerRightLabel.attributedText = viewModel.rightLabelText;
@@ -145,12 +149,8 @@
     [CTAppController dispatchAction:CTActionVehicleListUserDidTapVehicle payload:item];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    if (self.isMovingFromParentViewController || self.isBeingDismissed) {
-        [CTAppController dispatchAction:CTActionVehicleListUserDidTapBack payload:nil];
-    }
+- (IBAction)backButtonTapped:(id)sender {
+    [CTAppController dispatchAction:CTActionVehicleListUserDidTapBack payload:nil];
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {

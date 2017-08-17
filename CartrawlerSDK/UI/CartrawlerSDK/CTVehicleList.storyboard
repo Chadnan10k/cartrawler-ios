@@ -25,11 +25,51 @@
                         <viewControllerLayoutGuide type="bottom" id="zzv-bd-9nB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oLu-rS-til">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2g-R0-Phh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="r3R-PF-2Xj"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem id="4Ng-XX-bfa">
+                                        <nil key="title"/>
+                                        <barButtonItem key="leftBarButtonItem" image="backArrow" id="vDv-8q-Q8Y">
+                                            <connections>
+                                                <action selector="backButtonTapped:" destination="Nbo-6I-POD" id="E6r-IV-u8M"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <view key="titleView" contentMode="scaleToFill" id="onP-BC-w47">
+                                            <rect key="frame" x="112.5" y="25.5" width="150" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frankfurt Airport (HHN)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9W-Vy-1Jx">
+                                                    <rect key="frame" x="-10" y="-3" width="171" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24 Jul, 10:00am - 31 Jul 10:00am " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yae-ep-W0v">
+                                                    <rect key="frame" x="-20.5" y="17" width="192" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="L9W-Vy-1Jx" firstAttribute="centerX" secondItem="onP-BC-w47" secondAttribute="centerX" id="BxQ-iD-iD7"/>
+                                                <constraint firstItem="yae-ep-W0v" firstAttribute="centerX" secondItem="onP-BC-w47" secondAttribute="centerX" id="MUJ-q8-9wg"/>
+                                                <constraint firstItem="yae-ep-W0v" firstAttribute="top" secondItem="onP-BC-w47" secondAttribute="centerY" id="PIe-ps-L5y"/>
+                                                <constraint firstItem="L9W-Vy-1Jx" firstAttribute="bottom" secondItem="onP-BC-w47" secondAttribute="centerY" id="rAo-K3-xGu"/>
+                                            </constraints>
+                                        </view>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cC3-xR-j92" userLabel="Header View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="106 cars available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vII-CW-sGX">
                                         <rect key="frame" x="16" y="14.5" width="183" height="17"/>
@@ -59,7 +99,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="252" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9U8-U9-dEv">
-                                <rect key="frame" x="0.0" y="46" width="375" height="557"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VehicleListCell" rowHeight="252" id="TKz-zc-mu3" customClass="CTVehicleListTableViewCell">
@@ -318,7 +358,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="986-PY-fl4" userLabel="Filter View">
-                                <rect key="frame" x="137.5" y="551" width="100" height="36"/>
+                                <rect key="frame" x="137.5" y="615" width="100" height="36"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKu-5v-V0g">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="36"/>
@@ -353,24 +393,29 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="P2g-R0-Phh" firstAttribute="top" secondItem="blI-ne-a7S" secondAttribute="bottom" constant="-20" id="1bp-p5-ICF"/>
                             <constraint firstItem="9U8-U9-dEv" firstAttribute="centerX" secondItem="oLu-rS-til" secondAttribute="centerX" id="32W-pB-fWv"/>
                             <constraint firstItem="9U8-U9-dEv" firstAttribute="width" secondItem="oLu-rS-til" secondAttribute="width" id="4aU-gZ-Rjq"/>
                             <constraint firstItem="986-PY-fl4" firstAttribute="centerX" secondItem="oLu-rS-til" secondAttribute="centerX" id="6y1-KH-mCu"/>
+                            <constraint firstItem="cC3-xR-j92" firstAttribute="top" secondItem="P2g-R0-Phh" secondAttribute="bottom" id="AFd-Pw-LTt"/>
                             <constraint firstItem="zzv-bd-9nB" firstAttribute="top" secondItem="986-PY-fl4" secondAttribute="bottom" constant="16" id="EMJ-FH-8xe"/>
-                            <constraint firstItem="cC3-xR-j92" firstAttribute="top" secondItem="blI-ne-a7S" secondAttribute="bottom" id="ZcI-Wv-hj4"/>
+                            <constraint firstItem="P2g-R0-Phh" firstAttribute="leading" secondItem="oLu-rS-til" secondAttribute="leadingMargin" constant="-16" id="UgD-J6-lri"/>
                             <constraint firstItem="cC3-xR-j92" firstAttribute="width" secondItem="oLu-rS-til" secondAttribute="width" id="lLl-lI-ZtC"/>
                             <constraint firstItem="zzv-bd-9nB" firstAttribute="top" secondItem="9U8-U9-dEv" secondAttribute="bottom" id="mI4-M1-F4O"/>
                             <constraint firstItem="cC3-xR-j92" firstAttribute="centerX" secondItem="oLu-rS-til" secondAttribute="centerX" id="rsc-nF-hIP"/>
                             <constraint firstItem="9U8-U9-dEv" firstAttribute="top" secondItem="cC3-xR-j92" secondAttribute="bottom" id="vjn-MK-Kl0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="P2g-R0-Phh" secondAttribute="trailing" constant="-16" id="wJs-Do-uUU"/>
                         </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="detailLabel" destination="yae-ep-W0v" id="7rw-8t-4k5"/>
                         <outlet property="headerLeftLabel" destination="vII-CW-sGX" id="vsD-qT-PnR"/>
                         <outlet property="headerRightLabel" destination="Iqd-gZ-T6A" id="SLK-cq-32S"/>
                         <outlet property="headerView" destination="cC3-xR-j92" id="nlR-M3-v1h"/>
+                        <outlet property="navigationBar" destination="P2g-R0-Phh" id="gGL-vo-WT2"/>
                         <outlet property="tableView" destination="9U8-U9-dEv" id="Gae-C2-yUQ"/>
-                        <segue destination="M9e-Zs-zwY" kind="presentation" identifier="VehicleListFilter" id="ahI-tT-0ks"/>
+                        <outlet property="titleLabel" destination="L9W-Vy-1Jx" id="BoS-g9-xwi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RHa-tS-O4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -443,7 +488,7 @@
                                                     <rect key="frame" x="314" y="6" width="36" height="36"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bab-Yy-xD4" userLabel="checkmark">
-                                                            <rect key="frame" x="4.5" y="3.5" width="28" height="28"/>
+                                                            <rect key="frame" x="4" y="3.5" width="28" height="28"/>
                                                             <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="28"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -536,4 +581,7 @@
             <point key="canvasLocation" x="-346.39999999999998" y="77.811094452773617"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="backArrow" width="24" height="24"/>
+    </resources>
 </document>

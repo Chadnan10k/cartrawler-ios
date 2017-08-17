@@ -27,4 +27,6 @@
 @property (nonatomic, readonly) CTVehicleListSort selectedSort;
 @property (nonatomic, readonly) BOOL scrollToTop;
 @property (nonatomic, readonly) UIColor *navigationBarColor;
+@property (nonatomic, readonly) NSString *navigationBarTitle;
+@property (nonatomic, readonly) NSString *navigationBarDetail;
 @end

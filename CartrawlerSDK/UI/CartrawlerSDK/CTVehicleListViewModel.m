@@ -11,6 +11,7 @@
 #import <CartrawlerAPI/CTAvailabilityItem.h>
 #import "CTVehicleListTableViewModel.h"
 #import "CartrawlerSDK+NSString.h"
+#import "CartrawlerSDK+NSDateUtils.h"
 
 @interface CTVehicleListViewModel ()
 @property (nonatomic, readwrite) NSString *leftLabelText;
@@ -25,16 +26,21 @@
 @property (nonatomic, readwrite) CTVehicleListSort selectedSort;
 @property (nonatomic, readwrite) BOOL scrollToTop;
 @property (nonatomic, readwrite) UIColor *navigationBarColor;
+@property (nonatomic, readwrite) NSString *navigationBarTitle;
+@property (nonatomic, readwrite) NSString *navigationBarDetail;
 @end
 
 @implementation CTVehicleListViewModel
 
 + (instancetype)viewModelForState:(CTAppState *)appState {
     CTVehicleListViewModel *viewModel = [CTVehicleListViewModel new];
+    CTSearchState *searchState = appState.searchState;
     CTAPIState *APIState = appState.APIState;
     CTVehicleListState *vehicleListState = appState.vehicleListState;
     
     viewModel.navigationBarColor = appState.userSettingsState.primaryColor;
+    viewModel.navigationBarTitle = searchState.selectedPickupLocation.name;
+    viewModel.navigationBarDetail = [NSString stringWithFormat:@"%@ - %@", [searchState.selectedPickupDate shortDescriptionFromDate], [searchState.selectedDropoffDate shortDescriptionFromDate]];
     
     NSArray *matchedAvailabilityItems = [APIState.matchedAvailabilityItems objectForKey:APIState.availabilityRequestTimestamp];
     

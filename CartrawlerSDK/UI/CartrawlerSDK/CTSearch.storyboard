@@ -25,12 +25,45 @@
                         <viewControllerLayoutGuide type="top" id="2yl-zH-FAC"/>
                         <viewControllerLayoutGuide type="bottom" id="hIc-iO-r2e"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="1A5-8y-0MM">
-                        <rect key="frame" x="0.0" y="64" width="375" height="936"/>
+                    <view key="view" contentMode="scaleToFill" id="1A5-8y-0MM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cu5-l4-P8n">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="4Kt-hc-0ZK"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Search" id="Vzq-5r-G59">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zWQ-qk-HzQ">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="closeButtonTapped:" destination="IOV-zr-TQV" id="Nk6-qo-uw5"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" image="settings" id="mCT-aA-qol">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="settingsButtonTapped:" destination="IOV-zr-TQV" id="h1p-CF-k2n"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o0r-eH-iTz" userLabel="Divider">
+                                <rect key="frame" x="0.0" y="64" width="375" height="2"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="iBD-pD-1GN"/>
+                                </constraints>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCv-ZP-V6Y">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="936"/>
+                                <rect key="frame" x="0.0" y="66" width="375" height="934"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="dko-8z-20v" userLabel="Search Form Container View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="560"/>
@@ -80,30 +113,26 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="TCv-ZP-V6Y" firstAttribute="centerY" secondItem="1A5-8y-0MM" secondAttribute="centerY" id="0gY-fc-78d"/>
+                            <constraint firstAttribute="trailing" secondItem="o0r-eH-iTz" secondAttribute="trailing" id="1m6-ES-hLB"/>
+                            <constraint firstItem="cu5-l4-P8n" firstAttribute="top" secondItem="2yl-zH-FAC" secondAttribute="bottom" constant="-20" id="2sK-IZ-p0d"/>
                             <constraint firstItem="TCv-ZP-V6Y" firstAttribute="width" secondItem="1A5-8y-0MM" secondAttribute="width" id="6Fm-3D-eaT"/>
+                            <constraint firstItem="cu5-l4-P8n" firstAttribute="leading" secondItem="1A5-8y-0MM" secondAttribute="leading" id="8Gp-oM-kPp"/>
+                            <constraint firstItem="o0r-eH-iTz" firstAttribute="top" secondItem="cu5-l4-P8n" secondAttribute="bottom" id="F9v-py-70K"/>
+                            <constraint firstItem="hIc-iO-r2e" firstAttribute="top" secondItem="TCv-ZP-V6Y" secondAttribute="bottom" id="FMc-Lf-K5w"/>
+                            <constraint firstItem="TCv-ZP-V6Y" firstAttribute="top" secondItem="o0r-eH-iTz" secondAttribute="bottom" id="H4a-WR-Dod"/>
                             <constraint firstItem="TCv-ZP-V6Y" firstAttribute="centerX" secondItem="1A5-8y-0MM" secondAttribute="centerX" id="LDd-DF-EKY"/>
-                            <constraint firstItem="TCv-ZP-V6Y" firstAttribute="height" secondItem="1A5-8y-0MM" secondAttribute="height" id="SeQ-T1-107"/>
+                            <constraint firstAttribute="trailing" secondItem="cu5-l4-P8n" secondAttribute="trailing" id="OKk-TX-kns"/>
+                            <constraint firstItem="o0r-eH-iTz" firstAttribute="leading" secondItem="1A5-8y-0MM" secondAttribute="leading" id="UYC-nh-65B"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="AsO-Oo-lhp" customClass="CTNavigationItem">
                         <barButtonItem key="backBarButtonItem" title=" " id="EwX-Hh-Uln"/>
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="xEA-pd-IfP">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="closeButtonTapped:" destination="IOV-zr-TQV" id="cXn-z6-4sl"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="0R3-Ba-snC">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="settingsButtonTapped:" destination="IOV-zr-TQV" id="ckZ-gL-ArI"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="cancelButton" destination="zWQ-qk-HzQ" id="OTa-Ql-yuU"/>
+                        <outlet property="navigationBar" destination="cu5-l4-P8n" id="x6f-pH-q09"/>
                         <outlet property="scrollView" destination="TCv-ZP-V6Y" id="8Oe-Sa-Iad"/>
                         <outlet property="searchFormContainerView" destination="dko-8z-20v" id="pFa-qJ-3dX"/>
                         <outlet property="searchFormHeightConstraint" destination="CdP-AF-6sk" id="eBB-8D-G5L"/>
@@ -116,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Cq-AG-rWP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1381.5999999999999" y="1105.5472263868066"/>
+            <point key="canvasLocation" x="1380.4347826086957" y="1105.4347826086957"/>
         </scene>
         <!--Search Splash View Controller-->
         <scene sceneID="070-cn-U62">
@@ -1264,7 +1293,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af0-UY-J4Q" userLabel="Tick">
-                                                <rect key="frame" x="45" y="40" width="17" height="22"/>
+                                                <rect key="frame" x="44" y="40" width="17" height="22"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1302,7 +1331,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6d-2F-S4e" userLabel="Tick">
-                                                <rect key="frame" x="45" y="40" width="17" height="22"/>
+                                                <rect key="frame" x="44" y="40" width="17" height="22"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1338,7 +1367,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2KD-RP-bD9" userLabel="Tick">
-                                                <rect key="frame" x="45" y="40" width="17" height="22"/>
+                                                <rect key="frame" x="44" y="40" width="17" height="22"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1393,7 +1422,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbM-PV-ijD" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1428,7 +1457,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAH-rN-CpQ" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1463,7 +1492,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xi4-mu-yF6" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1518,7 +1547,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHd-cU-vJa" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1556,7 +1585,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYS-rY-BHL" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1592,7 +1621,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYB-9V-8LZ" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1647,7 +1676,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RB-dB-oXl" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1685,7 +1714,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9a-W3-54q" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1720,7 +1749,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yn4-09-atu" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2072,7 +2101,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Jbi-JN-Rvs">
             <objects>
-                <navigationController storyboardIdentifier="CTSearchNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="PdW-4F-nLw" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CTSearchNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="PdW-4F-nLw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="dUv-pP-a14">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
