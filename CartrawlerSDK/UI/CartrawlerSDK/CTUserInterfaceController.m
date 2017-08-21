@@ -63,7 +63,8 @@
         if (navigationState.currentNavigationStep == CTNavigationStepNone) {
             [navigationState.parentViewController dismissViewControllerAnimated:YES completion:nil];
         } else {
-            [self.navigationController popToViewController:self.navigationController.viewControllers[navigationState.currentNavigationStep - 1] animated:YES];
+            topViewController = self.navigationController.viewControllers[navigationState.currentNavigationStep - 1];
+            [self.navigationController popToViewController:topViewController animated:YES];
         }
     }
     
@@ -163,8 +164,8 @@
             storyboard = [UIStoryboard storyboardWithName:@"CTVehicleList" bundle:bundle];
             return [storyboard instantiateViewControllerWithIdentifier:@"CTVehicleListFilterViewController"];
         case CTNavigationModalConfirmation:
-            storyboard = [UIStoryboard storyboardWithName:@"CTConfirmation" bundle:bundle];
-            return [storyboard instantiateViewControllerWithIdentifier:@"CTConfirmationViewController"];
+            storyboard = [UIStoryboard storyboardWithName:@"CTBooking" bundle:bundle];
+            return [storyboard instantiateViewControllerWithIdentifier:@"CTBookingModalViewController"];
         case CTNavigationModalConfirmationError:
             return [[CTBookingErrorViewController alloc] initWithNibName:@"CTAlertViewController" bundle:bundle];
             break;

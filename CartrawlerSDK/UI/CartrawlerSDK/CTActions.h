@@ -109,6 +109,11 @@ typedef NS_ENUM(NSUInteger, CTAction) {
     
     // Search Actions
     /**
+     *  The user selected an existing reservation
+     *  Payload: a CTRentalBooking object
+     */
+    CTActionSearchUserDidSelectReservation,
+    /**
      *  The user swiped the USP carousel
      */
     CTActionSearchUserDidSwipeUSPCarousel,
@@ -447,5 +452,10 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      *  Payload: the error
      */
     CTActionBookingAPIReturnedError,
+    /**
+     *  The user tapped next on the booking confirmation page
+     *  Payload: nil
+     */
+    CTActionBookingConfirmationUserTappedNext,
     
 };

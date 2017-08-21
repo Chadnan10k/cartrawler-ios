@@ -29,8 +29,7 @@ NSString * const PotentialBookingKey = @"cartrawler_potenital_booking";
     return data ?: @[];
 }
 
-+ (BOOL)checkHasUpcomingBookings
-{
++ (BOOL)checkHasUpcomingBookings {
     NSDate *refDate = [NSDate date];
     NSMutableArray <CTRentalBooking *> *filteredBookings = [NSMutableArray new];
     BOOL hasUpcomingDates = NO;
@@ -62,7 +61,7 @@ NSString * const PotentialBookingKey = @"cartrawler_potenital_booking";
                                          [[NSUserDefaults standardUserDefaults] objectForKey:PotentialBookingKey]];
     
     if (potentialBooking) {
-        potentialBooking.bookingId = referenceNumber;
+        //potentialBooking.bookingId = referenceNumber;
         NSMutableArray<CTRentalBooking *> *arr = [[NSMutableArray alloc] initWithArray:[self retrieveRentalBookings]];
         [arr addObject:potentialBooking];
         NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:arr];

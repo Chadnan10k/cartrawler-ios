@@ -209,11 +209,10 @@
 		E750BA451F462F39003FEE0B /* CTBookingErrorViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E750BA431F462F39003FEE0B /* CTBookingErrorViewModel.m */; };
 		E750BA481F463B79003FEE0B /* CTValidationBooking.h in Headers */ = {isa = PBXBuildFile; fileRef = E750BA461F463B79003FEE0B /* CTValidationBooking.h */; };
 		E750BA491F463B79003FEE0B /* CTValidationBooking.m in Sources */ = {isa = PBXBuildFile; fileRef = E750BA471F463B79003FEE0B /* CTValidationBooking.m */; };
-		E750BA4D1F48CFC5003FEE0B /* CTConfirmationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E750BA4B1F48CFC5003FEE0B /* CTConfirmationViewController.h */; };
-		E750BA4E1F48CFC5003FEE0B /* CTConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E750BA4C1F48CFC5003FEE0B /* CTConfirmationViewController.m */; };
-		E750BA511F48CFE1003FEE0B /* CTConfirmationViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E750BA4F1F48CFE1003FEE0B /* CTConfirmationViewModel.h */; };
-		E750BA521F48CFE1003FEE0B /* CTConfirmationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E750BA501F48CFE1003FEE0B /* CTConfirmationViewModel.m */; };
-		E750BA551F48D00D003FEE0B /* CTConfirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E750BA541F48D00D003FEE0B /* CTConfirmation.storyboard */; };
+		E750BA4D1F48CFC5003FEE0B /* CTBookingTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E750BA4B1F48CFC5003FEE0B /* CTBookingTableViewController.h */; };
+		E750BA4E1F48CFC5003FEE0B /* CTBookingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E750BA4C1F48CFC5003FEE0B /* CTBookingTableViewController.m */; };
+		E750BA511F48CFE1003FEE0B /* CTBookingTableViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E750BA4F1F48CFE1003FEE0B /* CTBookingTableViewModel.h */; };
+		E750BA521F48CFE1003FEE0B /* CTBookingTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E750BA501F48CFE1003FEE0B /* CTBookingTableViewModel.m */; };
 		E76900A81E6F065C00D729FF /* CTInfoTip.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900A61E6F065C00D729FF /* CTInfoTip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76900A91E6F065C00D729FF /* CTInfoTip.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900A71E6F065C00D729FF /* CTInfoTip.m */; };
 		E76900BD1E7199F400D729FF /* CTAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900BB1E7199F400D729FF /* CTAlertView.h */; };
@@ -234,6 +233,10 @@
 		E76900E21E77267700D729FF /* CTListItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900E01E77267600D729FF /* CTListItemView.m */; };
 		E76900E71E783EC600D729FF /* CTExpandingView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900E51E783EC600D729FF /* CTExpandingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76900E81E783EC600D729FF /* CTExpandingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900E61E783EC600D729FF /* CTExpandingView.m */; };
+		E76DCA381F4B642600763C5A /* CTLocalStorageController.h in Headers */ = {isa = PBXBuildFile; fileRef = E76DCA361F4B642600763C5A /* CTLocalStorageController.h */; };
+		E76DCA391F4B642600763C5A /* CTLocalStorageController.m in Sources */ = {isa = PBXBuildFile; fileRef = E76DCA371F4B642600763C5A /* CTLocalStorageController.m */; };
+		E76DCA3D1F4B655400763C5A /* CTReservationsState.h in Headers */ = {isa = PBXBuildFile; fileRef = E76DCA3B1F4B655400763C5A /* CTReservationsState.h */; };
+		E76DCA3E1F4B655400763C5A /* CTReservationsState.m in Sources */ = {isa = PBXBuildFile; fileRef = E76DCA3C1F4B655400763C5A /* CTReservationsState.m */; };
 		E775DBB71F326BAB009039D8 /* CTCodedImages.h in Headers */ = {isa = PBXBuildFile; fileRef = E775DBB51F326BAB009039D8 /* CTCodedImages.h */; };
 		E775DBB81F326BAB009039D8 /* CTCodedImages.m in Sources */ = {isa = PBXBuildFile; fileRef = E775DBB61F326BAB009039D8 /* CTCodedImages.m */; };
 		E775DBC71F326CC1009039D8 /* CTMapImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = E775DBC51F326CC1009039D8 /* CTMapImageView.h */; };
@@ -334,7 +337,10 @@
 		E794A3B21F4A597D003C2A7D /* CTDashedLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E794A3B01F4A597D003C2A7D /* CTDashedLine.m */; };
 		E794A3BA1F4A8406003C2A7D /* CTTickImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = E794A3B81F4A8406003C2A7D /* CTTickImageView.h */; };
 		E794A3BB1F4A8406003C2A7D /* CTTickImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E794A3B91F4A8406003C2A7D /* CTTickImageView.m */; };
-		E794A3BE1F4A97E8003C2A7D /* CTPayment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E794A3BD1F4A97E8003C2A7D /* CTPayment.framework */; };
+		E7A4954C1F4B8B0400A8E45F /* CTSearchReservationsCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E7A4954A1F4B8B0400A8E45F /* CTSearchReservationsCell.h */; };
+		E7A4954D1F4B8B0400A8E45F /* CTSearchReservationsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A4954B1F4B8B0400A8E45F /* CTSearchReservationsCell.m */; };
+		E7A495501F4B8B2100A8E45F /* CTSearchReservationsCellModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E7A4954E1F4B8B2100A8E45F /* CTSearchReservationsCellModel.h */; };
+		E7A495511F4B8B2100A8E45F /* CTSearchReservationsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A4954F1F4B8B2100A8E45F /* CTSearchReservationsCellModel.m */; };
 		E7B19CAA1F33A080000738CB /* CTSearchInterstitialViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B19CA81F33A080000738CB /* CTSearchInterstitialViewController.h */; };
 		E7B19CAB1F33A080000738CB /* CTSearchInterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B19CA91F33A080000738CB /* CTSearchInterstitialViewController.m */; };
 		E7B19CAE1F33A096000738CB /* CTSearchInterstitialViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B19CAC1F33A096000738CB /* CTSearchInterstitialViewModel.h */; };
@@ -397,6 +403,10 @@
 		E7CD21A81E38F794006BE519 /* CTSDKLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */; };
 		E7F1066F1ED37C530012CE16 /* CTAnalyticsCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F1066D1ED37C530012CE16 /* CTAnalyticsCache.h */; };
 		E7F106701ED37C530012CE16 /* CTAnalyticsCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F1066E1ED37C530012CE16 /* CTAnalyticsCache.m */; };
+		E7F326851F4B2FAD00702AA0 /* CTBookingModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F326831F4B2FAD00702AA0 /* CTBookingModalViewController.h */; };
+		E7F326861F4B2FAD00702AA0 /* CTBookingModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F326841F4B2FAD00702AA0 /* CTBookingModalViewController.m */; };
+		E7F326891F4B2FC100702AA0 /* CTBookingModalViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F326871F4B2FC100702AA0 /* CTBookingModalViewModel.h */; };
+		E7F3268A1F4B2FC100702AA0 /* CTBookingModalViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F326881F4B2FC100702AA0 /* CTBookingModalViewModel.m */; };
 		E7F6D1551F38B2220002338C /* CTVehicleListFilterViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F6D1531F38B2220002338C /* CTVehicleListFilterViewController.h */; };
 		E7F6D1561F38B2220002338C /* CTVehicleListFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F6D1541F38B2220002338C /* CTVehicleListFilterViewController.m */; };
 		E7F6D1591F38B2350002338C /* CTVehicleListFilterViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F6D1571F38B2350002338C /* CTVehicleListFilterViewModel.h */; };
@@ -623,11 +633,10 @@
 		E750BA431F462F39003FEE0B /* CTBookingErrorViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingErrorViewModel.m; sourceTree = "<group>"; };
 		E750BA461F463B79003FEE0B /* CTValidationBooking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTValidationBooking.h; sourceTree = "<group>"; };
 		E750BA471F463B79003FEE0B /* CTValidationBooking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTValidationBooking.m; sourceTree = "<group>"; };
-		E750BA4B1F48CFC5003FEE0B /* CTConfirmationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTConfirmationViewController.h; sourceTree = "<group>"; };
-		E750BA4C1F48CFC5003FEE0B /* CTConfirmationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTConfirmationViewController.m; sourceTree = "<group>"; };
-		E750BA4F1F48CFE1003FEE0B /* CTConfirmationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTConfirmationViewModel.h; sourceTree = "<group>"; };
-		E750BA501F48CFE1003FEE0B /* CTConfirmationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTConfirmationViewModel.m; sourceTree = "<group>"; };
-		E750BA541F48D00D003FEE0B /* CTConfirmation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CTConfirmation.storyboard; sourceTree = "<group>"; };
+		E750BA4B1F48CFC5003FEE0B /* CTBookingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingTableViewController.h; sourceTree = "<group>"; };
+		E750BA4C1F48CFC5003FEE0B /* CTBookingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingTableViewController.m; sourceTree = "<group>"; };
+		E750BA4F1F48CFE1003FEE0B /* CTBookingTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingTableViewModel.h; sourceTree = "<group>"; };
+		E750BA501F48CFE1003FEE0B /* CTBookingTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingTableViewModel.m; sourceTree = "<group>"; };
 		E76900A61E6F065C00D729FF /* CTInfoTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInfoTip.h; sourceTree = "<group>"; };
 		E76900A71E6F065C00D729FF /* CTInfoTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInfoTip.m; sourceTree = "<group>"; };
 		E76900BB1E7199F400D729FF /* CTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertView.h; sourceTree = "<group>"; };
@@ -648,6 +657,10 @@
 		E76900E01E77267600D729FF /* CTListItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTListItemView.m; sourceTree = "<group>"; };
 		E76900E51E783EC600D729FF /* CTExpandingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTExpandingView.h; sourceTree = "<group>"; };
 		E76900E61E783EC600D729FF /* CTExpandingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTExpandingView.m; sourceTree = "<group>"; };
+		E76DCA361F4B642600763C5A /* CTLocalStorageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLocalStorageController.h; sourceTree = "<group>"; };
+		E76DCA371F4B642600763C5A /* CTLocalStorageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLocalStorageController.m; sourceTree = "<group>"; };
+		E76DCA3B1F4B655400763C5A /* CTReservationsState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTReservationsState.h; sourceTree = "<group>"; };
+		E76DCA3C1F4B655400763C5A /* CTReservationsState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTReservationsState.m; sourceTree = "<group>"; };
 		E775DBB51F326BAB009039D8 /* CTCodedImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCodedImages.h; sourceTree = "<group>"; };
 		E775DBB61F326BAB009039D8 /* CTCodedImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCodedImages.m; sourceTree = "<group>"; };
 		E775DBC51F326CC1009039D8 /* CTMapImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMapImageView.h; sourceTree = "<group>"; };
@@ -749,7 +762,10 @@
 		E794A3B01F4A597D003C2A7D /* CTDashedLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDashedLine.m; sourceTree = "<group>"; };
 		E794A3B81F4A8406003C2A7D /* CTTickImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTickImageView.h; sourceTree = "<group>"; };
 		E794A3B91F4A8406003C2A7D /* CTTickImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTickImageView.m; sourceTree = "<group>"; };
-		E794A3BD1F4A97E8003C2A7D /* CTPayment.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CTPayment.framework; sourceTree = SOURCE_ROOT; };
+		E7A4954A1F4B8B0400A8E45F /* CTSearchReservationsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSearchReservationsCell.h; sourceTree = "<group>"; };
+		E7A4954B1F4B8B0400A8E45F /* CTSearchReservationsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSearchReservationsCell.m; sourceTree = "<group>"; };
+		E7A4954E1F4B8B2100A8E45F /* CTSearchReservationsCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSearchReservationsCellModel.h; sourceTree = "<group>"; };
+		E7A4954F1F4B8B2100A8E45F /* CTSearchReservationsCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSearchReservationsCellModel.m; sourceTree = "<group>"; };
 		E7B19CA81F33A080000738CB /* CTSearchInterstitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSearchInterstitialViewController.h; sourceTree = "<group>"; };
 		E7B19CA91F33A080000738CB /* CTSearchInterstitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSearchInterstitialViewController.m; sourceTree = "<group>"; };
 		E7B19CAC1F33A096000738CB /* CTSearchInterstitialViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSearchInterstitialViewModel.h; sourceTree = "<group>"; };
@@ -812,6 +828,10 @@
 		E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTSDKLocalizationConstants.m; path = Localization/CTSDKLocalizationConstants.m; sourceTree = "<group>"; };
 		E7F1066D1ED37C530012CE16 /* CTAnalyticsCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalyticsCache.h; sourceTree = "<group>"; };
 		E7F1066E1ED37C530012CE16 /* CTAnalyticsCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsCache.m; sourceTree = "<group>"; };
+		E7F326831F4B2FAD00702AA0 /* CTBookingModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingModalViewController.h; sourceTree = "<group>"; };
+		E7F326841F4B2FAD00702AA0 /* CTBookingModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingModalViewController.m; sourceTree = "<group>"; };
+		E7F326871F4B2FC100702AA0 /* CTBookingModalViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingModalViewModel.h; sourceTree = "<group>"; };
+		E7F326881F4B2FC100702AA0 /* CTBookingModalViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingModalViewModel.m; sourceTree = "<group>"; };
 		E7F6D1531F38B2220002338C /* CTVehicleListFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVehicleListFilterViewController.h; sourceTree = "<group>"; };
 		E7F6D1541F38B2220002338C /* CTVehicleListFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleListFilterViewController.m; sourceTree = "<group>"; };
 		E7F6D1571F38B2350002338C /* CTVehicleListFilterViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVehicleListFilterViewModel.h; sourceTree = "<group>"; };
@@ -837,7 +857,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E794A3BE1F4A97E8003C2A7D /* CTPayment.framework in Frameworks */,
 				455B59581DCC954400CA4790 /* CartrawlerAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1065,7 +1084,6 @@
 		45E942451D12FF0F00ACF604 /* CartrawlerSDK */ = {
 			isa = PBXGroup;
 			children = (
-				E794A3BD1F4A97E8003C2A7D /* CTPayment.framework */,
 				E72D4D6D1F1E74BA007130A2 /* Controllers */,
 				E72D4D741F1E753F007130A2 /* Actions */,
 				E7F6D14B1F351FF00002338C /* Reducers */,
@@ -1372,6 +1390,7 @@
 				E78298D41F20409F00C20525 /* Vehicle API */,
 				E733BA5C1F43804A00076516 /* Payment API */,
 				E782996D1F2A7CDB00C20525 /* Notifications */,
+				E76DCA351F4B640C00763C5A /* Local Storage */,
 				E7F6D1741F3A75140002338C /* Logging */,
 			);
 			name = Controllers;
@@ -1407,7 +1426,7 @@
 			name = "Tab Manager";
 			sourceTree = "<group>";
 		};
-		E750BA3D1F462EE6003FEE0B /* Error */ = {
+		E750BA3D1F462EE6003FEE0B /* Booking Error */ = {
 			isa = PBXGroup;
 			children = (
 				E750BA3E1F462F26003FEE0B /* CTBookingErrorViewController.h */,
@@ -1415,23 +1434,7 @@
 				E750BA421F462F39003FEE0B /* CTBookingErrorViewModel.h */,
 				E750BA431F462F39003FEE0B /* CTBookingErrorViewModel.m */,
 			);
-			name = Error;
-			sourceTree = "<group>";
-		};
-		E750BA4A1F48CF8A003FEE0B /* Confirmation */ = {
-			isa = PBXGroup;
-			children = (
-				E750BA541F48D00D003FEE0B /* CTConfirmation.storyboard */,
-				E750BA531F48CFED003FEE0B /* Container */,
-			);
-			name = Confirmation;
-			sourceTree = "<group>";
-		};
-		E750BA531F48CFED003FEE0B /* Container */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Container;
+			name = "Booking Error";
 			sourceTree = "<group>";
 		};
 		E76900A51E6F061B00D729FF /* InfoTip */ = {
@@ -1482,6 +1485,24 @@
 				E76900E61E783EC600D729FF /* CTExpandingView.m */,
 			);
 			name = "Expanding View";
+			sourceTree = "<group>";
+		};
+		E76DCA351F4B640C00763C5A /* Local Storage */ = {
+			isa = PBXGroup;
+			children = (
+				E76DCA361F4B642600763C5A /* CTLocalStorageController.h */,
+				E76DCA371F4B642600763C5A /* CTLocalStorageController.m */,
+			);
+			name = "Local Storage";
+			sourceTree = "<group>";
+		};
+		E76DCA3A1F4B64FE00763C5A /* Reservations */ = {
+			isa = PBXGroup;
+			children = (
+				E76DCA3B1F4B655400763C5A /* CTReservationsState.h */,
+				E76DCA3C1F4B655400763C5A /* CTReservationsState.m */,
+			);
+			name = Reservations;
 			sourceTree = "<group>";
 		};
 		E775DBB91F326BED009039D8 /* Credit Card */ = {
@@ -1574,6 +1595,7 @@
 				E78299611F29446B00C20525 /* Vehicle List */,
 				E78299661F2945B200C20525 /* Selected Vehicle */,
 				E7B8EE221F43313F00638D6F /* Booking */,
+				E76DCA3A1F4B64FE00763C5A /* Reservations */,
 			);
 			name = State;
 			sourceTree = "<group>";
@@ -1584,9 +1606,8 @@
 				E78298AA1F1F0B2F00C20525 /* Search */,
 				E782993D1F2813A400C20525 /* Vehicle List */,
 				E7F83F771F2D177000232635 /* Selected Vehicle */,
-				E7B8EDCE1F4201D100638D6F /* Booking */,
-				E750BA4A1F48CF8A003FEE0B /* Confirmation */,
 				E77D75571F439C6100BD7FF4 /* Payment Summary */,
+				E7B8EDCE1F4201D100638D6F /* Booking */,
 				E7B8EDB51F3BADA400638D6F /* Alert View */,
 				E78299531F2824CC00C20525 /* Protocols */,
 			);
@@ -1599,6 +1620,7 @@
 				E78298AB1F1FA3E800C20525 /* CTSearch.storyboard */,
 				E78298CC1F2037F500C20525 /* Search Container */,
 				E78298C31F1FCB2000C20525 /* Search Splash */,
+				E7A495491F4B8AD000A8E45F /* Search Reservations */,
 				E78298C21F1FCB1100C20525 /* Search Form */,
 				E78298C11F1FCB0500C20525 /* Search Locations */,
 				E78298E41F21866B00C20525 /* Search Calendar */,
@@ -1929,6 +1951,17 @@
 			name = Tick;
 			sourceTree = "<group>";
 		};
+		E7A495491F4B8AD000A8E45F /* Search Reservations */ = {
+			isa = PBXGroup;
+			children = (
+				E7A4954A1F4B8B0400A8E45F /* CTSearchReservationsCell.h */,
+				E7A4954B1F4B8B0400A8E45F /* CTSearchReservationsCell.m */,
+				E7A4954E1F4B8B2100A8E45F /* CTSearchReservationsCellModel.h */,
+				E7A4954F1F4B8B2100A8E45F /* CTSearchReservationsCellModel.m */,
+			);
+			name = "Search Reservations";
+			sourceTree = "<group>";
+		};
 		E7B19CA71F33A051000738CB /* Search Interstitial */ = {
 			isa = PBXGroup;
 			children = (
@@ -2076,9 +2109,9 @@
 			children = (
 				E7B8EDD01F4203EA00638D6F /* CTBooking.storyboard */,
 				E7B8EDCF1F4201E200638D6F /* Container */,
-				E7F3267D1F4B2DD400702AA0 /* Confirmation Container */,
-				E7F3267E1F4B2E6400702AA0 /* Confirmation Table */,
-				E750BA3D1F462EE6003FEE0B /* Error */,
+				E7F3267D1F4B2DD400702AA0 /* Booking Modal */,
+				E7F3267E1F4B2E6400702AA0 /* Booking Table */,
+				E750BA3D1F462EE6003FEE0B /* Booking Error */,
 			);
 			name = Booking;
 			sourceTree = "<group>";
@@ -2112,22 +2145,26 @@
 			name = TriangleView;
 			sourceTree = "<group>";
 		};
-		E7F3267D1F4B2DD400702AA0 /* Confirmation Container */ = {
+		E7F3267D1F4B2DD400702AA0 /* Booking Modal */ = {
 			isa = PBXGroup;
 			children = (
+				E7F326831F4B2FAD00702AA0 /* CTBookingModalViewController.h */,
+				E7F326841F4B2FAD00702AA0 /* CTBookingModalViewController.m */,
+				E7F326871F4B2FC100702AA0 /* CTBookingModalViewModel.h */,
+				E7F326881F4B2FC100702AA0 /* CTBookingModalViewModel.m */,
 			);
-			name = "Confirmation Container";
+			name = "Booking Modal";
 			sourceTree = "<group>";
 		};
-		E7F3267E1F4B2E6400702AA0 /* Confirmation Table */ = {
+		E7F3267E1F4B2E6400702AA0 /* Booking Table */ = {
 			isa = PBXGroup;
 			children = (
-				E750BA4B1F48CFC5003FEE0B /* CTConfirmationViewController.h */,
-				E750BA4C1F48CFC5003FEE0B /* CTConfirmationViewController.m */,
-				E750BA4F1F48CFE1003FEE0B /* CTConfirmationViewModel.h */,
-				E750BA501F48CFE1003FEE0B /* CTConfirmationViewModel.m */,
+				E750BA4B1F48CFC5003FEE0B /* CTBookingTableViewController.h */,
+				E750BA4C1F48CFC5003FEE0B /* CTBookingTableViewController.m */,
+				E750BA4F1F48CFE1003FEE0B /* CTBookingTableViewModel.h */,
+				E750BA501F48CFE1003FEE0B /* CTBookingTableViewModel.m */,
 			);
-			name = "Confirmation Table";
+			name = "Booking Table";
 			sourceTree = "<group>";
 		};
 		E7F6D14B1F351FF00002338C /* Reducers */ = {
@@ -2221,7 +2258,8 @@
 				455B58741DCC914300CA4790 /* CTLabel.h in Headers */,
 				E78298BB1F1FC1F100C20525 /* CTSearchFormViewController.h in Headers */,
 				BC1379EB1E23E4E400B1F727 /* CTTag.h in Headers */,
-				E750BA4D1F48CFC5003FEE0B /* CTConfirmationViewController.h in Headers */,
+				E750BA4D1F48CFC5003FEE0B /* CTBookingTableViewController.h in Headers */,
+				E7A495501F4B8B2100A8E45F /* CTSearchReservationsCellModel.h in Headers */,
 				E7F6D16B1F38D80D0002338C /* CTVehicleListFilterHeaderViewModel.h in Headers */,
 				E775DBB71F326BAB009039D8 /* CTCodedImages.h in Headers */,
 				451E763A1E04438300D58F71 /* CTRentalBooking.h in Headers */,
@@ -2275,9 +2313,10 @@
 				455B58581DCC914300CA4790 /* CTTextView.h in Headers */,
 				E7B19CFC1F33F92D000738CB /* CTInsuranceImageView.h in Headers */,
 				E775DBDA1F327364009039D8 /* CTSearchUSPViewModel.h in Headers */,
+				E7F326891F4B2FC100702AA0 /* CTBookingModalViewModel.h in Headers */,
 				455B585A1DCC914300CA4790 /* CTPlaceholderView.h in Headers */,
 				E750BA441F462F39003FEE0B /* CTBookingErrorViewModel.h in Headers */,
-				E750BA511F48CFE1003FEE0B /* CTConfirmationViewModel.h in Headers */,
+				E750BA511F48CFE1003FEE0B /* CTBookingTableViewModel.h in Headers */,
 				E782990C1F27A3F600C20525 /* CTSearchSettingsViewController.h in Headers */,
 				E78298E71F21869A00C20525 /* CTSearchCalendarViewController.h in Headers */,
 				455B585C1DCC914300CA4790 /* CTView.h in Headers */,
@@ -2327,6 +2366,7 @@
 				459CB2E81DDB5BF8008522BA /* CTNextButton.h in Headers */,
 				E7B19D011F33FB46000738CB /* CTSelectedVehicleExtrasCell.h in Headers */,
 				BC95467C1EB265010097312C /* CTCMSLocalization.h in Headers */,
+				E7F326851F4B2FAD00702AA0 /* CTBookingModalViewController.h in Headers */,
 				E7B19CB31F33BA72000738CB /* CTSelectedVehicleViewController.h in Headers */,
 				E7F6D1721F38F7380002338C /* CTVehicleListFilterModel.h in Headers */,
 				4513B6241DD4C77C00185FEF /* CartrawlerSDK+WKWebView.h in Headers */,
@@ -2340,6 +2380,7 @@
 				E7B19CE21F33E9BE000738CB /* CTSelectedVehicleTabViewModel.h in Headers */,
 				E78298A31F1EEF1800C20525 /* CTUserInterfaceController.h in Headers */,
 				BCF874291E79604100EBC758 /* CTLayoutManager.h in Headers */,
+				E7A4954C1F4B8B0400A8E45F /* CTSearchReservationsCell.h in Headers */,
 				BC9546801EB2651C0097312C /* CTBundleLocalization.h in Headers */,
 				E7BB87A01EA7CE900008CBAD /* CTTriangleView.h in Headers */,
 				E7F6D1771F3A753B0002338C /* CTLoggingController.h in Headers */,
@@ -2351,6 +2392,7 @@
 				E76900E11E77267700D729FF /* CTListItemView.h in Headers */,
 				E7F1066F1ED37C530012CE16 /* CTAnalyticsCache.h in Headers */,
 				E727622B1ECE3B240040C096 /* CTToastView.h in Headers */,
+				E76DCA3D1F4B655400763C5A /* CTReservationsState.h in Headers */,
 				BCFA41741E97CDF700DA1710 /* CTUpSellBanner.h in Headers */,
 				E78298D81F20464000C20525 /* CTAPIState.h in Headers */,
 				E78298CF1F20381200C20525 /* CTSearchViewModel.h in Headers */,
@@ -2373,6 +2415,7 @@
 				E78299371F27D1EF00C20525 /* CTSearchSettingsSelectionViewModel.h in Headers */,
 				BCDB4BE31E3F4D1F008004DA /* CTAnalyticsEvent.h in Headers */,
 				E76900E71E783EC600D729FF /* CTExpandingView.h in Headers */,
+				E76DCA381F4B642600763C5A /* CTLocalStorageController.h in Headers */,
 				E782990A1F27A3F600C20525 /* CTSearchSettingsSelectionViewController.h in Headers */,
 				E794A3B11F4A597D003C2A7D /* CTDashedLine.h in Headers */,
 				E72D4D721F1E7503007130A2 /* CTAppController.h in Headers */,
@@ -2495,7 +2538,6 @@
 				BC3361941E4CCC520056E5A6 /* es.strings in Resources */,
 				455B59511DCC91F900CA4790 /* CTCurrency.csv in Resources */,
 				BC3361921E4CCC520056E5A6 /* el.strings in Resources */,
-				E750BA551F48D00D003FEE0B /* CTConfirmation.storyboard in Resources */,
 				E77D75591F439CB300BD7FF4 /* PaymentSummary.storyboard in Resources */,
 				BC54F1581E54980500A7C871 /* pt.strings in Resources */,
 				BC3361911E4CCC520056E5A6 /* de.strings in Resources */,
@@ -2585,10 +2627,11 @@
 				455B585D1DCC914300CA4790 /* CTView.m in Sources */,
 				E7F6D1731F38F7380002338C /* CTVehicleListFilterModel.m in Sources */,
 				E782989D1F1EA35F00C20525 /* CTAPIController.m in Sources */,
+				E76DCA3E1F4B655400763C5A /* CTReservationsState.m in Sources */,
 				E7F106701ED37C530012CE16 /* CTAnalyticsCache.m in Sources */,
 				E782993C1F28066000C20525 /* CTSearchSplashViewModel.m in Sources */,
 				455B585F1DCC914300CA4790 /* CTDesignableView.m in Sources */,
-				E750BA4E1F48CFC5003FEE0B /* CTConfirmationViewController.m in Sources */,
+				E750BA4E1F48CFC5003FEE0B /* CTBookingTableViewController.m in Sources */,
 				E7F6D1561F38B2220002338C /* CTVehicleListFilterViewController.m in Sources */,
 				455B58611DCC914300CA4790 /* CTNavigationView.m in Sources */,
 				E78298A41F1EEF1800C20525 /* CTUserInterfaceController.m in Sources */,
@@ -2624,7 +2667,7 @@
 				E7B19CB41F33BA72000738CB /* CTSelectedVehicleViewController.m in Sources */,
 				E76900C61E71A31200D729FF /* CTAlertViewPresentationAnimationController.m in Sources */,
 				E78298B81F1FA68B00C20525 /* CTSearchViewController.m in Sources */,
-				E750BA521F48CFE1003FEE0B /* CTConfirmationViewModel.m in Sources */,
+				E750BA521F48CFE1003FEE0B /* CTBookingTableViewModel.m in Sources */,
 				455B58821DCC914300CA4790 /* CartrawlerSDK+NSNumber.m in Sources */,
 				E78298E81F21869A00C20525 /* CTSearchCalendarViewController.m in Sources */,
 				455B58861DCC914300CA4790 /* CTHTMLParser.m in Sources */,
@@ -2688,6 +2731,7 @@
 				455B58CA1DCC914400CA4790 /* CalendarLogicController.m in Sources */,
 				BC9546711EAF77AD0097312C /* CTImageTextView.m in Sources */,
 				455B58CE1DCC914400CA4790 /* CTSelectView.m in Sources */,
+				E7F3268A1F4B2FC100702AA0 /* CTBookingModalViewModel.m in Sources */,
 				450725B81DD9C99500D56C8A /* CTImageView.m in Sources */,
 				E7F6D1781F3A753B0002338C /* CTLoggingController.m in Sources */,
 				451E763B1E04438300D58F71 /* CTRentalBooking.m in Sources */,
@@ -2712,19 +2756,23 @@
 				E7B19CDA1F33E98B000738CB /* CTSelectedVehicleInsuranceViewController.m in Sources */,
 				E76900C21E719F9A00D729FF /* CTAlertTextView.m in Sources */,
 				E782990B1F27A3F600C20525 /* CTSearchSettingsSelectionViewController.m in Sources */,
+				E7F326861F4B2FAD00702AA0 /* CTBookingModalViewController.m in Sources */,
 				459CB2E11DDB1D9E008522BA /* CartrawlerSDK+UIView.m in Sources */,
 				E76900D21E71D95800D729FF /* CTAlertAction.m in Sources */,
 				E782996A1F2945C800C20525 /* CTSelectedVehicleState.m in Sources */,
 				454D91F11DD34E24001AE96C /* Reachability.m in Sources */,
 				E76900CE1E71A55900D729FF /* CTAlertViewPresentationController.m in Sources */,
 				E78298C01F1FC7AF00C20525 /* CTSearchSplashViewController.m in Sources */,
+				E7A4954D1F4B8B0400A8E45F /* CTSearchReservationsCell.m in Sources */,
 				E78299121F27A7EC00C20525 /* CTSearchSettingsViewModel.m in Sources */,
+				E7A495511F4B8B2100A8E45F /* CTSearchReservationsCellModel.m in Sources */,
 				E775DBC81F326CC1009039D8 /* CTMapImageView.m in Sources */,
 				459CB2EF1DDB6638008522BA /* CTToolTipViewController.m in Sources */,
 				E794A3B21F4A597D003C2A7D /* CTDashedLine.m in Sources */,
 				E7F6D15A1F38B2350002338C /* CTVehicleListFilterViewModel.m in Sources */,
 				BC95467D1EB265010097312C /* CTCMSLocalization.m in Sources */,
 				E7F6D16C1F38D80D0002338C /* CTVehicleListFilterHeaderViewModel.m in Sources */,
+				E76DCA391F4B642600763C5A /* CTLocalStorageController.m in Sources */,
 				E7B8EDD51F42041000638D6F /* CTBookingViewController.m in Sources */,
 				455B59441DCC914400CA4790 /* CartrawlerSDK.m in Sources */,
 				E7B19CB81F33BA89000738CB /* CTSelectedVehicleViewModel.m in Sources */,

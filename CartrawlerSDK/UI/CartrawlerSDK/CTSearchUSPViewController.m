@@ -56,6 +56,7 @@
 - (__kindof CTSearchUSPDetailViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CTSearchUSPDetailViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"SearchUSPDetail" forIndexPath:indexPath];
     [cell updateWithViewModel:self.viewModel.detailViewModels[indexPath.row]];
+    [cell setNeedsDisplay];
     return cell;
 }
 

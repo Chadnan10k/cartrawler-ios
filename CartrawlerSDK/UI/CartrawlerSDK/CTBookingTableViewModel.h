@@ -1,5 +1,5 @@
 //
-//  CTConfirmationViewModel.h
+//  CTBookingTableViewModel.h
 //  CartrawlerSDK
 //
 //  Created by Alan Pearson Mathews on 19/08/2017.
@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "CTViewModelProtocol.h"
 
-@interface CTConfirmationViewModel : NSObject <CTViewModelProtocol>
+@interface CTBookingTableViewModel : NSObject <CTViewModelProtocol>
+@property (nonatomic, readonly) UIColor *primaryColor;
+
 @property (nonatomic, readonly) BOOL processing;
 @property (nonatomic, readonly) NSString *topMessage;
 @property (nonatomic, readonly) NSString *bottomMessage;
@@ -38,10 +40,16 @@
 @property (nonatomic, readonly) NSString *bags;
 @property (nonatomic, readonly) NSString *doors;
 @property (nonatomic, readonly) NSString *transmission;
+@property (nonatomic, readonly) NSString *extraFeature;
+@property (nonatomic, readonly) NSURL *vehicleURL;
+@property (nonatomic, readonly) NSURL *vendorURL;
 
 @property (nonatomic, readonly) NSString *paymentSummary;
 @property (nonatomic, readonly) NSString *carRental;
 @property (nonatomic, readonly) NSString *carRentalAmount;
+@property (nonatomic, readonly) BOOL displayInsurance;
+@property (nonatomic, readonly) NSString *insuranceCostItem;
+@property (nonatomic, readonly) NSString *insuranceAmount;
 @property (nonatomic, readonly) NSString *total;
 @property (nonatomic, readonly) NSString *totalAmount;
 

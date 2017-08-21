@@ -52,4 +52,26 @@
     return self;
 }
 
+- (instancetype)initWithBookingID:(NSString *)bookingID
+                   pickupLocation:(NSString *)pickupLocation
+                  dropoffLocation:(NSString *)dropoffLocation
+                       pickupDate:(NSDate *)pickupDate
+                      dropoffDate:(NSDate *)dropoffDate
+                     vehicleImage:(NSString *)vehicleImage
+                      vehicleName:(NSString *)vehicleName
+                         supplier:(NSString *)supplier {
+    self = [super init];
+    if (self) {
+        _bookingId = bookingID;
+        _pickupLocation = pickupLocation;
+        _dropoffLocation = dropoffLocation;
+        _pickupDate = pickupDate;
+        _dropoffDate = dropoffDate;
+        _vehicleImage = vehicleImage;
+        _vehicleName = vehicleName;
+        _supplier = supplier;
+    }
+    return self;
+}
+
 @end

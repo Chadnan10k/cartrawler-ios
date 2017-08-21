@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) CTSearchSplashViewController *searchSplashVC;
 @property (weak, nonatomic) IBOutlet UIView *searchSplashContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchSplashHeightConstraint;
 @property (nonatomic, weak) CTSearchFormViewController *searchFormVC;
 @property (weak, nonatomic) IBOutlet UIView *searchFormContainerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchFormHeightConstraint;
@@ -58,7 +59,8 @@
         case CTSearchContentViewNone:
             break;
         case CTSearchContentViewSplash:
-            self.topConstraintUSP.constant = [self.searchSplashContainerView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+            self.searchSplashHeightConstraint.constant = [self.searchSplashVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+            self.topConstraintUSP.constant = [self.searchSplashVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
             break;
         case CTSearchContentViewForm:
             self.searchFormHeightConstraint.constant = [self.searchFormVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;

@@ -340,8 +340,6 @@
                                     debugMode:(BOOL)debugMode
                                loggingEnabled:(BOOL)loggingEnabled
                                    completion:(RequestAvailabilityCompletion)completion {
-    //NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.endPoint, @"OTA_VehAvailRateRQ"];
-    
     // TODO: Extract
     NSString *target = debugMode ? CTTestTarget : CTProductionTarget;
     NSString *endPoint = [NSString stringWithFormat:@"%@%@", debugMode ? CTTestAPI : CTProductionAPI, @"OTA_VehAvailRateRQ"];

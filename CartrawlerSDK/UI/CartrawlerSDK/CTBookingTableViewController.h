@@ -1,5 +1,5 @@
 //
-//  CTConfirmationViewController.h
+//  CTBookingTableViewController.h
 //  CartrawlerSDK
 //
 //  Created by Alan Pearson Mathews on 19/08/2017.
@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CTViewControllerProtocol.h"
 
-@interface CTConfirmationViewController : UITableViewController <CTViewControllerProtocol>
+@interface CTBookingTableViewController : UITableViewController <CTViewControllerProtocol>
 
 @end

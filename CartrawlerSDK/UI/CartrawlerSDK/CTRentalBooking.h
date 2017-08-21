@@ -12,7 +12,7 @@
 
 @interface CTRentalBooking : NSObject <NSCoding>
 
-@property (nonatomic, strong) NSString *bookingId;
+@property (nonatomic, readonly) NSString *bookingId;
 @property (nonatomic, readonly) NSString *pickupLocation;
 @property (nonatomic, readonly) NSString *dropoffLocation;
 @property (nonatomic, readonly) NSDate   *pickupDate;
@@ -22,5 +22,14 @@
 @property (nonatomic, readonly) NSString *supplier;
 
 - (instancetype)initFromSearch:(CTRentalSearch *)rentalSearch;
+
+- (instancetype)initWithBookingID:(NSString *)bookingID
+                   pickupLocation:(NSString *)pickupLocation
+                  dropoffLocation:(NSString *)dropoffLocation
+                       pickupDate:(NSDate *)pickupDate
+                      dropoffDate:(NSDate *)dropoffDate
+                     vehicleImage:(NSString *)vehicleImage
+                      vehicleName:(NSString *)vehicleName
+                         supplier:(NSString *)supplier;
 
 @end

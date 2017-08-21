@@ -20,8 +20,8 @@
 		45709A681DF1C51300E6CA4E /* QAUITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 45709A671DF1C51300E6CA4E /* QAUITest.m */; };
 		45A7B7561D9BE003006611EB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */; };
 		45A7B7571D9BE007006611EB /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */; };
-		E794A3B51F4A7BAD003C2A7D /* CTPayment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E794A3B31F4A7BA0003C2A7D /* CTPayment.framework */; };
-		E794A3B61F4A7BAD003C2A7D /* CTPayment.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E794A3B31F4A7BA0003C2A7D /* CTPayment.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E74D0E911F4BA3E100906F15 /* CTPayment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E76DCA311F4B5F7400763C5A /* CTPayment.framework */; };
+		E74D0E921F4BA3E100906F15 /* CTPayment.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E76DCA311F4B5F7400763C5A /* CTPayment.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E796395B1F2FCD69009EA682 /* car+start3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E796395A1F2FCD69009EA682 /* car+start3.mp3 */; };
 		E7F6D1451F34D27C0002338C /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E7F6D1431F34D27C0002338C /* HockeySDKResources.bundle */; };
 		E7F6D14A1F34D4920002338C /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F6D1421F34D27C0002338C /* HockeySDK.framework */; };
@@ -44,7 +44,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E794A3B61F4A7BAD003C2A7D /* CTPayment.framework in Embed Frameworks */,
+				E74D0E921F4BA3E100906F15 /* CTPayment.framework in Embed Frameworks */,
 				450725BE1DDA0C2000D56C8A /* CartrawlerSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -75,7 +75,7 @@
 		45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerRakuten.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E794A3B31F4A7BA0003C2A7D /* CTPayment.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CTPayment.framework; sourceTree = "<group>"; };
+		E76DCA311F4B5F7400763C5A /* CTPayment.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CTPayment.framework; sourceTree = "<group>"; };
 		E796395A1F2FCD69009EA682 /* car+start3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "car+start3.mp3"; sourceTree = "<group>"; };
 		E7F6D1421F34D27C0002338C /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		E7F6D1431F34D27C0002338C /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E794A3B51F4A7BAD003C2A7D /* CTPayment.framework in Frameworks */,
+				E74D0E911F4BA3E100906F15 /* CTPayment.framework in Frameworks */,
 				450725BD1DDA0C2000D56C8A /* CartrawlerSDK.framework in Frameworks */,
 				E7F6D14A1F34D4920002338C /* HockeySDK.framework in Frameworks */,
 			);
@@ -105,7 +105,7 @@
 		45295F501D78412500A09B8A = {
 			isa = PBXGroup;
 			children = (
-				E794A3B31F4A7BA0003C2A7D /* CTPayment.framework */,
+				E76DCA311F4B5F7400763C5A /* CTPayment.framework */,
 				BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */,
 				45154EFB1E07E15D00FB32FA /* CartrawlerInPath.framework */,
 				45154EF01E07DE3800FB32FA /* CartrawlerRental.framework */,

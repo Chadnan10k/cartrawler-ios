@@ -10,6 +10,7 @@
 #import "CTAppState.h"
 #import "CTAPIController.h"
 #import "CTUserInterfaceController.h"
+#import "CTLocalStorageController.h"
 #import "CTNotificationsController.h"
 #import "CTLoggingController.h"
 #import "CTPaymentController.h"
@@ -53,6 +54,7 @@
     CTVehicleListState *vehicleListState = appState.vehicleListState;
     CTSelectedVehicleState *selectedVehicleState = appState.selectedVehicleState;
     CTBookingState *bookingState = appState.bookingState;
+    CTReservationsState *reservationsState = appState.reservationsState;
     
     [self.loggingController logAction:action payload:payload];
     
@@ -63,8 +65,8 @@
             self.appState.APIState = [CTAPIState new];
             self.appState.navigationState = [CTNavigationState new];
             self.appState.searchState = [CTSearchState new];
-            self.appState.vehicleListState = [CTVehicleListState new];
-            // TODO: Only create states when needed above
+            self.appState.reservationsState = [CTReservationsState new];
+            self.appState.reservationsState.reservations = [CTLocalStorageController upcomingBookings];
             
             self.apiController = [CTAPIController new];
             self.userInterfaceController = [CTUserInterfaceController new];
@@ -144,12 +146,10 @@
             BOOL isLatestRequest = [payload objectForKey:APIState.availabilityRequestTimestamp] != nil;
             
             if (userWantsNextStep && isLatestRequest) {
-                NSLog(@"Got here");
                 navigationState.modalViewControllers = @[];
                 navigationState.currentNavigationStep = CTNavigationStepVehicleList;
                 searchState.wantsNextStep = NO;
-            } else {
-                NSLog(@"Here");
+                appState.vehicleListState = [CTVehicleListState new];
             }
             break;
         case CTActionAPIDidReturnVehiclesError:
@@ -192,6 +192,10 @@
             break;
         
         // Search Actions
+        case CTActionSearchUserDidSelectReservation:
+            navigationState.modalViewControllers = @[@(CTNavigationModalConfirmation)];
+            reservationsState.selectedReservation = payload;
+            break;
         case CTActionSearchUserDidSwipeUSPCarousel:
             searchState.uspPageIndex = [payload integerValue];
             break;
@@ -628,13 +632,32 @@
         case CTActionBookingValidationAnimationFinished:
             bookingState.animateValidationFailed = NO;
             return;
-        case CTActionBookingAPIReturnedSuccess:
+        case CTActionBookingAPIReturnedSuccess: {
             bookingState.bookingConfirmation = payload;
             navigationState.modalViewControllers = @[@(CTNavigationModalConfirmationError)];
+            NSDate *pickupDate = [NSDate mergeTimeWithDateWithTime:searchState.selectedPickupTime dateWithDay:searchState.selectedPickupDate];
+            NSDate *dropoffDate = [NSDate mergeTimeWithDateWithTime:searchState.selectedDropoffTime dateWithDay:searchState.selectedDropoffDate];
+            CTMatchedLocation *dropoffLocation = searchState.dropoffLocationRequired ? searchState.selectedDropoffLocation : searchState.selectedPickupLocation;
+            CTRentalBooking *storeBooking = [[CTRentalBooking alloc] initWithBookingID:[(CTBooking *)payload confID] pickupLocation:searchState.selectedPickupLocation.name dropoffLocation:dropoffLocation.name pickupDate:pickupDate dropoffDate:dropoffDate vehicleImage:selectedVehicleState.selectedAvailabilityItem.vehicle.pictureURL.absoluteString vehicleName:selectedVehicleState.selectedAvailabilityItem.vehicle.makeModelCode supplier:selectedVehicleState.selectedAvailabilityItem.vendor.name];
+            [CTLocalStorageController storeRentalBooking:storeBooking];
+            reservationsState.reservations = [CTLocalStorageController upcomingBookings];
+        }
             break;
         case CTActionBookingAPIReturnedError:
             bookingState.bookingConfirmationError = payload;
             navigationState.modalViewControllers = @[@(CTNavigationModalConfirmationError)];
+            break;
+        case CTActionBookingConfirmationUserTappedNext:
+            navigationState.modalViewControllers = @[];
+            navigationState.currentNavigationStep = CTNavigationStepSearch;
+            appState.searchState = [CTSearchState new];
+            // Initialise search state
+            appState.searchState.selectedPickupTime = [NSDate dateWithHour:10 minute:0];
+            appState.searchState.selectedDropoffTime = [NSDate dateWithHour:10 minute:0];
+            appState.vehicleListState = nil;
+            appState.selectedVehicleState = nil;
+            appState.bookingState = nil;
+            appState.reservationsState.selectedReservation = nil;
             break;
         default:
             break;
