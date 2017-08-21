@@ -84,7 +84,7 @@
     [self.inPath performSearchWithIATACode:@"ALC"
                                 pickupDate:self.pickupDate
                                 returnDate:[self.pickupDate dateByAddingTimeInterval:260000]
-                              flightNumber:@"FR 123"
+                              flightNumber:@"FR 1234"
                                   currency:@"EUR"
                                  passegers:@[passenger1, passenger2]
                                   clientID:@"642619"
