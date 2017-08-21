@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *passengersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bagsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fuelLabel;
-@property (weak, nonatomic) IBOutlet UILabel *featuresCountLabel;
+@property (weak, nonatomic) IBOutlet UIButton *featuresCountButton;
 @property (weak, nonatomic) IBOutlet UILabel *featuresLabel;
 @end
 
@@ -41,8 +41,17 @@
     self.bagsLabel.text = viewModel.bags;
     self.fuelLabel.text = viewModel.fuel;
     
-    self.featuresCountLabel.textColor = viewModel.primaryColor;
+    [self.featuresCountButton setTitleColor:viewModel.primaryColor forState:UIControlStateNormal];
     self.featuresLabel.textColor = viewModel.primaryColor;
+}
+
+- (IBAction)featuresButtonTapped:(id)sender {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Coming Soon" message:@"This feature is under construction" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [controller dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [controller addAction:okAction];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 @end

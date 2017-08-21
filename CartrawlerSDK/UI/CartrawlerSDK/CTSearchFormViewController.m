@@ -72,7 +72,6 @@
     self.driverAgeTextField.keyboardType = UIKeyboardTypeNumberPad;
     
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-    self.toolbar.barTintColor = [UIColor lightGrayColor];
     self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
                                                                    style:UIBarButtonItemStylePlain
                                                                   target:self

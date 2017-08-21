@@ -503,10 +503,21 @@
         case CTActionSelectedVehicleUserDidTapNext:
             navigationState.currentNavigationStep = CTNavigationStepBooking;
             appState.bookingState = [CTBookingState new];
+            appState.bookingState.firstName = @"Al";
+            appState.bookingState.lastName = @"PM";
+            appState.bookingState.emailAddress = @"al@al.com";
+            appState.bookingState.prefix = @"353";
+            appState.bookingState.phoneNumber = @"85555555";
+            appState.bookingState.flightNumber = @"EI123";
+            appState.bookingState.addressLine1 = @"123 Fake St";
+            appState.bookingState.addressLine2 = @"Dublin";
+            appState.bookingState.postcode = @"Dublin 6";
+            appState.bookingState.city = @"Dublin";
+            
+            
             break;
             
         // Booking
-        
         case CTActionBookingPaymentContainerViewDidLoad:
             self.paymentController = [[CTPaymentController alloc] initWithContainerView:payload];
             break;
@@ -605,6 +616,7 @@
             bookingState.bookingConfirmationError = nil;
             if ([CTValidationBooking validateBookingStep:appState].count == 0) {
                 [self.paymentController makePaymentWithState:appState];
+                navigationState.modalViewControllers = @[@(CTNavigationModalConfirmation)];
             } else {
                 bookingState.animateValidationFailed = YES;
             }
@@ -618,11 +630,11 @@
             return;
         case CTActionBookingAPIReturnedSuccess:
             bookingState.bookingConfirmation = payload;
-            navigationState.modalViewControllers = @[@(CTNavigationModalBookingError)];
+            navigationState.modalViewControllers = @[@(CTNavigationModalConfirmationError)];
             break;
         case CTActionBookingAPIReturnedError:
             bookingState.bookingConfirmationError = payload;
-            navigationState.modalViewControllers = @[@(CTNavigationModalBookingError)];
+            navigationState.modalViewControllers = @[@(CTNavigationModalConfirmationError)];
             break;
         default:
             break;

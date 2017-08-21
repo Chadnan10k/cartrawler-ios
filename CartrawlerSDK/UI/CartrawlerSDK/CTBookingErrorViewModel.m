@@ -28,6 +28,9 @@
     } else if (bookingState.bookingConfirmationError) {
         title = @"Error";
         message = error.userInfo[@"Errors"][@"Error"][@"@ShortText"];
+    } else {
+        title = @"Please Wait...";
+        message = @"Requesting Booking";
     }
     
     

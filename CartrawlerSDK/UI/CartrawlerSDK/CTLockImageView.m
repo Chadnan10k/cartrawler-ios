@@ -14,7 +14,7 @@
 - (void)drawRect:(CGRect)rect {
     [CTCodedImages drawLock2WithFrame:rect
                              resizing:CTCodedImagesResizingBehaviorAspectFit
-     primaryColor:self.primaryColor];
+                         primaryColor:self.primaryColor];
 }
 
 @end

@@ -11,9 +11,8 @@
 
 @protocol CTViewControllerProtocol <NSObject>
 
-- (void)updateWithViewModel:(id)viewModel;
-
 @optional
 + (Class)viewModelClass;
+- (void)updateWithViewModel:(id)viewModel;
 
 @end

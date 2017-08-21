@@ -13,6 +13,9 @@
 #import "CTPaymentSummaryViewController.h"
 
 @interface CTBookingViewController () <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UIView *navigationBar;
+@property (weak, nonatomic) IBOutlet UILabel *total;
+@property (weak, nonatomic) IBOutlet UILabel *totalAmount;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIView *paymentSummaryContainer;
@@ -23,7 +26,6 @@
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *prefix;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *phoneNumber;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *flightNumber;
-@property (weak, nonatomic) IBOutlet UILabel *addressDetails;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *addressLine1;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *addressLine2;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *city;
@@ -58,42 +60,28 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    // Interface Builder won't allow adjusting of height with rounded rect selected
-    self.firstName.borderStyle = UITextBorderStyleRoundedRect;
-    self.lastName.borderStyle = UITextBorderStyleRoundedRect;
-    self.emailAddress.borderStyle = UITextBorderStyleRoundedRect;
-    self.prefix.borderStyle = UITextBorderStyleRoundedRect;
-    self.phoneNumber.borderStyle = UITextBorderStyleRoundedRect;
-    self.flightNumber.borderStyle = UITextBorderStyleRoundedRect;
-    self.addressLine1.borderStyle = UITextBorderStyleRoundedRect;
-    self.addressLine2.borderStyle = UITextBorderStyleRoundedRect;
-    self.city.borderStyle = UITextBorderStyleRoundedRect;
-    self.postcode.borderStyle = UITextBorderStyleRoundedRect;
-    self.country.borderStyle = UITextBorderStyleRoundedRect;
-    
-    self.addressDetailsHeight.constant = 0;
-    self.keyboardSpacer.constant = 0;
-    
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-    self.toolbar.barTintColor = [UIColor lightGrayColor];
     self.cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
-                                                       style:UIBarButtonItemStylePlain
-                                                      target:self
-                                                      action:@selector(didTapCancel:)];
+                                                         style:UIBarButtonItemStylePlain
+                                                        target:self
+                                                        action:@selector(didTapCancel:)];
     self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
                                                        style:UIBarButtonItemStylePlain
                                                       target:self
                                                       action:@selector(didTapDone:)];
-    UIBarButtonItem *space= [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                          target:nil
-                                                                          action:nil];
-    [self.toolbar setItems:@[self.cancelButton, space, self.doneButton]];
-    self.firstName.inputAccessoryView = self.toolbar;
-    self.lastName.inputAccessoryView = self.toolbar;
-    self.emailAddress.inputAccessoryView = self.toolbar;
-    self.prefix.inputAccessoryView = self.toolbar;
-    self.phoneNumber.inputAccessoryView = self.toolbar;
-    self.flightNumber.inputAccessoryView = self.toolbar;
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:nil
+                                                                           action:nil];
+    [self.toolbar setItems:@[self.cancelButton, space]];
+    
+    // Interface Builder won't allow adjusting of height with rounded rect selected
+    for (UITextField *textfield in @[self.firstName, self.lastName, self.emailAddress, self.prefix, self.phoneNumber, self.flightNumber, self.addressLine1, self.addressLine2, self.city, self.postcode, self.country]) {
+        textfield.borderStyle = UITextBorderStyleRoundedRect;
+        textfield.inputAccessoryView = self.toolbar;
+    }
+    
+    self.addressDetailsHeight.constant = 0;
+    self.keyboardSpacer.constant = 0;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PaymentSummary" bundle:[NSBundle bundleForClass:self.class]];
     self.paymentSummaryVC = [storyboard instantiateViewControllerWithIdentifier:@"CTPaymentSummaryViewController"];
@@ -117,6 +105,9 @@
 - (void)updateWithViewModel:(CTBookingViewModel *)viewModel {
     // Force view to load
     self.view = self.view;
+    
+    self.navigationBar.backgroundColor = viewModel.navigationBarColor;
+    self.totalAmount.text = viewModel.totalAmount;
     
     self.firstName.placeholder = viewModel.firstNamePlaceholder;
     self.lastName.placeholder = viewModel.lastNamePlaceholder;
@@ -233,8 +224,8 @@
         [CTAppController dispatchAction:CTActionBookingValidationAnimationFinished payload:nil];
     }
     
+    self.extrasReminder.text = viewModel.extrasReminder;
     self.payButton.backgroundColor = viewModel.buttonColor;
-    
     [self.paymentSummaryVC updateWithViewModel:viewModel.paymentSummaryViewModel];
     self.paymentSummaryHeight.constant = [self.paymentSummaryVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 }
@@ -275,7 +266,10 @@
     }
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if ([textField isFirstResponder]) {
+        return YES;
+    }
     if (textField == self.firstName) {
         [CTAppController dispatchAction:CTActionBookingUserDidTapFirstName payload:nil];
     }
@@ -308,11 +302,45 @@
     }
     if (textField == self.country) {
         [CTAppController dispatchAction:CTActionBookingUserDidTapCountry payload:nil];
+        return NO;
     }
+    return YES;
 }
 
-//- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
-//    [CTAppController dispatchAction:CTActionBookingUserDidEndEditingTextfield payload:nil];
+//- (void)textFieldDidBeginEditing:(UITextField *)textField {
+//    if (textField == self.firstName) {
+//        [CTAppController dispatchAction:CTActionBookingUserDidTapFirstName payload:nil];
+//    }
+//    if (textField == self.lastName) {
+//        [CTAppController dispatchAction:CTActionBookingUserDidTapLastName payload:nil];
+//    }
+//    if (textField == self.emailAddress) {
+//        [CTAppController dispatchAction:CTActionBookingUserDidTapEmailAddress payload:nil];
+//    }
+//    if (textField == self.prefix) {
+//        [CTAppController dispatchAction:CTActionBookingUserDidTapPrefix payload:nil];
+//    }
+//    if (textField == self.phoneNumber) {
+//        [CTAppController dispatchAction:CTActionBookingUserDidTapPhoneNumber payload:nil];
+//    }
+//    if (textField == self.flightNumber) {
+//        [CTAppController dispatchAction:CTActionBookingUserDidTapFlightNumber payload:nil];
+//    }
+//    if (textField == self.addressLine1) {
+//        [CTAppController dispatchAction:CTActionBookingUserDidTapAddressLine1 payload:nil];
+//    }
+//    if (textField == self.addressLine2) {
+//        [CTAppController dispatchAction:CTActionBookingUserDidTapAddressLine2 payload:nil];
+//    }
+//    if (textField == self.city) {
+//        [CTAppController dispatchAction:CTActionBookingUserDidTapCity payload:nil];
+//    }
+//    if (textField == self.postcode) {
+//        [CTAppController dispatchAction:CTActionBookingUserDidTapPostcode payload:nil];
+//    }
+//    if (textField == self.country) {
+//        [CTAppController dispatchAction:CTActionBookingUserDidTapCountry payload:nil];
+//    }
 //}
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -323,6 +351,15 @@
 
 - (void)didTapCancel:(id)sender {
     [CTAppController dispatchAction:CTActionBookingInputViewUserDidSelectCancel payload:nil];
+}
+
+- (IBAction)totalButtonTapped:(id)sender {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Coming Soon" message:@"This feature is under construction" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [controller dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [controller addAction:okAction];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (void)didTapDone:(id)sender {

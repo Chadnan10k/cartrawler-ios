@@ -8,11 +8,14 @@
 
 #import "CTBookingViewModel.h"
 #import "CTValidationBooking.h"
+#import "CartrawlerSDK+NSNumber.h"
 
 @interface CTBookingViewModel ()
 @property (nonatomic, readwrite) CTPaymentSummaryViewModel *paymentSummaryViewModel;
-
 @property (nonatomic, readwrite) CTBookingTextfield selectedTextfield;
+
+@property (nonatomic, readwrite) NSString *total;
+@property (nonatomic, readwrite) NSString *totalAmount;
 
 @property (nonatomic, readwrite) NSString *firstNamePlaceholder;
 @property (nonatomic, readwrite) NSString *lastNamePlaceholder;
@@ -51,8 +54,11 @@
 @property (nonatomic, readwrite) BOOL shakePostcode;
 @property (nonatomic, readwrite) BOOL shakeCountry;
 
+@property (nonatomic, readwrite) NSString *extrasReminder;
+
 @property (nonatomic, readwrite) BOOL showAddressDetails;
 @property (nonatomic, readwrite) NSNumber *keyboardHeight;
+@property (nonatomic, readwrite) UIColor *navigationBarColor;
 @property (nonatomic, readwrite) UIColor *buttonColor;
 @end
 
@@ -63,8 +69,8 @@
     CTBookingState *bookingState = appState.bookingState;
     
     viewModel.paymentSummaryViewModel = [CTPaymentSummaryViewModel viewModelForState:appState];
-    
     viewModel.selectedTextfield = bookingState.selectedTextfield;
+    viewModel.totalAmount = [self totalPrice:appState];
     
     viewModel.firstNamePlaceholder = CTLocalizedString(CTRentalUserFirstnameHint);
     viewModel.lastNamePlaceholder = CTLocalizedString(CTRentalUserSurnameHint);
@@ -77,7 +83,6 @@
     viewModel.cityPlaceholder = CTLocalizedString(CTRentalUserCityHint);
     viewModel.postcodePlaceholder = CTLocalizedString(CTRentalUserPostcodeHint);
     viewModel.countryPlaceholder = CTLocalizedString(CTRentalUserCountryHint);
-
     
     viewModel.firstName = bookingState.firstName;
     viewModel.lastName = bookingState.lastName;
@@ -143,9 +148,34 @@
         }
     }
     
+    viewModel.extrasReminder = [NSString stringWithFormat:@"Don’t forget the remaining %@ will be paid at the rental desk at pick-up.", [self totalForAddedExtras:appState.selectedVehicleState.addedExtras]];
+    viewModel.navigationBarColor = appState.userSettingsState.primaryColor;
     viewModel.buttonColor = appState.userSettingsState.secondaryColor;
     
     return viewModel;
+}
+
+// TODO: Extract calculation logic, repeated elsewhere
+// TODO: Specify parameters, not state
++ (NSString *)totalPrice:(CTAppState *)appState {
+    if (appState.selectedVehicleState.insuranceAdded) {
+        return [[NSNumber numberWithFloat:appState.selectedVehicleState.selectedAvailabilityItem.vehicle.totalPriceForThisVehicle.floatValue + appState.selectedVehicleState.insurance.premiumAmount.floatValue] numberStringWithCurrencyCode];
+    } else {
+        return [appState.selectedVehicleState.selectedAvailabilityItem.vehicle.totalPriceForThisVehicle numberStringWithCurrencyCode];
+    }
+}
+
++ (NSString *)totalForAddedExtras:(NSMapTable *)addedExtras {
+    double total = 0.0;
+    
+    NSEnumerator *enumerator = addedExtras.keyEnumerator;
+    for (CTExtraEquipment *extra in enumerator) {
+        if (!extra.isIncludedInRate && [[addedExtras objectForKey:extra] integerValue] > 0) {
+            NSInteger quantity = [[addedExtras objectForKey:extra] integerValue];
+            total += extra.chargeAmount.doubleValue * quantity;
+        }
+    }
+    return [[NSNumber numberWithDouble:total] numberStringWithCurrencyCode];
 }
 
 @end

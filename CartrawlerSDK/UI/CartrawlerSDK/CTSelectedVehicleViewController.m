@@ -17,8 +17,6 @@
 @interface CTSelectedVehicleViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *navigationBar;
-@property (weak, nonatomic) IBOutlet UIView *vehicleDetailsContainerView;
-
 @property (nonatomic, weak) CTSelectedVehicleInfoViewController *selectedVehicleInfoViewController;
 @property (weak, nonatomic) IBOutlet UILabel *total;
 @property (weak, nonatomic) IBOutlet UILabel *totalAmount;
@@ -30,7 +28,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectedVehicleInsuranceViewHeight;
 @property (nonatomic, weak) CTSelectedVehicleExtrasViewController *selectedVehicleExtrasViewController;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
-
 @property (nonatomic, assign) BOOL viewHasAppeared;
 @end
 
@@ -102,8 +99,16 @@
 - (IBAction)backButtonTapped:(UIButton *)sender {
     [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapBack payload:nil];
 }
+
 - (IBAction)totalButtonTapped:(id)sender {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Coming Soon" message:@"This feature is under construction" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [controller dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [controller addAction:okAction];
+    [self presentViewController:controller animated:YES completion:nil];
 }
+
 - (IBAction)nextButtonTapped:(UIButton *)sender {
     [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapNext payload:nil];
 }

@@ -13,10 +13,17 @@
 @interface ViewController ()
 @property (nonatomic) CartrawlerSDK *sdk;
 @property (nonatomic) BOOL productionEnvironment;
+@property (weak, nonatomic) IBOutlet UILabel *version;
 @property (nonatomic) AVAudioPlayer *audioPlayer;
 @end
 
 @implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+    self.version.text = [NSString stringWithFormat:@"Version: %@", version];
+}
 
 - (IBAction)startButtonTapped:(id)sender {
 //    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"car+start3" ofType:@"mp3"]];

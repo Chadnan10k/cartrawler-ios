@@ -66,15 +66,23 @@
                                             <action selector="segmentedControlWasTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="OGx-JK-z5P"/>
                                         </connections>
                                     </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kcg-UL-hP2">
+                                        <rect key="frame" x="187" y="702" width="40" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="4sr-mH-0oe" firstAttribute="centerX" secondItem="cIE-Qd-nYM" secondAttribute="centerX" id="8WV-YT-NUU"/>
+                                    <constraint firstAttribute="bottom" secondItem="Kcg-UL-hP2" secondAttribute="bottom" constant="20" id="9HP-aA-mWr"/>
                                     <constraint firstItem="O2c-tF-pam" firstAttribute="centerX" secondItem="AOS-aQ-kT0" secondAttribute="centerX" id="Hyw-JQ-W7W"/>
                                     <constraint firstAttribute="leadingMargin" secondItem="cIE-Qd-nYM" secondAttribute="leading" id="Idd-q9-z8F"/>
                                     <constraint firstItem="O2c-tF-pam" firstAttribute="width" secondItem="AOS-aQ-kT0" secondAttribute="width" multiplier="0.5" id="Iqf-sh-xDp"/>
                                     <constraint firstItem="NA9-Ta-4WI" firstAttribute="centerX" secondItem="y6o-oG-u2i" secondAttribute="centerX" id="LFV-US-Ufj"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="cIE-Qd-nYM" secondAttribute="trailing" id="R9R-qf-yxk"/>
+                                    <constraint firstItem="Kcg-UL-hP2" firstAttribute="centerX" secondItem="y6o-oG-u2i" secondAttribute="centerX" id="VK3-K4-lzI"/>
                                     <constraint firstAttribute="bottom" secondItem="AOS-aQ-kT0" secondAttribute="bottom" constant="20" id="Z9a-Nc-mxM"/>
                                     <constraint firstItem="NA9-Ta-4WI" firstAttribute="height" secondItem="y6o-oG-u2i" secondAttribute="height" id="gSd-J8-Ise"/>
                                     <constraint firstItem="AOS-aQ-kT0" firstAttribute="leading" secondItem="y6o-oG-u2i" secondAttribute="leadingMargin" constant="50" id="hff-Qu-wr0"/>
@@ -101,6 +109,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dR5-Ox-RAi"/>
+                    <connections>
+                        <outlet property="version" destination="Kcg-UL-hP2" id="rvk-lU-FOu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

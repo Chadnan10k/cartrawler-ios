@@ -12,8 +12,10 @@
 
 @interface CTBookingViewModel : NSObject <CTViewModelProtocol>
 @property (nonatomic, readonly) CTPaymentSummaryViewModel *paymentSummaryViewModel;
-
 @property (nonatomic, readonly) CTBookingTextfield selectedTextfield;
+
+@property (nonatomic, readonly) NSString *total;
+@property (nonatomic, readonly) NSString *totalAmount;
 
 @property (nonatomic, readonly) NSString *firstNamePlaceholder;
 @property (nonatomic, readonly) NSString *lastNamePlaceholder;
@@ -52,9 +54,11 @@
 @property (nonatomic, readonly) BOOL shakePostcode;
 @property (nonatomic, readonly) BOOL shakeCountry;
 
+@property (nonatomic, readonly) NSString *extrasReminder;
 
 @property (nonatomic, readonly) BOOL showAddressDetails;
 @property (nonatomic, readonly) NSNumber *keyboardHeight;
+@property (nonatomic, readonly) UIColor *navigationBarColor;
 @property (nonatomic, readonly) UIColor *buttonColor;
 
 @end

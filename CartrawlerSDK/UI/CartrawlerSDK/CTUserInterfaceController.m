@@ -81,8 +81,9 @@
     
     // Popping modal view controllers
     for (NSUInteger i = self.modalViewControllers.count; i > navigationState.modalViewControllers.count; i--) {
-        [self.modalViewControllers[i-1] dismissViewControllerAnimated:YES completion:nil];
+        UIViewController *vc = self.modalViewControllers[i-1];
         [self.modalViewControllers removeObjectAtIndex:i-1];
+        [vc dismissViewControllerAnimated:YES completion:nil];
     }
     
     // Presenting modal view controllers
@@ -91,15 +92,17 @@
         UIViewController <CTViewControllerProtocol> *modalVC;
         
         if (self.modalViewControllers.count <= idx) {
+            NSLog(@"Adding Modal View Controller %lu %lu %@",(unsigned long)self.modalViewControllers.count, (unsigned long)idx, navigationState.modalViewControllers);
             modalVC = [CTUserInterfaceController viewControllerForModal:modal];
-            [topViewController presentViewController:modalVC animated:YES completion:nil];
             [self.modalViewControllers addObject:modalVC];
+            [topViewController presentViewController:modalVC animated:YES completion:nil];
         } else {
             modalVC = self.modalViewControllers[idx];
         }
         
         topViewController = modalVC;
     }];
+    
     
     // Updating current view
     Class viewModelClass = [topViewController.class viewModelClass];
@@ -159,7 +162,10 @@
         case CTNavigationModalVehicleListFilter:
             storyboard = [UIStoryboard storyboardWithName:@"CTVehicleList" bundle:bundle];
             return [storyboard instantiateViewControllerWithIdentifier:@"CTVehicleListFilterViewController"];
-        case CTNavigationModalBookingError:
+        case CTNavigationModalConfirmation:
+            storyboard = [UIStoryboard storyboardWithName:@"CTConfirmation" bundle:bundle];
+            return [storyboard instantiateViewControllerWithIdentifier:@"CTConfirmationViewController"];
+        case CTNavigationModalConfirmationError:
             return [[CTBookingErrorViewController alloc] initWithNibName:@"CTAlertViewController" bundle:bundle];
             break;
         default:

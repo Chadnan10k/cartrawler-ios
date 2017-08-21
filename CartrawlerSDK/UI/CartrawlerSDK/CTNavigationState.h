@@ -27,7 +27,8 @@ typedef NS_ENUM(NSUInteger, CTNavigationModal) {
     CTNavigationModalSearchVehicleFetchError,
     CTNavigationModalSearchInterstitial,
     CTNavigationModalVehicleListFilter,
-    CTNavigationModalBookingError,
+    CTNavigationModalConfirmation,
+    CTNavigationModalConfirmationError,
 };
 
 @interface CTNavigationState : NSObject

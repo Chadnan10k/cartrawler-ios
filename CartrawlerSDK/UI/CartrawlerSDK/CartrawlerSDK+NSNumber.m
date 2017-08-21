@@ -15,6 +15,7 @@
 {
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     f.minimumFractionDigits = 2;
+    // TODO: Remove SDKSettings 
     f.currencyCode = [CTSDKSettings instance].currencyCode;
     f.numberStyle = NSNumberFormatterCurrencyStyle;
     
