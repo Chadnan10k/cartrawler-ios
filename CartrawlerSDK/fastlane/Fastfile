@@ -85,9 +85,12 @@ platform :ios do
       raise "No version specified!".red
     end
 
-    puts "crepcrepcrepcrep == FASTLANE"
     framework = lane[:framework]
     version = lane[:version]
+
+    puts "crepcrepcrepcrep == FASTLANE"
+    puts framework
+    puts version
     puts "crepcrepcrepcrep == FASTLANE"
 
     increment_version_number(
