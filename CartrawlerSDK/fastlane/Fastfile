@@ -21,11 +21,11 @@ platform :ios do
   end
 
   lane :buildTargets do
-  #   Dir.chdir("/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/") do
-  #     puts "entrou2"
-  #   sh "build_targets.sh"
-  # end
-      # sh "chmod 775 /Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/"
+      Dir.chdir("/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/") do
+        puts "entrou2"
+        sh '/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/generatefolders.sh $1 "name" = $2 "age" '
+        # sh "comando -p -name #{name} -age #{age}"⁠⁠⁠⁠
+      end
   end
 
   lane :deploy do |lane|
@@ -62,8 +62,8 @@ platform :ios do
   end
 
   lane :load do
-    version = version_bump_podspec(path: "/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/CI/CartrawlerAPI.podspec")
-    increment_framework_version(:framework => "/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/OTA API/CartrawlerAPI", :version => version)
+    version = version_bump_podspec(path: "/Users/apinto/cartrawler-ios/CartrawlerSDK/CI/CartrawlerAPI.podspec")
+    increment_framework_version(:framework => "/Users/apinto/cartrawler-ios/CartrawlerSDK/OTA API/CartrawlerAPI", :version => version)
     puts version
   end
 
