@@ -29,6 +29,8 @@ platform :ios do
   end
 
   lane :deploy do |lane|
+
+
     # puts "Bump the podspec file"
     # check last version its hardcoded now
     # version = version_bump_podspec(path: "/Users/apinto/.cocoapods/repos/cartrawler/CartrawlerAPI/2.1.14/CartrawlerAPI.podspec")
@@ -39,14 +41,19 @@ platform :ios do
 
     #create new commit
     version = lane[:version]
-    git_commit(path: ["./Users/apinto/.cocoapods/repos/cartrawler/CartrawlerAPI/2.1.17/CartrawlerAPI", "."], message: "Bumped to version #{version}")
-    push_to_git_remote(remote_branch: 'master', force: false, tags: true)
+    framework = lane[:framework]
+    puts "crepcrepcrepcrep"
+    puts version
+    puts framework
+    puts "crepcrepcrepcrep"
+    # git_commit(path: ["./Users/apinto/.cocoapods/repos/cartrawler/CartrawlerAPI/2.1.17/CartrawlerAPI", "."], message: "Bumped to version #{version}")
+    push_to_git_remote(remote_branch: 'new-CI', force: false, tags: true)
     changelog = changelog_from_git_commits
     github_release = set_github_release(
     repository_name: "cartrawlerpods",
     # api_token: ENV['GITHUB_TOKEN'],
     name: version,
-    tag_name: "v#{version}-{#{framework}}",
+    tag_name: "v#{version}-{#{lane[:framework]}}",
     description: changelog,
     commitish: "master"
   )
@@ -80,7 +87,7 @@ platform :ios do
       version_number: version
     )
 
-    lane deploy(:version => version)
+    lane deploy(:version => version, :framework => framework)
 
   end
 
