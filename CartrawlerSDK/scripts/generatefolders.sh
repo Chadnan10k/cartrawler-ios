@@ -3,6 +3,10 @@ echo "WE WILL NOW PUSH TO COCOAPODS ☕️"
 FRAMEWORK_NAME=$1
 BUILD_VERSION=$2
 
+echo "crepcrepcrepcrep"
+echo FRAMEWORK_NAME
+echo BUILD_VERSION
+echo "crepcrepcrepcrep"
 
 OUTPUT_DIR="${SRCROOT}/../../../Artifacts_Latest"
 
