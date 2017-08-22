@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "CartrawlerAPI"
-s.version      = "2.1.22"
+s.version      = "2.1.23"
 s.summary      = "The Cartrawler SDK"
 s.description  = <<-DESC
 A toolkit for car rental & ground transport

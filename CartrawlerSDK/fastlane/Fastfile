@@ -24,6 +24,12 @@ platform :ios do
 
   FRAMEWORK_NAME = lane[:framework]
   FRAMEWORK_VERSION = lane[:version]
+
+  puts "deploydeploydeploydeploy"
+  puts FRAMEWORK_NAME
+  puts FRAMEWORK_VERSION
+  puts "deploydeploydeploydeploy"
+
       Dir.chdir("/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/") do
         puts "entrou2"
         sh '/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/generatefolders.sh $1 #{FRAMEWORK_NAME} = $2 #{FRAMEWORK_VERSION} '
