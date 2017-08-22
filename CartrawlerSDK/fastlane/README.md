@@ -30,11 +30,6 @@ xcode-select --install
 
 # Available Actions
 ## iOS
-### ios buildTargets
-```
-fastlane ios buildTargets
-```
-
 ### ios deploy
 ```
 fastlane ios deploy

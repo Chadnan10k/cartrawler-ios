@@ -20,57 +20,22 @@ platform :ios do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
   end
 
-  lane :buildTargets do
+  lane :deploy do |lane|
+
+  FRAMEWORK_NAME = lane[:framework]
+  FRAMEWORK_VERSION = lane[:version]
       Dir.chdir("/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/") do
         puts "entrou2"
-        sh '/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/generatefolders.sh $1 "name" = $2 "age" '
+        sh '/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/generatefolders.sh $1 #{FRAMEWORK_NAME} = $2 #{FRAMEWORK_VERSION} '
         # sh "comando -p -name #{name} -age #{age}"⁠⁠⁠⁠
       end
   end
 
-  lane :deploy do |lane|
-
-
-    # puts "Bump the podspec file"
-    # check last version its hardcoded now
-    # version = version_bump_podspec(path: "/Users/apinto/.cocoapods/repos/cartrawler/CartrawlerAPI/2.1.14/CartrawlerAPI.podspec")
-
-    #create folders
-    # sh "chmod 775 /Users/apinto/cartrawler-ios/CartrawlerSDK/scripts"
-    # puts "new version:#{version}"
-
-    #create new commit
-    # version = lane[:version]
-    # framework = lane[:framework]
-    # puts "crepcrepcrepcrep"
-    # puts version
-    # puts framework
-    # puts "crepcrepcrepcrep"
-    # git_commit(path: ["./Users/apinto/.cocoapods/repos/cartrawler/CartrawlerAPI/2.1.17/CartrawlerAPI", "."], message: "Bumped to version #{version}")
-  #   push_to_git_remote(remote_branch: 'new-CI', force: false, tags: true)
-  #   changelog = changelog_from_git_commits
-  #   github_release = set_github_release(
-  #   repository_name: "cartrawlerpods",
-  #   # api_token: ENV['GITHUB_TOKEN'],
-  #   name: version,
-  #   tag_name: "v#{version}-{#{lane[:framework]}}",
-  #   description: changelog,
-  #   commitish: "master"
-  # )
-  # sh("git fetch --tags")
-  # pod_push(allow_warnings: true, verbose: true)
-  FRAMEWORK_NAME = lane[:framework]
-  FRAMEWORK_VERSION = lane[:version]
-  Dir.chdir("/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/") do
-    puts "entrou2"
-    sh '/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/generatefolders.sh $1 #{FRAMEWORK_NAME} = $2 #{FRAMEWORK_VERSION} '
-    # sh "comando -p -name #{name} -age #{age}"⁠⁠⁠⁠
-  end
-  end
-
   lane :load do
     version = version_bump_podspec(path: "/Users/apinto/cartrawler-ios/CartrawlerSDK/CI/CartrawlerAPI.podspec")
-    increment_framework_version(:framework => "/Users/apinto/cartrawler-ios/CartrawlerSDK/OTA API/CartrawlerAPI", :version => version)
+    increment_framework_version(:framework => "CartrawlerAPI",
+    :version => version,
+    :path => "/Users/apinto/cartrawler-ios/CartrawlerSDK/OTA API/CartrawlerAPI")
     puts version
   end
 
@@ -85,17 +50,23 @@ platform :ios do
       raise "No version specified!".red
     end
 
+    if !lane[:path]
+      raise "No path specified!".red
+    end
+
     framework = lane[:framework]
     version = lane[:version]
+    path = lane[:path]
 
     puts "crepcrepcrepcrep == FASTLANE"
     puts framework
     puts version
+    puts path
     puts "crepcrepcrepcrep == FASTLANE"
 
     increment_version_number(
       # xcodeproj: "#{framework}/#{framework}.xcodeproj",
-      xcodeproj: framework,
+      xcodeproj: path,
       version_number: version
     )
 
