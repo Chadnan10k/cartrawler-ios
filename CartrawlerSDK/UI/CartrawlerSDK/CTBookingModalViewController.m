@@ -42,7 +42,14 @@
         self.bookingTableVC = segue.destinationViewController;
     }
 }
+
 - (IBAction)nextButtonTapped:(UIButton *)sender {
     [CTAppController dispatchAction:CTActionBookingConfirmationUserTappedNext payload:nil];
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake) {
+        [CTAppController dispatchAction:CTActionUserSettingsUserDidShake payload:nil];
+    }
 }
 @end
