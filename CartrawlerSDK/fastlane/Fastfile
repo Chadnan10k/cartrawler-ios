@@ -54,7 +54,7 @@ platform :ios do
   FRAMEWORK_VERSION = lane[:version]
 #sh "comando -p -name #{name} -age #{age}"
       Dir.chdir("/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/") do
-        sh '/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/generatefolders.sh -$1 #{FRAMEWORK_NAME} -$2 #{FRAMEWORK_VERSION}'
+        sh "/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/generatefolders.sh -$1 #{FRAMEWORK_NAME} -$2 #{FRAMEWORK_VERSION}"
       end
   end
 
