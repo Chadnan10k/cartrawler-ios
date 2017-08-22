@@ -5,12 +5,39 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.001281">
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.001045">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000737">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000699">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: version_bump_podspec" time="0.001511">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: Switch to ios increment_framework_version lane" time="0.000923">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: increment_version_number" time="0.800933">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: Switch to ios deploy lane" time="0.001394">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="6: /Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/generatefolders.sh $1 #{FRAMEWORK_NAME} = $2 #{FRAMEWORK_VERSION} " time="0.672727">
+        
+          <failure message="/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/actions/actions_helper.rb:48:in `execute_action'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/fast_file.rb:176:in `sh'&#10;Fastfile:66:in `block (3 levels) in parsing_binding'&#10;Fastfile:64:in `chdir'&#10;Fastfile:64:in `block (2 levels) in parsing_binding'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/runner.rb:201:in `try_switch_to_lane'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/runner.rb:156:in `trigger_action_by_name'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/fast_file.rb:146:in `method_missing'&#10;Fastfile:97:in `block (2 levels) in parsing_binding'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/runner.rb:201:in `try_switch_to_lane'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/runner.rb:156:in `trigger_action_by_name'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/fast_file.rb:146:in `method_missing'&#10;Fastfile:73:in `block (2 levels) in parsing_binding'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/runner.rb:49:in `block in execute'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/runner.rb:45:in `chdir'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/runner.rb:45:in `execute'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/lane_manager.rb:52:in `cruise_lane'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/command_line_handler.rb:30:in `handle'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/commands_generator.rb:104:in `block (2 levels) in run'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-fastlane-4.4.5/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-fastlane-4.4.5/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-fastlane-4.4.5/lib/commander/command.rb:153:in `run'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-fastlane-4.4.5/lib/commander/runner.rb:476:in `run_active_command'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:64:in `run!'&#10;/Library/Ruby/Gems/2.0.0/gems/commander-fastlane-4.4.5/lib/commander/delegates.rb:15:in `run!'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/commands_generator.rb:303:in `run'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/commands_generator.rb:42:in `start'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/fastlane/lib/fastlane/cli_tools_distributor.rb:66:in `take_off'&#10;/Library/Ruby/Gems/2.0.0/gems/fastlane-2.53.1/bin/fastlane:20:in `&lt;top (required)&gt;'&#10;/usr/local/bin/fastlane:23:in `load'&#10;/usr/local/bin/fastlane:23:in `&lt;main&gt;'&#10;&#10;Exit status of command '/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/generatefolders.sh $1 #{FRAMEWORK_NAME} = $2 #{FRAMEWORK_VERSION} ' was 1 instead of 0.&#10;WE WILL NOW PUSH TO COCOAPODS ☕️&#10;crepcrepcrepcrep&#10;FRAMEWORK_NAME&#10;BUILD_VERSION&#10;crepcrepcrepcrep&#10;/Users/apinto/cartrawler-ios/CartrawlerSDK/scripts/generatefolders.sh: line 17: cd: /../../../Artifacts_Latest: No such file or directory&#10;CHECKING OUT -&#10;fatal: '-' is not a valid branch name.&#10;[name-= 99176306]  version  build&#10; 7 files changed, 51 insertions(+), 47 deletions(-)&#10; rewrite CartrawlerSDK/fastlane/report.xml (89%)&#10;fatal: tag 'v-' already exists&#10;error: src refspec - does not match any.&#10;error: failed to push some refs to 'https://github.com/cartrawler/cartrawler-ios-build.git'&#10;PUSHING - https://github.com/cartrawler/cartrawler-ios-build.git -&#10;Creating podspec&#10;cp: /PodTemplate.podspec: No such file or directory&#10;sed: /.podspec: No such file or directory&#10;Pushing pod spec /.podspec&#10;&#10;[!] Unable to find a spec named `.podspec'.&#10;Cloning spec repo `cartrawlerpods` from `cartrawlerpods`&#10;[!] Unable to find the `cartrawlerpods` repo. If it has not yet been cloned, add it via `pod repo add`.&#10;" />
         
       </testcase>
     
