@@ -23,9 +23,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leather" translatesAutoresizingMaskIntoConstraints="NO" id="lHr-jj-WUT">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LoR-t4-NL9">
                                 <rect key="frame" x="20" y="350" width="374" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -42,22 +39,18 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="LoR-t4-NL9" secondAttribute="leading" id="1aM-L2-FTA"/>
-                            <constraint firstItem="lHr-jj-WUT" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ElR-If-SjK"/>
                             <constraint firstItem="LoR-t4-NL9" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="IPJ-Za-WHK"/>
                             <constraint firstItem="FRZ-BR-RMh" firstAttribute="top" secondItem="LoR-t4-NL9" secondAttribute="bottom" constant="25" id="MPo-1e-LLd"/>
                             <constraint firstAttribute="leadingMargin" secondItem="8eW-Va-Jhd" secondAttribute="leading" id="N94-XH-Mkk"/>
-                            <constraint firstItem="lHr-jj-WUT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OsU-Fb-yNz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FRZ-BR-RMh" secondAttribute="trailing" constant="50" id="ROO-JV-I75"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LoR-t4-NL9" secondAttribute="trailing" id="V4p-Mj-0mb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8eW-Va-Jhd" secondAttribute="trailing" id="VtG-oE-OEL"/>
                             <constraint firstItem="FRZ-BR-RMh" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="50" id="bSj-p0-8hq"/>
                             <constraint firstItem="8eW-Va-Jhd" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="30" id="hdw-3b-7Vm"/>
-                            <constraint firstItem="lHr-jj-WUT" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="kdQ-Mx-6Rq"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="FRZ-BR-RMh" secondAttribute="bottom" constant="20" id="mrn-GH-jKj"/>
-                            <constraint firstItem="lHr-jj-WUT" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="tCS-Vt-WFm"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -67,7 +60,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="leather" width="750" height="1334"/>
         <image name="logo" width="587" height="283"/>
         <image name="startengine" width="565" height="565"/>
     </resources>

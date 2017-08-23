@@ -15,6 +15,9 @@
 @property (nonatomic) BOOL productionEnvironment;
 @property (weak, nonatomic) IBOutlet UILabel *version;
 @property (nonatomic) AVAudioPlayer *audioPlayer;
+@property (weak, nonatomic) IBOutlet UILabel *testApp;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UIImageView *startEngine;
 @end
 
 @implementation ViewController
@@ -23,6 +26,21 @@
     [super viewDidLoad];
     NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
     self.version.text = [NSString stringWithFormat:@"Version: %@", version];
+    self.segmentedControl.alpha = 0;
+    self.startEngine.alpha = 0;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [UIView animateWithDuration:0.2 animations:^{
+        self.testApp.frame = CGRectZero;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.segmentedControl.alpha = 1;
+            self.startEngine.alpha = 1;
+        }];
+    }];
+    
 }
 
 - (IBAction)startButtonTapped:(id)sender {

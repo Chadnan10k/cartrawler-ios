@@ -55,8 +55,6 @@
 /* Begin PBXFileReference section */
 		450725B91DDA0C2000D56C8A /* CartrawlerAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		450725BC1DDA0C2000D56C8A /* CartrawlerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		45154EF01E07DE3800FB32FA /* CartrawlerRental.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerRental.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		45154EFB1E07E15D00FB32FA /* CartrawlerInPath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerInPath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45295F591D78412500A09B8A /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45295F5D1D78412500A09B8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		45295F5F1D78412500A09B8A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 		45709A691DF1C51300E6CA4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45A7B7541D9BDFFB006611EB /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		45A7B7551D9BDFFB006611EB /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
-		BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerRakuten.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76DCA311F4B5F7400763C5A /* CTPayment.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CTPayment.framework; sourceTree = "<group>"; };
 		E796395A1F2FCD69009EA682 /* car+start3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "car+start3.mp3"; sourceTree = "<group>"; };
 		E7F6D1421F34D27C0002338C /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
@@ -105,15 +102,10 @@
 		45295F501D78412500A09B8A = {
 			isa = PBXGroup;
 			children = (
-				E76DCA311F4B5F7400763C5A /* CTPayment.framework */,
-				BCDB4BF01E3F560E008004DA /* CartrawlerRakuten.framework */,
-				45154EFB1E07E15D00FB32FA /* CartrawlerInPath.framework */,
-				45154EF01E07DE3800FB32FA /* CartrawlerRental.framework */,
-				450725BC1DDA0C2000D56C8A /* CartrawlerSDK.framework */,
-				450725B91DDA0C2000D56C8A /* CartrawlerAPI.framework */,
 				E7F6D1411F34D27C0002338C /* HockeySDK.embeddedframework */,
 				45295F5B1D78412500A09B8A /* TestApp */,
 				45709A661DF1C51300E6CA4E /* QAUITest */,
+				E75256B31F4E39E0006DED6F /* Frameworks */,
 				45295F5A1D78412500A09B8A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -163,6 +155,16 @@
 				45709A691DF1C51300E6CA4E /* Info.plist */,
 			);
 			path = QAUITest;
+			sourceTree = "<group>";
+		};
+		E75256B31F4E39E0006DED6F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E76DCA311F4B5F7400763C5A /* CTPayment.framework */,
+				450725BC1DDA0C2000D56C8A /* CartrawlerSDK.framework */,
+				450725B91DDA0C2000D56C8A /* CartrawlerAPI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E7F6D1411F34D27C0002338C /* HockeySDK.embeddedframework */ = {

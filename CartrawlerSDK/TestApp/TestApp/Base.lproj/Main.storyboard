@@ -27,9 +27,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6o-oG-u2i">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leather" translatesAutoresizingMaskIntoConstraints="NO" id="NA9-Ta-4WI">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ylg-z9-AUE">
                                         <rect key="frame" x="20" y="50" width="374" height="148"/>
                                         <constraints>
@@ -45,12 +42,6 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startengine" translatesAutoresizingMaskIntoConstraints="NO" id="AOS-aQ-kT0">
                                         <rect key="frame" x="58" y="411" width="298" height="305"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2c-tF-pam">
-                                        <rect key="frame" x="133" y="487" width="149" height="153"/>
-                                        <connections>
-                                            <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TAQ-6Z-NA5"/>
-                                        </connections>
-                                    </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4sr-mH-0oe">
                                         <rect key="frame" x="126" y="354" width="163" height="29"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -66,6 +57,12 @@
                                             <action selector="segmentedControlWasTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="OGx-JK-z5P"/>
                                         </connections>
                                     </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2c-tF-pam">
+                                        <rect key="frame" x="133" y="487" width="149" height="153"/>
+                                        <connections>
+                                            <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TAQ-6Z-NA5"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kcg-UL-hP2">
                                         <rect key="frame" x="187" y="702" width="40" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -73,23 +70,19 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstItem="4sr-mH-0oe" firstAttribute="centerX" secondItem="cIE-Qd-nYM" secondAttribute="centerX" id="8WV-YT-NUU"/>
                                     <constraint firstAttribute="bottom" secondItem="Kcg-UL-hP2" secondAttribute="bottom" constant="20" id="9HP-aA-mWr"/>
                                     <constraint firstItem="O2c-tF-pam" firstAttribute="centerX" secondItem="AOS-aQ-kT0" secondAttribute="centerX" id="Hyw-JQ-W7W"/>
                                     <constraint firstAttribute="leadingMargin" secondItem="cIE-Qd-nYM" secondAttribute="leading" id="Idd-q9-z8F"/>
                                     <constraint firstItem="O2c-tF-pam" firstAttribute="width" secondItem="AOS-aQ-kT0" secondAttribute="width" multiplier="0.5" id="Iqf-sh-xDp"/>
-                                    <constraint firstItem="NA9-Ta-4WI" firstAttribute="centerX" secondItem="y6o-oG-u2i" secondAttribute="centerX" id="LFV-US-Ufj"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="cIE-Qd-nYM" secondAttribute="trailing" id="R9R-qf-yxk"/>
                                     <constraint firstItem="Kcg-UL-hP2" firstAttribute="centerX" secondItem="y6o-oG-u2i" secondAttribute="centerX" id="VK3-K4-lzI"/>
                                     <constraint firstAttribute="bottom" secondItem="AOS-aQ-kT0" secondAttribute="bottom" constant="20" id="Z9a-Nc-mxM"/>
-                                    <constraint firstItem="NA9-Ta-4WI" firstAttribute="height" secondItem="y6o-oG-u2i" secondAttribute="height" id="gSd-J8-Ise"/>
                                     <constraint firstItem="AOS-aQ-kT0" firstAttribute="leading" secondItem="y6o-oG-u2i" secondAttribute="leadingMargin" constant="50" id="hff-Qu-wr0"/>
                                     <constraint firstItem="O2c-tF-pam" firstAttribute="height" secondItem="AOS-aQ-kT0" secondAttribute="height" multiplier="0.5" id="j3c-tS-ZeY"/>
-                                    <constraint firstItem="NA9-Ta-4WI" firstAttribute="centerY" secondItem="y6o-oG-u2i" secondAttribute="centerY" id="kLf-rl-GAX"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="AOS-aQ-kT0" secondAttribute="trailing" constant="50" id="ono-50-Tv0"/>
-                                    <constraint firstItem="NA9-Ta-4WI" firstAttribute="width" secondItem="y6o-oG-u2i" secondAttribute="width" id="rKl-lp-0EQ"/>
                                     <constraint firstItem="O2c-tF-pam" firstAttribute="centerY" secondItem="AOS-aQ-kT0" secondAttribute="centerY" id="uiv-2u-Mbn"/>
                                     <constraint firstItem="4sr-mH-0oe" firstAttribute="centerY" secondItem="cIE-Qd-nYM" secondAttribute="centerY" id="uqP-qM-18O"/>
                                     <constraint firstItem="AOS-aQ-kT0" firstAttribute="top" secondItem="cIE-Qd-nYM" secondAttribute="bottom" constant="25" id="wi7-1S-xb0"/>
@@ -97,7 +90,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="ylg-z9-AUE" secondAttribute="trailing" id="Fgp-CR-Icf"/>
                             <constraint firstItem="y6o-oG-u2i" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="NAJ-rO-d7j"/>
@@ -110,6 +103,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="dR5-Ox-RAi"/>
                     <connections>
+                        <outlet property="segmentedControl" destination="4sr-mH-0oe" id="OnX-eW-B52"/>
+                        <outlet property="startEngine" destination="AOS-aQ-kT0" id="Iyx-T7-9g5"/>
+                        <outlet property="testApp" destination="cIE-Qd-nYM" id="Hvg-op-Jfa"/>
                         <outlet property="version" destination="Kcg-UL-hP2" id="rvk-lU-FOu"/>
                     </connections>
                 </viewController>
@@ -137,7 +133,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="leather" width="750" height="1334"/>
         <image name="logo" width="587" height="283"/>
         <image name="startengine" width="565" height="565"/>
     </resources>

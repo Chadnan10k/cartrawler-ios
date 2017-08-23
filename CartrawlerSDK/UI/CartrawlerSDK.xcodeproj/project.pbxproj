@@ -626,7 +626,6 @@
 		E72D4D701F1E7503007130A2 /* CTAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAppController.h; sourceTree = "<group>"; };
 		E72D4D711F1E7503007130A2 /* CTAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAppController.m; sourceTree = "<group>"; };
 		E72D4D751F1E755D007130A2 /* CTActions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTActions.h; sourceTree = "<group>"; };
-		E733BA5A1F4355C500076516 /* CTPayment.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CTPayment.framework; sourceTree = "<group>"; };
 		E733BA5D1F43807700076516 /* CTPaymentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPaymentController.h; sourceTree = "<group>"; };
 		E733BA5E1F43807700076516 /* CTPaymentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPaymentController.m; sourceTree = "<group>"; };
 		E7404A761E82F3AB009BF7DF /* CTTabContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabContainerView.h; sourceTree = "<group>"; };
@@ -985,7 +984,6 @@
 			isa = PBXGroup;
 			children = (
 				E77F1E091F44996900693587 /* CTPayment.framework */,
-				E733BA5A1F4355C500076516 /* CTPayment.framework */,
 				455B59571DCC954400CA4790 /* CartrawlerAPI.framework */,
 			);
 			name = Frameworks;
