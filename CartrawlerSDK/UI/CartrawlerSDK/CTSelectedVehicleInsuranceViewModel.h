@@ -17,7 +17,7 @@
 @property (nonatomic, readonly) NSString *infoTip2;
 @property (nonatomic, readonly) NSString *infoTip3;
 @property (nonatomic, readonly) NSString *detailsTitle;
-@property (nonatomic, readonly) NSString *imageTitle;
+@property (nonatomic, readonly) NSString *logo;
 @property (nonatomic, readonly) NSString *pricePerDay;
 @property (nonatomic, readonly) NSString *total;
 @property (nonatomic, readonly) NSString *addInsurance;

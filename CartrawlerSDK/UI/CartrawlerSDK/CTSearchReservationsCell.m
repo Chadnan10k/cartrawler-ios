@@ -35,7 +35,7 @@
     self.tripTo.text = viewModel.trip;
     self.destination.text  = viewModel.destination;
     self.dates.text = viewModel.dates;
-    [self setNeedsDisplay];
+    [self.carImageView setNeedsDisplay];
 }
 - (IBAction)viewReservationButtonTapped:(id)sender {
     [CTAppController dispatchAction:CTActionSearchUserDidSelectReservation payload:self.cellModel.booking];

@@ -304,7 +304,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUj-GU-GBw">
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="QUj-GU-GBw">
                                         <rect key="frame" x="16" y="314" width="343" height="54"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's your pick up location?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pd3-2E-zxn">
@@ -359,7 +359,7 @@
                                     <constraint firstItem="QUj-GU-GBw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BOk-8V-XU0" secondAttribute="bottom" constant="20" id="Kvc-yU-LAR"/>
                                     <constraint firstAttribute="trailing" secondItem="GoP-QJ-eLW" secondAttribute="trailing" constant="16" id="L3G-Y6-PZn"/>
                                     <constraint firstItem="BOk-8V-XU0" firstAttribute="centerX" secondItem="BQC-SL-eUX" secondAttribute="centerX" id="kMB-GS-Kfz"/>
-                                    <constraint firstItem="QUj-GU-GBw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="twT-ry-kxh" secondAttribute="bottom" constant="20" id="l4o-tG-lJj"/>
+                                    <constraint firstItem="QUj-GU-GBw" firstAttribute="top" secondItem="twT-ry-kxh" secondAttribute="bottom" priority="750" constant="20" id="l4o-tG-lJj"/>
                                     <constraint firstItem="QUj-GU-GBw" firstAttribute="width" secondItem="twT-ry-kxh" secondAttribute="width" id="ogd-J5-oeD"/>
                                     <constraint firstItem="GoP-QJ-eLW" firstAttribute="top" secondItem="BQC-SL-eUX" secondAttribute="bottom" constant="10" id="wzC-Go-OfL"/>
                                 </constraints>
@@ -795,7 +795,7 @@
         <!--Search Locations View Controller-->
         <scene sceneID="Xla-3B-pfp">
             <objects>
-                <viewController storyboardIdentifier="CTSearchLocationsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ecq-3a-CVf" customClass="CTSearchLocationsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CTSearchLocationsViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ecq-3a-CVf" customClass="CTSearchLocationsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5VN-Q9-vrZ"/>
                         <viewControllerLayoutGuide type="bottom" id="qbP-Zx-pWD"/>
@@ -880,7 +880,7 @@
         <!--Search Calendar View Controller-->
         <scene sceneID="mOd-5h-5WO">
             <objects>
-                <viewController storyboardIdentifier="CTSearchCalendarViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MhD-xE-HqB" customClass="CTSearchCalendarViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CTSearchCalendarViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MhD-xE-HqB" customClass="CTSearchCalendarViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lGd-lP-CjD"/>
                         <viewControllerLayoutGuide type="bottom" id="9Gd-aK-9MM"/>
@@ -1429,7 +1429,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af0-UY-J4Q" userLabel="Tick">
-                                                <rect key="frame" x="45" y="40" width="17" height="22"/>
+                                                <rect key="frame" x="44" y="40" width="17" height="22"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1467,7 +1467,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6d-2F-S4e" userLabel="Tick">
-                                                <rect key="frame" x="45" y="40" width="17" height="22"/>
+                                                <rect key="frame" x="44" y="40" width="17" height="22"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1503,7 +1503,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2KD-RP-bD9" userLabel="Tick">
-                                                <rect key="frame" x="45" y="40" width="17" height="22"/>
+                                                <rect key="frame" x="44" y="40" width="17" height="22"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1558,7 +1558,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbM-PV-ijD" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1593,7 +1593,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAH-rN-CpQ" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1628,7 +1628,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xi4-mu-yF6" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1683,7 +1683,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHd-cU-vJa" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1721,7 +1721,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYS-rY-BHL" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1757,7 +1757,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYB-9V-8LZ" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1812,7 +1812,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RB-dB-oXl" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1850,7 +1850,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9a-W3-54q" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1885,7 +1885,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yn4-09-atu" userLabel="Tick">
-                                                <rect key="frame" x="45" y="39" width="17" height="23"/>
+                                                <rect key="frame" x="44" y="39" width="17" height="23"/>
                                                 <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>

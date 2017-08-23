@@ -34,6 +34,8 @@
 @implementation CTSelectedVehicleInsuranceViewController
 
 - (void)updateWithViewModel:(CTSelectedVehicleInsuranceViewModel *)viewModel {
+    self.imageView.primaryColor = viewModel.primaryColor;
+    [self.imageView setNeedsDisplay];
     self.titleLabel.text = viewModel.title;
     self.checkmark1.textColor = viewModel.primaryColor;
     self.checkmark2.textColor = viewModel.primaryColor;
@@ -45,6 +47,8 @@
     [self.details setTitleColor:viewModel.primaryColor forState:UIControlStateNormal];
     self.pricePerDay.text = viewModel.pricePerDay;
     self.total.text = viewModel.total;
+    UIImage *logo = [UIImage imageNamed:viewModel.logo inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
+    self.logo.image = logo;
     [self.addInsuranceButton setTitle:viewModel.addInsurance forState:UIControlStateNormal];
     self.addInsuranceButton.backgroundColor = viewModel.primaryColor;
 }

@@ -68,11 +68,10 @@
     [self.selectedVehicleInsuranceViewController updateWithViewModel:viewModel.selectedVehicleInsuranceViewModel];
     [self.selectedVehicleExtrasViewController updateWithViewModel:viewModel.selectedVehicleExtrasViewModel];
     
-    self.selectedVehicleInfoViewHeight.constant = [self.selectedVehicleInfoViewController.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    self.selectedVehicleInfoViewHeight.constant = [self.selectedVehicleInfoViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
     self.selectedVehicleTabViewHeight.constant = [self.selectedVehicleTabViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
-    if (viewModel.selectedVehicleTabViewModel) {
-        self.selectedVehicleInsuranceViewHeight.constant = [self.selectedVehicleInsuranceViewController.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-    }
+    // TODO: Remove magic number
+    self.selectedVehicleInsuranceViewHeight.constant = viewModel.selectedVehicleInsuranceViewModel ? 400 : 0;
     self.nextButton.backgroundColor = viewModel.buttonColor;
     if (self.viewHasAppeared) {
         [UIView animateWithDuration:self.viewHasAppeared ? 0.2 : 0

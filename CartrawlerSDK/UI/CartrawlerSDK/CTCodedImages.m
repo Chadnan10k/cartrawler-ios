@@ -1030,7 +1030,7 @@
                 [shape moveToPoint:CGPointMake(20.31, 23.51)];
                 CGContextSaveGState(context);
                 CGContextTranslateCTM(context, 26.2, 0.12);
-                [[UIColor colorWithHue:0.496 saturation:0.992 brightness:0.514 alpha:1] setFill];
+                [primaryColor setFill];
                 [shape fill];
                 CGContextRestoreGState(context);
                 
@@ -1062,7 +1062,7 @@
                 [shape3 moveToPoint:CGPointMake(20.79, 0)];
                 CGContextSaveGState(context);
                 CGContextTranslateCTM(context, 0.12, 0.08);
-                [[UIColor colorWithHue:0.496 saturation:0.992 brightness:0.514 alpha:1] setFill];
+                [primaryColor setFill];
                 [shape3 fill];
                 CGContextRestoreGState(context);
                 
@@ -1078,7 +1078,7 @@
                 [shape4 moveToPoint:CGPointMake(19.31, 0)];
                 CGContextSaveGState(context);
                 CGContextTranslateCTM(context, 26.2, 28.91);
-                [[UIColor colorWithHue:0.496 saturation:0.992 brightness:0.514 alpha:1] setFill];
+                [primaryColor setFill];
                 [shape4 fill];
                 CGContextRestoreGState(context);
                 
@@ -1109,7 +1109,7 @@
                 [shape6 moveToPoint:CGPointMake(19.37, 0.02)];
                 CGContextSaveGState(context);
                 CGContextTranslateCTM(context, 1.53, 28.89);
-                [[UIColor colorWithHue:0.496 saturation:0.992 brightness:0.514 alpha:1] setFill];
+                [primaryColor setFill];
                 [shape6 fill];
                 CGContextRestoreGState(context);
                 
@@ -1124,7 +1124,7 @@
                 [shape7 moveToPoint:CGPointMake(5.96, 18.85)];
                 CGContextSaveGState(context);
                 CGContextTranslateCTM(context, 0.12, 4.78);
-                [[UIColor colorWithHue:0.496 saturation:0.992 brightness:0.514 alpha:1] setFill];
+                [[[UIColor blackColor] colorWithAlphaComponent:0.2] setFill];
                 [shape7 fill];
                 CGContextRestoreGState(context);
                 
@@ -1141,7 +1141,7 @@
                 [shape8 moveToPoint:CGPointMake(19.37, 23.27)];
                 CGContextSaveGState(context);
                 CGContextTranslateCTM(context, 1.53, 28.87);
-                [[UIColor colorWithHue:0.496 saturation:0.992 brightness:0.514 alpha:1] setFill];
+                [[primaryColor colorWithAlphaComponent:0.5] setFill];
                 [shape8 fill];
                 CGContextRestoreGState(context);
                 
@@ -1156,7 +1156,7 @@
                 [shape9 moveToPoint:CGPointMake(6.08, 18.81)];
                 CGContextSaveGState(context);
                 CGContextTranslateCTM(context, 40.43, 4.81);
-                [[UIColor colorWithHue:0.496 saturation:0.992 brightness:0.514 alpha:1] setFill];
+                [[primaryColor colorWithAlphaComponent:0.5] setFill];
                 [shape9 fill];
                 CGContextRestoreGState(context);
                 
@@ -1193,36 +1193,9 @@
                 CGContextRestoreGState(context);
                 
                 //! Shape
-                UIBezierPath *shape12 = [UIBezierPath bezierPath];
-                [shape12 moveToPoint:CGPointMake(19.31, 0)];
-                [shape12 addCurveToPoint:CGPointMake(19.15, 0.59) controlPoint1:CGPointMake(19.26, 0.2) controlPoint2:CGPointMake(19.22, 0.39)];
-                [shape12 addCurveToPoint:CGPointMake(11.05, 16.87) controlPoint1:CGPointMake(17.59, 6.49) controlPoint2:CGPointMake(14.88, 11.97)];
-                [shape12 addCurveToPoint:CGPointMake(0, 27.21) controlPoint1:CGPointMake(7.13, 21.91) controlPoint2:CGPointMake(2.79, 25.32)];
-                [shape12 addLineToPoint:CGPointMake(0, 23.25)];
-                [shape12 addCurveToPoint:CGPointMake(13.86, 0) controlPoint1:CGPointMake(5.19, 18.44) controlPoint2:CGPointMake(11.17, 10.86)];
-                [shape12 addLineToPoint:CGPointMake(19.31, 0)];
-                [shape12 closePath];
-                [shape12 moveToPoint:CGPointMake(19.31, 0)];
-                CGContextSaveGState(context);
-                CGContextTranslateCTM(context, 26.2, 28.91);
-                [[UIColor colorWithHue:0.496 saturation:0.992 brightness:0.514 alpha:1] setFill];
-                [shape12 fill];
-                CGContextRestoreGState(context);
+
                 
-                //! Shape
-                UIBezierPath *shape13 = [UIBezierPath bezierPath];
-                [shape13 moveToPoint:CGPointMake(5.96, 18.85)];
-                [shape13 addLineToPoint:CGPointMake(0.43, 18.85)];
-                [shape13 addCurveToPoint:CGPointMake(1.07, 1.29) controlPoint1:CGPointMake(-0.3, 13.31) controlPoint2:CGPointMake(-0.1, 7.42)];
-                [shape13 addCurveToPoint:CGPointMake(6.52, 0) controlPoint1:CGPointMake(1.93, 1.13) controlPoint2:CGPointMake(3.66, 0.8)];
-                [shape13 addCurveToPoint:CGPointMake(5.96, 18.85) controlPoint1:CGPointMake(5.36, 6.54) controlPoint2:CGPointMake(5.31, 13.4)];
-                [shape13 closePath];
-                [shape13 moveToPoint:CGPointMake(5.96, 18.85)];
-                CGContextSaveGState(context);
-                CGContextTranslateCTM(context, 0.12, 4.78);
-                [[UIColor colorWithWhite:0.2 alpha:0.25] setFill];
-                [shape13 fill];
-                CGContextRestoreGState(context);
+
                 
                 //! Shape
                 UIBezierPath *shape14 = [UIBezierPath bezierPath];
@@ -1237,7 +1210,7 @@
                 [shape14 moveToPoint:CGPointMake(19.31, 0)];
                 CGContextSaveGState(context);
                 CGContextTranslateCTM(context, 26.2, 28.91);
-                [[UIColor colorWithWhite:0.2 alpha:0.25] setFill];
+                [[[UIColor blackColor] colorWithAlphaComponent:0.2] setFill];
                 [shape14 fill];
                 CGContextRestoreGState(context);
                 

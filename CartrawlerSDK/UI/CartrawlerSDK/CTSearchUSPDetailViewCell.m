@@ -34,7 +34,7 @@
     self.searchImageView.alpha = viewModel.detailType == CTSearchUSPDetailTypeSearch;
     self.lockImageView.alpha = viewModel.detailType == CTSearchUSPDetailTypeLock;
     
-//    self.creditCardImageView.primaryColor = viewModel.primaryColor;
+    self.creditCardImageView.primaryColor = viewModel.primaryColor;
     [self.creditCardImageView setNeedsDisplay];
     
     self.headsetImageView.primaryColor = viewModel.primaryColor;

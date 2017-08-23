@@ -17,7 +17,7 @@
 @property (nonatomic, readwrite) NSString *infoTip2;
 @property (nonatomic, readwrite) NSString *infoTip3;
 @property (nonatomic, readwrite) NSString *detailsTitle;
-@property (nonatomic, readwrite) NSString *imageTitle;
+@property (nonatomic, readwrite) NSString *logo;
 @property (nonatomic, readwrite) NSString *pricePerDay;
 @property (nonatomic, readwrite) NSString *total;
 @property (nonatomic, readwrite) NSString *addInsurance;
@@ -40,7 +40,7 @@
     viewModel.infoTip2 = CTLocalizedString(CTRentalInsuranceInfoTip2);
     viewModel.infoTip3 = CTLocalizedString(CTRentalInsuranceInfoTip3);
     viewModel.detailsTitle = CTLocalizedString(CTRentalInsuranceInfoButtonTitle);
-    viewModel.imageTitle = @"axa";
+    viewModel.logo = @"axa_logo";
     viewModel.pricePerDay = [self pricePerDay:insurance state:searchState];
     viewModel.total = [self total:insurance];
     viewModel.addInsurance = selectedVehicleState.insuranceAdded ? CTLocalizedString(CTRentalInsuranceAddedButtonTitle) : CTLocalizedString(CTRentalInsuranceAddButtonTitle);

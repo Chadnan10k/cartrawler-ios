@@ -124,7 +124,7 @@
     viewModel.primaryColor = appState.userSettingsState.primaryColor;
     
     CTRentalBooking *booking = appState.reservationsState.selectedReservation;
-    viewModel.topMessage = @"Here is your itinerary";
+    viewModel.topMessage = @"Text on this page to be confirmed";
     viewModel.bottomMessage = [NSString stringWithFormat:@"Your booking reference:\n%@\n\n\n", booking.bookingId];
     viewModel.scrollMessage = @"Scroll for details";
     
