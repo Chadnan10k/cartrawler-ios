@@ -119,6 +119,8 @@
 
 + (NSString *)tpaExtensionForAvailPath:(BOOL) isStandAlone accountId:(NSString *) accountId visitorId:(NSString *) visitorId
 {
+	accountId = accountId == nil || [accountId isEqualToString:@""]? @"[ACCOUNTID]" : accountId;
+	
 	NSString *tpa =
 	@" \"TPA_Extensions\": { \r"
 	@"     \"showBaseCost\": true, \r"
