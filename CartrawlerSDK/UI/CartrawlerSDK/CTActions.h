@@ -292,6 +292,16 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      */
     CTActionSelectedVehicleUserDidTapBack,
     /**
+     *  The user tapped the features button
+     *  Payload: nil
+     */
+    CTActionSelectedVehicleUserDidTapMoreFeatures,
+    /**
+     *  The user dismissed the displayed features
+     *  Payload: nil
+     */
+    CTActionSelectedVehicleUserDidDismissMoreFeatures,
+    /**
      *  The user tapped a tab item
      *  Payload(NSNumber *): Tab index
      */

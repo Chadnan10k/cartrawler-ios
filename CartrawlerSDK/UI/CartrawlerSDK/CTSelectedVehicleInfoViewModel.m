@@ -15,6 +15,8 @@
 @property (nonatomic, readwrite) NSString *passengers;
 @property (nonatomic, readwrite) NSString *bags;
 @property (nonatomic, readwrite) NSString *fuel;
+@property (nonatomic, readwrite) NSString *featuresCount;
+@property (nonatomic, readwrite) NSString *features;
 @property (nonatomic, readwrite) NSString *location;
 @property (nonatomic, readwrite) NSURL *vehicleURL;
 @property (nonatomic, readwrite) UIColor *primaryColor;
@@ -41,6 +43,8 @@
     viewModel.passengers = [NSString stringWithFormat:@"%@ %@", vehicle.passengerQty.stringValue, CTLocalizedString(CTRentalVehiclePassengers)];
     
     viewModel.bags = [NSString stringWithFormat:@"%@ %@", vehicle.baggageQty.stringValue, CTLocalizedString(CTRentalVehicleBags)];
+    viewModel.features = CTLocalizedString(CTRentalMore);
+    viewModel.featuresCount = [NSString stringWithFormat:@"+%ld", (long)[self featuresCount:vehicle]];
     
     // TODO: Remove this logic from CTLocalisedStrings
     viewModel.fuel = [CTLocalisedStrings fuelPolicy:vehicle.fuelPolicy];
@@ -67,5 +71,11 @@
     
     return viewModel;
 }
+
++ (NSInteger)featuresCount:(CTVehicle *)vehicle {
+    // TODO: Extract to array of features for re-use in features view
+    return vehicle.isUSBEnabled + vehicle.isBluetoothEnabled + vehicle.isAirConditioned + vehicle.isGPSIncluded + vehicle.isGermanModel + vehicle.isParkingSensorEnabled + vehicle.isExceptionalFuelEconomy + vehicle.isFrontDemisterEnabled + 1;
+}
+
 
 @end

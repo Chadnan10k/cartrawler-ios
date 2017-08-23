@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, CTSelectedVehicleExpanded) {
 @interface CTSelectedVehicleState : NSObject
 
 @property (nonatomic) CTAvailabilityItem *selectedAvailabilityItem;
-
+@property (nonatomic) BOOL featuresDisplayed;
 @property (nonatomic) CTSelectedVehicleTab selectedTab;
 @property (nonatomic) BOOL pickupLocationExpanded;
 @property (nonatomic) BOOL fuelPolicyExpanded;

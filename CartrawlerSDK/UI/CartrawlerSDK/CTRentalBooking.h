@@ -17,9 +17,21 @@
 @property (nonatomic, readonly) NSString *dropoffLocation;
 @property (nonatomic, readonly) NSDate   *pickupDate;
 @property (nonatomic, readonly) NSDate   *dropoffDate;
-@property (nonatomic, readonly) NSString *vehicleImage;
+@property (nonatomic, readonly) NSString *driverName;
+@property (nonatomic, readonly) NSString *driverEmail;
+@property (nonatomic, readonly) NSString *driverPhoneNumber;
+@property (nonatomic, readonly) NSString *insuranceIncluded;
 @property (nonatomic, readonly) NSString *vehicleName;
-@property (nonatomic, readonly) NSString *supplier;
+@property (nonatomic, readonly) NSString *seats;
+@property (nonatomic, readonly) NSString *bags;
+@property (nonatomic, readonly) NSString *doors;
+@property (nonatomic, readonly) NSString *transmission;
+@property (nonatomic, readonly) NSString *extraFeatures;
+@property (nonatomic, readonly) NSString *vehicleURL;
+@property (nonatomic, readonly) NSString *vendorURL;
+@property (nonatomic, readonly) NSString *carRentalAmount;
+@property (nonatomic, readonly) NSString *insuranceAmount;
+@property (nonatomic, readonly) NSString *totalAmount;
 
 - (instancetype)initFromSearch:(CTRentalSearch *)rentalSearch;
 
@@ -28,8 +40,21 @@
                   dropoffLocation:(NSString *)dropoffLocation
                        pickupDate:(NSDate *)pickupDate
                       dropoffDate:(NSDate *)dropoffDate
-                     vehicleImage:(NSString *)vehicleImage
+                       driverName:(NSString *)driverName
+                      driverEmail:(NSString *)driverEmail
+                driverPhoneNumber:(NSString *)driverPhoneNumber
+                insuranceIncluded:(NSString *)insuranceIncluded
                       vehicleName:(NSString *)vehicleName
-                         supplier:(NSString *)supplier;
+                            seats:(NSString *)seats
+                             bags:(NSString *)bags
+                            doors:(NSString *)doors
+                     transmission:(NSString *)transmission
+                    extraFeatures:(NSString *)extraFeatures
+                       vehicleURL:(NSString *)vehicleURL
+                        vendorURL:(NSString *)vendorURL
+                  carRentalAmount:(NSString *)carRentalAmount
+                  insuranceAmount:(NSString *)insuranceAmount
+                      totalAmount:(NSString *)totalAmount;
+
 
 @end

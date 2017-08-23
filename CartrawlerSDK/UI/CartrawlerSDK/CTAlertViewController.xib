@@ -39,7 +39,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHK-2F-I3O">
-                            <rect key="frame" x="8" y="72" width="327" height="20.5"/>
+                            <rect key="frame" x="16" y="72" width="311" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -52,9 +52,9 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2b-v6-ChA">
-                            <rect key="frame" x="145" y="130.5" width="54" height="30"/>
+                            <rect key="frame" x="16" y="125.5" width="311" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="dA5-hi-SfG"/>
+                                <constraint firstAttribute="height" constant="40" id="dA5-hi-SfG"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="Button"/>
@@ -68,15 +68,16 @@
                         <constraint firstItem="tdb-eh-MTg" firstAttribute="centerX" secondItem="WnN-J8-ael" secondAttribute="centerX" id="0vL-SD-pQx"/>
                         <constraint firstItem="tdb-eh-MTg" firstAttribute="width" secondItem="WnN-J8-ael" secondAttribute="width" id="4fU-z0-KBi"/>
                         <constraint firstItem="JHK-2F-I3O" firstAttribute="top" secondItem="zLe-Ju-hif" secondAttribute="bottom" constant="25" id="6M3-I5-IqK"/>
+                        <constraint firstItem="Z2b-v6-ChA" firstAttribute="leading" secondItem="WnN-J8-ael" secondAttribute="leading" constant="16" id="A2O-Z9-q6F"/>
                         <constraint firstAttribute="trailing" secondItem="zLe-Ju-hif" secondAttribute="trailing" constant="8" id="AM6-A4-BYU"/>
                         <constraint firstItem="tdb-eh-MTg" firstAttribute="top" secondItem="JHK-2F-I3O" secondAttribute="bottom" constant="25" id="EsT-2q-dwU"/>
-                        <constraint firstItem="Z2b-v6-ChA" firstAttribute="centerX" secondItem="WnN-J8-ael" secondAttribute="centerX" id="GCd-RG-YNY"/>
-                        <constraint firstAttribute="trailing" secondItem="JHK-2F-I3O" secondAttribute="trailing" constant="8" id="h7k-Cf-lCn"/>
-                        <constraint firstAttribute="bottom" secondItem="Z2b-v6-ChA" secondAttribute="bottom" constant="15" id="nnV-UZ-W9s"/>
+                        <constraint firstAttribute="trailing" secondItem="Z2b-v6-ChA" secondAttribute="trailing" constant="16" id="RE5-9j-7tD"/>
+                        <constraint firstAttribute="trailing" secondItem="JHK-2F-I3O" secondAttribute="trailing" constant="16" id="h7k-Cf-lCn"/>
+                        <constraint firstAttribute="bottom" secondItem="Z2b-v6-ChA" secondAttribute="bottom" constant="10" id="nnV-UZ-W9s"/>
                         <constraint firstItem="zLe-Ju-hif" firstAttribute="top" secondItem="WnN-J8-ael" secondAttribute="top" constant="23" id="qxt-tu-QNb"/>
-                        <constraint firstItem="Z2b-v6-ChA" firstAttribute="top" secondItem="tdb-eh-MTg" secondAttribute="bottom" constant="12" id="y62-zI-J8P"/>
+                        <constraint firstItem="Z2b-v6-ChA" firstAttribute="top" secondItem="tdb-eh-MTg" secondAttribute="bottom" constant="7" id="y62-zI-J8P"/>
                         <constraint firstItem="zLe-Ju-hif" firstAttribute="leading" secondItem="WnN-J8-ael" secondAttribute="leading" constant="8" id="z7l-qt-Z8Q"/>
-                        <constraint firstItem="JHK-2F-I3O" firstAttribute="leading" secondItem="WnN-J8-ael" secondAttribute="leading" constant="8" id="zsQ-oQ-Kfo"/>
+                        <constraint firstItem="JHK-2F-I3O" firstAttribute="leading" secondItem="WnN-J8-ael" secondAttribute="leading" constant="16" id="zsQ-oQ-Kfo"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>

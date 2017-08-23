@@ -1033,7 +1033,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="414" height="322"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qL4-5A-qZf" id="q2e-b7-D5U">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="321.66666666666669"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="321.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0ag-qi-ULF">
@@ -2203,7 +2203,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="04o-KZ-O9v" id="JTy-Lz-t9y">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2239,7 +2239,7 @@
             <objects>
                 <navigationController storyboardIdentifier="CTSearchNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="PdW-4F-nLw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="dUv-pP-a14">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dUv-pP-a14">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

@@ -132,8 +132,20 @@
     viewModel.dropoffLocation = booking.dropoffLocation;
     viewModel.pickupTime = [NSString stringWithFormat:@"%@, %@", [booking.pickupDate simpleTimeString], [booking.pickupDate shortDescriptionFromDate]];
     viewModel.dropoffTime = [NSString stringWithFormat:@"%@, %@", [booking.dropoffDate simpleTimeString], [booking.dropoffDate shortDescriptionFromDate]];
-    viewModel.vehicleURL = [NSURL URLWithString:booking.vehicleImage];
+    viewModel.driverName = booking.driverName;
+    viewModel.driverEmail = booking.driverEmail;
+    viewModel.driverPhoneNumber = booking.driverPhoneNumber;
+    viewModel.insuranceIncluded = booking.insuranceIncluded;
     viewModel.vehicle = booking.vehicleName;
+    viewModel.seats = booking.seats;
+    viewModel.bags = booking.bags;
+    viewModel.doors = booking.doors;
+    viewModel.transmission = booking.transmission;
+    viewModel.vehicleURL = [NSURL URLWithString:booking.vehicleURL];
+    viewModel.vendorURL = [NSURL URLWithString:booking.vendorURL];
+    viewModel.carRentalAmount = booking.carRentalAmount;
+    viewModel.insuranceAmount = booking.insuranceAmount;
+    viewModel.totalAmount = booking.totalAmount;
     
     return viewModel;
 }

@@ -213,6 +213,10 @@
 		E750BA4E1F48CFC5003FEE0B /* CTBookingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E750BA4C1F48CFC5003FEE0B /* CTBookingTableViewController.m */; };
 		E750BA511F48CFE1003FEE0B /* CTBookingTableViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E750BA4F1F48CFE1003FEE0B /* CTBookingTableViewModel.h */; };
 		E750BA521F48CFE1003FEE0B /* CTBookingTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E750BA501F48CFE1003FEE0B /* CTBookingTableViewModel.m */; };
+		E763158A1F4D1FDE005A4D8C /* CTSelectedVehicleFeaturesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E76315881F4D1FDE005A4D8C /* CTSelectedVehicleFeaturesViewController.h */; };
+		E763158B1F4D1FDE005A4D8C /* CTSelectedVehicleFeaturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E76315891F4D1FDE005A4D8C /* CTSelectedVehicleFeaturesViewController.m */; };
+		E763158E1F4D1FEF005A4D8C /* CTSelectedVehicleFeaturesViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E763158C1F4D1FEF005A4D8C /* CTSelectedVehicleFeaturesViewModel.h */; };
+		E763158F1F4D1FEF005A4D8C /* CTSelectedVehicleFeaturesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E763158D1F4D1FEF005A4D8C /* CTSelectedVehicleFeaturesViewModel.m */; };
 		E76900A81E6F065C00D729FF /* CTInfoTip.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900A61E6F065C00D729FF /* CTInfoTip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76900A91E6F065C00D729FF /* CTInfoTip.m in Sources */ = {isa = PBXBuildFile; fileRef = E76900A71E6F065C00D729FF /* CTInfoTip.m */; };
 		E76900BD1E7199F400D729FF /* CTAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76900BB1E7199F400D729FF /* CTAlertView.h */; };
@@ -637,6 +641,10 @@
 		E750BA4C1F48CFC5003FEE0B /* CTBookingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingTableViewController.m; sourceTree = "<group>"; };
 		E750BA4F1F48CFE1003FEE0B /* CTBookingTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingTableViewModel.h; sourceTree = "<group>"; };
 		E750BA501F48CFE1003FEE0B /* CTBookingTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingTableViewModel.m; sourceTree = "<group>"; };
+		E76315881F4D1FDE005A4D8C /* CTSelectedVehicleFeaturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSelectedVehicleFeaturesViewController.h; sourceTree = "<group>"; };
+		E76315891F4D1FDE005A4D8C /* CTSelectedVehicleFeaturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSelectedVehicleFeaturesViewController.m; sourceTree = "<group>"; };
+		E763158C1F4D1FEF005A4D8C /* CTSelectedVehicleFeaturesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSelectedVehicleFeaturesViewModel.h; sourceTree = "<group>"; };
+		E763158D1F4D1FEF005A4D8C /* CTSelectedVehicleFeaturesViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSelectedVehicleFeaturesViewModel.m; sourceTree = "<group>"; };
 		E76900A61E6F065C00D729FF /* CTInfoTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTInfoTip.h; sourceTree = "<group>"; };
 		E76900A71E6F065C00D729FF /* CTInfoTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTInfoTip.m; sourceTree = "<group>"; };
 		E76900BB1E7199F400D729FF /* CTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlertView.h; sourceTree = "<group>"; };
@@ -1424,6 +1432,17 @@
 				E7404A831E82F95D009BF7DF /* CTTabView.m */,
 			);
 			name = "Tab Manager";
+			sourceTree = "<group>";
+		};
+		E74D0E941F4D1A8C00906F15 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				E76315881F4D1FDE005A4D8C /* CTSelectedVehicleFeaturesViewController.h */,
+				E76315891F4D1FDE005A4D8C /* CTSelectedVehicleFeaturesViewController.m */,
+				E763158C1F4D1FEF005A4D8C /* CTSelectedVehicleFeaturesViewModel.h */,
+				E763158D1F4D1FEF005A4D8C /* CTSelectedVehicleFeaturesViewModel.m */,
+			);
+			name = Features;
 			sourceTree = "<group>";
 		};
 		E750BA3D1F462EE6003FEE0B /* Booking Error */ = {
@@ -2232,6 +2251,7 @@
 				E7F83F781F2D178F00232635 /* CTSelectedVehicle.storyboard */,
 				E7B19CB01F33BA21000738CB /* Vehicle Container */,
 				E7B19CBA1F33E741000738CB /* Vehicle Info */,
+				E74D0E941F4D1A8C00906F15 /* Features */,
 				E7B19CC71F33E8EB000738CB /* Tab */,
 				E7B19CCC1F33E90C000738CB /* Included */,
 				E7B19CD11F33E937000738CB /* Ratings */,
@@ -2290,6 +2310,7 @@
 				E7B8EDCB1F3BBADF00638D6F /* CTSearchErrorViewModel.h in Headers */,
 				E78298941F1E800E00C20525 /* CTUserSettingsState.h in Headers */,
 				E775DBE61F3273A8009039D8 /* CTSearchUSPDetailViewModel.h in Headers */,
+				E763158E1F4D1FEF005A4D8C /* CTSelectedVehicleFeaturesViewModel.h in Headers */,
 				E782989C1F1EA35F00C20525 /* CTAPIController.h in Headers */,
 				455B584A1DCC914300CA4790 /* CTNavigationBar.h in Headers */,
 				E7B19CAE1F33A096000738CB /* CTSearchInterstitialViewModel.h in Headers */,
@@ -2352,6 +2373,7 @@
 				450725B71DD9C99500D56C8A /* CTImageView.h in Headers */,
 				E78298C61F1FCB8600C20525 /* CTSearchLocationsViewController.h in Headers */,
 				E7B19CC51F33E7AA000738CB /* CTSelectedVehicleInfoViewController.h in Headers */,
+				E763158A1F4D1FDE005A4D8C /* CTSelectedVehicleFeaturesViewController.h in Headers */,
 				459CB2EE1DDB6638008522BA /* CTToolTipViewController.h in Headers */,
 				457128C11DDF0F0A008FF204 /* CartrawlerSDK+UITextField.h in Headers */,
 				E7B19CB71F33BA89000738CB /* CTSelectedVehicleViewModel.h in Headers */,
@@ -2732,6 +2754,7 @@
 				BC9546711EAF77AD0097312C /* CTImageTextView.m in Sources */,
 				455B58CE1DCC914400CA4790 /* CTSelectView.m in Sources */,
 				E7F3268A1F4B2FC100702AA0 /* CTBookingModalViewModel.m in Sources */,
+				E763158F1F4D1FEF005A4D8C /* CTSelectedVehicleFeaturesViewModel.m in Sources */,
 				450725B81DD9C99500D56C8A /* CTImageView.m in Sources */,
 				E7F6D1781F3A753B0002338C /* CTLoggingController.m in Sources */,
 				451E763B1E04438300D58F71 /* CTRentalBooking.m in Sources */,
@@ -2761,6 +2784,7 @@
 				E76900D21E71D95800D729FF /* CTAlertAction.m in Sources */,
 				E782996A1F2945C800C20525 /* CTSelectedVehicleState.m in Sources */,
 				454D91F11DD34E24001AE96C /* Reachability.m in Sources */,
+				E763158B1F4D1FDE005A4D8C /* CTSelectedVehicleFeaturesViewController.m in Sources */,
 				E76900CE1E71A55900D729FF /* CTAlertViewPresentationController.m in Sources */,
 				E78298C01F1FC7AF00C20525 /* CTSearchSplashViewController.m in Sources */,
 				E7A4954D1F4B8B0400A8E45F /* CTSearchReservationsCell.m in Sources */,

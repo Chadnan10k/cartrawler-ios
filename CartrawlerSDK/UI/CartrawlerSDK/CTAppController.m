@@ -451,6 +451,14 @@
             navigationState.currentNavigationStep = CTNavigationStepVehicleList;
             appState.selectedVehicleState = nil;
             break;
+        case CTActionSelectedVehicleUserDidTapMoreFeatures:
+            //selectedVehicleState.featuresDisplayed = YES;
+            navigationState.modalViewControllers = @[@(CTNavigationModalSelectedVehicleFeatures)];
+            break;
+        case CTActionSelectedVehicleUserDidDismissMoreFeatures:
+            //selectedVehicleState.featuresDisplayed = NO;
+            navigationState.modalViewControllers = @[];
+            break;
         case CTActionSelectedVehicleUserDidTapTab:
             selectedVehicleState.selectedTab = [payload integerValue];
             break;
@@ -638,7 +646,7 @@
             NSDate *pickupDate = [NSDate mergeTimeWithDateWithTime:searchState.selectedPickupTime dateWithDay:searchState.selectedPickupDate];
             NSDate *dropoffDate = [NSDate mergeTimeWithDateWithTime:searchState.selectedDropoffTime dateWithDay:searchState.selectedDropoffDate];
             CTMatchedLocation *dropoffLocation = searchState.dropoffLocationRequired ? searchState.selectedDropoffLocation : searchState.selectedPickupLocation;
-            CTRentalBooking *storeBooking = [[CTRentalBooking alloc] initWithBookingID:[(CTBooking *)payload confID] pickupLocation:searchState.selectedPickupLocation.name dropoffLocation:dropoffLocation.name pickupDate:pickupDate dropoffDate:dropoffDate vehicleImage:selectedVehicleState.selectedAvailabilityItem.vehicle.pictureURL.absoluteString vehicleName:selectedVehicleState.selectedAvailabilityItem.vehicle.makeModelCode supplier:selectedVehicleState.selectedAvailabilityItem.vendor.name];
+            CTRentalBooking *storeBooking = [[CTRentalBooking alloc] initWithBookingID:[(CTBooking *)payload confID] pickupLocation:searchState.selectedPickupLocation.name dropoffLocation:dropoffLocation.name pickupDate:pickupDate dropoffDate:dropoffDate driverName:[NSString stringWithFormat:@"%@ %@", bookingState.firstName, bookingState.lastName] driverEmail:bookingState.emailAddress driverPhoneNumber:[NSString stringWithFormat:@"+%@ %@", bookingState.prefix, bookingState.phoneNumber] insuranceIncluded:selectedVehicleState.insuranceAdded ? @"Yes" : @"No" vehicleName:selectedVehicleState.selectedAvailabilityItem.vehicle.makeModelName  seats:selectedVehicleState.selectedAvailabilityItem.vehicle.passengerQty.stringValue bags:selectedVehicleState.selectedAvailabilityItem.vehicle.baggageQty.stringValue doors:selectedVehicleState.selectedAvailabilityItem.vehicle.doorCount.stringValue transmission:selectedVehicleState.selectedAvailabilityItem.vehicle.transmissionType extraFeatures:@"" vehicleURL:selectedVehicleState.selectedAvailabilityItem.vehicle.pictureURL.absoluteString vendorURL:selectedVehicleState.selectedAvailabilityItem.vendor.logoURL.absoluteString carRentalAmount:@"" insuranceAmount:@"" totalAmount:@""];
             [CTLocalStorageController storeRentalBooking:storeBooking];
             reservationsState.reservations = [CTLocalStorageController upcomingBookings];
         }

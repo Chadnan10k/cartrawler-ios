@@ -10,6 +10,7 @@
 #import "CTSelectedVehicleInfoViewModel.h"
 #import "CTBannerEdgeView.h"
 #import "CTImageCache.h"
+#import "CTAppController.h"
 
 @interface CTSelectedVehicleInfoViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -42,16 +43,13 @@
     self.fuelLabel.text = viewModel.fuel;
     
     [self.featuresCountButton setTitleColor:viewModel.primaryColor forState:UIControlStateNormal];
+    [self.featuresCountButton setTitle:viewModel.featuresCount forState:UIControlStateNormal];
+    self.featuresLabel.text = viewModel.features;
     self.featuresLabel.textColor = viewModel.primaryColor;
 }
 
 - (IBAction)featuresButtonTapped:(id)sender {
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Coming Soon" message:@"This feature is under construction" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [controller dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [controller addAction:okAction];
-    [self presentViewController:controller animated:YES completion:nil];
+    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapMoreFeatures payload:nil];
 }
 
 @end
