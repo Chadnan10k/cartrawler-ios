@@ -64,6 +64,8 @@ typedef NS_ENUM(NSUInteger, CTSearchSearchSettings) {
 
 @property (nonatomic) BOOL scrollAboveUserInput;
 
+@property (nonatomic) NSArray *validationErrors;
+
 @property (nonatomic) CTErrorResponse *vehicleSearchError;
 
 @end

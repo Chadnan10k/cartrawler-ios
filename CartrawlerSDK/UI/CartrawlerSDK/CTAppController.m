@@ -249,8 +249,9 @@
         case CTActionSearchUserDidTapNext:
             searchState.selectedTextField = CTSearchFormTextFieldNone;
             searchState.wantsNextStep = YES;
+            searchState.validationErrors = [CTValidationSearch validateSearchStep:searchState];
             
-            if ([CTValidationSearch validateSearchStep:searchState]) {
+            if (searchState.validationErrors.count == 0) {
                 if ([APIState.matchedAvailabilityItems objectForKey:APIState.availabilityRequestTimestamp]) {
                     navigationState.currentNavigationStep = CTNavigationStepVehicleList;
                     searchState.wantsNextStep = NO;
@@ -433,6 +434,13 @@
             break;
         case CTActionVehicleListUserDidTapCancelFilter:
             navigationState.modalViewControllers = @[];
+            break;
+        case CTActionVehicleListUserDidTapFilterSelectAll:
+            for (CTVehicleListFilterModel *filterModel in payload) {
+                if (![vehicleListState.selectedFilters containsObject:filterModel]) {
+                    [vehicleListState.selectedFilters addObject:filterModel];
+                }
+            }
             break;
         case CTActionVehicleListUserDidTapApplyFilter:
             navigationState.modalViewControllers = @[];
@@ -683,7 +691,7 @@
 - (void)requestVehicleAvailability:(CTAppState *)appState {
     CTSearchState *searchState = appState.searchState;
     CTAPIState *APIState = appState.APIState;
-    if ([CTValidationSearch validateSearchStep:searchState]) {
+    if ([CTValidationSearch validateSearchStep:searchState].count == 0) {
         searchState.vehicleSearchError = nil;
         APIState.availabilityRequestTimestamp = [NSDate currentTimestamp];
         [self.apiController requestVehicleAvailabilityWithState:appState];

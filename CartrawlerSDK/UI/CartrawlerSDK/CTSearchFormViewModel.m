@@ -29,6 +29,13 @@
 @property (nonatomic, readwrite) BOOL textfieldInputViewDisplayed;
 @property (nonatomic, readwrite) NSString *driverAgeCheckboxText;
 @property (nonatomic, readwrite) NSString *displayedDriverAge;
+@property (nonatomic, readwrite) BOOL shakeAnimations;
+@property (nonatomic, readwrite) BOOL shakePickupLocation;
+@property (nonatomic, readwrite) BOOL shakeDropoffLocation;
+@property (nonatomic, readwrite) BOOL shakeSelectDates;
+@property (nonatomic, readwrite) BOOL shakePickupTime;
+@property (nonatomic, readwrite) BOOL shakeDropoffTime;
+@property (nonatomic, readwrite) BOOL shakeDriverAge;
 @end
 
 @implementation CTSearchFormViewModel
@@ -73,6 +80,36 @@
     viewModel.selectedTextField = searchState.selectedTextField;
     
     viewModel.displayedDriverAge = searchState.displayedDriverAge;
+    
+    // TODO: Copy below pattern for bookings instaed of animateValidationFailed and separate errors
+    if (searchState.wantsNextStep && searchState.validationErrors.count > 0) {
+        viewModel.shakeAnimations = YES;
+        for (NSNumber *failureNumber in searchState.validationErrors) {
+            CTSearchFormTextField field = failureNumber.integerValue;
+            switch (field) {
+                case CTSearchFormTextFieldPickupLocation:
+                    viewModel.shakePickupLocation = YES;
+                    break;
+                case CTSearchFormTextFieldDropoffLocation:
+                    viewModel.shakeDropoffLocation = YES;
+                    break;
+                case CTSearchFormTextFieldSelectDates:
+                    viewModel.shakeSelectDates = YES;
+                    break;
+                case CTSearchFormTextFieldPickupTime:
+                    viewModel.shakePickupTime = YES;
+                    break;
+                case CTSearchFormTextFieldDropoffTime:
+                    viewModel.shakeDropoffTime = YES;
+                    break;
+                case CTSearchFormTextFieldDriverAge:
+                    viewModel.shakeDriverAge = YES;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
     
     return viewModel;
 }

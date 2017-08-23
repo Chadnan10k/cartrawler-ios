@@ -104,6 +104,7 @@
         viewModel.keyboardHeight = appState.userSettingsState.keyboardHeight;
     }
     
+    // TODO: Use textfield enums instead of new
     if (bookingState.wantsBooking && bookingState.animateValidationFailed) {
         viewModel.shakeAnimations = YES;
         for (NSNumber *failureNumber in [CTValidationBooking validateBookingStep:appState]) {

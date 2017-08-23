@@ -28,4 +28,13 @@
 @property (nonatomic, readonly) BOOL textfieldInputViewDisplayed;
 @property (nonatomic, readonly) NSString *driverAgeCheckboxText;
 @property (nonatomic, readonly) NSString *displayedDriverAge;
+
+@property (nonatomic, readonly) BOOL shakeAnimations;
+@property (nonatomic, readonly) BOOL shakePickupLocation;
+@property (nonatomic, readonly) BOOL shakeDropoffLocation;
+@property (nonatomic, readonly) BOOL shakeSelectDates;
+@property (nonatomic, readonly) BOOL shakePickupTime;
+@property (nonatomic, readonly) BOOL shakeDropoffTime;
+@property (nonatomic, readonly) BOOL shakeDriverAge;
+
 @end

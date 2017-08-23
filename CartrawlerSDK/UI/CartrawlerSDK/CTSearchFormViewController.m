@@ -135,6 +135,10 @@
             break;
     }
     
+    if (viewModel.shakeAnimations) {
+        [self shakeAnimations:viewModel];
+    }
+    
     self.dropoffLocationHeight.constant = viewModel.dropoffLocationTextfieldDisplayed ? 64 : 0;
     self.dropoffLocationMargin.constant = viewModel.dropoffLocationTextfieldDisplayed ? 16 : 0;
     
@@ -146,6 +150,27 @@
         self.driverAgeView.alpha = viewModel.driverAgeTextfieldDisplayed;
         [self.view layoutIfNeeded];
     }];
+}
+
+- (void)shakeAnimations:(CTSearchFormViewModel *)viewModel {
+    if (viewModel.shakePickupLocation) {
+        [self.pickupLocationTextField shakeAnimation];
+    }
+    if (viewModel.shakeDropoffLocation) {
+        [self.dropoffLocationTextField shakeAnimation];
+    }
+    if (viewModel.shakeSelectDates) {
+        [self.selectDatesTextField shakeAnimation];
+    }
+    if (viewModel.shakePickupTime) {
+        [self.pickupTimeTextField shakeAnimation];
+    }
+    if (viewModel.shakeDropoffTime) {
+        [self.dropOffTimeTextField shakeAnimation];
+    }
+    if (viewModel.shakeDriverAge) {
+        [self.driverAgeTextField shakeAnimation];
+    }
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {

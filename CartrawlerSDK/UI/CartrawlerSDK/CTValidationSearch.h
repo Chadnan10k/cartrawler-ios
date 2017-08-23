@@ -11,6 +11,6 @@
 
 @interface CTValidationSearch : NSObject
 
-+ (BOOL)validateSearchStep:(CTSearchState *)searchState;
++ (NSArray <NSNumber *> *)validateSearchStep:(CTSearchState *)searchState;
 
 @end

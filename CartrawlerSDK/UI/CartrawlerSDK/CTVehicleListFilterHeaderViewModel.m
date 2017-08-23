@@ -21,6 +21,11 @@
         _detail = @"Select All";
         _rowViewModels = rowViewModels;
         _primaryColor = primaryColor;
+        NSMutableArray *filterModels = [NSMutableArray new];
+        for (CTVehicleListFilterCellTableViewModel *rowViewModel in rowViewModels) {
+            [filterModels addObject:rowViewModel.filterModel];
+        }
+        _filterModels = filterModels.copy;
     }
     return self;
 }

@@ -10,40 +10,42 @@
 
 @implementation CTValidationSearch
 
-+ (BOOL)validateSearchStep:(CTSearchState *)searchState {
++ (NSArray <NSNumber *> *)validateSearchStep:(CTSearchState *)searchState {
+    NSMutableArray *validationFailures = [NSMutableArray new];
+    
     if (!searchState.selectedPickupLocation) {
-        return NO;
+        [validationFailures addObject:@(CTSearchFormTextFieldPickupLocation)];
     }
     
     if (searchState.dropoffLocationRequired && !searchState.selectedDropoffLocation) {
-        return NO;
+        [validationFailures addObject:@(CTSearchFormTextFieldDropoffLocation)];
     }
     
     if (!searchState.selectedPickupDate) {
-        return NO;
+        [validationFailures addObject:@(CTSearchFormTextFieldSelectDates)];
     }
     
     if (!searchState.selectedDropoffDate) {
-        return NO;
+        [validationFailures addObject:@(CTSearchFormTextFieldSelectDates)];
     }
     
     if (!searchState.selectedPickupTime) {
-        return NO;
+        [validationFailures addObject:@(CTSearchFormTextFieldPickupTime)];
     }
     
     if (!searchState.selectedDropoffTime) {
-        return NO;
+        [validationFailures addObject:@(CTSearchFormTextFieldDropoffTime)];
     }
     
     if (searchState.driverAgeRequired && !searchState.displayedDriverAge) {
-        return NO;
+        [validationFailures addObject:@(CTSearchFormTextFieldDriverAge)];
     }
     
     if (searchState.driverAgeRequired && searchState.displayedDriverAge.length < 2) {
-        return NO;
+        [validationFailures addObject:@(CTSearchFormTextFieldDriverAge)];
     }
     
-    return YES;
+    return validationFailures.copy;
 }
 
 @end
