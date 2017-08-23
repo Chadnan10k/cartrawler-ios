@@ -1069,6 +1069,7 @@
 				6A8C5C3C1F34CF08005CD6A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC4A3FEE1E5F3DBF00EFB055 /* Build configuration list for PBXNativeTarget "CartrawlerAPITests" */ = {
 			isa = XCConfigurationList;
