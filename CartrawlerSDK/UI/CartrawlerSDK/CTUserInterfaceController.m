@@ -166,6 +166,9 @@
             return [storyboard instantiateViewControllerWithIdentifier:@"CTVehicleListFilterViewController"];
         case CTNavigationModalSelectedVehicleFeatures:
             return [[CTSelectedVehicleFeaturesViewController alloc] initWithNibName:@"CTAlertViewController" bundle:bundle];
+        case CTNavigationModalSelectedVehicleInsuranceDetails:
+            storyboard = [UIStoryboard storyboardWithName:@"CTSelectedVehicle" bundle:bundle];
+            return [storyboard instantiateViewControllerWithIdentifier:@"CTSelectedVehicleInsuranceDetailsViewController"];
         case CTNavigationModalConfirmation:
             storyboard = [UIStoryboard storyboardWithName:@"CTBooking" bundle:bundle];
             return [storyboard instantiateViewControllerWithIdentifier:@"CTBookingModalViewController"];

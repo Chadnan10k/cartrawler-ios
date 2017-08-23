@@ -48,6 +48,9 @@
     [self.addInsuranceButton setTitle:viewModel.addInsurance forState:UIControlStateNormal];
     self.addInsuranceButton.backgroundColor = viewModel.primaryColor;
 }
+- (IBAction)insuranceDetailsTapped:(UIButton *)sender {
+    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapInsuranceDetails payload:nil];
+}
 
 - (IBAction)addInsuranceButtonTapped:(UIButton *)sender {
     [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapAddInsurance payload:nil];

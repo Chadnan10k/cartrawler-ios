@@ -481,6 +481,13 @@
             }
             break;
         case CTActionSelectedVehicleUserDidTapInsuranceDetails:
+            navigationState.modalViewControllers = @[@(CTNavigationModalSelectedVehicleInsuranceDetails)];
+            break;
+        case CTActionSelectedVehicleUserDidTapInsuranceDetailsBackButton:
+            navigationState.modalViewControllers = @[];
+            break;
+        case CTActionSelectedVehicleUserDidTapInsuranceTermsAndConditionsButton:
+            [[UIApplication sharedApplication] openURL:selectedVehicleState.insurance.termsAndConditionsURL];
             break;
         case CTActionSelectedVehicleUserDidTapAddInsurance:
             selectedVehicleState.insuranceAdded = !selectedVehicleState.insuranceAdded;

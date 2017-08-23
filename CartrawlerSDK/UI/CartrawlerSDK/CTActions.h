@@ -317,6 +317,16 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      */
     CTActionSelectedVehicleUserDidTapInsuranceDetails,
     /**
+     *  The user tapped insurance details back button
+     *  Payload: nil
+     */
+    CTActionSelectedVehicleUserDidTapInsuranceDetailsBackButton,
+    /**
+     *  The user tapped insurance details terms and conditions button
+     *  Payload: nil
+     */
+    CTActionSelectedVehicleUserDidTapInsuranceTermsAndConditionsButton,
+    /**
      *  The user tapped add insurance button
      *  Payload: nil
      */
