@@ -46,7 +46,7 @@
         completion(NO, @"search.driverAge is not set", NO);
         return;
     }
-	NSString *myAppId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"MISSING_PLACEHOLDER";
+	NSString *myAppId = [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] != nil || [[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"[ACCOUNTID]";
 	NSString *visitorId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] : @"";
 	NSString *orderId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] : @"";
 	

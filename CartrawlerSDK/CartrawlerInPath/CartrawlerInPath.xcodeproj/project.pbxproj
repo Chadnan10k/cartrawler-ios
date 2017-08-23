@@ -714,6 +714,7 @@
 				6A8C5C301F34CE84005CD6A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
