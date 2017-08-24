@@ -3,6 +3,8 @@ echo "WE WILL NOW PUSH TO COCOAPODS ☕️"
 FRAMEWORK_NAME=$1
 BUILD_VERSION=$2
 OUTPUT_DIR=$3
+PROJECT_DIR=$4
+
 
 GIT_REMOTE="https://github.com/cartrawler/cartrawler-ios-build.git"
 GIT_BRANCH="${FRAMEWORK_NAME}-${BUILD_VERSION}"

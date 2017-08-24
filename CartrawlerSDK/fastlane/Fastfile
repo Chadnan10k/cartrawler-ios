@@ -50,10 +50,11 @@ platform :ios do
   script_path = lane[:script_path]
   script_name = lane[:script_name]
   artifacts_folder = lane[:artifacts_folder]
+  spec_template_folder = lane[:spec_template_folder]
   FRAMEWORK_NAME = lane[:framework]
   FRAMEWORK_VERSION = lane[:version]
     Dir.chdir("#{script_path}") do
-      sh "#{script_path}/#{script_name} $1#{FRAMEWORK_NAME} $2#{FRAMEWORK_VERSION} $3#{artifacts_folder}"
+      sh "#{script_path}/#{script_name} $1#{FRAMEWORK_NAME} $2#{FRAMEWORK_VERSION} $3#{artifacts_folder} $4#{spec_template_folder}"
     end
   end
 
@@ -64,12 +65,15 @@ platform :ios do
       script_path = params[:script_path]
       script_name = params[:script_name]
       artifacts_folder = params[:artifacts_folder]
+      spec_template_folder = params[:spec_template_folder]
 
       increment_framework_version(:framework => framework,
       :version => version,
       :path => path)
 
-      lane deploy(:version => version, :framework => framework, :script_path => script_path, :script_name => script_name, :artifacts_folder => artifacts_folder)
+      lane deploy(:version => version, :framework => framework,
+                  :script_path => script_path, :script_name => script_name,
+                  :artifacts_folder => artifacts_folder, :spec_template_folder => spec_template_folder)
 
     end
 
@@ -92,7 +96,7 @@ platform :ios do
 end
 
 # From terminal
-# fastlane build framework_name:"CartrawlerAPI" framework_path:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/OTA API/CartrawlerAPI" framework_version:2.1.15 script_path:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/scripts" script_name:"generatefolders.sh" artifacts_folder:"/Users/apinto/Documents/iOS/Artifacts_Latest"
+#fastlane build framework_name:"CartrawlerAPI" framework_path:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/OTA API/CartrawlerAPI" framework_version:2.1.15 script_path:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/scripts" script_name:"generatefolders.sh" artifacts_folder:"/Users/apinto/Documents/iOS/Artifacts_Latest" spec_template_folder:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/CI"
 
 # More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
 # All available actions: https://docs.fastlane.tools/actions
