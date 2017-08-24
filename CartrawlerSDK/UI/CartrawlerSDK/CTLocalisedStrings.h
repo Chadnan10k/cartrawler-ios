@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CartrawlerAPI/CTAvailabilityItem.h>
-#import <CartrawlerAPI/CTGroundService.h>
+#import "CTAvailabilityItem.h"
+#import "CTGroundService.h"
 
 /**
  *  Convenience macro for localized strings

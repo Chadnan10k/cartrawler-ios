@@ -20,7 +20,7 @@
 #import <CartrawlerSDK/CTTextView.h>
 #import <CartrawlerSDK/CTHTMLParser.h>
 #import <CartrawlerSDK/CTAppearance.h>
-#import <CartrawlerAPI/CTInsurance.h>
+#import "CTInsurance.h"
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>

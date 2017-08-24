@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTTermAndCondition.h>
+#import "CTTermAndCondition.h"
 
 @interface CTTermsDetailViewController : UIViewController
 

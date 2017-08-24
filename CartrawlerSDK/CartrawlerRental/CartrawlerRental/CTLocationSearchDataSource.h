@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTMatchedLocation.h>
-#import <CartrawlerAPI/CartrawlerAPI.h>
+#import "CTMatchedLocation.h"
+#import "CartrawlerAPI.h"
 
 @interface CTLocationSearchDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 

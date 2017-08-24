@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CTExtrasCollectionView.h"
-#import <CartrawlerAPI/CTExtraEquipment.h>
+#import "CTExtraEquipment.h"
 
 @class CTExtrasCarouselView;
 

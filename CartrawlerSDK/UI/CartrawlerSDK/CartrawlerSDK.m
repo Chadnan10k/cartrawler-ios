@@ -10,6 +10,7 @@
 #import "CartrawlerSDK.h"
 #import "CTAppController.h"
 #import "CTSDKSettings.h"
+#import "CTViewController.h"
 
 @interface CartrawlerSDK() <CTAnalyticsDelegate>
 
@@ -50,37 +51,8 @@
     [CTAppController dispatchAction:CTActionNavigationPresentSearchStep payload:@(YES)];
 }
 
-- (void)enableLogs:(BOOL)enable
-{
-    [self.cartrawlerAPI enableLogging:enable];
-}
-
 - (void)setNewSession {
     [CTAppController dispatchAction:CTActionUserSettingsSetNewSession payload:nil];
-}
-
-+ (CTAppearance *)appearance
-{
-    return [CTAppearance instance];
-}
-
-- (CTViewController *)configureViewController:(nonnull CTViewController *)viewController
-                         validationController:(nonnull CTValidation *)validationController
-                                  destination:(nullable CTViewController *)destination
-                                     fallback:(nullable CTViewController *)fallback
-                                optionalRoute:(nullable CTViewController *)optionalRoute
-                                       search:(CTRentalSearch *)search
-                                       target:(id)target
-{
-    viewController.destinationViewController = destination;
-    viewController.fallbackViewController = fallback;
-    viewController.optionalRoute = optionalRoute;
-    viewController.cartrawlerAPI = self.cartrawlerAPI;
-    viewController.delegate = target;
-    viewController.search = search;
-    viewController.validationController = validationController;
-    viewController.analyticsDelegate = self;
-    return viewController;
 }
 
 #pragma mark Analytics

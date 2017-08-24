@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <CartrawlerSDK/CartrawlerSDK.h>
+//#import <CartrawlerSDK/CartrawlerSDK.h>
 @import HockeySDK;
 
 @interface AppDelegate ()

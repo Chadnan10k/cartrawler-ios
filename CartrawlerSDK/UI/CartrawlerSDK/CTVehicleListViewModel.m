@@ -8,7 +8,7 @@
 
 #import "CTVehicleListViewModel.h"
 #import "CTAppState.h"
-#import <CartrawlerAPI/CTAvailabilityItem.h>
+#import "CTAvailabilityItem.h"
 #import "CTVehicleListTableViewModel.h"
 #import "CartrawlerSDK+NSString.h"
 #import "CartrawlerSDK+NSDateUtils.h"

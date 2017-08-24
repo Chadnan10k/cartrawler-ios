@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTMatchedLocation.h>
+#import "CTMatchedLocation.h"
 #import "CTDesignableView.h"
 
 IB_DESIGNABLE

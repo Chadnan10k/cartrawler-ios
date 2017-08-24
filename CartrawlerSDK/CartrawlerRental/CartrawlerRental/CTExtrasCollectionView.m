@@ -9,7 +9,7 @@
 #import "CTExtrasCollectionView.h"
 #import "CTExtrasCarouselViewCell.h"
 #import "CTExtrasListCollectionViewCell.h"
-#import <CartrawlerAPI/CTExtraEquipment.h>
+#import "CTExtraEquipment.h"
 #import <CartrawlerSDK/CTLayoutManager.h>
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 #import <CartrawlerSDK/CTLocalisedStrings.h>

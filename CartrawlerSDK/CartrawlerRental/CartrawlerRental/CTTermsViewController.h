@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CartrawlerSDK/CTRentalSearch.h>
-#import <CartrawlerAPI/CartrawlerAPI.h>
+#import "CartrawlerAPI.h"
 
 @interface CTTermsViewController : UIViewController
 

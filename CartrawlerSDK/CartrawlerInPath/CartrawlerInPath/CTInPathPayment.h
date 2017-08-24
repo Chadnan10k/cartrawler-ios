@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CartrawlerAPI/CartrawlerAPI.h>
+#import "CartrawlerAPI.h"
 #import "CartrawlerSDK/CTRentalSearch.h"
 
 @interface CTInPathPayment : NSObject

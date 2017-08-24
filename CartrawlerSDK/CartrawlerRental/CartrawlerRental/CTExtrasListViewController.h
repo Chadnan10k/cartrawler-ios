@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTExtraEquipment.h>
+#import "CTExtraEquipment.h"
 
 @protocol CTExtrasListDelegate <NSObject>
 

@@ -7,7 +7,7 @@
 //
 
 #import "CTAPIController.h"
-#import <CartrawlerAPI/CartrawlerAPI.h>
+#import "CartrawlerAPI.h"
 #import "CTAppController.h"
 #import "CartrawlerSDK+NSDateUtils.h"
 #import "CartrawlerSDK+NSNumber.h"

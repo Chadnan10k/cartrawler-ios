@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CartrawlerAPI/CartrawlerAPI.h>
-
+#import "CartrawlerAPI.h"
 
 @interface CTRentalSearch : NSObject <NSCopying>
 

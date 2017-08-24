@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CTFilterDataSource.h"
-#import <CartrawlerAPI/CartrawlerAPI.h>
+#import "CartrawlerAPI.h"
 
 @interface CTFilterFactory : NSObject
 

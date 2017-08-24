@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTInsuranceSelectorItem.h>
+#import "CTInsuranceSelectorItem.h"
 
 @protocol CTPickerViewDelegate <NSObject>
 

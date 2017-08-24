@@ -8,9 +8,9 @@
 
 #import "CTPaymentSummaryExpandedTableViewCell.h"
 #import <CartrawlerSDK/CTAppearance.h>
-#import <CartrawlerAPI/CTFee.h>
-#import <CartrawlerAPI/CTExtraEquipment.h>
-#import <CartrawlerAPI/CTInsurance.h>
+#import "CTFee.h"
+#import "CTExtraEquipment.h"
+#import "CTInsurance.h"
 #import <CartrawlerSDK/CartrawlerSDK+NSNumber.h>
 #import "CTRentalLocalizationConstants.h"
 

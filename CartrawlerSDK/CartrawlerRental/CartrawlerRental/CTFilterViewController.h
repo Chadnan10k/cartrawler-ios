@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTVehicleAvailability.h>
+#import "CTVehicleAvailability.h"
 
 @protocol CTFilterDelegate <NSObject>
 

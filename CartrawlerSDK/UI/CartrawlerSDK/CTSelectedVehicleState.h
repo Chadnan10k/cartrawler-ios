@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CartrawlerAPI/CTAvailabilityItem.h>
-#import <CartrawlerAPI/CTInsurance.h>
+#import "CTAvailabilityItem.h"
+#import "CTInsurance.h"
 
 typedef NS_ENUM(NSInteger, CTSelectedVehicleTab) {
     CTSelectedVehicleTabIncluded,

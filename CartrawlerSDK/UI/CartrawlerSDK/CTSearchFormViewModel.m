@@ -8,7 +8,7 @@
 
 #import "CTSearchFormViewModel.h"
 #import "CTAppState.h"
-#import <CartrawlerAPI/CTMatchedLocation.h>
+#import "CTMatchedLocation.h"
 #import "CartrawlerSDK+NSDateUtils.h"
 
 @interface CTSearchFormViewModel ()

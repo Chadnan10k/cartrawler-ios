@@ -7,7 +7,7 @@
 //
 
 #import "CTLocationSearchViewController.h"
-#import <CartrawlerAPI/CartrawlerAPI.h>
+#import "CartrawlerAPI.h"
 #import "CTLocationSearchDataSource.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import "CTRentalLocalizationConstants.h"

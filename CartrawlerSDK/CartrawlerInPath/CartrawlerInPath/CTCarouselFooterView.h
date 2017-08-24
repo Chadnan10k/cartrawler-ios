@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTVehicle.h>
+#import "CTVehicle.h"
 
 @protocol CTCarouselFooterDelegate <NSObject>
 

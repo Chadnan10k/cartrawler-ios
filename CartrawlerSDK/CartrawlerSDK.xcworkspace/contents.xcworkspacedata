@@ -11,9 +11,6 @@
       location = "group:TestApp/TestApp.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:OTA API/CartrawlerAPI.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:UI/CartrawlerSDK.xcodeproj">
    </FileRef>
    <FileRef

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTMatchedLocation.h>
-#import <CartrawlerAPI/CartrawlerAPI.h>
+#import "CTMatchedLocation.h"
+#import "CartrawlerAPI.h"
 
 typedef NS_ENUM(NSUInteger, CTLocationSearchContext) {
     CTLocationSearchContextUndefined,

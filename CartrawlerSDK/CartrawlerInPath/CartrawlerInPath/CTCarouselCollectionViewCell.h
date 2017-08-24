@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTAvailabilityItem.h>
+#import "CTAvailabilityItem.h"
 
 @interface CTCarouselCollectionViewCell : UICollectionViewCell
 

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CartrawlerAPI/CTExtraEquipment.h>
+#import "CTExtraEquipment.h"
 @interface CTPaymentSummaryItemTableViewCell : UITableViewCell
 
 - (void)setDetails:(CTExtraEquipment *)detail price:(NSNumber *)price;

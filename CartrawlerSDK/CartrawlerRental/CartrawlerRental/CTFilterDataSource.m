@@ -9,7 +9,7 @@
 #import "CTFilterDataSource.h"
 #import <CartrawlerSDK/CTAppearance.h>
 #import "CTFilterTableViewCell.h"
-#import <CartrawlerAPI/CTAvailabilityItem.h>
+#import "CTAvailabilityItem.h"
 #import <CartrawlerSDK/CTLocalisedStrings.h>
 #import "CTRentalLocalizationConstants.h"
 #import <CartrawlerSDK/CTAnalytics.h>

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CTCSVItem.h"
-#import <CartrawlerAPI/CTBooking.h>
+#import "CTBooking.h"
 
 typedef NS_ENUM(NSInteger, CTBookingTextfield) {
     CTBookingTextfieldNone,

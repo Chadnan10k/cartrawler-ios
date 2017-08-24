@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CTViewModelProtocol.h"
 #import "CTAppState.h"
-#import <CartrawlerAPI/CTExtraEquipment.h>
+#import "CTExtraEquipment.h"
 #import "CTSelectedVehicleIncludedViewModel.h"
 #import "CTSelectedVehicleRatingsViewModel.h"
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CTRentalSearch.h"
-#import <CartrawlerAPI/CartrawlerAPI.h>
+#import "CartrawlerAPI.h"
 #import "CTAnalytics.h"
 
 @interface CTValidation : NSObject

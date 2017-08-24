@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "CTHeaders.h"
+#import "CTAnalyticsEvent.h"
+#import "CTBooking.h"
+//#import "CTHeaders.h"
 
 FOUNDATION_EXPORT double CartrawlerSDKVersionNumber;
 
@@ -34,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CartrawlerSDK : NSObject
 
-@property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
+//@property (nonatomic, strong) CartrawlerAPI *cartrawlerAPI;
 
 //---CarRentalWithFlightDetails---
 typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *errorMessage);
@@ -59,13 +61,6 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
  */
 - (void)setNewSession;
 
-/**
- *  Enable or disable logs
- *
- *  @param enable Enable or disable logs
- *
- */
-- (void)enableLogs:(BOOL)enable;
 
 /**
  *  Add an analyitcs provider
@@ -93,16 +88,16 @@ typedef void (^CarRentalWithFlightDetailsCompletion)(BOOL success, NSString *err
 
 /**
  *  Use CTAppearance for overriding the preset views color scheme
- */
-+ (CTAppearance *)appearance;
-
-- (CTViewController *)configureViewController:(nonnull CTViewController *)viewController
-                         validationController:(nonnull CTValidation *)validationController
-                                  destination:(nullable CTViewController *)destination
-                                     fallback:(nullable CTViewController *)fallback
-                                optionalRoute:(nullable CTViewController *)optionalRoute
-                                       search:(CTRentalSearch *)search
-                                       target:(id)target;
+// */
+//+ (CTAppearance *)appearance;
+//
+//- (CTViewController *)configureViewController:(nonnull CTViewController *)viewController
+//                         validationController:(nonnull CTValidation *)validationController
+//                                  destination:(nullable CTViewController *)destination
+//                                     fallback:(nullable CTViewController *)fallback
+//                                optionalRoute:(nullable CTViewController *)optionalRoute
+//                                       search:(CTRentalSearch *)search
+//                                       target:(id)target;
 
 @end
 

@@ -7,7 +7,7 @@
 //
 
 #import "CTBookingSummaryView.h"
-#import <CartrawlerAPI/CTVendor.h>
+#import "CTVendor.h"
 #import <CartrawlerSDK/CartrawlerSDK+NSDateUtils.h>
 #import <CartrawlerSDK/CTButton.h>
 #import <CartrawlerSDK/CTLabel.h>

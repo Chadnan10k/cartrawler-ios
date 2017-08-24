@@ -53,7 +53,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		450725B91DDA0C2000D56C8A /* CartrawlerAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		450725BC1DDA0C2000D56C8A /* CartrawlerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CartrawlerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45295F591D78412500A09B8A /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45295F5D1D78412500A09B8A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -162,7 +161,6 @@
 			children = (
 				E76DCA311F4B5F7400763C5A /* CTPayment.framework */,
 				450725BC1DDA0C2000D56C8A /* CartrawlerSDK.framework */,
-				450725B91DDA0C2000D56C8A /* CartrawlerAPI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

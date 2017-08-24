@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CTViewModelProtocol.h"
-#import <CartrawlerAPI/CTMatchedLocation.h>
+#import "CTMatchedLocation.h"
 
 @interface CTSearchLocationsViewModel : NSObject <CTViewModelProtocol>
 @property (nonatomic, readonly) UIColor *navigationBarColor;

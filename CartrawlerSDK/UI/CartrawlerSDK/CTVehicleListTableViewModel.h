@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CTViewModelProtocol.h"
-#import <CartrawlerAPI/CTAvailabilityItem.h>
+#import "CTAvailabilityItem.h"
 #import <UIKit/UIKit.h>
 
 @interface CTVehicleListTableViewModel : NSObject <CTViewModelProtocol>
