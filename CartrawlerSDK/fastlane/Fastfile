@@ -17,7 +17,7 @@ default_platform :ios
 
 platform :ios do
   before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
   end
 
   desc "Increment framework version"
@@ -75,16 +75,23 @@ platform :ios do
                   :script_path => script_path, :script_name => script_name,
                   :artifacts_folder => artifacts_folder, :spec_template_folder => spec_template_folder)
 
+      lane send_slack_message(:framework => framework, :version => version)
     end
 
   # You can define as many lanes as you want
 
+  lane :send_slack_message do |params|
+    framework = params[:framework]
+    version = params[:version]
+    sdk_updated = "#{framework} #{version}"
+
+    slack(
+      message: "Updated SDK: #{sdk_updated}"
+    )
+  end
+
   after_all do |lane|
     # This block is called, only if the executed lane was successful
-
-    # slack(
-    #   message: "Successfully deployed new App Update."
-    # )
   end
 
   error do |lane, exception|

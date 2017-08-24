@@ -40,6 +40,11 @@ fastlane ios deploy
 fastlane ios build
 ```
 
+### ios send_slack_message
+```
+fastlane ios send_slack_message
+```
+
 
 ----
 
