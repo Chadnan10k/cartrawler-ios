@@ -162,6 +162,7 @@
 
 + (void)locationSearchPerformRequestWithClientID:(NSString *)clientID
                                   locationString:(NSString *)locationString
+                                    languageCode:(NSString *)languageCode
                                        debugMode:(BOOL)debugMode
                                   loggingEnabled:(BOOL)loggingEnabled
                                       completion:(LocationSearchCompletion)completion
@@ -173,10 +174,8 @@
     NSString *requestBody = [CTRequestBuilder CT_VehLocSearchRQPartial:locationString
                                                               clientID:clientID
                                                                 target:target
-                                                                locale:@"IE"
+                                                                locale:languageCode
                                                       needsCoordinates:NO];
-    // TODO: Fix locale to self.locale
-    
     CTPostRequest *request = [CTPostRequest new];
     
     [request performRequestWithData:endPoint

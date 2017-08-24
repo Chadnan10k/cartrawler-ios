@@ -31,6 +31,7 @@
 + (NSString *)transmission:(NSString *)transmissionStr;
 
 + (instancetype)instance;
+@property (nonatomic, strong) NSString *language;
 
 - (NSString *)localizedStringForKey:(NSString *)key bundle:(NSBundle *)bundle;
 

@@ -12,9 +12,8 @@
 #import "CTSearchFormViewModel.h"
 
 @interface CTSearchFormViewController () <UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *pickupLocationTextField;
+@property (weak, nonatomic) IBOutlet UILabel *returnToSameLocation;
 @property (weak, nonatomic) IBOutlet UIButton *returnToSameLocationCheckbox;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *dropoffLocationTextField;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *selectDatesTextField;
@@ -101,6 +100,7 @@
     
     self.pickupLocationTextField.text = viewModel.pickupLocationName;
     self.dropoffLocationTextField.text = viewModel.dropoffLocationName;
+    self.returnToSameLocation.text = viewModel.returnToSameLocation;
     self.selectDatesTextField.text = viewModel.rentalDates;
     self.pickupTimeTextField.text = viewModel.pickupTime;
     self.dropOffTimeTextField.text = viewModel.dropoffTime;

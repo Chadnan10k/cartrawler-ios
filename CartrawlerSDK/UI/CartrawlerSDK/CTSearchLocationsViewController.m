@@ -75,7 +75,7 @@
     CTMatchedLocation *location = self.viewModel.rows[indexPath.section][indexPath.row];
     cell.textLabel.text = location.name;
     // TODO: Extract logic to view model and localise
-    cell.detailTextLabel.text = location.isAtAirport ? @"Airport" : @"City Location";
+    cell.detailTextLabel.text = location.isAtAirport ? CTLocalizedString(CTRentalSearchLocationsAirport) : CTLocalizedString(CTRentalSearchLocationsOther);
     
     CGRect frame = CGRectMake(0, 0, 25, 25);
     UILabel *label = [[UILabel alloc] initWithFrame:frame];

@@ -118,6 +118,7 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
 
 + (void)locationSearchPerformRequestWithClientID:(NSString *)clientID
                                   locationString:(NSString *)locationString
+                                    languageCode:(NSString *)languageCode
                                        debugMode:(BOOL)debugMode
                                   loggingEnabled:(BOOL)loggingEnabled
                                       completion:(LocationSearchCompletion)completion;

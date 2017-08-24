@@ -16,6 +16,7 @@
 #import "CTPaymentController.h"
 #import "CTValidationSearch.h"
 #import "CTValidationBooking.h"
+#import "CTLocalisedStrings.h"
 
 #import "CartrawlerSDK+NSDateUtils.h"
 #import "CTCSVItem.h"
@@ -78,7 +79,9 @@
             userSettingsState.clientID = payload;
             break;
         case CTActionUserSettingsSetLanguageCode:
-            userSettingsState.languageCode = payload ?: @"en";
+            userSettingsState.languageCode = [(NSString *)payload lowercaseString] ?: @"en";
+            // TODO: Remove state from localised strings and put all in a controller
+            [CTLocalisedStrings instance].language = [(NSString *)payload lowercaseString] ?: @"en";
             break;
         case CTActionUserSettingsSetCountryCode:
             userSettingsState.countryCode = payload;
@@ -309,7 +312,9 @@
                     break;
                 case CTSearchSearchSettingsLanguage:
                     // TODO: Fix the inversion of code and name in the language CSV
-                    userSettingsState.languageCode = [[(CTCSVItem *)payload name] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    userSettingsState.languageCode = [[(CTCSVItem *)payload name] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].lowercaseString;
+                    // TODO: Remove state from localised strings and put all in a controller
+                    [CTLocalisedStrings instance].language = userSettingsState.languageCode;
                     [self requestVehicleAvailability:appState];
                     navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettings)];
                     break;

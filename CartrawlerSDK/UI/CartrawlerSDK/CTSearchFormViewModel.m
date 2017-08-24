@@ -17,6 +17,7 @@
 @property (nonatomic, readwrite) UIColor *nextButtonColor;
 @property (nonatomic, readwrite) UIColor *doneButtonColor;
 @property (nonatomic, readwrite) NSString *pickupLocationName;
+@property (nonatomic, readwrite) NSString *returnToSameLocation;
 @property (nonatomic, readwrite) NSString *returnToSameLocationCheckboxText;
 @property (nonatomic, readwrite) NSString *dropoffLocationName;
 @property (nonatomic, readwrite) NSString *rentalDates;
@@ -51,6 +52,8 @@
     
     viewModel.pickupLocationName = searchState.selectedPickupLocation.name;
     viewModel.dropoffLocationName = searchState.selectedDropoffLocation.name;
+    
+    viewModel.returnToSameLocation = CTLocalizedString(CTRentalSearchReturnLocationButton);
     
     if (searchState.selectedPickupDate && searchState.selectedDropoffDate) {
         viewModel.rentalDates = [NSString stringWithFormat:@"%@ - %@", [searchState.selectedPickupDate shortDescriptionFromDate], [searchState.selectedDropoffDate shortDescriptionFromDate]];

@@ -37,6 +37,7 @@
     
     [CartrawlerAPI locationSearchPerformRequestWithClientID:userSettingsState.clientID
                                              locationString:searchState.searchBarText
+                                               languageCode:userSettingsState.languageCode
                                                   debugMode:userSettingsState.debugMode
                                              loggingEnabled:userSettingsState.loggingEnabled
                                                  completion:^(CTLocationSearch *response, CTErrorResponse *error) {

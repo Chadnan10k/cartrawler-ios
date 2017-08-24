@@ -102,6 +102,10 @@
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.scrollView setContentOffset:CGPointMake(0, 0)];
+}
+
 - (IBAction)settingsButtonTapped:(id)sender {
     [CTAppController dispatchAction:CTActionSearchUserDidTapSettingsButton payload:nil];
 }

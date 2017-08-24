@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) UIColor *nextButtonColor;
 @property (nonatomic, readonly) UIColor *doneButtonColor;
 @property (nonatomic, readonly) NSString *pickupLocationName;
+@property (nonatomic, readonly) NSString *returnToSameLocation;
 @property (nonatomic, readonly) NSString *returnToSameLocationCheckboxText;
 @property (nonatomic, readonly) NSString *dropoffLocationName;
 @property (nonatomic, readonly) NSString *rentalDates;

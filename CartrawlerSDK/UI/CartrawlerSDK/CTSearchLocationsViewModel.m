@@ -59,11 +59,11 @@
     NSMutableArray *rowTitles = [NSMutableArray new];
     NSMutableArray *sectionTitles = [NSMutableArray new];
     if (airportLocations.count > 0) {
-        [sectionTitles addObject:@"Airport"];
+        [sectionTitles addObject:CTLocalizedString(CTRentalSearchLocationsAirport)];
         [rowTitles addObject:airportLocations];
     }
     if (otherLocations.count > 0) {
-        [sectionTitles addObject:@"City Locations"];
+        [sectionTitles addObject:CTLocalizedString(CTRentalSearchLocationsOther)];
         [rowTitles addObject:otherLocations];
     }
     
