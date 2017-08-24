@@ -20,10 +20,12 @@ typedef NS_ENUM(NSInteger, CTSelectedVehicleExpanded) {
     CTSelectedVehicleExpandedFuelPolicy,
     CTSelectedVehicleExpandedMileageAllowance,
     CTSelectedVehicleExpandedInsurance,
+    CTSelectedVehicleExpandedImportant,
 };
 
 @interface CTSelectedVehicleState : NSObject
 
+@property (nonatomic) BOOL showToastView;
 @property (nonatomic) CTAvailabilityItem *selectedAvailabilityItem;
 @property (nonatomic) BOOL featuresDisplayed;
 @property (nonatomic) CTSelectedVehicleTab selectedTab;

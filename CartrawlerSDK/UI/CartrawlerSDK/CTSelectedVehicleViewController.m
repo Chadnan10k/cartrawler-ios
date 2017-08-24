@@ -21,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *total;
 @property (weak, nonatomic) IBOutlet UILabel *totalAmount;
 @property (weak, nonatomic) IBOutlet UILabel *chevron;
+@property (weak, nonatomic) IBOutlet UIView *toastView;
+@property (weak, nonatomic) IBOutlet UILabel *toastLabel;
+@property (weak, nonatomic) IBOutlet UIButton *toastButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectedVehicleInfoViewHeight;
 @property (nonatomic, weak) CTSelectedVehicleTabViewController *selectedVehicleTabViewController;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectedVehicleTabViewHeight;
@@ -63,6 +66,12 @@
                         } completion:nil];
     }
     
+    [UIView animateWithDuration:0.2 animations:^{
+        self.toastView.alpha = viewModel.showToastView ? 0.8 : 0;
+    }];
+    self.toastLabel.text = viewModel.toast;
+    [self.toastButton setTitle:viewModel.toastOK forState:UIControlStateNormal];
+    
     [self.selectedVehicleInfoViewController updateWithViewModel:viewModel.selectedVehicleInfoViewModel];
     [self.selectedVehicleTabViewController updateWithViewModel:viewModel.selectedVehicleTabViewModel];
     [self.selectedVehicleInsuranceViewController updateWithViewModel:viewModel.selectedVehicleInsuranceViewModel];
@@ -99,7 +108,11 @@
     [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapBack payload:nil];
 }
 
-- (IBAction)totalButtonTapped:(id)sender {
+- (IBAction)toastButtonTapped:(UIButton *)sender {
+    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapToastOK payload:nil];
+}
+
+- (IBAction)totalButtonTapped:(UIButton *)sender {
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Coming Soon" message:@"This feature is under construction" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [controller dismissViewControllerAnimated:YES completion:nil];

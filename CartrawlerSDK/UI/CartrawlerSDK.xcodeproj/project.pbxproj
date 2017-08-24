@@ -1473,6 +1473,13 @@
 			name = "Insurance Details";
 			sourceTree = "<group>";
 		};
+		E75256B41F4F37F0006DED6F /* Terms And Conditions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Terms And Conditions";
+			sourceTree = "<group>";
+		};
 		E76900A51E6F061B00D729FF /* InfoTip */ = {
 			isa = PBXGroup;
 			children = (
@@ -2271,6 +2278,7 @@
 				E74D0E941F4D1A8C00906F15 /* Features */,
 				E7B19CC71F33E8EB000738CB /* Tab */,
 				E7B19CCC1F33E90C000738CB /* Included */,
+				E75256B41F4F37F0006DED6F /* Terms And Conditions */,
 				E7B19CD11F33E937000738CB /* Ratings */,
 				E7B19CD61F33E95B000738CB /* Insurance */,
 				E75256AA1F4DEA9B006DED6F /* Insurance Details */,

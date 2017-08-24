@@ -292,6 +292,11 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      */
     CTActionSelectedVehicleUserDidTapBack,
     /**
+     *  The user tapped the OK button on the toast view
+     *  Payload: nil
+     */
+    CTActionSelectedVehicleUserDidTapToastOK,
+    /**
      *  The user tapped the features button
      *  Payload: nil
      */

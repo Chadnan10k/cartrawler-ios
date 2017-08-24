@@ -22,7 +22,4 @@
    <FileRef
       location = "group:CartrawlerInPath/CartrawlerInPath.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:CartrawlerGroundTransport/CartrawlerGroundTransport.xcodeproj">
-   </FileRef>
 </Workspace>

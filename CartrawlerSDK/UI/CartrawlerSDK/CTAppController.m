@@ -464,6 +464,9 @@
             navigationState.currentNavigationStep = CTNavigationStepVehicleList;
             appState.selectedVehicleState = nil;
             break;
+        case CTActionSelectedVehicleUserDidTapToastOK:
+            selectedVehicleState.showToastView = NO;
+            break;
         case CTActionSelectedVehicleUserDidTapMoreFeatures:
             //selectedVehicleState.featuresDisplayed = YES;
             navigationState.modalViewControllers = @[@(CTNavigationModalSelectedVehicleFeatures)];
@@ -489,6 +492,9 @@
                 case CTSelectedVehicleExpandedInsurance:
                     selectedVehicleState.insuranceExpanded = !selectedVehicleState.insuranceExpanded;
                     break;
+                case CTSelectedVehicleExpandedImportant:
+                    navigationState.modalViewControllers = @[@(CTNavigationModalSelectedVehicleTermsAndConditions)];
+                    break;
                 default:
                     break;
             }
@@ -509,6 +515,21 @@
             break;
         case CTActionSelectedVehicleUserDidTapIncrementExtra: {
             NSMapTable *addedExtras = selectedVehicleState.addedExtras;
+            // Show toast view if first extra added
+            if (addedExtras.count == 0 && ![payload isIncludedInRate]) {
+                selectedVehicleState.showToastView = YES;
+            }
+            BOOL hasExtras = NO;
+            for (CTExtraEquipment *extra in addedExtras.keyEnumerator) {
+                NSNumber *count = [addedExtras objectForKey:extra];
+                if (count.integerValue > 0 && !extra.isIncludedInRate) {
+                    hasExtras = YES;
+                }
+            }
+            if (!hasExtras) {
+                selectedVehicleState.showToastView = YES;
+            }
+            // Increment the specific count for that extra, max 4
             NSInteger count = [[addedExtras objectForKey:payload] integerValue];
             if (count < 4) {
                 count++;
@@ -524,6 +545,18 @@
                 count--;
             }
             [addedExtras setObject:@(count) forKey:payload];
+            
+            // Remove toast view if removing all extras
+            BOOL hasExtras = NO;
+            for (CTExtraEquipment *extra in addedExtras.keyEnumerator) {
+                NSNumber *count = [addedExtras objectForKey:extra];
+                if (count.integerValue > 0 && !extra.isIncludedInRate) {
+                    hasExtras = YES;
+                }
+            }
+            if (!hasExtras) {
+                selectedVehicleState.showToastView = NO;
+            }
         }
             break;
         case CTActionSelectedVehicleUserDidTapExtraInfo: {

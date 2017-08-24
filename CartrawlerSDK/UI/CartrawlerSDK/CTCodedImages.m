@@ -39,7 +39,7 @@
         [primaryColor setFill];
         [primaryOval fill];
         primaryOval.lineWidth = 2.5;
-        [primaryColor setStroke];
+        [[UIColor blackColor] setStroke];
         [primaryOval stroke];
         CGContextRestoreGState(context);
         

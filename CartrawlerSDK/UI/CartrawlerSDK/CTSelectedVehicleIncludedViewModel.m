@@ -62,7 +62,7 @@
     viewModel.insuranceDetail = [self textForCoverages:availabilityItem.vehicle.pricedCoverages primaryColor:appState.userSettingsState.primaryColor];
     
     viewModel.important = @"Important";
-    viewModel.importantDetail = CTLocalizedString(CTRentalInsuranceTermsConditions);
+    viewModel.importantConcise = CTLocalizedString(CTRentalInsuranceTermsConditions);
     
     viewModel.pickupLocationExpanded = selectedVehicleState.pickupLocationExpanded;
     viewModel.fuelPolicyExpanded = selectedVehicleState.fuelPolicyExpanded;

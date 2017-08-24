@@ -80,7 +80,7 @@
     self.creditCardImageView.backgroundColor = viewModel.primaryColor;
     self.carImageView.primaryColor = viewModel.primaryColor;
     self.carImageView.backgroundColor = viewModel.primaryColor;
-    self.tickImageView.primaryColor = [UIColor greenColor];
+    self.tickImageView.primaryColor = viewModel.primaryColor;
     self.tickImageView.backgroundColor = viewModel.primaryColor;
     
     if (!viewModel.processing) {
@@ -102,8 +102,8 @@
         self.dropoffTime.text = viewModel.dropoffTime;
         self.creditCardWidth.constant = viewModel.processing ? self.creditCardWidth.constant : 0;
         self.creditCardHeight.constant = viewModel.processing ? self.creditCardWidth.constant : 0;
-        self.tickWidth.constant = viewModel.processing ? self.tickWidth.constant : 50;
-        self.tickHeight.constant = viewModel.processing ? self.tickHeight.constant : 50;
+        self.tickWidth.constant = viewModel.processing ? self.tickWidth.constant : 80;
+        self.tickHeight.constant = viewModel.processing ? self.tickHeight.constant : 80;
         self.vehicle.text = viewModel.vehicle;
         self.orSimilar.text = viewModel.orSimilar;
         self.passengers.text = viewModel.seats;

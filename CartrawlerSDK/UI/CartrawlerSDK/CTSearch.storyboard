@@ -280,7 +280,7 @@
                                         </connections>
                                     </tableView>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wyF-pE-EK3" customClass="CTSplashCarView">
-                                        <rect key="frame" x="104" y="66" width="167" height="148"/>
+                                        <rect key="frame" x="104" y="56" width="167" height="148"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="167" id="21m-K8-ylL"/>
                                             <constraint firstAttribute="height" constant="148" id="TCF-J0-B5H"/>
@@ -292,7 +292,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Compare and find the best value car hire deals" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twT-ry-kxh">
-                                        <rect key="frame" x="16" y="234" width="343" height="60"/>
+                                        <rect key="frame" x="16" y="224" width="343" height="60"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="eRH-9f-wCZ"/>
