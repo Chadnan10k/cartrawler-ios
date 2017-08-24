@@ -1,0 +1,112 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.53.1"
+
+default_platform :ios
+
+platform :ios do
+  before_all do
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+  end
+
+  desc "Increment framework version"
+  private_lane :increment_framework_version do |lane|
+
+    if !lane[:framework]
+      raise "No framework specified!".red
+    end
+
+    if !lane[:version]
+      raise "No version specified!".red
+    end
+
+    if !lane[:path]
+      raise "No path specified!".red
+    end
+
+    framework = lane[:framework]
+    version = lane[:version]
+    path = lane[:path]
+
+    increment_version_number(
+      xcodeproj: path,
+      version_number: version
+    )
+  end
+
+  lane :deploy do |lane|
+
+  script_path = lane[:script_path]
+  script_name = lane[:script_name]
+  artifacts_folder = lane[:artifacts_folder]
+  spec_template_folder = lane[:spec_template_folder]
+  FRAMEWORK_NAME = lane[:framework]
+  FRAMEWORK_VERSION = lane[:version]
+    Dir.chdir("#{script_path}") do
+      sh "#{script_path}/#{script_name} $1#{FRAMEWORK_NAME} $2#{FRAMEWORK_VERSION} $3#{artifacts_folder} $4#{spec_template_folder}"
+    end
+  end
+
+    lane :build do |params|
+      framework = params[:framework_name]
+      path = params[:framework_path]
+      version = params[:framework_version]
+      script_path = params[:script_path]
+      script_name = params[:script_name]
+      artifacts_folder = params[:artifacts_folder]
+      spec_template_folder = params[:spec_template_folder]
+
+      increment_framework_version(:framework => framework,
+      :version => version,
+      :path => path)
+
+      lane deploy(:version => version, :framework => framework,
+                  :script_path => script_path, :script_name => script_name,
+                  :artifacts_folder => artifacts_folder, :spec_template_folder => spec_template_folder)
+
+      lane send_slack_message(:framework => framework, :version => version)
+    end
+
+  # You can define as many lanes as you want
+
+  lane :send_slack_message do |params|
+    framework = params[:framework]
+    version = params[:version]
+    sdk_updated = "#{framework} #{version}"
+
+    slack(
+      message: "Updated SDK: #{sdk_updated}"
+    )
+  end
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
+end
+
+# From terminal
+#fastlane build framework_name:"CartrawlerAPI" framework_path:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/OTA API/CartrawlerAPI" framework_version:2.1.15 script_path:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/scripts" script_name:"generatefolders.sh" artifacts_folder:"/Users/apinto/Documents/iOS/Artifacts_Latest" spec_template_folder:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/CI"
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://docs.fastlane.tools/actions
+
+# fastlane reports which actions are used. No personal data is recorded.
+# Learn more at https://github.com/fastlane/fastlane#metrics
