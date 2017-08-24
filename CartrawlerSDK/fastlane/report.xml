@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.001183">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000706">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: Switch to ios increment_framework_version lane" time="0.000772">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: increment_version_number" time="0.76657">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: Switch to ios deploy lane" time="0.001292">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: /Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/scripts/generatefolders.sh $1CartrawlerAPI $22.2.6 $3/Users/apinto/Documents/iOS/Artifacts_Latest $4/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/CI/" time="36.44616">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>
