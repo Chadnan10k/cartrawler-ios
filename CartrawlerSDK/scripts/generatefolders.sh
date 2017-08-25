@@ -20,7 +20,7 @@ git tag "${GIT_TAG}"
 git push "${GIT_REMOTE}" "${GIT_BRANCH}" --tags
 echo "PUSHING - ${GIT_REMOTE} ${GIT_BRANCH}"
 
-we have now dumped the new binaries to the build repo, lets update cocoapods next
+#we have now dumped the new binaries to the build repo, lets update cocoapods next
 echo "Creating podspec"
 PODSPEC_TEMPLATE="${PROJECT_DIR}/PodTemplate.podspec"
 cp ${PODSPEC_TEMPLATE} ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec
@@ -28,7 +28,7 @@ cp ${PODSPEC_TEMPLATE} ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec
 PODSPEC_TEMPLATE="${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec"
 sed -i .temp "s/FRAMEWORK_NAME/${FRAMEWORK_NAME}/g; s/FRAMEWORK_VERSION/${BUILD_VERSION}/g; s/TAG_NAME/${GIT_TAG}/g;" ${PODSPEC_TEMPLATE}
 
-go back to the project dir
+#go back to the project dir
 cd "${PROJECT_DIR}/"
 echo "Pushing pod spec ${PROJECT_DIR}/${FRAMEWORK_NAME}.podspec"
 export LANG=en_US.UTF-8

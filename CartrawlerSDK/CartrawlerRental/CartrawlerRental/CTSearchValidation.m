@@ -48,7 +48,7 @@
     }
 	NSString *myAppId = [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] != nil || [[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"[ACCOUNTID]";
 	NSString *visitorId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] : @"";
-	NSString *orderId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] : @"";
+	NSString *orderId = [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] != nil || [[[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] : @"[FLIGHTPNR]";
 	
     [cartrawlerAPI changeLanguage:[CTSDKSettings instance].languageCode];
     [cartrawlerAPI requestVehicleAvailabilityForLocation:search.pickupLocation.code
