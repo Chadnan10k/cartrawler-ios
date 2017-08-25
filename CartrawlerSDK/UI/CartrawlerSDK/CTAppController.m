@@ -79,9 +79,9 @@
             userSettingsState.clientID = payload;
             break;
         case CTActionUserSettingsSetLanguageCode:
-            userSettingsState.languageCode = [(NSString *)payload lowercaseString] ?: @"en";
+//            userSettingsState.languageCode = [(NSString *)payload lowercaseString] ?: @"en";
             // TODO: Remove state from localised strings and put all in a controller
-            [CTLocalisedStrings instance].language = [(NSString *)payload lowercaseString] ?: @"en";
+//            [CTLocalisedStrings instance].language = [(NSString *)payload lowercaseString] ?: @"en";
             break;
         case CTActionUserSettingsSetCountryCode:
             userSettingsState.countryCode = payload;
@@ -568,18 +568,6 @@
         case CTActionSelectedVehicleUserDidTapNext:
             navigationState.currentNavigationStep = CTNavigationStepBooking;
             appState.bookingState = [CTBookingState new];
-            appState.bookingState.firstName = @"Al";
-            appState.bookingState.lastName = @"PM";
-            appState.bookingState.emailAddress = @"al@al.com";
-            appState.bookingState.prefix = @"353";
-            appState.bookingState.phoneNumber = @"85555555";
-            appState.bookingState.flightNumber = @"EI123";
-            appState.bookingState.addressLine1 = @"123 Fake St";
-            appState.bookingState.addressLine2 = @"Dublin";
-            appState.bookingState.postcode = @"Dublin 6";
-            appState.bookingState.city = @"Dublin";
-            
-            
             break;
             
         // Booking

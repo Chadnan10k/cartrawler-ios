@@ -102,8 +102,8 @@
         self.dropoffTime.text = viewModel.dropoffTime;
         self.creditCardWidth.constant = viewModel.processing ? self.creditCardWidth.constant : 0;
         self.creditCardHeight.constant = viewModel.processing ? self.creditCardWidth.constant : 0;
-        self.tickWidth.constant = viewModel.processing ? self.tickWidth.constant : 80;
-        self.tickHeight.constant = viewModel.processing ? self.tickHeight.constant : 80;
+        self.tickWidth.constant = viewModel.processing ? self.tickWidth.constant : 40;
+        self.tickHeight.constant = viewModel.processing ? self.tickHeight.constant : 40;
         self.vehicle.text = viewModel.vehicle;
         self.orSimilar.text = viewModel.orSimilar;
         self.passengers.text = viewModel.seats;

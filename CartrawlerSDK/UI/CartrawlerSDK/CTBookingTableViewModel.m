@@ -79,7 +79,7 @@
     viewModel.processing = bookingState.wantsBooking && !bookingState.bookingConfirmation && !bookingState.bookingConfirmationError;
     
     viewModel.topMessage = viewModel.processing ? @"We are currently processing your payment." : @"Congratulations! \n Your booking was successful.";
-    viewModel.bottomMessage = viewModel.processing ? @"This may take up to 30 seconds. \nPlease sit tight." : [NSString stringWithFormat:@"Your booking reference:\n%@\n\n\n\nWe have sent a confirmation email to designer@cartrawler.com. This may take up to 15 minutes to arrive. Please review your voucher before picking up your car.", booking.confID];
+    viewModel.bottomMessage = viewModel.processing ? @"This may take up to 30 seconds. \nPlease sit tight." : [NSString stringWithFormat:@"Your booking reference:\n%@\n\nWe have sent a confirmation email to designer@cartrawler.com. This may take up to 15 minutes to arrive. Please review your voucher before picking up your car.", booking.confID];
     viewModel.scrollMessage = @"Scroll for details";
     
     viewModel.pickup = @"Pick-up";
@@ -125,7 +125,7 @@
     
     CTRentalBooking *booking = appState.reservationsState.selectedReservation;
     viewModel.topMessage = @"Text on this page to be confirmed";
-    viewModel.bottomMessage = [NSString stringWithFormat:@"Your booking reference:\n%@\n\n\n", booking.bookingId];
+    viewModel.bottomMessage = [NSString stringWithFormat:@"Your booking reference:\n%@\n", booking.bookingId];
     viewModel.scrollMessage = @"Scroll for details";
     
     viewModel.pickupLocation = booking.pickupLocation;

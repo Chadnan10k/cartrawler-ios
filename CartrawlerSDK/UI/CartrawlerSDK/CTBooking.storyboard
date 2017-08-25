@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -682,20 +682,20 @@
                         <viewControllerLayoutGuide type="bottom" id="Oth-gj-4n2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ltj-8K-L9t">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7D-zo-H9s">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <connections>
                                     <segue destination="RQx-80-xUT" kind="embed" identifier="BookingTable" id="ZQS-Kw-M8H"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmE-ww-8dV" userLabel="Next Button">
-                                <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="416" width="320" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSv-1j-5bo">
-                                        <rect key="frame" x="8" y="8" width="359" height="48"/>
+                                        <rect key="frame" x="8" y="8" width="304" height="48"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Back to homepage">
@@ -760,36 +760,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="599.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="We are currently processing your payment" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMA-v4-cZP">
-                                                    <rect key="frame" x="16" y="68" width="343" height="48"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="We are currently processing your payment" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMA-v4-cZP">
+                                                    <rect key="frame" x="16" y="68" width="343" height="41.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This may take up to 15 seconds. Please sit tight." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNJ-LR-RFC">
-                                                    <rect key="frame" x="24" y="481.5" width="327" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="GbZ-NR-kf4"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqI-ld-BN1" customClass="CTCarImageView">
-                                                    <rect key="frame" x="122" y="351" width="130" height="120"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="120" id="b6e-Q7-SaK"/>
-                                                        <constraint firstAttribute="width" constant="130" id="pub-5u-1JB"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
-                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q43-LP-xSY" userLabel="Container View">
-                                                    <rect key="frame" x="140" y="156" width="95" height="61"/>
+                                                    <rect key="frame" x="140" y="149.5" width="95" height="61"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUQ-qk-ldd" customClass="CTTickImageView">
                                                             <rect key="frame" x="47.5" y="30.5" width="0.0" height="0.0"/>
@@ -827,8 +805,30 @@
                                                         <constraint firstAttribute="width" constant="95" id="mYO-LT-WBn"/>
                                                     </constraints>
                                                 </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqI-ld-BN1" customClass="CTCarImageView">
+                                                    <rect key="frame" x="122" y="357.5" width="130" height="120"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="90" id="b6e-Q7-SaK"/>
+                                                        <constraint firstAttribute="width" constant="100" id="pub-5u-1JB"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
+                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This may take up to 15 seconds. Please sit tight." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNJ-LR-RFC">
+                                                    <rect key="frame" x="24" y="481.5" width="327" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="GbZ-NR-kf4"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9N-Uw-GNI" userLabel="Divider 1" customClass="CTDashedLine">
-                                                    <rect key="frame" x="187" y="229" width="1" height="40.5"/>
+                                                    <rect key="frame" x="187" y="222.5" width="1" height="47"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="vhJ-Ey-Hce"/>
                                                     </constraints>
@@ -837,7 +837,7 @@
                                                     <rect key="frame" x="169" y="281.5" width="37" height="37"/>
                                                 </activityIndicatorView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpC-Uz-btz" userLabel="Divider 2" customClass="CTDashedLine">
-                                                    <rect key="frame" x="187" y="330.5" width="1" height="40.5"/>
+                                                    <rect key="frame" x="187" y="330.5" width="1" height="47"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="prZ-U5-ZJp"/>
                                                     </constraints>
@@ -879,7 +879,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="tNJ-LR-RFC" secondAttribute="trailing" constant="16" id="pch-Gw-X28"/>
                                                 <constraint firstItem="dD7-HJ-Tp7" firstAttribute="top" secondItem="0LE-Rm-ZGG" secondAttribute="bottom" constant="8" id="q4c-Zn-F1J"/>
                                                 <constraint firstItem="rlH-yu-a3F" firstAttribute="top" secondItem="A9N-Uw-GNI" secondAttribute="bottom" constant="12" id="rNs-Rj-bx3"/>
-                                                <constraint firstItem="Q43-LP-xSY" firstAttribute="top" secondItem="oMA-v4-cZP" secondAttribute="bottom" constant="40" id="xUk-a1-dpH"/>
+                                                <constraint firstItem="Q43-LP-xSY" firstAttribute="top" secondItem="oMA-v4-cZP" secondAttribute="bottom" constant="20" id="xUk-a1-dpH"/>
                                                 <constraint firstItem="tNJ-LR-RFC" firstAttribute="height" secondItem="brc-oG-ZDx" secondAttribute="height" multiplier="0.5" priority="250" id="xcq-ld-ghh"/>
                                             </constraints>
                                         </tableViewCellContentView>
