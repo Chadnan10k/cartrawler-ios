@@ -54,7 +54,7 @@
         viewModel.scrollToTop = vehicleListState.scrollToTop;
         
         viewModel.sortTitle = CTLocalizedString(CTRentalSortTitle);
-        viewModel.sortOptions = @[CTLocalizedString(CTRentalSortPrice), CTLocalizedString(CTRentalSortRecommended)];
+        viewModel.sortOptions = @[CTLocalizedString(CTRentalSortRecommended), CTLocalizedString(CTRentalSortPrice), CTLocalizedString(CTRentalSortRating)];
         viewModel.cancelTitle = CTLocalizedString(CTRentalCTACancel);
         
         viewModel.filterViewModel = [CTVehicleListFilterViewModel viewModelForState:appState];
@@ -78,12 +78,16 @@
 + (NSMutableAttributedString *)rightLabelTextForState:(CTVehicleListState *)vehicleListState {
     NSString *sortType;
     switch (vehicleListState.selectedSort) {
+        case CTVehicleListSortRecommended:
+            sortType = CTLocalizedString(CTRentalSortRecommended);
+        break;
         case CTVehicleListSortPrice:
             sortType = CTLocalizedString(CTRentalSortPrice);
             break;
-        case CTVehicleListSortRecommended:
-            sortType = CTLocalizedString(CTRentalSortRecommended);
+        case CTVehicleListSortRating:
+        sortType = CTLocalizedString(CTRentalSortRating);
             break;
+        
         default:
             break;
     }
@@ -180,19 +184,24 @@
 + (NSArray <CTAvailabilityItem *> *)availabilityItems:(NSArray <CTAvailabilityItem *> *)availabilityItems sort:(CTVehicleListSort)sort {
 
     NSString *key;
+    BOOL ascending = YES;
     switch (sort) {
         case CTVehicleListSortPrice:
             key = @"vehicle.totalPriceForThisVehicle";
-            break;
+        break;
         case CTVehicleListSortRecommended:
             key = @"vehicle.config.relevance";
             break;
+        case CTVehicleListSortRating:
+            key = @"vendor.rating.overallScore";
+            ascending = NO;
+        break;
         default:
             break;
     }
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                         initWithKey:key
-                                        ascending:YES];
+                                        ascending:ascending];
     
     return [availabilityItems sortedArrayUsingDescriptors: [NSArray arrayWithObject:sortDescriptor]];
 }

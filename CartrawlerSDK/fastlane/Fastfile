@@ -14,6 +14,37 @@ platform :ios do
     scan
   end
 
+    desc "Deploys test app to Hockey"
+    lane :deploy_nobump do
+        match
+        sigh
+
+        gym(scheme: "BuildTestApp",
+            configuration: "Debug",
+            export_method: "development"
+        )
+
+        hockey(
+            api_token: "dfca46ae53374a95a3168e630e8fcbfb",
+            notify: '1',
+        )
+
+        clean_build_artifacts
+
+        message = "Version  of iOS Generic App now available"
+        message.insert(8 , get_version_number(xcodeproj: './UI/CartrawlerSDK.xcodeproj'))
+
+        slack(
+            message: message,
+            payload: {
+                'Download Link' => lane_context[SharedValues::HOCKEY_DOWNLOAD_LINK],
+            },
+            default_payloads: [],
+            slack_url: "https://hooks.slack.com/services/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"
+        )
+
+    end
+
   desc "Bumps version number and deploys test app to Hockey"
   lane :deploy do
     increment_version_number({
@@ -33,7 +64,7 @@ platform :ios do
     )
 
     hockey(
-       api_token: "bd4247b5ba73405ab0d7b47b3517748f",
+       api_token: "dfca46ae53374a95a3168e630e8fcbfb",
        notify: '1',
     )
 

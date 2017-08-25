@@ -79,7 +79,7 @@
             userSettingsState.clientID = payload;
             break;
         case CTActionUserSettingsSetLanguageCode:
-//            userSettingsState.languageCode = [(NSString *)payload lowercaseString] ?: @"en";
+            userSettingsState.languageCode = @"en";//[(NSString *)payload lowercaseString] ?: @"en";
             // TODO: Remove state from localised strings and put all in a controller
 //            [CTLocalisedStrings instance].language = [(NSString *)payload lowercaseString] ?: @"en";
             break;

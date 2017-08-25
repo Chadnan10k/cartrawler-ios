@@ -16,8 +16,9 @@ typedef NS_ENUM(NSUInteger, CTVehicleListSelectedView) {
 };
 
 typedef NS_ENUM(NSUInteger, CTVehicleListSort) {
-    CTVehicleListSortPrice,
     CTVehicleListSortRecommended,
+    CTVehicleListSortPrice,
+    CTVehicleListSortRating,
 };
 
 @interface CTVehicleListState : NSObject

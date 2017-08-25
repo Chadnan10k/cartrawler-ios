@@ -87,26 +87,34 @@
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *price = [UIAlertAction actionWithTitle:viewModel.sortOptions[0]
+    UIAlertAction *recommended = [UIAlertAction actionWithTitle:viewModel.sortOptions[0]
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action) {
+                                                            [CTAppController dispatchAction:CTActionVehicleListUserDidTapSortOption payload:@(CTVehicleListSortRecommended)];
+                                                        }];
+    
+    UIAlertAction *price = [UIAlertAction actionWithTitle:viewModel.sortOptions[1]
                                                           style:UIAlertActionStyleDefault
                                                         handler:^(UIAlertAction * action) {
                                                             [CTAppController dispatchAction:CTActionVehicleListUserDidTapSortOption payload:@(CTVehicleListSortPrice)];
                                                         }];
     
-    UIAlertAction *recommended = [UIAlertAction actionWithTitle:viewModel.sortOptions[1]
-                                                                  style:UIAlertActionStyleDefault
-                                                                handler:^(UIAlertAction * action) {
-                                                                    [CTAppController dispatchAction:CTActionVehicleListUserDidTapSortOption payload:@(CTVehicleListSortRecommended)];
-                                                                }];
+    
+    
+    UIAlertAction *rating = [UIAlertAction actionWithTitle:viewModel.sortOptions[2]
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action) {
+                                                            [CTAppController dispatchAction:CTActionVehicleListUserDidTapSortOption payload:@(CTVehicleListSortRating)];
+                                                        }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:viewModel.cancelTitle
                                                      style:UIAlertActionStyleCancel
                                                    handler:^(UIAlertAction * _Nonnull action) {
                                                        [CTAppController dispatchAction:CTActionVehicleListUserDidTapCancelSort payload:nil];
                                                    }];
-    
-    [self.alertController addAction:price];
     [self.alertController addAction:recommended];
+    [self.alertController addAction:price];
+    [self.alertController addAction:rating];
     [self.alertController addAction:cancel];
     
     [self presentViewController:self.alertController animated:YES completion:nil];
