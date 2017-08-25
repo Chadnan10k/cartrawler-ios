@@ -126,7 +126,7 @@
 	cityName = [CTSDKSettings instance].isStandalone ? cityName : @"[CITY]";
 	postCode = [CTSDKSettings instance].isStandalone ? postCode : @"[POSTCODE]" ;
 	countryName = [CTSDKSettings instance].isStandalone ? countryName : @"[COUNTRYNAMECODE]";
-	NSString *orderId = [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] != nil ? [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] : @"";
+	NSString *orderId = [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] != nil || [[[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] : @"[FLIGHTPNR]";
 	
 	NSString *jsonOne = [NSString stringWithFormat:
 							@"{ \r"
