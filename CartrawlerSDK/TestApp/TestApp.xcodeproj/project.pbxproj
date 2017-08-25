@@ -294,7 +294,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/CartrawlerSDK.framework/strip-frameworks.sh\"\n#bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/CartrawlerAPI.framework/strip-frameworks.sh\"\n";
+			shellScript = "#bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/CartrawlerSDK.framework/strip-frameworks.sh\"\n#bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/CTPayment.framework/strip-frameworks.sh\"\n";
 		};
 		E782996B1F2A4B7900C20525 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -456,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_ACTIVITY_MODE = "";
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
@@ -469,8 +470,9 @@
 				INFOPLIST_FILE = TestApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.genericapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -478,6 +480,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_ACTIVITY_MODE = "";
 				DEVELOPMENT_TEAM = 3L8QU4R2JJ;
 				ENABLE_BITCODE = NO;
@@ -490,8 +493,9 @@
 				INFOPLIST_FILE = TestApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cartrawler.genericapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};

@@ -417,7 +417,6 @@
 		E782994C1F28164200C20525 /* CTVehicleListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E782994A1F28164200C20525 /* CTVehicleListViewModel.m */; };
 		E78299511F28172400C20525 /* CTVehicleListTableViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E782994F1F28172400C20525 /* CTVehicleListTableViewModel.h */; };
 		E78299521F28172400C20525 /* CTVehicleListTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E78299501F28172400C20525 /* CTVehicleListTableViewModel.m */; };
-		E78299561F29077A00C20525 /* V5-Mobile.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E78299551F29077A00C20525 /* V5-Mobile.ttf */; };
 		E782995B1F291AB000C20525 /* CTBannerEdge.h in Headers */ = {isa = PBXBuildFile; fileRef = E78299591F291AAF00C20525 /* CTBannerEdge.h */; };
 		E782995C1F291AB000C20525 /* CTBannerEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = E782995A1F291AAF00C20525 /* CTBannerEdge.m */; };
 		E782995F1F291B2300C20525 /* CTBannerEdgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = E782995D1F291B2300C20525 /* CTBannerEdgeView.h */; };
@@ -498,6 +497,7 @@
 		E7BB87A11EA7CE900008CBAD /* CTTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */; };
 		E7CD21A71E38F794006BE519 /* CTSDKLocalizationConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */; };
 		E7CD21A81E38F794006BE519 /* CTSDKLocalizationConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */; };
+		E7D46E8D1F4F6E2D0023338D /* V5-Mobile.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7D46E8C1F4F6E2D0023338D /* V5-Mobile.ttf */; };
 		E7F1066F1ED37C530012CE16 /* CTAnalyticsCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F1066D1ED37C530012CE16 /* CTAnalyticsCache.h */; };
 		E7F106701ED37C530012CE16 /* CTAnalyticsCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F1066E1ED37C530012CE16 /* CTAnalyticsCache.m */; };
 		E7F326851F4B2FAD00702AA0 /* CTBookingModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F326831F4B2FAD00702AA0 /* CTBookingModalViewController.h */; };
@@ -923,8 +923,8 @@
 		E78299101F27A7EC00C20525 /* CTSearchSettingsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSearchSettingsViewModel.m; sourceTree = "<group>"; };
 		E78299291F27B63200C20525 /* CTSplashCarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSplashCarView.h; sourceTree = "<group>"; };
 		E782992A1F27B63200C20525 /* CTSplashCarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSplashCarView.m; sourceTree = "<group>"; };
-		E78299311F27B9CB00C20525 /* CTSplashCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTSplashCar.h; path = ../../../../../CartrawlerSDK/UI/CartrawlerSDK/CTSplashCar.h; sourceTree = "<group>"; };
-		E78299321F27B9CB00C20525 /* CTSplashCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTSplashCar.m; path = ../../../../../CartrawlerSDK/UI/CartrawlerSDK/CTSplashCar.m; sourceTree = "<group>"; };
+		E78299311F27B9CB00C20525 /* CTSplashCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTSplashCar.h; path = CartrawlerSDK/CTSplashCar.h; sourceTree = SOURCE_ROOT; };
+		E78299321F27B9CB00C20525 /* CTSplashCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTSplashCar.m; path = CartrawlerSDK/CTSplashCar.m; sourceTree = SOURCE_ROOT; };
 		E78299351F27D1EF00C20525 /* CTSearchSettingsSelectionViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSearchSettingsSelectionViewModel.h; sourceTree = "<group>"; };
 		E78299361F27D1EF00C20525 /* CTSearchSettingsSelectionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSearchSettingsSelectionViewModel.m; sourceTree = "<group>"; };
 		E78299391F28065F00C20525 /* CTSearchSplashViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSearchSplashViewModel.h; sourceTree = "<group>"; };
@@ -938,9 +938,8 @@
 		E782994A1F28164200C20525 /* CTVehicleListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleListViewModel.m; sourceTree = "<group>"; };
 		E782994F1F28172400C20525 /* CTVehicleListTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVehicleListTableViewModel.h; sourceTree = "<group>"; };
 		E78299501F28172400C20525 /* CTVehicleListTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVehicleListTableViewModel.m; sourceTree = "<group>"; };
-		E78299551F29077A00C20525 /* V5-Mobile.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "V5-Mobile.ttf"; path = "../../../../../CartrawlerSDK/UI/CartrawlerSDK/V5-Mobile.ttf"; sourceTree = "<group>"; };
-		E78299591F291AAF00C20525 /* CTBannerEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTBannerEdge.h; path = ../../../../../CartrawlerSDK/UI/CartrawlerSDK/CTBannerEdge.h; sourceTree = "<group>"; };
-		E782995A1F291AAF00C20525 /* CTBannerEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTBannerEdge.m; path = ../../../../../CartrawlerSDK/UI/CartrawlerSDK/CTBannerEdge.m; sourceTree = "<group>"; };
+		E78299591F291AAF00C20525 /* CTBannerEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTBannerEdge.h; path = CartrawlerSDK/CTBannerEdge.h; sourceTree = SOURCE_ROOT; };
+		E782995A1F291AAF00C20525 /* CTBannerEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTBannerEdge.m; path = CartrawlerSDK/CTBannerEdge.m; sourceTree = SOURCE_ROOT; };
 		E782995D1F291B2300C20525 /* CTBannerEdgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBannerEdgeView.h; sourceTree = "<group>"; };
 		E782995E1F291B2300C20525 /* CTBannerEdgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBannerEdgeView.m; sourceTree = "<group>"; };
 		E78299621F2944A300C20525 /* CTVehicleListState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVehicleListState.h; sourceTree = "<group>"; };
@@ -1019,6 +1018,7 @@
 		E7BB879F1EA7CE900008CBAD /* CTTriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTriangleView.m; sourceTree = "<group>"; };
 		E7CD21A51E38F794006BE519 /* CTSDKLocalizationConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTSDKLocalizationConstants.h; path = Localization/CTSDKLocalizationConstants.h; sourceTree = "<group>"; };
 		E7CD21A61E38F794006BE519 /* CTSDKLocalizationConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTSDKLocalizationConstants.m; path = Localization/CTSDKLocalizationConstants.m; sourceTree = "<group>"; };
+		E7D46E8C1F4F6E2D0023338D /* V5-Mobile.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "V5-Mobile.ttf"; sourceTree = "<group>"; };
 		E7F1066D1ED37C530012CE16 /* CTAnalyticsCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAnalyticsCache.h; sourceTree = "<group>"; };
 		E7F1066E1ED37C530012CE16 /* CTAnalyticsCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAnalyticsCache.m; sourceTree = "<group>"; };
 		E7F326831F4B2FAD00702AA0 /* CTBookingModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingModalViewController.h; sourceTree = "<group>"; };
@@ -2281,7 +2281,7 @@
 		E78299541F29074800C20525 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				E78299551F29077A00C20525 /* V5-Mobile.ttf */,
+				E7D46E8C1F4F6E2D0023338D /* V5-Mobile.ttf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -3029,7 +3029,6 @@
 				BC54F1581E54980500A7C871 /* pt.strings in Resources */,
 				BC3361911E4CCC520056E5A6 /* de.strings in Resources */,
 				455B59521DCC91F900CA4790 /* CTISOCountries.csv in Resources */,
-				E78299561F29077A00C20525 /* V5-Mobile.ttf in Resources */,
 				45D3860A1DD62281000F02D1 /* strip-frameworks.sh in Resources */,
 				45BF77501E08588900F6D7E9 /* Assets.xcassets in Resources */,
 				E782993F1F2813CF00C20525 /* CTVehicleList.storyboard in Resources */,
@@ -3039,6 +3038,7 @@
 				E7F6D16E1F38D81D0002338C /* CTVehicleListFilterHeaderView.xib in Resources */,
 				455B59531DCC91F900CA4790 /* CTLanguages.csv in Resources */,
 				BC3361971E4CCC520056E5A6 /* nl.strings in Resources */,
+				E7D46E8D1F4F6E2D0023338D /* V5-Mobile.ttf in Resources */,
 				E7B8EDD11F4203EA00638D6F /* CTBooking.storyboard in Resources */,
 				BC3361931E4CCC520056E5A6 /* en.strings in Resources */,
 				BCF4DA4A1E93B58A00E8C5EC /* CTCalendar.storyboard in Resources */,
