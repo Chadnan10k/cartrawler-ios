@@ -240,34 +240,34 @@
 	
 	NSString *persona;
 	NSString *myAppId = [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] != nil || [[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"[ACCOUNTID]";
-	NSString *visitorId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] : @"";
+	NSString *visitorId = [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] != nil || [[[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] : @"";
 	
-	if ([CTSDKSettings instance].isStandalone) {
+//	if ([CTSDKSettings instance].isStandalone) {
 		persona = [NSString stringWithFormat:
 				   @"     ,\r "
 				   @"     \"Persona\":{ \r"
 				   @"           \"Characteristic\" :[{ \r"
-				   @"			  \"@name\":\"MyAccountId\", \r"
+				   @"			  \"@Name\":\"MyAccountId\", \r"
 				   @"               \"@Value\":\"%@\" \r"
 				   @"			} \r"
 				   @"       ]}", myAppId];
-	} else {
+//	} else {
 		NSString *characteristics = [NSString stringWithFormat:
 									 @"     ,\r "
 									 @"     \"Persona\":{ \r"
 									 @"           \"Characteristic\" :[{ \r"
-									 @"			  \"@name\":\"MyAccountId\", \r"
+									 @"			  \"@Name\":\"MyAccountId\", \r"
 									 @"                 \"@Value\":\"%@\" \r"
 									 @"			} \r", myAppId];
 		NSString *orderPth = [NSString stringWithFormat:
 							  @"			,{ \r"
-							  @"			  \"@name\":\"VisitorId\", \r"
+							  @"			  \"@Name\":\"VisitorId\", \r"
 							  @"                 \"@Value\":\"%@\" \r"
 							  @"			} \r"
 							  @"       ]}", visitorId];
 		
 		persona = ![orderId isEqualToString:@""] ? [characteristics stringByAppendingString:orderPth] : [characteristics stringByAppendingString:@"]}"];
-	}
+//	}
 	
 	NSString *jsonPthFour = [NSString stringWithFormat:
 							 @"            } \r"
