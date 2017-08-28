@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "CartrawlerSDK"
-s.version      = "2.0.3"
+s.version      = "4.1.5"
 s.summary      = "The Cartrawler SDK"
 s.description  = <<-DESC
 A toolkit for car rental & ground transport
@@ -20,7 +20,7 @@ LICENSE
 s.author             = { "Cartrawler" => "" }
 s.platform     = :ios
 s.platform     = :ios, "8.0"
-s.source       = { :git => "https://github.com/cartrawler/cartrawler-ios-build.git", :tag => "v2.0.3-CartrawlerSDK" }
+s.source       = { :git => "https://github.com/cartrawler/cartrawler-ios-build.git", :tag => "v4.1.5-CartrawlerSDK" }
 
 s.ios.vendored_frameworks = 'CartrawlerSDK.framework'
 
