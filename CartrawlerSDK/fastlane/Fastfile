@@ -103,7 +103,11 @@ platform :ios do
 end
 
 # From terminal
+#Update CartrawlerAPI
 #fastlane build framework_name:"CartrawlerAPI" framework_path:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/OTA API/CartrawlerAPI" framework_version:2.1.15 script_path:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/scripts" script_name:"generatefolders.sh" artifacts_folder:"/Users/apinto/Documents/iOS/Artifacts_Latest" spec_template_folder:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/CI"
+#Update CartrawlerSDK
+#https://hooks.slack.com/services/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
+
 
 # More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
 # All available actions: https://docs.fastlane.tools/actions
