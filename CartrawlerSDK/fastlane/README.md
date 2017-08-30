@@ -40,9 +40,14 @@ fastlane ios deploy
 fastlane ios build
 ```
 
-### ios send_slack_message
+### ios send_slack_message_to_UX
 ```
-fastlane ios send_slack_message
+fastlane ios send_slack_message_to_UX
+```
+
+### ios send_slack_message_to_RYR
+```
+fastlane ios send_slack_message_to_RYR
 ```
 
 

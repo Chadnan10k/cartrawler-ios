@@ -17,7 +17,8 @@ default_platform :ios
 
 platform :ios do
   before_all do
-    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+
+
   end
 
   desc "Increment framework version"
@@ -62,6 +63,11 @@ platform :ios do
       framework = params[:framework_name]
       path = params[:framework_path]
       version = params[:framework_version]
+      puts "================================================="
+      puts framework
+      puts path
+      puts version
+      puts "================================================="
       script_path = params[:script_path]
       script_name = params[:script_name]
       artifacts_folder = params[:artifacts_folder]
@@ -75,15 +81,36 @@ platform :ios do
                   :script_path => script_path, :script_name => script_name,
                   :artifacts_folder => artifacts_folder, :spec_template_folder => spec_template_folder)
 
-      lane send_slack_message(:framework => framework, :version => version)
+      lane send_slack_message_to_UX(:framework => framework, :version => version)
+      lane send_slack_message_to_RYR(:framework => framework, :version => version)
     end
 
+    lane :execute_lane do
+      puts "working ..."
+    end
+
+    # cd /Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/fastlane
+    # fastlane build framework_name:CHANGE_TARGET framework_path:WORKSPACE framework_version:BUILD_NUMBER script_path:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/scripts" script_name:"generatefolders.sh" artifacts_folder:"/Users/apinto/Documents/iOS/Artifacts_Latest" spec_template_folder:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/CI"
   # You can define as many lanes as you want
 
-  lane :send_slack_message do |params|
+  lane :send_slack_message_to_UX do |params|
     framework = params[:framework]
     version = params[:version]
     sdk_updated = "#{framework} #{version}"
+
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+
+    slack(
+      message: "Updated SDK: #{sdk_updated}"
+    )
+  end
+
+  lane :send_slack_message_to_RYR do |params|
+    framework = params[:framework]
+    version = params[:version]
+    sdk_updated = "#{framework} #{version}"
+
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
 
     slack(
       message: "Updated SDK: #{sdk_updated}"
@@ -105,8 +132,6 @@ end
 # From terminal
 #Update CartrawlerAPI
 #fastlane build framework_name:"CartrawlerAPI" framework_path:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/OTA API/CartrawlerAPI" framework_version:2.1.15 script_path:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/scripts" script_name:"generatefolders.sh" artifacts_folder:"/Users/apinto/Documents/iOS/Artifacts_Latest" spec_template_folder:"/Users/apinto/Documents/iOS/cartrawler-ios/CartrawlerSDK/CI"
-#Update CartrawlerSDK
-#https://hooks.slack.com/services/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
 
 
 # More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md

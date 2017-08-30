@@ -132,34 +132,34 @@
 	
 	NSString *persona;
 
-	if (isStandAlone) {
+//	if (isStandAlone) {
 		persona = [NSString stringWithFormat:
 				   @"     ,\r "
 				   @"     \"Persona\":{ \r"
 				   @"           \"Characteristic\" :[{ \r"
-				   @"			  \"@name\":\"MyAccountId\", \r"
+				   @"			  \"@Name\":\"MyAccountId\", \r"
 				   @"               \"@Value\":\"%@\" \r"
 				   @"            } \r"
 				   @"       ]}", accountId];
-	} else {
+//	} else {
 		NSString *characteristics = [NSString stringWithFormat:
 				   @"     ,\r "
 				   @"     \"Persona\":{ \r"
 				   @"           \"Characteristic\" :[ \n"
 				   @"			{  \r"
-				   @"			  \"@name\":\"MyAccountId\", \r"
+				   @"			  \"@Name\":\"MyAccountId\", \r"
 				   @"                 \"@Value\":\"%@\" \r"
 								   @"               } \r",accountId];
 		NSString *pnr = [NSString stringWithFormat:
 				   @"			,{ \r"
-				   @"			  \"@name\":\"VisitorId\", \r"
+				   @"			  \"@Name\":\"VisitorId\", \r"
 				   @"                 \"@Value\":\"%@\" \r"
 				   @"			} \r"
 				   @"		]"
 				   @"       }", visitorId];
 		
 		persona = ![visitorId isEqualToString:@""] ? [characteristics stringByAppendingString:pnr] : [characteristics stringByAppendingString:@"]}"];
-	}
+//	}
 	
 	
 	NSString *tpa2 = @" }} \r";

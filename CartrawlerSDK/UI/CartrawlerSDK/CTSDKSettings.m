@@ -8,6 +8,10 @@
 
 #import "CTSDKSettings.h"
 
+NSString *const CTOrderId = @"ORDERID";
+NSString *const CTMyAccountID = @"MyAccountId";
+NSString *const CTVisitorId = @"VisitorId";
+
 @implementation CTSDKSettings
 
 + (instancetype)instance

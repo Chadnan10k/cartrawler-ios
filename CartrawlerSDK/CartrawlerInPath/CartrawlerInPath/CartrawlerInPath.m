@@ -15,6 +15,7 @@
 #import "CTInPathView.h"
 #import "CartrawlerSDK/CartrawlerSDK+NSNumber.h"
 
+
 @interface CartrawlerInPath() <CTViewControllerDelegate>
 
 @property (nonatomic, strong) CartrawlerRental *rental;
@@ -157,9 +158,9 @@
 - (void)performVehicleSearch
 {
 	
-	NSString *myAppId = [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] != nil || [[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"[ACCOUNTID]";
-	NSString *visitorId = [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] != nil ? [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] : @"";
-	NSString *orderId = [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] != nil || [[[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] : @"[FLIGHTPNR]";
+	NSString *myAppId = [[CTSDKSettings instance].customAttributes valueForKey:CTMyAccountID] != nil && ![[[CTSDKSettings instance].customAttributes valueForKey:CTMyAccountID] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:CTMyAccountID] : @"[ACCOUNTID]";
+	NSString *visitorId = [[CTSDKSettings instance].customAttributes valueForKey:CTVisitorId] != nil ? [[CTSDKSettings instance].customAttributes valueForKey:CTVisitorId] : @"";
+	NSString *orderId = [[CTSDKSettings instance].customAttributes valueForKey:CTOrderId] != nil && ![[[CTSDKSettings instance].customAttributes valueForKey:CTOrderId] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:CTOrderId] : @"[FLIGHTPNR]";
 	
     __weak typeof (self) weakSelf = self;
     [self.rental.cartrawlerSDK.cartrawlerAPI requestVehicleAvailabilityForLocation:[CTRentalSearch instance].pickupLocation.code
