@@ -164,4 +164,4 @@ Call this method when you receive a Cartrawler confirmationID from your payment 
 [[CTSDKSettings instance].customAttributes setObject:@"T26RJX" forKey:CTOrderId];
 [[CTSDKSettings instance].customAttributes setObject:@"89952133413890617305233409049160176604" forKey:CTVisitorId];
 
-- where CTMyAccountID, CTOrderId and CTVisitorId are constants values .
+- where CTMyAccountID, CTOrderId and CTVisitorId are constants values from CTSDKSettings.
