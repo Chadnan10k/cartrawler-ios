@@ -154,3 +154,14 @@ Called when the call to fetch vehicles fails and the best daily rate cannot be c
 - (void)didReceiveBookingConfirmationID:(NSString *)confirmationID;
 ```
 Call this method when you receive a Cartrawler confirmationID from your payment server.
+
+## Setting up custom attributes values
+
+- Prerequisite: setting this after initializing CartrawlerSDK
+
+[CTSDKSettings instance].customAttributes = [[NSMutableDictionary alloc] init];
+[[CTSDKSettings instance].customAttributes setObject:@"er89952d1334" forKey:CTMyAccountID];
+[[CTSDKSettings instance].customAttributes setObject:@"T26RJX" forKey:CTOrderId];
+[[CTSDKSettings instance].customAttributes setObject:@"89952133413890617305233409049160176604" forKey:CTVisitorId];
+
+- where CTMyAccountID, CTOrderId and CTVisitorId are constants values from CTSDKSettings.

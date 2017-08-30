@@ -126,7 +126,7 @@
 	cityName = [CTSDKSettings instance].isStandalone ? cityName : @"[CITY]";
 	postCode = [CTSDKSettings instance].isStandalone ? postCode : @"[POSTCODE]" ;
 	countryName = [CTSDKSettings instance].isStandalone ? countryName : @"[COUNTRYNAMECODE]";
-	NSString *orderId = [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] != nil || [[[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] : @"[FLIGHTPNR]";
+	NSString *orderId = [[CTSDKSettings instance].customAttributes valueForKey:CTOrderId] != nil && ![[[CTSDKSettings instance].customAttributes valueForKey:CTOrderId] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:CTOrderId] : @"[FLIGHTPNR]";
 	
 	NSString *jsonOne = [NSString stringWithFormat:
 							@"{ \r"
@@ -239,8 +239,8 @@
 							  @" }",countryName, homeCountry, driverAge, extrasString, flightDetails, refID, refTimeStamp, refURL, insuranceJson];
 	
 	NSString *persona;
-	NSString *myAppId = [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] != nil || [[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"[ACCOUNTID]";
-	NSString *visitorId = [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] != nil || [[[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] : @"";
+	NSString *myAppId = [[CTSDKSettings instance].customAttributes valueForKey:CTMyAccountID] != nil && ![[[CTSDKSettings instance].customAttributes valueForKey:CTMyAccountID] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:CTMyAccountID] : @"[ACCOUNTID]";
+	NSString *visitorId = [[CTSDKSettings instance].customAttributes valueForKey:CTVisitorId] != nil && ![[[CTSDKSettings instance].customAttributes valueForKey:CTVisitorId] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:CTVisitorId] : @"";
 	
 //	if ([CTSDKSettings instance].isStandalone) {
 		persona = [NSString stringWithFormat:

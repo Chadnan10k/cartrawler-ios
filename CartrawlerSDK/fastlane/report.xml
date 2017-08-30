@@ -5,17 +5,22 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.001054">
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.001059">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000687">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.002426">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: slack" time="0.465586">
+      <testcase classname="fastlane.lanes" name="2: Switch to ios send_slack_message_to_UX lane" time="0.000736">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: slack" time="0.458546">
         
       </testcase>
     

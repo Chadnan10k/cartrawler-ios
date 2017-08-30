@@ -162,9 +162,9 @@
 - (void)performVehicleAvail:(Completion)completion
 {
 	
-	NSString *myAppId = [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] != nil || [[[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"myAppId"] : @"[ACCOUNTID]";
-	NSString *visitorId = ![[[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"visitorId"] : @"";
-	NSString *orderId = [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] != nil || [[[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:@"orderId"] : @"[FLIGHTPNR]";
+	NSString *myAppId = [[CTSDKSettings instance].customAttributes valueForKey:CTMyAccountID] != nil && ![[[CTSDKSettings instance].customAttributes valueForKey:CTMyAccountID] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:CTMyAccountID] : @"[ACCOUNTID]";
+	NSString *visitorId = ![[[CTSDKSettings instance].customAttributes valueForKey:CTVisitorId] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:CTVisitorId] : @"";
+	NSString *orderId = [[CTSDKSettings instance].customAttributes valueForKey:CTOrderId] != nil && ![[[CTSDKSettings instance].customAttributes valueForKey:CTOrderId] isEqualToString:@""] ? [[CTSDKSettings instance].customAttributes valueForKey:CTOrderId] : @"[FLIGHTPNR]";
     __weak typeof (self) weakSelf = self;
     [self.cartrawlerAPI requestVehicleAvailabilityForLocation:self.search.pickupLocation.code
                                            returnLocationCode:self.search.dropoffLocation.code

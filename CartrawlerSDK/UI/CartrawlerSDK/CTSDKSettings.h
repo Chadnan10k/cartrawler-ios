@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const CTOrderId;
+extern NSString *const CTMyAccountID;
+extern NSString *const CTVisitorId;
+
 @interface CTSDKSettings : NSObject
 
 @property (nonatomic, strong) NSString *clientId;
