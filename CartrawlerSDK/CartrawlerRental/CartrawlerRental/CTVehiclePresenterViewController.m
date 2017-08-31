@@ -64,7 +64,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.sortByPrice = YES;
+    self.sortByPrice = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.rightButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.rightButton.titleLabel.minimumScaleFactor = 0.6;
