@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UILabel *infoLabel;
 @property (nonatomic, strong) UIView *bannerBackground;
 @property (nonatomic, strong) NSString *bannerString;
+
 @end
 
 @implementation CTInPathBanner
@@ -29,7 +30,7 @@
     
     [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(30)]" options:0 metrics:nil views:@{@"view" : self}]];
     [superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]" options:0 metrics:nil views:@{@"view" : self}]];
-    
+	
     [superview addConstraint:
      [NSLayoutConstraint constraintWithItem:self
                                   attribute:NSLayoutAttributeCenterY
@@ -65,7 +66,7 @@
     [self addSubview:self.bannerImageView];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.bannerImageView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(15)]-0-|" options:0 metrics:nil views:@{@"view" : self.bannerImageView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view]-0-|" options:0 metrics:nil views:@{@"view" : self.bannerImageView}]];
 
     _bannerBackground = [[UIView alloc] initWithFrame:CGRectZero];
     self.bannerBackground.backgroundColor = [UIColor yellowColor];
@@ -141,10 +142,11 @@
 - (void)setIcon:(UIImage *)image backgroundColor:(UIColor *)backgroundColor textColor:(UIColor *)textColor
 {
     self.starImageView.image = image;
-    [self.starImageView applyTintWithColor:textColor];
+//    [self.starImageView applyTintWithColor:textColor];
 
     [self applyColorsToBackground:backgroundColor];
     self.infoLabel.textColor = textColor;
+	self.bannerImageView.hidden = YES;
 }
 
 - (CGFloat)widthOfString:(NSString *)string withFont:(UIFont *)font
