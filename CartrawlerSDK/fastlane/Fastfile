@@ -70,7 +70,7 @@ platform :ios do
 
         tagmessage = "- Incremented build number (" + build + ")"
         add_git_tag(
-            tag: tagmessage,
+            message: tagmessage,
         )
     end
 
