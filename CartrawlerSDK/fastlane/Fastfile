@@ -68,7 +68,10 @@ platform :ios do
             slack_url: "https://hooks.slack.com/services/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"
         )
 
-        add_git_tag
+        tagmessage = "- Increment and deploy build (" + get_build_number(xcodeproj: './UI/CartrawlerSDK.xcodeproj') + ")"
+        add_git_tag(
+            message: tagmessage,
+        )
     end
 
   desc "Bumps version number and deploys test app to Hockey"
