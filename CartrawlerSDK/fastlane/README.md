@@ -40,11 +40,11 @@ Runs all the tests
 fastlane ios build_library
 ```
 Build universal library
-### ios deploy_nobump
+### ios deploy_build
 ```
-fastlane ios deploy_nobump
+fastlane ios deploy_build
 ```
-Deploys test app to Hockey
+Increments build and deploys test app to Hockey
 ### ios deploy
 ```
 fastlane ios deploy
