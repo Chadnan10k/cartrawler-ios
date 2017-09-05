@@ -40,6 +40,7 @@
 @property (weak, nonatomic) IBOutlet UIView *paymentContainer;
 @property (weak, nonatomic) IBOutlet UILabel *conditions;
 @property (weak, nonatomic) IBOutlet UILabel *extrasReminder;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *extrasReminderHeight;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *cancelButton;
 @property (nonatomic, strong) UIBarButtonItem *doneButton;
@@ -225,6 +226,7 @@
     }
     
     self.extrasReminder.text = viewModel.extrasReminder;
+    self.extrasReminderHeight.active = self.extrasReminder.text == nil;
     self.payButton.backgroundColor = viewModel.buttonColor;
     [self.paymentSummaryVC updateWithViewModel:viewModel.paymentSummaryViewModel];
     self.paymentSummaryHeight.constant = [self.paymentSummaryVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;

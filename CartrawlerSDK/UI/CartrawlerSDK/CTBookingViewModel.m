@@ -149,7 +149,11 @@
         }
     }
     
-    viewModel.extrasReminder = [NSString stringWithFormat:@"Don’t forget the remaining %@ will be paid at the rental desk at pick-up.", [self totalForAddedExtras:appState.selectedVehicleState.addedExtras]];
+    NSNumber *extrasTotal = [self totalForAddedExtras:appState.selectedVehicleState.addedExtras];
+    if (extrasTotal.doubleValue > 0) {
+        viewModel.extrasReminder = [NSString stringWithFormat:@"Don’t forget the remaining %@ will be paid at the rental desk at pick-up.", [extrasTotal numberStringWithCurrencyCode]];
+    }
+    
     viewModel.navigationBarColor = appState.userSettingsState.primaryColor;
     viewModel.buttonColor = appState.userSettingsState.secondaryColor;
     
@@ -166,7 +170,7 @@
     }
 }
 
-+ (NSString *)totalForAddedExtras:(NSMapTable *)addedExtras {
++ (NSNumber *)totalForAddedExtras:(NSMapTable *)addedExtras {
     double total = 0.0;
     
     NSEnumerator *enumerator = addedExtras.keyEnumerator;
@@ -176,7 +180,7 @@
             total += extra.chargeAmount.doubleValue * quantity;
         }
     }
-    return [[NSNumber numberWithDouble:total] numberStringWithCurrencyCode];
+    return [NSNumber numberWithDouble:total];
 }
 
 @end
