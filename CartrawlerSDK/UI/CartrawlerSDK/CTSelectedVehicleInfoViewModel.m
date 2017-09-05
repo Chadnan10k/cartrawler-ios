@@ -14,7 +14,7 @@
 @property (nonatomic, readwrite) NSString *vehicleName;
 @property (nonatomic, readwrite) NSString *passengers;
 @property (nonatomic, readwrite) NSString *bags;
-@property (nonatomic, readwrite) NSString *fuel;
+@property (nonatomic, readwrite) NSString *doors;
 @property (nonatomic, readwrite) NSString *featuresCount;
 @property (nonatomic, readwrite) NSString *features;
 @property (nonatomic, readwrite) NSString *location;
@@ -47,7 +47,7 @@
     viewModel.featuresCount = [NSString stringWithFormat:@"+%ld", (long)[self featuresCount:vehicle]];
     
     // TODO: Remove this logic from CTLocalisedStrings
-    viewModel.fuel = [CTLocalisedStrings fuelPolicy:vehicle.fuelPolicy];
+    viewModel.doors = [NSString stringWithFormat:@"%@ %@", vehicle.doorCount.stringValue, CTLocalizedString(CTRentalVehicleDoors)];
     viewModel.location = [CTLocalisedStrings pickupType:availabilityItem];
     
     viewModel.vehicleURL = vehicle.pictureURL;

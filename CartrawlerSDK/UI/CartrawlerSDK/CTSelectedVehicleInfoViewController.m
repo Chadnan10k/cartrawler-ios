@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *vehicleImageView;
 @property (weak, nonatomic) IBOutlet UILabel *passengersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bagsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *fuelLabel;
+@property (weak, nonatomic) IBOutlet UILabel *doorsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *featuresCountButton;
 @property (weak, nonatomic) IBOutlet UILabel *featuresLabel;
 @end
@@ -40,7 +40,7 @@
     
     self.passengersLabel.text = viewModel.passengers;
     self.bagsLabel.text = viewModel.bags;
-    self.fuelLabel.text = viewModel.fuel;
+    self.doorsLabel.text = viewModel.doors;
     
     [self.featuresCountButton setTitleColor:viewModel.primaryColor forState:UIControlStateNormal];
     [self.featuresCountButton setTitle:viewModel.featuresCount forState:UIControlStateNormal];

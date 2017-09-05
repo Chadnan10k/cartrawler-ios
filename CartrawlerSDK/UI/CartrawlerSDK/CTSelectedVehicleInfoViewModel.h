@@ -14,7 +14,7 @@
 @property (nonatomic, readonly) NSString *vehicleName;
 @property (nonatomic, readonly) NSString *passengers;
 @property (nonatomic, readonly) NSString *bags;
-@property (nonatomic, readonly) NSString *fuel;
+@property (nonatomic, readonly) NSString *doors;
 @property (nonatomic, readonly) NSString *location;
 @property (nonatomic, readonly) NSString *featuresCount;
 @property (nonatomic, readonly) NSString *features;

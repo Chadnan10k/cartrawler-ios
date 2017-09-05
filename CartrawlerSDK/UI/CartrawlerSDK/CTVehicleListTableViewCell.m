@@ -46,6 +46,7 @@
     self.fuelLabel.text = viewModel.fuel;
     self.locationLabel.text = viewModel.location;
     
+    self.carImageView.image = nil;
     [[CTImageCache sharedInstance] cachedImage:viewModel.vehicleURL completion:^(UIImage *image) {
         self.carImageView.image = image;
     }];
@@ -54,13 +55,14 @@
     self.specialOfferView.backgroundColor = viewModel.specialOfferColor;
     self.specialOfferLabel.text = viewModel.specialOffer;
     
+    self.vendorImageView.image = nil;
     [[CTImageCache sharedInstance] cachedImage:viewModel.vendorURL completion:^(UIImage *image) {
         self.vendorImageView.image = image;
     }];
     
     self.vendorRatingLabel.attributedText = viewModel.vendorRating;
     self.priceLabel.attributedText = viewModel.price;
-    //self.perDayLabel.text = viewModel.perDay;
+    self.perDayLabel.text = viewModel.perDay;
 }
 
 @end
