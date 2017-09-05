@@ -48,6 +48,7 @@ platform :ios do
         hockey(
             api_token: "dfca46ae53374a95a3168e630e8fcbfb",
             notify: '0',
+            notes: changelog_from_git_commits,
         )
 
         clean_build_artifacts
