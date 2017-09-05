@@ -35,6 +35,16 @@ xcode-select --install
 fastlane ios test
 ```
 Runs all the tests
+### ios build_library
+```
+fastlane ios build_library
+```
+Build universal library
+### ios deploy_nobump
+```
+fastlane ios deploy_nobump
+```
+Deploys test app to Hockey
 ### ios deploy
 ```
 fastlane ios deploy

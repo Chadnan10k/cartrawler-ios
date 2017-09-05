@@ -5,57 +5,37 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="00: Verifying required fastlane version" time="0.002242">
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.002484">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="01: default_platform" time="0.001823">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.001955">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="02: increment_version_number" time="0.92372">
+      <testcase classname="fastlane.lanes" name="2: get_version_number" time="0.538252">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="03: increment_version_number" time="1.201283">
+      <testcase classname="fastlane.lanes" name="3: increment_build_number" time="1.426612">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="04: match" time="4.328985">
+      <testcase classname="fastlane.lanes" name="4: get_build_number" time="0.906576">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="05: sigh" time="2.521742">
+      <testcase classname="fastlane.lanes" name="5: changelog_from_git_commits" time="0.161473">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="06: gym" time="49.789503">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="07: hockey" time="8.807999">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="08: clean_build_artifacts" time="0.00557">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="09: get_version_number" time="1.426353">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="10: slack" time="0.561317">
+      <testcase classname="fastlane.lanes" name="6: slack" time="1.328957">
         
       </testcase>
     

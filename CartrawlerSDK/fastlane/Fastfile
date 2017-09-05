@@ -14,33 +14,56 @@ platform :ios do
     scan
   end
 
-    desc "Deploys test app to Hockey"
-    lane :deploy_nobump do
-        match
-        sigh
-
-        gym(scheme: "BuildTestApp",
-            configuration: "Debug",
-            export_method: "development"
+    desc "Build universal library"
+    lane :build_library do
+        xcodebuild(
+            scheme: 'CartrawlerSDK',
+            configuration: 'Release',
+            derivedDataPath: '../../temp_builds',
         )
-
-        hockey(
-            api_token: "dfca46ae53374a95a3168e630e8fcbfb",
-            notify: '1',
+        xcodebuild(
+            scheme: 'CartrawlerSDK',
+            configuration: 'Release',
+            destination: 'platform=iOS Simulator,name=iPhone 7',
+            derivedDataPath: '../../temp_builds',
         )
 
         clean_build_artifacts
+    end
 
-        message = "Version  of iOS Generic App now available"
-        message.insert(8 , get_version_number(xcodeproj: './UI/CartrawlerSDK.xcodeproj'))
+    desc "Deploys test app to Hockey"
+    lane :deploy_nobump do
+#match
+#sigh
 
+#gym(scheme: "BuildTestApp",
+#configuration: "Debug",
+#export_method: "development"
+#)
+
+#hockey(
+#api_token: "dfca46ae53374a95a3168e630e8fcbfb",
+#notify: '1',
+#)
+
+#clean_build_artifacts
+        ensure_git_status_clean
+        increment_build_number(xcodeproj: './UI/CartrawlerSDK.xcodeproj')
+        commit_version_bump(xcodeproj: './UI/CartrawlerSDK.xcodeproj')
+        add_git_tag
+
+        version = get_version_number(xcodeproj: './UI/CartrawlerSDK.xcodeproj')
+        build = get_build_number(xcodeproj: './UI/CartrawlerSDK.xcodeproj')
+        message = "Version " + version + " (" + build + ") " + "of iOS Generic App now available"
         slack(
             message: message,
             payload: {
                 'Download Link' => lane_context[SharedValues::HOCKEY_DOWNLOAD_LINK],
+                'New in this build' => changelog_from_git_commits
             },
             default_payloads: [],
-            slack_url: "https://hooks.slack.com/services/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"
+            #slack_url: "https://hooks.slack.com/services/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"
+            slack_url: "https://hooks.slack.com/services/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"
         )
 
     end

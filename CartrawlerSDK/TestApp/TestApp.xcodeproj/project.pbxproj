@@ -181,7 +181,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 45295F701D78412600A09B8A /* Build configuration list for PBXNativeTarget "TestApp" */;
 			buildPhases = (
-				E782996B1F2A4B7900C20525 /* ShellScript */,
+				E72A54DA1F51E7E300C50023 /* ShellScript */,
 				45295F551D78412500A09B8A /* Sources */,
 				45295F561D78412500A09B8A /* Frameworks */,
 				45295F571D78412500A09B8A /* Resources */,
@@ -296,7 +296,7 @@
 			shellPath = /bin/sh;
 			shellScript = "#bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/CartrawlerSDK.framework/strip-frameworks.sh\"\n#bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/CTPayment.framework/strip-frameworks.sh\"\n";
 		};
-		E782996B1F2A4B7900C20525 /* ShellScript */ = {
+		E72A54DA1F51E7E300C50023 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -306,8 +306,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\nUNIVERSAL_OUTPUTFOLDER=../build/\n\n# make the output directory and delete the framework directory\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\nrm -rf \"${UNIVERSAL_OUTPUTFOLDER}/CartrawlerSDK.framework\"\n\n# Step 1. Build Device and Simulator versions\nset -o pipefail && xctool -workspace \"../${WORKSPACE_NAME}\" -scheme \"CartrawlerSDK\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" build | xcpretty\nset -o pipefail && xctool -workspace \"../${WORKSPACE_NAME}\" -scheme \"CartrawlerSDK\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphonesimulator BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"  -destination 'platform=iOS Simulator,name=iPhone 6' build | xcpretty\n\n# Step 2. Copy the framework structure to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/CartrawlerSDK.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n# Step 3. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/CartrawlerSDK.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/CartrawlerSDK\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/CartrawlerSDK.framework/CartrawlerSDK\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
