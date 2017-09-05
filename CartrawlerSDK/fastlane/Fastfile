@@ -70,7 +70,7 @@ platform :ios do
 
         tagmessage = "- Increment and deploy build (" + get_build_number(xcodeproj: './UI/CartrawlerSDK.xcodeproj') + ")"
         add_git_tag(
-            message: tagmessage,
+            tag: tagmessage,
         )
     end
 
