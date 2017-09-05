@@ -53,7 +53,7 @@ platform :ios do
 
         hockey(
             api_token: "dfca46ae53374a95a3168e630e8fcbfb",
-            notify: '0',
+            notify: '1',
             notes: changelog_from_git_commits,
         )
 
@@ -70,8 +70,7 @@ platform :ios do
                 'New in this build' => changelog_from_git_commits
             },
             default_payloads: [],
-            #slack_url: "https://hooks.slack.com/services/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"
-            slack_url: "https://hooks.slack.com/services/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"
+            slack_url: "https://hooks.slack.com/services/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"
         )
 
         tagmessage = "Build: (" + build + ")"
