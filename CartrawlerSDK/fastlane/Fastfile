@@ -31,25 +31,26 @@ platform :ios do
         clean_build_artifacts
     end
 
-    desc "Deploys test app to Hockey"
-    lane :deploy_nobump do
-#match
-#sigh
-
-#gym(scheme: "BuildTestApp",
-#configuration: "Debug",
-#export_method: "development"
-#)
-
-#hockey(
-#api_token: "dfca46ae53374a95a3168e630e8fcbfb",
-#notify: '1',
-#)
-
-#clean_build_artifacts
+    desc "Increments build and deploys test app to Hockey"
+    lane :deploy_build do
         ensure_git_status_clean
         increment_build_number(xcodeproj: './UI/CartrawlerSDK.xcodeproj')
         commit_version_bump(xcodeproj: './UI/CartrawlerSDK.xcodeproj')
+
+        match
+        sigh
+
+        gym(scheme: "BuildTestApp",
+            configuration: "Debug",
+            export_method: "development"
+        )
+
+        hockey(
+            api_token: "dfca46ae53374a95a3168e630e8fcbfb",
+            notify: '0',
+        )
+
+        clean_build_artifacts
 
         version = get_version_number(xcodeproj: './UI/CartrawlerSDK.xcodeproj')
         build = get_build_number(xcodeproj: './UI/CartrawlerSDK.xcodeproj')
@@ -67,7 +68,6 @@ platform :ios do
         )
 
         add_git_tag
-
     end
 
   desc "Bumps version number and deploys test app to Hockey"
