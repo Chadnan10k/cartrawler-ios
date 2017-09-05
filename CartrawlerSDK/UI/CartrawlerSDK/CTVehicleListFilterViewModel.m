@@ -28,7 +28,7 @@
     CTVehicleListState *vehicleListState = appState.vehicleListState;
     UIColor *primaryColor = appState.userSettingsState.primaryColor;
     
-    NSArray *selectedFilters = vehicleListState.selectedFilters;
+    NSArray *selectedFilters = vehicleListState.displayedFilters;
     
     NSMutableArray *headerViewModels = [NSMutableArray new];
     
@@ -111,27 +111,27 @@
     }
     
     if (sizeViewModels.count > 0) {
-        CTVehicleListFilterHeaderViewModel *viewModel = [[CTVehicleListFilterHeaderViewModel alloc] initWithFilterType:CTVehicleListFilterTypeSize title:@"Vehicle Size" rowViewModels:sizeViewModels primaryColor:primaryColor];
+        CTVehicleListFilterHeaderViewModel *viewModel = [[CTVehicleListFilterHeaderViewModel alloc] initWithFilterType:CTVehicleListFilterTypeSize title:CTLocalizedString(CTRentalFilterCarsize) rowViewModels:sizeViewModels primaryColor:primaryColor];
         [headerViewModels addObject:viewModel];
     }
     
     if (vendorViewModels.count > 0) {
-        CTVehicleListFilterHeaderViewModel *viewModel = [[CTVehicleListFilterHeaderViewModel alloc] initWithFilterType:CTVehicleListFilterTypeVendor title:@"Vendors" rowViewModels:vendorViewModels primaryColor:primaryColor];
+        CTVehicleListFilterHeaderViewModel *viewModel = [[CTVehicleListFilterHeaderViewModel alloc] initWithFilterType:CTVehicleListFilterTypeVendor title:CTLocalizedString(CTRentalFilterSupplier) rowViewModels:vendorViewModels primaryColor:primaryColor];
         [headerViewModels addObject:viewModel];
     }
     
     if (locationViewModels.count > 0) {
-        CTVehicleListFilterHeaderViewModel *viewModel = [[CTVehicleListFilterHeaderViewModel alloc] initWithFilterType:CTVehicleListFilterTypeLocation title:@"Locations" rowViewModels:locationViewModels primaryColor:primaryColor];
+        CTVehicleListFilterHeaderViewModel *viewModel = [[CTVehicleListFilterHeaderViewModel alloc] initWithFilterType:CTVehicleListFilterTypeLocation title:CTLocalizedString(CTRentalFilterPickup) rowViewModels:locationViewModels primaryColor:primaryColor];
         [headerViewModels addObject:viewModel];
     }
     
     if (fuelPolicyViewModels.count > 0) {
-        CTVehicleListFilterHeaderViewModel *viewModel = [[CTVehicleListFilterHeaderViewModel alloc] initWithFilterType:CTVehicleListFilterTypeLocation title:@"Fuel Policy" rowViewModels:fuelPolicyViewModels primaryColor:primaryColor];
+        CTVehicleListFilterHeaderViewModel *viewModel = [[CTVehicleListFilterHeaderViewModel alloc] initWithFilterType:CTVehicleListFilterTypeLocation title:CTRentalFilterFuel rowViewModels:fuelPolicyViewModels primaryColor:primaryColor];
         [headerViewModels addObject:viewModel];
     }
     
     if (transmissionViewModels.count > 0) {
-        CTVehicleListFilterHeaderViewModel *viewModel = [[CTVehicleListFilterHeaderViewModel alloc] initWithFilterType:CTVehicleListFilterTypeLocation title:@"Transmission" rowViewModels:transmissionViewModels primaryColor:primaryColor];
+        CTVehicleListFilterHeaderViewModel *viewModel = [[CTVehicleListFilterHeaderViewModel alloc] initWithFilterType:CTVehicleListFilterTypeLocation title:CTRentalFilterTransmission rowViewModels:transmissionViewModels primaryColor:primaryColor];
         [headerViewModels addObject:viewModel];
     }
     

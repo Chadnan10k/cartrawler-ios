@@ -423,6 +423,7 @@
             break;
         case CTActionVehicleListUserDidTapFilter:
             navigationState.modalViewControllers = @[@(CTNavigationModalVehicleListFilter)];
+            vehicleListState.displayedFilters = vehicleListState.selectedFilters.mutableCopy;
             break;
         case CTActionVehicleListUserDidTapSortOption:
             vehicleListState.selectedView = CTVehicleListSelectedViewNone;
@@ -442,20 +443,21 @@
             break;
         case CTActionVehicleListUserDidTapFilterSelectAll:
             for (CTVehicleListFilterModel *filterModel in payload) {
-                if (![vehicleListState.selectedFilters containsObject:filterModel]) {
-                    [vehicleListState.selectedFilters addObject:filterModel];
+                if (![vehicleListState.displayedFilters containsObject:filterModel]) {
+                    [vehicleListState.displayedFilters addObject:filterModel];
                 }
             }
             break;
         case CTActionVehicleListUserDidTapApplyFilter:
             navigationState.modalViewControllers = @[];
+            vehicleListState.selectedFilters = vehicleListState.displayedFilters.copy;
             vehicleListState.scrollToTop = YES;
             break;
         case CTActionVehicleListUserDidTapFilterOption:
-            if ([vehicleListState.selectedFilters containsObject:payload]) {
-                [vehicleListState.selectedFilters removeObject:payload];
+            if ([vehicleListState.displayedFilters containsObject:payload]) {
+                [vehicleListState.displayedFilters removeObject:payload];
             } else {
-                [vehicleListState.selectedFilters addObject:payload];
+                [vehicleListState.displayedFilters addObject:payload];
             }
             break;
             
