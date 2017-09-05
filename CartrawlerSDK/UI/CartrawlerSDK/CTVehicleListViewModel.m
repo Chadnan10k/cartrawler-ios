@@ -24,6 +24,8 @@
 @property (nonatomic, readwrite) NSArray *sortOptions;
 @property (nonatomic, readwrite) NSString *cancelTitle;
 @property (nonatomic, readwrite) CTVehicleListSort selectedSort;
+@property (nonatomic, readwrite) BOOL showSortBadge;
+@property (nonatomic, readwrite) NSString *badgeCount;
 @property (nonatomic, readwrite) BOOL scrollToTop;
 @property (nonatomic, readwrite) UIColor *navigationBarColor;
 @property (nonatomic, readwrite) NSString *navigationBarTitle;
@@ -50,11 +52,13 @@
         viewModel.rightLabelText = [self rightLabelAttributedTextForState:vehicleListState];
         
         viewModel.selectedSort = vehicleListState.selectedSort;
+        viewModel.badgeCount = @(vehicleListState.selectedFilters.count).stringValue;
+        viewModel.showSortBadge = vehicleListState.selectedFilters.count > 0;
         viewModel.selectedView = vehicleListState.selectedView;
         viewModel.scrollToTop = vehicleListState.scrollToTop;
         
         viewModel.sortTitle = CTLocalizedString(CTRentalSortTitle);
-        viewModel.sortOptions = @[CTLocalizedString(CTRentalSortRecommended), CTLocalizedString(CTRentalSortPrice), CTLocalizedString(CTRentalSortRating)];
+        viewModel.sortOptions = @[CTLocalizedString(CTRentalSortRecommended), CTLocalizedString(CTRentalSortPrice)];
         viewModel.cancelTitle = CTLocalizedString(CTRentalCTACancel);
         
         viewModel.filterViewModel = [CTVehicleListFilterViewModel viewModelForState:appState];
@@ -84,10 +88,6 @@
         case CTVehicleListSortPrice:
             sortType = CTLocalizedString(CTRentalSortPrice);
             break;
-        case CTVehicleListSortRating:
-        sortType = CTLocalizedString(CTRentalSortRating);
-            break;
-        
         default:
             break;
     }
@@ -192,9 +192,6 @@
         case CTVehicleListSortRecommended:
             key = @"vehicle.config.relevance";
             break;
-        case CTVehicleListSortRating:
-            key = @"vendor.rating.overallScore";
-            ascending = NO;
         break;
         default:
             break;

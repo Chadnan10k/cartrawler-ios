@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *headerRightLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIAlertController *alertController;
+@property (weak, nonatomic) IBOutlet UIView *badgeView;
+@property (weak, nonatomic) IBOutlet UILabel *badgeCount;
 @end
 
 @implementation CTVehicleListViewController
@@ -52,6 +54,9 @@
     self.headerRightLabel.attributedText = viewModel.rightLabelText;
     [self.tableView reloadData];
     
+    self.badgeView.hidden = !viewModel.showSortBadge;
+    self.badgeCount.text = viewModel.badgeCount;
+    
     switch (viewModel.selectedView) {
         case CTVehicleListSelectedViewNone:
             if (self.presentedViewController) {
@@ -72,8 +77,6 @@
         [self.tableView setContentOffset:CGPointMake(0, -5.0) animated:YES];
         [CTAppController dispatchAction:CTActionVehicleListScreenDidScrollToTop payload:nil];
     }
-    
-    //[self.filterVC updateWithViewModel:viewModel.filterViewModel];
 }
 
 // MARK: Sort
@@ -99,14 +102,6 @@
                                                             [CTAppController dispatchAction:CTActionVehicleListUserDidTapSortOption payload:@(CTVehicleListSortPrice)];
                                                         }];
     
-    
-    
-    UIAlertAction *rating = [UIAlertAction actionWithTitle:viewModel.sortOptions[2]
-                                                          style:UIAlertActionStyleDefault
-                                                        handler:^(UIAlertAction * action) {
-                                                            [CTAppController dispatchAction:CTActionVehicleListUserDidTapSortOption payload:@(CTVehicleListSortRating)];
-                                                        }];
-    
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:viewModel.cancelTitle
                                                      style:UIAlertActionStyleCancel
                                                    handler:^(UIAlertAction * _Nonnull action) {
@@ -114,7 +109,6 @@
                                                    }];
     [self.alertController addAction:recommended];
     [self.alertController addAction:price];
-    [self.alertController addAction:rating];
     [self.alertController addAction:cancel];
     
     [self presentViewController:self.alertController animated:YES completion:nil];

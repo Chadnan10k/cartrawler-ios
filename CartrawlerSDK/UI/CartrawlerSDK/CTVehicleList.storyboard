@@ -358,34 +358,61 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="986-PY-fl4" userLabel="Filter View">
-                                <rect key="frame" x="137.5" y="615" width="100" height="36"/>
+                                <rect key="frame" x="127.5" y="605" width="120" height="46"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKu-5v-V0g">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="36"/>
+                                        <rect key="frame" x="0.0" y="10" width="110" height="36"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Filter">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="filterButtonTapped:" destination="Nbo-6I-POD" eventType="touchUpInside" id="fjj-iP-Umr"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fdZ-tR-E6K" userLabel="Badge View">
+                                        <rect key="frame" x="100" y="0.0" width="20" height="20"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wn-Ng-efX">
+                                                <rect key="frame" x="6.5" y="3" width="7.5" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.9137254901960784" green="0.1764705882352941" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="4wn-Ng-efX" firstAttribute="centerY" secondItem="fdZ-tR-E6K" secondAttribute="centerY" id="H01-0x-vfe"/>
+                                            <constraint firstAttribute="width" constant="20" id="bSr-Hc-jUe"/>
+                                            <constraint firstAttribute="height" constant="20" id="dcj-JH-2jg"/>
+                                            <constraint firstItem="4wn-Ng-efX" firstAttribute="centerX" secondItem="fdZ-tR-E6K" secondAttribute="centerX" id="nnL-cx-fDb"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="DKu-5v-V0g" secondAttribute="trailing" id="Fhy-jF-Qei"/>
-                                    <constraint firstItem="DKu-5v-V0g" firstAttribute="top" secondItem="986-PY-fl4" secondAttribute="top" id="L5j-Tc-g6m"/>
-                                    <constraint firstAttribute="height" constant="36" id="awq-wr-gTJ"/>
-                                    <constraint firstAttribute="width" constant="100" id="f6b-Ke-9PV"/>
+                                    <constraint firstAttribute="trailing" secondItem="DKu-5v-V0g" secondAttribute="trailing" constant="10" id="Fhy-jF-Qei"/>
+                                    <constraint firstItem="DKu-5v-V0g" firstAttribute="top" secondItem="986-PY-fl4" secondAttribute="top" constant="10" id="L5j-Tc-g6m"/>
+                                    <constraint firstAttribute="trailing" secondItem="fdZ-tR-E6K" secondAttribute="trailing" id="Tpu-4A-Ovd"/>
+                                    <constraint firstAttribute="height" constant="46" id="awq-wr-gTJ"/>
+                                    <constraint firstAttribute="width" constant="120" id="f6b-Ke-9PV"/>
+                                    <constraint firstItem="fdZ-tR-E6K" firstAttribute="top" secondItem="986-PY-fl4" secondAttribute="top" id="kpK-bN-f6f"/>
                                     <constraint firstItem="DKu-5v-V0g" firstAttribute="leading" secondItem="986-PY-fl4" secondAttribute="leading" id="rYv-gi-z5S"/>
                                     <constraint firstAttribute="bottom" secondItem="DKu-5v-V0g" secondAttribute="bottom" id="uGG-eR-mJB"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="afF-6T-Wlf" appends="YES" id="otl-Ky-Gji"/>
                                 </connections>
@@ -409,6 +436,8 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="badgeCount" destination="4wn-Ng-efX" id="Rts-Au-MW1"/>
+                        <outlet property="badgeView" destination="fdZ-tR-E6K" id="soQ-BQ-W4E"/>
                         <outlet property="detailLabel" destination="yae-ep-W0v" id="7rw-8t-4k5"/>
                         <outlet property="headerLeftLabel" destination="vII-CW-sGX" id="vsD-qT-PnR"/>
                         <outlet property="headerRightLabel" destination="Iqd-gZ-T6A" id="SLK-cq-32S"/>
@@ -488,7 +517,7 @@
                                                     <rect key="frame" x="314" y="6" width="36" height="36"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bab-Yy-xD4" userLabel="checkmark">
-                                                            <rect key="frame" x="5" y="3.5" width="28" height="28"/>
+                                                            <rect key="frame" x="4.5" y="3.5" width="28" height="28"/>
                                                             <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="28"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>

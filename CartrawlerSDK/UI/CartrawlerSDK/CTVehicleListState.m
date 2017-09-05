@@ -13,7 +13,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _selectedFilters = [NSMutableArray new];
+        _selectedFilters = [NSArray new];
     }
     return self;
 }

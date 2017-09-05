@@ -18,14 +18,14 @@ typedef NS_ENUM(NSUInteger, CTVehicleListSelectedView) {
 typedef NS_ENUM(NSUInteger, CTVehicleListSort) {
     CTVehicleListSortRecommended,
     CTVehicleListSortPrice,
-    CTVehicleListSortRating,
 };
 
 @interface CTVehicleListState : NSObject
 
 @property (nonatomic) CTVehicleListSelectedView selectedView;
 @property (nonatomic) CTVehicleListSort selectedSort;
-@property (nonatomic) NSMutableArray <CTVehicleListFilterModel *> *selectedFilters;
+@property (nonatomic) NSMutableArray <CTVehicleListFilterModel *> *displayedFilters;
+@property (nonatomic) NSArray <CTVehicleListFilterModel *> *selectedFilters;
 @property (nonatomic) BOOL scrollToTop;
 
 @end
