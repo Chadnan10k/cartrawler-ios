@@ -44,7 +44,7 @@
     viewModel.pickupProcess = CTLocalizedString(CTRentalSupplierPickup);
     viewModel.dropoffProcess = CTLocalizedString(CTRentalSupplierDropoff);
     viewModel.averageWaitingTime = @"Average waiting time";
-    viewModel.customerRatings = @"Customer Ratings";
+    viewModel.customerRatings = [NSString stringWithFormat:@"Based on %@ customer ratings", item.vendor.rating.totalReviews];
     
     viewModel.providedByImage = item.vendor.logoURL;
     viewModel.overallRating = [self overallRating:item];
@@ -53,7 +53,7 @@
     viewModel.serviceRating = [self ratingToString:item.vendor.rating.deskReview];
     viewModel.pickupProcessRating = [self ratingToString:item.vendor.rating.pickupScore];
     viewModel.dropoffProcessRating = [self ratingToString:item.vendor.rating.dropoffReview];
-    viewModel.averageWaitingTimeRating = @"??";
+    viewModel.averageWaitingTimeRating = [NSString stringWithFormat:@"%@ mins", item.vendor.rating.averageWaitTime];
     return viewModel;
 }
 

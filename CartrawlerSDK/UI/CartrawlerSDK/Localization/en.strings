@@ -116,7 +116,7 @@
 "vehicle_type_mini" = "Mini";
 "title_details" = "Car Details";
 "merchandising_best_reviewed" = "Best Reviewed";
-"supplier_price" = "Overall value for the money";
+"supplier_price" = "Overall rating";
 "merchandising_recommended" = "Recommended";
 "user_postcode_hint" = "Postcode";
 "insurance_summary_replace_src" = "tick the box below";
@@ -167,7 +167,7 @@
 "insurance_per_day" = "per day";
 "payment_cardnumber" = "Card number";
 "title_conditions" = "Terms and Conditions";
-"insurance_added" = "Added";
+"insurance_added" = "Insurance added";
 "supplier_waiting" = "Waiting time";
 "title_calendar" = "Datepicker";
 "filter_carsize" = "Car Size";
