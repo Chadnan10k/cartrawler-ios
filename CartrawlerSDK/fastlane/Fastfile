@@ -35,9 +35,15 @@ platform :ios do
     lane :deploy_build do
         ensure_git_status_clean
         increment_build_number(xcodeproj: './TestApp/TestApp.xcodeproj')
-        commit_version_bump(xcodeproj: './TestApp/TestApp.xcodeproj')
+        commit_version_bump(
+            xcodeproj: './TestApp/TestApp.xcodeproj',
+            message: '- Bump build number of Test App'
+        )
         increment_build_number(xcodeproj: './UI/CartrawlerSDK.xcodeproj')
-        commit_version_bump(xcodeproj: './UI/CartrawlerSDK.xcodeproj')
+        commit_version_bump(
+            xcodeproj: './UI/CartrawlerSDK.xcodeproj',
+            message: '- Bump build number of SDK'
+        )
 
         match
         sigh
@@ -70,7 +76,7 @@ platform :ios do
             slack_url: "https://hooks.slack.com/services/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"
         )
 
-        tagmessage = "- Incremented build number (" + build + ")"
+        tagmessage = "Build: (" + build + ")"
         add_git_tag(
             message: tagmessage,
         )
