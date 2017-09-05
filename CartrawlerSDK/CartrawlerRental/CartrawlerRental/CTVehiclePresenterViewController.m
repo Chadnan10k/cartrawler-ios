@@ -64,7 +64,7 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.sortByPrice = YES;
+    self.sortByPrice = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.rightButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.rightButton.titleLabel.minimumScaleFactor = 0.6;
@@ -92,6 +92,35 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
     if (self.presentedView == CTPresentedViewList) {
         [self tagVehiclesStep];
     }
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(checkVehicleAvailabilityScreen)
+												 name:UIApplicationDidBecomeActiveNotification object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver: self
+											 selector: @selector(checkVehicleAvailabilityScreen)
+												 name: UIApplicationDidEnterBackgroundNotification
+											   object: nil];
+}
+
+- (void) checkVehicleAvailabilityScreen {
+	
+	if (self.search.vehicleAvailability.items.count > 0) {
+		[self hideVehicleDetailsView];
+		[self animateNavigationBarToOriginalPosition];
+		[self setNavigationBarLocationLabel];
+		[self setNavigationBarDateLabel];
+		[self updateVehicleListView];
+		[self updateButtonTitlesForPresentedView:self.presentedView];
+		self.secondaryNavigationBar.alpha = 1;
+		[CTInterstitialViewController dismiss];
+	} else {
+		[CTInterstitialViewController dismiss];
+		self.secondaryNavigationBar.alpha = 0;
+		[CTInterstitialViewController present:self search:self.search];
+		[self addObserverForVehicleSearchUpdates];
+		
+	}
 }
 
 // MARK: Setup Views
@@ -177,6 +206,12 @@ typedef NS_ENUM(NSInteger, CTPresentedView) {
 - (void)dealloc {
     @try {
         [self.search removeObserver:self forKeyPath:@"vehicleAvailability"];
+		[[NSNotificationCenter defaultCenter] removeObserver:self
+														name:UIApplicationDidBecomeActiveNotification
+													  object:nil];
+		[[NSNotificationCenter defaultCenter] removeObserver:self
+														name:UIApplicationDidEnterBackgroundNotification
+													  object:nil];
     } @catch (NSException *exception) {
     }
 }
