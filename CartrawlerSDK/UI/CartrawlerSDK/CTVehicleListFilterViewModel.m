@@ -126,12 +126,12 @@
     }
     
     if (fuelPolicyViewModels.count > 0) {
-        CTVehicleListFilterHeaderViewModel *viewModel = [[CTVehicleListFilterHeaderViewModel alloc] initWithFilterType:CTVehicleListFilterTypeLocation title:CTRentalFilterFuel rowViewModels:fuelPolicyViewModels primaryColor:primaryColor];
+        CTVehicleListFilterHeaderViewModel *viewModel = [[CTVehicleListFilterHeaderViewModel alloc] initWithFilterType:CTVehicleListFilterTypeLocation title:CTLocalizedString(CTRentalFilterFuel) rowViewModels:fuelPolicyViewModels primaryColor:primaryColor];
         [headerViewModels addObject:viewModel];
     }
     
     if (transmissionViewModels.count > 0) {
-        CTVehicleListFilterHeaderViewModel *viewModel = [[CTVehicleListFilterHeaderViewModel alloc] initWithFilterType:CTVehicleListFilterTypeLocation title:CTRentalFilterTransmission rowViewModels:transmissionViewModels primaryColor:primaryColor];
+        CTVehicleListFilterHeaderViewModel *viewModel = [[CTVehicleListFilterHeaderViewModel alloc] initWithFilterType:CTVehicleListFilterTypeLocation title:CTLocalizedString(CTRentalFilterTransmission) rowViewModels:transmissionViewModels primaryColor:primaryColor];
         [headerViewModels addObject:viewModel];
     }
     
