@@ -215,6 +215,7 @@
             break;
         case CTActionSearchUserDidTapDropoffTextField:
             searchState.wantsNextStep = NO;
+            navigationState.modalViewControllers = @[@(CTNavigationModalSearchLocations)];
             searchState.selectedTextField = CTSearchFormTextFieldDropoffLocation;
             break;
         case CTActionSearchUserDidToggleReturnToSameLocation:
