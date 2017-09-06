@@ -20,12 +20,10 @@
 @property (nonatomic, readwrite) NSString *location;
 @property (nonatomic, readwrite) NSURL *vehicleURL;
 @property (nonatomic, readwrite) UIColor *primaryColor;
+@property (nonatomic, readwrite) NSAttributedString *freeCancellation;
 @property (nonatomic, readwrite) BOOL displayMerchandising;
 @property (nonatomic, readwrite) NSString *merchandisingText;
 @property (nonatomic, readwrite) UIColor *merchandisingColor;
-@property (nonatomic, readwrite) BOOL displaySpecialOffer;
-@property (nonatomic, readwrite) NSString *specialOffer;
-@property (nonatomic, readwrite) UIColor *specialOfferColor;
 @property (nonatomic, readwrite) BOOL expandedCell;
 @end
 
@@ -53,6 +51,11 @@
     viewModel.vehicleURL = vehicle.pictureURL;
     
     viewModel.primaryColor = appState.userSettingsState.primaryColor;
+    
+    NSMutableAttributedString *freeCancellation = [self tickString].mutableCopy;
+    [freeCancellation appendAttributedString:[self freeString]];
+    [freeCancellation appendAttributedString:[self cancellationString]];
+    viewModel.freeCancellation = freeCancellation.copy;
         
     if (vehicle.merchandisingTag != CTMerchandisingTagUnknown) {
         viewModel.displayMerchandising = YES;
@@ -60,14 +63,6 @@
         viewModel.merchandisingText = [CTSpecialOffersPresentationLogic merchandisingText:vehicle.merchandisingTag];
         viewModel.merchandisingColor = [CTSpecialOffersPresentationLogic merchandisingColor:vehicle.merchandisingTag];
     }
-    
-    viewModel.specialOffer = [CTSpecialOffersPresentationLogic specialOfferText:vehicle.specialOffers];
-    if (viewModel.specialOffer) {
-        // TODO: Add bolt
-        viewModel.displaySpecialOffer = YES;
-        viewModel.specialOfferColor = [UIColor colorWithRed:207.0/255.0 green:46.0/255.0 blue:29.0/255.0 alpha:1];
-    }
-    
     
     return viewModel;
 }
@@ -77,5 +72,25 @@
     return vehicle.isUSBEnabled + vehicle.isBluetoothEnabled + vehicle.isAirConditioned + vehicle.isGPSIncluded + vehicle.isGermanModel + vehicle.isParkingSensorEnabled + vehicle.isExceptionalFuelEconomy + vehicle.isFrontDemisterEnabled + 1;
 }
 
++ (NSAttributedString *)tickString {
+    NSMutableAttributedString *tickString = [[NSMutableAttributedString alloc] initWithString:@"  "];
+    [tickString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"V5-Mobile" size:14] range:NSMakeRange(0, tickString.length)];
+    [tickString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, tickString.length)];
+    return tickString.copy;
+}
+
++ (NSAttributedString *)freeString {
+    NSMutableAttributedString *freeString = [[NSMutableAttributedString alloc] initWithString:@"Free"];
+    [freeString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14.0] range:NSMakeRange(0, freeString.length)];
+    [freeString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, freeString.length)];
+    return freeString.copy;
+}
+
++ (NSAttributedString *)cancellationString {
+    NSMutableAttributedString *cancellationString = [[NSMutableAttributedString alloc] initWithString:@" cancellation and amendments"];
+    [cancellationString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14.0] range:NSMakeRange(0, cancellationString.length)];
+    [cancellationString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, cancellationString.length)];
+    return cancellationString.copy;
+}
 
 @end

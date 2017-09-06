@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *doorsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *featuresCountButton;
 @property (weak, nonatomic) IBOutlet UILabel *featuresLabel;
+@property (weak, nonatomic) IBOutlet UILabel *freeCancellation;
 @end
 
 @implementation CTSelectedVehicleInfoViewController
@@ -46,6 +47,7 @@
     [self.featuresCountButton setTitle:viewModel.featuresCount forState:UIControlStateNormal];
     self.featuresLabel.text = viewModel.features;
     self.featuresLabel.textColor = viewModel.primaryColor;
+    self.freeCancellation.attributedText = viewModel.freeCancellation;
 }
 
 - (IBAction)featuresButtonTapped:(id)sender {

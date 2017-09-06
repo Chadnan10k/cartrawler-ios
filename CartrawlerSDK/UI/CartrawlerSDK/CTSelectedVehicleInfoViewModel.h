@@ -20,12 +20,10 @@
 @property (nonatomic, readonly) NSString *features;
 @property (nonatomic, readonly) NSURL *vehicleURL;
 @property (nonatomic, readonly) UIColor *primaryColor;
+@property (nonatomic, readonly) NSAttributedString *freeCancellation;
 @property (nonatomic, readonly) BOOL displayMerchandising;
 @property (nonatomic, readonly) NSString *merchandisingText;
 @property (nonatomic, readonly) UIColor *merchandisingColor;
-@property (nonatomic, readonly) BOOL displaySpecialOffer;
-@property (nonatomic, readonly) NSString *specialOffer;
-@property (nonatomic, readonly) UIColor *specialOfferColor;
 @property (nonatomic, readonly) BOOL expandedCell;
 
 @end
