@@ -18,6 +18,17 @@
 			name = BuildAPI;
 			productName = BuildAPI;
 		};
+		6A33DE8C1F601C7D00EF66C7 /* CartrawlerAPI Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 6A33DE8F1F601C7D00EF66C7 /* Build configuration list for PBXAggregateTarget "CartrawlerAPI Documentation" */;
+			buildPhases = (
+				6A33DE901F601CBF00EF66C7 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "CartrawlerAPI Documentation";
+			productName = CartrawlerAPIDocument;
+		};
 		6A8C5C3A1F34CF08005CD6A9 /* CartrawlerAPILint */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 6A8C5C3D1F34CF08005CD6A9 /* Build configuration list for PBXAggregateTarget "CartrawlerAPILint" */;
@@ -664,6 +675,11 @@
 						DevelopmentTeam = 3L8QU4R2JJ;
 						ProvisioningStyle = Automatic;
 					};
+					6A33DE8C1F601C7D00EF66C7 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = LZASXEKJ7F;
+						ProvisioningStyle = Automatic;
+					};
 					6A8C5C3A1F34CF08005CD6A9 = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
@@ -691,6 +707,7 @@
 				45CB04741DEDCECF0086BEA0 /* BuildAPI */,
 				BC4A3FE31E5F3DBF00EFB055 /* CartrawlerAPITests */,
 				6A8C5C3A1F34CF08005CD6A9 /* CartrawlerAPILint */,
+				6A33DE8C1F601C7D00EF66C7 /* CartrawlerAPI Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -733,6 +750,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\n######################\n# Options\n######################\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal-CartrawlerSDK\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\nexport VERSION= \"defaults read ${INFO_PLIST} CFBundleVersionString\"\n\n######################\n# Build Frameworks\n######################\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme ${FRAMEWORK_NAME} -configuration Debug -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk \"iphoneos\"\n\n/usr/bin/xcodebuild build -workspace \"${SRCROOT}/../CartrawlerSDK.xcworkspace\" -scheme ${FRAMEWORK_NAME} -configuration Debug -arch x86_64 -arch i386 only_active_arch=no defines_module=yes -sdk \"iphonesimulator\"\n\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n\n######################\n# On Release, copy the result to release directory\n######################\nOUTPUT_DIR=\"${SRCROOT}/../../../Artifacts_Latest\"\nmkdir -p \"$OUTPUT_DIR\"\n\ncp -r \"${FRAMEWORK}\" \"$OUTPUT_DIR\"\n\n";
+		};
+		6A33DE901F601CBF00EF66C7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#appledoc Xcode script\n# Start constants\ncompany=\"Cartrawler\";\ncompanyID=\"com.Cartrawler\";\ncompanyURL=\"http://www.cartrawler.com\";\ntarget=\"iphoneos\";\n#target=\"macosx\";\noutputPath=\"~/help\";\n# End constants\n/usr/local/bin/appledoc \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"${company}\" \\\n--company-id \"${companyID}\" \\\n--docset-atom-filename \"${company}.atom\" \\\n--docset-feed-url \"${companyURL}/${company}/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"${companyURL}/${company}/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"${companyURL}/${company}\" \\\n--output \"${outputPath}\" \\\n--publish-docset \\\n--docset-platform-family \"${target}\" \\\n--logformat xcode \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--exit-threshold 2 \\\n\"${PROJECT_DIR}\"";
 		};
 		6A8C5C3E1F34CF37005CD6A9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -990,6 +1020,22 @@
 			};
 			name = Release;
 		};
+		6A33DE8D1F601C7D00EF66C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = LZASXEKJ7F;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6A33DE8E1F601C7D00EF66C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = LZASXEKJ7F;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		6A8C5C3B1F34CF08005CD6A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1061,6 +1107,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		6A33DE8F1F601C7D00EF66C7 /* Build configuration list for PBXAggregateTarget "CartrawlerAPI Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A33DE8D1F601C7D00EF66C7 /* Debug */,
+				6A33DE8E1F601C7D00EF66C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		6A8C5C3D1F34CF08005CD6A9 /* Build configuration list for PBXAggregateTarget "CartrawlerAPILint" */ = {
 			isa = XCConfigurationList;
