@@ -69,6 +69,8 @@
                                    regularSize:17
                                       useSpace:NO];
     
+    viewModel.perDay = CTLocalizedString(CTRentalExtrasPerDay);
+    
     if (vehicle.merchandisingTag != CTMerchandisingTagUnknown) {
         viewModel.displayMerchandising = YES;
         // TODO: Add star
