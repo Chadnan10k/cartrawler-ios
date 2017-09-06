@@ -20,7 +20,8 @@
 @property (nonatomic, readwrite) NSString *logo;
 @property (nonatomic, readwrite) NSString *pricePerDay;
 @property (nonatomic, readwrite) NSString *total;
-@property (nonatomic, readwrite) NSString *addInsurance;
+@property (nonatomic, readwrite) NSAttributedString *addInsurance;
+@property (nonatomic, readwrite) UIColor *buttonColor;
 @end
 
 @implementation CTSelectedVehicleInsuranceViewModel
@@ -43,7 +44,8 @@
     viewModel.logo = @"axa_logo";
     viewModel.pricePerDay = [self pricePerDay:insurance state:searchState];
     viewModel.total = [self total:insurance];
-    viewModel.addInsurance = selectedVehicleState.insuranceAdded ? CTLocalizedString(CTRentalInsuranceAddedButtonTitle) : CTLocalizedString(CTRentalInsuranceAddButtonTitle);
+    viewModel.addInsurance = selectedVehicleState.insuranceAdded ? [self addedString] : [self addString];
+    viewModel.buttonColor = selectedVehicleState.insuranceAdded ? [UIColor colorWithRed:0/255.0 green:167.0/255.0 blue:60/255.0 alpha:1.0] : viewModel.primaryColor;
     
     return viewModel;
 }
@@ -54,6 +56,22 @@
 
 + (NSString *)total:(CTInsurance *)insurance {
     return [NSString stringWithFormat:@"%@ %@", CTLocalizedString(CTRentalInsuranceTotal), [insurance.premiumAmount numberStringWithCurrencyCode]];
+}
+    
++ (NSAttributedString *)addString {
+    NSMutableAttributedString *addString = [[NSMutableAttributedString alloc] initWithString:CTLocalizedString(CTRentalInsuranceAddButtonTitle)];
+    [addString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, addString.length)];
+    return addString.copy;
+}
+    
++ (NSAttributedString *)addedString {
+    NSMutableAttributedString *addedString = [[NSMutableAttributedString alloc] initWithString:CTLocalizedString(CTRentalInsuranceAddedButtonTitle)];
+    NSMutableAttributedString *tickString = [[NSMutableAttributedString alloc] initWithString:@"  "];
+    [tickString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"V5-Mobile" size:14] range:NSMakeRange(0, tickString.length)];
+    [tickString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, tickString.length)];
+    [addedString appendAttributedString:tickString];
+    
+    return addedString.copy;
 }
 
 @end

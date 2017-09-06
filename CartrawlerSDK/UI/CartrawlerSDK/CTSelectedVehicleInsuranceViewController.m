@@ -49,9 +49,11 @@
     self.total.text = viewModel.total;
     UIImage *logo = [UIImage imageNamed:viewModel.logo inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
     self.logo.image = logo;
-    [self.addInsuranceButton setTitle:viewModel.addInsurance forState:UIControlStateNormal];
-    self.addInsuranceButton.backgroundColor = viewModel.primaryColor;
+    
+    [self.addInsuranceButton setAttributedTitle:viewModel.addInsurance forState:UIControlStateNormal];
+    self.addInsuranceButton.backgroundColor = viewModel.buttonColor;
 }
+    
 - (IBAction)insuranceDetailsTapped:(UIButton *)sender {
     [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapInsuranceDetails payload:nil];
 }

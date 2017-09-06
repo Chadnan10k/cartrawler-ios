@@ -20,6 +20,6 @@
 @property (nonatomic, readonly) NSString *logo;
 @property (nonatomic, readonly) NSString *pricePerDay;
 @property (nonatomic, readonly) NSString *total;
-@property (nonatomic, readonly) NSString *addInsurance;
-
+@property (nonatomic, readonly) NSAttributedString *addInsurance;
+@property (nonatomic, readonly) UIColor *buttonColor;
 @end
