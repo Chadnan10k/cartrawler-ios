@@ -10,10 +10,12 @@
 #import "CTLabel.h"
 #import "CTAppearance.h"
 #import <QuartzCore/QuartzCore.h>
+#import "CartrawlerSDK+NSDateUtils.h"
 
 @interface CTDateCollectionViewCell()
 
 @property (weak, nonatomic) IBOutlet UIView *circleView;
+@property (weak, nonatomic) IBOutlet UIView *circleMask;
 @property (weak, nonatomic) IBOutlet UIView *leftSquare;
 @property (weak, nonatomic) IBOutlet UIView *leftBorder;
 @property (weak, nonatomic) IBOutlet UIView *rightSquare;
@@ -31,6 +33,7 @@
     _section = section;
     
     self.circleView.hidden = YES;
+    self.circleMask.hidden = YES;
     self.leftSquare.hidden = YES;
     self.leftBorder.hidden = YES;
     self.rightSquare.hidden = YES;
@@ -42,6 +45,12 @@
         df.dateFormat = @"d";
         self.label.text = [df stringFromDate:self.date];
     }
+    
+    if (![date isEqual:[NSNull null]] && [NSDate isDate:date inSameDayAsDate:[NSDate date]]) {
+        self.circleView.hidden = NO;
+        self.circleMask.hidden = NO;
+        self.circleView.backgroundColor = [UIColor lightGrayColor];
+    }
 }
 
 - (void)setLabelColor:(UIColor *)color
@@ -52,6 +61,7 @@
 - (void)headSetWithPrimaryColor:(UIColor *)primaryColor secondaryColor:(UIColor *)secondaryColor
 {
     self.circleView.hidden = NO;
+    self.circleMask.hidden = YES;
     self.rightSquare.hidden = NO;
     self.rightBorder.hidden = NO;
     
@@ -73,6 +83,7 @@
 - (void)tailSetWithPrimaryColor:(UIColor *)primaryColor secondaryColor:(UIColor *)secondaryColor
 {
     self.circleView.hidden = NO;
+    self.circleMask.hidden = YES;
     self.leftSquare.hidden = NO;
     self.leftBorder.hidden = NO;
     
@@ -109,6 +120,12 @@
         
         if ([self.date compare:previousDay] == NSOrderedDescending) {
             self.label.textColor = [UIColor blackColor];
+        }
+        
+        if ([NSDate isDate:self.date inSameDayAsDate:now]) {
+            self.circleView.hidden = NO;
+            self.circleView.backgroundColor = [UIColor lightGrayColor];
+            self.circleMask.hidden = NO;
         }
     }
 }

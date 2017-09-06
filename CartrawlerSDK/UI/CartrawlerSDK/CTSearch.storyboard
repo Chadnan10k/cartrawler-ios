@@ -1062,7 +1062,7 @@
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kua-dU-ZLM" userLabel="Circle View">
-                                                                                <rect key="frame" x="-0.6666666666666714" y="-0.6666666666666714" width="45.333333333333329" height="45.333333333333329"/>
+                                                                                <rect key="frame" x="-0.66666666666666785" y="-0.66666666666666785" width="45.333333333333329" height="45.333333333333329"/>
                                                                                 <color key="backgroundColor" red="0.91372549020000005" green="0.1764705882" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -1071,29 +1071,39 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </view>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXP-P6-H4s" userLabel="Circle View">
+                                                                                <rect key="frame" x="0.33333333333333215" y="0.33333333333333215" width="43" height="43"/>
+                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                        <real key="value" value="21.5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                            </view>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uHD-uj-cEH" userLabel="Left Square">
-                                                                                <rect key="frame" x="0.0" y="-0.6666666666666714" width="22.666666666666668" height="45.333333333333329"/>
+                                                                                <rect key="frame" x="0.0" y="-0.66666666666666785" width="22.666666666666668" height="45.333333333333329"/>
                                                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="22.5" id="U3k-on-7IK"/>
                                                                                 </constraints>
                                                                             </view>
                                                                             <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N7d-Ye-x4i" userLabel="Left Border">
-                                                                                <rect key="frame" x="0.0" y="-0.6666666666666714" width="4" height="45.333333333333329"/>
+                                                                                <rect key="frame" x="0.0" y="-0.66666666666666785" width="4" height="45.333333333333329"/>
                                                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="4" id="dPU-7m-lln"/>
                                                                                 </constraints>
                                                                             </view>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rH0-0J-O9x" userLabel="Right Square">
-                                                                                <rect key="frame" x="22.666666666666671" y="-0.6666666666666714" width="22.333333333333329" height="45.333333333333329"/>
+                                                                                <rect key="frame" x="22.666666666666671" y="-0.66666666666666785" width="22.333333333333329" height="45.333333333333329"/>
                                                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="22.5" id="Tdg-7u-RbB"/>
                                                                                 </constraints>
                                                                             </view>
                                                                             <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPA-Lx-rTJ" userLabel="Right Border">
-                                                                                <rect key="frame" x="41" y="-0.6666666666666714" width="4" height="45.333333333333329"/>
+                                                                                <rect key="frame" x="41" y="-0.66666666666666785" width="4" height="45.333333333333329"/>
                                                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="4" id="JQ5-kf-Tev"/>
@@ -1118,20 +1128,25 @@
                                                                         <constraint firstItem="rH0-0J-O9x" firstAttribute="height" secondItem="9wB-gb-fiD" secondAttribute="height" id="OEy-RZ-dAW"/>
                                                                         <constraint firstItem="Kua-dU-ZLM" firstAttribute="width" secondItem="9wB-gb-fiD" secondAttribute="width" id="RSJ-KF-IaZ"/>
                                                                         <constraint firstAttribute="trailing" secondItem="rH0-0J-O9x" secondAttribute="trailing" id="S22-s0-nMV"/>
+                                                                        <constraint firstItem="fXP-P6-H4s" firstAttribute="centerX" secondItem="9wB-gb-fiD" secondAttribute="centerX" id="TRn-lN-gsE"/>
                                                                         <constraint firstItem="uHD-uj-cEH" firstAttribute="leading" secondItem="9wB-gb-fiD" secondAttribute="leading" id="Vv2-KN-61V"/>
                                                                         <constraint firstItem="rH0-0J-O9x" firstAttribute="centerY" secondItem="9wB-gb-fiD" secondAttribute="centerY" id="Vwu-y9-7hV"/>
+                                                                        <constraint firstItem="fXP-P6-H4s" firstAttribute="centerY" secondItem="9wB-gb-fiD" secondAttribute="centerY" id="aS2-FC-pAI"/>
                                                                         <constraint firstAttribute="bottom" secondItem="dbV-sv-uue" secondAttribute="bottom" constant="4" id="az9-Cd-AkD"/>
                                                                         <constraint firstAttribute="trailing" secondItem="aPA-Lx-rTJ" secondAttribute="trailing" id="cBv-18-3qA"/>
                                                                         <constraint firstItem="uHD-uj-cEH" firstAttribute="centerY" secondItem="9wB-gb-fiD" secondAttribute="centerY" id="eBh-KF-jrd"/>
+                                                                        <constraint firstItem="fXP-P6-H4s" firstAttribute="height" secondItem="9wB-gb-fiD" secondAttribute="height" constant="-2" id="i8p-d5-9fa"/>
                                                                         <constraint firstItem="Kua-dU-ZLM" firstAttribute="height" secondItem="9wB-gb-fiD" secondAttribute="height" id="jCu-1J-oAf"/>
                                                                         <constraint firstItem="Kua-dU-ZLM" firstAttribute="centerY" secondItem="9wB-gb-fiD" secondAttribute="centerY" id="k3X-KF-kVX"/>
                                                                         <constraint firstItem="aPA-Lx-rTJ" firstAttribute="centerY" secondItem="9wB-gb-fiD" secondAttribute="centerY" id="mTd-ho-TXC"/>
                                                                         <constraint firstItem="N7d-Ye-x4i" firstAttribute="leading" secondItem="9wB-gb-fiD" secondAttribute="leading" id="tbk-mq-na6"/>
+                                                                        <constraint firstItem="fXP-P6-H4s" firstAttribute="width" secondItem="9wB-gb-fiD" secondAttribute="width" constant="-2" id="vLM-3t-BMb"/>
                                                                         <constraint firstItem="aPA-Lx-rTJ" firstAttribute="height" secondItem="9wB-gb-fiD" secondAttribute="height" id="vqm-ZH-lrG"/>
                                                                         <constraint firstItem="uHD-uj-cEH" firstAttribute="height" secondItem="9wB-gb-fiD" secondAttribute="height" id="xKb-R1-CI0"/>
                                                                     </constraints>
                                                                     <size key="customSize" width="45" height="45"/>
                                                                     <connections>
+                                                                        <outlet property="circleMask" destination="fXP-P6-H4s" id="7xT-Qv-FBf"/>
                                                                         <outlet property="circleView" destination="Kua-dU-ZLM" id="lNS-jz-0Yd"/>
                                                                         <outlet property="label" destination="dbV-sv-uue" id="3SF-3b-bnP"/>
                                                                         <outlet property="leftBorder" destination="N7d-Ye-x4i" id="X65-DJ-kaa"/>
