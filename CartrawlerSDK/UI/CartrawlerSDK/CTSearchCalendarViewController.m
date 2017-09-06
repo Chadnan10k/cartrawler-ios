@@ -35,6 +35,10 @@
 @property (weak, nonatomic) IBOutlet CTLabel *calendarTitleLabel;
 @property (weak, nonatomic) IBOutlet CTButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nextButtonContainerHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nextButtonContainerBottom;
+
+
 
 @end
 
@@ -55,6 +59,7 @@
     [self.cancelButton setTitle:CTLocalizedString(CTSDKCTACancel) forState:UIControlStateNormal];
     
     [self.calendarView setupWithFrame:self.view.frame];
+    
     self.calendarView.dateSelected = ^(NSDate *date, BOOL headDate) {
         [CTAppController dispatchAction:CTActionSearchCalendarUserDidTapDate payload:date];
     };
@@ -64,9 +69,11 @@
 }
 
 - (void)updateWithViewModel:(CTSearchCalendarViewModel *)viewModel {
-    self.headerTopSection.backgroundColor = viewModel.navigationBarColor;
-    self.summaryView.backgroundColor = viewModel.navigationBarColor;
-    self.nextButton.backgroundColor = viewModel.buttonColor;
+    [self.view layoutIfNeeded];
+    
+    self.headerTopSection.backgroundColor = viewModel.primaryColor;
+    self.summaryView.backgroundColor = viewModel.primaryColor;
+    self.nextButton.backgroundColor = viewModel.secondaryColor;
     
     if (![self.pickupDateLabel.text isEqualToString:viewModel.displayedPickupDate]) {
         [self animateLabel:self.pickupDateLabel withText:viewModel.displayedPickupDate];
@@ -74,6 +81,14 @@
     if (![self.dropOffDateLabel.text isEqualToString:viewModel.displayedDropoffDate]) {
         [self animateLabel:self.dropOffDateLabel withText:viewModel.displayedDropoffDate];
     }
+    
+    self.calendarView.primaryColor = viewModel.primaryColor;
+    self.calendarView.secondaryColor = viewModel.secondaryColor;
+    
+    self.nextButtonContainerBottom.constant = viewModel.enableNextButton ? 0 : -self.nextButtonContainerHeight.constant;
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.view layoutIfNeeded];
+    }];
     self.nextButton.enabled = viewModel.enableNextButton;
 }
 

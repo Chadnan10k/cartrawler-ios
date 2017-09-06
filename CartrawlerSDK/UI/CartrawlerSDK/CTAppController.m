@@ -355,7 +355,7 @@
         case CTActionSearchCalendarUserDidTapDate:
             if (!searchState.displayedPickupDate) {
                 searchState.displayedPickupDate = payload;
-            } else if ([searchState.displayedPickupDate compare:payload] == NSOrderedAscending) {
+            } else if (!searchState.displayedDropoffDate && ([searchState.displayedPickupDate isEqual:payload] || [searchState.displayedPickupDate compare:payload] == NSOrderedAscending)) {
                 searchState.displayedDropoffDate = payload;
             } else if ([searchState.displayedPickupDate compare:payload] == NSOrderedDescending) {
                 searchState.displayedPickupDate = payload;

@@ -16,6 +16,8 @@ typedef void (^CTDateSelectionCompletion)(NSDate *pickup, NSDate *dropoff);
 typedef void (^CTSingleDateSelectionCompletion)(NSDate *date, BOOL headCell);
 typedef void (^CTDiscardDates)(void);
 
+@property (nonatomic) UIColor *primaryColor;
+@property (nonatomic) UIColor *secondaryColor;
 @property (nonatomic) CTDateSelectionCompletion datesSelected;
 @property (nonatomic) CTSingleDateSelectionCompletion dateSelected;
 @property (nonatomic) CTDiscardDates discard;

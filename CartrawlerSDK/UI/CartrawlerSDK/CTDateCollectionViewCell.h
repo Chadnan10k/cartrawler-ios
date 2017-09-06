@@ -17,10 +17,10 @@
 - (void)setDateLabel:(NSDate *)date indexPath:(NSIndexPath *)indexPath section:(NSNumber *)section;
 - (void)setLabelColor:(UIColor *)color;
 
-- (void)headSetSelected;
-- (void)midSetSelected;
-- (void)tailSetSelected;
-- (void)sameDaySetSelected;
+- (void)headSetWithPrimaryColor:(UIColor *)primaryColor secondaryColor:(UIColor *)secondaryColor;
+- (void)midSetWithPrimaryColor:(UIColor *)primaryColor secondaryColor:(UIColor *)secondaryColor;
+- (void)tailSetWithPrimaryColor:(UIColor *)primaryColor secondaryColor:(UIColor *)secondaryColor;
+- (void)sameDaySetWithPrimaryColor:(UIColor *)primaryColor secondaryColor:(UIColor *)secondaryColor;
 - (void)deselect;
 
 @end

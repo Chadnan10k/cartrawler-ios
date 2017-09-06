@@ -17,6 +17,9 @@ typedef void (^CTDatesSelection)(NSDate *pickup, NSDate *dropoff, BOOL needsScro
 typedef void (^CTDateSelection)(NSDate *pickup, BOOL headDate);
 
 typedef void (^CTDiscardDates)(void);
+    
+@property (nonatomic) UIColor *primaryColor;
+@property (nonatomic) UIColor *secondaryColor;
 
 @property (nonatomic) CTDatesSelection datesSelected;
 @property (nonatomic) CTDateSelection dateSelected;

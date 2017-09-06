@@ -13,8 +13,6 @@
 
 @property (nonatomic, strong) NSDate *mininumDate;
 
-
-
 - (void)setData:(NSDate *)month section:(NSInteger)section logicController:(CalendarLogicController *)logicController;
 
 - (UICollectionView *)currentCollectionView;

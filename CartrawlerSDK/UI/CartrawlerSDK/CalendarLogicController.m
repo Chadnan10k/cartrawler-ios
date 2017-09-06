@@ -108,11 +108,7 @@
         NSInteger cellYear = headCellComp.year;
 
         if (dateDay == cellDay && dateMonth == cellMonth && cellYear == dateYear) {
-            [cell headSetSelected];
-            //if single trip
-            if (self.dateSelected) {
-                self.dateSelected(self.tailDate == nil ? self.headDate : self.tailDate, self.tailDate == nil ? YES : NO);
-            }
+            [cell headSetWithPrimaryColor:self.primaryColor secondaryColor:self.secondaryColor];
         }
     }
     //tail
@@ -135,7 +131,7 @@
         NSInteger cellYear = headCellComp.year;
 
         if (dateDay == cellDay && dateMonth == cellMonth && cellYear == dateYear) {
-            [cell tailSetSelected];
+            [cell tailSetWithPrimaryColor:self.primaryColor secondaryColor:self.secondaryColor];
         }
     }
     //same day
@@ -171,7 +167,7 @@
         if (headDay == tailDay && headMonth == tailMonth && headYear == tailYear) {
             if (cellDay == tailDay && cellMonth == tailMonth && cellYear == tailYear) {
                 if (headDay == cellDay && headMonth == cellMonth && headYear == cellYear) {
-                    [cell sameDaySetSelected];
+                    [cell sameDaySetWithPrimaryColor:self.primaryColor secondaryColor:self.secondaryColor];
                 }
             }
         }
@@ -179,41 +175,27 @@
     }
     
     //**
-
-    for (CTDateCollectionViewCell *c in collectionView.visibleCells) {
+    
+    if (self.headIndexPath != nil & self.tailIndexPath != nil) {
         
-        if (self.headIndexPath != nil & self.tailIndexPath != nil) {
-
-            if (c.section.integerValue == tailSection && c.section.integerValue == headSection) {
-                
-                if (c.indexPath.row > self.headIndexPath.row && c.indexPath.row < self.tailIndexPath.row) {
-                    [c midSetSelected];
-                }
-                
-            } else {
-                
-                if (c.indexPath.row > self.headIndexPath.row && c.section.integerValue == headSection) {
-                    [c midSetSelected];
-                }
-                    
-                if (c.indexPath.row < self.tailIndexPath.row && c.section.integerValue == tailSection) {
-                    [c midSetSelected];
-                }
-                
-                if (c.section.integerValue < tailSection && c.section.integerValue > headSection) {
-                    [c midSetSelected];
-                }
+        if (cell.section.integerValue == tailSection && cell.section.integerValue == headSection) {
+            
+            if (cell.indexPath.row > self.headIndexPath.row && cell.indexPath.row < self.tailIndexPath.row) {
+                [cell midSetWithPrimaryColor:self.primaryColor secondaryColor:self.secondaryColor];
             }
-        }
-    }
-}
-
-- (void)setMidCells:(CTDateCollectionViewCell *)cell indexPath:(NSIndexPath *)indexPath section:(NSInteger)section
-{
-    if (self.headCell != nil && self.tailCell != nil) {
-        if (section == headSection) {
-            if (indexPath.row > self.headIndexPath.row && indexPath.row < self.tailIndexPath.row) {
-                [cell midSetSelected];
+            
+        } else {
+            
+            if (cell.indexPath.row > self.headIndexPath.row && cell.section.integerValue == headSection) {
+                [cell midSetWithPrimaryColor:self.primaryColor secondaryColor:self.secondaryColor];
+            }
+            
+            if (cell.indexPath.row < self.tailIndexPath.row && cell.section.integerValue == tailSection) {
+                [cell midSetWithPrimaryColor:self.primaryColor secondaryColor:self.secondaryColor];
+            }
+            
+            if (cell.section.integerValue < tailSection && cell.section.integerValue > headSection) {
+                [cell midSetWithPrimaryColor:self.primaryColor secondaryColor:self.secondaryColor];
             }
         }
     }
@@ -230,6 +212,9 @@
         if ([cell.date compare:previousDay] == NSOrderedDescending) {
             [self headSetSelected:cell indexPath:indexPath section:section];
             self.refresh();
+            if (self.dateSelected) {
+                self.dateSelected(cell.date, YES);
+            }
         }
         
     } else if (self.headCell != nil &&
@@ -248,8 +233,7 @@
                     needsScroll = YES;
                 }
             }
-            
-            self.datesSelected(self.headDate, self.tailDate, needsScroll);
+            self.dateSelected(cell.date, NO);
         }
         
     } else {
@@ -264,7 +248,7 @@
     _headCell = cell;
     
     _headDate = cell.date;
-    [cell headSetSelected];
+    [cell headSetWithPrimaryColor:self.primaryColor secondaryColor:self.secondaryColor];
     
 }
 
@@ -277,20 +261,20 @@
             _tailIndexPath = indexPath;
             _tailCell = cell;
             _tailDate = cell.date;
-            [cell tailSetSelected];
+            [cell tailSetWithPrimaryColor:self.primaryColor secondaryColor:self.secondaryColor];
         } else {
             if (indexPath.row > self.headIndexPath.row && section == headSection) {
                 tailSection = section;
                 _tailIndexPath = indexPath;
                 _tailCell = cell;
                 _tailDate = cell.date;
-                [cell tailSetSelected];
+                [cell tailSetWithPrimaryColor:self.primaryColor secondaryColor:self.secondaryColor];
             } else if (indexPath.row >= self.headIndexPath.row && section == headSection) {//same day
                 tailSection = section;
                 _tailIndexPath = indexPath;
                 _tailCell = cell;
                 _tailDate = cell.date;
-                [cell sameDaySetSelected];
+                [cell sameDaySetWithPrimaryColor:self.primaryColor secondaryColor:self.secondaryColor];
             }
         }
     }

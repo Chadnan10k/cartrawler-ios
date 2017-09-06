@@ -501,7 +501,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VehicleListFilterCell" rowHeight="48" id="n2k-UI-r2G" customClass="CTVehicleListFilterCellTableViewCell">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="48"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n2k-UI-r2G" id="d4Z-KP-sqa">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
@@ -517,7 +517,7 @@
                                                     <rect key="frame" x="314" y="6" width="36" height="36"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bab-Yy-xD4" userLabel="checkmark">
-                                                            <rect key="frame" x="4.5" y="3.5" width="28" height="28"/>
+                                                            <rect key="frame" x="2.5" y="1" width="32.5" height="33"/>
                                                             <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="28"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>

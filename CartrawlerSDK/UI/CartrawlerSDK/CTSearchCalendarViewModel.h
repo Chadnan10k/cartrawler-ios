@@ -11,9 +11,9 @@
 
 @interface CTSearchCalendarViewModel : NSObject <CTViewModelProtocol>
 
-@property (nonatomic, readonly) UIColor *navigationBarColor;
+@property (nonatomic, readonly) UIColor *primaryColor;
 
-@property (nonatomic, readonly) UIColor *buttonColor;
+@property (nonatomic, readonly) UIColor *secondaryColor;
 
 @property (nonatomic, readonly) NSString *displayedPickupDate;
 

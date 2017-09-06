@@ -13,6 +13,11 @@
 
 @interface CTDateCollectionViewCell()
 
+@property (weak, nonatomic) IBOutlet UIView *circleView;
+@property (weak, nonatomic) IBOutlet UIView *leftSquare;
+@property (weak, nonatomic) IBOutlet UIView *leftBorder;
+@property (weak, nonatomic) IBOutlet UIView *rightSquare;
+@property (weak, nonatomic) IBOutlet UIView *rightBorder;
 @property (nonatomic, weak) IBOutlet CTLabel *label;
 @property (nonatomic, weak) IBOutlet UIImageView *selectedImageView;
 
@@ -20,29 +25,23 @@
 
 @implementation CTDateCollectionViewCell
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    self.layer.cornerRadius = 5;
-    self.layer.masksToBounds = NO;
-    self.selectedImageView.contentMode = UIViewContentModeScaleToFill;
-}
-
 - (void)setDateLabel:(NSDate *)date indexPath:(NSIndexPath *)indexPath section:(NSNumber *)section;
 {
+    _indexPath = indexPath;
+    _section = section;
+    
+    self.circleView.hidden = YES;
+    self.leftSquare.hidden = YES;
+    self.leftBorder.hidden = YES;
+    self.rightSquare.hidden = YES;
+    self.rightBorder.hidden = YES;
+    
     if (date != nil) {
         _date = date;
-        _indexPath = indexPath;
-        _section = section;
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         df.dateFormat = @"d";
-        
         self.label.text = [df stringFromDate:self.date];
-    } else {
-        _indexPath = indexPath;
-        _section = section;
     }
-    
 }
 
 - (void)setLabelColor:(UIColor *)color
@@ -50,36 +49,59 @@
     self.label.textColor = color;
 }
 
-- (void)headSetSelected
+- (void)headSetWithPrimaryColor:(UIColor *)primaryColor secondaryColor:(UIColor *)secondaryColor
 {
-    self.backgroundColor = [CTAppearance instance].calendarStartCellColor;
+    self.circleView.hidden = NO;
+    self.rightSquare.hidden = NO;
+    self.rightBorder.hidden = NO;
+    
+    self.circleView.backgroundColor = secondaryColor;
+    self.rightSquare.backgroundColor = secondaryColor;
+    self.rightBorder.backgroundColor = primaryColor;
+    
     self.label.textColor = [UIColor whiteColor];
 }
 
-- (void)midSetSelected
+- (void)midSetWithPrimaryColor:(UIColor *)primaryColor secondaryColor:(UIColor *)secondaryColor
 {
     if (![self.date isEqual:[NSNull null]]) {
-        self.backgroundColor  = [CTAppearance instance].calendarMidCellColor;
+        self.backgroundColor  = primaryColor;
         self.label.textColor = [UIColor whiteColor];
     }
 }
 
-- (void)tailSetSelected
+- (void)tailSetWithPrimaryColor:(UIColor *)primaryColor secondaryColor:(UIColor *)secondaryColor
 {
-    self.backgroundColor = [CTAppearance instance].calendarEndCellColor;
+    self.circleView.hidden = NO;
+    self.leftSquare.hidden = NO;
+    self.leftBorder.hidden = NO;
+    
+    self.circleView.backgroundColor = secondaryColor;
+    self.leftSquare.backgroundColor = secondaryColor;
+    self.leftBorder.backgroundColor = primaryColor;
     self.label.textColor = [UIColor whiteColor];
 }
 
-- (void)sameDaySetSelected
+- (void)sameDaySetWithPrimaryColor:(UIColor *)primaryColor secondaryColor:(UIColor *)secondaryColor
 {
-    self.backgroundColor = [CTAppearance instance].calendarSameDayCellColor;
+    self.circleView.hidden = NO;
+    self.leftSquare.hidden = YES;
+    self.leftBorder.hidden = YES;
+    self.rightSquare.hidden = YES;
+    self.rightBorder.hidden = YES;
+    
+    self.circleView.backgroundColor = secondaryColor;
     self.label.textColor = [UIColor whiteColor];
 }
 
 - (void)deselect
 {
     self.backgroundColor = [UIColor clearColor];
-    self.selectedImageView.image = nil;
+    self.circleView.hidden = YES;
+    self.leftSquare.hidden = YES;
+    self.leftBorder.hidden = YES;
+    self.rightSquare.hidden = YES;
+    self.rightBorder.hidden = YES;
     
     if (![self.date isEqual:[NSNull null]]) {
         NSDate *now = [NSDate date];
@@ -91,12 +113,4 @@
     }
 }
 
-- (UIView *)createViewWithColor:(UIColor *)color
-{
-    CGRect frame = CGRectMake(0, 0, self.frame.size.width / 1.2, self.frame.size.height / 1.2);
-    UIView *view = [[UIView alloc] initWithFrame:frame];
-    view.backgroundColor = [UIColor redColor];
-    
-    return view;
-}
 @end

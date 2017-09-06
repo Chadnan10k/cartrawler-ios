@@ -29,8 +29,7 @@
 
 @implementation CTCalendarView
 
-- (void)reset
-{
+- (void)reset {
     [self.tableView setContentOffset:CGPointZero animated:YES];
     [self.logicController reset];
 }
@@ -84,6 +83,14 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self setupWeekDayTitle:frame];
+}
+    
+- (void)setPrimaryColor:(UIColor *)primaryColor {
+    self.logicController.primaryColor = primaryColor;
+}
+    
+- (void)setSecondaryColor:(UIColor *)secondaryColor {
+    self.logicController.secondaryColor = secondaryColor;
 }
 
 #pragma mark UITableView

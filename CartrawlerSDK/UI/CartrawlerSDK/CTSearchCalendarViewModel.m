@@ -11,8 +11,8 @@
 #import "CartrawlerSDK+NSDateUtils.h"
 
 @interface CTSearchCalendarViewModel ()
-@property (nonatomic, readwrite) UIColor *navigationBarColor;
-@property (nonatomic, readwrite) UIColor *buttonColor;
+@property (nonatomic, readwrite) UIColor *primaryColor;
+@property (nonatomic, readwrite) UIColor *secondaryColor;
 @property (nonatomic, readwrite) NSString *displayedPickupDate;
 @property (nonatomic, readwrite) NSString *displayedDropoffDate;
 @property (nonatomic, readwrite) BOOL enableNextButton;
@@ -25,8 +25,8 @@
     CTUserSettingsState *userSettingsState = appState.userSettingsState;
     CTSearchState *searchState = appState.searchState;
     
-    viewModel.navigationBarColor = userSettingsState.primaryColor;
-    viewModel.buttonColor = userSettingsState.secondaryColor;
+    viewModel.primaryColor = userSettingsState.primaryColor;
+    viewModel.secondaryColor = userSettingsState.secondaryColor;
     
     viewModel.displayedPickupDate = searchState.displayedPickupDate ? [searchState.displayedPickupDate shortDescriptionFromDate] : CTLocalizedString(CTSDKCalendarSelectDate);
     if (searchState.displayedPickupDate) {
