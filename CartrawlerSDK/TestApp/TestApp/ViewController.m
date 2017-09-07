@@ -25,7 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
-    self.version.text = [NSString stringWithFormat:@"Version: %@", version];
+    NSString *build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+    self.version.text = [NSString stringWithFormat:@"Version: %@ (%@)", version, build];
     self.segmentedControl.alpha = 0;
     self.startEngine.alpha = 0;
 }
