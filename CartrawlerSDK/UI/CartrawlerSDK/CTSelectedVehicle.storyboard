@@ -162,6 +162,25 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ad9-Xx-bG9" userLabel="Dimming View">
+                                <rect key="frame" x="0.0" y="76" width="320" height="1284"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="lvt-yo-BbW" appends="YES" id="4xb-Y1-8qn"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FQU-EP-QqQ" userLabel="Payment View Container">
+                                <rect key="frame" x="0.0" y="-124" width="320" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Nwk-e6-FYF"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="grC-Yu-3K2" appends="YES" id="75b-ec-X70"/>
+                                </connections>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGN-Y2-mGs" userLabel="Navigation Bar">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
                                 <subviews>
@@ -252,18 +271,25 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="BlZ-ax-MjC" firstAttribute="centerX" secondItem="wGN-Y2-mGs" secondAttribute="centerX" id="3ml-Io-Hvf"/>
+                            <constraint firstItem="FQU-EP-QqQ" firstAttribute="width" secondItem="8lc-ju-aes" secondAttribute="width" id="8yq-lt-kUo"/>
                             <constraint firstItem="rr3-Tk-WIB" firstAttribute="width" secondItem="8lc-ju-aes" secondAttribute="width" id="AL2-oC-Erd"/>
                             <constraint firstItem="OAm-Wc-Tx7" firstAttribute="top" secondItem="BlZ-ax-MjC" secondAttribute="bottom" id="HPa-vj-6in"/>
+                            <constraint firstAttribute="trailing" secondItem="ad9-Xx-bG9" secondAttribute="trailing" id="IRM-OK-y0t"/>
                             <constraint firstItem="0gu-2h-cf3" firstAttribute="width" secondItem="8lc-ju-aes" secondAttribute="width" constant="-32" id="JQ8-mU-pfd"/>
                             <constraint firstItem="b1Q-r8-tXH" firstAttribute="top" secondItem="OAm-Wc-Tx7" secondAttribute="bottom" id="JnZ-T9-fBP"/>
                             <constraint firstItem="OAm-Wc-Tx7" firstAttribute="leading" secondItem="8lc-ju-aes" secondAttribute="leading" id="MHS-Ge-ZW0"/>
+                            <constraint firstItem="FQU-EP-QqQ" firstAttribute="centerX" secondItem="8lc-ju-aes" secondAttribute="centerX" id="Nut-4k-28O"/>
                             <constraint firstItem="rr3-Tk-WIB" firstAttribute="centerX" secondItem="8lc-ju-aes" secondAttribute="centerX" id="SYg-JT-ImN"/>
                             <constraint firstItem="0gu-2h-cf3" firstAttribute="top" secondItem="wGN-Y2-mGs" secondAttribute="bottom" constant="16" id="WsE-0n-YZa"/>
                             <constraint firstItem="0gu-2h-cf3" firstAttribute="centerX" secondItem="8lc-ju-aes" secondAttribute="centerX" id="XMR-OI-xDd"/>
                             <constraint firstItem="wGN-Y2-mGs" firstAttribute="leading" secondItem="8lc-ju-aes" secondAttribute="leading" id="c3B-nb-Hem"/>
+                            <constraint firstItem="b1Q-r8-tXH" firstAttribute="top" secondItem="ad9-Xx-bG9" secondAttribute="bottom" id="cvh-oM-EVB"/>
+                            <constraint firstItem="FQU-EP-QqQ" firstAttribute="bottom" secondItem="wGN-Y2-mGs" secondAttribute="bottom" id="hrf-VF-peC"/>
                             <constraint firstAttribute="trailing" secondItem="wGN-Y2-mGs" secondAttribute="trailing" id="m5s-wn-Ny7"/>
+                            <constraint firstItem="ad9-Xx-bG9" firstAttribute="leading" secondItem="8lc-ju-aes" secondAttribute="leading" id="tSj-AE-lWi"/>
                             <constraint firstItem="BlZ-ax-MjC" firstAttribute="top" secondItem="wGN-Y2-mGs" secondAttribute="bottom" id="xKx-ft-iTv"/>
                             <constraint firstItem="wGN-Y2-mGs" firstAttribute="top" secondItem="uOv-Bk-Xai" secondAttribute="bottom" constant="-20" id="xwe-mp-SJK"/>
+                            <constraint firstItem="ad9-Xx-bG9" firstAttribute="top" secondItem="wGN-Y2-mGs" secondAttribute="bottom" id="yxN-fp-2ZE"/>
                             <constraint firstAttribute="trailing" secondItem="OAm-Wc-Tx7" secondAttribute="trailing" id="zXk-1J-WXY"/>
                             <constraint firstItem="BlZ-ax-MjC" firstAttribute="width" secondItem="wGN-Y2-mGs" secondAttribute="width" id="zd0-fa-gub"/>
                         </constraints>
@@ -273,8 +299,12 @@
                     <size key="freeformSize" width="320" height="1360"/>
                     <connections>
                         <outlet property="chevron" destination="m2n-of-P6w" id="NV1-2D-AJc"/>
+                        <outlet property="dimmingView" destination="ad9-Xx-bG9" id="G6g-7L-LcW"/>
                         <outlet property="navigationBar" destination="wGN-Y2-mGs" id="5Zk-sp-5QH"/>
                         <outlet property="nextButton" destination="tOH-xK-Ld6" id="gnA-py-bdn"/>
+                        <outlet property="paymentContainerBottom" destination="hrf-VF-peC" id="8o1-Ed-4dw"/>
+                        <outlet property="paymentContainerHeight" destination="Nwk-e6-FYF" id="bEC-ov-Ihp"/>
+                        <outlet property="paymentContainerView" destination="FQU-EP-QqQ" id="Glw-sV-r51"/>
                         <outlet property="scrollView" destination="BlZ-ax-MjC" id="ivP-iw-k80"/>
                         <outlet property="selectedVehicleInfoViewHeight" destination="TMd-ZK-TOl" id="0Yr-M1-GrK"/>
                         <outlet property="selectedVehicleInsuranceViewHeight" destination="kbc-Mp-in5" id="GdF-kg-MGt"/>
@@ -287,6 +317,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="et8-2Y-PC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="lvt-yo-BbW" userLabel="Dimming View Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="dimmingViewTapped:" destination="v45-Sa-Ttt" id="aEW-iD-rXe"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="grC-Yu-3K2" userLabel="Payment View Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="paymentSummaryViewTapped:" destination="v45-Sa-Ttt" id="yFz-9E-G7L"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-395.625" y="75"/>
         </scene>

@@ -11,11 +11,13 @@
 
 @interface CTSelectedVehicleViewModel ()
 @property (nonatomic, readwrite) UIColor *navigationBarColor;
+@property (nonatomic, readwrite) BOOL showPaymentSummary;
 @property (nonatomic, readwrite) NSString *total;
 @property (nonatomic, readwrite) NSString *totalAmount;
 @property (nonatomic, readwrite) BOOL showToastView;
 @property (nonatomic, readwrite) NSString *toast;
 @property (nonatomic, readwrite) NSString *toastOK;
+@property (nonatomic, readwrite) CTPaymentSummaryViewModel *paymentSummaryViewModel;
 @property (nonatomic, readwrite) CTSelectedVehicleInfoViewModel *selectedVehicleInfoViewModel;
 @property (nonatomic, readwrite) CTSelectedVehicleTabViewModel *selectedVehicleTabViewModel;
 @property (nonatomic, readwrite) CTSelectedVehicleInsuranceViewModel *selectedVehicleInsuranceViewModel;
@@ -27,10 +29,12 @@
 + (instancetype)viewModelForState:(CTAppState *)appState {
     CTSelectedVehicleViewModel *viewModel = [CTSelectedVehicleViewModel new];
     viewModel.totalAmount = [self totalPrice:appState];
+    viewModel.showPaymentSummary = appState.selectedVehicleState.showPaymentSummary;
     viewModel.navigationBarColor = appState.userSettingsState.primaryColor;
     viewModel.showToastView = appState.selectedVehicleState.showToastView;
     viewModel.toast = @"Your total includes extras, but you will pay for them when you pick-up your car.";
     viewModel.toastOK = CTLocalizedString(CTRentalErrorOk);
+    viewModel.paymentSummaryViewModel = [CTPaymentSummaryViewModel viewModelForState:appState];
     viewModel.selectedVehicleInfoViewModel = [CTSelectedVehicleInfoViewModel viewModelForState:appState];
     viewModel.selectedVehicleTabViewModel = [CTSelectedVehicleTabViewModel viewModelForState:appState];
     viewModel.selectedVehicleInsuranceViewModel = [CTSelectedVehicleInsuranceViewModel viewModelForState:appState];

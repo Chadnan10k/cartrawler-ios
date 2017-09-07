@@ -91,7 +91,7 @@
 + (NSString *)titleForFee:(CTFee *)fee {
     switch (fee.feePurpose) {
         case CTFeeTypePayNow:
-            return CTLocalizedString(CTRentalSummaryPayNow);
+            return @"Car rental";
             break;
         case CTFeeTypePayAtDesk:
             return CTLocalizedString(CTRentalSummaryPayAtDesk);

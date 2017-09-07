@@ -8,23 +8,30 @@
 
 #import "CTSelectedVehicleViewController.h"
 #import "CTSelectedVehicleViewModel.h"
+#import "CTPaymentSummaryViewController.h"
 #import "CTSelectedVehicleInfoViewController.h"
 #import "CTSelectedVehicleTabViewController.h"
 #import "CTSelectedVehicleInsuranceViewController.h"
 #import "CTSelectedVehicleExtrasViewController.h"
 #import "CTAppController.h"
+#import "CTLayoutManager.h"
 
 @interface CTSelectedVehicleViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *navigationBar;
-@property (nonatomic, weak) CTSelectedVehicleInfoViewController *selectedVehicleInfoViewController;
 @property (weak, nonatomic) IBOutlet UILabel *total;
 @property (weak, nonatomic) IBOutlet UILabel *totalAmount;
 @property (weak, nonatomic) IBOutlet UILabel *chevron;
+@property (weak, nonatomic) IBOutlet UIView *dimmingView;
+@property (weak, nonatomic) IBOutlet UIView *paymentContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *paymentContainerHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *paymentContainerBottom;
 @property (weak, nonatomic) IBOutlet UIView *toastView;
 @property (weak, nonatomic) IBOutlet UILabel *toastLabel;
 @property (weak, nonatomic) IBOutlet UIButton *toastButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectedVehicleInfoViewHeight;
+@property (nonatomic, weak) CTPaymentSummaryViewController *paymentSummaryViewController;
+@property (nonatomic, weak) CTSelectedVehicleInfoViewController *selectedVehicleInfoViewController;
 @property (nonatomic, weak) CTSelectedVehicleTabViewController *selectedVehicleTabViewController;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectedVehicleTabViewHeight;
 @property (nonatomic, weak) CTSelectedVehicleInsuranceViewController *selectedVehicleInsuranceViewController;
@@ -43,6 +50,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    [self addPaymentSummaryViewController];
+}
+    
+- (void)addPaymentSummaryViewController {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PaymentSummary" bundle:[NSBundle bundleForClass:self.class]];
+    self.paymentSummaryViewController = [storyboard instantiateViewControllerWithIdentifier:@"CTPaymentSummaryViewController"];
+    [self addChildViewController:self.paymentSummaryViewController];
+    [self.paymentContainerView addSubview:self.paymentSummaryViewController.view];
+    [CTLayoutManager pinView:self.paymentSummaryViewController.view toSuperView:self.paymentContainerView];
+    [self.paymentSummaryViewController didMoveToParentViewController:self];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -66,17 +83,20 @@
                         } completion:nil];
     }
     
-    [UIView animateWithDuration:0.2 animations:^{
-        self.toastView.alpha = viewModel.showToastView ? 0.8 : 0;
-    }];
     self.toastLabel.text = viewModel.toast;
     [self.toastButton setTitle:viewModel.toastOK forState:UIControlStateNormal];
+    
+    [self.paymentSummaryViewController updateWithViewModel:viewModel.paymentSummaryViewModel];
+    self.paymentContainerHeight.constant = [self.paymentSummaryViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
+    
+    self.paymentContainerBottom.constant = viewModel.showPaymentSummary ? self.paymentContainerHeight.constant : 0;
     
     [self.selectedVehicleInfoViewController updateWithViewModel:viewModel.selectedVehicleInfoViewModel];
     [self.selectedVehicleTabViewController updateWithViewModel:viewModel.selectedVehicleTabViewModel];
     [self.selectedVehicleInsuranceViewController updateWithViewModel:viewModel.selectedVehicleInsuranceViewModel];
     [self.selectedVehicleExtrasViewController updateWithViewModel:viewModel.selectedVehicleExtrasViewModel];
     
+    self.paymentContainerHeight.constant = [self.paymentSummaryViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
     self.selectedVehicleInfoViewHeight.constant = [self.selectedVehicleInfoViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
     self.selectedVehicleTabViewHeight.constant = [self.selectedVehicleTabViewController.view systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
     // TODO: Remove magic number
@@ -86,6 +106,8 @@
         [UIView animateWithDuration:self.viewHasAppeared ? 0.2 : 0
                          animations:^{
                              [self.view layoutIfNeeded];
+                             self.dimmingView.alpha = viewModel.showPaymentSummary ? 0.5 : 0;
+                             self.toastView.alpha = viewModel.showToastView ? 0.8 : 0;
                          }];
     }
 }
@@ -113,12 +135,15 @@
 }
 
 - (IBAction)totalButtonTapped:(UIButton *)sender {
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Coming Soon" message:@"This feature is under construction" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [controller dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [controller addAction:okAction];
-    [self presentViewController:controller animated:YES completion:nil];
+    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapPaymentSummary payload:nil];
+}
+    
+- (IBAction)dimmingViewTapped:(UITapGestureRecognizer *)sender {
+    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidDismissPaymentSummary payload:nil];
+}
+    
+- (IBAction)paymentSummaryViewTapped:(id)sender {
+    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidDismissPaymentSummary payload:nil];
 }
 
 - (IBAction)nextButtonTapped:(UIButton *)sender {

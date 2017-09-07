@@ -67,7 +67,7 @@
 + (NSAttributedString *)addedString {
     NSMutableAttributedString *addedString = [[NSMutableAttributedString alloc] initWithString:CTLocalizedString(CTRentalInsuranceAddedButtonTitle)];
     NSMutableAttributedString *tickString = [[NSMutableAttributedString alloc] initWithString:@"  "];
-    [tickString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"V5-Mobile" size:14] range:NSMakeRange(0, tickString.length)];
+    [tickString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"V5-Mobile" size:16] range:NSMakeRange(0, tickString.length)];
     [tickString addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, tickString.length)];
     [addedString appendAttributedString:tickString];
     

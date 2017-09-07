@@ -12,14 +12,17 @@
 #import "CTSelectedVehicleTabViewModel.h"
 #import "CTSelectedVehicleInsuranceViewModel.h"
 #import "CTSelectedVehicleExtrasViewModel.h"
+#import "CTPaymentSummaryViewModel.h"
 
 @interface CTSelectedVehicleViewModel : NSObject <CTViewModelProtocol>
 @property (nonatomic, readonly) UIColor *navigationBarColor;
+@property (nonatomic, readonly) BOOL showPaymentSummary;
 @property (nonatomic, readonly) NSString *total;
 @property (nonatomic, readonly) NSString *totalAmount;
 @property (nonatomic, readonly) BOOL showToastView;
 @property (nonatomic, readonly) NSString *toast;
 @property (nonatomic, readonly) NSString *toastOK;
+@property (nonatomic, readonly) CTPaymentSummaryViewModel *paymentSummaryViewModel;
 @property (nonatomic, readonly) CTSelectedVehicleInfoViewModel *selectedVehicleInfoViewModel;
 @property (nonatomic, readonly) CTSelectedVehicleTabViewModel *selectedVehicleTabViewModel;
 @property (nonatomic, readonly) CTSelectedVehicleInsuranceViewModel *selectedVehicleInsuranceViewModel;

@@ -469,15 +469,17 @@
             navigationState.currentNavigationStep = CTNavigationStepVehicleList;
             appState.selectedVehicleState = nil;
             break;
+        case CTActionSelectedVehicleUserDidTapPaymentSummary:
+        case CTActionSelectedVehicleUserDidDismissPaymentSummary:
+            selectedVehicleState.showPaymentSummary = !selectedVehicleState.showPaymentSummary;
+            break;
         case CTActionSelectedVehicleUserDidTapToastOK:
             selectedVehicleState.showToastView = NO;
             break;
         case CTActionSelectedVehicleUserDidTapMoreFeatures:
-            //selectedVehicleState.featuresDisplayed = YES;
             navigationState.modalViewControllers = @[@(CTNavigationModalSelectedVehicleFeatures)];
             break;
         case CTActionSelectedVehicleUserDidDismissMoreFeatures:
-            //selectedVehicleState.featuresDisplayed = NO;
             navigationState.modalViewControllers = @[];
             break;
         case CTActionSelectedVehicleUserDidTapTab:
