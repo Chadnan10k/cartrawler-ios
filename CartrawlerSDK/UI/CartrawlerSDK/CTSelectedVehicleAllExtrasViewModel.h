@@ -11,7 +11,7 @@
 #import "CTSelectedVehicleExtrasCellModel.h"
 
 @interface CTSelectedVehicleAllExtrasViewModel : NSObject <CTViewModelProtocol>
-    
+@property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) UIColor *primaryColor;
 @property (nonatomic, readonly) NSArray <CTSelectedVehicleExtrasCellModel *> *cellModels;
 

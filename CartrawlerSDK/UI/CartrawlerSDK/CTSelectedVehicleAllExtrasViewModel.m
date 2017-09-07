@@ -10,6 +10,7 @@
 #import "CTSelectedVehicleExtrasCellModel.h"
 
 @interface CTSelectedVehicleAllExtrasViewModel ()
+@property (nonatomic, readwrite) NSString *title;
 @property (nonatomic, readwrite) UIColor *primaryColor;
 @property (nonatomic, readwrite) NSArray <CTSelectedVehicleExtrasCellModel *> *cellModels;
 @end
@@ -22,6 +23,7 @@
     CTSelectedVehicleState *selectedVehicleState = appState.selectedVehicleState;
     CTVehicle *vehicle = selectedVehicleState.selectedAvailabilityItem.vehicle;
     
+    viewModel.title = CTLocalizedString(CTRentalTitleExtras);
     viewModel.primaryColor = appState.userSettingsState.primaryColor;
     
     NSMutableArray *cellModels = [NSMutableArray new];

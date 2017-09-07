@@ -26,6 +26,7 @@
 - (void)updateWithViewModel:(CTSelectedVehicleAllExtrasViewModel *)viewModel{
     self.viewModel = viewModel;
     self.navigationBar.barTintColor = viewModel.primaryColor;
+    self.navigationBar.topItem.title = viewModel.title;
     [UIView transitionWithView: self.tableView
                       duration: 0.35f
                        options: UIViewAnimationOptionTransitionCrossDissolve
