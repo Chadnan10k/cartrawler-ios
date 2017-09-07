@@ -38,7 +38,7 @@
     CTSelectedVehicleRatingsViewModel *viewModel = [CTSelectedVehicleRatingsViewModel new];
     viewModel.providedBy = CTLocalizedString(CTRentalVehicleProvided);
     viewModel.overall = CTLocalizedString(CTRentalRatingOverall);
-    viewModel.valueForMoney = CTLocalizedString(CTRentalSupplierPrice);
+    viewModel.valueForMoney = @"Overall value for money";
     viewModel.cleanliness = CTLocalizedString(CTRentalSupplierCar);
     viewModel.service = CTLocalizedString(CTRentalSupplierDesk);
     viewModel.pickupProcess = CTLocalizedString(CTRentalSupplierPickup);
