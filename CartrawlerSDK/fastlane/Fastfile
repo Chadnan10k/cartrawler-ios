@@ -33,19 +33,12 @@ platform :ios do
 
     desc "Increments build and deploys test app to Hockey"
     lane :deploy_build do
-        update_fastlane
-
         ensure_git_status_clean
-
-        increment_build_number(xcodeproj: './TestApp/TestApp.xcodeproj')
-        commit_version_bump(
-            xcodeproj: './TestApp/TestApp.xcodeproj',
-            message: '- Bumped Test App build number'
-        )
-
+        update_fastlane
         match
         sigh
 
+        increment_build_number(xcodeproj: './TestApp/TestApp.xcodeproj')
         gym(scheme: "BuildTestApp",
             configuration: "Debug",
             export_method: "development"
@@ -71,6 +64,11 @@ platform :ios do
             },
             default_payloads: [],
             slack_url: "https://hooks.slack.com/services/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"
+        )
+
+        commit_version_bump(
+            xcodeproj: './TestApp/TestApp.xcodeproj',
+            message: '- CI: Bumped Test App build number'
         )
 
         tagmessage = "Build: (" + build + ")"
