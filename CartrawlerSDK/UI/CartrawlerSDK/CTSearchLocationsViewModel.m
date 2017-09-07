@@ -56,20 +56,21 @@
         }
     }
     
-    NSMutableArray *rowTitles = [NSMutableArray new];
-    NSMutableArray *sectionTitles = [NSMutableArray new];
+    
+    NSMutableArray *sections = [NSMutableArray new];
+    NSMutableArray *rows = [NSMutableArray new];
+    
     if (airportLocations.count > 0) {
-        [sectionTitles addObject:CTLocalizedString(CTRentalSearchLocationsAirport)];
-        [rowTitles addObject:airportLocations];
+        [sections addObject:CTLocalizedString(CTRentalSearchLocationsAirport)];
+        [rows addObject:airportLocations.copy];
     }
     if (otherLocations.count > 0) {
-        [sectionTitles addObject:CTLocalizedString(CTRentalSearchLocationsOther)];
-        [rowTitles addObject:otherLocations];
+        [sections addObject:CTLocalizedString(CTRentalSearchLocationsOther)];
+        [rows addObject:otherLocations.copy];
     }
     
-    viewModel.rows = @[airportLocations.copy, otherLocations.copy];
-    viewModel.sectionTitles = sectionTitles.copy;
-    
+    viewModel.sectionTitles = sections.copy;
+    viewModel.rows = rows.copy;
     
     return viewModel;
 }
