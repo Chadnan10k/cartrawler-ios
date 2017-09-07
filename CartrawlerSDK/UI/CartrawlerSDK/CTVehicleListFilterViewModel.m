@@ -11,6 +11,7 @@
 
 @interface CTVehicleListFilterViewModel ()
 @property (nonatomic, readwrite) UIColor *navigationBarColor;
+@property (nonatomic, readwrite) NSString *navigationTitle;
 @property (nonatomic, readwrite) NSArray <CTVehicleListFilterHeaderViewModel *> *headerViewModels;
 @end
 
@@ -19,6 +20,7 @@
 + (instancetype)viewModelForState:(CTAppState *)appState {
     CTVehicleListFilterViewModel *viewModel = [CTVehicleListFilterViewModel new];
     viewModel.navigationBarColor = appState.userSettingsState.primaryColor;
+    viewModel.navigationTitle = CTLocalizedString(CTRentalTitleFilters);
     viewModel.headerViewModels =  [CTVehicleListFilterViewModel headerViewModelsForState:appState];
     return viewModel;
 }

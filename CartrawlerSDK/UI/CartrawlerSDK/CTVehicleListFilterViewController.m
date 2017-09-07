@@ -30,6 +30,7 @@
 - (void)updateWithViewModel:(CTVehicleListFilterViewModel *)viewModel {
     self.viewModel = viewModel;
     self.navigationBar.barTintColor = viewModel.navigationBarColor;
+    self.navigationBar.topItem.title = viewModel.navigationTitle;
     [self.tableView reloadData];
 }
 
