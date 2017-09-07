@@ -10,6 +10,7 @@
 #import "CTAppState.h"
 
 @interface CTSelectedVehicleExtrasViewModel ()
+@property (nonatomic, readwrite) UIColor *primaryColor;
 @property (nonatomic, readwrite) NSArray <CTSelectedVehicleExtrasCellModel *> *cellModels;
 @property (nonatomic, readwrite) NSArray <NSNumber *> *flippedExtras;
 @end
@@ -22,9 +23,11 @@
     CTSelectedVehicleState *selectedVehicleState = appState.selectedVehicleState;
     CTVehicle *vehicle = selectedVehicleState.selectedAvailabilityItem.vehicle;
     
+    viewModel.primaryColor = appState.userSettingsState.primaryColor;
+    
     NSMutableArray *cellModels = [NSMutableArray new];
     for (CTExtraEquipment *extra in vehicle.extraEquipment) {
-        CTSelectedVehicleExtrasCellModel *cellModel = [CTSelectedVehicleExtrasCellModel viewModelForState:appState extra:extra];
+        CTSelectedVehicleExtrasCellModel *cellModel = [CTSelectedVehicleExtrasCellModel viewModelForState:appState extra:extra type:CTExtrasCellTypeCarousel];
         [cellModels addObject:cellModel];
     }
     

@@ -341,6 +341,10 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      */
     CTActionSelectedVehicleUserDidTapViewAllExtras,
     /**
+     *  The user tapped close view all extras
+     */
+    CTActionSelectedVehicleUserDidTapCloseViewAllExtras,
+    /**
      *  The user tapped increment button on an extra
      *  Payload(CTExtraEquipment *): Extra
      */
@@ -355,6 +359,11 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      *  Payload: nil
      */
     CTActionSelectedVehicleUserDidTapExtraInfo,
+    /**
+     *  The user tapped an extra in the all extras list
+     *  Payload: the extra
+     */
+    CTActionSelectedVehicleUserDidTapExtra,
     /**
      *  The user tapped the next button
      *  Payload: nil

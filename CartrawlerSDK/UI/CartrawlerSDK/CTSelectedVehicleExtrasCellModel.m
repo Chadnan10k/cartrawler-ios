@@ -14,6 +14,7 @@
 
 @interface CTSelectedVehicleExtrasCellModel ()
 @property (nonatomic, readwrite) UIColor *primaryColor;
+@property (nonatomic, readwrite) CTExtrasCellType type;
 @property (nonatomic, readwrite) NSString *title;
 @property (nonatomic, readwrite) NSString *detail;
 @property (nonatomic, readwrite) NSString *moreDetail;
@@ -25,15 +26,19 @@
 @property (nonatomic, readwrite) UIColor *incrementButtonColor;
 @property (nonatomic, readwrite) UIColor *decrementButtonColor;
 @property (nonatomic, readwrite) BOOL flipped;
+@property (nonatomic, readwrite) BOOL expanded;
 @end
 
 @implementation CTSelectedVehicleExtrasCellModel
 
-+ (instancetype)viewModelForState:(CTAppState *)appState extra:(CTExtraEquipment *)extra {
++ (instancetype)viewModelForState:(CTAppState *)appState
+                            extra:(CTExtraEquipment *)extra
+                             type:(CTExtrasCellType)type {
     CTSelectedVehicleState *selectedVehicleState = appState.selectedVehicleState;
     
     CTSelectedVehicleExtrasCellModel *viewModel = [CTSelectedVehicleExtrasCellModel new];
     viewModel.primaryColor = appState.userSettingsState.primaryColor;
+    viewModel.type = type;
     viewModel.title = extra.equipDescription;
     viewModel.detail = [self detailForExtra:extra];
     viewModel.imageCharacter = [self imageCharacterForExtra:extra];
@@ -49,6 +54,7 @@
     viewModel.decrementButtonColor = viewModel.decrementEnabled ? appState.userSettingsState.primaryColor : [UIColor lightGrayColor];
     
     viewModel.flipped = selectedVehicleState.flippedExtras[index].integerValue;
+    viewModel.expanded = selectedVehicleState.expandedExtras[index].integerValue;
         
     viewModel.moreDetail = [self moreDetailForExtra:extra];
     

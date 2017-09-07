@@ -411,9 +411,11 @@
             appState.selectedVehicleState.selectedAvailabilityItem = payload;
             appState.selectedVehicleState.addedExtras = [NSMapTable strongToStrongObjectsMapTable];
             appState.selectedVehicleState.flippedExtras = [NSMutableArray new];
+            appState.selectedVehicleState.expandedExtras = [NSMutableArray new];
             [appState.selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment enumerateObjectsUsingBlock:^(CTExtraEquipment * _Nonnull extra, NSUInteger idx, BOOL * _Nonnull stop) {
                 [appState.selectedVehicleState.addedExtras setObject:@(extra.isIncludedInRate) forKey:extra];
                 appState.selectedVehicleState.flippedExtras[idx] = @0;
+                appState.selectedVehicleState.expandedExtras[idx] = @0;
             }];
             navigationState.currentNavigationStep = CTNavigationStepSelectedVehicle;
             [self.apiController requestInsuranceForSelectedVehicleWithState:appState];
@@ -515,6 +517,10 @@
             selectedVehicleState.insuranceAdded = !selectedVehicleState.insuranceAdded;
             break;
         case CTActionSelectedVehicleUserDidTapViewAllExtras:
+            navigationState.modalViewControllers = @[@(CTNavigationModalSelectedVehicleAllExtras)];
+            break;
+        case CTActionSelectedVehicleUserDidTapCloseViewAllExtras:
+            navigationState.modalViewControllers = @[];
             break;
         case CTActionSelectedVehicleUserDidTapIncrementExtra: {
             NSMapTable *addedExtras = selectedVehicleState.addedExtras;
@@ -566,6 +572,12 @@
             NSInteger index = [selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment indexOfObject:payload];
             BOOL flipped = selectedVehicleState.flippedExtras[index].integerValue;
             selectedVehicleState.flippedExtras[index] =  @(!flipped);
+            break;
+        }
+        case CTActionSelectedVehicleUserDidTapExtra: {
+            NSInteger index = [selectedVehicleState.selectedAvailabilityItem.vehicle.extraEquipment indexOfObject:payload];
+            BOOL expanded = selectedVehicleState.expandedExtras[index].integerValue;
+            selectedVehicleState.expandedExtras[index] =  @(!expanded);
             break;
         }
         case CTActionSelectedVehicleUserDidTapNext:

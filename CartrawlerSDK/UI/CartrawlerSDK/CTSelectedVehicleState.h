@@ -39,4 +39,5 @@ typedef NS_ENUM(NSInteger, CTSelectedVehicleExpanded) {
 
 @property (nonatomic) NSMapTable <CTExtraEquipment *, NSNumber *> *addedExtras;
 @property (nonatomic) NSMutableArray <NSNumber *> *flippedExtras;
+@property (nonatomic) NSMutableArray <NSNumber *> *expandedExtras;
 @end

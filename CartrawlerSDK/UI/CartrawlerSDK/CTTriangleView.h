@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface CTTriangleView : UIView
+    
+@property (nonatomic, strong) UIColor *color;
 
+// TODO: Remove when obsolete
 - (instancetype)initWithColor:(UIColor *)color;
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CTViewModelProtocol.h>
+#import "CTAppController.h"
 
 @protocol CTViewControllerProtocol <NSObject>
 

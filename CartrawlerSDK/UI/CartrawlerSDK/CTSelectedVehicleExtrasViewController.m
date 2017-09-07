@@ -13,6 +13,7 @@
 @interface CTSelectedVehicleExtrasViewController ()
 @property (nonatomic, strong) CTSelectedVehicleExtrasViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIButton *viewAllButton;
 
 @end
 
@@ -22,6 +23,7 @@
     BOOL collectionViewReload = viewModel.cellModels.count != self.viewModel.cellModels.count;
     
     self.viewModel = viewModel;
+    [self.viewAllButton setTitleColor:viewModel.primaryColor forState:UIControlStateNormal];
     
     if (collectionViewReload) {
         [self.collectionView reloadData];
@@ -58,5 +60,8 @@
     return cell;
 }
 
+- (IBAction)viewAllButtonTapped:(UIButton *)sender {
+    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapViewAllExtras payload:nil];
+}
 
 @end

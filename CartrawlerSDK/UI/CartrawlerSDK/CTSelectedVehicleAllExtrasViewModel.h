@@ -1,18 +1,18 @@
 //
-//  CTSelectedVehicleExtrasViewModel.h
+//  CTSelectedVehicleAllExtrasViewModel.h
 //  CartrawlerSDK
 //
-//  Created by Alan Pearson Mathews on 03/08/2017.
-//  Copyright © 2017 Cartrawler. All rights reserved.
+//  Created by Alan Pearson Mathews on 07/09/2017.
+//  Copyright (c) 2017 Cartrawler. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "CTViewModelProtocol.h"
 #import "CTSelectedVehicleExtrasCellModel.h"
 
-@interface CTSelectedVehicleExtrasViewModel : NSObject <CTViewModelProtocol>
+@interface CTSelectedVehicleAllExtrasViewModel : NSObject <CTViewModelProtocol>
+    
 @property (nonatomic, readonly) UIColor *primaryColor;
 @property (nonatomic, readonly) NSArray <CTSelectedVehicleExtrasCellModel *> *cellModels;
-@property (nonatomic, readonly) NSArray <NSNumber *> *flippedExtras;
 
 @end

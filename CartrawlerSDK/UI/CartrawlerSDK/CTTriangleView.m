@@ -8,10 +8,6 @@
 
 #import "CTTriangleView.h"
 
-@interface CTTriangleView ()
-@property (nonatomic, strong) UIColor *color;
-@end
-
 @implementation CTTriangleView
 
 - (instancetype)initWithColor:(UIColor *)color {
