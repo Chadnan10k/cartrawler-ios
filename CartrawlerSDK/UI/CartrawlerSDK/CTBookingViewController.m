@@ -132,7 +132,7 @@
     
     if (viewModel.showAddressDetails) {
         // TODO: Extract constant
-        self.addressDetailsHeight.constant = 377;
+        self.addressDetailsHeight.constant = 309;
     }
     UIView *selectedView;
     
@@ -206,12 +206,6 @@
     }
    
     self.keyboardSpacer.constant = viewModel.keyboardHeight ? viewModel.keyboardHeight.floatValue : 0;
-
-//    if (selectedTextfield != CTBookingTextfieldNone && selectedTextfield != CTBookingTextfieldPayment) {
-//        if (![selectedView isFirstResponder]) {
-//            [selectedView becomeFirstResponder];
-//        }
-//    }
 
     if (selectedView) {
         CGFloat padding = 8;
@@ -313,42 +307,6 @@
 - (IBAction)termsAndConditionsTapped:(UITapGestureRecognizer *)sender {
     [CTAppController dispatchAction:CTActionBookingUserDidTapTermsAndConditions payload:nil];
 }
-
-//- (void)textFieldDidBeginEditing:(UITextField *)textField {
-//    if (textField == self.firstName) {
-//        [CTAppController dispatchAction:CTActionBookingUserDidTapFirstName payload:nil];
-//    }
-//    if (textField == self.lastName) {
-//        [CTAppController dispatchAction:CTActionBookingUserDidTapLastName payload:nil];
-//    }
-//    if (textField == self.emailAddress) {
-//        [CTAppController dispatchAction:CTActionBookingUserDidTapEmailAddress payload:nil];
-//    }
-//    if (textField == self.prefix) {
-//        [CTAppController dispatchAction:CTActionBookingUserDidTapPrefix payload:nil];
-//    }
-//    if (textField == self.phoneNumber) {
-//        [CTAppController dispatchAction:CTActionBookingUserDidTapPhoneNumber payload:nil];
-//    }
-//    if (textField == self.flightNumber) {
-//        [CTAppController dispatchAction:CTActionBookingUserDidTapFlightNumber payload:nil];
-//    }
-//    if (textField == self.addressLine1) {
-//        [CTAppController dispatchAction:CTActionBookingUserDidTapAddressLine1 payload:nil];
-//    }
-//    if (textField == self.addressLine2) {
-//        [CTAppController dispatchAction:CTActionBookingUserDidTapAddressLine2 payload:nil];
-//    }
-//    if (textField == self.city) {
-//        [CTAppController dispatchAction:CTActionBookingUserDidTapCity payload:nil];
-//    }
-//    if (textField == self.postcode) {
-//        [CTAppController dispatchAction:CTActionBookingUserDidTapPostcode payload:nil];
-//    }
-//    if (textField == self.country) {
-//        [CTAppController dispatchAction:CTActionBookingUserDidTapCountry payload:nil];
-//    }
-//}
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
