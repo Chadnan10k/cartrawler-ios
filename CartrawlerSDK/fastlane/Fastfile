@@ -36,7 +36,7 @@ platform :ios do
         ensure_git_status_clean
         update_fastlane
         match
-        sigh
+        #sigh
 
         increment_build_number(xcodeproj: './TestApp/TestApp.xcodeproj')
         gym(scheme: "BuildTestApp",
