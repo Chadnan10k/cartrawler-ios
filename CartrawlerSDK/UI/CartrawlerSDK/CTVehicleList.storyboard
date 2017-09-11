@@ -78,8 +78,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Sort by: Recommended" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iqd-gZ-T6A" userLabel="Header Right Label">
-                                        <rect key="frame" x="207" y="14.5" width="152" height="17"/>
+                                        <rect key="frame" x="207" y="3" width="152" height="40"/>
                                         <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="sLw-j4-tPc"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -501,7 +504,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VehicleListFilterCell" rowHeight="48" id="n2k-UI-r2G" customClass="CTVehicleListFilterCellTableViewCell">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="48"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n2k-UI-r2G" id="d4Z-KP-sqa">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
