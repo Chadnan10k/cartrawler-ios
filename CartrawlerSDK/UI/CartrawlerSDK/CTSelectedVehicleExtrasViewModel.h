@@ -13,6 +13,5 @@
 @interface CTSelectedVehicleExtrasViewModel : NSObject <CTViewModelProtocol>
 @property (nonatomic, readonly) UIColor *primaryColor;
 @property (nonatomic, readonly) NSArray <CTSelectedVehicleExtrasCellModel *> *cellModels;
-@property (nonatomic, readonly) NSArray <NSNumber *> *flippedExtras;
 
 @end
