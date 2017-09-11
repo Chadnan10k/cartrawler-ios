@@ -314,7 +314,7 @@
                     if (navigationState.currentNavigationStep == CTNavigationStepBooking) {
                         bookingState.country = payload;
                         navigationState.modalViewControllers = @[];
-                        bookingState.selectedTextfield = CTBookingTextfieldPayment;
+                        bookingState.selectedTextfield = CTBookingTextfieldFlightNumber;
                     }
                     break;
                 case CTSearchSearchSettingsLanguage:
@@ -642,10 +642,11 @@
         case CTActionBookingUserDidTapCountry:
             bookingState.selectedTextfield = CTBookingTextfieldCountry;
             navigationState.modalViewControllers = @[@(CTNavigationModalSearchSettingsSelection)];
-            // TODO: Extract to shared state
+            // TODO: Extract to shared state, double check isn't new parameter??
             searchState.selectedSettings = CTSearchSearchSettingsCountry;
             break;
         case CTActionBookingUserDidTapRentalConditions:
+            // TODO: Check, may be obsolete
             break;
         case CTActionBookingUserDidTapTermsAndConditions:
             if (!APIState.termsAndConditions) {
