@@ -54,10 +54,12 @@
 @property (nonatomic, readonly) BOOL shakePostcode;
 @property (nonatomic, readonly) BOOL shakeCountry;
 
+@property (nonatomic, readonly) NSAttributedString *termsAndConditions;
 @property (nonatomic, readonly) NSString *extrasReminder;
 
 @property (nonatomic, readonly) BOOL showAddressDetails;
 @property (nonatomic, readonly) NSNumber *keyboardHeight;
+@property (nonatomic, readonly) NSString *buttonTitle;
 @property (nonatomic, readonly) UIColor *navigationBarColor;
 @property (nonatomic, readonly) UIColor *buttonColor;
 

@@ -431,14 +431,20 @@
                                             <constraint firstItem="F6m-Lt-ksm" firstAttribute="leading" secondItem="ZMq-Kw-fwC" secondAttribute="trailing" constant="8" id="zci-AC-TCN"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Tap ‘Pay’ to complete your booking and accept our rental conditions and terms and conditions" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waQ-9D-yWg">
-                                        <rect key="frame" x="16" y="1158" width="343" height="33.5"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" editable="NO" text="Tap ‘Pay’ to complete your booking and accept our rental conditions and terms and conditions" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0S-sn-af1">
+                                        <rect key="frame" x="16" y="1158" width="343" height="40"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="4Lj-pQ-uTX"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Xdr-M3-iJF" appends="YES" id="idW-VW-gjh"/>
+                                        </connections>
+                                    </textView>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="kcg-zv-tcd" userLabel="Extras Reminder">
-                                        <rect key="frame" x="16" y="1207.5" width="343" height="0.0"/>
+                                        <rect key="frame" x="16" y="1213.5" width="343" height="0.0"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dzx-hr-pLv">
                                                 <rect key="frame" x="8" y="-14.5" width="31" height="30"/>
@@ -475,7 +481,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42c-sd-YS5" userLabel="Pay Button">
-                                        <rect key="frame" x="0.0" y="1223.5" width="375" height="64"/>
+                                        <rect key="frame" x="0.0" y="1229.5" width="375" height="64"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYP-5V-YGi">
                                                 <rect key="frame" x="8" y="8" width="359" height="48"/>
@@ -505,32 +511,32 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mb3-sr-nKR">
-                                        <rect key="frame" x="0.0" y="1287.5" width="375" height="377"/>
+                                        <rect key="frame" x="0.0" y="1293.5" width="375" height="377"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="377" id="UAL-Rd-lAG"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="kcg-zv-tcd" firstAttribute="top" secondItem="z0S-sn-af1" secondAttribute="bottom" constant="16" id="2e2-c6-gIU"/>
                                     <constraint firstItem="VJJ-j2-yQk" firstAttribute="centerX" secondItem="dWZ-5A-FUN" secondAttribute="centerX" id="9NS-5r-lCV"/>
                                     <constraint firstAttribute="trailing" secondItem="mb3-sr-nKR" secondAttribute="trailing" id="A51-9x-2by"/>
                                     <constraint firstAttribute="trailing" secondItem="dWZ-5A-FUN" secondAttribute="trailing" id="AK5-nb-GfE"/>
                                     <constraint firstItem="VJJ-j2-yQk" firstAttribute="width" secondItem="dWZ-5A-FUN" secondAttribute="width" id="BQd-83-BbE"/>
-                                    <constraint firstItem="kcg-zv-tcd" firstAttribute="top" secondItem="waQ-9D-yWg" secondAttribute="bottom" constant="16" id="N12-0m-Nok"/>
-                                    <constraint firstItem="waQ-9D-yWg" firstAttribute="top" secondItem="VJJ-j2-yQk" secondAttribute="bottom" constant="16" id="Qnw-Gt-APw"/>
+                                    <constraint firstItem="z0S-sn-af1" firstAttribute="width" secondItem="laT-HK-NhS" secondAttribute="width" id="GRH-KR-atJ"/>
+                                    <constraint firstItem="z0S-sn-af1" firstAttribute="top" secondItem="VJJ-j2-yQk" secondAttribute="bottom" constant="16" id="MOt-Bq-LpJ"/>
+                                    <constraint firstItem="kcg-zv-tcd" firstAttribute="width" secondItem="z0S-sn-af1" secondAttribute="width" id="T0L-3u-jN0"/>
                                     <constraint firstItem="42c-sd-YS5" firstAttribute="top" secondItem="kcg-zv-tcd" secondAttribute="bottom" constant="16" id="VRc-0V-Xxp"/>
                                     <constraint firstItem="mb3-sr-nKR" firstAttribute="leading" secondItem="6z5-kc-0KX" secondAttribute="leading" id="aPM-HO-H8U"/>
                                     <constraint firstItem="mb3-sr-nKR" firstAttribute="top" secondItem="42c-sd-YS5" secondAttribute="bottom" id="at0-93-0Z5"/>
                                     <constraint firstItem="kcg-zv-tcd" firstAttribute="centerX" secondItem="dWZ-5A-FUN" secondAttribute="centerX" id="cGN-MJ-Tkc"/>
                                     <constraint firstItem="42c-sd-YS5" firstAttribute="centerX" secondItem="dWZ-5A-FUN" secondAttribute="centerX" id="f74-hz-pg7"/>
                                     <constraint firstItem="42c-sd-YS5" firstAttribute="width" secondItem="dWZ-5A-FUN" secondAttribute="width" id="f8b-gy-1bQ"/>
-                                    <constraint firstItem="waQ-9D-yWg" firstAttribute="centerX" secondItem="dWZ-5A-FUN" secondAttribute="centerX" id="fCS-Td-KPK"/>
                                     <constraint firstItem="VJJ-j2-yQk" firstAttribute="top" secondItem="dWZ-5A-FUN" secondAttribute="bottom" id="fWp-DH-mY2"/>
+                                    <constraint firstItem="z0S-sn-af1" firstAttribute="centerX" secondItem="dWZ-5A-FUN" secondAttribute="centerX" id="lF3-BK-FvR"/>
                                     <constraint firstAttribute="bottom" secondItem="mb3-sr-nKR" secondAttribute="bottom" id="lLz-44-gjX"/>
                                     <constraint firstItem="dWZ-5A-FUN" firstAttribute="leading" secondItem="6z5-kc-0KX" secondAttribute="leading" id="ptr-Ma-lXB"/>
-                                    <constraint firstItem="kcg-zv-tcd" firstAttribute="width" secondItem="waQ-9D-yWg" secondAttribute="width" id="rBk-aU-Q04"/>
                                     <constraint firstItem="dWZ-5A-FUN" firstAttribute="top" secondItem="6z5-kc-0KX" secondAttribute="top" id="t49-mM-d0n"/>
-                                    <constraint firstItem="waQ-9D-yWg" firstAttribute="width" secondItem="laT-HK-NhS" secondAttribute="width" id="zny-fP-TE3"/>
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXk-MP-YvQ" userLabel="Navigation Bar">
@@ -643,7 +649,7 @@
                         <outlet property="addressLine1" destination="onD-KQ-8t7" id="2O3-I4-0RV"/>
                         <outlet property="addressLine2" destination="klM-Gg-ejR" id="GHG-WO-fUT"/>
                         <outlet property="city" destination="oBe-UC-LZU" id="tsn-g5-hg5"/>
-                        <outlet property="conditions" destination="waQ-9D-yWg" id="ail-Or-fiG"/>
+                        <outlet property="conditions" destination="z0S-sn-af1" id="A9k-si-7uf"/>
                         <outlet property="contentView" destination="dWZ-5A-FUN" id="4yL-EA-g2D"/>
                         <outlet property="country" destination="Oel-zB-Jog" id="bh3-6I-3N7"/>
                         <outlet property="driverDetails" destination="23m-0R-9GA" id="R0n-aY-jxW"/>
@@ -671,8 +677,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WpX-ey-hVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Xdr-M3-iJF" userLabel="Conditions Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="termsAndConditionsTapped:" destination="X6X-pH-Dxy" id="Igs-k8-IG4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-159.19999999999999" y="131.33433283358323"/>
+            <point key="canvasLocation" x="-160.3125" y="131.25"/>
         </scene>
         <!--Booking Modal View Controller-->
         <scene sceneID="2v8-OF-T3c">

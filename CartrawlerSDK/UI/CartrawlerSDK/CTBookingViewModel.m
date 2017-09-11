@@ -54,10 +54,12 @@
 @property (nonatomic, readwrite) BOOL shakePostcode;
 @property (nonatomic, readwrite) BOOL shakeCountry;
 
+@property (nonatomic, readwrite) NSAttributedString *termsAndConditions;
 @property (nonatomic, readwrite) NSString *extrasReminder;
 
 @property (nonatomic, readwrite) BOOL showAddressDetails;
 @property (nonatomic, readwrite) NSNumber *keyboardHeight;
+@property (nonatomic, readwrite) NSString *buttonTitle;
 @property (nonatomic, readwrite) UIColor *navigationBarColor;
 @property (nonatomic, readwrite) UIColor *buttonColor;
 @end
@@ -149,6 +151,12 @@
         }
     }
     
+    NSAttributedString *linkString = [[NSAttributedString alloc] initWithString:CTLocalizedString(CTRentalInsuranceTermsConditions) attributes:@{NSForegroundColorAttributeName : [UIColor blueColor], NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle)}];
+    
+    NSMutableAttributedString *termsConditionsString = [[NSMutableAttributedString alloc] initWithString:@"Tap ‘Pay’ to complete your booking and accept our "];
+    [termsConditionsString appendAttributedString:linkString];
+    viewModel.termsAndConditions = termsConditionsString;
+    
     NSNumber *extrasTotal = [self totalForAddedExtras:appState.selectedVehicleState.addedExtras];
     if (extrasTotal.doubleValue > 0) {
         viewModel.extrasReminder = [NSString stringWithFormat:@"Don’t forget the remaining %@ will be paid at the rental desk at pick-up.", [extrasTotal numberStringWithCurrencyCode]];
@@ -157,6 +165,9 @@
     viewModel.navigationBarColor = appState.userSettingsState.primaryColor;
     viewModel.buttonColor = appState.userSettingsState.secondaryColor;
     
+    NSMutableString *buttonTitle = [[NSMutableString alloc] initWithString:extrasTotal.doubleValue > 0 ? @"Pay now " : @"Pay "];
+    [buttonTitle appendString:[self totalPrice:appState]];
+    viewModel.buttonTitle = buttonTitle.copy;
     return viewModel;
 }
 

@@ -124,7 +124,7 @@
                                 </items>
                             </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIc-fm-FYu">
-                                <rect key="frame" x="0.0" y="74" width="375" height="593"/>
+                                <rect key="frame" x="0.0" y="82" width="375" height="585"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -133,7 +133,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FIc-fm-FYu" firstAttribute="top" secondItem="yY1-5U-7jl" secondAttribute="bottom" id="DuI-MK-O2U"/>
+                            <constraint firstItem="FIc-fm-FYu" firstAttribute="top" secondItem="yY1-5U-7jl" secondAttribute="bottom" constant="8" id="DuI-MK-O2U"/>
                             <constraint firstItem="FIc-fm-FYu" firstAttribute="centerX" secondItem="HKO-NA-ZcX" secondAttribute="centerX" id="H6i-xU-2mi"/>
                             <constraint firstItem="yY1-5U-7jl" firstAttribute="top" secondItem="KNw-Uh-uHq" secondAttribute="bottom" constant="-20" id="Xzk-SX-NID"/>
                             <constraint firstItem="FIc-fm-FYu" firstAttribute="width" secondItem="HKO-NA-ZcX" secondAttribute="width" id="fLX-XH-1js"/>

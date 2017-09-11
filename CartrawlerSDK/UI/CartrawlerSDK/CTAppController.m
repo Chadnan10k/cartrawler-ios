@@ -507,7 +507,7 @@
                     break;
                 case CTSelectedVehicleExpandedImportant:
                     [self.apiController requestTermsAndConditionsForSelectedVehicleWithState:appState];
-                    navigationState.modalViewControllers = @[@(CTNavigationModalSelectedVehicleTermsAndConditions)];
+                    navigationState.modalViewControllers = @[@(CTNavigationModalTermsAndConditions)];
                     break;
                 default:
                     break;
@@ -518,11 +518,11 @@
             break;
         case CTActionSelectedVehicleUserDidTapTermAndCondition:
             selectedVehicleState.selectedTermAndCondition = payload;
-            navigationState.modalViewControllers = @[@(CTNavigationModalSelectedVehicleTermsAndConditions), @(CTNavigationModalSelectedVehicleTermAndConditionDetail)];
+            navigationState.modalViewControllers = @[@(CTNavigationModalTermsAndConditions), @(CTNavigationModalTermAndConditionDetail)];
             break;
         case CTActionSelectedVehicleUserDidTapCloseTermAndCondition:
             selectedVehicleState.selectedTermAndCondition = nil;
-            navigationState.modalViewControllers = @[@(CTNavigationModalSelectedVehicleTermsAndConditions)];
+            navigationState.modalViewControllers = @[@(CTNavigationModalTermsAndConditions)];
             break;
         case CTActionSelectedVehicleUserDidTapInsuranceDetails:
             navigationState.modalViewControllers = @[@(CTNavigationModalSelectedVehicleInsuranceDetails)];
@@ -648,6 +648,10 @@
         case CTActionBookingUserDidTapRentalConditions:
             break;
         case CTActionBookingUserDidTapTermsAndConditions:
+            if (!APIState.termsAndConditions) {
+                [self.apiController requestTermsAndConditionsForSelectedVehicleWithState:appState];
+            }
+            navigationState.modalViewControllers = @[@(CTNavigationModalTermsAndConditions)];
             break;
         case CTActionBookingUserDidEnterCharacters:
             switch (bookingState.selectedTextfield) {

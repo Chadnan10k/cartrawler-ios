@@ -38,7 +38,7 @@
 @property (weak, nonatomic) IBOutlet UIView *paymentDetailsContainerView;
 @property (weak, nonatomic) IBOutlet UILabel *securePayment;
 @property (weak, nonatomic) IBOutlet UIView *paymentContainer;
-@property (weak, nonatomic) IBOutlet UILabel *conditions;
+@property (weak, nonatomic) IBOutlet UITextView *conditions;
 @property (weak, nonatomic) IBOutlet UILabel *extrasReminder;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *extrasReminderHeight;
 @property (nonatomic, strong) UIToolbar *toolbar;
@@ -225,9 +225,11 @@
         [CTAppController dispatchAction:CTActionBookingValidationAnimationFinished payload:nil];
     }
     
+    self.conditions.attributedText = viewModel.termsAndConditions;
     self.extrasReminder.text = viewModel.extrasReminder;
     self.extrasReminderHeight.active = self.extrasReminder.text == nil;
     self.payButton.backgroundColor = viewModel.buttonColor;
+    [self.payButton setTitle:viewModel.buttonTitle forState:UIControlStateNormal];
     [self.paymentSummaryVC updateWithViewModel:viewModel.paymentSummaryViewModel];
     self.paymentSummaryHeight.constant = [self.paymentSummaryVC.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 }
@@ -308,6 +310,9 @@
     }
     return YES;
 }
+- (IBAction)termsAndConditionsTapped:(UITapGestureRecognizer *)sender {
+    [CTAppController dispatchAction:CTActionBookingUserDidTapTermsAndConditions payload:nil];
+}
 
 //- (void)textFieldDidBeginEditing:(UITextField *)textField {
 //    if (textField == self.firstName) {
@@ -356,12 +361,8 @@
 }
 
 - (IBAction)totalButtonTapped:(id)sender {
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Coming Soon" message:@"This feature is under construction" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [controller dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [controller addAction:okAction];
-    [self presentViewController:controller animated:YES completion:nil];
+    [self.scrollView setContentOffset:
+     CGPointMake(0, -self.scrollView.contentInset.top) animated:YES];
 }
 
 - (void)didTapDone:(id)sender {

@@ -28,10 +28,10 @@ typedef NS_ENUM(NSUInteger, CTNavigationModal) {
     CTNavigationModalSearchInterstitial,
     CTNavigationModalVehicleListFilter,
     CTNavigationModalSelectedVehicleFeatures,
-    CTNavigationModalSelectedVehicleTermsAndConditions,
-    CTNavigationModalSelectedVehicleTermAndConditionDetail,
     CTNavigationModalSelectedVehicleInsuranceDetails,
     CTNavigationModalSelectedVehicleAllExtras,
+    CTNavigationModalTermsAndConditions,
+    CTNavigationModalTermAndConditionDetail,
     CTNavigationModalConfirmation,
     CTNavigationModalConfirmationError,
 };
