@@ -96,24 +96,21 @@
 - (IBAction)pickupLocationTapped:(UITapGestureRecognizer *)sender {
     [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapIncludedItem payload:@(CTSelectedVehicleExpandedPickupLocation)];
 }
+
 - (IBAction)fuelPolicyTapped:(UITapGestureRecognizer *)sender {
     [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapIncludedItem payload:@(CTSelectedVehicleExpandedFuelPolicy)];
 }
+
 - (IBAction)mileageAllowanceTapped:(UITapGestureRecognizer *)sender {
     [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapIncludedItem payload:@(CTSelectedVehicleExpandedMileageAllowance)];
 }
+
 - (IBAction)insuranceTapped:(UITapGestureRecognizer *)sender {
     [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapIncludedItem payload:@(CTSelectedVehicleExpandedInsurance)];
 }
 
 - (IBAction)importantTapped:(UITapGestureRecognizer *)sender {
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Coming Soon" message:@"This feature is under construction" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [controller dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [controller addAction:okAction];
-    [self presentViewController:controller animated:YES completion:nil];
-//    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapIncludedItem payload:@(CTSelectedVehicleExpandedImportant)];
+    [CTAppController dispatchAction:CTActionSelectedVehicleUserDidTapIncludedItem payload:@(CTSelectedVehicleExpandedImportant)];
 }
 
 @end

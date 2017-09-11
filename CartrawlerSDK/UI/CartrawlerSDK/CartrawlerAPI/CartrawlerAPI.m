@@ -508,7 +508,7 @@
                                                   clientID:self.clientAPIKey
                                                     target:self.apiTarget
                                                     locale:self.locale
-                                                  currency: currency];
+                                                  currency:currency];
     
     NSString *endPoint = [NSString stringWithFormat:@"%@%@", self.secureEndPoint, @"OTA_VehResRQ"];
     [self.postRequest performRequestWithData:endPoint
@@ -595,6 +595,51 @@
     }];
 }
 
++ (void)requestTermsAndConditions:(NSDate *)pickupDateTime
+                   returnDateTime:(NSDate *)returnDateTime
+               pickupLocationCode:(NSString *)pickupLocationCode
+               returnLocationCode:(NSString *)returnLocationCode
+                      homeCountry:(NSString *)homeCountry
+                              car:(CTVehicle *)car
+                         clientID:(NSString *)clientID
+                        debugMode:(BOOL)debugMode
+                   loggingEnabled:(BOOL)loggingEnabled
+                           locale:(NSString *)locale
+                       completion:(TermsAndConditionsCompletion)completion {
+    
+    NSString *target = [self targetForDebugMode:debugMode];
+    NSString *requestBody = [CTRequestBuilder CT_RentalConditionsRQ:[pickupDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
+                                                         doDateTime:[returnDateTime stringFromDateWithFormat:CTAvailRequestDateFormat]
+                                                     puLocationCode:pickupLocationCode
+                                                     doLocationCode:returnLocationCode
+                                                        homeCountry:homeCountry
+                                                            refType:car.refType
+                                                              refID:car.refID
+                                                       refIDContext:car.refIDContext
+                                                             refURL:car.refURL
+                                                           clientID:clientID
+                                                             target:target
+                                                             locale:locale];
+    
+    NSString *endPoint = [self endPointForDebugMode:debugMode address:@"CT_RentalConditionsRQ"];
+    
+    [[CTPostRequest new] performRequestWithData:endPoint
+                                    jsonBody:requestBody
+                              loggingEnabled:loggingEnabled
+                                  completion:^(NSDictionary *response,
+                                               CTErrorResponse *error)
+     {
+         if (error == nil) {
+             CTTermsAndConditions *terms = [[CTTermsAndConditions alloc] initFromAPIResponse:response];
+             completion(terms, nil);
+         } else {
+             completion(nil, error);
+         }
+     }];
+}
+
+
+
 #pragma mark Cancel Booking
 
 - (void)cancelBooking:(NSString *)bookingRef
@@ -634,6 +679,7 @@
         }
     }];
 }
+
 
 #pragma mark Email Booking
 

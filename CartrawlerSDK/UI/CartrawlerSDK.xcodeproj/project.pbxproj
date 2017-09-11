@@ -211,6 +211,15 @@
 		E7404A811E82F90C009BF7DF /* CTTabHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7404A7F1E82F90C009BF7DF /* CTTabHeaderView.m */; };
 		E7404A841E82F95D009BF7DF /* CTTabView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7404A821E82F95D009BF7DF /* CTTabView.h */; };
 		E7404A851E82F95D009BF7DF /* CTTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7404A831E82F95D009BF7DF /* CTTabView.m */; };
+		E74FE2951F66D60B0026B04E /* CTTermsConditions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74FE2941F66D60B0026B04E /* CTTermsConditions.storyboard */; };
+		E74FE2981F66D6860026B04E /* CTTermsConditionsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E74FE2961F66D6860026B04E /* CTTermsConditionsViewController.h */; };
+		E74FE2991F66D6860026B04E /* CTTermsConditionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E74FE2971F66D6860026B04E /* CTTermsConditionsViewController.m */; };
+		E74FE29C1F66D6920026B04E /* CTTermsConditionsViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E74FE29A1F66D6920026B04E /* CTTermsConditionsViewModel.h */; };
+		E74FE29D1F66D6920026B04E /* CTTermsConditionsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E74FE29B1F66D6920026B04E /* CTTermsConditionsViewModel.m */; };
+		E74FE2A01F66D6A30026B04E /* CTTermsConditionsDetailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E74FE29E1F66D6A30026B04E /* CTTermsConditionsDetailViewController.h */; };
+		E74FE2A11F66D6A30026B04E /* CTTermsConditionsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E74FE29F1F66D6A30026B04E /* CTTermsConditionsDetailViewController.m */; };
+		E74FE2A41F66D6B20026B04E /* CTTermsConditionsDetailViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E74FE2A21F66D6B20026B04E /* CTTermsConditionsDetailViewModel.h */; };
+		E74FE2A51F66D6B20026B04E /* CTTermsConditionsDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E74FE2A31F66D6B20026B04E /* CTTermsConditionsDetailViewModel.m */; };
 		E750BA401F462F26003FEE0B /* CTBookingErrorViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E750BA3E1F462F26003FEE0B /* CTBookingErrorViewController.h */; };
 		E750BA411F462F26003FEE0B /* CTBookingErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E750BA3F1F462F26003FEE0B /* CTBookingErrorViewController.m */; };
 		E750BA441F462F39003FEE0B /* CTBookingErrorViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E750BA421F462F39003FEE0B /* CTBookingErrorViewModel.h */; };
@@ -740,6 +749,15 @@
 		E7404A7F1E82F90C009BF7DF /* CTTabHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabHeaderView.m; sourceTree = "<group>"; };
 		E7404A821E82F95D009BF7DF /* CTTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTabView.h; sourceTree = "<group>"; };
 		E7404A831E82F95D009BF7DF /* CTTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTabView.m; sourceTree = "<group>"; };
+		E74FE2941F66D60B0026B04E /* CTTermsConditions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CTTermsConditions.storyboard; sourceTree = "<group>"; };
+		E74FE2961F66D6860026B04E /* CTTermsConditionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTermsConditionsViewController.h; sourceTree = "<group>"; };
+		E74FE2971F66D6860026B04E /* CTTermsConditionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTermsConditionsViewController.m; sourceTree = "<group>"; };
+		E74FE29A1F66D6920026B04E /* CTTermsConditionsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTermsConditionsViewModel.h; sourceTree = "<group>"; };
+		E74FE29B1F66D6920026B04E /* CTTermsConditionsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTermsConditionsViewModel.m; sourceTree = "<group>"; };
+		E74FE29E1F66D6A30026B04E /* CTTermsConditionsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTermsConditionsDetailViewController.h; sourceTree = "<group>"; };
+		E74FE29F1F66D6A30026B04E /* CTTermsConditionsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTermsConditionsDetailViewController.m; sourceTree = "<group>"; };
+		E74FE2A21F66D6B20026B04E /* CTTermsConditionsDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTermsConditionsDetailViewModel.h; sourceTree = "<group>"; };
+		E74FE2A31F66D6B20026B04E /* CTTermsConditionsDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTermsConditionsDetailViewModel.m; sourceTree = "<group>"; };
 		E750BA3E1F462F26003FEE0B /* CTBookingErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingErrorViewController.h; sourceTree = "<group>"; };
 		E750BA3F1F462F26003FEE0B /* CTBookingErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBookingErrorViewController.m; sourceTree = "<group>"; };
 		E750BA421F462F39003FEE0B /* CTBookingErrorViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBookingErrorViewModel.h; sourceTree = "<group>"; };
@@ -1683,6 +1701,27 @@
 			name = Features;
 			sourceTree = "<group>";
 		};
+		E74FE2921F66D5750026B04E /* Terms and Conditions Details */ = {
+			isa = PBXGroup;
+			children = (
+				E74FE29E1F66D6A30026B04E /* CTTermsConditionsDetailViewController.h */,
+				E74FE29F1F66D6A30026B04E /* CTTermsConditionsDetailViewController.m */,
+				E74FE2A21F66D6B20026B04E /* CTTermsConditionsDetailViewModel.h */,
+				E74FE2A31F66D6B20026B04E /* CTTermsConditionsDetailViewModel.m */,
+			);
+			name = "Terms and Conditions Details";
+			sourceTree = "<group>";
+		};
+		E74FE2931F66D5E40026B04E /* Terms and Conditions */ = {
+			isa = PBXGroup;
+			children = (
+				E74FE2941F66D60B0026B04E /* CTTermsConditions.storyboard */,
+				E75256B41F4F37F0006DED6F /* Terms And Conditions */,
+				E74FE2921F66D5750026B04E /* Terms and Conditions Details */,
+			);
+			name = "Terms and Conditions";
+			sourceTree = "<group>";
+		};
 		E750BA3D1F462EE6003FEE0B /* Booking Error */ = {
 			isa = PBXGroup;
 			children = (
@@ -1708,6 +1747,10 @@
 		E75256B41F4F37F0006DED6F /* Terms And Conditions */ = {
 			isa = PBXGroup;
 			children = (
+				E74FE2961F66D6860026B04E /* CTTermsConditionsViewController.h */,
+				E74FE2971F66D6860026B04E /* CTTermsConditionsViewController.m */,
+				E74FE29A1F66D6920026B04E /* CTTermsConditionsViewModel.h */,
+				E74FE29B1F66D6920026B04E /* CTTermsConditionsViewModel.m */,
 			);
 			name = "Terms And Conditions";
 			sourceTree = "<group>";
@@ -2097,6 +2140,7 @@
 				E782993D1F2813A400C20525 /* Vehicle List */,
 				E7F83F771F2D177000232635 /* Selected Vehicle */,
 				E77D75571F439C6100BD7FF4 /* Payment Summary */,
+				E74FE2931F66D5E40026B04E /* Terms and Conditions */,
 				E7B8EDCE1F4201D100638D6F /* Booking */,
 				E7B8EDB51F3BADA400638D6F /* Alert View */,
 				E78299531F2824CC00C20525 /* Protocols */,
@@ -2718,7 +2762,6 @@
 				E74D0E941F4D1A8C00906F15 /* Features */,
 				E7B19CC71F33E8EB000738CB /* Tab */,
 				E7B19CCC1F33E90C000738CB /* Included */,
-				E75256B41F4F37F0006DED6F /* Terms And Conditions */,
 				E7B19CD11F33E937000738CB /* Ratings */,
 				E7B19CD61F33E95B000738CB /* Insurance */,
 				E75256AA1F4DEA9B006DED6F /* Insurance Details */,
@@ -2740,12 +2783,14 @@
 			files = (
 				E78299701F2A7CF600C20525 /* CTNotificationsController.h in Headers */,
 				E752574B1F4F6163006DED6F /* CTVehicle.h in Headers */,
+				E74FE2981F66D6860026B04E /* CTTermsConditionsViewController.h in Headers */,
 				E78299331F27B9CB00C20525 /* CTSplashCar.h in Headers */,
 				E7404A841E82F95D009BF7DF /* CTTabView.h in Headers */,
 				E78298BB1F1FC1F100C20525 /* CTSearchFormViewController.h in Headers */,
 				E750BA4D1F48CFC5003FEE0B /* CTBookingTableViewController.h in Headers */,
 				E7A495501F4B8B2100A8E45F /* CTSearchReservationsCellModel.h in Headers */,
 				E7F6D16B1F38D80D0002338C /* CTVehicleListFilterHeaderViewModel.h in Headers */,
+				E74FE2A41F66D6B20026B04E /* CTTermsConditionsDetailViewModel.h in Headers */,
 				E775DBB71F326BAB009039D8 /* CTCodedImages.h in Headers */,
 				E752573F1F4F6163006DED6F /* CTVehicleCharge.h in Headers */,
 				E78298DF1F204BC000C20525 /* CTViewModelProtocol.h in Headers */,
@@ -2767,6 +2812,7 @@
 				E794A3BA1F4A8406003C2A7D /* CTTickImageView.h in Headers */,
 				E75257291F4F6163006DED6F /* CTNetworkUtils.h in Headers */,
 				E76900BD1E7199F400D729FF /* CTAlertView.h in Headers */,
+				E74FE29C1F66D6920026B04E /* CTTermsConditionsViewModel.h in Headers */,
 				E752574D1F4F6163006DED6F /* CTVendor.h in Headers */,
 				E78298BF1F1FC7AF00C20525 /* CTSearchSplashViewController.h in Headers */,
 				E7B8EDCB1F3BBADF00638D6F /* CTSearchErrorViewModel.h in Headers */,
@@ -2875,6 +2921,7 @@
 				E750BA441F462F39003FEE0B /* CTBookingErrorViewModel.h in Headers */,
 				E750BA511F48CFE1003FEE0B /* CTBookingTableViewModel.h in Headers */,
 				E752576D1F4F6163006DED6F /* CTGroundBooking.h in Headers */,
+				E74FE2A01F66D6A30026B04E /* CTTermsConditionsDetailViewController.h in Headers */,
 				E782990C1F27A3F600C20525 /* CTSearchSettingsViewController.h in Headers */,
 				E78298E71F21869A00C20525 /* CTSearchCalendarViewController.h in Headers */,
 				E7F6D1551F38B2220002338C /* CTVehicleListFilterViewController.h in Headers */,
@@ -3082,6 +3129,7 @@
 				455B59511DCC91F900CA4790 /* CTCurrency.csv in Resources */,
 				BC3361921E4CCC520056E5A6 /* el.strings in Resources */,
 				E77D75591F439CB300BD7FF4 /* PaymentSummary.storyboard in Resources */,
+				E74FE2951F66D60B0026B04E /* CTTermsConditions.storyboard in Resources */,
 				BC54F1581E54980500A7C871 /* pt.strings in Resources */,
 				BC3361911E4CCC520056E5A6 /* de.strings in Resources */,
 				455B59521DCC91F900CA4790 /* CTISOCountries.csv in Resources */,
@@ -3233,7 +3281,9 @@
 				E78299651F2944A300C20525 /* CTVehicleListState.m in Sources */,
 				E75257601F4F6163006DED6F /* CTErrorResponse.m in Sources */,
 				E72A55051F61ADE300C50023 /* CTSelectedVehicleAllExtrasDetailCell.m in Sources */,
+				E74FE2A51F66D6B20026B04E /* CTTermsConditionsDetailViewModel.m in Sources */,
 				E70C1B5B1F439EEC00EBD13A /* CTPaymentSummaryCellModel.m in Sources */,
+				E74FE2991F66D6860026B04E /* CTTermsConditionsViewController.m in Sources */,
 				E78299601F291B2300C20525 /* CTBannerEdgeView.m in Sources */,
 				455B588E1DCC914300CA4790 /* CTLocalisedStrings.m in Sources */,
 				455B58901DCC914300CA4790 /* CTFlightNumberValidation.m in Sources */,
@@ -3296,6 +3346,7 @@
 				E78298A81F1EEF6600C20525 /* CTNavigationState.m in Sources */,
 				E78299001F26E0D900C20525 /* CTValidationSearch.m in Sources */,
 				E76900A91E6F065C00D729FF /* CTInfoTip.m in Sources */,
+				E74FE2A11F66D6A30026B04E /* CTTermsConditionsDetailViewController.m in Sources */,
 				E775DBEB1F327B0F009039D8 /* CTSearchUSPDetailViewCell.m in Sources */,
 				455B58C81DCC914400CA4790 /* CTDateCollectionViewCell.m in Sources */,
 				E750BA491F463B79003FEE0B /* CTValidationBooking.m in Sources */,
@@ -3321,6 +3372,7 @@
 				E75257261F4F6163006DED6F /* CTConstants.m in Sources */,
 				E782990D1F27A3F600C20525 /* CTSearchSettingsViewController.m in Sources */,
 				E775DBE71F3273A8009039D8 /* CTSearchUSPDetailViewModel.m in Sources */,
+				E74FE29D1F66D6920026B04E /* CTTermsConditionsViewModel.m in Sources */,
 				E733BA601F43807700076516 /* CTPaymentController.m in Sources */,
 				E7B19CDF1F33E9A6000738CB /* CTSelectedVehicleExtrasViewController.m in Sources */,
 				E775DBF41F327C39009039D8 /* CTLockImageView.m in Sources */,

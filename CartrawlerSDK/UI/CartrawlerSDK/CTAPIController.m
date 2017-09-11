@@ -121,4 +121,40 @@
                                         }];
 }
 
+- (void)requestTermsAndConditionsForSelectedVehicleWithState:(CTAppState *)appState {
+    // TODO: Duplicated code in this class
+    
+    CTSearchState *searchState = appState.searchState;
+    CTUserSettingsState *userSettingsState = appState.userSettingsState;
+    CTSelectedVehicleState *selectedVehicleState = appState.selectedVehicleState;
+    
+    NSDate *pickupDate = [NSDate mergeTimeWithDateWithTime:searchState.selectedPickupTime
+                                               dateWithDay:searchState.selectedPickupDate];
+    NSDate *dropoffDate = [NSDate mergeTimeWithDateWithTime:searchState.selectedDropoffTime
+                                                dateWithDay:searchState.selectedDropoffDate];
+    
+    CTMatchedLocation *dropoffLocation = searchState.dropoffLocationRequired ? searchState.selectedDropoffLocation : searchState.selectedPickupLocation;
+    
+    [CartrawlerAPI requestTermsAndConditions:pickupDate
+                              returnDateTime:dropoffDate
+                          pickupLocationCode:searchState.selectedPickupLocation.code
+                          returnLocationCode:dropoffLocation.code
+                                 homeCountry:userSettingsState.countryCode
+                                         car:selectedVehicleState.selectedAvailabilityItem.vehicle
+                                    clientID:userSettingsState.clientID
+                                   debugMode:userSettingsState.debugMode
+                              loggingEnabled:userSettingsState.loggingEnabled
+                                      locale:userSettingsState.languageCode
+                                  completion:^(CTTermsAndConditions *response, CTErrorResponse *error) {
+                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                          if (response && !error) {
+                                              [CTAppController dispatchAction:CTActionAPIDidReturnTermsAndConditions payload:response];
+                                          } else  {
+                                              [CTAppController dispatchAction:CTActionAPIDidReturnTermsAndConditionsError payload:error];
+                                          }
+                                      });
+                                      
+                                  }];
+}
+
 @end

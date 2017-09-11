@@ -16,5 +16,6 @@
 - (void)fetchSearchLocationsWithState:(CTAppState *)appState;
 - (void)requestVehicleAvailabilityWithState:(CTAppState *)appState;
 - (void)requestInsuranceForSelectedVehicleWithState:(CTAppState *)appState;
+- (void)requestTermsAndConditionsForSelectedVehicleWithState:(CTAppState *)appState;
 
 @end

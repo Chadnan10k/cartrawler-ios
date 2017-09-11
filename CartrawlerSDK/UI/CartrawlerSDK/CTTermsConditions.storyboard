@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Terms Conditions View Controller-->
+        <scene sceneID="AtZ-rD-BZ9">
+            <objects>
+                <viewController storyboardIdentifier="CTTermsConditionsViewController" id="wma-Df-hdk" customClass="CTTermsConditionsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EfT-Yc-SBv"/>
+                        <viewControllerLayoutGuide type="bottom" id="FM3-M8-F52"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DdJ-4X-MNl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmt-Wy-C3p">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="lL7-Ae-ebF"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Terms and Conditions" id="bQy-d6-iim">
+                                        <barButtonItem key="leftBarButtonItem" title="Close" id="u51-bj-Bwj">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="closeButtonTapped:" destination="wma-Df-hdk" id="MIf-g6-lSN"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ECN-sq-fIi">
+                                <rect key="frame" x="0.0" y="74" width="375" height="593"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TermAndCondition" textLabel="hRI-1v-ajL" style="IBUITableViewCellStyleDefault" id="0lm-Uh-PWW">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0lm-Uh-PWW" id="DQv-RJ-lII">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Driver's age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hRI-1v-ajL">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="wma-Df-hdk" id="FQe-WN-gi8"/>
+                                    <outlet property="delegate" destination="wma-Df-hdk" id="1D2-7H-dlF"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rmt-Wy-C3p" firstAttribute="top" secondItem="EfT-Yc-SBv" secondAttribute="bottom" constant="-20" id="1Vi-Oh-3tb"/>
+                            <constraint firstItem="ECN-sq-fIi" firstAttribute="width" secondItem="DdJ-4X-MNl" secondAttribute="width" id="Aaf-ed-cON"/>
+                            <constraint firstItem="ECN-sq-fIi" firstAttribute="top" secondItem="rmt-Wy-C3p" secondAttribute="bottom" id="PuA-Nx-trh"/>
+                            <constraint firstItem="rmt-Wy-C3p" firstAttribute="width" secondItem="DdJ-4X-MNl" secondAttribute="width" id="cmR-MO-c0a"/>
+                            <constraint firstItem="FM3-M8-F52" firstAttribute="top" secondItem="ECN-sq-fIi" secondAttribute="bottom" id="tgE-TB-5XX"/>
+                            <constraint firstItem="rmt-Wy-C3p" firstAttribute="centerX" secondItem="DdJ-4X-MNl" secondAttribute="centerX" id="v7J-Mo-Lk1"/>
+                            <constraint firstItem="ECN-sq-fIi" firstAttribute="centerX" secondItem="DdJ-4X-MNl" secondAttribute="centerX" id="zRw-5u-Ngf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="u51-bj-Bwj" id="cfj-sU-d8E"/>
+                        <outlet property="navigationBar" destination="rmt-Wy-C3p" id="dJz-ks-3xy"/>
+                        <outlet property="tableView" destination="ECN-sq-fIi" id="cju-aK-UJD"/>
+                        <segue destination="ftn-yy-Toa" kind="presentation" identifier="TermAndConditionDetail" id="9Md-TE-Wac"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aB4-H6-NPT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2617.5" y="-402.46478873239437"/>
+        </scene>
+        <!--Terms Conditions Detail View Controller-->
+        <scene sceneID="0JC-7J-ScV">
+            <objects>
+                <viewController storyboardIdentifier="CTTermsConditionsDetailViewController" id="ftn-yy-Toa" customClass="CTTermsConditionsDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KNw-Uh-uHq"/>
+                        <viewControllerLayoutGuide type="bottom" id="gei-Mf-HRr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HKO-NA-ZcX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yY1-5U-7jl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="HaX-FA-idX"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Terms and Conditions" id="g04-Dd-Z9C">
+                                        <barButtonItem key="leftBarButtonItem" title="Close" id="bdr-Dh-N8g">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="closeButtonTapped:" destination="ftn-yy-Toa" id="1IV-G5-D6n"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIc-fm-FYu">
+                                <rect key="frame" x="0.0" y="74" width="375" height="593"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FIc-fm-FYu" firstAttribute="top" secondItem="yY1-5U-7jl" secondAttribute="bottom" id="DuI-MK-O2U"/>
+                            <constraint firstItem="FIc-fm-FYu" firstAttribute="centerX" secondItem="HKO-NA-ZcX" secondAttribute="centerX" id="H6i-xU-2mi"/>
+                            <constraint firstItem="yY1-5U-7jl" firstAttribute="top" secondItem="KNw-Uh-uHq" secondAttribute="bottom" constant="-20" id="Xzk-SX-NID"/>
+                            <constraint firstItem="FIc-fm-FYu" firstAttribute="width" secondItem="HKO-NA-ZcX" secondAttribute="width" id="fLX-XH-1js"/>
+                            <constraint firstItem="yY1-5U-7jl" firstAttribute="width" secondItem="HKO-NA-ZcX" secondAttribute="width" id="gBy-zS-CTz"/>
+                            <constraint firstItem="gei-Mf-HRr" firstAttribute="top" secondItem="FIc-fm-FYu" secondAttribute="bottom" id="xfW-ZC-bcZ"/>
+                            <constraint firstItem="yY1-5U-7jl" firstAttribute="centerX" secondItem="HKO-NA-ZcX" secondAttribute="centerX" id="yhg-fl-uBd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="bdr-Dh-N8g" id="aTh-Wp-Ud5"/>
+                        <outlet property="navigationBar" destination="yY1-5U-7jl" id="kAJ-O9-Ezl"/>
+                        <outlet property="textView" destination="FIc-fm-FYu" id="n3R-Z1-8T1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vic-1N-vfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3470.625" y="-405.63380281690144"/>
+        </scene>
+    </scenes>
+</document>

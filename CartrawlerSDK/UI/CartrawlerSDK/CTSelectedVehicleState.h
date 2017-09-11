@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CTAvailabilityItem.h"
 #import "CTInsurance.h"
+#import "CTTermAndCondition.h"
 
 typedef NS_ENUM(NSInteger, CTSelectedVehicleTab) {
     CTSelectedVehicleTabIncluded,
@@ -32,6 +33,8 @@ typedef NS_ENUM(NSInteger, CTSelectedVehicleExpanded) {
 @property (nonatomic) BOOL fuelPolicyExpanded;
 @property (nonatomic) BOOL mileageAllowanceExpanded;
 @property (nonatomic) BOOL insuranceExpanded;
+
+@property (nonatomic) CTTermAndCondition *selectedTermAndCondition;
 
 @property (nonatomic) CTInsurance *insurance;
 @property (nonatomic) BOOL insuranceAdded;

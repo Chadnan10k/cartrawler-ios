@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "CTAvailabilityItem.h"
+#import "CTTermsAndConditions.h"
+#import "CTTermAndCondition.h"
 
 // TODO: Move API state to step states
 @interface CTAPIState : NSObject
@@ -20,5 +22,7 @@
 
 @property (nonatomic) NSString *availabilityRequestTimestamp;
 @property (nonatomic) NSDictionary *matchedAvailabilityItems;
+
+@property (nonatomic) CTTermsAndConditions *termsAndConditions;
 
 @end

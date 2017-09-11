@@ -81,6 +81,14 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      */
     CTActionAPIDidReturnVehiclesError,
     /**
+     *  API returned vehicle terms and conditions
+     */
+    CTActionAPIDidReturnTermsAndConditions,
+    /**
+     *  API returned vehicle terms and conditions error
+     */
+    CTActionAPIDidReturnTermsAndConditionsError,
+    /**
      *  API returned vehicle insurance
      */
     CTActionAPIDidReturnInsurance,
@@ -326,6 +334,21 @@ typedef NS_ENUM(NSUInteger, CTAction) {
      *  Payload(NSNumber *): Item index
      */
     CTActionSelectedVehicleUserDidTapIncludedItem,
+    /**
+     *  The user tapped the close button in terms and conditions
+     *  Payload: nil
+     */
+    CTActionSelectedVehicleUserDidTapCloseTermsAndConditions,
+    /**
+     *  The user tapped a specific term and condition
+     *  Payload(CTTermAndCondition *): Term and condition
+     */
+    CTActionSelectedVehicleUserDidTapTermAndCondition,
+    /**
+     *  The user tapped close specific term and condition
+     *  Payload: nil
+     */
+    CTActionSelectedVehicleUserDidTapCloseTermAndCondition,
     /**
      *  The user tapped insurance details
      *  Payload: nil

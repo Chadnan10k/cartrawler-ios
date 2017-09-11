@@ -161,6 +161,12 @@
                 navigationState.modalViewControllers = @[];
             }
             break;
+        case CTActionAPIDidReturnTermsAndConditions:
+            APIState.termsAndConditions = payload;
+            break;
+        case CTActionAPIDidReturnTermsAndConditionsError:
+            // TODO: Handle error
+            break;
         case CTActionAPIDidReturnInsurance:
             selectedVehicleState.insurance = payload;
             break;
@@ -500,11 +506,23 @@
                     selectedVehicleState.insuranceExpanded = !selectedVehicleState.insuranceExpanded;
                     break;
                 case CTSelectedVehicleExpandedImportant:
+                    [self.apiController requestTermsAndConditionsForSelectedVehicleWithState:appState];
                     navigationState.modalViewControllers = @[@(CTNavigationModalSelectedVehicleTermsAndConditions)];
                     break;
                 default:
                     break;
             }
+            break;
+        case CTActionSelectedVehicleUserDidTapCloseTermsAndConditions:
+            navigationState.modalViewControllers = @[];
+            break;
+        case CTActionSelectedVehicleUserDidTapTermAndCondition:
+            selectedVehicleState.selectedTermAndCondition = payload;
+            navigationState.modalViewControllers = @[@(CTNavigationModalSelectedVehicleTermsAndConditions), @(CTNavigationModalSelectedVehicleTermAndConditionDetail)];
+            break;
+        case CTActionSelectedVehicleUserDidTapCloseTermAndCondition:
+            selectedVehicleState.selectedTermAndCondition = nil;
+            navigationState.modalViewControllers = @[@(CTNavigationModalSelectedVehicleTermsAndConditions)];
             break;
         case CTActionSelectedVehicleUserDidTapInsuranceDetails:
             navigationState.modalViewControllers = @[@(CTNavigationModalSelectedVehicleInsuranceDetails)];

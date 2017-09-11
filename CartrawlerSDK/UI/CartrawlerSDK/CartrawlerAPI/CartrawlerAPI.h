@@ -258,6 +258,18 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
                               car:(CTVehicle *)car
                        completion:(TermsAndConditionsCompletion)completion;
 
++ (void)requestTermsAndConditions:(NSDate *)pickupDateTime
+                   returnDateTime:(NSDate *)returnDateTime
+               pickupLocationCode:(NSString *)pickupLocationCode
+               returnLocationCode:(NSString *)returnLocationCode
+                      homeCountry:(NSString *)homeCountry
+                              car:(CTVehicle *)car
+                         clientID:(NSString *)clientID
+                        debugMode:(BOOL)debugMode
+                   loggingEnabled:(BOOL)loggingEnabled
+                           locale:(NSString *)locale
+                       completion:(TermsAndConditionsCompletion)completion;
+
 /**
  *  Cancel a booking
  *
