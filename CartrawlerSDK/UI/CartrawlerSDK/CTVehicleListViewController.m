@@ -44,6 +44,10 @@
 }
 
 - (void)updateWithViewModel:(CTVehicleListViewModel *)viewModel {
+    if (!self.viewModel || self.viewModel.selectedSort != viewModel.selectedSort) {
+        [self.tableView reloadData];
+    }
+    
     self.viewModel = viewModel;
     
     self.navigationBar.barTintColor = viewModel.navigationBarColor;
@@ -52,7 +56,6 @@
     
     self.headerLeftLabel.text = viewModel.leftLabelText;
     self.headerRightLabel.attributedText = viewModel.rightLabelText;
-    [self.tableView reloadData];
     
     self.badgeView.hidden = !viewModel.showSortBadge;
     self.badgeCount.text = viewModel.badgeCount;
