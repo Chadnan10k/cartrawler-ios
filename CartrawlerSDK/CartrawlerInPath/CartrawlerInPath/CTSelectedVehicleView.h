@@ -11,7 +11,5 @@
 
 @interface CTSelectedVehicleView : UIView
 
-- (void)setVehicle:(CTInPathVehicle *)vehicle;
-- (void)animateVehicle;
 
 @end

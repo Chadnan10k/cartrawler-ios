@@ -66,11 +66,6 @@
     [self addSubview:self.selectedVehicleView];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.selectedVehicleView}]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:@{@"view" : self.selectedVehicleView}]];
-    
-    [self.selectedVehicleView setVehicle:vehicle];
-    if (animated) {
-        [self.selectedVehicleView animateVehicle];
-    }
 }
 
 - (void)renderDefault:(BOOL)animated
