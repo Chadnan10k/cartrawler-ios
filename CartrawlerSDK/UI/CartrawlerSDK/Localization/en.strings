@@ -1,3 +1,27 @@
+"search_title" = "Search";
+"search_compare_deals" = "Compare and find the best value car hire deals";
+"whats_your_pickup_location" = "What's your pick-up location?";
+"whats_your_dropoff_location" = "What's your drop-off location?";
+"view_your_next_trip" = "View your next trip!";
+"book_another_car" = "or book another car";
+"why_book_with_us" = "Why book with us?";
+"free_cancellation_and_amendments" = "Free cancellation and amendments";
+"free_cancellation_amendments_detail" = "Free cancellation up to 24 hours prior to your pick up. No administration fees when you amend your booking.";
+"phone_support" = "24/7 phone support";
+"phone_support_detail" = "Our team is here to help 24 hours a day, 7 days a week.";
+"airports_city_locations" = "30,000 airports and city locations";
+"airports_city_locations_detail" = "Compare 1,500 suppliers, Choose & Save!";
+"no_hidden_costs" = "No hidden costs";
+"no_hidden_costs_detail" = "We’ll explain any additional costs before you book your car hire. More details on what’s included? Just check the t’s & c’s of any car.";
+"damage_theft_protection" = "Damage and theft protection";
+"damage_theft_protection_detail" = "Our rentals include Collision Damage Waiver and Theft Protection.";
+
+"search_pickup_location_text" = "Pick-up location";
+"search_dropoff_location_text" = "Drop-off location";
+
+
+
+
 "extras_included_for_free" = "Included for free";
 "car_rental_total" = "Car rental total";
 "vehicle_type_fullsize" = "Fullsize";
@@ -128,7 +152,7 @@
 "receipt_summary_pickup" = "Pick-up";
 "vehicle_type_twenty_foot_truck" = "Twenty Foot Truck";
 "extras_34" = "Mobile phone with GPS.";
-"search_pickup_location_text" = "Pick-up location";
+
 "extras_30" = "This package includes mandatory equipment for driving in winter conditions.";
 "rental_sort_price" = "Price";
 "vehicle_type_other" = "Other";

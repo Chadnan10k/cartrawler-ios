@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *selectDatesTextField;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *pickupTimeTextField;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *dropOffTimeTextField;
+@property (weak, nonatomic) IBOutlet UILabel *driverAgeRequirements;
 @property (weak, nonatomic) IBOutlet UIButton *driverAgeCheckbox;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *driverAgeTextField;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
@@ -98,9 +99,18 @@
     [self.doneButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:viewModel.doneButtonColor, NSForegroundColorAttributeName,nil]
                                    forState:UIControlStateNormal];
     
+    self.pickupLocationTextField.placeholder = viewModel.pickupLocationPlaceholder;
+    self.dropoffLocationTextField.placeholder = viewModel.dropoffLocationPlaceholder;
+    self.returnToSameLocation.text = viewModel.returnToSameLocationText;
+    self.selectDatesTextField.placeholder = viewModel.datesPlaceholder;
+    self.pickupTimeTextField.placeholder = viewModel.pickupTimePlaceholder;
+    self.dropOffTimeTextField.placeholder = viewModel.dropoffTimePlaceholder;
+    self.driverAgeTextField.placeholder = viewModel.driverAgePlaceholder;
+    self.driverAgeRequirements.text = viewModel.driverAgeText;
+    
     self.pickupLocationTextField.text = viewModel.pickupLocationName;
     self.dropoffLocationTextField.text = viewModel.dropoffLocationName;
-    self.returnToSameLocation.text = viewModel.returnToSameLocation;
+    
     self.selectDatesTextField.text = viewModel.rentalDates;
     self.pickupTimeTextField.text = viewModel.pickupTime;
     self.dropOffTimeTextField.text = viewModel.dropoffTime;
@@ -150,6 +160,9 @@
         self.driverAgeView.alpha = viewModel.driverAgeTextfieldDisplayed;
         [self.view layoutIfNeeded];
     }];
+    
+    [self.nextButton setTitle:viewModel.nextButtonTitle forState:UIControlStateNormal];
+    self.doneButton.title = viewModel.doneButtonTitle;
 }
 
 - (void)shakeAnimations:(CTSearchFormViewModel *)viewModel {

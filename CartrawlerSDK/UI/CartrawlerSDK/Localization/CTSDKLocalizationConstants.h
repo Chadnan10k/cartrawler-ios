@@ -10,6 +10,50 @@
 
 @interface CTSDKLocalizationConstants : NSObject
 
+// Search Page
+
+extern NSString * const CTSearchTitle;
+
+extern NSString * const CTSearchCompareDeals;
+
+extern NSString * const CTSearchWhatsYourPickupLocation;
+
+extern NSString * const CTSearchWhatsYourDropoffLocation;
+
+extern NSString * const CTSearchViewYourNextTrip;
+
+extern NSString * const CTSearchBookAnotherCar;
+
+extern NSString * const CTSearchWhyBookWithUs;
+
+extern NSString * const CTSearchFreeCancellationAndAmendments;
+
+extern NSString * const CTSearchFreeCancellationDetail;
+
+extern NSString * const CTSearchPhoneSupport;
+
+extern NSString * const CTSearchPhoneSupportDetail;
+
+extern NSString * const CTSearchAirportsCityLocations;
+
+extern NSString * const CTSearchAirportsCityLocationsDetail;
+
+extern NSString * const CTSearchNoHiddenCosts;
+
+extern NSString * const CTSearchNoHiddenCostsDetail;
+
+extern NSString * const CTSearchDamageTheftProtection;
+
+extern NSString * const CTSearchDamageTheftProtectionDetail;
+
+
+
+
+
+
+
+
+
 extern NSString * const CTSDKCalendarSelectDate;
 
 extern NSString * const CTSDKCalendarSelectDates;

@@ -23,7 +23,7 @@
 
 + (instancetype)viewModelForState:(CTAppState *)appState {
     CTSearchUSPViewModel *viewModel = [CTSearchUSPViewModel new];
-    viewModel.title = @"Why book with us?";
+    viewModel.title = CTLocalizedString(CTSearchWhyBookWithUs);
     
     NSArray *details = @[@(CTSearchUSPDetailTypeCreditCard), @(CTSearchUSPDetailTypeHeadset), @(CTSearchUSPDetailTypeMap), @(CTSearchUSPDetailTypeSearch), @(CTSearchUSPDetailTypeLock)];
     

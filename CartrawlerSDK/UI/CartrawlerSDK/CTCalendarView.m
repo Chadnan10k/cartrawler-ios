@@ -93,6 +93,13 @@
     self.logicController.secondaryColor = secondaryColor;
 }
 
+- (void)setLanguage:(NSString *)language {
+    if (_language != language) {
+        _language = language;
+        [self.tableView reloadData];
+    }
+}
+
 #pragma mark UITableView
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -148,7 +155,7 @@
     headerView.alpha = 0.9;
     [headerView addSubview:customLabel];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    df.locale = [NSLocale localeWithLocaleIdentifier:[CTSDKSettings instance].languageCode];
+    df.locale = [NSLocale localeWithLocaleIdentifier:self.language ?: @"en"];
     df.dateFormat = @"MMMM YYYY";
     NSString *dateStr = [df stringFromDate:self.months[section]];
     customLabel.text = dateStr;

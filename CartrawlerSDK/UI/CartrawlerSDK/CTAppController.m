@@ -79,9 +79,8 @@
             userSettingsState.clientID = payload;
             break;
         case CTActionUserSettingsSetLanguageCode:
-            userSettingsState.languageCode = @"en";//[(NSString *)payload lowercaseString] ?: @"en";
-            // TODO: Remove state from localised strings and put all in a controller
-//            [CTLocalisedStrings instance].language = [(NSString *)payload lowercaseString] ?: @"en";
+            userSettingsState.languageCode = [(NSString *)payload lowercaseString] ?: @"en";
+            [CTLocalisedStrings instance].language = [(NSString *)payload lowercaseString] ?: @"en";
             break;
         case CTActionUserSettingsSetCountryCode:
             userSettingsState.countryCode = payload;
@@ -607,7 +606,7 @@
             
         // Booking
         case CTActionBookingPaymentContainerViewDidLoad:
-            self.paymentController = [[CTPaymentController alloc] initWithContainerView:payload];
+            self.paymentController = [[CTPaymentController alloc] initWithContainerView:payload language:userSettingsState.languageCode];
             break;
         case CTActionBookingUserDidTapFirstName:
             bookingState.selectedTextfield = CTBookingTextfieldFirstName;

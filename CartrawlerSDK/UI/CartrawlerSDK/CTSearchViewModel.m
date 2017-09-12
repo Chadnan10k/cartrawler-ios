@@ -21,6 +21,8 @@
 @property (nonatomic, readwrite) UIColor *navigationBarColor;
 @property (nonatomic, readwrite) BOOL scrollAboveKeyboard;
 @property (nonatomic, readwrite) CGFloat scrollAboveUserInput;
+@property (nonatomic, readwrite) NSString *title;
+@property (nonatomic, readwrite) NSString *cancel;
 @end
 
 @implementation CTSearchViewModel
@@ -36,6 +38,9 @@
     viewModel.searchFormViewModel = [CTSearchFormViewModel viewModelForState:appState];
     viewModel.searchUSPViewModel = [CTSearchUSPViewModel viewModelForState:appState];
     viewModel.scrollAboveUserInput =  searchState.scrollAboveUserInput ? appState.userSettingsState.keyboardHeight.floatValue : 0;
+    
+    viewModel.title = CTLocalizedString(CTSearchTitle);
+    viewModel.cancel = CTLocalizedString(CTRentalCTACancel);
     
     return viewModel;
 }

@@ -84,12 +84,14 @@
     
     self.calendarView.primaryColor = viewModel.primaryColor;
     self.calendarView.secondaryColor = viewModel.secondaryColor;
+    self.calendarView.language = viewModel.language;
     
     self.nextButtonContainerBottom.constant = viewModel.enableNextButton ? 0 : -self.nextButtonContainerHeight.constant;
     [UIView animateWithDuration:0.2 animations:^{
         [self.view layoutIfNeeded];
     }];
     self.nextButton.enabled = viewModel.enableNextButton;
+    [self.nextButton setTitle:viewModel.nextButtonTitle forState:UIControlStateNormal];
 }
 
 - (IBAction)cancel:(id)sender {

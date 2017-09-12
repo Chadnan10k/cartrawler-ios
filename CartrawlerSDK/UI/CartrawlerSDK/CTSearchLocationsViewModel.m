@@ -14,6 +14,7 @@
 @property (nonatomic, readwrite) UIColor *cursorColor;
 @property (nonatomic, readwrite) UIColor *iconColor;
 @property (nonatomic, readwrite) NSString *searchBarPlaceholder;
+@property (nonatomic, readwrite) NSString *cancel;
 @property (nonatomic, readwrite) NSArray <NSString *> *sectionTitles;
 @property (nonatomic, readwrite) NSArray <NSArray <CTMatchedLocation *> *> *rows;
 @end
@@ -30,18 +31,9 @@
     viewModel.cursorColor = userSettingsState.primaryColor;
     viewModel.iconColor = userSettingsState.primaryColor;
     
-    NSString *location;
-    switch (searchState.selectedTextField) {
-        case CTSearchFormTextFieldPickupLocation:
-            location = @"pick-up";
-            break;
-        case CTSearchFormTextFieldDropoffLocation:
-            location = @"drop-off";
-            break;
-        default:
-            break;
-    }
-    viewModel.searchBarPlaceholder = [NSString stringWithFormat:@"What's your %@ location?", location];
+    NSString *localisationKey = searchState.selectedTextField == CTSearchFormTextFieldPickupLocation ? CTSearchWhatsYourPickupLocation : CTSearchWhatsYourDropoffLocation;
+    viewModel.searchBarPlaceholder = CTLocalizedString(localisationKey);
+    viewModel.cancel = CTLocalizedString(CTRentalCTACancel);
     
     NSArray *matchedLocations = APIState.matchedLocations[searchState.searchBarText];
     

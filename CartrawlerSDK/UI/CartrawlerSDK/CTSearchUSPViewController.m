@@ -32,6 +32,11 @@
     self.pageControl.currentPageIndicatorTintColor = viewModel.currentPageControlTintColor;
     if (collectionViewItemsChange || collectionViewColorChange) {
         [self.collectionView reloadData];
+    } else {
+        for (CTSearchUSPDetailViewCell *cell in self.collectionView.visibleCells) {
+            NSInteger index = [self.collectionView indexPathForCell:cell].row;
+            [cell updateWithViewModel:viewModel.detailViewModels[index]];
+        }
     }
 }
 

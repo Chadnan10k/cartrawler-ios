@@ -12,6 +12,7 @@
 
 @interface CTSearchLocationsViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -37,6 +38,7 @@
     self.searchBar.barTintColor = viewModel.navigationBarColor;
     self.searchBar.tintColor = viewModel.cursorColor;
     self.searchBar.placeholder = viewModel.searchBarPlaceholder;
+    [self.cancelButton setTitle:viewModel.cancel forState:UIControlStateNormal];
     [self.tableView reloadData];
 }
 

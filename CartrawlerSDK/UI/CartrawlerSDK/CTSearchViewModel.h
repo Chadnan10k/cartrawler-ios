@@ -30,4 +30,6 @@ typedef NS_ENUM(NSUInteger, CTSearchContentView) {
 @property (nonatomic, readonly) CTSearchUSPViewModel *searchUSPViewModel;
 @property (nonatomic, readonly) UIColor *navigationBarColor;
 @property (nonatomic, readonly) CGFloat scrollAboveUserInput;
+@property (nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly) NSString *cancel;
 @end

@@ -15,10 +15,14 @@
 
 @property (nonatomic, readonly) UIColor *secondaryColor;
 
+@property (nonatomic, readonly) NSString *language;
+
 @property (nonatomic, readonly) NSString *displayedPickupDate;
 
 @property (nonatomic, readonly) NSString *displayedDropoffDate;
 
 @property (nonatomic, readonly) BOOL enableNextButton;
+
+@property (nonatomic, readonly) NSString *nextButtonTitle;
 
 @end

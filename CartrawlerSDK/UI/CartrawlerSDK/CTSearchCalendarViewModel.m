@@ -13,9 +13,11 @@
 @interface CTSearchCalendarViewModel ()
 @property (nonatomic, readwrite) UIColor *primaryColor;
 @property (nonatomic, readwrite) UIColor *secondaryColor;
+@property (nonatomic, readwrite) NSString *language;
 @property (nonatomic, readwrite) NSString *displayedPickupDate;
 @property (nonatomic, readwrite) NSString *displayedDropoffDate;
 @property (nonatomic, readwrite) BOOL enableNextButton;
+@property (nonatomic, readwrite) NSString *nextButtonTitle;
 @end
 
 @implementation CTSearchCalendarViewModel
@@ -27,13 +29,16 @@
     
     viewModel.primaryColor = userSettingsState.primaryColor;
     viewModel.secondaryColor = userSettingsState.secondaryColor;
+    viewModel.language = userSettingsState.languageCode;
     
-    viewModel.displayedPickupDate = searchState.displayedPickupDate ? [searchState.displayedPickupDate shortDescriptionFromDate] : CTLocalizedString(CTSDKCalendarSelectDate);
+    viewModel.displayedPickupDate = searchState.displayedPickupDate ? [searchState.displayedPickupDate shortDescriptionFromDateInLanguage:userSettingsState.languageCode] : CTLocalizedString(CTSDKCalendarSelectDate);
     if (searchState.displayedPickupDate) {
-        viewModel.displayedDropoffDate = searchState.displayedDropoffDate ? [searchState.displayedDropoffDate shortDescriptionFromDate] : CTLocalizedString(CTSDKCalendarSelectDate);
+        viewModel.displayedDropoffDate = searchState.displayedDropoffDate ? [searchState.displayedDropoffDate shortDescriptionFromDateInLanguage:userSettingsState.languageCode] : CTLocalizedString(CTSDKCalendarSelectDate);
     }
     
     viewModel.enableNextButton = (searchState.displayedPickupDate && searchState.displayedDropoffDate);
+    
+    viewModel.nextButtonTitle = CTLocalizedString(CTRentalCTAContinue);
     return viewModel;
 }
 

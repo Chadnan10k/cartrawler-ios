@@ -10,6 +10,45 @@
 
 @implementation CTSDKLocalizationConstants
 
+NSString * const CTSearchTitle = @"search_title";
+
+NSString * const CTSearchCompareDeals = @"search_compare_deals";
+
+NSString * const CTSearchWhatsYourPickupLocation = @"whats_your_pickup_location";
+
+NSString * const CTSearchWhatsYourDropoffLocation = @"whats_your_dropoff_location";
+
+NSString * const CTSearchViewYourNextTrip = @"view_your_next_trip";
+
+NSString * const CTSearchBookAnotherCar = @"book_another_car";
+
+NSString * const CTSearchWhyBookWithUs = @"why_book_with_us";
+
+NSString * const CTSearchFreeCancellationAndAmendments = @"free_cancellation_and_amendments";
+
+NSString * const CTSearchFreeCancellationDetail = @"free_cancellation_amendments_detail";
+
+NSString * const CTSearchPhoneSupport = @"phone_support";
+
+NSString * const CTSearchPhoneSupportDetail = @"phone_support_detail";
+
+NSString * const CTSearchAirportsCityLocations = @"airports_city_locations";
+
+NSString * const CTSearchAirportsCityLocationsDetail = @"airports_city_locations_detail";
+
+NSString * const CTSearchNoHiddenCosts = @"no_hidden_costs";
+
+NSString * const CTSearchNoHiddenCostsDetail = @"no_hidden_costs_detail";
+
+NSString * const CTSearchDamageTheftProtection = @"damage_theft_protection";
+
+NSString * const CTSearchDamageTheftProtectionDetail = @"damage_theft_protection_detail";
+
+
+
+
+
+
 NSString * const CTSDKCalendarSelectDate = @"calendar_select_date";
 
 NSString * const CTSDKCalendarSelectDates = @"calendar_select_dates";

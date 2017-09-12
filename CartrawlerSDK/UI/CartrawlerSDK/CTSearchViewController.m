@@ -19,6 +19,7 @@
 
 @interface CTSearchViewController ()
 @property (nonatomic, strong) CTSearchViewModel *viewModel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) CTSearchSplashViewController *searchSplashVC;
 @property (weak, nonatomic) IBOutlet UIView *searchSplashContainerView;
@@ -29,7 +30,6 @@
 @property (nonatomic, weak) CTSearchUSPViewController *searchUSPVC;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraintUSP;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @end
 
 @implementation CTSearchViewController
@@ -48,6 +48,9 @@
     self.view = self.view;
     
     self.viewModel = viewModel;
+    
+    self.navigationBar.topItem.title = viewModel.title;
+    self.cancelButton.title = viewModel.cancel;
     
     self.navigationBar.barTintColor = viewModel.navigationBarColor;
     

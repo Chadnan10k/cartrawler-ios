@@ -14,7 +14,9 @@
 
 - (NSString *)stringFromDateWithFormat:(NSString *)format;
 - (NSString *)shortDescriptionFromDate;
+- (NSString *)shortDescriptionFromDateInLanguage:(NSString *)language;
 - (NSString *)simpleTimeString;
+- (NSString *)simpleTimeStringInLanguage:(NSString *)language;
 
 + (NSString *)currentTimestamp;
 + (NSDate *)dateWithHour:(NSInteger)hour minute:(NSInteger)minute;

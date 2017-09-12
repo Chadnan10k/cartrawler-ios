@@ -12,7 +12,7 @@
 
 @interface CTPaymentController : NSObject
 
-- (instancetype)initWithContainerView:(UIView *)containerView;
+- (instancetype)initWithContainerView:(UIView *)containerView language:(NSString *)language;
 - (void)makePaymentWithState:(CTAppState *)state;
 
 @end

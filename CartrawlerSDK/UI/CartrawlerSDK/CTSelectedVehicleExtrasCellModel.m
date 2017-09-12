@@ -76,7 +76,7 @@
         case CTExtraEquipmentTypeAdditionalDriver:
             return @"";
         case CTExtraEquipmentTypeBoosterSeat:
-            return @"";
+            return @"";
         case CTExtraEquipmentTypeBreathalyser:
             return @"";
         case CTExtraEquipmentTypeNavigationSystem:
@@ -84,7 +84,7 @@
         case CTExtraEquipmentTypeGPS:
             return @"";
         case CTExtraEquipmentTypeInfantSeat:
-            return @"";
+            return @"";
         case CTExtraEquipmentTypeLuggageRack:
             return @"";
         case CTExtraEquipmentTypeMobilePhone:

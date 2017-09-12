@@ -16,8 +16,17 @@
 @property (nonatomic, readwrite) UIColor *driverAgeCursorColor;
 @property (nonatomic, readwrite) UIColor *nextButtonColor;
 @property (nonatomic, readwrite) UIColor *doneButtonColor;
+
+@property (nonatomic, readwrite) NSString *pickupLocationPlaceholder;
+@property (nonatomic, readwrite) NSString *returnToSameLocationText;
+@property (nonatomic, readwrite) NSString *dropoffLocationPlaceholder;
+@property (nonatomic, readwrite) NSString *datesPlaceholder;
+@property (nonatomic, readwrite) NSString *pickupTimePlaceholder;
+@property (nonatomic, readwrite) NSString *dropoffTimePlaceholder;
+@property (nonatomic, readwrite) NSString *driverAgePlaceholder;
+@property (nonatomic, readwrite) NSString *driverAgeText;
+
 @property (nonatomic, readwrite) NSString *pickupLocationName;
-@property (nonatomic, readwrite) NSString *returnToSameLocation;
 @property (nonatomic, readwrite) NSString *returnToSameLocationCheckboxText;
 @property (nonatomic, readwrite) NSString *dropoffLocationName;
 @property (nonatomic, readwrite) NSString *rentalDates;
@@ -37,30 +46,43 @@
 @property (nonatomic, readwrite) BOOL shakePickupTime;
 @property (nonatomic, readwrite) BOOL shakeDropoffTime;
 @property (nonatomic, readwrite) BOOL shakeDriverAge;
+
+@property (nonatomic, readwrite) NSString *doneButtonTitle;
+@property (nonatomic, readwrite) NSString *nextButtonTitle;
+
 @end
 
 @implementation CTSearchFormViewModel
 
 + (instancetype)viewModelForState:(CTAppState *)appState {
+    CTUserSettingsState *userSettingsState = appState.userSettingsState;
     CTSearchState *searchState = appState.searchState;
+    NSString *language = userSettingsState.languageCode;
     CTSearchFormViewModel *viewModel = [CTSearchFormViewModel new];
     
-    viewModel.backgroundColor = appState.userSettingsState.primaryColor;
-    viewModel.driverAgeCursorColor = appState.userSettingsState.primaryColor;
-    viewModel.nextButtonColor = appState.userSettingsState.secondaryColor;
-    viewModel.doneButtonColor = appState.userSettingsState.primaryColor;
+    viewModel.backgroundColor = userSettingsState.primaryColor;
+    viewModel.driverAgeCursorColor = userSettingsState.primaryColor;
+    viewModel.nextButtonColor = userSettingsState.secondaryColor;
+    viewModel.doneButtonColor = userSettingsState.primaryColor;
+    
+    viewModel.pickupLocationPlaceholder = CTLocalizedString(CTRentalSearchPickupLocationText);
+    viewModel.returnToSameLocationText = CTLocalizedString(CTRentalSearchReturnLocationButton);
+    viewModel.dropoffLocationPlaceholder = CTLocalizedString(CTRentalSearchReturnLocationText);
+    viewModel.datesPlaceholder = CTLocalizedString(CTRentalSearchSelectDatesHint);
+    viewModel.pickupTimePlaceholder = CTLocalizedString(CTRentalSearchPickupTimeText);
+    viewModel.dropoffTimePlaceholder = CTLocalizedString(CTRentalSearchReturnTimeText);
+    viewModel.driverAgePlaceholder = CTLocalizedString(CTRentalSearchDriverAgeHint);
+    viewModel.driverAgeText = CTLocalizedString(CTRentalSearchDriverAge);
     
     viewModel.pickupLocationName = searchState.selectedPickupLocation.name;
     viewModel.dropoffLocationName = searchState.selectedDropoffLocation.name;
     
-    viewModel.returnToSameLocation = CTLocalizedString(CTRentalSearchReturnLocationButton);
-    
     if (searchState.selectedPickupDate && searchState.selectedDropoffDate) {
-        viewModel.rentalDates = [NSString stringWithFormat:@"%@ - %@", [searchState.selectedPickupDate shortDescriptionFromDate], [searchState.selectedDropoffDate shortDescriptionFromDate]];
+        viewModel.rentalDates = [NSString stringWithFormat:@"%@ - %@", [searchState.selectedPickupDate shortDescriptionFromDateInLanguage:language], [searchState.selectedDropoffDate shortDescriptionFromDateInLanguage:language]];
     }
     
-    viewModel.pickupTime = [searchState.selectedPickupTime simpleTimeString];
-    viewModel.dropoffTime = [searchState.selectedDropoffTime simpleTimeString];
+    viewModel.pickupTime = [searchState.selectedPickupTime simpleTimeStringInLanguage:language];
+    viewModel.dropoffTime = [searchState.selectedDropoffTime simpleTimeStringInLanguage:language];
     
     if (searchState.selectedTextField == CTSearchFormTextFieldPickupTime && searchState.selectedPickupTime) {
         viewModel.defaultPickerTime = searchState.selectedPickupTime;
@@ -84,7 +106,7 @@
     
     viewModel.displayedDriverAge = searchState.displayedDriverAge;
     
-    // TODO: Copy below pattern for bookings instaed of animateValidationFailed and separate errors
+    // TODO: Copy below pattern for bookings instead of animateValidationFailed and separate errors
     if (searchState.wantsNextStep && searchState.validationErrors.count > 0) {
         viewModel.shakeAnimations = YES;
         for (NSNumber *failureNumber in searchState.validationErrors) {
@@ -113,6 +135,9 @@
             }
         }
     }
+    
+    viewModel.doneButtonTitle = CTLocalizedString(CTRentalCTADone);
+    viewModel.nextButtonTitle = CTLocalizedString(CTRentalCTASearch);
     
     return viewModel;
 }

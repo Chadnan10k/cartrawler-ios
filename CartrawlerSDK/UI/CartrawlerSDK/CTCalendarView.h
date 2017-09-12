@@ -22,6 +22,7 @@ typedef void (^CTDiscardDates)(void);
 @property (nonatomic) CTSingleDateSelectionCompletion dateSelected;
 @property (nonatomic) CTDiscardDates discard;
 @property (nonatomic, strong) NSDate *mininumDate;
+@property (nonatomic, strong) NSString *language;
 
 - (void)setupWithFrame:(CGRect)frame;
 - (void)reset;

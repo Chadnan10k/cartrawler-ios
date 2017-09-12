@@ -26,10 +26,30 @@
     return [formatter stringFromDate:self];
 }
 
+- (NSString *)shortDescriptionFromDateInLanguage:(NSString *)language
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateStyle = NSDateFormatterMediumStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:language];
+    [formatter setLocale:locale];
+    return [formatter stringFromDate:self];
+}
+
 - (NSString *)simpleTimeString
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    formatter.dateStyle = NSDateFormatterNoStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    return [formatter stringFromDate:self];
+}
+
+- (NSString *)simpleTimeStringInLanguage:(NSString *)language
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:language];
+    [formatter setLocale:locale];
     formatter.dateStyle = NSDateFormatterNoStyle;
     formatter.timeStyle = NSDateFormatterShortStyle;
     return [formatter stringFromDate:self];

@@ -25,10 +25,10 @@
     CTSearchSplashViewModel *viewModel = [CTSearchSplashViewModel new];
     viewModel.splashColor = appState.userSettingsState.primaryColor;
     viewModel.illustrationColor = appState.userSettingsState.illustrationColor;
-    viewModel.splashText = @"Compare and find the best value car hire deals";
-    viewModel.searchBoxText = @"What's your pick up location?";
-    viewModel.nextTrip = @"View your next trip!";
-    viewModel.bookAnotherCar = @"or book another car";
+    viewModel.splashText = CTLocalizedString(CTSearchCompareDeals);
+    viewModel.searchBoxText = CTLocalizedString(CTSearchWhatsYourPickupLocation);
+    viewModel.nextTrip = CTLocalizedString(CTSearchViewYourNextTrip);
+    viewModel.bookAnotherCar = CTLocalizedString(CTSearchBookAnotherCar);
     
     NSMutableArray *rowViewModels = [NSMutableArray new];
     for (CTRentalBooking *booking in appState.reservationsState.reservations) {

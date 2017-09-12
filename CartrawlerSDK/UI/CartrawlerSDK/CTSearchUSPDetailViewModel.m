@@ -22,24 +22,24 @@
     
     switch (viewModel.detailType) {
         case CTSearchUSPDetailTypeCreditCard:
-            viewModel.title = @"Free cancellation and amendments";
-            viewModel.detail = @"Free cancellation up to 24 hours prior to your pick up. No administration fees when you amend your booking.";
+            viewModel.title = CTLocalizedString(CTSearchFreeCancellationAndAmendments);
+            viewModel.detail = CTLocalizedString(CTSearchFreeCancellationDetail);
             break;
         case CTSearchUSPDetailTypeHeadset:
-            viewModel.title = @"24/7 phone support";
-            viewModel.detail = @"Our team is here to help 24 hours a day, 7 days a week.";
+            viewModel.title = CTLocalizedString(CTSearchPhoneSupport);
+            viewModel.detail = CTLocalizedString(CTSearchPhoneSupportDetail);
             break;
         case CTSearchUSPDetailTypeMap:
-            viewModel.title = @"30,000 airports and city locations";
-            viewModel.detail = @"Compare 1,500 suppliers, Choose & Save!";
+            viewModel.title = CTLocalizedString(CTSearchAirportsCityLocations);
+            viewModel.detail = CTLocalizedString(CTSearchAirportsCityLocationsDetail);
             break;
         case CTSearchUSPDetailTypeSearch:
-            viewModel.title = @"No hidden costs";
-            viewModel.detail = @"We’ll explain any additional costs before you book your car hire. More details on what’s included? Just check the t’s & c’s of any car.";
+            viewModel.title = CTLocalizedString(CTSearchNoHiddenCosts);
+            viewModel.detail = CTLocalizedString(CTSearchNoHiddenCostsDetail);
             break;
         case CTSearchUSPDetailTypeLock:
-            viewModel.title = @"Damage and theft protection";
-            viewModel.detail = @"Our rentals include Collision Damage Waiver and Theft Protection.";
+            viewModel.title = CTLocalizedString(CTSearchDamageTheftProtection);
+            viewModel.detail = CTLocalizedString(CTSearchDamageTheftProtectionDetail);
             break;
         default:
             break;

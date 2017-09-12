@@ -19,11 +19,11 @@
 
 @implementation CTPaymentController
 
-- (instancetype)initWithContainerView:(UIView *)containerView {
+- (instancetype)initWithContainerView:(UIView *)containerView language:(NSString *)language {
     self = [super init];
     if (self) {
         _payment = [[CTPayment alloc] initWithContainerView:containerView
-                                                   language:@"en"
+                                                   language:language
                                                  appearance:nil
                                                       debug:YES
                                                      active:NO];
