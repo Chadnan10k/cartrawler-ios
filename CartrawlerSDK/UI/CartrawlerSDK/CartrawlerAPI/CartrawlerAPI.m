@@ -336,6 +336,7 @@
                                returnDateTime:(NSDate *)returnDateTime
                                  currencyCode:(NSString *)currencyCode
                                      clientID:(NSString *)clientID
+                                     language:(NSString *)language
                                     debugMode:(BOOL)debugMode
                                loggingEnabled:(BOOL)loggingEnabled
                                    completion:(RequestAvailabilityCompletion)completion {
@@ -352,7 +353,7 @@
                                                  homeCountryCode: customerCountryCode
                                                         clientID: clientID
                                                           target: target
-                                                          locale: @"IE"
+                                                          locale: language
                                                         currency: currencyCode];
     
     [[CTPostRequest new] performRequestWithData:endPoint

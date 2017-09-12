@@ -24,6 +24,7 @@
 @property (strong, nonatomic) UIAlertController *alertController;
 @property (weak, nonatomic) IBOutlet UIView *badgeView;
 @property (weak, nonatomic) IBOutlet UILabel *badgeCount;
+@property (weak, nonatomic) IBOutlet UIButton *filter;
 @end
 
 @implementation CTVehicleListViewController
@@ -80,6 +81,7 @@
         [self.tableView setContentOffset:CGPointMake(0, -5.0) animated:YES];
         [CTAppController dispatchAction:CTActionVehicleListScreenDidScrollToTop payload:nil];
     }
+    [self.filter setTitle:viewModel.filter forState:UIControlStateNormal];
 }
 
 // MARK: Sort

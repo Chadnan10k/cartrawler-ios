@@ -14,6 +14,8 @@
 
 @interface CTVehicleListFilterViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *applyButton;
 @property (nonatomic) CTVehicleListFilterViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
@@ -31,6 +33,8 @@
     self.viewModel = viewModel;
     self.navigationBar.barTintColor = viewModel.navigationBarColor;
     self.navigationBar.topItem.title = viewModel.navigationTitle;
+    self.cancelButton.title = viewModel.cancel;
+    self.applyButton.title = viewModel.apply;
     [self.tableView reloadData];
 }
 

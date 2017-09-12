@@ -2055,6 +2055,7 @@
                     <size key="freeformSize" width="375" height="700"/>
                     <connections>
                         <outlet property="detailLabel" destination="c23-gK-7n5" id="Ft7-dg-1wM"/>
+                        <outlet property="message" destination="obB-QD-US3" id="lf9-Tu-K1a"/>
                         <outlet property="navigationBar" destination="TMf-Qw-Xol" id="a5O-HP-2KD"/>
                         <outlet property="titleLabel" destination="JY5-Nj-eku" id="v7i-GK-7jO"/>
                     </connections>
@@ -2314,7 +2315,7 @@
             <objects>
                 <navigationController storyboardIdentifier="CTSearchNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="PdW-4F-nLw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="dUv-pP-a14">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dUv-pP-a14">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

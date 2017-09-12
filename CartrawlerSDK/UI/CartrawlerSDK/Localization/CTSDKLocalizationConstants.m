@@ -44,6 +44,14 @@ NSString * const CTSearchDamageTheftProtection = @"damage_theft_protection";
 
 NSString * const CTSearchDamageTheftProtectionDetail = @"damage_theft_protection_detail";
 
+NSString * const CTVehicleListVehicles = @"vehicles";
+
+NSString * const CTVehicleListFilterApply = @"apply";
+
+NSString * const CTVehicleListFilterSelectAll = @"select_all";
+
+NSString * const CTVehicleListPerfectCar = @"perfect_car";
+
 
 
 

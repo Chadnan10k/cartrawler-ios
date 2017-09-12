@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *message;
 @end
 
 @implementation CTSearchInterstitialViewController
@@ -26,6 +27,7 @@
     self.navigationBar.barTintColor = viewModel.navigationBarColor;
     self.titleLabel.text = viewModel.navigationBarTitle;
     self.detailLabel.text = viewModel.navigationBarDetail;
+    self.message.text = viewModel.message;
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {

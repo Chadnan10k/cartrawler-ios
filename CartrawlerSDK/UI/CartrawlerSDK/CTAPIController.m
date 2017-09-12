@@ -76,6 +76,7 @@
                                           returnDateTime:dropoffDate
                                             currencyCode:userSettingsState.currencyCode
                                                 clientID:userSettingsState.clientID
+                                                language:userSettingsState.languageCode
                                                debugMode:userSettingsState.debugMode
                                           loggingEnabled:userSettingsState.loggingEnabled
                                               completion:^(CTVehicleAvailability *response, CTErrorResponse *error) {

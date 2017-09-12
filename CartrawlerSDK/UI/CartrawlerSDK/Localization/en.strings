@@ -15,6 +15,10 @@
 "no_hidden_costs_detail" = "We’ll explain any additional costs before you book your car hire. More details on what’s included? Just check the t’s & c’s of any car.";
 "damage_theft_protection" = "Damage and theft protection";
 "damage_theft_protection_detail" = "Our rentals include Collision Damage Waiver and Theft Protection.";
+"vehicles" = "vehicles";
+"apply" = "Apply";
+"select_all" = "Select All";
+"perfect_car" = "We are searching for your perfect car";
 
 "search_pickup_location_text" = "Pick-up location";
 "search_dropoff_location_text" = "Drop-off location";

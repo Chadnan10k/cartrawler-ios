@@ -190,6 +190,7 @@ typedef void (^GroundBookingCompletion)(CTGroundBooking *response, CTErrorRespon
                                returnDateTime:(NSDate *)returnDateTime
                                  currencyCode:(NSString *)currencyCode
                                      clientID:(NSString *)clientID
+                                     language:(NSString *)language
                                     debugMode:(BOOL)debugMode
                                loggingEnabled:(BOOL)loggingEnabled
                                    completion:(RequestAvailabilityCompletion)completion;

@@ -13,4 +13,5 @@
 @property (nonatomic, readonly) UIColor *navigationBarColor;
 @property (nonatomic, readonly) NSString *navigationBarTitle;
 @property (nonatomic, readonly) NSString *navigationBarDetail;
+@property (nonatomic, readonly) NSString *message;
 @end

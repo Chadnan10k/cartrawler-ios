@@ -442,6 +442,7 @@
                         <outlet property="badgeCount" destination="4wn-Ng-efX" id="Rts-Au-MW1"/>
                         <outlet property="badgeView" destination="fdZ-tR-E6K" id="soQ-BQ-W4E"/>
                         <outlet property="detailLabel" destination="yae-ep-W0v" id="7rw-8t-4k5"/>
+                        <outlet property="filter" destination="DKu-5v-V0g" id="QPq-Nw-v5i"/>
                         <outlet property="headerLeftLabel" destination="vII-CW-sGX" id="vsD-qT-PnR"/>
                         <outlet property="headerRightLabel" destination="Iqd-gZ-T6A" id="SLK-cq-32S"/>
                         <outlet property="headerView" destination="cC3-xR-j92" id="nlR-M3-v1h"/>
@@ -486,7 +487,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Filter" id="F8x-Vf-p5s">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="SaV-zk-CNN">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="SaV-zk-CNN">
                                             <connections>
                                                 <action selector="cancelButtonTapped:" destination="M9e-Zs-zwY" id="ZM6-1k-Pab"/>
                                             </connections>
@@ -520,7 +521,7 @@
                                                     <rect key="frame" x="314" y="6" width="36" height="36"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bab-Yy-xD4" userLabel="checkmark">
-                                                            <rect key="frame" x="2.5" y="1" width="32.5" height="33"/>
+                                                            <rect key="frame" x="4" y="3.5" width="28" height="28"/>
                                                             <fontDescription key="fontDescription" name="V5-Mobile" family="V5-Mobile" pointSize="28"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -604,6 +605,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="applyButton" destination="4Uu-lh-4MX" id="Jec-2J-ber"/>
+                        <outlet property="cancelButton" destination="SaV-zk-CNN" id="7bM-VG-HBC"/>
                         <outlet property="navigationBar" destination="wRL-IC-O9i" id="5VP-Ge-vv3"/>
                         <outlet property="tableView" destination="0Wy-sn-eAg" id="1or-Ln-0wk"/>
                     </connections>

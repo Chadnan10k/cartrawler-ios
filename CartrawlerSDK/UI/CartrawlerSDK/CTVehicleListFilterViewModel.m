@@ -12,6 +12,8 @@
 @interface CTVehicleListFilterViewModel ()
 @property (nonatomic, readwrite) UIColor *navigationBarColor;
 @property (nonatomic, readwrite) NSString *navigationTitle;
+@property (nonatomic, readwrite) NSString *cancel;
+@property (nonatomic, readwrite) NSString *apply;
 @property (nonatomic, readwrite) NSArray <CTVehicleListFilterHeaderViewModel *> *headerViewModels;
 @end
 
@@ -21,6 +23,8 @@
     CTVehicleListFilterViewModel *viewModel = [CTVehicleListFilterViewModel new];
     viewModel.navigationBarColor = appState.userSettingsState.primaryColor;
     viewModel.navigationTitle = CTLocalizedString(CTRentalTitleFilters);
+    viewModel.cancel = CTLocalizedString(CTRentalCTACancel);
+    viewModel.apply = CTLocalizedString(CTVehicleListFilterApply);
     viewModel.headerViewModels =  [CTVehicleListFilterViewModel headerViewModelsForState:appState];
     return viewModel;
 }

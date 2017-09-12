@@ -30,19 +30,21 @@
 @property (nonatomic, readwrite) UIColor *navigationBarColor;
 @property (nonatomic, readwrite) NSString *navigationBarTitle;
 @property (nonatomic, readwrite) NSString *navigationBarDetail;
+@property (nonatomic, readwrite) NSString *filter;
 @end
 
 @implementation CTVehicleListViewModel
 
 + (instancetype)viewModelForState:(CTAppState *)appState {
     CTVehicleListViewModel *viewModel = [CTVehicleListViewModel new];
+    CTUserSettingsState *userSettingsState = appState.userSettingsState;
     CTSearchState *searchState = appState.searchState;
     CTAPIState *APIState = appState.APIState;
     CTVehicleListState *vehicleListState = appState.vehicleListState;
     
     viewModel.navigationBarColor = appState.userSettingsState.primaryColor;
     viewModel.navigationBarTitle = searchState.selectedPickupLocation.name;
-    viewModel.navigationBarDetail = [NSString stringWithFormat:@"%@ - %@", [searchState.selectedPickupDate shortDescriptionFromDate], [searchState.selectedDropoffDate shortDescriptionFromDate]];
+    viewModel.navigationBarDetail = [NSString stringWithFormat:@"%@ - %@", [searchState.selectedPickupDate shortDescriptionFromDateInLanguage:userSettingsState.languageCode], [searchState.selectedDropoffDate shortDescriptionFromDateInLanguage:userSettingsState.languageCode]];
     
     NSArray *matchedAvailabilityItems = [APIState.matchedAvailabilityItems objectForKey:APIState.availabilityRequestTimestamp];
     
@@ -62,13 +64,14 @@
         viewModel.cancelTitle = CTLocalizedString(CTRentalCTACancel);
         
         viewModel.filterViewModel = [CTVehicleListFilterViewModel viewModelForState:appState];
+        viewModel.filter = CTLocalizedString(CTRentalResultsFilter);
     }
     
     return viewModel;
 }
 
 + (NSString *)leftLabelTextForVehicleCount:(NSInteger)count {
-    return [NSString stringWithFormat:@"%lu vehicles", (long)count];
+    return [NSString stringWithFormat:@"%lu %@", (long)count, CTLocalizedString(CTVehicleListVehicles)];
 }
 
 + (NSAttributedString *)rightLabelAttributedTextForState:(CTVehicleListState *)vehicleListState {

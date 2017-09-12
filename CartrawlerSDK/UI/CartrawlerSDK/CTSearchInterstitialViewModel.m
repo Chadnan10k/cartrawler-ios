@@ -13,6 +13,7 @@
 @property (nonatomic, readwrite) UIColor *navigationBarColor;
 @property (nonatomic, readwrite) NSString *navigationBarTitle;
 @property (nonatomic, readwrite) NSString *navigationBarDetail;
+@property (nonatomic, readwrite) NSString *message;
 @end
 
 @implementation CTSearchInterstitialViewModel
@@ -24,7 +25,8 @@
     CTUserSettingsState *userSettingsState = appState.userSettingsState;
     viewModel.navigationBarColor = userSettingsState.primaryColor;
     viewModel.navigationBarTitle = searchState.selectedPickupLocation.name;
-    viewModel.navigationBarDetail = [NSString stringWithFormat:@"%@ - %@", [searchState.selectedPickupDate shortDescriptionFromDate], [searchState.selectedDropoffDate shortDescriptionFromDate]];
+    viewModel.navigationBarDetail = [NSString stringWithFormat:@"%@ - %@", [searchState.selectedPickupDate shortDescriptionFromDateInLanguage:userSettingsState.languageCode], [searchState.selectedDropoffDate shortDescriptionFromDateInLanguage:userSettingsState.languageCode]];
+    viewModel.message = CTLocalizedString(CTVehicleListPerfectCar);
     return viewModel;
 }
 

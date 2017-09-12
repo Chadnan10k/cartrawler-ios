@@ -46,7 +46,13 @@ extern NSString * const CTSearchDamageTheftProtection;
 
 extern NSString * const CTSearchDamageTheftProtectionDetail;
 
+extern NSString * const CTVehicleListVehicles;
 
+extern NSString * const CTVehicleListFilterApply;
+
+extern NSString * const CTVehicleListFilterSelectAll;
+
+extern NSString * const CTVehicleListPerfectCar;
 
 
 

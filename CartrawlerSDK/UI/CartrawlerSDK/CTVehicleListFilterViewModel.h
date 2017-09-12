@@ -13,5 +13,7 @@
 @interface CTVehicleListFilterViewModel : NSObject <CTViewModelProtocol>
 @property (nonatomic, readonly) UIColor *navigationBarColor;
 @property (nonatomic, readonly) NSString *navigationTitle;
+@property (nonatomic, readonly) NSString *cancel;
+@property (nonatomic, readonly) NSString *apply;
 @property (nonatomic, readonly) NSArray <CTVehicleListFilterHeaderViewModel *> *headerViewModels;
 @end

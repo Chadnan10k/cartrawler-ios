@@ -18,7 +18,7 @@
     if (self) {
         _filterType = filterType;
         _title = title;
-        _detail = @"Select All";
+        _detail = CTLocalizedString(CTVehicleListFilterSelectAll);
         _rowViewModels = rowViewModels;
         _primaryColor = primaryColor;
         NSMutableArray *filterModels = [NSMutableArray new];
